@@ -20,29 +20,10 @@
   - sprite: _CD/Mobs/Customization/Synthliz/tails.rsi
     state: tail_synthliz_wagging
 
-# snout
-
-- type: marking
-  id: LizardSnoutSynth
-  bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Reptilian ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Synthliz/snouts.rsi
-    state: synthsnout_eyes
-  - sprite: _CD/Mobs/Customization/Synthliz/snouts.rsi
-    state: synthsnout_visor
-  - sprite: _CD/Mobs/Customization/Synthliz/snouts.rsi
-    state: synthsnout_frame
-  - sprite: _CD/Mobs/Customization/Synthliz/snouts.rsi
-    state: synthsnout_snout
-  - sprite: _CD/Mobs/Customization/Synthliz/snouts.rsi
-    state: synthsnout_jaw
-
 # alternate snout
 
 - type: marking
-  id: LizardSnoutSynthAlt
+  id: LizardSnoutSynth
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [ Reptilian ]
