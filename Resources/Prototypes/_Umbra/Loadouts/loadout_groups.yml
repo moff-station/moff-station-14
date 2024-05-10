@@ -1,0 +1,60 @@
+# Items within each group are ordered alphabetically by item name.
+#
+# IF YOU NEED A NEW GROUP:
+#   1. Copy PersonalItemsJobAgnostic.
+#   2. Replace 'JobAgnostic' with the ONE job the group is intended for.
+#   3. Add job-specific loadouts to the group.
+#   4. Replace the job's PersonalItemsJobAgnostic loadout group with the new group.
+
+# General job-agnostic items, for when a job has no job-specific personal items
+- type: loadoutGroup
+  id: PersonalItemsJobAgnostic
+  name: loadout-group-personal-items
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - ClothingNeckArtifactNecklace
+  - FrostCoat
+  - BozelliLighter
+  - ClothingNeckLoopsBellCollar
+  - PlushieMaple
+  - ClothingHeadHatFlowerBraidGeorgia
+  - ClothingEyesReadingGlasses
+  - ClothingNeckChewtoy
+  - ClothingNeckWipesFriendMedal
+
+# Personal items specialised for Warden
+- type: loadoutGroup
+  id: PersonalItemsWarden
+  name: loadout-group-personal-items
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - ClothingNeckArtifactNecklace
+  - FrostCoat
+  - BozelliLighter
+  - ClothingNeckLoopsBellCollar
+  - PlushieMaple
+  - ClothingHeadHatFlowerBraidGeorgia
+  - ClothingEyesReadingGlasses
+  - ClothingNeckChewtoy
+  - ClothingNeckWipesFriendMedal
+  - ClothingOuterYarnaArmourCoat
+
+# Personal items specialised for Detective
+- type: loadoutGroup
+  id: PersonalItemsDetective
+  name: loadout-group-personal-items
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - ClothingNeckArtifactNecklace
+  - FrostCoat
+  - BozelliLighter
+  - ClothingNeckLoopsBellCollar
+  - PlushieMaple
+  - ClothingHeadHatFlowerBraidGeorgia
+  - ClothingEyesReadingGlasses
+  - ClothingOuterCoatReinforcedRaincoat
+  - ClothingNeckChewtoy
+  - ClothingNeckWipesFriendMedal

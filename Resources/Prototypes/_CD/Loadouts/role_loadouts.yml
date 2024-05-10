@@ -1,0 +1,74 @@
+# Civilian
+- type: roleLoadout
+  id: JobPrivateInvestigator
+  groups: #Using Detective groups is probably a bad idea, but it's easier this way.
+  - DetectiveHead
+  - DetectiveJumpsuit
+  - PrivateInvestigatorBackpack
+  - PrivateInvestigatorOuterClothing
+  - PrivateInvestigatorGloves
+  - PrivateInvestigatorShoes
+  - PrivateInvestigatorGlasses
+  - Trinkets
+  - PersonalItemsJobAgnostic # Umbra
+
+# Engineering
+- type: roleLoadout
+  id: JobSeniorEngineer
+  groups:
+  - StationEngineerHead
+  - SeniorEngineerJumpsuit
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - StationEngineerShoes
+  - Trinkets
+  - PersonalItemsJobAgnostic # Umbra
+
+# Science
+- type: roleLoadout
+  id: JobSeniorResearcher
+  groups:
+  - ScientistHead
+  - ScientistNeck
+  - SeniorResearcherJumpsuit
+  - ScientistBackpack
+  - SeniorResearcherOuterClothing
+  - ScientistGloves
+  - ScientistShoes
+  - Trinkets
+  - PersonalItemsJobAgnostic # Umbra
+
+# Security
+- type: roleLoadout
+  id: JobSeniorOfficer
+  groups:
+  - SecurityHead
+  - SeniorOfficerJumpsuit
+  - SecurityBackpack
+  - SecurityOuterClothing
+  - SecurityShoes
+  - SecurityBelt
+  - SecurityGlassesOrHud
+  - Trinkets
+  - PersonalItemsJobAgnostic # Umbra
+
+# Medical
+- type: roleLoadout
+  id: JobSeniorPhysician
+  groups:
+  - SeniorPhysicianHead
+  - MedicalMask
+  - SeniorPhysicianJumpsuit
+  - MedicalGloves
+  - MedicalBackpack
+  - SeniorPhysicianOuterClothing
+  - MedicalShoes
+  - Trinkets
+  - PersonalItemsJobAgnostic # Umbra
+
+# Wildcards
+- type: roleLoadout
+  id: JobPrisoner
+  groups:
+  - PrisonerJumpsuit
+  - PrisonerFun
