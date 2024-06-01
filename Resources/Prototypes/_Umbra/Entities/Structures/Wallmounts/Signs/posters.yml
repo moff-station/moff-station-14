@@ -1,0 +1,21 @@
+﻿- type: entity
+  parent: PosterBase
+  id: PosterLegitUmbraClouds
+  name: "Anatidae Constellation"
+  description: "They say this set of stars form the shape of a duck. Can you see it?"
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Umbra/Structures/Wallmounts/posters.rsi
+    state: clouds_legit
+
+- type: entity
+  parent: PosterBase
+  id: PosterContrabandLeDuck
+  name: "That Which Does Not Exist"
+  description: "You may feel a cold stare creeping down your spine, but you will resist. Always remember: You do not see it. It does not exist. It cannot hurt you."
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Umbra/Structures/Wallmounts/posters.rsi
+    state: leduck_contraband
