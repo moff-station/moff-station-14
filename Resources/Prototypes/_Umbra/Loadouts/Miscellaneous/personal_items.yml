@@ -1,3 +1,59 @@
+# TO ADD A NEW PERSONAL ITEM LOADOUT, you MUST do the following:
+#
+# 1. Create a LOADOUT (type: loadout) with a PersonalItemLoadoutEffect
+#    that refers to your character. Punctuation MUST match EXACTLY.
+#    ID: same as the personal item entity.
+# 2. Create a STARTING GEAR (type: startingGear) that equips the item.
+#    If the item fits in a backpack, use the `back:` slot. Otherwise,
+#    use the `inhand:` slot.
+#    ID: same as the personal item entity.
+# 3. One loadout and one starting gear per item.
+# 4. One item per starting gear.
+# 5. Add the loadout to every applicable LOADOUT GROUP in loadout_groups.yml
+#    (in the parent folder of this file).
+
+#Borgs' Beret
+- type: loadout
+  id: ClothingHeadBorgsBeret
+  equipment: ClothingHeadBorgsBeret
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character: Borgs-the-Brains
+
+- type: startingGear
+  id: ClothingHeadBorgsBeret
+  storage:
+    back:
+    - ClothingHeadBorgsBeret
+
+#Borgs' Scarf
+- type: loadout
+  id: ClothingNeckBorgsScarf
+  equipment: ClothingNeckBorgsScarf
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character: Borgs-the-Brains
+
+- type: startingGear
+  id: ClothingNeckBorgsScarf
+  storage:
+    back:
+    - ClothingNeckBorgsScarf
+
+# Chance's Carp Suit
+- type: loadout
+  id: ClothingUniformJumpsuitCarpSuit
+  equipment:  ClothingUniformJumpsuitCarpSuit
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character: Chance Boulevard
+
+- type: startingGear
+  id: ClothingUniformJumpsuitCarpSuit
+  storage:
+    back:
+    - ClothingUniformJumpsuitCarpSuit
+
 # Deeja's artifact necklace
 - type: loadout
   id: ClothingNeckArtifactNecklace
@@ -26,6 +82,20 @@
     back:
     - FrostCoat
 
+# Fateseeker's gemstone
+- type: loadout
+  id: FateseekersGemstone
+  equipment: FateseekersGemstone
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character: Fateseeker
+
+- type: startingGear
+  id: FateseekersGemstone
+  storage:
+    back:
+    - FateseekersGemstone
+
 # Jalopy's reinforced raincoat
 - type: loadout
   id: ClothingOuterCoatReinforcedRaincoat
@@ -40,19 +110,19 @@
     back:
     - ClothingOuterCoatReinforcedRaincoat
 
-# John's Flippo
+# Jasmi's hairflower
 - type: loadout
-  id: BozelliLighter
-  equipment: BozelliLighter
+  id: ClothingHeadHatRainbowFlowerJasmi
+  equipment: ClothingHeadHatRainbowFlowerJasmi
   effects:
   - !type:PersonalItemLoadoutEffect
-    character: John Bozelli
+    character: Jasmi-Glorb
 
 - type: startingGear
-  id: BozelliLighter
+  id: ClothingHeadHatRainbowFlowerJasmi
   storage:
     back:
-    - BozelliLighter
+    - ClothingHeadHatRainbowFlowerJasmi
 
 # Loops' bell collar
 - type: loadout
@@ -68,7 +138,7 @@
     back:
     - ClothingNeckLoopsBellCollar
 
-# maple moondancer plushie
+# Nashira-Najma's maple moondancer plushie
 - type: loadout
   id: PlushieMaple
   equipment: PlushieMaple
@@ -81,6 +151,20 @@
   storage:
     back:
     - PlushieMaple
+
+# Vesper's vesper plushie
+- type: loadout
+  id: PlushieVesper
+  equipment: PlushieVesper
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character: Vesper
+
+- type: startingGear
+  id: PlushieVesper
+  storage:
+    back:
+    - PlushieVesper
 
 # Miles' flower braid
 - type: loadout
@@ -110,6 +194,20 @@
     back:
     - ClothingEyesReadingGlasses
 
+# Rye's tie
+- type: loadout
+  id: ClothingNeckRyeTie
+  equipment: ClothingNeckRyeTie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character: Ryeversi Venusta
+
+- type: startingGear
+  id: ClothingNeckRyeTie
+  storage:
+    back:
+    - ClothingNeckRyeTie
+
 # Welds' synthetic chew fidget
 - type: loadout
   id: ClothingNeckChewtoy
@@ -123,6 +221,20 @@
   storage:
     back:
     - ClothingNeckChewtoy
+
+# Welds' RIG
+- type: loadout
+  id: ClothingShoesMiscWeldsWalker
+  equipment: ClothingShoesMiscWeldsWalker
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character: Welds-The-Pipes
+
+- type: startingGear
+  id: ClothingShoesMiscWeldsWalker
+  storage:
+    back:
+    - ClothingShoesMiscWeldsWalker
 
 # Wipes' friend medal
 - type: loadout
