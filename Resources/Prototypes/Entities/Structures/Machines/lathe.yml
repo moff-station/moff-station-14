@@ -475,6 +475,8 @@
     - SurgeryStatic
     dynamicPacks:
     - Chemistry
+    staticRecipes:
+    - AACTablet # DeltaV
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
