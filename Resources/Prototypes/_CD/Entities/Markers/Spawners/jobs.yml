@@ -7,6 +7,8 @@
   name: arrivals job spawn
   components:
   - type: ArrivalsSpawnPoint
+    ignoredJobs:
+      - StationAi
   - type: Sprite
     sprite: Markers/jobs.rsi
 

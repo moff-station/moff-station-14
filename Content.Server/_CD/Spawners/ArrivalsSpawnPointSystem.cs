@@ -1,6 +1,6 @@
 using System.Linq;
-using Content.Server.GameTicking;
-using Content.Server.Station.Systems;
+using Content.Shared.GameTicking;
+using Robust.Shared.Map;
 
 using Robust.Shared.Random;
 
@@ -10,6 +10,7 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
 
     public override void Initialize()
     {
@@ -41,22 +42,41 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
 
         foreach (var (spawnUid, spawnPoint) in jobSpawns)
         {
+            foreach (var ignoredJob in spawnPoint.IgnoredJobs)
+            {
+                if (args.JobId == ignoredJob)
+                    return;
+            }
+
             foreach(var jobId in spawnPoint.JobIds!)
             {
                 if (jobId == args.JobId)
                 {
-
                     _transform.SetCoordinates(args.Mob, Transform(spawnUid).Coordinates);
                     return;
                 }
             }
         }
 
+        if(generalSpawns.Count == 0)
+            return;
+
         _random.Shuffle(generalSpawns);
         var spawn = generalSpawns.First();
 
+        foreach (var ignoredJob in spawn.Comp.IgnoredJobs)
+        {
+            if (args.JobId == ignoredJob)
+                return;
+        }
+
         var xform = Transform(spawn);
         _transform.SetCoordinates(args.Mob, xform.Coordinates);
+
+        // Unpause the map if it's paused. We don't want people spawning on paused maps.
+        if(_mapSystem.IsPaused(xform.MapID))
+            _mapSystem.SetPaused(xform.MapID, false);
+
         return;
     }
 }
