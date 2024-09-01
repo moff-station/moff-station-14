@@ -28,6 +28,13 @@
       emergencyLightColor: Goldenrod
       forceEnableEmergencyLights: true
       shuttleTime: 600
+    orange: # Sector-Umbra new alert levels.
+      announcement: alert-level-orange-announcement
+      sound: /Audio/_Umbra/Misc/orangealert.ogg
+      color: Orange
+      emergencyLightColor: Orange
+      forceEnableEmergencyLights: true
+      shuttleTime: 600
     red:
       announcement: alert-level-red-announcement
       sound: /Audio/Misc/redalert.ogg
@@ -35,6 +42,13 @@
       emergencyLightColor: Red
       forceEnableEmergencyLights: true
       shuttleTime: 600 #No reduction in time as we don't have swiping for red alert like in /tg/. Shuttle times are intended to create friction, so having a way to brainlessly bypass that would be dumb.
+    white: # Sector-Umbra new alert levels.
+      announcement: alert-level-white-announcement
+      sound: /Audio/_Umbra/Misc/whitealert.ogg
+      color: White
+      emergencyLightColor: White
+      forceEnableEmergencyLights: true
+      shuttleTime: 600
     gamma:
       announcement: alert-level-gamma-announcement
       selectable: false
