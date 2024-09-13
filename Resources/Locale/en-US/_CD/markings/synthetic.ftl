@@ -36,7 +36,7 @@ marking-SyntheticHornSlash-horn_antenna_slash = Horn
 marking-SyntheticHornSharp = Synth-Lizard Antenna (Sharp)
 marking-SyntheticHornSharp-horn_antenna_sharp = Horn
 
-marking-SyntheticHornTwin = Synth-Lizard Antenna (Twin) 
+marking-SyntheticHornTwin = Synth-Lizard Antenna (Twin)
 marking-SyntheticHornTwin-horn_antenna_twin = Horn
 
 marking-SyntheticHornThick = Synth-Lizard Antenna (Thick)
@@ -46,7 +46,7 @@ marking-SyntheticHornSharpLight = Synth-Lizard Antenna (Sharp L)
 marking-SyntheticHornSharpLight-horn_antenna_sharp = Horn
 marking-SyntheticHornSharpLight-horn_antenna_sharp_light = Light
 
-marking-SyntheticHornTwinLight = Synth-Lizard Antenna (Twin L) 
+marking-SyntheticHornTwinLight = Synth-Lizard Antenna (Twin L)
 marking-SyntheticHornTwinLight-horn_antenna_twin = Horn
 marking-SyntheticHornTwinLight-horn_antenna_twin_light = Light
 
