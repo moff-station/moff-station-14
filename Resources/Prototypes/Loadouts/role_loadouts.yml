@@ -7,6 +7,7 @@
   - CaptainJumpsuit
   - CaptainBackpack
   - CaptainOuterClothing
+  - FormalShoes # CD
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
@@ -21,22 +22,17 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
+  - FormalShoes # CD
   - Glasses
   - Survival
   - Trinkets
-  - PersonalItemsJobAgnostic # Umbra
   - GroupSpeciesBreathTool
+  - PersonalItemsJobAgnostic # Umbra
 
 # Silicons
-#- type: roleLoadout
-#  id: JobBorg
-#  nameDataset: roleloadout doesn't support both so need to update that first.
-#  canCustomizeName: true
-
 - type: roleLoadout
   id: JobStationAi
   nameDataset: NamesAI
-  canCustomizeName: true
 
 # Civilian
 - type: roleLoadout
@@ -50,6 +46,7 @@
   - PassengerGloves
   - PassengerOuterClothing
   - PassengerShoes
+  - PassengerTitles #CD titles
   - Glasses
   - Survival
   - Trinkets
@@ -64,6 +61,7 @@
   - BartenderJumpsuit
   - CommonBackpack
   - BartenderOuterClothing
+  - FormalShoes # CD
   - Glasses
   - Survival
   - Trinkets
@@ -76,6 +74,7 @@
   - GroupTankHarness
   - BartenderJumpsuit
   - CommonBackpack
+  - FormalShoes # CD
   - Glasses
   - Survival
   - Trinkets
@@ -103,6 +102,7 @@
   - GroupTankHarness
   - LibrarianJumpsuit
   - CommonBackpack
+  - FormalShoes # CD
   - Glasses
   - Survival
   - Trinkets
@@ -116,6 +116,7 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
+  - FormalShoes # CD
   - Glasses
   - Survival
   - Trinkets
@@ -204,6 +205,7 @@
   - MusicianJumpsuit
   - CommonBackpack
   - MusicianOuterClothing
+  - FormalShoes # CD
   - Glasses
   - Survival
   - Trinkets
@@ -247,6 +249,7 @@
   id: JobSalvageSpecialist
   groups:
   - GroupTankHarness
+  - SalvageSpecialistJumpsuit # CD
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
@@ -340,7 +343,9 @@
   - ScientistOuterClothing
   - ScientistGloves
   - ScientistShoes
-  - ScientistPDA
+  # CD: use our title system
+  #- ScientistPDA
+  - ScientistTitles
   - Glasses
   - Survival
   - Trinkets
@@ -370,6 +375,7 @@
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - SecurityShoes
+  - SecurityGlassesOrHud # CD Addition
   - SurvivalSecurity
   - Trinkets
   - SecurityStar
@@ -386,10 +392,11 @@
   - WardenOuterClothing
   - SecurityShoes
   - SurvivalSecurity
+  - SecurityGlassesOrHud # CD Addition
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
-  - PersonalItemsWarden # Umbra
+  - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
   id: JobSecurityOfficer
@@ -402,6 +409,7 @@
   - SecurityPDA
   - SecurityBelt
   - SurvivalSecurity
+  - SecurityGlassesOrHud # CD Addition
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
@@ -410,6 +418,7 @@
 - type: roleLoadout
   id: JobDetective
   groups:
+  - GroupTankHarness
   - DetectiveHead
   - DetectiveNeck
   - DetectiveJumpsuit
@@ -417,10 +426,11 @@
   - DetectiveOuterClothing
   - SecurityShoes
   - SurvivalSecurity
+  - SecurityGlassesOrHud # CD Addition
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
-  - PersonalItemsDetective # Umbra
+  - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
   id: JobSecurityCadet
@@ -428,6 +438,7 @@
   - SecurityCadetJumpsuit
   - SecurityBackpack
   - SurvivalSecurity
+  - SecurityGlassesOrHud # CD Addition
   - Trinkets
   - GroupSpeciesBreathToolSecurity
   - PersonalItemsJobAgnostic # Umbra
@@ -459,7 +470,7 @@
   - MedicalMask
   - MedicalDoctorJumpsuit
   - MedicalGloves
-  - MedicalBackpack
+  - MedicalSpecializationBackpack # CD change from MedicalBackpack
   - MedicalDoctorOuterClothing
   - MedicalShoes
   - MedicalDoctorPDA
@@ -501,9 +512,11 @@
   groups:
   - GroupTankHarness
   - ParamedicHead
-  - MedicalMask
+  # CD: ETU Gear
+  - ParamedicMask
   - ParamedicJumpsuit
-  - MedicalGloves
+  # CD: ETU Gear
+  - ParamedicGloves
   - MedicalBackpack
   - ParamedicOuterClothing
   - ParamedicShoes
@@ -543,6 +556,7 @@
   - GroupTankHarness
   - PsychologistJumpsuit
   - MedicalBackpack
+  - FormalShoes # CD
   - Glasses
   - Survival
   - Trinkets
@@ -559,26 +573,17 @@
   - Glasses
   - Survival
   - Trinkets
-  - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
+  - GroupSpeciesBreathTool
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs
 # They will be used without player configuration, thus they will only ever apply what is forced by MinLimit
 
-# gives vox a harness and breathing mask
-# nitrogen tank not included
 - type: roleLoadout
   id: RoleSurvivalVoxSupport
   groups:
   - GroupSpeciesBreathTool
   - GroupTankHarness
-
-# gives vox a nitrogen breathing tank
-# other species get nothing
-- type: roleLoadout
-  id: RoleSurvivalVoxTank
-  groups:
-  - GroupEVATankVox
 
 - type: roleLoadout
   id: RoleSurvivalStandard

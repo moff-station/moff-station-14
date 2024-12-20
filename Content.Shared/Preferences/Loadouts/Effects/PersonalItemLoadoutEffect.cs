@@ -14,7 +14,10 @@ namespace Content.Shared.Preferences.Loadouts.Effects;
 public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
 {
     [DataField("character", required: true)]
-    public string CharacterName = default!;
+    public HashSet<string> CharacterName = default!;
+
+    [DataField("jobs")]
+    public HashSet<string> Jobs = new();
 
     public override bool Validate(
         HumanoidCharacterProfile profile,
@@ -23,16 +26,24 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
         IDependencyCollection collection,
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
-        if (profile is HumanoidCharacterProfile humanoid &&
-            humanoid.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase))
+        if (!CharacterName.Contains(profile.Name))
         {
-            reason = null;
-            return true;
+            reason = FormattedMessage.FromUnformatted(Loc.GetString(
+                "loadout-personalitem-character",
+                ("character", string.Join(", ", CharacterName))));
+            return false;
         }
 
-        reason = FormattedMessage.FromUnformatted(Loc.GetString(
-            "loadout-personal-item-belongs-to",
-            ("character", CharacterName)));
-        return false;
+        if (!(Jobs.Count == 0 || Jobs.Contains(loadout.Role.ToString())))
+        {
+            reason = FormattedMessage.FromUnformatted(Loc.GetString(
+                "loadout-personalitem-joblocked",
+                ("job", string.Join(", ", Jobs)),
+                ("received", loadout.Role.ToString())));
+            return false;
+        }
+
+        reason = null;
+        return true;
     }
 }

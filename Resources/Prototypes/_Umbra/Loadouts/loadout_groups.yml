@@ -1,60 +1,75 @@
-# Items within each group are ordered alphabetically by item name.
+# TO ADD A NEW PERSONAL ITEM LOADOUT, you MUST do the following:
 #
-# IF YOU NEED A NEW GROUP:
-#   1. Copy PersonalItemsJobAgnostic.
-#   2. Replace 'JobAgnostic' with the ONE job the group is intended for.
-#   3. Add job-specific loadouts to the group.
-#   4. Replace the job's PersonalItemsJobAgnostic loadout group with the new group.
+# 1. Create a LOADOUT (type: loadout) with a PersonalItemLoadoutEffect
+#    that refers to your character. Punctuation MUST match EXACTLY.
+#    ID: same as the personal item entity.
+#    Place this within the Prototypes/_Umbra/PersonalItems/[Category]/[PersonalItemName].yml file below the item
+# 2. One loadout section per personal item.
+# 3. Add the loadout to every applicable LOADOUT GROUP HERE
 
-# General job-agnostic items, for when a job has no job-specific personal items
 - type: loadoutGroup
   id: PersonalItemsJobAgnostic
   name: loadout-group-personal-items
   minLimit: 0
   maxLimit: 2
   loadouts:
-  - ClothingNeckArtifactNecklace
-  - FrostCoat
-  - BozelliLighter
-  - ClothingNeckLoopsBellCollar
-  - PlushieMaple
-  - ClothingHeadHatFlowerBraidGeorgia
-  - ClothingEyesReadingGlasses
-  - ClothingNeckChewtoy
-  - ClothingNeckWipesFriendMedal
-
-# Personal items specialised for Warden
-- type: loadoutGroup
-  id: PersonalItemsWarden
-  name: loadout-group-personal-items
-  minLimit: 0
-  maxLimit: 2
-  loadouts:
-  - ClothingNeckArtifactNecklace
-  - FrostCoat
-  - BozelliLighter
-  - ClothingNeckLoopsBellCollar
-  - PlushieMaple
-  - ClothingHeadHatFlowerBraidGeorgia
-  - ClothingEyesReadingGlasses
-  - ClothingNeckChewtoy
-  - ClothingNeckWipesFriendMedal
-  - ClothingOuterYarnaArmourCoat
-
-# Personal items specialised for Detective
-- type: loadoutGroup
-  id: PersonalItemsDetective
-  name: loadout-group-personal-items
-  minLimit: 0
-  maxLimit: 2
-  loadouts:
-  - ClothingNeckArtifactNecklace
-  - FrostCoat
-  - BozelliLighter
-  - ClothingNeckLoopsBellCollar
-  - PlushieMaple
-  - ClothingHeadHatFlowerBraidGeorgia
-  - ClothingEyesReadingGlasses
-  - ClothingOuterCoatReinforcedRaincoat
-  - ClothingNeckChewtoy
-  - ClothingNeckWipesFriendMedal
+  - PersonalItemDeejaArtifactNecklace
+  - PersonalItemFrostbiteCoat
+  - PersonalItemDeejaPlushie
+  - PersonalItemJasmiPlushie
+  - PersonalItemJuniperPlushie
+  - PersonalItemVesperPlushie
+  - PersonalItemOliverPlushie
+  - PersonalItemJalopyDetectiveRaincoat
+  - PersonalItemJalopyHoSRaincoat
+  - PersonalItemWeldsChewtoy
+  - PersonalItemWeldsWalker
+  - PersonalItemYarnaArmouredCoat
+  - PersonalItemFateseekerGemstone
+  - PersonalItemChanceCarpSuit
+  - PersonalItemGarSweatPants
+  - PersonalItemRyeversiTie
+  - PersonalItemJasmiRainbowFlower
+  - PersonalItemArdusBandana
+  - PersonalItemNovaGalaxyCoat
+  - PersonalItemJoettaBobby
+  - PersonalItemErisPlushie
+  - PersonalItemJohanCodex
+  - PersonalItemJohanScarf
+  - PersonalItemErisHearingAid
+  - PersonalItemHushPendant
+  - PersonalItemSerekethOceanCoat
+  - PersonalItemSmokeHeartPlushie
+  - PersonalItemNiaPlushie
+  - PersonalItemEstherPlushie
+  - PersonalItemDragonCarpPlushie
+  - PersonalItemSerendipityPlushie
+  - PersonalItemKaiPlushie
+  - PersonalItemGarPlushie
+  - PersonalItemMichaelCard
+  - PersonalItemMichaelRing
+  - PersonalItemAnnieRing
+  - PersonalItemDutchiePlushie
+  - PersonalItemDrugerSuit
+  - PersonalItemAmokPlushie
+  - PersonalItemSkyPlushie
+  - PersonalItemDaniellaTechCoat
+  - PersonalItemTakesPlushie
+  - PersonalItemFPSRArtificerJumpsuit
+  - PersonalItemMotheCoat
+  - PersonalItemMaterialsPlushie
+  - PersonalItemHissesPlushie
+  - PersonalItemBurgPlushie
+  - PersonalItemDunaPlushie
+  - PersonalItemTihaPlushie
+  - PersonalItemGravesPlushie
+  - PersonalItemHissesGoldenLocket
+  - PersonalItemIsatheiCoat
+  - PersonalItemKarakiNanoweaveMantle
+  - PersonalItemDartingPlushie
+  - PersonalItemFindsHat
+  - PersonalItemFindsPlushie
+  - PersonalItemAphelioPlushie
+  - PersonalItemSerendipityGuitar
+  - PersonalItemAttacusGuitar
+  - PersonalItemJohnMilitaryCross

@@ -1,3 +1,4 @@
 loadout-group-personal-items = Personal items
 
-loadout-personal-item-belongs-to = This item belongs to {$character}
+loadout-personalitem-character = This item belongs to {$character}
+loadout-personalitem-joblocked = This item can only be used as {$job} (You are trying to use it as {$received})
