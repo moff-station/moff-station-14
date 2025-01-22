@@ -84,6 +84,7 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -156,6 +157,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -165,12 +167,12 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
-      - NanoChatCartridge # CD
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - NanoChatCartridge # DV
+    - SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -484,6 +486,7 @@
     - NewsReaderCartridge
     - AstroNavCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -530,6 +533,7 @@
       - NewsReaderCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -881,6 +885,7 @@
     - WantedListCartridge
     - LogProbeCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge # Imp
 
 - type: entity
   parent: BaseSecurityPDA
@@ -954,6 +959,7 @@
       - LogProbeCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge  # Imp
 
 - type: entity
   parent: CentcomPDA
@@ -981,6 +987,7 @@
       - MedTekCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge  # Imp
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1133,6 +1140,7 @@
       - LogProbeCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge  # Imp
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1303,6 +1311,7 @@
     - WantedListCartridge
     - LogProbeCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge  # Imp
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1332,6 +1341,7 @@
     - WantedListCartridge
     - MedTekCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge  # Imp
 
 - type: entity
   parent: ClownPDA
