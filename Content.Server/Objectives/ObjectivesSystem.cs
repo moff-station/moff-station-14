@@ -212,11 +212,11 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
             var successRate = totalObjectives > 0 ? (float) completedObjectives / totalObjectives : 0f;
             // DeltaV custom objective response.
-            if (TryComp<CustomObjectiveSummeryComponent>(mindId, out var customComp))
+            if (TryComp<Shared._DV.CustomObjectiveSummary.CustomObjectiveSummaryComponent>(mindId, out var customComp))
             {
                 // We have to spit it like this to make it readable. Yeah, it sucks but for some reason the entire thing
                 // is just one long string...
-                var words = customComp.ObjectiveSummery.Split(" ");
+                var words = customComp.ObjectiveSummary.Split(" ");
                 var currentLine = "";
                 foreach (var word in words)
                 {
