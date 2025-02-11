@@ -1,17 +1,102 @@
-﻿- type: localizedDataset
-  id: NamesMilitaryFirstLeader
+﻿- type: dataset
+  id: NamesFirstMilitaryLeader
   values:
-    prefix: names-military-leader-first-dataset-
-    count: 4
+  - Colonel
+  - Commander
+  - Lieutenant
+  - Major
 
-- type: localizedDataset
-  id: NamesMilitaryFirst
+- type: dataset
+  id: NamesFirstMilitary
   values:
-    prefix: names-military-first-dataset-
-    count: 3
+  - Corporal
+  - Sergeant
+  - Specialist
 
-- type: localizedDataset
-  id: NamesMilitaryLast
+- type: dataset
+  id: NamesFirstERTLeader
   values:
-    prefix: names-military-last-dataset-
-    count: 42
+  - Lieutenant
+
+- type: dataset
+  id: NamesFirstERTSpecialist
+  values:
+  - Specialist
+
+- type: dataset
+  id: NamesFirstERTPaladin
+  values:
+  - Paladin
+
+- type: dataset
+  id: NamesFirstERTSecurity
+  values:
+  - Officer
+  #- Enforcer
+
+- type: dataset
+  id: NamesFirstERTBreacher
+  values:
+  - Pointman
+  # - Breacher
+
+- type: dataset
+  id: NamesFirstERTRifleman
+  values:
+  - Rifleman
+
+- type: dataset
+  id: NamesFirstERTGrenadier
+  values:
+  - Grenadier
+
+- type: dataset
+  id: NamesFirstERTMedical
+  values:
+  - Corpsman
+
+- type: dataset
+  id: NamesLastMilitary
+  values:
+  - Agena
+  - Andromeda
+  - Antares
+  - Aquarius
+  - Beid
+  - Betelgeuse
+  - Canopus
+  - Capricorn
+  - Celaeno
+  - Centaur
+  - Chameleon
+  - Chau
+  - Cygnus
+  - Deneb
+  - Dragon
+  - Electra
+  - Fomalhaut
+  - Ginan
+  - Hercules
+  - Labr
+  - Leonis
+  - Matar
+  - Microscopium
+  - Nihal
+  - Ophiuchus
+  - Oculus
+  - Orion
+  - Perseus
+  - Phoenix
+  - Procyon
+  - Regulus
+  - Rigel
+  - Sargas
+  - Schedar
+  - Shaula
+  - Sirius
+  - Tabit
+  - Taurus
+  - Ukdah
+  - Vega
+  - Yildun
+  - Zosma
