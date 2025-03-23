@@ -13,3 +13,5 @@ changelog-button-new-entries = Changelog (new!)
 
 changelog-tab-title-Changelog = Changelog
 changelog-tab-title-Admin = Admin
+
+changelog-tab-title-Mofflog = Mofflog
