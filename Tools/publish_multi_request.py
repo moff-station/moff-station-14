@@ -15,7 +15,7 @@ RELEASE_DIR = "release"
 # CONFIGURATION PARAMETERS
 # Forks should change these to publish to their own infrastructure.
 #
-ROBUST_CDN_URL = "https://raleroad.xyz/cdn/"
+ROBUST_CDN_URL = "http://robustcdn.raleroad.xyz/"
 FORK_ID = "moffstation"
 
 def main():
