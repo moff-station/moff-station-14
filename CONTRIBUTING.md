@@ -33,7 +33,7 @@ If you make changes to files that are part of the upstream project, you must com
 
 Overall, the comment should state that the code modified is a Moffstation modification, and the reason why.
 
-If you delete any content from upstream, comment why you did so above the commented out section.
+If you delete any content from upstream, do not delete the content! Instead, comment it out, and comment why you did so above the commented out section.
 
 If you changed any content from upstream (for example, for balance or for disabling unwanted behavior), comment why you did so on the same line as the change.
 
