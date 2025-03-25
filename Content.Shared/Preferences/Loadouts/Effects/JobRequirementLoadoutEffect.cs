@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.CCVar;
+using Content.Shared.CCVar; // Moffstation
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles;
-using Robust.Shared.Configuration;
+using Robust.Shared.Configuration; // Moffstation
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
