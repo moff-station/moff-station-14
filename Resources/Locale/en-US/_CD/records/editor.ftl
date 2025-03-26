@@ -32,3 +32,9 @@ cd-records-entry-edit-popup-save = Save
 cd-records-entry-edit-popup-title-placeholder = Entry Title
 cd-records-entry-edit-popup-involved-placeholder = Involved Staff
 cd-records-entry-edit-popup-description-placeholder = Description
+
+cd-records-entry-edit-popup-title-required = Title is required
+cd-records-entry-edit-popup-involved-required = Author(s) is required
+cd-records-entry-edit-popup-description-required = Description is required
+cd-records-entry-edit-popup-description-too-long = Description is too long! ({$current}/{$max} characters)
+
