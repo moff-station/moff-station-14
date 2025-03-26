@@ -1,4 +1,6 @@
 # Reporting a security vulnerability
+Please report security vulnerabilities to the upstream SS14 maintainers.
+
 You can report a security vulnerability through Discord or through email.
 
 If you want to send an email, you can contact us at <telecommunications@spacestation14.com>.

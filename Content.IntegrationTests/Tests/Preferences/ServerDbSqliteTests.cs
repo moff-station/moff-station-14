@@ -1,15 +1,10 @@
-using System.Collections.Generic;
 using System.Linq;
 using Content.Server.Database;
-using Content.Shared.GameTicking;
-using Content.Shared.Humanoid;
+using Content.Shared._CD.Records;
 using Content.Shared.Preferences;
-using Content.Shared.Preferences.Loadouts;
-using Content.Shared.Preferences.Loadouts.Effects;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Robust.Shared.Configuration;
-using Robust.Shared.Enums;
 using Robust.Shared.Log;
 using Robust.Shared.Maths;
 using Robust.Shared.Network;
@@ -52,7 +47,9 @@ namespace Content.IntegrationTests.Tests.Preferences
                     Color.Aquamarine,
                     Color.Azure,
                     Color.Beige,
-                    new ())
+                    new ()),
+                // CD: test records
+                CDCharacterRecords = PlayerProvidedCharacterRecords.DefaultRecords()
             };
         }
 

@@ -34,6 +34,9 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
+// CD: imports
+using Content.Server._CD.Records;
+
 namespace Content.Server.Administration.Systems;
 
 public sealed class AdminSystem : EntitySystem
@@ -56,7 +59,10 @@ public sealed class AdminSystem : EntitySystem
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
-    private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
+    // CD: for erasing records on erase ban
+        [Dependency] private readonly CharacterRecordsSystem _cdRecords = default!;
+
+        private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
 
     /// <summary>
     ///     Set of players that have participated in this round.
@@ -420,6 +426,9 @@ public sealed class AdminSystem : EntitySystem
                 {
                     _hands.TryDrop(entity, hand, checkActionBlocker: false, doDropInteraction: false, handsComp: hands);
                 }
+
+                // CD: Erase Character Records on ban
+                _cdRecords.DeleteAllRecords(entity);
             }
 
             _minds.WipeMind(mindId, mind);
