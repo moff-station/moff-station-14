@@ -20,7 +20,7 @@ namespace Content.Server.Database.Migrations.Postgres
                         .Annotation("Npgsql:ValueGenerationStrategy",
                             NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     profile_id = table.Column<int>(type: "integer", nullable: false),
-                    height = table.Column<float>(type: "real", nullable: false),
+                    height = table.Column<float>(type: "REAL", nullable: false, defaultValue: 0.0f),
                     character_records = table.Column<JsonDocument>(type: "jsonb", nullable: true)
                 },
                 constraints: table =>

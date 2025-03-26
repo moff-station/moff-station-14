@@ -17,7 +17,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                     cdprofile_id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     profile_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    height = table.Column<float>(type: "REAL", nullable: false),
+                    height = table.Column<float>(type: "REAL", nullable: false, defaultValue: 0.0f),
                     character_records = table.Column<byte[]>(type: "jsonb", nullable: true)
                 },
                 constraints: table =>

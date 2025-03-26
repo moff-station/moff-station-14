@@ -35,7 +35,7 @@
                                 <Label Name="RecordContainerAge" Align="Right" />
                             </BoxContainer>
                             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-                                <Label Text="{Loc 'cd-character-records-viewer-record-job'}"/>
+                                <Label Text="{Loc 'cd-character-records-viewer-record-title'}"/>
                                 <Control HorizontalExpand="True" />
                                 <Label Name="RecordContainerJob" Align="Right" />
                             </BoxContainer>
