@@ -34,6 +34,9 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
+// CD: imports
+using Content.Server._CD.Records;
+
 namespace Content.Server.Administration.Systems;
 
 public sealed class AdminSystem : EntitySystem
@@ -56,7 +59,10 @@ public sealed class AdminSystem : EntitySystem
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
-    private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
+    // CD: for erasing records on erase ban
+        [Dependency] private readonly CharacterRecordsSystem _cdRecords = default!;
+
+        private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
 
     /// <summary>
     ///     Set of players that have participated in this round.
@@ -221,6 +227,7 @@ public sealed class AdminSystem : EntitySystem
         var name = data.UserName;
         var entityName = string.Empty;
         var identityName = string.Empty;
+        var sortWeight = 0;
 
         // Visible (identity) name can be different from real name
         if (session?.AttachedEntity != null)
@@ -234,8 +241,10 @@ public sealed class AdminSystem : EntitySystem
         // Starting role, antagonist status and role type
         RoleTypePrototype roleType = new();
         var startingRole = string.Empty;
-        if (_minds.TryGetMind(session, out var mindId, out var mindComp))
+        if (_minds.TryGetMind(session, out var mindId, out var mindComp) && mindComp is not null)
         {
+            sortWeight = _role.GetRoleCompByTime(mindComp)?.Comp.SortWeight ?? 0;
+
             if (_proto.TryIndex(mindComp.RoleType, out var role))
                 roleType = role;
             else
@@ -259,8 +268,19 @@ public sealed class AdminSystem : EntitySystem
             overallPlaytime = playTime;
         }
 
-        return new PlayerInfo(name, entityName, identityName, startingRole, antag, roleType, GetNetEntity(session?.AttachedEntity), data.UserId,
-            connected, _roundActivePlayers.Contains(data.UserId), overallPlaytime);
+        return new PlayerInfo(
+            name,
+            entityName,
+            identityName,
+            startingRole,
+            antag,
+            roleType,
+            sortWeight,
+            GetNetEntity(session?.AttachedEntity),
+            data.UserId,
+            connected,
+            _roundActivePlayers.Contains(data.UserId),
+            overallPlaytime);
     }
 
     private void OnPanicBunkerChanged(bool enabled)
@@ -420,6 +440,9 @@ public sealed class AdminSystem : EntitySystem
                 {
                     _hands.TryDrop(entity, hand, checkActionBlocker: false, doDropInteraction: false, handsComp: hands);
                 }
+
+                // CD: Erase Character Records on ban
+                _cdRecords.DeleteAllRecords(entity);
             }
 
             _minds.WipeMind(mindId, mind);

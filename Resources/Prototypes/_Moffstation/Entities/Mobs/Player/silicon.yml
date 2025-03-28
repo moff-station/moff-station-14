@@ -1,0 +1,13 @@
+﻿# Boards
+
+- type: entity
+  id: StreamerCircuitBoard
+  parent: BaseElectronics
+  name: law board (Streamer)
+  description: An electronics board containing the Streamer lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: StreamerLawset

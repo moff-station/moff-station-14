@@ -14,6 +14,12 @@
   jobEntity: StationAiBrain
   jobPreviewEntity: PlayerStationAiPreview
   applyTraits: false
+  # CD: Skip records
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SkipLoadingCharacterRecords
+  # end CD
 
 - type: job
   id: Borg
@@ -28,3 +34,9 @@
   supervisors: job-supervisors-rd
   jobEntity: PlayerBorgBattery
   applyTraits: false
+  # CD: Skip records
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SkipLoadingCharacterRecords
+  # end CD

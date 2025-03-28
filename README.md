@@ -16,10 +16,7 @@ Upstream's [docs site](https://docs.spacestation14.io/) has documentation on SS1
 
 ## Contributing
 
-We are happy to accept contributions from anybody. Note that because Moffstation is a fork of upstream Space Station 14, we will not accept any contributions that do not follow both upstream's [contribution guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) and general best practices for contributing to a fork of an SS14 project.
-
-You can take a look at Harmony's [contribution guidelines](https://github.com/ss14-harmony/ss14-harmony/blob/master/CONTRIBUTING.md) for an example of what we want.
-
+We are happy to accept contributions from anybody. Note that because Moffstation is a fork of upstream Space Station 14, we will not accept any contributions that do not follow both upstream's [contribution guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) and our own [contribution guidelines](CONTRIBUTING.md).
 ## Building
 
 1. Clone this repo.
