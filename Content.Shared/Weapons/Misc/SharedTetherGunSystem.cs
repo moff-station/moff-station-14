@@ -204,7 +204,7 @@ public abstract partial class SharedTetherGunSystem : EntitySystem
 
         TryComp<AppearanceComponent>(gunUid, out var appearance);
         _appearance.SetData(gunUid, TetherVisualsStatus.Key, true, appearance);
-        _appearance.SetData(gunUid, ToggleableLightVisuals.Enabled, true, appearance);
+        _appearance.SetData(gunUid, ToggleVisuals.Toggled, true, appearance); // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
 
         // Target updates
         TransformSystem.Unanchor(target, targetXform);
@@ -280,7 +280,7 @@ public abstract partial class SharedTetherGunSystem : EntitySystem
 
         TryComp<AppearanceComponent>(gunUid, out var appearance);
         _appearance.SetData(gunUid, TetherVisualsStatus.Key, false, appearance);
-        _appearance.SetData(gunUid, ToggleableLightVisuals.Enabled, false, appearance);
+        _appearance.SetData(gunUid, ToggleVisuals.Toggled, false, appearance); // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
 
         RemComp<TetheredComponent>(component.Tethered.Value);
         _blocker.UpdateCanMove(component.Tethered.Value);
