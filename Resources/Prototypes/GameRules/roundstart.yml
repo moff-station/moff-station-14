@@ -113,9 +113,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    # Moffstation - Begin - Altering required playercount for certain antags, due to tendency not to meet the required readycount
-    minPlayers: 15 # 20 is the original value, may need tweaking
-    # Moffstation - End
+    minPlayers: 15 # Moffstation - Altering required playercount for certain antags, due to tendency not to meet the required readycount
   - type: LoadMapRule
     mapPath: /Maps/Nonstations/nukieplanet.yml
   - type: AntagSelection
@@ -317,9 +315,7 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    # Moffstation - Begin - Altering required playercount for certain antags, due to tendency not to meet the required readycount
-    minPlayers: 15 # 20 is the original value, may need tweaking
-    # Moffstation - End
+    minPlayers: 15 # Moffstation - Altering required playercount for certain antags, due to tendency not to meet the required readycount
     delay:
       min: 600
       max: 900
