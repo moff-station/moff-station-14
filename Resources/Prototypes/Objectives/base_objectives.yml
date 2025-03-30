@@ -119,3 +119,93 @@
   id: BaseFreeObjective
   components:
   - type: FreeObjective
+
+# Moffstation - Begin - Adding open-ended objectives
+# Open-ended objective to disrupt a certain department
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseDisruptionObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to sabotage a certain department
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseSabotageObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to cause/setup a Jailbreak
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to cause chaos
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to distract security
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to infiltrate a department
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# teach someone a lesson without killing them permanently
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# Siphon funds objective, steal money from cargo and other places
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# Steal materials objective, steal as many of a certain material as possible
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# Incriminate objective, attempt to get someone else arrested by security
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended trash a room objective, picks a random room on the station that you are supposed to trash
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseJailbreakObjective
+  components:
+  - type: FreeObjective
+# Moffstation - End
