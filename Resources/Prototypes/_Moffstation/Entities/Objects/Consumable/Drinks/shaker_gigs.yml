@@ -1,0 +1,14 @@
+﻿- type: entity
+  parent: DrinkShaker
+  id: ShakerGigs
+  name: well-worn shaker
+  description: A dented and scratched shaker that's been dropped countless times. It's covered in photos of friends and family, you even recognize yourself in the large group photo.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 90
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Drinks/shaker_gigs.rsi
+    state: icon
+
