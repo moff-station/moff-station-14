@@ -1,0 +1,34 @@
+﻿- type: entity
+  name: plasma flippo lighter
+  parent: FlippoLighter
+  id: LighterDarnell
+  description: "A rugged metal lighter, lasts quite a while. A pair of initials surrounded by a heart have been etched into the back, now scratched out and rendered unreadable. By Darnell's estimate, it's the largest amount of plasma that's ever been in his home port."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Tools/lighter_darnell.rsi
+    layers:
+    - state: closed
+      map: ["base"]
+    - state: top
+      map: ["top"]
+      visible: false
+    - state: open
+      map: ["open"]
+      visible: false
+    - state: lighter_flame
+      map: ["flame"]
+      visible: false
+      shader: unshaded
+  - type: Item
+    sprite: _Moffstation/Objects/Tools/lighter_darnell.rsi
+  - type: ToggleableLightVisuals
+    spriteLayer: lighter_flame
+    inhandVisuals:
+      left:
+      - state: inhand-right-flame
+        shader: unshaded
+      right:
+      - state: inhand-left-flame
+        shader: unshaded
+  - type: PointLight
+    color: plum
