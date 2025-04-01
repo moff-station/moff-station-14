@@ -25,11 +25,13 @@
   - Trinkets
   - GroupSpeciesBreathTool
 
+# Moffstation - Start - Clown/Borg/Mime loadout names
 # Silicons
-#- type: roleLoadout
-#  id: JobBorg
-#  nameDataset: roleloadout doesn't support both so need to update that first.
-#  canCustomizeName: true
+- type: roleLoadout
+  id: JobBorg
+  nameDataset: NamesBorg
+  canCustomizeName: true
+# Moffstation - End - Clown/Borg/Mime loadout names
 
 - type: roleLoadout
   id: JobStationAi
@@ -159,6 +161,7 @@
 
 - type: roleLoadout
   id: JobClown
+  canCustomizeName: true # Moffstation - Clown/Borg/Mime loadout names
   groups:
   - GroupTankHarness
   - ClownHead
@@ -172,6 +175,7 @@
 
 - type: roleLoadout
   id: JobMime
+  canCustomizeName: true # Moffstation - Clown/Borg/Mime loadout names
   groups:
   - GroupTankHarness
   - MimeHead
