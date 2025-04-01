@@ -1,0 +1,22 @@
+﻿- type: entity
+  name: ivory fountain pen
+  parent: PenHop
+  id: PersonalItemRykerPen
+  description: 'A luxurious fountain pen made of polished ivory and silver. It has an inscription: "Congratulations, Ryker - Love, Mom"'
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/rykerpen.rsi
+    state: pen
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/rykerpen.rsi
+    heldPrefix: pen
+
+- type: loadout
+  id: PersonalItemRykerPen
+  storage:
+    back:
+    - PersonalItemRykerPen
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Ryker Ximenez
