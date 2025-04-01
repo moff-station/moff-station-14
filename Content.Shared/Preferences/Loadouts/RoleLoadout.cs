@@ -255,12 +255,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     /// <summary>
     /// Returns whether a loadout is valid or not.
     /// </summary>
-    public bool IsValid(
-        HumanoidCharacterProfile profile,
-        ICommonSession? session,
-        ProtoId<LoadoutPrototype> loadout,
-        IDependencyCollection collection,
-        [NotNullWhen(false)] out FormattedMessage? reason)
+    public bool IsValid(HumanoidCharacterProfile profile, ICommonSession? session, ProtoId<LoadoutPrototype> loadout, IDependencyCollection collection, [NotNullWhen(false)] out FormattedMessage? reason)
     {
         reason = null;
 
