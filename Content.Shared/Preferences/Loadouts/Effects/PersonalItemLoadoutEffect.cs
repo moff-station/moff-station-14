@@ -16,7 +16,7 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
     [DataField("character", required: true)]
     public HashSet<string> CharacterName = default!;
 
-    [DataField("jobs")]
+    [DataField]
     public HashSet<string> Jobs = new();
 
     public override bool Validate(
