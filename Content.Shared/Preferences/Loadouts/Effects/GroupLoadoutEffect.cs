@@ -25,7 +25,6 @@ public sealed partial class GroupLoadoutEffect : LoadoutEffect
         var reasons = new List<string>();
         foreach (var effect in effectsProto.Effects)
         {
-            // Umbra: pass character profile
             if (effect.Validate(profile, loadout, session, collection, out reason))
                 continue;
 
