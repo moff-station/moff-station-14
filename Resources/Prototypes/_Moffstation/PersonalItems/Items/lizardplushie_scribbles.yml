@@ -1,0 +1,26 @@
+﻿- type: entity
+  parent: PlushieLizard
+  id: PersonalItemScribblesPlushie
+  name: scribbles' best friend
+  description: A lizard plushie that looks like it's seen a hard life. Stitches, stains and patchwork repairs cover its surface. The stuffing is falling out in a few spots. Despite everything, it perseveres. A small, frayed tag on its tail reads, "SCRIBBLES' BEST FRIEND."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/scribbles_plushie.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/scribbles_plushie.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Items/scribbles_plushie.rsi
+  - type: Tag
+    tags: [] # Specifically remove tags to make the plush not useable in crafting or edible for moths
+
+- type: loadout
+  id: PersonalItemScribblesPlushie
+  storage:
+    back:
+    - PersonalItemScribblesPlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Scribbles-the-Notes
