@@ -72,8 +72,10 @@
   equipment:
     neck: SyndicateWhistle
     outerClothing: ClothingOuterHardsuitSyndieCommander
-  inhand:
-  - NukeOpsDeclarationOfWar
+# Moffstation - Begin - Make warops admin only
+#  inhand:
+#  - NukeOpsDeclarationOfWar
+# Moffstation - End
 
 #Nuclear Operative Medic Gear
 - type: startingGear

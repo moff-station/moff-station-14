@@ -18,5 +18,6 @@ public sealed partial class ToggleActionEvent : InstantActionEvent;
 public enum ToggleVisuals : byte
 {
     Toggled,
-    Layer
+    Layer,
+    Color, // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
 }
