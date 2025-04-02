@@ -1,8 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Preferences;
+using Content.Shared.Preferences.Loadouts;
+using Content.Shared.Preferences.Loadouts.Effects;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 
-namespace Content.Shared.Preferences.Loadouts.Effects;
+namespace Content.Shared._Umbra.Preferences.Loadouts.Effects;
 
 /// <summary>
 ///     Implements a loadout effect that restricts items to a specific character,
