@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared._Umbra.Preferences.Loadouts.Effects;
+using Content.Shared._Umbra.Preferences.Loadouts.Effects; // Moffstation - Add documentation for the addition of personal items
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
