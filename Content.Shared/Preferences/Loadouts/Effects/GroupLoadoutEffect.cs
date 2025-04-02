@@ -7,6 +7,7 @@ namespace Content.Shared.Preferences.Loadouts.Effects;
 
 /// <summary>
 /// Uses a <see cref="LoadoutEffectGroupPrototype"/> prototype as a singular effect that can be re-used.
+/// Loadout effect added which restricts personal items by character name and job
 /// </summary>
 public sealed partial class GroupLoadoutEffect : LoadoutEffect
 {
