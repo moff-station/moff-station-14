@@ -19,12 +19,12 @@ public sealed partial class JobRequirementLoadoutEffect : LoadoutEffect
 
     public override bool Validate(HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession? session, IDependencyCollection collection, [NotNullWhen(false)] out FormattedMessage? reason)
     {
-        // Moffstation - Begin - Added CVar
+        // Moffstation - Begin - Added CVar GameRoleLoadoutTimers
         var configurationManager = collection.Resolve<IConfigurationManager>();
         var timersDisabled = !configurationManager.GetCVar(CCVars.GameRoleLoadoutTimers);
         // Moffstation - End
 
-        if (session == null || timersDisabled) // Moffstation
+        if (session == null || timersDisabled) // Moffstation - Bypass timers for trinkets, etc. if disabled by CVar GameRoleLoadoutTimers
         {
             reason = FormattedMessage.Empty;
             return true;
