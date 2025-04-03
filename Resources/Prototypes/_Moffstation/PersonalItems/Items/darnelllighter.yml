@@ -2,7 +2,7 @@
   name: plasma flippo lighter
   parent: FlippoLighter
   id: PersonalItemDarnellLighter
-  description: "A rugged metal lighter, lasts quite a while. A pair of initials surrounded by a heart have been etched into the back, now scratched out and rendered unreadable. By Darnell's estimate, it's the largest amount of plasma that's ever been in his home port."
+  description: A rugged metal lighter, lasts quite a while.
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/darnelllighter.rsi
@@ -32,6 +32,8 @@
         shader: unshaded
   - type: PointLight
     color: plum
+  - type: DetailExaminable
+    content:  A pair of initials surrounded by a heart have been etched into the back, now scratched out and rendered unreadable. By Darnell's estimate, it's the largest amount of plasma that's ever been in his home port.
 
 - type: loadout
   id: PersonalItemDarnellLighter
