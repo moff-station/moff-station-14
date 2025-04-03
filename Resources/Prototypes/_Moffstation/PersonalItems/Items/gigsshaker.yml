@@ -1,8 +1,9 @@
 ﻿- type: entity
   parent: DrinkShaker
   id: PersonalItemGigsShaker
-  name: well-worn shaker
+  name: Well-worn shaker
   description: A dented and scratched shaker that's been dropped countless times.
+  suffix: PersonalItem
   components:
   - type: SolutionContainerManager
     solutions:
