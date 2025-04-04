@@ -16,7 +16,6 @@ These goals and guidelines are similar in vain to Sector Umbra's personal items.
    3. They cannot be protective gear, or have any protective functionality.
       - Examples include reskinned helmets, armor, or any other item that could be used as protective gear.
       - Items like masks or winter coats are allowed as long as they remain mechanically the same as the original item it's based off of.
-      - This is relaxed for job-related personal items.
 2. **Personal items are limited in their visuals.**
    1. They cannot be visually conflicting with any job clothing.
       - People should be able to recognize you and not mistake you for other jobs or characters.
