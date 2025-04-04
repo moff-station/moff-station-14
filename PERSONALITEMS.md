@@ -3,6 +3,8 @@ At Moffstation, players are able to create a cosmetic personal item for their ch
 This is meant to be a fun way to express your character's personality, style, or story.
 The following guidelines are in place to ensure that personal items are appropriate for the game and do not interfere with or complicate gameplay.
 
+Personal items are limited to each character, and you can only have one personal item per character.
+
 These goals and guidelines are similar in vain to Sector Umbra's personal items.
 
 ## Core Item Guidelines
@@ -30,7 +32,7 @@ These goals and guidelines are similar in vain to Sector Umbra's personal items.
       - Try to always be _physically descriptive_ about the item.
    2. Descriptions should not be excessively long or a wall of text.
       - Try to make a very short, 1-2 sentence description of the item. Sometimes even one sentence about the item's appearance is good.
-      - Large descriptions of the item should be put under an `OuterDescription` component.
+      - Large descriptions of the item should be put under an `DetailExaminable` component.
 4. **Personal items cannot be illegal or cause security trouble.**
    - They cannot have any contraband status, like being restricted contraband or syndicate contraband.
      - The exception to this is job-related personal items, which can have contraband status if it is a job-related item that is normally contraband.
@@ -60,6 +62,7 @@ These personal items are locked to the job they are oriented around. A character
    - Functional personal items cannot be used to acquire items that are not normally available to the job at roundstart.
 2. **Functional personal items cannot add any extra functionality.**
    - For example, a personal item that is a belt cannot have any extra items in it besides the items that are normally available to the job at roundstart.
+   - A good way to easily enforce this is to simply parent to the item you want to mimic, and add a custom name and description. This makes it easy if we ever change item fills.
 
 ### Examples
 - **Allowed**: A custom medical webbing for a Paramedic that has a standard medical belt fill.
