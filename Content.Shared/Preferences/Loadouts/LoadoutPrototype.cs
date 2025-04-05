@@ -39,6 +39,10 @@ public sealed partial class LoadoutPrototype : IPrototype, IEquipmentLoadout
 
     /// <inheritdoc />
     [DataField]
+    public Dictionary<string, EntProtoId> OverridingEquipment { get; set; } = new();
+
+    /// <inheritdoc />
+    [DataField]
     public List<EntProtoId> Inhand { get; set; } = new();
 
     /// <inheritdoc />

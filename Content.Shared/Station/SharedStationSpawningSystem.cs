@@ -124,10 +124,16 @@ public abstract class SharedStationSpawningSystem : EntitySystem
         {
             foreach (var slot in slotDefinitions)
             {
-                var equipmentStr = startingGear.GetGear(slot.Name);
+                var equipmentStr = startingGear.GetGear(slot.Name, out var overriding);
                 if (!string.IsNullOrEmpty(equipmentStr))
                 {
                     var equipmentEntity = EntityManager.SpawnEntity(equipmentStr, xform.Coordinates);
+                    if (overriding &&
+                        InventorySystem.TryUnequip(entity, slot.Name, out var removed, silent: true, force: true))
+                    {
+                        Del(removed);
+                    }
+
                     InventorySystem.TryEquip(entity, equipmentEntity, slot.Name, silent: true, force: true);
                 }
             }

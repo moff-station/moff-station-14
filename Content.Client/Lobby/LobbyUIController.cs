@@ -393,9 +393,10 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                     foreach (var slot in slots)
                     {
                         // Try startinggear first
+                        // TODO CENT There's a toooon of shared code between these
                         if (_prototypeManager.TryIndex(loadoutProto.StartingGear, out var loadoutGear))
                         {
-                            var itemType = ((IEquipmentLoadout) loadoutGear).GetGear(slot.Name);
+                            var itemType = ((IEquipmentLoadout) loadoutGear).GetGear(slot.Name, out _);
 
                             if (_inventory.TryUnequip(dummy, slot.Name, out var unequippedItem, silent: true, force: true, reparent: false))
                             {
@@ -410,7 +411,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                         }
                         else
                         {
-                            var itemType = ((IEquipmentLoadout) loadoutProto).GetGear(slot.Name);
+                            var itemType = ((IEquipmentLoadout) loadoutProto).GetGear(slot.Name, out _);
 
                             if (_inventory.TryUnequip(dummy, slot.Name, out var unequippedItem, silent: true, force: true, reparent: false))
                             {
@@ -433,7 +434,8 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
         foreach (var slot in slots)
         {
-            var itemType = ((IEquipmentLoadout) gear).GetGear(slot.Name);
+            // TODO CENT and this one
+            var itemType = ((IEquipmentLoadout) gear).GetGear(slot.Name, out _);
 
             if (_inventory.TryUnequip(dummy, slot.Name, out var unequippedItem, silent: true, force: true, reparent: false))
             {

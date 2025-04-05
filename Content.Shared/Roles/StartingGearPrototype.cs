@@ -25,6 +25,9 @@ public sealed partial class StartingGearPrototype : IPrototype, IInheritingProto
     public Dictionary<string, EntProtoId> Equipment { get; set; } = new();
 
     /// <inheritdoc />
+    public Dictionary<string, EntProtoId> OverridingEquipment { get; set; } = new();
+
+    /// <inheritdoc />
     [DataField]
     [AlwaysPushInheritance]
     public List<EntProtoId> Inhand { get; set; } = new();
@@ -46,6 +49,11 @@ public interface IEquipmentLoadout
     public Dictionary<string, EntProtoId> Equipment { get; set; }
 
     /// <summary>
+    /// TODO
+    /// </summary>
+    public Dictionary<string, EntProtoId> OverridingEquipment { get; set; }
+
+    /// <summary>
     /// The inhand items that are equipped when this starting gear is equipped onto an entity.
     /// </summary>
     public List<EntProtoId> Inhand { get; set; }
@@ -58,8 +66,17 @@ public interface IEquipmentLoadout
     /// <summary>
     /// Gets the entity prototype ID of a slot in this starting gear.
     /// </summary>
-    public string GetGear(string slot)
+    public string GetGear(string slot, out bool overriding)
     {
-        return Equipment.TryGetValue(slot, out var equipment) ? equipment : string.Empty;
+        if (OverridingEquipment.TryGetValue(slot, out var equipment))
+        {
+            overriding = true;
+            return equipment;
+        }
+
+        overriding = false;
+        return Equipment.TryGetValue(slot, out equipment) || false
+            ? equipment
+            : string.Empty;
     }
 }

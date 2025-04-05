@@ -103,7 +103,7 @@ namespace Content.Server.Administration.Commands
                 foreach (var slot in slots)
                 {
                     invSystem.TryUnequip(target, slot.Name, true, true, false, inventoryComponent);
-                    var gearStr = ((IEquipmentLoadout) startingGear).GetGear(slot.Name);
+                    var gearStr = ((IEquipmentLoadout) startingGear).GetGear(slot.Name, out _);
                     if (gearStr == string.Empty)
                     {
                         continue;

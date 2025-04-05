@@ -61,11 +61,16 @@ public sealed class LoadoutSystem : EntitySystem
         if (gear == null)
             return null;
 
-        var count = gear.Equipment.Count + gear.Inhand.Count + gear.Storage.Values.Sum(x => x.Count);
+        var count = gear.Equipment.Count + gear.OverridingEquipment.Count + gear.Inhand.Count + gear.Storage.Values.Sum(x => x.Count);
 
         if (count == 1)
         {
             if (gear.Equipment.Count == 1 && _protoMan.TryIndex<EntityPrototype>(gear.Equipment.Values.First(), out var proto))
+            {
+                return proto.ID;
+            }
+
+            if (gear.OverridingEquipment.Count == 1 && _protoMan.TryIndex<EntityPrototype>(gear.OverridingEquipment.Values.First(), out proto))
             {
                 return proto.ID;
             }
@@ -109,11 +114,16 @@ public sealed class LoadoutSystem : EntitySystem
         if (gear == null)
             return string.Empty;
 
-        var count = gear.Equipment.Count + gear.Storage.Values.Sum(o => o.Count) + gear.Inhand.Count;
+        var count = gear.Equipment.Count + gear.OverridingEquipment.Count + gear.Storage.Values.Sum(o => o.Count) + gear.Inhand.Count;
 
         if (count == 1)
         {
             if (gear.Equipment.Count == 1 && _protoMan.TryIndex<EntityPrototype>(gear.Equipment.Values.First(), out var proto))
+            {
+                return proto.Name;
+            }
+
+            if (gear.OverridingEquipment.Count == 1 && _protoMan.TryIndex<EntityPrototype>(gear.OverridingEquipment.Values.First(), out proto))
             {
                 return proto.Name;
             }
