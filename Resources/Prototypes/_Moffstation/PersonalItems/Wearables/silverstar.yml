@@ -1,0 +1,26 @@
+# Player: snowlili - Character: Katie Fae
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckSilverStar
+  name: Silver Star
+  description: A bright silver star, that represents the individual wearing it showed great gallantry against the mothroach enemy.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/silverstar.rsi
+    scale: 0.75, 0.75
+  - type: Clothing
+    quickEquip: True
+    sprite: _Moffstation/PersonalItems/Wearables/silverstar.rsi
+
+- type: loadout
+  id: ClothingNeckSilverStar
+  storage:
+    back:
+    - ClothingNeckSilverStar
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cooks-the-Meth
+    - Fred Neuman
+    - Delana Triangularis
