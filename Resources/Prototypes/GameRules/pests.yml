@@ -141,3 +141,13 @@
     entries:
     - id: MobMothroach
       prob: 0.02
+
+- type: entity
+  id: MothroachMigrationSilent
+  parent: BaseStationEvent
+  components:
+  - type: StationEvent
+  - type: VentCrittersRule
+    entries:
+    - id: MobMothroach
+      prob: 0.02
