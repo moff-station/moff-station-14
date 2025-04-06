@@ -7,6 +7,7 @@
     - id: SnailMigrationLowPop
     - id: CockroachMigration
     - id: MouseMigration
+    - id: MothroachMigration
 
 - type: entityTable
   id: SpicyPestEventsTable
@@ -124,3 +125,19 @@
       prob: 0.002
     - id: MobSnailInstantDeath
       prob: 0.00001 #  ~ 1:2000 snails
+
+- type: entity
+  id: MothroachMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 6
+    duration: 50
+  - type: VentCrittersRule
+    entries:
+    - id: MobMothroach
+      prob: 0.02
