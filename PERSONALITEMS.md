@@ -124,8 +124,7 @@ The beginning of the YAML should state the player username and the character nam
 - type: loadout
   id: PersonalItemFrostMedicalWebbing
   equipment:
-    belt:
-    - PersonalItemFrostMedicalWebbing
+    belt: PersonalItemFrostMedicalWebbing
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
