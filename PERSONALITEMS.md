@@ -141,7 +141,7 @@ you can create a shared personal item.
 If the item is shared between multiple characters which all belong to you (you play these characters),
 it should be in the `_Moffstation/PersonalItems/Wearables/(playername)/Shared` folder.
 
-If the item is shared between multiple characters, and some of those characters do not belong to you (you do not play these characters)
+If the item is shared between multiple characters, and some of those characters do not belong to you (you do not play some of these characters)
 it should be in the `_Moffstation/PersonalItems/Wearables/Shared` folder.
 
 Shared personal items count as one personal item for each character that uses it.
