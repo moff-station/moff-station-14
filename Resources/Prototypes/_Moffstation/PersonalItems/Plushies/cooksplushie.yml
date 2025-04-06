@@ -1,0 +1,25 @@
+# Player: huaqas - Character: Cooks-The-Meth
+- type: entity
+  parent: PlushieLizard
+  id: PersonalItemCooksPlushie
+  name: cooks plushie
+  description: A bright orange plushie resembling the chemist, Cooks-the-Meth. It seemingly has a very expensive pair of chemistry goggles glued to it.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: plushie_cooks
+    sprite: _Umbra/PersonalItems/Plushies/cooksplushie.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: _Umbra/PersonalItems/Plushies/cooksplushie.rsi
+    equippedPrefix: cooks
+
+- type: loadout
+  id: PersonalItemCooksPlushie
+  storage:
+    back:
+    - PersonalItemCooksPlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cooks-The-Meth
