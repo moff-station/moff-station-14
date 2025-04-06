@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Preferences.Loadouts.Effects;
@@ -29,7 +31,17 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
         IDependencyCollection collection,
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
-        if (!CharacterName.Contains(profile.Name))
+        var foundMatchingName = false;
+        foreach (var name in CharacterName)
+        {
+            if (name.Equals(profile.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                foundMatchingName = true;
+                break;
+            }
+        }
+
+        if (!foundMatchingName)
         {
             reason = FormattedMessage.FromUnformatted(Loc.GetString(
                 "loadout-personalitem-character",

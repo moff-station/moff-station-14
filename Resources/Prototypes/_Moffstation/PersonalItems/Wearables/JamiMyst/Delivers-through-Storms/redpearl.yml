@@ -1,4 +1,4 @@
-﻿# Player JamiMyst - Character: Delivers-Through-Storms
+﻿# Player JamiMyst - Character: Delivers-through-Storms
 
 - type: entity
   parent: ClothingMaskBase
@@ -19,10 +19,9 @@
 
 - type: loadout
   id: PersonalItemDeliPearl
-  storage:
-    back:
-    - PersonalItemDeliPearl
+  equipment:
+    mask: PersonalItemDeliPearl
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
-    - Delivers-Through-Storms
+    - Delivers-through-Storms

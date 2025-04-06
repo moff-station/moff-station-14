@@ -1,4 +1,6 @@
-﻿- type: entity
+﻿# Player: BulletKin - Character: Darnell Flett
+
+- type: entity
   name: plasma flippo lighter
   parent: FlippoLighter
   id: PersonalItemDarnellLighter
@@ -6,7 +8,7 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Items/darnelllighter.rsi
+    sprite: _Moffstation/PersonalItems/Items/BulletKin/Darnell_Flett/darnelllighter.rsi
     layers:
     - state: closed
       map: ["base"]
@@ -21,15 +23,16 @@
       visible: false
       shader: unshaded
   - type: Item
-    sprite: _Moffstation/PersonalItems/Items/darnelllighter.rsi
+    sprite: _Moffstation/PersonalItems/Items/BulletKin/Darnell_Flett/darnelllighter.rsi
+
   - type: ToggleableLightVisuals
     spriteLayer: lighter_flame
     inhandVisuals:
       left:
-      - state: inhand-right-flame
+      - state: inhand-left-flame
         shader: unshaded
       right:
-      - state: inhand-left-flame
+      - state: inhand-right-flame
         shader: unshaded
   - type: PointLight
     color: plum
