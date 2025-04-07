@@ -1,0 +1,22 @@
+﻿- type: entity
+  parent: BedsheetBase
+  id: PersonalItemSeanSheet
+  name: Sean’s bedsheet
+  description: A soft-linen bedsheet, custom threaded with cyan and black fibers along its surface - it very faintly smells of ephedrine and hyperzine.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: icon
+    sprite: _Moffstation/PersonalItems/Wearables/Exbedio/Sean_Exbdo/seansheet.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Exbedio/Sean_Exbdo/seansheet.rsi
+
+- type: loadout
+  id: PersonalItemSeanSheet
+  storage:
+    back:
+    - PersonalItemSeanSheet
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Sean Exbdo
