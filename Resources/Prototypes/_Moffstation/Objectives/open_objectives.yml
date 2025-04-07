@@ -1,0 +1,109 @@
+# OBJECTIVE STYLE
+# in comments anything that says final prototype means the objective that isnt abstract.
+# you dont need noSpawn because Objectives category is automatically added, which has hideSpawnmenu
+# components are listed in this order:
+# 1. Objective
+# 2. requirement components
+# 3. non-condition components
+# 4. the condition component
+
+#syndies
+
+# Open-ended objective to disrupt a certain department
+- type: entity
+  parent: BaseTraitorObjective
+  id: DisruptionObjective
+  description: We need you to disrupt this department's activities.
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to sabotage a certain department
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: BaseSabotageObjective
+  description: We need you to sabotage this department's activities.
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to cause/setup a Jailbreak
+- type: entity
+  parent: BaseTraitorObjective
+  id: JailbreakObjective
+  description: Doesn't matter who was locked up or why, we just need you to keep the jails empty.
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to cause chaos
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: SyndicateCauseChaosObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to distract security
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: DistractSecurityObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended objective to infiltrate a department
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: InfiltrateObjective
+  components:
+  - type: FreeObjective
+
+# teach someone a lesson without killing them permanently
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: TeachLessonObjective
+  components:
+  - type: FreeObjective
+
+# Incriminate objective, attempt to get someone else arrested by security
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: IncriminateObjective
+  components:
+  - type: FreeObjective
+
+# Open-ended trash a room objective, picks a random room on the station that you are supposed to trash
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: TrashRoomObjective
+  components:
+  - type: FreeObjective
+
+# thieves
+
+# Open-ended, steal everything not nailed down
+- type: entity
+  abstract: true
+  parent: BaseThiefObjective
+  id: StealEverythingObjective
+  components:
+  - type: FreeObjective
+
+# Siphon funds objective, steal money from cargo and other places
+- type: entity
+  abstract: true
+  parent: BaseThiefObjective
+  id: StealMoneyObjective
+  components:
+  - type: FreeObjective
+
+# Steal materials objective, steal as many of a certain material as possible
+- type: entity
+  abstract: true
+  parent: BaseThiefObjective
+  id: StealMaterialsObjective
+  components:
+  - type: FreeObjective
