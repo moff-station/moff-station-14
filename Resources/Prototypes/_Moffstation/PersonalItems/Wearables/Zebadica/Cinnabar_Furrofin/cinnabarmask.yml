@@ -1,0 +1,23 @@
+﻿# Player: Zebadica / Character: Cinnabar Furrofin
+
+- type: entity
+  parent: ClothingMaskGasExplorer
+  id: PersonalItemCinnabarMask
+  name: Magmorian safety mask
+  description: A form of mask primarily specialised in allowing safe breathing outside of cities on Magmoria.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Zebadica/Cinnabar_Furrofin/cinnabarmask.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Zebadica/Cinnabar_Furrofin/cinnabarmask.rsi
+  - type: DetailExaminable
+    content: The straps are slightly worn and the visor has a small crack in it from regularly being used. The initials "CF" are engraved on the side of its interior.
+
+- type: loadout
+  id: PersonalItemCinnabarMask
+  equipment:
+    mask: PersonalItemCinnabarMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cinnabar Furrofin
