@@ -1,4 +1,4 @@
-# Player: snowlili - Character: Katie Fae
+# Shared: Huaqas - Character: Cooks-the-Meth; FriedFCC - Characters: Fred Neuman; ElecTreefry - Characters: Delana Triangularis
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckSilverStar
@@ -7,11 +7,11 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Wearables/silverstar.rsi
+    sprite: _Moffstation/PersonalItems/Wearables/Shared/silverstar.rsi
     scale: 0.75, 0.75
   - type: Clothing
     quickEquip: True
-    sprite: _Moffstation/PersonalItems/Wearables/silverstar.rsi
+    sprite: _Moffstation/PersonalItems/Wearables/Shared/silverstar.rsi
 
 - type: loadout
   id: ClothingNeckSilverStar
