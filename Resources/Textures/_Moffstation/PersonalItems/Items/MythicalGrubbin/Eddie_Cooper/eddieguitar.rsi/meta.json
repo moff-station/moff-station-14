@@ -1,0 +1,38 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "reskin of the acoustic guitar by Davyei (on github & ss14), https://github.com/space-wizards/space-station-14/tree/d3495fc51c811d6fbd8dbaa1a20bb1da77c8dbcd/Resources/Textures/Objects/Fun/Instruments/guitar.rsi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "wielded-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "wielded-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BACKPACK",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE",
+            "directions": 4
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+# Player: huaqas - Character: Cooks-The-Meth
+- type: entity
+  parent: PlushieLizard
+  id: PersonalItemCooksPlushie
+  name: Cooks plushie
+  description: A bright orange lizard plushie dressed up as a chemist. It seemingly has a very expensive pair of chemistry goggles glued to it.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: plushie_cooks
+    sprite: _Moffstation/PersonalItems/Items/Huaqas/Cooks-the-Meth/cooksplushie.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: _Moffstation/PersonalItems/Items/Huaqas/Cooks-the-Meth/cooksplushie.rsi
+    equippedPrefix: cooks
+
+- type: loadout
+  id: PersonalItemCooksPlushie
+  storage:
+    back:
+    - PersonalItemCooksPlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cooks-the-Meth

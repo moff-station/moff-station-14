@@ -1,0 +1,50 @@
+﻿# Player: BulletKin - Character: Darnell Flett
+
+- type: entity
+  name: plasma flippo lighter
+  parent: FlippoLighter
+  id: PersonalItemDarnellLighter
+  description: A rugged metal lighter, lasts quite a while.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/BulletKin/Darnell_Flett/darnelllighter.rsi
+    layers:
+    - state: closed
+      map: ["base"]
+    - state: top
+      map: ["top"]
+      visible: false
+    - state: open
+      map: ["open"]
+      visible: false
+    - state: lighter_flame
+      map: ["flame"]
+      visible: false
+      shader: unshaded
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/BulletKin/Darnell_Flett/darnelllighter.rsi
+
+  - type: ToggleableLightVisuals
+    spriteLayer: lighter_flame
+    inhandVisuals:
+      left:
+      - state: inhand-left-flame
+        shader: unshaded
+      right:
+      - state: inhand-right-flame
+        shader: unshaded
+  - type: PointLight
+    color: plum
+  - type: DetailExaminable
+    content: A pair of initials surrounded by a heart have been etched into the back, now scratched out and rendered unreadable. By Darnell's estimate, it's the largest amount of plasma that's ever been in his home port.
+
+- type: loadout
+  id: PersonalItemDarnellLighter
+  storage:
+    back:
+    - PersonalItemDarnellLighter
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Darnell Flett

@@ -1,0 +1,27 @@
+﻿# Player JamiMyst - Character: Delivers-through-Storms
+
+- type: entity
+  parent: ClothingMaskBase
+  id: PersonalItemDeliPearl
+  name: red pearl
+  description: A shimmering red stone to stop their awful noise.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite:  _Moffstation/PersonalItems/Wearables/JamiMyst/Delivers-Through-Storms/redpearl.rsi
+  - type: Clothing
+    sprite:  _Moffstation/PersonalItems/Wearables/JamiMyst/Delivers-Through-Storms/redpearl.rsi
+    equipDelay: 3
+    unequipDelay: 3
+  - type: AddAccentClothing
+    accent: MumbleAccent
+
+- type: loadout
+  id: PersonalItemDeliPearl
+  equipment:
+    mask: PersonalItemDeliPearl
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Delivers-through-Storms

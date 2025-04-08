@@ -3,6 +3,7 @@ using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Preferences.Loadouts.Effects;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Umbra.Preferences.Loadouts.Effects;
@@ -20,7 +21,7 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
     public HashSet<string> CharacterName = default!;
 
     [DataField]
-    public HashSet<string> Jobs = new();
+    public HashSet<ProtoId<RoleLoadoutPrototype>> Jobs = new();
 
     public override bool Validate(
         HumanoidCharacterProfile profile,
@@ -29,7 +30,17 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
         IDependencyCollection collection,
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
-        if (!CharacterName.Contains(profile.Name))
+        var foundMatchingName = false;
+        foreach (var name in CharacterName)
+        {
+            if (name.Equals(profile.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                foundMatchingName = true;
+                break;
+            }
+        }
+
+        if (!foundMatchingName)
         {
             reason = FormattedMessage.FromUnformatted(Loc.GetString(
                 "loadout-personalitem-character",
@@ -37,12 +48,19 @@ public sealed partial class PersonalItemLoadoutEffect : LoadoutEffect
             return false;
         }
 
-        if (!(Jobs.Count == 0 || Jobs.Contains(loadout.Role.ToString())))
+        if (!(Jobs.Count == 0 || Jobs.Contains(loadout.Role)))
         {
+            var jobNames = new List<string>();
+            foreach (var jobId in Jobs)
+            {
+                jobNames.Add(Loc.GetString(jobId));
+            }
+
             reason = FormattedMessage.FromUnformatted(Loc.GetString(
                 "loadout-personalitem-joblocked",
-                ("job", string.Join(", ", Jobs)),
-                ("received", loadout.Role.ToString())));
+                ("job", string.Join(", ", jobNames)),
+                ("received", Loc.GetString(loadout.Role))));
+
             return false;
         }
 
