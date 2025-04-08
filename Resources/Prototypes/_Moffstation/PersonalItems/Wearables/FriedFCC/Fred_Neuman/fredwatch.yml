@@ -1,0 +1,30 @@
+# Player: FriedFCC - Character: Fred Neuman
+- type: entity
+  parent: WristwatchGold
+  id: PersonalItemFredWatch
+  name: ancient watch
+  description: A fancy looking watch that looks like it was made hundreds of years ago. Despite its age it's been kept in pristine condition.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/FriedFCC/Fred_Neuman/fredwatch.rsi
+    layers:
+    - state: goldwatch
+    - map: [ "enum.ClockVisualLayers.MinuteHand" ]
+    - map: [ "enum.ClockVisualLayers.HourHand" ]
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/FriedFCC/Fred_Neuman/fredwatch.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/FriedFCC/Fred_Neuman/fredwatch.rsi
+  - type: DetailExaminable
+    content: "A fancy watch made of gold, with a black leather strap. The hands are ornate and the numbers are in roman numerals. You can see a gold engraving which reads \"Audentes Fortuna Iuvat\". Underneath, there's a another engraving in black which reads \"Zanuti, 1890. Swiss Made.\""
+
+- type: loadout
+  id: PersonalItemFredWatch
+  storage:
+    back:
+    - PersonalItemFredWatch
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Fred Neuman
