@@ -2,14 +2,14 @@
 - type: entity
   parent: WristwatchGold
   id: PersonalItemFredWatch
-  name: ancient watch
-  description: A fancy looking watch that looks like it was made hundreds of years ago. Despite its age it's in pristine condition.
+  name: Fred's ancient watch
+  description: A fancy looking watch that looks like it was made hundreds of years ago. Despite it's age it's in pristine condition.
   suffix: PersonalItem
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/FriedFCC/Fred_Neuman/fredwatch.rsi
     layers:
-    - state: goldwatch
+    - state: icon
     - map: [ "enum.ClockVisualLayers.MinuteHand" ]
     - map: [ "enum.ClockVisualLayers.HourHand" ]
   - type: Item
@@ -17,7 +17,7 @@
   - type: Clothing
     sprite: _Moffstation/PersonalItems/Wearables/FriedFCC/Fred_Neuman/fredwatch.rsi
   - type: DetailExaminable
-    content: "A fancy watch made of gold, with a black leather strap. The hands are ornate and the numbers are in roman numerals. You can see a gold engraving which reads \"Audentes Fortuna Iuvat\". Underneath, there's a another engraving in black which reads \"Zanuti, 1890. Swiss Made.\""
+    content: "A luxurious gold watch with a black leather strap. Its hands are a shimmering onyx black, and its numbers are roman numerals etched in copper. The base-plate features a golden engraving which reads \"Audentes Fortuna Iuvat\". Below it, there's a second engraving in black: \"Cortébert, 1890. Swiss Made\"."
 
 - type: loadout
   id: PersonalItemFredWatch
