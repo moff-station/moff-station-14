@@ -16,6 +16,10 @@ These goals and guidelines are similar in vain to Sector Umbra's personal items.
    3. They cannot be protective gear, or have any protective functionality.
       - Examples include reskinned helmets, armor, or any other item that could be used as protective gear.
       - Items like masks or winter coats are allowed as long as they remain mechanically the same as the original item it's based off of.
+   4. If based off of any item, it must have the same mechanical functionality as the item it is based off of.
+      - The item should be parented to the item you want to mimic.
+      - The item shouldn't give you an advantage or disadvantage over the original item.
+      - For example, you cannot have an acoustic guitar that takes more than the default 2 hits to break.
 2. **Personal items are limited in their visuals.**
    1. They cannot be visually conflicting with any job clothing.
       - People should be able to recognize you and not mistake you for other jobs or characters.
@@ -75,7 +79,9 @@ These personal items are locked to the job they are oriented around. A character
   - This is **disallowed** if the helmet has any extra functionality, such as having a light.
 - **Allowed**: A custom knife for a Chef or Security Officer
 - **Allowed**: A custom worn shaker for a Bartender.
-- **Allowed**: A custom nibbled mantle for a Captain who is a moth.
+- **Allowed**: A custom nibbled captain's mantle for a Captain who is a moth.
+- **Allowed**: A custom-colored mantle for a character for any job.
+  - This is **disallowed** if the mantle looks like a higher rank or command mantle.
 - **Allowed**: A custom worn cloak for a Chief Engineer who has worked for a long time.
 - **Disallowed**: A custom welding mask for a Scientist. Welding masks available to Scientists are limited at roundstart (there's only one in a vending machine usually) and are not available to them easily at roundstart.
 - **Disallowed**: An industrial, advanced, or experimental welding tool for an Engineer. They only have access to the standard welding tool at roundstart.
