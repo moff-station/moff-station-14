@@ -1,4 +1,6 @@
-﻿- type: entity
+﻿# Player: MythicalGrubbin / Character: Seikret Happysmiler née Lissenger
+
+- type: entity
   parent: BaseItem
   id: PersonalItemSeikretPhoto
   name: Seikret's photo
@@ -6,7 +8,7 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Items/seikretphoto.rsi
+    sprite: _Moffstation/PersonalItems/Items/MythicalGrubbin/Seikret_Lissenger/seikretphoto.rsi
     state: icon
   - type: Item
     size: Tiny

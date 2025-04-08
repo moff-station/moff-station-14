@@ -1,4 +1,6 @@
-﻿- type: entity
+﻿# Player: Failed / Character: Works-Many-Gigs
+
+- type: entity
   parent: DrinkShaker
   id: PersonalItemGigsShaker
   name: well-worn shaker
@@ -9,8 +11,10 @@
       drink:
         maxVol: 90
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Items/gigsshaker.rsi
+    sprite: _Moffstation/PersonalItems/Items/Failed/Works-Many-Gigs/gigsshaker.rsi
     state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Failed/Works-Many-Gigs/gigsshaker.rsi
   - type: DetailExaminable
     content: It's covered in photos of friends and family, you even recognize yourself in the large group photo.
 

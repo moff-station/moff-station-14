@@ -1,0 +1,26 @@
+﻿# Player: Vivensshadow / Character: Vivonic Rose
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PersonalItemVivonicMantle
+  name: Viv's handwoven mantle
+  description: An excellently handwoven mantle made with top of the line white, red and grey soft fabrics to feel silky and smooth against the wearer without sacrificing warmth.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Vivensshadow/Vivonic_Rose/vivmantle.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/Vivensshadow/Vivonic_Rose/vivmantle.rsi
+  - type: DetailExaminable
+    content: The inner section of the mantle seems well worn and has a tag that reads "Love from eclipse <3" which appears to be stitched in by whoever made the mantle.
+
+- type: loadout
+  id: PersonalItemVivonicMantle
+  storage:
+    back:
+    - PersonalItemVivonicMantle
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Vivonic Rose
+
