@@ -1,7 +1,7 @@
 # Shared: Huaqas - Character: Cooks-the-Meth; FriedFCC - Characters: Fred Neuman; ElecTreefry - Characters: Delana Triangularis
 - type: entity
   parent: ClothingNeckBase
-  id: ClothingNeckSilverStar
+  id: PersonalItemSharedNeckSilverStar
   name: Silver Star
   description: A bright silver star, that represents the individual wearing it showed great gallantry against the mothroach enemy.
   suffix: PersonalItem
@@ -14,10 +14,10 @@
     sprite: _Moffstation/PersonalItems/Wearables/Shared/silverstar.rsi
 
 - type: loadout
-  id: ClothingNeckSilverStar
+  id: PersonalItemSharedNeckSilverStar
   storage:
     back:
-    - ClothingNeckSilverStar
+    - PersonalItemSharedNeckSilverStar
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
