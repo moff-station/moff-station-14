@@ -11,11 +11,13 @@
           sprite: Structures/Piping/Atmospherics/pipe.rsi
           state: pipeStraight
         name: pipe
-      - tag: ModularReceiver
-        icon:
-          sprite: Objects/Misc/modular_receiver.rsi
-          state: icon
-        name: modular receiver
+        # Moffstation - Begin - Remove modular receiver requirement for improv shotgun
+#      - tag: ModularReceiver
+#        icon:
+#          sprite: Objects/Misc/modular_receiver.rsi
+#          state: icon
+#        name: modular receiver
+        # Moffstation - End
       - tag: RifleStock
         icon:
           sprite: Objects/Misc/rifle_stock.rsi
