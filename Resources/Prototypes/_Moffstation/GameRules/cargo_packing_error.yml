@@ -1,0 +1,323 @@
+﻿- type: entityTable
+  id: CargoPackingErrorTable
+  table: !type:GroupSelector # ~~we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp~~ But we arent doing that shit yet, it picks a random one StationEventComp be damned.
+    children:
+    - id: PackingErrorLargeAnimals
+    - id: PackingErrorPests
+    - id: PackingErrorAnimalsHostile
+    - id: PackingErrorSyndicate
+    - id: PackingErrorItems
+    - id: PackingErrorXenoArtifactOrAnomaly
+
+- type: entity
+  id: CargoPackingErrorBase
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min: 10
+      max: 10
+  - type: StationEvent
+    duration: null
+
+- type: entity
+  id: PackingErrorLargeAnimals
+  parent: CargoPackingErrorBase
+  components:
+  - type: StationEvent
+    weight: 4
+  - type: CargoPackingErrorRule
+    spawnTable: CargoPackingErrorAnimals
+
+- type: entity
+  id: PackingErrorPests
+  parent: CargoPackingErrorBase
+  components:
+  - type: StationEvent
+    weight: 5
+  - type: CargoPackingErrorRule
+    spawnTable: CargoPackingErrorPests
+
+- type: entity
+  id: PackingErrorAnimalsHostile
+  parent: CargoPackingErrorBase
+  components:
+  - type: StationEvent
+    weight: 1
+  - type: CargoPackingErrorRule
+    spawnTable: CargoPackingErrorAnimalsHostile
+
+- type: entity
+  id: PackingErrorSyndicate
+  parent: CargoPackingErrorBase
+  components:
+  - type: StationEvent
+    weight: 0.3
+  - type: CargoPackingErrorRule
+    spawnTable: CargoPackingErrorSyndicate
+
+- type: entity
+  id: PackingErrorItems
+  parent: CargoPackingErrorBase
+  components:
+  - type: StationEvent
+    weight: 4
+  - type: CargoPackingErrorRule
+    spawnTable: CargoPackingErrorItems
+
+- type: entity
+  id: PackingErrorXenoArtifactOrAnomaly
+  parent: CargoPackingErrorBase
+  components:
+  - type: StationEvent
+    weight: 1
+  - type: CargoPackingErrorRule
+    spawnTable: CargoPackingErrorXenoArtifactOrAnomaly
+
+- type: entityTable
+  id: CargoPackingErrorAnimals
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector
+      weight: 10
+      children:
+      - !type:EntSelector
+        id: MobCorgi
+      - !type:EntSelector
+        id: MobCorgiPuppy
+      - !type:EntSelector
+        id: MobCat
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+      - !type:EntSelector
+        id: MobCatKitten
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+      - !type:EntSelector
+        id: MobGoat
+        amount: !type:RangeNumberSelector
+          range: 1, 3
+      - !type:EntSelector
+        id: MobCow
+      - !type:EntSelector
+        id: MobParrot
+      - !type:EntSelector
+        id: MobPig
+      - !type:EntSelector
+        id: MobChicken
+        amount: !type:RangeNumberSelector
+          range: 2, 4
+      - !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 1, 2
+        children:
+        - !type:EntSelector
+          id: MobDuckMallard
+        - !type:EntSelector
+          id: MobDuckWhite
+        - !type:EntSelector
+          id: MobDuckBrown
+      - !type:EntSelector
+        id: MobLizard
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+    - !type:GroupSelector
+      weight: 0.1
+      children:
+      - !type:EntSelector
+        id: MobKangaroo
+      - !type:EntSelector
+        id: MobGorilla
+      - !type:EntSelector
+        id: MobMonkey
+      - !type:EntSelector
+        id: MobKobold
+      - !type:EntSelector
+        id: MobMonkey
+        weight: 0.01
+        amount: !type:RangeNumberSelector
+          range: 4, 10
+      - !type:EntSelector
+        id: MobKobold
+        weight: 0.01
+        amount: !type:RangeNumberSelector
+          range: 4, 10
+      - !type:EntSelector
+        id: MobGoose
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+      - !type:EntSelector
+        id: MobPenguin
+      - !type:EntSelector
+        id: MobCrab
+      - !type:EntSelector
+        id: MobHamster
+
+- type: entityTable
+  id: CargoPackingErrorPests
+  table: !type:GroupSelector
+    children:
+    - !type:EntSelector
+      id: MobBee
+      amount: !type:RangeNumberSelector
+        range: 4, 10
+    - !type:EntSelector
+      id: MobAngryBee
+      weight: 0.01
+    - !type:EntSelector
+      id: MobButterfly
+      amount: !type:RangeNumberSelector
+        range: 2, 4
+    - !type:EntSelector
+      id: MobMothroach
+      amount: !type:RangeNumberSelector
+        range: 1, 2
+    - !type:EntSelector
+      id: MobMothroach # Swarm
+      weight: 0.05
+      amount: !type:RangeNumberSelector
+        range: 10, 30
+    - !type:EntSelector
+      id: MobMouse
+      amount: !type:RangeNumberSelector
+        range: 1, 2
+    - !type:EntSelector
+      id: MobMouse # Swarm
+      weight: 0.05
+      amount: !type:RangeNumberSelector
+        range: 10, 30
+    - !type:EntSelector
+      id: MobCockroach
+      amount: !type:RangeNumberSelector
+        range: 1, 2
+    - !type:EntSelector
+      id: MobCockroach # Swarm
+      weight: 0.05
+      amount: !type:RangeNumberSelector
+        range: 10, 30
+    - !type:EntSelector
+      id: MobSnail
+    - !type:EntSelector
+      id: MobSnailSpeed
+      weight: 0.05
+    - !type:EntSelector
+      id: MobSnailMoth
+      weight: 0.05
+    - !type:EntSelector
+      id: MobMouseCancer
+      weight: 0.01
+
+- type: entityTable
+  id: CargoPackingErrorAnimalsHostile
+  table: !type:GroupSelector
+    children:
+    - !type:EntSelector
+      id: MobCarp
+    - !type:EntSelector
+      id: MobAngryBee
+      amount: !type:RangeNumberSelector
+        range: 1, 2
+    - !type:EntSelector
+      id: MobGiantSpiderAngry
+      weight: 0.7
+    - !type:EntSelector
+      id: MobSnake
+
+- type: entityTable # TODO Weights
+  id: CargoPackingErrorSyndicate
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector # Decoy operative deployed
+      weight: 0.1
+      children:
+      - !type:EntSelector
+        id: BalloonOperativeDeployed
+      - !type:EntSelector
+        id: BalloonAgentDeployed
+      - !type:EntSelector
+        id: BalloonEliteDeployed
+      - !type:EntSelector
+        id: BalloonJuggernautDeployed
+      - !type:EntSelector
+        id: BalloonCommanderDeployed
+    - !type:NestedSelector
+      tableId: SyndieMaintLoot
+    - !type:EntSelector
+      id: MobMonkeySyndicateAgent
+      weight: 0.01
+    - !type:EntSelector
+      id: BalloonSyn
+    - !type:EntSelector
+      id: ClothingHeadHatCatEars
+      weight: 0.01
+    - !type:EntSelector
+      id: SyndicateBusinessCard
+    - !type:EntSelector
+      id: ClothingBackpackSatchelSmugglerUnanchored
+      weight: 0.5
+
+- type: entityTable
+  id: CargoPackingErrorItems
+  table: !type:GroupSelector
+    children:
+    - !type:NestedSelector
+      tableId: GenericTrashItems
+      rolls: !type:RangeNumberSelector
+        range: 4, 6
+      weight: 5
+    - !type:NestedSelector
+      tableId: MaintFluffTable
+      rolls: !type:RangeNumberSelector
+        range: 2, 4
+    - !type:NestedSelector
+      tableId: MaintToolsTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 4
+      weight: 0.5
+    - !type:NestedSelector
+      tableId: AllPlushiesTable
+      rolls: !type:RangeNumberSelector
+        range: 1, 2
+    - !type:NestedSelector
+      tableId: InsulsTable
+      weight: 0.5
+    - !type:EntSelector
+      id: StrangePill
+      amount: !type:RangeNumberSelector
+        range: 1, 4
+    - !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 4, 10
+      children:
+      - !type:EntSelector
+        id: SpaceCash10
+        amount: !type:RangeNumberSelector
+          range: 2, 10
+      - !type:EntSelector
+        id: SpaceCash100
+        weight: 0.7
+        amount: !type:RangeNumberSelector
+          range: 1, 5
+      - !type:EntSelector
+        id: SpaceCash500
+        weight: 0.5
+        amount: !type:RangeNumberSelector
+          range: 1, 5
+      - !type:EntSelector
+        id: SpaceCash1000
+        weight: 0.3
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+
+- type: entityTable
+  id: CargoPackingErrorXenoArtifactOrAnomaly
+  table: !type:GroupSelector
+    children:
+    - !type:EntSelector
+      id: RandomArtifactSpawner
+    - !type:EntSelector
+      id: RandomAnomalySpawner
+      weight: 0.01
+
+# Gas
