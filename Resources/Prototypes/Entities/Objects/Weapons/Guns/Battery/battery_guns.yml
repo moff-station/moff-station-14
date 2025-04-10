@@ -495,7 +495,7 @@
       - Belt
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisabler
-    fireCost: 100 #Moffstation - Disabler Nerf
+    fireCost: 100 # Moffstation - Disabler nerf
   - type: GuideHelp
     guides:
     - Security
@@ -530,7 +530,7 @@
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisablerSmg
-    fireCost: 50  #Moffstation - Disabler Nerf
+    fireCost: 50 # Moffstation - Disabler nerf
   - type: MagazineVisuals
     magState: mag
     steps: 5
