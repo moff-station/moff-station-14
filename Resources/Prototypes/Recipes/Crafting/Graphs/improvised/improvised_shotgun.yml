@@ -11,20 +11,11 @@
           sprite: Structures/Piping/Atmospherics/pipe.rsi
           state: pipeStraight
         name: pipe
-        # Moffstation - Begin - Remove modular receiver requirement for improv shotgun, make it easier to build
-#      - tag: ModularReceiver
-#        icon:
-#          sprite: Objects/Misc/modular_receiver.rsi
-#          state: icon
-#        name: modular receiver
-      - tag: Screwdriver
+      - tag: ModularReceiver
         icon:
-          sprite: Objects/Tools/screwdriver.rsi
-          state: screwdriver
-        name: screwdriver
-      - material: Steel
-        amount: 1
-        # Moffstation - End
+          sprite: Objects/Misc/modular_receiver.rsi
+          state: icon
+        name: modular receiver
       - tag: RifleStock
         icon:
           sprite: Objects/Misc/rifle_stock.rsi
