@@ -25,6 +25,8 @@ using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
+using Content.Shared.Clothing;
+using Content.Shared.Preferences;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;

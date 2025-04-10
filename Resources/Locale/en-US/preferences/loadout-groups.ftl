@@ -204,3 +204,7 @@ loadout-group-psychologist-jumpsuit = Psychologist jumpsuit
 
 loadout-group-boxer-jumpsuit = Boxer jumpsuit
 loadout-group-boxer-gloves = Boxer gloves
+
+# Antag
+loadout-group-nukie-jumpsuit = Operative jumpsuit
+loadout-group-nukie-backpack = Operative backpack
