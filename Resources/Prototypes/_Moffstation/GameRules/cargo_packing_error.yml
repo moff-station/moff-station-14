@@ -82,179 +82,129 @@
     - !type:GroupSelector
       weight: 10
       children:
-      - !type:EntSelector
-        id: MobCorgi
-      - !type:EntSelector
-        id: MobCorgiPuppy
-      - !type:EntSelector
-        id: MobCat
+      - id: MobCorgi
+      - id: MobCorgiPuppy
+      - id: MobCat
         amount: !type:RangeNumberSelector
           range: 1, 2
-      - !type:EntSelector
-        id: MobCatKitten
+      - id: MobCatKitten
         amount: !type:RangeNumberSelector
           range: 1, 2
-      - !type:EntSelector
-        id: MobGoat
+      - id: MobGoat
         amount: !type:RangeNumberSelector
           range: 1, 3
-      - !type:EntSelector
-        id: MobCow
-      - !type:EntSelector
-        id: MobParrot
-      - !type:EntSelector
-        id: MobPig
-      - !type:EntSelector
-        id: MobChicken
+      - id: MobCow
+      - id: MobParrot
+      - id: MobPig
+      - id: MobChicken
         amount: !type:RangeNumberSelector
           range: 2, 4
       - !type:GroupSelector
         rolls: !type:RangeNumberSelector
           range: 1, 2
         children:
-        - !type:EntSelector
-          id: MobDuckMallard
-        - !type:EntSelector
-          id: MobDuckWhite
-        - !type:EntSelector
-          id: MobDuckBrown
-      - !type:EntSelector
-        id: MobLizard
+        - id: MobDuckMallard
+        - id: MobDuckWhite
+        - id: MobDuckBrown
+      - id: MobLizard
         amount: !type:RangeNumberSelector
           range: 1, 2
     - !type:GroupSelector
       weight: 0.1
       children:
-      - !type:EntSelector
-        id: MobKangaroo
-      - !type:EntSelector
-        id: MobGorilla
-      - !type:EntSelector
-        id: MobMonkey
-      - !type:EntSelector
-        id: MobKobold
-      - !type:EntSelector
-        id: MobMonkey
+      - id: MobKangaroo
+      - id: MobGorilla
+      - id: MobMonkey
+      - id: MobKobold
+      - id: MobMonkey
         weight: 0.01
         amount: !type:RangeNumberSelector
           range: 4, 10
-      - !type:EntSelector
-        id: MobKobold
+      - id: MobKobold
         weight: 0.01
         amount: !type:RangeNumberSelector
           range: 4, 10
-      - !type:EntSelector
-        id: MobGoose
+      - id: MobGoose
         amount: !type:RangeNumberSelector
           range: 1, 2
-      - !type:EntSelector
-        id: MobPenguin
-      - !type:EntSelector
-        id: MobCrab
-      - !type:EntSelector
-        id: MobHamster
+      - id: MobPenguin
+      - id: MobCrab
+      - id: MobHamster
 
 - type: entityTable
   id: CargoPackingErrorPests
   table: !type:GroupSelector
     children:
-    - !type:EntSelector
-      id: MobBee
+    - id: MobBee
       amount: !type:RangeNumberSelector
         range: 4, 10
-    - !type:EntSelector
-      id: MobAngryBee
+    - id: MobAngryBee
       weight: 0.01
-    - !type:EntSelector
-      id: MobButterfly
+    - id: MobButterfly
       amount: !type:RangeNumberSelector
         range: 2, 4
-    - !type:EntSelector
-      id: MobMothroach
+    - id: MobMothroach
       amount: !type:RangeNumberSelector
         range: 1, 2
-    - !type:EntSelector
-      id: MobMothroach # Swarm
+    - id: MobMothroach # Swarm
       weight: 0.05
       amount: !type:RangeNumberSelector
         range: 10, 30
-    - !type:EntSelector
-      id: MobMouse
+    - id: MobMouse
       amount: !type:RangeNumberSelector
         range: 1, 2
-    - !type:EntSelector
-      id: MobMouse # Swarm
+    - id: MobMouse # Swarm
       weight: 0.05
       amount: !type:RangeNumberSelector
         range: 10, 30
-    - !type:EntSelector
-      id: MobCockroach
+    - id: MobCockroach
       amount: !type:RangeNumberSelector
         range: 1, 2
-    - !type:EntSelector
-      id: MobCockroach # Swarm
+    - id: MobCockroach # Swarm
       weight: 0.05
       amount: !type:RangeNumberSelector
         range: 10, 30
-    - !type:EntSelector
-      id: MobSnail
-    - !type:EntSelector
-      id: MobSnailSpeed
+    - id: MobSnail
+    - id: MobSnailSpeed
       weight: 0.05
-    - !type:EntSelector
-      id: MobSnailMoth
+    - id: MobSnailMoth
       weight: 0.05
-    - !type:EntSelector
-      id: MobMouseCancer
+    - id: MobMouseCancer
       weight: 0.01
 
 - type: entityTable
   id: CargoPackingErrorAnimalsHostile
   table: !type:GroupSelector
     children:
-    - !type:EntSelector
-      id: MobCarp
-    - !type:EntSelector
-      id: MobAngryBee
+    - id: MobCarp
+    - id: MobAngryBee
       amount: !type:RangeNumberSelector
         range: 1, 2
-    - !type:EntSelector
-      id: MobGiantSpiderAngry
+    - id: MobGiantSpiderAngry
       weight: 0.7
-    - !type:EntSelector
-      id: MobSnake
+    - id: MobSnake
 
-- type: entityTable # TODO Weights
+- type: entityTable
   id: CargoPackingErrorSyndicate
   table: !type:GroupSelector
     children:
-    - !type:GroupSelector # Decoy operative deployed
+    - !type:GroupSelector # Deployed decoy nukies
       weight: 0.1
       children:
-      - !type:EntSelector
-        id: BalloonOperativeDeployed
-      - !type:EntSelector
-        id: BalloonAgentDeployed
-      - !type:EntSelector
-        id: BalloonEliteDeployed
-      - !type:EntSelector
-        id: BalloonJuggernautDeployed
-      - !type:EntSelector
-        id: BalloonCommanderDeployed
+      - id: BalloonOperativeDeployed
+      - id: BalloonAgentDeployed
+      - id: BalloonEliteDeployed
+      - id: BalloonJuggernautDeployed
+      - id: BalloonCommanderDeployed
     - !type:NestedSelector
       tableId: SyndieMaintLoot
-    - !type:EntSelector
-      id: MobMonkeySyndicateAgent
+    - id: MobMonkeySyndicateAgent
       weight: 0.01
-    - !type:EntSelector
-      id: BalloonSyn
-    - !type:EntSelector
-      id: ClothingHeadHatCatEars
+    - id: BalloonSyn
+    - id: ClothingHeadHatCatEars
       weight: 0.01
-    - !type:EntSelector
-      id: SyndicateBusinessCard
-    - !type:EntSelector
-      id: ClothingBackpackSatchelSmugglerUnanchored
+    - id: SyndicateBusinessCard
+    - id: ClothingBackpackSatchelSmugglerUnanchored
       weight: 0.5
 
 - type: entityTable
@@ -282,30 +232,25 @@
     - !type:NestedSelector
       tableId: InsulsTable
       weight: 0.5
-    - !type:EntSelector
-      id: StrangePill
+    - id: StrangePill
       amount: !type:RangeNumberSelector
         range: 1, 4
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
         range: 4, 10
       children:
-      - !type:EntSelector
-        id: SpaceCash10
+      - id: SpaceCash10
         amount: !type:RangeNumberSelector
           range: 2, 10
-      - !type:EntSelector
-        id: SpaceCash100
+      - id: SpaceCash100
         weight: 0.7
         amount: !type:RangeNumberSelector
           range: 1, 5
-      - !type:EntSelector
-        id: SpaceCash500
+      - id: SpaceCash500
         weight: 0.5
         amount: !type:RangeNumberSelector
           range: 1, 5
-      - !type:EntSelector
-        id: SpaceCash1000
+      - id: SpaceCash1000
         weight: 0.3
         amount: !type:RangeNumberSelector
           range: 1, 2
@@ -314,10 +259,8 @@
   id: CargoPackingErrorXenoArtifactOrAnomaly
   table: !type:GroupSelector
     children:
-    - !type:EntSelector
-      id: RandomArtifactSpawner
-    - !type:EntSelector
-      id: RandomAnomalySpawner
+    - id: RandomArtifactSpawner
+    - id: RandomAnomalySpawner
       weight: 0.01
 
 # Gas

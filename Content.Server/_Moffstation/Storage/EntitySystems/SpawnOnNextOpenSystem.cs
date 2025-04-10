@@ -36,7 +36,5 @@ public sealed class SpawnOnNextOpenSystem : EntitySystem
     {
         var entProtoIds = EnsureComp<SpawnOnNextOpenComponent>(entity).Entities;
         entProtoIds.AddRange(entities);
-
-        Log.Info($"Added entities to SpawnOnFirstOpen: ${entProtoIds}");
     }
 }
