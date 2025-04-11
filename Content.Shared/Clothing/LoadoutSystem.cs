@@ -145,6 +145,37 @@ public sealed class LoadoutSystem : EntitySystem
         Equip(uid, component.StartingGear, component.RoleLoadout);
     }
 
+    public void LoadoutAwareEquip(EntityUid uid,
+        ICommonSession session,
+        List<ProtoId<StartingGearPrototype>>? startingGear,
+        List<ProtoId<RoleLoadoutPrototype>>? loadoutGroups,
+        HumanoidCharacterProfile profile)
+    {
+        if (startingGear != null && startingGear.Count > 0)
+            _station.EquipStartingGear(uid, _random.Pick(startingGear));
+
+        if (loadoutGroups != null && loadoutGroups.Count > 0)
+        {
+            foreach (var antagLoadout in loadoutGroups)
+            {
+                RoleLoadout? loadout = null;
+                if (_protoMan.TryIndex(antagLoadout, out RoleLoadoutPrototype? roleProto))
+                {
+                    profile?.Loadouts.TryGetValue(antagLoadout, out loadout);
+
+                    if (loadout == null)
+                    {
+                        loadout = new RoleLoadout(antagLoadout);
+                        loadout.SetDefault(profile, _actors.GetSession(uid), _protoMan, true);
+                    }
+
+                    _station.EquipRoleLoadout(uid, loadout, roleProto);
+                }
+            }
+        }
+        GearEquipped(uid);
+    }
+
     public void Equip(EntityUid uid, List<ProtoId<StartingGearPrototype>>? startingGear,
         List<ProtoId<RoleLoadoutPrototype>>? loadoutGroups)
     {

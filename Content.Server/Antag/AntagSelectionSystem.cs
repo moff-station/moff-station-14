@@ -29,6 +29,7 @@ using Content.Shared.Whitelist;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
+using Content.Shared.Station;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -58,6 +59,8 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly ActorSystem _actors = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly SharedStationSpawningSystem _station = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
@@ -462,32 +465,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (def.StartingGear is not null)
             gear.Add(def.StartingGear.Value);
 
-        _loadout.Equip(player, gear, def.RoleLoadout);
-
         if (session != null)
         {
-            if (def.RoleLoadout != null && def.RoleLoadout.Count > 1)
-            {
-                foreach (var antagLoadout in def.RoleLoadout)
-                {
-                    RoleLoadout? loadout = null;
-                    // var antagLoadout = LoadoutSystem.GetJobPrototype(def.Loadout);
-                    var profile = (HumanoidCharacterProfile) _pref.GetPreferences(session.UserId).SelectedCharacter;
-
-                    if (_prototypeManager.TryIndex(antagLoadout, out RoleLoadoutPrototype? roleProto))
-                    {
-                        profile?.Loadouts.TryGetValue(antagLoadout, out loadout);
-
-                        if (loadout == null)
-                        {
-                            loadout = new RoleLoadout(antagLoadout);
-                            loadout.SetDefault(profile, _actors.GetSession(ent), _prototypeManager);
-                        }
-
-                        _stationSpawning.EquipRoleLoadout(player, loadout, roleProto);
-                    }
-                }
-            }
+            var profile = (HumanoidCharacterProfile) _pref.GetPreferences(session.UserId).SelectedCharacter;
+            _loadout.LoadoutAwareEquip(player, session, gear, def.RoleLoadout, profile);
 
             // Set to default if not present
 
@@ -508,6 +489,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
             Log.Debug($"Assigned {ToPrettyString(curMind)} as antagonist: {ToPrettyString(ent)}");
             _adminLogger.Add(LogType.AntagSelection, $"Assigned {ToPrettyString(curMind)} as antagonist: {ToPrettyString(ent)}");
+        }
+        else
+        {
+            _loadout.Equip(player, gear, def.RoleLoadout);
         }
 
         var afterEv = new AfterAntagEntitySelectedEvent(session, player, ent, def);
