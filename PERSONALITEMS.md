@@ -16,6 +16,10 @@ These goals and guidelines are similar in vain to Sector Umbra's personal items.
    3. They cannot be protective gear, or have any protective functionality.
       - Examples include reskinned helmets, armor, or any other item that could be used as protective gear.
       - Items like masks or winter coats are allowed as long as they remain mechanically the same as the original item it's based off of.
+   4. If based off of any item, it must have the same mechanical functionality as the item it is based off of.
+      - The item should be parented to the item you want to mimic.
+      - The item shouldn't give you an advantage or disadvantage over the original item.
+      - For example, you cannot have an acoustic guitar that takes more than the default 2 hits to break.
 2. **Personal items are limited in their visuals.**
    1. They cannot be visually conflicting with any job clothing.
       - People should be able to recognize you and not mistake you for other jobs or characters.
@@ -27,11 +31,13 @@ These goals and guidelines are similar in vain to Sector Umbra's personal items.
       - Unshaded elements like flashing lights on the sprite are allowed.
 3. **Personal item descriptions are limited.**
    1. Descriptions should be in-character and not break immersion.
-      - For example, OOC details about a long story are not allowed. These questions should be asked to the character in-game, not told through an item description.
+      - For example, OOC details about a long story are not allowed. These questions should be asked to the character in-game through IC visual cues.
+        - Ex. **Not allowed**: "A guitar that (charname) used to pass the time during the Corporate Wars. It was a gift from (charname)'s father, who was a famous musician."
+        - Ex. **Allowed**: "A guitar that looks like it has been used for a long time. The finish is long gone, with the frets worn down and the tuners stained. A small NT insignia is carved into the body, with a signature on the back."
       - Try to always be _physically descriptive_ about the item.
    2. Descriptions should not be excessively long or a wall of text.
-      - Try to make a very short, 1-2 sentence description of the item. Sometimes even one sentence about the item's appearance is good.
-      - Large descriptions of the item should be put under an `DetailExaminable` component.
+      - Try to make a brief, 1–2 sentence description of the item. Sometimes even one sentence about the item's appearance is good.
+      - Large descriptions of the item should be put under a `DetailExaminable` component.
 4. **Personal items cannot be illegal or cause security trouble.**
    - They cannot have any contraband status, like being restricted contraband or syndicate contraband.
      - The exception to this is job-related personal items, which can have contraband status if it is a job-related item that is normally contraband.
@@ -39,7 +45,7 @@ These goals and guidelines are similar in vain to Sector Umbra's personal items.
      - This is done in mind to avoid security making hypocritical exceptions to items normally considered illegal.
 
 ### Examples
-- **Allowed**: A small, black, leather notebook with a red ribbon bookmark. It is writable, or it can have papers stored inside of it, similar to a folder.
+- **Allowed**: A small, black, leather notebook with a red ribbon bookmark. It is writable, or it can have papers stored inside it, similar to a folder.
 - **Allowed**: A small pendant with a picture of a cat on it. It can be opened or closed using a `ToggleItem` interaction.
 - **Allowed**: A keychain that has a small miniature AI core on it. The sprite flashes with activity, and it can be turned on and off using a `ToggleItem` interaction. The AI core is not inhabitable by any ghost or player.
 - **Allowed**: Any custom instrument (not a Digital Audio Workstation or similar).
@@ -64,8 +70,8 @@ These personal items are locked to the job they are oriented around. A character
    - A good way to easily enforce this is to simply parent to the item you want to mimic, and add a custom name and description. This makes it easy if we ever change item fills.
 
 ### Examples
-- **Allowed**: A custom medical webbing for a Paramedic that has a standard medical belt fill.
-  - This is **disallowed** if any extra items are added to the webbing that are not normally in a belt fill, or if the webbing can take any item that a medical belt cannot normally take.
+- **Allowed**: Custom medical webbing for a Paramedic that has a standard medical belt fill.
+  - This is **disallowed** if any extra items are added to the webbing not normally in a belt fill, or if the webbing can take any item that a medical belt cannot normally take.
 - **Allowed**: A custom salvage mask for a Salvager.
 - **Allowed**: A custom engraved gun for a Security Officer.
   - This is **disallowed** if the gun has any extra functionality, such as being able to be used as a melee weapon or having any extra items in it that are not normally available to the job at roundstart.
@@ -73,7 +79,9 @@ These personal items are locked to the job they are oriented around. A character
   - This is **disallowed** if the helmet has any extra functionality, such as having a light.
 - **Allowed**: A custom knife for a Chef or Security Officer
 - **Allowed**: A custom worn shaker for a Bartender.
-- **Allowed**: A custom nibbled mantle for a Captain who is a moth.
+- **Allowed**: A custom nibbled captain's mantle for a Captain who is a moth.
+- **Allowed**: A custom-colored mantle for a character for any job.
+  - This is **disallowed** if the mantle looks like a higher rank or command mantle.
 - **Allowed**: A custom worn cloak for a Chief Engineer who has worked for a long time.
 - **Disallowed**: A custom welding mask for a Scientist. Welding masks available to Scientists are limited at roundstart (there's only one in a vending machine usually) and are not available to them easily at roundstart.
 - **Disallowed**: An industrial, advanced, or experimental welding tool for an Engineer. They only have access to the standard welding tool at roundstart.
@@ -87,19 +95,18 @@ Personal items content goes in the `_Moffstation` namespace under a `PersonalIte
    - If the item is a pen, it should be in `_Moffstation/PersonalItems/Items/...`
    - If the item is primarily a worn cosmetic, it should be in `_Moffstation/PersonalItems/Wearables/...`
 
-Personal item content is organized in this structure:
+Personal item content is organized in this structure. Be sure to separate textures and the item YAML like so:
 
-- `_Moffstation/PersonalItems/Items/(playername)/(charactername)`
+- `Resources/Textures/_Moffstation/PersonalItems/Items/(playername)/(charactername)/`
   - `ItemName.rsi` (the item RSI folder)
+- `Resources/Prototypes/_Moffstation/PersonalItems/Items/(playername)/(charactername)/`
   - `ItemName.yml` (the item YAML)
 
 For example:
-- `_Moffstation/PersonalItems/Items/ArtisticRoomba/Roomba_Angle`
-  - `WornGuitar.rsi`
-  - `WornGuitar.yml`
-- `_Moffstation/PersonalItems/Items/Failed/Works_Many_Gigs`
-  - `WornShaker.rsi`
-  - `WornShaker.yml`
+- `Resources/Textures/_Moffstation/PersonalItems/Wearables/FrostWinters/Frost_Winters/`
+  - `frostmedicalwebbing.rsi` (the item RSI folder)
+- `Resources/Prototypes/_Moffstation/PersonalItems/Wearables/FrostWinters/Frost_Winters/`
+  - `frostmedicalwebbing.yml` (the item YAML)
 
 When writing YAML for your item, write the prototype for your item first, and then the custom loadout group for your item.
 
@@ -109,7 +116,7 @@ The beginning of the YAML should state the player username and the character nam
 # Player FrostWinters - Character: Frost Winters
 
 - type: entity
-  parent: ClothingBeltMedical
+  parent: ClothingBeltMedicalFilled
   id: PersonalItemFrostMedicalWebbing
   name: "Winters' medical rig"
   description: "Winters' chest rig brought from home, modified to fit medical supplies. Looks oddly familiar to some with certain backgrounds."
@@ -119,20 +126,11 @@ The beginning of the YAML should state the player username and the character nam
     sprite: _Moffstation/PersonalItems/Wearables/frostmedicalwebbing.rsi
   - type: Clothing
     sprite: _Moffstation/PersonalItems/Wearables/frostmedicalwebbing.rsi
-  - type: StorageFill
-    contents:
-    - id: Brutepack
-    - id: Ointment
-    - id: Bloodpack
-    - id: Gauze
-    - id: EmergencyMedipen
-      amount: 3
 
 - type: loadout
   id: PersonalItemFrostMedicalWebbing
-  storage:
-    back:
-    - PersonalItemFrostMedicalWebbing
+  equipment:
+    belt: PersonalItemFrostMedicalWebbing
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
@@ -140,6 +138,25 @@ The beginning of the YAML should state the player username and the character nam
 ```
 
 Be sure to follow upstream guidelines when working on the project.
+
+### Shared Personal Items
+If you want to create a personal item shared between multiple characters (including characters that are not yours),
+you can create a shared personal item.
+
+If the item is shared between multiple characters which all belong to you (you play these characters),
+it should be in the `_Moffstation/PersonalItems/Wearables/(playername)/Shared` folder.
+
+If the item is shared between multiple characters, and some of those characters do not belong to you (you do not play some of these characters)
+it should be in the `_Moffstation/PersonalItems/Wearables/Shared` folder.
+
+Shared personal items count as one personal item for each character that uses it.
+
+### Job-related Items
+Personal items mimicking a job-related item should be parented to the item you want to mimic.
+This is done to ensure that the item behaves like the original item, and does not have any extra functionality.
+
+This also makes upstream item balancing trickle down to functional personal items,
+so items don't have to be manually re-balanced.
 
 ## Approval
 Personal items are subject to approval by any Moffstation maintainer or admin. Personal item guidelines are guidelines, not explicitly rules, so if you're unclear if your item would be allowed, please ask a maintainer or admin for clarification.

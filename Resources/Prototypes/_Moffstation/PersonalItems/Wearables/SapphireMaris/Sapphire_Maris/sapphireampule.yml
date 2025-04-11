@@ -1,0 +1,25 @@
+# Player: SapphireMaris - Character: Sapphire Maris
+- type: entity
+  parent: ClothingNeckBase
+  id: PersonalItemSapphireAmpule
+  name: crystal ampule
+  description: An ampule containing a swirling blue liquid, its surface catching the light like liquid crystal. Scratched on the ampule are the words "Remember me".
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/SapphireMaris/Sapphire_Maris/sapphireampule.rsi
+  - type: Clothing
+    quickEquip: True
+    sprite: _Moffstation/PersonalItems/Wearables/SapphireMaris/Sapphire_Maris/sapphireampule.rsi
+  - type: DetailExaminable
+    content: "Suspended within, a marble-sized fragment glimmers softly, catching the light like a fading star beneath the surface."
+
+- type: loadout
+  id: PersonalItemSapphireAmpule
+  storage:
+    back:
+    - PersonalItemSapphireAmpule
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Sapphire Maris
