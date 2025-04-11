@@ -1,18 +1,21 @@
 # Nukeops
 - type: roleLoadout
-  id: LoadoutNukeopsCommander
+  id: JobNukeopsCommander
+  canCustomizeName: true
   groups:
   - NukieJumpsuit
   - NukieBackpack
 
 - type: roleLoadout
-  id: LoadoutNukeops
+  id: JobNukeops
+  canCustomizeName: true
   groups:
   - NukieJumpsuit
   - NukieBackpack
 
 - type: roleLoadout
-  id: LoadoutNukeopsMedic
+  id: JobNukeopsMedic
+  canCustomizeName: true
   groups:
   - NukieJumpsuit
   - NukieMedicalBackpack

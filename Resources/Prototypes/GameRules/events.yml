@@ -544,13 +544,15 @@
       startingGear: SyndicateLoneOperativeGearFull
       roleLoadout:
       - RoleSurvivalNukie
+      - JobNukeops
       components:
       - type: NukeOperative
-      - type: RandomMetadata
-        nameSegments:
-        - NamesSyndicatePrefix
-        - NamesSyndicateNormal
-        nameFormat: name-format-nukie-generic
+
+#      - type: RandomMetadata
+#        nameSegments:
+#        - NamesSyndicatePrefix
+#        - NamesSyndicateNormal
+#        nameFormat: name-format-nukie-generic
       - type: NpcFactionMember
         factions:
         - Syndicate

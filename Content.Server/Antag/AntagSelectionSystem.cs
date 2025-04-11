@@ -13,6 +13,7 @@ using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Events;
+using Content.Server.Station.Systems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Antag;
 using Content.Shared.Clothing;
@@ -27,6 +28,7 @@ using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
+using Content.Shared.Preferences.Loadouts;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -53,6 +55,9 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
+    [Dependency] private readonly ActorSystem _actors = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
@@ -461,6 +466,31 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         if (session != null)
         {
+            if (def.RoleLoadout != null && def.RoleLoadout.Count > 1)
+            {
+                foreach (var antagLoadout in def.RoleLoadout)
+                {
+                    RoleLoadout? loadout = null;
+                    // var antagLoadout = LoadoutSystem.GetJobPrototype(def.Loadout);
+                    var profile = (HumanoidCharacterProfile) _pref.GetPreferences(session.UserId).SelectedCharacter;
+
+                    if (_prototypeManager.TryIndex(antagLoadout, out RoleLoadoutPrototype? roleProto))
+                    {
+                        profile?.Loadouts.TryGetValue(antagLoadout, out loadout);
+
+                        if (loadout == null)
+                        {
+                            loadout = new RoleLoadout(antagLoadout);
+                            loadout.SetDefault(profile, _actors.GetSession(ent), _prototypeManager);
+                        }
+
+                        _stationSpawning.EquipRoleLoadout(player, loadout, roleProto);
+                    }
+                }
+            }
+
+            // Set to default if not present
+
             var curMind = session.GetMind();
 
             if (curMind == null ||

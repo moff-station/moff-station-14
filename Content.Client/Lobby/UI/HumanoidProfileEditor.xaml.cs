@@ -693,13 +693,44 @@ namespace Content.Client.Lobby.UI
 
                 antagContainer.AddChild(selector);
 
-                antagContainer.AddChild(new Button()
+                var loadoutWindowBtn = new Button()
                 {
-                    Disabled = true,
+                    // Disabled = true,
                     Text = Loc.GetString("loadout-window"),
                     HorizontalAlignment = HAlignment.Right,
                     Margin = new Thickness(3f, 0f, 0f, 0f),
-                });
+                };
+
+                antagContainer.AddChild(loadoutWindowBtn);
+
+                var collection = IoCManager.Instance!;
+                var protoManager = collection.Resolve<IPrototypeManager>();
+
+                // If no loadout found then disabled button
+                if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(antag.ID), out var roleLoadoutProto))
+                {
+                    loadoutWindowBtn.Disabled = true;
+                }
+                // else
+                else
+                {
+                    loadoutWindowBtn.OnPressed += args =>
+                    {
+                        RoleLoadout? loadout = null;
+
+                        // Clone so we don't modify the underlying loadout.
+                        Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(antag.ID), out loadout);
+                        loadout = loadout?.Clone();
+
+                        if (loadout == null)
+                        {
+                            loadout = new RoleLoadout(roleLoadoutProto.ID);
+                            loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+                        }
+
+                        OpenLoadout(null, loadout, roleLoadoutProto);
+                    };
+                }
 
                 AntagList.AddChild(antagContainer);
             }
