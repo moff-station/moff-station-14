@@ -335,3 +335,32 @@
         amount: 2
       - id: SyndieTrickyBomb
         amount: 2
+
+# ERT duffel bags
+- type: entity
+  parent: ClothingBackpackDuffelEngineering
+  id: ClothingBackpackDuffelEngineeringFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxInflatable
+      - id: SheetSteel
+      - id: PartRodMetal
+      - id: CableApcStack
+      - id: CableMVStack
+      - id: CableHVStack
+      - id: SheetGlass
+      - id: SheetRGlass
+      - id: SheetPlasteel
+      - id: RCDAmmo
+        amount: 2
+
+- type: entity
+  parent: ClothingBackpackDuffelMedical
+  id: ClothingBackpackDuffelMedicalFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxBodyBag

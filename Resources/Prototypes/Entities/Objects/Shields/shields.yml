@@ -466,12 +466,6 @@
       price: 350
 
 - type: entity
-  parent: [BaseCentcommContraband, EnergyShield]
-  id: EnergyShieldNT
-  suffix: NT
-  description: A reverse engineered energy shield carried by some of Nanotrasen's elite forces.
-
-- type: entity
   name: broken energy shield
   parent: BaseItem
   id: BrokenEnergyShield

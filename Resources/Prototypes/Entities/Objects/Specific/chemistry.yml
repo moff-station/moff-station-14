@@ -191,24 +191,24 @@
           Quantity: 50
 
 - type: entity
-  suffix: dexalin+
   parent: Beaker
-  id: BeakerSmallDex
+  id: BeakerSmallInap
   categories: [ HideSpawnMenu ]
+  suffix: Inaprovaline
   components:
   - type: SolutionContainerManager
     solutions:
       beaker:
         maxVol: 50
         reagents:
-        - ReagentId: DexalinPlus
+        - ReagentId: Inaprovaline
           Quantity: 50
 
 - type: entity
-  suffix: saline
   parent: Beaker
   id: BeakerSmallSaline
   categories: [ HideSpawnMenu ]
+  suffix: Saline
   components:
   - type: SolutionContainerManager
     solutions:
@@ -216,6 +216,62 @@
         maxVol: 50
         reagents:
         - ReagentId: Saline
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallArith
+  categories: [ HideSpawnMenu ]
+  suffix: Arithrazine
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Arithrazine
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallDiphen
+  categories: [ HideSpawnMenu ]
+  suffix: Diphenhydramine
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Diphenhydramine
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallBruiz
+  categories: [ HideSpawnMenu ]
+  suffix: Bruizine
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Bruizine
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallLace
+  categories: [ HideSpawnMenu ]
+  suffix: Lacerinol
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Lacerinol
           Quantity: 50
 
 - type: entity

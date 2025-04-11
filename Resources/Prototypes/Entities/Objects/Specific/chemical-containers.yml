@@ -86,9 +86,9 @@
 
 - type: entity
   parent: Jug
-  suffix: punct & tranex
-  id: JugPunct
+  id: JugPunctTranex
   categories: [ HideSpawnMenu ]
+  suffix: punct & tranex
   components:
   - type: SolutionContainerManager
     solutions:
@@ -101,9 +101,9 @@
 
 - type: entity
   parent: Jug
-  suffix: pyra & derma
-  id: JugPyra
+  id: JugPyraDerma
   categories: [ HideSpawnMenu ]
+  suffix: pyra & derma
   components:
   - type: SolutionContainerManager
     solutions:
@@ -116,9 +116,9 @@
 
 - type: entity
   parent: Jug
-  suffix: tricordazine
   id: JugTrico
   categories: [ HideSpawnMenu ]
+  suffix: tricordazine
   components:
   - type: SolutionContainerManager
     solutions:

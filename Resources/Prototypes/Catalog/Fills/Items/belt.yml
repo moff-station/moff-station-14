@@ -182,8 +182,7 @@
     contents:
     - id: Truncheon
     - id: MedkitCombatFilled
-    - id: PinpointerNuclear
-    - id: PhoneInstrument
+    - id: Binoculars
     - id: MagazineMagnum
       amount: 2
 
@@ -198,6 +197,35 @@
     - id: MedkitCombatFilled
     - id: Handcuffs
       amount: 2
+    - id: MagazinePistol
+      amount: 2
+
+- type: entity
+  id: ClothingBeltMilitaryWebbingERTEngineerFilled
+  parent: ClothingBeltMilitaryWebbingNT
+  suffix: Engineering, Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: JawsOfLife
+    - id: PowerDrill
+    - id: WelderExperimental
+    - id: Multitool
+    - id: HolofanProjector
+    - id: MagazinePistol
+      amount: 2
+
+- type: entity
+  id: ClothingBeltMilitaryWebbingERTMedicFilled
+  parent: ClothingBeltMilitaryWebbingNT
+  suffix: Medical, Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: DefibrillatorCompact
+    - id: MedkitCombatFilled
+    - id: ClothingEyesGlassesChemical
+    - id: CrowbarRed
     - id: MagazinePistol
       amount: 2
 

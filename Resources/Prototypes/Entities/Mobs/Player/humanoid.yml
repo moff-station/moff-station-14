@@ -373,6 +373,30 @@
     prototypes: [ ERTEngineerGearEVA ]
     roleLoadout: [ RoleSurvivalEVA ]
 
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerArmed
+  parent: RandomHumanoidSpawnerERTEngineerEVA
+  name: ERT combat engineer
+  suffix: ERTRole, EVA, Longarm
+  components:
+  - type: RandomHumanoidSpawner
+    settings: ERTEngineerArmed
+
+- type: randomHumanoidSettings
+  id: ERTEngineerArmed
+  parent: ERTEngineerEVA
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-engineer-name
+    description: ghost-role-information-ert-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTEngineer
+  - type: Loadout
+    prototypes: [ ERTEngineerGearArmed]
+    roleLoadout: [ RoleSurvivalEVA ]
+
 ## ERT Security
 
 - type: entity
