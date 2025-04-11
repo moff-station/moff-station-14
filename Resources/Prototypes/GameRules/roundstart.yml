@@ -114,7 +114,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 0 # Moffstation - Altering required playercount for certain antags, due to tendency not to meet the required readycount
+    minPlayers: 15 # Moffstation - Altering required playercount for certain antags, due to tendency not to meet the required readycount
   - type: LoadMapRule
     mapPath: /Maps/Nonstations/nukieplanet.yml
   - type: AntagSelection
@@ -126,7 +126,7 @@
       startingGear: SyndicateCommanderGearFull
       roleLoadout:
       - RoleSurvivalNukie
-      - JobNukeopsCommander
+      - JobNukeopsCommander   # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata
@@ -144,7 +144,7 @@
       startingGear: SyndicateOperativeMedicFull
       roleLoadout:
       - RoleSurvivalNukie
-      - JobNukeopsMedic
+      - JobNukeopsMedic   # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata
@@ -164,7 +164,7 @@
       startingGear: SyndicateOperativeGearFull
       roleLoadout:
       - RoleSurvivalNukie
-      - JobNukeops
+      - JobNukeops  # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata

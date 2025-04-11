@@ -145,6 +145,7 @@ public sealed class LoadoutSystem : EntitySystem
         Equip(uid, component.StartingGear, component.RoleLoadout);
     }
 
+    // Moffstation - Begin - Custom function for Equipping which allows for antag roles to make use of loadouts
     public void LoadoutAwareEquip(EntityUid uid,
         ICommonSession session,
         List<ProtoId<StartingGearPrototype>>? startingGear,
@@ -175,6 +176,7 @@ public sealed class LoadoutSystem : EntitySystem
         }
         GearEquipped(uid);
     }
+    // Moffstation - End
 
     public void Equip(EntityUid uid, List<ProtoId<StartingGearPrototype>>? startingGear,
         List<ProtoId<RoleLoadoutPrototype>>? loadoutGroups)

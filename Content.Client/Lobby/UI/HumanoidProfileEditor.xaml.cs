@@ -693,6 +693,7 @@ namespace Content.Client.Lobby.UI
 
                 antagContainer.AddChild(selector);
 
+                // Moffstation - Begin - Enable loadouts for antags
                 var loadoutWindowBtn = new Button()
                 {
                     // Disabled = true,
@@ -731,6 +732,7 @@ namespace Content.Client.Lobby.UI
                         OpenLoadout(null, loadout, roleLoadoutProto);
                     };
                 }
+                // Moffstation - End
 
                 AntagList.AddChild(antagContainer);
             }
