@@ -3,7 +3,9 @@
   id: UplinkMagazineShotgun
   name: uplink-magazine-shotgun-name
   description: uplink-magazine-shotgun-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Shotgun/m12.rsi, state: pellets }
+  icon:
+    sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Shotgun/m12.rsi
+    state: pellets
   productEntity: MagazineShotgun
   cost:
     Telecrystal: 2
