@@ -80,15 +80,9 @@
 #Syndicate Operative Outfit - Basic
 - type: startingGear
   id: SyndicateOperativeGearBasic
-#  parent: SyndicateOperativeGearExtremelyBasic
+  parent: SyndicateOperativeGearExtremelyBasic
   equipment:
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
-    shoes: ClothingShoesBootsCombatFilled
     pocket1: BaseUplinkRadio40TC
     id: SyndiPDA
-  storage:
-    back:
-    - WeaponPistolViper
-    - PinpointerSyndicateNuclear
-    - DeathAcidifierImplanter

@@ -167,10 +167,10 @@
       - JobNukeops
       components:
       - type: NukeOperative
-#      - type: RandomMetadata
-#        nameSegments:
-#        - NamesSyndicateNormal
-#        nameFormat: name-format-nukie-operator
+      - type: RandomMetadata
+        nameSegments:
+        - NamesSyndicateNormal
+        nameFormat: name-format-nukie-operator
       - type: NpcFactionMember
         factions:
         - Syndicate
