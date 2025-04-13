@@ -130,6 +130,7 @@
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
     neck: ClothingNeckStoleChaplain
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterVestWeb
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
@@ -189,39 +190,6 @@
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - CombatKnife
-    belt:
-    - Lantern
-    - Lantern
-    - Lantern
-    - Lantern
-
-- type: startingGear
-  id: ERTMarinesGearPaladin
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitERTChaplain
-    back: ClothingBackpackERTChaplain
-    shoes: ClothingShoesBootsMagSci
-    mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudMedSec
-    neck: ClothingNeckStoleChaplain
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitERTChaplain
-    id: ERTChaplainPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingNT
-    pocket1: EnergySwordNT
-    pocket2: EnergyShieldNT
-  storage:
-    back:
-    - BoxBodyBag
-    - BoxCandle
-    - MagazinePistol
-    - CrowbarRed
-    - Bible
-    - Lighter
-    - WeaponPistolMk58
-    - GrenadeFlashBang
-    - MedkitCombatFilled
     belt:
     - Lantern
     - Lantern
@@ -441,7 +409,7 @@
     - WeaponRifleLecter
   storage:
     back:
-    - WeaponLaserCannon
+    - WeaponPulseCarbine
     - GrenadeShrapnel
     - SmokeGrenade
     - CrowbarRed
