@@ -60,6 +60,16 @@
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
 
+# Moffstation - Begin - Loadout for reinforcements which comes with clothes
+#Nukie Reinforcement Gear
+- type: startingGear
+  id: SyndicateOperativeReinforcementGear
+  parent: SyndicateOperativeGearFullNoUplink
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: ClothingBackpackDuffelSyndicate
+# Moffstation - End
+
 #Nuclear Operative Gear
 - type: startingGear
   id: SyndicateOperativeGearFull
