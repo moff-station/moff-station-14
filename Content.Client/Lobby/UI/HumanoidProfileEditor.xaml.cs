@@ -1502,6 +1502,11 @@ namespace Content.Client.Lobby.UI
             if (species != null)
                 _defaultHeight = species.DefaultHeight;
 
+            // This dirty hack deals with "uninitialized" height values. Without this, preexisting or weirdly imported
+            // characters' heights default to the minimum value on the slider.
+            if (Profile.Height == 0.0)
+                Profile.Height = _defaultHeight;
+
             var prototype = _prototypeManager.Index(Profile.Species);
             var sliderPercent = (Profile.Height - prototype.MinHeight) /
                                 (prototype.MaxHeight - prototype.MinHeight);
