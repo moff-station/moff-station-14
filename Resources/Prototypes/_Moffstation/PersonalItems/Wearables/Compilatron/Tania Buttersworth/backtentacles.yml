@@ -1,0 +1,21 @@
+# Player: Compilatron - Character: Tania Buttersworth
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: PersonalItemBackTentacles
+  name: Tania's Tentacles
+  description: A set of 6 tentacles made of slime, that could probably be used to hold items.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: icon
+    sprite: "_Moffstation/PersonalItems/Wearables/Compilatron/Tania Buttersworth/backtentacles.rsi"
+
+- type: loadout
+  id: PersonalItemBackTentacles
+  storage:
+    back:
+    - PersonalItemBackTentacles
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "Tania Buttersworth"
