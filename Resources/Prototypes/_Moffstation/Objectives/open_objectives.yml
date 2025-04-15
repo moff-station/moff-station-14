@@ -83,6 +83,13 @@
   - type: FreeObjective
 
 # Maroon alive objective
+- type: entity
+  abstract: true
+  parent: BaseTraitorObjective
+  id: MaroonAliveObjective
+  components:
+  - type: FreeObjective
+
 
 # thieves
 
@@ -111,7 +118,25 @@
   - type: FreeObjective
 
 # Rob a certain department
+- type: entity
+  abstract: true
+  parent: BaseThiefObjective
+  id: RobDepartmentObjective
+  components:
+  - type: FreeObjective
 
 # Steal personal items
+- type: entity
+  abstract: true
+  parent: BaseThiefObjective
+  id: StealPersonalItemsObjective
+  components:
+  - type: FreeObjective
 
 # Steal the AI
+- type: entity
+  abstract: true
+  parent: BaseThiefObjective
+  id: StealAIItemsObjective
+  components:
+  - type: FreeObjective
