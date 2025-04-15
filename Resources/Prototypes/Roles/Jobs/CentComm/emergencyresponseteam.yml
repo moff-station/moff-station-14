@@ -13,6 +13,9 @@
   - AllAccess
   access:
   - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTLeaderGear
@@ -31,10 +34,11 @@
     neck: Whistle
     pocket1: WeaponPistolN1984
     pocket2: FlashlightLantern
+  suit_storage:
+    - WeaponDisablerSMG
   storage:
     back:
     - PortableRecharger
-    - WeaponDisablerSMG
     - Zipties
     - Zipties
     - PinpointerNuclear
@@ -48,7 +52,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagSci
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedSec
     gloves: ClothingHandsGlovesCombat

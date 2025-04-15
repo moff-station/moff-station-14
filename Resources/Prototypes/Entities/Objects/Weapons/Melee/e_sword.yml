@@ -23,7 +23,6 @@
   - type: ItemToggleSize
     activatedSize: Huge
   - type: ItemTogglePointLight
-    Moffstation_ToggleVisualsColorModulatesLights: true # Moffstation
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/Weapons/eblade1.ogg
@@ -77,7 +76,7 @@
   name: energy sword
   parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
   id: EnergySword
-  description: A very loud and dangerous sword with a beam made of pure, concentrated plasma. Cuts through unarmored targets like butter.
+  description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Cuts through unarmored targets like butter.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_sword.rsi
@@ -113,9 +112,9 @@
         volume: -3
         variation: 0.250
     activatedDamage:
-        types:
-            Slash: 10
-            Heat: 10
+      types:
+        Slash: 10
+        Heat: 10
     deactivatedSecret: true
   - type: ItemToggleActiveSound
     activeSound:
@@ -132,12 +131,12 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger_loud.rsi
     layers:
-      - state: e_sword
-      - state: e_sword_blade
-        color: "#FFFFFF"
-        visible: false
-        shader: unshaded
-        map: [ "blade" ]
+    - state: e_sword
+    - state: e_sword_blade
+      color: "#FFFFFF"
+      visible: false
+      shader: unshaded
+      map: [ "blade" ]
   - type: MeleeWeapon
     wideAnimationRotation: 145
     attackRate: 1
@@ -154,12 +153,6 @@
     energy: 1.5
     color: white
     netsync: false
-
-- type: entity
-  parent: [BaseCentcommContraband, EnergySword]
-  id: EnergySwordNT
-  suffix: NT
-  description: A very loud and dangerous sword with a beam made of pure, concentrated plasma. Wielded by Nanotrasen's most elite forces, NT and Cybersun both claim ownership over the design.
 
 - type: entity
   name: pen
@@ -204,12 +197,12 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger.rsi
     layers:
-      - state: e_sword
-      - state: e_sword_blade
-        color: "#FFFFFF"
-        visible: false
-        shader: unshaded
-        map: [ "blade" ]
+    - state: e_sword
+    - state: e_sword_blade
+      color: "#FFFFFF"
+      visible: false
+      shader: unshaded
+      map: [ "blade" ]
   - type: Item
     size: Tiny
     sprite: Objects/Weapons/Melee/e_dagger.rsi
@@ -256,19 +249,19 @@
   components:
   - type: ItemToggleMeleeWeapon
     activatedDamage:
-        types:
-            Slash: 10
-            Heat: 12
+      types:
+        Slash: 10
+        Heat: 12
     deactivatedSecret: true
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_cutlass.rsi
     layers:
-      - state: e_cutlass
-      - state: e_cutlass_blade
-        color: "#e95151"
-        visible: false
-        shader: unshaded
-        map: [ "blade" ]
+    - state: e_cutlass
+    - state: e_cutlass_blade
+      color: "#e95151"
+      visible: false
+      shader: unshaded
+      map: [ "blade" ]
   - type: Item
     sprite: Objects/Weapons/Melee/e_cutlass.rsi
 
@@ -296,10 +289,10 @@
         volume: 3
         variation: 0.250
     activatedDamage:
-        types:
-            Slash: 12
-            Heat: 12
-            Structural: 15
+      types:
+        Slash: 12
+        Heat: 12
+        Structural: 15
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
@@ -324,12 +317,12 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_sword_double.rsi
     layers:
-      - state: e_sword_double
-      - state: e_sword_double_blade
-        color: "#FFFFFF"
-        visible: false
-        shader: unshaded
-        map: [ "blade" ]
+    - state: e_sword_double
+    - state: e_sword_double_blade
+      color: "#FFFFFF"
+      visible: false
+      shader: unshaded
+      map: [ "blade" ]
   - type: Item
     size: Small
     sprite: Objects/Weapons/Melee/e_sword_double-inhands.rsi
