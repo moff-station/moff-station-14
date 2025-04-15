@@ -99,6 +99,14 @@ public sealed partial class HumanoidAppearanceComponent : Component
 
     [DataField]
     public ProtoId<MarkingPrototype>? UndergarmentBottom = new ProtoId<MarkingPrototype>("UndergarmentBottomBoxers");
+
+    // Moffstation Start - CD Height
+    /// <summary>
+    ///     The height of this humanoid.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float Height = 1f;
+    // Moffstation End
 }
 
 [DataDefinition]

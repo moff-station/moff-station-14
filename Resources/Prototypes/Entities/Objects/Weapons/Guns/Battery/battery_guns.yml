@@ -112,6 +112,11 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    # Moffstation - End
     sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
   - type: MagazineVisuals
     magState: mag
@@ -199,11 +204,20 @@
   - type: Appearance
 
 - type: entity
-  name: practice laser rifle
+  # Moffstation - Begin (Weapon Resizing)
+  #name: practice laser rifle
+  name: practice laser carbine
+  # Moffstation - End
   parent: [BaseWeaponBattery, BaseGunWieldable]
   id: WeaponLaserCarbinePractice
   description: This modified laser rifle fires nearly harmless beams in the 40-watt range, for target practice.
   components:
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,1
+  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
     layers:
@@ -230,7 +244,10 @@
     price: 300
 
 - type: entity
-  name: laser rifle
+  # Moffstation - Begin (Weapon Resizing)
+  #name: laser rifle
+  name: laser carbine
+  # Moffstation - End
   parent: [WeaponLaserCarbinePractice, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponLaserCarbine
   description: Favoured by Nanotrasen Security for being cheap and easy to use.
@@ -281,6 +298,12 @@
   id: WeaponPulseCarbine
   description: A high tech energy carbine favoured by the NT-ERT operatives.
   components:
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,1
+  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
     layers:
@@ -317,6 +340,12 @@
   id: WeaponPulseRifle
   description: A weapon that is almost as infamous as its users.
   components:
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,5,1
+  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
     layers:
@@ -349,6 +378,12 @@
   id: WeaponLaserCannon
   description: A heavy duty, high powered laser weapon.
   components:
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,5,1
+  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
     layers:
@@ -412,6 +447,12 @@
   id: WeaponXrayCannon
   description: An experimental weapon that uses concentrated x-ray energy against its target.
   components:
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,5,1
+  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/xray.rsi
     layers:
@@ -509,6 +550,10 @@
   components:
   - type: Item
     size: Large
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,2,1
+    # Moffstation - End
   - type: Tag
     tags:
       - Taser
@@ -581,6 +626,11 @@
   id: WeaponAntiqueLaser
   description: This is an antique laser pistol. All craftsmanship is of the highest quality. It is decorated with a mahogany grip and chrome filigree. The object menaces with spikes of energy. On the item is an image of a captain and a clown. The clown is dead. The captain is striking a heroic pose.
   components:
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    shape:
+    - 0,0,1,1
+  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/antiquelasergun.rsi
     layers:
@@ -627,6 +677,10 @@
   components:
   - type: Item
     size: Normal  # Intentionally larger than other pistols
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,1,1
+    # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
     layers:
@@ -782,7 +836,10 @@
   - type: Item
     size: Large
     shape:
-    - 0,0,3,1
+    # Moffstation - Begin (Weapon Resizing)
+    #- 0,0,3,1
+    - 0,0,4,1
+    # Moffstation - End
     sprite: Objects/Weapons/Guns/Battery/inhands_64x.rsi
     heldPrefix: energy
   - type: Tag

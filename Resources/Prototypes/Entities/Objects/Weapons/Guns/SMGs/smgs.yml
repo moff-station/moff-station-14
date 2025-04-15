@@ -8,6 +8,10 @@
   - type: Sprite
   - type: Item
     size: Large
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,2,1
+    # Moffstation - End
   - type: Clothing
     sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
     quickEquip: false
@@ -134,6 +138,11 @@
           map: ["enum.GunVisualLayers.Mag"]
     - type: Clothing
       sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
+    # Moffstation - Begin (Weapon Resizing)
+    - type: Item
+      shape:
+      - 0,0,3,1
+    # Moffstation - End
     - type: Wieldable
       unwieldOnUse: false
     - type: GunWieldBonus

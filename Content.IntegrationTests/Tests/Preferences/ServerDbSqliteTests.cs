@@ -39,6 +39,7 @@ namespace Content.IntegrationTests.Tests.Preferences
                 Name = "Charlie Charlieson",
                 FlavorText = "The biggest boy around.",
                 Species = "Human",
+                Height = 1, // Moffstation - CD Height
                 Age = 21,
                 Appearance = new(
                     "Afro",

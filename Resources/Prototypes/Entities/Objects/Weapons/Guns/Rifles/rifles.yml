@@ -8,6 +8,10 @@
   - type: Sprite
   - type: Item
     size: Huge
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,4,2
+    # Moffstation - End
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
     quickEquip: false

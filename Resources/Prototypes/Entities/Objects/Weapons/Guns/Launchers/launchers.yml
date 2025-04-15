@@ -12,7 +12,10 @@
     slots:
     - Back
   - type: Item
-    size: Huge
+    # Moffstation - Begin (Weapon Resizing)
+    #size: Huge
+    size: Ginormous
+    # Moffstation - End
   - type: StaticPrice
     price: 500
   - type: ContainerContainer
@@ -36,6 +39,12 @@
     slots:
     - Back
     - suitStorage
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,3
+  # Moffstation - End
   - type: AmmoCounter
   - type: Gun
     fireRate: 1

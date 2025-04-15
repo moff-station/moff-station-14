@@ -1,3 +1,4 @@
+using System.Numerics; // Moffstation
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
@@ -44,6 +45,13 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     {
         UpdateLayers(component, sprite);
         ApplyMarkingSet(component, sprite);
+
+        // Moffstation Start - CD Height
+        var speciesPrototype = _prototypeManager.Index(component.Species);
+        var height = Math.Clamp(MathF.Round(component.Height, 2), speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // should NOT be locked, at all
+
+        sprite.Scale = new Vector2(speciesPrototype.ScaleHeight ? height : 1f, height);
+        // Moffstation End
 
         sprite[sprite.LayerMapReserveBlank(HumanoidVisualLayers.Eyes)].Color = component.EyeColor;
     }
@@ -212,6 +220,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.Species = profile.Species;
         humanoid.SkinColor = profile.Appearance.SkinColor;
         humanoid.EyeColor = profile.Appearance.EyeColor;
+        humanoid.Height = profile.Height; // Moffstation - CD Height
 
         UpdateSprite(humanoid, Comp<SpriteComponent>(uid));
     }
