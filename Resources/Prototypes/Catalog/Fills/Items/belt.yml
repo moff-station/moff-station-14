@@ -230,6 +230,22 @@
       amount: 2
 
 - type: entity
+  id: ClothingBeltMilitaryWebbingERTJanitorFilled
+  parent: ClothingBeltMilitaryWebbingNT
+  suffix: Janitor, Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: SoapNT
+    - id: MegaSprayBottleSpaceCleaner
+    - id: LightReplacer
+    - id: Plunger
+    - id: Screwdriver
+    - id: CrowbarRed
+    - id: MagazinePistol
+      amount: 2
+
+- type: entity
   parent: ClothingBeltWand
   id: ClothingBeltWandFilled
   suffix: Filled

@@ -192,16 +192,16 @@
 
 - type: entity
   parent: Beaker
-  id: BeakerSmallInap
+  id: BeakerSmallDex+
   categories: [ HideSpawnMenu ]
-  suffix: Inaprovaline
+  suffix: Dexalin+
   components:
   - type: SolutionContainerManager
     solutions:
       beaker:
         maxVol: 50
         reagents:
-        - ReagentId: Inaprovaline
+        - ReagentId: Dexalin+
           Quantity: 50
 
 - type: entity

@@ -521,7 +521,7 @@
     - JugPunctTranex
     - JugPyraDerma
     - JugTrico
-    - BeakerSmallInap
+    - BeakerSmallDex+
     - BeakerSmallSaline
     - BeakerSmallBruiz
     - BeakerSmallLace
@@ -551,7 +551,7 @@
     - JugPunctTranex
     - JugPyraDerma
     - JugTrico
-    - BeakerSmallInap
+    - BeakerSmallDex+
     - BeakerSmallSaline
     - BeakerSmallBruiz
     - BeakerSmallLace
@@ -574,21 +574,23 @@
     pocket1: WeaponPistolMk58
     pocket2: Hypospray
   inhand:
+    - WeaponSubMachineGunDrozd
     - ClothingBackpackDuffelMedical
   storage:
     back:
     - JugPunctTranex
     - JugPyraDerma
     - JugTrico
-    - BeakerSmallInap
+    - BeakerSmallDex+
     - BeakerSmallSaline
-    - WeaponSubMachineGunDrozd
+    - BeakerSmallBruiz
+    - BeakerSmallLace
+    - BeakerSmallArith
+    - BeakerSmallDiphen
     - MagazinePistolSubMachineGun
     - MagazinePistolSubMachineGun
     - MagazinePistolSubMachineGunIncendiary
     - MagazinePistolSubMachineGunUranium
-    - BeakerSmallArith
-    - BeakerSmallDiphen
 
 # Janitor
 - type: job
@@ -619,29 +621,23 @@
     outerClothing: ClothingOuterVestWeb
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltJanitor
+    belt: ClothingBeltMilitaryWebbingERTJanitorFilled
     pocket1: WeaponPistolMk58
     pocket2: FlashlightLantern
   storage:
     back:
-    - BoxLightMixed
-    - MagazinePistol
-    - CrowbarRed
     - AdvMopItem
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CombatKnife
-    belt:
-    - SoapNT
-    - MegaSprayBottleSpaceCleaner
-    - LightReplacer
-    - CleanerGrenade
-    - CleanerGrenade
-    - Plunger
+    - Screwdriver
+    - WelderIndustrialAdvanced
     - TrashBag
+    - TrashBag
+    - CombatKnife
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
 
 - type: startingGear
   id: ERTJanitorGearEVA
@@ -655,25 +651,19 @@
     outerClothing: ClothingOuterHardsuitERTJanitor
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltJanitor
+    belt: ClothingBeltMilitaryWebbingERTJanitorFilled
     pocket1: WeaponPistolMk58
     pocket2: CombatKnife
   storage:
     back:
-    - BoxLightMixed
-    - MagazinePistol
-    - CrowbarRed
     - AdvMopItem
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    belt:
-    - SoapNT
-    - MegaSprayBottleSpaceCleaner
-    - LightReplacer
-    - CleanerGrenade
-    - CleanerGrenade
-    - Plunger
+    - Screwdriver
+    - WelderIndustrialAdvanced
     - TrashBag
+    - TrashBag
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
+    - CleanerGrenade
