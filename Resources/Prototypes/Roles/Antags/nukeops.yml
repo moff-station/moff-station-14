@@ -44,11 +44,11 @@
     # Moffstation - Begin - Removing items duplicated by the loadout
 #    jumpsuit: ClothingUniformJumpsuitOperative
 #    back: ClothingBackpackDuffelSyndicate
+#    gloves: ClothingHandsGlovesCombat
     #Moffstation - End
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
-    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitSyndie
     shoes: ClothingShoesBootsCombatFilled
     id: SyndiPDA
@@ -60,7 +60,7 @@
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
 
-# Moffstation - Begin - Loadout for reinforcements which comes with clothes
+# Moffstation - Begin - Gear for reinforcements, needs to add the stuff that is normally covered by loadouts
 #Nukie Reinforcement Gear
 - type: startingGear
   id: SyndicateOperativeReinforcementGear
@@ -68,6 +68,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitOperative
     back: ClothingBackpackDuffelSyndicate
+    gloves: ClothingHandsGlovesCombat
 # Moffstation - End
 
 #Nuclear Operative Gear

@@ -9,6 +9,21 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtOperative
 
+- type: loadout
+  id: SyndieFormalSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSyndieFormal
+
+- type: loadout
+  id: SyndieFormalSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSyndieFormalDress
+
+- type: loadout
+  id: TacticalMaidSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTacticalMaid
+
 # Back
 - type: loadout
   id: NukieBackpack
@@ -24,6 +39,17 @@
   id: NukieDuffel
   equipment:
     back: ClothingBackpackDuffelSyndicateOperative
+
+# Gloves
+- type: loadout
+  id: CombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesCombat
+
+- type: loadout
+  id: CombatMaidGloves
+  equipment:
+    gloves: ClothingHandsTacticalMaidGloves
 
 # Medical Backpacks
 - type: loadout
