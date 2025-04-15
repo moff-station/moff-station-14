@@ -12,6 +12,7 @@ using Content.Server.Preferences.Managers;
 using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Server.Shuttles.Components;
+using Content.Server.Station.Events;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Antag;
 using Content.Shared.Clothing;
@@ -24,7 +25,7 @@ using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
-using Content.Shared.Preferences;
+using Content.Shared.Preferences;   // Moffstation - Makes obtaining loadout info possible
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
