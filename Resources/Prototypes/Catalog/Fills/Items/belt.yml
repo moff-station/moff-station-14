@@ -180,16 +180,62 @@
   components:
   - type: StorageFill
     contents:
-    - id: Truncheon
-    - id: MedkitCombatFilled
-    - id: Binoculars
-    - id: MagazineMagnum
-      amount: 2
+      - id: PinpointerNuclear
+      - id: PhoneInstrument
+      - id: MedkitCombatFilled
+      - id: Binoculars
+      - id: MagazineMagnum
+        amount: 2
 
 - type: entity
-  id: ClothingBeltMilitaryWebbingERTSecurityFilled
   parent: ClothingBeltMilitaryWebbingNT
+  id: ClothingBeltMilitaryWebbingERTChaplainFilled
+  suffix: Chaplain, Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: Bible
+      - id: Lantern
+      - id: Lantern
+      - id: Lantern
+      - id: Lantern
+      - id: DrinkWaterMelonJuiceJug
+      - id: FoodBakedBunHotX
+        amount: 2
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingNT
+  id: ClothingBeltMilitaryWebbingERTEngineerFilled
+  suffix: Engineering, Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: JawsOfLife
+    - id: PowerDrill
+    - id: WelderIndustrialAdvanced
+    - id: Multitool
+    - id: HolofanProjector
+    - id: trayScanner
+    - id: GasAnalyzer
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingNT
+  id: ClothingBeltMilitaryWebbingERTSecurityFilled
   suffix: Security, Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: Stunbaton
+      - id: MedkitCombatFilled
+      - id: Handcuffs
+        amount: 2
+      - id: TearGasGrenade
+      - id: GrenadeStinger
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingNT
+  id: ClothingBeltMilitaryWebbingERTCombatFilled
+  suffix: Combat, Filled
   components:
   - type: StorageFill
     contents:
@@ -197,41 +243,26 @@
     - id: MedkitCombatFilled
     - id: Handcuffs
       amount: 2
-    - id: MagazinePistol
-      amount: 2
+    - id: SmokeGrenade
+    - id: GrenadeShrapnel
 
 - type: entity
-  id: ClothingBeltMilitaryWebbingERTEngineerFilled
   parent: ClothingBeltMilitaryWebbingNT
-  suffix: Engineering, Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: JawsOfLife
-    - id: PowerDrill
-    - id: WelderExperimental
-    - id: Multitool
-    - id: HolofanProjector
-    - id: MagazinePistol
-      amount: 2
-
-- type: entity
-  id: ClothingBeltMilitaryWebbingERTMedicFilled
-  parent: ClothingBeltMilitaryWebbingNT
+  id: ClothingBeltMilitaryWebbingERTMedicalFilled
   suffix: Medical, Filled
   components:
   - type: StorageFill
     contents:
-    - id: DefibrillatorCompact
-    - id: MedkitCombatFilled
-    - id: ClothingEyesGlassesChemical
-    - id: CrowbarRed
-    - id: MagazinePistol
-      amount: 2
+      - id: DefibrillatorCompact
+      - id: MedkitCombatFilled
+      - id: ClothingEyesGlassesChemical
+      - id: CrowbarRed
+      - id: MagazinePistol
+        amount: 2
 
 - type: entity
-  id: ClothingBeltMilitaryWebbingERTJanitorFilled
   parent: ClothingBeltMilitaryWebbingNT
+  id: ClothingBeltMilitaryWebbingERTJanitorFilled
   suffix: Janitor, Filled
   components:
   - type: StorageFill

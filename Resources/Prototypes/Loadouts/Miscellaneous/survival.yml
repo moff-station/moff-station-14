@@ -160,6 +160,25 @@
     back:
     - BoxSurvivalSyndicateNitrogen
 
+# ERT
+- type: loadout
+  id: EmergencyOxygenERT
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreather
+  storage:
+    back:
+    - BoxSurvivalERT
+
+- type: loadout
+  id: EmergencyNitrogenERT
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreather
+  storage:
+    back:
+    - BoxSurvivalERTNitrogen
+
 # Pre-equipped species gear
 
 # Full tank for vox as part of any Survival loadout

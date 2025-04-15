@@ -634,6 +634,13 @@
   - GroupPocketTankDouble
 
 - type: roleLoadout
+  id: RoleSurvivalERT
+  groups:
+  - SurvivalERT
+  - GroupSpeciesBreathTool
+  - GroupPocketTankDouble
+
+- type: roleLoadout
   id: RoleSurvivalEVA
   groups:
   - GroupEVATank

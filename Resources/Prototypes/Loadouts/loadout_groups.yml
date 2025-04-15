@@ -1340,6 +1340,16 @@
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
+  id: SurvivalERT
+  name: loadout-group-survival-ERT
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenERT
+  - EmergencyOxygenERT
+  - LoadoutSpeciesVoxNitrogen
+
+- type: loadoutGroup
   id: GroupSpeciesBreathTool
   name: loadout-group-breath-tool
   minLimit: 1

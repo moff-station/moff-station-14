@@ -199,12 +199,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/ertleader.rsi
-  - type: Storage
-    grid:
-    - 0,0,7,4
-  - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.1
 
