@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseItem
-  id: PersonalItemStationBlueprints
+  id: PersonalItemSharedStationBlueprints
   name: Station blueprints
   description: A highly detailed schematic for a space station, complete with floor plan, wiring, pipe networks and other infrastructure. Clearly the proud work of a veteran station engineer.
   suffix: PersonalItem
@@ -25,10 +25,10 @@
         type: StationMapBoundUserInterface
 
 - type: loadout
-  id: PersonalItemStationBlueprints
+  id: PersonalItemSharedStationBlueprints
   storage:
     back:
-    - PersonalItemStationBlueprints
+    - PersonalItemSharedStationBlueprints
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
