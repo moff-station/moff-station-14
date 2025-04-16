@@ -481,10 +481,11 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             Log.Debug($"Assigned {ToPrettyString(curMind)} as antagonist: {ToPrettyString(ent)}");
             _adminLogger.Add(LogType.AntagSelection, $"Assigned {ToPrettyString(curMind)} as antagonist: {ToPrettyString(ent)}");
         }
-        else
+        else // Moffstation Start - Moved to else statement so starting gear doesn't get duplicated
         {
-            _loadout.Equip(player, gear, def.RoleLoadout);  // Moffstation - Moved to else statement so starting gear doesnt get duplicated
+            _loadout.Equip(player, gear, def.RoleLoadout);
         }
+        // Moffstation End
 
         var afterEv = new AfterAntagEntitySelectedEvent(session, player, ent, def);
         RaiseLocalEvent(ent, ref afterEv, true);
