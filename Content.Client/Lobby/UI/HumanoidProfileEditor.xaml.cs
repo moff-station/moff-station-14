@@ -704,8 +704,7 @@ namespace Content.Client.Lobby.UI
 
                 antagContainer.AddChild(loadoutWindowBtn);
 
-                var collection = IoCManager.Instance!;
-                var protoManager = collection.Resolve<IPrototypeManager>();
+                var protoManager = IoCManager.Instance!.Resolve<IPrototypeManager>();
 
                 // If no loadout found then disabled button
                 if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(antag.ID), out var roleLoadoutProto))
