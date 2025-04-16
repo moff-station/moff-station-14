@@ -497,24 +497,24 @@
   name: ERT security rifleman
   suffix: ERTRole, EVA, Longarm
   components:
-    - type: RandomMetadata
-    - type: RandomHumanoidSpawner
-      settings: ERTSecurityEVARifleman
+  - type: RandomMetadata
+  - type: RandomHumanoidSpawner
+    settings: ERTSecurityEVARifleman
 
 - type: randomHumanoidSettings
   parent: ERTSecurityEVA
   id: ERTSecurityEVARifleman
   components:
-    - type: GhostRole
-      name: ghost-role-information-ert-security-name
-      description: ghost-role-information-ert-security-description
-      rules: ghost-role-information-nonantagonist-rules
-      raffle:
-        settings: short
-      job: ERTSecurity
-    - type: Loadout
-      prototypes: [ ERTSecurityGearEVARifleman ]
-      roleLoadout: [ RoleSurvivalERT ]
+  - type: GhostRole
+    name: ghost-role-information-ert-security-name
+    description: ghost-role-information-ert-security-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTSecurity
+  - type: Loadout
+    prototypes: [ ERTSecurityGearEVARifleman ]
+    roleLoadout: [ RoleSurvivalERT ]
 
 ## ERT Medic
 

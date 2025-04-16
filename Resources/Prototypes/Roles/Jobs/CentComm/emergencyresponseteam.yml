@@ -89,7 +89,7 @@
     belt: ClothingBeltMilitaryWebbingERTLeaderFilled
     neck: Whistle
     pocket2: CombatKnife
-    suitstorage: WeaponSubMachineGunDrozd
+    suitstorage: WeaponRifleLecter
   storage:
     back:
       - WeaponPistolN1984
@@ -101,10 +101,10 @@
       - AirlossAutoInjector
       - Zipties
       - Zipties
-      - MagazinePistolSubMachineGun
-      - MagazinePistolSubMachineGun
-      - MagazinePistolSubMachineGunIncendiary
-      - MagazinePistolSubMachineGunUranium
+      - MagazineRifle
+      - MagazineRifle
+      - MagazineRifleIncendiary
+      - MagazineRifleUranium
 
 # Chaplain
 - type: job
@@ -288,10 +288,10 @@
       - MiningDrill
       - AirlossAutoInjector
       - AccessConfigurator
+      - RCDAmmo
+      - RCDAmmo
       - MagazinePistolSubMachineGun
       - MagazinePistolSubMachineGun
-      - MagazinePistolSubMachineGunIncendiary
-      - MagazinePistolSubMachineGunUranium
 
 # Security
 - type: job
@@ -402,14 +402,14 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingERTCombatFilled
     pocket2: WeaponPistolMk58
-    suitstorage: WeaponSubMachineGunDrozd
+    suitstorage: WeaponRifleLecter
   storage:
     back:
       - MagazinePistol
       - MagazinePistol
       - CrowbarRed
-      - MagazinePistolSubMachineGun
-      - MagazinePistolSubMachineGun
+      - MagazineRifle
+      - MagazineRifle
       - GrenadeShrapnel
       - GrenadeShrapnel
       - SmokeGrenade
@@ -432,17 +432,19 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingERTCombatFilled
     pocket2: WeaponPistolMk58
-    suitstorage: WeaponRifleLecter
+    suitstorage: PortableRecharger
+  inhand:
+    - WeaponPulseCarbine
   storage:
     back:
-      - WeaponPulseCarbine
       - MagazinePistol
       - MagazinePistol
+      - WeaponSubMachineGunDrozd
       - CrowbarRed
-      - MagazineRifle
-      - MagazineRifle
-      - MagazineRifleIncendiary
-      - MagazineRifleUranium
+      - MagazinePistolSubMachineGun
+      - MagazinePistolSubMachineGun
+      - MagazinePistolSubMachineGunIncendiary
+      - MagazinePistolSubMachineGunUranium
 
 # Medical
 - type: job
@@ -476,20 +478,19 @@
     belt: ClothingBeltMilitaryWebbingERTMedicalFilled
     pocket2: FlashlightLantern
   inhand:
-    - ClothingBackpackDuffelMedical
+    - ClothingBackpackDuffelMedicalFilled
   storage:
     back:
       - WeaponPistolMk58
       - Hypospray
       - JugPunctTranex
       - JugPyraDerma
-      - JugTrico
+      - AntiPoisonMedipen
       - BeakerSmallDex+
       - BeakerSmallSaline
+      - BeakerSmallArith
       - BeakerSmallBruiz
       - BeakerSmallLace
-      - BeakerSmallArith
-      - BeakerSmallDiphen
 
 - type: startingGear
   id: ERTMedicalGearEVA
@@ -506,20 +507,19 @@
     belt: ClothingBeltMilitaryWebbingERTMedicalFilled
     pocket2: CombatKnife
   inhand:
-    - ClothingBackpackDuffelMedical
+    - ClothingBackpackDuffelMedicalFilled
   storage:
     back:
       - WeaponPistolMk58
       - Hypospray
       - JugPunctTranex
       - JugPyraDerma
-      - JugTrico
+      - AntiPoisonMedipen
       - BeakerSmallDex+
       - BeakerSmallSaline
+      - BeakerSmallArith
       - BeakerSmallBruiz
       - BeakerSmallLace
-      - BeakerSmallArith
-      - BeakerSmallDiphen
 
 - type: startingGear
   id: ERTMedicalGearEVAArmed
@@ -537,22 +537,19 @@
     pocket2: CombatKnife
     suitstorage: WeaponSubMachineGunDrozd
   inhand:
-    - ClothingBackpackDuffelMedical
+    - ClothingBackpackDuffelMedicalFilled
   storage:
     back:
       - WeaponPistolMk58
       - Hypospray
       - JugPunctTranex
       - JugPyraDerma
-      - JugTrico
+      - AntiPoisonMedipen
       - BeakerSmallDex+
       - BeakerSmallSaline
       - BeakerSmallArith
-      - BeakerSmallDiphen
       - MagazinePistolSubMachineGun
       - MagazinePistolSubMachineGun
-      - MagazinePistolSubMachineGunIncendiary
-      - MagazinePistolSubMachineGunUranium
 
 # Janitor
 - type: job
@@ -579,27 +576,28 @@
     mask: ClothingMaskGasERT
     head: ClothingHeadHelmetERTJanitor
     eyes: ClothingEyesGlassesChemical
-    gloves: ClothingHandsGlovesColorPurple
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterVestWeb
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingERTJanitorFilled
-    pocket1: WeaponPistolMk58
     pocket2: FlashlightLantern
+  inhand:
+    - AdvMopItem
+    - BoxLightMixed
   storage:
     back:
-    - AdvMopItem
-    - Screwdriver
-    - WelderIndustrialAdvanced
-    - TrashBag
-    - TrashBag
-    - CombatKnife
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
+      - WeaponPistolMk58
+      - TrashBag
+      - WelderIndustrialAdvanced
+      - CombatKnife
+      - CleanerGrenade
+      - AirlossAutoInjector
+      - CleanerGrenade
+      - CleanerGrenade
+      - CleanerGrenade
+      - CleanerGrenade
+      - CleanerGrenade
 
 - type: startingGear
   id: ERTJanitorGearEVA
@@ -609,23 +607,25 @@
     shoes: ClothingShoesBootsMagSci
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesChemical
-    gloves: ClothingHandsGlovesColorPurple
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTJanitor
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingERTJanitorFilled
-    pocket1: WeaponPistolMk58
     pocket2: CombatKnife
+  inhand:
+    - AdvMopItem
+    - BoxLightMixed
   storage:
     back:
-    - AdvMopItem
-    - Screwdriver
-    - WelderIndustrialAdvanced
-    - TrashBag
-    - TrashBag
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
-    - CleanerGrenade
+      - WeaponPistolMk58
+      - TrashBag
+      - WelderIndustrialAdvanced
+      - CombatKnife
+      - CleanerGrenade
+      - AirlossAutoInjector
+      - CleanerGrenade
+      - CleanerGrenade
+      - CleanerGrenade
+      - CleanerGrenade
+      - CleanerGrenade
