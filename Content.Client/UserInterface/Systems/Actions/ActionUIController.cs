@@ -632,8 +632,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         if (args.Function != EngineKeyFunctions.UIClick && args.Function != EngineKeyFunctions.Use)
             return;
 
-        // Moffstation
-        HandleActionPressed(args, action);
+        HandleActionPressed(args, action); // Moffstation
     }
 
     private void OnWindowActionUnPressed(GUIBoundKeyEventArgs args, ActionButton dragged)
@@ -641,7 +640,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         if (args.Function != EngineKeyFunctions.UIClick && args.Function != EngineKeyFunctions.Use)
             return;
 
-        HandleActionUnpressed(args, dragged);
+        HandleActionUnpressed(args, dragged); // Moffstation
     }
 
     private void OnWindowActionFocusExisted(ActionButton button)
