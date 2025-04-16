@@ -162,9 +162,7 @@ public sealed class LoadoutSystem : EntitySystem
                 RoleLoadout? loadout = null;
                 if (_protoMan.TryIndex(antagLoadout, out var roleProto))
                 {
-                    profile?.Loadouts.TryGetValue(antagLoadout, out loadout);
-
-                    if (loadout == null)
+                    if (!profile.Loadouts.TryGetValue(antagLoadout, out var loadout))
                     {
                         loadout = new RoleLoadout(antagLoadout);
                         loadout.SetDefault(profile, _actors.GetSession(uid), _protoMan, true);
