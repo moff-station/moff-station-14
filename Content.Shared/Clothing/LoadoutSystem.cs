@@ -155,7 +155,7 @@ public sealed class LoadoutSystem : EntitySystem
         if (startingGear is { Count: > 0 })
             _station.EquipStartingGear(uid, _random.Pick(startingGear));
 
-        if (loadoutGroups != null && loadoutGroups.Count > 0)
+        if (loadoutGroups is { Count: > 0 })
         {
             foreach (var antagLoadout in loadoutGroups)
             {
