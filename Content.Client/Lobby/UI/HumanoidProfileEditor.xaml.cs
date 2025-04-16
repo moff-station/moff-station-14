@@ -1068,7 +1068,13 @@ namespace Content.Client.Lobby.UI
 
             _loadoutWindow = new LoadoutWindow(Profile, roleLoadout, roleLoadoutProto, _playerManager.LocalSession, collection)
             {
-                Title = jobProto?.ID + " loadout",  //Moffstation - replaced preceding dash with a space, antag roles have a null jobproto and this makes that more subtle on the loadout screen
+                // Moffstation Start
+                Title = jobProto?.ID switch
+                {
+                    null => "loadout",
+                    var id => $"{id}-loadout",
+                },
+                // Moffstation End
             };
 
             // Refresh the buttons etc.
