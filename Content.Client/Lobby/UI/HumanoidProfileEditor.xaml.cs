@@ -713,7 +713,7 @@ namespace Content.Client.Lobby.UI
                 }
                 else
                 {
-                    loadoutWindowBtn.OnPressed += args =>
+                    loadoutWindowBtn.OnPressed += _ =>
                     {
                         RoleLoadout? loadout = null;
 
