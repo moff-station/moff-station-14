@@ -159,7 +159,6 @@ public sealed class LoadoutSystem : EntitySystem
         {
             foreach (var antagLoadout in loadoutGroups)
             {
-                RoleLoadout? loadout = null;
                 if (_protoMan.TryIndex(antagLoadout, out var roleProto))
                 {
                     if (!profile.Loadouts.TryGetValue(antagLoadout, out var loadout))
