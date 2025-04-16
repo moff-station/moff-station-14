@@ -627,12 +627,12 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         QueueWindowUpdate();
     }
 
-    private void OnWindowActionPressed(GUIBoundKeyEventArgs args, ActionButton button)
+    private void OnWindowActionPressed(GUIBoundKeyEventArgs args, ActionButton action)
     {
         if (args.Function != EngineKeyFunctions.UIClick && args.Function != EngineKeyFunctions.Use)
             return;
 
-        HandleActionPressed(args, button);
+        HandleActionPressed(args, action);
     }
 
     private void OnWindowActionUnPressed(GUIBoundKeyEventArgs args, ActionButton button)
@@ -660,11 +660,13 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         if (args.Function != EngineKeyFunctions.UIClick)
             return;
 
+        // Moffstation Start
         HandleActionPressed(args, button);
     }
-
     private void HandleActionPressed(GUIBoundKeyEventArgs args, ActionButton button)
     {
+        // Moffstation End
+
         args.Handle();
         if (button.ActionId != null)
         {
@@ -680,6 +682,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
 
     private void OnActionUnpressed(GUIBoundKeyEventArgs args, ActionButton button)
     {
+        // Moffstation Start
         if (args.Function != EngineKeyFunctions.UIClick)
             return;
 
@@ -690,6 +693,8 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
     {
         if (_actionsSystem == null)
             return;
+
+        // Moffstation End
 
         args.Handle();
 
