@@ -715,13 +715,13 @@ namespace Content.Client.Lobby.UI
                 {
                     loadoutWindowBtn.OnPressed += _ =>
                     {
-                        RoleLoadout? loadout = null;
-
-                        // Clone so we don't modify the underlying loadout.
-                        Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(antag.ID), out loadout);
-                        loadout = loadout?.Clone();
-
-                        if (loadout == null)
+                        RoleLoadout loadout;
+                        if (Profile != null && Profile.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(antag.ID), out var roleLoadout))
+                        {
+                            // Clone so we don't modify the underlying loadout.
+                            loadout = roleLoadout.Clone();
+                        }
+                        else
                         {
                             loadout = new RoleLoadout(roleLoadoutProto.ID);
                             loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
