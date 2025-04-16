@@ -152,7 +152,7 @@ public sealed class LoadoutSystem : EntitySystem
         List<ProtoId<RoleLoadoutPrototype>>? loadoutGroups,
         HumanoidCharacterProfile profile)
     {
-        if (startingGear != null && startingGear.Count > 0)
+        if (startingGear is { Count: > 0 })
             _station.EquipStartingGear(uid, _random.Pick(startingGear));
 
         if (loadoutGroups != null && loadoutGroups.Count > 0)
