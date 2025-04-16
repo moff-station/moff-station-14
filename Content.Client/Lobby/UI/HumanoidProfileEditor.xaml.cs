@@ -711,7 +711,6 @@ namespace Content.Client.Lobby.UI
                 {
                     loadoutWindowBtn.Disabled = true;
                 }
-                // else
                 else
                 {
                     loadoutWindowBtn.OnPressed += args =>
