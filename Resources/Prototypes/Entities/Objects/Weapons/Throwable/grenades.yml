@@ -72,7 +72,8 @@
 #Moffstation - End
 
 - type: entity
-  name: explosive grenade
+  #name: explosive grenade (Moffstation - Resilient Grenades - Replaced)
+  name: high explosive grenade
   description: Grenade that creates a small but devastating explosion.
   parent: [GrenadeBase, BaseSyndicateContraband]
   id: ExGrenade
