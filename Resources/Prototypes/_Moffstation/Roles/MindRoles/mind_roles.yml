@@ -1,0 +1,27 @@
+# Pirates
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRolePirateCrew
+  name: Pirate Crew Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+    antagPrototype: PirateCrew
+  - type: PirateRole
+
+- type: entity
+  parent: MindRoleNukeops
+  id: MindRolePirateMedic
+  name: Pirate Medic Role
+  components:
+  - type: MindRole
+    antagPrototype: PirateMedic
+
+- type: entity
+  parent: MindRoleNukeops
+  id: MindRolePirateCaptain
+  name: Pirate Captain Role
+  components:
+  - type: MindRole
+    antagPrototype: PirateCaptain

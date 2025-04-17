@@ -1,0 +1,63 @@
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  id: SpawnPointGhostPirate
+  name: ghost role spawn point
+  suffix: pirates
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobHumanPirate
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Mobs/Species/Skeleton/parts.rsi
+        state: skull_icon
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointPirateCaptain
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-captain-commander-name
+    description: roles-antag-nuclear-pirate-captain-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Structures/Wallmounts/signs.rsi
+      state: radiation
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointPirateCaptain
+  id: SpawnPointPirateMedic
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-medic-name
+    description: roles-antag-pirate-medic-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointPirateCaptain
+  id: SpawnPointPirateCrew
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-crew-name
+    description: roles-antag-pirate-crew-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist

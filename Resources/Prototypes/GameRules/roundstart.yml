@@ -177,6 +177,93 @@
 - type: entity
   abstract: true
   parent: BaseGameRule
+  id: BasePiratesRule
+  components:
+  - type: RandomMetadata #this generates the random operation name cuz it's cool.
+    nameSegments:
+    - NamesOperationPrefix
+    - NamesOperationSuffix
+    nameFormat: name-format-nuclear-operation
+#  - type: PiratesRule
+  - type: LoadMapRule
+    gridPath: /Maps/Shuttles/pirate.yml
+  - type: RuleGrids
+  - type: AntagSelection
+  - type: AntagLoadProfileRule
+    speciesOverride: Human
+    speciesOverrideBlacklist:
+    #Species that do not work with nukies should be included in this list.
+    #Once the issues are fixed the species should be removed from this list to be enabled.
+    #Balance concerns are not a valid reason to disable a species, except for high-impact Nukie-specific exploits.
+    #- Vox
+
+- type: entity
+  parent: BasePiratesRule
+  id: Pirates
+  components:
+  - type: GameRule
+    minPlayers: 15 # Moffstation - Altering required playercount for certain antags, due to tendency not to meet the required readycount
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ PirateCaptain ]
+      fallbackRoles: [ PirateCrew, PirateMedic ]
+      spawnerPrototype: SpawnPointPirateCaptain
+      startingGear: PirateCaptainGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: NukeOperative
+      - type: RandomMetadata
+        nameSegments:
+        - NamesSyndicateElite
+        nameFormat: name-format-nukie-commander
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRolePirateCaptain
+    - prefRoles: [ PirateMedic ]
+      fallbackRoles: [ PirateCrew, PirateCaptain ]
+      spawnerPrototype: SpawnPointPirateMedic
+      startingGear: PirateFirstmateGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: NukeOperative
+      - type: RandomMetadata
+        nameSegments:
+        - NamesSyndicateNormal
+        nameFormat: name-format-nukie-agent
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRolePirateMedic
+    - prefRoles: [ PirateCrew ]
+      fallbackRoles: [ PirateCaptain, PirateMedic ]
+      spawnerPrototype: SpawnPointPirateCrew
+      max: 3
+      playerRatio: 10
+      startingGear: PirateGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      components:
+      - type: NukeOperative
+      - type: RandomMetadata
+        nameSegments:
+        - NamesSyndicateNormal
+        nameFormat: name-format-nukie-operator
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRolePirateCrew
+
+
+- type: entity
+  abstract: true
+  parent: BaseGameRule
   id: BaseTraitorRule
   components:
   - type: TraitorRule
