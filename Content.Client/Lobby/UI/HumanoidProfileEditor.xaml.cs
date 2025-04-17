@@ -731,13 +731,44 @@ namespace Content.Client.Lobby.UI
 
                 antagContainer.AddChild(selector);
 
-                antagContainer.AddChild(new Button()
+                // Moffstation - Begin - Enable loadouts for antags
+                var loadoutWindowBtn = new Button()
                 {
-                    Disabled = true,
+                    // Disabled = true,
                     Text = Loc.GetString("loadout-window"),
                     HorizontalAlignment = HAlignment.Right,
                     Margin = new Thickness(3f, 0f, 0f, 0f),
-                });
+                };
+
+                antagContainer.AddChild(loadoutWindowBtn);
+
+                var protoManager = IoCManager.Instance!.Resolve<IPrototypeManager>();
+
+                // If no loadout found then disabled button
+                if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(antag.ID), out var roleLoadoutProto))
+                {
+                    loadoutWindowBtn.Disabled = true;
+                }
+                else
+                {
+                    loadoutWindowBtn.OnPressed += _ =>
+                    {
+                        RoleLoadout loadout;
+                        if (Profile != null && Profile.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(antag.ID), out var roleLoadout))
+                        {
+                            // Clone so we don't modify the underlying loadout.
+                            loadout = roleLoadout.Clone();
+                        }
+                        else
+                        {
+                            loadout = new RoleLoadout(roleLoadoutProto.ID);
+                            loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+                        }
+
+                        OpenLoadout(null, loadout, roleLoadoutProto);
+                    };
+                }
+                // Moffstation - End
 
                 AntagList.AddChild(antagContainer);
             }
@@ -1075,7 +1106,13 @@ namespace Content.Client.Lobby.UI
 
             _loadoutWindow = new LoadoutWindow(Profile, roleLoadout, roleLoadoutProto, _playerManager.LocalSession, collection)
             {
-                Title = jobProto?.ID + "-loadout",
+                // Moffstation Start
+                Title = jobProto?.ID switch
+                {
+                    null => "loadout",
+                    var id => $"{id}-loadout",
+                },
+                // Moffstation End
             };
 
             // Refresh the buttons etc.
@@ -1501,6 +1538,11 @@ namespace Content.Client.Lobby.UI
             var species = _species.Find(x => x.ID == Profile.Species);
             if (species != null)
                 _defaultHeight = species.DefaultHeight;
+
+            // This dirty hack deals with "uninitialized" height values. Without this, preexisting or weirdly imported
+            // characters' heights default to the minimum value on the slider.
+            if (Profile.Height == 0.0)
+                Profile.Height = _defaultHeight;
 
             var prototype = _prototypeManager.Index(Profile.Species);
             var sliderPercent = (Profile.Height - prototype.MinHeight) /

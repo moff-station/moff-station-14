@@ -126,6 +126,7 @@
       startingGear: SyndicateCommanderGearFull
       roleLoadout:
       - RoleSurvivalNukie
+      - JobNukeopsCommander   # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata
@@ -143,6 +144,7 @@
       startingGear: SyndicateOperativeMedicFull
       roleLoadout:
       - RoleSurvivalNukie
+      - JobNukeopsMedic   # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata
@@ -162,6 +164,7 @@
       startingGear: SyndicateOperativeGearFull
       roleLoadout:
       - RoleSurvivalNukie
+      - JobNukeops  # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata
@@ -380,6 +383,7 @@
       spawnerPrototype: SpawnPointGhostWizard
       roleLoadout:
        - RoleSurvivalExtended
+       - JobWizard    # Moffstation - Enable custom wizard name/loadout
       briefing:
         text: wizard-role-greeting
         color: Turquoise
@@ -538,3 +542,4 @@
       orGroup: puddleMess
     - id: SmugglerStashVariationPass
       prob: 0.90
+    - id: SolarPanelDamageVariationPass # Moffstation - Roundstart Solar Panel variation
