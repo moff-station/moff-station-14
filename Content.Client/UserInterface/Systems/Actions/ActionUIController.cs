@@ -660,14 +660,13 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         if (args.Function != EngineKeyFunctions.UIClick)
             return;
 
-        // Moffstation
+// Moffstation Start
         HandleActionPressed(args, button);
     }
+// Moffstation End
 
     private void HandleActionPressed(GUIBoundKeyEventArgs args, ActionButton button)
     {
-        // Moffstation End
-
         args.Handle();
         if (button.ActionId != null)
         {
@@ -683,7 +682,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
 
     private void OnActionUnpressed(GUIBoundKeyEventArgs args, ActionButton button)
     {
-        // Moffstation Start
+// Moffstation Start
         if (args.Function != EngineKeyFunctions.UIClick)
             return;
 
@@ -694,8 +693,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
     {
         if (_actionsSystem == null)
             return;
-
-        // Moffstation End
+// Moffstation End
 
         args.Handle();
 
