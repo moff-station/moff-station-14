@@ -1,3 +1,36 @@
+- type: antag
+  id: Pirate
+  name: roles-antag-pirate-crew-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-nuclear-pirate-crew-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5h
+  guides: [ NuclearOperatives ]
+
+- type: antag
+  id: PirateMedic
+  name: roles-antag-pirate-medic-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-nuclear-pirate-medic-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5h
+  guides: [ NuclearOperatives ]
+
+- type: antag
+  id: PirateCaptain
+  name: roles-antag-pirate-captain-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-nuclear-pirate-captain-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5h
+  guides: [ NuclearOperatives ]
+
 - type: startingGear
   id: PirateGear
   equipment:
@@ -7,11 +40,15 @@
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
-    pocket1: AppraisalTool
+    pocket2: AppraisalTool
 
 - type: startingGear
   id: PirateCaptainGear
   parent: PirateGear
+  name: roles-antag-pirate-captain-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-nuclear-pirate-captain-objective
   equipment:
     head: ClothingHeadHatPirate
     pocket2: EnergyCutlass
@@ -19,6 +56,10 @@
 
 - type: startingGear
   id: PirateFirstmateGear
+  name: roles-antag-pirate-medic-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-nuclear-pirate-medic-objective
   parent: PirateGear
   equipment:
     head: ClothingHeadHatPirateTricord
