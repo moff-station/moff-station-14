@@ -660,10 +660,10 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         if (args.Function != EngineKeyFunctions.UIClick)
             return;
 
-        // Moffstation Start
+        // Moffstation
         HandleActionPressed(args, button);
     }
-// Moffstation End
+
     private void HandleActionPressed(GUIBoundKeyEventArgs args, ActionButton button)
     {
         // Moffstation End
