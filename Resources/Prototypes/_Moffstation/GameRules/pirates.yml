@@ -27,7 +27,7 @@
   id: Pirates
   components:
   - type: GameRule
-    minPlayers: 15 # Moffstation - Altering required playercount for certain antags, due to tendency not to meet the required readycount
+    minPlayers: 10 # Moffstation - Altering required playercount for certain antags, due to tendency not to meet the required readycount
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:
