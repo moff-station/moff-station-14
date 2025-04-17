@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
@@ -159,6 +160,13 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField("scaleHeight")]
     public bool ScaleHeight = true;
+
+    /// <summary>
+    /// How much to implicitly scale sprites of characters of this species. For example, dwarves are inherently squashed
+    /// along the Y direction. Note that this is applied after customizeable height scaling.
+    /// </summary>
+    [DataField]
+    public Vector2 ImplicitSpriteScale = Vector2.One;
     // Moffstation End
 }
 
