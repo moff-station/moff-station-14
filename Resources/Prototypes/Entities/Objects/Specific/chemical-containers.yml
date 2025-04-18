@@ -90,14 +90,16 @@
   categories: [ HideSpawnMenu ]
   suffix: punct & tranex
   components:
+  - type: Label
+    currentLabel: reagent-name-puncturase
   - type: SolutionContainerManager
     solutions:
       beaker:
         reagents:
         - ReagentId: Puncturase
-          Quantity: 130
+          Quantity: 160
         - ReagentId: TranexamicAcid
-          Quantity: 65
+          Quantity: 40
 
 - type: entity
   parent: Jug
@@ -105,6 +107,8 @@
   categories: [ HideSpawnMenu ]
   suffix: pyra & derma
   components:
+  - type: Label
+    currentLabel: reagent-name-pyrazine
   - type: SolutionContainerManager
     solutions:
       beaker:
@@ -120,6 +124,8 @@
   categories: [ HideSpawnMenu ]
   suffix: tricordazine
   components:
+  - type: Label
+    currentLabel: reagent-name-Tricordazine
   - type: SolutionContainerManager
     solutions:
       beaker:

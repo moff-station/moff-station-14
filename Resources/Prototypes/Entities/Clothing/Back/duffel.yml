@@ -246,13 +246,12 @@
 
 - type: entity
   parent: [ ClothingBackpackDuffel, BaseCentcommContraband ]
-  id: ClothingBackpackDuffelCBURN
-  name: CBURN duffel bag
-  description: A duffel bag containing a variety of biological containment equipment.
+  id: ClothingBackpackDuffelERT
+  name: NT operative duffel bag
+  description: A robust duffel bag for Nanotrasen's elite operatives.
   components:
-  - type: Storage
-    maxItemSize: Huge
-  - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 1
-  - type: HeldSpeedModifier
+  - type: Sprite # placeholder
+    sprite: Clothing/Back/Duffels/duffel.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+

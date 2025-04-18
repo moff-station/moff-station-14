@@ -174,23 +174,9 @@
 
 # ERT Belts
 - type: entity
-  id: ClothingBeltMilitaryWebbingERTLeaderFilled
-  parent: ClothingBeltMilitaryWebbingNT
-  suffix: Leader, Filled
-  components:
-  - type: StorageFill
-    contents:
-      - id: PinpointerNuclear
-      - id: PhoneInstrument
-      - id: MedkitCombatFilled
-      - id: Binoculars
-      - id: MagazineMagnum
-        amount: 2
-
-- type: entity
   parent: ClothingBeltMilitaryWebbingNT
   id: ClothingBeltMilitaryWebbingERTChaplainFilled
-  suffix: Chaplain, Filled
+  suffix: ERT, Chaplain, Filled
   components:
   - type: StorageFill
     contents:
@@ -206,7 +192,7 @@
 - type: entity
   parent: ClothingBeltMilitaryWebbingNT
   id: ClothingBeltMilitaryWebbingERTEngineerFilled
-  suffix: Engineering, Filled
+  suffix: ERT, Engineering, Filled
   components:
   - type: StorageFill
     contents:
@@ -221,7 +207,7 @@
 - type: entity
   parent: ClothingBeltMilitaryWebbingNT
   id: ClothingBeltMilitaryWebbingERTSecurityFilled
-  suffix: Security, Filled
+  suffix: ERT, Security, Filled
   components:
   - type: StorageFill
     contents:
@@ -231,50 +217,6 @@
         amount: 2
       - id: TearGasGrenade
       - id: GrenadeStinger
-
-- type: entity
-  parent: ClothingBeltMilitaryWebbingNT
-  id: ClothingBeltMilitaryWebbingERTCombatFilled
-  suffix: Combat, Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: Truncheon
-    - id: MedkitCombatFilled
-    - id: Handcuffs
-      amount: 2
-    - id: SmokeGrenade
-    - id: GrenadeShrapnel
-
-- type: entity
-  parent: ClothingBeltMilitaryWebbingNT
-  id: ClothingBeltMilitaryWebbingERTMedicalFilled
-  suffix: Medical, Filled
-  components:
-  - type: StorageFill
-    contents:
-      - id: DefibrillatorCompact
-      - id: MedkitCombatFilled
-      - id: ClothingEyesGlassesChemical
-      - id: CrowbarRed
-      - id: MagazinePistol
-        amount: 2
-
-- type: entity
-  parent: ClothingBeltMilitaryWebbingNT
-  id: ClothingBeltMilitaryWebbingERTJanitorFilled
-  suffix: Janitor, Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: SoapNT
-    - id: MegaSprayBottleSpaceCleaner
-    - id: LightReplacer
-    - id: Plunger
-    - id: Screwdriver
-    - id: CrowbarRed
-    - id: MagazinePistol
-      amount: 2
 
 - type: entity
   parent: ClothingBeltWand

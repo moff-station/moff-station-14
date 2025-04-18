@@ -325,45 +325,21 @@
 
 # ERT duffel bags
 - type: entity
-  parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelChaplainFilled
-  suffix: Filled, Chaplain
-  components:
-  - type: StorageFill
-    contents:
-    - id: BoxBodyBag
-    - id: BoxCandle
-
-- type: entity
-  parent: ClothingBackpackDuffelEngineering
-  id: ClothingBackpackDuffelEngineeringFilled
-  suffix: Filled
+  parent: ClothingBackpackDuffelERT
+  id: ClothingBackpackDuffelERTEngineeringFilled
+  suffix: Engineering, Filled
   components:
   - type: StorageFill
     contents:
       - id: BoxInflatable
       - id: SheetSteel
-      - id: PartRodMetal
+        amount: 2
       - id: CableApcStack
       - id: SheetGlass
-      - id: SheetRGlass
+        amount: 2
       - id: CableMVStack
       - id: SheetPlasteel
-      - id: CableHVStack
+      - id: Flare
       - id: RCDAmmo
         amount: 2
-      - id: Flare
-
-- type: entity
-  parent: ClothingBackpackDuffelMedical
-  id: ClothingBackpackDuffelMedicalFilled
-  suffix: Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: BoxBodyBag
-    - id: JugTrico
-    - id: BeakerSmallDiphen
-    - id: BeakerSmallBruiz
-    - id: BeakerSmallLace
-    - id: HandLabeler
+      - id: CableHVStack

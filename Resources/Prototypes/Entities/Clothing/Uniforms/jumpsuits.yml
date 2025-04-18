@@ -1047,6 +1047,17 @@
     sprite: Clothing/Uniforms/Jumpsuit/ert_security.rsi
 
 - type: entity
+  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  id: ClothingUniformJumpsuitERTCBURN
+  name: CBURN uniform
+  description: A special jumpsuit worn by Nanotrasen's CBURN teams.
+  components:
+  - type: Sprite # Placeholder sprite
+    sprite: Clothing/Uniforms/Jumpsuit/ert_chaplain.rsi
+  - type: Clothing # Placeholder sprite
+    sprite: Clothing/Uniforms/Jumpsuit/ert_chaplain.rsi
+
+- type: entity
   parent: ClothingUniformJumpsuitClown
   id: ClothingUniformJumpsuitCluwne
   name: cluwne suit

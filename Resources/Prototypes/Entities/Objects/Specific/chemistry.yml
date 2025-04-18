@@ -250,24 +250,11 @@
 
 - type: entity
   parent: Beaker
-  id: BeakerSmallDex+
-  categories: [ HideSpawnMenu ]
-  suffix: Dexalin+
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        maxVol: 50
-        reagents:
-        - ReagentId: DexalinPlus
-          Quantity: 50
-
-- type: entity
-  parent: Beaker
   id: BeakerSmallSaline
-  categories: [ HideSpawnMenu ]
-  suffix: Saline
+  suffix: saline
   components:
+  - type: Label
+    currentLabel: reagent-name-saline
   - type: SolutionContainerManager
     solutions:
       beaker:
@@ -278,10 +265,26 @@
 
 - type: entity
   parent: Beaker
-  id: BeakerSmallArith
-  categories: [ HideSpawnMenu ]
-  suffix: Arithrazine
+  id: BeakerSmallDexPlus
+  suffix: dex+
   components:
+  - type: Label
+    currentLabel: reagent-name-dexalin-plus
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: DexalinPlus
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallArith
+  suffix: arith
+  components:
+  - type: Label
+    currentLabel: reagent-name-arithrazine
   - type: SolutionContainerManager
     solutions:
       beaker:
@@ -292,10 +295,11 @@
 
 - type: entity
   parent: Beaker
-  id: BeakerSmallDiphen
-  categories: [ HideSpawnMenu ]
-  suffix: Diphenhydramine
+  id: BeakerSmallDiph
+  suffix: diph
   components:
+  - type: Label
+    currentLabel: reagent-name-diphenhydramine
   - type: SolutionContainerManager
     solutions:
       beaker:
@@ -307,9 +311,10 @@
 - type: entity
   parent: Beaker
   id: BeakerSmallBruiz
-  categories: [ HideSpawnMenu ]
-  suffix: Bruizine
+  suffix: bruiz
   components:
+  - type: Label
+    currentLabel: reagent-name-bruizine
   - type: SolutionContainerManager
     solutions:
       beaker:
@@ -321,9 +326,10 @@
 - type: entity
   parent: Beaker
   id: BeakerSmallLace
-  categories: [ HideSpawnMenu ]
-  suffix: Lacerinol
+  suffix: lace
   components:
+  - type: Label
+    currentLabel: reagent-name-lacerinol
   - type: SolutionContainerManager
     solutions:
       beaker:
