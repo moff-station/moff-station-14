@@ -27,13 +27,11 @@
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
-# Moffstation - Start - Clown/Borg/Mime loadout names
 # Silicons
 - type: roleLoadout
   id: JobBorg
   nameDataset: NamesBorg
   canCustomizeName: true
-# Moffstation - End - Clown/Borg/Mime loadout names
 
 - type: roleLoadout
   id: JobStationAi
@@ -172,7 +170,7 @@
 
 - type: roleLoadout
   id: JobClown
-  canCustomizeName: true # Moffstation - Clown/Borg/Mime loadout names
+  canCustomizeName: true
   groups:
   - GroupTankHarness
   - ClownHead
@@ -187,7 +185,7 @@
 
 - type: roleLoadout
   id: JobMime
-  canCustomizeName: true # Moffstation - Clown/Borg/Mime loadout names
+  canCustomizeName: true
   groups:
   - GroupTankHarness
   - MimeHead

@@ -1,0 +1,21 @@
+# Player: meganerobot - Character: Kylie Guess
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: PersonalItemKylieUniform
+  name: Kylie's bartender uniform
+  description: A sleek bartending uniform from a civilian sector's bar. The tights are slightly sticky with green slime.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/meganerobot/Kylie_Guess/kylieuniform.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/meganerobot/Kylie_Guess/kylieuniform.rsi
+
+- type: loadout
+  id: PersonalItemKylieUniform
+  storage:
+    back:
+    - PersonalItemKylieUniform
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kylie Guess

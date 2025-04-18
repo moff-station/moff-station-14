@@ -2,10 +2,12 @@
 - type: startingGear
   id: WizardBlueGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitColorDarkBlue
-    head: ClothingHeadHatWizard
-    back: ClothingBackpack # Wizard backpack?
-    outerClothing: ClothingOuterWizard
+#    Moffstation - Begin - Removing these so they don't get duplicated by the wizard loadout
+#    jumpsuit: ClothingUniformJumpsuitColorDarkBlue
+#    head: ClothingHeadHatWizard
+#    back: ClothingBackpack # Wizard backpack?
+#    outerClothing: ClothingOuterWizard
+#    Moffstation - End
     shoes: ClothingShoesWizard
     id: WizardPDA
     ears: ClothingHeadsetAltCommand
@@ -16,18 +18,23 @@
 - type: startingGear
   id: WizardRedGear
   parent: WizardBlueGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitColorRed
-    head: ClothingHeadHatRedwizard
-    outerClothing: ClothingOuterWizardRed
+    #    Moffstation - Begin - These ones aren't currently being used, but preemptively commenting them out incase that changes
+#  equipment:
+#    jumpsuit: ClothingUniformJumpsuitColorRed
+#    head: ClothingHeadHatRedwizard
+#    outerClothing: ClothingOuterWizardRed
+  #    Moffstation - End
+
 
 - type: startingGear
   id: WizardVioletGear
   parent: WizardBlueGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitColorPurple
-    head: ClothingHeadHatVioletwizard
-    outerClothing: ClothingOuterWizardViolet
+    #    Moffstation - Begin - These ones aren't currently being used, but preemptively commenting them out incase that changes
+#  equipment:
+#    jumpsuit: ClothingUniformJumpsuitColorPurple
+#    head: ClothingHeadHatVioletwizard
+#    outerClothing: ClothingOuterWizardViolet
+    #   Moffstation - End
 
 - type: startingGear
   id: WizardHardsuitGear
