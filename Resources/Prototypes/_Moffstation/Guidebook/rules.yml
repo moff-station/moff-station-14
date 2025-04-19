@@ -5,27 +5,4 @@
   priority: 1
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffRules.xml"
   children:
-  - MoffR0
-  - MoffR1
-  - MoffR2
-
-- type: guideEntry
-  id: MoffR0
-  name: guide-entry-rules-Moff-r0
-  ruleEntry: true
-  priority: 1
-  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR0.xml"
-
-- type: guideEntry
-  id: MoffR1
-  name: guide-entry-rules-Moff-r1
-  ruleEntry: true
-  priority: 2
-  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR1.xml"
-
-- type: guideEntry
-  id: MoffR2
-  name: guide-entry-rules-Moff-r2
-  ruleEntry: true
-  priority: 3
-  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR2.xml"
+  - AdminGimmicks
