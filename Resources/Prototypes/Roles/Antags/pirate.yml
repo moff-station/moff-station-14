@@ -1,3 +1,4 @@
+# Moffstation - Begin - Adding pirates as selectable on the loadout screen
 - type: antag
   id: Pirate
   name: roles-antag-pirate-crew-name
@@ -30,6 +31,7 @@
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
   guides: [ NuclearOperatives ]
+# Moffstation - end
 
 - type: startingGear
   id: PirateGear
@@ -40,15 +42,17 @@
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
-    pocket2: AppraisalTool
+    pocket2: AppraisalTool  # Moffstation - Changed to pocket2 for loadout consistency
 
 - type: startingGear
   id: PirateCaptainGear
   parent: PirateGear
+  # Moffstation - Begin - Added name and objective
   name: roles-antag-pirate-captain-name
   antagonist: true
   setPreference: true
   objective: roles-antag-nuclear-pirate-captain-objective
+  # Moffstation - End
   equipment:
     head: ClothingHeadHatPirate
     pocket2: EnergyCutlass
@@ -56,10 +60,12 @@
 
 - type: startingGear
   id: PirateFirstmateGear
+  # Moffstation - Begin - Added name and objective
   name: roles-antag-pirate-medic-name
   antagonist: true
   setPreference: true
   objective: roles-antag-nuclear-pirate-medic-objective
+  # Moffstation - End
   parent: PirateGear
   equipment:
     head: ClothingHeadHatPirateTricord
