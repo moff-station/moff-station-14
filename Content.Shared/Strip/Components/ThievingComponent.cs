@@ -1,3 +1,6 @@
+using Content.Shared.Alert;
+using Robust.Shared.Prototypes;
+
 namespace Content.Shared.Strip.Components;
 
 /// <summary>
@@ -19,4 +22,12 @@ public sealed partial class ThievingComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("stealthy")]
     public bool Stealthy;
+
+    /// <summary>
+    /// Variable pointing at the Alert modal
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public ProtoId<AlertPrototype> StealthyAlertProtoId = "Stealthy";
 }
+
+public sealed partial class ToggleThievingEvent : BaseAlertEvent;   // Moffstation - allow toggling of theft
