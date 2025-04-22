@@ -30,24 +30,24 @@ public sealed class ThievingSystem : EntitySystem
     }
 
     // Moffstation - Start - Add function for toggling stealth, and the function to initialize/remove the alert
-    private void OnCompInit(EntityUid uid, ThievingComponent comp, ComponentInit args)
+    private void OnCompInit(Entity<ThievingComponent> entity, ref ComponentInit args)
     {
         _alertsSystem.ShowAlert(uid, comp.StealthyAlertProtoId, 1);
     }
 
-    private void OnCompRemoved(EntityUid uid, ThievingComponent comp, ComponentRemove args)
+    private void OnCompRemoved(Entity<ThievingComponent> entity, ref ComponentRemove args)
     {
         _alertsSystem.ClearAlert(uid, comp.StealthyAlertProtoId);
     }
 
     private void OnToggleStealthy(Entity<ThievingComponent> ent, ref ToggleThievingEvent args)
     {
-        if(args.Handled)
+        if (args.Handled)
             return;
 
         ent.Comp.Stealthy = !ent.Comp.Stealthy;
 
-        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, ent.Comp.Stealthy ? (short?)1 : (short?)0);
+        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, (short) (ent.Comp.Stealthy ? 1 : 0));
         args.Handled = true;
     }
     //Moffstation - End
