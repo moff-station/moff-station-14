@@ -437,18 +437,20 @@
   name: alerts-pacified-name
   description: alerts-pacified-desc
 
+# Moffstation - Start - Thieving alert
 - type: alert
   id: Stealthy
   clickEvent: !type:ToggleThievingEvent
   icons:
   - sprite: /Textures/_Moffstation/Interface/Alerts/stealthy.rsi
-    state: stealthy0
+    state: stealthy-off
   - sprite: /Textures/_Moffstation/Interface/Alerts/stealthy.rsi
-    state: stealthy1
+    state: stealthy-on
   name: alerts-stealthy-name
   description: alerts-stealthy-desc
   minSeverity: 0
   maxSeverity: 1
+# Moffstation - End
 
 - type: alert
   id: Adrenaline

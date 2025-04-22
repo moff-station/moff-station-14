@@ -1,6 +1,6 @@
 using Content.Shared.Alert; // Moffstation - Import alert so we can toggle
 using Content.Shared.Inventory;
-// using Content.Shared.Strip;  // Moffstation - Remove unused import
+using Content.Shared.Strip;
 using Content.Shared.Strip.Components;
 
 namespace Content.Shared.Strip;
@@ -32,12 +32,12 @@ public sealed class ThievingSystem : EntitySystem
     // Moffstation - Start - Add function for toggling stealth, and the function to initialize/remove the alert
     private void OnCompInit(Entity<ThievingComponent> entity, ref ComponentInit args)
     {
-        _alertsSystem.ShowAlert(uid, comp.StealthyAlertProtoId, 1);
+        _alertsSystem.ShowAlert(entity, entity.Comp.StealthyAlertProtoId, 1);
     }
 
     private void OnCompRemoved(Entity<ThievingComponent> entity, ref ComponentRemove args)
     {
-        _alertsSystem.ClearAlert(uid, comp.StealthyAlertProtoId);
+        _alertsSystem.ClearAlert(entity, entity.Comp.StealthyAlertProtoId);
     }
 
     private void OnToggleStealthy(Entity<ThievingComponent> ent, ref ToggleThievingEvent args)

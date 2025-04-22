@@ -23,11 +23,13 @@ public sealed partial class ThievingComponent : Component
     [DataField("stealthy")]
     public bool Stealthy;
 
+    // Moffstation - Start - Adding a variable for the alert module
     /// <summary>
     /// Variable pointing at the Alert modal
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public ProtoId<AlertPrototype> StealthyAlertProtoId = "Stealthy";
+    // Moffstation - End
 }
 
 public sealed partial class ToggleThievingEvent : BaseAlertEvent;   // Moffstation - allow toggling of theft
