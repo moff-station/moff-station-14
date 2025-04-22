@@ -1,6 +1,8 @@
+// Moffstation - Start - Added stuff for the thieving toggle
 using Content.Shared.Alert;
+using Content.Shared._Moffstation.Strip.Components;
 using Robust.Shared.Prototypes;
-using Content.Shared._Moffstation.Strip.Components; //Toggle thieving event
+// Moffstation - End
 
 namespace Content.Shared.Strip.Components;
 
