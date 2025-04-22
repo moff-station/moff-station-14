@@ -2,6 +2,7 @@ using Content.Shared.Alert; // Moffstation - Import alert so we can toggle
 using Content.Shared.Inventory;
 using Content.Shared.Strip;
 using Content.Shared.Strip.Components;
+using Content.Shared._Moffstation.Strip.Components; //Toggle thieving event
 
 namespace Content.Shared.Strip;
 

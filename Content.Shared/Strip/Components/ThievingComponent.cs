@@ -1,5 +1,6 @@
 using Content.Shared.Alert;
 using Robust.Shared.Prototypes;
+using Content.Shared._Moffstation.Strip.Components; //Toggle thieving event
 
 namespace Content.Shared.Strip.Components;
 
@@ -31,5 +32,3 @@ public sealed partial class ThievingComponent : Component
     public ProtoId<AlertPrototype> StealthyAlertProtoId = "Stealthy";
     // Moffstation - End
 }
-
-public sealed partial class ToggleThievingEvent : BaseAlertEvent;   // Moffstation - allow toggling of theft
