@@ -4,7 +4,7 @@
   name: roles-antag-pirate-crew-name
   antagonist: true
   setPreference: true
-  objective: roles-antag-nuclear-pirate-crew-objective
+  objective: roles-antag-pirate-crew-objective
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
@@ -15,7 +15,7 @@
   name: roles-antag-pirate-medic-name
   antagonist: true
   setPreference: true
-  objective: roles-antag-nuclear-pirate-medic-objective
+  objective: roles-antag-pirate-medic-objective
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
@@ -26,7 +26,7 @@
   name: roles-antag-pirate-captain-name
   antagonist: true
   setPreference: true
-  objective: roles-antag-nuclear-pirate-captain-objective
+  objective: roles-antag-pirate-captain-objective
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
@@ -37,8 +37,8 @@
   id: PirateGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
-    back: ClothingBackpackSatchelLeather
-    head: ClothingHeadBandBlack
+#    back: ClothingBackpackSatchelLeather
+#    head: ClothingHeadBandBlack
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
@@ -51,7 +51,7 @@
   name: roles-antag-pirate-captain-name
   antagonist: true
   setPreference: true
-  objective: roles-antag-nuclear-pirate-captain-objective
+  objective: roles-antag-pirate-captain-objective
   # Moffstation - End
   equipment:
     head: ClothingHeadHatPirate
@@ -64,7 +64,7 @@
   name: roles-antag-pirate-medic-name
   antagonist: true
   setPreference: true
-  objective: roles-antag-nuclear-pirate-medic-objective
+  objective: roles-antag-pirate-medic-objective
   # Moffstation - End
   parent: PirateGear
   equipment:

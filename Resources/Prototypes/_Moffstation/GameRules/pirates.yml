@@ -37,12 +37,12 @@
       startingGear: PirateCaptainGear
       roleLoadout:
       - RoleSurvivalNukie
+      - JobPirateCaptain
       components:
-      - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
-        - NamesSyndicateElite
-        nameFormat: name-format-nukie-commander
+        - Adjectives
+        nameFormat: name-format-pirate-captain
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -54,12 +54,13 @@
       startingGear: PirateFirstmateGear
       roleLoadout:
       - RoleSurvivalNukie
+      - JobPirateMedic
       components:
-      - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
-        - NamesSyndicateNormal
-        nameFormat: name-format-nukie-agent
+        - NamesFirst
+        - NamesLast
+        nameFormat: name-format-standard
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -68,17 +69,18 @@
     - prefRoles: [ PirateCrew ]
       fallbackRoles: [ PirateCaptain, PirateMedic ]
       spawnerPrototype: SpawnPointPirateCrew
-      max: 3
+      max: 4
       playerRatio: 10
       startingGear: PirateGear
       roleLoadout:
       - RoleSurvivalNukie
+      - JobPirate
       components:
-      - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
-        - NamesSyndicateNormal
-        nameFormat: name-format-nukie-operator
+        - NamesFirst
+        - NamesLast
+        nameFormat: name-format-standard
       - type: NpcFactionMember
         factions:
         - Syndicate
