@@ -91,7 +91,7 @@
         scaleByQuantity: true
         damage:
           types:
-            Heat: 1
+            Heat: 1   # Moffstation - Slimes take more water damage
       - !type:PopupMessage
         type: Local
         visualType: Large
