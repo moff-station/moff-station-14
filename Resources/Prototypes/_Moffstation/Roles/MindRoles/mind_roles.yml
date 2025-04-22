@@ -8,10 +8,9 @@
     roleType: TeamAntagonist
     exclusiveAntag: true
     antagPrototype: PirateCrew
-  - type: PirateRole
 
 - type: entity
-  parent: MindRoleNukeops
+  parent: MindRolePirateCrew
   id: MindRolePirateMedic
   name: Pirate Medic Role
   components:
@@ -19,7 +18,7 @@
     antagPrototype: PirateMedic
 
 - type: entity
-  parent: MindRoleNukeops
+  parent: MindRolePirateCrew
   id: MindRolePirateCaptain
   name: Pirate Captain Role
   components:
