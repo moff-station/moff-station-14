@@ -1,6 +1,6 @@
 # Moffstation - Begin - Adding pirates as selectable on the loadout screen
 - type: antag
-  id: Pirate
+  id: PirateCrew
   name: roles-antag-pirate-crew-name
   antagonist: true
   setPreference: true
@@ -35,6 +35,10 @@
 
 - type: startingGear
   id: PirateGear
+  name: roles-antag-pirate-crew-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-pirate-crew-objective
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
 #    back: ClothingBackpackSatchelLeather

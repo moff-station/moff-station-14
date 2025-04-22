@@ -4,23 +4,12 @@
   parent: BaseGameRule
   id: BasePiratesRule
   components:
-  - type: RandomMetadata #this generates the random operation name cuz it's cool.
-    nameSegments:
-    - NamesOperationPrefix
-    - NamesOperationSuffix
-    nameFormat: name-format-nuclear-operation
   #  - type: PiratesRule
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/pirate.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
-    speciesOverride: Human
-    speciesOverrideBlacklist:
-    #Species that do not work with nukies should be included in this list.
-    #Once the issues are fixed the species should be removed from this list to be enabled.
-    #Balance concerns are not a valid reason to disable a species, except for high-impact Nukie-specific exploits.
-    #- Vox
 
 - type: entity
   parent: BasePiratesRule
@@ -38,6 +27,10 @@
       roleLoadout:
       - RoleSurvivalNukie
       - JobPirateCaptain
+      briefing:
+        text: pirate-role-greeting
+        color: Red
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
         nameSegments:
@@ -55,6 +48,10 @@
       roleLoadout:
       - RoleSurvivalNukie
       - JobPirateMedic
+      briefing:
+        text: pirate-role-greeting
+        color: Red
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
         nameSegments:
@@ -74,7 +71,11 @@
       startingGear: PirateGear
       roleLoadout:
       - RoleSurvivalNukie
-      - JobPirate
+      - JobPirateCrew
+      briefing:
+        text: pirate-role-greeting
+        color: Red
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
         nameSegments:
