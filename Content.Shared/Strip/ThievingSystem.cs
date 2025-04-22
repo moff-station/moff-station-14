@@ -26,8 +26,10 @@ public sealed class ThievingSystem : EntitySystem
     private void OnBeforeStrip(EntityUid uid, ThievingComponent component, BeforeStripEvent args)
     {
         args.Stealth |= component.Stealthy;
-        if (args.Stealth)   // Moffstation - Allow disabling stealth
+        // Moffstation - Start - Allow disabling stealth
+        if (args.Stealth)   
             args.Additive -= component.StripTimeReduction;
+        // Moffstation - End
     }
 
     // Moffstation - Start - Add function for toggling stealth, and the function to initialize/remove the alert
