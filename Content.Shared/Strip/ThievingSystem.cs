@@ -47,16 +47,7 @@ public sealed class ThievingSystem : EntitySystem
 
         ent.Comp.Stealthy = !ent.Comp.Stealthy;
 
-        switch (ent.Comp.Stealthy)
-        {
-            case false:
-                _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, 0);
-                break;
-
-            case true:
-                _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, 1);
-                break;
-        }
+        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, ent.Comp.Stealthy ? (short?)1 : (short?)0);
         args.Handled = true;
     }
     //Moffstation - End
