@@ -7,7 +7,7 @@ namespace Content.Shared.Strip;
 
 public sealed class ThievingSystem : EntitySystem
 {
-    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
+    [Dependency] private readonly AlertsSystem _alertsSystem = default!;    // Moffstation - Added alerts for the modal
 
     public override void Initialize()
     {
