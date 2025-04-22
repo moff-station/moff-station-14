@@ -35,10 +35,6 @@
 
 - type: startingGear
   id: PirateGear
-  name: roles-antag-pirate-crew-name
-  antagonist: true
-  setPreference: true
-  objective: roles-antag-pirate-crew-objective
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
 #    back: ClothingBackpackSatchelLeather
@@ -51,12 +47,6 @@
 - type: startingGear
   id: PirateCaptainGear
   parent: PirateGear
-  # Moffstation - Begin - Added name and objective
-  name: roles-antag-pirate-captain-name
-  antagonist: true
-  setPreference: true
-  objective: roles-antag-pirate-captain-objective
-  # Moffstation - End
   equipment:
     head: ClothingHeadHatPirate
     pocket2: EnergyCutlass
@@ -64,12 +54,6 @@
 
 - type: startingGear
   id: PirateFirstmateGear
-  # Moffstation - Begin - Added name and objective
-  name: roles-antag-pirate-medic-name
-  antagonist: true
-  setPreference: true
-  objective: roles-antag-pirate-medic-objective
-  # Moffstation - End
   parent: PirateGear
   equipment:
     head: ClothingHeadHatPirateTricord
