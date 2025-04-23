@@ -619,6 +619,17 @@
     - HighRiskItem
   - type: StealTarget
     stealGroup: BoxFolderQmClipboard
+  # Moffstation - Start - Allow linking of the QM Board
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSource
+    range: 200
+    ports:
+    - OrderSender
+  # Moffstation - End - Allow linking of the QM Board
 
 - type: entity
   parent: [Paper, BaseSyndicateContraband] # eat or burn your damn piece of paper damn thieves
