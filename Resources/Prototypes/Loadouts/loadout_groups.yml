@@ -1154,6 +1154,26 @@
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
 
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefMedicalOfficerBackpack
+  name: loadout-group-chief-medical-officer-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+  - ChemistBackpack
+  - ChemistSatchel
+  - ChemistDuffel
+  - ClothingBackpackVirology
+  - ClothingBackpackSatchelVirology
+  - ClothingBackpackDuffelVirology
+  - ClothingBackpackGenetics
+  - ClothingBackpackSatchelGenetics
+  - ClothingBackpackDuffelGenetics
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
+
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
   name: loadout-group-chief-medical-officer-neck
