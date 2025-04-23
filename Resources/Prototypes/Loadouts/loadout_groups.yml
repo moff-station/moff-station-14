@@ -745,6 +745,17 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
+  
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefEngineerBackpack
+  name: loadout-group-chief-engineer-backpack
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
