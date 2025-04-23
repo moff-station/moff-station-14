@@ -731,7 +731,7 @@
     - map: [ "head" ]
   - type: Inventory
     speciesId: slime
-    templateId: head
+    templateId: headid # MOTHSTATION CHANGE - Gives smile an ID slot
     displacements:
       head:
         sizeMaps:
@@ -798,6 +798,26 @@
     attributes:
       proper: true
       gender: female
+  - type: UserInterface # MOTHSTATION CHANGE START - Gives smile an inventory
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: Storage
+    clickInsert: false
+    openOnActivate: false
+    grid:
+    - 0,0,1,2
+    maxItemSize: Large
+    storageInsertSound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: UseDelay
+    delay: 0.5 # MOTHSTATION CHANGE END - Gives smile an inventory
 
 - type: entity
   name: Pun Pun
