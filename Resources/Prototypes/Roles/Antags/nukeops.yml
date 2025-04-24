@@ -41,12 +41,14 @@
 - type: startingGear
   id: SyndicateOperativeGearFullNoUplink
   equipment:
-    jumpsuit: ClothingUniformJumpsuitOperative
-    back: ClothingBackpackDuffelSyndicate
+    # Moffstation - Begin - Removing items duplicated by the loadout
+#    jumpsuit: ClothingUniformJumpsuitOperative
+#    back: ClothingBackpackDuffelSyndicate
+    #Moffstation - End
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
-    gloves: ClothingHandsGlovesCombat
+#    gloves: ClothingHandsGlovesCombat # Moffstation - Removing items duplicated by the loadout
     outerClothing: ClothingOuterHardsuitSyndie
     shoes: ClothingShoesBootsCombatFilled
     id: SyndiPDA
@@ -57,6 +59,17 @@
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
+
+# Moffstation - Begin - Gear for reinforcements, needs to add the stuff that is normally covered by loadouts
+#Nukie Reinforcement Gear
+- type: startingGear
+  id: SyndicateOperativeReinforcementGear
+  parent: SyndicateOperativeGearFullNoUplink
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: ClothingBackpackDuffelSyndicate
+    gloves: ClothingHandsGlovesCombat
+# Moffstation - End
 
 #Nuclear Operative Gear
 - type: startingGear

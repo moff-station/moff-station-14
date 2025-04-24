@@ -20,13 +20,27 @@
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
+    # Moffstation - Begin (Resilient Grenades)
+    #- trigger:
+        #!type:DamageTrigger
+        #damage: 10
+      #behaviors:
+      #- !type:TriggerBehavior
+      #- !type:DoActsBehavior
+        #acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
         damage: 10
       behaviors:
+      - !type:TimerStartBehavior
+    - trigger:
+        !type:DamageTrigger
+        damage: 45
+      behaviors:
       - !type:TriggerBehavior
       - !type:DoActsBehavior
-        acts: ["Destruction"]
+        acts: [ "Destruction" ]
+      # Moffstation - End
   - type: Appearance
   - type: AnimationPlayer
   - type: GenericVisualizer
@@ -35,9 +49,34 @@
         enum.ConstructionVisuals.Layer:
           Primed: { state: primed }
           Unprimed: { state: icon }
+  - type: Tag
+    tags:
+    - HandGrenade
+
+# Moffstation - Begin (Resilient Grenades)
+- type: entity
+  parent: GrenadeBase
+  id: GrenadeBaseFragile
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:TimerStartBehavior
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+#Moffstation - End
 
 - type: entity
-  name: explosive grenade
+  #name: explosive grenade (Moffstation - Resilient Grenades - Replaced)
+  name: high explosive grenade
   description: Grenade that creates a small but devastating explosion.
   parent: [GrenadeBase, BaseSyndicateContraband]
   id: ExGrenade
@@ -60,7 +99,10 @@
 - type: entity
   name: flashbang
   description: Eeeeeeeeeeeeeeeeeeeeee.
-  parent: [ GrenadeBase, BaseSecurityContraband ]
+  # Moffstation - Begin (Resilient Grenades)
+  #parent: [ GrenadeBase, BaseSecurityContraband ]
+  parent: [ GrenadeBaseFragile, BaseSecurityContraband ]
+  # Moffstation - End
   id: GrenadeFlashBang
   components:
   - type: Sprite
@@ -83,6 +125,7 @@
     - Antagonists
   - type: Tag
     tags:
+    - HandGrenade
     - GrenadeFlashBang
 
 - type: entity
@@ -111,20 +154,22 @@
     sprite: Objects/Weapons/Grenades/syndgrenade.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.1
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10
-      behaviors:
-      - !type:TimerStartBehavior
-    - trigger:
-        !type:DamageTrigger
-        damage: 45
-      behaviors:
-      - !type:TriggerBehavior
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
+  # Moffstation - Begin (Resilient Grenades)
+  #- type: Destructible
+    #thresholds:
+    #- trigger:
+        #!type:DamageTrigger
+        #damage: 10
+      #behaviors:
+      #- !type:TimerStartBehavior
+    #- trigger:
+        #!type:DamageTrigger
+        #damage: 45
+      #behaviors:
+      #- !type:TriggerBehavior
+      #- !type:DoActsBehavior
+        #acts: ["Destruction"]
+  # Moffstation - End
   - type: OnUseTimerTrigger
     delay: 5
   - type: ExplodeOnTrigger
@@ -165,7 +210,10 @@
 
 
 - type: entity
-  parent: [ GrenadeBase, BaseSyndicateContraband ]
+  # Moffstation - Begin (Resilient Grenades)
+  #parent: [ GrenadeBase, BaseSyndicateContraband ]
+  parent: [ GrenadeBaseFragile, BaseSyndicateContraband ]
+  # Moffstation - End
   id: SingularityGrenade
   name: singularity grenade
   description: Grenade that simulates the power of a singularity, pulling things in a heap.
@@ -312,6 +360,9 @@
       map: [ "enum.ConstructionVisuals.Layer" ]
   - type: Item
     size: Small
+  - type: Tag
+    tags:
+    - HandGrenade
   - type: PayloadCase
   - type: Construction
     graph: ModularGrenadeGraph
@@ -320,6 +371,13 @@
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
+    # Moffstation - Begin (Resilient Grenades)
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:TimerStartBehavior
+    # Moffstation - End
     - trigger:
         !type:DamageTrigger
         damage: 50
@@ -347,7 +405,10 @@
 - type: entity
   name: EMP grenade
   description: A grenade designed to wreak havoc on electronic systems.
-  parent: [GrenadeBase, BaseSyndicateContraband]
+  # Moffstation - Begin (Resilient Grenades)
+  #parent: [GrenadeBase, BaseSyndicateContraband]
+  parent: [GrenadeBaseFragile, BaseSyndicateContraband]
+  # Moffstation - End
   id: EmpGrenade
   components:
   - type: Sprite

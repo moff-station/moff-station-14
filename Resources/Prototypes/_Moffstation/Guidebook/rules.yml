@@ -1,0 +1,14 @@
+- type: guideEntry # Default for forks and stuff. Should not be listed anywhere if the server is using a custom ruleset.
+  id: MoffRules
+  name: guide-entry-rules
+  ruleEntry: true
+  priority: 1
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffRules.xml"
+  children:
+  - MoffMetashieldChanges
+
+- type: guideEntry
+  id: MoffMetashieldChanges
+  name: metashield-changes
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffMetashieldChanges.xml"

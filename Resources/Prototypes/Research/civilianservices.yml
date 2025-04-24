@@ -197,7 +197,7 @@
     sprite: Structures/cargo_telepad.rsi
     state: display
   discipline: CivilianServices
-  tier: 2
+  tier: 3 # Moffstation
   cost: 15000
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
@@ -223,7 +223,7 @@
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
     state: beakerbluespace
   discipline: CivilianServices
-  tier: 3
+  tier: 2 # Moffstation
   cost: 10000
   recipeUnlocks:
   - BluespaceBeaker

@@ -255,7 +255,7 @@
             Heat: 12
     deactivatedSecret: true
   - type: Sprite
-    sprite: Objects/Weapons/Melee/e_cutlass.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
     layers:
       - state: e_cutlass
       - state: e_cutlass_blade
@@ -264,7 +264,7 @@
         shader: unshaded
         map: [ "blade" ]
   - type: Item
-    sprite: Objects/Weapons/Melee/e_cutlass.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
 
 - type: entity
   name: double-bladed energy sword

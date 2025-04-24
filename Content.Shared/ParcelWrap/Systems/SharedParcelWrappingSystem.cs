@@ -49,8 +49,8 @@ public sealed partial class SharedParcelWrappingSystem : EntitySystem
         return
             // Wrapping cannot wrap itself
             wrapper.Owner != target &&
-            // Wrapper should never be empty, but may as well make sure.
-            !_charges.IsEmpty(wrapper) &&
+            // Empty wrappers should have been destroyed, but may as well make sure.
+            !_charges.IsEmpty((wrapper, null)) &&
             _whitelist.IsWhitelistPass(wrapper.Comp.Whitelist, target) &&
             _whitelist.IsBlacklistFail(wrapper.Comp.Blacklist, target);
     }

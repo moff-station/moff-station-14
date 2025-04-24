@@ -18,6 +18,8 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
+  - GoldRing    # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
+  - SilverRing  # Moffstation - End
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -137,6 +139,7 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: CaptainOuterClothing
@@ -175,6 +178,7 @@
   - CommonSatchel
   - CommonDuffel
   - HoPBackpackIan
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: HoPOuterClothing
@@ -214,6 +218,7 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
+  - LeatherSatchel  # Moffstation - Allow people to pick leather satchel
 
 - type: loadoutGroup
   id: PassengerNeck
@@ -426,6 +431,7 @@
   - BotanistBackpack
   - BotanistSatchel
   - BotanistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: BotanistOuterClothing
@@ -459,6 +465,7 @@
   - ClownBackpack
   - ClownSatchel
   - ClownDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: ClownOuterClothing
@@ -516,6 +523,7 @@
   - MimeBackpack
   - MimeSatchel
   - MimeDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: MimeOuterClothing
@@ -652,6 +660,7 @@
   - CargoTechnicianBackpack
   - CargoTechnicianSatchel
   - CargoTechnicianDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
@@ -674,6 +683,7 @@
   - SalvageSpecialistBackpack
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
@@ -763,6 +773,7 @@
   - StationEngineerBackpack
   - StationEngineerSatchel
   - StationEngineerDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: StationEngineerOuterClothing
@@ -808,6 +819,7 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianSatchel
   - AtmosphericTechnicianDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
@@ -898,6 +910,7 @@
   - ScientistBackpack
   - ScientistSatchel
   - ScientistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: ScientistOuterClothing
@@ -1028,6 +1041,7 @@
   - SecurityBackpack
   - SecuritySatchel
   - SecurityDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: SecurityBelt
@@ -1196,6 +1210,7 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: MedicalShoes
@@ -1256,6 +1271,7 @@
   - ChemistBackpack
   - ChemistSatchel
   - ChemistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: ParamedicHead
@@ -1284,6 +1300,7 @@
   name: loadout-group-paramedic-shoes
   loadouts:
   - BlueShoes
+  - WhiteShoes
   - MedicalWinterBoots
 
 - type: loadoutGroup
