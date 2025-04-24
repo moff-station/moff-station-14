@@ -84,7 +84,7 @@
         scaleByQuantity: true
         damage:
           types:
-            Heat: 0.15
+            Heat: 0.75 # MOFFSTATION CHANGE - Increases slime water damage by 5x
       - !type:PopupMessage
         type: Local
         messages: [ "slime-hurt-by-water-popup" ]
