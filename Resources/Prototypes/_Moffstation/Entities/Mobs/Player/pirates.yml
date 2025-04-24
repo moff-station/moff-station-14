@@ -1,0 +1,8 @@
+# Pirates
+- type: entity
+  categories: [ HideSpawnMenu ]
+  name: Pirate
+  parent: MobHuman
+  id: MobHumanPirate
+  components:
+  - type: RandomHumanoidAppearance

@@ -2,12 +2,12 @@
   id: PirateGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
-    back: ClothingBackpackSatchelLeather
-    head: ClothingHeadBandBlack
+#    back: ClothingBackpackSatchelLeather
+#    head: ClothingHeadBandBlack
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
-    pocket1: AppraisalTool
+    pocket2: AppraisalTool  # Moffstation - Changed to pocket2 for loadout consistency
 
 - type: startingGear
   id: PirateCaptainGear

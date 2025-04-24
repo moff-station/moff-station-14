@@ -36,3 +36,28 @@
     - WizardHat
     - CommonBackpack
     - PersonalItemsJobAgnostic
+
+# Pirates
+- type: roleLoadout
+  id: JobPirateCrew
+  canCustomizeName: true
+  groups:
+  - PirateHats
+  - CommonBackpack
+  - PersonalItemsJobAgnostic
+
+- type: roleLoadout
+  id: JobPirateMedic
+  canCustomizeName: true
+  groups:
+  - PirateHats
+  - CommonBackpack
+  - PersonalItemsJobAgnostic
+
+- type: roleLoadout
+  id: JobPirateCaptain
+  canCustomizeName: true
+  groups:
+  - PirateHats
+  - CommonBackpack
+  - PersonalItemsJobAgnostic

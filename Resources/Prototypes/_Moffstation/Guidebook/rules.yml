@@ -4,3 +4,11 @@
   ruleEntry: true
   priority: 1
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffRules.xml"
+  children:
+  - MoffMetashieldChanges
+
+- type: guideEntry
+  id: MoffMetashieldChanges
+  name: metashield-changes
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffMetashieldChanges.xml"
