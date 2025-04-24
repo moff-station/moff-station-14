@@ -512,6 +512,14 @@ public sealed partial class ShuttleSystem
             var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, entity.Comp1.TargetAngle);
             var mapCoordinates = _transform.ToMapCoordinates(target);
 
+            // Moffstation - Start - Mark each dock as unqueued after the shuttle arrives
+            config.Docks.ForEach(i =>
+            {
+                i.DockA.Queued = false;
+                i.DockB.Queued = false;
+            });
+            // Moffstation - End
+
             // Couldn't dock somehow so just fallback to regular position FTL.
             if (config == null)
             {
@@ -520,13 +528,6 @@ public sealed partial class ShuttleSystem
             else
             {
                 FTLDock((uid, xform), config);
-                // Moffstation - Start - Mark each dock as unqueued
-                config.Docks.ForEach(i =>
-                {
-                    i.DockA.Queued = false;
-                    i.DockB.Queued = false;
-                });
-                // Moffstation - End
             }
 
             mapId = mapCoordinates.MapId;
