@@ -1,0 +1,73 @@
+# Player: Chartman95 - Character: Peedee
+- type: entity
+  parent: BasePlushie
+  id: PersonalItemPeedeeAvatar
+  name: Peedee's Avatar
+  description: Subject PD-113 may take many forms, but this is how she sees herself.
+  suffix: PersonalItem
+  components:
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+    heldPrefix: peedeeavatar
+    storedSprite:
+      sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+      state: peedeeavatar-storage
+      shape:
+      - 0,0,1,0
+  - type: EmitSoundOnUse
+    sound: null
+  - type: EmitSoundOnActivate
+    sound: null
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
+
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+    noRot: true
+    layers:
+      - state: peedeeavatar
+        map: [ "enum.ToggleVisuals.Layer" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleVisuals.Toggled:
+        enum.ToggleVisuals.Layer:
+          True: { state: peedeeavatar-dance }
+          False: { state: peedeeavatar }
+
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Voice/Talk/pai_exclaim.ogg
+    soundDeactivate:
+      path: /Audio/Voice/Talk/pai_ask.ogg
+
+  - type: Clothing
+    quickEquip: false
+    sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+    slots:
+    - NECK
+    - HEAD
+    equippedPrefix: peedeeavatar
+
+  - type: Tag
+    tags: [] #Specifically remove tags to make the plush not useable in crafting or edible for moths
+  - type: DetailExaminable
+    content: Probably non-diegetic. Please ignore.
+
+- type: loadout
+  id: PersonalItemPeedeeAvatar
+  storage:
+    back:
+    - PersonalItemPeedeeAvatar
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Peedee
