@@ -3,7 +3,7 @@
   parent: BasePlushie
   id: PersonalItemPeedeeAvatar
   name: Peedee's Avatar
-  description: Subject PD-113 may take many forms, but this is how she sees herself.
+  description:  A hardlight hologram depicting Subject PD-113's ghostly avatar. If lost please return to the nearest lizard, cyborg, or other host-form referring to itself as 'Peedee'.
   suffix: PersonalItem
   components:
   - type: Item
@@ -70,7 +70,7 @@
   - type: Tag
     tags: [] #Specifically remove tags to make the plush not useable in crafting or edible for moths
   - type: DetailExaminable
-    content: Probably non-diegetic. Please ignore.
+    content: Subject PD-113 may take many forms, but this is how she sees herself. Researchers have noted that keeping the subject's self image grounded with this holographic representation improves test performance by an average of 34%.
 
 - type: loadout
   id: PersonalItemPeedeeAvatar
