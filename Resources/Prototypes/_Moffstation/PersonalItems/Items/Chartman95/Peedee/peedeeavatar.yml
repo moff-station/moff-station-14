@@ -8,6 +8,13 @@
   components:
   - type: Item
     heldPrefix: peedeeavatar
+    inhandVisuals:
+      left:
+      - state: peedeeavatar-inhand-left
+        shader: unshaded
+      right:
+      - state: peedeeavatar-inhand-right
+        shader: unshaded
     storedSprite:
       sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
       state: peedeeavatar-storage
@@ -33,6 +40,7 @@
     layers:
       - state: peedeeavatar
         map: [ "enum.ToggleVisuals.Layer" ]
+        shader: unshaded
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -48,6 +56,13 @@
   - type: Clothing
     quickEquip: false
     sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+    clothingVisuals:
+      neck:
+      - state: peedeeavatar-equipped-NECK
+        shader: unshaded
+      head:
+      - state: peedeeavatar-equipped-HELMET
+        shader: unshaded
     slots:
     - NECK
     - HEAD
