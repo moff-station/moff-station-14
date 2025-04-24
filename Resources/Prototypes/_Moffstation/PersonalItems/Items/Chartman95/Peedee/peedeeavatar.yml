@@ -7,13 +7,12 @@
   suffix: PersonalItem
   components:
   - type: Item
-    sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
     heldPrefix: peedeeavatar
     storedSprite:
       sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
       state: peedeeavatar-storage
-      shape:
-      - 0,0,1,0
+    shape:
+    - 0,0,1,0
   - type: EmitSoundOnUse
     sound: null
   - type: EmitSoundOnActivate
