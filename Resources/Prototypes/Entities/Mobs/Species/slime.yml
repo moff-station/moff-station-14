@@ -91,7 +91,7 @@
         scaleByQuantity: true
         damage:
           types:
-            Heat: 1 # MOFFSTATION CHANGE - Increases slime water damage from 0.1 to 1
+            Heat: 0.5 # MOFFSTATION CHANGE - Increases slime water damage from 0.1 to 0.5
       - !type:PopupMessage
         type: Local
         visualType: Large
