@@ -27,7 +27,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
-
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
     noRot: true
@@ -41,13 +40,11 @@
         enum.ToggleVisuals.Layer:
           True: { state: peedeeavatar-dance }
           False: { state: peedeeavatar }
-
   - type: ItemToggle
     soundActivate:
       path: /Audio/Voice/Talk/pai_exclaim.ogg
     soundDeactivate:
       path: /Audio/Voice/Talk/pai_ask.ogg
-
   - type: Clothing
     quickEquip: false
     sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
@@ -55,7 +52,6 @@
     - NECK
     - HEAD
     equippedPrefix: peedeeavatar
-
   - type: Tag
     tags: [] #Specifically remove tags to make the plush not useable in crafting or edible for moths
   - type: DetailExaminable
