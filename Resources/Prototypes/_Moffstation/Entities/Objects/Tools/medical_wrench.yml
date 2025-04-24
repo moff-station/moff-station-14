@@ -1,6 +1,6 @@
 - type: entity
   name: medical wrench
-  parent: Wrench
+  parent: [Wrench, BaseMedicalContraband]
   id: MedicalWrench
   description: 'A common (medical?) tool for assembly and disassembly. Remember: lefty latchy, righty removey.'
   components:
