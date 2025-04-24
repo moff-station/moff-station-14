@@ -12,4 +12,9 @@ public sealed partial class EscapePodComponent : Component
     [DataField(customTypeSerializer:typeof(TimeOffsetSerializer))]
     [AutoPausedField]
     public TimeSpan? LaunchTime;
+
+    // Moffstation - Start - Allows detection if something else is queued to be docked
+    [DataField]
+    public string PriorityTag = "DockEmergencyPod";
+    // Moffstation - End
 }
