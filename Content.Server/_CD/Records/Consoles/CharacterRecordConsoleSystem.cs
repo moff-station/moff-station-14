@@ -41,6 +41,17 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
 
     private void OnKeySelect(Entity<CharacterRecordConsoleComponent> ent, ref CharacterRecordConsoleSelectMsg msg)
     {
+        // Moffstation - Start - Hack fix for character records being unselectable.
+        //   This is a heinous hack. The bug is that when an item is deselected in the UI, ALL items run their
+        //   "onDeselect" callback, rather than just the one which was actually selected. This means the logic for
+        //   clearing the content pane (right side) is run as many times as there are items in the record list (left
+        //   side), which "overwhelms" the actual update which selects an item. By ignoring "clear the content" messages
+        //   like this, we avoid that bug at the cost of making content impossible to deselect.
+        if (msg.CharacterRecordKey == null)
+            return;
+        // Moffstation - End
+
+
         ent.Comp.SelectedIndex = msg.CharacterRecordKey;
         UpdateUi(ent);
     }
