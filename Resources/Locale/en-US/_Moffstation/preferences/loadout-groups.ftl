@@ -7,3 +7,4 @@ loadout-group-wizard-robes = Wizard Robes
 loadout-group-wizard-hat = Wizard Hat
 
 loadout-group-pirate-hat = Pirate Hat
+loadout-group-pirate-trinkets = Pirate Accessories

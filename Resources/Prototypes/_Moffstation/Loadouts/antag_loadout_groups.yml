@@ -61,6 +61,16 @@
 - type: loadoutGroup
   id: PirateHats
   name: loadout-group-pirate-hat
+  minLimit: 0
   loadouts:
-  - HeadHatPirate
-  - HeadHatPirateTricord
+  - HatPirate
+  - HatPirateTricord
+  - SkullBandana
+
+- type: loadoutGroup
+  id: PirateTrinkets
+  name: loadout-group-pirate-trinkets
+  minLimit: 0
+  loadouts:
+  - TrinketPirateFlag
+  - TrinketPirateEyepatch

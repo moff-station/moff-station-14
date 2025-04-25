@@ -7,7 +7,10 @@
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
-    pocket2: AppraisalTool  # Moffstation - Changed to pocket2 for loadout consistency
+    # Moffstation - Start - Pirate loadout changes
+    pocket2: AppraisalTool
+    ears: ClothingHeadsetFreelance
+    # Moffstation - End
 
 - type: startingGear
   id: PirateCaptainGear

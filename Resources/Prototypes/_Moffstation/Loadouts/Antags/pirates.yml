@@ -1,10 +1,23 @@
 # Hat
 - type: loadout
-  id: HeadHatPirate
+  id: HatPirate
   equipment:
     head: ClothingHeadHatPirate
 
 - type: loadout
-  id: HeadHatPirateTricord
+  id: HatPirateTricord
   equipment:
     head: ClothingHeadHatPirateTricord
+
+# Trinkets
+- type: loadout
+  id: TrinketPirateFlag
+  storage:
+    back:
+    - PirateHandyFlag
+
+- type: loadout
+  id: TrinketPirateEyepatch
+  storage:
+    back:
+    - ClothingEyesEyepatch
