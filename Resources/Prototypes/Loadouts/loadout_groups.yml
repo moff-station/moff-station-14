@@ -177,6 +177,17 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
+# Moffstation - Start - Department Heads can use any department Bag
+  - ClownBackpack
+  - ClownSatchel
+  - ClownDuffel
+  - MimeBackpack
+  - MimeSatchel
+  - MimeDuffel
+  - BotanistBackpack
+  - BotanistSatchel
+  - BotanistDuffel
+# Moffstation - End - Department Heads can use any department Bag
   - HoPBackpackIan
   - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
@@ -632,12 +643,27 @@
   loadouts:
   - QuartermasterWintercoat
 
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: QuartermasterBackpack
+  name: loadout-group-quartermaster-backpack
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+  - LeatherSatchel 
+# Moffstation - End - Department Heads can use any department Bag
+
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
   loadouts:
   - BrownShoes
   - CargoWinterBoots
+  - SalvageBoots # Moffstation - QM can wear Salvage boots
 
 - type: loadoutGroup
   id: CargoTechnicianHead
@@ -731,6 +757,17 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
+  
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefEngineerBackpack
+  name: loadout-group-chief-engineer-backpack
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
@@ -738,6 +775,7 @@
   loadouts:
   - BrownShoes
   - EngineeringWinterBoots
+  - WorkBoots # Moffstation - CE can wear workboots
 
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
@@ -1153,6 +1191,26 @@
   loadouts:
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
+
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefMedicalOfficerBackpack
+  name: loadout-group-chief-medical-officer-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+  - ChemistBackpack
+  - ChemistSatchel
+  - ChemistDuffel
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
