@@ -1,0 +1,32 @@
+- type: entity
+  name: anchor
+  parent: BaseItem
+  id: PirateAnchor
+  description: An anchor for a ship. Weighs a lot, and can be used for prying doors.
+  suffix: Pirate
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Melee/pirate_anchor.rsi
+    scale: 1.5, 1.5
+    state: icon
+  - type: Item
+    sprite: _NF/Objects/Weapons/Melee/pirate_anchor.rsi
+#  - type: Clothing
+#    sprite: _NF/Objects/Weapons/Melee/pirate_anchor.rsi
+  - type: Prying
+    speedModifier: 2
+    pryPowered: true
+    useSound: /Audio/Items/jaws_pry.ogg
+  - type: MeleeWeapon
+    soundHit:
+      collection: MetalThud
+    wideAnimationRotation: 50
+    damage:
+      types:
+        Blunt: 10
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 15
+        Structural: 30
