@@ -1,0 +1,46 @@
+- type: entity
+  parent: PresentRandom
+  id: MysteryFigureBoxMoff
+  name: moff edition minifigure box
+  description: A box containing a mystery minifigure, themed after well known spessmen. There's ap
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/figurines.rsi
+    layers:
+      - state: fig-box
+  - type: SpawnItemsOnUse
+    items:
+      - id: MysteryFigureBoxTrash
+      - id: ToyFigurineAwana
+        orGroup: SpacemenFig
+      - id: ToyFigurineCassiel
+        orGroup: SpacemenFig
+      - id: ToyFigurineCinnabar
+        orGroup: SpacemenFig
+      - id: ToyFigurineDarnell
+        orGroup: SpacemenFig
+      - id: ToyFigurineDelivers
+        orGroup: SpacemenFig
+      - id: ToyFigurineFred
+        orGroup: SpacemenFig
+      - id: ToyFigurineGigs
+        orGroup: SpacemenFig
+      - id: ToyFigurineJelob
+        orGroup: SpacemenFig
+      - id: ToyFigurineJobs
+        orGroup: SpacemenFig
+      - id: ToyFigurineKatie
+        orGroup: SpacemenFig
+      - id: ToyFigurineLilith
+        orGroup: SpacemenFig
+      - id: ToyFigurineNyxilath
+        orGroup: SpacemenFig
+      - id: ToyFigurineScribbles
+        orGroup: SpacemenFig
+      - id: ToyFigurineSeikret
+        orGroup: SpacemenFig
+      - id: ToyFigurineTania
+        orGroup: SpacemenFig
+      - id: MobMothroach
+        orGroup: SpacemenFig
+
