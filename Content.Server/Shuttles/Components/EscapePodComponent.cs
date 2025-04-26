@@ -15,6 +15,6 @@ public sealed partial class EscapePodComponent : Component
 
     // Moffstation - Start - Allows detection if something else is queued to be docked
     [DataField]
-    public ProtoId<TagPrototype> PriorityTag = "DockEmergencyPod";
+    public string PriorityTag = "DockEmergencyPod";
     // Moffstation - End
 }
