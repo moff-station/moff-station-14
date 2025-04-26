@@ -21,6 +21,7 @@ namespace Content.Server.Shuttles.Components
         // Moffstation - Start - Allows detection if something else is queued to be docked
         [DataField]
         public bool Queued = false;
+        // Moffstation - End
 
         /// <summary>
         /// Color that gets shown on the radar screen.
