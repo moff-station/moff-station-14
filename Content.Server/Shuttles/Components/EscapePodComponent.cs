@@ -1,5 +1,7 @@
 using Content.Server.Shuttles.Systems;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Content.Shared.Tag;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Shuttles.Components;
 
@@ -15,6 +17,6 @@ public sealed partial class EscapePodComponent : Component
 
     // Moffstation - Start - Allows detection if something else is queued to be docked
     [DataField]
-    public string PriorityTag = "DockEmergencyPod";
+    public ProtoId<TagPrototype> PriorityTag = "DockEmergencyPod";
     // Moffstation - End
 }
