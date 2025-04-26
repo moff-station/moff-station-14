@@ -36,10 +36,10 @@
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
   - type: WirelessNetworkConnection
-    range: 200
+#    range: 200 # Moffstation - Cargo server
   - type: DeviceLinkSink
     ports:
-      - OrderReceiver
+    - CargoServerClient # Moffstation - Cargo server
   - type: ApcPowerReceiver
     powerLoad: 1000 # TODO if we keep this make it spike power draw when teleporting
   - type: CargoTelepad

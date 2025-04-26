@@ -8,6 +8,7 @@ namespace Content.Shared.Cargo.Components;
 /// <summary>
 /// Added to the abstract representation of a station to track its money.
 /// </summary>
+// Moffstation - This component is a misnomer now -- it's not attached to the station, it's instead attached to the Cargo Server.
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedCargoSystem)), AutoGenerateComponentPause, AutoGenerateComponentState]
 public sealed partial class StationBankAccountComponent : Component
 {

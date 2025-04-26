@@ -22,7 +22,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
     public event Action<Dictionary<ProtoId<CargoAccountPrototype>, int>>? OnSavePressed;
 
-    private EntityUid? _station;
+    private EntityUid? _station; // Moffstation - The name of this is technically incorrect -- it's the Cargo Server now.
 
     private readonly HashSet<Control> _addedControls = new();
     private readonly List<SpinBox> _spinBoxes = new();
@@ -149,7 +149,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
     public void Update(FundingAllocationConsoleBuiState state)
     {
-        _station = _entityManager.GetEntity(state.Station);
+        _station = _entityManager.GetEntity(state.Server); // Moffstation - Cargo Server
         BuildEntries();
         UpdateButtonDisabled();
     }

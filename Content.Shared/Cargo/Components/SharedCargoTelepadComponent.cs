@@ -40,5 +40,5 @@ public sealed partial class CargoTelepadComponent : Component
     public string PrinterOutput = "PaperCargoInvoice";
 
     [DataField("receiverPort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>)), ViewVariables(VVAccess.ReadWrite)]
-    public string ReceiverPort = "OrderReceiver";
+    public ProtoId<SinkPortPrototype> ReceiverPort = "CargoServerClient"; // Moffstation - Cargo Server
 }

@@ -24,7 +24,7 @@ namespace Content.Client.Cargo.UI
         private readonly CargoSystem _cargoSystem;
         private readonly SpriteSystem _spriteSystem;
         private EntityUid _owner;
-        private EntityUid? _station;
+        private EntityUid? _cargoServer; // Moffstation - Cargo Server
 
         private readonly EntityQuery<CargoOrderConsoleComponent> _orderConsoleQuery;
         private readonly EntityQuery<StationBankAccountComponent> _bankQuery;
@@ -78,7 +78,7 @@ namespace Content.Client.Cargo.UI
             TransferSpinBox.IsValid = val =>
             {
                 if (!_entityManager.TryGetComponent<CargoOrderConsoleComponent>(owner, out var console) ||
-                    !_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank))
+                    !_entityManager.TryGetComponent<StationBankAccountComponent>(_cargoServer, out var bank)) // Moffstation - Cargo Server
                     return true;
 
                 return val >= 0 && val <= (int) (console.TransferLimit * bank.Accounts[console.Account]);
@@ -237,7 +237,7 @@ namespace Content.Client.Cargo.UI
 
         public void PopulateAccountActions()
         {
-            if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank) ||
+            if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_cargoServer, out var bank) || // Moffstation - Cargo Server
                 !_entityManager.TryGetComponent<CargoOrderConsoleComponent>(_owner, out var console))
                 return;
 
@@ -258,22 +258,24 @@ namespace Content.Client.Cargo.UI
             }
         }
 
-        public void UpdateStation(EntityUid station)
+        // Moffstation - Start - Cargo Server
+        public void UpdateCargoServer(EntityUid server)
         {
-            _station = station;
+            _cargoServer = server;
         }
+        // Moffstation - End
 
         protected override void FrameUpdate(FrameEventArgs args)
         {
             base.FrameUpdate(args);
 
-            if (!_bankQuery.TryComp(_station, out var bankAccount) ||
+            if (!_bankQuery.TryComp(_cargoServer, out var bankAccount) || // Moffstation - Cargo Server
                 !_orderConsoleQuery.TryComp(_owner, out var orderConsole))
             {
                 return;
             }
 
-            var balance = _cargoSystem.GetBalanceFromAccount((_station.Value, bankAccount), orderConsole.Account);
+            var balance = _cargoSystem.GetBalanceFromAccount((_cargoServer.Value, bankAccount), orderConsole.Account); // Moffstation - Cargo Server
             PointsLabel.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", balance));
             TransferLimitLabel.Text = Loc.GetString("cargo-console-menu-account-action-transfer-limit",
                 ("limit", (int) (balance * orderConsole.TransferLimit)));

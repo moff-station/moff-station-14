@@ -1,10 +1,21 @@
 using Robust.Shared.Serialization;
 using System.Text;
+
+// Moffstation - Start
+using Content.Shared.Cargo.Prototypes;
+using Robust.Shared.Prototypes;
+// Moffstation - End
+
 namespace Content.Shared.Cargo
 {
     [DataDefinition, NetSerializable, Serializable]
     public sealed partial class CargoOrderData
     {
+        // Moffstation - Start
+        [DataField]
+        public ProtoId<CargoAccountPrototype> Account;
+        // Moffstation - End
+
         /// <summary>
         /// Price when the order was added.
         /// </summary>
@@ -52,7 +63,7 @@ namespace Content.Shared.Cargo
         [DataField]
         public string? Approver;
 
-        public CargoOrderData(int orderId, string productId, string productName, int price, int amount, string requester, string reason)
+        public CargoOrderData(int orderId, string productId, string productName, int price, int amount, string requester, string reason, ProtoId<CargoAccountPrototype> account) // Moffstation - Cargo Server
         {
             OrderId = orderId;
             ProductId = productId;
@@ -61,6 +72,7 @@ namespace Content.Shared.Cargo
             OrderQuantity = amount;
             Requester = requester;
             Reason = reason;
+            Account = account; // Moffstation - Cargo Server
         }
 
         public void SetApproverData(string? approver)

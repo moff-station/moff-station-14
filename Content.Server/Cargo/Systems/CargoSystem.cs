@@ -48,7 +48,7 @@ public sealed partial class CargoSystem : SharedCargoSystem
     private EntityQuery<TradeStationComponent> _tradeQuery;
 
     private HashSet<EntityUid> _setEnts = new();
-    private List<EntityUid> _listEnts = new();
+    // private List<EntityUid> _listEnts = new(); // Moffstation - no longer used.
     private List<(EntityUid, CargoPalletComponent, TransformComponent)> _pads = new();
 
     public override void Initialize()
@@ -60,6 +60,7 @@ public sealed partial class CargoSystem : SharedCargoSystem
         _mobQuery = GetEntityQuery<MobStateComponent>();
         _tradeQuery = GetEntityQuery<TradeStationComponent>();
 
+        InitializeServer(); // Moffstation - Add cargo server
         InitializeConsole();
         InitializeShuttle();
         InitializeTelepad();

@@ -156,7 +156,10 @@ public sealed partial class CargoSystem
                         order.Price,
                         spaceRemaining,
                         order.Requester,
-                        order.Reason);
+                        // Moffstation - Start - Cargo Server
+                        order.Reason,
+                        order.Account);
+                        // Moffstation - End
                     orders.Add(reducedOrder);
                 }
                 else
@@ -317,8 +320,7 @@ public sealed partial class CargoSystem
     {
         var xform = Transform(uid);
 
-        if (_station.GetOwningStation(uid) is not { } station ||
-            !TryComp<StationBankAccountComponent>(station, out var bankAccount))
+        if (GetLinkedCargoServer(uid) is not { } server) // Moffstation - Cargo Server
         {
             return;
         }
@@ -334,7 +336,7 @@ public sealed partial class CargoSystem
         if (!SellPallets(gridUid, out var goods))
             return;
 
-        var baseDistribution = CreateAccountDistribution(bankAccount.PrimaryAccount, bankAccount, bankAccount.PrimaryCut);
+        var baseDistribution = CreateAccountDistribution(server.Comp1.PrimaryAccount, server, server.Comp1.PrimaryCut); // Moffstation - Cargo Server
         foreach (var (_, sellComponent, value) in goods)
         {
             Dictionary<ProtoId<CargoAccountPrototype>, double> distribution;
@@ -342,8 +344,10 @@ public sealed partial class CargoSystem
             {
                 distribution = new Dictionary<ProtoId<CargoAccountPrototype>, double>()
                 {
-                    { sellComponent.OverrideAccount, bankAccount.PrimaryCut },
-                    { bankAccount.PrimaryAccount, 1.0 - bankAccount.PrimaryCut },
+                    // Moffstation - Start - Cargo Server
+                    { sellComponent.OverrideAccount, server.Comp1.PrimaryCut },
+                    { server.Comp1.PrimaryAccount, 1.0 - server.Comp1.PrimaryCut },
+                    // Moffstation - End
                 };
             }
             else
@@ -351,10 +355,10 @@ public sealed partial class CargoSystem
                 distribution = baseDistribution;
             }
 
-            UpdateBankAccount((station, bankAccount), (int) Math.Round(value), distribution, false);
+            UpdateBankAccount((server, server), (int) Math.Round(value), distribution, false); // Moffstation - Cargo Server
         }
 
-        Dirty(station, bankAccount);
+        Dirty(server); // Moffstation - Cargo Server
         _audio.PlayPvs(ApproveSound, uid);
         UpdatePalletConsoleInterface(uid);
     }

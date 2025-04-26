@@ -130,15 +130,15 @@ namespace Content.Client.Cargo.BUI
 
             if (state is not CargoConsoleInterfaceState cState || !EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
                 return;
-            var station = EntMan.GetEntity(cState.Station);
+            var cargoServer = EntMan.GetEntity(cState.CargoServer); // Moffstation - Cargo Server
 
             OrderCapacity = cState.Capacity;
             OrderCount = cState.Count;
-            BankBalance = _cargoSystem.GetBalanceFromAccount(station, orderConsole.Account);
+            BankBalance = _cargoSystem.GetBalanceFromAccount(cargoServer, orderConsole.Account); // Moffstation - Cargo Server
 
             AccountName = cState.Name;
 
-            _menu?.UpdateStation(station);
+            _menu?.UpdateCargoServer(cargoServer); // Moffstation - Cargo Server
             Populate(cState.Orders);
         }
 

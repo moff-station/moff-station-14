@@ -1,0 +1,10 @@
+﻿- type: sourcePort
+  id: CargoServerHost
+  name: signal-port-name-cargo-host
+  description: signal-port-description-cargo-host
+  defaultLinks: [ CargoServerClient ]
+
+- type: sinkPort
+  id: CargoServerClient
+  name: signal-port-name-cargo-client
+  description: signal-port-description-cargo-client

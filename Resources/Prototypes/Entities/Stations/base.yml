@@ -8,15 +8,17 @@
   id: BaseStationCargo
   abstract: true
   components:
-    - type: StationBankAccount
-    - type: StationCargoOrderDatabase
-      orders:
-        Cargo: [ ]
-        Engineering: [ ]
-        Medical: [ ]
-        Science: [ ]
-        Security: [ ]
-        Service: [ ]
+# Moffstation - Start - Move bank + order management to cargo server
+#    - type: StationBankAccount
+#    - type: StationCargoOrderDatabase
+#      orders:
+#        Cargo: [ ]
+#        Engineering: [ ]
+#        Medical: [ ]
+#        Science: [ ]
+#        Security: [ ]
+#        Service: [ ]
+# Moffstation - End
     - type: StationCargoBountyDatabase
 
 - type: entity

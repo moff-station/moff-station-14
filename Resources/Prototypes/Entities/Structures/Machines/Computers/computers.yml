@@ -950,11 +950,13 @@
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
   - type: WirelessNetworkConnection
-    range: 200
-  - type: DeviceLinkSource
-    range: 200
+  # Moffstation - Start - Cargo Server
+#    range: 200
+  - type: DeviceLinkSink
+#    range: 200
     ports:
-    - OrderSender
+    - CargoServerClient
+  # Moffstation - End
   - type: GuideHelp
     guides:
     - Cargo
@@ -1196,6 +1198,20 @@
     radius: 1.5
     energy: 1.6
     color: "#3c5eb5"
+  # Moffstation - Start - Cargo Server
+  - type: GuideHelp
+    guides:
+    - Cargo
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+  #    range: 200
+  - type: DeviceLinkSink
+    #    range: 200
+    ports:
+    - CargoServerClient
+  # Moffstation - End
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -1422,6 +1438,17 @@
   - type: GuideHelp
     guides:
     - Cargo
+  # Moffstation - Start - Cargo Server
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+  #    range: 200
+  - type: DeviceLinkSink
+    #    range: 200
+    ports:
+    - CargoServerClient
+  # Moffstation - End
 
 - type: entity
   parent: BaseComputerAiAccess

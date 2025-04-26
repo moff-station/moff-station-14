@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Server._Moffstation.Cargo.Events; // Moffstation - Cargo Server
 using Content.Server.Cargo.Components;
 using Content.Server.Station.Components;
 using Content.Shared._Moffstation.Cargo.Events; // Moffstation
@@ -41,26 +42,30 @@ namespace Content.Server.Cargo.Systems
             if (!HasComp<CashComponent>(args.Used))
                 return;
 
+            // Moffstation - Start - Cargo Server
+            if (GetLinkedCargoServer(uid) is not { } server)
+            {
+                // No linked server to add money to.
+                return;
+            }
+            // Moffstation - End
+
             var price = _pricing.GetPrice(args.Used);
 
             if (price == 0)
                 return;
 
-            var stationUid = _station.GetOwningStation(args.Used);
-
-            if (!TryComp(stationUid, out StationBankAccountComponent? bank))
-                return;
+            // Moffstation - removed station bank account initialization here.
 
             _audio.PlayPvs(ApproveSound, uid);
-            UpdateBankAccount((stationUid.Value, bank), (int) price, CreateAccountDistribution(component.Account, bank));
+            UpdateBankAccount((server, server.Comp1), (int) price, CreateAccountDistribution(component.Account, server)); // Moffstation - Cargo Server
             QueueDel(args.Used);
             args.Handled = true;
         }
 
         private void OnInit(EntityUid uid, CargoOrderConsoleComponent orderConsole, ComponentInit args)
         {
-            var station = _station.GetOwningStation(uid);
-            UpdateOrderState(uid, station);
+            UpdateOrderState((uid, orderConsole)); // Moffstation - Cargo Server
         }
 
         private void OnEmagged(Entity<CargoOrderConsoleComponent> ent, ref GotEmaggedEvent args)
@@ -102,121 +107,52 @@ namespace Content.Server.Cargo.Systems
                 return;
             }
 
-            var station = _station.GetOwningStation(uid);
-
-            // No station to deduct from.
-            if (!TryComp(station, out StationBankAccountComponent? bank) ||
-                !TryComp(station, out StationDataComponent? stationData) ||
-                !TryGetOrderDatabase(station, out var orderDatabase))
+            // Moffstation - Start - Cargo Server
+            if (GetLinkedCargoServer(uid) is not { } server)
             {
+                // TODO CENT Loc here is wrong
                 ConsolePopup(args.Actor, Loc.GetString("cargo-console-station-not-found"));
+                // Moffstation - End
                 PlayDenySound(uid, component);
                 return;
             }
 
-            // Find our order again. It might have been dispatched or approved already
-            var order = orderDatabase.Orders[component.Account].Find(order => args.OrderId == order.OrderId && !order.Approved);
-            if (order == null)
-            {
-                return;
-            }
+            // Moffstation - Start - Cargo Server
+            //   All of the order fulfillment logic used to be here, but now we send a message to the server and the
+            //   server handles the fulfillment.
+            var ev = new CargoApprovedOrderMessage(
+                args.OrderId,
+                component.Account,
+                shouldAnnounceFulfillment: !_emag.CheckFlag(uid, EmagType.Interaction),
+                    uid,
+                    player,
+                // TODO CENT The channel can be resolved from the account.
+                    component.AnnouncementChannel
+            );
+            RaiseLocalEvent(server, ev);
 
-            // Invalid order
-            if (!_protoMan.HasIndex<EntityPrototype>(order.ProductId))
+            if (ev.DenialReason is { } denialReason)
             {
-                ConsolePopup(args.Actor, Loc.GetString("cargo-console-invalid-product"));
+                ConsolePopup(args.Actor, denialReason);
                 PlayDenySound(uid, component);
                 return;
             }
 
-            var amount = GetOutstandingOrderCount(orderDatabase, component.Account);
-            var capacity = orderDatabase.Capacity;
-
-            // Too many orders, avoid them getting spammed in the UI.
-            if (amount >= capacity)
-            {
-                ConsolePopup(args.Actor, Loc.GetString("cargo-console-too-many"));
-                PlayDenySound(uid, component);
-                return;
-            }
-
-            // Cap orders so someone can't spam thousands.
-            var cappedAmount = Math.Min(capacity - amount, order.OrderQuantity);
-
-            if (cappedAmount != order.OrderQuantity)
-            {
-                order.OrderQuantity = cappedAmount;
-                ConsolePopup(args.Actor, Loc.GetString("cargo-console-snip-snip"));
-                PlayDenySound(uid, component);
-            }
-
-            var cost = order.Price * order.OrderQuantity;
-            var accountBalance = GetBalanceFromAccount((station.Value, bank), component.Account);
-
-            // Not enough balance
-            if (cost > accountBalance)
-            {
-                ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", cost)));
-                PlayDenySound(uid, component);
-                return;
-            }
-
-            var ev = new FulfillCargoOrderEvent((station.Value, stationData), order, (uid, component));
-            RaiseLocalEvent(ref ev);
-            ev.FulfillmentEntity ??= station.Value;
-
-            if (!ev.Handled)
-            {
-                ev.FulfillmentEntity = TryFulfillOrder((station.Value, stationData), component.Account, order, orderDatabase);
-
-                if (ev.FulfillmentEntity == null)
-                {
-                    ConsolePopup(args.Actor, Loc.GetString("cargo-console-unfulfilled"));
-                    PlayDenySound(uid, component);
-                    return;
-                }
-            }
-
-            order.Approved = true;
             _audio.PlayPvs(ApproveSound, uid);
-
-            if (!_emag.CheckFlag(uid, EmagType.Interaction))
-            {
-                var tryGetIdentityShortInfoEvent = new TryGetIdentityShortInfoEvent(uid, player);
-                RaiseLocalEvent(tryGetIdentityShortInfoEvent);
-                order.SetApproverData(tryGetIdentityShortInfoEvent.Title);
-
-                var message = Loc.GetString("cargo-console-unlock-approved-order-broadcast",
-                    ("productName", Loc.GetString(order.ProductName)),
-                    ("orderAmount", order.OrderQuantity),
-                    ("approver", order.Approver ?? string.Empty),
-                    ("cost", cost));
-                _radio.SendRadioMessage(uid, message, component.AnnouncementChannel, uid, escapeMarkup: false);
-                if (CargoOrderConsoleComponent.BaseAnnouncementChannel != component.AnnouncementChannel)
-                    _radio.SendRadioMessage(uid, message, CargoOrderConsoleComponent.BaseAnnouncementChannel, uid, escapeMarkup: false);
-            }
-
-            ConsolePopup(args.Actor, Loc.GetString("cargo-console-trade-station", ("destination", MetaData(ev.FulfillmentEntity.Value).EntityName)));
-
-            // Log order approval
-            _adminLogger.Add(LogType.Action,
-                LogImpact.Low,
-                $"{ToPrettyString(player):user} approved order [orderId:{order.OrderId}, quantity:{order.OrderQuantity}, product:{order.ProductId}, requester:{order.Requester}, reason:{order.Reason}] on account {component.Account} with balance at {accountBalance}");
-
-            orderDatabase.Orders[component.Account].Remove(order);
-            UpdateBankAccount((station.Value, bank), -cost, CreateAccountDistribution(component.Account, bank));
-            UpdateOrders(station.Value);
+            // Moffstation - End
         }
 
-        private EntityUid? TryFulfillOrder(Entity<StationDataComponent> stationData, ProtoId<CargoAccountPrototype> account, CargoOrderData order, StationCargoOrderDatabaseComponent orderDatabase)
+        private EntityUid? TryFulfillOrder(Entity<StationDataComponent> stationData, CargoOrderData order, StationCargoOrderDatabaseComponent orderDatabase) // Moffstation - Cargo Server
         {
             // No slots at the trade station
-            _listEnts.Clear();
-            GetTradeStations(stationData, ref _listEnts);
+            // Moffstation - Start - Replace static entity list with local
+            List<EntityUid> listEnts = [];
+            GetTradeStations(stationData, ref listEnts);
+            // Moffstation - End
             EntityUid? tradeDestination = null;
 
             // Try to fulfill from any station where possible, if the pad is not occupied.
-            foreach (var trade in _listEnts)
+            foreach (var trade in listEnts) // Moffstation - Local entity list
             {
                 var tradePads = GetCargoPallets(trade, BuySellType.Buy);
                 _random.Shuffle(tradePads);
@@ -228,7 +164,7 @@ namespace Content.Server.Cargo.Systems
                     {
                         var coordinates = new EntityCoordinates(trade, pad.Transform.LocalPosition);
 
-                        if (FulfillOrder(order, account, coordinates, orderDatabase.PrinterOutput))
+                        if (FulfillOrder(order, coordinates, orderDatabase.PrinterOutput)) // Moffstation - Cargo Server
                         {
                             tradeDestination = trade;
                             order.NumDispatched++;
@@ -258,12 +194,10 @@ namespace Content.Server.Cargo.Systems
 
         private void OnRemoveOrderMessage(EntityUid uid, CargoOrderConsoleComponent component, CargoConsoleRemoveOrderMessage args)
         {
-            var station = _station.GetOwningStation(uid);
-
-            if (!TryGetOrderDatabase(station, out var orderDatabase))
+            if (GetLinkedCargoServer(uid) is not { } server) // Moffstation - Cargo Server
                 return;
 
-            RemoveOrder(station.Value, component.Account, args.OrderId, orderDatabase);
+            RemoveOrder(component.Account, args.OrderId, server); // Moffstation - Cargo Server
         }
 
         private void OnAddOrderMessage(EntityUid uid, CargoOrderConsoleComponent component, CargoConsoleAddOrderMessage args)
@@ -274,10 +208,7 @@ namespace Content.Server.Cargo.Systems
             if (args.Amount <= 0)
                 return;
 
-            var stationUid = _station.GetOwningStation(uid);
-
-            if (!TryGetOrderDatabase(stationUid, out var orderDatabase))
-                return;
+            // Moffstation - Cargo server -- Removed station lookup by the console, that's handled by the cargo server now.
 
             if (!_protoMan.TryIndex<CargoProductPrototype>(args.CargoProductId, out var product))
             {
@@ -288,9 +219,14 @@ namespace Content.Server.Cargo.Systems
             if (!component.AllowedGroups.Contains(product.Group))
                 return;
 
-            var data = GetOrderData(args, product, GenerateOrderId(orderDatabase));
+            // Moffstation - Start - Cargo Server
+            if (GetLinkedCargoServer(uid) is not { } server)
+                return;
 
-            if (!TryAddOrder(stationUid.Value, component.Account, data, orderDatabase))
+            var data = GetOrderData(args, product, component.Account, GenerateOrderId(server));
+            // Moffstation - End
+
+            if (!TryAddOrder(data, server)) // Moffstation - Cargo Server
             {
                 PlayDenySound(uid, component);
                 return;
@@ -305,33 +241,41 @@ namespace Content.Server.Cargo.Systems
 
         private void OnOrderUIOpened(EntityUid uid, CargoOrderConsoleComponent component, BoundUIOpenedEvent args)
         {
-            var station = _station.GetOwningStation(uid);
-            UpdateOrderState(uid, station);
+            UpdateOrderState((uid, component)); // Moffstation - Cargo Server
         }
 
         #endregion
 
-        private void UpdateOrderState(EntityUid consoleUid, EntityUid? station)
+        // Moffstation - CargoServer -- Console know their attached servers, so the station isn't passed in.
+        private void UpdateOrderState(Entity<CargoOrderConsoleComponent> entity)
         {
-            if (!TryComp<CargoOrderConsoleComponent>(consoleUid, out var console))
-                return;
-
-            if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var orderDatabase))
-                return;
-
-            if (_uiSystem.HasUi(consoleUid, CargoConsoleUiKey.Orders))
+            if (GetLinkedCargoServer(entity) is not { } server ||
+                !_uiSystem.HasUi(entity, CargoConsoleUiKey.Orders))
             {
-                _uiSystem.SetUiState(consoleUid,
+                _uiSystem.SetUiState(
+                    entity.Owner,
                     CargoConsoleUiKey.Orders,
-                    new CargoConsoleInterfaceState(
-                    MetaData(station.Value).EntityName,
-                    GetOutstandingOrderCount(orderDatabase, console.Account),
-                    orderDatabase.Capacity,
-                    GetNetEntity(station.Value),
-                    orderDatabase.Orders[console.Account]
-                ));
+                    null
+                );
+                return;
             }
+
+            if (_station.GetOwningStation(server) is not { } station)
+                return;
+
+            _uiSystem.SetUiState(
+                entity.Owner,
+                CargoConsoleUiKey.Orders,
+                new CargoConsoleInterfaceState(
+                    MetaData(station).EntityName,
+                    GetOutstandingOrderCount(server.Comp2, entity.Comp.Account),
+                    server.Comp2.Capacity,
+                    GetNetEntity(server),
+                    server.Comp2.Orders[entity.Comp.Account]
+                )
+            );
         }
+        // Moffstation - End
 
         private void ConsolePopup(EntityUid actor, string text)
         {
@@ -343,9 +287,9 @@ namespace Content.Server.Cargo.Systems
             _audio.PlayPvs(_audio.ResolveSound(component.ErrorSound), uid);
         }
 
-        private static CargoOrderData GetOrderData(CargoConsoleAddOrderMessage args, CargoProductPrototype cargoProduct, int id)
+        private static CargoOrderData GetOrderData(CargoConsoleAddOrderMessage args, CargoProductPrototype cargoProduct, ProtoId<CargoAccountPrototype> account, int id) // Moffstation - Cargo Server
         {
-            return new CargoOrderData(id, cargoProduct.Product, cargoProduct.Name, cargoProduct.Cost, args.Amount, args.Requester, args.Reason);
+            return new CargoOrderData(id, cargoProduct.Product, cargoProduct.Name, cargoProduct.Cost, args.Amount, args.Requester, args.Reason, account); // Moffstation - Cargo Server
         }
 
         public static int GetOutstandingOrderCount(StationCargoOrderDatabaseComponent component, ProtoId<CargoAccountPrototype> account)
@@ -366,29 +310,27 @@ namespace Content.Server.Cargo.Systems
         /// Updates all of the cargo-related consoles for a particular station.
         /// This should be called whenever orders change.
         /// </summary>
-        private void UpdateOrders(EntityUid dbUid)
+        private void UpdateOrders() // Moffstation - Cargo Server
         {
             // Order added so all consoles need updating.
             var orderQuery = AllEntityQuery<CargoOrderConsoleComponent>();
 
-            while (orderQuery.MoveNext(out var uid, out var _))
+            while (orderQuery.MoveNext(out var uid, out var component)) // Moffstation - Cargo Server
             {
-                var station = _station.GetOwningStation(uid);
-                if (station != dbUid)
-                    continue;
-
-                UpdateOrderState(uid, station);
+                UpdateOrderState((uid, component)); // Moffstation - Cargo Server
             }
 
-            var consoleQuery = AllEntityQuery<CargoShuttleConsoleComponent>();
-            while (consoleQuery.MoveNext(out var uid, out var _))
-            {
-                var station = _station.GetOwningStation(uid);
-                if (station != dbUid)
-                    continue;
-
-                UpdateShuttleState(uid, station);
-            }
+            // Moffstation - Start -- I just obliterated this because it doesn't seem to be used and was getting in the way
+            // var consoleQuery = AllEntityQuery<CargoShuttleConsoleComponent>();
+            // while (consoleQuery.MoveNext(out var uid, out var _))
+            // {
+            //     var station = _station.GetOwningStation(uid);
+            //     if (station != dbUid)
+            //         continue;
+            //
+            //     UpdateShuttleState(uid, station);
+            // }
+            // Moffstation - End
         }
 
         public bool AddAndApproveOrder(
@@ -408,7 +350,7 @@ namespace Content.Server.Cargo.Systems
             DebugTools.Assert(_protoMan.HasIndex<EntityPrototype>(spawnId));
             // Make an order
             var id = GenerateOrderId(component);
-            var order = new CargoOrderData(id, spawnId, name, cost, qty, sender, description);
+            var order = new CargoOrderData(id, spawnId, name, cost, qty, sender, description, account); // Moffstation - Cargo Server
 
             // Approve it now
             order.SetApproverData(dest, sender);
@@ -420,15 +362,17 @@ namespace Content.Server.Cargo.Systems
                 $"AddAndApproveOrder {description} added order [orderId:{order.OrderId}, quantity:{order.OrderQuantity}, product:{order.ProductId}, requester:{order.Requester}, reason:{order.Reason}]");
 
             // Add it to the list
-            return TryAddOrder(dbUid, account, order, component) && TryFulfillOrder(stationData, account, order, component).HasValue;
+            return TryAddOrder(order, component) && TryFulfillOrder(stationData, order, component).HasValue; // Moffstation - Cargo Server
         }
 
-        private bool TryAddOrder(EntityUid dbUid, ProtoId<CargoAccountPrototype> account, CargoOrderData data, StationCargoOrderDatabaseComponent component)
+        // Moffstation - Start - Cargo Server
+        private bool TryAddOrder(CargoOrderData data, StationCargoOrderDatabaseComponent component)
         {
-            component.Orders[account].Add(data);
-            UpdateOrders(dbUid);
+            component.Orders[data.Account].Add(data);
+            UpdateOrders();
             return true;
         }
+        // Moffstation - End
 
         private static int GenerateOrderId(StationCargoOrderDatabaseComponent orderDB)
         {
@@ -437,14 +381,14 @@ namespace Content.Server.Cargo.Systems
             return ++orderDB.NumOrdersCreated;
         }
 
-        public void RemoveOrder(EntityUid dbUid, ProtoId<CargoAccountPrototype> account, int index, StationCargoOrderDatabaseComponent orderDB)
+        public void RemoveOrder(ProtoId<CargoAccountPrototype> account, int index, StationCargoOrderDatabaseComponent orderDB) // Moffstation - Cargo Server
         {
             var sequenceIdx = orderDB.Orders[account].FindIndex(order => order.OrderId == index);
             if (sequenceIdx != -1)
             {
                 orderDB.Orders[account].RemoveAt(sequenceIdx);
             }
-            UpdateOrders(dbUid);
+            UpdateOrders(); // Moffstation - Cargo Server
         }
 
         public void ClearOrders(StationCargoOrderDatabaseComponent component)
@@ -484,13 +428,13 @@ namespace Content.Server.Cargo.Systems
             if (!PopFrontOrder(orderDB, account, out var order))
                 return false;
 
-            return FulfillOrder(order, account, spawn, paperProto);
+            return FulfillOrder(order, spawn, paperProto); // Moffstation - Cargo Server
         }
 
         /// <summary>
         /// Fulfills the specified cargo order and spawns paper attached to it.
         /// </summary>
-        private bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
+        private bool FulfillOrder(CargoOrderData order, EntityCoordinates spawn, string? paperProto) // Moffstation - Cargo Server
         {
             // Create the item itself
             var item = Spawn(order.ProductId, spawn);
@@ -506,7 +450,7 @@ namespace Content.Server.Cargo.Systems
                 var val = Loc.GetString("cargo-console-paper-print-name", ("orderNumber", order.OrderId));
                 _metaSystem.SetEntityName(printed, val);
 
-                var accountProto = _protoMan.Index(account);
+                var accountProto = _protoMan.Index(order.Account); // Moffstation - Cargo Server
                 _paperSystem.SetContent((printed, paper),
                     Loc.GetString(
                         "cargo-console-paper-print-text",
@@ -532,13 +476,15 @@ namespace Content.Server.Cargo.Systems
 
         }
 
-        #region Station
-
-        private bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)
-        {
-            return TryComp(stationUid, out dbComp);
-        }
-
-        #endregion
+        // Moffstation - Start - Cargo Server
+        // #region Station
+        //
+        // private bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)
+        // {
+        //     return TryComp(stationUid, out dbComp);
+        // }
+        //
+        // #endregion
+        // Moffstation - End
     }
 }

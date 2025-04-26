@@ -53,10 +53,12 @@
   name: signal-port-name-timer
   description: signal-port-description-timer
 
-- type: sinkPort
-  id: OrderReceiver
-  name: signal-port-name-order-receiver
-  description: signal-port-description-order-receiver
+# Moffstation - Start - This port is replaced by the Cargo Server Client / Host ports
+#- type: sinkPort
+#  id: OrderReceiver
+#  name: signal-port-name-order-receiver
+#  description: signal-port-description-order-receiver
+# Moffstation - End
 
 - type: sinkPort
   id: Pressurize

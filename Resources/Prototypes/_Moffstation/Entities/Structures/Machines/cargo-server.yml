@@ -1,0 +1,92 @@
+﻿- type: entity
+  id: CargoServerMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: money server machine board
+  description: A machine printed circuit board for a money server.
+  components:
+  - type: Sprite
+    state: supply
+  - type: MachineBoard
+    prototype: CargoServer
+    stackRequirements:
+      MatterBin: 1
+      Plasma: 5
+
+- type: entity
+  id: CargoServer
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: CargoServer
+  description: The brain at the center of cargo, keeping track of orders, money, and -- wait, what do you mean cargo there're no brains in cargo?
+  components:
+  - type: StationBankAccount
+  - type: StationCargoOrderDatabase
+    orders:
+      Cargo: [ ]
+      Engineering: [ ]
+      Medical: [ ]
+      Science: [ ]
+      Security: [ ]
+      Service: [ ]
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: Machine
+    board: CargoServerMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: Sprite
+    sprite: Structures/Machines/server.rsi
+    layers:
+    - state: server
+    - state: variant-cargo
+    - state: server_o
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: ApcPowerReceiver
+    powerLoad: 200
+  - type: ExtensionCableReceiver
+  - type: WiresPanel
+  - type: WiresVisuals
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+  - type: Appearance
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -9
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/server_fans.ogg
+  - type: GuideHelp
+    guides:
+    - Cargo
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+  - type: DeviceLinkSource
+    ports:
+    - CargoServerHost

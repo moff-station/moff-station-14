@@ -19,13 +19,12 @@ public sealed partial class CargoSystem
 
     private void OnWithdrawFunds(Entity<CargoOrderConsoleComponent> ent, ref CargoConsoleWithdrawFundsMessage args)
     {
-        if (_station.GetOwningStation(ent) is not { } station ||
-            !TryComp<StationBankAccountComponent>(station, out var bank))
+        if (GetLinkedCargoServer(ent) is not { } server) // Moffstation - Cargo Server
             return;
 
         if (args.Account == ent.Comp.Account ||
             args.Amount <= 0 ||
-            args.Amount > GetBalanceFromAccount((station, bank), ent.Comp.Account) * ent.Comp.TransferLimit)
+            args.Amount > GetBalanceFromAccount((server, server.Comp1), ent.Comp.Account) * ent.Comp.TransferLimit) // Moffstation - Cargo Server
             return;
 
         if (Timing.CurTime < ent.Comp.NextAccountActionTime)
@@ -40,7 +39,7 @@ public sealed partial class CargoSystem
 
         ent.Comp.NextAccountActionTime = Timing.CurTime + ent.Comp.AccountActionDelay;
         Dirty(ent);
-        UpdateBankAccount((station, bank), -args.Amount, CreateAccountDistribution(ent.Comp.Account, bank));
+        UpdateBankAccount((server, server.Comp1), -args.Amount, CreateAccountDistribution(ent.Comp.Account, server)); // Moffstation - Cargo Server
         _audio.PlayPvs(ApproveSound, ent);
 
         var tryGetIdentityShortInfoEvent = new TryGetIdentityShortInfoEvent(ent, args.Actor);
@@ -65,7 +64,7 @@ public sealed partial class CargoSystem
         else
         {
             var otherAccount = _protoMan.Index(args.Account.Value);
-            UpdateBankAccount((station, bank), args.Amount, CreateAccountDistribution(args.Account.Value, bank));
+            UpdateBankAccount((server, server.Comp1), args.Amount, CreateAccountDistribution(args.Account.Value, server)); // Moffstation - Cargo Server
 
             if (!_emag.CheckFlag(ent, EmagType.Interaction))
             {
@@ -99,17 +98,16 @@ public sealed partial class CargoSystem
 
     private void OnSetFundingAllocation(Entity<FundingAllocationConsoleComponent> ent, ref SetFundingAllocationBuiMessage args)
     {
-        if (_station.GetOwningStation(ent) is not { } station ||
-            !TryComp<StationBankAccountComponent>(station, out var bank))
+        if (GetLinkedCargoServer(ent) is not { } server) // Moffstation - Cargo Server
             return;
 
-        if (args.Percents.Count != bank.RevenueDistribution.Count)
+        if (args.Percents.Count != server.Comp1.RevenueDistribution.Count) // Moffstation - Cargo Server
             return;
 
         var differs = false;
         foreach (var (account, percent) in args.Percents)
         {
-            if (percent != (int) Math.Round(bank.RevenueDistribution[account] * 100))
+            if (percent != (int) Math.Round(server.Comp1.RevenueDistribution[account] * 100)) // Moffstation - Cargo Server
             {
                 differs = true;
                 break;
@@ -122,23 +120,32 @@ public sealed partial class CargoSystem
         if (args.Percents.Values.Sum() != 100)
             return;
 
-        bank.RevenueDistribution.Clear();
+        server.Comp1.RevenueDistribution.Clear(); // Moffstation - Cargo Server
         foreach (var (account, percent )in args.Percents)
         {
-            bank.RevenueDistribution.Add(account, percent / 100.0);
+            server.Comp1.RevenueDistribution.Add(account, percent / 100.0); // Moffstation - Cargo Server
         }
-        Dirty(station, bank);
+        Dirty(server); // Moffstation - Cargo Server
 
         _audio.PlayPvs(ent.Comp.SetDistributionSound, ent);
         _adminLogger.Add(
             LogType.Action,
             LogImpact.Medium,
-            $"{ToPrettyString(args.Actor):player} set station {ToPrettyString(station)} fund distribution: {string.Join(',', bank.RevenueDistribution.Select(p => $"{p.Key}: {p.Value}").ToList())}");
+            // TODO CENT Fix this log line -- it used to refer to "the station's allocation"
+            $"{ToPrettyString(args.Actor):player} set station {ToPrettyString(server)} fund distribution: {string.Join(',', server.Comp1.RevenueDistribution.Select(p => $"{p.Key}: {p.Value}").ToList())}");
     }
 
-    private void OnFundAllocationBuiOpen(Entity<FundingAllocationConsoleComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    // Moffstation - Start - Cargo Server
+    private void OnFundAllocationBuiOpen(Entity<FundingAllocationConsoleComponent> ent,
+        ref BeforeActivatableUIOpenEvent args)
     {
-        if (_station.GetOwningStation(ent) is { } station)
-            _uiSystem.SetUiState(ent.Owner, FundingAllocationConsoleUiKey.Key, new FundingAllocationConsoleBuiState(GetNetEntity(station)));
+        _uiSystem.SetUiState(
+            ent.Owner,
+            FundingAllocationConsoleUiKey.Key,
+            GetLinkedCargoServer(ent) is { } moneyServer
+                ? new FundingAllocationConsoleBuiState(GetNetEntity(moneyServer))
+                : null
+        );
     }
+    // Moffstation - End
 }

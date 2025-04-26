@@ -37,12 +37,16 @@ public sealed partial class CargoSystem
             if (!this.IsPowered(uid, EntityManager))
                 continue;
 
-            if (_station.GetOwningStation(uid, xform) != args.Station)
-                continue;
+            // Moffstation - Start - Explicit linkage to cargo server means this is unnecessary
+            // if (_station.GetOwningStation(uid, xform) != args.Station)
+            //     continue;
+            // Moffstation - End
 
             // todo cannot be fucking asked to figure out device linking rn but this shouldn't just default to the first port.
-            if (!TryGetLinkedConsole((uid, tele), out var console) ||
-                console.Value.Owner != args.OrderConsole.Owner)
+            // Moffstation - Start - Cargo Server
+            if (!TryGetLinkedOrderDb((uid, tele), out var console) ||
+                console.Value.Owner != args.Source.Owner)
+                // Moffstation - End
                 continue;
 
             for (var i = 0; i < args.Order.OrderQuantity; i++)
@@ -56,18 +60,18 @@ public sealed partial class CargoSystem
         }
     }
 
-    private bool TryGetLinkedConsole(Entity<CargoTelepadComponent> ent,
-        [NotNullWhen(true)] out Entity<CargoOrderConsoleComponent>? console)
+    // Moffstation - Start - Cargo Server
+    private bool TryGetLinkedOrderDb(Entity<CargoTelepadComponent> ent,
+        [NotNullWhen(true)] out Entity<StationCargoOrderDatabaseComponent>? orders)
     {
-        console = null;
+        orders = null;
         if (!TryComp<DeviceLinkSinkComponent>(ent, out var sinkComponent) ||
-            sinkComponent.LinkedSources.FirstOrNull() is not { } linked)
+            sinkComponent.LinkedSources.FirstOrNull() is not { } linked ||
+            !TryComp<StationCargoOrderDatabaseComponent>(linked, out var orderDbComp))
             return false;
 
-        if (!TryComp<CargoOrderConsoleComponent>(linked, out var consoleComp))
-            return false;
-
-        console = (linked, consoleComp);
+        orders = (linked, orderDbComp);
+        // Moffstation - End
         return true;
     }
 
@@ -98,19 +102,18 @@ public sealed partial class CargoSystem
                 continue;
             }
 
-            if (comp.CurrentOrders.Count == 0 || !TryGetLinkedConsole((uid, comp), out var console))
+            if (comp.CurrentOrders.Count == 0 || !TryGetLinkedOrderDb((uid, comp), out var console)) // Moffstation - Cargo Server
             {
                 comp.Accumulator += comp.Delay;
                 continue;
             }
 
             var currentOrder = comp.CurrentOrders.First();
-            if (FulfillOrder(currentOrder, console.Value.Comp.Account, xform.Coordinates, comp.PrinterOutput))
+            if (FulfillOrder(currentOrder, xform.Coordinates, comp.PrinterOutput)) // Moffstation - Cargo Server
             {
                 _audio.PlayPvs(_audio.ResolveSound(comp.TeleportSound), uid, AudioParams.Default.WithVolume(-8f));
 
-                if (_station.GetOwningStation(uid) is { } station)
-                    UpdateOrders(station);
+                UpdateOrders(); // Moffstation - Cargo Server
 
                 comp.CurrentOrders.Remove(currentOrder);
                 comp.CurrentState = CargoTelepadState.Teleporting;
@@ -128,27 +131,17 @@ public sealed partial class CargoSystem
 
     private void OnShutdown(Entity<CargoTelepadComponent> ent, ref ComponentShutdown args)
     {
-        if (ent.Comp.CurrentOrders.Count == 0)
-            return;
-
-        if (_station.GetStations().Count == 0)
-            return;
-
-        if (_station.GetOwningStation(ent) is not { } station)
-        {
-            station = _random.Pick(_station.GetStations().Where(HasComp<StationCargoOrderDatabaseComponent>).ToList());
-        }
-
-        if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var db) ||
-            !TryComp<StationDataComponent>(station, out var data))
-            return;
-
-        if (!TryGetLinkedConsole(ent, out var console))
+        // Moffstation - Start - Cargo Server
+        if (ent.Comp.CurrentOrders.Count == 0 ||
+            GetLinkedCargoServer(ent) is not { } server ||
+            GetMoneyServerStation(server) is not { } station ||
+            !TryGetLinkedOrderDb(ent, out var console))
+            // Moffstation - End
             return;
 
         foreach (var order in ent.Comp.CurrentOrders)
         {
-            TryFulfillOrder((station, data), console.Value.Comp.Account, order, db);
+            TryFulfillOrder(station, order, server); // Moffstation - Cargo Server
         }
     }
 
