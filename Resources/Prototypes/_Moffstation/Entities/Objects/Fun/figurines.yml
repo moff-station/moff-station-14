@@ -1,3 +1,8 @@
+# Quick notes:
+# Figurines names should be written from the perspective of someone who *doesn't* know your character, i.e. "Green Lizard Figurine", "Pink Moth Figurine", "Yellow Slime CMO Figurine", e.t.c.
+# Descriptions should be written in the form of "A figurine depicting...", and again, written from the perspective of someone who *doesn't* know your character
+# Our figurines use the "BaseFigurineMoff" parent
+
 - type: entity
   parent: BaseFigurine
   id: BaseFigurineMoff
@@ -13,7 +18,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineAwana
   name: Squishy-Looking Salvager Figure
-  description: A figurine of a purple slime-woman with a stressed yet calm appearance. She is indeed squishable, to an extent, giving off an aura that she's observing you.
+  description: A figurine depicting a purple slime-woman with a stressed yet calm appearance. She is indeed squishable, to an extent, giving off an aura that she's observing you.
   components:
   - type: Sprite
     state: awana
@@ -269,6 +274,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineSean
+  name: Caped CMO Figurine
+  description: A figurine depicting a blonde human, sporting CMO winter attire and a unique looking cape.
+  components:
+  - type: Sprite
+    state: sean
+  - type: SpeakOnTrigger
+    pack: FigurinesSean
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineSeikret
   name: Mean Officer Figurine
   description: A figurine depicting a scowling and irritated Security Officer. The paint on the left side of her face is noticeably lighter.
@@ -281,8 +297,8 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineSiliconwing
-  name: Unnammed figurine
-  description: A figurine depicting
+  name: Helpful Salvage Robot Figurine
+  description: A figurine depicting a borg, that seems dedicated to maximizing optimalbility”
   components:
   - type: Sprite
     state: siliconwing

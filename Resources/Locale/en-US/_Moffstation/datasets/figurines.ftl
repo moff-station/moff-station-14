@@ -123,6 +123,18 @@ figurines-sawa-4 = And I'm the evil one...
 figurines-sawa-5 = Clones will take over.
 figurines-sawa-6 = Shoot them- not me!
 
+figurines-sean-1 = Lovely
+figurines-sean-2 = Yeehaww!!
+figurines-sean-3 = Howdy lads!
+figurines-sean-4 = A wake-up please!
+figurines-sean-5 = I need some ephedrine...
+figurines-sean-6 = Botany has hyperzine!?!!
+figurines-sean-7 = Yep... John Medical himself...!
+figurines-sean-8 = Please stop makin' chemical bombs...
+figurines-sean-9 = I could really use a hug from Sapphire...
+figurines-sean-10 = How many times are ya gonna end up in medical lad?
+figurines-sean-11 = Remember to announce your injections aspirin' doctors!
+
 figurines-seikret-1 = What the fuck.
 figurines-seikret-2 = Do you want me to hurt you?
 figurines-seikret-3 = You disgust me.
