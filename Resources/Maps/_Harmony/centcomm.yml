@@ -4,7 +4,7 @@ meta:
   engineVersion: 254.1.0
   forkId: ""
   forkVersion: ""
-  time: 04/24/2025 08:02:42
+  time: 04/24/2025 21:37:13
   entityCount: 6989
 maps: []
 grids:
@@ -4530,6 +4530,44 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 88.5,43.5
       parent: 1
+- proto: AirlockExternalGlassShuttleEmergencyPodLocked
+  entities:
+  - uid: 42
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 81.5,60.5
+      parent: 1
+  - uid: 1276
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 81.5,64.5
+      parent: 1
+  - uid: 1280
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 81.5,68.5
+      parent: 1
+  - uid: 1291
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 81.5,36.5
+      parent: 1
+  - uid: 1294
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 81.5,32.5
+      parent: 1
+  - uid: 1319
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 81.5,28.5
+      parent: 1
 - proto: AirlockExternalGlassShuttleLocked
   entities:
   - uid: 371
@@ -4589,44 +4627,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 57.5,85.5
-      parent: 1
-- proto: AirlockExternalShuttleLocked
-  entities:
-  - uid: 42
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 81.5,60.5
-      parent: 1
-  - uid: 1276
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 81.5,64.5
-      parent: 1
-  - uid: 1280
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 81.5,68.5
-      parent: 1
-  - uid: 1291
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 81.5,36.5
-      parent: 1
-  - uid: 1294
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 81.5,32.5
-      parent: 1
-  - uid: 1319
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 81.5,28.5
       parent: 1
 - proto: AirlockFreezerLocked
   entities:
