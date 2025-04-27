@@ -34,15 +34,15 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineBradBucket
-  name: ULTRA RARE Brad Thomas Collectible Figure
-  description: A gorgeous figurine depicting the most radical and awesome man you've ever had the pleasure to lay your eyes upon. He wears a bucket upon his head. Gemstones are inlaid upon its golden base. Extremely rare and worth a fortune.
+  name: ULTRA RARE Brad Thomas Collectible Figurine
+  description: A gorgeous figurine depicting the most radical and awesome man you've ever had the pleasure to lay your eyes upon. He wears a bucket upon his head. Gemstones are inlaid upon its golden base. It has lost all resale value from being unboxed.
   components:
   - type: Sprite
     state: brad-bucket
   - type: SpeakOnTrigger
     pack: FigurinesBradBucket
   - type: StaticPrice
-    price: 5000 # Brad bucket
+    price: 0 # You unboxed it and now it's worthless, good job
 
 - type: entity
   parent: BaseFigurineMoff
@@ -101,6 +101,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineEclipse
+  name: Unnamed
+  description: A figurine depicting
+  components:
+  - type: Sprite
+    state: eclipse
+  - type: SpeakOnTrigger
+    pack: FigurinesEclipse
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineFred
   name: Professional-Looking Lawyer Figurine
   description: A figurine depicting a professional-looking lawyer, he has a mischievous look on his face. There seems seems to be a chip in the paint above his left ear.
@@ -120,6 +131,17 @@
     state: gigs
   - type: SpeakOnTrigger
     pack: FigurinesGigs
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIris
+  name: Unnamed
+  description: A figurine depicting
+  components:
+  - type: Sprite
+    state: iris
+  - type: SpeakOnTrigger
+    pack: FigurinesIris
 
 - type: entity
   parent: BaseFigurineMoff
@@ -163,7 +185,10 @@
   - type: Sprite
     state: krakatoa
   - type: SpeakOnTrigger
-    pack: FigurineKrakatoa
+    pack: FigurinesKrakatoa
+  - type: ConditionalSpawner
+    prototypes:
+      - FoodWatermelon
 
 - type: entity
   parent: BaseFigurineMoff
@@ -174,7 +199,7 @@
   - type: Sprite
     state: kylie
   - type: SpeakOnTrigger
-    pack: FigurineKylie
+    pack: FigurinesKylie
 
 - type: entity
   parent: BaseFigurineMoff
@@ -222,6 +247,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineSawa
+  name: Bug Eyed Lizard Figurine
+  description: A figurine depicting a lazy reprint of another figurine
+  components:
+  - type: Sprite
+    state: sawa
+  - type: SpeakOnTrigger
+    pack: FigurinesSawa
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineScribbles
   name: Unusually Tall Lizard Figurine
   description: A figurine depicting a tall muscular lizard in a snazzy suit. They must be a brave and stoic crew member! Shame the voice box is broken, though.
@@ -244,6 +280,40 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineSiliconwing
+  name: Unnammed figurine
+  description: A figurine depicting
+  components:
+  - type: Sprite
+    state: siliconwing
+  - type: SpeakOnTrigger
+    pack: FigurinesSiliconwing
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSouthbridge
+  name: Stagehand Deer
+  description: A figurine deer can sometimes be seen behind the curtain, helping put on the show. Legend says you can talk to her for help!
+  components:
+  - type: Sprite
+    state: southbridge
+  - type: SpeakOnTrigger
+    pack: FigurinesSouthbridge
+  - type: Prayable
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineStrawberry
+  name: Tactical Engi Slime Maid
+  description: A figurine depicting a very tactical slime girl wearing maid clothing with four tentacles, wearing miniature insulated gloves and engi goggles, they seam to be the real deal, but are sadly too small to use
+  components:
+  - type: Sprite
+    state: strawberry
+  - type: SpeakOnTrigger
+    pack: FigurinesStrawberry
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineTania
   name: Pink Slime Engineer Figurine
   description: A figurine depicting a pink slime chief engineer, with numerous tentacles and a tiny fire axe. Pulled from shelves for containing unsafe levels of plasma.
@@ -252,3 +322,14 @@
     state: tania
   - type: SpeakOnTrigger
     pack: FigurinesTania
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineTar
+  name: Bug Eyed Lizard Figurine
+  description: A figurine depicting a small blue lizard with large buggish glasses. Neeeerd nerd nerd nerd.....
+  components:
+  - type: Sprite
+    state: tar
+  - type: SpeakOnTrigger
+    pack: FigurinesTar

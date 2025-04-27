@@ -1,7 +1,3 @@
-figurines-siliconwing-1 = Optimal.
-figurines-siliconwing-2 = Greetings.
-figurines-siliconwing-3 = What resources are desired?
-
 figurines-awana-1 = Howdy Howdy~!
 figurines-awana-2 = Howdy hun!
 figurines-awana-3 = You had one job hun...
@@ -29,12 +25,6 @@ figurines-bradbucket-7 = Caks! Feast on their flesh!
 figurines-bradbucket-8 = The spider goddess loves me!
 figurines-bradbucket-9 = SINGULOOSE!
 figurines-bradbucket-10 = Wait until I'm free from this figurine prison!
-
-figurines-awana-1 = Howdy Howdy~!
-figurines-awana-2 = Howdy hun!
-figurines-awana-3 = You had one job hun...
-figurines-awana-4 = Great work hun!
-figurines-awana-5 = Ready for more work!
 
 figurines-cassiel-1 = M-mail for, um- oh uh, this is for-r someone els-se, um...
 figurines-cassiel-2 = S-sorry sorry sorry-
@@ -126,11 +116,36 @@ figurines-rareel-3 = I'm gonna take a nap in the back
 figurines-rareel-4 = A maints pill? Sounds tasty!
 figurines-rareel-5 = Boxing in maints? What's the worst that could happen!
 
+figurines-sawa-1 = Haii!
+figurines-sawa-2 = Okie!
+figurines-sawa-3 = THE SPIRITS ARE HAUNTING ME!!
+figurines-sawa-4 = And I'm the evil one...
+figurines-sawa-5 = Clones will take over.
+figurines-sawa-6 = Shoot them- not me!
+
 figurines-seikret-1 = What the fuck.
 figurines-seikret-2 = Do you want me to hurt you?
 figurines-seikret-3 = You disgust me.
 figurines-seikret-4 = White Russian.
 figurines-seikret-5 = I've given you enough chances.
+
+figurines-siliconwing-1 = Optimal.
+figurines-siliconwing-2 = Greetings.
+figurines-siliconwing-3 = What resources are desired?
+
+figurines-southbridge-1 = Hello!~
+figurines-southbridge-2 = What's going on?
+figurines-southbridge-3 = Bleat!
+figurines-southbridge-4 = Weather vote?
+figurines-southbridge-5 = That's not supposed to happen...
+figurines-southbridge-6 = Don't be doing that.
+
+figurines-strawberry-1 = Its slime time!
+figurines-strawberry-2 = This place is a mess.
+figurines-strawberry-3 = Uhm, what about my tentacles?
+figurines-strawberry-4 = No, the maid uniform is non optional.
+figurines-strawberry-5 = Engi maid Service!
+figurines-strawberry-6 = Im proud of you, AI."
 
 figurines-tania-1 = DO. NOT. FUCK. WITH. ENGI!!
 figurines-tania-2 = Slime time!
@@ -139,3 +154,11 @@ figurines-tania-4 = Blorble?
 figurines-tania-5 = Plama.
 figurines-tania-6 = Assume everyone is incompetent and nobody has set up power.
 figurines-tania-7 = Can I axe you a question?
+
+figurines-tar-1 = Wah?
+figurines-tar-2 = Haii!
+figurines-tar-3 = *thump*
+figurines-tar-4 = You are just a hater!!
+figurines-tar-5 = Tar is making an anomaly.
+figurines-tar-6 = Tar is making a weird ball!
+figurines-tar-7 = I would never do crime!

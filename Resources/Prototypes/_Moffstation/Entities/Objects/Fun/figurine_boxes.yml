@@ -2,7 +2,7 @@
   parent: PresentRandom
   id: MysteryFigureBoxMoff
   name: moff edition minifigure box
-  description: A box containing a mystery minifigure, themed after well known spessmen. There's ap
+  description: A box containing a mystery minifigure, themed after various spessmen. There's some blacked out silloettes of rare figurines on the side of the box, including one which looks like... a bucket?
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Fun/figurines.rsi
@@ -11,8 +11,15 @@
   - type: SpawnItemsOnUse
     items:
       - id: MysteryFigureBoxTrash
+      - id: MobMothroach # Sometimes the box contains a poor mothroach which fell in during production
+        prob: 0.05 # 1 in 20
       - id: ToyFigurineAwana
         orGroup: SpacemenFig
+      - id: ToyFigurineBrad
+        orGroup: SpacemenFig
+      - id: ToyFigurineBradBucket
+        orGroup: SpacemenFig
+        prob: 0.10 # 28 other options too, so it's extra rare
       - id: ToyFigurineCassiel
         orGroup: SpacemenFig
       - id: ToyFigurineCinnabar
@@ -21,9 +28,15 @@
         orGroup: SpacemenFig
       - id: ToyFigurineDelivers
         orGroup: SpacemenFig
+      - id: ToyFigurineEchiara
+        orGroup: SpacemenFig
+      - id: ToyFigurineEclipse
+        orGroup: SpacemenFig
       - id: ToyFigurineFred
         orGroup: SpacemenFig
       - id: ToyFigurineGigs
+        orGroup: SpacemenFig
+      - id: ToyFigurineIris
         orGroup: SpacemenFig
       - id: ToyFigurineJelob
         orGroup: SpacemenFig
@@ -31,16 +44,32 @@
         orGroup: SpacemenFig
       - id: ToyFigurineKatie
         orGroup: SpacemenFig
+      - id: ToyFigurineKrakatoa
+        orGroup: SpacemenFig
+      - id: ToyFigurineKylie
+        orGroup: SpacemenFig
       - id: ToyFigurineLilith
         orGroup: SpacemenFig
       - id: ToyFigurineNyxilath
+        orGroup: SpacemenFig
+      - id: ToyFigurinePeedee
+        orGroup: SpacemenFig
+      - id: ToyFigurineRareel
+        orGroup: SpacemenFig
+      - id: ToyFigurineSawa
         orGroup: SpacemenFig
       - id: ToyFigurineScribbles
         orGroup: SpacemenFig
       - id: ToyFigurineSeikret
         orGroup: SpacemenFig
+      - id: ToyFigurineSiliconwing
+        orGroup: SpacemenFig
+      - id: ToyFigurineSouthbridge
+        orGroup: SpacemenFig
+      - id: ToyFigurineStrawberry
+        orGroup: SpacemenFig
       - id: ToyFigurineTania
         orGroup: SpacemenFig
-      - id: MobMothroach
+      - id: ToyFigurineTar
         orGroup: SpacemenFig
 
