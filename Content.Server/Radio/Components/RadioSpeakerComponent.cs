@@ -30,6 +30,6 @@ public sealed partial class RadioSpeakerComponent : Component
 
     // Moffstation - Start - Allow customizable chat type
     [DataField("ChatType")]
-    public string ChatType = "Whisper";
+    public InGameICChatType ChatType = InGameICChatType.Whisper;
     // Moffstation - End
 }
