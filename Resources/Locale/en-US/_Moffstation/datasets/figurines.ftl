@@ -50,6 +50,12 @@ figurines-echiara-2 = What?
 figurines-echiara-3 = Wait, I'm dying?
 figurines-echiara-4 = Where am I?
 
+figurines-eclipse-1 = I love guns, medicine, and paper~!
+figurines-eclipse-2 = I need a permit for this shotgun i totally found in maints.
+figurines-eclipse-3 = I'm here to kick ass and munch paper, and I'm all out of paper.
+figurines-eclipse-4 = I miss viv and scarlet.
+figurines-eclipse-5 = Teh healing isn't as rewarding as teh hurting.
+
 figurines-fred-1 = Hey fellas!
 figurines-fred-2 = IM GONNA CRASH OUT!!
 figurines-fred-3 = Are they a first-time offender?
@@ -60,6 +66,12 @@ figurines-gigs-2 = The-ere isss no sssecr-ret menu.
 figurines-gigs-3 = The usssual?
 figurines-gigs-4 = We w-will b-b-be ok.
 figurines-gigs-5 = I..I..on'y had-d...onee....d-ddrink...
+
+figurines-iris-1 = Wawa!
+figurines-iris-2 = I love my wife.
+figurines-iris-3 = I love you, my Blue Moon~.
+figurines-iris-4 = The QSI needs debugging again!
+figurines-iris-5 = We're on a date, science can wait!
 
 figurines-jelob-1 = H-Howdy!
 figurines-jelob-2 = Enjoy-y!
@@ -109,12 +121,22 @@ figurines-peedee-1 = Oh! You're hurt!
 figurines-peedee-2 = Peedee fix!
 figurines-peedee-3 = Don't put me back in the box
 figurines-peedee-4 = Peedee hates needles!
+figurines-peedee-5 = LET ME OUT!
 
 figurines-rareel-1 = Whiskey!
 figurines-rareel-2 = Huh-
 figurines-rareel-3 = I'm gonna take a nap in the back
 figurines-rareel-4 = A maints pill? Sounds tasty!
 figurines-rareel-5 = Boxing in maints? What's the worst that could happen!
+
+figurines-sapphire-1 = No smoking in triage!
+figurines-sapphire-2 = It's gonna be one of those shifts huh?
+figurines-sapphire-3 = Heya!
+figurines-sapphire-4 = Ephedrine in.
+figurines-sapphire-5 = Did you just overdose them?
+figurines-sapphire-6 = We gotta stop meeting like this.
+figurines-sapphire-7 = Welcome back!
+figurines-sapphire-8 = Sean~!
 
 figurines-sawa-1 = Haii!
 figurines-sawa-2 = Okie!
@@ -157,7 +179,7 @@ figurines-strawberry-2 = This place is a mess.
 figurines-strawberry-3 = Uhm, what about my tentacles?
 figurines-strawberry-4 = No, the maid uniform is non optional.
 figurines-strawberry-5 = Engi maid Service!
-figurines-strawberry-6 = Im proud of you, AI."
+figurines-strawberry-6 = Im proud of you, AI.
 
 figurines-tania-1 = DO. NOT. FUCK. WITH. ENGI!!
 figurines-tania-2 = Slime time!

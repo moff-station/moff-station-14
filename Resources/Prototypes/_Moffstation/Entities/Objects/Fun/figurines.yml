@@ -107,8 +107,8 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineEclipse
-  name: Unnamed
-  description: A figurine depicting
+  name: Gunloving medical Moth Figurine
+  description: A figurine depicting a silky white moth with bright blue eyes and dark orangey wings in a medical jacket wearing a red hairflower?
   components:
   - type: Sprite
     state: eclipse
@@ -140,8 +140,8 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineIris
-  name: Unnamed
-  description: A figurine depicting
+  name: Burnt Orange Moth Figurine
+  description: A figurine depicting a tall orange mothperson in research director uniform.
   components:
   - type: Sprite
     state: iris
@@ -252,6 +252,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineSapphire
+  name: Squishy Blue Nurse Figurine
+  description: A figurine depicting a blue slime wearing a nurse hat and senior doctor uniform.
+  components:
+  - type: Sprite
+    state: sapphire
+  - type: SpeakOnTrigger
+    pack: FigurinesSapphire
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineSawa
   name: Bug Eyed Lizard Figurine
   description: A figurine depicting a lazy reprint of another figurine
@@ -298,7 +309,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineSiliconwing
   name: Helpful Salvage Robot Figurine
-  description: A figurine depicting a borg, that seems dedicated to maximizing optimalbility”
+  description: A figurine depicting a borg, that seems dedicated to maximizing optimalbility
   components:
   - type: Sprite
     state: siliconwing
@@ -308,8 +319,8 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineSouthbridge
-  name: Stagehand Deer
-  description: A figurine deer can sometimes be seen behind the curtain, helping put on the show. Legend says you can talk to her for help!
+  name: Stagehand Deer Figurine
+  description: A figurine depicting a deer, that can sometimes be seen behind the curtain, helping put on the show. Legend says you can ask her for help!
   components:
   - type: Sprite
     state: southbridge
