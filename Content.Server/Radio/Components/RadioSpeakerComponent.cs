@@ -1,7 +1,9 @@
+using Content.Server.Chat.Systems;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Radio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Primitive;
 
 namespace Content.Server.Radio.Components;
 
@@ -24,4 +26,7 @@ public sealed partial class RadioSpeakerComponent : Component
 
     [DataField("enabled")]
     public bool Enabled;
+
+    [DataField("ChatType", customTypeSerializer: typeof(ByteSerializer))]
+    public byte ChatType = 2;
 }

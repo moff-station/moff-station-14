@@ -258,3 +258,19 @@
       layers:
         - state: crypt_rusted
         - state: pirate_label
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyHandheld
+  name: handheld encryption key
+  description: A encryption key for handheld radios
+  suffix: DO NOT MAP
+  components:
+  - type: EncryptionKey
+    channels:
+    - Handheld
+    defaultChannel: Handheld
+  - type: Sprite
+    layers:
+    - state: crypt_rusted
+    - state: pirate_label

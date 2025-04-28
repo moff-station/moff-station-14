@@ -42,17 +42,20 @@
     storedRotation: 90
 
 - type: entity
-  parent: BaseItem
+  parent: [ RadioHandheld, BaseCommandContraband ]
   id: PhoneInstrument
   name: red phone
   description: Should anything ever go wrong...
   components:
-  - type: TelecomExempt
-  - type: RadioMicrophone
-    broadcastChannel: Handheld
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCentCom
   - type: RadioSpeaker
-    channels:
-    - Handheld
+    unobstructedRequired: true
+    listenRange: 2
+    ToggleOnInteract: false
+    ChatType: 0
   - type: Speech
     speechVerb: Robotic
   - type: Tag
@@ -64,8 +67,6 @@
   - type: EmitSoundOnLand
     sound:
        path: /Audio/Items/ring.ogg
-  - type: Instrument
-    program: 124
   - type: Item
     size: Small
   - type: Prayable
@@ -80,6 +81,14 @@
   name: blood-red phone
   description: For evil people to call their friends.
   components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySyndicate
+  - type: RadioSpeaker
+    unobstructedRequired: true
+    listenRange: 2
+    ToggleOnInteract: false
   - type: Sprite
     sprite: Objects/Fun/Instruments/blood_red_phone.rsi
     state: icon
