@@ -53,10 +53,8 @@
       key_slots:
       - EncryptionKeyCentCom
   - type: RadioSpeaker
-    unobstructedRequired: true
-    listenRange: 2
     ToggleOnInteract: false
-    ChatType: Speak
+    chatType: Speak
   - type: Speech
     speechVerb: Robotic
   - type: Tag
