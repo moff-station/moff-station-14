@@ -4,6 +4,7 @@
   parent: BaseItem
   id: RadioHandheld
   components:
+#  Moffstation - Start - Give radio mic/speaker controls
   - type: TelecomExempt
   - type: RadioMicrophone
     unobstructedRequired: true
@@ -43,6 +44,7 @@
     interfaces:
       enum.IntercomUiKey.Key:
         type: IntercomBoundUserInterface
+# Moffstation - End
 
 - type: entity
   name: security radio
@@ -50,10 +52,12 @@
   parent: [ RadioHandheld, BaseSecurityContraband ]
   id: RadioHandheldSecurity
   components:
+# Moffstation - Start - Update for speaker functionality
   - type: ContainerFill
     containers:
       key_slots:
       - EncryptionKeySecurity
+# Moffstation - End
   - type: Sprite
     sprite: Objects/Devices/securityhandy.rsi
   - type: Item

@@ -3,6 +3,7 @@ using Content.Server.Radio.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Radio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
+using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Primitive;
 
 namespace Content.Server.Radio.Components;
@@ -27,6 +28,8 @@ public sealed partial class RadioSpeakerComponent : Component
     [DataField("enabled")]
     public bool Enabled;
 
-    [DataField("ChatType", customTypeSerializer: typeof(ByteSerializer))]
-    public byte ChatType = 2;
+    // Moffstation - Start - Allow customizable chat type
+    [DataField("ChatType")]
+    public string ChatType = "Whisper";
+    // Moffstation - End
 }
