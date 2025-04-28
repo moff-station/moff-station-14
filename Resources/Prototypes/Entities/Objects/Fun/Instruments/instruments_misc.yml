@@ -42,11 +42,22 @@
     storedRotation: 90
 
 - type: entity
-  parent: BaseHandheldInstrument
+  parent: BaseItem
   id: PhoneInstrument
   name: red phone
   description: Should anything ever go wrong...
   components:
+  - type: TelecomExempt
+  - type: RadioMicrophone
+    broadcastChannel: Handheld
+  - type: RadioSpeaker
+    channels:
+    - Handheld
+  - type: Speech
+    speechVerb: Robotic
+  - type: Tag
+    tags:
+    - Radio
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
     state: red_phone
