@@ -260,6 +260,11 @@ public sealed partial class DockingSystem
                                 continue;
                             }
 
+                            // Moffstation - Start - checks if either side is queued for something else, if so we say it's not available
+                            if (gridDock.Queued || shuttleDock.Queued)
+                                continue;
+                            //Moffstation - End
+
                             dockedPorts.Add((otherUid, otherGridUid, other, otherGrid));
                         }
                     }
