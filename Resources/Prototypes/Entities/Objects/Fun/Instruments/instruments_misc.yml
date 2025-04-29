@@ -85,8 +85,6 @@
     containers:
       key_slots:
       - EncryptionKeySyndie
-  - type: RadioSpeaker
-    ToggleOnInteract: false
   # Moffstation -End
   - type: Sprite
     sprite: Objects/Fun/Instruments/blood_red_phone.rsi
@@ -179,10 +177,6 @@
     containers:
       key_slots:
       - EncryptionKeyService
-  - type: RadioSpeaker
-    unobstructedRequired: true
-    listenRange: 2
-    ToggleOnInteract: false
 #  Moffstation - End
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
