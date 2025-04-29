@@ -53,7 +53,6 @@
       key_slots:
       - EncryptionKeyCentCom
   - type: RadioSpeaker
-    ToggleOnInteract: false
     chatType: Speak
   - type: Speech
     speechVerb: Robotic
@@ -87,8 +86,6 @@
       key_slots:
       - EncryptionKeySyndie
   - type: RadioSpeaker
-    unobstructedRequired: true
-    listenRange: 2
     ToggleOnInteract: false
   # Moffstation -End
   - type: Sprite
