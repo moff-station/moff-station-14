@@ -90172,30 +90172,6 @@ entities:
     - type: Transform
       pos: -27.5,-46.5
       parent: 2
-- proto: RadioHandheld
-  entities:
-  - uid: 8080
-    components:
-    - type: Transform
-      pos: 34.015274,-21.277159
-      parent: 2
-  - uid: 9125
-    components:
-    - type: Transform
-      pos: 23.843485,-10.439513
-      parent: 2
-  - uid: 15001
-    components:
-    - type: MetaData
-      desc: A not-so-handy handheld radio. It has been partially disassembled, rendering it useless.
-      name: broken handheld radio
-    - type: Transform
-      pos: 43.105606,-27.396742
-      parent: 2
-    missingComponents:
-    - TelecomExempt
-    - RadioMicrophone
-    - RadioSpeaker
 - proto: RagItem
   entities:
   - uid: 315
