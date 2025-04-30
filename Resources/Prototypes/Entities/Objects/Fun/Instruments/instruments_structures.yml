@@ -9,6 +9,11 @@
   - type: Sprite
     state: piano
   - type: Climbable
+#    Moffstation - Start - Made Pawgliaci spawn on the piano, this is so we dont have to worry about our mapping changes being overwritten by upstream
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPawgliaci
+#    Moffstation - End
 
 - type: entity
   name: upright piano
