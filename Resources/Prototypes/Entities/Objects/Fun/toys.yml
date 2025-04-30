@@ -896,7 +896,10 @@
   description: An adorable stuffed toy that resembles a slime. It's basically a hacky sack.
   components:
   - type: Sprite
+    path: _Moffstation/Objects/Fun/slimeplush.rsi
     state: plushie_slime
+  - type: Item
+    sprite: _Moffstation/Objects/Fun/slimeplush.rsi
   - type: EmitSoundOnUse
     sound:
       path: /Audio/Voice/Slime/slime_squish.ogg
