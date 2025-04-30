@@ -4,8 +4,8 @@ meta:
   engineVersion: 254.1.0
   forkId: ""
   forkVersion: ""
-  time: 04/19/2025 10:03:04
-  entityCount: 13940
+  time: 04/30/2025 21:56:21
+  entityCount: 13941
 maps:
 - 473
 grids:
@@ -73983,6 +73983,13 @@ entities:
     components:
     - type: Transform
       pos: -28.5,-17.5
+      parent: 4812
+- proto: SpawnMobPawgliaci
+  entities:
+  - uid: 13941
+    components:
+    - type: Transform
+      pos: -8.5,8.5
       parent: 4812
 - proto: SpawnMobPossumMorty
   entities:
