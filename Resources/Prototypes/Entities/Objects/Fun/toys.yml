@@ -895,11 +895,13 @@
   name: slime plushie
   description: An adorable stuffed toy that resembles a slime. It's basically a hacky sack.
   components:
+#  Moffstation - Start - Added custom slime sprite
   - type: Sprite
     path: _Moffstation/Objects/Fun/slimeplush.rsi
     state: plushie_slime
   - type: Item
     sprite: _Moffstation/Objects/Fun/slimeplush.rsi
+#  Moffstation - End
   - type: EmitSoundOnUse
     sound:
       path: /Audio/Voice/Slime/slime_squish.ogg
