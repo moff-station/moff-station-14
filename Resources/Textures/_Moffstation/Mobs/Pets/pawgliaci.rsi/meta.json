@@ -1,16 +1,22 @@
 {
-  "version": 1,
-  "size": {
-    "x": 32,
-    "y": 32
-  },
-  "license": "CC-BY-SA-3.0",
-  "copyright": "created by zangothedino (discord)",
-  "states":
-  [
-    {
-      "name": "pawgliaci",
-      "directions": 4
-    }
-  ]
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "created by zangothedino (discord)",
+    "states":
+    [
+        {
+            "name": "pawgliaci",
+            "directions": 4
+        },
+        {
+            "name": "pawgliaci-crit"
+        },
+        {
+            "name": "pawgliaci-dead"
+        }
+    ]
 }

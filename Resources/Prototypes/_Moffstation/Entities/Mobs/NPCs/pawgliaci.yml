@@ -10,14 +10,14 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: pawgliaci
-#  - type: DamageStateVisuals
-#    states:
-#      Alive:
-#        Base: ian
-#      Critical:
-#        Base: ian_dead
-#      Dead:
-#        Base: ian_dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pawgliaci
+      Critical:
+        Base: pawgliaci-crit
+      Dead:
+        Base: pawgliaci-dead
   - type: Grammar
     attributes:
       proper: true
