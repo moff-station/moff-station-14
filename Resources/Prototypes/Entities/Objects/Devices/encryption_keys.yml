@@ -259,6 +259,7 @@
         - state: crypt_rusted
         - state: pirate_label
 
+# Moffstation - Start - Added Freelance encryption key for the intercom-based radios. They are unobtainable by normal means
 - type: entity
   parent: EncryptionKey
   id: EncryptionKeyHandheld
@@ -274,3 +275,4 @@
     layers:
     - state: crypt_rusted
     - state: pirate_label
+# Moffstation - End
