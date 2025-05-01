@@ -994,5 +994,25 @@ namespace Content.Server.GameTicking
             Text += text;
             _doNewLine = true;
         }
+
+        public void AddLineWrapping(string text)
+        {
+            if (_doNewLine)
+                Text += "\n";
+
+            var words = text.Split(' ');
+            var line = "";
+            var linewidth = 50;
+            foreach (var word in words)
+            {
+                line += word + ' ';
+                if (line.Length > linewidth)
+                {
+                    AddLine(line);
+                    line = "";
+                }
+            }
+            AddLine(line);
+        }
     }
 }
