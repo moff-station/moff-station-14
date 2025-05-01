@@ -453,6 +453,11 @@
     stateBaseClosed: clown
     stateDoorOpen: clown_open
     stateDoorClosed: clown_door
+  #    Moffstation - Start - Made Pawgliaci spawn on the piano, this is so we dont have to worry about our mapping changes being overwritten by upstream
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPawgliaci
+  #    Moffstation - End
 
 # Mime
 - type: entity
