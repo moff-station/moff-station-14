@@ -11,8 +11,6 @@ namespace Content.Server._Moffstation.RoundReport;
 
 public sealed class RoundReportSystem : EntitySystem
 {
-    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -20,17 +18,17 @@ public sealed class RoundReportSystem : EntitySystem
         SubscribeLocalEvent<RoundEndTextAppendEvent>(AppendRoundEndText);
     }
 
-    protected void AppendRoundEndText(RoundEndTextAppendEvent args)
+    private void AppendRoundEndText(RoundEndTextAppendEvent args)
     {
         var query = EntityQueryEnumerator<RoundReportComponent>();
         while (query.MoveNext(out var uid, out var roundReport))
         {
-            if (roundReport.ReportHeader != "" || roundReport.ReportBody != "")
+            if (roundReport.ReportHeader != "" && roundReport.ReportBody != "")
             {
                 if (!Loc.TryGetString(roundReport.ReportHeader, out var header))
                     header = roundReport.ReportHeader;
-                args.AddLineWrapping($"[color={roundReport.HeaderColor}] {header} [/color]");
-                args.AddLineWrapping($"[color={roundReport.BodyColor}] {roundReport.ReportBody} [/color]");
+                args.AddLineWrapping($"[color={roundReport.HeaderColor}]{header}[/color]");
+                args.AddLineWrapping($"[color={roundReport.BodyColor}]{roundReport.ReportBody}[/color]");
                 args.AddLine("");
             }
         }

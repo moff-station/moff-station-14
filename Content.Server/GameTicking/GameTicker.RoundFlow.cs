@@ -997,9 +997,6 @@ namespace Content.Server.GameTicking
 
         public void AddLineWrapping(string text)
         {
-            if (_doNewLine)
-                Text += "\n";
-
             var words = text.Split(' ');
             var line = "";
             var linewidth = 50;

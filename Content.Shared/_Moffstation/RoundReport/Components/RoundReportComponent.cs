@@ -12,8 +12,8 @@ public sealed partial class RoundReportComponent : Component
     public string ReportBody = "";
 
     [DataField("headerColor"), AutoNetworkedField]
-    public string HeaderColor = "white";
+    public string HeaderColor = "lightgray";
 
     [DataField("bodyColor"), AutoNetworkedField]
-    public string BodyColor = "grey";
+    public string BodyColor = "white";
 }

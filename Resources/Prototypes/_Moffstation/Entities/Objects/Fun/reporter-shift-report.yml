@@ -1,13 +1,13 @@
 - type: entity
-  id: RoundReportTableau
+  id: ShiftReportTableau
   parent: BaseItem
   name: shift-report tableau
   description: A journal meant to document the events of the shift for your bosses at Centcomm.
   components:
   - type: RoundReport
     reportHeader: reporter-tableau
-    headerColor: lime
-    bodyColor: white
+    headerColor: lightgray
+    bodyColor: lime
   - type: Sprite
     sprite: Objects/Misc/cc-clipboard.rsi
     layers:
@@ -21,3 +21,10 @@
     - state: clipboard_over
   - type: Item
     sprite: Objects/Misc/cc-clipboard.rsi
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface

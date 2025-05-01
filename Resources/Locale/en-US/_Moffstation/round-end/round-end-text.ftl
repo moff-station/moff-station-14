@@ -1,1 +1,1 @@
-reporter-tableau = [color=lime]A shift report containing the following was given to Centcomm:[/color]
+reporter-tableau = A shift report containing the following was given to Centcomm:
