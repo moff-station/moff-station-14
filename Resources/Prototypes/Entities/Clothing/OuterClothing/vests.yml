@@ -18,6 +18,9 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
+  #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.5
 
 #Elite web vest
 - type: entity
@@ -44,6 +47,9 @@
         Caustic: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.5
+  #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.5
   - type: FireProtection
     reduction: 0.85
 
@@ -67,6 +73,9 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
+  #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.5
 
 #Detective's vest
 - type: entity
