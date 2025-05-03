@@ -6,9 +6,11 @@
   name: personal ai device
   description: Your electronic pal who's fun to be with!
   components:
+  # Moffstation - Begin (Persona Saber)
   - type: Tag
     tags:
     - PAI
+  # Moffstation - End
   - type: Instrument
     allowPercussion: false
     handheld: false
