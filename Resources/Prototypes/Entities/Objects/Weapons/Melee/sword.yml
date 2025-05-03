@@ -75,10 +75,10 @@
 
 #Longswords
 - type: entity
-  name: captain's sabre
+  # Moffstation - Begin (Persona Saber)
+  name: captain's persona sabre
   parent: [ BaseSword, BaseCommandContraband ]
   id: CaptainSabre
-  # Moffstation - Begin (Persona Saber)
   description: A ceremonial weapon belonging to the captain of the station. Has a built-in PAI for advising the captain on various official matters.
   components:
   - type: Instrument
