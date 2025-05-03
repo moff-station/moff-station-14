@@ -18,6 +18,32 @@
     tags:
     - BoxCardboard
 
+# Moffstation - Begin
+- type: entity
+  parent: BoxCardboard
+  id: BoxSurvivalEmpty
+  name: survival box
+  description: A cardboard box for storing emergency supplies.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,1
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,2
+    whitelist:
+      components:
+      - BreathMask
+      - GasTank
+      - Hypospray
+      - Sealable
+      - ExpendableLight
+      tags:
+      - FoodSnack
+# Moffstation - End
+
 - type: entity
   name: mousetrap box
   parent: BoxCardboard
