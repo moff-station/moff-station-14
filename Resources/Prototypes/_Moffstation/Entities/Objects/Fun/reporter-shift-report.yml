@@ -1,11 +1,11 @@
 - type: entity
-  id: ShiftReportTableau
+  id: ShiftReportTablet
   parent: BaseItem
   name: shift-report tablet
-  description: A tablet meant to document the events of the shift for your bosses at Centcomm.
+  description: A writing tablet meant to document the events of the shift for your bosses at Centcomm.
   components:
   - type: RoundReport
-    reportHeader: reporter-tableau
+    reportHeader: reporter-tablet
     headerColor: lightgray
     bodyColor: lime
   - type: Sprite
