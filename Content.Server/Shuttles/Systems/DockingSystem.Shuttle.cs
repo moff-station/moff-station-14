@@ -297,6 +297,10 @@ public sealed partial class DockingSystem
 
         foreach (var config in validDockConfigs)
         {
+            if (bestMatch.Docks.Count == 0)
+            {
+                bestMatch = config;
+            }
             var queueBusted = false;
             foreach (var dock in config.Docks)
             {
@@ -315,7 +319,7 @@ public sealed partial class DockingSystem
             if (bestMatch.Docks.Count > config.Docks.Count)
                 continue;
 
-            if (Math.Abs(Angle.ShortestDistance(config.Angle.Reduced(), targetGridAngle).Theta) < Math.Abs(Angle.ShortestDistance(bestMatch.Angle.Reduced(), targetGridAngle).Theta))
+            if (Math.Abs(Angle.ShortestDistance(bestMatch.Angle.Reduced(), targetGridAngle).Theta) < Math.Abs(Angle.ShortestDistance(config.Angle.Reduced(), targetGridAngle).Theta))
                 continue;
             bestMatch = config;
         }
