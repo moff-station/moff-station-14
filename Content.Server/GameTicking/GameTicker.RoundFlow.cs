@@ -995,14 +995,13 @@ namespace Content.Server.GameTicking
             _doNewLine = true;
         }
 
-        public void AddLineWrapping(string text)
+        public void AddLineWrapping(string text, int linewidth = 50, char separator = ' ')
         {
-            var words = text.Split(' ');
+            var words = text.Split(separator);
             var line = "";
-            var linewidth = 50;
             foreach (var word in words)
             {
-                line += word + ' ';
+                line += word + separator;
                 if (line.Length > linewidth)
                 {
                     AddLine(line);

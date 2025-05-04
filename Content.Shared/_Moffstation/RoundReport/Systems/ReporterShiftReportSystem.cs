@@ -17,11 +17,11 @@ public sealed class ReporterShiftReportSystem : EntitySystem
         SubscribeLocalEvent<RoundReportComponent, PaperInputTextMessage>(OnPaperWrite);
     }
 
-    private void OnPaperWrite(EntityUid uid, RoundReportComponent component, ref PaperInputTextMessage args)
+    private void OnPaperWrite(Entity<RoundReportComponent> ent, ref PaperInputTextMessage args)
     {
-        if (TryComp(uid, out PaperComponent? paper))
+        if (TryComp(ent, out PaperComponent? paper))
         {
-            component.ReportBody = paper.Content;
+            ent.Comp.ReportBody = paper.Content;
         }
     }
 

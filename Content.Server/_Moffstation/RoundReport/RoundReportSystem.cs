@@ -23,7 +23,7 @@ public sealed class RoundReportSystem : EntitySystem
         var query = EntityQueryEnumerator<RoundReportComponent>();
         while (query.MoveNext(out var uid, out var roundReport))
         {
-            if (roundReport.ReportHeader != "" && roundReport.ReportBody != "")
+            if (roundReport.ReportHeader != "" || roundReport.ReportBody != "")
             {
                 if (!Loc.TryGetString(roundReport.ReportHeader, out var header))
                     header = roundReport.ReportHeader;
