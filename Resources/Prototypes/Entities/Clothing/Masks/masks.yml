@@ -196,6 +196,10 @@
   name: clown wig and mask
   description: A true prankster's facial attire. A clown is incomplete without his wig and mask.
   components:
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Item
+    size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/clown.rsi
   - type: Clothing
