@@ -210,6 +210,7 @@
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
+    - id: FoodSnackNutribrick # Moffstation - (Survival Box Improvements)
     - id: DrinkWaterBottleFull
 
 - type: entity
@@ -223,6 +224,7 @@
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
+    - id: FoodSnackNutribrick # Moffstation - (Survival Box Improvements)
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -245,6 +247,7 @@
     - id: EmergencyMedipen
     - id: Flare
     - id: FoodSnackNutribrick
+    - id: DrinkWaterBottleFull # Moffstation - (Survival Box Improvements)
   - type: Sprite
     layers:
     - state: internals
@@ -262,6 +265,7 @@
     - id: EmergencyMedipen
     - id: Flare
     - id: FoodSnackNutribrick
+    - id: DrinkWaterBottleFull # Moffstation - (Survival Box Improvements)
   - type: Sprite
     layers:
     - state: internals

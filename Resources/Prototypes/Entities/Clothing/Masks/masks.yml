@@ -26,11 +26,12 @@
   parent: [ClothingMaskGas, BaseSecurityContraband]
   id: ClothingMaskGasSecurity
   name: security gas mask
-  description: A standard issue Security gas mask.
+  description: A standard issue Security gas mask. Provides some additional protection. # Moffstation - (Survival Box Improvements)
   components:
-  - type: Item
-    size: Tiny
-  - type: Sprite
+  # Moffstation - Begin (Survival Box Improvements)
+#  - type: Item
+#  - type: Sprite
+  # Moffstation - End
     sprite: Clothing/Mask/gassecurity.rsi
   - type: Clothing
     sprite: Clothing/Mask/gassecurity.rsi
@@ -46,7 +47,7 @@
   parent: [ClothingMaskGas, BaseSyndicateContraband]
   id: ClothingMaskGasSyndicate
   name: syndicate gas mask
-  description: A close-fitting tactical mask that can be connected to an air supply.
+  description: A close-fitting tactical mask that can be connected to an air supply. Protects from bright lights and welding flares, as well as physical damage. # Moffstation - (Survival Box Improvements)
   components:
   - type: Sprite
     sprite: Clothing/Mask/gassyndicate.rsi
@@ -78,10 +79,10 @@
         Heat: 0.80
 
 - type: entity
-  parent: [ClothingMaskGasAtmos, BaseCommandContraband]
+  parent: [ClothingMaskGas, BaseCommandContraband] # Moffstation - (Survival Box Improvements)
   id: ClothingMaskGasCaptain
   name: captain's gas mask
-  description: Nanotrasen cut corners and repainted a spare atmospheric gas mask, but don't tell anyone.
+  description: Nanotrasen cut corners and repainted a spare gas mask, but don't tell anyone. # Moffstation - (Survival Box Improvements)
   components:
   - type: Sprite
     sprite: Clothing/Mask/gascaptain.rsi
@@ -91,7 +92,7 @@
   - type: IngestionBlocker
 
 - type: entity
-  parent: [ ClothingMaskGasAtmos, BaseCentcommContraband ]
+  parent: [ ClothingMaskGas, BaseCentcommContraband ] # Moffstation - (Survival Box Improvements)
   id: ClothingMaskGasCentcom
   name: CentComm gas mask
   description: Oooh, gold and green. Fancy! This should help as you sit in your office.
@@ -107,7 +108,7 @@
   parent: [ClothingMaskGas, BaseCargoContraband]
   id: ClothingMaskGasExplorer
   name: explorer gas mask
-  description: A military-grade gas mask that can be connected to an air supply.
+  description: A military-grade gas mask that can be connected to an air supply. Protects the face from work-related damages.
   components:
   - type: Sprite
     sprite: Clothing/Mask/gasexplorer.rsi
