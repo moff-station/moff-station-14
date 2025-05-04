@@ -82,7 +82,10 @@
 
 #Hazard vest
 - type: entity
-  parent: ClothingOuterStorageBase
+  # Moffstation - Begin (Engi Gear Buffs)
+  # parent: ClothingOuterStorageBase
+  parent: [ ClothingOuterStorageBase, AllowSuitStorageClothing]
+  # Moffstation - End
   id: ClothingOuterVestHazard
   name: hi-viz vest
   description: A high-visibility vest used in work zones.
