@@ -1,26 +1,20 @@
 - type: entity
   id: ShiftReportTableau
   parent: BaseItem
-  name: shift-report tableau
-  description: A journal meant to document the events of the shift for your bosses at Centcomm.
+  name: shift-report tablet
+  description: A tablet meant to document the events of the shift for your bosses at Centcomm.
   components:
   - type: RoundReport
     reportHeader: reporter-tableau
     headerColor: lightgray
     bodyColor: lime
   - type: Sprite
-    sprite: Objects/Misc/cc-clipboard.rsi
-    layers:
-    - state: clipboard
-    - state: clipboard_paper
-      map: ["clipboard_paper"]
-      visible: false
-    - state: clipboard_pen
-      map: ["clipboard_pen"]
-      visible: false
-    - state: clipboard_over
+    sprite: _Moffstation/Objects/Fun/shiftreporttablet.rsi
+    state: icon
   - type: Item
-    sprite: Objects/Misc/cc-clipboard.rsi
+    sprite: _Moffstation/Objects/Fun/shiftreporttablet.rsi
+  - type: Paper
+  - type: PaperLabelType
   - type: ActivatableUI
     key: enum.PaperUiKey.Key
     requiresComplex: false
@@ -28,3 +22,5 @@
     interfaces:
       enum.PaperUiKey.Key:
         type: PaperBoundUserInterface
+  - type: FaxableObject
+  - type: PaperVisuals
