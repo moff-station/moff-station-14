@@ -27,8 +27,8 @@ public sealed class RoundReportSystem : EntitySystem
             {
                 if (!Loc.TryGetString(roundReport.ReportHeader, out var header))
                     header = roundReport.ReportHeader;
-                args.AddLineWrapping($"[color={roundReport.HeaderColor}]{header}[/color]");
-                args.AddLineWrapping($"[color={roundReport.BodyColor}]{roundReport.ReportBody}[/color]");
+                args.AddLineWrapping($"[color={roundReport.HeaderColor}]{header}[/color]", roundReport.LineWidth);
+                args.AddLineWrapping($"[color={roundReport.BodyColor}]{roundReport.ReportBody}[/color]", roundReport.LineWidth);
                 args.AddLine("");
             }
         }

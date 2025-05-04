@@ -16,4 +16,7 @@ public sealed partial class RoundReportComponent : Component
 
     [DataField("bodyColor"), AutoNetworkedField]
     public string BodyColor = "white";
+
+    [DataField("lineWidth"), AutoNetworkedField]
+    public int LineWidth = 50;
 }
