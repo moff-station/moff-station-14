@@ -57,6 +57,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/Shuttles/ShuttleEvent/instigator.yml", // Contains EXP-320g "Friendship"
             "/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", // Contains syndicate rubber stamp
             "/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", // Contains EXP-320g "Friendship"
+            "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
         };
 
         private static readonly string[] GameMaps =
