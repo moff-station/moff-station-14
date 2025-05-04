@@ -300,6 +300,7 @@ public sealed partial class DockingSystem
             if (bestMatch.Docks.Count == 0)
             {
                 bestMatch = config;
+                continue;
             }
             var queueBusted = false;
             foreach (var dock in config.Docks)
