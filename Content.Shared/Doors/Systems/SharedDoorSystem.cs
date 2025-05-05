@@ -309,12 +309,12 @@ public abstract partial class SharedDoorSystem : EntitySystem
     #endregion
 
     #region Opening
-    public bool TryOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false, bool quiet = false)
+    public bool TryOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false, bool quiet = false, bool ignorePower = false)    // Moffstation - Hack to fix evac pods
     {
         if (!Resolve(uid, ref door))
             return false;
 
-        if (!CanOpen(uid, door, user, quiet))
+        if (!CanOpen(uid, door, user, quiet, ignorePower))
             return false;
 
         StartOpening(uid, door, user, predicted);
@@ -322,7 +322,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         return true;
     }
 
-    public bool CanOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool quiet = true)
+    public bool CanOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool quiet = true, bool ignorePower = false)     // Moffstation - Hack to fix evac pods
     {
         if (!Resolve(uid, ref door))
             return false;
@@ -330,7 +330,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (door.State == DoorState.Welded)
             return false;
 
-        var ev = new BeforeDoorOpenedEvent() { User = user };
+        var ev = new BeforeDoorOpenedEvent() { User = user, IgnorePower = ignorePower };    // Moffstation - Hack to fix evac pods
         RaiseLocalEvent(uid, ev);
         if (ev.Cancelled)
             return false;
