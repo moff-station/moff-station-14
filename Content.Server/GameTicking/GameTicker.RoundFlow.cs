@@ -647,6 +647,9 @@ namespace Content.Server.GameTicking
             if (_serverUpdates.RoundEnded())
                 return;
 
+            // Check if the GamePreset needs to be reset
+            TryResetPreset();
+
             _sawmill.Info("Restarting round!");
 
             SendServerMessage(Loc.GetString("game-ticker-restart-round"));
@@ -990,6 +993,22 @@ namespace Content.Server.GameTicking
 
             Text += text;
             _doNewLine = true;
+        }
+
+        public void AddLineWrapping(string text, int linewidth = 50, char separator = ' ')
+        {
+            var words = text.Split(separator);
+            var line = "";
+            foreach (var word in words)
+            {
+                line += word + separator;
+                if (line.Length > linewidth)
+                {
+                    AddLine(line);
+                    line = "";
+                }
+            }
+            AddLine(line);
         }
     }
 }

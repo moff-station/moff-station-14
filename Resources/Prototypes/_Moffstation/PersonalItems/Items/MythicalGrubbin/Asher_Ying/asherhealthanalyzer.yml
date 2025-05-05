@@ -1,0 +1,30 @@
+﻿# Player: MythicalGrubbin / Character: Asher Ying
+
+- type: entity
+  parent: HandheldHealthAnalyzer
+  id: PersonalItemAsherHealthAnalyzer
+  name: combat health analyzer
+  description: Standard NT equipment for Field Medics. There is a note pasted to the front.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/MythicalGrubbin/Asher_Ying/asherhealthanalyzer.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/MythicalGrubbin/Asher_Ying/asherhealthanalyzer.rsi
+  - type: DetailExaminable
+    content: The device is worn, rough around the edges from years of use. The note taped to the front of the device reads "Hopefully this will help you learn to read!"
+
+- type: loadout
+  id: PersonalItemAsherHealthAnalyzer
+  storage:
+    back:
+    - PersonalItemAsherHealthAnalyzer
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Asher Ying
+    jobs:
+    - JobChiefMedicalOfficer
+    - JobMedicalDoctor
+    - JobMedicalIntern
+    - JobParamedic

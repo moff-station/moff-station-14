@@ -3,6 +3,12 @@
   id: ClothingHeadHatHardhatBase
   abstract: true
   components:
+  # Moffstation - Begin (Engi Gear Buffs)
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+  # Moffstation - End
   - type: Sprite
     layers:
     - state: icon

@@ -162,7 +162,6 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             profile = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
         }
 
-        // Moffstation - Start - Clown/Borg/Mime loadout names (Moved from lower in file, separated from ID processing)
         if (profile != null)
         {
             _humanoidSystem.LoadProfile(entity.Value, profile);
@@ -173,7 +172,6 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
                 AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
             }
         }
-        // Moffstation - End - Clown/Borg/Mime loadout names
 
         if (loadout != null)
         {
@@ -189,12 +187,10 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);
         RaiseLocalEvent(entity.Value, ref gearEquippedEv);
 
-        // Moffstation - Start - Clown/Borg/Mime loadout names (Portions moved higher in file, separated from this)
         if (prototype != null && TryComp(entity.Value, out MetaDataComponent? metaData))
         {
             SetPdaAndIdCardData(entity.Value, metaData.EntityName, prototype, station);
         }
-        // Moffstation - end - Clown/Borg/Mime loadout names
 
         DoJobSpecials(job, entity.Value);
         _identity.QueueIdentityUpdate(entity.Value);

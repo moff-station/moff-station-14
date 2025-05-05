@@ -1,0 +1,33 @@
+- type: entity
+  id: ShiftReportTablet # We should add a pen storage to this at some point
+  parent: BaseItem
+  name: shift-report tablet
+  description: A writing tablet meant to document the events of the shift for your bosses at Centcomm.
+  components:
+  - type: RoundReport
+    reportHeader: reporter-tablet
+    headerColor: lightgray
+    bodyColor: "#4dc014"
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/shiftreporttablet.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Fun/shiftreporttablet.rsi
+  - type: Paper
+    contentSize: 500
+    stampingEnabled: false
+  - type: Clothing
+    slots: [belt]
+  - type: PaperLabelType
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/_Moffstation/Interface/Paper/paper_background_tablet.svg.96dpi.png"
+    contentImagePath: "/Textures/_Moffstation/Interface/Paper/paper_content_tablet.svg.96dpi.png"
+    backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+    contentMargin: 16.0, 16.0, 16.0, 16.0

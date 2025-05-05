@@ -68,10 +68,10 @@
   - type: NukeOperative
   - type: RandomMetadata
     nameSegments:
-    - nukeops-role-operator
     - NamesSyndicateNormal
+    nameFormat: name-format-nukie-operator
   - type: Loadout
-    prototypes: [SyndicateOperativeGearFullNoUplink]
+    prototypes: [SyndicateOperativeReinforcementGear]
 
 # Nuclear Operative
 - type: entity
@@ -99,6 +99,7 @@
     nameSegments:
     - NamesSyndicatePrefix
     - NamesSyndicateNormal
+    nameFormat: name-format-nukie-generic
   - type: NpcFactionMember
     factions:
     - Syndicate

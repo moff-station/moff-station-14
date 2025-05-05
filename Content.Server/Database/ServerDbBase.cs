@@ -104,8 +104,10 @@ namespace Content.Server.Database
             }
 
             var oldProfile = db.DbContext.Profile
+                // Moffstation Start - Add CD Profile
                 .Include(p => p.CDProfile) // CD: Store CD info
                     .ThenInclude(cd => cd != null ? cd.CharacterRecordEntries : null)
+                // Moffstation End
                 .Include(p => p.Preference)
                 .Where(p => p.Preference.UserId == userId.UserId)
                 .Include(p => p.Jobs)
@@ -260,7 +262,7 @@ namespace Content.Server.Database
                 profile.CharacterName,
                 profile.FlavorText,
                 profile.Species,
-                profile.CDProfile?.Height ?? 1.0f,
+                profile.CDProfile?.Height ?? 1.0f, // Moffstation - CD Height
                 profile.Age,
                 sex,
                 gender,
@@ -280,7 +282,7 @@ namespace Content.Server.Database
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts,
-                cdRecords
+                cdRecords // Moffstation - Add CD Profile
             );
         }
 

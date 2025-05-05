@@ -1,0 +1,31 @@
+﻿# Player: MythicalGrubbin / Character: Eddie Cooper
+
+- type: entity
+  parent: AcousticGuitarInstrument
+  id: PersonalItemEddieGuitar
+  name: Eddie's guitar
+  description: A cool blue acoustic guitar. There seems to be some writing on the front.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/MythicalGrubbin/Eddie_Cooper/eddieguitar.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/MythicalGrubbin/Eddie_Cooper/eddieguitar.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+    sprite: _Moffstation/PersonalItems/Items/MythicalGrubbin/Eddie_Cooper/eddieguitar.rsi
+  - type: DetailExaminable
+    content: The wood covering the guitar is without any blemish or wear, indicating it isn't used often, and that the owner cherishes it greatly. 'My Love in Paradise' is written near the bottom, accompanied by 2 small hearts, green and purple.
+
+- type: loadout
+  id: PersonalItemEddieGuitar
+  storage:
+    back:
+    - PersonalItemEddieGuitar
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Eddie Cooper

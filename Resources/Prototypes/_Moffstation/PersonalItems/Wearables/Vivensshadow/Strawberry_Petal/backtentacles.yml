@@ -1,0 +1,22 @@
+# Player: Vivensshadow - Character: Strawberry
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: PersonalItemStrawberryBackTentacles
+  name: Strawberry's Tentacles
+  description: A set of 4 tentacles made of slime, that could probably be used to hold items.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: icon
+    sprite: _Moffstation/PersonalItems/Wearables/Vivensshadow/Strawberry_Petal/backtentacles.rsi
+
+- type: loadout
+  id: PersonalItemStrawberryBackTentacles
+  storage:
+    back:
+    - PersonalItemStrawberryBackTentacles
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "Strawberry Petal"
+    - "Strawberry Buttersworth"

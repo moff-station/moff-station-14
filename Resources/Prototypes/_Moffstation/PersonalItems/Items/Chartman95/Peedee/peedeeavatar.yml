@@ -1,0 +1,83 @@
+# Player: Chartman95 - Character: Peedee
+- type: entity
+  parent: BasePlushie
+  id: PersonalItemPeedeeAvatar
+  name: Peedee's Avatar
+  description:  A hardlight hologram depicting Subject PD-113's ghostly avatar. If lost please return to the nearest lizard, cyborg, or other host-form referring to itself as 'Peedee'.
+  suffix: PersonalItem
+  components:
+  - type: Item
+    heldPrefix: peedeeavatar
+    inhandVisuals:
+      left:
+      - state: peedeeavatar-inhand-left
+        shader: unshaded
+      right:
+      - state: peedeeavatar-inhand-right
+        shader: unshaded
+    storedSprite:
+      sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+      state: peedeeavatar-storage
+    shape:
+    - 0,0,1,0
+  - type: EmitSoundOnUse
+    sound: null
+  - type: EmitSoundOnActivate
+    sound: null
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+    noRot: true
+    layers:
+      - state: peedeeavatar
+        map: [ "enum.ToggleVisuals.Layer" ]
+        shader: unshaded
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleVisuals.Toggled:
+        enum.ToggleVisuals.Layer:
+          True: { state: peedeeavatar-dance }
+          False: { state: peedeeavatar }
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Voice/Talk/pai_exclaim.ogg
+    soundDeactivate:
+      path: /Audio/Voice/Talk/pai_ask.ogg
+  - type: Clothing
+    quickEquip: false
+    sprite: _Moffstation/PersonalItems/Items/Chartman95/Peedee/peedeeavatar.rsi
+    clothingVisuals:
+      neck:
+      - state: peedeeavatar-equipped-NECK
+        shader: unshaded
+      head:
+      - state: peedeeavatar-equipped-HELMET
+        shader: unshaded
+    slots:
+    - NECK
+    - HEAD
+    equippedPrefix: peedeeavatar
+  - type: Tag
+    tags: [] #Specifically remove tags to make the plush not useable in crafting or edible for moths
+  - type: DetailExaminable
+    content: Subject PD-113 may take many forms, but this is how she sees herself. Researchers have noted that keeping the subject's self image grounded with this holographic representation improves test performance by an average of 34%.
+
+- type: loadout
+  id: PersonalItemPeedeeAvatar
+  storage:
+    back:
+    - PersonalItemPeedeeAvatar
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Peedee
