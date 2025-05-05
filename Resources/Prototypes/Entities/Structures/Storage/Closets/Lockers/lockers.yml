@@ -550,6 +550,7 @@
   id: LockerClown
   name: clown locker
   parent: LockerBaseSecure
+  suffix: Filled  # Moffstation - updating indicator
   components:
   - type: Appearance
   - type: AccessReader
