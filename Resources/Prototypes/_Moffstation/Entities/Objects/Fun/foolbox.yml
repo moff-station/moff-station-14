@@ -1,0 +1,30 @@
+- type: entity
+  name: foolbox
+  parent: ToolboxBase
+  id: Foolbox
+  description: A toolbox for fools, stocked with clowning equipment.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/foolbox.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Fun/foolbox.rsi
+
+- type: entity
+  parent: Foolbox
+  id: FoolboxFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: CrayonBox
+    - id: MysteryFigureBoxMoff
+      prob: 0.5
+    - id: MysteryFigureBox
+      prob: 0.5
+    - id: CrayonRainbow
+    - id: FoodPieBananaCream
+    - id: FoodPieBananaCream
+    - id: BikeHorn
+    - id: ClothingHandsGlovesColorYellowBudget
+    - id: ToyHammer
