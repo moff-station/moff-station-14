@@ -1,0 +1,35 @@
+- type: entity
+  name: Pawgliaci
+  parent: MobCorgi
+  id: MobPawgliaci
+  description: A retired magicians pet, this nervous rabbit was born for the theater.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Pets/pawgliaci.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: pawgliaci
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pawgliaci
+      Critical:
+        Base: pawgliaci-crit
+      Dead:
+        Base: pawgliaci-dead
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: neuter
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+  - type: InteractionPopup
+    successChance: 0.5
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-pawgliaci
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/fox_squeak.ogg

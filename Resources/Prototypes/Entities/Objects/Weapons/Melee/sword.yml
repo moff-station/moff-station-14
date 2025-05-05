@@ -1,3 +1,6 @@
+#While you were busy charging your batong... I studied the blade.
+
+#BaseSword
 - type: entity
   parent: BaseItem
   id: BaseSword
@@ -19,12 +22,129 @@
     qualities:
     - Slicing
 
+#Shortswords
 - type: entity
-  name: captain's sabre
+  name: cutlass
+  parent: [ BaseSword, BaseMajorContraband ]
+  id: Cutlass
+  description: A wickedly curved blade, often seen in the hands of space pirates.
+  components:
+  - type: Tag
+    tags:
+    - Machete
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/cutlass.rsi
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 16
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Objects/Weapons/Melee/cutlass.rsi
+    shape:
+    - 0,0,0,2
+  - type: DisarmMalus
+
+- type: entity
+  name: machete
+  parent: [ BaseSword, BaseMajorContraband ]
+  id: Machete
+  description: A large, vicious looking blade.
+  components:
+  - type: Tag
+    tags:
+    - Machete
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/machete.rsi
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 15
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Objects/Weapons/Melee/machete.rsi
+    shape:
+    - 0,0,0,2
+  - type: DisarmMalus
+
+#Longswords
+- type: entity
+  # Moffstation - Begin (Persona Saber)
+  name: captain's persona sabre
   parent: [ BaseSword, BaseCommandContraband ]
   id: CaptainSabre
-  description: A ceremonial weapon belonging to the captain of the station.
+  description: A ceremonial weapon belonging to the captain of the station. Has a built-in PAI for advising the captain on various official matters.
   components:
+  - type: Instrument
+    allowPercussion: false
+    handheld: false
+    bank: 1
+    program: 2
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+        requireInputValidation: false
+      # available in pai shop
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
+      enum.StationMapUiKey.Key:
+        type: StationMapBoundUserInterface
+        requireInputValidation: false
+  - type: Input
+    context: "human"
+  - type: BlockMovement
+  - type: PAI
+  - type: GhostRole
+    makeSentient: true
+    name: Captain's Persona Saber
+    description: Advise the captain on official matters, and thirst for blood.
+    rules: ghost-role-information-familiar-rules
+    mindRoles:
+    - MindRoleGhostRoleFamiliar
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Examiner
+  - type: IntrinsicRadioReceiver
+  - type: ActiveRadio
+    channels:
+    - Common
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+  - type: DoAfter
+  - type: Actions
+  - type: Store
+    categories:
+    - PAIAbilities
+    currencyWhitelist:
+    - SiliconMemory
+    balance:
+      SiliconMemory: 30
+  - type: RadarConsole
+    maxRange: 256
+    followEntity: true
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Melee/captain_sabre.rsi
   - type: MeleeWeapon
@@ -38,16 +158,22 @@
     reflectProb: .1
     spread: 90
   - type: Item
-    sprite: Objects/Weapons/Melee/captain_sabre.rsi
+    storedSprite:
+      state: storage
+      sprite: Objects/Weapons/Melee/captain_sabre_storage_64x.rsi #Done in 64x64 because it looks way too puny in 32x32
+    shape:
+    - 0,0,0,3
   - type: Tag
     tags:
     - CaptainSabre
   - type: DisarmMalus
-  - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-inanimate
-    weight: 0.0002 # 5,000 times less likely than 1 regular animal
-  - type: PirateAccent
-    # not putting a BlockMovement component here cause that's funny.
+  # Moffstation - Begin (Persona Saber)
+  #- type: SentienceTarget
+      #flavorKind: station-event-random-sentience-flavor-inanimate
+      #weight: 0.0002 # 5,000 times less likely than 1 regular animal
+      #- type: PirateAccent
+        ## not putting a BlockMovement component here cause that's funny.
+  #Moffstation - End
 
 - type: entity
   name: katana
@@ -67,7 +193,16 @@
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
+    storedSprite:
+      state: storage
+      sprite: Objects/Weapons/Melee/katana_storage_64x.rsi #Done in 64x64 because it looks way too puny in 32x32
+    shape:
+    - 0,0,0,3
+  - type: Clothing
     sprite: Objects/Weapons/Melee/katana.rsi
+    slots:
+    - Back
+    - Belt
   - type: DisarmMalus
 
 - type: entity
@@ -84,12 +219,15 @@
       types:
         Slash: 30
   - type: Item
-    sprite: Objects/Weapons/Melee/energykatana.rsi
+    storedSprite:
+      state: storage
+      sprite: Objects/Weapons/Melee/energykatana_storage_64x.rsi #Done in 64x64 because it looks way too puny in 32x32
+    shape:
+    - 0,0,0,3
   - type: EnergyKatana
   - type: DashAbility
   - type: LimitedCharges
     maxCharges: 3
-    charges: 3
   - type: AutoRecharge
     rechargeDuration: 20
   - type: Clothing
@@ -99,27 +237,7 @@
     - Belt
   - type: Reflect
 
-- type: entity
-  name: machete
-  parent: [ BaseSword, BaseMajorContraband ]
-  id: Machete
-  description: A large, vicious looking blade.
-  components:
-  - type: Tag
-    tags:
-    - Machete
-  - type: Sprite
-    sprite: Objects/Weapons/Melee/machete.rsi
-  - type: MeleeWeapon
-    damage:
-      types:
-        Slash: 15
-    soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
-  - type: Item
-    sprite: Objects/Weapons/Melee/machete.rsi
-  - type: DisarmMalus
-
+#Greatswords
 - type: entity
   name: claymore
   parent: [ BaseSword, BaseMajorContraband ]
@@ -136,38 +254,24 @@
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
+    storedSprite:
+      state: storage
+      sprite: Objects/Weapons/Melee/claymore_storage_64x.rsi #Done in 64x64 because it looks way too puny in 32x32
+    shape:
+    - 0,0,1,3
   - type: Clothing
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:
-    - back
+    - Back
+    - SuitStorage #Bigger than the other swords, easier to strap to your suit.
   - type: DisarmMalus
 
-- type: entity
-  name: cutlass
-  parent: [ BaseSword, BaseMajorContraband ]
-  id: Cutlass
-  description: A wickedly curved blade, often seen in the hands of space pirates.
-  components:
-  - type: Tag
-    tags:
-    - Machete
-  - type: Sprite
-    sprite: Objects/Weapons/Melee/cutlass.rsi
-  - type: MeleeWeapon
-    damage:
-      types:
-        Slash: 16
-    soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
-  - type: Item
-    sprite: Objects/Weapons/Melee/cutlass.rsi
-  - type: DisarmMalus
-
+#Other/Weird
 - type: entity
   name: throngler
   parent: [ BaseSword, BaseMajorContraband ]
   id: Throngler
-  description: Why would you make this?
+  description: If Security dares take it from you, just remind them that they are indeed mortal.
   components:
     - type: Sprite
       sprite: Objects/Weapons/Melee/Throngler2.rsi

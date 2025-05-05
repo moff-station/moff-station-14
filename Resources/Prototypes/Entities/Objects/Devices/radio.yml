@@ -4,19 +4,18 @@
   parent: BaseItem
   id: RadioHandheld
   components:
+#  Moffstation - Start - Give radio mic/speaker controls
   - type: TelecomExempt
   - type: RadioMicrophone
-    broadcastChannel: Handheld
+    unobstructedRequired: true
+    listenRange: 2
+    toggleOnInteract: false
   - type: RadioSpeaker
-    channels:
-    - Handheld
+    toggleOnInteract: false
   - type: Speech
     speechVerb: Robotic
   - type: Sprite
     sprite: Objects/Devices/communication.rsi
-    layers:
-    - state: walkietalkie
-    - state: walkietalkie-on
     state: walkietalkie
   - type: Item
     sprite: Objects/Devices/communication.rsi
@@ -24,6 +23,26 @@
   - type: Tag
     tags:
     - Radio
+  - type: EncryptionKeyHolder
+    keysUnlocked: False
+    keySlots: 1
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyHandheld
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: Intercom
+    requiresPower: false
+  - type: ActivatableUI
+    key: enum.IntercomUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.IntercomUiKey.Key:
+        type: IntercomBoundUserInterface
+# Moffstation - End
 
 - type: entity
   name: security radio
@@ -31,11 +50,12 @@
   parent: [ RadioHandheld, BaseSecurityContraband ]
   id: RadioHandheldSecurity
   components:
-  - type: RadioMicrophone
-    broadcastChannel: Security
-  - type: RadioSpeaker
-    channels:
-    - Security
+# Moffstation - Start - Update for speaker functionality
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+# Moffstation - End
   - type: Sprite
     sprite: Objects/Devices/securityhandy.rsi
   - type: Item

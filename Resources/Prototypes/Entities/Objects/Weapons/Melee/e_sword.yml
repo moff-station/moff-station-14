@@ -255,7 +255,7 @@
             Heat: 12
     deactivatedSecret: true
   - type: Sprite
-    sprite: Objects/Weapons/Melee/e_cutlass.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
     layers:
       - state: e_cutlass
       - state: e_cutlass_blade
@@ -264,7 +264,7 @@
         shader: unshaded
         map: [ "blade" ]
   - type: Item
-    sprite: Objects/Weapons/Melee/e_cutlass.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
 
 - type: entity
   name: double-bladed energy sword
@@ -393,3 +393,12 @@
   components: # could add energy-draining like the L6C
   - type: Wieldable
     freeHandsRequired: 0 # because borg has no off-hand to wield with.  Without this, it will be unable to activate the esword
+
+- type: entity
+  parent: [ EnergyDaggerLoud, BaseXenoborgContraband ]
+  id: EnergyDaggerLoudBlue
+  suffix: blue
+  components:
+  - type: EnergySword
+    colorOptions:
+    - "#2288ff" # can only be blue

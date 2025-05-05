@@ -1,0 +1,28 @@
+# Player FrostWinters - Character: Frost Winters
+
+- type: entity
+  parent: ClothingBeltMedicalFilled
+  id: PersonalItemFrostMedicalWebbing
+  name: "Winters' medical rig"
+  description: "Winters' chest rig brought from home, modified to fit medical supplies. Looks oddly familiar to some with certain backgrounds."
+  suffix: PersonalItem, Filled
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/FrostWinters/Frost_Winters/frostmedicalwebbing.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/FrostWinters/Frost_Winters/frostmedicalwebbing.rsi
+
+- type: loadout
+  id: PersonalItemFrostMedicalWebbing
+  storage:
+    belt:
+    - PersonalItemFrostMedicalWebbing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Frost Winters
+    jobs:
+    - JobChiefMedicalOfficer
+    - JobMedicalDoctor
+    - JobMedicalIntern
+    - JobParamedic

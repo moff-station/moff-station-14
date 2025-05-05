@@ -196,7 +196,7 @@ namespace Content.Server.GameTicking
 
             if (ev.GameMap.IsGrid)
             {
-                var mapUid = _map.CreateMap(out mapId);
+                var mapUid = _map.CreateMap(out mapId, runMapInit: options?.InitializeMaps ?? false);
                 if (!_loader.TryLoadGrid(mapId,
                         ev.GameMap.MapPath,
                         out var grid,
@@ -557,7 +557,7 @@ namespace Content.Server.GameTicking
 
                 if (TryGetEntity(mind.OriginalOwnedEntity, out var entity) && pvsOverride)
                 {
-                    _pvsOverride.AddGlobalOverride(GetNetEntity(entity.Value), recursive: true);
+                    _pvsOverride.AddGlobalOverride(entity.Value);
                 }
 
                 var roles = _roles.MindGetAllRoleInfo(mindId);
@@ -646,6 +646,9 @@ namespace Content.Server.GameTicking
             // Handle restart for server update
             if (_serverUpdates.RoundEnded())
                 return;
+
+            // Check if the GamePreset needs to be reset
+            TryResetPreset();
 
             _sawmill.Info("Restarting round!");
 
@@ -990,6 +993,22 @@ namespace Content.Server.GameTicking
 
             Text += text;
             _doNewLine = true;
+        }
+
+        public void AddLineWrapping(string text, int linewidth = 50, char separator = ' ')
+        {
+            var words = text.Split(separator);
+            var line = "";
+            foreach (var word in words)
+            {
+                line += word + separator;
+                if (line.Length > linewidth)
+                {
+                    AddLine(line);
+                    line = "";
+                }
+            }
+            AddLine(line);
         }
     }
 }

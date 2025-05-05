@@ -69,6 +69,7 @@
         - ToyDurand
         - ToySkeleton
         - MysteryFigureBox
+        - MysteryFigureBoxMoff # Moffstation - Adds moffstation themed figurines
       chance: 0.5
       offset: 0.2
 
@@ -86,6 +87,39 @@
       rarePrototypes:
       - ToyFigurineNukieElite
       - ToyFigurineNukieCommander
+      # Moffstation - Start - Adding our own figurines
+      - ToyFigurineAwana
+      - ToyFigurineBrad
+      - ToyFigurineBradBucket
+      - ToyFigurineCassiel
+      - ToyFigurineCinnabar
+      - ToyFigurineDarnell
+      - ToyFigurineDelivers
+      - ToyFigurineEchiara
+      - ToyFigurineEclipse
+      - ToyFigurineFred
+      - ToyFigurineGigs
+      - ToyFigurineIris
+      - ToyFigurineJelob
+      - ToyFigurineJobs
+      - ToyFigurineKatie
+      - ToyFigurineKrakatoa
+      - ToyFigurineKylie
+      - ToyFigurineLilith
+      - ToyFigurineNyxilath
+      - ToyFigurinePeedee
+      - ToyFigurineRareel
+      - ToyFigurineSapphire
+      - ToyFigurineSawa
+      - ToyFigurineScribbles
+      - ToyFigurineSean
+      - ToyFigurineSeikret
+      - ToyFigurineSiliconwing
+      - ToyFigurineSouthbridge
+      - ToyFigurineStrawberry
+      - ToyFigurineTania
+      - ToyFigurineTar
+      # Moffstation - End - Adding our own figurines
       rareChance: 0.05
       prototypes:
       - ToyFigurinePassenger
@@ -101,7 +135,7 @@
       - ToyFigurineLawyer
       - ToyFigurineCargoTech
       - ToyFigurineSalvage
-      - ToyFigurineQuartermaster   
+      - ToyFigurineQuartermaster
       - ToyFigurineChiefEngineer
       - ToyFigurineAtmosTech
       - ToyFigurineEngineer

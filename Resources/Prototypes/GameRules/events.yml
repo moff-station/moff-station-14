@@ -230,6 +230,7 @@
         nameSegments:
         - NamesNinjaTitle
         - NamesNinja
+        nameFormat: name-format-ninja
       mindRoles:
       - MindRoleNinja
 
@@ -302,6 +303,7 @@
       startingGear: WizardBlueGear
       roleLoadout:
       - RoleSurvivalExtended
+      - JobWizard   # Moffstation - Enable custom wizard name/loadout
       briefing:
         text: wizard-role-greeting
         color: Turquoise
@@ -316,6 +318,7 @@
         nameSegments:
         - NamesWizardFirst
         - NamesWizardLast
+        nameFormat: name-format-wizard
       mindRoles:
       - MindRoleWizard
 
@@ -542,12 +545,14 @@
       startingGear: SyndicateLoneOperativeGearFull
       roleLoadout:
       - RoleSurvivalNukie
+      - JobNukeops  # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
         - NamesSyndicatePrefix
         - NamesSyndicateNormal
+        nameFormat: name-format-nukie-generic
       - type: NpcFactionMember
         factions:
         - Syndicate

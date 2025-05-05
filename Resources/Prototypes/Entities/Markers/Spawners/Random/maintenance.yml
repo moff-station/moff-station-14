@@ -152,8 +152,10 @@
         - id: ClothingNeckLesbianPin
         - id: ClothingNeckNonBinaryPin
         - id: ClothingNeckPansexualPin
+        - id: ClothingNeckPluralPin
         - id: ClothingNeckOmnisexualPin
         - id: ClothingNeckGenderqueerPin
+        - id: ClothingNeckGenderfluidPin
         - id: ClothingNeckTransPin
         - id: ClothingNeckAutismPin
         - id: ClothingNeckGoldAutismPin
@@ -284,6 +286,7 @@
     - !type:GroupSelector
       weight: 2
       children:
+      - id: FoolboxFilled   # Moffstation - Added Foolbox to maints
       - id: Binoculars
       - id: LanternFlash
       - id: PowerCellHigh

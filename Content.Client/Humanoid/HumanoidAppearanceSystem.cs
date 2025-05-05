@@ -1,3 +1,5 @@
+using System.Numerics; // Moffstation
+using Content.Client.DisplacementMap;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
@@ -16,6 +18,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MarkingManager _markingManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
+    [Dependency] private readonly DisplacementMapSystem _displacement = default!;
 
     public override void Initialize()
     {
@@ -44,6 +47,16 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     {
         UpdateLayers(component, sprite);
         ApplyMarkingSet(component, sprite);
+
+        // Moffstation Start - CD Height
+        var speciesPrototype = _prototypeManager.Index(component.Species);
+        var height = Math.Clamp(MathF.Round(component.Height, 2), speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // should NOT be locked, at all
+
+        sprite.Scale = new Vector2(
+            (speciesPrototype.ScaleHeight ? height : 1f) * speciesPrototype.ImplicitSpriteScale.X,
+            height * speciesPrototype.ImplicitSpriteScale.Y
+        );
+        // Moffstation End
 
         sprite[sprite.LayerMapReserveBlank(HumanoidVisualLayers.Eyes)].Color = component.EyeColor;
     }
@@ -212,6 +225,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.Species = profile.Species;
         humanoid.SkinColor = profile.Appearance.SkinColor;
         humanoid.EyeColor = profile.Appearance.EyeColor;
+        humanoid.Height = profile.Height; // Moffstation - CD Height
 
         UpdateSprite(humanoid, Comp<SpriteComponent>(uid));
     }
@@ -368,6 +382,11 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             else
             {
                 sprite.LayerSetColor(layerId, Color.White);
+            }
+
+            if (humanoid.MarkingsDisplacement.TryGetValue(markingPrototype.BodyPart, out var displacementData) && markingPrototype.CanBeDisplaced)
+            {
+                _displacement.TryAddDisplacement(displacementData, sprite, targetLayer + j + 1, layerId, out _);
             }
         }
     }

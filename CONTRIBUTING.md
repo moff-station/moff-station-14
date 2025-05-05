@@ -58,6 +58,15 @@ For multi-line YAML changes:
 # Moffstation - End
 ```
 
+Example:
+```yaml
+# Moffstation - Begin - Make warops admin only
+#  inhand:
+#  - NukeOpsDeclarationOfWar
+# Moffstation - End
+```
+
+
 For modifying single lines of C#:
 ```csharp
 public const int LowPressureDamage = 4; // Moffstation - Revert to original value for a better MRP experience
@@ -65,20 +74,41 @@ public const int LowPressureDamage = 4; // Moffstation - Revert to original valu
 
 For multi-line C# changes:
 ```csharp
-public void SetCriminalIcon(string name, SecurityStatus status, EntityUid characterUid)
-{
-...
-    record.StatusIcon = status switch
+public EntityUid SpawnPlayerMob(
+        EntityCoordinates coordinates,
+        ProtoId<JobPrototype>? job,
+        HumanoidCharacterProfile? profile,
+        EntityUid? station,
+        EntityUid? entity = null)
     {
-...
-        SecurityStatus.Suspected => "SecurityIconSuspected",
-        // Moffstation - Begin - Add additional security status icons
-        SecurityStatus.Monitor => "SecurityIconMonitor",
-        SecurityStatus.Search => "SecurityIconSearch",
-        // Harmony - End
-        _ => record.StatusIcon
-    };
-...
+
+[rest of file]
+
+        if (_randomizeCharacters)
+        {
+            profile = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
+        }
+
+        // Moffstation - Begin - Clown/Borg/Mime loadout names (Moved from lower in file, separated from ID processing)
+        if (profile != null)
+        {
+            _humanoidSystem.LoadProfile(entity.Value, profile);
+            _metaSystem.SetEntityName(entity.Value, profile.Name);
+
+            if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
+            {
+                AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
+            }
+        }
+        // Moffstation - End - Clown/Borg/Mime loadout names
+
+        if (loadout != null)
+        {
+            EquipRoleLoadout(entity.Value, loadout, roleProto!);
+        }
+
+[rest of file]
+
 }
 ```
 For easier organization, you can also choose to wrap large sections of Moffstation-specific upstream changes in their own `#region`. Make sure to keep the comments at the top and bottom of the region, as they are used to identify the changes when searching for them.
@@ -140,8 +170,9 @@ Before submitting a pull request, make sure to:
 - Revert any unnecessary whitespace changes in your pull request.
 
 ## HELP I ACCIDENTALLY INCLUDED ROBUSTTOOLBOX IN MY CHANGES
-```
+```commandline
 git checkout upstream/master RobustToolbox
+git submodule update --init --recursive
 ```
 This will revert the changes to the RobustToolbox submodule to the upstream version. You can then commit this change and push it to your branch.
 

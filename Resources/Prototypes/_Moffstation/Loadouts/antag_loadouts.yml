@@ -1,0 +1,63 @@
+# Nukeops
+- type: roleLoadout
+  id: JobNukeopsCommander
+  canCustomizeName: true
+  groups:
+  - NukieJumpsuit
+  - NukieBackpack
+  - NukieGloves
+  - PersonalItemsJobAgnostic
+
+- type: roleLoadout
+  id: JobNukeops
+  canCustomizeName: true
+  groups:
+  - NukieJumpsuit
+  - NukieBackpack
+  - NukieGloves
+  - PersonalItemsJobAgnostic
+
+- type: roleLoadout
+  id: JobNukeopsMedic
+  canCustomizeName: true
+  groups:
+  - NukieJumpsuit
+  - NukieMedicalBackpack
+  - NukieGloves
+  - PersonalItemsJobAgnostic
+
+# Wizard
+- type: roleLoadout
+  id: JobWizard
+  canCustomizeName: true
+  groups:
+    - WizardJumpsuit
+    - WizardRobes
+    - WizardHat
+    - CommonBackpack
+    - PersonalItemsJobAgnostic
+
+# Pirates
+- type: roleLoadout
+  id: JobPirateCrew
+  canCustomizeName: true
+  groups:
+  - PirateHats
+  - CommonBackpack
+  - PersonalItemsJobAgnostic
+
+- type: roleLoadout
+  id: JobPirateMedic
+  canCustomizeName: true
+  groups:
+  - PirateHats
+  - CommonBackpack
+  - PersonalItemsJobAgnostic
+
+- type: roleLoadout
+  id: JobPirateCaptain
+  canCustomizeName: true
+  groups:
+  - PirateHats
+  - CommonBackpack
+  - PersonalItemsJobAgnostic

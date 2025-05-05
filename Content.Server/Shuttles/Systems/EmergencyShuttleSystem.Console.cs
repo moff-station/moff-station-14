@@ -1,5 +1,4 @@
 using System.Threading;
-using Content.Server.DeviceNetwork.Components;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
@@ -14,6 +13,7 @@ using Content.Shared.Shuttles.Systems;
 using Content.Shared.UserInterface;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using Content.Shared.DeviceNetwork.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.Shuttles.Systems;
@@ -210,7 +210,7 @@ public sealed partial class EmergencyShuttleSystem
             }
 
             // Don't dock them. If you do end up doing this then stagger launch.
-            _shuttle.FTLToDock(uid, shuttle, centcomm.Entity.Value, hyperspaceTime: TransitTime);
+            _shuttle.FTLToDock(uid, shuttle, centcomm.Entity.Value, hyperspaceTime: TransitTime, priorityTag: pod.PriorityTag);
             RemCompDeferred<EscapePodComponent>(uid);
         }
 

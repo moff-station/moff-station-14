@@ -1,0 +1,44 @@
+- type: entity
+  name: Moffstation Minifigure Spawner
+  id: MoffstationFigureSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Moffstation/Objects/Fun/figurines.rsi
+      state: fig-box
+  - type: RandomSpawner
+    prototypes:
+    - ToyFigurineAwana
+    - ToyFigurineBrad
+    - ToyFigurineBradBucket
+    - ToyFigurineCassiel
+    - ToyFigurineCinnabar
+    - ToyFigurineDarnell
+    - ToyFigurineDelivers
+    - ToyFigurineEchiara
+    - ToyFigurineEclipse
+    - ToyFigurineFred
+    - ToyFigurineGigs
+    - ToyFigurineIris
+    - ToyFigurineJelob
+    - ToyFigurineJobs
+    - ToyFigurineKatie
+    - ToyFigurineKrakatoa
+    - ToyFigurineKylie
+    - ToyFigurineLilith
+    - ToyFigurineNyxilath
+    - ToyFigurinePeedee
+    - ToyFigurineRareel
+    - ToyFigurineSapphire
+    - ToyFigurineSawa
+    - ToyFigurineScribbles
+    - ToyFigurineSean
+    - ToyFigurineSeikret
+    - ToyFigurineSiliconwing
+    - ToyFigurineSouthbridge
+    - ToyFigurineStrawberry
+    - ToyFigurineTania
+    - ToyFigurineTar
+    offset: 0.2

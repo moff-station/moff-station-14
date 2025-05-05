@@ -332,6 +332,7 @@
   - type: Item
     size: Tiny
   - type: HTN
+    constantlyReplan: false
     rootTask:
       task: MouseCompound
   - type: Physics
@@ -472,7 +473,7 @@
   - type: GhostTakeoverAvailable
   - type: Speech
     speechVerb: Moth
-    speechSounds: Squeak
+    speechSounds: Moth #Moffstation
     allowedEmotes: ['Chitter', 'Squeak']
   - type: FaxableObject
     insertingState: inserting_mothroach
@@ -1681,6 +1682,7 @@
     factions:
       - Mouse
   - type: HTN
+    constantlyReplan: false
     rootTask:
       task: MouseCompound
   - type: Physics
@@ -2967,6 +2969,9 @@
   - type: Tag
     tags:
     - VimPilot
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 4
 
 - type: entity
   name: calico cat
