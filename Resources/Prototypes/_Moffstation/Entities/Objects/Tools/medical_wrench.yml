@@ -1,0 +1,18 @@
+- type: entity
+  name: medical wrench
+  parent: [Wrench, BaseMedicalContraband]
+  id: MedicalWrench
+  description: 'A common (medical?) tool for assembly and disassembly. Remember: lefty latchy, righty removey.'
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Tools/medical_wrench.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Tools/medical_wrench.rsi
+    storedSprite:
+      sprite: _Moffstation/Objects/Tools/medical_wrench.rsi
+      state: storage
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 1.5 # Medicalier

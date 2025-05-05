@@ -1,0 +1,36 @@
+# Player: Compilatron - Character: Shared
+- type: entity
+  parent: BaseItem
+  id: PersonalItemSharedStationBlueprints
+  name: Station blueprints
+  description: A highly detailed schematic for a space station, complete with floor plan, wiring, pipe networks and other infrastructure. Clearly the proud work of a veteran station engineer.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/blueprint.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Tools/blueprint.rsi
+    size: Small
+  - type: Tag
+    tags:
+    - Document
+  - type: StationMap
+  - type: ActivatableUI
+    inHandsOnly: true
+    singleUser: true
+    key: enum.StationMapUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.StationMapUiKey.Key:
+        type: StationMapBoundUserInterface
+
+- type: loadout
+  id: PersonalItemSharedStationBlueprints
+  storage:
+    back:
+    - PersonalItemSharedStationBlueprints
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "Tania Buttersworth"

@@ -1,0 +1,88 @@
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BasePiratesRule
+  components:
+  #  - type: PiratesRule
+  - type: LoadMapRule
+    gridPath: /Maps/Shuttles/pirate.yml
+  - type: RuleGrids
+  - type: AntagSelection
+  - type: AntagLoadProfileRule
+
+- type: entity
+  parent: BasePiratesRule
+  id: Pirates
+  components:
+  - type: GameRule
+    minPlayers: 15
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ PirateCaptain ]
+      fallbackRoles: [ PirateCrew, PirateMedic ]
+      spawnerPrototype: SpawnPointPirateCaptain
+      startingGear: PirateCaptainGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      - JobPirateCaptain
+      briefing:
+        text: pirate-role-greeting
+        color: Red
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
+      components:
+      - type: RandomMetadata
+        nameSegments:
+        - Adjectives
+        nameFormat: name-format-pirate-captain
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRolePirateCaptain
+    - prefRoles: [ PirateMedic ]
+      fallbackRoles: [ PirateCrew, PirateCaptain ]
+      spawnerPrototype: SpawnPointPirateMedic
+      startingGear: PirateFirstmateGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      - JobPirateMedic
+      briefing:
+        text: pirate-role-greeting
+        color: Red
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
+      components:
+      - type: RandomMetadata
+        nameSegments:
+        - NamesFirst
+        - NamesLast
+        nameFormat: name-format-standard
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRolePirateMedic
+    - prefRoles: [ PirateCrew ]
+      fallbackRoles: [ PirateCaptain, PirateMedic ]
+      spawnerPrototype: SpawnPointPirateCrew
+      max: 4
+      playerRatio: 10
+      startingGear: PirateGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      - JobPirateCrew
+      briefing:
+        text: pirate-role-greeting
+        color: Red
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
+      components:
+      - type: RandomMetadata
+        nameSegments:
+        - NamesFirst
+        - NamesLast
+        nameFormat: name-format-standard
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRolePirateCrew

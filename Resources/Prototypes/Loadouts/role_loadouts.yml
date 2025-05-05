@@ -27,13 +27,11 @@
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
-# Moffstation - Start - Clown/Borg/Mime loadout names
 # Silicons
 - type: roleLoadout
   id: JobBorg
   nameDataset: NamesBorg
   canCustomizeName: true
-# Moffstation - End - Clown/Borg/Mime loadout names
 
 - type: roleLoadout
   id: JobStationAi
@@ -172,7 +170,7 @@
 
 - type: roleLoadout
   id: JobClown
-  canCustomizeName: true # Moffstation - Clown/Borg/Mime loadout names
+  canCustomizeName: true
   groups:
   - GroupTankHarness
   - ClownHead
@@ -187,7 +185,7 @@
 
 - type: roleLoadout
   id: JobMime
-  canCustomizeName: true # Moffstation - Clown/Borg/Mime loadout names
+  canCustomizeName: true
   groups:
   - GroupTankHarness
   - MimeHead
@@ -224,7 +222,7 @@
   - QuartermasterHead
   - QuartermasterNeck
   - QuartermasterJumpsuit
-  - CargoTechnicianBackpack
+  - QuartermasterBackpack # Moffstation - Department Heads can wear any bag from their department
   - QuartermasterOuterClothing
   - QuartermasterShoes
   - Glasses
@@ -268,7 +266,7 @@
   - GroupTankHarness
   - ChiefEngineerHead
   - ChiefEngineerJumpsuit
-  - StationEngineerBackpack
+  - ChiefEngineerBackpack # Moffstation - Department Heads can wear any bag from their department
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
@@ -446,11 +444,11 @@
   - MedicalMask
   - ChiefMedicalOfficerJumpsuit
   - MedicalGloves
-  - MedicalBackpack
+  - ChiefMedicalOfficerBackpack # Moffstation - Department Heads can wear any bag from their department
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
@@ -468,7 +466,7 @@
   - MedicalDoctorOuterClothing
   - MedicalShoes
   - MedicalDoctorPDA
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
@@ -480,7 +478,7 @@
   - GroupTankHarness
   - MedicalInternJumpsuit
   - MedicalBackpack
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
@@ -512,7 +510,7 @@
   - MedicalBackpack
   - ParamedicOuterClothing
   - ParamedicShoes
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical

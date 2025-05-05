@@ -1,0 +1,66 @@
+# Nukie
+- type: loadoutGroup
+  id: NukieJumpsuit
+  name: loadout-group-nukie-jumpsuit
+  loadouts:
+  - NukieJumpsuit
+  - NukieJumpskirt
+  - SyndieFormalSuit
+  - SyndieFormalSkirt
+  - TacticalMaidSkirt
+
+- type: loadoutGroup
+  id: NukieBackpack
+  name: loadout-group-nukie-backpack
+  loadouts:
+  - NukieBackpack
+  - NukieSatchel
+  - NukieDuffel
+
+- type: loadoutGroup
+  id: NukieGloves
+  name: loadout-group-nukie-gloves
+  loadouts:
+    - CombatGloves
+    - CombatMaidGloves
+
+- type: loadoutGroup
+  id: NukieMedicalBackpack
+  name: loadout-group-nukie-backpack
+  loadouts:
+  - NukieMedicBackpack
+  - NukieMedicSatchel
+  - NukieMedicDuffel
+
+# Wizard
+- type: loadoutGroup
+  id: WizardJumpsuit
+  name: loadout-group-wizard-jumpsuit
+  loadouts:
+    - BlueWizardJumpsuit
+    - RedWizardJumpsuit
+    - VioletWizardJumpsuit
+
+- type: loadoutGroup
+  id: WizardRobes
+  name: loadout-group-wizard-robes
+  loadouts:
+    - BlueWizardRobes
+    - RedWizardRobes
+    - VioletWizardRobes
+
+- type: loadoutGroup
+  id: WizardHat
+  name: loadout-group-wizard-hat
+  loadouts:
+    - BlueWizardHat
+    - RedWizardHat
+    - VioletWizardHat
+
+# Pirate
+- type: loadoutGroup
+  id: PirateHats
+  name: loadout-group-pirate-hat
+  loadouts:
+  - HeadHatPirate
+  - HeadHatPirateTricord

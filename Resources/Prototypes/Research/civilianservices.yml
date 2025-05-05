@@ -183,10 +183,22 @@
     sprite: Structures/cargo_telepad.rsi
     state: display
   discipline: CivilianServices
-  tier: 2
+  tier: 3 # Moffstation
   cost: 15000
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
+
+- type: technology
+  id: PushHorn
+  name: research-technology-clowning-utilities
+  icon:
+    sprite: Objects/Fun/push_horn.rsi
+    state: icon
+  discipline: CivilianServices
+  tier: 2
+  cost: 4000
+  recipeUnlocks:
+  - PushHorn
 
 # Tier 3
 
@@ -209,7 +221,7 @@
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
     state: beakerbluespace
   discipline: CivilianServices
-  tier: 3
+  tier: 2 # Moffstation
   cost: 10000
   recipeUnlocks:
   - BluespaceBeaker

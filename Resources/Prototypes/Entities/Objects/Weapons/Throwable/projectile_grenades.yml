@@ -9,11 +9,24 @@
   - type: DeleteOnTrigger
   - type: Destructible
     thresholds:
+    # Moffstation - Begin (Resilient Grenades)
+    #- trigger:
+        #!type:DamageTrigger
+        #damage: 10
+      #behaviors:
+      #- !type:TriggerBehavior
     - trigger:
         !type:DamageTrigger
         damage: 10
       behaviors:
-      - !type:TriggerBehavior
+      - !type:TimerStartBehavior
+    - trigger:
+        !type:DamageTrigger
+        damage: 45
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      # Moffstation - End
   - type: ContainerContainer
     containers:
       cluster-payload: !type:Container
@@ -25,6 +38,9 @@
         enum.ConstructionVisuals.Layer:
           Primed: { state: primed }
           Unprimed: { state: icon }
+  - type: Tag
+    tags:
+    - HandGrenade
 
 - type: entity
   parent: [ProjectileGrenadeBase, BaseSecurityContraband]
@@ -57,7 +73,8 @@
   parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
   id: GrenadeIncendiary
   name: incendiary grenade
-  description: Guaranteed to light up the mood.
+  #description: Guaranteed to light up the mood. (Resilient Grenades - Replaced)
+  description: Releases a spray of incendiary shrapnel in all directions. Guaranteed to light up the mood.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Grenades/pyrogrenade.rsi
@@ -82,7 +99,8 @@
 - type: entity
   parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
   id: GrenadeShrapnel
-  name: shrapnel grenade
+  #name: shrapnel grenade (Moffstation - Resilient Grenades - Replaced)
+  name: fragmentation grenade
   description: Releases a deadly spray of shrapnel that causes severe bleeding.
   components:
   - type: Sprite

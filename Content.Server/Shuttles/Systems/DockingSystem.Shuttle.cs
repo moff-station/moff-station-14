@@ -79,7 +79,7 @@ public sealed partial class DockingSystem
             return false;
 
         shuttleDockedAABB = matty.TransformBox(shuttleAABB);
-        gridRotation = (targetGridRotation + offsetAngle).Reduced();
+        gridRotation = offsetAngle.Reduced();
         return true;
     }
 
@@ -125,7 +125,8 @@ public sealed partial class DockingSystem
     public DockingConfig? GetDockingConfigAt(EntityUid shuttleUid,
         EntityUid targetGrid,
         EntityCoordinates coordinates,
-        Angle angle)
+        Angle angle,
+        bool fallback = true)
     {
         var gridDocks = GetDocks(targetGrid);
         var shuttleDocks = GetDocks(shuttleUid);
@@ -138,6 +139,11 @@ public sealed partial class DockingSystem
             {
                 return config;
             }
+        }
+
+        if (fallback && configs.Count > 0)
+        {
+            return configs.First();
         }
 
         return null;
@@ -286,17 +292,51 @@ public sealed partial class DockingSystem
 
         var targetGridAngle = _transform.GetWorldRotation(targetGrid).Reduced();
 
-        // Prioritise by priority docks, then by maximum connected ports, then by most similar angle.
-        validDockConfigs = validDockConfigs
-           .OrderByDescending(x => IsConfigPriority(x, priorityTag))
-           .ThenByDescending(x => x.Docks.Count)
-           .ThenBy(x => Math.Abs(Angle.ShortestDistance(x.Angle.Reduced(), targetGridAngle).Theta)).ToList();
+        // Moffstation - Start - New FTL code, this should make proper use of the queuing system. Also should be much more performant.
+        var bestMatch = new DockingConfig();
 
-        var location = validDockConfigs.First();
-        location.TargetGrid = targetGrid;
+        foreach (var config in validDockConfigs)
+        {
+            if (bestMatch.Docks.Count == 0)
+            {
+                bestMatch = config;
+                continue;
+            }
+            var queueBusted = false;
+            foreach (var dock in config.Docks)
+            {
+                if (dock.DockA.Queued || dock.DockB.Queued)
+                {
+                    queueBusted = true;
+                    break;
+                }
+            }
+            if (queueBusted)
+                continue;
+
+            if (!IsConfigPriority(config, priorityTag) && IsConfigPriority(bestMatch, priorityTag))
+                continue;
+
+            if (bestMatch.Docks.Count > config.Docks.Count)
+                continue;
+
+            if (Math.Abs(Angle.ShortestDistance(bestMatch.Angle.Reduced(), targetGridAngle).Theta) < Math.Abs(Angle.ShortestDistance(config.Angle.Reduced(), targetGridAngle).Theta))
+                continue;
+            bestMatch = config;
+        }
+
+        // // Prioritise by priority docks, then by maximum connected ports, then by most similar angle.
+        // validDockConfigs = validDockConfigs
+        //    .OrderByDescending(x => IsConfigPriority(x, priorityTag))
+        //    .ThenByDescending(x => x.Docks.Count)
+        //    .ThenBy(x => Math.Abs(Angle.ShortestDistance(x.Angle.Reduced(), targetGridAngle).Theta)).ToList();
+        //
+        // var location = validDockConfigs.First();
+        bestMatch.TargetGrid = targetGrid;
         // TODO: Ideally do a hyperspace warpin, just have it run on like a 10 second timer.
 
-        return location;
+        return bestMatch;
+        // Moffstation - End
     }
 
     public bool IsConfigPriority(DockingConfig config, string? priorityTag)

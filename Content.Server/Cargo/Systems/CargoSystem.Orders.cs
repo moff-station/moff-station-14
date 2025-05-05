@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Cargo.Components;
 using Content.Server.Station.Components;
+using Content.Shared._Moffstation.Cargo.Events; // Moffstation
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
@@ -51,7 +52,7 @@ namespace Content.Server.Cargo.Systems
                 return;
 
             _audio.PlayPvs(ApproveSound, uid);
-            UpdateBankAccount((stationUid.Value, bank), (int) price, CreateAccountDistribution(component.Account, bank));
+            UpdateBankAccount((stationUid.Value, bank), (int) price, component.Account);
             QueueDel(args.Used);
             args.Handled = true;
         }
@@ -78,7 +79,7 @@ namespace Content.Server.Cargo.Systems
             var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
             while (stationQuery.MoveNext(out var uid, out var bank))
             {
-                if (_timing.CurTime < bank.NextIncomeTime)
+                if (Timing.CurTime < bank.NextIncomeTime)
                     continue;
                 bank.NextIncomeTime += bank.IncomeDelay;
 
@@ -203,7 +204,7 @@ namespace Content.Server.Cargo.Systems
                 $"{ToPrettyString(player):user} approved order [orderId:{order.OrderId}, quantity:{order.OrderQuantity}, product:{order.ProductId}, requester:{order.Requester}, reason:{order.Reason}] on account {component.Account} with balance at {accountBalance}");
 
             orderDatabase.Orders[component.Account].Remove(order);
-            UpdateBankAccount((station.Value, bank), -cost, CreateAccountDistribution(component.Account, bank));
+            UpdateBankAccount((station.Value, bank), -cost, component.Account);
             UpdateOrders(station.Value);
         }
 
@@ -378,16 +379,6 @@ namespace Content.Server.Cargo.Systems
 
                 UpdateOrderState(uid, station);
             }
-
-            var consoleQuery = AllEntityQuery<CargoShuttleConsoleComponent>();
-            while (consoleQuery.MoveNext(out var uid, out var _))
-            {
-                var station = _station.GetOwningStation(uid);
-                if (station != dbUid)
-                    continue;
-
-                UpdateShuttleState(uid, station);
-            }
         }
 
         public bool AddAndApproveOrder(
@@ -524,6 +515,8 @@ namespace Content.Server.Cargo.Systems
                     _slots.TryInsert(item, label.LabelSlot, printed, null);
                 }
             }
+
+            RaiseLocalEvent(item, new CargoOrderFulfilledEvent()); // Moffstation
 
             return true;
 

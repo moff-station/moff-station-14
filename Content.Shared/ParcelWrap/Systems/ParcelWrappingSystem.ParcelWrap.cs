@@ -8,7 +8,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared.ParcelWrap.Systems;
 
 // This part handles Parcel Wrap.
-public sealed partial class SharedParcelWrappingSystem
+public sealed partial class ParcelWrappingSystem
 {
     private void InitializeParcelWrap()
     {
@@ -125,8 +125,8 @@ public sealed partial class SharedParcelWrappingSystem
         }
 
         // Consume a `use` on the wrapper, and delete the wrapper if it's empty.
-        _charges.UseCharge(wrapper);
-        if (_net.IsServer && _charges.IsEmpty(wrapper))
+        _charges.TryUseCharges(wrapper.Owner, 1);
+        if (_net.IsServer && _charges.IsEmpty(wrapper.Owner))
             QueueDel(wrapper);
 
         // Play a wrapping sound.

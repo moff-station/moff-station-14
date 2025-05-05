@@ -1,0 +1,18 @@
+# bags
+- type: loadout
+  id: LeatherSatchel
+  equipment:
+    back: ClothingBackpackSatchelLeather
+
+# trinkets
+- type: loadout
+  id: GoldRing
+  storage:
+    back:
+    - GoldRing
+
+- type: loadout
+  id: SilverRing
+  storage:
+    back:
+    - SilverRing
