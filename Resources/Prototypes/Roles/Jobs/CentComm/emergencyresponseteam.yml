@@ -156,7 +156,7 @@
     outerClothing: ClothingOuterVestWeb
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingERTChaplainFilled
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: FlashlightLantern
   inhand:
     - BoxCandle
@@ -169,6 +169,15 @@
       - FoodBakedBunHotX
       - FoodBakedBunHotX
       - Lighter
+      - FoodBakedBunHotX
+      - FoodBakedBunHotX
+    belt:
+      - Bible
+      - Lantern
+      - Lantern
+      - Lantern
+      - Lantern
+      - DrinkWaterMelonJuiceJug
       - FoodBakedBunHotX
       - FoodBakedBunHotX
 
@@ -185,7 +194,7 @@
     outerClothing: ClothingOuterHardsuitERTChaplain
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingERTChaplainFilled
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: CombatKnife
   inhand:
     - BoxCandle
@@ -198,6 +207,15 @@
       - FoodBakedBunHotX
       - FoodBakedBunHotX
       - Lighter
+      - FoodBakedBunHotX
+      - FoodBakedBunHotX
+    belt:
+      - Bible
+      - Lantern
+      - Lantern
+      - Lantern
+      - Lantern
+      - DrinkWaterMelonJuiceJug
       - FoodBakedBunHotX
       - FoodBakedBunHotX
 
@@ -230,7 +248,7 @@
     outerClothing: ClothingOuterVestWeb
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingERTEngineerFilled
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: FlashlightLantern
   inhand:
     - ClothingBackpackDuffelEngineeringFilled
@@ -250,6 +268,14 @@
       - RCDAmmo
       - RCDAmmo
       - SheetSteel
+    belt:
+      - JawsOfLife
+      - PowerDrill
+      - WelderIndustrialAdvanced
+      - Multitool
+      - HolofanProjector
+      - trayScanner
+      - GasAnalyzer
 
 - type: startingGear
   id: ERTEngineerGearEVA
@@ -263,7 +289,7 @@
     outerClothing: ClothingOuterHardsuitERTEngineer
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingERTEngineerFilled
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: CombatKnife
   inhand:
   - ClothingBackpackDuffelEngineeringFilled
@@ -283,6 +309,14 @@
       - RCDAmmo
       - RCDAmmo
       - SheetSteel
+    belt:
+      - JawsOfLife
+      - PowerDrill
+      - WelderIndustrialAdvanced
+      - Multitool
+      - HolofanProjector
+      - trayScanner
+      - GasAnalyzer
 
 - type: startingGear
   id: ERTEngineerGearEVAArmed
@@ -296,7 +330,7 @@
     outerClothing: ClothingOuterHardsuitERTEngineer
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingERTEngineerFilled
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: CombatKnife
     suitstorage: WeaponSubMachineGunDrozd
   inhand:
@@ -318,6 +352,14 @@
       - MagazinePistolSubMachineGun
       - MagazinePistolSubMachineGunIncendiary
       - MagazinePistolSubMachineGunUranium
+    belt:
+      - JawsOfLife
+      - PowerDrill
+      - WelderIndustrialAdvanced
+      - Multitool
+      - HolofanProjector
+      - trayScanner
+      - GasAnalyzer
 
 # Security
 - type: job
@@ -349,7 +391,7 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     neck: SecurityWhistle
-    belt: ClothingBeltMilitaryWebbingERTSecurityFilled
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: FlashlightLantern
     suitstorage: WeaponDisablerSMG
   storage:
@@ -361,6 +403,13 @@
       - Flash
       - HoloprojectorSecurity
       - Zipties
+    belt:
+      - Stunbaton
+      - Handcuffs
+      - Handcuffs
+      - MedkitCombatFilled
+      - TearGasGrenade
+      - GrenadeStinger
 
 - type: startingGear
   id: ERTSecurityGearEVA
@@ -375,7 +424,7 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     neck: SecurityWhistle
-    belt: ClothingBeltMilitaryWebbingERTSecurityFilled
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: CombatKnife
     suitstorage: WeaponDisablerSMG
   storage:
@@ -387,6 +436,13 @@
       - Flash
       - HoloprojectorSecurity
       - Zipties
+    belt:
+      - Stunbaton
+      - Handcuffs
+      - Handcuffs
+      - MedkitCombatFilled
+      - TearGasGrenade
+      - GrenadeStinger
 
 - type: startingGear
   id: ERTSecurityGearEVABreacher
@@ -441,28 +497,27 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingNT
     pocket2: WeaponPistolMk58
-    suitstorage: WeaponRifleLecter
+    suitstorage: WeaponLauncherHydraFrag
   storage:
     back:
       - MagazinePistol
       - MagazinePistol
       - CrowbarRed
+      - MedkitCombatFilled
+      - SmokeGrenade
       - SmokeGrenade
       - EmpGrenade
       - EmpGrenade
-      - Handcuffs
-      - Handcuffs
-      - PunctAutoInjector
-      - ExGrenade
-      - ExGrenade
-      - ExGrenade
-      - ExGrenade
-      - GrenadeShrapnel
-      - GrenadeShrapnel
-      - GrenadeShrapnel
+      - GrenadeBlast
+      - GrenadeBlast
+      - GrenadeBlast
+      - GrenadeBlast
+      - GrenadeBlast
+      - GrenadeBlast
     belt:
       - Truncheon
-      - MedkitCombatFilled
+      - Handcuffs
+      - Handcuffs
       - MagazineRifle
       - MagazineRifle
       - MagazineRifleIncendiary
@@ -483,7 +538,7 @@
     belt: ClothingBeltMilitaryWebbingNT
     pocket2: WeaponPistolMk58
   inhand:
-    - WeaponPulseCarbine
+    - WeaponLaserCannon
   storage:
     belt:
       - CombatKnife
@@ -663,6 +718,7 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingNT
     pocket2: FlashlightLantern
+    suitstorage: WeaponLauncherHydra
   inhand:
     - AdvMopItem
     - BoxLightMixed
@@ -671,26 +727,29 @@
       - WeaponPistolMk58
       - MagazinePistol
       - MagazinePistol
-      - CrowbarRed
-      - Screwdriver
-      - WelderIndustrialAdvanced
       - CombatKnife
+      - TrashBag
+      - GrenadeFrag # For rodents of unusual size.
       - Flare
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
+      - Flare
+      - GrenadeCleanade
+      - GrenadeCleanade
+      - GrenadeCleanade
+      - GrenadeCleanade
+      - GrenadeCleanade
+      - GrenadeCleanade
+      - GrenadeCleanade
+      - GrenadeCleanade
+      - GrenadeCleanade
     belt:
       - SoapNT
-      - MegaSprayBottleSpaceCleaner
       - MegaSprayBottleSpaceCleaner
       - LightReplacer
       - Holoprojector
       - Plunger
-      - Trashbag
+      - Screwdriver
+      - WelderIndustrialAdvanced
+      - CrowbarRed
 
 - type: startingGear
   id: ERTJanitorGearEVA
@@ -706,23 +765,35 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingNT
     pocket2: CombatKnife
+    suitstorage: WeaponLauncherHydra
   inhand:
     - AdvMopItem
     - BoxLightMixed
   storage:
     back:
-      - WeaponPistolMk58
-      - MagazinePistol
-      - MagazinePistol
-      - CrowbarRed
-      - Screwdriver
-      - WelderIndustrialAdvanced
-      - CombatKnife
-      - Flare
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
-      - CleanerGrenade
+    - WeaponPistolMk58
+    - MagazinePistol
+    - MagazinePistol
+    - TrashBag
+    - GrenadeFrag
+    - GrenadeFrag
+    - Flare
+    - Flare
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    belt:
+    - SoapNT
+    - MegaSprayBottleSpaceCleaner
+    - LightReplacer
+    - Holoprojector
+    - Plunger
+    - Screwdriver
+    - WelderIndustrialAdvanced
+    - CrowbarRed
