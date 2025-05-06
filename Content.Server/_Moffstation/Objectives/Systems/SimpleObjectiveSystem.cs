@@ -5,18 +5,18 @@ namespace Content.Server._Moffstation.Objectives.Systems;
 /// <summary>
 /// This is a system/component that will take strings and plop them "straight" into the objective system, without conditions and the like. Good for freeform objectives that dont have varying targets.
 /// </summary>
-public sealed class StraightObjectiveSystem : EntitySystem
+public sealed class SimpleObjectiveSystem : EntitySystem
 {
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StraightObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
-        SubscribeLocalEvent<StraightObjectiveComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
+        SubscribeLocalEvent<SimpleObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
+        SubscribeLocalEvent<SimpleObjectiveComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
     }
 
-    private void OnGetProgress(Entity<StraightObjectiveComponent> ent , ref ObjectiveGetProgressEvent args)
+    private void OnGetProgress(Entity<SimpleObjectiveComponent> ent , ref ObjectiveGetProgressEvent args)
     {
         args.Progress = GetProgress();
     }
@@ -26,7 +26,7 @@ public sealed class StraightObjectiveSystem : EntitySystem
         return 0f;
     }
 
-    private void OnAfterAssign(EntityUid uid, StraightObjectiveComponent comp, ref ObjectiveAfterAssignEvent args)
+    private void OnAfterAssign(EntityUid uid, SimpleObjectiveComponent comp, ref ObjectiveAfterAssignEvent args)
     {
         _metaData.SetEntityName(uid, GetTitle(comp.Title), args.Meta);
     }
