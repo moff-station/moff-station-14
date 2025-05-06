@@ -125,6 +125,10 @@
         Piercing: 0.95
         Heat: 0.90
         Radiation: 0.25
+  #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.9 # Base value for hardsuits.
+  #Moffstation - End
   - type: ToggleableClothing
     slot: head
   - type: ContainerContainer

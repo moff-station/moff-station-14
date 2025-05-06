@@ -18,9 +18,10 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-  #Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.8 # Base value for armor.
+  # Moffstation - End
 
 #Elite web vest
 - type: entity
@@ -47,9 +48,10 @@
         Caustic: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  #Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.8 # Base value for armor.
+  # Moffstation - End
   - type: FireProtection
     reduction: 0.85
 
@@ -73,9 +75,6 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.5
 
 #Detective's vest
 - type: entity
@@ -88,6 +87,10 @@
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.8 # Base value for armor.
+  # Moffstation - End
 
 #Hazard vest
 - type: entity

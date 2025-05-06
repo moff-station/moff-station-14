@@ -24,7 +24,7 @@
     damageCoefficient: 0.90
     #Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.6
+    damageCoefficient: 0.8 # base value for armor.
     #Moffstation - End
 
 #Standard armor vest, allowed for security and bartenders
@@ -65,10 +65,10 @@
         Caustic: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-    #Moffstation - Begin (Stamina Resistance)
+  #Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.4
-    #Moffstation - End
+    damageCoefficient: 0.6 # Riot gear, +20%.
+  #Moffstation - End
   - type: GroupExamine
 
 - type: entity
@@ -90,10 +90,6 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.80
-    #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.6
-    #Moffstation - End
 
 - type: entity
   parent: ClothingOuterArmorBase
@@ -112,10 +108,6 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.4 # this technically means it protects against fires pretty well? -heat is just for lasers and stuff, not atmos temperature
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.6
-  #Moffstation - End
   - type: Reflect
     reflectProb: 1
     reflects:
@@ -148,7 +140,7 @@
     damageCoefficient: 0.35
   #Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.7 # Advanced, +10%.
   #Moffstation - End
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -219,10 +211,6 @@
         Slash: 0.5
         Piercing: 0.6
         Heat: 0.5
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.5
-  #Moffstation - End
   - type: GroupExamine
 
 - type: entity
@@ -244,10 +232,6 @@
         Heat: 0.5
         Radiation: 0
         Caustic: 0.75
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.3
-  #Moffstation - End
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
@@ -322,7 +306,7 @@
     damageCoefficient: 0.65
   #Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.8 # Base value for armor.
   #Moffstation - End
   - type: GroupExamine
 
@@ -350,10 +334,6 @@
   - type: HeldSpeedModifier
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.5
-  #Moffstation - End
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
@@ -379,10 +359,6 @@
   - type: HeldSpeedModifier
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.6
-  #Moffstation - End
   - type: GroupExamine
   - type: Construction
     graph: BoneArmor
@@ -407,10 +383,6 @@
         Slash: 0.5
         Piercing: 0.6
         Heat: 0.5
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.5
-  #Moffstation - End
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
