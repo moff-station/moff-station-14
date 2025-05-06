@@ -12,12 +12,12 @@
 # Open-ended objective to disrupt a certain department
 - type: entity
   parent: BaseTraitorObjective
-  id: DisruptionObjective
+  id: DisruptDepartmentObjective
   name: Disrupt Department
   description: We need you to disrupt this department's activities.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Objects/Tools/jaws_of_life.rsi
       state: jaws_pry
@@ -39,14 +39,14 @@
   description: We need you to sabotage this department's activities.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Objects/Tools/emag.rsi
       state: icon
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-        - DisruptionObjective
+        - DisruptDepartmentObjective
         - InfiltrateObjective
   - type: TargetDepartment
     title: objective-condition-sabotage-department
@@ -61,14 +61,14 @@
   description: We need you to infiltrate this department and disrupt their activities.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
       state: icon
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-        - DisruptionObjective
+        - DisruptDepartmentObjective
         - SabotageObjective
   - type: TargetDepartment
     title: objective-condition-infiltrate-department
@@ -82,7 +82,7 @@
   description: It doesn't matter who was locked up or why, we just need you to keep the jails empty.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Objects/Tools/access_breaker.rsi
       state: icon
@@ -96,7 +96,7 @@
   description: We need you to keep the security department busy. How you do it is up to you.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Clothing/Head/Helmets/justice.rsi
       state: icon
@@ -142,10 +142,10 @@
 - type: entity
   parent: BaseThiefObjective
   id: StealEverythingObjective
-  description: Steal everything you can get away with, so long as its worth a damn.
+  description: Steal everything you can get away with, so long as its worth a anything.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Objects/Economy/cash.rsi
       state: cash
@@ -159,7 +159,7 @@
   description: You need money, so steal as much of it as you can.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Objects/Economy/cash.rsi
       state: cash
@@ -173,7 +173,7 @@
   description: This department has some nice goodies, its time to make them your own.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Clothing/Hands/Gloves/Color/black.rsi
       state: icon
