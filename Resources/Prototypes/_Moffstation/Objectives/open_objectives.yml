@@ -21,11 +21,6 @@
     icon:
       sprite: Objects/Tools/jaws_of_life.rsi
       state: jaws_pry
-  - type: ObjectiveBlacklistRequirement
-    blacklist:
-      components:
-        - SabotageObjective
-        - InfiltrateObjective
   - type: TargetDepartment
     title: objective-condition-disrupt-department
   - type: DisruptionObjective
@@ -43,11 +38,6 @@
     icon:
       sprite: Objects/Tools/emag.rsi
       state: icon
-  - type: ObjectiveBlacklistRequirement
-    blacklist:
-      components:
-        - DisruptDepartmentObjective
-        - InfiltrateObjective
   - type: TargetDepartment
     title: objective-condition-sabotage-department
   - type: DisruptionObjective
@@ -65,11 +55,6 @@
     icon:
       sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
       state: icon
-  - type: ObjectiveBlacklistRequirement
-    blacklist:
-      components:
-        - DisruptDepartmentObjective
-        - SabotageObjective
   - type: TargetDepartment
     title: objective-condition-infiltrate-department
   - type: DisruptionObjective
