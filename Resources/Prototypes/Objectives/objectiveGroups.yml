@@ -6,6 +6,19 @@
     TraitorObjectiveGroupKill: 1
     TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
     TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
+    TraitorObjectiveOpenEnded: 3
+
+
+- type: weightedRandom
+  id: TraitorObjectiveOpenEnded
+  weights:
+    DisruptionObjective: 1
+    SabotageObjective: 1
+    InfiltrateObjective: 1
+    JailbreakObjective: 1
+    DistractSecObjective: 1
+    TeachLessonObjective: 1
+    IncriminateObjective: 1
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSteal
@@ -48,6 +61,15 @@
   weights:
     ThiefObjectiveGroupCollection: 1
     ThiefObjectiveGroupItem: 1
+    ThiefObjectiveOpenEnded: 2
+
+- type: weightedRandom
+  id: ThiefObjectiveOpenEnded
+  weights:
+    StealEverythingObjective: 1
+    StealMoneyObjective: 1
+    RobDepartmentObjective: 1
+    InfiltrateThiefObjective: 1
 
 - type: weightedRandom
   id: ThiefBigObjectiveGroups

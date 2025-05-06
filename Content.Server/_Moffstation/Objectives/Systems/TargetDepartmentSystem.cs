@@ -1,11 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
+using Content.Server._Moffstation.Objectives.Components;
 using Content.Server.Objectives.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles.Jobs;
-using Robust.Shared.GameObjects;
-using System.Diagnostics.CodeAnalysis;
 
-namespace Content.Server.Objectives.Systems;
+namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
 /// Provides API for other components and handles setting the title.
@@ -27,15 +27,19 @@ public sealed class TargetDepartmentSystem : EntitySystem
         if (!GetTarget(uid, out var target, comp))
             return;
 
-        // _metaData.SetEntityName(uid, GetTitle(target.Value, comp.Title), args.Meta);
+        if (comp.Target != null)
+            _metaData.SetEntityName(uid, GetTitle(comp.Title, comp.Target), args.Meta);
     }
 
     /// <summary>
     /// Sets the Target field for the title and other components to use.
     /// </summary>
-    public void SetTarget(string target, TargetDepartmentComponent comp)
+    public void SetTarget(EntityUid uid, string target, TargetDepartmentComponent? comp = null)
     {
-        comp.Title = target;
+        if (!Resolve(uid, ref comp))
+            return;
+
+        comp.Target = target;
     }
 
     /// <summary>
@@ -44,9 +48,14 @@ public sealed class TargetDepartmentSystem : EntitySystem
     /// <remarks>
     /// If it is null then the prototype is invalid, just return.
     /// </remarks>
-    public bool GetTarget(EntityUid uid, [NotNullWhen(true)] out String? target, TargetDepartmentComponent? comp = null)
+    public bool GetTarget(EntityUid uid, [NotNullWhen(true)] out string? target, TargetDepartmentComponent? comp = null)
     {
-        target = Resolve(uid, ref comp) ? comp.Title : null;
+        target = Resolve(uid, ref comp) ? comp.Target : null;
         return target != null;
+    }
+
+    private string GetTitle(string title, string target)
+    {
+        return Loc.GetString(title, ("targetName", target));
     }
 }

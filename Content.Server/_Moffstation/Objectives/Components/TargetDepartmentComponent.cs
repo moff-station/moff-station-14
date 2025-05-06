@@ -1,17 +1,15 @@
+using Content.Server._Moffstation.Objectives.Systems;
 using Content.Server.Objectives.Systems;
 
-namespace Content.Server.Objectives.Components;
+namespace Content.Server._Moffstation.Objectives.Components;
 
 [RegisterComponent, Access(typeof(TargetDepartmentSystem))]
 public sealed partial class TargetDepartmentComponent : Component
 {
-    /// <summary>
-    /// Locale id for the objective title.
-    /// It is passed "targetName" and "job" arguments.
-    /// </summary>
+
     [DataField(required: true), ViewVariables(VVAccess.ReadWrite)]
     public string Title = string.Empty;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public EntityUid? Target;
+    public string? Target;
 }
