@@ -37,7 +37,7 @@
       state: icon
     - type: Item
       sprite: Objects/Tanks/Jetpacks/blue.rsi
-      size: Huge
+      size: Ginormous # Moffstation - Jetpack rebalance
     - type: UserInterface
       interfaces:
         enum.SharedGasTankUiKey.Key:
@@ -201,6 +201,7 @@
   components:
     - type: Item
       sprite: Objects/Tanks/Jetpacks/mini.rsi
+      size: Huge  # Moffstation - Jetpack rebalance
     - type: Sprite
       sprite: Objects/Tanks/Jetpacks/mini.rsi
     - type: Clothing
@@ -279,6 +280,7 @@
   components:
   - type: Item
     sprite: Objects/Tanks/Jetpacks/void.rsi
+    size: Huge  # Moffstation - Jetpack rebalance
   - type: Sprite
     sprite: Objects/Tanks/Jetpacks/void.rsi
   - type: Clothing
