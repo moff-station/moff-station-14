@@ -4,8 +4,10 @@
   name: gas mask
   description: A face-covering mask that can be connected to an air supply.
   components:
+  # Moffstation - Begin (Survival Box Improvements)
   - type: Item
     size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/gas.rsi
   - type: Clothing
@@ -94,7 +96,7 @@
   - type: IngestionBlocker
 
 - type: entity
-  parent: [ClothingMaskGasAtmos, BaseCommandContraband]
+  parent: [ ClothingMaskGasAtmos, BaseCentcommContraband ]
   id: ClothingMaskGasCentcom
   name: CentComm gas mask
   description: Oooh, gold and green. Fancy! This should help as you sit in your office.
@@ -110,7 +112,7 @@
   parent: [ClothingMaskGas, BaseCargoContraband]
   id: ClothingMaskGasExplorer
   name: explorer gas mask
-  description: A military-grade gas mask that can be connected to an air supply. Protects the face from work-related damages.
+  description: A military-grade gas mask that can be connected to an air supply.
   components:
   - type: Sprite
     sprite: Clothing/Mask/gasexplorer.rsi
@@ -702,7 +704,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
-    - SurvivalBoxInsertable
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
 
 # Entity tables
 - type: entityTable
