@@ -3,9 +3,9 @@
   parent: BaseGameRule
   id: BasePiratesRule
   components:
-  #  - type: PiratesRule
+  - type: PiratesRule
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/pirate.yml
+    gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule

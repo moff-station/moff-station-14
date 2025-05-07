@@ -16,13 +16,16 @@
   id: PirateCaptainGear
   parent: PirateGear
   equipment:
-    head: ClothingHeadHatPirate
+#    head: ClothingHeadHatPirate  # Moffstation - Pirate loadout changes
     pocket2: EnergyCutlass
-    outerClothing: ClothingOuterCoatPirate
+#    outerClothing: ClothingOuterCoatPirate # Moffstation - Pirate loadout changes
 
 - type: startingGear
   id: PirateFirstmateGear
   parent: PirateGear
   equipment:
-    head: ClothingHeadHatPirateTricord
-    outerClothing: ClothingOuterCoatGentle
+# Moffstation - Start - Pirate loadout changes
+    eyes: ClothingEyesEyepatchHudMedical
+#    head: ClothingHeadHatPirateTricord
+#    outerClothing: ClothingOuterCoatGentle
+# Moffstation - End
