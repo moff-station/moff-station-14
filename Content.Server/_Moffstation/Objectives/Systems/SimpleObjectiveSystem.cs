@@ -3,7 +3,8 @@ using Content.Shared.Objectives.Components;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 /// <summary>
-/// This is a system/component that will take strings and plop them "straight" into the objective system, without conditions and the like. Good for freeform objectives that dont have varying targets.
+/// This is a system/component that will take strings and plop them straight into the objective system, without conditions and the like.
+/// Good for freeform objectives that dont have varying targets.
 /// </summary>
 public sealed class SimpleObjectiveSystem : EntitySystem
 {

@@ -8,7 +8,7 @@ using Content.Shared.Roles.Jobs;
 namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
-/// Provides API for other components and handles setting the title.
+/// Provides API for overrideing what department will get selected in an objective
 /// </summary>
 public sealed class TargetDepartmentSystem : EntitySystem
 {

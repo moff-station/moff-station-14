@@ -5,7 +5,7 @@ using Content.Shared.Objectives.Components;
 namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
-/// This handles...
+/// Sets the progress for Disruption objectives, since these are open-ended, they will always greytext
 /// </summary>
 public sealed class DisruptionObjectiveSystem : EntitySystem
 {

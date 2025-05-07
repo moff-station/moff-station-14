@@ -102,7 +102,7 @@
   - type: TargetObjective
     title: objective-condition-teach-lesson
   - type: PickRandomPerson
-  - type: FreeObjective   # We should change this to grey eventually
+  - type: GreytextObjective
 
 # Incriminate objective, attempt to get someone else arrested by security
 - type: entity
@@ -118,7 +118,7 @@
   - type: TargetObjective
     title: objective-condition-incriminate
   - type: PickRandomPerson
-  - type: FreeObjective   # We should change this to grey eventually
+  - type: GreytextObjective
 
 
 # thieves

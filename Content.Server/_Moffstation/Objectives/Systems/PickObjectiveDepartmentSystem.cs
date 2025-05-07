@@ -11,7 +11,6 @@ namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
 /// Handles assinging a target to an objective entity with <see cref="TargetDepartmentComponent"/> using different components.
-/// These can be combined with condition components for objective completions in order to create a variety of objectives.
 /// </summary>
 public sealed class PickObjectiveDepartmentSystem : EntitySystem
 {
