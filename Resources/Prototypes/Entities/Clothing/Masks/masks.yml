@@ -15,6 +15,7 @@
   - type: IdentityBlocker
   - type: Tag
     tags:
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
     - HamsterWearable
     - WhitelistChameleon
   - type: HideLayerClothing
@@ -26,7 +27,7 @@
   parent: [ClothingMaskGas, BaseSecurityContraband]
   id: ClothingMaskGasSecurity
   name: security gas mask
-  description: A standard issue Security gas mask. Provides some additional protection. # Moffstation - (Survival Box Improvements)
+  description: A standard issue Security gas mask.
   components:
   # Moffstation - Begin (Survival Box Improvements)
 #  - type: Item
@@ -48,7 +49,7 @@
   parent: [ClothingMaskGas, BaseSyndicateContraband]
   id: ClothingMaskGasSyndicate
   name: syndicate gas mask
-  description: A close-fitting tactical mask that can be connected to an air supply. Protects from bright lights and welding flares, as well as physical damage. # Moffstation - (Survival Box Improvements)
+  description: A close-fitting tactical mask that can be connected to an air supply.
   components:
   - type: Sprite
     sprite: Clothing/Mask/gassyndicate.rsi
@@ -80,10 +81,10 @@
         Heat: 0.80
 
 - type: entity
-  parent: [ClothingMaskGas, BaseCommandContraband] # Moffstation - (Survival Box Improvements)
+  parent: [ClothingMaskGasAtmos, BaseCommandContraband]
   id: ClothingMaskGasCaptain
   name: captain's gas mask
-  description: Nanotrasen cut corners and repainted a spare gas mask, but don't tell anyone. # Moffstation - (Survival Box Improvements)
+  description: Nanotrasen cut corners and repainted a spare atmospheric gas mask, but don't tell anyone.
   components:
   - type: Sprite
     sprite: Clothing/Mask/gascaptain.rsi
@@ -93,7 +94,7 @@
   - type: IngestionBlocker
 
 - type: entity
-  parent: [ ClothingMaskGas, BaseCentcommContraband ] # Moffstation - (Survival Box Improvements)
+  parent: [ClothingMaskGasAtmos, BaseCommandContraband]
   id: ClothingMaskGasCentcom
   name: CentComm gas mask
   description: Oooh, gold and green. Fancy! This should help as you sit in your office.
@@ -141,6 +142,7 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -184,6 +186,7 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -198,10 +201,6 @@
   name: clown wig and mask
   description: A true prankster's facial attire. A clown is incomplete without his wig and mask.
   components:
-  # Moffstation - Begin (Survival Box Improvements)
-  - type: Item
-    size: Tiny
-  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/clown.rsi
   - type: Clothing
@@ -225,6 +224,7 @@
     - ClownMask
     - HamsterWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Snout
@@ -292,6 +292,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Snout
@@ -382,6 +383,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
@@ -426,6 +428,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
@@ -699,6 +702,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable
 
 # Entity tables
 - type: entityTable

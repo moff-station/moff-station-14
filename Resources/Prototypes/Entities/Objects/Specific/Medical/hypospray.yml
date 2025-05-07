@@ -189,7 +189,10 @@
         - ReagentId: TranexamicAcid
           Quantity: 3
   - type: Tag
-    tags: []
+    # Moffstation - Begin(Survival Box Improvements)
+    tags:
+    - SurvivalBoxInsertable
+    # Moffstation - End
 
 - type: entity
   name: poison auto-injector

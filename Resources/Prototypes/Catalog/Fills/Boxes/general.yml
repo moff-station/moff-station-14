@@ -34,15 +34,8 @@
     grid:
     - 0,0,2,2
     whitelist:
-      components:
-      - BreathMask
-      - GasTank
-      - Hypospray
-      - Sealable
-      - ExpendableLight
       tags:
-      - FoodSnack
-      - Bread
+      - SurvivalBoxInsertable
 # Moffstation - End
 
 - type: entity
