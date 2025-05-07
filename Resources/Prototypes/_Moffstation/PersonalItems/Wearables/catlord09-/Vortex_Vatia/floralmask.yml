@@ -1,0 +1,26 @@
+# Player catlord09- Character: Vortex Vatia
+
+- type: entity
+  parent: ClothingMaskBase
+  id: PersonalItemFloralMask
+  name: "floral mask"
+  description: "A face mask that goes over the eyes, decorated with paintings of some sort of plant."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/catlord09-/Vortex_Vatia/floralmask.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/catlord09-/Vortex_Vatia/floralmask.rsi
+  - type: BreathMask
+
+
+- type: loadout
+  id: PersonalItemFloralMask
+  equipment:
+    face: PersonalItemFloralMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Vortex Vatia
+
+
