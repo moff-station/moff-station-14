@@ -79,7 +79,7 @@
   name: captain's persona sabre
   parent: [ BaseSword, BaseCommandContraband ]
   id: CaptainSabre
-  description: A ceremonial weapon belonging to the captain of the station. Has a built-in PAI for advising the captain on various official matters.
+  description: A ceremonial weapon belonging to the captain of the station. A PAI is built into the grip, for advising the captain on various official matters.
   components:
   - type: Instrument
     allowPercussion: false
@@ -103,18 +103,22 @@
         requireInputValidation: false
   - type: Input
     context: "human"
-  - type: BlockMovement
   - type: PAI
-  - type: GhostRole
-    makeSentient: true
-    name: Captain's Persona Saber
-    description: Advise the captain on official matters, and thirst for blood.
-    rules: ghost-role-information-familiar-rules
+  - type: BlockMovement
+  - type: ToggleableGhostRole
+    examineTextMindPresent: pai-system-pai-installed
+    examineTextMindSearching: pai-system-still-searching
+    examineTextNoMind: pai-system-off
+    beginSearchingText: pai-system-searching
+    roleName: Captain's Persona Sabre
+    roleDescription: pai-system-role-description
+    roleRules: ghost-role-information-familiar-rules
     mindRoles:
     - MindRoleGhostRoleFamiliar
-    raffle:
-      settings: default
-  - type: GhostTakeoverAvailable
+    wipeVerbText: pai-system-wipe-device-verb-text
+    wipeVerbPopup: pai-system-wiped-device
+    stopSearchVerbText: pai-system-stop-searching-verb-text
+    stopSearchVerbPopup: pai-system-stopped-searching
   - type: Examiner
   - type: IntrinsicRadioReceiver
   - type: ActiveRadio
