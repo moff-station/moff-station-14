@@ -1652,15 +1652,15 @@
   description: uplink-hardsuit-syndieelite-desc
   icon: { sprite: /Textures/Clothing/OuterClothing/Hardsuits/syndieelite.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateEliteHardsuitBundle
+  # Moffstation - Start - Readd hardsuits to uplink
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 7
   cost:
     Telecrystal: 12
   categories:
   - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  # Moffstation - End
 
 - type: listing
   id: UplinkClothingOuterHardsuitJuggernaut
@@ -1668,15 +1668,15 @@
   description: uplink-clothing-outer-hardsuit-juggernaut-desc
   icon: { sprite: /Textures/Structures/Storage/Crates/syndicate.rsi, state: icon }
   productEntity: CrateCybersunJuggernautBundle
+  # Moffstation - Start - Readd hardsuits to uplink
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 8
   cost:
     Telecrystal: 12
   categories:
   - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  # Moffstation - End
 
 - type: listing
   id: UplinkClothingEyesHudSyndicate
