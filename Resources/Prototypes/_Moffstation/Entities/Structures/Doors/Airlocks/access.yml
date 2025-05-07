@@ -1,0 +1,7 @@
+- type: entity
+  parent: AirlockExternalGlassShuttleEmergencyLocked
+  id: AirlockExternalGlassShuttleEmergencyPodLocked
+  suffix: External, EmergencyPod, Glass, Docking, Locked
+  components:
+  - type: PriorityDock
+    tag: DockEmergencyPod

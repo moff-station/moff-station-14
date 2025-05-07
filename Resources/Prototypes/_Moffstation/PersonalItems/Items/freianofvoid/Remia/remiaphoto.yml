@@ -1,0 +1,29 @@
+# Player: Compilatron - Character: Shared
+- type: entity
+  parent: BaseItem
+  id: PersonalItemRemiaPhoto
+  name: Sibling Photo
+  description: A photo depicting two pink & purple moths next to eachother.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/freianofvoid/Remia/remiaphoto.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/freianofvoid/Remia/remiaphoto.rsi
+    size: Tiny
+  - type: Tag
+    tags:
+    - Document
+  - type: DetailExaminable
+    content: A moment captured in time! The photo is of two similar looking moths. Written at the bottom are the words "Remia and Loraine", and on the back is unreadable text, though given the formatting, probably a date of when the picture was taken.
+
+- type: loadout
+  id: PersonalItemRemiaPhoto
+  storage:
+    back:
+    - PersonalItemRemiaPhoto
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "Remia"

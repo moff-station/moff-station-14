@@ -1,4 +1,3 @@
-using Content.Shared.Charges.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
@@ -9,7 +8,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared.ParcelWrap.Systems;
 
 // This part handles Parcel Wrap.
-public sealed partial class SharedParcelWrappingSystem
+public sealed partial class ParcelWrappingSystem
 {
     private void InitializeParcelWrap()
     {
@@ -125,13 +124,10 @@ public sealed partial class SharedParcelWrappingSystem
             }
         }
 
-        if (TryComp<LimitedChargesComponent>(wrapper, out var charges))
-        {
-            // Consume a `use` on the wrapper, and delete the wrapper if it's empty.
-            _charges.TryUseCharge((wrapper, charges));
-            if (_net.IsServer && _charges.IsEmpty((wrapper, charges)))
-                QueueDel(wrapper);
-        }
+        // Consume a `use` on the wrapper, and delete the wrapper if it's empty.
+        _charges.TryUseCharges(wrapper.Owner, 1);
+        if (_net.IsServer && _charges.IsEmpty(wrapper.Owner))
+            QueueDel(wrapper);
 
         // Play a wrapping sound.
         _audio.PlayPredicted(wrapper.Comp.WrapSound, target, user);

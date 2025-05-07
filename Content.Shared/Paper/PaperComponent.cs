@@ -23,6 +23,9 @@ public sealed partial class PaperComponent : Component
     [DataField("stampState"), AutoNetworkedField]
     public string? StampState { get; set; }
 
+    [DataField("stampingEnabled"), AutoNetworkedField]
+    public bool StampingEnabled = true;
+
     [DataField, AutoNetworkedField]
     public bool EditingDisabled;
 

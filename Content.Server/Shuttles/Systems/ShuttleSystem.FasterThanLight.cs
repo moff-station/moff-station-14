@@ -328,6 +328,14 @@ public sealed partial class ShuttleSystem
         // Valid dock for now time so just use that as the target.
         if (config != null)
         {
+            // Moffstation - Start - Valid dock so mark each one as queued
+            foreach (var dock in config.Docks)
+            {
+                dock.DockA.Queued = true;
+                dock.DockB.Queued = true;
+            }
+            // Moffstation - End
+
             hyperspace.TargetCoordinates = config.Coordinates;
             hyperspace.TargetAngle = config.Angle;
         }
@@ -512,6 +520,13 @@ public sealed partial class ShuttleSystem
             else
             {
                 FTLDock((uid, xform), config);
+                // Moffstation - Start - Mark each dock as unqueued
+            foreach (var dock in config.Docks)
+            {
+                dock.DockA.Queued = false;
+                dock.DockB.Queued = false;
+            }
+                // Moffstation - End
             }
 
             mapId = mapCoordinates.MapId;
