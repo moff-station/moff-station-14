@@ -212,14 +212,25 @@
       - state: writing
 
 - type: entity
-  parent: BoxHug
+  parent: BoxCardboard
   id: BoxHugHealing
   suffix: Medical
   components:
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Sprite
+    layers:
+    - state: box_hug
+    - state: heart
+  - type: Item
+    heldPrefix: hug
   - type: StorageFill
     contents:
       - id: Brutepack
         amount: 3
+  - type: Tag
+    tags:
+    - BoxHug
+  # Moffstation - End
 
 - type: entity
   name: inflatable wall box
