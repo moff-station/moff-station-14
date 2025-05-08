@@ -642,7 +642,7 @@
     reduction: 0.8
   # Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.6 # Advanced Combat hardsuit, +30%.
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -716,7 +716,7 @@
     damageCoefficient: 0.3
   # Moffstation - Begin (Stamina Resistance)
   - type: StaminaResistance
-    damageCoefficient: 0.8 # Intentional flaw.
+    damageCoefficient: 0.7 # Intentional flaw.
   # Moffstation - End
   - type: Armor
     modifiers:
