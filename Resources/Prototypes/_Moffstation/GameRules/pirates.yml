@@ -28,7 +28,7 @@
       - JobPirateCaptain
       briefing:
         text: pirate-role-greeting
-        color: Red
+        color: "#914d07"
         sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
@@ -49,7 +49,7 @@
       - JobPirateMedic
       briefing:
         text: pirate-role-greeting
-        color: Red
+        color: "#914d07"
         sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
@@ -73,7 +73,7 @@
       - JobPirateCrew
       briefing:
         text: pirate-role-greeting
-        color: Red
+        color: "#914d07"
         sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
