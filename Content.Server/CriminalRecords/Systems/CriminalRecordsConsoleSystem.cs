@@ -61,6 +61,8 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
                 OnChangeStatus(ent, ref args);
                 RaiseLocalEvent(ent, new CharacterRecordsModifiedEvent());
             });
+            subs.Event<CriminalRecordAddHistory>(OnAddHistory);
+            subs.Event<CriminalRecordDeleteHistory>(OnDeleteHistory);
         });
     }
 
