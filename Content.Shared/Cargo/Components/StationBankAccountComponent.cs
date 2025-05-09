@@ -41,6 +41,7 @@ public sealed partial class StationBankAccountComponent : Component
         { "Science",     1000 },
         { "Security",    1000 },
         { "Service",     1000 },
+        { "Pirates",     1000 },    // Moffstation - Pirate account
     };
 
     /// <summary>
@@ -55,6 +56,7 @@ public sealed partial class StationBankAccountComponent : Component
         { "Science",     0.20 },
         { "Security",    0.20 },
         { "Service",     0.20 },
+        { "Pirates",     0.0 },     // Moffstation - Pirate account
     };
 
     /// <summary>

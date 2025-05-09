@@ -39,6 +39,12 @@ public sealed partial class CargoBountyPrototype : IPrototype
     /// </summary>
     [DataField]
     public string IdPrefix = "NT";
+
+    /// <summary>
+    /// Moffstation - This will make the bounty only viewable to consoles with secret access
+    /// </summary>
+    [DataField("secret")]
+    public string? Secret;
 }
 
 [DataDefinition, Serializable, NetSerializable]

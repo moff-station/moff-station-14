@@ -1,0 +1,113 @@
+# Request console variants.
+- type: entity
+  id: ComputerCargoOrdersPirate
+  parent: ComputerCargoOrders
+  name: Pirate request computer
+  description: Used by pirates to purchase new booty.
+  components:
+  - type: Sprite
+    sprite: _NF/Structures/Machines/pirate_computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer_blackmarket
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: piratebounty
+    - map: ["computerLayerKeys"]
+      state: blackmarket_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: CargoOrderConsole
+    account: Pirates
+    secretAccount: Pirates
+    isolated: true
+    announcementsEnabled: false   # Need to implement this still
+  - type: Computer
+    board: PirateCargoRequestComputerCircuitboard
+  - type: PointLight
+    color: "#c9c042"
+  - type: AccessReader
+    access: [["Pirate"]]
+
+- type: entity
+  id: PirateComputerPalletConsole
+  parent: ComputerPalletConsole
+  name: pirate sale computer
+  description: Used to sell goods loaded onto cargo pallets.
+  components:
+    - type: Sprite
+      layers:
+        - map: ["computerLayerBody"]
+          state: computer
+        - map: ["computerLayerKeyboard"]
+          state: generic_keyboard
+        - map: ["computerLayerScreen"]
+          state: transfer
+        - map: ["computerLayerKeys"]
+          state: generic_keys
+        - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+          state: generic_panel_open
+    - type: Anchorable
+      flags:
+        - Anchorable
+    - type: CargoPalletConsole
+      exclusiveAccount: Pirates
+    - type: ActivatableUI
+      key: enum.CargoPalletConsoleUiKey.Sale
+    - type: UserInterface
+      interfaces:
+        enum.CargoPalletConsoleUiKey.Sale:
+          type: CargoPalletConsoleBoundUserInterface
+        enum.WiresUiKey.Key:
+          type: WiresBoundUserInterface
+    - type: Computer
+      board: CargoSaleComputerCircuitboard  # Add this circuit
+    - type: PointLight
+      radius: 1.5
+      energy: 1.6
+      color: "#b89f25"
+    - type: GuideHelp
+      guides:
+        - Cargo
+
+- type: entity
+  id: ComputerPirateBounty
+  parent: ComputerCargoBounty
+  name: pirate bounty computer
+  description: Used to manage currently active bounties.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: bounty
+    - map: ["computerLayerKeys"]
+      state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: CargoBountyConsole
+    secretBounties: Pirates
+  - type: ActivatableUI
+    key: enum.CargoConsoleUiKey.Bounty
+  - type: UserInterface
+    interfaces:
+      enum.CargoConsoleUiKey.Bounty:
+        type: CargoBountyConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: CargoBountyComputerCircuitboard  # Add this
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: GuideHelp
+    guides:
+    - CargoBounties
+    - Cargo

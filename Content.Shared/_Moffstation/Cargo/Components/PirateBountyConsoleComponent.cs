@@ -1,13 +1,14 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.Cargo;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared.Cargo.Components;
+namespace Content.Shared._Moffstation.Cargo.Components;
 
 [RegisterComponent]
-public sealed partial class CargoBountyConsoleComponent : Component
+public sealed partial class PirateBountyConsoleComponent : Component
 {
     /// <summary>
     /// The id of the label entity spawned by the print label button.
@@ -44,22 +45,16 @@ public sealed partial class CargoBountyConsoleComponent : Component
     /// </summary>
     [DataField("denySound")]
     public SoundSpecifier DenySound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_two.ogg");
-
-    /// <summary>
-    /// Moffstation - Makes the console unable to see normal bounties, but able to see secret bounties of whatever catagory
-    /// </summary>
-    [DataField("secretBounties")]
-    public string? SecretBounties;
 }
 
 [NetSerializable, Serializable]
-public sealed class CargoBountyConsoleState : BoundUserInterfaceState
+public sealed class PirateBountyConsoleState : BoundUserInterfaceState
 {
     public List<CargoBountyData> Bounties;
     public List<CargoBountyHistoryData> History;
     public TimeSpan UntilNextSkip;
 
-    public CargoBountyConsoleState(List<CargoBountyData> bounties, List<CargoBountyHistoryData> history, TimeSpan untilNextSkip)
+    public PirateBountyConsoleState(List<CargoBountyData> bounties, List<CargoBountyHistoryData> history, TimeSpan untilNextSkip)
     {
         Bounties = bounties;
         History = history;
@@ -68,22 +63,22 @@ public sealed class CargoBountyConsoleState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class BountyPrintLabelMessage : BoundUserInterfaceMessage
+public sealed class PirateBountyPrintLabelMessage : BoundUserInterfaceMessage
 {
     public string BountyId;
 
-    public BountyPrintLabelMessage(string bountyId)
+    public PirateBountyPrintLabelMessage(string bountyId)
     {
         BountyId = bountyId;
     }
 }
 
 [Serializable, NetSerializable]
-public sealed class BountySkipMessage : BoundUserInterfaceMessage
+public sealed class PirateBountySkipMessage : BoundUserInterfaceMessage
 {
     public string BountyId;
 
-    public BountySkipMessage(string bountyId)
+    public PirateBountySkipMessage(string bountyId)
     {
         BountyId = bountyId;
     }

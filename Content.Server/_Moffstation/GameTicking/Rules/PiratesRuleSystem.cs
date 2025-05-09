@@ -1,8 +1,10 @@
+using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Antag;
-using Content.Server.GameTicking.Rules.Components;
+using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
 using Content.Shared.GameTicking.Components;
 
-namespace Content.Server.GameTicking.Rules;
+namespace Content.Server._Moffstation.GameTicking.Rules;
 
 public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
 {

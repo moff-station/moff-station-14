@@ -1,0 +1,14 @@
+- type: cargoBounty
+  id: PirateBountyBread
+  reward: 2000
+  description: bounty-description-bread
+  secret: Pirates
+  entries:
+  - name: bounty-item-bread
+    amount: 1
+    whitelist:
+      tags:
+      - Bread
+    blacklist:
+      tags:
+      - Slice

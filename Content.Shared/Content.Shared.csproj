@@ -26,6 +26,9 @@
   <ItemGroup>
     <Compile Remove="ParcelWrap\Systems\SharedParcelWrappingSystem.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_Moffstation\Cargo\Systems\" />
+  </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />
 </Project>

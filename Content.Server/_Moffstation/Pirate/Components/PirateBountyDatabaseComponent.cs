@@ -1,13 +1,13 @@
 using Content.Shared.Cargo;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-namespace Content.Server.Cargo.Components;
+namespace Content.Server._Moffstation.Pirate.Components;
 
 /// <summary>
 /// Stores all active cargo bounties for a particular station.
 /// </summary>
 [RegisterComponent]
-public sealed partial class StationCargoBountyDatabaseComponent : Component
+public sealed partial class PirateBountyDatabaseComponent : Component
 {
     /// <summary>
     /// Maximum amount of bounties a station can have.
@@ -20,12 +20,6 @@ public sealed partial class StationCargoBountyDatabaseComponent : Component
     /// </summary>
     [DataField]
     public List<CargoBountyData> Bounties = new();
-
-    /// <summary>
-    /// Moffstation - List of secret bounties for pirates
-    /// </summary>
-    [DataField]
-    public List<CargoBountyData> SecretBounties = new();
 
     /// <summary>
     /// A list of all the bounties that have been completed or

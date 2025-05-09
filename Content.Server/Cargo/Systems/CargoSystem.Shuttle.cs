@@ -237,7 +237,14 @@ public sealed partial class CargoSystem
         foreach (var (_, sellComponent, value) in goods)
         {
             Dictionary<ProtoId<CargoAccountPrototype>, double> distribution;
-            if (sellComponent != null)
+            if (component.ExclusiveAccount != null)
+            {
+                distribution = new Dictionary<ProtoId<CargoAccountPrototype>, double>
+                {
+                    { (ProtoId<CargoAccountPrototype>)component.ExclusiveAccount, 1.0 },
+                };
+            }
+            else if (sellComponent != null)
             {
                 var cut = _lockboxCutEnabled ? bankAccount.LockboxCut : bankAccount.PrimaryCut;
                 distribution = new Dictionary<ProtoId<CargoAccountPrototype>, double>

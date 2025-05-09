@@ -36,4 +36,10 @@ public sealed partial class CargoAccountPrototype : IPrototype
     /// </summary>
     [DataField]
     public ProtoId<RadioChannelPrototype> RadioChannel;
+
+    /// <summary>
+    ///  Moffstation - String for secret accounts (for use by antags), disconnected from the rest of the accounts
+    /// </summary>
+    [DataField("secretAccount")]
+    public string? SecretAccount;
 }

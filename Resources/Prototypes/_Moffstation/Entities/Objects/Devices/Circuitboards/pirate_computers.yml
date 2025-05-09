@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: PirateCargoRequestComputerCircuitboard
+  name: pirate request computer board
+  description: A computer printed circuit board for an engineering request computer.
+  components:
+  - type: Sprite
+    state: cpu_engineering  # change to pirate sprite eventually
+  - type: ComputerBoard
+    prototype: ComputerCargoOrdersPirate
+  - type: StaticPrice
+    price: 750

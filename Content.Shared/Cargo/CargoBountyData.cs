@@ -16,6 +16,9 @@ public readonly partial record struct CargoBountyData
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public string Id { get; init; } = string.Empty;
 
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public string? SecretBounty { get; init; } = string.Empty;
+
     /// <summary>
     /// The prototype containing information about the bounty.
     /// </summary>
@@ -27,5 +30,6 @@ public readonly partial record struct CargoBountyData
     {
         Bounty = bounty.ID;
         Id = $"{bounty.IdPrefix}{uniqueIdentifier:D3}";
+        SecretBounty = bounty.Secret;
     }
 }
