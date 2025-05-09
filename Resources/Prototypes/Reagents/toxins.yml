@@ -125,6 +125,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: acid
   color: "#a1000b"
+  worksOnTheDead: true # Moffstation - Acids burn
   boilingPoint: 78.2 # This isn't a real chemical...
   meltingPoint: -19.4
   plantMetabolism:
@@ -171,6 +172,7 @@
   desc: reagent-desc-ferrochromic-acid
   flavor: sour
   color: "#48b3b8"
+  worksOnTheDead: true # Moffstation - Acids burn
   physicalDesc: reagent-physical-desc-ferrous
   metabolisms:
     Drink:
@@ -193,6 +195,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: acid
   color: "#5050ff"
+  worksOnTheDead: true # Moffstation - Acids burn
   boilingPoint: 165
   meltingPoint: -87
   reactiveEffects:
@@ -233,6 +236,7 @@
   physicalDesc: reagent-physical-desc-oily
   flavor: acid
   color: "#BF8C00"
+  worksOnTheDead: true # Moffstation - Acids burn
   recognizable: true
   boilingPoint: 337.0
   meltingPoint: 10.31
