@@ -96,6 +96,24 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// Secondary radio channel which always receives order announcements.
     /// </summary>
     public static readonly ProtoId<RadioChannelPrototype> BaseAnnouncementChannel = "Supply";
+
+    /// <summary>
+    /// Moffstation - Provides access to a secret cargo account with the same string
+    /// </summary>
+    [DataField("secretAccount")]
+    public string? SecretAccount;
+
+    /// <summary>
+    /// Moffstation - If this variable is true, it will be unable to view or make transfers to other cargo accounts
+    /// </summary>
+    [DataField("isolated")]
+    public bool Isolated;
+
+    /// <summary>
+    /// Moffstation - Determines whether the console will give announcements upon making purchases
+    /// </summary>
+    [DataField("announcementsEnabled")]
+    public bool AnnouncementsEnabled = true;
 }
 
 /// <summary>

@@ -22,6 +22,12 @@ public sealed partial class StationCargoBountyDatabaseComponent : Component
     public List<CargoBountyData> Bounties = new();
 
     /// <summary>
+    /// Moffstation - List of secret bounties for pirates
+    /// </summary>
+    [DataField]
+    public List<CargoBountyData> SecretBounties = new();
+
+    /// <summary>
     /// A list of all the bounties that have been completed or
     /// skipped for a station.
     /// </summary>

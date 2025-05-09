@@ -44,6 +44,12 @@ public sealed partial class CargoBountyConsoleComponent : Component
     /// </summary>
     [DataField("denySound")]
     public SoundSpecifier DenySound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_two.ogg");
+
+    /// <summary>
+    /// Moffstation - Makes the console unable to see normal bounties, but able to see secret bounties of whatever catagory
+    /// </summary>
+    [DataField("secretBounties")]
+    public string? SecretBounties;
 }
 
 [NetSerializable, Serializable]

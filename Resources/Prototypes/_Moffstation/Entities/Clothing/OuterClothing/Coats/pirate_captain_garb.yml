@@ -1,0 +1,9 @@
+- type: entity
+  parent: ClothingOuterCoatPirate
+  id: ClothingOuterCoatPirateCaptain
+  name: pirate captain garb
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/pirate_captain.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/pirate_captain.rsi
