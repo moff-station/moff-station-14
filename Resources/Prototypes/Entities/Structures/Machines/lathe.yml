@@ -331,7 +331,7 @@
 
 - type: entity
   id: Biofabricator
-  parent: BaseLatheLube
+  parent: BaseLatheLube #Moffstation
   name: biocube fabricator
   description: Produces animal cubes using biomass.
   components:
@@ -537,7 +537,7 @@
 
 - type: entity
   id: Biogenerator
-  parent: BaseLatheLube
+  parent: BaseLatheLube #Moffstation
   name: biogenerator
   description: Converts plants into biomass, which can be used to construct useful items.
   components:
