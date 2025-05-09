@@ -317,26 +317,24 @@ public sealed partial class DockingSystem
             var configIsPriority = IsConfigPriority(config, priorityTag);
             var bestMatchIsPriority = IsConfigPriority(bestMatch, priorityTag);
             //If worse it moves on, if better it sets it, and if it's the same gets skipped
-            if (configIsPriority != bestMatchIsPriority)
+            switch (configIsPriority)
             {
-                switch (configIsPriority)
-                {
-                    case false when bestMatchIsPriority:
-                        continue;
-                    case true when !bestMatchIsPriority:
-                        bestMatch = config;
-                        continue;
-                }
+                case false when bestMatchIsPriority:
+                    continue;
+                case true when !bestMatchIsPriority:
+                    bestMatch = config;
+                    continue;
             }
 
             // Same with this one
-            if (bestMatch.Docks.Count != config.Docks.Count)
+            if (bestMatch.Docks.Count > config.Docks.Count)
+                continue;
+            if (bestMatch.Docks.Count < config.Docks.Count)
             {
-                if (bestMatch.Docks.Count > config.Docks.Count)
-                    continue;
                 bestMatch = config;
                 continue;
             }
+
 
             // These aren't going to be the same so don't bother lol
             if (Math.Abs(Angle.ShortestDistance(bestMatch.Angle.Reduced(), targetGridAngle).Theta) < Math.Abs(Angle.ShortestDistance(config.Angle.Reduced(), targetGridAngle).Theta))
