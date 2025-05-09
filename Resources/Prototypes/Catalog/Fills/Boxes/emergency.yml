@@ -272,3 +272,43 @@
     - state: nitrogentank
   - type: Label
     currentLabel: reagent-name-nitrogen
+
+- type: entity
+  parent: BoxCardboard
+  id: BoxSurvivalERT
+  name: extended-capacity survival box
+  description: It's a box with basic internals inside. This one is labelled to contain a double air tank.
+  suffix: ERT
+  components:
+  - type: StorageFill
+    contents:
+    - id: DrinkMREFlask
+    - id: FoodSnackNutribrick
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: PunctAutoInjector
+    - id: Flare
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: extendedtank
+
+- type: entity
+  parent: BoxSurvivalERT
+  id: BoxSurvivalERTNitrogen
+  suffix: ERT N2
+  components:
+  - type: StorageFill
+    contents:
+    - id: DrinkMREFlask
+    - id: FoodSnackNutribrick
+    - id: DoubleEmergencyNitrogenTankFilled
+    - id: EmergencyMedipen
+    - id: PunctAutoInjector
+    - id: Flare
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: nitrogentank
+  - type: Label
+    currentLabel: reagent-name-nitrogen
