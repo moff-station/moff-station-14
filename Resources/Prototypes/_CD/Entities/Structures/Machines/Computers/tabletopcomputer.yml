@@ -362,7 +362,6 @@
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerShuttleCargo]
   id: ComputerTabletopShuttleCargo
-  noSpawn: true
   components:
   - type: Sprite
     layers:
@@ -484,7 +483,6 @@
 - type: entity
   parent: [BaseStructureComputerTabletop, ComputerEmergencyShuttle]
   id: ComputerTabletopEmergencyShuttle
-  noSpawn: true
   components:
   - type: Sprite
     sprite: _CD/Structures/Machines/Computers/tabletopcomputer.rsi
@@ -587,7 +585,6 @@
   parent: [BaseStructureComputerTabletop, ComputerSensorMonitoring]
   id: ComputerTabletopSensorMonitoring
   suffix: Tabletop, TESTING, DO NOT MAP
-  noSpawn: true
   components:
   - type: Sprite
     layers:
