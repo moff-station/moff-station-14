@@ -77,7 +77,7 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// <summary>
     /// All of the <see cref="CargoProductPrototype.Group"/>s that are supported.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField("allowedGroups"), AutoNetworkedField]    // Moffstation - Added tag for yaml editing
     public List<string> AllowedGroups = new() { "market" };
 
     /// <summary>

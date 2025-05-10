@@ -1,0 +1,10 @@
+- type: entity
+  id: CratePirateECutlass
+  parent: [ CratePirate, BaseSecurityContraband ]
+  name: energy cutlass crate
+  description: Contains two top of the line e-cutlasses, fresh from the ship
+  components:
+  - type: StorageFill
+    contents:
+    - id: EnergyCutlass
+      amount: 2

@@ -19,6 +19,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: CargoOrderConsole
+    allowedGroups: [ "pirateMarket" ]
     account: Pirates
     secretAccount: Pirates
     isolated: true
