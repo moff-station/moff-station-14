@@ -40,6 +40,12 @@ public sealed partial class CCVars
         CVarDef.Create("shuttle.arrivals_map", "/Maps/_Umbra/Misc/terminal.yml", CVar.SERVERONLY);
 
     /// <summary>
+    /// Moffstation - The maximum range people are allowed to travel from the center of the arrivals map
+    /// </summary>
+    public static readonly CVarDef<float> ArrivalsRange =
+        CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
+
+    /// <summary>
     ///     Cooldown between arrivals departures. This should be longer than the FTL time or it will double cycle.
     /// </summary>
     public static readonly CVarDef<float> ArrivalsCooldown =
