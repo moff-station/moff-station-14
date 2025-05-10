@@ -733,6 +733,11 @@
   - type: Label
     currentLabel: reagent-name-water
   - type: Sealable
+  # Moffstation - Begin (Survival Box Improvement Fixes)
+  - type: Tag
+    tags:
+    - SurvivalBoxInsertable
+  # Moffstation - End
 
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassSmallBaseFull]
