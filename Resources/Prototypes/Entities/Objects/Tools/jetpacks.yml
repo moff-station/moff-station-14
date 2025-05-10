@@ -30,7 +30,7 @@
       state: icon
     - type: Item
       sprite: Objects/Tanks/Jetpacks/blue.rsi
-      size: Huge
+      size: Ginormous # Moffstation - Jetpack rebalance
     - type: UserInterface
       interfaces:
         enum.SharedGasTankUiKey.Key:
@@ -44,6 +44,7 @@
       quickEquip: false
       slots:
         - Back
+        - SuitStorage # Moffstation - Jetpack rebalance
     - type: GasTank
       outputPressure: 21.3
       air:
@@ -54,6 +55,12 @@
     - type: Appearance
     - type: StaticPrice
       price: 100
+    # Moffstation - Start -Jetpack rebalance
+    - type: ClothingSpeedModifier
+      walkModifier: 0.95
+      sprintModifier: 0.8
+    - type: HeldSpeedModifier
+    # Moffstation - End
 
 - type: entity
   id: ActionToggleJetpack
@@ -83,6 +90,7 @@
     sprite: Objects/Tanks/Jetpacks/blue.rsi
     slots:
       - Back
+      - SuitStorage # Moffstation - Jetpack rebalance
 
 # Filled blue
 - type: entity
@@ -116,6 +124,7 @@
     sprite: Objects/Tanks/Jetpacks/black.rsi
     slots:
       - Back
+      - SuitStorage # Moffstation - Jetpack rebalance
 
 # Filled black
 - type: entity
@@ -156,6 +165,11 @@
     - HighRiskItem
   - type: StealTarget
     stealGroup: JetpackCaptainFilled
+  # Moffstation - Start -Jetpack rebalance
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  # Moffstation - End
 
 # Filled captain
 - type: entity
@@ -184,6 +198,7 @@
   components:
     - type: Item
       sprite: Objects/Tanks/Jetpacks/mini.rsi
+      size: Huge  # Moffstation - Jetpack rebalance
     - type: Sprite
       sprite: Objects/Tanks/Jetpacks/mini.rsi
     - type: Clothing
@@ -196,6 +211,11 @@
       outputPressure: 42.6
       air:
         volume: 1.5
+  # Moffstation - Start -Jetpack rebalance
+    - type: ClothingSpeedModifier
+      walkModifier: 1.0
+      sprintModifier: 1.0
+  # Moffstation - End
 
 # Filled mini
 - type: entity
@@ -229,6 +249,7 @@
     sprite: Objects/Tanks/Jetpacks/security.rsi
     slots:
       - Back
+      - SuitStorage # Moffstation - Jetpack rebalance
 
 #Filled security
 - type: entity
@@ -256,6 +277,7 @@
   components:
   - type: Item
     sprite: Objects/Tanks/Jetpacks/void.rsi
+    size: Huge  # Moffstation - Jetpack rebalance
   - type: Sprite
     sprite: Objects/Tanks/Jetpacks/void.rsi
   - type: Clothing
@@ -264,6 +286,11 @@
       - Back
       - suitStorage
       - Belt
+    # Moffstation - Start -Jetpack rebalance
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+    # Moffstation - End
 
 # Filled void
 - type: entity
