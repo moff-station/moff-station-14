@@ -1,12 +1,11 @@
 - type: entity
-  parent: IDCardStandard
-  id: PrisonerIDCard
+  parent: PrisonerIDCard
+  id: PrisonerIDCardPerma
   name: prisoner ID card
+  suffix: Perma, DO NOT MAP
   components:
-  - type: Sprite
-    layers:
-    - state: orange
-    - sprite: _CD/Objects/Misc/id_cards.rsi
-      state: prisoner
-  - type: PresetIdCard
-    job: Prisoner
+    - type: GenpopIdCard
+      crime: treason    # Maybe we could randomize this in the future? maybe even set it in loadouts?
+    - type: ExpireIdCard
+      permanent: true
+

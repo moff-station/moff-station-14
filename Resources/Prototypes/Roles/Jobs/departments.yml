@@ -32,7 +32,6 @@
   - Visitor
   - Zookeeper
   - ServiceWorker
-  - Prisoner # Custom role
 
 - type: department
   id: CentralCommand
@@ -113,6 +112,7 @@
   - SecurityOfficer
   - Detective
   - Warden
+  - Prisoner # CD - Custom role
 
 - type: department
   id: Science
