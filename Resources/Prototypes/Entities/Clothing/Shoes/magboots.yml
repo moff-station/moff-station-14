@@ -91,7 +91,7 @@
   parent: [ClothingShoesBootsMagBase, BaseJetpack, BaseSyndicateContraband]
   id: ClothingShoesBootsMagSyndie
   name: blood-red magboots
-  description: Reverse-engineered magnetic boots that have a heavy magnetic pull and integrated thrusters. It can hold 0.75 L of gas.
+  description: Upgraded magnetic boots with integrated thrusters. It can hold 0.75 L of gas, enough for about 2 minutes of flight. # Moffstation - Nuclear Operative Balancing
   components:
   - type: Sprite
     sprite: Clothing/Shoes/Boots/magboots-syndicate.rsi
@@ -99,8 +99,10 @@
   - type: Clothing
     sprite: Clothing/Shoes/Boots/magboots-syndicate.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 0.95
-    sprintModifier: 0.9
+    # Moffstation - Begin (Nuclear Operative Balancing)
+    walkModifier: 0.85
+    sprintModifier: 0.8
+    # Moffstation - End
   - type: GasTank
     outputPressure: 42.6
     air:

@@ -157,6 +157,19 @@
         amount: 2
       - id: EmpGrenade
         amount: 2
+# Moffstation - Begin (Nuclear Operative Balancing)
+- type: entity
+  id: ClothingBeltMilitaryWebbingNukeOpsFilled
+  parent: ClothingBeltMilitaryWebbing
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazinePistol
+      amount: 2
+    - id: CombatKnife
+    - id: DeathRattleImplanter
+# Moffstation - End
 
 - type: entity
   id: ClothingBeltMilitaryWebbingMedFilled
@@ -165,6 +178,12 @@
   components:
   - type: StorageFill
     contents:
+      # Moffstation - Begin (Nuclear Operative Balancing)
+      - id: MagazinePistol
+        amount: 2
+      - id: CombatKnife
+      - id: DeathRattleImplanter
+      # Moffstation - End
       - id: ChemistryBottleEpinephrine
         amount: 2
       - id: ChemistryBottleEphedrine
