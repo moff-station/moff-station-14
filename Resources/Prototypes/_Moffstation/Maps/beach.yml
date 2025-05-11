@@ -1,0 +1,35 @@
+- type: gameMap
+  id: Beach
+  mapName: 'Beach'
+  mapPath: /Maps/_Moffstation/beach.yml
+  minPlayers: 5
+  stations:
+    Beach:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Beach {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            #command (2)
+            Captain: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            #service (4)
+            Bartender: [ 1, 1 ]
+            Botanist: [ 1, 1 ]
+            Chef: [ 1, 1 ]
+            Janitor: [ 1, 1 ]
+            #engineering (2 - 3)
+            AtmosphericTechnician: [ 1, 1 ]
+            StationEngineer: [ 1, 2 ]
+            #medical (2 - 3)
+            Chemist: [ 1, 1 ]
+            MedicalDoctor: [ 2, 2 ]
+            #security (1 - 3)
+            SecurityOfficer: [ 2, 3 ]
+            #civilian (1+)
+            Passenger: [ -1, -1 ]
