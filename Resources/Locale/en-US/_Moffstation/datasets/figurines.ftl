@@ -92,6 +92,11 @@ figurines-katie-3 = Guh.
 figurines-katie-4 = TEG online!
 figurines-katie-5 = I need Steel.
 
+figurines-kaza-1 = Kaza greet!
+figurines-kaza-2 = Mm? What Kaza doing...?
+figurines-kaza-3 = Kaza bid kindness each other self and to.
+figurines-kaza-4 = KAZA KILL!!
+
 figurines-krakatoa-1 = Wawa.
 figurines-krakatoa-2 = Watermelon juice me!
 figurines-krakatoa-3 = Coleslaw day today!
@@ -188,6 +193,10 @@ figurines-tania-4 = Blorble?
 figurines-tania-5 = Plama.
 figurines-tania-6 = Assume everyone is incompetent and nobody has set up power.
 figurines-tania-7 = Can I axe you a question?
+figurines-tania-8 = OORAH!!
+figurines-tania-9 = Fuck it, we ball.
+figurines-tania-10 = CE stands for 'Combat Engineer'.
+figurines-tania-11 = Gang shit.
 
 figurines-tar-1 = Wah?
 figurines-tar-2 = Haii!
