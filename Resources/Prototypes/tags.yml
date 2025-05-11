@@ -610,6 +610,9 @@
   id: Goliath
 
 - type: Tag
+  id: GoliathPlate
+
+- type: Tag
   id: GPS
 
 - type: Tag
@@ -701,6 +704,9 @@
 
 - type: Tag
   id: HighSecDoor
+
+- type: Tag
+  id: HivelordRemains
 
 - type: Tag
   id: HiViz
@@ -1270,11 +1276,6 @@
 - type: Tag
   id: SurveillanceCameraMonitorCircuitboard
 
-# Moffstation - Begin (Survival Box Improvements)
-- type: Tag
-  id: SurvivalBoxInsertable
-# Moffstation - End
-
 - type: Tag
   id: Syndicate
 
@@ -1364,6 +1365,9 @@
 
 - type: Tag
   id: VoiceTrigger
+
+- type: Tag # Eating fix tag
+  id: VoxFood
 
 - type: Tag
   id: Wall
