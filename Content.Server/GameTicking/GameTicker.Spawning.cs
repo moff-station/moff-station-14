@@ -284,13 +284,13 @@ namespace Content.Server.GameTicking
                 if (jobPrototype.JoinNotifyCrew)
                 {
                     _chatSystem.DispatchStationAnnouncement(station,
-                        Loc.GetString(jobPrototype.JoinNotifyCrewText,
+                        Loc.GetString(jobPrototype.JoinNotifyCrewText,  // Moffstation - flexibility added to special join announcements
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
                             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
                         Loc.GetString("latejoin-arrival-sender"),
-                        playDefaultSound: true,
-                        colorOverride: jobPrototype.JoinNotifyCrewColor);
+                        playDefaultSound: true,     // Moffstation - they're important so notify the crew
+                        colorOverride: jobPrototype.JoinNotifyCrewColor);   // Moffstation - flexibility added to special join announcements
                 }
                 else
                 {
