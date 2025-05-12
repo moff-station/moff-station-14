@@ -63,7 +63,14 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
             }
         }
 
-        // Random spawn next
-        _transform.SetCoordinates(args.Mob, Transform(spawnsList.First().Owner).Coordinates);
+        // Random spawn next, ensure that it's NOT a jobspawn
+        foreach (var spawn in spawnsList)
+        {
+            if (spawn.Comp.JobIds.Count == 0)
+            {
+                _transform.SetCoordinates(args.Mob, Transform(spawn.Owner).Coordinates);
+                return;
+            }
+        }
     }
 }

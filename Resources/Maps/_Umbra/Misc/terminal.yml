@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 254.1.0
+  engineVersion: 255.1.0
   forkId: ""
   forkVersion: ""
-  time: 05/11/2025 07:39:48
-  entityCount: 2307
+  time: 05/12/2025 23:34:34
+  entityCount: 2308
 maps: []
 grids:
 - 2
@@ -2240,6 +2240,13 @@ entities:
     components:
     - type: Transform
       pos: -11.5,4.5
+      parent: 2
+- proto: BoxHandcuff
+  entities:
+  - uid: 2308
+    components:
+    - type: Transform
+      pos: -2.7420526,-36.004925
       parent: 2
 - proto: BoxMRE
   entities:
