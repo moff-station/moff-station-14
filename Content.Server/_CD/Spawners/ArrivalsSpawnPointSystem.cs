@@ -39,8 +39,7 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
         }
 
         // Make sure map is unpaused
-        if(_mapSystem.IsPaused(Transform(spawnsList.First()).MapID))
-            _mapSystem.SetPaused(Transform(spawnsList.First()).MapID, false);
+        _mapSystem.SetPaused(Transform(spawnsList.First()).MapID, false);
 
         // Make it random just in case
         _random.Shuffle(spawnsList);
