@@ -13,11 +13,5 @@ public sealed partial class ArrivalsSpawnPointComponent : Component
     /// The jobId of the job(s) that should spawn at this point. If null, a (general) spawn point to be used as a fallback if no respective job spawners exist.
     /// </summary>
     [DataField("jobs")]
-    public List<string> JobIds = new();
-
-    /// <summary>
-    /// The jobId of the job(s) that should ignore spawners.
-    /// </summary>
-    [DataField]
-    public List<string> IgnoredJobs = new();
+    public List<ProtoId<JobPrototype>> JobIds = new();
 }

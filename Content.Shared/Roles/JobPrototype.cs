@@ -153,6 +153,12 @@ namespace Content.Shared.Roles
         /// </summary>
         [DataField]
         public List<ProtoId<GuideEntryPrototype>>? Guides;
+
+        /// <summary>
+        /// Moffstation - If this is enabled, the job will not use the arrivals spawners
+        /// </summary>
+        [DataField]
+        public bool IgnoreArrivals;
     }
 
     /// <summary>
