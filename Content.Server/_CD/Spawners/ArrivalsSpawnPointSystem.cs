@@ -25,7 +25,8 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
             return;
 
         // Get job, skip everything else if it ignores arrivals
-        var job = _prototypeManager.Index<JobPrototype>(args.JobId);
+        if (!_prototypeManager.TryIndex<JobPrototype>(args.JobId, out var job))
+            return;
         if (job.IgnoreArrivals)
             return;
 
