@@ -7,8 +7,6 @@
   name: arrivals job spawn
   components:
   - type: ArrivalsSpawnPoint
-    ignoredJobs:
-      - StationAi
   - type: Sprite
     sprite: Markers/jobs.rsi
 
@@ -63,7 +61,18 @@
 
 # Civilian
 
-# TODO: Put stuff here. Probably not as important.
+- type: entity
+  id: ArrivalsSpawnPointBartender
+  parent: ArrivalsSpawnPointJobBase
+  suffix: bartender
+  components:
+  - type: ArrivalsSpawnPoint
+    jobs:
+    - Bartender
+  - type: Sprite
+    layers:
+    - state: green
+    - state: bartender
 
 # Command
 
@@ -128,7 +137,6 @@
   components:
   - type: ArrivalsSpawnPoint
     jobs:
-      - SeniorEngineer
       - StationEngineer
       - TechnicalAssistant
   - type: Sprite
@@ -171,7 +179,6 @@
   components:
   - type: ArrivalsSpawnPoint
     jobs:
-      - SeniorPhysician
       - Paramedic
       - MedicalDoctor
       - MedicalIntern
@@ -202,7 +209,6 @@
   components:
   - type: ArrivalsSpawnPoint
     jobs:
-      - SeniorResearcher
       - Scientist
       - ResearchAssistant
   - type: Sprite
@@ -245,7 +251,6 @@
   components:
   - type: ArrivalsSpawnPoint
     jobs:
-      - SeniorOfficer
       - SecurityOfficer
       - SecurityCadet
   - type: Sprite
