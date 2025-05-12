@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNurse
+  name: nurse jumpskirt
+  description: A jumpskirt commonly worn by nursing staff in the medical department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/nursesuit.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/nursesuit.rsi
