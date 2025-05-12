@@ -6,6 +6,9 @@
   startingGear: PrisonerGear
   icon: "JobIconPrisoner"
   supervisors: job-supervisors-security
+  joinNotifyCrew: true
+  joinNotifyCrewText: prisoner-arrivals-notice
+  joinNotifyCrewColor: orange
   access:
   - GenpopEnter
 
