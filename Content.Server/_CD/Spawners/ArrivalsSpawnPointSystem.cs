@@ -39,6 +39,10 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
             spawnsList.Add((spawnUid, spawnPoint));
         }
 
+        // Return if there's no spawns that exist
+        if (spawnsList.Count == 0)
+            return;
+
         // Make sure map is unpaused
         if (_mapSystem.IsPaused(Transform(spawnsList.First()).MapID))
             _mapSystem.SetPaused(Transform(spawnsList.First()).MapID, false);
