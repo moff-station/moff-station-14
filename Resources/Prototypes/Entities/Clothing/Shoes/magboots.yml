@@ -77,7 +77,7 @@
 
 # Moffstation - Begin (ERT Overhaul Pt1)
 - type: entity
-  parent: ClothingShoesBootsMagBase
+  parent: [ BaseCentcommContraband, ClothingShoesBootsMagBase ]
   id: ClothingShoesBootsMagNTMilitary
   name: NT military magboots
   description: A set of upgraded magboots worn by Nanotrasen's military forces. Easier to walk in than civilian versions.
