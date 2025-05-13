@@ -11,7 +11,11 @@
   - type: Item
     sprite: _Moffstation/PersonalItems/Items/HotrodMcCoolgal/Hot_Sauce/hotsaucefireextinguisher.rsi
   - type: DetailExaminable
-    content: It's scratched and dented. A named is etched in it, starting with "Fio-". The rest is too faded to read.
+    content: It's scratched, dented, and has been punctured, rendering it non-functional. A named is etched in it, starting with "Fio-". The rest is too faded to read.
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 0
 
 - type: loadout
   id: PersonalItemHotSauceFireExtinguisher
