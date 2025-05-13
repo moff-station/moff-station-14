@@ -46,6 +46,7 @@
     - 0,0,4,3
   # Moffstation - End
   - type: AmmoCounter
+  - type: GunRequiresWield # Moffstation - Launcher Tweaks
   - type: Gun
     fireRate: 1
     selectedMode: SemiAuto
@@ -57,7 +58,7 @@
     whitelist:
       tags:
         - Grenade
-    capacity: 3
+    capacity: 4 # Moffstation - Launcher Tweaks
     proto: GrenadeFrag
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
@@ -78,10 +79,18 @@
     slots:
     - Back
     - suitStorage
+  # Moffstation - Begin (Launcher Tweaks) FRED ALLOW WEAPON RESIZING TO OVERWRITE THIS!!!
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,3
+  # Moffstation - End
   - type: AmmoCounter
-  - type: GunRequiresWield # Moffstation - (Hydra Tweaks)
+  # Moffstation - Begin (Launcher Tweaks)
+  - type: GunRequiresWield
   - type: Gun
-    fireRate: 1
+    fireRate: 0.8
+  # Moffstation - End
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -103,13 +112,11 @@
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
 
-# Moffstation - Begin (Hydra Tweaks)
+# Moffstation - Begin (Launcher Tweaks)
 - type: entity
   parent: WeaponLauncherHydra
   id: WeaponLauncherHydraFrag
-  name: hydra
-  suffix: Frag
-  description: PLOOP... FSSSSSS
+  suffix: Lethal
   components:
   - type: RevolverAmmoProvider
     whitelist:
