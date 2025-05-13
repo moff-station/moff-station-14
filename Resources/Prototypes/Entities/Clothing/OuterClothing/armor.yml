@@ -22,6 +22,10 @@
         Heat: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.90
+    #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.8 # base value for armor.
+    #Moffstation - End
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
@@ -40,28 +44,6 @@
     sprite: Clothing/OuterClothing/Armor/security_slim.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Armor/security_slim.rsi
-
-- type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband]
-  id: ClothingOuterArmorRiot
-  name: riot suit
-  description: A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Perfect for fighting delinquents around the station.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Armor/riot.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Armor/riot.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.4
-        Slash: 0.4
-        Piercing: 0.7
-        Heat: 0.9
-        Caustic: 0.9
-  - type: ExplosionResistance
-    damageCoefficient: 0.9
-  - type: GroupExamine
 
 - type: entity
   parent: ClothingOuterArmorBase
@@ -106,6 +88,177 @@
       - Energy
 
 - type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: ClothingOuterArmorBaseCarapace
+  abstract: true
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+  - type: GroupExamine
+
+- type: entity
+  parent: [ClothingOuterArmorBaseCarapace, BaseCommandContraband]
+  id: ClothingOuterArmorCaptainCarapace
+  name: captain's carapace
+  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+        Caustic: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.8 # Base value for armor.
+  #Moffstation - End
+  - type: GroupExamine
+
+- type: entity
+  parent: [ClothingOuterArmorBaseCarapace, BaseCentcommContraband]
+  id: ClothingOuterArmorCentcommCarapace
+  name: centcomm carapace
+  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to centcomm officials and agents.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/centcomm_carapace.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/centcomm_carapace.rsi
+
+#Web vest
+- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
+  id: ClothingOuterVestWeb
+  name: web vest
+  description: A synthetic armor vest. This one has added webbing and ballistic plates.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6 #ballistic plates = better protection
+        Slash: 0.6
+        Piercing: 0.3
+        Heat: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.8 # Base value for armor.
+  # Moffstation - End
+
+#Elite web vest
+- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
+  id: ClothingOuterVestWebElite
+  name: elite web vest
+  description: A synthetic armor vest. This one has added webbing and heat resistant fibers.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/elitevest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/elitevest.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.7
+        Heat: 0.3
+        Radiation: 0.5
+        Caustic: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.8 # Base value for armor.
+  # Moffstation - End
+  - type: FireProtection
+    reduction: 0.85
+
+#Mercenary web vest
+- type: entity
+  parent: [ BaseMajorContraband, ClothingOuterVestWeb] #web vest so it should have some pockets for ammo
+  id: ClothingOuterVestWebMerc
+  name: mercenary web vest
+  description: A high-quality armored vest made from a hard synthetic material. It's surprisingly flexible and light, despite formidable armor plating.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7 #slightly better overall protection but slightly worse than bulletproof armor against bullets seems sensible
+        Slash: 0.7
+        Piercing: 0.5
+        Heat: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: [BaseCentcommContraband, ClothingOuterVestWeb]
+  id: ClothingOuterVestWebNTMilitary
+  name: NT web vest
+  description: A NT-brand synthetic armor vest. This one has added webbing and ballistic plates. Used by NT military forces.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+# Moffstation - End
+
+#Detective's vest
+- type: entity
+  parent: [ClothingOuterArmorBase, BaseSecurityContraband]
+  id: ClothingOuterVestDetective
+  name: detective's vest
+  description: A hard-boiled private investigator's armored vest.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/detvest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/detvest.rsi
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.8 # Base value for armor.
+  # Moffstation - End
+
+
+# Armor covering multiple body parts including limbs
+- type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband ]
   id: ClothingOuterArmorRaid
   name: syndicate raid suit
@@ -130,8 +283,10 @@
         Caustic: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.35
-  #- type: StaminaResistance
-  #  damageCoefficient: 0.45
+  #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Advanced, +10%.
+  #Moffstation - End
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -183,6 +338,32 @@
     autoRechargeRate: 2
   - type: Item
     size: Normal
+
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband]
+  id: ClothingOuterArmorRiot
+  name: riot suit
+  description: A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Perfect for fighting delinquents around the station.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/riot.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/riot.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.7
+        Heat: 0.9
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  #Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.6 # Riot gear, +20%.
+  #Moffstation - End
+  - type: GroupExamine
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing ]
@@ -269,32 +450,6 @@
     sprite: Clothing/OuterClothing/Armor/magusred.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Armor/magusred.rsi
-
-- type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseCommandContraband]
-  id: ClothingOuterArmorCaptainCarapace
-  name: "captain's carapace"
-  description: "An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest."
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.6
-        Heat: 0.5
-        Caustic: 0.9
-  - type: ClothingSpeedModifier
-    walkModifier: 1.0
-    sprintModifier: 1.0
-  - type: HeldSpeedModifier
-  - type: ExplosionResistance
-    damageCoefficient: 0.65
-  - type: GroupExamine
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing ]

@@ -18,6 +18,10 @@
     slots:
     - Back
     - suitStorage
+  - type: UseDelay
+    delays:
+      gasTank:
+        length: 1.0
   - type: ActivatableUI
     key: enum.SharedGasTankUiKey.Key
   - type: UserInterface
@@ -110,6 +114,11 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Tag
+    tags:
+    - SurvivalBoxInsertable
+  # Moffstation - End
 
 - type: entity
   parent: EmergencyOxygenTank

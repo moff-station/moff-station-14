@@ -192,19 +192,15 @@
 
 #ERT
 - type: entity
-  parent: [ ClothingBackpack, BaseCentcommContraband ]
+  # Moffstation - Begin (ERT Overhaul Pt1)
+  parent: [ClothingBackpackSyndicate, BaseCentcommContraband]
   id: ClothingBackpackERTLeader
   name: ERT leader backpack
-  description: A spacious backpack with lots of pockets, worn by the leader of an Emergency Response Team.
+  description: A spacious backpack with lots of pockets, worn by the Leader of an Emergency Response Team.
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/ertleader.rsi
-  - type: ExplosionResistance
-    damageCoefficient: 0.1
-  - type: Storage
-    grid:
-    - 0,0,7,3
-    - 8,1,8,3
+  # Moffstation - End
 
 - type: entity
   parent: ClothingBackpackERTLeader
@@ -269,6 +265,14 @@
     - type: Storage
       grid:
       - 0,0,7,6
+
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: ClothingBackpackERTSecurity
+  id: ClothingBackpackNTMilitary
+  name: NT military backpack
+  description: A armored backpack with lots of pockets, worn by NT military forces.
+# Moffstation - End
 
 #Syndicate
 - type: entity

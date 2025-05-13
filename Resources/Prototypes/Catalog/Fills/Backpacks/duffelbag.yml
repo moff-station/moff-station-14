@@ -222,7 +222,7 @@
   - type: StorageFill
     contents:
       - id: ClothingHeadHelmetSyndicate
-      - id: ClothingOuterHardsuitSyndicate
+      - id: ClothingOuterEVASuitSyndicate
       - id: ClothingMaskGasSyndicate
       - id: ClothingHandsGlovesColorYellowBudget
       - id: DoubleEmergencyOxygenTankFilled
@@ -325,23 +325,22 @@
       - id: SyndieTrickyBomb
         amount: 2
 
-# ERT duffel bags
 - type: entity
-  parent: ClothingBackpackDuffelERT
-  id: ClothingBackpackDuffelERTEngineeringFilled
-  suffix: Engineering, Filled
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelSyndicateFilledStarterKit
+  name: basic operative bundle
+  description: "Contains a weapon, medical supplies, breaching tools, spare ammo, and some simple utilities."
   components:
   - type: StorageFill
     contents:
-      - id: BoxInflatable
-      - id: SheetSteel
+      - id: WeaponSubMachineGunC20r
+      - id: MagazinePistolSubMachineGun
+        amount: 3
+      - id: MagazinePistol
+      - id: SyndicateJawsOfLife
+      - id: C4
         amount: 2
-      - id: CableApcStack
-      - id: SheetGlass
-        amount: 2
-      - id: CableMVStack
-      - id: SheetPlasteel
-      - id: Flare
-      - id: RCDAmmo
-        amount: 2
-      - id: CableHVStack
+      - id: MedkitCombatFilled
+      - id: EmpImplanter
+      - id: ClothingShoesBootsMagSyndie
+      - id: AgentIDCard

@@ -244,12 +244,24 @@
 
 - type: entity
   parent: [ ClothingBackpackDuffel, BaseCentcommContraband ]
-  id: ClothingBackpackDuffelERT
-  name: NT operative duffel bag
-  description: A robust duffel bag for Nanotrasen's elite operatives.
+  id: ClothingBackpackDuffelCBURN
+  name: CBURN duffel bag
+  description: A duffel bag containing a variety of biological containment equipment.
   components:
-  - type: Sprite # placeholder
-    sprite: Clothing/Back/Duffels/duffel.rsi
-  - type: ExplosionResistance
-    damageCoefficient: 0.1
+  - type: Storage
+    maxItemSize: Huge
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+  - type: HeldSpeedModifier
 
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: [ClothingBackpackDuffelSyndicate, BaseCentcommContraband]
+  id: ClothingBackpackDuffelNTMilitary
+  name: NT military duffel bag
+  description: A robust duffel bag containing armor plates to protect its contents. Used by Nanotrasen military forces.
+  components:
+  - type: Sprite
+    sprite: Clothing/Back/Duffels/duffel.rsi # Placeholder sprite
+  # Moffstation - End
