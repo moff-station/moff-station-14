@@ -32,6 +32,12 @@ namespace Content.IntegrationTests.Tests
         private const bool SkipTestMaps = true;
         private const string TestMapsPath = "/Maps/Test/";
 
+        // Moffstation - Whitelist for jobs that don't need to be mapped
+        private static readonly ProtoId<JobPrototype>[] NoSpawnJobs =
+        {
+            "Prisoner"
+        };
+
         private static readonly string[] NoSpawnMaps =
         {
             "CentComm",
@@ -411,6 +417,8 @@ namespace Content.IntegrationTests.Tests
                     // This is done inside gamemap test because loading the map takes ages and we already have it.
                     var comp = entManager.GetComponent<StationJobsComponent>(station);
                     var jobs = new HashSet<ProtoId<JobPrototype>>(comp.SetupAvailableJobs.Keys);
+
+                    jobs.ExceptWith(NoSpawnJobs);   // Moffstation - filter out our custom jobs
 
                     var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
                         .Where(x => x.SpawnType == SpawnPointType.Job && x.Job != null)
