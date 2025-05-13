@@ -918,8 +918,10 @@
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertengineer.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTEngineer
-  - type: FireProtection
-    reduction: 0.8
+  # Moffstation - Begin (ERT Overhaul Pt1)
+  #- type: FireProtection
+  #  reduction: 0.8
+  # Moffstation - End
 
 #ERT Medic Hardsuit
 - type: entity
