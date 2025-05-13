@@ -674,6 +674,19 @@
   - type: ExplosionResistance
     damageCoefficient: 0.1
 
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: [ BaseCentcommContraband, ClothingBeltMilitaryWebbing ]
+  id: ClothingBeltMilitaryWebbingNTMilitary
+  name: NT military chest rig
+  description: A set of tactical webbing worn by NT military forces.
+  components:
+  - type: Sprite
+    sprite: Clothing/Belt/militarywebbing.rsi # Placeholder
+  - type: Clothing
+    sprite: Clothing/Belt/militarywebbing.rsi # Placeholder
+# Moffstation - End
+
 - type: entity
   parent: ClothingBeltBase
   id: ClothingBeltSuspendersRed

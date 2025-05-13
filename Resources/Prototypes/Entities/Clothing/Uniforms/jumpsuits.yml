@@ -1057,6 +1057,15 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/ert_security.rsi
 
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: ClothingUniformJumpsuitERTSecurity
+  id: ClothingUniformJumpsuitNTMilitary
+  name: NT military jumpsuit
+  description: A special jumpsuit worn by NT military forces.
+# Moffstation - End
+
+
 - type: entity
   parent: ClothingUniformJumpsuitClown
   id: ClothingUniformJumpsuitCluwne

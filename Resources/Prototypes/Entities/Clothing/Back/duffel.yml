@@ -243,14 +243,12 @@
   - type: HeldSpeedModifier
 
 - type: entity
-  parent: [ ClothingBackpackDuffel, BaseCentcommContraband ]
-  id: ClothingBackpackDuffelCBURN
-  name: CBURN duffel bag
-  description: A duffel bag containing a variety of biological containment equipment.
+  # Moffstation - Begin (ERT Overhaul Pt1)
+  parent: [ ClothingBackpackDuffelSyndicate, BaseCentcommContraband ]
+  id: ClothingBackpackDuffelNTMilitary
+  name: NT military duffel bag
+  description: A robust duffel bag containing armor plates to protect its contents. Used by Nanotrasen military forces.
   components:
-  - type: Storage
-    maxItemSize: Huge
-  - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 1
-  - type: HeldSpeedModifier
+  - type: Sprite
+    sprite: Clothing/Back/Duffels/duffel.rsi # Placeholder sprite
+  # Moffstation - End
