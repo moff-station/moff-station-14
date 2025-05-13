@@ -612,23 +612,20 @@
 ## CBURN
 
 - type: entity
-  id: RandomHumanoidSpawnerCBURNUnit
-  name: CBURN Agent
-  suffix: ERTRole
+  id: RandomHumanoidSpawnerCBURNLeader
+  name: CBURN Squad Leader
+  suffix: ERTRole, EVA
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
       state: cburn
     - type: RandomHumanoidSpawner
-      settings: CBURNAgent
+      settings: CBURNLeader
 
 - type: randomHumanoidSettings
-  id: CBURNAgent
+  id: CBURNLeader
   parent: EventHumanoidCentcomm
   components:
-    - type: Loadout
-      prototypes: [CBURNGear]
-      roleLoadout: [ RoleSurvivalERT ]
     - type: GhostRole
       name: ghost-role-information-cburn-agent-name
       description: ghost-role-information-cburn-agent-description
@@ -640,6 +637,99 @@
       - NamesMilitaryFirstLeader
       - NamesMilitaryLast
       nameFormat: name-format-ert
+    - type: Loadout
+      prototypes: [ CBURNGear ]
+      roleLoadout: [ RoleSurvivalERT ]
+
+- type: entity
+  id: RandomHumanoidSpawnerCBURNRifleman
+  parent: RandomHumanoidSpawnerCBURNLeader
+  name: CBURN Rifleman
+  suffix: ERTRole, EVA
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: cburn
+  - type: RandomHumanoidSpawner
+    settings: CBURNRifleman
+
+- type: randomHumanoidSettings
+  id: CBURNRifleman
+  parent: CBURNLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-cburn-agent-name
+    description: ghost-role-information-cburn-agent-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirst
+    - NamesMilitaryLast
+  - type: Loadout
+    prototypes: [ CBURNGear ] # ADD: rifleman loadout
+    roleLoadout: [ RoleSurvivalERT ]
+
+- type: entity
+  id: RandomHumanoidSpawnerCBURNCleaner
+  parent: RandomHumanoidSpawnerCBURNLeader
+  name: CBURN Cleaner
+  suffix: ERTRole, EVA
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: cburn
+  - type: RandomHumanoidSpawner
+    settings: CBURNCleaner
+
+- type: randomHumanoidSettings
+  id: CBURNCleaner
+  parent: CBURNLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-cburn-agent-name
+    description: ghost-role-information-cburn-agent-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirst
+    - NamesMilitaryLast
+  - type: Loadout
+    prototypes: [ CBURNGear ] # ADD: cleaner loadout
+    roleLoadout: [ RoleSurvivalERT ]
+
+- type: entity
+  id: RandomHumanoidSpawnerCBURNScientist
+  parent: RandomHumanoidSpawnerCBURNLeader
+  name: CBURN Field Scientist
+  suffix: ERTRole, EVA
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: cburn
+  - type: RandomHumanoidSpawner
+    settings: CBURNScientist
+
+- type: randomHumanoidSettings
+  id: CBURNScientist
+  parent: CBURNLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-cburn-agent-name
+    description: ghost-role-information-cburn-agent-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirst
+    - NamesMilitaryLast
+  - type: Loadout
+    prototypes: [ CBURNGear ] # ADD: scientist loadout
+    roleLoadout: [ RoleSurvivalERT ]
 
 ## Central Command
 
