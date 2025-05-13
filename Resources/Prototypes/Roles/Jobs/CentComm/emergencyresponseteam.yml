@@ -18,41 +18,6 @@
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
-  id: ERTLeaderGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitERTLeader
-    back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsCombatFilled
-    mask: ClothingMaskGasERT
-    head: ClothingHeadHelmetERTLeader
-    eyes: ClothingEyesHudMedSec
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterVestWeb
-    id: ERTLeaderPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingNTMilitary
-    neck: Whistle
-    pocket2: FlashlightLantern
-    suitstorage: WeaponDisablerSMG
-  storage:
-    back:
-    - WeaponPistolN1984
-    - MagazineMagnum
-    - MagazineMagnum
-    - CrowbarRed
-    - PhoneInstrument
-    - Binoculars
-    - EmergencyMedipen
-    - TelescopicShield
-    belt:
-    - MedkitCombatFilled
-    - HoloprojectorField
-    - PinpointerNuclear
-    - Handcuffs
-    - Handcuffs
-    - MedkitCombatFilled
-
-- type: startingGear
   id: ERTLeaderGearEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
@@ -87,20 +52,19 @@
     - MedkitCombatFilled
 
 - type: startingGear
+  parent: ERTLeaderGearEVA
+  id: ERTLeaderGear
+  equipment:
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHelmetERTLeader
+    outerClothing: ClothingOuterVestWebNTMilitary
+    pocket2: FlashlightLantern
+
+- type: startingGear
+  parent: ERTLeaderGearEVA
   id: ERTLeaderGearEVAArmed
   equipment:
-    jumpsuit: ClothingUniformJumpsuitERTLeader
-    back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsMagNTMilitary
-    mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudMedSec
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA # Marine PDA?
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingNTMilitary
-    neck: Whistle
-    pocket2: CombatKnife
     suitstorage: WeaponRifleLecter
   storage:
     back:
@@ -143,45 +107,6 @@
     - type: BibleUser #Lets them heal with bibles
 
 - type: startingGear
-  id: ERTChaplainGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitERTChaplain
-    back: ClothingBackpackERTChaplain
-    shoes: ClothingShoesBootsCombatFilled
-    head: ClothingHeadHatFez
-    mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudMedical
-    neck: ClothingNeckStoleChaplain
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterVestWeb
-    id: ERTChaplainPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMilitaryWebbingNTMilitary
-    pocket2: FlashlightLantern
-  inhand:
-  - BoxCandle
-  storage:
-    back:
-    - WeaponPistolMk58
-    - MagazinePistol
-    - MagazinePistol
-    - CrowbarRed
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
-    - Lighter
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
-    belt:
-    - Bible
-    - Lantern
-    - Lantern
-    - Lantern
-    - Lantern
-    - DrinkWaterMelonJuiceJug
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
-
-- type: startingGear
   id: ERTChaplainGearEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTChaplain
@@ -189,7 +114,6 @@
     shoes: ClothingShoesBootsMagNTMilitary
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
-    neck: ClothingNeckStoleChaplain
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTChaplain
     id: ERTChaplainPDA
@@ -219,6 +143,16 @@
     - FoodBakedBunHotX
     - FoodBakedBunHotX
 
+- type: startingGear
+  parent: ERTChaplainGearEVA
+  id: ERTChaplainGear
+  equipment:
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHatFez
+    neck: ClothingNeckStoleChaplain
+    outerClothing: ClothingOuterVestWebNTMilitary
+    pocket2: FlashlightLantern
+
 # Engineer
 - type: job
   id: ERTEngineer
@@ -245,7 +179,7 @@
     head: ClothingHeadHelmetERTEngineer
     eyes: ClothingEyesHudDiagnostic
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterVestWeb
+    outerClothing: ClothingOuterVestWebNTMilitary
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingNTMilitary
@@ -387,7 +321,7 @@
     head: ClothingHeadHelmetERTSecurity
     eyes: ClothingEyesHudSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterVestWeb
+    outerClothing: ClothingOuterVestWebNTMilitary
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     neck: SecurityWhistle
@@ -575,7 +509,7 @@
     head: ClothingHeadHelmetERTMedic
     eyes: ClothingEyesHudMedical
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterVestWeb
+    outerClothing: ClothingOuterVestWebNTMilitary
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingNTMilitary
@@ -713,7 +647,7 @@
     head: ClothingHeadHelmetERTJanitor
     eyes: ClothingEyesGlassesChemical
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterVestWeb
+    outerClothing: ClothingOuterVestWebNTMilitary
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMilitaryWebbingNTMilitary
