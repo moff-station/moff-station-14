@@ -1,0 +1,87 @@
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMaidAtmos
+  name: atmospheric maid uniform
+  description: Ensuring others breath easy.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_atmos.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_atmos.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMaidCargo
+  name: cargo maid uniform
+  description: Because speed matters.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_cargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_cargo.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMaidChem
+  name: chemist maid uniform
+  description: Never one to spill a chem.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_chem.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_chem.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMaidScience
+  name: science maid uniform
+  description: Because precision matters.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_science.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_science.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMaidSec
+  name: security maid uniform
+  description: Keeping these halls clean.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_sec.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_sec.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMaidService
+  name: service maid uniform
+  description: For a personal touch.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_service.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid_service.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtMaid
+  name: maid uniform
+  description: For professionals, not the posers.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/maid.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtNurse
+  name: nurse jumpskirt
+  description: A jumpskirt commonly worn by nursing staff in the medical department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/nursesuit.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/nursesuit.rsi
