@@ -404,39 +404,25 @@
   id: ERTSecurityEVA
   parent: ERTSecurity
   components:
-    - type: GhostRole
-      name: ghost-role-information-ert-security-name
-      description: ghost-role-information-ert-security-description
-      rules: ghost-role-information-nonantagonist-rules
-      raffle:
-        settings: short
-      job: ERTSecurity
     - type: Loadout
       prototypes: [ ERTSecurityGearEVA ]
       roleLoadout: [ RoleSurvivalERT ]
 
 - type: entity
   parent: RandomHumanoidSpawnerERTSecurityEVA
-  id: RandomHumanoidSpawnerERTSecurityEVABreacher
-  name: ERT security breacher
+  id: RandomHumanoidSpawnerERTSecurityEVAVanguard
+  name: ERT security vanguard
   suffix: ERTRole, EVA, Longarm
   components:
   - type: RandomHumanoidSpawner
-    settings: ERTSecurityEVABreacher
+    settings: ERTSecurityEVAVanguard
 
 - type: randomHumanoidSettings
   parent: ERTSecurityEVA
-  id: ERTSecurityEVABreacher
+  id: ERTSecurityEVAVanguard
   components:
-  - type: GhostRole
-    name: ghost-role-information-ert-security-name
-    description: ghost-role-information-ert-security-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: ERTSecurity
   - type: Loadout
-    prototypes: [ ERTSecurityGearEVABreacher ]
+    prototypes: [ ERTSecurityGearEVAVanguard ]
     roleLoadout: [ RoleSurvivalERT ]
 
 - type: entity
@@ -452,13 +438,6 @@
   parent: ERTSecurityEVA
   id: ERTSecurityEVAGrenadier
   components:
-  - type: GhostRole
-    name: ghost-role-information-ert-security-name
-    description: ghost-role-information-ert-security-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: ERTSecurity
   - type: Loadout
     prototypes: [ ERTSecurityGearEVAGrenadier ]
     roleLoadout: [ RoleSurvivalERT ]
@@ -477,13 +456,6 @@
   parent: ERTSecurityEVA
   id: ERTSecurityEVARifleman
   components:
-  - type: GhostRole
-    name: ghost-role-information-ert-security-name
-    description: ghost-role-information-ert-security-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: ERTSecurity
   - type: Loadout
     prototypes: [ ERTSecurityGearEVARifleman ]
     roleLoadout: [ RoleSurvivalERT ]
@@ -543,13 +515,6 @@
   id: ERTMedicalEVA
   parent: ERTMedical
   components:
-  - type: GhostRole
-    name: ghost-role-information-ert-medical-name
-    description: ghost-role-information-ert-medical-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: ERTMedical
   - type: Loadout
     prototypes: [ ERTMedicalGearEVA ]
     roleLoadout: [ RoleSurvivalERT ]
@@ -570,13 +535,6 @@
   parent: ERTMedicalEVA
   id: ERTMedicalEVAArmed
   components:
-    - type: GhostRole
-      name: ghost-role-information-ert-medical-name
-      description: ghost-role-information-ert-medical-description
-      rules: ghost-role-information-nonantagonist-rules
-      raffle:
-        settings: short
-      job: ERTMedical
     - type: Loadout
       prototypes: [ ERTMedicalGearEVAArmed ]
       roleLoadout: [ RoleSurvivalERT ]
@@ -610,7 +568,7 @@
       - NamesMilitaryLast
       nameFormat: name-format-ert
     - type: Loadout
-      prototypes: [ CBURNGear ]
+      prototypes: [ CBURNLeaderGear ]
       roleLoadout: [ RoleSurvivalERT ]
 
 - type: entity
@@ -629,18 +587,12 @@
   id: CBURNRifleman
   parent: CBURNLeader
   components:
-  - type: GhostRole
-    name: ghost-role-information-cburn-agent-name
-    description: ghost-role-information-cburn-agent-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryFirst
     - NamesMilitaryLast
   - type: Loadout
-    prototypes: [ CBURNGear ] # ADD: rifleman loadout
+    prototypes: [ ERTMedicalGearEVAArmed ] # ADD: rifleman loadout
     roleLoadout: [ RoleSurvivalERT ]
 
 - type: entity
@@ -659,18 +611,12 @@
   id: CBURNCleaner
   parent: CBURNLeader
   components:
-  - type: GhostRole
-    name: ghost-role-information-cburn-agent-name
-    description: ghost-role-information-cburn-agent-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryFirst
     - NamesMilitaryLast
   - type: Loadout
-    prototypes: [ CBURNGear ] # ADD: cleaner loadout
+    prototypes: [ ERTMedicalGearEVAArmed ] # ADD: cleaner loadout
     roleLoadout: [ RoleSurvivalERT ]
 
 - type: entity
@@ -689,18 +635,12 @@
   id: CBURNScientist
   parent: CBURNLeader
   components:
-  - type: GhostRole
-    name: ghost-role-information-cburn-agent-name
-    description: ghost-role-information-cburn-agent-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryFirst
     - NamesMilitaryLast
   - type: Loadout
-    prototypes: [ CBURNGear ] # ADD: scientist loadout
+    prototypes: [ ERTMedicalGearEVAArmed ] # ADD: scientist loadout
     roleLoadout: [ RoleSurvivalERT ]
 
 ## Central Command
