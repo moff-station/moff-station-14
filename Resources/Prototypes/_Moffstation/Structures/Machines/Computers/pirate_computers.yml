@@ -23,7 +23,8 @@
     account: Pirates
     secretAccount: Pirates
     isolated: true
-    announcementsEnabled: false   # Need to implement this still
+    announcementsEnabled: false
+  - type: PirateOrderConsole
   - type: Computer
     board: PirateCargoRequestComputerCircuitboard
   - type: PointLight
@@ -92,6 +93,7 @@
       state: generic_panel_open
   - type: CargoBountyConsole
     secretBounties: Pirates
+  - type: PirateBountyConsole
   - type: ActivatableUI
     key: enum.CargoConsoleUiKey.Bounty
   - type: UserInterface

@@ -314,7 +314,7 @@ namespace Content.Server.Cargo.Systems
 
         #endregion
 
-        private void UpdateOrderState(EntityUid consoleUid, EntityUid? station)
+        public void UpdateOrderState(EntityUid consoleUid, EntityUid? station) // Moffstation - made public for pirates
         {
             if (!TryComp<CargoOrderConsoleComponent>(consoleUid, out var console))
                 return;
@@ -336,12 +336,12 @@ namespace Content.Server.Cargo.Systems
             }
         }
 
-        private void ConsolePopup(EntityUid actor, string text)
+        internal void ConsolePopup(EntityUid actor, string text) // Moffstation - Made internal for pirates
         {
             _popup.PopupCursor(text, actor);
         }
 
-        private void PlayDenySound(EntityUid uid, CargoOrderConsoleComponent component)
+        internal void PlayDenySound(EntityUid uid, CargoOrderConsoleComponent component)    // Moffstation - Made internal for pirates
         {
             _audio.PlayPvs(_audio.ResolveSound(component.ErrorSound), uid);
         }
@@ -527,7 +527,7 @@ namespace Content.Server.Cargo.Systems
 
         #region Station
 
-        private bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)
+        public bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)    // Moffstation - Made public for pirates
         {
             return TryComp(stationUid, out dbComp);
         }

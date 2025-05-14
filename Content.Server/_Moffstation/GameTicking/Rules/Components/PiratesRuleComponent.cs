@@ -6,4 +6,7 @@ namespace Content.Server._Moffstation.GameTicking.Rules.Components;
 public sealed partial class PiratesRuleComponent : Component
 {
 
+    [DataField]
+    public int StartingCash = 1000;
+
 }

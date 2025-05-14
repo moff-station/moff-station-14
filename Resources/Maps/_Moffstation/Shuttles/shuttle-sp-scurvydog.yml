@@ -4,7 +4,7 @@ meta:
   engineVersion: 254.1.0
   forkId: ""
   forkVersion: ""
-  time: 05/07/2025 02:55:12
+  time: 05/13/2025 02:39:52
   entityCount: 852
 maps: []
 grids:
@@ -34,7 +34,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: SP-Frigate
+      name: SP-Scurvydog
     - type: Transform
       pos: -2.9924583,0.29966736
       parent: invalid
@@ -476,6 +476,9 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: PirateShuttle
+    - type: StationCargoBountyDatabase
+    - type: StationCargoOrderDatabaseComponent
 - proto: AirAlarm
   entities:
   - uid: 800

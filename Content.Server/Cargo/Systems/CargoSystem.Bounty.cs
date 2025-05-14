@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Cargo.Components;
 using Content.Server.NameIdentifier;
+using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
@@ -55,21 +56,8 @@ public sealed partial class CargoSystem
             !TryComp<StationCargoBountyDatabaseComponent>(station, out var bountyDb))
             return;
 
-        if (component.SecretBounties != null)
-        {
-            var secretList = new List<CargoBountyData>();
-            foreach (var bounty in bountyDb.SecretBounties)
-            {
-                if (bounty.SecretBounty == component.SecretBounties)
-                    secretList.Add(bounty);
-            }
-            _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(secretList, new List<CargoBountyHistoryData>(), TimeSpan.Zero));
-        }
-        else
-        {
-            var untilNextSkip = bountyDb.NextSkipTime - Timing.CurTime;
-            _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(bountyDb.Bounties, bountyDb.History, untilNextSkip));
-        }
+        var untilNextSkip = bountyDb.NextSkipTime - Timing.CurTime;
+        _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(bountyDb.Bounties, bountyDb.History, untilNextSkip));
     }
 
     private void OnPrintLabelMessage(EntityUid uid, CargoBountyConsoleComponent component, BountyPrintLabelMessage args)
@@ -114,22 +102,9 @@ public sealed partial class CargoSystem
             return;
 
         FillBountyDatabase(station);
-        if (component.SecretBounties != null)
-        {
-            var secretList = new List<CargoBountyData>();
-            foreach (var availableBounty in db.SecretBounties)
-            {
-                if (availableBounty.SecretBounty == component.SecretBounties)
-                    secretList.Add(availableBounty);
-            }
-            _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(secretList, new List<CargoBountyHistoryData>(), TimeSpan.Zero));
-        }
-        else
-        {
-            db.NextSkipTime = Timing.CurTime + db.SkipDelay;
-            var untilNextSkip = db.NextSkipTime - Timing.CurTime;
-            _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, db.History, untilNextSkip));
-        }
+        db.NextSkipTime = Timing.CurTime + db.SkipDelay;
+        var untilNextSkip = db.NextSkipTime - Timing.CurTime;
+        _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, db.History, untilNextSkip));
         _audio.PlayPvs(component.SkipSound, uid);
     }
 
@@ -237,6 +212,10 @@ public sealed partial class CargoSystem
 
     private void OnMapInit(EntityUid uid, StationCargoBountyDatabaseComponent component, MapInitEvent args)
     {
+        // Moffstation - Start - make it so it doesnt double run for Pirates
+        if (TryComp<PirateShuttleComponent>(uid, out _))
+            return;
+        // Moffstation - End
         FillBountyDatabase(uid, component);
     }
 
@@ -251,26 +230,6 @@ public sealed partial class CargoSystem
         while (component.Bounties.Count < component.MaxBounties)
         {
             if (!TryAddBounty(uid, component))
-                break;
-        }
-
-        while (component.SecretBounties.Count < component.MaxBounties)
-        {
-            if (!TryAddSecretBounty(uid, component))
-                break;
-        }
-
-        UpdateBountyConsoles();
-    }
-
-    public void FillSecretBountyDatabase(EntityUid uid, StationCargoBountyDatabaseComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return;
-
-        while (component.SecretBounties.Count < component.MaxBounties)
-        {
-            if (!TryAddSecretBounty(uid, component))
                 break;
         }
 
@@ -484,64 +443,6 @@ public sealed partial class CargoSystem
     }
 
     [PublicAPI]
-    public bool TryAddSecretBounty(EntityUid uid, StationCargoBountyDatabaseComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return false;
-
-        // todo: consider making the cargo bounties weighted.
-        var allBounties = _protoMan.EnumeratePrototypes<CargoBountyPrototype>().ToList();
-        var filteredBounties = new List<CargoBountyPrototype>();
-        foreach (var proto in allBounties)
-        {
-            if (proto.Secret == null)
-                continue;
-            if (component.SecretBounties.Any(b => b.Bounty == proto.ID))
-                continue;
-            filteredBounties.Add(proto);
-        }
-
-        var pool = filteredBounties.Count == 0 ? allBounties : filteredBounties;
-        var bounty = _random.Pick(pool);
-        return TryAddSecretBounty(uid, bounty, component);
-    }
-
-    [PublicAPI]
-    public bool TryAddSecretBounty(EntityUid uid, string bountyId, StationCargoBountyDatabaseComponent? component = null)
-    {
-        if (!_protoMan.TryIndex<CargoBountyPrototype>(bountyId, out var bounty))
-        {
-            return false;
-        }
-        if (bounty.Secret == null)
-            return false;
-
-        return TryAddSecretBounty(uid, bounty, component);
-    }
-
-    public bool TryAddSecretBounty(EntityUid uid, CargoBountyPrototype bounty, StationCargoBountyDatabaseComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return false;
-
-        if (component.SecretBounties.Count >= component.MaxBounties)
-            return false;
-
-        _nameIdentifier.GenerateUniqueName(uid, BountyNameIdentifierGroup, out var randomVal);
-        var newBounty = new CargoBountyData(bounty, randomVal);
-        // This bounty id already exists! Probably because NameIdentifierSystem ran out of ids.
-        if (component.SecretBounties.Any(b => b.Id == newBounty.Id))
-        {
-            Log.Error("Failed to add bounty {ID} because another one with the same ID already existed!", newBounty.Id);
-            return false;
-        }
-        component.SecretBounties.Add(new CargoBountyData(bounty, randomVal));
-        _adminLogger.Add(LogType.Action, LogImpact.Low, $"Added bounty \"{bounty.ID}\" (id:{component.TotalBounties}) to station {ToPrettyString(uid)}");
-        component.TotalBounties++;
-        return true;
-    }
-
-    [PublicAPI]
     public bool TryRemoveBounty(Entity<StationCargoBountyDatabaseComponent?> ent,
         string dataId,
         bool skipped,
@@ -611,28 +512,16 @@ public sealed partial class CargoSystem
     public void UpdateBountyConsoles()
     {
         var query = EntityQueryEnumerator<CargoBountyConsoleComponent, UserInterfaceComponent>();
-        while (query.MoveNext(out var uid, out var console, out var ui))
+        while (query.MoveNext(out var uid, out _, out var ui))
         {
             if (_station.GetOwningStation(uid) is not { } station ||
                 !TryComp<StationCargoBountyDatabaseComponent>(station, out var db))
             {
                 continue;
             }
-            if (console.SecretBounties != null)
-            {
-                var secretList = new List<CargoBountyData>();
-                foreach (var bounty in db.SecretBounties)
-                {
-                    if (bounty.SecretBounty == console.SecretBounties)
-                        secretList.Add(bounty);
-                }
-                _uiSystem.SetUiState((uid, ui), CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(secretList, new List<CargoBountyHistoryData>(), TimeSpan.Zero));
-            }
-            else
-            {
-                var untilNextSkip = db.NextSkipTime - Timing.CurTime;
-                _uiSystem.SetUiState((uid, ui), CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, db.History, untilNextSkip));
-            }
+
+            var untilNextSkip = db.NextSkipTime - Timing.CurTime;
+            _uiSystem.SetUiState((uid, ui), CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, db.History, untilNextSkip));
         }
     }
 
