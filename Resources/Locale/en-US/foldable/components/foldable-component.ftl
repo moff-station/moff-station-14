@@ -11,3 +11,8 @@ fold-flip-verb = Flip
 
 fold-zip-verb = Zip up
 fold-unzip-verb = Unzip
+
+# Moffstation - Begin (Toggleable Security Helmet)
+fold-attach-visor-verb = Attach Visor
+fold-detach-visor-verb = Detach Visor
+# Moffstation - End
