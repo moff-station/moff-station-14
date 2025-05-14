@@ -227,6 +227,19 @@
   - type: ExplosionResistance
     damageCoefficient: 0.9
 
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: [BaseCentcommContraband, ClothingOuterVestWeb]
+  id: ClothingOuterVestWebNTMilitary
+  name: NT web vest
+  description: A NT-brand synthetic armor vest. This one has added webbing and ballistic plates. Used by NT military forces.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+# Moffstation - End
+
 #Detective's vest
 - type: entity
   parent: [ClothingOuterArmorBase, BaseSecurityContraband]

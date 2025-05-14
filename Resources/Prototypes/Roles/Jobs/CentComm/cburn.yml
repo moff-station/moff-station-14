@@ -17,20 +17,20 @@
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
-  id: CBURNGear
+  id: CBURNLeaderGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitColorBrown
-    back: ClothingBackpackDuffelCBURN
+    jumpsuit: ClothingUniformJumpsuitERTCBURN
+    back: ClothingBackpackDuffelNTMilitary
+    shoes: ClothingShoesBootsMagNTMilitary
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
-    ears: ClothingHeadsetAltCentCom
+    #eyes:
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURN
-    shoes: ClothingShoesBootsCombatFilled
     id: CBURNPDA
-    pocket1: RadioHandheld
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltMilitaryWebbingNT
     pocket2: WeaponLaserGun
-    belt: ClothingBeltBandolier
+    suitstorage:
   storage:
     back:
     - WeaponShotgunDoubleBarreled

@@ -1084,6 +1084,23 @@
 
 - type: entity
   parent: [DrinkBottleVisualsOpenable, DrinkBottlePlasticBaseFull]
+  id: DrinkBloodJug
+  name: blood jug
+  description: A jug of blood carried by ERT chaplains.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 150
+        reagents:
+        - ReagentId: Blood
+          Quantity: 150
+  - type: Drink
+  - type: Label
+    currentLabel: reagent-name-blood
+
+- type: entity
+  parent: [DrinkBottleVisualsOpenable, DrinkBottlePlasticBaseFull]
   id: CustomDrinkJug
   name: beverage jug
   description: A jug for storing custom made drinks.

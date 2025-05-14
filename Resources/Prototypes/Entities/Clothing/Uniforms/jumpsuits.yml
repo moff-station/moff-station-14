@@ -1057,6 +1057,26 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/ert_security.rsi
 
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: ClothingUniformJumpsuitERTSecurity
+  id: ClothingUniformJumpsuitNTMilitary
+  name: NT military jumpsuit
+  description: A special jumpsuit worn by NT military forces.
+# Moffstation - End
+
+
+- type: entity
+  parent: [ BaseCentcommContraband, ClothingUniformBase ]
+  id: ClothingUniformJumpsuitERTCBURN
+  name: CBURN uniform
+  description: A special jumpsuit worn by Nanotrasen's CBURN teams.
+  components:
+  - type: Sprite # Placeholder sprite
+    sprite: Clothing/Uniforms/Jumpsuit/ert_chaplain.rsi
+  - type: Clothing # Placeholder sprite
+    sprite: Clothing/Uniforms/Jumpsuit/ert_chaplain.rsi
+
 - type: entity
   parent: ClothingUniformJumpsuitClown
   id: ClothingUniformJumpsuitCluwne
