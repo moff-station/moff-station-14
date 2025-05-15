@@ -270,7 +270,7 @@
       0: Alive
       200: Dead
   - type: MovementSpeedModifier
-    baseSprintSpeed: 5.0
+    baseSprintSpeed: 4.5
   - type: MeleeWeapon
     damage:
      types:
@@ -357,11 +357,11 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      125: Dead
+      100: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      62: 0.7
-      100: 0.5
+      50: 0.7
+      80: 0.5
   #
   - type: HTN
     rootTask:
