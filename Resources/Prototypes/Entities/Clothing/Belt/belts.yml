@@ -683,9 +683,9 @@
 # Moffstation - Begin (ERT Overhaul Pt1)
 - type: entity
   parent: [BaseCentcommContraband, ClothingBeltMilitaryWebbing]
-  id: ClothingBeltMilitaryWebbingNTMilitary
-  name: NT military chest rig
-  description: A set of tactical webbing worn by NT military forces.
+  id: ClothingBeltMilitaryWebbingERT
+  name: ERT chest rig
+  description: A set of tactical webbing worn by Nanotrasen's Emergency Response Teams.
   components:
   - type: Sprite
     sprite: Clothing/Belt/militarywebbing.rsi # Placeholder sprite
