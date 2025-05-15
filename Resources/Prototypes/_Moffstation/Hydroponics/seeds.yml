@@ -1,0 +1,53 @@
+- type: seed
+  id: starfruit
+  name: seeds-starfruit-name
+  noun: seeds-noun-seeds
+  displayName: seeds-starfruit-display-name
+  plantRsi: Objects/Specific/Hydroponics/lemon.rsi
+  packetPrototype: starfruitSeeds
+  productPrototypes:
+  - FoodStarfruit
+  mutationPrototypes:
+  - tarfruit
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 6
+  yield: 1
+  potency: 10
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 25
+
+- type: seed
+  id: tarfruit
+  name: seeds-tarfruit-name
+  noun: seeds-noun-seeds
+  displayName: seeds-tarfruit-display-name
+  plantRsi: Objects/Specific/Hydroponics/lemon.rsi
+  packetPrototype: tarfruitSeeds
+  productPrototypes:
+  - tarfruitWrapped
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 6
+  yield: 1
+  potency: 10
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 25

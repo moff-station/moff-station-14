@@ -1,0 +1,61 @@
+- type: entity
+  parent: ProduceBase
+  id: tarfruitWrapped
+  name: tarfruit
+  description: An odd starfruit that appears to be made of meat. It is wrapped in its outer... ears?
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Vitamin
+          Quantity: 4
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/lemon.rsi
+    state: produce
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    seedId: tarfruit
+  - type: Tag
+    tags:
+    - Meat
+    - Fruit
+  - type: FoodSequenceElement
+    entries:
+      Burger: tarfruit
+      Taco: tarfruit
+  - type: SpawnItemsOnUse
+    items:
+    - id: tarfruitUnwrapped
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: tarfruitUnwrapped
+  name: tarcube
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      cube:
+        maxVol: 19 # needs 1u room for water
+        reagents: # equals one piece of raw meat, ideally should vary depending on the animal type, but idk how to link this to biomass costs
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 9
+        - ReagentId: Fat
+          Quantity: 9
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/lemon.rsi
+    state: produce
+  - type: Rehydratable
+    possibleSpawns:
+    - MobTarbold
+  - type: Item
+    heldPrefix: produce
+  - type: Tag
+    tags:
+    - Meat

@@ -1,0 +1,36 @@
+- type: entity
+  name: starfruit
+  parent: FoodProduceBase
+  id: FoodStarfruit
+  description: An exotic and strangely-shaped fruit.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 9
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Vitamin
+          Quantity: 4
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/lemon.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    seedId: starfruit
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceStarfruit
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+  - type: FoodSequenceElement
+    entries:
+      Burger: starfruit
+      Taco: Ssarfruit
