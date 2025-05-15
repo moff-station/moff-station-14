@@ -57,7 +57,7 @@
     allowedStates:
     - Alive
     - Dead
-#
+  # Moffstation - Begin (Xeno Buffs)
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -82,7 +82,7 @@
         blunt: 10
   - type: MovementSpeedModifier
     baseSprintSpeed: 4.0 # Slightly slower than a person
-#
+  # Moffstation - End
   - type: DamageStateVisuals
     rotate: true
     states:
@@ -137,7 +137,7 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
-#
+  # Moffstation - Begin (Xeno Buffs)
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -153,9 +153,10 @@
       types:
         Blunt: 13
         Piercing: 7
+    bluntStaminaDamageFactor: 1.0
   - type: MovementSpeedModifier
     baseSprintSpeed: 3.0 # Mining suit can barely outrun them
-#
+  # Moffstation - End
   - type: Fixtures
     fixtures:
       fix1:
@@ -180,7 +181,7 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
-  #
+  # Moffstation - Begin (Xeno Buffs)
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -194,9 +195,10 @@
       types:
         Blunt: 8
         Piercing: 4
+    bluntStaminaDamageFactor: 1.0
   - type: MovementSpeedModifier
     baseSprintSpeed: 5.0
-  #
+  # Moffstation - End
   - type: Fixtures
     fixtures:
       fix1:
@@ -221,11 +223,11 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
-  #
+  # Moffstation - Begin (Xeno Buffs)
   - type: MobThresholds
     thresholds:
       0: Alive
-      500: Dead
+      500: Dead # Dragon health
   - type: SlowOnDamage
     speedModifierThresholds:
       250: 0.7
@@ -237,7 +239,8 @@
      types:
        Blunt: 25
        Piercing: 10
-#
+    bluntStaminaDamageFactor: 1.0
+  # Moffstation - End
   - type: Fixtures
     fixtures:
       fix1:
@@ -265,6 +268,7 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
+  # Moffstation - Begin (Xeno Buffs)
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -280,7 +284,7 @@
     speedModifierThresholds:
       100: 0.7
       160: 0.5
-
+  # Moffstation - End
   - type: Fixtures
     fixtures:
       fix1:
@@ -305,7 +309,7 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
-  #
+  # Moffstation - Begin (Xeno Buffs)
   - type: MovementSpeedModifier
     baseSprintSpeed: 10.0 # Scary fast
   - type: MeleeWeapon
@@ -313,7 +317,7 @@
      types:
        Slash: 10
        Piercing: 5
-  #
+  # Moffstation - End
   - type: Fixtures
     fixtures:
       fix1:
@@ -353,7 +357,7 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
-  #
+  # Moffstation - Begin (Xeno Buffs)
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -362,7 +366,7 @@
     speedModifierThresholds:
       50: 0.7
       80: 0.5
-  #
+  # Moffstation - End
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
