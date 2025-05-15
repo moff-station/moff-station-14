@@ -133,6 +133,37 @@
         - ReagentId: Tricordrazine
           Quantity: 200
 
+# Carried by ERT Chaplains
+- type: entity
+  parent: Jug
+  id: JugBlood
+  categories: [ HideSpawnMenu ]
+  suffix: blood
+  components:
+  - type: Label
+    currentLabel: reagent-name-blood
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Blood
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  id: JugWater
+  categories: [ HideSpawnMenu ]
+  suffix: water
+  components:
+  - type: Label
+    currentLabel: reagent-name-water
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Water
+          Quantity: 200
+
 # chemvend jugs
 - type: entity
   parent: Jug
