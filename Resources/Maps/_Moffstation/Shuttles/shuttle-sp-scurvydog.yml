@@ -478,7 +478,9 @@ entities:
     - type: RadiationGridResistance
     - type: PirateShuttle
     - type: StationCargoBountyDatabase
-    - type: StationCargoOrderDatabaseComponent
+    - type: StationCargoOrderDatabase
+      orders:
+        Pirates: [ ]
 - proto: AirAlarm
   entities:
   - uid: 800

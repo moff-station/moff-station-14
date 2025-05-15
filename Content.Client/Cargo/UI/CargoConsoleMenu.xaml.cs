@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client.Cargo.Systems;
 using Content.Client.UserInterface.Controls;
+using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Prototypes;
@@ -25,9 +26,11 @@ namespace Content.Client.Cargo.UI
         private readonly SpriteSystem _spriteSystem;
         private EntityUid _owner;
         private EntityUid? _station;
+        private EntityUid? _shuttle;
 
         private readonly EntityQuery<CargoOrderConsoleComponent> _orderConsoleQuery;
         private readonly EntityQuery<StationBankAccountComponent> _bankQuery;
+        private readonly EntityQuery<PirateShuttleComponent> _pirateShuttleQuery;
 
         public event Action<ButtonEventArgs>? OnItemSelected;
         public event Action<ButtonEventArgs>? OnOrderApproved;
@@ -52,6 +55,7 @@ namespace Content.Client.Cargo.UI
 
             _orderConsoleQuery = _entityManager.GetEntityQuery<CargoOrderConsoleComponent>();
             _bankQuery = _entityManager.GetEntityQuery<StationBankAccountComponent>();
+            _pirateShuttleQuery = _entityManager.GetEntityQuery<PirateShuttleComponent>();
 
             Title = entMan.GetComponent<MetaDataComponent>(owner).EntityName;
 
@@ -79,8 +83,12 @@ namespace Content.Client.Cargo.UI
             {
                 if (!_entityManager.TryGetComponent<CargoOrderConsoleComponent>(owner, out var console) ||
                     !_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank))
+                {
+                    if(_entityManager.TryGetComponent(owner, out console) &&
+                       _entityManager.TryGetComponent<PirateShuttleComponent>(_shuttle, out var shuttleComp))
+                        return val >= 0 && val <= (int) (console.TransferLimit * shuttleComp.Money);
                     return true;
-
+                }
                 return val >= 0 && val <= (int) (console.TransferLimit * bank.Accounts[console.Account]);
             };
 
@@ -238,7 +246,8 @@ namespace Content.Client.Cargo.UI
         public void PopulateAccountActions()
         {
             if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank) ||
-                !_entityManager.TryGetComponent<CargoOrderConsoleComponent>(_owner, out var console))
+                !_entityManager.TryGetComponent<CargoOrderConsoleComponent>(_owner, out var console) ||
+                !_entityManager.TryGetComponent<PirateShuttleComponent>(_shuttle, out var shuttle))
                 return;
 
             var i = 0;
@@ -267,17 +276,37 @@ namespace Content.Client.Cargo.UI
             _station = station;
         }
 
+        public void UpdateShuttle(EntityUid shuttle)
+        {
+            _shuttle = shuttle;
+        }
+
         protected override void FrameUpdate(FrameEventArgs args)
         {
             base.FrameUpdate(args);
 
+            double balance;
+
             if (!_bankQuery.TryComp(_station, out var bankAccount) ||
                 !_orderConsoleQuery.TryComp(_owner, out var orderConsole))
             {
+                if (_pirateShuttleQuery.TryComp(_shuttle, out var shuttleComp) &&
+                    _orderConsoleQuery.TryComp(_owner, out orderConsole))
+                {
+                    balance = shuttleComp.Money;
+                    PointsLabel.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", balance));
+                    TransferLimitLabel.Text = Loc.GetString("cargo-console-menu-account-action-transfer-limit",
+                        ("limit", (int) (balance * orderConsole.TransferLimit)));
+
+                    UnlimitedNotifier.Visible = orderConsole.TransferUnbounded;
+                    AccountActionButton.Disabled = TransferSpinBox.Value <= 0 ||
+                                                   TransferSpinBox.Value > balance * orderConsole.TransferLimit ||
+                                                   _timing.CurTime < orderConsole.NextAccountActionTime;
+                }
                 return;
             }
 
-            var balance = _cargoSystem.GetBalanceFromAccount((_station.Value, bankAccount), orderConsole.Account);
+            balance = _cargoSystem.GetBalanceFromAccount((_station.Value, bankAccount), orderConsole.Account);
             PointsLabel.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", balance));
             TransferLimitLabel.Text = Loc.GetString("cargo-console-menu-account-action-transfer-limit",
                 ("limit", (int) (balance * orderConsole.TransferLimit)));

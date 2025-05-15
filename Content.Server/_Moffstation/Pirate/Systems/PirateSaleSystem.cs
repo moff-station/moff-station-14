@@ -4,6 +4,7 @@ using Content.Server._Moffstation.Pirate.Components;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Popups;
+using Content.Server.Power.EntitySystems;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Stack;
 using Content.Server.Station.Systems;
@@ -18,6 +19,7 @@ using Content.Shared.Cargo.Events;
 using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Coordinates;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking;
 using Content.Shared.Emag.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -29,6 +31,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Moffstation.Pirate.Systems;
 
@@ -47,6 +50,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
     [Dependency] private readonly PricingSystem _pricing = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly StationSystem _station = default!;
 
     private static readonly SoundPathSpecifier ApproveSound = new("/Audio/Effects/Cargo/ping.ogg");
 
@@ -71,6 +75,9 @@ public sealed partial class PirateSaleSystem : EntitySystem
         SubscribeLocalEvent<PirateOrderConsoleComponent, BoundUIOpenedEvent>(OnOrderUIOpened);
         SubscribeLocalEvent<PirateOrderConsoleComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<PirateOrderConsoleComponent, InteractUsingEvent>(OnInteractUsing);
+
+        // Fullfilling orders
+        // SubscribeLocalEvent<FulfillPirateOrderEvent>(OnTelepadFulfillPirateOrder);
     }
 
     #region BountyConsole
@@ -107,8 +114,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
 
     private void OnSkipBountyMessage(Entity<PirateBountyConsoleComponent> ent, ref BountySkipMessage args)
     {
-        var shuttle = _transform.GetGrid(ent.Owner.ToCoordinates());
-        if (shuttle == null)
+        if (!TryGetPirateShuttle(ent.Owner, out var shuttle))
             return;
 
         if(!TryComp<StationCargoBountyDatabaseComponent>(shuttle, out var db))
@@ -231,7 +237,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
     private void OnInit(Entity<PirateOrderConsoleComponent> ent, ref ComponentInit args)
     {
         var shuttle = _transform.GetGrid(ent.Owner.ToCoordinates());
-        _cargoSystem.UpdateOrderState(ent.Owner, shuttle);
+        UpdateOrderState(ent.Owner, shuttle);
     }
 
     private void OnInteractUsing(Entity<PirateOrderConsoleComponent> ent, ref InteractUsingEvent args)
@@ -384,6 +390,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
             order.OrderQuantity = cappedAmount;
             _cargoSystem.ConsolePopup(args.Actor, Loc.GetString("cargo-console-snip-snip"));
             _cargoSystem.PlayDenySound(ent.Owner, cargoOrderConsoleComponent);
+            return;
         }
 
         var cost = order.Price * order.OrderQuantity;
@@ -449,7 +456,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
     {
         if (!TryGetPirateShuttle(uid, out var shuttle))
             return;
-        _cargoSystem.UpdateOrderState(uid, shuttle);
+        UpdateOrderState(uid, shuttle);
     }
 
     private bool TryAddOrder(EntityUid dbUid, ProtoId<CargoAccountPrototype> account, CargoOrderData data, StationCargoOrderDatabaseComponent component)
@@ -471,7 +478,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
     private void UpdateOrders(EntityUid dbUid)
     {
         // Order added so all consoles need updating.
-        var orderQuery = AllEntityQuery<CargoOrderConsoleComponent>();
+        var orderQuery = AllEntityQuery<PirateOrderConsoleComponent>();
 
         while (orderQuery.MoveNext(out var uid, out var _))
         {
@@ -481,7 +488,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
             if (shuttle != dbUid)
                 continue;
 
-            _cargoSystem.UpdateOrderState(uid, shuttle);
+            UpdateOrderState(uid, shuttle);
         }
     }
 
@@ -492,16 +499,71 @@ public sealed partial class PirateSaleSystem : EntitySystem
         return ++orderDB.NumOrdersCreated;
     }
 
+    public void UpdateOrderState(EntityUid uid, EntityUid? shuttle) // Moffstation - made public for pirates
+    {
+        if (!TryGetOrderDatabase(shuttle, out var orderDatabase))
+            return;
+        if (!TryComp<CargoOrderConsoleComponent>(uid, out var cargoOrderConsole))
+            return;
+
+        if (_uiSystem.HasUi(uid, CargoConsoleUiKey.Orders))
+        {
+            _uiSystem.SetUiState(uid,
+                CargoConsoleUiKey.Orders,
+                new CargoConsoleInterfaceState(
+                    MetaData(shuttle.Value).EntityName,
+                    CargoSystem.GetOutstandingOrderCount(orderDatabase, cargoOrderConsole.Account),
+                    orderDatabase.Capacity,
+                    GetNetEntity(shuttle.Value),
+                    orderDatabase.Orders[cargoOrderConsole.Account]
+                ));
+        }
+    }
+
+    #endregion
+
+    #region Telepad
+
+    // private void OnTelepadFulfillPirateOrder(ref FulfillPirateOrderEvent args)
+    // {
+    //     var query = EntityQueryEnumerator<CargoTelepadComponent, TransformComponent>();
+    //     while (query.MoveNext(out var uid, out var tele, out var xform))
+    //     {
+    //         if (tele.CurrentState != CargoTelepadState.Idle)
+    //             continue;
+    //
+    //         if (!this.IsPowered(uid, EntityManager))
+    //             continue;
+    //
+    //         TryGetPirateShuttle(uid, out var shuttle);
+    //         if (shuttle != args.Shuttle.Owner)
+    //             continue;
+    //
+    //         // todo cannot be fucking asked to figure out device linking rn but this shouldn't just default to the first port.
+    //         if (!_cargoSystem.TryGetLinkedConsole((uid, tele), out var console) ||
+    //             console.Value.Owner != args.OrderConsole.Owner)
+    //             continue;
+    //
+    //         for (var i = 0; i < args.Order.OrderQuantity; i++)
+    //         {
+    //             tele.CurrentOrders.Add(args.Order);
+    //         }
+    //         tele.Accumulator = tele.Delay;
+    //         args.Handled = true;
+    //         args.FulfillmentEntity = uid;
+    //         return;
+    //     }
+    // }
+
     #endregion
 
     #region Shared
-
     public bool GetShuttleComp(EntityUid uid, out PirateShuttleComponent? shuttleComp)
     {
         shuttleComp = null;
-        if (TryGetPirateShuttle(uid, out var shuttle) || shuttle == null)
+        if (!TryGetPirateShuttle(uid, out var shuttle) || shuttle == null)
             return false;
-        if (!TryComp(uid, out shuttleComp))
+        if (!TryComp<PirateShuttleComponent>(shuttle, out shuttleComp))
             return false;
         return true;
     }
