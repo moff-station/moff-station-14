@@ -31,18 +31,9 @@
 - type: entity
   parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
   id: ClothingHeadHelmetBasic
-  name: security helmet # Moffstation - Toggleable Security Helmet
+  name: helmet
   description: Standard security gear. Protects the head from impacts.
   components:
-  # Moffstation - Begin (Toggleable Security Helmet)
-  - type: Foldable
-    canFoldInsideContainer: true
-    unfoldVerbText: fold-attach-visor-verb
-    foldVerbText: fold-detach-visor-verb
-  - type: FoldableClothing
-    foldedEquippedPrefix: visorless
-    foldedHeldPrefix: visorless
-  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Head/Helmets/security.rsi
   - type: Clothing
