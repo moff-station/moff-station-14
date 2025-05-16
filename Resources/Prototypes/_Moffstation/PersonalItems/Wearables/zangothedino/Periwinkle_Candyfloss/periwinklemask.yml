@@ -1,0 +1,21 @@
+# Player: zangothedino - Character: Periwinkle Candyfloss
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: PersonalItemPeriwinkleFace
+  name: Periwinkle's Face
+  description: More than just a Mask-cot for the medical department, behind this face is none other than Doctor Periwinkle Candyfloss
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: icon
+    sprite: _Moffstation/PersonalItems/Wearables/zangothedino/Periwinkle_Candyfloss/periwinklemask.rsi
+
+- type: loadout
+  id: PersonalItemPeriwinkleFace
+  storage:
+    back:
+    - PersonalItemPeriwinkleFace
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Periwinkle Candyfloss
