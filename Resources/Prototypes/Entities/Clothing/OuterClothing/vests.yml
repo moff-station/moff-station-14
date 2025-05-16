@@ -2,8 +2,8 @@
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWeb
-  name: web vest
-  description: A synthetic armor vest. This one has added webbing and ballistic plates.
+  name: syndicate plate carrier # Moffstation - Armor Descriptions
+  description: A Syndicate type I plate carrier, its aramid is reinforced by neo-ceramic plates. Provides excellent ballistic protection, and features tactical webbing to carry additional equipment. # Moffstation - Armor Descriptions
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/webvest.rsi
@@ -23,8 +23,8 @@
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWebElite
-  name: elite web vest
-  description: A synthetic armor vest. This one has added webbing and heat resistant fibers.
+  name: syndicate elite carrier # Moffstation - Armor Descriptions
+  description: A Syndicate type IV plate carrier, its aramid is reinforced by insulated plates and a layer of hazard shielding. Protects well against energy weapons and environmental threats, and features tactical webbing to carry additional equipment. # Moffstation - Armor Descriptions
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
@@ -51,7 +51,7 @@
 - type: entity
   parent: [ BaseMajorContraband, ClothingOuterVestWeb] #web vest so it should have some pockets for ammo
   id: ClothingOuterVestWebMerc
-  name: mercenary web vest
+  name: mercenary plate carrier # Moffstation - Armor Descriptions
   description: A high-quality armored vest made from a hard synthetic material. It's surprisingly flexible and light, despite formidable armor plating.
   components:
   - type: Sprite
@@ -72,7 +72,7 @@
 - type: entity
   parent: [ClothingOuterArmorBase, BaseSecurityContraband]
   id: ClothingOuterVestDetective
-  name: detective's vest
+  name: detective's armor vest # Moffstation - Armor Descriptions
   description: A hard-boiled private investigator's armored vest.
   components:
   - type: Sprite
