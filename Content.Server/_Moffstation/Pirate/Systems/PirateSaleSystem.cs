@@ -9,6 +9,7 @@ using Content.Server.Radio.EntitySystems;
 using Content.Server.Stack;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Cargo.Components;
+using Content.Shared._Moffstation.Cargo.Events;
 using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -17,17 +18,21 @@ using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Events;
 using Content.Shared.Cargo.Prototypes;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking;
 using Content.Shared.Emag.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Labels.Components;
+using Content.Shared.Paper;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -51,6 +56,9 @@ public sealed partial class PirateSaleSystem : EntitySystem
     [Dependency] private readonly EmagSystem _emag = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly MetaDataSystem _metaSystem = default!;
+    [Dependency] private readonly PaperSystem _paperSystem = default!;
+    [Dependency] private readonly ItemSlotsSystem _slots = default!;
 
     private static readonly SoundPathSpecifier ApproveSound = new("/Audio/Effects/Cargo/ping.ogg");
 
@@ -411,9 +419,7 @@ public sealed partial class PirateSaleSystem : EntitySystem
 
         if (!ev.Handled)
         {
-            //Rather than do that crazy fallback, for pirates we'll just spawn stuff on the console
-            //It won't work if it's not on their shuttle anyways
-            ev.FulfillmentEntity = ent.Owner;
+            FulfillOrder(order, cargoOrderConsoleComponent.Account.Id, ent.Owner.ToCoordinates(), null);
 
             if (ev.FulfillmentEntity == null)
             {
@@ -451,6 +457,85 @@ public sealed partial class PirateSaleSystem : EntitySystem
         shuttleComp.Money -= cost;
         UpdateOrders(shuttle.Value);
     }
+
+    // private EntityUid? TryFulfillOrder(Entity<PirateShuttleComponent> shuttle, ProtoId<CargoAccountPrototype> account, CargoOrderData order, StationCargoOrderDatabaseComponent orderDatabase)
+    // {
+    //     // No slots at the trade station
+    //     _listEnts.Clear();
+    //     GetTradeStations(stationData, ref _listEnts);
+    //     EntityUid? tradeDestination = null;
+    //
+    //     // Try to fulfill from any station where possible, if the pad is not occupied.
+    //     foreach (var trade in _listEnts)
+    //     {
+    //         var tradePads = GetCargoPallets(trade, BuySellType.Buy);
+    //         _random.Shuffle(tradePads);
+    //
+    //         var freePads = GetFreeCargoPallets(trade, tradePads);
+    //         if (freePads.Count >= order.OrderQuantity) //check if the station has enough free pallets
+    //         {
+    //             foreach (var pad in freePads)
+    //             {
+    //                 var coordinates = new EntityCoordinates(trade, pad.Transform.LocalPosition);
+    //
+    //                 if (FulfillOrder(order, account, coordinates, orderDatabase.PrinterOutput))
+    //                 {
+    //                     tradeDestination = trade;
+    //                     order.NumDispatched++;
+    //                     if (order.OrderQuantity <= order.NumDispatched) //Spawn a crate on free pellets until the order is fulfilled.
+    //                         break;
+    //                 }
+    //             }
+    //         }
+    //
+    //         if (tradeDestination != null)
+    //             break;
+    //     }
+    //
+    //     return tradeDestination;
+    // }
+
+    private bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
+        {
+            // Create the item itself
+            var item = Spawn(order.ProductId, spawn);
+
+            // Ensure the item doesn't start anchored
+            _transform.Unanchor(item, Transform(item));
+
+            // Create a sheet of paper to write the order details on
+            var printed = EntityManager.SpawnEntity(paperProto, spawn);
+            if (TryComp<PaperComponent>(printed, out var paper))
+            {
+                // fill in the order data
+                var val = Loc.GetString("cargo-console-paper-print-name", ("orderNumber", order.OrderId));
+                _metaSystem.SetEntityName(printed, val);
+
+                var accountProto = _protoMan.Index(account);
+                _paperSystem.SetContent((printed, paper),
+                    Loc.GetString(
+                        "cargo-console-paper-print-text",
+                        ("orderNumber", order.OrderId),
+                        ("itemName", MetaData(item).EntityName),
+                        ("orderQuantity", order.OrderQuantity),
+                        ("requester", order.Requester),
+                        ("reason", string.IsNullOrWhiteSpace(order.Reason) ? Loc.GetString("cargo-console-paper-reason-default") : order.Reason),
+                        ("account", Loc.GetString(accountProto.Name)),
+                        ("accountcode", Loc.GetString(accountProto.Code)),
+                        ("approver", string.IsNullOrWhiteSpace(order.Approver) ? Loc.GetString("cargo-console-paper-approver-default") : order.Approver)));
+
+                // attempt to attach the label to the item
+                if (TryComp<PaperLabelComponent>(item, out var label))
+                {
+                    _slots.TryInsert(item, label.LabelSlot, printed, null);
+                }
+            }
+
+            RaiseLocalEvent(item, new CargoOrderFulfilledEvent()); // Moffstation
+
+            return true;
+
+        }
 
     private void OnOrderUIOpened(EntityUid uid, PirateOrderConsoleComponent component, BoundUIOpenedEvent args)
     {
