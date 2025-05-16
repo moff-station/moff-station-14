@@ -1,7 +1,12 @@
+using System.Threading;
+using System.Threading.Tasks;
 using Content.Server.Interaction;
+using Content.Server.Weapons.Melee;
 using Content.Shared.CombatMode;
 using Content.Shared.DoAfter;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Timing;
+using Content.Shared.Weapons.Melee;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Interactions;
 
@@ -36,7 +41,6 @@ public sealed partial class InteractWithOperator : HTNOperator
     public override void Startup(NPCBlackboard blackboard)
     {
         blackboard.Remove<ushort>(CurrentDoAfter);
-
     }
 
     // Not really sure if we should clean it up, I guess some operator could use it
@@ -69,7 +73,8 @@ public sealed partial class InteractWithOperator : HTNOperator
         }
 
 
-        if (_entManager.TryGetComponent<UseDelayComponent>(owner, out var useDelay) && _entManager.System<UseDelaySystem>().IsDelayed((owner, useDelay)) ||
+        if (_entManager.TryGetComponent<UseDelayComponent>(owner, out var useDelay) &&
+            _entManager.System<UseDelaySystem>().IsDelayed((owner, useDelay)) ||
             !blackboard.TryGetValue<EntityUid>(TargetKey, out var moveTarget, _entManager) ||
             !_entManager.TryGetComponent<TransformComponent>(moveTarget, out var targetXform))
         {
@@ -91,9 +96,70 @@ public sealed partial class InteractWithOperator : HTNOperator
         }
 
         // We shouldn't arrive here if we start a doafter, so fail if we expected a doafter
-        if(ExpectDoAfter)
+        if (ExpectDoAfter)
             return HTNOperatorStatus.Failed;
 
         return HTNOperatorStatus.Finished;
+    }
+}
+
+// TODO CENT Move
+public sealed partial class HarmWithOperator : HTNOperator
+{
+    [Dependency] private readonly IEntityManager _entManager = default!;
+    private SharedMeleeWeaponSystem _melee;
+
+    /// <summary>
+    /// Key that contains the target entity.
+    /// </summary>
+    [DataField(required: true)]
+    public string TargetKey = default!;
+
+    public override void Initialize(IEntitySystemManager sysManager)
+    {
+        base.Initialize(sysManager);
+        _melee = sysManager.GetEntitySystem<SharedMeleeWeaponSystem>();
+    }
+
+    public override void TaskShutdown(NPCBlackboard blackboard, HTNOperatorStatus status)
+    {
+        base.TaskShutdown(blackboard, status);
+
+        ExitCombatMode(blackboard);
+    }
+
+    public override void PlanShutdown(NPCBlackboard blackboard)
+    {
+        base.PlanShutdown(blackboard);
+
+        ExitCombatMode(blackboard);
+    }
+
+    public override HTNOperatorStatus Update(NPCBlackboard blackboard, float frameTime)
+    {
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
+        if (!_entManager.TryGetComponent<CombatModeComponent>(owner, out var combatMode) ||
+            !_melee.TryGetWeapon(owner, out var weaponUid, out var weapon))
+        {
+            return HTNOperatorStatus.Failed;
+        }
+
+        _entManager.System<SharedCombatModeSystem>().SetInCombatMode(owner, true, combatMode);
+
+
+        if (!blackboard.TryGetValue<EntityUid>(TargetKey, out var target, _entManager) ||
+            !_melee.AttemptLightAttack(owner, weaponUid, weapon, target))
+        {
+            return HTNOperatorStatus.Continuing;
+        }
+
+        return HTNOperatorStatus.Finished;
+    }
+
+    private void ExitCombatMode(NPCBlackboard blackboard)
+    {
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+        _entManager.System<SharedCombatModeSystem>().SetInCombatMode(owner, false);
     }
 }
