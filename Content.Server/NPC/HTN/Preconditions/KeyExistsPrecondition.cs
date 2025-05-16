@@ -1,3 +1,5 @@
+using Content.Shared.Emag.Systems;
+
 namespace Content.Server.NPC.HTN.Preconditions;
 
 /// <summary>
@@ -12,5 +14,26 @@ public sealed partial class KeyExistsPrecondition : HTNPrecondition
     public override bool IsMet(NPCBlackboard blackboard)
     {
         return blackboard.ContainsKey(Key);
+    }
+}
+
+// TODO CENT Move this
+public sealed partial class IsEmaggedPrecondition : HTNPrecondition
+{
+    private EmagSystem _emag;
+
+    [DataField]
+    public EmagType EmagType = EmagType.Interaction;
+
+    public override void Initialize(IEntitySystemManager sysManager)
+    {
+        base.Initialize(sysManager);
+        _emag = sysManager.GetEntitySystem<EmagSystem>();
+    }
+
+    public override bool IsMet(NPCBlackboard blackboard)
+    {
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+        return _emag.CheckFlag(owner, EmagType);
     }
 }
