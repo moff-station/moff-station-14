@@ -31,13 +31,23 @@
 - type: entity
   parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
   id: ClothingHeadHelmetBasic
-  name: helmet
+  # Moffstation - Begin (Foldable Security Helmet)
+  name: security helmet
   description: Standard security gear. Protects the head from impacts.
   components:
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-attach-visor-verb
+    foldVerbText: fold-detach-visor-verb
+    folded: false
+  - type: FoldableClothing
+    foldedEquippedPrefix: visorless
+    foldedHeldPrefix: visorless
   - type: Sprite
-    sprite: Clothing/Head/Helmets/security.rsi
+    sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
   - type: Clothing
-    sprite: Clothing/Head/Helmets/security.rsi
+    sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
+  # Moffstation - End
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -490,6 +500,12 @@
   - type: Construction
     graph: HelmetJustice
     node: helmet
+  # Moffstation - Begin (Foldable Security Helmet)
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - SecurityHelmet
+  # Moffstation - End
 
 - type: entity
   parent: ClothingHeadHelmetJustice
