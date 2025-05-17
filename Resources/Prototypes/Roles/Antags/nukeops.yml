@@ -50,10 +50,10 @@
     ears: ClothingHeadsetAltSyndicate
 #    gloves: ClothingHandsGlovesCombat # Moffstation - Removing items duplicated by the loadout
     outerClothing: ClothingOuterHardsuitSyndie
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagSyndie # Moffstation - Nuclear Operative Balancing
     id: SyndiPDA
     pocket2: PlushieCarp
-    belt: ClothingBeltMilitaryWebbing
+    belt: ClothingBeltMilitaryWebbingNukeOpsFilled # Moffstation - Nuclear Operative Balancing
   storage:
     back:
     - WeaponPistolViper
@@ -97,7 +97,7 @@
   equipment:
     eyes: ClothingEyesHudSyndicateAgent
     outerClothing: ClothingOuterHardsuitSyndieMedic
-    shoes: ClothingShoesBootsMagSyndie
+    #shoes: ClothingShoesBootsMagSyndie # Moffstation - Nuclear Operative Balancing
     id: SyndiAgentPDA
     belt: ClothingBeltMilitaryWebbingMedFilled
   storage:

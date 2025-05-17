@@ -165,8 +165,14 @@
   components:
   - type: StorageFill
     contents:
-      - id: ChemistryBottleEpinephrine
+      # Moffstation - Begin (Nuclear Operative Balancing)
+      - id: MagazinePistol
         amount: 2
+      - id: CombatKnife
+      - id: DeathRattleImplanter
+      - id: ChemistryBottleEpinephrine
+        amount: 1
+      # Moffstation - End
       - id: ChemistryBottleEphedrine
         amount: 2
       - id: ChemistryBottleOmnizine

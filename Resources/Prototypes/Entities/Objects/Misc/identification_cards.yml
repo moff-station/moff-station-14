@@ -639,15 +639,20 @@
 - type: entity
   parent: [ IDCardStandard, BaseSyndicateContraband ]
   id: SyndicateIDCard
-  name: syndicate ID card
+  # Moffstation - Begin (Nuclear Operative Balancing)
+  name: syndicate operative ID card
+  description: A modified ID capable of copying the access of another ID by simply touching them together. Used primarily by Gorlex assault teams.
+  # Moffstation - End
   components:
   - type: Sprite
     layers:
     - state: syndie
+  - type: AgentIDCard # Moffstation - Nuclear Operative Balancing
   - type: Access
     tags:
     - NuclearOperative
     - SyndicateAgent
+    - Maintenance # Moffstation - Nuclear Operative Balancing
 
 - type: entity
   parent: [ IDCardStandard, BaseMajorContraband ]
