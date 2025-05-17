@@ -44,6 +44,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
             {
                 shuttle.AssociatedRule = ent;
                 shuttle.Money = ent.Comp.StartingCash;
+                Dirty(uid, shuttle);
                 break;
             }
         }

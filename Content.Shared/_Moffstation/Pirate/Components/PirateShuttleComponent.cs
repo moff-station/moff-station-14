@@ -9,16 +9,19 @@ namespace Content.Shared._Moffstation.Pirate.Components;
 /// <summary>
 /// Tags grid as nuke ops shuttle
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent]
+[AutoGenerateComponentState]
 public sealed partial class PirateShuttleComponent : Component
 {
-    [DataField,AutoNetworkedField]
+    [DataField]
+    [AutoNetworkedField]
     public EntityUid AssociatedRule;
 
     /// <summary>
     /// How much cash the shuttle has collected
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField]
+    [AutoNetworkedField]
     public double Money;
 }
 

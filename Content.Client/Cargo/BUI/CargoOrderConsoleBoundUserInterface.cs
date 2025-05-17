@@ -134,18 +134,17 @@ namespace Content.Client.Cargo.BUI
             if (state is not CargoConsoleInterfaceState cState || !EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
                 return;
             var station = EntMan.GetEntity(cState.Station);
-            var shuttle = new EntityUid();
             if (EntMan.TryGetComponent<PirateShuttleComponent>(station, out var shuttleComp))
             {
-                _menu?.UpdateShuttle(station);
                 BankBalance = (int)shuttleComp.Money;
+            }
+            else
+            {
+                BankBalance = _cargoSystem.GetBalanceFromAccount(station, orderConsole.Account);
             }
 
             OrderCapacity = cState.Capacity;
             OrderCount = cState.Count;
-            if (shuttleComp == null)
-                BankBalance = _cargoSystem.GetBalanceFromAccount(station, orderConsole.Account);
-
             AccountName = cState.Name;
 
             _menu?.UpdateStation(station);

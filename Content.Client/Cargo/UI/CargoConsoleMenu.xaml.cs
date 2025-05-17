@@ -246,8 +246,7 @@ namespace Content.Client.Cargo.UI
         public void PopulateAccountActions()
         {
             if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank) ||
-                !_entityManager.TryGetComponent<CargoOrderConsoleComponent>(_owner, out var console) ||
-                !_entityManager.TryGetComponent<PirateShuttleComponent>(_shuttle, out var shuttle))
+                !_entityManager.TryGetComponent<CargoOrderConsoleComponent>(_owner, out var console))
                 return;
 
             var i = 0;
@@ -290,7 +289,7 @@ namespace Content.Client.Cargo.UI
             if (!_bankQuery.TryComp(_station, out var bankAccount) ||
                 !_orderConsoleQuery.TryComp(_owner, out var orderConsole))
             {
-                if (_pirateShuttleQuery.TryComp(_shuttle, out var shuttleComp) &&
+                if (_pirateShuttleQuery.TryComp(_station, out var shuttleComp) &&
                     _orderConsoleQuery.TryComp(_owner, out orderConsole))
                 {
                     balance = shuttleComp.Money;
