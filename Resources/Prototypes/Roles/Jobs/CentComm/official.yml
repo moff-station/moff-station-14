@@ -16,17 +16,62 @@
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
+# Moffstation - Begin (New CentComm Loadouts)
+# Desk Work
 - type: startingGear
-  id: CentcomGear
+  id: CentcommRepresentativeGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+    shoes: ClothingShoesBootsLaceup
+    mask: ClothingMaskGasCentcom
+    eyes: ClothingEyesGlassesCommand
+    gloves: ClothingHandsGlovesHop
+    id: CentcommRepresentativePDA
+    ears: ClothingHeadsetAltCentCom
+    pocket1: Flash
+    pocket2: BoxFolderCentComClipboard
+
+# The big cheese
+- type: startingGear
+  parent: CentcommRepresentativeGear
+  id: CentcommCommanderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomFormal
+    head: ClothingHeadHatCentcomcap
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorCentcommCarapace
+    id: CentcommCommanderPDA
+    belt: ClothingBeltHolsterFilledN1984
+    neck: ClothingNeckCloakCentcom
+  inhand:
+  - BriefcaseCentcommFilled
+
+# Field Work - low rank
+- type: startingGear
+  id: CentcommAgentGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAgent
+    back: ClothingBackpackSatchelLeather
+    shoes: ClothingShoesBootsLaceup
+    mask: ClothingMaskGasCentcom
+    eyes: ClothingEyesGlassesCommand
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterArmorBasicSlim
+    id: CentcommAgentPDA
+    ears: ClothingHeadsetCentCom
+    pocket1: WeaponDisabler
+    pocket2: BoxFolderCentComClipboard
+  inhand:
+  - BriefcaseBrownFilled
+
+# Field work - high rank
+- type: startingGear
+  parent: CentcommAgentGear
+  id: CentcommFieldOfficerGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitCentcomOfficial
-    shoes: ClothingShoesBootsCombatFilled
-    head: ClothingHeadHatCentcom
-    eyes: ClothingEyesGlassesSunglasses
-    gloves: ClothingHandsGlovesColorBlack
-    outerClothing: ClothingOuterArmorCentcommCarapace
-    id: CentcomPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: WeaponPistolN1984
-    pocket1: BoxFolderBlack
-    pocket2: PenCentcom
+    head: ClothingHeadHatCentcomcap
+    id: CentcommFieldOfficerPDA
+    belt: ClothingBeltHolsterFilledN1984
+    pocket1: Flash
+# Moffstation - End
