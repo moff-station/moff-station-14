@@ -62,4 +62,10 @@ public sealed class RecordLongItemDisplay : BoxContainer
             _secondRow.Visible = false;
         }
     }
+
+    public Color? TitleFontColorOverride
+    {
+        get => _titleLabel.FontColorOverride;
+        set => _titleLabel.FontColorOverride = value;
+    }
 }

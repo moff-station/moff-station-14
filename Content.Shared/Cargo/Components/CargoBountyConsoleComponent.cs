@@ -6,7 +6,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Shared.Cargo.Components;
 
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class CargoBountyConsoleComponent : Component
 {
     /// <summary>
@@ -46,10 +46,16 @@ public sealed partial class CargoBountyConsoleComponent : Component
     public SoundSpecifier DenySound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_two.ogg");
 
     /// <summary>
-    /// Moffstation - Makes the console unable to see normal bounties, but able to see secret bounties of whatever catagory
+    /// The time at which the console will be able to make the denial sound again.
     /// </summary>
-    [DataField("secretBounties")]
-    public string? SecretBounties;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextDenySoundTime = TimeSpan.Zero;
+
+    /// <summary>
+    /// The time between playing a denial sound.
+    /// </summary>
+    [DataField]
+    public TimeSpan DenySoundDelay = TimeSpan.FromSeconds(2);
 }
 
 [NetSerializable, Serializable]

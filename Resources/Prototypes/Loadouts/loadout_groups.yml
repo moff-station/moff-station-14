@@ -1256,6 +1256,7 @@
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
+  - MedicalDoctorJumpskirtNurse # MOFFSTATION - Adds nurse jumpskirt
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
@@ -1393,7 +1394,11 @@
   name: loadout-group-reporter-jumpsuit
   loadouts:
   - ReporterJumpsuit
+  - ReporterJumpskirt # Moffstaion - Adding Reporter Clothes
   - JournalistJumpsuit
+  - JournalistJumpskirt # Moffstaion - Adding Reporter Clothes
+  - MeteorologistJumpsuit # Moffstaion - Adding Reporter Clothes
+  - MeteorologistJumpskirt # Moffstaion - Adding Reporter Clothes
 
 - type: loadoutGroup
   id: PsychologistJumpsuit

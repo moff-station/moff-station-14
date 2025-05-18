@@ -257,7 +257,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 33
+    damage: 26 # Moffstation - (Stamina Resistance)
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -889,7 +889,7 @@
     - type: Projectile
       damage:
         types:
-          Caustic: 5
+          Caustic: 25 # Moffstation - Xeno Buffs
     - type: Sprite
       sprite: Objects/Weapons/Guns/Projectiles/xeno_toxic.rsi
       layers:
@@ -1030,7 +1030,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 15
+    damage: 26 # Moffstation - (Stamina Resistance)
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
