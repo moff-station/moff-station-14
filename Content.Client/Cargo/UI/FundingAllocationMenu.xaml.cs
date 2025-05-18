@@ -132,8 +132,6 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         foreach (var (account, balance) in accounts)
         {
             var accountProto = _prototypeManager.Index(account);
-            if (accountProto.SecretAccount != null)
-                continue;
             var accountNameLabel = new RichTextLabel
             {
                 Modulate = accountProto.Color,

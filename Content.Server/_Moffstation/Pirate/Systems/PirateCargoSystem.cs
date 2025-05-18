@@ -228,12 +228,12 @@ public sealed partial class PirateCargoSystem : EntitySystem
             return false;
 
         // todo: consider making the cargo bounties weighted.
-        var allBounties = _protoMan.EnumeratePrototypes<CargoBountyPrototype>().ToList();
+        var allBounties = _protoMan.EnumeratePrototypes<CargoBountyPrototype>()
+            .Where(p => p.Group == component.Group)
+            .ToList();
         var filteredBounties = new List<CargoBountyPrototype>();
         foreach (var proto in allBounties)
         {
-            if (proto.Secret != "Pirates")
-                continue;
             if (component.Bounties.Any(b => b.Bounty == proto.ID))
                 continue;
             filteredBounties.Add(proto);
@@ -246,7 +246,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
 
     private void OnWithdrawFunds(Entity<PirateOrderConsoleComponent> ent, ref CargoConsoleWithdrawFundsMessage args)
     {
-        if (!GetShuttleComp(ent.Owner, out var shuttle) || shuttle == null)
+        if (!TryGetPirateShuttleComp(ent.Owner, out var shuttle) || shuttle == null)
             return;
 
         if (args.Amount <= 0 || args.Amount > shuttle.Money)
@@ -293,7 +293,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
         if (!TryGetPirateShuttle(ent.Owner, out var shuttle) || shuttle == null)
             return;
 
-        if (!GetShuttleComp(ent.Owner, out var shuttleComp) || shuttleComp == null)
+        if (!TryGetPirateShuttleComp(ent.Owner, out var shuttleComp) || shuttleComp == null)
             return;
 
         _audio.PlayPvs(ApproveSound, ent.Owner);
@@ -311,8 +311,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
         if (args.Amount <= 0)
             return;
 
-        var shuttle = _transform.GetGrid(ent.Owner.ToCoordinates());
-        if (shuttle == null)
+        if (TryGetPirateShuttle(ent.Owner, out var shuttle))
             return;
 
         if (!_cargoSystem.TryGetOrderDatabase(shuttle, out var orderDatabase))
@@ -337,7 +336,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
         if (!productInGroup)
             return;
 
-        var data = new CargoOrderData(GenerateOrderId(orderDatabase), product.Product, product.Name, product.Cost, args.Amount, args.Requester, args.Reason);
+        var data = new CargoOrderData(GenerateOrderId(orderDatabase), product.Product, product.Name, product.Cost, args.Amount, args.Requester, args.Reason, cargoOrderConsoleComponent.Account);
 
         if (!TryAddOrder((EntityUid)shuttle, cargoOrderConsoleComponent.Account, data, orderDatabase))
         {
@@ -438,7 +437,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
         }
 
         var cost = order.Price * order.OrderQuantity;
-        if (!GetShuttleComp(ent.Owner, out var shuttleComp) || shuttleComp == null)
+        if (!TryGetPirateShuttleComp(ent.Owner, out var shuttleComp) || shuttleComp == null)
             return;
 
         // Not enough balance
@@ -479,12 +478,9 @@ public sealed partial class PirateCargoSystem : EntitySystem
                 ("orderAmount", order.OrderQuantity),
                 ("approver", order.Approver ?? string.Empty),
                 ("cost", cost));
-            if (cargoOrderConsoleComponent.AnnouncementsEnabled)
-            {
                 _radio.SendRadioMessage(ent.Owner, message, cargoOrderConsoleComponent.AnnouncementChannel, ent.Owner, escapeMarkup: false);
                 if (CargoOrderConsoleComponent.BaseAnnouncementChannel != cargoOrderConsoleComponent.AnnouncementChannel)
                     _radio.SendRadioMessage(ent.Owner, message, CargoOrderConsoleComponent.BaseAnnouncementChannel, ent.Owner, escapeMarkup: false);
-            }
         }
 
         _cargoSystem.ConsolePopup(args.Actor, Loc.GetString("cargo-console-trade-station", ("destination", MetaData(ev.FulfillmentEntity.Value).EntityName)));
@@ -599,7 +595,8 @@ public sealed partial class PirateCargoSystem : EntitySystem
                     CargoSystem.GetOutstandingOrderCount(orderDatabase, cargoOrderConsole.Account),
                     orderDatabase.Capacity,
                     GetNetEntity(shuttle.Value),
-                    orderDatabase.Orders[cargoOrderConsole.Account]
+                    orderDatabase.Orders[cargoOrderConsole.Account],
+                    _cargoSystem.GetAvailableProducts((uid, cargoOrderConsole))
                 ));
         }
     }
@@ -739,7 +736,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
         var xform = Transform(uid);
 
         if (!TryGetPirateShuttle(uid, out var shuttle) ||
-            !GetShuttleComp(uid, out var shuttleComp))
+            !TryGetPirateShuttleComp(uid, out var shuttleComp))
         {
             return;
         }
@@ -755,7 +752,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
             return;
         }
 
-        if (!_cargoSystem.SellPallets(gridUid, out var goods))
+        if (!_cargoSystem.SellPallets(gridUid, (EntityUid)shuttle, out var goods))
             return;
 
         foreach (var (_, sellComponent, value) in goods)
@@ -776,7 +773,7 @@ public sealed partial class PirateCargoSystem : EntitySystem
     #endregion
 
     #region Shared
-    public bool GetShuttleComp(EntityUid uid, out PirateShuttleComponent? shuttleComp)
+    public bool TryGetPirateShuttleComp(EntityUid uid, out PirateShuttleComponent? shuttleComp)
     {
         shuttleComp = null;
         if (!TryGetPirateShuttle(uid, out var shuttle) || shuttle == null)

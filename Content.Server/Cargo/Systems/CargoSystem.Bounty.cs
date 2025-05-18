@@ -411,8 +411,6 @@ public sealed partial class CargoSystem
         var filteredBounties = new List<CargoBountyPrototype>();
         foreach (var proto in allBounties)
         {
-            if (proto.Secret != null)
-                continue;
             if (component.Bounties.Any(b => b.Bounty == proto.ID))
                 continue;
             filteredBounties.Add(proto);

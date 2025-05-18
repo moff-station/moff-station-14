@@ -262,13 +262,9 @@ namespace Content.Client.Cargo.UI
             i++;
             foreach (var account in bank.Accounts.Keys)
             {
-                if (console.Isolated)
-                    break;
                 if (account == console.Account)
                     continue;
                 var accountProto = _protoManager.Index(account);
-                if (accountProto.SecretAccount != console.SecretAccount)
-                    continue;
                 ActionOptions.AddItem(Loc.GetString("cargo-console-menu-account-action-option-transfer",
                     ("code", Loc.GetString(accountProto.Code))),
                     i);
