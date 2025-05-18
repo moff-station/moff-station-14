@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Cargo.Components;
 using Content.Server.Station.Components;
+using Content.Shared._Moffstation.Cargo.Components;
 using Content.Shared._Moffstation.Cargo.Events; // Moffstation
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
@@ -92,6 +93,10 @@ namespace Content.Server.Cargo.Systems
 
         private void OnApproveOrderMessage(EntityUid uid, CargoOrderConsoleComponent component, CargoConsoleApproveOrderMessage args)
         {
+            // Moffstation - prevent pirate console from double messaging
+            if (TryComp<PirateOrderConsoleComponent>(uid, out _))
+                return;
+
             if (args.Actor is not { Valid: true } player)
                 return;
 

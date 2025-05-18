@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Cargo.Prototypes;
 
@@ -41,10 +42,16 @@ public sealed partial class CargoBountyPrototype : IPrototype
     public string IdPrefix = "NT";
 
     /// <summary>
-    /// Moffstation - This will make the bounty only viewable to consoles with secret access
+    /// A group used for categorizing this bounty.
     /// </summary>
-    [DataField("secret")]
-    public string? Secret;
+    [DataField]
+    public ProtoId<CargoBountyGroupPrototype> Group = "StationBounty";
+
+    /// <summary>
+    /// Optional sprite representing this bounty.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? Sprite;
 }
 
 [DataDefinition, Serializable, NetSerializable]

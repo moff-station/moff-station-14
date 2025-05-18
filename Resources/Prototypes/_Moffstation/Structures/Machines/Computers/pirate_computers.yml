@@ -54,7 +54,7 @@
       flags:
         - Anchorable
     - type: CargoPalletConsole
-      exclusiveAccount: Pirates
+    - type: PiratePalletConsole
     - type: ActivatableUI
       key: enum.CargoPalletConsoleUiKey.Sale
     - type: UserInterface

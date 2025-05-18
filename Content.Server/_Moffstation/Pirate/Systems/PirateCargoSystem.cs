@@ -26,6 +26,7 @@ using Content.Shared.Emag.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Labels.Components;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Paper;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
@@ -40,7 +41,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server._Moffstation.Pirate.Systems;
 
-public sealed partial class PirateSaleSystem : EntitySystem
+public sealed partial class PirateCargoSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
@@ -59,14 +60,31 @@ public sealed partial class PirateSaleSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly PaperSystem _paperSystem = default!;
     [Dependency] private readonly ItemSlotsSystem _slots = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+
+    private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<CargoSellBlacklistComponent> _blacklistQuery;
+    private EntityQuery<MobStateComponent> _mobQuery;
+    private EntityQuery<TradeStationComponent> _tradeQuery;
 
     private static readonly SoundPathSpecifier ApproveSound = new("/Audio/Effects/Cargo/ping.ogg");
+
+    private HashSet<EntityUid> _setEnts = new();
+    private List<EntityUid> _listEnts = new();
+    private List<(EntityUid, PiratePalletComponent, TransformComponent)> _pads = new();
 
     public override void Initialize()
     {
         base.Initialize();
 
+        _xformQuery = GetEntityQuery<TransformComponent>();
+        _blacklistQuery = GetEntityQuery<CargoSellBlacklistComponent>();
+        _mobQuery = GetEntityQuery<MobStateComponent>();
+        _tradeQuery = GetEntityQuery<TradeStationComponent>();
+
+        // Shuttle
         SubscribeLocalEvent<PirateShuttleComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<PirateShuttleComponent, GridSplitEvent>(OnPirateShuttleSplit);
 
         // Bounty console
         SubscribeLocalEvent<PirateBountyConsoleComponent, BoundUIOpenedEvent>(OnBountyConsoleOpened);
@@ -84,8 +102,22 @@ public sealed partial class PirateSaleSystem : EntitySystem
         SubscribeLocalEvent<PirateOrderConsoleComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<PirateOrderConsoleComponent, InteractUsingEvent>(OnInteractUsing);
 
-        // Fullfilling orders
-        // SubscribeLocalEvent<FulfillPirateOrderEvent>(OnTelepadFulfillPirateOrder);
+        //Sale Console
+        SubscribeLocalEvent<PiratePalletConsoleComponent, BoundUIOpenedEvent>(OnPalletUIOpen);
+        SubscribeLocalEvent<PiratePalletConsoleComponent, CargoPalletSellMessage>(OnPalletSale);
+        SubscribeLocalEvent<PiratePalletConsoleComponent, CargoPalletAppraiseMessage>(OnPalletAppraise);
+    }
+
+    private void OnPirateShuttleSplit(Entity<PirateShuttleComponent> ent, ref GridSplitEvent args)
+    {
+        // If the trade station gets bombed it's still a trade station.
+        foreach (var gridUid in args.NewGrids)
+        {
+            // This *should* be enough to make sure the console doesn't get borked if the shuttle gets wrecked
+            EnsureComp<PirateShuttleComponent>(gridUid);
+            EnsureComp<StationCargoBountyDatabaseComponent>(gridUid);
+            EnsureComp<StationCargoOrderDatabaseComponent>(gridUid);
+        }
     }
 
     #region BountyConsole
@@ -606,6 +638,140 @@ public sealed partial class PirateSaleSystem : EntitySystem
     //         return;
     //     }
     // }
+
+    #endregion
+
+    #region SaleConsole
+
+    private void UpdatePalletConsoleInterface(EntityUid uid)
+    {
+        if (!TryGetPirateShuttle(uid, out var shuttle) || shuttle == null)
+        {
+            _uiSystem.SetUiState(uid,
+                CargoPalletConsoleUiKey.Sale,
+                new CargoPalletConsoleInterfaceState(0, 0, false));
+            return;
+        }
+        GetPalletGoods((EntityUid)shuttle, out var toSell, out var goods);
+        var totalAmount = goods.Sum(t => t.Item3);
+        _uiSystem.SetUiState(uid,
+            CargoPalletConsoleUiKey.Sale,
+            new CargoPalletConsoleInterfaceState((int) totalAmount, toSell.Count, true));
+    }
+
+    private void OnPalletUIOpen(Entity<PiratePalletConsoleComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdatePalletConsoleInterface(ent.Owner);
+    }
+
+    private void GetPalletGoods(EntityUid gridUid, out HashSet<EntityUid> toSell,  out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
+    {
+        goods = new HashSet<(EntityUid, OverrideSellComponent?, double)>();
+        toSell = new HashSet<EntityUid>();
+
+        foreach (var (palletUid, _, _) in GetCargoPallets(gridUid, BuySellType.Sell))
+        {
+            // Containers should already get the sell price of their children so can skip those.
+            _setEnts.Clear();
+
+            _lookup.GetEntitiesIntersecting(
+                palletUid,
+                _setEnts,
+                LookupFlags.Dynamic | LookupFlags.Sundries);
+
+            foreach (var ent in _setEnts)
+            {
+                // Dont sell:
+                // - anything already being sold
+                // - anything anchored (e.g. light fixtures)
+                // - anything blacklisted (e.g. players).
+                if (toSell.Contains(ent))
+                {
+                    continue;
+                }
+
+                if (_xformQuery.TryGetComponent(ent, out var xform) &&
+                    (xform.Anchored || !_cargoSystem.CanSell(ent, xform)))
+                {
+                    continue;
+                }
+
+                if (_blacklistQuery.HasComponent(ent))
+                    continue;
+
+                var price = _pricing.GetPrice(ent);
+                if (price == 0)
+                    continue;
+                toSell.Add(ent);
+                goods.Add((ent, CompOrNull<OverrideSellComponent>(ent), price));
+            }
+        }
+    }
+
+    private List<(EntityUid Entity, PiratePalletComponent Component, TransformComponent PalletXform)> GetCargoPallets(EntityUid gridUid, BuySellType requestType = BuySellType.All)
+    {
+        _pads.Clear();
+
+        var query = AllEntityQuery<PiratePalletComponent, TransformComponent>();
+
+        while (query.MoveNext(out var uid, out var comp, out var compXform))
+        {
+            if (compXform.ParentUid != gridUid ||
+                !compXform.Anchored)
+            {
+                continue;
+            }
+
+            if ((requestType & comp.PalletType) == 0)
+            {
+                continue;
+            }
+
+            _pads.Add((uid, comp, compXform));
+
+        }
+
+        return _pads;
+    }
+
+    private void OnPalletSale(EntityUid uid, PiratePalletConsoleComponent component, CargoPalletSellMessage args)
+    {
+        var xform = Transform(uid);
+
+        if (!TryGetPirateShuttle(uid, out var shuttle) ||
+            !GetShuttleComp(uid, out var shuttleComp))
+        {
+            return;
+        }
+
+        if (shuttle == null || shuttleComp == null)
+            return;
+
+        if (xform.GridUid is not { } gridUid)
+        {
+            _uiSystem.SetUiState(uid,
+                CargoPalletConsoleUiKey.Sale,
+                new CargoPalletConsoleInterfaceState(0, 0, false));
+            return;
+        }
+
+        if (!_cargoSystem.SellPallets(gridUid, out var goods))
+            return;
+
+        foreach (var (_, sellComponent, value) in goods)
+        {
+            shuttleComp.Money += value;
+        }
+
+        Dirty((EntityUid)shuttle, shuttleComp);
+        _audio.PlayPvs(ApproveSound, uid);
+        UpdatePalletConsoleInterface(uid);
+    }
+
+    private void OnPalletAppraise(EntityUid uid, PiratePalletConsoleComponent component, CargoPalletAppraiseMessage args)
+    {
+        UpdatePalletConsoleInterface(uid);
+    }
 
     #endregion
 

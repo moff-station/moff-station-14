@@ -1,4 +1,5 @@
 using Content.Shared.Cargo;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Cargo.Components;
@@ -22,10 +23,10 @@ public sealed partial class StationCargoBountyDatabaseComponent : Component
     public List<CargoBountyData> Bounties = new();
 
     /// <summary>
-    /// Moffstation - List of secret bounties for pirates
+    /// The group that bounties are pulled from.
     /// </summary>
     [DataField]
-    public List<CargoBountyData> SecretBounties = new();
+    public ProtoId<CargoBountyGroupPrototype> Group = "StationBounty";
 
     /// <summary>
     /// A list of all the bounties that have been completed or

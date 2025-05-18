@@ -1,5 +1,7 @@
 using System.Linq;
+using Content.Server._Moffstation.Pirate.Components;
 using Content.Server.Cargo.Components;
+using Content.Shared._Moffstation.Cargo.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
@@ -34,6 +36,9 @@ public sealed partial class CargoSystem
     #region Console
     private void UpdatePalletConsoleInterface(EntityUid uid)
     {
+        //Block from overwriting pirate functionality
+        if (TryComp<PiratePalletConsoleComponent>(uid, out _))
+            return;
         if (Transform(uid).GridUid is not { } gridUid)
         {
             _uiSystem.SetUiState(uid,
@@ -88,6 +93,9 @@ public sealed partial class CargoSystem
 
         while (query.MoveNext(out var uid, out var comp, out var compXform))
         {
+            if (TryComp<PiratePalletComponent>(uid, out _))
+                continue;
+
             if (compXform.ParentUid != gridUid ||
                 !compXform.Anchored)
             {
@@ -131,7 +139,7 @@ public sealed partial class CargoSystem
 
     #region Station
 
-    private bool SellPallets(EntityUid gridUid, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
+    internal bool SellPallets(EntityUid gridUid, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
     {
         GetPalletGoods(gridUid, out var toSell, out goods);
 
@@ -189,7 +197,7 @@ public sealed partial class CargoSystem
         }
     }
 
-    private bool CanSell(EntityUid uid, TransformComponent xform)
+    internal bool CanSell(EntityUid uid, TransformComponent xform)
     {
         if (_mobQuery.HasComponent(uid))
         {
