@@ -17,6 +17,7 @@ using Content.Shared.Whitelist;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -293,6 +294,13 @@ public sealed partial class CargoSystem
         return IsBountyComplete(container, proto.Entries);
     }
 
+    public bool IsBountyComplete(EntityUid container, ProtoId<CargoBountyPrototype> prototypeId)
+    {
+        var prototype = _protoMan.Index(prototypeId);
+
+        return IsBountyComplete(container, prototype.Entries);
+    }
+
     public bool IsBountyComplete(EntityUid container, CargoBountyPrototype prototype)
     {
         return IsBountyComplete(container, prototype.Entries);
@@ -393,7 +401,9 @@ public sealed partial class CargoSystem
             return false;
 
         // todo: consider making the cargo bounties weighted.
-        var allBounties = _protoMan.EnumeratePrototypes<CargoBountyPrototype>().ToList();
+        var allBounties = _protoMan.EnumeratePrototypes<CargoBountyPrototype>()
+            .Where(p => p.Group == component.Group)
+            .ToList();
         var filteredBounties = new List<CargoBountyPrototype>();
         foreach (var proto in allBounties)
         {

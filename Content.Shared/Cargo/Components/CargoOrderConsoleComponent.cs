@@ -77,8 +77,14 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// <summary>
     /// All of the <see cref="CargoProductPrototype.Group"/>s that are supported.
     /// </summary>
-    [DataField("allowedGroups"), AutoNetworkedField]    // Moffstation - Added tag for yaml editing
-    public List<string> AllowedGroups = new() { "market" };
+    [DataField, AutoNetworkedField]
+    public List<ProtoId<CargoMarketPrototype>> AllowedGroups = new()
+    {
+        "market",
+        "SalvageJobReward2",
+        "SalvageJobReward3",
+        "SalvageJobRewardMAX",
+    };
 
     /// <summary>
     /// Access needed to toggle the limit on this console.
@@ -98,22 +104,46 @@ public sealed partial class CargoOrderConsoleComponent : Component
     public static readonly ProtoId<RadioChannelPrototype> BaseAnnouncementChannel = "Supply";
 
     /// <summary>
-    /// Moffstation - Provides access to a secret cargo account with the same string
+    /// If set to true, restricts this console from ordering and has it print slips instead
     /// </summary>
-    [DataField("secretAccount")]
-    public string? SecretAccount;
+    [DataField]
+    public bool SlipPrinter;
 
     /// <summary>
-    /// Moffstation - If this variable is true, it will be unable to view or make transfers to other cargo accounts
+    /// The time at which the console will be able to print a slip again.
     /// </summary>
-    [DataField("isolated")]
-    public bool Isolated;
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextPrintTime = TimeSpan.Zero;
 
     /// <summary>
-    /// Moffstation - Determines whether the console will give announcements upon making purchases
+    /// The time between prints.
     /// </summary>
-    [DataField("announcementsEnabled")]
-    public bool AnnouncementsEnabled = true;
+    [DataField]
+    public TimeSpan PrintDelay = TimeSpan.FromSeconds(5);
+
+    /// <summary>
+    /// The sound made when printing occurs
+    /// </summary>
+    [DataField]
+    public SoundSpecifier PrintSound = new SoundCollectionSpecifier("PrinterPrint");
+
+    /// <summary>
+    /// The sound made when an order slip is scanned
+    /// </summary>
+    [DataField]
+    public SoundSpecifier ScanSound = new SoundCollectionSpecifier("CargoBeep");
+
+    /// <summary>
+    /// The time at which the console will be able to play the deny sound.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NextDenySoundTime = TimeSpan.Zero;
+
+    /// <summary>
+    /// The time between playing the deny sound.
+    /// </summary>
+    [DataField]
+    public TimeSpan DenySoundDelay = TimeSpan.FromSeconds(2);
 }
 
 /// <summary>

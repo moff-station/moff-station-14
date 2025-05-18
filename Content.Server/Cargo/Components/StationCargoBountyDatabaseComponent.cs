@@ -1,4 +1,5 @@
 using Content.Shared.Cargo;
+using Content.Shared.Cargo.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -23,12 +24,6 @@ public sealed partial class StationCargoBountyDatabaseComponent : Component
     public List<CargoBountyData> Bounties = new();
 
     /// <summary>
-    /// The group that bounties are pulled from.
-    /// </summary>
-    [DataField]
-    public ProtoId<CargoBountyGroupPrototype> Group = "StationBounty";
-
-    /// <summary>
     /// A list of all the bounties that have been completed or
     /// skipped for a station.
     /// </summary>
@@ -47,6 +42,12 @@ public sealed partial class StationCargoBountyDatabaseComponent : Component
     /// </summary>
     [DataField]
     public HashSet<string> CheckedBounties = new();
+
+    /// <summary>
+    /// The group that bounties are pulled from.
+    /// </summary>
+    [DataField]
+    public ProtoId<CargoBountyGroupPrototype> Group = "StationBounty";
 
     /// <summary>
     /// The time at which players will be able to skip the next bounty.
