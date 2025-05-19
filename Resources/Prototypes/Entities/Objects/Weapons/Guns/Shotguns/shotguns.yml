@@ -72,9 +72,7 @@
   - type: AmmoCounter
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
-    #Moffstation - Begin Bulldog buff
-    fireRate: 2.5
-    #Moffstation - end
+    fireRate: 2.5 # Moffstation - Bulldog buff
     selectedMode: FullAuto
     availableModes:
     - FullAuto
