@@ -24,7 +24,9 @@
     - suitStorage
   - type: AmmoCounter
   - type: Gun
-    fireRate: 2
+    # Moffstation - Bulldog Buff
+    fireRate: 3
+    # Moffstation - End
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
