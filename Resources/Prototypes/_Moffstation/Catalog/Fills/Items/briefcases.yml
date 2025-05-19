@@ -10,8 +10,9 @@
     state: icon
   - type: Item
     sprite: Objects/Storage/Briefcases/briefcase_brown.rsi # Placeholder
-  - type: Electrified
-    requirePower: false
+  - type: StunOnCollide
+    stunAmount: 2
+    knockdownAmount: 2
   - type: MeleeWeapon
     damage:
       types:

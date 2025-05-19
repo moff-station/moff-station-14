@@ -542,18 +542,18 @@
 ## Central Command
 
 - type: entity
-  name: CentComm official
-  id: RandomHumanoidSpawnerCentcomOfficial
+  name: CentComm representative
+  id: RandomHumanoidSpawnerCentcommRepresentative
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
       state: centcom
     - type: RandomHumanoidSpawner
-      settings: CentcomOfficial
+      settings: CentcommRepresentative
 
 - type: randomHumanoidSettings
-  id: CentcomOfficial
   parent: EventHumanoidCentcomm
+  id: CentcommRepresentative
   components:
     - type: GhostRole
       name: ghost-role-information-centcom-official-name
@@ -562,8 +562,56 @@
       raffle:
         settings: default
     - type: Loadout
-      prototypes: [ CentcomGear ]
+      prototypes: [ CentcommRepresentativeGear ]
       roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: RandomHumanoidSpawnerCentcommRepresentative
+  name: Central Commander
+  id: RandomHumanoidSpawnerCentcommCommander
+  components:
+  - type: RandomHumanoidSpawner
+    settings: CentcommCommander
+
+- type: randomHumanoidSettings
+  parent: CentcommRepresentative
+  id: CentcommCommander
+  components:
+  - type: Loadout
+    prototypes: [ CentcommCommanderGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: RandomHumanoidSpawnerCentcommRepresentative
+  name: CentComm agent
+  id: RandomHumanoidSpawnerCentcommAgent
+  components:
+  - type: RandomHumanoidSpawner
+    settings: CentcommAgent
+
+- type: randomHumanoidSettings
+  parent: CentcommRepresentative
+  id: CentcommAgent
+  components:
+  - type: Loadout
+    prototypes: [ CentcommAgentGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: RandomHumanoidSpawnerCentcommRepresentative
+  name: CentComm field officer
+  id: RandomHumanoidSpawnerCentcommFieldOfficer
+  components:
+  - type: RandomHumanoidSpawner
+    settings: CentcommFieldOfficer
+
+- type: randomHumanoidSettings
+  parent: CentcommRepresentative
+  id: CentcommFieldOfficer
+  components:
+  - type: Loadout
+    prototypes: [ CentcommFieldAgentGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
 
 ## Syndicate
 

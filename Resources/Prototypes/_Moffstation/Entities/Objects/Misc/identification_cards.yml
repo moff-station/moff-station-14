@@ -12,23 +12,11 @@
   name: Central commander ID card
 
 - type: entity
-  parent: IDCardStandard
+  parent: CentcommRepresentativeIDCard
   id: CentcommAgentIDCard
   name: CentComm agent ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: centcom
-    - state: idcentcom
-  - type: Item
-    heldPrefix: blue
-  - type: Access
-    tags:
-    - Maintenance
-    - CentralCommand
-    - Brig
 
 - type: entity
-  parent: CentcommAgentIDCard
+  parent: CentcommRepresentativeIDCard
   id: CentcommFieldOfficerIDCard
   name: CentComm officer ID card
