@@ -24,9 +24,7 @@
     - suitStorage
   - type: AmmoCounter
   - type: Gun
-    # Moffstation - Bulldog Buff
-    fireRate: 3
-    # Moffstation - End
+    fireRate: 2
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -74,7 +72,9 @@
   - type: AmmoCounter
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
-    fireRate: 2
+    #Moffstation - Begin Bulldog buff
+    fireRate: 2.5
+    #Moffstation - end
     selectedMode: FullAuto
     availableModes:
     - FullAuto
