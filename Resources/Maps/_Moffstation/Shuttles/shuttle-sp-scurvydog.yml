@@ -476,11 +476,23 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
-    - type: PirateShuttle
+    - type: StationData
+    - type: StationBankAccount
+      primaryAccount: Pirates
+      primaryCut: 1.0
+      lockboxCut: 1.0
+      accounts:
+        Pirates: 1000
+      revenueDistribution:
+        Pirates: 1.0
+      increasePerSecond: 0
     - type: StationCargoBountyDatabase
+      group: Pirates
     - type: StationCargoOrderDatabase
+      markets: [ "pirateMarket" ]
       orders:
         Pirates: [ ]
+    - type: PirateShuttle
 - proto: AirAlarm
   entities:
   - uid: 800

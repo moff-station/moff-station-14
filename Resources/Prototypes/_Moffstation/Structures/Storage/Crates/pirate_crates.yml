@@ -1,0 +1,62 @@
+- type: entity
+  parent: CratePirate
+  id: CratePirateSecure
+  name: secure pirate chest
+  description: A secure space pirate chest, keeps the station lubbers away from your booty.
+  components:
+  - type: Lock
+  - type: LockVisuals
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/Crates/piratechestsecure.rsi
+    icon: crate
+    layers:
+    - state: crate
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: crate_door
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: welded
+      visible: false
+      map: [ "enum.WeldableLayers.BaseWelded" ]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,-0.09375"
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+  - type: Icon
+    sprite: Structures/Storage/Crates/piratechest.rsi
+    state: crate_icon
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+
+- type: entity
+  parent: CratePirateSecure
+  id: CrateDavyJones
+  name: Davy Jones' locker
+  components:
+  - type: EntityStorage
+  - type: Physics
+    hard: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer

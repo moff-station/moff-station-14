@@ -21,8 +21,6 @@
   - type: CargoOrderConsole
     allowedGroups: [ "pirateMarket" ]
     account: Pirates
-    isolated: true
-    announcementsEnabled: false
   - type: PirateOrderConsole
   - type: Computer
     board: PirateCargoRequestComputerCircuitboard

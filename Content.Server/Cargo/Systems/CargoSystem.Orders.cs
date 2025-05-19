@@ -419,6 +419,10 @@ namespace Content.Server.Cargo.Systems
             if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var orderDatabase))
                 return;
 
+            // Moffstation - Railguard since it can cause errors with pirates
+            if (!orderDatabase.Orders.ContainsKey(console.Account))
+                return;
+
             if (_uiSystem.HasUi(consoleUid, CargoConsoleUiKey.Orders))
             {
                 _uiSystem.SetUiState(consoleUid,
@@ -457,6 +461,10 @@ namespace Content.Server.Cargo.Systems
         {
             var amount = 0;
 
+            // Moffstation - Railguard since it can cause errors with pirates
+            if (!component.Orders.ContainsKey(account))
+                return 0;
+
             foreach (var order in component.Orders[account])
             {
                 if (!order.Approved)
@@ -471,7 +479,7 @@ namespace Content.Server.Cargo.Systems
         /// Updates all of the cargo-related consoles for a particular station.
         /// This should be called whenever orders change.
         /// </summary>
-        private void UpdateOrders(EntityUid dbUid)
+        internal void UpdateOrders(EntityUid dbUid)
         {
             // Order added so all consoles need updating.
             var orderQuery = AllEntityQuery<CargoOrderConsoleComponent>();
@@ -585,7 +593,7 @@ namespace Content.Server.Cargo.Systems
         /// <summary>
         /// Fulfills the specified cargo order and spawns paper attached to it.
         /// </summary>
-        private bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
+        internal bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
         {
             // Create the item itself
             var item = Spawn(order.ProductId, spawn);

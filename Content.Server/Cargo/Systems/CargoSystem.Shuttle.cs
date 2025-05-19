@@ -115,7 +115,7 @@ public sealed partial class CargoSystem
         return _pads;
     }
 
-    private List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)>
+    internal List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)>
         GetFreeCargoPallets(EntityUid gridUid,
             List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)> pallets)
     {

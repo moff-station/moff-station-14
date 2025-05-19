@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Cargo.Components;
 using Content.Server.NameIdentifier;
-using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
@@ -217,10 +216,6 @@ public sealed partial class CargoSystem
 
     private void OnMapInit(EntityUid uid, StationCargoBountyDatabaseComponent component, MapInitEvent args)
     {
-        // Moffstation - Start - make it so it doesnt double run for Pirates
-        if (TryComp<PirateShuttleComponent>(uid, out _))
-            return;
-        // Moffstation - End
         FillBountyDatabase(uid, component);
     }
 
