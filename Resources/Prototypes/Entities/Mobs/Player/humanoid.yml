@@ -544,6 +544,7 @@
 - type: entity
   name: CentComm representative
   id: RandomHumanoidSpawnerCentcommRepresentative
+  suffix: CentCommRole
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -610,7 +611,7 @@
   id: CentcommFieldOfficer
   components:
   - type: Loadout
-    prototypes: [ CentcommFieldAgentGear ]
+    prototypes: [ CentcommFieldOfficerGear ]
     roleLoadout: [ RoleSurvivalStandard ]
 
 ## Syndicate
