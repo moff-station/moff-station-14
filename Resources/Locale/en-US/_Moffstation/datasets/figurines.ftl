@@ -151,7 +151,7 @@ figurines-kylie-3 = No kiddin'...
 
 figurines-light-1 = SHADOW!!
 figurines-light-2 = Wanna get lunch?
-figurines-light-3 = Buy ShadowBucks™️ today!
+figurines-light-3 = Buy ShadowBucks™ today!
 figurines-light-4 = Advanced Anomalous Research, for the gun.
 figurines-light-5 = Welcome to the Shadow Realm.
 
