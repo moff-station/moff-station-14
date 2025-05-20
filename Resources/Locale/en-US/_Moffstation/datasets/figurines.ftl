@@ -165,7 +165,7 @@ figurines-lilith-3 = I'm just being a goober.
 figurines-lilith-4 = Officer listen; I can explain.
 
 figurines-molar-1 = FAT MAGGOT
-figurines-molar-2 = Does anyone have some intedynes?
+figurines-molar-2 = Does anyone have some interdynes?
 figurines-molar-3 = Oh... hey kid
 figurines-molar-4 = Be quiet
 
