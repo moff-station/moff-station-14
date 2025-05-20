@@ -181,6 +181,11 @@ figurines-peedee-3 = Don't put me back in the box
 figurines-peedee-4 = Peedee hates needles!
 figurines-peedee-5 = LET ME OUT!
 
+figurines-periwinkle-1 = Laughter is the best medicine!
+figurines-periwinkle-2 = Honk.
+figurines-periwinkle-3 = Yap yap yap.
+figurines-periwinkle-4 = What the honk?
+
 figurines-rareel-1 = Whiskey!
 figurines-rareel-2 = Huh-
 figurines-rareel-3 = I'm gonna take a nap in the back
