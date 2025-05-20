@@ -38,20 +38,22 @@
   id: PersonalItemAuroraPinSwapGraph
   start: swap_asher
   graph:
-  - node: swap_asher
-    entity: PersonalItemAuroraPinInversedSwappable
-    edges:
-    - to: swap_aurora
-      steps:
-      - tool: Prying
-        doAfter: 0.1
-  - node: swap_aurora
-    entity: PersonalItemAuroraPinSwappable
-    edges:
-    - to: swap_asher
-      steps:
-      - tool: Prying
-        doAfter: 0.1
+    - node: swap_asher
+      edges:
+        - to: leaf_asher
+          steps:
+            - tool: Prying
+              doAfter: 0.1
+    - node: leaf_asher
+      entity: PersonalItemAuroraPinInversedSwappable
+    - node: swap_aurora
+      edges:
+        - to: leaf_aurora
+          steps:
+            - tool: Prying
+              doAfter: 0.1
+    - node: leaf_aurora
+      entity: PersonalItemAuroraPinSwappable
 
 - type: loadout
   id: PersonalItemAuroraPin
