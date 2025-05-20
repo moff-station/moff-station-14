@@ -1,9 +1,220 @@
+# We don't want stuff here to be too expensive, we want them to prefer using the pirate market over the crew one
+# If making something here balanced makes pricing on the crew console a better deal, make the crew equivalent more expensive
+#
+# As a baseline, im going to use these tiers for balancing the price, and adjust as nessessary
+# $15000 - Reinforcements - Manpower is more important than anything
+# $10000 - Nukie tier - Highest grade of armor and weapons: if all the pirates have it, the crew will be in serious trouble
+# $7000  - High tier  - Highly useful or essential items: Having these will seriously help them
+# $4500  - Stock tier - Useful things that arent total gamechangers, also sidegrades/replacements to starting equipment
+# $2000  - Amenities  - Ammo, refills, supplies, and low tier equipment. Nothing that will have an incredible impact.
+# $500   -   Toys     - Toys and trinkets, fun stuff that doesnt serve much purpose.
+
 - type: cargoProduct
   id: PirateEsword
   icon:
     sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi
     state: e_cutlass
   product: CratePirateECutlass
+  cost: 5500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateWebvest
+  icon:
+    sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
+    state: icon
+  product: CratePirateWebvest
+  cost: 8500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateAkms
+  icon:
+    sprite: Objects/Weapons/Guns/Rifles/ak.rsi
+    state: icon
+  product: CratePirateAk
+  cost: 11000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateRifleAmmo
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Boxes/light_rifle.rsi
+    state: icon
+  product: CratePirateRifleAmmo
+  cost: 3000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateBlunderbuss
+  icon:
+    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+    state: icon
+  product: CratePirateBlunderbuss
   cost: 4000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateCannonball
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: ball
+  product: CratePirateCannonBall
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateGlassshot
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: glassshot
+  product: CratePirateGlassshot
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateGrapeshot
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: grapeshot
+  product: CratePirateGrapeshot
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateShuttleCannon
+  icon:
+    sprite: Objects/Weapons/Guns/Shuttles/pirate_cannon.rsi
+    state: base
+  product: CratePirateShuttleCannon
+  cost: 5000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: CratePirateEVA
+  icon:
+    sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
+    state: icon
+  product: CratePirateSpareEVA
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateAdvancedMedkit
+  icon:
+    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    state: advkit
+  product: CratePirateAdvancedMedkit
+  cost: 4500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateCombatMedkit
+  icon:
+    sprite: Objects/Specific/Medical/firstaidkits.rsi
+    state: blackkit
+  product: CratePirateCombatMedkit
+  cost: 4500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateKidnap
+  icon:
+    sprite: Objects/Misc/handcuffs.rsi
+    state: handcuff
+  product: CratePirateKidnap
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateHandcannon
+  icon:
+    sprite: Objects/Weapons/Guns/Launchers/pirate_cannon.rsi
+    state: icon
+  product: CratePirateHandcannon
+  cost: 7000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateCutlass
+  icon:
+    sprite: Objects/Weapons/Melee/cutlass.rsi
+    state: icon
+  product: CratePirateCutlass
+  cost: 2500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateFlintlock
+  icon:
+    sprite: Objects/Weapons/Guns/Snipers/flintlock.rsi
+    state: icon
+  product: CratePirateFlintlock
+  cost: 3000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateRevolver
+  icon:
+    sprite: Objects/Weapons/Guns/Revolvers/pirate_revolver.rsi
+    state: icon
+  product: CratePirateRevolver
+  cost: 4500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateSpeedloader
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/magnum_speed_loader.rsi
+    state: icon
+  product: CratePirateSpeedloader
+  cost: 2500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateMakeshiftLaser
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
+    state: icon
+  product: CratePirateMakeshiftLaser
+  cost: 4000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateShotgunAmmo
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Boxes/shotgun.rsi
+    state: icon
+  product: CratePirateShotgunAmmo
+  cost: 3000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateAppraisalTool
+  icon:
+    sprite: Objects/Tools/appraisal-tool.rsi
+    state: icon
+  product: CratePirateAppraisalTool
+  cost: 1000
   category: cargoproduct-category-name-armory
   group: pirateMarket

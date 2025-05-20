@@ -1,12 +1,69 @@
 - type: entity
   parent: BaseComputerCircuitboard
-  id: PirateCargoRequestComputerCircuitboard
+  id: PirateRequestComputerCircuitboard
   name: pirate request computer board
-  description: A computer printed circuit board for an engineering request computer.
+  description: A computer printed circuit board for a pirate request computer.
+  suffix: Pirate
   components:
   - type: Sprite
-    state: cpu_engineering  # change to pirate sprite eventually
+    state: cpu_syndicate
   - type: ComputerBoard
     prototype: ComputerCargoOrdersPirate
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: PirateSaleComputerCircuitboard
+  name: pirate sale computer board
+  description: A computer printed circuit board for a pirate sale computer.
+  suffix: Pirate
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerPalletConsolePirate
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: PirateBountyComputerCircuitboard
+  name: pirate bounty computer board
+  description: A computer printed circuit board for a pirate bounty computer.
+  suffix: Pirate
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerPirateBounty
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: PirateShuttleCircuitboard
+  name: pirate ship console board
+  suffix: Pirate
+  description: A computer printed circuit board for a pirate ship console.
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerPirateShuttle
+  - type: StaticPrice
+    price: 750
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: PirateCommsCircuitboard
+  name: pirate communication console board
+  description: A computer printed circuit board for a pirate communications console.
+  suffix: Pirate
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: PirateComputerComms
   - type: StaticPrice
     price: 750

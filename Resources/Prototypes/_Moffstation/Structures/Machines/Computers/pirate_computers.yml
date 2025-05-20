@@ -1,8 +1,8 @@
-# Request console variants.
+# Cargo console variants.
 - type: entity
   id: ComputerCargoOrdersPirate
   parent: ComputerCargoOrders
-  name: Pirate request computer
+  name: pirate request computer
   description: Used by pirates to purchase new booty.
   components:
   - type: Sprite
@@ -23,14 +23,14 @@
     account: Pirates
   - type: PirateOrderConsole
   - type: Computer
-    board: PirateCargoRequestComputerCircuitboard
+    board: PirateRequestComputerCircuitboard
   - type: PointLight
     color: "#c9c042"
   - type: AccessReader
     access: [["Pirate"]]
 
 - type: entity
-  id: PirateComputerPalletConsole
+  id: ComputerPalletConsolePirate
   parent: ComputerPalletConsole
   name: pirate sale computer
   description: Used to sell goods loaded onto cargo pallets.
@@ -61,7 +61,7 @@
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
     - type: Computer
-      board: CargoSaleComputerCircuitboard  # Add this circuit
+      board: PirateSaleComputerCircuitboard
     - type: PointLight
       radius: 1.5
       energy: 1.6
@@ -100,7 +100,7 @@
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: Computer
-    board: CargoBountyComputerCircuitboard  # Add this
+    board: PirateBountyComputerCircuitboard
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -111,3 +111,72 @@
     guides:
     - CargoBounties
     - Cargo
+
+# Shuttle consoles
+
+- type: entity
+  parent: BaseComputerShuttle
+  id: ComputerPirateShuttle
+  name: pirate ship console
+  description: Used to pilot a pirate ship.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: syndishuttle
+    - map: ["computerLayerKeys"]
+      state: syndie_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Tag
+    tags:
+    - Pirate
+  - type: RadarConsole
+    maxRange: 384
+  - type: WorldLoader
+    radius: 1536
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#c94242"
+  - type: Computer
+    board: PirateShuttleCircuitboard
+
+# Pirate communications computer
+
+- type: entity
+  parent: ComputerComms
+  id: PirateComputerComms
+  name: pirate communications computer
+  description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm_syndie
+    - map: ["computerLayerKeys"]
+      state: syndie_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-pirate
+    color: "#914d07"
+    canShuttle: false
+    global: true
+    sound: /Audio/Announcements/war.ogg
+  - type: Computer
+    board: PirateCommsCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#f71713"

@@ -13,3 +13,16 @@
     blacklist:
       tags:
       - Slice
+
+- type: cargoBounty
+  id: PirateBountyNuke
+  reward: 30000
+  description: bounty-description-nuke
+  idPrefix: GX
+  group: Pirates
+  entries:
+  - name: bounty-item-nuke
+    amount: 1
+    whitelist:
+      tags:
+      - Nuke

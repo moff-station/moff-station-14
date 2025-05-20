@@ -19,3 +19,5 @@ pirate-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color
 
 pirates-title = Pirates
 pirates-description = The station has come under attack by a band of thieving pirates! Keep them from looting the station dry!
+
+comms-console-announcement-title-pirate = Space Pirate Announcement

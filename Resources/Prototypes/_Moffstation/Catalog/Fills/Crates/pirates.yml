@@ -1,6 +1,8 @@
+# Use the CratePirateChestSecure and CratePirate for pirate themed stuff, and CratePiratePrivateSecure for modern stuff (and CratePirateDavyJones for really cool stuff)
+
 - type: entity
   id: CratePirateECutlass
-  parent: [ CratePirate, BaseSecurityContraband ]
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
   name: energy cutlass crate
   description: Contains two top of the line e-cutlasses, fresh from the ship
   components:
@@ -8,3 +10,227 @@
     contents:
     - id: EnergyCutlass
       amount: 2
+
+- type: entity
+  id: CratePirateWebvest
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: merc webvest crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterVestWebMerc
+      amount: 2
+
+- type: entity
+  id: CratePirateAk
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: AKMS crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleAk
+      amount: 2
+    - id: MagazineLightRifle
+      amount: 4
+
+- type: entity
+  id: CratePirateRifleAmmo
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: rifle ammo crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineBoxLightRifle
+      amount: 2
+    - id: MagazineLightRifle
+      amount: 4
+
+- type: entity
+  id: CratePirateBlunderbuss
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: blunderbuss crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunBlunderbuss
+      amount: 2
+    - id: BoxLethalshot
+      amount: 2
+
+- type: entity
+  id: CratePirateCannonBall
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: cannonball crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: CannonBall
+      amount: 3
+
+- type: entity
+  id: CratePirateGlassshot
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: glassshot crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: CannonBallGlassshot
+      amount: 3
+
+- type: entity
+  id: CratePirateGrapeshot
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: grapeshot crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: CannonBallGrapeshot
+      amount: 3
+
+- type: entity
+  id: CratePirateShuttleCannon
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: cannon crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: ShuttleGunPirateCannon
+      amount: 1
+
+- type: entity
+  id: CratePirateSpareEVA
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: deepspace EVA crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitPirateEVA
+      amount: 2
+    - id: OxygenTankFilled
+      amount: 2
+    - id: NitrogenTankFilled
+      amount: 2
+
+- type: entity
+  id: CratePirateAdvancedMedkit
+  parent: [ CratePirate, BaseSecurityContraband ]
+  name: advanced medkit crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedkitAdvancedFilled
+      amount: 1
+
+- type: entity
+  id: CratePirateCombatMedkit
+  parent: [ CratePirate, BaseSecurityContraband ]
+  name: combat medkit crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedkitCombatFilled
+      amount: 1
+
+- type: entity
+  id: CratePirateKidnap
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: kidnapping supplies crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: Handcuffs
+      amount: 3
+    - id: ClothingMaskMuzzle
+      amount: 1
+    - id: ClothingUniformJumpsuitPrisoner
+      amount: 2
+
+- type: entity
+  id: CratePirateHandcannon
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: handcannon crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLauncherPirateCannon
+      amount: 1
+    - id: CannonBall
+      amount: 2
+
+- type: entity
+  id: CratePirateCutlass
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: cutlass crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: Cutlass
+      amount: 3
+
+- type: entity
+  id: CratePirateFlintlock
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: flintlock crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolFlintlock
+      amount: 2
+    - id: MagazineBoxMagnum
+      amount: 2
+
+- type: entity
+  id: CratePirateRevolver
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: pirate revolver crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRevolverPirate
+      amount: 2
+    - id: SpeedLoaderMagnum
+      amount: 2
+    - id: MagazineBoxMagnum
+      amount: 2
+
+- type: entity
+  id: CratePirateSpeedloader
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: speedloader crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: SpeedLoaderMagnum
+      amount: 2
+
+- type: entity
+  id: CratePirateMakeshiftLaser
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: makeshift laser pistol crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponMakeshiftLaser
+      amount: 2
+
+- type: entity
+  id: CratePirateShotgunAmmo
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: shotgun ammo crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineShotgun
+      amount: 4
+    - id: BoxLethalshot
+      amount: 2
+
+- type: entity
+  id: CratePirateAppraisalTool
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: appraisal tool crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: AppraisalTool
+      amount: 3

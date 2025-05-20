@@ -1,8 +1,9 @@
 - type: entity
   parent: CratePirate
-  id: CratePirateSecure
+  id: CratePirateChestSecure
   name: secure pirate chest
   description: A secure space pirate chest, keeps the station lubbers away from your booty.
+  suffix: Pirate
   components:
   - type: Lock
   - type: LockVisuals
@@ -10,7 +11,7 @@
     access: [["Pirate"]]
   - type: Sprite
     sprite: _Moffstation/Structures/Storage/Crates/piratechestsecure.rsi
-    icon: crate
+    icon: crate_icon
     layers:
     - state: crate
       map: [ "enum.StorageVisualLayers.Base" ]
@@ -42,13 +43,33 @@
           collection: MetalBreak
 
 - type: entity
-  parent: CratePirateSecure
-  id: CrateDavyJones
+  parent: CratePirateChestSecure
+  id: CratePirateDavyJones
   name: Davy Jones' locker
+  description: A specialized chest for storing the trickiest of loot.
+  suffix: Pirate
   components:
-  - type: EntityStorage
-  - type: Physics
-    hard: false
+  - type: Icon
+    sprite: _Moffstation/Structures/Storage/Crates/davyjoneschest.rsi
+    state: crate_icon
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/Crates/davyjoneschest.rsi
+    icon: crate
+    layers:
+    - state: crate
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: crate_door
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: welded
+      visible: false
+      map: [ "enum.WeldableLayers.BaseWelded" ]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,-0.09375"
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
   - type: Fixtures
     fixtures:
       fix1:
@@ -57,6 +78,25 @@
           radius: 0.45
         density: 50
         mask:
-        - CrateMask #this is so they can go under plastic flaps
+        - Impassable # This is so we can store whole machines and other stuff inside it
         layer:
         - MachineLayer
+  - type: EntityStorage
+#    isCollidableWhenOpen: false
+    capacity: 1
+    whitelist:
+      components:
+      # Add any large bounty object to here
+      - XenoArtifact
+      - Machine
+      - StealTarget
+      - Nuke
+
+- type: entity
+  parent: CratePrivateSecure
+  id: CratePiratePrivateSecure
+  name: secure pirate crate
+  description: nice and metal for the modern pirate feel
+  components:
+  - type: AccessReader
+    access: [["Pirate"]]
