@@ -27,6 +27,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineBoxcar
+  name: Scrappy Reporter Figurine
+  description: A figurine depicting a man with a fashionable pompadour and reporter outfit holding a microphone. (Camera accessory not included.)
+  components:
+  - type: Sprite
+    state: boxcar
+  - type: SpeakOnTrigger
+    pack: FigurinesBoxcar
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineBrad
   name: Disheveled Official Figurine
   description: A figurine depicting a very unkempt man with blonde hair in some sort of formal security uniform. The clothes appear a bit stained and tattered.
@@ -147,6 +158,7 @@
     state: fails
   - type: SpeakOnTrigger
     pack: FigurinesFails
+  - type: LizardAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -228,6 +240,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineJupiter
+  name: Purple Head of Security Moth
+  description: A figurine depicting a tired and old looking moth man. He’s wearing the Head of Security outfit.
+  components:
+  - type: Sprite
+    state: jupiter
+  - type: SpeakOnTrigger
+    pack: FigurinesJupiter
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineKatie
   name: Young Engineer Woman Figurine
   description: A figurine depicting a young woman dressed in an engineering attire, they seem hopeful.
@@ -272,6 +295,17 @@
     state: kylie
   - type: SpeakOnTrigger
     pack: FigurinesKylie
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineLight
+  name: Shadowy Scientist Figurine
+  description: A figurine depicting a scientist who appears to harbor a darker method of letting out stress.
+  components:
+  - type: Sprite
+    state: light
+  - type: SpeakOnTrigger
+    pack: FigurinesLight
 
 - type: entity
   parent: BaseFigurineMoff
@@ -320,6 +354,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurinePeriwinkle
+  name: Chief Medical Clown figurine
+  description: A figurine depicting a doctor with clown attire. Honk.
+  components:
+  - type: Sprite
+    state: periwinkle
+  - type: SpeakOnTrigger
+    pack: FigurinesPeriwinkle
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineRareel
   name: Cheerful-Looking Lizard Figurine
   description: A figurine depicting a happy looking red lizard in paramedic clothing with some frills coming off the side of its head, looks like one got chipped off during shipping
@@ -328,6 +373,18 @@
     state: rareel
   - type: SpeakOnTrigger
     pack: FigurinesRareel
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineRoomba
+  name: Grey Arachnid Engineer Figurine
+  description: A figurine depicting a grey arachnid as a chief engineer. They're playing an acoustic guitar, seemingly at peace.
+  components:
+  - type: Sprite
+    state: roomba
+  - type: SpeakOnTrigger
+    pack: FigurinesRoomba
+  - type: SouthernAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -387,8 +444,8 @@
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineSigerthe
-  name: Figurine
-  description: A figurine depicting
+  name: Gruff Salvager Figurine
+  description: A figurine depicting a reptilian salvage specialist with pitch black scales. The figurine's right eye glows faintly.
   components:
   - type: Sprite
     state: sigerthe
@@ -417,6 +474,17 @@
   - type: SpeakOnTrigger
     pack: FigurinesSouthbridge
   - type: Prayable
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineStella
+  name: Blue-haired Security Officer
+  description: A figurine depicting a young-looking security officer, with long blue hair. They look serious.
+  components:
+  - type: Sprite
+    state: stella
+  - type: SpeakOnTrigger
+    pack: FigurinesStella
 
 - type: entity
   parent: BaseFigurineMoff
@@ -461,3 +529,25 @@
     state: vortex
   - type: SpeakOnTrigger
     pack: FigurinesVortex
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineWallace
+  name: Stressed Pink Spider Figurine
+  description: A strikingly pink spider in captain's clothes. He seems high strung, like he survived 3 attempts on his life in the past 15 minutes.
+  components:
+  - type: Sprite
+    state: wallace
+  - type: SpeakOnTrigger
+    pack: FigurinesWallace
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineWiggles
+  name: Wise Clown Figurine
+  description: A figurine depicting a clown with a wizard hat. They look very wise.
+  components:
+  - type: Sprite
+    state: wiggles
+  - type: SpeakOnTrigger
+    pack: FigurinesWiggles
