@@ -80,7 +80,7 @@
         mask:
         - Impassable # This is so we can store whole machines and other stuff inside it
         layer:
-        - MachineLayer
+        - CrateMask
   - type: EntityStorage
 #    isCollidableWhenOpen: false
     capacity: 1
@@ -91,6 +91,9 @@
       - Machine
       - StealTarget
       - Nuke
+      - Computer
+      - AnomalyVessel
+      - AnomalyGenerator
 
 - type: entity
   parent: CratePrivateSecure

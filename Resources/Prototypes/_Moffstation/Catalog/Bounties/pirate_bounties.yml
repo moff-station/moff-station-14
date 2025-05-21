@@ -1,19 +1,9 @@
-- type: cargoBounty
-  id: PirateBountyBread
-  reward: 2000
-  description: bounty-description-bread
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-bread
-    amount: 1
-    whitelist:
-      tags:
-      - Bread
-    blacklist:
-      tags:
-      - Slice
+# We need to be careful how we balance these, as we dont want to bankroll them to quickly
+# take into account risk/difficulty of stealing a certain bounty
+# make things less if we want to disincentivize it being stolen
+# Also, make sure theres enough disruptive bounties so that they dont just become symbiotic with the crew
 
+# Big Heists
 - type: cargoBounty
   id: PirateBountyNuke
   reward: 30000
@@ -24,5 +14,45 @@
   - name: bounty-item-nuke
     amount: 1
     whitelist:
-      tags:
+      components:
       - Nuke
+
+# Science
+- type: cargoBounty
+  id: PirateBountySciServer
+  reward: 10000
+  description: bounty-description-sci-server
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-sci-server
+    amount: 1
+    whitelist:
+      components:
+      - ResearchServer
+
+- type: cargoBounty
+  id: PirateBountyAnomVessel
+  reward: 5000
+  description: bounty-description-anom-vessel
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-anom-vessel
+    amount: 1
+    whitelist:
+      components:
+      - AnomalyVessel
+
+- type: cargoBounty
+  id: PirateBountyArtifact
+  reward: 5000
+  description: bounty-description-artifact
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-artifact
+    amount: 1
+    whitelist:
+      components:
+      - XenoArtifact
