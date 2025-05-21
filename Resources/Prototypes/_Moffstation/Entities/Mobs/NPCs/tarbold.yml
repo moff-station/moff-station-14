@@ -58,10 +58,10 @@
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
-      sprite: Mobs/Animals/kobold.rsi
-      state: kobold
+      sprite: _Moffstation/Mobs/Animals/tarbold.rsi
+      state: tarbold
     - map: [ "outline" ]
-      sprite: Mobs/Animals/kobold.rsi
+      sprite: _Moffstation/Mobs/Animals/tarbold.rsi
       state: outline
     - map: [ "horns" ]
       sprite: Mobs/Customization/reptilian_parts.rsi
@@ -85,7 +85,7 @@
     getAllGroups: true
     available:
     - enum.DamageStateVisualLayers.Base:
-        kobold: KoboldColors
+        tarbold: KoboldColors
     - horns:
         horns_floppy_kobold_ears: Inherit
   - type: Butcherable
