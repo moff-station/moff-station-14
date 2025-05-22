@@ -30,11 +30,10 @@
   - type: Tag
     tags:
     - Fruit
-# for the life of me I cannot find where these point to for commenting them out for now
-#  - type: FoodSequenceElement
-#    entries:
-#      Burger: Starfruit
-#      Taco: Starfruit
+  - type: FoodSequenceElement
+    entries:
+      Burger: Starfruit
+      Taco: Starfruit
 
 - type: entity
   parent: ProduceBase
@@ -62,10 +61,10 @@
     tags:
     - Meat
     - Fruit
-#  - type: FoodSequenceElement
-#    entries:
-#      Burger: Tarfruit
-#      Taco: Tarfruit
+  - type: FoodSequenceElement
+    entries:
+      Burger: Tarfruit
+      Taco: Tarfruit
   - type: SpawnItemsOnUse
     items:
     - id: tarfruitUnwrapped
