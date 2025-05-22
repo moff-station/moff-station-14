@@ -63,8 +63,14 @@
   name: loadout-group-pirate-hat
   loadouts:
   - HatPirate
+  - HatPirateBrown
   - HatPirateTricord
   - SkullBandana
+  - HatHeadBandRed
+  - HatHeadBandBlack
+  - HatHeadBandBrown
+  - HatHeadBandYellow
+  - HatHeadBandMerc
 
 - type: loadoutGroup
   id: PirateTrinkets
@@ -73,3 +79,11 @@
   loadouts:
   - TrinketPirateFlag
   - TrinketPirateEyepatch
+
+- type: loadoutGroup
+  id: PirateOuterCoat
+  name: loadout-group-pirate-outer-coat
+  loadouts:
+  - CoatPirate
+  - CoatGentle
+  - CoatPirateRed
