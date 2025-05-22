@@ -2,9 +2,9 @@
   id: starfruit
   name: seeds-starfruit-name
   noun: seeds-noun-seeds
-  displayName: seeds-starfruit-display-name
+  displayName: Starfruit plant
   plantRsi: Objects/Specific/Hydroponics/lemon.rsi
-  packetPrototype: starfruitSeeds
+  packetPrototype: StarfruitSeeds
   productPrototypes:
   - FoodStarfruit
   mutationPrototypes:
@@ -30,9 +30,9 @@
   id: tarfruit
   name: seeds-tarfruit-name
   noun: seeds-noun-seeds
-  displayName: seeds-tarfruit-display-name
+  displayName: Tarfruit plant
   plantRsi: _Moffstation/Objects/Specific/Hydroponics/tarfruit.rsi
-  packetPrototype: tarfruitSeeds
+  packetPrototype: TarfruitSeeds
   productPrototypes:
   - tarfruitWrapped
   harvestRepeat: Repeat
