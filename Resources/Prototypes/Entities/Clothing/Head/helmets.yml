@@ -29,7 +29,7 @@
 
 #Basic Helmet (Security Helmet)
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband, BaseFoldable]
   id: ClothingHeadHelmetBasic
   # Moffstation - Begin (Foldable Security Helmet)
   name: security helmet
@@ -39,14 +39,9 @@
     canFoldInsideContainer: true
     unfoldVerbText: fold-attach-visor-verb
     foldVerbText: fold-detach-visor-verb
-    folded: false
   - type: FoldableClothing
     foldedEquippedPrefix: visorless
     foldedHeldPrefix: visorless
-    unfoldedHideLayers:
-    - hair
-    foldedHideLayers:
-    - hair
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
   - type: Clothing
