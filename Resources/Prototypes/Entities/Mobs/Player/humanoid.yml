@@ -540,50 +540,49 @@
       nameFormat: name-format-ert
 
 ## Central Command
-
+# Moffstation - Begin (New CentComm Loadouts)
 - type: entity
   name: CentComm representative
-  id: RandomHumanoidSpawnerCentcommRepresentative
-  suffix: CentCommRole
+  id: RandomHumanoidSpawnerCentcomOfficial
   components:
-    - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: centcom
-    - type: RandomHumanoidSpawner
-      settings: CentcommRepresentative
-
-- type: randomHumanoidSettings
-  parent: EventHumanoidCentcomm
-  id: CentcommRepresentative
-  components:
-    - type: GhostRole
-      name: ghost-role-information-centcom-official-name
-      description: ghost-role-information-centcom-official-description
-      rules: ghost-role-information-nonantagonist-rules
-      raffle:
-        settings: default
-    - type: Loadout
-      prototypes: [ CentcommRepresentativeGear ]
-      roleLoadout: [ RoleSurvivalStandard ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerCentcommRepresentative
-  name: Central Commander
-  id: RandomHumanoidSpawnerCentcommCommander
-  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcom
   - type: RandomHumanoidSpawner
-    settings: CentcommCommander
+    settings: CentcomOfficial
 
 - type: randomHumanoidSettings
-  parent: CentcommRepresentative
-  id: CentcommCommander
+  id: CentcomOfficial
+  parent: EventHumanoidCentcomm
   components:
+  - type: GhostRole
+    name: ghost-role-information-centcom-official-name
+    description: ghost-role-information-centcom-official-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: default
   - type: Loadout
-    prototypes: [ CentcommCommanderGear ]
+    prototypes: [ CentcomGear ]
     roleLoadout: [ RoleSurvivalStandard ]
 
 - type: entity
-  parent: RandomHumanoidSpawnerCentcommRepresentative
+  parent: RandomHumanoidSpawnerCentcomOfficial
+  name: CentComm executive
+  id: RandomHumanoidSpawnerCentcommExecutive
+  components:
+  - type: RandomHumanoidSpawner
+    settings: CentcommExecutive
+
+- type: randomHumanoidSettings
+  parent: CentcomOfficial
+  id: CentcommExecutive
+  components:
+  - type: Loadout
+    prototypes: [ CentcommExecutiveGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: RandomHumanoidSpawnerCentcomOfficial
   name: CentComm agent
   id: RandomHumanoidSpawnerCentcommAgent
   components:
@@ -591,7 +590,7 @@
     settings: CentcommAgent
 
 - type: randomHumanoidSettings
-  parent: CentcommRepresentative
+  parent: CentcomOfficial
   id: CentcommAgent
   components:
   - type: Loadout
@@ -599,7 +598,7 @@
     roleLoadout: [ RoleSurvivalStandard ]
 
 - type: entity
-  parent: RandomHumanoidSpawnerCentcommRepresentative
+  parent: RandomHumanoidSpawnerCentcomOfficial
   name: CentComm field officer
   id: RandomHumanoidSpawnerCentcommFieldOfficer
   components:
@@ -607,12 +606,13 @@
     settings: CentcommFieldOfficer
 
 - type: randomHumanoidSettings
-  parent: CentcommRepresentative
+  parent: CentcomOfficial
   id: CentcommFieldOfficer
   components:
   - type: Loadout
     prototypes: [ CentcommFieldOfficerGear ]
     roleLoadout: [ RoleSurvivalStandard ]
+# Moffstation - End
 
 ## Syndicate
 
