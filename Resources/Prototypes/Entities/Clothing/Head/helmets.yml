@@ -43,9 +43,10 @@
   - type: FoldableClothing
     foldedEquippedPrefix: visorless
     foldedHeldPrefix: visorless
-  - type: HideLayerClothing
-    slots:
-    - Hair
+    unfoldedHideLayers:
+    - hair
+    foldedHideLayers:
+    - hair
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
   - type: Clothing
