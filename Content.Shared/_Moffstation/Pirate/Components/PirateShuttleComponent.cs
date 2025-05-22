@@ -16,13 +16,6 @@ public sealed partial class PirateShuttleComponent : Component
     [DataField]
     [AutoNetworkedField]
     public EntityUid AssociatedRule;
-
-    /// <summary>
-    /// How much cash the shuttle has collected
-    /// </summary>
-    [DataField]
-    [AutoNetworkedField]
-    public double Money;
 }
 
 [ByRefEvent]

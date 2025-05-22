@@ -43,7 +43,6 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
             if (Transform(uid).MapID == args.Map)
             {
                 shuttle.AssociatedRule = ent;
-                shuttle.Money = ent.Comp.StartingCash;
                 Dirty(uid, shuttle);
                 break;
             }
