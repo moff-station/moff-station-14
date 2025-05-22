@@ -29,9 +29,9 @@
 
 #Basic Helmet (Security Helmet)
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband, BaseFoldable]
-  id: ClothingHeadHelmetBasic
   # Moffstation - Begin (Foldable Security Helmet)
+  parent: [ClothingHeadHelmetArmoredBase, BaseFoldable, BaseSecurityContraband]
+  id: ClothingHeadHelmetBasic
   name: security helmet
   description: Standard security gear. Protects the head from impacts.
   components:
@@ -44,6 +44,12 @@
     foldedHeldPrefix: visorless
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-nobeard
+      map: [ "foldedLayer" ]
+      visible: true
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
   # Moffstation - End
