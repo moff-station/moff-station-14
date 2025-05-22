@@ -32,7 +32,7 @@
     - Fruit
   - type: FoodSequenceElement
     entries:
-      Burger: starfruit
+      Burger: Starfruit
       Taco: Starfruit
 
 - type: entity
@@ -63,8 +63,8 @@
     - Fruit
   - type: FoodSequenceElement
     entries:
-      Burger: tarfruit
-      Taco: tarfruit
+      Burger: Tarfruit
+      Taco: Tarfruit
   - type: SpawnItemsOnUse
     items:
     - id: tarfruitUnwrapped
