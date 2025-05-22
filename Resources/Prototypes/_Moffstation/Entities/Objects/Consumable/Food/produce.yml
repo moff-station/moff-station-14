@@ -1,4 +1,41 @@
 - type: entity
+  name: starfruit
+  parent: FoodProduceBase
+  id: FoodStarfruit
+  description: An exotic and strangely-shaped fruit.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 9
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Vitamin
+          Quantity: 4
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/starfruit.rsi
+  - type: Item
+    heldPrefix: produce
+  - type: Produce
+    seedId: starfruit
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceStarfruit
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+  - type: FoodSequenceElement
+    entries:
+      Burger: starfruit
+      Taco: Starfruit
+
+- type: entity
   parent: ProduceBase
   id: tarfruitWrapped
   name: tarfruit
@@ -33,29 +70,3 @@
     - id: tarfruitUnwrapped
     sound:
       path: /Audio/Effects/unwrap.ogg
-
-- type: entity
-  parent: RehydratableAnimalCube
-  id: tarfruitUnwrapped
-  name: tarcube
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      cube:
-        maxVol: 19 # needs 1u room for water
-        reagents: # equals one piece of raw meat, ideally should vary depending on the animal type, but idk how to link this to biomass costs
-        - ReagentId: UncookedAnimalProteins
-          Quantity: 9
-        - ReagentId: Fat
-          Quantity: 9
-  - type: Sprite
-    sprite: _Moffstation/Objects/Specific/Hydroponics/tarfruit.rsi
-    state: produce-unwrapped
-  - type: Rehydratable
-    possibleSpawns:
-    - MobTarbold
-  - type: Item
-    heldPrefix: produce
-  - type: Tag
-    tags:
-    - Meat
