@@ -14,7 +14,7 @@
         - ReagentId: Vitamin
           Quantity: 4
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/lemon.rsi
+    sprite: _Moffstation/Objects/Specific/Hydroponics/tarfruit.rsi
     state: produce
   - type: Item
     heldPrefix: produce
@@ -49,8 +49,8 @@
         - ReagentId: Fat
           Quantity: 9
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/lemon.rsi
-    state: produce
+    sprite: _Moffstation/Objects/Specific/Hydroponics/tarfruit.rsi
+    state: produce-unwrapped
   - type: Rehydratable
     possibleSpawns:
     - MobTarbold
