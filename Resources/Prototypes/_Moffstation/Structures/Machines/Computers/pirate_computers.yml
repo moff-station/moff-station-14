@@ -6,18 +6,18 @@
   description: Used by pirates to purchase new booty.
   components:
   - type: Sprite
-    sprite: _NF/Structures/Machines/pirate_computers.rsi
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
     layers:
-    - map: ["computerLayerBody"]
-      state: computer_blackmarket
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: piratebounty
-    - map: ["computerLayerKeys"]
-      state: blackmarket_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+      - map: ["computerLayerBody"]
+        state: computer
+      - map: [ "computerLayerKeyboard" ]
+        state: generic_keyboard
+      - map: [ "computerLayerScreen" ]
+        state: request
+      - map: [ "computerLayerKeys" ]
+        state: generic_keys
+      - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+        state: generic_panel_open
   - type: CargoOrderConsole
     allowedGroups: [ "pirateMarket" ]
     account: Pirates
@@ -36,6 +36,7 @@
   description: Used to sell goods loaded onto cargo pallets.
   components:
     - type: Sprite
+      sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
       layers:
         - map: ["computerLayerBody"]
           state: computer
@@ -77,6 +78,7 @@
   description: Used to manage currently active bounties.
   components:
   - type: Sprite
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
     layers:
     - map: ["computerLayerBody"]
       state: computer
@@ -85,6 +87,7 @@
     - map: ["computerLayerScreen"]
       state: bounty
     - map: ["computerLayerKeys"]
+      sprite: Structures/Machines/computers.rsi
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
@@ -121,15 +124,17 @@
   description: Used to pilot a pirate ship.
   components:
   - type: Sprite
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
     layers:
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: syndishuttle
+      state: shuttle
     - map: ["computerLayerKeys"]
       state: syndie_key
+      sprite: Structures/Machines/computers.rsi
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: Tag
@@ -155,14 +160,16 @@
   description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
   components:
   - type: Sprite
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
     layers:
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: comm_syndie
+      state: comm
     - map: ["computerLayerKeys"]
+      sprite: Structures/Machines/computers.rsi
       state: syndie_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open

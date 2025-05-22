@@ -80,13 +80,14 @@
         mask:
         - Impassable # This is so we can store whole machines and other stuff inside it
         layer:
-        - CrateMask
+        - MidImpassable
   - type: EntityStorage
 #    isCollidableWhenOpen: false
-    capacity: 1
+    capacity: 2
     whitelist:
       components:
       # Add any large bounty object to here
+      - Item
       - XenoArtifact
       - Machine
       - StealTarget
@@ -94,6 +95,8 @@
       - Computer
       - AnomalyVessel
       - AnomalyGenerator
+      - VendingMachine
+      - Thruster
 
 - type: entity
   parent: CratePrivateSecure
