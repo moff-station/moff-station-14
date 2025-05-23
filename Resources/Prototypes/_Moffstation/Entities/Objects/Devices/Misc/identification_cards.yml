@@ -5,6 +5,8 @@
   suffix: Perma, DO NOT MAP
   components:
     - type: GenpopIdCard
-      crime: treason    # Maybe we could randomize this in the future? maybe even set it in loadouts?
+      crime: "[CLASSIFIED]"    # Maybe we could randomize this in the future? maybe even set it in loadouts?
     - type: ExpireIdCard
       permanent: true
+    - type: PresetIdCard
+      job: Prisoner

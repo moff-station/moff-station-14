@@ -179,6 +179,12 @@ public sealed partial class CCVars
         CVarDef.Create("votekick.ignore_ghost_req_in_lobby", true, CVar.SERVERONLY);
 
     /// <summary>
+    /// Moffstation - blocks restart votes when the lobby is paused
+    /// </summary>
+    public static readonly CVarDef<bool> BlockRestartWhenPaused =
+        CVarDef.Create("vote.block_restart_when_paused", true, CVar.SERVERONLY);
+
+    /// <summary>
     /// Moffstation - Makes map votes roll over until the map in question gets selected
     /// </summary>
     public static readonly CVarDef<bool> MapVotesRollOver =

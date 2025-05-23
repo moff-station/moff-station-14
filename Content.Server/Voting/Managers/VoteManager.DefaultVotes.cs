@@ -138,6 +138,16 @@ namespace Content.Server.Voting.Managers
 
         private void StartVote(ICommonSession? initiator)
         {
+            // Moffstation - Start - block restart votes while the lobby is paused
+            _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+            if (_gameTicker.Paused && _cfg.GetCVar(CCVars.BlockRestartWhenPaused))
+            {
+                if (initiator != null)
+                    _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"{initiator.UserId} attempted to restart the round while the lobby was paused");
+                _chatManager.DispatchServerAnnouncement(Loc.GetString("ui-vote-restart-blocked-paused"));
+                return;
+            }
+            // Moffstation - End
             var alone = _playerManager.PlayerCount == 1 && initiator != null;
             var options = new VoteOptions
             {
