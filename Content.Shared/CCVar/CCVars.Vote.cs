@@ -189,4 +189,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> AutoStartMapVote =
         CVarDef.Create("votekick.auto_start_map_vote", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Moffstation - If false, prevents the previous played map from appearing in votes or being selected
+    /// </summary>
+    public static readonly CVarDef<bool> AllowDoublePickMap =
+        CVarDef.Create("votekick.allow_double_pick_map", false, CVar.SERVERONLY);
 }

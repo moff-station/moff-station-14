@@ -196,7 +196,8 @@ public sealed class GameMapManager : IGameMapManager
         return map.MaxPlayers >= _playerManager.PlayerCount &&
                map.MinPlayers <= _playerManager.PlayerCount &&
                map.Conditions.All(x => x.Check(map)) &&
-               _entityManager.System<GameTicker>().IsMapEligible(map);
+               _entityManager.System<GameTicker>().IsMapEligible(map) &&
+               (_configurationManager.GetCVar(CCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
     }
 
     private bool TryLookupMap(string gameMap, [NotNullWhen(true)] out GameMapPrototype? map)

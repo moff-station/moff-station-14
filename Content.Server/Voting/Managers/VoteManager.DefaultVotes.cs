@@ -280,7 +280,7 @@ namespace Content.Server.Voting.Managers
             foreach (var (k, v) in maps)
             {
                 if (_cfg.GetCVar(CCVars.MapVotesRollOver))
-                    options.Options.Add((v + (_gameMapManager.GetRollOverVotes(k) > 0 ? $"[+{_gameMapManager.GetRollOverVotes(k)}]" : ""), k));
+                    options.Options.Add((v + (_gameMapManager.GetRollOverVotes(k) > 0 ? $" [+{_gameMapManager.GetRollOverVotes(k)}]" : ""), k));
                 else
                     options.Options.Add((v, k));
             }
@@ -323,7 +323,7 @@ namespace Content.Server.Voting.Managers
                     //Pick a winner
                     picked = _random.Pick(winners);
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-tie", ("picked", maps[picked])));
+                        Loc.GetString("ui-vote-map-win", ("picked", maps[picked])));
 
                     //Reset the winning map, adjust the rollover votes for the rest of the maps
                     adjustedVotes[picked] = 0;
