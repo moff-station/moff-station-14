@@ -289,10 +289,14 @@ namespace Content.Server.Voting.Managers
 
             foreach (var (k, v) in maps)
             {
-                if (_cfg.GetCVar(CCVars.MapVotesRollOver))
-                    options.Options.Add((v + (_gameMapManager.GetRollOverVotes(k) > 0 ? $" [+{_gameMapManager.GetRollOverVotes(k)}]" : ""), k));
+                if (_cfg.GetCVar(CCVars.MapVotesRollOver)) {
+                    var rollOverVotes = _gameMapManager.GetRollOverVotes(k);
+                    options.Options.Add((v + (rollOverVotes > 0 ? $" [+{rollOverVotes}]" : ""), k));
+                }
                 else
+                {
                     options.Options.Add((v, k));
+                }
             }
 
             WirePresetVoteInitiator(options, initiator);
@@ -310,7 +314,7 @@ namespace Content.Server.Voting.Managers
                     //Get corresponding maps and votes together
                     var results = maps.Zip(args.Votes);
                     //Make dictionary of each map and their adjusted vote value
-                    var adjustedVotes = new Dictionary<GameMapPrototype,int>();
+                    var adjustedVotes = new Dictionary<GameMapPrototype, int>();
                     foreach (var (map, voteCount) in results)
                     {
                         var rolloverVotes = _gameMapManager.GetRollOverVotes(map.Key);
