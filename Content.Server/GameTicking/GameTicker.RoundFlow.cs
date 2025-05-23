@@ -671,13 +671,7 @@ namespace Content.Server.GameTicking
             else
             {
                 if (_playerManager.PlayerCount == 0)
-                {
                     _roundStartCountdownHasNotStartedYetDueToNoPlayers = true;
-                    // Moffstation - Start - Auto-pause if we hit 0 players
-                    if (_cfg.GetCVar(CCVars.EmptyAutoPause))
-                        PauseStart();
-                    // Moffstation - End
-                }
                 else
                     _roundStartTime = _gameTiming.CurTime + LobbyDuration;
 
