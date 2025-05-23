@@ -59,4 +59,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> ForceClientHudVersionWatermark =
         CVarDef.Create("server.force_client_hud_version_watermark", false, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Moffstation - Pauses the lobby on server startup. Requires an admin to unpause before rounds begin
+    /// </summary>
+    public static readonly CVarDef<bool> StartServerPaused =
+        CVarDef.Create("server.start_server_paused", true, CVar.SERVERONLY);
 }
