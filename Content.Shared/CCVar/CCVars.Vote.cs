@@ -177,4 +177,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> VotekickIgnoreGhostReqInLobby =
         CVarDef.Create("votekick.ignore_ghost_req_in_lobby", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Moffstation - blocks restart votes when the lobby is paused
+    /// </summary>
+    public static readonly CVarDef<bool> BlockRestartWhenPaused =
+        CVarDef.Create("vote.block_restart_when_paused", true, CVar.SERVERONLY);
 }

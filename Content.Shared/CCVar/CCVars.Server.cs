@@ -65,4 +65,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> StartServerPaused =
         CVarDef.Create("server.start_server_paused", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Moffstation - Automatically pauses the lobby (until an admin unpauses) when the server reaches 0 players
+    /// </summary>
+    public static readonly CVarDef<bool> EmptyAutoPause =
+        CVarDef.Create("server.empty_auto_pause", true, CVar.SERVERONLY);
 }
