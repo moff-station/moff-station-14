@@ -279,7 +279,10 @@ namespace Content.Server.Voting.Managers
 
             foreach (var (k, v) in maps)
             {
-                options.Options.Add((v + $"[+{_gameMapManager.GetRollOverVotes(k)}]", k));
+                if (_cfg.GetCVar(CCVars.MapVotesRollOver))
+                    options.Options.Add((v + $"[+{_gameMapManager.GetRollOverVotes(k)}]", k));
+                else
+                    options.Options.Add((v, k));
             }
 
             WirePresetVoteInitiator(options, initiator);
