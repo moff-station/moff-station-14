@@ -1,0 +1,12 @@
+# Set Examine
+- type: entity
+  id: ActionSetExtraExamine
+  name: set-examine-title
+  description: set-examine-dialog
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: { sprite: _Umbra/Interface/Actions/set-pose.rsi, state: eyeopen }
+    itemIconStyle: NoItem
+    useDelay: 3
+    event: !type:SetExamineActionEvent
