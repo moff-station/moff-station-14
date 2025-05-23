@@ -60,21 +60,6 @@
       - state: green
       - state: salvagespecialist
 
-# Civilian
-
-- type: entity
-  id: ArrivalsSpawnPointBartender
-  parent: ArrivalsSpawnPointJobBase
-  suffix: bartender
-  components:
-  - type: ArrivalsSpawnPoint
-    jobs:
-    - Bartender
-  - type: Sprite
-    layers:
-    - state: green
-    - state: bartender
-
 # Command
 
 - type: entity

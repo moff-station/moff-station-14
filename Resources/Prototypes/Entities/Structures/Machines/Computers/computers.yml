@@ -1424,9 +1424,6 @@
         type: NewsWriterBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ConditionalSpawner
-    prototypes:
-    - ShiftReportTablet
 
 - type: entity
   parent: BaseComputer
