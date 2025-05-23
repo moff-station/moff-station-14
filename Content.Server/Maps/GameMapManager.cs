@@ -245,12 +245,12 @@ public sealed class GameMapManager : IGameMapManager
         }
     }
 
-    private int GetRollOverVotes(GameMapPrototype map)
+    public int GetRollOverVotes(GameMapPrototype map)
     {
         return _rollOverVotes[map];
     }
 
-    private bool SetRollOverVotes(GameMapPrototype map, int votes)
+    public bool SetRollOverVotes(GameMapPrototype map, int votes)
     {
         _rollOverVotes[map] = votes;
         return true;
