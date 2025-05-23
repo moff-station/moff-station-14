@@ -34,6 +34,8 @@ public sealed class GameMapManager : IGameMapManager
 
     private ISawmill _log = default!;
 
+    private Dictionary<GameMapPrototype, int> _rollOverVotes = new();
+
     public void Initialize()
     {
         _log = Logger.GetSawmill("mapsel");
@@ -90,6 +92,7 @@ public sealed class GameMapManager : IGameMapManager
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
+            _rollOverVotes[map] = 0;
         }
     }
 
@@ -240,5 +243,16 @@ public sealed class GameMapManager : IGameMapManager
         {
             _previousMaps.Dequeue();
         }
+    }
+
+    private int GetRollOverVotes(GameMapPrototype map)
+    {
+        return _rollOverVotes[map];
+    }
+
+    private bool SetRollOverVotes(GameMapPrototype map, int votes)
+    {
+        _rollOverVotes[map] = votes;
+        return true;
     }
 }

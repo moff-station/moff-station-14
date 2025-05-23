@@ -177,4 +177,16 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> VotekickIgnoreGhostReqInLobby =
         CVarDef.Create("votekick.ignore_ghost_req_in_lobby", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Moffstation - Makes map votes roll over until the map in question gets selected
+    /// </summary>
+    public static readonly CVarDef<bool> MapVotesRollOver =
+        CVarDef.Create("votekick.map_votes_rollover", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Moffstation - Automatically starts a new map vote at the end of each round
+    /// </summary>
+    public static readonly CVarDef<bool> AutoStartMapVote =
+        CVarDef.Create("votekick.auto_start_map_vote", true, CVar.SERVERONLY);
 }

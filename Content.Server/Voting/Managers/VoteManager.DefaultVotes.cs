@@ -279,7 +279,7 @@ namespace Content.Server.Voting.Managers
 
             foreach (var (k, v) in maps)
             {
-                options.Options.Add((v, k));
+                options.Options.Add((v + $"[+{_gameMapManager.GetRollOverVotes(k)}]", k));
             }
 
             WirePresetVoteInitiator(options, initiator);
@@ -289,6 +289,7 @@ namespace Content.Server.Voting.Managers
             vote.OnFinished += (_, args) =>
             {
                 GameMapPrototype picked;
+                var results = args.Votes;
                 if (args.Winner == null)
                 {
                     picked = (GameMapPrototype) _random.Pick(args.Winners);
