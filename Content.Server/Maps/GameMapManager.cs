@@ -34,7 +34,7 @@ public sealed class GameMapManager : IGameMapManager
 
     private ISawmill _log = default!;
 
-    private Dictionary<GameMapPrototype, int> _rollOverVotes = new();
+    private Dictionary<GameMapPrototype, int> _rollOverVotes = new();   // Moffstation - Rollover votes stored here
 
     public void Initialize()
     {
@@ -92,7 +92,7 @@ public sealed class GameMapManager : IGameMapManager
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
-            _rollOverVotes[map] = 0;
+            _rollOverVotes[map] = 0;    // Moffstation - initialize rollover votes
         }
     }
 
@@ -246,6 +246,7 @@ public sealed class GameMapManager : IGameMapManager
         }
     }
 
+    // Moffstation - Start - setters and getters for the rollover votes
     public int GetRollOverVotes(GameMapPrototype map)
     {
         return _rollOverVotes[map];
@@ -256,4 +257,5 @@ public sealed class GameMapManager : IGameMapManager
         _rollOverVotes[map] = votes;
         return true;
     }
+    // Moffstation - End
 }

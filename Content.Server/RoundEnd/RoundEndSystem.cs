@@ -11,7 +11,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.Voting.Managers;
+using Content.Server.Voting.Managers;   // Moffstation - auto map votes on round start
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.GameTicking;
@@ -21,7 +21,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.Voting;
+using Content.Shared.Voting;   // Moffstation - auto map votes on round start
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.RoundEnd

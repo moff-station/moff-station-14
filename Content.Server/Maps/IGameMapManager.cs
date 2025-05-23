@@ -74,12 +74,12 @@ public interface IGameMapManager
     bool CheckMapExists(string gameMap);
 
     /// <summary>
-    /// Moffstation - Gets the amount of rollover votes for a specified map
+    /// Gets the amount of rollover votes for a specified map
     /// </summary>
     int GetRollOverVotes(GameMapPrototype map);
 
     /// <summary>
-    /// Moffstation - Sets the amount of rollover votes for a specified map
+    /// Sets the amount of rollover votes for a specified map
     /// </summary>
     bool SetRollOverVotes(GameMapPrototype map, int votes);
 }

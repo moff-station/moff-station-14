@@ -179,25 +179,25 @@ public sealed partial class CCVars
         CVarDef.Create("votekick.ignore_ghost_req_in_lobby", true, CVar.SERVERONLY);
 
     /// <summary>
-    /// Moffstation - blocks restart votes when the lobby is paused
+    ///     Blocks restart votes when the lobby is paused
     /// </summary>
     public static readonly CVarDef<bool> BlockRestartWhenPaused =
         CVarDef.Create("vote.block_restart_when_paused", true, CVar.SERVERONLY);
 
     /// <summary>
-    /// Moffstation - Makes map votes roll over until the map in question gets selected
+    ///     Makes map votes roll over until the map in question gets selected
     /// </summary>
     public static readonly CVarDef<bool> MapVotesRollOver =
         CVarDef.Create("votekick.map_votes_rollover", true, CVar.SERVERONLY);
 
     /// <summary>
-    /// Moffstation - Automatically starts a new map vote at the end of each round
+    ///     Automatically starts a new map vote at the end of each round
     /// </summary>
     public static readonly CVarDef<bool> AutoStartMapVote =
         CVarDef.Create("votekick.auto_start_map_vote", true, CVar.SERVERONLY);
 
     /// <summary>
-    /// Moffstation - If false, prevents the previous played map from appearing in votes or being selected
+    ///     If false, prevents the previous played map from appearing in votes or being selected
     /// </summary>
     public static readonly CVarDef<bool> AllowDoublePickMap =
         CVarDef.Create("votekick.allow_double_pick_map", false, CVar.SERVERONLY);

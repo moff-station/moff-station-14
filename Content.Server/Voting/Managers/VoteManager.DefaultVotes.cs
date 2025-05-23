@@ -289,6 +289,7 @@ namespace Content.Server.Voting.Managers
 
             foreach (var (k, v) in maps)
             {
+                // Moffstation - Start - display rollover votes
                 if (_cfg.GetCVar(CCVars.MapVotesRollOver)) {
                     var rollOverVotes = _gameMapManager.GetRollOverVotes(k);
                     options.Options.Add((v + (rollOverVotes > 0 ? $" [+{rollOverVotes}]" : ""), k));
@@ -297,6 +298,7 @@ namespace Content.Server.Voting.Managers
                 {
                     options.Options.Add((v, k));
                 }
+                // Moffstation - End
             }
 
             WirePresetVoteInitiator(options, initiator);
@@ -327,11 +329,13 @@ namespace Content.Server.Voting.Managers
                     var winners = new List<GameMapPrototype>();
                     foreach (var map in adjustedVotes)
                     {
-                        if (map.Value >= maxVotes)
+                        if (map.Value > maxVotes)
                         {
                             maxVotes = map.Value;
-                            winners.Add(map.Key);
+                            winners.Clear();
                         }
+                        if (map.Value == maxVotes)
+                            winners.Add(map.Key);
                     }
 
                     //Pick a winner
