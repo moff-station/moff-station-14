@@ -334,9 +334,10 @@ namespace Content.Server.RoundEnd
         {
             if (_gameTicker.RunLevel != GameRunLevel.PostRound) return;
             Reset();
-            // Moffstation - Auto start map vote on round restart
+            // Moffstation - Start - Auto start map vote on round restart
             if (_cfg.GetCVar(CCVars.AutoStartMapVote))
                 _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+            // Moffstation - End
             _gameTicker.RestartRound();
         }
 
