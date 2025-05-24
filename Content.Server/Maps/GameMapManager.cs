@@ -252,10 +252,9 @@ public sealed class GameMapManager : IGameMapManager
         return _rollOverVotes[map];
     }
 
-    public bool SetRollOverVotes(GameMapPrototype map, int votes)
+    public void SetRollOverVotes(GameMapPrototype map, int votes)
     {
         _rollOverVotes[map] = votes;
-        return true;
     }
     // Moffstation - End
 }

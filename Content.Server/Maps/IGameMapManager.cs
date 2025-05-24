@@ -81,5 +81,5 @@ public interface IGameMapManager
     /// <summary>
     /// Sets the amount of rollover votes for a specified map
     /// </summary>
-    bool SetRollOverVotes(GameMapPrototype map, int votes);
+    void SetRollOverVotes(GameMapPrototype map, int votes);
 }
