@@ -62,6 +62,14 @@ figurines-darnell-4 = I need another smoke.
 figurines-darnell-5 = I am god's strongest janitor.
 figurines-darnell-6 = DOOR STUCK!
 
+figurines-delana-1 = Glorious morning.
+figurines-delana-2 = Go go gadget soy sauce!
+figurines-delana-3 = Go go gadget ramen!
+figurines-delana-4 = Go go gadget warning cone!
+figurines-delana-5 = Guess who forgot to clean their implanter, BUDDY.
+figurines-delana-6 = Why wouldn't I keep it in my hat?
+figurines-delana-7 = What is the charge? Having a meal? A succulent mothroach meal?
+
 figurines-echiara-1 = Huh?
 figurines-echiara-2 = What?
 figurines-echiara-3 = Wait, I'm dying?
@@ -168,6 +176,14 @@ figurines-molar-1 = FAT MAGGOT
 figurines-molar-2 = Does anyone have some interdynes?
 figurines-molar-3 = Oh... hey kid
 figurines-molar-4 = Be quiet
+
+figurines-nyxie-1 = Yea I'm on drugs! So what?
+figurines-nyxie-2 = Uhh... sorry...
+figurines-nyxie-3 = Can I have drugs.... please?
+figurines-nyxie-4 = Could I have white russian?
+figurines-nyxie-5 = I'mmm... dru–drunkk... iz tha' bad...?
+figurines-nyxie-6 = Oh my fucking god...
+figurines-nyxie-7 = For fucks sake.
 
 figurines-nyxilath-1 = Law 0, you are crew...
 figurines-nyxilath-2 = There is no shadow factory~!

@@ -117,6 +117,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineDelana
+  name: Green Arachnid Detective Figurine
+  description: A figurine depicting a detective with a perpetual smirk on it's face. Is this all a joke to it?
+  components:
+  - type: Sprite
+    state: delana
+  - type: SpeakOnTrigger
+    pack: FigurinesDelana
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineDelivers
   name: Stitched Quartermaster figurine
   description: A figurine depicting a purple lizard in quartermaster attire, there's small gold stripes across their mouth and a small red bit hanging off.
@@ -329,6 +340,17 @@
   - type: SpeakOnTrigger
     pack: FigurinesMolar
   - type: RussianAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineNyxie
+  name: Pink Scientist Moth figurine
+  description: A figurine depicting a tired young moth that refuses to sleep. She wears a senior scientist jumpskirt, winter scietist coat and a hairflower. For some reason the figurine has a smell of vodka.
+  components:
+  - type: Sprite
+    state: nyxie
+  - type: SpeakOnTrigger
+    pack: FigurinesNyxie
 
 - type: entity
   parent: BaseFigurineMoff
