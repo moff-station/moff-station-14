@@ -1,9 +1,8 @@
+#NOTE: vests with armor belong to armor.yml
+
 #Hazard vest
 - type: entity
-  # Moffstation - Begin (Engi Gear Buffs)
-  # parent: ClothingOuterStorageBase
-  parent: [ ClothingOuterStorageBase, AllowSuitStorageClothing]
-  # Moffstation - End
+  parent: ClothingOuterStorageBase
   id: ClothingOuterVestHazard
   name: hi-viz vest
   description: A high-visibility vest used in work zones.

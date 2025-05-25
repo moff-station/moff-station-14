@@ -109,6 +109,8 @@ namespace Content.Server.GameTicking
             if (!DummyTicker)
                 RestartRound();
 
+            PauseStart(_cfg.GetCVar(CCVars.StartServerPaused)); // Moffstation - Pause the round on startup if the Cvar is enabled
+
             _postInitialized = true;
         }
 
