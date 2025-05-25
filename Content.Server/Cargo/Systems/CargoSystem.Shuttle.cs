@@ -1,5 +1,7 @@
 using System.Linq;
+using Content.Server._Moffstation.Pirate.Components;
 using Content.Server.Cargo.Components;
+using Content.Shared._Moffstation.Cargo.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
@@ -34,6 +36,9 @@ public sealed partial class CargoSystem
     #region Console
     private void UpdatePalletConsoleInterface(EntityUid uid)
     {
+        //Block from overwriting pirate functionality
+        if (TryComp<PiratePalletConsoleComponent>(uid, out _))
+            return;
         if (Transform(uid).GridUid is not { } gridUid)
         {
             _uiSystem.SetUiState(uid,
@@ -88,6 +93,10 @@ public sealed partial class CargoSystem
 
         while (query.MoveNext(out var uid, out var comp, out var compXform))
         {
+            //Block from using pirate pallets
+            if (TryComp<PiratePalletComponent>(uid, out _))
+                continue;
+
             if (compXform.ParentUid != gridUid ||
                 !compXform.Anchored)
             {
@@ -106,7 +115,7 @@ public sealed partial class CargoSystem
         return _pads;
     }
 
-    private List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)>
+    internal List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)>
         GetFreeCargoPallets(EntityUid gridUid,
             List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)> pallets)
     {
@@ -131,14 +140,14 @@ public sealed partial class CargoSystem
 
     #region Station
 
-    private bool SellPallets(EntityUid gridUid, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
+    internal bool SellPallets(EntityUid gridUid, EntityUid station, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
     {
         GetPalletGoods(gridUid, out var toSell, out goods);
 
         if (toSell.Count == 0)
             return false;
 
-        var ev = new EntitySoldEvent(toSell);
+        var ev = new EntitySoldEvent(toSell, station);
         RaiseLocalEvent(ref ev);
 
         foreach (var ent in toSell)
@@ -189,7 +198,7 @@ public sealed partial class CargoSystem
         }
     }
 
-    private bool CanSell(EntityUid uid, TransformComponent xform)
+    internal bool CanSell(EntityUid uid, TransformComponent xform)
     {
         if (_mobQuery.HasComponent(uid))
         {
@@ -230,7 +239,7 @@ public sealed partial class CargoSystem
             return;
         }
 
-        if (!SellPallets(gridUid, out var goods))
+        if (!SellPallets(gridUid, station, out var goods))
             return;
 
         var baseDistribution = CreateAccountDistribution((station, bankAccount));
@@ -267,4 +276,4 @@ public sealed partial class CargoSystem
 /// deleted but after the price has been calculated.
 /// </summary>
 [ByRefEvent]
-public readonly record struct EntitySoldEvent(HashSet<EntityUid> Sold);
+public readonly record struct EntitySoldEvent(HashSet<EntityUid> Sold, EntityUid Station);

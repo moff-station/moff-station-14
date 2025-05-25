@@ -97,8 +97,10 @@
     interfaces:
       enum.NukeUiKey.Key:
         type: NukeBoundUserInterface
-  - type: StaticPrice
-    price: 50000 # YOU STOLE A NUCLEAR FISSION EXPLOSIVE?!
+#  Moffstation - Start - Removing this in favor of the pirate bounty
+#  - type: StaticPrice
+#    price: 50000 # YOU STOLE A NUCLEAR FISSION EXPLOSIVE?!
+#  Moffstation - End
   - type: CargoSellBlacklist
   - type: ArrivalsBlacklist
   - type: ItemSlots
@@ -110,6 +112,7 @@
   - type: Tag
     tags:
     - GhostOnlyWarp
+    - Nuke  # Moffstation - Tag for pirate bounty
   - type: WarpPoint
     follow: true
     location: nuclear bomb

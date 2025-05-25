@@ -1,3 +1,6 @@
+using Content.Shared.Cargo.Prototypes;
+using Robust.Shared.Prototypes;
+
 namespace Content.Server.Cargo.Components;
 
 /// <summary>

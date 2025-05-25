@@ -1,6 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Server.Cargo.Components;
 using Content.Server.Station.Components;
+using Content.Shared._Moffstation.Cargo.Components;
 using Content.Shared._Moffstation.Cargo.Events; // Moffstation
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
@@ -141,6 +143,10 @@ namespace Content.Server.Cargo.Systems
 
         private void OnApproveOrderMessage(EntityUid uid, CargoOrderConsoleComponent component, CargoConsoleApproveOrderMessage args)
         {
+            // Moffstation - prevent pirate console from double messaging
+            if (TryComp<PirateOrderConsoleComponent>(uid, out _))
+                return;
+
             if (args.Actor is not { Valid: true } player)
                 return;
 
@@ -373,7 +379,7 @@ namespace Content.Server.Cargo.Systems
                 return;
             }
 
-            if (!component.AllowedGroups.Contains(product.Group))
+            if (!GetAvailableProducts((uid, component)).Contains(args.CargoProductId))
                 return;
 
             if (component.SlipPrinter)
@@ -405,12 +411,16 @@ namespace Content.Server.Cargo.Systems
 
         #endregion
 
-        private void UpdateOrderState(EntityUid consoleUid, EntityUid? station)
+        internal void UpdateOrderState(EntityUid consoleUid, EntityUid? station)
         {
             if (!TryComp<CargoOrderConsoleComponent>(consoleUid, out var console))
                 return;
 
             if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var orderDatabase))
+                return;
+
+            // Moffstation - Railguard since it can cause errors with pirates
+            if (!orderDatabase.Orders.ContainsKey(console.Account))
                 return;
 
             if (_uiSystem.HasUi(consoleUid, CargoConsoleUiKey.Orders))
@@ -422,17 +432,18 @@ namespace Content.Server.Cargo.Systems
                     GetOutstandingOrderCount(orderDatabase, console.Account),
                     orderDatabase.Capacity,
                     GetNetEntity(station.Value),
-                    orderDatabase.Orders[console.Account]
+                    orderDatabase.Orders[console.Account],
+                    GetAvailableProducts((consoleUid, console))
                 ));
             }
         }
 
-        private void ConsolePopup(EntityUid actor, string text)
+        internal void ConsolePopup(EntityUid actor, string text) // Moffstation - Made internal for pirates
         {
             _popup.PopupCursor(text, actor);
         }
 
-        private void PlayDenySound(EntityUid uid, CargoOrderConsoleComponent component)
+        internal void PlayDenySound(EntityUid uid, CargoOrderConsoleComponent component)    // Moffstation - Made internal for pirates
         {
             if (_timing.CurTime >= component.NextDenySoundTime)
             {
@@ -450,6 +461,10 @@ namespace Content.Server.Cargo.Systems
         {
             var amount = 0;
 
+            // Moffstation - Railguard since it can cause errors with pirates
+            if (!component.Orders.ContainsKey(account))
+                return 0;
+
             foreach (var order in component.Orders[account])
             {
                 if (!order.Approved)
@@ -464,7 +479,7 @@ namespace Content.Server.Cargo.Systems
         /// Updates all of the cargo-related consoles for a particular station.
         /// This should be called whenever orders change.
         /// </summary>
-        private void UpdateOrders(EntityUid dbUid)
+        internal void UpdateOrders(EntityUid dbUid)
         {
             // Order added so all consoles need updating.
             var orderQuery = AllEntityQuery<CargoOrderConsoleComponent>();
@@ -578,7 +593,7 @@ namespace Content.Server.Cargo.Systems
         /// <summary>
         /// Fulfills the specified cargo order and spawns paper attached to it.
         /// </summary>
-        private bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
+        internal bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
         {
             // Create the item itself
             var item = Spawn(order.ProductId, spawn);
@@ -620,9 +635,32 @@ namespace Content.Server.Cargo.Systems
 
         }
 
+        public List<ProtoId<CargoProductPrototype>> GetAvailableProducts(Entity<CargoOrderConsoleComponent> ent)
+        {
+            if (_station.GetOwningStation(ent) is not { } station ||
+                !TryComp<StationCargoOrderDatabaseComponent>(station, out var db))
+            {
+                return new List<ProtoId<CargoProductPrototype>>();
+            }
+
+            var products = new List<ProtoId<CargoProductPrototype>>();
+
+            // Note that a market must be both on the station and on the console to be available.
+            var markets = ent.Comp.AllowedGroups.Intersect(db.Markets).ToList();
+            foreach (var product in _protoMan.EnumeratePrototypes<CargoProductPrototype>())
+            {
+                if (!markets.Contains(product.Group))
+                    continue;
+
+                products.Add(product.ID);
+            }
+
+            return products;
+        }
+
         #region Station
 
-        private bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)
+        internal bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)
         {
             return TryComp(stationUid, out dbComp);
         }

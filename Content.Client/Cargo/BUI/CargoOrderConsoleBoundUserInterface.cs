@@ -1,5 +1,6 @@
 using Content.Shared.Cargo;
 using Content.Client.Cargo.UI;
+using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Events;
@@ -15,6 +16,7 @@ namespace Content.Client.Cargo.BUI
 {
     public sealed class CargoOrderConsoleBoundUserInterface : BoundUserInterface
     {
+        private readonly SharedTransformSystem _transformSystem;
         private readonly SharedCargoSystem _cargoSystem;
 
         [ViewVariables]
@@ -47,6 +49,7 @@ namespace Content.Client.Cargo.BUI
         public CargoOrderConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
             _cargoSystem = EntMan.System<SharedCargoSystem>();
+            _transformSystem = EntMan.System<SharedTransformSystem>();
         }
 
         protected override void Open()
@@ -131,12 +134,16 @@ namespace Content.Client.Cargo.BUI
             if (state is not CargoConsoleInterfaceState cState || !EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
                 return;
             var station = EntMan.GetEntity(cState.Station);
+            BankBalance = _cargoSystem.GetBalanceFromAccount(station, orderConsole.Account);
 
             OrderCapacity = cState.Capacity;
             OrderCount = cState.Count;
-            BankBalance = _cargoSystem.GetBalanceFromAccount(station, orderConsole.Account);
-
             AccountName = cState.Name;
+
+            if (_menu == null)
+                return;
+
+            _menu.ProductCatalogue = cState.Products;
 
             _menu?.UpdateStation(station);
             Populate(cState.Orders);
