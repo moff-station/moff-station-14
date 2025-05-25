@@ -555,7 +555,7 @@
 - type: randomHumanoidSettings
   id: CentcomOfficial
   parent: EventHumanoidCentcomm
-  randomizeName: true
+  randomizeName: true # Moffstation - (New CentComm Loadouts)
   components:
     - type: GhostRole
       name: ghost-role-information-centcom-official-name
