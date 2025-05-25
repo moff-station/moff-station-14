@@ -1,0 +1,37 @@
+- type: startingGear
+  parent: CentcomGear
+  id: CentcomExecutiveGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomFormal
+    head: ClothingHeadHatCentcomcap
+    outerClothing: ClothingOuterArmorCentcommCarapace
+    id: CentcomPDA # Todo: add custom ID
+    belt: ClothingBeltHolsterFilledN1984
+    neck: ClothingNeckCloakCentcom
+  inhand:
+  - BriefcaseBrownFilled
+
+# Field work
+- type: startingGear
+  parent: CentcomGear
+  id: CentcomAgentGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAgent
+    gloves: ClothingHandsGlovesColorBlack
+    id: CentcomPDA # Todo: add custom ID
+    ears: ClothingHeadsetCentCom
+  inhand:
+  - BriefcaseBrownFilled
+
+- type: startingGear
+  parent: CentcomGear
+  id: CentcomFieldOfficerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficial
+    gloves: ClothingHandsGlovesColorBlack
+    head: ClothingHeadHatCentcomcap
+    outerClothing: ClothingOuterArmorCentcommCarapace
+    id: CentcomPDA # Todo: add custom ID
+    belt: ClothingBeltHolsterFilledN1984
+  inhand:
+  - BriefcaseBrownFilled
