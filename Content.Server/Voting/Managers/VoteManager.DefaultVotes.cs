@@ -341,7 +341,7 @@ namespace Content.Server.Voting.Managers
                     //Pick a winner
                     picked = _random.Pick(winners);
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-win", ("picked", maps[picked])));
+                        Loc.GetString("ui-vote-map-win", ("winner", maps[picked])));
 
                     //Reset the winning map, adjust the rollover votes for the rest of the maps
                     adjustedVotes[picked] = 0;
