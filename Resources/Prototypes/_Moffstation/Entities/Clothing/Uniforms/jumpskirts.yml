@@ -119,3 +119,23 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/reporter.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/reporter.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtStripedPrisoner
+  name: striped prison jumpskirt
+  description: A jumpskirt for the most crooked of crewmembers.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prisonerstriped.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prisonerstriped.rsi
+  - type: SuitSensor
+    controlsLocked: true
+    randomMode: false
+    mode: SensorCords
+  - type: Tag
+    tags:
+    - ClothMade
+    - PrisonUniform
+    - WhitelistChameleon

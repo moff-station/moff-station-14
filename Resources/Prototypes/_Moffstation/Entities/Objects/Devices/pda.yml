@@ -1,4 +1,24 @@
 - type: entity
+  parent: BasePDA
+  id: PrisonerPDA
+  name: prisoner PDA
+  description: Red to hide the stains of passenger blood.
+  components:
+  - type: Pda
+    id: PrisonerIDCardPerma
+  - type: Sprite
+    sprite: Objects/Devices/pda.rsi
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-prisoner
+  - type: PdaBorderColor
+    borderColor: "#FF9751"
+  - type: Icon
+    state: "pda-prisoner"
+
+- type: entity
   parent: CentcomPDA
   id: CentcomExecutivePDA
   name: CentComm executive PDA

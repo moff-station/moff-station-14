@@ -656,7 +656,7 @@
   - SalvageSpecialistBackpack
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
-  - LeatherSatchel 
+  - LeatherSatchel
 # Moffstation - End - Department Heads can use any department Bag
 
 - type: loadoutGroup
@@ -759,7 +759,7 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
-  
+
 # Moffstation - Start - Department Heads can use any department Bag
 - type: loadoutGroup
   id: ChiefEngineerBackpack
@@ -1224,6 +1224,7 @@
   loadouts:
   - ChiefMedicalOfficerCloak
   - ChiefMedicalOfficerMantle
+  - ChiefMedicalOfficerScarf  # Moffstation - CMO scarf
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
