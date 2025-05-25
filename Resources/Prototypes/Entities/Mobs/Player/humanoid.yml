@@ -540,9 +540,11 @@
       nameFormat: name-format-ert
 
 ## Central Command
+
 - type: entity
-  name: CentComm representative # Moffstation - (New Centcomm Loadouts)
+  name: CentComm official
   id: RandomHumanoidSpawnerCentcomOfficial
+  suffix: CCRole # Moffstation - (New CentComm Loadouts)
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
