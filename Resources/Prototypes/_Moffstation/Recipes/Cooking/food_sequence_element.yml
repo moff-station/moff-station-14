@@ -1,0 +1,21 @@
+# tarfruit
+- type: foodSequenceElement
+  id: Tarfruit
+  name: food-sequence-content-tarfruit
+  sprites:
+  - sprite: _Moffstation/Objects/Specific/Hydroponics/tarfruit.rsi
+    state: produce
+  tags:
+  - Cooked
+  - Meat
+
+# Starfruit
+
+- type: foodSequenceElement
+  id: Starfruit
+  name: food-sequence-content-starfruit
+  sprites:
+  - sprite: _Moffstation/Objects/Specific/Hydroponics/starfruit.rsi
+    state: produce
+  tags:
+  - Fruit
