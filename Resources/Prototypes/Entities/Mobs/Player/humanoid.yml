@@ -540,79 +540,29 @@
       nameFormat: name-format-ert
 
 ## Central Command
-# Moffstation - Begin (New CentComm Loadouts)
 - type: entity
-  name: CentComm representative
+  name: CentComm representative # Moffstation - (New Centcomm Loadouts)
   id: RandomHumanoidSpawnerCentcomOfficial
   components:
-  - type: Sprite
-    sprite: Markers/jobs.rsi
-    state: centcom
-  - type: RandomHumanoidSpawner
-    settings: CentcomOfficial
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: centcom
+    - type: RandomHumanoidSpawner
+      settings: CentcomOfficial
 
 - type: randomHumanoidSettings
   id: CentcomOfficial
   parent: EventHumanoidCentcomm
   components:
-  - type: GhostRole
-    name: ghost-role-information-centcom-official-name
-    description: ghost-role-information-centcom-official-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: default
-  - type: Loadout
-    prototypes: [ CentcomGear ]
-    roleLoadout: [ RoleSurvivalStandard ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm executive
-  id: RandomHumanoidSpawnerCentcommExecutive
-  components:
-  - type: RandomHumanoidSpawner
-    settings: CentcommExecutive
-
-- type: randomHumanoidSettings
-  parent: CentcomOfficial
-  id: CentcommExecutive
-  components:
-  - type: Loadout
-    prototypes: [ CentcommExecutiveGear ]
-    roleLoadout: [ RoleSurvivalStandard ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm agent
-  id: RandomHumanoidSpawnerCentcommAgent
-  components:
-  - type: RandomHumanoidSpawner
-    settings: CentcommAgent
-
-- type: randomHumanoidSettings
-  parent: CentcomOfficial
-  id: CentcommAgent
-  components:
-  - type: Loadout
-    prototypes: [ CentcommAgentGear ]
-    roleLoadout: [ RoleSurvivalStandard ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm field officer
-  id: RandomHumanoidSpawnerCentcommFieldOfficer
-  components:
-  - type: RandomHumanoidSpawner
-    settings: CentcommFieldOfficer
-
-- type: randomHumanoidSettings
-  parent: CentcomOfficial
-  id: CentcommFieldOfficer
-  components:
-  - type: Loadout
-    prototypes: [ CentcommFieldOfficerGear ]
-    roleLoadout: [ RoleSurvivalStandard ]
-# Moffstation - End
+    - type: GhostRole
+      name: ghost-role-information-centcom-official-name
+      description: ghost-role-information-centcom-official-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: default
+    - type: Loadout
+      prototypes: [ CentcomGear ]
+      roleLoadout: [ RoleSurvivalStandard ]
 
 ## Syndicate
 

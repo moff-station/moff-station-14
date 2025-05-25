@@ -16,60 +16,18 @@
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
-# Moffstation - Begin (New CentComm Loadouts)
 - type: startingGear
   id: CentcomGear
   equipment:
+    # Moffstation - Begin (New CentComm Loadouts)
     jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+    back: ClothingBackpackSatchelLeather
     shoes: ClothingShoesBootsLaceup
     mask: ClothingMaskGasCentcom
     eyes: ClothingEyesGlassesCommand
     gloves: ClothingHandsGlovesHop
     id: CentcomPDA
     ears: ClothingHeadsetAltCentCom
-    pocket1: Flash
-    pocket2: BoxFolderCentComClipboard
-
-- type: startingGear
-  parent: CentcomGear
-  id: CentcommExecutiveGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitCentcomFormal
-    head: ClothingHeadHatCentcomcap
-    outerClothing: ClothingOuterArmorCentcommCarapace
-    id: CentcomPDA
-    belt: ClothingBeltHolsterFilledN1984
-    neck: ClothingNeckCloakCentcom
-  inhand:
-  - BriefcaseBrownFilled
-
-# Field Work - low rank
-- type: startingGear
-  id: CentcommAgentGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitCentcomAgent
-    back: ClothingBackpackSatchelLeather
-    shoes: ClothingShoesBootsLaceup
-    mask: ClothingMaskGasCentcom
-    eyes: ClothingEyesGlassesCommand
-    gloves: ClothingHandsGlovesColorBlack
-    outerClothing: ClothingOuterArmorBasicSlim
-    id: CentcomPDA
-    ears: ClothingHeadsetCentCom
     pocket1: WeaponDisabler
     pocket2: BoxFolderCentComClipboard
-  inhand:
-  - BriefcaseBrownFilled
-
-# Field work - high rank
-- type: startingGear
-  parent: CentcommAgentGear
-  id: CentcommFieldOfficerGear
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitCentcomOfficial
-    head: ClothingHeadHatCentcomcap
-    outerClothing: ClothingOuterArmorCentcommCarapace
-    id: CentcomPDA
-    belt: ClothingBeltHolsterFilledN1984
-    pocket1: Flash
-# Moffstation - End
+    # Moffstation - End
