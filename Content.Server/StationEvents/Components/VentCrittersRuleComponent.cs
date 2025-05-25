@@ -14,4 +14,16 @@ public sealed partial class VentCrittersRuleComponent : Component
     /// </summary>
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
+
+    /// <summary>
+    /// The number of players per spawn that occurs.
+    /// </summary>
+    [DataField]
+    public int PlayerRatio = 10;
+
+    /// <summary>
+    /// The chance per spawn that an additional critter will be spawned (spawns can stack)
+    /// </summary>
+    [DataField]
+    public float ExtraSpawnChance = 0.5f;
 }

@@ -1,3 +1,4 @@
+using Content.Server.Antag;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
@@ -13,6 +14,9 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
      * DO NOT COPY PASTE THIS TO MAKE YOUR MOB EVENT.
      * USE THE PROTOTYPE.
      */
+
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly AntagSelectionSystem _antag = default!;
 
     protected override void Started(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -30,11 +34,16 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
             if (CompOrNull<StationMemberComponent>(transform.GridUid)?.Station == station)
             {
                 validLocations.Add(transform.Coordinates);
-                foreach (var spawn in EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom))
-                {
-                    Spawn(spawn, transform.Coordinates);
-                }
             }
+        }
+
+        var pickedLocation = _random.Pick(validLocations);
+
+        component.
+
+        foreach (var spawn in EntitySpawnCollection.GetSpawns(component.SpecialEntries, RobustRandom))
+        {
+
         }
 
         if (component.SpecialEntries.Count == 0 || validLocations.Count == 0)
@@ -54,5 +63,12 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
                 Spawn(spawn, location);
             }
         }
+    }
+
+    private void SpawnCritter(string prototypeId, EntityCoordinates spawn, float recursionChance)
+    {
+        Spawn(prototypeId, spawn);
+        if (_random.NextFloat() < recursionChance)
+            SpawnCritter(prototypeId, spawn, recursionChance);
     }
 }
