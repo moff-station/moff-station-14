@@ -1,0 +1,22 @@
+﻿- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: MobHuman
+  id: MobHumanSyndicateContact
+  name: Syndicate Contact
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Loadout
+    prototypes: [ SyndicateContactGear ]
+    roleLoadout: [ RoleSurvivalSyndicate ]
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: GhostRole
+    name: ghost-role-information-Syndicate-Contact-name
+    description: ghost-role-information-Syndicate-Contact-description
+    rules: ghost-role-information-Syndicate-Contact-rules
+    raffle:
+      settings: short
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
