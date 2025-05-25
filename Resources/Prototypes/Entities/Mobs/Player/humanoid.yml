@@ -555,6 +555,7 @@
 - type: randomHumanoidSettings
   id: CentcomOfficial
   parent: EventHumanoidCentcomm
+  randomizeName: true
   components:
     - type: GhostRole
       name: ghost-role-information-centcom-official-name

@@ -16,32 +16,32 @@
 
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm agent
-  id: RandomHumanoidSpawnerCentcomAgent
+  name: CentComm officer
+  id: RandomHumanoidSpawnerCentcomOfficer
   components:
   - type: RandomHumanoidSpawner
-    settings: CentcomAgent
+    settings: CentcomOfficer
 
 - type: randomHumanoidSettings
   parent: CentcomOfficial
-  id: CentcomAgent
+  id: CentcomOfficer
   components:
   - type: Loadout
-    prototypes: [ CentcomAgentGear ]
+    prototypes: [ CentcomOfficerGear ]
     roleLoadout: [ RoleSurvivalStandard ]
 
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm field officer
-  id: RandomHumanoidSpawnerCentcomFieldOfficer
+  name: CentComm representative
+  id: RandomHumanoidSpawnerCentcomRepresentative
   components:
-  - type: RandomHumanoidSpawner
-    settings: CentcomFieldOfficer
+    - type: RandomHumanoidSpawner
+      settings: CentcomRepresentative
 
 - type: randomHumanoidSettings
   parent: CentcomOfficial
-  id: CentcomFieldOfficer
+  id: CentcomRepresentative
   components:
-  - type: Loadout
-    prototypes: [ CentcomFieldOfficerGear ]
-    roleLoadout: [ RoleSurvivalStandard ]
+    - type: Loadout
+      prototypes: [ CentcomRepresentativeGear ]
+      roleLoadout: [ RoleSurvivalStandard ]

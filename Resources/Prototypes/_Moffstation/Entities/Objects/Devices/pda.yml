@@ -1,0 +1,23 @@
+- type: entity
+  parent: CentcomPDA
+  id: CentcomExecutivePDA
+  name: CentComm executive PDA
+  components:
+  - type: Pda
+    id: CentcomExecutiveIDCard
+
+- type: entity
+  parent: CentcomPDA
+  id: CentcomOfficerPDA
+  name: CentComm officer PDA
+  components:
+  - type: Pda
+    id: CentcomOfficerIDCard
+
+- type: entity
+  parent: CentcomPDA
+  id: CentcomRepresentativePDA
+  name: CentComm representative PDA
+  components:
+  - type: Pda
+    id: CentcomRepresentativeIDCard

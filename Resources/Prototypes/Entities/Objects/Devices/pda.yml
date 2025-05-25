@@ -909,7 +909,7 @@
 - type: entity
   parent: BaseSecurityPDA
   id: CentcomPDA
-  name: CentComm PDA
+  name: CentComm official PDA # Moffstation - (New CentComm Loadouts)
   description: Light green sign of walking bureaucracy.
   components:
   - type: Pda
@@ -935,10 +935,12 @@
       - NotekeeperCartridge
       - NanoTaskCartridge
       - NewsReaderCartridge
-      - MedTekCartridge
-      - WantedListCartridge
-      - LogProbeCartridge
-      - AstroNavCartridge
+      # Moffstation - Begin (New CentComm Loadouts)
+      #- MedTekCartridge
+      #- WantedListCartridge
+      #- LogProbeCartridge
+      #- AstroNavCartridge
+      # Moffstation - End
 
 - type: entity
   parent: CentcomPDA

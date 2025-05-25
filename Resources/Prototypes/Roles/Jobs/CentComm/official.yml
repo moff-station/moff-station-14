@@ -20,14 +20,21 @@
   id: CentcomGear
   equipment:
     # Moffstation - Begin (New CentComm Loadouts)
-    jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficial
     back: ClothingBackpackSatchelLeather
     shoes: ClothingShoesBootsLaceup
     mask: ClothingMaskGasCentcom
     eyes: ClothingEyesGlassesCommand
-    gloves: ClothingHandsGlovesHop
+    outerClothing: ClothingOuterArmorCentcommCarapace
     id: CentcomPDA
     ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltHolsterFilledN1984
     pocket1: WeaponDisabler
     pocket2: BoxFolderCentComClipboard
+  inhand:
+  - BriefcaseBrownFilled
+  storage:
+    back:
+    - Flash
+    - Crowbar
     # Moffstation - End
