@@ -16,7 +16,7 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Machine
-    board: CircuitImprinterMachineCircuitboard
+    board: CircuitImprinterLawBoardMatrixMachineCircuitboard
   - type: Lathe
     producingSound: /Audio/Machines/circuitprinter.ogg
     idleState: icon
