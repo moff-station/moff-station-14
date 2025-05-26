@@ -1,0 +1,50 @@
+- type: entity
+  id: CircuitImprinterLawboard
+  parent: BaseLatheLube
+  name: lawboard matrix imprinter
+  description: Prints lawboards for silicons.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/circuit_imprinter_lawboard.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: CircuitImprinterMachineCircuitboard
+  - type: Lathe
+    producingSound: /Audio/Machines/circuitprinter.ogg
+    idleState: icon
+    runningState: building
+    staticPacks:
+    - ScienceBoardsStatic
+    - ServiceBoardsStatic
+    - CargoBoardsStatic
+    - MedicalBoardsStatic
+    - EngineeringBoardsStatic
+    - CircuitFloorsStatic
+    dynamicPacks:
+    - EngineeringBoards
+    - CargoBoards
+    - MedicalBoards
+    - ServiceBoards
+    - ScienceBoards
+    - CameraBoards
+    - MechBoards
+    - ShuttleBoards
+  - type: EmagLatheRecipes
+    emagDynamicPacks:
+    - SecurityBoards
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+  - type: OreSiloClient
+  - type: RequireProjectileTarget
