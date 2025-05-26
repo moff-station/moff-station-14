@@ -65,22 +65,6 @@
     spraySound:
       path: /Audio/Effects/spray2.ogg
 
-# Moffstation - Begin (ERT Overhaul Pt1)
-- type: entity
-  name: mega space cleaner
-  id: MegaSprayBottleSpaceCleaner
-  parent: MegaSprayBottle
-  description: BLAM!-brand non-foaming space cleaner, now in a bigger package for those huge blood puddles.
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      spray:
-        maxVol: 250
-        reagents:
-        - ReagentId: SpaceCleaner
-          Quantity: 250
-# Moffstation - End
-
 - type: entity
   name: spray bottle
   id: SprayBottleWater
@@ -115,6 +99,23 @@
   - type: Tag
     tags:
       - Spray
+
+# Moffstation - Begin (ERT Overhaul: Equipment)
+- type: entity
+  parent: MegaSprayBottle
+  id: MegaSprayBottleSpaceCleaner
+  name: mega space cleaner
+  description: BLAM!-brand non-foaming space cleaner, now in a bigger package for those huge blood puddles!
+  suffix: ""
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 250
+        reagents:
+        - ReagentId: SpaceCleaner
+          Quantity: 250
+# Moffstation - End
 
 - type: entity
   parent: SprayBottle
