@@ -34,6 +34,8 @@ public sealed class GameMapManager : IGameMapManager
 
     private ISawmill _log = default!;
 
+    private Dictionary<GameMapPrototype, int> _rollOverVotes = new();   // Moffstation - Rollover votes stored here
+
     public void Initialize()
     {
         _log = Logger.GetSawmill("mapsel");
@@ -90,6 +92,7 @@ public sealed class GameMapManager : IGameMapManager
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
+            _rollOverVotes[map] = 0;    // Moffstation - initialize rollover votes
         }
     }
 
@@ -193,7 +196,8 @@ public sealed class GameMapManager : IGameMapManager
         return map.MaxPlayers >= _playerManager.PlayerCount &&
                map.MinPlayers <= _playerManager.PlayerCount &&
                map.Conditions.All(x => x.Check(map)) &&
-               _entityManager.System<GameTicker>().IsMapEligible(map);
+               _entityManager.System<GameTicker>().IsMapEligible(map) &&
+               (_configurationManager.GetCVar(CCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
     }
 
     private bool TryLookupMap(string gameMap, [NotNullWhen(true)] out GameMapPrototype? map)
@@ -241,4 +245,16 @@ public sealed class GameMapManager : IGameMapManager
             _previousMaps.Dequeue();
         }
     }
+
+    // Moffstation - Start - setters and getters for the rollover votes
+    public int GetRollOverVotes(GameMapPrototype map)
+    {
+        return _rollOverVotes[map];
+    }
+
+    public void SetRollOverVotes(GameMapPrototype map, int votes)
+    {
+        _rollOverVotes[map] = votes;
+    }
+    // Moffstation - End
 }

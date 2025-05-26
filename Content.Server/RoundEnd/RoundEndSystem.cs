@@ -11,6 +11,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Server.Voting.Managers;   // Moffstation - auto map votes on round start
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.GameTicking;
@@ -20,6 +21,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Voting;   // Moffstation - auto map votes on round start
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.RoundEnd
@@ -41,6 +43,7 @@ namespace Content.Server.RoundEnd
         [Dependency] private readonly EmergencyShuttleSystem _shuttle = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly StationSystem _stationSystem = default!;
+        [Dependency] private readonly IVoteManager _voteManager = default!; // Moffstation - needed for auto map votes
 
         public TimeSpan DefaultCooldownDuration { get; set; } = TimeSpan.FromSeconds(30);
 
@@ -233,7 +236,7 @@ namespace Content.Server.RoundEnd
             }
 
             _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("round-end-system-shuttle-recalled-announcement"),
-                Loc.GetString("Station"), false, colorOverride: Color.Gold);
+                Loc.GetString("round-end-system-shuttle-sender-announcement"), false, colorOverride: Color.Gold);
 
             _audio.PlayGlobal("/Audio/Announcements/shuttlerecalled.ogg", Filter.Broadcast(), true);
 
@@ -331,6 +334,10 @@ namespace Content.Server.RoundEnd
         {
             if (_gameTicker.RunLevel != GameRunLevel.PostRound) return;
             Reset();
+            // Moffstation - Start - Auto start map vote on round restart
+            if (_cfg.GetCVar(CCVars.AutoStartMapVote))
+                _voteManager.CreateStandardVote(null, StandardVoteType.Map);
+            // Moffstation - End
             _gameTicker.RestartRound();
         }
 
