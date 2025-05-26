@@ -22,25 +22,12 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - ScienceBoardsStatic
-    - ServiceBoardsStatic
-    - CargoBoardsStatic
-    - MedicalBoardsStatic
-    - EngineeringBoardsStatic
-    - CircuitFloorsStatic
-    dynamicPacks:
-    - EngineeringBoards
-    - CargoBoards
-    - MedicalBoards
-    - ServiceBoards
-    - ScienceBoards
-    - CameraBoards
-    - MechBoards
-    - ShuttleBoards
-  - type: EmagLatheRecipes
-    emagDynamicPacks:
-    - SecurityBoards
-  - type: MaterialStorage
+    - DefaultAILawboardsStatic
+    - MoffStationAILawboardsStatic
+#    dynamicPacks:
+#  - type: EmagLatheRecipes
+#    emagDynamicPacks:
+#  - type: MaterialStorage
     whitelist:
       tags:
       - Sheet

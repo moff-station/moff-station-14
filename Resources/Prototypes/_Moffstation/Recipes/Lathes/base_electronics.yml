@@ -1,0 +1,11 @@
+# Additional costs for AI Lawboards
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  abstract: true
+  id: BaseAICircuitboardRecipe
+  materials:
+    Steel: 200
+    Glass: 1000
+    Silver: 200
+    Uranium: 100

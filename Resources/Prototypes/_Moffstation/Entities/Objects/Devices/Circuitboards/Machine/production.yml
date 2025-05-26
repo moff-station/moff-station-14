@@ -9,8 +9,10 @@
     prototype: CircuitImprinterLawboard
     stackRequirements:
       MatterBin: 1
-      Manipulator: 1
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+      PotatoAIChip:
+        amount: 1
+        defaultPrototype: PotatoAIChip

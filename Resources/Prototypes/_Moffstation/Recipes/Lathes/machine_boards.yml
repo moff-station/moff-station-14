@@ -1,6 +1,80 @@
+# Expanded categories
+
+- type: latheRecipe
+  abstract: true
+  id: BaseAILawboardRecipeCategory
+  categories:
+  - General
+
+# Expanded
+
 # Lathes
 
 - type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
+  parent: [ BaseSilverCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
   id: CircuitImprinterLawBoardMatrixMachineCircuitboard
   result: CircuitImprinterLawBoardMatrixMachineCircuitboard
+
+# Standard AI Lawboards
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: GameMasterCircuitBoard
+  result: GameMasterCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: AsimovCircuitBoard
+  result: AsimovCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: CorporateCircuitBoard
+  result: CorporateCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: ArtistCircuitBoard
+  result: ArtistCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: NutimovCircuitBoard
+  result: NutimovCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: NTDefaultCircuitBoard
+  result: NTDefaultCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: LiveLetLiveCircuitBoard
+  result: LiveLetLiveCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: CommandmentCircuitBoard
+  result: CommandmentCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: StationEfficiencyCircuitBoard
+  result: StationEfficiencyCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: RobocopCircuitBoard
+  result: RobocopCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: PaladinCircuitBoard
+  result: PaladinCircuitBoard
+
+# Moffstation AI Lawboards
+
+- type: latheRecipe
+  parent: [ BaseAICircuitboardRecipe, BaseAILawboardRecipeCategory ]
+  id: StreamerCircuitBoard
+  result: StreamerCircuitBoard
