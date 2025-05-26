@@ -75,22 +75,6 @@
   - type: Clothing
     sprite: Clothing/Shoes/Boots/magboots-science.rsi
 
-# Moffstation - Begin (ERT Overhaul Pt1)
-- type: entity
-  parent: [BaseCentcommContraband, ClothingShoesBootsMagBase]
-  id: ClothingShoesBootsMagERT
-  name: ERT magboots
-  description: A set of upgraded magboots worn by Nanotrasen's Emergency Response Teams. Easier to walk in than civilian versions.
-  components:
-  - type: Sprite
-    sprite: Clothing/Shoes/Boots/magboots-science.rsi # Placeholder sprite
-  - type: Clothing
-    sprite: Clothing/Shoes/Boots/magboots-science.rsi # Placeholder sprite
-  - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
-  # Moffstation - End
-
 - type: entity
   parent: ClothingShoesBootsMagBase
   id: ClothingShoesBootsMagBlinding
@@ -107,7 +91,7 @@
   parent: [ClothingShoesBootsMagBase, BaseJetpack, BaseSyndicateContraband]
   id: ClothingShoesBootsMagSyndie
   name: blood-red magboots
-  description: Reverse-engineered magnetic boots that have a heavy magnetic pull and integrated thrusters. It can hold 0.75 L of gas.
+  description: Reverse-engineered from ERT magboots boots, they have a heavy magnetic pull and integrated thrusters. It can hold 0.75 L of gas. # Moffstation - (ERT Overhaul Pt1)
   components:
   - type: Sprite
     sprite: Clothing/Shoes/Boots/magboots-syndicate.rsi
@@ -129,6 +113,22 @@
   - type: Item
     sprite: null
     size: Normal
+
+# Moffstation - Begin (ERT Overhaul Pt1)
+- type: entity
+  parent: [BaseCentcommContraband, ClothingShoesBootsMagSyndie]
+  id: ClothingShoesBootsMagERT
+  name: ERT magboots
+  description: Upgraded magnetic boots utilized by Nanotrasen's Emergency Response Teams, they have a heavy magnetic pull and integrated thrusters. It can hold 0.75 L of gas.
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Boots/magboots-science.rsi # Placeholder sprite
+  - type: Clothing
+    sprite: Clothing/Shoes/Boots/magboots-science.rsi # Placeholder sprite
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  # Moffstation - End
 
 - type: entity
   id: ActionToggleMagboots

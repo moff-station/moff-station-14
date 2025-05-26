@@ -232,12 +232,12 @@
   parent: [BaseCentcommContraband, ClothingOuterVestWeb]
   id: ClothingOuterVestWebERT
   name: ERT web vest
-  description: A synthetic armor vest. This one has added webbing and ballistic plates. Used by Nanotrasen's Emergency Response Teams.
+  description: A high-quality armored vest made from a hard synthetic material. It's surprisingly flexible and light, despite formidable armor plating. Used by Nanotrasen's Emergency Response Teams.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/ertwebvest.rsi
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/webvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/ertwebvest.rsi
 # Moffstation - End
 
 #Detective's vest

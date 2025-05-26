@@ -75,20 +75,3 @@
     solution: tank
   - type: ExaminableSolution
     solution: tank
-
-# Moffstation - Begin (ERT Overhaul Pt1)
-- type: entity
-  parent: ClothingBackpackWaterTank
-  id: ClothingBackpackWaterTankFlamethrower
-  name: backpack flamethrower tank
-  suffix: Flamethrower
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      tank:
-        reagents:
-        - ReagentId: Phlogiston
-          Quantity: 10
-        - ReagentId: Napalm
-          Quantity: 990
-# Moffstation - End
