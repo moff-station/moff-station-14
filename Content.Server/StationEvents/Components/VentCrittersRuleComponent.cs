@@ -1,5 +1,6 @@
 ﻿using Content.Server.StationEvents.Events;
 using Content.Shared.Storage;
+using Robust.Shared.Map;
 
 namespace Content.Server.StationEvents.Components;
 
@@ -15,15 +16,11 @@ public sealed partial class VentCrittersRuleComponent : Component
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
 
-    /// <summary>
-    /// The number of players per spawn that occurs.
-    /// </summary>
-    [DataField]
-    public int PlayerRatio = 10;
+    public EntityCoordinates? Location;
 
     /// <summary>
-    /// The chance per spawn that an additional critter will be spawned (spawns can stack)
+    /// The amount of chances something gets to spawn. estimated number of spawns can be calculated with (SpawnChances * entryProb)
     /// </summary>
     [DataField]
-    public float ExtraSpawnChance = 0.5f;
+    public int SpawnChances = 100;
 }
