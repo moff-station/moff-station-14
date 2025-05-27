@@ -1,11 +1,11 @@
 - type: entity
-  id: CircuitImprinterLawboard
+  id: CircuitImprinterLawMatrix
   parent: BaseLatheLube
-  name: lawboard matrix imprinter
-  description: Prints lawboards for silicons.
+  name: law matrix imprinter
+  description: Prints law boards for silicons.
   components:
   - type: Sprite
-    sprite: _Moffstation/Structures/Machines/circuit_imprinter_lawboard.rsi
+    sprite: _Moffstation/Structures/Machines/circuit_imprinter_law_matrix.rsi
     snapCardinals: true
     layers:
     - state: icon
@@ -16,14 +16,14 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Machine
-    board: CircuitImprinterLawBoardMatrixMachineCircuitboard
+    board: CircuitImprinterLawMatrixMachineCircuitboard
   - type: Lathe
     producingSound: /Audio/Machines/circuitprinter.ogg
     idleState: icon
     runningState: building
     staticPacks:
-    - DefaultAILawboardsStatic
-    - MoffStationAILawboardsStatic
+    - DefaultAILawBoardsStatic
+    - MoffStationAILawBoardsStatic
   - type: MaterialStorage
     whitelist:
       tags:

@@ -1,12 +1,12 @@
 - type: entity
-  id: CircuitImprinterLawBoardMatrixMachineCircuitboard
+  id: CircuitImprinterLawMatrixMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: lawboard matrix imprinter machine board
+  name: law matrix imprinter machine board
   components:
   - type: Sprite
     state: science
   - type: MachineBoard
-    prototype: CircuitImprinterLawboard
+    prototype: CircuitImprinterLawMatrix
     stackRequirements:
       MatterBin: 1
     tagRequirements:
