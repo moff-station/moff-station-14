@@ -105,6 +105,8 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         }
 
         // Pick one at random
-        component.Location = _random.Pick(validLocations);
+        if (validLocations.Count != 0)
+            component.Location = _random.Pick(validLocations);
+
     }
 }
