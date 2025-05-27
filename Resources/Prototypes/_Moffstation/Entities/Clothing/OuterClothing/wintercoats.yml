@@ -1,8 +1,8 @@
 - type: entity
   parent: [AllowSuitStorageClothing, BaseSecurityContraband, ClothingOuterWinterCoat]
-  id: ClothingLongcoatSec
-  name: Security Officer's Armored Longcoat
-  description: A Double-Breasted longcoat, specifically. This one is black with silver buttons and red armbands, and is worn over a discrete armor vest.
+  id: ClothingOuterLongcoatSec
+  name: security armored winter coat
+  description: A Double-Breasted longcoat. This one is black with silver buttons and red armbands, and is worn over a discrete armor vest.
   components:
   - type: Armor
     modifiers:
