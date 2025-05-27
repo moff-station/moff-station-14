@@ -28,7 +28,7 @@
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     weight: 6
-    duration: 15 # Moffstation - used as delay
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobMouse
@@ -51,7 +51,7 @@
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     weight: 6
-    duration: 15 # Moffstation - used as delay
+    duration: 30 # Moffstation - used as delay
     minimumPlayers: 30 # Hopefully this is enough for the Rat King's potential Army (it was not, raised from 15 -> 30)
   - type: VentCrittersRule
     entries:
@@ -76,7 +76,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 6
-    duration: 15 # Moffstation - used as delay
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobCockroach
@@ -93,7 +93,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 6
-    duration: 15 # Moffstation - used as delay
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobSnail
@@ -113,7 +113,7 @@
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     weight: 6
-    duration: 15 # Moffstation - used as delay
+    duration: 30 # Moffstation - used as delay
     minimumPlayers: 30
   - type: VentCrittersRule
     entries:
@@ -136,7 +136,7 @@
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
     weight: 6
-    duration: 15 # Moffstation - used as delay
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobMothroach
