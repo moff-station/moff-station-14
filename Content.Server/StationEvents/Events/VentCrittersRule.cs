@@ -1,17 +1,16 @@
-using Content.Server.Antag;
-using Content.Server.Chat.Systems;
 using Content.Server.Pinpointer;
-using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Map;
-using Robust.Shared.Player;
 using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
 
+/// <remarks>
+/// Moffstation - File has been completely rewritten, do not accept upstream changes
+/// </remarks>
 public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleComponent>
 {
     /*
@@ -20,13 +19,8 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
      */
 
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly ChatSystem _chatSystem = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-
     protected override void Added(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
     {
         // Choose location and make sure it's not null
