@@ -749,10 +749,12 @@
   id: ClothingOuterWinterRobo
   result: ClothingOuterWinterRobo
 
-- type: latheRecipe
-  parent: BaseCoatRecipe
-  id: ClothingOuterLongcoatSec # Moffstation - (Security Armored Longcoat)
-  result: ClothingOuterLongcoatSec # Moffstation - (Security Armored Longcoat)
+# Moffstation - Begin (Security Armored Longcoat)
+#- type: latheRecipe
+#  parent: BaseCoatRecipe
+#  id: ClothingOuterWinterSec
+#  result: ClothingOuterWinterSec
+# Moffstation - End
 
 - type: latheRecipe
   parent: BaseCoatRecipe
