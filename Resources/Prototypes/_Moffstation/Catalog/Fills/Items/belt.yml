@@ -12,9 +12,9 @@
   parent: ClothingBeltHolster
   suffix: Filled, N1984
   components:
-    - type: StorageFill
-      contents:
-        - id: WeaponPistolN1984
-        - id: MagazineMagnum
-          amount: 2
-        - id: Zipties
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolN1984
+    - id: MagazineMagnum
+      amount: 2
+    - id: Zipties
