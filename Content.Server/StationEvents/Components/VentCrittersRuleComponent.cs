@@ -16,6 +16,8 @@ public sealed partial class VentCrittersRuleComponent : Component
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
 
+
+    // Moffstation - Start - New variables for single vent spawn
     public EntityCoordinates? Location;
 
     /// <summary>
@@ -23,4 +25,5 @@ public sealed partial class VentCrittersRuleComponent : Component
     /// </summary>
     [DataField]
     public int SpawnChances = 100;
+    // Moffstation - End
 }
