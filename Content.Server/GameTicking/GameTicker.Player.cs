@@ -128,6 +128,11 @@ namespace Content.Server.GameTicking
                         _pvsOverride.RemoveSessionOverride(mindId.Value, session);
                     }
 
+                    // Moffstation - Start - Auto-pause if there's nobody left to play
+                    if (_cfg.GetCVar(CCVars.EmptyAutoPause) && _playerManager.PlayerCount <= 1)
+                        PauseStart();
+                    // Moffstation - End
+
                     _userDb.ClientDisconnected(session);
                     break;
                 }
