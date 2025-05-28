@@ -10,12 +10,12 @@
   supervisors: job-supervisors-hos
   canBeAntag: false
   accessGroups:
-    - AllAccess
+  - AllAccess
   access:
-    - CentralCommand
+  - CentralCommand
   special:
-    - !type:AddImplantSpecial
-      implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   parent: CentcomGear
