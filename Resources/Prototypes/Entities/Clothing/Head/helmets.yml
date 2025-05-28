@@ -36,19 +36,12 @@
   description: Standard security gear. Protects the head from impacts, and comes with a detachable visor.
   components:
   - type: Foldable
-    isFolded: false
     canFoldInsideContainer: true
     unfoldVerbText: fold-attach-visor-verb
     foldVerbText: fold-detach-visor-verb
   - type: FoldableClothing
     foldedEquippedPrefix: visorless
     foldedHeldPrefix: visorless
-    foldedHideLayers:
-    - HeadTop
-    - HeadSide
-    unfoldedHideLayers:
-    - HeadTop
-    - HeadSide
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
     layers:
