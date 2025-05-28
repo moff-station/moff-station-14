@@ -4,6 +4,10 @@
   name: gas mask
   description: A face-covering mask that can be connected to an air supply.
   components:
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Item
+    size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/gas.rsi
   - type: Clothing
@@ -13,6 +17,7 @@
   - type: IdentityBlocker
   - type: Tag
     tags:
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
     - HamsterWearable
     - WhitelistChameleon
   - type: HideLayerClothing
@@ -26,8 +31,10 @@
   name: security gas mask
   description: A standard issue Security gas mask.
   components:
-  - type: Item
-    size: Tiny
+  # Moffstation - Begin (Survival Box Improvements)
+#  - type: Item
+#      size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/gassecurity.rsi
   - type: Clothing
@@ -137,6 +144,7 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -180,6 +188,7 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -206,7 +215,10 @@
     - WhitelistChameleon
   - type: HideLayerClothing
     slots:
+    - Hair
     - Snout
+    - HeadTop
+    - HeadSide
 
 - type: entity
   parent: ClothingMaskClownBase
@@ -217,9 +229,13 @@
     - ClownMask
     - HamsterWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
+    - Hair
     - Snout
+    - HeadTop
+    - HeadSide
 
 - type: entity
   parent: ClothingMaskClown
@@ -284,6 +300,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Snout
@@ -374,10 +391,13 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
     - Snout
+    - HeadTop
+    - HeadSide
     hideOnToggle: true
   - type: Armor
     modifiers:
@@ -418,6 +438,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
@@ -443,6 +464,11 @@
     sprite: Clothing/Mask/squadron.rsi
   - type: Clothing
     sprite: Clothing/Mask/squadron.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
   - type: Armor
     modifiers:
       coefficients:
@@ -691,6 +717,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
 
 # Entity tables
 - type: entityTable

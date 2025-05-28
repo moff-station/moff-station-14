@@ -60,9 +60,9 @@ public sealed class AdminSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
 
     // CD: for erasing records on erase ban
-        [Dependency] private readonly CharacterRecordsSystem _cdRecords = default!;
+    [Dependency] private readonly CharacterRecordsSystem _cdRecords = default!;
 
-        private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
+    private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
 
     /// <summary>
     ///     Set of players that have participated in this round.

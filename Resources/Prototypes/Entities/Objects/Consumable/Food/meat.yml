@@ -302,7 +302,7 @@
     solutions:
       food:
         reagents:
-        - ReagentId: Bicaridine
+        - ReagentId: Vestine #Moffstation - Bicardine isnt very useful and Vestine gives Syndis a reason to go after Ian outside of the objective.
           Quantity: 20
   - type: StaticPrice
     price: 750
@@ -1239,8 +1239,8 @@
     node: cooked meat patty
   - type: FoodSequenceElement
     entries:
-      Burger: MeatSteak
-      Taco: MeatSteak
+      Burger: MeatPatty
+      Taco: MeatPatty
 
 - type: entity
   name: boiled snail

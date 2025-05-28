@@ -6,7 +6,7 @@
   - type: Sprite
     state: icon
   - type: Item
-    size: Small
+    size: Tiny # Moffstation - (Survival Box Improvements)
   - type: Clothing
     slots: [mask]
   - type: StaticPrice
@@ -39,6 +39,9 @@
     spawned:
     - id: MaterialCloth1
       amount: 1
+  - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
+    materialComposition:
+      Cloth: 50
   - type: Food
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
@@ -50,4 +53,5 @@
           Quantity: 10
   - type: Tag
     tags:
-      - ClothMade
+    - ClothMade
+    - Recyclable

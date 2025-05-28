@@ -18,6 +18,26 @@
     tags:
     - BoxCardboard
 
+# Moffstation - Begin
+- type: entity
+  parent: BoxCardboard
+  id: BoxSurvivalEmpty
+  name: survival box
+  description: A cardboard box for storing emergency supplies.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,1
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,2
+    whitelist:
+      tags:
+      - SurvivalBoxInsertable
+# Moffstation - End
+
 - type: entity
   name: mousetrap box
   parent: BoxCardboard
@@ -192,14 +212,25 @@
       - state: writing
 
 - type: entity
-  parent: BoxHug
+  parent: BoxCardboard
   id: BoxHugHealing
   suffix: Medical
   components:
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Sprite
+    layers:
+    - state: box_hug
+    - state: heart
+  - type: Item
+    heldPrefix: hug
   - type: StorageFill
     contents:
       - id: Brutepack
         amount: 3
+  - type: Tag
+    tags:
+    - BoxHug
+  # Moffstation - End
 
 - type: entity
   name: inflatable wall box
@@ -477,3 +508,20 @@
     contents:
       - id: Envelope
         amount: 9
+
+- type: entity
+  name: utensil box
+  parent: BoxCardboard
+  id: BoxUtensil
+  description: A box filled with forks and spoons.
+  components:
+  - type: Sprite
+    layers:
+      - state: box
+      - state: utensils
+  - type: StorageFill
+    contents:
+      - id: Fork
+        amount: 2
+      - id: Spoon
+        amount: 2

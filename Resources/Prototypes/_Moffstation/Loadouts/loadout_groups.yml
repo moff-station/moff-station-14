@@ -13,6 +13,8 @@
   minLimit: 0
   maxLimit: 2
   loadouts:
+  - PersonalItemArieApple
+  - PersonalItemAuroraPin
   - PersonalItemCinnabarMask
   - PersonalItemCooksPlushie
   - PersonalItemDarnellLighter
@@ -22,12 +24,16 @@
   - PersonalItemFredWatch
   - PersonalItemFrostMedicalWebbing
   - PersonalItemGigsShaker
+  - PersonalItemHotSauceFireExtinguisher
   - PersonalItemIrisRing
+  - PersonalItemJasmineFlower
   - PersonalItemKatieWristBand
   - PersonalItemKrakatoaCloak
   - PersonalItemLilithGuitar
   - PersonalItemNyxilathRing
   - PersonalItemPeedeeAvatar
+  - PersonalItemRemiaPhoto
+  - PersonalItemPeriwinkleFace
   - PersonalItemRykerPen
   - PersonalItemSammyPlushie
   - PersonalItemSapphireAmpule
@@ -40,3 +46,23 @@
   - PersonalItemSharedStationBlueprints
   - PersonalItemKylieUniform
   - PersonalItemStrawberryBackTentacles
+  - PersonalItemVortexMask
+
+# Prisoner loadouts
+
+- type: loadoutGroup
+  id: PrisonerJumpsuit
+  name: loadout-group-prisoner-jumpsuit
+  loadouts:
+  - PrisonJumpsuit
+  - PrisonJumpsuitStriped
+  - PrisonJumpsuitShirt
+  - PrisonJumpskirtStriped
+
+- type: loadoutGroup
+  id: PrisonerHats
+  name: loadout-group-prisoner-hat
+  minLimit: 0
+  loadouts:
+  - SkullBandana
+  - PrisonHatStriped

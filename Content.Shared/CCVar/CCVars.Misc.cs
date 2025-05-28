@@ -87,7 +87,7 @@ public sealed partial class CCVars
         CVarDef.Create("gateway.generator_enabled", true);
 
     public static readonly CVarDef<string> TippyEntity =
-        CVarDef.Create("tippy.entity", "Tippy", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("tippy.entity", "Moffy", CVar.SERVER | CVar.REPLICATED); // Moffstation - Changed Tippy to Moffy
 
     /// <summary>
     ///     The number of seconds that must pass for a single entity to be able to point at something again.

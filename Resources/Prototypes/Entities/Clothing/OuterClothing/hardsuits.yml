@@ -1,33 +1,6 @@
 #When adding new hardsuits, please try to keep the organization consistent with hardsuit-helmets.yml (if possible.)
 
 #CREW HARDSUITS
-#Basic Hardsuit
-- type: entity
-  parent: ClothingOuterHardsuitBase
-  id: ClothingOuterHardsuitBasic
-  name: basic hardsuit
-  description: A basic, universal hardsuit that protects the wearer against the horrors of life in space. Beats not having a hardsuit, at least.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/basic.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/basic.rsi
-  - type: ExplosionResistance
-    damageCoefficient: 0.9
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
-        Caustic: 0.9
-  - type: ClothingSpeedModifier
-    walkModifier: 0.80
-    sprintModifier: 0.80
-  - type: HeldSpeedModifier
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitBasic
-
 #Atmospherics Hardsuit
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseEngineeringContraband]
@@ -146,6 +119,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.7
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -178,6 +155,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.3
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -214,6 +195,10 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -246,6 +231,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -275,6 +264,10 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -304,6 +297,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.5 # Combat riot hardsuit, +40%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -335,6 +332,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -426,6 +427,10 @@
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Heavy Hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -472,6 +477,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -540,8 +549,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  #- type: StaminaResistance
-  #  damageCoefficient: 0.75
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.6 # Advanced combat hardsuit, +30%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -602,8 +613,10 @@
     damageCoefficient: 0.2
   - type: FireProtection
     reduction: 0.8
-  #- type: StaminaResistance
-  #  damageCoefficient: 0.6
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.6 # Advanced Combat hardsuit, +30%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -638,8 +651,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  #- type: StaminaResistance
-  #  damageCoefficient: 0.6
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.6 # Advanced combat hardsuit, +30%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -672,8 +687,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.3
-  #- type: StaminaResistance # Should not have stamina resistance, this is purely so people know it was not forgotten.
-  #  damageCoefficient: 0.99
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Intentional flaw.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -772,6 +789,10 @@
     sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.7
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.8 # Shitty combat hardsuit, +10%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -807,6 +828,10 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.6
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -973,6 +998,10 @@
     coolingCoefficient: 0.001
   - type: ExplosionResistance
     damageCoefficient: 0.7
+  # Moffstation - Begin (Stamina Resistance)
+  - type: StaminaResistance
+    damageCoefficient: 0.6 # Advanced combat hardsuit, +30%.
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:

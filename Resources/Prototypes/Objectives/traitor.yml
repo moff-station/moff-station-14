@@ -54,7 +54,7 @@
   description: Die.
   components:
   - type: Objective
-    difficulty: 0.5
+    difficulty: 0.8 # Moffstation - Made DAGD more difficult so it's less likely
     icon:
       sprite: Mobs/Ghosts/ghost_human.rsi
       state: icon
@@ -231,6 +231,16 @@
     job: Quartermaster
   - type: StealCondition
     stealGroup: BoxFolderQmClipboard
+    owner: job-name-qm
+
+- type: entity
+  parent: BaseTraitorStealObjective
+  id: KnuckleDustersStealObjective
+  components:
+  - type: NotJobRequirement
+    job: Quartermaster
+  - type: StealCondition
+    stealGroup: ClothingHandsKnuckleDustersQM
     owner: job-name-qm
 
 ## hop

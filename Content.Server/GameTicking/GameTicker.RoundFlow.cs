@@ -994,5 +994,23 @@ namespace Content.Server.GameTicking
             Text += text;
             _doNewLine = true;
         }
+
+        // Moffstation - Start - Added line wrapping for end of round screen
+        public void AddLineWrapping(string text, int linewidth = 50, char separator = ' ')
+        {
+            var words = text.Split(separator);
+            var line = "";
+            foreach (var word in words)
+            {
+                line += word + separator;
+                if (line.Length > linewidth)
+                {
+                    AddLine(line);
+                    line = "";
+                }
+            }
+            AddLine(line);
+        }
+        // Moffstation - End - Added line wrapping for end of round screen
     }
 }

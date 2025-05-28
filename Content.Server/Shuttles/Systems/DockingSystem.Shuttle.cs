@@ -260,11 +260,6 @@ public sealed partial class DockingSystem
                                 continue;
                             }
 
-                            // Moffstation - Start - checks if either side is queued for something else, if so we say it's not available
-                            if (gridDock.Queued || shuttleDock.Queued)
-                                continue;
-                            //Moffstation - End
-
                             dockedPorts.Add((otherUid, otherGridUid, other, otherGrid));
                         }
                     }
@@ -297,17 +292,68 @@ public sealed partial class DockingSystem
 
         var targetGridAngle = _transform.GetWorldRotation(targetGrid).Reduced();
 
-        // Prioritise by priority docks, then by maximum connected ports, then by most similar angle.
-        validDockConfigs = validDockConfigs
-           .OrderByDescending(x => IsConfigPriority(x, priorityTag))
-           .ThenByDescending(x => x.Docks.Count)
-           .ThenBy(x => Math.Abs(Angle.ShortestDistance(x.Angle.Reduced(), targetGridAngle).Theta)).ToList();
+        // Moffstation - Start - New FTL code, this should make proper use of the queuing system. Also should be much more performant.
+        var bestMatch = new DockingConfig();
 
-        var location = validDockConfigs.First();
-        location.TargetGrid = targetGrid;
+        foreach (var config in validDockConfigs)
+        {
+            if (bestMatch.Docks.Count == 0)
+            {
+                bestMatch = config;
+                continue;
+            }
+            var queueBusted = false;
+            foreach (var dock in config.Docks)
+            {
+                if (dock.DockA.Queued || dock.DockB.Queued)
+                {
+                    queueBusted = true;
+                    break;
+                }
+            }
+            if (queueBusted)
+                continue;
+
+            var configIsPriority = IsConfigPriority(config, priorityTag);
+            var bestMatchIsPriority = IsConfigPriority(bestMatch, priorityTag);
+            //If worse it moves on, if better it sets it, and if it's the same gets skipped
+            switch (configIsPriority)
+            {
+                case false when bestMatchIsPriority:
+                    continue;
+                case true when !bestMatchIsPriority:
+                    bestMatch = config;
+                    continue;
+            }
+
+            // Same with this one
+            if (bestMatch.Docks.Count > config.Docks.Count)
+                continue;
+            if (bestMatch.Docks.Count < config.Docks.Count)
+            {
+                bestMatch = config;
+                continue;
+            }
+
+
+            // These aren't going to be the same so don't bother lol
+            if (Math.Abs(Angle.ShortestDistance(bestMatch.Angle.Reduced(), targetGridAngle).Theta) < Math.Abs(Angle.ShortestDistance(config.Angle.Reduced(), targetGridAngle).Theta))
+                continue;
+            bestMatch = config;
+        }
+
+        // // Prioritise by priority docks, then by maximum connected ports, then by most similar angle.
+        // validDockConfigs = validDockConfigs
+        //    .OrderByDescending(x => IsConfigPriority(x, priorityTag))
+        //    .ThenByDescending(x => x.Docks.Count)
+        //    .ThenBy(x => Math.Abs(Angle.ShortestDistance(x.Angle.Reduced(), targetGridAngle).Theta)).ToList();
+        //
+        // var location = validDockConfigs.First();
+        bestMatch.TargetGrid = targetGrid;
         // TODO: Ideally do a hyperspace warpin, just have it run on like a 10 second timer.
 
-        return location;
+        return bestMatch;
+        // Moffstation - End
     }
 
     public bool IsConfigPriority(DockingConfig config, string? priorityTag)
