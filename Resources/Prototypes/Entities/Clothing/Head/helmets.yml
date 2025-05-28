@@ -36,6 +36,7 @@
   description: Standard security gear. Protects the head from impacts, and comes with a detachable visor.
   components:
   - type: Foldable
+    isFolded: false
     canFoldInsideContainer: true
     unfoldVerbText: fold-attach-visor-verb
     foldVerbText: fold-detach-visor-verb
