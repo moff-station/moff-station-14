@@ -2,8 +2,8 @@
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWeb
-  name: syndicate plate carrier # Moffstation - Armor Descriptions
-  description: A Syndicate type I plate carrier, its aramid is reinforced by neo-ceramic plates. Provides excellent ballistic protection, and features tactical webbing to carry additional equipment. # Moffstation - Armor Descriptions
+  name: syndicate plate carrier # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Syndicate type I plate carrier, its aramid armor is reinforced by ceramic plates. Provides excellent ballistic protection, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/webvest.rsi
@@ -23,8 +23,8 @@
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWebElite
-  name: syndicate elite carrier # Moffstation - Armor Descriptions
-  description: A Syndicate type IV plate carrier, its aramid is reinforced by insulated plates and a layer of hazard shielding. Protects well against energy weapons and environmental threats, and features tactical webbing to carry additional equipment. # Moffstation - Armor Descriptions
+  name: syndicate elite carrier # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Syndicate type IV plate carrier, its aramid armor is reinforced by reflective panels and a layer of hazard shielding. Protects well against energy weapons and environmental threats, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
@@ -51,8 +51,8 @@
 - type: entity
   parent: [ BaseMajorContraband, ClothingOuterVestWeb] #web vest so it should have some pockets for ammo
   id: ClothingOuterVestWebMerc
-  name: mercenary plate carrier # Moffstation - Armor Descriptions
-  description: A high-quality armored vest made from a hard synthetic material. It's surprisingly flexible and light, despite formidable armor plating.
+  name: mercenary plate carrier # Moffstation - (Armor Descriptions: Pt 1)
+  description: A type I plate carrier of a model commonly found on the open market, its aramid armor is reinforced by ceramic plates. Provides excellent combat protection and is painted in an olive green common in mercenary companies. Features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
@@ -72,8 +72,8 @@
 - type: entity
   parent: [ClothingOuterArmorBase, BaseSecurityContraband]
   id: ClothingOuterVestDetective
-  name: detective's armor vest # Moffstation - Armor Descriptions
-  description: A hard-boiled private investigator's armored vest.
+  name: detective's armor vest # Moffstation - (Armor Descriptions: Pt 1)
+  description: A type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. Its finish denotes the wearer as a NT security detective. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/detvest.rsi

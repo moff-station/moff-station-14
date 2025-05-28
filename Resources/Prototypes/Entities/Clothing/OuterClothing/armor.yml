@@ -7,7 +7,7 @@
   id: ClothingOuterArmorBase
   name: armor vest
   abstract: true
-  description: A standard type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. # Moffstation - Armor Descriptions
+  description: A standard type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/security.rsi
@@ -34,7 +34,7 @@
   id: ClothingOuterArmorBasicSlim
   name: armor vest
   suffix: slim
-  description: A slim type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. # Moffstation - Armor Descriptions
+  description: A slim type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/security_slim.rsi
@@ -45,7 +45,7 @@
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband]
   id: ClothingOuterArmorRiot
   name: riot suit
-  description: A NT type II riot suit, its semi-flexible polycarbonate provides excellent protection in melee encounters, but slightly hinders mobility. # Moffstation - Armor Descriptions
+  description: A NT type II riot suit, its semi-flexible polycarbonate provides excellent protection in melee encounters, but slightly hinders mobility. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/riot.rsi
@@ -66,8 +66,8 @@
 - type: entity
   parent: ClothingOuterArmorBase
   id: ClothingOuterArmorBulletproof
-  name: ballistic vest # Moffstation - Armor Descriptions
-  description: A NT type III ballistic vest, its neo-ceramic plates provide excellent protection against firearms, though it won’t do much against other forms of attack. # Moffstation - Armor Descriptions
+  name: ballistic vest # Moffstation - (Armor Descriptions: Pt 1)
+  description: A NT type III ballistic vest, its neo-ceramic plates provide excellent protection against firearms, though it won’t do much against other forms of attack. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/bulletproof.rsi
@@ -87,7 +87,7 @@
   parent: ClothingOuterArmorBase
   id: ClothingOuterArmorReflective
   name: reflective vest
-  description: A NT type IV reflective vest. Alongside the standard insulation it features a special reflective coating which reliably reflects beam weapons. As Nanotrasen holds a monopoly over such weaponry, it’s rarely used. # Moffstation - Armor Descriptions
+  description: A NT type IV reflective vest. On top of the normal reflective panels, it features a special material which reliably redirects beam fire. As Nanotrasen holds a monopoly over such weaponry, it’s rarely used. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
@@ -108,8 +108,8 @@
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband ]
   id: ClothingOuterArmorRaid
-  name: syndicate raid suit
-  description: A somewhat flexible and well-armored suit with a powerful shoulder mounted flashlight manufactured in the Gorlex Marauder's iconic blood-red color scheme, it does not protect its wearer from space.
+  name: Gorlex raid suit # Moffstation - (Armor Descriptions: Pt 1)
+  description: The Gorlex Marauders A23 combat armor. It features no space-proofing, freeing up plenty of weight and bulk for thicker layers of ceramic and plasteel-alloy, as well as a powerful shoulder-mounted flashlight. Commonly worn by marines on planetside operations. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/syndie-raid.rsi
