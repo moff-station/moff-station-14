@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server._Moffstation.Pirate.Components;
 using Content.Server.Cargo.Components;
-using Content.Shared._Moffstation.Cargo.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
 using Content.Shared.Cargo.Components;
@@ -115,7 +114,7 @@ public sealed partial class CargoSystem
         return _pads;
     }
 
-    internal List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)>
+    private List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)>
         GetFreeCargoPallets(EntityUid gridUid,
             List<(EntityUid Entity, CargoPalletComponent Component, TransformComponent Transform)> pallets)
     {
@@ -140,7 +139,7 @@ public sealed partial class CargoSystem
 
     #region Station
 
-    internal bool SellPallets(EntityUid gridUid, EntityUid station, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
+    private bool SellPallets(EntityUid gridUid, EntityUid station, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
     {
         GetPalletGoods(gridUid, out var toSell, out goods);
 
@@ -198,7 +197,7 @@ public sealed partial class CargoSystem
         }
     }
 
-    internal bool CanSell(EntityUid uid, TransformComponent xform)
+    private bool CanSell(EntityUid uid, TransformComponent xform)
     {
         if (_mobQuery.HasComponent(uid))
         {

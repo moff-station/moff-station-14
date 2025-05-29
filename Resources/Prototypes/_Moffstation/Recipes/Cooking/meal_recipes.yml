@@ -1,0 +1,21 @@
+- type: microwaveMealRecipe
+  id: RecipeChickenNuggets
+  name: chicken nugget recipe
+  result: FoodBoxNugget
+  time: 10
+  solids:
+    MaterialCardboard1: 1
+  reagents:
+    UncookedAnimalProteins: 20
+    Flour: 5
+    Egg: 6
+
+- type: microwaveMealRecipe
+  id: RecipeTarburger
+  name: tarburger recipe
+  result: FoodBurgerTar
+  time: 10
+  group: Savory
+  solids:
+    FoodBreadBun: 1
+    TarfruitUnwrapped: 1

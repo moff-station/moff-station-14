@@ -15,6 +15,7 @@
   loadouts:
   - PersonalItemArieApple
   - PersonalItemAuroraPin
+  - PersonalItemBoxcarGlasses
   - PersonalItemCinnabarMask
   - PersonalItemCooksPlushie
   - PersonalItemDarnellLighter
@@ -47,3 +48,22 @@
   - PersonalItemKylieUniform
   - PersonalItemStrawberryBackTentacles
   - PersonalItemVortexMask
+
+# Prisoner loadouts
+
+- type: loadoutGroup
+  id: PrisonerJumpsuit
+  name: loadout-group-prisoner-jumpsuit
+  loadouts:
+  - PrisonJumpsuit
+  - PrisonJumpsuitStriped
+  - PrisonJumpsuitShirt
+  - PrisonJumpskirtStriped
+
+- type: loadoutGroup
+  id: PrisonerHats
+  name: loadout-group-prisoner-hat
+  minLimit: 0
+  loadouts:
+  - SkullBandana
+  - PrisonHatStriped

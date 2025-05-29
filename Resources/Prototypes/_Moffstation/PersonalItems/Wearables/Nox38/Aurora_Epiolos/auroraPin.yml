@@ -41,12 +41,14 @@
   start: swap_asher
   graph:
   - node: swap_asher
+    entity: PersonalItemAuroraPinInversedSwappable
     edges:
     - to: swap_aurora
       steps:
       - tool: Prying
         doAfter: 0.1
   - node: swap_aurora
+    entity: PersonalItemAuroraPinSwappable
     edges:
     - to: swap_asher
       steps:

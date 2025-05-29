@@ -350,6 +350,9 @@
 - type: Tag
   id: CoordinatesDisk
 
+- type: Tag # designed to let corgis wear things; at present only for SmartCorgi.  View PR 33737 on upstream for more dog wearables
+  id: CorgiWearable
+
 - type: Tag #Ohioans die happy
   id: Corn
 
@@ -511,6 +514,33 @@
 
 - type: Tag
   id: EmitterBolt
+
+- type: Tag
+  id: EncryptionCargo
+
+- type: Tag
+  id: EncryptionCommand
+
+- type: Tag
+  id: EncryptionCommon
+
+- type: Tag
+  id: EncryptionElse
+
+- type: Tag
+  id: EncryptionEngineering
+
+- type: Tag
+  id: EncryptionMedical
+
+- type: Tag
+  id: EncryptionScience
+
+- type: Tag
+  id: EncryptionSecurity
+
+- type: Tag
+  id: EncryptionService
 
 - type: Tag
   id: Enzyme
@@ -933,6 +963,9 @@
 
 - type: Tag
   id: Multitool
+
+- type: Tag
+  id: Mushroom
 
 - type: Tag
   id: NoBlockAnchoring
@@ -1386,9 +1419,6 @@
 
 - type: Tag
   id: VoiceTrigger
-
-- type: Tag # Eating fix tag
-  id: VoxFood
 
 - type: Tag
   id: Wall

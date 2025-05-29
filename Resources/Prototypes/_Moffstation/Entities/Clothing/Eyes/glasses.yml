@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ClothingEyesGlassesChemical, ShowMedicalIcons]
+  id: ClothingEyesGlassesMedChem
+  name: valkyrie hud
+  description: Named for the company that designed it, the valkyrie hud combines the functions of chemical analysis and medical scanning into a single head-mounted device. Issued to the Chief Medical Officer.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
