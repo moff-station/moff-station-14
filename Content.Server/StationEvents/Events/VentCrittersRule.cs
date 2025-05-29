@@ -21,8 +21,11 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+
     protected override void Added(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
     {
+        base.Added(uid, component, gameRule, args);
+
         // Choose location and make sure it's not null
         ChooseLocation(component);
         if (component.Location is not { } location)
@@ -48,8 +51,6 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
                     ("location", nearestBeacon),
                     ("time", duration));
         }
-
-        base.Added(uid, component, gameRule, args);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
@@ -58,7 +59,10 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         // Make sure the location is not null
         if (component.Location is not { } location)
+        {
+            Log.Warning($"Location for gamerule {args.RuleId} was null!");
             return;
+        }
 
         //Spawn in the stuff
         for (var i = 0; i < component.SpawnChances; i++)
