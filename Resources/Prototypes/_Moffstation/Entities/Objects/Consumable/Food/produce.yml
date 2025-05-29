@@ -37,7 +37,7 @@
 
 - type: entity
   parent: ProduceBase
-  id: tarfruitWrapped
+  id: FoodTarfruitWrapped
   name: tarfruit
   description: An odd starfruit that appears to be made of meat. It is wrapped in its outer... ears?
   components:
@@ -67,6 +67,6 @@
       Taco: Tarfruit
   - type: SpawnItemsOnUse
     items:
-    - id: tarfruitUnwrapped
+    - id: TarfruitUnwrapped
     sound:
       path: /Audio/Effects/unwrap.ogg
