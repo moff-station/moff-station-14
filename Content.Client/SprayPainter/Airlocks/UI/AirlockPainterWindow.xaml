@@ -1,12 +1,12 @@
-<Control xmlns="https://spacestation14.io"
-         HorizontalExpand="True">
+<Control xmlns="https://spacestation14.io">
     <BoxContainer Orientation="Vertical"
                   HorizontalExpand="True"
                   VerticalExpand="True"
                   SeparationOverride="4"
                   MinWidth="200">
         <Label Name="SelectedSpriteLabel"
-               Text="{Loc 'spray-painter-selected-style'}" />
+               Text="{Loc 'spray-painter-selected-style'}">
+        </Label>
         <ItemList Name="SpriteList"
                   SizeFlagsStretchRatio="8"
                   VerticalExpand="True" />

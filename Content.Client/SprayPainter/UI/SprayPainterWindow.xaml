@@ -2,10 +2,5 @@
                MinSize="500 300"
                SetSize="500 500"
                Title="{Loc 'spray-painter-window-title'}">
-    <BoxContainer Name="Content"
-                  Orientation="Horizontal"
-                  HorizontalExpand="True"
-                  VerticalExpand="True"
-                  SeparationOverride="4"
-                  MinWidth="450" />
+    <TabContainer Name="Tabs" />
 </DefaultWindow>

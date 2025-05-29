@@ -12,3 +12,6 @@ spray-painter-color-cyan = cyan
 spray-painter-color-blue = blue
 spray-painter-color-white = white
 spray-painter-color-black = black
+
+spray-painter-category-airlocks = Airlocks
+spray-painter-category-pipes = Pipes

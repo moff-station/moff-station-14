@@ -8,8 +8,9 @@ namespace Content.Client.SprayPainter.UI;
 [GenerateTypedNameReferences, UsedImplicitly]
 public sealed partial class SprayPainterWindow : DefaultWindow
 {
-    public void AddContent(Control child)
+    public void AddTab(Control child, string title)
     {
-        Content.AddChild(child);
+        Tabs.AddChild(child);
+        Tabs.SetTabTitle(Tabs.ChildCount - 1, title);
     }
 }
