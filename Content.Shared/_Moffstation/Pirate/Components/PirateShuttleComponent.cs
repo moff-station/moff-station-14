@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Moffstation.Pirate.Components;
 
 /// <summary>
-/// Tags grid as nuke ops shuttle
+/// Tags grid as pirate shuttle
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 [AutoGenerateComponentState]

@@ -8,6 +8,4 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 namespace Content.Shared._Moffstation.Cargo.Components;
 
 [RegisterComponent]
-public sealed partial class PirateBountyConsoleComponent : Component
-{
-}
+public sealed partial class PirateBountyConsoleComponent : Component;
