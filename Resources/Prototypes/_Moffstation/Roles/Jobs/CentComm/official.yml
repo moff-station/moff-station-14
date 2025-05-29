@@ -1,22 +1,3 @@
-# Executive - high ranking
-- type: job
-  id: CentralCommandExecutive
-  name: job-name-centcom-executive
-  description: job-description-centcomoff
-  playTimeTracker: JobCentralCommandExecutive
-  setPreference: false
-  startingGear: CentcomGear
-  icon: "JobIconNanotrasen"
-  supervisors: job-supervisors-hos
-  canBeAntag: false
-  accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
-
 - type: startingGear
   parent: CentcomGear
   id: CentcomExecutiveGear
@@ -41,27 +22,6 @@
     back:
       - Flash
       - Crowbar
-
-# Representative - field work; less ID access, lower profile target.
-- type: job
-  id: CentralCommandRepresentative
-  name: job-name-centcom-representative
-  description: job-description-centcomoff
-  playTimeTracker: JobCentralCommandRepresentative
-  setPreference: false
-  startingGear: CentcomRepresentativeGear
-  icon: "JobIconNanotrasen"
-  supervisors: job-supervisors-hos
-  canBeAntag: false
-  access:
-    - CentralCommand
-    - Command
-    - Brig
-    - Maintenance
-    - External
-  special:
-    - !type:AddImplantSpecial
-      implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   parent: CentcomOfficerGear
