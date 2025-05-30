@@ -143,10 +143,6 @@ namespace Content.Server.Cargo.Systems
 
         private void OnApproveOrderMessage(EntityUid uid, CargoOrderConsoleComponent component, CargoConsoleApproveOrderMessage args)
         {
-            // Moffstation - prevent pirate console from double messaging
-            if (TryComp<PirateOrderConsoleComponent>(uid, out _))
-                return;
-
             if (args.Actor is not { Valid: true } player)
                 return;
 
@@ -270,6 +266,7 @@ namespace Content.Server.Cargo.Systems
         {
             // No slots at the trade station
             _listEnts.Clear();
+            if (orderDatabase.TradeOnStation)
             GetTradeStations(stationData, ref _listEnts);
             EntityUid? tradeDestination = null;
 

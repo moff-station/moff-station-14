@@ -35,9 +35,6 @@ public sealed partial class CargoSystem
     #region Console
     private void UpdatePalletConsoleInterface(EntityUid uid)
     {
-        //Block from overwriting pirate functionality
-        if (TryComp<PiratePalletConsoleComponent>(uid, out _))
-            return;
         if (Transform(uid).GridUid is not { } gridUid)
         {
             _uiSystem.SetUiState(uid,

@@ -53,6 +53,13 @@ public sealed partial class StationCargoOrderDatabaseComponent : Component
     /// </summary>
     [DataField]
     public EntProtoId PrinterOutput = "PaperCargoInvoice";
+
+    // Moffstation - Start - Pirate additions
+    /// <summary>
+    /// If true, the station should use its own pads for trading rather than check for trade stations.
+    /// </summary>
+    [DataField]
+    public bool TradeOnStation;
 }
 
 /// <summary>
