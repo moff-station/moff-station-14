@@ -123,8 +123,7 @@
   - name: bounty-item-booze-dispenser
     amount: 1
     whitelist:
-      tags:
-      - BoozeDispenser
+      StealGroup: BoozeDispenser
 
 - type: cargoBounty
   id: PirateBountyChefTech

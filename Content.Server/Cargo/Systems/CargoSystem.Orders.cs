@@ -267,7 +267,7 @@ namespace Content.Server.Cargo.Systems
             // No slots at the trade station
             _listEnts.Clear();
             if (orderDatabase.TradeOnStation)
-            GetTradeStations(stationData, ref _listEnts);
+                GetTradeStations(stationData, ref _listEnts);
             EntityUid? tradeDestination = null;
 
             // Try to fulfill from any station where possible, if the pad is not occupied.

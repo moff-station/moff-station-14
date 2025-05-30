@@ -17,14 +17,3 @@ public sealed partial class PirateShuttleComponent : Component
     [AutoNetworkedField]
     public EntityUid AssociatedRule;
 }
-
-[ByRefEvent]
-public record struct FulfillPirateOrderEvent(Entity<PirateShuttleComponent> Shuttle, CargoOrderData Order, Entity<CargoOrderConsoleComponent> OrderConsole)
-{
-    public Entity<CargoOrderConsoleComponent> OrderConsole = OrderConsole;
-    public Entity<PirateShuttleComponent> Shuttle = Shuttle;
-    public CargoOrderData Order = Order;
-
-    public EntityUid? FulfillmentEntity;
-    public bool Handled = false;
-}

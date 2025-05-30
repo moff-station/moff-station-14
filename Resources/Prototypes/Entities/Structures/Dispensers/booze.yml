@@ -39,11 +39,6 @@
     - Drinks
   - type: StealTarget
     stealGroup: BoozeDispenser
-    # Moffstation - Start - Pirate bounty target
-  - type: Tag
-    tags:
-    - BoozeDispenser
-    # Moffstation - End
 
 - type: entity
   id: BoozeDispenserEmpty
