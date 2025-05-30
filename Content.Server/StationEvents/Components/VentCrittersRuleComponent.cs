@@ -1,12 +1,12 @@
-﻿using Content.Server._Moffstation.StationEvents.Events;
-using Content.Server.StationEvents.Events;
+﻿using Content.Server.StationEvents.Events;
 using Content.Shared.Storage;
-using Robust.Shared.Map;
 
 namespace Content.Server.StationEvents.Components;
 
-[RegisterComponent, Access(typeof(VentCrittersRule))]
-public sealed partial class VentCrittersRuleComponent : Component
+// Moffstation - Start - Rename to use upstream functionality
+[RegisterComponent, Access(typeof(VentCrittersRuleUpstream))]
+public sealed partial class VentCrittersRuleComponentUpstream : Component
+// Moffstation - End
 {
     [DataField("entries")]
     public List<EntitySpawnEntry> Entries = new();
@@ -16,14 +16,4 @@ public sealed partial class VentCrittersRuleComponent : Component
     /// </summary>
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
-
-    // Moffstation - Start - New variables for single vent spawn
-    /// <summary>
-    /// The amount of chances something gets to spawn. estimated number of spawns can be calculated with (SpawnChances * entryProb)
-    /// </summary>
-    [DataField]
-    public int SpawnAttempts = 100;
-
-    public EntityCoordinates? Location;
-    // Moffstation - End
 }
