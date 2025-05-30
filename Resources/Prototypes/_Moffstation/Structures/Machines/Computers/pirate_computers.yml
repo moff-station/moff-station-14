@@ -21,7 +21,6 @@
   - type: CargoOrderConsole
     allowedGroups: [ "pirateMarket" ]
     account: Pirates
-  - type: PirateOrderConsole
   - type: Computer
     board: PirateRequestComputerCircuitboard
   - type: PointLight
@@ -52,7 +51,6 @@
       flags:
         - Anchorable
     - type: CargoPalletConsole
-    - type: PiratePalletConsole
     - type: ActivatableUI
       key: enum.CargoPalletConsoleUiKey.Sale
     - type: UserInterface
@@ -93,7 +91,6 @@
       state: generic_panel_open
   - type: CargoBountyConsole
     secretBounties: Pirates
-  - type: PirateBountyConsole
   - type: ActivatableUI
     key: enum.CargoConsoleUiKey.Bounty
   - type: UserInterface

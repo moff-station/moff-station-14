@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Server._Moffstation.Pirate.Components;
 using Content.Server.Cargo.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
@@ -89,10 +88,6 @@ public sealed partial class CargoSystem
 
         while (query.MoveNext(out var uid, out var comp, out var compXform))
         {
-            //Block from using pirate pallets
-            if (TryComp<PiratePalletComponent>(uid, out _))
-                continue;
-
             if (compXform.ParentUid != gridUid ||
                 !compXform.Anchored)
             {

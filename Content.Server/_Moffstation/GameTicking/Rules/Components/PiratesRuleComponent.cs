@@ -5,8 +5,9 @@ namespace Content.Server._Moffstation.GameTicking.Rules.Components;
 [RegisterComponent, Access(typeof(PiratesRuleSystem))]
 public sealed partial class PiratesRuleComponent : Component
 {
-
-    [DataField]
-    public int StartingCash = 1000;
-
+    /// <summary>
+    /// Station config to apply to the shuttle, this is what gives it cargo functionality.
+    /// </summary>
+    [DataField("stationProto")]
+    public string StationPrototype = "PirateShuttleStation";
 }

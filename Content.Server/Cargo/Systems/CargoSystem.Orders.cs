@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Cargo.Components;
 using Content.Server.Station.Components;
-using Content.Shared._Moffstation.Cargo.Components;
 using Content.Shared._Moffstation.Cargo.Events; // Moffstation
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
@@ -266,8 +265,7 @@ namespace Content.Server.Cargo.Systems
         {
             // No slots at the trade station
             _listEnts.Clear();
-            if (orderDatabase.TradeOnStation)
-                GetTradeStations(stationData, ref _listEnts);
+            GetTradeStations(stationData, ref _listEnts);
             EntityUid? tradeDestination = null;
 
             // Try to fulfill from any station where possible, if the pad is not occupied.

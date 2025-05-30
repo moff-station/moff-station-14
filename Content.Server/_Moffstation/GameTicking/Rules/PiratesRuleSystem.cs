@@ -1,7 +1,9 @@
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Antag;
+using Content.Server.Cargo.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Station;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.GameTicking.Components;
@@ -11,7 +13,6 @@ namespace Content.Server._Moffstation.GameTicking.Rules;
 public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly StationSystem _station = default!;
 
     public override void Initialize()
@@ -46,10 +47,18 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
             if (Transform(uid).MapID == args.Map)
             {
                 shuttle.AssociatedRule = ent;
-                _station.AddGridToStation(shuttle.Owner, shuttle.Owner);
+
+                // Converts the pirate shuttle into a station, giving it a functional cargo system
+                var pirateStationConfig = new StationConfig
+                {
+                    StationPrototype = ent.Comp.StationPrototype,
+                };
+                _station.InitializeNewStation(pirateStationConfig, [uid]);
+
+                //Turns the pirate shuttle into a trade station, so that it's buy/sell pads are functional
+                AddComp<TradeStationComponent>(uid);
                 Dirty(uid, shuttle);
 
-                // if (_entManager.TryGetComponent<StationDataComponent>(shuttle, out var station))
                 break;
             }
         }
