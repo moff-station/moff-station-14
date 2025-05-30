@@ -339,8 +339,14 @@ public sealed class PaperSystem : EntitySystem
         _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
 
         UpdateUserInterface(ent);
-
+        // #region Starlight
+        var eve = new PaperSignedEvent(signer);
+        RaiseLocalEvent(ent, ref eve);
+        // #endregion
         return true;
+        }
+
+        return false;
     }
     // Umbra - End
 
