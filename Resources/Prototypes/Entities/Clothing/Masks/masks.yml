@@ -215,10 +215,10 @@
     - WhitelistChameleon
   - type: HideLayerClothing
     slots:
-    - Hair
+#    - Hair # Moffstation - give-clowns-hair
     - Snout
-    - HeadTop
-    - HeadSide
+#    - HeadTop # Moffstation - give-clowns-hair
+#    - HeadSide # Moffstation - give-clowns-hair
 
 - type: entity
   parent: ClothingMaskClownBase
@@ -232,10 +232,10 @@
     - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
-    - Hair
+#    - Hair # Moffstation - give-clowns-hair
     - Snout
-    - HeadTop
-    - HeadSide
+#    - HeadTop # Moffstation - give-clowns-hair
+#    - HeadSide # Moffstation - give-clowns-hair
 
 - type: entity
   parent: ClothingMaskClown
