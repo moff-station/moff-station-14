@@ -248,6 +248,99 @@
         - ReagentId: Cryoxadone
           Quantity: 50
 
+# Moffstation - Begin (ERT Overhaul: Equipment)
+# Prefilled medicine - carried by ERT medics
+- type: entity
+  parent: Beaker
+  id: BeakerSmallSaline
+  suffix: saline
+  components:
+  - type: Label
+    currentLabel: reagent-name-saline
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Saline
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallDexPlus
+  suffix: dex+
+  components:
+  - type: Label
+    currentLabel: reagent-name-dexalin-plus
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: DexalinPlus
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallArith
+  suffix: arith
+  components:
+  - type: Label
+    currentLabel: reagent-name-arithrazine
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Arithrazine
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallDiph
+  suffix: diph
+  components:
+  - type: Label
+    currentLabel: reagent-name-diphenhydramine
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Diphenhydramine
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallBruiz
+  suffix: bruiz
+  components:
+  - type: Label
+    currentLabel: reagent-name-bruizine
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Bruizine
+          Quantity: 50
+
+- type: entity
+  parent: Beaker
+  id: BeakerSmallLace
+  suffix: lace
+  components:
+  - type: Label
+    currentLabel: reagent-name-lacerinol
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+        reagents:
+        - ReagentId: Lacerinol
+          Quantity: 50
+# Moffstation - End
+
 - type: entity
   name: large beaker
   parent: BaseBeaker
