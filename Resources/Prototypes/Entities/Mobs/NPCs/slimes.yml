@@ -126,8 +126,10 @@
     name: ghost-role-information-slimes-name
     description: ghost-role-information-slimes-description
     rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
+    # Moffstation - Begin (No Raffle for Minor Ghostroles)
+    #raffle:
+    #  settings: short
+    # Moffstation - End
   - type: Speech
     speechVerb: Slime
     speechSounds: Slime
