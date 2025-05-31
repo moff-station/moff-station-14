@@ -17,3 +17,16 @@
     borderColor: "#FF9751"
   - type: Icon
     state: "pda-prisoner"
+
+- type: entity
+  parent: ChameleonPDA
+  id: SyndicateContactPDA
+  components:
+  - type: Pda
+    id: AgentIDCard
+    penSlot:
+      startingItem: CyberPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write

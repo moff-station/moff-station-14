@@ -1,0 +1,14 @@
+﻿
+# Need to double up on spawners for mapping to work correctly
+- type: entity
+  parent: MarkerBase
+  id: RandomHumanoidSpawnerSyndicateContactMapping
+  name: Syndicate Contact Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+      state: icon
+  - type: SpawnOnEmergencyShuttleLaunch
+    prototype: MobHumanSyndicateContact # I'm so sorry.
