@@ -349,43 +349,46 @@
     Uranium: 180
 
 # .50 Shell
-- type: latheRecipe
-  parent: BaseEmptyAmmoRecipe
-  id: MagazineShotgunEmpty
-  result: MagazineShotgunEmpty
-  materials:
-    Steel: 50
+# Moffstation - Begin (No Secfab Bulldog)
+#- type: latheRecipe
+#  parent: BaseEmptyAmmoRecipe
+#  id: MagazineShotgunEmpty
+#  result: MagazineShotgunEmpty
+#  materials:
+#    Steel: 50
+#
+#- type: latheRecipe
+#  parent: BaseAmmoRecipe
+#  id: MagazineShotgun
+#  result: MagazineShotgun
+#  materials:
+#    Steel: 240
+#
+#- type: latheRecipe
+#  parent: BaseAmmoRecipe
+#  id: MagazineShotgunIncendiary
+#  result: MagazineShotgunIncendiary
+#  materials:
+#    Steel: 100
+#    Plastic: 190
+#
+#
+#- type: latheRecipe
+#  parent: BaseAmmoRecipe
+#  id: MagazineShotgunBeanbag
+#  result: MagazineShotgunBeanbag
+#  materials:
+#    Steel: 150
+#    Plastic: 140
 
-- type: latheRecipe
-  parent: BaseAmmoRecipe
-  id: MagazineShotgun
-  result: MagazineShotgun
-  materials:
-    Steel: 240
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
-  id: MagazineShotgunIncendiary
-  result: MagazineShotgunIncendiary
-  materials:
-    Steel: 100
-    Plastic: 190
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
-  id: MagazineShotgunBeanbag
-  result: MagazineShotgunBeanbag
-  materials:
-    Steel: 150
-    Plastic: 140
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
-  id: MagazineShotgunSlug
-  result: MagazineShotgunSlug
-  materials:
-    Steel: 190
-    Plastic: 100
+#- type: latheRecipe
+#  parent: BaseAmmoRecipe
+#  id: MagazineShotgunSlug
+#  result: MagazineShotgunSlug
+#  materials:
+#    Steel: 190
+#    Plastic: 100
+# Moffstation - End
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
