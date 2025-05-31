@@ -33,7 +33,7 @@
 
 - type: cargoBounty
   id: PirateBountyAnomVessel
-  reward: 5000
+  reward: 4000
   description: bounty-description-anom-vessel
   idPrefix: CS
   group: Pirates
@@ -46,7 +46,7 @@
 
 - type: cargoBounty
   id: PirateBountyArtifact
-  reward: 5000
+  reward: 3000
   description: bounty-description-artifact
   idPrefix: SP
   group: Pirates
@@ -60,7 +60,7 @@
 # Engineering
 - type: cargoBounty
   id: PirateBountyTEG
-  reward: 5000
+  reward: 7000
   description: bounty-description-teg
   idPrefix: GX
   group: Pirates
@@ -74,7 +74,7 @@
 
 - type: cargoBounty
   id: PirateBountyParticleAccelerator
-  reward: 5000
+  reward: 6500
   description: bounty-description-particle-accelerator
   idPrefix: CS
   group: Pirates
@@ -88,7 +88,7 @@
 
 - type: cargoBounty
   id: PirateBountyAmeFuel
-  reward: 5000
+  reward: 4500
   description: bounty-description-ame-fuel
   idPrefix: SP
   group: Pirates
@@ -101,7 +101,7 @@
 
 - type: cargoBounty
   id: PirateBountySMES
-  reward: 5000
+  reward: 3000
   description: bounty-description-smes
   idPrefix: SP
   group: Pirates
@@ -115,7 +115,7 @@
 # Service
 - type: cargoBounty
   id: PirateBountyBoozeDispenser
-  reward: 5000
+  reward: 2000
   description: bounty-description-booze-dispenser
   idPrefix: SP
   group: Pirates
@@ -123,11 +123,12 @@
   - name: bounty-item-booze-dispenser
     amount: 1
     whitelist:
-      StealGroup: BoozeDispenser
+      components:
+      - ReagentDispenser
 
 - type: cargoBounty
   id: PirateBountyChefTech
-  reward: 5000
+  reward: 3500
   description: bounty-description-cheftech
   idPrefix: WC
   group: Pirates
@@ -140,7 +141,7 @@
 
 - type: cargoBounty
   id: PirateBountyInstruments
-  reward: 5000
+  reward: 2500
   description: bounty-description-instruments
   idPrefix: WC
   group: Pirates
@@ -153,7 +154,7 @@
 
 - type: cargoBounty
   id: PirateBountyJaniBucket
-  reward: 5000
+  reward: 2500
   description: bounty-description-jani-bucket
   idPrefix: DC
   group: Pirates
@@ -167,7 +168,7 @@
 # Medical
 - type: cargoBounty
   id: PirateBountyCrewMonitor
-  reward: 5000
+  reward: 4000
   description: bounty-description-crew-monitor
   idPrefix: CS
   group: Pirates
@@ -181,7 +182,7 @@
 # General Bounties
 - type: cargoBounty
   id: PirateBountyVendingMachine
-  reward: 5000
+  reward: 1500
   description: bounty-description-vendmachine
   idPrefix: DC
   group: Pirates
@@ -194,7 +195,7 @@
 
 - type: cargoBounty
   id: PirateBountyShuttleParts
-  reward: 5000
+  reward: 2000
   description: bounty-description-shuttle-parts
   idPrefix: SP
   group: Pirates
@@ -207,7 +208,7 @@
 
 - type: cargoBounty
   id: PirateBountyTelecom
-  reward: 5000
+  reward: 4500
   description: bounty-description-telecom
   idPrefix: SP
   group: Pirates
@@ -218,3 +219,15 @@
       components:
       - TelecomServer
 
+- type: cargoBounty
+  id: PirateBountyScrap
+  reward: 4500
+  description: bounty-description-telecom
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-telecom
+    amount: 1
+    whitelist:
+      components:
+      - TelecomServer
