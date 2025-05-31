@@ -4,8 +4,8 @@ using Content.Shared.Storage;
 namespace Content.Server.StationEvents.Components;
 
 // Moffstation - Start - Rename to use upstream functionality
-[RegisterComponent, Access(typeof(VentCrittersRuleUpstream))]
-public sealed partial class VentCrittersRuleComponentUpstream : Component
+[RegisterComponent, Access(typeof(UpstreamVentCrittersRule))]
+public sealed partial class UpstreamVentCrittersRuleComponent : Component
 // Moffstation - End
 {
     [DataField("entries")]

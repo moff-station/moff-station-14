@@ -1,3 +1,4 @@
+using Content.Server._Moffstation.StationEvents.Components;
 using Content.Server.Pinpointer;
 using Content.Server.StationEvents.Components;
 using Content.Server.StationEvents.Events;

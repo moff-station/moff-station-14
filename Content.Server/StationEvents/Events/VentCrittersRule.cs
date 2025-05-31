@@ -7,14 +7,14 @@ using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class VentCrittersRuleUpstream : StationEventSystem<VentCrittersRuleComponentUpstream>    // Moffstation, renamed so our rule is used instead. See used version in Moffstation namespace
+public sealed class UpstreamVentCrittersRule : StationEventSystem<UpstreamVentCrittersRuleComponent>    // Moffstation, renamed so our rule is used instead. See used version in Moffstation namespace
 {
     /*
      * DO NOT COPY PASTE THIS TO MAKE YOUR MOB EVENT.
      * USE THE PROTOTYPE.
      */
 
-    protected override void Started(EntityUid uid, VentCrittersRuleComponentUpstream component, GameRuleComponent gameRule, GameRuleStartedEvent args)  // Moffstation - Changed to use the upstream component
+    protected override void Started(EntityUid uid, UpstreamVentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)  // Moffstation - Changed to use the upstream component
     {
         base.Started(uid, component, gameRule, args);
 
