@@ -17,7 +17,6 @@ public sealed partial class VentCrittersRuleComponent : Component
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
 
-    // Moffstation - Start - New variables for single vent spawn
     /// <summary>
     /// The amount of chances something gets to spawn. estimated number of spawns can be calculated with (SpawnChances * entryProb)
     /// </summary>
@@ -25,5 +24,4 @@ public sealed partial class VentCrittersRuleComponent : Component
     public int SpawnAttempts = 100;
 
     public EntityCoordinates? Location;
-    // Moffstation - End
 }

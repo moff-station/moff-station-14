@@ -10,9 +10,6 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.StationEvents.Events;
 
-/// <remarks>
-/// Moffstation - File has been completely rewritten, do not accept upstream changes
-/// </remarks>
 public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleComponent>
 {
     /*
