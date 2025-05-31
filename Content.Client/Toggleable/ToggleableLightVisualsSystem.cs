@@ -8,16 +8,9 @@ using Content.Shared.Toggleable;
 using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared.Light.Components; // Moffstation
 
 namespace Content.Client.Toggleable;
 
-/// <summary>
-/// Implements the behavior of <see cref="ToggleableLightVisualsComponent"/> by reacting to
-/// <see cref="AppearanceChangeEvent"/>, for the sprite directly; <see cref="OnGetHeldVisuals"/> for the
-/// in-hand visuals; and <see cref="OnGetEquipmentVisuals"/> for the clothing visuals.
-/// </summary>
-/// <see cref="ToggleableLightVisualsComponent"/>
 public sealed class ToggleableLightVisualsSystem : VisualizerSystem<ToggleableLightVisualsComponent>
 {
     [Dependency] private readonly SharedItemSystem _itemSys = default!;
@@ -32,26 +25,25 @@ public sealed class ToggleableLightVisualsSystem : VisualizerSystem<ToggleableLi
 
     protected override void OnAppearanceChange(EntityUid uid, ToggleableLightVisualsComponent component, ref AppearanceChangeEvent args)
     {
-        if (!AppearanceSystem.TryGetData<bool>(uid, ToggleVisuals.Toggled, out var enabled, args.Component)) // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+        if (!AppearanceSystem.TryGetData<bool>(uid, ToggleableLightVisuals.Enabled, out var enabled, args.Component))
             return;
 
-        var modulate = AppearanceSystem.TryGetData<Color>(uid, ToggleVisuals.Color, out var color, args.Component); // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+        var modulate = AppearanceSystem.TryGetData<Color>(uid, ToggleableLightVisuals.Color, out var color, args.Component);
 
         // Update the item's sprite
-        if (args.Sprite != null && component.SpriteLayer != null && args.Sprite.LayerMapTryGet(component.SpriteLayer, out var layer))
+        if (args.Sprite != null && component.SpriteLayer != null && SpriteSystem.LayerMapTryGet((uid, args.Sprite), component.SpriteLayer, out var layer, false))
         {
-            args.Sprite.LayerSetVisible(layer, enabled);
+            SpriteSystem.LayerSetVisible((uid, args.Sprite), layer, enabled);
             if (modulate)
-                args.Sprite.LayerSetColor(layer, color);
+                SpriteSystem.LayerSetColor((uid, args.Sprite), layer, color);
         }
 
         // Update any point-lights
-        if (TryComp(uid, out PointLightComponent? light) &&
-            TryComp<ItemTogglePointLightComponent>(uid, out var toggleLights)) // Moffstation - Use `ItemTogglePointLightComponent`
+        if (TryComp(uid, out PointLightComponent? light))
         {
-            DebugTools.Assert(!light.NetSyncEnabled, $"{typeof(ItemTogglePointLightComponent)} requires point lights without net-sync"); // Moffstation - Use `ItemTogglePointLightComponent`
+            DebugTools.Assert(!light.NetSyncEnabled, "light visualizers require point lights without net-sync");
             _lights.SetEnabled(uid, enabled, light);
-            if (toggleLights.ToggleVisualsColorModulatesLights && modulate) // Moffstation - Use `ItemTogglePointLightComponent`
+            if (enabled && modulate)
             {
                 _lights.SetColor(uid, color, light);
             }
@@ -67,7 +59,7 @@ public sealed class ToggleableLightVisualsSystem : VisualizerSystem<ToggleableLi
     private void OnGetEquipmentVisuals(EntityUid uid, ToggleableLightVisualsComponent component, GetEquipmentVisualsEvent args)
     {
         if (!TryComp(uid, out AppearanceComponent? appearance)
-            || !AppearanceSystem.TryGetData<bool>(uid, ToggleVisuals.Toggled, out var enabled, appearance) // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+            || !AppearanceSystem.TryGetData<bool>(uid, ToggleableLightVisuals.Enabled, out var enabled, appearance)
             || !enabled)
             return;
 
@@ -83,7 +75,7 @@ public sealed class ToggleableLightVisualsSystem : VisualizerSystem<ToggleableLi
         if (layers == null && !component.ClothingVisuals.TryGetValue(args.Slot, out layers))
             return;
 
-        var modulate = AppearanceSystem.TryGetData<Color>(uid, ToggleVisuals.Color, out var color, appearance); // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+        var modulate = AppearanceSystem.TryGetData<Color>(uid, ToggleableLightVisuals.Color, out var color, appearance);
 
         var i = 0;
         foreach (var layer in layers)
@@ -105,14 +97,14 @@ public sealed class ToggleableLightVisualsSystem : VisualizerSystem<ToggleableLi
     private void OnGetHeldVisuals(EntityUid uid, ToggleableLightVisualsComponent component, GetInhandVisualsEvent args)
     {
         if (!TryComp(uid, out AppearanceComponent? appearance)
-            || !AppearanceSystem.TryGetData<bool>(uid, ToggleVisuals.Toggled, out var enabled, appearance) // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+            || !AppearanceSystem.TryGetData<bool>(uid, ToggleableLightVisuals.Enabled, out var enabled, appearance)
             || !enabled)
             return;
 
         if (!component.InhandVisuals.TryGetValue(args.Location, out var layers))
             return;
 
-        var modulate = AppearanceSystem.TryGetData<Color>(uid, ToggleVisuals.Color, out var color, appearance); // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+        var modulate = AppearanceSystem.TryGetData<Color>(uid, ToggleableLightVisuals.Color, out var color, appearance);
 
         var i = 0;
         var defaultKey = $"inhand-{args.Location.ToString().ToLowerInvariant()}-toggle";

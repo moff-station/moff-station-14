@@ -1,5 +1,6 @@
 # Numbers for armor here largely taken from /tg/.
-# NOTE: Half of the kind of armor you're probably thinking of is in vests.yml. These should probably be merged some day.
+# armor.yml covers both armored vests (e.g. not just cosmetic) and armor that covers multiple bodyparts/limbs
+
 
 #Basic armor vest for inheritance
 - type: entity
@@ -86,6 +87,7 @@
     reflectProb: 1
     reflects:
       - Energy
+    reflectingInHands: false
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]

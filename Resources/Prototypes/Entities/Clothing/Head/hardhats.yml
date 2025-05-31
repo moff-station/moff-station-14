@@ -56,7 +56,6 @@
     clothingVisuals:
       head:
       - state: on-equipped-HELMET
-  - type: ItemTogglePointLight # Moffstation
   - type: PowerCellSlot
     cellSlotId: cell_slot
   - type: ItemSlots
@@ -72,6 +71,11 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
+      HeadSide : HEAD 
 
 - type: entity
   parent: ClothingHeadHatHardhatBase
