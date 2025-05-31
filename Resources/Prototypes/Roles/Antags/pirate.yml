@@ -7,19 +7,28 @@
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
-    pocket2: AppraisalTool  # Moffstation - Changed to pocket2 for loadout consistency
+    # Moffstation - Start - Pirate loadout changes
+    pocket2: AppraisalTool
+    ears: ClothingHeadsetPirate
+    # Moffstation - End
 
 - type: startingGear
   id: PirateCaptainGear
   parent: PirateGear
   equipment:
-    head: ClothingHeadHatPirate
+# Moffstation - Start - Pirate loadout changes
+#    head: ClothingHeadHatPirate
     pocket2: EnergyCutlass
-    outerClothing: ClothingOuterCoatPirate
+#    outerClothing: ClothingOuterCoatPirate
+    neck: ClothingNeckCloakPirateCap
+
 
 - type: startingGear
   id: PirateFirstmateGear
   parent: PirateGear
   equipment:
-    head: ClothingHeadHatPirateTricord
-    outerClothing: ClothingOuterCoatGentle
+# Moffstation - Start - Pirate loadout changes
+    eyes: ClothingEyesEyepatchHudMedical
+#    head: ClothingHeadHatPirateTricord
+#    outerClothing: ClothingOuterCoatGentle
+# Moffstation - End

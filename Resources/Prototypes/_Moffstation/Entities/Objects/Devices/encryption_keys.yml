@@ -1,0 +1,14 @@
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyPirate
+  name: pirate encryption key
+  description: An encryption key used by pirates, scallywags, and other foul bandits.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Pirate
+    defaultChannel: Pirate
+  - type: Sprite
+    layers:
+    - state: crypt_rusted
+    - state: pirate_label

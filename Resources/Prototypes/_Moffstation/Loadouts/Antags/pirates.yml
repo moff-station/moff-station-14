@@ -1,10 +1,69 @@
 # Hat
 - type: loadout
-  id: HeadHatPirate
+  id: HatPirate
   equipment:
     head: ClothingHeadHatPirate
 
 - type: loadout
-  id: HeadHatPirateTricord
+  id: HatPirateTricord
   equipment:
     head: ClothingHeadHatPirateTricord
+
+- type: loadout
+  id: HatPirateBrown
+  equipment:
+    head: ClothingHeadHatPirateBrown
+
+- type: loadout
+  id: HatHeadBandRed
+  equipment:
+    head: ClothingHeadBandRed
+
+- type: loadout
+  id: HatHeadBandBlack
+  equipment:
+    head: ClothingHeadBandBlack
+
+- type: loadout
+  id: HatHeadBandBrown
+  equipment:
+    head: ClothingHeadBandBrown
+
+- type: loadout
+  id: HatHeadBandGold
+  equipment:
+    head: ClothingHeadBandGold
+
+- type: loadout
+  id: HatHeadBandMerc
+  equipment:
+    head: ClothingHeadBandMerc
+
+# Trinkets
+- type: loadout
+  id: TrinketPirateFlag
+  storage:
+    back:
+    - PirateHandyFlag
+
+- type: loadout
+  id: TrinketPirateEyepatch
+  storage:
+    back:
+    - ClothingEyesEyepatch
+
+# Outer coats
+- type: loadout
+  id: CoatGentle
+  equipment:
+    outerClothing: ClothingOuterCoatGentle
+
+- type: loadout
+  id: CoatPirate
+  equipment:
+    outerClothing: ClothingOuterCoatPirate
+
+- type: loadout
+  id: CoatPirateRed
+  equipment:
+    outerClothing: ClothingOuterCoatPirateRed

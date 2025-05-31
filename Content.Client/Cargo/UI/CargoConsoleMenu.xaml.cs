@@ -277,6 +277,14 @@ namespace Content.Client.Cargo.UI
             if (!_bankQuery.TryComp(_station, out var bankAccount) ||
                 !_orderConsoleQuery.TryComp(_owner, out var orderConsole))
             {
+                AccountActionButton.Disabled = true;
+                return;
+            }
+
+            var accounts = bankAccount.Accounts;
+            if (!accounts.ContainsKey(orderConsole.Account))
+            {
+                AccountActionButton.Disabled = true;
                 return;
             }
 

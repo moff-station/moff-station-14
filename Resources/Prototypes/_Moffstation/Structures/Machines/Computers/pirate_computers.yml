@@ -1,0 +1,187 @@
+# Cargo console variants.
+- type: entity
+  id: ComputerCargoOrdersPirate
+  parent: ComputerCargoOrders
+  name: pirate request computer
+  description: Used by pirates to purchase new booty.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
+    layers:
+      - map: ["computerLayerBody"]
+        state: computer
+      - map: [ "computerLayerKeyboard" ]
+        state: generic_keyboard
+      - map: [ "computerLayerScreen" ]
+        state: request
+      - map: [ "computerLayerKeys" ]
+        state: generic_keys
+      - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+        state: generic_panel_open
+  - type: CargoOrderConsole
+    allowedGroups: [ "pirateMarket" ]
+    account: Pirates
+    baseAnnouncementChannel: "Pirate"
+    announcementChannel: "Pirate"
+  - type: Computer
+    board: PirateRequestComputerCircuitboard
+  - type: PointLight
+    color: "#c9c042"
+  - type: AccessReader
+    access: [["Pirate"]]
+
+- type: entity
+  id: ComputerPalletConsolePirate
+  parent: ComputerPalletConsole
+  name: pirate sale computer
+  description: Used to sell goods loaded onto cargo pallets.
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
+      layers:
+        - map: ["computerLayerBody"]
+          state: computer
+        - map: ["computerLayerKeyboard"]
+          state: generic_keyboard
+        - map: ["computerLayerScreen"]
+          state: transfer
+        - map: ["computerLayerKeys"]
+          state: generic_keys
+        - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+          state: generic_panel_open
+    - type: Anchorable
+      flags:
+        - Anchorable
+    - type: CargoPalletConsole
+    - type: ActivatableUI
+      key: enum.CargoPalletConsoleUiKey.Sale
+    - type: UserInterface
+      interfaces:
+        enum.CargoPalletConsoleUiKey.Sale:
+          type: CargoPalletConsoleBoundUserInterface
+        enum.WiresUiKey.Key:
+          type: WiresBoundUserInterface
+    - type: Computer
+      board: PirateSaleComputerCircuitboard
+    - type: PointLight
+      radius: 1.5
+      energy: 1.6
+      color: "#b89f25"
+    - type: GuideHelp
+      guides:
+        - Cargo
+
+- type: entity
+  id: ComputerPirateBounty
+  parent: ComputerCargoBounty
+  name: pirate bounty computer
+  description: Used to manage currently active bounties.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: bounty
+    - map: ["computerLayerKeys"]
+      sprite: Structures/Machines/computers.rsi
+      state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: CargoBountyConsole
+  - type: ActivatableUI
+    key: enum.CargoConsoleUiKey.Bounty
+  - type: UserInterface
+    interfaces:
+      enum.CargoConsoleUiKey.Bounty:
+        type: CargoBountyConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: PirateBountyComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89f25"
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: GuideHelp
+    guides:
+    - CargoBounties
+    - Cargo
+
+# Shuttle consoles
+
+- type: entity
+  parent: BaseComputerShuttle
+  id: ComputerPirateShuttle
+  name: pirate ship console
+  description: Used to pilot a pirate ship.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: shuttle
+    - map: ["computerLayerKeys"]
+      state: syndie_key
+      sprite: Structures/Machines/computers.rsi
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Tag
+    tags:
+    - Pirate
+  - type: RadarConsole
+    maxRange: 384
+  - type: WorldLoader
+    radius: 1536
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#c94242"
+  - type: Computer
+    board: PirateShuttleCircuitboard
+
+# Pirate communications computer
+
+- type: entity
+  parent: SyndicateComputerComms
+  id: PirateComputerComms
+  name: pirate communications computer
+  description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/pirate_computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: ["computerLayerKeys"]
+      sprite: Structures/Machines/computers.rsi
+      state: syndie_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-pirate
+    color: "#a15608"
+    canShuttle: false
+    global: true
+    sound: /Audio/Announcements/war.ogg
+  - type: Computer
+    board: PirateCommsCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#f71713"

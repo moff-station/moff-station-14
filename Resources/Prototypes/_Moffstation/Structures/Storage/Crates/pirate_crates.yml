@@ -1,0 +1,108 @@
+- type: entity
+  parent: CratePirate
+  id: CratePirateChestSecure
+  name: secure pirate chest
+  description: A secure space pirate chest, keeps the station lubbers away from your booty.
+  suffix: Pirate
+  components:
+  - type: Lock
+  - type: LockVisuals
+  - type: AccessReader
+    access: [["Pirate"]]
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/Crates/piratechestsecure.rsi
+    icon: crate_icon
+    layers:
+    - state: crate
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: crate_door
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: welded
+      visible: false
+      map: [ "enum.WeldableLayers.BaseWelded" ]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,-0.09375"
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+  - type: Icon
+    sprite: Structures/Storage/Crates/piratechest.rsi
+    state: crate_icon
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateDavyJones
+  name: Davy Jones' locker
+  description: A specialized chest for storing the trickiest of loot.
+  suffix: Pirate
+  components:
+  - type: Icon
+    sprite: _Moffstation/Structures/Storage/Crates/davyjoneschest.rsi
+    state: crate_icon
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/Crates/davyjoneschest.rsi
+    icon: crate
+    layers:
+    - state: crate
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: crate_door
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: welded
+      visible: false
+      map: [ "enum.WeldableLayers.BaseWelded" ]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      offset: "0.0,-0.09375"
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 50
+        mask:
+        - Impassable # This is so we can store whole machines and other stuff inside it
+        layer:
+        - MidImpassable
+  - type: EntityStorage
+#    isCollidableWhenOpen: false
+    capacity: 2
+    whitelist:
+      components:
+      # Add any large bounty object to here
+      - Item
+      - XenoArtifact
+      - Machine
+      - StealTarget
+      - Nuke
+      - Computer
+      - AnomalyVessel
+      - AnomalyGenerator
+      - VendingMachine
+      - Thruster
+
+- type: entity
+  parent: CratePrivateSecure
+  id: CratePiratePrivateSecure
+  name: secure pirate crate
+  description: nice and metal for the modern pirate feel
+  components:
+  - type: AccessReader
+    access: [["Pirate"]]

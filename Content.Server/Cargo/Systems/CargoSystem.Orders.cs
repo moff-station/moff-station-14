@@ -245,8 +245,10 @@ namespace Content.Server.Cargo.Systems
                     ("approver", order.Approver ?? string.Empty),
                     ("cost", cost));
                 _radio.SendRadioMessage(uid, message, account.RadioChannel, uid, escapeMarkup: false);
-                if (CargoOrderConsoleComponent.BaseAnnouncementChannel != account.RadioChannel)
-                    _radio.SendRadioMessage(uid, message, CargoOrderConsoleComponent.BaseAnnouncementChannel, uid, escapeMarkup: false);
+                // Moffstation - Start - change component from being static
+                if (component.BaseAnnouncementChannel != account.RadioChannel)
+                    _radio.SendRadioMessage(uid, message, component.BaseAnnouncementChannel, uid, escapeMarkup: false);
+                // Moffstation - End
             }
 
             ConsolePopup(args.Actor, Loc.GetString("cargo-console-trade-station", ("destination", MetaData(ev.FulfillmentEntity.Value).EntityName)));
@@ -414,6 +416,10 @@ namespace Content.Server.Cargo.Systems
             if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var orderDatabase))
                 return;
 
+            // Moffstation - Railguard since it can cause errors with pirates
+            if (!orderDatabase.Orders.ContainsKey(console.Account))
+                return;
+
             if (_uiSystem.HasUi(consoleUid, CargoConsoleUiKey.Orders))
             {
                 _uiSystem.SetUiState(consoleUid,
@@ -451,6 +457,10 @@ namespace Content.Server.Cargo.Systems
         public static int GetOutstandingOrderCount(StationCargoOrderDatabaseComponent component, ProtoId<CargoAccountPrototype> account)
         {
             var amount = 0;
+
+            // Moffstation - Railguard since it can cause errors with pirates
+            if (!component.Orders.ContainsKey(account))
+                return 0;
 
             foreach (var order in component.Orders[account])
             {
