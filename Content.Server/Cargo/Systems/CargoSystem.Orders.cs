@@ -245,8 +245,10 @@ namespace Content.Server.Cargo.Systems
                     ("approver", order.Approver ?? string.Empty),
                     ("cost", cost));
                 _radio.SendRadioMessage(uid, message, account.RadioChannel, uid, escapeMarkup: false);
-                if (CargoOrderConsoleComponent.BaseAnnouncementChannel != account.RadioChannel)
-                    _radio.SendRadioMessage(uid, message, CargoOrderConsoleComponent.BaseAnnouncementChannel, uid, escapeMarkup: false);
+                // Moffstation - Start - change component from being static
+                if (component.BaseAnnouncementChannel != account.RadioChannel)
+                    _radio.SendRadioMessage(uid, message, component.BaseAnnouncementChannel, uid, escapeMarkup: false);
+                // Moffstation - End
             }
 
             ConsolePopup(args.Actor, Loc.GetString("cargo-console-trade-station", ("destination", MetaData(ev.FulfillmentEntity.Value).EntityName)));
