@@ -41,5 +41,5 @@ public sealed partial class CargoAccountPrototype : IPrototype
     /// Paper prototype used for acquisition slips.
     /// </summary>
     [DataField]
-    public EntProtoId? AcquisitionSlip;
+    public EntProtoId AcquisitionSlip;
 }

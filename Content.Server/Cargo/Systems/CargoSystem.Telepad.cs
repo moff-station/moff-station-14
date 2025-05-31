@@ -56,7 +56,7 @@ public sealed partial class CargoSystem
         }
     }
 
-    internal bool TryGetLinkedConsole(Entity<CargoTelepadComponent> ent,
+    private bool TryGetLinkedConsole(Entity<CargoTelepadComponent> ent,
         [NotNullWhen(true)] out Entity<CargoOrderConsoleComponent>? console)
     {
         console = null;

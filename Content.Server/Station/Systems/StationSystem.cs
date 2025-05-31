@@ -491,13 +491,6 @@ public sealed partial class StationSystem : SharedStationSystem
             return null;
         }
 
-        // Moffstation - Start - Checks if the grid you are on is a station to make pirate shuttle work.
-        if (TryComp<StationDataComponent>(xform.GridUid, out _))
-        {
-            return xform.GridUid;
-        }
-        // Moffstation - End
-
         return CompOrNull<StationMemberComponent>(xform.GridUid)?.Station;
     }
 

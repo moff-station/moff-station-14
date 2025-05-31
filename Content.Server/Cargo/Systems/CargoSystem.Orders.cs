@@ -406,7 +406,7 @@ namespace Content.Server.Cargo.Systems
 
         #endregion
 
-        internal void UpdateOrderState(EntityUid consoleUid, EntityUid? station)
+        private void UpdateOrderState(EntityUid consoleUid, EntityUid? station)
         {
             if (!TryComp<CargoOrderConsoleComponent>(consoleUid, out var console))
                 return;
@@ -433,12 +433,12 @@ namespace Content.Server.Cargo.Systems
             }
         }
 
-        internal void ConsolePopup(EntityUid actor, string text) // Moffstation - Made internal for pirates
+        private void ConsolePopup(EntityUid actor, string text)
         {
             _popup.PopupCursor(text, actor);
         }
 
-        internal void PlayDenySound(EntityUid uid, CargoOrderConsoleComponent component)    // Moffstation - Made internal for pirates
+        private void PlayDenySound(EntityUid uid, CargoOrderConsoleComponent component)
         {
             if (_timing.CurTime >= component.NextDenySoundTime)
             {
@@ -474,7 +474,7 @@ namespace Content.Server.Cargo.Systems
         /// Updates all of the cargo-related consoles for a particular station.
         /// This should be called whenever orders change.
         /// </summary>
-        internal void UpdateOrders(EntityUid dbUid)
+        private void UpdateOrders(EntityUid dbUid)
         {
             // Order added so all consoles need updating.
             var orderQuery = AllEntityQuery<CargoOrderConsoleComponent>();
@@ -588,7 +588,7 @@ namespace Content.Server.Cargo.Systems
         /// <summary>
         /// Fulfills the specified cargo order and spawns paper attached to it.
         /// </summary>
-        internal bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
+        private bool FulfillOrder(CargoOrderData order, ProtoId<CargoAccountPrototype> account, EntityCoordinates spawn, string? paperProto)
         {
             // Create the item itself
             var item = Spawn(order.ProductId, spawn);
@@ -655,7 +655,7 @@ namespace Content.Server.Cargo.Systems
 
         #region Station
 
-        internal bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)
+        private bool TryGetOrderDatabase([NotNullWhen(true)] EntityUid? stationUid, [MaybeNullWhen(false)] out StationCargoOrderDatabaseComponent dbComp)
         {
             return TryComp(stationUid, out dbComp);
         }
