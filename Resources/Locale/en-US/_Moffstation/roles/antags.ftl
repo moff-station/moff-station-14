@@ -12,7 +12,7 @@ pirate-role-greeting =
     YOU BE A PIRATE SENT TO ROB THEE STATION.
     STEAL LOOT PILLAGE AND MAKE US ALL RICH.
 
-pirates-existing = [color=#914d07]Yarg! There be Pirates![/color]
+pirates-existing = [color=#a15608]Yarg! There be Pirates![/color]
 pirate-list-start = The Pirates were:
 pirate-list-name = [color=White]{$name}[/color]
 pirate-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])

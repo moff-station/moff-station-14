@@ -21,8 +21,8 @@
   - type: CargoOrderConsole
     allowedGroups: [ "pirateMarket" ]
     account: Pirates
-    baseAnnouncementChannel: "Freelance"
-    announcementChannel: "Freelance"
+    baseAnnouncementChannel: "Pirate"
+    announcementChannel: "Pirate"
   - type: Computer
     board: PirateRequestComputerCircuitboard
   - type: PointLight
@@ -175,7 +175,7 @@
     access: [["Pirate"]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-pirate
-    color: "#914d07"
+    color: "#a15608"
     canShuttle: false
     global: true
     sound: /Audio/Announcements/war.ogg
