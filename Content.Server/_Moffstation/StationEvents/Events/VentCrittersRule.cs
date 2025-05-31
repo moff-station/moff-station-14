@@ -26,7 +26,6 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
     protected override void Added(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
     {
-        base.Added(uid, component, gameRule, args);
 
         // Choose location and make sure it's not null
         component.Location = ChooseLocation();
@@ -53,6 +52,8 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
                     ("location", nearestBeacon),
                     ("time", duration));
         }
+
+        base.Added(uid, component, gameRule, args);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
