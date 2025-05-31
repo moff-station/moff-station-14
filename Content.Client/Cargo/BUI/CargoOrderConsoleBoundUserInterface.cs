@@ -135,6 +135,7 @@ namespace Content.Client.Cargo.BUI
             OrderCapacity = cState.Capacity;
             OrderCount = cState.Count;
             BankBalance = _cargoSystem.GetBalanceFromAccount(station, orderConsole.Account);
+
             AccountName = cState.Name;
 
             if (_menu == null)
