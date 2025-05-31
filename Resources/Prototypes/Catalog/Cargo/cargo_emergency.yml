@@ -61,8 +61,7 @@
 - type: cargoProduct
   id: EmergencyNitrogenTanks
   icon:
-    sprite: Objects/Tanks/red.rsi
-    state: icon
+    entity: NitrogenTank
   product: CrateNitrogenInternals
   cost: 350
   category: cargoproduct-category-name-emergency

@@ -61,17 +61,151 @@
     speedModifier: 0.6 # fairly unwieldly but nice round surface
 
 - type: entity
-  parent: GasTankRoundBase
+  abstract: true
+  id: GasTankVisualsBase
+  components:
+  - type: Appearance
+  - type: GasTankVisuals
+    visuals: Default
+  - type: Sprite
+    sprite: Objects/Tanks/tank.rsi
+    layers:
+    - state: icon-tank
+      map: [ "enum.GasTankVisualsLayers.Tank" ]
+    - state: icon-stripe-low
+      map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+    - state: icon-stripe-middle
+      map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+    - state: icon-hardware
+  - type: Item
+    sprite: Objects/Tanks/tank.rsi
+    inhandVisuals:
+      Left:
+      - state: inhand-left-tank
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: inhand-left-stripe-low
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: inhand-left-stripe-middle
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: inhand-left-hardware
+      Right:
+      - state: inhand-right-tank
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: inhand-right-stripe-low
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: inhand-right-stripe-middle
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: inhand-right-hardware
+  - type: Clothing
+    sprite: Objects/Tanks/tank.rsi
+    clothingVisuals:
+      back:
+      - state: equipped-BACKPACK-tank
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-BACKPACK-stripe-low
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-BACKPACK-stripe-middle
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-BACKPACK-hardware
+      # Standard tanks aren't equippable in the belt, but it's nicer to define this here and not use it than to have to
+      # redefine all of these mappings to add just the belt visuals for smaller tanks.
+      belt:
+      - state: equipped-BELT-tank
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-BELT-stripe-low
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-BELT-stripe-middle
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-BELT-hardware
+      suitstorage:
+      - state: equipped-SUITSTORAGE-tank
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware
+      suitstorage-hamster:
+      - state: equipped-SUITSTORAGE-tank-hamster
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-hamster
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-hamster
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-hamster
+      suitstorage-pig:
+      - state: equipped-SUITSTORAGE-tank-pig
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-pig
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-pig
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-pig
+      suitstorage-possum:
+      - state: equipped-SUITSTORAGE-tank-possum
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-possum
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-possum
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-possum
+      suitstorage-kangaroo:
+      - state: equipped-SUITSTORAGE-tank-kangaroo
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-kangaroo
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-kangaroo
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-kangaroo
+      suitstorage-fox:
+      - state: equipped-SUITSTORAGE-tank-fox
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-fox
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-fox
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-fox
+      suitstorage-dog:
+      - state: equipped-SUITSTORAGE-tank-dog
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-dog
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-dog
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-dog
+      suitstorage-cat:
+      - state: equipped-SUITSTORAGE-tank-cat
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-cat
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-cat
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-cat
+      suitstorage-sloth:
+      - state: equipped-SUITSTORAGE-tank-sloth
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-sloth
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-sloth
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-sloth
+      suitstorage-puppy:
+      - state: equipped-SUITSTORAGE-tank-puppy
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      - state: equipped-SUITSTORAGE-stripe-low-puppy
+        map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+      - state: equipped-SUITSTORAGE-stripe-middle-puppy
+        map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+      - state: equipped-SUITSTORAGE-hardware-puppy
+
+- type: entity
+  parent: [ GasTankVisualsBase, GasTankRoundBase ]
   id: OxygenTank
   name: oxygen tank
   description: A standard cylindrical gas tank for oxygen. It can hold 5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/oxygen.rsi
-  - type: Item
-    sprite: Objects/Tanks/oxygen.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/oxygen.rsi
+  - type: GasTankVisuals
+    visuals: Oxygen
 
 - type: entity
   parent: GasTankRoundBase
@@ -79,24 +213,16 @@
   name: nitrogen tank
   description: A standard cylindrical gas tank for nitrogen. It can hold 5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/red.rsi
-  - type: Item
-    sprite: Objects/Tanks/red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
 
 - type: entity
   parent: GasTankRoundBase
-  id: EmergencyOxygenTank
-  name: emergency oxygen tank
-  description: An easily portable tank for emergencies. Contains very little oxygen, rated for survival use only. It can hold 0.66 L of gas.
+  abstract: true
+  id: EmergencyGasTankBase
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/emergency.rsi
   - type: Item
     size: Small
-    sprite: Objects/Tanks/emergency.rsi
   - type: GasTank
     air:
       volume: 0.66
@@ -121,17 +247,35 @@
   # Moffstation - End
 
 - type: entity
+  parent: [ GasTankVisualsBase, EmergencyGasTankBase ]
+  id: EmergencyOxygenTank
+  name: emergency oxygen tank
+  description: An easily portable tank for emergencies. Contains very little oxygen, rated for survival use only. It can hold 0.66 L of gas.
+  components:
+  - type: Sprite
+    sprite: Objects/Tanks/emergency.rsi
+  - type: Item
+    sprite: Objects/Tanks/emergency.rsi
+    inhandVisuals: # No stripes on small tank in-hand sprites.
+      Left:
+      - state: inhand-left-tank
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+      Right:
+      - state: inhand-right-tank
+        map: [ "enum.GasTankVisualsLayers.Tank" ]
+  - type: Clothing
+    sprite: Objects/Tanks/emergency.rsi
+  - type: GasTankVisuals
+    visuals: Oxygen
+
+- type: entity
   parent: EmergencyOxygenTank
   id: EmergencyNitrogenTank
   name: emergency nitrogen tank
   description: An easily portable tank for emergencies. Contains very little nitrogen, rated for survival use only. It can hold 0.66 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/emergency_red.rsi
-  - type: Item
-    sprite: Objects/Tanks/emergency_red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/emergency_red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
 
 - type: entity
   parent: EmergencyOxygenTank
@@ -149,6 +293,8 @@
       temperature: 293.15
   - type: Clothing
     sprite: Objects/Tanks/emergency_extended.rsi
+  - type: GasTankVisuals
+    visuals: Oxygen
 
 - type: entity
   parent: ExtendedEmergencyOxygenTank
@@ -156,12 +302,8 @@
   name: extended-capacity emergency nitrogen tank
   description: An emergency tank with extended capacity. Technically rated for prolonged use. It can hold 1.5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/emergency_extended_red.rsi
-  - type: Item
-    sprite: Objects/Tanks/emergency_extended_red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/emergency_extended_red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
 
 - type: entity
   parent: ExtendedEmergencyOxygenTank
@@ -184,6 +326,8 @@
     damage:
       types:
         Blunt: 7.5
+  - type: GasTankVisuals
+    visuals: Oxygen
 
 - type: entity
   parent: DoubleEmergencyOxygenTank
@@ -191,15 +335,11 @@
   name: double emergency nitrogen tank
   description: A high-grade dual-tank emergency life support container. It holds a decent amount of nitrogen for its small size. It can hold 2.5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/emergency_double_red.rsi
-  - type: Item
-    sprite: Objects/Tanks/emergency_double_red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/emergency_double_red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
 
 - type: entity
-  parent: EmergencyOxygenTank
+  parent: EmergencyGasTankBase
   id: EmergencyFunnyOxygenTank
   name: funny emergency oxygen tank
   description: An easily portable tank for emergencies. Contains very little oxygen with an extra of funny gas, rated for survival use only. It can hold 0.66 L of gas.
@@ -219,6 +359,8 @@
   components:
   - type: GasTank
     outputPressure: 101.3
+  - type: GasTankVisuals
+    visuals: AirMix
 
 - type: entity
   parent: GasTankRoundBase
@@ -226,14 +368,10 @@
   name: nitrous oxide tank
   description: Contains a mixture of air and nitrous oxide. Make sure you don't refill it with pure N2O. It can hold 5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/anesthetic.rsi
-  - type: Item
-    sprite: Objects/Tanks/anesthetic.rsi
   - type: GasTank
     outputPressure: 30.4
-  - type: Clothing
-    sprite: Objects/Tanks/anesthetic.rsi
+  - type: GasTankVisuals
+    visuals: NitrousOxide
 
 - type: entity
   # it's a square so no rolling dough
@@ -253,3 +391,80 @@
     slots:
     - Belt
     - suitStorage
+
+- type: gasTankVisualStyle
+  id: Default
+  name: gastank-unspecified
+  visuals:
+    tankColor: '#FFFF32FF'
+    lowerStripeColor: '#4C4C4CFF'
+
+- type: gasTankVisualStyle
+  id: Oxygen
+  name: gases-oxygen
+  visuals:
+    tankColor: '#4CA8FFFF'
+    lowerStripeColor: White
+
+- type: gasTankVisualStyle
+  id: Nitrogen
+  name: gases-nitrogen
+  visuals:
+    tankColor: '#E65C55FF'
+    lowerStripeColor: White
+
+- type: gasTankVisualStyle
+  id: NitrousOxide
+  name: gases-n2o
+  visuals:
+    tankColor: '#E6E6E6FF'
+    middleStripeColor: '#E65C55FF'
+
+- type: gasTankVisualStyle
+  id: CarbonDioxide
+  name: gases-co2
+  visuals:
+    tankColor: '#4F4F4FFF'
+    lowerStripeColor: '#AF0000FF'
+
+- type: gasTankVisualStyle
+  id: WaterVapor
+  name: gases-water-vapor
+  visuals:
+    tankColor: '#4C4C4CFF'
+    lowerStripeColor: '#FFB2C0FF'
+
+- type: gasTankVisualStyle
+  id: Plasma
+  name: gases-plasma
+  visuals:
+    tankColor: VividGamboge
+    middleStripeColor: '#FC32A0FF'
+
+- type: gasTankVisualStyle
+  id: Tritium
+  name: gases-tritium
+  visuals:
+    tankColor: VividGamboge
+    middleStripeColor: '#17FF0BFF'
+
+- type: gasTankVisualStyle
+  id: Frezon
+  name: gases-frezon
+  visuals:
+    tankColor: VividGamboge
+    middleStripeColor: '#47CDFFFF'
+
+- type: gasTankVisualStyle
+  id: Ammonia
+  name: gases-ammonia
+  visuals:
+    tankColor: '#E6E6E6FF'
+    middleStripeColor: Green
+
+- type: gasTankVisualStyle
+  id: AirMix
+  name: gastank-airmix
+  visuals:
+    tankColor: LightGray
+    lowerStripeColor: White

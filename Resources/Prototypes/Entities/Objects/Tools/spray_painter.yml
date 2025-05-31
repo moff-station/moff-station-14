@@ -15,7 +15,9 @@
     interfaces:
       enum.SprayPainterUiKey.Key:
         type: SprayPainterBoundUserInterface
-  - type: SprayPainter
+  - type: AirlockPainter
+  - type: GasTankPainter
+  - type: AtmosPipePainter
     colorPalette:
       red: '#FF1212FF'
       yellow: '#B3A234FF'

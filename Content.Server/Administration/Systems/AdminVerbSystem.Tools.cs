@@ -236,7 +236,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Oxygen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/oxygen.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("OxygenTank"),
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Oxygen, tank);
@@ -251,7 +251,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Nitrogen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/red.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("NitrogenTank"),
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Nitrogen, tank);
@@ -266,7 +266,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Plasma",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/plasma.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("PlasmaTank"),
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Plasma, tank);
@@ -284,7 +284,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Oxygen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/oxygen.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("OxygenTank"),
                 Act = () => RefillEquippedTanks(args.User, Gas.Oxygen),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-oxygen-description"),
@@ -296,7 +296,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Nitrogen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/red.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("NitrogenTank"),
                 Act = () => RefillEquippedTanks(args.User, Gas.Nitrogen),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-nitrogen-description"),
@@ -308,7 +308,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Plasma",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/plasma.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("PlasmaTank"),
                 Act = () => RefillEquippedTanks(args.User, Gas.Plasma),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-plasma-description"),
