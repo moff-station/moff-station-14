@@ -33,7 +33,7 @@ public sealed class EnergySwordSystem : EntitySystem
         if (!TryComp(entity, out AppearanceComponent? appearanceComponent))
             return;
 
-        _appearance.SetData(entity, ToggleVisuals.Color, entity.Comp.ActivatedColor, appearanceComponent); // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+        _appearance.SetData(entity, ToggleableLightVisuals.Color, entity.Comp.ActivatedColor, appearanceComponent);
     }
 
     // Used to make the blade multicolored when using a multitool on it.
