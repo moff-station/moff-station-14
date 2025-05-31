@@ -51,26 +51,31 @@
     weightlessAcceleration: 1.5 # Move around more easily in space.
     weightlessFriction: 1
     baseWeightlessModifier: 1
-  - type: Flammable
-    damage:
-      types:
-        Heat: 4.5 # moths burn more easily
-  - type: Temperature # Moths hate the heat and thrive in the cold.
-    heatDamageThreshold: 320
-    coldDamageThreshold: 230
-    currentTemperature: 310.15
-    specificHeat: 46
-    coldDamage:
-      types:
-        Cold : 0.05 #per second, scales with temperature & other constants
-    heatDamage:
-      types:
-        Heat : 3 #per second, scales with temperature & other constants
-  - type: TemperatureSpeed
-    thresholds:
-      289: 0.8
-      275: 0.6
-      250: 0.4
+  # Moffstation - Begin (Experimental Moth Rebalance)
+  #- type: Flammable
+  #  damage:
+  #    types:
+  #      Heat: 4.5 # moths burn more easily
+  #- type: Temperature # Moths hate the heat and thrive in the cold.
+  #  heatDamageThreshold: 320
+  #  coldDamageThreshold: 230
+  #  currentTemperature: 310.15
+  #  specificHeat: 46
+  #  coldDamage:
+  #    types:
+  #      Cold : 0.05 #per second, scales with temperature & other constants
+  #  heatDamage:
+  #    types:
+  #      Heat : 3 #per second, scales with temperature & other constants
+  #- type: TemperatureSpeed
+  #  thresholds:
+  #    289: 0.8
+  #    275: 0.6
+  #    250: 0.4
+  - type: TemperatureProtection
+    heatingCoefficient: 1.1
+    coolingCoefficient: 0.1
+  # Moffstation - End
   - type: Sprite # sprite again because we want different layer ordering
     noRot: true
     drawdepth: Mobs
