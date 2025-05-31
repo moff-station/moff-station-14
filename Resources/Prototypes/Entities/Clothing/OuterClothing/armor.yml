@@ -50,7 +50,7 @@
   parent: ClothingOuterArmorBase
   id: ClothingOuterArmorBulletproof
   name: ballistic vest # Moffstation - (Armor Descriptions: Pt 1)
-  description: A NT Type III ballistic vest, its ceramic plates provide excellent protection against firearms, though it won’t do much against other forms of attack. # Moffstation - (Armor Descriptions: Pt 1)
+  description: A NT Type III ballistic vest, its hard armor plates provide excellent protection against firearms, though it won’t do much against other forms of attack. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/bulletproof.rsi
@@ -156,7 +156,7 @@
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWeb
   name: Syndicate plate carrier # Moffstation - (Armor Descriptions: Pt 1)
-  description: A Syndicate Type I plate carrier, its aramid armor is reinforced by neo-ceramic plates. Provides excellent ballistic protection, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Syndicate Type I plate carrier, its aramid armor is reinforced by thick plasteel plates. Provides excellent ballistic protection, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/webvest.rsi
@@ -181,7 +181,7 @@
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWebElite
   name: Syndicate elite carrier # Moffstation - (Armor Descriptions: Pt 1)
-  description: A Syndicate Type IV plate carrier, its aramid armor is reinforced by reflective panels and a layer of hazard shielding. Protects well against energy weapons and environmental threats, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Syndicate Type IV plate carrier, its aramid armor is reinforced by reflective panels and (unconventionally for a vest) a layer of hazard shielding. Protects well against energy weapons and environmental threats, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
@@ -213,7 +213,7 @@
   parent: [ BaseMajorContraband, ClothingOuterVestWeb] #web vest so it should have some pockets for ammo
   id: ClothingOuterVestWebMerc
   name: mercenary plate carrier # Moffstation - (Armor Descriptions: Pt 1)
-  description: A Type I plate carrier of a model commonly found on the open market, its aramid armor is reinforced by ceramic plates. Provides excellent combat protection and is painted in an olive green common in mercenary companies. Features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Type I plate carrier of a model commonly found on the open market, featuring thick aramid to protect the wearer. Provides excellent combat protection and is painted in an olive green common in mercenary companies. Features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
@@ -251,7 +251,7 @@
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband ]
   id: ClothingOuterArmorRaid
   name: Gorlex raid suit # Moffstation - (Armor Descriptions: Pt 1)
-  description: The Gorlex Marauders A23 combat armor. It features no space-proofing, freeing up plenty of weight and bulk for thicker layers of ceramic and plasteel-alloy, as well as a powerful shoulder-mounted flashlight. Commonly worn by marines on planetside operations. # Moffstation - (Armor Descriptions: Pt 1)
+  description: The Gorlex Marauders A23 combat armor. It features no space-proofing, freeing up plenty of weight and bulk for thicker layers plasteel-alloy, as well as a powerful shoulder-mounted flashlight. Commonly worn by marines on planetside operations. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/syndie-raid.rsi
