@@ -14,7 +14,7 @@
 - type: entity
   id: CratePirateWebvest
   parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
-  name: merc webvest crate
+  name: webvest crate
   components:
   - type: StorageFill
     contents:

@@ -43,7 +43,7 @@
   id: PirateRifleAmmo
   icon:
     sprite: Objects/Weapons/Guns/Ammunition/Boxes/light_rifle.rsi
-    state: icon
+    state: base
   product: CratePirateRifleAmmo
   cost: 3000
   category: cargoproduct-category-name-armory
@@ -163,7 +163,7 @@
   id: PirateFlintlock
   icon:
     sprite: Objects/Weapons/Guns/Snipers/flintlock.rsi
-    state: icon
+    state: base
   product: CratePirateFlintlock
   cost: 3000
   category: cargoproduct-category-name-armory
@@ -203,7 +203,7 @@
   id: PirateShotgunAmmo
   icon:
     sprite: Objects/Weapons/Guns/Ammunition/Boxes/shotgun.rsi
-    state: icon
+    state: base
   product: CratePirateShotgunAmmo
   cost: 3000
   category: cargoproduct-category-name-armory

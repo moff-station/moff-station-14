@@ -90,7 +90,6 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: CargoBountyConsole
-    secretBounties: Pirates
   - type: ActivatableUI
     key: enum.CargoConsoleUiKey.Bounty
   - type: UserInterface
@@ -151,7 +150,7 @@
 # Pirate communications computer
 
 - type: entity
-  parent: ComputerComms
+  parent: SyndicateComputerComms
   id: PirateComputerComms
   name: pirate communications computer
   description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
