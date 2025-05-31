@@ -49,11 +49,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
                 shuttle.AssociatedRule = ent;
 
                 // Converts the pirate shuttle into a station, giving it a functional cargo system
-                var pirateStationConfig = new StationConfig
-                {
-                    StationPrototype = ent.Comp.StationPrototype,
-                };
-                _station.InitializeNewStation(pirateStationConfig, [uid]);
+                _station.InitializeNewStation(ent.Comp.StationConfig, [uid]);
 
                 //Turns the pirate shuttle into a trade station, so that it's buy/sell pads are functional
                 AddComp<TradeStationComponent>(uid);
