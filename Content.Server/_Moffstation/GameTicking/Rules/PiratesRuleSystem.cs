@@ -52,7 +52,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
                 _station.InitializeNewStation(ent.Comp.StationConfig, [uid]);
 
                 //Turns the pirate shuttle into a trade station, so that it's buy/sell pads are functional
-                AddComp<TradeStationComponent>(uid);
+                EnsureComp<TradeStationComponent>(uid);
                 Dirty(uid, shuttle);
 
                 break;
