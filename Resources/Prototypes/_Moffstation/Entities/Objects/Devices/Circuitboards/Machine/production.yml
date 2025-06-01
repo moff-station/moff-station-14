@@ -8,7 +8,7 @@
   - type: MachineBoard
     prototype: CircuitImprinterLawMatrix
     stackRequirements:
-      MatterBin: 1
+      Manipulator: 1
     tagRequirements:
       GlassBeaker:
         amount: 2
