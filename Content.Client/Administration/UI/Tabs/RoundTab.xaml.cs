@@ -8,7 +8,6 @@ namespace Content.Client.Administration.UI.Tabs
     [GenerateTypedNameReferences]
     public sealed partial class RoundTab : Control
     {
-        // Moffstation - Start
         [Dependency] private readonly IClientConsoleHost _console = default!;
 
         public RoundTab()
@@ -21,6 +20,5 @@ namespace Content.Client.Administration.UI.Tabs
             RestartRound.OnPressed += _ => _console.ExecuteCommand("restartround");
             RestartRoundNow.OnPressed += _ => _console.ExecuteCommand("restartroundnow");
         }
-        // Moffstation - End
     }
 }

@@ -1,0 +1,20 @@
+﻿# Player: HotrodMcCoolgal - Character: Boxcar Macgillicutty
+- type: entity
+  parent: ClothingEyesGlassesCheapSunglasses
+  id: PersonalItemBoxcarGlasses
+  name: Boxcar branded shades
+  description: '"Da very best kinda shades"'
+  suffix: PersonalItem
+  components:
+  - type: DetailExaminable
+    content: On a closer look, you can tell these are shoddy sunglasses with 'BOXCAR TV' printed on the frames.
+
+- type: loadout
+  id: PersonalItemBoxcarGlasses
+  storage:
+    back:
+    - PersonalItemBoxcarGlasses
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Boxcar Macgillicutty
