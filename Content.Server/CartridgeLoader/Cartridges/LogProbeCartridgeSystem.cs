@@ -11,6 +11,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 using System.Text;
+using Robust.Shared.Random;
 
 namespace Content.Server.CartridgeLoader.Cartridges;
 
@@ -25,6 +26,8 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PaperSystem _paper = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+
 
     public override void Initialize()
     {
