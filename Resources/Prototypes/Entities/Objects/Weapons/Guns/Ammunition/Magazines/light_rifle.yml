@@ -46,9 +46,13 @@
   - type: BallisticAmmoProvider
     proto: CartridgeLightRifle
     capacity: 100
+  # Moffstation - Begin (Better L6 Belts)
   - type: Item
+    shape:
+    - 0,0,1,1
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_box.rsi
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/pk_box.rsi
+  # Moffstation - End
   - type: MagazineVisuals
     magState: mag
     steps: 8
