@@ -88,7 +88,7 @@
 
 - type: cargoBounty
   id: PirateBountyAmeFuel
-  reward: 4500
+  reward: 2000
   description: bounty-description-ame-fuel
   idPrefix: SP
   group: Pirates
@@ -141,7 +141,7 @@
 
 - type: cargoBounty
   id: PirateBountyInstruments
-  reward: 2500
+  reward: 2000
   description: bounty-description-instruments
   idPrefix: WC
   group: Pirates
@@ -151,19 +151,6 @@
     whitelist:
       components:
       - Instrument
-
-- type: cargoBounty
-  id: PirateBountyJaniBucket
-  reward: 2500
-  description: bounty-description-jani-bucket
-  idPrefix: DC
-  group: Pirates
-  entries:
-  - name: bounty-item-jani-bucket
-    amount: 1
-    whitelist:
-      tags:
-      - Wringer
 
 # Medical
 - type: cargoBounty
