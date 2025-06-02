@@ -25,49 +25,111 @@ public sealed partial class NanoChatLookupView : PanelContainer
             return;
         }
 
+        // Adds a panel for creating custom contact
+        var customContactPanel = CreateCustomContactPanel(state);
+        ContactsList.AddChild(customContactPanel);
+
         for (var idx = 0; idx < contacts.Count; idx++)
         {
             var contact = contacts[idx];
-            var nameLabel = new Label()
+            var contactUi = NewContactUI(contact);
+
+            contactUi.StartChatButton.AddStyleClass("OpenBoth");
+            if (contact.Number == state.OwnNumber || state.Recipients.ContainsKey(contact.Number) || state.Recipients.Count >= state.MaxRecipients)
             {
-                Text = contact.Name,
-                HorizontalAlignment = HAlignment.Left,
-                HorizontalExpand = true
-            };
-            var numberLabel = new Label()
-            {
-                Text = $"#{contacts[idx].Number:D4}",
-                HorizontalAlignment = HAlignment.Right,
-                Margin = new Thickness(0, 0, 36, 0),
-            };
-            var startChatButton = new Button()
-            {
-                Text = "+",
-                HorizontalAlignment = HAlignment.Right,
-                MinSize = new Vector2(32, 32),
-                MaxSize = new Vector2(32, 32),
-                ToolTip = Loc.GetString("nano-chat-new-chat"),
-            };
-            startChatButton.AddStyleClass("OpenBoth");
-            if (contact.Number == state.OwnNumber || state.Recipients.ContainsKey(contact.Number) || state.MaxRecipients <= state.Recipients.Count)
-            {
-                startChatButton.Disabled = true;
+                contactUi.StartChatButton.Disabled = true;
             }
-            startChatButton.OnPressed += _ => OnStartChat?.Invoke(contact);
+            contactUi.StartChatButton.OnPressed += _ => OnStartChat?.Invoke(contact);
 
             var panel = new PanelContainer()
             {
                 HorizontalExpand = true,
             };
 
-            panel.AddChild(nameLabel);
-            panel.AddChild(numberLabel);
-            panel.AddChild(startChatButton);
+            panel.AddChild(contactUi.NameLabel);
+            panel.AddChild(contactUi.NumberLabel);
+            panel.AddChild(contactUi.StartChatButton);
 
             var styleClass = idx % 2 == 0 ? "PanelBackgroundBaseDark" : "PanelBackgroundLight";
             panel.StyleClasses.Add(styleClass);
 
             ContactsList.AddChild(panel);
         }
+    }
+
+    private ContactUi NewContactUI(NanoChatRecipient contact)
+    {
+        var contactUi = new ContactUi();
+        contactUi.NameLabel = new Label()
+        {
+            Text = contact.Name,
+            HorizontalAlignment = HAlignment.Left,
+            HorizontalExpand = true
+        };
+        contactUi.NumberLabel  = new Label()
+        {
+            Text = $"#{contact.Number:D4}",
+            HorizontalAlignment = HAlignment.Right,
+            Margin = new Thickness(0, 0, 36, 0),
+        };
+        contactUi.StartChatButton = new Button()
+        {
+            Text = "+",
+            HorizontalAlignment = HAlignment.Right,
+            MinSize = new Vector2(32, 32),
+            MaxSize = new Vector2(32, 32),
+            ToolTip = Loc.GetString("nano-chat-new-chat"),
+        };
+
+        return contactUi;
+    }
+
+    private PanelContainer CreateCustomContactPanel(NanoChatUiState state)
+    {
+        var panel = new PanelContainer();
+
+        var customContact = new Label()
+        {
+            Text = "Create Custom Contact...",
+            HorizontalAlignment = HAlignment.Left,
+            HorizontalExpand = true
+        };
+        var newChatButton = new Button()
+        {
+            Text = "+",
+            HorizontalAlignment = HAlignment.Right,
+            MinSize = new Vector2(32, 32),
+            MaxSize = new Vector2(32, 32),
+        };
+
+        var newChatPopup = new NewChatPopup();
+        newChatButton.OnPressed += _ =>
+        {
+            newChatPopup.ClearInputs();
+            newChatPopup.OpenCentered();
+        };
+
+        newChatPopup.OnChatCreated += (number, name, job) =>
+        {
+            var contact = new NanoChatRecipient(number, name, job);
+            OnStartChat?.Invoke(contact);
+        };
+
+        newChatButton.Disabled = (state.Recipients.Count >= state.MaxRecipients);
+
+        panel.AddChild(customContact);
+        panel.AddChild(newChatButton);
+        panel.StyleClasses.Add("PanelBackgroundLight");
+        return panel;
+    }
+
+    // Struct for the UI components
+    private struct ContactUi
+    {
+        public Label NameLabel;
+
+        public Label NumberLabel;
+
+        public Button StartChatButton;
     }
 }
