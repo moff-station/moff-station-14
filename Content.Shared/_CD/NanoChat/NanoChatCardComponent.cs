@@ -51,10 +51,10 @@ public sealed partial class NanoChatCardComponent : Component
     public TimeSpan LastNotificationTime;
 
     /// <summary>
-    /// The minimum amount of time that can pass between receiving notifications
+    /// The minimum amount of time in seconds that can pass between receiving notifications
     /// </summary>
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan NotificationCooldownTime = TimeSpan.FromSeconds(10);
+    [DataField, AutoPausedField]
+    public float NotificationCooldownTime = 10.0f;
 
     /// <summary>
     ///     Whether to send notifications.

@@ -432,7 +432,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             : $"#{message.SenderId:D4}";
 
         // Checks if the cooldown since the last notification has been meet or if notifs are muted
-        if ( _timing.CurTime > recipient.Comp.LastNotificationTime + recipient.Comp.NotificationCooldownTime  && !recipient.Comp.NotificationsMuted)
+        if (_timing.CurTime > recipient.Comp.LastNotificationTime + TimeSpan.FromSeconds(recipient.Comp.NotificationCooldownTime) && !recipient.Comp.NotificationsMuted)
         {
             _nanoChat.SetLastNotificationTime(recipient.Owner, _timing.CurTime);
             _cartridge.SendNotification(pda,
