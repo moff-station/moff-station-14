@@ -12,6 +12,7 @@ using Content.Shared._CD.CartridgeLoader.Cartridges;
 using Content.Shared._CD.NanoChat;
 using Content.Shared.PDA;
 using Content.Shared.Radio.Components;
+using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -25,6 +26,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedNanoChatSystem _nanoChat = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
     // Messages in notifications get cut off after this point
     // no point in storing it on the comp
@@ -36,6 +38,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeUiReadyEvent>(OnUiReady);
         SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeMessageEvent>(OnMessage);
+        SubscribeLocalEvent<NanoChatMessageReceivedEvent>(OnMessageReceived);
     }
 
     public override void Update(float frameTime)
@@ -254,7 +257,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             LogImpact.Low,
             $"{ToPrettyString(card):user} sent NanoChat message to {recipientsText}: {msg.Content}{(deliveryFailed ? " [DELIVERY FAILED]" : "")}");
 
-        var msgEv = new NanoChatMessageReceivedEvent(card);
+        var msgEv = new NanoChatMessageReceivedEvent(card, message);
         RaiseLocalEvent(ref msgEv);
 
         if (deliveryFailed)
@@ -389,19 +392,38 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         _nanoChat.AddMessage((recipient, recipient.Comp), senderNumber.Value, message with { DeliveryFailed = false });
 
-
-        if (_nanoChat.GetCurrentChat((recipient, recipient.Comp)) != senderNumber)
-            HandleUnreadNotification(recipient, message);
-
-        var msgEv = new NanoChatMessageReceivedEvent(recipient);
+        var msgEv = new NanoChatMessageReceivedEvent(recipient, message);
         RaiseLocalEvent(ref msgEv);
         UpdateUIForCard(recipient);
     }
 
+    private void OnMessageReceived(ref NanoChatMessageReceivedEvent args)
+    {
+        var query = EntityQueryEnumerator<NanoChatCartridgeComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            // Make sure the message is meant for this card
+            if (comp.Card != args.CardUid)
+                continue;
+
+            // Get the stuff needed to determine whether the notification should go through
+            if (TryComp<CartridgeComponent>(uid, out var cartridge) &&
+                cartridge.LoaderUid is {} pda &&
+                TryComp<CartridgeLoaderComponent>(pda, out var loader) &&
+                GetCardEntity(pda, out var recipient))
+            {
+                if (recipient.Comp.CurrentChat != args.Message.SenderId && loader.ActiveProgram != uid || !_ui.IsUiOpen(pda, PdaUiKey.Key))
+                {
+                    HandleUnreadNotification(recipient, args.Message, pda);
+                }
+            }
+        }
+    }
+
     /// <summary>
-    ///     Handles unread message notifications and updates unread status.
+    ///     Handles message notifications and updates unread status.
     /// </summary>
-    private void HandleUnreadNotification(Entity<NanoChatCardComponent> recipient, NanoChatMessage message)
+    private void HandleUnreadNotification(Entity<NanoChatCardComponent> recipient, NanoChatMessage message, EntityUid pda)
     {
         // Get sender name from contacts or fall back to number
         var recipients = _nanoChat.GetRecipients((recipient, recipient.Comp));
@@ -409,19 +431,13 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
             ? existingRecipient.Name
             : $"#{message.SenderId:D4}";
 
-        if (!recipient.Comp.Recipients[message.SenderId].HasUnread && !recipient.Comp.NotificationsMuted)
+        // Checks if the cooldown since the last notification has been meet or if notifs are muted
+        if ( _timing.CurTime > recipient.Comp.LastNotificationTime + recipient.Comp.NotificationCooldownTime  && !recipient.Comp.NotificationsMuted)
         {
-            var pdaQuery = EntityQueryEnumerator<PdaComponent>();
-            while (pdaQuery.MoveNext(out var pdaUid, out var pdaComp))
-            {
-                if (pdaComp.ContainedId != recipient)
-                    continue;
-
-                _cartridge.SendNotification(pdaUid,
-                    Loc.GetString("nano-chat-new-message-title", ("sender", senderName)),
-                    Loc.GetString("nano-chat-new-message-body", ("message", TruncateMessage(message.Content))));
-                break;
-            }
+            _nanoChat.SetLastNotificationTime(recipient.Owner, _timing.CurTime);
+            _cartridge.SendNotification(pda,
+                Loc.GetString("nano-chat-new-message-title", ("sender", senderName)),
+                Loc.GetString("nano-chat-new-message-body", ("message", TruncateMessage(message.Content))));
         }
 
         // Update unread status

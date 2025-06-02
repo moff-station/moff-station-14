@@ -212,6 +212,29 @@ public abstract class SharedNanoChatSystem : EntitySystem
     }
 
     /// <summary>
+    ///     Gets the time of the last notification.
+    /// </summary>
+    public TimeSpan? GetLastNotificationTime(Entity<NanoChatCardComponent?> card)
+    {
+        if (!Resolve(card, ref card.Comp))
+            return null;
+
+        return card.Comp.LastNotificationTime;
+    }
+
+    /// <summary>
+    ///     Sets the time of the last notification.
+    /// </summary>
+    public void SetLastNotificationTime(Entity<NanoChatCardComponent?> card,  TimeSpan time)
+    {
+        if (!Resolve(card, ref card.Comp) || time <= card.Comp.LastNotificationTime)
+            return;
+
+        card.Comp.LastNotificationTime = time;
+        Dirty(card);
+    }
+
+    /// <summary>
     ///     Gets if there are unread messages from a recipient.
     /// </summary>
     public bool HasUnreadMessages(Entity<NanoChatCardComponent?> card, uint recipientNumber)

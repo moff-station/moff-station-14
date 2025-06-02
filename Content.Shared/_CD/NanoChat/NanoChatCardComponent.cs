@@ -45,6 +45,18 @@ public sealed partial class NanoChatCardComponent : Component
     public TimeSpan LastMessageTime; // TODO: actually use this, compare against actor and not the card
 
     /// <summary>
+    /// The last time a notification was received
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    public TimeSpan LastNotificationTime;
+
+    /// <summary>
+    /// The minimum amount of time that can pass between receiving notifications
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan NotificationCooldownTime = TimeSpan.FromSeconds(10);
+
+    /// <summary>
     ///     Whether to send notifications.
     /// </summary>
     [DataField]
