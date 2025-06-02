@@ -43,12 +43,6 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             OnMessageSent?.Invoke(NanoChatUiMessageType.NewChat, number, name, job);
         };
 
-        NewChatButton.OnPressed += _ =>
-        {
-            _newChatPopup.ClearInputs();
-            _newChatPopup.OpenCentered();
-        };
-
         MuteButton.OnPressed += _ =>
         {
             _notificationsMuted = !_notificationsMuted;
@@ -259,13 +253,6 @@ public sealed partial class NanoChatUiFragment : BoxContainer
         OwnNumberLabel.Text = $"#{state.OwnNumber:D4}";
         UpdateMuteButton();
         UpdateListNumber();
-
-        // Update new chat button state based on recipient limit
-        var atLimit = state.Recipients.Count >= state.MaxRecipients;
-        NewChatButton.Disabled = atLimit;
-        NewChatButton.ToolTip = atLimit
-            ? Loc.GetString("nano-chat-max-recipients")
-            : Loc.GetString("nano-chat-new-chat");
 
         // First handle pending chat resolution if we have one
         if (_pendingChat != null)
