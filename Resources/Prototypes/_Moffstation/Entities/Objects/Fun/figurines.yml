@@ -64,7 +64,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineBrisband
   name: local fisherman figurine
-  description: .
+  description: <NEEDS DESCRIPTION>
   components:
   - type: Sprite
     state: brisband
@@ -462,6 +462,17 @@
     state: sapphire
   - type: SpeakOnTrigger
     pack: FigurinesSapphire
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSamantha
+  name: <PLACEHOLDER NAME>
+  description: <NEEDS DESCRIPTION>
+  components:
+  - type: Sprite
+    state: samantha
+  - type: SpeakOnTrigger
+    pack: FigurinesSamantha
 
 - type: entity
   parent: BaseFigurineMoff
