@@ -23,6 +23,18 @@
     count: 10
 
 - type: localizedDataset
+  id: FigurinesBrisband
+  values:
+    prefix: figurines-brisband-
+    count: 5
+
+- type: localizedDataset
+  id: FigurinesBrisbandBigHat
+  values:
+    prefix: figurines-brisbandbighat-
+    count: 5
+
+- type: localizedDataset
   id: FigurinesCassiel
   values:
     prefix: figurines-cassiel-
@@ -33,6 +45,12 @@
   values:
     prefix: figurines-cinnabar-
     count: 5
+
+- type: localizedDataset
+  id: FigurinesCooks
+  values:
+    prefix: figurines-cooks-
+    count: 7
 
 - type: localizedDataset
   id: FigurinesCory
@@ -153,6 +171,12 @@
   values:
     prefix: figurines-light-
     count: 5
+
+- type: localizedDataset
+  id: FigurinesLightsSeeker
+  values:
+    prefix: figurines-lightsseeker-
+    count: 7
 
 - type: localizedDataset
   id: FigurinesLarry

@@ -31,6 +31,18 @@ figurines-bradbucket-8 = The spider goddess loves me!
 figurines-bradbucket-9 = SINGULOOSE!
 figurines-bradbucket-10 = Wait until I'm free from this figurine prison!
 
+figurines-brisband-1 = 
+figurines-brisband-2 = 
+figurines-brisband-3 = 
+figurines-brisband-4 = 
+figurines-brisband-5 = 
+
+figurines-brisbandbighat-1 = 
+figurines-brisbandbighat-2 = 
+figurines-brisbandbighat-3 = 
+figurines-brisbandbighat-4 = 
+figurines-brisbandbighat-5 = 
+
 figurines-cassiel-1 = M-mail for, um- oh uh, this is for-r someone els-se, um...
 figurines-cassiel-2 = S-sorry sorry sorry-
 figurines-cassiel-3 = Hel-llo, uh, what c-can I um, do for y-you?
@@ -42,6 +54,14 @@ figurines-cinnabar-2 = I sure hope nothing bad happens on the ATS... again.
 figurines-cinnabar-3 = Man the Syndicate SUCKS.
 figurines-cinnabar-4 = What can I do for you boss?
 figurines-cinnabar-5 = Man I'm so glad Nanotrasen hired me, they're the best!
+
+figurines-cooks-1 = Tritium leak? Hold on... I gotta stress smoke.
+figurines-cooks-2 = Plasma leak? Hold on... I gotta stress smoke.
+figurines-cooks-3 = You get a chembomb! and you get a chembomb!
+figurines-cooks-4 = Fun fact: Moths are highly flammable.
+figurines-cooks-5 = sup?
+figurines-cooks-6 = Who left all this fluice on the ground?
+figurines-cooks-7 = Yummy fluice!
 
 figurines-cory-1 = Ey!
 figurines-cory-2 = You're real to me.
@@ -162,6 +182,14 @@ figurines-light-2 = Wanna get lunch?
 figurines-light-3 = Buy ShadowBucks™ today!
 figurines-light-4 = Advanced Anomalous Research, for the gun.
 figurines-light-5 = Welcome to the Shadow Realm.
+
+figurines-lightsseeker-1 = Reak
+figurines-lightsseeker-2 = Vodjaha, p'lea'se.
+figurines-lightsseeker-3 = whhhouughh, whaat haappeeneed?
+figurines-lightsseeker-4 = What do you mean it's making only 50 points!
+figurines-lightsseeker-5 = Guh
+figurines-lightsseeker-6 = I am going to explode soon.
+figurines-lightsseeker-7 = Where's Cassiel
 
 figurines-larry-1 = Friendship is magic!
 figurines-larry-2 = Friend shaped!
