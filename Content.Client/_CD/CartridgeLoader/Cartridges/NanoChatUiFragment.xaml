@@ -76,7 +76,8 @@
                         StyleClasses="OpenBoth"
                         Margin="0 0 4 0"
                         ToolTip="{Loc nano-chat-list-number}"
-                        ToggleMode="True">
+                        ToggleMode="True"
+                        Disabled="True">
                     <TextureRect StyleClasses="ButtonSquare"
                                  TexturePath="/Textures/_CD/Interface/VerbIcons/hamburger_icon.svg.png"
                                  Stretch="KeepAspectCentered"

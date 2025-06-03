@@ -68,9 +68,10 @@ public sealed partial class NanoChatLookupView : PanelContainer
         };
         contactUi.NumberLabel  = new Label()
         {
-            Text = $"#{contact.Number:D4}",
+            Text = $"{contact.JobTitle} - #{contact.Number:D4}",
             HorizontalAlignment = HAlignment.Right,
             Margin = new Thickness(0, 0, 36, 0),
+            FontColorOverride = Color.LightGray,
         };
         contactUi.StartChatButton = new Button()
         {

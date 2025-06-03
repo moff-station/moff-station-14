@@ -528,12 +528,12 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
             contacts = [];
 
-            var query = AllEntityQuery<NanoChatCardComponent, IdCardComponent>();
+            var query = EntityQueryEnumerator<NanoChatCardComponent, IdCardComponent>();
             while (query.MoveNext(out var entityId, out var nanoChatCard, out var idCardComponent))
             {
-                if (nanoChatCard.ListNumber && nanoChatCard.Number is uint nanoChatNumber && idCardComponent.FullName is string fullName && _station.GetOwningStation(entityId) == station)
+                if (nanoChatCard is { ListNumber: true, Number: { } nanoChatNumber } && idCardComponent.FullName is { } fullName && _station.GetOwningStation(entityId) == station)
                 {
-                    contacts.Add(new NanoChatRecipient(nanoChatNumber, fullName));
+                    contacts.Add(new NanoChatRecipient(nanoChatNumber, fullName, idCardComponent.LocalizedJobTitle));
                 }
             }
             contacts.Sort((contactA, contactB) => string.CompareOrdinal(contactA.Name, contactB.Name));
