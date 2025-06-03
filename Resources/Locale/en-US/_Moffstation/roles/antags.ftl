@@ -9,8 +9,8 @@ roles-antag-pirate-crew-objective = Pillage, Plunder, and obey the Pirate Captai
 
 pirate-role-greeting =
     SHIVER ME TIMBERS!
-    YOU BE A PIRATE SENT TO ROB THEE STATION.
-    STEAL LOOT PILLAGE AND MAKE US ALL RICH.
+    YOU BE A PIRATE SENT TO ROB THE STATION.
+    STEAL, LOOT, PILLAGE, AND MAKE US ALL RICH.
 
 pirates-existing = [color=#a15608]Yarg! There be Pirates![/color]
 pirate-list-start = The Pirates were:
