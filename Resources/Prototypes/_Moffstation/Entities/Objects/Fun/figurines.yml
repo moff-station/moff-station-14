@@ -62,25 +62,25 @@
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineBrisband
+  id: ToyFigurineBrisbane
   name: local fisherman figurine
   description: <NEEDS DESCRIPTION>
   components:
   - type: Sprite
-    state: brisband
+    state: brisbane
   - type: SpeakOnTrigger
-    pack: FigurinesBrisband
+    pack: FigurinesBrisbane
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineBrisbandBigHat
+  id: ToyFigurineBrisbaneBigHat
   name: RARE big hatted fisherman figurine
   description: That is a whole lotta hat for a single figurine to handle.
   components:
   - type: Sprite
-    state: brisbandbighat
+    state: brisbanebighat
   - type: SpeakOnTrigger
-    pack: FigurinesBrisbandBigHat
+    pack: FigurinesBrisbaneBigHat
 
 - type: entity
   parent: BaseFigurineMoff

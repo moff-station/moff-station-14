@@ -31,17 +31,17 @@ figurines-bradbucket-8 = The spider goddess loves me!
 figurines-bradbucket-9 = SINGULOOSE!
 figurines-bradbucket-10 = Wait until I'm free from this figurine prison!
 
-figurines-brisband-1 = 
-figurines-brisband-2 = 
-figurines-brisband-3 = 
-figurines-brisband-4 = 
-figurines-brisband-5 = 
+figurines-brisbane-1 = 
+figurines-brisbane-2 = 
+figurines-brisbane-3 = 
+figurines-brisbane-4 = 
+figurines-brisbane-5 = 
 
-figurines-brisbandbighat-1 = 
-figurines-brisbandbighat-2 = 
-figurines-brisbandbighat-3 = 
-figurines-brisbandbighat-4 = 
-figurines-brisbandbighat-5 = 
+figurines-brisbanebighat-1 = 
+figurines-brisbanebighat-2 = 
+figurines-brisbanebighat-3 = 
+figurines-brisbanebighat-4 = 
+figurines-brisbanebighat-5 = 
 
 figurines-cassiel-1 = M-mail for, um- oh uh, this is for-r someone els-se, um...
 figurines-cassiel-2 = S-sorry sorry sorry-
