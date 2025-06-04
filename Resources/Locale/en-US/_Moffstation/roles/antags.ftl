@@ -21,3 +21,5 @@ pirates-title = Pirates
 pirates-description = The station has come under attack by a band of thieving pirates! Keep them from looting the station dry!
 
 comms-console-announcement-title-pirate = Space Pirate
+
+pirate-briefing = You're a pirate in dire need of some cash. Loot the station and sell its belongings to make as much money as you can.

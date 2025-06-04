@@ -250,9 +250,9 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types:
-            Slash: 10
+            Slash: 12
             Heat: 12
-            Structural: 15  # Moffstation - Lil e-sword buff
+            Structural: 20  # Moffstation - Lil e-sword buff
     deactivatedSecret: true
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite

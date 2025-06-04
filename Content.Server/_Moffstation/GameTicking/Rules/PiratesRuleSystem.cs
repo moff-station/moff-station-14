@@ -1,8 +1,10 @@
 using Content.Server._Moffstation.GameTicking.Rules.Components;
+using Content.Server._Moffstation.Roles;
 using Content.Server.Antag;
 using Content.Server.Cargo.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Roles;
 using Content.Server.Station;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Pirate.Components;
@@ -20,6 +22,8 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
         base.Initialize();
 
         SubscribeLocalEvent<PiratesRuleComponent, RuleLoadedGridsEvent>(OnRuleLoadedGrids);
+
+        SubscribeLocalEvent<PirateRoleComponent, GetBriefingEvent>(OnGetBriefing);
     }
     protected override void AppendRoundEndText(EntityUid uid,
         PiratesRuleComponent component,
@@ -35,6 +39,11 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
         {
             args.AddLine(Loc.GetString("pirate-list-name-user", ("name", name), ("user", sessionData.UserName)));
         }
+    }
+
+    private void OnGetBriefing(Entity<PirateRoleComponent> role, ref GetBriefingEvent args)
+    {
+        args.Append(Loc.GetString("pirate-briefing"));
     }
 
     private void OnRuleLoadedGrids(Entity<PiratesRuleComponent> ent, ref RuleLoadedGridsEvent args)
