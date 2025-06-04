@@ -4,8 +4,8 @@ meta:
   engineVersion: 255.1.0
   forkId: ""
   forkVersion: ""
-  time: 05/13/2025 02:23:31
-  entityCount: 8700
+  time: 05/25/2025 12:19:58
+  entityCount: 8701
 maps: []
 grids:
 - 1
@@ -46,7 +46,6 @@ entities:
     - type: MetaData
       name: Central Command
     - type: Transform
-      pos: 0.0,0.0
       parent: invalid
     - type: MapGrid
       chunks:
@@ -27421,7 +27420,7 @@ entities:
       pos: 50.5,57.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -38417.34
+      secondsUntilStateChange: -38451.17
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -43178,6 +43177,13 @@ entities:
     components:
     - type: Transform
       pos: 67.5,46.5
+      parent: 1
+- proto: RandomHumanoidSpawnerSyndicateContactMapping
+  entities:
+  - uid: 8701
+    components:
+    - type: Transform
+      pos: 49.5,20.5
       parent: 1
 - proto: RandomPosterLegit
   entities:
