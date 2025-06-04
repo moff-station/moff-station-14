@@ -1,0 +1,245 @@
+# Use the CratePirateChestSecure and CratePirate for pirate themed stuff, and CratePiratePrivateSecure for modern stuff (and CratePirateDavyJones for really cool stuff)
+
+- type: entity
+  id: CratePirateECutlass
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: energy cutlass crate
+  description: Contains two top of the line e-cutlasses, fresh from the ship
+  components:
+  - type: StorageFill
+    contents:
+    - id: EnergyCutlass
+      amount: 2
+
+- type: entity
+  id: CratePirateWebvest
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: webvest crate
+  description: Contains two military-grade web vests
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterVestWeb
+      amount: 2
+
+- type: entity
+  id: CratePirateAk
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: AKMS crate
+  description: Contains two AKs and ammo to operate them
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleAk
+      amount: 2
+    - id: MagazineLightRifle
+      amount: 4
+
+- type: entity
+  id: CratePirateRifleAmmo
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: rifle ammo crate
+  description: Contains a stockpile of standard .30 rifle ammo
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineBoxLightRifle
+      amount: 2
+    - id: MagazineLightRifle
+      amount: 4
+
+- type: entity
+  id: CratePirateBlunderbuss
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: blunderbuss crate
+  description: Contains two pirate blunderbusses, the flagship pirate weapon
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunBlunderbuss
+      amount: 2
+    - id: BoxLethalshot
+      amount: 2
+
+- type: entity
+  id: CratePirateCannonBall
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: cannonball crate
+  description: Contains three standard cannonballs
+  components:
+  - type: StorageFill
+    contents:
+    - id: CannonBall
+      amount: 3
+
+- type: entity
+  id: CratePirateGlassshot
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: glassshot crate
+  description: Contains three rounds of glassshot
+  components:
+  - type: StorageFill
+    contents:
+    - id: CannonBallGlassshot
+      amount: 3
+
+- type: entity
+  id: CratePirateGrapeshot
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: grapeshot crate
+  description: Contains three rounds of grapeshot
+  components:
+  - type: StorageFill
+    contents:
+    - id: CannonBallGrapeshot
+      amount: 3
+
+- type: entity
+  id: CratePirateSpareEVA
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: deepspace EVA crate
+  description: Contains two deepspace EVA suits, and some air tanks to go with them.
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitPirateEVA
+      amount: 2
+    - id: OxygenTankFilled
+      amount: 2
+    - id: NitrogenTankFilled
+      amount: 2
+
+- type: entity
+  id: CratePirateAdvancedMedkit
+  parent: [ CratePirate, BaseSecurityContraband ]
+  name: advanced medkit crate
+  description: Contains an advanced medical kit
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedkitAdvancedFilled
+      amount: 1
+
+- type: entity
+  id: CratePirateCombatMedkit
+  parent: [ CratePirate, BaseSecurityContraband ]
+  name: combat medkit crate
+  description: Contains a combat medical kit
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedkitCombatFilled
+      amount: 1
+
+- type: entity
+  id: CratePirateKidnap
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: kidnapping supplies crate
+  description: Comes with everything you need to keep someone locked away!
+  components:
+  - type: StorageFill
+    contents:
+    - id: Handcuffs
+      amount: 3
+    - id: ClothingMaskMuzzle
+      amount: 1
+    - id: ClothingUniformJumpsuitPrisoner
+      amount: 2
+
+- type: entity
+  id: CratePirateHandcannon
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: handcannon crate
+  description: Contains a pirate handcannon and two standard cannonballs. the landlubbers will not like this one.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLauncherPirateCannon
+      amount: 1
+    - id: CannonBall
+      amount: 2
+
+- type: entity
+  id: CratePirateCutlass
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: cutlass crate
+  description: Contains two pirate cutlasses. For scallywags who prefer the old fashioned way.
+  components:
+  - type: StorageFill
+    contents:
+    - id: Cutlass
+      amount: 3
+
+- type: entity
+  id: CratePirateFlintlock
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: flintlock crate
+  description: Contains two flintlock pistols, and the ammo to operate them. For scallywags who prefer the old fashioned way.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolFlintlock
+      amount: 2
+    - id: MagazineBoxMagnum
+      amount: 2
+
+- type: entity
+  id: CratePirateRevolver
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: pirate revolver crate
+  description: Contains 2 Pirate revolvers, 2 speed loaders, and the ammo to operate them.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRevolverPirate
+      amount: 2
+    - id: SpeedLoaderMagnum
+      amount: 2
+    - id: MagazineBoxMagnum
+      amount: 2
+
+- type: entity
+  id: CratePirateSpeedloader
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: speedloader crate
+  description: Contains 2 speed loaders, in case you lost the original ones we sent you.
+  components:
+  - type: StorageFill
+    contents:
+    - id: SpeedLoaderMagnum
+      amount: 2
+
+- type: entity
+  id: CratePirateMakeshiftLaser
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: makeshift laser pistol crate
+  description: Contains two makeshift laser pistols, no warranty included.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponMakeshiftLaser
+      amount: 2
+
+- type: entity
+  id: CratePirateShotgunAmmo
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: shotgun ammo crate
+  description: contains 3 appraisal tools. good for calculating the value of (stolen) goods.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MagazineShotgun
+      amount: 4
+    - id: BoxLethalshot
+      amount: 2
+
+- type: entity
+  id: CratePirateAppraisalTool
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: appraisal tool crate
+  description: Contains a stockpile of standard .50 shotgun ammo
+  components:
+  - type: StorageFill
+    contents:
+    - id: AppraisalTool
+      amount: 3
