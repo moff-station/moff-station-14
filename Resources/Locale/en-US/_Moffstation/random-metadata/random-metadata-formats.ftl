@@ -1,2 +1,2 @@
 # Pirate names
-name-format-pirate-captain = Captain {$part0}beard
+name-format-pirate-captain = Captain {CAPITALIZE($part0)}beard

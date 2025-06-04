@@ -568,29 +568,14 @@
   suffix: Pirate
   description: A special hardsuit helmet, made for the captain of a pirate ship.
   components:
+  # Moffstation - Start - Pirate changes
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/piratecaptainhelm.rsi
-  - type: ToggleableLightVisuals
-    clothingVisuals:
-      head:
-      - state: equipped-HELMET-light
-        shader: unshaded
-      head-vox:
-      - state: equipped-HELMET-light-vox
-        shader: unshaded
+    sprite: _Moffstation/Clothing/Head/Hardsuits/piratecaptain.rsi
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/piratecaptainhelm.rsi
-    clothingVisuals:
-      head:
-      - state: equipped-HELMET
-      - state: equipped-HELMET-unshaded
-        shader: unshaded
-      head-vox:
-      - state: equipped-HELMET-vox
-      - state: equipped-HELMET-unshaded-vox
-        shader: unshaded
+    sprite: _Moffstation/Clothing/Head/Hardsuits/piratecaptain.rsi
   - type: PointLight # Color matches visor colors, radius/energy same as mining hardsuit for the big captain.
-    color: "#f3ea9c"
+    color: "#23f0b2"
+  # Moffstation - End
     radius: 7
     energy: 3
   - type: PressureProtection

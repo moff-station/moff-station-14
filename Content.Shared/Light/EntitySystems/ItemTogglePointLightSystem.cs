@@ -25,7 +25,7 @@ public sealed class ItemTogglePointLightSystem : EntitySystem
         if (!_light.TryGetLight(ent.Owner, out var light))
             return;
 
-        // Moffstation - Handled by ToggleableLightVisualsSystem // _appearance.SetData(ent, ToggleableLightVisuals.Enabled, args.Activated);
+        _appearance.SetData(ent, ToggleableLightVisuals.Enabled, args.Activated);
         _light.SetEnabled(ent.Owner, args.Activated, comp: light);
         if (TryComp<HandheldLightComponent>(ent.Owner, out var handheldLight))
         {
