@@ -3,6 +3,9 @@
   name: CentComm executive
   id: RandomHumanoidSpawnerCentcomExecutive
   components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcomexec
   - type: RandomHumanoidSpawner
     settings: CentcomExecutive
 
@@ -19,6 +22,9 @@
   name: CentComm officer
   id: RandomHumanoidSpawnerCentcomOfficer
   components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcomofficer
   - type: RandomHumanoidSpawner
     settings: CentcomOfficer
 
@@ -35,8 +41,11 @@
   name: CentComm representative
   id: RandomHumanoidSpawnerCentcomRepresentative
   components:
-    - type: RandomHumanoidSpawner
-      settings: CentcomRepresentative
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcomrep
+  - type: RandomHumanoidSpawner
+    settings: CentcomRepresentative
 
 - type: randomHumanoidSettings
   parent: CentcomOfficial
