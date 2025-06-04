@@ -69,6 +69,10 @@
       - state: inhand-right-blade
         shader: unshaded
   - type: Reflect
+    # Moffstation - Begin (No Bullet Reflection)
+    reflects:
+    - Energy
+    # Moffstation - End
   - type: IgnitionSource
     temperature: 700
 
