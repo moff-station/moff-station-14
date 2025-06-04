@@ -218,3 +218,13 @@
   cost: 1000
   category: cargoproduct-category-name-armory
   group: pirateMarket
+
+- type: cargoProduct
+  id: PirateDavyJonesLocker
+  icon:
+    sprite: _Moffstation/Structures/Storage/Crates/davyjoneschest.rsi
+    state: crate_icon
+  product: CratePirateDavyJones
+  cost: 100
+  category: cargoproduct-category-name-armory
+  group: pirateMarket

@@ -205,16 +205,3 @@
     whitelist:
       components:
       - TelecomServer
-
-- type: cargoBounty
-  id: PirateBountyScrap
-  reward: 4500
-  description: bounty-description-telecom
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-telecom
-    amount: 1
-    whitelist:
-      components:
-      - TelecomServer
