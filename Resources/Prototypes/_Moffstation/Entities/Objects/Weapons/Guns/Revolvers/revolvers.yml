@@ -16,8 +16,8 @@
   - type: RevolverAmmoProvider
     whitelist:
       tags:
-        - CartridgeBigIron
-        - SpeedLoaderBigIron
+      - CartridgeBigIron
+      - SpeedLoaderBigIron
     proto: CartridgeBigIronLethal
     capacity: 6
     chambers: [ True, True, True, True, True, True ]
