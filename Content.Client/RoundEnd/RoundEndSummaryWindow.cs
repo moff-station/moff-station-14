@@ -111,7 +111,7 @@ namespace Content.Client.RoundEnd
                 UpdateRoundEndTextForSearch(roundEndLabel, roundEnd, "");
                 roundEndSummaryContainer.AddChild(roundEndLabel);
 
-                searchInput.OnTextChanged += (args) =>
+                searchInput.OnTextChanged += args =>
                 {
                     var isSearchDone = UpdateRoundEndTextForSearch(roundEndLabel, roundEnd, args.Text);
                     // the return value is only interesting for us to know if the two labels should be visible or not
@@ -141,11 +141,11 @@ namespace Content.Client.RoundEnd
             // In the player manifest it's fine to split by every line but
             // in the round end summary it's better to give context to the search term
             // so we split by double newlines to provide the whole paragraph of text
-            var blocks = fullText.Split(new[] { "\n\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var blocks = fullText.Split(["\n\n"], StringSplitOptions.RemoveEmptyEntries);
 
             // Filter blocks that contain the search term
             var matchingBlocks = blocks.Where(block =>
-                block.ToLowerInvariant().Contains(searchTerm.ToLowerInvariant()));
+                block.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase));
 
             // Join matching blocks back together
             var filteredText = string.Join("\n\n", matchingBlocks);
@@ -181,24 +181,24 @@ namespace Content.Client.RoundEnd
                 Orientation = LayoutOrientation.Horizontal,
                 Margin = new Thickness(10, 10, 10, 5),
                 VerticalExpand = false,
-                HorizontalExpand = true
+                HorizontalExpand = true,
             };
 
             var searchLabel = new Label
             {
                 Text = Loc.GetString("round-end-summary-window-search-label"),
                 MinSize = new Vector2(80, 0),
-                VerticalAlignment = VAlignment.Center
+                VerticalAlignment = VAlignment.Center,
             };
 
             var searchInput = new LineEdit
             {
                 PlaceHolder = Loc.GetString("round-end-summary-window-search-placeholder"),
                 HorizontalExpand = true,
-                MinHeight = 30
+                MinHeight = 30,
             };
 
-            searchInput.OnTextChanged += (args) => OnSearchTextChanged(args, playerInfoContainer, playersInfo);
+            searchInput.OnTextChanged += args => OnSearchTextChanged(args, playerInfoContainer, playersInfo);
 
             searchContainer.AddChild(searchLabel);
             searchContainer.AddChild(searchInput);
@@ -276,7 +276,7 @@ namespace Content.Client.RoundEnd
             // Empty the result box when we star typing
             playerInfoContainer.RemoveAllChildren();
 
-            string newText = searchTerm.Text;
+            var newText = searchTerm.Text;
             if (string.IsNullOrWhiteSpace(newText))
             {
                 // If search is empty, show all text and all players
@@ -287,10 +287,11 @@ namespace Content.Client.RoundEnd
             // Filter the player list based on search term
             // Searches: Player OOC Name, Player IC Name, and Player Role
             var filteredPlayersInfo = playersInfo.Where(player =>
-                player.PlayerOOCName.ToLowerInvariant().Contains(newText.ToLowerInvariant()) ||
-                (player.PlayerICName != null && player.PlayerICName.ToLowerInvariant().Contains(newText.ToLowerInvariant())) ||
-                Loc.GetString(player.Role).ToLowerInvariant().Contains(newText.ToLowerInvariant())
-            ).ToArray();
+                player.PlayerOOCName.Contains(newText, StringComparison.InvariantCultureIgnoreCase) ||
+                (player.PlayerICName != null && player.PlayerICName.Contains(newText, StringComparison.InvariantCultureIgnoreCase)) ||
+                Loc.GetString(player.Role).Contains(newText, StringComparison.InvariantCultureIgnoreCase)
+            )
+            .ToArray();
 
             // Populate the player list with filtered results
             PopulatePlayerManifestList(playerInfoContainer, filteredPlayersInfo);
