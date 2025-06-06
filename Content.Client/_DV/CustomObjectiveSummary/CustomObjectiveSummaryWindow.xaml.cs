@@ -15,7 +15,7 @@ public sealed partial class CustomObjectiveSummaryWindow : FancyWindow
 
     private SharedMindSystem? _mind;
 
-    private readonly int _maxLength = 1000;
+    private readonly int _maxLength = 512;
 
     public event Action<string>? OnSubmitted;
 
