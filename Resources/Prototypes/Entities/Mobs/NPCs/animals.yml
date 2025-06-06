@@ -2513,8 +2513,10 @@
     rules: ghost-role-information-giant-spider-rules
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
-    raffle:
-      settings: short
+    # Moffstation - Begin (No Raffle for Minor Ghostroles)
+    #raffle:
+    #  settings: short
+    # Moffstation - End
   - type: GhostTakeoverAvailable
 
 - type: entity

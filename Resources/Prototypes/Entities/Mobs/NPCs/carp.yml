@@ -172,8 +172,10 @@
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
       - MindRoleGhostRoleTeamAntagonistFlock
-      raffle:
-        settings: short
+      # Moffstation - Begin (No Raffle for Minor Ghostroles)
+      #raffle:
+      #  settings: short
+      # Moffstation - End
     - type: GhostTakeoverAvailable
     - type: HTN
       rootTask:

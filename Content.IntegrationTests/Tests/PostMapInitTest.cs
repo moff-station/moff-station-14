@@ -93,8 +93,8 @@ namespace Content.IntegrationTests.Tests
             "Convex",
             "Relic",
             "dm01-entryway",
-            "Waterjug"
-
+            "Waterjug",
+            "Tram2",
         };
 
         /// <summary>

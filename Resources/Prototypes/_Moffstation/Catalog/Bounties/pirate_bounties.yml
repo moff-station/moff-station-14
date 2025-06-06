@@ -84,7 +84,10 @@
     whitelist:
       components:
       - ParticleAcceleratorControlBox
-      - ParticleAcceleratorPart
+      - ParticleAcceleratorEmitter
+      - ParticleAcceleratorFuelChamber
+      - ParticleAcceleratorPowerBox
+      - ParticleAcceleratorEndCap
 
 - type: cargoBounty
   id: PirateBountyAmeFuel

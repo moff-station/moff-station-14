@@ -36,7 +36,7 @@
 # Magazines
 - type: entity
   id: MagazineLightRifleBox
-  name: "L6 SAW magazine box (.30 rifle)"
+  name: "L6 SAW ammo belt (.30 rifle)" # Moffstation - (Better L6 Belts)
   parent: BaseMagazineLightRifle
   description: Box containing a 100-round belt of linked .30 rifle rounds, used by light machine guns such as the L6. Intended to hold general-purpose kinetic ammunition.
   components:
@@ -47,8 +47,10 @@
     proto: CartridgeLightRifle
     capacity: 100
   - type: Item
+  # Moffstation - Begin (Better L6 Belts)
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_box.rsi
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/pk_box.rsi
+  # Moffstation - End
   - type: MagazineVisuals
     magState: mag
     steps: 8
