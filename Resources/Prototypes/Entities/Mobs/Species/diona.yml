@@ -5,6 +5,9 @@
   id: BaseMobDiona
   abstract: true
   components:
+  - type: Tag
+    tags:
+    - Diona
   - type: HumanoidAppearance
     species: Diona
   - type: Hunger
