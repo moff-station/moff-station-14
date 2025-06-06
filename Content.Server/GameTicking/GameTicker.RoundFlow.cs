@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Text;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -998,18 +999,35 @@ namespace Content.Server.GameTicking
         // Moffstation - Start - Added line wrapping for end of round screen
         public void AddLineWrapping(string text, int linewidth = 50, char separator = ' ')
         {
+            AddLine(WrapString(text, linewidth, separator));
+        }
+
+        public string WrapString(string text, int linewidth = 50, char separator = ' ')
+        {
+            var wholeString = new StringBuilder();
             var words = text.Split(separator);
             var line = "";
             foreach (var word in words)
             {
                 line += word + separator;
+
+                // If there's a linebreak within the word, reset the line
+                if (word.Contains("\n"))
+                {
+                    wholeString.Append(line);
+                    line = "";
+                    continue;
+                }
+
+                // Otherwise, check if the length has been met
                 if (line.Length > linewidth)
                 {
-                    AddLine(line);
+                    wholeString.AppendLine(line);
                     line = "";
                 }
             }
-            AddLine(line);
+            wholeString.AppendLine(line);
+            return wholeString.ToString();
         }
         // Moffstation - End - Added line wrapping for end of round screen
     }

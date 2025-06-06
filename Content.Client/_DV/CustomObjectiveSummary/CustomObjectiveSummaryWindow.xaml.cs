@@ -15,7 +15,7 @@ public sealed partial class CustomObjectiveSummaryWindow : FancyWindow
 
     private SharedMindSystem? _mind;
 
-    private readonly int _maxLength = 256;
+    private readonly int _maxLength = 1000;
 
     public event Action<string>? OnSubmitted;
 
@@ -42,7 +42,7 @@ public sealed partial class CustomObjectiveSummaryWindow : FancyWindow
 
     private void UpdateWordCount()
     {
-        // Disable the button if its over the max length.sa
+        // Disable the button if its over the max length.
         SubmitButton.Disabled = ObjectiveSummaryTextEdit.TextLength > _maxLength;
         CharacterLimitLabel.Text = ObjectiveSummaryTextEdit.TextLength + "/" + _maxLength;
     }

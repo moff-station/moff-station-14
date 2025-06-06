@@ -121,14 +121,14 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                 // add space between the start text and player list
                 result.AppendLine();
 
-                AddSummary(result, agent, minds);
+                AddSummary(result, agent, minds, ev);   // Moffstation - Custom objective summary
             }
 
             ev.AddLine(result.AppendLine().ToString());
         }
     }
 
-    private void AddSummary(StringBuilder result, string agent, List<(EntityUid, string)> minds)
+    private void AddSummary(StringBuilder result, string agent, List<(EntityUid, string)> minds, RoundEndTextAppendEvent ev) // Moffstation - custom objective summary
     {
         var agentSummaries = new List<(string summary, float successRate, int completedObjectives)>();
 
@@ -211,28 +211,13 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             }
 
             var successRate = totalObjectives > 0 ? (float) completedObjectives / totalObjectives : 0f;
-            // Begin DeltaV Additions - custom objective response.
-            if (TryComp<CustomObjectiveSummaryComponent>(mindId, out var customComp))
+            // Moffstation - Start - Pinktexting
+            if (TryComp<CustomObjectiveSummaryComponent>(mindId, out var customComp) && customComp.ObjectiveSummary != "")
             {
-                // We have to spit it like this to make it readable. Yeah, it sucks but for some reason the entire thing
-                // is just one long string...
-                var words = customComp.ObjectiveSummary.Split(" ");
-                var currentLine = "";
-                foreach (var word in words)
-                {
-                    currentLine += word + " ";
-
-                    // magic number
-                    if (currentLine.Length <= 50)
-                        continue;
-
-                    agentSummary.AppendLine(Loc.GetString("custom-objective-format", ("line", currentLine)));
-                    currentLine = "";
-                }
-
-                agentSummary.AppendLine(Loc.GetString("custom-objective-format", ("line", currentLine)));
+                var customObjective = Loc.GetString("custom-objective-format", ("line", ev.WrapString(customComp.ObjectiveSummary)));
+                agentSummary.AppendLine(customObjective);
             }
-            // DeltaV end - custom objective response
+            // Moffstation - End
             agentSummaries.Add((agentSummary.ToString(), successRate, completedObjectives));
         }
 
