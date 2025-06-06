@@ -48,7 +48,7 @@ public sealed class BodyPrototypeSerializer : ITypeReader<BodyPrototype, Mapping
                 
                 if (organ.Value == "null" || organ.Value == null)
                     continue;
-
+                
                 if (!prototypes.TryIndex(organ.Value, out EntityPrototype? organPrototype))
                 {
                     nodes.Add(new ErrorNode(value, $"No organ entity prototype found with id {organ.Value}"));
