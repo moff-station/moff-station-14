@@ -32,7 +32,9 @@ construction-graph-tag-sun-glasses = sun glasses
 construction-graph-tag-security-helmet = security helmet
 
 # materials
-construction-graph-tag-capacitor = capacitor #moffstation - Revert machine parts
+#moffstation - Revert machine parts - Start
+construction-graph-tag-capacitor = capacitor
+#moffstation - Revert machine parts - End
 construction-graph-tag-voice-trigger = a voice trigger
 construction-graph-tag-signal-trigger = a signal trigger
 construction-graph-tag-proximity-sensor = proximity sensor
