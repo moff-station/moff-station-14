@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._Starlight.UserInterface.Controls;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
@@ -26,7 +27,8 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 namespace Content.Client.UserInterface.Systems.Character;
 
 [UsedImplicitly]
-public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>
+public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
+    IOnSystemChanged<CharacterInfoSystem>
 {
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
@@ -43,7 +45,9 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
     }
 
     private CharacterWindow? _window;
-    private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
+
+    private MenuButton? CharacterButton =>
+        UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
 
     public void OnStateEntered(GameplayState state)
     {
@@ -182,24 +186,13 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
 
-        if (minds != null && minds.Count > 0)
+        if (minds is { Count: > 0 })
         {
             var mindsControl = new CharacterMindsControl
             {
-                Orientation = BoxContainer.LayoutOrientation.Vertical
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
             };
-            var mindDescriptionMessage = new FormattedMessage();
-            mindDescriptionMessage.AddText("Available collective minds:");
-            foreach (var mindPrototype in minds)
-            {
-                mindDescriptionMessage.AddText("\n");
-                mindDescriptionMessage.PushColor(mindPrototype.Key.Color);
-                mindDescriptionMessage.AddText($"{mindPrototype.Key.LocalizedName}: +{mindPrototype.Key.KeyCode}");
-                mindDescriptionMessage.AddText($" (Number {mindPrototype.Value.MindId})");
-                mindDescriptionMessage.Pop();
-
-            }
-            mindsControl.Description.SetMessage(mindDescriptionMessage);
+            mindsControl.SetMinds(minds);
             _window.Objectives.AddChild(mindsControl);
         }
 
@@ -240,7 +233,8 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
 
         if (!_prototypeManager.TryIndex(mind.RoleType, out var proto))
-            Log.Error($"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
+            Log.Error(
+                $"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
 
         _window.RoleType.Text = Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name");
         _window.RoleType.FontColorOverride = proto?.Color ?? Color.White;
