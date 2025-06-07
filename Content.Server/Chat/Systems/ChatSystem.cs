@@ -250,7 +250,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (desiredType == InGameICChatType.CollectiveMind)
         {
-            if (TryProccessCollectiveMindMessage(source, message, out var modMessage, out var channel))
+            if (TryProcessCollectiveMindMessage(source, message, out var modMessage, out var channel))
             {
                 SendCollectiveMindChat(source, modMessage, channel);
                 return;
@@ -424,7 +424,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     private void SendCollectiveMindChat(EntityUid source, string message, CollectiveMindPrototype? collectiveMind)
     {
-        if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourseCollectiveMindComp) || !sourseCollectiveMindComp.Minds.ContainsKey(collectiveMind.ID))
+        if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourceCollectiveMindComp) || !sourceCollectiveMindComp.Minds.ContainsKey(collectiveMind.ID))
             return;
 
         var clients = Filter.Empty();
@@ -440,23 +440,20 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
         }
 
-        var Number = $"{sourseCollectiveMindComp.Minds[collectiveMind.ID]}";
+        var number = $"{sourceCollectiveMindComp.Minds[collectiveMind.ID]}";
 
         var admins = _adminManager.ActiveAdmins
             .Select(p => p.Channel);
-        string messageWrap;
-        string adminMessageWrap;
 
-        messageWrap = Loc.GetString("collective-mind-chat-wrap-message",
+        var messageWrap = Loc.GetString("collective-mind-chat-wrap-message",
             ("message", message),
             ("channel", collectiveMind.LocalizedName),
-            ("number", Number));
-
-        adminMessageWrap = Loc.GetString("collective-mind-chat-wrap-message-admin",
+            ("number", number));
+        var adminMessageWrap = Loc.GetString("collective-mind-chat-wrap-message-admin",
             ("source", source),
             ("message", message),
             ("channel", collectiveMind.LocalizedName),
-            ("number", Number));
+            ("number", number));
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"CollectiveMind chat from {ToPrettyString(source):Player}: {message}");
 
@@ -1042,7 +1039,7 @@ public enum InGameICChatType : byte
     Speak,
     Emote,
     Whisper,
-    CollectiveMind
+    CollectiveMind,
 }
 
 /// <summary>

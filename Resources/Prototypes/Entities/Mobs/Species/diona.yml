@@ -5,9 +5,6 @@
   id: BaseMobDiona
   abstract: true
   components:
-  - type: Tag
-    tags:
-    - Diona
   - type: HumanoidAppearance
     species: Diona
   - type: Hunger
@@ -116,6 +113,13 @@
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
   - type: Rootable
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - AnomalyHost
+    - Diona
 
 - type: entity
   parent: BaseSpeciesDummy

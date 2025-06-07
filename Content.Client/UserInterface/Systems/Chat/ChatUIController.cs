@@ -88,7 +88,7 @@ public sealed partial class ChatUIController : UIController
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
         {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead},
-        {SharedChatSystem.CollectiveMindPrefix, ChatSelectChannel.CollectiveMind}
+        {SharedChatSystem.CollectiveMindPrefix, ChatSelectChannel.CollectiveMind},
     };
 
     public static readonly Dictionary<ChatSelectChannel, char> ChannelPrefixes = new()
@@ -102,7 +102,7 @@ public sealed partial class ChatUIController : UIController
         {ChatSelectChannel.Admin, SharedChatSystem.AdminPrefix},
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
         {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
-        {ChatSelectChannel.CollectiveMind, SharedChatSystem.CollectiveMindPrefix}
+        {ChatSelectChannel.CollectiveMind, SharedChatSystem.CollectiveMindPrefix},
     };
 
     /// <summary>
@@ -573,7 +573,7 @@ public sealed partial class ChatUIController : UIController
             CanSendChannels |= ChatSelectChannel.Admin;
         }
 
-        // collective mind
+        // Only entities with CollectiveMind can send / see collectivemind chat
         if (_collectiveMind != null && _collectiveMind.IsCollectiveMind)
         {
             FilterableChannels |= ChatChannel.CollectiveMind;
@@ -714,7 +714,7 @@ public sealed partial class ChatUIController : UIController
         collectiveMind = null;
         return _player.LocalEntity is { Valid: true } uid
                && _chatSys != null
-               && _chatSys.TryProccessCollectiveMindMessage(uid, text, out _, out collectiveMind, quiet: true);
+               && _chatSys.TryProcessCollectiveMindMessage(uid, text, out _, out collectiveMind, quiet: true);
     }
 
     public void UpdateSelectedChannel(ChatBox box)

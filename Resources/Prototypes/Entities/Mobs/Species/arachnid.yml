@@ -5,9 +5,6 @@
   id: BaseMobArachnid
   abstract: true
   components:
-  - type: Tag
-    tags:
-    - Arachnid
   - type: Body
     prototype: Arachnid
     requiredLegs: 2 # It would be funny if arachnids could use their little back limbs to move around once they lose their legs, but just something to consider post-woundmed
@@ -115,6 +112,14 @@
   - type: Inventory
     templateId: arachnid
     speciesId: arachnid
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - SpiderCraft
+    - AnomalyHost
+    - Arachnid
 
 
 - type: entity

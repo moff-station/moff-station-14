@@ -69,7 +69,6 @@ public abstract class SharedChatSystem : EntitySystem
 
     private void CacheCollectiveMinds()
     {
-        _prototypeManager.PrototypesReloaded -= OnPrototypeReload;
         _mindKeyCodes = _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
     }
@@ -191,7 +190,7 @@ public abstract class SharedChatSystem : EntitySystem
         return true;
     }
 
-    public bool TryProccessCollectiveMindMessage(
+    public bool TryProcessCollectiveMindMessage(
         EntityUid source,
         string input,
         out string output,
