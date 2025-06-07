@@ -114,6 +114,7 @@
     state: cooks
   - type: SpeakOnTrigger
     pack: FigurinesCooks
+  - type: LizardAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -191,6 +192,17 @@
     state: eclipse
   - type: SpeakOnTrigger
     pack: FigurinesEclipse
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineFaces
+  name: Concerningly Cheerful Research Director
+  description: A figurine depicting a researcher director with somewhat unsettling amounts of positivity.
+  components:
+  - type: Sprite
+    state: faces
+  - type: SpeakOnTrigger
+    pack: FigurinesFaces
 
 - type: entity
   parent: BaseFigurineMoff
