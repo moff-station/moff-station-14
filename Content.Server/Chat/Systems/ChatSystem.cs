@@ -184,7 +184,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
 
         if (TryComp<CollectiveMindComponent>(source, out var collective))
-            _collectiveMind.UpdateCollectiveMind(source, collective);
+            _collectiveMind.UpdateCollectiveMind((source, collective));
 
         if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
             return;
