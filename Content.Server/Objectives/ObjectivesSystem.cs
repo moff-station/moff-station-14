@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using Content.Server.Objectives.Commands;
 using Content.Shared.CCVar;
+using Content.Shared._DV.CustomObjectiveSummary; // DeltaV
 using Content.Shared.Prototypes;
 using Content.Shared.Roles.Jobs;
 using Robust.Server.Player;
@@ -120,14 +121,14 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                 // add space between the start text and player list
                 result.AppendLine();
 
-                AddSummary(result, agent, minds);
+                AddSummary(result, agent, minds, ev);   // Moffstation - Custom objective summary
             }
 
             ev.AddLine(result.AppendLine().ToString());
         }
     }
 
-    private void AddSummary(StringBuilder result, string agent, List<(EntityUid, string)> minds)
+    private void AddSummary(StringBuilder result, string agent, List<(EntityUid, string)> minds, RoundEndTextAppendEvent ev) // Moffstation - custom objective summary
     {
         var agentSummaries = new List<(string summary, float successRate, int completedObjectives)>();
 
@@ -210,6 +211,13 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             }
 
             var successRate = totalObjectives > 0 ? (float) completedObjectives / totalObjectives : 0f;
+            // Moffstation - Start - Pinktexting
+            if (TryComp<CustomObjectiveSummaryComponent>(mindId, out var customComp) && customComp.ObjectiveSummary != "")
+            {
+                var customObjective = Loc.GetString("custom-objective-format", ("line", ev.WrapString(customComp.ObjectiveSummary)));
+                agentSummary.AppendLine(customObjective);
+            }
+            // Moffstation - End
             agentSummaries.Add((agentSummary.ToString(), successRate, completedObjectives));
         }
 
