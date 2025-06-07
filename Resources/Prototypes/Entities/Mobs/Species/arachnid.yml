@@ -17,6 +17,14 @@
     productionLength: 2
     entityProduced: MaterialWebSilk1
     hungerCost: 4 # Should total to 25 total silk on full hunger
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - SpiderCraft
+    - AnomalyHost
+    - Arachnid
   - type: Butcherable
     butcheringType: Spike
     spawned:
@@ -112,14 +120,6 @@
   - type: Inventory
     templateId: arachnid
     speciesId: arachnid
-  - type: Tag
-    tags:
-    - CanPilot
-    - FootstepSound
-    - DoorBumpOpener
-    - SpiderCraft
-    - AnomalyHost
-    - Arachnid
 
 
 - type: entity

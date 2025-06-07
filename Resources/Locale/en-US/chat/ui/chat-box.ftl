@@ -29,7 +29,6 @@ hud-chatbox-channel-OOC = OOC
 hud-chatbox-channel-Radio = Radio
 hud-chatbox-channel-Notifications = Notifications
 hud-chatbox-channel-Server = Server
-hud-chatbox-channel-CollectiveMind = Collective Mind
 hud-chatbox-channel-Visual = Actions
 hud-chatbox-channel-Damage = Damage
 hud-chatbox-channel-Unspecified = Unspecified

@@ -1,8 +1,8 @@
-﻿using Content.Shared.CharacterInfo;
+﻿using Content.Shared._Starlight.CollectiveMind;
+using Content.Shared.CharacterInfo;
 using Content.Shared.Objectives;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
-using Content.Shared.CollectiveMind;
 
 namespace Content.Client.CharacterInfo;
 

@@ -1,7 +1,7 @@
 using Content.Client.Chat.Managers;
-using Content.Shared.CollectiveMind;
+using Content.Shared._Starlight.CollectiveMind;
 
-namespace Content.Client.Chat;
+namespace Content.Client._Starlight.Chat;
 
 public sealed class CollectiveMindSystem : EntitySystem
 {

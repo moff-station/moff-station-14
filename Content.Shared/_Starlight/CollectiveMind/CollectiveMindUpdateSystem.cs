@@ -1,27 +1,20 @@
-using Content.Shared.CollectiveMind;
+using Content.Shared.GameTicking;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
-using Robust.Shared.GameObjects;
-using Content.Shared.GameTicking;
-using Robust.Shared.Utility;
 
-namespace Content.Shared.CollectiveMind;
+namespace Content.Shared._Starlight.CollectiveMind;
 
 public sealed class CollectiveMindUpdateSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IComponentFactory _factory = default!;
-    private ISawmill _sawmill = default!;
 
-    private static Dictionary<CollectiveMindPrototype, int> _globalMindIDTracker = new();
+    private static readonly Dictionary<CollectiveMindPrototype, int> GlobalMindIdTracker = new();
 
     public override void Initialize()
     {
         base.Initialize();
-        _sawmill = _logManager.GetSawmill("CollectiveMindUpdateSystem");
 
         SubscribeLocalEvent<CollectiveMindComponent, ComponentStartup>(OnCollectiveMindInit);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
@@ -32,9 +25,9 @@ public sealed class CollectiveMindUpdateSystem : EntitySystem
         UpdateCollectiveMind(uid, component);
     }
 
-    private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
+    private static void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
-        _globalMindIDTracker.Clear();
+        GlobalMindIdTracker.Clear();
     }
 
     public void ForceCloneFrom(EntityUid sourceuid, EntityUid targetuid)
@@ -66,25 +59,23 @@ public sealed class CollectiveMindUpdateSystem : EntitySystem
 
             var components = StringsToRegs(prototype.RequiredComponents);
 
-            bool meetsRequirements = false;
+            var meetsRequirements = false;
 
             foreach (var component in components)
             {
-                bool hasComponent = EntityManager.HasComponent(uid, component);
-
-                if (hasComponent)
+                if (HasComp(uid, component.Type))
                 {
                     meetsRequirements = true;
+                    break;
                 }
             }
 
             foreach (var tag in prototype.RequiredTags)
             {
-                bool hasTag = _tag.HasTag(uid, tag);
-
-                if (hasTag)
+                if (_tag.HasTag(uid, tag))
                 {
                     meetsRequirements = true;
+                    break;
                 }
             }
 
@@ -103,21 +94,16 @@ public sealed class CollectiveMindUpdateSystem : EntitySystem
     {
         var list = new List<ComponentRegistration>();
 
-        if (input == null || input.Count == 0)
-            return list;
-
         foreach (var name in input)
         {
-            var availability = _factory.GetComponentAvailability(name);
-            if (_factory.TryGetRegistration(name, out var registration)
-                && availability == ComponentAvailability.Available)
+            if (!_componentFactory.TryGetRegistration(name, out var registration))
             {
-                list.Add(registration);
+                Log.Error(
+                    $"StringsToRegs failed: Unknown component name {name} passed to {nameof(CollectiveMindUpdateSystem)}.");
+                continue;
             }
-            else if (availability == ComponentAvailability.Unknown)
-            {
-                _sawmill.Error($"StringsToRegs failed: Unknown component name {name} passed to {nameof(CollectiveMindUpdateSystem)}.");
-            }
+
+            list.Add(registration);
         }
 
         return list;
@@ -125,19 +111,9 @@ public sealed class CollectiveMindUpdateSystem : EntitySystem
 
     private static CollectiveMindMemberData CreateNewCollectiveMindMemberData(CollectiveMindPrototype prototype)
     {
-        //check if one exists
-        if (!_globalMindIDTracker.ContainsKey(prototype))
-        {
-            _globalMindIDTracker[prototype] = new CollectiveMindMemberData().MindId;
-        }
+        // Initialize the tracker value for this prototype.
+        GlobalMindIdTracker.TryAdd(prototype, CollectiveMindMemberData.StartingId);
 
-        var data = new CollectiveMindMemberData
-        {
-            MindId = _globalMindIDTracker[prototype]
-        };
-
-        _globalMindIDTracker[prototype]++;
-
-        return data;
+        return new CollectiveMindMemberData { MindId = GlobalMindIdTracker[prototype]++ };
     }
 }

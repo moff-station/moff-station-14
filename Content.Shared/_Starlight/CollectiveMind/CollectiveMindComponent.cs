@@ -1,23 +1,23 @@
 ﻿using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
-namespace Content.Shared.CollectiveMind
+namespace Content.Shared._Starlight.CollectiveMind
 {
     [RegisterComponent, NetworkedComponent]
     public sealed partial class CollectiveMindComponent : Component
     {
-        [DataField("minds")]
+        [DataField]
         public Dictionary<CollectiveMindPrototype, CollectiveMindMemberData> Minds = new();
     }
 
     /// <summary>
     /// Stores data about the collective mind member.
     /// </summary>
-    [Serializable]
-    public sealed class CollectiveMindMemberData
+    [Serializable, DataDefinition]
+    public sealed partial class CollectiveMindMemberData
     {
-        [ViewVariables(VVAccess.ReadWrite)]
-        public int MindId = 1; //this value determines the starting mind id for members of the collective mind.
+        [DataField(required: true)]
+        public int MindId; //this value determines the starting mind id for members of the collective mind.
+
+        public const int StartingId = 1;
     }
 }
