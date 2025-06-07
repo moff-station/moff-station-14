@@ -5,12 +5,13 @@
   description: What?
   abstract: true
   components:
-    - type: Sprite
-      sprite: Objects/Misc/stock_parts.rsi
-    - type: Item
-      size: Tiny
-    - type: Stack
-      count: 1
+  - type: Sprite
+    sprite: Objects/Misc/stock_parts.rsi
+  - type: Item
+    size: Tiny
+  - type: Stack
+    count: 1
+  - type: PhysicalComposition
 
 #moffstation - Revert machine parts - Start
 - type: entity
@@ -20,13 +21,13 @@
   description: A basic capacitor used in the construction of a variety of devices.
   suffix: Rating 1
   components:
-    - type: Sprite
-      state: capacitor
-    - type: Tag
-      tags:
-        - CapacitorStockPart
-    - type: Stack
-      stackType: Capacitor
+  - type: Sprite
+    state: capacitor
+  - type: Tag
+    tags:
+    - CapacitorStockPart
+  - type: Stack
+    stackType: Capacitor
 #moffstation - Revert machine parts - End
 
 - type: entity
@@ -36,10 +37,10 @@
   description: A basic manipulator used in the construction of a variety of devices. #moffstation - Revert machine parts
   suffix: Rating 1
   components:
-    - type: Sprite
-      state: micro_mani
-    - type: Stack
-      stackType: Manipulator
+  - type: Sprite
+    state: micro_mani
+  - type: Stack
+    stackType: Manipulator
 
 #moffstation - Revert machine parts - Start
 - type: entity
@@ -49,8 +50,8 @@
   description: A basic matter bin used in the construction of a variety of devices.
   suffix: Rating 1
   components:
-    - type: Sprite
-      state: matter_bin
-    - type: Stack
-      stackType: MatterBin
+  - type: Sprite
+    state: matter_bin
+  - type: Stack
+    stackType: MatterBin
 #moffstation - Revert machine parts - End
