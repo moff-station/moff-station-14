@@ -31,17 +31,17 @@ figurines-bradbucket-8 = The spider goddess loves me!
 figurines-bradbucket-9 = SINGULOOSE!
 figurines-bradbucket-10 = Wait until I'm free from this figurine prison!
 
-figurines-brisbane-1 = 
-figurines-brisbane-2 = 
-figurines-brisbane-3 = 
-figurines-brisbane-4 = 
-figurines-brisbane-5 = 
+figurines-brisbane-1 = Morning.
+figurines-brisbane-2 = Buckets of slop!
+figurines-brisbane-3 = Get some air in your lungs, you'll be fine.
+figurines-brisbane-4 = Welcome back to the Moff Blood Ring Contest.
+figurines-brisbane-5 = I'm not me without my hat.
 
-figurines-brisbanebighat-1 = 
-figurines-brisbanebighat-2 = 
-figurines-brisbanebighat-3 = 
-figurines-brisbanebighat-4 = 
-figurines-brisbanebighat-5 = 
+figurines-brisbanebighat-1 = -o--i--.
+figurines-brisbanebighat-2 = B---e-- -f -lo-!
+figurines-brisbanebighat-3 = G-- -o-- --r -- y--r -u--s, --u'-- -e -i--e.
+figurines-brisbanebighat-4 = --l-o-- -a--- t- --- M--f --oo- R--- --n--s-.
+figurines-brisbanebighat-5 = -'m --t -- w--h--- m- --t.
 
 figurines-cassiel-1 = M-mail for, um- oh uh, this is for-r someone els-se, um...
 figurines-cassiel-2 = S-sorry sorry sorry-
