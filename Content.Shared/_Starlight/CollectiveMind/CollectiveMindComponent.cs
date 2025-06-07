@@ -7,7 +7,7 @@ namespace Content.Shared.CollectiveMind
     [RegisterComponent, NetworkedComponent]
     public sealed partial class CollectiveMindComponent : Component
     {
-        [DataField("minds")]
+        [DataField]
         public Dictionary<ProtoId<CollectiveMindPrototype>, int> Minds = new();
     }
 }
