@@ -1,8 +1,11 @@
+using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.CollectiveMind;
 
-[Prototype]
+[Prototype("collectiveMind")]
+[Serializable, NetSerializable]
 public sealed partial class CollectiveMindPrototype : IPrototype
 {
     [IdDataField, ViewVariables]
@@ -24,5 +27,6 @@ public sealed partial class CollectiveMindPrototype : IPrototype
     public List<string> RequiredComponents = [];
 
     [DataField]
-    public List<ProtoId<Tag.TagPrototype>> RequiredTags = [];
+    // public List<ProtoId<Tag.TagPrototype>> RequiredTags = [];
+    public List<ProtoId<TagPrototype>> RequiredTags { get; set; } = new();
 }

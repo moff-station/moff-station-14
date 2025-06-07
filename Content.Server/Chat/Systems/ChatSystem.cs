@@ -183,6 +183,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
+            // I despise this being here but there doesnt seem to be a cleaner way to watch for tags or complete component removals
         if (TryComp<CollectiveMindComponent>(source, out var collective))
             _collectiveMind.UpdateCollectiveMind(source, collective);
 
@@ -424,7 +425,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     private void SendCollectiveMindChat(EntityUid source, string message, CollectiveMindPrototype? collectiveMind)
     {
-        if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourceCollectiveMindComp) || !sourceCollectiveMindComp.Minds.ContainsKey(collectiveMind.ID))
+        if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourceCollectiveMindComp) || !sourceCollectiveMindComp.Minds.ContainsKey(collectiveMind))
             return;
 
         var clients = Filter.Empty();
@@ -434,13 +435,13 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (_mobStateSystem.IsDead(uid))
                 continue;
 
-            if (collectMindComp.Minds.ContainsKey(collectiveMind.ID))
+            if (collectMindComp.Minds.ContainsKey(collectiveMind))
             {
                 clients.AddPlayer(actorComp.PlayerSession);
             }
         }
 
-        var number = $"{sourceCollectiveMindComp.Minds[collectiveMind.ID]}";
+        var number = $"{sourceCollectiveMindComp.Minds[collectiveMind].MindId}";
 
         var admins = _adminManager.ActiveAdmins
             .Select(p => p.Channel);
