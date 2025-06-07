@@ -1,13 +1,11 @@
 using Content.Client.Chat.Managers;
 using Content.Shared.CollectiveMind;
-using Robust.Client.Player;
 
 namespace Content.Client.Chat;
 
 public sealed class CollectiveMindSystem : EntitySystem
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     public override void Initialize()
     {
@@ -15,8 +13,6 @@ public sealed class CollectiveMindSystem : EntitySystem
         SubscribeLocalEvent<CollectiveMindComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<CollectiveMindComponent, ComponentRemove>(OnRemove);
     }
-
-    public bool IsCollectiveMind => HasComp<CollectiveMindComponent>(_playerManager.LocalSession?.AttachedEntity);
 
     private void OnInit(EntityUid uid, CollectiveMindComponent component, ComponentInit args)
     {
