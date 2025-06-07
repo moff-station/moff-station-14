@@ -4,3 +4,6 @@ collective-mind-dionas = Dionea
 collective-mind-arachnids = Arachnid
 collective-mind-carp = Carp
 collective-mind-zombie = zombie
+
+cmd-cmsay-desc = Send chat messages to the collective mind.
+cmd-cmsay-help = cmsay <text>

@@ -1,19 +1,18 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Administration;
-using Robust.Shared.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
 
-namespace Content.Server.Chat.Commands;
+namespace Content.Server._Starlight.Chat.Commands;
 
 [AnyCommand]
-internal sealed class CollectiveMindChatCommand : IConsoleCommand
+internal sealed class CollectiveMindChatCommand : LocalizedCommands
 {
-    public string Command => "cmsay";
-    public string Description => "Send chat messages to the collective mind.";
-    public string Help => "cmsay <text>";
+    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
 
-    public void Execute(IConsoleShell shell, string argStr, string[] args)
+    public override string Command => "cmsay";
+
+    public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         if (shell.Player is not { } player)
         {
@@ -24,9 +23,9 @@ internal sealed class CollectiveMindChatCommand : IConsoleCommand
         if (player.Status != SessionStatus.InGame)
             return;
 
-        if (player.AttachedEntity is not {} playerEntity)
+        if (player.AttachedEntity is not { } playerEntity)
         {
-            shell.WriteError("You don't have an entity!");
+            shell.WriteError(Loc.GetString("shell-must-be-attached-to-entity"));
             return;
         }
 
@@ -37,14 +36,13 @@ internal sealed class CollectiveMindChatCommand : IConsoleCommand
         if (string.IsNullOrEmpty(message))
             return;
 
-        IoCManager.Resolve<IEntitySystemManager>()
-                .GetEntitySystem<ChatSystem>()
-                .TrySendInGameICMessage(
-                    playerEntity,
-                    message,
-                    InGameICChatType.CollectiveMind,
-                    ChatTransmitRange.Normal
-                );
+        _entitySystemManager
+            .GetEntitySystem<ChatSystem>()
+            .TrySendInGameICMessage(
+                playerEntity,
+                message,
+                InGameICChatType.CollectiveMind,
+                ChatTransmitRange.Normal
+            );
     }
 }
-
