@@ -241,11 +241,11 @@ figurines-roomba-2 = The S stands for Law.
 figurines-roomba-3 = The axe? Oh, that's for the botanists.
 figurines-roomba-4 = You know, it's nice and cozy in the suit when you're on fire.
 
-figurines-samantha-1 = a
-figurines-samantha-2 = b
-figurines-samantha-3 = c
-figurines-samantha-4 = d
-figurines-samantha-5 = e
+figurines-samantha-1 = Why is it always so damn cold!
+figurines-samantha-2 = Someone stole the Library fax... AGAIN!
+figurines-samantha-3 = Pour me a Rewriter, keep it sweet.
+figurines-samantha-4 = I swear if another roach eats my shoes I am gonna lose it...
+figurines-samantha-5 = Hmmm? What are you on about?
 
 figurines-sapphire-1 = No smoking in triage!
 figurines-sapphire-2 = It's gonna be one of those shifts huh?
