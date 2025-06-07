@@ -10,54 +10,27 @@ public sealed class CollectiveMindUpdateSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
     [Dependency] private readonly TagSystem _tag = default!;
-    /// <summary>
-    /// A map of <see cref="CollectiveMindPrototype">collective mind type</see> to the last anonymized ID number
-    /// provisioned to a mind in that collective. This is used to allow the server to assign IDs to members of
-    /// collective minds without reusing IDs.
-    /// </summary>
-    private static readonly Dictionary<ProtoId<CollectiveMindPrototype>, int> NextCollectiveMindId = new();
-    /// <summary>
-    /// Ensures <paramref name="entity"/>'s collective mind identities are properly initialized and any stray identities
-    /// are removed.
-    /// </summary>
-    /// <param name="entity"></param>
-    public void UpdateCollectiveMind(Entity<CollectiveMindComponent> entity)
+
+    private static Dictionary<string, int> _currentId = new();
+
+    public void UpdateCollectiveMind(EntityUid uid, CollectiveMindComponent collective)
+
     {
-        foreach (var collectiveMindProto in _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>())
+        foreach (var prototype in _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>())
         {
-            // Initialize the next ID if it's not already been initialized.
-            NextCollectiveMindId.TryAdd(collectiveMindProto, 1);
-            foreach (var collectiveMindReqComponent in collectiveMindProto.RequiredComponents)
-            {
-                EnsureCollectiveMind(
-                    EntityManager.HasComponent(
-                        entity,
-                        _componentFactory.GetRegistration(collectiveMindReqComponent).Type
-                    ),
-                    entity.Comp,
-                    collectiveMindProto);
-            }
-            foreach (var collectiveMindReqTag in collectiveMindProto.RequiredTags)
-            {
-                EnsureCollectiveMind(_tag.HasTag(entity, collectiveMindReqTag), entity.Comp, collectiveMindProto);
-            }
-        }
-    }
-    private static void EnsureCollectiveMind(
-        bool shouldHave,
-        CollectiveMindComponent comp,
-        CollectiveMindPrototype proto
-    )
-    {
-        if (shouldHave == comp.Minds.ContainsKey(proto))
-            return;
-        if (shouldHave)
-        {
-            comp.Minds.Add(proto, NextCollectiveMindId[proto]++);
-        }
-        else
-        {
-            comp.Minds.Remove(proto);
+            if (!_currentId.ContainsKey(prototype.ID))
+                _currentId[prototype.ID] = 0;
+
+            foreach (var component in prototype.RequiredComponents)
+                if (EntityManager.HasComponent(uid, _componentFactory.GetRegistration(component).Type) && !collective.Minds.ContainsKey(prototype.ID))
+                    collective.Minds.Add(prototype.ID, ++_currentId[prototype.ID]);
+                else if (!EntityManager.HasComponent(uid, _componentFactory.GetRegistration(component).Type) && collective.Minds.ContainsKey(prototype.ID))
+                    collective.Minds.Remove(prototype.ID);
+            foreach (var tag in prototype.RequiredTags)
+                if (_tag.HasTag(uid, tag) && !collective.Minds.ContainsKey(prototype.ID))
+                    collective.Minds.Add(prototype.ID, ++_currentId[prototype.ID]);
+                else if (!_tag.HasTag(uid, tag) && collective.Minds.ContainsKey(prototype.ID))
+                    collective.Minds.Remove(prototype.ID);
         }
     }
 }

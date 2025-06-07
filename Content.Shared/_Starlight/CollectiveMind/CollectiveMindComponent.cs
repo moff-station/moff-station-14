@@ -8,6 +8,6 @@ namespace Content.Shared.CollectiveMind
     public sealed partial class CollectiveMindComponent : Component
     {
         [DataField]
-        public Dictionary<ProtoId<CollectiveMindPrototype>, int> Minds = new();
+        public Dictionary<string, int> Minds = new();
     }
 }
