@@ -1,0 +1,24 @@
+﻿- type: entity
+  parent: PlushieHampter
+  id: PersonalItemSqueaksHampter
+  name: harlequin hampter
+  description: A hampter plushie that's been fully customized for the clown lifestyle.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/privatemumbles/Squeaks/squeakshampter.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/privatemumbles/Squeaks/squeakshampter.rsi
+  - type: DetailExaminable
+    content: It sports a tiny red nose and a hat with a harlequin pattern. The squeaker inside seems to be on its last legs from being squeaked so much.
+
+- type: loadout
+  id: PersonalItemSqueaksHampter
+  storage:
+    back:
+    - PersonalItemSqueaksHampter
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Squeaks
