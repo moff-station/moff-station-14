@@ -37,11 +37,11 @@ figurines-brisbane-3 = Get some air in your lungs, you'll be fine.
 figurines-brisbane-4 = Welcome back to the Moff Blood Ring Contest.
 figurines-brisbane-5 = I'm not me without my hat.
 
-figurines-brisbanebighat-1 = -o--i--.
-figurines-brisbanebighat-2 = B---e-- -f -lo-!
-figurines-brisbanebighat-3 = G-- -o-- --r -- y--r -u--s, --u'-- -e -i--e.
-figurines-brisbanebighat-4 = --l-o-- -a--- t- --- M--f --oo- R--- --n--s-.
-figurines-brisbanebighat-5 = -'m --t -- w--h--- m- --t.
+figurines-brisbanebighat-1 = -o-----.
+figurines-brisbanebighat-2 = B------ -f ---p!
+figurines-brisbanebighat-3 = G-- -o-- --- -- y--- ----s, ---'-- -e -i---.
+figurines-brisbanebighat-4 = --l---- -a--- t- --- ---f ---o- ---- -----s-.
+figurines-brisbanebighat-5 = -'m --t -- ---h--- -- --t.
 
 figurines-cassiel-1 = M-mail for, um- oh uh, this is for-r someone els-se, um...
 figurines-cassiel-2 = S-sorry sorry sorry-
