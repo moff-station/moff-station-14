@@ -26,6 +26,8 @@
     - PowerCellSmall
     - PowerCellMedium
     - FlashlightLantern
+    - MatterBinStockPart #moffstation - Revert machine parts
+    - CapacitorStockPart #moffstation - Revert machine parts
     - MicroManipulatorStockPart
     - Beaker
     chance: 0.8
@@ -61,6 +63,8 @@
       - id: SheetGlass10
       - id: ToolboxElectricalFilled
       - id: ToolboxMechanicalFilled
+      - id: MatterBinStockPart #moffstation - Revert machine parts
+      - id: CapacitorStockPart #moffstation - Revert machine parts
       - id: MicroManipulatorStockPart
     # Rare Group
     - !type:GroupSelector
