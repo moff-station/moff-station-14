@@ -8,7 +8,7 @@
   id: ClothingOuterArmorBase
   name: armor vest
   abstract: true
-  description: A standard Type I armored vest that provides decent protection against most types of damage.
+  description: A standard Type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/security.rsi
@@ -39,7 +39,7 @@
   id: ClothingOuterArmorBasicSlim
   name: armor vest
   suffix: slim
-  description: A slim Type I armored vest that provides decent protection against most types of damage.
+  description: A slim Type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/security_slim.rsi
@@ -49,8 +49,8 @@
 - type: entity
   parent: ClothingOuterArmorBase
   id: ClothingOuterArmorBulletproof
-  name: bulletproof vest
-  description: A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent.
+  name: ballistic vest # Moffstation - (Armor Descriptions: Pt 1)
+  description: A NT Type III ballistic vest, its hard armor plates provide excellent protection against firearms, though it won’t do much against other forms of attack. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/bulletproof.rsi
@@ -70,7 +70,7 @@
   parent: ClothingOuterArmorBase
   id: ClothingOuterArmorReflective
   name: reflective vest
-  description: An armored vest with advanced shielding to protect against energy weapons.
+  description: A NT Type IV reflective vest. On top of the normal reflective panels, it features plating of a special material which reliably redirects beamfire. As Nanotrasen holds a monopoly over such weaponry, it’s rarely used. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
@@ -114,7 +114,7 @@
   parent: [ClothingOuterArmorBaseCarapace, BaseCommandContraband]
   id: ClothingOuterArmorCaptainCarapace
   name: captain's carapace
-  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
+  description: An armored chestpiece, segmented much like the carapace of a large insect. This design is expensive to manufacture, but provides good protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
@@ -143,8 +143,8 @@
 - type: entity
   parent: [ClothingOuterArmorBaseCarapace, BaseCentcommContraband]
   id: ClothingOuterArmorCentcommCarapace
-  name: centcomm carapace
-  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to centcomm officials and agents.
+  name: CentComm carapace # Moffstation - (Armor Descriptions: Pt 1)
+  description: An armored chestpiece, segmented much like the carapace of a large insect. This design is expensive to manufacture, but provides good protection whilst still offering maximum mobility and flexibility. Issued only to high ranking CentComm officials. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/centcomm_carapace.rsi
@@ -155,8 +155,8 @@
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWeb
-  name: web vest
-  description: A synthetic armor vest. This one has added webbing and ballistic plates.
+  name: Syndicate plate carrier # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Syndicate Type I plate carrier, its aramid armor is reinforced by thick plasteel plates. Provides excellent ballistic protection, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/webvest.rsi
@@ -180,8 +180,8 @@
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
   id: ClothingOuterVestWebElite
-  name: elite web vest
-  description: A synthetic armor vest. This one has added webbing and heat resistant fibers.
+  name: Syndicate elite carrier # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Syndicate Type IV plate carrier, its aramid armor is reinforced by reflective panels and (unconventionally for a vest) a layer of hazard shielding. Protects well against energy weapons and environmental threats, and features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
@@ -212,8 +212,8 @@
 - type: entity
   parent: [ BaseMajorContraband, ClothingOuterVestWeb] #web vest so it should have some pockets for ammo
   id: ClothingOuterVestWebMerc
-  name: mercenary web vest
-  description: A high-quality armored vest made from a hard synthetic material. It's surprisingly flexible and light, despite formidable armor plating.
+  name: mercenary plate carrier # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Type I plate carrier of a model commonly found on the open market, featuring thick aramid to protect the wearer. Provides excellent combat protection and is painted in an olive green common in mercenary companies. Features tactical webbing to carry additional equipment. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/mercwebvest.rsi
@@ -233,8 +233,8 @@
 - type: entity
   parent: [ClothingOuterArmorBase, BaseSecurityContraband]
   id: ClothingOuterVestDetective
-  name: detective's vest
-  description: A hard-boiled private investigator's armored vest.
+  name: detective's armor vest # Moffstation - (Armor Descriptions: Pt 1)
+  description: A Type I protective vest, its light armor plates provide moderate protection without sacrificing mobility. Its finish denotes the wearer as a NT security detective. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
@@ -250,8 +250,8 @@
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband ]
   id: ClothingOuterArmorRaid
-  name: syndicate raid suit
-  description: A somewhat flexible and well-armored suit with a powerful shoulder mounted flashlight manufactured in the Gorlex Marauder's iconic blood-red color scheme, it does not protect its wearer from space.
+  name: Gorlex raid suit # Moffstation - (Armor Descriptions: Pt 1)
+  description: The Gorlex Marauders A23 combat armor. It features no space-proofing, freeing up plenty of weight and bulk for thicker layers plasteel-alloy, as well as a powerful shoulder-mounted flashlight. Commonly worn by marines on planetside operations. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/syndie-raid.rsi
@@ -333,7 +333,7 @@
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband]
   id: ClothingOuterArmorRiot
   name: riot suit
-  description: A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Perfect for fighting delinquents around the station.
+  description: A NT Type II riot suit, its semi-flexible polycarbonate provides excellent protection in melee encounters, but slightly hinders mobility. # Moffstation - (Armor Descriptions: Pt 1)
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/riot.rsi
