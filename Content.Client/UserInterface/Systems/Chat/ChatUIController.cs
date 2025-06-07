@@ -574,7 +574,8 @@ public sealed partial class ChatUIController : UIController
         }
 
         // Only entities with CollectiveMind can send / see collectivemind chat
-        if (_collectiveMind != null && _collectiveMind.IsCollectiveMind)
+        if (_collectiveMind != null &&
+            EntityManager.HasComponent<CollectiveMindComponent>(_player.LocalSession?.AttachedEntity))
         {
             FilterableChannels |= ChatChannel.CollectiveMind;
             CanSendChannels |= ChatSelectChannel.CollectiveMind;
