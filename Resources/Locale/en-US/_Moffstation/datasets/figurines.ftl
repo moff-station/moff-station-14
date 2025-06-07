@@ -31,6 +31,18 @@ figurines-bradbucket-8 = The spider goddess loves me!
 figurines-bradbucket-9 = SINGULOOSE!
 figurines-bradbucket-10 = Wait until I'm free from this figurine prison!
 
+figurines-brisbane-1 = Morning.
+figurines-brisbane-2 = Buckets of slop!
+figurines-brisbane-3 = Get some air in your lungs, you'll be fine.
+figurines-brisbane-4 = Welcome back to the Moff Blood Ring Contest.
+figurines-brisbane-5 = I'm not me without my hat.
+
+figurines-brisbanebighat-1 = -o-----.
+figurines-brisbanebighat-2 = B------ -f ---p!
+figurines-brisbanebighat-3 = G-- -o-- --- -- y--- ----s, ---'-- -e -i---.
+figurines-brisbanebighat-4 = --l---- -a--- t- --- ---f ---o- ---- -----s-.
+figurines-brisbanebighat-5 = -'m --t -- ---h--- -- --t.
+
 figurines-cassiel-1 = M-mail for, um- oh uh, this is for-r someone els-se, um...
 figurines-cassiel-2 = S-sorry sorry sorry-
 figurines-cassiel-3 = Hel-llo, uh, what c-can I um, do for y-you?
@@ -42,6 +54,14 @@ figurines-cinnabar-2 = I sure hope nothing bad happens on the ATS... again.
 figurines-cinnabar-3 = Man the Syndicate SUCKS.
 figurines-cinnabar-4 = What can I do for you boss?
 figurines-cinnabar-5 = Man I'm so glad Nanotrasen hired me, they're the best!
+
+figurines-cooks-1 = Tritium leak? Hold on... I gotta stress smoke.
+figurines-cooks-2 = Plasma leak? Hold on... I gotta stress smoke.
+figurines-cooks-3 = You get a chembomb! and you get a chembomb!
+figurines-cooks-4 = Fun fact: Moths are highly flammable.
+figurines-cooks-5 = sup?
+figurines-cooks-6 = Who left all this fluice on the ground?
+figurines-cooks-7 = Yummy fluice!
 
 figurines-cory-1 = Ey!
 figurines-cory-2 = You're real to me.
@@ -80,6 +100,14 @@ figurines-eclipse-2 = I need a permit for this shotgun i totally found in maints
 figurines-eclipse-3 = I'm here to kick ass and munch paper, and I'm all out of paper.
 figurines-eclipse-4 = I miss viv and scarlet.
 figurines-eclipse-5 = Teh healing isn't as rewarding as teh hurting.
+
+figurines-faces-1 = Oop~ The arti just exploded.
+figurines-faces-2 = Hey, team! Let's not blow up, okay?~
+figurines-faces-3 = Ah... Let me go grab my hardsuit...
+figurines-faces-4 = Heist time!
+figurines-faces-5 = Oh, all my scientists are in Perma?
+figurines-faces-6 = Sure, you can have a pair of jaws! No problem~
+figurines-faces-7 = Well, time to lathe a PKA~
 
 figurines-fails-1 = Snaaaack?
 figurines-fails-2 = Sure we can do lunch.
@@ -163,6 +191,14 @@ figurines-light-3 = Buy ShadowBucks™ today!
 figurines-light-4 = Advanced Anomalous Research, for the gun.
 figurines-light-5 = Welcome to the Shadow Realm.
 
+figurines-lightsseeker-1 = Reak
+figurines-lightsseeker-2 = Vodjaha, p'lea'se.
+figurines-lightsseeker-3 = whhhouughh, whaat haappeeneed?
+figurines-lightsseeker-4 = What do you mean it's making only 50 points!
+figurines-lightsseeker-5 = Guh
+figurines-lightsseeker-6 = I am going to explode soon.
+figurines-lightsseeker-7 = Where's Cassiel
+
 figurines-larry-1 = Friendship is magic!
 figurines-larry-2 = Friend shaped!
 figurines-larry-3 = We'll be okay!
@@ -212,6 +248,12 @@ figurines-roomba-1 = It's all part of the job.
 figurines-roomba-2 = The S stands for Law.
 figurines-roomba-3 = The axe? Oh, that's for the botanists.
 figurines-roomba-4 = You know, it's nice and cozy in the suit when you're on fire.
+
+figurines-samantha-1 = Why is it always so damn cold!
+figurines-samantha-2 = Someone stole the Library fax... AGAIN!
+figurines-samantha-3 = Pour me a Rewriter, keep it sweet.
+figurines-samantha-4 = I swear if another roach eats my shoes I am gonna lose it...
+figurines-samantha-5 = Hmmm? What are you on about?
 
 figurines-sapphire-1 = No smoking in triage!
 figurines-sapphire-2 = It's gonna be one of those shifts huh?
