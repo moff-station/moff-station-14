@@ -101,6 +101,14 @@ figurines-eclipse-3 = I'm here to kick ass and munch paper, and I'm all out of p
 figurines-eclipse-4 = I miss viv and scarlet.
 figurines-eclipse-5 = Teh healing isn't as rewarding as teh hurting.
 
+figurines-faces-1 = Oop~ The arti just exploded.
+figurines-faces-2 = Hey, team! Let's not blow up, okay?~
+figurines-faces-3 = Ah... Let me go grab my hardsuit...
+figurines-faces-4 = Heist time!
+figurines-faces-5 = Oh, all my scientists are in Perma?
+figurines-faces-6 = Sure, you can have a pair of jaws! No problem~
+figurines-faces-7 = Well, time to lathe a PKA~
+
 figurines-fails-1 = Snaaaack?
 figurines-fails-2 = Sure we can do lunch.
 figurines-fails-3 = Doesn't that have chocolate in it?
