@@ -34,9 +34,6 @@ public sealed class CharacterInfoSystem : EntitySystem
         var objectives = new Dictionary<string, List<ObjectiveInfo>>();
         var jobTitle = Loc.GetString("character-info-no-profession");
         string? briefing = null;
-        Dictionary<CollectiveMindPrototype, CollectiveMindMemberData>? collectiveMinds = null;
-        if (TryComp<CollectiveMindComponent>(entity, out var mindsComp))
-            collectiveMinds = mindsComp.Minds;
         if (_minds.TryGetMind(entity, out var mindId, out var mind))
         {
             // Get objectives
@@ -60,6 +57,7 @@ public sealed class CharacterInfoSystem : EntitySystem
             briefing = _roles.MindGetBriefing(mindId);
         }
 
-        RaiseNetworkEvent(new CharacterInfoEvent(GetNetEntity(entity), jobTitle, objectives, briefing, collectiveMinds), args.SenderSession);
+        TryComp<CollectiveMindComponent>(entity, out var mindsComp);
+        RaiseNetworkEvent(new CharacterInfoEvent(GetNetEntity(entity), jobTitle, objectives, briefing, mindsComp?.Minds), args.SenderSession);
     }
 }
