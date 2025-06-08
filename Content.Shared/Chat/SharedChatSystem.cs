@@ -1,5 +1,5 @@
 using System.Collections.Frozen;
-using Content.Shared.CollectiveMind;
+using Content.Shared.CollectiveMind; // Starlight - Collective Minds
 using System.Text.RegularExpressions;
 using Content.Shared.Popups;
 using Content.Shared.Radio;
@@ -23,7 +23,7 @@ public abstract class SharedChatSystem : EntitySystem
     public const char EmotesAltPrefix = '*';
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
-    public const char CollectiveMindPrefix = '+';
+    public const char CollectiveMindPrefix = '+'; // Starlight - Collective Minds
     public const char DefaultChannelKey = 'h';
 
     [ValidatePrototypeId<RadioChannelPrototype>]
@@ -42,7 +42,7 @@ public abstract class SharedChatSystem : EntitySystem
     /// </summary>
     private FrozenDictionary<char, RadioChannelPrototype> _keyCodes = default!;
 
-    private FrozenDictionary<char, CollectiveMindPrototype> _mindKeyCodes = default!;
+    private FrozenDictionary<char, CollectiveMindPrototype> _mindKeyCodes = default!; // Starlight - Collective Minds
 
     public override void Initialize()
     {
@@ -50,14 +50,14 @@ public abstract class SharedChatSystem : EntitySystem
         DebugTools.Assert(_prototypeManager.HasIndex<RadioChannelPrototype>(CommonChannel));
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
         CacheRadios();
-        CacheCollectiveMinds();
+        CacheCollectiveMinds(); // Starlight - Collective Minds
     }
 
     protected virtual void OnPrototypeReload(PrototypesReloadedEventArgs obj)
     {
         if (obj.WasModified<RadioChannelPrototype>())
             CacheRadios();
-        if (obj.WasModified<CollectiveMindPrototype>())
+        if (obj.WasModified<CollectiveMindPrototype>()) // Starlight - Collective Minds
             CacheCollectiveMinds();
     }
 
@@ -67,7 +67,7 @@ public abstract class SharedChatSystem : EntitySystem
             .ToFrozenDictionary(x => x.KeyCode);
     }
 
-    private void CacheCollectiveMinds()
+    private void CacheCollectiveMinds() // Starlight - Collective Minds
     {
         _mindKeyCodes = _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
@@ -189,7 +189,7 @@ public abstract class SharedChatSystem : EntitySystem
 
         return true;
     }
-
+    // Starlight - Collective Minds - START
     public bool TryProcessCollectiveMindMessage(
         EntityUid source,
         string input,
@@ -226,7 +226,7 @@ public abstract class SharedChatSystem : EntitySystem
 
         return false;
     }
-
+    // Starlight - Collective Minds - END
     public string SanitizeMessageCapital(string message)
     {
         if (string.IsNullOrEmpty(message))

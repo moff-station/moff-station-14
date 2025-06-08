@@ -93,7 +93,7 @@ namespace Content.Shared.Chat
         /// <summary>
         ///     Channels considered to be IC.
         /// </summary>
-        IC = Local | Whisper | Radio | Dead | Emotes | Damage | Visual | CollectiveMind | Notifications,
+        IC = Local | Whisper | Radio | Dead | Emotes | Damage | Visual | CollectiveMind | Notifications, // Starlight - Collective Minds - Added CollectiveMind entry.
 
         AdminRelated = Admin | AdminAlert | AdminChat,
     }

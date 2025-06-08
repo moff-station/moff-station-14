@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Client._Starlight.UserInterface.Controls;
+using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
@@ -11,7 +11,7 @@ using Content.Shared.Input;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
-using Content.Shared.CollectiveMind;
+using Content.Shared.CollectiveMind; // Starlight - Collective Mind
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -27,8 +27,7 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 namespace Content.Client.UserInterface.Systems.Character;
 
 [UsedImplicitly]
-public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
-    IOnSystemChanged<CharacterInfoSystem>
+public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>
 {
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
@@ -45,9 +44,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
     }
 
     private CharacterWindow? _window;
-
-    private MenuButton? CharacterButton =>
-        UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
+    private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
 
     public void OnStateEntered(GameplayState state)
     {
@@ -135,7 +132,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
         }
 
-        var (entity, job, objectives, minds, briefing, entityName) = data;
+        var (entity, job, objectives, minds, briefing, entityName) = data; // Starlight - Collective Mind - Added minds variable.
 
         _window.SpriteView.SetEntity(entity);
 
@@ -145,7 +142,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
         _window.ObjectivesLabel.Visible = objectives.Any();
-        _window.Minds.RemoveAllChildren();
+        _window.Minds.RemoveAllChildren(); // Starlight - Collective Mind
 
         foreach (var (groupId, conditions) in objectives)
         {
@@ -186,7 +183,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
 
-        if (minds is { Count: > 0 })
+        if (minds is { Count: > 0 }) // Starlight - Collective Mind - minds variable
         {
             var mindsControl = new CharacterMindsControl
             {
@@ -233,8 +230,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
 
         if (!_prototypeManager.TryIndex(mind.RoleType, out var proto))
-            Log.Error(
-                $"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
+            Log.Error($"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
 
         _window.RoleType.Text = Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name");
         _window.RoleType.FontColorOverride = proto?.Color ?? Color.White;

@@ -14,7 +14,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
-using Content.Shared.CollectiveMind;
+using Content.Shared.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
@@ -61,7 +61,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!;
+    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!; // Starlight - Collective Minds
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
@@ -183,7 +183,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
-            // I despise this being here but there doesnt seem to be a cleaner way to watch for tags or complete component removals
+            // Starlight - Collective Minds - It sucks but its required. Try not to think about it.
         if (TryComp<CollectiveMindComponent>(source, out var collective))
             _collectiveMind.UpdateCollectiveMind(source, collective);
 
@@ -249,7 +249,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
         }
 
-        if (desiredType == InGameICChatType.CollectiveMind)
+        if (desiredType == InGameICChatType.CollectiveMind) // Starlight - Collective Minds
         {
             if (TryProcessCollectiveMindMessage(source, message, out var modMessage, out var channel))
             {
@@ -422,7 +422,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     #endregion
 
     #region Private API
-
+    // Starlight - Collective Minds - START
     private void SendCollectiveMindChat(EntityUid source, string message, CollectiveMindPrototype? collectiveMind)
     {
         if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourceCollectiveMindComp) || !sourceCollectiveMindComp.Minds.ContainsKey(collectiveMind))
@@ -477,7 +477,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             admins,
             collectiveMind.Color);
     }
-
+// Starlight - Collective Minds - END
     private void SendEntitySpeak(
         EntityUid source,
         string originalMessage,
@@ -1040,7 +1040,7 @@ public enum InGameICChatType : byte
     Speak,
     Emote,
     Whisper,
-    CollectiveMind,
+    CollectiveMind, // Starlight - Collective Minds
 }
 
 /// <summary>

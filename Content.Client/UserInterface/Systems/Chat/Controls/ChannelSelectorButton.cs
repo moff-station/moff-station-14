@@ -1,5 +1,5 @@
 using System.Numerics;
-using Content.Shared.CollectiveMind;
+using Content.Shared.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.Chat;
 
 namespace Content.Client.UserInterface.Systems.Chat.Controls;
@@ -68,20 +68,20 @@ public sealed class ChannelSelectorButton : ChatPopupButton<ChannelSelectorPopup
             _ => Color.DarkGray
         };
     }
-
+    // Starlight - Collective Minds
     public void UpdateChannelSelectButton(ChatSelectChannel channel, Shared.Radio.RadioChannelPrototype? radio, CollectiveMindPrototype? collectiveMind)
     {
-        if (radio != null)
+        if (radio != null) // Starlight - Collective Minds - Rewrote radio code.
         {
             Text = Loc.GetString(radio.Name);
             Modulate = radio?.Color ?? ChannelSelectColor(channel);
         }
-        else if (collectiveMind != null)
+        else if (collectiveMind != null) // Starlight - Collective Minds - Added section to work with collective minds.
         {
             Text = Loc.GetString(collectiveMind.Name);
             Modulate = collectiveMind.Color;
         }
-        else
+        else // Starlight - Collective Minds - Added failsafe.
         {
             Text = ChannelSelectorName(channel);
             Modulate = ChannelSelectColor(channel);
