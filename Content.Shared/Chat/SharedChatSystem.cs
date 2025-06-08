@@ -1,6 +1,6 @@
 using System.Collections.Frozen;
-using Content.Shared.CollectiveMind; // Starlight - Collective Minds
 using System.Text.RegularExpressions;
+using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
@@ -57,8 +57,10 @@ public abstract class SharedChatSystem : EntitySystem
     {
         if (obj.WasModified<RadioChannelPrototype>())
             CacheRadios();
-        if (obj.WasModified<CollectiveMindPrototype>()) // Starlight - Collective Minds
+        // Starlight - Start - Collective Minds
+        if (obj.WasModified<CollectiveMindPrototype>())
             CacheCollectiveMinds();
+        // Starlight - End
     }
 
     private void CacheRadios()
@@ -67,11 +69,13 @@ public abstract class SharedChatSystem : EntitySystem
             .ToFrozenDictionary(x => x.KeyCode);
     }
 
-    private void CacheCollectiveMinds() // Starlight - Collective Minds
+    // Starlight - Start - Collective Minds
+    private void CacheCollectiveMinds()
     {
         _mindKeyCodes = _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
     }
+    // Starlight - End
 
     /// <summary>
     ///     Attempts to find an applicable <see cref="SpeechVerbPrototype"/> for a speaking entity's message.
@@ -189,7 +193,8 @@ public abstract class SharedChatSystem : EntitySystem
 
         return true;
     }
-    // Starlight - Collective Minds - START
+
+    // Starlight - Start - Collective Minds
     public bool TryProcessCollectiveMindMessage(
         EntityUid source,
         string input,
@@ -226,7 +231,8 @@ public abstract class SharedChatSystem : EntitySystem
 
         return false;
     }
-    // Starlight - Collective Minds - END
+    // Starlight - End
+
     public string SanitizeMessageCapital(string message)
     {
         if (string.IsNullOrEmpty(message))

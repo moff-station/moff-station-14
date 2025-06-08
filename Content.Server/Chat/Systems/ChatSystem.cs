@@ -10,11 +10,11 @@ using Content.Server.Speech.Prototypes;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
-using Content.Shared.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
@@ -183,9 +183,12 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
-            // Starlight - Collective Minds - It sucks but its required. Try not to think about it.
+        // Starlight - Start - Collective Minds - It sucks but its required. Try not to think about it.
+        // Original Starlight justification: I despise this being here but there doesn't seem to be a cleaner way to
+        // watch for tags or complete component removals
         if (TryComp<CollectiveMindComponent>(source, out var collective))
             _collectiveMind.UpdateCollectiveMind(source, collective);
+        // Starlight - End
 
         if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
             return;
@@ -249,7 +252,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
         }
 
-        if (desiredType == InGameICChatType.CollectiveMind) // Starlight - Collective Minds
+        // Starlight - Start - Collective Minds
+        if (desiredType == InGameICChatType.CollectiveMind)
         {
             if (TryProcessCollectiveMindMessage(source, message, out var modMessage, out var channel))
             {
@@ -257,6 +261,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 return;
             }
         }
+        // Starlight - End
 
         // Otherwise, send whatever type.
         switch (desiredType)
@@ -422,7 +427,8 @@ public sealed partial class ChatSystem : SharedChatSystem
     #endregion
 
     #region Private API
-    // Starlight - Collective Minds - START
+
+    // Starlight - Start - Collective Minds
     private void SendCollectiveMindChat(EntityUid source, string message, CollectiveMindPrototype? collectiveMind)
     {
         if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourceCollectiveMindComp) || !sourceCollectiveMindComp.Minds.ContainsKey(collectiveMind))
@@ -477,7 +483,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             admins,
             collectiveMind.Color);
     }
-// Starlight - Collective Minds - END
+    // Starlight - End
+
     private void SendEntitySpeak(
         EntityUid source,
         string originalMessage,

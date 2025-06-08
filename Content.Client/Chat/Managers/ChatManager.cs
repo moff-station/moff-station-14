@@ -78,17 +78,21 @@ internal sealed class ChatManager : IChatManager
                 _consoleHost.ExecuteCommand($"whisper \"{CommandParsing.Escape(str)}\"");
                 break;
 
-            case ChatSelectChannel.CollectiveMind: // Starlight - Collective Mind - Added case for collective minds.
+            // Starlight - Start - Collective Mind
+            case ChatSelectChannel.CollectiveMind:
                 _consoleHost.ExecuteCommand($"cmsay \"{CommandParsing.Escape(str)}\"");
                 break;
+            // Starlight - End
 
             default:
                 throw new ArgumentOutOfRangeException(nameof(channel), channel, null);
         }
     }
 
-    public void UpdatePermissions() // Starlight - Collective Mind - Update perms for collective minds.
+    // Starlight - Start - Collective Mind
+    public void UpdatePermissions()
     {
         PermissionsUpdated?.Invoke();
     }
+    // Starlight - End
 }

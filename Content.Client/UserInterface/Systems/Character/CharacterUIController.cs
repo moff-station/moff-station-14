@@ -11,7 +11,6 @@ using Content.Shared.Input;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
-using Content.Shared.CollectiveMind; // Starlight - Collective Mind
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -183,7 +182,8 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
 
-        if (minds is { Count: > 0 }) // Starlight - Collective Mind - minds variable
+        // Starlight - Start - Collective Mind
+        if (minds is { Count: > 0 })
         {
             var mindsControl = new CharacterMindsControl
             {
@@ -192,6 +192,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             mindsControl.SetMinds(minds);
             _window.Objectives.AddChild(mindsControl);
         }
+        // Starlight - End
 
         if (briefing != null)
         {
