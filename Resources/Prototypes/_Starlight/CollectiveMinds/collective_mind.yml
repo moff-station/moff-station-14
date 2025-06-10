@@ -1,12 +1,4 @@
 - type: collectiveMind
-  id: Arachnids
-  name: collective-mind-arachnids
-  keycode: 'a'
-  color: "#cec816"
-  requiredTags:
-  - Arachnid
-
-- type: collectiveMind
   id: Carp
   name: collective-mind-carp
   keycode: 'c'
@@ -18,7 +10,7 @@
 
 - type: collectiveMind
   id: Dionas
-  name: collective-mind-dionas
+  name: collective-mind-diona
   keycode: 'd'
   color: "#15912a"
   requiredTags:
@@ -26,7 +18,7 @@
 
 - type: collectiveMind
   id: Spiders
-  name: collective-mind-spiders
+  name: collective-mind-spider
   keycode: 's'
   color: "#8f6741"
   requiredComponents:
@@ -34,7 +26,7 @@
 
 - type: collectiveMind
   id: Zombies
-  name: collective-mind-zombies
+  name: collective-mind-zombie
   keycode: 'z'
   color: "#508053"
   requiredComponents:

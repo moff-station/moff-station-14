@@ -183,13 +183,24 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         }
 
         // Starlight - Start - Collective Mind
-        if (minds is { Count: > 0 })
+        if (minds != null && minds.Count > 0)
         {
             var mindsControl = new CharacterMindsControl
             {
                 Orientation = BoxContainer.LayoutOrientation.Vertical,
             };
-            mindsControl.SetMinds(minds);
+            var mindDescriptionMessage = new FormattedMessage();
+            mindDescriptionMessage.AddText("Available collective minds:");
+            foreach (var mindPrototype in minds)
+            {
+                mindDescriptionMessage.AddText("\n");
+                mindDescriptionMessage.PushColor(mindPrototype.Key.Color);
+                mindDescriptionMessage.AddText($"{mindPrototype.Key.LocalizedName}: +{mindPrototype.Key.KeyCode}");
+                mindDescriptionMessage.AddText($" (Number {mindPrototype.Value.MindId})");
+                mindDescriptionMessage.Pop();
+
+            }
+            mindsControl.Description.SetMessage(mindDescriptionMessage);
             _window.Objectives.AddChild(mindsControl);
         }
         // Starlight - End
