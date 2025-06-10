@@ -18,30 +18,8 @@
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: CapacitorStockPart
-  result: CapacitorStockPart
-# Moffstation - revert machine parts - start
-  materials:
-    Glass: 50
-    Steel: 50
-# Moffstation - revert machine parts - end
-
-- type: latheRecipe
-  parent: BaseStockPartRecipe
-  id: MatterBinStockPart
-  result: MatterBinStockPart
-# Moffstation - revert machine parts - start
-  materials:
-    Plastic: 50
-    Glass: 50
-# Moffstation - revert machine parts - end
-
-- type: latheRecipe
-  parent: BaseStockPartRecipe
   id: MicroManipulatorStockPart
   result: MicroManipulatorStockPart
-# Moffstation - revert machine parts - start
   materials:
     Steel: 50
     Plastic: 50
-# Moffstation - revert machine parts - end
