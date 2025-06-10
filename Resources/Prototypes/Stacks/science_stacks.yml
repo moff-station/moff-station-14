@@ -4,25 +4,8 @@
   spawn: ArtifactFragment1
   maxCount: 30
 
-#moffstation - Revert machine parts - Start
-- type: stack
-  id: Capacitor
-  name: stack-capacitor
-  icon: { sprite: /Textures/Objects/Misc/stock_parts.rsi, state: capacitor }
-  spawn: CapacitorStockPart
-  maxCount: 10
-#moffstation - Revert machine parts - End
-
 - type: stack
   id: Manipulator
   name: stack-micro-manipulator
   spawn: MicroManipulatorStockPart
   maxCount: 10
-
-#moffstation - Revert machine parts - Start
-- type: stack
-  id: MatterBin
-  name: stack-matter-bin
-  spawn: MatterBinStockPart
-  maxCount: 10
-#moffstation - Revert machine parts - End
