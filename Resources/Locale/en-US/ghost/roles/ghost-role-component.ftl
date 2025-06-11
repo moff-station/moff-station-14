@@ -32,6 +32,9 @@ ghost-role-information-silicon-rules = You are a [color={role-type-silicon-color
 ghost-role-information-mouse-name = Mouse
 ghost-role-information-mouse-description = A hungry and mischievous mouse.
 
+ghost-role-information-moproach-name = Moproach
+ghost-role-information-moproach-description = A cute mothroach with more cute moplike shoes on its feet.
+
 ghost-role-information-mothroach-name = Mothroach
 ghost-role-information-mothroach-description = A cute but mischievous mothroach.
 

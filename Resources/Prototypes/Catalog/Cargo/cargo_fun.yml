@@ -117,7 +117,7 @@
   cost: 500
   category: cargoproduct-category-name-fun
   group: market
-  
+
 - type: cargoProduct
   id: FunSharkPlushies
   icon:
@@ -347,3 +347,15 @@
   cost: 1500
   category: cargoproduct-category-name-fun
   group: market
+
+# Starlight - START - Moproaches added as fun pet purchaseable through cargo.
+- type: cargoProduct
+  id: MoproachCrate
+  icon:
+    sprite: _Starlight/Mobs/Animals/mothroach/moproach.rsi
+    state: icon
+  product: CrateFunMoproach
+  cost: 2500
+  category: cargoproduct-category-name-fun
+  group: market
+  # Starlight - END
