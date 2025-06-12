@@ -1,7 +1,7 @@
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm executive
   id: RandomHumanoidSpawnerCentcomExecutive
+  name: CentComm executive
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -19,8 +19,8 @@
 
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm officer
   id: RandomHumanoidSpawnerCentcomOfficer
+  name: CentComm officer
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -38,8 +38,8 @@
 
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
-  name: CentComm representative
   id: RandomHumanoidSpawnerCentcomRepresentative
+  name: CentComm representative
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
