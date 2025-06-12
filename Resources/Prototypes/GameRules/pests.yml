@@ -84,23 +84,6 @@
     - id: MobMothroach
       prob: 0.008
 
-# Starlight - START - Moproaches added as fun pet purchaseable through cargo.
-- type: entity
-  id: MoproachMigration
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    weight: 6
-    duration: 30 # Moffstation - used as delay
-  - type: VentCrittersRule
-    entries:
-    - id: MobMoproachHat
-      prob: 0.03
-# Starlight - END
-
 - type: entity
   id: SnailMigrationLowPop
   parent: BaseStationEventShortDelay
