@@ -76,6 +76,21 @@ namespace Content.Shared.Chemistry.Components
             return solution.Volume <= AvailableVolume;
         }
 
+        // Moffstation - Start - Adding helper function to Solution
+        /// <summary>
+        ///     Gets the maximum amount of solution that can be transferred from the solution up to the quantity.
+        /// </summary>
+        public float MaxTransferableSolution(Solution solution, float quantity)
+        {
+            return Math.Min((float) solution.Volume, Math.Min((float) AvailableVolume, quantity));
+        }
+
+        public float MaxTransferableSolution(float quantity)
+        {
+            return Math.Min((float) AvailableVolume, quantity);
+        }
+        // Moffstation - End
+
         /// <summary>
         ///     The total heat capacity of all reagents in the solution.
         /// </summary>

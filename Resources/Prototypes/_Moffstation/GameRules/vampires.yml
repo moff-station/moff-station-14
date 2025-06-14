@@ -1,0 +1,76 @@
+- type: entity
+  parent: BaseGameRule
+  id: Vampire
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: VampireRule
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ Vampire ]
+      max: 1
+      briefing:
+        text: roles-antag-vampire-briefing
+        color: Crimson
+        sound: "/Audio/_Moffstation/Ambience/Antags/vampire_start.ogg"
+      lateJoinAdditional: true
+      allowNonHumans: true
+      components:
+      - type: Vampire
+      - type: BloodConsumption
+      - type: BloodEssenceUser
+        bloodWhitelist:
+        - Blood
+        - InsectBlood
+        - Slime
+        - Sap
+        - CopperBlood
+        - AmmoniaBlood
+        - ZombieBlood
+      - type: Damageable
+        damageContainer: BiologicalMetaphysical
+        damageModifierSet: Vampire
+      - type: BurnedBySun
+        damage:
+          type:
+            Heat: 5
+      - type: OrganSwap
+        organSwaps:
+          heart: OrganVampireHeart
+          lungs: OrganVampireLungs
+          stomach: OrganVampireStomach
+      - type: Store
+        name: vampire-store-name
+        categories:
+        - VampireAbilitiesBasic
+        - VampireAbilitiesGargantua
+        - VampireAbilitiesHaemomancer
+        - VampireAbilitiesUmbrae
+        - VampireAbilitiesDantalion
+        currencyWhitelist:
+        - BloodEssence
+        balance:
+          BloodEssence: 0
+      - type: UserInterface
+        interfaces:
+          enum.StoreUiKey.Key:
+            type: StoreBoundUserInterface
+      - type: Bloodstream
+        bleedReductionAmount: 1.0
+        maxBleedAmount: 0.0
+        bloodlossThreshold: 0.05
+        bloodlossDamage:
+          types:
+            Bloodloss: 10 # if they're out of blood they're taking bloodloss damage
+        bloodlossHealDamage:
+          types:
+            Brute: -0.5
+            Burn: -0.1
+            Airloss: -1.0
+            Toxin: -0.5
+            Genetic: -0.5
+            Metaphysical: -0.1
+        bloodRefreshAmount: -0.3 # Loses blood every update (3 seconds)
+      mindRoles:
+      - MindRoleVampire
