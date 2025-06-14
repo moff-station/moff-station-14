@@ -19,10 +19,11 @@ public sealed partial class GasTankVisualsSystem : EntitySystem
 
     private void OnInit(Entity<GasTankVisualsComponent> entity, ref ComponentInit args)
     {
-        if (!_proto.TryIndex(entity.Comp.InitialVisuals, out var visuals))
+        if (!_proto.TryIndex(entity.Comp.InitialVisuals, out var visuals) ||
+            !TryComp<AppearanceComponent>(entity, out var appearance))
             return;
 
-        SetTankVisuals((entity, entity.Comp, null), visuals);
+        SetTankVisuals((entity, entity.Comp, appearance), visuals);
     }
 
     public bool SetTankVisuals(
