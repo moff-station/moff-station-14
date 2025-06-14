@@ -10,6 +10,6 @@ public sealed partial class GasTankVisualsComponent : Component
     [ViewVariables, AutoNetworkedField]
     public GasTankColorValues Visuals = new(default);
 
-    [DataField("visuals", readOnly: true, required: true)]
-    public ProtoId<GasTankVisualStylePrototype> InitialVisuals;
+    [DataField("visuals", readOnly: true)]
+    public ProtoId<GasTankVisualStylePrototype> InitialVisuals = GasTankVisualStylePrototype.DefaultId;
 }

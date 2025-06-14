@@ -40,6 +40,8 @@ public partial record struct GasTankColorValues
 [Prototype]
 public sealed partial class GasTankVisualStylePrototype : IPrototype
 {
+    public static readonly ProtoId<GasTankVisualStylePrototype> DefaultId = "Default";
+
     [IdDataField]
     public string ID { get; private set; } = default!;
 
