@@ -35,83 +35,64 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         ref AppearanceChangeEvent args
     )
     {
-        if (args.Sprite is not { } s)
+        if (args.Sprite is not { } sprite)
             return;
-        var sprite = new Entity<SpriteComponent?>(uid, s);
 
-        if (AppearanceSystem.TryGetData<Color>(
-                uid,
-                GasTankVisualsLayers.Tank,
-                out var tank,
-                args.Component
-            ))
-        {
-            // This should always be set, so no visibility toggling.
-            SpriteSystem.LayerSetColor(sprite, GasTankVisualsLayers.Tank, tank);
-        }
-
-        if (AppearanceSystem.TryGetData<Color>(
-                uid,
-                GasTankVisualsLayers.StripeMiddle,
-                out var middleStripe,
-                args.Component
-            ))
-        {
-            SpriteSystem.LayerSetVisible(sprite, GasTankVisualsLayers.StripeMiddle, true);
-            SpriteSystem.LayerSetColor(sprite, GasTankVisualsLayers.StripeMiddle, middleStripe);
-        }
-        else
-        {
-            SpriteSystem.LayerSetVisible(sprite, GasTankVisualsLayers.StripeMiddle, false);
-        }
-
-        if (AppearanceSystem.TryGetData<Color>(
-                uid,
-                GasTankVisualsLayers.StripeLow,
-                out var lowerStripe,
-                args.Component
-            ))
-        {
-            SpriteSystem.LayerSetVisible(sprite, GasTankVisualsLayers.StripeLow, true);
-            SpriteSystem.LayerSetColor(sprite, GasTankVisualsLayers.StripeLow, lowerStripe);
-        }
-        else
-        {
-            SpriteSystem.LayerSetVisible(sprite, GasTankVisualsLayers.StripeLow, false);
-        }
+        var entity = new Entity<AppearanceComponent, SpriteComponent>(uid, args.Component, sprite);
+        SetLayerVisibilityAndColor(entity, GasTankVisualsLayers.Tank);
+        SetLayerVisibilityAndColor(entity, GasTankVisualsLayers.StripeMiddle);
+        SetLayerVisibilityAndColor(entity, GasTankVisualsLayers.StripeLow);
 
         // update clothing & in-hand visuals.
         _itemSys.VisualsChanged(uid);
     }
 
+    private void SetLayerVisibilityAndColor(Entity<AppearanceComponent, SpriteComponent> entity,
+        GasTankVisualsLayers layer)
+    {
+        var sprite = new Entity<SpriteComponent?>(entity, entity.Comp2);
+        if (AppearanceSystem.TryGetData<Color>(
+                entity,
+                layer,
+                out var middleStripe,
+                entity
+            ))
+        {
+            SpriteSystem.LayerSetVisible(sprite, layer, true);
+            SpriteSystem.LayerSetColor(sprite, layer, middleStripe);
+        }
+        else
+        {
+            SpriteSystem.LayerSetVisible(sprite, layer, false);
+        }
+    }
+
     private void OnGetHeldVisuals(Entity<GasTankVisualsComponent> entity, ref GetInhandVisualsEvent args)
     {
-        OnGetGenericVisuals(entity, ref args.Layers);
+        OnGetGenericVisuals(entity, args.Layers);
     }
 
     private void OnGetEquipmentVisuals(Entity<GasTankVisualsComponent> entity, ref GetEquipmentVisualsEvent args)
     {
-        OnGetGenericVisuals(entity, ref args.Layers);
+        OnGetGenericVisuals(entity, args.Layers);
     }
 
     private void OnGetGenericVisuals(
         Entity<GasTankVisualsComponent> entity,
-        ref List<(string, PrototypeLayerData)> layers)
+        List<(string, PrototypeLayerData)> layers)
     {
         if (!TryComp<AppearanceComponent>(entity, out var appearance))
             return;
 
+        // Try to get appearance data for each layer in the sprite, setting the layer's visibility and color based on
+        // the appearance data.
         foreach (var (layerKey, layer) in layers)
         {
             if (!_reflect.TryParseEnumReference(layerKey, out var key))
                 continue;
 
             var hasAppearance = AppearanceSystem.TryGetData<Color>(entity, key, out var color, appearance);
-
-            // We only mess with the visibility of stripes.
-            if (key is GasTankVisualsLayers.StripeMiddle or GasTankVisualsLayers.StripeLow)
-                layer.Visible = hasAppearance;
-
+            layer.Visible = hasAppearance;
             layer.Color = color;
         }
     }
