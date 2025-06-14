@@ -2,8 +2,7 @@
 - type: cargoProduct
   id: CargoDoubleEmergencyTank
   icon:
-    sprite: Objects/Tanks/emergency_double.rsi
-    state: icon
+    entity: DoubleEmergencyOxygenTank # Moffstation
   product: CrateDoubleEmergencyTank
   cost: 2400
   category: cargoproduct-category-name-cargo

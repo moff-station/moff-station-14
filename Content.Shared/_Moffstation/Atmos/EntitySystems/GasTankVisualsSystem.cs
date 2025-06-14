@@ -1,0 +1,79 @@
+﻿using Content.Shared._Moffstation.Atmos.Components;
+using Content.Shared._Moffstation.Atmos.Visuals;
+using Robust.Shared.Prototypes;
+
+namespace Content.Shared._Moffstation.Atmos.EntitySystems;
+
+public sealed partial class GasTankVisualsSystem : EntitySystem
+{
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+
+    public static readonly ProtoId<GasTankVisualStylePrototype> DefaultStyleId = "Default";
+    public GasTankVisualStylePrototype DefaultStyle => _proto.Index(DefaultStyleId);
+
+    public override void Initialize()
+    {
+        SubscribeLocalEvent<GasTankVisualsComponent, ComponentInit>(OnInit);
+    }
+
+    private void OnInit(Entity<GasTankVisualsComponent> entity, ref ComponentInit args)
+    {
+        if (!_proto.TryIndex(entity.Comp.InitialVisuals, out var visuals) ||
+            !TryComp<AppearanceComponent>(entity, out var appearance))
+            return;
+
+        SetTankVisuals((entity, entity.Comp, appearance), visuals);
+    }
+
+    public bool SetTankVisuals(
+        Entity<GasTankVisualsComponent?, AppearanceComponent?> entity,
+        GasTankVisuals visuals
+    )
+    {
+        if (!Resolve(entity, ref entity.Comp1) ||
+            !Resolve(entity, ref entity.Comp2) ||
+            GetColorValues(visuals) is not { } colorValues)
+            return false;
+
+        entity.Comp1.Visuals = colorValues;
+        _appearance.SetData(entity, GasTankVisualsLayers.Tank, colorValues.TankColor, entity.Comp2);
+        SetOrRemoveAppearanceData((entity, entity.Comp2),
+            GasTankVisualsLayers.StripeMiddle,
+            colorValues.MiddleStripeColor);
+        SetOrRemoveAppearanceData((entity, entity.Comp2), GasTankVisualsLayers.StripeLow, colorValues.LowerStripeColor);
+
+        return true;
+    }
+
+    private GasTankColorValues? GetColorValues(GasTankVisuals visuals)
+    {
+        switch (visuals)
+        {
+            case GasTankVisuals.GasTankVisualsPrototype proto:
+                _proto.TryIndex(proto.Prototype, out var style);
+                return style?.ColorValues;
+            case GasTankVisuals.GasTankVisualsColorValues values:
+                return values;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    /// <summary>
+    /// If <paramref name="value"/> is null, <see cref="SharedAppearanceSystem.RemoveData">removes</see>
+    /// <paramref name="key"/> from <paramref name="entity"/>'s appearance data, otherwise
+    /// <see cref="SharedAppearanceSystem.SetData">sets</see> it to <paramref name="value"/>.
+    /// </summary>
+    private void SetOrRemoveAppearanceData(Entity<AppearanceComponent?> entity, Enum key, object? value)
+    {
+        if (value is not null)
+        {
+            _appearance.SetData(entity, key, value, entity);
+        }
+        else
+        {
+            _appearance.RemoveData(entity, key, entity);
+        }
+    }
+}
