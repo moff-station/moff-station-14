@@ -255,3 +255,13 @@
     - id: PirateAnchor
       amount: 1
 
+- type: entity
+  id: CratePirateHook
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: pirate hook crate
+  description: Contains two pirate hooks, useful for scratching up foes in a pinch
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHandsPirateHook
+      amount: 2

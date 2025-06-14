@@ -238,3 +238,13 @@
   cost: 3000
   category: cargoproduct-category-name-armory
   group: pirateMarket
+
+- type: cargoProduct
+  id: PirateAnchor
+  icon:
+    sprite: _NF/Objects/Weapons/Melee/pirate_hook.rsi
+    state: icon
+  product: CratePirateHook
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
