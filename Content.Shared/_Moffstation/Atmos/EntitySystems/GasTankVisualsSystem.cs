@@ -37,10 +37,10 @@ public sealed partial class GasTankVisualsSystem : EntitySystem
 
         entity.Comp1.Visuals = colorValues;
         _appearance.SetData(entity, GasTankVisualsLayers.Tank, colorValues.TankColor, entity.Comp2);
-        _appearance.SetData((entity, entity.Comp2),
+        SetOrRemoveAppearanceData((entity, entity.Comp2),
             GasTankVisualsLayers.StripeMiddle,
             colorValues.MiddleStripeColor);
-        _appearance.SetData((entity, entity.Comp2), GasTankVisualsLayers.StripeLow, colorValues.LowerStripeColor);
+        SetOrRemoveAppearanceData((entity, entity.Comp2), GasTankVisualsLayers.StripeLow, colorValues.LowerStripeColor);
 
         return true;
     }
@@ -56,6 +56,23 @@ public sealed partial class GasTankVisualsSystem : EntitySystem
                 return values;
             default:
                 throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    /// <summary>
+    /// If <paramref name="value"/> is null, <see cref="SharedAppearanceSystem.RemoveData">removes</see>
+    /// <paramref name="key"/> from <paramref name="entity"/>'s appearance data, otherwise
+    /// <see cref="SharedAppearanceSystem.SetData">sets</see> it to <paramref name="value"/>.
+    /// </summary>
+    private void SetOrRemoveAppearanceData(Entity<AppearanceComponent?> entity, Enum key, object? value)
+    {
+        if (value is not null)
+        {
+            _appearance.SetData(entity, key, value, entity);
+        }
+        else
+        {
+            _appearance.RemoveData(entity, key, entity);
         }
     }
 }
