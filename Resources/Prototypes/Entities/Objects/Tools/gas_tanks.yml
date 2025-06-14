@@ -248,7 +248,7 @@
     sprite: Objects/Tanks/emergency_clown.rsi
 
 - type: entity
-  parent: GasTankRoundBase
+  parent: [ GasTankVisualsBase, GasTankRoundBase ] # Moffstation - Inherit visuals from Moffstation Original `GasTankVisualsBase`
   id: AirTank
   name: air tank
   description: Mixed anyone? It can hold 5 L of gas.
@@ -261,7 +261,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: GasTankRoundBase
+  parent: [ GasTankVisualsBase, GasTankRoundBase ] # Moffstation - Inherit visuals from Moffstation Original `GasTankVisualsBase`
   id: NitrousOxideTank
   name: nitrous oxide tank
   description: Contains a mixture of air and nitrous oxide. Make sure you don't refill it with pure N2O. It can hold 5 L of gas.
