@@ -243,3 +243,25 @@
     contents:
     - id: AppraisalTool
       amount: 3
+
+- type: entity
+  id: CratePirateAnchor
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: pirate anchor crate
+  description: Contains an anchor suitable for a pirate ship. Also useful for prying doors and busting down walls.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PirateAnchor
+      amount: 1
+
+- type: entity
+  id: CratePirateHook
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: pirate hook crate
+  description: Contains two pirate hooks, useful for scratching up foes in a pinch
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHandsPirateHook
+      amount: 2
