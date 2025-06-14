@@ -62,6 +62,28 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineBrisbane
+  name: local fisherman figurine
+  description: A tall figurine dressed up as a passenger and his iconic fisherman hat. The hat appears to be glued on and will not come off.
+  components:
+  - type: Sprite
+    state: brisbane
+  - type: SpeakOnTrigger
+    pack: FigurinesBrisbane
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineBrisbaneBigHat
+  name: RARE big hatted fisherman figurine
+  description: That is a whole lotta hat for a single figurine to handle.
+  components:
+  - type: Sprite
+    state: brisbanebighat
+  - type: SpeakOnTrigger
+    pack: FigurinesBrisbaneBigHat
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCassiel
   name: Anxious Cargo Technician Figurine
   description: A figurine depicting a tall pink moth covered in scars, wearing a cargo tech jumpskirt. She looks incredibly nervous about something... or rather, a lot of things.
@@ -81,6 +103,18 @@
     state: cinnabar
   - type: SpeakOnTrigger
     pack: FigurinesCinnabar
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCooks
+  name: Small Chemist Lizard Figurine
+  description: A small sized lizard who is decked out with bright colours. He wears a jacket two sizes larger than he should and emits a faint smell of cigarettes.
+  components:
+  - type: Sprite
+    state: cooks
+  - type: SpeakOnTrigger
+    pack: FigurinesCooks
+  - type: LizardAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -158,6 +192,17 @@
     state: eclipse
   - type: SpeakOnTrigger
     pack: FigurinesEclipse
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineFaces
+  name: Concerningly Cheerful Research Director
+  description: A figurine depicting a researcher director with somewhat unsettling amounts of positivity.
+  components:
+  - type: Sprite
+    state: faces
+  - type: SpeakOnTrigger
+    pack: FigurinesFaces
 
 - type: entity
   parent: BaseFigurineMoff
@@ -320,6 +365,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineLightsSeeker
+  name: Charred Scientist Moth Figurine
+  description: The moth is mostly black and charred but it has small patches of almost pink? It's wearing a scientist jumpsuit, a unzipped labcoat and a water cup as a hat.
+  components:
+  - type: Sprite
+    state: lightsseeker
+  - type: SpeakOnTrigger
+    pack: FigurinesLightsSeeker
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineLilith
   name: Suspicious Blue Moth Figurine
   description: A figurine picturing a tired and stressed looking moth.
@@ -418,6 +474,17 @@
     state: sapphire
   - type: SpeakOnTrigger
     pack: FigurinesSapphire
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSamantha
+  name: Messy Looking Librarian
+  description: An overwhelmed looking woman who looks like she has not had the time nor the patience to brush her hair in a long time. This figure also seems to have a chip in the plastic over one of the eyes.
+  components:
+  - type: Sprite
+    state: samantha
+  - type: SpeakOnTrigger
+    pack: FigurinesSamantha
 
 - type: entity
   parent: BaseFigurineMoff

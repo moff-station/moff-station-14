@@ -136,14 +136,18 @@ SalvagePartsT4Spawner: SalvageLootSpawner
 SalvagePartsT3Spawner: SalvageLootSpawner
 SalvagePartsT3T4Spawner: SalvageLootSpawner
 SalvagePartsT2Spawner: SalvageLootSpawner
-#SuperCapacitorStockPart: CapacitorStockPart
-#QuadraticCapacitorStockPart: CapacitorStockPart
-#NanoManipulatorStockPart: MicroManipulatorStockPart
+#Moffstation - Revert machine parts - Start
+SuperCapacitorStockPart: CapacitorStockPart
+QuadraticCapacitorStockPart: CapacitorStockPart
+NanoManipulatorStockPart: MicroManipulatorStockPart
+#Moffstation - Revert machine parts - End
 PicoManipulatorStockPart: MicroManipulatorStockPart
 FemtoManipulatorStockPart: MicroManipulatorStockPart
-#AdvancedMatterBinStockPart: MatterBinStockPart
-#SuperMatterBinStockPart: MatterBinStockPart
-#BluespaceMatterBinStockPart: MatterBinStockPart
+#Moffstation - Revert machine parts - Start
+AdvancedMatterBinStockPart: MatterBinStockPart
+SuperMatterBinStockPart: MatterBinStockPart
+BluespaceMatterBinStockPart: MatterBinStockPart
+#Moffstation - Revert machine parts - End
 AnsibleSubspaceStockPart: null
 FilterSubspaceStockPart: null
 AmplifierSubspaceStockPart: null
@@ -639,8 +643,15 @@ SuitStorageBasic: SuitStorageEVA
 ClothingNeckCloakMiner: null
 
 # 2025-05-22
-MatterBinStockPart: MicroManipulatorStockPart
-CapacitorStockPart: MicroManipulatorStockPart
+#moffstation - Revert machine parts - Start
+#MatterBinStockPart: MicroManipulatorStockPart
+#CapacitorStockPart: MicroManipulatorStockPart
+#moffstation - Revert machine parts - End
+
+# 2025-05-26 Turrets
+WeaponEnergyTurretStation: WeaponEnergyTurretSecurity
+WeaponEnergyTurretStationControlPanel: WeaponEnergyTurretSecurityControlPanel
+WeaponEnergyTurretStationMachineCircuitboard: WeaponEnergyTurretSecurityMachineCircuitboard
 
 # 2025-05-30
 SpawnHonkBot: SpawnMobHonkBot
@@ -648,3 +659,31 @@ SpawnHonkBot: SpawnMobHonkBot
 # 2025-06-01
 CrateFoodPizzaLarge: CrateFoodPizza
 CrateFoodSoftdrinksLarge: CrateFoodSoftdrinks
+
+# 2025-06-09
+BarSignAlignTile: BarSign
+BarSignComboCafeAlignTile: BarSignComboCafe
+BarSignEmergencyRumPartyAlignTile: BarSignEmergencyRumParty
+BarSignLV426AlignTile: BarSignLV426
+BarSignMaidCafeAlignTile: BarSignMaidCafe
+BarSignMalteseFalconAlignTile: BarSignMalteseFalcon
+BarSignOfficerBeerskyAlignTile: BarSignOfficerBeersky
+BarSignRobustaCafeAlignTile: BarSignRobustaCafe
+BarSignTheAleNathAlignTile: BarSignTheAleNath
+BarSignTheBirdCageAlignTile: BarSignTheBirdCage
+BarSignTheCoderbusAlignTile: BarSignTheCoderbus
+BarSignTheDrunkCarpAlignTile: BarSignTheDrunkCarp
+BarSignEngineChangeAlignTile: BarSignEngineChange
+BarSignTheHarmbatonAlignTile: BarSignTheHarmbaton
+BarSignTheLightbulbAlignTile: BarSignTheLightbulb
+BarSignTheLooseGooseAlignTile: BarSignTheLooseGoose
+BarSignTheNetAlignTile: BarSignTheNet
+BarSignTheOuterSpessAlignTile: BarSignTheOuterSpess
+BarSignTheSinguloAlignTile: BarSignTheSingulo
+BarSignTheSunAlignTile: BarSignTheSun
+BarSignWiggleRoomAlignTile: BarSignWiggleRoom
+BarSignZocaloAlignTile: BarSignZocalo
+BarSignEmprahAlignTile: BarSignEmprah
+BarSignSpacebucksAlignTile: BarSignSpacebucks
+BarSignMaltroachAlignTile: BarSignMaltroach
+BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes

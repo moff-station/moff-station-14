@@ -124,6 +124,8 @@
     sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
   - type: VisionCorrection
   - type: IdentityBlocker
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   parent: ClothingEyesBase
@@ -137,6 +139,7 @@
     sprite: Clothing/Eyes/Glasses/sunglasses.rsi
   - type: Tag
     tags:
+    - SunglassesCheap # Moffstation - Medical Sunglasses
     - HamsterWearable
     - WhitelistChameleon
   - type: IdentityBlocker
