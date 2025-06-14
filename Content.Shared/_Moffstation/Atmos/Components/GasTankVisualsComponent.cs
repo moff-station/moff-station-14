@@ -7,9 +7,9 @@ namespace Content.Shared._Moffstation.Atmos.Components;
 [RegisterComponent, AutoGenerateComponentState, Access(typeof(GasTankVisualsSystem))]
 public sealed partial class GasTankVisualsComponent : Component
 {
-    [DataField(tag: "appearance"), AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public GasTankColorValues Visuals = new(default);
 
-    [DataField("visuals", required: true)]
+    [DataField("visuals", readOnly: true, required: true)]
     public ProtoId<GasTankVisualStylePrototype> InitialVisuals;
 }
