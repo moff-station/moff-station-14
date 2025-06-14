@@ -243,3 +243,15 @@
     contents:
     - id: AppraisalTool
       amount: 3
+
+- type: entity
+  id: CratePirateAnchor
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: pirate anchor crate
+  description: Contains an anchor suitable for a pirate ship. Also useful for prying doors and busting down walls.
+  components:
+  - type: StorageFill
+    contents:
+    - id: PirateAnchor
+      amount: 1
+
