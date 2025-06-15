@@ -21,7 +21,7 @@ namespace Content.Shared.SprayPainter;
 /// System for painting paintable objects using a spray painter.
 /// Pipes are handled serverside since AtmosPipeColorSystem is server only.
 /// </summary>
-public abstract class SharedSprayPainterSystem : EntitySystem
+public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffstation - Made partial
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] protected readonly IPrototypeManager Proto = default!;
@@ -35,6 +35,7 @@ public abstract class SharedSprayPainterSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        InitializeGasTankPainting(); // Moffstation
 
         SubscribeLocalEvent<SprayPainterComponent, MapInitEvent>(OnMapInit);
 

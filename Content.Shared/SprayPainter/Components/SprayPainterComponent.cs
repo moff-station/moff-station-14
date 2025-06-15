@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Atmos.Visuals; // Moffstation
 using Content.Shared.Decals;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -49,6 +50,26 @@ public sealed partial class SprayPainterComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public Dictionary<string, string> StylesByGroup = new();
+
+    // Moffstation - Start
+    /// <summary>
+    /// The amount of time it takes to paint a gas tank.
+    /// </summary>
+    [DataField]
+    public TimeSpan GasTankSprayTime = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// The currently configured <see cref="GasTankVisuals"/> to which painted tanks will be changed.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public GasTankVisuals GasTankVisuals;
+
+    /// <summary>
+    /// The cost of spray painting a gas tank, in charges.
+    /// </summary>
+    [DataField]
+    public int GasTankChargeCost = 1;
+    // Moff-station - End
 
     /// <summary>
     /// The currently open tab of the painter
