@@ -109,6 +109,39 @@ namespace Content.Shared.Body.Systems
             ent.Comp.UpdateInterval /= args.Multiplier;
         }
 
+        // Moffstation - Start - Helper functions for the StomachSystem
+        public float MaxTransferableSolution(
+            EntityUid uid,
+            Solution solution,
+            float quantity,
+            StomachComponent? stomach = null,
+            SolutionContainerManagerComponent? solutions = null)
+        {
+            return Resolve(uid, ref stomach, ref solutions, logMissing: false)
+                   && _solutionContainerSystem.ResolveSolution((uid, solutions),
+                       DefaultSolutionName,
+                       ref stomach.Solution,
+                       out var stomachSolution)
+                ? (float) stomachSolution.MaxTransferableSolution(solution, quantity)
+                : 0.0f;
+        }
+
+        public float MaxTransferableSolution(
+            EntityUid uid,
+            float quantity,
+            StomachComponent? stomach = null,
+            SolutionContainerManagerComponent? solutions = null)
+        {
+            return Resolve(uid, ref stomach, ref solutions, logMissing: false)
+                   && _solutionContainerSystem.ResolveSolution((uid, solutions),
+                       DefaultSolutionName,
+                       ref stomach.Solution,
+                       out var stomachSolution)
+                ? (float) stomachSolution.MaxTransferableSolution(quantity)
+                : 0.0f;
+        }
+        // Moffstation - End
+
         public bool CanTransferSolution(
             EntityUid uid,
             Solution solution,

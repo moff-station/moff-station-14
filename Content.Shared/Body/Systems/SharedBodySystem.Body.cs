@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Shared._Moffstation.Body.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
@@ -110,6 +111,20 @@ public partial class SharedBodySystem
         var protoRoot = prototype.Slots[prototype.Root];
         if (protoRoot.Part is null)
             return;
+
+        // Moffstation - Start - Enable OrganSwapComponent
+        if (TryComp<OrganSwapComponent>(bodyEntity, out var organSwaps))
+        {
+            foreach ((var slotName, var slot) in prototype.Slots)
+            {
+                foreach ((var organSlotName, var organ) in slot.Organs)
+                {
+                    if (organSwaps.OrganSwaps.TryGetValue(organSlotName, out var newOrgan))
+                        slot.Organs[organSlotName] = newOrgan;
+                }
+            }
+        }
+        // Moffstation - End
 
         // This should already handle adding the entity to the root.
         var rootPartUid = SpawnInContainerOrDrop(protoRoot.Part, bodyEntity, BodyRootContainerId);
