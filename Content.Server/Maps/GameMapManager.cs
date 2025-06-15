@@ -249,8 +249,7 @@ public sealed class GameMapManager : IGameMapManager
     // Moffstation - Start - setters and getters for the rollover votes
     public int GetRollOverVotes(GameMapPrototype map)
     {
-        Debug.Assert(_rollOverVotes.ContainsKey(map),
-            $"Attempted to get rollover votes for unknown map \"{map.MapName}\"");
+        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to get rollover votes for unknown map \"{map.MapName}\"");
         return _rollOverVotes.GetValueOrDefault(map);
     }
 
