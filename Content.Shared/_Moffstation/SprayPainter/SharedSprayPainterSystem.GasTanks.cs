@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Moffstation.Atmos.Components;
 using Content.Shared._Moffstation.Atmos.EntitySystems;
 using Content.Shared._Moffstation.Atmos.Visuals;
+using Content.Shared.Charges.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
@@ -42,6 +43,11 @@ public abstract partial class SharedSprayPainterSystem
         if (!painted)
             return;
 
+        Charges.TryUseCharges(new Entity<LimitedChargesComponent?>(
+                ent,
+                EnsureComp<LimitedChargesComponent>(ent)),
+            ent.Comp.GasTankChargeCost
+        );
         Audio.PlayPredicted(ent.Comp.SpraySound, ent, args.Args.User);
         AdminLogger.Add(LogType.Action,
             LogImpact.Low,
