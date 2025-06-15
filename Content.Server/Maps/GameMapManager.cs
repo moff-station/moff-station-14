@@ -34,7 +34,7 @@ public sealed class GameMapManager : IGameMapManager
 
     private ISawmill _log = default!;
 
-    private Dictionary<GameMapPrototype, int> _rollOverVotes = new();   // Moffstation - Rollover votes stored here
+    private readonly Dictionary<GameMapPrototype, int> _rollOverVotes = new();   // Moffstation - Rollover votes stored here
 
     public void Initialize()
     {
@@ -249,11 +249,14 @@ public sealed class GameMapManager : IGameMapManager
     // Moffstation - Start - setters and getters for the rollover votes
     public int GetRollOverVotes(GameMapPrototype map)
     {
-        return _rollOverVotes[map];
+        Debug.Assert(_rollOverVotes.ContainsKey(map),
+            $"Attempted to get rollover votes for unknown map \"{map.MapName}\"");
+        return _rollOverVotes.GetValueOrDefault(map);
     }
 
     public void SetRollOverVotes(GameMapPrototype map, int votes)
     {
+        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to set rollover votes for unknown map \"{map.MapName}\"");
         _rollOverVotes[map] = votes;
     }
     // Moffstation - End
