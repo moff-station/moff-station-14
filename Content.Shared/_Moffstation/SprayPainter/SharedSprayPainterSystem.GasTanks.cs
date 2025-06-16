@@ -11,6 +11,7 @@ using Robust.Shared.Serialization;
 // NOT a moffstation namespace because this partial class appends behavior to an existing class.
 namespace Content.Shared.SprayPainter;
 
+// Additions to SharedSprayPainterSystem which are particular to GasTankVisuals.
 public abstract partial class SharedSprayPainterSystem
 {
     [Dependency] private readonly GasTankVisualsSystem _gasTankVisuals = default!;
@@ -29,6 +30,7 @@ public abstract partial class SharedSprayPainterSystem
 
     private void OnPainterInit(Entity<SprayPainterComponent> entity, ref ComponentInit args)
     {
+        // Initialize painters' configured visuals to the default.
         entity.Comp.GasTankVisuals = _gasTankVisuals.DefaultStyle;
     }
 
@@ -39,25 +41,28 @@ public abstract partial class SharedSprayPainterSystem
             args.Args.Target is not { } target)
             return;
 
-        var painted = _gasTankVisuals.SetTankVisuals(target, ent.Comp.GasTankVisuals);
+        var painted = _gasTankVisuals.TrySetTankVisuals(target, ent.Comp.GasTankVisuals);
         if (!painted)
             return;
 
-        Charges.TryUseCharges(new Entity<LimitedChargesComponent?>(
-                ent,
-                EnsureComp<LimitedChargesComponent>(ent)),
+        Charges.TryUseCharges(
+            (ent, EnsureComp<LimitedChargesComponent>(ent)),
             ent.Comp.GasTankChargeCost
         );
         Audio.PlayPredicted(ent.Comp.SpraySound, ent, args.Args.User);
-        AdminLogger.Add(LogType.Action,
+        AdminLogger.Add(
+            LogType.Action,
             LogImpact.Low,
-            $"{ToPrettyString(args.Args.User):user} painted {ToPrettyString(args.Args.Target.Value):target}");
+            $"{ToPrettyString(args.Args.User):user} painted {ToPrettyString(args.Args.Target.Value):target}"
+        );
 
         args.Handled = true;
     }
 
-    private void OnPainterConfigUpdated(Entity<SprayPainterComponent> ent,
-        ref SprayPainterSetGasTankVisualsMessage args)
+    private void OnPainterConfigUpdated(
+        Entity<SprayPainterComponent> ent,
+        ref SprayPainterSetGasTankVisualsMessage args
+    )
     {
         if (args.Visuals.Equals(ent.Comp.GasTankVisuals))
             return;

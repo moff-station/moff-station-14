@@ -26,7 +26,9 @@ public sealed partial class GasTankPainterWindow : Control
     private bool _suppressSelectingStyleCallback = false;
     private bool _suppressChangingColorsCallbackAndPreviewUpdate = false;
 
-    // This generic function is used as the callback for all of the color sliders and "use this stripe" checkboxes.
+    /// <summary>
+    /// This generic function is used as the callback for all of the color sliders and "use this stripe" checkboxes.
+    /// </summary>
     private void OnColorsChanged<T>(T unused)
     {
         if (_suppressChangingColorsCallbackAndPreviewUpdate)
@@ -44,6 +46,7 @@ public sealed partial class GasTankPainterWindow : Control
         UpdatePreview(colors);
     }
 
+    /// <param name="onVisualsPicked">The behavior to invoke when the configured visuals are changed.</param>
     public GasTankPainterWindow(Action<GasTankVisuals>? onVisualsPicked)
     {
         RobustXamlLoader.Load(this);
@@ -90,13 +93,13 @@ public sealed partial class GasTankPainterWindow : Control
     {
         if (Preview.Entity is { } entity)
         {
-            _gasTankVisuals.SetTankVisuals(entity.Owner, colorValues);
+            _gasTankVisuals.TrySetTankVisuals(entity.Owner, colorValues);
         }
     }
 
-    public void SetSelectedStyle(GasTankVisuals style)
+    public void SetVisuals(GasTankVisuals visuals)
     {
-        switch (style)
+        switch (visuals)
         {
             case GasTankVisuals.GasTankVisualsPrototype p when _proto.TryIndex(p.Prototype, out var prototype):
             {

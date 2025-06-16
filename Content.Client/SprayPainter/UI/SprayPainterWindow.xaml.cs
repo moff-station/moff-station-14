@@ -291,7 +291,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
     // Moffstation - Start
     public void SelectGasTankVisuals(GasTankVisuals style)
     {
-        _gasTankControl?.SetSelectedStyle(style);
+        _gasTankControl?.SetVisuals(style);
     }
     // Moffstation - End
 

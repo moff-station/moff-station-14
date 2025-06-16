@@ -10,6 +10,10 @@ using Robust.Shared.Reflection;
 
 namespace Content.Client._Moffstation.Atmos.Visualizers;
 
+/// <summary>
+/// This <see cref="VisualizerSystem{T}"/> manages gas tanks' visuals as described by <see cref="GasTankVisualsLayers"/>
+/// and <see cref="GasTankVisualsComponent"/>.
+/// </summary>
 public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVisualsComponent>
 {
     [Dependency] private readonly IReflectionManager _reflect = default!;
@@ -47,19 +51,21 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         _itemSys.VisualsChanged(uid);
     }
 
-    private void SetLayerVisibilityAndColor(Entity<AppearanceComponent, SpriteComponent> entity,
-        GasTankVisualsLayers layer)
+    private void SetLayerVisibilityAndColor(
+        Entity<AppearanceComponent, SpriteComponent> entity,
+        GasTankVisualsLayers layer
+    )
     {
         var sprite = new Entity<SpriteComponent?>(entity, entity.Comp2);
         if (AppearanceSystem.TryGetData<Color>(
                 entity,
                 layer,
-                out var middleStripe,
+                out var color,
                 entity
             ))
         {
             SpriteSystem.LayerSetVisible(sprite, layer, true);
-            SpriteSystem.LayerSetColor(sprite, layer, middleStripe);
+            SpriteSystem.LayerSetColor(sprite, layer, color);
         }
         else
         {
