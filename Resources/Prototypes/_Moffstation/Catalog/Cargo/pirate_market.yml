@@ -135,7 +135,7 @@
     sprite: Objects/Misc/handcuffs.rsi
     state: handcuff
   product: CratePirateKidnap
-  cost: 3500
+  cost: 4000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -240,11 +240,71 @@
   group: pirateMarket
 
 - type: cargoProduct
-  id: PirateAnchor
+  id: PirateHook
   icon:
     sprite: _NF/Objects/Weapons/Melee/pirate_hook.rsi
     state: icon
   product: CratePirateHook
   cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateReinforcement
+  icon:
+    sprite: _Moffstation/Objects/Devices/conchshell.rsi
+    state: icon
+  product: CratePirateReinforcement
+  cost: 15000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateReinforcementSkeleton
+  icon:
+    sprite: _Moffstation/Objects/Devices/conchshell.rsi
+    state: icon
+  product: CratePirateReinforcementSkeleton
+  cost: 20000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateReinforcementMonkey
+  icon:
+    sprite: _Moffstation/Objects/Devices/conchshell.rsi
+    state: icon
+  product: CratePirateReinforcementMonkey
+  cost: 10000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateSkeletonCoin
+  icon:
+    sprite: _Moffstation/Objects/Devices/skeletoncoin.rsi
+    state: icon
+  product: CratePirateSkeletonCoin
+  cost: 13000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateGasMask
+  icon:
+    sprite: _Moffstation/Clothing/Mask/pirateweldingmask.rsi
+    state: icon
+  product: CratePirateGasMask
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateRobotParrot
+  icon:
+    sprite: _Moffstation/Objects/Fun/robotparrot.rsi
+    state: icon
+  product: CratePirateRobotParrot
+  cost: 1500
   category: cargoproduct-category-name-armory
   group: pirateMarket

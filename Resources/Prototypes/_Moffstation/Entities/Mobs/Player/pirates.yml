@@ -6,3 +6,61 @@
   id: MobHumanPirate
   components:
   - type: RandomHumanoidAppearance
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanPirateReinforcement
+  name: syndicate agent
+  suffix: Human, Pirate
+  components:
+  - type: RandomHumanoidAppearance
+  - type: Loadout
+    prototypes: [PirateReinforcementGear]
+    roleLoadout: [ RoleSurvivalNukie ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: entity
+  parent: MobSkeletonPerson
+  id: MobSkeletonPirateReinforcement
+  name: skeleton pirate
+  suffix: Skeleton, Pirate
+  components:
+  - type: Loadout
+    prototypes: [PirateReinforcementGear]
+    roleLoadout: [ RoleSurvivalNukie ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: entity
+  parent: MobMonkey
+  id: MobMonkeyPirateReinforcement
+  name: syndicate agent
+  suffix: Monkey, Pirate
+  components:
+  - type: Loadout
+    prototypes: [PirateReinforcementGear]
+    roleLoadout: [ RoleSurvivalNukie ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  - type: NpcFactionMember
+    factions:
+    - Pirate

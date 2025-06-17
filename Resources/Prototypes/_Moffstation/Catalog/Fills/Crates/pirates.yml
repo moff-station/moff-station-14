@@ -145,6 +145,8 @@
       amount: 1
     - id: ClothingUniformJumpsuitPrisoner
       amount: 2
+    - id: Stunprod
+      amount: 2
 
 - type: entity
   id: CratePirateHandcannon
@@ -224,7 +226,7 @@
   id: CratePirateShotgunAmmo
   parent: [ CratePirateChestSecure, BaseSecurityContraband ]
   name: shotgun ammo crate
-  description: contains 3 appraisal tools. good for calculating the value of (stolen) goods.
+  description: Contains a stockpile of standard .50 shotgun ammo
   components:
   - type: StorageFill
     contents:
@@ -237,7 +239,7 @@
   id: CratePirateAppraisalTool
   parent: [ CratePirateChestSecure, BaseSecurityContraband ]
   name: appraisal tool crate
-  description: Contains a stockpile of standard .50 shotgun ammo
+  description: Contains 3 appraisal tools. good for calculating the value of (stolen) goods.
   components:
   - type: StorageFill
     contents:
@@ -265,3 +267,69 @@
     contents:
     - id: ClothingHandsPirateHook
       amount: 2
+
+- type: entity
+  id: CratePirateReinforcement
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: pirate reinforcement crate
+  description: Contains a reinforcement conch shell, capable of calling in another pirate for assistance
+  components:
+  - type: StorageFill
+    contents:
+    - id: ReinforcementRadioPirate
+      amount: 1
+
+- type: entity
+  id: CratePirateReinforcementSkeleton
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: skeleton pirate reinforcement crate
+  description: Contains a reinforcement conch shell, capable of calling in a skeleton pirate for assistance
+  components:
+  - type: StorageFill
+    contents:
+    - id: ReinforcementRadioPirateSkeleton
+      amount: 1
+
+- type: entity
+  id: CratePirateReinforcementMonkey
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: monkey pirate reinforcement crate
+  description: Contains a reinforcement conch shell, capable of calling in a monkey pirate for assistance
+  components:
+  - type: StorageFill
+    contents:
+    - id: ReinforcementRadioPirateMonkey
+      amount: 1
+
+- type: entity
+  id: CratePirateSkeletonCoin
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: skeleton coin crate
+  description: Contains a coin said to transform its owner into an immortal skeleton...
+  components:
+  - type: StorageFill
+    contents:
+    - id: SkeletonCoin
+      amount: 1
+
+- type: entity
+  id: CratePirateGasMask
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: gas mask crate
+  description: Contains 3 gas masks, specially tuned to come with welding and flash protection.
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskGasPirate
+      amount: 3
+
+- type: entity
+  id: CratePirateRobotParrot
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: robot parrot crate
+  description: Contains 3 robot parrots, tried and true companions for the scurviest of pirates.
+  components:
+  - type: StorageFill
+    contents:
+    - id: RobotParrot
+      amount: 3

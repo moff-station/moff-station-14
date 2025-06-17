@@ -1,0 +1,31 @@
+- type: entity
+  id: BorgChassisPirate
+  parent: BaseBorgChassisSyndicate
+  name: pirate assault cyborg
+  description: A hardy machine, built for killin' landlubbers.
+  components:
+  - type: Sprite
+    layers:
+    - state: synd_sec
+    - state: synd_sec_e
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: synd_sec_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 3
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleSyndicate
+      - BorgModuleSyndicateAssault
+    hasMindState: synd_sec_e
+    noMindState: synd_sec
+  - type: InteractionPopup
+    interactSuccessString: petting-success-syndicate-cyborg
+    interactFailureString: petting-failure-syndicate-cyborg
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg

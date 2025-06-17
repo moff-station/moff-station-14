@@ -1,56 +1,68 @@
 - type: entity
-  parent: ReinforcementRadio
-  id: ReinforcementRadioPirate # Reinforcement radio exclusive to nukeops uplink
+  parent: [BaseItem, BaseSyndicateContraband]
+  abstract: true
+  id: ReinforcementRadioPirateBase
   name: pirate reinforcement radio
-  description: Call in an extra pirate crew of questionable quality!
+  description: Call in an extra pirate to assist ye. YARG!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/conchshell.rsi
+    layers:
+    - state: icon
+
+- type: entity
+  parent: ReinforcementRadioPirateBase
+  id: ReinforcementRadioPirate
+  name: pirate reinforcement radio
+  description: Call in an extra pirate to assist ye. YARG!
   suffix: Pirates
   components:
   - type: GhostRole
-    name: ghost-role-information-nukeop-reinforcement-name
-    description: ghost-role-information-nukeop-reinforcement-description
-    rules: ghost-role-information-nukeop-reinforcement-rules
+    name: roles-antag-pirate-crew-name
+    description: roles-antag-pirate-crew-objective
+    rules: ghost-role-information-pirate-rules
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
     - MindRolePirateCrew
     raffle:
       settings: default
   - type: GhostRoleMobSpawner
-    prototype: MobHumanSyndicateAgentNukeops
+    prototype: MobHumanPirateReinforcement
 
 - type: entity
-  parent: ReinforcementRadio
-  id: ReinforcementRadioPirateSkeleton # Reinforcement radio exclusive to nukeops uplink
+  parent: ReinforcementRadioPirateBase
+  id: ReinforcementRadioPirateSkeleton
   name: pirate skeleton reinforcement radio
   description: Call in an ancient pirate skeleton to assist ye. YARG!
   suffix: Pirates
   components:
   - type: GhostRole
-    name: ghost-role-information-nukeop-reinforcement-name
-    description: ghost-role-information-nukeop-reinforcement-description
-    rules: ghost-role-information-nukeop-reinforcement-rules
+    name: roles-antag-pirate-crew-skeleton-name
+    description: roles-antag-pirate-crew-objective
+    rules: ghost-role-information-pirate-rules
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
     - MindRolePirateCrew
     raffle:
       settings: default
   - type: GhostRoleMobSpawner
-    prototype: MobHumanSyndicateAgentNukeops
+    prototype: MobSkeletonPirateReinforcement
 
 - type: entity
-  parent: ReinforcementRadio
-  id: ReinforcementRadioPirateMonkey # Reinforcement radio exclusive to nukeops uplink
+  parent: ReinforcementRadioPirateBase
+  id: ReinforcementRadioPirateMonkey
   name: pirate monkey reinforcement radio
   description: Call in a pirate monkey to assist ye. YARG!
   suffix: Pirates
   components:
   - type: GhostRole
-    name: ghost-role-information-nukeop-reinforcement-name
-    description: ghost-role-information-nukeop-reinforcement-description
-    rules: ghost-role-information-nukeop-reinforcement-rules
+    name: roles-antag-pirate-crew-monkey-name
+    description: roles-antag-pirate-crew-objective
+    rules: ghost-role-information-pirate-rules
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
     - MindRolePirateCrew
     raffle:
       settings: default
   - type: GhostRoleMobSpawner
-    prototype: MobHumanSyndicateAgentNukeops
+    prototype: MobMonkeyPirateReinforcement
