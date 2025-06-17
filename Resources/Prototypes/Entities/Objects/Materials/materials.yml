@@ -12,6 +12,7 @@
   - type: Tag
     tags:
       - RawMaterial
+      - DroneUsable # Moffstation - Add drone PR
   - type: Damageable
     damageContainer: Inorganic
   - type: Destructible
@@ -140,6 +141,7 @@
       - ClothMade
       - Gauze
       - RawMaterial
+      - DroneUsable # Moffstation - Add drone PR
   - type: Construction
     graph: WebObjects # not sure if I should either keep this here or just make another prototype. Will keep it here just in case.
     node: cloth
@@ -205,6 +207,7 @@
     tags:
       - ClothMade
       - RawMaterial
+      - DroneUsable # Moffstation - Add drone PR
   - type: Item
     heldPrefix: durathread
 
@@ -254,6 +257,7 @@
     tags:
     - Wooden
     - RawMaterial
+    - DroneUsable # Moffstation - Add drone PR
   - type: Extractable
     grindableSolutionName: wood
   - type: SolutionContainerManager
@@ -443,6 +447,7 @@
       - ClothMade
       - RawMaterial
       - Boll
+      - DroneUsable # Moffstation - Add drone PR
   - type: Material
   - type: PhysicalComposition
     materialComposition:

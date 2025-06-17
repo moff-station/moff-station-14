@@ -1,0 +1,6 @@
+# To add custom drone names, navigate to /Locale/en-US/_Imp/Datasets/Names/drones.ftl. Add your desired names with the established prefix, and change the count in this file to match the total number of variables.
+- type: localizedDataset
+  id: names_drone
+  values:
+    prefix: names-drone-dataset-
+    count: 1

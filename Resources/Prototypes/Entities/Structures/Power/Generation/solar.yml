@@ -179,6 +179,9 @@
     graph: SolarPanel
     node: solarpanel
   - type: SolarPanelReplacementMarker
+  - type: Tag
+    tags:
+    - DroneUsable # Moffstation - Add drone PR
 
 - type: entity
   id: SolarPanelBroken

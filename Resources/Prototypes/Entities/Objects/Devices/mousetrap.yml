@@ -55,6 +55,9 @@
           mask:
             - ItemMask
     - type: Rotatable
+    - type: Tag
+      tags:
+      - DroneUsable # Moffstation - Add drone PR
 
 - type: entity
   name: mousetrap
