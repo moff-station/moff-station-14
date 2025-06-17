@@ -1,20 +1,29 @@
 - type: entity
   id: BorgChassisPirate
-  parent: BaseBorgChassisSyndicate
+  parent: BaseBorgChassis
   name: pirate assault cyborg
   description: A hardy machine, built for killin' landlubbers.
   components:
+  - type: NpcFactionMember
+    factions:
+    - Pirates
   - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/pirate_borg_chassis.rsi
     layers:
-    - state: synd_sec
-    - state: synd_sec_e
+    - state: pirate
+    - state: pirate_e
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: synd_sec_l
+    - state: pirate_l
       shader: unshaded
       map: ["light"]
       visible: false
+  - type: Access
+    tags:
+    - Pirate
+  - type: AccessReader
+    access: [["Pirate"]]
   - type: BorgChassis
     maxModules: 3
     moduleWhitelist:
@@ -22,8 +31,26 @@
       - BorgModuleGeneric
       - BorgModuleSyndicate
       - BorgModuleSyndicateAssault
-    hasMindState: synd_sec_e
-    noMindState: synd_sec
+    hasMindState: pirate_e
+    noMindState: pirate
+  - type: SiliconLawProvider
+    laws: SyndicateStatic
+    subverted: true
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Pirate
+  - type: ActiveRadio
+    channels:
+    - Pirate
+  - type: MovementAlwaysTouching
+  - type: Speech
+    speechSounds: SyndieBorg
+    allowedEmotes:
+    - Laugh
+  - type: Vocal
+    sounds:
+      Unsexed: UnisexSiliconSyndicate
   - type: InteractionPopup
     interactSuccessString: petting-success-syndicate-cyborg
     interactFailureString: petting-failure-syndicate-cyborg
