@@ -191,13 +191,13 @@ figurines-light-3 = Buy ShadowBucks™ today!
 figurines-light-4 = Advanced Anomalous Research, for the gun.
 figurines-light-5 = Welcome to the Shadow Realm.
 
-figurines-lightsseeker-1 = Reak
+figurines-lightsseeker-1 = Real
 figurines-lightsseeker-2 = Vodjaha, p'lea'se.
 figurines-lightsseeker-3 = whhhouughh, whaat haappeeneed?
 figurines-lightsseeker-4 = What do you mean it's making only 50 points!
 figurines-lightsseeker-5 = Guh
 figurines-lightsseeker-6 = I am going to explode soon.
-figurines-lightsseeker-7 = Where's Cassiel
+figurines-lightsseeker-7 = Where's Cassiel?
 
 figurines-larry-1 = Friendship is magic!
 figurines-larry-2 = Friend shaped!
