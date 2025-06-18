@@ -56,3 +56,22 @@
     interactFailureString: petting-failure-syndicate-cyborg
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+
+- type: entity
+  id: BorgChassisPirateBattery
+  parent: BorgChassisPirate
+  name: pirate assault cyborg
+  description: A hardy machine, built for killin' landlubbers.
+  suffix: Battery, Module, Pirate
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - PositronicBrain
+      borg_module:
+      - BorgModulePirate
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
