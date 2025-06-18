@@ -5,13 +5,14 @@
   description: A module that comes with a grappling hook, anchor, and self-reloading pepperbox shotgun.
   components:
   - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Robotics/pirate_borg.rsi
     layers:
-    - state: syndicate
-    - state: icon-syndicate
+    - state: pirate
+    - state: icon-pirate
   - type: ItemBorgModule
     items:
     - GrapplingHook
     - PirateAnchor
-    - AccessBreaker
+    - WeaponShotgunPepperboxRecharge
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-operative-module }
