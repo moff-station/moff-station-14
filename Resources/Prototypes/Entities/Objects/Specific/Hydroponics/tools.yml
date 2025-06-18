@@ -148,10 +148,16 @@
     grid:
     - 0,0,7,4
     maxItemSize: Small
-    quickInsert: true
-    areaInsert: true
+# Moffstation - Start
+#    quickInsert: true
+#    areaInsert: true
+# Moffstation - End
     whitelist:
       components:
         - Produce
         - Seed
   - type: Dumpable
+  # Moffstation - Start
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End

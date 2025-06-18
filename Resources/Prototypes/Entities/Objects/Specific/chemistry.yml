@@ -652,12 +652,18 @@
   - type: Storage
     grid:
     - 0,0,4,1
-    quickInsert: true
-    areaInsert: true
-    areaInsertRadius: 1
+# Moffstation - Start
+#    quickInsert: true
+#    areaInsert: true
+#    areaInsertRadius: 1
+# Moffstation - End
     storageInsertSound: /Audio/Effects/pill_insert.ogg
     storageRemoveSound: /Audio/Effects/pill_remove.ogg
     whitelist:
       tags:
       - Pill
   - type: Dumpable
+  # Moffstation - Start
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End
