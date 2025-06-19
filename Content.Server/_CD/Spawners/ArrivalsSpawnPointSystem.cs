@@ -1,8 +1,13 @@
 using System.Linq;
+using Content.Server.GameTicking;
+using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
+using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._CD.Spawners;
 
@@ -12,6 +17,10 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
+
 
     public override void Initialize()
     {
@@ -20,6 +29,15 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
 
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
+        // Check if cvar disables this feature
+        if (!_cfgManager.GetCVar(CCVars.StartAtArrivals))
+            return;
+
+        // If it's a latejoin and past the forced arrivals timer, allow choosing cryosleep
+        if (args is { LateJoin: true, Profile.SpawnPriority: SpawnPriorityPreference.Cryosleep } &&
+            _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan) > TimeSpan.FromMinutes(_cfgManager.GetCVar(CCVars.SpawnPreferenceDelay)))
+            return;
+
         // Ensure they have a job, so that we won't end up making mobs spawn on arrivals.
         if (args.JobId == null)
             return;
