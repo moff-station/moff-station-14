@@ -848,7 +848,7 @@
       raffle:
         settings: default
     - type: Loadout
-      prototypes: [ VisitorBlackmarketeer, VisitorBlackmarketeer ]
+      prototypes: [ MercenaryBasicGear, MercenaryBasicGear ] # Moffstation - (Mercenary Loadouts)
       roleLoadout: [ RoleSurvivalStandard ]
 
 - type: randomHumanoidSettings
