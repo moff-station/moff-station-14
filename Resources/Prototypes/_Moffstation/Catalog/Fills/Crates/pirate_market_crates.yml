@@ -392,7 +392,7 @@
       amount: 2
 
 - type: entity
-  id: CrateFlyingDutchman
+  id: CratePirateFlyingDutchman
   parent: [ CratePirateDavyJones, BaseSecurityContraband ]
   name: flying dutchman injector crate
   description: Contains a injector allowing the user to summon an incarnation of a legendary ghost, the Flying Dutchman
@@ -403,7 +403,7 @@
       amount: 1
 
 - type: entity
-  id: CrateSkeletonKey
+  id: CratePirateSkeletonKey
   parent: [ CratePirateDavyJones, BaseSecurityContraband ]
   name: skeleton key crate
   description: Contains a injector allowing the user to summon an incarnation of a legendary ghost, the Flying Dutchman
@@ -414,7 +414,7 @@
       amount: 1
 
 - type: entity
-  id: CrateDeepSpaceMG
+  id: CratePirateDeepSpaceMG
   parent: [ CratePirateDavyJones, BaseSecurityContraband ]
   name: deep space machine gun crate
   description: Contains a deep space machine gun, used by the most treacherous of deep space pirates
@@ -422,4 +422,48 @@
   - type: StorageFill
     contents:
     - id: WeaponLightMachineGunDsmg
+      amount: 1
+
+- type: entity
+  id: CratePirateBuccaneerHardsuit
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: buccaneer hardsuit crate
+  description: Contains a buccaneer hardsuit, a well-rounded hardsuit for wealthy pirates
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitPirateBuccaneer
+      amount: 1
+
+- type: entity
+  id: CratePirateBlackbeardHardsuit
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: Blackbeard hardsuit crate
+  description: Contains a Blackbeard hardsuit, a hardsuit specializing in extreme protection from the heat
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitPirateBlackbeard
+      amount: 1
+
+- type: entity
+  id: CratePirateDavyJonesHardsuit
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: Davy Jones' hardsuit crate
+  description: Contains Davy Jones' hardsuit, a heavy, impenetrable hardsuit of pirate legend
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitPirateDavyJones
+      amount: 1
+
+- type: entity
+  id: CratePirateSwashbucklerHardsuit
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: swashbuckler hardsuit crate
+  description: Contains a swashbuckler hardsuit, a light hardsuit built for hit-and-run operations
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterHardsuitPirateSwashbuckler
       amount: 1

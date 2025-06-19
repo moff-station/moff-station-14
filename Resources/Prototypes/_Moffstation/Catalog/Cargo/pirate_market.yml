@@ -371,21 +371,49 @@
 
 - type: cargoProduct
   id: PirateFlyingDutchman
-  product: CrateFlyingDutchman
+  product: CratePirateFlyingDutchman
   cost: 15000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
 - type: cargoProduct
   id: PirateSkeletonKey
-  product: CrateSkeletonKey
+  product: CratePirateSkeletonKey
   cost: 3000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
 - type: cargoProduct
   id: PirateDeepSpaceMG
-  product: CrateDeepSpaceMG
+  product: CratePirateDeepSpaceMG
   cost: 11000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateBuccaneerHardsuit
+  product: CratePirateBuccaneerHardsuit
+  cost: 13000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateBlackbeardHardsuit
+  product: CratePirateBlackbeardHardsuit
+  cost: 15000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateDavyJonesHardsuit
+  product: CratePirateDavyJonesHardsuit
+  cost: 17000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateSwashbucklerHardsuit
+  product: CratePirateSwashbucklerHardsuit
+  cost: 10000
   category: cargoproduct-category-name-armory
   group: pirateMarket

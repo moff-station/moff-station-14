@@ -196,9 +196,9 @@
 
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseSyndicateContraband ]
-  id: ClothingOuterHardsuitPirateSwash
+  id: ClothingOuterHardsuitPirateSwashbuckler
   name: swashbuckler hardsuit
-  description: A lightweight hardsuit made for hit and run operations in space, made with reverse engineered technology stolen from the Gorlex Marauders.
+  description: A lightweight hardsuit made for hit-and-run operations in space, made with reverse engineered technology stolen from the Gorlex Marauders.
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
@@ -216,10 +216,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.8
-        Slash: 0.8
+        Blunt: 0.7
+        Slash: 0.7
         Piercing: 0.7
-        Heat: 0.8
+        Heat: 0.7
         Radiation: 0.9
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndie
