@@ -2,10 +2,9 @@
 # If making something here balanced makes pricing on the crew console a better deal, make the crew equivalent more expensive
 #
 # As a baseline, im going to use these tiers for balancing the price, and adjust as nessessary
-# $15000 - Reinforcements - Manpower is more important than anything
-# $10000 - Nukie tier - Highest grade of armor and weapons: if all the pirates have it, the crew will be in serious trouble
+# $>12000 - Special tier - Reinforcements, things that are busted
 # $7000  - High tier  - Highly useful or essential items: Having these will seriously help them
-# $4500  - Stock tier - Useful things that arent total gamechangers, also sidegrades/replacements to starting equipment
+# $3500  - Stock tier - Useful things that arent total gamechangers, also sidegrades/replacements to starting equipment
 # $2000  - Amenities  - Ammo, refills, supplies, and low tier equipment. Nothing that will have an incredible impact.
 # $500   -   Toys     - Toys and trinkets, fun stuff that doesnt serve much purpose.
 
@@ -35,7 +34,7 @@
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
     state: icon
   product: CratePirateAk
-  cost: 11000
+  cost: 8000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -115,7 +114,7 @@
     sprite: Objects/Specific/Medical/firstaidkits.rsi
     state: advkit
   product: CratePirateAdvancedMedkit
-  cost: 4500
+  cost: 3000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -125,17 +124,17 @@
     sprite: Objects/Specific/Medical/firstaidkits.rsi
     state: blackkit
   product: CratePirateCombatMedkit
-  cost: 4500
+  cost: 3000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
 - type: cargoProduct
   id: PirateKidnap
   icon:
-    sprite: Objects/Misc/handcuffs.rsi
-    state: handcuff
+    sprite: Objects/Weapons/Melee/stunprod.rsi
+    state: stunprod_off
   product: CratePirateKidnap
-  cost: 4000
+  cost: 3000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -175,7 +174,7 @@
     sprite: Objects/Weapons/Guns/Revolvers/pirate_revolver.rsi
     state: icon
   product: CratePirateRevolver
-  cost: 4500
+  cost: 4000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -195,7 +194,7 @@
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
     state: icon
   product: CratePirateMakeshiftLaser
-  cost: 4000
+  cost: 3500
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -245,7 +244,7 @@
     sprite: _NF/Objects/Weapons/Melee/pirate_hook.rsi
     state: icon
   product: CratePirateHook
-  cost: 3500
+  cost: 3000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -265,7 +264,7 @@
     sprite: _Moffstation/Objects/Devices/conchshell.rsi
     state: icon
   product: CratePirateReinforcementSkeleton
-  cost: 20000
+  cost: 17000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -275,7 +274,7 @@
     sprite: _Moffstation/Objects/Devices/conchshell.rsi
     state: icon
   product: CratePirateReinforcementMonkey
-  cost: 10000
+  cost: 7000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -295,7 +294,7 @@
     sprite: _Moffstation/Clothing/Mask/pirateweldingmask.rsi
     state: icon
   product: CratePirateGasMask
-  cost: 3500
+  cost: 2000
   category: cargoproduct-category-name-armory
   group: pirateMarket
 
@@ -305,6 +304,88 @@
     sprite: _Moffstation/Objects/Fun/robotparrot.rsi
     state: icon
   product: CratePirateRobotParrot
-  cost: 1500
+  cost: 1000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateReinforcementAssaultCyborg
+  icon:
+    sprite: _Moffstation/Mobs/Silicon/pirate_borg_chassis.rsi
+    state: pirate
+  product: CratePirateReinforcementCyborg
+  cost: 20000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateMassScanner
+  icon:
+    sprite: _Moffstation/Objects/Tools/holo_pirate_map.rsi
+    state: icon
+  product: CratePirateMassScanner
+  cost: 2000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PiratePepperboxShotgun
+  product: CratePiratePepperboxShotgun
+  cost: 8000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateGunpowderCharge
+  product: CratePirateGunpowderCharge
+  cost: 3500
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateJetpack
+  product: CratePirateJetpack
+  cost: 4000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateSyndicateSurplusBundle
+  product: CrateSyndicateSurplusBundle
+  icon:
+    sprite: Structures/Storage/Crates/syndicate.rsi
+    state: icon
+  cost: 15000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateGrandLottery
+  icon:
+    sprite: Objects/Economy/cash.rsi
+    state: cash_1000000
+  product: CrateCargoGambling
+  cost: 10000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateFlyingDutchman
+  product: CrateFlyingDutchman
+  cost: 15000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateSkeletonKey
+  product: CrateSkeletonKey
+  cost: 3000
+  category: cargoproduct-category-name-armory
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateDeepSpaceMG
+  product: CrateDeepSpaceMG
+  cost: 11000
   category: cargoproduct-category-name-armory
   group: pirateMarket

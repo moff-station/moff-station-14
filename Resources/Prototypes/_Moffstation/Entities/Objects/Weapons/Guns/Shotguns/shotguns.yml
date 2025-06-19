@@ -19,10 +19,14 @@
 
 - type: entity
   name: Blackbox shotgun
-  parent: WeaponShotgunPepperbox
+  parent: BaseWeaponShotgun
   id: WeaponShotgunPepperboxRecharge
   description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
   components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+  - type: Gun
+    fireRate: 0.5
   - type: Battery
     maxCharge: 6000
     startingCharge: 6000

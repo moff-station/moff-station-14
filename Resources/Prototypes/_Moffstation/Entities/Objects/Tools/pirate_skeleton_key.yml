@@ -1,0 +1,9 @@
+- type: entity
+  parent: AccessBreaker
+  id: AccessBreakerPirate
+  name: skeleton key
+  description: An accursed key, said to break locks using the souls of the damned
+  suffix: Limited, Pirate
+  components:
+  - type: StaticPrice
+    price: 500

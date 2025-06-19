@@ -1,0 +1,72 @@
+- type: entity
+  name: HoloClown
+  id: MobFlyingDutchmanGuardian
+  parent: [MobGuardianBase, InventoryBase]
+  description: A shimmering green ghost of pirate legend.
+  components:
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-holoclown-name
+    description: ghost-role-information-holoclown-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: NameIdentifier
+    group: Holoparasite
+  - type: TypingIndicator
+    proto: holo
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        holoclown_base: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        holoclown_flare: Sixteen
+    - enum.DamageStateVisualLayers.Base:
+        holoclown_base: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        holoclown_flare: Sixteen
+    - enum.DamageStateVisualLayers.Base:
+        holoclown_base: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        holoclown_flare: Sixteen
+  - type: Sprite
+    layers:
+    - state: holoclown_base
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+    - state: holoclown_flare
+      map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      color: "#8adaff"
+      shader: unshaded
+  - type: Body
+    prototype: Primate
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+  - type: Inventory
+    templateId: holoclown
+  - type: Hands
+  - type: ComplexInteraction
+  - type: MeleeWeapon
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1.8
+    soundHit:
+      collection: BikeHorn
+    damage:
+      types:
+        Blunt: 5
+  - type: Loadout
+    prototypes: [ HoloClownGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesClown
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound

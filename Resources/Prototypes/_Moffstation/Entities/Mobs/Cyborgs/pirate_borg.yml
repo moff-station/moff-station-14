@@ -6,7 +6,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - Pirates
+    - Pirate
   - type: Sprite
     sprite: _Moffstation/Mobs/Silicon/pirate_borg_chassis.rsi
     layers:
@@ -28,9 +28,7 @@
     maxModules: 3
     moduleWhitelist:
       tags:
-      - BorgModuleGeneric
-      - BorgModuleSyndicate
-      - BorgModuleSyndicateAssault
+      - BorgModulePirate
     hasMindState: pirate_e
     noMindState: pirate
   - type: SiliconLawProvider

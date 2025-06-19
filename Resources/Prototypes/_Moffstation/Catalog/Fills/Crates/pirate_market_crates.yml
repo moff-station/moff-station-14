@@ -133,7 +133,7 @@
 
 - type: entity
   id: CratePirateKidnap
-  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
   name: kidnapping supplies crate
   description: Comes with everything you need to keep someone locked away!
   components:
@@ -213,7 +213,7 @@
 
 - type: entity
   id: CratePirateMakeshiftLaser
-  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
   name: makeshift laser pistol crate
   description: Contains two makeshift laser pistols, no warranty included.
   components:
@@ -237,7 +237,7 @@
 
 - type: entity
   id: CratePirateAppraisalTool
-  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
   name: appraisal tool crate
   description: Contains 3 appraisal tools. good for calculating the value of (stolen) goods.
   components:
@@ -333,3 +333,93 @@
     contents:
     - id: RobotParrot
       amount: 3
+
+- type: entity
+  id: CratePirateReinforcementCyborg
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: assault cyborg crate
+  description: Contains a reinforcement conch shell, capable of calling in a pirate assault cyborg for assistance
+  components:
+  - type: StorageFill
+    contents:
+    - id: ReinforcementRadioPirateAssaultCyborg
+      amount: 1
+
+- type: entity
+  id: CratePirateMassScanner
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: holographic map crate
+  description: Contains 3 holographic maps, useful for charting the surrounding area in space
+  components:
+  - type: StorageFill
+    contents:
+    - id: HandHeldMassScannerPirate
+      amount: 3
+
+- type: entity
+  id: CratePiratePepperboxShotgun
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: pepperbox shotgun crate
+  description: Contains 2 pepperbox shotguns, and the ammo to use them
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunPepperbox
+      amount: 2
+    - id: BoxLethalshot
+      amount: 2
+
+- type: entity
+  id: CratePirateGunpowderCharge
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: gunpowder charge crate
+  description: Contains 5 gunpowder charges, good for putting holes in walls
+  components:
+  - type: StorageFill
+    contents:
+    - id: gunpowderCharge
+      amount: 5
+
+- type: entity
+  id: CratePirateJetpack
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: jetpack crate
+  description: Contains 2 cannon jetpacks, good for sailing the seas of space
+  components:
+  - type: StorageFill
+    contents:
+    - id: PirateJetpackFilled
+      amount: 2
+
+- type: entity
+  id: CrateFlyingDutchman
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: flying dutchman injector crate
+  description: Contains a injector allowing the user to summon an incarnation of a legendary ghost, the Flying Dutchman
+  components:
+  - type: StorageFill
+    contents:
+    - id: FlyingDutchmanInjector
+      amount: 1
+
+- type: entity
+  id: CrateSkeletonKey
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: skeleton key crate
+  description: Contains a injector allowing the user to summon an incarnation of a legendary ghost, the Flying Dutchman
+  components:
+  - type: StorageFill
+    contents:
+    - id: AccessBreakerPirate
+      amount: 1
+
+- type: entity
+  id: CrateDeepSpaceMG
+  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  name: deep space machine gun crate
+  description: Contains a deep space machine gun, used by the most treacherous of deep space pirates
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLightMachineGunDsmg
+      amount: 1

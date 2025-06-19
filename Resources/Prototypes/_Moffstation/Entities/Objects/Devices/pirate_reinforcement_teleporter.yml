@@ -66,3 +66,22 @@
       settings: default
   - type: GhostRoleMobSpawner
     prototype: MobMonkeyPirateReinforcement
+
+- type: entity
+  parent: ReinforcementRadioPirateBase
+  id: ReinforcementRadioPirateAssaultCyborg
+  name: pirate assault cyborg reinforcement radio
+  description: Call in a pirate assault cyborg to assist ye. YARG!
+  suffix: Pirates
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-assault-cyborg-name
+    description: roles-antag-pirate-crew-objective
+    rules: ghost-role-information-pirate-rules
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    - MindRolePirateCrew
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: BorgChassisPirateBattery
