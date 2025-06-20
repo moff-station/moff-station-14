@@ -453,12 +453,12 @@ public sealed class ArrivalsSystem : EntitySystem
     }
 
     // Moffstation - Start - First arrivals event
-    private void OnFirstArrival(EntityUid uid, ArrivalsShuttleComponent component, FirstArrivalEvent ev)
+    private void OnFirstArrival(Entity<ArrivalsShuttleComponent> ent, ref FirstArrivalEvent ev)
     {
         // Fixes to problems exclusive to the group arrivals start
         if (_cfgManager.GetCVar(CCVars.StartAtArrivals))
         {
-            if (_station.GetStationInMap(Transform(uid).MapID) is not { } station)
+            if (_station.GetStationInMap(Transform(ent.Owner).MapID) is not { } station)
                 return;
             // Refills all the station's batteries, gives engi more leeway since they have to wait to arrive at the station
             var grid = _station.GetLargestGrid(Comp<StationDataComponent>(station));
