@@ -34,7 +34,7 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
             return;
 
         // If it's a latejoin and past the forced arrivals timer, allow choosing cryosleep
-        if (args is { LateJoin: true, Profile.SpawnPriority: SpawnPriorityPreference.Cryosleep } &&
+        if (args is { LateJoin: true, Profile.SpawnPriority: not SpawnPriorityPreference.Arrivals } &&
             _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan) > TimeSpan.FromMinutes(_cfgManager.GetCVar(CCVars.SpawnPreferenceDelay)))
             return;
 
