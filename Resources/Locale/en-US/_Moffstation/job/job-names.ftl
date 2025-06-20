@@ -1,0 +1,1 @@
+job-name-mercenary = Mercenary
