@@ -308,10 +308,11 @@ public sealed class ArrivalsSystem : EntitySystem
             // raise first arrivals event
             if (component.FirstArrival)
             {
-                RaiseLocalEvent(new FirstArrivalEvent());
+                RaiseLocalEvent(uid, new FirstArrivalEvent());
                 component.FirstArrival = false;
             }
         }
+        // Moffstation - End
     }
 
     private void DumpChildren(EntityUid uid, ref FTLStartedEvent args)
@@ -452,18 +453,20 @@ public sealed class ArrivalsSystem : EntitySystem
     }
 
     // Moffstation - Start - First arrivals event
-    private void OnFirstArrival(Entity<ArrivalsShuttleComponent> ent, ref FirstArrivalEvent ev)
+    private void OnFirstArrival(EntityUid uid, ArrivalsShuttleComponent component, FirstArrivalEvent ev)
     {
         // Fixes to problems exclusive to the group arrivals start
         if (_cfgManager.GetCVar(CCVars.StartAtArrivals))
         {
+            if (_station.GetStationInMap(Transform(uid).MapID) is not { } station)
+                return;
             // Refills all the station's batteries, gives engi more leeway since they have to wait to arrive at the station
-            var station = _station.GetLargestGrid(Comp<StationDataComponent>(ent.Comp.Station));
+            var grid = _station.GetLargestGrid(Comp<StationDataComponent>(station));
             var query = EntityQueryEnumerator<BatteryComponent>();
-            while (query.MoveNext(out var uid, out var comp))
+            while (query.MoveNext(out var entity, out var comp))
             {
-                if (Transform(uid).GridUid == station)
-                    _batterySystem.SetCharge(uid, comp.MaxCharge, comp);
+                if (Transform(entity).GridUid == grid)
+                    _batterySystem.SetCharge(entity, comp.MaxCharge, comp);
             }
         }
     }
