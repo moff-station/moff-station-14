@@ -19,13 +19,19 @@
     maxItemSize: Normal
     grid:
     - 0,0,9,3
-    quickInsert: true
-    areaInsert: true
+# Moffstation - Start
+#    quickInsert: true
+#    areaInsert: true
+# Moffstation - End
     whitelist:
       tags:
         - ArtifactFragment
         - Ore
   - type: Dumpable
+  # Moffstation - Start
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End
 
 - type: entity
   parent: OreBag

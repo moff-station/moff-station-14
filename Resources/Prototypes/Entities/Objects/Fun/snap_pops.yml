@@ -48,11 +48,12 @@
   - type: Storage
     grid:
     - 0,0,4,3
-    areaInsert: true
+#    areaInsert: true # Moffstation
     maxItemSize: Tiny
   - type: StorageFill
     contents:
       - id: SnapPop
         amount: 5
   - type: Dumpable
+  - type: AreaPickup # Moffstation
 
