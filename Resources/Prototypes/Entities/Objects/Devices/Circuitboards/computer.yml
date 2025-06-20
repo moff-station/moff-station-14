@@ -10,6 +10,9 @@
       state: cpuboard
     - type: Item
       storedRotation: -90
+    - type: Tag
+      tags:
+      - DroneUsable # Moffstation - Add drone PR
     - type: StaticPrice
       price: 100
     - type: PhysicalComposition
@@ -96,6 +99,9 @@
       prototype: ComputerCargoOrders
     - type: StaticPrice
       price: 750
+    - type: Tag
+      tags:
+      - DroneUsable # Moffstation - Add drone PR
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -248,6 +254,7 @@
   - type: Tag
     tags:
     - SurveillanceCameraMonitorCircuitboard
+    - DroneUsable # Moffstation - Add drone PR
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -271,6 +278,7 @@
     - type: Tag
       tags:
         - ComputerTelevisionCircuitboard
+        - DroneUsable # Moffstation - Add drone PR
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -331,6 +339,7 @@
     - type: Tag
       tags:
       - HighRiskItem
+      - DroneUsable # Moffstation - Add drone PR
 
 - type: entity
   parent: BaseComputerCircuitboard

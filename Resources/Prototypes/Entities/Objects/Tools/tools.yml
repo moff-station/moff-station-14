@@ -11,6 +11,7 @@
     tags:
     - PlantSampleTaker
     - Wirecutter
+    - DroneUsable # Moffstation - Add drone PR
   - type: Sprite
     sprite: Objects/Tools/wirecutters.rsi
     layers:
@@ -56,6 +57,7 @@
   - type: Tag
     tags:
     - Screwdriver
+    - DroneUsable # Moffstation - Add drone PR
   - type: Sprite
     sprite: Objects/Tools/screwdriver.rsi
     layers:
@@ -100,6 +102,7 @@
   - type: Tag
     tags:
     - Wrench
+    - DroneUsable # Moffstation - Add drone PR
   - type: Sprite
     sprite: Objects/Tools/wrench.rsi
     state: icon
@@ -171,6 +174,7 @@
     tags:
       - Multitool
       - DoorElectronicsConfigurator
+      - DroneUsable # Moffstation - Add drone PR
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -343,6 +347,9 @@
   - type: ActivatableUI
     inHandsOnly: true
     key: enum.RcdUiKey.Key
+  - type: Tag
+    tags:
+    - DroneUsable # Moffstation - Add drone PR
 
 - type: entity
   id: RCDEmpty

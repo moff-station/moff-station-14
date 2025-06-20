@@ -51,6 +51,7 @@
     tags:
       - Mop
       - MopBasic
+      - DroneUsable # Moffstation - Add drone PR
   - type: GuideHelp
     guides:
     - Janitorial
@@ -118,6 +119,7 @@
       tags:
         - Mop
         - MopAdv
+        - DroneUsable # Moffstation - Add drone PR
     - type: DnaSubstanceTrace
 
 - type: entity
@@ -346,6 +348,7 @@
     - type: Tag
       tags:
         - Mop
+        - DroneUsable # Moffstation - Add drone PR
     - type: CleansForensics
     - type: Fiber
       fiberColor: fibers-white

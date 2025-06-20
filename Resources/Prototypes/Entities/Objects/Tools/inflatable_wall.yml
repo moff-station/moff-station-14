@@ -20,6 +20,9 @@
       removeOnInteract: true
     - type: Clickable
     - type: PhysicalComposition
+    - type: Tag
+      tags:
+      - DroneUsable # Moffstation - Add drone PR
 # TODO: Add stack sprites + visuals.
 
 - type: entity
@@ -44,6 +47,9 @@
       removeOnInteract: true
     - type: Clickable
     - type: PhysicalComposition
+    - type: Tag
+      tags:
+      - DroneUsable # Moffstation - Add drone PR
 # TODO: Add stack sprites + visuals.
 
 - type: entity
