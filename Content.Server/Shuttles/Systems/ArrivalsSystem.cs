@@ -301,16 +301,13 @@ public sealed class ArrivalsSystem : EntitySystem
         }
 
         // Moffstation - Start - Arrivals start fixes
-        // This is ensuring we are arriving at the station, and not arrivals
-        if (TryGetArrivals(out EntityUid arrivals) &&
+        if (component.FirstArrival &&
+            TryGetArrivals(out var arrivals) &&
             args.MapUid != Transform(arrivals).MapUid)
         {
             // raise first arrivals event
-            if (component.FirstArrival)
-            {
-                RaiseLocalEvent(uid, new FirstArrivalEvent());
-                component.FirstArrival = false;
-            }
+            RaiseLocalEvent(uid, new FirstArrivalEvent());
+            component.FirstArrival = false;
         }
         // Moffstation - End
     }
