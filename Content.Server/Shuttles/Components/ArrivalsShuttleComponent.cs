@@ -37,6 +37,6 @@ public sealed partial class ArrivalsShuttleComponent : Component
 /// <summary>
 ///     Event for the first time the arrivals shuttle reaches the station.
 /// </summary>
-[Serializable, NetSerializable]
+[Serializable]
 public sealed class FirstArrivalEvent : EventArgs;
 // Moffstation - End
