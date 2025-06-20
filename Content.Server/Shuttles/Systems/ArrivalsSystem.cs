@@ -461,11 +461,10 @@ public sealed class ArrivalsSystem : EntitySystem
             if (_station.GetStationInMap(Transform(ent.Owner).MapID) is not { } station)
                 return;
             // Refills all the station's batteries, gives engi more leeway since they have to wait to arrive at the station
-            var grid = _station.GetLargestGrid(Comp<StationDataComponent>(station));
             var query = EntityQueryEnumerator<BatteryComponent>();
             while (query.MoveNext(out var entity, out var comp))
             {
-                if (Transform(entity).GridUid == grid)
+                if (_station.GetOwningStation(entity) == station)
                     _batterySystem.SetCharge(entity, comp.MaxCharge, comp);
             }
         }
