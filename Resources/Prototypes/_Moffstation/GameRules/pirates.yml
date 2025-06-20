@@ -39,7 +39,7 @@
         nameFormat: name-format-pirate-captain
       - type: NpcFactionMember
         factions:
-        - Syndicate
+        - Pirate
       mindRoles:
       - MindRolePirateCaptain
     - prefRoles: [ PirateMedic ]
@@ -57,16 +57,17 @@
       - type: RandomMetadata
         nameSegments:
         - NamesFirst
-        - NamesLast
-        nameFormat: name-format-standard
+        - Adjectives
+        nameFormat: name-format-pirate-crew
       - type: NpcFactionMember
         factions:
-        - Syndicate
+        - Pirate
       mindRoles:
       - MindRolePirateMedic
     - prefRoles: [ PirateCrew ]
       fallbackRoles: [ PirateCaptain, PirateMedic ]
       spawnerPrototype: SpawnPointPirateCrew
+      min: 2
       max: 4
       playerRatio: 10
       startingGear: PirateGear
@@ -81,10 +82,10 @@
       - type: RandomMetadata
         nameSegments:
         - NamesFirst
-        - NamesLast
-        nameFormat: name-format-standard
+        - Adjectives
+        nameFormat: name-format-pirate-crew
       - type: NpcFactionMember
         factions:
-        - Syndicate
+        - Pirate
       mindRoles:
       - MindRolePirateCrew

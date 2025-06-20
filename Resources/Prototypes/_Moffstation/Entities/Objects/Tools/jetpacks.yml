@@ -1,0 +1,22 @@
+# Filled black
+- type: entity
+  id: PirateJetpack
+  parent: JetpackBlack
+  name: cannon jetpack
+  suffix: Pirate
+
+# Filled black
+- type: entity
+  id: PirateJetpackFilled
+  parent: PirateJetpack
+  suffix: Filled, Pirate
+  components:
+  - type: GasTank
+    outputPressure: 42.6
+    air:
+      # 13 minutes of thrust
+      volume: 5
+      temperature: 293.15
+      moles:
+      - 1.025689525 # oxygen
+      - 1.025689525 # nitrogen

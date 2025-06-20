@@ -67,6 +67,11 @@
       machine_board: !type:Container
       machine_parts: !type:Container
   - type: RequireProjectileTarget
+  # Moffstation - Start - Add tag for pirate bounty
+  - type: Tag
+    tags:
+    - Recharger
+  # Moffstation - End
 
 - type: entity
   parent: BaseItemRecharger

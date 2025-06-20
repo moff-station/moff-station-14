@@ -1,0 +1,44 @@
+- type: entity
+  name: Pepperbox shotgun
+  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
+  id: WeaponShotgunPepperbox
+  description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    fireRate: 0.5
+  - type: BallisticAmmoProvider
+    capacity: 6
+  - type: Tag
+    tags:
+    - WeaponShotgunPepperbox
+
+- type: entity
+  name: Blackbox shotgun
+  parent: BaseWeaponShotgun
+  id: WeaponShotgunPepperboxRecharge
+  description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+  - type: Gun
+    fireRate: 0.5
+  - type: Battery
+    maxCharge: 6000
+    startingCharge: 6000
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 100
+  - type: AmmoCounter
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: ProjectileBatteryAmmoProvider
+    proto: ShellShotgun
+    fireCost: 1000
+  - type: BallisticAmmoProvider
+    capacity: 0
