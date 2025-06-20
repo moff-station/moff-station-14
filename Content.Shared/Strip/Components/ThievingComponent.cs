@@ -1,36 +1,44 @@
-// Moffstation - Start - Added stuff for the thieving toggle
 using Content.Shared.Alert;
-using Content.Shared._Moffstation.Strip.Components;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-// Moffstation - End
 
 namespace Content.Shared.Strip.Components;
 
 /// <summary>
 /// Give this to an entity when you want to decrease stripping times
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
+[AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class ThievingComponent : Component
 {
     /// <summary>
     /// How much the strip time should be shortened by
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("stripTimeReduction")]
+    [DataField, AutoNetworkedField]
     public TimeSpan StripTimeReduction = TimeSpan.FromSeconds(0.5f);
 
     /// <summary>
     /// Should it notify the user if they're stripping a pocket?
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("stealthy")]
+    [DataField, AutoNetworkedField]
     public bool Stealthy;
 
-    // Moffstation - Start - Adding a variable for the alert module
     /// <summary>
     /// Variable pointing at the Alert modal
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public ProtoId<AlertPrototype> StealthyAlertProtoId = "Stealthy";
-    // Moffstation - End
+
+    /// <summary>
+    /// Prevent component replication to clients other than the owner,
+    /// doesn't affect prediction.
+    /// Get mogged.
+    /// </summary>
+    public override bool SendOnlyToOwner => true;
 }
+
+/// <summary>
+/// Event raised to toggle the thieving component.
+/// </summary>
+public sealed partial class ToggleThievingEvent : BaseAlertEvent;
+
