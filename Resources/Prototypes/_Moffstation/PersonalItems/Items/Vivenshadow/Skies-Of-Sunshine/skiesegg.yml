@@ -1,0 +1,37 @@
+﻿# Player: Vivenshadow - Character: Skies-Of-Sunshine
+
+- type: entity
+  parent: FoodEgg
+  id: PersonalItemSkiesOfSunshine
+  name: large reptilian egg
+  description: A large reptile folk egg in pristine condition, but seemingly with an irregular structure
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Vivenshadow/Skies-of-Sunshine/skiesegg.rsi
+  - type: Item
+    size: Normal
+    sprite: _Moffstation/PersonalItems/Items/Vivenshadow/Skies-of-Sunshine/skiesegg.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 48 # 8x normal egg volume because 2^3 times the size
+        reagents:
+        - ReagentId: Egg
+          Quantity: 48 # 8x normal egg volume because 2^3 times the size
+  - type: RandomSprite # Overwrite base egg's "white or brown" random sprites with just one "random" sprite.
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        icon: ""
+  - type: DetailExaminable
+    content: This egg appears not to be purely reptilian and in fact takes many traits from moth eggs, perhaps being a hybrid between the two, the egg appears quite fragile compared to most, perhaps a downside of its hybrid nature.
+
+- type: loadout
+  id: PersonalItemSkiesOfSunshine
+  storage:
+    back:
+    - PersonalItemSkiesOfSunshine
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Skies-of-Sunshine
