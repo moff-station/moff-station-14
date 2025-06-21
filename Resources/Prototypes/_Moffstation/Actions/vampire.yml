@@ -1,0 +1,69 @@
+﻿- type: entity
+  parent: BaseAction
+  id: ActionVampireShop
+  name: Shop
+  description: Opens the ability shop.
+  components:
+  - type: Action
+    icon: Interface/Actions/shop.png
+  - type: InstantAction
+    event: !type:VampireShopEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireFeed
+  name: Feed
+  description: Drink blood from a creature.
+  components:
+  - type: Action
+    icon:
+      sprite: _Moffstation/Interface/Actions/actions_vampire.rsi
+      state: fangs
+    useDelay: 3.0
+    itemIconStyle: BigAction
+  - type: TargetAction
+    repeat: false
+    deselectOnMiss: true
+    range: 1.0
+    interactOnMiss: false
+  - type: EntityTargetAction
+    event: !type:VampireEventFeedAbility
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireGlare
+  name: Glare
+  description: Instill fear and despair in those around you, weakening their resolve, stunning and silencing them.
+  components:
+  - type: Action
+    checkCanInteract: false
+    icon:
+      sprite: _Moffstation/Interface/Actions/actions_vampire.rsi
+      state: glare
+    useDelay: 1.0
+    itemIconStyle: BigAction
+  - type: AutoRecharge
+    rechargeDuration: 20
+  - type: LimitedCharges
+    maxCharges: 2
+  - type: InstantAction
+    event: !type:VampireEventGlareAbility
+
+- type: entity
+  parent: BaseAction
+  id: ActionVampireRejuvenate
+  name: Rejuvenate
+  description: Removes any and all stuns. Removes 100 stamina damage.
+  components:
+  - type: Action
+    icon:
+      sprite: _Moffstation/Interface/Actions/actions_vampire.rsi
+      state: rejuvenate
+    useDelay: 20.0
+    itemIconStyle: BigAction
+  - type: InstantAction
+    event: !type:VampireEventRejuvenateAbility

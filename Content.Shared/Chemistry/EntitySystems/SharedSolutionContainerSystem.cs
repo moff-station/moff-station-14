@@ -119,8 +119,10 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     {
         if (entity is not null)
         {
-            DebugTools.Assert(TryGetSolution(container, name, out var debugEnt)
-                              && debugEnt.Value.Owner == entity.Value.Owner);
+            // Moffstation - Start - Using more verbose error statements here
+            DebugTools.Assert(TryGetSolution(container, name, out var debugEnt, true));
+            DebugTools.AssertEqual(debugEnt.Value.Owner, entity.Value.Owner);
+            // Moffstation - End
             return true;
         }
 

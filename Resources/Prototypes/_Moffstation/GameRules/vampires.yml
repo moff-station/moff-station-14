@@ -1,0 +1,102 @@
+- type: entity
+  parent: BaseGameRule
+  id: Vampire
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: VampireRule
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ Vampire ]
+      max: 1
+      briefing:
+        text: roles-antag-vampire-briefing
+        color: Crimson
+        sound: "/Audio/_Moffstation/Ambience/Antags/vampire_start.ogg"
+      lateJoinAdditional: true
+      allowNonHumans: true
+      components:
+      - type: Vampire
+      - type: BloodEssenceUser
+        bloodWhitelist:
+        - Blood
+        - InsectBlood
+        - Slime
+        - Sap
+        - CopperBlood
+        - AmmoniaBlood
+        - ZombieBlood
+      - type: Damageable
+        damageContainer: BiologicalMetaphysical
+        damageModifierSet: Vampire
+      - type: BurnedBySun
+        tileBlacklist:
+        - Lattice
+        - TrainLattice
+        - Space
+        damage:
+          type:
+            Heat: 30
+      - type: OrganSwap
+        organSwaps:
+          heart: OrganVampireHeart
+          lungs: OrganVampireLungs
+          stomach: OrganVampireStomach
+          core: OrganVampireHeart # Slime cores
+      - type: Store
+        name: vampire-store-name
+        categories:
+        - VampireAbilitiesBasic
+        - VampireAbilitiesGargantua
+        - VampireAbilitiesHaemomancer
+        - VampireAbilitiesUmbrae
+        - VampireAbilitiesDantalion
+        currencyWhitelist:
+        - BloodEssence
+        balance:
+          BloodEssence: 0
+      - type: UserInterface
+        interfaces:
+          enum.StoreUiKey.Key:
+            type: StoreBoundUserInterface
+      - type: BloodConsumption
+        healPerUpdate:
+          types:
+            Holy: -0.5
+          groups:
+            Brute: -3.0
+            Burn: -1.0
+            Airloss: -2.0
+            Toxin: -1.0
+            Genetic: -1.0
+      - type: Temperature
+        heatDamageThreshold: 320
+        coldDamageThreshold: 150 # Vampires are undead, cold shouldn't harm them unless it's extreme
+        currentTemperature: 283.15 # 10C, vampires are naturally cold.
+        coldDamage:
+          types:
+            Cold: 0.05 #per second, scales with temperature & other constants
+        heatDamage:
+          types:
+            Heat: 2 #per second, scales with temperature & other constants
+      - type: TemperatureSpeed
+        thresholds:
+          275: 0.8
+          250: 0.6
+          225: 0.4
+      - type: Bloodstream
+        bleedReductionAmount: 1.0
+        bloodReagent: Blood
+        maxBleedAmount: 0.0
+        bleedPuddleThreshold: 1000.0
+        bloodlossThreshold: 0.02
+        bloodlossDamage:
+          types:
+            Bloodloss: 0.1 # if they're out of blood they're taking bloodloss damage
+        bloodlossHealDamage:
+          types:
+            Bloodloss: -1.0
+        bloodRefreshAmount: 0.0 # Gets handled by the BloodConsumptionSystem
+      mindRoles:
+      - MindRoleVampire
