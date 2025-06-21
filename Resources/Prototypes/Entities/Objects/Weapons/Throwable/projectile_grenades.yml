@@ -99,7 +99,7 @@
     price: 1500
 
 - type: entity
-  parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
+  parent: [ProjectileGrenadeBase, BaseCentcommContraband] # Moffstation - (ERT Overhaul)
   id: GrenadeShrapnel
   #name: shrapnel grenade (Moffstation - Resilient Grenades - Replaced)
   name: fragmentation grenade

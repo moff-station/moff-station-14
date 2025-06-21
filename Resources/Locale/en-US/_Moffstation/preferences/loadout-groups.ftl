@@ -13,3 +13,5 @@ loadout-group-pirate-outer-coat = Pirate Outer Coat
 loadout-group-quartermaster-backpack = Quartermaster Backpack
 loadout-group-chief-engineer-backpack = Chief Engineer Backpack
 loadout-group-chief-medical-officer-backpack = Chief Medical Officer Backpack
+
+loadout-group-survival-military = No one will ever see this so :3

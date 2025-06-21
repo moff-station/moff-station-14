@@ -1,0 +1,110 @@
+- type: startingGear
+  parent: ERTEngineerGearEVA
+  id: ERTEngineerGearArmed
+  equipment:
+    suitstorage: WeaponShotgunEnforcer
+  storage:
+    back:
+    - WeaponPistolMk58
+    - MagazinePistol
+    - MagazinePistol
+    - AccessConfigurator
+    - GasAnalyzer
+    - trayScanner
+    - MiningDrill # End of first line
+    - EmergencyMedipen
+    - PowerCellHigh # End of second line
+    - RCDAmmo
+    - C4
+    - C4
+    - BoxLethalshot
+    - BoxLethalshot
+
+- type: startingGear
+  parent: ERTSecurityGearEVA
+  id: ERTSecurityGearArmedGrenade
+  equipment:
+    pocket2: WeaponPistolMk58
+    suitstorage: WeaponLauncherHydraLethal
+  storage:
+    back:
+    - GrenadeBlast
+    - GrenadeBlast
+    - GrenadeBlast
+    - GrenadeBlast
+    - GrenadeBlast
+    - GrenadeBlast
+    - CrowbarRed
+    - MedkitCombatFilled # End of first line
+    - EmpGrenade
+    - EmpGrenade
+    - EmpGrenade
+    - SmokeGrenade
+    - GrenadeFlash
+    - GrenadeFlash
+    - GrenadeFlash
+    belt:
+    - Truncheon
+    - Handcuffs
+    - Handcuffs
+    - MagazinePistol
+    - MagazinePistol
+    - MagazinePistolIncendiary
+    - MagazinePistolUranium
+
+- type: startingGear
+  parent: ERTSecurityGearEVA
+  id: ERTSecurityGearArmedMelee
+  equipment:
+    pocket2: EnergySword
+    suitstorage: WeaponSubMachineGunWt550
+  storage:
+    back:
+    - CrowbarRed
+    - EnergyShield
+    - MagazineBoxPistol
+    - MagazineBoxPistol
+    - MagazineBoxRifle
+    - SyringeEphedrine
+    - ChemistryBottleEphedrine
+    - ChemistryBottleEphedrine
+    - ChemistryBottleEphedrine
+    - MedkitCombatFilled # End of first line
+    - BoxLethalshot
+    - BoxLethalshot
+    - Handcuffs
+    - Handcuffs
+    belt:
+    - SmokeGrenade
+    - SmokeGrenade
+    - ExGrenade
+    - GrenadeIncendiary
+    - MagazinePistolSubMachineGunTopMounted
+    - MagazinePistolSubMachineGunTopMounted
+    - MagazinePistolSubMachineGunTopMounted
+    - MagazinePistolSubMachineGunTopMounted
+
+- type: startingGear
+  parent: ERTMedicalGearEVA
+  id: ERTMedicalGearArmed
+  equipment:
+    suitstorage: WeaponRifleLecter
+    pocket2: WeaponPistolMk58
+  storage:
+    back:
+    - MagazinePistol
+    - MagazinePistol
+    - CrowbarRed
+    - Hypospray
+    - DefibrillatorCompact
+    - ClothingEyesGlassesChemical
+    - ChemistryBottleEphedrine
+    - ChemistryBottleEphedrine
+    - belt:
+    - Truncheon
+    - Handcuffs
+    - Handcuffs
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifleIncendiary
+    - MagazineRifleUranium

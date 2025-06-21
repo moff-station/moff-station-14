@@ -1,0 +1,7 @@
+- type: entity
+  parent: [WeaponLauncherHydra]
+  id: WeaponLauncherHydraLethal
+  suffix: frag
+  components:
+  - type: RevolverAmmoProvider
+    proto: GrenadeFrag
