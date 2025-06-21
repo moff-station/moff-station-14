@@ -30,3 +30,5 @@ roles-antag-pirate-crew-monkey-name = Monkey Pirate Crewmate
 roles-antag-pirate-assault-cyborg-name = Pirate Assault Cyborg
 
 ghost-role-information-pirate-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all other pirates. Obey the pirate captain's orders.
+
+role-subtype-pirate = Pirate

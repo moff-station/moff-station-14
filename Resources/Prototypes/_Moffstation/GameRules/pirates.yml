@@ -4,8 +4,6 @@
   id: BasePiratesRule
   components:
   - type: PiratesRule
-#  Station stuff included to get pirate economy working
-
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
   - type: RuleGrids
