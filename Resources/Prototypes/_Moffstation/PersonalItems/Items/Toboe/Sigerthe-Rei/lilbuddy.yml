@@ -1,0 +1,26 @@
+- type: entity
+  parent: PlushieBorg
+  id: PersonalItemSigerthePlushie
+  name: Lil' Buddy
+  description: A well-loved stuffed toy that resembles a Cyborg. The words "Lil Buddy" are scrawled on the tag in faded ink.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Toboe/Sigerthe-Rei/lilbuddy.rsi
+    state: lilbuddy
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Toboe/Sigerthe-Rei/lilbuddy.rsi
+    heldPrefix: lilbuddy
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Items/Toboe/Sigerthe-Rei/lilbuddy.rsi
+    equippedPrefix: lilbuddy
+
+- type: loadout
+  id: PersonalItemSigerthePlushie
+  storage:
+    back:
+    - PersonalItemSigerthePlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Sigerthe-Rei
