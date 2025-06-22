@@ -23,8 +23,8 @@
     settings: MercenaryLeader
 
 - type: randomHumanoidSettings
-  id: MercenaryLeader
   parent: EventHumanoid
+  id: MercenaryLeader
   components:
   - type: GhostRole
     name: ghost-role-information-mercenary-leader-name
@@ -53,8 +53,8 @@
     settings: MercenaryRifleman
 
 - type: randomHumanoidSettings
-  id: MercenaryRifleman
   parent: EventHumanoid
+  id: MercenaryRifleman
   components:
   - type: GhostRole
     name: ghost-role-information-mercenary-rifleman-name
@@ -83,8 +83,8 @@
     settings: MercenaryEngineer
 
 - type: randomHumanoidSettings
-  id: MercenaryEngineer
   parent: EventHumanoid
+  id: MercenaryEngineer
   components:
   - type: GhostRole
     name: ghost-role-information-mercenary-engineer-name
@@ -113,8 +113,8 @@
     settings: MercenaryMedic
 
 - type: randomHumanoidSettings
-  id: MercenaryMedic
   parent: EventHumanoid
+  id: MercenaryMedic
   components:
   - type: GhostRole
     name: ghost-role-information-mercenary-medic-name
