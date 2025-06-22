@@ -363,7 +363,7 @@ figurines-wallace-6 = I'll card that damn AI if it's the LAST THING I DO!!
 
 figurines-moonlight-1 = Hello, munchkin!
 figurines-moonlight-2 = Awh, are you okay, love? Here, a hug to warm you up~!
-figurines-moonlight-3 = A-ah, don't you worry about me, dear. Im fine! Ignore the er, cuts!
+figurines-moonlight-3 = A-ah, don't you worry about me, dear. I'm fine! Ignore the er, cuts!
 figurines-moonlight-4 = Wow, you're beautiful today! 
 figurines-moonlight-5 = Stay safe, honeybee! I love you!!
 figurines-moonlight-6 = Coords on, darling. Dont want you to get lost if something happens~!
