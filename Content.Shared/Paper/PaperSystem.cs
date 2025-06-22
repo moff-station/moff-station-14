@@ -7,6 +7,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
+using Content.Shared.Verbs; // Moffstation
 using Robust.Shared.Player;
 using Robust.Shared.Audio.Systems;
 using static Content.Shared.Paper.PaperComponent;
@@ -47,6 +48,8 @@ public sealed class PaperSystem : EntitySystem
         SubscribeLocalEvent<RandomPaperContentComponent, MapInitEvent>(OnRandomPaperContentMapInit);
 
         SubscribeLocalEvent<ActivateOnPaperOpenedComponent, PaperWriteEvent>(OnPaperWrite);
+
+        SubscribeLocalEvent<PaperComponent, GetVerbsEvent<AlternativeVerb>>(AddSignVerb); // Umbra - Signing alt verb event listener.
 
         _paperQuery = GetEntityQuery<PaperComponent>();
     }
@@ -264,6 +267,82 @@ public sealed class PaperSystem : EntitySystem
         }
         return true;
     }
+
+    // Umbra - Begin - Paper signing
+        // Send paper signing alt verb to the client if applicable.
+        // Based on LockSystem.cs for alt-click behavior.
+        private void AddSignVerb(Entity<PaperComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+        {
+            if (!args.CanAccess || !args.CanInteract)
+                return;
+
+            // Sanity check
+            if (ent.Owner != args.Target)
+                return;
+
+            // Pens have a `Write` tag.
+            if (!args.Using.HasValue || !_tagSystem.HasTag(args.Using.Value, "Write"))
+                return;
+
+            var user = args.User;
+
+            AlternativeVerb verb = new()
+            {
+                Act = () => TrySign(ent, user),
+                Text = Loc.GetString("paper-component-verb-sign"),
+                // Icon = Don't have an icon yet. Todo for later.
+            };
+            args.Verbs.Add(verb);
+        }
+
+        // Umbra: Actual signature code.
+        public bool TrySign(Entity<PaperComponent> ent, EntityUid signer)
+        {
+            // Generate display information.
+            StampDisplayInfo info = new StampDisplayInfo
+            {
+                StampedName = Name(signer),
+                StampedColor = Color.FromHex("#333333"),
+                Type = StampType.Signature
+            };
+
+            // Try stamp with the info, return false if failed.
+            if (TryStamp(ent, info, "paper_stamp-generic"))
+            {
+                // Signing successful, popup time.
+
+                _popupSystem.PopupEntity(
+                    Loc.GetString(
+                        "paper-component-action-signed-other",
+                        ("user", signer),
+                        ("target", ent)
+                    ),
+                    signer,
+                    Filter.PvsExcept(signer, entityManager: EntityManager),
+                    true
+                );
+
+                _popupSystem.PopupEntity(
+                    Loc.GetString(
+                        "paper-component-action-signed-self",
+                        ("target", ent)
+                    ),
+                    signer,
+                    signer
+                );
+
+                _audio.PlayPvs(ent.Comp.Sound, ent);
+
+                _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
+
+                UpdateUserInterface(ent);
+
+                return true;
+            }
+
+            return false;
+        }
+        // Umbra - End
 
     /// <summary>
     ///     Copy any stamp information from one piece of paper to another.
