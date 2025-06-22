@@ -12,7 +12,7 @@
 - type: weightedRandom
   id: TraitorObjectiveOpenEnded
   weights:
-    DisruptionObjective: 1
+    DisruptDepartmentObjective: 1
     SabotageObjective: 1
     InfiltrateObjective: 0.5
     JailbreakObjective: 1
@@ -108,7 +108,6 @@
     AmePartFlatpackStealObjective: 1
     ExpeditionsCircuitboardStealObjective: 1            #sup
     CargoShuttleCircuitboardStealObjective: 1
-    SalvageShuttleCircuitboardStealObjective: 1
     ClothingEyesHudBeerStealObjective: 1                #srv
     BibleStealObjective: 1
     ClothingNeckGoldmedalStealObjective: 1              #other

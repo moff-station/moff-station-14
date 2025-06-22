@@ -640,3 +640,14 @@
     state: wiggles
   - type: SpeakOnTrigger
     pack: FigurinesClown # They never gave lines, so they get the clown pack
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMoonlight
+  name: Chief medical Moth Figurine
+  description: A figurine showing an adorable black moth doctor. Looking at their smile makes you feel warm inside!
+  components:
+  - type: Sprite
+    state: moonlight
+  - type: SpeakOnTrigger
+    pack: FigurinesMoonlight

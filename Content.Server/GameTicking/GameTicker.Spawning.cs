@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Server._CD.Records; // Moffstation - Fix a bug with CD character records that gets messed up with randomized characters
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
@@ -274,6 +275,11 @@ namespace Content.Server.GameTicking
             var mob = mobMaybe!.Value;
 
             _mind.TransferTo(newMind, mob);
+
+            // Moffstation - Start - Fix a bug with CD character records where it crashes hard if this is a random character
+            if (_randomizeCharacters)
+                EnsureComp<SkipLoadingCharacterRecordsComponent>(mob);
+            // Moffstation - End
 
             _roles.MindAddJobRole(newMind, silent: silent, jobPrototype: jobId);
             var jobName = _jobs.MindTryGetJobName(newMind);

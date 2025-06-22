@@ -1,3 +1,60 @@
+- type: entity
+  parent: RandomHumanoidSpawnerCentcomOfficial
+  id: RandomHumanoidSpawnerCentcomExecutive
+  name: CentComm executive
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcomexec
+  - type: RandomHumanoidSpawner
+    settings: CentcomExecutive
+
+- type: randomHumanoidSettings
+  parent: CentcomOfficial
+  id: CentcomExecutive
+  components:
+  - type: Loadout
+    prototypes: [ CentcomExecutiveGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: RandomHumanoidSpawnerCentcomOfficial
+  id: RandomHumanoidSpawnerCentcomOfficer
+  name: CentComm officer
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcomofficer
+  - type: RandomHumanoidSpawner
+    settings: CentcomOfficer
+
+- type: randomHumanoidSettings
+  parent: CentcomOfficial
+  id: CentcomOfficer
+  components:
+  - type: Loadout
+    prototypes: [ CentcomOfficerGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: RandomHumanoidSpawnerCentcomOfficial
+  id: RandomHumanoidSpawnerCentcomRepresentative
+  name: CentComm representative
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcomrep
+  - type: RandomHumanoidSpawner
+    settings: CentcomRepresentative
+
+- type: randomHumanoidSettings
+  parent: CentcomOfficial
+  id: CentcomRepresentative
+  components:
+    - type: Loadout
+      prototypes: [ CentcomRepresentativeGear ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
 # Mercenaries
 - type: job
   id: Mercenary
