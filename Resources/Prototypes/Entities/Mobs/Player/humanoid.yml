@@ -63,22 +63,28 @@
         - NamesMilitaryLast
       nameFormat: name-format-ert
 
-# Moffstation - Begin (ERT Overhaul) - This entire thing has so many tiny changes that its not worth trying to bracket everything on its own.
+
 ## ERT Leader
 
 - type: entity
   id: RandomHumanoidSpawnerERTLeader
   name: ERT leader
   suffix: ERTRole, Basic
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
       state: ertleader
+    - type: RandomMetadata
+      nameSegments:
+      - NamesMilitaryFirstLeader
+      - NamesMilitaryLast
+      nameFormat: name-format-ert
     - type: RandomHumanoidSpawner
       settings: ERTLeader
 
 - type: randomHumanoidSettings
-  id: ERTLeader
+  id: ERTLeaderUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: EventHumanoidCentcomm
   components:
     - type: GhostRole
@@ -90,17 +96,19 @@
       job: ERTLeader
     - type: Loadout
       prototypes: [ ERTLeaderGear ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalExtended ]
     - type: RandomMetadata
       nameSegments:
+      - NamesMilitaryFirstLeader
       - NamesMilitaryLast
-      nameFormat: name-format-military-leader
+      nameFormat: name-format-ert
 
 - type: entity
   id: RandomHumanoidSpawnerERTLeaderEVA
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT leader
-  suffix: ERTRole, EVA
+  suffix: ERTRole, Armored EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -109,28 +117,43 @@
       settings: ERTLeaderEVA
 
 - type: randomHumanoidSettings
-  id: ERTLeaderEVA
+  id: ERTLeaderEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTLeader
   components:
+    - type: GhostRole
+      name: ghost-role-information-ert-leader-name
+      description: ghost-role-information-ert-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTLeader
     - type: Loadout
       prototypes: [ ERTLeaderGearEVA ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalEVA ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTLeaderArmed
+  id: RandomHumanoidSpawnerERTLeaderEVALecter
   parent: RandomHumanoidSpawnerERTLeaderEVA
-  suffix: ERTRole, Armed, EVA
+  suffix: ERTRole, Lecter, EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: RandomHumanoidSpawner
-      settings: ERTLeaderArmed
+      settings: ERTLeaderEVALecter
 
 - type: randomHumanoidSettings
-  id: ERTLeaderArmed
+  id: ERTLeaderEVALecterUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTLeaderEVA
   components:
+    - type: GhostRole
+      name: ghost-role-information-ert-leader-name
+      description: ghost-role-information-ert-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTLeader
     - type: Loadout
-      prototypes: [ ERTLeaderGearArmed ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      prototypes: [ ERTLeaderGearEVALecter ]
+      roleLoadout: [ RoleSurvivalEVA ]
 
 ## ERT Chaplain
 
@@ -139,15 +162,21 @@
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT chaplain
   suffix: ERTRole, Basic
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
-      state: ertchaplain
+      state: chaplain #needs an ERT variant once a good suit it made.
+    - type: RandomMetadata
+      nameSegments:
+      - NamesMilitaryFirst
+      - NamesMilitaryLast
+      nameFormat: name-format-ert
     - type: RandomHumanoidSpawner
       settings: ERTChaplain
 
 - type: randomHumanoidSettings
-  id: ERTChaplain
+  id: ERTChaplainUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTLeader
   components:
     - type: BibleUser
@@ -160,31 +189,40 @@
       job: ERTChaplain
     - type: RandomMetadata
       nameSegments:
+      - NamesMilitaryFirst
       - NamesMilitaryLast
-      nameFormat: name-format-military-specialist
+      nameFormat: name-format-ert
     - type: Loadout
       prototypes: [ ERTChaplainGear ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
   id: RandomHumanoidSpawnerERTChaplainEVA
   parent: RandomHumanoidSpawnerERTChaplain
   name: ERT chaplain
-  suffix: ERTRole, EVA
+  suffix: ERTRole, Enviro EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
-      state: ertchaplaineva
+      state: chaplain #needs an ERT variant once a good suit it made.
     - type: RandomHumanoidSpawner
       settings: ERTChaplainEVA
 
 - type: randomHumanoidSettings
-  id: ERTChaplainEVA
+  id: ERTChaplainEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTChaplain
   components:
+    - type: GhostRole
+      name: ghost-role-information-ert-chaplain-name
+      description: ghost-role-information-ert-chaplain-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTChaplain
     - type: Loadout
       prototypes: [ ERTChaplainGearEVA ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalEVA ]
     - type: BibleUser
 
 ## ERT Janitor
@@ -194,15 +232,21 @@
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT janitor
   suffix: ERTRole, Basic
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
       state: ertjanitor
+    - type: RandomMetadata
+      nameSegments:
+      - NamesMilitaryFirst
+      - NamesMilitaryLast
+      nameFormat: name-format-ert
     - type: RandomHumanoidSpawner
       settings: ERTJanitor
 
 - type: randomHumanoidSettings
-  id: ERTJanitor
+  id: ERTJanitorUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTLeader
   components:
     - type: GhostRole
@@ -214,17 +258,19 @@
       job: ERTJanitor
     - type: RandomMetadata
       nameSegments:
+      - NamesMilitaryFirst
       - NamesMilitaryLast
-      nameFormat: name-format-military-specialist
+      nameFormat: name-format-ert
     - type: Loadout
       prototypes: [ ERTJanitorGear ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
   id: RandomHumanoidSpawnerERTJanitorEVA
   parent: RandomHumanoidSpawnerERTJanitor
   name: ERT janitor
-  suffix: ERTRole, EVA
+  suffix: ERTRole, Enviro EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -233,12 +279,19 @@
       settings: ERTJanitorEVA
 
 - type: randomHumanoidSettings
-  id: ERTJanitorEVA
+  id: ERTJanitorEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTJanitor
   components:
+    - type: GhostRole
+      name: ghost-role-information-ert-janitor-name
+      description: ghost-role-information-ert-janitor-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTJanitor
     - type: Loadout
       prototypes: [ ERTJanitorGearEVA ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalEVA ]
 
 ## ERT Engineer
 
@@ -247,15 +300,21 @@
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT engineer
   suffix: ERTRole, Basic
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
       state: ertengineer
+    - type: RandomMetadata
+      nameSegments:
+      - NamesMilitaryFirst
+      - NamesMilitaryLast
+      nameFormat: name-format-ert
     - type: RandomHumanoidSpawner
       settings: ERTEngineer
 
 - type: randomHumanoidSettings
-  id: ERTEngineer
+  id: ERTEngineerUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTLeader
   components:
     - type: GhostRole
@@ -267,16 +326,19 @@
       job: ERTEngineer
     - type: RandomMetadata
       nameSegments:
+      - NamesMilitaryFirst
       - NamesMilitaryLast
-      nameFormat: name-format-military-specialist
+      nameFormat: name-format-ert
     - type: Loadout
       prototypes: [ ERTEngineerGear ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
   id: RandomHumanoidSpawnerERTEngineerEVA
   parent: RandomHumanoidSpawnerERTEngineer
-  suffix: ERTRole, EVA
+  name: ERT engineer
+  suffix: ERTRole, Enviro EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -285,32 +347,19 @@
       settings: ERTEngineerEVA
 
 - type: randomHumanoidSettings
-  id: ERTEngineerEVA
+  id: ERTEngineerEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTEngineer
   components:
+    - type: GhostRole
+      name: ghost-role-information-ert-engineer-name
+      description: ghost-role-information-ert-engineer-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTEngineer
     - type: Loadout
       prototypes: [ ERTEngineerGearEVA ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerERTEngineerEVA
-  id: RandomHumanoidSpawnerERTEngineerArmed
-  suffix: ERTRole, Armed, EVA
-  components:
-  - type: RandomHumanoidSpawner
-    settings: ERTEngineerArmed
-
-- type: randomHumanoidSettings
-  id: ERTEngineerArmed
-  parent: ERTEngineer
-  components:
-  - type: RandomMetadata
-    nameSegments:
-    - NamesMilitaryLast
-    nameFormat: name-format-military-pointman
-  - type: Loadout
-    prototypes: [ ERTEngineerGearArmed ]
-    roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalEVA ]
 
 ## ERT Security
 
@@ -319,15 +368,21 @@
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT security
   suffix: ERTRole, Basic
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
       state: ertsecurity
+    - type: RandomMetadata
+      nameSegments:
+      - NamesMilitaryFirst
+      - NamesMilitaryLast
+      nameFormat: name-format-ert
     - type: RandomHumanoidSpawner
       settings: ERTSecurity
 
 - type: randomHumanoidSettings
-  id: ERTSecurity
+  id: ERTSecurityUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTLeader
   components:
     - type: GhostRole
@@ -339,17 +394,19 @@
       job: ERTSecurity
     - type: RandomMetadata
       nameSegments:
+      - NamesMilitaryFirst
       - NamesMilitaryLast
-      nameFormat: name-format-military-officer
+      nameFormat: name-format-ert
     - type: Loadout
       prototypes: [ ERTSecurityGear ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
   id: RandomHumanoidSpawnerERTSecurityEVA
   parent: RandomHumanoidSpawnerERTSecurity
   name: ERT security
-  suffix: ERTRole, EVA
+  suffix: ERTRole, Armored EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -358,7 +415,7 @@
       settings: ERTSecurityEVA
 
 - type: randomHumanoidSettings
-  id: ERTSecurityEVA
+  id: ERTSecurityEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTSecurity
   components:
     - type: GhostRole
@@ -370,70 +427,31 @@
       job: ERTSecurity
     - type: Loadout
       prototypes: [ ERTSecurityGearEVA ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalEVA ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTSecurityArmedRifle
+  id: RandomHumanoidSpawnerERTSecurityEVALecter
   parent: RandomHumanoidSpawnerERTSecurityEVA
-  name: ERT security rifleman
-  suffix: ERTRole, Armed, EVA
+  suffix: ERTRole, Lecter, EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: RandomHumanoidSpawner
-      settings: ERTSecurityArmedRifle
+      settings: ERTSecurityEVALecter
 
 - type: randomHumanoidSettings
-  id: ERTSecurityArmedRifle
+  id: ERTSecurityEVALecterUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTSecurityEVA
   components:
-  - type: RandomMetadata
-    nameSegments:
-    - NamesMilitaryLast
-    nameFormat: name-format-military-rifle
-  - type: Loadout
-    prototypes: [ ERTSecurityGearArmedRifle ]
-    roleLoadout: [ RoleSurvivalMilitaryDouble ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerERTSecurityEVA
-  id: RandomHumanoidSpawnerERTSecurityArmedGrenade
-  name: ERT security grenadier
-  suffix: ERTRole, Armed, EVA
-  components:
-  - type: RandomHumanoidSpawner
-    settings: ERTSecurityArmedGrenade
-
-- type: randomHumanoidSettings
-  parent: ERTSecurityEVA
-  id: ERTSecurityArmedGrenade
-  components:
-  - type: RandomMetadata
-    nameSegments:
-    - NamesMilitaryLast
-    nameFormat: name-format-military-grenade
-  - type: Loadout
-    prototypes: [ ERTSecurityGearArmedGrenade ]
-    roleLoadout: [ RoleSurvivalMilitaryDouble ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerERTSecurityEVA
-  id: RandomHumanoidSpawnerERTSecurityArmedMelee
-  name: ERT security vanguard
-  suffix: ERTRole, Armed, EVA
-  components:
-  - type: RandomHumanoidSpawner
-    settings: ERTSecurityArmedMelee
-
-- type: randomHumanoidSettings
-  parent: ERTSecurityEVA
-  id: ERTSecurityArmedMelee
-  components:
-  - type: RandomMetadata
-    nameSegments:
-    - NamesMilitaryLast
-    nameFormat: name-format-military-melee
-  - type: Loadout
-    prototypes: [ ERTSecurityGearArmedMelee ]
-    roleLoadout: [ RoleSurvivalMilitaryDouble ]
+    - type: GhostRole
+      name: ghost-role-information-ert-security-name
+      description: ghost-role-information-ert-security-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTSecurity
+    - type: Loadout
+      prototypes: [ ERTSecurityGearEVALecter ]
+      roleLoadout: [ RoleSurvivalEVA ]
 
 ## ERT Medic
 
@@ -442,15 +460,21 @@
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT medic
   suffix: ERTRole, Basic
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
       state: ertmedical
+    - type: RandomMetadata
+      nameSegments:
+      - NamesMilitaryFirst
+      - NamesMilitaryLast
+      nameFormat: name-format-ert
     - type: RandomHumanoidSpawner
       settings: ERTMedical
 
 - type: randomHumanoidSettings
-  id: ERTMedical
+  id: ERTMedicalUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTLeader
   components:
     - type: GhostRole
@@ -462,16 +486,19 @@
       job: ERTMedical
     - type: RandomMetadata
       nameSegments:
+      - NamesMilitaryFirst
       - NamesMilitaryLast
-      nameFormat: name-format-military-medic
+      nameFormat: name-format-ert
     - type: Loadout
       prototypes: [ ERTMedicalGear ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
+      roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
   id: RandomHumanoidSpawnerERTMedicalEVA
   parent: RandomHumanoidSpawnerERTMedical
-  suffix: ERTRole, EVA
+  name: ERT medic
+  suffix: ERTRole, Armored EVA
+  categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -480,29 +507,19 @@
       settings: ERTMedicalEVA
 
 - type: randomHumanoidSettings
-  id: ERTMedicalEVA
+  id: ERTMedicalEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: ERTMedical
   components:
+    - type: GhostRole
+      name: ghost-role-information-ert-medical-name
+      description: ghost-role-information-ert-medical-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTMedical
     - type: Loadout
       prototypes: [ ERTMedicalGearEVA ]
-      roleLoadout: [ RoleSurvivalMilitaryDouble ]
-
-- type: entity
-  parent: RandomHumanoidSpawnerERTMedicalEVA
-  id: RandomHumanoidSpawnerERTMedicalArmed
-  suffix: ERTRole, Armed, EVA
-  components:
-  - type: RandomHumanoidSpawner
-    settings: ERTMedicalArmed
-
-- type: randomHumanoidSettings
-  parent: ERTMedicalEVA
-  id: ERTMedicalArmed
-  components:
-  - type: Loadout
-    prototypes: [ ERTMedicalGearArmed ]
-    roleLoadout: [ RoleSurvivalMilitaryDouble ]
-# Moffstation - End
+      roleLoadout: [ RoleSurvivalEVA ]
 
 ## CBURN
 

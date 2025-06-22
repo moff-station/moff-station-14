@@ -1,4 +1,179 @@
 - type: startingGear
+  parent: ERTLeaderGearEVA
+  id: ERTLeaderGear
+  equipment:
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHelmetERTLeader
+    pocket2: FlashlightSeclite
+
+- type: startingGear
+  id: ERTLeaderGearEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTLeader
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesBootsMagERT
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesHudMedSec
+    neck: Whistle
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTLeader
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+    suitstorage: WeaponDisablerSMG
+  storage:
+    back:
+    - WeaponPistolN1984
+    - Binoculars
+    - PinpointerNuclear
+    - TelescopicShield
+    - MedkitCombatFilled
+    - EmergencyMedipen # End of first line
+    - MedkitCombatFilled
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - HoloprojectorField
+    - PhoneInstrument
+    - MagazineMagnum
+    - MagazineMagnum
+
+- type: startingGear
+  parent: ERTLeaderGearEVA
+  id: ERTLeaderGearArmed
+  equipment:
+    pocket2: WeaponDisabler
+    suitstorage: WeaponRifleLecter
+  storage:
+    back:
+    - WeaponPistolN1984
+    - MagazineMagnum
+    - MagazineMagnum
+    - CrowbarRed
+    - Binoculars
+    - MedkitCombatFilled
+    - EmergencyMedipen # End of first line
+    - MedkitCombatFilled
+    - PinpointerNuclear
+    - PhoneInstrument
+    - HoloprojectorField
+    - Zipties
+    belt:
+    - Truncheon
+    - Handcuffs
+    - GrenadeShrapnel
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifleIncendiary
+    - MagazineRifleUranium
+
+- type: startingGear
+  parent: ERTChaplainGearEVA
+  id: ERTChaplainGear
+  equipment:
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHatFez
+    neck: ClothingNeckStoleChaplain
+    outerClothing: ClothingOuterArmorBasicSlim
+    pocket2: FlashlightSeclite
+
+- type: startingGear
+  id: ERTChaplainGearEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTChaplain
+    back: ClothingBackpackERTChaplain
+    shoes: ClothingShoesBootsMagERT
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesHudMedical
+    neck: ClothingNeckStoleChaplain
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTChaplain
+    id: ERTChaplainPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+  storage:
+    back:
+    - WeaponPistolMk58
+    - MagazinePistol
+    - MagazinePistol
+    - CrowbarRed
+    - JugBlood
+    - JugWater
+    - FlippoEngravedLighter # End of first row
+    - Candle
+    - Candle
+    - Candle
+    - CandleRed
+    - CandleBlack
+    - CandleGreen
+    - CandlePurple
+    belt:
+    - Bible
+    - Lantern
+    - Lantern
+    - Lantern
+    - FoodBakedBunHotX
+    - FoodBakedBunHotX
+    - FoodBakedBunHotX
+    - FoodBakedBunHotX
+    - FoodBakedBunHotX
+    - FoodBakedBunHotX
+    - FoodBakedBunHotX
+    - FoodBakedBunHotX
+
+- type: startingGear
+  parent: ERTEngineerGearEVA
+  id: ERTEngineerGear
+  equipment:
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHelmetERTEngineer
+    outerClothing: ClothingOuterArmorBasicSlim
+    pocket2: FlashlightSeclite
+
+- type: startingGear
+  id: ERTEngineerGearEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTEngineer
+    back: ClothingBackpackERTEngineer
+    shoes: ClothingShoesBootsMagERT
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesHudDiagnostic
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTEngineer
+    id: ERTEngineerPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+  inhand:
+  - ClothingBackpackDuffelERTFilledEngineering
+  storage:
+    back:
+    - WeaponPistolMk58
+    - MagazinePistol
+    - MagazinePistol
+    - AccessConfigurator
+    - GasAnalyzer
+    - trayScanner
+    - MiningDrill # End of first line
+    - EmergencyMedipen
+    - PowerCellHigh # End of second line
+    - RCDAmmo
+    - RCDAmmo
+    - RCDAmmo
+    - SheetSteel
+    - SheetPlasteel
+    belt:
+    - JawsOfLife
+    - PowerDrill
+    - WelderIndustrialAdvanced
+    - Multitool
+    - HolofanProjector
+    - RCD
+
+- type: startingGear
   parent: ERTEngineerGearEVA
   id: ERTEngineerGearArmed
   equipment:
@@ -19,6 +194,73 @@
     - C4
     - BoxLethalshot
     - BoxLethalshot
+
+
+- type: startingGear
+  parent: ERTSecurityGearEVA
+  id: ERTSecurityGear
+  equipment:
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHelmetERTSecurity
+    outerClothing: ClothingOuterArmorBasicSlim
+    pocket2: FlashlightSeclite
+
+- type: startingGear
+  id: ERTSecurityGearEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTSecurity
+    back: ClothingBackpackERTSecurity
+    shoes: ClothingShoesBootsMagERT
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTSecurity
+    id: ERTSecurityPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+    suitstorage: WeaponDisablerSMG
+  storage:
+    back:
+    - WeaponPistolMk58
+    - MagazinePistol
+    - MagazinePistol
+    - CrowbarRed
+    - Flash
+    - SecurityWhistle
+    - MedkitCombatFilled
+    - EmergencyMedipen
+    - Zipties # End of first line
+    - HoloprojectorSecurity
+    - Zipties
+    - Zipties
+    - belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - GrenadeFlashBang
+    - TearGasGrenade
+    - GrenadeStinger
+    - TelescopicShield
+
+- type: startingGear
+  parent: ERTSecurityGearEVA
+  id: ERTSecurityGearArmedRifle
+  equipment:
+    back: PortableRecharger
+    suitstorage: WeaponRifleLecter
+  inhand:
+  - WeaponLaserCannon
+  storage:
+    belt:
+    - CrowbarRed
+    - Zipties
+    - MedkitCombatFilled
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifleIncendiary
+    - MagazineRifleUranium
+    - Zipties
 
 - type: startingGear
   parent: ERTSecurityGearEVA
@@ -86,6 +328,58 @@
 
 - type: startingGear
   parent: ERTMedicalGearEVA
+  id: ERTMedicalGear
+  equipment:
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHelmetERTMedic
+    outerClothing: ClothingOuterArmorBasicSlim
+    pocket2: FlashlightSeclite
+
+- type: startingGear
+  id: ERTMedicalGearEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTMedic
+    back: ClothingBackpackERTMedical
+    shoes: ClothingShoesBootsMagERT
+    mask: ClothingMaskGasERT
+    eyes: ClothingHandsGlovesCombat
+    gloves: ClothingHandsGlovesNitrile
+    outerClothing: ClothingOuterHardsuitERTMedical
+    id: ERTMedicPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+  inhand:
+  - ClothingBackpackDuffelERTFilledMedical
+  storage:
+    back:
+    - WeaponPistolMk58
+    - MagazinePistol
+    - MagazinePistol
+    - CrowbarRed
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - ChemistryBottleOmnizine # End of first line
+    - LauncherSyringe
+    - BeakerSmallArith
+    - BeakerSmallDiph
+    - BeakerSmallSigy
+    - BeakerSmallPhal
+    belt:
+    - DefibrillatorCompact
+    - MiniSyringe
+    - MiniSyringe
+    - MiniSyringe
+    - MiniSyringe
+    - Hypospray
+    - ClothingEyesGlassesChemical
+    - MiniSyringe
+    - MiniSyringe
+    - MiniSyringe
+    - MiniSyringe
+
+- type: startingGear
+  parent: ERTMedicalGearEVA
   id: ERTMedicalGearArmed
   equipment:
     suitstorage: WeaponRifleLecter
@@ -108,3 +402,50 @@
     - MagazineRifle
     - MagazineRifleIncendiary
     - MagazineRifleUranium
+
+- type: startingGear
+  parent: ERTJanitorGearEVA
+  id: ERTJanitorGear
+  equipment:
+    shoes: ClothingShoesGaloshes
+    head: ClothingHeadHelmetERTJanitor
+    outerClothing: ClothingOuterArmorBasicSlim
+    pocket2: FlashlightSeclite
+
+- type: startingGear
+  id: ERTJanitorGearEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTJanitor
+    back: ClothingBackpackERTJanitor
+    shoes: ClothingShoesBootsMagERT
+    mask: ClothingMaskGasERT
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTJanitor
+    id: ERTJanitorPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+    suitstorage: WeaponLauncherHydra
+  storage:
+    back:
+    - WeaponPistolMk58
+    - CrowbarRed
+    - TrashBag
+    - AdvMopItem
+    - EmergencyMedipen # End of first line
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - WelderIndustrial
+    belt:
+    - SoapNT
+    - MegaSprayBottleSpaceCleaner
+    - Holoprojector
+    - Plunger
+    - Screwdriver
+    - LightReplacer
+    - MagazinePistol
+    - MagazinePistol
