@@ -281,7 +281,7 @@ public sealed class PaperSystem : EntitySystem
                 return;
 
             // Pens have a `Write` tag.
-            if (!args.Using.HasValue || !_tagSystem.HasTag(args.Using.Value, "Write"))
+            if (args.Using is not { } using || !_tagSystem.HasTag(using, WriteTag))
                 return;
 
             var user = args.User;
@@ -303,7 +303,7 @@ public sealed class PaperSystem : EntitySystem
             {
                 StampedName = Name(signer),
                 StampedColor = Color.FromHex("#333333"),
-                Type = StampType.Signature
+                Type = StampType.Signature,
             };
 
             // Try stamp with the info, return false if failed.
