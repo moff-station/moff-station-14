@@ -640,3 +640,14 @@
     state: wiggles
   - type: SpeakOnTrigger
     pack: FigurinesClown # They never gave lines, so they get the clown pack
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMoonlight
+  name: Cute, Fluffy CMO  Figurine
+  description: A figurine showing an adorable black moth doctor. They're smiling! Makes you wanna squish them!
+  components:
+  - type: Sprite
+    state: moonlight
+  - type: SpeakOnTrigger
+    pack: FigurinesMoonlight
