@@ -18,6 +18,8 @@ namespace Content.Shared.Paper;
 
 public sealed class PaperSystem : EntitySystem
 {
+    private static readonly Color SignatureColor = Color.FromHex("#333333");
+
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -281,7 +283,7 @@ public sealed class PaperSystem : EntitySystem
                 return;
 
             // Pens have a `Write` tag.
-            if (args.Using is not { } using || !_tagSystem.HasTag(using, WriteTag))
+            if (args.Using is not { } item|| !_tagSystem.HasTag(item, WriteTag))
                 return;
 
             var user = args.User;
@@ -302,45 +304,43 @@ public sealed class PaperSystem : EntitySystem
             StampDisplayInfo info = new StampDisplayInfo
             {
                 StampedName = Name(signer),
-                StampedColor = Color.FromHex("#333333"),
+                StampedColor = SignatureColor,
                 Type = StampType.Signature,
             };
 
             // Try stamp with the info, return false if failed.
-            if (TryStamp(ent, info, "paper_stamp-generic"))
-            {
-                // Signing successful, popup time.
+            if (!TryStamp(ent, info, "paper_stamp-generic"))
+                return false;
 
-                _popupSystem.PopupEntity(
-                    Loc.GetString(
-                        "paper-component-action-signed-other",
-                        ("user", signer),
-                        ("target", ent)
-                    ),
-                    signer,
-                    Filter.PvsExcept(signer, entityManager: EntityManager),
-                    true
-                );
+            // Signing successful, popup time.
 
-                _popupSystem.PopupEntity(
-                    Loc.GetString(
-                        "paper-component-action-signed-self",
-                        ("target", ent)
-                    ),
-                    signer,
-                    signer
-                );
+            _popupSystem.PopupEntity(
+                Loc.GetString(
+                    "paper-component-action-signed-other",
+                    ("user", signer),
+                    ("target", ent)
+                ),
+                signer,
+                Filter.PvsExcept(signer, entityManager: EntityManager),
+                true
+            );
 
-                _audio.PlayPvs(ent.Comp.Sound, ent);
+            _popupSystem.PopupEntity(
+                Loc.GetString(
+                    "paper-component-action-signed-self",
+                    ("target", ent)
+                ),
+                signer,
+                signer
+            );
 
-                _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
+            _audio.PlayPvs(ent.Comp.Sound, ent);
 
-                UpdateUserInterface(ent);
+            _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
 
-                return true;
-            }
+            UpdateUserInterface(ent);
 
-            return false;
+            return true;
         }
         // Umbra - End
 
