@@ -298,10 +298,10 @@ public sealed class PaperSystem : EntitySystem
         }
 
         // Umbra: Actual signature code.
-        public bool TrySign(Entity<PaperComponent> ent, EntityUid signer)
+        private bool TrySign(Entity<PaperComponent> ent, EntityUid signer)
         {
             // Generate display information.
-            StampDisplayInfo info = new StampDisplayInfo
+            var info = new StampDisplayInfo
             {
                 StampedName = Name(signer),
                 StampedColor = SignatureColor,
