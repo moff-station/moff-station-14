@@ -17,7 +17,6 @@ public abstract partial class SharedGunSystem
 {
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly IGameTiming _timing = default!; // Moffstation
 
     protected virtual void InitializeBallistic()
     {
@@ -298,7 +297,7 @@ public abstract partial class SharedGunSystem
         if (overridePauseDuration == null && !entity.Comp.FiringPausesAutoRefill)
             return;
 
-        var nextRefillByPause = _timing.CurTime + (overridePauseDuration ?? entity.Comp.AutoRefillPauseDuration);
+        var nextRefillByPause = Timing.CurTime + (overridePauseDuration ?? entity.Comp.AutoRefillPauseDuration);
         if (nextRefillByPause > entity.Comp.NextAutoRefill)
         {
             entity.Comp.NextAutoRefill = nextRefillByPause;
