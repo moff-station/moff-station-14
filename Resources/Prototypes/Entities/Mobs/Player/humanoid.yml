@@ -70,7 +70,7 @@
 ## ERT Leader
 
 - type: entity
-  id: RandomHumanoidSpawnerERTLeader
+  id: RandomHumanoidSpawnerERTLeaderUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   name: ERT leader
   suffix: ERTRole, Basic
   categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
@@ -107,7 +107,7 @@
       nameFormat: name-format-ert
 
 - type: entity
-  id: RandomHumanoidSpawnerERTLeaderEVA
+  id: RandomHumanoidSpawnerERTLeaderEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT leader
   suffix: ERTRole, Armored EVA
@@ -135,7 +135,7 @@
       roleLoadout: [ RoleSurvivalEVA ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTLeaderEVALecter
+  id: RandomHumanoidSpawnerERTLeaderEVALecterUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTLeaderEVA
   suffix: ERTRole, Lecter, EVA
   categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
@@ -161,7 +161,7 @@
 ## ERT Chaplain
 
 - type: entity
-  id: RandomHumanoidSpawnerERTChaplain
+  id: RandomHumanoidSpawnerERTChaplainUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT chaplain
   suffix: ERTRole, Basic
@@ -200,7 +200,7 @@
       roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTChaplainEVA
+  id: RandomHumanoidSpawnerERTChaplainEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTChaplain
   name: ERT chaplain
   suffix: ERTRole, Enviro EVA
@@ -231,7 +231,7 @@
 ## ERT Janitor
 
 - type: entity
-  id: RandomHumanoidSpawnerERTJanitor
+  id: RandomHumanoidSpawnerERTJanitorUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT janitor
   suffix: ERTRole, Basic
@@ -269,7 +269,7 @@
       roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTJanitorEVA
+  id: RandomHumanoidSpawnerERTJanitorEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTJanitor
   name: ERT janitor
   suffix: ERTRole, Enviro EVA
@@ -299,7 +299,7 @@
 ## ERT Engineer
 
 - type: entity
-  id: RandomHumanoidSpawnerERTEngineer
+  id: RandomHumanoidSpawnerERTEngineerUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT engineer
   suffix: ERTRole, Basic
@@ -337,7 +337,7 @@
       roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTEngineerEVA
+  id: RandomHumanoidSpawnerERTEngineerEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTEngineer
   name: ERT engineer
   suffix: ERTRole, Enviro EVA
@@ -367,7 +367,7 @@
 ## ERT Security
 
 - type: entity
-  id: RandomHumanoidSpawnerERTSecurity
+  id: RandomHumanoidSpawnerERTSecurityUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT security
   suffix: ERTRole, Basic
@@ -405,7 +405,7 @@
       roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTSecurityEVA
+  id: RandomHumanoidSpawnerERTSecurityEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTSecurity
   name: ERT security
   suffix: ERTRole, Armored EVA
@@ -433,7 +433,7 @@
       roleLoadout: [ RoleSurvivalEVA ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTSecurityEVALecter
+  id: RandomHumanoidSpawnerERTSecurityEVALecterUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTSecurityEVA
   suffix: ERTRole, Lecter, EVA
   categories: [ HideSpawnMenu ] # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
@@ -459,7 +459,7 @@
 ## ERT Medic
 
 - type: entity
-  id: RandomHumanoidSpawnerERTMedical
+  id: RandomHumanoidSpawnerERTMedicalUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT medic
   suffix: ERTRole, Basic
@@ -497,7 +497,7 @@
       roleLoadout: [ RoleSurvivalExtended ]
 
 - type: entity
-  id: RandomHumanoidSpawnerERTMedicalEVA
+  id: RandomHumanoidSpawnerERTMedicalEVAUpstream # Moffstation - (ERT Overhaul) - Using the ones under our namespace instead
   parent: RandomHumanoidSpawnerERTMedical
   name: ERT medic
   suffix: ERTRole, Armored EVA
