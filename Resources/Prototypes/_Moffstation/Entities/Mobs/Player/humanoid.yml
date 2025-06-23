@@ -93,7 +93,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-leader
+    nameFormat: name-format-military-leader
   - type: Loadout
     prototypes: [ MercenaryLeaderGear ]
     roleLoadout: [ RoleSurvivalExtended ]
@@ -123,7 +123,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-rifleman
+    nameFormat: name-format-military-rifle
   - type: Loadout
     prototypes: [ MercenaryRiflemanGear ]
     roleLoadout: [ RoleSurvivalExtended ]
@@ -153,7 +153,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-engineer
+    nameFormat: name-format-military-pointman
   - type: Loadout
     prototypes: [ MercenaryEngineerGear ]
     roleLoadout: [ RoleSurvivalExtended ]
@@ -183,7 +183,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-medic
+    nameFormat: name-format-military-medic
   - type: Loadout
     prototypes: [ MercenaryMedicGear ]
     roleLoadout: [ RoleSurvivalExtended ]
