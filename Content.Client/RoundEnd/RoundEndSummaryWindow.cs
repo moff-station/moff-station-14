@@ -48,6 +48,34 @@ namespace Content.Client.RoundEnd
                 Name = Loc.GetString("round-end-summary-window-round-end-summary-tab-title")
             };
 
+            // Starlight - Start - Search filter Box
+            var searchContainer = new BoxContainer
+            {
+                Orientation = LayoutOrientation.Horizontal,
+                Margin = new Thickness(10, 10, 10, 5),
+                VerticalExpand = false,
+                HorizontalExpand = true
+            };
+
+            var searchLabel = new Label
+            {
+                Text = Loc.GetString("round-end-summary-window-search-label"),
+                MinSize = new Vector2(80, 0),
+                VerticalAlignment = VAlignment.Center
+            };
+
+            var searchInput = new LineEdit
+            {
+                PlaceHolder = Loc.GetString("round-end-summary-window-search-placeholder"),
+                HorizontalExpand = true,
+                MinHeight = 30
+            };
+
+            searchContainer.AddChild(searchLabel);
+            searchContainer.AddChild(searchInput);
+            roundEndSummaryTab.AddChild(searchContainer);
+            // Starlight - End
+
             var roundEndSummaryContainerScrollbox = new ScrollContainer
             {
                 VerticalExpand = true,
@@ -79,8 +107,18 @@ namespace Content.Client.RoundEnd
             if (!string.IsNullOrEmpty(roundEnd))
             {
                 var roundEndLabel = new RichTextLabel();
-                roundEndLabel.SetMarkup(roundEnd);
+                // Starlight - Start - Add dynamic search functionality
+                UpdateRoundEndTextForSearch(roundEndLabel, roundEnd, "");
                 roundEndSummaryContainer.AddChild(roundEndLabel);
+
+                searchInput.OnTextChanged += args =>
+                {
+                    var isSearchDone = UpdateRoundEndTextForSearch(roundEndLabel, roundEnd, args.Text);
+                    // the return value is only interesting for us to know if the two labels should be visible or not
+                    gamemodeLabel.Visible = !isSearchDone;
+                    roundTimeLabel.Visible = !isSearchDone;
+                };
+                // Starlight - End
             }
 
             roundEndSummaryContainerScrollbox.AddChild(roundEndSummaryContainer);
@@ -88,6 +126,35 @@ namespace Content.Client.RoundEnd
 
             return roundEndSummaryTab;
         }
+
+        // Starlight - Start - Search filter Box
+        // This adds the filter input box. Skip this part if you only want to know how the list gets populated.
+        private bool UpdateRoundEndTextForSearch(RichTextLabel label, string fullText, string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                // If no search term, show all text
+                label.SetMarkup(fullText);
+                return false;
+            }
+
+            // In the player manifest it's fine to split by every line but
+            // in the round end summary it's better to give context to the search term
+            // so we split by double newlines to provide the whole paragraph of text
+            var blocks = fullText.Split(["\n\n"], StringSplitOptions.RemoveEmptyEntries);
+
+            // Filter blocks that contain the search term
+            var matchingBlocks = blocks.Where(block =>
+                block.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase));
+
+            // Join matching blocks back together
+            var filteredText = string.Join("\n\n", matchingBlocks);
+
+            // Set the text to whatever's found
+            label.SetMarkup(filteredText);
+            return true;
+        }
+        // Starlight - End
 
         private BoxContainer MakePlayerManifestTab(RoundEndMessageEvent.RoundEndPlayerInfo[] playersInfo)
         {
@@ -107,6 +174,48 @@ namespace Content.Client.RoundEnd
                 Orientation = LayoutOrientation.Vertical
             };
 
+            // Starlight - Start - Search filter Box
+            // This adds the filter input box. Skip this part if you only want to know how the list gets populated.
+            var searchContainer = new BoxContainer
+            {
+                Orientation = LayoutOrientation.Horizontal,
+                Margin = new Thickness(10, 10, 10, 5),
+                VerticalExpand = false,
+                HorizontalExpand = true,
+            };
+
+            var searchLabel = new Label
+            {
+                Text = Loc.GetString("round-end-summary-window-search-label"),
+                MinSize = new Vector2(80, 0),
+                VerticalAlignment = VAlignment.Center,
+            };
+
+            var searchInput = new LineEdit
+            {
+                PlaceHolder = Loc.GetString("round-end-summary-window-search-placeholder"),
+                HorizontalExpand = true,
+                MinHeight = 30,
+            };
+
+            searchInput.OnTextChanged += args => OnSearchTextChanged(args, playerInfoContainer, playersInfo);
+
+            searchContainer.AddChild(searchLabel);
+            searchContainer.AddChild(searchInput);
+
+            playerManifestTab.AddChild(searchContainer);
+            // End of search box
+
+            PopulatePlayerManifestList(playerInfoContainer, playersInfo);
+
+            playerInfoContainerScrollbox.AddChild(playerInfoContainer);
+            playerManifestTab.AddChild(playerInfoContainerScrollbox);
+
+            return playerManifestTab;
+        }
+
+        private void PopulatePlayerManifestList(BoxContainer playerInfoContainer, RoundEndMessageEvent.RoundEndPlayerInfo[] playersInfo)
+        {
             //Put observers at the bottom of the list. Put antags on top.
             var sortedPlayersInfo = playersInfo.OrderBy(p => p.Observer).ThenBy(p => !p.Antag);
 
@@ -127,12 +236,12 @@ namespace Content.Client.RoundEnd
                 if (playerInfo.PlayerNetEntity != null)
                 {
                     hBox.AddChild(new SpriteView(playerInfo.PlayerNetEntity.Value, _entityManager)
-                        {
-                            OverrideDirection = Direction.South,
-                            VerticalAlignment = VAlignment.Center,
-                            SetSize = new Vector2(32, 32),
-                            VerticalExpand = true,
-                        });
+                    {
+                        OverrideDirection = Direction.South,
+                        VerticalAlignment = VAlignment.Center,
+                        SetSize = new Vector2(32, 32),
+                        VerticalExpand = true,
+                    });
                 }
 
                 if (playerInfo.PlayerICName != null)
@@ -160,12 +269,35 @@ namespace Content.Client.RoundEnd
                 hBox.AddChild(playerInfoText);
                 playerInfoContainer.AddChild(hBox);
             }
-
-            playerInfoContainerScrollbox.AddChild(playerInfoContainer);
-            playerManifestTab.AddChild(playerInfoContainerScrollbox);
-
-            return playerManifestTab;
         }
+
+        private void OnSearchTextChanged(LineEdit.LineEditEventArgs searchTerm, BoxContainer playerInfoContainer, RoundEndMessageEvent.RoundEndPlayerInfo[] playersInfo)
+        {
+            // Empty the result box when we star typing
+            playerInfoContainer.RemoveAllChildren();
+
+            var newText = searchTerm.Text;
+            if (string.IsNullOrWhiteSpace(newText))
+            {
+                // If search is empty, show all text and all players
+                PopulatePlayerManifestList(playerInfoContainer, playersInfo);
+                return;
+            }
+
+            // Filter the player list based on search term
+            // Searches: Player OOC Name, Player IC Name, and Player Role
+            var filteredPlayersInfo = playersInfo.Where(player =>
+                player.PlayerOOCName.Contains(newText, StringComparison.InvariantCultureIgnoreCase) ||
+                (player.PlayerICName != null && player.PlayerICName.Contains(newText, StringComparison.InvariantCultureIgnoreCase)) ||
+                Loc.GetString(player.Role).Contains(newText, StringComparison.InvariantCultureIgnoreCase)
+            )
+            .ToArray();
+
+            // Populate the player list with filtered results
+            PopulatePlayerManifestList(playerInfoContainer, filteredPlayersInfo);
+        }
+
+        // Starlight-end
     }
 
 }

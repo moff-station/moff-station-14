@@ -20,13 +20,29 @@
   id: CentcomGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitCentcomOfficial
-    shoes: ClothingShoesBootsCombatFilled
-    head: ClothingHeadHatCentcom
-    eyes: ClothingEyesGlassesSunglasses
-    gloves: ClothingHandsGlovesColorBlack
+    # Moffstation - Begin (New CentComm Loadouts)
+    back: ClothingBackpackSatchelLeather
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesCommand
+    gloves: ClothingHandsGlovesHop
     outerClothing: ClothingOuterArmorCentcommCarapace
     id: CentcomPDA
     ears: ClothingHeadsetAltCentCom
-    belt: WeaponPistolN1984
-    pocket1: BoxFolderBlack
-    pocket2: PenCentcom
+    belt: ClothingBeltHolsterFilledN1984
+    pocket1: WeaponDisabler
+    pocket2: BoxFolderCentComClipboard
+  inhand:
+  - BriefcaseBrownFilled
+  storage:
+    back:
+    - Flash
+    - Crowbar
+    # Moffstation - End
+
+- type: chameleonOutfit
+  id: CentralCommandOfficialOutfit
+  job: CentralCommandOfficial
+  hasMindShield: true
+  equipment:
+    neck: ClothingNeckScarfStripedCentcom
+    mask: ClothingMaskGasCentcom

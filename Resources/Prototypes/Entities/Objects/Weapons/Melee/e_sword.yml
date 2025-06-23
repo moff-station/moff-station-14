@@ -23,7 +23,7 @@
   - type: ItemToggleSize
     activatedSize: Huge
   - type: ItemTogglePointLight
-    Moffstation_ToggleVisualsColorModulatesLights: true # Moffstation
+    toggleableVisualsColorModulatesLights: true
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/Weapons/eblade1.ogg
@@ -60,7 +60,7 @@
     color: white
     netsync: false
   - type: Appearance
-  - type: ToggleableLightVisuals # Add support for multiple layers
+  - type: ToggleableVisuals # Add support for multiple layers
     spriteLayer: blade
     inhandVisuals:
       left:
@@ -90,6 +90,8 @@
       map: [ "blade" ]
   - type: Item
     sprite: Objects/Weapons/Melee/e_sword-inhands.rsi
+  - type: StaticPrice
+    price: 2500
 
 - type: entity
   name: energy dagger
@@ -251,8 +253,11 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types:
-            Slash: 10
+          # Moffstation - Start - e-cutlass buff
+            Slash: 12
             Heat: 12
+            Structural: 20
+          # Moffstation - End
     deactivatedSecret: true
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite

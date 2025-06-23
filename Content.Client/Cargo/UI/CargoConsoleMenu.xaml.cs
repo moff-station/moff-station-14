@@ -203,6 +203,9 @@ namespace Content.Client.Cargo.UI
         /// </summary>
         public void PopulateOrders(IEnumerable<CargoOrderData> orders)
         {
+            if (!_orderConsoleQuery.TryComp(_owner, out var orderConsole))
+                return;
+
             Requests.DisposeAllChildren();
 
             foreach (var order in orders)
@@ -237,6 +240,7 @@ namespace Content.Client.Cargo.UI
                 row.Cancel.OnPressed += (args) => { OnOrderCanceled?.Invoke(args); };
 
                 // TODO: Disable based on access.
+                row.SetApproveVisible(orderConsole.Mode != CargoOrderConsoleMode.SendToPrimary);
                 row.Approve.OnPressed += (args) => { OnOrderApproved?.Invoke(args); };
                 Requests.AddChild(row);
             }
@@ -277,6 +281,14 @@ namespace Content.Client.Cargo.UI
             if (!_bankQuery.TryComp(_station, out var bankAccount) ||
                 !_orderConsoleQuery.TryComp(_owner, out var orderConsole))
             {
+                AccountActionButton.Disabled = true;
+                return;
+            }
+
+            var accounts = bankAccount.Accounts;
+            if (!accounts.ContainsKey(orderConsole.Account))
+            {
+                AccountActionButton.Disabled = true;
                 return;
             }
 
@@ -290,8 +302,8 @@ namespace Content.Client.Cargo.UI
                                            TransferSpinBox.Value > bankAccount.Accounts[orderConsole.Account] * orderConsole.TransferLimit ||
                                            _timing.CurTime < orderConsole.NextAccountActionTime;
 
-            OrdersSpacer.Visible = !orderConsole.SlipPrinter;
-            Orders.Visible = !orderConsole.SlipPrinter;
+            OrdersSpacer.Visible = orderConsole.Mode != CargoOrderConsoleMode.PrintSlip;
+            Orders.Visible = orderConsole.Mode != CargoOrderConsoleMode.PrintSlip;
         }
     }
 }

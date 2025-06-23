@@ -1,0 +1,19 @@
+- type: latheRecipe
+  parent: BaseAmmoBoxRecipe
+  id: MagazineBoxBigIronDisabler
+  result: MagazineBoxBigIronDisabler
+  materials:
+    Steel: 200
+    Glass: 200
+    Plastic: 100
+    Gold: 10
+
+- type: latheRecipe
+  parent: BaseAmmoBoxRecipe
+  id: MagazineBoxBigIronLethal
+  result: MagazineBoxBigIronLethal
+  materials:
+    Steel: 200
+    Glass: 200
+    Plastic: 100
+    Gold: 20

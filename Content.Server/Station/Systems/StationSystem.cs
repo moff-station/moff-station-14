@@ -3,6 +3,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
+using Content.Shared._Moffstation.Pirate.Components; // Moffstation
 using Content.Shared.CCVar;
 using Content.Shared.Station;
 using Content.Shared.Station.Components;
@@ -500,6 +501,11 @@ public sealed partial class StationSystem : SharedStationSystem
         var query = EntityQueryEnumerator<StationDataComponent>();
         while (query.MoveNext(out var uid, out _))
         {
+            // Moffstation - Start - Pirate stations aren't _really_ stations, so don't return them here.
+            if (HasComp<PirateStationComponent>(uid))
+                continue;
+            // Moffstation - End
+
             stations.Add(uid);
         }
 
@@ -512,6 +518,11 @@ public sealed partial class StationSystem : SharedStationSystem
         var query = EntityQueryEnumerator<StationDataComponent>();
         while (query.MoveNext(out var uid, out _))
         {
+            // Moffstation - Start - Pirate stations aren't _really_ stations, so don't return them here.
+            if (HasComp<PirateStationComponent>(uid))
+                continue;
+            // Moffstation - End
+
             stations.Add(uid);
         }
 
@@ -543,6 +554,11 @@ public sealed partial class StationSystem : SharedStationSystem
         var query = EntityQueryEnumerator<StationDataComponent>();
         while (query.MoveNext(out var uid, out var data))
         {
+            // Moffstation - Start - Pirate stations aren't _really_ stations, so don't return them here.
+            if (HasComp<PirateStationComponent>(uid))
+                continue;
+            // Moffstation - End
+
             foreach (var gridUid in data.Grids)
             {
                 if (Transform(gridUid).MapID == map)

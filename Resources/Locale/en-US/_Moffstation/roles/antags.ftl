@@ -9,5 +9,17 @@ roles-antag-pirate-crew-objective = Pillage, Plunder, and obey the Pirate Captai
 
 pirate-role-greeting =
     SHIVER ME TIMBERS!
-    YOU BE A PIRATE SENT TO ROB THEE STATION.
-    STEAL LOOT PILLAGE AND MAKE US ALL RICH.
+    YOU BE A PIRATE SENT TO ROB THE STATION.
+    STEAL, LOOT, PILLAGE, AND MAKE US ALL RICH.
+
+pirates-existing = [color=#a15608]Yarg! There be Pirates![/color]
+pirate-list-start = The Pirates were:
+pirate-list-name = [color=White]{$name}[/color]
+pirate-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
+
+pirates-title = Pirates
+pirates-description = The station has come under attack by a band of thieving pirates! Keep them from looting the station dry!
+
+comms-console-announcement-title-pirate = Space Pirate
+
+pirate-briefing = You're a pirate in dire need of some cash. Loot the station and sell its belongings to make as much money as you can.

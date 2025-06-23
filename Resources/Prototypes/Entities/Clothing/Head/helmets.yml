@@ -29,20 +29,36 @@
 
 #Basic Helmet (Security Helmet)
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
+  # Moffstation - Begin (Foldable Security Helmet)
+  parent: [ClothingHeadHelmetArmoredBase, BaseFoldable, BaseSecurityContraband]
   id: ClothingHeadHelmetBasic
-  name: helmet
-  description: Standard security gear. Protects the head from impacts.
+  name: security helmet
+  description: Standard security gear. Protects the head from impacts, and comes with a detachable visor.
   components:
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-attach-visor-verb
+    foldVerbText: fold-detach-visor-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: visorless
+    foldedHeldPrefix: visorless
   - type: Sprite
-    sprite: Clothing/Head/Helmets/security.rsi
+    sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: visorless-icon
+      map: [ "foldedLayer" ]
+      visible: true
   - type: Clothing
-    sprite: Clothing/Head/Helmets/security.rsi
+    sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
+  # Moffstation - End
   - type: Tag
     tags:
     - WhitelistChameleon
     - SecurityHelmet
   - type: HideLayerClothing
+    slots: []
     layers:
       Hair: HEAD
 
@@ -313,6 +329,7 @@
     tags:
     - WhitelistChameleon
     - FireHelmet
+    - CorgiWearable
   - type: HideLayerClothing
     layers:
       Hair: HEAD
@@ -471,7 +488,7 @@
 
 #Justice Helmet
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband] # Moffstation - (Foldable Security Helmet)
   id: ClothingHeadHelmetJustice
   name: justice helm
   description: Advanced security gear. Protects the station from ne'er-do-wells.
@@ -508,7 +525,8 @@
     action: ActionToggleJusticeHelm
     mustEquip: false
   - type: ItemTogglePointLight
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
+    spriteLayer: light
     clothingVisuals:
       head:
       - state: on-equipped-HELMET
@@ -541,6 +559,12 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
+  # Moffstation - Begin (Foldable Security Helmet)
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - SecurityHelmet
+  # Moffstation - End
 
 - type: entity
   parent: ClothingHeadHelmetJustice
@@ -556,11 +580,13 @@
       Hair: HEAD
 
 - type: entity
+  parent: BaseAction
   id: ActionToggleJusticeHelm
   name: Toggle Justice Helm
   description: Toggles the justice helm on and off.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1
     itemIconStyle: BigItem
+  - type: InstantAction
     event: !type:ToggleActionEvent

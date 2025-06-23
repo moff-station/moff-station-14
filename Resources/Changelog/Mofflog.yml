@@ -1,9 +1,8 @@
-﻿Name: Mofflog
-Order: -2
 Entries:
 - author: ArtisticRoomba
   changes:
-  - message: The Mofflog has been added! This log serves as a changelog for all changes related to Moffstation.
+  - message: The Mofflog has been added! This log serves as a changelog for all changes
+      related to Moffstation.
     type: Add
   id: 1
   time: '2025-03-22T01:29:24.112Z'
@@ -21,19 +20,865 @@ Entries:
   time: '2025-03-22T01:29:24.112Z'
 - author: ArtisticRoomba
   changes:
-    - message: Barotrauma low pressure damage has been tweaked to its original unnerfed value (previously reduced to 1/4th).
-      type: Tweak
+  - message: Barotrauma low pressure damage has been tweaked to its original unnerfed
+      value (previously reduced to 1/4th).
+    type: Tweak
   id: 4
   time: '2025-03-22T01:29:24.112Z'
 - author: Centronias
   changes:
-    - message: Role timers for trinkets have been temporarily disabled.
-      type: Tweak
+  - message: Role timers for trinkets have been temporarily disabled.
+    type: Tweak
   id: 5
   time: '2025-03-22T01:29:24.112Z'
 - author: DuckManZach
   changes:
-    - message: Chloral Hydrate has been given a forced sleep threshold of 25u. It also no longer does poison damage.
-      type: Tweak
+  - message: Chloral Hydrate has been given a forced sleep threshold of 25u. It also
+      no longer does poison damage.
+    type: Tweak
   id: 6
   time: '2025-03-22T01:29:24.112Z'
+- author: DuckManZach
+  changes:
+  - message: Chloral Hydrate now has a forced sleep threshold
+    type: tweak
+  id: 11
+  time: '2025-03-24T23:56:13.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/11
+- author: Southbridge
+  changes:
+  - message: Added colorful light tube and bulb boxes and the ability to order them
+      from cargo.
+    type: add
+  id: 15
+  time: '2025-03-26T04:20:23.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/15
+- author: Centronias
+  changes:
+  - message: Localization of statuses in the criminal records console
+    type: fix
+  id: 18
+  time: '2025-03-27T06:19:05.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/18
+- author: Centronias
+  changes:
+  - message: Spawning as Station AI and Cyborgs no longer causes your selected character
+      profile's records to be visible on record consoles
+    type: fix
+  id: 19
+  time: '2025-03-28T00:00:41.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/19
+- author: Centronias
+  changes:
+  - message: "Streamer Lawset. You\u2019re gonna see lots of fails, you\u2019re gonna
+      see lots of triumphs, at least I\u2019m hoping..."
+    type: add
+  id: 21
+  time: '2025-03-28T07:44:42.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/21
+- author: Centronias
+  changes:
+  - message: Headphones show animated music notes when activated again.
+    type: fix
+  id: 22
+  time: '2025-03-29T01:04:46.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/22
+- author: Centronias
+  changes:
+  - message: Ryker's personal item
+    type: add
+  id: 27
+  time: '2025-04-02T19:22:23.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/27
+- author: Centronias
+  changes:
+  - message: Darnell's personal item
+    type: add
+  id: 28
+  time: '2025-04-04T06:35:06.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/28
+- author: Centronias
+  changes:
+  - message: Works-Many-Gigs's personal item
+    type: add
+  id: 29
+  time: '2025-04-02T18:11:02.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/29
+- author: Southbridge
+  changes:
+  - message: Added the shotgun for Eclipse Sunshade.
+    type: add
+  id: 31
+  time: '2025-04-06T02:27:13.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/31
+- author: Centronias
+  changes:
+  - message: Clown, Mime and Cyborgs may now set their names in the character loadout,
+      similar to the Station AI.
+    type: add
+  id: 32
+  time: '2025-04-02T07:27:59.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/32
+- author: Centronias
+  changes:
+  - message: Scribbles-the-Notes's personal item
+    type: add
+  id: 33
+  time: '2025-04-02T18:11:23.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/33
+- author: Centronias
+  changes:
+  - message: Krakatoa's personal item
+    type: add
+  id: 36
+  time: '2025-04-03T07:58:15.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/36
+- author: Southbridge
+  changes:
+  - message: Added Frost Winter's personal item.
+    type: add
+  id: 38
+  time: '2025-04-06T02:44:19.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/38
+- author: Centronias
+  changes:
+  - message: Seikret's personal item
+    type: add
+  id: 39
+  time: '2025-04-04T06:30:43.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/39
+- author: Centronias
+  changes:
+  - message: Deli's personal item
+    type: add
+  id: 42
+  time: '2025-04-05T19:42:45.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/42
+- author: Nox38
+  changes:
+  - message: Rebalanced cyborg modules and made more of them starting equipment.
+    type: Tweak
+  - message: Added new advanced mining and advanced chemical modules.
+    type: Add
+  id: 53
+  time: '2025-04-13T20:50:44.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/53
+- author: Centronias
+  changes:
+  - message: Sammy's kitten plush
+    type: add
+  - message: Eddie's guitar
+    type: add
+  - message: Viv's mantle
+    type: add
+  - message: Cinnabar's mask
+    type: add
+  - message: Gigs's shaker can be seen in-hand
+    type: tweak
+  - message: Frost's medwebbing is restricted to CMO, Paramed, MD, and Medical Intern
+    type: tweak
+  id: 56
+  time: '2025-04-08T18:18:29.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/56
+- author: Centronias
+  changes:
+  - message: Musicians can change their names in loadouts, similar to mimes and clowns.
+    type: add
+  id: 63
+  time: '2025-04-08T17:31:41.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/63
+- author: Centronias
+  changes:
+  - message: The Cargo Packing Error event. It seems something has gone wrong at the
+      Nanotrasen fulfillment center and cargo orders may sometimes contain some...
+      unusual contents.
+    type: add
+  id: 65
+  time: '2025-04-15T02:24:36.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/65
+- author: Centronias
+  changes:
+  - message: The height slider to character customization
+    type: add
+  id: 69
+  time: '2025-04-13T20:33:14.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/69
+- author: DuckManZach
+  changes:
+  - message: Added loadouts and customizable names to antags!
+    type: add
+  id: 70
+  time: '2025-04-17T03:03:46.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/70
+- author: Nox38
+  changes:
+  - message: Resized every firearm.
+    type: tweak
+  id: 71
+  time: '2025-04-13T20:42:27.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/71
+- author: Nox38
+  changes:
+  - message: Increased firerate and cooldown of Drozd's burst mode.
+    type: tweak
+  id: 72
+  time: '2025-04-15T02:24:00.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/72
+- author: Wintoli
+  changes:
+  - message: Buffed total shots on disablers and disabler smgs.
+    type: tweak
+  id: 79
+  time: '2025-04-15T22:40:09.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/79
+- author: Southbridge, Chartman
+  changes:
+  - message: Added Cargo Tech lobby screen
+    type: add
+  id: 82
+  time: '2025-04-15T01:00:39.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/82
+- author: Nyxilath
+  changes:
+  - message: Swapped "Bluespace Cargo Transport" and "Bluespace Chemistry" researches
+      within Civilian Services.
+    type: tweak
+  id: 84
+  time: '2025-04-15T04:35:30.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/84
+- author: Kyle Tyo
+  changes:
+  - message: You can now use actions within the action window.
+    type: add
+  id: 85
+  time: '2025-04-17T20:46:37.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/85
+- author: Southbridge
+  changes:
+  - message: Solar panels can now start randomly damaged or unfinished at the start
+      of a round.
+    type: add
+  id: 86
+  time: '2025-04-16T22:45:51.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/86
+- author: DuckManZach
+  changes:
+  - message: Added pirates as an antag! Yarg!
+    type: add
+  id: 87
+  time: '2025-04-22T21:30:53.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/87
+- author: Centronias
+  changes:
+  - message: Dwarves are stout again.
+    type: fix
+  id: 88
+  time: '2025-04-17T04:59:15.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/88
+- author: DuckManZach
+  changes:
+  - message: Added last call lobby screen
+    type: add
+  id: 89
+  time: '2025-04-17T20:53:36.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/89
+- author: DuckManZach
+  changes:
+  - message: Added Brad bucket lobby screen
+    type: add
+  id: 90
+  time: '2025-04-17T20:37:07.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/90
+- author: Nox38
+  changes:
+  - message: All grenades will start their fuse after taking 10 damage, instead of
+      the previous instant detonation.
+    type: tweak
+  - message: Most grenades will detonate instantly on taking 45 damage.
+    type: tweak
+  - message: EMP, Supermatter, Whitehole, and Flashbang grenades will be instantly
+      destroyed without detonating on taking 30 damage.
+    type: tweak
+  - message: Stinger, Incendiary, and Shrapnel grenades will be instantly destroyed
+      without detonating on taking 45 damage.
+    type: tweak
+  id: 91
+  time: '2025-04-17T21:26:14.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/91
+- author: Nox38
+  changes:
+  - message: Hardhats (except captain's) provide 10% blunt resistance.
+    type: tweak
+  - message: High-Vis vests have the suitstorage slot.
+    type: tweak
+  id: 92
+  time: '2025-05-02T23:24:00.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/92
+- author: DuckManZach
+  changes:
+  - message: Added Awana Selfie looby screen!
+    type: add
+  id: 93
+  time: '2025-04-18T00:48:22.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/93
+- author: DuckManZach
+  changes:
+  - message: Changed max playercount for certain maps
+    type: tweak
+  id: 95
+  time: '2025-04-18T00:57:10.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/95
+- author: Southbridge
+  changes:
+  - message: Solar Panel Round Start variation now won't spawn both a broken and an
+      unfinished panel.
+    type: fix
+  id: 96
+  time: '2025-04-18T08:21:05.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/96
+- author: Southbridge
+  changes:
+  - message: Added a poster celebrating the five hundred mothroach event.
+    type: add
+  id: 98
+  time: '2025-04-18T08:54:29.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/98
+- author: Nyxilath
+  changes:
+  - message: Moffs are now squeakier!
+    type: tweak
+  id: 101
+  time: '2025-04-24T21:40:55.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/101
+- author: DuckManZach
+  changes:
+  - message: Thieves can now steal innately
+    type: add
+  id: 107
+  time: '2025-04-22T21:42:45.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/107
+- author: DuckManZach
+  changes:
+  - message: Slimes now take significant damage from water
+    type: tweak
+  id: 108
+  time: '2025-04-22T21:29:06.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/108
+- author: JamiMyst
+  changes:
+  - message: Added network link to digiboard, allowing connections to telepads.
+    type: add
+  id: 110
+  time: '2025-04-23T04:36:02.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/110
+- author: compilatron
+  changes:
+  - message: Reduced slowdown of engineering hardsuits and atmospheric hardsuits from
+      30% to 20%
+    type: tweak
+  id: 111
+  time: '2025-04-28T03:43:05.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/111
+- author: DuckManZach
+  changes:
+  - message: Central Command has been replaced with a custom map.
+    type: tweak
+  id: 113
+  time: '2025-04-24T20:41:01.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/113
+- author: compilatron
+  changes:
+  - message: Smile now has an internal inventory, like slimepeople
+    type: add
+  - message: Smile now has an ID card slot
+    type: add
+  id: 114
+  time: '2025-04-24T07:04:28.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/114
+- author: compilatron
+  changes:
+  - message: Added the medical wrench. It's a wrench - but medical?
+    type: add
+  id: 115
+  time: '2025-04-24T17:19:10.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/115
+- author: compilatron
+  changes:
+  - message: Increased the damage water does to slimes by 5x, making it actually hazardous.
+    type: tweak
+  id: 116
+  time: '2025-04-24T08:12:24.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/116
+- author: DuckManZach
+  changes:
+  - message: Emergency pods now dock with centcomm!
+    type: fix
+  id: 120
+  time: '2025-04-26T21:29:11.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/120
+- author: JamiMyst
+  changes:
+  - message: Chief Medical Officer can now wear the genetics, virology, or chemistry
+      backpacks roundstart.
+    type: add
+  - message: Quartermaster can now wear the salvage backpacks roundstart.
+    type: add
+  - message: Chief Engineer can now wear the atmospherics backpacks roundstart.
+    type: add
+  - message: Head of Personnel can now wear the hydropnics, mime, or clown backpacks
+      roundstart.
+    type: add
+  - message: Chief Engineer can now wear workboots roundstart.
+    type: add
+  - message: Quartermaster can now wear salvage boots roundstart.
+    type: add
+  id: 121
+  time: '2025-04-25T05:51:07.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/121
+- author: DuckManZach
+  changes:
+  - message: The station is now north oriented
+    type: tweak
+  id: 128
+  time: '2025-04-26T23:58:54.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/128
+- author: compilatron
+  changes:
+  - message: Added over 30 new figurines of various crew members, including a special
+      "Moff" edition figurine box containing them all. You can find them in the Good
+      Clean Fun vendor, or order them from cargo.
+    type: add
+  id: 131
+  time: '2025-04-28T06:04:32.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/131
+- author: DuckManZach
+  changes:
+  - message: Radios now can toggle their mic and speaker
+    type: tweak
+  - message: The red phone is now a radio to centcomm
+    type: tweak
+  id: 133
+  time: '2025-04-30T19:07:52.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/133
+- author: DuckManZach
+  changes:
+  - message: Execution now requires centcomm approval
+    type: tweak
+  id: 134
+  time: '2025-04-29T05:35:25.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/134
+- author: DuckManZach
+  changes:
+  - message: Make centcomm cooler
+    type: tweak
+  id: 135
+  time: '2025-04-29T05:34:38.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/135
+- author: Southbridge
+  changes:
+  - message: Added moffstation figure spawner
+    type: add
+  id: 136
+  time: '2025-04-29T06:12:56.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/136
+- author: DuckManZach
+  changes:
+  - message: readd turtlenecks to the winterdrobe
+    type: add
+  id: 139
+  time: '2025-04-30T17:47:22.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/139
+- author: Tezzaide
+  changes:
+  - message: Personal Rings for Nyxilath and Iris Steelewing
+    type: add
+  id: 141
+  time: '2025-04-30T19:14:44.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/141
+- author: DuckManZach
+  changes:
+  - message: Added Pawgliaci!
+    type: add
+  id: 142
+  time: '2025-05-01T21:47:33.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/142
+- author: compilatron
+  changes:
+  - message: Added Remia's "Sibling Photo" personal item
+    type: add
+  - message: Added Jasmine Whitewitch's "Jasmine's Flower" personal item
+    type: add
+  id: 146
+  time: '2025-05-04T22:02:20.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/146
+- author: Nox38
+  changes:
+  - message: Captain's Saber now comes with a built in PAI!
+    type: add
+  id: 148
+  time: '2025-05-04T22:03:00.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/148
+- author: Nox38
+  changes:
+  - message: Survival boxes now have a whitelist, but are 2x2 in the inventory.
+    type: tweak
+  id: 149
+  time: '2025-05-09T19:15:07.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/149
+- author: Nox38
+  changes:
+  - message: Added stamina resistance to all armor and hardsuits
+    type: add
+  - message: Reduced and standardized disabler damage, made disabler SMG a tier 3
+      armory recipe.
+    type: tweak
+  id: 150
+  time: '2025-05-08T04:25:17.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/150
+- author: DuckManZach
+  changes:
+  - message: Added the shift-report notebook!
+    type: add
+  id: 151
+  time: '2025-05-05T00:03:09.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/151
+- author: compilatron
+  changes:
+  - message: Added a bulk maid dress crate, purchaseable from cargo.
+    type: add
+  id: 154
+  time: '2025-05-04T21:54:35.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/154
+- author: JamiMyst
+  changes:
+  - message: Spray Painters now can paint in colors relating to most gases.
+    type: tweak
+  id: 155
+  time: '2025-05-04T22:47:55.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/155
+- author: DuckManZach
+  changes:
+  - message: Readded the jug and elite suit to the traitor uplink
+    type: tweak
+  id: 158
+  time: '2025-05-06T07:07:55.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/158
+- author: DuckManZach
+  changes:
+  - message: Added the foolbox
+    type: add
+  id: 160
+  time: '2025-05-05T09:33:32.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/160
+- author: DuckManZach
+  changes:
+  - message: Added open ended objectives
+    type: add
+  id: 163
+  time: '2025-05-07T01:09:52.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/163
+- author: JamiMyst, catlord09
+  changes:
+  - message: Added personal item for Vortex Vatia.
+    type: add
+  id: 164
+  time: '2025-05-07T03:13:03.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/164
+- author: Nox38
+  changes:
+  - message: Captain's Saber's PAI can now be turned off or on.
+    type: fix
+  id: 165
+  time: '2025-05-09T19:14:45.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/165
+- author: Increased moth speech sfx volume
+  changes: []
+  id: 168
+  time: '2025-05-08T20:19:38.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/168
+- author: Centronias
+  changes:
+  - message: The Security Record Console can view criminal history
+    type: add
+  - message: The Security Record Console can filter on criminal status
+    type: add
+  id: 169
+  time: '2025-05-09T19:11:30.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/169
+- author: DuckManZach
+  changes:
+  - message: Fixed arrivals and evac pods, they should ALWAYS dock in the correct
+      places now
+    type: fix
+  id: 170
+  time: '2025-05-09T09:10:43.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/170
+- author: Nyxilath
+  changes:
+  - message: Caustic damage can now Acidify Mobs!
+    type: add
+  id: 171
+  time: '2025-05-09T14:54:02.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/171
+- author: Tezzaide
+  changes:
+  - message: The Biogenerator and Biofabricator are now lube compatible.
+    type: tweak
+  id: 172
+  time: '2025-05-09T19:14:18.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/172
+- author: DuckManZach
+  changes:
+  - message: Added a new arrivals terminal!
+    type: add
+  - message: Everyone now starts the shift at arrivals
+    type: tweak
+  id: 179
+  time: '2025-05-12T04:22:31.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/179
+- author: compilatron
+  changes:
+  - message: Adds the handheld wireless camera, a handheld variant of the wireless
+      camera. It can be researched and printed by science.
+    type: add
+  id: 181
+  time: '2025-05-13T02:00:03.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/181
+- author: DuckManZach
+  changes:
+  - message: Added the prisoner role!
+    type: add
+  id: 182
+  time: '2025-05-13T01:09:42.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/182
+- author: Nox38
+  changes:
+  - message: Changed nukie equipment
+    type: tweak
+  id: 183
+  time: '2025-05-20T14:23:17.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/183
+- author: compilatron
+  changes:
+  - message: Added 7 new department and subdepartmental maid dresses, that can be
+      found in the maid dress crate and respective clothe vendor contraband inventories.
+    type: add
+  - message: Maid dress crate now contains 5 random maid dresses, apposed to 5 preset
+      dresses
+    type: tweak
+  - message: Changed maid dress crate cost  from 3,000 spesos to 1,500 spesos
+    type: tweak
+  id: 184
+  time: '2025-05-13T01:11:41.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/184
+- author: compilatron
+  changes:
+  - message: Adds the nurse outfit. It is available as a loadout option or dispensed
+      from the medidrobe.
+    type: add
+  id: 185
+  time: '2025-05-13T02:25:17.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/185
+- author: Centronias
+  changes:
+  - message: Cyborgs are no longer literally deleted when devoured by a dragon, round-removing
+      the cyborg player. Instead, their chassis is destroyed and their brain goes
+      in the dragon's stomach.
+    type: tweak
+  id: 186
+  time: '2025-05-12T23:18:28.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/186
+- author: Centronias
+  changes:
+  - message: fire safety
+    type: add
+  id: 191
+  time: '2025-05-14T14:10:07.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/191
+- author: Nox38
+  changes:
+  - message: grenade launchers must be wielded to fire.
+    type: tweak
+  - message: the China Lake holds 3 -> 4 grenades.
+    type: tweak
+  id: 193
+  time: '2025-05-15T14:15:40.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/193
+- author: Southbridge, Dayvei
+  changes:
+  - message: Added the reporter's locker and storage fill.
+    type: add
+  - message: Added journalist and reporter skirts.
+    type: add
+  - message: Added a meteorologist suit and skirt.
+    type: add
+  - message: Removed the shift-report tablet from spawning on the news console.
+    type: tweak
+  id: 194
+  time: '2025-05-13T23:02:46.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/194
+- author: Southbridge
+  changes:
+  - message: Added reporter to arrivals.
+    type: add
+  id: 195
+  time: '2025-05-14T14:09:27.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/195
+- author: Southbridge, Dayvei
+  changes:
+  - message: Tippy
+    type: remove
+  - message: Moffy
+    type: add
+  id: 197
+  time: '2025-05-15T19:58:39.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/197
+- author: Nox38
+  changes:
+  - message: You should feel fear.
+    type: tweak
+  id: 198
+  time: '2025-05-15T20:50:05.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/198
+- author: Southbridge
+  changes:
+  - message: Added two new objectives for calling cards.
+    type: add
+  - message: Temporarily removed Infiltrate and Incriminate objectives until they
+      can be reworked.
+    type: remove
+  id: 200
+  time: '2025-05-16T22:13:23.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/200
+- author: Centronias
+  changes:
+  - message: The HugBot, which is similar in purpose and construction to other small
+      robots like the CleanBot.
+    type: add
+  id: 201
+  time: '2025-05-25T23:58:07.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/201
+- author: DuckManZach
+  changes:
+  - message: Added Peri's face
+    type: add
+  id: 202
+  time: '2025-05-16T22:32:37.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/202
+- author: Southbridge
+  changes:
+  - message: On Arrivals, removed the griefing turret in the CC section, as well as
+      the whole CC section.
+    type: fix
+  - message: Gave the arrivals shuttle a lot more seating.
+    type: tweak
+  id: 203
+  time: '2025-05-19T03:21:23.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/203
+- author: compilatron
+  changes:
+  - message: Added 15 new player figurines, accessible in all the existing places
+      you'd find them.
+    type: add
+  id: 209
+  time: '2025-05-24T03:26:28.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/209
+- author: DuckManZach
+  changes:
+  - message: Added a new moffstation logo!
+    type: add
+  id: 210
+  time: '2025-05-21T04:36:38.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/210
+- author: Nox38
+  changes:
+  - message: Humans can now select cat ears and cat tail in their markings.
+    type: add
+  id: 211
+  time: '2025-05-28T22:10:06.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/211
+- author: DuckManZach
+  changes:
+  - message: Added Rules!
+    type: add
+  id: 212
+  time: '2025-05-22T21:06:13.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/212
+- author: nithead10
+  changes: []
+  id: 217
+  time: '2025-05-22T23:01:03.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/217
+- author: Southbridge
+  changes:
+  - message: On the Arrival Shuttle, Fixed the wiring.
+    type: fix
+  id: 218
+  time: '2025-05-23T00:10:39.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/218
+- author: DuckManZach
+  changes:
+  - message: Added rollover system to map votes! votes also start automatically now!
+    type: add
+  id: 221
+  time: '2025-05-24T03:23:55.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/221
+- author: DuckManZach
+  changes:
+  - message: Added two new lobby backgrounds!
+    type: add
+  id: 223
+  time: '2025-05-24T21:11:44.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/223
+- author: DuckManZach
+  changes:
+  - message: Added the CMO scarf
+    type: add
+  id: 224
+  time: '2025-05-24T19:11:49.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/224
+- author: DuckManZach
+  changes:
+  - message: Added colorful music notes to headphones!
+    type: tweak
+  id: 226
+  time: '2025-05-24T19:12:52.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/226
+- author: Kyle Tyo
+  changes:
+  - message: Buttons within the round tab of the admin window now require confirmation.
+      This can be bypassed using the console.
+    type: tweak
+  id: 230
+  time: '2025-05-25T23:46:10.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/230
+- author: Nyxilath
+  changes:
+  - message: Law Matrix Imprinter, a machine dedicated to produce AI Law Boards.
+    type: add
+  id: 233
+  time: '2025-05-27T23:06:43.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/233
+- author: Nox38, exbedio
+  changes:
+  - message: Added the valkyrie hud, a combined med+chem hud available to the CMO.
+    type: add
+  id: 234
+  time: '2025-05-28T22:09:07.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/234
+- author: Nyxilath
+  changes:
+  - message: Stopped hazing Avali players out of their basic survival kits.
+    type: fix
+  id: 235
+  time: '2025-05-26T23:18:28.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/235
+- author: Nox38
+  changes:
+  - message: Belts now render over outerwear.
+    type: tweak
+  id: 239
+  time: '2025-05-27T23:46:40.000+00:00'
+  url: https://github.com/moff-station/moff-station-14/pull/239
+Name: Mofflog
+Order: -2

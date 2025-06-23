@@ -1,0 +1,16 @@
+#Revert machine parts
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: CapacitorStockPart
+  result: CapacitorStockPart
+  materials:
+    Glass: 50
+    Steel: 50
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: MatterBinStockPart
+  result: MatterBinStockPart
+  materials:
+    Plastic: 50
+    Glass: 50
