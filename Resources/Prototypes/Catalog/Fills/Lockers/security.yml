@@ -21,6 +21,7 @@
       - id: BookSpaceLaw
       - id: ClothingBackpackElectropack
         amount: 2
+      - id: WeaponEnergyShotgun # Moffstation - Big Iron
       - id: RemoteSignaller
         amount: 2
 
@@ -46,6 +47,8 @@
       - id: BookSpaceLaw
       - id: ClothingBackpackElectropack
         amount: 2
+      - id: WeaponEnergyShotgun # Moffstation - Big Iron
+
       - id: RemoteSignaller
         amount: 2
       - id: Binoculars
@@ -77,6 +80,10 @@
         prob: 0.6
       - id: BookSpaceLaw
         prob: 0.5
+      # Moffstation - Begin (Security Armored Longcoat)
+      - id: ClothingOuterWinterSecArmored
+        prob: 0.3
+      # Moffstation - End
 
 - type: entity
   id: LockerBrigmedicFilled
