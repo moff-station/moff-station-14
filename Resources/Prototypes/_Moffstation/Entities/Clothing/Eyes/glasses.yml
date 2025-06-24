@@ -8,3 +8,24 @@
     sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
+
+- type: entity
+  parent: ClothingEyesHudMedical
+  id: ClothingEyesGlassesMedSunglasses
+  name: medical sunglasses
+  description: Why be medical when you can be medi-cool? Just don't stare into any bright lights.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Eyes/Glasses/medsunglasses.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Eyes/Glasses/medsunglasses.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - HudMedical
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: Construction
+    graph: MedSunglasses
+    node: glassesmed

@@ -39,11 +39,25 @@ public sealed partial class CCVars
     public static readonly CVarDef<string> ArrivalsMap =
         CVarDef.Create("shuttle.arrivals_map", "/Maps/_Umbra/Misc/terminal.yml", CVar.SERVERONLY);
 
+    // Moffstation - Start - Custom arrivals settings
     /// <summary>
-    /// Moffstation - The maximum range people are allowed to travel from the center of the arrivals map
+    ///     The maximum range people are allowed to travel from the center of the arrivals map
     /// </summary>
     public static readonly CVarDef<float> ArrivalsRange =
         CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Whether players should spawn at arrivals at the start of the round
+    /// </summary>
+    public static readonly CVarDef<bool> StartAtArrivals =
+        CVarDef.Create("shuttle.start_at_arrivals", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     If players start the round at arrivals, how long should it be until latejoins can enter from station cryosleep?
+    /// </summary>
+    public static readonly CVarDef<int> SpawnPreferenceDelay =
+        CVarDef.Create("shuttle.spawn_preference_delay", 5, CVar.SERVERONLY);
+    // Moffstation - end
 
     /// <summary>
     ///     Cooldown between arrivals departures. This should be longer than the FTL time or it will double cycle.

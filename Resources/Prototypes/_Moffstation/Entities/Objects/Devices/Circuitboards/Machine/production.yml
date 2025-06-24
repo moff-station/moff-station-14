@@ -8,11 +8,9 @@
   - type: MachineBoard
     prototype: CircuitImprinterLawMatrix
     stackRequirements:
-      Manipulator: 1
+      MatterBin: 1
+      Plasma: 1
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
-      SmallAIChip:
-        amount: 1
-        defaultPrototype: PotatoAIChip
