@@ -5,7 +5,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StaminaDamageOnCollide
-    damage: 35
+    damage: 40
   - type: Projectile
     damage:
       types:
@@ -21,4 +21,4 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 20
+        Heat: 35
