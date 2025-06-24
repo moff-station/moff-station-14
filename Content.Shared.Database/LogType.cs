@@ -391,6 +391,7 @@ public enum LogType
     /// Tiles related interactions.
     /// </summary>
     Tile = 86,
+    ObjectiveSummary = 422, //DeltaV
 
     /// <summary>
     /// A client has sent too many chat messages recently and is temporarily blocked from sending more.
@@ -472,5 +473,10 @@ public enum LogType
     /// <summary>
     /// Damaging grid collision has occurred.
     /// </summary>
-    ShuttleImpact = 102
+    ShuttleImpact = 102,
+
+    /// <summary>
+    /// Events relating to midi playback.
+    /// </summary>
+    Instrument = 103,
 }

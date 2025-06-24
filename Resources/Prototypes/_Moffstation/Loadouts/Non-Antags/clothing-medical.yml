@@ -1,42 +1,34 @@
-
-
 # Virology bags
 - type: loadout
   id: VirologyBackpack
-  storage:
-    back:
-    - ClothingBackpackVirology
+  equipment:
+    back: ClothingBackpackVirology
 
 - type: loadout
   id: VirologySatchel
-  storage:
-    back:
-    - ClothingBackpackSatchelVirology
+  equipment:
+    back: ClothingBackpackSatchelVirology
 
 - type: loadout
   id: VirologyDuffel
-  storage:
-    back:
-    - ClothingBackpackDuffelVirology
+  equipment:
+    back: ClothingBackpackDuffelVirology
 
 # Genetic Bags
 - type: loadout
   id: GeneticsBackpack
-  storage:
-    back:
-    - ClothingBackpackGenetics
+  equipment:
+    back: ClothingBackpackGenetics
 
 - type: loadout
   id: GeneticsSatchel
-  storage:
-    back:
-    - ClothingBackpackSatchelGenetics
+  equipment:
+    back: ClothingBackpackSatchelGenetics
 
 - type: loadout
   id: GeneticsDuffel
-  storage:
-    back:
-    - ClothingBackpackDuffelGenetics
+  equipment:
+    back: ClothingBackpackDuffelGenetics
 
 # Nurse jumpskirt
 - type: loadout
