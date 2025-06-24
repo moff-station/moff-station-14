@@ -34,7 +34,7 @@
   name: security helmet # Moffstation - (New Security Helmets)
   description: Standard security gear. Protects the head from impacts, and comes with a detachable visor.
   components:
-  # Moffstation - Begin (New Security Helmets)
+  # Moffstation - Begin (New Security Helmets) - changes to this file can be reverted once #38108 from upstream is merged.
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
     layers:
