@@ -61,6 +61,9 @@ public sealed partial class StampCollection : Container
             //Place the stamps in a center, right, left order.
             var childCenterOnCircle = new Vector2((i + 1) % 3,MathF.Floor(i / 3)) * r * UIScale;
 
+            if ((i + 1) % 3 == 0)
+                finalSize.Y += 50f;
+
             var childHeLocal = _stamps[i].DesiredPixelSize * 0.5f;
             var c = childHeLocal * MathF.Abs(MathF.Cos(stampOrientation));
             var s = childHeLocal * MathF.Abs(MathF.Sin(stampOrientation));
