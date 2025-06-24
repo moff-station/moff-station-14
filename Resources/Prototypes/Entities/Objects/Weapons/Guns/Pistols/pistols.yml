@@ -137,7 +137,7 @@
     cycleable: false # No synthesizing ammo for your syndicate masters.
   - type: BallisticAmmoSelfRefiller
     autoRefillRate: 4s
-    ammoProto: CartridgePistol
+    affectedByEmp: true
   # Moffstation - End
   - type: AmmoCounter
 
