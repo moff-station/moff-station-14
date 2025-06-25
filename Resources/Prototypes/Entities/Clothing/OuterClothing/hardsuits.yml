@@ -130,9 +130,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -171,10 +171,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.3
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -216,10 +212,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -252,9 +244,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -290,9 +282,9 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -323,9 +315,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
   - type: StaminaResistance
-    damageCoefficient: 0.5 # Combat riot hardsuit, +40%.
+    damageCoefficient: 0.6
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -358,10 +350,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -468,10 +456,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy Hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -520,9 +504,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -594,6 +578,10 @@
     damageCoefficient: 0.5
   #- type: StaminaResistance
   #  damageCoefficient: 0.75
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 40%.
+  - type: StaminaResistance
+    damageCoefficient: 0.6
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -659,6 +647,10 @@
     reduction: 0.8
   #- type: StaminaResistance
   #  damageCoefficient: 0.6
+  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
+  - type: StaminaResistance
+    damageCoefficient: 0.6
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -700,6 +692,10 @@
     damageCoefficient: 0.5
   #- type: StaminaResistance
   #  damageCoefficient: 0.6
+  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
+  - type: StaminaResistance
+    damageCoefficient: 0.6
+  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -846,10 +842,6 @@
     sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.8 # Shitty combat hardsuit, +10%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -885,9 +877,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -1055,9 +1047,9 @@
     coolingCoefficient: 0.001
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
   - type: StaminaResistance
-    damageCoefficient: 0.6 # Advanced combat hardsuit, +30%.
+    damageCoefficient: 0.6
   # Moffstation - End
   - type: Armor
     modifiers:
