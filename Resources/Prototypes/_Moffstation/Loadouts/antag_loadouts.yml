@@ -67,3 +67,11 @@
   - CommonBackpack
   - PirateTrinkets
   - PersonalItemsJobAgnostic
+
+- type: startingGear
+  parent: PirateGear
+  id: PirateReinforcementGear
+  equipment:
+    back: ClothingBackpackSatchelLeather
+    head: ClothingHeadBandBlack
+    outerClothing: ClothingOuterCoatPirate

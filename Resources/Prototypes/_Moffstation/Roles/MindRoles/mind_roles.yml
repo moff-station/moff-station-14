@@ -6,6 +6,7 @@
   components:
   - type: MindRole
     roleType: TeamAntagonist
+    subtype: role-subtype-pirate
     exclusiveAntag: true
     antagPrototype: PirateCrew
   - type: PirateRole

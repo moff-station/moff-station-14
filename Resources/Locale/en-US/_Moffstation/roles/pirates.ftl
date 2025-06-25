@@ -23,3 +23,12 @@ pirates-description = The station has come under attack by a band of thieving pi
 comms-console-announcement-title-pirate = Space Pirate
 
 pirate-briefing = You're a pirate in dire need of some cash. Loot the station and sell its belongings to make as much money as you can.
+
+roles-antag-pirate-crew-skeleton-name = Skeleton Pirate Crewmate
+roles-antag-pirate-crew-monkey-name = Monkey Pirate Crewmate
+
+roles-antag-pirate-assault-cyborg-name = Pirate Assault Cyborg
+
+ghost-role-information-pirate-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all other pirates. Obey the pirate captain's orders.
+
+role-subtype-pirate = Pirate

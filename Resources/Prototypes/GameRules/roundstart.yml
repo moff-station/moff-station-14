@@ -21,11 +21,15 @@
   - type: SubGamemodes
     rules:
     - id: Thief
-      prob: 0.5
+      prob: 0.4
     # Harmony start
     - id: BloodBrothers
-      prob: 0.5
+      prob: 0.4
     # Harmony end
+    # Moffstation Start
+    - id: Pirates
+      prob: 0.2
+    # Moffstation end
     - id: SubWizard
       prob: 0.05
 
@@ -36,10 +40,12 @@
   - type: SubGamemodes
     rules:
     - id: Thief
-      prob: 0.5
+      prob: 0.4
     # Moffstation start
     - id: BloodBrothers
-      prob: 0.5
+      prob: 0.4
+    - id: Pirates
+      prob: 0.2
     # Moffstation end
 
 - type: entity

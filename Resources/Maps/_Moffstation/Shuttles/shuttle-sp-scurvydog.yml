@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 261.1.0
+  engineVersion: 262.0.0
   forkId: ""
   forkVersion: ""
-  time: 06/04/2025 01:17:18
-  entityCount: 857
+  time: 06/21/2025 22:53:05
+  entityCount: 852
 maps: []
 grids:
 - 1
@@ -159,9 +159,7 @@ entities:
             83: 7,-7
             84: 7,-6
             85: 8,-6
-            86: 6,-5
             87: 7,-5
-            88: 6,-6
             89: 5,-5
             90: 5,-6
             91: 4,-5
@@ -226,11 +224,6 @@ entities:
             170: 6,-2
             171: 7,-2
         - node:
-            color: '#A91409FF'
-            id: WarnFullGreyscale
-          decals:
-            128: 7,-3
-        - node:
             color: '#FFFFFFFF'
             id: WarnLineE
           decals:
@@ -266,7 +259,8 @@ entities:
             21: -2,-26
             22: -3,-26
             123: 5,-3
-            124: 6,-3
+            174: 6,-3
+            175: 7,-3
         - node:
             color: '#FFFFFFFF'
             id: WoodTrimThinCornerNe
@@ -587,6 +581,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: -1.5,-27.5
       parent: 1
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        121:
+        - - DoorStatus
+          - DoorBolt
 - proto: AirlockExternalGlassShuttlePirateLocked
   entities:
   - uid: 180
@@ -615,6 +616,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: -1.5,-24.5
       parent: 1
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        73:
+        - - DoorStatus
+          - DoorBolt
 - proto: AirlockExternalShuttlePirateLocked
   entities:
   - uid: 76
@@ -725,12 +733,12 @@ entities:
   - uid: 348
     components:
     - type: Transform
-      pos: -3.1866775,-16.512505
+      pos: -3.5351238,-16.442219
       parent: 1
   - uid: 349
     components:
     - type: Transform
-      pos: -3.3585525,-16.262505
+      pos: -3.6184568,-16.17833
       parent: 1
 - proto: AtmosDeviceFanDirectional
   entities:
@@ -934,14 +942,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,-2.5
       parent: 1
-- proto: ButtonFrameCautionSecurity
-  entities:
-  - uid: 821
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-3.5
-      parent: 1
 - proto: ButtonFrameGrey
   entities:
   - uid: 832
@@ -987,16 +987,6 @@ entities:
     components:
     - type: Transform
       pos: -4.5,-5.5
-      parent: 1
-  - uid: 618
-    components:
-    - type: Transform
-      pos: 7.5,-2.5
-      parent: 1
-  - uid: 619
-    components:
-    - type: Transform
-      pos: 7.5,-3.5
       parent: 1
   - uid: 620
     components:
@@ -1862,18 +1852,24 @@ entities:
   - uid: 573
     components:
     - type: Transform
-      pos: 6.2487016,-2.6981483
-      parent: 1
+      parent: 366
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
   - uid: 574
     components:
     - type: Transform
-      pos: 6.6393266,-2.7137733
-      parent: 1
+      parent: 366
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
   - uid: 575
     components:
     - type: Transform
-      pos: 6.4518266,-2.4481483
-      parent: 1
+      parent: 366
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
   - uid: 777
     components:
     - type: Transform
@@ -1889,15 +1885,17 @@ entities:
   - uid: 576
     components:
     - type: Transform
-      pos: 6.1080766,-3.3387733
+      pos: -4.5154896,-16.219582
       parent: 1
 - proto: CannonBallGrapeshot
   entities:
   - uid: 577
     components:
     - type: Transform
-      pos: 6.6705766,-3.3387733
-      parent: 1
+      parent: 366
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: CarpetBlack
   entities:
   - uid: 33
@@ -2120,14 +2118,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,-5.5
       parent: 1
-- proto: Chair
-  entities:
-  - uid: 578
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 7.5,-3.5
-      parent: 1
 - proto: ChairPilotSeat
   entities:
   - uid: 407
@@ -2197,12 +2187,12 @@ entities:
   - uid: 345
     components:
     - type: Transform
-      pos: -2.4679275,-16.55938
+      pos: -2.2573457,-16.525553
       parent: 1
   - uid: 347
     components:
     - type: Transform
-      pos: -2.3429275,-16.356255
+      pos: -2.0767903,-16.275553
       parent: 1
 - proto: ClothingUniformJumpskirtJanimaidmini
   entities:
@@ -2258,13 +2248,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,-26.5
-      parent: 1
-- proto: ComputerRadar
-  entities:
-  - uid: 566
-    components:
-    - type: Transform
-      pos: 7.5,-4.5
       parent: 1
 - proto: ConveyorBelt
   entities:
@@ -2338,13 +2321,6 @@ entities:
     - type: Transform
       pos: -2.5,-6.5
       parent: 1
-    - type: StorageFill
-      contents:
-      - maxAmount: 1
-        amount: 1
-        orGroup: null
-        prob: 1
-        id: ClothingNeckCloakPirateCap
     - type: Destructible
       thresholds:
       - trigger: !type:DamageTrigger
@@ -2375,6 +2351,20 @@ entities:
     - type: Transform
       pos: -4.5,-14.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 573
+          - 574
+          - 575
+          - 577
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
     - type: EntityStorage
       air:
         volume: 200
@@ -4180,16 +4170,6 @@ entities:
       parent: 1
     - type: Paper
       content: ARR! Arrr aarrr! Arrrr! ARRRRR!! Arrr arrr! Arrrrrrrr!
-  - uid: 830
-    components:
-    - type: Transform
-      pos: 7.0927315,-2.7780447
-      parent: 1
-    - type: Paper
-      content: >-
-        [bold]Oi ye rat![/bold]
-
-        [italic]Make sure t' open that there blast door before firin' th' cannon, 'lest ye blow y'self to pieces![/italic]
 - proto: PaperBin5
   entities:
   - uid: 815
@@ -4316,12 +4296,12 @@ entities:
     - type: Transform
       pos: 9.5,-10.5
       parent: 1
-- proto: PlushieSharkBlue
+- proto: PlushieSharkPirate
   entities:
   - uid: 417
     components:
     - type: Transform
-      pos: -1.6004009,-6.6734643
+      pos: -1.5692067,-6.6137724
       parent: 1
 - proto: PoweredLEDLightPostSmall
   entities:
@@ -4339,6 +4319,12 @@ entities:
       parent: 1
 - proto: Poweredlight
   entities:
+  - uid: 566
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.5,-3.5
+      parent: 1
   - uid: 751
     components:
     - type: Transform
@@ -4668,6 +4654,13 @@ entities:
     - type: Transform
       pos: -5.5,-1.5
       parent: 1
+- proto: RobotParrot
+  entities:
+  - uid: 567
+    components:
+    - type: Transform
+      pos: -4.460493,-2.64444
+      parent: 1
 - proto: RollerBed
   entities:
   - uid: 386
@@ -4689,33 +4682,6 @@ entities:
     - type: Transform
       pos: 1.4057853,-8.762724
       parent: 1
-- proto: ShuttleGunPirateCannon
-  entities:
-  - uid: 110
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 7.5,-2.5
-      parent: 1
-- proto: SignalButtonDirectional
-  entities:
-  - uid: 567
-    components:
-    - type: MetaData
-      name: signal button (FIRE CANNON)
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-3.5
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        110:
-        - - Pressed
-          - Trigger
-    - type: Label
-      currentLabel: FIRE CANNON
-    - type: NameModifier
-      baseName: signal button
 - proto: SignalSwitchDirectional
   entities:
   - uid: 14
@@ -4959,13 +4925,6 @@ entities:
     components:
     - type: Transform
       pos: -5.5,-5.5
-      parent: 1
-- proto: SyndicatePersonalAI
-  entities:
-  - uid: 409
-    components:
-    - type: Transform
-      pos: -4.46795,-2.5105658
       parent: 1
 - proto: Table
   entities:
@@ -6033,6 +5992,18 @@ entities:
     components:
     - type: Transform
       pos: -4.5,-3.5
+      parent: 1
+- proto: WeaponGrapplingGun
+  entities:
+  - uid: 110
+    components:
+    - type: Transform
+      pos: -2.8545685,-16.219997
+      parent: 1
+  - uid: 409
+    components:
+    - type: Transform
+      pos: -2.7573457,-16.483887
       parent: 1
 - proto: WeaponLauncherPirateCannon
   entities:

@@ -1,0 +1,16 @@
+- type: entity
+  parent: PlushieSharkBlue
+  id: PlushieSharkPirate
+  name: pirate shark soft toy
+  description: Yoho yarg :)
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Plushies/shark.rsi
+    state: pirate
+  - type: Item
+    heldPrefix: pirate
+  - type: Tag
+    tags:
+    - PlushieSharkPirate
+    - Payload
+    - ClothMade

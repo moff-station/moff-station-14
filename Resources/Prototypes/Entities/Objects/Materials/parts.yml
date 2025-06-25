@@ -71,6 +71,11 @@
   - type: GuideHelp
     guides:
     - ExpandingRepairingStation
+  # Moffstation - Start - Add tag for pirate bounty
+  - type: Tag
+    tags:
+    - MetalRod
+  # Moffstation - End
 
 - type: entity
   parent: PartRodMetal
