@@ -53,21 +53,31 @@
   - PersonalItemVivonicMantle
   - PersonalItemVortexMask
 
-# Prisoner loadouts
+  # Prisoner loadouts
 
-- type: loadoutGroup
-  id: PrisonerJumpsuit
-  name: loadout-group-prisoner-jumpsuit
-  loadouts:
-  - PrisonJumpsuit
-  - PrisonJumpsuitStriped
-  - PrisonJumpsuitShirt
-  - PrisonJumpskirtStriped
+  - type: loadoutGroup
+    id: PrisonerJumpsuit
+    name: loadout-group-prisoner-jumpsuit
+    loadouts:
+    - PrisonJumpsuit
+    - PrisonJumpsuitStriped
+    - PrisonJumpsuitShirt
+    - PrisonJumpskirtStriped
 
+  - type: loadoutGroup
+    id: PrisonerHats
+    name: loadout-group-prisoner-hat
+    minLimit: 0
+    loadouts:
+    - SkullBandana
+    - PrisonHatStriped
+
+# Used by ERT and Mercs
 - type: loadoutGroup
-  id: PrisonerHats
-  name: loadout-group-prisoner-hat
-  minLimit: 0
+  id: SurvivalMilitaryDouble
+  name: loadout-group-survival-military
+  minLimit: 2
+  hidden: true
   loadouts:
-  - SkullBandana
-  - PrisonHatStriped
+  - EmergencyNitrogenMilitaryDouble
+  - EmergencyOxygenMilitaryDouble

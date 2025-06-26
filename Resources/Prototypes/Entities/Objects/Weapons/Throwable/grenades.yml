@@ -78,7 +78,7 @@
   #name: explosive grenade (Moffstation - Resilient Grenades - Replaced)
   name: high explosive grenade
   description: Grenade that creates a small but devastating explosion.
-  parent: [GrenadeBase, BaseSyndicateContraband]
+  parent: [GrenadeBase, BaseCentcommContraband] # Moffstation - (ERT Overhaul)
   id: ExGrenade
   components:
   - type: ExplodeOnTrigger
