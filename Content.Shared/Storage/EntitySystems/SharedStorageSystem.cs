@@ -167,7 +167,7 @@ public abstract class SharedStorageSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, QuickPickupEvent>(OnQuickPickup);
         SubscribeLocalEvent<StorageComponent, BeforeAreaPickupEvent>(OnBeforeAreaPickup);
         SubscribeLocalEvent<StorageComponent, AreaPickupDoAfterEvent>(OnAreaPickupDoAfter);
-        // Moffstation - Start
+        // Moffstation - End
 
         SubscribeLocalEvent<MetaDataComponent, StackCountChangedEvent>(OnStackCountChanged);
 
@@ -224,7 +224,7 @@ public abstract class SharedStorageSystem : EntitySystem
 
     private void OnMapInit(Entity<StorageComponent> entity, ref MapInitEvent args)
     {
-        // UseDelay.SetLength(entity.Owner, entity.Comp.QuickInsertCooldown, QuickInsertUseDelayID);
+        // UseDelay.SetLength(entity.Owner, entity.Comp.QuickInsertCooldown, QuickInsertUseDelayID); // Moffstation
         UseDelay.SetLength(entity.Owner, entity.Comp.OpenUiCooldown, OpenUiUseDelayID);
     }
 
