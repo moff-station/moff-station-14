@@ -10,7 +10,7 @@
     size: Huge
     # Moffstation - Begin (Weapon Resizing)
     shape:
-    - 0,0,4,2
+    - 0,0,3,2
     # Moffstation - End
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
@@ -207,6 +207,10 @@
     sprite: Objects/Weapons/Guns/Rifles/foam_rifle.rsi
   - type: Item
     sprite: Objects/Weapons/Guns/Rifles/foam_rifle_inhand_64x.rsi
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,3,0
+    # Moffstation - End
   - type: BallisticAmmoProvider
     whitelist:
       tags:

@@ -1442,6 +1442,11 @@
   - type: Item
     sprite: Objects/Fun/toys.rsi
     heldPrefix: capgun
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    # Moffstation - End
   - type: Tag
     tags:
     - Sidearm
