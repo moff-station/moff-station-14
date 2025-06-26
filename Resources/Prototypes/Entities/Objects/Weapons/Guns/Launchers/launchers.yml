@@ -86,16 +86,14 @@
     size: Huge
   # Moffstation - End
   - type: AmmoCounter
-  # Moffstation - Begin (Launcher Tweaks)
-  - type: GunRequiresWield
   - type: Gun
-    fireRate: 0.8
-  # Moffstation - End
+    fireRate: 1
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: GunRequiresWield
   - type: ContainerContainer
     containers:
       revolver-ammo: !type:Container
