@@ -46,7 +46,6 @@
     - 0,0,4,2
   # Moffstation - End
   - type: AmmoCounter
-  - type: GunRequiresWield # Moffstation - Launcher Tweaks
   - type: Gun
     fireRate: 1
     selectedMode: SemiAuto
@@ -58,10 +57,11 @@
     whitelist:
       tags:
         - Grenade
-    capacity: 4 # Moffstation - Launcher Tweaks
+    capacity: 3
     proto: GrenadeFrag
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: GunRequiresWield
   - type: StaticPrice
     price: 10000
 
