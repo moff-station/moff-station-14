@@ -1,10 +1,11 @@
+using Content.Server._Moffstation.GameTicking.Rules.Components; // Moffstation - Added Vampires
 using Content.Server._Harmony.GameTicking.Rules.Components; // Harmony
-using Content.Server.Administration.Commands;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Zombies;
 using Content.Shared.Administration;
+using Content.Server.Clothing.Systems;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
@@ -21,6 +22,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly ZombieSystem _zombie = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly OutfitSystem _outfit = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     private const string DefaultTraitorRule = "Traitor";
@@ -44,6 +46,11 @@ public sealed partial class AdminVerbSystem
 
     [ValidatePrototypeId<StartingGearPrototype>]
     private const string PirateGearId = "PirateGear";
+
+    // Moffstation - Start - Custom antags
+    [ValidatePrototypeId<EntityPrototype>]
+    private const string DefaultVampireRule = "Vampire";
+    // Moffstation - End
 
     private readonly EntProtoId _paradoxCloneRuleId = "ParadoxCloneSpawn";
 
@@ -132,7 +139,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 // pirates just get an outfit because they don't really have logic associated with them
-                SetOutfitCommand.SetOutfit(args.Target, PirateGearId, EntityManager);
+                _outfit.SetOutfit(args.Target, PirateGearId);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", pirateName, Loc.GetString("admin-verb-make-pirate")),
@@ -192,6 +199,25 @@ public sealed partial class AdminVerbSystem
 
         if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
+
+        // Moffstation - Start - Added Vampire
+        var vampName = Loc.GetString("admin-verb-text-make-vampire");
+        Verb vampire = new()
+        {
+            Text = vampName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Moffstation/Interface/Misc/job_icons.rsi"), "Vampire"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<VampireRuleComponent>(targetPlayer, DefaultVampireRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", vampName, Loc.GetString("admin-verb-make-vampire")),
+        };
+
+        if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be vampries
+            args.Verbs.Add(vampire);
+        // Moffstation - End
 
         // Harmony start
         var bloodBrotherName = Loc.GetString("admin-verb-text-make-blood-brother");

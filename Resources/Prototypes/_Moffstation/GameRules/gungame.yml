@@ -1,0 +1,150 @@
+﻿- type: entity
+  id: GunGame
+  parent: BaseGameRule
+  components:
+  - type: GunGameRule
+    slotTryOrder:
+    - hand
+    - pocket1
+    - pocket2
+    - back
+    rewardSpawnsQueue:
+    - id: WeaponPulseCarbine
+    - !type:AllSelector
+      children:
+      - id: WeaponSniperHristov
+      - id: MagazineBoxAntiMateriel
+    - !type:AllSelector
+      children:
+      - id: WeaponRifleAk
+      - id: MagazineLightRifle
+      - id: MagazineLightRifle
+    - !type:AllSelector
+      children:
+      - id: WeaponPistolN1984
+      - id: MagazineMagnum
+      - id: MagazineMagnum
+    - id: WeaponPulsePistol
+    - id: WeaponLightMachineGunL6
+    - id: WeaponEnergyShotgun
+    - !type:AllSelector
+      children:
+      - id: WeaponSubMachineGunAtreides
+      - id: MagazinePistolSubMachineGun
+      - id: MagazinePistolSubMachineGun
+    - !type:AllSelector
+      children:
+      - id: WeaponRevolverMateba
+      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoaderMagnumIncendiary
+      - id: MagazineBoxMagnum
+    - !type:AllSelector
+      children:
+      - id: WeaponShotgunBulldog
+      - id: MagazineShotgun
+      - id: MagazineShotgunSlug
+    - id: WeaponAntiqueLaser
+    - !type:AllSelector
+      children:
+      - id: WeaponSubMachineGunWt550
+      - id: MagazinePistolSubMachineGunTopMounted
+      - id: MagazinePistolSubMachineGunTopMounted
+    - id: WeaponTemperatureGun
+    - !type:AllSelector
+      children:
+      - id: WeaponRifleLecter
+      - id: MagazineRifle
+      - id: MagazineRifle
+    - !type:AllSelector
+      children:
+      - id: WeaponRevolverDeckard
+      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoaderMagnumIncendiary
+      - id: MagazineBoxMagnum
+    - id: WeaponXrayCannon
+    - !type:AllSelector
+      children:
+      - id: WeaponShotgunEnforcer
+      - id: BoxLethalshot
+      - id: BoxShotgunSlug
+    - !type:AllSelector
+      children:
+      - id: WeaponRevolverInspector
+      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoaderMagnumIncendiary
+      - id: MagazineBoxMagnum
+    - !type:AllSelector
+      children:
+      - id: WeaponSubMachineGunC20r
+      - id: MagazinePistolSubMachineGun
+      - id: MagazinePistolSubMachineGun
+    - !type:AllSelector
+      children:
+      - id: WeaponSubMachineGunDrozd
+      - id: MagazinePistolSubMachineGun
+      - id: MagazinePistolSubMachineGun
+    - !type:AllSelector
+      children:
+      - id: WeaponRevolverPython
+      - id: SpeedLoaderMagnum
+      - id: SpeedLoaderMagnum
+      - id: MagazineBoxMagnum
+    - !type:AllSelector
+      children:
+      - id: WeaponShotgunKammerer
+      - id: BoxLethalshot
+      - id: BoxShotgunSlug
+    - id: WeaponLaserSvalinn
+    - !type:AllSelector
+      children:
+      - id: WeaponShotgunDoubleBarreled
+      - id: BoxLethalshot
+      - id: BoxShotgunSlug
+    - !type:AllSelector # PKA with two random mods
+      children:
+      - id: WeaponProtoKineticAccelerator
+      - !type:GroupSelector
+        rolls: 2
+        children:
+        - id: PKAUpgradeDamage
+        - id: PKAUpgradeFireRate
+        - id: PKAUpgradeRange
+    - id: WeaponPistolCHIMPUpgraded
+    - !type:AllSelector
+      children:
+      - id: WeaponRevolverPirate
+      - id: SpeedLoaderMagnum
+      - id: SpeedLoaderMagnum
+      - id: MagazineBoxMagnum
+    - !type:AllSelector
+      children:
+      - id: WeaponSniperMosin
+      - id: SpeedLoaderLightRifle
+      - id: SpeedLoaderLightRifle
+      - id: MagazineBoxLightRifle
+    - !type:AllSelector # Two flintlocks, good luck
+      children:
+      - id: WeaponPistolFlintlock
+      - id: WeaponPistolFlintlock
+      - id: MagazineBoxMagnum
+    - id: HyperEutacticBlade
+    - id: SingularityHammer
+    - id: Mjollnir
+    - id: EnergySword
+    - id: CaptainSabre
+    - id: FireAxe
+    - id: Claymore
+    - id: Machete
+    - id: PenCentcom
+    - !type:GroupSelector # Random Crowbar
+      children:
+      - id: Crowbar
+      - id: CrowbarGreen
+      - id: CrowbarYellow
+      - id: CrowbarOrange
+      - id: CrowbarRed
+    - id: ToolboxGolden
+  - type: KillCalloutRule
+  - type: RespawnDeadRule
+  - type: RespawnTracker
+    respawnDelay: 5

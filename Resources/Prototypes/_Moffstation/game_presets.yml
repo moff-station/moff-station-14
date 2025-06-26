@@ -1,0 +1,12 @@
+﻿- type: gamePreset
+  id: GunGame
+  alias:
+  - gungame
+  - gg
+  name: gun-game-title
+  description: gun-game-description
+  maxPlayers: 5
+  showInVote: true
+  supportedMaps: DeathMatchMapPool
+  rules:
+  - GunGame

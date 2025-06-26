@@ -1,0 +1,57 @@
+<Control xmlns="https://spacestation14.io">
+    <ScrollContainer>
+        <BoxContainer Orientation="Vertical">
+            <BoxContainer Orientation="Horizontal"
+                          HorizontalExpand="True"
+                          VerticalExpand="True">
+                <BoxContainer Orientation="Vertical"
+                              VerticalExpand="True"
+                              SeparationOverride="4"
+                              MinHeight="350"
+                              MinWidth="200">
+                    <Label Text="{Loc 'spray-painter-selected-style'}" />
+                    <ItemList Name="StyleList"
+                              SizeFlagsStretchRatio="8"
+                              VerticalExpand="True" />
+                </BoxContainer>
+                <SpriteView Name="Preview"
+                            MinWidth="100"
+                            MinHeight="100"
+                            HorizontalExpand="True"
+                            Stretch="Fill" />
+            </BoxContainer>
+            <Collapsible Margin="5 5 5 5">
+                <CollapsibleHeading Title="{Loc spray-painter-gas-custom-color}" />
+                <CollapsibleBody HorizontalExpand="True">
+                    <BoxContainer Orientation="Vertical">
+                        <BoxContainer Orientation="Vertical">
+                            <Label Text="{Loc spray-painter-gas-tank}" />
+                            <ColorSelectorSliders Name="TankColor"
+                                                  HorizontalExpand="True"
+                                                  IsAlphaVisible="False"
+                                                  Color="Black" />
+                        </BoxContainer>
+                        <BoxContainer Orientation="Vertical">
+                            <Label Text="{Loc spray-painter-gas-middlestripe}" />
+                            <CheckBox Name="UseMiddleStripe"
+                                      Text="{Loc spray-painter-gas-show-middlestripe}" />
+                            <ColorSelectorSliders Name="MiddleStripeColor"
+                                                  HorizontalExpand="True"
+                                                  IsAlphaVisible="False"
+                                                  Color="Black" />
+                        </BoxContainer>
+                        <BoxContainer Orientation="Vertical">
+                            <Label Text="{Loc spray-painter-gas-lowerstripe}" />
+                            <CheckBox Name="UseLowerStripe"
+                                      Text="{Loc spray-painter-gas-show-lowerstripe}" />
+                            <ColorSelectorSliders Name="LowerStripeColor"
+                                                  HorizontalExpand="True"
+                                                  IsAlphaVisible="False"
+                                                  Color="Black" />
+                        </BoxContainer>
+                    </BoxContainer>
+                </CollapsibleBody>
+            </Collapsible>
+        </BoxContainer>
+    </ScrollContainer>
+</Control>

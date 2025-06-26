@@ -1,0 +1,20 @@
+- type: entity
+  name: Big Iron Ammunition Cell
+  description: A rechargeable power cell, Specifically built for use in the Big Iron weapon. It has underwhelming performance in every other use case.
+  id: PowerCellBigIron
+  suffix: Full
+  parent: BasePowerCell
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.PowerCellVisualLayers.Base" ]
+      state: small
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+      state: o2
+      shader: unshaded
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: Tag
+    tags:
+    - PowerCellBigIron

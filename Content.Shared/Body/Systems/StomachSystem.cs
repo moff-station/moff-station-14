@@ -4,6 +4,7 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
+using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -20,6 +21,7 @@ namespace Content.Shared.Body.Systems
         {
             SubscribeLocalEvent<StomachComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<StomachComponent, EntityUnpausedEvent>(OnUnpaused);
+            SubscribeLocalEvent<StomachComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
             SubscribeLocalEvent<StomachComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
         }
 
@@ -31,6 +33,16 @@ namespace Content.Shared.Body.Systems
         private void OnUnpaused(Entity<StomachComponent> ent, ref EntityUnpausedEvent args)
         {
             ent.Comp.NextUpdate += args.PausedTime;
+        }
+
+        private void OnEntRemoved(Entity<StomachComponent> ent, ref EntRemovedFromContainerMessage args)
+        {
+            // Make sure the removed entity was our contained solution
+            if (ent.Comp.Solution is not { } solution || args.Entity != solution.Owner)
+                return;
+
+            // Cleared our cached reference to the solution entity
+            ent.Comp.Solution = null;
         }
 
         public override void Update(float frameTime)
@@ -96,6 +108,24 @@ namespace Content.Shared.Body.Systems
             // This way we don't have to worry about it breaking if the stasis bed component is destroyed
             ent.Comp.UpdateInterval /= args.Multiplier;
         }
+
+        // Moffstation - Start - Helper functions for the StomachSystem
+        public float MaxTransferableSolution(
+            EntityUid uid,
+            float quantity,
+            Solution? solution = null,
+            StomachComponent? stomach = null,
+            SolutionContainerManagerComponent? solutions = null)
+        {
+            return Resolve(uid, ref stomach, ref solutions, logMissing: false)
+                   && _solutionContainerSystem.ResolveSolution((uid, solutions),
+                       DefaultSolutionName,
+                       ref stomach.Solution,
+                       out var stomachSolution)
+                ? stomachSolution.MaxTransferableSolution(quantity, solution)
+                : 0.0f;
+        }
+        // Moffstation - End
 
         public bool CanTransferSolution(
             EntityUid uid,
