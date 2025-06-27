@@ -33,43 +33,6 @@ public enum GasTankVisualsLayers : byte
     StripeLow,
 }
 
-public static class GasTankVisualsLayersExtensions
-{
-    public static readonly GasTankVisualsLayers[] ModifiableLayers =
-        [GasTankVisualsLayers.Tank, GasTankVisualsLayers.StripeMiddle, GasTankVisualsLayers.StripeLow];
-
-    private static string? RsiState(this GasTankVisualsLayers layer)
-    {
-        return layer switch
-        {
-            GasTankVisualsLayers.Tank => "tank",
-            GasTankVisualsLayers.StripeMiddle => "stripe-middle",
-            GasTankVisualsLayers.StripeLow => "stripe-low",
-            _ => null,
-        };
-    }
-
-    public static string? RsiStateInHand(this GasTankVisualsLayers layer, HandLocation hand)
-    {
-        return layer.RsiState() is { } state ? $"inhand-{hand.ToString().ToLowerInvariant()}-{state}" : null;
-    }
-
-    public static string? RsiStateEquipped(this GasTankVisualsLayers layer, string inventorySlot, string? species)
-    {
-        if (layer.RsiState() is not { } state)
-            return null;
-
-        var slotStr = inventorySlot switch
-        {
-            "suitstorage" => "SUITSTORAGE",
-            "belt" => "BELT",
-            "back" => "BACKPACK",
-        };
-        var speciesSuffix = species != null ? $"-{species.ToLowerInvariant()}" : "";
-        return $"equipped-{slotStr}-{state}{speciesSuffix}";
-    }
-}
-
 /// <summary>
 /// This struct holds the actual <see cref="Color"/>s that are used to describe how a gas tank's sprite should look.
 /// </summary>
