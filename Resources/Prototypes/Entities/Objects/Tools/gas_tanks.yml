@@ -106,13 +106,6 @@
 #    size: Small # Moffstation - Moved to `EmergencyGasTankBase`
     sprite: Objects/Tanks/emergency.rsi
 # Moffstation - Start
-    inhandVisuals: # Override inhand visual layers from big tanks as there are no stripes on small tank in-hand sprites.
-      Left:
-      - state: inhand-left-tank
-        map: [ "enum.GasTankVisualsLayers.Tank" ]
-      Right:
-      - state: inhand-right-tank
-        map: [ "enum.GasTankVisualsLayers.Tank" ]
 #  - type: GasTank
 #    air:
 #      volume: 0.66
@@ -134,6 +127,9 @@
 #      Steel: 100
   - type: GasTankVisuals
     visuals: Oxygen
+    excludedInhandLayers: # No stripes on small tank inhand sprites.
+    - StripeMiddle
+    - StripeLow
 # Moffstation - End
 
 - type: entity

@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Moffstation.Atmos.Components;
 using Content.Shared._Moffstation.Atmos.EntitySystems;
+using Content.Shared.Hands.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -30,6 +31,43 @@ public enum GasTankVisualsLayers : byte
     /// The stripe further from the hardware. Generally smaller than <see cref="StripeMiddle"/>.
     /// </summary>
     StripeLow,
+}
+
+public static class GasTankVisualsLayersExtensions
+{
+    public static readonly GasTankVisualsLayers[] ModifiableLayers =
+        [GasTankVisualsLayers.Tank, GasTankVisualsLayers.StripeMiddle, GasTankVisualsLayers.StripeLow];
+
+    private static string? RsiState(this GasTankVisualsLayers layer)
+    {
+        return layer switch
+        {
+            GasTankVisualsLayers.Tank => "tank",
+            GasTankVisualsLayers.StripeMiddle => "stripe-middle",
+            GasTankVisualsLayers.StripeLow => "stripe-low",
+            _ => null,
+        };
+    }
+
+    public static string? RsiStateInHand(this GasTankVisualsLayers layer, HandLocation hand)
+    {
+        return layer.RsiState() is { } state ? $"inhand-{hand.ToString().ToLowerInvariant()}-{state}" : null;
+    }
+
+    public static string? RsiStateEquipped(this GasTankVisualsLayers layer, string inventorySlot, string? species)
+    {
+        if (layer.RsiState() is not { } state)
+            return null;
+
+        var slotStr = inventorySlot switch
+        {
+            "suitstorage" => "SUITSTORAGE",
+            "belt" => "BELT",
+            "back" => "BACKPACK",
+        };
+        var speciesSuffix = species != null ? $"-{species.ToLowerInvariant()}" : "";
+        return $"equipped-{slotStr}-{state}{speciesSuffix}";
+    }
 }
 
 /// <summary>
