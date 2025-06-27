@@ -23,7 +23,7 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
     [Dependency] private readonly SharedItemSystem _itemSys = default!;
 
     private static readonly List<GasTankVisualsLayers> ModifiableLayers =
-        [GasTankVisualsLayers.Tank, GasTankVisualsLayers.StripeMiddle, GasTankVisualsLayers.StripeLow];
+        new() { GasTankVisualsLayers.Tank, GasTankVisualsLayers.StripeMiddle, GasTankVisualsLayers.StripeLow };
 
     public override void Initialize()
     {
