@@ -843,10 +843,7 @@
   - type: Item
     size: Large
     shape:
-    # Moffstation - Begin (Weapon Resizing)
-    #- 0,0,3,1
-    - 0,0,4,1
-    # Moffstation - End
+    - 0,0,3,1
     sprite: Objects/Weapons/Guns/Battery/inhands_64x.rsi
     heldPrefix: energy
   - type: Tag
