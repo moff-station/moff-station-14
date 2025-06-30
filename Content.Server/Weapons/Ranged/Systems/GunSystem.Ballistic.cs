@@ -71,7 +71,7 @@ public sealed partial class GunSystem
         var ammo = entity.Comp1;
         var refiller = entity.Comp2;
         if (!refiller.AutoRefill ||
-            IsFull(entity) ||
+            IsFullBallistic(entity) ||
             Timing.CurTime < refiller.NextAutoRefill)
             return;
 

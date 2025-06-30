@@ -79,7 +79,7 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
     /// </summary>
     private void OnCanisterPainted(Entity<GasCanisterComponent> ent, ref EntityPaintedEvent args)
     {
-        var dummy = Spawn(args.Prototype);
+        var dummy = Spawn(args.prototype);
 
         var destructibleComp = EnsureComp<DestructibleComponent>(dummy);
         CopyComp(dummy, ent, destructibleComp);

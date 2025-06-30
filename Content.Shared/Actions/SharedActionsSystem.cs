@@ -58,6 +58,7 @@ public abstract class SharedActionsSystem : EntitySystem
         SubscribeLocalEvent<ActionsComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<ActionsComponent, ComponentGetState>(OnGetState);
 
+        SubscribeLocalEvent<ActionComponent, ActionValidateEvent>(OnValidate);
         SubscribeLocalEvent<InstantActionComponent, ActionValidateEvent>(OnInstantValidate);
         SubscribeLocalEvent<EntityTargetActionComponent, ActionValidateEvent>(OnEntityValidate);
         SubscribeLocalEvent<WorldTargetActionComponent, ActionValidateEvent>(OnWorldValidate);
@@ -316,19 +317,9 @@ public abstract class SharedActionsSystem : EntitySystem
 
     private void OnValidate(Entity<ActionComponent> ent, ref ActionValidateEvent args)
     {
-        if (ent.Comp.CheckConsciousness && !_actionBlocker.CanConsciouslyPerformAction(args.User))
-        {
+        if ((ent.Comp.CheckConsciousness && !_actionBlocker.CanConsciouslyPerformAction(args.User))
+            || (ent.Comp.CheckCanInteract && !_actionBlocker.CanInteract(args.User, null)))
             args.Invalid = true;
-            return;
-        }
-
-        if (ent.Comp.CheckCanInteract && !_actionBlocker.CanInteract(args.User, null))
-        {
-            args.Invalid = true;
-            return;
-        }
-
-        // Event is not set here, only below
     }
 
     private void OnInstantValidate(Entity<InstantActionComponent> ent, ref ActionValidateEvent args)
@@ -357,7 +348,9 @@ public abstract class SharedActionsSystem : EntitySystem
         var target = GetEntity(netTarget);
 
         var targetWorldPos = _transform.GetWorldPosition(target);
-        _rotateToFace.TryFaceCoordinates(user, targetWorldPos);
+
+        if (ent.Comp.RotateOnUse)
+            _rotateToFace.TryFaceCoordinates(user, targetWorldPos);
 
         if (!ValidateEntityTarget(user, target, ent))
             return;
@@ -378,7 +371,9 @@ public abstract class SharedActionsSystem : EntitySystem
 
         var user = args.User;
         var target = GetCoordinates(netTarget);
-        _rotateToFace.TryFaceCoordinates(user, target.ToMapPos(EntityManager, _transform));
+
+        if (ent.Comp.RotateOnUse)
+            _rotateToFace.TryFaceCoordinates(user, _transform.ToMapCoordinates(target).Position);
 
         if (!ValidateWorldTarget(user, target, ent))
             return;
@@ -584,7 +579,7 @@ public abstract class SharedActionsSystem : EntitySystem
     #region AddRemoveActions
 
     public EntityUid? AddAction(EntityUid performer,
-        string? actionPrototypeId,
+        [ForbidLiteral] string? actionPrototypeId,
         EntityUid container = default,
         ActionsComponent? component = null)
     {
@@ -604,7 +599,7 @@ public abstract class SharedActionsSystem : EntitySystem
     /// <param name="container">The entity that contains/enables this action (e.g., flashlight).</param>
     public bool AddAction(EntityUid performer,
         [NotNullWhen(true)] ref EntityUid? actionId,
-        string? actionPrototypeId,
+        [ForbidLiteral] string? actionPrototypeId,
         EntityUid container = default,
         ActionsComponent? component = null)
     {
@@ -615,7 +610,7 @@ public abstract class SharedActionsSystem : EntitySystem
     public bool AddAction(EntityUid performer,
         [NotNullWhen(true)] ref EntityUid? actionId,
         [NotNullWhen(true)] out ActionComponent? action,
-        string? actionPrototypeId,
+        [ForbidLiteral] string? actionPrototypeId,
         EntityUid container = default,
         ActionsComponent? component = null)
     {

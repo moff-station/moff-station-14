@@ -4,10 +4,10 @@
 
 #Basic armor vest for inheritance
 - type: entity
+  abstract: true
   parent: [ClothingOuterBaseMedium, AllowSuitStorageClothing, BaseSecurityContraband]
   id: ClothingOuterArmorBase
   name: armor vest
-  abstract: true
   description: A standard Type I armored vest that provides decent protection against most types of damage.
   components:
   - type: Sprite
@@ -23,10 +23,10 @@
         Heat: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.90
-    #Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.8 # base value for armor.
-    #Moffstation - End
+    damageCoefficient: 0.8
+  # Moffstation - End
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
@@ -105,10 +105,6 @@
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
-  # Moffstation - End
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
@@ -128,6 +124,10 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
+  - type: StaminaResistance
+    damageCoefficient: 0.8
+  # Moffstation - End
   - type: HeldSpeedModifier
   - type: GroupExamine
 
@@ -141,10 +141,6 @@
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
-  #Moffstation - End
   - type: Tag
     tags:
     - CorgiWearable
@@ -181,9 +177,9 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: StaticPrice
     price: 1500
@@ -213,9 +209,9 @@
         Caustic: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: FireProtection
     reduction: 0.85
@@ -270,10 +266,8 @@
         Caustic: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.35
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Advanced, +10%.
-  #Moffstation - End
+  - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
+    damageCoefficient: 0.45
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -347,9 +341,9 @@
         Caustic: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-  #Moffstation - Begin (Stamina Resistance)
+  #Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
   - type: StaminaResistance
-    damageCoefficient: 0.6 # Riot gear, +20%.
+    damageCoefficient: 0.6
   #Moffstation - End
   - type: GroupExamine
 
