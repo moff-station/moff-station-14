@@ -10,7 +10,7 @@
     size: Huge
     # Moffstation - Begin (Weapon Resizing)
     shape:
-    - 0,0,4,2
+    - 0,0,3,2
     # Moffstation - End
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
@@ -208,6 +208,11 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    shape:
+    - 0,0,4,2
+  # Moffstation - End
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/estoc.rsi
   - type: Gun
@@ -272,6 +277,10 @@
     sprite: Objects/Fun/Foam/foam_rifle.rsi
   - type: Item
     sprite: Objects/Fun/Foam/foam_rifle_inhand_64x.rsi
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,3,0
+    # Moffstation - End
   - type: BallisticAmmoProvider
     whitelist:
       tags:

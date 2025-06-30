@@ -140,11 +140,6 @@
           map: ["enum.GunVisualLayers.Mag"]
     - type: Clothing
       sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
-    # Moffstation - Begin (Weapon Resizing)
-    - type: Item
-      shape:
-      - 0,0,3,1
-    # Moffstation - End
     - type: Wieldable
       unwieldOnUse: false
     - type: GunWieldBonus
