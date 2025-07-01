@@ -68,6 +68,12 @@
     - Pickaxe
     - Pen
     - ForgeSignatures
+  - type: ActivatableUI
+    key: enum.ForgeSignatureUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ForgeSignatureUiKey.Key:
+        type: ForgeSignatureBoundUserInterface
   - type: MeleeWeapon
     wideAnimationRotation: -45
     damage:

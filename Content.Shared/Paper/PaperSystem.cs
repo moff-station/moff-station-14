@@ -290,8 +290,7 @@ public sealed class PaperSystem : EntitySystem
 
             if (_tagSystem.HasTag(item, ForgeSignatureTag))
             {
-                _uiSystem.OpenUi(ent.Owner, ForgeSignatureUiKey.Key, args.User);
-                UpdateUserInterface(ent);
+                _uiSystem.OpenUi(item, ForgeSignatureUiKey.Key, args.User);
             }
 
             var user = args.User;
