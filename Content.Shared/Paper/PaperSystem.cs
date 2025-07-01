@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Moffstation.Paper.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
@@ -33,6 +34,7 @@ public sealed class PaperSystem : EntitySystem
 
     private static readonly ProtoId<TagPrototype> WriteIgnoreStampsTag = "WriteIgnoreStamps";
     private static readonly ProtoId<TagPrototype> WriteTag = "Write";
+    private static readonly ProtoId<TagPrototype> ForgeSignatureTag = "ForgeSignatures";
 
     private EntityQuery<PaperComponent> _paperQuery;
 
@@ -285,6 +287,12 @@ public sealed class PaperSystem : EntitySystem
             // Pens have a `Write` tag.
             if (args.Using is not { } item|| !_tagSystem.HasTag(item, WriteTag))
                 return;
+
+            if (_tagSystem.HasTag(item, ForgeSignatureTag))
+            {
+                _uiSystem.OpenUi(ent.Owner, ForgeSignatureUiKey.Key, args.User);
+                UpdateUserInterface(ent);
+            }
 
             var user = args.User;
 
