@@ -1,48 +1,48 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Visored helmet by DieselMohawk for use in SS14, visorless versions made by obscenelytinyshark on discord.",
+    "copyright": "Visored helmet by DieselMohawk for use in SS14, visorless versions made by obscenelytinyshark  on discord.",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
         {
-            "name": "icon"
+            "name": "lowered-icon"
         },
         {
-            "name": "visorless-icon"
+            "name": "raised-icon"
         },
         {
-            "name": "equipped-HELMET",
+            "name": "lowered-equipped-HELMET",
             "directions": 4
         },
         {
-            "name": "visorless-equipped-HELMET",
+            "name": "raised-equipped-HELMET",
             "directions": 4
         },
         {
-            "name": "equipped-HELMET-vox",
+            "name": "lowered-equipped-HELMET-vox",
             "directions": 4
         },
         {
-            "name": "visorless-equipped-HELMET-vox",
+            "name": "raised-equipped-HELMET-vox",
             "directions": 4
         },
         {
-            "name": "inhand-left",
+            "name": "lowered-inhand-left",
             "directions": 4
         },
         {
-            "name": "visorless-inhand-left",
+            "name": "raised-inhand-left",
             "directions": 4
         },
         {
-            "name": "inhand-right",
+            "name": "lowered-inhand-right",
             "directions": 4
         },
         {
-            "name": "visorless-inhand-right",
+            "name": "raised-inhand-right",
             "directions": 4
         }
     ]

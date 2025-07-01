@@ -38,7 +38,7 @@
   - type: Sprite
     sprite: Clothing/Mask/gassecurity.rsi
   - type: Clothing
-    sprite: Clothing/Mask/gassecurity.rsi
+    sprite: _Moffstation/Clothing/Mask/gassecurity.rsi # Moffstation - (New Security Helmets) - The new military helmet leaves a single pixel blank which the mask also doesn't fill, so we need to use our own with that pixel filled in.
   - type: Armor
     modifiers:
       coefficients:
