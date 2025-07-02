@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared._Moffstation.Paper.Components;
+using Content.Shared._Moffstation.Paper.Components; // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
@@ -19,7 +19,7 @@ namespace Content.Shared.Paper;
 
 public sealed class PaperSystem : EntitySystem
 {
-    private static readonly Color SignatureColor = Color.FromHex("#333333");
+    private static readonly Color SignatureColor = Color.FromHex("#333333");    // Moffstation - Signature color
 
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
@@ -34,7 +34,6 @@ public sealed class PaperSystem : EntitySystem
 
     private static readonly ProtoId<TagPrototype> WriteIgnoreStampsTag = "WriteIgnoreStamps";
     private static readonly ProtoId<TagPrototype> WriteTag = "Write";
-    private static readonly ProtoId<TagPrototype> ForgeSignatureTag = "ForgeSignatures";
 
     private EntityQuery<PaperComponent> _paperQuery;
 
@@ -272,7 +271,7 @@ public sealed class PaperSystem : EntitySystem
         return true;
     }
 
-    // Umbra - Begin - Paper signing
+        // Umbra - Begin - Paper signing
         // Send paper signing alt verb to the client if applicable.
         // Based on LockSystem.cs for alt-click behavior.
         private void AddSignVerb(Entity<PaperComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)

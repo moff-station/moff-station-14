@@ -24,9 +24,9 @@
                         </BoxContainer>
                         <TextureButton Name="FooterImage" HorizontalAlignment="Center" VerticalAlignment="Top" MouseFilter="Ignore"/>
                     </BoxContainer>
+                    <paper:StampCollection Name="StampDisplay" VerticalAlignment="Bottom" Margin="6"/>
 
                 </PanelContainer>
-                <paper:StampCollection Name="StampDisplay" VerticalAlignment="Bottom" Margin="6"/>
             </ScrollContainer>
         </PanelContainer>
         <!-- Bottom buttons for editing -->

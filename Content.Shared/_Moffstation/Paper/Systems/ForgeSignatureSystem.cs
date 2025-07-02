@@ -1,12 +1,15 @@
 using Content.Shared._Moffstation.Paper.Components;
 using Content.Shared.Administration.Logs;
+using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Robust.Shared.Configuration;
 
 namespace Content.Shared._Moffstation.Paper.Systems;
 
 public sealed class ForgeSignatureSystem : EntitySystem
 {
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -17,7 +20,7 @@ public sealed class ForgeSignatureSystem : EntitySystem
     private void ForgedSignatureLabelChanged(Entity<ForgeSignatureComponent> ent, ref ForgedSignatureChangedMessage args)
     {
         var signature = args.Signature.Trim();
-        ent.Comp.Signature = signature[..Math.Min(ent.Comp.MaxSignatureLength, signature.Length)];
+        ent.Comp.Signature = signature[..Math.Min(_cfgManager.GetCVar(CCVars.MaxNameLength), signature.Length)];
         // UpdateUI((uid, handLabeler));
         Dirty(ent.Owner, ent.Comp);
 
@@ -25,6 +28,6 @@ public sealed class ForgeSignatureSystem : EntitySystem
         _adminLogger.Add(
             LogType.Action,
             LogImpact.Low,
-     $"{ToPrettyString(args.Actor):user} set {ToPrettyString(ent.Owner):labeler} to apply label \"{ent.Comp.Signature}\"");
+     $"{ToPrettyString(args.Actor):user} set {ToPrettyString(ent.Owner):labeler} to have signature \"{ent.Comp.Signature}\"");
     }
 }

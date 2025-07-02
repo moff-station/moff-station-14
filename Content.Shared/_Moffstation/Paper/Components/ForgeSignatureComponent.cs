@@ -9,20 +9,12 @@ namespace Content.Shared._Moffstation.Paper.Components;
 public sealed partial class ForgeSignatureComponent : Component
 {
     /// <summary>
-    /// The battlecry to be said when an entity attacks with this component
+    /// The the signature written when a paper is signed
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     [AutoNetworkedField]
     public string Signature = "";
-
-    /// <summary>
-    /// The maximum amount of characters allowed in a battlecry
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField]
-    [AutoNetworkedField]
-    public int MaxSignatureLength = 30;
 }
 
 [Serializable, NetSerializable]

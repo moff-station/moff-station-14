@@ -67,13 +67,6 @@
     - WriteIgnoreStamps
     - Pickaxe
     - Pen
-    - ForgeSignatures
-  - type: ActivatableUI
-    key: enum.ForgeSignatureUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ForgeSignatureUiKey.Key:
-        type: ForgeSignatureBoundUserInterface
   - type: MeleeWeapon
     wideAnimationRotation: -45
     damage:
@@ -86,7 +79,15 @@
     - Screwing
     useSound:
       collection: Screwdriver
+  # Moffstation - Start - Add signature forging to advanced pens
   - type: ForgeSignature
+  - type: ActivatableUI
+    key: enum.ForgeSignatureUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ForgeSignatureUiKey.Key:
+        type: ForgeSignatureBoundUserInterface
+  # Moffstation - End
 
 - type: entity
   name: Cybersun pen

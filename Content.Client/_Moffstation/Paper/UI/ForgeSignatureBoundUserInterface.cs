@@ -1,7 +1,9 @@
 using Content.Client.Weapons.Melee.UI;
 using Content.Shared._Moffstation.Paper.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Speech.Components;
 using Robust.Client.UserInterface;
+using Robust.Shared.Configuration;
 
 namespace Content.Client._Moffstation.Paper.UI;
 
@@ -11,6 +13,7 @@ namespace Content.Client._Moffstation.Paper.UI;
 public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
 
     [ViewVariables]
     private ForgeSignatureWindow? _window;
@@ -27,7 +30,7 @@ public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
 
         if (_entManager.TryGetComponent(Owner, out ForgeSignatureComponent? labeler))
         {
-            _window.SetMaxLabelLength(labeler!.MaxSignatureLength);
+            _window.SetMaxSignatureLength(_cfgManager.GetCVar(CCVars.MaxNameLength));
         }
 
         _window.OnSignatureChanged += OnSignatureChanged;

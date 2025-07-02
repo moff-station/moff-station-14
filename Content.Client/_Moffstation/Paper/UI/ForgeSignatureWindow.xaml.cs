@@ -41,7 +41,7 @@ public sealed partial class ForgeSignatureWindow : DefaultWindow
             SignatureLineEdit.Text = signature;
 	}
 
-    public void SetMaxLabelLength(int maxLength)
+    public void SetMaxSignatureLength(int maxLength)
     {
         SignatureLineEdit.IsValid = s => s.Length <= maxLength;
     }
