@@ -1,7 +1,5 @@
-using Content.Client.Weapons.Melee.UI;
 using Content.Shared._Moffstation.Paper.Components;
 using Content.Shared.CCVar;
-using Content.Shared.Speech.Components;
 using Robust.Client.UserInterface;
 using Robust.Shared.Configuration;
 

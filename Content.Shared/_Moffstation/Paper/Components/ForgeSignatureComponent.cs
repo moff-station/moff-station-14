@@ -1,4 +1,3 @@
-using Content.Shared.Speech.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
