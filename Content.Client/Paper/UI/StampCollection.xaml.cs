@@ -59,10 +59,7 @@ public sealed partial class StampCollection : Container
             var theta = theta0 + dtheta * 0.5f + dtheta * i + (i > 4 ? MathF.Log(1 + i / 4) * dtheta : 0); // There is probably a better way to lay these out, to minimize overlaps
 
             //Place the stamps in a center, right, left order.
-            var childCenterOnCircle = new Vector2((i + 1) % 3,MathF.Floor(i / 3)) * r * UIScale;
-
-            if ((i + 1) % 3 == 0)
-                finalSize.Y += 50f;
+            var childCenterOnCircle = new Vector2((i + 1) % 3, MathF.Floor(i / 3) * 0.25f) * r * UIScale;   // Moffstation - Ordered stamp positioning
 
             var childHeLocal = _stamps[i].DesiredPixelSize * 0.5f;
             var c = childHeLocal * MathF.Abs(MathF.Cos(stampOrientation));
