@@ -288,16 +288,14 @@ public sealed class PaperSystem : EntitySystem
             if (args.Using is not { } item|| !_tagSystem.HasTag(item, WriteTag))
                 return;
 
-            if (_tagSystem.HasTag(item, ForgeSignatureTag))
-            {
-                _uiSystem.OpenUi(item, ForgeSignatureUiKey.Key, args.User);
-            }
+            // If theres a fake signature available, get it
+            TryComp<ForgeSignatureComponent>(item, out var fakeSignatureComp);
 
             var user = args.User;
 
             AlternativeVerb verb = new()
             {
-                Act = () => TrySign(ent, user),
+                Act = () => TrySign(ent, user, fakeSignatureComp),
                 Text = Loc.GetString("paper-component-verb-sign"),
                 // Icon = Don't have an icon yet. Todo for later.
             };
@@ -305,12 +303,14 @@ public sealed class PaperSystem : EntitySystem
         }
 
         // Umbra: Actual signature code.
-        private bool TrySign(Entity<PaperComponent> ent, EntityUid signer)
+        private bool TrySign(Entity<PaperComponent> ent, EntityUid signer, ForgeSignatureComponent? signatureComp)
         {
+            var signature = (signatureComp == null || signatureComp.Signature == "" ? Name(signer) : signatureComp.Signature);
+
             // Generate display information.
             var info = new StampDisplayInfo
             {
-                StampedName = Name(signer),
+                StampedName = signature,
                 StampedColor = SignatureColor,
                 Type = StampType.Signature,
             };

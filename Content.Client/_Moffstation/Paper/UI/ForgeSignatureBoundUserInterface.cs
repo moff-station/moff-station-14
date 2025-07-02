@@ -10,6 +10,8 @@ namespace Content.Client._Moffstation.Paper.UI;
 /// </summary>
 public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
 {
+    [Dependency] private readonly IEntityManager _entManager = default!;
+
     [ViewVariables]
     private ForgeSignatureWindow? _window;
 
@@ -22,33 +24,33 @@ public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<ForgeSignatureWindow>();
-        _window.OnSignatureEntered += OnSignatureChanged;
+
+        if (_entManager.TryGetComponent(Owner, out ForgeSignatureComponent? labeler))
+        {
+            _window.SetMaxLabelLength(labeler!.MaxSignatureLength);
+        }
+
+        _window.OnSignatureChanged += OnSignatureChanged;
+        Reload();
     }
 
-    private void OnSignatureChanged(string newBattlecry)
+    private void OnSignatureChanged(string newSignature)
     {
-        SendMessage(new SignatureChangedMessage(newBattlecry));
-    }
-
-    /// <summary>
-    /// Update the UI state based on server-sent info
-    /// </summary>
-    /// <param name="state"></param>
-    protected override void UpdateState(BoundUserInterfaceState state)
-    {
-        base.UpdateState(state);
-        if (_window == null || state is not ForgeSignatureBoundUserInterfaceState cast)
+        if (_entManager.TryGetComponent(Owner, out ForgeSignatureComponent? pen) &&
+            pen.Signature.Equals(newSignature))
             return;
 
-        _window.SetCurrentSignature(cast.CurrentSignature);
+        if (pen is not { } penComp)
+            return;
+        penComp.Signature = newSignature;
+        SendPredictedMessage(new ForgedSignatureChangedMessage(newSignature));
     }
 
-    protected override void Dispose(bool disposing)
+    public void Reload()
     {
-        base.Dispose(disposing);
-        if (!disposing)
+        if (_window == null || !_entManager.TryGetComponent(Owner, out ForgeSignatureComponent? component))
             return;
 
-        _window?.Dispose();
+        _window.SetCurrentSignature(component.Signature);
     }
 }

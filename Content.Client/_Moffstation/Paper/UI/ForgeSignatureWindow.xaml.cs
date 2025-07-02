@@ -8,20 +8,43 @@ namespace Content.Client._Moffstation.Paper.UI;
 public sealed partial class ForgeSignatureWindow : DefaultWindow
 {
 
-    public event Action<string>? OnSignatureEntered;
+    public event Action<string>? OnSignatureChanged;
+
+    private bool _focused;
+    private string _signature = string.Empty;
 
 	public ForgeSignatureWindow()
 	{
         RobustXamlLoader.Load(this);
 
-		SignatureLineEdit.OnTextEntered += e => OnSignatureEntered?.Invoke(e.Text);
+        SignatureLineEdit.OnTextChanged += e =>
+        {
+            _signature = e.Text;
+            OnSignatureChanged?.Invoke(_signature);
+        };
+
+        SignatureLineEdit.OnFocusEnter += _ => _focused = true;
+        SignatureLineEdit.OnFocusExit += _ =>
+        {
+            _focused = false;
+            SignatureLineEdit.Text = _signature;
+        };
 	}
 
-
-	public void SetCurrentSignature(string battlecry)
+	public void SetCurrentSignature(string signature)
 	{
-		SignatureLineEdit.Text = battlecry;
+        if (signature == _signature)
+            return;
+
+        _signature = signature;
+        if (!_focused)
+            SignatureLineEdit.Text = signature;
 	}
+
+    public void SetMaxLabelLength(int maxLength)
+    {
+        SignatureLineEdit.IsValid = s => s.Length <= maxLength;
+    }
 
 }
 
