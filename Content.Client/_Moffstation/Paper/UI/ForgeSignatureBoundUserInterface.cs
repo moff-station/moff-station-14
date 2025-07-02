@@ -26,10 +26,10 @@ public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
 
         _window = this.CreateWindow<ForgeSignatureWindow>();
 
-        if (_entManager.TryGetComponent(Owner, out ForgeSignatureComponent? labeler))
-        {
-            _window.SetMaxSignatureLength(_cfgManager.GetCVar(CCVars.MaxNameLength));
-        }
+        if (!_entManager.HasComponent<ForgeSignatureComponent>(Owner))
+            return;
+
+        _window.SetMaxSignatureLength(_cfgManager.GetCVar(CCVars.MaxNameLength));
 
         _window.OnSignatureChanged += OnSignatureChanged;
         Reload();
