@@ -83,6 +83,7 @@
   - type: ForgeSignature
   - type: ActivatableUI
     key: enum.ForgeSignatureUiKey.Key
+    inHandsOnly: true
   - type: UserInterface
     interfaces:
       enum.ForgeSignatureUiKey.Key:
