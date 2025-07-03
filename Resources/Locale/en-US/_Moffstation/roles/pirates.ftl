@@ -13,6 +13,7 @@ pirate-role-greeting =
     STEAL, LOOT, PILLAGE, AND MAKE US ALL RICH.
 
 pirates-existing = [color=#a15608]Yarg! There be Pirates![/color]
+pirates-earned-spesos = They managed to steal [color=green]{$money} spesos[/color] from the station.
 pirate-list-start = The Pirates were:
 pirate-list-name = [color=White]{$name}[/color]
 pirate-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])

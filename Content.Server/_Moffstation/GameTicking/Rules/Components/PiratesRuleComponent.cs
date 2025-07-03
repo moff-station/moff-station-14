@@ -15,4 +15,16 @@ public sealed partial class PiratesRuleComponent : Component
         StationPrototype = "PirateShuttleStation",
         StationComponentOverrides = new ComponentRegistry(),
     };
+
+    /// <summary>
+    /// The station associated with this rule
+    /// </summary>
+    [DataField]
+    public EntityUid AssociatedStation;
+
+    /// <summary>
+    /// The total amount of money collected by the pirates
+    /// </summary>
+    [DataField]
+    public int TotalMoneyCollected;
 }
