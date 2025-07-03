@@ -271,78 +271,78 @@ public sealed class PaperSystem : EntitySystem
         return true;
     }
 
-        // Umbra - Begin - Paper signing
-        // Send paper signing alt verb to the client if applicable.
-        // Based on LockSystem.cs for alt-click behavior.
-        private void AddSignVerb(Entity<PaperComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    // Umbra - Begin - Paper signing
+    // Send paper signing alt verb to the client if applicable.
+    // Based on LockSystem.cs for alt-click behavior.
+    private void AddSignVerb(Entity<PaperComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        // Sanity check
+        if (ent.Owner != args.Target)
+            return;
+
+        // Pens have a `Write` tag.
+        if (args.Using is not { } item|| !_tagSystem.HasTag(item, WriteTag))
+            return;
+
+        // If theres a fake signature available, get it
+        TryComp<ForgeSignatureComponent>(item, out var fakeSignatureComp);
+
+        var user = args.User;
+
+        AlternativeVerb verb = new()
         {
-            if (!args.CanAccess || !args.CanInteract)
-                return;
+            Act = () => TrySign(ent, user, fakeSignatureComp),
+            Text = Loc.GetString("paper-component-verb-sign"),
+            // Icon = Don't have an icon yet. Todo for later.
+        };
+        args.Verbs.Add(verb);
+    }
 
-            // Sanity check
-            if (ent.Owner != args.Target)
-                return;
+    // Umbra: Actual signature code.
+    private bool TrySign(Entity<PaperComponent> ent, EntityUid signer, ForgeSignatureComponent? signatureComp)
+    {
+        var signature = signatureComp?.Signature ?? Name(signer);
 
-            // Pens have a `Write` tag.
-            if (args.Using is not { } item|| !_tagSystem.HasTag(item, WriteTag))
-                return;
-
-            // If theres a fake signature available, get it
-            TryComp<ForgeSignatureComponent>(item, out var fakeSignatureComp);
-
-            var user = args.User;
-
-            AlternativeVerb verb = new()
-            {
-                Act = () => TrySign(ent, user, fakeSignatureComp),
-                Text = Loc.GetString("paper-component-verb-sign"),
-                // Icon = Don't have an icon yet. Todo for later.
-            };
-            args.Verbs.Add(verb);
-        }
-
-        // Umbra: Actual signature code.
-        private bool TrySign(Entity<PaperComponent> ent, EntityUid signer, ForgeSignatureComponent? signatureComp)
+        // Generate display information.
+        var info = new StampDisplayInfo
         {
-            var signature = signatureComp?.Signature ?? Name(signer);
+            StampedName = signature,
+            StampedColor = SignatureColor,
+            Type = StampType.Signature,
+        };
 
-            // Generate display information.
-            var info = new StampDisplayInfo
-            {
-                StampedName = signature,
-                StampedColor = SignatureColor,
-                Type = StampType.Signature,
-            };
+        // Try stamp with the info, return false if failed.
+        if (!TryStamp(ent, info, "paper_stamp-generic"))
+            return false;
 
-            // Try stamp with the info, return false if failed.
-            if (!TryStamp(ent, info, "paper_stamp-generic"))
-                return false;
+        // Signing successful, popup time.
 
-            // Signing successful, popup time.
+    _popupSystem.PopupPredicted(
+        Loc.GetString(
+            "paper-component-action-signed-self",
+            ("target", ent)
+        ),
+        Loc.GetString(
+            "paper-component-action-signed-other",
+            ("user", signer),
+            ("target", ent)
+        ),
+        signer,
+        signer
+    );
 
-        _popupSystem.PopupPredicted(
-            Loc.GetString(
-                "paper-component-action-signed-self",
-                ("target", ent)
-            ),
-            Loc.GetString(
-                "paper-component-action-signed-other",
-                ("user", signer),
-                ("target", ent)
-            ),
-            signer,
-            signer
-        );
+        _audio.PlayPvs(ent.Comp.Sound, ent);
 
-            _audio.PlayPvs(ent.Comp.Sound, ent);
+        _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
 
-            _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
+        UpdateUserInterface(ent);
 
-            UpdateUserInterface(ent);
-
-            return true;
-        }
-        // Umbra - End
+        return true;
+    }
+    // Umbra - End
 
     /// <summary>
     ///     Copy any stamp information from one piece of paper to another.

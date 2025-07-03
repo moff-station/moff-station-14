@@ -20,14 +20,14 @@ public sealed class ForgeSignatureBoundUserInterface(EntityUid owner, Enum uiKey
     {
         base.Open();
 
-        if (!_entManager.HasComponent<ForgeSignatureComponent>(Owner))
+        if (!_entManager.TryGetComponent<ForgeSignatureComponent>(Owner, out var component))
             return;
-            
+
         _window = this.CreateWindow<ForgeSignatureWindow>();
         _window.SetMaxSignatureLength(_cfgManager.GetCVar(CCVars.MaxNameLength));
 
         _window.OnSignatureChanged += OnSignatureChanged;
-        Reload();
+        _window.SetCurrentSignature(component.Signature);
     }
 
     private void OnSignatureChanged(string newSignature)
@@ -38,13 +38,5 @@ public sealed class ForgeSignatureBoundUserInterface(EntityUid owner, Enum uiKey
 
         pen.Signature = newSignature;
         SendPredictedMessage(new ForgedSignatureChangedMessage(newSignature));
-    }
-
-    public void Reload()
-    {
-        if (_window == null || !_entManager.TryGetComponent(Owner, out ForgeSignatureComponent? component))
-            return;
-
-        _window.SetCurrentSignature(component.Signature);
     }
 }
