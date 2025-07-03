@@ -8,7 +8,7 @@ namespace Content.Client._Moffstation.Paper.UI;
 /// <summary>
 /// Initializes a <see cref="ForgeSignatureWindow"/> and updates it when new server messages are received.
 /// </summary>
-public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
+public sealed class ForgeSignatureBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IConfigurationManager _cfgManager = default!;
@@ -16,19 +16,14 @@ public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
     [ViewVariables]
     private ForgeSignatureWindow? _window;
 
-    public ForgeSignatureBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-    {
-    }
-
     protected override void Open()
     {
         base.Open();
 
-        _window = this.CreateWindow<ForgeSignatureWindow>();
-
         if (!_entManager.HasComponent<ForgeSignatureComponent>(Owner))
             return;
-
+            
+        _window = this.CreateWindow<ForgeSignatureWindow>();
         _window.SetMaxSignatureLength(_cfgManager.GetCVar(CCVars.MaxNameLength));
 
         _window.OnSignatureChanged += OnSignatureChanged;
@@ -37,13 +32,11 @@ public sealed class ForgeSignatureBoundUserInterface : BoundUserInterface
 
     private void OnSignatureChanged(string newSignature)
     {
-        if (_entManager.TryGetComponent(Owner, out ForgeSignatureComponent? pen) &&
+        if (!_entManager.TryGetComponent<ForgeSignatureComponent>(Owner, out var pen) ||
             pen.Signature.Equals(newSignature))
             return;
 
-        if (pen is not { } penComp)
-            return;
-        penComp.Signature = newSignature;
+        pen.Signature = newSignature;
         SendPredictedMessage(new ForgedSignatureChangedMessage(newSignature));
     }
 

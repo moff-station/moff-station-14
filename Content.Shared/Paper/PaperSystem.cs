@@ -304,7 +304,7 @@ public sealed class PaperSystem : EntitySystem
         // Umbra: Actual signature code.
         private bool TrySign(Entity<PaperComponent> ent, EntityUid signer, ForgeSignatureComponent? signatureComp)
         {
-            var signature = (signatureComp == null || signatureComp.Signature == "" ? Name(signer) : signatureComp.Signature);
+            var signature = signatureComp?.Signature ?? Name(signer);
 
             // Generate display information.
             var info = new StampDisplayInfo
@@ -320,25 +320,19 @@ public sealed class PaperSystem : EntitySystem
 
             // Signing successful, popup time.
 
-            _popupSystem.PopupEntity(
-                Loc.GetString(
-                    "paper-component-action-signed-other",
-                    ("user", signer),
-                    ("target", ent)
-                ),
-                signer,
-                Filter.PvsExcept(signer, entityManager: EntityManager),
-                true
-            );
-
-            _popupSystem.PopupEntity(
-                Loc.GetString(
-                    "paper-component-action-signed-self",
-                    ("target", ent)
-                ),
-                signer,
-                signer
-            );
+        _popupSystem.PopupPredicted(
+            Loc.GetString(
+                "paper-component-action-signed-self",
+                ("target", ent)
+            ),
+            Loc.GetString(
+                "paper-component-action-signed-other",
+                ("user", signer),
+                ("target", ent)
+            ),
+            signer,
+            signer
+        );
 
             _audio.PlayPvs(ent.Comp.Sound, ent);
 

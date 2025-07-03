@@ -10,9 +10,7 @@ public sealed partial class ForgeSignatureComponent : Component
     /// <summary>
     /// The the signature written when a paper is signed
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField]
-    [AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public string Signature = "";
 }
 

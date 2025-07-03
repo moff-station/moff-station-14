@@ -10,21 +10,25 @@ public sealed class ForgeSignatureSystem : EntitySystem
 {
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IConfigurationManager _cfgManager = default!;
+
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ForgeSignatureComponent, ForgedSignatureChangedMessage>(ForgedSignatureLabelChanged);
+        Subs.BuiEvents<ForgeSignatureComponent>(ForgeSignatureUiKey.Key,
+            subs =>
+            {
+                subs.Event<ForgedSignatureChangedMessage>(ForgedSignatureLabelChanged);
+            });
     }
 
     private void ForgedSignatureLabelChanged(Entity<ForgeSignatureComponent> ent, ref ForgedSignatureChangedMessage args)
     {
         var signature = args.Signature.Trim();
         ent.Comp.Signature = signature[..Math.Min(_cfgManager.GetCVar(CCVars.MaxNameLength), signature.Length)];
-        // UpdateUI((uid, handLabeler));
-        Dirty(ent.Owner, ent.Comp);
+        Dirty(ent);
 
-        // Log label change
+        // Log signature change
         _adminLogger.Add(
             LogType.Action,
             LogImpact.Low,

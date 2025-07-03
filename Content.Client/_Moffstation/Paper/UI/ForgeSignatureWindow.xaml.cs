@@ -7,7 +7,6 @@ namespace Content.Client._Moffstation.Paper.UI;
 [GenerateTypedNameReferences]
 public sealed partial class ForgeSignatureWindow : DefaultWindow
 {
-
     public event Action<string>? OnSignatureChanged;
 
     private bool _focused;
