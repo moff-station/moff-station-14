@@ -20,13 +20,13 @@
     soundHit:
       collection: MetalThud
   - type: Item
-    size: Huge
+    size: Giant
     sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
-    storedSprite:
-      sprite: _MoffStation/Objects/Weapons/Melee/battering_ram_storage.rsi
-      state: storage
-    shape:
-    - 0,0,4,1 # 5x2
+  - type: Clothing
+    sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
   - type: Tool
     qualities:
       - Prying
