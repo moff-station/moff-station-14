@@ -727,9 +727,9 @@
   description: A sturdy, utilitarian winter coat designed to protect a warden from any brig-bound threats and hypothermic events.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 ################################################################

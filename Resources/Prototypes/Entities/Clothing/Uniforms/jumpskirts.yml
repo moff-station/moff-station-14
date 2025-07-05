@@ -422,25 +422,31 @@
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
   id: ClothingUniformJumpskirtWarden
-  name: warden's uniform
+  name: warden's jumpskirt # Moffstation - (New Warden Uniforms)
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - (New Warden Uniforms)
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - (New Warden Uniforms)
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        # Moffstation - Begin (New Warden Uniforms)
+        #color: "#C12D30"
+        #sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+        # Moffstation - End
       - state: overlay-inhand-left
         sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
       right:
       - state: inhand-right
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        # Moffstation - Begin (New Warden Uniforms)
+        #color: "#C12D30"
+        #sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+        # Moffstation - End
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
 
