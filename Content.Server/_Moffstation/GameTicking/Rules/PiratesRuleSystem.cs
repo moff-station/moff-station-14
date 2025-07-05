@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server._Moffstation.Roles;
 using Content.Server.Antag;
@@ -5,13 +6,10 @@ using Content.Server.Cargo.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Roles;
-using Content.Server.Station;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.Cargo.Components;
-using Content.Shared.Cargo.Prototypes;
 using Content.Shared.GameTicking.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.GameTicking.Rules;
 
@@ -99,7 +97,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
             if (transaction > 0)
                 moneyEarned += transaction;
         }
-        rule.LastBalance = args.Balance;
+        rule.LastBalance = args.Balance.ToDictionary();
 
         rule.TotalMoneyCollected += moneyEarned;
     }
