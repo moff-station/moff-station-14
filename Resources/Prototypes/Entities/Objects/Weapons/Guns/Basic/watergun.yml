@@ -11,11 +11,6 @@
   - type: Item
     sprite: Objects/Weapons/Guns/Pistols/water_pistol.rsi
     size: Small
-    # Moffstation - Begin - (Weapon Resizing)
-    shape:
-    - 0,0,1,0
-    - 0,1,0,1
-    # Moffstation - End
   - type: Gun
     clumsyProof: true
     cameraRecoilScalar: 0 #no recoil
@@ -67,6 +62,12 @@
     - state: detail
     - state: icon
       map: [ "enum.DamageStateVisualLayers.Base" ]
+  # Moffstation - Begin - (Weapon Resizing)
+  - type: Item
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+  # Moffstation - End
   - type: RandomSprite
     available:
       - enum.DamageStateVisualLayers.Base:
@@ -104,7 +105,7 @@
     # size: Normal
     size: Large
     shape:
-    - 0,0,3,1
+    - 0,0,2,1
     # Moffstation - End
   - type: RandomSprite
     getAllGroups: true
@@ -146,7 +147,7 @@
     # size: Normal
     size: Large
     shape:
-    - 0,0,3,1
+    - 0,0,2,1
     # Moffstation - End
   - type: RandomSprite
     getAllGroups: true

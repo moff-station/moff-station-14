@@ -114,7 +114,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
   - type: Item
-    # Moffstation - Begin (Weapon Resizing) (This is covered by the parent)
+    # Moffstation - Begin (Weapon Resizing) - This is covered by the parent.
     #size: Normal
     #shape:
     #- 0,0,4,0
@@ -151,10 +151,6 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
   - type: Item
-    # Moffstation - Begin (Weapon Resizing)
-    shape:
-    - 0,0,4,1
-    # Moffstation - End
     sprite: Objects/Weapons/Guns/Shotguns/enforcer_inhands_64x.rsi
   - type: BallisticAmmoProvider
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
@@ -174,7 +170,7 @@
   description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
   components: # intend for Kammerer to have tighter choke for slower fire rate and/or manual cycling
   - type: Item
-    # Moffstation - Begin (Weapon Resizing) (This is covered by the parent)
+    # Moffstation - Begin (Weapon Resizing) - This is covered by the parent.
     # Size: Normal
     # shape:
     # - 0,0,4,0
@@ -242,8 +238,10 @@
   - type: Item
     size: Small
     # Moffstation - Begin (Weapon Resizing)
+    #storedRotation: 90
     shape:
-    - 0,0,0,1
+    - 0,0,1,0
+    - 0,1,0,1
     # Moffstation - End
     storedRotation: 90
   - type: Sprite
@@ -268,7 +266,7 @@
   suffix: Pirate
   description: Deadly at close range.
   components:
-  # Moffstation - Begin (Weapon Resizing) (This is covered by the parent)
+  # Moffstation - Begin (Weapon Resizing) -This is covered by the parent.
   #-type: Item
   #size: Normal
   #shape:
@@ -295,7 +293,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
   - type: Item
-    # Moffstation - Begin (Weapon Resizing) (This is covered by the parent)
+    # Moffstation - Begin (Weapon Resizing) - This is covered by the parent.
     #size: Normal
     #shape:
     #- 0,0,4,0
