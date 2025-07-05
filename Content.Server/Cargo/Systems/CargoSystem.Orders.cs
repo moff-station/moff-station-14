@@ -482,16 +482,13 @@ namespace Content.Server.Cargo.Systems
         {
             var amount = 0;
 
-            // Moffstation - Start - Railguard since it can cause errors with pirates
-            if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var orderDatabase))
-                return amount;
-
-            if (!orderDatabase.Orders.ContainsKey(account))
-                return amount;
-            // Moffstation - End
-
             if (!TryComp<StationBankAccountComponent>(station, out var bank))
                 return amount;
+
+            // Moffstation - Start - Railguard since it can cause errors with pirates
+            if (!bank.Accounts.ContainsKey(account))
+                return amount;
+            // Moffstation - End
 
             foreach (var order in station.Comp.Orders[account])
             {
