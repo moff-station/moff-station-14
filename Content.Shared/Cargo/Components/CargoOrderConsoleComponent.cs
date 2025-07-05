@@ -78,7 +78,13 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// All of the <see cref="CargoProductPrototype.Group"/>s that are supported.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public List<ProtoId<CargoMarketPrototype>> AllowedGroups = new() { "market" };
+    public List<ProtoId<CargoMarketPrototype>> AllowedGroups = new()
+    {
+        "market",
+        "SalvageJobReward2",
+        "SalvageJobReward3",
+        "SalvageJobRewardMAX",
+    };
 
     /// <summary>
     /// Access needed to toggle the limit on this console.
@@ -95,13 +101,16 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// <summary>
     /// Secondary radio channel which always receives order announcements.
     /// </summary>
-    public static readonly ProtoId<RadioChannelPrototype> BaseAnnouncementChannel = "Supply";
+    // Moffstation - Start - Changed from static to a datafield so we can change it for pirates
+    [DataField]
+    public ProtoId<RadioChannelPrototype> BaseAnnouncementChannel = "Supply";
+    // Moffstation - End
 
     /// <summary>
-    /// If set to true, restricts this console from ordering and has it print slips instead
+    /// The behaviour of the cargo console regarding orders
     /// </summary>
     [DataField]
-    public bool SlipPrinter;
+    public CargoOrderConsoleMode Mode = CargoOrderConsoleMode.DirectOrder;
 
     /// <summary>
     /// The time at which the console will be able to print a slip again.
@@ -138,6 +147,26 @@ public sealed partial class CargoOrderConsoleComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan DenySoundDelay = TimeSpan.FromSeconds(2);
+}
+
+/// <summary>
+/// The behaviour of the cargo order console
+/// </summary>
+[Serializable, NetSerializable]
+public enum CargoOrderConsoleMode : byte
+{
+    /// <summary>
+    /// Place orders directly
+    /// </summary>
+    DirectOrder,
+    /// <summary>
+    /// Print a slip to be inserted into a DirectOrder console
+    /// </summary>
+    PrintSlip,
+    /// <summary>
+    /// Transfers the order to the primary account
+    /// </summary>
+    SendToPrimary,
 }
 
 /// <summary>

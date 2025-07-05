@@ -1,12 +1,13 @@
 # Numbers for armor here largely taken from /tg/.
-# NOTE: Half of the kind of armor you're probably thinking of is in vests.yml. These should probably be merged some day.
+# armor.yml covers both armored vests (e.g. not just cosmetic) and armor that covers multiple bodyparts/limbs
+
 
 #Basic armor vest for inheritance
 - type: entity
+  abstract: true
   parent: [ClothingOuterBaseMedium, AllowSuitStorageClothing, BaseSecurityContraband]
   id: ClothingOuterArmorBase
   name: armor vest
-  abstract: true
   description: A standard Type I armored vest that provides decent protection against most types of damage.
   components:
   - type: Sprite
@@ -22,15 +23,20 @@
         Heat: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.90
-    #Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.8 # base value for armor.
-    #Moffstation - End
+    damageCoefficient: 0.8
+  # Moffstation - End
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
   parent: [ BaseSecurityBartenderContraband, ClothingOuterArmorBase]
   id: ClothingOuterArmorBasic
+  components:
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - WhitelistChameleon
 
 #Alternate / slim basic armor vest
 - type: entity
@@ -86,6 +92,19 @@
     reflectProb: 1
     reflects:
       - Energy
+    reflectingInHands: false
+
+#Detective's vest
+- type: entity
+  parent: [ClothingOuterArmorBase, BaseSecurityContraband]
+  id: ClothingOuterVestDetective
+  name: detective's vest
+  description: A hard-boiled private investigator's armored vest.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/detvest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/detvest.rsi
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
@@ -105,6 +124,10 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
+  - type: StaminaResistance
+    damageCoefficient: 0.8
+  # Moffstation - End
   - type: HeldSpeedModifier
   - type: GroupExamine
 
@@ -118,25 +141,10 @@
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.6
-        Heat: 0.5
-        Caustic: 0.9
-  - type: ClothingSpeedModifier
-    walkModifier: 1.0
-    sprintModifier: 1.0
-  - type: HeldSpeedModifier
-  - type: ExplosionResistance
-    damageCoefficient: 0.65
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
-  #Moffstation - End
-  - type: GroupExamine
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - WhitelistChameleon
 
 - type: entity
   parent: [ClothingOuterArmorBaseCarapace, BaseCentcommContraband]
@@ -169,10 +177,12 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
+    damageCoefficient: 0.8
   # Moffstation - End
+  - type: StaticPrice
+    price: 1500
 
 #Elite web vest
 - type: entity
@@ -199,12 +209,14 @@
         Caustic: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: FireProtection
     reduction: 0.85
+  - type: StaticPrice
+    price: 2500
 
 #Mercenary web vest
 - type: entity
@@ -226,22 +238,6 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-
-#Detective's vest
-- type: entity
-  parent: [ClothingOuterArmorBase, BaseSecurityContraband]
-  id: ClothingOuterVestDetective
-  name: detective's vest
-  description: A hard-boiled private investigator's armored vest.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/detvest.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/detvest.rsi
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.8 # Base value for armor.
-  # Moffstation - End
 
 
 # Armor covering multiple body parts including limbs
@@ -270,15 +266,13 @@
         Caustic: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.35
-  #Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Advanced, +10%.
-  #Moffstation - End
+  - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
+    damageCoefficient: 0.45
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
   #Shoulder mounted flashlight
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       outerClothing:
@@ -287,6 +281,7 @@
       outerClothing-vox:
       - state: equipped-OUTERCLOTHING-light-vox
         shader: unshaded
+  - type: ItemTogglePointLight
   - type: Appearance
   - type: HandheldLight
     addPrefix: false
@@ -346,9 +341,9 @@
         Caustic: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
-  #Moffstation - Begin (Stamina Resistance)
+  #Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
   - type: StaminaResistance
-    damageCoefficient: 0.6 # Riot gear, +20%.
+    damageCoefficient: 0.6
   #Moffstation - End
   - type: GroupExamine
 
@@ -457,7 +452,7 @@
         Heat: 0.9
         Radiation: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.7
+    walkModifier: 0.65
     sprintModifier: 0.65
   - type: HeldSpeedModifier
   - type: ExplosionResistance
@@ -484,6 +479,7 @@
         Piercing: 0.4
   - type: ClothingSpeedModifier
     walkModifier: 0.8
+    sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: ExplosionResistance
     damageCoefficient: 0.4

@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Text;  // Moffstation
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -90,7 +91,7 @@ namespace Content.Server.GameTicking
         /// </remarks>
         private void LoadMaps()
         {
-            if (_mapManager.MapExists(DefaultMap))
+            if (_map.MapExists(DefaultMap))
                 return;
 
             AddGamePresetRules();
@@ -208,7 +209,7 @@ namespace Content.Server.GameTicking
                 }
 
                 _metaData.SetEntityName(mapUid, proto.MapName);
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 RaiseLocalEvent(new PostGameMapLoad(proto, mapId, g, stationName));
                 return g;
             }
@@ -258,7 +259,7 @@ namespace Content.Server.GameTicking
                 }
 
                 _metaData.SetEntityName(mapUid, proto.MapName);
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 RaiseLocalEvent(new PostGameMapLoad(proto, mapId, g, stationName));
                 return g;
             }
@@ -308,7 +309,7 @@ namespace Content.Server.GameTicking
                     throw new Exception($"Failed to load game-map grid {ev.GameMap.ID}");
                 }
 
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 // TODO MAP LOADING use a new event?
                 RaiseLocalEvent(new PostGameMapLoad(proto, targetMap, g, stationName));
                 return g;
@@ -390,7 +391,7 @@ namespace Content.Server.GameTicking
                 HumanoidCharacterProfile profile;
                 if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
                 {
-                    profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
+                    profile = (HumanoidCharacterProfile)preferences.SelectedCharacter;
                 }
                 else
                 {
@@ -995,20 +996,39 @@ namespace Content.Server.GameTicking
             _doNewLine = true;
         }
 
+        // Moffstation - Start - Added line wrapping for end of round screen
         public void AddLineWrapping(string text, int linewidth = 50, char separator = ' ')
         {
+            AddLine(WrapString(text, linewidth, separator));
+        }
+
+        public string WrapString(string text, int linewidth = 50, char separator = ' ')
+        {
+            var wholeString = new StringBuilder();
             var words = text.Split(separator);
             var line = "";
             foreach (var word in words)
             {
                 line += word + separator;
+
+                // If there's a linebreak within the word, reset the line
+                if (word.Contains("\n"))
+                {
+                    wholeString.Append(line);
+                    line = "";
+                    continue;
+                }
+
+                // Otherwise, check if the length has been met
                 if (line.Length > linewidth)
                 {
-                    AddLine(line);
+                    wholeString.AppendLine(line);
                     line = "";
                 }
             }
-            AddLine(line);
+            wholeString.AppendLine(line);
+            return wholeString.ToString();
         }
+        // Moffstation - End - Added line wrapping for end of round screen
     }
 }

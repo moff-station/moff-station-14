@@ -46,6 +46,7 @@
   recipes:
   - PowerCellMicroreactor
   - PowerCellHigh
+  - PowerCellHyper
 
 - type: latheRecipePack
   id: ScienceWeapons
@@ -65,9 +66,12 @@
   - FauxTileAstroGrass
   - FauxTileMowedAstroGrass
   - FauxTileJungleAstroGrass
+  - FauxTileDarkAstroGrass
+  - FauxTileLightAstroGrass
   - FauxTileAstroIce
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
+  - FauxTileDesertAstroSand
 
 # Only contains parts for making basic modular grenades, no actual explosives
 - type: latheRecipePack
@@ -97,6 +101,7 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
+  - CircuitImprinterLawMatrixMachineCircuitboard #Moffstation - Law Matrix Imprinter
 
 - type: latheRecipePack
   id: CameraBoards

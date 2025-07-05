@@ -44,7 +44,7 @@ public sealed class HandheldLightSystem : SharedHandheldLightSystem
             return;
         }
 
-        if (!_appearance.TryGetData<bool>(uid, ToggleVisuals.Toggled, out var enabled, args.Component)) // Moffstation - ToggleableLightVisuals enum merged into ToggleVisuals
+        if (!_appearance.TryGetData<bool>(uid, ToggleableVisuals.Enabled, out var enabled, args.Component))
         {
             return;
         }

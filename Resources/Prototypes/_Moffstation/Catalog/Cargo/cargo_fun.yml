@@ -4,6 +4,17 @@
     sprite: Clothing/Uniforms/Jumpskirt/janimaidmini.rsi
     state: icon
   product: CrateServiceBulkMaidDresses
-  cost: 3000
+  cost: 1500
   category: cargoproduct-category-name-service
   group: market
+
+- type: cargoProduct
+  id: DrumkitInstrument
+  icon:
+    sprite: _Greystation/Objects/Fun/Instruments/structureinstruments.rsi
+    state: drumkit
+  product: DrumkitInstrument
+  cost: 1500
+  category: cargoproduct-category-name-fun
+  group: market
+

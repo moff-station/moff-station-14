@@ -9,6 +9,7 @@
     - id: CargoSaleComputerCircuitboard
     - id: CargoShuttleConsoleCircuitboard
     - id: SalvageMagnetMachineCircuitboard
+    - id: SalvageJobBoardComputerCircuitboard
     - id: CigPackGreen
       prob: 0.50
     - id: ClothingHeadsetAltCargo
@@ -42,7 +43,7 @@
     - id: ClothingHeadsetAltCommand
     - id: ClothingOuterArmorCaptainCarapace
     - id: CommsComputerCircuitboard
-    - id: DoorRemoteCommand
+    - id: DoorRemoteCustom
     - id: MedalCase
     - id: NukeDisk
     - id: PinpointerNuclear
@@ -170,6 +171,7 @@
     - id: RCD
     - id: RCDAmmo
     - id: RubberStampCE
+    - id: MetalFoamGrenade
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -216,7 +218,10 @@
     - id: BoxEncryptionKeyMedical
     - id: ClothingBackpackDuffelSurgeryFilled
     - id: ClothingCloakCmo
-    - id: ClothingEyesHudMedical
+    # Moffstation - Begin (MedChem Goggles)
+    #- id: ClothingEyesHudMedical
+    - id: ClothingEyesGlassesMedChem
+    # Moffstation - End
     - id: ClothingHandsGlovesNitrile
     - id: ClothingHeadHatBeretCmo
     - id: ClothingHeadsetAltMedical
@@ -323,7 +328,10 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
-    - id: WeaponEnergyShotgun
+    # Moffstation - Begin Big Iron
+    - id: WeaponRevolverBigIron
+    - id: PowerCellBigIron
+    # Moffstation - End
     - id: BookSpaceLaw
     - id: BoxEncryptionKeySecurity
     - id: CigarGoldCase
@@ -389,7 +397,6 @@
   - type: StorageFill
     contents:
     - id: WeaponRevolverDeckard
-    - id: ClothingOuterHardsuitBasic
     - id: JetpackBlue
     - id: SpaceCash1000
     - id: BeachBall

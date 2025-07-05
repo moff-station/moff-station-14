@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Server._CD.Records; // Moffstation - Fix a bug with CD character records that gets messed up with randomized characters
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
@@ -275,7 +276,12 @@ namespace Content.Server.GameTicking
 
             _mind.TransferTo(newMind, mob);
 
-            _roles.MindAddJobRole(newMind, silent: silent, jobPrototype:jobId);
+            // Moffstation - Start - Fix a bug with CD character records where it crashes hard if this is a random character
+            if (_randomizeCharacters)
+                EnsureComp<SkipLoadingCharacterRecordsComponent>(mob);
+            // Moffstation - End
+
+            _roles.MindAddJobRole(newMind, silent: silent, jobPrototype: jobId);
             var jobName = _jobs.MindTryGetJobName(newMind);
             _admin.UpdatePlayerList(player);
 
@@ -284,13 +290,13 @@ namespace Content.Server.GameTicking
                 if (jobPrototype.JoinNotifyCrew)
                 {
                     _chatSystem.DispatchStationAnnouncement(station,
-                        Loc.GetString("latejoin-arrival-announcement-special",
+                        Loc.GetString(jobPrototype.JoinNotifyCrewText,  // Moffstation - flexibility added to special join announcements
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
                             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
                         Loc.GetString("latejoin-arrival-sender"),
-                        playDefaultSound: false,
-                        colorOverride: Color.Gold);
+                        playDefaultSound: true,     // Moffstation - they're important so notify the crew
+                        colorOverride: jobPrototype.JoinNotifyCrewColor);   // Moffstation - flexibility added to special join announcements
                 }
                 else
                 {
@@ -306,7 +312,7 @@ namespace Content.Server.GameTicking
 
             if (player.UserId == new Guid("{e887eb93-f503-4b65-95b6-2f282c014192}"))
             {
-                EntityManager.AddComponent<OwOAccentComponent>(mob);
+                AddComp<OwOAccentComponent>(mob);
             }
 
             _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
@@ -426,7 +432,7 @@ namespace Content.Server.GameTicking
         public EntityCoordinates GetObserverSpawnPoint()
         {
             _possiblePositions.Clear();
-            var spawnPointQuery = EntityManager.EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
+            var spawnPointQuery = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
             while (spawnPointQuery.MoveNext(out var uid, out var point, out var transform))
             {
                 if (point.SpawnType != SpawnPointType.Observer
@@ -475,17 +481,17 @@ namespace Content.Server.GameTicking
                 return spawn;
             }
 
-            if (_mapManager.MapExists(DefaultMap))
+            if (_map.MapExists(DefaultMap))
             {
-                var mapUid = _mapManager.GetMapEntityId(DefaultMap);
+                var mapUid = _map.GetMapOrInvalid(DefaultMap);
                 if (!TerminatingOrDeleted(mapUid))
                     return new EntityCoordinates(mapUid, Vector2.Zero);
             }
 
             // Just pick a point at this point I guess.
-            foreach (var map in _mapManager.GetAllMapIds())
+            foreach (var map in _map.GetAllMapIds())
             {
-                var mapUid = _mapManager.GetMapEntityId(map);
+                var mapUid = _map.GetMapOrInvalid(map);
 
                 if (!metaQuery.TryGetComponent(mapUid, out var meta)
                     || meta.EntityPaused

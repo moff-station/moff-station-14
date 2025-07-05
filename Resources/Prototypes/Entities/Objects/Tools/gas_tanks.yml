@@ -36,7 +36,7 @@
       temperature: 293.15
     tankLowPressure: 30.0
   - type: Explosive
-    explosionType: Default
+    explosionType: MicroBomb
     maxIntensity: 20
   - type: MeleeWeapon
     wideAnimationRotation: 45
@@ -61,33 +61,41 @@
     speedModifier: 0.6 # fairly unwieldly but nice round surface
 
 - type: entity
-  parent: GasTankRoundBase
+  parent: [ GasTankVisualsBase, GasTankRoundBase ] # Moffstation - Inherit visuals from Moffstation Original `GasTankVisualsBase`
   id: OxygenTank
   name: oxygen tank
   description: A standard cylindrical gas tank for oxygen. It can hold 5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/oxygen.rsi
-  - type: Item
-    sprite: Objects/Tanks/oxygen.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/oxygen.rsi
+# Moffstation - Start - Replace immediate visuals with `GasTankVisualsBase` and `GasTankVisuals`
+#  - type: Sprite
+#    sprite: Objects/Tanks/oxygen.rsi
+#  - type: Item
+#    sprite: Objects/Tanks/oxygen.rsi
+#  - type: Clothing
+#    sprite: Objects/Tanks/oxygen.rsi
+  - type: GasTankVisuals
+    visuals: Oxygen
+# Moffstation - End
 
 - type: entity
-  parent: GasTankRoundBase
+  parent: [ GasTankVisualsBase, GasTankRoundBase ] # Moffstation - Inherit visuals from Moffstation Original `GasTankVisualsBase`
   id: NitrogenTank
   name: nitrogen tank
   description: A standard cylindrical gas tank for nitrogen. It can hold 5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/red.rsi
-  - type: Item
-    sprite: Objects/Tanks/red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/red.rsi
+  # Moffstation - Start - Replace immediate visuals with `GasTankVisualsBase` and `GasTankVisuals`
+#  - type: Sprite
+#    sprite: Objects/Tanks/red.rsi
+#  - type: Item
+#    sprite: Objects/Tanks/red.rsi
+#  - type: Clothing
+#    sprite: Objects/Tanks/red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
+# Moffstation - End
 
 - type: entity
-  parent: GasTankRoundBase
+  parent: [ GasTankVisualsBase, EmergencyGasTankBase ] # Moffstation - Inherit visuals from Moffstation Original `GasTankVisualsBase` and lots of behavior from `EmergencyGasTankBase`
   id: EmergencyOxygenTank
   name: emergency oxygen tank
   description: An easily portable tank for emergencies. Contains very little oxygen, rated for survival use only. It can hold 0.66 L of gas.
@@ -95,30 +103,34 @@
   - type: Sprite
     sprite: Objects/Tanks/emergency.rsi
   - type: Item
-    size: Small
+#    size: Small # Moffstation - Moved to `EmergencyGasTankBase`
     sprite: Objects/Tanks/emergency.rsi
-  - type: GasTank
-    air:
-      volume: 0.66
-      temperature: 293.15
+# Moffstation - Start
+#  - type: GasTank
+#    air:
+#      volume: 0.66
+#      temperature: 293.15
+  # Moffstation - End
   - type: Clothing
     sprite: Objects/Tanks/emergency.rsi
-    slots:
-    - Pocket
-    - Belt
-    - suitStorage
-  - type: MeleeWeapon
-    damage:
-      types:
-        Blunt: 5
-  - type: PhysicalComposition
-    materialComposition:
-      Steel: 100
-  # Moffstation - Begin (Survival Box Improvements)
-  - type: Tag
-    tags:
-    - SurvivalBoxInsertable
-  # Moffstation - End
+# Moffstation - Start
+#    slots:
+#    - Pocket
+#    - Belt
+#    - suitStorage
+#  - type: MeleeWeapon
+#    damage:
+#      types:
+#        Blunt: 5
+#  - type: PhysicalComposition
+#    materialComposition:
+#      Steel: 100
+  - type: GasTankVisuals
+    visuals: Oxygen
+    excludedInhandLayers: # No stripes on small tank inhand sprites.
+    - StripeMiddle
+    - StripeLow
+# Moffstation - End
 
 - type: entity
   parent: EmergencyOxygenTank
@@ -126,12 +138,16 @@
   name: emergency nitrogen tank
   description: An easily portable tank for emergencies. Contains very little nitrogen, rated for survival use only. It can hold 0.66 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/emergency_red.rsi
-  - type: Item
-    sprite: Objects/Tanks/emergency_red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/emergency_red.rsi
+   # Moffstation - Start
+#  - type: Sprite
+#    sprite: Objects/Tanks/emergency_red.rsi
+#  - type: Item
+#    sprite: Objects/Tanks/emergency_red.rsi
+#  - type: Clothing
+#    sprite: Objects/Tanks/emergency_red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
+  # Moffstation - End
 
 - type: entity
   parent: EmergencyOxygenTank
@@ -149,6 +165,10 @@
       temperature: 293.15
   - type: Clothing
     sprite: Objects/Tanks/emergency_extended.rsi
+  # Moffstation - Start
+  - type: GasTankVisuals
+    visuals: Oxygen
+  # Moffstation - End
 
 - type: entity
   parent: ExtendedEmergencyOxygenTank
@@ -156,12 +176,16 @@
   name: extended-capacity emergency nitrogen tank
   description: An emergency tank with extended capacity. Technically rated for prolonged use. It can hold 1.5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/emergency_extended_red.rsi
-  - type: Item
-    sprite: Objects/Tanks/emergency_extended_red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/emergency_extended_red.rsi
+  # Moffstation - Start
+#  - type: Sprite
+#    sprite: Objects/Tanks/emergency_extended_red.rsi
+#  - type: Item
+#    sprite: Objects/Tanks/emergency_extended_red.rsi
+#  - type: Clothing
+#    sprite: Objects/Tanks/emergency_extended_red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
+  # Moffstation - End
 
 - type: entity
   parent: ExtendedEmergencyOxygenTank
@@ -184,6 +208,10 @@
     damage:
       types:
         Blunt: 7.5
+  # Moffstation - Start
+  - type: GasTankVisuals
+    visuals: Oxygen
+  # Moffstation - End
 
 - type: entity
   parent: DoubleEmergencyOxygenTank
@@ -191,15 +219,19 @@
   name: double emergency nitrogen tank
   description: A high-grade dual-tank emergency life support container. It holds a decent amount of nitrogen for its small size. It can hold 2.5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/emergency_double_red.rsi
-  - type: Item
-    sprite: Objects/Tanks/emergency_double_red.rsi
-  - type: Clothing
-    sprite: Objects/Tanks/emergency_double_red.rsi
+  # Moffstation - Start
+#  - type: Sprite
+#    sprite: Objects/Tanks/emergency_double_red.rsi
+#  - type: Item
+#    sprite: Objects/Tanks/emergency_double_red.rsi
+#  - type: Clothing
+#    sprite: Objects/Tanks/emergency_double_red.rsi
+  - type: GasTankVisuals
+    visuals: Nitrogen
+  # Moffstation - End
 
 - type: entity
-  parent: EmergencyOxygenTank
+  parent: EmergencyGasTankBase # Moffstation - Inherit only the behavior and not visuals from other tanks.
   id: EmergencyFunnyOxygenTank
   name: funny emergency oxygen tank
   description: An easily portable tank for emergencies. Contains very little oxygen with an extra of funny gas, rated for survival use only. It can hold 0.66 L of gas.
@@ -212,28 +244,36 @@
     sprite: Objects/Tanks/emergency_clown.rsi
 
 - type: entity
-  parent: GasTankRoundBase
+  parent: [ GasTankVisualsBase, GasTankRoundBase ] # Moffstation - Inherit visuals from Moffstation Original `GasTankVisualsBase`
   id: AirTank
   name: air tank
   description: Mixed anyone? It can hold 5 L of gas.
   components:
   - type: GasTank
     outputPressure: 101.3
+  # Moffstation - Start
+  - type: GasTankVisuals
+    visuals: AirMix
+  # Moffstation - End
 
 - type: entity
-  parent: GasTankRoundBase
+  parent: [ GasTankVisualsBase, GasTankRoundBase ] # Moffstation - Inherit visuals from Moffstation Original `GasTankVisualsBase`
   id: NitrousOxideTank
   name: nitrous oxide tank
   description: Contains a mixture of air and nitrous oxide. Make sure you don't refill it with pure N2O. It can hold 5 L of gas.
   components:
-  - type: Sprite
-    sprite: Objects/Tanks/anesthetic.rsi
-  - type: Item
-    sprite: Objects/Tanks/anesthetic.rsi
+  # Moffstation - Start
+#  - type: Sprite
+#    sprite: Objects/Tanks/anesthetic.rsi
+#  - type: Item
+#    sprite: Objects/Tanks/anesthetic.rsi
+  # Moffstation - End
   - type: GasTank
     outputPressure: 30.4
-  - type: Clothing
-    sprite: Objects/Tanks/anesthetic.rsi
+  # Moffstation - Start
+  - type: GasTankVisuals
+    visuals: NitrousOxide
+  # Moffstation - End
 
 - type: entity
   # it's a square so no rolling dough
