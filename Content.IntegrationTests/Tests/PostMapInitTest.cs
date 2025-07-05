@@ -95,6 +95,7 @@ namespace Content.IntegrationTests.Tests
             "Meta",
             "MW-Dock",
             "CS-Dust2",
+            "Beach"
             // Moffstation - End
         };
 
