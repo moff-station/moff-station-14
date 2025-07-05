@@ -7,20 +7,27 @@
   - type: Sprite
     sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
     state: icon
-  - type: MultiHandedItem
+  - type: Wieldable
+    useDelayOnWield: false
+  - type: MeleeRequiresWield
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 0.75
     angle: 0
     animation: WeaponArcThrust
+    attackRate: 0.6
     damage:
       types:
         Blunt: 30
         Structural: 100 # FBI OPEN UP
     soundHit:
       collection: MetalThud
+  - type: MeleeThrowOnHit
+    distance: 2
+    speed: 5
+  - type: UseDelay
+    delay: 1
   - type: Item
-    size: Giant
+    size: Ginormous
     sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
   - type: Clothing
     sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
@@ -30,10 +37,10 @@
   - type: Tool
     qualities:
       - Prying
-  - type: ToolTileCompatible
   - type: Prying
-  - type: UseDelay
-    delay: 1
   - type: HeldSpeedModifier # This shit HEAVY
     walkModifier: 0.9
-    sprintModifier: 0.7
+    sprintModifier: 0.9
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.5
+    sprintModifier: 0.5
