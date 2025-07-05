@@ -1,0 +1,46 @@
+- type: entity
+  name: battering ram
+  parent: [BaseItem, BaseSecurityContraband]
+  id: BatteringRam
+  description: When justice comes knocking, not even doors will save you.
+  components:
+  - type: Sprite
+    sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
+    state: icon
+  - type: Wieldable
+    useDelayOnWield: false
+  - type: MeleeRequiresWield
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    angle: 0
+    animation: WeaponArcThrust
+    attackRate: 0.6
+    damage:
+      types:
+        Blunt: 30
+        Structural: 100 # FBI OPEN UP
+    soundHit:
+      collection: MetalThud
+  - type: MeleeThrowOnHit
+    distance: 2
+    speed: 5
+  - type: UseDelay
+    delay: 1
+  - type: Item
+    size: Ginormous
+    sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
+  - type: Clothing
+    sprite: _MoffStation/Objects/Weapons/Melee/battering_ram.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+  - type: Tool
+    qualities:
+      - Prying
+  - type: Prying
+  - type: HeldSpeedModifier # This shit HEAVY
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.5
+    sprintModifier: 0.5
