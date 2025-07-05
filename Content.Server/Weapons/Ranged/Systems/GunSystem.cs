@@ -449,4 +449,12 @@ public sealed partial class GunSystem : SharedGunSystem
     }
 
     #endregion
+
+    // Moffstation - Start
+    public override void Update(float frameTime)
+    {
+        UpdateBallistic();
+        UpdateAutoFire();
+    }
+    // Moffstation - End
 }
