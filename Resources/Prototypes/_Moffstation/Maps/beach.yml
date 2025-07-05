@@ -2,7 +2,8 @@
   id: Beach
   mapName: 'Beach'
   mapPath: /Maps/_Moffstation/beach.yml
-  minPlayers: 5
+  # Beach is a force only station, should only be used for admemery. Do not put into rotation.
+  minPlayers: 0
   stations:
     Beach:
       stationProto: StandardNanotrasenStation
