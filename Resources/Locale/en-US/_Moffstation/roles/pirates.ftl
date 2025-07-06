@@ -1,4 +1,5 @@
-﻿roles-antag-pirate-captain-name = Pirate Captain
+﻿# Pirates
+roles-antag-pirate-captain-name = Pirate Captain
 roles-antag-pirate-captain-objective = Pillage, Plunder, and lead the pirate crew
 
 roles-antag-pirate-medic-name = Pirate Apothecary
@@ -33,3 +34,14 @@ roles-antag-pirate-assault-cyborg-name = Pirate Assault Cyborg
 ghost-role-information-pirate-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all other pirates. Obey the pirate captain's orders.
 
 role-subtype-pirate = Pirate
+
+# Vampries
+
+roles-antag-vampire-name = Vampire
+roles-antag-vampire-objective = Feed on the crew, stay quiet, instill fear.
+
+roles-antag-vampire-briefing = You're a creature of the night. Stay out of the light, protect your existence, and feed off the crew.
+
+vampire-existing = [color=Crimson]There was a [bold]Vampire[/bold]![/color]
+vampires-existing = [color=Crimson]There were {$total} [bold]Vampires[/bold]![/color]
+vampire-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])

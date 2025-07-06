@@ -1,0 +1,115 @@
+- type: entity
+  parent: BaseHumanOrgan
+  id: BaseVampireOrgan
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: FlavorProfile
+    flavors:
+    - flavor-ash-and-undeath
+
+- type: entity
+  parent: BaseVampireOrgan
+  id: OrganVampireStomach
+  name: stomach
+  description: A stomach which reeks of undeath and iron.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: stomach
+  - type: Item
+    size: Small
+    heldPrefix: stomach
+  - type: Metabolizer
+    maxReagents: 1
+    removeEmpty: true
+    metabolizerTypes: [ Vampire ] # We can't use bloodsucker because bloodsucker heals
+    groups:
+    - id: Blood
+  - type: SolutionContainerManager
+    solutions:
+      organ:
+        maxVol: 10
+        reagents:
+        - ReagentId: Ash
+          Quantity: 10
+      stomach:
+        maxVol: 100
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Ash
+          Quantity: 5
+  - type: Stomach
+    specialDigestible:
+      tags:
+      - Meat
+      - Bloodpack # TODO: doesn't actually do anything right now since bloodpacks don't give any nutrients
+    isSpecialDigestibleExclusive: true
+
+- type: entity
+  parent: BaseVampireOrgan
+  id: OrganVampireHeart
+  name: heart
+  description: "Best with a steak run through it."
+  components:
+  - type: Sprite
+    state: heart-off # It has stopped beating
+  - type: Metabolizer
+    maxReagents: 1
+    removeEmpty: true
+    metabolizerTypes: [ Vampire ]
+    groups:
+    - id: Blood
+  - type: Item
+    size: Small
+    heldPrefix: heart
+  - type: SolutionContainerManager
+    solutions:
+      organ:
+        maxVol: 10
+        reagents:
+        - ReagentId: Ash
+          Quantity: 10
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Ash
+          Quantity: 5
+
+- type: entity
+  parent: BaseVampireOrgan
+  id: OrganVampireLungs
+  name: lungs
+  description: "Delicate and brittle. Long unused, now they crumble like ash."
+  components:
+  - type: Sprite
+    layers:
+    - state: lung-l
+    - state: lung-r
+  - type: Item
+    size: Small
+    heldPrefix: lungs
+  - type: Lung
+  - type: Metabolizer
+    removeEmpty: false
+    solutionOnBody: false
+    solution: "Lung"
+    metabolizerTypes: [ Vampire ]
+    groups:
+    - id: Blood
+  - type: SolutionContainerManager
+    solutions:
+      organ:
+        maxVol: 10
+        reagents:
+        - ReagentId: Ash
+          Quantity: 10
+      Lung:
+        maxVol: 100.0
+        canReact: false
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Ash
+          Quantity: 5

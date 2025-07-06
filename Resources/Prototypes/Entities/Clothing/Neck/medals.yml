@@ -38,9 +38,9 @@
   description: Given for the best work in the cargo department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/cargomedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/cargomedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/cargomedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
@@ -53,9 +53,9 @@
   description: Given for the best work in the engineering department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/engineermedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/engineermedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/engineermedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
@@ -68,9 +68,9 @@
   description: Given for the best work in the medical department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/medicalmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/medicalmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/medicalmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
@@ -83,9 +83,9 @@
   description: Given for the best work in the science department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/sciencemedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/sciencemedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
@@ -98,9 +98,9 @@
   description: Given for the best work in the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/securitymedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/securitymedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/securitymedal.rsi # Moffstation - Swapped out medal sprites
   - type: Tag
     tags:
       - Medal
@@ -113,9 +113,9 @@
   description: Given for the best joke in the universe. HONK!
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Medals/clownmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: Clothing
-    sprite: Clothing/Neck/Medals/clownmedal.rsi
+    sprite: _Moffstation/Clothing/Neck/Medals/clownmedal.rsi # Moffstation - Swapped out medal sprites
   - type: StealTarget
     stealGroup: ClothingNeckClownmedal
   - type: Tag

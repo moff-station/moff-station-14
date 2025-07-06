@@ -84,6 +84,7 @@ namespace Content.IntegrationTests.Tests
             "Elkridge",
             "Relic",
             "dm01-entryway",
+            "Exo",
             // Moffstation - Start - Our maps
             "Waterjug",
             "Tram2",
@@ -91,7 +92,9 @@ namespace Content.IntegrationTests.Tests
             "Core",
             "Omega",
             "Loop",
-            "Meta"
+            "Meta",
+            "MW-Dock",
+            "CS-Dust2",
             // Moffstation - End
         };
 

@@ -547,6 +547,7 @@
 - type: entity
   name: CentComm official
   id: RandomHumanoidSpawnerCentcomOfficial
+  suffix: CCRole # Moffstation - (New CentComm Loadouts)
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -557,6 +558,7 @@
 - type: randomHumanoidSettings
   id: CentcomOfficial
   parent: EventHumanoidCentcomm
+  randomizeName: true # Moffstation - (New CentComm Loadouts)
   components:
     - type: GhostRole
       name: ghost-role-information-centcom-official-name

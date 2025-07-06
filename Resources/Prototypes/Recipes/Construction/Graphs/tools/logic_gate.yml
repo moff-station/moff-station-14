@@ -105,7 +105,7 @@
         doAfter: 2
       completed:
       - !type:SpawnPrototype
-        prototype: CapacitorStockPart #moffstation - Revert machine parts
+        prototype: MicroManipulatorStockPart
       - !type:SpawnPrototype
         prototype: CableApcStack1
         amount: 2

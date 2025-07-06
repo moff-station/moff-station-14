@@ -1,0 +1,174 @@
+﻿- type: entity
+  abstract: true
+  id: GasTankVisualsBase
+  components:
+  - type: Appearance
+  - type: GasTankVisuals
+    visuals: Default
+    speciesWithDifferentClothing:
+    - hamster
+    - pig
+    - possum
+    - kangaroo
+    - fox
+    - dog
+    - cat
+    - sloth
+    - puppy
+  - type: Sprite
+    sprite: Objects/Tanks/tank.rsi
+    layers:
+    - state: icon-tank
+      map: [ "enum.GasTankVisualsLayers.Tank" ]
+    - state: icon-stripe-low
+      map: [ "enum.GasTankVisualsLayers.StripeLow" ]
+    - state: icon-stripe-middle
+      map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
+    - state: icon-hardware
+  - type: Item
+    sprite: Objects/Tanks/tank.rsi
+    inhandVisuals:
+      Left:
+      - state: inhand-left-hardware
+      Right:
+      - state: inhand-right-hardware
+  - type: Clothing
+    sprite: Objects/Tanks/tank.rsi
+    clothingVisuals:
+      back:
+      - state: equipped-BACKPACK-hardware
+      # Standard tanks aren't equippable in the belt, but it's nicer to define this here and not use it than to have to
+      # redefine all of these mappings to add just the belt visuals for smaller tanks.
+      belt:
+      - state: equipped-BELT-hardware
+      suitstorage:
+      - state: equipped-SUITSTORAGE-hardware
+      suitstorage-hamster:
+      - state: equipped-SUITSTORAGE-hardware-hamster
+      suitstorage-pig:
+      - state: equipped-SUITSTORAGE-hardware-pig
+      suitstorage-possum:
+      - state: equipped-SUITSTORAGE-hardware-possum
+      suitstorage-kangaroo:
+      - state: equipped-SUITSTORAGE-hardware-kangaroo
+      suitstorage-fox:
+      - state: equipped-SUITSTORAGE-hardware-fox
+      suitstorage-dog:
+      - state: equipped-SUITSTORAGE-hardware-dog
+      suitstorage-cat:
+      - state: equipped-SUITSTORAGE-hardware-cat
+      suitstorage-sloth:
+      - state: equipped-SUITSTORAGE-hardware-sloth
+      suitstorage-puppy:
+      - state: equipped-SUITSTORAGE-hardware-puppy
+
+
+- type: entity
+  parent: GasTankRoundBase
+  abstract: true
+  id: EmergencyGasTankBase
+  components:
+  - type: Item
+    size: Small
+  - type: GasTank
+    air:
+      volume: 0.66
+      temperature: 293.15
+  - type: Clothing
+    sprite: Objects/Tanks/emergency.rsi
+    slots:
+    - Pocket
+    - Belt
+    - suitStorage
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 5
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Tag
+    tags:
+    - SurvivalBoxInsertable
+  # Moffstation - End
+
+# Gas Tank Visuals Protos
+
+- type: gasTankVisualStyle
+  id: Default
+  name: gastank-unspecified
+  colorValues:
+    tankColor: '#FFFF32FF'
+    lowerStripeColor: '#4C4C4CFF'
+
+- type: gasTankVisualStyle
+  id: Oxygen
+  name: gases-oxygen
+  colorValues:
+    tankColor: '#4CA8FFFF'
+    lowerStripeColor: White
+
+- type: gasTankVisualStyle
+  id: Nitrogen
+  name: gases-nitrogen
+  colorValues:
+    tankColor: '#E65C55FF'
+    lowerStripeColor: White
+
+- type: gasTankVisualStyle
+  id: NitrousOxide
+  name: gases-n2o
+  colorValues:
+    tankColor: '#E6E6E6FF'
+    middleStripeColor: '#E65C55FF'
+
+- type: gasTankVisualStyle
+  id: CarbonDioxide
+  name: gases-co2
+  colorValues:
+    tankColor: '#4F4F4FFF'
+    lowerStripeColor: '#AF0000FF'
+
+- type: gasTankVisualStyle
+  id: WaterVapor
+  name: gases-water-vapor
+  colorValues:
+    tankColor: '#4C4C4CFF'
+    lowerStripeColor: '#FFB2C0FF'
+
+- type: gasTankVisualStyle
+  id: Plasma
+  name: gases-plasma
+  colorValues:
+    tankColor: VividGamboge
+    middleStripeColor: '#FC32A0FF'
+
+- type: gasTankVisualStyle
+  id: Tritium
+  name: gases-tritium
+  colorValues:
+    tankColor: VividGamboge
+    middleStripeColor: '#17FF0BFF'
+
+- type: gasTankVisualStyle
+  id: Frezon
+  name: gases-frezon
+  colorValues:
+    tankColor: VividGamboge
+    middleStripeColor: '#47CDFFFF'
+
+- type: gasTankVisualStyle
+  id: Ammonia
+  name: gases-ammonia
+  colorValues:
+    tankColor: '#E6E6E6FF'
+    middleStripeColor: Green
+
+- type: gasTankVisualStyle
+  id: AirMix
+  name: gastank-airmix
+  colorValues:
+    tankColor: LightGray
+    lowerStripeColor: White
+

@@ -43,7 +43,7 @@
     - id: ClothingHeadsetAltCommand
     - id: ClothingOuterArmorCaptainCarapace
     - id: CommsComputerCircuitboard
-    - id: DoorRemoteCommand
+    - id: DoorRemoteCustom
     - id: MedalCase
     - id: NukeDisk
     - id: PinpointerNuclear
@@ -330,9 +330,7 @@
     children:
     # Moffstation - Begin Big Iron
     - id: WeaponRevolverBigIron
-    - id: SpeedLoaderBigIron
-    - id: MagazineBoxBigIronDisabler
-    - id: MagazineBoxBigIronLethal
+    - id: PowerCellBigIron
     # Moffstation - End
     - id: BookSpaceLaw
     - id: BoxEncryptionKeySecurity

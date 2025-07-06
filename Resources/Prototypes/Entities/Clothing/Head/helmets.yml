@@ -29,29 +29,41 @@
 
 #Basic Helmet (Security Helmet)
 - type: entity
-  # Moffstation - Begin (Foldable Security Helmet)
-  parent: [ClothingHeadHelmetArmoredBase, BaseFoldable, BaseSecurityContraband]
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
   id: ClothingHeadHelmetBasic
-  name: security helmet
+  name: security helmet # Moffstation - (New Security Helmets)
   description: Standard security gear. Protects the head from impacts, and comes with a detachable visor.
   components:
-  - type: Foldable
-    canFoldInsideContainer: true
-    unfoldVerbText: fold-attach-visor-verb
-    foldVerbText: fold-detach-visor-verb
-  - type: FoldableClothing
-    foldedEquippedPrefix: visorless
-    foldedHeldPrefix: visorless
+  # Moffstation - Begin (New Security Helmets) - all changes to this prototype can be overwritten by upstream once #38108 on upstream is merged.
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
     layers:
-    - state: icon
-      map: [ "unfoldedLayer" ]
-    - state: visorless-icon
-      map: [ "foldedLayer" ]
-      visible: true
+    - state: lowered-icon
+    - state: raised-icon
+      visible: false
+      map: [ "visor" ]
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
+    equippedPrefix: raised
+  - type: Item
+    heldPrefix: raised
+  - type: ToggleableVisuals
+    spriteLayer: visor
+    clothingVisuals:
+      head:
+      - state: lowered-equipped-HELMET
+      head-vox:
+      - state: lowered-equipped-HELMET-vox
+    inhandVisuals:
+      left:
+      - state: lowered-inhand-left
+      right:
+      - state: lowered-inhand-right
+  - type: Appearance
+  - type: ItemToggle
+    predictable: false
+    verbToggleOn: item-toggle-lower-visor
+    verbToggleOff: item-toggle-raise-visor
   # Moffstation - End
   - type: Tag
     tags:
@@ -329,6 +341,7 @@
     tags:
     - WhitelistChameleon
     - FireHelmet
+    - CorgiWearable
   - type: HideLayerClothing
     layers:
       Hair: HEAD
@@ -487,7 +500,7 @@
 
 #Justice Helmet
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband] # Moffstation - (Foldable Security Helmet)
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband] # Moffstation - (Foldable Security Helmet) - Changes to this prototype can be reverted once #38108 from upstream is merged into moff.
   id: ClothingHeadHelmetJustice
   name: justice helm
   description: Advanced security gear. Protects the station from ne'er-do-wells.

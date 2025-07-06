@@ -1,0 +1,29 @@
+﻿- type: gameMap
+  id: MW-Dock
+  mapName: MW Dock
+  mapPath: /Maps/_Moffstation/Nonstations/Dock.yml
+  minPlayers: 0
+  stations:
+    MW-Dock:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "MW Dock"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]
+
+- type: gameMap
+  id: CS-Dust2
+  mapName: CS Dust 2
+  mapPath: /Maps/_Moffstation/Nonstations/Dust2.yml
+  minPlayers: 0
+  stations:
+    CS-Dust2:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "CS Dust"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]

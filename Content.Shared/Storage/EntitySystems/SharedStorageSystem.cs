@@ -1,6 +1,8 @@
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._Moffstation.Storage; // Moffstation
+using Content.Shared._Moffstation.Storage.EntitySystems; // Moffstation
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -72,6 +74,10 @@ public abstract class SharedStorageSystem : EntitySystem
     [Dependency] protected readonly SharedUserInterfaceSystem UI = default!;
     [Dependency] private   readonly TagSystem _tag = default!;
     [Dependency] protected readonly UseDelaySystem UseDelay = default!;
+    // Moffstation - Start
+    [Dependency] private   readonly AreaPickupSystem _areaPickup = default!;
+    [Dependency] private   readonly QuickPickupSystem _quickPickup = default!;
+    // Moffstation - End
 
     private EntityQuery<ItemComponent> _itemQuery;
     private EntityQuery<StackComponent> _stackQuery;
@@ -147,7 +153,7 @@ public abstract class SharedStorageSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, InteractUsingEvent>(OnInteractUsing, after: new[] { typeof(ItemSlotsSystem) });
         SubscribeLocalEvent<StorageComponent, ActivateInWorldEvent>(OnActivate);
         SubscribeLocalEvent<StorageComponent, OpenStorageImplantEvent>(OnImplantActivate);
-        SubscribeLocalEvent<StorageComponent, AfterInteractEvent>(AfterInteract);
+        // SubscribeLocalEvent<StorageComponent, AfterInteractEvent>(AfterInteract); // Moffstation
         SubscribeLocalEvent<StorageComponent, DestructionEventArgs>(OnDestroy);
         SubscribeLocalEvent<StorageComponent, BoundUserInterfaceMessageAttempt>(OnBoundUIAttempt);
         SubscribeLocalEvent<StorageComponent, BoundUIOpenedEvent>(OnBoundUIOpen);
@@ -155,8 +161,13 @@ public abstract class SharedStorageSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<StorageComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
         SubscribeLocalEvent<StorageComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
-        SubscribeLocalEvent<StorageComponent, AreaPickupDoAfterEvent>(OnDoAfter);
+        // SubscribeLocalEvent<StorageComponent, AreaPickupDoAfterEvent>(OnDoAfter); // Moffstation
         SubscribeLocalEvent<StorageComponent, GotReclaimedEvent>(OnReclaimed);
+        // Moffstation - Start
+        SubscribeLocalEvent<StorageComponent, QuickPickupEvent>(OnQuickPickup);
+        SubscribeLocalEvent<StorageComponent, BeforeAreaPickupEvent>(OnBeforeAreaPickup);
+        SubscribeLocalEvent<StorageComponent, AreaPickupDoAfterEvent>(OnAreaPickupDoAfter);
+        // Moffstation - End
 
         SubscribeLocalEvent<MetaDataComponent, StackCountChangedEvent>(OnStackCountChanged);
 
@@ -213,7 +224,7 @@ public abstract class SharedStorageSystem : EntitySystem
 
     private void OnMapInit(Entity<StorageComponent> entity, ref MapInitEvent args)
     {
-        UseDelay.SetLength(entity.Owner, entity.Comp.QuickInsertCooldown, QuickInsertUseDelayID);
+        // UseDelay.SetLength(entity.Owner, entity.Comp.QuickInsertCooldown, QuickInsertUseDelayID); // Moffstation
         UseDelay.SetLength(entity.Owner, entity.Comp.OpenUiCooldown, OpenUiUseDelayID);
     }
 
@@ -512,6 +523,7 @@ public abstract class SharedStorageSystem : EntitySystem
         args.Handled = true;
     }
 
+    /* Moffstation - Start - Quick and Area pickup behavior moved to independent components.
     /// <summary>
     /// Allows a user to pick up entities by clicking them, or pick up all entities in a certain radius
     /// around a click.
@@ -664,6 +676,60 @@ public abstract class SharedStorageSystem : EntitySystem
 
         args.Handled = true;
     }
+    */
+
+    private void OnQuickPickup(Entity<StorageComponent> entity, ref QuickPickupEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        // Copy event fields because the lambda doesn't like capturing `ref` values.
+        var user = args.User;
+        var pickedUp = args.PickedUp;
+        args.Handled = _quickPickup.TryDoQuickPickup(
+            args,
+            () => PlayerInsertEntityInWorld(entity.AsNullable(), user, pickedUp)
+        );
+    }
+
+    private void OnBeforeAreaPickup(Entity<StorageComponent> entity, ref BeforeAreaPickupEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = _areaPickup.DoBeforeAreaPickup(
+            ref args,
+            insertedEntity => CanInsert(entity, insertedEntity, out _, entity, insertedEntity)
+        );
+    }
+
+    private void OnAreaPickupDoAfter(Entity<StorageComponent> entity, ref AreaPickupDoAfterEvent args)
+    {
+        if (args.Handled ||
+            args.Cancelled)
+            return;
+
+        // Copy event fields because the lambda doesn't like capturing `ref` values.
+        var user = args.User;
+
+        // Don't play the insertion sound if the user has the silent tag.
+        var insertionSound = _prototype.TryIndex(entity.Comp.SilentStorageUserTag, out var silentTag) && _tag.HasTag(args.User, silentTag)
+            ? null
+            : entity.Comp.StorageInsertSound;
+
+        args.Handled = _areaPickup.TryDoAreaPickup(
+            ref args,
+            entity.Owner,
+            insertionSound,
+            entityToPickUp => PlayerInsertEntityInWorld(
+                entity.AsNullable(),
+                user,
+                entityToPickUp,
+                playSound: false
+            )
+        );
+    }
+    // Moffsation - End
 
     private void OnReclaimed(EntityUid uid, StorageComponent storageComp, GotReclaimedEvent args)
     {
@@ -689,7 +755,7 @@ public abstract class SharedStorageSystem : EntitySystem
             return;
 
         // If the user's active hand is empty, try pick up the item.
-        if (player.Comp.ActiveHandEntity == null)
+        if (!_sharedHandsSystem.TryGetActiveItem(player.AsNullable(), out var activeItem))
         {
             _adminLog.Add(
                 LogType.Storage,
@@ -709,11 +775,11 @@ public abstract class SharedStorageSystem : EntitySystem
         _adminLog.Add(
             LogType.Storage,
             LogImpact.Low,
-            $"{ToPrettyString(player):player} is interacting with {ToPrettyString(item):item} while it is stored in {ToPrettyString(storage):storage} using {ToPrettyString(player.Comp.ActiveHandEntity):used}");
+            $"{ToPrettyString(player):player} is interacting with {ToPrettyString(item):item} while it is stored in {ToPrettyString(storage):storage} using {ToPrettyString(activeItem):used}");
 
         // Else, interact using the held item
         if (_interactionSystem.InteractUsing(player,
-                player.Comp.ActiveHandEntity.Value,
+                activeItem.Value,
                 item,
                 Transform(item).Coordinates,
                 checkCanInteract: false))
@@ -1208,10 +1274,10 @@ public abstract class SharedStorageSystem : EntitySystem
     {
         if (!Resolve(ent.Owner, ref ent.Comp)
             || !Resolve(player.Owner, ref player.Comp)
-            || player.Comp.ActiveHandEntity == null)
+            || !_sharedHandsSystem.TryGetActiveItem(player, out var activeItem))
             return false;
 
-        var toInsert = player.Comp.ActiveHandEntity;
+        var toInsert = activeItem;
 
         if (!CanInsert(ent, toInsert.Value, out var reason, ent.Comp))
         {
@@ -1219,7 +1285,7 @@ public abstract class SharedStorageSystem : EntitySystem
             return false;
         }
 
-        if (!_sharedHandsSystem.CanDrop(player, toInsert.Value, player.Comp))
+        if (!_sharedHandsSystem.CanDrop(player, toInsert.Value))
         {
             _popupSystem.PopupClient(Loc.GetString("comp-storage-cant-drop", ("entity", toInsert.Value)), ent, player);
             return false;
@@ -1933,7 +1999,7 @@ public abstract class SharedStorageSystem : EntitySystem
 
         if (held)
         {
-            if (!_sharedHandsSystem.IsHolding(player, itemUid, out _))
+            if (!_sharedHandsSystem.IsHolding(player.AsNullable(), itemUid, out _))
                 return false;
         }
         else

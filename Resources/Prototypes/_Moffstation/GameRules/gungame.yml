@@ -1,0 +1,152 @@
+﻿- type: entity
+  id: GunGame
+  parent: BaseGameRule
+  components:
+  - type: GunGameRule
+    slotTryOrder:
+    - hand
+    - pocket1
+    - pocket2
+    - back
+    rewardSpawnsQueue:
+    - !type:AllSelector # Dual Atredies
+      children:
+      - id: WeaponSubMachineGunAtreides
+      - id: WeaponSubMachineGunAtreides
+      - id: MagazinePistolSubMachineGun
+    - id: WeaponPulseCarbine # DeathSquad
+    - !type:AllSelector # HoS
+      children:
+      - id: WeaponSubMachineGunWt550
+      - id: MagazinePistolSubMachineGunTopMounted
+      - id: MagazinePistolSubMachineGunTopMounted
+      - id: TelescopicShield
+    - !type:AllSelector # Syndie Borg
+      children:
+      - id: EnergySwordDouble
+      - id: WeaponLightMachineGunL6C
+    - !type:AllSelector
+      children:
+      - id: WeaponSubMachineGunC20r
+      - id: EnergySword
+      - id: MagazinePistolSubMachineGun
+    - !type:AllSelector
+      children:
+      - id: WeaponShotgunBulldog
+      - id: MagazineShotgun
+      - id: MagazineShotgunSlug
+    - !type:AllSelector
+      children:
+      - id: WeaponSniperHristov
+      - id: MagazineBoxAntiMateriel
+    - !type:AllSelector # Deathsquad Sidearms
+      children:
+      - id: WeaponRevolverMateba
+      - id: WeaponPulsePistol
+      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoaderMagnumAP
+    - !type:AllSelector # Warden
+      children:
+      - id: WeaponShotgunEnforcer
+      - id: BoxLethalshot
+      - id: BoxShotgunSlug
+    - !type:AllSelector # Sec Gear
+      children:
+      - id: WeaponSubMachineGunDrozd
+      - id: MagazinePistolSubMachineGun
+      - id: MagazinePistolSubMachineGun
+      - id: WeaponLaserCarbine
+    - !type:AllSelector
+      children:
+      - id: WeaponShotgunKammerer
+      - id: BoxLethalshot
+    - !type:AllSelector
+      children:
+      - id: WeaponRifleEstoc
+      - id: MagazineRifle
+      - id: MagazineRifle
+    - !type:AllSelector # CC Rep
+      children:
+      - id: WeaponPistolN1984
+      - id: MagazineMagnum
+      - id: MagazineMagnum
+      - id: PenCentcom
+    - !type:AllSelector # Captain
+      children:
+      - id: WeaponAntiqueLaser
+      - id: CaptainSabre
+    - !type:AllSelector
+      children:
+      - id: WeaponRifleLecter
+      - id: MagazineRifle
+      - id: MagazineRifle
+    - !type:AllSelector # Ninja
+      children:
+      - id: EnergyKatana
+      - id: ThrowingStarNinja
+      - id: ThrowingStarNinja
+    - !type:AllSelector # Warops Crew
+      children:
+      - id: WeaponXrayCannon
+      - id: Truncheon
+    - !type:AllSelector
+      children:
+      - id: WeaponRevolverPythonAP
+      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoaderMagnumAP
+    - !type:AllSelector
+      children:
+      - id: WeaponPistolViper
+      - id: WeaponPistolViper
+      - id: MagazinePistolHighCapacity
+      - id: MagazinePistolHighCapacity
+    - id: EnergySword
+    - !type:AllSelector
+      children:
+      - id: WeaponPistolCobra
+      - id: MagazinePistolCaselessRifle
+      - id: MagazinePistolCaselessRifle
+      - id: ThrowingKnivesKit
+    - !type:AllSelector # Green sec
+      children:
+      - id: WeaponPistolMk58
+      - id: MagazinePistol
+      - id: MagazinePistol
+      - id: CombatKnife
+    - !type:AllSelector # Salvage
+      children:
+      - id: WeaponProtoKineticAccelerator #PKA with two random mods
+      - !type:GroupSelector
+        rolls: 2
+        children:
+        - id: PKAUpgradeDamage
+        - id: PKAUpgradeFireRate
+        - id: PKAUpgradeRange
+      - id: SurvivalKnife
+    - !type:AllSelector # Bartender
+      children:
+      - id: WeaponShotgunSawn
+      - id: BoxLethalshot
+      - id: BoxShotgunSlug
+      - id: DrinkBottleBeer
+    - id: ArmBlade
+    - !type:AllSelector # HoP
+      children:
+      - id: WeaponRevolverDeckard
+      - id: SpeedLoaderMagnum
+      - id: SpeedLoaderMagnum
+      - id: BriefcaseBrownFilled
+    - id: WeaponCrusherGlaive
+    - id: FireAxe
+    - !type:AllSelector # Scientist
+      children:
+      - id: WeaponPistolCHIMPUpgraded
+      - id: SpearUranium
+      - id: SpearUranium
+    - id: ClothingHandsKnuckleDustersQM
+    - id: KitchenKnife
+    - id: ToolboxGolden
+  - type: KillCalloutRule
+  - type: RespawnDeadRule
+  - type: RespawnTracker
+    respawnDelay: 5
