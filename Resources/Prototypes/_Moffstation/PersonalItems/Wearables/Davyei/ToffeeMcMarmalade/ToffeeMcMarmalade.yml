@@ -1,0 +1,26 @@
+﻿# Player: Davyei / Character: Toffee McMarmalade
+
+- type: entity
+  parent: ClothingMaskClownBase
+  id: PersonalItemToffeeMask
+  name: Unkempt Clown mask
+  description: A Clown mask adorned with a large ungroomed wig & big red clown nose.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Davyei/Toffee McMarmalade/ToffeeMcMarmalade.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Davyei/Toffee McMarmalade/ToffeeMcMarmalade.rsi
+  - type: DetailExaminable
+    content: The mask has a small latin message inscribed on the inside, 'Ecclesia Ritus Theatralis Mirthica'.
+
+- type: loadout
+  id: PersonalItemToffeeMask
+  equipment:
+    mask: PersonalItemToffeeMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Toffee McMarmalade
+    jobs:
+    - JobClown
