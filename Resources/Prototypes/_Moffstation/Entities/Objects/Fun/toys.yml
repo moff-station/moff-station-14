@@ -1,0 +1,40 @@
+- type: entity
+  parent: BasePlushie
+  id: PlushieBorg
+  name: cyborg plushie
+  description: A cute stuffed toy that resembles a cyborg. Doesn't seem to state their laws however.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/toys.rsi
+    state: plushie_borg
+  - type: Item
+    heldPrefix: borg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Effects/Cargo/beep.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/Cargo/beep.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Effects/Cargo/beep.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/Cargo/beep.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Effects/Cargo/beep.ogg
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/Effects/Cargo/beep.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Effects/Cargo/beep.ogg
+  - type: Clothing
+    quickEquip: false
+    sprite: _Moffstation/Objects/Fun/toys.rsi
+    equippedPrefix: borg
+    slots:
+    - HEAD

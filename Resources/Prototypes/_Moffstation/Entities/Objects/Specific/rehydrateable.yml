@@ -1,0 +1,17 @@
+- type: entity
+  parent: MothroachCube
+  id: MothroachCubeRosy
+  suffix: Rosy
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobMothroachRosy
+
+- type: entity
+  parent: MothroachCube
+  id: MothroachCubeDeathshead
+  suffix: Deathshead
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobMothroachDeathshead

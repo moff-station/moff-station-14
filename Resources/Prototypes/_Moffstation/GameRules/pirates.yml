@@ -3,9 +3,11 @@
   parent: BaseGameRule
   id: BasePiratesRule
   components:
-  #  - type: PiratesRule
+  - type: PiratesRule
+#  Station stuff included to get pirate economy working
+
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/pirate.yml
+    gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
@@ -28,7 +30,7 @@
       - JobPirateCaptain
       briefing:
         text: pirate-role-greeting
-        color: Red
+        color: "#a15608"
         sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
@@ -49,7 +51,7 @@
       - JobPirateMedic
       briefing:
         text: pirate-role-greeting
-        color: Red
+        color: "#a15608"
         sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata
@@ -73,7 +75,7 @@
       - JobPirateCrew
       briefing:
         text: pirate-role-greeting
-        color: Red
+        color: "#a15608"
         sound: "/Audio/Ambience/Antag/pirate_start.ogg"
       components:
       - type: RandomMetadata

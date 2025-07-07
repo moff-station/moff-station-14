@@ -2,13 +2,15 @@
   id: CratePirateChestCaptain
   name: captains pirate chest
   suffix: Filled
-  parent: CratePirate
+  parent: CratePirateChestSecure # Moffstation - Change to secure chest
   components:
   - type: StorageFill
     contents:
       - id: ClothingNeckCloakPirateCap
-      - id: EnergyCutlass
-      - id: MicroBombImplanter
+      # Moffstation - Remove captain chest stuff
+#      - id: EnergyCutlass
+#      - id: MicroBombImplanter
+      # Moffstation - End
 
 - type: entity
   id: CratePirateChest

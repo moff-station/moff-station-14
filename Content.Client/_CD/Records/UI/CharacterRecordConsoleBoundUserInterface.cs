@@ -1,3 +1,4 @@
+using Content.Client.CriminalRecords;
 using Content.Shared.CriminalRecords.Components;
 using Content.Shared.CriminalRecords;
 using Content.Shared.StationRecords;
@@ -10,6 +11,7 @@ namespace Content.Client._CD.Records.UI;
 public sealed class CharacterRecordConsoleBoundUserInterface(EntityUid owner, Enum key) : BoundUserInterface(owner, key)
 {
     [ViewVariables] private CharacterRecordViewer? _window;
+    private CrimeHistoryWindow? _historyWindow;
 
     protected override void UpdateState(BoundUserInterfaceState baseState)
     {
@@ -30,7 +32,7 @@ public sealed class CharacterRecordConsoleBoundUserInterface(EntityUid owner, En
     {
         base.Open();
 
-        _window = new();
+        _window = new CharacterRecordViewer(Owner);
         _window.OnClose += Close;
         _window.OnListingItemSelected += meta =>
         {
@@ -57,11 +59,25 @@ public sealed class CharacterRecordConsoleBoundUserInterface(EntityUid owner, En
                 ? new CharacterRecordsConsoleFilterMsg(null)
                 : new CharacterRecordsConsoleFilterMsg(new StationRecordsFilter(ty, txt)));
         };
+        _window.OnStatusFilterPressed += statusFilter =>
+            SendMessage(new CriminalRecordSetStatusFilter(statusFilter));
 
         _window.OnSetSecurityStatus += (status, reason) =>
         {
             SendMessage(new CriminalRecordChangeStatus(status, reason));
         };
+
+        if (EntMan.TryGetComponent<CriminalRecordsConsoleComponent>(Owner, out var criminalRecords))
+        {
+            _window.OnHistoryUpdated += UpdateHistory;
+            _window.OnHistoryClosed += () => _historyWindow?.Close();
+
+            _historyWindow = new(criminalRecords.MaxStringLength);
+            _historyWindow.OnAddHistory += line => SendMessage(new CriminalRecordAddHistory(line));
+            _historyWindow.OnDeleteHistory += index => SendMessage(new CriminalRecordDeleteHistory(index));
+
+            _historyWindow.Close(); // leave closed until user opens it
+        }
 
         _window.OpenCentered();
     }
@@ -71,5 +87,16 @@ public sealed class CharacterRecordConsoleBoundUserInterface(EntityUid owner, En
         base.Dispose(disposing);
 
         _window?.Close();
+    }
+
+    /// <summary>
+    /// Updates or opens a new history window.
+    /// </summary>
+    private void UpdateHistory(CriminalRecord record, bool access, bool open)
+    {
+        _historyWindow!.UpdateHistory(record, access);
+
+        if (open)
+            _historyWindow.OpenCentered();
     }
 }

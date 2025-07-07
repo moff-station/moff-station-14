@@ -5,13 +5,77 @@
   priority: 1
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffRules.xml"
   children:
-  - MoffMetashieldChanges
+  - MoffMetashield
+  - MoffSpaceLawChanges
+  - MoffOOC
 
 - type: guideEntry
-  id: MoffMetashieldChanges
+  id: MoffOOC
+  name: moff-ooc-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR1OOC.xml"
+
+- type: guideEntry
+  id: MoffMetagaming
+  name: moff-metagaming-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR2Metagaming.xml"
+  children:
+  - MoffMetacomming
+
+- type: guideEntry
+  id: MoffMetacomming
+  name: moff-metacomming-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffMetacomming.xml"
+
+- type: guideEntry
+  id: MoffPowergaming
+  name: moff-powergaming-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR3Powergaming.xml"
+
+- type: guideEntry
+  id: MoffRP
+  name: moff-rp-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR4RP.xml"
+
+- type: guideEntry
+  id: MoffDeathAndLife
+  name: moff-death-and-life-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR5DeathAndLife.xml"
+
+- type: guideEntry
+  id: MoffEOR
+  name: moff-eor-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR6EOR.xml"
+
+- type: guideEntry
+  id: MoffCrew
+  name: moff-crew-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR7Crew.xml"
+
+- type: guideEntry
+  id: MoffAntags
+  name: moff-antag-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR8Antags.xml"
+
+- type: guideEntry
+  id: MoffPrisoners
+  name: moff-prisoner-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR9Prisoners.xml"
+
+- type: guideEntry
+  id: MoffMetashield
   name: metashield-changes
   ruleEntry: true
-  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffMetashieldChanges.xml"
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffMetashield.xml"
 
 - type: guideEntry
   id: MoffSpaceLawChanges

@@ -30,6 +30,10 @@
     layers:
       - state: boxwidetoy
       - state: shelltoy
+  # Moffstation - Start
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End
 
 - type: entity
   parent: BaseMagazineBoxMagnum

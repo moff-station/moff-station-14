@@ -15,21 +15,18 @@
   parent: BasePartRecipe
   id: BaseStockPartRecipe
   completetime: 1
-  materials:
-    Steel: 50
-    Plastic: 50
-
-- type: latheRecipe
-  parent: BaseStockPartRecipe
-  id: CapacitorStockPart
-  result: CapacitorStockPart
-
-- type: latheRecipe
-  parent: BaseStockPartRecipe
-  id: MatterBinStockPart
-  result: MatterBinStockPart
+#Moffstation - Revert Machine Parts - Start
+#  materials:
+#    Steel: 50
+#    Plastic: 50
+#Moffstation - Revert Machine Parts - End
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
   id: MicroManipulatorStockPart
   result: MicroManipulatorStockPart
+#Moffstation - Revert Machine Parts - Start
+  materials:
+    Steel: 50
+    Plastic: 50
+#Moffstation - Revert Machine Parts - End

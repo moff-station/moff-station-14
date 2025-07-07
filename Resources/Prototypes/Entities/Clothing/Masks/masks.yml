@@ -4,6 +4,10 @@
   name: gas mask
   description: A face-covering mask that can be connected to an air supply.
   components:
+  # Moffstation - Begin (Survival Box Improvements)
+  - type: Item
+    size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/gas.rsi
   - type: Clothing
@@ -13,6 +17,7 @@
   - type: IdentityBlocker
   - type: Tag
     tags:
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
     - HamsterWearable
     - WhitelistChameleon
   - type: HideLayerClothing
@@ -26,12 +31,14 @@
   name: security gas mask
   description: A standard issue Security gas mask.
   components:
-  - type: Item
-    size: Tiny
+  # Moffstation - Begin (Survival Box Improvements)
+#  - type: Item
+#      size: Tiny
+  # Moffstation - End
   - type: Sprite
     sprite: Clothing/Mask/gassecurity.rsi
   - type: Clothing
-    sprite: Clothing/Mask/gassecurity.rsi
+    sprite: _Moffstation/Clothing/Mask/gassecurity.rsi # Moffstation - (New Security Helmets) - The new military helmet leaves a single pixel blank which the mask also doesn't fill, so we need to use our own with that pixel filled in.
   - type: Armor
     modifiers:
       coefficients:
@@ -137,6 +144,7 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -180,6 +188,7 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: PhysicalComposition
     materialComposition:
       Steel: 50
@@ -217,6 +226,7 @@
     - ClownMask
     - HamsterWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Snout
@@ -284,6 +294,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Snout
@@ -374,10 +385,13 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
     - Snout
+    - HeadTop
+    - HeadSide
     hideOnToggle: true
   - type: Armor
     modifiers:
@@ -418,6 +432,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
   - type: HideLayerClothing
     slots:
     - Hair
@@ -443,6 +458,11 @@
     sprite: Clothing/Mask/squadron.rsi
   - type: Clothing
     sprite: Clothing/Mask/squadron.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
   - type: Armor
     modifiers:
       coefficients:
@@ -638,6 +658,24 @@
     sprite: Clothing/Mask/scaredmime.rsi
 
 - type: entity
+  parent: [ClothingMaskMime, BaseSecurityContraband]
+  id: ClothingMaskMimeSecurity
+  name: security mime mask
+  description: You have the right to remain silent.
+  components:
+  - type: Sprite
+    sprite: Clothing/Mask/mime_security.rsi
+  - type: Clothing
+    sprite: Clothing/Mask/mime_security.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+
+- type: entity
   parent: ClothingMaskBase
   id: ClothingMaskItalianMoustache
   name: italian moustache
@@ -691,6 +729,7 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+    - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
 
 # Entity tables
 - type: entityTable

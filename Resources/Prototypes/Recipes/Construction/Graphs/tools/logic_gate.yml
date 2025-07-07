@@ -40,14 +40,21 @@
         icon:
           sprite: Objects/Tools/multitool.rsi
           state: icon
-        name: a multitool
+        name: construction-graph-tag-multitool
       - material: Cable
         amount: 2
         doAfter: 1
     - to: memory_cell
       steps:
+#moffstation - Revert machine parts - Start
+      - tag: CapacitorStockPart
+        icon:
+          sprite: Objects/Misc/stock_parts.rsi
+          state: capacitor
+        name: construction-graph-tag-capacitor
       - material: Capacitor
         amount: 1
+#moffstation - Revert machine parts - End
       - material: Cable
         amount: 2
         doAfter: 1
@@ -98,7 +105,7 @@
         doAfter: 2
       completed:
       - !type:SpawnPrototype
-        prototype: CapacitorStockPart
+        prototype: MicroManipulatorStockPart
       - !type:SpawnPrototype
         prototype: CableApcStack1
         amount: 2

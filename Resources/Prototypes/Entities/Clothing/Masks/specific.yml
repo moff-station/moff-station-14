@@ -6,7 +6,10 @@
   suffix: Chameleon
   components:
     - type: Tag
-      tags: [] # ignore "WhitelistChameleon" tag
+      # Moffstation - Begin (Survival Box Improvements)
+      tags:
+      - SurvivalBoxInsertable
+      # Moffstation - End
     - type: Sprite
       sprite: Clothing/Mask/gas.rsi
     - type: Clothing

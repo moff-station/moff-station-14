@@ -30,12 +30,21 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
                 subr.Event<BoundUIOpenedEvent>((uid, component, _) => UpdateUi(uid, component));
                 subr.Event<CharacterRecordConsoleSelectMsg>(OnKeySelect);
                 subr.Event<CharacterRecordsConsoleFilterMsg>(OnFilterApplied);
+                subr.Event<CriminalRecordSetStatusFilter>(OnSecurityFilterApplied);
+                subr.Event<CriminalRecordAddHistory>(OnAddCriminalHistory);
             });
     }
 
     private void OnFilterApplied(Entity<CharacterRecordConsoleComponent> ent, ref CharacterRecordsConsoleFilterMsg msg)
     {
         ent.Comp.Filter = msg.Filter;
+        UpdateUi(ent);
+    }
+
+    private void OnSecurityFilterApplied(Entity<CharacterRecordConsoleComponent> ent,
+        ref CriminalRecordSetStatusFilter msg)
+    {
+        ent.Comp.SecurityStatusFilter = msg.FilterStatus;
         UpdateUi(ent);
     }
 
@@ -54,6 +63,11 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
 
         ent.Comp.SelectedIndex = msg.CharacterRecordKey;
         UpdateUi(ent);
+    }
+
+    private void OnAddCriminalHistory(Entity<CharacterRecordConsoleComponent> ent, ref CriminalRecordAddHistory msg)
+    {
+        UpdateUi(ent, ent);
     }
 
     private void UpdateUi(EntityUid entity, CharacterRecordConsoleComponent? console = null)
@@ -87,6 +101,13 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
                     continue;
             }
 
+            if (console.SecurityStatusFilter is {} secFilter &&
+                station is {} s &&
+                IsSkippedBySecurityStatus(secFilter, r, s))
+            {
+                continue;
+            }
+
             if (names.ContainsKey(i))
             {
                 Log.Error(
@@ -101,7 +122,7 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
             console.SelectedIndex == null || !characterRecords.TryGetValue(console.SelectedIndex!.Value, out var value)
                 ? null
                 : value;
-        (SecurityStatus, string?)? securityStatus = null;
+        CriminalRecord? criminalRecord = null;
 
         // If we need the character's security status, gather it from the criminal records
         if ((console.ConsoleType == RecordConsoleType.Admin ||
@@ -109,8 +130,7 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
             && record?.StationRecordsKey != null)
         {
             var key = new StationRecordKey(record.StationRecordsKey.Value, station.Value);
-            if (_records.TryGetRecord<CriminalRecord>(key, out var entry))
-                securityStatus = (entry.Status, entry.Reason);
+            _records.TryGetRecord(key, out criminalRecord);
         }
 
         SendState(entity,
@@ -121,7 +141,7 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
                 SelectedIndex = console.SelectedIndex,
                 SelectedRecord = record,
                 Filter = console.Filter,
-                SelectedSecurityStatus = securityStatus,
+                SelectedCriminalRecord = criminalRecord,
             });
     }
 
@@ -154,6 +174,21 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
                                                 && IsFilterWithSomeCodeValue(record.DNA, filterLowerCaseValue),
             _ => throw new ArgumentOutOfRangeException(nameof(filter), "Invalid Character Record filter type"),
         };
+    }
+
+    private bool IsSkippedBySecurityStatus(SecurityStatus filter, FullCharacterRecords record, EntityUid station)
+    {
+        // "None" filter is "Show everything"
+        if (filter == SecurityStatus.None)
+            return false;
+
+        var criminalStatusOfRecord = record.StationRecordsKey is { } key &&
+                                     _records.TryGetRecord<CriminalRecord>(new StationRecordKey(key, station),
+                                         out var criminalRec)
+            ? criminalRec.Status
+            : SecurityStatus.None;
+
+        return filter != criminalStatusOfRecord;
     }
 
     private static bool IsFilterWithSomeCodeValue(string value, string filter)

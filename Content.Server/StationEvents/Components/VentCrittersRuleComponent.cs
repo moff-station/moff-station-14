@@ -3,8 +3,10 @@ using Content.Shared.Storage;
 
 namespace Content.Server.StationEvents.Components;
 
-[RegisterComponent, Access(typeof(VentCrittersRule))]
-public sealed partial class VentCrittersRuleComponent : Component
+// Moffstation - Start - Rename to use upstream functionality
+[RegisterComponent, Access(typeof(UpstreamVentCrittersRule))]
+public sealed partial class UpstreamVentCrittersRuleComponent : Component
+// Moffstation - End
 {
     [DataField("entries")]
     public List<EntitySpawnEntry> Entries = new();

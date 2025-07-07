@@ -1,0 +1,34 @@
+- type: entity
+  id: CircuitImprinterLawMatrix
+  parent: BaseLatheLube
+  name: law matrix imprinter
+  description: Prints law boards for silicons.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/circuit_imprinter_law_matrix.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: CircuitImprinterLawMatrixMachineCircuitboard
+  - type: Lathe
+    producingSound: /Audio/Machines/circuitprinter.ogg
+    idleState: icon
+    runningState: building
+    staticPacks:
+    - DefaultAILawBoardsStatic
+    - MoffStationAILawBoardsStatic
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+  - type: OreSiloClient
+  - type: RequireProjectileTarget

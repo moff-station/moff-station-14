@@ -52,7 +52,7 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
             subs.Event<CriminalRecordSetStatusFilter>(OnStatusFilterPressed);
         }); */
 
-        // CD: also subscribe to status changes from the CD records console
+        // Moffstation - Start - CD: also subscribe to status changes from the CD records console
         Subs.BuiEvents<CriminalRecordsConsoleComponent>(CharacterRecordConsoleKey.Key, subs =>
         {
             subs.Event<SelectStationRecord>(OnKeySelected);
@@ -61,7 +61,10 @@ public sealed class CriminalRecordsConsoleSystem : SharedCriminalRecordsConsoleS
                 OnChangeStatus(ent, ref args);
                 RaiseLocalEvent(ent, new CharacterRecordsModifiedEvent());
             });
+            subs.Event<CriminalRecordAddHistory>(OnAddHistory);
+            subs.Event<CriminalRecordDeleteHistory>(OnDeleteHistory);
         });
+        // Moffstation - End
     }
 
     private void UpdateUserInterface<T>(Entity<CriminalRecordsConsoleComponent> ent, ref T args)

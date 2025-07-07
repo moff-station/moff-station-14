@@ -1,0 +1,39 @@
+﻿# Player: privatemumbles - Character: Cory Graves
+
+- type: entity
+  parent: BoxFolderClipboard
+  id: PersonalItemCoryClipboard
+  name: cargonian notepad
+  description: A Supply themed notepad, for the Cargo Tech on the go. Messy papers stick out.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/privatemumbles/Cory_Graves/coryclipboard.rsi
+    layers:
+    - state: clipboard
+    - state: clipboard_paper
+      map: ["clipboard_paper"]
+      visible: false
+    - state: clipboard_pen
+      map: ["clipboard_pen"]
+      visible: false
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/privatemumbles/Cory_Graves/coryclipboard.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Items/privatemumbles/Cory_Graves/coryclipboard.rsi
+  - type: DetailExaminable
+    content: A slip sticks out between the paper, a page from a Lizard Plushie collecting magazine with every rare option checked off but one, which is circled with bright red ink.
+
+- type: loadout
+  id: PersonalItemCoryClipboard
+  storage:
+    back:
+    - PersonalItemCoryClipboard
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cory Graves
+    jobs:
+    - JobQuartermaster
+    - JobSalvageSpecialist
+    - JobCargoTechnician
