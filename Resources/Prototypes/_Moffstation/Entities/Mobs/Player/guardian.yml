@@ -1,5 +1,5 @@
 - type: entity
-  name: HoloClown
+  name: Flying Dutchman Spirit
   id: MobFlyingDutchmanGuardian
   parent: [MobGuardianBase, InventoryBase]
   description: A shimmering green ghost of pirate legend.
@@ -8,8 +8,8 @@
     allowMovement: true
     allowSpeech: true
     makeSentient: true
-    name: ghost-role-information-holoclown-name
-    description: ghost-role-information-holoclown-description
+    name: ghost-role-information-flying-dutchman-name
+    description: ghost-role-information-flying-dutchman-description
     rules: ghost-role-information-familiar-rules
     raffle:
       settings: default
@@ -21,22 +21,23 @@
   - type: RandomSprite
     available:
     - enum.DamageStateVisualLayers.Base:
-        holoclown_base: ""
+        dutch_base: ""
       enum.DamageStateVisualLayers.BaseUnshaded:
-        holoclown_flare: Sixteen
+        dutch_flare: Sixteen
     - enum.DamageStateVisualLayers.Base:
-        holoclown_base: ""
+        dutch_base: ""
       enum.DamageStateVisualLayers.BaseUnshaded:
-        holoclown_flare: Sixteen
+        dutch_flare: Sixteen
     - enum.DamageStateVisualLayers.Base:
-        holoclown_base: ""
+        dutch_base: ""
       enum.DamageStateVisualLayers.BaseUnshaded:
-        holoclown_flare: Sixteen
+        dutch_flare: Sixteen
   - type: Sprite
+    sprite: _Moffstation/Mobs/Aliens/Guardians/flyingdutchman.rsi
     layers:
-    - state: holoclown_base
+    - state: dutch_base
       map: [ "enum.DamageStateVisualLayers.Base" ]
-    - state: holoclown_flare
+    - state: dutch_flare
       map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
       color: "#8adaff"
       shader: unshaded
@@ -54,16 +55,11 @@
     angle: 30
     animation: WeaponArcFist
     attackRate: 1.8
-    soundHit:
-      collection: BikeHorn
     damage:
       types:
         Blunt: 5
   - type: Loadout
-    prototypes: [ HoloClownGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesClown
+    prototypes: [ FlyingDutchmanGear ]
   - type: NpcFactionMember
     factions:
     - Pirate

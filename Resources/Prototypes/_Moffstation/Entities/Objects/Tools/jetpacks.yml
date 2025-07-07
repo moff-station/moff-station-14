@@ -2,8 +2,17 @@
 - type: entity
   id: PirateJetpack
   parent: JetpackBlack
-  name: cannon jetpack
+  name: pirate jetpack
   suffix: Pirate
+  components:
+  - type: Item
+    sprite: _Moffstation/Objects/Tanks/Jetpacks/pirate_jetpack.rsi
+  - type: Sprite
+    sprite: _Moffstation/Objects/Tanks/Jetpacks/pirate_jetpack.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Tanks/Jetpacks/pirate_jetpack.rsi
+    slots:
+    - Back
 
 # Filled black
 - type: entity

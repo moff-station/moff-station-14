@@ -55,7 +55,7 @@
       coefficients:
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.6
+        Piercing: 0.7
         Heat: 0.1
         Radiation: 0.01
         Caustic: 0.5
@@ -64,7 +64,7 @@
     sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitSyndie
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateBlackbeard
   - type: Tag
     tags:
     - MonkeyWearable
@@ -93,21 +93,22 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.3
+        Blunt: 0.4
         Slash: 0.3
-        Piercing: 0.1
-        Heat: 0.1
+        Piercing: 0.2
+        Heat: 0.2
         Radiation: 0.2
         Caustic: 0.2
   - type: ClothingSpeedModifier
-    walkModifier: 0.45
-    sprintModifier: 0.45
+    walkModifier: 0.5
+    sprintModifier: 0.5
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitCybersun
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateDavyJones
   - type: Tag
     tags:
     - MonkeyWearable
+    - Hardsuit
     - WhitelistChameleon
 
 - type: entity
@@ -117,11 +118,11 @@
   description: The flagship hardsuit for seasoned deep-space pirates.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/buccaneer.rsi
   - type: Item
     size: Huge
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/buccaneer.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
@@ -134,8 +135,8 @@
       coefficients:
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.6
-        Heat: 0.3
+        Piercing: 0.5
+        Heat: 0.5
         Radiation: 0.6
         Caustic: 0.6
   - type: ClothingSpeedModifier
@@ -143,7 +144,7 @@
     sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitSyndie
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateBuccaneer
   - type: Tag
     tags:
     - MonkeyWearable
@@ -159,11 +160,11 @@
   description: A lightweight hardsuit made for hit-and-run operations in space, made with reverse engineered technology stolen from the Gorlex Marauders.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/swashbuckler.rsi
   - type: Item
     size: Huge
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/swashbuckler.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
@@ -179,8 +180,11 @@
         Piercing: 0.7
         Heat: 0.7
         Radiation: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitSyndie
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateSwashbuckler
   - type: Tag
     tags:
     - MonkeyWearable

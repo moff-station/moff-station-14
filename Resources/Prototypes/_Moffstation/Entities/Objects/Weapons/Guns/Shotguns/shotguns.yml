@@ -4,10 +4,12 @@
   id: WeaponShotgunPepperbox
   description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
   components:
+  - type: Item
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pepperbox_inhands_x64.rsi
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pepperbox.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pepperbox.rsi
   - type: GunRequiresWield
   - type: Gun
     fireRate: 0.5
@@ -24,7 +26,7 @@
   description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pepperbox.rsi
   - type: Gun
     fireRate: 0.5
   - type: Battery

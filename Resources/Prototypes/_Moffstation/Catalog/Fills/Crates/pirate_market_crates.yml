@@ -467,3 +467,37 @@
     contents:
     - id: ClothingOuterHardsuitPirateSwashbuckler
       amount: 1
+
+- type: entity
+  id: CratePirateGrapplingGun
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: grappling gun crate
+  description: Contains 3 grappling guns, useful for grappling
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponGrapplingGun
+      amount: 3
+
+- type: entity
+  id: CratePirateSharkPlush
+  parent: [ CratePirate, BaseSecurityContraband ]
+  name: shark plushie crate
+  description: A crate filled with a variety of everyone's favorite finned friend. Rawr!
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: PlushieSharkBlue
+          amount: !type:ConstantNumberSelector
+            value: 2
+        - id: PlushieSharkPink
+          amount: !type:ConstantNumberSelector
+            value: 2
+        - id: PlushieSharkGrey
+          amount: !type:ConstantNumberSelector
+            value: 2
+        - id: PlushieSharkPirate
+          amount: !type:ConstantNumberSelector
+            value: 2

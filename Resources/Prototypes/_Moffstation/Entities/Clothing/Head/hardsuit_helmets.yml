@@ -9,3 +9,92 @@
     sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
+
+#Blackbeard Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateBlackbeard
+  name: blackbeard hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hardsuits/syndicate.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hardsuits/syndicate.rsi
+  - type: PointLight
+    color: orange
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+#Davy Jones Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateDavyJones
+  name: Davy Jones' hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hardsuits/syndicate.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hardsuits/syndicate.rsi
+  - type: PointLight
+    color: green
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+#Buccaneer Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateBuccaneer
+  name: buccaneer hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/buccaneer.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/buccaneer.rsi
+  - type: PointLight
+    color: cyan
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+#Swashbuckler Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateSwashbuckler
+  name: swashbuckler hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/swashbuckler.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/swashbuckler.rsi
+  - type: PointLight
+    color: cyan
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
