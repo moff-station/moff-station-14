@@ -320,19 +320,19 @@ public sealed class PaperSystem : EntitySystem
 
         // Signing successful, popup time.
 
-    _popupSystem.PopupPredicted(
-        Loc.GetString(
-            "paper-component-action-signed-self",
-            ("target", ent)
-        ),
-        Loc.GetString(
-            "paper-component-action-signed-other",
-            ("user", signer),
-            ("target", ent)
-        ),
-        signer,
-        signer
-    );
+        _popupSystem.PopupPredicted(
+            Loc.GetString(
+                "paper-component-action-signed-self",
+                ("target", ent)
+            ),
+            Loc.GetString(
+                "paper-component-action-signed-other",
+                ("user", signer),
+                ("target", ent)
+            ),
+            signer,
+            signer
+        );
 
         _audio.PlayPvs(ent.Comp.Sound, ent);
 
