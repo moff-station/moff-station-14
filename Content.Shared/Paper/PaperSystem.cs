@@ -344,9 +344,6 @@ public sealed class PaperSystem : EntitySystem
         RaiseLocalEvent(ent, ref eve);
         // #endregion
         return true;
-        }
-
-        return false;
     }
     // Umbra - End
 
