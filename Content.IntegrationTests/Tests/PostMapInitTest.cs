@@ -92,7 +92,9 @@ namespace Content.IntegrationTests.Tests
             "Core",
             "Omega",
             "Loop",
-            "Meta"
+            "Meta",
+            "MW-Dock",
+            "CS-Dust2",
             // Moffstation - End
         };
 

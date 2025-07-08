@@ -192,6 +192,12 @@
       - state: mag-unshaded-4
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
+  # Moffstation - Begin (Weapon Resizing)
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,2,1
+  # Moffstation - End
   - type: Gun
     projectileSpeed: 10
     soundGunshot:
@@ -218,9 +224,7 @@
   components:
   # Moffstation - Begin (Weapon Resizing)
   - type: Item
-    size: Huge
-    shape:
-    - 0,0,4,1
+    size: Large
   # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
@@ -304,9 +308,7 @@
   components:
   # Moffstation - Begin (Weapon Resizing)
   - type: Item
-    size: Huge
-    shape:
-    - 0,0,4,1
+    size: Large
   # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
@@ -348,7 +350,7 @@
   - type: Item
     size: Huge
     shape:
-    - 0,0,5,1
+    - 0,0,4,2
   # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
@@ -386,7 +388,7 @@
   - type: Item
     size: Huge
     shape:
-    - 0,0,5,1
+    - 0,0,4,2
   # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
@@ -455,7 +457,7 @@
   - type: Item
     size: Huge
     shape:
-    - 0,0,5,1
+    - 0,0,4,2
   # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/xray.rsi
@@ -632,6 +634,7 @@
   components:
   # Moffstation - Begin (Weapon Resizing)
   - type: Item
+    size: Normal
     shape:
     - 0,0,1,1
   # Moffstation - End
@@ -840,10 +843,7 @@
   - type: Item
     size: Large
     shape:
-    # Moffstation - Begin (Weapon Resizing)
-    #- 0,0,3,1
-    - 0,0,4,1
-    # Moffstation - End
+    - 0,0,3,1
     sprite: Objects/Weapons/Guns/Battery/inhands_64x.rsi
     heldPrefix: energy
   - type: Tag

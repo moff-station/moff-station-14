@@ -1,6 +1,7 @@
 ﻿using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared._Moffstation.Vampire.Components;
+using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Nutrition.Components;
@@ -82,7 +83,7 @@ public sealed class BloodConsumptionSystem : EntitySystem
     /// </summary>
     private void UpdateHungerThirst(Entity<BloodConsumptionComponent> entity, BloodstreamComponent bloodstream)
     {
-        var bloodstreamPercentage = _bloodstreamSystem.GetBloodLevelPercentage(entity, bloodstream);
+        var bloodstreamPercentage = _bloodstreamSystem.GetBloodLevelPercentage((entity, bloodstream));
         var modificationPercentage = Math.Clamp(
             bloodstreamPercentage - entity.Comp.PrevBloodPercentage,
             -entity.Comp.MaxChange,
@@ -106,11 +107,11 @@ public sealed class BloodConsumptionSystem : EntitySystem
 	        // heal according to comp amount
 	        _damageSystem.TryChangeDamage(entity.Owner, entity.Comp.HealPerUpdate, true, false, damage);
 	        // subtract blood for healing
-	        _bloodstreamSystem.TryModifyBloodLevel(entity.Owner, entity.Comp.HealingBloodlossPerUpdate, bloodstream);
+	        _bloodstreamSystem.TryModifyBloodLevel((entity.Owner, bloodstream), entity.Comp.HealingBloodlossPerUpdate);
 	        return;
         }
         // else subtract the usual amount of blood
-        _bloodstreamSystem.TryModifyBloodLevel(entity.Owner, entity.Comp.BaseBloodlossPerUpdate, bloodstream);
+        _bloodstreamSystem.TryModifyBloodLevel((entity.Owner, bloodstream), entity.Comp.BaseBloodlossPerUpdate);
     }
 
     /// <summary>

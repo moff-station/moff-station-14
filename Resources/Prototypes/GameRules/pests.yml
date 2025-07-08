@@ -139,8 +139,14 @@
     duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
+    # Moffstation - Start - Added Rosie and Deathhead mothroaches
     - id: MobMothroach
-      prob: 0.02
+      prob: 0.01
+    - id: MobMothroachRosy
+      prob: 0.005
+    - id: MobMothroachDeathshead
+      prob: 0.005
+    # Moffstation - End
 
 - type: entity
   id: MothroachMigrationSilent
@@ -149,5 +155,11 @@
   - type: StationEvent
   - type: VentCrittersRule
     entries:
+    # Moffstation - Start - Added Rosie and Deathhead mothroaches
     - id: MobMothroach
-      prob: 0.02
+      prob: 0.01
+    - id: MobMothroachRosy
+      prob: 0.005
+    - id: MobMothroachDeathshead
+      prob: 0.005
+    # Moffstation - End

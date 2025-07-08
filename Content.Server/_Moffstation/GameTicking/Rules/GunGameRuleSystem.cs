@@ -6,17 +6,21 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.KillTracking;
 using Content.Server.Mind;
+using Content.Server.Power.Components;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.EntityTable;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
+using Content.Shared.PowerCell.Components;
+using Content.Shared.Weapons.Ranged.Components;
 using Robust.Server.Player;
 using Robust.Shared.Map;
-using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -42,13 +46,14 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     [Dependency] private readonly EntityTableSystem _entityTables = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<PlayerBeforeSpawnEvent>(OnBeforeSpawn);
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawnComplete);
         SubscribeLocalEvent<KillReportedEvent>(OnKillReported);
     }
 
@@ -71,24 +76,17 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             _outfitSystem.SetOutfit(mob, gunGame.Gear);
             EnsureComp<KillTrackerComponent>(mob);
             EnsureComp<GunGameTrackerComponent>(mob);
-            SpawnCurrentWeapon(ev.Player.UserId, gunGame);
+
+            gunGame.PlayerInfo.TryAdd(ev.Player.UserId,
+                new GunGamePlayerTrackingInfo(
+                    ev.Player.UserId,
+                    new Queue<EntityTableSelector>(gunGame.RewardSpawnsQueue)));
+            SpawnCurrentWeapon(gunGame.PlayerInfo[ev.Player.UserId], gunGame);
+
             _respawn.AddToTracker(ev.Player.UserId, (uid, tracker));
 
             ev.Handled = true;
             break;
-        }
-    }
-
-    private void OnSpawnComplete(PlayerSpawnCompleteEvent ev)
-    {
-        EnsureComp<KillTrackerComponent>(ev.Mob);
-        EnsureComp<GunGameTrackerComponent>(ev.Mob);
-        var query = EntityQueryEnumerator<GunGameRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out _, out var tracker, out var rule))
-        {
-            if (!GameTicker.IsGameRuleActive(uid, rule))
-                continue;
-            _respawn.AddToTracker((ev.Mob, null), (uid, tracker));
         }
     }
 
@@ -97,25 +95,29 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     /// </summary>
     private void OnKillReported(ref KillReportedEvent ev)
     {
-        // Don't want other players picking up somebody's gun
-        if (TryComp<GunGameTrackerComponent>(ev.Entity, out var tracker))
-            DeleteCurrentWeapons(tracker);
-
-        var query = EntityQueryEnumerator<GunGameRuleComponent, GameRuleComponent>();
-        while (query.MoveNext(out var uid, out var gunGame, out var rule))
+        var query = EntityQueryEnumerator<GunGameRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
+        while (query.MoveNext(out var uid, out var gunGame, out var respawnTracker, out var rule))
         {
             if (!GameTicker.IsGameRuleActive(uid, rule)
                 || ev.Primary is not KillPlayerSource player)
                 continue;
 
-            // Only allow the player to receive their next weapon after they get enough kills
-            gunGame.PlayerKills.TryAdd(player.PlayerId, 0);
-            if (++gunGame.PlayerKills[player.PlayerId] < gunGame.KillsPerWeapon)
+            // Don't want other players picking up somebody's gun
+            if (TryComp<GunGameTrackerComponent>(ev.Entity, out var gunGameTracker))
+                DeleteCurrentWeapons((ev.Entity, gunGameTracker), gunGame);
+
+            // Force them to respawn so they don't have to wait around.
+            if (TryComp<ActorComponent>(ev.Entity, out var actor))
+                _respawn.RespawnPlayer((ev.Entity, actor), (uid, respawnTracker));
+
+            var playerInfo = gunGame.PlayerInfo[player.PlayerId];
+            // Only allow the player to receive their next weapon after they get enough kills.
+            if (++playerInfo.Kills < gunGame.KillsPerWeapon)
                 continue;
 
-            gunGame.PlayerKills[player.PlayerId] = 0;
-            ProgressPlayerReward(player.PlayerId, gunGame);
-            SpawnCurrentWeapon(player.PlayerId, gunGame);
+            playerInfo.Kills = 0;
+            ProgressPlayerReward(playerInfo, gunGame);
+            SpawnCurrentWeapon(playerInfo, gunGame);
         }
     }
 
@@ -140,17 +142,33 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     /// <summary>
     /// Deletes a GunGameRewardTrackerComponent's gear.
     /// </summary>
-    /// <param name="gear">The component with the gear.</param>
+    /// <param name="playerEntity">The component with the gear.</param>
     /// <remarks>
-    /// Right now this is mostly just a foreach loop which deletes all the entities in the list.
-    /// This does trigger an exception in the client if a gun is deleting while it's bullets are still active in the world.
+    /// Unequips all the spawned entities on the player before deleting them.
+    /// Also removes nearby shell casings to clean things up.
     /// todo: once WeakEntityReference is implemented, ensure it's utilized here.
     /// </remarks>
-    private void DeleteCurrentWeapons(GunGameTrackerComponent gear)
+    private void DeleteCurrentWeapons(Entity<GunGameTrackerComponent> playerEntity, GunGameRuleComponent rule)
     {
-        foreach (var entity in gear.CurrentRewards)
+        // drop whatever is in their hands
+        _hands.TryDrop(playerEntity.Owner, null, false, false);
+
+        // delete all their rewards
+        foreach (var entity in playerEntity.Comp.CurrentRewards)
         {
-            QueueDel(entity);
+            if (_inventory.TryGetContainingSlot(entity, out var slot))
+                _inventory.TryUnequip(playerEntity, playerEntity, slot.Name, true, true, true);
+
+            PredictedQueueDel(entity);
+        }
+
+        // delete nearby shell casings
+        foreach (var entity in _lookup.GetEntitiesInRange<CartridgeAmmoComponent>(
+                     new EntityCoordinates(playerEntity.Owner, 0.0f, 0.0f),
+                     rule.CasingDeletionRange))
+        {
+            if (entity.Comp.Spent && _random.Prob(rule.CasingDeletionProb))
+                PredictedQueueDel(entity.Owner);
         }
     }
 
@@ -158,53 +176,47 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     /// Progresses the specified user's reward queue.
     /// If their queue is empty then they've won so we trigger the round end.
     /// </summary>
-    /// <param name="userId">The player's user ID</param>
+    /// <param name="playerInfo">The player's current round info</param>
     /// <param name="rule">The GunGameRuleComponent for this gamerule</param>
-    private void ProgressPlayerReward(NetUserId userId, GunGameRuleComponent rule)
+    private void ProgressPlayerReward(GunGamePlayerTrackingInfo playerInfo, GunGameRuleComponent rule)
     {
-        if (!rule.PlayerRewards.TryGetValue(userId, out var rewardQueue))
+        if (playerInfo.RewardQueue.Count > 1  // We want the last weapon to remain in the queue so we can peek it later.
+            && playerInfo.RewardQueue.TryDequeue(out _))
             return;
 
-        if (rewardQueue.TryDequeue(out _))
-            return;
-
-        rule.Victor = userId;
+        rule.Victor = playerInfo.UserId;
         _roundEnd.EndRound(rule.RestartDelay);
     }
 
     /// <summary>
     /// Spawns the player's current weapon in their queue, intended to be used on spawn and when they upgrade weapons.
     /// </summary>
-    /// <param name="userId">The player's user ID</param>
+    /// <param name="playerInfo">The player's current round info</param>
     /// <param name="rule">The GunGameRuleComponent for this gamerule</param>
-    private void SpawnCurrentWeapon(NetUserId userId, GunGameRuleComponent rule)
+    private void SpawnCurrentWeapon(GunGamePlayerTrackingInfo playerInfo, GunGameRuleComponent rule)
     {
-        if (!_mind.TryGetMind(userId, out var _, out var mind))
+        if (!_mind.TryGetMind(playerInfo.UserId, out _, out var mind))
             return;
 
         if (mind.OwnedEntity is not { } playerEntity)
             return;
 
         var gear = EnsureComp<GunGameTrackerComponent>(playerEntity);
-        DeleteCurrentWeapons(gear);
+        DeleteCurrentWeapons((playerEntity, gear), rule);
 
-        if (!rule.PlayerRewards.TryGetValue(userId, out var gearQueue))
-        {
-            gearQueue = new Queue<EntityTableSelector>(rule.RewardSpawnsQueue);
-            rule.PlayerRewards.Add(userId, gearQueue);
-        }
-
-        if (gearQueue.Count == 0) // If we somehow try to spawn somebody's weapon after they win
+        if (playerInfo.RewardQueue.Count == 0) // If we somehow try to spawn somebody's weapon after they win
             return;
 
         var slotTryOrder = new Queue<string>(rule.SlotTryOrder);
+
         // Peek the player's queue, and spawn their items
-        foreach (var item in _entityTables.GetSpawns(gearQueue.Peek()))
+        foreach (var item in _entityTables.GetSpawns(playerInfo.RewardQueue.Peek()))
         {
             SpawnItemAndEquip(
                 (playerEntity, gear),
                 item,
-                slotTryOrder);
+                slotTryOrder,
+                rule);
         }
     }
 
@@ -214,9 +226,12 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     /// </summary>
     private void SpawnItemAndEquip(Entity<GunGameTrackerComponent> player,
         EntProtoId itemProto,
-        Queue<string> slotTryOrder)
+        Queue<string> slotTryOrder,
+        GunGameRuleComponent rule)
     {
         var itemEnt = Spawn(itemProto);
+        UpgradeEnergyWeapon(itemEnt, rule);
+
         player.Comp.CurrentRewards.Add(itemEnt);
         while (slotTryOrder.TryDequeue(out var slot))
         {
@@ -227,7 +242,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
 
         // if there's no slots that work, drop it on the ground
         _transform.SetCoordinates(itemEnt,
-            new EntityCoordinates(player,
+            new EntityCoordinates(Transform(player).ParentUid,
                 _random.NextFloat() - 0.5f,
                 _random.NextFloat() - 0.5f));
         _transform.SetLocalRotation(itemEnt, _random.NextAngle());
@@ -247,17 +262,17 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
         if (!Resolve(entity, ref entity.Comp))
             return msg;
 
-        foreach (var (idx, (id, playerQueue)) in entity.Comp.PlayerRewards.OrderBy(p => p.Value.Count).Index())
+        foreach (var (idx, playerInfo) in entity.Comp.PlayerInfo.Values.OrderBy(p => p.RewardQueue.Count).Index())
         {
-            if (!_player.TryGetPlayerData(id, out var data))
+            if (!_player.TryGetPlayerData(playerInfo.UserId, out var data))
                 continue;
 
             msg.AddMarkupOrThrow(Loc.GetString("gun-game-scoreboard-list-entry",
                 ("place", idx + 1),
                 ("name", data.UserName),
-                ("weaponsLeft", playerQueue.Count),
+                ("weaponsLeft", playerInfo.RewardQueue.Count - 1),
                 ("weapon",
-                    !playerQueue.TryPeek(out var itemList)
+                    !playerInfo.RewardQueue.TryPeek(out var itemList)
                        || !_proto.TryIndex(
                            _entityTables.GetSpawns(itemList)
                                .First(), // We assume the first item in the entity table is the player's weapon.
@@ -268,5 +283,29 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
         }
 
         return msg;
+    }
+
+    /// <summary>
+    /// Upgrades an energy weapon to have a rechargable battery.
+    /// This does account for weather the weapon contains a battery itself,
+    /// at which point it grabs that battery and upgrades it instead.
+    /// Also, this will set the recharge rate to only increase up to
+    /// <see cref="GunGameRuleComponent.DefaultEnergyWeaponRechargeRate"/>.
+    /// If the weapon already has a recharge rate higher than this, it uses that instead.
+    /// </summary>
+    private void UpgradeEnergyWeapon(EntityUid uid, GunGameRuleComponent rule )
+    {
+        var upgradeEnt = HasComp<BatteryComponent>(uid)
+            ? uid
+            : TryComp<PowerCellSlotComponent>(uid, out var cellSlot)
+                ? _itemSlots.GetItemOrNull(uid, cellSlot.CellSlotId)
+                : null;
+
+        if (upgradeEnt is not { } upgradable)
+            return;
+
+        var batteryRecharge = EnsureComp<BatterySelfRechargerComponent>(upgradable);
+        batteryRecharge.AutoRecharge = true;
+        batteryRecharge.AutoRechargeRate = Math.Max(rule.DefaultEnergyWeaponRechargeRate, batteryRecharge.AutoRechargeRate);
     }
 }

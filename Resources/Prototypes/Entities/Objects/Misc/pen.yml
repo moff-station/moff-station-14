@@ -79,6 +79,16 @@
     - Screwing
     useSound:
       collection: Screwdriver
+  # Moffstation - Start - Add signature forging to advanced pens
+  - type: ForgeSignature
+  - type: ActivatableUI
+    key: enum.ForgeSignatureUiKey.Key
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.ForgeSignatureUiKey.Key:
+        type: ForgeSignatureBoundUserInterface
+  # Moffstation - End
 
 - type: entity
   name: Cybersun pen

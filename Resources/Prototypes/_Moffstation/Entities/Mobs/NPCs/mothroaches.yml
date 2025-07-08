@@ -1,0 +1,19 @@
+- type: entity
+  parent: MobMothroach
+  id: MobMothroachRosy
+  suffix: Rosy
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Animals/mothroach/rosy.rsi
+  - type: Clothing
+    sprite: _Moffstation/Mobs/Animals/mothroach/rosy.rsi
+
+- type: entity
+  parent: MobMothroach
+  id: MobMothroachDeathshead
+  suffix: Deathshead
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Animals/mothroach/deathshead.rsi
+  - type: Clothing
+    sprite: _Moffstation/Mobs/Animals/mothroach/deathshead.rsi

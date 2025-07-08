@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Moffstation.Paper.Components; // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
@@ -7,6 +8,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
+using Content.Shared.Verbs; // Moffstation
 using Robust.Shared.Player;
 using Robust.Shared.Audio.Systems;
 using static Content.Shared.Paper.PaperComponent;
@@ -17,6 +19,8 @@ namespace Content.Shared.Paper;
 
 public sealed class PaperSystem : EntitySystem
 {
+    private static readonly Color SignatureColor = Color.FromHex("#333333");    // Moffstation - Signature color
+
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -47,6 +51,8 @@ public sealed class PaperSystem : EntitySystem
         SubscribeLocalEvent<RandomPaperContentComponent, MapInitEvent>(OnRandomPaperContentMapInit);
 
         SubscribeLocalEvent<ActivateOnPaperOpenedComponent, PaperWriteEvent>(OnPaperWrite);
+
+        SubscribeLocalEvent<PaperComponent, GetVerbsEvent<AlternativeVerb>>(AddSignVerb); // Umbra - Signing alt verb event listener.
 
         _paperQuery = GetEntityQuery<PaperComponent>();
     }
@@ -264,6 +270,79 @@ public sealed class PaperSystem : EntitySystem
         }
         return true;
     }
+
+    // Umbra - Begin - Paper signing
+    // Send paper signing alt verb to the client if applicable.
+    // Based on LockSystem.cs for alt-click behavior.
+    private void AddSignVerb(Entity<PaperComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        // Sanity check
+        if (ent.Owner != args.Target)
+            return;
+
+        // Pens have a `Write` tag.
+        if (args.Using is not { } item|| !_tagSystem.HasTag(item, WriteTag))
+            return;
+
+        // If theres a fake signature available, get it
+        TryComp<ForgeSignatureComponent>(item, out var fakeSignatureComp);
+
+        var user = args.User;
+
+        AlternativeVerb verb = new()
+        {
+            Act = () => TrySign(ent, user, fakeSignatureComp),
+            Text = Loc.GetString("paper-component-verb-sign"),
+            // Icon = Don't have an icon yet. Todo for later.
+        };
+        args.Verbs.Add(verb);
+    }
+
+    // Umbra: Actual signature code.
+    private bool TrySign(Entity<PaperComponent> ent, EntityUid signer, ForgeSignatureComponent? signatureComp)
+    {
+        var signature = signatureComp?.Signature ?? Name(signer);
+
+        // Generate display information.
+        var info = new StampDisplayInfo
+        {
+            StampedName = signature,
+            StampedColor = SignatureColor,
+            Type = StampType.Signature,
+        };
+
+        // Try stamp with the info, return false if failed.
+        if (!TryStamp(ent, info, "paper_stamp-generic"))
+            return false;
+
+        // Signing successful, popup time.
+
+        _popupSystem.PopupPredicted(
+            Loc.GetString(
+                "paper-component-action-signed-self",
+                ("target", ent)
+            ),
+            Loc.GetString(
+                "paper-component-action-signed-other",
+                ("user", signer),
+                ("target", ent)
+            ),
+            signer,
+            signer
+        );
+
+        _audio.PlayPvs(ent.Comp.Sound, ent);
+
+        _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
+
+        UpdateUserInterface(ent);
+
+        return true;
+    }
+    // Umbra - End
 
     /// <summary>
     ///     Copy any stamp information from one piece of paper to another.

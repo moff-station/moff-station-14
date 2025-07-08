@@ -262,5 +262,9 @@
   components:
   - type: StorageFill
     contents:
-      - id: MobMothroach
-        amount: 4
+    # Moffstation - Start - Add Rosie and Deathshead Mothroaches
+    - id: MobMothroach
+      amount: 2
+    - id: MobMothroachRosy
+    - id: MobMothroachDeathshead
+    # Moffstation - End

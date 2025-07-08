@@ -9,140 +9,142 @@
     - pocket2
     - back
     rewardSpawnsQueue:
-    - id: WeaponPulseCarbine
-    - !type:AllSelector
-      children:
-      - id: WeaponSniperHristov
-      - id: MagazineBoxAntiMateriel
-    - !type:AllSelector
-      children:
-      - id: WeaponRifleAk
-      - id: MagazineLightRifle
-      - id: MagazineLightRifle
-    - !type:AllSelector
-      children:
-      - id: WeaponPistolN1984
-      - id: MagazineMagnum
-      - id: MagazineMagnum
-    - id: WeaponPulsePistol
-    - id: WeaponLightMachineGunL6
-    - id: WeaponEnergyShotgun
-    - !type:AllSelector
+    - !type:AllSelector # Dual Atredies
       children:
       - id: WeaponSubMachineGunAtreides
+      - id: WeaponSubMachineGunAtreides
       - id: MagazinePistolSubMachineGun
-      - id: MagazinePistolSubMachineGun
+    - id: WeaponPulseCarbine # DeathSquad
+    - !type:AllSelector # HoS
+      children:
+      - id: WeaponSubMachineGunWt550
+      - id: MagazinePistolSubMachineGunTopMounted
+      - id: MagazinePistolSubMachineGunTopMounted
+      - id: TelescopicShield
+    - !type:AllSelector # Syndie Borg
+      children:
+      - id: EnergySwordDouble
+      - id: WeaponLightMachineGunL6C
     - !type:AllSelector
       children:
-      - id: WeaponRevolverMateba
-      - id: SpeedLoaderMagnumAP
-      - id: SpeedLoaderMagnumIncendiary
-      - id: MagazineBoxMagnum
+      - id: WeaponSubMachineGunC20r
+      - id: EnergySword
+      - id: MagazinePistolSubMachineGun
     - !type:AllSelector
       children:
       - id: WeaponShotgunBulldog
       - id: MagazineShotgun
       - id: MagazineShotgunSlug
-    - id: WeaponAntiqueLaser
     - !type:AllSelector
       children:
-      - id: WeaponSubMachineGunWt550
-      - id: MagazinePistolSubMachineGunTopMounted
-      - id: MagazinePistolSubMachineGunTopMounted
-    - id: WeaponTemperatureGun
+      - id: WeaponSniperHristov
+      - id: MagazineBoxAntiMateriel
+    - !type:AllSelector # Deathsquad Sidearms
+      children:
+      - id: WeaponRevolverMateba
+      - id: WeaponPulsePistol
+      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoaderMagnumAP
+    - !type:AllSelector # Warden
+      children:
+      - id: WeaponShotgunEnforcer
+      - id: BoxLethalshot
+      - id: BoxShotgunSlug
+    - !type:AllSelector # Sec Gear
+      children:
+      - id: WeaponSubMachineGunDrozd
+      - id: MagazinePistolSubMachineGun
+      - id: MagazinePistolSubMachineGun
+      - id: WeaponLaserCarbine
+    - !type:AllSelector
+      children:
+      - id: WeaponShotgunKammerer
+      - id: BoxLethalshot
+    - !type:AllSelector
+      children:
+      - id: WeaponRifleEstoc
+      - id: MagazineRifle
+      - id: MagazineRifle
+    - !type:AllSelector # CC Rep
+      children:
+      - id: WeaponPistolN1984
+      - id: MagazineMagnum
+      - id: MagazineMagnum
+      - id: PenCentcom
+    - !type:AllSelector # Captain
+      children:
+      - id: WeaponAntiqueLaser
+      - id: CaptainSabre
     - !type:AllSelector
       children:
       - id: WeaponRifleLecter
       - id: MagazineRifle
       - id: MagazineRifle
+    - !type:AllSelector # Ninja
+      children:
+      - id: EnergyKatana
+      - id: ThrowingStarNinja
+      - id: ThrowingStarNinja
+    - !type:AllSelector # Warops Crew
+      children:
+      - id: WeaponXrayCannon
+      - id: Truncheon
     - !type:AllSelector
       children:
-      - id: WeaponRevolverDeckard
+      - id: WeaponRevolverPythonAP
       - id: SpeedLoaderMagnumAP
-      - id: SpeedLoaderMagnumIncendiary
-      - id: MagazineBoxMagnum
-    - id: WeaponXrayCannon
-    - !type:AllSelector
-      children:
-      - id: WeaponShotgunEnforcer
-      - id: BoxLethalshot
-      - id: BoxShotgunSlug
-    - !type:AllSelector
-      children:
-      - id: WeaponRevolverInspector
       - id: SpeedLoaderMagnumAP
-      - id: SpeedLoaderMagnumIncendiary
-      - id: MagazineBoxMagnum
     - !type:AllSelector
       children:
-      - id: WeaponSubMachineGunC20r
-      - id: MagazinePistolSubMachineGun
-      - id: MagazinePistolSubMachineGun
+      - id: WeaponPistolViper
+      - id: WeaponPistolViper
+      - id: MagazinePistolHighCapacity
+      - id: MagazinePistolHighCapacity
+    - id: EnergySword
     - !type:AllSelector
       children:
-      - id: WeaponSubMachineGunDrozd
-      - id: MagazinePistolSubMachineGun
-      - id: MagazinePistolSubMachineGun
-    - !type:AllSelector
+      - id: WeaponPistolCobra
+      - id: MagazinePistolCaselessRifle
+      - id: MagazinePistolCaselessRifle
+      - id: ThrowingKnivesKit
+    - !type:AllSelector # Green sec
       children:
-      - id: WeaponRevolverPython
-      - id: SpeedLoaderMagnum
-      - id: SpeedLoaderMagnum
-      - id: MagazineBoxMagnum
-    - !type:AllSelector
+      - id: WeaponPistolMk58
+      - id: MagazinePistol
+      - id: MagazinePistol
+      - id: CombatKnife
+    - !type:AllSelector # Salvage
       children:
-      - id: WeaponShotgunKammerer
-      - id: BoxLethalshot
-      - id: BoxShotgunSlug
-    - id: WeaponLaserSvalinn
-    - !type:AllSelector
-      children:
-      - id: WeaponShotgunDoubleBarreled
-      - id: BoxLethalshot
-      - id: BoxShotgunSlug
-    - !type:AllSelector # PKA with two random mods
-      children:
-      - id: WeaponProtoKineticAccelerator
+      - id: WeaponProtoKineticAccelerator #PKA with two random mods
       - !type:GroupSelector
         rolls: 2
         children:
         - id: PKAUpgradeDamage
         - id: PKAUpgradeFireRate
         - id: PKAUpgradeRange
-    - id: WeaponPistolCHIMPUpgraded
-    - !type:AllSelector
+      - id: SurvivalKnife
+    - !type:AllSelector # Bartender
       children:
-      - id: WeaponRevolverPirate
+      - id: WeaponShotgunSawn
+      - id: BoxLethalshot
+      - id: BoxShotgunSlug
+      - id: DrinkBottleBeer
+    - id: ArmBlade
+    - !type:AllSelector # HoP
+      children:
+      - id: WeaponRevolverDeckard
       - id: SpeedLoaderMagnum
       - id: SpeedLoaderMagnum
-      - id: MagazineBoxMagnum
-    - !type:AllSelector
-      children:
-      - id: WeaponSniperMosin
-      - id: SpeedLoaderLightRifle
-      - id: SpeedLoaderLightRifle
-      - id: MagazineBoxLightRifle
-    - !type:AllSelector # Two flintlocks, good luck
-      children:
-      - id: WeaponPistolFlintlock
-      - id: WeaponPistolFlintlock
-      - id: MagazineBoxMagnum
-    - id: HyperEutacticBlade
-    - id: SingularityHammer
-    - id: Mjollnir
-    - id: EnergySword
-    - id: CaptainSabre
+      - id: BriefcaseBrownFilled
+    - id: WeaponCrusherGlaive
     - id: FireAxe
-    - id: Claymore
-    - id: Machete
-    - id: PenCentcom
-    - !type:GroupSelector # Random Crowbar
+    - !type:AllSelector # Scientist
       children:
-      - id: Crowbar
-      - id: CrowbarGreen
-      - id: CrowbarYellow
-      - id: CrowbarOrange
-      - id: CrowbarRed
+      - id: WeaponPistolCHIMPUpgraded
+      - id: SpearUranium
+      - id: SpearUranium
+    - id: ClothingHandsKnuckleDustersQM
+    - id: KitchenKnife
     - id: ToolboxGolden
   - type: KillCalloutRule
   - type: RespawnDeadRule

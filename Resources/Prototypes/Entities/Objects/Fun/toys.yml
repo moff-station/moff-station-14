@@ -318,6 +318,11 @@
       map: ["enum.GunVisualLayers.Base"]
   - type: Item
     sprite: Objects/Fun/capgun.rsi
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    # Moffstation - End
   - type: Tag
     tags:
     - Sidearm
