@@ -387,6 +387,9 @@
 
 - type: cargoProduct
   id: PirateSkeletonKey
+  icon:
+    sprite: _Moffstation/Objects/Tools/pirate_amag.rsi
+    state: icon
   product: CratePirateSkeletonKey
   cost: 5000
   category: pirateproduct-category-name-tools
