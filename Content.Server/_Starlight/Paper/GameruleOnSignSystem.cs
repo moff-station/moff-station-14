@@ -1,3 +1,4 @@
+using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Shared.Paper;
 using Content.Shared.Whitelist;
@@ -6,7 +7,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Starlight.Paper;
 
-public sealed class GameruleOnSignSytem : EntitySystem
+public sealed class GameruleOnSignSystem : EntitySystem
 {
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
@@ -21,7 +22,7 @@ public sealed class GameruleOnSignSytem : EntitySystem
 
         private void OnComponentInit(EntityUid uid, GameruleOnSignComponent comp, ComponentInit init)
     {
-        if (comp.KeepFaxable) 
+        if (comp.KeepFaxable)
             return;
         RemComp<FaxableObjectComponent>(uid); //cause this breaks shit like infinite antags
     }
@@ -46,6 +47,11 @@ public sealed class GameruleOnSignSytem : EntitySystem
         foreach (var rule in component.Rules)
         {
             var ent = _gameTicker.AddGameRule(rule.Id);
+            if (component.effectType == SignatureEffect.Signer)
+            {
+                if (!TryComp<AntagSelectionComponent>(ent, out var antagSelectionComp))
+                    return;
+            }
             _gameTicker.StartGameRule(ent);
         }
 

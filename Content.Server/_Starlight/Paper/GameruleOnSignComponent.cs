@@ -15,6 +15,15 @@ public sealed partial class GameruleOnSignComponent : Component
     public int Remaining = 1;
 
     /// <summary>
+    /// how many people are able to sign this paper in a attempt to roll for antag.
+    /// </summary>
+    [DataField]
+    public int Charges = 1;
+
+    [DataField]
+    public SignatureEffect effectType = SignatureEffect.Signer;
+
+    /// <summary>
     /// A list of every entity that has signed this paper to prevent spam signing from instantly activating the paper.
     /// </summary>
     [ViewVariables]
@@ -43,10 +52,18 @@ public sealed partial class GameruleOnSignComponent : Component
     /// </summary>
     [DataField]
     public List<EntProtoId<GameRuleComponent>> Rules = [];
-    
+
     /// <summary>
     /// is the faxable component kept? this is for admeme protos
     /// </summary>
     [DataField]
     public bool KeepFaxable = false;
+
+}
+
+public enum SignatureEffect
+{
+    None,
+    Signer,
+    SignedName
 }
