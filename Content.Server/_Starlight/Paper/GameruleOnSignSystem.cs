@@ -57,6 +57,8 @@ public sealed class GameruleOnSignSystem : EntitySystem
 
         if (component.AntagCharges > 0)
         {
+            component.AntagCharges--;
+
             foreach (var antag in component.Antags)
             {
                 // var targetComp = _componentFactory.GetComponent(antag.TargetComponent);
