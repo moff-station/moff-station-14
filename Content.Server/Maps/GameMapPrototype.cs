@@ -31,7 +31,7 @@ public sealed partial class GameMapPrototype : IPrototype
     [DataField] public bool IsGrid;
 
     [DataField]
-    public bool RandomRotation = false;
+    public bool RandomRotation = false; // Moffstation - Removed random rotation from station
 
     /// <summary>
     /// Name of the map to use in generic messages, like the map vote.

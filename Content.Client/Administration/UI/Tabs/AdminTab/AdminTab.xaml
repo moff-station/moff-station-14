@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
     xmlns:at="clr-namespace:Content.Client.Administration.UI.Tabs.AdminTab"
-    xmlns:cdAdmin="clr-namespace:Content.Client._CD.Admin.UI"
     Margin="4"
     MinSize="50 50">
     <BoxContainer Orientation="Vertical">
@@ -18,8 +17,6 @@
             <cc:CommandButton Command="adminlogs" Text="{Loc admin-player-actions-window-admin-logs}"/>
             <cc:CommandButton Command="faxui" Text="{Loc admin-player-actions-window-admin-fax}"/>
             <cc:CommandButton Command="achatwindow" Text="{Loc admin-player-actions-window-admin-chat}"/>
-            <!-- CD: records purge button -->
-            <cc:UICommandButton Command="purgecharacterrecords" Text="{Loc admin-player-actions-window-cd-record-purge}" WindowType="{x:Type cdAdmin:ModifyCharacterRecords}"/>
         </GridContainer>
     </BoxContainer>
 </Control>

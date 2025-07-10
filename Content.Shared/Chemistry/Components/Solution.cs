@@ -15,7 +15,7 @@ namespace Content.Shared.Chemistry.Components
     /// </summary>
     [Serializable, NetSerializable]
     [DataDefinition]
-    public sealed partial class Solution : IEnumerable<ReagentQuantity>, ISerializationHooks
+    public sealed partial class Solution : IEnumerable<ReagentQuantity>, ISerializationHooks, IRobustCloneable<Solution>
     {
         // This is a list because it is actually faster to add and remove reagents from
         // a list than a dictionary, though contains-reagent checks are slightly slower,
@@ -75,6 +75,18 @@ namespace Content.Shared.Chemistry.Components
         {
             return solution.Volume <= AvailableVolume;
         }
+
+        // Moffstation - Start - Adding helper function to Solution
+        /// <summary>
+        ///     Gets the maximum amount of solution that can be transferred from the solution up to the quantity.
+        /// </summary>
+        public float MaxTransferableSolution(float quantity, Solution? solution = null)
+        {
+            return solution is null
+                ? Math.Min((float) AvailableVolume, quantity)
+                : Math.Min((float) solution.Volume, Math.Min((float) AvailableVolume, quantity));
+        }
+        // Moffstation - End
 
         /// <summary>
         ///     The total heat capacity of all reagents in the solution.
@@ -174,6 +186,7 @@ namespace Content.Shared.Chemistry.Components
             Volume = solution.Volume;
             MaxVolume = solution.MaxVolume;
             Temperature = solution.Temperature;
+            CanReact = solution.CanReact;
             _heatCapacity = solution._heatCapacity;
             _heatCapacityDirty = solution._heatCapacityDirty;
             _heatCapacityUpdateCounter = solution._heatCapacityUpdateCounter;

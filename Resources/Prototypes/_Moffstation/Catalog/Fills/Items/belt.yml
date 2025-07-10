@@ -1,0 +1,20 @@
+- type: entity
+  parent: ClothingBeltMilitaryWebbing
+  id: ClothingBeltMilitaryWebbingNukeOpsFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: DeathRattleImplanter
+
+- type: entity
+  parent: ClothingBeltHolster
+  id: ClothingBeltHolsterFilledN1984
+  suffix: Filled, N1984
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponPistolN1984
+    - id: MagazineMagnum
+      amount: 2
+    - id: Zipties

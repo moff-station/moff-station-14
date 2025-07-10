@@ -1,0 +1,67 @@
+﻿# Player: Nox38 / Character: Aurora Epiolos
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PersonalItemAuroraPinSwappable
+  name: Aurora's IFF tag
+  description: "The tag is glowing pink, looks like Aurora is here."
+  suffix: swappable
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPin.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPin.rsi
+  - type: DetailExaminable
+    content: "A hand-modified IFF tag made by Aurora. Its designed to indicate which personality is fronting: pink for Aurora, green for Asher. The toggle button can be depressed using a crowbar."
+  - type: Construction
+    deconstructionTarget: null
+    graph: PersonalItemAuroraPinSwapGraph
+    node: swap_aurora
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PersonalItemAuroraPinInversedSwappable
+  name: Asher's IFF tag
+  description: "The tag is glowing green, looks like Asher is home."
+  suffix: swappable
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
+  - type: DetailExaminable
+    content: "A hand-modified IFF tag made by Aurora. Its designed to indicate which personality is fronting: pink for Aurora, green for Asher. The toggle button can be depressed using a crowbar."
+  - type: Construction
+    deconstructionTarget: null
+    graph: PersonalItemAuroraPinSwapGraph
+    node: swap_asher
+
+- type: constructionGraph
+  id: PersonalItemAuroraPinSwapGraph
+  start: swap_asher
+  graph:
+  - node: swap_asher
+    entity: PersonalItemAuroraPinInversedSwappable
+    edges:
+    - to: swap_aurora
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+  - node: swap_aurora
+    entity: PersonalItemAuroraPinSwappable
+    edges:
+    - to: swap_asher
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+
+- type: loadout
+  id: PersonalItemAuroraPin
+  storage:
+    back:
+    - PersonalItemAuroraPinSwappable
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Aurora Epiolos
+

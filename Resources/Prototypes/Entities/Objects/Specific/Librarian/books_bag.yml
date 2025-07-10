@@ -17,8 +17,10 @@
     - type: Storage
       grid:
       - 0,0,7,3
-      quickInsert: true
-      areaInsert: true
+    # Moffstation - Start
+#      quickInsert: true
+#      areaInsert: true
+    # Moffstation - End
       whitelist:
         tags:
           - Book
@@ -28,3 +30,7 @@
           - TabletopBoard
           - Write
     - type: Dumpable
+    # Moffstation - Start
+    - type: QuickPickup
+    - type: AreaPickup
+    # Moffstation - End

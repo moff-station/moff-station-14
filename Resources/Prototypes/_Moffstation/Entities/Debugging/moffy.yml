@@ -1,0 +1,17 @@
+- type: entity
+  parent: Tippy
+  id: Moffy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Tips/moffy.rsi
+    noRot: false
+    scale: 4,4
+    layers:
+    - state: left
+      map: ["revealing"]
+    - state: right
+      map: ["hiding"]
+    - state: down
+      visible: false
+      map: ["speaking"]

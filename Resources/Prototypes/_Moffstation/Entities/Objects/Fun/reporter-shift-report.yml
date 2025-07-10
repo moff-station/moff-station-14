@@ -1,5 +1,5 @@
 - type: entity
-  id: ShiftReportTablet # We should add a pen storage to this at some point
+  id: ShiftReportTablet
   parent: BaseItem
   name: shift-report tablet
   description: A writing tablet meant to document the events of the shift for your bosses at Centcomm.
@@ -14,7 +14,7 @@
   - type: Item
     sprite: _Moffstation/Objects/Fun/shiftreporttablet.rsi
   - type: Paper
-    contentSize: 500
+    contentSize: 2000
     stampingEnabled: false
   - type: Clothing
     slots: [belt]

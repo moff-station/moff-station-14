@@ -5,3 +5,61 @@
   components:
   - type: PriorityDock
     tag: DockEmergencyPod
+
+- type: entity
+  parent: AirlockSyndicate
+  id: AirlockPirateLocked
+  suffix: Pirate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPirate ]
+
+- type: entity
+  parent: AirlockSyndicateGlass
+  id: AirlockPirateGlassLocked
+  suffix: Pirate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPirate ]
+
+- type: entity
+  parent: AirlockExternal
+  id: AirlockExternalPirateLocked
+  suffix: External, Pirate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPirate ]
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockExternalGlass
+  id: AirlockExternalGlassPirateLocked
+  suffix: External, Glass, Pirate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPirate ]
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockGlassShuttleSyndicate
+  id: AirlockExternalGlassShuttlePirateLocked
+  suffix: Pirate, Locked, Glass
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPirate ]
+
+- type: entity
+  parent: AirlockShuttleSyndicate
+  id: AirlockExternalShuttlePirateLocked
+  suffix: External, Docking, Pirate, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPirate ]

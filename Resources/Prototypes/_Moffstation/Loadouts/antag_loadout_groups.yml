@@ -62,5 +62,28 @@
   id: PirateHats
   name: loadout-group-pirate-hat
   loadouts:
-  - HeadHatPirate
-  - HeadHatPirateTricord
+  - HatPirate
+  - HatPirateBrown
+  - HatPirateTricord
+  - SkullBandana
+  - HatHeadBandRed
+  - HatHeadBandBlack
+  - HatHeadBandBrown
+  - HatHeadBandGold
+  - HatHeadBandMerc
+
+- type: loadoutGroup
+  id: PirateTrinkets
+  name: loadout-group-pirate-trinkets
+  minLimit: 0
+  loadouts:
+  - TrinketPirateFlag
+  - TrinketPirateEyepatch
+
+- type: loadoutGroup
+  id: PirateOuterCoat
+  name: loadout-group-pirate-outer-coat
+  loadouts:
+  - CoatPirate
+  - CoatGentle
+  - CoatPirateRed

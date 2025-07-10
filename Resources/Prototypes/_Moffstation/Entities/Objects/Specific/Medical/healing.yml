@@ -1,0 +1,15 @@
+# A botanist's alternative to bruise packs
+- type: entity
+  parent: Brutepack
+  name: Poultice Pack
+  description: A mixture of medicinal herbs which aids in the recovery from blunt-force trauma.
+  id: PoulticePack
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/poultice.rsi
+    state: poultice
+  - type: Stack
+    stackType: PoulticePack
+    count: 10
+  - type: Item
+    heldPrefix: poultice

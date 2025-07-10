@@ -161,6 +161,14 @@ We don't have any specific guidelines for new art and sprites other than:
 
 Art is voted on by the community of Moffstation, and if it is accepted, it will be added to the game.
 
+## Balance Changes
+Changes centered around balance are brought under higher scrutiny than normal changes.
+
+If you wish to make a change that is purely balance centric, we encourage you to submit it to upstream instead.
+
+## Rules Changes
+We do not accept or consider rules changes submitted over GitHub by non-staff. Please use the appropriate channel within the discord to suggest changes to the rules.
+
 ## Before submitting a pull request
 Before submitting a pull request, make sure to:
 - Test your changes in a development environment running Moffstation.

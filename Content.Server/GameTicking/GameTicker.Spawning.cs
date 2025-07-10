@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Server._CD.Records; // Moffstation - Fix a bug with CD character records that gets messed up with randomized characters
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
@@ -8,11 +9,16 @@ using Content.Server.Ghost;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
+using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
+using Content.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Map;
@@ -180,6 +186,36 @@ namespace Content.Server.GameTicking
                 return;
             }
 
+            string speciesId;
+            if (_randomizeCharacters)
+            {
+                var weightId = _cfg.GetCVar(CCVars.ICRandomSpeciesWeights);
+
+                // If blank, choose a round start species.
+                if (string.IsNullOrEmpty(weightId))
+                {
+                    var roundStart = new List<ProtoId<SpeciesPrototype>>();
+
+                    var speciesPrototypes = _prototypeManager.EnumeratePrototypes<SpeciesPrototype>();
+                    foreach (var proto in speciesPrototypes)
+                    {
+                        if (proto.RoundStart)
+                            roundStart.Add(proto.ID);
+                    }
+
+                    speciesId = roundStart.Count == 0
+                        ? SharedHumanoidAppearanceSystem.DefaultSpecies
+                        : _robustRandom.Pick(roundStart);
+                }
+                else
+                {
+                    var weights = _prototypeManager.Index<WeightedRandomSpeciesPrototype>(weightId);
+                    speciesId = weights.Pick(_robustRandom);
+                }
+
+                character = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
+            }
+
             // We raise this event to allow other systems to handle spawning this player themselves. (e.g. late-join wizard, etc)
             var bev = new PlayerBeforeSpawnEvent(player, character, jobId, lateJoin, station);
             RaiseLocalEvent(bev);
@@ -240,7 +276,12 @@ namespace Content.Server.GameTicking
 
             _mind.TransferTo(newMind, mob);
 
-            _roles.MindAddJobRole(newMind, silent: silent, jobPrototype:jobId);
+            // Moffstation - Start - Fix a bug with CD character records where it crashes hard if this is a random character
+            if (_randomizeCharacters)
+                EnsureComp<SkipLoadingCharacterRecordsComponent>(mob);
+            // Moffstation - End
+
+            _roles.MindAddJobRole(newMind, silent: silent, jobPrototype: jobId);
             var jobName = _jobs.MindTryGetJobName(newMind);
             _admin.UpdatePlayerList(player);
 
@@ -249,13 +290,13 @@ namespace Content.Server.GameTicking
                 if (jobPrototype.JoinNotifyCrew)
                 {
                     _chatSystem.DispatchStationAnnouncement(station,
-                        Loc.GetString("latejoin-arrival-announcement-special",
+                        Loc.GetString(jobPrototype.JoinNotifyCrewText,  // Moffstation - flexibility added to special join announcements
                             ("character", MetaData(mob).EntityName),
                             ("entity", mob),
                             ("job", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(jobName))),
                         Loc.GetString("latejoin-arrival-sender"),
-                        playDefaultSound: false,
-                        colorOverride: Color.Gold);
+                        playDefaultSound: true,     // Moffstation - they're important so notify the crew
+                        colorOverride: jobPrototype.JoinNotifyCrewColor);   // Moffstation - flexibility added to special join announcements
                 }
                 else
                 {
@@ -271,7 +312,7 @@ namespace Content.Server.GameTicking
 
             if (player.UserId == new Guid("{e887eb93-f503-4b65-95b6-2f282c014192}"))
             {
-                EntityManager.AddComponent<OwOAccentComponent>(mob);
+                AddComp<OwOAccentComponent>(mob);
             }
 
             _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
@@ -391,7 +432,7 @@ namespace Content.Server.GameTicking
         public EntityCoordinates GetObserverSpawnPoint()
         {
             _possiblePositions.Clear();
-            var spawnPointQuery = EntityManager.EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
+            var spawnPointQuery = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
             while (spawnPointQuery.MoveNext(out var uid, out var point, out var transform))
             {
                 if (point.SpawnType != SpawnPointType.Observer
@@ -440,17 +481,17 @@ namespace Content.Server.GameTicking
                 return spawn;
             }
 
-            if (_mapManager.MapExists(DefaultMap))
+            if (_map.MapExists(DefaultMap))
             {
-                var mapUid = _mapManager.GetMapEntityId(DefaultMap);
+                var mapUid = _map.GetMapOrInvalid(DefaultMap);
                 if (!TerminatingOrDeleted(mapUid))
                     return new EntityCoordinates(mapUid, Vector2.Zero);
             }
 
             // Just pick a point at this point I guess.
-            foreach (var map in _mapManager.GetAllMapIds())
+            foreach (var map in _map.GetAllMapIds())
             {
-                var mapUid = _mapManager.GetMapEntityId(map);
+                var mapUid = _map.GetMapOrInvalid(map);
 
                 if (!metaQuery.TryGetComponent(mapUid, out var meta)
                     || meta.EntityPaused

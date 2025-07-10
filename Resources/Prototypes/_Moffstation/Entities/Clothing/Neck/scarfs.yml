@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfCMO
+  name: chief medical officer's large scarf
+  description: A large, stylish white and blue scarf. Will keep you warm on a cold winter night.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/Scarfs/cmoscarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/Scarfs/cmoscarf.rsi

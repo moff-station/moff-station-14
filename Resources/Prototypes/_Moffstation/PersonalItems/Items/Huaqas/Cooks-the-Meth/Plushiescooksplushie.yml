@@ -7,12 +7,12 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    state: plushie_cooks
+    sprite: _Moffstation/PersonalItems/Items/Huaqas/Cooks-the-Meth/cooksplushie.rsi
+  - type: Item
     sprite: _Moffstation/PersonalItems/Items/Huaqas/Cooks-the-Meth/cooksplushie.rsi
   - type: Clothing
     quickEquip: false
     sprite: _Moffstation/PersonalItems/Items/Huaqas/Cooks-the-Meth/cooksplushie.rsi
-    equippedPrefix: cooks
 
 - type: loadout
   id: PersonalItemCooksPlushie

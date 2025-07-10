@@ -17,6 +17,7 @@ using Content.Server.Shuttles.Events;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
+using Content.Shared._DV.CustomObjectiveSummary; // DeltaV
 using Content.Shared.Access.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -219,6 +220,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
             };
             _deviceNetworkSystem.QueuePacket(uid, null, payload, netComp.TransmitFrequency);
         }
+        RaiseLocalEvent(new EvacShuttleLeftEvent()); // DeltaV
     }
 
     /// <summary>
@@ -323,6 +325,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
     /// </summary>
     public void AnnounceShuttleDock(ShuttleDockResult result, bool extended)
     {
+        var stationShuttleComp = result.Station.Comp;
         var shuttle = result.Station.Comp.EmergencyShuttle;
 
         DebugTools.Assert(shuttle != null);
@@ -331,11 +334,11 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         {
             _chatSystem.DispatchStationAnnouncement(
                 result.Station,
-                Loc.GetString("emergency-shuttle-good-luck"),
+                Loc.GetString(stationShuttleComp.FailureAnnouncement),
                 playDefaultSound: false);
 
             // TODO: Need filter extensions or something don't blame me.
-            _audio.PlayGlobal("/Audio/Misc/notice1.ogg", Filter.Broadcast(), true);
+            _audio.PlayGlobal(stationShuttleComp.FailureAudio, Filter.Broadcast(), true);
             return;
         }
 
@@ -354,10 +357,10 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         var location = FormattedMessage.RemoveMarkupPermissive(
             _navMap.GetNearestBeaconString((shuttle.Value, Transform(shuttle.Value))));
 
-        var extendedText = extended ? Loc.GetString("emergency-shuttle-extended") : "";
+        var extendedText = extended ? Loc.GetString(stationShuttleComp.LaunchExtendedMessage) : "";
         var locKey = result.ResultType == ShuttleDockResultType.NoDock
-            ? "emergency-shuttle-nearby"
-            : "emergency-shuttle-docked";
+            ? stationShuttleComp.NearbyAnnouncement
+            : stationShuttleComp.DockedAnnouncement;
 
         _chatSystem.DispatchStationAnnouncement(
             result.Station,
@@ -390,8 +393,8 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         // Play announcement audio.
 
         var audioFile = result.ResultType == ShuttleDockResultType.NoDock
-            ? "/Audio/Misc/notice1.ogg"
-            : "/Audio/Announcements/shuttle_dock.ogg";
+            ? stationShuttleComp.NearbyAudio
+            : stationShuttleComp.DockedAudio;
 
         // TODO: Need filter extensions or something don't blame me.
         _audio.PlayGlobal(audioFile, Filter.Broadcast(), true);

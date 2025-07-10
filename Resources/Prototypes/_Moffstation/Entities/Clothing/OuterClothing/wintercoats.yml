@@ -1,0 +1,21 @@
+- type: entity
+  parent: [ClothingOuterWinterCoat, ClothingOuterArmorBase]
+  id: ClothingOuterWinterSecArmored
+  name: security armored longcoat
+  description: A Double-Breasted longcoat, with Aramid woven into it. It keeps you warm while staying nearly as protective as a standard armor vest, and has pockets!
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.65
+        Piercing: 0.75
+        Heat: 0.70
+  - type: ExplosionResistance
+    damageCoefficient: 1
+  - type: StaminaResistance
+    damageCoefficient: 0.9
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatsecarmored.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatsecarmored.rsi

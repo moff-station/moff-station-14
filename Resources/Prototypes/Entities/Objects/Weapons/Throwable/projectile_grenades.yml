@@ -95,6 +95,8 @@
   - type: EmitSoundOnTrigger
     sound:
       path: "/Audio/Weapons/Guns/Gunshots/batrifle.ogg"
+  - type: StaticPrice
+    price: 1500
 
 - type: entity
   parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
@@ -122,3 +124,5 @@
   - type: EmitSoundOnTrigger
     sound:
       path: "/Audio/Weapons/Guns/Gunshots/batrifle.ogg"
+  - type: StaticPrice
+    price: 1500

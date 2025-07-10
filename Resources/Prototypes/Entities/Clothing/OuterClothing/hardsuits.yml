@@ -1,33 +1,6 @@
 #When adding new hardsuits, please try to keep the organization consistent with hardsuit-helmets.yml (if possible.)
 
 #CREW HARDSUITS
-#Basic Hardsuit
-- type: entity
-  parent: ClothingOuterHardsuitBase
-  id: ClothingOuterHardsuitBasic
-  name: basic hardsuit
-  description: A basic, universal hardsuit that protects the wearer against the horrors of life in space. Beats not having a hardsuit, at least.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/basic.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/basic.rsi
-  - type: ExplosionResistance
-    damageCoefficient: 0.9
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
-        Caustic: 0.9
-  - type: ClothingSpeedModifier
-    walkModifier: 0.80
-    sprintModifier: 0.80
-  - type: HeldSpeedModifier
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitBasic
-
 #Atmospherics Hardsuit
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseEngineeringContraband]
@@ -63,6 +36,11 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitAtmos
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Engineering Hardsuit
 - type: entity
@@ -95,6 +73,11 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitEngineering
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Spationaut Hardsuit
 - type: entity
@@ -119,7 +102,7 @@
         Radiation: 0.3 #salv is supposed to have radiation hazards in the future
         Caustic: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
+    walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: ToggleableClothing
@@ -129,6 +112,7 @@
     - Hardsuit
     - WhitelistChameleon
     - HardsuitSpatio
+    - CorgiWearable
 
 #Salvage Hardsuit
 - type: entity
@@ -146,9 +130,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -165,6 +149,11 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSalvage
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Goliath Hardsuit
 - type: entity
@@ -182,10 +171,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.3
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -204,6 +189,11 @@
   - type: Construction
     graph: HardsuitGoliath
     node: hardsuitGoliath
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Maxim Hardsuit
 - type: entity
@@ -222,10 +212,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -258,9 +244,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -276,6 +262,11 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSecurity
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Brigmedic Hardsuit
 - type: entity
@@ -291,9 +282,9 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -324,9 +315,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
   - type: StaminaResistance
-    damageCoefficient: 0.5 # Combat riot hardsuit, +40%.
+    damageCoefficient: 0.6
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -359,10 +350,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -378,6 +365,11 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitCap
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Chief Engineer's Hardsuit
 - type: entity
@@ -407,11 +399,16 @@
         Radiation: 0.0
         Caustic: 0.7
   - type: ClothingSpeedModifier
-    walkModifier: 0.75
+    walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitEngineeringWhite
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Chief Medical Officer's Hardsuit
 - type: entity
@@ -434,11 +431,16 @@
   - type: ZombificationResistance
     zombificationResistanceCoefficient: 0.4
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
+    walkModifier: 0.95
     sprintModifier: 0.95
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitMedical
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Research Director's Hardsuit
 - type: entity
@@ -454,10 +456,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Heavy Hardsuit, +20%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -481,6 +479,8 @@
     tags:
     - WhitelistChameleon
     - HighRiskItem
+    - CorgiWearable
+    - Hardsuit
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitRd
   - type: StaticPrice
@@ -504,9 +504,9 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -551,7 +551,7 @@
         Radiation: 0.5
         Caustic: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.85
+    walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: ToggleableClothing
@@ -576,10 +576,8 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.6 # Advanced combat hardsuit, +30%.
-  # Moffstation - End
+  - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
+    damageCoefficient: 0.75
   - type: Armor
     modifiers:
       coefficients:
@@ -600,6 +598,9 @@
     - MonkeyWearable
     - Hardsuit
     - WhitelistChameleon
+    - CorgiWearable
+  - type: StaticPrice
+    price: 5000
 
 # Syndicate Medic Hardsuit
 - type: entity
@@ -640,10 +641,8 @@
     damageCoefficient: 0.2
   - type: FireProtection
     reduction: 0.8
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.6 # Advanced Combat hardsuit, +30%.
-  # Moffstation - End
+  - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
+    damageCoefficient: 0.6
   - type: Armor
     modifiers:
       coefficients:
@@ -656,11 +655,16 @@
   - type: Item
     size: Huge
   - type: ClothingSpeedModifier
-    walkModifier: 1.0
+    walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieElite
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Syndicate Commander Hardsuit
 - type: entity
@@ -678,10 +682,8 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.6 # Advanced combat hardsuit, +30%.
-  # Moffstation - End
+  - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
+    damageCoefficient: 0.6
   - type: Armor
     modifiers:
       coefficients:
@@ -697,6 +699,12 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieCommander
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
+
 
 #Cybersun Juggernaut Hardsuit
 - type: entity
@@ -714,10 +722,7 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.3
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.7 # Intentional flaw.
-  # Moffstation - End
+  # - type: StaminaResistance # Should not have stamina resistance, this is purely so people know it was not forgotten.
   - type: Armor
     modifiers:
       coefficients:
@@ -728,7 +733,7 @@
         Radiation: 0.2
         Caustic: 0.2
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
+    walkModifier: 0.65
     sprintModifier: 0.65
   - type: HeldSpeedModifier
   - type: ToggleableClothing
@@ -736,6 +741,9 @@
   - type: Tag
     tags:
     - MonkeyWearable
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Wizard Hardsuit
 - type: entity
@@ -768,6 +776,11 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitWizard
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 #Ling Space Suit
 - type: entity
@@ -816,10 +829,6 @@
     sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance)
-  - type: StaminaResistance
-    damageCoefficient: 0.8 # Shitty combat hardsuit, +10%.
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -829,8 +838,8 @@
         Heat: 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
-    walkModifier: 0.6
-    sprintModifier: 0.6
+    walkModifier: 0.8 # Moffstation - more mobility for pirates
+    sprintModifier: 0.8 # Moffstation - more mobility for pirates
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitPirateEVA
@@ -845,19 +854,19 @@
   description: An ancient armored hardsuit, perfect for defending against space scurvy and toolbox-wielding scallywags.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi # Moffstation - Custom Pirate captain hardsuit sprite
   - type: Item
     size: Huge
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi # Moffstation - Custom Pirate captain hardsuit sprite
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
   - type: StaminaResistance
-    damageCoefficient: 0.7 # Combat hardsuit, +20%.
+    damageCoefficient: 0.8
   # Moffstation - End
   - type: Armor
     modifiers:
@@ -1025,9 +1034,9 @@
     coolingCoefficient: 0.001
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance)
+  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
   - type: StaminaResistance
-    damageCoefficient: 0.6 # Advanced combat hardsuit, +30%.
+    damageCoefficient: 0.6
   # Moffstation - End
   - type: Armor
     modifiers:

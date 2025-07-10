@@ -1,4 +1,4 @@
-using Content.Shared.Security;
+using Content.Shared.CriminalRecords;
 using Content.Shared.StationRecords;
 using Robust.Shared.Serialization;
 
@@ -52,9 +52,9 @@ public sealed class CharacterRecordConsoleState : BoundUserInterfaceState
     public StationRecordsFilter? Filter { get; set; } = null;
 
     /// <summary>
-    /// Security status of the selected record
+    /// Criminal record of the selected record.
     /// </summary>
-    public (SecurityStatus, string?)? SelectedSecurityStatus = null;
+    public CriminalRecord? SelectedCriminalRecord;
 }
 
 [Serializable, NetSerializable]

@@ -32,6 +32,12 @@ namespace Content.IntegrationTests.Tests
         private const bool SkipTestMaps = true;
         private const string TestMapsPath = "/Maps/Test/";
 
+        // Moffstation - Whitelist for jobs that don't need to be mapped
+        private static readonly ProtoId<JobPrototype>[] NoSpawnJobs =
+        {
+            "Prisoner"
+        };
+
         private static readonly string[] NoSpawnMaps =
         {
             "CentComm",
@@ -48,9 +54,8 @@ namespace Content.IntegrationTests.Tests
         {
             "/Maps/centcomm.yml",
             "/Maps/_Harmony/centcomm.yml", // Harmony Centcomm
+            "/Maps/_Umbra/Misc/terminal.yml",  // Umbra Arrivals
             "/Maps/bagel.yml", // Contains mime's rubber stamp --> Either fix this, remove the category, or remove this comment if intentional.
-            "/Maps/gate.yml", // Contains positronic brain and LSE-1200c "Perforator"
-            "/Maps/meta.yml", // Contains warden's rubber stamp
             "/Maps/reach.yml", // Contains handheld crew monitor
             "/Maps/Shuttles/ShuttleEvent/cruiser.yml", // Contains LSE-1200c "Perforator"
             "/Maps/Shuttles/ShuttleEvent/honki.yml", // Contains golden honker, clown's rubber stamp
@@ -65,28 +70,32 @@ namespace Content.IntegrationTests.Tests
             "Dev",
             "TestTeg",
             "Fland",
-            "Meta",
             "Packed",
-            "Omega",
             "Bagel",
             "CentComm",
             "Box",
-            "Core",
             "Marathon",
             "MeteorArena",
             "Saltern",
             "Reach",
-            "Train",
             "Oasis",
-            "Gate",
             "Amber",
-            "Loop",
             "Plasma",
             "Elkridge",
-            "Convex",
             "Relic",
-            "dm01-entryway"
-
+            "dm01-entryway",
+            "Exo",
+            // Moffstation - Start - Our maps
+            "Waterjug",
+            "Tram2",
+            "Train",
+            "Core",
+            "Omega",
+            "Loop",
+            "Meta",
+            "MW-Dock",
+            "CS-Dust2",
+            // Moffstation - End
         };
 
         /// <summary>
@@ -410,6 +419,8 @@ namespace Content.IntegrationTests.Tests
                     // This is done inside gamemap test because loading the map takes ages and we already have it.
                     var comp = entManager.GetComponent<StationJobsComponent>(station);
                     var jobs = new HashSet<ProtoId<JobPrototype>>(comp.SetupAvailableJobs.Keys);
+
+                    jobs.ExceptWith(NoSpawnJobs);   // Moffstation - filter out our custom jobs
 
                     var spawnPoints = entManager.EntityQuery<SpawnPointComponent>()
                         .Where(x => x.SpawnType == SpawnPointType.Job && x.Job != null)

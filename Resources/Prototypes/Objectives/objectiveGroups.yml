@@ -6,18 +6,20 @@
     TraitorObjectiveGroupKill: 1
     TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
     TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveOpenEnded: 1.5  # Moffstation - Open ended objectives
+    TraitorObjectiveOpenEnded: 1.2  # Moffstation - Open ended objectives
 
 # Moffstation - Start - Open ended objectives
 - type: weightedRandom
   id: TraitorObjectiveOpenEnded
   weights:
-    DisruptionObjective: 1
+    DisruptDepartmentObjective: 1
     SabotageObjective: 1
-    InfiltrateObjective: 1
+    InfiltrateObjective: 0.5
     JailbreakObjective: 1
-    DistractSecObjective: 1
-    IncriminateObjective: 1
+    # DistractSecObjective: 1
+    # IncriminateObjective: 1
+    LeaveCallingCardObjective: 0.5
+    LeaveCallingCardOnPersonObjective: 0.5
 # Moffstation - End
 
 - type: weightedRandom
@@ -53,7 +55,7 @@
 - type: weightedRandom
   id: TraitorObjectiveGroupSocial
   weights:
-    RandomTraitorAliveObjective: 1
+#    RandomTraitorAliveObjective: 1 - Removed because the objective was boring and didn't progress the round.
     RandomTraitorProgressObjective: 1
 
 #Thief groups
@@ -68,8 +70,8 @@
 - type: weightedRandom
   id: ThiefObjectiveOpenEnded
   weights:
-    StealEverythingObjective: 1
-    StealMoneyObjective: 1
+    StealEverythingObjective: 0.5
+    StealMoneyObjective: 0.5
     RobDepartmentObjective: 1
     InfiltrateThiefObjective: 1
 # Moffstation - End
@@ -106,7 +108,6 @@
     AmePartFlatpackStealObjective: 1
     ExpeditionsCircuitboardStealObjective: 1            #sup
     CargoShuttleCircuitboardStealObjective: 1
-    SalvageShuttleCircuitboardStealObjective: 1
     ClothingEyesHudBeerStealObjective: 1                #srv
     BibleStealObjective: 1
     ClothingNeckGoldmedalStealObjective: 1              #other

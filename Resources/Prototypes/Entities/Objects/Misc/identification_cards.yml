@@ -25,6 +25,7 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+  - type: NanoChatCard # CD
 
 #IDs with layers
 
@@ -476,6 +477,8 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: CentralCommandOfficial
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -490,6 +493,8 @@
     job: ERTLeader
   - type: Item
     heldPrefix: gold
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -504,6 +509,8 @@
     job: ERTChaplain
   - type: Item
     heldPrefix: blue
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -516,6 +523,8 @@
     - state: ert_engineer
   - type: PresetIdCard
     job: ERTEngineer
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -528,6 +537,8 @@
     - state: ert_janitor
   - type: PresetIdCard
     job: ERTJanitor
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -540,6 +551,8 @@
     - state: ert_medic
   - type: PresetIdCard
     job: ERTMedical
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -552,6 +565,8 @@
     - state: ert_security
   - type: PresetIdCard
     job: ERTSecurity
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -577,6 +592,8 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: DeathSquad
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   name: passenger ID card
@@ -611,6 +628,8 @@
         type: AgentIDCardBoundUserInterface
       enum.ChameleonUiKey.Key:
         type: ChameleonBoundUserInterface
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   name: passenger ID card
@@ -639,15 +658,22 @@
 - type: entity
   parent: [ IDCardStandard, BaseSyndicateContraband ]
   id: SyndicateIDCard
-  name: syndicate ID card
+  # Moffstation - Begin (Nuclear Operative Balancing)
+  name: syndicate operative ID card
+  description: A modified ID capable of copying the access of another ID by simply touching them together. Used primarily by Gorlex assault teams.
+  # Moffstation - End
   components:
   - type: Sprite
     layers:
     - state: syndie
+  - type: AgentIDCard # Moffstation - Nuclear Operative Balancing
   - type: Access
     tags:
     - NuclearOperative
     - SyndicateAgent
+    - Maintenance # Moffstation - Nuclear Operative Balancing
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: [ IDCardStandard, BaseMajorContraband ]
@@ -659,8 +685,9 @@
     - state: pirate
   - type: Access
     tags:
-    - NuclearOperative
-    - SyndicateAgent
+    - Pirate  # Moffstation - Created pirate access
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -755,6 +782,7 @@
     - Recyclable
   - type: StaticPrice # these are infinitely producible.
     price: 0
+  - type: NanoChatCard # CD
 
 - type: entity
   parent: CentcomIDCard
@@ -769,6 +797,8 @@
     heldPrefix: blue
   - type: PresetIdCard
     job: CBURN
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -782,7 +812,10 @@
     - state: idcluwne
   - type: IdCard
     jobTitle: job-title-cluwne
+    jobIcon: JobIconCluwne
   - type: Unremoveable
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: EngineeringIDCard
@@ -793,6 +826,7 @@
     layers:
     - state: default
     - state: idseniorengineer
+  - type: NanoChatCard # CD
 
 - type: entity
   parent: ResearchIDCard
@@ -803,6 +837,7 @@
     layers:
     - state: default
     - state: idseniorresearcher
+  - type: NanoChatCard # CD
 
 - type: entity
   parent: MedicalIDCard
@@ -813,6 +848,7 @@
     layers:
     - state: default
     - state: idseniorphysician
+  - type: NanoChatCard # CD
 
 - type: entity
   parent: SecurityIDCard
@@ -823,6 +859,7 @@
     layers:
     - state: default
     - state: idseniorofficer
+  - type: NanoChatCard # CD
 
 - type: entity
   parent: IDCardStandard
@@ -838,6 +875,8 @@
     - Wizard
     - External
     - Maintenance
+  - type: NanoChatCard # CD
+    listNumber: false
 
 - type: entity
   parent: IDCardStandard
@@ -868,6 +907,7 @@
     - SyndicateAgent
     - Wizard
     - Xenoborg
+    - Pirate  # Moffstation - Pirate access
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -879,3 +919,6 @@
     interfaces:
       enum.AgentIDCardUiKey.Key:
         type: AgentIDCardBoundUserInterface
+  - type: NanoChatCard # CD
+    notificationsMuted: true
+    listNumber: false

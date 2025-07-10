@@ -1,75 +1,215 @@
 {
-  "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/commit/e1142f20f5e4661cb6845cfcf2dd69f864d67432",
-  "size": {
-    "x": 32,
-    "y": 32
-  },
-  "states": [
-    {
-      "name": "icon"
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sliced into colorable layers from generic.rsi, based on original from TG station: Taken from tgstation at https://github.com/tgstation/tgstation/commit/e1142f20f5e4661cb6845cfcf2dd69f864d67432. Suit and back storages drawn by Ubaser.",
+    "size": {
+        "x": 32,
+        "y": 32
     },
-    {
-      "name": "equipped-BELT",
-      "directions": 4
-    },
-    {
-      "name": "equipped-SUITSTORAGE-dog",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-puppy",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-fox",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-cat",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-sloth",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-hamster",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-kangaroo",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-possum",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "equipped-SUITSTORAGE-pig",
-      "directions": 4,
-      "delays": [[1],[1],[1],[1]]
-    },
-    {
-      "name": "inhand-left",
-      "directions": 4
-    },
-    {
-      "name": "inhand-right",
-      "directions": 4
-    },
-    {
-      "name": "equipped-SUITSTORAGE",
-      "directions": 4
-    }
-  ]
+    "states": [
+        {
+            "name": "icon-hardware"
+        },
+        {
+            "name": "icon-stripe-middle"
+        },
+        {
+            "name": "icon-stripe-low"
+        },
+        {
+            "name": "icon-tank"
+        },
+        {
+            "name": "equipped-BELT-hardware",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BELT-stripe-middle",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BELT-stripe-low",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BELT-tank",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left-hardware",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left-tank",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right-hardware",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right-tank",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-hamster",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-hamster",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-hamster",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-hamster",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-pig",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-pig",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-pig",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-pig",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-possum",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-possum",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-possum",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-possum",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-kangaroo",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-kangaroo",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-kangaroo",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-kangaroo",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-fox",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-fox",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-fox",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-fox",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-dog",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-dog",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-dog",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-dog",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-cat",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-cat",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-cat",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-cat",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-sloth",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-sloth",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-sloth",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-sloth",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-hardware-puppy",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-middle-puppy",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-stripe-low-puppy",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE-tank-puppy",
+            "directions": 4
+        }
+    ]
 }

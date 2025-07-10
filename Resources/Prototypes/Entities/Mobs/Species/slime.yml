@@ -15,7 +15,6 @@
   # they like eat it idk lol
   - type: Storage
     clickInsert: false
-    openOnActivate: false
     grid:
     - 0,0,1,2
     maxItemSize: Large
@@ -92,7 +91,6 @@
         damage:
           types:
             Heat: 0.5 # MOFFSTATION CHANGE - Increases slime water damage by 5x
-
       - !type:PopupMessage
         type: Local
         visualType: Large

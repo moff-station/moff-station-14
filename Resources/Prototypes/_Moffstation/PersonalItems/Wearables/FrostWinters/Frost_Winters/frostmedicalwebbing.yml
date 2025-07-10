@@ -14,9 +14,8 @@
 
 - type: loadout
   id: PersonalItemFrostMedicalWebbing
-  storage:
-    belt:
-    - PersonalItemFrostMedicalWebbing
+  inhand:
+  - PersonalItemFrostMedicalWebbing
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

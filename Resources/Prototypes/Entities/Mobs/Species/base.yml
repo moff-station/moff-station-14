@@ -30,9 +30,10 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
-    - map: [ "belt" ]
+    #- map: [ "belt" ] Moffstation (Belts Over Outerwear)
     - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "belt" ] # Moffstation (Belts Over Outerwear)
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
@@ -123,20 +124,17 @@
     - KnockedDown
     - SlowedDown
     - Stutter
-    - SeeingRainbows
     - Electrocution
     - Drunk
     - SlurredSpeech
     - RatvarianLanguage
     - PressureImmunity
     - Muted
-    - ForcedSleep
     - TemporaryBlindness
     - Pacified
     - StaminaModifier
     - Flashed
     - RadiationProtection
-    - Drowsiness
     - Adrenaline
   - type: Body
     prototype: Human

@@ -15,6 +15,7 @@
   jobEntity: StationAiBrain
   jobPreviewEntity: PlayerStationAiPreview
   applyTraits: false
+  ignoreArrivals: true  # Moffstation - AI ignores arrivals
   # CD: Skip records
   special:
   - !type:AddComponentSpecial

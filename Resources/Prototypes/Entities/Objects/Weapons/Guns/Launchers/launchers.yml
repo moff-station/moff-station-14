@@ -57,10 +57,13 @@
     whitelist:
       tags:
         - Grenade
-    capacity: 3
+    capacity: 4 # Moffstation - Launcher Tweaks
     proto: GrenadeFrag
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: GunRequiresWield
+  - type: StaticPrice
+    price: 10000
 
 - type: entity
   parent: [ BaseWeaponLauncher, BaseGunWieldable, BaseMajorContraband ]
@@ -78,14 +81,23 @@
     slots:
     - Back
     - suitStorage
+  # Moffstation - Begin (Launcher Tweaks) FRED ALLOW WEAPON RESIZING TO OVERWRITE THIS!!!
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,3
+  # Moffstation - End
   - type: AmmoCounter
+  # Moffstation - Begin (Launcher Tweaks)
   - type: Gun
-    fireRate: 1
+    fireRate: 0.8
+  # Moffstation - End
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: GunRequiresWield
   - type: ContainerContainer
     containers:
       revolver-ammo: !type:Container
@@ -101,6 +113,23 @@
       path: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
+
+# Moffstation - Begin (Launcher Tweaks)
+- type: entity
+  parent: WeaponLauncherHydra
+  id: WeaponLauncherHydraFrag
+  suffix: Lethal
+  components:
+  - type: RevolverAmmoProvider
+    proto: GrenadeFrag
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+    soundEject:
+      path: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
+# Moffstation - End
 
 - type: entity
   name: RPG-7
@@ -227,7 +256,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-    - type: ToggleableLightVisuals
+    - type: ToggleableVisuals
       spriteLayer: unshaded
       inhandVisuals:
         left:
@@ -275,7 +304,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-        - type: ToggleableLightVisuals
+        - type: ToggleableVisuals
           spriteLayer: unshaded
           inhandVisuals:
             left:
@@ -347,7 +376,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-    - type: ToggleableLightVisuals
+    - type: ToggleableVisuals
       spriteLayer: unshaded
       inhandVisuals:
         left:
@@ -389,7 +418,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-    - type: ToggleableLightVisuals
+    - type: ToggleableVisuals
       spriteLayer: unshaded
       inhandVisuals:
         left:

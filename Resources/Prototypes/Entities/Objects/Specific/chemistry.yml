@@ -459,6 +459,14 @@
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
       - state: syringeproj
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 5
+  - type: Injector
+    minTransferAmount: 1
+    maxTransferAmount: 5
+    transferAmount: 5
   - type: SolutionContainerVisuals
     maxFillLevels: 3
     fillBaseName: minisyringe
@@ -474,7 +482,7 @@
     solution: injector
     updateInterval: 2
   - type: SolutionInjectOnEmbed
-    transferAmount: 2
+    transferAmount: 1
     solution: injector
   - type: Fixtures
     fixtures:
@@ -644,12 +652,18 @@
   - type: Storage
     grid:
     - 0,0,4,1
-    quickInsert: true
-    areaInsert: true
-    areaInsertRadius: 1
+# Moffstation - Start
+#    quickInsert: true
+#    areaInsert: true
+#    areaInsertRadius: 1
+# Moffstation - End
     storageInsertSound: /Audio/Effects/pill_insert.ogg
     storageRemoveSound: /Audio/Effects/pill_remove.ogg
     whitelist:
       tags:
       - Pill
   - type: Dumpable
+  # Moffstation - Start
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End
