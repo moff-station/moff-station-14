@@ -9,43 +9,46 @@ namespace Content.Server._Starlight.Paper;
 public sealed partial class GameruleOnSignComponent : Component
 {
     /// <summary>
-    /// how many signatures are needed before this paper goes into effect.
+    /// how many signatures are needed before the gamerules on paper goes into effect.
     /// </summary>
     [DataField]
-    public int Remaining = 1;
+    public int SignaturesNeeded = 1;
 
     /// <summary>
     /// how many people are able to sign this paper in a attempt to roll for antag.
     /// </summary>
     [DataField]
-    public int Charges = 1;
-
-    [DataField]
-    public SignatureEffect effectType = SignatureEffect.Signer;
+    public int AntagCharges = 1;
 
     /// <summary>
     /// A list of every entity that has signed this paper to prevent spam signing from instantly activating the paper.
     /// </summary>
     [ViewVariables]
-    public List<EntityUid> SignedEntityUids = [];
+    public HashSet<EntityUid> SignedEntityUids = [];
 
     /// <summary>
     /// A Whitelist of whos signatures should count for this component.
     /// </summary>
     [DataField]
-    public EntityWhitelist? Whitelist = null;
+    public EntityWhitelist? Whitelist;
 
     /// <summary>
     /// A Whitelist of whos signatures should not count for this component.
     /// </summary>
     [DataField]
-    public EntityWhitelist? Blacklist = null;
+    public EntityWhitelist? Blacklist;
 
     /// <summary>
-    /// What is the chance of this going on after all the signatures are collected. 1 is always, 0 is never.
+    /// The chance the associated gamerule triggering after the required signatures are collected.
     /// </summary>
     [DataField]
-    public float Chance = 1.0f;
+    public float GameruleChance = 1.0f;
+
+    /// <summary>
+    /// The chance of the antag roles being applied when this paper is sign
+    /// </summary>
+    [DataField]
+    public float AntagChance = 1.0f;
 
     /// <summary>
     /// What game rules are added once signatures are collected and with a bit of luck.
@@ -54,16 +57,9 @@ public sealed partial class GameruleOnSignComponent : Component
     public List<EntProtoId<GameRuleComponent>> Rules = [];
 
     /// <summary>
-    /// is the faxable component kept? this is for admeme protos
+    /// What antags should be applied to signers of the paper
     /// </summary>
     [DataField]
-    public bool KeepFaxable = false;
+    public List<string> Antags = [];
 
-}
-
-public enum SignatureEffect
-{
-    None,
-    Signer,
-    SignedName
 }

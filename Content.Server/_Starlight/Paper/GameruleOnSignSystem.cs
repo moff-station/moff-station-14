@@ -1,8 +1,10 @@
+using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Shared.Paper;
 using Content.Shared.Whitelist;
 using Content.Shared.Fax.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 
 namespace Content.Server._Starlight.Paper;
@@ -12,6 +14,8 @@ public sealed class GameruleOnSignSystem : EntitySystem
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+
 
     public override void Initialize()
     {
@@ -20,40 +24,47 @@ public sealed class GameruleOnSignSystem : EntitySystem
         SubscribeLocalEvent<GameruleOnSignComponent, ComponentInit>(OnComponentInit);
     }
 
-        private void OnComponentInit(EntityUid uid, GameruleOnSignComponent comp, ComponentInit init)
+    private void OnComponentInit(EntityUid uid, GameruleOnSignComponent comp, ComponentInit init)
     {
-        if (comp.KeepFaxable)
-            return;
-        RemComp<FaxableObjectComponent>(uid); //cause this breaks shit like infinite antags
+        // Remove faxable, so triggers cant be duped. can be readded by admins, and the destination copy will remove it automatically
+        if (HasComp<FaxableObjectComponent>(uid))
+            RemComp<FaxableObjectComponent>(uid);
     }
 
 
     private void OnPaperSigned(EntityUid uid, GameruleOnSignComponent component, PaperSignedEvent args)
     {
-        if (component.Remaining <= 0)
-            return; // we allready ran this component so no need to check again anymore.
-        var signer = args.Signer;
-        if (!_whitelistSystem.CheckBoth(signer, component.Blacklist, component.Whitelist))
+        // Check if they've already signed the paper, if not add them to the list
+        if (!component.SignedEntityUids.Add(args.Signer))
             return;
-        component.Remaining--;
-        component.SignedEntityUids.Add(signer);
 
-        if (component.Remaining != 0)
-            return; //we havent hit the conditions to activate it.
+        if (!_whitelistSystem.CheckBoth(args.Signer, component.Blacklist, component.Whitelist))
+            return;
 
-        if (_random.NextFloat() > component.Chance)
-            return; //vibe check failed no events for you.
-
-        foreach (var rule in component.Rules)
+        if (component.SignaturesNeeded > 0)
         {
-            var ent = _gameTicker.AddGameRule(rule.Id);
-            if (component.effectType == SignatureEffect.Signer)
+            component.SignaturesNeeded--;
+
+            if (component.SignaturesNeeded <= 0 && _random.NextFloat() < component.GameruleChance)
             {
-                if (!TryComp<AntagSelectionComponent>(ent, out var antagSelectionComp))
-                    return;
+                foreach (var rule in component.Rules)
+                {
+                    var ent = _gameTicker.AddGameRule(rule.Id);
+                    _gameTicker.StartGameRule(ent);
+                }
             }
-            _gameTicker.StartGameRule(ent);
         }
 
+        if (component.AntagCharges > 0)
+        {
+            foreach (var antag in component.Antags)
+            {
+                // var targetComp = _componentFactory.GetComponent(antag.TargetComponent);
+                if (!TryComp(args.Signer, out ActorComponent? actor))
+                    return;
+                // Evil function (though usage is probably correct). There isn't infrastructure around gamerules targeting specific people, so we'll just hit em with this.
+                _antag.ForceMakeAntag<AntagSelectionComponent>(actor.PlayerSession, antag);
+            }
+        }
     }
 }
