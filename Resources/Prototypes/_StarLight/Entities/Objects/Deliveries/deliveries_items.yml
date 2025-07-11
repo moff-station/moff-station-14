@@ -8,8 +8,8 @@
       content: delivery-spam-reasons-to-join-syndicate
     - type: GameruleOnSign
       chance: 1.0
-      antags:
-        - Traitor
       blacklist:
         components:
         - MindShield
+      antags:
+        - Traitor

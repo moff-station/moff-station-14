@@ -7,8 +7,8 @@
     - type: Paper
       content: paper-too-quiet-need-chaos
     - type: GameruleOnSign
-      remaining: 9 # command, security, cargo, science, medical, engineering, service, and 2 members of sec outside of hos (or more sec/salv and less heads... or people who you mindshielded JUST to get this signed)
-      whitelist: 
+      signaturesNeeded: 9 # command, security, cargo, science, medical, engineering, service, and 2 members of sec outside of hos (or more sec/salv and less heads... or people who you mindshielded JUST to get this signed)
+      whitelist:
         components:
           - MindShield
       rules: #this will DEFINETLY end the "quiet" you so hate
@@ -36,12 +36,11 @@
     - type: Paper
       content: paper-too-quiet-need-chaos-few
     - type: GameruleOnSign
-      remaining: 3 # on 15 pop usually there are only about 3 heads I expect
-      whitelist: 
+      signaturesNeeded: 3 # on 15 pop usually there are only about 3 heads I expect
+      whitelist:
         components:
           - MindShield
       rules: #this will DEFINETLY end the "quiet" you so hate
-        - AbductorsSpawn
         - AnomalySpawn # only 2 anoms cause you are probally on reach or omega which are TINY
         - AnomalySpawn
         - UnknownShuttleHonki
