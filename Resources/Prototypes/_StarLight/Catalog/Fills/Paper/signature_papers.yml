@@ -46,3 +46,19 @@
         - UnknownShuttleHonki
         - WizardSpawn
         - NinjaSpawn #spawns less cause there is also less people to take said roles. and I deem these to be the less "chaotic" ones
+
+- type: entity
+  id: MailSyndicateSpamLetter
+  name: Reasons to choose The Syndicate!
+  description: An advertisement for the Syndicate. Wont fit in a fax somehow.
+  parent: Paper
+  components:
+  - type: Paper
+    content: delivery-spam-reasons-to-join-syndicate
+  - type: GameruleOnSign
+    chance: 1.0
+    blacklist:
+      components:
+      - MindShield
+    antags:
+    - Traitor
