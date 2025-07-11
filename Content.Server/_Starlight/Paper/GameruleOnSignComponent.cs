@@ -60,7 +60,7 @@ public sealed partial class GameruleOnSignComponent : Component
     /// What antags should be applied to signers of the paper
     /// </summary>
     [DataField]
-    public List<string> Antags = [];
+    public List<EntProtoId<GameRuleComponent>> Antags = [];
 
     /// <summary>
     /// what objectives should be added to the person.

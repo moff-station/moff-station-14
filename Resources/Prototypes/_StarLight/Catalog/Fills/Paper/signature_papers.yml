@@ -35,11 +35,11 @@
     - type: Paper
       content: paper-too-quiet-need-chaos
     - type: GameruleOnSign
-      signaturesNeeded: 9 # command, security, cargo, science, medical, engineering, service, and 2 members of sec outside of hos (or more sec/salv and less heads... or people who you mindshielded JUST to get this signed)
+      signaturesNeeded: 9
       whitelist:
         components:
           - MindShield
-      rules: #this will DEFINETLY end the "quiet" you so hate
+      rules: # this will DEFINITELY end the "quiet" you so hate
         - AnomalySpawn
         - AnomalySpawn
         - AnomalySpawn
@@ -51,8 +51,6 @@
         - DragonSpawn
         - NinjaSpawn
         - ParadoxCloneSpawn
-
-
 - type: entity
   parent: PaperNonFaxable
   id: PaperTooQuietNeedChaosFew
@@ -67,12 +65,12 @@
       whitelist:
         components:
           - MindShield
-      rules: #this will DEFINETLY end the "quiet" you so hate
-        - AnomalySpawn # only 2 anoms cause you are probally on reach or omega which are TINY
+      rules: # this will DEFINITELY end the "quiet" you so hate
+        - AnomalySpawn # only 2 anoms because you are probably on reach or omega which are TINY
         - AnomalySpawn
         - UnknownShuttleHonki
         - LoneOpsSpawn
-        - NinjaSpawn #spawns less cause there is also less people to take said roles. and I deem these to be the less "chaotic" ones
+        - NinjaSpawn # spawns fewer because there are also fewer people to take said roles, and I deem these to be the less "chaotic" ones
 
 - type: entity
   id: MailSyndicateSpamLetter

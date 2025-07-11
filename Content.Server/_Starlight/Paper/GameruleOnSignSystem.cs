@@ -72,7 +72,10 @@ public sealed class GameruleOnSignSystem : EntitySystem
             if (component.Objectives.Count > 0)
             {
                 // Wipe all the current objectives so they can be overriden
-                while (_mind.TryRemoveObjective(mind.Value, mindComponent, 0));
+                while (_mind.TryRemoveObjective(mind.Value, mindComponent, 0))
+                {
+                    // Wipe all the current objectives so they can be overriden
+                }
 
                 foreach (var objective in component.Objectives)
                 {
