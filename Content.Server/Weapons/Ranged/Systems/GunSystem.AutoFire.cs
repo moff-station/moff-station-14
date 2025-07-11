@@ -6,9 +6,9 @@ namespace Content.Server.Weapons.Ranged.Systems;
 
 public sealed partial class GunSystem
 {
-    public override void Update(float frameTime)
+    private void UpdateAutoFire() // Moffstation
     {
-        base.Update(frameTime);
+//        base.Update(frameTime); // Moffstation
 
         /*
          * On server because client doesn't want to predict other's guns.

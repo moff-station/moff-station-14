@@ -1,5 +1,6 @@
 using Content.Shared._Moffstation.Storage; // Moffstation
 using Content.Shared._Moffstation.Storage.EntitySystems; // Moffstation
+using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -22,7 +23,6 @@ public abstract partial class SharedGunSystem
     [Dependency] private readonly AreaPickupSystem _areaPickup = default!;
     [Dependency] private readonly QuickPickupSystem _quickPickup = default!;
     // Moffstation - End
-
 
     protected virtual void InitializeBallistic()
     {
@@ -273,6 +273,13 @@ public abstract partial class SharedGunSystem
                 component.Entities.RemoveAt(component.Entities.Count - 1);
                 DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.Entities));
                 Containers.Remove(entity, component.Container);
+
+                // Moffstation - Start
+                if (TryComp<BallisticAmmoSelfRefillerComponent>(uid, out var refiller))
+                {
+                    PauseSelfRefill((uid, refiller));
+                }
+                // Moffstation - End
             }
             else if (component.UnspawnedCount > 0)
             {
@@ -339,6 +346,27 @@ public abstract partial class SharedGunSystem
     // Moffstation - End
 
     // Moffstation - Start - New Ballistic API functions
+    /// <summary>
+    /// Causes <paramref name="entity"/> to pause its refilling for either at least <paramref name="overridePauseDuration"/>
+    /// (if not null) or the entity's <see cref="BallisticAmmoSelfRefillerComponent.AutoRefillPauseDuration"/>. If the
+    /// entity's next refill would occur after the pause duration, this function has no effect.
+    /// </summary>
+    public void PauseSelfRefill(
+        Entity<BallisticAmmoSelfRefillerComponent> entity,
+        TimeSpan? overridePauseDuration = null
+    )
+    {
+        if (overridePauseDuration == null && !entity.Comp.FiringPausesAutoRefill)
+            return;
+
+        var nextRefillByPause = Timing.CurTime + (overridePauseDuration ?? entity.Comp.AutoRefillPauseDuration);
+        if (nextRefillByPause > entity.Comp.NextAutoRefill)
+        {
+            entity.Comp.NextAutoRefill = nextRefillByPause;
+            Dirty(entity);
+        }
+    }
+
     /// <summary>
     /// Returns true if the given <paramref name="entity"/>'s ballistic ammunition is full, false otherwise.
     /// </summary>
