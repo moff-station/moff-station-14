@@ -15,10 +15,10 @@ public sealed partial class GameruleOnSignComponent : Component
     public int SignaturesNeeded = 1;
 
     /// <summary>
-    /// how many people are able to sign this paper in a attempt to roll for antag.
+    /// How many charges this paper has, in terms of supplying new objectives/antags.
     /// </summary>
     [DataField]
-    public int AntagCharges = 1;
+    public int Charges = 1;
 
     /// <summary>
     /// A list of every entity that has signed this paper to prevent spam signing from instantly activating the paper.
@@ -45,10 +45,10 @@ public sealed partial class GameruleOnSignComponent : Component
     public float GameruleChance = 1.0f;
 
     /// <summary>
-    /// The chance of the antag roles being applied when this paper is sign
+    /// The chance of the objectives/antags being applied when this paper is signed
     /// </summary>
     [DataField]
-    public float AntagChance = 1.0f;
+    public float TriggerChance = 1.0f;
 
     /// <summary>
     /// What game rules are added once signatures are collected and with a bit of luck.
@@ -62,4 +62,9 @@ public sealed partial class GameruleOnSignComponent : Component
     [DataField]
     public List<string> Antags = [];
 
+    /// <summary>
+    /// what objectives should be added to the person.
+    /// </summary>
+    [DataField]
+    public List<EntProtoId> Objectives = [];
 }

@@ -1,9 +1,11 @@
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
+using Content.Server.Mind;
 using Content.Shared.Paper;
 using Content.Shared.Whitelist;
 using Content.Shared.Fax.Components;
+using Content.Shared.Mind;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 
@@ -15,6 +17,8 @@ public sealed class GameruleOnSignSystem : EntitySystem
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private readonly MindSystem _mind = default!;
+
 
 
     public override void Initialize()
@@ -55,17 +59,34 @@ public sealed class GameruleOnSignSystem : EntitySystem
             }
         }
 
-        if (component.AntagCharges > 0)
+        if (component.Charges > 0 && _random.NextFloat() < component.TriggerChance)
         {
-            component.AntagCharges--;
+            // If it can't do it's job right, then dont subtract from the charges
+            if (!TryComp(args.Signer, out ActorComponent? actor))
+                return;
+
+            if (!_mind.TryGetMind(actor.PlayerSession.UserId, out var mind, out var mindComponent))
+                return;
+
+            component.Charges--;
+
 
             foreach (var antag in component.Antags)
             {
                 // var targetComp = _componentFactory.GetComponent(antag.TargetComponent);
-                if (!TryComp(args.Signer, out ActorComponent? actor))
-                    return;
                 // Evil function (though usage is probably correct). There isn't infrastructure around gamerules targeting specific people, so we'll just hit em with this.
                 _antag.ForceMakeAntag<AntagSelectionComponent>(actor.PlayerSession, antag);
+            }
+
+            if (component.Objectives.Count > 0)
+            {
+                // Wipe all the current objectives so they can be overriden
+                while (_mind.TryRemoveObjective(mind.Value, mindComponent, 0));
+
+                foreach (var objective in component.Objectives)
+                {
+                    _mind.TryAddObjective(mind.Value, mindComponent, objective.Id);
+                }
             }
         }
     }
