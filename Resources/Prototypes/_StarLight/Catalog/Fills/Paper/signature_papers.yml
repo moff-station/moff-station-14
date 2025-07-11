@@ -12,7 +12,6 @@
         components:
           - MindShield
       rules: #this will DEFINETLY end the "quiet" you so hate
-        - AbductorsSpawn
         - AnomalySpawn
         - AnomalySpawn
         - AnomalySpawn
@@ -44,7 +43,7 @@
         - AnomalySpawn # only 2 anoms cause you are probally on reach or omega which are TINY
         - AnomalySpawn
         - UnknownShuttleHonki
-        - WizardSpawn
+        - LoneOpsSpawn
         - NinjaSpawn #spawns less cause there is also less people to take said roles. and I deem these to be the less "chaotic" ones
 
 - type: entity
