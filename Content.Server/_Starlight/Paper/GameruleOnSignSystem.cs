@@ -2,6 +2,7 @@ using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
+using Content.Shared._Starlight.Paper;
 using Content.Shared.Paper;
 using Content.Shared.Whitelist;
 using Content.Shared.Fax.Components;
