@@ -15,6 +15,7 @@
     doctor: LockerMedical
     electrical: LockerElectricalSupplies
     engineer: LockerEngineer
+    evac: LockerEvacRepair
     hop: LockerHeadOfPersonnel
     hos: LockerHeadOfSecurity
     mime: LockerMime
@@ -33,32 +34,7 @@
   cost: 2
   defaultStyle: basic
   styles:
-    # Lockers (look alright as closets)
-    atmospherics: LockerAtmospherics
     basic: ClosetSteelBase
-    botanist: LockerBotanist
-    brigmedic: LockerBrigmedic
-    captain: LockerCaptain
-    ce: LockerChiefEngineer
-    chemical: LockerChemistry
-    clown: LockerClown
-    cmo: LockerChiefMedicalOfficer
-    doctor: LockerMedical
-    electrical: LockerElectricalSupplies
-    engineer: LockerEngineer
-    hop: LockerHeadOfPersonnel
-    hos: LockerHeadOfSecurity
-    medicine: LockerMedicine
-    mime: LockerMime
-    paramedic: LockerParamedic
-    quartermaster: LockerQuarterMaster
-    rd: LockerResearchDirector
-    representative: LockerRepresentative
-    salvage: LockerSalvageSpecialist
-    scientist: LockerScientist
-    security: LockerSecurity
-    welding: LockerWeldingSupplies
-    # Closets
     biohazard: ClosetL3
     biohazard-janitor: ClosetL3Janitor
     biohazard-science: ClosetL3Science
@@ -70,11 +46,13 @@
     fire: ClosetFire
     janitor: ClosetJanitor
     legal: ClosetLegal
+    nitrogen: ClosetEmergencyN2
+    oxygen: ClosetEmergency
     radiation: ClosetRadiationSuit
     tool: ClosetTool
 
 - type: paintableGroup
-  id: WallLocker
+  id: WallCloset
   cost: 2
   defaultStyle: basic
   styles:
@@ -85,17 +63,18 @@
     fire: ClosetWallFire
     green: ClosetWallGreen
     grey: ClosetWallGrey
-    medical: LockerWallMedical
     mixed: ClosetWallMixed
+    nitrogen: ClosetWallEmergencyN2
     orange: ClosetWallOrange
+    oxygen: ClosetWallEmergency
     pink: ClosetWallPink
     white: ClosetWallWhite
     yellow: ClosetWallYellow
 
 - type: paintableGroup
-  id: WallLockerEmergency
+  id: WallLocker
   cost: 2
-  defaultStyle: oxygen
+  defaultStyle: medical
   styles:
-    nitrogen: ClosetWallEmergencyN2
-    oxygen: ClosetWallEmergency
+    evac: LockerWallEvacRepair
+    medical: LockerWallMedical
