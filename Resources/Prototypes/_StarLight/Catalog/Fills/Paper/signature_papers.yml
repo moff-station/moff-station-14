@@ -55,7 +55,6 @@
   - type: Paper
     content: delivery-spam-reasons-to-join-syndicate
   - type: GameruleOnSign
-    chance: 1.0
     blacklist:
       components:
       - MindShield
@@ -64,14 +63,13 @@
 
 - type: entity
   id: MailSyndicateDagdLetter
-  name: Syndicate in dire need
+  name: syndicate in dire need
   description: An advertisement for the Syndicate. Wont fit in a fax somehow.
   parent: Paper
   components:
   - type: Paper
     content: dagd-letter
   - type: GameruleOnSign
-    chance: 1.0
     blacklist:
       components:
       - MindShield
