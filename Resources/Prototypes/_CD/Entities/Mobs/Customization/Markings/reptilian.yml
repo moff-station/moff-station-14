@@ -1,0 +1,487 @@
+# Chest
+
+- type: marking
+  id: BadMoltChest
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/chest.rsi
+    state: badmolt
+
+# Head
+
+- type: marking
+  id: BadMoltHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/head.rsi
+    state: badmolt
+
+- type: marking
+  id: ScarSlash
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/head.rsi
+    state: snoutscar
+
+- type: marking
+  id: ScarTalons
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/head.rsi
+    state: talonscar
+
+- type: marking
+  id: LizardHeadLEDVisor
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [ Reptilian ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#808080"
+  sprites:
+  - sprite: _CD/Mobs/Customization/reptilian_parts.rsi
+    state: head_ledvisor_primary
+  - sprite: _CD/Mobs/Customization/reptilian_parts.rsi
+    state: head_ledvisor_secondary
+  - sprite: _CD/Mobs/Customization/reptilian_parts.rsi
+    state: head_ledvisor_tertiary
+
+# Snout
+
+- type: marking
+  id: Fangs
+  bodyPart: Snout
+  markingCategory: Overlay
+  speciesRestriction: [ Reptilian ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/snout.rsi
+    state: fangs
+
+- type: marking
+  id: LizardBeard
+  bodyPart: Snout
+  markingCategory: Overlay
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/snout.rsi
+    state: beard
+
+- type: marking
+  id: LizardDroopySnout
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/snout.rsi
+    state: droopy
+
+- type: marking
+  id: LizardSnoutpiercings
+  bodyPart: Snout
+  markingCategory: Overlay
+  forcedColoring: true
+  speciesRestriction: [ Reptilian ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/snout.rsi
+    state: piercings1
+
+- type: marking
+  id: LizardSnoutTall
+  bodyPart: Snout
+  forcedColoring: true
+  markingCategory: Snout
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/snout.rsi
+    state: tall
+
+- type: marking
+  id: LizardUpperSnout
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/snout.rsi
+    state: upper
+
+# Eyes
+
+# RArm
+
+- type: marking
+  id: BadMoltRArm
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/rarm.rsi
+    state: badmolt
+
+# LArm
+
+- type: marking
+  id: BadMoltLArm
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/larm.rsi
+    state: badmolt
+
+# RLeg
+
+# LLeg
+
+# UndergarmentBottom
+
+- type: marking
+  id: UnderwearLowridersR
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
+  speciesRestriction: [ Reptilian ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/undergarmentbottom.rsi
+    state: lowriders
+
+- type: marking
+  id: UnderwearTangaR
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
+  speciesRestriction: [ Reptilian ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/undergarmentbottom.rsi
+    state: tanga
+
+# UndergarmentTop
+
+# LFoot
+
+# RFoot
+
+# LHand
+
+# RHand
+
+# FacialHair
+
+# Hair
+
+# HeadSide
+
+- type: marking
+  id: BurqaSolidLizard
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: burqa
+
+- type: marking
+  id: HijabFashionableLizard
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: hijabchic
+
+- type: marking
+  id: HijabSimpleLizard
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: hijabsimple
+
+- type: marking
+  id: LizardKoboldEarsMid
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: koboldearsmid
+
+- type: marking
+  id: LizardKoboldEarsTall
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: koboldearstall
+
+- type: marking
+  id: NiqabLizard
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: niqab
+
+- type: marking
+  id: TichelSimpleLizard
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: tichelsimple
+
+- type: marking
+  id: TichelFashionableLizard
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headside.rsi
+    state: tichelfashionable
+
+# HeadTop
+
+- type: marking
+  id: LizardHeadFlat
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headtop.rsi
+    state: flat
+
+- type: marking
+  id: LizardHornsKoboldEarspiercings
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headtop.rsi
+    state: koboldears
+  - sprite: _CD/Mobs/Customization/Reptilian/headtop.rsi
+    state: koboldearspiercings
+
+- type: marking
+  id: LizardHornsNubby
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headtop.rsi
+    state: nubby
+
+- type: marking
+  id: LizardLittleHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headtop.rsi
+    state: little
+
+- type: marking
+  id: LizardFrill
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/headtop.rsi
+    state: frill
+
+# Tail
+
+- type: marking
+  id: TailDropped
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/tail.rsi
+    state: dropped
+
+- type: marking
+  id: TailDroppedAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/tail.rsi
+    state: droppedwagging
+
+- type: marking
+  id: TailGecko
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: gecko1_behind
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: gecko1_front
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: gecko2_behind
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: gecko2_front
+
+- type: marking
+  id: TailSnailLizard
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: snizard1_behind
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: snizard1_front
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: snizard2_behind
+  - sprite: _CD/Mobs/Customization/Reptilian/taillayers.rsi
+    state: snizard2_front
+  - sprite: _CD/Mobs/Customization/Reptilian/tail.rsi
+    state: snizard3
+
+- type: marking
+  id: LizardChestDragonwings
+  bodyPart: Tail
+  markingCategory: Chest
+  speciesRestriction: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/reptilian_parts.rsi
+    state: body_dragonwings
+
+- type: marking
+  id: LizardTailSnake
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snaketail
+
+- type: marking
+  id: LizardTailSnakeStripe
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripe_primary
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripe_secondary
+
+- type: marking
+  id: LizardTailSnakeStripeAlt
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripealt_primary
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripealt_secondary
+
+- type: marking
+  id: LizardTailSnakeDual
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakedual_primary
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakedual_secondary
+
+- type: marking
+  id: LizardTailSnakeUnder
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakeunder_primary
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakeunder_secondary
+
+- type: marking
+  id: LizardTailSnakeAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snaketail_wagging
+
+- type: marking
+  id: LizardTailSnakeStripeAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripe_primary_wagging
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripe_secondary_wagging
+
+- type: marking
+  id: LizardTailSnakeStripeAltAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripealt_primary_wagging
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakestripealt_secondary_wagging
+
+- type: marking
+  id: LizardTailSnakeDualAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakedual_primary_wagging
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakedual_secondary_wagging
+
+- type: marking
+  id: LizardTailSnakeUnderAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakeunder_primary_wagging
+    - sprite: _CD/Mobs/Customization/snaketails.rsi
+      state: tail_snakeunder_secondary_wagging
