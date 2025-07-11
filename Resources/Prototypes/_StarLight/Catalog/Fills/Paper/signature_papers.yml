@@ -2,7 +2,7 @@
   name: paper
   parent: BasePaper
   id: PaperNonFaxable
-  description: "A piece of white paper. Can't fit in a fax for some reason."
+  description: "A dreadful paper that doesn't fit in a fax machine."
   suffix: nofax
   components:
   - type: Sprite
@@ -30,7 +30,6 @@
   parent: PaperNonFaxable
   id: PaperTooQuietNeedChaos
   name: the end of Q
-  description: dreadful paper that cant fit in a fax machine.
   components:
     - type: Paper
       content: paper-too-quiet-need-chaos
@@ -57,7 +56,6 @@
   parent: PaperNonFaxable
   id: PaperTooQuietNeedChaosFew
   name: the end of Q
-  description: dreadful paper that cant fit in a fax machine.
   suffix: Lowpop
   components:
     - type: Paper
