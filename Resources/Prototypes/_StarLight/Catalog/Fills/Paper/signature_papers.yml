@@ -1,5 +1,33 @@
 - type: entity
-  parent: Paper
+  name: paper
+  parent: BasePaper
+  id: PaperNonFaxable
+  description: "A piece of white paper. Can't fit in a fax for some reason."
+  suffix: nofax
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper
+    - state: paper_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: Paper
+  - type: PaperLabelType
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: PaperVisuals
+
+- type: entity
+  parent: PaperNonFaxable
   id: PaperTooQuietNeedChaos
   name: the end of Q
   description: dreadful paper that cant fit in a fax machine.
@@ -26,7 +54,7 @@
 
 
 - type: entity
-  parent: Paper
+  parent: PaperNonFaxable
   id: PaperTooQuietNeedChaosFew
   name: the end of Q
   description: dreadful paper that cant fit in a fax machine.
@@ -50,7 +78,7 @@
   id: MailSyndicateSpamLetter
   name: Reasons to choose The Syndicate!
   description: An advertisement for the Syndicate. Wont fit in a fax somehow.
-  parent: Paper
+  parent: PaperNonFaxable
   components:
   - type: Paper
     content: delivery-spam-reasons-to-join-syndicate
@@ -65,7 +93,7 @@
   id: MailSyndicateDagdLetter
   name: syndicate in dire need
   description: An advertisement for the Syndicate. Wont fit in a fax somehow.
-  parent: Paper
+  parent: PaperNonFaxable
   components:
   - type: Paper
     content: dagd-letter

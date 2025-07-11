@@ -25,16 +25,7 @@ public sealed class GameruleOnSignSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<GameruleOnSignComponent, PaperSignedEvent>(OnPaperSigned);
-        SubscribeLocalEvent<GameruleOnSignComponent, ComponentInit>(OnComponentInit);
     }
-
-    private void OnComponentInit(EntityUid uid, GameruleOnSignComponent comp, ComponentInit init)
-    {
-        // Remove faxable, so triggers cant be duped. can be readded by admins, and the destination copy will remove it automatically
-        if (HasComp<FaxableObjectComponent>(uid))
-            RemComp<FaxableObjectComponent>(uid);
-    }
-
 
     private void OnPaperSigned(EntityUid uid, GameruleOnSignComponent component, PaperSignedEvent args)
     {
