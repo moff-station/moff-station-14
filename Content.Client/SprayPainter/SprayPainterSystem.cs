@@ -79,7 +79,9 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
         Decals.Clear();
         foreach (var decalPrototype in Proto.EnumeratePrototypes<DecalPrototype>().OrderBy(x => x.ID))
         {
-            if (!decalPrototype.Tags.Contains("station") && !decalPrototype.Tags.Contains("markings"))
+            if (!decalPrototype.Tags.Contains("station")
+                && !decalPrototype.Tags.Contains("markings")
+                || decalPrototype.Tags.Contains("dirty"))
                 continue;
 
             Decals.Add(new SprayPainterDecalEntry(decalPrototype.ID, decalPrototype.Sprite));
@@ -90,7 +92,7 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
     {
         private readonly RichTextLabel _label;
         private readonly Entity<SprayPainterComponent> _entity;
-        private bool? _lastPaintingDecals = null;
+        private DecalPaintMode? _lastPaintingDecals = null;
 
         public StatusControl(Entity<SprayPainterComponent> ent)
         {
@@ -103,14 +105,17 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
         {
             base.FrameUpdate(args);
 
-            if (_entity.Comp.IsPaintingDecals == _lastPaintingDecals)
+            if (_entity.Comp.DecalMode == _lastPaintingDecals)
                 return;
 
-            _lastPaintingDecals = _entity.Comp.IsPaintingDecals;
+            _lastPaintingDecals = _entity.Comp.DecalMode;
 
-            var modeLocString = _entity.Comp.IsPaintingDecals
-                ? "spray-painter-item-status-enabled"
-                : "spray-painter-item-status-disabled";
+            string modeLocString = _entity.Comp.DecalMode switch
+            {
+                DecalPaintMode.Add => "spray-painter-item-status-add",
+                DecalPaintMode.Remove => "spray-painter-item-status-remove",
+                _ => "spray-painter-item-status-off"
+            };
 
             _label.SetMarkupPermissive(Robust.Shared.Localization.Loc.GetString("spray-painter-item-status-label",
                 ("mode", Robust.Shared.Localization.Loc.GetString(modeLocString))));
