@@ -1,5 +1,17 @@
 - type: entity
   parent: BaseGameRule
+  id: ERTGeneral
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/dart.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
   id: ERTSecBrig
   components:
   - type: StationEvent
