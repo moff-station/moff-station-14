@@ -1,4 +1,5 @@
 using Content.Server.Station;
+using Content.Shared.Cargo.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.GameTicking.Rules.Components;
@@ -15,4 +16,23 @@ public sealed partial class PiratesRuleComponent : Component
         StationPrototype = "PirateShuttleStation",
         StationComponentOverrides = new ComponentRegistry(),
     };
+
+    /// <summary>
+    /// The station associated with this rule
+    /// </summary>
+    [DataField]
+    public EntityUid AssociatedStation;
+
+
+    /// <summary>
+    /// The total amount of money collected by the pirates
+    /// </summary>
+    [DataField]
+    public int TotalMoneyCollected;
+
+    /// <summary>
+    /// Tracks the previous balance of the accounts, so that the total amount of money earned can be calculated
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<CargoAccountPrototype>, int> LastBalance = new();
 }

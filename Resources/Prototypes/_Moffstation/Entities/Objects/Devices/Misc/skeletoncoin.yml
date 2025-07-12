@@ -1,0 +1,13 @@
+- type: entity
+  id: SkeletonCoin
+  parent: BaseItem
+  name: cursed skeleton coin
+  description: Said to transform its owner into an immortal skeleton...
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/skeletoncoin.rsi
+    state: icon
+  - type: TriggerOnUse
+  - type: PolymorphOnTrigger
+    polymorph: PirateSkeletonMorph
+  - type: DeleteOnTrigger

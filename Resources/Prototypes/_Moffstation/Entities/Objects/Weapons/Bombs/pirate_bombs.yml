@@ -1,0 +1,12 @@
+- type: entity
+  name: gunpowder charge
+  description: improvised explosive made with gunpowder. commonly used among pirates.
+  parent: C4
+  id: gunpowderCharge
+  components:
+  - type: Explosive
+    explosionType: DemolitionCharge
+    totalIntensity: 30
+    intensitySlope: 1
+    maxIntensity: 15
+    canCreateVacuum: false

@@ -10,6 +10,7 @@
   - AllHostile
   - Wizard
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: NanoTrasen
@@ -24,6 +25,7 @@
   - Wizard
   - Xenoborg
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: Mouse
@@ -61,6 +63,7 @@
   - Wizard
   - Xenoborg
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: SimpleNeutral
@@ -77,6 +80,7 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: Xeno
@@ -92,6 +96,7 @@
   - Dragon
   - Xenoborg
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: Zombie
@@ -108,6 +113,7 @@
   - Dragon
   - Xenoborg
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: Revolutionary
@@ -137,6 +143,7 @@
   - Wizard
   - Xenoborg
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: Wizard
@@ -155,6 +162,7 @@
   - AllHostile
   - Xenoborg
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
 - type: npcFaction
   id: Xenoborg
@@ -166,9 +174,10 @@
   - Revolutionary
   - Wizard
   - BloodBrother # Harmony
+  - Pirate # Moffstation
 
   - Xeno # rivalry
 
   # cause they are hostile to them
-  - SimpleHostile 
+  - SimpleHostile
   - AllHostile

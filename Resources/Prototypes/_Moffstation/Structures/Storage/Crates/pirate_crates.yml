@@ -83,7 +83,7 @@
         - MidImpassable
   - type: EntityStorage
 #    isCollidableWhenOpen: false
-    capacity: 2
+    capacity: 10
     whitelist:
       components:
       # Add any large bounty object to here
@@ -97,6 +97,7 @@
       - AnomalyGenerator
       - VendingMachine
       - Thruster
+      - FaxMachine
 
 - type: entity
   parent: CratePrivateSecure
