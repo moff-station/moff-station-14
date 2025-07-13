@@ -14,7 +14,7 @@
     sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi
     state: e_cutlass
   product: CratePirateECutlass
-  cost: 5500
+  cost: 7000
   category: pirateproduct-category-name-weapons
   group: pirateMarket
 
@@ -34,7 +34,7 @@
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
     state: icon
   product: CratePirateAk
-  cost: 8000
+  cost: 11000
   category: pirateproduct-category-name-weapons
   group: pirateMarket
 
@@ -44,7 +44,7 @@
     sprite: Objects/Weapons/Guns/Ammunition/Boxes/light_rifle.rsi
     state: base
   product: CratePirateRifleAmmo
-  cost: 3000
+  cost: 4000
   category: pirateproduct-category-name-ammo
   group: pirateMarket
 
@@ -144,7 +144,7 @@
     sprite: Objects/Weapons/Guns/Launchers/pirate_cannon.rsi
     state: icon
   product: CratePirateHandcannon
-  cost: 7000
+  cost: 9000
   category: pirateproduct-category-name-weapons
   group: pirateMarket
 
@@ -179,12 +179,12 @@
   group: pirateMarket
 
 - type: cargoProduct
-  id: PirateSpeedloader
+  id: PirateMagnumAmmo
   icon:
-    sprite: Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/magnum_speed_loader.rsi
-    state: icon
-  product: CratePirateSpeedloader
-  cost: 2500
+    sprite: Objects/Weapons/Guns/Ammunition/Boxes/magnum.rsi
+    state: base
+  product: CratePirateMagnumAmmo
+  cost: 3000
   category: pirateproduct-category-name-ammo
   group: pirateMarket
 
@@ -205,6 +205,16 @@
     state: base
   product: CratePirateShotgunAmmo
   cost: 3000
+  category: pirateproduct-category-name-ammo
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateAPMagnumAmmo
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/magnum_speed_loader.rsi
+    state: icon
+  product: CratePirateMagnumAPAmmo
+  cost: 6500
   category: pirateproduct-category-name-ammo
   group: pirateMarket
 
@@ -234,7 +244,7 @@
     sprite: _NF/Objects/Weapons/Melee/pirate_anchor.rsi
     state: icon
   product: CratePirateAnchor
-  cost: 3000
+  cost: 4000
   category: pirateproduct-category-name-tools
   group: pirateMarket
 
@@ -329,12 +339,22 @@
   group: pirateMarket
 
 - type: cargoProduct
-  id: PiratePepperboxShotgun
-  product: CratePiratePepperboxShotgun
+  id: PirateKammererShotgun
+  product: CratePirateKammererShotgun
   icon:
-    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pepperbox.rsi
+    sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
     state: icon
-  cost: 8000
+  cost: 10000
+  category: pirateproduct-category-name-weapons
+  group: pirateMarket
+
+- type: cargoProduct
+  id: PirateShotgunDoubleBarreled
+  product: CratePirateShotgunDoubleBarreled
+  icon:
+    sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
+    state: icon
+  cost: 6000
   category: pirateproduct-category-name-weapons
   group: pirateMarket
 
@@ -361,7 +381,7 @@
   icon:
     sprite: Structures/Storage/Crates/syndicate.rsi
     state: icon
-  cost: 15000
+  cost: 25000
   category: cargoproduct-category-name-fun
   group: pirateMarket
 
@@ -371,7 +391,7 @@
     sprite: Objects/Economy/cash.rsi
     state: cash_1000000
   product: CrateCargoGambling
-  cost: 10000
+  cost: 15000
   category: cargoproduct-category-name-fun
   group: pirateMarket
 
@@ -396,13 +416,6 @@
   group: pirateMarket
 
 - type: cargoProduct
-  id: PirateDeepSpaceMG
-  product: CratePirateDeepSpaceMG
-  cost: 11000
-  category: pirateproduct-category-name-weapons
-  group: pirateMarket
-
-- type: cargoProduct
   id: PirateBuccaneerHardsuit
   icon:
     sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/buccaneer.rsi
@@ -414,6 +427,9 @@
 
 - type: cargoProduct
   id: PirateBlackbeardHardsuit
+  icon:
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/blackbeard.rsi
+    state: icon
   product: CratePirateBlackbeardHardsuit
   cost: 15000
   category: pirateproduct-category-name-armor

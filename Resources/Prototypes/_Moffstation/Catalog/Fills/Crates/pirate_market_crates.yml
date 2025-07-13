@@ -49,6 +49,19 @@
       amount: 4
 
 - type: entity
+  id: CratePirateMagnumAmmo
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: magnum ammo crate
+  description: Contains a stockpile of standard .45 magnum ammo, along with 2 speedloaders
+  components:
+  - type: StorageFill
+    contents:
+    - id: SpeedLoaderMagnum
+      amount: 2
+    - id: MagazineBoxMagnum
+      amount: 2
+
+- type: entity
   id: CratePirateBlunderbuss
   parent: [ CratePirateChestSecure, BaseSecurityContraband ]
   name: blunderbuss crate
@@ -201,17 +214,6 @@
       amount: 2
 
 - type: entity
-  id: CratePirateSpeedloader
-  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
-  name: speedloader crate
-  description: Contains 2 speed loaders, in case you lost the original ones we sent you.
-  components:
-  - type: StorageFill
-    contents:
-    - id: SpeedLoaderMagnum
-      amount: 2
-
-- type: entity
   id: CratePirateMakeshiftLaser
   parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
   name: makeshift laser pistol crate
@@ -234,6 +236,17 @@
       amount: 4
     - id: BoxLethalshot
       amount: 2
+
+- type: entity
+  id: CratePirateMagnumAPAmmo
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: AP speed loader crate
+  description: Contains a speed loader filled with armor-piercing rounds, for when you need the job done quick.
+  components:
+  - type: StorageFill
+    contents:
+    - id: SpeedLoaderMagnumAP
+      amount: 1
 
 - type: entity
   id: CratePirateAppraisalTool
@@ -357,14 +370,27 @@
       amount: 3
 
 - type: entity
-  id: CratePiratePepperboxShotgun
+  id: CratePirateKammererShotgun
   parent: [ CratePirateChestSecure, BaseSecurityContraband ]
-  name: pepperbox shotgun crate
-  description: Contains 2 pepperbox shotguns, and the ammo to use them
+  name: kammerer shotgun crate
+  description: Contains 2 kammerer shotguns, stolen from ransacked NT shipments.
   components:
   - type: StorageFill
     contents:
-    - id: WeaponShotgunPepperbox
+    - id: WeaponShotgunKammerer
+      amount: 2
+    - id: BoxLethalshot
+      amount: 2
+
+- type: entity
+  id: CratePirateShotgunDoubleBarreled
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  name: double-barreled shotgun crate
+  description: Contains 2 double-barreled shotguns, stolen from ransacked NT shipments.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponShotgunDoubleBarreled
       amount: 2
     - id: BoxLethalshot
       amount: 2
@@ -411,17 +437,6 @@
   - type: StorageFill
     contents:
     - id: AccessBreakerPirate
-      amount: 1
-
-- type: entity
-  id: CratePirateDeepSpaceMG
-  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
-  name: deep space machine gun crate
-  description: Contains a deep space machine gun, used by the most treacherous of deep space pirates
-  components:
-  - type: StorageFill
-    contents:
-    - id: WeaponLightMachineGunDsmg
       amount: 1
 
 - type: entity
