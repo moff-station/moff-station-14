@@ -10,17 +10,6 @@
   guides: [ NuclearOperatives ]
 
 - type: antag
-  id: PirateMedic
-  name: roles-antag-pirate-medic-name
-  antagonist: true
-  setPreference: true
-  objective: roles-antag-pirate-medic-objective
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 18000 # 5h
-  guides: [ NuclearOperatives ]
-
-- type: antag
   id: PirateCaptain
   name: roles-antag-pirate-captain-name
   antagonist: true
@@ -30,3 +19,25 @@
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
   guides: [ NuclearOperatives ]
+
+- type: startingGear
+  id: PirateGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPirate
+    shoes: ClothingShoesBootsLaceup
+    id: PiratePDA
+    belt: ClothingBeltUtility
+    pocket2: AppraisalTool
+    ears: ClothingHeadsetPirate
+
+- type: startingGear
+  id: PirateCaptainGear
+  parent: PirateGear
+  equipment:
+    pocket2: EnergyCutlass
+    neck: ClothingNeckCloakPirateCap
+
+- type: startingGear
+  id: FlyingDutchmanGear
+  equipment:
+    pocket2: Cutlass

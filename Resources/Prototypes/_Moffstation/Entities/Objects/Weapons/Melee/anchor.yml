@@ -11,8 +11,12 @@
     state: icon
   - type: Item
     sprite: _NF/Objects/Weapons/Melee/pirate_anchor.rsi
-#  - type: Clothing
-#    sprite: _NF/Objects/Weapons/Melee/pirate_anchor.rsi
+    size: Huge
+  - type: Clothing
+    sprite: _NF/Objects/Weapons/Melee/pirate_anchor.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
   - type: Prying
     speedModifier: 2
     pryPowered: true

@@ -41,18 +41,6 @@
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
   parent: SpawnPointPirateCaptain
-  id: SpawnPointPirateMedic
-  components:
-  - type: GhostRole
-    name: roles-antag-pirate-medic-name
-    description: roles-antag-pirate-medic-objective
-    rules: ghost-role-information-rules-default-team-antagonist
-    mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
-
-- type: entity
-  categories: [ HideSpawnMenu, Spawner ]
-  parent: SpawnPointPirateCaptain
   id: SpawnPointPirateCrew
   components:
   - type: GhostRole
