@@ -30,11 +30,12 @@
     clothingPrototype: ClothingHeadHelmetHardsuitRanger
 
 
-# Pirate Hardsuits
+# Blackbeard Hardsuit
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseSyndicateContraband ]
   id: ClothingOuterHardsuitPirateBlackbeard
   name: blackbeard hardsuit
+  suffix: Pirate
   description: One of the most feared hardsuits in the galaxy
   components:
   - type: Sprite
@@ -73,10 +74,12 @@
   - type: StaticPrice
     price: 5000
 
+# Davy Jones hardsuit
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseSyndicateContraband]
   id: ClothingOuterHardsuitPirateDavyJones
   name: Davy Jones' Hardsuit
+  suffix: Pirate
   description: A suit fabled to have been worn by Davy Jones' himself
   components:
   - type: Sprite
@@ -111,10 +114,12 @@
     - Hardsuit
     - WhitelistChameleon
 
+# Buccaneer hardsuit
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseSyndicateContraband ]
   id: ClothingOuterHardsuitPirateBuccaneer
   name: buccaneer hardsuit
+  suffix: Pirate
   description: The flagship hardsuit for seasoned deep-space pirates.
   components:
   - type: Sprite
@@ -153,10 +158,12 @@
   - type: StaticPrice
     price: 5000
 
+# Swashbuckler Hardsuit
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseSyndicateContraband ]
   id: ClothingOuterHardsuitPirateSwashbuckler
   name: swashbuckler hardsuit
+  suffix: Pirate
   description: A lightweight hardsuit made for hit-and-run operations in space, made with reverse engineered technology stolen from the Gorlex Marauders.
   components:
   - type: Sprite
@@ -192,3 +199,36 @@
     - WhitelistChameleon
   - type: StaticPrice
     price: 5000
+
+#Pirate EVA Suit (Deep Space EVA Suit)
+- type: entity
+  parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
+  id:  ClothingOuterHardsuitPirateEVA
+  name: deep space EVA suit
+  suffix: Pirate
+  description: A heavy space suit that provides some basic protection from the cold harsh realities of deep space.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.7
+        Caustic: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateEVA
+  - type: StaticPrice
+    price: 0

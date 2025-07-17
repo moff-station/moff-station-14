@@ -816,7 +816,7 @@
 #Despite visually appearing like a softsuit, it functions exactly like a hardsuit would (parents off of base hardsuit, has resistances and toggleable clothing, etc.) so it goes here.
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
-  id:  ClothingOuterHardsuitPirateEVA
+  id:  ClothingOuterHardsuitPirateEVAUpstream # Moffstation - Moved to our namespace
   name: deep space EVA suit
   suffix: Pirate
   description: A heavy space suit that provides some basic protection from the cold harsh realities of deep space.
@@ -838,8 +838,8 @@
         Heat: 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
-    walkModifier: 0.8 # Moffstation - more mobility for pirates
-    sprintModifier: 0.8 # Moffstation - more mobility for pirates
+    walkModifier: 0.6
+    sprintModifier: 0.6
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitPirateEVA

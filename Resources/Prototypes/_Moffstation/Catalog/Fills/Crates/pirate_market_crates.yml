@@ -430,7 +430,7 @@
 
 - type: entity
   id: CratePirateSkeletonKey
-  parent: [ CratePirateDavyJones, BaseSecurityContraband ]
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
   name: skeleton key crate
   description: Contains a injector allowing the user to summon an incarnation of a legendary ghost, the Flying Dutchman
   components:
@@ -516,3 +516,29 @@
         - id: PlushieSharkPirate
           amount: !type:ConstantNumberSelector
             value: 2
+
+- type: entityTable
+  id: AllEyepatchesTable
+  table: !type:GroupSelector
+    children:
+    - id: ClothingEyesEyepatchHudMedical
+    - id: ClothingEyesEyepatchHudSecurity
+    - id: ClothingEyesEyepatchHudBeer
+    - id: ClothingEyesEyepatchHudDiag
+
+- type: entity
+  id: CratePirateEyepatch
+  parent: [ CratePirate, BaseSecurityContraband ]
+  name: eyepatch crate
+  description: A crate filled with some pirate swag.
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingEyesEyepatch
+      amount: 2
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: AllEyepatchesTable
+        rolls: !type:ConstantNumberSelector
+          value: 1

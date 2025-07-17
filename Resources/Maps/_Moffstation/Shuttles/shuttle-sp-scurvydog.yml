@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 262.0.0
+  engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 06/21/2025 22:53:05
-  entityCount: 852
+  time: 07/17/2025 21:01:55
+  entityCount: 853
 maps: []
 grids:
 - 1
@@ -2168,6 +2168,13 @@ entities:
     - type: Transform
       pos: 4.625197,-15.382821
       parent: 1
+- proto: ClothingEyesEyepatchHudMedical
+  entities:
+  - uid: 472
+    components:
+    - type: Transform
+      pos: -1.5249295,-12.265776
+      parent: 1
 - proto: ClothingHandsGlovesColorYellow
   entities:
   - uid: 424
@@ -4086,11 +4093,6 @@ entities:
     - type: Transform
       pos: 2.57533,-9.371261
       parent: 1
-  - uid: 472
-    components:
-    - type: Transform
-      pos: -1.3592863,-12.215371
-      parent: 1
 - proto: MedkitCombatFilled
   entities:
   - uid: 330
@@ -4840,6 +4842,11 @@ entities:
       parent: 1
 - proto: SpawnPointPirates
   entities:
+  - uid: 578
+    components:
+    - type: Transform
+      pos: 5.5,-14.5
+      parent: 1
   - uid: 781
     components:
     - type: Transform
@@ -5219,6 +5226,8 @@ entities:
   entities:
   - uid: 474
     components:
+    - type: MetaData
+      name: Stolen Nanomed
     - type: Transform
       pos: 2.5,-8.5
       parent: 1

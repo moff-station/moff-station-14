@@ -471,3 +471,13 @@
   cost: 1000
   category: cargoproduct-category-name-fun
   group: pirateMarket
+
+- type: cargoProduct
+  id: PirateEyepatch
+  icon:
+    sprite: Clothing/Eyes/Misc/eyepatch.rsi
+    state: icon
+  product: CratePirateEyepatch
+  cost: 1000
+  category: cargoproduct-category-name-fun
+  group: pirateMarket
