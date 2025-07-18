@@ -232,3 +232,40 @@
     clothingPrototype: ClothingHeadHelmetHardsuitPirateEVA
   - type: StaticPrice
     price: 0
+
+#Pirate Captain Hardsuit
+- type: entity
+  parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
+  id: ClothingOuterHardsuitPirateCap
+  name: pirate captain's hardsuit
+  description: An ancient armored hardsuit, perfect for defending against space scurvy and toolbox-wielding scallywags.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
+  - type: Item
+    size: Huge
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: StaminaResistance
+    damageCoefficient: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.6
+        Heat: 0.5
+        Caustic: 0.75
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateCap
+  - type: StaticPrice
+    price: 0

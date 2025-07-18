@@ -18,3 +18,30 @@
     slots: []
     layers:
       Hair: HEAD
+
+#Pirate Captain Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateCap
+  name: pirate captain's hardsuit helmet
+  suffix: Pirate
+  description: A special hardsuit helmet, made for the captain of a pirate ship.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/piratecaptain.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/piratecaptain.rsi
+  - type: PointLight # Color matches visor colors, radius/energy same as mining hardsuit for the big captain.
+    color: "#23f0b2"
+    radius: 7
+    energy: 3
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9

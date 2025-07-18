@@ -360,6 +360,9 @@
 
 - type: cargoProduct
   id: PirateGunpowderCharge
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Bombs/dynamite.rsi
+    state: icon
   product: CratePirateGunpowderCharge
   cost: 3500
   category: pirateproduct-category-name-tools

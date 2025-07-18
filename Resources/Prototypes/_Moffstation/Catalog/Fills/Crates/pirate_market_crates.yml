@@ -398,8 +398,8 @@
 - type: entity
   id: CratePirateGunpowderCharge
   parent: [ CratePirateChestSecure, BaseSecurityContraband ]
-  name: gunpowder charge crate
-  description: Contains 5 gunpowder charges, good for putting holes in walls
+  name: dynamite crate
+  description: Contains 5 sticks of dynamite, good for putting holes in walls
   components:
   - type: StorageFill
     contents:

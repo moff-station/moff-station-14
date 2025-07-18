@@ -849,25 +849,21 @@
 #Pirate Captain Hardsuit
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
-  id: ClothingOuterHardsuitPirateCap
+  id: ClothingOuterHardsuitPirateCapUpstream # Moffstation - Moved to our namespace
   name: pirate captain's hardsuit
   description: An ancient armored hardsuit, perfect for defending against space scurvy and toolbox-wielding scallywags.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi # Moffstation - Custom Pirate captain hardsuit sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
   - type: Item
     size: Huge
   - type: Clothing
-    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi # Moffstation - Custom Pirate captain hardsuit sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
