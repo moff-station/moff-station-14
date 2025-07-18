@@ -431,8 +431,8 @@
 - type: entity
   id: CratePirateSkeletonKey
   parent: [ CratePirateChestSecure, BaseSecurityContraband ]
-  name: skeleton key crate
-  description: Contains a injector allowing the user to summon an incarnation of a legendary ghost, the Flying Dutchman
+  name: master key crate
+  description: Contains an accursed key, said to break locks using the souls of the damned
   components:
   - type: StorageFill
     contents:

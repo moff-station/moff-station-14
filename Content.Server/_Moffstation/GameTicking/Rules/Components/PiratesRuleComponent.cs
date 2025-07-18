@@ -1,5 +1,6 @@
 using Content.Server.Station;
 using Content.Shared.Cargo.Prototypes;
+using Content.Shared.NPC.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.GameTicking.Rules.Components;
@@ -35,4 +36,7 @@ public sealed partial class PiratesRuleComponent : Component
     /// </summary>
     [DataField]
     public Dictionary<ProtoId<CargoAccountPrototype>, int> LastBalance = new();
+
+    [DataField]
+    public ProtoId<NpcFactionPrototype> Faction = "Pirate";
 }

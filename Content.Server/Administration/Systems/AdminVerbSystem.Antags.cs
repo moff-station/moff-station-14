@@ -44,10 +44,10 @@ public sealed partial class AdminVerbSystem
     private const string DefaultBloodBrotherRule = "BloodBrothers";
     // Harmony end
 
-    [ValidatePrototypeId<StartingGearPrototype>]
-    private const string PirateGearId = "PirateGear";
-
     // Moffstation - Start - Custom antags
+    [ValidatePrototypeId<EntityPrototype>]
+    private const string DefaultPirateRule = "Pirates";
+
     [ValidatePrototypeId<EntityPrototype>]
     private const string DefaultVampireRule = "Vampire";
     // Moffstation - End
@@ -135,11 +135,10 @@ public sealed partial class AdminVerbSystem
         {
             Text = pirateName,
             Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new("/Textures/Clothing/Head/Hats/pirate.rsi"), "icon"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Interface/Misc/job_icons.rsi"), "Pirate"), // Moffstation - Use the pirate icon
             Act = () =>
             {
-                // pirates just get an outfit because they don't really have logic associated with them
-                _outfit.SetOutfit(args.Target, PirateGearId);
+                _antag.ForceMakeAntag<PiratesRuleComponent>(targetPlayer, DefaultPirateRule);   // Moffstation - We actually have pirates
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", pirateName, Loc.GetString("admin-verb-make-pirate")),
