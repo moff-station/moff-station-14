@@ -7,9 +7,6 @@ namespace Content.Shared._Moffstation.Pirate.Components;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class PirateComponent : Component
 {
-    /// <summary>
-    ///
-    /// </summary>
-    [DataField("zombieStatusIcon")]
-    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "Pirate";
+    [DataField]
+    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "PirateFaction";
 }

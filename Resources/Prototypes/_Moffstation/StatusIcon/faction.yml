@@ -2,11 +2,11 @@
   id: PirateFaction
   isShaded: true
   locationPreference: Left
-  priority: 11
+  priority: 0
   showTo:
     components:
     - ShowAntagIcons
-    - PirateRole
+    - Pirate
   icon:
     sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
     state: Pirate
