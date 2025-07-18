@@ -1,0 +1,103 @@
+- type: entity
+  name: paper
+  parent: BasePaper
+  id: PaperNonFaxable
+  description: "A dreadful paper that doesn't fit in a fax machine."
+  suffix: nofax
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper
+    - state: paper_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: Paper
+  - type: PaperLabelType
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: PaperVisuals
+
+- type: entity
+  parent: PaperNonFaxable
+  id: PaperTooQuietNeedChaos
+  name: the end of Q
+  components:
+    - type: Paper
+      content: paper-too-quiet-need-chaos
+    - type: GameruleOnSign
+      signaturesNeeded: 9
+      whitelist:
+        components:
+          - MindShield
+      rules: # this will DEFINITELY end the "quiet" you so hate
+        - AnomalySpawn
+        - AnomalySpawn
+        - AnomalySpawn
+        - AnomalySpawn
+        - AnomalySpawn # ATTENTION spam warning but there is no silent anom spawn sadly
+        - UnknownShuttleHonki
+        - LoneOpsSpawn
+        - WizardSpawn
+        - DragonSpawn
+        - NinjaSpawn
+        - ParadoxCloneSpawn
+- type: entity
+  parent: PaperNonFaxable
+  id: PaperTooQuietNeedChaosFew
+  name: the end of Q
+  suffix: Lowpop
+  components:
+    - type: Paper
+      content: paper-too-quiet-need-chaos-few
+    - type: GameruleOnSign
+      signaturesNeeded: 3 # on 15 pop usually there are only about 3 heads I expect
+      whitelist:
+        components:
+          - MindShield
+      rules: # this will DEFINITELY end the "quiet" you so hate
+        - AnomalySpawn # only 2 anoms because you are probably on reach or omega which are TINY
+        - AnomalySpawn
+        - UnknownShuttleHonki
+        - LoneOpsSpawn
+        - NinjaSpawn # spawns fewer because there are also fewer people to take said roles, and I deem these to be the less "chaotic" ones
+
+- type: entity
+  id: MailSyndicateSpamLetter
+  name: Reasons to choose The Syndicate!
+  description: An advertisement for the Syndicate. Wont fit in a fax somehow.
+  parent: PaperNonFaxable
+  components:
+  - type: Paper
+    content: delivery-spam-reasons-to-join-syndicate
+  - type: GameruleOnSign
+    blacklist:
+      components:
+      - MindShield
+    antags:
+    - Traitor
+
+- type: entity
+  id: MailSyndicateDagdLetter
+  name: syndicate in dire need
+  description: An advertisement for the Syndicate. Wont fit in a fax somehow.
+  parent: PaperNonFaxable
+  components:
+  - type: Paper
+    content: dagd-letter
+  - type: GameruleOnSign
+    blacklist:
+      components:
+      - MindShield
+    antags:
+    - Traitor
+    objectives:
+    - DieObjective
