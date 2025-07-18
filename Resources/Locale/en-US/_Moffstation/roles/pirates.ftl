@@ -35,6 +35,8 @@ ghost-role-information-pirate-rules = You are a [color={role-type-team-antagonis
 
 role-subtype-pirate = Pirate
 
+guide-entry-pirates = Pirates
+
 pirateproduct-category-name-weapons = Weapons
 pirateproduct-category-name-armor = Armor
 pirateproduct-category-name-reinforcements = Reinforcements
