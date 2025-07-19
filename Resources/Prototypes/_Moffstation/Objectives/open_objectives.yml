@@ -7,8 +7,6 @@
 # 3. non-condition components
 # 4. the condition component
 
-#syndies
-
 # Open-ended objective to disrupt a certain department
 - type: entity
   parent: BaseTraitorObjective
@@ -21,14 +19,13 @@
     icon:
       sprite: Objects/Tools/jaws_of_life.rsi
       state: jaws_pry
-  - type: TargetDepartment
+  - type: DepartmentObjective
     title: objective-condition-disrupt-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - TargetDepartment # dont combine with other open endeds
+      - DepartmentObjective # dont combine with other open endeds
 
 # Open-ended objective to sabotage a certain department
 - type: entity
@@ -42,14 +39,13 @@
     icon:
       sprite: Objects/Tools/emag.rsi
       state: icon
-  - type: TargetDepartment
+  - type: DepartmentObjective
     title: objective-condition-sabotage-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - TargetDepartment # dont combine with other open endeds
+      - DepartmentObjective # dont combine with other open endeds
 
 # Disabling, as people tend not to like this one
 # Open-ended objective to infiltrate a department
@@ -64,14 +60,13 @@
 #    icon:
 #      sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
 #      state: icon
-#  - type: TargetDepartment
+#  - type: DepartmentObjective
 #    title: objective-condition-infiltrate-department
-#  - type: DisruptionObjective
-#  - type: PickRandomDepartment
+#  - type: PickDepartmentObjective
 #  - type: ObjectiveBlacklistRequirement
 #    blacklist:
 #      components:
-#      - TargetDepartment # dont combine with other open endeds
+#      - DepartmentObjective # dont combine with other open endeds
 
 # Open-ended objective to cause/setup a Jailbreak
 - type: entity
@@ -89,7 +84,7 @@
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - TargetDepartment # dont combine with other open endeds
+      - DepartmentObjective # dont combine with other open endeds
 
 ## Open-ended objective to distract security
 # - type: entity
@@ -119,7 +114,7 @@
   - type: TargetObjective
     title: objective-condition-teach-lesson
   - type: PickRandomPerson
-  - type: GreytextObjective
+  - type: EscapeShuttleCondition
 
 # Removing temporarily until we implement a method to target non-heads
 # # Incriminate objective, attempt to get someone else arrested by security
@@ -136,7 +131,7 @@
 #   - type: TargetObjective
 #     title: objective-condition-incriminate
 #   - type: PickRandomPerson
-#   - type: GreytextObjective
+#   - type: EscapeShuttleCondition
 
 # Open-ended objective to leave a calling card
 - type: entity
@@ -153,11 +148,11 @@
     unique: true # only one person needs to really send a message.
   - type: SimpleObjective
     title: objective-condition-leave-card
-  - type: GreytextObjective
+  - type: EscapeShuttleCondition
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - GreytextObjective # put this on top of regular objectives
+      - EscapeShuttleCondition # put this on top of regular objectives
 
 # Open-ended objective to drop a calling card on somebody
 - type: entity
@@ -175,11 +170,11 @@
   - type: TargetObjective
     title: objective-condition-leave-card-on-person
   - type: PickRandomPerson
-  - type: GreytextObjective
+  - type: EscapeShuttleCondition
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - GreytextObjective
+      - EscapeShuttleCondition
 
 # thieves
 
@@ -222,14 +217,13 @@
     icon:
       sprite: Clothing/Hands/Gloves/Color/black.rsi
       state: icon
-  - type: TargetDepartment
+  - type: DepartmentObjective
     title: objective-condition-rob-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - TargetDepartment # dont combine with other open endeds
+      - DepartmentObjective # dont combine with other open endeds
 
 # Open-ended objective to infiltrate a department, thief addition
 - type: entity
@@ -243,11 +237,10 @@
     icon:
       sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
       state: icon
-  - type: TargetDepartment
+  - type: DepartmentObjective
     title: objective-condition-infiltrate-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - TargetDepartment # dont combine with other open endeds
+      - DepartmentObjective # dont combine with other open endeds

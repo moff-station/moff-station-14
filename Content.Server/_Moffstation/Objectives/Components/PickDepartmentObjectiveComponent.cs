@@ -4,7 +4,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._Moffstation.Objectives.Components;
 
 [RegisterComponent]
-public sealed partial class PickRandomDepartmentComponent : Component
+public sealed partial class PickDepartmentObjectiveComponent : Component
 {
     [DataField]
     public HashSet<ProtoId<DepartmentPrototype>> DepartmentBlacklist = new();
@@ -17,4 +17,10 @@ public sealed partial class PickRandomDepartmentComponent : Component
     /// </summary>
     [DataField]
     public bool AllowSameDepartment;
+
+    [DataField]
+    public bool AllowNonPrimary;
+
+    [DataField]
+    public bool AllowHidden;
 }

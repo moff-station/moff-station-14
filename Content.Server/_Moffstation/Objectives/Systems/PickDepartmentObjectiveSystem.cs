@@ -1,21 +1,19 @@
 using System.Linq;
 using Content.Server._Moffstation.Objectives.Components;
-using Content.Server.Objectives.Systems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
-/// Handles assinging a target to an objective entity with <see cref="TargetDepartmentComponent"/> using different components.
+/// Handles assinging a target to an objective entity with <see cref="DepartmentObjectiveComponent"/> using different components.
 /// </summary>
-public sealed class PickObjectiveDepartmentSystem : EntitySystem
+public sealed class PickDepartmentObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly TargetDepartmentSystem _target = default!;
+    [Dependency] private readonly DepartmentObjectiveSystem _target = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
@@ -24,14 +22,14 @@ public sealed class PickObjectiveDepartmentSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PickRandomDepartmentComponent, ObjectiveAssignedEvent>(OnRandomDepartmentAssigned);
+        SubscribeLocalEvent<PickDepartmentObjectiveComponent, ObjectiveAssignedEvent>(OnRandomDepartmentAssigned);
 
     }
 
-    private void OnRandomDepartmentAssigned(Entity<PickRandomDepartmentComponent> ent, ref ObjectiveAssignedEvent args)
+    private void OnRandomDepartmentAssigned(Entity<PickDepartmentObjectiveComponent> ent, ref ObjectiveAssignedEvent args)
     {
         // invalid objective prototype
-        if (!TryComp<TargetDepartmentComponent>(ent.Owner, out var target))
+        if (!TryComp<DepartmentObjectiveComponent>(ent.Owner, out var target))
         {
             args.Cancelled = true;
             return;
@@ -44,16 +42,12 @@ public sealed class PickObjectiveDepartmentSystem : EntitySystem
 
         var departments = new List<DepartmentPrototype>();
         // generate the list of valid departments that can be selected
-        foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>().ToList())     // Remove invalid departments
+        foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>())     // Remove invalid departments
         {
-            switch (department.ID)
-            {
-                case "CentralCommand":
-                case "Silicon":
-                case "Specific":
-                    continue;
-            }
-
+            if (!ent.Comp.AllowNonPrimary && department.Primary)
+                continue;
+            if (!ent.Comp.AllowHidden && department.EditorHidden)
+                continue;
             if (ent.Comp.DepartmentBlacklist.Contains(department.ID))
                 continue;
             if (ent.Comp.DepartmentWhitelist.Count != 0 && !ent.Comp.DepartmentWhitelist.Contains(department.ID))
@@ -67,6 +61,13 @@ public sealed class PickObjectiveDepartmentSystem : EntitySystem
 
             departments.Add(department);
         }
-        _target.SetTarget(ent.Owner, Loc.GetString(_random.Pick(departments).Name), target);
+
+        if (departments.Count != 0)
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        target.Target = _random.Pick(departments.ToList());
     }
 }
