@@ -50,6 +50,19 @@
 ## Recipes
 
 # Clothing
+
+# Moffstation - Begin (Better Bandoliers)
+- type: latheRecipe
+  id: ClothingBeltBandolier
+  result: ClothingBeltBandolier
+  categories:
+  - Clothing
+  completetime: 4
+  materials:
+    Steel: 200
+    Cloth: 500
+# Moffstation - End
+
 - type: latheRecipe
   id: ClothingBackpackElectropack
   result: ClothingBackpackElectropack
