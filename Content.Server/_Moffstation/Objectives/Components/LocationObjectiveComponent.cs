@@ -4,12 +4,12 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._Moffstation.Objectives.Components;
 
 [RegisterComponent]
-public sealed partial class DepartmentObjectiveComponent : Component
+public sealed partial class LocationObjectiveComponent : Component
 {
 
     [DataField(required: true)]
     public string Title = string.Empty;
 
     [DataField]
-    public ProtoId<DepartmentPrototype>? Target;
+    public string? Target;
 }

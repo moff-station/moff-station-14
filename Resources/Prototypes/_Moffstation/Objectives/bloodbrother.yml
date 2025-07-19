@@ -12,6 +12,18 @@
   id: BloodBrotherJailbreakObjective
 
 - type: entity
+  parent: [BaseBloodBrotherObjective, TrashDepartmentObjective]
+  id: BloodBrotherTrashDepartmentObjective
+
+- type: entity
+  parent: [BaseBloodBrotherObjective, ClaimLocationObjective]
+  id: BloodBrotherClaimLocationObjective
+  components:
+  - type: LocationObjective
+    title: objective-condition-claim-room-bb
+
+
+- type: entity
   parent: [BaseBloodBrotherObjective, RobDepartmentObjective]
   id: BloodBrotherRobDepartmentObjective
 

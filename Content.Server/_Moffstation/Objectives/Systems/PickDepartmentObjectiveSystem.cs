@@ -9,11 +9,11 @@ using Robust.Shared.Random;
 namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
-/// Handles assinging a target to an objective entity with <see cref="DepartmentObjectiveComponent"/> using different components.
+/// Handles assinging a target to an objective entity with <see cref="LocationObjectiveComponent"/> using different components.
 /// </summary>
 public sealed class PickDepartmentObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly DepartmentObjectiveSystem _target = default!;
+    [Dependency] private readonly LocationObjectiveSystem _target = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
@@ -29,7 +29,7 @@ public sealed class PickDepartmentObjectiveSystem : EntitySystem
     private void OnRandomDepartmentAssigned(Entity<PickDepartmentObjectiveComponent> ent, ref ObjectiveAssignedEvent args)
     {
         // invalid objective prototype
-        if (!TryComp<DepartmentObjectiveComponent>(ent.Owner, out var target))
+        if (!TryComp<LocationObjectiveComponent>(ent.Owner, out var target))
         {
             args.Cancelled = true;
             return;
@@ -68,6 +68,6 @@ public sealed class PickDepartmentObjectiveSystem : EntitySystem
             return;
         }
 
-        target.Target = _random.Pick(departments.ToList());
+        target.Target = _random.Pick(departments.ToList()).Name;
     }
 }
