@@ -25,6 +25,10 @@
     title: objective-condition-disrupt-department
   - type: DisruptionObjective
   - type: PickRandomDepartment
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - TargetDepartment # dont combine with other open endeds
 
 # Open-ended objective to sabotage a certain department
 - type: entity
@@ -42,23 +46,32 @@
     title: objective-condition-sabotage-department
   - type: DisruptionObjective
   - type: PickRandomDepartment
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - TargetDepartment # dont combine with other open endeds
 
+# Disabling, as people tend not to like this one
 # Open-ended objective to infiltrate a department
-- type: entity
-  parent: BaseTraitorObjective
-  id: InfiltrateObjective
-  name: Infiltrate Department
-  description: We need you to infiltrate this department and disrupt their activities.
-  components:
-  - type: Objective
-    difficulty: 1.5
-    icon:
-      sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
-      state: icon
-  - type: TargetDepartment
-    title: objective-condition-infiltrate-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+#- type: entity
+#  parent: BaseTraitorObjective
+#  id: InfiltrateObjective
+#  name: Infiltrate Department
+#  description: Pretend to be part of this department, and disrupt them from the inside.
+#  components:
+#  - type: Objective
+#    difficulty: 1.5
+#    icon:
+#      sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
+#      state: icon
+#  - type: TargetDepartment
+#    title: objective-condition-infiltrate-department
+#  - type: DisruptionObjective
+#  - type: PickRandomDepartment
+#  - type: ObjectiveBlacklistRequirement
+#    blacklist:
+#      components:
+#      - TargetDepartment # dont combine with other open endeds
 
 # Open-ended objective to cause/setup a Jailbreak
 - type: entity
@@ -209,13 +222,17 @@
     title: objective-condition-rob-department
   - type: DisruptionObjective
   - type: PickRandomDepartment
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - TargetDepartment # dont combine with other open endeds
 
 # Open-ended objective to infiltrate a department, thief addition
 - type: entity
   parent: BaseThiefObjective
   id: InfiltrateThiefObjective
   name: Infiltrate Department
-  description: We need you to infiltrate this department and disrupt their activities.
+  description: Pretend to be part of this department, and disrupt them from the inside.
   components:
   - type: Objective
     difficulty: 1.5
