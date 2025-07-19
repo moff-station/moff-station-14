@@ -86,6 +86,10 @@
       state: icon
   - type: SimpleObjective
     title: objective-condition-jailbreak
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - TargetDepartment # dont combine with other open endeds
 
 ## Open-ended objective to distract security
 # - type: entity
@@ -232,7 +236,7 @@
   parent: BaseThiefObjective
   id: InfiltrateThiefObjective
   name: Infiltrate Department
-  description: Pretend to be part of this department, and disrupt them from the inside.
+  description: Pretend to be part of this department, and steal all their stuff.
   components:
   - type: Objective
     difficulty: 1.5
@@ -243,3 +247,7 @@
     title: objective-condition-infiltrate-department
   - type: DisruptionObjective
   - type: PickRandomDepartment
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - TargetDepartment # dont combine with other open endeds

@@ -3,9 +3,9 @@
   parent: [BaseBloodBrotherObjective, DisruptDepartmentObjective]
   id: BloodBrotherDisruptDepartmentObjective
 
-- type: entity
-  parent: [BaseBloodBrotherObjective, InfiltrateObjective]
-  id: BloodBrotherInfiltrateObjective
+#- type: entity
+#  parent: [BaseBloodBrotherObjective, InfiltrateObjective]
+#  id: BloodBrotherInfiltrateObjective
 
 - type: entity
   parent: [BaseBloodBrotherObjective, JailbreakObjective]
