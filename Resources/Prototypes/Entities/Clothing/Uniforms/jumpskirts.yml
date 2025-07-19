@@ -305,28 +305,29 @@
   description: A jumpskirt used for prisoners. It has suit sensors automatically enabled at all times.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-    layers:
-    - state: icon
-      color: "#ff8300"
-    - state: prisoner-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: inhand-left
-        color: "#ff8300"
-      - state: prisoner-inhand-left
-      right:
-      - state: inhand-right
-        color: "#ff8300"
-      - state: prisoner-inhand-right
+# Moffstation - Begin (New Prisoner Uniforms)
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prisoner.rsi
+#    layers:
+#    - state: icon
+#      color: "#ff8300"
+#    - state: prisoner-icon
+#  - type: Item
+#    inhandVisuals:
+#      left:
+#      - state: inhand-left
+#        color: "#ff8300"
+#      - state: prisoner-inhand-left
+#      right:
+#      - state: inhand-right
+#        color: "#ff8300"
+#      - state: prisoner-inhand-right
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-    clothingVisuals:
-      jumpsuit:
-      - state: equipped-INNERCLOTHING
-        color: "#ff8300"
-      - state: prisoner-equipped-INNERCLOTHING
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prisoner.rsi
+#    clothingVisuals:
+#      jumpsuit:
+#      - state: equipped-INNERCLOTHING
+#        color: "#ff8300"
+#      - state: prisoner-equipped-INNERCLOTHING
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
