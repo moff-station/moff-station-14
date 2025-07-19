@@ -44,7 +44,7 @@ public sealed class PickDepartmentObjectiveSystem : EntitySystem
         // generate the list of valid departments that can be selected
         foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>())     // Remove invalid departments
         {
-            if (!ent.Comp.AllowNonPrimary && department.Primary)
+            if (!ent.Comp.AllowNonPrimary && !department.Primary)
                 continue;
             if (!ent.Comp.AllowHidden && department.EditorHidden)
                 continue;
@@ -62,7 +62,7 @@ public sealed class PickDepartmentObjectiveSystem : EntitySystem
             departments.Add(department);
         }
 
-        if (departments.Count != 0)
+        if (departments.Count == 0)
         {
             args.Cancelled = true;
             return;
