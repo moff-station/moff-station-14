@@ -12,8 +12,8 @@
   id: BloodBrotherJailbreakObjective
 
 - type: entity
-  parent: [BaseBloodBrotherObjective, TrashDepartmentObjective]
-  id: BloodBrotherTrashDepartmentObjective
+  parent: [BaseBloodBrotherObjective, TrashRoomObjective]
+  id: BloodBrotherTrashRoomObjective
 
 - type: entity
   parent: [BaseBloodBrotherObjective, ClaimLocationObjective]

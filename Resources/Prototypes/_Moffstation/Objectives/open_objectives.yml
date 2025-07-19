@@ -49,27 +49,6 @@
       components:
       - LocationObjective # dont combine with other open endeds
 
-# Open-ended objective to trash a certain department
-- type: entity
-  parent: BaseTraitorObjective
-  id: TrashDepartmentObjective
-  name: Trash Department
-  description: We need you trash this department, make sure they don't pass a health inspection.
-  components:
-  - type: Objective
-    difficulty: 1.5
-    icon:
-      sprite: Objects/Specific/Janitorial/trashbag.rsi
-      state: icon-3
-  - type: LocationObjective
-    title: objective-condition-trash-department
-  - type: PickDepartmentObjective
-  - type: EscapeShuttleCondition
-  - type: ObjectiveBlacklistRequirement
-    blacklist:
-      components:
-      - LocationObjective # dont combine with other open endeds
-
 # Open-ended objective to trash a specific room
 - type: entity
   parent: BaseTraitorObjective
