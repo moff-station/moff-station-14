@@ -14,6 +14,7 @@
     children:
     - id: ClothingOuterArmorBasicSlim
     - id: WeaponShotgunDoubleBarreledRubber
+    - id: ClothingBeltBandolierFilledBeanbag # Moffstation - (Better Bandoliers)
     - id: DrinkShaker
     - id: ClothingEyesHudBeer
     - id: HandLabeler
@@ -23,7 +24,7 @@
     - !type:AllSelector
       rolls: 2
       children:
-      - id: BoxBeanbag
+      #- id: BoxBeanbag Moffstation - (Better Bandoliers)
       - id: RagItem
 
 #- type: entity

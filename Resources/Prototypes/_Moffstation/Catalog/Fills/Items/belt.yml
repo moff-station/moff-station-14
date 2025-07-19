@@ -18,3 +18,23 @@
     - id: MagazineMagnum
       amount: 2
     - id: Zipties
+
+- type: entity
+  parent: ClothingBeltBandolier
+  id: ClothingBeltBandolierFilledBeanbag
+  suffix: Filled, Beanbag
+  components:
+  - type: StorageFill
+    contents:
+    - id: ShellShotgunBeanbag
+      amount: 32
+
+- type: entity
+  parent: ClothingBeltBandolier
+  id: ClothingBeltBandolierFilledPellet
+  suffix: Filled, Pellet
+  components:
+  - type: StorageFill
+    contents:
+    - id: ShellShotgun
+      amount: 32
