@@ -6,21 +6,7 @@
     TraitorObjectiveGroupKill: 1
     TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
     TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveOpenEnded: 1.2  # Moffstation - Open ended objectives
-
-# Moffstation - Start - Open ended objectives
-- type: weightedRandom
-  id: TraitorObjectiveOpenEnded
-  weights:
-    DisruptDepartmentObjective: 1
-    SabotageObjective: 1
-    InfiltrateObjective: 0.5
-    JailbreakObjective: 1
-    # DistractSecObjective: 1
-    # IncriminateObjective: 1
-    LeaveCallingCardObjective: 0.5
-    LeaveCallingCardOnPersonObjective: 0.5
-# Moffstation - End
+    TraitorObjectiveOpenEnded: 0.5  # Moffstation - Open ended objectives
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSteal
@@ -64,17 +50,7 @@
   weights:
     ThiefObjectiveGroupCollection: 1
     ThiefObjectiveGroupItem: 1
-    ThiefObjectiveOpenEnded: 2  # Moffstation - open ended objectives
-
-# Moffstation - Start - Open ended objectives
-- type: weightedRandom
-  id: ThiefObjectiveOpenEnded
-  weights:
-    StealEverythingObjective: 0.5
-    StealMoneyObjective: 0.5
-    RobDepartmentObjective: 1
-    InfiltrateThiefObjective: 1
-# Moffstation - End
+    ThiefObjectiveOpenEnded: 0.5  # Moffstation - open ended objectives
 
 - type: weightedRandom
   id: ThiefBigObjectiveGroups
