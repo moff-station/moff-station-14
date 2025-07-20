@@ -113,9 +113,9 @@
   id: BibleDruid
   components:
   - type: Sprite
-    sprite: Objects/Specific/Chapel/mysteryofthedruids.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi # Moffstation updated textures.
   - type: Item
-    sprite: Objects/Specific/Chapel/mysteryofthedruids.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi # Moffstation updated textures.
 
 - type: entity
   parent: Bible
@@ -124,9 +124,9 @@
   id: BibleCommunistManifesto
   components:
   - type: Sprite
-    sprite: Objects/Specific/Chapel/communistmanifesto.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/communistmanifesto.rsi # Moffstation updated textures.
   - type: Item
-    sprite: Objects/Specific/Chapel/communistmanifesto.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/communistmanifesto.rsi # Moffstation updated textures.
 
 - type: entity
   parent: Bible
@@ -135,9 +135,9 @@
   id: BibleSatanic
   components:
   - type: Sprite
-    sprite: Objects/Specific/Chapel/satanicbible.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/satanicbible.rsi # Moffstation updated textures.
   - type: Item
-    sprite: Objects/Specific/Chapel/satanicbible.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/satanicbible.rsi # Moffstation updated textures.
 
 - type: entity
   parent: Bible
@@ -146,6 +146,58 @@
   id: BibleNanoTrasen
   components:
   - type: Sprite
-    sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/codexnanotrasimus.rsi # Moffstation updated textures.
   - type: Item
-    sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/codexnanotrasimus.rsi # Moffstation updated textures.
+
+# Moffstation Start
+
+- type: entity
+  parent: Bible
+  name: book of the honkmother
+  description: "A familiar book containing the Sacred Operating Procedures."
+  id: BibleHonk
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
+
+- type: entity
+  parent: Bible
+  name: tablet of ratvar
+  description: "A holy relic of the Clockwork Cult, blessed by the Clockwork Justice, Ratvar."
+  id: BibleRatvar
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/ratvartablet.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/ratvartablet.rsi
+
+- type: entity
+  parent: Bible
+  name: italian restraunt menu
+  description: "Stolen from the holy grounds of the nearest Olive Garden."
+  id: BibleItalian
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Italian
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/italianrestaurantmenu.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/italianrestaurantmenu.rsi
+
+- type: entity
+  parent: Bible
+  name: carps & crypts manual
+  description: "A holy relic to some, contains the sacred rules for the famous TTRPG... Carps & Crypts."
+  id: BibleC&c
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/c&c.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/c&c.rsi
+
+# Moffstation End -

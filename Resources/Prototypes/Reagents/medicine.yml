@@ -1150,6 +1150,34 @@
   - !type:ExtinguishTileReaction { }
 
 - type: reagent
+  id: Bolognese
+  name: reagent-name-bolognese
+  group: Medicine
+  desc: reagent-desc-bolognese
+  physicalDesc: reagent-physical-desc-bolognese
+  flavor: meaty
+  color: "#912711"
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 3
+      - !type:HealthChange
+        damage:
+          types:
+            Cold: -0.5
+  reactiveEffects:
+    Extinguish:
+      methods: [ Touch ]
+      effects:
+      - !type:ExtinguishReaction
+  plantMetabolism:
+  - !type:PlantAdjustWater
+    amount: 1
+  tileReactions:
+  - !type:ExtinguishTileReaction { }
+
+- type: reagent
   id: Pyrazine
   name: reagent-name-pyrazine
   group: Medicine

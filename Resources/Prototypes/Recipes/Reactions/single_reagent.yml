@@ -56,3 +56,15 @@
       amount: 1
   products:
     Holywater: 1
+
+# Moffstation
+- type: reaction
+  id: WatertoBolognese
+  impact: Low
+  requiredMixerCategories:
+  - Italian
+  reactants:
+    JuiceTomato:
+      amount: 1
+  products:
+    Bolognese: 1

@@ -85,6 +85,13 @@
     back:
     - Bible
 
+# Moffstation - Reenabling the Communist Manifesto
+- type: loadout
+  id: BibleCommunistManifesto
+  storage:
+    back:
+    - BibleCommunistManifesto
+
 - type: loadout
   id: BibleDruid
   storage:
@@ -108,3 +115,29 @@
   storage:
     back:
     - BibleTanakh
+
+# Moffstation Start - Additional holy books
+- type: loadout
+  id: BibleC&c
+  storage:
+    back:
+    - BibleC&c
+
+- type: loadout
+  id: BibleHonk
+  storage:
+    back:
+    - BibleHonk
+
+- type: loadout
+  id: BibleItalian
+  storage:
+    back:
+    - BibleItalian
+
+- type: loadout
+  id: BibleRatvar
+  storage:
+    back:
+    - BibleRatvar
+# Moffstation End - Additional holy books

@@ -121,6 +121,9 @@ reagent-desc-bruizine = Originally developed as a cough medicine, it turns out t
 reagent-name-holywater = holy water
 reagent-desc-holywater = The cleanest and purest of waters straight from the hands of god, is known to magically heal wounds.
 
+reagent-name-bolognese = bolognese
+reagent-desc-bolognese = A rich and slow-cooked meat sauce seasoned generously with italian herbs and spices.
+
 reagent-name-pyrazine = pyrazine
 reagent-desc-pyrazine = Efficiently heals burns from the hottest of fires. Causes massive internal bleeding when overdosed.
 
