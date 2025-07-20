@@ -154,15 +154,14 @@
 
 - type: entity
   parent: Bible
-  name: book of the honkmother
-  description: "A familiar book containing the Sacred Operating Procedures."
+  name: mirth of the honkmother
+  description: "Oh great and glorious Mother, Mistress of Mirth, Matron of Mask and Merriments, Blessed is she amongst us jesters."
   id: BibleHonk
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
   - type: Item
     sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
-
 - type: entity
   parent: Bible
   name: tablet of ratvar
