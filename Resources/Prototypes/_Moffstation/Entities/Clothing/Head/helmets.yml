@@ -1,0 +1,20 @@
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetMilitary
+  name: military helmet
+  description: A old SolGov marine helmet repainted in NT security colors. Protects the head from impacts, and comes with a detachable visor.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Helmets/security-military.rsi
+    layers:
+    - state: lowered-icon
+    - state: raised-icon
+      visible: false
+      map: [ "visor" ]
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Helmets/security-military.rsi
+    equippedPrefix: raised
+  - type: HideLayerClothing
+    slots: []
+    layers:
+      Hair: HEAD

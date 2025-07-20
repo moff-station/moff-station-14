@@ -40,6 +40,10 @@
       distro: '#0055CCFF'
       air: '#03FCD3FF'
       mix: '#947507FF'
+    # Moffstation - Start
+    gasTankVisuals: !type:GasTankVisualsPrototype
+      id: Default
+    # Moffstation - End
   - type: StaticPrice
     price: 40
   - type: LimitedCharges

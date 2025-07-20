@@ -4,7 +4,7 @@
     BloodBrotherObjectiveGroupState: 1
     BloodBrotherObjectiveGroupSteal: 1
     BloodBrotherObjectiveGroupKill: 1
-    BloodBrotherObjectiveGroupOpenEnded: 1 # Moffstation - Added our own open-ended objectives - See Prototypes/_Moffstation/Objectives/objectiveGroups.yml for this definition.
+    BloodBrotherObjectiveGroupOpenEnded: 0.5 # Moffstation - Added our own open-ended objectives - See Prototypes/_Moffstation/Objectives/objectiveGroups.yml for this definition.
 
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupState
@@ -30,6 +30,7 @@
     BloodBrotherCaptainJetpackStealObjective: 0.5
     BloodBrotherHandTeleporterStealObjective: 0.5
     BloodBrotherEnergyShotgunStealObjective: 0.5
+    BloodBrotherBigIronStealObjective: 0.5 # Moffstation - Added big iron steal objective.
 
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupKill

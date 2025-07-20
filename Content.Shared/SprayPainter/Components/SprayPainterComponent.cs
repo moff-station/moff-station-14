@@ -1,7 +1,9 @@
+using Content.Shared._Moffstation.Atmos.Visuals; // Moffstation
 using Content.Shared.Decals;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.SprayPainter.Components;
 
@@ -33,7 +35,7 @@ public sealed partial class SprayPainterComponent : Component
     public int PipeChargeCost = 1;
 
     /// <summary>
-    /// The currently selected color by its key.
+    /// Pipe color chosen to spray with.
     /// </summary>
     [DataField, AutoNetworkedField]
     public string PickedColor = DefaultPickedColor;
@@ -50,6 +52,26 @@ public sealed partial class SprayPainterComponent : Component
     [DataField, AutoNetworkedField]
     public Dictionary<string, string> StylesByGroup = new();
 
+    // Moffstation - Start
+    /// <summary>
+    /// The amount of time it takes to paint a gas tank.
+    /// </summary>
+    [DataField]
+    public TimeSpan GasTankSprayTime = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// The currently configured <see cref="GasTankVisuals"/> to which painted tanks will be changed.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public GasTankVisuals GasTankVisuals;
+
+    /// <summary>
+    /// The cost of spray painting a gas tank, in charges.
+    /// </summary>
+    [DataField]
+    public int GasTankChargeCost = 1;
+    // Moff-station - End
+
     /// <summary>
     /// The currently open tab of the painter
     /// (Are you selecting canister color?)
@@ -58,10 +80,10 @@ public sealed partial class SprayPainterComponent : Component
     public int SelectedTab;
 
     /// <summary>
-    /// Whether or not the painter should be painting decals.
+    /// Whether or not the painter should be painting or removing decals when clicked.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool IsPaintingDecals = false;
+    public DecalPaintMode DecalMode = DecalPaintMode.Off;
 
     /// <summary>
     /// The currently selected decal prototype.
@@ -104,4 +126,24 @@ public sealed partial class SprayPainterComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier SoundSwitchDecalMode = new SoundPathSpecifier("/Audio/Machines/quickbeep.ogg", AudioParams.Default.WithVolume(1.5f));
+}
+
+/// <summary>
+/// A set of operating modes for decal painting.
+/// </summary>
+[Serializable, NetSerializable]
+public enum DecalPaintMode : byte
+{
+    /// <summary>
+    /// Clicking on the floor does nothing.
+    /// </summary>
+    Off = 0,
+    /// <summary>
+    /// Clicking on the floor adds a decal at the requested spot (or snapped to the grid)
+    /// </summary>
+    Add = 1,
+    /// <summary>
+    /// Clicking on the floor removes all decals at the requested spot (or snapped to the grid)
+    /// </summary>
+    Remove = 2,
 }

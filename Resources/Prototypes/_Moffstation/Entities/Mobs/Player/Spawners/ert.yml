@@ -1,0 +1,119 @@
+- type: entity
+  name: ERT leader spawner
+  id: ERTLeaderSpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTLeaderEVALecter
+
+- type: entity
+  name: ERT chaplain spawner
+  id: ERTChaplainSpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTChaplainEVA
+
+- type: entity
+  name: ERT janitor spawner
+  id: ERTJanitorSpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTJanitorEVA
+
+- type: entity
+  name: ERT engineer spawner
+  id: ERTEngineerSpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTEngineerEVA
+
+- type: entity
+  name: ERT security spawner
+  id: ERTSecuritySpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTSecurityEVALecter
+
+- type: entity
+  name: ERT medic spawner
+  id: ERTMedicSpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTMedicalEVA
+
+- type: entity
+  name: CBURN spawner
+  id: CBURNSpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerCBURNUnit
+
+- type: entity
+  name: DeathSquad spawner
+  id: DeathSquadSpawner
+  parent: MarkerBase
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerDeathSquad

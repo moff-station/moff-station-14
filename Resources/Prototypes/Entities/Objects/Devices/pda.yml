@@ -222,7 +222,7 @@
     state: pda-internmed
   - type: GuideHelp
     guides:
-    - Medical Doctor
+    - MedicalDoctor
 
 - type: entity
   parent: BaseSecurityPDA
@@ -476,6 +476,13 @@
     accentVColor: "#a23e3e"
   - type: Icon
     state: pda-qm
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AstroNavCartridge
 
 - type: entity
   parent: BasePDA
@@ -756,7 +763,7 @@
     state: pda-medical
   - type: GuideHelp
     guides:
-    - Medical Doctor
+    - MedicalDoctor
 
 - type: entity
   parent: MedicalPDA
@@ -921,6 +928,7 @@
     id: CentcomIDCard
     penSlot:
       startingItem: PenCentcom
+      priority: -1
       whitelist:
         tags:
         - Write

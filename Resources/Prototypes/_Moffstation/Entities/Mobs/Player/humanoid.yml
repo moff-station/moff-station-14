@@ -54,3 +54,136 @@
     - type: Loadout
       prototypes: [ CentcomRepresentativeGear ]
       roleLoadout: [ RoleSurvivalStandard ]
+
+# Mercenaries
+- type: job
+  id: Mercenary
+  name: job-name-mercenary
+  description: job-description-mercenary
+  playTimeTracker: JobMercenary
+  setPreference: false
+  startingGear: MercenaryBasicGear
+  icon: "JobIconUnknown"
+  canBeAntag: false
+  access:
+  - Maintenance
+
+- type: entity
+  id: RandomHumanoidSpawnerMercenaryLeader
+  name: mercenary leader
+  suffix: MercRole, Armed
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: mercenary
+  - type: RandomHumanoidSpawner
+    settings: MercenaryLeader
+
+- type: randomHumanoidSettings
+  parent: EventHumanoid
+  id: MercenaryLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-mercenary-leader-name
+    description: ghost-role-information-mercenary-leader-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: short
+    job: Mercenary
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-military-leader
+  - type: Loadout
+    prototypes: [ MercenaryLeaderGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  id: RandomHumanoidSpawnerMercenaryRifleman
+  name: mercenary rifleman
+  suffix: MercRole, Armed
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: mercenary
+  - type: RandomHumanoidSpawner
+    settings: MercenaryRifleman
+
+- type: randomHumanoidSettings
+  parent: EventHumanoid
+  id: MercenaryRifleman
+  components:
+  - type: GhostRole
+    name: ghost-role-information-mercenary-rifleman-name
+    description: ghost-role-information-mercenary-rifleman-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: short
+    job: Mercenary
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-military-rifle
+  - type: Loadout
+    prototypes: [ MercenaryRiflemanGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  id: RandomHumanoidSpawnerMercenaryEngineer
+  name: mercenary combat engineer
+  suffix: MercRole, Armed
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: mercenary
+  - type: RandomHumanoidSpawner
+    settings: MercenaryEngineer
+
+- type: randomHumanoidSettings
+  parent: EventHumanoid
+  id: MercenaryEngineer
+  components:
+  - type: GhostRole
+    name: ghost-role-information-mercenary-engineer-name
+    description: ghost-role-information-mercenary-engineer-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: short
+    job: Mercenary
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-military-pointman
+  - type: Loadout
+    prototypes: [ MercenaryEngineerGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  id: RandomHumanoidSpawnerMercenaryMedic
+  name: mercenary corpsman
+  suffix: MercRole, Armed
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: mercenary
+  - type: RandomHumanoidSpawner
+    settings: MercenaryMedic
+
+- type: randomHumanoidSettings
+  parent: EventHumanoid
+  id: MercenaryMedic
+  components:
+  - type: GhostRole
+    name: ghost-role-information-mercenary-medic-name
+    description: ghost-role-information-mercenary-medic-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: short
+    job: Mercenary
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-military-medic
+  - type: Loadout
+    prototypes: [ MercenaryMedicGear ]
+    roleLoadout: [ RoleSurvivalExtended ]

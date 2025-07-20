@@ -97,7 +97,7 @@
   - Truncheon
   - TelescopicShield
   - HoloprojectorSecurity
-# - WeaponDisablerSMG (Moffstation - Stamina Resistance)
+  - WeaponDisablerSMG
 
 - type: technology
   id: ExplosiveTechnology
@@ -191,6 +191,18 @@
   technologyPrerequisites:
   - SalvageWeapons
 
+- type: technology
+  id: DualWieldingTechnology
+  name: research-technology-dual-wielding-technology
+  icon:
+    sprite: Clothing/Back/Specific/harmpack.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ClothingBackpackHarmpack
+
 # Tier 3
 
 - type: technology
@@ -217,7 +229,6 @@
   cost: 15000
   recipeUnlocks:
   - WeaponTemperatureGun
-  - WeaponDisablerSMG # Moffstation - (Stamina Resistance)
 
 - type: technology
   id: AdvancedShuttleWeapon

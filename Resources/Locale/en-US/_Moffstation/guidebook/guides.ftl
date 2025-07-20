@@ -2,6 +2,7 @@ metashield-changes = Metashield Changes
 spacelaw-changes = Space Law Changes
 moff-ooc-rules = OOC rules
 moff-metagaming-rules = Metagaming rules
+moff-metacomming-rules = 2.2 Metacomming
 moff-powergaming-rules = Powergaming rules
 moff-rp-rules = Roleplay rules
 moff-death-and-life-rules = Death and New life rules

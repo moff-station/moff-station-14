@@ -59,12 +59,21 @@ public sealed class SprayPainterSetPipeColorMessage(string? key) : BoundUserInte
 [Serializable, NetSerializable]
 public sealed partial class SprayPainterDoAfterEvent : DoAfterEvent
 {
+    /// <summary>
+    /// The prototype to use to repaint this object.
+    /// </summary>
     [DataField]
     public string Prototype;
 
+    /// <summary>
+    /// The group ID of the object being painted.
+    /// </summary>
     [DataField]
     public string Group;
 
+    /// <summary>
+    /// The cost, in charges, to paint this object.
+    /// </summary>
     [DataField]
     public int Cost;
 
@@ -81,6 +90,9 @@ public sealed partial class SprayPainterDoAfterEvent : DoAfterEvent
 [Serializable, NetSerializable]
 public sealed partial class SprayPainterPipeDoAfterEvent : DoAfterEvent
 {
+    /// <summary>
+    /// Color of the pipe to set.
+    /// </summary>
     [DataField]
     public Color Color;
 
@@ -93,17 +105,15 @@ public sealed partial class SprayPainterPipeDoAfterEvent : DoAfterEvent
 }
 
 /// <summary>
-/// An action raised on an item when it was spray painted.
+/// An action raised on an entity when it is spray painted.
 /// </summary>
+/// <param name="User">The entity painting this item.</param>
+/// <param name="Tool">The entity used to paint this item.</param>
+/// <param name="Prototype">The prototype used to generate the new painted appearance.</param>
+/// <param name="Group">The group of the entity being painted (e.g. airlocks with glass, canisters).</param>
 [ByRefEvent]
-public partial record struct EntityPaintedEvent(EntityUid? user, EntityUid tool, EntProtoId prototype, ProtoId<PaintableGroupPrototype> group)
-{
-    /// <summary>The entity painting this item.</summary>
-    public EntityUid? User = user;
-    /// <summary>The entity used to paint this item.</summary>
-    public EntityUid Tool = tool;
-    /// <summary>The prototype used to generate the new painted appearance.</summary>
-    public EntProtoId Prototype = prototype;
-    /// <summary>The group of item being painted (e.g. airlocks with glass, canisters).</summary>
-    public ProtoId<PaintableGroupPrototype> Group = group;
-}
+public partial record struct EntityPaintedEvent(
+    EntityUid? User,
+    EntityUid Tool,
+    EntProtoId Prototype,
+    ProtoId<PaintableGroupPrototype> Group);

@@ -57,6 +57,7 @@ namespace Content.Shared.Storage
         [Access(typeof(SharedStorageSystem))]
         public ProtoId<ItemSizePrototype>? MaxItemSize;
 
+        /* Moffstation - Start - Move Quick and Area Insert to indepdent components
         // TODO: Make area insert its own component.
         [DataField]
         public bool QuickInsert; // Can insert storables by clicking them with the storage entity
@@ -66,6 +67,7 @@ namespace Content.Shared.Storage
         /// </summary>
         /// <remarks>Used to prevent autoclickers spamming server with individual pickup actions.</remarks>
         public TimeSpan QuickInsertCooldown = TimeSpan.FromSeconds(0.5);
+         */// Moffstation - End
 
         /// <summary>
         /// Minimum delay between UI open actions.
@@ -87,6 +89,7 @@ namespace Content.Shared.Storage
         [DataField]
         public bool OpenOnActivate = true;
 
+        /* Moffstation - Start - Move Quick and Area Insert to indepdent components
         /// <summary>
         /// How many entities area pickup can pickup at once.
         /// </summary>
@@ -97,6 +100,7 @@ namespace Content.Shared.Storage
 
         [DataField]
         public int AreaInsertRadius = 1;
+        */// Moffstation - End
 
         /// <summary>
         /// Whitelist for entities that can go into the storage.

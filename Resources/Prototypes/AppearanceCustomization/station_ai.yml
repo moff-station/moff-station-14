@@ -51,6 +51,8 @@
   - StationAiHologramCat
   - StationAiHologramDog
   - StationAiHologramAngel # Moffstation - Added hologram
+  - StationAiHologramKobold
+  - StationAiHologramMonkey
 
 # Iconography
 - type: stationAiCustomization
@@ -190,3 +192,21 @@
     Hologram:
       sprite: Mobs/Silicon/holograms.rsi
       state: ai_dog
+
+- type: stationAiCustomization
+  id: StationAiHologramKobold
+  name: station-ai-hologram-kobold
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: Mobs/Silicon/holograms.rsi
+      state: ai_kobold
+
+- type: stationAiCustomization
+  id: StationAiHologramMonkey
+  name: station-ai-hologram-monkey
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: Mobs/Silicon/holograms.rsi
+      state: ai_monkey
