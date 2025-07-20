@@ -65,3 +65,11 @@
   icon:
     sprite: Objects/Misc/utensils.rsi
     state: spoon
+
+# Moffstation - Additional Holy Books
+- type: mixingCategory
+  id: Italian
+  verbText: mixing-verb-holy
+  icon:
+    sprite: _Moffstation/Objects/Specific/Chapel/italianrestaurantmenu.rsi
+    state: icon
