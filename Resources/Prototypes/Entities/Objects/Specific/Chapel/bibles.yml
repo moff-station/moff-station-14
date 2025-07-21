@@ -135,7 +135,7 @@
 
 - type: entity
   id: BibleCommunistManifesto
-  name: communist manifesto
+  name: communist guidebook
   parent: BibleBase
   description: "Remove the mask of humanity from Capital."
   components:
@@ -150,9 +150,9 @@
 
 - type: entity
   id: BibleSatanic
-  name: satanic bible
+  name: book of nar'sie
   parent: BibleBase
-  description: "What could possibly go wrong?"
+  description: "What could possibly go wrong with a book covered in blood?"
   components:
   - type: ReactionMixer
     mixMessage: "bible-mixing-success"
