@@ -123,4 +123,26 @@
       amount: 1
   products:
     Coffee: 1
+
+- type: reaction
+  id: WatertoWeldingFuel
+  impact: Low
+  requiredMixerCategories:
+  - Ratvar
+  reactants:
+    Water:
+      amount: 1
+  products:
+    WeldingFuel: 1
+
+- type: reaction
+  id: WatertoAmmonia
+  impact: Low
+  requiredMixerCategories:
+  - Druidic
+  reactants:
+    Water:
+      amount: 1
+  products:
+    Ammonia: 1
 # Moffstation End - Additional holy books

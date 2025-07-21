@@ -117,12 +117,17 @@
     sprite: Objects/Specific/Chapel/tanakh.rsi
   - type: Item
     sprite: Objects/Specific/Chapel/tanakh.rsi
+
 - type: entity
   id: BibleDruid
   name: druidic tablet
   parent: BibleBase
   description: "It's the mystery of the druids!"
   components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Druidic
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi # Moffstation updated textures.
   - type: Item
@@ -196,6 +201,10 @@
   parent: BibleBase
   description: "A holy relic of the Clockwork Cult, blessed by the Clockwork Justice, Ratvar."
   components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Ratvar
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Chapel/ratvartablet.rsi
   - type: Item
