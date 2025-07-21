@@ -128,14 +128,4 @@
         damage:
           types:
             Cold: -0.5
-  reactiveEffects:
-    Extinguish:
-      methods: [ Touch ]
-      effects:
-      - !type:ExtinguishReaction
-  plantMetabolism:
-  - !type:PlantAdjustWater
-    amount: 1
-  tileReactions:
-  - !type:ExtinguishTileReaction { }
 # Moffstation End - Additional holy books

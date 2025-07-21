@@ -57,14 +57,70 @@
   products:
     Holywater: 1
 
-# Moffstation
+# Moffstation Start - Additional holy books
 - type: reaction
   id: WatertoBolognese
   impact: Low
   requiredMixerCategories:
   - Italian
   reactants:
-    JuiceTomato:
+    Water:
       amount: 1
   products:
     Bolognese: 1
+
+- type: reaction
+  id: WatertoLaughter
+  impact: Low
+  requiredMixerCategories:
+  - Clown
+  reactants:
+    Water:
+      amount: 1
+  products:
+    Laughter: 1
+
+- type: reaction
+  id: WatertoVodka
+  impact: Low
+  requiredMixerCategories:
+  - Communist
+  reactants:
+    Water:
+      amount: 1
+  products:
+    Vodka: 1
+
+- type: reaction
+  id: WatertoBlood
+  impact: Low
+  requiredMixerCategories:
+  - Satanist
+  reactants:
+    Water:
+      amount: 1
+  products:
+    Blood: 1
+
+- type: reaction
+  id: WatertoEnergy
+  impact: Low
+  requiredMixerCategories:
+  - Nerd
+  reactants:
+    Water:
+      amount: 1
+  products:
+    EnergyDrink: 1
+
+- type: reaction
+  id: WatertoCoffee
+  impact: Low
+  requiredMixerCategories:
+  - NanoTrasen
+  reactants:
+    Water:
+      amount: 1
+  products:
+    Coffee: 1
+# Moffstation End - Additional holy books
