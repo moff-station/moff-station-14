@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseGameRule
+  id: SyndicateListeningOutpost
+  components:
+  - type: GridSpawn
+    groups:
+      trade: !type:GridSpawnGroup
+        stationGrid: false
+        nameGrid: true
+        minimumDistance: 2000
+        maximumDistance: 4000
+        paths:
+        - /Maps/Shuttles/trading_outpost.yml
