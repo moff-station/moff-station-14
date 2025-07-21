@@ -66,6 +66,7 @@
     - WhitelistChameleon
 
 #Engineering Hardsuit
+# Moffstation - Begin - Emissive engineering hardsuits
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitEngineering
@@ -73,7 +74,7 @@
   description: An engineering hardsuit helmet designed for working in low-pressure, high radioactive environments.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/engineering.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/engineering.rsi
     layers:
     - state: icon
     - state: icon-unshaded
@@ -119,6 +120,7 @@
     tags:
     - CorgiWearable
     - WhitelistChameleon
+# Moffstation - End - Emissive engineering hardsuits
 
 #Spationaut Hardsuit
 - type: entity
@@ -369,6 +371,7 @@
     - WhitelistChameleon
 
 #Chief Engineer's Hardsuit
+# Moffstation - Begin - Emissive engineering hardsuits
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitEngineeringWhite
@@ -376,7 +379,7 @@
   description: Special hardsuit helmet, made for the chief engineer of the station.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/engineering-white.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/engineering-white.rsi
     layers:
     - state: icon
     - state: icon-unshaded
@@ -424,6 +427,7 @@
     tags:
     - CorgiWearable
     - WhitelistChameleon
+# Moffstation - End
 
 #Chief Medical Officer's Hardsuit
 - type: entity
