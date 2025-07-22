@@ -52,7 +52,7 @@
   - type: StealTarget
     stealGroup: Bible
 
-- type: entity # Moffstation seperated otu the mixing component for Bible.
+- type: entity # Moffstation seperated out the mixing component for Bible.
   id: Bible
   name: bible
   parent: BibleBase
@@ -137,7 +137,7 @@
   id: BibleNarsie # Moffstation renamed.
   name: tomb of nar'sie # Moffstation renamed.
   parent: BibleBase
-  description: "What could possibly go wrong?"
+  description: "What could possibly go wrong with a book covered in blood?"
   components:
   - type: ReactionMixer # Moffstation mixing component added
     mixMessage: "bible-mixing-success"
