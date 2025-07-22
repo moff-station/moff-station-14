@@ -14,7 +14,6 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
     [Dependency] private readonly StationSystem _stationSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-
     protected override void Added(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
     {
         base.Added(uid, component, gameRule, args);
