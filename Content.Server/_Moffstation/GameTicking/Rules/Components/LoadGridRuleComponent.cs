@@ -11,7 +11,7 @@ public sealed partial class LoadGridRuleComponent : Component
     /// Path to the grid to be loaded
     /// </summary>
     [DataField]
-    public ResPath GridPath = new();
+    public ResPath GridPath;
 
     [DataField]
     public float MinimumDistance = 100f;

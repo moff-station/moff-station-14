@@ -12,6 +12,8 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
 {
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
 
     protected override void Added(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
     {
@@ -19,8 +21,7 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
 
         //Get the station
         if (!TryGetRandomStation(out var station) ||
-            !TryComp<StationDataComponent>(station, out var data) ||
-            data.Grids.Count < 1)
+            !TryComp<StationDataComponent>(station, out var data))
         {
             Log.Warning($"Unable to find a valid station for {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
@@ -29,17 +30,22 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
 
         // Get the map that the main station exists on
         if (_stationSystem.GetLargestGrid(data) is not { } largestGrid)
+        {
+            Log.Warning($"Unable to find map for {args.RuleId}!");
+            ForceEndSelf(uid, gameRule);
             return;
+        }
         var map = Transform(largestGrid).MapID;
         if (map == MapId.Nullspace)
         {
-            Log.Warning($"Attempted to load grid into nullspace for rule {args.RuleId}!");
+            Log.Warning($"Attempted to load into nullspace for rule {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
             return;
         }
 
         // Get the next offset of the grid
-        var offset = RobustRandom.NextVector2(component.MinimumDistance, component.MaximumDistance);
+        var stationLocation = _transform.GetWorldPosition(largestGrid);
+        var offset = stationLocation + RobustRandom.NextVector2(component.MinimumDistance, component.MaximumDistance);
 
         // Load the grid
         if (!_mapLoader.TryLoadGrid(map, component.GridPath, out _, null, offset))
