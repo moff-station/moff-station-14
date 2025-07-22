@@ -3,6 +3,6 @@
   id: SyndicateListeningOutpost
   components:
   - type: LoadGridRule
-    shuttleGridPath: /Maps/Shuttles/trading_outpost.yml
-    minimumDistance: 1000
-    maximumDistance: 2000
+    gridPath: /Maps/Shuttles/trading_outpost.yml
+    minimumDistance: 100
+    maximumDistance: 500

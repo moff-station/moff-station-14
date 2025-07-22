@@ -16,4 +16,16 @@ public sealed partial class LoadGridRuleComponent : Component
 
     [DataField]
     public float MaximumDistance = 1000f;
+
+    /// <summary>
+    /// Radius in which to check for collisions for the spawned grid
+    /// </summary>
+    [DataField]
+    public float SafetyZoneRadius = 16f;
+
+    /// <summary>
+    /// Max amount of attempts to find an unobstructed location for the grid
+    /// </summary>
+    [DataField]
+    public int MaxAttempts = 100;
 }
