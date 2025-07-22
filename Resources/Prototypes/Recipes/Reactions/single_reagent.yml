@@ -59,7 +59,7 @@
 
 # Moffstation Start - Additional holy books
 - type: reaction
-  id: WatertoBolognese
+  id: WatertoBlessedBolognese
   impact: Low
   requiredMixerCategories:
   - Italian
@@ -67,10 +67,10 @@
     Water:
       amount: 1
   products:
-    Bolognese: 1
+    BlessedBolognese: 1
 
 - type: reaction
-  id: WatertoLaughter
+  id: WatertoPureJoy
   impact: Low
   requiredMixerCategories:
   - Clown
@@ -78,10 +78,10 @@
     Water:
       amount: 1
   products:
-    Laughter: 1
+    PureJoy: 1
 
 - type: reaction
-  id: WatertoVodka
+  id: WatertoPureVodka
   impact: Low
   requiredMixerCategories:
   - Communist
@@ -89,21 +89,21 @@
     Water:
       amount: 1
   products:
-    Vodka: 1
+    PureVodka: 1
 
 - type: reaction
-  id: WatertoBlood
+  id: WatertoNarsieBlood
   impact: Low
   requiredMixerCategories:
-  - Satanist
+  - Narsie
   reactants:
     Water:
       amount: 1
   products:
-    Blood: 1
+    NarsieBlood: 1
 
 - type: reaction
-  id: WatertoEnergy
+  id: WatertoManaPotion
   impact: Low
   requiredMixerCategories:
   - Nerd
@@ -111,10 +111,10 @@
     Water:
       amount: 1
   products:
-    EnergyDrink: 1
+    ManaPotion: 1
 
 - type: reaction
-  id: WatertoCoffee
+  id: WatertoHydration
   impact: Low
   requiredMixerCategories:
   - NanoTrasen
@@ -122,10 +122,10 @@
     Water:
       amount: 1
   products:
-    Coffee: 1
+    HydrationSolution: 1
 
 - type: reaction
-  id: WatertoWeldingFuel
+  id: WatertoTemproalLubricant
   impact: Low
   requiredMixerCategories:
   - Ratvar
@@ -133,10 +133,10 @@
     Water:
       amount: 1
   products:
-    WeldingFuel: 1
+    TemporalLubricant: 1
 
 - type: reaction
-  id: WatertoAmmonia
+  id: WatertoLifebloomSap
   impact: Low
   requiredMixerCategories:
   - Druidic
@@ -144,5 +144,16 @@
     Water:
       amount: 1
   products:
-    Ammonia: 1
+    LifebloomSap: 1
+
+- type: reaction
+  id: WatertoRadiantNectar
+  impact: Low
+  requiredMixerCategories:
+  - Lamp
+  reactants:
+    Water:
+      amount: 1
+  products:
+    RadiantNectar: 1
 # Moffstation End - Additional holy books

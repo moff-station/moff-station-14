@@ -52,7 +52,7 @@
   - type: StealTarget
     stealGroup: Bible
 
-- type: entity
+- type: entity # Moffstation seperated otu the mixing component for Bible.
   id: Bible
   name: bible
   parent: BibleBase
@@ -104,27 +104,12 @@
     event: !type:SummonActionEvent
 
 - type: entity
-  id: BibleTanakh
-  name: tanakh
-  parent: BibleBase
-  description: "For God's chosen crewmembers"
-  components:
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success"
-    reactionTypes:
-    - Holy
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/tanakh.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/tanakh.rsi
-
-- type: entity
   id: BibleDruid
   name: druidic tablet
   parent: BibleBase
   description: "It's the mystery of the druids!"
   components:
-  - type: ReactionMixer
+  - type: ReactionMixer # Moffstation mixing component added
     mixMessage: "bible-mixing-success"
     reactionTypes:
     - Druidic
@@ -139,7 +124,7 @@
   parent: BibleBase
   description: "Remove the mask of humanity from Capital."
   components:
-  - type: ReactionMixer
+  - type: ReactionMixer # Moffstation mixing component added
     mixMessage: "bible-mixing-success"
     reactionTypes:
     - Communist
@@ -149,15 +134,15 @@
     sprite: _Moffstation/Objects/Specific/Chapel/communistmanifesto.rsi # Moffstation updated textures.
 
 - type: entity
-  id: BibleSatanic
-  name: satanic bible
+  id: BibleNarsie # Moffstation renamed.
+  name: tomb of nar'sie # Moffstation renamed.
   parent: BibleBase
   description: "What could possibly go wrong?"
   components:
-  - type: ReactionMixer
+  - type: ReactionMixer # Moffstation mixing component added
     mixMessage: "bible-mixing-success"
     reactionTypes:
-    - Satanist
+    - Narsie
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Chapel/satanicbible.rsi # Moffstation updated textures.
   - type: Item
@@ -169,7 +154,7 @@
   parent: BibleBase
   description: "A familiar book containing the Sacred Operating Procedures."
   components:
-  - type: ReactionMixer
+  - type: ReactionMixer # Moffstation mixing component added
     mixMessage: "bible-mixing-success"
     reactionTypes:
     - NanoTrasen
@@ -179,7 +164,6 @@
     sprite: _Moffstation/Objects/Specific/Chapel/codexnanotrasimus.rsi # Moffstation updated textures.
 
 # Moffstation Start
-
 - type: entity
   id: BibleHonk
   name: mirth of the honkmother
@@ -194,6 +178,21 @@
     sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
   - type: Item
     sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
+
+- type: entity
+  id: BibleLamp
+  name: compendium of the lamp
+  parent: BibleBase
+  description: "May the light and warmth of the glorious lamp purify your soul and mind."
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Lamp
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/lamp.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/lamp.rsi
 
 - type: entity
   id: BibleRatvar
@@ -239,5 +238,4 @@
     sprite: _Moffstation/Objects/Specific/Chapel/carpscrypts.rsi
   - type: Item
     sprite: _Moffstation/Objects/Specific/Chapel/carpscrypts.rsi
-
 # Moffstation End -

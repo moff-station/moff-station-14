@@ -105,16 +105,10 @@
     - BibleNanoTrasen
 
 - type: loadout
-  id: BibleSatanic
+  id: BibleNarsie
   storage:
     back:
-    - BibleSatanic
-
-- type: loadout
-  id: BibleTanakh
-  storage:
-    back:
-    - BibleTanakh
+    - BibleNarsie
 
 # Moffstation Start - Additional holy books
 - type: loadout
@@ -140,4 +134,10 @@
   storage:
     back:
     - BibleRatvar
+
+- type: loadout
+  id: BibleLamp
+  storage:
+    back:
+    - BibleLamp
 # Moffstation End - Additional holy books

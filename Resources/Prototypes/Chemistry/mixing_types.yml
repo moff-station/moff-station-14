@@ -66,7 +66,7 @@
     sprite: Objects/Misc/utensils.rsi
     state: spoon
 
-# Moffstation - Additional Holy Books
+# Moffstation Start - Additional Holy Books
 - type: mixingCategory
   id: Italian
   verbText: mixing-verb-holy
@@ -96,8 +96,8 @@
     state: icon
 
 - type: mixingCategory
-  id: Satanist
-  verbText: mixing-verb-holy
+  id: Narsie
+  verbText: mixing-verb-unholy
   icon:
     sprite: _Moffstation/Objects/Specific/Chapel/satanicbible.rsi
     state: icon
@@ -118,7 +118,15 @@
 
 - type: mixingCategory
   id: Ratvar
-  verbText: mixing-verb-holy
+  verbText: mixing-verb-unholy
   icon:
     sprite: _Moffstation/Objects/Specific/Chapel/ratvartablet.rsi
     state: icon
+
+- type: mixingCategory
+  id: Lamp
+  verbText: mixing-verb-holy
+  icon:
+    sprite: _Moffstation/Objects/Specific/Chapel/lamp.rsi
+    state: icon
+# Moffstation End - Additional Holy Books

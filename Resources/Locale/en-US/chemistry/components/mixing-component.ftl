@@ -6,6 +6,7 @@ mixing-verb-default-condense = condense
 mixing-verb-centrifuge = centrifugation
 mixing-verb-electrolysis = electrolyze
 mixing-verb-holy = bless
+mixing-verb-unholy = curse
 mixing-verb-stir = stir
 mixing-verb-shake = shake
 
