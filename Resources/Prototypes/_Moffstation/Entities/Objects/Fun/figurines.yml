@@ -588,6 +588,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineTalvi
+  name: Extremely Fluffy Lizard Figurine
+  description: A surprisingly large and bear-like reptilian figurine with a calm, compassionate look in her eyes. She's covered in incredibly soft fur. The cheap comb that was packed with this figure fell apart as soon as it was freed from the packaging. Smells like vanilla.
+  components:
+  - type: Sprite
+    state: talvi
+  - type: SpeakOnTrigger
+    pack: FigurinesTalvi
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineTania
   name: Pink Slime Engineer Figurine
   description: A figurine depicting a pink slime chief engineer, with numerous tentacles and a tiny fire axe. Pulled from shelves for containing unsafe levels of plasma.
