@@ -1,0 +1,95 @@
+- type: entityTable
+  id: FilingCabinetFillTableLPO
+  table: !type:AllSelector
+    children:
+    - !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 1, 3
+      children:
+      - id: BoxFolderBlue
+      - id: BoxFolderRed
+      - id: BoxFolderYellow
+      - id: BoxFolderWhite
+      - id: BoxFolderGrey
+      - id: BoxFolderBlack
+    - id: CyberPen
+    - id: LuxuryPen
+      prob: 0.5
+    - id: Pen
+      prob: 0.5
+    - !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 8,12
+      children:
+      - id: Paper
+      - id: PaperOffice
+      - id: PaperCaptainsThoughts
+      - id: PaperCargoInvoice
+      - id: PaperCargoBountyManifest
+      - id: PaperNanoTaskItem
+      - id: PaperCNCSheet
+      - id: SyndicateBusinessCard
+        weight: 0.5
+      - id: TraitorCodePaper
+        weight: 0.1
+      - id: Telecrystal1 # How'd this get in here?
+        weight: 0.05
+      - id: AllTraitorCodesPaper
+        weight: 0.01
+    - id: RubberStampSyndicate
+    - id: RubberStampApproved
+    - id: RubberStampDenied
+    - !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 5, 8
+      children:
+      - id: RubberStampClown
+      - id: RubberStampChaplain
+      - id: RubberStampLawyer
+      - id: RubberStampMime
+      - id: RubberStampWarden
+      - id: RubberStampDetective
+      - id: RubberStampPsychologist
+      - id: RubberStampTrader
+      - id: RubberStampCaptain
+        weight: 0.5
+      - id: RubberStampHop
+        weight: 0.5
+      - id: RubberStampHos
+        weight: 0.5
+      - id: RubberStampCE
+        weight: 0.5
+      - id: RubberStampCMO
+        weight: 0.5
+      - id: RubberStampQm
+        weight: 0.5
+      - id: RubberStampRd
+        weight: 0.5
+      - id: RubberStampWizard
+        weight: 0.1
+      - id: RubberStampGreytide
+        weight: 0.1
+      - id: RubberStampCentcom # Might be a bad idea but could be funny
+        weight: 0.01
+
+- type: entity
+  abstract: true
+  id: BureaucraticStorageFillLPO
+  suffix: LPO
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: FilingCabinetFillTableLPO
+
+- type: entity
+  parent: [BureaucraticStorageFillLPO, filingCabinet]
+  id: FilingCabinetLPO
+
+- type: entity
+  parent: [BureaucraticStorageFillLPO, filingCabinetTall]
+  id: FilingCabinetTallLPO
+
+- type: entity
+  parent: [BureaucraticStorageFillLPO, filingCabinetDrawer]
+  id: FilingCabinetDrawerLPO
