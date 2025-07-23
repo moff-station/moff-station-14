@@ -18,6 +18,7 @@ public sealed partial class CustomObjectiveSummaryWindow : FancyWindow
     private readonly int _maxLength = 512;
 
     public event Action<string>? OnSubmitted;
+    public event Action<string>? UpdateText;
 
     public CustomObjectiveSummaryWindow()
     {
@@ -26,7 +27,12 @@ public sealed partial class CustomObjectiveSummaryWindow : FancyWindow
 
         SubmitButton.OnPressed +=
             _ => OnSubmitted?.Invoke(Rope.Collapse(ObjectiveSummaryTextEdit.TextRope));
-        ObjectiveSummaryTextEdit.OnTextChanged += _ => UpdateWordCount();
+        ObjectiveSummaryTextEdit.OnTextChanged += _ =>
+        {
+            UpdateWordCount();
+            if (ObjectiveSummaryTextEdit.TextLength <= _maxLength)
+                ObjectiveSummaryTextEdit.OnTextChanged += _ => UpdateText?.Invoke(Rope.Collapse(ObjectiveSummaryTextEdit.TextRope));
+        };
 
         _mind ??= _entity.System<SharedMindSystem>();
 
@@ -44,6 +50,7 @@ public sealed partial class CustomObjectiveSummaryWindow : FancyWindow
     {
         // Disable the button if its over the max length.
         SubmitButton.Disabled = ObjectiveSummaryTextEdit.TextLength > _maxLength;
+        CharacterLimitLabel.FontColorOverride = ObjectiveSummaryTextEdit.TextLength > _maxLength ? Color.Red : null;
         CharacterLimitLabel.Text = ObjectiveSummaryTextEdit.TextLength + "/" + _maxLength;
     }
 }
