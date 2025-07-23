@@ -83,7 +83,7 @@ entities:
   - uid: 2
     components:
     - type: MetaData
-      name: Beach
+      name: Water Vapour
     - type: Transform
       pos: -1.9156418,3.7423515
       parent: 1
@@ -1946,7 +1946,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: Beach
+      id: WaterVapour
     - type: ImplicitRoof
       color: '#888888FF'
     - type: Roof
