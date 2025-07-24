@@ -37,7 +37,7 @@ public sealed partial class CustomObjectiveSummaryWindow : FancyWindow
             if (ObjectiveSummaryTextEdit.TextLength > _maxLength || _gameTiming.CurTime < _nextTextUpdate)
                 return;
             UpdateText?.Invoke(Rope.Collapse(ObjectiveSummaryTextEdit.TextRope));
-            _nextTextUpdate = _gameTiming.CurTime + TimeSpan.FromSeconds(3);
+            _nextTextUpdate = _gameTiming.CurTime + TimeSpan.FromSeconds(5);
         };
 
         _mind ??= _entity.System<SharedMindSystem>();
