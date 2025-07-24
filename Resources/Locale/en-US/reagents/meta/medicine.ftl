@@ -148,7 +148,6 @@ reagent-desc-potassium-iodide = Will reduce the damaging effects of radiation by
 reagent-name-haloperidol = haloperidol
 reagent-desc-haloperidol = Removes most stimulating and hallucinogenic drugs. Reduces druggy effects and jitteriness. Causes drowsiness.
 
-# Moffstation Start - Additional holy books
 reagent-name-blessedbolognese = blessed bolognese
 reagent-desc-blessedbolognese = A purified slow-cooked meat sauce that is rich in flavour and seasoned generously with italian herbs and spices.
 
@@ -175,4 +174,3 @@ reagent-desc-purejoy = A pink fluid that glitters in the light. It has a faint s
 
 reagent-name-purevodka = pure vodka
 reagent-desc-purevodka = Crystal-clear and strong. The beverage of the people. Probably distributed in strictly equal milliliters.
-# Moffstation End - Additional holy books

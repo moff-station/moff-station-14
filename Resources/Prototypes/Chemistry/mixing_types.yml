@@ -66,67 +66,65 @@
     sprite: Objects/Misc/utensils.rsi
     state: spoon
 
-# Moffstation Start - Additional Holy Books
 - type: mixingCategory
   id: Italian
   verbText: mixing-verb-holy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/italianrestaurantmenu.rsi
+    sprite: Objects/Specific/Chapel/italianrestaurantmenu.rsi
     state: icon
 
 - type: mixingCategory
   id: Nerd
   verbText: mixing-verb-holy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/carpscrypts.rsi
+    sprite: Objects/Specific/Chapel/carpscrypts.rsi
     state: icon
 
 - type: mixingCategory
   id: Communist
   verbText: mixing-verb-holy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/communistmanifesto.rsi
+    sprite: Objects/Specific/Chapel/communistmanifesto.rsi
     state: icon
 
 - type: mixingCategory
   id: Clown
   verbText: mixing-verb-holy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
+    sprite: Objects/Specific/Chapel/honk.rsi
     state: icon
 
 - type: mixingCategory
   id: Narsie
   verbText: mixing-verb-unholy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/satanicbible.rsi
+    sprite: Objects/Specific/Chapel/tomeofnarsie.rsi
     state: icon
 
 - type: mixingCategory
   id: NanoTrasen
   verbText: mixing-verb-holy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/codexnanotrasimus.rsi
+    sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
     state: icon
 
 - type: mixingCategory
   id: Druidic
   verbText: mixing-verb-holy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi
+    sprite: Objects/Specific/Chapel/druidictablet.rsi
     state: icon
 
 - type: mixingCategory
   id: Ratvar
   verbText: mixing-verb-unholy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/ratvartablet.rsi
+    sprite: Objects/Specific/Chapel/ratvartablet.rsi
     state: icon
 
 - type: mixingCategory
   id: Lamp
   verbText: mixing-verb-holy
   icon:
-    sprite: _Moffstation/Objects/Specific/Chapel/lamp.rsi
+    sprite: Objects/Specific/Chapel/lamp.rsi
     state: icon
-# Moffstation End - Additional Holy Books
