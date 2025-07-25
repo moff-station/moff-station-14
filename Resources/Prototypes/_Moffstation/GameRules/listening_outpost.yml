@@ -1,0 +1,8 @@
+- type: entity
+  parent: BaseGameRule
+  id: SyndicateListeningOutpost
+  components:
+  - type: LoadGridRule
+    gridPath: /Maps/_Moffstation/Nonstations/LPO.yml
+    minimumDistance: 1000
+    maximumDistance: 2000
