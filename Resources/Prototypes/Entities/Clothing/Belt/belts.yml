@@ -555,22 +555,29 @@
 # Belts without visualizers
 
 - type: entity
-  parent: [ClothingBeltAmmoProviderBase, BaseSecurityBartenderContraband]
+  parent: [ClothingBeltStorageBase, BaseSecurityBartenderContraband] # Moffstation - (Better Bandoliers)
   id: ClothingBeltBandolier
   name: bandolier
-  description: A bandolier for holding shotgun ammunition.
+  description: A bandolier for holding individual rounds of ammunition. # Moffstation - (Better Bandoliers)
   components:
   - type: Sprite
     sprite: Clothing/Belt/bandolier.rsi
   - type: Clothing
     sprite: Clothing/Belt/bandolier.rsi
   - type: Item
-    size: Huge
-  - type: BallisticAmmoProvider
+  # Moffstation - Begin (Better Bandoliers)
+    size: Ginormous
+  - type: Storage
+    grid:
+    - 0,0,7,3
+    maxItemSize: Normal
     whitelist:
       tags:
-        - ShellShotgun
-    capacity: 14
+      - Cartridge
+      - Grenade
+  - type: QuickPickup
+  - type: AreaPickup
+  # Moffstation - End
 
 - type: entity
   parent: ClothingBeltBase
