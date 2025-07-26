@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: MesonSunglasses
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: sunglassesmeson
+      steps:
+      - tag: SunglassesCheap
+        name: construction-graph-tag-cheap-sun-glasses
+        icon:
+          sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+          state: icon
+        doAfter: 5
+      - tag: MesonGoggles
+        name: construction-graph-tag-engineering-goggles
+        icon:
+          sprite: Clothing/Eyes/Glasses/meson.rsi
+          state: icon
+        doAfter: 5
+  - node: sunglassesmeson
+    entity: ClothingEyesGlassesMesonSunglasses
