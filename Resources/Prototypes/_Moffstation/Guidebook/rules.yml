@@ -7,6 +7,7 @@
   children:
   - MoffMetashield
   - MoffSpaceLawChanges
+  - MoffOOC
 
 - type: guideEntry
   id: MoffOOC
@@ -19,6 +20,14 @@
   name: moff-metagaming-rules
   ruleEntry: true
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR2Metagaming.xml"
+  children:
+  - MoffMetacomming
+
+- type: guideEntry
+  id: MoffMetacomming
+  name: moff-metacomming-rules
+  ruleEntry: true
+  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffMetacomming.xml"
 
 - type: guideEntry
   id: MoffPowergaming

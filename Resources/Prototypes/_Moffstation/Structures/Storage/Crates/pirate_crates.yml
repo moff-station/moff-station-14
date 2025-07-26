@@ -11,7 +11,7 @@
     access: [["Pirate"]]
   - type: Sprite
     sprite: _Moffstation/Structures/Storage/Crates/piratechestsecure.rsi
-    icon: crate_icon
+    state: crate_icon
     layers:
     - state: crate
       map: [ "enum.StorageVisualLayers.Base" ]
@@ -54,7 +54,7 @@
     state: crate_icon
   - type: Sprite
     sprite: _Moffstation/Structures/Storage/Crates/davyjoneschest.rsi
-    icon: crate
+    state: crate
     layers:
     - state: crate
       map: [ "enum.StorageVisualLayers.Base" ]

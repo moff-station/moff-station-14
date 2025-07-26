@@ -4,15 +4,13 @@
   parent: ClothingNeckBase
   id: PersonalItemAuroraPinSwappable
   name: Aurora's IFF tag
-  description: "The tag is glowing pink, looks like Aurora is here."
+  description: "The tag is glowing pink, looks like Aurora is here.\nA hand-modified IFF tag made by Aurora. Its designed to indicate which personality is fronting: pink for Aurora, green for Asher. The toggle button can be depressed using a crowbar."
   suffix: swappable
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPin.rsi
   - type: Item
     sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPin.rsi
-  - type: DetailExaminable
-    content: "A hand-modified IFF tag made by Aurora. Its designed to indicate which personality is fronting: pink for Aurora, green for Asher. The toggle button can be depressed using a crowbar."
   - type: Construction
     deconstructionTarget: null
     graph: PersonalItemAuroraPinSwapGraph
@@ -22,15 +20,13 @@
   parent: ClothingNeckBase
   id: PersonalItemAuroraPinInversedSwappable
   name: Asher's IFF tag
-  description: "The tag is glowing green, looks like Asher is home."
+  description: "The tag is glowing green, looks like Asher is home.\nA hand-modified IFF tag made by Aurora. Its designed to indicate which personality is fronting: pink for Aurora, green for Asher. The toggle button can be depressed using a crowbar."
   suffix: swappable
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
   - type: Item
     sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
-  - type: DetailExaminable
-    content: "A hand-modified IFF tag made by Aurora. Its designed to indicate which personality is fronting: pink for Aurora, green for Asher. The toggle button can be depressed using a crowbar."
   - type: Construction
     deconstructionTarget: null
     graph: PersonalItemAuroraPinSwapGraph

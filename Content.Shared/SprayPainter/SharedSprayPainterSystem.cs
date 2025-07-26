@@ -21,7 +21,7 @@ namespace Content.Shared.SprayPainter;
 /// System for painting paintable objects using a spray painter.
 /// Pipes are handled serverside since AtmosPipeColorSystem is server only.
 /// </summary>
-public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffstation - Made partial
+public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffstation - Made Partial
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] protected readonly IPrototypeManager Proto = default!;
@@ -35,7 +35,7 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
     public override void Initialize()
     {
         base.Initialize();
-        InitializeGasTankPainting(); // Moffstation
+        InitializeGasTankPainting();
 
         SubscribeLocalEvent<SprayPainterComponent, MapInitEvent>(OnMapInit);
 
@@ -107,10 +107,10 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
         Dirty(target, paintedComponent);
 
         var ev = new EntityPaintedEvent(
-            user: args.User,
-            tool: ent,
-            prototype: args.Prototype,
-            group: args.Group);
+            User: args.User,
+            Tool: ent,
+            Prototype: args.Prototype,
+            Group: args.Group);
         RaiseLocalEvent(target, ref ev);
 
         AdminLogger.Add(LogType.Action,
@@ -125,14 +125,11 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
         if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue)
             return;
 
-        var verbLocString = ent.Comp.IsPaintingDecals
-            ? "spray-painter-verb-disable-decals"
-            : "spray-painter-verb-enable-decals";
         var user = args.User;
 
         AlternativeVerb verb = new()
         {
-            Text = Loc.GetString(verbLocString),
+            Text = Loc.GetString("spray-painter-verb-toggle-decals"),
             Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/settings.svg.192dpi.png")),
             Act = () => TogglePaintDecals(ent, user),
             Impact = LogImpact.Low
@@ -140,19 +137,41 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
         args.Verbs.Add(verb);
     }
 
+    /// <summary>
+    /// Toggles whether clicking on the floor paints a decal or not.
+    /// </summary>
     private void TogglePaintDecals(Entity<SprayPainterComponent> ent, EntityUid user)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        ent.Comp.IsPaintingDecals = !ent.Comp.IsPaintingDecals;
+        var pitch = 1.0f;
+        switch (ent.Comp.DecalMode)
+        {
+            case DecalPaintMode.Off:
+            default:
+                ent.Comp.DecalMode = DecalPaintMode.Add;
+                pitch = 1.0f;
+                break;
+            case DecalPaintMode.Add:
+                ent.Comp.DecalMode = DecalPaintMode.Remove;
+                pitch = 1.2f;
+                break;
+            case DecalPaintMode.Remove:
+                ent.Comp.DecalMode = DecalPaintMode.Off;
+                pitch = 0.8f;
+                break;
+        }
         Dirty(ent);
 
         // Make the machine beep.
-        var pitch = ent.Comp.IsPaintingDecals ? 1 : 0.8f;
         Audio.PlayPredicted(ent.Comp.SoundSwitchDecalMode, ent, user, ent.Comp.SoundSwitchDecalMode.Params.WithPitchScale(pitch));
     }
 
+    /// <summary>
+    /// Handles spray paint interactions with an object.
+    /// An object must belong to a spray paintable group to be painted, and the painter must have sufficient ammo to paint it.
+    /// </summary>
     private void OnPaintableInteract(Entity<PaintableComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)
@@ -206,6 +225,9 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
             $"{ToPrettyString(args.User):user} is painting {ToPrettyString(ent):target} to '{selectedStyle}' at {Transform(ent).Coordinates:targetlocation}");
     }
 
+    /// <summary>
+    /// Prints out if an object has been painted recently.
+    /// </summary>
     private void OnPainedExamined(Entity<PaintedComponent> ent, ref ExaminedEvent args)
     {
         // If the paint's dried, it isn't detectable.
@@ -219,6 +241,9 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
 
     #region UI
 
+    /// <summary>
+    /// Sets the style that a particular type of paintable object (e.g. lockers) should be painted in.
+    /// </summary>
     private void OnSetPaintable(Entity<SprayPainterComponent> ent, ref SprayPainterSetPaintableStyleMessage args)
     {
         if (!ent.Comp.StylesByGroup.ContainsKey(args.Group))
@@ -229,17 +254,26 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
         UpdateUi(ent);
     }
 
+    /// <summary>
+    /// Changes the color to paint pipes in.
+    /// </summary>
     private void OnSetPipeColor(Entity<SprayPainterComponent> ent, ref SprayPainterSetPipeColorMessage args)
     {
         SetPipeColor(ent, args.Key);
     }
 
+    /// <summary>
+    /// Tracks the tab the spray painter was on.
+    /// </summary>
     private void OnTabChanged(Entity<SprayPainterComponent> ent, ref SprayPainterTabChangedMessage args)
     {
         ent.Comp.SelectedTab = args.Index;
         Dirty(ent);
     }
 
+    /// <summary>
+    /// Sets the decal prototype to paint.
+    /// </summary>
     private void OnSetDecal(Entity<SprayPainterComponent> ent, ref SprayPainterSetDecalMessage args)
     {
         ent.Comp.SelectedDecal = args.DecalPrototype;
@@ -247,6 +281,9 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
         UpdateUi(ent);
     }
 
+    /// <summary>
+    /// Sets the angle to paint decals at.
+    /// </summary>
     private void OnSetDecalAngle(Entity<SprayPainterComponent> ent, ref SprayPainterSetDecalAngleMessage args)
     {
         ent.Comp.SelectedDecalAngle = args.Angle;
@@ -254,6 +291,9 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
         UpdateUi(ent);
     }
 
+    /// <summary>
+    /// Enables or disables snap-to-grid when painting decals.
+    /// </summary>
     private void OnSetDecalSnap(Entity<SprayPainterComponent> ent, ref SprayPainterSetDecalSnapMessage args)
     {
         ent.Comp.SnapDecals = args.Snap;
@@ -261,6 +301,9 @@ public abstract partial class SharedSprayPainterSystem : EntitySystem // Moffsta
         UpdateUi(ent);
     }
 
+    /// <summary>
+    /// Sets the decal to paint on the ground.
+    /// </summary>
     private void OnSetDecalColor(Entity<SprayPainterComponent> ent, ref SprayPainterSetDecalColorMessage args)
     {
         ent.Comp.SelectedDecalColor = args.Color;

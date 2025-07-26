@@ -9,6 +9,11 @@
     state: icon
   - type: Item
     sprite: Objects/Tools/appraisal-tool.rsi
+    # Moffstation - Begin (Weapon Resizing)
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    # Moffstation - End
   - type: PriceGun
   - type: UseDelay
     delay: 3

@@ -62,6 +62,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/Shuttles/ShuttleEvent/instigator.yml", // Contains EXP-320g "Friendship"
             "/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", // Contains syndicate rubber stamp
             "/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", // Contains EXP-320g "Friendship"
+            "/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", // Variant of grimebreaker
             "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
         };
 
@@ -98,6 +99,8 @@ namespace Content.IntegrationTests.Tests
             "WaterVapour"
             // Moffstation - End
         };
+
+        private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
 
         /// <summary>
         /// Asserts that specific files have been saved as grids and not maps.
@@ -276,7 +279,7 @@ namespace Content.IntegrationTests.Tests
                 return;
 
             var yamlEntities = node["entities"];
-            if (!protoManager.TryIndex<EntityCategoryPrototype>("DoNotMap", out var dnmCategory))
+            if (!protoManager.TryIndex(DoNotMapCategory, out var dnmCategory))
                 return;
 
             Assert.Multiple(() =>
