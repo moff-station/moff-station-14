@@ -6,11 +6,10 @@
   objective: roles-antag-syndicate-intel-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 18000 # 5h
-  guides: [ NuclearOperatives ]
+    time: 5h
 
 - type: startingGear
-  id: SyndicateIntelGear
+  id: SyndicateSpyGear
   equipment:
     ears: ClothingHeadsetAltSyndicate
     shoes: ClothingShoesBootsLaceup

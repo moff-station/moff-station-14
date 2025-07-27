@@ -68,11 +68,14 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
         }
 
         // Load the grid
-        if (!_mapLoader.TryLoadGrid(map, component.GridPath, out _, null, offset))
+        if (!_mapLoader.TryLoadGrid(map, component.GridPath, out var spawnedGrid, null, offset) && spawnedGrid != null)
         {
             Log.Warning($"Unable to load grid for GameRule {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
         }
+
+        var ev = new RuleLoadedGridsEvent(map, [spawnedGrid!.Value.Owner]);
+        RaiseLocalEvent(uid, ref ev);
     }
 
     private bool HasCollisions(MapId mapId, Box2 point)

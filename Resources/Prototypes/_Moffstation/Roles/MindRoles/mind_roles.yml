@@ -38,3 +38,14 @@
     exclusiveAntag: true
     antagPrototype: Vampire
   - type: VampireRole
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSyndicateSpy
+  name: Syndicate Spy Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+    antagPrototype: SyndicateSpy
+  - type: SyndicateSpyRole

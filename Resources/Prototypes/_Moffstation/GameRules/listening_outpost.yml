@@ -6,3 +6,32 @@
     gridPath: /Maps/_Moffstation/Nonstations/LPO.yml
     minimumDistance: 1000
     maximumDistance: 2000
+  - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: GameRule
+    minPlayers: 15
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ SyndicateSpy ]
+      min: 3
+      max: 3
+      spawnerPrototype: SpawnerSyndicateSpy
+      startingGear: SyndicateSpyGear
+      roleLoadout:
+      - RoleSurvivalSyndicate
+      - JobSyndicateSpy
+      briefing:
+        text: roles-antag-syndicate-spy-objective
+        color: red
+        sound: "/Audio/Ambience/Antag/traitor_start.ogg"
+      components:
+      - type: RandomMetadata
+        nameSegments:
+        - NamesSyndicateNormal
+        nameFormat: name-format-nukie-agent
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRoleSyndicateSpy
