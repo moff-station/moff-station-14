@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/26/2025 22:03:21
-  entityCount: 1064
+  time: 07/27/2025 16:10:49
+  entityCount: 1070
 maps: []
 grids:
 - 1
@@ -645,6 +645,8 @@ entities:
     - type: Transform
       pos: -8.5,-0.5
       parent: 1
+    - type: DeviceLinkSink
+      invokeCounter: 1
 - proto: AirlockSyndicateLocked
   entities:
   - uid: 243
@@ -667,6 +669,8 @@ entities:
     - type: Transform
       pos: -11.5,2.5
       parent: 1
+    - type: DeviceLinkSink
+      invokeCounter: 1
 - proto: AirSensor
   entities:
   - uid: 691
@@ -783,6 +787,13 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -7.5,-8.5
+      parent: 1
+- proto: Ashtray
+  entities:
+  - uid: 352
+    components:
+    - type: Transform
+      pos: -3.3665662,-6.3994927
       parent: 1
 - proto: AsteroidRock
   entities:
@@ -1951,6 +1962,14 @@ entities:
     - type: Transform
       pos: 5.5,-12.5
       parent: 1
+- proto: AtmosDeviceFanDirectional
+  entities:
+  - uid: 1065
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -11.5,4.5
+      parent: 1
 - proto: AtmosFixNitrogenMarker
   entities:
   - uid: 240
@@ -2058,44 +2077,44 @@ entities:
       parent: 1
 - proto: BlastDoor
   entities:
-  - uid: 217
+  - uid: 169
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -11.5,-2.5
+      parent: 1
+  - uid: 171
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -12.5,-2.5
       parent: 1
-  - uid: 276
+  - uid: 172
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -10.5,-2.5
-      parent: 1
-  - uid: 277
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -11.5,-2.5
       parent: 1
 - proto: BoxEncryptionKeySyndie
   entities:
   - uid: 347
     components:
     - type: Transform
-      pos: -4.490194,-4.408789
+      pos: -4.7512994,-4.388376
       parent: 1
 - proto: BriefcaseBrownFilled
   entities:
   - uid: 56
     components:
     - type: Transform
-      pos: -7.53363,-1.3529034
+      pos: -7.6572757,-1.4452826
       parent: 1
 - proto: BriefcaseSyndieLobbyingBundleFilled
   entities:
   - uid: 57
     components:
     - type: Transform
-      pos: -7.3043494,-1.144425
+      pos: -7.462831,-1.2369492
       parent: 1
     - type: UserInterface
       actors:
@@ -3155,28 +3174,29 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -7.4997754,-4.333789
       parent: 1
-  - uid: 171
-    components:
-    - type: Transform
-      pos: -3.4463263,-6.3595586
-      parent: 1
-  - uid: 172
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -2.4875174,-7.2664385
-      parent: 1
   - uid: 173
     components:
     - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.6860108,-6.371715
+      parent: 1
+  - uid: 276
+    components:
+    - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -4.446823,-7.308134
+      pos: -4.2693443,-6.371715
       parent: 1
   - uid: 296
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -11.452568,-6.368345
+      parent: 1
+  - uid: 353
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.4776778,-7.0800486
       parent: 1
   - uid: 1049
     components:
@@ -3214,6 +3234,13 @@ entities:
     - type: Transform
       pos: 3.3218498,0.5725354
       parent: 1
+- proto: CigPackSyndicate
+  entities:
+  - uid: 333
+    components:
+    - type: Transform
+      pos: -3.6304555,-6.2189374
+      parent: 1
 - proto: ClothingBeltChefFilled
   entities:
   - uid: 156
@@ -3231,14 +3258,12 @@ entities:
   - uid: 55
     components:
     - type: Transform
-      pos: -7.363297,-2.4026735
+      pos: -7.303043,-2.3299928
       parent: 1
-- proto: ClothingOuterCoatSyndieCap
-  entities:
-  - uid: 352
+  - uid: 277
     components:
     - type: Transform
-      pos: -7.6952844,-2.476408
+      pos: -7.5391545,-2.5661042
       parent: 1
 - proto: ClothingOuterJacketChef
   entities:
@@ -3247,26 +3272,12 @@ entities:
     - type: Transform
       pos: 6.401372,-7.298601
       parent: 1
-- proto: ClothingOuterWinterSyndie
-  entities:
-  - uid: 333
-    components:
-    - type: Transform
-      pos: -4.362828,-7.471317
-      parent: 1
 - proto: ClothingOuterWinterSyndieCap
   entities:
   - uid: 351
     components:
     - type: Transform
       pos: 2.5994406,-9.467662
-      parent: 1
-- proto: ClothingShoesBootsWinterSyndicate
-  entities:
-  - uid: 353
-    components:
-    - type: Transform
-      pos: -4.251394,-7.764478
       parent: 1
 - proto: ClothingShoesChef
   entities:
@@ -3455,6 +3466,13 @@ entities:
           showEnts: False
           occludes: True
           ent: null
+- proto: CrateSyndicateLPO
+  entities:
+  - uid: 50
+    components:
+    - type: Transform
+      pos: -3.5,0.5
+      parent: 1
 - proto: CrateTrashCartFilled
   entities:
   - uid: 214
@@ -3493,19 +3511,19 @@ entities:
   - uid: 52
     components:
     - type: Transform
-      pos: -2.7828984,-1.2799884
+      pos: -2.5091543,-1.350556
       parent: 1
   - uid: 1061
     components:
     - type: Transform
-      pos: -4.9153714,-4.2429338
+      pos: -4.023042,-4.322778
       parent: 1
 - proto: CybersunFlippo
   entities:
   - uid: 53
     components:
     - type: Transform
-      pos: -7.7108006,-1.2278162
+      pos: -7.2267203,-1.5980605
       parent: 1
 - proto: DecalSpawnerBloodSplatters
   entities:
@@ -3634,24 +3652,12 @@ entities:
     - type: Transform
       pos: -2.5,-0.5
       parent: 1
-- proto: FilingCabinetDrawerLPO
+- proto: filingCabinetDrawerRandom
   entities:
   - uid: 7
     components:
     - type: Transform
       pos: -2.5,0.5
-      parent: 1
-- proto: FilingCabinetLPO
-  entities:
-  - uid: 50
-    components:
-    - type: Transform
-      pos: -3.201981,0.4782454
-      parent: 1
-  - uid: 51
-    components:
-    - type: Transform
-      pos: -3.6918073,0.4573981
       parent: 1
 - proto: FloorDrain
   entities:
@@ -3670,6 +3676,33 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+- proto: FolderSpawner
+  entities:
+  - uid: 51
+    components:
+    - type: Transform
+      pos: -8.640188,-3.888376
+      parent: 1
+  - uid: 1067
+    components:
+    - type: Transform
+      pos: -4.2374105,-4.5411534
+      parent: 1
+  - uid: 1068
+    components:
+    - type: Transform
+      pos: -2.695744,-0.8744867
+      parent: 1
+  - uid: 1069
+    components:
+    - type: Transform
+      pos: -2.2512999,-0.888376
+      parent: 1
+  - uid: 1070
+    components:
+    - type: Transform
+      pos: -2.4735212,-0.9022646
+      parent: 1
 - proto: FoodBoxPizzaFilled
   entities:
   - uid: 9
@@ -4987,6 +5020,13 @@ entities:
     - type: Transform
       pos: -12.5,-12.5
       parent: 1
+- proto: GravityGeneratorMini
+  entities:
+  - uid: 1066
+    components:
+    - type: Transform
+      pos: -12.5,-8.5
+      parent: 1
 - proto: Grille
   entities:
   - uid: 19
@@ -5758,13 +5798,13 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        276:
+        172:
         - - Pressed
           - Toggle
-        277:
+        171:
         - - Pressed
           - Toggle
-        217:
+        169:
         - - Pressed
           - Toggle
   - uid: 738
@@ -5937,10 +5977,11 @@ entities:
       parent: 1
 - proto: TableCarpet
   entities:
-  - uid: 169
+  - uid: 217
     components:
     - type: Transform
-      pos: -3.5,-7.5
+      rot: 1.5707963267948966 rad
+      pos: -3.5,-6.5
       parent: 1
 - proto: TableReinforced
   entities:
@@ -6897,8 +6938,11 @@ entities:
   - uid: 73
     components:
     - type: Transform
-      pos: 1.5,0.5
+      pos: 1.4506423,0.4870949
       parent: 1
+    - type: Physics
+      angularDamping: 0.080000006
+      linearDamping: 0.080000006
 - proto: WeaponTurretSyndicate
   entities:
   - uid: 226

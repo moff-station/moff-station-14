@@ -24,17 +24,28 @@
       - id: Paper
       - id: PaperOffice
       - id: PaperCaptainsThoughts
+        weight: 0.5
       - id: PaperCargoInvoice
+        weight: 0.5
       - id: PaperCargoBountyManifest
+        weight: 0.5
       - id: PaperNanoTaskItem
+        weight: 0.5
       - id: PaperCNCSheet
+        weight: 0.5
+      - id: ForensicReportPaper
+        weight: 0.5
       - id: SyndicateBusinessCard
         weight: 0.5
       - id: TraitorCodePaper
         weight: 0.1
+      - id: AgentIDCard
+        weight: 0.1
       - id: Telecrystal1 # How'd this get in here?
         weight: 0.05
       - id: AllTraitorCodesPaper
+        weight: 0.01
+      - id: NukeCodePaperStation  # surely nothing could go wrong
         weight: 0.01
     - id: RubberStampSyndicate
     - id: RubberStampApproved
