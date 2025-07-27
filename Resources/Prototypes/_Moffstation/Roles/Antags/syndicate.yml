@@ -1,9 +1,9 @@
 - type: antag
   id: SyndicateSpy
-  name: roles-antag-syndicate-intel-name
+  name: roles-antag-syndicate-spy
   antagonist: true
   setPreference: true
-  objective: roles-antag-syndicate-intel-objective
+  objective: roles-antag-syndicate-spy-objective
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 5h
