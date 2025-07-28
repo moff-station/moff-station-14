@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Text;
+using Content.Shared._Moffstation.Clothing;
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
@@ -206,11 +208,28 @@ public abstract partial class SharedHandsSystem : EntitySystem
     //TODO: Actually shows all items/clothing/etc.
     private void HandleExamined(EntityUid examinedUid, HandsComponent handsComp, ExaminedEvent args)
     {
-        var heldItemNames = EnumerateHeld((examinedUid, handsComp))
+        // Moffstation - Start - Held items counted in examinable clothing
+        var heldItems = EnumerateHeld((examinedUid, handsComp))
             .Where(entity => !HasComp<VirtualItemComponent>(entity))
+            .ToList();
+
+        foreach (var item in heldItems)
+        {
+            if (!TryComp<ExaminableClothingComponent>(item, out var examinableClothing))
+                continue;
+
+            using (args.PushGroup(nameof(HandsComponent)))
+            {
+                args.PushMarkup(_examinableClothing.ExamineText((item, examinableClothing), examinedUid));
+            }
+        }
+
+        // We modify this so we dont iterate through the whole thing twice
+        var heldItemNames = heldItems
             .Select(item => FormattedMessage.EscapeText(Identity.Name(item, EntityManager)))
             .Select(itemName => Loc.GetString("comp-hands-examine-wrapper", ("item", itemName)))
             .ToList();
+        // Moffstation - End
 
         var locKey = heldItemNames.Count != 0 ? "comp-hands-examine" : "comp-hands-examine-empty";
         var locUser = ("user", Identity.Entity(examinedUid, EntityManager));
