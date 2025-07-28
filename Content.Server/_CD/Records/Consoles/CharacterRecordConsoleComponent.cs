@@ -18,4 +18,10 @@ public sealed partial class CharacterRecordConsoleComponent : Component
 
     [DataField(required: true), ViewVariables(VVAccess.ReadOnly)]
     public RecordConsoleType ConsoleType;
+
+    /// <summary>
+    /// If true, the console will be able to view records off-station, allowing for remote access.
+    /// </summary>
+    [DataField]
+    public bool LongRange;
 }

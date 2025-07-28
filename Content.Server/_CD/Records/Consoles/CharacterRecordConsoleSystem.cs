@@ -75,7 +75,9 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
         if (!Resolve(entity, ref console))
             return;
 
-        var station = _station.GetOwningStation(entity);
+        var station = console.LongRange
+            ? _station.GetStationInMap(Transform(entity).MapID)
+            : _station.GetOwningStation(entity);
         if (!HasComp<StationRecordsComponent>(station) ||
             !HasComp<CharacterRecordsComponent>(station))
         {
@@ -126,7 +128,7 @@ public sealed class CharacterRecordConsoleSystem : EntitySystem
 
         // If we need the character's security status, gather it from the criminal records
         if ((console.ConsoleType == RecordConsoleType.Admin ||
-             console.ConsoleType == RecordConsoleType.Security)
+             console is { ConsoleType: RecordConsoleType.Security, LongRange: false })
             && record?.StationRecordsKey != null)
         {
             var key = new StationRecordKey(record.StationRecordsKey.Value, station.Value);
