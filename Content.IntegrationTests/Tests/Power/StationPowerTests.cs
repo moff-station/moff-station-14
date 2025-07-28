@@ -39,6 +39,7 @@ public sealed class StationPowerTests
         "Elkridge",
         "Convex",
         "Relic",
+        "Frezon",
     ];
 
     [Test, TestCaseSource(nameof(GameMaps))]
