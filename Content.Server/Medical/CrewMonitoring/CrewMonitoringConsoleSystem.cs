@@ -2,6 +2,8 @@ using System.Linq;
 using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.PowerCell;
+using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Medical.CrewMonitoring;
@@ -15,6 +17,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 {
     [Dependency] private readonly PowerCellSystem _cell = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private readonly StationSystem _station = default!;
 
     public override void Initialize()
     {
@@ -64,7 +67,16 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             return;
 
         // The grid must have a NavMapComponent to visualize the map in the UI
-        var xform = Transform(uid);
+        TransformComponent xform;
+        if (component.LongRange &&
+            TryComp<StationDataComponent>(_station.GetStationInMap(Transform(uid).MapID), out var stationDataComponent))
+        {
+            var largestGrid = _station.GetLargestGrid(stationDataComponent);
+            xform = (largestGrid == null) ? Transform(uid) : Transform(largestGrid.Value);
+        }
+        else
+            xform = Transform(uid);
+
 
         if (xform.GridUid != null)
             EnsureComp<NavMapComponent>(xform.GridUid.Value);

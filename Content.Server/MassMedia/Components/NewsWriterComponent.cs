@@ -34,4 +34,10 @@ public sealed partial class NewsWriterComponent : Component
     /// </summary>
     [DataField, ViewVariables]
     public string DraftContent = "";
+
+    /// <summary>
+    /// When true, searches the current map for the station, rather than the grid its anchored on.
+    /// </summary>
+    [DataField]
+    public bool LongRange;
 }
