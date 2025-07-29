@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/27/2025 16:10:49
-  entityCount: 1070
+  time: 07/29/2025 19:58:58
+  entityCount: 1072
 maps: []
 grids:
 - 1
@@ -3326,22 +3326,22 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -12.5,-9.5
       parent: 1
-- proto: ComputerTabletopCrewMonitoring
+- proto: ComputerTabletopCrewMonitoringLongRange
   entities:
-  - uid: 1053
+  - uid: 995
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -8.5,-3.5
       parent: 1
-- proto: ComputerTabletopCriminalRecords
+- proto: ComputerTabletopCriminalRecordsLongRange
   entities:
-  - uid: 1058
+  - uid: 1053
     components:
     - type: Transform
       pos: -5.5,0.5
       parent: 1
-- proto: ComputerTabletopMassMedia
+- proto: ComputerTabletopMassMediaLongRange
   entities:
   - uid: 1055
     components:
@@ -3349,9 +3349,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -2.5,-2.5
       parent: 1
-- proto: ComputerTabletopMedicalRecords
+- proto: ComputerTabletopMedicalRecordsLongRange
   entities:
-  - uid: 995
+  - uid: 1059
     components:
     - type: Transform
       pos: -6.5,0.5
@@ -3364,9 +3364,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: -5.5,-4.5
       parent: 1
-- proto: ComputerTabletopStationRecords
+- proto: ComputerTabletopStationRecordsLongRange
   entities:
-  - uid: 1059
+  - uid: 1058
     components:
     - type: Transform
       pos: -4.5,0.5
@@ -5961,6 +5961,20 @@ entities:
         - 0
         - 0
         - 0
+- proto: SurveillanceCameraRouterConstructed
+  entities:
+  - uid: 1071
+    components:
+    - type: Transform
+      pos: -10.5,-8.5
+      parent: 1
+- proto: SurveillanceCameraWirelessRouterEntertainment
+  entities:
+  - uid: 1072
+    components:
+    - type: Transform
+      pos: -10.5,-7.5
+      parent: 1
 - proto: SyndicateBusinessCard
   entities:
   - uid: 346

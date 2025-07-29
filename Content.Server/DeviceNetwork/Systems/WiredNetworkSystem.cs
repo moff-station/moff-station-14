@@ -18,7 +18,11 @@ namespace Content.Server.DeviceNetwork.Systems
         /// </summary>
         private void OnBeforePacketSent(EntityUid uid, WiredNetworkComponent component, BeforePacketSentEvent args)
         {
-            if (Transform(uid).GridUid != args.SenderTransform.GridUid)
+            if (TryComp<WiredNetworkComponent>(args.Sender, out var senderComp) &&
+                (component.LongRange || senderComp.LongRange))
+                return;
+
+            if (Transform(uid).GridUid != args.SenderTransform.GridUid) // Moffstation - remote cameras for LPO
             {
                 args.Cancel();
             }
