@@ -1,6 +1,7 @@
 - type: entity
+  abstract: true
   parent: BaseGameRule
-  id: SyndicateListeningOutpost
+  id: BaseSyndicateListeningOutpost
   components:
   - type: LoadGridRule
     gridPath: /Maps/_Moffstation/Nonstations/LPO.yml
@@ -8,13 +9,18 @@
     maximumDistance: 2000
   - type: RuleGrids
   - type: AntagLoadProfileRule
+  - type: AntagSelection
+
+- type: entity
+  parent: BaseSyndicateListeningOutpost
+  id: SyndicateListeningOutpost
+  components:
   - type: GameRule
     minPlayers: 15
   - type: AntagSelection
-    selectionTime: PrePlayerSpawn
     definitions:
     - prefRoles: [ SyndicateSpy ]
-      min: 3
+      min: 2
       max: 3
       spawnerPrototype: SpawnerSyndicateSpy
       startingGear: SyndicateSpyGear
