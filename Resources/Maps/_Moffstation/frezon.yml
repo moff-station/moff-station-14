@@ -4,8 +4,8 @@ meta:
   engineVersion: 265.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/30/2025 00:15:39
-  entityCount: 12776
+  time: 07/30/2025 03:20:09
+  entityCount: 12777
 maps:
 - 1
 grids:
@@ -32447,6 +32447,13 @@ entities:
     components:
     - type: Transform
       pos: -4.5,16.5
+      parent: 2
+- proto: SpawnPointAtmos
+  entities:
+  - uid: 12777
+    components:
+    - type: Transform
+      pos: -12.5,-4.5
       parent: 2
 - proto: SpawnPointBartender
   entities:
