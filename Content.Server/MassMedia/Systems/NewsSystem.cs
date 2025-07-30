@@ -112,9 +112,7 @@ public sealed class NewsSystem : SharedNewsSystem
 
     private void OnMapInit(Entity<NewsWriterComponent> ent, ref MapInitEvent args)
     {
-        var station = ent.Comp.LongRange
-            ? _station.GetStationInMap(Transform(ent.Owner).MapID)
-            : _station.GetOwningStation(ent);
+        var station = _station.GetOwningStation(ent);
         if (!station.HasValue)
             return;
 
@@ -308,20 +306,18 @@ public sealed class NewsSystem : SharedNewsSystem
     }
     #endregion
 
-    // Moffstation - Start - Allow offstation interaction
     private bool TryGetArticles(EntityUid uid, [NotNullWhen(true)] out List<NewsArticle>? articles)
     {
-        articles = new List<NewsArticle>();
-        var query = EntityQueryEnumerator<StationNewsComponent>();
-
-        while (query.MoveNext(out _, out var comp))
+        if (_station.GetOwningStation(uid) is not { } station ||
+            !TryComp<StationNewsComponent>(station, out var stationNews))
         {
-            articles.AddRange(comp.Articles.OrderBy(article => article.ShareTime));
+            articles = null;
+            return false;
         }
 
-        return articles.Count > 0;
+        articles = stationNews.Articles;
+        return true;
     }
-    // Moffstation - End
 
     private void UpdateWriterUi(Entity<NewsWriterComponent> ent)
     {

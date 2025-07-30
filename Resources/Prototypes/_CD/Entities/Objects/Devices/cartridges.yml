@@ -18,15 +18,3 @@
   - type: ActiveRadio
     channels:
     - Common
-
-- type: entity
-  parent: NanoChatCartridge
-  id: NanoChatCartridgeSyndicate
-  name: NanoChat cartridge
-  description: Lets you message other people!
-  components:
-  - type: NanoChatCartridge
-    radioChannel: Syndicate
-  - type: ActiveRadio
-    channels:
-    - Syndicate

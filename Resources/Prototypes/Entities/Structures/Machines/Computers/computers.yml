@@ -1331,7 +1331,11 @@
     deviceNetId: Wired
     receiveFrequencyId: SurveillanceCamera
     transmitFrequencyId: SurveillanceCamera
-  - type: WiredNetworkConnection
+  # Moffstation - Listening outpost remote camera viewing
+  #- type: WiredNetworkConnection
+  - type: WirelessNetworkConnection
+    range: 200
+  # Moffstation - End
   - type: DeviceNetworkRequiresPower
   - type: SurveillanceCameraMonitor
   - type: ActivatableUI

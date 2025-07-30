@@ -16,10 +16,4 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// </summary>
     [DataField("sensorTimeout"), ViewVariables(VVAccess.ReadWrite)]
     public float SensorTimeout = 10f;
-
-    /// <summary>
-    /// If true, will target the largest grid on the map, rather than the grid it's on.
-    /// </summary>
-    [DataField]
-    public bool LongRange;
 }

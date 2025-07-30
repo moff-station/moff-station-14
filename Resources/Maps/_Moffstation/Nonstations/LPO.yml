@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/29/2025 19:58:58
-  entityCount: 1072
+  time: 07/30/2025 19:50:39
+  entityCount: 1069
 maps: []
 grids:
 - 1
@@ -3341,14 +3341,6 @@ entities:
     - type: Transform
       pos: -5.5,0.5
       parent: 1
-- proto: ComputerTabletopMassMediaLongRange
-  entities:
-  - uid: 1055
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -2.5,-2.5
-      parent: 1
 - proto: ComputerTabletopMedicalRecordsLongRange
   entities:
   - uid: 1059
@@ -3371,7 +3363,7 @@ entities:
     - type: Transform
       pos: -4.5,0.5
       parent: 1
-- proto: ComputerTabletopSurveillanceCameraMonitor
+- proto: ComputerTabletopSurveillanceCameraMonitorLongRange
   entities:
   - uid: 1052
     components:
@@ -3379,6 +3371,16 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -8.5,-4.5
       parent: 1
+- proto: ComputerTelevision
+  entities:
+  - uid: 1055
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.5,-2.5
+      parent: 1
+    - type: WirelessNetworkConnection
+      range: 10000
 - proto: CottonSeeds
   entities:
   - uid: 88
@@ -5223,7 +5225,7 @@ entities:
   - uid: 344
     components:
     - type: Transform
-      pos: -2.6301208,-1.9327661
+      pos: -2.6387358,-1.8768559
       parent: 1
 - proto: PlantBag
   entities:
@@ -5961,20 +5963,6 @@ entities:
         - 0
         - 0
         - 0
-- proto: SurveillanceCameraRouterConstructed
-  entities:
-  - uid: 1071
-    components:
-    - type: Transform
-      pos: -10.5,-8.5
-      parent: 1
-- proto: SurveillanceCameraWirelessRouterEntertainment
-  entities:
-  - uid: 1072
-    components:
-    - type: Transform
-      pos: -10.5,-7.5
-      parent: 1
 - proto: SyndicateBusinessCard
   entities:
   - uid: 346
@@ -6233,14 +6221,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -2.5,-13.5
-      parent: 1
-- proto: WallmountTelevision
-  entities:
-  - uid: 1063
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -1.5,-1.5
       parent: 1
 - proto: WallPlastitanium
   entities:

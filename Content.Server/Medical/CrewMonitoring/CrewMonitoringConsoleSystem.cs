@@ -2,8 +2,6 @@ using System.Linq;
 using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.PowerCell;
-using Content.Server.Station.Components;
-using Content.Server.Station.Systems;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Medical.CrewMonitoring;
@@ -17,7 +15,6 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 {
     [Dependency] private readonly PowerCellSystem _cell = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly StationSystem _station = default!;
 
     public override void Initialize()
     {

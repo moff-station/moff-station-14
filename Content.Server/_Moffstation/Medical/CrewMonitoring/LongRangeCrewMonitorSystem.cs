@@ -14,10 +14,21 @@ public sealed class LongRangeCrewMonitorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<LongRangeCrewMonitorComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<LongRangeCrewMonitorComponent, BoundUIOpenedEvent>(OnUIOpened);
     }
 
+    private void OnInit(Entity<LongRangeCrewMonitorComponent> ent, ref ComponentInit args)
+    {
+        UpdateTargetGrid(ent);
+    }
+
     private void OnUIOpened(Entity<LongRangeCrewMonitorComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdateTargetGrid(ent);
+    }
+
+    private void UpdateTargetGrid(Entity<LongRangeCrewMonitorComponent> ent)
     {
         if (!TryComp<StationDataComponent>(_station.GetStationInMap(Transform(ent.Owner).MapID),
                 out var stationDataComponent))
