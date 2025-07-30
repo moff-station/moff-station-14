@@ -35,8 +35,8 @@
       receiveFrequencyId: SuitSensor
       autoConnect: false
     - type: WirelessNetworkConnection
-      range: 500
-    - type: StationLimitedNetwork
+      range: 10000 # Moffstation - Exended range for Listening outpost
+    #- type: StationLimitedNetwork # Moffstation
     - type: ApcPowerReceiver
       powerLoad: 200
     - type: ExtensionCableReceiver

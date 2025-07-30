@@ -76,8 +76,7 @@
   suffix: long-range
   description: Used to monitor active health sensors built into most of the crew's uniforms.
   components:
-  - type: CrewMonitoringConsole
-    longRange: true
+  - type: LongRangeCrewMonitor
 
 - type: entity
   parent: ComputerMassMedia

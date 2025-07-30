@@ -67,16 +67,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             return;
 
         // The grid must have a NavMapComponent to visualize the map in the UI
-        TransformComponent xform;
-        if (component.LongRange &&
-            TryComp<StationDataComponent>(_station.GetStationInMap(Transform(uid).MapID), out var stationDataComponent))
-        {
-            var largestGrid = _station.GetLargestGrid(stationDataComponent);
-            xform = (largestGrid == null) ? Transform(uid) : Transform(largestGrid.Value);
-        }
-        else
-            xform = Transform(uid);
-
+        var xform = Transform(uid);
 
         if (xform.GridUid != null)
             EnsureComp<NavMapComponent>(xform.GridUid.Value);
