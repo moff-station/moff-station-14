@@ -13,7 +13,7 @@
   parent: ComputerTabletopMedicalRecords
   id: ComputerTabletopMedicalRecordsLongRange
   name: medical records computer
-  suffix: long-range
+  suffix: [long-range, tabletop]
   description: This can be used to check medical records.
   components:
   - type: CharacterRecordConsole
@@ -33,7 +33,7 @@
   parent: ComputerTabletopCriminalRecords
   id: ComputerTabletopCriminalRecordsLongRange
   name: criminal records computer
-  suffix: long-range
+  suffix: [long-range, tabletop]
   description: This can be used to check medical records.
   components:
   - type: CharacterRecordConsole
@@ -53,7 +53,7 @@
   parent: ComputerTabletopStationRecords
   id: ComputerTabletopStationRecordsLongRange
   name: station records computer
-  suffix: long-range
+  suffix: [long-range, tabletop]
   description: This can be used to check medical records.
   components:
   - type: CharacterRecordConsole
@@ -66,37 +66,16 @@
   suffix: long-range
   description: Used to monitor active health sensors built into most of the crew's uniforms.
   components:
-  - type: CrewMonitoringConsole
-    longRange: true
+  - type: LongRangeCrewMonitor
 
 - type: entity
   parent: ComputerTabletopCrewMonitoring
   id: ComputerTabletopCrewMonitoringLongRange
   name: crew monitoring console
-  suffix: long-range
+  suffix: [long-range, tabletop]
   description: Used to monitor active health sensors built into most of the crew's uniforms.
   components:
   - type: LongRangeCrewMonitor
-
-- type: entity
-  parent: ComputerMassMedia
-  id: ComputerMassMediaLongRange
-  name: news manager console
-  suffix: long-range
-  description: Write your message to the world!
-  components:
-  - type: NewsWriter
-    longRange: true
-
-- type: entity
-  parent: ComputerTabletopMassMedia
-  id: ComputerTabletopMassMediaLongRange
-  name: news manager console
-  suffix: long-range
-  description: Write your message to the world!
-  components:
-  - type: NewsWriter
-    longRange: true
 
 - type: entity
   parent: ComputerSurveillanceCameraMonitor
@@ -112,7 +91,7 @@
   parent: ComputerTabletopSurveillanceCameraMonitor
   id: ComputerTabletopSurveillanceCameraMonitorLongRange
   name: camera monitor
-  suffix: long-range
+  suffix: [long-range, tabletop]
   description: A surveillance camera monitor. You're watching them. Maybe.
   components:
   - type: WirelessNetworkConnection
