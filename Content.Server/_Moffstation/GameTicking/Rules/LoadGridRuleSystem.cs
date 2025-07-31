@@ -19,9 +19,9 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
 
     private List<Entity<MapGridComponent>> _mapGrids = new();
 
-    protected override void Added(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    protected override void Started(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
-        base.Added(uid, component, gameRule, args);
+        base.Started(uid, component, gameRule, args);
 
         //Get the station
         if (!TryGetRandomStation(out var station) ||

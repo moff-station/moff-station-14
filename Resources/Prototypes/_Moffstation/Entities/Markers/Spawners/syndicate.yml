@@ -6,6 +6,8 @@
   parent: MarkerBase
   components:
   - type: GhostRole
+    name: roles-antag-syndicate-spy
+    description: roles-antag-syndicate-spy-objective
     rules: ghost-role-information-rules-default-team-antagonist
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist

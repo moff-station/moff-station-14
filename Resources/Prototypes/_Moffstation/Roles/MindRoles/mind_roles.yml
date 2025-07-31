@@ -39,6 +39,8 @@
     antagPrototype: Vampire
   - type: VampireRole
 
+# Syndicate
+
 - type: entity
   parent: BaseMindRoleAntag
   id: MindRoleSyndicateSpy
@@ -48,4 +50,5 @@
     roleType: TeamAntagonist
     exclusiveAntag: true
     antagPrototype: SyndicateSpy
+    subtype: roles-antag-syndicate-spy
   - type: SyndicateSpyRole
