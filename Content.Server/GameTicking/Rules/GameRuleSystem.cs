@@ -38,12 +38,8 @@ public abstract partial class GameRuleSystem<T> : EntitySystem where T : ICompon
         while (query.MoveNext(out var uid, out _, out var gameRule))
         {
             var minPlayers = gameRule.MinPlayers;
-            // Moffstation - Start - total player count for rules
-            var currentPlayers = GameTicker.DynamicPlayerCount();
-
-            if (currentPlayers >= minPlayers)
+            if (GameTicker.DynamicPlayerCount() >= minPlayers)  // Moffstation - total player count for rules
                 continue;
-            // Moffstation - End
 
             if (gameRule.CancelPresetOnTooFewPlayers)
             {

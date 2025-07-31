@@ -132,9 +132,7 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     /// </summary>
     public bool CanPickAny(IEnumerable<ProtoId<GamePresetPrototype>> protos)
     {
-        // Moffstation - Start - total player count for rules
-        var players = GameTicker.DynamicPlayerCount();
-        // Moffstation - End
+        var players = GameTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
         foreach (var id in protos)
         {
             if (!_prototypeManager.TryIndex(id, out var selectedPreset))
