@@ -8,6 +8,7 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Random;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
+using Robust.Server.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Configuration;
@@ -21,6 +22,8 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+
 
     private string _ruleCompName = default!;
 
@@ -74,7 +77,11 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     private bool TryPickPreset(ProtoId<WeightedRandomPrototype> weights, [NotNullWhen(true)] out GamePresetPrototype? preset)
     {
         var options = _prototypeManager.Index(weights).Weights.ShallowClone();
-        var players = GameTicker.ReadyPlayerCount();
+        // Moffstation - Start - total player count for rules
+        var players = _configurationManager.GetCVar(CCVars.GameRulesCountReadied)
+            ? GameTicker.ReadyPlayerCount()
+            : _playerManager.PlayerCount;
+        // Moffstation - End
 
         GamePresetPrototype? selectedPreset = null;
         var sum = options.Values.Sum();
@@ -132,7 +139,11 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     /// </summary>
     public bool CanPickAny(IEnumerable<ProtoId<GamePresetPrototype>> protos)
     {
-        var players = GameTicker.ReadyPlayerCount();
+        // Moffstation - Start - total player count for rules
+        var players = _configurationManager.GetCVar(CCVars.GameRulesCountReadied)
+            ? GameTicker.ReadyPlayerCount()
+            : _playerManager.PlayerCount;
+        // Moffstation - End
         foreach (var id in protos)
         {
             if (!_prototypeManager.TryIndex(id, out var selectedPreset))
