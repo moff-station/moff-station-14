@@ -2116,11 +2116,6 @@ entities:
     - type: Transform
       pos: -7.462831,-1.2369492
       parent: 1
-    - type: UserInterface
-      actors:
-        enum.StorageUiKey.Key:
-        - invalid
-    - type: ActiveUserInterface
 - proto: Bucket
   entities:
   - uid: 79
