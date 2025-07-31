@@ -415,6 +415,6 @@ public sealed partial class CCVars
     /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", false, CVar.SERVER | CVar.REPLICATED);
+        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", false, CVar.SERVERONLY);
     // Moffstation - End
 }

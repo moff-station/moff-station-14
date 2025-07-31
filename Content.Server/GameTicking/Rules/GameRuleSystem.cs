@@ -1,10 +1,7 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Managers;
-using Content.Shared.CCVar;
 using Content.Shared.GameTicking.Components;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
-using Robust.Shared.Configuration;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -17,13 +14,9 @@ public abstract partial class GameRuleSystem<T> : EntitySystem where T : ICompon
     [Dependency] protected readonly GameTicker GameTicker = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
 
-
     // Not protected, just to be used in utility methods
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly MapSystem _map = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;    // Moffstation
-    [Dependency] private readonly IPlayerManager _playerManager = default!;     // Moffstation
-
 
     public override void Initialize()
     {
@@ -46,9 +39,7 @@ public abstract partial class GameRuleSystem<T> : EntitySystem where T : ICompon
         {
             var minPlayers = gameRule.MinPlayers;
             // Moffstation - Start - total player count for rules
-            var currentPlayers = _cfg.GetCVar(CCVars.GameRulesCountReadied)
-                ? args.Players.Length
-                : _playerManager.PlayerCount;
+            var currentPlayers = GameTicker.DynamicPlayerCount();
 
             if (currentPlayers >= minPlayers)
                 continue;
