@@ -242,22 +242,23 @@
       - id: AnomalyScanner
       - id: SpearUranium
       - id: ClothingBeltUtility
-    - !type:AllSelector # QM
-      children:
-      - id: ClothingUniformJumpsuitQM
-      - id: ClothingOuterVestTank
-      - id: ClothingHandsKnuckleDustersQM
-      - id: AppraisalTool
-    - !type:AllSelector # Chef
+      - !type:AllSelector # Chef
       children:
       - id: ClothingUniformJumpsuitChef
       - id: ClothingOuterVestTank
       - id: ButchCleaver
       - id: KitchenKnife
       - id: RollingPin
+    - !type:AllSelector # QM
+      children:
+      - id: ClothingUniformJumpsuitQM
+      - id: ClothingOuterVestTank
+      - id: ClothingHandsKnuckleDustersQM
+      - id: AppraisalTool
     - !type:AllSelector # Tider
       children:
       - id: ClothingUniformJumpsuitAncient
+      - id: ClothingOuterVestTank
       - id: ToolboxGolden
   - type: KillCalloutRule
   - type: RespawnDeadRule
