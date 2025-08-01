@@ -17,7 +17,7 @@
   id: SyndicateListeningOutpost
   components:
   - type: GameRule
-    minPlayers: 0
+    minPlayers: 15
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:
@@ -54,10 +54,10 @@
     duration: 0
     earliestStart: 5
     reoccurrenceDelay: 60
-    minimumPlayers: 10
+    minimumPlayers: 15
   - type: AntagSelection
     definitions:
-    - spawnerPrototype: SpawnPointGhostSyndicateSpy
+    - spawnerPrototype: SpawnerSyndicateSpy
       min: 3
       max: 3
       playerRatio: 1
