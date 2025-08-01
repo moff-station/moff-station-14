@@ -97,6 +97,7 @@ namespace Content.IntegrationTests.Tests
             "Meta",
             "MW-Dock",
             "CS-Dust2",
+            "WaterVapour",
             "Frezon",
             // Moffstation - End
         };
