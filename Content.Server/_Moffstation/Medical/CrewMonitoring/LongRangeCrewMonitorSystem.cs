@@ -4,9 +4,6 @@ using Content.Shared._Moffstation.Medical.CrewMonitoring;
 
 namespace Content.Server._Moffstation.Medical.CrewMonitoring;
 
-/// <summary>
-/// This handles...
-/// </summary>
 public sealed class LongRangeCrewMonitorSystem : EntitySystem
 {
     [Dependency] private readonly StationSystem _station = default!;
@@ -14,21 +11,11 @@ public sealed class LongRangeCrewMonitorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<LongRangeCrewMonitorComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<LongRangeCrewMonitorComponent, BoundUIOpenedEvent>(OnUIOpened);
+        SubscribeLocalEvent<LongRangeCrewMonitorComponent, ComponentInit>(UpdateTargetGrid);
+        SubscribeLocalEvent<LongRangeCrewMonitorComponent, BoundUIOpenedEvent>(UpdateTargetGrid);
     }
 
-    private void OnInit(Entity<LongRangeCrewMonitorComponent> ent, ref ComponentInit args)
-    {
-        UpdateTargetGrid(ent);
-    }
-
-    private void OnUIOpened(Entity<LongRangeCrewMonitorComponent> ent, ref BoundUIOpenedEvent args)
-    {
-        UpdateTargetGrid(ent);
-    }
-
-    private void UpdateTargetGrid(Entity<LongRangeCrewMonitorComponent> ent)
+    private void UpdateTargetGrid<T>(Entity<LongRangeCrewMonitorComponent> ent, ref T args)
     {
         if (!TryComp<StationDataComponent>(_station.GetStationInMap(Transform(ent.Owner).MapID),
                 out var stationDataComponent))

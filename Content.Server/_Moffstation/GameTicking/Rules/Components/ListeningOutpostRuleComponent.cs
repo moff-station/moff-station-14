@@ -1,4 +1,4 @@
 namespace Content.Server._Moffstation.GameTicking.Rules.Components;
 
-[RegisterComponent, Access(typeof(ListeningOutpostRuleSystem))]
+[RegisterComponent]
 public sealed partial class ListeningOutpostRuleComponent : Component;

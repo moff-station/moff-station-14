@@ -17,7 +17,6 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
 
-    private List<Entity<MapGridComponent>> _mapGrids = new();
 
     protected override void Started(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -68,16 +67,18 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
         }
 
         // Load the grid
-        if (!_mapLoader.TryLoadGrid(map, component.GridPath, out var spawnedGrid, null, offset) && spawnedGrid != null)
+        if (!_mapLoader.TryLoadGrid(map, component.GridPath, out var spawnedGrid, null, offset))
         {
             Log.Warning($"Unable to load grid for GameRule {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
+            return;
         }
 
-        var ev = new RuleLoadedGridsEvent(map, [spawnedGrid!.Value.Owner]);
+        var ev = new RuleLoadedGridsEvent(map, [spawnedGrid.Value.Owner]);
         RaiseLocalEvent(uid, ref ev);
     }
 
+    private List<Entity<MapGridComponent>> _mapGrids = new();
     private bool HasCollisions(MapId mapId, Box2 point)
     {
         _mapGrids.Clear();
