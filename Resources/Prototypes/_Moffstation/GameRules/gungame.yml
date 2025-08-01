@@ -24,7 +24,7 @@
     - !type:AllSelector # DeathSquad
       children:
       - id: ClothingUniformJumpsuitDeathSquad
-      - id: ClothingOuterArmorBulletproof
+      - id: ClothingOuterArmorBasic
       - id: WeaponRevolverMateba
       - id: SpeedLoaderMagnumAP
       - id: SpeedLoaderMagnumAP
@@ -42,7 +42,7 @@
     - !type:AllSelector # Syndicate assault cyborg
       children:
       - id: ClothingUniformJumpsuitOperative
-      - id: ClothingOuterVestWeb
+      - id: ClothingOuterArmorBasic
       - id: EnergySwordDouble
       - id: PinpointerSyndicateNuclear
       - id: MagazineLightRifleBox
@@ -51,7 +51,7 @@
     - !type:AllSelector # Syndicate vanguard
       children:
       - id: ClothingUniformJumpsuitOperative
-      - id: ClothingOuterVestWeb
+      - id: ClothingOuterArmorBasic
       - id: WeaponSubMachineGunC20r
       - id: EnergySword
       - id: MagazinePistolSubMachineGun
@@ -78,16 +78,16 @@
     - !type:AllSelector # ERT rifleman
       children:
       - id: ClothingUniformJumpsuitERTSecurity
-      - id: ClothingOuterArmorBulletproof
+      - id: ClothingOuterArmorBasic
       - id: WeaponRifleLecter
-      - id: EnergyDaggerLoud
+      - id: CombatKnife
       - id: MagazineRifleUranium
       - id: WeaponLaserCannon
       - id: ClothingBeltSecurityWebbing
     - !type:AllSelector # Security breacher
       children:
       - id: ClothingUniformJumpsuitSecGrey
-      - id: ClothingOuterArmorBulletproof
+      - id: ClothingOuterArmorBasic
       - id: WeaponShotgunKammerer
       - id: TearGasGrenade
       - id: MagazineShotgun
@@ -96,7 +96,7 @@
     - !type:AllSelector # Security SMG
       children:
       - id: ClothingUniformJumpsuitSeniorOfficer
-      - id: ClothingOuterArmorBulletproof
+      - id: ClothingOuterArmorBasic
       - id: WeaponSubMachineGunDrozd
       - id: MagazinePistolSubMachineGun
       - id: MagazinePistolSubMachineGun
@@ -105,7 +105,7 @@
     - !type:AllSelector # Syndicate marksman
       children:
       - id: ClothingUniformJumpsuitLawyerBlack
-      - id: ClothingOuterVestWeb
+      - id: ClothingOuterArmorBasic
       - id: WeaponRifleEstoc
       - id: EnergyDaggerLoud
       - id: MagazineRifle
@@ -143,7 +143,7 @@
       - id: ClothingUniformJumpsuitNinja
       - id: ClothingOuterSuitSpaceNinja
       - id: ThrowingStarNinja
-      - id: PinpointerStation
+      - id: ThrowingStarNinja
       - id: ThrowingStarNinja
       - id: ThrowingStarNinja
       - id: EnergyKatana
@@ -242,7 +242,7 @@
       - id: AnomalyScanner
       - id: SpearUranium
       - id: ClothingBeltUtility
-      - !type:AllSelector # Chef
+    - !type:AllSelector # Chef
       children:
       - id: ClothingUniformJumpsuitChef
       - id: ClothingOuterVestTank
@@ -255,6 +255,11 @@
       - id: ClothingOuterVestTank
       - id: ClothingHandsKnuckleDustersQM
       - id: AppraisalTool
+    - !type:AllSelector # Paramedic
+      children:
+      - id: ClothingUniformJumpsuitParamedic
+      - id: ClothingOuterVestTank
+      - id: Scalpel
     - !type:AllSelector # Tider
       children:
       - id: ClothingUniformJumpsuitAncient
