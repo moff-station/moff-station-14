@@ -4,148 +4,267 @@
   components:
   - type: GunGameRule
     slotTryOrder:
+    - jumpsuit
+    - outerClothing
     - hand
     - pocket1
     - pocket2
     - back
+    - belt
     rewardSpawnsQueue:
     - !type:AllSelector # Dual Atredies
       children:
-      - id: WeaponSubMachineGunAtreides
+      - id: ClothingUniformJumpsuitCentcomAgent
+      - id: ClothingOuterArmorCentcommCarapace
       - id: WeaponSubMachineGunAtreides
       - id: MagazinePistolSubMachineGun
-    - id: WeaponPulseCarbine # DeathSquad
+      - id: MagazinePistolSubMachineGun
+      - id: WeaponSubMachineGunAtreides
+      - id: ClothingBeltHolster
+    - !type:AllSelector # DeathSquad
+      children:
+      - id: ClothingUniformJumpsuitDeathSquad
+      - id: ClothingOuterArmorBasic
+      - id: WeaponRevolverMateba
+      - id: SpeedLoaderMagnumAP
+      - id: SpeedLoaderMagnumAP
+      - id: WeaponPulseRifle
+      - id: ClothingBeltMilitaryWebbingMed
     - !type:AllSelector # HoS
       children:
+      - id: ClothingUniformJumpsuitHoS
+      - id: ClothingOuterCoatHoSTrench
       - id: WeaponSubMachineGunWt550
-      - id: MagazinePistolSubMachineGunTopMounted
-      - id: MagazinePistolSubMachineGunTopMounted
       - id: TelescopicShield
-    - !type:AllSelector # Syndie Borg
+      - id: MagazinePistolSubMachineGunTopMounted
+      - id: WeaponEnergyShotgun
+      - id: ClothingBeltSecurity
+    - !type:AllSelector # Syndicate assault cyborg
       children:
+      - id: ClothingUniformJumpsuitOperative
+      - id: ClothingOuterArmorBasic
       - id: EnergySwordDouble
+      - id: PinpointerSyndicateNuclear
+      - id: MagazineLightRifleBox
       - id: WeaponLightMachineGunL6C
-    - !type:AllSelector
+      - id: ClothingBeltMilitaryWebbing
+    - !type:AllSelector # Syndicate vanguard
       children:
+      - id: ClothingUniformJumpsuitOperative
+      - id: ClothingOuterArmorBasic
       - id: WeaponSubMachineGunC20r
       - id: EnergySword
       - id: MagazinePistolSubMachineGun
-    - !type:AllSelector
+      - id: MagazinePistolSubMachineGun
+      - id: ClothingBeltMilitaryWebbing
+    - !type:AllSelector #Syndicate breacher
       children:
+      - id: ClothingUniformJumpsuitOperative
+      - id: ClothingOuterArmorRaid
       - id: WeaponShotgunBulldog
       - id: MagazineShotgun
       - id: MagazineShotgunSlug
-    - !type:AllSelector
-      children:
-      - id: WeaponSniperHristov
-      - id: MagazineBoxAntiMateriel
-    - !type:AllSelector # Deathsquad Sidearms
-      children:
-      - id: WeaponRevolverMateba
-      - id: WeaponPulsePistol
-      - id: SpeedLoaderMagnumAP
-      - id: SpeedLoaderMagnumAP
+      - id: MagazineShotgunIncendiary
+      - id: ClothingBeltMilitaryWebbing
     - !type:AllSelector # Warden
       children:
+      - id: ClothingUniformJumpsuitWarden
+      - id: ClothingOuterCoatWarden
       - id: WeaponShotgunEnforcer
-      - id: BoxLethalshot
-      - id: BoxShotgunSlug
-    - !type:AllSelector # Sec Gear
+      - id: CombatKnife
+      - id: MagazineShotgun
+      - id: MagazineShotgunSlug
+      - id: ClothingBeltSecurity
+    - !type:AllSelector # ERT rifleman
       children:
+      - id: ClothingUniformJumpsuitERTSecurity
+      - id: ClothingOuterArmorBasic
+      - id: WeaponRifleLecter
+      - id: CombatKnife
+      - id: MagazineRifleUranium
+      - id: WeaponLaserCannon
+      - id: ClothingBeltSecurityWebbing
+    - !type:AllSelector # Security breacher
+      children:
+      - id: ClothingUniformJumpsuitSecGrey
+      - id: ClothingOuterArmorBasic
+      - id: WeaponShotgunKammerer
+      - id: TearGasGrenade
+      - id: MagazineShotgun
+      - id: MagazineShotgunIncendiary
+      - id: ClothingBeltSecurityWebbing
+    - !type:AllSelector # Security SMG
+      children:
+      - id: ClothingUniformJumpsuitSeniorOfficer
+      - id: ClothingOuterArmorBasic
       - id: WeaponSubMachineGunDrozd
       - id: MagazinePistolSubMachineGun
       - id: MagazinePistolSubMachineGun
       - id: WeaponLaserCarbine
-    - !type:AllSelector
+      - id: ClothingBeltSecurityWebbing
+    - !type:AllSelector # Syndicate marksman
       children:
-      - id: WeaponShotgunKammerer
-      - id: BoxLethalshot
-    - !type:AllSelector
-      children:
+      - id: ClothingUniformJumpsuitLawyerBlack
+      - id: ClothingOuterArmorBasic
       - id: WeaponRifleEstoc
+      - id: EnergyDaggerLoud
       - id: MagazineRifle
       - id: MagazineRifle
-    - !type:AllSelector # CC Rep
+      - id: ClothingBeltSyndieHolster
+    - !type:AllSelector # CC representative
       children:
+      - id: ClothingUniformJumpsuitCentcomFormal
+      - id: ClothingOuterArmorCentcommCarapace
       - id: WeaponPistolN1984
-      - id: MagazineMagnum
-      - id: MagazineMagnum
       - id: PenCentcom
+      - id: MagazineMagnumAP
+      - id: MagazineMagnumAP
+      - id: ClothingBeltHolster
+    - !type:AllSelector # Mercenary
+      children:
+      - id: ClothingUniformJumpsuitMercenary
+      - id: ClothingOuterVestWebMerc
+      - id: WeaponRifleAk
+      - id: KukriKnife
+      - id: MagazineLightRifle
+      - id: MagazineLightRifle
+      - id: ClothingBeltMercWebbing
     - !type:AllSelector # Captain
       children:
+      - id: ClothingUniformJumpsuitCaptain
+      - id: ClothingOuterArmorCaptainCarapace
       - id: WeaponAntiqueLaser
-      - id: CaptainSabre
-    - !type:AllSelector
-      children:
-      - id: WeaponRifleLecter
-      - id: MagazineRifle
-      - id: MagazineRifle
+      - id: PenCap
+      - id: NukeDiskFake
+      - id: DrinkFlask
+      - id: ClothingBeltSheathFilled
     - !type:AllSelector # Ninja
       children:
+      - id: ClothingUniformJumpsuitNinja
+      - id: ClothingOuterSuitSpaceNinja
+      - id: ThrowingStarNinja
+      - id: ThrowingStarNinja
+      - id: ThrowingStarNinja
+      - id: ThrowingStarNinja
       - id: EnergyKatana
-      - id: ThrowingStarNinja
-      - id: ThrowingStarNinja
-    - !type:AllSelector # Warops Crew
+    - !type:AllSelector # WarOps crew
       children:
+      - id: ClothingUniformJumpsuitColorGrey
+      - id: ClothingOuterArmorBasic
       - id: WeaponXrayCannon
+      - id: TelescopicShield
+      - id: RadioHandheldSecurity
+      - id: WeaponTemperatureGun
       - id: Truncheon
-    - !type:AllSelector
+    - !type:AllSelector # Botanist
       children:
-      - id: WeaponRevolverPythonAP
-      - id: SpeedLoaderMagnumAP
-      - id: SpeedLoaderMagnumAP
-    - !type:AllSelector
+      - id: ClothingUniformOveralls
+      - id: ClothingOuterApronBotanist
+      - id: WeaponRevolverPython
+      - id: DeathNettle
+      - id: WeaponRevolverPython
+      - id: WeaponRevolverPython
+      - id: ClothingBeltPlant
+    - !type:AllSelector # Syndicate librarian
       children:
-      - id: WeaponPistolViper
+      - id: ClothingUniformJumpsuitLibrarian
+      - id: ClothingOuterVestTank
+      - id: CaneSheathFilled
       - id: WeaponPistolViper
       - id: MagazinePistolHighCapacity
       - id: MagazinePistolHighCapacity
-    - id: EnergySword
-    - !type:AllSelector
-      children:
-      - id: WeaponPistolCobra
-      - id: MagazinePistolCaselessRifle
-      - id: MagazinePistolCaselessRifle
-      - id: ThrowingKnivesKit
+      - id: ClothingBeltStorageWaistbag
     - !type:AllSelector # Green sec
       children:
+      - id: ClothingUniformJumpsuitSec
+      - id: ClothingOuterArmorBasicSlim
       - id: WeaponPistolMk58
-      - id: MagazinePistol
-      - id: MagazinePistol
       - id: CombatKnife
+      - id: MagazinePistol
+      - id: MagazinePistol
+      - id: ClothingBeltSecurityWebbing
+    - !type:AllSelector # Syndicate assassin
+      children:
+      - id: ClothingUniformJumpsuitSyndieFormal
+      - id: ClothingOuterVest
+      - id: WeaponPistolCobra
+      - id: MagazinePistolCaselessRifle
+      - id: MagazineBoxAntiMateriel
+      - id: WeaponSniperHristov
+      - id: ThrowingKnivesKit
     - !type:AllSelector # Salvage
       children:
-      - id: WeaponProtoKineticAccelerator #PKA with two random mods
-      - !type:GroupSelector
-        rolls: 2
-        children:
-        - id: PKAUpgradeDamage
-        - id: PKAUpgradeFireRate
-        - id: PKAUpgradeRange
-      - id: SurvivalKnife
+      - id: ClothingUniformJumpsuitSalvageSpecialist
+      - id: ClothingOuterVestTank
+      - id: WeaponProtoKineticAccelerator
+      - id: PKAUpgradeFireRate
+      - id: PKAUpgradeDamage
+      - id: WeaponCrusherGlaive
+      - id: ClothingBeltSalvageWebbing
     - !type:AllSelector # Bartender
       children:
+      - id: ClothingUniformJumpsuitBartender
+      - id: ClothingBeltBandolier
       - id: WeaponShotgunSawn
-      - id: BoxLethalshot
-      - id: BoxShotgunSlug
-      - id: DrinkBottleBeer
-    - id: ArmBlade
+      - id: MagazineShotgun
+      - id: MagazineShotgunSlug
+      - id: BrokenBottle
+    - !type:AllSelector # Pursuer
+      children:
+      - id: ClothingUniformJumpsuitDetective
+      - id: ClothingOuterCoatDetective
+      - id: ArmBlade
+      - id: ArmBlade
     - !type:AllSelector # HoP
       children:
+      - id: ClothingUniformJumpsuitHoP
+      - id: ClothingOuterVestTank
       - id: WeaponRevolverDeckard
       - id: SpeedLoaderMagnum
       - id: SpeedLoaderMagnum
       - id: BriefcaseBrownFilled
-    - id: WeaponCrusherGlaive
-    - id: FireAxe
+      - id: ClothingBeltStorageWaistbag
+    - !type:AllSelector # Atmosian
+      children:
+      - id: ClothingUniformJumpsuitAtmosCasual
+      - id: ClothingOuterVestHazard
+      - id: FireAxe
+      - id: GasAnalyzer
+      - id: RadioHandheld
+      - id: CrowbarYellow
+      - id: ClothingBeltUtility
     - !type:AllSelector # Scientist
       children:
+      - id: ClothingUniformJumpsuitSeniorResearcher
+      - id: ClothingOuterVestTank
+      - id: SpearUranium
       - id: WeaponPistolCHIMPUpgraded
+      - id: AnomalyScanner
       - id: SpearUranium
-      - id: SpearUranium
-    - id: ClothingHandsKnuckleDustersQM
-    - id: KitchenKnife
-    - id: ToolboxGolden
+      - id: ClothingBeltUtility
+    - !type:AllSelector # Chef
+      children:
+      - id: ClothingUniformJumpsuitChef
+      - id: ClothingOuterVestTank
+      - id: ButchCleaver
+      - id: KitchenKnife
+      - id: RollingPin
+    - !type:AllSelector # QM
+      children:
+      - id: ClothingUniformJumpsuitQM
+      - id: ClothingOuterVestTank
+      - id: ClothingHandsKnuckleDustersQM
+      - id: AppraisalTool
+    - !type:AllSelector # Paramedic
+      children:
+      - id: ClothingUniformJumpsuitParamedic
+      - id: ClothingOuterVestTank
+      - id: Scalpel
+    - !type:AllSelector # Tider
+      children:
+      - id: ClothingUniformJumpsuitAncient
+      - id: ClothingOuterVestTank
+      - id: ToolboxGolden
   - type: KillCalloutRule
   - type: RespawnDeadRule
   - type: RespawnTracker
