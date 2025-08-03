@@ -130,10 +130,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -244,10 +240,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -282,10 +274,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -315,10 +303,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
-  - type: StaminaResistance
-    damageCoefficient: 0.6
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -504,10 +488,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -865,10 +845,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -1035,10 +1011,6 @@
     coolingCoefficient: 0.001
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
-  - type: StaminaResistance
-    damageCoefficient: 0.6
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:

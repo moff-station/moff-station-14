@@ -290,7 +290,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 26 # Moffstation - (Stamina Resistance) - This keeps the disabler not too strong with a 4 hit stun against unarmored and 5 hit against any sort of armor.
+    damage: 33
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -1135,7 +1135,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 18 # Moffstation - (Stamina Resistance) - This makes the energy shotgun barely a 2-shot stamcrit against unarmored, but any armor brings it up to three shots.
+    damage: 15
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
