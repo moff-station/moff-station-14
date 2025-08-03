@@ -1,0 +1,148 @@
+- type: species
+  id: Cervidae
+  name: species-name-cervidae
+  roundStart: true
+  prototype: MobCervidae
+  sprites: MobCervidaeSprites
+  defaultSkinTone: "#985629"
+  markingLimits: MobCervidaeMarkingLimits
+  dollPrototype: MobCervidaeDummy
+  skinColoration: Hues
+  maleFirstNames: names_cervidae_male
+  femaleFirstNames: names_cervidae_female
+  lastNames: names_cervidae_last
+
+- type: speciesBaseSprites
+  id: MobCervidaeSprites
+  sprites:
+    Head: MobCervidaeHead
+    Hair: MobHumanoidAnyMarking
+    FacialHair: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    Chest: MobCervidaeTorso
+    HeadTop: MobHumanoidAnyMarking
+    HeadSide: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
+    Eyes: MobHumanoidEyes
+    LArm: MobCervidaeLArm
+    RArm: MobCervidaeRArm
+    LHand: MobCervidaeLHand
+    RHand: MobCervidaeRHand
+    LLeg: MobCervidaeLLeg
+    RLeg: MobCervidaeRLeg
+    LFoot: MobCervidaeLFoot
+    RFoot: MobCervidaeRFoot
+
+- type: markingPoints
+  id: MobCervidaeMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Tail:
+      points: 1
+      required: false
+      #defaultMarkings: [ VulpTailAlt ]
+    Head:
+      points: 3
+      required: false
+    Legs:
+      points: 1
+      required: false
+    Arms:
+      points: 1
+      required: false
+    Snout:
+      points: 1
+      required: false
+    HeadTop:
+      points: 1
+      required: false
+      #defaultMarkings: [ VulpEar ]
+
+- type: humanoidBaseSprite
+  id: MobCervidaeHead
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobCervidaeHeadMale
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobCervidaeHeadFemale
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: MobCervidaeTorso
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobCervidaeTorsoMale
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobCervidaeTorsoFemale
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: MobCervidaeLLeg
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobCervidaeLHand
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobCervidaeLArm
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobCervidaeLFoot
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobCervidaeRLeg
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobCervidaeRHand
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobCervidaeRArm
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobCervidaeRFoot
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: r_foot

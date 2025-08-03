@@ -4,6 +4,7 @@
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
     - Arachnid
+    - Cervidae # Added Cervidae, new deer species exclusive to moffstation.
     - Diona
     - Dwarf
     - Human
@@ -16,6 +17,13 @@
   id: Arachnid
   name: species-name-arachnid
   text: "/ServerInfo/Guidebook/Mobs/Arachnid.xml"
+
+# Added Cervidae - Start - New deer species exclusive to moffstation.
+- type: guideEntry
+  id: Cervidae
+  name: species-name-cervidae
+  text: "/ServerInfo/Guidebook/Mobs/Cervidae.xml"
+# Added Cervidae - End - New deer species exclusive to moffstation.
 
 - type: guideEntry
   id: Diona

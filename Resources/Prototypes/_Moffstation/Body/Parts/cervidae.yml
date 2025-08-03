@@ -1,0 +1,88 @@
+- type: entity
+  abstract: true
+  parent: [ BasePart ]
+  id: PartCervidae
+  name: cervidae body part
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+
+- type: entity
+  parent: [ PartCervidae, BaseTorso ]
+  id: TorsoCervidae
+  name: cervidae torso
+  components:
+  - type: Sprite
+    state: torso_m
+
+- type: entity
+  parent: [ PartCervidae, BaseHead ]
+  id: HeadCervidae
+  name: cervidae head
+  components:
+  - type: Sprite
+    state: head_m
+
+- type: entity
+  parent: [ PartCervidae, BaseLeftArm ]
+  id: LeftArmCervidae
+  name: left cervidae arm
+  components:
+  - type: Sprite
+    state: l_arm
+
+- type: entity
+  parent: [ PartCervidae, BaseRightArm ]
+  id: RightArmCervidae
+  name: right cervidae arm
+  components:
+  - type: Sprite
+    state: r_arm
+
+- type: entity
+  parent: [ PartCervidae, BaseLeftHand ]
+  id: LeftHandCervidae
+  name: left cervidae hand
+  components:
+  - type: Sprite
+    state: l_hand
+
+- type: entity
+  parent: [ PartCervidae, BaseRightHand ]
+  id: RightHandCervidae
+  name: right cervidae hand
+  components:
+  - type: Sprite
+    state: r_hand
+
+- type: entity
+  parent: [ PartCervidae, BaseLeftLeg ]
+  id: LeftLegCervidae
+  name: left cervidae leg
+  components:
+  - type: Sprite
+    state: l_leg
+
+- type: entity
+  parent: [ PartCervidae, BaseRightLeg ]
+  id: RightLegCervidae
+  name: right cervidae leg
+  components:
+  - type: Sprite
+    state: r_leg
+
+- type: entity
+  parent: [ PartCervidae, BaseLeftFoot ]
+  id: LeftFootCervidae
+  name: left cervidae foot
+  components:
+  - type: Sprite
+    state: l_foot
+
+- type: entity
+  parent: [ PartCervidae, BaseRightFoot ]
+  id: RightFootCervidae
+  name: right cervidae foot
+  components:
+  - type: Sprite
+    state: r_foot

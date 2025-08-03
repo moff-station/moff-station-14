@@ -1,0 +1,49 @@
+- type: body
+  id: Cervidae
+  name: cervidae
+  root: torso
+  slots:
+    head:
+      part: HeadCervidae
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoCervidae
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+      organs:
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganCervidaeStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
+    right arm:
+      part: RightArmCervidae
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmCervidae
+      connections:
+      - left hand
+    right hand:
+      part: RightHandCervidae
+    left hand:
+      part: LeftHandCervidae
+    right leg:
+      part: RightLegCervidae
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegCervidae
+      connections:
+      - left foot
+    right foot:
+      part: RightFootCervidae
+    left foot:
+      part: LeftFootCervidae

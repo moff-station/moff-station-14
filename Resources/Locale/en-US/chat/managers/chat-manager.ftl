@@ -163,3 +163,9 @@ chat-speech-verb-wawa-1 = intones
 chat-speech-verb-wawa-2 = states
 chat-speech-verb-wawa-3 = declares
 chat-speech-verb-wawa-4 = ponders
+
+chat-speech-verb-cervidae-1 = yips
+chat-speech-verb-cervidae-2 = yelps
+chat-speech-verb-cervidae-3 = rurs
+chat-speech-verb-cervidae-4 = yaps
+chat-speech-verb-cervidae = Cervidae
