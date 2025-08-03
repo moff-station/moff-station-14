@@ -52,7 +52,7 @@
     - id: RubberStampDenied
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
-        range: 5, 8
+        range: 8, 12
       children:
       - id: RubberStampClown
       - id: RubberStampChaplain
