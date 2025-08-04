@@ -1,0 +1,26 @@
+# Player: FreianOfVoid - Character: Chris Ruffler
+- type: entity
+  parent: ClothingMaskClown
+  id: PersonalItemRufflerMask
+  name: The Ruffler's Mask
+  suffix: PersonalItem
+  description: It's not a barotrauma reference I swear!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Chris_Ruffler/rufflermask.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Chris_Ruffler/rufflermask.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Chris_Ruffler/rufflermask.rsi
+  - type: DetailExaminable
+    content: An unusual clown mask with the name "Chris Ruffler" written on the back of it. The wig seems to be larger, and instead of yellow surrounding the eye holes, it appears to have orange above them.
+
+- type: loadout
+  id: PersonalItemRufflerMask
+  storage:
+    back:
+    - PersonalItemRufflerMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "Chris Ruffler"

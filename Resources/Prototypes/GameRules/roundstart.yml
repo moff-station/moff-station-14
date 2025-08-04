@@ -20,16 +20,15 @@
   components:
   - type: SubGamemodes
     rules:
+    # Moffstation - Start
     - id: Thief
-      prob: 0.4
-    # Harmony start
+      prob: 0.3
     - id: BloodBrothers
-      prob: 0.4
-    # Harmony end
-    # Moffstation Start
+      prob: 0.3
+    - id: SyndicateListeningOutpost
+      prob: 0.20
     - id: Pirates
-      prob: 0.2
-    # Moffstation end
+      prob: 0.15
     - id: SubWizard
       prob: 0.05
 
@@ -40,13 +39,14 @@
   - type: SubGamemodes
     rules:
     - id: Thief
-      prob: 0.4
-    # Moffstation start
+      prob: 0.3
     - id: BloodBrothers
-      prob: 0.4
+      prob: 0.3
+    - id: SyndicateListeningOutpost
+      prob: 0.2
     - id: Pirates
       prob: 0.2
-    # Moffstation end
+    # Moffstation - End
 
 - type: entity
   parent: BaseGameRule
@@ -288,7 +288,7 @@
     - WizardSurviveObjective
     - WizardDemonstrateObjective
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/wizard.yml
+    mapPath: /Maps/Nonstations/wizardsden.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule

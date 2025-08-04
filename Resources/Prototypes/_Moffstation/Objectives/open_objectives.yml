@@ -7,8 +7,6 @@
 # 3. non-condition components
 # 4. the condition component
 
-#syndies
-
 # Open-ended objective to disrupt a certain department
 - type: entity
   parent: BaseTraitorObjective
@@ -21,10 +19,14 @@
     icon:
       sprite: Objects/Tools/jaws_of_life.rsi
       state: jaws_pry
-  - type: TargetDepartment
+  - type: LocationObjective
     title: objective-condition-disrupt-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
+  - type: EscapeShuttleCondition
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds
 
 # Open-ended objective to sabotage a certain department
 - type: entity
@@ -34,31 +36,60 @@
   description: We need you to sabotage this department's activities.
   components:
   - type: Objective
-    difficulty: 1.8
+    difficulty: 1.5
     icon:
       sprite: Objects/Tools/emag.rsi
       state: icon
-  - type: TargetDepartment
+  - type: LocationObjective
     title: objective-condition-sabotage-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
+  - type: EscapeShuttleCondition
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds
 
-# Open-ended objective to infiltrate a department
+# Open-ended objective to trash a specific room
 - type: entity
   parent: BaseTraitorObjective
-  id: InfiltrateObjective
-  name: Infiltrate Department
-  description: We need you to infiltrate this department and disrupt their activities.
+  id: TrashRoomObjective
+  name: Trash Room
+  description: We need you trash this room, make sure it doesnt pass a health inspection.
   components:
   - type: Objective
     difficulty: 1.5
     icon:
-      sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
+      sprite: Objects/Specific/Janitorial/trashbag.rsi
+      state: icon-3
+  - type: LocationObjective
+    title: objective-condition-trash-room
+  - type: PickRoomObjective
+  - type: EscapeShuttleCondition
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds
+
+# Open-ended objective to claim a room for the syndicate
+- type: entity
+  parent: BaseTraitorObjective
+  id: ClaimLocationObjective
+  name: Claim Location
+  description: We need you to claim this room for the syndicate.
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Objects/Misc/Handy_Flags/syndie_handy_flag.rsi
       state: icon
-  - type: TargetDepartment
-    title: objective-condition-infiltrate-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: LocationObjective
+    title: objective-condition-claim-room
+  - type: PickRoomObjective
+  - type: EscapeShuttleCondition
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds
 
 # Open-ended objective to cause/setup a Jailbreak
 - type: entity
@@ -67,12 +98,111 @@
   description: It doesn't matter who was locked up or why, we just need you to keep the jails empty.
   components:
   - type: Objective
-    difficulty: 2.0
+    difficulty: 1.5
     icon:
       sprite: Objects/Tools/access_breaker.rsi
       state: icon
   - type: SimpleObjective
     title: objective-condition-jailbreak
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds
+
+## teach someone a lesson without killing them permanently
+- type: entity
+  parent: BaseTraitorObjective
+  id: TeachLessonObjective
+  description: We want you to teach them a lesson, but we need them alive.
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Objects/Weapons/Melee/baseball_bat.rsi
+      state: icon
+  - type: TargetObjective
+    title: objective-condition-teach-lesson
+  - type: PickRandomPerson
+  - type: EscapeShuttleCondition
+
+## gather intel on someone
+- type: entity
+  parent: BaseTraitorObjective
+  id: GatherIntelObjective
+  description: We need you to gather intel on this person, collect any information you can find about them.
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Clothing/Head/Hats/brownfedora.rsi
+      state: icon
+  - type: TargetObjective
+    title: objective-condition-gather-intel
+  - type: PickRandomPerson
+  - type: EscapeShuttleCondition
+
+# Open-ended objective to leave a calling card
+- type: entity
+  parent: BaseTraitorObjective
+  id: LeaveCallingCardObjective
+  name: Leave a Calling Card
+  description: Let them know who did it.
+  components:
+  - type: Objective
+    difficulty: 1.2
+    icon:
+      sprite: Objects/Misc/bureaucracy.rsi
+      state: syndicate_card
+    unique: true # only one person needs to really send a message.
+  - type: SimpleObjective
+    title: objective-condition-leave-card
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - SimpleObjective # put this on top of regular objectives
+
+# Open-ended objective to drop a calling card on somebody
+- type: entity
+  parent: BaseTraitorObjective
+  id: LeaveCallingCardOnPersonObjective
+  name: Leave a Warning
+  description: This person has stepped out of line, give them a reminder.
+  components:
+  - type: Objective
+    difficulty: 1.2
+    icon:
+      sprite: Objects/Misc/bureaucracy.rsi
+      state: syndicate_card
+    unique: true # only one person needs to really leave a warning.
+  - type: TargetObjective
+    title: objective-condition-leave-card-on-person
+  - type: PickRandomPerson
+  - type: EscapeShuttleCondition
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - SimpleObjective
+
+# Disabling, as people tend not to like this one
+# Open-ended objective to infiltrate a department
+#- type: entity
+#  parent: BaseTraitorObjective
+#  id: InfiltrateObjective
+#  name: Infiltrate Department
+#  description: Pretend to be part of this department, and disrupt them from the inside.
+#  components:
+#  - type: Objective
+#    difficulty: 1.5
+#    icon:
+#      sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
+#      state: icon
+#  - type: LocationObjective
+#    title: objective-condition-infiltrate-department
+#  - type: PickDepartmentObjective
+#  - type: ObjectiveBlacklistRequirement
+#    blacklist:
+#      components:
+#      - DepartmentObjective # dont combine with other open endeds
 
 ## Open-ended objective to distract security
 # - type: entity
@@ -87,22 +217,6 @@
 #       state: icon
 #   - type: SimpleObjective
 #     title: objective-condition-distract-sec
-
-## teach someone a lesson without killing them permanently
-- type: entity
-  parent: BaseTraitorObjective
-  id: TeachLessonObjective
-  description: We want you to teach them a lesson, but we need them alive
-  components:
-  - type: Objective
-    difficulty: 1.5
-    icon:
-      sprite: Objects/Weapons/Melee/baseball_bat.rsi
-      state: icon
-  - type: TargetObjective
-    title: objective-condition-teach-lesson
-  - type: PickRandomPerson
-  - type: GreytextObjective
 
 # Removing temporarily until we implement a method to target non-heads
 # # Incriminate objective, attempt to get someone else arrested by security
@@ -119,50 +233,7 @@
 #   - type: TargetObjective
 #     title: objective-condition-incriminate
 #   - type: PickRandomPerson
-#   - type: GreytextObjective
-
-# Open-ended objective to leave a calling card
-- type: entity
-  parent: BaseTraitorObjective
-  id: LeaveCallingCardObjective
-  name: Leave a Calling Card
-  description: Let them know who did it.
-  components:
-  - type: Objective
-    difficulty: 0.5
-    icon:
-      sprite: Objects/Misc/bureaucracy.rsi
-      state: syndicate_card
-    unique: true # only one person needs to really send a message.
-  - type: SimpleObjective
-    title: objective-condition-leave-card
-  - type: GreytextObjective
-  - type: ObjectiveBlacklistRequirement
-    blacklist:
-      components:
-      - GreytextObjective # put this on top of regular objectives
-
-# Open-ended objective to drop a calling card on somebody
-- type: entity
-  parent: BaseTraitorObjective
-  id: LeaveCallingCardOnPersonObjective
-  name: Leave a Warning
-  description: This person has stepped out of line, give them a reminder.
-  components:
-  - type: Objective
-    difficulty: 0.8
-    icon:
-      sprite: Objects/Misc/bureaucracy.rsi
-      state: syndicate_card
-    unique: true # only one person needs to really leave a warning.
-  - type: TargetObjective
-    title: objective-condition-leave-card-on-person
-  - type: PickRandomPerson
-  - type: GreytextObjective
-  - type: ObjectiveBlacklistRequirement
-    blacklist:
-      components:
-      - GreytextObjective
+#   - type: EscapeShuttleCondition
 
 # thieves
 
@@ -205,24 +276,30 @@
     icon:
       sprite: Clothing/Hands/Gloves/Color/black.rsi
       state: icon
-  - type: TargetDepartment
+  - type: LocationObjective
     title: objective-condition-rob-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds
 
 # Open-ended objective to infiltrate a department, thief addition
 - type: entity
   parent: BaseThiefObjective
   id: InfiltrateThiefObjective
   name: Infiltrate Department
-  description: We need you to infiltrate this department and disrupt their activities.
+  description: Pretend to be part of this department, and steal all their stuff.
   components:
   - type: Objective
     difficulty: 1.5
     icon:
       sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
       state: icon
-  - type: TargetDepartment
+  - type: LocationObjective
     title: objective-condition-infiltrate-department
-  - type: DisruptionObjective
-  - type: PickRandomDepartment
+  - type: PickDepartmentObjective
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - LocationObjective # dont combine with other open endeds

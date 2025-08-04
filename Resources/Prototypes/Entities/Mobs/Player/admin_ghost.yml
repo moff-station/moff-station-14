@@ -116,6 +116,8 @@
     consoleType: Admin
     # Needed for security records console functionality
   - type: CriminalRecordsConsole
+  - type: ExplosionResistance
+    damageCoefficient: 0
 
 - type: entity
   abstract: true

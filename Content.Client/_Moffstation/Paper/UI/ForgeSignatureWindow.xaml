@@ -1,0 +1,8 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            Title="{Loc forged-signature-title}">
+    <BoxContainer Orientation="Vertical" SeparationOverride="4" MinWidth="150" >
+        <Label Name="CurrentSignature" Text="{Loc 'forged-signature-current'}" />
+        <LineEdit Name="SignatureLineEdit" />
+    </BoxContainer>
+</DefaultWindow>

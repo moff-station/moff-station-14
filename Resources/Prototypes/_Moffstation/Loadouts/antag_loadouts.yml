@@ -65,3 +65,12 @@
     back: ClothingBackpackSatchelLeather
     head: ClothingHeadBandBlack
     outerClothing: ClothingOuterCoatPirate
+
+# Syndicate
+- type: roleLoadout
+  id: JobSyndicateSpy
+  canCustomizeName: true
+  groups:
+  - NukieJumpsuit
+  - NukieBackpack
+  - PersonalItemsJobAgnostic

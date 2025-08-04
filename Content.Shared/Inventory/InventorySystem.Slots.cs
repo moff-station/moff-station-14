@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared.DisplacementMap; // Moffstation - Added a method to set displacement maps
 using Content.Shared.Inventory.Events;
 using Content.Shared.Storage;
 using Robust.Shared.Containers;
@@ -43,7 +44,7 @@ public partial class InventorySystem : EntitySystem
                 if (!TryComp<T>(item, out var required))
                     continue;
 
-                if ((((IClothingSlots) required).Slots & slot.SlotFlags) == 0x0)
+                if ((((IClothingSlots)required).Slots & slot.SlotFlags) == 0x0)
                     continue;
 
                 target = (item, required);
@@ -55,20 +56,9 @@ public partial class InventorySystem : EntitySystem
         return false;
     }
 
-    protected virtual void OnInit(EntityUid uid, InventoryComponent component, ComponentInit args)
+    private void OnInit(Entity<InventoryComponent> ent, ref ComponentInit args)
     {
-        if (!_prototypeManager.TryIndex(component.TemplateId, out InventoryTemplatePrototype? invTemplate))
-            return;
-
-        component.Slots = invTemplate.Slots;
-        component.Containers = new ContainerSlot[component.Slots.Length];
-        for (var i = 0; i < component.Containers.Length; i++)
-        {
-            var slot = component.Slots[i];
-            var container = _containerSystem.EnsureContainer<ContainerSlot>(uid, slot.Name);
-            container.OccludesLight = false;
-            component.Containers[i] = container;
-        }
+        UpdateInventoryTemplate(ent);
     }
 
     private void AfterAutoState(Entity<InventoryComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -78,18 +68,31 @@ public partial class InventorySystem : EntitySystem
 
     protected virtual void UpdateInventoryTemplate(Entity<InventoryComponent> ent)
     {
-        if (ent.Comp.LifeStage < ComponentLifeStage.Initialized)
+        if (!_prototypeManager.Resolve(ent.Comp.TemplateId, out var invTemplate))
             return;
 
-        if (!_prototypeManager.TryIndex(ent.Comp.TemplateId, out InventoryTemplatePrototype? invTemplate))
-            return;
+        // Remove any containers that aren't in the new template.
+        foreach (var container in ent.Comp.Containers)
+        {
+            if (invTemplate.Slots.Any(s => s.Name == container.ID))
+                continue;
 
-        DebugTools.Assert(ent.Comp.Slots.Length == invTemplate.Slots.Length);
+            // Empty container before deletion so the contents don't get deleted.
+            // For cases when we update the template while items are already worn.
+            _containerSystem.EmptyContainer(container);
+            _containerSystem.ShutdownContainer(container);
+        }
 
+        // Ensure the containers from the template.
         ent.Comp.Slots = invTemplate.Slots;
-
-        var ev = new InventoryTemplateUpdated();
-        RaiseLocalEvent(ent, ref ev);
+        ent.Comp.Containers = new ContainerSlot[ent.Comp.Slots.Length];
+        for (var i = 0; i < ent.Comp.Containers.Length; i++)
+        {
+            var slot = ent.Comp.Slots[i];
+            var container = _containerSystem.EnsureContainer<ContainerSlot>(ent.Owner, slot.Name);
+            container.OccludesLight = false;
+            ent.Comp.Containers[i] = container;
+        }
     }
 
     private void OnOpenSlotStorage(OpenSlotStorageNetworkMessage ev, EntitySessionEventArgs args)
@@ -195,27 +198,21 @@ public partial class InventorySystem : EntitySystem
     }
 
     /// <summary>
-    /// Change the inventory template ID an entity is using. The new template must be compatible.
+    /// Change the inventory template ID an entity is using
+    /// and drop any item that does not have a slot according to the new template.
+    /// This will update the client-side UI accordingly.
     /// </summary>
     /// <remarks>
-    /// <para>
-    /// For an inventory template to be compatible with another, it must have exactly the same slot names.
-    /// All other changes are rejected.
-    /// </para>
     /// </remarks>
     /// <param name="ent">The entity to update.</param>
     /// <param name="newTemplate">The ID of the new inventory template prototype.</param>
-    /// <exception cref="ArgumentException">
-    /// Thrown if the new template is not compatible with the existing one.
-    /// </exception>
     public void SetTemplateId(Entity<InventoryComponent> ent, ProtoId<InventoryTemplatePrototype> newTemplate)
     {
-        var newPrototype = _prototypeManager.Index(newTemplate);
-
-        if (!newPrototype.Slots.Select(x => x.Name).SequenceEqual(ent.Comp.Slots.Select(x => x.Name)))
-            throw new ArgumentException("Incompatible inventory template!");
+        if (ent.Comp.TemplateId == newTemplate)
+            return;
 
         ent.Comp.TemplateId = newTemplate;
+        UpdateInventoryTemplate(ent);
         Dirty(ent);
     }
 
@@ -231,12 +228,12 @@ public partial class InventorySystem : EntitySystem
         private int _nextIdx = 0;
         public static InventorySlotEnumerator Empty = new(Array.Empty<SlotDefinition>(), Array.Empty<ContainerSlot>());
 
-        public InventorySlotEnumerator(InventoryComponent inventory,  SlotFlags flags = SlotFlags.All)
+        public InventorySlotEnumerator(InventoryComponent inventory, SlotFlags flags = SlotFlags.All)
             : this(inventory.Slots, inventory.Containers, flags)
         {
         }
 
-        public InventorySlotEnumerator(SlotDefinition[] slots, ContainerSlot[] containers,  SlotFlags flags = SlotFlags.All)
+        public InventorySlotEnumerator(SlotDefinition[] slots, ContainerSlot[] containers, SlotFlags flags = SlotFlags.All)
         {
             DebugTools.Assert(flags != SlotFlags.NONE);
             DebugTools.AssertEqual(slots.Length, containers.Length);
@@ -308,4 +305,18 @@ public partial class InventorySystem : EntitySystem
             return false;
         }
     }
+
+    // Moffstation - Start - Allow the ability to set displacements on an inventory
+    /// <summary>
+    /// Sets the base displacements for this entity's inventory component.
+    /// </summary>
+    public void SetDisplacements(Entity<InventoryComponent?> entity,
+        Dictionary<string, DisplacementData> newDisplacements)
+    {
+        if (!Resolve(entity, ref entity.Comp))
+            return;
+        entity.Comp.Displacements = newDisplacements;
+        Dirty(entity);
+    }
+    // Moffstation - End
 }
