@@ -20,7 +20,7 @@
     selectionTime: PrePlayerSpawn
     definitions:
     - prefRoles: [ PirateCaptain ]
-      fallbackRoles: [ Pirate ]
+      fallbackRoles: [ PirateCrew ]
       spawnerPrototype: SpawnPointPirateCaptain
       startingGear: PirateCaptainGear
       roleLoadout:
@@ -41,7 +41,7 @@
         - Pirate
       mindRoles:
       - MindRolePirateCaptain
-    - prefRoles: [ Pirate ]
+    - prefRoles: [ PirateCrew ]
       fallbackRoles: [ PirateCaptain ]
       spawnerPrototype: SpawnPointPirateCrew
       min: 2
