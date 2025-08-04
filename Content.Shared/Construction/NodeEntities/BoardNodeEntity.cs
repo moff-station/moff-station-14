@@ -14,6 +14,11 @@ public sealed partial class BoardNodeEntity : IGraphNodeEntity
 {
     [DataField("container")] public string Container { get; private set; } = string.Empty;
 
+    // Moffstation - Start - Enable blade server construction
+    [DataField]
+    public bool BladeServer;
+    // Moffstation - End
+
     public string? GetId(EntityUid? uid, EntityUid? userUid, GraphNodeEntityArgs args)
     {
         if (uid == null)
@@ -29,7 +34,7 @@ public sealed partial class BoardNodeEntity : IGraphNodeEntity
 
         // There should not be a case where both of these components exist on the same entity...
         if (args.EntityManager.TryGetComponent(board, out MachineBoardComponent? machine))
-            return machine.Prototype;
+            return BladeServer ? machine.BladeServerPrototype : machine.Prototype; // Moffstation - Blade Server construction
 
         if (args.EntityManager.TryGetComponent(board, out ComputerBoardComponent? computer))
             return computer.Prototype;
