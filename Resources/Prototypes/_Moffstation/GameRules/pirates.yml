@@ -42,11 +42,11 @@
       mindRoles:
       - MindRolePirateCaptain
     - prefRoles: [ Pirate ]
-      fallbackRoles: [ PirateCaptain, PirateMedic ]
+      fallbackRoles: [ PirateCaptain ]
       spawnerPrototype: SpawnPointPirateCrew
-      min: 3
-      max: 4
-      playerRatio: 10
+      min: 2
+      max: 3
+      playerRatio: 15
       startingGear: PirateGear
       roleLoadout:
       - RoleSurvivalNukie
