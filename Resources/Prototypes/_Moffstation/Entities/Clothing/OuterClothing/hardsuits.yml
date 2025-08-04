@@ -83,9 +83,9 @@
   description: A suit fabled to have been worn by Davy Jones' himself
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/cybersun.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/davyjones.rsi
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/cybersun.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/davyjones.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.2
     lowPressureMultiplier: 1000
@@ -110,7 +110,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitPirateDavyJones
   - type: Tag
     tags:
-    - MonkeyWearable
     - Hardsuit
     - WhitelistChameleon
 
