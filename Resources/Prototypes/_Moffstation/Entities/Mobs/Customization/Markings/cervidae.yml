@@ -12,6 +12,157 @@
     - sprite: _Moffstation/Mobs/Customization/Cervidae/ear_markings.rsi
       state: Cervid-inner
 
+# HeadTop Markings
+- type: marking
+  id: CervidAntelopHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_antelope
+
+- type: marking
+  id: CervidBigHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_big
+
+- type: marking
+  id: CervidChitalHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_chital
+
+- type: marking
+  id: CervidDevilHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_devil
+
+- type: marking
+  id: CervidElkHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_elk
+
+- type: marking
+  id: CervidFallowHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_fallow
+
+- type: marking
+  id: CervidLongHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_long
+
+- type: marking
+  id: CervidMooseHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_moose
+
+- type: marking
+  id: CervidMuleHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_mule
+
+- type: marking
+  id: CervidPuduHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_pudu
+
+- type: marking
+  id: CervidReindeerHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_reindeer
+
+- type: marking
+  id: CervidRoeHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_roe
+
+- type: marking
+  id: CervidShedHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_shed
+
+- type: marking
+  id: CervidSikaHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_sika
+
+- type: marking
+  id: CervidWhiteTailHeadTop
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  canBeDisplaced: True
+  speciesRestriction: [ Cervidae ]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervid_horn_markings.rsi
+      state: cervid_horns_white-tail
+
 # Head Markings (Snout)
 - type: marking
   id: CervidSnoutAlt
@@ -46,13 +197,13 @@
 
 # Body Markings (Chest)
 - type: marking
-  id: CervidBellyCrest
+  id: CervidBellyFade
   bodyPart: Chest
   markingCategory: Chest
   speciesRestriction: [ Cervidae ]
   sprites:
     - sprite: _Moffstation/Mobs/Customization/Cervidae/body_markings.rsi
-      state: belly_crest
+      state: belly_fade
 
 # Leg Markings
 - type: marking

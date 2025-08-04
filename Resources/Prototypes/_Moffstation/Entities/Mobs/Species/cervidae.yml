@@ -5,8 +5,6 @@
   id: BaseMobCervidae
   name: Urist McDeer
   components:
-  - type: HumanoidAppearance
-    species: Cervidae
   - type: Hunger
   - type: Inventory # Allows cervids to wear properly shaped helmets and other clothing. When displacement maps happen this might need to change.
     speciesId: cervidae
@@ -92,8 +90,8 @@
     - map: [ "back" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
-    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "mask" ]
     - map: [ "head" ]
@@ -103,6 +101,14 @@
       sprite: "Effects/creampie.rsi"
       state: "creampie_cervidae"
       visible: false
+    - type: HumanoidAppearance
+      speciesId: Cervidae
+      markingsDisplacements:
+        HeadTop:
+          sizeMaps:
+            32:
+              sprite: _Moffstation/Mobs/Species/Cervidae/displacement.rsi
+              state: horn
 
 - type: entity
   parent: BaseSpeciesDummy

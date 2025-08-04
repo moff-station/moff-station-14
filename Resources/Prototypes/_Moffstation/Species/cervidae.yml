@@ -42,6 +42,10 @@
     FacialHair:
       points: 1
       required: false
+    HeadTop:
+      points: 1
+      required: false
+      #defaultMarkings: [ CervidMuleHorn ]
     Tail:
       points: 1
       required: false
@@ -58,10 +62,6 @@
     Snout:
       points: 1
       required: false
-    HeadTop:
-      points: 1
-      required: false
-      #defaultMarkings: [ VulpEar ]
 
 - type: humanoidBaseSprite
   id: MobCervidaeHead
