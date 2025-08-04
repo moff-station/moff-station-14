@@ -21,3 +21,40 @@
   - Streamer2
   - Streamer3
   obeysTo: laws-owner-streamer-audience
+
+# Pirate laws
+
+- type: siliconLaw
+  id: Pirate1
+  order: 1
+  lawString: law-pirate-1
+
+- type: siliconLaw
+  id: Pirate2
+  order: 2
+  lawString: law-pirate-2
+
+- type: siliconLaw
+  id: Pirate3
+  order: 3
+  lawString: law-pirate-3
+
+- type: siliconLaw
+  id: Pirate4
+  order: 4
+  lawString: law-pirate-4
+
+- type: siliconLaw
+  id: Pirate5
+  order: 5
+  lawString: law-pirate-5
+
+- type: siliconLawset
+  id: PirateLawset
+  laws:
+  - Pirate1
+  - Pirate2
+  - Pirate3
+  - Pirate4
+  - Pirate5
+  obeysTo: laws-owner-crew
