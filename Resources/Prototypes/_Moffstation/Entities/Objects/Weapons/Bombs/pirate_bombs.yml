@@ -14,9 +14,12 @@
     explosionType: DemolitionCharge
     totalIntensity: 60
     intensitySlope: 3
-    maxIntensity: 20
+    maxIntensity: 15
     canCreateVacuum: false
-  - type: OnUseTimerTrigger
+  - type: TimerTrigger
+    keysIn:
+    - trigger
+    - stuck
     delay: 10
     delayOptions: [ 10, 30 ]
     initialBeepDelay: 0
