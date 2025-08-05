@@ -8,18 +8,10 @@
     sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
   - type: Gun
     fireRate: 1
-  - type: Battery
-    maxCharge: 3000
-    startingCharge: 3000
-  - type: BatterySelfRecharger
-    autoRecharge: true
-    autoRechargeRate: 100
   - type: AmmoCounter
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
-  - type: ProjectileBatteryAmmoProvider
-    proto: ShellShotgun
-    fireCost: 1000
-  - type: BallisticAmmoProvider
-    capacity: 0
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 5s
+    affectedByEmp: true
