@@ -22,7 +22,6 @@
   description: Contains the collective knowledge of the station's scientists. Destroying it would send them back to the stone age. You don't want that do you?
   components:
   - type: BladeServer
-    board: ResearchAndDevelopmentServerMachineCircuitboard
     stripeColor: "#A331B9FF"
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/blade_server.rsi
@@ -40,19 +39,7 @@
       visible: false
       map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
   - type: Item
-  - type: ResearchServer
-  - type: TechnologyDatabase
-    supportedDisciplines:
-    - Industrial
-    - Arsenal
-    - Experimental
-    - CivilianServices
-  - type: ApcPowerReceiver
-    powerLoad: 200
-  - type: ExtensionCableReceiver
   - type: InnerCableReceiver
-  - type: WiresPanel
-  - type: WiresVisuals
   - type: Machine
     board: ResearchAndDevelopmentServerMachineCircuitboard
   - type: Destructible
@@ -77,13 +64,3 @@
           SheetSteel1:
             min: 1
             max: 2
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
-  - type: GuideHelp
-    guides:
-    - Science

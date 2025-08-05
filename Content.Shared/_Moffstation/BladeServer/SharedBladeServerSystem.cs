@@ -332,7 +332,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     /// <param name="entity"></param>
     private void ClearSlots(Entity<BladeServerRackComponent, ItemSlotsComponent?> entity)
     {
-        if (!Resolve(entity, ref entity.Comp2))
+        if (!TryComp(entity, out entity.Comp2))
             return;
 
         foreach (var slot in entity.Comp1.BladeSlots)
