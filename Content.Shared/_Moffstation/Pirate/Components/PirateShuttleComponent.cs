@@ -24,5 +24,5 @@ public sealed partial class PirateShuttleComponent : Component
 public sealed partial class PirateStationComponent : Component
 {
     [DataField]
-    public NetEntity AssociatedRule;
+    public NetEntity? AssociatedRule;
 }
