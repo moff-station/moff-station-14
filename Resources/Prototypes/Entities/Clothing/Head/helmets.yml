@@ -31,15 +31,15 @@
 - type: entity
   parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
   id: ClothingHeadHelmetBasic
-  name: security helmet # Moffstation - (New Security Helmets)
-  description: Standard security gear. Protects the head from impacts, and comes with a detachable visor.
-  components:
   # Moffstation - Begin (New Security Helmets) - all changes to this prototype can be overwritten by upstream once #38108 on upstream is merged.
+  name: security helmet
+  description: A modern, tight helmet, it provides decent protection against most forms of attack, and comes with a detachable visor. A staple of the classic security officer look.
+  components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security.rsi
     layers:
-    - state: lowered-icon
     - state: raised-icon
+    - state: lowered-icon
       visible: false
       map: [ "visor" ]
   - type: Clothing
