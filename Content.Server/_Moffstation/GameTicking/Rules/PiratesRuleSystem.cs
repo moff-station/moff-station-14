@@ -66,7 +66,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
                 // Give the station component a reference to this rule for later reference
                 if (!TryComp<PirateStationComponent>(ent.Comp.AssociatedStation, out var stationComp))
                     return;
-                stationComp.AssociatedRule = ent.Owner;
+                stationComp.AssociatedRule = GetNetEntity(ent.Owner);
 
                 //Turns the pirate shuttle into a trade station, so that it's buy/sell pads are functional
                 EnsureComp<TradeStationComponent>(uid);
@@ -80,7 +80,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
     private void OnBalanceUpdated(Entity<PirateStationComponent> ent, ref BankBalanceUpdatedEvent args)
     {
         // Make sure the station in question is the one associated with this rule
-        if (!TryComp<PiratesRuleComponent>(ent.Comp.AssociatedRule, out var rule) ||
+        if (!TryComp<PiratesRuleComponent>(GetEntity(ent.Comp.AssociatedRule), out var rule) ||
             rule.AssociatedStation != ent.Owner)
             return;
 
