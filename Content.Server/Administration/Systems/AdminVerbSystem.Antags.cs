@@ -39,7 +39,7 @@ public sealed partial class AdminVerbSystem
 
     // Moffstation - Start - Custom antags
     [ValidatePrototypeId<EntityPrototype>]
-    private static readonly EntProtoId DefaultPirateRule = "Pirates";
+    private static readonly EntProtoId<PiratesRuleComponent> DefaultPirateRule = "Pirates";
 
     [ValidatePrototypeId<EntityPrototype>]
     private static readonly EntProtoId DefaultVampireRule = "Vampire";

@@ -80,10 +80,8 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
     private void OnBalanceUpdated(Entity<PirateStationComponent> ent, ref BankBalanceUpdatedEvent args)
     {
         // Make sure the station in question is the one associated with this rule
-        if (!TryComp<PiratesRuleComponent>(ent.Comp.AssociatedRule, out var rule))
-            return;
-
-        if (rule.AssociatedStation != ent.Owner)
+        if (!TryComp<PiratesRuleComponent>(ent.Comp.AssociatedRule, out var rule) ||
+            rule.AssociatedStation != ent.Owner)
             return;
 
         // Compare current balance to the previous balance, if we earned money, add it to the total

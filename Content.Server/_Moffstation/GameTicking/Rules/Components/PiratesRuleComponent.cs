@@ -19,7 +19,7 @@ public sealed partial class PiratesRuleComponent : Component
     };
 
     /// <summary>
-    /// The station associated with this rule
+    /// The pirate station associated with this rule
     /// </summary>
     [DataField]
     public EntityUid AssociatedStation;
