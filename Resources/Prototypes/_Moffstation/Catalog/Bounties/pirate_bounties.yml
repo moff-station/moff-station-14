@@ -144,7 +144,7 @@
 
 - type: cargoBounty
   id: PirateBountyInstruments
-  reward: 2000
+  reward: 1000
   description: bounty-description-instruments
   idPrefix: WC
   group: Pirates
@@ -260,19 +260,6 @@
     whitelist:
       tags:
       - Magboots
-
-- type: cargoBounty
-  id: PirateBountyTools
-  reward: 4500
-  description: bounty-description-tools
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-tools
-    amount: 4
-    whitelist:
-      components:
-      - Tool
 
 - type: cargoBounty
   id: PirateBountyFaxmachine
