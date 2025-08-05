@@ -74,6 +74,10 @@
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
+      blade-server-rack-slot-0: !type:ContainerSlot
+      blade-server-rack-slot-1: !type:ContainerSlot
+      blade-server-rack-slot-2: !type:ContainerSlot
+      blade-server-rack-slot-3: !type:ContainerSlot
   - type: ActivatableUI
     key: enum.BladeServerRackUiKey.Key
   - type: UserInterface
