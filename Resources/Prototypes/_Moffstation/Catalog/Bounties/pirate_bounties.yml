@@ -210,19 +210,6 @@
       - TelecomServer
 
 - type: cargoBounty
-  id: PirateBountyMetalRod
-  reward: 4000
-  description: bounty-description-metal-rod
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-metal-rod
-    amount: 90
-    whitelist:
-      tags:
-      - MetalRod
-
-- type: cargoBounty
   id: PirateBountyGoldBars
   reward: 6500
   description: bounty-description-gold-bars
