@@ -133,6 +133,7 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
+  - CaptainCape
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -384,17 +385,6 @@
   minLimit: 0
   loadouts:
   - ChaplainNeck
-
-- type: loadoutGroup
-  id: ChaplainBible
-  name: loadout-group-chaplain-bible
-  minLimit: 1
-  loadouts:
-  - Bible
-  - BibleDruid
-  - BibleNanoTrasen
-  - BibleSatanic
-  - BibleTanakh
 
 - type: loadoutGroup
   id: JanitorHead
