@@ -36,6 +36,7 @@ internal sealed class AdminNameOverlay : Overlay
     private float _ghostHideDistance;
     private int _overlayStackMax;
     private float _overlayMergeDistance;
+    private bool _displayWatchlist; // Moffstation
 
     //TODO make this adjustable via GUI?
     private static readonly FrozenSet<ProtoId<RoleTypePrototype>> Filter =
@@ -75,6 +76,8 @@ internal sealed class AdminNameOverlay : Overlay
         config.OnValueChanged(CCVars.AdminOverlayGhostFadeDistance, (f) => { _ghostFadeDistance = f; }, true);
         config.OnValueChanged(CCVars.AdminOverlayStackMax, (i) => { _overlayStackMax = i; }, true);
         config.OnValueChanged(CCVars.AdminOverlayMergeDistance, (f) => { _overlayMergeDistance = f; }, true);
+        // Moffstation
+        config.OnValueChanged(CCVars.AdminOverlayShowWatchlist, (show) => { _displayWatchlist = show; }, true);
     }
 
     private AdminOverlayAntagFormat UpdateOverlayFormat(string formatString)

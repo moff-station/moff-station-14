@@ -120,4 +120,11 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<int> AdminOverlayStackMax =
         CVarDef.Create("ui.admin_overlay_stack_max", 3, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// The maximum size that an overlay stack can reach. Additional overlays will be superimposed over the last one.
+    /// </summary>
+    public static readonly CVarDef<bool> AdminOverlayShowWatchlist =
+    CVarDef.Create("ui.admin_overlay_show_watchlist", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
 }
