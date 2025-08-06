@@ -100,7 +100,7 @@
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
     - map: [ "clownedon" ]
-      sprite: "Effects/creampie.rsi"
+      sprite: "_Moffstation/Effects/creampie.rsi"
       state: "creampie_cervidae"
       visible: false
     - type: HumanoidAppearance
@@ -113,6 +113,19 @@
             32:
               sprite: _Moffstation/Mobs/Species/Cervidae/displacement.rsi
               state: horn
+    - type: Inventory
+    speciesID: Cervidae
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: jumpsuit
+      eyes:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Species/Cervidae/displacement.rsi
+            state: eyes
 
 - type: entity
   parent: BaseSpeciesDummy
