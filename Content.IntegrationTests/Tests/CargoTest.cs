@@ -21,9 +21,11 @@ public sealed class CargoTest
     private static readonly HashSet<ProtoId<CargoProductPrototype>> Ignored =
     [
         // This is ignored because it is explicitly intended to be able to sell for more than it costs.
+        // Moffstation - Start - test fixes
         new("FunCrateGambling"),
         new("PirateSyndicateSurplusBundle"),
         new("PirateGrandLottery")
+        // Moffstation - End
     ];
 
     [Test]
