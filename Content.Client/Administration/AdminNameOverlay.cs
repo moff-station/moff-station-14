@@ -236,6 +236,17 @@ internal sealed class AdminNameOverlay : Overlay
                     break;
             }
 
+            // Moffstation - Start - Visible watchlist indicator
+            // Watchlist status
+            if (playerInfo.HasWatchlist && _displayWatchlist)
+            {
+                color = Color.MediumPurple;
+                color.A = alpha;
+                args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, Loc.GetString("admin-note-editor-type-watchlist"), uiScale, playerInfo.Connected ? color : colorDisconnected);
+                currentOffset += lineoffset;
+            }
+            // Moffstation - End
+
             // Determine antag/role type name
             string? text;
             switch (_overlayFormat)
@@ -269,6 +280,7 @@ internal sealed class AdminNameOverlay : Overlay
                 : text;
             args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, label, uiScale, color);
             currentOffset += lineoffset;
+
 
             //Save the coordinates and size of the text block, for stack merge check
             drawnOverlays.Add((screenCoordinatesCenter, currentOffset));
