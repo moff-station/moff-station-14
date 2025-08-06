@@ -225,27 +225,6 @@
     - sprite: _Moffstation/Mobs/Customization/Cervidae/body_markings.rsi
       state: points_hands
 
-# Hairs
-- type: marking
-  id: CervidHairAdhara
-  bodyPart: Hair
-  speciesRestriction: [ Cervidae ]
-  markingCategory: Hair
-  sprites:
-    - sprite: _Moffstation/Mobs/Customization/Cervidae/hair.rsi
-      state: adhara
-
-# Facial Hairs
-- type: marking
-  id: CervidFacialHairRuff
-  bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Cervidae ]
-  sprites:
-    - sprite: _Moffstation/Mobs/Customization/Cervidae/facial_hair.rsi
-      state: ruff
-
-
 # Animated Markings (if i can be fucked)
 - type: marking
   id: CervidTailAnimated

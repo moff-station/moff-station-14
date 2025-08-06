@@ -18,6 +18,8 @@
     Head: MobCervidaeHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
     Chest: MobCervidaeTorso
     HeadTop: MobHumanoidAnyMarking
@@ -35,6 +37,7 @@
 
 - type: markingPoints
   id: MobCervidaeMarkingLimits
+  onlyWhitelisted: true
   points:
     Hair:
       points: 1
@@ -54,6 +57,12 @@
       points: 3
       required: false
     Legs:
+      points: 1
+      required: false
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
       points: 1
       required: false
     Arms:
