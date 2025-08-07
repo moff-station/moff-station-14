@@ -1,0 +1,98 @@
+# Long range consoles
+- type: entity
+  parent: ComputerMedicalRecords
+  id: ComputerMedicalRecordsLongRange
+  name: medical records computer
+  suffix: long-range
+  description: This can be used to check medical records.
+  components:
+  - type: CharacterRecordConsole
+    longRange: true
+
+- type: entity
+  parent: ComputerTabletopMedicalRecords
+  id: ComputerTabletopMedicalRecordsLongRange
+  name: medical records computer
+  suffix: long-range, tabletop
+  description: This can be used to check medical records.
+  components:
+  - type: CharacterRecordConsole
+    longRange: true
+
+- type: entity
+  parent: ComputerCriminalRecords
+  id: ComputerCriminalRecordsLongRange
+  name: criminal records computer
+  suffix: long-range
+  description: This can be used to check medical records.
+  components:
+  - type: CharacterRecordConsole
+    longRange: true
+
+- type: entity
+  parent: ComputerTabletopCriminalRecords
+  id: ComputerTabletopCriminalRecordsLongRange
+  name: criminal records computer
+  suffix: long-range, tabletop
+  description: This can be used to check medical records.
+  components:
+  - type: CharacterRecordConsole
+    longRange: true
+
+- type: entity
+  parent: ComputerStationRecords
+  id: ComputerStationRecordsLongRange
+  name: station records computer
+  suffix: long-range
+  description: This can be used to check medical records.
+  components:
+  - type: CharacterRecordConsole
+    longRange: true
+
+- type: entity
+  parent: ComputerTabletopStationRecords
+  id: ComputerTabletopStationRecordsLongRange
+  name: station records computer
+  suffix: long-range, tabletop
+  description: This can be used to check medical records.
+  components:
+  - type: CharacterRecordConsole
+    longRange: true
+
+- type: entity
+  parent: ComputerCrewMonitoring
+  id: ComputerCrewMonitoringLongRange
+  name: crew monitoring console
+  suffix: long-range
+  description: Used to monitor active health sensors built into most of the crew's uniforms.
+  components:
+  - type: LongRangeCrewMonitor
+
+- type: entity
+  parent: ComputerTabletopCrewMonitoring
+  id: ComputerTabletopCrewMonitoringLongRange
+  name: crew monitoring console
+  suffix: long-range, tabletop
+  description: Used to monitor active health sensors built into most of the crew's uniforms.
+  components:
+  - type: LongRangeCrewMonitor
+
+- type: entity
+  parent: ComputerSurveillanceCameraMonitor
+  id: ComputerSurveillanceCameraMonitorLongRange
+  name: camera monitor
+  suffix: long-range
+  description: A surveillance camera monitor. You're watching them. Maybe.
+  components:
+  - type: WirelessNetworkConnection
+    range: 10000
+
+- type: entity
+  parent: ComputerTabletopSurveillanceCameraMonitor
+  id: ComputerTabletopSurveillanceCameraMonitorLongRange
+  name: camera monitor
+  suffix: long-range, tabletop
+  description: A surveillance camera monitor. You're watching them. Maybe.
+  components:
+  - type: WirelessNetworkConnection
+    range: 10000

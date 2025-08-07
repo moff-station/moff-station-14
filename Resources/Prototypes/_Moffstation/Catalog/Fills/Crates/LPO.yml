@@ -1,0 +1,12 @@
+- type: entity
+  parent: CrateSyndicate
+  id: CrateSyndicateLPO
+  name: advanced forgery supplies crate
+  suffix: LPO
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FilingCabinetFillTableLPO
+        rolls: !type:ConstantNumberSelector
+          value: 3

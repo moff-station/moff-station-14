@@ -64,6 +64,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", // Contains EXP-320g "Friendship"
             "/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", // Variant of grimebreaker
             "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
+            "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
         };
 
         private static readonly string[] GameMaps =
@@ -96,6 +97,7 @@ namespace Content.IntegrationTests.Tests
             "Meta",
             "MW-Dock",
             "CS-Dust2",
+            "Frezon",
             // Moffstation - End
         };
 

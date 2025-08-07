@@ -81,7 +81,7 @@ public sealed class AbilityGlareSystem : EntitySystem
             if (knockdown)
                 _stuns.TryKnockdown(target, user.Comp.KnockdownTime, false);
             if (stun)
-                _stuns.TryStun(target, user.Comp.StunTime, false);
+                _stuns.TryAddStunDuration(target, user.Comp.StunTime);
             _stamina.TakeStaminaDamage(target, damage);
         }
     }

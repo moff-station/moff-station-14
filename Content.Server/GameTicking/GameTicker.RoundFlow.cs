@@ -349,6 +349,15 @@ namespace Content.Server.GameTicking
             return total;
         }
 
+        // Moffstation - Start - Player count calculated depending on cvar
+        public int DynamicPlayerCount()
+        {
+            return _cfg.GetCVar(CCVars.GameRulesCountReadied)
+                ? ReadyPlayerCount()
+                : _playerManager.PlayerCount;
+        }
+        // Moffstation - End
+
         public void StartRound(bool force = false)
         {
 #if EXCEPTION_TOLERANCE

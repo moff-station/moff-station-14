@@ -35,3 +35,13 @@ roles-antag-vampire-briefing = You're a creature of the night. Stay out of the l
 vampire-existing = [color=Crimson]There was a [bold]Vampire[/bold]![/color]
 vampires-existing = [color=Crimson]There were {$total} [bold]Vampires[/bold]![/color]
 vampire-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
+
+# Syndicate spies
+
+roles-antag-syndicate-spy = Syndicate Spy
+roles-antag-syndicate-spy-objective = You are a Syndicate Spy, sent to gather intel and disrupt the station from afar. Use the tools at your disposal to get in the station's way, and assist any syndicate agents at your own discretion.
+
+lpo-existing = [color=Crimson]Syndicate Listening Outpost[/color]
+lpo-list-start = The outpost was operated by:
+lpo-list-name = [color=White]{$name}[/color]
+lpo-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])

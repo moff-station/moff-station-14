@@ -20,12 +20,14 @@
   components:
   - type: SubGamemodes
     rules:
+    # Moffstation - Start
     - id: Thief
-      prob: 0.5
-    # Harmony start
+      prob: 0.35
     - id: BloodBrothers
-      prob: 0.5
-    # Harmony end
+      prob: 0.30
+    - id: SyndicateListeningOutpost
+      prob: 0.30
+    # Moffstation - End
     - id: SubWizard
       prob: 0.05
 
@@ -35,12 +37,14 @@
   components:
   - type: SubGamemodes
     rules:
-    - id: Thief
-      prob: 0.5
-    # Moffstation start
-    - id: BloodBrothers
-      prob: 0.5
     # Moffstation end
+    - id: Thief
+      prob: 0.40
+    - id: BloodBrothers
+      prob: 0.40
+    - id: SyndicateListeningOutpost
+      prob: 0.20
+    # Moffstation - End
 
 - type: entity
   parent: BaseGameRule
