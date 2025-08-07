@@ -1,0 +1,17 @@
+- type: entity
+  name: Blackbox shotgun
+  parent: BaseWeaponShotgun
+  id: WeaponShotgunBlackbox
+  description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+  - type: Gun
+    fireRate: 1
+  - type: AmmoCounter
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 8s
+    affectedByEmp: true

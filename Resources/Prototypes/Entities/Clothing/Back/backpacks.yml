@@ -66,7 +66,7 @@
   description: It's a very robust backpack.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Backpacks/security.rsi
+    sprite: _Moffstation/Clothing/Back/Backpacks/security.rsi # Moffstation - changes for the tactical webbing
 
 - type: entity
   parent: [ClothingBackpack, BaseSecurityContraband]
@@ -339,9 +339,9 @@
     equipDelay: 5 # to avoid accidentally falling into the trap associated with SelfUnremovableClothing
   - type: SelfUnremovableClothing
   - type: ShockOnTrigger
+    targetContainer: true
     damage: 5
     duration: 3
-    cooldown: 4
   - type: TriggerOnSignal
   - type: DeviceLinkSink
     ports:

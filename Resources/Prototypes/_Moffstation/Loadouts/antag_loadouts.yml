@@ -49,16 +49,6 @@
   - PersonalItemsJobAgnostic
 
 - type: roleLoadout
-  id: JobPirateMedic
-  canCustomizeName: true
-  groups:
-  - PirateHats
-  - PirateOuterCoat
-  - CommonBackpack
-  - PirateTrinkets
-  - PersonalItemsJobAgnostic
-
-- type: roleLoadout
   id: JobPirateCaptain
   canCustomizeName: true
   groups:
@@ -67,6 +57,14 @@
   - CommonBackpack
   - PirateTrinkets
   - PersonalItemsJobAgnostic
+
+- type: startingGear
+  parent: PirateGear
+  id: PirateReinforcementGear
+  equipment:
+    back: ClothingBackpackSatchelLeather
+    head: ClothingHeadBandBlack
+    outerClothing: ClothingOuterCoatPirate
 
 # Syndicate
 - type: roleLoadout

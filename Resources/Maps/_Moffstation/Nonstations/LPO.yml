@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 264.0.0
+  engineVersion: 265.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/30/2025 19:50:39
-  entityCount: 1069
+  time: 08/03/2025 15:23:25
+  entityCount: 1064
 maps: []
 grids:
 - 1
@@ -101,7 +101,6 @@ entities:
             28: -10,1
             29: -10,2
             53: -10,0
-            54: -10,-2
         - node:
             color: '#B02E2693'
             id: BotGreyscale
@@ -192,7 +191,7 @@ entities:
             57: -15,-1
             58: -11,-3
             59: -12,-3
-            60: -13,-3
+            136: -13,-3
         - node:
             color: '#FFFFFFFF'
             id: WarnCornerSmallGreyscaleSW
@@ -203,21 +202,6 @@ entities:
             id: WarnCornerSmallSE
           decals:
             64: -14,-2
-        - node:
-            color: '#FFFFFFFF'
-            id: WarnCornerSmallSW
-          decals:
-            65: -10,-2
-        - node:
-            color: '#FFFFFFFF'
-            id: WarnEndE
-          decals:
-            67: -11,-4
-        - node:
-            color: '#FFFFFFFF'
-            id: WarnEndW
-          decals:
-            66: -13,-4
         - node:
             color: '#FFFFFFFF'
             id: WarnLineGreyscaleN
@@ -237,12 +221,6 @@ entities:
             61: -11,-2
             62: -12,-2
             63: -13,-2
-            68: -12,-4
-        - node:
-            color: '#FFFFFFFF'
-            id: WarnLineW
-          decals:
-            69: -12,-4
         - node:
             color: '#FFFFFFFF'
             id: syndlogo1
@@ -282,7 +260,7 @@ entities:
             color: '#FFFFFFFF'
             id: syndlogo17
           decals:
-            51: -13,-3
+            135: -13,-3
         - node:
             color: '#FFFFFFFF'
             id: syndlogo18
@@ -2075,26 +2053,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 2.5,-9.5
       parent: 1
-- proto: BlastDoor
-  entities:
-  - uid: 169
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -11.5,-2.5
-      parent: 1
-  - uid: 171
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -12.5,-2.5
-      parent: 1
-  - uid: 172
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -10.5,-2.5
-      parent: 1
 - proto: BoxEncryptionKeySyndie
   entities:
   - uid: 347
@@ -2140,14 +2098,6 @@ entities:
     components:
     - type: Transform
       pos: -3.5,1.5
-      parent: 1
-- proto: ButtonFrameCautionSecurity
-  entities:
-  - uid: 343
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -8.5,0.5
       parent: 1
 - proto: CableApcExtension
   entities:
@@ -3450,19 +3400,6 @@ entities:
         - 0
         - 0
         - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 116
-          - 110
-          - 107
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: CrateSyndicateLPO
   entities:
   - uid: 50
@@ -5358,11 +5295,11 @@ entities:
       parent: 1
 - proto: PoweredlightRed
   entities:
-  - uid: 229
+  - uid: 116
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: -11.5,-3.5
+      pos: -11.5,-2.5
       parent: 1
 - proto: PoweredlightSodium
   entities:
@@ -5785,25 +5722,6 @@ entities:
       parent: 1
 - proto: SignalButtonDirectional
   entities:
-  - uid: 330
-    components:
-    - type: MetaData
-      name: Turret Blast Doors
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -8.5,0.5
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        172:
-        - - Pressed
-          - Toggle
-        171:
-        - - Pressed
-          - Toggle
-        169:
-        - - Pressed
-          - Toggle
   - uid: 738
     components:
     - type: MetaData
@@ -6103,29 +6021,6 @@ entities:
     - type: Transform
       pos: -10.5,-5.5
       parent: 1
-- proto: Telecrystal
-  entities:
-  - uid: 107
-    components:
-    - type: Transform
-      parent: 340
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 110
-    components:
-    - type: Transform
-      parent: 340
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 116
-    components:
-    - type: Transform
-      parent: 340
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: ToiletDirtyWater
   entities:
   - uid: 191
@@ -6409,6 +6304,11 @@ entities:
     - type: Transform
       pos: 6.5,-8.5
       parent: 1
+  - uid: 107
+    components:
+    - type: Transform
+      pos: -10.5,-3.5
+      parent: 1
   - uid: 108
     components:
     - type: Transform
@@ -6505,10 +6405,20 @@ entities:
     - type: Transform
       pos: -2.5,-5.5
       parent: 1
+  - uid: 169
+    components:
+    - type: Transform
+      pos: -12.5,-3.5
+      parent: 1
   - uid: 170
     components:
     - type: Transform
       pos: -0.5,-10.5
+      parent: 1
+  - uid: 171
+    components:
+    - type: Transform
+      pos: -11.5,-3.5
       parent: 1
   - uid: 174
     components:
@@ -6934,11 +6844,10 @@ entities:
       linearDamping: 0.080000006
 - proto: WeaponTurretSyndicate
   entities:
-  - uid: 226
+  - uid: 110
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -11.5,-3.5
+      pos: -11.5,-2.5
       parent: 1
   - uid: 761
     components:
