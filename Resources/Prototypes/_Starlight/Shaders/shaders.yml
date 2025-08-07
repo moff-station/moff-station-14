@@ -1,0 +1,15 @@
+- type: shader
+  id: CycloriteShader
+  kind: source
+  path: "/Textures/_Starlight/Shaders/cyclorite.swsl"
+  params:
+    ShiftIntensity: 1.0
+
+- type: shader
+  id: ModernNightVisionShader
+  kind: source
+  path: "/Textures/_Starlight/Shaders/night.swsl"
+  params:
+    NightVisionBoost: 2.0
+    NightVisionThreshold: 0.3
+    BlueTintIntensity: 0.6
