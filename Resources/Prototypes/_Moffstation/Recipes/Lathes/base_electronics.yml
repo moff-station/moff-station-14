@@ -9,3 +9,14 @@
     Glass: 1000
     Silver: 200
     Uranium: 100
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  abstract: true
+  id: DangerousAILawBoardRecipe
+  materials:
+    Steel: 200
+    Glass: 1000
+    Silver: 200
+    Uranium: 100
+    ##TODO - Need to add Telecrystal as a material cost; 10 TC per board
