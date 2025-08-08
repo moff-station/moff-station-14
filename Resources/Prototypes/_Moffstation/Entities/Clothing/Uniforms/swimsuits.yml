@@ -1,0 +1,12 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformSwimsuitBase
+  name: swimsuit
+  description: A normal looking swimsuit
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisonerstriped.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisonerstriped.rsi
+  - type: RandomSprite
+    getAllGroups: true
