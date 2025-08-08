@@ -176,17 +176,6 @@ public abstract class SharedStrippableSystem : EntitySystem
             return false;
         }
 
-        // Starlight - Start - Allow small species to be picked up.
-        var ev = new StripInsertAttemptEvent(user, target, held, slot);
-        RaiseLocalEvent(target, ref ev, true);
-
-        if (ev.Cancelled)
-        {
-            _popupSystem.PopupCursor(Loc.GetString("strippable-component-cannot-equip-message", ("owner", targetIdentity)));
-            return false;
-        }
-        // Starlight - End - Allow small species to be picked up.
-
         return true;
     }
 
@@ -395,17 +384,6 @@ public abstract class SharedStrippableSystem : EntitySystem
             _popupSystem.PopupCursor(Loc.GetString("strippable-component-cannot-put-message", ("owner", Identity.Entity(target, EntityManager))));
             return false;
         }
-
-        // Starlight - Start - Allow small species to be picked up.
-        var ev = new StripInsertAttemptEvent(user, target, held, handName);
-        RaiseLocalEvent(target, ref ev, true);
-
-        if (ev.Cancelled)
-        {
-            _popupSystem.PopupCursor(Loc.GetString("strippable-component-cannot-put-message", ("owner", Identity.Entity(target, EntityManager))));
-            return false;
-        }
-        // Starlight - End - Allow small species to be picked up.
 
         return true;
     }
