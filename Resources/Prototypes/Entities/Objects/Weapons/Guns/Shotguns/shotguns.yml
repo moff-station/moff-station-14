@@ -5,6 +5,13 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Starlight - Start - Gun knockback for smaller species.
+  - type: KnockbackByUserTag
+    doestContain:
+      Resomi:
+        knockback: 3
+        staminaMultiplier: 20
+  # Starlight - End - Gun knockback for smaller species.
   - type: Sprite
     layers:
     - state: icon

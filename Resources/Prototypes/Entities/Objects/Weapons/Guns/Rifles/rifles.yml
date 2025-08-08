@@ -5,6 +5,12 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Starlight - Start - Gun knockback for smaller species.
+  - type: KnockbackByUserTag
+    doestContain:
+      Resomi:
+        knockback: 0.1
+  # Starlight - End - Gun knockback for smaller species.
   - type: Sprite
   - type: Item
     size: Huge
@@ -271,6 +277,12 @@
   id: WeaponRifleFoam
   description: A premium foam rifle of the highest quality. Its plastic feels rugged, and its mechanisms sturdy.
   components:
+  # Starlight - Start - Gun knockback for smaller species.
+  - type: KnockbackByUserTag
+    doestContain:
+      Resomi:
+        knockback: 0
+  # Starlight - End - Gun knockback for smaller species.
   - type: Sprite
     sprite: Objects/Fun/Foam/foam_rifle.rsi
   - type: Clothing
