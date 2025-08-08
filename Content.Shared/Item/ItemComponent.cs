@@ -60,6 +60,11 @@ public sealed partial class ItemComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public Vector2i StoredOffset;
+
+    // Starlight - Start - Allow small species to be picked up
+    [DataField, AutoNetworkedField]
+    public bool AllowDirectHandPickup = true;
+    // Starlight - End - Allow small species to be picked up
 }
 
 /// <summary>

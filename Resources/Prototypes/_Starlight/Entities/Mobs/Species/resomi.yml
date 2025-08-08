@@ -1,6 +1,6 @@
 - type: entity
-  name: Urist McRaptor
-  parent: BaseMobSpeciesOrganic
+  name: Urist McChicken
+  parent: [BaseMobSpeciesOrganic, BaseSpeciesPickupable]
   id: BaseMobResomi
   abstract: true
   components:
@@ -199,6 +199,7 @@
       Female: UnisexResomi
       Unsexed: UnisexResomi
   - type: Speech
+    speechVerb: Resomi
     allowedEmotes: ['Chirp']
   - type: Tag
     tags:
