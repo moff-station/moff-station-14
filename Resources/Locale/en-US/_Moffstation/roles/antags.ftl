@@ -40,7 +40,7 @@ vampire-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/colo
 
 roles-antag-syndicate-spy = Syndicate Intelligence Officer
 roles-antag-short-syndicate-spy = Syndicate Intel
-roles-antag-syndicate-spy-objective = You are a Syndicate Intelligence Officer, sent to gather intel and disrupt the station from afar. Use the tools at your disposal to get in the station's way, and assist any syndicate agents at your own discretion.
+roles-antag-syndicate-spy-objective = You are a Syndicate Intelligence Officer, sent to subvert the station from afar. Remain discrete, and use your intel to concoct plots against the station.
 
 lpo-existing = [color=Crimson]Syndicate Listening Outpost[/color]
 lpo-list-start = The outpost was operated by:
