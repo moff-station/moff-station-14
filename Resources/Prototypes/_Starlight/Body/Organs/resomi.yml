@@ -4,6 +4,6 @@
   name: eye
   description: "I see you!"
   components:
-  - type: NightVision
+  # - type: NightVision # Disable nightvision as it gets PR'd seperately.
   - type: FlashModifier
     modifier: 2

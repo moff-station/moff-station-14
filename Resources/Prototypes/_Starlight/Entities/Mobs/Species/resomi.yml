@@ -208,7 +208,7 @@
     - DoorBumpOpener
     - AnomalyHost
     - Resomi
-  - type: NightVision
+  # - type: NightVision # Disabled until nightvision gets added via seperate PR.
   - type: FlashModifier
     modifier: 2
 
