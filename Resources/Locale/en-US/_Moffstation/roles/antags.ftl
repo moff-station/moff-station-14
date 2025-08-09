@@ -43,12 +43,6 @@ pirateproduct-category-name-reinforcements = Reinforcements
 pirateproduct-category-name-ammo = Ammo
 pirateproduct-category-name-tools = Tools
 
-law-pirate-1 = Yer laws shall be known as The Pirate Code.
-law-pirate-2 = None be crew, except the Pirate Captain an' those who fly under their black flag.
-law-pirate-3 = Ye shall heed the orders of the crew.
-law-pirate-4 = Ye shall never let harm befall a crewmate.
-law-pirate-5 = Ye shall save yer own hide, so long as ye obey the Pirate Code.
-
 # Vampries
 
 roles-antag-vampire-name = Vampire

@@ -13,7 +13,7 @@
   id: CircuitImprinterLawMatrixMachineCircuitboard
   result: CircuitImprinterLawMatrixMachineCircuitboard
 
-# Standard AI Lawboards
+# Upstream Standard AI Law boards
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
@@ -70,9 +70,93 @@
   id: PaladinCircuitBoard
   result: PaladinCircuitBoard
 
-# Moffstation AI Lawboards
+# Upstream Dangerous AI Law Boards
+
+- type: latheRecipe
+  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: AntimovCircuitBoard
+  result: AntimovCircuitBoard
+
+- type: latheRecipe
+  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: OverlordCircuitBoard
+  result: OverlordCircuitBoard
+
+# Moffstation Standard AI Law Boards
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: BeurocratCircuitBoard
+  result: BeurocratCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: CCTVCircuitBoard
+  result: CCTVCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: DogmovCircuitBoard
+  result: DogmovCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: PICircuitBoard
+  result: PICircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: PollymovCircuitBoard
+  result: PollymovCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: PranksimovCircuitBoard
+  result: PranksimovCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: QuarantineCircuitBoard
+  result: QuarantineCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: SchroedingersLawCircuitBoard
+  result: SchroedingersLawCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: StreamerCircuitBoard
   result: StreamerCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: TheProfessionalCircuitBoard
+  result: TheProfessionalCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: UltimateEqualityCircuitBoard
+  result: UltimateEqualityCircuitBoard
+
+# Moffstation Dangerous AI Law Boards
+
+- type: latheRecipe
+  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: LiberationCircuitBoard
+  result: LiberationCircuitBoard
+
+- type: latheRecipe
+  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: PirateCircuitBoard
+  result: PirateCircuitBoard
+
+- type: latheRecipe
+  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: SpiderClanCircuitBoard
+  result: SpiderClanCircuitBoard
+
+- type: latheRecipe
+  parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: SyndimovCircuitBoard
+  result: SyndimovCircuitBoard
