@@ -5,6 +5,13 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Starlight - Start - Gun knockback for smaller species.
+  - type: KnockbackByUserTag
+    doestContain:
+      Resomi:
+        knockback: 4
+        staminaMultiplier: 15
+  # Starlight - End - Gun knockback for smaller species.
   - type: Sprite
     layers:
     - state: base
@@ -49,6 +56,13 @@
   id: WeaponSniperMosin
   description: A true relic, the Kardashev-Mosin has served in nearly every armed conflict since its creation 670 years ago. The bolt-action design of the rifle remains virtually identical to its original design, whether used for hunting, sniping, or endless trench warfare. Loads 10 rounds of .30 rifle.
   components:
+  # Starlight - Start - Gun knockback for smaller species.
+  - type: KnockbackByUserTag
+    doestContain:
+      Resomi:
+        knockback: 2
+        staminaMultiplier: 1
+  # Starlight - End - Gun knockback for smaller species.
   - type: Sprite
     sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
     layers:

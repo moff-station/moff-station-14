@@ -21,6 +21,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
 using Content.Shared.Movement.Systems;
+using Content.Shared._Starlight.Flash.Components;
 
 namespace Content.Shared.Flash;
 
@@ -154,6 +155,11 @@ public abstract class SharedFlashSystem : EntitySystem
         bool melee = false,
         TimeSpan? stunDuration = null)
     {
+        if (TryComp<FlashModifierComponent>(target, out var CompUser))
+        {
+            flashDuration *= CompUser.Modifier;
+        }
+
         var attempt = new FlashAttemptEvent(target, user, used);
         RaiseLocalEvent(target, ref attempt, true);
 
