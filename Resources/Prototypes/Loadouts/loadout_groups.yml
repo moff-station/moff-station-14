@@ -3,7 +3,7 @@
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
-  maxLimit: 3
+  maxLimit: 5 # Moffstation - (Nox Loadout Improvements) - After all, why not?
   loadouts:
   - FlowerWreath
   - Hairflower
@@ -20,7 +20,15 @@
   - CigarGold
   - GoldRing    # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
   - SilverRing  # Moffstation - End
-  - Folder # Moffstation - (Misc Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
+  - FolderRed
+  - FolderBlue
+  - FolderYellow
+  - FolderWhite
+  - FolderGrey
+  - FolderBlack
+  - FolderGreen
+  # Moffstation - End
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -874,7 +882,7 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
-  - StationEngineerOuterVest # Moffstation - (Misc Loadout Improvements)
+  - StationEngineerOuterVest # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -891,7 +899,7 @@
   loadouts:
   - WhiteShoes
   - EngineeringWinterBoots
-  - WorkBoots # Moffstation - (Misc Loadout Improvements)
+  - WorkBoots # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -1116,6 +1124,7 @@
   - SecurityBelt
   - SecurityWebbing
   - SecurityWebbingAlt  # Moffstation - Alt sec webbing
+  - ShoulderHolster # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1146,7 +1155,7 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
-  # Moffstation - Begin (Misc Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements)
   - SecurityHelmet
   - MilitaryHelmet
   - SecurityBeret
@@ -1169,6 +1178,12 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - SecurityJumpsuit
+  - SecurityJumpskirt
+  - SecurityJumpsuitGrey
+  - SecurityJumpskirtGrey
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1177,6 +1192,11 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - ArmorVest
+  - ArmorVestSlim
+  - SecurityOfficerWintercoat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
@@ -1306,7 +1326,7 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
-  # Moffstation - Begin (Misc Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements)
   - VirologyBackpack
   - VirologySatchel
   - VirologyDuffel
