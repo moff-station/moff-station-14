@@ -13,10 +13,9 @@
 - type: latheRecipe
   parent: BaseCircuitboardRecipe
   abstract: true
-  id: DangerousAILawBoardRecipe
+  id: DangerousAILawBoardRecipe #Still the same as BaseAILawBoards, but left seperate if changes need to be made later
   materials:
     Steel: 200
     Glass: 1000
     Silver: 200
     Uranium: 100
-    ##TODO - Need to add Telecrystal as a material cost; 10 TC per board
