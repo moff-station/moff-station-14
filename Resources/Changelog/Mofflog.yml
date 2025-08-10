@@ -1428,6 +1428,14 @@ Entries:
   id: 389
   time: '2025-08-04T22:27:55.000'
   url: https://github.com/moff-station/moff-station-14/pull/389
+- author: Nox38
+  changes:
+  - message: 'Added new loadout options: folders, security headwear for detectives,
+      and engi gear for atmos!'
+    type: add
+  id: 390
+  time: '2025-08-07T21:04:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/390
 - author: DuckManZach
   changes:
   - message: Added new sec webbing!
@@ -1442,6 +1450,13 @@ Entries:
   id: 393
   time: '2025-08-04T16:53:26.000'
   url: https://github.com/moff-station/moff-station-14/pull/393
+- author: DuckManZach
+  changes:
+  - message: Added an alt sec belt (its drippy)!
+    type: add
+  id: 395
+  time: '2025-08-08T20:00:09.000'
+  url: https://github.com/moff-station/moff-station-14/pull/395
 - author: Altimus, Southbridge
   changes:
   - message: Added Drunk Driving Incident lobby screen
@@ -1449,6 +1464,13 @@ Entries:
   id: 396
   time: '2025-08-05T15:02:40.000'
   url: https://github.com/moff-station/moff-station-14/pull/396
+- author: Nox38
+  changes:
+  - message: Removed suit sensors from formal syndicate and pirate uniforms.
+    type: remove
+  id: 397
+  time: '2025-08-07T16:51:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/397
 - author: Davyei
   changes:
   - message: Resprited the chef jacket.
@@ -1470,5 +1492,62 @@ Entries:
   id: 402
   time: '2025-08-06T19:07:24.000'
   url: https://github.com/moff-station/moff-station-14/pull/402
+- author: Davyei, Remminster, Southbridge
+  changes:
+  - message: arachnid, diona, dwarf, elf, justice, moth, reptilian, and vox AI holograms
+      have been added.
+    type: add
+  id: 404
+  time: '2025-08-08T19:59:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/404
+- author: Southbridge
+  changes:
+  - message: You can now set yourself as a high-value target, causing the syndicate
+      to target you more often.
+    type: add
+  id: 408
+  time: '2025-08-08T01:21:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/408
+- author: Nox38
+  changes:
+  - message: Reverted Bulldog firerate to 2.0 RPS to match upstream.
+    type: remove
+  id: 410
+  time: '2025-08-07T17:39:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/410
+- author: Nox38
+  changes:
+  - message: Fixed the hood color of the warden's unarmored coat.
+    type: fix
+  id: 411
+  time: '2025-08-07T17:00:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/411
+- author: Freian, Nox38
+  changes:
+  - message: Added new Remia/Loraine's pin personal item!
+    type: add
+  - message: Removed Remia's photo personal item.
+    type: remove
+  id: 413
+  time: '2025-08-09T19:55:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/413
+- author: DuckManZach
+  changes:
+  - message: The LPO now starts with a holopad and chameleon gear!
+    type: add
+  - message: The handheld crew monitor works again.
+    type: fix
+  id: 415
+  time: '2025-08-08T05:39:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/415
+- author: DuckManZach
+  changes:
+  - message: Added a variety of swimsuits!
+    type: add
+  - message: Added the swimvend!
+    type: add
+  id: 418
+  time: '2025-08-08T20:08:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/418
 Name: Mofflog
 Order: -2
