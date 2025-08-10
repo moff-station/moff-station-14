@@ -1,4 +1,4 @@
-﻿using Content.Server.Power.EntitySystems;
+﻿using Content.Server._Moffstation.Power.EntitySystems;
 using Content.Shared._Moffstation.BladeServer;
 
 namespace Content.Server._Moffstation.BladeServer;
@@ -8,7 +8,7 @@ namespace Content.Server._Moffstation.BladeServer;
 /// </summary>
 public sealed partial class BladeServerSystem : SharedBladeServerSystem
 {
-    [Dependency] private readonly ExtensionCableSystem _extensionCable = default!;
+    [Dependency] private readonly InnerCableSystem _innerCable = default!;
 
     protected override void SetSlotPower(Entity<BladeServerRackComponent> entity, BladeSlot slot, bool powered)
     {
@@ -17,6 +17,6 @@ public sealed partial class BladeServerSystem : SharedBladeServerSystem
         if (slot.Slot.ContainerSlot?.ID is not { } containerId)
             return;
 
-        _extensionCable.SetInnerProviderContainerConnectable(entity.Owner, containerId, powered);
+        _innerCable.SetInnerProviderContainerConnectable(entity.Owner, containerId, powered);
     }
 }

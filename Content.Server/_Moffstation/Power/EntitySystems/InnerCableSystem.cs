@@ -1,27 +1,30 @@
 ﻿using System.Linq;
+using Content.Server._Moffstation.Power.Components;
 using Content.Server.Power.Components;
+using Content.Server.Power.EntitySystems;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
 
-// ReSharper disable once CheckNamespace - NOT under _Moffstation because this is "injecting" functionality into an existing system.
-namespace Content.Server.Power.EntitySystems;
+namespace Content.Server._Moffstation.Power.EntitySystems;
 
 /// <summary>
-/// This addition to ExtensionCableSystem implements <see cref="InnerCableProviderComponent"/>.
+/// This system implements <see cref="InnerCableProviderComponent"/>.
 /// </summary>
-public sealed partial class ExtensionCableSystem
+public sealed partial class InnerCableSystem : EntitySystem
 {
     [Dependency] private readonly ContainerSystem _container = default!;
 
-    private void InitializeInnerCable()
+    public override void Initialize()
     {
         SubscribeLocalEvent<InnerCableProviderComponent, ComponentStartup>(OnInnerProviderStarted);
         SubscribeLocalEvent<InnerCableProviderComponent, ComponentShutdown>(OnInnerProviderShutdown);
         SubscribeLocalEvent<InnerCableReceiverComponent, ComponentStartup>(OnInnerReceiverStarted);
         SubscribeLocalEvent<InnerCableReceiverComponent, ComponentShutdown>(OnInnerReceiverShutdown);
 
-        SubscribeLocalEvent<InnerCableProviderComponent, ProviderConnectedEvent>(OnInnerProviderConnected);
-        SubscribeLocalEvent<InnerCableProviderComponent, ProviderDisconnectedEvent>(OnInnerProviderDisconnected);
+        SubscribeLocalEvent<InnerCableProviderComponent, ExtensionCableSystem.ProviderConnectedEvent>(
+            OnInnerProviderConnected);
+        SubscribeLocalEvent<InnerCableProviderComponent, ExtensionCableSystem.ProviderDisconnectedEvent>(
+            OnInnerProviderDisconnected);
 
         SubscribeLocalEvent<InnerCableProviderComponent, EntInsertedIntoContainerMessage>(OnInsertedIntoInnerProvider);
         SubscribeLocalEvent<InnerCableProviderComponent, EntRemovedFromContainerMessage>(OnRemovedFromInnerProvider);
@@ -128,7 +131,10 @@ public sealed partial class ExtensionCableSystem
         }
     }
 
-    private void OnInnerProviderConnected(Entity<InnerCableProviderComponent> provider, ref ProviderConnectedEvent args)
+    private void OnInnerProviderConnected(
+        Entity<InnerCableProviderComponent> provider,
+        ref ExtensionCableSystem.ProviderConnectedEvent args
+    )
     {
         var outerProvider = GetOuterProviderOrNull(provider);
         foreach (var receiver in provider.Comp.ConnectedReceivers)
@@ -139,7 +145,7 @@ public sealed partial class ExtensionCableSystem
 
     private void OnInnerProviderDisconnected(
         Entity<InnerCableProviderComponent> provider,
-        ref ProviderDisconnectedEvent args
+        ref ExtensionCableSystem.ProviderDisconnectedEvent args
     )
     {
         var outerProvider = GetOuterProviderOrNull(provider);
@@ -274,8 +280,16 @@ public sealed partial class ExtensionCableSystem
             return;
 
         // Connect the "outer" cable relationship via existing events.
-        RaiseLocalEvent(innerReceiver, new ProviderConnectedEvent(outerProvider), broadcast: false);
-        RaiseLocalEvent(outerProvider, new ReceiverConnectedEvent(innerReceiver), broadcast: false);
+        RaiseLocalEvent(
+            innerReceiver,
+            new ExtensionCableSystem.ProviderConnectedEvent(outerProvider),
+            broadcast: false
+        );
+        RaiseLocalEvent(
+            outerProvider,
+            new ExtensionCableSystem.ReceiverConnectedEvent(innerReceiver),
+            broadcast: false
+        );
     }
 
     private void DisconnectInnerCable(
@@ -301,11 +315,11 @@ public sealed partial class ExtensionCableSystem
         // Disconnect the "outer" cable relationship via existing events.
         var outerProvider = preResolvedOuterProvider ?? GetOuterProviderOrNull(provider);
 
-        RaiseLocalEvent(receiver, new ProviderDisconnectedEvent(outerProvider), broadcast: false);
+        RaiseLocalEvent(receiver, new ExtensionCableSystem.ProviderDisconnectedEvent(outerProvider), broadcast: false);
         if (outerProvider is { } op &&
             TryComp<ExtensionCableReceiverComponent>(receiver) is { } innerReceiver)
         {
-            RaiseLocalEvent(op, new ReceiverDisconnectedEvent(innerReceiver), broadcast: false);
+            RaiseLocalEvent(op, new ExtensionCableSystem.ReceiverDisconnectedEvent(innerReceiver), broadcast: false);
         }
     }
 
@@ -320,71 +334,4 @@ public sealed partial class ExtensionCableSystem
     }
 
     #endregion
-}
-
-/// <summary>
-/// This component, when on an entity with <see cref="ExtensionCableReceiverComponent"/>, enables "relaying" power
-/// connections it receives to entities in its containers (eg. A Blade Server Rack powering Blade Servers it contains).
-/// In order for an entity to receive power in this way, the container must:
-/// - have <c>InnerCableProviderComponent</c>
-/// - have a container which starts with <see cref="ConnectableContainersPrefix"/>
-/// - have <see cref="ExtensionCableReceiverComponent"/>
-/// and the contained entity must:
-/// - have <see cref="InnerCableReceiverComponent"/>
-/// - be in the container with the ID mentioned above
-/// - have <see cref="ExtensionCableReceiverComponent"/>
-///
-/// At runtime, <see cref="UnconnectableContainers"/> is used with <see cref="ExtensionCableSystem.SetInnerProviderContainerConnectable"/>
-/// to "turn on" and "off" enabled connections at the container level.
-/// </summary>
-/// <seealso cref="InnerCableReceiverComponent"/>
-/// <seealso cref="ExtensionCableSystem"/>
-[RegisterComponent]
-[Access(typeof(ExtensionCableSystem))]
-public sealed partial class InnerCableProviderComponent : Component
-{
-    /// <summary>
-    /// This is used to identify which containers "work with" inner cable power. Specifically, containers on this entity
-    /// whose IDs start with this string are eligible to have their contents connect to this provider.
-    /// </summary>
-    [DataField(required: true)]
-    public string ConnectableContainersPrefix;
-
-    /// <summary>
-    /// Containers in this list are NOT able to be powered so long as they are in this list. This is used to implement
-    /// dynamically enabling and disabling power to certain containers and can be thought of as a provider-level analog
-    /// to <see cref="InnerCableReceiverComponent.Connectable"/>.
-    /// </summary>
-    [DataField]
-    public List<string> UnconnectableContainers = [];
-
-    /// <summary>
-    /// The receivers currently connected to this provider.
-    /// </summary>
-    [ViewVariables]
-    public readonly List<Entity<InnerCableReceiverComponent>> ConnectedReceivers = [];
-}
-
-/// <summary>
-/// This component enables an entity to receive power relayed via a <see cref="InnerCableProviderComponent"/>. See that
-/// component for detailed documentation.
-/// </summary>
-/// <seealso cref="InnerCableProviderComponent"/>
-/// <seealso cref="ExtensionCableSystem"/>
-[RegisterComponent]
-[Access(typeof(ExtensionCableSystem))]
-public sealed partial class InnerCableReceiverComponent : Component
-{
-    /// <summary>
-    /// The provider this receiver is currently connected to.
-    /// </summary>
-    [ViewVariables]
-    public Entity<InnerCableProviderComponent>? Provider;
-
-    /// <summary>
-    /// Whether or not this receiver should be able to connect to a provider, even if it's put into a container which
-    /// would permit connection.
-    /// </summary>
-    [ViewVariables]
-    public bool Connectable = true;
 }

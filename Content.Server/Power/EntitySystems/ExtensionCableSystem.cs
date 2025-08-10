@@ -6,15 +6,13 @@ using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Power.EntitySystems
 {
-    public sealed partial class ExtensionCableSystem : EntitySystem // Moffstation - Make partial to enable additions
+    public sealed class ExtensionCableSystem : EntitySystem
     {
         [Dependency] private readonly SharedMapSystem _map = default!;
 
         public override void Initialize()
         {
             base.Initialize();
-
-            InitializeInnerCable(); // Moffstation - Add InnerCable functionality
 
             //Lifecycle events
             SubscribeLocalEvent<ExtensionCableProviderComponent, ComponentStartup>(OnProviderStarted);
