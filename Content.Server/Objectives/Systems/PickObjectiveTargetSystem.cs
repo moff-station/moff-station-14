@@ -5,6 +5,8 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.Revolutionary.Components;
 using Robust.Shared.Random;
 using System.Linq;
+using Content.Server._Moffstation.Objectives.Components;
+using Content.Server._Moffstation.Objectives.Systems; // Moffstation - Adding high value targets
 
 namespace Content.Server.Objectives.Systems;
 
@@ -19,6 +21,7 @@ public sealed class PickObjectiveTargetSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly TraitorRuleSystem _traitorRule = default!;
 
+    [Dependency] private readonly HighValueTargetSelectionSystem _hvtSystem = default!; // Moffstation - Adding high-value targets
     public override void Initialize()
     {
         base.Initialize();
@@ -91,7 +94,13 @@ public sealed class PickObjectiveTargetSystem : EntitySystem
             return;
         }
 
-        _target.SetTarget(ent.Owner, _random.Pick(allHumans), target);
+        // Moffstation - Start - Added high-value target
+        var selectedHuman = _random.Pick(allHumans);
+        if (TryComp<HighValueTargetSelectionComponent>(ent.Owner, out var hvt))
+            selectedHuman = _hvtSystem.SelectTarget((ent.Owner, hvt), allHumans);
+
+        _target.SetTarget(ent.Owner, selectedHuman, target);
+        // Moffstation - End
     }
 
     private void OnRandomHeadAssigned(Entity<PickRandomHeadComponent> ent, ref ObjectiveAssignedEvent args)
@@ -125,7 +134,13 @@ public sealed class PickObjectiveTargetSystem : EntitySystem
         if (allHeads.Count == 0)
             allHeads = allHumans; // fallback to non-head target
 
-        _target.SetTarget(ent.Owner, _random.Pick(allHeads), target);
+        // Moffstation - Start - Adding high-value targets
+        var selectedHuman = _random.Pick(allHeads);
+        if (TryComp<HighValueTargetSelectionComponent>(ent.Owner, out var hvt))
+            selectedHuman = _hvtSystem.SelectTarget((ent.Owner, hvt), allHeads);
+
+        _target.SetTarget(ent.Owner, selectedHuman, target);
+        // Moffstation - end
     }
 
     private void OnRandomTraitorProgressAssigned(Entity<RandomTraitorProgressComponent> ent, ref ObjectiveAssignedEvent args)

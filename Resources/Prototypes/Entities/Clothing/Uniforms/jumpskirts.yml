@@ -634,7 +634,7 @@
       sprite: Clothing/Uniforms/Jumpskirt/lawyergood.rsi
 
 - type: entity
-  parent: [ ClothingUniformSkirtBase, BaseSyndicateContraband ]
+  parent: [ UnsensoredClothingUniformSkirtBase, BaseSyndicateContraband ] # Moffstation - (No Sensors for Enemy Gear)
   id: ClothingUniformJumpskirtSyndieFormalDress
   name: syndicate formal dress
   description: "The syndicate's uniform is made in an elegant style, it's even a pity to do dirty tricks in this."

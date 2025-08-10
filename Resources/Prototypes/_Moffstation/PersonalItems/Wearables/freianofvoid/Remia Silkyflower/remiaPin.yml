@@ -1,0 +1,65 @@
+﻿# Player: FreianOfVoid / Character: Remia Silkyflower
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PersonalItemRemiaPinSwappable
+  name: Remia's NTPO badges
+  description: "A pair of badges given to Remia Silkyflower by her previous job. The first badge depicts the old Nanotrasen Planetary Outpost logo, with a red dwarf star in the background.\nThe second is a 'Language Learner' badge, identifying the wearer as one who is still learning common. It depicts a purple sunrise with the letters 'LL' stitched into it, with the silhouette of a moth at the bottom.\nIt can be toggled using an air tank."
+  suffix: swappable
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Remia_Silkyflower/remiaPin.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Remia_Silkyflower/remiaPin.rsi
+  - type: Construction
+    deconstructionTarget: null
+    graph: PersonalItemRemiaPinSwapGraph
+    node: swap_remia
+
+- type: entity
+  parent: ClothingNeckBase
+  id: PersonalItemRemiaPinInversedSwappable
+  name: Loraine's camera badge?
+  description: "A strange badge worn by Loraine Silkfire. It depicts what could be either a camera or a gemstone against a background of black and red.\nIt can be toggled using an air tank."
+  suffix: swappable
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Remia_Silkyflower/remiaPinInversed.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Remia_Silkyflower/remiaPinInversed.rsi
+  - type: DetailExaminable
+    content: "Emblazoned on the back of the badge is the unmistakable red S of the Syndicate."
+  - type: Construction
+    deconstructionTarget: null
+    graph: PersonalItemRemiaPinSwapGraph
+    node: swap_loraine
+
+- type: constructionGraph
+  id: PersonalItemRemiaPinSwapGraph
+  start: swap_loraine
+  graph:
+  - node: swap_loraine
+    entity: PersonalItemRemiaPinInversedSwappable
+    edges:
+    - to: swap_remia
+      steps:
+      - tool: Rolling
+        doAfter: 0.1
+  - node: swap_remia
+    entity: PersonalItemRemiaPinSwappable
+    edges:
+    - to: swap_loraine
+      steps:
+      - tool: Rolling
+        doAfter: 0.1
+
+- type: loadout
+  id: PersonalItemRemiaPin
+  storage:
+    back:
+    - PersonalItemRemiaPinSwappable
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Remia Silkyflower
+
