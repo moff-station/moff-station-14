@@ -8,7 +8,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Timing;
 
-namespace Content.Server._AXOLOTL.RespawnButton;
+namespace Content.Server._Moffstation.RespawnButton;
 
 [AnyCommand]
 public sealed class GhostRespawnCommand : IConsoleCommand
@@ -24,13 +24,13 @@ public sealed class GhostRespawnCommand : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (_configurationManager.GetCVar(AxolotlCVars.RespawnTime) == 0)
+        if (_configurationManager.GetCVar(MoffCCVars.RespawnTime) == 0)
         {
             shell.WriteLine("Respawning is disabled, ask an admin to respawn you.");
             return;
         }
 
-        if (_playerManager.PlayerCount > _configurationManager.GetCVar(AxolotlCVars.MaxPlayersForRespawnButton))
+        if (_playerManager.PlayerCount > _configurationManager.GetCVar(MoffCCVars.MaxPlayersForRespawnButton))
         {
             shell.WriteLine("Too many players online to be automatically respawn.");
             return;
@@ -61,7 +61,7 @@ public sealed class GhostRespawnCommand : IConsoleCommand
             return;
         }
         var time = (_gameTiming.CurTime - ghost.TimeOfDeath);
-        var respawnTime = _configurationManager.GetCVar(AxolotlCVars.RespawnTime);
+        var respawnTime = _configurationManager.GetCVar(MoffCCVars.RespawnTime);
 
         if (respawnTime > time.TotalSeconds)
         {

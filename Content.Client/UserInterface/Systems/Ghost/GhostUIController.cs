@@ -76,7 +76,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.Visible = _system?.IsGhost ?? false;
         // AXOLOTL: Send death and respawn time information to client for ghostrespawn
         Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody,
-                _system?.Player?.TimeOfDeath, _cfg.GetCVar(AxolotlCVars.RespawnTime));
+                _system?.Player?.TimeOfDeath, _cfg.GetCVar(MoffCCVars.RespawnTime));
     }
 
     private void OnPlayerRemoved(GhostComponent component)

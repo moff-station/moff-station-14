@@ -102,14 +102,14 @@ public sealed partial class GhostGui : UIWidget
             return;
         }
 
-        if (_configurationManager.GetCVar(AxolotlCVars.RespawnTime) == 0.0)
+        if (_configurationManager.GetCVar(MoffCCVars.RespawnTime) == 0.0)
         {
             AxolotlGhostRespawnButton.Text = Loc.GetString("axolotl-respawn-disabled-always");
             AxolotlGhostRespawnButton.Disabled = true;
             return;
         }
 
-        if (_playerManager.PlayerCount > _configurationManager.GetCVar(AxolotlCVars.MaxPlayersForRespawnButton))
+        if (_playerManager.PlayerCount > _configurationManager.GetCVar(MoffCCVars.MaxPlayersForRespawnButton))
         {
             AxolotlGhostRespawnButton.Text = Loc.GetString("axolotl-respawn-disabled-players");
             AxolotlGhostRespawnButton.Disabled = true;
@@ -134,7 +134,7 @@ public sealed partial class GhostGui : UIWidget
         if (todd != null)
         {
             _axolotlTimeOfDeath = todd;
-            _axolotlMinTimeToRespawn = _configurationManager.GetCVar(AxolotlCVars.RespawnTime);
+            _axolotlMinTimeToRespawn = _configurationManager.GetCVar(MoffCCVars.RespawnTime);
         }
     }
 }

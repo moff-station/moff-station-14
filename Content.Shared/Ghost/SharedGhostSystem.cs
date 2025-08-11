@@ -56,11 +56,6 @@ namespace Content.Shared.Ghost
         public void SetTimeOfDeath(EntityUid uid, TimeSpan value, GhostComponent? component)
         {
             SetTimeOfDeath((uid, component), value);
-
-
-            component.TimeOfDeath = value;
-            // AXOLOTL: Mark dirty so the time is synced for ghostrespawn
-            Dirty(uid, component);
         }
 
         /// <summary>

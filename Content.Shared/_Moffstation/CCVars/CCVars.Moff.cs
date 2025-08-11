@@ -3,7 +3,7 @@ using Robust.Shared.Configuration;
 namespace Content.Shared._Moffstation.CCVars;
 
 [CVarDefs]
-public sealed class CCVars
+public sealed class MoffCCVars
 {
         /// <summary>
         /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable respawning.
