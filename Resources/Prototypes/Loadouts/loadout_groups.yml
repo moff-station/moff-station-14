@@ -391,14 +391,18 @@
   minLimit: 1
   loadouts:
   - Bible
-  - BibleCarpsCrypts
-  - BibleNanoTrasen
-  - BibleLamp
   - BibleDruid
+  - BibleNanoTrasen
+# - BibleNanoTrasen # Moffstation - Avoid real-world books
+# - BibleNanoTrasen # Moffstation - Avoid real-world books
+# Moffstation - Start - Add additional holy books
+  - BileCarpsCrypts
+  - BibleLamp
   - BibleItalian
   - BibleHonk
   - BibleRatvar
   - BibleNarsie
+# Moffstation - End
 
 - type: loadoutGroup
   id: JanitorHead

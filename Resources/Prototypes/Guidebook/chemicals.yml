@@ -11,6 +11,7 @@
   - Foods
   - Botanical
   - Biological
+  - Sacred # Moffstation - Add category for blessed chemicals.
   - Special
   - Others
   filterEnabled: True
@@ -56,6 +57,14 @@
   name: guide-entry-biological
   text: "/ServerInfo/Guidebook/ChemicalTabs/Biological.xml"
   filterEnabled: True
+
+# Moffstation - Start - Add category for Sacred chemicals
+- type: guideEntry
+  id: Sacred
+  name: moff-guide-entry-sacred
+  text: "/ServerInfo/_Moffstation/Guidebook/ChemicalTabs/Sacred.xml"
+  filterEnabled: True
+# Moffstation - End
 
 - type: guideEntry
   id: Special
