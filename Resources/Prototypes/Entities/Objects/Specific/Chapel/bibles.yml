@@ -1,3 +1,6 @@
+# Moffstation - Default bible has been seperated out into BaseBible and Bible.
+# this is done inorder to give each additional bible it's own mixing type for
+# blessed liquids.
 - type: entity
   id: BibleBase
   parent: BaseStorageItem
@@ -101,28 +104,39 @@
   - type: InstantAction
     event: !type:SummonActionEvent
 
+#- type: entity # Avoid real-world books.
+#  parent: Bible
+#  name: tanakh
+#  description: "For God's chosen crewmembers"
+#  id: BibleTanakh
+#  components:
+#  - type: Sprite
+#    sprite: Objects/Specific/Chapel/tanakh.rsi
+#  - type: Item
+#    sprite: Objects/Specific/Chapel/tanakh.rsi
+
 - type: entity
   id: BibleDruid
   name: druidic tablet
   parent: BibleBase
   description: "It's the mystery of the druids!"
   components:
-  - type: ReactionMixer
+  - type: ReactionMixer # Moffstation - Added ReactionMixer for holy liquids.
     mixMessage: "bible-mixing-success"
     reactionTypes:
     - Druidic
   - type: Sprite
-    sprite: Objects/Specific/Chapel/druidictablet.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi # Moffstation - Updated sprites.
   - type: Item
-    sprite: Objects/Specific/Chapel/druidictablet.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi # Moffstation - Updated sprites.
 
 - type: entity
   id: BibleCommunistManifesto
   name: communist manifesto
-  parent: BibleBase
+  parent: BibleBase # Moffstation - Changed parent to allow for different ReactionMixers
   description: "Remove the mask of humanity from Capital."
   components:
-  - type: ReactionMixer
+  - type: ReactionMixer # Moffstation - Added ReactionMixer for holy liquids.
     mixMessage: "bible-mixing-success"
     reactionTypes:
     - Communist
@@ -131,107 +145,28 @@
   - type: Item
     sprite: Objects/Specific/Chapel/communistmanifesto.rsi
 
-- type: entity
-  id: BibleNarsie
-  name: tome of nar'sie
-  parent: BibleBase
-  description: "What could possibly go wrong with a book covered in blood?"
-  components:
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success-curse"
-    reactionTypes:
-    - Narsie
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/tomeofnarsie.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/satanicbible.rsi
+#- type: entity # Avoid real-world books.
+#  parent: Bible
+#  name: satanic bible
+#  description: "What could possibly go wrong?"
+#  id: BibleSatanic
+#  components:
+#  - type: Sprite
+#    sprite: Objects/Specific/Chapel/satanicbible.rsi
+#  - type: Item
+#    sprite: Objects/Specific/Chapel/satanicbible.rsi
 
 - type: entity
   id: BibleNanoTrasen
   name: codex nanotrasimus
-  parent: BibleBase
+  parent: BibleBase # Moffstation - Changed parent to allow for different ReactionMixers
   description: "A familiar book containing the Sacred Operating Procedures."
   components:
-  - type: ReactionMixer
+  - type: ReactionMixer # Moffstation - Added ReactionMixer for holy liquids.
     mixMessage: "bible-mixing-success"
     reactionTypes:
     - NanoTrasen
   - type: Sprite
-    sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/codexnanotrasimus.rsi # Moffstation - Updated sprites.
   - type: Item
-    sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
-
-- type: entity
-  id: BibleHonk
-  name: mirth of the honkmother
-  parent: BibleBase
-  description: "Oh great and glorious Mother, Mistress of Mirth, Matron of Mask and Merriments, Blessed is she amongst us jesters."
-  components:
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success"
-    reactionTypes:
-    - Clown
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/honk.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/honk.rsi
-
-- type: entity
-  id: BibleLamp
-  name: compendium of the lamp
-  parent: BibleBase
-  description: "May the light and warmth of the glorious lamp purify your soul and mind."
-  components:
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success"
-    reactionTypes:
-    - Lamp
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/lamp.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/lamp.rsi
-
-- type: entity
-  id: BibleRatvar
-  name: tablet of ratvar
-  parent: BibleBase
-  description: "A holy relic of the Clockwork Cult, blessed by the Clockwork Justice, Ratvar."
-  components:
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success-curse"
-    reactionTypes:
-    - Ratvar
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/ratvartablet.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/ratvartablet.rsi
-
-- type: entity
-  id: BibleItalian
-  name: italian restaurant menu
-  parent: BibleBase
-  description: "Stolen from the holy grounds of the nearest Olive Garden."
-  components:
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success"
-    reactionTypes:
-    - Italian
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/italianrestaurantmenu.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/italianrestaurantmenu.rsi
-
-- type: entity
-  id: BibleCarpsCrypts
-  name: carps & crypts manual
-  parent: BibleBase
-  description: "A holy relic to some, contains the sacred rules for the famous TTRPG... Carps & Crypts."
-  components:
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success"
-    reactionTypes:
-    - Nerd
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/carpscrypts.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/carpscrypts.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/codexnanotrasimus.rsi # Moffstation - Updated sprites.

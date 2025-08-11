@@ -1,0 +1,89 @@
+- type: entity
+  id: BibleNarsie
+  name: tome of nar'sie
+  parent: BibleBase
+  description: "What could possibly go wrong with a book covered in blood?"
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success-curse"
+    reactionTypes:
+    - Narsie
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/tomeofnarsie.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/satanicbible.rsi
+
+- type: entity
+  id: BibleHonk
+  name: mirth of the honkmother
+  parent: BibleBase
+  description: "Oh great and glorious Mother, Mistress of Mirth, Matron of Mask and Merriments, Blessed is she amongst us jesters."
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Clown
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/honk.rsi
+
+- type: entity
+  id: BibleLamp
+  name: compendium of the lamp
+  parent: BibleBase
+  description: "May the light and warmth of the glorious lamp purify your soul and mind."
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Lamp
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/lamp.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/lamp.rsi
+
+- type: entity
+  id: BibleRatvar
+  name: tablet of ratvar
+  parent: BibleBase
+  description: "A holy relic of the Clockwork Cult, blessed by the Clockwork Justice, Ratvar."
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success-curse"
+    reactionTypes:
+    - Ratvar
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/ratvartablet.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/ratvartablet.rsi
+
+- type: entity
+  id: BibleItalian
+  name: italian restaurant menu
+  parent: BibleBase
+  description: "Stolen from the holy grounds of the nearest Olive Garden."
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Italian
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/italianrestaurantmenu.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/italianrestaurantmenu.rsi
+
+- type: entity
+  id: BibleCarpsCrypts
+  name: carps & crypts manual
+  parent: BibleBase
+  description: "A holy relic to some, contains the sacred rules for the famous TTRPG... Carps & Crypts."
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Nerd
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chapel/carpscrypts.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chapel/carpscrypts.rsi
