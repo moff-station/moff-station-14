@@ -9,7 +9,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Configuration;
 using Content.Shared.CCVar;
 using Content.Client._AXOLOTL.RespawnButton;
-using Content.Shared._AXOLOTL;
+using Content.Shared._Moffstation.CCVars;
 using Robust.Client.Player;
 using Robust.Shared.Player;
 

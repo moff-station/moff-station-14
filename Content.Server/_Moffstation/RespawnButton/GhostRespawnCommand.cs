@@ -1,6 +1,6 @@
 using Content.Server.GameTicking;
 using Content.Server.Mind;
-using Content.Shared._AXOLOTL;
+using Content.Shared._Moffstation.CCVars;
 using Content.Shared.Administration;
 using Content.Shared.Ghost;
 using Robust.Server.Player;

@@ -1,9 +1,9 @@
 using Robust.Shared.Configuration;
 
-namespace Content.Shared._AXOLOTL;
+namespace Content.Shared._Moffstation.CCVars;
 
 [CVarDefs]
-public sealed class AxolotlCVars
+public sealed class CCVars
 {
         /// <summary>
         /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable respawning.
