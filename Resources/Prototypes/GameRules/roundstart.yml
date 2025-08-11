@@ -22,12 +22,13 @@
     rules:
     # Moffstation - Start
     - id: Thief
-      prob: 0.35
+      prob: 0.3
     - id: BloodBrothers
-      prob: 0.30
+      prob: 0.3
     - id: SyndicateListeningOutpost
-      prob: 0.30
-    # Moffstation - End
+      prob: 0.20
+    - id: Pirates
+      prob: 0.15
     - id: SubWizard
       prob: 0.05
 
@@ -37,13 +38,14 @@
   components:
   - type: SubGamemodes
     rules:
-    # Moffstation end
     - id: Thief
-      prob: 0.40
+      prob: 0.3
     - id: BloodBrothers
-      prob: 0.40
+      prob: 0.3
     - id: SyndicateListeningOutpost
-      prob: 0.20
+      prob: 0.2
+    - id: Pirates
+      prob: 0.2
     # Moffstation - End
 
 - type: entity
@@ -126,7 +128,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 30 # Moffstation - Bumped up the min players for nukeops.
   - type: LoadMapRule
     mapPath: /Maps/Nonstations/nukieplanet.yml
   - type: AntagSelection
@@ -286,7 +288,7 @@
     - WizardSurviveObjective
     - WizardDemonstrateObjective
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/wizard.yml
+    mapPath: /Maps/Nonstations/wizardsden.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
@@ -333,7 +335,7 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 25 # Moffstation - Bumped up the min players for zombies
     delay:
       min: 600
       max: 900

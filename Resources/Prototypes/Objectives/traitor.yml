@@ -91,6 +91,7 @@
   - type: TargetObjective
     title: objective-condition-maroon-person-title
   - type: PickRandomPerson
+  - type: HighValueTargetSelection # Moffstation - Add High Value Target
   - type: KillPersonCondition
     requireMaroon: true
 
@@ -107,6 +108,7 @@
   - type: TargetObjective
     title: objective-condition-kill-maroon-title
   - type: PickRandomHead
+  - type: HighValueTargetSelection # Moffstation - Add High Value Target
   - type: KillPersonCondition
     # don't count missing evac as killing as heads are higher profile, so you really need to do the dirty work
     # if ce flies a shittle to centcom you better find a way onto it

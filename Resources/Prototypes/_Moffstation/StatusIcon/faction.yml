@@ -1,0 +1,12 @@
+- type: factionIcon
+  id: PirateFaction
+  isShaded: true
+  locationPreference: Left
+  priority: 0
+  showTo:
+    components:
+    - ShowAntagIcons
+    - Pirate
+  icon:
+    sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
+    state: Pirate
