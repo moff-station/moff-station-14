@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._Moffstation.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio;
@@ -263,6 +264,9 @@ public sealed partial class GunComponent : Component
     /// </summary>
     [DataField]
     public Vector2 DefaultDirection = new Vector2(0, -1);
+
+    [DataField]
+    public RecoilKick? RecoilKick;
 }
 
 [Flags]

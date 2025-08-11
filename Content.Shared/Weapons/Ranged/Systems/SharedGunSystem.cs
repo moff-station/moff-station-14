@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._Moffstation.Weapons.Ranged.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -7,10 +8,12 @@ using Content.Shared.Audio;
 using Content.Shared.CombatMode;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Gravity;
 using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
@@ -388,11 +391,47 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (!userImpulse || !TryComp<PhysicsComponent>(user, out var userPhysics))
             return;
 
+        RecoilKick(gun, (user, userPhysics), fromCoordinates, toCoordinates.Value);
+
         var shooterEv = new ShooterImpulseEvent();
         RaiseLocalEvent(user, ref shooterEv);
 
         if (shooterEv.Push || _gravity.IsWeightless(user, userPhysics))
             CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
+    }
+
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
+
+    private void RecoilKick(
+        GunComponent gun,
+        Entity<PhysicsComponent> user,
+        EntityCoordinates fromCoordinates,
+        EntityCoordinates toCoordinates
+    )
+    {
+        if (gun.RecoilKick is not { } kick ||
+            kick.Impulse <= 0.0f ||
+            !TryComp<RecoilKickSusceptibleComponent>(user, out var suscept))
+            return;
+
+        var attempt = new RecoilKickAttemptEvent();
+        RaiseLocalEvent(user, ref attempt);
+        var speed = kick.Impulse * attempt.Effectiveness * user.Comp.InvMass / suscept.MassFactor;
+
+        var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates).Position;
+        var toMap = TransformSystem.ToMapCoordinates(toCoordinates).Position;
+        var shotDirection = (fromMap - toMap).Normalized();
+
+        ThrowingSystem.TryThrow(
+            user,
+            // Change the magnitude of `shotDirection` because the length _is_ actually used to determine flight time.
+            shotDirection * _Moffstation.Weapons.Ranged.Components.RecoilKick.FlyTime * speed,
+            speed,
+            doSpin: false
+        );
+
+        // deal stamina damage
+        _stamina.TakeStaminaDamage(user, speed * kick.StaminaMultiplier);
     }
 
     public void Shoot(
@@ -657,4 +696,13 @@ public enum AmmoVisuals : byte
     HasAmmo, // used for generic visualizers. c# stuff can just check ammocount != 0
     MagLoaded,
     BoltClosed,
+}
+
+[ByRefEvent]
+public record struct RecoilKickAttemptEvent() : IInventoryRelayEvent
+{
+    // TODO CENT Make this relayed
+    public float Effectiveness = 1.0f;
+
+    public SlotFlags TargetSlots => SlotFlags.WITHOUT_POCKET;
 }
