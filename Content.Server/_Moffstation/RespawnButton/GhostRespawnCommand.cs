@@ -30,12 +30,6 @@ public sealed class GhostRespawnCommand : IConsoleCommand
             return;
         }
 
-        if (_playerManager.PlayerCount > _configurationManager.GetCVar(MoffCCVars.MaxPlayersForRespawnButton))
-        {
-            shell.WriteLine("Too many players online to be automatically respawn.");
-            return;
-        }
-
         if (shell.Player is null)
         {
             shell.WriteLine("You cannot run this from the console!");

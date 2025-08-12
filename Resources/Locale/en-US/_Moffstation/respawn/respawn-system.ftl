@@ -1,7 +1,8 @@
 ## UI
 ghost-respawn-rules-window-title = Respawning Rules
 ghost-respawn-rules-window-confirm-button = I understand, respawn me
-ghost-gui-respawn-button-denied = Respawn ({$time}s)
+ghost-gui-respawn-button-denied-seconds = Respawn ({$time}s)
+ghost-gui-respawn-button-denied-minutes = Respawn ({$time} mins)
 ghost-gui-respawn-button-allowed = Respawn
 ghost-respawn-rules-window-rules = This will take you to the lobby, where you are free to respawn as another character.
 

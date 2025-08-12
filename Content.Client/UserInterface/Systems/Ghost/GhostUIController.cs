@@ -6,11 +6,8 @@ using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
-
-// AXOLOTL: imports for ghostrespawn
-using Content.Shared.CCVar;
-using Robust.Shared.Configuration;
-using Robust.Shared.Console;
+using Robust.Shared.Configuration;  // Moffstation
+using Robust.Shared.Console;    // Moffstation
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
@@ -18,14 +15,12 @@ namespace Content.Client.UserInterface.Systems.Ghost;
 public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
 {
     [Dependency] private readonly IEntityNetworkManager _net = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;    // Moffstation - respawn button
+    [Dependency] private readonly IConsoleHost _consoleHost = default!;     // Moffstation - respawn button
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
-
-    // AXOLOTL: Systems required for ghostrespawn
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IConsoleHost _consoleHost = default!;
 
     public override void Initialize()
     {
@@ -75,8 +70,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
 
         Gui.Visible = _system?.IsGhost ?? false;
         // AXOLOTL: Send death and respawn time information to client for ghostrespawn
-        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody,
-                _system?.Player?.TimeOfDeath, _cfg.GetCVar(MoffCCVars.RespawnTime));
+        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody, _system?.Player?.TimeOfDeath);
     }
 
     private void OnPlayerRemoved(GhostComponent component)
@@ -141,8 +135,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.GhostRolesPressed += GhostRolesPressed;
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
-        // AXOLOTL: ghostrespawn button
-        Gui.GhostRespawnPressed += GuiOnGhostRespawnPressed;
+        Gui.GhostRespawnPressed += GuiOnGhostRespawnPressed;   // Moffstation - respawn button
 
         UpdateGui();
     }
