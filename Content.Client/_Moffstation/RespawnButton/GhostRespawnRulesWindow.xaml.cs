@@ -4,7 +4,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Utility;
 
-namespace Content.Client._AXOLOTL.RespawnButton;
+namespace Content.Client._Moffstation.RespawnButton;
 
 [GenerateTypedNameReferences]
 public sealed partial class GhostRespawnRulesWindow : FancyWindow

@@ -86,7 +86,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
 
     private void OnPlayerUpdated(GhostComponent component)
     {
-        AxolotlUpdateRespawn(component.TimeOfDeath);
+        UpdateRespawn(component.TimeOfDeath);
         UpdateGui();
     }
 
@@ -96,7 +96,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
             return;
 
         Gui.Visible = true;
-        AxolotlUpdateRespawn(component.TimeOfDeath);
+        UpdateRespawn(component.TimeOfDeath);
         UpdateGui();
     }
 
@@ -142,7 +142,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
         // AXOLOTL: ghostrespawn button
-        Gui.AxolotlGhostRespawnPressed += AxolotlGuiOnGhostRespawnPressed;
+        Gui.GhostRespawnPressed += GuiOnGhostRespawnPressed;
 
         UpdateGui();
     }
@@ -177,12 +177,12 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         _system?.OpenGhostRoles();
     }
 
-    private void AxolotlUpdateRespawn(TimeSpan? timeOfDeath)
+    private void UpdateRespawn(TimeSpan? timeOfDeath)
     {
-        Gui?.AxolotlUpdateRespawn(timeOfDeath);
+        Gui?.UpdateRespawn(timeOfDeath);
     }
 
-    private void AxolotlGuiOnGhostRespawnPressed()
+    private void GuiOnGhostRespawnPressed()
     {
         _consoleHost.ExecuteCommand("ghostrespawn");
     }

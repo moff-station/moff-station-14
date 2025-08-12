@@ -7,10 +7,7 @@ using Robust.Client.UserInterface.XAML;
 // AXOLOTL: Imports for ghostrespawn
 using Robust.Shared.Timing;
 using Robust.Shared.Configuration;
-using Content.Shared.CCVar;
-using Content.Client._AXOLOTL.RespawnButton;
 using Content.Shared._Moffstation.CCVar;
-using Robust.Client.Player;
 using Robust.Shared.Player;
 
 namespace Content.Client.UserInterface.Systems.Ghost.Widgets;
@@ -30,10 +27,10 @@ public sealed partial class GhostGui : UIWidget
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
-    private TimeSpan? _axolotlTimeOfDeath;
-    private float _axolotlMinTimeToRespawn;
-    public GhostRespawnRulesWindow AxolotlGhostRespawnRulesWindow { get; }
-    public event Action? AxolotlGhostRespawnPressed;
+    private TimeSpan? _timeOfDeath;
+    private float _minTimeToRespawn;
+    public _Moffstation.RespawnButton.GhostRespawnRulesWindow GhostRespawnRulesWindow { get; }
+    public event Action? GhostRespawnPressed;
 
     public GhostGui()
     {
@@ -49,9 +46,9 @@ public sealed partial class GhostGui : UIWidget
         GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleBase.ButtonCaution);
 
         // AXOLOTL: Ghostrespawn
-        AxolotlGhostRespawnRulesWindow = new GhostRespawnRulesWindow();
-        AxolotlGhostRespawnRulesWindow.RespawnButton.OnPressed += _ => AxolotlGhostRespawnPressed?.Invoke();
-        AxolotlGhostRespawnButton.OnPressed += _ => AxolotlGhostRespawnRulesWindow.OpenCentered();
+        GhostRespawnRulesWindow = new _Moffstation.RespawnButton.GhostRespawnRulesWindow();
+        GhostRespawnRulesWindow.RespawnButton.OnPressed += _ => GhostRespawnPressed?.Invoke();
+        GhostRespawnButton.OnPressed += _ => GhostRespawnRulesWindow.OpenCentered();
     }
 
     public void Hide()
@@ -64,8 +61,8 @@ public sealed partial class GhostGui : UIWidget
     public void Update(int? roles, bool? canReturnToBody, TimeSpan? timeOfDeath, float minTimeToRespawn)
     {
         ReturnToBodyButton.Disabled = !canReturnToBody ?? true;
-        _axolotlTimeOfDeath = timeOfDeath;
-        _axolotlMinTimeToRespawn = minTimeToRespawn;
+        _timeOfDeath = timeOfDeath;
+        _minTimeToRespawn = minTimeToRespawn;
 
         if (roles != null)
         {
@@ -95,46 +92,46 @@ public sealed partial class GhostGui : UIWidget
     // AXOLOTL: Required to make the ghost respawn timer tick
     protected override void FrameUpdate(FrameEventArgs args)
     {
-        if (_axolotlTimeOfDeath is null)
+        if (_timeOfDeath is null)
         {
-            AxolotlGhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-denied", ("time", "unknown"));
-            AxolotlGhostRespawnButton.Disabled = true;
+            GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-denied", ("time", "unknown"));
+            GhostRespawnButton.Disabled = true;
             return;
         }
 
         if (_configurationManager.GetCVar(MoffCCVars.RespawnTime) == 0.0)
         {
-            AxolotlGhostRespawnButton.Text = Loc.GetString("axolotl-respawn-disabled-always");
-            AxolotlGhostRespawnButton.Disabled = true;
+            GhostRespawnButton.Text = Loc.GetString("respawn-disabled-general");
+            GhostRespawnButton.Disabled = true;
             return;
         }
 
         if (_playerManager.PlayerCount > _configurationManager.GetCVar(MoffCCVars.MaxPlayersForRespawnButton))
         {
-            AxolotlGhostRespawnButton.Text = Loc.GetString("axolotl-respawn-disabled-players");
-            AxolotlGhostRespawnButton.Disabled = true;
+            GhostRespawnButton.Text = Loc.GetString("respawn-disabled-playercount");
+            GhostRespawnButton.Disabled = true;
             return;
         }
 
-        var delta = (_axolotlMinTimeToRespawn - _gameTiming.CurTime.Subtract(_axolotlTimeOfDeath.Value).TotalSeconds);
+        var delta = (_minTimeToRespawn - _gameTiming.CurTime.Subtract(_timeOfDeath.Value).TotalSeconds);
         if (delta <= 0)
         {
-            AxolotlGhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-allowed");
-            AxolotlGhostRespawnButton.Disabled = false;
+            GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-allowed");
+            GhostRespawnButton.Disabled = false;
         }
         else
         {
-            AxolotlGhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-denied", ("time", $"{delta:f1}"));
-            AxolotlGhostRespawnButton.Disabled = true;
+            GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-denied", ("time", $"{delta:f1}"));
+            GhostRespawnButton.Disabled = true;
         }
     }
 
-    public void AxolotlUpdateRespawn(TimeSpan? todd)
+    public void UpdateRespawn(TimeSpan? todd)
     {
         if (todd != null)
         {
-            _axolotlTimeOfDeath = todd;
-            _axolotlMinTimeToRespawn = _configurationManager.GetCVar(MoffCCVars.RespawnTime);
+            _timeOfDeath = todd;
+            _minTimeToRespawn = _configurationManager.GetCVar(MoffCCVars.RespawnTime);
         }
     }
 }

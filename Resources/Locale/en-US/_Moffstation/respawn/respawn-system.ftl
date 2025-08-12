@@ -3,10 +3,11 @@ ghost-respawn-rules-window-title = Respawning Rules
 ghost-respawn-rules-window-confirm-button = I understand, respawn me
 ghost-gui-respawn-button-denied = Respawn ({$time}s)
 ghost-gui-respawn-button-allowed = Respawn
-ghost-respawn-rules-window-rules = After entering the lobby you must follow these rules:
-    You can not respawn as a character you have played before in this round.
-    You don't remember anything you have seen as a ghost or past character.
-    If this is unclear refer to the rules.
+ghost-respawn-rules-window-rules = This will take you to the lobby, where you are free to respawn as another character.
 
-axolotl-respawn-disabled-players = Too many players to respawn
-axolotl-respawn-disabled-always = Respawn Disabled
+    After entering the lobby you must follow these rules:
+    - You cannot respawn as a character you have played before in this round.
+    - Any character you respawn as will not recall the previous events of this round.
+
+respawn-disabled-playercount = Too many players to respawn
+respawn-disabled-general = Respawn Disabled
