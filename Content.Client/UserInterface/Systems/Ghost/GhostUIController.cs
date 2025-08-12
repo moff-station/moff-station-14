@@ -2,7 +2,6 @@ using Content.Client.Gameplay;
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
-using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
@@ -15,7 +14,6 @@ namespace Content.Client.UserInterface.Systems.Ghost;
 public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
 {
     [Dependency] private readonly IEntityNetworkManager _net = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;    // Moffstation - respawn button
     [Dependency] private readonly IConsoleHost _consoleHost = default!;     // Moffstation - respawn button
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
@@ -69,8 +67,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         }
 
         Gui.Visible = _system?.IsGhost ?? false;
-        // AXOLOTL: Send death and respawn time information to client for ghostrespawn
-        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody, _system?.Player?.TimeOfDeath);
+        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody);
     }
 
     private void OnPlayerRemoved(GhostComponent component)
@@ -80,7 +77,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
 
     private void OnPlayerUpdated(GhostComponent component)
     {
-        UpdateRespawn(component.TimeOfDeath);
+        UpdateTimeOfDeath(component.TimeOfDeath);
         UpdateGui();
     }
 
@@ -90,7 +87,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
             return;
 
         Gui.Visible = true;
-        UpdateRespawn(component.TimeOfDeath);
+        UpdateTimeOfDeath(component.TimeOfDeath);
         UpdateGui();
     }
 
@@ -170,9 +167,9 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         _system?.OpenGhostRoles();
     }
 
-    private void UpdateRespawn(TimeSpan? timeOfDeath)
+    private void UpdateTimeOfDeath(TimeSpan? timeOfDeath)
     {
-        Gui?.UpdateRespawn(timeOfDeath);
+        Gui?.UpdateTimeOfDeath(timeOfDeath);
     }
 
     private void GuiOnGhostRespawnPressed()

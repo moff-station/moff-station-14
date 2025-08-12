@@ -60,10 +60,9 @@ public sealed partial class GhostGui : UIWidget
         Visible = false;
     }
 
-    public void Update(int? roles, bool? canReturnToBody, TimeSpan? timeOfDeath)
+    public void Update(int? roles, bool? canReturnToBody)
     {
         ReturnToBodyButton.Disabled = !canReturnToBody ?? true;
-        _timeOfDeath = timeOfDeath;
 
         if (roles != null)
         {
@@ -90,13 +89,13 @@ public sealed partial class GhostGui : UIWidget
         }
     }
 
-    // AXOLOTL: Required to make the ghost respawn timer tick
+    // Moffstation - Start - Respawn button
     protected override void FrameUpdate(FrameEventArgs args)
     {
         var spawnAvailableTime = _timeOfDeath + TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime)) - _gameTiming.CurTime;
         if (spawnAvailableTime is not { Seconds: > 0 })
         {
-            GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-allowed");
+            GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-label");
             GhostRespawnButton.Disabled = false;
         }
         else
@@ -110,11 +109,12 @@ public sealed partial class GhostGui : UIWidget
         }
     }
 
-    public void UpdateRespawn(TimeSpan? todd)
+    public void UpdateTimeOfDeath(TimeSpan? timeOfDeath)
     {
-        if (todd != null)
+        if (timeOfDeath != null)
         {
-            _timeOfDeath = todd;
+            _timeOfDeath = timeOfDeath;
         }
     }
+    // Moffstation - End
 }

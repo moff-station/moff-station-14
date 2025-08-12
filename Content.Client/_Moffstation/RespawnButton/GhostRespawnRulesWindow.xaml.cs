@@ -9,10 +9,7 @@ namespace Content.Client._Moffstation.RespawnButton;
 [GenerateTypedNameReferences]
 public sealed partial class GhostRespawnRulesWindow : FancyWindow
 {
-    public PanelContainer RulesContainer => TextContainer;
     public RichTextLabel RulesLabel = new() { Margin = new Thickness(5, 5, 5, 5) };
-    public Button RespawnButton => ConfirmRespawnButton;
-
     public GhostRespawnRulesWindow()
     {
         RobustXamlLoader.Load(this);
@@ -23,6 +20,6 @@ public sealed partial class GhostRespawnRulesWindow : FancyWindow
         RulesContainer.AddChild(RulesLabel);
         RulesLabel.SetPositionFirst();
 
-        RespawnButton.OnPressed += _ => Close();
+        ConfirmRespawnButton.OnPressed += _ => Close();
     }
 }
