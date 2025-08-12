@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared._Moffstation.Weapons.Ranged.Components;
+using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -8,12 +8,11 @@ using Content.Shared.Audio;
 using Content.Shared.CombatMode;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Systems; // Moffstation
 using Content.Shared.Examine;
 using Content.Shared.Gravity;
 using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
@@ -70,6 +69,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly ThrowingSystem ThrowingSystem = default!;
     [Dependency] private   readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!; // Moffstation
 
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
@@ -391,7 +391,14 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (!userImpulse || !TryComp<PhysicsComponent>(user, out var userPhysics))
             return;
 
-        RecoilKick(gun, (user, userPhysics), fromCoordinates, toCoordinates.Value);
+        // Moffstation - Start
+        var kicked = TryRecoilKick(gun, (user, userPhysics), fromCoordinates, toCoordinates.Value);
+
+        // Don't apply both recoil kick and shooter impulse.
+        // TODO Once https://github.com/space-wizards/space-station-14/pull/37971 is merged, recoil kick could be implemented using that and the impulse below to unify the two.
+        if (kicked)
+            return;
+        // Moffstation - End
 
         var shooterEv = new ShooterImpulseEvent();
         RaiseLocalEvent(user, ref shooterEv);
@@ -400,9 +407,12 @@ public abstract partial class SharedGunSystem : EntitySystem
             CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
     }
 
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-
-    private void RecoilKick(
+    // Moffstation - Start
+    /// <summary>
+    /// Tries to apply the effects of <see cref="GunComponent.RecoilKick"/>. Returns true if the effects is applied,
+    /// false otherwise.
+    /// </summary>
+    private bool TryRecoilKick(
         GunComponent gun,
         Entity<PhysicsComponent> user,
         EntityCoordinates fromCoordinates,
@@ -412,11 +422,11 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (gun.RecoilKick is not { } kick ||
             kick.Impulse <= 0.0f ||
             !TryComp<RecoilKickSusceptibleComponent>(user, out var suscept))
-            return;
+            return false;
 
         var attempt = new RecoilKickAttemptEvent();
         RaiseLocalEvent(user, ref attempt);
-        var speed = kick.Impulse * attempt.Effectiveness * user.Comp.InvMass / suscept.MassFactor;
+        var speed = kick.Impulse * attempt.ImpulseEffectivenessFactor * user.Comp.InvMass / suscept.MassFactor;
 
         var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates).Position;
         var toMap = TransformSystem.ToMapCoordinates(toCoordinates).Position;
@@ -430,9 +440,11 @@ public abstract partial class SharedGunSystem : EntitySystem
             doSpin: false
         );
 
-        // deal stamina damage
         _stamina.TakeStaminaDamage(user, speed * kick.StaminaMultiplier);
+
+        return true;
     }
+    // Moffstation - End
 
     public void Shoot(
         EntityUid gunUid,
@@ -696,13 +708,4 @@ public enum AmmoVisuals : byte
     HasAmmo, // used for generic visualizers. c# stuff can just check ammocount != 0
     MagLoaded,
     BoltClosed,
-}
-
-[ByRefEvent]
-public record struct RecoilKickAttemptEvent() : IInventoryRelayEvent
-{
-    // TODO CENT Make this relayed
-    public float Effectiveness = 1.0f;
-
-    public SlotFlags TargetSlots => SlotFlags.WITHOUT_POCKET;
 }
