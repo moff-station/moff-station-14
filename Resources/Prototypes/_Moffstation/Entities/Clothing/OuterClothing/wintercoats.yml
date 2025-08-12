@@ -14,3 +14,8 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterDefault
     slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
