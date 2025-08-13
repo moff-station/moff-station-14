@@ -25,6 +25,11 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 0.75
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 100
+      staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -113,6 +118,11 @@
   - type: GunRequiresWield
   - type: Gun
     fireRate: 0.4
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 600
+      staminaMultiplier: 3
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -150,6 +160,11 @@
     sprite: Objects/Weapons/Guns/Snipers/musket.rsi
   - type: Gun
     selectedMode: SemiAuto
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 600
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
     availableModes:
     - SemiAuto
   - type: UseDelayOnShoot
@@ -182,6 +197,11 @@
   - type: Gun
     minAngle: 0
     maxAngle: 30 #miss him entirely because the barrel is smoothbore
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 80
+      staminaMultiplier: 12
+    # Moffstation - End - Add gun recoil.
   - type: Item
     size: Small
     shape:
@@ -211,3 +231,9 @@
   components:
   - type: BallisticAmmoProvider
     proto: null
+  - type: Gun
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 100
+      staminaMultiplier: 12
+    # Moffstation - End - Add gun recoil.

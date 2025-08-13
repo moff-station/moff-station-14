@@ -48,6 +48,11 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 1
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto
@@ -81,13 +86,18 @@
     slots:
     - Back
     - suitStorage
-  # Moffstation - Begin (Weapon Resizing)
+    # Moffstation - Begin (Weapon Resizing)
   - type: Item
     size: Huge
-  # Moffstation - End
+    # Moffstation - End
   - type: AmmoCounter
   - type: Gun
     fireRate: 1
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -144,6 +154,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 0.5
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 700
+      staminaMultiplier: 100
+    # Moffstation - End - Add gun recoil.
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: BallisticAmmoProvider
@@ -177,6 +192,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 6
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 5
+    # Moffstation - End - Add gun recoil.
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -216,6 +236,11 @@
       sprite: Objects/Weapons/Guns/Launchers/pirate_cannon.rsi
     - type: Gun
       fireRate: 1
+      # Moffstation - Begin - Add gun recoil.
+      recoilKick:
+        impulse: 850
+        staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
       soundGunshot:
         path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
     - type: BallisticAmmoProvider

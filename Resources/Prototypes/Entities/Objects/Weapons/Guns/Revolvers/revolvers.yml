@@ -24,6 +24,11 @@
   - type: AmmoCounter
   - type: Gun
     selectedMode: SemiAuto
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 100
+      staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
     fireRate: 1.5
     availableModes:
     - SemiAuto

@@ -46,6 +46,11 @@
   - type: Appearance
   - type: Gun
     fireRate: 8
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto

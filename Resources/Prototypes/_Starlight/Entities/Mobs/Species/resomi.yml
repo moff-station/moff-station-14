@@ -39,6 +39,8 @@
   - type: Body
     prototype: Resomi
     requiredLegs: 2
+  - type: RecoilKickSusceptible
+    massFactor: 0.7
   - type: MobThresholds
     thresholds:
       0: Alive
