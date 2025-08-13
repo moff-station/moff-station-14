@@ -309,11 +309,13 @@
   - type: GuideHelp
     guides:
     - Survival
+# Moffstation - Start - replace survivalbox nutribrick with guidebook
   - type: Item
     size: Small
   - type: Tag
     tags:
     - SurvivalBoxInsertable
+# Moffstation - End
 
 - type: entity
   id: BookChemicalCompendium
