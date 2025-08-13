@@ -8,23 +8,22 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Moffstation.RespawnButton;
+namespace Content.Server._Moffstation.RespawnButton.Commands;
 
 [AnyCommand]
-public sealed class GhostRespawnCommand : IConsoleCommand
+public sealed class GhostRespawnCommand : LocalizedEntityCommands
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
-    public string Command => "ghostrespawn";
-    public string Description => "Allows the player to return to the lobby if they've been dead long enough, allowing re-entering the round as another character.";
-    public string Help => $"{Command}";
+    public override string Command => "ghostrespawn";
+    public override string Description => "Allows the player to return to the lobby if they've been dead long enough, allowing re-entering the round as another character.";
+    public override string Help => $"{Command}";
 
-    public void Execute(IConsoleShell shell, string argStr, string[] args)
+    public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (_configurationManager.GetCVar(MoffCCVars.RespawnTime) == 0)
+        if (!_configurationManager.GetCVar(MoffCCVars.RespawningEnabled))
         {
             shell.WriteLine("Respawning is disabled, ask an admin to respawn you.");
             return;
@@ -54,12 +53,12 @@ public sealed class GhostRespawnCommand : IConsoleCommand
             shell.WriteLine("You have no mind.");
             return;
         }
-        var time = (_gameTiming.CurTime - ghost.TimeOfDeath);
-        var respawnTime = _configurationManager.GetCVar(MoffCCVars.RespawnTime);
 
-        if (respawnTime > time.TotalSeconds)
+        var respawnTime = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
+        var timeDead = _gameTiming.CurTime - ghost.TimeOfDeath;
+        if (timeDead < respawnTime)
         {
-            shell.WriteLine($"You haven't been dead long enough. You have been dead {time.TotalSeconds} seconds of the required {respawnTime}.");
+            shell.WriteLine($"You haven't been dead long enough. You've been dead {timeDead.TotalSeconds:F0} seconds of the required {respawnTime.TotalSeconds:F0}.");
             return;
         }
 

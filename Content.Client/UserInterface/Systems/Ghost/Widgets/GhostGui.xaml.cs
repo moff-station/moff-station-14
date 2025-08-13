@@ -22,11 +22,10 @@ public sealed partial class GhostGui : UIWidget
     // Moffstation - Start - Respawn button
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    // Moffstation - End
 
     private TimeSpan? _timeOfDeath;
+    // Moffstation - End
     public _Moffstation.RespawnButton.GhostRespawnRulesWindow GhostRespawnRulesWindow { get; }
-    public event Action? GhostRespawnPressed;
 
     public GhostGui()
     {
@@ -43,14 +42,7 @@ public sealed partial class GhostGui : UIWidget
 
         // Moffstation - Start - Respawn button
         GhostRespawnRulesWindow = new _Moffstation.RespawnButton.GhostRespawnRulesWindow();
-        GhostRespawnRulesWindow.RespawnButton.OnPressed += _ => GhostRespawnPressed?.Invoke();
         GhostRespawnButton.OnPressed += _ => GhostRespawnRulesWindow.OpenCentered();
-
-        if (!_configurationManager.GetCVar(MoffCCVars.RespawningEnabled))
-        {
-            GhostRespawnButton.Text = Loc.GetString("respawn-disabled-general");
-            GhostRespawnButton.Visible = false;
-        }
         // Moffstation - End
     }
 
@@ -92,21 +84,29 @@ public sealed partial class GhostGui : UIWidget
     // Moffstation - Start - Respawn button
     protected override void FrameUpdate(FrameEventArgs args)
     {
-        var spawnAvailableTime = _timeOfDeath + TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime)) - _gameTiming.CurTime;
-        if (spawnAvailableTime is not { Seconds: > 0 })
+        if (!_configurationManager.GetCVar(MoffCCVars.RespawningEnabled))
+        {
+            GhostRespawnButton.Text = Loc.GetString("respawn-disabled-general");
+            GhostRespawnButton.Disabled = true;
+            return;
+        }
+
+        var respawnDelay = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
+        var remainingTime = _timeOfDeath + respawnDelay - _gameTiming.CurTime;
+
+        if (!remainingTime.HasValue || remainingTime <= TimeSpan.Zero)
         {
             GhostRespawnButton.Text = Loc.GetString("ghost-gui-respawn-button-label");
             GhostRespawnButton.Disabled = false;
+            return;
         }
-        else
-        {
-            GhostRespawnButton.Text = spawnAvailableTime > TimeSpan.FromMinutes(3)
-                ? Loc.GetString("ghost-gui-respawn-button-denied-minutes",
-                    ("time", $"{spawnAvailableTime.Value.TotalMinutes:f1}"))
-                : Loc.GetString("ghost-gui-respawn-button-denied-seconds",
-                    ("time", $"{spawnAvailableTime.Value.TotalSeconds:f0}"));
-            GhostRespawnButton.Disabled = true;
-        }
+
+        GhostRespawnButton.Disabled = true;
+        GhostRespawnButton.Text = remainingTime > TimeSpan.FromMinutes(3)
+            ? Loc.GetString("ghost-gui-respawn-button-denied-minutes",
+                ("time", $"{remainingTime.Value.TotalMinutes:f1}"))
+            : Loc.GetString("ghost-gui-respawn-button-denied-seconds",
+                ("time", $"{remainingTime.Value.TotalSeconds:f0}"));
     }
 
     public void UpdateTimeOfDeath(TimeSpan? timeOfDeath)

@@ -1,9 +1,8 @@
 <respawnButton:GhostRespawnRulesWindow xmlns="https://spacestation14.io"
-                                  xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-                                  xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-                                  xmlns:respawnButton="clr-namespace:Content.Client._Moffstation.RespawnButton"
-                                  Title="{Loc 'ghost-respawn-rules-window-title'}"
-                                  MinSize="650 250">
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:respawnButton="clr-namespace:Content.Client._Moffstation.RespawnButton"
+    Title="{Loc 'ghost-respawn-rules-window-title'}"
+    MinSize="650 250">
     <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False" Margin="5">
         <PanelContainer StyleClasses="Inset">
             <PanelContainer.PanelOverride>
@@ -11,7 +10,8 @@
             </PanelContainer.PanelOverride>
 
             <BoxContainer Orientation="Vertical" VerticalExpand="True" SeparationOverride="5">
-                <PanelContainer Name="RulesContainer" StyleClasses="Inset" Margin="5">
+                <PanelContainer Name="TextContainer" StyleClasses="Inset" Margin="5">
+                    <RichTextLabel Name="RespawnLabel" Margin="5" Text="{Loc ghost-respawn-rules-window-rules}"></RichTextLabel>
                     <PanelContainer.PanelOverride>
                         <!-- <graphics:StyleBoxFlat BackgroundColor="#464950"/> -->
                         <graphics:StyleBoxFlat BackgroundColor="#303133"/>

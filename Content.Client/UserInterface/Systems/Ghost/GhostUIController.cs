@@ -5,7 +5,6 @@ using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
-using Robust.Shared.Configuration;  // Moffstation
 using Robust.Shared.Console;    // Moffstation
 
 namespace Content.Client.UserInterface.Systems.Ghost;
@@ -77,7 +76,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
 
     private void OnPlayerUpdated(GhostComponent component)
     {
-        UpdateTimeOfDeath(component.TimeOfDeath);
+        UpdateTimeOfDeath(component.TimeOfDeath);   // Moffstation - respawn button
         UpdateGui();
     }
 
@@ -87,7 +86,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
             return;
 
         Gui.Visible = true;
-        UpdateTimeOfDeath(component.TimeOfDeath);
+        UpdateTimeOfDeath(component.TimeOfDeath);   // Moffstation - respawn button
         UpdateGui();
     }
 
@@ -132,7 +131,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.GhostRolesPressed += GhostRolesPressed;
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
-        Gui.GhostRespawnPressed += GuiOnGhostRespawnPressed;   // Moffstation - respawn button
+        Gui.GhostRespawnRulesWindow.GhostRespawnPressed += GuiOnGhostRespawnPressed;   // Moffstation - respawn button
 
         UpdateGui();
     }
@@ -167,6 +166,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         _system?.OpenGhostRoles();
     }
 
+    // Moffstation - Start - Respawn Button
     private void UpdateTimeOfDeath(TimeSpan? timeOfDeath)
     {
         Gui?.UpdateTimeOfDeath(timeOfDeath);
@@ -176,4 +176,5 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     {
         _consoleHost.ExecuteCommand("ghostrespawn");
     }
+    // Moffstation - End
 }
