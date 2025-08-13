@@ -201,8 +201,7 @@ namespace Content.Server.Disposal.Unit
                 foreach (var ent in holder.Container.ContainedEntities)
                 {
                     // Moffstation - Start - Only apply damage to mobs, and stop after they're dead
-                    if (HasComp<StaminaComponent>(ent) &&
-                        TryComp<MobStateComponent>(ent, out var mobState) &&
+                    if (TryComp<MobStateComponent>(ent, out var mobState) &&
                         mobState.CurrentState != MobState.Dead)
                         _damageable.TryChangeDamage(ent, to.DamageOnTurn);
                     // Moffstation - End
