@@ -2,8 +2,9 @@ using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Administration;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Database;
 using Content.Shared.Ghost;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Timing;
@@ -16,6 +17,8 @@ public sealed class GhostRespawnCommand : LocalizedEntityCommands
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
+    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+
 
     public override string Command => "ghostrespawn";
     public override string Description => "Allows the player to return to the lobby if they've been dead long enough, allowing re-entering the round as another character.";
@@ -64,6 +67,9 @@ public sealed class GhostRespawnCommand : LocalizedEntityCommands
 
         var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
 
+        _adminLogger.Add(LogType.Identity,
+            LogImpact.High,
+            $"{_entityManager.ToPrettyString(shell.Player.AttachedEntity):Player} used ghost respawn button");
         gameTicker.Respawn(shell.Player);
     }
 }
