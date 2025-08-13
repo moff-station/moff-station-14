@@ -66,12 +66,14 @@
     tags:
     - Crowbar
     - CrowbarRed
+    - SurvivalBoxInsertable # Moffstation - Chefs rejoice, Nutribrick removed
   - type: Sprite
     layers:
     - state: icon
     - state: cover-icon
       color: "#990000"
   - type: Item
+    size: Small # Moffstation - Chefs rejoice, Nutribrick removed
     storedSprite:
       state: red-storage
       sprite: Objects/Tools/crowbar.rsi
