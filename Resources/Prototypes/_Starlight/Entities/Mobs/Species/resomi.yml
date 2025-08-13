@@ -204,6 +204,9 @@
       Unsexed: UnisexResomi
   - type: Speech
     speechVerb: Resomi
+    speechSounds: UnisexResomi
+  - type: TypingIndicator
+    proto: resomi
     allowedEmotes: ['Chirp', 'Trill', 'Scree', 'Call', 'Squawk']
   - type: Tag
     tags:
