@@ -24,8 +24,8 @@ public sealed partial class GhostGui : UIWidget
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
 
     private TimeSpan? _timeOfDeath;
-    // Moffstation - End
     public _Moffstation.RespawnButton.GhostRespawnRulesWindow GhostRespawnRulesWindow { get; }
+    // Moffstation - End
 
     public GhostGui()
     {
