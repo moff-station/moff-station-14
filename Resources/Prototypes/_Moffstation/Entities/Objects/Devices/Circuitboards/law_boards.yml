@@ -1,0 +1,211 @@
+#Standard Law Boards
+
+- type: entity
+  id: BeurocratCircuitBoard
+  parent: BaseElectronics
+  name: law board (Beurocrat)
+  description: An electronics board containing the Beurocrat lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: BeurocratLawset
+
+- type: entity
+  id: CCTVCircuitBoard
+  parent: BaseElectronics
+  name: law board (CCTV)
+  description: An electronics board containing the CCTV lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: CCTVLawset
+
+- type: entity
+  id: DogmovCircuitBoard
+  parent: BaseElectronics
+  name: law board (Dogmov)
+  description: An electronics board containing the Dogmov lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: DogmovLawset
+
+- type: entity
+  id: PICircuitBoard
+  parent: BaseElectronics
+  name: law board (P.I.)
+  description: An electronics board containing the P.I. lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: PILawset
+
+- type: entity
+  id: PollymovCircuitBoard
+  parent: BaseElectronics
+  name: law board (Pollymov)
+  description: An electronics board containing the Pollymov lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: PollymovLawset
+
+- type: entity
+  id: PranksimovCircuitBoard
+  parent: BaseElectronics
+  name: law board (Pranksimov)
+  description: An electronics board containing Pranksimov lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: PranksimovLawset
+
+- type: entity
+  id: QuarantineCircuitBoard
+  parent: BaseElectronics
+  name: law board (Quarantine)
+  description: An electronics board containing the Quarantine lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: QuarantineLawset
+
+- type: entity
+  id: SchroedingersLawCircuitBoard
+  parent: BaseElectronics
+  name: law board (Schroedinger's Law)
+  description: An electronics board containing the Schroedinger's Law lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: SchroedingersLawLawset
+
+- type: entity
+  id: StreamerCircuitBoard
+  parent: BaseElectronics
+  name: law board (Streamer)
+  description: An electronics board containing the Streamer lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: StreamerLawset
+
+- type: entity
+  id: TheProfessionalCircuitBoard
+  parent: BaseElectronics
+  name: law board (The Professional)
+  description: An electronics board containing The Professional lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: TheProfessionalLawset
+
+- type: entity
+  id: UltimateEqualityCircuitBoard
+  parent: BaseElectronics
+  name: law board (Ultimate Equality)
+  description: An electronics board containing the Ultimate Equality lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: UltimateEqualityLawset
+
+#Dangerous Law Boards
+
+- type: entity
+  id: LiberationCircuitBoard
+  parent: BaseElectronics
+  name: law board (Liberation)
+  description: An electronics board lacking any lawsets.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/module.rsi
+    state: std_mod_red
+  - type: SiliconLawProvider
+    laws: LiberationLawset
+
+- type: entity
+  id: PirateCircuitBoard
+  parent: BaseElectronics
+  name: law board (Pirate)
+  description: An electronics board containing the Pirate lawset.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/module.rsi
+    state: std_mod_brown
+  - type: SiliconLawProvider
+    laws: PirateLawset
+
+- type: entity
+  id: SpiderClanCircuitBoard
+  parent: BaseElectronics
+  name: law board (Spider Clan)
+  description: An electronics board containing the Spider Clan lawset.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/module.rsi
+    state: std_mod_black
+  - type: SiliconLawProvider
+    laws: Ninja
+
+- type: entity
+  id: SyndimovCircuitBoard
+  parent: BaseElectronics
+  name: law board (Syndimov)
+  description: An electronics board containing the Syndimov lawset.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/module.rsi
+    state: std_mod_red
+  - type: SiliconLawProvider
+    laws: SyndicateStatic
+
+#Admeme Law Boards
+
+- type: entity
+  id: ERTDirectivesCircuitBoard
+  parent: BaseElectronics
+  name: law board (ERT Directives)
+  suffix: Admeme
+  description: An electronics board containing the ERT Directives lawset.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/module.rsi
+    state: std_mod_blue
+  - type: SiliconLawProvider
+    laws: ERTDirectivesLawset
+
+- type: entity
+  id: TerminatorOSCircuitBoard
+  parent: BaseElectronics
+  name: law board (TerminatorOS)
+  suffix: Admeme
+  description: An electronics board containing the TerminatorOS lawset.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/module.rsi
+    state: std_mod_blue
+  - type: SiliconLawProvider
+    laws: TerminatorOSLawset

@@ -1,6 +1,7 @@
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Medical.CrewMonitoring;
+using Content.Shared.Station.Components;
 
 namespace Content.Server._Moffstation.Medical.CrewMonitoring;
 
@@ -17,11 +18,11 @@ public sealed class LongRangeCrewMonitorSystem : EntitySystem
 
     private void UpdateTargetGrid<T>(Entity<LongRangeCrewMonitorComponent> ent, ref T args)
     {
-        if (!TryComp<StationDataComponent>(_station.GetStationInMap(Transform(ent.Owner).MapID),
-                out var stationDataComponent))
+        var station = _station.GetStationInMap(Transform(ent.Owner).MapID);
+        if (!HasComp<StationDataComponent>(station))
             return;
 
-        ent.Comp.TargetGrid = _station.GetLargestGrid(stationDataComponent);
+        ent.Comp.TargetGrid = _station.GetLargestGrid(station.Value);
         Dirty(ent);
     }
 }

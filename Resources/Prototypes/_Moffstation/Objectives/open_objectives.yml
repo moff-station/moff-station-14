@@ -123,6 +123,7 @@
   - type: TargetObjective
     title: objective-condition-teach-lesson
   - type: PickRandomPerson
+  - type: HighValueTargetSelection
   - type: EscapeShuttleCondition
 
 ## gather intel on someone
@@ -139,6 +140,7 @@
   - type: TargetObjective
     title: objective-condition-gather-intel
   - type: PickRandomPerson
+  - type: HighValueTargetSelection
   - type: EscapeShuttleCondition
 
 # Open-ended objective to leave a calling card
@@ -177,6 +179,7 @@
   - type: TargetObjective
     title: objective-condition-leave-card-on-person
   - type: PickRandomPerson
+  - type: HighValueTargetSelection
   - type: EscapeShuttleCondition
   - type: ObjectiveBlacklistRequirement
     blacklist:

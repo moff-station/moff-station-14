@@ -4,8 +4,8 @@ meta:
   engineVersion: 265.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/03/2025 15:23:25
-  entityCount: 1064
+  time: 08/08/2025 00:47:05
+  entityCount: 1066
 maps: []
 grids:
 - 1
@@ -2060,20 +2060,6 @@ entities:
     - type: Transform
       pos: -4.7512994,-4.388376
       parent: 1
-- proto: BriefcaseBrownFilled
-  entities:
-  - uid: 56
-    components:
-    - type: Transform
-      pos: -7.6572757,-1.4452826
-      parent: 1
-- proto: BriefcaseSyndieLobbyingBundleFilled
-  entities:
-  - uid: 57
-    components:
-    - type: Transform
-      pos: -7.462831,-1.2369492
-      parent: 1
 - proto: Bucket
   entities:
   - uid: 79
@@ -3186,6 +3172,18 @@ entities:
     - type: Transform
       pos: -3.6304555,-6.2189374
       parent: 1
+- proto: ClothingBackpackChameleonFill
+  entities:
+  - uid: 56
+    components:
+    - type: Transform
+      pos: -7.510039,-1.3249092
+      parent: 1
+  - uid: 57
+    components:
+    - type: Transform
+      pos: -7.690594,-1.4637985
+      parent: 1
 - proto: ClothingBeltChefFilled
   entities:
   - uid: 156
@@ -3324,8 +3322,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -2.5,-2.5
       parent: 1
-    - type: WirelessNetworkConnection
-      range: 10000
+    missingComponents:
+    - WirelessNetworkConnection
 - proto: CottonSeeds
   entities:
   - uid: 88
@@ -3370,7 +3368,7 @@ entities:
       parent: 1
 - proto: CrateServiceJanitorialSupplies
   entities:
-  - uid: 233
+  - uid: 172
     components:
     - type: Transform
       pos: -9.5,2.5
@@ -5051,6 +5049,16 @@ entities:
     components:
     - type: Transform
       pos: -3.488923,-10.285869
+      parent: 1
+- proto: HolopadBluespace
+  entities:
+  - uid: 226
+    components:
+    - type: MetaData
+      desc: An experimental floor-mounted device for projecting holographic images. Modified to be hidden from the call lists of other holopads.
+      name: discrete holopad
+    - type: Transform
+      pos: -5.5,-1.5
       parent: 1
 - proto: hydroponicsTray
   entities:
@@ -6825,6 +6833,15 @@ entities:
     - type: Transform
       pos: -14.5,3.5
       parent: 1
+- proto: WarpPoint
+  entities:
+  - uid: 229
+    components:
+    - type: Transform
+      pos: -5.5,-2.5
+      parent: 1
+    - type: WarpPoint
+      location: Listening Outpost
 - proto: WaterCooler
   entities:
   - uid: 36
