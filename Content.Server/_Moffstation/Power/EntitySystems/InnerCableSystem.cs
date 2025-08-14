@@ -67,7 +67,7 @@ public sealed partial class InnerCableSystem : EntitySystem
     )
     {
         if (ResolveOrNull(providerEntity) is not { } provider ||
-            !containerId.StartsWith(provider.Comp.ConnectableContainersPrefix) ||
+            !provider.Comp.ConnectableContainers.Contains(containerId) ||
             !_container.TryGetContainer(provider, containerId, out var container) ||
             connectable == !provider.Comp.UnconnectableContainers.Contains(containerId))
             return;
@@ -184,7 +184,7 @@ public sealed partial class InnerCableSystem : EntitySystem
     {
         // Local to sidestep Robust Analyzer access restriction on "executing" a pure function on a readonly field.
         var id = container.ID;
-        return !provider.UnconnectableContainers.Contains(id) && id.StartsWith(provider.ConnectableContainersPrefix);
+        return !provider.UnconnectableContainers.Contains(id) && provider.ConnectableContainers.Contains(id);
     }
 
     private Entity<ExtensionCableProviderComponent>? GetOuterProviderOrNull(

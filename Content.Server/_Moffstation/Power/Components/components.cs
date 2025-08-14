@@ -25,10 +25,10 @@ public sealed partial class InnerCableProviderComponent : Component
 {
     /// <summary>
     /// This is used to identify which containers "work with" inner cable power. Specifically, containers on this entity
-    /// whose IDs start with this string are eligible to have their contents connect to this provider.
+    /// whose IDs match any of these strings are eligible to have their contents connect to this provider.
     /// </summary>
     [DataField(required: true)]
-    public string ConnectableContainersPrefix;
+    public List<string> ConnectableContainers;
 
     /// <summary>
     /// Containers in this list are NOT able to be powered so long as they are in this list. This is used to implement

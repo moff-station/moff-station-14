@@ -22,5 +22,5 @@ public sealed partial class BladeServerRackBoundUserInterfaceState(
     public readonly List<Slot> Slots = slots;
 
     [Serializable, NetSerializable]
-    public record Slot(NetEntity? Entity, bool Powered);
+    public record Slot(NetEntity? Entity, bool Powered, bool Locked);
 }

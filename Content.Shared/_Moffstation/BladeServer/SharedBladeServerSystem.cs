@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using System.Text;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
+using Content.Shared.Lock;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Whitelist;
@@ -44,6 +44,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         SubscribeLocalEvent<BladeServerRackComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
         SubscribeLocalEvent<BladeServerRackComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<BladeServerRackComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<BladeServerRackComponent, LockToggledEvent>(OnLockToggled);
 
         SubscribeLocalEvent<BladeServerRackComponent, ComponentRemove>(OnComponentRemove);
 
@@ -93,11 +94,6 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         Entity<BladeServerRackComponent> entity,
         ref EntInsertedIntoContainerMessage args)
     {
-        if (GetContainingSlotOrNull(entity, args.Entity) is { } slot)
-        {
-            _itemSlots.SetLock(entity, slot.Slot, true);
-        }
-
         UpdateUiAndVisuals(entity);
     }
 
@@ -109,6 +105,11 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     private void OnPowerChanged(Entity<BladeServerRackComponent> entity, ref PowerChangedEvent args)
     {
         UpdateVisuals(entity);
+    }
+
+    private void OnLockToggled(Entity<BladeServerRackComponent> entity, ref LockToggledEvent args)
+    {
+        UpdateUi(entity);
     }
 
     private void OnExamined(Entity<BladeServerRackComponent> entity, ref ExaminedEvent args)
@@ -175,14 +176,9 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
             slot.Item == null)
             return;
 
-        _itemSlots.SetLock(entity, slot.Slot, false);
+        slot.Ejecting = true;
         _itemSlots.TryEjectToHands(entity, slot.Slot, args.Actor, excludeUserAudio: true);
-
-        // If the item somehow wasn't removed, re-lock the slot.
-        if (slot.Item is not null)
-        {
-            _itemSlots.SetLock(entity, slot.Slot, true);
-        }
+        slot.Ejecting = false;
     }
 
     private void OnInsertPressed(Entity<BladeServerRackComponent> entity, ref BladeServerRackInsertPressedMessage args)
@@ -279,16 +275,11 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         ref GettingPickedUpAttemptEvent args
     )
     {
-        if (!_container.IsEntityInContainer(entity) ||
-            !TryComp(entity, out TransformComponent? xform) ||
-            !TryComp<BladeServerRackComponent>(xform.ParentUid, out var parentRack) ||
-            GetContainingSlotOrNull((xform.ParentUid, parentRack), entity) is not { } containingSlot)
-            return;
-
-        if (containingSlot.Slot.Locked)
+        if (_container.IsEntityInContainer(entity) &&
+            TryComp(entity, out TransformComponent? xform) &&
+            TryComp<BladeServerRackComponent>(xform.ParentUid, out var parentRack) &&
+            GetContainingSlotOrNull((xform.ParentUid, parentRack), entity) is { Ejecting: false })
         {
-            // Apparently even if the containing slot is locked, if you can directly left click on the entity, it'll be
-            // picked up "through" the slot.
             args.Cancel();
         }
     }
@@ -367,14 +358,17 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
         foreach (var idx in Enumerable.Range(0, entity.Comp.NumSlots))
         {
-            var slot = new ItemSlot { Whitelist = _slotWhitelist };
+            var slot = new ItemSlot
+            {
+                Whitelist = _slotWhitelist,
+                LockedFailPopup = "moff-blade-server-rack-slot-locked-fail",
+                WhitelistFailPopup = "moff-blade-server-rack-slot-whitelist-fail",
+            };
 
             _itemSlots.AddItemSlot(entity, entity.Comp.BladeSlotName(idx), slot);
 
             var inserted = getEntityToInsertForIndex(idx) is { } entityToInsert &&
                            _itemSlots.TryInsert(entity, slot, entityToInsert, user: null);
-
-            _itemSlots.SetLock(entity, slot, inserted);
 
             entity.Comp.BladeSlots.Add(new BladeSlot(slot));
         }
@@ -393,7 +387,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
         foreach (var slot in entity.Comp1.BladeSlots)
         {
-            _itemSlots.SetLock(entity, slot.Slot, false);
+            slot.Ejecting = true;
             _itemSlots.TryEject(entity, slot.Slot, user: null, out _);
             _itemSlots.RemoveItemSlot(entity, slot.Slot, entity);
         }
@@ -416,7 +410,9 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
                 entity.Comp.BladeSlots.Select(it =>
                         new BladeServerRackBoundUserInterfaceState.Slot(
                             GetNetEntity(it.Item),
-                            it.IsPowerEnabled)
+                            it.IsPowerEnabled,
+                            it.Slot.Locked
+                        )
                     )
                     .ToList()
             )

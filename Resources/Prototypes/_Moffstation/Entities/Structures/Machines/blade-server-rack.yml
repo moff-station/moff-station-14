@@ -26,7 +26,11 @@
     powerLoad: 200
   - type: ExtensionCableReceiver
   - type: InnerCableProvider
-    connectableContainersPrefix: "blade-server-rack-slot"
+    connectableContainers:
+    - blade-server-rack-slot-0
+    - blade-server-rack-slot-1
+    - blade-server-rack-slot-2
+    - blade-server-rack-slot-3
   - type: WiresPanel
   - type: WiresVisuals
   - type: Machine
@@ -69,7 +73,17 @@
       path: /Audio/Ambience/Objects/server_fans.ogg
   - type: BladeServerRack
     bladeServerVisualsOffset: 0, -4
+  - type: AccessReader
+  - type: Lock
+    unlockOnClick: false
+  - type: LockedAnchorable
   - type: ItemSlots
+  - type: ItemSlotsLock
+    slots:
+    - blade-server-rack-slot-0
+    - blade-server-rack-slot-1
+    - blade-server-rack-slot-2
+    - blade-server-rack-slot-3
   - type: ContainerContainer
     containers:
       machine_board: !type:Container

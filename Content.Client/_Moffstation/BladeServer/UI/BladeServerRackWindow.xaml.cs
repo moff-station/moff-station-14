@@ -23,11 +23,11 @@ public sealed partial class BladeServerRackWindow : BaseWindow
         CloseButton.OnPressed += _ => Close();
     }
 
-    public void PopulateSlots(IEnumerable<(EntityUid?, bool)> slots)
+    public void PopulateSlots(IEnumerable<(EntityUid?, bool, bool)> slots)
     {
         Slots.RemoveAllChildren();
 
-        foreach (var (index, (item, powered)) in slots.Index())
+        foreach (var (index, (item, powered, locked)) in slots.Index())
         {
             var control = new BladeServerControl
             {
@@ -39,6 +39,7 @@ public sealed partial class BladeServerRackWindow : BaseWindow
             control.OnInsertPressed += () => OnInsertPressed?.Invoke(index);
             control.OnPowerPressed += () => OnPowerPressed?.Invoke(index);
             control.SetPowered(powered);
+            control.SetLocked(locked);
             Slots.AddChild(control);
         }
     }

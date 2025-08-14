@@ -71,4 +71,10 @@ public sealed partial class BladeServerControl : Control
     {
         PowerButton.Modulate = powered ? Color.White : Color.DarkGray;
     }
+
+    public void SetLocked(bool locked)
+    {
+        EjectButton.Modulate = locked ? Color.DarkGray : Color.White;
+        InsertButton.Modulate = locked ? Color.DarkGray : Color.White;
+    }
 }

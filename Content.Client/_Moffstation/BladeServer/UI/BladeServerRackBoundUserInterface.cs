@@ -27,7 +27,7 @@ public sealed class BladeServerRackBoundUserInterface(EntityUid owner, Enum uiKe
         _window.OnInsertPressed += idx => SendPredictedMessage(new BladeServerRackInsertPressedMessage(idx));
         _window.OnPowerPressed += OnPowerPressed;
 
-        _window.PopulateSlots(comp.BladeSlots.Select(it => (it.Item, IsPowered: it.IsPowerEnabled)));
+        _window.PopulateSlots(comp.BladeSlots.Select(it => (it.Item, IsPowered: it.IsPowerEnabled, it.Slot.Locked)));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -38,7 +38,7 @@ public sealed class BladeServerRackBoundUserInterface(EntityUid owner, Enum uiKe
             state is not BladeServerRackBoundUserInterfaceState cast)
             return;
 
-        _window.PopulateSlots(cast.Slots.Select(it => (_entityMan.GetEntity(it.Entity), it.Powered)));
+        _window.PopulateSlots(cast.Slots.Select(it => (_entityMan.GetEntity(it.Entity), it.Powered, it.Locked)));
     }
 
     private void OnServerBladePressed(int slotIndex, GUIBoundKeyEventArgs args)

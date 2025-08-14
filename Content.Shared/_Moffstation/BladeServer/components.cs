@@ -85,6 +85,14 @@ public sealed partial class BladeSlot(ItemSlot slot)
     /// The entity in this slot.
     /// </summary>
     public EntityUid? Item => Slot.Item;
+
+    /// <summary>
+    /// Whether or not this slot is currently ejecting. This is something of a hack to enable a UI button to eject
+    /// the contents of this slot while disallowing other mechanisms which would remove the contents of this slot
+    /// (eg. picking up by hand).
+    /// </summary>
+    [Access(typeof(SharedBladeServerSystem))]
+    public bool Ejecting = false;
 }
 
 /// <summary>

@@ -10,6 +10,9 @@ moff-blade-server-rack-slot-eject = Eject
 moff-blade-server-rack-slot-insert = Insert
 moff-blade-server-rack-slot-power-toggle = Toggle Power
 
+moff-blade-server-rack-slot-locked-fail = It's locked!
+moff-blade-server-rack-slot-whitelist-fail = That doesn't fit!
+
 moff-blade-server-rack-examine-empty = It contains [color=#1f8ab2]no blades[/color].
 moff-blade-server-rack-examine-single = It contains only {$slot}.
 moff-blade-server-rack-examine-multiple-start = It contains
