@@ -268,6 +268,12 @@ public sealed partial class GunComponent : Component
     // Moffstation - Start - Gun Recoil Kick
     [DataField]
     public RecoilKick? RecoilKick;
+
+    /// <summary>
+    /// Odds that the gun will fire upon landing on the ground
+    /// </summary>
+    [DataField]
+    public float FireOnLandChance = 0.1f;
     // Moffstation - End
 }
 
