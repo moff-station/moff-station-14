@@ -25,7 +25,7 @@ DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 CHANGELOG_FILE = "Resources/Changelog/Mofflog.yml"
 
-TYPES_TO_EMOJI = {"Fix": "🐛", "Add": "🆕", "Remove": "❌", "Tweak": "⚒️"}
+TYPES_TO_EMOJI = {"Fix": "<:barry:1333171778872279153>", "Add": ":new:", "Remove": "<:killsmite:1322919674413056081>", "Tweak": "<:godo:1378009287321976912>️"}
 
 ChangelogEntry = dict[str, Any]
 
