@@ -11,7 +11,7 @@
         <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
             <Label
                 Name="SlotLabel"
-                Text="{Loc blade-server-rack-slot-entity-unknown}"
+                Text="{Loc moff-blade-server-rack-slot-entity-unknown}"
                 StyleClasses="ConsoleSubHeading"
                 HorizontalAlignment="Center"
                 Margin="0 5 0 5" />
@@ -67,7 +67,7 @@
                         </PanelContainer.PanelOverride>
                         <TextureButton
                             Name="PowerButton"
-                            ToolTip="{Loc 'blade-server-rack-slot-power-toggle'}"
+                            ToolTip="{Loc 'moff-blade-server-rack-slot-power-toggle'}"
                             TexturePath="/Textures/Interface/VerbIcons/spare/poweronoff.svg.192dpi.png"
                             Margin="5" />
                         <!-- Extra margin on the power button because the texture has no built-in margin -->
@@ -80,11 +80,11 @@
                         </PanelContainer.PanelOverride>
                         <TextureButton
                             Name="EjectButton"
-                            ToolTip="{Loc 'blade-server-rack-slot-eject'}"
+                            ToolTip="{Loc 'moff-blade-server-rack-slot-eject'}"
                             TexturePath="/Textures/Interface/VerbIcons/eject.svg.192dpi.png" />
                         <TextureButton
                             Name="InsertButton"
-                            ToolTip="{Loc 'blade-server-rack-slot-insert'}"
+                            ToolTip="{Loc 'moff-blade-server-rack-slot-insert'}"
                             TexturePath="/Textures/Interface/VerbIcons/insert.svg.192dpi.png" />
                     </PanelContainer>
                 </BoxContainer>

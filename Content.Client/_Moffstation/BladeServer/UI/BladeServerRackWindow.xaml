@@ -35,7 +35,7 @@
 
             <!-- Screen foreground -->
             <BoxContainer Orientation="Vertical">
-                <Label Text="{Loc 'blade-server-rack-window-title'}"
+                <Label Text="{Loc 'moff-blade-server-rack-window-title'}"
                        StyleClasses="ConsoleHeading"
                        HorizontalAlignment="Center" Margin="0 5 0 0" />
                 <BoxContainer Orientation="Vertical" Name="Slots">
@@ -47,7 +47,7 @@
         <!--Footer-->
         <BoxContainer Orientation="Horizontal" SetHeight="28" HorizontalExpand="True">
             <Label Name="Footer"
-                   Text="{Loc 'blade-server-rack-window-footer-flavor'}"
+                   Text="{Loc 'moff-blade-server-rack-window-footer-flavor'}"
                    StyleClasses="WindowFooterText"
                    HorizontalAlignment="Right"
                    HorizontalExpand="True"

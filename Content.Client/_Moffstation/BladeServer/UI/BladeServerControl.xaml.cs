@@ -37,7 +37,7 @@ public sealed partial class BladeServerControl : Control
             string contentLabel;
             if (!slotFilled)
             {
-                contentLabel = Loc.GetString("blade-server-rack-slot-empty");
+                contentLabel = Loc.GetString("moff-blade-server-rack-slot-empty");
             }
             else if (_entMan.TryGetComponent<MetaDataComponent>(value, out var meta))
             {
@@ -45,12 +45,12 @@ public sealed partial class BladeServerControl : Control
             }
             else
             {
-                contentLabel = Loc.GetString("blade-server-rack-slot-entity-unknown");
+                contentLabel = Loc.GetString("moff-blade-server-rack-slot-entity-unknown");
             }
 
             SlotLabel.Text = Loc.GetString(
-                "blade-server-rack-slot-status",
-                ("index", Index),
+                "moff-blade-server-rack-slot-status",
+                ("index", Index + 1),
                 ("content", contentLabel)
             );
 

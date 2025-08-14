@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Text;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Power;
@@ -41,6 +43,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         SubscribeLocalEvent<BladeServerRackComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<BladeServerRackComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
         SubscribeLocalEvent<BladeServerRackComponent, PowerChangedEvent>(OnPowerChanged);
+        SubscribeLocalEvent<BladeServerRackComponent, ExaminedEvent>(OnExamined);
 
         SubscribeLocalEvent<BladeServerRackComponent, ComponentRemove>(OnComponentRemove);
 
@@ -108,6 +111,59 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         UpdateVisuals(entity);
     }
 
+    private void OnExamined(Entity<BladeServerRackComponent> entity, ref ExaminedEvent args)
+    {
+        if (entity.Comp.BladeSlots.All(it => it.Item == null))
+        {
+            args.PushMarkup(Loc.GetString("moff-blade-server-rack-examine-empty"));
+            return;
+        }
+
+        if (!args.IsInDetailsRange)
+        {
+            args.PushMarkup(
+                Loc.GetString(
+                    "moff-blade-server-rack-examine-distant",
+                    ("numBlades", entity.Comp.BladeSlots.Count(it => it.Item != null))
+                )
+            );
+            return;
+        }
+
+        var slots = new List<string>();
+        foreach (var (idx, slot) in entity.Comp.BladeSlots.Index())
+        {
+            if (!TryComp(slot.Item, out MetaDataComponent? meta))
+                continue;
+
+            var slotText = Loc.GetString(
+                "moff-blade-server-rack-examine-slot",
+                ("index", idx + 1),
+                ("name", meta.EntityName)
+            );
+            slots.Add(slotText);
+        }
+
+        if (slots.Count <= 1)
+        {
+            args.PushMarkup(
+                Loc.GetString("moff-blade-server-rack-examine-single", ("slot", slots.Single()))
+            );
+            return;
+        }
+
+        using (args.PushGroup(nameof(BladeServerRackComponent)))
+        {
+            args.PushMarkup(Loc.GetString("moff-blade-server-rack-examine-multiple-start"));
+            foreach (var slot in slots)
+            {
+                args.PushMarkup(
+                    Loc.GetString("moff-blade-server-rack-examine-multiple-slot-line", ("slot", slot))
+                );
+            }
+        }
+    }
+
     private void OnComponentRemove(Entity<BladeServerRackComponent> entity, ref ComponentRemove args)
     {
         ClearSlots(entity);
@@ -120,7 +176,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
             return;
 
         _itemSlots.SetLock(entity, slot.Slot, false);
-        _itemSlots.TryEjectToHands(entity, slot.Slot, args.Actor);
+        _itemSlots.TryEjectToHands(entity, slot.Slot, args.Actor, excludeUserAudio: true);
 
         // If the item somehow wasn't removed, re-lock the slot.
         if (slot.Item is not null)
@@ -135,7 +191,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
             return;
 
         // Try to insert what the user's holding into the slot.
-        _itemSlots.TryInsertFromHand(entity, slot.Slot, args.Actor);
+        _itemSlots.TryInsertFromHand(entity, slot.Slot, args.Actor, excludeUserAudio: true);
     }
 
     private void OnPowerPressed(Entity<BladeServerRackComponent> entity, ref BladeServerRackPowerPressedMessage args)
@@ -175,7 +231,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         else
         {
             // The slot is empty, so try to insert what the user's holding into it.
-            _itemSlots.TryInsertFromHand(entity, slot.Slot, args.Actor);
+            _itemSlots.TryInsertFromHand(entity, slot.Slot, args.Actor, excludeUserAudio: true);
         }
     }
 

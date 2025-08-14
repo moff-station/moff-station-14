@@ -14,6 +14,11 @@
     containers:
     - machine_parts
     - machine_board
+  - type: Item
+    size: Huge
+  - type: MultiHandedItem
+  - type: Speech
+    speechVerb: Robotic
 
 - type: entity
   id: ResearchAndDevelopmentBladeServer
@@ -38,7 +43,6 @@
     - state: maintenance-panel
       visible: false
       map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-  - type: Item
   - type: InnerCableReceiver
   - type: Machine
     board: ResearchAndDevelopmentServerMachineCircuitboard
