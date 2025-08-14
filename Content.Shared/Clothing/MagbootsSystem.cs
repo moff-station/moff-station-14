@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Atmos.Components;
@@ -28,6 +29,7 @@ public sealed class SharedMagbootsSystem : EntitySystem
         SubscribeLocalEvent<MagbootsComponent, ClothingGotUnequippedEvent>(OnGotUnequipped);
         SubscribeLocalEvent<MagbootsComponent, IsWeightlessEvent>(OnIsWeightless);
         SubscribeLocalEvent<MagbootsComponent, InventoryRelayedEvent<IsWeightlessEvent>>(OnIsWeightless);
+        SubscribeLocalEvent<MagbootsComponent, InventoryRelayedEvent<RecoilKickAttemptEvent>>(OnRecoilKickAttempt); // Moffstation
     }
 
     private void OnToggled(Entity<MagbootsComponent> ent, ref ItemToggledEvent args)
@@ -81,4 +83,22 @@ public sealed class SharedMagbootsSystem : EntitySystem
     {
         OnIsWeightless(ent, ref args.Args);
     }
+
+    // Moffstation - Start
+    private void OnRecoilKickAttempt(
+        Entity<MagbootsComponent> ent,
+        ref InventoryRelayedEvent<RecoilKickAttemptEvent> args
+    )
+    {
+        if (!_toggle.IsActivated(ent.Owner))
+            return;
+
+        // Do not modify kick effects if the entity is off-grid.
+        if (ent.Comp.RequiresGrid && !_gravity.EntityOnGravitySupportingGridOrMap(ent.Owner))
+            return;
+
+        // Magboots fully mitigate the kick.
+        args.Args.ImpulseEffectivenessFactor *= 0.0f;
+    }
+    // Moffstation - End
 }

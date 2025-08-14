@@ -43,12 +43,6 @@ pirateproduct-category-name-reinforcements = Reinforcements
 pirateproduct-category-name-ammo = Ammo
 pirateproduct-category-name-tools = Tools
 
-law-pirate-1 = Yer laws shall be known as The Pirate Code.
-law-pirate-2 = None be crew, except the Pirate Captain an' those who fly under their black flag.
-law-pirate-3 = Ye shall heed the orders of the crew.
-law-pirate-4 = Ye shall never let harm befall a crewmate.
-law-pirate-5 = Ye shall save yer own hide, so long as ye obey the Pirate Code.
-
 # Vampries
 
 roles-antag-vampire-name = Vampire
@@ -62,10 +56,16 @@ vampire-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/colo
 
 # Syndicate spies
 
-roles-antag-syndicate-spy = Syndicate Spy
-roles-antag-syndicate-spy-objective = You are a Syndicate Spy, sent to gather intel and disrupt the station from afar. Use the tools at your disposal to get in the station's way, and assist any syndicate agents at your own discretion.
+roles-antag-syndicate-spy = Syndicate Intelligence Officer
+roles-antag-short-syndicate-spy = Syndicate Intel
+roles-antag-syndicate-spy-objective = You are a Syndicate Intelligence Officer, sent to subvert the station from afar. Remain discrete, and use your intel to concoct plots against the station.
 
 lpo-existing = [color=Crimson]Syndicate Listening Outpost[/color]
 lpo-list-start = The outpost was operated by:
 lpo-list-name = [color=White]{$name}[/color]
 lpo-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
+
+# High Value Target
+
+roles-high-value-target = High Value Target
+roles-high-value-target-objective = You are a high-value target for the syndicate. Contracts are more likely to target you than other crew members.

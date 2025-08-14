@@ -122,6 +122,13 @@
   order: 3
   lawString: law-syndicate-3
 
+#Moffstation - Start - Additional AI Law Boards
+- type: siliconLaw
+  id: Syndicate4
+  order: 4
+  lawString: law-syndicate-4
+#Moffstation - End
+
 # Syndicate cyborg laws
 # intentionally excluded from IonStormLawsets
 - type: siliconLawset
@@ -130,6 +137,7 @@
   - Syndicate1
   - Syndicate2
   - Syndicate3
+  - Syndicate4 #Moffstation - Additional AI Law Boards
   obeysTo: laws-owner-syndicate
 
 # Ninja conversion laws
@@ -595,7 +603,18 @@
     Drone: 0.5
     Ninja: 0.25
     # Moffstation - Start - Add custom lawsets
-    StreamerLawset: 1
+    BeurocratLawset: 1
+    CCTVLawset: 1
+    DogmovLawset: 1
+    LiberationLawset: 0.25
+    PILawset: 1
     PirateLawset: 0.25
+    PollymovLawset: 1
+    PranksimovLawset: 0.5
+    QuarantineLawset: 1
+    SchroedingersLawLawset: 1
+    StreamerLawset: 1
+    TheProfessionalLawset: 0.5
+    UltimateEqualityLawset: 0.5
     # Moffstation - End
 

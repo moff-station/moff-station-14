@@ -26,3 +26,11 @@ station-ai-icon-u = U
 station-ai-icon-wasp = Wasp
 
 station-ai-hologram-angel = Angel form
+station-ai-hologram-arachnid = Arachnid form
+station-ai-hologram-diona = Diona form
+station-ai-hologram-dwarf = Dwarf form
+station-ai-hologram-elf = Elf form
+station-ai-hologram-justice = Justice form
+station-ai-hologram-moth = Moth form
+station-ai-hologram-reptilian = Reptilian form
+station-ai-hologram-vox = Vox form

@@ -1,9 +1,9 @@
 using System.Numerics;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.GameTicking.Rules;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Station.Components;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -32,7 +32,7 @@ public sealed class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComponent>
         }
 
         // Get the map that the main station exists on
-        if (_stationSystem.GetLargestGrid(data) is not { } largestGrid)
+        if (_stationSystem.GetLargestGrid(station.Value) is not { } largestGrid)
         {
             Log.Warning($"Unable to find map for GameRule {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
