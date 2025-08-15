@@ -21,7 +21,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
 using Content.Shared.Movement.Systems;
-using Content.Shared._Starlight.Flash.Components;
+using Content.Shared._Starlight.Flash.Components; // Starlight - Resomi Flash Vulnerability.
 
 namespace Content.Shared.Flash;
 
