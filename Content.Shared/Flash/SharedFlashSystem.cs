@@ -155,10 +155,12 @@ public abstract class SharedFlashSystem : EntitySystem
         bool melee = false,
         TimeSpan? stunDuration = null)
     {
+		// Startlight - Start - Resomi Flash Vulnerability
         if (TryComp<FlashModifierComponent>(target, out var CompUser))
         {
             flashDuration *= CompUser.Modifier;
         }
+		// Starlight - End - Resomi Flash Vulnerability
 
         var attempt = new FlashAttemptEvent(target, user, used);
         RaiseLocalEvent(target, ref attempt, true);
