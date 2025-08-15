@@ -367,11 +367,6 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
         }
 
-        // Starlight - Start - Gun knockback for smaller species.
-        var NonEmptyGunShotEvent = new OnNonEmptyGunShotEvent(user, ev.Ammo);
-        RaiseLocalEvent(gunUid, ref NonEmptyGunShotEvent);
-        // Starlight - End - Gun knockback for smaller species.
-
         // Handle burstfire
         if (gun.SelectedMode == SelectiveFire.Burst)
         {
@@ -698,11 +693,6 @@ public record struct ShooterImpulseEvent()
 {
     public bool Push;
 };
-
-// Starlight - Start - Gun knockback for smaller species.
-[ByRefEvent]
-public record struct OnNonEmptyGunShotEvent(EntityUid User, List<(EntityUid? Uid, IShootable Shootable)> Ammo);
-// Starlight - End - Gun knockback for smaller species.
 
 public enum EffectLayers : byte
 {
