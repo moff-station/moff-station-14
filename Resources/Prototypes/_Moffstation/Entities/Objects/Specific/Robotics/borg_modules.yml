@@ -10,9 +10,9 @@
     - state: pirate
     - state: icon-pirate
   - type: ItemBorgModule
-    items:
-    - WeaponGrapplingGun
-    - EnergyCutlass
-    - WeaponShotgunBlackbox
+    hands:
+    - item: WeaponGrapplingGun
+    - item: EnergyCutlass
+    - item: WeaponShotgunBlackbox
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }

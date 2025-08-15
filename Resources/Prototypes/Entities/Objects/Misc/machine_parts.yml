@@ -12,6 +12,9 @@
   - type: Stack
     count: 1
   - type: PhysicalComposition #Moffstation - Revert machine parts - Allows parts to be recycled/destroyed
+  - type: Tag
+    tags:
+    - ConstructionMaterial
 
 - type: entity
   id: MicroManipulatorStockPart
