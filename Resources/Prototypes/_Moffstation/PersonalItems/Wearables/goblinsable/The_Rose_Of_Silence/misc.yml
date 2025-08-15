@@ -5,6 +5,13 @@
   description: Once top of the line headphones, now all these play are sappy love songs.
   suffix: PersonalItem
   components:
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: ContainerFill
+  - type: Headset
+  - type: EncryptionKeyHolder
+    keySlots: 4
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
     layers:
