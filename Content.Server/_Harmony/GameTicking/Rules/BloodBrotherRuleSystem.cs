@@ -21,7 +21,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
-using Content.Shared.Roles;
+using Content.Shared.Roles.Components;
 using Content.Shared.Zombies;
 using Robust.Server.Player;
 using Robust.Shared.Utility;
