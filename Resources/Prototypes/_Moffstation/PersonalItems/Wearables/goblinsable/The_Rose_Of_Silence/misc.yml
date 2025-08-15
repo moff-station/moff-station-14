@@ -5,49 +5,12 @@
   description: Once top of the line headphones, now all these play are sappy love songs.
   suffix: PersonalItem
   components:
-  - type: ContainerContainer
-    containers:
-      key_slots: !type:Container
-  - type: ContainerFill
-  - type: Headset
-  - type: EncryptionKeyHolder
-    keySlots: 4
   - type: Item
     sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
-    layers:
-    - state: icon
-      map: [ "enum.ToggleableVisuals.Layer" ]
   - type: Clothing
-    equippedPrefix: off
     sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
-    slots:
-    - HEAD
-    - EARS
-    - NECK
-  - type: ToggleableVisuals
-    spriteLayer: enum.ToggleableVisuals.Layer
-    clothingVisuals:
-      head:
-      - state: on-equipped-HELMET
-      ears:
-      - state: on-equipped-EARS
-      neck:
-      - state: on-equipped-NECK
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.ToggleableVisuals.Enabled:
-        enum.ToggleableVisuals.Layer:
-          True: {state: icon-on}
-          False: {state: icon}
-  - type: ItemToggle
-    predictable: false
-    soundActivate:
-      path: /Audio/Items/flashlight_on.ogg
-    soundDeactivate:
-      path: /Audio/Items/flashlight_off.ogg
 - type: loadout
   id: PersonalItemRoseHeadphones
   storage:
