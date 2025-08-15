@@ -1,6 +1,6 @@
 ﻿using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Roles;
-using Content.Shared.Changeling;
+using Content.Shared.Roles.Components;
 
 namespace Content.Server.GameTicking.Rules;
 

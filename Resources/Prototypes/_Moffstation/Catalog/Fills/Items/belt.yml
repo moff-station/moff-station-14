@@ -18,3 +18,15 @@
     - id: MagazineMagnum
       amount: 2
     - id: Zipties
+
+- type: entity # Intended to replace the detective's normal shoulder holster, or in case an officer wants the holster.
+  id: ClothingBeltHolsterFilledOfficer
+  parent: ClothingBeltHolster
+  suffix: Filled, Officer
+  components:
+  - type: StorageFill
+    contents:
+    - id: HoloprojectorSecurity
+    - id: RadioHandheldSecurity
+    - id: Zipties
+    - id: Zipties

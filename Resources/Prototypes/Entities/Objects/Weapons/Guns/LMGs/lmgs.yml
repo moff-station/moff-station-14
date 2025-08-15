@@ -27,6 +27,11 @@
     angleIncrease: 4
     angleDecay: 16
     fireRate: 8
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 16
+      staminaMultiplier: 5
+    # Moffstation - End - Add gun recoil.
     selectedMode: FullAuto
     availableModes:
       - FullAuto
