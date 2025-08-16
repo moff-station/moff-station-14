@@ -18,46 +18,13 @@
           Quantity: 9
   - type: SliceableFood
     count: 3
-    slice: FoodMeatCutlet
+    slice: FoodMeatResomiCutlet
   - type: Item
     inhandVisuals:
       left:
       - state: resomi-inhand-left
       right:
       - state: resomi-inhand-right
-
-- type: entity
-  name: cooked resomi
-  parent: FoodMeatBase
-  id: FoodMeatResomiCooked
-  description: A cooked piece of resomi. Still gross.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
-    state: resomi-cooked
-  - type: Tag
-    tags:
-    - Cooked
-    - Meat
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 5
-  - type: SliceableFood
-    count: 3
-    slice: FoodMeatResomiCutletCooked
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: resomi-inhand-left
-        color: "#641982"
-      right:
-      - state: resomi-inhand-right
-        color: "#641982"
 
 - type: entity
   name: raw resomi cutlet
@@ -79,28 +46,6 @@
           Quantity: 3
         - ReagentId: Fat
           Quantity: 2
-
-- type: entity
-  name: cooked resomi cutlet
-  parent: FoodMeatBase
-  id: FoodMeatResomiCutletCooked
-  description: A cooked cutlet of resomi. Still gross.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
-    state: resomicutlet-cooked
-  - type: Tag
-    tags:
-    - Cooked
-    - Meat
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2.5
-        - ReagentId: Protein
-          Quantity: 2.5
 
 - type: entity
   name: Kentucky Fried Resomi
