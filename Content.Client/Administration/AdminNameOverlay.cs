@@ -36,6 +36,7 @@ internal sealed class AdminNameOverlay : Overlay
     private float _ghostHideDistance;
     private int _overlayStackMax;
     private float _overlayMergeDistance;
+    private bool _displayWatchlist; // Moffstation
 
     //TODO make this adjustable via GUI?
     private static readonly FrozenSet<ProtoId<RoleTypePrototype>> Filter =
@@ -75,6 +76,8 @@ internal sealed class AdminNameOverlay : Overlay
         config.OnValueChanged(CCVars.AdminOverlayGhostFadeDistance, (f) => { _ghostFadeDistance = f; }, true);
         config.OnValueChanged(CCVars.AdminOverlayStackMax, (i) => { _overlayStackMax = i; }, true);
         config.OnValueChanged(CCVars.AdminOverlayMergeDistance, (f) => { _overlayMergeDistance = f; }, true);
+        // Moffstation
+        config.OnValueChanged(CCVars.AdminOverlayShowWatchlist, (show) => { _displayWatchlist = show; }, true);
     }
 
     private AdminOverlayAntagFormat UpdateOverlayFormat(string formatString)
@@ -233,6 +236,17 @@ internal sealed class AdminNameOverlay : Overlay
                     break;
             }
 
+            // Moffstation - Start - Visible watchlist indicator
+            // Watchlist status
+            if (playerInfo.HasWatchlist && _displayWatchlist)
+            {
+                color = Color.MediumPurple;
+                color.A = alpha;
+                args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, Loc.GetString("admin-note-editor-type-watchlist"), uiScale, playerInfo.Connected ? color : colorDisconnected);
+                currentOffset += lineoffset;
+            }
+            // Moffstation - End
+
             // Determine antag/role type name
             string? text;
             switch (_overlayFormat)
@@ -266,6 +280,7 @@ internal sealed class AdminNameOverlay : Overlay
                 : text;
             args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, label, uiScale, color);
             currentOffset += lineoffset;
+
 
             //Save the coordinates and size of the text block, for stack merge check
             drawnOverlays.Add((screenCoordinatesCenter, currentOffset));
