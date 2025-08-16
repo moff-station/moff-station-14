@@ -1,0 +1,154 @@
+- type: entity
+  name: raw resomi meat
+  parent: FoodMeatRawBase
+  id: FoodMeatResomi
+  description: Its... pink... gross.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
+    state: resomi
+  - type: Tag
+    tags:
+    - Meat
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 9
+  - type: SliceableFood
+    count: 3
+    slice: FoodMeatCutlet
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: resomi-inhand-left
+      right:
+      - state: resomi-inhand-right
+
+- type: entity
+  name: cooked resomi
+  parent: FoodMeatBase
+  id: FoodMeatResomiCooked
+  description: A cooked piece of resomi. Still gross.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
+    state: resomi-cooked
+  - type: Tag
+    tags:
+    - Cooked
+    - Meat
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Protein
+          Quantity: 5
+  - type: SliceableFood
+    count: 3
+    slice: FoodMeatResomiCutletCooked
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: resomi-inhand-left
+        color: "#641982"
+      right:
+      - state: resomi-inhand-right
+        color: "#641982"
+
+- type: entity
+  name: raw resomi cutlet
+  parent: FoodMeatRawBase
+  id: FoodMeatResomiCutlet
+  description: A cutlet of raw resomi. Remember to wash your hands!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
+    state: resomicutlet
+  - type: Tag
+    tags:
+    - Meat
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 3
+        - ReagentId: Fat
+          Quantity: 2
+
+- type: entity
+  name: cooked resomi cutlet
+  parent: FoodMeatBase
+  id: FoodMeatResomiCutletCooked
+  description: A cooked cutlet of resomi. Still gross.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
+    state: resomicutlet-cooked
+  - type: Tag
+    tags:
+    - Cooked
+    - Meat
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2.5
+        - ReagentId: Protein
+          Quantity: 2.5
+
+- type: entity
+  name: Kentucky Fried Resomi
+  parent: FoodMeatBase
+  id: FoodKentuckyFriedResomi
+  description: Small pieces of crispy chicken... wait... thats not chicken.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
+    state: resomibucket
+  - type: Tag
+    tags:
+    - Cooked
+    - Meat
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Protein
+          Quantity: 10
+  - type: Food
+    trash:
+    - FoodFriedResomiBucketEmpty
+  - type: SliceableFood
+    count: 3
+    slice: FoodMeatResomiCutlet
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: resomibucket-inhand-left
+      right:
+      - state: resomibucket-inhand-right
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: FoodPacketTrash
+  id: FoodFriedResomiBucketEmpty
+  name: empty resomi bucket
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
+    state: emptybucket
+  - type: Item
+    sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
+    inhandVisuals:
+      left:
+      - state: emptybucket-inhand-left
+      right:
+      - state: emptybucket-inhand-right

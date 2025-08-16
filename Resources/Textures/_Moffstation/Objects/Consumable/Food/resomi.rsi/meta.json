@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tgstation and modified by Huaqas (GitHub) at https://github.com/tgstation/tgstation/commit/40d75cc340c63582fb66ce15bf75a36115f6bdaa",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "resomi"
+        },
+        {
+            "name": "resomi-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "resomi-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "resomi-cooked"
+        },
+        {
+            "name": "resomicutlet"
+        },
+        {
+            "name": "resomicutlet-cooked"
+        },
+        {
+            "name": "emptybucket"
+        },
+        {
+            "name": "emptybucket-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "emptybucket-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "resomibucket"
+        },
+        {
+            "name": "resomibucket-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "resomibucket-inhand-left",
+            "directions": 4
+        }
+    ]
+}
