@@ -1,4 +1,5 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared.DeviceLinking; // Moffstation
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Radio.Components;
@@ -29,4 +30,18 @@ public sealed partial class IntercomComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public List<ProtoId<RadioChannelPrototype>> SupportedChannels = new();
+
+    // Moffstation - Start
+    [DataField]
+    public ProtoId<SinkPortPrototype> ToggleMicPort = "ToggleMicrophone";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> ToggleSpeakerPort = "ToggleSpeaker";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> CycleChannelPort = "CycleChannelForwards";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> CycleChannelBackwardsPort = "CycleChannelBackwards";
+    // Moffstation - End
 }

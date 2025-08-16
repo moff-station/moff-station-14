@@ -113,6 +113,14 @@
         enum.RadioDeviceVisualLayers.Speaker:
           True: { visible: true }
           False: { visible: false }
+  # Moffstation - Start
+  - type: DeviceLinkSink
+    ports:
+    - ToggleSpeaker
+    - ToggleMicrophone
+    - CycleChannelForwards
+    - CycleChannelBackwards
+  # Moffstation - End
 
 - type: entity
   id: IntercomAssembly
