@@ -1,0 +1,80 @@
+- type: marking
+  id: CervidFacialHairBeard
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: beard_s
+
+
+- type: marking
+  id: CervidFacialHairBeardLong
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: beard_long_s
+
+- type: marking
+  id: CervidFacialHairGoatee
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: goatee_s
+
+- type: marking
+  id: CervidFacialHairMoustacheLong
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: moustache_long_s
+
+- type: marking
+  id: CervidFacialHairMoustacheBeard
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: moustache_beard_s
+
+- type: marking
+  id: CervidFacialHairMutton
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: mutton_s
+
+- type: marking
+  id: CervidFacialHairNeckMane
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: neck_mane_s
+
+- type: marking
+  id: CervidFacialHairStubby
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  canBeDisplaced: false
+  speciesRestriction: [Cervidae]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/Cervidae/cervidae_facial_hair.rsi
+      state: stubby_s

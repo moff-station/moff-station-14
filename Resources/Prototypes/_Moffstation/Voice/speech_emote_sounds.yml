@@ -1,0 +1,40 @@
+# Cervidae Sounds
+- type: emoteSounds
+  id: MaleCervidae
+  params:
+    variation: 0.125
+  sounds:
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Whistle:
+      collection: Whistles
+    Sigh:
+      collection: MaleSigh
+    Scream:
+      path: /Audio/_Moffstation/Voice/Cervidae/cervidae_scream.ogg
+    Laugh:
+      path: /Audio/_Moffstation/Voice/Cervidae/cervidae_laugh.ogg
+    Crying:
+      path: /Audio/_Moffstation/Voice/Cervidae/cervidae_cry.ogg
+
+- type: emoteSounds
+  id: FemaleCervidae
+  params:
+    variation: 0.125
+  sounds:
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Whistle:
+      collection: Whistles
+    Sigh:
+      collection: FemaleSigh
+    Scream:
+      path: /Audio/_Moffstation/Voice/Cervidae/cervidae_scream.ogg
+    Laugh:
+      path: /Audio/_Moffstation/Voice/Cervidae/cervidae_laugh.ogg
+    Crying:
+      path: /Audio/_Moffstation/Voice/Cervidae/cervidae_cry.ogg

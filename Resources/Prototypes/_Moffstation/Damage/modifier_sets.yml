@@ -14,3 +14,10 @@
     Bloodloss: 1.0 # Vampires take this damage when they are out of blood
     Cellular: 0.0
     Holy: 1.0
+
+# Cervidae get more heat damage because fur
+- type: damageModifierSet
+  id: Cervidae
+  coefficients:
+    Heat: 1.2
+    Cold: 0.75
