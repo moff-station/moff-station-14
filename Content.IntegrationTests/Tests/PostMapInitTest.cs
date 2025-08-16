@@ -99,6 +99,7 @@ namespace Content.IntegrationTests.Tests
             "CS-Dust2",
             "WaterVapour",
             "Frezon",
+            "Prime",
             // Moffstation - End
         };
 
