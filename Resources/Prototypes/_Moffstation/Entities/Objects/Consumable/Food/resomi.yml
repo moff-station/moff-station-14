@@ -56,6 +56,9 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Consumable/Food/resomi.rsi
     state: resomibucket
+  - type: FlavorProfile
+    flavors:
+      - chicken
   - type: Tag
     tags:
     - Cooked
