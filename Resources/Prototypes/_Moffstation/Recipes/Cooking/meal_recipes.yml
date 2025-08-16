@@ -9,3 +9,16 @@
     UncookedAnimalProteins: 20
     Flour: 5
     Egg: 6
+
+- type: microwaveMealRecipe
+  id: RecipeKentuckyFriedResomi
+  name: kentucky fried resomi
+  result: FoodKentuckyFriedResomi
+  time: 15
+  group: Savory
+  solids:
+    FoodMeatResomiCutlet: 3
+    MaterialCardboard1: 1
+  reagents:
+    Flour: 5
+    Egg: 6
