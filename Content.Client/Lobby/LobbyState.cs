@@ -207,10 +207,12 @@ namespace Content.Client.Lobby
 
                 var chosenString = minutesToday switch
                 {
-                    < 180 => "lobby-state-playtime-comment-normal",
-                    < 360 => "lobby-state-playtime-comment-concerning",
-                    < 720 => "lobby-state-playtime-comment-grasstouchless",
-                    _ => "lobby-state-playtime-comment-selfdestructive"
+                    // Moffstation - Start - New playtime comments
+                    < 180 => "lobby-state-playtime-comment-little",
+                    < 360 => "lobby-state-playtime-comment-medidum",
+                    < 720 => "lobby-state-playtime-comment-alot",
+                    _ => "lobby-state-playtime-comment-too-much"
+                    // Moffstation - End
                 };
 
                 Lobby.PlaytimeComment.SetMarkup(Loc.GetString(chosenString, ("hours", hoursToday)));
