@@ -1,8 +1,10 @@
+# Moffstation - Default bible has been seperated out into BaseBible and Bible.
+# this is done inorder to give each additional bible it's own mixing type for
+# blessed liquids.
 - type: entity
-  name: bible
-  description: New Interstellar Version 2340.
+  id: BibleBase
   parent: BaseStorageItem
-  id: Bible
+  abstract: true
   components:
   - type: UseDelay
     delay: 10.0
@@ -29,10 +31,6 @@
     bibleUserOnly: true
   - type: Summonable
     specialItem: SpawnPointGhostRemilia
-  - type: ReactionMixer
-    mixMessage: "bible-mixing-success"
-    reactionTypes:
-    - Holy
   - type: Sprite
     sprite: Objects/Specific/Chapel/bible.rsi
     state: icon
@@ -56,10 +54,21 @@
     stealGroup: Bible
 
 - type: entity
-  parent: [Bible, BaseSyndicateContraband]
-  name: necronomicon
-  description: "There's a note: Klatuu, Verata, Nikto -- Don't forget it again!"
+  id: Bible
+  name: bible
+  parent: BibleBase
+  description: New Interstellar Version 2340.
+  components:
+  - type: ReactionMixer
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Holy
+
+- type: entity
   id: BibleNecronomicon
+  name: necronomicon
+  parent: [BibleBase, BaseSyndicateContraband]
+  description: "There's a note: Klatuu, Verata, Nikto -- Don't forget it again!"
   components:
   - type: Bible
     damage:
@@ -84,9 +93,9 @@
     sprite: Objects/Specific/Chapel/necronomicon.rsi
 
 - type: entity
-  parent: BaseAction
   id: ActionBibleSummon
   name: Summon familiar
+  parent: BaseAction
   description: Summon a familiar that will aid you and gain humanlike intelligence once inhabited by a soul.
   components:
   - type: Action
@@ -95,56 +104,68 @@
   - type: InstantAction
     event: !type:SummonActionEvent
 
-- type: entity
-  parent: Bible
-  name: tanakh
-  description: "For God's chosen crewmembers"
-  id: BibleTanakh
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/tanakh.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/tanakh.rsi
+#- type: entity # Avoid real-world books.
+#  parent: Bible
+#  name: tanakh
+#  description: "For God's chosen crewmembers"
+#  id: BibleTanakh
+#  components:
+#  - type: Sprite
+#    sprite: Objects/Specific/Chapel/tanakh.rsi
+#  - type: Item
+#    sprite: Objects/Specific/Chapel/tanakh.rsi
 
 - type: entity
-  parent: Bible
-  name: druidic tablet
-  description: "It's the mystery of the druids!"
   id: BibleDruid
+  name: druidic tablet
+  parent: BibleBase
+  description: "It's the mystery of the druids!"
   components:
+  - type: ReactionMixer # Moffstation - Added ReactionMixer for holy liquids.
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Druidic
   - type: Sprite
-    sprite: Objects/Specific/Chapel/mysteryofthedruids.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi # Moffstation - Updated sprites.
   - type: Item
-    sprite: Objects/Specific/Chapel/mysteryofthedruids.rsi
+    sprite: _Moffstation/Objects/Specific/Chapel/druidictablet.rsi # Moffstation - Updated sprites.
 
 - type: entity
-  parent: Bible
-  name: communist manifesto
-  description: "Remove the mask of humanity from Capital."
   id: BibleCommunistManifesto
+  name: communist manifesto
+  parent: BibleBase # Moffstation - Changed parent to allow for different ReactionMixers
+  description: "Remove the mask of humanity from Capital."
   components:
+  - type: ReactionMixer # Moffstation - Added ReactionMixer for holy liquids.
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - Communist
   - type: Sprite
     sprite: Objects/Specific/Chapel/communistmanifesto.rsi
   - type: Item
     sprite: Objects/Specific/Chapel/communistmanifesto.rsi
 
-- type: entity
-  parent: Bible
-  name: satanic bible
-  description: "What could possibly go wrong?"
-  id: BibleSatanic
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/satanicbible.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/satanicbible.rsi
+#- type: entity # Avoid real-world books.
+#  parent: Bible
+#  name: satanic bible
+#  description: "What could possibly go wrong?"
+#  id: BibleSatanic
+#  components:
+#  - type: Sprite
+#    sprite: Objects/Specific/Chapel/satanicbible.rsi
+#  - type: Item
+#    sprite: Objects/Specific/Chapel/satanicbible.rsi
 
 - type: entity
-  parent: Bible
-  name: codex nanotrasimus
-  description: "A familiar book containing the Sacred Operating Procedures."
   id: BibleNanoTrasen
+  name: codex nanotrasimus
+  parent: BibleBase # Moffstation - Changed parent to allow for different ReactionMixers
+  description: "A familiar book containing the Sacred Operating Procedures."
   components:
+  - type: ReactionMixer # Moffstation - Added ReactionMixer for holy liquids.
+    mixMessage: "bible-mixing-success"
+    reactionTypes:
+    - NanoTrasen
   - type: Sprite
     sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
   - type: Item
