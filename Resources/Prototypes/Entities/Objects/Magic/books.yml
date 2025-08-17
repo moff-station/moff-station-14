@@ -62,6 +62,19 @@
       balance:
         WizCoin: 10 # prices are balanced around this 10 point maximum and how strong the spells are
 
+# Dont give to anyone unless *really* funny
+- type: entity
+  id: WizardsGrimoireStupidWizcoins
+  name: archwizards debug grimoire
+  suffix: Wizard, Debug
+  parent: [ WizardsGrimoire, StorePresetSpellbook ]
+  components:
+  - type: Store
+    refundAllowed: true
+    ownerOnly: true # get your own tome!
+    balance:
+      WizCoin: 99999 # Debugging purposes only, having to spawn a new grimoire every time is really annoying
+
 - type: entity
   id: SpawnSpellbook
   name: spawn spellbook
