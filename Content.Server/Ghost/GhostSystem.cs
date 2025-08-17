@@ -204,6 +204,8 @@ namespace Content.Server.Ghost
             _eye.RefreshVisibilityMask(uid);
             var time = _gameTiming.CurTime;
             component.TimeOfDeath = time;
+
+            Dirty(uid, component);  // Moffstation - Respawn button
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)

@@ -40,6 +40,11 @@
     sprite: Objects/Weapons/Guns/HMGs/minigun.rsi
   - type: Gun
     fireRate: 15
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 10
+      staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/minigun.ogg
   - type: BallisticAmmoProvider

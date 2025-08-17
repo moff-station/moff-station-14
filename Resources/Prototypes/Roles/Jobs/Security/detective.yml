@@ -29,12 +29,16 @@
     eyes: ClothingEyesGlassesSecurity
     id: DetectivePDA
     ears: ClothingHeadsetSecurity
-    belt: ClothingBeltHolsterFilled
+    #belt: ClothingBeltHolsterFilled # Moffstation - (Nox Loadout Improvements) - They get to choose a belt in loadouts instead.
   storage:
     back:
     - Flash
     - ForensicPad
     - ForensicScanner
+    # Moffstation - Begin (Nox Loadout Improvements)
+    - WeaponRevolverInspector
+    - SpeedLoaderMagnum
+    # Moffstation - End
 
 - type: chameleonOutfit
   id: DetectiveChameleonOutfit
