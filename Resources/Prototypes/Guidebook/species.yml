@@ -9,6 +9,7 @@
     - Human
     - Moth
     - Reptilian
+    - Resomi # Moffstation - Resomi Guidebook Entry
     - SlimePerson
     - Vox
 
@@ -51,3 +52,10 @@
   id: Vox
   name: species-name-vox
   text: "/ServerInfo/Guidebook/Mobs/Vox.xml"
+
+  # Moffstation - Start - Resomi Guidebook Entry
+- type: guideEntry
+  id: Resomi
+  name: species-name-resomi
+  text: "/ServerInfo/_Starlight/Guidebook/Mobs/Resomi.xml"
+  # Moffstation - End - Resomi Guidebook Entry
