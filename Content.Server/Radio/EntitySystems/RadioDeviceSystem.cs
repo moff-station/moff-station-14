@@ -53,19 +53,7 @@ public sealed class RadioDeviceSystem : EntitySystem
         SubscribeLocalEvent<IntercomComponent, ToggleIntercomSpeakerMessage>(OnToggleIntercomSpeaker);
         SubscribeLocalEvent<IntercomComponent, SelectIntercomChannelMessage>(OnSelectIntercomChannel);
 
-        // Moffstation - Start
-        SubscribeLocalEvent((Entity<IntercomComponent> ent, ref SignalReceivedEvent args) =>
-        {
-            if (args.Port == ent.Comp.ToggleMicPort)
-                ToggleIntercomMicrophone(ent, user: null);
-            else if (args.Port == ent.Comp.ToggleMicPort)
-                ToggleIntercomSpeaker(ent, user: null);
-            else if (args.Port == ent.Comp.ToggleMicPort)
-                CycleChannel(ent, forward: true);
-            else if (args.Port == ent.Comp.ToggleMicPort)
-                CycleChannel(ent, forward: false);
-        });
-        // Moffstation - End
+        SubscribeLocalEvent<IntercomComponent, SignalReceivedEvent>(IntercomOnSignalReceived); // Moffstation
     }
 
     public override void Update(float frameTime)
@@ -291,6 +279,26 @@ public sealed class RadioDeviceSystem : EntitySystem
     }
 
     // Moffstation - Start
+    private void IntercomOnSignalReceived(Entity<IntercomComponent> ent, ref SignalReceivedEvent args)
+    {
+        if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            ToggleIntercomMicrophone(ent, user: null);
+        }
+        else if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            ToggleIntercomSpeaker(ent, user: null);
+        }
+        else if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            CycleChannel(ent, forward: true);
+        }
+        else if (args.Port == ent.Comp.ToggleMicPort)
+        {
+            CycleChannel(ent, forward: false);
+        }
+    }
+
     private void ToggleIntercomMicrophone(Entity<IntercomComponent> ent, EntityUid? user, bool? enabledOverride = null)
     {
         if (ent.Comp.RequiresPower && !this.IsPowered(ent, EntityManager))
