@@ -1,0 +1,7 @@
+marking-UndergarmentTopTanktopResomi-tanktop_resomi = Tanktop
+marking-UndergarmentTopTanktopResomi = Tanktop
+
+marking-UndergarmentBottomUnderwearResomi-underwear_resomi = Underwear
+marking-UndergarmentBottomUnderwearResomi = Underwear
+marking-UndergarmentBottomThongResomi-thong_resomi = Thong
+marking-UndergarmentBottomThongResomi = Thong
