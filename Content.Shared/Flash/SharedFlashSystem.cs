@@ -20,6 +20,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
+using Content.Shared.Inventory.Events; // Moffstation
 using Content.Shared.Movement.Systems;
 
 namespace Content.Shared.Flash;
@@ -61,9 +62,29 @@ public abstract class SharedFlashSystem : EntitySystem
         Subs.SubscribeWithRelay<FlashImmunityComponent, FlashAttemptEvent>(OnFlashImmunityFlashAttempt, held: false);
         SubscribeLocalEvent<FlashImmunityComponent, ExaminedEvent>(OnExamine);
 
+        // Moffstation - Start - Night Vision blocked by flash immunity
+        SubscribeLocalEvent<DidEquipEvent>(OnDidEquip);
+        SubscribeLocalEvent<DidUnequipEvent>(OnDidUnequip);
+        SubscribeLocalEvent<FlashImmunityComponent, ComponentStartup>(OnFlashImmunityStartup);
+        SubscribeLocalEvent<FlashImmunityComponent, ComponentRemove>(OnFlashImmunityRemove);
+        // Moffstation - End
+
         _statusEffectsQuery = GetEntityQuery<StatusEffectsComponent>();
         _damagedByFlashingQuery = GetEntityQuery<DamagedByFlashingComponent>();
     }
+
+    // Moffstation - Start
+    /// <summary>
+    /// Returns true if the given entity CANNOT be affected by flashes. This is generally the result of the entity
+    /// having <see cref="FlashImmunityComponent">flash immune</see> equipment on.
+    /// </summary>
+    public bool IsFlashImmune(EntityUid uid)
+    {
+        var ev = new FlashAttemptEvent(uid, User: null, Used: null);
+        RaiseLocalEvent(uid, ref ev);
+        return ev.Cancelled;
+    }
+    // Moffstation - End
 
     private void OnFlashMeleeHit(Entity<FlashComponent> ent, ref MeleeHitEvent args)
     {
@@ -264,4 +285,49 @@ public abstract class SharedFlashSystem : EntitySystem
     {
         args.PushMarkup(Loc.GetString("flash-protection"));
     }
+
+    // Moffstation - Start - Night Vision blocked by flash immunity
+    private void OnDidEquip(DidEquipEvent args)
+    {
+        if (!TryComp<FlashImmunityComponent>(args.Equipment, out var comp)
+            || !comp.Enabled)
+            return;
+
+        // Adding equipment which definitely has enabled flash immunity means we definitely are flash immune now.
+        var ev = new FlashImmunityChangedEvent(true);
+        RaiseLocalEvent(args.Equipee, ref ev);
+    }
+
+    private void OnDidUnequip(DidUnequipEvent args)
+    {
+        if (!TryComp<FlashImmunityComponent>(args.Equipment, out var comp) ||
+            !comp.Enabled ||
+            // If we still can't be flashed after removing the equipment, there's no change.
+            IsFlashImmune(args.Equipee))
+            return;
+
+        var ev = new FlashImmunityChangedEvent(false);
+        RaiseLocalEvent(args.Equipee, ref ev);
+    }
+
+    private void OnFlashImmunityStartup(Entity<FlashImmunityComponent> entity, ref ComponentStartup args)
+    {
+        if (!entity.Comp.Enabled)
+            return;
+
+        var ev = new FlashImmunityChangedEvent(true);
+        RaiseLocalEvent(entity.Owner, ref ev);
+    }
+
+    private void OnFlashImmunityRemove(Entity<FlashImmunityComponent> entity, ref ComponentRemove args)
+    {
+        if (!entity.Comp.Enabled ||
+            // If we still can't be flashed after removing the component, there's no change.
+            IsFlashImmune(entity))
+            return;
+
+        var ev = new FlashImmunityChangedEvent(false);
+        RaiseLocalEvent(entity.Owner, ref ev);
+    }
+    // Moffstation - End
 }

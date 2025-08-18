@@ -15,14 +15,4 @@ public sealed partial class FlashImmunityComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Enabled = true;
-
-    //starlight
-    /// <summary>
-    /// If true, will affect night vision, thermal vision, and cyclorite vision.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    [AutoNetworkedField]
-    [DataField]
-    public bool BlocksSpecialVision { get; set; } = true;
-    //starlight end
 }
