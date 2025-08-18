@@ -1,0 +1,14 @@
+- type: entity
+  parent: AccessBreaker
+  id: AccessBreakerPirate
+  name: pirate master key
+  description: An accursed key, said to break locks using the souls of the damned
+  suffix: Limited, Pirate
+  components:
+  - type: StaticPrice
+    price: 500
+  - type: Sprite
+    sprite: _Moffstation/Objects/Tools/pirate_amag.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Tools/pirate_amag.rsi

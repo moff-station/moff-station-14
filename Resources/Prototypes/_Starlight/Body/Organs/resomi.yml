@@ -1,0 +1,9 @@
+- type: entity
+  id: OrganResomiEyes
+  parent: OrganHumanEyes
+  name: eye
+  description: "I see you!"
+  components:
+  # - type: NightVision # Disable nightvision as it gets PR'd seperately.
+  - type: FlashModifier
+    modifier: 2

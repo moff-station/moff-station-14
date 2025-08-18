@@ -1091,7 +1091,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/damedaneoutfit.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: UnsensoredClothingUniformBase # Moffstation - (No Sensors for Enemy Gear)
   id: ClothingUniformJumpsuitPirate
   name: pirate slops
   description: A pirate variation of a space sailor's jumpsuit.
@@ -1159,7 +1159,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/hawaiyellow.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseSyndicateContraband]
+  parent: [UnsensoredClothingUniformBase, BaseSyndicateContraband] # Moffstation - (No Sensors for Enemy Gear)
   id: ClothingUniformJumpsuitSyndieFormal
   name: syndicate formal suit
   description: "The syndicate's uniform is made in an elegant style, it's even a pity to do dirty tricks in this."

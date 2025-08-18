@@ -1119,7 +1119,7 @@ namespace Content.Client.Lobby.UI
                 Title = jobProto?.ID switch
                 {
                     null => "loadout",
-                    var id => $"{id}-loadout",
+                    var id => Loc.GetString("loadout-window-title-loadout", ("job", $"{jobProto?.LocalizedName}")),
                 },
                 // Moffstation End
             };

@@ -290,7 +290,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 26 # Moffstation - (Stamina Resistance) - This keeps the disabler not too strong with a 4 hit stun against unarmored and 5 hit against any sort of armor.
+    damage: 33
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -879,8 +879,6 @@
     range: 7
   - type: SpawnOnTrigger
     proto: GrenadeFlashEffect
-  - type: ActiveTimerTrigger
-    timeRemaining: 0.3
   - type: DeleteOnTrigger
 
 - type: entity
@@ -917,8 +915,6 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
     - state: cleanade
-  - type: ActiveTimerTrigger
-    timeRemaining: 0.3
   - type: SmokeOnTrigger
     duration: 3.5
     spreadAmount: 30
@@ -927,7 +923,7 @@
       reagents:
       - ReagentId: SpaceCleaner
         Quantity: 30
-  - type: SoundOnTrigger
+  - type: EmitSoundOnTrigger
     sound: /Audio/Items/smoke_grenade_smoke.ogg
   - type: ExplodeOnTrigger
   - type: Explosive
@@ -1135,7 +1131,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 18 # Moffstation - (Stamina Resistance) - This makes the energy shotgun barely a 2-shot stamcrit against unarmored, but any armor brings it up to three shots.
+    damage: 15
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:

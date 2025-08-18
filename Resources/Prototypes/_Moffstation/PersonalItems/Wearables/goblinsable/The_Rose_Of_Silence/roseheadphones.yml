@@ -1,0 +1,23 @@
+﻿- type: entity
+  parent: ClothingMultipleHeadphones
+  id: PersonalItemRoseHeadphones
+  name: Rose's high-end headphones
+  description: Once top of the line headphones, now all these play are sappy love songs.
+  suffix: PersonalItem
+  components:
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/goblinsable/The_Rose_Of_Silence/The_Rose_Of_Silence.rsi
+
+- type: loadout
+  id: PersonalItemRoseHeadphones
+  storage:
+    back:
+    - PersonalItemRoseHeadphones
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - The Rose of Silence

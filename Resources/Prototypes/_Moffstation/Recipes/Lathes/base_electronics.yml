@@ -9,3 +9,13 @@
     Glass: 1000
     Silver: 200
     Uranium: 100
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  abstract: true
+  id: DangerousAILawBoardRecipe #Still the same as BaseAILawBoards, but left separate if changes need to be made later
+  materials:
+    Steel: 200
+    Glass: 1000
+    Silver: 200
+    Uranium: 100
