@@ -12,10 +12,7 @@
     slots:
     - Back
   - type: Item
-    # Moffstation - Begin (Weapon Resizing)
-    #size: Huge
     size: Ginormous
-    # Moffstation - End
   - type: StaticPrice
     price: 500
   - type: ContainerContainer
@@ -39,15 +36,18 @@
     slots:
     - Back
     - suitStorage
-  # Moffstation - Begin (Weapon Resizing)
   - type: Item
     size: Huge
     shape:
     - 0,0,4,2
-  # Moffstation - End
   - type: AmmoCounter
   - type: Gun
     fireRate: 1
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto
@@ -81,13 +81,16 @@
     slots:
     - Back
     - suitStorage
-  # Moffstation - Begin (Weapon Resizing)
   - type: Item
     size: Huge
-  # Moffstation - End
   - type: AmmoCounter
   - type: Gun
     fireRate: 1
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -144,6 +147,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 0.5
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 700
+      staminaMultiplier: 100
+    # Moffstation - End - Add gun recoil.
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: BallisticAmmoProvider
@@ -177,6 +185,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 6
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 5
+    # Moffstation - End - Add gun recoil.
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -216,6 +229,11 @@
       sprite: Objects/Weapons/Guns/Launchers/pirate_cannon.rsi
     - type: Gun
       fireRate: 1
+      # Moffstation - Begin - Add gun recoil.
+      recoilKick:
+        impulse: 850
+        staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
       soundGunshot:
         path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
     - type: BallisticAmmoProvider
@@ -236,10 +254,7 @@
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
     - type: Item
-      # Moffstation - Begin (Weapon Resizing)
-      #storedRotation: -90
       size: Normal
-      # Moffstation - End
     - type: TetherGun
       frequency: 5
       dampingRatio: 4
@@ -281,10 +296,7 @@
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
     - type: Item
-      # Moffstation - Begin (Weapon Resizing)
-      #storedRotation: -90
       size: Normal
-      # Moffstation - End
     - type: ForceGun
       frequency: 15
       dampingRatio: 4
@@ -328,13 +340,12 @@
   parent: BaseItem
   id: WeaponGrapplingGun
   components:
-    # Moffstation - Begin (Weapon Resizing)
     - type: Item
       size: Small
       shape:
       - 0,0,1,0
       - 0,1,0,1
-    # Moffstation - End
+      storedOffset: 0,-6
     - type: AmmoCounter
     - type: GrapplingGun
     - type: Gun
@@ -370,10 +381,8 @@
   suffix: Admeme
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
-    # Moffstation - Begin (Weapon Resizing)
     - type: Item
       size: Normal
-    # Moffstation - End
     - type: TetherGun
       canTetherAlive: true
       canUnanchor: true
@@ -413,10 +422,8 @@
   suffix: Admeme
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
-    # Moffstation - Begin (Weapon Resizing)
     - type: Item
       size: Normal
-    # Moffstation - End
     - type: ForceGun
       canTetherAlive: true
       canUnanchor: true

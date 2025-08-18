@@ -20,12 +20,15 @@
   components:
   - type: SubGamemodes
     rules:
+    # Moffstation - Start
     - id: Thief
-      prob: 0.5
-    # Harmony start
+      prob: 0.3
     - id: BloodBrothers
-      prob: 0.5
-    # Harmony end
+      prob: 0.3
+    - id: SyndicateListeningOutpost
+      prob: 0.20
+    - id: Pirates
+      prob: 0.15
     - id: SubWizard
       prob: 0.05
 
@@ -36,11 +39,14 @@
   - type: SubGamemodes
     rules:
     - id: Thief
-      prob: 0.5
-    # Moffstation start
+      prob: 0.3
     - id: BloodBrothers
-      prob: 0.5
-    # Moffstation end
+      prob: 0.3
+    - id: SyndicateListeningOutpost
+      prob: 0.2
+    - id: Pirates
+      prob: 0.2
+    # Moffstation - End
 
 - type: entity
   parent: BaseGameRule
@@ -122,7 +128,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 30 # Moffstation - Bumped up the min players for nukeops.
   - type: LoadMapRule
     mapPath: /Maps/Nonstations/nukieplanet.yml
   - type: AntagSelection
@@ -237,6 +243,36 @@
       - MindRoleTraitorReinforcement
 
 - type: entity
+  id: Changeling
+  parent: BaseGameRule
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: AntagSelection
+    agentName: changeling-round-end-agent-name
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ Changeling ]
+      max: 3
+      playerRatio: 15
+      briefing:
+        text: changeling-role-greeting
+        color: Red
+        sound: /Audio/Ambience/Antag/changeling_start.ogg
+      components:
+      - type: ChangelingDevour
+      - type: ChangelingIdentity
+      - type: ChangelingTransform
+      - type: ActionGrant
+        actions:
+        - ActionRetractableItemArmBlade # Temporary addition, will inevitably be a purchasable in the bio-store
+      mindRoles:
+      - MindRoleChangeling
+  - type: AntagObjectives
+    objectives:
+    - ChangelingSurviveObjective
+
+- type: entity
   id: Revolutionary
   parent: BaseGameRule
   components:
@@ -282,7 +318,7 @@
     - WizardSurviveObjective
     - WizardDemonstrateObjective
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/wizard.yml
+    mapPath: /Maps/Nonstations/wizardsden.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
@@ -329,7 +365,7 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 25 # Moffstation - Bumped up the min players for zombies
     delay:
       min: 600
       max: 900

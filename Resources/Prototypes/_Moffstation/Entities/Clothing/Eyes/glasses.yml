@@ -29,3 +29,25 @@
   - type: Construction
     graph: MedSunglasses
     node: glassesmed
+
+- type: entity
+  parent: ClothingEyesGlassesMeson
+  id: ClothingEyesGlassesMesonSunglasses
+  name: engineering sunglasses
+  description: Now you can look cool while welding the windows. Just don't stare into any bright lights.
+  components:
+   - type: Sprite
+     sprite: _Moffstation/Clothing/Eyes/Glasses/mesonsunglasses.rsi
+   - type: Clothing
+     sprite: _Moffstation/Clothing/Eyes/Glasses/mesonsunglasses.rsi
+   - type: EyeProtection
+   - type: Tag
+     tags:
+       - CorgiWearable
+       - HamsterWearable
+       - WhitelistChameleon
+   - type: IdentityBlocker
+     coverage: EYES
+   - type: Construction
+     graph: MesonSunglasses
+     node: sunglassesmeson

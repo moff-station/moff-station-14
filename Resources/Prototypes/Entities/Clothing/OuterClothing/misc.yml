@@ -68,9 +68,9 @@
   description: An apron-jacket used by a high class chef.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/chef.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/chef.rsi # Moffstation - (New Chef Jacket)
   - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/chef.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/chef.rsi # Moffstation - (New Chef Jacket)
 
 - type: entity
   parent: ClothingOuterBase

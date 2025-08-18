@@ -1,0 +1,9 @@
+- type: parallax
+  id: Water
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: /Textures/_Moffstation/Tiles/Planet/water.png
+      slowness: 0
+      scale: "1, 1"
+      shader: ""

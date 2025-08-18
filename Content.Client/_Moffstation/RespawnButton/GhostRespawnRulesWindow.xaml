@@ -1,0 +1,26 @@
+<respawnButton:GhostRespawnRulesWindow xmlns="https://spacestation14.io"
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:respawnButton="clr-namespace:Content.Client._Moffstation.RespawnButton"
+    Title="{Loc 'ghost-respawn-rules-window-title'}"
+    MinSize="650 250">
+    <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False" Margin="5">
+        <PanelContainer StyleClasses="Inset">
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="#303133"/>
+            </PanelContainer.PanelOverride>
+
+            <BoxContainer Orientation="Vertical" VerticalExpand="True" SeparationOverride="5">
+                <PanelContainer Name="TextContainer" StyleClasses="Inset" Margin="5">
+                    <RichTextLabel Name="RespawnLabel" Margin="5" Text="{Loc ghost-respawn-rules-window-rules}"></RichTextLabel>
+                    <PanelContainer.PanelOverride>
+                        <!-- <graphics:StyleBoxFlat BackgroundColor="#464950"/> -->
+                        <graphics:StyleBoxFlat BackgroundColor="#303133"/>
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+
+                <Control VerticalExpand="True" VerticalAlignment="Stretch" />
+                <Button Name="ConfirmRespawnButton" Text="{Loc 'ghost-respawn-rules-window-confirm-button'}" Margin="5" />
+            </BoxContainer>
+        </PanelContainer>
+    </ScrollContainer>
+</respawnButton:GhostRespawnRulesWindow>
