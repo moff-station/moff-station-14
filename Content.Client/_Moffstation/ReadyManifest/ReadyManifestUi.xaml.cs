@@ -27,7 +27,7 @@ public sealed partial class ReadyManifestUi : DefaultWindow
         _jobCategories = [];
     }
 
-    public void RebuildUI(Dictionary<ProtoId<JobPrototype>, int> jobCounts)
+    public void RebuildUI(Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> jobCounts)
     {
         ReadyManifestListing.DisposeAllChildren();
         _jobCategories.Clear();
@@ -46,8 +46,6 @@ public sealed partial class ReadyManifestUi : DefaultWindow
 
         foreach (var department in departments)
         {
-            var departmentName = Loc.GetString($"department-{department.ID}");
-
             if (!_jobCategories.TryGetValue(department.ID, out var category))
             {
                 category = new BoxContainer
@@ -60,7 +58,7 @@ public sealed partial class ReadyManifestUi : DefaultWindow
                 category.AddChild(new Label()
                 {
                     StyleClasses = { "LabelBig" },
-                    Text = Loc.GetString($"department-{department.ID}")
+                    Text = Loc.GetString(department.Name)
                 });
 
                 _jobCategories[department.ID] = category;
@@ -75,7 +73,8 @@ public sealed partial class ReadyManifestUi : DefaultWindow
 
             foreach (var job in jobs)
             {
-                category.AddChild(new ReadyManifestEntry(job, jobCounts, _prototypeManager, _spriteSystem));
+                if (jobCounts.TryGetValue(job.ID, out var count))
+                    category.AddChild(new ReadyManifestEntry(job, count, _prototypeManager, _spriteSystem));
             }
         }
     }

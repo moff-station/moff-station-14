@@ -8,6 +8,7 @@ using Content.Shared._Moffstation.ReadyManifest;
 using Content.Shared.GameTicking;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -22,8 +23,10 @@ public sealed class ReadyManifestSystem : EntitySystem
     [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    private Dictionary<ProtoId<JobPrototype>, int> _jobCounts = [];
     private readonly Dictionary<ICommonSession, ReadyManifestEui> _openEuis = [];
+
+    // A dictionary for each job type, then another for each priority level for that job type
+    private Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> _jobCounts = [];
 
     public override void Initialize()
     {
@@ -52,10 +55,24 @@ public sealed class ReadyManifestSystem : EntitySystem
         OpenEui(sessionCast);
     }
 
-    private void OnPlayerToggleReady(PlayerToggleReadyEvent ev)
+    private void OnPlayerToggleReady(ref PlayerToggleReadyEvent ev)
     {
-        var userId = ev.PlayerSession.Data.UserId;
+        UpdateByPlayer(ev.PlayerSession.Data.UserId);
+        UpdateEuis();
+    }
 
+    private void BuildReadyManifest()
+    {
+        _jobCounts.Clear();
+
+        foreach (var (userId, _) in _gameTicker.PlayerGameStatuses)
+        {
+            UpdateByPlayer(userId);
+        }
+    }
+
+    private void UpdateByPlayer(NetUserId userId)
+    {
         if (!_prefsManager.TryGetCachedPreferences(userId, out var preferences))
         {
             return;
@@ -65,51 +82,29 @@ public sealed class ReadyManifestSystem : EntitySystem
         var player = _playerManager.GetSessionById(userId);
         var profileJobs = FilterPlayerJobs(profile, player);
 
-        if (_gameTicker.PlayerGameStatuses[userId] == PlayerGameStatus.ReadyToPlay)
-        {
-            foreach (var job in profileJobs)
-            {
-                _jobCounts.TryGetValue(job, out var value);
-                _jobCounts[job] = ++value;
-            }
-        }
-        else
-        {
-            foreach (var job in profileJobs)
-            {
-                if (_jobCounts.TryGetValue(job, out var value))
-                {
-                    _jobCounts[job] = --value;
-                }
-            }
-        }
+        var isReady = _gameTicker.PlayerGameStatuses[userId] == PlayerGameStatus.ReadyToPlay;
 
-        UpdateEuis();
-    }
-
-    private void BuildReadyManifest()
-    {
-        var jobCounts = new Dictionary<ProtoId<JobPrototype>, int>();
-
-        foreach (var (userId, status) in _gameTicker.PlayerGameStatuses)
+        foreach (var job in profileJobs)
         {
-            if (status == PlayerGameStatus.ReadyToPlay)
+            if (!_jobCounts.TryGetValue(job, out var counts) ||
+                !profile.JobPriorities.TryGetValue(job, out var priority))
             {
-                HumanoidCharacterProfile profile;
-                var player = _playerManager.GetSessionById(userId);
-                if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-                {
-                    profile = (HumanoidCharacterProfile)preferences.SelectedCharacter;
-                    var profileJobs = FilterPlayerJobs(profile, player);
-                    foreach (var jobId in profileJobs)
-                    {
-                        jobCounts.TryGetValue(jobId, out var value);
-                        jobCounts[jobId] = ++value;
-                    }
-                }
+                continue;
             }
+
+            if (priority is not (JobPriority.High or JobPriority.Medium or JobPriority.Low))
+                continue;
+
+            int delta = isReady ? 1 : -1;
+
+            _jobCounts[job] = priority switch
+            {
+                JobPriority.High => counts with { High = counts.High + delta },
+                JobPriority.Medium => counts with { Medium = counts.Medium + delta },
+                JobPriority.Low => counts with { Low = counts.Low + delta },
+                _ => counts
+            };
         }
-        _jobCounts = jobCounts;
     }
 
     private List<ProtoId<JobPrototype>> FilterPlayerJobs(HumanoidCharacterProfile profile, ICommonSession player)
@@ -120,7 +115,10 @@ public sealed class ReadyManifestSystem : EntitySystem
         {
             var priority = profile.JobPriorities[job];
             // For jobs that are rolled before others such as Command, we want to check for any priority since they'll always be filled
-            if ((priority == JobPriority.High || _prototypeManager.Index(job).Weight > 0 && priority > JobPriority.Never) && _playTimeTracking.IsAllowed(player, job))
+            if ((priority == JobPriority.High ||
+                 _prototypeManager.Index(job).Weight > 0 &&
+                 priority > JobPriority.Never) &&
+                _playTimeTracking.IsAllowed(player, job))
             {
                 priorityJobs.Add(job);
             }
@@ -128,7 +126,7 @@ public sealed class ReadyManifestSystem : EntitySystem
         return priorityJobs;
     }
 
-    public Dictionary<ProtoId<JobPrototype>, int> GetReadyManifest()
+    public Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> GetReadyManifest()
     {
         return _jobCounts;
     }

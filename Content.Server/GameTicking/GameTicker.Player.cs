@@ -123,7 +123,8 @@ namespace Content.Server.GameTicking
                 case SessionStatus.Disconnected:
                 {
                     // Moffstation - Start - Ready Manifest
-                    if (_playerGameStatuses[session.UserId] == PlayerGameStatus.ReadyToPlay)
+                    if (_playerGameStatuses.TryGetValue(session.UserId, out var status) &&
+                        status == PlayerGameStatus.ReadyToPlay)
                         ToggleReady(session, false);
                     // Moffstation - End
                     _chatManager.SendAdminAnnouncement(Loc.GetString("player-leave-message", ("name", args.Session.Name)));

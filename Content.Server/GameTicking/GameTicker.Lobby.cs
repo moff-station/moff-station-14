@@ -157,7 +157,10 @@ namespace Content.Server.GameTicking
                     continue;
                 _playerGameStatuses[playerUserId] = status; // Moffstation - Ready Manifest
                 RaiseNetworkEvent(GetStatusMsg(playerSession), playerSession.Channel);
-                RaiseLocalEvent(new PlayerToggleReadyEvent(playerSession)); // Moffstation - Ready Manifest
+                // Moffstation - Start - Ready manifest
+                var ev = new PlayerToggleReadyEvent(playerSession);
+                RaiseLocalEvent(ref ev);
+                // Moffstation - End
             }
         }
 
@@ -185,7 +188,10 @@ namespace Content.Server.GameTicking
 
             _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
-            RaiseLocalEvent(new PlayerToggleReadyEvent(player));    // Moffstation - Ready Manifest
+            // Moffstation - Start - Ready Manifest
+            var ev = new PlayerToggleReadyEvent(player);
+            RaiseLocalEvent(ref ev);
+            // Moffstation - End
             // update server info to reflect new ready count
             UpdateInfoText();
         }
@@ -198,14 +204,7 @@ namespace Content.Server.GameTicking
     }
 
     // Moffstation - Start - Ready Manifest
-    public sealed class PlayerToggleReadyEvent : EntityEventArgs
-    {
-        public readonly ICommonSession PlayerSession;
-
-        public PlayerToggleReadyEvent(ICommonSession playerSession)
-        {
-            PlayerSession = playerSession;
-        }
-    }
+    [ByRefEvent]
+    public record struct PlayerToggleReadyEvent(ICommonSession PlayerSession);
     // Moffstation - End
 }

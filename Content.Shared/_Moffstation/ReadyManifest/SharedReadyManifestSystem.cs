@@ -19,9 +19,9 @@ public sealed class RequestReadyManifestMessage : EntityEventArgs
 [Serializable, NetSerializable]
 public sealed class ReadyManifestEuiState : EuiStateBase
 {
-    public Dictionary<ProtoId<JobPrototype>, int> JobCounts { get; }
+    public Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> JobCounts { get; }
 
-    public ReadyManifestEuiState(Dictionary<ProtoId<JobPrototype>, int> jobCounts)
+    public ReadyManifestEuiState(Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> jobCounts)
     {
         JobCounts = jobCounts;
     }
