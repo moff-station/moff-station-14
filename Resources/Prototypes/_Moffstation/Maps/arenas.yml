@@ -27,3 +27,18 @@
       - type: StationJobs
         availableJobs:
           Passenger: [ -1, -1 ]
+
+- type: gameMap
+  id: TF2-2Fort
+  mapName: ctf_2fort
+  mapPath: /Maps/_Moffstation/Nonstations/ctf_2fort.yml
+  minPlayers: 0
+  stations:
+    TF2-2Fort:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "2Fort"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]
