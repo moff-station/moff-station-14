@@ -1,14 +1,9 @@
-using Content.Shared.ReadyManifest;
+using Content.Shared._Moffstation.ReadyManifest;
 
-namespace Content.Client.ReadyManifest;
+namespace Content.Client._Moffstation.ReadyManifest;
 
 public sealed class ReadyManifestSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public void RequestReadyManifest()
     {
         RaiseNetworkEvent(new RequestReadyManifestMessage());

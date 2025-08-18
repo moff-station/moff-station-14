@@ -1,10 +1,11 @@
+using Content.Client._Moffstation.ReadyManifest;
 using Content.Client.Audio;
 using Content.Client.GameTicking.Managers;
 using Content.Client.LateJoin;
 using Content.Client.Lobby.UI;
 using Content.Client.Message;
 using Content.Client.Playtime;
-using Content.Client.ReadyManifest; // Moffstation
+// Moffstation
 using Content.Client.UserInterface.Systems.Chat;
 using Content.Client.Voting;
 using Content.Shared.CCVar;
@@ -50,7 +51,7 @@ namespace Content.Client.Lobby
             _gameTicker = _entityManager.System<ClientGameTicker>();
             _contentAudioSystem = _entityManager.System<ContentAudioSystem>();
             _contentAudioSystem.LobbySoundtrackChanged += UpdateLobbySoundtrackInfo;
-            _readyManifest = _entityManager.EntitySysManager.GetEntitySystem<ReadyManifestSystem>();    // Moffstation
+            _readyManifest = _entityManager.EntitySysManager.GetEntitySystem<ReadyManifestSystem>(); // Moffstation - Ready manifest
 
             chatController.SetMainChat(true);
 
@@ -130,6 +131,7 @@ namespace Content.Client.Lobby
         {
             _readyManifest.RequestReadyManifest();
         }
+        // Moffstation - End
 
         public override void FrameUpdate(FrameEventArgs e)
         {
@@ -211,7 +213,6 @@ namespace Content.Client.Lobby
                 Lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
             }
 
-            // Moffstation - Start - Ready manifest
             var minutesToday = _playtimeTracking.PlaytimeMinutesToday;
             if (minutesToday > 60)
             {
@@ -231,7 +232,6 @@ namespace Content.Client.Lobby
             }
             else
                 Lobby!.PlaytimeComment.Visible = false;
-            // Moffstation - End
         }
 
         private void UpdateLobbySoundtrackInfo(LobbySoundtrackChangedEvent ev)

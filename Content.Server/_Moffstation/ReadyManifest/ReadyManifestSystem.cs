@@ -4,14 +4,14 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
+using Content.Shared._Moffstation.ReadyManifest;
 using Content.Shared.GameTicking;
 using Content.Shared.Preferences;
-using Content.Shared.ReadyManifest;
 using Content.Shared.Roles;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.ReadyManifest;
+namespace Content.Server._Moffstation.ReadyManifest;
 
 public sealed class ReadyManifestSystem : EntitySystem
 {

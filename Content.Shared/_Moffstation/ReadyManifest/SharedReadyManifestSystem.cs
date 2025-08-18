@@ -3,7 +3,7 @@ using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.ReadyManifest;
+namespace Content.Shared._Moffstation.ReadyManifest;
 
 /// <summary>
 ///     A message to send to the server when requesting a ready manifest.

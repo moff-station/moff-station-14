@@ -1,10 +1,10 @@
+using System.Numerics;
+using Content.Shared.Roles;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
-using System.Numerics;
-using Content.Shared.Roles;
 
-namespace Content.Client.ReadyManifest.UI;
+namespace Content.Client._Moffstation.ReadyManifest.UI;
 
 public sealed class ReadyManifestEntry : GridContainer
 {

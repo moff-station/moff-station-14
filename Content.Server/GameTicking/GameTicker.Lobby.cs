@@ -157,7 +157,7 @@ namespace Content.Server.GameTicking
                     continue;
                 _playerGameStatuses[playerUserId] = status;
                 RaiseNetworkEvent(GetStatusMsg(playerSession), playerSession.Channel);
-                RaiseLocalEvent(new PlayerToggleReadyEvent(playerSession));
+                RaiseLocalEvent(new PlayerToggleReadyEvent(playerSession)); // Moffstation - Ready Manifest
             }
         }
 
@@ -183,7 +183,7 @@ namespace Content.Server.GameTicking
 
             _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
-            RaiseLocalEvent(new PlayerToggleReadyEvent(player));
+            RaiseLocalEvent(new PlayerToggleReadyEvent(player));    // Moffstation - Ready Manifest
             // update server info to reflect new ready count
             UpdateInfoText();
         }
@@ -195,6 +195,7 @@ namespace Content.Server.GameTicking
             => PlayerGameStatuses.TryGetValue(userId, out var status) && status == PlayerGameStatus.JoinedGame;
     }
 
+    // Moffstation - Start - Ready Manifest
     public sealed class PlayerToggleReadyEvent : EntityEventArgs
     {
         public readonly ICommonSession PlayerSession;
@@ -204,4 +205,5 @@ namespace Content.Server.GameTicking
             PlayerSession = playerSession;
         }
     }
+    // Moffstation - End
 }
