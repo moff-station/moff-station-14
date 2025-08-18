@@ -52,8 +52,8 @@ spellbook-item-recall-description = Mark a held item and summon it back at any t
 
 # Equipment
 
-spellbook-hardsuit-name = Enchanted Hardsuit
-spellbook-hardsuit-description = A highly protective hardsuit master crafted by only the system's finest mages. Does *not* count as robes and hat.
+spellbook-armor-name = Enchanted Breastplate
+spellbook-armor-description = A highly protective breastplate master crafted by only the system's finest mages. Does *not* count as robes.
 
 spellbook-wand-polymorph-door-name = Wand of Entrance
 spellbook-wand-polymorph-door-description = For when you need a get-away route.

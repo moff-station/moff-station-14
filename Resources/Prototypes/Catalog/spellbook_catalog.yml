@@ -201,10 +201,10 @@
 
 # Equipment
 - type: listing
-  id: SpellbookHardsuit
-  name: spellbook-hardsuit-name
-  description: spellbook-hardsuit-description
-  productEntity: ClothingOuterHardsuitWizard
+  id: SpellbookArmor
+  name: spellbook-armor-name
+  description: spellbook-armor-description
+  productEntity: ClothingOuterArmorWizard
   cost:
     WizCoin: 5
   categories:
@@ -212,7 +212,7 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-    
+
 - type: listing
   id: SpellbookWandDoor
   name: spellbook-wand-polymorph-door-name
