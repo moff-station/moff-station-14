@@ -1,11 +1,10 @@
-using Content.Client._Moffstation.ReadyManifest;
+using Content.Client._Moffstation.ReadyManifest;    // Moffstation
 using Content.Client.Audio;
 using Content.Client.GameTicking.Managers;
 using Content.Client.LateJoin;
 using Content.Client.Lobby.UI;
 using Content.Client.Message;
 using Content.Client.Playtime;
-// Moffstation
 using Content.Client.UserInterface.Systems.Chat;
 using Content.Client.Voting;
 using Content.Shared.CCVar;
