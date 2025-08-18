@@ -97,7 +97,7 @@ namespace Content.IntegrationTests.Tests
             "Meta",
             "MW-Dock",
             "CS-Dust2",
-	          "TF2-2Fort",
+            "TF2-2Fort",
             "WaterVapour",
             "Frezon",
             "Prime",
