@@ -356,6 +356,7 @@
     sprite: Objects/Fun/Plushies/lizard.rsi
     state: icon
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     sprite: Objects/Fun/Plushies/lizard.rsi
   - type: EmitSoundOnUse
     sound: &PlushieLizardSound
@@ -405,6 +406,7 @@
     - Payload
     - ClothMade
     - PlushieLizard
+    - SurvivalBoxInsertable # Moffstation - allow trinkets to be placed in Survival Box
 
 - type: entity
   parent: BasePlushie
@@ -416,6 +418,7 @@
     sprite: Objects/Fun/Plushies/expi.rsi
     state: icon
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     sprite: Objects/Fun/Plushies/expi.rsi
     inhandVisuals:
       left:
@@ -459,6 +462,7 @@
     tags:
     - Payload
     - ClothMade
+    - SurvivalBoxInsertable # Moffstation - allow trinkets to be placed in Survival Box
 
 - type: entity
   parent: PlushieLizard
@@ -479,6 +483,7 @@
       - state: rainbowlizardplush-equipped-HELMET
         shader: unshaded
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     inhandVisuals:
       left:
       - state: rainbowlizardplush-inhand-left
@@ -506,6 +511,7 @@
     sprite: Objects/Fun/Plushies/lizard.rsi
     state: plushie_spacelizard
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     sprite: Objects/Fun/Plushies/lizard.rsi
     heldPrefix: spacelizard
   - type: EmitSoundOnUse
@@ -549,6 +555,7 @@
   - type: Sprite
     state: plushie_lizard_inversed
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     heldPrefix: plushielizardinversed
   - type: EmitSoundOnUse
     sound: &PlushieLizardInversedSound
@@ -814,6 +821,7 @@
     sprite: Objects/Fun/Plushies/carp.rsi
     state: carpplush
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     sprite: Objects/Fun/Plushies/carp.rsi
     heldPrefix: carpplush
     storedRotation: -90
@@ -860,6 +868,7 @@
   - type: Sprite
     state: magicplush
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     inhandVisuals:
       left:
       - state: magicarpplush-inhand-left
@@ -905,6 +914,7 @@
   - type: Sprite
     state: holoplush
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     inhandVisuals:
       left:
       - state: holocarpplush-inhand-left
@@ -930,6 +940,7 @@
     sprite: _Moffstation/Objects/Fun/Plushies/slime.rsi
     state: icon
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     sprite: _Moffstation/Objects/Fun/Plushies/slime.rsi
   #  Moffstation - End
   - type: EmitSoundOnUse
@@ -967,6 +978,7 @@
     sprite: Objects/Fun/Plushies/snake.rsi
     state: icon
   - type: Item
+    size: Small # Moffstation - allow trinkets to be placed in Survival Box
     heldPrefix: plushiesnake
   - type: EmitSoundOnUse
     sound:
