@@ -48,6 +48,11 @@
     tags:
     - Payload
     - ClothMade
+    - SurvivalBoxInsertable # Moffstation - allow trinkets to be placed in Survival Box
+  # Moffstation - Start - allow trinkets to be placed in Survival Box
+  - type: Item
+    size: Small
+  # Moffstation - End
 
 - type: entity
   parent: BasePlushie

@@ -54,6 +54,13 @@
   - type: Construction
     graph: flowerwreath
     node: flowerwreath
+  # Moffstation - Start - allow trinkets to be placed in Survival Box
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+    - SurvivalBoxInsertable
+# Moffstation - End
 
 - type: entity
   parent: ClothingHeadLightBase
@@ -368,6 +375,13 @@
     sprite: Clothing/Head/Misc/hairflower.rsi
   - type: Clothing
     sprite: Clothing/Head/Misc/hairflower.rsi
+  # Moffstation - Start - allow trinkets to be placed in Survival Box
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+    - SurvivalBoxInsertable
+  # Moffstation - End
 
 - type: entity
   parent: ClothingHeadBase

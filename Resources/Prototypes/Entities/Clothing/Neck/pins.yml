@@ -11,6 +11,14 @@
     sprite: Clothing/Neck/Misc/pins.rsi
   - type: Clothing
     sprite: Clothing/Neck/Misc/pins.rsi
+  # Moffstation - Start - allow trinkets to be placed in Survival Box
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+    - Recyclable
+    - SurvivalBoxInsertable
+  # Moffstation - End
 
 - type: entity
   parent: ClothingNeckPinBase

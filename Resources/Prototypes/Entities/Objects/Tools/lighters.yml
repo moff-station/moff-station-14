@@ -89,6 +89,11 @@
     color: orange
   - type: ItemTogglePointLight
   - type: PhysicalComposition
+  # Moffstation - Start - allow trinkets to be placed in Survival Box
+  - type: Tag
+    tags:
+    - SurvivalBoxInsertable
+  # Moffstation - End
 
 - type: entity
   name: cheap lighter
@@ -609,6 +614,7 @@
     tags:
     - DonkPocket
     - Meat
+    - SurvivalBoxInsertable #Moffstation - Allow trinkets to be placed in Survival Box
   - type: SolutionContainerManager
     solutions:
       Welder:
