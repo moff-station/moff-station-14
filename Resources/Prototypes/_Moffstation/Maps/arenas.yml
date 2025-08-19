@@ -42,3 +42,19 @@
       - type: StationJobs
         availableJobs:
           Passenger: [ -1, -1 ]
+
+- type: gameMap
+  id: D1-Logic
+  mapName: d1_logic
+  mapPath: /Maps/_Moffstation/Nonstations/d1_logic.yml
+  minPlayers: 0
+  maxPlayers: 10
+  stations:
+    D1-Logic:
+      stationProto: StandardStationArena
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "Logic"
+      - type: StationJobs
+        availableJobs:
+          Passenger: [ -1, -1 ]
