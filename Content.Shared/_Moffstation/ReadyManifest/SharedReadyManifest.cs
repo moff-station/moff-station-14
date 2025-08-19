@@ -11,18 +11,10 @@ namespace Content.Shared._Moffstation.ReadyManifest;
 ///     a player changes their ready status.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class RequestReadyManifestMessage : EntityEventArgs
-{
-    public RequestReadyManifestMessage() { }
-}
+public sealed class RequestReadyManifestMessage : EntityEventArgs;
 
 [Serializable, NetSerializable]
-public sealed class ReadyManifestEuiState : EuiStateBase
+public sealed class ReadyManifestEuiState(Dictionary<ProtoId<JobPrototype>, int> jobCounts) : EuiStateBase
 {
-    public Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> JobCounts { get; }
-
-    public ReadyManifestEuiState(Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> jobCounts)
-    {
-        JobCounts = jobCounts;
-    }
+    public Dictionary<ProtoId<JobPrototype>, int> JobCounts { get; } = jobCounts;
 }

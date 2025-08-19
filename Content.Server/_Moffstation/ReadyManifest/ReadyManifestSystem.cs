@@ -2,8 +2,8 @@ using System.Linq;
 using Content.Server.EUI;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
-using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
+using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.ReadyManifest;
 using Content.Shared.GameTicking;
 using Content.Shared.Preferences;
@@ -18,15 +18,14 @@ public sealed class ReadyManifestSystem : EntitySystem
 {
     [Dependency] private readonly EuiManager _euiManager = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly PlayTimeTrackingSystem _playTimeTracking = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+
 
     private readonly Dictionary<ICommonSession, ReadyManifestEui> _openEuis = [];
 
     // A dictionary for each job type, then another for each priority level for that job type
-    private Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> _jobCounts = [];
+    private readonly Dictionary<ProtoId<JobPrototype>, int> _jobCounts = [];
 
     public override void Initialize()
     {
@@ -37,7 +36,7 @@ public sealed class ReadyManifestSystem : EntitySystem
 
     private void OnRoundStarting(RoundStartingEvent ev)
     {
-        foreach (var (_, eui) in _openEuis)
+        foreach (var eui in _openEuis.Values)
         {
             eui.Close();
         }
@@ -47,17 +46,13 @@ public sealed class ReadyManifestSystem : EntitySystem
 
     private void OnRequestReadyManifest(RequestReadyManifestMessage message, EntitySessionEventArgs args)
     {
-        if (args.SenderSession is not { } sessionCast)
-        {
-            return;
-        }
         BuildReadyManifest();
-        OpenEui(sessionCast);
+        OpenEui(args.SenderSession);
     }
 
     private void OnPlayerToggleReady(ref PlayerToggleReadyEvent ev)
     {
-        UpdateByPlayer(ev.PlayerSession.Data.UserId);
+        BuildReadyManifest();
         UpdateEuis();
     }
 
@@ -65,7 +60,14 @@ public sealed class ReadyManifestSystem : EntitySystem
     {
         _jobCounts.Clear();
 
-        foreach (var (userId, _) in _gameTicker.PlayerGameStatuses)
+        var jobs = _protoMan.EnumeratePrototypes<JobPrototype>();
+        foreach (var job in jobs)
+        {
+            if (!job.SetPreference)
+                continue;
+            _jobCounts.Add(job.ID, 0);
+        }
+        foreach (var userId in _gameTicker.PlayerGameStatuses.Keys)
         {
             UpdateByPlayer(userId);
         }
@@ -73,65 +75,35 @@ public sealed class ReadyManifestSystem : EntitySystem
 
     private void UpdateByPlayer(NetUserId userId)
     {
-        if (!_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-        {
+        // If they aren't ready, then don't bother counting them
+        if (_gameTicker.PlayerGameStatuses[userId] != PlayerGameStatus.ReadyToPlay)
             return;
-        }
+
+        if (!_prefsManager.TryGetCachedPreferences(userId, out var preferences))
+            return;
 
         var profile = (HumanoidCharacterProfile)preferences.SelectedCharacter;
-        var player = _playerManager.GetSessionById(userId);
-        var profileJobs = FilterPlayerJobs(profile, player);
+        var jobs = profile.JobPriorities.Keys.ToList();
 
-        var isReady = _gameTicker.PlayerGameStatuses[userId] == PlayerGameStatus.ReadyToPlay;
-
-        foreach (var job in profileJobs)
-        {
-            if (!_jobCounts.TryGetValue(job, out var counts) ||
-                !profile.JobPriorities.TryGetValue(job, out var priority))
-            {
-                continue;
-            }
-
-            if (priority is not (JobPriority.High or JobPriority.Medium or JobPriority.Low))
-                continue;
-
-            int delta = isReady ? 1 : -1;
-
-            _jobCounts[job] = priority switch
-            {
-                JobPriority.High => counts with { High = counts.High + delta },
-                JobPriority.Medium => counts with { Medium = counts.Medium + delta },
-                JobPriority.Low => counts with { Low = counts.Low + delta },
-                _ => counts
-            };
-        }
-    }
-
-    private List<ProtoId<JobPrototype>> FilterPlayerJobs(HumanoidCharacterProfile profile, ICommonSession player)
-    {
-        var jobs = profile.JobPriorities.Keys.Select(k => new ProtoId<JobPrototype>(k)).ToList();
-        List<ProtoId<JobPrototype>> priorityJobs = [];
         foreach (var job in jobs)
         {
-            var priority = profile.JobPriorities[job];
-            // For jobs that are rolled before others such as Command, we want to check for any priority since they'll always be filled
-            if ((priority == JobPriority.High ||
-                 _prototypeManager.Index(job).Weight > 0 &&
-                 priority > JobPriority.Never) &&
-                _playTimeTracking.IsAllowed(player, job))
-            {
-                priorityJobs.Add(job);
-            }
+            if (!_jobCounts.TryGetValue(job, out _) ||
+                !profile.JobPriorities.TryGetValue(job, out var priority))
+                continue;
+
+            if (priority < JobPriority.Medium)
+                continue;
+
+            _jobCounts[job]++;
         }
-        return priorityJobs;
     }
 
-    public Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> GetReadyManifest()
+    public Dictionary<ProtoId<JobPrototype>, int> GetReadyManifest()
     {
         return _jobCounts;
     }
 
-    public void OpenEui(ICommonSession session)
+    private void OpenEui(ICommonSession session)
     {
         if (_openEuis.ContainsKey(session))
         {
@@ -146,7 +118,7 @@ public sealed class ReadyManifestSystem : EntitySystem
 
     private void UpdateEuis()
     {
-        foreach (var (_, eui) in _openEuis)
+        foreach (var eui in _openEuis.Values)
         {
             eui.StateDirty();
         }
@@ -154,12 +126,7 @@ public sealed class ReadyManifestSystem : EntitySystem
 
     public void CloseEui(ICommonSession session)
     {
-        if (!_openEuis.TryGetValue(session, out var eui))
-        {
-            return;
-        }
-
-        _openEuis.Remove(session);
-        eui.Close();
+        if (_openEuis.Remove(session, out var eui))
+            eui.Close();
     }
 }

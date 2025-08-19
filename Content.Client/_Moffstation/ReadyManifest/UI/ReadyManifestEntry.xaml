@@ -2,12 +2,10 @@
     xmlns="https://spacestation14.io"
     xmlns:controls="clr-namespace:Content.Client._Moffstation.ReadyManifest.UI"
     HorizontalExpand="True"
-    Columns="4">
+    Columns="2">
     <BoxContainer Name="JobContainer" Orientation="Horizontal">
-        <TextureRect Name="EntryIcon" TextureScale="2 2" VerticalAlignment="Center" Margin="0 0 4 0"></TextureRect>
-        <RichTextLabel Name="EntryTitle" HorizontalExpand="True"></RichTextLabel>
+        <TextureRect Name="EntryIcon" TextureScale="2 2" VerticalAlignment="Center" Margin="0 0 4 0" />
+        <RichTextLabel Name="EntryTitle" HorizontalExpand="True" />
     </BoxContainer>
-    <RichTextLabel Name="HighReadyCount"></RichTextLabel>
-    <RichTextLabel Name="MedReadyCount"></RichTextLabel>
-    <RichTextLabel Name="LowReadyCount"></RichTextLabel>
+    <RichTextLabel Name="ReadyCount" />
 </controls:ReadyManifestEntry>

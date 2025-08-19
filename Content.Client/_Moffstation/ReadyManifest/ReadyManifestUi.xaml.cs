@@ -27,7 +27,7 @@ public sealed partial class ReadyManifestUi : DefaultWindow
         _jobCategories = [];
     }
 
-    public void RebuildUI(Dictionary<ProtoId<JobPrototype>, (int High, int Medium, int Low)> jobCounts)
+    public void RebuildUI(Dictionary<ProtoId<JobPrototype>, int> jobCounts)
     {
         ReadyManifestListing.DisposeAllChildren();
         _jobCategories.Clear();
@@ -73,8 +73,8 @@ public sealed partial class ReadyManifestUi : DefaultWindow
 
             foreach (var job in jobs)
             {
-                if (jobCounts.TryGetValue(job.ID, out var count))
-                    category.AddChild(new ReadyManifestEntry(job, count, _prototypeManager, _spriteSystem));
+                var count = jobCounts.GetValueOrDefault(job.ID, 0);
+                category.AddChild(new ReadyManifestEntry(job, count, _prototypeManager, _spriteSystem));
             }
         }
     }

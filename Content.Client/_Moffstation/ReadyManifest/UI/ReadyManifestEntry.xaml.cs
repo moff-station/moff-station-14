@@ -10,21 +10,28 @@ namespace Content.Client._Moffstation.ReadyManifest.UI;
 [GenerateTypedNameReferences]
 public sealed partial class ReadyManifestEntry : GridContainer
 {
+    private static readonly Color EmptyColor = Color.Yellow;
+    private static readonly Color TakenColor = Color.White;
+
+    public ReadyManifestEntry()
+    {
+        RobustXamlLoader.Load(this);
+
+        EntryTitle.SetMessage("Unknown");
+        ReadyCount.SetMessage("0");
+    }
     public ReadyManifestEntry(
         JobPrototype job,
-       (int High, int Medium, int Low) jobCount,
+        int jobCount,
         IPrototypeManager prototypeManager,
         SpriteSystem spriteSystem)
     {
         RobustXamlLoader.Load(this);
-        IoCManager.InjectDependencies(this);
         EntryTitle.SetMessage(job.LocalizedName + ":");
 
         var jobIcon = prototypeManager.Index(job.Icon);
         EntryIcon.Texture = spriteSystem.Frame0(jobIcon.Icon);
 
-        HighReadyCount.SetMessage(jobCount.High.ToString());
-        MedReadyCount.SetMessage(jobCount.Medium.ToString());
-        LowReadyCount.SetMessage(jobCount.Low.ToString());
+        ReadyCount.SetMessage(jobCount.ToString(), null, jobCount > 0 ? TakenColor : EmptyColor);
     }
 }

@@ -3,25 +3,18 @@ using Content.Shared._Moffstation.ReadyManifest;
 
 namespace Content.Server._Moffstation.ReadyManifest;
 
-public sealed class ReadyManifestEui : BaseEui
+public sealed class ReadyManifestEui(ReadyManifestSystem readyManifestSystem) : BaseEui
 {
-    private readonly ReadyManifestSystem _readyManifest;
-
-    public ReadyManifestEui(ReadyManifestSystem readyManifestSystem)
-    {
-        _readyManifest = readyManifestSystem;
-    }
-
     public override ReadyManifestEuiState GetNewState()
     {
-        var entries = _readyManifest.GetReadyManifest();
-        return new(entries);
+        var entries = readyManifestSystem.GetReadyManifest();
+        return new ReadyManifestEuiState(entries);
     }
 
     public override void Closed()
     {
         base.Closed();
 
-        _readyManifest.CloseEui(Player);
+        readyManifestSystem.CloseEui(Player);
     }
 }
