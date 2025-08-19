@@ -25,7 +25,7 @@
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
-    Eyes: MobHumanoidEyes
+    Eyes: MobCervidaeEyes
     LArm: MobCervidaeLArm
     RArm: MobCervidaeRArm
     LHand: MobCervidaeLHand
@@ -71,6 +71,12 @@
     Snout:
       points: 1
       required: false
+
+- type: humanoidBaseSprite
+  id: MobCervidaeEyes
+  baseSprite:
+    sprite: _Moffstation/Mobs/Species/Cervidae/parts.rsi
+    state: eyes
 
 - type: humanoidBaseSprite
   id: MobCervidaeHead
