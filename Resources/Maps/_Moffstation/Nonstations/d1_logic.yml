@@ -4,8 +4,8 @@ meta:
   engineVersion: 266.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/20/2025 00:26:18
-  entityCount: 801
+  time: 08/20/2025 00:32:46
+  entityCount: 800
 maps:
 - 1
 grids:
@@ -1575,17 +1575,17 @@ entities:
     - type: Transform
       pos: -10.5,17.5
       parent: 2
-  - uid: 796
+  - uid: 795
     components:
     - type: Transform
       pos: -11.5,-5.5
       parent: 2
-  - uid: 797
+  - uid: 796
     components:
     - type: Transform
       pos: -11.5,-6.5
       parent: 2
-  - uid: 798
+  - uid: 797
     components:
     - type: Transform
       pos: -11.5,-7.5
@@ -1744,27 +1744,27 @@ entities:
     - type: Transform
       pos: -11.5,-0.5
       parent: 2
-  - uid: 791
+  - uid: 790
     components:
     - type: Transform
       pos: -5.5,12.5
       parent: 2
-  - uid: 792
+  - uid: 791
     components:
     - type: Transform
       pos: -5.5,13.5
       parent: 2
-  - uid: 793
+  - uid: 792
     components:
     - type: Transform
       pos: -5.5,14.5
       parent: 2
-  - uid: 794
+  - uid: 793
     components:
     - type: Transform
       pos: -5.5,15.5
       parent: 2
-  - uid: 795
+  - uid: 794
     components:
     - type: Transform
       pos: -5.5,16.5
@@ -2511,7 +2511,7 @@ entities:
       parent: 2
 - proto: Grille
   entities:
-  - uid: 799
+  - uid: 798
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2584,7 +2584,7 @@ entities:
     missingComponents:
     - Damageable
     - Destructible
-  - uid: 452
+  - uid: 418
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2593,7 +2593,7 @@ entities:
     missingComponents:
     - Damageable
     - Destructible
-  - uid: 788
+  - uid: 787
     components:
     - type: Transform
       pos: -4.5,1.5
@@ -2687,7 +2687,7 @@ entities:
     missingComponents:
     - Damageable
     - Destructible
-  - uid: 800
+  - uid: 799
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2800,7 +2800,7 @@ entities:
       parent: 2
 - proto: ReinforcedPlasmaWindow
   entities:
-  - uid: 801
+  - uid: 800
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2835,16 +2835,6 @@ entities:
     missingComponents:
     - Gun
     - AutoShootGun
-- proto: SignElectrical
-  entities:
-  - uid: 418
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 9.5,-6.5
-      parent: 2
-    - type: Fixtures
-      fixtures: {}
 - proto: SignEscapePods
   entities:
   - uid: 119
@@ -3366,7 +3356,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 454
+  - uid: 453
     components:
     - type: Transform
       pos: -10.5,7.5
@@ -3374,7 +3364,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 455
+  - uid: 454
     components:
     - type: Transform
       pos: -10.5,6.5
@@ -4401,7 +4391,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 789
+  - uid: 788
     components:
     - type: Transform
       pos: 6.5,0.5
@@ -4409,7 +4399,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 790
+  - uid: 789
     components:
     - type: Transform
       pos: 6.5,1.5
@@ -5503,7 +5493,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 453
+  - uid: 452
     components:
     - type: Transform
       pos: -7.5,14.5
@@ -5511,7 +5501,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 456
+  - uid: 455
     components:
     - type: Transform
       pos: 11.5,16.5
@@ -5519,7 +5509,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 559
+  - uid: 456
     components:
     - type: Transform
       pos: 11.5,17.5
@@ -5527,7 +5517,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 560
+  - uid: 559
     components:
     - type: Transform
       pos: 11.5,18.5
@@ -5535,7 +5525,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 786
+  - uid: 560
     components:
     - type: Transform
       pos: 11.5,15.5
@@ -5543,7 +5533,7 @@ entities:
     missingComponents:
     - Destructible
     - Damageable
-  - uid: 787
+  - uid: 786
     components:
     - type: Transform
       pos: 11.5,14.5
