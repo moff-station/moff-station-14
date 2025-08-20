@@ -296,11 +296,11 @@
   # Moffstation
   # The e-blade hum sfx continues and stacks even when sheathed 
   # Disabled until the wield active sfx no longer stacks
-  #- type: ItemToggleActiveSound
-  #  activeSound:
-  #    path: /Audio/Weapons/ebladehum.ogg
-  #    params:
-  #      volume: 3
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Weapons/ebladehum.ogg
+      params:
+        volume: -99999 #Moffstation Volume Fix
   - type: ComponentToggler
     components:
     - type: Sharp
