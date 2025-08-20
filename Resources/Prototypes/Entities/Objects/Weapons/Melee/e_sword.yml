@@ -294,8 +294,8 @@
             Heat: 12
             Structural: 15
   # Moffstation
-  # The e-blade hum sfx continues and stacks even when sheathed 
-  # Disabled until the wield active sfx no longer stacks
+  # The e-blade hum sfx continues and stacks even when sheathed for both this and the double-bladed e-sword
+  # This disables the hum while active but fixes the sound continuing when sheathed. Someone smarter than me can fix this. 
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
