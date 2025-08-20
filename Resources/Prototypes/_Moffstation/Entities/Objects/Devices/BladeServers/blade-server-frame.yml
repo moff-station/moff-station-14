@@ -10,6 +10,12 @@
     state: frame
   - type: Item
     size: Huge
+    sprite: _Moffstation/Structures/Machines/blade_server.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-open
+      right:
+      - state: inhand-open
   - type: MultiHandedItem
   - type: Speech
     speechVerb: Robotic
@@ -62,6 +68,12 @@
     - state: wires
   - type: Item
     size: Huge
+    sprite: _Moffstation/Structures/Machines/blade_server.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-open
+      right:
+      - state: inhand-open
   - type: MultiHandedItem
   - type: Speech
     speechVerb: Robotic
