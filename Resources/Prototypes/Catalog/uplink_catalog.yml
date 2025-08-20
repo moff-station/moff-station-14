@@ -74,34 +74,10 @@
   icon: { sprite: /Textures/Objects/Weapons/Melee/hypereutactic_blade.rsi, state: icon }
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 15
+    Telecrystal: 9
   productEntity: HyperEutacticBlade
   cost:
-    Telecrystal: 18
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:BuyerWhitelistCondition
-    blacklist:
-      components:
-      - SurplusBundle
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
-
-
-- type: listing
-  id: UplinkHyperEutaticBlade
-  name: uplink-hypereutatic-blade-name
-  description: uplink-hypereutatic-blade-desc
-  icon: { sprite: /Textures/Objects/Weapons/Melee/hypereutactic_blade.rsi, state: icon }
-  discountCategory: veryRareDiscounts
-  discountDownTo:
     Telecrystal: 13
-  productEntity: HyperEutaticBlade
-  cost:
-    Telecrystal: 16
   categories:
   - UplinkWeaponry
   conditions:
@@ -110,9 +86,33 @@
       components:
       - SurplusBundle
   - !type:StoreWhitelistCondition
-    whitelist:
+    blacklist:
       tags:
-      - NukeOpsUplink
+      #- NukeOpsUplink
+#Moffstation Addition End
+
+#- type: listing
+#  id: UplinkHyperEutaticBlade
+#  name: uplink-hypereutatic-blade-name
+#  description: uplink-hypereutatic-blade-desc
+#  icon: { sprite: /Textures/Objects/Weapons/Melee/hypereutactic_blade.rsi, state: icon }
+#  discountCategory: veryRareDiscounts
+#  discountDownTo:
+#    Telecrystal: 13
+#  productEntity: HyperEutaticBlade
+#  cost:
+#    Telecrystal: 16
+#  categories:
+#  - UplinkWeaponry
+#  conditions:
+#  - !type:BuyerWhitelistCondition
+#    blacklist:
+#      components:
+#      - SurplusBundle
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - NukeOpsUplink
 #Moffstation Addition End
 
 - type: listing

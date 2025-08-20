@@ -361,8 +361,8 @@
         Structural: 20
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
-    walkModifier: 0.6
-    sprintModifier: 0.6
+    walkModifier: 0.7 #Moffstation adjustment, prev .6
+    sprintModifier: 0.7 #Moffstation adjustment prev .6
   - type: UseDelay
     delay: 1.5
   - type: Sprite
@@ -383,21 +383,8 @@
     size: Small
     sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
-    reflectProb: 1.0 
+    reflectProb: .55 #Moffstation adjustment, no longer 100% reflect. 5% above e-sword max.
     spread: 75
-
-#Moffstation Start
-# Nukie variant, reduced reflection rate.
-- type: entity
-  parent: HyperEutacticBlade
-  id: HyperEutaticBlade
-  name: hypereutatic-blade
-  description: Often mistaken for the Hypereutactic Blade. This mass produced, off-brand, knockoff gets the same job done but with less reflection.
-  components:
-  - type: Reflect
-    reflectProb: 0.75
-    spread: 75
-#Moffstation End
 
 # Borgs
 - type: entity
