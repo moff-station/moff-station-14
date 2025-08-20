@@ -65,6 +65,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", // Variant of grimebreaker
             "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
             "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
+	    "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
         };
 
         private static readonly string[] GameMaps =
@@ -101,6 +102,7 @@ namespace Content.IntegrationTests.Tests
             "WaterVapour",
             "Frezon",
             "Prime",
+	    "D1-Logic",
             // Moffstation - End
         };
 
