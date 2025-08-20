@@ -24,37 +24,6 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtTacticalMaid
 
-# Back
-- type: loadout
-  id: NukieBackpack
-  equipment:
-    back: ClothingBackpackSyndicateOperative
-
-- type: loadout
-  id: NukieSatchel
-  equipment:
-    back: ClothingBackpackSatchelSyndicateOperative
-
-- type: loadout
-  id: NukieDuffel
-  equipment:
-    back: ClothingBackpackDuffelSyndicateOperative
-
-- type: loadout
-  id: NukieBackpackEmpty
-  equipment:
-    back: ClothingBackpackSyndicate
-
-- type: loadout
-  id: NukieSatchelEmpty
-  equipment:
-    back: ClothingBackpackSatchelSyndicate
-
-- type: loadout
-  id: NukieDuffelEmpty
-  equipment:
-    back: ClothingBackpackDuffelSyndicateBundle
-
 # Gloves
 - type: loadout
   id: CombatGloves
@@ -65,19 +34,3 @@
   id: CombatMaidGloves
   equipment:
     gloves: ClothingHandsTacticalMaidGloves
-
-# Medical Backpacks
-- type: loadout
-  id: NukieMedicBackpack
-  equipment:
-    back: ClothingBackpackSyndicateOperativeMedic
-
-- type: loadout
-  id: NukieMedicSatchel
-  equipment:
-    back: ClothingBackpackSatchelSyndicateOperativeMedic
-
-- type: loadout
-  id: NukieMedicDuffel
-  equipment:
-    back: ClothingBackpackDuffelSyndicateOperativeMedic
