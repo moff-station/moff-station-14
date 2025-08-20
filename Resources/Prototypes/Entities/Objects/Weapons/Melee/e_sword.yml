@@ -293,6 +293,8 @@
             Slash: 12
             Heat: 12
             Structural: 15
+  # Moffstation
+  # The e-blade hum sfx continues and stacks even when sheathed 
   # Disabled until the wield active sfx no longer stacks
   #- type: ItemToggleActiveSound
   #  activeSound:
@@ -381,9 +383,10 @@
     size: Small
     sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
-    reflectProb: 1.0
+    reflectProb: 1.0 
     spread: 75
 
+#Moffstation Start
 # Nukie variant, reduced reflection rate.
 - type: entity
   parent: HyperEutacticBlade
@@ -394,6 +397,7 @@
   - type: Reflect
     reflectProb: 0.75
     spread: 75
+#Moffstation End
 
 # Borgs
 - type: entity
