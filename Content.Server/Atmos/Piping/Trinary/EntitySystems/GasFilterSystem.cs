@@ -5,12 +5,14 @@ using Content.Server.Atmos.Piping.Trinary.Components;
 using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
+using Content.Shared._Moffstation.DeviceLinking; // Moffstation
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Piping;
 using Content.Shared.Atmos.Piping.Components;
 using Content.Shared.Atmos.Piping.Trinary.Components;
 using Content.Shared.Audio;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking.Events; // Moffstation
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
@@ -44,6 +46,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             SubscribeLocalEvent<GasFilterComponent, GasFilterSelectGasMessage>(OnSelectGasMessage);
             SubscribeLocalEvent<GasFilterComponent, GasFilterToggleStatusMessage>(OnToggleStatusMessage);
 
+            SubscribeLocalEvent<GasFilterComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Add Signals
         }
 
         private void OnInit(EntityUid uid, GasFilterComponent filter, ComponentInit args)
@@ -211,5 +214,27 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
             args.DeviceFlipped = inlet != null && filterNode != null && inlet.CurrentPipeDirection.ToDirection() == filterNode.CurrentPipeDirection.ToDirection().GetClockwise90Degrees();
         }
+
+        // Moffstation - Start
+        private void OnSignalReceived(Entity<GasFilterComponent> entity, ref SignalReceivedEvent args)
+        {
+            var trigger = args.Trigger;
+            OnOffTogglePorts.HandleEnablementSignal(
+                ref args,
+                entity.Comp.Enabled,
+                enabled =>
+                {
+                    entity.Comp.Enabled = enabled;
+                    _adminLogger.Add(
+                        LogType.AtmosPowerChanged,
+                        LogImpact.Medium,
+                        $"A signal ({ToPrettyString(trigger):trigger}) set the power on {ToPrettyString(entity):device} to {enabled}"
+                    );
+                    DirtyUI(entity, entity);
+                    UpdateAppearance(entity, entity);
+                }
+            );
+        }
+        // Moffstation - End
     }
 }

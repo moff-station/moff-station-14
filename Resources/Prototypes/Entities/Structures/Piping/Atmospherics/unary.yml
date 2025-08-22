@@ -213,7 +213,7 @@
       - AirInjector
 
 - type: entity
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, OnOffTogglePorts ] # Moffstation - Add Signals
   id: BaseGasThermoMachine
   name: thermomachine
   abstract: true

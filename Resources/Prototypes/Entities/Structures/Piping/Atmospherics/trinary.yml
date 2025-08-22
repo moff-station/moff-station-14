@@ -28,7 +28,7 @@
           pipeDirection: South
 
 - type: entity
-  parent: GasTrinaryBase
+  parent: [ GasTrinaryBase, OnOffTogglePorts ] # Moffstation - Add Signals
   id: GasFilter
   name: gas filter
   description: Very useful for filtering gases.
@@ -127,7 +127,7 @@
         pipeDirection: North
 
 - type: entity
-  parent: GasTrinaryBase
+  parent: [ GasTrinaryBase, OnOffTogglePorts ] # Moffstation - Add Signals
   id: GasMixer
   name: gas mixer
   description: Very useful for mixing gases.

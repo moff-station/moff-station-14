@@ -1,7 +1,9 @@
+using Content.Shared._Moffstation.DeviceLinking; // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.Atmos.Piping.Binary.Components;
 using Content.Shared.Atmos.Visuals;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking.Events; // Moffstation
 using Content.Shared.Examine;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
@@ -23,6 +25,8 @@ public abstract class SharedGasVolumePumpSystem : EntitySystem
         SubscribeLocalEvent<GasVolumePumpComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<GasVolumePumpComponent, GasVolumePumpToggleStatusMessage>(OnToggleStatusMessage);
         SubscribeLocalEvent<GasVolumePumpComponent, GasVolumePumpChangeTransferRateMessage>(OnTransferRateChangeMessage);
+
+        SubscribeLocalEvent<GasVolumePumpComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Add Signals
     }
 
     private void OnInit(Entity<GasVolumePumpComponent> ent, ref ComponentInit args)
@@ -88,4 +92,26 @@ public abstract class SharedGasVolumePumpSystem : EntitySystem
         else
             _appearance.SetData(uid, GasVolumePumpVisuals.State, GasVolumePumpState.On, appearance);
     }
+
+    // Moffstation - Start
+    private void OnSignalReceived(Entity<GasVolumePumpComponent> ent, ref SignalReceivedEvent args)
+    {
+        var argsTrigger = args.Trigger;
+        OnOffTogglePorts.HandleEnablementSignal(
+            ref args,
+            ent.Comp.Enabled,
+            enabled =>
+            {
+                ent.Comp.Enabled = enabled;
+                _adminLogger.Add(type: LogType.AtmosPowerChanged,
+                    impact: LogImpact.Medium,
+                    handler:
+                    $"A signal ({ToPrettyString(argsTrigger):trigger}) set the power on {ToPrettyString(uid: ent):device} to {enabled}");
+                Dirty(ent: ent);
+                UpdateAppearance(ent);
+                UpdateUi(ent);
+            }
+        );
+    }
+    // Moffstation - End
 }

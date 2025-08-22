@@ -29,7 +29,7 @@
       Tertiary: Structures/Piping/Atmospherics/pump_alt2.rsi
 
 - type: entity
-  parent: GasBinaryBase
+  parent: [ GasBinaryBase, OnOffTogglePorts ] # Moffstation - Add signal ports
   id: GasPressurePump
   name: gas pump
   description: A pump that moves gas by pressure.
@@ -93,7 +93,7 @@
     - Pumps
 
 - type: entity
-  parent: GasBinaryBase
+  parent: [ GasBinaryBase, OnOffTogglePorts ] # Moffstation - Add signal ports
   id: GasVolumePump
   name: volumetric gas pump
   description: A pump that moves gas by volume.

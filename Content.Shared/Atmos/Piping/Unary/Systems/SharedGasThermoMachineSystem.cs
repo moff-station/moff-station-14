@@ -1,6 +1,8 @@
+using Content.Shared._Moffstation.DeviceLinking; // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking.Events; // Moffstation
 using Content.Shared.Examine;
 using Content.Shared.Power.EntitySystems;
 
@@ -18,6 +20,8 @@ public abstract class SharedGasThermoMachineSystem : EntitySystem
 
         SubscribeLocalEvent<GasThermoMachineComponent, GasThermomachineToggleMessage>(OnToggleMessage);
         SubscribeLocalEvent<GasThermoMachineComponent, GasThermomachineChangeTemperatureMessage>(OnChangeTemperature);
+
+        SubscribeLocalEvent<GasThermoMachineComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Add Signals
     }
 
     private void OnExamined(EntityUid uid, GasThermoMachineComponent thermoMachine, ExaminedEvent args)
@@ -58,4 +62,22 @@ public abstract class SharedGasThermoMachineSystem : EntitySystem
     }
 
     protected virtual void DirtyUI(EntityUid uid, GasThermoMachineComponent? thermoMachine, UserInterfaceComponent? ui=null) {}
+
+    // Moffstation - Start
+    private void OnSignalReceived(Entity<GasThermoMachineComponent> entity, ref SignalReceivedEvent args)
+    {
+        var trigger = args.Trigger;
+        OnOffTogglePorts.HandleEnablementSignal(
+            ref args,
+            _receiver.IsPowered(entity.Owner),
+            enabled =>
+            {
+                var powerState = _receiver.TogglePower(entity, user: null);
+                _adminLogger.Add(LogType.AtmosPowerChanged,
+                    $"A signal ({ToPrettyString(trigger)}) turned {(powerState ? "On" : "Off")} {ToPrettyString(entity)}");
+                DirtyUI(entity, entity);
+            }
+        );
+    }
+    // Moffstation - End
 }

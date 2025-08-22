@@ -101,7 +101,7 @@
 
 - type: entity
   id: SpaceHeater
-  parent: [BaseMachinePowered, ConstructibleMachine]
+  parent: [ BaseMachinePowered, ConstructibleMachine, OnOffTogglePorts ] # Moffstation - Add Signals
   name: space heater
   description: A bluespace technology device that alters local temperature. Commonly referred to as a "Space Heater".
   suffix: Unanchored

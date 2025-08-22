@@ -17,3 +17,29 @@
   id: CycleChannelBackwards
   name: signal-port-name-cycle-channel-backwards
   description: signal-port-description-cycle-channel-backwards
+
+# Generic On / Off / Toggle ports
+- type: entity
+  abstract: true
+  id: OnOffTogglePorts
+  components:
+  - type: DeviceLinkSink
+    ports:
+    - MoffOnGeneric
+    - MoffOffGeneric
+    - MoffToggleGeneric
+
+- type: sinkPort
+  id: MoffOnGeneric
+  name: signal-port-name-moff-on
+  description: signal-port-description-moff-on
+
+- type: sinkPort
+  id: MoffOffGeneric
+  name: signal-port-name-moff-off
+  description: signal-port-description-moff-off
+
+- type: sinkPort
+  id: MoffToggleGeneric
+  name: signal-port-name-moff-toggle
+  description: signal-port-description-moff-toggle
