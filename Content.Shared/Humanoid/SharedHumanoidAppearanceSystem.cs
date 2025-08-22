@@ -154,7 +154,6 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
         targetHumanoid.Age = sourceHumanoid.Age;
         targetHumanoid.Height = sourceHumanoid.Height; // Moffstation - CD Height
-        SetSex(target, sourceHumanoid.Sex, false, targetHumanoid);
         targetHumanoid.CustomBaseLayers = new(sourceHumanoid.CustomBaseLayers);
         targetHumanoid.MarkingSet = new(sourceHumanoid.MarkingSet);
 

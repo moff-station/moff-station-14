@@ -37,6 +37,10 @@ public sealed class SlipperySystem : EntitySystem
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<SlidingComponent> _slidingQuery;
 
+    private EntityQuery<KnockedDownComponent> _knockedDownQuery;
+    private EntityQuery<PhysicsComponent> _physicsQuery;
+    private EntityQuery<SlidingComponent> _slidingQuery;
+
     public override void Initialize()
     {
         base.Initialize();

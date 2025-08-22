@@ -126,11 +126,6 @@ public abstract partial class SharedStationSystem : EntitySystem
         var query = EntityQueryEnumerator<StationDataComponent>();
         while (query.MoveNext(out var uid, out _))
         {
-            // Moffstation - Start - Pirate stations aren't _really_ stations, so don't return them here.
-            if (HasComp<PirateStationComponent>(uid))
-                continue;
-            // Moffstation - End
-
             stations.Add(uid);
         }
 
@@ -143,11 +138,6 @@ public abstract partial class SharedStationSystem : EntitySystem
         var query = EntityQueryEnumerator<StationDataComponent>();
         while (query.MoveNext(out var uid, out _))
         {
-            // Moffstation - Start - Pirate stations aren't _really_ stations, so don't return them here.
-            if (HasComp<PirateStationComponent>(uid))
-                continue;
-            // Moffstation - End
-
             stations.Add(uid);
         }
 
@@ -179,11 +169,6 @@ public abstract partial class SharedStationSystem : EntitySystem
         var query = EntityQueryEnumerator<StationDataComponent>();
         while (query.MoveNext(out var uid, out var data))
         {
-            // Moffstation - Start - Pirate stations aren't _really_ stations, so don't return them here.
-            if (HasComp<PirateStationComponent>(uid))
-                continue;
-            // Moffstation - End
-
             foreach (var gridUid in data.Grids)
             {
                 if (Transform(gridUid).MapID == map)
