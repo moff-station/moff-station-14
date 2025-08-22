@@ -61,15 +61,6 @@ public sealed partial class TriggerSystem
         args.Handled = true;
     }
 
-    private void OnInteractHand(Entity<TriggerOnInteractHandComponent> ent, ref InteractHandEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        Trigger(ent.Owner, args.User, ent.Comp.KeyOut);
-        args.Handled = true;
-    }
-
     private void OnInteractUsing(Entity<TriggerOnInteractUsingComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)
