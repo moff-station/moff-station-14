@@ -273,7 +273,7 @@
   components:
   - type: ItemToggle
     onUse: false # wielding events control it instead
-    onActivate: false # prevents the weapon from being able to be turned on when it is on the ground
+    onActivate: true #Moffstation Change - Allows it to turned on while on the ground instead of instantly deactivating.
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg
       params:
@@ -300,7 +300,7 @@
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
       params:
-        volume: -99999 #Moffstation Volume Fix
+        volume: 3 #Moffstation Volume Fix
   - type: ComponentToggler
     components:
     - type: Sharp
@@ -383,7 +383,7 @@
     size: Small
     sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
-    reflectProb: .55 #Moffstation adjustment, no longer 100% reflect. 5% above e-sword max.
+    reflectProb: .60 #Moffstation adjustment, no longer 100% reflect. 10% above e-sword max.
     spread: 75
 
 # Borgs
