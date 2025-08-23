@@ -66,7 +66,7 @@
   categories:
   - UplinkWeaponry
 
-# Moffstation - Start - Readding the Hyper Eutactic Blade
+# Moffstation - Start - Readding the Hypereutactic Blade
 - type: listing
   id: UplinkHyperEutacticBlade
   name: uplink-hypereutactic-blade-name
@@ -88,31 +88,9 @@
   - !type:StoreWhitelistCondition
     blacklist:
       tags:
-      #- NukeOpsUplink
+# Moffstation - End - Readding the Hypereutactic Blade
 
-#- type: listing
-#  id: UplinkHyperEutaticBlade
-#  name: uplink-hypereutatic-blade-name
-#  description: uplink-hypereutatic-blade-desc
-#  icon: { sprite: /Textures/Objects/Weapons/Melee/hypereutactic_blade.rsi, state: icon }
-#  discountCategory: veryRareDiscounts
-#  discountDownTo:
-#    Telecrystal: 13
-#  productEntity: HyperEutaticBlade
-#  cost:
-#    Telecrystal: 16
-#  categories:
-#  - UplinkWeaponry
-#  conditions:
-#  - !type:BuyerWhitelistCondition
-#    blacklist:
-#      components:
-#      - SurplusBundle
-#  - !type:StoreWhitelistCondition
-#    whitelist:
-#      tags:
-#      - NukeOpsUplink
-# Moffstation - End
+
 
 - type: listing
   id: UplinkEnergyDagger
