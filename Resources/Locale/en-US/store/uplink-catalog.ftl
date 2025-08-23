@@ -17,13 +17,12 @@ uplink-esword-desc = A very dangerous energy sword that can reflect shots. Can b
 uplink-esword-double-name = Double Bladed Energy Sword
 uplink-esword-double-desc = A much more expensive counter part to the normal energy sword: with a much higher reflection chance, larger attack angle, higher structural damage, and faster swing. Makes a lot of noise when used or turned on.
 
-#Moffstation Start
 uplink-hypereutactic-blade-name = Hypereutactic Blade
 uplink-hypereutactic-blade-desc = A gigantic energy sword with power that matches its looks. Requires two hands. Slow and unwieldy, yet pretty adept at reflecting. Previously made infamous by an operative wearing a joy mask. You wouldn't want to see this coming at you down the hall!
-
+# Moffstation - Start
 uplink-hypereutatic-blade-name = Hypereutatic Blade
 uplink-hypereutatic-blade-desc = A gigantic off-brand energy sword. Requires two hands. Slow and unwieldy, can reflect decently. Often mistaken for the Hypereutactic Blade.
-#Moffstation End
+# Moffstation - End
 
 uplink-edagger-name = Energy Dagger
 uplink-edagger-desc = A small energy blade conveniently disguised in the form of a pen.
