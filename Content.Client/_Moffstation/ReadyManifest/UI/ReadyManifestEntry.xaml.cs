@@ -16,9 +16,6 @@ public sealed partial class ReadyManifestEntry : GridContainer
     public ReadyManifestEntry()
     {
         RobustXamlLoader.Load(this);
-
-        EntryTitle.SetMessage("Unknown");
-        ReadyCount.SetMessage("0");
     }
     public ReadyManifestEntry(
         JobPrototype job,

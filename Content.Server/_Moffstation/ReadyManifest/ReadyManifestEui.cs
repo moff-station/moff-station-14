@@ -13,8 +13,6 @@ public sealed class ReadyManifestEui(ReadyManifestSystem readyManifestSystem) : 
 
     public override void Closed()
     {
-        base.Closed();
-
         readyManifestSystem.CloseEui(Player);
     }
 }

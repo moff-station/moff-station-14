@@ -87,7 +87,7 @@ public sealed class ReadyManifestSystem : EntitySystem
 
         foreach (var job in jobs)
         {
-            if (!_jobCounts.TryGetValue(job, out _) ||
+            if (!_jobCounts.ContainsKey(job) ||
                 !profile.JobPriorities.TryGetValue(job, out var priority))
                 continue;
 
@@ -98,9 +98,9 @@ public sealed class ReadyManifestSystem : EntitySystem
         }
     }
 
-    public Dictionary<ProtoId<JobPrototype>, int> GetReadyManifest()
+    public IDictionary<ProtoId<JobPrototype>, int> GetReadyManifest()
     {
-        return _jobCounts;
+        return _jobCounts.AsReadOnly();
     }
 
     private void OpenEui(ICommonSession session)

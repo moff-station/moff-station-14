@@ -17,59 +17,42 @@ public sealed partial class ReadyManifestUi : DefaultWindow
     [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     private readonly SpriteSystem _spriteSystem;
-    private readonly Dictionary<string, BoxContainer> _jobCategories;
 
     public ReadyManifestUi()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         _spriteSystem = _entitySystem.GetEntitySystem<SpriteSystem>();
-        _jobCategories = [];
     }
 
     public void RebuildUI(Dictionary<ProtoId<JobPrototype>, int> jobCounts)
     {
         ReadyManifestListing.DisposeAllChildren();
-        _jobCategories.Clear();
 
-        var departments = new List<DepartmentPrototype>();
+        var catagory;
 
-        foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>())
-        {
-            if (department.EditorHidden)
-                continue;
-
-            departments.Add(department);
-        }
-
-        departments.Sort(DepartmentUIComparer.Instance);
-
+        var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>()
+            .Where(department => !department.EditorHidden)
+            .Order(DepartmentUIComparer.Instance);
         foreach (var department in departments)
         {
-            if (!_jobCategories.TryGetValue(department.ID, out var category))
+            var category = new BoxContainer
             {
-                category = new BoxContainer
-                {
-                    Orientation = BoxContainer.LayoutOrientation.Vertical,
-                    HorizontalExpand = true,
-                    Name = department.ID
-                };
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                HorizontalExpand = true,
+                Name = department.ID
+            };
 
-                category.AddChild(new Label()
-                {
-                    StyleClasses = { "LabelBig" },
-                    Text = Loc.GetString(department.Name)
-                });
+            category.AddChild(new Label()
+            {
+                StyleClasses = { "LabelBig" },
+                Text = Loc.GetString(department.Name)
+            });
 
-                _jobCategories[department.ID] = category;
-                ReadyManifestListing.AddChild(category);
-            }
-
+            ReadyManifestListing.AddChild(category);
             var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
-                    .Where(job => job.SetPreference)
-                    .ToArray();
-
-            Array.Sort(jobs, JobUIComparer.Instance);
+                .Where(job => job.SetPreference)
+                .Order(JobUIComparer.Instance);
 
             foreach (var job in jobs)
             {
@@ -79,3 +62,4 @@ public sealed partial class ReadyManifestUi : DefaultWindow
         }
     }
 }
+
