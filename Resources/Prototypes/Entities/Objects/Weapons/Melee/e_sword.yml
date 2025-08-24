@@ -272,8 +272,9 @@
   description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
   components:
   - type: ItemToggle
+    predictable: false #Fixes the hum not working BUT MAKES LATENCY DELAY AHHHHHHH
     onUse: false # wielding events control it instead
-    onActivate: true #Moffstation Change - Allows it to turned on while on the ground instead of instantly deactivating.
+    onActivate: true #Moffstation Change - Allows it to turned on while on the ground to see the cool sprite.
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg
       params:
@@ -293,14 +294,11 @@
             Slash: 12
             Heat: 12
             Structural: 15
-  # Moffstation
-  # The e-blade hum sfx continues and stacks even when sheathed for both this and the double-bladed e-sword
-  # This disables the hum while active but fixes the sound continuing when sheathed. Someone smarter than me can fix this. 
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
       params:
-        volume: 3 #Moffstation Volume Fix
+        volume: 3 
   - type: ComponentToggler
     components:
     - type: Sharp
