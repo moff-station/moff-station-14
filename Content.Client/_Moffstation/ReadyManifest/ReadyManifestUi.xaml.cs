@@ -29,8 +29,6 @@ public sealed partial class ReadyManifestUi : DefaultWindow
     {
         ReadyManifestListing.DisposeAllChildren();
 
-        var catagory;
-
         var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>()
             .Where(department => !department.EditorHidden)
             .Order(DepartmentUIComparer.Instance);
