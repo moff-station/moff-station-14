@@ -1,25 +1,34 @@
 - type: entity
-  parent: Clothing
+  parent: ClothingMultipleHeadphones
   id: PersonalItemMarvinHeadphones
-  name: noise canceling headphones
-  description: A pair of headphones with a clip-on microphone made to help those with sensitive ears. It works, at least in theory.
+  name: unusual noise cancelling headphones
+  description: A pair of headphones with a clip-on microphone made to help those with sensitive ears. Something seems off about this pair.
   suffix: PersonalItem
   components:
-  - type: ContainerContainer
-    containers:
-      key_slots: !type:Container
-  - type: Headset
-  - type: EncryptionKeyHolder
-    keySlots: 4
-  - type: Sprite
-    state: icon
-    sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
   - type: Item
-    size: Small
-  - type: Clothing
-    slots:
-    - ears
     sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
+  - type: Clothing
+    quickEquip: True
+    sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
+
+  - type: PointLight
+    enabled: false
+    netsync: false
+    radius: 1.1 # mimics a flippo without any of the "set you on fire" capability. More of a flavor thing, since the PDA light is brigher
+    color: orange
+  - type: ItemTogglePointLight
+  - type: ItemToggle
+    predictable: false
+    soundActivate:
+      path: /Audio/Items/Lighters/zippo_open.ogg
+      params:
+        volume: -5
+    soundDeactivate:
+      path: /Audio/Items/Lighters/zippo_close.ogg
+      params:
+        volume: -5
 
 - type: loadout
   id: PersonalItemMarvinHeadphones
