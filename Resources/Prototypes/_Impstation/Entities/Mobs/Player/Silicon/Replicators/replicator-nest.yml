@@ -32,6 +32,9 @@
       - OnUseTimerTrigger
       - StealTarget
       - Mech
+#  - type: Chasm
+#    fallingSound:
+#      path: /Audio/_Impstation/Effects/falling.ogg
   - type: ThermalVisionImmune
   - type: StepTrigger
     requiredTriggeredSpeed: 0

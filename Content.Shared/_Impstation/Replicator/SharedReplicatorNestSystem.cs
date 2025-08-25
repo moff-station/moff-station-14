@@ -5,6 +5,7 @@
 using Content.Shared._Impstation.SpawnedFromTracker;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
+using Content.Shared.Chasm;
 using Content.Shared.Construction.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Item;
@@ -28,8 +29,6 @@ using Robust.Shared.Map.Components;
 using Content.Shared.Maps;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
-using Robust.Shared.Containers;
-using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 
 namespace Content.Shared._Impstation.Replicator;
@@ -65,25 +64,6 @@ public abstract class SharedReplicatorNestSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ReplicatorComponent, ReplicatorUpgradeActionEvent>(OnUpgrade);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        if (!_net.IsClient)
-            return;
-
-        // this is jank but i need to do it to communicate this information over to the client
-        var query = EntityQueryEnumerator<ReplicatorNestComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (comp.NeedsUpdate)
-            {
-                Embiggen((uid, comp));
-                comp.NeedsUpdate = false;
-            }
-        }
     }
 
     public void StartFalling(Entity<ReplicatorNestComponent> ent, EntityUid tripper, bool playSound = true)
@@ -180,7 +160,10 @@ public abstract class SharedReplicatorNestSystem : EntitySystem
 
             // make the nest sprite grow as long as we have sprites for it. I am NOT scaling it.
             if (ent.Comp.CurrentLevel <= ent.Comp.EndgameLevel)
-                ent.Comp.NeedsUpdate = true;
+            {
+                Embiggen(ent);
+                Dirty(ent);
+            }
 
             // update the threshold for the next upgrade (the default times the current level), and upgrade all our guys.
             // threshold increases plateau at the endgame level.

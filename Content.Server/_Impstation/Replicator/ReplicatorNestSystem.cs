@@ -37,6 +37,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
+using Content.Server.Chat.Systems;
+using Content.Shared.Chasm;
 
 namespace Content.Server._Impstation.Replicator;
 
@@ -58,11 +60,12 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
     [Dependency] private readonly PinpointerSystem _pinpointer = default!;
     [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly AnnouncerSystem _announcer = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entStorage = default!;
     [Dependency] private readonly BuckleSystem _buckle = default!;
+    [Dependency] private readonly ChatSystem _chatSystem = default!;
+    [Dependency] private readonly ChasmSystem _chasmSystem = default!;
 
     public override void Initialize()
     {
@@ -94,7 +97,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             if (!nestComp.HasAnnounced && nestComp.CurrentLevel >= nestComp.AnnounceAtLevel)
             {
                 nestComp.HasAnnounced = true;
-                _announcer.SendAnnouncement("announce", Filter.Broadcast(), nestComp.Announcement, colorOverride: Color.Red);
+                _chatSystem.DispatchStationAnnouncement(uid, nestComp.Announcement, colorOverride: Color.Red);
             }
 
             // delete entities that have anything on the blacklist, OR don't have anything on the whitelist AND don't have a mind.
@@ -164,9 +167,11 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
         var isReplicator = HasComp<ReplicatorComponent>(args.Tripper);
 
         // Allow dead replicators regardless of current level.
-        if (TryComp<MobStateComponent>(args.Tripper, out var mobState) && isReplicator && _mobState.IsDead(args.Tripper))
+        if (TryComp<MobStateComponent>(args.Tripper, out var mobState) &&
+            isReplicator &&
+            _mobState.IsDead(args.Tripper))
         {
-            _sharedNest.StartFalling(ent, args.Tripper);
+            _chasmSystem.StartFalling(ent, new ChasmComponent({FallingSound = ent.Comp.FallingSound}), args.Tripper);
             return;
         }
 
@@ -287,7 +292,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             if (upgraded is not { } upgradedNotNull)
                 return;
 
-            _stun.TrySlowdown(upgradedNotNull, TimeSpan.FromSeconds(3), true, 0.8f, 0.8f);
+            _stun.TryAddStunDuration(upgradedNotNull, TimeSpan.FromSeconds(3));
 
             if (!_inventory.TryGetSlotEntity(upgradedNotNull, "pocket1", out var pocket1) || !TryComp<PinpointerComponent>(pocket1, out var pinpointer))
                 continue;

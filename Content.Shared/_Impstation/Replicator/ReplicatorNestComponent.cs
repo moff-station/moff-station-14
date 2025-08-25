@@ -147,7 +147,6 @@ public sealed partial class ReplicatorNestComponent : Component
     public int NextUpgradeAt;
     public int NextTileConvertAt;
     [DataField, AutoNetworkedField]
-    public bool NeedsUpdate;
     public EntityUid PointsStorage;
 }
 
