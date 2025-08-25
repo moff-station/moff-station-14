@@ -41,10 +41,8 @@
 - type: startingGear
   id: SyndicateOperativeGearFullNoUplink
   equipment:
-    # Moffstation - Begin - Removing items duplicated by the loadout
-#    jumpsuit: ClothingUniformJumpsuitOperative
-#    back: ClothingBackpackDuffelSyndicate
-    #Moffstation - End
+#    jumpsuit: ClothingUniformJumpsuitOperative # Moffstation - Removing items duplicated by the loadout
+    back: ClothingBackpackDuffelSyndicate
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
@@ -53,7 +51,7 @@
     shoes: ClothingShoesBootsCombatFilled
     id: SyndiPDA
     pocket2: PlushieCarp
-    belt: ClothingBeltMilitaryWebbingNukeOpsFilled # Moffstation - Nuclear Operative Balancing
+    belt: ClothingBeltMilitaryWebbing
   storage:
     back:
     - WeaponPistolViper
@@ -67,7 +65,6 @@
   parent: SyndicateOperativeGearFullNoUplink
   equipment:
     jumpsuit: ClothingUniformJumpsuitOperative
-    back: ClothingBackpackDuffelSyndicate
     gloves: ClothingHandsGlovesCombat
 # Moffstation - End
 
