@@ -1,14 +1,32 @@
 - type: entity
-  parent: ClothingHeadset
+  parent: Clothing
   id: PersonalItemMarvinHeadphones
   name: Noise canceling headphones
   description: A pair of headphones with a clip-on microphone made to help those with sensitive ears. It works, at least in theory.
   suffix: PersonalItem
   components:
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: Headset
+  - type: EncryptionKeyHolder
+    keySlots: 4
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
+    state: icon
+  - type: Item
+    size: Small
   - type: Clothing
+    slots:
+    - ears
     sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+
+  components:
+
+
 
 - type: loadout
   id: PersonalItemMarvinHeadphones
