@@ -271,9 +271,9 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
   # Moffstation - Begin (Xeno Buffs)
-  - type: MobThresholds
-    thresholds:
-      0: Alive
+  #- type: MobThresholds
+    #thresholds:
+      #0: Alive
       #100: Dead
   - type: MovementSpeedModifier
     baseSprintSpeed: 4
@@ -364,9 +364,9 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
   # Moffstation - Begin (Xeno Buffs)
-  - type: MobThresholds
-    thresholds:
-      0: Alive
+  #- type: MobThresholds
+    #thresholds:
+      #0: Alive
       #50: Dead
   - type: SlowOnDamage
     #speedModifierThresholds:
