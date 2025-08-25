@@ -4,7 +4,6 @@
 
 using Content.Server._Impstation.Administration.Components;
 using Content.Server.Actions;
-using Content.Server.Announcements.Systems;
 using Content.Server.Audio;
 using Content.Server.Buckle.Systems;
 using Content.Server.GameTicking;
@@ -65,7 +64,6 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
     [Dependency] private readonly EntityStorageSystem _entStorage = default!;
     [Dependency] private readonly BuckleSystem _buckle = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
-    [Dependency] private readonly ChasmSystem _chasmSystem = default!;
 
     public override void Initialize()
     {
@@ -171,7 +169,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             isReplicator &&
             _mobState.IsDead(args.Tripper))
         {
-            _chasmSystem.StartFalling(ent, new ChasmComponent({FallingSound = ent.Comp.FallingSound}), args.Tripper);
+            StartFalling(ent, args.Tripper);
             return;
         }
 
@@ -196,7 +194,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             }
         }
 
-        _sharedNest.StartFalling(ent, args.Tripper);
+        StartFalling(ent, args.Tripper);
     }
 
     private void OnUpdateCanMove(Entity<ReplicatorNestFallingComponent> ent, ref UpdateCanMoveEvent args)

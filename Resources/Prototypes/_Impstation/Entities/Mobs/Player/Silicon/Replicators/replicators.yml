@@ -6,7 +6,7 @@
   description: It's just a little guy. What harm could it do?
   id: BaseMobReplicator
   abstract: true
-  parent: PlayerSiliconBase
+  parent: MobSiliconBase
   components:
   - type: Puller
     needsHands: false
@@ -55,10 +55,6 @@
     sounds:
       Unsexed: UnisexSilicon
   - type: DamagedSiliconAccent
-  - type: Monotonous
-  - type: NoContractionsAccent
-  - type: ProperPunctuation
-  - type: ProperCapitalization
   - type: ReplacementAccent
     accent: silicon
   - type: IntrinsicRadioReceiver
@@ -145,9 +141,6 @@
       types:
         Shock: -0.5
         Structural: -0.5
-  - type: ThermalVision
-    lightRadius: 7
-    color: "#d70aa0"
   - type: Prying
     pryPowered: true
     force: true
@@ -161,9 +154,6 @@
     templateId: replicator
   - type: InventorySlots
   - type: BlockMachineUI
-    whitelist:
-      components:
-      - AACTablet
 
 - type: entity
   id: MobReplicatorQueen
@@ -174,7 +164,6 @@
   components:
   - type: Replicator
     queen: true
-  - type: VentCrawler # unique to queens at the moment, for stealth purposes
   - type: Sprite
     granularLayersRendering: true
     drawDepth: SmallMobs

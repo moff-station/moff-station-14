@@ -63,10 +63,9 @@ public sealed class ReplicatorSystem : EntitySystem
             if (!TryComp<MindContainerComponent>(ent, out var mindContainer) || mindContainer.Mind == null)
                 return;
 
-            if (!mindContainer.HasMind)
-                ent.Comp.Actions.Add(_actions.AddAction((EntityUid)ent, ent.Comp.SpawnNewNestAction));
-            else
-                ent.Comp.Actions.Add(_actionContainer.AddAction((EntityUid)mindContainer.Mind, ent.Comp.SpawnNewNestAction));
+            ent.Comp.Actions.Add(!mindContainer.HasMind
+                ? _actions.AddAction(ent, ent.Comp.SpawnNewNestAction)
+                : _actionContainer.AddAction((EntityUid)mindContainer.Mind, ent.Comp.SpawnNewNestAction));
 
             ent.Comp.HasSpawnedNest = true;
         }
