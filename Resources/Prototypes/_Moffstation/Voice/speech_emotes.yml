@@ -1,0 +1,18 @@
+# Cervidae
+- type: emote
+  id: Bleat
+  name: chat-emote-name-bleat
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: [bleats.]
+  chatTriggers:
+  - bleat
+  - bleats
+  - bleated
+  - bleating
