@@ -196,6 +196,7 @@
     state: science
   - type: MachineBoard
     prototype: ResearchAndDevelopmentServer
+    bladeServerPrototype: ResearchAndDevelopmentBladeServer # Moffstation - Blade Server construction
     stackRequirements:
       Plasma: 5
 
