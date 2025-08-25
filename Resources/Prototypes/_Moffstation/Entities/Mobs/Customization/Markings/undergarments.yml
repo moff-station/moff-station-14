@@ -1,0 +1,42 @@
+# Top Undergarments
+- type: marking
+  id: UndergarmentTopTanktopResomi
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
+  speciesRestriction: [Resomi]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
+    state: tanktop_resomi
+
+
+
+# Bottom Undergarments
+- type: marking
+  id: UndergarmentBottomUnderwearResomi
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
+  speciesRestriction: [Resomi]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
+    state: underwear_resomi
+
+- type: marking
+  id: UndergarmentBottomThongResomi
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
+  speciesRestriction: [Resomi]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
+    state: thong_resomi
