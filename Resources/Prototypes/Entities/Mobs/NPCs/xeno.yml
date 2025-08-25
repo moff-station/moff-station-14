@@ -24,7 +24,7 @@
   - type: Prying
     pryPowered: true
     force: true
-    speedModifier: 1.5
+    speedModifier: 3 # Moffstation - (Xeno Buffs)
     useSound:
       path: /Audio/Items/crowbar.ogg
   - type: Reactive
@@ -57,14 +57,16 @@
     allowedStates:
     - Alive
     - Dead
-  # Moffstation - Begin (Xeno Buffs)
+  # Moffstation - Begin (Xeno Buffs) - NOTE: there are a few extra SlowOnDamage and MovementSpeedModifier components which already inherit everything from their parent in the xenos.
   - type: MobThresholds
     thresholds:
       0: Alive
+      #50: Dead
       150: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      75: 0.7
+      #25: 0.5
+      90: 0.7
       120: 0.5
   - type: Stamina
     critThreshold: 200
@@ -78,10 +80,11 @@
      collection: AlienClaw
     animation: WeaponArcBite
     damage:
+      #groups:
+        #Brute: 6
       types:
-        blunt: 10
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 4.0 # Slightly slower than a person
+        Slash: 12
+        Structural: 40
   # Moffstation - End
   - type: DamageStateVisuals
     states:
@@ -140,21 +143,19 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      400: Dead
+      #100: Dead
+      250: Dead
   - type: Stamina
     critThreshold: 300
   - type: SlowOnDamage
     speedModifierThresholds:
-      200: 0.7
-      320: 0.5
+      #50: 0.7
+      150: 0.7
+      200: 0.5
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 13
-        Piercing: 7
-    bluntStaminaDamageFactor: 1.0
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 3.0 # Mining suit can barely outrun them
+        Slash: 25
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -184,19 +185,19 @@
   - type: MobThresholds
     thresholds:
       0: Alive
+      #80: Dead
       100: Dead
   - type: SlowOnDamage
-    speedModifierThresholds:
-      50: 0.7
-      75: 0.5
+    #speedModifierThresholds:
+      #40: 0.7
   - type: MeleeWeapon
     damage:
+      #groups:
+        #Brute: 6
       types:
-        Blunt: 8
-        Piercing: 4
-    bluntStaminaDamageFactor: 1.0
+        Slash: 15
   - type: MovementSpeedModifier
-    baseSprintSpeed: 5.0
+    baseSprintSpeed: 4
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -226,19 +227,21 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      500: Dead # Dragon health
+      #300: Dead
+      600: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      250: 0.7
-      400: 0.5
+      #150: 0.7
+      360: 0.7
+      480: 0.5
   - type: MovementSpeedModifier
-    baseSprintSpeed: 3.0 # Mining suit can barely outrun them
   - type: MeleeWeapon
     damage:
-     types:
-       Blunt: 25
-       Piercing: 10
-    bluntStaminaDamageFactor: 1.0
+      #groups:
+        #Brute: 12
+      types:
+        Slash: 35
+        Structural: 40
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -271,18 +274,20 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      #100: Dead
   - type: MovementSpeedModifier
-    baseSprintSpeed: 4.5
+    baseSprintSpeed: 4
   - type: MeleeWeapon
+    attackRate: 2
     damage:
+      #groups:
+        #Brute: 10
      types:
        Slash: 20
-       Piercing: 10
+       Structural: 20
   - type: SlowOnDamage
-    speedModifierThresholds:
-      100: 0.7
-      160: 0.5
+    #speedModifierThresholds:
+      #50: 0.7
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -308,14 +313,16 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
-  # Moffstation - Begin (Xeno Buffs)
   - type: MovementSpeedModifier
-    baseSprintSpeed: 10.0 # Scary fast
+    baseSprintSpeed: 6.0
+  # Moffstation - Begin (Xeno Buffs)
   - type: MeleeWeapon
+    attackRate: 2
     damage:
-     types:
-       Slash: 10
-       Piercing: 5
+      #groups:
+        #Brute: 5
+      types:
+        Slash: 10
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -360,11 +367,10 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      #50: Dead
   - type: SlowOnDamage
-    speedModifierThresholds:
-      50: 0.7
-      80: 0.5
+    #speedModifierThresholds:
+      #25: 0.7
   # Moffstation - End
   - type: HTN
     rootTask:
