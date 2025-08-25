@@ -5,6 +5,9 @@
   description: A pair of headphones with a clip-on microphone made to help those with sensitive ears. It works in theory, at least.
   suffix: PersonalItem
   components:
+  - type: ContainerFill
+    containers:
+      key_slots:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
   - type: Clothing
