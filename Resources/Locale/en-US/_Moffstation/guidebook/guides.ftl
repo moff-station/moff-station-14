@@ -10,3 +10,4 @@ moff-eor-rules = End of Round rules
 moff-crew-rules = Crew rules
 moff-antag-rules = Antag rules
 moff-prisoner-rules = Prisoner rules
+moff-guide-entry-sacred = Sacred
