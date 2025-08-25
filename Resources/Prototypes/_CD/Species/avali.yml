@@ -16,6 +16,10 @@
   id: MobAvaliSprites
   sprites:
     Head: MobAvaliHead
+    # Moffstation - Start - Give raptor chickens undergarments.
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
+    # Moffstation - End - Give raptor chickens undergarments.
     Chest: MobAvaliTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -66,6 +70,14 @@
     Legs:
       points: 2
       required: false
+    # Moffstation - Start - Give raptor chickens undergarments.
+    UndergarmentTop:
+      points: 1
+      required: false
+    UndergarmentBottom:
+      points: 1
+      required: false
+    # Moffstation - End - Give raptor chickens undergarments.
     Arms:
       points: 4
       required: false
