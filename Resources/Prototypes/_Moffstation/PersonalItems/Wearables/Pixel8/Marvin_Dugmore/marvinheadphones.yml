@@ -14,3 +14,7 @@
   id: PersonalItemMarvinHeadphones
   inhand:
   - PersonalItemMarvinHeadphones
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Marvin Dugmore
