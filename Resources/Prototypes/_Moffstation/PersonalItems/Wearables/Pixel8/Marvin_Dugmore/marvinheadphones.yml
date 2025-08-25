@@ -10,12 +10,7 @@
   - type: Clothing
     sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
 
-  - type: loadout
+- type: loadout
   id: PersonalItemMarvinHeadphones
-  storage:
-    back:
-    - PersonalItemMarvinHeadphones
-  effects:
-  - !type:PersonalItemLoadoutEffect
-    character:
-    - Marvin Dugmore
+  inhand:
+  - PersonalItemMarvinHeadphones
