@@ -1,0 +1,12 @@
+- type: listing
+  id: SpellbookArmor
+  name: spellbook-armor-name
+  description: spellbook-armor-description
+  productEntity: ClothingOuterArmorWizard
+  cost:
+    WizCoin: 5
+  categories:
+  - SpellbookEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
