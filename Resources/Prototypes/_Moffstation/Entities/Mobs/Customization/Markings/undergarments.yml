@@ -6,8 +6,8 @@
   speciesRestriction: [Resomi]
   coloring:
     default:
-      type: null
-      fallbackColor: '#FFFFFF'
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
   sprites:
   - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
     state: tanktop_resomi
@@ -22,8 +22,8 @@
   speciesRestriction: [Resomi]
   coloring:
     default:
-      type: null
-      fallbackColor: '#FFFFFF'
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
   sprites:
   - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
     state: underwear_resomi
@@ -35,8 +35,8 @@
   speciesRestriction: [Resomi]
   coloring:
     default:
-      type: null
-      fallbackColor: '#FFFFFF'
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
   sprites:
   - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
     state: thong_resomi
