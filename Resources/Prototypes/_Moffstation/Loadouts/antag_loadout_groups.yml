@@ -10,11 +10,32 @@
   - TacticalMaidSkirt
 
 - type: loadoutGroup
+  id: NukieBackpack
+  name: loadout-group-nukie-backpack
+  loadouts:
+  - NukieSatchel
+  - NukieDuffel
+
+- type: loadoutGroup
+  id: NukieBackpackEmpty
+  name: loadout-group-nukie-backpack
+  loadouts:
+  - NukieSatchelEmpty
+  - NukieDuffelEmpty
+
+- type: loadoutGroup
   id: NukieGloves
   name: loadout-group-nukie-gloves
   loadouts:
     - CombatGloves
     - CombatMaidGloves
+
+- type: loadoutGroup
+  id: NukieMedicalBackpack
+  name: loadout-group-nukie-backpack
+  loadouts:
+  - NukieMedicSatchel
+  - NukieMedicDuffel
 
 # Wizard
 - type: loadoutGroup
