@@ -19,30 +19,6 @@ public sealed partial class ReplicatorNestComponent : Component
     /// maximum upgrade stage for *replicators,* not nests. changing this requires changing a bunch of other shit so dont mess with it
     /// </summary>
     public readonly int MaxUpgradeStage = 2;
-
-    /// <summary>
-    /// The container we're storing things in. If the nest is destroyed, anything in this will be dumped out.
-    /// </summary>
-    public Container Hole = default!;
-
-    /// <summary>
-    /// Items containing components or tags on this list will be rejected by the nest.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist Blacklist = new();
-
-    /// <summary>
-    /// Items containing components or tags on this list will NOT be deleted upon entering the nest, instead being stored until it's destroyed.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist PreservationWhitelist = new();
-
-    /// <summary>
-    /// Items containing components or tags on this list will be deleted upon entering the nest, regardless of whether or not they pass the whitelist.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist PreservationBlacklist = new();
-
     /// <summary>
     /// Total stored points. Points are acquired by putting things in the hole.
     /// is a datafield so admins can VV it

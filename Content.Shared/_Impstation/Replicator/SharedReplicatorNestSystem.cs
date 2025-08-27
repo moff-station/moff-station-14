@@ -3,6 +3,7 @@
 // the original Bingle PR can be found here: https://github.com/Goob-Station/Goob-Station/pull/1519
 
 using Content.Shared._Impstation.SpawnedFromTracker;
+using Content.Shared._Moffstation.Chasm;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
 using Content.Shared.Chasm;
@@ -58,24 +59,12 @@ public abstract class SharedReplicatorNestSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ReplicatorComponent, ReplicatorUpgradeActionEvent>(OnUpgrade);
+        SubscribeLocalEvent<ReplicatorNestComponent, ChasmFallEvent>(OnFall);
     }
 
-    public void StartFalling(Entity<ReplicatorNestComponent> ent, EntityUid tripper, bool playSound = true)
+    private void OnFall(Entity<ReplicatorNestComponent> ent, ref ChasmFallEvent args)
     {
-        HandlePoints(ent, tripper);
-
-        if (TryComp<PullableComponent>(tripper, out var pullable) && pullable.BeingPulled)
-            _pulling.TryStopPull(tripper, pullable);
-
-        // handle starting the falling animation
-        var fall = EnsureComp<ReplicatorNestFallingComponent>(tripper);
-        fall.FallingTarget = ent;
-        fall.NextDeletionTime = _timing.CurTime + fall.DeletionTime;
-        // no funny business
-        _stun.TryKnockdown(tripper, fall.DeletionTime, false);
-
-        if (playSound)
-            _audio.PlayPvs(ent.Comp.FallingSound, tripper);
+        HandlePoints(ent, args.Tripper);
     }
 
     private void HandlePoints(Entity<ReplicatorNestComponent> ent, EntityUid tripper) // this is its own method because I think it reads cleaner. also the way goobcode handled this sucked.

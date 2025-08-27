@@ -37,6 +37,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
 using Content.Server.Chat.Systems;
+using Content.Shared._Moffstation.Chasm;
 using Content.Shared.Chasm;
 
 namespace Content.Server._Impstation.Replicator;
@@ -71,46 +72,17 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
 
         SubscribeLocalEvent<ReplicatorNestComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ReplicatorNestComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
-        SubscribeLocalEvent<ReplicatorNestComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
-        SubscribeLocalEvent<ReplicatorNestComponent, StepTriggeredOffEvent>(OnStepTriggered);
-        SubscribeLocalEvent<ReplicatorNestFallingComponent, UpdateCanMoveEvent>(OnUpdateCanMove);
         SubscribeLocalEvent<ReplicatorNestComponent, DestructionEventArgs>(OnDestroyed);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndTextAppend);
+        SubscribeLocalEvent<ReplicatorNestComponent, ChasmFallEvent>(OnFall);
     }
 
-    public override void Update(float frameTime)
+    private void OnFall(Entity<ReplicatorNestComponent> ent, ref ChasmFallEvent args)
     {
-        base.Update(frameTime);
-
-        HashSet<EntityUid> toDel = [];
-
-        var query = EntityQueryEnumerator<ReplicatorNestFallingComponent>();
-        while (query.MoveNext(out var uid, out var falling))
+        if (!ent.Comp.HasAnnounced && ent.Comp.CurrentLevel >= ent.Comp.AnnounceAtLevel)
         {
-            if (_timing.CurTime < falling.NextDeletionTime)
-                continue;
-
-            var nestComp = falling.FallingTarget.Comp;
-
-            if (!nestComp.HasAnnounced && nestComp.CurrentLevel >= nestComp.AnnounceAtLevel)
-            {
-                nestComp.HasAnnounced = true;
-                _chatSystem.DispatchStationAnnouncement(uid, nestComp.Announcement, colorOverride: Color.Red);
-            }
-
-            // delete entities that have anything on the blacklist, OR don't have anything on the whitelist AND don't have a mind.
-            if (_whitelist.IsBlacklistPass(nestComp.PreservationBlacklist, uid) || !_whitelist.IsWhitelistPass(nestComp.PreservationWhitelist, uid)
-                && !TryComp<MindContainerComponent>(uid, out var mind) | (mind != null && !mind!.HasMind))
-                toDel.Add(uid);
-
-            _containerSystem.Insert(uid, falling.FallingTarget.Comp.Hole);
-            EnsureComp<StunnedComponent>(uid); // used stunned to prevent any funny being done inside the pit
-            RemCompDeferred(uid, falling);
-        }
-
-        foreach (var uid in toDel)
-        {
-            QueueDel(uid);
+            ent.Comp.HasAnnounced = true;
+            _chatSystem.DispatchStationAnnouncement(ent, ent.Comp.Announcement, colorOverride: Color.Red);
         }
     }
 
@@ -124,8 +96,6 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
         if (!Transform(ent).Coordinates.IsValid(EntityManager))
             QueueDel(ent);
 
-        ent.Comp.Hole = _containerSystem.EnsureContainer<Container>(ent, "hole");
-
         ent.Comp.NextSpawnAt = ent.Comp.SpawnNewAt;
         ent.Comp.NextUpgradeAt = ent.Comp.UpgradeAt;
         ent.Comp.NextTileConvertAt = ent.Comp.TileConvertAt;
@@ -136,72 +106,6 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
         ent.Comp.PointsStorage = pointsStorageEnt;
     }
 
-    private void OnStepTriggerAttempt(Entity<ReplicatorNestComponent> ent, ref StepTriggerAttemptEvent args)
-    {
-        args.Continue = true;
-    }
-
-    private void OnStepTriggered(Entity<ReplicatorNestComponent> ent, ref StepTriggeredOffEvent args)
-    {
-        // dont accept if they are already falling
-        if (HasComp<ReplicatorNestFallingComponent>(args.Tripper))
-            return;
-
-        // *reject* if blacklisted
-        if (_whitelist.IsBlacklistPass(ent.Comp.Blacklist, args.Tripper))
-        {
-            if (TryComp<PullableComponent>(args.Tripper, out var pullable) && pullable.BeingPulled)
-                _pulling.TryStopPull(args.Tripper, pullable);
-
-            var xform = Transform(ent);
-            var xformQuery = GetEntityQuery<TransformComponent>();
-            var worldPos = _xform.GetWorldPosition(xform, xformQuery);
-
-            var direction = _xform.GetWorldPosition(args.Tripper, xformQuery) - worldPos;
-            _throwing.TryThrow(args.Tripper, direction * 10, 7, ent, 0);
-            return;
-        }
-
-        var isReplicator = HasComp<ReplicatorComponent>(args.Tripper);
-
-        // Allow dead replicators regardless of current level.
-        if (TryComp<MobStateComponent>(args.Tripper, out var mobState) &&
-            isReplicator &&
-            _mobState.IsDead(args.Tripper))
-        {
-            StartFalling(ent, args.Tripper);
-            return;
-        }
-
-        // Don't allow living beings. If you want those sweet bonus points, you have to kill.
-        if (mobState != null && _mobState.IsAlive(args.Tripper))
-            return;
-
-        // if the ent is a container, all its contents go in the hole
-        if (TryComp<EntityStorageComponent>(args.Tripper, out var entStorage))
-        {
-            _entStorage.EmptyContents(args.Tripper, entStorage);
-        }
-
-        if (TryComp<StrapComponent>(args.Tripper, out var strapComp) && strapComp.BuckledEntities.Count > 0)
-        {
-            foreach (var buckled in strapComp.BuckledEntities)
-            {
-                if (!TryComp<BuckleComponent>(buckled, out var buckleComp))
-                {
-                    _buckle.Unbuckle((args.Tripper, buckleComp), null);
-                }
-            }
-        }
-
-        StartFalling(ent, args.Tripper);
-    }
-
-    private void OnUpdateCanMove(Entity<ReplicatorNestFallingComponent> ent, ref UpdateCanMoveEvent args)
-    {
-        args.Cancel();
-    }
-
     private void OnDestroyed(Entity<ReplicatorNestComponent> ent, ref DestructionEventArgs args)
     {
         HandleDestruction(ent);
@@ -209,28 +113,11 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
 
     private void HandleDestruction(Entity<ReplicatorNestComponent> ent)
     {
-        if (ent.Comp.Hole != null)
-        {
-            foreach (var uid in _containerSystem.EmptyContainer(ent.Comp.Hole))
-            {
-                RemCompDeferred<StunnedComponent>(uid);
-                _stun.TryKnockdown(uid, TimeSpan.FromSeconds(2), false);
-            }
-        }
-
         // delete all unclaimed spawners
         foreach (var spawner in ent.Comp.UnclaimedSpawners)
         {
             ent.Comp.UnclaimedSpawners.Remove(spawner);
             QueueDel(spawner);
-        }
-
-        // remove the falling component from anyone currently falling into this nest
-        var query = EntityQueryEnumerator<ReplicatorNestFallingComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (comp.FallingTarget == ent)
-                RemCompDeferred<ReplicatorNestFallingComponent>(uid);
         }
 
         // Figure out who the queen is & which replicators belonging to this nest are still alive.
