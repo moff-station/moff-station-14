@@ -169,7 +169,7 @@
     weight: 6.5
     earliestStart: 40
     reoccurrenceDelay: 20
-    minimumPlayers: 20
+    minimumPlayers: 30  # Moffstation - Tune down antags
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0
@@ -253,7 +253,7 @@
     duration: null
     earliestStart: 20
     reoccurrenceDelay: 20
-    minimumPlayers: 15
+    minimumPlayers: 20  # Moffstation - Tune down antags
   - type: ParadoxCloneRule
     objectiveBlacklist:
       tags:
@@ -303,7 +303,7 @@
     duration: 1
     earliestStart: 30
     reoccurrenceDelay: 60
-    minimumPlayers: 10
+    minimumPlayers: 30  # Moffstation - Tune down antags
   - type: AntagSelection
     agentName: wizard-round-end-name
     definitions:
@@ -543,7 +543,7 @@
   - type: StationEvent
     earliestStart: 35
     weight: 5.5
-    minimumPlayers: 20
+    minimumPlayers: 30 # Moffstation - Tune down antags
     duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end scrreen (not always "Neutral outcome!") and... ending the game if the station is nuked.
   - type: RuleGrids
   - type: LoadMapRule
@@ -582,7 +582,7 @@
   - type: StationEvent
     earliestStart: 30
     weight: 8
-    minimumPlayers: 15
+    minimumPlayers: 25  # Moffstation - Tune down antags
     maxOccurrences: 1 # can only happen once per round
     startAnnouncement: station-event-communication-interception
     startAudio:
