@@ -25,6 +25,16 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Fun/figurines.rsi
 
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAlfredo
+  name: Sinister Atmospherics Technician Figurine
+  description: A figurine depicting an atmospherics technician with a streak of building overly complex spaghetti messes of pipes. Smells faintly of frezon.
+  components:
+  - type: Sprite
+    state: alfredo
+  - type: SpeakOnTrigger
+    pack: FigurinesAlfredo
 
 - type: entity
   parent: BaseFigurineMoff
@@ -284,6 +294,17 @@
     state: fred
   - type: SpeakOnTrigger
     pack: FigurinesFred
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineFrostwing
+  name: Blunt Central Command Official
+  description: A figurine depicting a very well dressed centcomm executive. This one is blue. You are unsure if it is a designer choice, or an excuse to add a few zeroes to the price tag.
+  components:
+  - type: Sprite
+    state: frostwing
+  - type: SpeakOnTrigger
+    pack: FigurinesFrostwing
 
 - type: entity
   parent: BaseFigurineMoff
@@ -781,6 +802,17 @@
     state: tar
   - type: SpeakOnTrigger
     pack: FigurinesTar
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineTusk
+  name: Ambiguous Reptile Figurine
+  description: A figurine depicting what could be a kobold or a reptilian.
+  components:
+  - type: Sprite
+    state: tusk
+  - type: SpeakOnTrigger
+    pack: FigurinesTusk
 
 - type: entity
   parent: BaseFigurineMoff

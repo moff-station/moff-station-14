@@ -1,3 +1,12 @@
+figurines-alfredo-1 = You wanna huff frezon?
+figurines-alfredo-2 = Here's some cold... air...
+figurines-alfredo-3 = Ignore the rotting monkey pit.
+figurines-alfredo-4 = Don't vent the plasma!
+figurines-alfredo-5 = Adding more o2 to distro isn't that bad... except for fires, and vox instantly dying.
+figurines-alfredo-6 = When is Tropico not dead?
+figurines-alfredo-7 = 15% n2o is perfectly safe, and funny.
+figurines-alfredo-8 = This stuff makes you feel good. Also it causes cancer.
+
 figurines-audrina-1 = Well, I don't think that's right..
 figurines-audrina-2 = I'm not short.
 figurines-audrina-3 = Pilk, please. What?
@@ -153,6 +162,15 @@ figurines-fred-1 = Hey fellas!
 figurines-fred-2 = IM GONNA CRASH OUT!!
 figurines-fred-3 = Are they a first-time offender?
 figurines-fred-4 = Holy crap this reminds me of the time I got turned into a marketable figurine.
+
+figurines-frostwing-1 = Our thoughts and prayers go out to those affected.
+figurines-frostwing-2 = I'm sorry, they spent the cargo budget on what?!
+figurines-frostwing-3 = We have dispatched ERT to your location. They will arrive within 3-5 business days.
+figurines-frostwing-4 = I find your incompetence less amusing as time goes by.
+figurines-frostwing-5 = We understand it is an emergency. Please hold.
+figurines-frostwing-6 = The station's assets are failing! Mainly, you.
+figurines-frostwing-7 = May we remind you that nuclear operatives are a myth. Please do not listen to the propaganda.
+figurines-frostwing-8 = This is all your fault.
 
 figurines-gigs-1 = How-wdy Howd-dy!
 figurines-gigs-2 = The-ere isss no sssecr-ret menu.
@@ -452,6 +470,12 @@ figurines-tar-4 = You are just a hater!!
 figurines-tar-5 = Tar is making an anomaly.
 figurines-tar-6 = Tar is making a weird ball!
 figurines-tar-7 = I would never do crime!
+
+figurines-tusk-1 = White gilgamesh, please.
+figurines-tusk-2 = Pff...
+figurines-tusk-3 = Snnk...
+figurines-tusk-4 = FREE GIVEAWAY!!
+figurines-tusk-5 = GOD IS REAL!!
 
 figurines-vortex-1 = Guns are a coward's weapon.
 figurines-vortex-2 = GET OUT OF MY DEPARTMENT.
