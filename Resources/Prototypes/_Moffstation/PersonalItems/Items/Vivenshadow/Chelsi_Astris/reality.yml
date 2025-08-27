@@ -1,0 +1,13 @@
+- type: entity
+  id: PersonalItemChelsiAstrisReality
+  parent: BaseItem
+  suffix: PersonalItem
+  name: reality smash
+  description: Whatever this is gives you a headache to look at.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Vivenshadow/Chelsi_Astris/reality.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - Document

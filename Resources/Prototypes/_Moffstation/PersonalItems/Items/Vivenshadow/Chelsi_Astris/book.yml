@@ -1,0 +1,22 @@
+- type: entity
+  id: PersonalItemChelsiAstrisBook
+  parent: BoxFolderBase
+  suffix: PersonalItem
+  name: Codex Cicatrix
+  description: Book describing the secrets of the veil. Rather it would if most of the pages weren't missing...
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Vivenshadow/Chelsi_Astris/book.rsi
+  - type: StorageFill
+    contents:
+      - id: PersonalItemChelsiAstrisReality
+
+- type: loadout
+  id: PersonalItemChelsiAstrisBook
+  storage:
+    back:
+    - PersonalItemChelsiAstrisBook
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Chelsi Astris
