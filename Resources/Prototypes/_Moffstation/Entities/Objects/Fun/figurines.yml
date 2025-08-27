@@ -447,6 +447,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineKim
+  name: Robust Tider Figurine
+  description: A figurine depicting an arachnid in a gas mask. They are weilding a spear and toolbox.
+  components:
+  - type: Sprite
+    state: kim
+  - type: SpeakOnTrigger
+    pack: FigurinesKim
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineKrakatoa
   name: Silly Service Lizard Figurine
   description: A figurine depicting a silly lil lizar.

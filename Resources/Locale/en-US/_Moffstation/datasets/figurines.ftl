@@ -252,6 +252,16 @@ figurines-kaza-2 = Mm? What Kaza doing...?
 figurines-kaza-3 = Kaza bid kindness each other self and to.
 figurines-kaza-4 = KAZA KILL!!
 
+figurines-kim-1 = Want see me break into the bridge? Want see me do it again?
+figurines-kim-2 = Time to bomb sec!
+figurines-kim-3 = Borg, get cap's ID, I gotta say something.
+figurines-kim-4 = Come with me! And you’ll see! A stash of illicit items!~
+figurines-kim-5 = Random bola-shit GO!
+figurines-kim-6 = What am I selling? Cap's dog thing of course!
+figurines-kim-7 = I died? Impossible!
+figurines-kim-8 = I love purple...
+figurines-kim-9 = Plasma leak… seems like a good time to smoke, eh?
+
 figurines-krakatoa-1 = Wawa.
 figurines-krakatoa-2 = Watermelon juice me!
 figurines-krakatoa-3 = Coleslaw day today!
