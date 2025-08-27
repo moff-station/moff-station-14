@@ -128,7 +128,7 @@ namespace Content.Server.GameTicking
             {
                 _pauseTime = _gameTiming.CurTime;
             }
-            else if (_pauseTime != default)
+            else // Moffstation - Remove exception for if pausetime is 0
             {
                 _roundStartTime += _gameTiming.CurTime - _pauseTime;
             }

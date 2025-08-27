@@ -16,11 +16,10 @@
 
 - type: entity
   parent: BaseGameRule
-  id: SubGamemodesRule
+  id: SubGamemodesRuleUpstream  # Moffstation - Moved to our namespace
   components:
   - type: SubGamemodes
     rules:
-    # Moffstation - Start
     - id: Thief
       prob: 0.3
     - id: BloodBrothers
@@ -31,22 +30,6 @@
       prob: 0.15
     - id: SubWizard
       prob: 0.05
-
-- type: entity
-  parent: BaseGameRule
-  id: SubGamemodesRuleNoWizard
-  components:
-  - type: SubGamemodes
-    rules:
-    - id: Thief
-      prob: 0.3
-    - id: BloodBrothers
-      prob: 0.3
-    - id: SyndicateListeningOutpost
-      prob: 0.2
-    - id: Pirates
-      prob: 0.2
-    # Moffstation - End
 
 - type: entity
   parent: BaseGameRule
