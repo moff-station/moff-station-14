@@ -1,6 +1,6 @@
 - type: entity
   id: PersonalItemChelsiAstrisBook
-  parent: BoxFolderBase
+  parent: [BoxFolderBase, BaseMagicalContraband]
   suffix: PersonalItem
   name: Codex Cicatrix
   description: Book describing the secrets of the veil. Rather it would if most of the pages weren't missing...

@@ -1,6 +1,6 @@
 - type: entity
   id: PersonalItemChelsiAstrisReality
-  parent: BaseItem
+  parent: [BaseItem, BaseMagicalContraband]
   suffix: PersonalItem
   name: reality smash
   description: Whatever this is gives you a headache to look at.
