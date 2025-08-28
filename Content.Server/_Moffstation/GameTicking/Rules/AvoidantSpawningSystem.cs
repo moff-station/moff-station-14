@@ -78,7 +78,7 @@ public sealed class AvoidantSpawningSystem : GameRuleSystem<AvoidantSpawningComp
             args.Station);
     }
 
-    private bool BlacklistInRange(Entity<Components.AvoidantSpawningComponent> gameRule, Entity<TransformComponent> spawnPoint )
+    private bool BlacklistInRange(Entity<Components.AvoidantSpawningComponent> gameRule, Entity<TransformComponent> spawnPoint)
     {
         var entities = new HashSet<EntityUid>();
         _entityLookup.GetEntitiesInRange(spawnPoint.Comp.Coordinates, gameRule.Comp.Range, entities);
