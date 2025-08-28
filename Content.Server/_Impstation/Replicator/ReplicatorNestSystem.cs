@@ -250,10 +250,6 @@ public sealed class ReplicatorNestSystem : EntitySystem
 
     public void UpgradeAll(Entity<ReplicatorNestComponent> ent)
     {
-        // don't run this clientside
-        if (_net.IsClient || !_timing.IsFirstTimePredicted)
-            return;
-
         foreach (var replicator in ent.Comp.SpawnedMinions)
         {
             if (!TryComp<ReplicatorComponent>(replicator, out var comp) || comp.UpgradeActions.Count == 0)
@@ -312,13 +308,9 @@ public sealed class ReplicatorNestSystem : EntitySystem
 
     public void OnUpgrade(Entity<ReplicatorComponent> ent, ref ReplicatorUpgradeActionEvent args)
     {
-        // don't run this clientside
-        if (_net.IsClient || !_timing.IsFirstTimePredicted)
-            return;
-
         var nextStage = args.NextStage;
 
-        if (ent.Comp.MyNest == null || UpgradeReplicator(ent, nextStage) == null)
+        if (ent.Comp.MyNest == null || _replicator.UpgradeReplicator(ent, nextStage) == null)
         {
             _popup.PopupEntity(Loc.GetString("replicator-cant-find-nest"), ent, PopupType.MediumCaution);
             return;
@@ -491,12 +483,4 @@ public sealed class ReplicatorNestSystem : EntitySystem
         args.AddLine(Loc.GetString("replicator-nest-end-of-round", ("location", locationsList), ("level", highestLevel), ("points", totalPoints), ("replicators", totalSpawned)));
         args.AddLine("");
     }
-}
-
-public sealed partial class ReplicatorSpawnNestActionEvent : InstantActionEvent;
-
-public sealed partial class ReplicatorUpgradeActionEvent : InstantActionEvent
-{
-    [DataField(required: true)]
-    public EntProtoId NextStage;
 }

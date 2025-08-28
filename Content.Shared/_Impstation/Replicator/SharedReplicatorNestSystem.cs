@@ -15,3 +15,11 @@ public sealed partial class ReplicatorNestEmbiggenedEvent(Entity<ReplicatorNestC
 {
     public Entity<ReplicatorNestComponent> Ent { get; set; } = ent;
 }
+
+public sealed partial class ReplicatorSpawnNestActionEvent : InstantActionEvent;
+
+public sealed partial class ReplicatorUpgradeActionEvent : InstantActionEvent
+{
+    [DataField(required: true)]
+    public EntProtoId NextStage;
+}
