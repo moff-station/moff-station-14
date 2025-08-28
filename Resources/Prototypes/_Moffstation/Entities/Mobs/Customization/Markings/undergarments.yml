@@ -104,9 +104,9 @@
   sprites:
   - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
     state: boxers_avali
-  
+
 - type: marking
-  id: UndergarmentBottomUnderwearResomi
+  id: UndergarmentBottomBoxersResomi
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
   speciesRestriction: [Resomi]
@@ -116,7 +116,7 @@
         color: "#FFFFFF"
   sprites:
   - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
-    state: underwear_resomi
+    state: boxers_resomi
 
 - type: marking
   id: UndergarmentBottomThongResomi
@@ -128,5 +128,5 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-    - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
+  - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
     state: thong_resomi
