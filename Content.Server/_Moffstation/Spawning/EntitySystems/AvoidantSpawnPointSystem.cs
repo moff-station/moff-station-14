@@ -5,6 +5,7 @@ using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Systems;
 using Content.Shared.Humanoid;
+using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
 
@@ -21,6 +22,7 @@ public sealed class AvoidantSpawnPointSystem : EntitySystem
     [Dependency] private readonly StationSystem _stationSystem = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -41,17 +43,18 @@ public sealed class AvoidantSpawnPointSystem : EntitySystem
             if (args.Station != null && _stationSystem.GetOwningStation(uid, xform) != args.Station)
                 continue;
 
-            if ((_gameTicker.RunLevel == GameRunLevel.InRound && spawnPoint.SpawnType == SpawnPointType.LateJoin)
-                || (_gameTicker.RunLevel != GameRunLevel.InRound &&
+            if (_gameTicker.RunLevel == GameRunLevel.InRound &&
+                 spawnPoint.SpawnType == SpawnPointType.LateJoin
+                || _gameTicker.RunLevel != GameRunLevel.InRound &&
                 spawnPoint.SpawnType == SpawnPointType.Job &&
-                (args.Job == null || spawnPoint.Job == args.Job)))
+                (args.Job == null || spawnPoint.Job == args.Job))
             {
 
                 possiblePositions.Add(xform.Coordinates);
             }
         }
 
-        var spawnLoc = _random.Pick(possiblePositions);
+        _random.Shuffle(possiblePositions);
 
         args.SpawnResult = _stationSpawning.SpawnPlayerMob(
             spawnLoc,
@@ -60,10 +63,10 @@ public sealed class AvoidantSpawnPointSystem : EntitySystem
             args.Station);
     }
 
-    private bool PlayerInRange(Entity<AvoidantSpawnPointComponent, TransformComponent> entity)
+    private bool BlacklistInRange(Entity<AvoidantSpawnPointComponent, TransformComponent> entity)
     {
-        var entities = new HashSet<Entity<HumanoidAppearanceComponent>>();
+        var entities = new HashSet<EntityUid>();
         _entityLookup.GetEntitiesInRange(entity.Comp2.Coordinates, entity.Comp1.Range, entities);
-        return entities.Count > 0;
+        return entities.Select(e => _whitelist.IsBlacklistPass(entity.Comp1.Blacklist, e)).Any();
     }
 }
