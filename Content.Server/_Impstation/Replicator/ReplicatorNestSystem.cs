@@ -55,12 +55,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Impstation.Replicator;
 
-public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
+public sealed class ReplicatorNestSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    [Dependency] private readonly SharedReplicatorNestSystem _sharedNest = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly ContainerSystem _containerSystem = default!;
@@ -85,6 +84,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
     [Dependency] private readonly ITileDefinitionManager _tileDef = default!;
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly ReplicatorSystem _replicator = default!;
 
 
     public override void Initialize()
@@ -187,7 +187,6 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             if (ent.Comp.CurrentLevel <= ent.Comp.EndgameLevel)
             {
                 Embiggen(ent);
-                Dirty(ent);
             }
 
             // update the threshold for the next upgrade (the default times the current level), and upgrade all our guys.
@@ -232,16 +231,11 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
 
     private void Embiggen(Entity<ReplicatorNestComponent> ent)
     {
-        var ev = new ReplicatorNestEmbiggenedEvent(ent);
-        RaiseLocalEvent(ent, ref ev);
+        RaiseNetworkEvent(new ReplicatorNestEmbiggenedEvent(ent));
     }
 
     private void SpawnNew(Entity<ReplicatorNestComponent> ent)
     {
-        // SUPER don't run this clientside
-        if (_net.IsClient)
-            return;
-
         // spawn a new replicator
         var spawner = Spawn(ent.Comp.ToSpawn, Transform(ent).Coordinates);
         // TODO:
@@ -280,25 +274,6 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             }
             comp.HasBeenGivenUpgradeActions = true;
         }
-    }
-
-    // force upgrade any tier to another given tier.
-    // or i guess technically you could feed it any EntProtoId...
-    public EntityUid? ForceUpgrade(Entity<ReplicatorComponent> ent, EntProtoId nextStage)
-    {
-        // don't run this clientside
-        if (_net.IsClient || !_timing.IsFirstTimePredicted)
-            return null;
-
-        var upgraded = UpgradeReplicator(ent, nextStage);
-
-        QueueDel(ent);
-        foreach (var action in ent.Comp.Actions)
-        {
-            QueueDel(action);
-        }
-
-        return upgraded;
     }
 
     private void ConvertTiles(Entity<ReplicatorNestComponent> ent, float radius)
@@ -425,7 +400,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             livingReplicators.Add((queenNotNull, comp));
             comp.RelatedReplicators = livingReplicators; // make sure we know who belongs to our nest
 
-            var upgradedQueen = ForceUpgrade((queenNotNull, comp), comp.FinalStage);
+            var upgradedQueen = _replicator.ForceUpgrade((queenNotNull, comp), comp.FinalStage);
             if (!TryComp<ReplicatorComponent>(upgradedQueen, out var upgradedComp))
                 return;
 
@@ -445,7 +420,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
         foreach (var replicator in livingReplicators)
         {
             // downgrade to level 1
-            var upgraded = ForceUpgrade(replicator, replicator.Comp.FirstStage);
+            var upgraded = _replicator.ForceUpgrade(replicator, replicator.Comp.FirstStage);
             if (upgraded is not { } upgradedNotNull)
                 return;
 
@@ -516,4 +491,12 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
         args.AddLine(Loc.GetString("replicator-nest-end-of-round", ("location", locationsList), ("level", highestLevel), ("points", totalPoints), ("replicators", totalSpawned)));
         args.AddLine("");
     }
+}
+
+public sealed partial class ReplicatorSpawnNestActionEvent : InstantActionEvent;
+
+public sealed partial class ReplicatorUpgradeActionEvent : InstantActionEvent
+{
+    [DataField(required: true)]
+    public EntProtoId NextStage;
 }

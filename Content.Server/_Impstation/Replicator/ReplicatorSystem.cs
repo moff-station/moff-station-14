@@ -6,6 +6,7 @@ using Content.Server._Impstation.Administration.Components;
 using Content.Server.Actions;
 using Content.Server.Emp;
 using Content.Server.Ghost.Roles.Events;
+using Content.Server.Mind;
 using Content.Server.Pinpointer;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
@@ -19,8 +20,10 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Impstation.Replicator;
@@ -37,6 +40,8 @@ public sealed class ReplicatorSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly PinpointerSystem _pinpointer = default!;
     [Dependency] private readonly ReplicatorNestSystem _replicatorNest = default!;
+    [Dependency] private readonly MindSystem  _mind = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -127,7 +132,7 @@ public sealed class ReplicatorSystem : EntitySystem
         if (HasComp<ReplicatorSignComponent>(ent))
             RemComp<ReplicatorSignComponent>(ent);
 
-        _replicatorNest.ForceUpgrade(ent, ent.Comp.FirstStage);
+        ForceUpgrade(ent, ent.Comp.FirstStage);
 
         // then we need to remove the action, to ensure it can't be used infinitely.
         QueueDel(args.Action);
@@ -144,6 +149,49 @@ public sealed class ReplicatorSystem : EntitySystem
 
         // tell the new fella who they momma is
         ent.Comp.MyNest = tracker.SpawnedFrom;
+    }
+
+    // force upgrade any tier to another given tier.
+    // or i guess technically you could feed it any EntProtoId...
+    public EntityUid? ForceUpgrade(Entity<ReplicatorComponent> ent, EntProtoId nextStage)
+    {
+        var upgraded = UpgradeReplicator(ent, nextStage);
+
+        QueueDel(ent);
+        foreach (var action in ent.Comp.Actions)
+        {
+            QueueDel(action);
+        }
+
+        return upgraded;
+    }
+
+    public EntityUid? UpgradeReplicator(Entity<ReplicatorComponent> ent, EntProtoId nextStage)
+    {
+        if (!_mind.TryGetMind(ent, out var mind, out _))
+            return null;
+
+        var xform = Transform(ent);
+
+        var upgraded = Spawn(nextStage, xform.Coordinates);
+        var upgradedComp = EnsureComp<ReplicatorComponent>(upgraded);
+        upgradedComp.RelatedReplicators = ent.Comp.RelatedReplicators;
+        upgradedComp.MyNest = ent.Comp.MyNest;
+
+        if (ent.Comp.MyNest != null)
+        {
+            var nestComp = EnsureComp<ReplicatorNestComponent>((EntityUid)ent.Comp.MyNest);
+            nestComp.SpawnedMinions.Remove(ent);
+            nestComp.SpawnedMinions.Add(upgraded);
+
+            _audio.PlayPvs(nestComp.UpgradeSound, upgraded);
+        }
+
+        _mind.TransferTo(mind, upgraded);
+
+        _popup.PopupEntity(Loc.GetString($"{ent.Comp.ReadyToUpgradeMessage}-self"), upgraded, PopupType.Medium);
+
+        return upgraded;
     }
 
     private void OnAttackAttempt(Entity<ReplicatorComponent> ent, ref AttackAttemptEvent args)
