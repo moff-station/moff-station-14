@@ -394,7 +394,7 @@ namespace Content.Shared.Damage
         }
     }
 
-    public sealed class DamageChangedEvent : EntityEventArgs
+    public sealed class DamageChangedEvent : EntityEventArgs, IInventoryRelayEvent
     {
         /// <summary>
         ///     This is the component whose damage was changed.
@@ -428,6 +428,8 @@ namespace Content.Shared.Damage
         ///     Contains the entity which caused the change in damage, if any was responsible.
         /// </summary>
         public readonly EntityUid? Origin;
+
+        public SlotFlags TargetSlots { get => SlotFlags.All; }
 
         public DamageChangedEvent(DamageableComponent damageable, DamageSpecifier? damageDelta, bool interruptsDoAfters, EntityUid? origin)
         {

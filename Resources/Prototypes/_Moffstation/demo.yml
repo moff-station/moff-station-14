@@ -1,0 +1,24 @@
+﻿- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckDamageTrackerDemo
+  name: Damage Tracker Demo
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Misc/lawyerbadge.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Misc/lawyerbadge.rsi
+  - type: EquipeeEntityEffectTriggerCondition
+    conditions:
+    - !type:TotalDamage
+      min: 10
+  - type: TriggerOnEquipeeDamageChanged
+  - type: SpeakOnTrigger
+    text: "Owwie" # This should be a loc string
+  - type: TriggerLatchCondition
+    resetVerbName: "Reset" # This should be a loc string
+    resetVerbMessage: "Enable this tracker to be triggered again" # This should be a loc string
+    alreadyResetMessage: "The tracker is already ready to be triggered" # This should be a loc string
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
