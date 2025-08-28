@@ -98,17 +98,21 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
         var query = EntityQueryEnumerator<GunGameRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var gunGame, out var respawnTracker, out var rule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, rule)
-                || ev.Primary is not KillPlayerSource player)
+            if (!GameTicker.IsGameRuleActive(uid, rule))
+		continue;
+
+            // Force them to respawn so they don't have to wait around.
+            // This has to happen before we check if a player killed them, because they might have died
+            // 	to something other than a player.
+            if (TryComp<ActorComponent>(ev.Entity, out var actor))
+                _respawn.RespawnPlayer((ev.Entity, actor), (uid, respawnTracker));
+
+            if (ev.Primary is not KillPlayerSource player)
                 continue;
 
             // Don't want other players picking up somebody's gun
             if (TryComp<GunGameTrackerComponent>(ev.Entity, out var gunGameTracker))
                 DeleteCurrentWeapons((ev.Entity, gunGameTracker), gunGame);
-
-            // Force them to respawn so they don't have to wait around.
-            if (TryComp<ActorComponent>(ev.Entity, out var actor))
-                _respawn.RespawnPlayer((ev.Entity, actor), (uid, respawnTracker));
 
             var playerInfo = gunGame.PlayerInfo[player.PlayerId];
             // Only allow the player to receive their next weapon after they get enough kills.
