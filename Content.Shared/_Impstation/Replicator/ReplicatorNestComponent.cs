@@ -46,7 +46,7 @@ public sealed partial class ReplicatorNestComponent : Component
     /// Is multiplied by the current level.
     /// </summary>
     [DataField]
-    public int BonusPointsHumanoid = 0; // currently trying out setting this to 0, to discourage violence outside of self defense
+    public int BonusPointsHumanoid = 5;
     /// <summary>
     /// The number of points required to convert a tile.
     /// Does not increase.

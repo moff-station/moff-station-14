@@ -3,6 +3,7 @@ using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Chasm;
 using Content.Shared.Destructible;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -57,10 +58,6 @@ public sealed class ChasmSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        // don't predict queuedels on client
-        if (_net.IsClient)
-            return;
-
         var query = EntityQueryEnumerator<ChasmComponent>();
 
         while (query.MoveNext(out _, out var chasm))
@@ -68,16 +65,15 @@ public sealed class ChasmSystem : EntitySystem
             foreach (var entity in chasm.FallingObjects)
             {
                 if (!TryComp<ChasmFallingComponent>(entity, out var falling) ||
-                    falling.NextDeletionTime <= _timing.CurTime)
+                    falling.NextDeletionTime > _timing.CurTime)
                 {
                     continue;
                 }
 
                 if (_whitelist.IsBlacklistPass(chasm.PreservationBlacklist, entity) ||
-                    !_whitelist.IsWhitelistPass(chasm.PreservationWhitelist, entity) ||
-                    !HasComp<MindContainerComponent>(entity))
+                    !_whitelist.IsWhitelistPass(chasm.PreservationWhitelist, entity))
                 {
-                    QueueDel(entity);
+                    PredictedQueueDel(entity);
                     chasm.FallingObjects.Remove(entity);
                     continue;
                 }
@@ -155,8 +151,14 @@ public sealed class ChasmSystem : EntitySystem
         var ev = new ChasmFallEvent(ent,  tripper);
         RaiseLocalEvent(ent, ref ev);
 
+        //Stop the object from being pulled
+        if (TryComp<PullableComponent>(tripper, out var pullable))
+            _pulling.TryStopPull(tripper, pullable);
+
         falling.NextDeletionTime = _timing.CurTime + falling.DeletionTime;
         _blocker.UpdateCanMove(tripper);
+
+        ent.Comp.FallingObjects.Add(tripper);
 
         if (playSound)
             _audio.PlayPredicted(ent.Comp.FallingSound, ent, tripper);

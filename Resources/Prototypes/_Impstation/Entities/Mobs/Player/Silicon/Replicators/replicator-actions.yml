@@ -9,8 +9,8 @@
   - type: Action
     itemIconStyle: NoItem
     useDelay: 20
-  - type: InstantAction
     icon: _Impstation/Interface/Actions/spawn_nest.png
+  - type: InstantAction
     event: !type:ReplicatorSpawnNestActionEvent
   - type: ConfirmableAction
     popup: replicator-nest-confirm

@@ -10,31 +10,29 @@
     mode: SnapGridCenter
   components:
   - type: ReplicatorNest
+  - type: Chasm
     fallingSound:
       path: /Audio/_Impstation/Effects/falling.ogg
       params:
         variation: 0.1
+    preservationWhitelist:
+      components:
+      - MobState
+      - OnUseTimerTrigger
+      - StealTarget
+      - Mech
+    preservationBlacklist: # delete stuff that passes this, even if it also passes the preservationWhitelist
+      components:
+      - SiliconLawBound
     blacklist:
       components:
       - Nuke # nice try
       - Cash
+      - Replicator
       tags:
-      - BROS # too many of em. therefore worthless
       - Cartridge
       - CartridgeMagnum
       - Ectoplasm # causes problems for the revenant if they're consumed
-    preservationBlacklist: # delete stuff that passes this, even if it also passes the preservationWhitelist
-      components:
-      - SiliconLawBound
-    preservationWhitelist: # preserve stuff that passes this
-      components:
-      - HumanoidAppearance
-      - OnUseTimerTrigger
-      - StealTarget
-      - Mech
-#  - type: Chasm
-#    fallingSound:
-#      path: /Audio/_Impstation/Effects/falling.ogg
   - type: StepTrigger
     requiredTriggeredSpeed: 0
     intersectRatio: 0.4
