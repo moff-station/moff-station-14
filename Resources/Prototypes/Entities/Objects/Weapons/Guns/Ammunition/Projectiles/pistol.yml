@@ -43,3 +43,17 @@
       types:
         Radiation: 6
         Piercing: 10
+# Moffstation - Begin - Apply directly to vampires and/or werewolves.
+# Specialized munitions, so in a scenario where you aren't shooting vampires, it's an materialisticly-expensive, less accurate version of practice rounds.
+- type: entity
+  id: BulletPistolSilver
+  parent: BaseBulletSilver
+  name: bullet (.35 auto silver)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 2
+        Holy: 15
+# Moffstation - End

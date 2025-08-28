@@ -87,3 +87,22 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
     - state: uranium
+
+# Moffstation - Begin - Apply directly to vampires and/or werewolves.
+# Specialized munitions, so in a scenario where you aren't shooting vampires, it's an materialisticly-expensive, less accurate version of practice rounds.
+- type: entity
+  id: MagazineBoxPistolSilver
+  parent: BaseMagazineBoxPistol
+  name: ammunition box (.35 auto silver)
+  description: A cardboard box of .35 auto rounds. Intended to hold holy silver ammunition.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgePistolSilver
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: silver
+# Moffstation - End
