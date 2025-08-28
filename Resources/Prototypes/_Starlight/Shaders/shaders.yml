@@ -1,0 +1,10 @@
+- type: shader
+  id: ModernNightVisionShader
+  kind: source
+  path: "/Textures/_Starlight/Shaders/night.swsl"
+  params:
+    NightVisionBoost: 2.0
+    NightVisionThreshold: 0.3
+    TintColor: "#59B3FFFF"
+    TintIntensity: 0.6
+    Brightness: 0.299, 0.587, 0.114

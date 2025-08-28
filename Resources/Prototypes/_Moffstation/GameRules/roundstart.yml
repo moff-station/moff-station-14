@@ -1,0 +1,31 @@
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRule
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.3
+    - id: BloodBrothers
+      prob: 0.3
+    - id: SyndicateListeningOutpost
+      prob: 0.20
+    - id: Pirates
+      prob: 0.15
+    - id: SubWizard
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoWizard
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.3
+    - id: BloodBrothers
+      prob: 0.3
+    - id: SyndicateListeningOutpost
+      prob: 0.2
+    - id: Pirates
+      prob: 0.2
