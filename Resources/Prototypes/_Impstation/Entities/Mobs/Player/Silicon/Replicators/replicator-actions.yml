@@ -6,11 +6,12 @@
   name: Manufacture Nest
   description: Create a new nest for your hive.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: NoItem
+    useDelay: 20
+  - type: InstantAction
     icon: _Impstation/Interface/Actions/spawn_nest.png
     event: !type:ReplicatorSpawnNestActionEvent
-    useDelay: 20
   - type: ConfirmableAction
     popup: replicator-nest-confirm
 

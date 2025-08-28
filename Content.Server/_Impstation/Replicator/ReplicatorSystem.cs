@@ -36,7 +36,7 @@ public sealed class ReplicatorSystem : EntitySystem
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly PinpointerSystem _pinpointer = default!;
-    [Dependency] private readonly SharedReplicatorNestSystem _replicatorNest = default!;
+    [Dependency] private readonly ReplicatorNestSystem _replicatorNest = default!;
 
     public override void Initialize()
     {
