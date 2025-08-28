@@ -1,0 +1,16 @@
+- type: markings
+  id: ReptilianDragonEye
+  bodyPart: Eyes
+  markingCatagory: Overlay
+  speciesResriction: [Reptilian]
+  coloring:
+    default:
+      type: 
+        !type:EyeColoring
+          negative: true 
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/dragon_eyes.rsi
+    state: tattoo_eye_dragon_shadow
+  - sprite: _Moffstation/Mobs/Customization/Reptilian/dragon_eyes.rsi
+    state: tattoo_eye_dragon_color
+    
