@@ -35,7 +35,7 @@ public sealed partial class GunGameRuleComponent : Robust.Shared.GameObjects.Com
     public Queue<ProtoId<StartingGearPrototype>> RewardSpawnsQueue = new();
 
     /// <summary>
-    /// Player info that needs to be stored between their individual lddives.
+    /// Player info that needs to be stored between their individual lives.
     /// </summary>
     [ViewVariables]
     public Dictionary<NetUserId, GunGamePlayerTrackingInfo> PlayerInfo = new();
