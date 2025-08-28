@@ -1,0 +1,349 @@
+﻿- type: startingGear
+  id: GunGameBaseGear
+  equipment:
+    shoes: ClothingShoesColorBlack
+    ears: ClothingHeadsetGrey
+    gloves: ClothingHandsGlovesFingerless
+
+- type: startingGear
+  id: GunGameDualAtredies
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAgent
+    outerClothing: ClothingOuterArmorCentcommCarapace
+    belt: ClothingBeltHolster
+    pocket1: MagazinePistolSubMachineGun
+    pocket2: MagazinePistolSubMachineGun
+  inhand:
+  - WeaponSubMachineGunAtreides
+  - WeaponSubMachineGunAtreides
+
+- type: startingGear
+  id: GunGameDeathSquad
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDeathSquad
+    back: WeaponPulseRifle
+    outerClothing: ClothingOuterArmorBasic
+    belt: ClothingBeltMilitaryWebbingMed
+    pocket1: SpeedLoaderMagnumAP
+    pocket2: SpeedLoaderMagnumAP
+  inhand:
+  - WeaponRevolverMateba
+
+- type: startingGear
+  id: GunGameHoS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoS
+    back: WeaponEnergyShotgun
+    outerClothing: ClothingOuterCoatHoSTrench
+    belt: ClothingBeltSecurity
+    pocket1: TelescopicShield
+    pocket2: MagazinePistolSubMachineGunTopMounted
+  inhand:
+  - WeaponSubMachineGunWt550
+
+- type: startingGear
+  id: GunGameSyndicateAssaultCyborg
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: WeaponLightMachineGunL6C
+    outerClothing: ClothingOuterArmorBasic
+    belt: ClothingBeltMilitaryWebbing
+    pocket1: PinpointerSyndicateNuclear
+    pocket2: MagazineLightRifleBox
+  inhand:
+  - EnergySwordDouble
+
+- type: startingGear
+  id: GunGameSyndicateVanguard
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: MagazinePistolSubMachineGun
+    outerClothing: ClothingOuterArmorBasic
+    belt: ClothingBeltMilitaryWebbing
+    pocket1: EnergySword
+    pocket2: MagazinePistolSubMachineGun
+  inhand:
+  - WeaponSubMachineGunC20r
+
+- type: startingGear
+  id: GunGameSyndicateBreacher
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: MagazineShotgunIncendiary
+    outerClothing: ClothingOuterArmorRaid
+    belt: ClothingBeltMilitaryWebbing
+    pocket1: MagazineShotgun
+    pocket2: MagazineShotgunSlug
+  inhand:
+  - WeaponShotgunBulldog
+
+- type: startingGear
+  id: GunGameWarden
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWarden
+    back: MagazineShotgunSlug
+    outerClothing: ClothingOuterCoatWarden
+    belt: ClothingBeltSecurity
+    pocket1: CombatKnife
+    pocket2: MagazineShotgun
+  inhand:
+  - WeaponShotgunEnforcer
+
+- type: startingGear
+  id: GunGameERTRifleman
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTSecurity
+    back: WeaponLaserCannon
+    outerClothing: ClothingOuterArmorBasic
+    belt: ClothingBeltSecurityWebbing
+    pocket1: CombatKnife
+    pocket2: MagazineRifleUranium
+  inhand:
+  - WeaponRifleLecter
+
+- type: startingGear
+  id: GunGameSecurityBreacher
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecGrey
+    back: MagazineShotgunIncendiary
+    outerClothing: ClothingOuterArmorBasic
+    belt: ClothingBeltSecurityWebbing
+    pocket1: TearGasGrenade
+    pocket2: MagazineShotgun
+  inhand:
+  - WeaponShotgunKammerer
+
+- type: startingGear
+  id: GunGameSecuritySMG
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorOfficer
+    back: WeaponLaserCarbine
+    outerClothing: ClothingOuterArmorBasic
+    belt: ClothingBeltSecurityWebbing
+    pocket1: MagazinePistolSubMachineGun
+    pocket2: MagazinePistolSubMachineGun
+  inhand:
+  - WeaponSubMachineGunDrozd
+
+- type: startingGear
+  id: GunGameSyndicateMarksman
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+    outerClothing: ClothingOuterArmorBasic
+    belt: ClothingBeltSyndieHolster
+    pocket1: EnergyDaggerLoud
+    pocket2: MagazineRifle
+  inhand:
+  - WeaponRifleEstoc
+
+- type: startingGear
+  id: GunGameCCRepresentative
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomFormal
+    back: MagazineMagnumAP
+    outerClothing: ClothingOuterArmorCentcommCarapace
+    belt: ClothingBeltHolster
+    pocket1: PenCentcom
+    pocket2: MagazineMagnumAP
+  inhand:
+  - WeaponPistolN1984
+
+- type: startingGear
+  id: GunGameMercenary
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+    back: MagazineLightRifle
+    outerClothing: ClothingOuterVestWebMerc
+    belt: ClothingBeltMercWebbing
+    pocket1: KukriKnife
+    pocket2: MagazineLightRifle
+  inhand:
+  - WeaponRifleAk
+
+- type: startingGear
+  id: GunGameCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptain
+    back: DrinkFlask
+    outerClothing: ClothingOuterArmorCaptainCarapace
+    belt: ClothingBeltSheathFilled
+    pocket1: PenCap
+    pocket2: NukeDiskFake
+  inhand:
+  - WeaponAntiqueLaser
+
+- type: startingGear
+  id: GunGameNinja
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitNinja
+    back: ThrowingStarNinja
+    outerClothing: ClothingOuterSuitSpaceNinja
+    belt: EnergyKatana
+    pocket1: ThrowingStarNinja
+    pocket2: ThrowingStarNinja
+  inhand:
+  - ThrowingStarNinja
+
+- type: startingGear
+  id: GunGameWarOpsCrew
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+    back: WeaponTemperatureGun
+    outerClothing: ClothingOuterArmorBasic
+    belt: Truncheon
+    pocket1: TelescopicShield
+    pocket2: RadioHandheldSecurity
+  inhand:
+  - WeaponXrayCannon
+
+- type: startingGear
+  id: GunGameBotanist
+  equipment:
+    jumpsuit: ClothingUniformOveralls
+    back: WeaponRevolverPython
+    outerClothing: ClothingOuterApronBotanist
+    belt: ClothingBeltPlant
+    pocket1: DeathNettle
+    pocket2: WeaponRevolverPython
+  inhand:
+  - WeaponRevolverPython
+
+- type: startingGear
+  id: GunGameSyndicateLibrarian
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLibrarian
+    back: MagazinePistolHighCapacity
+    outerClothing: ClothingOuterVestTank
+    belt: ClothingBeltStorageWaistbag
+    pocket1: WeaponPistolViper
+    pocket2: MagazinePistolHighCapacity
+  inhand:
+  - CaneSheathFilled
+
+- type: startingGear
+  id: GunGameGreenSec
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+    back: MagazinePistol
+    outerClothing: ClothingOuterArmorBasicSlim
+    belt: ClothingBeltSecurityWebbing
+    pocket1: CombatKnife
+    pocket2: MagazinePistol
+  inhand:
+  - WeaponPistolMk58
+
+- type: startingGear
+  id: GunGameSyndicateAssassin
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSyndieFormal
+    back: WeaponSniperHristov
+    outerClothing: ClothingOuterVest
+    belt: ThrowingKnivesKit
+    pocket1: MagazinePistolCaselessRifle
+    pocket2: MagazineBoxAntiMateriel
+  inhand:
+  - WeaponPistolCobra
+
+- type: startingGear
+  id: GunGameSalvage
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
+    back: WeaponCrusherGlaive
+    outerClothing: ClothingOuterVestTank
+    belt: ClothingBeltSalvageWebbing
+    pocket1: PKAUpgradeFireRate
+    pocket2: PKAUpgradeDamage
+  inhand:
+  - WeaponProtoKineticAccelerator
+
+- type: startingGear
+  id: GunGameBartender
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartender
+    belt: ClothingBeltBandolier
+    pocket1: MagazineShotgun
+    pocket2: MagazineShotgunSlug
+  inhand:
+  - WeaponShotgunSawn
+  - BrokenBottle
+
+- type: startingGear
+  id: GunGamePursuer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetective
+    outerClothing: ClothingOuterCoatDetective
+  inhand:
+  - ArmBlade
+  - ArmBlade
+
+- type: startingGear
+  id: GunGameHoP
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoP
+    back: BriefcaseBrownFilled
+    outerClothing: ClothingOuterVestTank
+    belt: ClothingBeltStorageWaistbag
+    pocket1: SpeedLoaderMagnum
+    pocket2: SpeedLoaderMagnum
+  inhand:
+  - WeaponRevolverDeckard
+
+- type: startingGear
+  id: GunGameAtmosian
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAtmosCasual
+    back: CrowbarYellow
+    outerClothing: ClothingOuterVestHazard
+    belt: ClothingBeltUtility
+    pocket1: GasAnalyzer
+    pocket2: RadioHandheld
+  inhand:
+  - FireAxe
+
+- type: startingGear
+  id: GunGameScientist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorResearcher
+    back: SpearUranium
+    outerClothing: ClothingOuterVestTank
+    belt: ClothingBeltUtility
+    pocket1: WeaponPistolCHIMPUpgraded
+    pocket2: AnomalyScanner
+  inhand:
+  - SpearUranium
+  - SpearUranium
+
+- type: startingGear
+  id: GunGameChef
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChef
+    outerClothing: ClothingOuterVestTank
+    pocket1: KitchenKnife
+    pocket2: RollingPin
+  inhand:
+  - ButchCleaver
+
+- type: startingGear
+  id: GunGameQM
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitQM
+    outerClothing: ClothingOuterVestTank
+    pocket1: AppraisalTool
+  inhand:
+  - ClothingHandsKnuckleDustersQM
+
+- type: startingGear
+  id: GunGameParamedic
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitParamedic
+    outerClothing: ClothingOuterVestTank
+  inhand:
+  - Scalpel
+
+- type: startingGear
+  id: GunGameTider
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAncient
+    outerClothing: ClothingOuterVestTank
+  inhand:
+  - ToolboxGolden
