@@ -1,0 +1,13 @@
+# Empty clown locker, since we're modifying the upstream one
+- type: entity
+  id: LockerClownUnfilled
+  name: clown locker
+  parent: LockerBaseSecure
+  components:
+  - type: Appearance
+  - type: AccessReader
+    access: [["Theatre"]]
+  - type: EntityStorageVisuals
+    stateBaseClosed: clown
+    stateDoorOpen: clown_open
+    stateDoorClosed: clown_door

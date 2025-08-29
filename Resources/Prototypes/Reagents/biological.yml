@@ -12,6 +12,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   recognizable: true
+  standsout: true
   physicalDesc: reagent-physical-desc-ferrous
   metabolisms:
     Drink:
@@ -37,6 +38,16 @@
           groups:
             Brute: -3
             Burn: -1.25
+    # Moffstation - Start - Added blood metabolism group
+    Blood:
+      metabolismRate: 0.95 # Ensure there's always a little loss
+      effects:
+      - !type:ModifyBloodLevel
+        conditions:
+        - !type:OrganType
+          type: Vampire
+          shouldHave: true
+    # Moffstation - End
   plantMetabolism:
     - !type:PlantAdjustWater
       amount: 0.5
@@ -64,6 +75,7 @@
   flavor: slimy
   color: "#2cf274"
   recognizable: true
+  standsout: true
   physicalDesc: reagent-physical-desc-viscous
   viscosity: 0.25
   tileReactions:
@@ -74,8 +86,18 @@
       effects:
       - !type:SatiateHunger
         factor: 1
+    # Moffstation - Start - Added blood metabolism group
+    Blood:
+      metabolismRate: 0.80
+      effects:
+      - !type:ModifyBloodLevel
+        conditions:
+        - !type:OrganType
+          type: Vampire
+          shouldHave: true
+    # Moffstation - End
   footstepSound:
-    collection: FootstepBlood
+    collection: FootstepSlime # makes sense
     params:
       volume: 6
 
@@ -99,8 +121,18 @@
         factor: 1
       - !type:SatiateThirst
         factor: 1
+    # Moffstation - Start - Added blood metabolism group
+    Blood:
+      metabolismRate: 0.80
+      effects:
+      - !type:ModifyBloodLevel
+        conditions:
+        - !type:OrganType
+          type: Vampire
+          shouldHave: true
+    # Moffstation - End
   footstepSound:
-    collection: FootstepBlood
+    collection: FootstepSlime
     params:
       volume: 6
 
@@ -148,7 +180,16 @@
             Poison: 4
       - !type:ChemVomit
         probability: 0.25
-
+    # Moffstation - Start - Added blood metabolism group
+    Blood:
+      metabolismRate: 0.5 # Terrible for you but it works
+      effects:
+      - !type:ModifyBloodLevel
+        conditions:
+        - !type:OrganType
+          type: Vampire
+          shouldHave: true
+    # Moffstation - End
 - type: reagent
   id: Ichor
   name: reagent-name-ichor
@@ -164,8 +205,6 @@
       - !type:SatiateThirst
         factor: 1.5
     # Dragon doesn't require airloss healing, so omnizine is still best for humans.
-    Medicine:
-      effects:
       - !type:ModifyBloodLevel
         amount: 3
       - !type:HealthChange

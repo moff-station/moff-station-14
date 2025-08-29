@@ -23,6 +23,7 @@
     - id: SnakeSpawn
     - id: SpiderClownSpawn
     - id: SpiderSpawn
+    - id: TarboldMigration #Moffstation - Tarbold Vent Critters
     - id: VentClog
 
 - type: entityTable
@@ -30,16 +31,22 @@
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
     - id: ClosetSkeleton
-    - id: DragonSpawn
     - id: KingRatMigration
+    - id: RevenantSpawn
+    - id: DerelictCyborgSpawn
+
+- type: entityTable
+  id: ModerateAntagEventsTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+    - id: DragonSpawn
     - id: NinjaSpawn
     - id: ParadoxCloneSpawn
-    - id: RevenantSpawn
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
-    - id: DerelictCyborgSpawn
     - id: WizardSpawn
+    - id: SyndicateListeningOutpostSpawn # Moffstation
 
 - type: entity
   id: BaseStationEvent
@@ -163,7 +170,7 @@
     weight: 6.5
     earliestStart: 40
     reoccurrenceDelay: 20
-    minimumPlayers: 20
+    minimumPlayers: 30  # Moffstation - Tune down antags
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0
@@ -183,6 +190,8 @@
       pickPlayer: false
       mindRoles:
       - MindRoleDragon
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   parent: BaseGameRule
@@ -233,6 +242,8 @@
         nameFormat: name-format-ninja
       mindRoles:
       - MindRoleNinja
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   parent: BaseGameRule
@@ -243,7 +254,7 @@
     duration: null
     earliestStart: 20
     reoccurrenceDelay: 20
-    minimumPlayers: 15
+    minimumPlayers: 20  # Moffstation - Tune down antags
   - type: ParadoxCloneRule
     objectiveBlacklist:
       tags:
@@ -269,6 +280,8 @@
         sound: /Audio/Misc/paradox_clone_greeting.ogg
       mindRoles:
       - MindRoleParadoxClone
+  - type: DynamicRuleCost
+    cost: 50
 
 - type: entity
   parent: BaseGameRule
@@ -291,7 +304,7 @@
     duration: 1
     earliestStart: 30
     reoccurrenceDelay: 60
-    minimumPlayers: 10
+    minimumPlayers: 30  # Moffstation - Tune down antags
   - type: AntagSelection
     agentName: wizard-round-end-name
     definitions:
@@ -303,6 +316,7 @@
       startingGear: WizardBlueGear
       roleLoadout:
       - RoleSurvivalExtended
+      - JobWizard   # Moffstation - Enable custom wizard name/loadout
       briefing:
         text: wizard-role-greeting
         color: Turquoise
@@ -423,7 +437,7 @@
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
-    duration: 60
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobAdultSlimesBlueAngry
@@ -444,7 +458,7 @@
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
-    duration: 60
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobPurpleSnake
@@ -465,7 +479,7 @@
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
-    duration: 60
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobGiantSpiderAngry
@@ -482,7 +496,7 @@
     earliestStart: 20
     minimumPlayers: 20
     weight: 1.5
-    duration: 60
+    duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
     - id: MobClownSpider
@@ -520,6 +534,8 @@
       - type: InitialInfected
       mindRoles:
       - MindRoleInitialInfected
+  - type: DynamicRuleCost
+    cost: 200
 
 - type: entity
   parent: BaseNukeopsRule
@@ -528,8 +544,8 @@
   - type: StationEvent
     earliestStart: 35
     weight: 5.5
-    minimumPlayers: 20
-    duration: 1
+    minimumPlayers: 30 # Moffstation - Tune down antags
+    duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end scrreen (not always "Neutral outcome!") and... ending the game if the station is nuked.
   - type: RuleGrids
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
@@ -544,6 +560,7 @@
       startingGear: SyndicateLoneOperativeGearFull
       roleLoadout:
       - RoleSurvivalNukie
+      - JobNukeops  # Moffstation - Enable custom nukie name/loadout
       components:
       - type: NukeOperative
       - type: RandomMetadata
@@ -555,7 +572,9 @@
         factions:
         - Syndicate
       mindRoles:
-      - MindRoleNukeops
+      - MindRoleLoneops
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   parent: BaseTraitorRule
@@ -564,7 +583,7 @@
   - type: StationEvent
     earliestStart: 30
     weight: 8
-    minimumPlayers: 15
+    minimumPlayers: 25  # Moffstation - Tune down antags
     maxOccurrences: 1 # can only happen once per round
     startAnnouncement: station-event-communication-interception
     startAudio:

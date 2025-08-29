@@ -1,0 +1,25 @@
+# Player: Nyxilath - Character: Nyxilath Steelewing
+- type: entity
+  parent: ClothingHandsBase
+  id: PersonalItemNyxilathRing
+  name: Nyxilath's Wedding Ring
+  description: A small golden band, set with an Orange Sunstone gem.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/nyxilathring.rsi
+  - type: Clothing
+    quickEquip: True
+    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/nyxilathring.rsi
+  - type: Item
+    size: Tiny
+
+- type: loadout
+  id: PersonalItemNyxilathRing
+  storage:
+    back:
+    - PersonalItemNyxilathRing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Nyxilath Steelewing

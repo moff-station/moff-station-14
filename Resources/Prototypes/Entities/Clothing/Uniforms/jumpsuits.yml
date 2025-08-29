@@ -520,6 +520,7 @@
   - type: Tag
     tags:
     - ClothMade
+    - Recyclable
     - PrisonUniform
     - WhitelistChameleon
 
@@ -659,24 +660,30 @@
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
   id: ClothingUniformJumpsuitWarden
-  name: warden's uniform
+  name: warden's jumpsuit # Moffstation - (New Warden Uniforms)
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/warden.rsi # Moffstation - (New Warden Uniforms)
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/warden.rsi # Moffstation - (New Warden Uniforms)
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+        # Moffstation - Begin (New Warden Uniforms)
+        #color: "#C12D30"
+        #sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+        # Moffstation - End
       - state: overlay-inhand-left
       right:
       - state: inhand-right
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+        # Moffstation - Begin (New Warden Uniforms)
+        #color: "#C12D30"
+        #sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+        # Moffstation - End
       - state: overlay-inhand-right
 
 - type: entity
@@ -854,6 +861,8 @@
     sprite: Clothing/Uniforms/Jumpsuit/operative.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/operative.rsi
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   parent: ClothingUniformBase
@@ -1082,7 +1091,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/damedaneoutfit.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: UnsensoredClothingUniformBase # Moffstation - (No Sensors for Enemy Gear)
   id: ClothingUniformJumpsuitPirate
   name: pirate slops
   description: A pirate variation of a space sailor's jumpsuit.
@@ -1150,7 +1159,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/hawaiyellow.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseSyndicateContraband]
+  parent: [UnsensoredClothingUniformBase, BaseSyndicateContraband] # Moffstation - (No Sensors for Enemy Gear)
   id: ClothingUniformJumpsuitSyndieFormal
   name: syndicate formal suit
   description: "The syndicate's uniform is made in an elegant style, it's even a pity to do dirty tricks in this."

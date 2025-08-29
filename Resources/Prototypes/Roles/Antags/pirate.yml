@@ -1,5 +1,5 @@
 - type: startingGear
-  id: PirateGear
+  id: PirateGearUpstream  # Moffstation - Using our namespace
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
     back: ClothingBackpackSatchelLeather
@@ -7,19 +7,23 @@
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
-    pocket1: AppraisalTool
+    pocket2: AppraisalTool
+    ears: ClothingHeadsetPirate
 
 - type: startingGear
-  id: PirateCaptainGear
+  id: PirateCaptainGearUpstream  # Moffstation - Using our namespace
   parent: PirateGear
   equipment:
     head: ClothingHeadHatPirate
     pocket2: EnergyCutlass
     outerClothing: ClothingOuterCoatPirate
+    neck: ClothingNeckCloakPirateCap
+
 
 - type: startingGear
-  id: PirateFirstmateGear
+  id: PirateFirstmateGearUpstream  # Moffstation - Using our namespace
   parent: PirateGear
   equipment:
+    eyes: ClothingEyesEyepatchHudMedical
     head: ClothingHeadHatPirateTricord
     outerClothing: ClothingOuterCoatGentle

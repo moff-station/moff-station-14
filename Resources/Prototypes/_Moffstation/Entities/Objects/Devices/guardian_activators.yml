@@ -1,0 +1,8 @@
+- type: entity
+  name: flying dutchman injector
+  parent: HoloparasiteInjector
+  id: FlyingDutchmanInjector
+  description: A complex artwork of handheld machinery allowing the user to summon a flying dutchman guardian.
+  components:
+  - type: GuardianCreator
+    guardianProto: MobFlyingDutchmanGuardian

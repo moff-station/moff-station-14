@@ -1,5 +1,5 @@
 - type: entity
-  parent: BoxCardboard
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxSurvival
   name: survival box
   description: It's a box with basic internals inside.
@@ -11,7 +11,7 @@
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -19,7 +19,7 @@
     - state: emergencytank
 
 - type: entity
-  parent: BoxSurvival
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxSurvivalNitrogen
   suffix: Standard N2
   components:
@@ -29,7 +29,7 @@
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -39,7 +39,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxCardboard
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxSurvivalEngineering
   name: extended-capacity survival box
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
@@ -47,11 +47,11 @@
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskBreath
+    - id: ClothingMaskGas # Moffstation - (Survival Box Improvements)
     - id: ExtendedEmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -65,11 +65,11 @@
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskBreath
+    - id: ClothingMaskGas # Moffstation - (Survival Box Improvements)
     - id: ExtendedEmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -79,8 +79,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-
-  parent: BoxCardboard
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxSurvivalSecurity
   name: survival box
   description: It's a box with basic internals inside.
@@ -92,7 +91,7 @@
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -110,7 +109,7 @@
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -120,8 +119,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-
-  parent: BoxCardboard
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxSurvivalMedical
   name: survival box
   description: It's a box with basic internals inside.
@@ -133,7 +131,7 @@
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -151,7 +149,7 @@
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -161,7 +159,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxCardboard
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxHug
   name: box of hugs
   description: A special box for sensitive people.
@@ -175,11 +173,11 @@
     heldPrefix: hug
   - type: StorageFill
     contents:
-    - id: ClothingMaskBreath
+    - id: ClothingMaskClown # Moffstation - (Survival Box Improvements)
     - id: EmergencyFunnyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Tag
     tags:
@@ -192,27 +190,27 @@
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskBreath
+    - id: ClothingMaskClown # Moffstation - (Survival Box Improvements)
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Label
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxSurvival
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxMime
   suffix: Mime, Emergency
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskBreath
+    - id: ClothingMaskMime # Moffstation - (Survival Box Improvements)
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodBreadBaguette
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
 
 - type: entity
@@ -222,11 +220,11 @@
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskBreath
+    - id: ClothingMaskMime # Moffstation - (Survival Box Improvements)
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodBreadBaguette
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
     - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
@@ -236,7 +234,21 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxCardboard
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  id: BoxMimeMoth
+  suffix: Mime, Emergency moth
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskMime # Moffstation - (Survival Box Improvements)
+    - id: EmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: DrinkWaterBottleFull
+
+- type: entity
+  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
   id: BoxSurvivalSyndicate
   name: extended-capacity survival box
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
@@ -248,7 +260,8 @@
     - id: ExtendedEmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: DrinkWaterBottleFull # Moffstation - (Survival Box Improvements)
   - type: Sprite
     layers:
     - state: internals
@@ -265,7 +278,8 @@
     - id: ExtendedEmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: FoodSnackNutribrick
+    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: DrinkWaterBottleFull # Moffstation - (Survival Box Improvements)
   - type: Sprite
     layers:
     - state: internals

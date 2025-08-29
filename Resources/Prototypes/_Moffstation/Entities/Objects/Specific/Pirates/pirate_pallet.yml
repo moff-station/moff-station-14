@@ -1,0 +1,13 @@
+# These are here incase we want to give the selling pallets a unique texture in the future
+
+- type: entity
+  id: PiratePalletSell
+  name: pirate selling pallet
+  description: Designates valid items to sell. Made of plastitanium to discourage pesky vandals.
+  parent: CargoPalletSell
+
+- type: entity
+  id: PiratePalletBuy
+  name: pirate buying pallet
+  description: Designates where orders will appear when purchased. Made of plastitanium to discourage pesky vandals.
+  parent: CargoPalletBuy

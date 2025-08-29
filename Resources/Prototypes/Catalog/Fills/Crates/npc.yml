@@ -233,6 +233,11 @@
     - type: StorageFill
       contents:
         - id: MobHamsterHamlet
+          prob: 1
+          orGroup: MobHamsterHamlet
+        - id: MobHamsterHamletSlippery
+          prob: 0.001
+          orGroup: MobHamsterHamlet
 
 - type: entity
   id: CrateNPCLizard
@@ -262,5 +267,9 @@
   components:
   - type: StorageFill
     contents:
-      - id: MobMothroach
-        amount: 4
+    # Moffstation - Start - Add Rosie and Deathshead Mothroaches
+    - id: MobMothroach
+      amount: 2
+    - id: MobMothroachRosy
+    - id: MobMothroachDeathshead
+    # Moffstation - End

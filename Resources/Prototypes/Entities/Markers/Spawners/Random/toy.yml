@@ -6,8 +6,8 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Fun/toys.rsi
-          state: plushie_h
+        - sprite: Objects/Fun/Plushies/bee.rsi
+          state: icon
     - type: RandomSpawner
       rarePrototypes:
         - FoamBlade
@@ -34,6 +34,7 @@
         - ToyMouse
         - PlushieDiona
         - PlushieArachind
+        - PlushieBorg # MOFFSTATION - adds borg plushie
       chance: 0.5
       offset: 0.2
 
@@ -69,6 +70,7 @@
         - ToyDurand
         - ToySkeleton
         - MysteryFigureBox
+        - MysteryFigureBoxMoff # Moffstation - Adds moffstation themed figurines
       chance: 0.5
       offset: 0.2
 
@@ -86,6 +88,64 @@
       rarePrototypes:
       - ToyFigurineNukieElite
       - ToyFigurineNukieCommander
+      # Moffstation - Start - Adding our own figurines
+      - ToyFigurineAwana
+      - ToyFigurineBoxcar
+      - ToyFigurineBrad
+      - ToyFigurineBradBucket
+      - ToyFigurineBrisbane
+      - ToyFigurineBrisbaneBigHat
+      - ToyFigurineCassiel
+      - ToyFigurineCinnabar
+      - ToyFigurineCooks
+      - ToyFigurineCory
+      - ToyFigurineCrux
+      - ToyFigurineDarnell
+      - ToyFigurineDelana
+      - ToyFigurineDelivers
+      - ToyFigurineEchiara
+      - ToyFigurineEclipse
+      - ToyFigurineFaces
+      - ToyFigurineFails
+      - ToyFigurineFred
+      - ToyFigurineGigs
+      - ToyFigurineHot
+      - ToyFigurineIo
+      - ToyFigurineIris
+      - ToyFigurineJelob
+      - ToyFigurineJobs
+      - ToyFigurineJupiter
+      - ToyFigurineKatie
+      - ToyFigurineKrakatoa
+      - ToyFigurineKylie
+      - ToyFigurineLight
+      - ToyFigurineLightsSeeker
+      - ToyFigurineLilith
+      - ToyFigurineMolar
+      - ToyFigurineNyxie
+      - ToyFigurineNyxilath
+      - ToyFigurinePeedee
+      - ToyFigurinePeriwinkle
+      - ToyFigurineRareel
+      - ToyFigurineRoomba
+      - ToyFigurineSamantha
+      - ToyFigurineSapphire
+      - ToyFigurineSawa
+      - ToyFigurineScribbles
+      - ToyFigurineSean
+      - ToyFigurineSeikret
+      - ToyFigurineSigerthe
+      - ToyFigurineSiliconwing
+      - ToyFigurineSouthbridge
+      - ToyFigurineStella
+      - ToyFigurineStrawberry
+      - ToyFigurineTalvi
+      - ToyFigurineTania
+      - ToyFigurineTar
+      - ToyFigurineVortex
+      - ToyFigurineWallace
+      - ToyFigurineWiggles
+      # Moffstation - End - Adding our own figurines
       rareChance: 0.05
       prototypes:
       - ToyFigurinePassenger
@@ -101,7 +161,7 @@
       - ToyFigurineLawyer
       - ToyFigurineCargoTech
       - ToyFigurineSalvage
-      - ToyFigurineQuartermaster   
+      - ToyFigurineQuartermaster
       - ToyFigurineChiefEngineer
       - ToyFigurineAtmosTech
       - ToyFigurineEngineer

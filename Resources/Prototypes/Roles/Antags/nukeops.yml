@@ -41,22 +41,35 @@
 - type: startingGear
   id: SyndicateOperativeGearFullNoUplink
   equipment:
-    jumpsuit: ClothingUniformJumpsuitOperative
-    back: ClothingBackpackDuffelSyndicate
+    # Moffstation - Begin - Removing items duplicated by the loadout
+#    jumpsuit: ClothingUniformJumpsuitOperative
+#    back: ClothingBackpackDuffelSyndicate
+    #Moffstation - End
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
-    gloves: ClothingHandsGlovesCombat
+#    gloves: ClothingHandsGlovesCombat # Moffstation - Removing items duplicated by the loadout
     outerClothing: ClothingOuterHardsuitSyndie
     shoes: ClothingShoesBootsCombatFilled
     id: SyndiPDA
     pocket2: PlushieCarp
-    belt: ClothingBeltMilitaryWebbing
+    belt: ClothingBeltMilitaryWebbingNukeOpsFilled # Moffstation - Nuclear Operative Balancing
   storage:
     back:
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
+
+# Moffstation - Begin - Gear for reinforcements, needs to add the stuff that is normally covered by loadouts
+#Nukie Reinforcement Gear
+- type: startingGear
+  id: SyndicateOperativeReinforcementGear
+  parent: SyndicateOperativeGearFullNoUplink
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    back: ClothingBackpackDuffelSyndicate
+    gloves: ClothingHandsGlovesCombat
+# Moffstation - End
 
 #Nuclear Operative Gear
 - type: startingGear
@@ -65,6 +78,15 @@
   equipment:
     pocket2: BaseUplinkRadio40TC
 
+- type: chameleonOutfit
+  id: NukeopsOutfit
+  name: roles-antag-nuclear-operative-name
+  startingGear: SyndicateOperativeGearFullNoUplink
+  icon: "JobIconSyndicate"
+  equipment:
+    head: ClothingHeadHelmetHardsuitSyndie
+    neck: ClothingNeckScarfStripedSyndieRed
+
 #Nuclear Operative Commander Gear
 - type: startingGear
   id: SyndicateCommanderGearFull
@@ -72,8 +94,19 @@
   equipment:
     neck: SyndicateWhistle
     outerClothing: ClothingOuterHardsuitSyndieCommander
-  inhand:
-  - NukeOpsDeclarationOfWar
+# Moffstation - Begin - Make warops admin only
+#  inhand:
+#  - NukeOpsDeclarationOfWar
+# Moffstation - End
+
+- type: chameleonOutfit
+  id: NukeopsCommanderOutfit
+  name: roles-antag-nuclear-operative-commander-name
+  startingGear: SyndicateCommanderGearFull
+  icon: "JobIconSyndicate"
+  equipment:
+    head: ClothingHeadHelmetHardsuitSyndieCommander
+    neck: ClothingNeckScarfStripedSyndieGreen
 
 #Nuclear Operative Medic Gear
 - type: startingGear
@@ -96,6 +129,15 @@
     - HandheldHealthAnalyzer
     - CombatMedipen
     - DeathAcidifierImplanter
+
+- type: chameleonOutfit
+  id: NukeopsMedicOutfit
+  name: roles-antag-nuclear-operative-agent-name
+  startingGear: SyndicateOperativeMedicFull
+  icon: "JobIconSyndicate"
+  equipment:
+    head: ClothingHeadHelmetHardsuitSyndieMedic
+    neck: ClothingNeckScarfStripedLightBlue
 
 #Lone Operative Gear
 - type: startingGear

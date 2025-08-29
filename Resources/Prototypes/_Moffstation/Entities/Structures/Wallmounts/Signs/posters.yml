@@ -1,0 +1,20 @@
+- type: entity
+  parent: PosterBase
+  id: PosterBaseMoff
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: _Moffstation/Structures/Wallmounts/posters.rsi
+    snapCardinals: true
+
+- type: entity
+  parent: PosterBaseMoff
+  id: PosterMoffFiveHundredMothroaches
+  name: "Five Hundred Mothroaches"
+  description: "This poster appears to be an advertisement for mothroaches. It encourages the reader to purchase a significant amount of them. More than the average person would consider reasonable."
+  components:
+  - type: Sprite
+    state: five_hundred_mothroaches
+  - type: DetailExaminable
+    content: "'Have 1,000,000 spesos and nothing to spend it on? Try 500 Mothroaches! You will certainly not regret purchasing 500 Mothroaches!'"

@@ -1,0 +1,20 @@
+- type: entity
+  parent: ClothingBeltSecurity
+  id: ClothingBeltSecurityWebbingAlt
+  name: security tactical webbing
+  description: Unique and versatile chest rig, can hold security gear.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Belt/securitywebbingalt.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Belt/securitywebbingalt.rsi
+
+- type: entity
+  id: ClothingBeltSecurityWebbingAltFilled
+  parent: ClothingBeltSecurityWebbingAlt
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: BeltSecurityEntityTable

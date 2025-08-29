@@ -21,14 +21,13 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly IComponentFactory _compFact = default!;
 
     private string _ruleCompName = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        _ruleCompName = _compFact.GetComponentName(typeof(GameRuleComponent));
+        _ruleCompName = Factory.GetComponentName<GameRuleComponent>();
     }
 
     protected override void Added(EntityUid uid, SecretRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
@@ -75,7 +74,7 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     private bool TryPickPreset(ProtoId<WeightedRandomPrototype> weights, [NotNullWhen(true)] out GamePresetPrototype? preset)
     {
         var options = _prototypeManager.Index(weights).Weights.ShallowClone();
-        var players = GameTicker.ReadyPlayerCount();
+        var players = GameTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
 
         GamePresetPrototype? selectedPreset = null;
         var sum = options.Values.Sum();
@@ -133,7 +132,7 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     /// </summary>
     public bool CanPickAny(IEnumerable<ProtoId<GamePresetPrototype>> protos)
     {
-        var players = GameTicker.ReadyPlayerCount();
+        var players = GameTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
         foreach (var id in protos)
         {
             if (!_prototypeManager.TryIndex(id, out var selectedPreset))

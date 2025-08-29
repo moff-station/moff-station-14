@@ -1,0 +1,135 @@
+﻿#Ranger Hardsuit
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSecurity
+  id: ClothingHeadHelmetHardsuitRanger
+  name: ranger hardsuit helmet
+  description: A security helmet that offers supreme views of the vacuum of space.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
+
+#Blackbeard Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateBlackbeard
+  name: blackbeard hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/blackbeard.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/blackbeard.rsi
+  - type: PointLight
+    color: orange
+    radius: 7
+    energy: 3
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+#Davy Jones Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateDavyJones
+  name: Davy Jones' hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/davyjones.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/davyjones.rsi
+  - type: PointLight
+    color: green
+    radius: 5
+    energy: 3
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+#Buccaneer Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateBuccaneer
+  name: buccaneer hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/buccaneer.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/buccaneer.rsi
+  - type: PointLight
+    color: cyan
+    radius: 7
+    energy: 3
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+#Swashbuckler Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateSwashbuckler
+  name: swashbuckler hardsuit helmet
+  description: A heavily armored helmet designed for work in special operations.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/swashbuckler.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/swashbuckler.rsi
+  - type: PointLight
+    color: cyan
+    radius: 7
+    energy: 3
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+
+#Pirate Captain Hardsuit
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitPirateCap
+  name: pirate captain's hardsuit helmet
+  suffix: Pirate
+  description: A special hardsuit helmet, made for the captain of a pirate ship.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hardsuits/piratecaptain.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hardsuits/piratecaptain.rsi
+  - type: PointLight # Color matches visor colors, radius/energy same as mining hardsuit for the big captain.
+    color: "#23f0b2"
+    radius: 7
+    energy: 3
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9

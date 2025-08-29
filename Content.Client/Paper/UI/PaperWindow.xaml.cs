@@ -149,6 +149,16 @@ namespace Content.Client.Paper.UI
             HeaderImage.Margin = new Thickness(visuals.HeaderMargin.Left, visuals.HeaderMargin.Top,
                     visuals.HeaderMargin.Right, visuals.HeaderMargin.Bottom);
 
+            // Then the footer
+            if (visuals.FooterImagePath is {} path)
+            {
+                FooterImage.TexturePath = path.ToString();
+                FooterImage.MinSize = FooterImage.TextureNormal?.Size ?? Vector2.Zero;
+            }
+
+            FooterImage.ModulateSelfOverride = visuals.FooterImageModulate;
+            FooterImage.Margin = new Thickness(visuals.FooterMargin.Left, visuals.FooterMargin.Top,
+                    visuals.FooterMargin.Right, visuals.FooterMargin.Bottom);
 
             PaperContent.ModulateSelfOverride = visuals.ContentImageModulate;
             WrittenTextLabel.ModulateSelfOverride = visuals.FontAccentColor;
@@ -281,6 +291,8 @@ namespace Content.Client.Paper.UI
             {
                 StampDisplay.AddStamp(new StampWidget{ StampInfo = stamper });
             }
+
+            StampDisplay.MinHeight = 10f + MathF.Floor(state.StampedBy.Count / 3f) * 70f; // Moffstation - Set height based on number of stamps
         }
 
         /// <summary>

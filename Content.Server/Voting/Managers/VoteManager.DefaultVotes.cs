@@ -138,6 +138,16 @@ namespace Content.Server.Voting.Managers
 
         private void StartVote(ICommonSession? initiator)
         {
+            // Moffstation - Start - block restart votes while the lobby is paused
+            _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+            if (_gameTicker.Paused && _cfg.GetCVar(CCVars.BlockRestartWhenPaused))
+            {
+                if (initiator != null)
+                    _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"{initiator.UserId} attempted to restart the round while the lobby was paused");
+                _chatManager.DispatchServerAnnouncement(Loc.GetString("ui-vote-restart-blocked-paused"));
+                return;
+            }
+            // Moffstation - End
             var alone = _playerManager.PlayerCount == 1 && initiator != null;
             var options = new VoteOptions
             {
@@ -279,7 +289,16 @@ namespace Content.Server.Voting.Managers
 
             foreach (var (k, v) in maps)
             {
-                options.Options.Add((v, k));
+                // Moffstation - Start - display rollover votes
+                if (_cfg.GetCVar(CCVars.MapVotesRollOver)) {
+                    var rollOverVotes = _gameMapManager.GetRollOverVotes(k);
+                    options.Options.Add((v + (rollOverVotes > 0 ? $" [+{rollOverVotes}]" : ""), k));
+                }
+                else
+                {
+                    options.Options.Add((v, k));
+                }
+                // Moffstation - End
             }
 
             WirePresetVoteInitiator(options, initiator);
@@ -289,18 +308,65 @@ namespace Content.Server.Voting.Managers
             vote.OnFinished += (_, args) =>
             {
                 GameMapPrototype picked;
-                if (args.Winner == null)
+
+                // Moffstation - Start - Adding rollover vote calculation
+                //Check if Cvar is active
+                if (_cfg.GetCVar(CCVars.MapVotesRollOver))
                 {
-                    picked = (GameMapPrototype) _random.Pick(args.Winners);
+                    //Get corresponding maps and votes together
+                    var results = maps.Zip(args.Votes);
+                    //Make dictionary of each map and their adjusted vote value
+                    var adjustedVotes = new Dictionary<GameMapPrototype, int>();
+                    foreach (var (map, voteCount) in results)
+                    {
+                        var rolloverVotes = _gameMapManager.GetRollOverVotes(map.Key);
+                        var adjustedVoteCount = voteCount + rolloverVotes;
+                        adjustedVotes.Add(map.Key, adjustedVoteCount);
+                    }
+
+                    //Find maps which got the most votes
+                    var maxVotes = 0;
+                    var winners = new List<GameMapPrototype>();
+                    foreach (var map in adjustedVotes)
+                    {
+                        if (map.Value > maxVotes)
+                        {
+                            maxVotes = map.Value;
+                            winners.Clear();
+                        }
+                        if (map.Value == maxVotes)
+                            winners.Add(map.Key);
+                    }
+
+                    //Pick a winner
+                    picked = _random.Pick(winners);
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-tie", ("picked", maps[picked])));
+                        Loc.GetString("ui-vote-map-win", ("winner", maps[picked])));
+
+                    //Reset the winning map, adjust the rollover votes for the rest of the maps
+                    adjustedVotes[picked] = 0;
+                    foreach (var map in adjustedVotes)
+                    {
+                        _gameMapManager.SetRollOverVotes(map.Key, map.Value);
+                    }
                 }
                 else
                 {
-                    picked = (GameMapPrototype) args.Winner;
-                    _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-map-win", ("winner", maps[picked])));
+                    // Default stuff, make it dependent on Cvar
+                    if (args.Winner == null)
+                    {
+                        picked = (GameMapPrototype) _random.Pick(args.Winners);
+                        _chatManager.DispatchServerAnnouncement(
+                            Loc.GetString("ui-vote-map-tie", ("picked", maps[picked])));
+                    }
+                    else
+                    {
+                        picked = (GameMapPrototype) args.Winner;
+                        _chatManager.DispatchServerAnnouncement(
+                            Loc.GetString("ui-vote-map-win", ("winner", maps[picked])));
+                    }
                 }
+                // Moffstation - End
 
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Map vote finished: {picked.MapName}");
                 var ticker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();

@@ -1,0 +1,40 @@
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  id: SpawnPointGhostSyndicateSpy
+  name: ghost role spawn point
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: roles-antag-syndicate-spy
+    description: roles-antag-syndicate-spy-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobHumanNukeOp
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnerSyndicateSpy
+  components:
+  - type: GhostRole
+    name: roles-antag-syndicate-spy
+    description: roles-antag-syndicate-spy-objective
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate

@@ -1,0 +1,109 @@
+- type: startingGear
+  id: MercenaryBasicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMercenary
+    back: ClothingBackpackMerc
+    shoes: ClothingShoesBootsMercFilled
+    mask: ClothingMaskGasMerc
+    head: ClothingHeadHelmetMerc
+    eyes: ClothingEyesGlassesMercenary
+    gloves: ClothingHandsGlovesMercFingerless
+    outerClothing: ClothingOuterVestWebMerc
+    id: VisitorPDA
+    ears: ClothingHeadsetFreelance
+    belt: ClothingBeltMercWebbing
+    pocket2: FlashlightLantern
+  storage:
+    belt:
+    - CrowbarRed
+    - RadioHandheld
+    - Gauze
+    - SmokeGrenade
+    - GrenadeShrapnel
+    - WeaponRevolverInspector
+    - WeaponDisabler
+    outerClothing:
+    - SpeedLoaderMagnum
+    - SpeedLoaderMagnum
+    - Zipties
+    - Zipties
+
+- type: startingGear
+  parent: MercenaryBasicGear
+  id: MercenaryLeaderGear
+  equipment:
+    head: ClothingHeadHatBeretMerc
+    gloves: ClothingHandsMercGlovesCombat
+    suitstorage: WeaponRifleAk
+  storage:
+    back:
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - Binoculars
+
+- type: startingGear
+  parent: MercenaryBasicGear
+  id: MercenaryRiflemanGear
+  equipment:
+    suitstorage: WeaponRifleAk
+  storage:
+    back:
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineBoxLightRifle
+    - MagazineBoxLightRifle
+    - MagazineBoxMagnum
+    - MagazineBoxMagnum
+
+- type: startingGear
+  parent: MercenaryBasicGear
+  id: MercenaryEngineerGear
+  equipment:
+    head: ClothingHeadBandMerc
+    gloves: ClothingHandsMercGlovesCombat
+    suitstorage: WeaponShotgunKammerer
+  storage:
+    back:
+    - RadioHandheld
+    - Gauze
+    - Multitool
+    - trayScanner
+    - GasAnalyzer
+    - C4
+    - C4
+    - BoxLethalshot
+    - BoxLethalshot
+    belt:
+    - Crowbar
+    - Screwdriver
+    - Wirecutter
+    - Welder
+    - ClothingHeadHatWelding
+    - WeaponRevolverInspector
+    - WeaponDisabler
+
+- type: startingGear
+  parent: MercenaryBasicGear
+  id: MercenaryMedicGear
+  equipment:
+    suitstorage: WeaponRifleAk
+  storage:
+    back:
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    belt:
+    - CrowbarRed
+    - RadioHandheld
+    - MedkitCombatFilled
+    - SmokeGrenade
+    - WeaponRevolverInspector
+    - WeaponDisabler
+    outerClothing:
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineLightRifle

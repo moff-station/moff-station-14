@@ -52,6 +52,7 @@
   - SurveillanceWirelessCameraMonitorCircuitboard
   - TelecomServerCircuitboard
   - HolopadMachineCircuitboard
+  - SurveillanceWirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
 
 - type: technology
   id: AdvancedEntertainment
@@ -98,9 +99,12 @@
   - FauxTileAstroGrass
   - FauxTileMowedAstroGrass
   - FauxTileJungleAstroGrass
+  - FauxTileDarkAstroGrass
+  - FauxTileLightAstroGrass
   - FauxTileAstroIce
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
+  - FauxTileDesertAstroSand
 
 - type: technology
   id: BiochemicalStasis
@@ -183,7 +187,7 @@
     sprite: Structures/cargo_telepad.rsi
     state: display
   discipline: CivilianServices
-  tier: 2
+  tier: 3 # Moffstation
   cost: 15000
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
@@ -199,6 +203,7 @@
   cost: 4000
   recipeUnlocks:
   - PushHorn
+  - BorgModuleAdvancedClowning
 
 # Tier 3
 
@@ -221,8 +226,21 @@
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
     state: beakerbluespace
   discipline: CivilianServices
-  tier: 3
+  tier: 2 # Moffstation
   cost: 10000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
+
+- type: technology
+  id: LauncherSyringe
+  name: research-technology-launcher-syringe
+  icon:
+    sprite: Objects/Weapons/Guns/Cannons/syringe_gun.rsi
+    state: syringe_gun
+  discipline: CivilianServices
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - LauncherSyringe
+  - MiniSyringe

@@ -1,0 +1,99 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "made by zangothedino (discord), Screens by Davyei (discord) and DuckManZach (github)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "computer",
+            "directions": 4
+        },
+        {
+            "name": "generic_keyboard",
+            "directions": 4
+        },
+        {
+            "name": "request",
+            "directions": 4,
+            "delays": [
+                [
+                    1.0,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    1.0
+                ],
+                [
+                    1.0,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    1.0
+                ],
+                [
+                    1.0,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    1.0
+                ],
+                [
+                    1.0,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    1.0
+                ]
+            ]
+        },
+        {
+            "name": "comm",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "shuttle",
+            "directions": 4
+        },
+        {
+            "name": "generic_keys",
+            "directions": 4
+        },
+        {
+            "name": "generic_panel_open",
+            "directions": 4
+        },
+        {
+            "name": "transfer",
+            "directions": 4
+        },
+        {
+            "name": "bounty",
+            "directions": 4
+        }
+    ]
+}

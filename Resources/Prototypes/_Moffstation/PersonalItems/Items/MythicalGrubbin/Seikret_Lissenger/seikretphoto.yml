@@ -1,0 +1,27 @@
+﻿# Player: MythicalGrubbin / Character: Seikret Happysmiler née Lissenger
+
+- type: entity
+  parent: BaseItem
+  id: PersonalItemSeikretPhoto
+  name: Seikret's photo
+  description: A memento from a brighter time.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/MythicalGrubbin/Seikret_Lissenger/seikretphoto.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: DetailExaminable
+    content: "A photo of Seikret, and what appears to be her two coworkers during her time as a Salvager, along with an Engineer. She looks younger, and happier, with no sign of any scarring. She's flashing the camera a grin and a thumbs up. Her other arm is wrapped around the shoulder of the Engineer. Turning the photo over, some names and words are written. Some sentences are weathered and illegible.\n'Tony - I tried that drink, it's good.'\n'Will - I still remember you .'\n'Isaac - I'm sorry for letting you go.'"
+
+- type: loadout
+  id: PersonalItemSeikretPhoto
+  storage:
+    back:
+    - PersonalItemSeikretPhoto
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Seikret Lissenger
+    - Seikret Happysmiler

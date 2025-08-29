@@ -1,1 +1,3 @@
-﻿station-event-vent-creatures-start-announcement = Attention. A large influx of unknown life forms have been detected residing within the station's ventilation systems. Please be rid of these creatures before it begins to affect productivity.
+﻿#Moffstation - changing this to use our version with the time and date instead, other versions can be found in our namespace's file
+#station-event-vent-creatures-start-announcement = Attention. A large influx of unknown life forms have been detected residing within the station's ventilation systems. Please be rid of these creatures before it begins to affect productivity.
+station-event-vent-creatures-start-announcement =  Attention. A large influx of unknown life forms have been detected moving through the station's ventilation systems. They are expected to emerge near {$location} in approximately {$time} seconds. Please evacuate the area to avoid loss of personnel.

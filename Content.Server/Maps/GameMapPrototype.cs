@@ -1,9 +1,8 @@
-using Content.Server.Station;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Diagnostics;
-using System.Numerics;
+using Content.Shared.Station;
 
 namespace Content.Server.Maps;
 
@@ -31,7 +30,7 @@ public sealed partial class GameMapPrototype : IPrototype
     [DataField] public bool IsGrid;
 
     [DataField]
-    public bool RandomRotation = true;
+    public bool RandomRotation = false; // Moffstation - Removed random rotation from station
 
     /// <summary>
     /// Name of the map to use in generic messages, like the map vote.

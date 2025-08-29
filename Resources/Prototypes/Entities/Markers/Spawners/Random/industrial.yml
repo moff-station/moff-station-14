@@ -45,9 +45,9 @@
           state: icon
     - type: RandomSpawner
       rarePrototypes:
-        - CapacitorStockPart
+        - CapacitorStockPart #moffstation - Revert machine parts
         - MicroManipulatorStockPart
-        - MatterBinStockPart
+        - MatterBinStockPart #moffstation - Revert machine parts
         - CableHVStack10
         - WelderIndustrial
         - PowerCellHigh

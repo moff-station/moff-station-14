@@ -25,6 +25,7 @@ using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
+using Content.Shared.Preferences;   // Moffstation - Makes obtaining loadout info possible
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -455,10 +456,13 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (def.StartingGear is not null)
             gear.Add(def.StartingGear.Value);
 
-        _loadout.Equip(player, gear, def.RoleLoadout);
-
         if (session != null)
         {
+            // Moffstation - Begin - Use LoadoutAwareEquip function to equip Roleloadout and Starting gear, this allows custom loadouts for antags.
+            var profile = (HumanoidCharacterProfile) _pref.GetPreferences(session.UserId).SelectedCharacter;
+            _loadout.LoadoutAwareEquip(player, session, gear, def.RoleLoadout, profile);
+            // Moffstation - End
+
             var curMind = session.GetMind();
 
             if (curMind == null ||
@@ -477,6 +481,11 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             Log.Debug($"Assigned {ToPrettyString(curMind)} as antagonist: {ToPrettyString(ent)}");
             _adminLogger.Add(LogType.AntagSelection, $"Assigned {ToPrettyString(curMind)} as antagonist: {ToPrettyString(ent)}");
         }
+        else // Moffstation Start - Moved to else statement so starting gear doesn't get duplicated
+        {
+            _loadout.Equip(player, gear, def.RoleLoadout);
+        }
+        // Moffstation End
 
         var afterEv = new AfterAntagEntitySelectedEvent(session, player, ent, def);
         RaiseLocalEvent(ent, ref afterEv, true);

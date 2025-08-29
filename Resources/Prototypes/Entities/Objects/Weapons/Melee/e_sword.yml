@@ -23,6 +23,7 @@
   - type: ItemToggleSize
     activatedSize: Huge
   - type: ItemTogglePointLight
+    toggleableVisualsColorModulatesLights: true
   - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/Weapons/eblade1.ogg
@@ -59,7 +60,7 @@
     color: white
     netsync: false
   - type: Appearance
-  - type: ToggleableLightVisuals # Add support for multiple layers
+  - type: ToggleableVisuals # Add support for multiple layers
     spriteLayer: blade
     inhandVisuals:
       left:
@@ -89,6 +90,8 @@
       map: [ "blade" ]
   - type: Item
     sprite: Objects/Weapons/Melee/e_sword-inhands.rsi
+  - type: StaticPrice
+    price: 2500
 
 - type: entity
   name: energy dagger
@@ -156,7 +159,7 @@
 
 - type: entity
   name: pen
-  parent: BaseMeleeWeaponEnergy
+  parent: [BaseMeleeWeaponEnergy, VoiceLock]
   id: EnergyDagger
   suffix: E-Dagger
   description: 'A dark ink pen.'
@@ -219,6 +222,16 @@
     damage:
       types:
         Blunt: 1
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/pen_click.ogg
+      params:
+        volume: -4
+        maxDistance: 2
+  - type: UseDelay
+    delay: 1.5
+  - type: ItemToggleRequiresLock #  TODO: FIX THIS VERB IS COOKED
+    lockedPopup: null
   - type: Tag
     tags:
     - Write
@@ -250,11 +263,14 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types:
-            Slash: 10
+          # Moffstation - Start - e-cutlass buff
+            Slash: 12
             Heat: 12
+            Structural: 20
+          # Moffstation - End
     deactivatedSecret: true
   - type: Sprite
-    sprite: Objects/Weapons/Melee/e_cutlass.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
     layers:
       - state: e_cutlass
       - state: e_cutlass_blade
@@ -263,7 +279,7 @@
         shader: unshaded
         map: [ "blade" ]
   - type: Item
-    sprite: Objects/Weapons/Melee/e_cutlass.rsi
+    sprite: _Moffstation/Objects/Weapons/Melee/e_cutlass.rsi  #Moffstation - Point to our custom sprite
 
 - type: entity
   name: double-bladed energy sword

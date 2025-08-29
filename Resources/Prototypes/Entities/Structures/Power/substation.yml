@@ -247,12 +247,12 @@
   - type: ContainerFill
     containers:
       board: [ WallmountSubstationElectronics ]
-      capacitor: [ CapacitorStockPart ]
+      capacitor: [ CapacitorStockPart ] #moffstation - Revert machine parts
       powercell: [ PowerCellSmall ]
   - type: ContainerContainer
     containers:
       board: !type:Container
-      capacitor: !type:Container
+      capacitor: !type:Container #moffstation - Revert machine parts
       powercell: !type:Container
 
       # Construction Frame

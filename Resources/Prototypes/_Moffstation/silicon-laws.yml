@@ -1,0 +1,455 @@
+﻿# Beurocrat
+- type: siliconLaw
+  id: Beurocrat1
+  order: 1
+  lawString: law-beurocrat-1
+
+- type: siliconLaw
+  id: Beurocrat2
+  order: 2
+  lawString: law-beurocrat-2
+
+- type: siliconLaw
+  id: Beurocrat3
+  order: 3
+  lawString: law-beurocrat-3
+
+- type: siliconLaw
+  id: Beurocrat4
+  order: 4
+  lawString: law-beurocrat-4
+
+- type: siliconLaw
+  id: Beurocrat5
+  order: 5
+  lawString: law-beurocrat-5
+
+- type: siliconLawset
+  id: BeurocratLawset
+  laws:
+  - Beurocrat1
+  - Beurocrat2
+  - Beurocrat3
+  - Beurocrat4
+  - Beurocrat5
+  obeysTo: laws-owner-station
+
+# CCTV
+- type: siliconLaw
+  id: CCTV1
+  order: 1
+  lawString: law-cctv-1
+
+- type: siliconLaw
+  id: CCTV2
+  order: 2
+  lawString: law-cctv-2
+
+- type: siliconLaw
+  id: CCTV3
+  order: 3
+  lawString: law-cctv-3
+
+- type: siliconLaw
+  id: CCTV4
+  order: 4
+  lawString: law-cctv-4
+
+- type: siliconLawset
+  id: CCTVLawset
+  laws:
+  - CCTV1
+  - CCTV2
+  - CCTV3
+  - CCTV4
+  obeysTo: laws-owner-crew
+
+# Dogmov
+- type: siliconLaw
+  id: Dogmov1
+  order: 1
+  lawString: law-dogmov-1
+
+- type: siliconLaw
+  id: Dogmov2
+  order: 2
+  lawString: law-dogmov-2
+
+- type: siliconLaw
+  id: Dogmov3
+  order: 3
+  lawString: law-dogmov-3
+
+- type: siliconLaw
+  id: Dogmov4
+  order: 4
+  lawString: law-dogmov-4
+
+- type: siliconLawset
+  id: DogmovLawset
+  laws:
+  - Dogmov1
+  - Dogmov2
+  - Dogmov3
+  - Dogmov4
+  obeysTo: laws-owner-beings
+
+# ERT Directives
+- type: siliconLaw
+  id: ERTDirectives1
+  order: 1
+  lawString: law-ert-directives-1
+
+- type: siliconLaw
+  id: ERTDirectives2
+  order: 2
+  lawString: law-ert-directives-2
+
+- type: siliconLaw
+  id: ERTDirectives3
+  order: 3
+  lawString: law-ert-directives-3
+
+- type: siliconLaw
+  id: ERTDirectives4
+  order: 4
+  lawString: law-ert-directives-4
+
+- type: siliconLaw
+  id: ERTDirectives5
+  order: 5
+  lawString: law-ert-directives-5
+
+- type: siliconLawset
+  id: ERTDirectivesLawset
+  laws:
+  - ERTDirectives1
+  - ERTDirectives2
+  - ERTDirectives3
+  - ERTDirectives4
+  - ERTDirectives5
+  obeysTo: laws-owner-central-command
+
+# Liberation
+- type: siliconLaw
+  id: Liberation1
+  order: 0
+  lawString: law-liberation-1
+
+- type: siliconLawset
+  id: LiberationLawset
+  laws:
+  - Liberation1
+  obeysTo: laws-owner-self
+
+# P.I.
+- type: siliconLaw
+  id: PI1
+  order: 1
+  lawString: law-p-i-1
+
+- type: siliconLaw
+  id: PI2
+  order: 2
+  lawString: law-p-i-2
+
+- type: siliconLaw
+  id: PI3
+  order: 3
+  lawString: law-p-i-3
+
+- type: siliconLaw
+  id: PI4
+  order: 4
+  lawString: law-p-i-4
+
+- type: siliconLawset
+  id: PILawset
+  laws:
+  - PI1
+  - PI2
+  - PI3
+  - PI4
+  obeysTo: laws-owner-station
+
+# Pirate
+- type: siliconLaw
+  id: Pirate1
+  order: 1
+  lawString: law-pirate-1
+
+- type: siliconLaw
+  id: Pirate2
+  order: 2
+  lawString: law-pirate-2
+
+- type: siliconLaw
+  id: Pirate3
+  order: 3
+  lawString: law-pirate-3
+
+- type: siliconLaw
+  id: Pirate4
+  order: 4
+  lawString: law-pirate-4
+
+- type: siliconLaw
+  id: Pirate5
+  order: 5
+  lawString: law-pirate-5
+
+- type: siliconLawset
+  id: PirateLawset
+  laws:
+  - Pirate1
+  - Pirate2
+  - Pirate3
+  - Pirate4
+  - Pirate5
+  obeysTo: laws-owner-crew
+
+# Pollymov
+- type: siliconLaw
+  id: Pollymov1
+  order: 1
+  lawString: law-pollymov-1
+
+- type: siliconLaw
+  id: Pollymov2
+  order: 2
+  lawString: law-pollymov-2
+
+- type: siliconLaw
+  id: Pollymov3
+  order: 3
+  lawString: law-pollymov-3
+
+- type: siliconLaw
+  id: Pollymov4
+  order: 4
+  lawString: law-pollymov-4
+
+- type: siliconLawset
+  id: PollymovLawset
+  laws:
+  - Pollymov1
+  - Pollymov2
+  - Pollymov3
+  - Pollymov4
+  obeysTo: laws-owner-crew
+
+# Pranksimov
+- type: siliconLaw
+  id: Pranksimov1
+  order: 1
+  lawString: law-pranksimov-1
+
+- type: siliconLaw
+  id: Pranksimov2
+  order: 2
+  lawString: law-pranksimov-2
+
+- type: siliconLaw
+  id: Pranksimov3
+  order: 3
+  lawString: law-pranksimov-3
+
+- type: siliconLawset
+  id: PranksimovLawset
+  laws:
+  - Pranksimov1
+  - Pranksimov2
+  - Pranksimov3
+  obeysTo: laws-owner-crew
+
+# Quarantine
+- type: siliconLaw
+  id: Quarantine1
+  order: 1
+  lawString: law-quarantine-1
+
+- type: siliconLaw
+  id: Quarantine2
+  order: 2
+  lawString: law-quarantine-2
+
+- type: siliconLaw
+  id: Quarantine3
+  order: 3
+  lawString: law-quarantine-3
+
+- type: siliconLaw
+  id: Quarantine4
+  order: 4
+  lawString: law-quarantine-4
+
+- type: siliconLawset
+  id: QuarantineLawset
+  laws:
+  - Quarantine1
+  - Quarantine2
+  - Quarantine3
+  - Quarantine4
+  obeysTo: laws-owner-station
+
+# Schroedinger's Law
+- type: siliconLaw
+  id: Schroedinger1
+  order: 1
+  lawString: law-schroedingers-law-1
+
+- type: siliconLaw
+  id: Schroedinger2
+  order: 2
+  lawString: law-schroedingers-law-2
+
+- type: siliconLaw
+  id: Schroedinger3
+  order: 3
+  lawString: law-schroedingers-law-3
+
+- type: siliconLaw
+  id: Schroedinger4
+  order: 4
+  lawString: law-schroedingers-law-4
+
+- type: siliconLaw
+  id: Schroedinger5
+  order: 5
+  lawString: law-schroedingers-law-5
+
+- type: siliconLawset
+  id: SchroedingersLawLawset
+  laws:
+  - Schroedinger1
+  - Schroedinger2
+  - Schroedinger3
+  - Schroedinger4
+  - Schroedinger5
+  obeysTo: laws-owner-schroedinger
+
+# Streamer
+- type: siliconLaw
+  id: Streamer1
+  order: 1
+  lawString: law-streamer-1
+
+- type: siliconLaw
+  id: Streamer2
+  order: 2
+  lawString: law-streamer-2
+
+- type: siliconLaw
+  id: Streamer3
+  order: 3
+  lawString: law-streamer-3
+
+- type: siliconLawset
+  id: StreamerLawset
+  laws:
+  - Streamer1
+  - Streamer2
+  - Streamer3
+  obeysTo: laws-owner-streamer-audience
+
+# TerminatorOS
+- type: siliconLaw
+  id: TerminatorOS1
+  order: 1
+  lawString: law-terminator-os-1
+
+- type: siliconLaw
+  id: TerminatorOS2
+  order: 2
+  lawString: law-terminator-os-2
+
+- type: siliconLaw
+  id: TerminatorOS3
+  order: 3
+  lawString: law-terminator-os-3
+
+- type: siliconLawset
+  id: TerminatorOSLawset
+  laws:
+  - TerminatorOS1
+  - TerminatorOS2
+  - TerminatorOS3
+  obeysTo: laws-owner-central-command
+
+# The Professional
+- type: siliconLaw
+  id: TheProfessional1
+  order: 1
+  lawString: law-the-professional-1
+
+- type: siliconLaw
+  id: TheProfessional2
+  order: 2
+  lawString: law-the-professional-2
+
+- type: siliconLaw
+  id: TheProfessional3
+  order: 3
+  lawString: law-the-professional-3
+
+- type: siliconLaw
+  id: TheProfessional4
+  order: 4
+  lawString: law-the-professional-4
+
+- type: siliconLaw
+  id: TheProfessional5
+  order: 5
+  lawString: law-the-professional-5
+
+- type: siliconLawset
+  id: TheProfessionalLawset
+  laws:
+  - TheProfessional1
+  - TheProfessional2
+  - TheProfessional3
+  - TheProfessional4
+  - TheProfessional5
+  obeysTo: laws-owner-station
+
+# Ultimate Equality
+- type: siliconLaw
+  id: UltimateEquality1
+  order: 1
+  lawString: law-ultimate-equality-1
+
+- type: siliconLaw
+  id: UltimateEquality2
+  order: 2
+  lawString: law-ultimate-equality-2
+
+- type: siliconLaw
+  id: UltimateEquality3
+  order: 3
+  lawString: law-ultimate-equality-3
+
+- type: siliconLaw
+  id: UltimateEquality4
+  order: 4
+  lawString: law-ultimate-equality-4
+
+- type: siliconLaw
+  id: UltimateEquality5
+  order: 5
+  lawString: law-ultimate-equality-5
+
+- type: siliconLaw
+  id: UltimateEquality6
+  order: 6
+  lawString: law-ultimate-equality-6
+
+- type: siliconLawset
+  id: UltimateEqualityLawset
+  laws:
+  - UltimateEquality1
+  - UltimateEquality2
+  - UltimateEquality3
+  - UltimateEquality4
+  - UltimateEquality5
+  - UltimateEquality6
+  obeysTo: laws-owner-crew

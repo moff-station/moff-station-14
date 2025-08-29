@@ -1,0 +1,34 @@
+# Player: Coolsurf6 - Character: Kai
+- type: entity
+  parent: [ PlushieLizard, BaseFoldable ]
+  id: PersonalItemKaiPlushie
+  name: kai plushie
+  description: A custom made lizard plushie belonging to Kai. No one knows where this came from or why it exists. Putting your ear to it, you can almost hear it say "Goober..."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: plushie_kai
+    sprite: _Moffstation/PersonalItems/Items/Coolsurf6/Kai/kaiplushie.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Coolsurf6/Kai/kaiplushie.rsi
+  - type: Clothing
+    quickEquip: false
+    sprite: _Moffstation/PersonalItems/Items/Coolsurf6/Kai/kaiplushie_64.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: drag-verb
+    foldVerbText: hold-verb
+  - type: FoldableClothing
+    foldedEquippedPrefix: holding
+    foldedHeldPrefix: holding
+
+- type: loadout
+  id: PersonalItemKaiPlushie
+  storage:
+    back:
+    - PersonalItemKaiPlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kai

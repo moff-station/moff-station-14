@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Atmos.Components;
@@ -28,18 +29,13 @@ public sealed class SharedMagbootsSystem : EntitySystem
         SubscribeLocalEvent<MagbootsComponent, ClothingGotUnequippedEvent>(OnGotUnequipped);
         SubscribeLocalEvent<MagbootsComponent, IsWeightlessEvent>(OnIsWeightless);
         SubscribeLocalEvent<MagbootsComponent, InventoryRelayedEvent<IsWeightlessEvent>>(OnIsWeightless);
+        SubscribeLocalEvent<MagbootsComponent, InventoryRelayedEvent<RecoilKickAttemptEvent>>(OnRecoilKickAttempt); // Moffstation
     }
 
     private void OnToggled(Entity<MagbootsComponent> ent, ref ItemToggledEvent args)
     {
-        var (uid, comp) = ent;
-        // only stick to the floor if being worn in the correct slot
-        if (_container.TryGetContainingContainer((uid, null, null), out var container) &&
-            _inventory.TryGetSlotEntity(container.Owner, comp.Slot, out var worn)
-            && uid == worn)
-        {
+        if (_container.TryGetContainingContainer((ent.Owner, null, null), out var container))
             UpdateMagbootEffects(container.Owner, ent, args.Activated);
-        }
     }
 
     private void OnGotUnequipped(Entity<MagbootsComponent> ent, ref ClothingGotUnequippedEvent args)
@@ -57,6 +53,8 @@ public sealed class SharedMagbootsSystem : EntitySystem
         // TODO: public api for this and add access
         if (TryComp<MovedByPressureComponent>(user, out var moved))
             moved.Enabled = !state;
+
+        _gravity.RefreshWeightless(user, !state);
 
         if (state)
             _alerts.ShowAlert(user, ent.Comp.MagbootsAlert);
@@ -81,4 +79,22 @@ public sealed class SharedMagbootsSystem : EntitySystem
     {
         OnIsWeightless(ent, ref args.Args);
     }
+
+    // Moffstation - Start
+    private void OnRecoilKickAttempt(
+        Entity<MagbootsComponent> ent,
+        ref InventoryRelayedEvent<RecoilKickAttemptEvent> args
+    )
+    {
+        if (!_toggle.IsActivated(ent.Owner))
+            return;
+
+        // Do not modify kick effects if the entity is off-grid.
+        if (ent.Comp.RequiresGrid && !_gravity.EntityOnGravitySupportingGridOrMap(ent.Owner))
+            return;
+
+        // Magboots fully mitigate the kick.
+        args.Args.ImpulseEffectivenessFactor *= 0.0f;
+    }
+    // Moffstation - End
 }

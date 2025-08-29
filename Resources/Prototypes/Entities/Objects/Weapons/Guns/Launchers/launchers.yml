@@ -12,7 +12,7 @@
     slots:
     - Back
   - type: Item
-    size: Huge
+    size: Ginormous
   - type: StaticPrice
     price: 500
   - type: ContainerContainer
@@ -36,9 +36,18 @@
     slots:
     - Back
     - suitStorage
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,2
   - type: AmmoCounter
   - type: Gun
     fireRate: 1
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto
@@ -52,6 +61,9 @@
     proto: GrenadeFrag
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: GunRequiresWield
+  - type: StaticPrice
+    price: 10000
 
 - type: entity
   parent: [ BaseWeaponLauncher, BaseGunWieldable, BaseMajorContraband ]
@@ -69,14 +81,22 @@
     slots:
     - Back
     - suitStorage
+  - type: Item
+    size: Huge
   - type: AmmoCounter
   - type: Gun
     fireRate: 1
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: GunRequiresWield
   - type: ContainerContainer
     containers:
       revolver-ammo: !type:Container
@@ -92,6 +112,23 @@
       path: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
+
+# Moffstation - Begin (Launcher Tweaks)
+- type: entity
+  parent: WeaponLauncherHydra
+  id: WeaponLauncherHydraFrag
+  suffix: Lethal
+  components:
+  - type: RevolverAmmoProvider
+    proto: GrenadeFrag
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+    soundEject:
+      path: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
+# Moffstation - End
 
 - type: entity
   name: RPG-7
@@ -110,6 +147,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 0.5
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 700
+      staminaMultiplier: 100
+    # Moffstation - End - Add gun recoil.
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: BallisticAmmoProvider
@@ -143,6 +185,11 @@
     sprite: Objects/Weapons/Guns/Launchers/rocket.rsi
   - type: Gun
     fireRate: 6
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 5
+    # Moffstation - End - Add gun recoil.
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -182,6 +229,11 @@
       sprite: Objects/Weapons/Guns/Launchers/pirate_cannon.rsi
     - type: Gun
       fireRate: 1
+      # Moffstation - Begin - Add gun recoil.
+      recoilKick:
+        impulse: 850
+        staminaMultiplier: 7
+    # Moffstation - End - Add gun recoil.
       soundGunshot:
         path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
     - type: BallisticAmmoProvider
@@ -202,7 +254,7 @@
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
     - type: Item
-      storedRotation: -90
+      size: Normal
     - type: TetherGun
       frequency: 5
       dampingRatio: 4
@@ -218,7 +270,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-    - type: ToggleableLightVisuals
+    - type: ToggleableVisuals
       spriteLayer: unshaded
       inhandVisuals:
         left:
@@ -244,7 +296,7 @@
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
     - type: Item
-      storedRotation: -90
+      size: Normal
     - type: ForceGun
       frequency: 15
       dampingRatio: 4
@@ -266,7 +318,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-        - type: ToggleableLightVisuals
+        - type: ToggleableVisuals
           spriteLayer: unshaded
           inhandVisuals:
             left:
@@ -288,6 +340,12 @@
   parent: BaseItem
   id: WeaponGrapplingGun
   components:
+    - type: Item
+      size: Small
+      shape:
+      - 0,0,1,0
+      - 0,1,0,1
+      storedOffset: 0,-6
     - type: AmmoCounter
     - type: GrapplingGun
     - type: Gun
@@ -323,6 +381,8 @@
   suffix: Admeme
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
+    - type: Item
+      size: Normal
     - type: TetherGun
       canTetherAlive: true
       canUnanchor: true
@@ -338,7 +398,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-    - type: ToggleableLightVisuals
+    - type: ToggleableVisuals
       spriteLayer: unshaded
       inhandVisuals:
         left:
@@ -362,6 +422,8 @@
   suffix: Admeme
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
+    - type: Item
+      size: Normal
     - type: ForceGun
       canTetherAlive: true
       canUnanchor: true
@@ -380,7 +442,7 @@
           map: [ "unshaded" ]
           shader: unshaded
           visible: false
-    - type: ToggleableLightVisuals
+    - type: ToggleableVisuals
       spriteLayer: unshaded
       inhandVisuals:
         left:

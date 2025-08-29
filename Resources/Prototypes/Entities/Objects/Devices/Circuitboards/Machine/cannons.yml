@@ -13,8 +13,8 @@
   - type: MachineBoard
     prototype: ShuttleGunSvalinnMachineGun
     stackRequirements:
-      MatterBin: 2
-      Manipulator: 4
+      MatterBin: 2 #moffstation - Revert machine parts
+      Manipulator: 4 #moffstation - Revert machine parts
       Steel: 5
       CableHV: 5
 
@@ -31,8 +31,8 @@
   - type: MachineBoard
     prototype: ShuttleGunPerforator
     stackRequirements:
-      MatterBin: 4
-      Manipulator: 6
+      MatterBin: 4 #moffstation - Revert machine parts
+      Manipulator: 6 #moffstation - Revert machine parts
       Steel: 10
       CableHV: 5
 
@@ -49,8 +49,8 @@
   - type: MachineBoard
     prototype: ShuttleGunFriendship
     stackRequirements:
-      MatterBin: 3
-      Manipulator: 2
+      MatterBin: 3 #moffstation - Revert machine parts
+      Manipulator: 2 #moffstation - Revert machine parts
       Steel: 7
       CableHV: 5
 
@@ -67,8 +67,8 @@
   - type: MachineBoard
     prototype: ShuttleGunDuster
     stackRequirements:
-      MatterBin: 6
-      Manipulator: 4
+      MatterBin: 6 #moffstation - Revert machine parts
+      Manipulator: 4 #moffstation - Revert machine parts
       Steel: 10
       CableHV: 5
       Uranium: 2
@@ -86,7 +86,7 @@
   - type: MachineBoard
     prototype: ShuttleGunKinetic
     stackRequirements:
-      MatterBin: 2
-      Manipulator: 3
+      MatterBin: 2 #moffstation - Revert machine parts
+      Manipulator: 3 #moffstation - Revert machine parts
       Steel: 5
       CableHV: 2

@@ -1,0 +1,48 @@
+﻿# Player: Davyei / Character: Sammy Sniffles
+
+- type: entity
+  parent: BasePlushie
+  id: PersonalItemSammyPlushie
+  name: kitten plushie
+  description: A small Calico plushie that appears to look well looked after with a slight lavender freshness. It has a leather collar wrapped around its neck.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Davyei/Sammy_Sniffles/sammyplushie.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Davyei/Sammy_Sniffles/sammyplushie.rsi
+    heldPrefix: kitten
+  - type: Tag
+    tags: [] # Specifically remove tags to make the plush not useable in crafting or edible for moths
+  - type: DetailExaminable
+    content: A small inscription appears on the Tag reading 'Sniffles' followed by a poorly carved set of initials underneath.
+  - type: EmitSoundOnUse
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnLand
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnActivate
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: CatMeows
+  - type: EmitSoundOnCollide
+    sound:
+      collection: CatMeows
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      collection: CatMeows
+
+- type: loadout
+  id: PersonalItemSammyPlushie
+  storage:
+    back:
+    - PersonalItemSammyPlushie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Sammy Sniffles

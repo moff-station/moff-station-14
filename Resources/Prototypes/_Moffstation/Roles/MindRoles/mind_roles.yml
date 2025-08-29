@@ -1,0 +1,47 @@
+# Pirates
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRolePirate
+  name: Pirate Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    subtype: role-subtype-pirate
+    exclusiveAntag: true
+    antagPrototype: PirateCrew
+  - type: PirateRole
+
+- type: entity
+  parent: MindRolePirate
+  id: MindRolePirateCaptain
+  name: Pirate Captain Role
+  components:
+  - type: MindRole
+    antagPrototype: PirateCaptain
+
+# Vampires
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleVampire
+  name: Vampire Role
+  components:
+  - type: MindRole
+    roleType: SoloAntagonist
+    exclusiveAntag: true
+    antagPrototype: Vampire
+  - type: VampireRole
+
+# Syndicate
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSyndicateSpy
+  name: Syndicate Spy Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+    antagPrototype: SyndicateSpy
+    subtype: roles-antag-short-syndicate-spy
+  - type: SyndicateSpyRole

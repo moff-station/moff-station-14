@@ -1,0 +1,288 @@
+# We need to be careful how we balance these, as we dont want to bankroll them to quickly
+# take into account risk/difficulty of stealing a certain bounty
+# make things less if we want to disincentivize it being stolen
+# Also, make sure theres enough disruptive bounties so that they dont just become symbiotic with the crew
+
+# Big Heists
+- type: cargoBounty
+  id: PirateBountyNuke
+  reward: 50000
+  description: bounty-description-nuke
+  idPrefix: GX
+  group: Pirates
+  entries:
+  - name: bounty-item-nuke
+    amount: 1
+    whitelist:
+      components:
+      - Nuke
+
+# Science
+- type: cargoBounty
+  id: PirateBountySciServer
+  reward: 15000
+  description: bounty-description-sci-server
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-sci-server
+    amount: 1
+    whitelist:
+      components:
+      - ResearchServer
+
+- type: cargoBounty
+  id: PirateBountyAnomVessel
+  reward: 6000
+  description: bounty-description-anom-vessel
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-anom-vessel
+    amount: 1
+    whitelist:
+      components:
+      - AnomalyVessel
+
+- type: cargoBounty
+  id: PirateBountyArtifact
+  reward: 4000
+  description: bounty-description-artifact
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-artifact
+    amount: 1
+    whitelist:
+      components:
+      - XenoArtifact
+
+# Engineering
+- type: cargoBounty
+  id: PirateBountyTEG
+  reward: 12000
+  description: bounty-description-teg
+  idPrefix: GX
+  group: Pirates
+  entries:
+  - name: bounty-item-teg
+    amount: 1
+    whitelist:
+      components:
+      - TegGenerator
+      - TegCirculator
+
+- type: cargoBounty
+  id: PirateBountyParticleAccelerator
+  reward: 8000
+  description: bounty-description-particle-accelerator
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-particle-accelerator
+    amount: 1
+    whitelist:
+      components:
+      - ParticleAcceleratorControlBox
+      - ParticleAcceleratorEmitter
+      - ParticleAcceleratorFuelChamber
+      - ParticleAcceleratorPowerBox
+      - ParticleAcceleratorEndCap
+
+- type: cargoBounty
+  id: PirateBountyAmeFuel
+  reward: 2000
+  description: bounty-description-ame-fuel
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-ame-fuel
+    amount: 2
+    whitelist:
+      components:
+      - AmeFuelContainer
+
+- type: cargoBounty
+  id: PirateBountySMES
+  reward: 5000
+  description: bounty-description-smes
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-smes
+    amount: 1
+    whitelist:
+      components:
+      - Smes
+
+# Service
+- type: cargoBounty
+  id: PirateBountyBoozeDispenser
+  reward: 4000
+  description: bounty-description-booze-dispenser
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-booze-dispenser
+    amount: 1
+    whitelist:
+      components:
+      - ReagentDispenser
+
+- type: cargoBounty
+  id: PirateBountyChefTech
+  reward: 5000
+  description: bounty-description-cheftech
+  idPrefix: WC
+  group: Pirates
+  entries:
+  - name: bounty-item-cheftech
+    amount: 1
+    whitelist:
+      tags:
+      - Chefware
+
+- type: cargoBounty
+  id: PirateBountyInstruments
+  reward: 1000
+  description: bounty-description-instruments
+  idPrefix: WC
+  group: Pirates
+  entries:
+  - name: bounty-item-instruments
+    amount: 2
+    whitelist:
+      components:
+      - Instrument
+
+# Medical
+- type: cargoBounty
+  id: PirateBountyCrewMonitor
+  reward: 6000
+  description: bounty-description-crew-monitor
+  idPrefix: CS
+  group: Pirates
+  entries:
+  - name: bounty-item-crew-monitor
+    amount: 1
+    whitelist:
+      components:
+      - CrewMonitoringConsole
+
+# General Bounties
+- type: cargoBounty
+  id: PirateBountyVendingMachine
+  reward: 3000
+  description: bounty-description-vendmachine
+  idPrefix: DC
+  group: Pirates
+  entries:
+  - name: bounty-item-vendmachine
+    amount: 1
+    whitelist:
+      components:
+      - VendingMachine
+
+- type: cargoBounty
+  id: PirateBountyShuttleParts
+  reward: 3000
+  description: bounty-description-shuttle-parts
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-shuttle-parts
+    amount: 1
+    whitelist:
+      components:
+      - Thruster
+
+- type: cargoBounty
+  id: PirateBountyTelecom
+  reward: 6000
+  description: bounty-description-telecom
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-telecom
+    amount: 1
+    whitelist:
+      components:
+      - TelecomServer
+
+- type: cargoBounty
+  id: PirateBountyGoldBars
+  reward: 6500
+  description: bounty-description-gold-bars
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-gold-bars
+    amount: 60
+    whitelist:
+      tags:
+      - BarGold
+
+- type: cargoBounty
+  id: PirateBountySilverBars
+  reward: 5000
+  description: bounty-description-silver-bars
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-silver-bars
+    amount: 60
+    whitelist:
+      tags:
+      - BarSilver
+
+- type: cargoBounty
+  id: PirateBountyMagboots
+  reward: 6500
+  description: bounty-description-magboots
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-magboots
+    amount: 4
+    whitelist:
+      tags:
+      - Magboots
+
+- type: cargoBounty
+  id: PirateBountyFaxmachine
+  reward: 6000
+  description: bounty-description-fax
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-fax
+    amount: 3
+    whitelist:
+      components:
+      - FaxMachine
+
+- type: cargoBounty
+  id: PirateBountyRecharger
+  reward: 6000
+  description: bounty-description-recharger
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-recharger
+    amount: 4
+    whitelist:
+      tags:
+      - Recharger
+
+- type: cargoBounty
+  id: PirateBountySolars
+  reward: 4000
+  description: bounty-description-solars
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-solars
+    amount: 10
+    whitelist:
+      components:
+      - SolarPanel

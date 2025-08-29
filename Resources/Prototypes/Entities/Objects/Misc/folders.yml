@@ -277,7 +277,7 @@
   - type: Storage
     grid:
     - 0,0,4,3
-    quickInsert: true
+  - type: QuickPickup # Moffstation
   - type: StorageFill
     contents: [] #to override base clipboard fill
   - type: ItemMapper
@@ -311,3 +311,14 @@
     - HighRiskItem
   - type: StealTarget
     stealGroup: BoxFolderQmClipboard
+  # Moffstation - Start - Allow linking of the QM Board
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSource
+    range: 200
+    ports:
+    - OrderSender
+  # Moffstation - End - Allow linking of the QM Board

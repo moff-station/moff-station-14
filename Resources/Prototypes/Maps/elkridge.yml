@@ -3,7 +3,7 @@
   mapName: 'Elkridge Depot'
   mapPath: /Maps/elkridge.yml
   minPlayers: 15
-  maxPlayers: 45
+  maxPlayers: 50  # Moffstation - Playercount changes
   stations:
     Elkridge:
       stationProto: StandardNanotrasenStation
@@ -66,3 +66,5 @@
             #silicon (3)
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
+            # Moffstation - custom roles below
+            Prisoner: [ 1, 1 ]

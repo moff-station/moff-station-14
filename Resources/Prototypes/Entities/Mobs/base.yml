@@ -9,6 +9,7 @@
     noRot: true
     drawdepth: Mobs
   - type: MobCollision
+  - type: GravityAffected
   - type: Physics
     bodyType: KinematicController
   - type: Fixtures
@@ -44,6 +45,8 @@
   - type: MovementSpeedModifier
   - type: RequireProjectileTarget
     active: False
+  - type: CollectiveMind # Startlight - Collective Minds - Give everyone general access to collective mind channels for Dragons/Carp/Critters/Zombies
+  - type: StunVisuals
 
 - type: entity
   save: false
@@ -62,6 +65,20 @@
     damageContainer: Biological
   - type: Destructible
     thresholds:
+    # Moffstation - Start - Caustic Damage Acidifies Corpses
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Caustic
+        damage: 400
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: false
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:GibBehavior { }
+    # Moffstation - End
     - trigger:
         !type:DamageTypeTrigger
         damageType: Blunt
@@ -107,6 +124,8 @@
     - Shock
     - Cold
     - Caustic
+    - Asphyxiation
+    - Radiation
   - type: DamageOnHighSpeedImpact
     damage:
       types:

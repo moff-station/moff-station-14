@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "license": "CC-BY-NC-4.0",
+    "copyright": "Reskin of the double barrel shotgun from Wizden, modified by @kento_da_neko (Discord)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "bolt-open"
+        },
+        {
+            "name": "equipped-BACKPACK",
+            "directions": 4
+        },
+        {
+            "name": "equipped-SUITSTORAGE",
+            "directions": 4
+        }
+    ]
+}

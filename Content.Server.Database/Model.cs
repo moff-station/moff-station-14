@@ -57,6 +57,20 @@ namespace Content.Server.Database
                 .HasIndex(p => new {p.Slot, PrefsId = p.PreferenceId})
                 .IsUnique();
 
+            // CD: CD Character Data
+            modelBuilder.Entity<CDModel.CDProfile>()
+                .HasOne(p => p.Profile)
+                .WithOne(p => p.CDProfile)
+                .HasForeignKey<CDModel.CDProfile>(p => p.ProfileId)
+                .IsRequired();
+
+            modelBuilder.Entity<CDModel.CharacterRecordEntry>()
+                .HasOne(e => e.CDProfile)
+                .WithMany(e => e.CharacterRecordEntries)
+                .HasForeignKey(e => e.CDProfileId)
+                .IsRequired();
+            // END CD
+
             modelBuilder.Entity<Antag>()
                 .HasIndex(p => new {HumanoidProfileId = p.ProfileId, p.AntagName})
                 .IsUnique();
@@ -392,6 +406,7 @@ namespace Content.Server.Database
         public Guid UserId { get; set; }
         public int SelectedCharacterSlot { get; set; }
         public string AdminOOCColor { get; set; } = null!;
+        public List<string> ConstructionFavorites { get; set; } = new();
         public List<Profile> Profiles { get; } = new();
     }
 
@@ -423,6 +438,8 @@ namespace Content.Server.Database
 
         public int PreferenceId { get; set; }
         public Preference Preference { get; set; } = null!;
+
+        public CDModel.CDProfile? CDProfile { get; set; } // Moffstation - Add CD Profile
     }
 
     public class Job
@@ -703,6 +720,11 @@ namespace Content.Server.Database
         [Required] public LogImpact Impact { get; set; }
 
         [Required] public DateTime Date { get; set; }
+
+        /// <summary>
+        /// The current time in the round in ticks since the start of the round.
+        /// </summary>
+        public long CurTime { get; set; }
 
         [Required] public string Message { get; set; } = default!;
 

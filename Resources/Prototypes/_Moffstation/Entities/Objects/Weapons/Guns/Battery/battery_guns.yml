@@ -1,0 +1,87 @@
+- type: entity
+  id: BaseWeaponPowerCellProjectile
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+  - type: Item
+    size: Huge
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+  - type: ProjectileBatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 50
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: Magazine
+        startingItem: PowerCellSmall
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+          - PowerCell
+          - PowerCellSmall
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: Appearance
+  - type: StaticPrice
+    price: 500
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+
+- type: entity
+  id: BaseWeaponPowerCellProjectileSmall
+  parent: BaseWeaponPowerCellProjectile
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Battery/taser.rsi
+    quickEquip: false
+    slots:
+    - Belt
+
+- type: entity
+  name: Big Iron
+  parent: [BaseWeaponPowerCellProjectileSmall, BaseGrandTheftContraband]
+  id: WeaponRevolverBigIron
+  description: A Big Iron on their hip.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/big_iron.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 2
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: Magazine
+        startingItem: PowerCellBigIron
+        whitelist:
+          tags:
+          - PowerCellBigIron
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletBigIronDisabler
+    fireCost: 50
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: BulletBigIronDisabler
+      fireCost: 50
+    - proto: BulletBigIronLethal
+      fireCost: 100

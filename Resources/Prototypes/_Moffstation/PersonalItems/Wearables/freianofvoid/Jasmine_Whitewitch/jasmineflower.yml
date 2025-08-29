@@ -1,0 +1,23 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: PersonalItemJasmineFlower
+  name: Jasmine's Flower
+  suffix: PersonalItem
+  description: A white flower, possibly from a jasmine plant. I wonder who's it is. hmm.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Jasmine_Whitewitch/jasminflower.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/Jasmine_Whitewitch/jasminflower.rsi
+  - type: DetailExaminable
+    content: It's a fake flower hair pin, but it's rather realistic for a hair pin.
+
+- type: loadout
+  id: PersonalItemJasmineFlower
+  storage:
+    back:
+    - PersonalItemJasmineFlower
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "Jasmine Whitewitch"

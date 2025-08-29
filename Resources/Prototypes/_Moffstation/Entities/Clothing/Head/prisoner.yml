@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatStripedPrisoner
+  name: striped prisoner hat
+  description: A hat for crooks.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/striped-hat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/striped-hat.rsi

@@ -1,0 +1,69 @@
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BasePiratesRule
+  components:
+  - type: PiratesRule
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
+  - type: RuleGrids
+  - type: AntagSelection
+  - type: AntagLoadProfileRule
+
+- type: entity
+  parent: BasePiratesRule
+  id: Pirates
+  components:
+  - type: GameRule
+    minPlayers: 20
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ PirateCaptain ]
+      fallbackRoles: [ PirateCrew ]
+      spawnerPrototype: SpawnPointPirateCaptain
+      startingGear: PirateCaptainGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      - JobPirateCaptain
+      briefing:
+        text: pirate-role-greeting
+        color: "#a15608"
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
+      components:
+      - type: Pirate
+      - type: RandomMetadata
+        nameSegments:
+        - Adjectives
+        nameFormat: name-format-pirate-captain
+      - type: NpcFactionMember
+        factions:
+        - Pirate
+      mindRoles:
+      - MindRolePirateCaptain
+    - prefRoles: [ PirateCrew ]
+      fallbackRoles: [ PirateCaptain ]
+      spawnerPrototype: SpawnPointPirateCrew
+      min: 2
+      max: 3
+      playerRatio: 15
+      startingGear: PirateGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      - JobPirateCrew
+      briefing:
+        text: pirate-role-greeting
+        color: "#a15608"
+        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
+      components:
+      - type: Pirate
+      - type: RandomMetadata
+        nameSegments:
+        - NamesFirst
+        - Adjectives
+        nameFormat: name-format-pirate-crew
+      - type: NpcFactionMember
+        factions:
+        - Pirate
+      mindRoles:
+      - MindRolePirate

@@ -145,12 +145,42 @@ public sealed class LoadoutSystem : EntitySystem
         Equip(uid, component.StartingGear, component.RoleLoadout);
     }
 
+    // Moffstation - Begin - Custom function for Equipping which allows for antag roles to make use of loadouts
+    public void LoadoutAwareEquip(EntityUid uid,
+        ICommonSession session,
+        List<ProtoId<StartingGearPrototype>>? startingGear,
+        List<ProtoId<RoleLoadoutPrototype>>? loadoutGroups,
+        HumanoidCharacterProfile profile)
+    {
+        if (startingGear is { Count: > 0 })
+            _station.EquipStartingGear(uid, _random.Pick(startingGear));
+
+        if (loadoutGroups is { Count: > 0 })
+        {
+            foreach (var antagLoadout in loadoutGroups)
+            {
+                if (_protoMan.TryIndex(antagLoadout, out var roleProto))
+                {
+                    if (!profile.Loadouts.TryGetValue(antagLoadout, out var loadout))
+                    {
+                        loadout = new RoleLoadout(antagLoadout);
+                        loadout.SetDefault(profile, _actors.GetSession(uid), _protoMan, true);
+                    }
+
+                    _station.EquipRoleLoadout(uid, loadout, roleProto);
+                }
+            }
+        }
+        GearEquipped(uid);
+    }
+    // Moffstation - End
+
     public void Equip(EntityUid uid, List<ProtoId<StartingGearPrototype>>? startingGear,
         List<ProtoId<RoleLoadoutPrototype>>? loadoutGroups)
     {
         // First, randomly pick a startingGear profile from those specified, and equip it.
         if (startingGear != null && startingGear.Count > 0)
-            _station.EquipStartingGear(uid, _random.Pick(startingGear));
+            _station.EquipStartingGear(uid, _random.Pick(startingGear), false);
 
         if (loadoutGroups == null)
         {

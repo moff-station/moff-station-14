@@ -1,0 +1,21 @@
+﻿- type: entity
+  parent: ClothingNeckBase
+  id: PersonalItemKrakatoaCloak
+  name: Krakatoa’s melon cape
+  description: Krakatoa just REALLY likes Watermelon.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/DR_D1NGO/Krakatoa_Jones/krakatoacloak.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/DR_D1NGO/Krakatoa_Jones/krakatoacloak.rsi
+
+- type: loadout
+  id: PersonalItemKrakatoaCloak
+  storage:
+    back:
+    - PersonalItemKrakatoaCloak
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Krakatoa Jones

@@ -1,0 +1,28 @@
+- type: antag
+  id: SyndicateSpy
+  name: roles-antag-syndicate-spy
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-syndicate-spy-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 5h
+
+- type: startingGear
+  id: SyndicateSpyGear
+  equipment:
+    ears: ClothingHeadsetLPO
+    shoes: ClothingShoesBootsLaceup
+    id: SyndiPDA
+    pocket2: WeaponPistolViper
+
+# High value target preference
+# Not actually given out, but used when determining targets for antags.
+- type: antag
+  id: HighValueTarget
+  name: roles-high-value-target
+  setPreference: true
+  objective: roles-high-value-target-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 50h

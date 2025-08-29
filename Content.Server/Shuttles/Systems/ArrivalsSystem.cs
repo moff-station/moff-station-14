@@ -6,12 +6,13 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Parallax;
+using Content.Server.Power.Components;  // Moffstation
+using Content.Server.Power.EntitySystems; // Moffstation
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
-using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
 using Content.Shared.Administration;
@@ -62,6 +63,8 @@ public sealed class ArrivalsSystem : EntitySystem
     [Dependency] private readonly ShuttleSystem _shuttles = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly BatterySystem _batterySystem = default!;  // Moffstation - Arrivals fixes
+
 
     private EntityQuery<PendingClockInComponent> _pendingQuery;
     private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery;
@@ -103,6 +106,8 @@ public sealed class ArrivalsSystem : EntitySystem
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarting);
         SubscribeLocalEvent<ArrivalsShuttleComponent, FTLStartedEvent>(OnArrivalsFTL);
         SubscribeLocalEvent<ArrivalsShuttleComponent, FTLCompletedEvent>(OnArrivalsDocked);
+
+        SubscribeLocalEvent<ArrivalsShuttleComponent, FirstArrivalEvent>(OnFirstArrival); // Moffstation - First arrival event
 
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(SendDirections);
 
@@ -224,7 +229,7 @@ public sealed class ArrivalsSystem : EntitySystem
 
             if (component.FirstRun)
             {
-                var station = _station.GetLargestGrid(Comp<StationDataComponent>(component.Station));
+                var station = _station.GetLargestGrid(component.Station);
                 sourceMap = station == null ? null : Transform(station.Value)?.MapUid;
                 arrivalsDelay += RoundStartFTLDuration;
                 component.FirstRun = false;
@@ -293,6 +298,17 @@ public sealed class ArrivalsSystem : EntitySystem
             };
             _deviceNetworkSystem.QueuePacket(uid, null, payload, netComp.TransmitFrequency);
         }
+
+        // Moffstation - Start - Arrivals start fixes
+        if (component.FirstArrival &&
+            TryGetArrivals(out var arrivals) &&
+            args.MapUid != Transform(arrivals).MapUid)
+        {
+            // raise first arrivals event
+            RaiseLocalEvent(uid, new FirstArrivalEvent());
+            component.FirstArrival = false;
+        }
+        // Moffstation - End
     }
 
     private void DumpChildren(EntityUid uid, ref FTLStartedEvent args)
@@ -432,6 +448,25 @@ public sealed class ArrivalsSystem : EntitySystem
         EnsureComp<PreventPilotComponent>(uid);
     }
 
+    // Moffstation - Start - First arrivals event
+    private void OnFirstArrival(Entity<ArrivalsShuttleComponent> ent, ref FirstArrivalEvent ev)
+    {
+        // Fixes to problems exclusive to the group arrivals start
+        if (_cfgManager.GetCVar(CCVars.StartAtArrivals))
+        {
+            if (_station.GetStationInMap(Transform(ent.Owner).MapID) is not { } station)
+                return;
+            // Refills all the station's batteries, gives engi more leeway since they have to wait to arrive at the station
+            var query = EntityQueryEnumerator<BatteryComponent>();
+            while (query.MoveNext(out var entity, out var comp))
+            {
+                if (_station.GetOwningStation(entity) == station)
+                    _batterySystem.SetCharge(entity, comp.MaxCharge, comp);
+            }
+        }
+    }
+    // Moffstation - End
+
     private bool TryGetArrivals(out EntityUid uid)
     {
         var arrivalsQuery = EntityQueryEnumerator<ArrivalsSourceComponent>();
@@ -470,7 +505,7 @@ public sealed class ArrivalsSystem : EntitySystem
         {
             while (query.MoveNext(out var uid, out var comp, out var shuttle, out var xform))
             {
-                if (comp.NextTransfer > curTime || !TryComp<StationDataComponent>(comp.Station, out var data))
+                if (comp.NextTransfer > curTime)
                     continue;
 
                 var tripTime = _shuttles.DefaultTravelTime + _shuttles.DefaultStartupTime;
@@ -486,7 +521,7 @@ public sealed class ArrivalsSystem : EntitySystem
                 // Go to station
                 else
                 {
-                    var targetGrid = _station.GetLargestGrid(data);
+                    var targetGrid = _station.GetLargestGrid(comp.Station);
 
                     if (targetGrid != null)
                         _shuttles.FTLToDock(uid, shuttle, targetGrid.Value);
@@ -533,7 +568,7 @@ public sealed class ArrivalsSystem : EntitySystem
             _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
             var restricted = new RestrictedRangeComponent
             {
-                Range = 32f
+                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange)
             };
             AddComp(mapUid, restricted);
         }

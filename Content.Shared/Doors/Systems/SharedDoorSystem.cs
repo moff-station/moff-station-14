@@ -23,6 +23,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Doors.Systems;
 
@@ -46,9 +47,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
 
-
-    [ValidatePrototypeId<TagPrototype>]
-    public const string DoorBumpTag = "DoorBumpOpener";
+    public static readonly ProtoId<TagPrototype> DoorBumpTag = "DoorBumpOpener";
 
     /// <summary>
     ///     A set of doors that are currently opening, closing, or just queued to open/close after some delay.
@@ -309,12 +308,12 @@ public abstract partial class SharedDoorSystem : EntitySystem
     #endregion
 
     #region Opening
-    public bool TryOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false, bool quiet = false)
+    public bool TryOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false, bool quiet = false, bool ignorePower = false)    // Moffstation - Hack to fix evac pods
     {
         if (!Resolve(uid, ref door))
             return false;
 
-        if (!CanOpen(uid, door, user, quiet))
+        if (!CanOpen(uid, door, user, quiet, ignorePower))
             return false;
 
         StartOpening(uid, door, user, predicted);
@@ -322,7 +321,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         return true;
     }
 
-    public bool CanOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool quiet = true)
+    public bool CanOpen(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool quiet = true, bool ignorePower = false)     // Moffstation - Hack to fix evac pods
     {
         if (!Resolve(uid, ref door))
             return false;
@@ -330,7 +329,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (door.State == DoorState.Welded)
             return false;
 
-        var ev = new BeforeDoorOpenedEvent() { User = user };
+        var ev = new BeforeDoorOpenedEvent() { User = user, IgnorePower = ignorePower };    // Moffstation - Hack to fix evac pods
         RaiseLocalEvent(uid, ev);
         if (ev.Cancelled)
             return false;
@@ -535,7 +534,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
             if (door.CrushDamage != null)
                 _damageableSystem.TryChangeDamage(entity, door.CrushDamage, origin: uid);
 
-            _stunSystem.TryParalyze(entity, stunTime, true);
+            _stunSystem.TryUpdateParalyzeDuration(entity, stunTime);
         }
 
         if (door.CurrentlyCrushing.Count == 0)

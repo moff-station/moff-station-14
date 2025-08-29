@@ -1,0 +1,16 @@
+- type: inventoryTemplate
+  id: headid
+  slots:
+  - name: head
+    slotTexture: head
+    slotFlags: HEAD
+    uiWindowPos: 0,1
+    strippingWindowPos: 0,0
+    displayName: Head
+  - name: id
+    slotTexture: id
+    fullTextureName: template_small
+    slotFlags: IDCARD
+    uiWindowPos: 0,2
+    strippingWindowPos: 0,1
+    displayName: ID

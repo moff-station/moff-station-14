@@ -2,15 +2,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Components;
-using Content.Server.Atmos;
-using Content.Server.Atmos.Components;
 using Content.Server.Cargo.Components;
 using Content.Server.Doors.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared.Access;
@@ -28,6 +25,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Stacks;
+using Content.Shared.Station.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Server.Physics;
@@ -58,7 +56,7 @@ public sealed partial class AdminVerbSystem
 
     private void AddTricksVerbs(GetVerbsEvent<Verb> args)
     {
-        if (!EntityManager.TryGetComponent(args.User, out ActorComponent? actor))
+        if (!TryComp(args.User, out ActorComponent? actor))
             return;
 
         var player = actor.PlayerSession;
@@ -236,7 +234,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Oxygen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/oxygen.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("OxygenTank"), // Moffstation
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Oxygen, tank);
@@ -251,7 +249,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Nitrogen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/red.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("NitrogenTank"), // Moffstation
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Nitrogen, tank);
@@ -266,7 +264,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Plasma",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/plasma.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("PlasmaTank"), // Moffstation
                 Act = () =>
                 {
                     RefillGasTank(args.Target, Gas.Plasma, tank);
@@ -284,7 +282,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Oxygen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/oxygen.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("OxygenTank"), // Moffstation
                 Act = () => RefillEquippedTanks(args.User, Gas.Oxygen),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-oxygen-description"),
@@ -296,7 +294,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Nitrogen",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/red.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("NitrogenTank"), // Moffstation
                 Act = () => RefillEquippedTanks(args.User, Gas.Nitrogen),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-nitrogen-description"),
@@ -308,7 +306,7 @@ public sealed partial class AdminVerbSystem
             {
                 Text = "Refill Internals Plasma",
                 Category = VerbCategory.Tricks,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/Objects/Tanks/plasma.rsi"), "icon"),
+                Icon = new SpriteSpecifier.EntityPrototype("PlasmaTank"), // Moffstation
                 Act = () => RefillEquippedTanks(args.User, Gas.Plasma),
                 Impact = LogImpact.Extreme,
                 Message = Loc.GetString("admin-trick-internals-refill-plasma-description"),
@@ -820,7 +818,7 @@ public sealed partial class AdminVerbSystem
         }
         else if (TryComp<HandsComponent>(target, out var hands))
         {
-            foreach (var held in _handsSystem.EnumerateHeld(target, hands))
+            foreach (var held in _handsSystem.EnumerateHeld((target, hands)))
             {
                 if (HasComp<AccessComponent>(held))
                 {

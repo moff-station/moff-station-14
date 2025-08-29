@@ -1,3 +1,4 @@
+using Content.Server.Chat.Systems;  // Moffstation - InGameICChatType enum
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Radio;
@@ -24,4 +25,9 @@ public sealed partial class RadioSpeakerComponent : Component
 
     [DataField("enabled")]
     public bool Enabled;
+
+    // Moffstation - Start - Allow customizable chat type
+    [DataField("chatType")]
+    public InGameICChatType ChatType = InGameICChatType.Whisper;
+    // Moffstation - End
 }

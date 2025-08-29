@@ -35,6 +35,7 @@ namespace Content.Shared.Doors
     public sealed class BeforeDoorOpenedEvent : CancellableEntityEventArgs
     {
         public EntityUid? User = null;
+        public bool IgnorePower = false;    // Moffstation - Hack to fix evac pods
     }
 
     /// <summary>

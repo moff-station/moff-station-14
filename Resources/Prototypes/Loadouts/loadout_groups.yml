@@ -3,13 +3,32 @@
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
-  maxLimit: 3
+  maxLimit: 5 # Moffstation - (Nox Loadout Improvements) - After all, why not?
   loadouts:
   - FlowerWreath
   - Hairflower
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
+  # Moffstation - Start - Expanded roundstart plushies!
+  - PlushieArachind
+  - PlushieAtmosian
+  - PlushieBee
+  - PlushieBorg
+  - PlushieCarp
+  - PlushieDiona
+  - PlushieExperiment
+  - PlushieHampter
+  - PlushieHuman
+  - PlushieMoth
+  - PlushiePenguin
+  - PlushieSharkBlue
+  - PlushieSharkGrey
+  - PlushieSharkPink
+  - PlushieSlime
+  - PlushieSnake
+  - PlushieVox
+  # Moffstation - End
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -18,6 +37,17 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
+  - GoldRing    # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
+  - SilverRing  # Moffstation - End
+  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
+  - FolderRed
+  - FolderBlue
+  - FolderYellow
+  - FolderWhite
+  - FolderGrey
+  - FolderBlack
+  - FolderGreen
+  # Moffstation - End
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -36,6 +66,12 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
   - TowelColorBlack
   - TowelColorDarkBlue
   - TowelColorDarkGreen
@@ -139,6 +175,7 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: CaptainOuterClothing
@@ -176,7 +213,19 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
+# Moffstation - Start - Department Heads can use any department Bag
+  - ClownBackpack
+  - ClownSatchel
+  - ClownDuffel
+  - MimeBackpack
+  - MimeSatchel
+  - MimeDuffel
+  - BotanistBackpack
+  - BotanistSatchel
+  - BotanistDuffel
+# Moffstation - End - Department Heads can use any department Bag
   - HoPBackpackIan
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: HoPOuterClothing
@@ -194,6 +243,7 @@
   - GreyJumpskirt
   - AncientJumpsuit
   - RainbowJumpsuit
+  - RainbowJumpskirt
 
 - type: loadoutGroup
   id: PassengerFace
@@ -216,6 +266,7 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
+  - LeatherSatchel  # Moffstation - Allow people to pick leather satchel
 
 - type: loadoutGroup
   id: PassengerNeck
@@ -369,6 +420,17 @@
   - ChaplainNeck
 
 - type: loadoutGroup
+  id: ChaplainBible
+  name: loadout-group-chaplain-bible
+  minLimit: 1
+  loadouts:
+  - Bible
+  - BibleDruid
+  - BibleNanoTrasen
+  - BibleSatanic
+  - BibleTanakh
+
+- type: loadoutGroup
   id: JanitorHead
   name: loadout-group-janitor-head
   minLimit: 0
@@ -428,6 +490,7 @@
   - BotanistBackpack
   - BotanistSatchel
   - BotanistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: BotanistOuterClothing
@@ -461,6 +524,7 @@
   - ClownBackpack
   - ClownSatchel
   - ClownDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: ClownOuterClothing
@@ -518,6 +582,7 @@
   - MimeBackpack
   - MimeSatchel
   - MimeDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: MimeOuterClothing
@@ -541,6 +606,7 @@
   loadouts:
   - EmergencyNitrogenMime
   - EmergencyOxygenMime
+  - EmergencySpeciesMothMime
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -626,12 +692,27 @@
   loadouts:
   - QuartermasterWintercoat
 
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: QuartermasterBackpack
+  name: loadout-group-quartermaster-backpack
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
+
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
   loadouts:
   - BrownShoes
   - CargoWinterBoots
+  - SalvageBoots # Moffstation - QM can wear Salvage boots
 
 - type: loadoutGroup
   id: CargoTechnicianHead
@@ -654,6 +735,7 @@
   - CargoTechnicianBackpack
   - CargoTechnicianSatchel
   - CargoTechnicianDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
@@ -676,6 +758,7 @@
   - SalvageSpecialistBackpack
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
@@ -724,12 +807,27 @@
   loadouts:
   - ChiefEngineerWintercoat
 
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefEngineerBackpack
+  name: loadout-group-chief-engineer-backpack
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
+
 - type: loadoutGroup
   id: ChiefEngineerShoes
   name: loadout-group-chief-engineer-shoes
   loadouts:
   - BrownShoes
   - EngineeringWinterBoots
+  - WorkBoots # Moffstation - CE can wear workboots
 
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
@@ -765,6 +863,7 @@
   - StationEngineerBackpack
   - StationEngineerSatchel
   - StationEngineerDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: StationEngineerOuterClothing
@@ -802,6 +901,7 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
+  - StationEngineerOuterVest # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -810,6 +910,7 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianSatchel
   - AtmosphericTechnicianDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
@@ -817,6 +918,7 @@
   loadouts:
   - WhiteShoes
   - EngineeringWinterBoots
+  - WorkBoots # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -900,6 +1002,7 @@
   - ScientistBackpack
   - ScientistSatchel
   - ScientistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: ScientistOuterClothing
@@ -1007,6 +1110,7 @@
   minLimit: 0
   loadouts:
   - SecurityHelmet
+  - MilitaryHelmet # Moffstation - (New Security Helmets)
   - SecurityBeret
   - SecurityHat
   - TrooperHat
@@ -1030,6 +1134,7 @@
   - SecurityBackpack
   - SecuritySatchel
   - SecurityDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: SecurityBelt
@@ -1037,6 +1142,8 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
+  - SecurityWebbingAlt  # Moffstation - Alt sec webbing
+  - ShoulderHolster # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1067,6 +1174,13 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - SecurityHelmet
+  - MilitaryHelmet
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveNeck
@@ -1083,6 +1197,12 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - SecurityJumpsuit
+  - SecurityJumpskirt
+  - SecurityJumpsuitGrey
+  - SecurityJumpskirtGrey
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1091,6 +1211,11 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - ArmorVest
+  - ArmorVestSlim
+  - SecurityOfficerWintercoat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
@@ -1142,6 +1267,26 @@
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
 
+# Moffstation - Start - Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefMedicalOfficerBackpack
+  name: loadout-group-chief-medical-officer-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+  - ChemistBackpack
+  - ChemistSatchel
+  - ChemistDuffel
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  - LeatherSatchel
+# Moffstation - End - Department Heads can use any department Bag
+
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
   name: loadout-group-chief-medical-officer-neck
@@ -1149,6 +1294,7 @@
   loadouts:
   - ChiefMedicalOfficerCloak
   - ChiefMedicalOfficerMantle
+  - ChiefMedicalOfficerScarf  # Moffstation - CMO scarf
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
@@ -1181,6 +1327,7 @@
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
+  - MedicalDoctorJumpskirtNurse # MOFFSTATION - Adds nurse jumpskirt
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
@@ -1198,6 +1345,15 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  # Moffstation - End
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: MedicalShoes
@@ -1258,6 +1414,7 @@
   - ChemistBackpack
   - ChemistSatchel
   - ChemistDuffel
+  - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
   id: ParamedicHead
@@ -1316,7 +1473,11 @@
   name: loadout-group-reporter-jumpsuit
   loadouts:
   - ReporterJumpsuit
+  - ReporterJumpskirt # Moffstaion - Adding Reporter Clothes
   - JournalistJumpsuit
+  - JournalistJumpskirt # Moffstaion - Adding Reporter Clothes
+  - MeteorologistJumpsuit # Moffstaion - Adding Reporter Clothes
+  - MeteorologistJumpskirt # Moffstaion - Adding Reporter Clothes
 
 - type: loadoutGroup
   id: PsychologistJumpsuit

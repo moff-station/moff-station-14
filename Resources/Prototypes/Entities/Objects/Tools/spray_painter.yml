@@ -2,7 +2,7 @@
   parent: BaseItem
   id: SprayPainter
   name: spray painter
-  description: A spray painter for painting airlocks and pipes.
+  description: A spray painter for painting airlocks, pipes, and other items.
   components:
   - type: Sprite
     sprite: Objects/Tools/spray_painter.rsi
@@ -25,13 +25,66 @@
       blue: '#0335FCFF'
       white: '#FFFFFFFF'
       black: '#333333FF'
+      # Moffstation - Start - Gas Color Painter
+      oxygen: '#2788E8FF'
+      nitrogen: '#D90F0FFF'
+      nitrous oxide: '#F66A6AFF'
+      carbon dioxide: '#4F4F4FFF'
+      water vapor: '#A0A0DAFF'
+      plasma: '#FC32A0FF'
+      tritium: '#17FF0BFF'
+      frezon: '#47CDFFFF'
+      # Moffstation - End
       # standard atmos pipes
-      waste: '#990000'
-      distro: '#0055cc'
-      air: '#03fcd3'
-      mix: '#947507'
+      waste: '#990000FF'
+      distro: '#0055CCFF'
+      air: '#03FCD3FF'
+      mix: '#947507FF'
+    # Moffstation - Start
+    gasTankVisuals: !type:GasTankVisualsPrototype
+      id: Default
+    # Moffstation - End
   - type: StaticPrice
     price: 40
+  - type: LimitedCharges
+    maxCharges: 15
+    lastCharges: 15
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
+
+- type: entity
+  parent: SprayPainter
+  id: SprayPainterRecharging
+  suffix: Admeme
+  components:
+  - type: AutoRecharge
+    rechargeDuration: 1
+
+- type: entity
+  parent: SprayPainter
+  id: SprayPainterEmpty
+  suffix: Empty
+  components:
+  - type: LimitedCharges
+    lastCharges: -1
+
+- type: entity
+  parent: BaseItem
+  id: SprayPainterAmmo
+  name: compressed paint
+  description: A cartridge of highly compressed paint, commonly used in spray painters.
+  components:
+  - type: SprayPainterAmmo
+  - type: Sprite
+    sprite: Objects/Tools/spray_painter.rsi
+    state: ammo
+  - type: Item
+    sprite: Objects/Tools/spray_painter.rsi
+    heldPrefix: ammo
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 10
+      Plastic: 10
+  - type: StaticPrice
+    price: 30

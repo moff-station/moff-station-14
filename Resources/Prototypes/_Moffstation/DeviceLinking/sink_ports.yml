@@ -1,0 +1,19 @@
+﻿- type: sinkPort
+  id: ToggleSpeaker
+  name: signal-port-name-toggle-speaker
+  description: signal-port-description-toggle-speaker
+
+- type: sinkPort
+  id: ToggleMicrophone
+  name: signal-port-name-toggle-microphone
+  description: signal-port-description-toggle-microphone
+
+- type: sinkPort
+  id: CycleChannelForwards
+  name: signal-port-name-cycle-channel-forwards
+  description: signal-port-description-cycle-channel-forwards
+
+- type: sinkPort
+  id: CycleChannelBackwards
+  name: signal-port-name-cycle-channel-backwards
+  description: signal-port-description-cycle-channel-backwards

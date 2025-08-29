@@ -18,7 +18,7 @@ public sealed partial class CCVars
     ///     Guide Entry Prototype ID to be displayed as the server rules.
     /// </summary>
     public static readonly CVarDef<string> RulesFile =
-        CVarDef.Create("server.rules_file", "DefaultRuleset", CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("server.rules_file", "MoffRules", CVar.REPLICATED | CVar.SERVER);    // Changed default to be Moffstation rules
 
     /// <summary>
     ///     Guide entry that is displayed by default when a guide is opened.
@@ -59,4 +59,16 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> ForceClientHudVersionWatermark =
         CVarDef.Create("server.force_client_hud_version_watermark", false, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Moffstation - Pauses the lobby on server startup. Requires an admin to unpause before rounds begin
+    /// </summary>
+    public static readonly CVarDef<bool> StartServerPaused =
+        CVarDef.Create("server.start_server_paused", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Moffstation - Automatically pauses the lobby (until an admin unpauses) when the server reaches 0 players
+    /// </summary>
+    public static readonly CVarDef<bool> EmptyAutoPause =
+        CVarDef.Create("server.empty_auto_pause", true, CVar.SERVERONLY);
 }
