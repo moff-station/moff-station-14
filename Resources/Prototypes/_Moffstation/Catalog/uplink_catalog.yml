@@ -11,3 +11,20 @@
     Telecrystal: 2
   categories:
   - UplinkAmmo
+
+# Moffstation - Start - Readding the Hypereutactic Blade
+- type: listing
+  id: UplinkHyperEutacticBlade
+  name: uplink-hypereutatic-blade-moff-name
+  description: uplink-hypereutatic-blade-moff-desc
+  icon: { sprite: /Textures/Objects/Weapons/Melee/hypereutactic_blade.rsi, state: icon }
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 8
+  productEntity: HyperEutacticBlade
+  cost:
+    Telecrystal: 14
+  categories:
+  - UplinkWeaponry
+  
+# Moffstation - End - Readding the Hypereutactic Blade
