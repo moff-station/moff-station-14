@@ -101,6 +101,10 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             if (!GameTicker.IsGameRuleActive(uid, rule))
                 continue;
 
+            // Don't want other players picking up somebody's gun
+            if (TryComp<GunGameTrackerComponent>(ev.Entity, out var gunGameTracker))
+                DeleteCurrentWeapons((ev.Entity, gunGameTracker), gunGame);
+
             // Force them to respawn so they don't have to wait around.
             // This has to happen before we check if a player killed them, because they might have died
             // 	to something other than a player.
@@ -109,10 +113,6 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
 
             if (ev.Primary is not KillPlayerSource player)
                 continue;
-
-            // Don't want other players picking up somebody's gun
-            if (TryComp<GunGameTrackerComponent>(ev.Entity, out var gunGameTracker))
-                DeleteCurrentWeapons((ev.Entity, gunGameTracker), gunGame);
 
             var playerInfo = gunGame.PlayerInfo[player.PlayerId];
             // Only allow the player to receive their next weapon after they get enough kills.
