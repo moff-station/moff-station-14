@@ -331,6 +331,4 @@ marking-VoxTailSplit-split = Twinned
 marking-VoxSunAndMoon = Sun and Moon
 marking-VoxSunAndMoon-sunandmoon = Sun and Moon
 
-marking-VoxTail = Default Tail [DO NOT USE]
-
 # RArmExtension
