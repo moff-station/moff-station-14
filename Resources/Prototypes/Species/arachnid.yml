@@ -63,13 +63,13 @@
       required: true
       defaultMarkings: [ ArachnidCheliceraeDownwards ]
     Chest:
-      points: 2
+      points: 4 # Moffstation - Increase Markings
       required: false
     Legs:
-      points: 2
+      points: 6 # Moffstation - Increase Markings
       required: false
     Arms:
-      points: 2
+      points: 6 # Moffstation - Increase Markings
       required: false
 
 - type: humanoidBaseSprite
