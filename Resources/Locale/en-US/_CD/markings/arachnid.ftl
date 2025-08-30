@@ -83,24 +83,6 @@ marking-ArachnidLLegSegments = Segmented Leg (Left)
 marking-ArachnidLLegSegments-segments1 = Thigh
 marking-ArachnidLLegSegments-segments2 = Shin
 
-# UndergarmentBottom
-
-marking-UndergarmentBottomBoxers = Boxers
-
-marking-UndergarmentBottomBriefs = Briefs
-
-marking-UndergarmentBottomSatin = Satin
-
-# UndergarmentTop
-
-marking-UndergarmentTopBinder = Binder
-
-marking-UndergarmentTopBra = Classic Bra
-
-marking-UndergarmentTopSportsbra = Sports Bra
-
-marking-UndergarmentTopTanktop = Tanktop
-
 # LFoot
 
 # RFoot
