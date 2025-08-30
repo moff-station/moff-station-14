@@ -1,0 +1,17 @@
+# Moffstation - Begin - Apply directly to vampires and/or werewolves.
+# Specialized munitions, so in a scenario where you aren't shooting vampires, it's an materialisticly-expensive version of practice rounds.
+- type: entity
+  id: CartridgeRifleSilver
+  name: cartridge (.20 rifle silver)
+  parent: BaseCartridgeRifle
+  components:
+  - type: CartridgeAmmo
+    proto: BulletRifleSilver
+  - type: Sprite
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+      - state: tip
+        map: [ "enum.AmmoVisualLayers.Tip" ]
+        color: "#bebed7"
+# Moffstation - End
