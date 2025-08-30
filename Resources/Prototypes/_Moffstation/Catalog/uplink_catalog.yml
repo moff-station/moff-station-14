@@ -11,3 +11,30 @@
     Telecrystal: 2
   categories:
   - UplinkAmmo
+
+# To use on vampires
+- type: listing
+  id: UplinkSpeedLoaderMagnumSilver
+  name: uplink-speedloader-magnum-silver-name
+  description: uplink-speedloader-magnum-silver-desc
+  icon:
+    sprite: /Textures/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/magnum_speed_loader.rsi
+    state: icon
+  productEntity: SpeedLoaderMagnumSilver
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkHristovAmmoSilver
+  name: uplink-sniper-ammo-silver-name
+  description: uplink-sniper-ammo-silver-desc
+  icon:
+    sprite: /Textures/Objects/Weapons/Guns/Ammunition/Boxes/anti_materiel.rsi
+    state: base
+  productEntity: MagazineBoxAntiVampirical
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkAmmo

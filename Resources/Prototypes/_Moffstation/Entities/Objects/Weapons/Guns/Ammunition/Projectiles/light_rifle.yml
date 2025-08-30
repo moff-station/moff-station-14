@@ -1,0 +1,14 @@
+# Apply directly to vampires and/or werewolves.
+# Specialized munitions, so in a scenario where you aren't shooting vampires, it's an materialisticly-expensive version of practice rounds.
+- type: entity
+  id: BulletLightRifleSilver
+  parent: BaseBulletSilver
+  name: bullet (.20 rifle silver)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 2
+        Holy: 18
+# Moffstation - End
