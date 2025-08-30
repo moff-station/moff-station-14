@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 265.0.0
+  engineVersion: 266.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/18/2025 21:37:39
-  entityCount: 2159
+  time: 08/28/2025 20:56:05
+  entityCount: 2163
 maps:
 - 1
 grids:
@@ -1801,56 +1801,86 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 20.5,7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 339
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 20.5,6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 343
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 19.5,4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 397
     components:
     - type: Transform
       pos: 8.5,28.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 399
     components:
     - type: Transform
       pos: 9.5,28.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1023
     components:
     - type: Transform
       pos: -6.5,-27.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1024
     components:
     - type: Transform
       pos: -7.5,-27.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1025
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -18.5,-6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1031
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -18.5,-5.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1036
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -17.5,-3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AirlockSyndicateLocked
   entities:
   - uid: 1333
@@ -1859,30 +1889,45 @@ entities:
       rot: 3.141592653589793 rad
       pos: -10.5,-34.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1338
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.5,27.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1714
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -24.5,-1.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1773
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 32.5,2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1774
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 32.5,3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AlwaysPoweredlightBlue
   entities:
   - uid: 105
@@ -1891,6 +1936,9 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 10.5,-12.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AlwaysPoweredLightExterior
   entities:
   - uid: 3
@@ -1899,104 +1947,158 @@ entities:
       rot: 3.141592653589793 rad
       pos: 25.5,17.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 4
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 17.5,17.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 6
     components:
     - type: Transform
       pos: 17.5,26.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 80
     components:
     - type: Transform
       pos: 25.5,26.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 82
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 7.5,-4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 84
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,5.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 119
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.5,-24.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 120
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,25.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 125
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 5.5,21.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 126
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 14.5,20.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 127
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 5.5,18.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 128
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -12.5,-19.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 129
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-20.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 130
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-17.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 144
     components:
     - type: Transform
       pos: 1.5,8.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 147
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 0.5,-7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 168
     components:
     - type: Transform
       pos: 5.5,9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 169
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,-8.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AlwaysPoweredLightLED
   entities:
   - uid: 133
@@ -2004,147 +2106,243 @@ entities:
     - type: Transform
       pos: -14.5,-3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 139
     components:
     - type: Transform
       pos: -19.5,0.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 140
     components:
     - type: Transform
       pos: -22.5,0.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1420
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -9.5,19.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1421
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,19.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1422
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 7.5,-18.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1436
     components:
     - type: Transform
       pos: 16.5,15.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1437
     components:
     - type: Transform
       pos: 19.5,15.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1440
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -17.5,-14.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1441
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -14.5,-14.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1462
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -14.5,-27.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1463
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -14.5,-33.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1464
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -14.5,-30.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1466
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 12.5,28.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1467
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 16.5,28.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1468
     components:
     - type: Transform
       pos: 12.5,34.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1469
     components:
     - type: Transform
       pos: 16.5,34.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1697
     components:
     - type: Transform
       pos: -16.5,0.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1775
     components:
     - type: Transform
       pos: 21.5,15.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1776
     components:
     - type: Transform
       pos: 25.5,15.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1777
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 25.5,4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1778
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 21.5,4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1779
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 18.5,2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1780
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 27.5,2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1837
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 16.5,4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1838
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 31.5,2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
+  - uid: 2160
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 18.5,-0.5
+      parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
+  - uid: 2161
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 25.5,-1.5
+      parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AlwaysPoweredlightRed
   entities:
   - uid: 112
@@ -2153,6 +2351,9 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -8.5,13.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AlwaysPoweredLightSodium
   entities:
   - uid: 134
@@ -2161,35 +2362,53 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -23.5,-3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 138
     components:
     - type: Transform
       pos: -21.5,-16.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 141
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -21.5,-25.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1702
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -23.5,-14.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1834
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -25.5,-33.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1835
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -25.5,-30.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AlwaysPoweredWallLight
   entities:
   - uid: 89
@@ -2197,64 +2416,97 @@ entities:
     - type: Transform
       pos: 6.5,-9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 93
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,10.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 94
     components:
     - type: Transform
       pos: 9.5,-5.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 98
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -7.5,6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 108
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 8.5,-12.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 110
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -6.5,13.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 113
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 11.5,-18.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 114
     components:
     - type: Transform
       pos: 14.5,-9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 118
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -12.5,10.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 148
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.5,-11.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1839
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,12.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: AmmoniaCanister
   entities:
   - uid: 1688
@@ -2270,6 +2522,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: 21.5,-4.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: APCHyperCapacity
   entities:
   - uid: 1894
@@ -2278,11 +2532,15 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,16.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
   - uid: 1937
     components:
     - type: Transform
       pos: 2.5,-15.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: BannerBlue
   entities:
   - uid: 1045
@@ -2404,24 +2662,32 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -7.5,17.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallic
   - uid: 450
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.5,16.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallic
   - uid: 451
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -8.5,16.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallic
   - uid: 452
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -8.5,17.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallic
   - uid: 1380
     components:
     - type: Transform
@@ -4511,11 +4777,17 @@ entities:
     - type: Transform
       pos: 7.5,-3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1386
     components:
     - type: Transform
       pos: -5.5,4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: DisposalBend
   entities:
   - uid: 210
@@ -6907,12 +7179,29 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 25.5,26.5
       parent: 2
+- proto: FoodBakedGrilledCheeseSandwich
+  entities:
+  - uid: 2162
+    components:
+    - type: MetaData
+      desc: OM NOM NOM OM NOM ...sandvich good!
+      name: sandvich
+    - type: Transform
+      pos: 0.9925473,0.4854308
+      parent: 2
 - proto: FoodBurgerClown
   entities:
   - uid: 2128
     components:
     - type: Transform
       pos: 12.450594,26.4161
+      parent: 2
+- proto: FoodPlate
+  entities:
+  - uid: 2163
+    components:
+    - type: Transform
+      pos: 0.98213065,0.50627816
       parent: 2
 - proto: GasCanisterBrokenBase
   entities:
@@ -7023,24 +7312,32 @@ entities:
       rot: 3.141592653589793 rad
       pos: 10.5,-16.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallicStrong
   - uid: 877
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 9.5,-16.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallicStrong
   - uid: 878
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 9.5,-15.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallicStrong
   - uid: 879
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 10.5,-15.5
       parent: 2
+    - type: Damageable
+      damageModifierSet: StructuralMetallicStrong
   - uid: 1379
     components:
     - type: Transform
@@ -7327,6 +7624,9 @@ entities:
     - type: Transform
       pos: -18.5,-30.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: LockerCaptain
   entities:
   - uid: 1156
@@ -7608,386 +7908,590 @@ entities:
     - type: Transform
       pos: -2.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 86
     components:
     - type: Transform
       pos: -3.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 87
     components:
     - type: Transform
       pos: -4.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 88
     components:
     - type: Transform
       pos: -5.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 90
     components:
     - type: Transform
       pos: 4.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 91
     components:
     - type: Transform
       pos: 5.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 92
     components:
     - type: Transform
       pos: 6.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 95
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 96
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 97
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -2.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 100
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 4.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 101
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 102
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 6.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 103
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 7.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 135
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -8.5,-0.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 136
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -9.5,-0.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 137
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -10.5,-0.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 151
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -12.5,3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 152
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -12.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 318
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 326
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 7.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 455
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 9.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 456
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 10.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 457
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 12.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 458
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 11.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 459
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 13.5,18.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 460
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 13.5,19.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 461
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 13.5,20.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 462
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 13.5,21.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 463
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 13.5,22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 464
     components:
     - type: Transform
       pos: 12.5,23.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 465
     components:
     - type: Transform
       pos: 11.5,23.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 466
     components:
     - type: Transform
       pos: 10.5,23.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 467
     components:
     - type: Transform
       pos: 9.5,23.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 468
     components:
     - type: Transform
       pos: 8.5,23.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 469
     components:
     - type: Transform
       pos: 7.5,23.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 476
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,18.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 652
     components:
     - type: Transform
       pos: 10.5,1.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 653
     components:
     - type: Transform
       pos: 11.5,1.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 654
     components:
     - type: Transform
       pos: 12.5,1.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 667
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 14.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 668
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 14.5,-2.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1116
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,-22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1117
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -6.5,-22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1118
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -7.5,-22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1119
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -8.5,-22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1120
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -9.5,-22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1121
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -10.5,-22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1122
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,-21.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1123
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,-20.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1124
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,-19.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1125
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,-18.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1126
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,-17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1127
     components:
     - type: Transform
       pos: -10.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1128
     components:
     - type: Transform
       pos: -9.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1129
     components:
     - type: Transform
       pos: -8.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1130
     components:
     - type: Transform
       pos: -7.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1131
     components:
     - type: Transform
       pos: -5.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1132
     components:
     - type: Transform
       pos: -6.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1134
     components:
     - type: Transform
       pos: -3.5,-17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1826
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-27.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1827
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-28.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1828
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-29.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1829
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-30.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1830
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-33.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1831
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-35.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1832
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-36.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1833
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,-34.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
 - proto: RailingCorner
   entities:
   - uid: 389
@@ -7996,12 +8500,18 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 6.5,18.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1133
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -4.5,-17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
 - proto: RailingCornerSmall
   entities:
   - uid: 150
@@ -8010,71 +8520,107 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 13.5,1.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 158
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 7.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 166
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -5.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 470
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.5,23.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 471
     components:
     - type: Transform
       pos: 13.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 473
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 6.5,17.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1135
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -11.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1136
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -4.5,-16.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1137
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -11.5,-22.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1843
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 8.5,8.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1844
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -6.5,-7.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1851
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -11.5,-0.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
 - proto: ReinforcedWindow
   entities:
   - uid: 327
@@ -8314,104 +8860,158 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 15.5,12.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 227
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 15.5,13.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 235
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 15.5,14.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 262
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 14.5,7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 263
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 14.5,6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 264
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 14.5,9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 265
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 14.5,10.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 940
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -12.5,-9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 941
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -12.5,-8.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 942
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -12.5,-6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 943
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -12.5,-5.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 949
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -13.5,-11.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 950
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -13.5,-12.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 951
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -13.5,-13.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 964
     components:
     - type: Transform
       pos: -17.5,-26.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1328
     components:
     - type: Transform
       pos: -16.5,-26.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1346
     components:
     - type: Transform
       pos: -19.5,-15.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1347
     components:
     - type: Transform
       pos: -20.5,-15.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: SignalButtonDirectional
   entities:
   - uid: 1314
@@ -8431,6 +9031,8 @@ entities:
         224:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1315
     components:
     - type: Transform
@@ -8445,6 +9047,8 @@ entities:
         264:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1316
     components:
     - type: Transform
@@ -8459,6 +9063,8 @@ entities:
         263:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1317
     components:
     - type: Transform
@@ -8476,6 +9082,8 @@ entities:
         224:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1318
     components:
     - type: Transform
@@ -8490,6 +9098,8 @@ entities:
         264:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1319
     components:
     - type: Transform
@@ -8504,6 +9114,8 @@ entities:
         263:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1320
     components:
     - type: Transform
@@ -8518,6 +9130,8 @@ entities:
         943:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1321
     components:
     - type: Transform
@@ -8532,6 +9146,8 @@ entities:
         941:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1322
     components:
     - type: Transform
@@ -8549,6 +9165,8 @@ entities:
         949:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1323
     components:
     - type: Transform
@@ -8566,6 +9184,8 @@ entities:
         949:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1324
     components:
     - type: Transform
@@ -8580,6 +9200,8 @@ entities:
         941:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1325
     components:
     - type: Transform
@@ -8594,6 +9216,8 @@ entities:
         943:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1768
     components:
     - type: Transform
@@ -8608,6 +9232,8 @@ entities:
         1741:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1770
     components:
     - type: Transform
@@ -8622,6 +9248,8 @@ entities:
         1346:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1771
     components:
     - type: Transform
@@ -8635,6 +9263,8 @@ entities:
         1347:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1772
     components:
     - type: Transform
@@ -8649,12 +9279,16 @@ entities:
         1328:
         - - Pressed
           - Toggle
+    - type: Fixtures
+      fixtures: {}
   - uid: 1819
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -26.5,-30.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: SignSecureMed
   entities:
   - uid: 2097
@@ -8663,12 +9297,16 @@ entities:
       rot: 3.141592653589793 rad
       pos: 31.5,4.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
   - uid: 2098
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 31.5,1.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: SignSecureSmallRed
   entities:
   - uid: 2096
@@ -8676,11 +9314,15 @@ entities:
     - type: Transform
       pos: 18.5,1.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
   - uid: 2099
     components:
     - type: Transform
       pos: -26.5,-33.5
       parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: SmallLight
   entities:
   - uid: 1426
@@ -8689,103 +9331,157 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 1.5,-12.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1429
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 0.5,13.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1442
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 11.5,10.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1443
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -9.5,-9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1444
     components:
     - type: Transform
       pos: -5.5,-25.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1445
     components:
     - type: Transform
       pos: -8.5,-25.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1446
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 7.5,26.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1447
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 10.5,26.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1448
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -11.5,2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1449
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.5,-1.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1450
     components:
     - type: Transform
       pos: -13.5,7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1451
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 15.5,-6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1452
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -16.5,19.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1453
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 18.5,-18.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1454
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 10.5,-23.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1455
     components:
     - type: Transform
       pos: -8.5,24.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1465
     components:
     - type: Transform
       pos: -5.5,-28.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1470
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 7.5,29.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: SMESBasic
   entities:
   - uid: 2124
@@ -9341,11 +10037,17 @@ entities:
     - type: Transform
       pos: 1.5,-7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1383
     components:
     - type: Transform
       pos: 0.5,-7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: SubstationBasic
   entities:
   - uid: 1893
@@ -9869,6 +10571,9 @@ entities:
     - type: Transform
       pos: 2.5,7.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
 - proto: VendingMachineSnackBlue
   entities:
   - uid: 1387
@@ -9876,6 +10581,9 @@ entities:
     - type: Transform
       pos: -0.5,-6.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
 - proto: WallPlastitaniumIndestructible
   entities:
   - uid: 81
@@ -13401,24 +14109,36 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 157
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 3.5,4.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 160
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -1.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 161
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 3.5,-3.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 386
     components:
     - type: Transform
@@ -13476,105 +14196,159 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -0.5,3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 104
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.5,0.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 115
     components:
     - type: Transform
       pos: 6.5,8.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 116
     components:
     - type: Transform
       pos: 7.5,8.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 117
     components:
     - type: Transform
       pos: 4.5,8.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 122
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 8.5,6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 149
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.5,-2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 162
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,-3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 163
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.5,-3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 164
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,0.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 165
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,-2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 914
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -2.5,-7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 915
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,-7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 916
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,-7.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 917
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -6.5,-5.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1840
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.5,4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1841
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 1842
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,4.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: WoodDoor
   entities:
   - uid: 564
@@ -13594,11 +14368,17 @@ entities:
     - type: Transform
       pos: 1.5,8.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
   - uid: 1385
     components:
     - type: Transform
       pos: 0.5,8.5
       parent: 2
+    missingComponents:
+    - Destructible
+    - Damageable
 - proto: WoodenSupport
   entities:
   - uid: 5
