@@ -1,4 +1,8 @@
-﻿using Content.Shared.Random.Helpers;
+﻿using Content.Shared._Moffstation;
+using Content.Shared.EntityEffects;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Inventory;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Trigger.Components.Conditions;
 using Content.Shared.Verbs;
 using Robust.Shared.Random;
@@ -17,6 +21,10 @@ public sealed partial class TriggerSystem
         SubscribeLocalEvent<ToggleTriggerConditionComponent, GetVerbsEvent<AlternativeVerb>>(OnToggleGetAltVerbs);
 
         SubscribeLocalEvent<RandomChanceTriggerConditionComponent, AttemptTriggerEvent>(OnRandomChanceTriggerAttempt);
+
+        SubscribeLocalEvent<EntityEffectTriggerConditionComponent, AttemptTriggerEvent>(OnEntityEffectTriggerAttempt);
+        SubscribeLocalEvent<EquipeeEntityEffectTriggerConditionComponent, AttemptTriggerEvent>(OnEquipeeEntityEffectTriggerAttempt);
+        SubscribeLocalEvent<HolderEntityEffectTriggerConditionComponent, AttemptTriggerEvent>(OnHolderEntityEffectTriggerAttempt);
     }
 
     private void OnWhitelistTriggerAttempt(Entity<WhitelistTriggerConditionComponent> ent, ref AttemptTriggerEvent args)
@@ -75,6 +83,68 @@ public sealed partial class TriggerSystem
             var rand = new System.Random(seed);
 
             args.Cancelled |= !rand.Prob(ent.Comp.SuccessChance); // When not successful, Cancelled = true
+        }
+    }
+
+    private void OnEntityEffectTriggerAttempt(
+        Entity<EntityEffectTriggerConditionComponent> ent,
+        ref AttemptTriggerEvent args
+    )
+    {
+        HandleEntityEffectTriggerAttempt(ent, ent, ref args);
+    }
+
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+
+    private void OnEquipeeEntityEffectTriggerAttempt(
+        Entity<EquipeeEntityEffectTriggerConditionComponent> ent,
+        ref AttemptTriggerEvent args
+    )
+    {
+        if (!_inventory.InSlotWithFlags(ent.Owner, ent.Comp.Slots) ||
+            !TryComp(ent, out TransformComponent? xform))
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        HandleEntityEffectTriggerAttempt(xform.ParentUid, ent, ref args);
+    }
+
+    private void OnHolderEntityEffectTriggerAttempt(
+        Entity<HolderEntityEffectTriggerConditionComponent> ent,
+        ref AttemptTriggerEvent args
+    )
+    {
+        if (!TryComp(ent, out TransformComponent? xform) ||
+            !_hands.IsHolding(xform.ParentUid, ent))
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        HandleEntityEffectTriggerAttempt(xform.ParentUid, ent, ref args);
+    }
+
+    private void HandleEntityEffectTriggerAttempt(
+        EntityUid entity,
+        BaseEntityEffectTriggerConditionComponent conditionComp,
+        ref AttemptTriggerEvent args
+    )
+    {
+        if (args.Key != null &&
+            !conditionComp.Keys.Contains(args.Key))
+            args.Cancelled = true;
+
+        var entityEffectBaseArgs = new EntityEffectBaseArgs(entity, EntityManager);
+        foreach (var condition in conditionComp.Conditions)
+        {
+            if (!condition.Condition(entityEffectBaseArgs))
+            {
+                args.Cancelled = true;
+                break;
+            }
         }
     }
 }
