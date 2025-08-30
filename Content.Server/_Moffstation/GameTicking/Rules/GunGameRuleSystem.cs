@@ -99,7 +99,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
         while (query.MoveNext(out var uid, out var gunGame, out var respawnTracker, out var rule))
         {
             if (!GameTicker.IsGameRuleActive(uid, rule))
-		continue;
+                continue;
 
             // Force them to respawn so they don't have to wait around.
             // This has to happen before we check if a player killed them, because they might have died
