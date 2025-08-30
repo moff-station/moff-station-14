@@ -18,10 +18,10 @@
     sound: *BasePlushieSound
   - type: EmitSoundOnTrigger
     sound: *BasePlushieSound
-  - type: UseDelay
-    delay: 3.0
+  # - type: UseDelay # MoffStation: Reverts Plushie nerf
+  #   delay: 3.0 # MoffStation: Reverts Plushie nerf
   - type: MeleeWeapon
-    attackRate: 0.333
+    # attackRate: 0.333 # MoffStation: Reverts Plushie nerf
     wideAnimationRotation: 180
     soundHit: *BasePlushieSound
     damage:

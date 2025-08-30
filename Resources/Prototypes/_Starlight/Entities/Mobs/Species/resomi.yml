@@ -6,6 +6,8 @@
   components:
   - type: HumanoidAppearance
     species: Resomi
+    undergarmentTop: UndergarmentTopTanktopVox
+    undergarmentBottom: UndergarmentBottomBoxersVox
   - type: DamageVisuals
     thresholds: [ 10, 30, 50, 70]
     targetLayers:
@@ -88,6 +90,11 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
+            state: head
       eyes:
         sizeMaps:
           32:
@@ -98,11 +105,6 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: hands
-      head:
-        sizeMaps:
-          32:
-            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
-            state: head
       back:
         sizeMaps:
           32:
@@ -149,6 +151,11 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
+            state: head
       eyes:
         sizeMaps:
           32:
@@ -159,11 +166,6 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: hands
-      head:
-        sizeMaps:
-          32:
-            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
-            state: head
       back:
         sizeMaps:
           32:
