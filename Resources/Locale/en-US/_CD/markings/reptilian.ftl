@@ -97,15 +97,6 @@ marking-UndergarmentTopTanktop = Tanktop
 
 # HeadSide
 
-marking-BurqaSolidLizard = Burqa
-marking-BurqaSolidLizard-burqasolidlizard = Burqa
-
-marking-HijabFashionableLizard = Hijab (Fashionable)
-marking-HijabFashionableLizard-hijabchiclizard = Hijab (Fashionable)
-
-marking-HijabSimpleLizard = Hijab (Simple)
-marking-HijabSimpleLizard-hijabsimplelizard = Hijab (Simple)
-
 marking-LizardKoboldEarsMid = Lizard Ears (Kobold Soft)
 marking-LizardKoboldEarsMid-koboldearsmid = Ears
 
