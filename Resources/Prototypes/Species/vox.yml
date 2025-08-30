@@ -79,7 +79,7 @@
     Tail:
       points: 1
       required: false # CD
-      #defaultMarkings: [ VoxTail ]
+      defaultMarkings: [ VoxTailBack ]  # Moffstation - Vox markings
 
 - type: humanoidBaseSprite
   id: MobVoxEyes
