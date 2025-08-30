@@ -7,10 +7,10 @@
   name: bullet (.60 anti-vampirical)
   components:
   - type: Projectile
-    damage:
+    damage: # Deals normal (75) damage to unholy entities
       types:
         Piercing: 50
         Holy: 50
   - type: StaminaDamageOnCollide
-    damage: 50
+    damage: 60
 # Moffstation - End

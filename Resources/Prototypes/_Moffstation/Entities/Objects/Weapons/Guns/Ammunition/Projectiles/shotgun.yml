@@ -10,10 +10,10 @@
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     state: silver
   - type: Projectile
-    damage:
+    damage: # Deals normal (60) damage to unholy entities
       types:
-        Blunt: 2
-        Holy: 9
+        Piercing: 4
+        Holy: 10
 
 
 - type: entity

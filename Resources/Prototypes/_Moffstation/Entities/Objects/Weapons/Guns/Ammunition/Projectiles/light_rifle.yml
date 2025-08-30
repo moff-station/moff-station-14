@@ -7,8 +7,8 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
-    damage:
+    damage: # Deals normal (19) damage to unholy entities
       types:
-        Blunt: 2
-        Holy: 18
+        Piercing: 4
+        Holy: 17
 # Moffstation - End
