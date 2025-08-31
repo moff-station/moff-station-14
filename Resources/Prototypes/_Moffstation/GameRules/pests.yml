@@ -1,0 +1,18 @@
+- type: entity
+  id: TarboldMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 6
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobTarbold
+      prob: 0.02
+    specialEntries:
+    - id: MobTarbold
+      prob: 0.001
