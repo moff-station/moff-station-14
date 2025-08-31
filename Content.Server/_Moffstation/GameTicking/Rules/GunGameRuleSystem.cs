@@ -10,13 +10,13 @@ using Content.Server.Power.Components;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.EntityTable;
-using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Roles;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Server.Player;
 using Robust.Shared.Map;
@@ -43,8 +43,6 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly EntityTableSystem _entityTables = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
@@ -80,8 +78,8 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             gunGame.PlayerInfo.TryAdd(ev.Player.UserId,
                 new GunGamePlayerTrackingInfo(
                     ev.Player.UserId,
-                    new Queue<EntityTableSelector>(gunGame.RewardSpawnsQueue)));
-            SpawnCurrentWeapon(gunGame.PlayerInfo[ev.Player.UserId], gunGame);
+                    new Queue<ProtoId<StartingGearPrototype>>(gunGame.RewardSpawnsQueue)));
+            RefreshPlayerLoadout(gunGame.PlayerInfo[ev.Player.UserId], gunGame);
 
             _respawn.AddToTracker(ev.Player.UserId, (uid, tracker));
 
@@ -104,7 +102,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
 
             // Don't want other players picking up somebody's gun
             if (TryComp<GunGameTrackerComponent>(ev.Entity, out var gunGameTracker))
-                DeleteCurrentWeapons((ev.Entity, gunGameTracker), gunGame);
+                DeleteCurrentLoadout((ev.Entity, gunGameTracker), gunGame);
 
             // Force them to respawn so they don't have to wait around.
             if (TryComp<ActorComponent>(ev.Entity, out var actor))
@@ -117,7 +115,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
 
             playerInfo.Kills = 0;
             ProgressPlayerReward(playerInfo, gunGame);
-            SpawnCurrentWeapon(playerInfo, gunGame);
+            RefreshPlayerLoadout(playerInfo, gunGame);
         }
     }
 
@@ -142,13 +140,12 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     /// <summary>
     /// Deletes a GunGameRewardTrackerComponent's gear.
     /// </summary>
-    /// <param name="playerEntity">The component with the gear.</param>
     /// <remarks>
     /// Unequips all the spawned entities on the player before deleting them.
     /// Also removes nearby shell casings to clean things up.
     /// todo: once WeakEntityReference is implemented, ensure it's utilized here.
     /// </remarks>
-    private void DeleteCurrentWeapons(Entity<GunGameTrackerComponent> playerEntity, GunGameRuleComponent rule)
+    private void DeleteCurrentLoadout(Entity<GunGameTrackerComponent> playerEntity, GunGameRuleComponent rule)
     {
         // drop whatever is in their hands
         _hands.TryDrop(playerEntity.Owner, null, false, false);
@@ -180,7 +177,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     /// <param name="rule">The GunGameRuleComponent for this gamerule</param>
     private void ProgressPlayerReward(GunGamePlayerTrackingInfo playerInfo, GunGameRuleComponent rule)
     {
-        if (playerInfo.RewardQueue.Count > 1  // We want the last weapon to remain in the queue so we can peek it later.
+        if (playerInfo.RewardQueue.Count > 1 // We want the last weapon to remain in the queue so we can peek it later.
             && playerInfo.RewardQueue.TryDequeue(out _))
             return;
 
@@ -193,7 +190,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     /// </summary>
     /// <param name="playerInfo">The player's current round info</param>
     /// <param name="rule">The GunGameRuleComponent for this gamerule</param>
-    private void SpawnCurrentWeapon(GunGamePlayerTrackingInfo playerInfo, GunGameRuleComponent rule)
+    private void RefreshPlayerLoadout(GunGamePlayerTrackingInfo playerInfo, GunGameRuleComponent rule)
     {
         if (!_mind.TryGetMind(playerInfo.UserId, out _, out var mind))
             return;
@@ -201,51 +198,44 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
         if (mind.OwnedEntity is not { } playerEntity)
             return;
 
-        var gear = EnsureComp<GunGameTrackerComponent>(playerEntity);
-        DeleteCurrentWeapons((playerEntity, gear), rule);
+        var currentGear = EnsureComp<GunGameTrackerComponent>(playerEntity);
+        DeleteCurrentLoadout((playerEntity, currentGear), rule);
 
         if (playerInfo.RewardQueue.Count == 0) // If we somehow try to spawn somebody's weapon after they win
             return;
 
-        var slotTryOrder = new Queue<string>(rule.SlotTryOrder);
-
         // Peek the player's queue, and spawn their items
-        foreach (var item in _entityTables.GetSpawns(playerInfo.RewardQueue.Peek()))
-        {
-            SpawnItemAndEquip(
-                (playerEntity, gear),
-                item,
-                slotTryOrder,
-                rule);
-        }
+        SpawnPlayerLoadout((playerEntity, currentGear), playerInfo.RewardQueue.Peek(), rule);
     }
 
     /// <summary>
-    /// Attempts to spawn an item on a player in either their hands or the next available equipment slot according to
-    /// <see cref="Components.GunGameRuleComponent.SlotTryOrder"/>.
+    /// Spawns all the items specified in the player's current loadout. Dropping anything in a slot being filled.
+    /// This is used instead of one of the pre-existing equipping methods since we need to keep track of what is being
+    /// spawned.
     /// </summary>
-    private void SpawnItemAndEquip(Entity<GunGameTrackerComponent> player,
-        EntProtoId itemProto,
-        Queue<string> slotTryOrder,
-        GunGameRuleComponent rule)
+    private void SpawnPlayerLoadout(Entity<GunGameTrackerComponent> target,
+        ProtoId<StartingGearPrototype> gear,
+        GunGameRuleComponent gameRule)
     {
-        var itemEnt = Spawn(itemProto);
-        UpgradeEnergyWeapon(itemEnt, rule);
+        if (!_proto.TryIndex(gear, out var startingGear))
+            return;
 
-        player.Comp.CurrentRewards.Add(itemEnt);
-        while (slotTryOrder.TryDequeue(out var slot))
+        foreach (var (slotName, itemProto) in startingGear.Equipment)
         {
-            if (slot == "hand" && _hands.TryForcePickupAnyHand(player, itemEnt)
-                || _inventory.TryEquip(player, player, itemEnt, slot, true, true))
-                return;
+            _inventory.TryUnequip(target, slotName, true, true, false);
+            var itemEntity = Spawn(itemProto);
+            target.Comp.CurrentRewards.Add(itemEntity);
+            UpgradeEnergyWeapon(itemEntity, gameRule);
+            _inventory.TryEquip(target.Owner, itemEntity, slotName, silent: true, force: true);
         }
 
-        // if there's no slots that work, drop it on the ground
-        _transform.SetCoordinates(itemEnt,
-            new EntityCoordinates(Transform(player).ParentUid,
-                _random.NextFloat() - 0.5f,
-                _random.NextFloat() - 0.5f));
-        _transform.SetLocalRotation(itemEnt, _random.NextAngle());
+        foreach (var itemProto in startingGear.Inhand)
+        {
+            var itemEntity = Spawn(itemProto);
+            target.Comp.CurrentRewards.Add(itemEntity);
+            UpgradeEnergyWeapon(itemEntity, gameRule);
+            _hands.TryForcePickupAnyHand(target.Owner, itemEntity);
+        }
     }
 
     /// <summary>
@@ -267,18 +257,16 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             if (!_player.TryGetPlayerData(playerInfo.UserId, out var data))
                 continue;
 
+            var weaponName = Loc.GetString("gun-game-scoreboard-list-empty");
+            if (_proto.TryIndex(playerInfo.RewardQueue.Peek(), out var gear) &&
+                _proto.TryIndex(gear.Inhand.First(), out var proto))
+                weaponName = proto.Name;
+
             msg.AddMarkupOrThrow(Loc.GetString("gun-game-scoreboard-list-entry",
                 ("place", idx + 1),
                 ("name", data.UserName),
                 ("weaponsLeft", playerInfo.RewardQueue.Count - 1),
-                ("weapon",
-                    !playerInfo.RewardQueue.TryPeek(out var itemList)
-                       || !_proto.TryIndex(
-                           _entityTables.GetSpawns(itemList)
-                               .First(), // We assume the first item in the entity table is the player's weapon.
-                           out var proto)
-                    ? "None"
-                    : proto.Name)));
+                ("weapon", weaponName)));
             msg.PushNewline();
         }
 
@@ -286,8 +274,8 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
     }
 
     /// <summary>
-    /// Upgrades an energy weapon to have a rechargable battery.
-    /// This does account for weather the weapon contains a battery itself,
+    /// Upgrades an energy weapon to have a rechargeable battery.
+    /// This does account for whether the weapon contains a battery itself,
     /// at which point it grabs that battery and upgrades it instead.
     /// Also, this will set the recharge rate to only increase up to
     /// <see cref="GunGameRuleComponent.DefaultEnergyWeaponRechargeRate"/>.

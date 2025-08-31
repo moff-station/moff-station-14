@@ -4,6 +4,33 @@
   id: BaseMobResomi
   abstract: true
   components:
+  - type: HumanoidAppearance
+    species: Resomi
+    undergarmentTop: UndergarmentTopTanktopVox
+    undergarmentBottom: UndergarmentBottomBoxersVox
+  - type: DamageVisuals
+    thresholds: [ 10, 30, 50, 70]
+    targetLayers:
+    - "enum.HumanoidVisualLayers.Chest"
+    - "enum.HumanoidVisualLayers.Head"
+    - "enum.HumanoidVisualLayers.LArm"
+    - "enum.HumanoidVisualLayers.LLeg"
+    - "enum.HumanoidVisualLayers.RArm"
+    - "enum.HumanoidVisualLayers.RLeg"
+    - "enum.HumanoidVisualLayers.RHand"
+    - "enum.HumanoidVisualLayers.LHand"
+    - "enum.HumanoidVisualLayers.RFoot"
+    - "enum.HumanoidVisualLayers.LFoot"
+    damageOverlayGroups:
+      Brute:
+        sprite: _Starlight/Mobs/Effects/Resomi/brute_damage.rsi
+        color: "#C048C2"
+      Burn:
+        sprite: _Starlight/Mobs/Effects/Resomi/burn_damage.rsi
+  - type: FireVisuals
+    sprite: _Starlight/Mobs/Effects/onfire.rsi
+    normalState: Resomi_minor_burning
+    alternateState: Resomi_burning
   - type: Hunger
   - type: Thirst
   - type: Puller
@@ -151,6 +178,11 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
+            state: head
       eyes:
         sizeMaps:
           32:
@@ -161,11 +193,6 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: hands
-      head:
-        sizeMaps:
-          32:
-            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
-            state: head
       back:
         sizeMaps:
           32:
@@ -212,6 +239,11 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
+            state: head
       eyes:
         sizeMaps:
           32:
@@ -222,11 +254,6 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: hands
-      head:
-        sizeMaps:
-          32:
-            sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
-            state: head
       back:
         sizeMaps:
           32:
