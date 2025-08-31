@@ -19,6 +19,7 @@
 - type: speciesBaseSprites
   id: MobResomiSprites
   sprites:
+    Special: MobHumanoidAnyMarking
     Head: MobResomiHead
     Hair: MobResomiHair
     Chest: MobResomiTorso
@@ -28,6 +29,8 @@
     RHand: MobResomiRHand
     LArm: MobResomiLArm
     RArm: MobResomiRArm
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     LLeg: MobResomiLLeg
     RLeg: MobResomiRLeg
     LFoot: MobResomiLFoot
@@ -38,6 +41,9 @@
   id: MobResomiMarkingLimits
   onlyWhitelisted: true
   points:
+    Special:
+      points: 10
+      required: false
     Hair:
       points: 1
       required: false
@@ -52,7 +58,7 @@
       points: 4
       required: false
     Head:
-      points: 2
+      points: 4
       required: false
     Chest:
       points: 1

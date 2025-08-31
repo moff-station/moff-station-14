@@ -11,6 +11,7 @@ public sealed class GunSystem : EntitySystem
 {
     [Dependency] private readonly SharedGunSystem _gunSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -23,9 +24,25 @@ public sealed class GunSystem : EntitySystem
         if (!_random.Prob(ent.Comp.FireOnLandChance))
             return;
 
-        var direction = new Vector2(-ent.Comp.DefaultDirection.Y, ent.Comp.DefaultDirection.X);
-        var coordinates = new EntityCoordinates(ent, direction);
+        EnsureComp<GunFireOnLandDischargingComponent>(ent);
+    }
 
-        _gunSystem.AttemptShoot(ent.Owner, ent.Owner, ent.Comp, coordinates);
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<GunComponent, GunFireOnLandDischargingComponent>();
+        while (query.MoveNext(out var uid, out var gun, out _))
+        {
+            RemCompDeferred<GunFireOnLandDischargingComponent>(uid);
+
+            var direction = new Vector2(-gun.DefaultDirection.Y, gun.DefaultDirection.X);
+            var coordinates = new EntityCoordinates(uid, direction);
+
+            _gunSystem.AttemptShoot(uid, uid, gun, coordinates);
+        }
     }
 }
+
+[RegisterComponent]
+public sealed partial class GunFireOnLandDischargingComponent : Component;
