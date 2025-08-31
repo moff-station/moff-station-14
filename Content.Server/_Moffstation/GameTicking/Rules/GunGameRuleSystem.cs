@@ -111,17 +111,17 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             if (TryComp<ActorComponent>(ev.Entity, out var actor))
                 _respawn.RespawnPlayer((ev.Entity, actor), (uid, respawnTracker));
 
-            if (ev.Primary is not KillPlayerSource player)
+            if (ev.Primary is not KillPlayerSource killer)
                 continue;
 
-            var playerInfo = gunGame.PlayerInfo[player.PlayerId];
+            var killerInfo = gunGame.PlayerInfo[killer.PlayerId];
             // Only allow the player to receive their next weapon after they get enough kills.
-            if (++playerInfo.Kills < gunGame.KillsPerWeapon)
+            if (++killerInfo.Kills < gunGame.KillsPerWeapon)
                 continue;
 
-            playerInfo.Kills = 0;
-            ProgressPlayerReward(playerInfo, gunGame);
-            SpawnCurrentWeapon(playerInfo, gunGame);
+            killerInfo.Kills = 0;
+            ProgressPlayerReward(killerInfo, gunGame);
+            SpawnCurrentWeapon(killerInfo, gunGame);
         }
     }
 
