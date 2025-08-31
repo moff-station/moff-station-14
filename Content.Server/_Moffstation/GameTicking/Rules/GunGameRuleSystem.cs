@@ -111,7 +111,9 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             if (TryComp<ActorComponent>(ev.Entity, out var actor))
                 _respawn.RespawnPlayer((ev.Entity, actor), (uid, respawnTracker));
 
-            if (ev.Primary is not KillPlayerSource killer)
+            // Make sure the thing that killed them was a player, and that it was a player
+            //  other than their own foolish self. Can't suicide your way to victory.
+            if (ev.Suicide || ev.Primary is not KillPlayerSource killer)
                 continue;
 
             var killerInfo = gunGame.PlayerInfo[killer.PlayerId];
