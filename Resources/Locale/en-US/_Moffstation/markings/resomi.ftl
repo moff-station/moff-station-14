@@ -22,6 +22,7 @@ marking-ResomiRArmFeathers = Right Hand Feathers
 marking-ResomiRArmFeathers-r_hand_feathers_primary = Right Hand Feathers's Primary
 marking-ResomiRArmFeathers-r_hand_feathers_secondary = Right Hand Feather's Secondary
 
-marking-ResomiTail-tail_top = Tail Top
-marking-ResomiTail-tail_middle = Tail Middle
-marking-ResomiTail-tail_bottom = Tail Bottom
+marking-ResomiTailComplex = Resomi tail (complex)
+marking-ResomiTailComplex-tail_top = Tail Top
+marking-ResomiTailComplex-tail_middle = Tail Middle
+marking-ResomiTailComplex-tail_bottom = Tail Bottom
