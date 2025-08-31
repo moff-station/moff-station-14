@@ -4,10 +4,11 @@ marking-ResomiLLegFeathers-l_foot_feathers_secondary = Foot Feather's Secondary
 marking-ResomiRLegFeathers-r_foot_feathers_primary = Foot Feather's Primary
 marking-ResomiRLegFeathers-r_foot_feathers_secondary = Foot Feather's Secondary
 
-marking-ResomiTailFeathers-tail_feathers_right_upper = Right Upper Feather's
-marking-ResomiTailFeathers-tail_feathers_right_lower = Right Lower Feather's
-marking-ResomiTailFeathers-tail_feathers_left_upper = Left Upper Feather's
-marking-ResomiTailFeathers-tail_feathers_left_lower = Left Lower Feather's
+marking-ResomiTailFeathersComplex = Tail feathers (complex)
+marking-ResomiTailFeathersComplex-tail_feathers_right_upper = Right Upper Feather's
+marking-ResomiTailFeathersComplex-tail_feathers_right_lower = Right Lower Feather's
+marking-ResomiTailFeathersComplex-tail_feathers_left_upper = Left Upper Feather's
+marking-ResomiTailFeathersComplex-tail_feathers_left_lower = Left Lower Feather's
 
 marking-ResomiLArmFade-l_arm_fade = Left Arm Fade
 marking-ResomiLArmFade = Left Arm Fade

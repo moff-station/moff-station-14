@@ -25,3 +25,11 @@
   - sprite: _Starlight/Mobs/Customization/resomi_parts.rsi
     state: fluff_head_up
 
+- type: marking
+  id: ResomiTailFeathers
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: _Starlight/Mobs/Customization/resomi_parts.rsi
+    state: tail_feathers
