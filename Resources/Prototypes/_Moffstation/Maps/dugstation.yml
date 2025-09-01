@@ -1,15 +1,15 @@
-- type: gameMap  
+- type: gameMap
   id: Dugstation
   mapName: 'Dugstation'
   mapPath: /Maps/_Moffstation/dugstation.yml
   minPlayers: 7
-  maxPlayers: 50
-  stations:                                                                                                                                                                  id: Dugstation                                                                                                                                                                          mapName: 'Dugstation'                                                                                                                                                                   mapPath: /Maps/_Moffstation/dugstation.yml                                                                                                                                              minPlayers: 0                                                                                                                                                                           maxPlayers: 20 # Suitable for deadpop, usually there's a few people who have fallen asleep by this point so the max players is set fairly high. If there's not enough slots, there's >  stations:
+  maxPlayers: 50  # Moffstation - Playercount changes
+  stations:
     Dugstation:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Dugstation {1}'
+          mapNameTemplate: '{0} Dug-station {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
@@ -25,22 +25,22 @@
             ChiefEngineer: [ 1, 1 ]
             ResearchDirector: [ 1, 1 ]
             Quartermaster: [ 1, 1 ]
-            #service (7 - 8)
+            #service (9 - 10)
             Bartender: [ 1, 1 ]
             Botanist: [ 2, 2 ]
             Chef: [ 1, 1 ]
-            Janitor: [ 1, 2 ]
+            Janitor: [ 2, 2 ]
             Chaplain: [ 1, 1 ]
-            ServiceWorker: [ 1, 1 ]
+            ServiceWorker: [ 1, 2 ]
             #engineering (4)
             AtmosphericTechnician: [ 1, 1 ]
             StationEngineer: [ 3, 3 ]
             TechnicalAssistant: [ 2, 2 ] #intern, not counted
             #medical (5)
-            Chemist: [ 1, 1 ]
-            MedicalDoctor: [ 3, 3 ]
+            Chemist: [ 2, 2 ]
+            MedicalDoctor: [ 2, 2 ]
             Paramedic: [ 1, 1 ]
-            MedicalIntern: [ 2, 2 ] #intern, not counted
+            MedicalIntern: [ 1, 1 ] #intern, not counted
             #science (2)
             Scientist: [ 2, 2 ]
             ResearchAssistant: [ 1, 1 ] #intern, not counted
