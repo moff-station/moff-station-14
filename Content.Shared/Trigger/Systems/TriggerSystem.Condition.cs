@@ -1,16 +1,24 @@
-﻿using Content.Shared._Moffstation;
+﻿using Content.Shared.Trigger.Components.Conditions;
+using Content.Shared.Verbs;
+using Robust.Shared.Random;
+
+// Moffstation - Start
+using Content.Shared._Moffstation.Trigger.Components.Conditions;
 using Content.Shared.EntityEffects;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.Random.Helpers;
-using Content.Shared.Trigger.Components.Conditions;
-using Content.Shared.Verbs;
-using Robust.Shared.Random;
+// Moffstation - End
 
 namespace Content.Shared.Trigger.Systems;
 
 public sealed partial class TriggerSystem
 {
+    // Moffstation - Start
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    // Moffstation - End
+
     private void InitializeCondition()
     {
         SubscribeLocalEvent<WhitelistTriggerConditionComponent, AttemptTriggerEvent>(OnWhitelistTriggerAttempt);
@@ -22,9 +30,13 @@ public sealed partial class TriggerSystem
 
         SubscribeLocalEvent<RandomChanceTriggerConditionComponent, AttemptTriggerEvent>(OnRandomChanceTriggerAttempt);
 
+        // Moffstation - Start - EntityTriggerCondition components
         SubscribeLocalEvent<EntityEffectTriggerConditionComponent, AttemptTriggerEvent>(OnEntityEffectTriggerAttempt);
-        SubscribeLocalEvent<EquipeeEntityEffectTriggerConditionComponent, AttemptTriggerEvent>(OnEquipeeEntityEffectTriggerAttempt);
-        SubscribeLocalEvent<HolderEntityEffectTriggerConditionComponent, AttemptTriggerEvent>(OnHolderEntityEffectTriggerAttempt);
+        SubscribeLocalEvent<EquipeeEntityEffectTriggerConditionComponent, AttemptTriggerEvent>(
+            OnEquipeeEntityEffectTriggerAttempt);
+        SubscribeLocalEvent<HolderEntityEffectTriggerConditionComponent, AttemptTriggerEvent>(
+            OnHolderEntityEffectTriggerAttempt);
+        // Moffstation - End
     }
 
     private void OnWhitelistTriggerAttempt(Entity<WhitelistTriggerConditionComponent> ent, ref AttemptTriggerEvent args)
@@ -45,7 +57,8 @@ public sealed partial class TriggerSystem
             args.Cancelled |= !ent.Comp.Enabled;
     }
 
-    private void OnToggleGetAltVerbs(Entity<ToggleTriggerConditionComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    private void OnToggleGetAltVerbs(Entity<ToggleTriggerConditionComponent> ent,
+        ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess || args.Hands == null)
             return;
@@ -86,6 +99,7 @@ public sealed partial class TriggerSystem
         }
     }
 
+    // Moffstation - Start - EntityEffectTriggerCondition components
     private void OnEntityEffectTriggerAttempt(
         Entity<EntityEffectTriggerConditionComponent> ent,
         ref AttemptTriggerEvent args
@@ -93,9 +107,6 @@ public sealed partial class TriggerSystem
     {
         HandleEntityEffectTriggerAttempt(ent, ent, ref args);
     }
-
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     private void OnEquipeeEntityEffectTriggerAttempt(
         Entity<EquipeeEntityEffectTriggerConditionComponent> ent,
@@ -147,4 +158,5 @@ public sealed partial class TriggerSystem
             }
         }
     }
+    // Moffstation - End
 }

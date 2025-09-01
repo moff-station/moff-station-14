@@ -394,7 +394,7 @@ namespace Content.Shared.Damage
         }
     }
 
-    public sealed class DamageChangedEvent : EntityEventArgs, IInventoryRelayEvent
+    public sealed class DamageChangedEvent : EntityEventArgs, IInventoryRelayEvent // Moffstation - Add IInventoryRelayEvent
     {
         /// <summary>
         ///     This is the component whose damage was changed.
@@ -429,7 +429,7 @@ namespace Content.Shared.Damage
         /// </summary>
         public readonly EntityUid? Origin;
 
-        public SlotFlags TargetSlots { get => SlotFlags.All; }
+        public SlotFlags TargetSlots => SlotFlags.All; // Moffstation - IInventoryRelayEvent
 
         public DamageChangedEvent(DamageableComponent damageable, DamageSpecifier? damageDelta, bool interruptsDoAfters, EntityUid? origin)
         {
