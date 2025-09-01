@@ -74,6 +74,11 @@
     quickEquip: false
     slots:
       - Belt
+  #Moffstation - Start - Make Flashlights recyclable
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 50
+  #Moffstation - End
 
 - type: entity
   name: seclite
@@ -125,6 +130,11 @@
     quickEquip: false
     slots:
       - Belt
+  #Moffstation - Start - Make Flashlights recyclable
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+  #Moffstation - End
 
 - type: entity
   parent: FlashlightLantern

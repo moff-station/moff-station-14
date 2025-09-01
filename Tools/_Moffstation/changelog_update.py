@@ -12,12 +12,12 @@ except ImportError:
     from yaml import Loader, Dumper
 import traceback
 import subprocess # For gh usage, needs to be installed.
-import datetime
+from dateutil.parser import isoparse # requires dateutil
 
 repo_url = "https://github.com/moff-station/moff-station-14.git"
 changelog_filepath = "Resources/Changelog/Mofflog.yml"
-time_format = "%Y-%m-%dT%H:%M:%S.000%:z"
-changelog_entries_to_pull = 50
+time_format = f'%Y-%m-%dT%H:%M:%S.000'
+changelog_entries_to_pull = 500
 
 changelog_section_regex = re.compile(r"(?::cl:|🆑)\s*(?P<author>[\w\s,]*?)?\s*$\s*(?P<changelogs>.*)\s*", re.DOTALL | re.MULTILINE)
 changelog_entry_regex = re.compile(r"\s*-\s*(?P<type>add|remove|tweak|fix)[:]\s*(?P<message>.*?)\s*$", re.IGNORECASE | re.MULTILINE)
@@ -73,7 +73,7 @@ def get_all_changelogs(recent_prs):
     for pr in recent_prs:
         changelogs = {
             "id" : pr["number"],
-            "time" : datetime.datetime.fromisoformat(pr["mergedAt"]).strftime('{0}'.format(time_format)),
+            "time" : isoparse(pr["mergedAt"]).strftime(time_format),
             "url": pr["url"]
         }
         try:

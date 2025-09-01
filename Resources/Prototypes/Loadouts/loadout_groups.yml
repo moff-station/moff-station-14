@@ -3,13 +3,32 @@
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
-  maxLimit: 3
+  maxLimit: 5 # Moffstation - (Nox Loadout Improvements) - After all, why not?
   loadouts:
   - FlowerWreath
   - Hairflower
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
+  # Moffstation - Start - Expanded roundstart plushies!
+  - PlushieArachind
+  - PlushieAtmosian
+  - PlushieBee
+  - PlushieBorg
+  - PlushieCarp
+  - PlushieDiona
+  - PlushieExperiment
+  - PlushieHampter
+  - PlushieHuman
+  - PlushieMoth
+  - PlushiePenguin
+  - PlushieSharkBlue
+  - PlushieSharkGrey
+  - PlushieSharkPink
+  - PlushieSlime
+  - PlushieSnake
+  - PlushieVox
+  # Moffstation - End
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -20,6 +39,15 @@
   - CigarGold
   - GoldRing    # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
   - SilverRing  # Moffstation - End
+  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
+  - FolderRed
+  - FolderBlue
+  - FolderYellow
+  - FolderWhite
+  - FolderGrey
+  - FolderBlack
+  - FolderGreen
+  # Moffstation - End
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -38,6 +66,12 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
   - TowelColorBlack
   - TowelColorDarkBlue
   - TowelColorDarkGreen
@@ -867,6 +901,7 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
+  - StationEngineerOuterVest # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -883,6 +918,7 @@
   loadouts:
   - WhiteShoes
   - EngineeringWinterBoots
+  - WorkBoots # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -1106,6 +1142,8 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
+  - SecurityWebbingAlt  # Moffstation - Alt sec webbing
+  - ShoulderHolster # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1136,6 +1174,13 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - SecurityHelmet
+  - MilitaryHelmet
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveNeck
@@ -1152,6 +1197,12 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - SecurityJumpsuit
+  - SecurityJumpskirt
+  - SecurityJumpsuitGrey
+  - SecurityJumpskirtGrey
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1160,6 +1211,11 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - ArmorVest
+  - ArmorVestSlim
+  - SecurityOfficerWintercoat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
@@ -1289,6 +1345,14 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - VirologyBackpack
+  - VirologySatchel
+  - VirologyDuffel
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+  # Moffstation - End
   - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup

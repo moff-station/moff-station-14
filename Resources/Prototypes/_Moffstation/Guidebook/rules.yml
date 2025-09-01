@@ -5,7 +5,6 @@
   priority: 1
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffRules.xml"
   children:
-  - MoffMetashield
   - MoffSpaceLawChanges
   - MoffOOC
 
@@ -64,18 +63,6 @@
   name: moff-antag-rules
   ruleEntry: true
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR8Antags.xml"
-
-- type: guideEntry
-  id: MoffPrisoners
-  name: moff-prisoner-rules
-  ruleEntry: true
-  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffR9Prisoners.xml"
-
-- type: guideEntry
-  id: MoffMetashield
-  name: metashield-changes
-  ruleEntry: true
-  text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffMetashield.xml"
 
 - type: guideEntry
   id: MoffSpaceLawChanges

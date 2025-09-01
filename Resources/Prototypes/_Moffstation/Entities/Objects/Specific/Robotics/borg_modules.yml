@@ -1,0 +1,18 @@
+- type: entity
+  id: BorgModulePirate
+  parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: pirate cyborg module
+  description: A module that comes with a grappling hook, anchor, and self-reloading pepperbox shotgun.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Robotics/pirate_borg.rsi
+    layers:
+    - state: pirate
+    - state: icon-pirate
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponGrapplingGun
+    - item: EnergyCutlass
+    - item: WeaponShotgunBlackbox
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }

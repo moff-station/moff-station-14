@@ -322,6 +322,13 @@ figurines-strawberry-4 = No, the maid uniform is non optional.
 figurines-strawberry-5 = Engi maid Service!
 figurines-strawberry-6 = Im proud of you, AI.
 
+figurines-talvi-1 = Mm.
+figurines-talvi-2 = Status report?
+figurines-talvi-3 = Do you need a hug?
+figurines-talvi-4 = Here we go again.
+figurines-talvi-5 = Yes, you can touch my tail.
+figurines-talvi-6 = Before you ask, the weather is nice up here.
+
 figurines-tania-1 = DO. NOT. FUCK. WITH. ENGI!!
 figurines-tania-2 = Slime time!
 figurines-tania-3 = *squishes*
@@ -364,7 +371,7 @@ figurines-wallace-6 = I'll card that damn AI if it's the LAST THING I DO!!
 figurines-moonlight-1 = Hello, munchkin!
 figurines-moonlight-2 = Awh, are you okay, love? Here, a hug to warm you up~!
 figurines-moonlight-3 = A-ah, don't you worry about me, dear. I'm fine! Ignore the er, cuts!
-figurines-moonlight-4 = Wow, you're beautiful today! 
+figurines-moonlight-4 = Wow, you're beautiful today!
 figurines-moonlight-5 = Stay safe, honeybee! I love you!!
 figurines-moonlight-6 = Coords on, darling. Dont want you to get lost if something happens~!
 figurines-moonlight-7 = No matter what anyone says to you...you're amazing, love!

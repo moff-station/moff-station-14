@@ -43,6 +43,7 @@
       amount: 2
     - id: RemoteSignaller
       amount: 2
+    - id: NetworkConfigurator
     - id: Binoculars
     - id: WeaponEnergyShotgun # Moffstation - Big Iron
 
@@ -167,6 +168,7 @@
     - id: HoloprojectorSecurity
     - id: BoxEvidenceMarkers
     - id: HandLabeler
+    - id: BoxTapeRecorder # DeltaV
 
 - type: entity
   id: ClosetBombFilled

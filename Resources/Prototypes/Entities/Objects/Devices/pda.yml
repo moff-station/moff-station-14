@@ -483,6 +483,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - AstroNavCartridge
+    - NanoChatCartridge # CD
 
 - type: entity
   parent: BasePDA
@@ -1098,7 +1099,6 @@
     preinstalled:
       - NotekeeperCartridge
       - NanoTaskCartridge
-      - AstroNavCartridge # Moffstation
       - NanoChatCartridge # CD
 
 - type: entity
@@ -1480,7 +1480,7 @@
       - NanoChatCartridge # CD
 
 - type: entity
-  parent: BasePDA
+  parent: [BasePDA, SelectableLock]
   id: ChameleonPDA
   name: passenger PDA
   description: Why isn't it gray?

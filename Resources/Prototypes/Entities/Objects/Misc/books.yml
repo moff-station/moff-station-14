@@ -44,6 +44,7 @@
     damage:
       types:
         Blunt: 1
+  - type: PhysicalComposition #Moffstation - Allows for books to be recycled, you monster.
 
 - type: entity
   parent: BaseItem
@@ -69,6 +70,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
+  - type: PhysicalComposition #Moffstation - Allows for books to be recycled, you monster.
 
 - type: entity
   id: BookSpaceEncyclopedia
@@ -309,6 +311,14 @@
   - type: GuideHelp
     guides:
     - Survival
+# Moffstation - Start - replace survivalbox nutribrick with guidebook
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - Book
+    - SurvivalBoxInsertable
+# Moffstation - End
 
 - type: entity
   id: BookChemicalCompendium

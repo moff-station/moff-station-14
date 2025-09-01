@@ -13,9 +13,15 @@
   id: NukieBackpack
   name: loadout-group-nukie-backpack
   loadouts:
-  - NukieBackpack
   - NukieSatchel
   - NukieDuffel
+
+- type: loadoutGroup
+  id: NukieBackpackEmpty
+  name: loadout-group-nukie-backpack
+  loadouts:
+  - NukieSatchelEmpty
+  - NukieDuffelEmpty
 
 - type: loadoutGroup
   id: NukieGloves
@@ -28,7 +34,6 @@
   id: NukieMedicalBackpack
   name: loadout-group-nukie-backpack
   loadouts:
-  - NukieMedicBackpack
   - NukieMedicSatchel
   - NukieMedicDuffel
 
