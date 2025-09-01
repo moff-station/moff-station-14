@@ -917,6 +917,7 @@ public sealed partial class AdminVerbSystem
                 EnsureComp<SouthernAccentComponent>(args.Target);
                 EnsureComp<SpanishAccentComponent>(args.Target);
                 EnsureComp<StutteringAccentComponent>(args.Target);
+                EnsureComp<SkibidiAccentComponent>(args.Target); // Moffstation - Add Skibidi accent to Omni smite.
 
                 if (_random.Next(0, 8) == 0)
                 {
@@ -942,5 +943,21 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", crawlerName, Loc.GetString("admin-smite-crawler-description"))
         };
         args.Verbs.Add(crawler);
+
+        // Moffstation - Start - Add Skibidi Accent Smite
+        var skibidiaccentName = Loc.GetString("admin-smite-skibidi-accent-name").ToLowerInvariant();
+        Verb skbidiaccent = new()
+        {
+            Text = skibidiaccentName,
+            Category = VerbCategory.Smite,
+            Icon = new SpriteSpecifier.Rsi(new("_Moffstation/Objects/Fun/figurines.rsi"), "brad-bucket"),
+            Act = () =>
+            {
+                EnsureComp<SkibidiAccentComponent>(args.Target);
+            },
+            Impact = LogImpact.Extreme,
+            Message = string.Join(": ", skibidiaccentName, Loc.GetString("admin-smite-skibidi-accent-description"))
+        };
+        // Moffstation - End
     }
 }
