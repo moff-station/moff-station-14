@@ -34,19 +34,26 @@ public sealed class SkibidiAccentSystem : EntitySystem
         var firstWordAllCaps = !FirstWordAllCapsRegex.Match(msg).Value.Any(char.IsLower);
 
         // Add a prefix.
-        var pick1 = _random.Pick(component.SkibidiPrefixs);
-        var skibidiPrefix = Loc.GetString(pick1);
-        // Reverse sanitize capital
-        if (!firstWordAllCaps)
-            msg = msg[0].ToString().ToLower() + msg.Remove(0, 1);
-        else
-            skibidiPrefix = skibidiPrefix.ToUpper();
-        msg = skibidiPrefix + " " + msg;
+        if (_random.Prob(component.CringePrefixChance))
+        {
+            var pick1 = _random.Pick(component.SkibidiPrefixs);
+            var skibidiPrefix = Loc.GetString(pick1);
+            // Reverse sanitize capital
+            if (!firstWordAllCaps)
+                msg = msg[0].ToString().ToLower() + msg.Remove(0, 1);
+            else
+                skibidiPrefix = skibidiPrefix.ToUpper();
+            msg = skibidiPrefix + " " + msg;
+        }
 
         //Add a suffix.
-        var pick2 = _random.Pick(component.SkibidiSuffixs);
-        var skibidiSuffix = Loc.GetString(pick2);
-        msg = msg + skibidiSuffix;
+        if (_random.Prob(component.CringeSuffixChance))
+        {
+            var pick2 = _random.Pick(component.SkibidiSuffixs);
+            var skibidiSuffix = Loc.GetString(pick2);
+            msg = msg + skibidiSuffix;
+        }
+
         return msg;
     }
 
