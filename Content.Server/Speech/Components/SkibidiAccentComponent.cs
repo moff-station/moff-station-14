@@ -49,6 +49,7 @@ public sealed partial class SkibidiAccentComponent : Component
         "accent-skibidi-suffix-9",
         "accent-skibidi-suffix-10",
         "accent-skibidi-suffix-11",
-        "accent-skibidi-suffix-12"
+        "accent-skibidi-suffix-12",
+        "accent-skibidi-suffix-13"
     };
 }
