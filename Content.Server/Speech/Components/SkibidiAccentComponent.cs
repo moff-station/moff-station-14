@@ -16,11 +16,11 @@ public sealed partial class SkibidiAccentComponent : Component
     // always have a prefix. Or always have a suffix.
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("cringePrefixChance")]
-    public float CringePrefixChance = 0.5f; // 50% of cringe messages has a prefix
+    public float CringePrefixChance = 0.75f; // 75% of cringe messages has a prefix
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("cringeSuffixChance")]
-    public float CringeSuffixChance = 0.5f; // 50% of cringe messages has a suffix
+    public float CringeSuffixChance = 0.75f; // 75% of cringe messages has a suffix
 
     [ViewVariables]
     public readonly List<string> SkibidiPrefixs = new()
