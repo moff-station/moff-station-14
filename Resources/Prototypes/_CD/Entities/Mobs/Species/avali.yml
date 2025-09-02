@@ -82,6 +82,9 @@
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 296.15
     thermalRegulationTemperatureThreshold: 10
+  - type: NightVision
+  - type: FlashModifier
+    modifier: 2
 
 - type: entity
   parent: BaseSpeciesDummy
