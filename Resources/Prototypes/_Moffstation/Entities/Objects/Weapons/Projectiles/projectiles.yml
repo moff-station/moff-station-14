@@ -28,7 +28,7 @@
   id: BaseBulletSilver
   name: base bullet silver
   parent: BaseBullet
-  categories: [ HideSpawnMenu ]
+  abstract: true
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
