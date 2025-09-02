@@ -7,8 +7,8 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Helmets/security-military.rsi
     layers:
-    - state: lowered-icon
     - state: raised-icon
+    - state: lowered-icon
       visible: false
       map: [ "visor" ]
   - type: Clothing
