@@ -2,7 +2,8 @@
   id: ResomiTailComplex
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Resomi]
+  speciesRestriction:
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
     state: tail_top
@@ -15,7 +16,8 @@
   id: ResomiTailFeathersComplex
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Resomi]
+  speciesRestriction: 
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
     state: tail_feathers_right_upper
@@ -30,7 +32,8 @@
   id: ResomiLArmFeathersComplex
   bodyPart: LHand
   markingCategory: Arms
-  speciesRestriction: [Resomi]
+  speciesRestriction: 
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: l_hand_feathers_primary
@@ -41,7 +44,8 @@
   id: ResomiLLegFeathersComplex
   bodyPart: LFoot
   markingCategory: Legs
-  speciesRestriction: [Resomi]
+  speciesRestriction: 
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: l_foot_feathers_primary
@@ -52,7 +56,8 @@
   id: ResomiRArmFeathersComplex
   bodyPart: RHand
   markingCategory: Arms
-  speciesRestriction: [Resomi]
+  speciesRestriction: 
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: r_hand_feathers_primary
@@ -63,7 +68,8 @@
   id: ResomiRLegFeathersComplex
   bodyPart: RFoot
   markingCategory: Legs
-  speciesRestriction: [Resomi]
+  speciesRestriction: 
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: r_foot_feathers_primary
@@ -74,7 +80,8 @@
   id: ResomiRArmFade
   bodyPart: RHand
   markingCategory: Arms
-  speciesRestriction: [Resomi]
+  speciesRestriction: 
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: r_arm_fade
@@ -83,7 +90,8 @@
   id: ResomiLArmFade
   bodyPart: LHand
   markingCategory: Arms
-  speciesRestriction: [Resomi]
+  speciesRestriction: 
+    - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: l_arm_fade
