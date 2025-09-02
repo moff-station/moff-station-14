@@ -117,8 +117,6 @@ namespace Content.Server.Speech.EntitySystems
                 }
             }
 
-            Log.Info("Oook");
-
             return message;
         }
 
