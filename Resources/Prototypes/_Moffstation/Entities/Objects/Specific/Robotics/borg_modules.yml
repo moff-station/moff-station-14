@@ -25,7 +25,9 @@
   - type: Sprite
     layers:
     - state: security
-    - state: icon-flash
+    - map: ["icon"]
+      sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: "icon-flash"
   - type: ItemBorgModule
     hands:
     - item: BorgFlash
