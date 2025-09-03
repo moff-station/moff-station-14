@@ -53,6 +53,58 @@
     state: tanktop_avali
 
 - type: marking
+  id: UndergarmentTopTanktopCervidae
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
+  speciesRestriction: [Cervidae]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Cervidae/undergarments.rsi
+    state: tanktop_cervidae
+
+- type: marking
+  id: UndergarmentTopSportsbraCervidae
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
+  speciesRestriction: [Cervidae]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Cervidae/undergarments.rsi
+    state: sports_cervidae
+
+- type: marking
+  id: UndergarmentTopBinderCervidae
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
+  speciesRestriction: [Cervidae]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Cervidae/undergarments.rsi
+    state: binder_cervidae
+
+- type: marking
+  id: UndergarmentTopBraCervidae
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
+  speciesRestriction: [Cervidae]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Cervidae/undergarments.rsi
+    state: classic_cervidae
+
+- type: marking
   id: UndergarmentTopTanktopResomi
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
@@ -104,6 +156,45 @@
   sprites:
   - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
     state: boxers_avali
+
+- type: marking
+  id: UndergarmentBottomBoxersCervidae
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
+  speciesRestriction: [Cervidae]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Cervidae/undergarments.rsi
+    state: boxers_cervidae
+
+- type: marking
+  id: UndergarmentBottomBriefsCervidae
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
+  speciesRestriction: [Cervidae]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Cervidae/undergarments.rsi
+    state: briefs_cervidae
+
+- type: marking
+  id: UndergarmentBottomSatinCervidae
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
+  speciesRestriction: [Cervidae]
+  coloring:
+    default:
+      type: null
+      fallbackColor: '#FFFFFF'
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Cervidae/undergarments.rsi
+    state: satin_cervidae
 
 - type: marking
   id: UndergarmentBottomBoxersResomi
