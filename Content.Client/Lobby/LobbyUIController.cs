@@ -72,7 +72,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         });
 
         _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
-        _configurationManager.OnValueChanged(CCVars.GameRoleLoadoutTimers, _ => RefreshProfileEditor()); // Moffstation - Add CVar
 
         _configurationManager.OnValueChanged(CCVars.GameRoleWhitelist, _ => RefreshProfileEditor());
     }
