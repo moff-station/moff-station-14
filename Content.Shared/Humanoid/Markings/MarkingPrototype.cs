@@ -44,7 +44,7 @@ namespace Content.Shared.Humanoid.Markings
 
         /// CD change, originally created by Beck for Impstation
 	    [DataField("shader")]
-		public string? Shader { get; private set; } = null;
+		public ProtoId<ShaderPrototype>? Shader = null;
 
         public Marking AsMarking()
         {
