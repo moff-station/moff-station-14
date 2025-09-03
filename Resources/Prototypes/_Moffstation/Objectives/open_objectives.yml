@@ -97,7 +97,7 @@
 
 # Open-ended objective to cause/setup a Jailbreak
 - type: entity
-  parent: BaseTraitorObjective
+  parent: BaseObjective
   id: JailbreakObjective
   description: It doesn't matter who was locked up or why, we just need you to keep the jails empty.
   components:
@@ -188,7 +188,7 @@
 
 # Open-ended, steal everything not nailed down
 - type: entity
-  parent: BaseThiefObjective
+  parent: BaseObjective
   id: StealEverythingObjective
   description: Steal everything you can get away with, so long as its worth a anything.
   components:
@@ -202,7 +202,7 @@
 
 ## Siphon funds objective, steal money from cargo and other places
 - type: entity
-  parent: BaseThiefObjective
+  parent: BaseObjective
   id: StealMoneyObjective
   description: You need money, so steal as much of it as you can.
   components:
