@@ -89,7 +89,7 @@
 
 # teach someone a lesson without killing them permanently
 - type: entity
-  parent: BaseSocialObjective
+  parent: [ BaseSocialObjective, BaseTraitorObjective ]
   id: TeachLessonObjective
   description: We want you to teach them a lesson, but we need them alive.
   components:
@@ -105,7 +105,7 @@
 
 # gather intel on someone
 - type: entity
-  parent: BaseSocialObjective
+  parent: [ BaseSocialObjective, BaseTraitorObjective ]
   id: GatherIntelObjective
   description: We need you to gather intel on this person, collect any information you can find about them.
   components:
@@ -121,7 +121,7 @@
 
 # objective to leave a calling card
 - type: entity
-  parent: BaseSocialObjective
+  parent: [ BaseSocialObjective, BaseTraitorObjective ]
   id: LeaveCallingCardObjective
   name: Leave a Calling Card
   description: Let them know who did it.
@@ -141,7 +141,7 @@
 
 # objective to drop a calling card on somebody
 - type: entity
-  parent: BaseSocialObjective
+  parent: [ BaseSocialObjective, BaseTraitorObjective ]
   id: LeaveCallingCardOnPersonObjective
   name: Leave a Warning
   description: This person has stepped out of line, give them a reminder.
