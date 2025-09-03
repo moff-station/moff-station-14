@@ -16,3 +16,18 @@
     - item: WeaponShotgunBlackbox
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
+
+- type: entity
+  id: BorgModuleFlash
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: flash cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: security
+    - state: icon-flash
+  - type: ItemBorgModule
+    hands:
+    - item: BorgFlash
+  - type: BorgModuleIcon
+    icon: { sprite: Objects/Weapons/Melee/flash.rsi, state: flash }
