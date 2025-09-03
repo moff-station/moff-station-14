@@ -110,7 +110,7 @@ public abstract class SharedFlashSystem : EntitySystem
             return;
 
         args.Handled = true;
-        FlashArea(ent.Owner, args.User, !ent.Comp.FlashUser, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability); //Moffstation - BorgFlash
+        FlashArea(ent.Owner, args.User, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability, userImmune: !ent.Comp.FlashUser); //Moffstation - BorgFlash
     }
 
     // needed for the flash lantern and interrogator lamp
@@ -120,7 +120,7 @@ public abstract class SharedFlashSystem : EntitySystem
         if (!args.IsOn || !UseFlash(ent, null))
             return;
 
-        FlashArea(ent.Owner, null, false, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability); //Moffstation - BorgFlash
+        FlashArea(ent.Owner, null, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability, userImmune: !ent.Comp.FlashUser);
     }
 
     /// <summary>
@@ -219,13 +219,13 @@ public abstract class SharedFlashSystem : EntitySystem
     /// </summary>
     /// <param name="source">The source of the flash, which will be at the epicenter.</param>
     /// <param name="user">The mob causing the flash, if any.</param>
-    /// <param name="userImmune">Is the user of the flash affected?</param>
     /// <param name="flashDuration">The time target will be affected by the flash.</param>
     /// <param name="slowTo">Movement speed modifier applied to the flashed target. Between 0 and 1.</param>
     /// <param name="displayPopup">Whether or not to show a popup to the target player.</param>
     /// <param name="probability">Chance to be flashed. Rolled separately for each target in range.</param>
     /// <param name="sound">Additional sound to play at the source.</param>
-    public void FlashArea(EntityUid source, EntityUid? user, bool userImmune, float range, TimeSpan flashDuration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null)
+    /// <param name="userImmune">Is the user of the flash affected?</param>
+    public void FlashArea(EntityUid source, EntityUid? user, float range, TimeSpan flashDuration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null, bool userImmune = false)
     {
         var transform = Transform(source);
         var mapPosition = _transform.GetMapCoordinates(transform);

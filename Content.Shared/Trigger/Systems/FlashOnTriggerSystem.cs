@@ -24,7 +24,7 @@ public sealed class FlashOnTriggerSystem : EntitySystem
         if (target == null)
             return;
 
-        _flash.FlashArea(target.Value, args.User, false, ent.Comp.Range, ent.Comp.Duration, probability: ent.Comp.Probability); // Moffstation - BorgFlash
+        _flash.FlashArea(target.Value, args.User, ent.Comp.Range, ent.Comp.Duration, probability: ent.Comp.Probability);
         args.Handled = true;
     }
 }
