@@ -35,4 +35,12 @@ public sealed partial class RadioChannelPrototype : IPrototype
     /// </summary>
     [DataField("longRange"), ViewVariables]
     public bool LongRange = false;
+
+    // Moffstation - Start - Remove common from headsets
+    /// <summary>
+    /// If true, the channel will be readonly by headsets, and can only be spoken into by other means.
+    /// </summary>
+    [DataField]
+    public bool ReadOnly;
+    // Moffstation - End
 }
