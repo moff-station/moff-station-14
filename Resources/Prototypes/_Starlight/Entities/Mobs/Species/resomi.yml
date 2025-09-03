@@ -224,9 +224,9 @@
     - DoorBumpOpener
     - AnomalyHost
     - Resomi
-  # - type: NightVision # Disabled until nightvision gets added via seperate PR.
+  - type: NightVision
   - type: FlashModifier
-    modifier: 2.5
+    modifier: 2
 
 - type: entity
   parent: BaseSpeciesDummy
