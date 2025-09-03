@@ -30,7 +30,7 @@
 # Base objective for selecting a room for open-ended objectives
 - type: entity
   abstract: true
-  parent: BaseObjective
+  parent: BaseLocationObjective
   id: BaseRoomObjective
   components:
   - type: PickRoomObjective
