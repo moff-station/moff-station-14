@@ -2,7 +2,7 @@
 
 # steal everything not nailed down
 - type: entity
-  parent: BaseObjective
+  parent: BaseThiefObjective
   id: StealEverythingObjective
   description: Steal everything you can get away with, so long as its worth a anything.
   components:
@@ -16,7 +16,7 @@
 
 # Siphon funds objective, steal money from cargo and other places
 - type: entity
-  parent: BaseObjective
+  parent: BaseThiefObjective
   id: StealMoneyObjective
   description: You need money, so steal as much of it as you can.
   components:
@@ -30,7 +30,7 @@
 
 # Rob a certain department
 - type: entity
-  parent: BaseDepartmentObjective
+  parent: [ BaseDepartmentObjective, BaseThiefObjective ]
   id: RobDepartmentObjective
   description: This department has some nice goodies, its time to make them your own.
   components:
@@ -44,7 +44,7 @@
 
 # objective to infiltrate a department, thief addition
 - type: entity
-  parent: BaseDepartmentObjective
+  parent: [ BaseDepartmentObjective, BaseThiefObjective ]
   id: InfiltrateThiefObjective
   name: Infiltrate Department
   description: Pretend to be part of this department, and steal all their stuff.

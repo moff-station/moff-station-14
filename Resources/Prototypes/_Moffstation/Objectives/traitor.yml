@@ -15,7 +15,7 @@
 
 # objective to disrupt a certain department
 - type: entity
-  parent: BaseDepartmentObjective
+  parent: [ BaseDepartmentObjective, BaseTraitorObjective ]
   id: DisruptDepartmentObjective
   name: Disrupt Department
   description: We need you to disrupt this department's activities.
@@ -30,7 +30,7 @@
 
 # objective to sabotage a certain department
 - type: entity
-  parent: BaseDepartmentObjective
+  parent: [ BaseDepartmentObjective, BaseTraitorObjective ]
   id: SabotageObjective
   name: Sabotage Department
   description: We need you to sabotage this department's activities.
@@ -45,7 +45,7 @@
 
 # objective to trash a specific room
 - type: entity
-  parent: BaseRoomObjective
+  parent: [ BaseRoomObjective, BaseTraitorObjective ]
   id: TrashRoomObjective
   name: Trash Room
   description: We need you trash this room, make sure it doesnt pass a health inspection.
@@ -60,7 +60,7 @@
 
 # objective to claim a room for the syndicate
 - type: entity
-  parent: BaseRoomObjective
+  parent: [ BaseRoomObjective, BaseTraitorObjective ]
   id: ClaimLocationObjective
   name: Claim Location
   description: Establish this room as a base for the Syndicate.
@@ -75,7 +75,7 @@
 
 # objective to cause/setup a Jailbreak
 - type: entity
-  parent: BaseObjective
+  parent: BaseTraitorObjective
   id: JailbreakObjective
   description: It doesn't matter who was locked up or why, we just need you to keep the jails empty.
   components:
