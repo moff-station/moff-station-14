@@ -18,9 +18,10 @@
 - type: entity
   parent: [BaseBloodBrotherObjective, ClaimLocationObjective]
   id: BloodBrotherClaimLocationObjective
+  description: Establish this room as a base the brotherhood.
   components:
   - type: LocationObjective
-    title: objective-condition-claim-room-bb
+    title: objective-condition-bb-claim-room
 
 
 - type: entity
