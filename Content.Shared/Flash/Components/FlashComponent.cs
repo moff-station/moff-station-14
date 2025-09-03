@@ -22,6 +22,14 @@ public sealed partial class FlashComponent : Component
     [DataField, AutoNetworkedField]
     public bool FlashOnMelee = true;
 
+    /// Moffstation BorgFlash - Begin
+    /// <summary>
+    /// Flash the user on wide use?
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool FlashUser = true;
+    /// Moffstation - End
+
     /// <summary>
     /// Time the Flash will be visually flashing after use.
     /// For the actual interaction delay use UseDelayComponent.

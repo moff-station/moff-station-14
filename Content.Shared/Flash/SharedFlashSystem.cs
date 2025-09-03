@@ -110,7 +110,7 @@ public abstract class SharedFlashSystem : EntitySystem
             return;
 
         args.Handled = true;
-        FlashArea(ent.Owner, args.User, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability);
+        FlashArea(ent.Owner, args.User, !ent.Comp.FlashUser, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability); //Moffstation - BorgFlash
     }
 
     // needed for the flash lantern and interrogator lamp
@@ -120,7 +120,7 @@ public abstract class SharedFlashSystem : EntitySystem
         if (!args.IsOn || !UseFlash(ent, null))
             return;
 
-        FlashArea(ent.Owner, null, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability);
+        FlashArea(ent.Owner, null, false, ent.Comp.Range, ent.Comp.AoeFlashDuration, ent.Comp.SlowTo, true, ent.Comp.Probability); //Moffstation - BorgFlash
     }
 
     /// <summary>
@@ -213,17 +213,19 @@ public abstract class SharedFlashSystem : EntitySystem
             RaiseLocalEvent(used.Value, ref ev);
     }
 
+    // Moffstaton BorgFlash - Begin
     /// <summary>
     /// Cause all entities in range of a source entity to be flashed.
     /// </summary>
     /// <param name="source">The source of the flash, which will be at the epicenter.</param>
     /// <param name="user">The mob causing the flash, if any.</param>
+    /// <param name="userImmune">Is the user of the flash affected?</param>
     /// <param name="flashDuration">The time target will be affected by the flash.</param>
     /// <param name="slowTo">Movement speed modifier applied to the flashed target. Between 0 and 1.</param>
     /// <param name="displayPopup">Whether or not to show a popup to the target player.</param>
     /// <param name="probability">Chance to be flashed. Rolled separately for each target in range.</param>
     /// <param name="sound">Additional sound to play at the source.</param>
-    public void FlashArea(EntityUid source, EntityUid? user, float range, TimeSpan flashDuration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null)
+    public void FlashArea(EntityUid source, EntityUid? user, bool userImmune, float range, TimeSpan flashDuration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null)
     {
         var transform = Transform(source);
         var mapPosition = _transform.GetMapCoordinates(transform);
@@ -241,6 +243,10 @@ public abstract class SharedFlashSystem : EntitySystem
             if (!_statusEffectsQuery.HasComponent(entity) && !_damagedByFlashingQuery.HasComponent(entity))
                 continue;
 
+            // Is the entity the user of a userImmune flash?
+            if (entity.Equals(user) && userImmune)
+                continue;
+
             // Check for entites in view.
             // Put DamagedByFlashingComponent in the predicate because shadow anomalies block vision.
             if (!_examine.InRangeUnOccluded(entity, mapPosition, range, predicate: (e) => _damagedByFlashingQuery.HasComponent(e)))
@@ -251,6 +257,8 @@ public abstract class SharedFlashSystem : EntitySystem
 
         _audio.PlayPredicted(sound, source, user, AudioParams.Default.WithVolume(1f).WithMaxDistance(3f));
     }
+
+    // Moffstation - End
 
     // Handle the flash visuals
     // TODO: Replace this with something like sprite flick once that exists to get rid of the update loop.

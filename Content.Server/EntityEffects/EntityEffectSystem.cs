@@ -710,6 +710,7 @@ public sealed class EntityEffectSystem : EntitySystem
         _flash.FlashArea(
             args.Args.TargetEntity,
             null,
+            false, // Moffstation - BorgFlash
             range,
             args.Effect.Duration,
             slowTo: args.Effect.SlowTo,
