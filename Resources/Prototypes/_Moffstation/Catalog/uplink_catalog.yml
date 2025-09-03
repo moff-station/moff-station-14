@@ -1,16 +1,3 @@
-# Ammo For the Bulldog
-- type: listing
-  id: UplinkMagazineShotgun
-  name: uplink-magazine-shotgun-name
-  description: uplink-magazine-shotgun-desc
-  icon:
-    sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Shotgun/m12.rsi
-    state: pellets
-  productEntity: MagazineShotgun
-  cost:
-    Telecrystal: 2
-  categories:
-  - UplinkAmmo
 
 # Moffstation - Start - Readding the Hypereutactic Blade
 - type: listing
@@ -26,5 +13,5 @@
     Telecrystal: 14
   categories:
   - UplinkWeaponry
-  
+
 # Moffstation - End - Readding the Hypereutactic Blade
