@@ -1,3 +1,4 @@
+
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -44,7 +45,7 @@ namespace Content.Shared.Humanoid.Markings
 
         /// CD change, originally created by Beck for Impstation
 	    [DataField("shader")]
-		public string? Shader { get; private set; } = null;
+		public string? Shader = null;
 
         public Marking AsMarking()
         {

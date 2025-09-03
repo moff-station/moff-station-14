@@ -96,8 +96,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
         var query = EntityQueryEnumerator<GunGameRuleComponent, RespawnTrackerComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out var gunGame, out var respawnTracker, out var rule))
         {
-            if (!GameTicker.IsGameRuleActive(uid, rule)
-                || ev.Primary is not KillPlayerSource player)
+            if (!GameTicker.IsGameRuleActive(uid, rule))
                 continue;
 
             // Don't want other players picking up somebody's gun
@@ -105,17 +104,24 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
                 DeleteCurrentLoadout((ev.Entity, gunGameTracker), gunGame);
 
             // Force them to respawn so they don't have to wait around.
+            // This has to happen before we check if a player killed them, because they might have died
+            //     to something other than a player.
             if (TryComp<ActorComponent>(ev.Entity, out var actor))
                 _respawn.RespawnPlayer((ev.Entity, actor), (uid, respawnTracker));
 
-            var playerInfo = gunGame.PlayerInfo[player.PlayerId];
-            // Only allow the player to receive their next weapon after they get enough kills.
-            if (++playerInfo.Kills < gunGame.KillsPerWeapon)
+            // Make sure the thing that killed them was a player, and that it was a player
+            //  other than their own foolish self. Can't suicide your way to victory.
+            if (ev.Suicide || ev.Primary is not KillPlayerSource killer)
                 continue;
 
-            playerInfo.Kills = 0;
-            ProgressPlayerReward(playerInfo, gunGame);
-            RefreshPlayerLoadout(playerInfo, gunGame);
+            var killerInfo = gunGame.PlayerInfo[killer.PlayerId];
+            // Only allow the player to receive their next weapon after they get enough kills.
+            if (++killerInfo.Kills < gunGame.KillsPerWeapon)
+                continue;
+
+            killerInfo.Kills = 0;
+            ProgressPlayerReward(killerInfo, gunGame);
+            RefreshPlayerLoadout(killerInfo, gunGame);
         }
     }
 
