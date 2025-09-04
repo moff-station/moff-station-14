@@ -70,9 +70,7 @@ namespace Content.Shared.Maps
         /// <summary>
         /// Base friction modifier for this tile.
         /// </summary>
-        // ES START
-        [DataField("friction")] public float Friction { get; set; } = 2.5f;
-        // ES END
+        [DataField("friction")] public float Friction { get; set; } = 1f;
 
         [DataField("variants")] public byte Variants { get; set; } = 1;
 

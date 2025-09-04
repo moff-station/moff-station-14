@@ -47,7 +47,7 @@ public sealed partial class HandsComponent : Component
     /// </summary>
     [DataField]
     // ES START
-    public float BaseThrowspeed = ThrowingSystem.ESThrowSpeedDefault;
+    public float BaseThrowspeed = 11f;
     // ES END
 
     /// <summary>
