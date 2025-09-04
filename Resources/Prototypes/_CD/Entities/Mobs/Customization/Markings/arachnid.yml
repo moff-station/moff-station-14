@@ -34,8 +34,10 @@
 
 - type: marking
   id: ArachnidHeadSegments
-  bodyPart: Head
-  markingCategory: Head
+  # Moffstation - Start - spooder markings
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  # Moffstation - End
   speciesRestriction: [ Arachnid ]
   sprites:
   - sprite: _CD/Mobs/Customization/Arachnid/head.rsi
