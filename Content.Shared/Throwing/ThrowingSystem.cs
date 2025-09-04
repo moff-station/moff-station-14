@@ -19,11 +19,19 @@ public sealed class ThrowingSystem : EntitySystem
 {
     public const float ThrowAngularImpulse = 5f;
 
+    // ES START
+    public const float ESThrowSpinStep = 4f;
+
+    public const float ESThrowSpeedDefault = 8.5f;
+    // ES END
+
     public const float PushbackDefault = 2f;
 
     public const float FlyTimePercentage = 0.8f;
 
-    private const float TileFrictionMod = 1.5f;
+    // ES START
+    private const float TileFrictionMod = 2.5f;
+    // ES END
 
     private float _frictionModifier;
     private float _airDamping;
@@ -47,7 +55,9 @@ public sealed class ThrowingSystem : EntitySystem
     public void TryThrow(
         EntityUid uid,
         EntityCoordinates coordinates,
-        float baseThrowSpeed = 10.0f,
+        // ES START
+        float baseThrowSpeed = ESThrowSpeedDefault,
+        // ES END
         EntityUid? user = null,
         float pushbackRatio = PushbackDefault,
         float? friction = null,
@@ -80,7 +90,9 @@ public sealed class ThrowingSystem : EntitySystem
     /// <param name="unanchor">If true and the thrown entity has <see cref="AnchorableComponent"/>, unanchor the thrown entity</param>
     public void TryThrow(EntityUid uid,
         Vector2 direction,
-        float baseThrowSpeed = 10.0f,
+        // ES START
+        float baseThrowSpeed = ESThrowSpeedDefault,
+        // ES END
         EntityUid? user = null,
         float pushbackRatio = PushbackDefault,
         float? friction = null,
@@ -125,7 +137,9 @@ public sealed class ThrowingSystem : EntitySystem
         PhysicsComponent physics,
         TransformComponent transform,
         EntityQuery<ProjectileComponent> projectileQuery,
-        float baseThrowSpeed = 10.0f,
+        // ES START
+        float baseThrowSpeed = ESThrowSpeedDefault,
+        // ES END
         EntityUid? user = null,
         float pushbackRatio = PushbackDefault,
         float? friction = null,
@@ -178,7 +192,15 @@ public sealed class ThrowingSystem : EntitySystem
         {
             if (physics.InvI > 0f && (!TryComp(uid, out throwingAngle) || throwingAngle.AngularVelocity))
             {
-                _physics.ApplyAngularImpulse(uid, ThrowAngularImpulse / physics.InvI, body: physics);
+                // ES START
+                // We step the amount of 'full spins' according to distance
+                // less than 4m we dont want to spin at all, then 1 more full spin each 4 more
+                // this is so we can normalize the rotation to 0 at the end of the throw without it looking weird
+                // (we want to avoid arbitrarily rotated items where possible for readability reasons)
+                var spins = MathF.Floor(direction.Length() / ESThrowSpinStep);
+                if (spins > 0)
+                    _physics.ApplyAngularImpulse(uid, spins * MathF.Tau / (flyTime * physics.InvI), body: physics);
+                // ES END
             }
             else
             {
