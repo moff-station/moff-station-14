@@ -273,8 +273,11 @@ marking-VoxTailNub-nub2 = Scar
 marking-VoxTailRaptor = Raptor
 marking-VoxTailRaptor-raptor = Tail
 
-marking-VoxTailShort2 = Short Up
+marking-VoxTailShort2 = Short Down
 marking-VoxTailShort2-short2 = Tail
+
+marking-VoxTailShort3 = Short Up
+marking-VoxTailShort3-short3 = Tail
 
 marking-VoxTailSmallPlume = Small Plume
 marking-VoxTailSmallPlume-smallplume = Small Plume
@@ -288,3 +291,41 @@ marking-VoxTailSplit-split = Twinned
 marking-VoxSunAndMoon = Sun and Moon
 marking-VoxSunAndMoon-sunandmoon = Sun and Moon
 
+# UndergarmentBottom
+
+marking-UnderwearBriefsVox = Briefs (Soft)
+marking-UnderwearBriefsVox-underwearbriefs = Briefs
+
+marking-UnderwearHighWaisted = High Waisted
+marking-UnderwearHighWaisted-highwaisted = High Waisted
+
+marking-UnderwearIxixSpecial = Modest Underwear
+marking-UnderwearIxixSpecial-ixixspecial1 = Band
+marking-UnderwearIxixSpecial-ixixspecial2 = Cup
+
+marking-UnderwearLowridersV = Lowriders
+marking-UnderwearLowridersV-lowriders = Underwear
+
+marking-UnderwearStrappy = Belted
+marking-UnderwearStrappy-strappy1 = Belt
+marking-UnderwearStrappy-strappy2 = Belt
+marking-UnderwearStrappy-strappy3 = Underwear
+
+marking-UnderwearTangaV = Tanga
+marking-UnderwearTangaV-tanga_vox = Underwear
+
+marking-UndergarmentBottomBoxersVox = Boxer
+
+marking-UndergarmentBottomBriefsVox = Briefs
+
+marking-UndergarmentBottomSatinVox = Satin
+
+# UndergarmentTop
+
+marking-UndergarmentTopBinderVox = Binder
+
+marking-UndergarmentTopBraVox = Classic Bra
+
+marking-UndergarmentTopSportsbraVox = Sports Bra
+
+marking-UndergarmentTopTanktopVox = Tanktop
