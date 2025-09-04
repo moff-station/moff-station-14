@@ -29,6 +29,13 @@
   id: BloodBrotherRobDepartmentObjective
 
 - type: entity
+  parent: [BaseBloodBrotherObjective, RobDepartmentObjective]
+  id: BloodBrotherLoudRobDepartmentObjective
+  components:
+  - type: LocationObjective
+    title: objective-condition-loud-rob-department
+
+- type: entity
   parent: [BaseBloodBrotherObjective, SabotageObjective]
   id: BloodBrotherSabotageObjective
 
