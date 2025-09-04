@@ -412,12 +412,6 @@ public sealed partial class CCVars
 
     // Moffstation - Begin
     /// <summary>
-    /// If role loadout items should be restricted based on time.
-    /// </summary>
-    public static readonly CVarDef<bool>
-        GameRoleLoadoutTimers = CVarDef.Create("game.role_loadout_timers", true, CVar.SERVER | CVar.REPLICATED);
-
-    /// <summary>
     /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
     /// </summary>
     public static readonly CVarDef<bool>
