@@ -314,12 +314,3 @@ marking-UnderwearStrappy-strappy3 = Underwear
 marking-UnderwearTangaV = Tanga
 marking-UnderwearTangaV-tanga_vox = Underwear
 
-# UndergarmentTop
-
-marking-UndergarmentTopBinderVox = Binder
-
-marking-UndergarmentTopBraVox = Classic Bra
-
-marking-UndergarmentTopSportsbraVox = Sports Bra
-
-marking-UndergarmentTopTanktopVox = Tanktop
