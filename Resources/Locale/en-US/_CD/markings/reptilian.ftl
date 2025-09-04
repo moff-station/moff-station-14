@@ -67,21 +67,7 @@ marking-UnderwearLowridersR-lowriders = Underwear
 marking-UnderwearTangaR = Tanga
 marking-UnderwearTangaR-tanga = Underwear
 
-marking-UndergarmentBottomBoxersReptilian = Boxers
-
-marking-UndergarmentBottomBriefsReptilian = Briefs
-
-marking-UndergarmentBottomSatinReptilian = Satin
-
 # UndergarmentTop
-
-marking-UndergarmentTopBinder = Binder
-
-marking-UndergarmentTopBra = Classic Bra
-
-marking-UndergarmentTopSportsbra = Sports Bra
-
-marking-UndergarmentTopTanktop = Tanktop
 
 # LFoot
 
