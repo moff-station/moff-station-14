@@ -121,7 +121,7 @@
 
 # objective to leave a calling card
 - type: entity
-  parent: [ BaseSocialObjective, BaseTraitorObjective ]
+  parent: BaseTraitorObjective
   id: LeaveCallingCardObjective
   name: Leave a Calling Card
   description: Let them know who did it.
@@ -141,7 +141,7 @@
 
 # objective to drop a calling card on somebody
 - type: entity
-  parent: [ BaseSocialObjective, BaseTraitorObjective ]
+  parent: BaseTraitorObjective
   id: LeaveCallingCardOnPersonObjective
   name: Leave a Warning
   description: This person has stepped out of line, give them a reminder.
