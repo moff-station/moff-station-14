@@ -89,15 +89,6 @@ marking-LizardKoboldEarsMid-koboldearsmid = Ears
 marking-LizardKoboldEarsTall = Lizard Ears (Kobold Stiff)
 marking-LizardKoboldEarsTall-koboldearstall = Ears
 
-marking-NiqabLizard = Niqab
-marking-NiqabLizard-niqablizard = Niqab
-
-marking-TichelSimpleLizard = Tichel (Simple)
-marking-TichelSimpleLizard-tichelsimplelizard = Tichel (Simple)
-
-marking-TichelFashionableLizard = Tichel (Fashionable)
-marking-TichelFashionableLizard-tichelfashionablelizard = Tichel (Fashionable)
-
 # HeadTop
 
 marking-LizardHeadFlat = Flat Head
