@@ -26,6 +26,7 @@
   - Xenoborg
   - BloodBrother # Harmony
   - Pirate # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Mouse
@@ -47,6 +48,7 @@
   - AllHostile
   - Wizard
   - Dragon
+  - Replicator # imp
 
 - type: npcFaction
   id: SimpleHostile
@@ -64,6 +66,7 @@
   - Xenoborg
   - BloodBrother # Harmony
   - Pirate # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: SimpleNeutral
@@ -81,6 +84,7 @@
   - Wizard
   - Xenoborg
   - Pirate # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Xeno
@@ -97,6 +101,7 @@
   - Xenoborg
   - BloodBrother # Harmony
   - Pirate # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Zombie
@@ -114,6 +119,7 @@
   - Xenoborg
   - BloodBrother # Harmony
   - Pirate # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Revolutionary
@@ -125,6 +131,7 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - Replicator # imp
 
 - type: npcFaction
   id: AllHostile
@@ -144,6 +151,7 @@
   - Xenoborg
   - BloodBrother # Harmony
   - Pirate # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Wizard
@@ -163,6 +171,7 @@
   - Xenoborg
   - BloodBrother # Harmony
   - Pirate # Moffstation
+  - Replicator # imp
 
 - type: npcFaction
   id: Xenoborg
@@ -179,5 +188,5 @@
   - Xeno # rivalry
 
   # cause they are hostile to them
-  - SimpleHostile 
+  - SimpleHostile
   - AllHostile
