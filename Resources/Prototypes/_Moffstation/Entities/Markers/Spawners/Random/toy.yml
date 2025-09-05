@@ -8,62 +8,92 @@
     - state: green
     - sprite: _Moffstation/Objects/Fun/figurines.rsi
       state: fig-box
-  - type: RandomSpawner
-    prototypes:
-    - ToyFigurineAwana
-    - ToyFigurineBoxcar
-    - ToyFigurineBrad
-    - ToyFigurineBradBucket
-    - ToyFigurineBrisbane
-    - ToyFigurineBrisbaneBigHat
-    - ToyFigurineCassiel
-    - ToyFigurineCinnabar
-    - ToyFigurineCooks
-    - ToyFigurineCory
-    - ToyFigurineCrux
-    - ToyFigurineDarnell
-    - ToyFigurineDelana
-    - ToyFigurineDelivers
-    - ToyFigurineEchiara
-    - ToyFigurineEclipse
-    - ToyFigurineFails
-    - ToyFigurineFred
-    - ToyFigurineGigs
-    - ToyFigurineHot
-    - ToyFigurineIo
-    - ToyFigurineIris
-    - ToyFigurineJelob
-    - ToyFigurineJobs
-    - ToyFigurineJupiter
-    - ToyFigurineKatie
-    - ToyFigurineKrakatoa
-    - ToyFigurineKylie
-    - ToyFigurineLight
-    - ToyFigurineLightsSeeker
-    - ToyFigurineLilith
-    - ToyFigurineMolar
-    - ToyFigurineNyxie
-    - ToyFigurineNyxilath
-    - ToyFigurinePeedee
-    - ToyFigurinePeriwinkle
-    - ToyFigurineRareel
-    - ToyFigurineRoomba
-    - ToyFigurineSamantha
-    - ToyFigurineSapphire
-    - ToyFigurineSawa
-    - ToyFigurineScribbles
-    - ToyFigurineSean
-    - ToyFigurineSeikret
-    - ToyFigurineSigerthe
-    - ToyFigurineSiliconwing
-    - ToyFigurineSouthbridge
-    - ToyFigurineStella
-    - ToyFigurineStrawberry
-    - ToyFigurineTalvi
-    - ToyFigurineTania
-    - ToyFigurineTar
-    - ToyFigurineVortex
-    - ToyFigurineWallace
-    - ToyFigurineWiggles
-    - ToyFigurineMoonlight
-    offset: 0.2
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: MoffFigurineTable
+      offset: 0.2
+
+- type: entityTable
+  id: MoffFigurineTable
+  table: !type:GroupSelector
+    children:
+      - !type:GroupSelector
+        weight: 20
+        children:
+        - id: ToyFigurineAlfredo
+        - id: ToyFigurineAudrina
+        - id: ToyFigurineAwana
+        - id: ToyFigurineBenny
+        - id: ToyFigurineBoxcar
+        - id: ToyFigurineBrad
+        - id: ToyFigurineBrisbane
+        - id: ToyFigurineCassiel
+        - id: ToyFigurineCinnabar
+        - id: ToyFigurineCooks
+        - id: ToyFigurineCory
+        - id: ToyFigurineCrux
+        - id: ToyFigurineDarnell
+        - id: ToyFigurineDelana
+        - id: ToyFigurineDelivers
+        - id: ToyFigurineDies
+        - id: ToyFigurineEchiara
+        - id: ToyFigurineEclipse
+        - id: ToyFigurineEclispe
+        - id: ToyFigurineFaces
+        - id: ToyFigurineFails
+        - id: ToyFigurineFred
+        - id: ToyFigurineFrostwing
+        - id: ToyFigurineGigs
+        - id: ToyFigurineHercyn
+        - id: ToyFigurineHot
+        - id: ToyFigurineIcarus
+        - id: ToyFigurineIo
+        - id: ToyFigurineIris
+        - id: ToyFigurineJelob
+        - id: ToyFigurineJobs
+        - id: ToyFigurineJupiter
+        - id: ToyFigurineKai
+        - id: ToyFigurineKatie
+        - id: ToyFigurineKaza
+        - id: ToyFigurineKim
+        - id: ToyFigurineKrakatoa
+        - id: ToyFigurineKylie
+        - id: ToyFigurineLesbot
+        - id: ToyFigurineLight
+        - id: ToyFigurineLightsSeeker
+        - id: ToyFigurineLilith
+        - id: ToyFigurineMolar
+        - id: ToyFigurineMoonlight
+        - id: ToyFigurineNyxie
+        - id: ToyFigurineNyxilath
+        - id: ToyFigurinePeedee
+        - id: ToyFigurinePeriwinkle
+        - id: ToyFigurinePolly
+        - id: ToyFigurineRareel
+        - id: ToyFigurineRevri
+        - id: ToyFigurineRoomba
+        - id: ToyFigurineSamantha
+        - id: ToyFigurineSapphire
+        - id: ToyFigurineSawa
+        - id: ToyFigurineScribbles
+        - id: ToyFigurineSean
+        - id: ToyFigurineSeikret
+        - id: ToyFigurineSigerthe
+        - id: ToyFigurineSiliconwing
+        - id: ToyFigurineSouthbridge
+        - id: ToyFigurineStella
+        - id: ToyFigurineStrawberry
+        - id: ToyFigurineSwims
+        - id: ToyFigurineTalvi
+        - id: ToyFigurineTania
+        - id: ToyFigurineTar
+        - id: ToyFigurineTusk
+        - id: ToyFigurineVortex
+        - id: ToyFigurineWallace
+        - id: ToyFigurineWiggles
+        - id: ToyFigurineZara
+      - !type:GroupSelector
+        weight: 1 # 1/20 chance for rare figurines. I assume that for every 20 of a particular regular figurine, there's 1 chance for a rare figurine?
+        children:
+        - id: ToyFigurineBradBucket
+        - id: ToyFigurineBrisbaneBigHat
