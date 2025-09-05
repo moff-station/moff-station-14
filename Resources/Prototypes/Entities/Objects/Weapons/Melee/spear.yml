@@ -44,6 +44,7 @@
     animation: WeaponArcThrust
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+    range: 2 #Moffstation - Increase Spear Range
   - type: DamageOtherOnHit
     damage:
       types:
