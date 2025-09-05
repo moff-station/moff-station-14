@@ -7,6 +7,7 @@ using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes; // Moffstation
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -14,6 +15,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;   // Moffstation - Remove Common
 
     public override void Initialize()
     {
@@ -50,7 +52,10 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     {
         if (args.Channel != null
             && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
-            && keys.Channels.Contains(args.Channel.ID))
+            // Moffstation - start - Remove common
+            && keys.Channels.Contains(args.Channel.ID)
+            && !_prototypeManager.Index<RadioChannelPrototype>(args.Channel.ID).ReadOnly)
+            // Moffstation - end
         {
             _radio.SendRadioMessage(uid, args.Message, args.Channel, component.Headset);
             args.Channel = null; // prevent duplicate messages from other listeners.
