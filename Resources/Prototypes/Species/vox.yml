@@ -46,12 +46,14 @@
     FacialHair:
       points: 1
       required: false
+    # CD - Start - markings
     Head:
-      points: 2 # CD
-      required: false # CD
-    HeadSide: # CD
       points: 2
       required: false
+    HeadSide:
+      points: 2
+      required: false
+    # CD - End
     Snout:
       points: 1
       required: false # CD
