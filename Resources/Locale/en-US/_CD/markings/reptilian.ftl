@@ -141,10 +141,6 @@ marking-LizardTailSnakeStripeAlt = Snake Tail (Striped Alt)
 marking-LizardTailSnakeStripeAlt-tail_snakestripealt_primary = Primary Tone
 marking-LizardTailSnakeStripeAlt-tail_snakestripealt_secondary = Secondary Tone
 
-marking-LizardTailSnakeDual = Snake Tail (Dual)
-marking-LizardTailSnakeDual-tail_snakedual_primary = Primary Tone
-marking-LizardTailSnakeDual-tail_snakedual_secondary = Secondary Tone
-
 marking-LizardTailSnakeUnder = Snake Tail (Under)
 marking-LizardTailSnakeUnder-tail_snakeunder_primary = Primary Tone
 marking-LizardTailSnakeUnder-tail_snakeunder_secondary = Secondary Tone
