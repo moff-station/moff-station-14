@@ -39,3 +39,13 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+  # Moffstation - Start
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: ChurchBell
+    predicted: true
+  - type: TriggerOnSignal
+  - type: DeviceLinkSink
+    ports:
+    - Trigger
+  # Moffstation - End
