@@ -22,3 +22,25 @@
     damage:
       types:
         Heat: 35
+
+# Hallelujah !
+- type: entity
+  id: BaseBulletSilver
+  name: base bullet silver
+  parent: BaseBullet
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: silver
+  - type: PointLight
+    enabled: true
+    color: "#FFFFCC"
+    radius: 2.0
+    energy: 7.0
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 1
+        Holy: 13

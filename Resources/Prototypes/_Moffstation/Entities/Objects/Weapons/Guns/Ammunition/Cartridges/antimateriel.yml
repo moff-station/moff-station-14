@@ -1,0 +1,22 @@
+# Cause' we all li~ve in - anti-material world - and i~'m anti-material girl
+- type: entity
+  parent: [ BaseCartridge, BaseMajorContraband ]
+  id: CartridgeAntiVampirical
+  name: cartridge (.60 anti-vampirical)
+  description: I don't care WHO the coven sends, I'm NOT paying blood tithes!
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - CartridgeAntiMateriel
+  - type: CartridgeAmmo
+    proto: BulletAntiVampirical
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Casings/large_casing.rsi
+    layers:
+    - state: silver
+      map: [ "enum.AmmoVisualLayers.Base" ]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: StaticPrice
+    price: 20
