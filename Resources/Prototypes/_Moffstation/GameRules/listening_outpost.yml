@@ -18,6 +18,7 @@
   components:
   - type: GameRule
     minPlayers: 25
+    cancelPresetOnTooFewPlayers: true
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:
