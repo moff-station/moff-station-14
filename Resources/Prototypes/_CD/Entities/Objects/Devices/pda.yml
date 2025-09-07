@@ -1,12 +1,17 @@
 ﻿- type: entity
-  id: RoboticistPDA
   parent: BasePDA
+  id: RoboticistPDA
   name: roboticist PDA
   description: There are exposed wires and damaged "warranty void if removed" stickers.
   components:
   - type: Pda
     id: ResearchIDCard
     state: pda-roboticist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-roboticist
   - type: PdaBorderColor
     borderColor: "#f4f4f4"
     accentVColor: "#730402"
