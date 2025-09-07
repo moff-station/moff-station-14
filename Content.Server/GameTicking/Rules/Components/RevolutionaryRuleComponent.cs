@@ -32,6 +32,7 @@ public sealed partial class RevolutionaryRuleComponent : Component
     /// <summary>
     /// How long to wait before running the first <see cref="CommandCheck"/>.
     /// </summary>
+    [DataField]
     public TimeSpan InitialCommandCheckDelay = TimeSpan.FromMinutes(10);
     // Moffstation - End
 }
