@@ -7,5 +7,5 @@
 public sealed partial class RenameIdComponent : Component
 {
     [DataField]
-    public string Value;
+    public LocId Value;
 }
