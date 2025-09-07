@@ -27,12 +27,4 @@ public sealed partial class RevolutionaryRuleComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan ShuttleCallTime = TimeSpan.FromMinutes(5);
-
-    // Moffstation - Start
-    /// <summary>
-    /// How long to wait before running the first <see cref="CommandCheck"/>.
-    /// </summary>
-    [DataField]
-    public TimeSpan InitialCommandCheckDelay = TimeSpan.FromMinutes(10);
-    // Moffstation - End
 }

@@ -78,7 +78,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
     protected override void ActiveTick(EntityUid uid, RevolutionaryRuleComponent component, GameRuleComponent gameRule, float frameTime)
     {
         base.ActiveTick(uid, component, gameRule, frameTime);
-        if (component.InitialCommandCheckDelay <= _timing.CurTime && component.CommandCheck <= _timing.CurTime) // Moffstation
+        if (component.CommandCheck <= _timing.CurTime)
         {
             component.CommandCheck = _timing.CurTime + component.TimerWait;
 
