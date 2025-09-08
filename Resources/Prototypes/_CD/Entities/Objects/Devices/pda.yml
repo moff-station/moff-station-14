@@ -6,7 +6,7 @@
   components:
   - type: Pda
     id: ResearchIDCard
-    state: pda-roboticist
+#    state: pda-roboticist
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -15,7 +15,9 @@
   - type: PdaBorderColor
     borderColor: "#f4f4f4"
     accentVColor: "#730402"
+#  - type: Icon
+#    state: pda-roboticist
+#  - type: RenameId
+#    value: cd-job-title-roboticist
   - type: Icon
-    state: pda-roboticist
-  - type: RenameId
-    value: cd-job-title-roboticist
+    state: pda-science
