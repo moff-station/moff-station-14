@@ -27,6 +27,10 @@
       - BulletFoam
     capacity: 10
     proto: BulletFoam
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
   - type: Gun
     fireRate: 2
     selectedMode: SemiAuto
