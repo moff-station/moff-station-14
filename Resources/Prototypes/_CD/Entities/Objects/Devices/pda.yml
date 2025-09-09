@@ -1,30 +1,6 @@
-﻿#- type: entity
-#  parent: BasePDA
-#  id: RoboticistPDA
-#  name: roboticist PDA
-#  description: There are exposed wires and damaged "warranty void if removed" stickers.
-#  components:
-#  - type: Pda
-#    id: ResearchIDCard
-#    state: pda-roboticist
-#  - type: Appearance
-#    appearanceDataInit:
-#      enum.PdaVisuals.PdaType:
-#        !type:String
-#        pda-roboticist
-#  - type: PdaBorderColor
-#    borderColor: "#f4f4f4"
-#    accentVColor: "#730402"
-#  - type: Icon
-#    state: pda-roboticist
-#  - type: RenameId
-#    value: cd-job-title-roboticist
-#  - type: Icon
-#    state: pda-science
-
-- type: entity
+﻿- type: entity
   parent: SciencePDA
-  id: RoboticPDA
+  id: RoboticistPDA
   name: roboticist PDA
   description: There are exposed wires and damaged "warranty void if removed" stickers.
   components:
@@ -39,4 +15,4 @@
   - type: Icon
     state: pda-roboticist
   - type: RenameId
-    value: cd-job-title-roboticist
+    value: job-name-roboticist
