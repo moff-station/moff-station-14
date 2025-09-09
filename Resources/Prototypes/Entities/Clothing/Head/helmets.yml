@@ -29,7 +29,7 @@
 
 #Basic Helmet (Security Helmet)
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
+  parent: [ClothingHeadHelmetArmoredBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetBasic
   # Moffstation - Begin (New Security Helmets) - all changes to this prototype can be overwritten by upstream once #38108 on upstream is merged.
   name: security helmet
@@ -69,14 +69,10 @@
     tags:
     - WhitelistChameleon
     - SecurityHelmet
-  - type: HideLayerClothing
-    slots: []
-    layers:
-      Hair: HEAD
 
 #Mercenary Helmet
 - type: entity
-  parent: [ ClothingHeadHelmetArmoredBase, BaseMajorContraband ]
+  parent: [ ClothingHeadHelmetArmoredBase, FoldableHelmetBase, BaseMajorContraband ] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetMerc
   name: mercenary helmet
   description: The combat helmet is commonly used by mercenaries, is strong, light and smells like gunpowder and the jungle.
