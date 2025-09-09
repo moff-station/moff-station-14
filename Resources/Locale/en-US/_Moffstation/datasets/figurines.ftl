@@ -1,8 +1,34 @@
+figurines-alfredo-1 = You wanna huff frezon?
+figurines-alfredo-2 = Here's some cold... air...
+figurines-alfredo-3 = Ignore the rotting monkey pit.
+figurines-alfredo-4 = Don't vent the plasma!
+figurines-alfredo-5 = Adding more o2 to distro isn't that bad... except for fires, and vox instantly dying.
+figurines-alfredo-6 = When is Tropico not dead?
+figurines-alfredo-7 = 15% n2o is perfectly safe, and funny.
+figurines-alfredo-8 = This stuff makes you feel good. Also it causes cancer.
+
+figurines-audrina-1 = Well, I don't think that's right..
+figurines-audrina-2 = I'm not short.
+figurines-audrina-3 = Pilk, please. What?
+figurines-audrina-4 = Wha- Huh?
+figurines-audrina-5 = I want to punch you so badly.
+figurines-audrina-6 = I don't remember...
+
 figurines-awana-1 = Howdy Howdy~!
 figurines-awana-2 = Howdy hun!
 figurines-awana-3 = You had one job hun...
 figurines-awana-4 = Great work hun!
 figurines-awana-5 = Ready for more work!
+
+figurines-benny-1 = You're fired.
+figurines-benny-2 = I'm busy!
+figurines-benny-3 = I have a very important meeting in 2 minutes, followed immediately by a meeting about that meeting!
+figurines-benny-4 = Think about the bottom line!
+figurines-benny-5 = Think about the investors!
+figurines-benny-6 = We have profit margins to meet!
+figurines-benny-7 = You drive a hard bargain.
+figurines-benny-8 = You're not getting special treatment.
+figurines-benny-9 = This may impact share prices.
 
 figurines-boxcar-1 = Ey.
 figurines-boxcar-2 = We's love dat!
@@ -90,6 +116,14 @@ figurines-delana-5 = Guess who forgot to clean their implanter, BUDDY.
 figurines-delana-6 = Why wouldn't I keep it in my hat?
 figurines-delana-7 = What is the charge? Having a meal? A succulent mothroach meal?
 
+figurines-dies-1 = Wuh?
+figurines-dies-2 = SCARY!!
+figurines-dies-3 = I wanna go home!
+figurines-dies-4 = Ma always said this would happen...
+figurines-dies-5 = *cries*
+figurines-dies-6 = *sobs*
+figurines-dies-7 = *seizes up and falls limp, it's eyes dead and lifeless...*
+
 figurines-echiara-1 = Huh?
 figurines-echiara-2 = What?
 figurines-echiara-3 = Wait, I'm dying?
@@ -100,6 +134,14 @@ figurines-eclipse-2 = I need a permit for this shotgun i totally found in maints
 figurines-eclipse-3 = I'm here to kick ass and munch paper, and I'm all out of paper.
 figurines-eclipse-4 = I miss viv and scarlet.
 figurines-eclipse-5 = Teh healing isn't as rewarding as teh hurting.
+
+figurines-eclispe-1 = Siiiigh~ I dont really feel like arresting you so, mind just falling over for me~?
+figurines-eclispe-2 = Look, if you're gonna get a surplus, at LEAST share with me!
+figurines-eclispe-3 = Why, hello there, handsome~
+figurines-eclispe-4 = Cmooon, I'm just having a bit of fun~!
+figurines-eclispe-5 = Shut up AI, I can and I WILL solo 8 slimes with a truncheon and telescopic shield!!
+figurines-eclispe-6 = Yeah, yeah~ Dont worry, your gal in shining armor is here~
+figurines-eclispe-7 = I know, I'm amazing~ You can all stare at my beauty~
 
 figurines-faces-1 = Oop~ The arti just exploded.
 figurines-faces-2 = Hey, team! Let's not blow up, okay?~
@@ -121,11 +163,27 @@ figurines-fred-2 = IM GONNA CRASH OUT!!
 figurines-fred-3 = Are they a first-time offender?
 figurines-fred-4 = Holy crap this reminds me of the time I got turned into a marketable figurine.
 
+figurines-frostwing-1 = Our thoughts and prayers go out to those affected.
+figurines-frostwing-2 = I'm sorry, they spent the cargo budget on what?!
+figurines-frostwing-3 = We have dispatched ERT to your location. They will arrive within 3-5 business days.
+figurines-frostwing-4 = I find your incompetence less amusing as time goes by.
+figurines-frostwing-5 = We understand it is an emergency. Please hold.
+figurines-frostwing-6 = The station's assets are failing! Mainly, you.
+figurines-frostwing-7 = May we remind you that nuclear operatives are a myth. Please do not listen to the propaganda.
+figurines-frostwing-8 = This is all your fault.
+
 figurines-gigs-1 = How-wdy Howd-dy!
 figurines-gigs-2 = The-ere isss no sssecr-ret menu.
 figurines-gigs-3 = The usssual?
 figurines-gigs-4 = We w-will b-b-be ok.
 figurines-gigs-5 = I..I..on'y had-d...onee....d-ddrink...
+
+figurines-hercyn-1 = You can't just fly to a new life!
+figurines-hercyn-2 = I am Cybersun.
+figurines-hercyn-3 = You were given ample warning.
+figurines-hercyn-4 = I'm putting everything I have into this, and you haven't lifted a finger!
+figurines-hercyn-5 = Do you honestly think you can just weasel out of this?
+figurines-hercyn-6 = Genesis Station, it was a big thing a couple years back.
 
 figurines-hot-1 = Fire safety!
 figurines-hot-2 = Fire safety.
@@ -133,6 +191,17 @@ figurines-hot-3 = Fire safety?
 figurines-hot-4 = Fire safety...
 figurines-hot-5 = Fire. Safety.
 figurines-hot-6 = FIRE SAFETY!!
+
+figurines-icarus-1 = Can I get a uh.... coconut rum?
+figurines-icarus-2 = Where is my cane?
+figurines-icarus-3 = I like plants.
+figurines-icarus-4 = It's only 5 units of lexorin, I'll be fiiiine....
+figurines-icarus-5 = Oh... hello there.
+figurines-icarus-6 = Muta, cryox, and phal please.
+figurines-icarus-7 = Don't worry, the meth will only... maybe... give me organ failure.
+figurines-icarus-8 = Is it nap time yet...?
+figurines-icarus-9 = I can't exactly.... see what's going on.
+figurines-icarus-10 = I'm not legally allowed to wield or use firearms! Never stopped me.
 
 figurines-io-1 = I'm renovating 'zzze medbay, come back later.
 figurines-io-2 = I am a normal moth and can be trusted with 'zzze Deckard.
@@ -164,6 +233,14 @@ figurines-jupiter-3 = Please leave me alone...
 figurines-jupiter-4 = Does anybody here have ANY sense of personal space?!
 figurines-jupiter-5 = I-I’m nn’t drrrunk... Y-YYYOU are...!!
 
+figurines-kai-1 = Goobers!
+figurines-kai-2 = Is a Kai!
+figurines-kai-3 = I'm goings to gets of yous...
+figurines-kai-4 = Is not handlebars!!
+figurines-kai-5 = Who touched my TEGs?!
+figurines-kai-6 = Warms...
+figurines-kai-7 = Yous is a funnys!
+
 figurines-katie-1 = BESTIE!!
 figurines-katie-2 = I've earned a drink.
 figurines-katie-3 = Guh.
@@ -175,6 +252,16 @@ figurines-kaza-2 = Mm? What Kaza doing...?
 figurines-kaza-3 = Kaza bid kindness each other self and to.
 figurines-kaza-4 = KAZA KILL!!
 
+figurines-kim-1 = Want see me break into the bridge? Want see me do it again?
+figurines-kim-2 = Time to bomb sec!
+figurines-kim-3 = Borg, get cap's ID, I gotta say something.
+figurines-kim-4 = Come with me! And you’ll see! A stash of illicit items!~
+figurines-kim-5 = Random bola-shit GO!
+figurines-kim-6 = What am I selling? Cap's dog thing of course!
+figurines-kim-7 = I died? Impossible!
+figurines-kim-8 = I love purple...
+figurines-kim-9 = Plasma leak… seems like a good time to smoke, eh?
+
 figurines-krakatoa-1 = Wawa.
 figurines-krakatoa-2 = Watermelon juice me!
 figurines-krakatoa-3 = Coleslaw day today!
@@ -184,6 +271,17 @@ figurines-krakatoa-5 = Alexander is emergency bacon.
 figurines-kylie-1 = Heya honey.
 figurines-kylie-2 = What can I get ya'?
 figurines-kylie-3 = No kiddin'...
+
+figurines-lesbot-1 = Hello!!
+figurines-lesbot-2 = Can you put this on me, please?
+figurines-lesbot-3 = I'm capable of love! Are you?
+figurines-lesbot-4 = WA HOOOO!!
+figurines-lesbot-5 = No!! My pin!!
+figurines-lesbot-6 = What's the manifest looking like today?
+figurines-lesbot-7 = M o t h r o a c h . . .
+figurines-lesbot-8 = *Beep beep.*
+figurines-lesbot-9 = *Ping!*
+figurines-lesbot-10 = *Honk!*
 
 figurines-light-1 = SHADOW!!
 figurines-light-2 = Wanna get lunch?
@@ -233,16 +331,37 @@ figurines-peedee-3 = Don't put me back in the box
 figurines-peedee-4 = Peedee hates needles!
 figurines-peedee-5 = LET ME OUT!
 
+figurines-pepper-1 = I-uh.
+figurines-pepper-2 = IHEARDASQUEAK-?! IS THERE A MOUSE?!
+figurines-pepper-3 = Did you-um need that MRE? Could I?
+figurines-pepper-4 = I-I-um~ I didn't... take it.
+figurines-pepper-5 = Wait- what was taken?
+figurines-pepper-6 = I HEAR A MOUSE!! OH GOD NO!!
+figurines-pepper-7 = I want my safety box.
+
 figurines-periwinkle-1 = Laughter is the best medicine!
 figurines-periwinkle-2 = Honk.
 figurines-periwinkle-3 = Yap yap yap.
 figurines-periwinkle-4 = What the honk?
+
+figurines-polly-1 = Why am prisoner?
+figurines-polly-2 = Can have master of chems?
+figurines-polly-3 = Am make pizza! Want?
+figurines-polly-4 = Wrong way! Close!
+figurines-polly-5 = Where orange jumpsuit? Why wear gray??
 
 figurines-rareel-1 = Whiskey!
 figurines-rareel-2 = Huh-
 figurines-rareel-3 = I'm gonna take a nap in the back
 figurines-rareel-4 = A maints pill? Sounds tasty!
 figurines-rareel-5 = Boxing in maints? What's the worst that could happen!
+
+figurines-revri-1 = HI FRIEND!
+figurines-revri-2 = She fetching things for nest! Friends want?
+figurines-revri-3 = Out of nest please!
+figurines-revri-4 = Scifriends coords please
+figurines-revri-5 = Scifriend dead, no coords...
+figurines-revri-6 = AIR! One moment...
 
 figurines-roomba-1 = It's all part of the job.
 figurines-roomba-2 = The S stands for Law.
@@ -296,6 +415,12 @@ figurines-sigerthe-4 = STUPID DAMN FISH!!
 figurines-sigerthe-5 = All my contra is acquired very legally.
 figurines-sigerthe-6 = Shittle buildin' time.
 
+figurines-silas-1 = Oh uh- sorry, I was busy
+figurines-silas-2 = Why is my hardsuit is missing?
+figurines-silas-3 = Execution seems harsh... what about requesting a DNR?
+figurines-silas-4 = What do you mean I was employed by the Syndicate? I don't remember that!
+figurines-silas-5 = My prosthetics are from Interdyne? I uhh- doubt that.
+
 figurines-siliconwing-1 = Optimal.
 figurines-siliconwing-2 = Greetings.
 figurines-siliconwing-3 = What resources are desired?
@@ -321,6 +446,13 @@ figurines-strawberry-3 = Uhm, what about my tentacles?
 figurines-strawberry-4 = No, the maid uniform is non optional.
 figurines-strawberry-5 = Engi maid Service!
 figurines-strawberry-6 = Im proud of you, AI.
+
+figurines-swims-1 = Here ya go! Use it responsibly!
+figurines-swims-2 = Ahoy!
+figurines-swims-3 = I'm not going to explode the borg just because it said something you don't like.
+figurines-swims-4 = Research is still in progress, but my hypothesis is that we're distantly related to them...
+figurines-swims-5 = Blub blub!
+figurines-swims-6 = It's a living, intelligent creature! It deserves respect! Oh, it's already dead? In that case, dibs on the liver!
 
 figurines-talvi-1 = Mm.
 figurines-talvi-2 = Status report?
@@ -349,6 +481,12 @@ figurines-tar-5 = Tar is making an anomaly.
 figurines-tar-6 = Tar is making a weird ball!
 figurines-tar-7 = I would never do crime!
 
+figurines-tusk-1 = White gilgamesh, please.
+figurines-tusk-2 = Pff...
+figurines-tusk-3 = Snnk...
+figurines-tusk-4 = FREE GIVEAWAY!!
+figurines-tusk-5 = GOD IS REAL!!
+
 figurines-vortex-1 = Guns are a coward's weapon.
 figurines-vortex-2 = GET OUT OF MY DEPARTMENT.
 figurines-vortex-3 = Why are all of my staff obsessed with some sort of research...
@@ -375,3 +513,9 @@ figurines-moonlight-4 = Wow, you're beautiful today!
 figurines-moonlight-5 = Stay safe, honeybee! I love you!!
 figurines-moonlight-6 = Coords on, darling. Dont want you to get lost if something happens~!
 figurines-moonlight-7 = No matter what anyone says to you...you're amazing, love!
+
+figurines-zara-1 = I swear, you people have no imaginations.
+figurines-zara-2 = I'm gonna put a portal in the burn chamber.
+figurines-zara-3 = Can't make scientific progress without a few deaths, I thought you guys would know that by now.
+figurines-zara-4 = Okay so from an outside perspective this might look irredeemably evil but think of it from my perspective, it's hella funny.
+figurines-zara-5 = Oh, Liiime~
