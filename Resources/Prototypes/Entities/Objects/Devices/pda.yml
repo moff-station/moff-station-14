@@ -201,10 +201,10 @@
     accentVColor: "#949137"
   - type: Icon
     state: pda-interntech
-    #CD - Start - Remove Intern Roles, rework them into loadouts
+    #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-technical-assistant
-    #CD - End
+    #Moffstation - End
 
 - type: entity
   parent: BaseMedicalPDA
@@ -227,10 +227,10 @@
   - type: GuideHelp
     guides:
     - MedicalDoctor
-  #CD - Start - Remove Intern Roles, rework them into loadouts
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-intern
-  #CD - End
+  #Moffstation - End
 
 - type: entity
   parent: BaseSecurityPDA
@@ -250,10 +250,10 @@
     accentVColor: "#A32D26"
   - type: Icon
     state: pda-interncadet
-  #CD - Start - Remove Intern Roles, rework them into loadouts
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-cadet
-  #CD - End
+  #Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -273,10 +273,10 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-internsci
-  #CD - Start - Remove Intern Roles, rework them into loadouts
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-research-assistant
-  #CD - End
+  #Moffstation - End
 
 - type: entity
   parent: BasePDA
