@@ -32,6 +32,12 @@
     hands:
     - item: WeaponRifleFoamBorg
     - item: BoxDonkSoftBox
+    - hand:
+        emptyRepresentative: GrenadeFoamDart
+        emptyLabel: borg-slot-foam-grenade-empty
+        whitelist:
+          tags:
+          - FoamGrenade
   - type: BorgModuleIcon
     icon:
       sprite: _Moffstation/Interface/Actions/actions_borg.rsi
