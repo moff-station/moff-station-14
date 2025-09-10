@@ -10,8 +10,8 @@
   - type: Projectile
     damage: # Deals normal (60) damage to unholy entities
       types:
-        Piercing: 4
-        Holy: 10
+        Piercing: 6
+        Holy: 9 #nice
 
 - type: entity
   id: PelletShotgunSilverSpread
