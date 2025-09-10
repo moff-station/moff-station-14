@@ -15,8 +15,8 @@
   defaultModules:
   - BorgModuleTool
   - BorgModuleInflatable
-  - BorgModuleArtifact
-  - BorgModuleAnomaly
+#  - BorgModuleArtifact #Moffstation - Generic borg is not sciborg
+#  - BorgModuleAnomaly #Moffstation - Generic borg is not sciborg
   radioChannels:
   - Science
 
@@ -53,6 +53,7 @@
     tags:
     - BorgModuleGeneric
     - BorgModuleEngineering
+    - BorgModuleScience #Moffstation - Generic borg is not sciborg
 
   defaultModules:
   - BorgModuleTool
@@ -97,6 +98,7 @@
     tags:
     - BorgModuleGeneric
     - BorgModuleCargo
+    - BorgModuleScience #Moffstation - Generic borg is not sciborg
 
   defaultModules:
   - BorgModuleTool
@@ -142,6 +144,7 @@
     tags:
     - BorgModuleGeneric
     - BorgModuleJanitor
+    - BorgModuleScience #Moffstation - Generic borg is not sciborg
 
   defaultModules:
   - BorgModuleTool
@@ -186,6 +189,7 @@
     tags:
     - BorgModuleGeneric
     - BorgModuleMedical
+    - BorgModuleScience #Moffstation - Generic borg is not sciborg
 
   defaultModules:
   - BorgModuleTool
@@ -244,6 +248,7 @@
     tags:
     - BorgModuleGeneric
     - BorgModuleService
+    - BorgModuleScience #Moffstation - Generic borg is not sciborg
 
   defaultModules:
   - BorgModuleTool
