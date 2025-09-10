@@ -563,6 +563,7 @@
         whitelist:
           tags:
           - Ore
+          - ArtifactFragment
     # Moffstation -End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
@@ -591,6 +592,7 @@
         whitelist:
           tags:
           - Ore
+          - ArtifactFragment
     # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
