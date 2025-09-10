@@ -1,1 +1,1 @@
-﻿borg-slot-ores-empty = ores
+﻿borg-slot-ores-empty = Ores
