@@ -61,6 +61,9 @@ public sealed partial class JumpAbilityComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public LocId? JumpFailedPopup = "jump-ability-failure";
+
+    [ViewVariables(VVAccess.ReadWrite), DataField("chargeUse")]
+    public float ChargeUse = 0f;
 }
 
 public sealed partial class GravityJumpEvent : InstantActionEvent;

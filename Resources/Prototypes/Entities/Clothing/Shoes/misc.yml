@@ -199,6 +199,7 @@
   - type: JumpAbility
     jumpDistance: 4
     jumpSound: /Audio/Effects/stealthoff.ogg
+    chargeUse: 50
   - type: ActionGrant
     actions:
     - ActionGravityJump
@@ -210,3 +211,8 @@
     price: 220
   - type: Tag
     tags: []
+#Test
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
