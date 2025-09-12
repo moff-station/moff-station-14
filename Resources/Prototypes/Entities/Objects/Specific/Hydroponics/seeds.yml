@@ -38,6 +38,11 @@
           tags:
           - Book
     - type: PhysicalComposition
+    # Moffstation - Start - Give service borgs some love
+    - type: Tag
+      tags:
+      - SeedPacket
+    # Moffstation - End
 
 - type: entity
   parent: SeedBase

@@ -22,6 +22,7 @@
     tags:
     - Plastic
     - Trash
+    - Utensil # Moffstation - Give service borgs some love
   - type: MeleeWeapon
     wideAnimationRotation: 180
     attackRate: 1.5
@@ -39,6 +40,7 @@
     tags:
     - Hoe
     - Metal
+    - Utensil # Moffstation - Give service borgs some love
   - type: Sprite
     state: fork
   - type: Utensil
@@ -72,6 +74,7 @@
   - type: Tag
     tags:
     - Metal
+    - Utensil # Moffstation - Give service borgs some love
   - type: Sprite
     state: spoon
   - type: Item
@@ -130,6 +133,7 @@
     - Plastic
     - Trash
     - Knife
+    - Utensil # Moffstation - Give service borgs some love
 
 - type: entity
   parent: UtensilBase
@@ -140,6 +144,7 @@
   - type: Tag
     tags:
     - Metal
+    - Utensil # Moffstation - Give service borgs some love
   - type: Sprite
     state: bar_spoon
   - type: Item

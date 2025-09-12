@@ -13,6 +13,7 @@
     tags:
     - Recyclable
     - Trash
+    - Swab # Moffstation - Give service borgs some love
   - type: BotanySwab
   - type: GuideHelp
     guides:
@@ -41,6 +42,11 @@
   # - Virology (when it's back)
     - Botany
     - Chemicals
+  # Moffstation - Start - Give service borgs some love
+  - type: Tag
+    tags:
+    - Swab
+  # Moffstation - End
 
 - type: entity
   parent: BaseItem

@@ -157,6 +157,12 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
+  # Moffstation - Start - Give service borgs some love
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - SeedPacket
+  # Moffstation - End
 
 - type: entity
   parent: [ BaseAnomalyCore, BaseShadow ]
@@ -333,6 +339,12 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
+  # Moffstation - Start - Give service borgs some love
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - SeedPacket
+  # Moffstation - End
 
 - type: entity
   parent: [ BaseAnomalyInertCore, BaseShadow ]
