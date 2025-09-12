@@ -1,0 +1,34 @@
+﻿- type: entity
+  name: stun lance #As described by Buck himself
+  parent: Stunbaton
+  id: SpearStun
+  description: An extended stun baton designed to prod clowns from a safe distance.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Melee/stunlance.rsi
+    layers:
+    - state: stunlance_off
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 10
+    angle: 0
+    range: 2
+  - type: StaminaDamageOnCollide
+    damage: 55 #Knocks the wind outta ya on throw, but you also lose your stick
+  - type: ThrowingAngle
+    angle: 225
+  - type: Item
+    size: Ginormous
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Melee/stunlance.rsi
+    slots:
+    - back
+    - suitStorage
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: stunlance_on }
+          False: { state: stunlance_off }
