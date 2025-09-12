@@ -105,6 +105,7 @@
           - BorgModuleGeneric
           - BorgModuleSyndicate
           - BorgModuleSyndicateAssault
+          - BorgModuleScience #Moffstation - Generic borg is not sciborg
       hasMindState: synd_sec_e
       noMindState: synd_sec
     - type: InteractionPopup
@@ -137,6 +138,7 @@
           - BorgModuleGeneric
           - BorgModuleMedical
           - BorgModuleSyndicate
+          - BorgModuleScience #Moffstation - Generic borg is not sciborg
       hasMindState: synd_medical_e
       noMindState: synd_medical
     - type: ShowHealthBars
@@ -176,6 +178,7 @@
           - BorgModuleGeneric
           - BorgModuleEngineering
           - BorgModuleSyndicate
+          - BorgModuleScience #Moffstation - Generic borg is not sciborg
       hasMindState: synd_engi_e
       noMindState: synd_engi
     - type: ShowHealthBars
@@ -210,6 +213,7 @@
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
+      - BorgModuleScience #Moffstation - Generic borg is not sciborg
     hasMindState: derelict_e
     noMindState: derelict_e_r
   - type: Construction
@@ -247,6 +251,7 @@
       tags:
       - BorgModuleGeneric
       - BorgModuleEngineering
+      - BorgModuleScience #Moffstation - Generic borg is not sciborg
     hasMindState: engineer_e
     noMindState: engineer_e_r
 
@@ -281,6 +286,7 @@
       tags:
       - BorgModuleGeneric
       - BorgModuleJanitor
+      - BorgModuleScience #Moffstation - Generic borg is not sciborg
     hasMindState: janitor_e
     noMindState: janitor_e_r
 
@@ -315,6 +321,7 @@
       tags:
       - BorgModuleGeneric
       - BorgModuleMedical
+      - BorgModuleScience #Moffstation - Generic borg is not sciborg
     hasMindState: medical_e
     noMindState: medical_e_r
   - type: SolutionScanner
@@ -356,6 +363,7 @@
       tags:
       - BorgModuleGeneric
       - BorgModuleCargo
+      - BorgModuleScience #Moffstation - Generic borg is not sciborg
     hasMindState: miner_e
     noMindState: miner_e_r
 
@@ -383,6 +391,7 @@
       - BorgModuleGeneric
       - BorgModuleSyndicate
       - BorgModuleSyndicateAssault
+      - BorgModuleScience #Moffstation - Generic borg is not sciborg
     hasMindState: synd_sec_derelict_e
     noMindState: synd_sec_derelict
   - type: Construction
