@@ -1,0 +1,15 @@
+- type: entity
+  id: CartridgeMagnumSilver
+  name: cartridge (.45 magnum silver)
+  parent: BaseCartridgeMagnum
+  description: Heavy magnum cartridge mostly used by revolvers. Silver munitions are effective against unholy foes, smiting the target for their misdeeds.
+  components:
+  - type: CartridgeAmmo
+    proto: BulletMagnumSilver
+  - type: Sprite
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+      - state: tip
+        map: [ "enum.AmmoVisualLayers.Tip" ]
+        color: "#bebed7"

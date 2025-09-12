@@ -1,0 +1,11 @@
+- type: entity
+  id: BulletRifleSilver
+  parent: BaseBulletSilver
+  name: bullet (0.20 rifle silver)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage: # Deals normal (17) damage to unholy entities
+      types:
+        Piercing: 8
+        Holy: 13
