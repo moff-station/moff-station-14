@@ -19,6 +19,8 @@ namespace Content.Server.Speech.EntitySystems
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly ILocalizationManager _loc = default!;
 
+        private static readonly Regex EndOfMessagePunctuation = new(@"[\.!\?‽]+$", RegexOptions.Compiled); // Moffstation - Full replacement maintains end of message punctation
+
         private readonly Dictionary<ProtoId<ReplacementAccentPrototype>, (Regex regex, string replacement)[]>
             _cachedReplacements = new();
 
@@ -57,7 +59,19 @@ namespace Content.Server.Speech.EntitySystems
             // ideally both aren't used at the same time (but we don't have a way to enforce that in serialization yet)
             if (prototype.FullReplacements != null)
             {
-                return prototype.FullReplacements.Length != 0 ? Loc.GetString(_random.Pick(prototype.FullReplacements)) : "";
+                // Moffstation - Start - Full replacement maintains end of message punctuation
+                var ret = prototype.FullReplacements.Length != 0 ? Loc.GetString(_random.Pick(prototype.FullReplacements)) : "";
+
+                if (prototype.FullReplacementsMaintainEndOfMessagePunctuation &&
+                    EndOfMessagePunctuation.Match(message).Captures is { Count: > 0 } messagePunctuation)
+                {
+                    return EndOfMessagePunctuation.IsMatch(ret)
+                        ? EndOfMessagePunctuation.Replace(ret, messagePunctuation[0].Value)
+                        : ret + messagePunctuation[0].Value;
+                }
+
+                return ret;
+                // Moffstation - End
             }
 
             // Prohibition of repeated word replacements.
