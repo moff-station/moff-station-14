@@ -29,3 +29,12 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+  # Moffstation - Start
+  - type: EmitSoundOnTrigger
+    sound: "/Audio/Weapons/boxingbell.ogg"
+    predicted: true
+  - type: TriggerOnSignal
+  - type: DeviceLinkSink
+    ports:
+    - Trigger
+  # Moffstation - End

@@ -49,6 +49,11 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  # Moffstation - Start
+  - type: DeviceLinkSink
+    ports:
+    - LatheEnqueueAgain
+  # Moffstation - End
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity

@@ -16,6 +16,8 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking; // Moffstation
+using Content.Shared.DeviceLinking.Events; // Moffstation
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
@@ -57,6 +59,8 @@ namespace Content.Server.Lathe
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly RadioSystem _radio = default!;
 
+        private static readonly ProtoId<SinkPortPrototype> EnqueueAgainPort = "LatheEnqueueAgain"; // Moffstation
+
         /// <summary>
         /// Per-tick cache
         /// </summary>
@@ -71,6 +75,7 @@ namespace Content.Server.Lathe
             SubscribeLocalEvent<LatheComponent, TechnologyDatabaseModifiedEvent>(OnDatabaseModified);
             SubscribeLocalEvent<LatheAnnouncingComponent, TechnologyDatabaseModifiedEvent>(OnTechnologyDatabaseModified);
             SubscribeLocalEvent<LatheComponent, ResearchRegistrationChangedEvent>(OnResearchRegistrationChanged);
+            SubscribeLocalEvent<LatheComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation
 
             SubscribeLocalEvent<LatheComponent, LatheQueueRecipeMessage>(OnLatheQueueRecipeMessage);
             SubscribeLocalEvent<LatheComponent, LatheSyncRequestMessage>(OnLatheSyncRequestMessage);
@@ -196,6 +201,8 @@ namespace Content.Server.Lathe
                 node.ValueRef.ItemsRequested += quantity;
             else
                 component.Queue.AddLast(new LatheRecipeBatch(recipe.ID, 0, quantity));
+
+            component.MostRecentlyEnqueued = recipe; // Moffstation - Keep track of most recently enqueued
 
             return true;
         }
@@ -423,6 +430,23 @@ namespace Content.Server.Lathe
         {
             UpdateUserInterfaceState(uid, component);
         }
+
+        // Moffstation - Start
+        private void OnSignalReceived(Entity<LatheComponent> entity, ref SignalReceivedEvent args)
+        {
+            if (args.Port != EnqueueAgainPort || entity.Comp.MostRecentlyEnqueued is not { } recipe)
+                return;
+
+            if (TryAddToQueue(entity, recipe, 1, entity))
+            {
+                _adminLogger.Add(
+                    LogType.Action,
+                    LogImpact.Low,
+                    $"A signal ({ToPrettyString(args.Trigger):trigger}) queued 1 {GetRecipeName(recipe)} at {ToPrettyString(entity):lathe}"
+                );
+            }
+        }
+        // Moffstation - End
 
         protected override bool HasRecipe(EntityUid uid, LatheRecipePrototype recipe, LatheComponent component)
         {
