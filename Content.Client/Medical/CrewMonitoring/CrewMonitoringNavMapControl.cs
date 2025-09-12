@@ -7,8 +7,6 @@ namespace Content.Client.Medical.CrewMonitoring;
 
 public sealed partial class CrewMonitoringNavMapControl : NavMapControl
 {
-    private readonly SharedTransformSystem _transform; // Moffstation - Crewmon coords match GPS
-
     public NetEntity? Focus;
     public Dictionary<NetEntity, string> LocalizedNames = new();
 
@@ -17,8 +15,6 @@ public sealed partial class CrewMonitoringNavMapControl : NavMapControl
 
     public CrewMonitoringNavMapControl() : base()
     {
-        _transform = EntManager.System<SharedTransformSystem>(); // Moffstation - Crewmon coords match GPS
-
         WallColor = new Color(192, 122, 196);
         TileColor = new(71, 42, 72);
         BackgroundColor = Color.FromSrgb(TileColor.WithAlpha(BackgroundOpacity));
@@ -68,10 +64,9 @@ public sealed partial class CrewMonitoringNavMapControl : NavMapControl
             if (!LocalizedNames.TryGetValue(netEntity, out var name))
                 name = "Unknown";
 
-            // Moffstation - Start - Make crewmon match GPS coords.
-            var mapCoords = _transform.ToMapCoordinates(blip.Coordinates);
-            var message = name + "\nLocation: [x = " + MathF.Floor(mapCoords.X) + ", y = " + MathF.Floor(mapCoords.Y) + "]";
-            // Moffstation - End
+            var message = name + "\n" + Loc.GetString("navmap-location",
+                ("x", MathF.Round(blip.Coordinates.X)),
+                ("y", MathF.Round(blip.Coordinates.Y)));
 
             _trackedEntityLabel.Text = message;
             _trackedEntityPanel.Visible = true;
