@@ -1,0 +1,23 @@
+# Player: Kubakura -
+- type: entity
+  parent: ClothingMaskBase
+  id: PersonalItemVexMask
+  name: Vex's mask
+  description: A smooth, white metal mask that covers the left side of the face, leaving the right side exposed. Clearly it's seen better days.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: icon
+    sprite: _Moffstation/PersonalItems/Wearables/Kubakura/Vex_Glowsearcher/vexmask.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Kubakura/Vex_Glowsearcher/vexmask.rsi
+
+- type: loadout
+  id: PersonalItemVexMask
+  storage:
+    back:
+    - PersonalItemVexMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Vex Glowsearcher
