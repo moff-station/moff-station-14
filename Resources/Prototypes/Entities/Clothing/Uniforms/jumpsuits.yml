@@ -462,7 +462,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitPrisoner
+  id: ClothingUniformJumpsuitPrisonerUpstream #Moffstation - New prisoner outfits
   name: prisoner jumpsuit
   description: A jumpsuit used for prisoners. It has suit sensors automatically enabled at all times.
   components:
@@ -498,7 +498,7 @@
     - ClothMade
     - Recyclable
     - PrisonUniform
-    - WhitelistChameleon
+#   - WhitelistChameleon #Moffstation - New prisoner outfits
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
