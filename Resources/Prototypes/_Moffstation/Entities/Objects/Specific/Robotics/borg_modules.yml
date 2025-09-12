@@ -16,3 +16,29 @@
     - item: WeaponShotgunBlackbox
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
+
+- type: entity
+  id: BorgModuleFoamForceGallant
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: Foam Force Gallant cyborg module
+  description: A module that comes with a Foam Force Gallant rifle.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/foam_gun_module.rsi
+      state: icon-foam-gun
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponRifleFoamBorg
+    - item: BoxDonkSoftBox
+    - hand:
+        emptyRepresentative: GrenadeFoamDart
+        emptyLabel: borg-slot-foam-grenade-empty
+        whitelist:
+          tags:
+          - FoamGrenade
+  - type: BorgModuleIcon
+    icon:
+      sprite: _Moffstation/Interface/Actions/actions_borg.rsi
+      state: foam-force-module
