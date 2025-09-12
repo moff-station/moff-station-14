@@ -1,3 +1,238 @@
+# Generic Modules
+- type: entity
+  id: BorgModuleBureaucracy
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: Bureaucracy cyborg module
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-bureaucracy
+  - type: ItemBorgModule
+    hands:
+    - item: Pen
+    - item: BooksBag
+    - hand:
+        emptyLabel: borg-slot-documents-empty
+        emptyRepresentative: Paper
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+    - item: HandLabeler
+    - item: RubberStampApproved
+    - item: RubberStampDenied
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: bureau-module }
+
+# Service Modules
+- type: entity
+  id: BorgModuleService
+  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  name: service cyborg module
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: service
+    - state: icon-bartending
+  - type: ItemBorgModule
+    hands:
+    - item:
+      hand:
+        emptyRepresentative: BarSpoon
+        emptyLabel: borg-slot-utensils-empty
+        whitelist:
+          tags:
+          - Utensil
+          - RollingPin
+          - CleaningRag
+    - item:
+      hand:
+        emptyRepresentative: FoodBowlBig
+        emptyLabel: borg-slot-dinnerware-empty
+        whitelist:
+          tags:
+          - Dinnerware
+    - item: DrinkGlass
+      hand:
+        emptyLabel: borg-slot-small-containers-empty
+        emptyRepresentative: DrinkGlass
+        whitelist:
+          components:
+          - FitsInDispenser
+    - item:
+      hand:
+        emptyRepresentative: DrinkWhiskeyBottleFull
+        emptyLabel: borg-slot-bottles-empty
+        whitelist:
+          tags:
+          - DrinkBottle
+    - item:
+      hand:
+        emptyLabel: borg-slot-ingredients-empty
+        emptyRepresentative: ReagentContainerFlour
+        whitelist:
+          tags:
+          - Ingredient
+          - Condiment
+    - item:
+      hand:
+        emptyLabel: borg-slot-food-empty
+        emptyRepresentative: FoodCheeseSlice
+        whitelist:
+          components:
+          - Edible
+        blacklist:
+          tags:
+          - DrinkBottle
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: service-module }
+
+- type: entity
+  id: BorgModuleMusique
+  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  name: musique cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-musique
+  - type: ItemBorgModule
+    hands:
+    - item: SynthesizerInstrument
+      hand:
+        emptyLabel: borg-slot-instruments-empty
+        emptyRepresentative: SynthesizerInstrument
+        whitelist:
+          components:
+          - Instrument
+    - item: ElectricGuitarInstrument
+      hand:
+        emptyLabel: borg-slot-instruments-empty
+        emptyRepresentative: ElectricGuitarInstrument
+        whitelist:
+          components:
+          - Instrument
+    - item: SaxophoneInstrument
+      hand:
+        emptyLabel: borg-slot-instruments-empty
+        emptyRepresentative: SaxophoneInstrument
+        whitelist:
+          components:
+          - Instrument
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: musical-module }
+
+- type: entity
+  id: BorgModuleGardening
+  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  name: gardening cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-gardening
+  - type: ItemBorgModule
+    hands:
+    - item: HydroponicsToolMiniHoe
+    - item: HydroponicsToolClippers
+    - item: BorgDropper
+    - item:
+      hand:
+        emptyRepresentative: Bucket
+        emptyLabel: borg-slot-buckets-empty
+        whitelist:
+          tags:
+          - Bucket
+    - item:
+      hand:
+        emptyRepresentative: AppleSeeds
+        emptyLabel: borg-slot-seeds-empty
+        whitelist:
+          tags:
+          - SeedPacket
+    - item:
+      hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swabs-empty
+        whitelist:
+          tags:
+          - Swab
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
+
+- type: entity
+  id: BorgModuleHarvesting
+  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  name: harvesting cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-harvesting
+  - type: ItemBorgModule
+    hands:
+    - item: HydroponicsToolScythe
+    - item: HydroponicsToolSpade
+    - item: HydroponicsToolHatchet
+    - item:
+      hand:
+        emptyRepresentative: PlantBGoneSpray
+        emptyLabel: borg-slot-sprays-empty
+        whitelist:
+          tags:
+          - Spray
+          - PlantBGone
+    - item: PlantBag
+    - item:
+      hand:
+        emptyRepresentative: FoodApple
+        emptyLabel: borg-slot-produce-empty
+        whitelist:
+          components:
+          - Produce
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: harvesting-module }
+
+- type: entity
+  id: BorgModuleClowning
+  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  name: clowning cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-clown
+  - type: ItemBorgModule
+    hands:
+    - item: BikeHorn
+    - item: ClownRecorder
+    - item: BikeHornInstrument
+    - item:
+      hand:
+        emptyRepresentative: TrashBananaPeel
+        emptyLabel: borg-slot-peels-empty
+        whitelist:
+          tags:
+          - BananaPeel
+    - item:
+      hand:
+        emptyRepresentative: FoodPieBananaCream
+        emptyLabel: borg-slot-pies-empty
+        whitelist:
+          components:
+          - CreamPie
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: clowning-module }
+
+
+# Pirate Modules
 - type: entity
   id: BorgModulePirate
   parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
