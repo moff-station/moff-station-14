@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "tarburger drawn by CakeLegion",
+    "copyright": "tarburger drawn by CakeLegion, Mothroach sprites created by Huaqas (GitHub) usings sprites originally taken from fulpstation https://github.com/fulpstation/fulpstation/commit/edb232b692ec9f356ec554ea1971da552b9bc447 that have been edited by TurboTracker, Tiniest Shark (Github) and Southbridge",
     "size": {
         "x": 32,
         "y": 32
@@ -9,6 +9,28 @@
     "states": [
         {
             "name": "tarburger"
+        },
+        {
+            "name": "mothroach-rosy"
+        },
+        {
+            "name": "mothroach-rosy-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "mothroach-rosy-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "mothroach-deathshead"
+        },
+        {
+            "name": "mothroach-deathshead-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "mothroach-deathshead-inhand-right",
+            "directions": 4
         }
     ]
 }
