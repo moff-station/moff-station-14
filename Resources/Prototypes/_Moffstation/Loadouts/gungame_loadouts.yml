@@ -221,6 +221,18 @@
   - CaneSheathFilled
 
 - type: startingGear
+  id: GunGamePoacher
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSafari
+    back: WeaponSniperElephant
+    head: ClothingHeadSafari
+    outerClothing: ClothingOuterVestTank
+    pocket1: CartridgeAntiMateriel
+    pocket2: MagazineBoxAntiMateriel
+  inhand:
+  - WeaponSniperElephant
+
+- type: startingGear
   id: GunGameGreenSec
   equipment:
     jumpsuit: ClothingUniformJumpsuitSec
