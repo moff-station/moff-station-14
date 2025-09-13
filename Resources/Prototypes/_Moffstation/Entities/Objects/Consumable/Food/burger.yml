@@ -29,32 +29,12 @@
 
 - type: entity
   name: mothroachburger
-  parent: FoodBurgerBase
+  parent: FoodBurgerMothRoach
   id: FoodBurgerMothRoachDeathshead
-  description: The last lamp it saw was the one inside the microwave.
   components:
-  - type: FlavorProfile
-    flavors:
-      - bun
-      - meaty
-      - light
   - type: Sprite
     sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
     state: mothroach-deathshead
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Protein
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 7
-  - type: Tag
-    tags:
-    - Meat
   - type: Item
     inhandVisuals:
       left:
@@ -68,32 +48,12 @@
 
 - type: entity
   name: mothroachburger
-  parent: FoodBurgerBase
+  parent: FoodBurgerMothRoach
   id: FoodBurgerMothRoachRosy
-  description: The last lamp it saw was the one inside the microwave.
   components:
-  - type: FlavorProfile
-    flavors:
-      - bun
-      - meaty
-      - light
   - type: Sprite
     sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
     state: mothroach-rosy
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Protein
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 7
-  - type: Tag
-    tags:
-    - Meat
   - type: Item
     inhandVisuals:
       left:
