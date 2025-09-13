@@ -91,7 +91,7 @@ public sealed class ReadyManifestSystem : EntitySystem
                 !profile.JobPriorities.TryGetValue(job, out var priority))
                 continue;
 
-            if (priority < JobPriority.Medium)
+            if (priority < JobPriority.High)
                 continue;
 
             _jobCounts[job]++;

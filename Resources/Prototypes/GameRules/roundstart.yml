@@ -265,6 +265,9 @@
   components:
   - type: GameRule
     minPlayers: 15
+    delay:
+      min: 300
+      max: 300
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn

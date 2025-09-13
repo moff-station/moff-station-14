@@ -555,6 +555,16 @@
     - item: Shovel
     - item: MineralScannerUnpowered
     - item: BorgOreBag
+    # Moffstation - Start - Add orehand for salvage borgs
+    - item:
+      hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+    # Moffstation -End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
 
@@ -574,6 +584,16 @@
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
     - item: OreBagOfHolding
+    # Moffstation - Start - Add orehand for salvage borgs
+    - item:
+      hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+    # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
 
