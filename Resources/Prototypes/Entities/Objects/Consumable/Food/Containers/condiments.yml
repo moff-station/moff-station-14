@@ -446,6 +446,11 @@
       visible: true
   - type: Icon
     state: bottle-vinegar
+# Moffstation - Start - Give service borgs some love
+  - type: Tag
+    tags:
+    - Condiment
+# Moffstation - End
 
 - type: entity
   parent: BaseFoodCondimentBottle
