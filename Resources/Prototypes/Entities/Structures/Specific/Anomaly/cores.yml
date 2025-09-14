@@ -157,9 +157,6 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
-  - type: Tag
-    tags:
-    - ForceableFollow
 
 - type: entity
   parent: [ BaseAnomalyCore, BaseShadow ]
@@ -336,9 +333,6 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
-  - type: Tag
-    tags:
-    - ForceableFollow
 
 - type: entity
   parent: [ BaseAnomalyInertCore, BaseShadow ]
