@@ -1,0 +1,14 @@
+# Guns
+
+- type: listing # not gonna make this zookeeper only because I Said So.
+  id: UplinkSniperElephant
+  name: uplink-sniper-elephant-name
+  description: uplink-sniper-elephant-desc
+  productEntity: WeaponSniperElephant
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 6
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkWeaponry

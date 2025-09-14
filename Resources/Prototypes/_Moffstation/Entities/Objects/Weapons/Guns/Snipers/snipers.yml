@@ -1,0 +1,42 @@
+- type: entity
+  name: space elephant gun
+  parent: [ WeaponFlareGun, BaseGunWieldable, BaseSyndicateContraband ]
+  id: WeaponSniperElephant
+  description: A single-shot rifle for hunting the most dangerous space game. Uses .60 anti-materiel ammo.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Snipers/elephant_gun.rsi
+    layers:
+      - state: base
+        map: [ "enum.GunVisualLayers.Base" ]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Snipers/elephant_gun.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Back
+  - type: ChamberMagazineAmmoProvider
+    autoCycle: false
+    boltClosed: true
+    canRack: false
+    soundBoltClosed: /Audio/Weapons/Guns/Cock/revolver_cock.ogg
+    soundBoltOpened: /Audio/Weapons/Guns/Cock/revolver_cock.ogg
+    soundRack: /Audio/Weapons/Guns/Cock/revolver_cock.ogg
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,3,1
+    sprite: _Moffstation/Objects/Weapons/Guns/Snipers/elephant_gun.rsi
+  - type: ItemSlots
+    slots:
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeAntiMateriel
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeAntiMateriel
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+  - type: GunRequiresWield
