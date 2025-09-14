@@ -556,8 +556,7 @@
     - item: MineralScannerUnpowered
     - item: BorgOreBag
     # Moffstation - Start - Add orehand for salvage borgs
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: Coal1
         emptyLabel: borg-slot-ores-empty
         whitelist:
@@ -585,8 +584,7 @@
     - item: AdvancedMineralScannerUnpowered
     - item: OreBagOfHolding
     # Moffstation - Start - Add orehand for salvage borgs
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: Coal1
         emptyLabel: borg-slot-ores-empty
         whitelist:
@@ -1067,8 +1065,7 @@
 #    - item: RubberStampApproved
 #    - item: RubberStampDenied
 #    - item: BorgDropper
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: BarSpoon
         emptyLabel: borg-slot-utensils-empty
         whitelist:
@@ -1076,37 +1073,32 @@
           - Utensil
           - RollingPin
           - CleaningRag
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: FoodBowlBig
         emptyLabel: borg-slot-dinnerware-empty
         whitelist:
           tags:
           - Dinnerware
-    - item:
-      hand:
+    - hand:
         emptyLabel: borg-slot-small-containers-empty
         emptyRepresentative: DrinkGlass
         whitelist:
           components:
           - FitsInDispenser
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: DrinkWhiskeyBottleFull
         emptyLabel: borg-slot-bottles-empty
         whitelist:
           tags:
           - DrinkBottle
-    - item:
-      hand:
+    - hand:
         emptyLabel: borg-slot-ingredients-empty
         emptyRepresentative: ReagentContainerFlour
         whitelist:
           tags:
           - Ingredient
           - Condiment
-    - item:
-      hand:
+    - hand:
         emptyLabel: borg-slot-food-empty
         emptyRepresentative: FoodCheeseSlice
         whitelist:
@@ -1171,29 +1163,24 @@
     - item: HydroponicsToolClippers
 #    - item: Bucket
     - item: BorgDropper
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: Bucket
         emptyLabel: borg-slot-buckets-empty
         whitelist:
           tags:
           - Bucket
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: AppleSeeds
         emptyLabel: borg-slot-seeds-empty
         whitelist:
           components:
           - Seed
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: DiseaseSwab
         emptyLabel: borg-slot-swabs-empty
         whitelist:
           components:
           - BotanySwab
-          tags:
-          - SwabBox
 # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
@@ -1213,8 +1200,7 @@
     - item: HydroponicsToolScythe
     - item: HydroponicsToolSpade
     - item: HydroponicsToolHatchet
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: PlantBGoneSpray
         emptyLabel: borg-slot-sprays-empty
         whitelist:
@@ -1222,8 +1208,7 @@
           - Spray
           - PlantBGone
     - item: PlantBag
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: FoodApple
         emptyLabel: borg-slot-produce-empty
         whitelist:
@@ -1248,15 +1233,13 @@
     - item: BikeHorn
     - item: ClownRecorder
     - item: BikeHornInstrument
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: TrashBananaPeel
         emptyLabel: borg-slot-peels-empty
         whitelist:
           tags:
           - BananaPeel
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: FoodPieBananaCream
         emptyLabel: borg-slot-pies-empty
         whitelist:
