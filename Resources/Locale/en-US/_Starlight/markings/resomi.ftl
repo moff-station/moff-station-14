@@ -1,27 +1,26 @@
-marking-ResomiTail = Resomi tail
-marking-ResomiTail-tail = Resomi tail
+marking-ResomiTail = Resomi Tail
+marking-ResomiTail-tail = Resomi Tail
 
-marking-ResomiTailFeathers = Tail feathers
-marking-ResomiTailFeathers-tail_feathers = Tail feathers
+marking-ResomiTailFeathers = Tail Feathers
+marking-ResomiTailFeathers-tail_feathers = Tail Feathers
 
-marking-ResomiLArmFeathers = Resomi left arm Feathers
-marking-ResomiLArmFeathers-l_hand_feathers = Resomi left arm Feathers
+marking-ResomiLLegFeathers = Left Leg Feathers
+marking-ResomiLLegFeathers-l_foot_feathers = Leg Feathers
 
-marking-ResomiLLegFeathers = Resomi left leg Feathers
-marking-ResomiLLegFeathers-l_foot_feathers = Resomi left leg Feathers
+marking-ResomiRLegFeathers = Right Leg Feathers
+marking-ResomiRLegFeathers-r_foot_feathers = Leg Feathers
 
-marking-ResomiRArmFeathers = Resomi right arm Feathers
-marking-ResomiRArmFeathers-r_hand_feathers = Resomi right arm Feathers
+marking-ResomiLArmFeathers = Left Hand Feathers
+marking-ResomiLArmFeathers-l_hand_feathers = Hand Feathers
 
-marking-ResomiRLegFeathers = Resomi right leg Feathers
-marking-ResomiRLegFeathers-r_foot_feathers = Resomi right leg Feathers
+marking-ResomiRArmFeathers = Right Hand Feathers
+marking-ResomiRArmFeathers-r_hand_feathers = Hand Feathers
 
-marking-ResomiFluff = Resomi under fluff
-marking-ResomiFluff-fluff = Resomi under fluff
+marking-ResomiFluff = Under fluff
+marking-ResomiFluff-fluff = Under fluff
 
-marking-ResomiFluffHead = Resomi head fluff
-marking-ResomiFluffHead-fluff_head = Resomi head fluff
+marking-ResomiFluffHead = Head fluff
+marking-ResomiFluffHead-fluff_head = Head fluff
 
-
-marking-ResomiFluffHeadUp = Resomi head fluff (up)
-marking-ResomiFluffHeadUp-fluff_head_up = Resomi head fluff (up)
+marking-ResomiFluffHeadUp = Head fluff (up)
+marking-ResomiFluffHeadUp-fluff_head_up = Head fluff (up)
