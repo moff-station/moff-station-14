@@ -278,7 +278,7 @@ internal sealed class AdminNameOverlay : Overlay
             // Watchlist status
             if (playerInfo.HasWatchlist && _displayWatchlist)
             {
-                color = Color.MediumPurple;
+                color = Color.Magenta;
                 color.A = alpha;
                 args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset,
                     Loc.GetString("admin-note-editor-type-watchlist"),

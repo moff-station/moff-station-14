@@ -34,10 +34,10 @@ using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Server.Administration.Notes;  // Moffstation
 
 // CD: imports
 using Content.Server._CD.Records;
+using Content.Server._Moffstation.Players;
 
 namespace Content.Server.Administration.Systems;
 
@@ -60,7 +60,7 @@ public sealed class AdminSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly IAdminNotesManager _notesMan = default!; // Moffstation - Visible watchlists
+    [Dependency] private readonly WatchListTracker _watchList = default!;   // Moffstation
 
     // CD: for erasing records on erase ban
     [Dependency] private readonly CharacterRecordsSystem _cdRecords = default!;
@@ -273,6 +273,12 @@ public sealed class AdminSystem : EntitySystem
             overallPlaytime = playTime;
         }
 
+        // Moffstation - Start - Get watchlist status
+        var watchListed = false;
+        if (session != null)    // Second check so we don't modify upstream code
+            watchListed = _watchList.GetWatchListed(session);
+        // Moffstation - End
+
         return new PlayerInfo(
             name,
             entityName,
@@ -287,16 +293,8 @@ public sealed class AdminSystem : EntitySystem
             connected,
             _roundActivePlayers.Contains(data.UserId),
             overallPlaytime,
-            HasWatchList(data.UserId));
+            watchListed);
     }
-
-    // Moffstation - Start - get watchlist status
-    private bool HasWatchList(Guid player)
-    {
-        var watchLists = Task.Run(() => _notesMan.GetActiveWatchlists(player)).GetAwaiter().GetResult();
-        return watchLists.Any();
-    }
-    // Moffstation - End
 
     private void OnPanicBunkerChanged(bool enabled)
     {
