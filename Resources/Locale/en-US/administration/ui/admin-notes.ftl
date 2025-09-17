@@ -47,6 +47,7 @@ admin-note-editor-secret = Secret?
 admin-note-editor-secret-tooltip = Checking this will make the note not be visible by the player
 admin-note-editor-type-note = Note
 admin-note-editor-type-message = Message
+admin-note-editor-type-watchlist = Watchlist
 admin-note-editor-type-server-ban = Server Ban
 admin-note-editor-type-role-ban = Role Ban
 admin-note-editor-severity-select = Select
