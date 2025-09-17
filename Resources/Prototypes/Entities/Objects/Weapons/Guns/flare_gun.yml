@@ -11,11 +11,9 @@
         map: ["enum.GunVisualLayers.Base"]
   - type: Item
     size: Small
-    # Moffstation - Begin (Weapon Resizing)
     shape:
     - 0,0,1,0
     - 0,1,0,1
-    # Moffstation - End
     sprite: Objects/Weapons/Guns/Shotguns/flaregun.rsi
   - type: ItemSlots
     slots:
@@ -46,6 +44,11 @@
   - type: Appearance
   - type: Gun
     fireRate: 8
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto

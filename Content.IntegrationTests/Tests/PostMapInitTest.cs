@@ -65,6 +65,8 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", // Variant of grimebreaker
             "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
             "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
+            "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
+            "/Maps/_Moffstation/dugstation.yml" // Contains cat ears
         };
 
         private static readonly string[] GameMaps =
@@ -97,8 +99,12 @@ namespace Content.IntegrationTests.Tests
             "Meta",
             "MW-Dock",
             "CS-Dust2",
+            "TF2-2Fort",
             "WaterVapour",
             "Frezon",
+            "Prime",
+            "D1-Logic",
+            "Dugstation",
             // Moffstation - End
         };
 
@@ -281,8 +287,7 @@ namespace Content.IntegrationTests.Tests
                 return;
 
             var yamlEntities = node["entities"];
-            if (!protoManager.TryIndex(DoNotMapCategory, out var dnmCategory))
-                return;
+            var dnmCategory = protoManager.Index(DoNotMapCategory);
 
             Assert.Multiple(() =>
             {
@@ -291,7 +296,7 @@ namespace Content.IntegrationTests.Tests
                     var protoId = yamlEntity["proto"].AsString();
 
                     // This doesn't properly handle prototype migrations, but thats not a significant issue.
-                    if (!protoManager.TryIndex(protoId, out var proto, false))
+                    if (!protoManager.TryIndex(protoId, out var proto))
                         continue;
 
                     Assert.That(!proto.Categories.Contains(dnmCategory),

@@ -1,0 +1,24 @@
+- type: entity
+  parent: [ BaseMagicalContraband, ClothingOuterArmorBaseCarapace ]
+  id: ClothingOuterArmorWizard
+  name: wizard's breastplate
+  description: An enchanted breastplate for use by arcane troublemakers looking to be able to take a beating.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/wizardplate.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/wizardplate.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.4
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: StaminaResistance
+    damageCoefficient: 0.65
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8

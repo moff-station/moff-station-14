@@ -3,7 +3,7 @@
   name: burrower
   id: MobXeno
   parent: SimpleSpaceMobBase
-  description: They mostly come at night. Mostly.
+  description: A small Xeno which uses its claws to break things and force open doors. # Moffstation - (Xeno Buffs)
   components:
   - type: Insulated
   - type: CombatMode
@@ -24,7 +24,7 @@
   - type: Prying
     pryPowered: true
     force: true
-    speedModifier: 1.5
+    speedModifier: 4 # Moffstation - (Xeno Buffs)
     useSound:
       path: /Audio/Items/crowbar.ogg
   - type: Reactive
@@ -57,14 +57,16 @@
     allowedStates:
     - Alive
     - Dead
-  # Moffstation - Begin (Xeno Buffs)
+  # Moffstation - Begin (Xeno Buffs) - NOTE: there are a few extra SlowOnDamage and MovementSpeedModifier components which already inherit everything from their parent in the xenos.
   - type: MobThresholds
     thresholds:
       0: Alive
+      #50: Dead
       150: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      75: 0.7
+      #25: 0.5
+      90: 0.7
       120: 0.5
   - type: Stamina
     critThreshold: 200
@@ -78,10 +80,13 @@
      collection: AlienClaw
     animation: WeaponArcBite
     damage:
+      #groups:
+        #Brute: 6
       types:
-        blunt: 10
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 4.0 # Slightly slower than a person
+        Blunt: 2
+        Slash: 10
+        Structural: 40
+  - type: NightVision
   # Moffstation - End
   - type: DamageStateVisuals
     states:
@@ -118,6 +123,7 @@
       - CannotSuicide
       - DoorBumpOpener
       - FootstepSound
+      - Xeno # Moffstation - (Xeno Buffs)
   - type: NoSlip
   - type: Perishable #Ummmm the acid kills a lot of the bacteria or something
     molsPerSecondPerUnitMass: 0.0005
@@ -128,6 +134,7 @@
   name: praetorian
   parent: MobXeno
   id: MobXenoPraetorian
+  description: A large Xeno which can soak up a huge amount of damage. # Moffstation - (Xeno Buffs)
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -140,21 +147,22 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      400: Dead
+      #100: Dead
+      300: Dead
   - type: Stamina
     critThreshold: 300
   - type: SlowOnDamage
     speedModifierThresholds:
-      200: 0.7
-      320: 0.5
+      #50: 0.7
+      180: 0.7
+      240: 0.5
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 13
-        Piercing: 7
-    bluntStaminaDamageFactor: 1.0
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 3.0 # Mining suit can barely outrun them
+        Blunt: 10
+        Slash: 15
+  - type: Prying
+    speedModifier: 2
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -172,6 +180,7 @@
   name: drone
   parent: MobXeno
   id: MobXenoDrone
+  description: A small xeno which carries things around for the hive. # Moffstation - (Xeno Buffs)
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -184,19 +193,22 @@
   - type: MobThresholds
     thresholds:
       0: Alive
+      #80: Dead
       100: Dead
   - type: SlowOnDamage
-    speedModifierThresholds:
-      50: 0.7
-      75: 0.5
+    #speedModifierThresholds:
+      #40: 0.7
   - type: MeleeWeapon
     damage:
+      #groups:
+        #Brute: 6
       types:
-        Blunt: 8
-        Piercing: 4
-    bluntStaminaDamageFactor: 1.0
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 5.0
+        Blunt: 10
+        Slash: 5
+  #- type: MovementSpeedModifier
+    #baseSprintSpeed: 4
+  - type: Prying
+    speedModifier: 2
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -214,6 +226,7 @@
   name: queen
   parent: MobXeno
   id: MobXenoQueen
+  description: A massive Xeno who leads the hive. # Moffstation - (Xeno Buffs)
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -226,19 +239,24 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      500: Dead # Dragon health
+      #300: Dead
+      600: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      250: 0.7
-      400: 0.5
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 3.0 # Mining suit can barely outrun them
+      #150: 0.7
+      360: 0.7
+      480: 0.5
+  #- type: MovementSpeedModifier
   - type: MeleeWeapon
     damage:
-     types:
-       Blunt: 25
-       Piercing: 10
-    bluntStaminaDamageFactor: 1.0
+      #groups:
+        #Brute: 12
+      types:
+        Blunt: 10
+        Slash: 25
+        Structural: 40
+  - type: Prying
+    speedModifier: 2
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -259,6 +277,7 @@
   name: ravager
   parent: MobXeno
   id: MobXenoRavager
+  description: A large Xeno which uses its massive claws to hunt prey. # Moffstation - (Xeno Buffs)
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -268,21 +287,25 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
   # Moffstation - Begin (Xeno Buffs)
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      200: Dead
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 4.5
+  #- type: MobThresholds
+    #thresholds:
+      #0: Alive
+      #100: Dead
+  #- type: MovementSpeedModifier
+    #baseSprintSpeed: 4
   - type: MeleeWeapon
+    attackRate: 1.5
     damage:
+      #groups:
+        #Brute: 10
      types:
        Slash: 20
-       Piercing: 10
+       Structural: 20
   - type: SlowOnDamage
-    speedModifierThresholds:
-      100: 0.7
-      160: 0.5
+    #speedModifierThresholds:
+      #50: 0.7
+  - type: Prying
+    speedModifier: 2
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -300,6 +323,7 @@
   name: runner
   parent: MobXeno
   id: MobXenoRunner
+  description: A small, extremely fast Xeno. # Moffstation - (Xeno Buffs)
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -308,14 +332,19 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
-  # Moffstation - Begin (Xeno Buffs)
   - type: MovementSpeedModifier
-    baseSprintSpeed: 10.0 # Scary fast
+    baseSprintSpeed: 6.0
+  # Moffstation - Begin (Xeno Buffs)
   - type: MeleeWeapon
+    attackRate: 2
     damage:
-     types:
-       Slash: 10
-       Piercing: 5
+      #groups:
+        #Brute: 5
+      types:
+        Blunt: 3
+        Slash: 7
+  - type: Prying
+    speedModifier: 2
   # Moffstation - End
   - type: Fixtures
     fixtures:
@@ -348,6 +377,7 @@
   name: spitter
   parent: MobXeno
   id: MobXenoSpitter
+  description: A large Xeno which can spit acid at long distances. # Moffstation - (Xeno Buffs)
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -357,14 +387,20 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
   # Moffstation - Begin (Xeno Buffs)
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      100: Dead
+  #- type: MobThresholds
+    #thresholds:
+      #0: Alive
+      #50: Dead
   - type: SlowOnDamage
-    speedModifierThresholds:
-      50: 0.7
-      80: 0.5
+    #speedModifierThresholds:
+      #25: 0.7
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 7
+        Slash: 3
+  - type: Prying
+    speedModifier: 2
   # Moffstation - End
   - type: HTN
     rootTask:

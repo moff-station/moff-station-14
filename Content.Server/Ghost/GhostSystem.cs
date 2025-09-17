@@ -6,7 +6,6 @@ using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
-using Content.Server.Warps;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
@@ -30,7 +29,6 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Warps;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
@@ -206,6 +204,8 @@ namespace Content.Server.Ghost
             _eye.RefreshVisibilityMask(uid);
             var time = _gameTiming.CurTime;
             component.TimeOfDeath = time;
+
+            Dirty(uid, component);  // Moffstation - Respawn button
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)

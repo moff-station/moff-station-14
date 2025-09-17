@@ -925,6 +925,7 @@
         Quantity: 30
   - type: EmitSoundOnTrigger
     sound: /Audio/Items/smoke_grenade_smoke.ogg
+    positional: true
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
@@ -979,7 +980,7 @@
     - type: Projectile
       damage:
         types:
-          Caustic: 25 # Moffstation - Xeno Buffs
+          Caustic: 15 #Caustic : 5 Moffstation - (Xeno Buffs)
     - type: Sprite
       sprite: Objects/Weapons/Guns/Projectiles/xeno_toxic.rsi
       layers:

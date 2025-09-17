@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Cargo.Components;
-using Content.Server.Station.Components;
 using Content.Shared._Moffstation.Cargo.Events; // Moffstation
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
@@ -14,8 +13,8 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Labels.Components;
 using Content.Shared.Paper;
+using Content.Shared.Station.Components;
 using JetBrains.Annotations;
-using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -169,7 +168,7 @@ namespace Content.Server.Cargo.Systems
 
             // Find our order again. It might have been dispatched or approved already
             var order = orderDatabase.Orders[component.Account].Find(order => args.OrderId == order.OrderId && !order.Approved);
-            if (order == null || !_protoMan.TryIndex(order.Account, out var account))
+            if (order == null || !_protoMan.Resolve(order.Account, out var account))
             {
                 return;
             }
@@ -326,7 +325,7 @@ namespace Content.Server.Cargo.Systems
 
         private void OnAddOrderMessageSlipPrinter(EntityUid uid, CargoOrderConsoleComponent component, CargoConsoleAddOrderMessage args, CargoProductPrototype product)
         {
-            if (!_protoMan.TryIndex(component.Account, out var account))
+            if (!_protoMan.Resolve(component.Account, out var account))
                 return;
 
             if (Timing.CurTime < component.NextPrintTime)
@@ -482,16 +481,13 @@ namespace Content.Server.Cargo.Systems
         {
             var amount = 0;
 
-            // Moffstation - Start - Railguard since it can cause errors with pirates
-            if (!TryComp<StationCargoOrderDatabaseComponent>(station, out var orderDatabase))
-                return amount;
-
-            if (!orderDatabase.Orders.ContainsKey(account))
-                return amount;
-            // Moffstation - End
-
             if (!TryComp<StationBankAccountComponent>(station, out var bank))
                 return amount;
+
+            // Moffstation - Start - Railguard since it can cause errors with pirates
+            if (!bank.Accounts.ContainsKey(account))
+                return amount;
+            // Moffstation - End
 
             foreach (var order in station.Comp.Orders[account])
             {

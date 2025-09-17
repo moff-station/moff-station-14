@@ -31,7 +31,18 @@ public sealed partial class MachineBoardComponent : Component
     /// </summary>
     [DataField(required: true)]
     public EntProtoId Prototype;
+
+    // Moffstation - Start - Blade Server Construction from existing boards
+    [DataField]
+    public EntProtoId? BladeServerPrototype;
+    // Moffstation - End
 }
+
+/// <summary>
+/// Marker component for any item that's machine board-like without necessarily being a MachineBoardComponent
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class CircuitboardComponent : Component;
 
 [DataDefinition, Serializable]
 public partial struct GenericPartInfo

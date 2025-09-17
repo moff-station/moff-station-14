@@ -1058,6 +1058,13 @@ Entries:
   id: 288
   time: '2025-06-12T20:04:58.000'
   url: https://github.com/moff-station/moff-station-14/pull/288
+- author: DuckManZach
+  changes:
+  - message: Pirates have received a major update!
+    type: add
+  id: 292
+  time: '2025-08-05T20:47:17.000'
+  url: https://github.com/moff-station/moff-station-14/pull/292
 - author: Centronias
   changes:
   - message: The Box of Foam Darts can now quickly pick up foam darts in the same
@@ -1409,11 +1416,26 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/387
 - author: Nox38
   changes:
+  - message: Wardens once again have command comms!
+    type: add
+  id: 388
+  time: '2025-08-05T14:37:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/388
+- author: Nox38
+  changes:
   - message: Reverted stamina resistance and damage to match upstream.
     type: tweak
   id: 389
   time: '2025-08-04T22:27:55.000'
   url: https://github.com/moff-station/moff-station-14/pull/389
+- author: Nox38
+  changes:
+  - message: 'Added new loadout options: folders, security headwear for detectives,
+      and engi gear for atmos!'
+    type: add
+  id: 390
+  time: '2025-08-07T21:04:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/390
 - author: DuckManZach
   changes:
   - message: Added new sec webbing!
@@ -1428,5 +1450,238 @@ Entries:
   id: 393
   time: '2025-08-04T16:53:26.000'
   url: https://github.com/moff-station/moff-station-14/pull/393
+- author: DuckManZach
+  changes:
+  - message: Added an alt sec belt (its drippy)!
+    type: add
+  id: 395
+  time: '2025-08-08T20:00:09.000'
+  url: https://github.com/moff-station/moff-station-14/pull/395
+- author: Altimus, Southbridge
+  changes:
+  - message: Added Drunk Driving Incident lobby screen
+    type: add
+  id: 396
+  time: '2025-08-05T15:02:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/396
+- author: Nox38
+  changes:
+  - message: Removed suit sensors from formal syndicate and pirate uniforms.
+    type: remove
+  id: 397
+  time: '2025-08-07T16:51:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/397
+- author: Davyei
+  changes:
+  - message: Resprited the chef jacket.
+    type: tweak
+  id: 398
+  time: '2025-08-05T23:12:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/398
+- author: Nyxilath
+  changes:
+  - message: new law board sprites
+    type: add
+  id: 401
+  time: '2025-08-06T17:51:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/401
+- author: DuckManZach
+  changes:
+  - message: Rebuffed advanced chems.
+    type: tweak
+  id: 402
+  time: '2025-08-06T19:07:24.000'
+  url: https://github.com/moff-station/moff-station-14/pull/402
+- author: Davyei, Remminster, Southbridge
+  changes:
+  - message: arachnid, diona, dwarf, elf, justice, moth, reptilian, and vox AI holograms
+      have been added.
+    type: add
+  id: 404
+  time: '2025-08-08T19:59:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/404
+- author: Southbridge
+  changes:
+  - message: You can now set yourself as a high-value target, causing the syndicate
+      to target you more often.
+    type: add
+  id: 408
+  time: '2025-08-08T01:21:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/408
+- author: Nox38
+  changes:
+  - message: Reverted Bulldog firerate to 2.0 RPS to match upstream.
+    type: remove
+  id: 410
+  time: '2025-08-07T17:39:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/410
+- author: Nox38
+  changes:
+  - message: Fixed the hood color of the warden's unarmored coat.
+    type: fix
+  id: 411
+  time: '2025-08-07T17:00:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/411
+- author: Freian, Nox38
+  changes:
+  - message: Added new Remia/Loraine's pin personal item!
+    type: add
+  - message: Removed Remia's photo personal item.
+    type: remove
+  id: 413
+  time: '2025-08-09T19:55:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/413
+- author: Nyxilath
+  changes:
+  - message: New law boards, printable from the law matrix imprinter
+    type: add
+  - message: Law matrix imprinter can now be EMAG'd for dangerous law boards
+    type: add
+  id: 414
+  time: '2025-08-10T21:24:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/414
+- author: DuckManZach
+  changes:
+  - message: The LPO now starts with a holopad and chameleon gear!
+    type: add
+  - message: The handheld crew monitor works again.
+    type: fix
+  id: 415
+  time: '2025-08-08T05:39:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/415
+- author: Huaqas
+  changes:
+  - message: Resomi, a new playable species! Resomi are a cute and small Avian species
+      ported from Starlight with new custom sounds and effects. They have great resistance
+      to cold temperatures, are less durable then other species, and have a seriously
+      hard time handling recoil from large weapons or pulling larger species.
+    type: add
+  id: 416
+  time: '2025-08-15T02:03:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/416
+- author: DuckManZach
+  changes:
+  - message: Added a variety of swimsuits!
+    type: add
+  - message: Added the swimvend!
+    type: add
+  id: 418
+  time: '2025-08-08T20:08:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/418
+- author: Nox38
+  changes:
+  - message: added more loadout options for security, particularly detective!
+    type: add
+  id: 420
+  time: '2025-08-15T02:04:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/420
+- author: Nox38
+  changes:
+  - message: Security longcoats now have the same stats as security armor vests, and
+      no extra storage.
+    type: tweak
+  id: 422
+  time: '2025-08-18T03:00:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/422
+- author: compilatron
+  changes:
+  - message: General fixes and improvements for Frezon Relay Station
+    type: fix
+  id: 427
+  time: '2025-08-12T04:47:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/427
+- author: DuckManZach
+  changes:
+  - message: Added a respawn option for ghosts.
+    type: add
+  id: 428
+  time: '2025-08-14T16:11:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/428
+- author: Nox38
+  changes:
+  - message: Added syndicate bags to the syndiedrobe!
+    type: add
+  - message: 'Nerfed the syndicate satchel: it can no longer fit 5-long items.'
+    type: tweak
+  id: 429
+  time: '2025-08-17T06:57:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/429
+- author: Nyxilath
+  changes:
+  - message: Changed survival boxes to hold the survival guidebook instead of a nutribrick.
+    type: tweak
+  id: 430
+  time: '2025-08-14T06:49:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/430
+- author: DuckManZach
+  changes:
+  - message: Hopping down disposals chutes now deals damage!
+    type: add
+  id: 431
+  time: '2025-08-14T14:07:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/431
+- author: DuckManZach
+  changes:
+  - message: Guns now have a chance of firing when they hit the ground!
+    type: add
+  id: 432
+  time: '2025-08-14T16:04:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/432
+- author: Centronias
+  changes:
+  - message: Intercoms can now be controlled by device linking (eg. remote signallers)!
+    type: add
+  id: 433
+  time: '2025-08-17T22:49:09.000'
+  url: https://github.com/moff-station/moff-station-14/pull/433
+- author: Sable
+  changes:
+  - message: A new personal item for The Rose of Silence!
+    type: add
+  id: 435
+  time: '2025-08-15T19:52:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/435
+- author: Sable
+  changes:
+  - message: Radio functionality to headphones.
+    type: add
+  id: 436
+  time: '2025-08-16T18:24:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/436
+- author: Nox38
+  changes:
+  - message: Added all three security belts to the secdrobe.
+    type: add
+  id: 437
+  time: '2025-08-17T21:13:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/437
+- author: Nyxilath
+  changes:
+  - message: Books and Flashlights are now recyclable!
+    type: tweak
+  id: 439
+  time: '2025-08-17T20:32:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/439
+- author: Huaqas
+  changes:
+  - message: Resomi can be butchered to get raw chicken.
+    type: add
+  id: 442
+  time: '2025-08-17T06:56:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/442
+- author: SeaWyrm
+  changes:
+  - message: 'Added new map for Gun Game: ctf_2fort'
+    type: add
+  id: 448
+  time: '2025-08-19T05:41:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/448
+- author: Nyxilath
+  changes:
+  - message: You can now select more plushies in your loadout!
+    type: add
+  id: 450
+  time: '2025-08-19T04:50:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/450
 Name: Mofflog
 Order: -2

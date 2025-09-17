@@ -10,12 +10,9 @@
     - state: icon
       map: [ "enum.GunVisualLayers.Base" ]
   - type: Item
-    # If you update this also update the bulldog's size.
     size: Large
-    # Moffstation - Begin (Weapon Resizing)
     shape:
     - 0,0,4,0
-    # Moffstation - End
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
     quickEquip: false
@@ -25,6 +22,11 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 5
+    # Moffstation - End - Add gun recoil.
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -72,7 +74,12 @@
   - type: AmmoCounter
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
-    fireRate: 2.5 # Moffstation - Bulldog buff
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 200
+      staminaMultiplier: 3
+    # Moffstation - End - Add gun recoil.
+    fireRate: 2
     selectedMode: FullAuto
     availableModes:
     - FullAuto
@@ -114,11 +121,6 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
   - type: Item
-    # Moffstation - Begin (Weapon Resizing) - This is covered by the parent.
-    #size: Normal
-    #shape:
-    #- 0,0,4,0
-    # Moffstation - End
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun_inhands_64x.rsi
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
@@ -172,11 +174,6 @@
   description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
   components: # intend for Kammerer to have tighter choke for slower fire rate and/or manual cycling
   - type: Item
-    # Moffstation - Begin (Weapon Resizing) - This is covered by the parent.
-    # Size: Normal
-    # shape:
-    # - 0,0,4,0
-    # Moffstation - End
     sprite: Objects/Weapons/Guns/Shotguns/pump_inhands_64x.rsi
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
@@ -203,13 +200,16 @@
     sprite: Objects/Weapons/Guns/Shotguns/sawn.rsi
   - type: Item
     size: Small
-    # Moffstation - Begin (Weapon Resizing)
     shape:
     - 0,0,2,0
-    # Moffstation - End
     sprite: Objects/Weapons/Guns/Shotguns/sawn_inhands_64x.rsi
   - type: Gun
     fireRate: 3
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 250
+      staminaMultiplier: 6
+    # Moffstation - End - Add gun recoil.
   - type: GunSpreadModifier
     spread: 1.4
   - type: BallisticAmmoProvider
@@ -241,19 +241,21 @@
   components:
   - type: Item
     size: Small
-    # Moffstation - Begin (Weapon Resizing)
-    #storedRotation: 90
     shape:
     - 0,0,1,0
     - 0,1,0,1
-    # Moffstation - End
-    storedRotation: 90
+    storedOffset: 0,-5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/hm_pistol.rsi
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/hm_pistol.rsi
   - type: Gun
     fireRate: 4
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
   - type: BallisticAmmoProvider
     capacity: 1
   - type: Construction
@@ -270,12 +272,6 @@
   suffix: Pirate
   description: Deadly at close range.
   components:
-  # Moffstation - Begin (Weapon Resizing) -This is covered by the parent.
-  #-type: Item
-  #size: Normal
-  #shape:
-  #- 0,0,4,0
-  # Moffstation - End
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
@@ -297,15 +293,15 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
   - type: Item
-    # Moffstation - Begin (Weapon Resizing) - This is covered by the parent.
-    #size: Normal
-    #shape:
-    #- 0,0,4,0
-    # Moffstation - End
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun_inhands_64x.rsi
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 4 #No reason to stifle the firerate since you have to manually reload every time anyways.
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
   - type: BallisticAmmoProvider
     capacity: 1
     proto: null

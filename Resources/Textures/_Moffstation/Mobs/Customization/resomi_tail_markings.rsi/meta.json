@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "tail markings from Starlight modified by Huaqas (GitHub).",
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+      "states": [
+          {
+              "name": "tail_top",
+              "directions": 4
+          },
+          {
+              "name": "tail_middle",
+              "directions": 4
+          },
+          {
+              "name": "tail_bottom",
+              "directions": 4
+          },
+          {
+              "name": "tail_feathers_left_lower",
+              "directions": 4
+          },
+          {
+              "name": "tail_feathers_left_upper",
+              "directions": 4
+          },
+          {
+              "name": "tail_feathers_right_lower",
+              "directions": 4
+          },
+          {
+              "name": "tail_feathers_right_upper",
+              "directions": 4
+          }
+      ]
+  }
