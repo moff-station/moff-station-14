@@ -251,6 +251,7 @@ internal sealed class AdminNameOverlay : Overlay
                     break;
             }
 
+            // Determine antag/role type name
             string? text;
             switch (_overlayFormat)
             {
