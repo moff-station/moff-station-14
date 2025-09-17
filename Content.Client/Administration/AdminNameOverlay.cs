@@ -236,50 +236,57 @@ internal sealed class AdminNameOverlay : Overlay
                     break;
             }
 
-            // Moffstation - Start - Visible watchlist indicator
+            // Determine antag/role type name
+            if (playerInfo.Antag)   // Moffstation - Watchlist indicator
+            {                       // Moffstation
+                string? text;
+                switch (_overlayFormat)
+                {
+                    case AdminOverlayAntagFormat.Roletype:
+                        color = roleColor;
+                        symbol = IsFiltered(playerInfo.RoleProto) ? symbol : string.Empty;
+                        text = IsFiltered(playerInfo.RoleProto)
+                            ? roleName.ToUpper()
+                            : string.Empty;
+                        break;
+                    case AdminOverlayAntagFormat.Subtype:
+                        color = roleColor;
+                        symbol = IsFiltered(playerInfo.RoleProto) ? symbol : string.Empty;
+                        text = IsFiltered(playerInfo.RoleProto)
+                            ? _roles.GetRoleSubtypeLabel(roleName, playerInfo.Subtype).ToUpper()
+                            : string.Empty;
+                        break;
+                    default:
+                    case AdminOverlayAntagFormat.Binary:
+                        color = Color.OrangeRed;
+                        symbol = playerInfo.Antag ? symbol : string.Empty;
+                        text = playerInfo.Antag ? _antagLabelClassic : string.Empty;
+                        break;
+                }
+
+                // Draw antag label
+                color.A = alpha;
+                var label = !string.IsNullOrEmpty(symbol)
+                    ? Loc.GetString("player-tab-character-name-antag-symbol", ("symbol", symbol), ("name", text))
+                    : text;
+                args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, label, uiScale, color);
+                currentOffset += lineoffset;
+            }   // Moffstation - Watchlist indicator
+
+
+            // Moffstation - Start - Watchlist indicator
             // Watchlist status
             if (playerInfo.HasWatchlist && _displayWatchlist)
             {
-                color = Color.MediumPurple;
+                color = Color.Magenta;
                 color.A = alpha;
-                args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, Loc.GetString("admin-note-editor-type-watchlist"), uiScale, playerInfo.Connected ? color : colorDisconnected);
+                args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset,
+                    Loc.GetString("admin-note-editor-type-watchlist"),
+                    uiScale,
+                    playerInfo.Connected ? color : colorDisconnected);
                 currentOffset += lineoffset;
             }
             // Moffstation - End
-
-            // Determine antag/role type name
-            string? text;
-            switch (_overlayFormat)
-            {
-                case AdminOverlayAntagFormat.Roletype:
-                    color = roleColor;
-                    symbol = IsFiltered(playerInfo.RoleProto) ? symbol : string.Empty;
-                    text = IsFiltered(playerInfo.RoleProto)
-                        ? roleName.ToUpper()
-                        : string.Empty;
-                    break;
-                case AdminOverlayAntagFormat.Subtype:
-                    color = roleColor;
-                    symbol = IsFiltered(playerInfo.RoleProto) ? symbol : string.Empty;
-                    text = IsFiltered(playerInfo.RoleProto)
-                        ? _roles.GetRoleSubtypeLabel(roleName, playerInfo.Subtype).ToUpper()
-                        : string.Empty;
-                    break;
-                default:
-                case AdminOverlayAntagFormat.Binary:
-                    color = Color.OrangeRed;
-                    symbol = playerInfo.Antag ? symbol : string.Empty;
-                    text = playerInfo.Antag ? _antagLabelClassic : string.Empty;
-                    break;
-            }
-
-            // Draw antag label
-            color.A = alpha;
-            var label = !string.IsNullOrEmpty(symbol)
-                ? Loc.GetString("player-tab-character-name-antag-symbol", ("symbol", symbol), ("name", text))
-                : text;
-            args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset, label, uiScale, color);
-            currentOffset += lineoffset;
 
 
             //Save the coordinates and size of the text block, for stack merge check
