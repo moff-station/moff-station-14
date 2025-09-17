@@ -382,7 +382,7 @@
   suffix: Filled
   components:
   - type: StorageFill
-    contents:
+    contents: #Moffstation Change - added a lot more thematic loot to the chest.
       - id: ClothingUniformJumpsuitPirate
         amount: 2
       - id: ClothingHeadHatPirate
@@ -391,6 +391,15 @@
         amount: 2
       - id: ClothingHeadBandRed
       - id: FoamCutlass
+        amount: 2
+      - id: PirateHandyFlag
+        amount: 2
+      - id: ClothingNeckCloakPirateCap
+      - id: RobotParrot
+      - id: ClothingHandsShoddyPirateHook
+        amount: 2
+      - id: DrinkRumBottleFull
+      - id: ClothingEyesEyepatch
         amount: 2
 
 - type: entity
