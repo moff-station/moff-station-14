@@ -33,6 +33,7 @@ public abstract partial class SharedGunSystem
 
         SubscribeLocalEvent<BallisticAmmoProviderComponent, ExaminedEvent>(OnBallisticExamine);
         // Moffstation - Start - allow ammo providers to be cyclable on the ground with altclick
+        //SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<Verb>>(OnBallisticVerb); - Moffstation
         SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<AlternativeVerb>>(OnBallisticVerb);
         // Moffstation - End
         SubscribeLocalEvent<BallisticAmmoProviderComponent, InteractUsingEvent>(OnBallisticInteractUsing);
@@ -184,6 +185,7 @@ public abstract partial class SharedGunSystem
     }
 
     // Moffstation - Start - allow ammo providers to be cyclable on the ground with altclick
+    //private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<Verb> args) - Moffstation
     private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract || args.Hands == null || !component.Cycleable)
@@ -191,6 +193,7 @@ public abstract partial class SharedGunSystem
 
         if (component.Cycleable)
         {
+            //args.Verbs.Add(new Verb() - Moffstation
             args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString("gun-ballistic-cycle"),
