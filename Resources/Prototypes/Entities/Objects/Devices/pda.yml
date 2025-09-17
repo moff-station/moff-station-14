@@ -201,6 +201,10 @@
     accentVColor: "#949137"
   - type: Icon
     state: pda-interntech
+    #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-technical-assistant
+    #Moffstation - End
 
 - type: entity
   parent: BaseMedicalPDA
@@ -223,6 +227,10 @@
   - type: GuideHelp
     guides:
     - MedicalDoctor
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-intern
+  #Moffstation - End
 
 - type: entity
   parent: BaseSecurityPDA
@@ -242,6 +250,10 @@
     accentVColor: "#A32D26"
   - type: Icon
     state: pda-interncadet
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-cadet
+  #Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -261,6 +273,10 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-internsci
+  #Moffstation - Start - Remove Intern Roles, rework them into loadouts
+  - type: RenameId
+    value: job-name-research-assistant
+  #Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -1398,6 +1414,10 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-seniorresearcher
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-senior-researcher
+  # Moffstation - End
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1418,6 +1438,10 @@
     accentVColor: "#B34200"
   - type: Icon
     state: pda-seniorphysician
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-senior-physician
+  # Moffstation - End
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1437,6 +1461,10 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorofficer
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-senior-officer
+  # Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -1456,6 +1484,10 @@
     accentVColor: "#DFDFDF"
   - type: Icon
     state: pda-seniorcourier
+  # Moffstation - Start - Job title loadouts from Cosmic Drift
+  - type: RenameId
+    value: job-name-senior-courier
+  # Moffstation - End
 
 - type: entity
   parent: [ BaseMajorContraband, SyndiPDA ]

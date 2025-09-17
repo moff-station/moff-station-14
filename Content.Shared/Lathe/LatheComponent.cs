@@ -50,6 +50,14 @@ namespace Content.Shared.Lathe
         [DataField, AutoNetworkedField]
         public int DefaultProductionAmount = 1;
 
+        // Moffstation - Start
+        /// <summary>
+        /// The recipe of the most recently enqueued batch in <see cref="Queue"/>.
+        /// </summary>
+        [ViewVariables]
+        public LatheRecipePrototype? MostRecentlyEnqueued = null;
+        // Moffstation - End
+
         #region Visualizer info
         [DataField]
         public string? IdleState;

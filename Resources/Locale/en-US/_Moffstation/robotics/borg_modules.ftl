@@ -1,4 +1,4 @@
-﻿borg-slot-foam-grenade-empty = Foam dart grenades
+borg-slot-foam-grenade-empty = Foam dart grenades
 borg-slot-ores-empty = Ores
 borg-slot-seeds-empty = Seeds
 borg-slot-buckets-empty = Buckets

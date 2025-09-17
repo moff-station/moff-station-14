@@ -893,6 +893,7 @@
   loadouts:
   - StationEngineerPDA
   - SeniorEngineerPDA
+  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -1046,6 +1047,8 @@
   loadouts:
   - ScientistPDA
   - SeniorResearcherPDA
+  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  - RoboticistPDA #CD - Job title loadouts
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -1173,6 +1176,7 @@
   loadouts:
   - SecurityPDA
   - SeniorOfficerPDA
+  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -1375,6 +1379,7 @@
   loadouts:
   - MedicalDoctorPDA
   - SeniorPhysicianPDA
+  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
 
 - type: loadoutGroup
   id: MedicalGloves
