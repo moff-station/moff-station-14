@@ -40,6 +40,8 @@
       methods: [Touch]
       effects:
       - !type:WashCreamPieReaction
+  - type: Crawler #Moffstation start
+    speedModifier: .65 #Moffstation end
   # Damage (Self)
   - type: Bloodstream
     bloodReagent: CopperBlood

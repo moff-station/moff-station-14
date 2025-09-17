@@ -121,6 +121,31 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/reporter.rsi
 
 - type: entity
+  parent: ClothingUniformJumpskirtPrisonerUpstream
+  id: ClothingUniformJumpskirtPrisoner
+  name: prisoner jumpskirt
+  description: A jumpskirt used for prisoners. It has suit sensors automatically enabled at all times.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prisoner.rsi
+    layers: []
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prisoner.rsi
+    clothingVisuals: {}
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - PrisonUniform
+    - WhitelistChameleon
+
+- type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtStripedPrisoner
   name: striped prison jumpskirt
