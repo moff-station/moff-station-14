@@ -1,1 +1,2 @@
-admin-note-editor-type-watchlist = ⚙ WatchList
+admin-overlay-watchlist = ⚙ WatchList
+player-tab-watchlist = WatchListed

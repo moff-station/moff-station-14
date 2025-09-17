@@ -228,7 +228,7 @@ internal sealed class AdminNameOverlay : Overlay
                 color = Color.Magenta;
                 color.A = alpha;
                 args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset,
-                    Loc.GetString("admin-note-editor-type-watchlist"),
+                    Loc.GetString("admin-overlay-watchlist"),
                     uiScale,
                     playerInfo.Connected ? color : colorDisconnected);
                 currentOffset += lineoffset;
