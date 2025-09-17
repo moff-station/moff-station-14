@@ -9,6 +9,9 @@ using Robust.Shared.Player;
 
 namespace Content.Server._Moffstation.Players;
 
+/// <summary>
+/// This is a class that allows synchronous code to identify whether a player is WatchListed
+/// </summary>
 public sealed class WatchListTracker : EntitySystem
 {
     [Dependency] private readonly IAdminNotesManager _notes = default!;

@@ -1,1 +1,1 @@
-admin-note-editor-type-watchlist = ⚙ WatchListed
+admin-note-editor-type-watchlist = ⚙ WatchList

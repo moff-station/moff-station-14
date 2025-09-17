@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Threading.Tasks;   // Moffstation
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -34,10 +33,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-
-// CD: imports
-using Content.Server._CD.Records;
-using Content.Server._Moffstation.Players;
+using Content.Server._Moffstation.Players; // Moffstation
+using Content.Server._CD.Records;   // CD
 
 namespace Content.Server.Administration.Systems;
 
@@ -292,8 +289,10 @@ public sealed class AdminSystem : EntitySystem
             data.UserId,
             connected,
             _roundActivePlayers.Contains(data.UserId),
+            // Moffstation - Start - Visible watchlist
             overallPlaytime,
             watchListed);
+            // Moffstation - End
     }
 
     private void OnPanicBunkerChanged(bool enabled)
