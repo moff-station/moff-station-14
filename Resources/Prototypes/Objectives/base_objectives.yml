@@ -34,6 +34,7 @@
   id: BaseTargetObjective
   components:
   - type: TargetObjective
+  - type: HighValueTargetSelection  # Moffstation - High value targets
 
 # requires that the player kill someone
 # disables social objectives and is disabled by social objectives
