@@ -97,16 +97,6 @@
   - type: Rehydratable
     possibleSpawns:
     - MobCow
-# Moffstation - Start - Adds Pig Cube
-- type: entity
-  parent: RehydratableAnimalCube
-  id: PigCube
-  name: pig cube
-  components:
-  - type: Rehydratable
-    possibleSpawns:
-    - MobPig
-# Moffstation - End
 
 - type: entity
   parent: RehydratableAnimalCube
