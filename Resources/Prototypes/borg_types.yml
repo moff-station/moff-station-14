@@ -1,12 +1,12 @@
-# Generic borg
+# Science borg
 - type: borgType
-  id: generic
+  id: science # Moffstation - Generic borg is Sciborg
 
   # Description
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 5
+  extraModuleCount: 3 # Moffstation - Generic borg is Sciborg
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
