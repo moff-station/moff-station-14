@@ -1,3 +1,58 @@
+## Security PDAs
+# Warden
+- type: entity
+  parent: WardenPDA
+  id: CorrectionsOfficerPDA
+  name: Corrections Officer PDA
+  components:
+  - type: RenameId
+    value: job-name-corrections-officer
+
+- type: entity
+  parent: WardenPDA
+  id: DetentionManagerPDA
+  name: Detention Manager PDA
+  components:
+  - type: RenameId
+    value: job-name-detention-manager
+
+# Detective
+# Security Officer
+
+## Cargo PDAs
+#Cargo Technician
+#Salvage Specialist
+
+## Engineering PDAs
+# Atmospheric Technician
+# Station Engineer
+
+## Medical PDAs
+# Chemist
+# Medical Doctor
+# Paramedic
+# Psychologist
+
+## Science PDAs
+# Scientist
+
+## Service PDAs
+# Bartender
+# Botanist
+# Chaplain
+# Chef
+# Clown
+# Janitor
+# Lawyer
+# Librarian
+# Mime
+# Musician
+# Reporter
+# Service Worker
+
+## Other PDAs
+# Passenger
+# Prisoner
 - type: entity
   parent: BasePDA
   id: PrisonerPDA

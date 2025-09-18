@@ -13,3 +13,6 @@ loadout-group-pirate-outer-coat = Pirate Outer Coat
 loadout-group-quartermaster-backpack = Quartermaster Backpack
 loadout-group-chief-engineer-backpack = Chief Engineer Backpack
 loadout-group-chief-medical-officer-backpack = Chief Medical Officer Backpack
+
+loadout-group-warden-id = Warden ID
+loadout-group-detective-id = Detective ID

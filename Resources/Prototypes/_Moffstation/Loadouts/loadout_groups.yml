@@ -64,8 +64,18 @@
   - PersonalItemVortexMask
   - PersonalItemKaiPlushie
   - PersonalItemDawnBottle
-# Prisoner loadouts
 
+## Security
+# Warden loadouts
+- type: loadoutGroup
+  id: WardenPDA
+  name: loadout-group-warden-id
+  loadouts:
+  - WardenPDA
+  - CorrectionsOfficerPDA
+  - DetentionManagerPDA
+
+# Prisoner loadouts
 - type: loadoutGroup
   id: PrisonerJumpsuit
   name: loadout-group-prisoner-jumpsuit
