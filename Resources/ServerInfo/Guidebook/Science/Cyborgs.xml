@@ -21,7 +21,6 @@
   ## Cyborg types
   Once created, a cyborg needs to specialize its chassis to a duty on the station. This determines what modules it starts with, which additional modules can be installed, and what [color=#a4885c]departmental radio channel[/color] it has access to. All cyborgs have access to the [color=#D381C9]Science[/color] and [color=green]station-wide[/color] radio channels. All cyborg types have [color=#a4885c]all-access[/color].
   <Box>
-  <!-- <GuideEntityEmbed Entity="BorgChassisGeneric" Caption="Generic"/> --> <!-- Moffstation - Generic borgs are science borgs -->
   <GuideEntityEmbed Entity="BorgChassisGeneric" Caption="Science"/> <!-- Moffstation - Generic borgs are science borgs -->
   <GuideEntityEmbed Entity="BorgChassisEngineer" Caption="Engineering"/>
   <GuideEntityEmbed Entity="BorgChassisMining" Caption="Salvage"/>
@@ -49,7 +48,7 @@ Cyborgs do not have hands, and therefore cannot pick things up like most other p
     [italic]Examples of generic modules[/italic]
   </Box>
 
-  For more specific needs, [color=#a4885c]specialized[/color] modules are available, granting capabilities like scanning anomalies, constructing walls, reviving crew mates, or cleaning a space lube spill. These modules are typically colored with the same palette as the department [italic](or occupation)[/italic] they relate to. These modules [italic](with exception to [color=#D381C9]science[/color] modules, which can fit any chassis,)[/italic] can only be fitted in their associated borg chassis. [bold]The specialized borg chassis, being the engineering, janitorial, service, medical, and mining chassis, can fit up to three additional modules.[/bold]
+  For more specific needs, [color=#a4885c]specialized[/color] modules are available, granting capabilities like scanning anomalies, constructing walls, reviving crew mates, or cleaning a space lube spill. These modules are typically colored with the same palette as the department [italic](or occupation)[/italic] they relate to. These modules <!--[italic](with exception to [color=#D381C9]science[/color] modules, which can fit any chassis,)[/italic]--> can only be fitted in their associated borg chassis. [bold]The specialized borg chassis, being the science, engineering, janitorial, service, medical, and mining chassis, can fit up to three additional modules.[/bold] <!-- Moffsation - Generic borgs are science borgs -->
   <Box>
     <GuideEntityEmbed Entity="BorgModuleAnomaly" Caption="Anomaly"/>
     <GuideEntityEmbed Entity="BorgModuleRCD" Caption="RCD"/>
