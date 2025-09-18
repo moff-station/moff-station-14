@@ -271,9 +271,8 @@ public sealed class AdminSystem : EntitySystem
         }
 
         // Moffstation - Start - Get watchlist status
-        var watchListed = false;
-        if (session != null)    // Second check so we don't modify upstream code
-            watchListed = _watchList.GetWatchListed(session);
+        // Second check so we don't modify upstream code
+        var watchListed = session != null ? _watchList.GetWatchListed(session) : false;
         // Moffstation - End
 
         return new PlayerInfo(

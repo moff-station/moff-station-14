@@ -39,11 +39,6 @@ public sealed class WatchListTracker : EntitySystem
 
     public bool GetWatchListed(ICommonSession session)
     {
-        return CheckWatchlist(session);
-    }
-
-    private bool CheckWatchlist(ICommonSession id)
-    {
         return _watchLists.TryGetValue(id, out var data) && data;
     }
 
