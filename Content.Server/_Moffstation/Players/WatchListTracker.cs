@@ -1,8 +1,5 @@
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Notes;
-using Content.Server.Database;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
@@ -19,10 +16,10 @@ public sealed class WatchListTracker : EntitySystem
 
     public override void Initialize()
     {
-        _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
+        _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;    // they won't get updated the moment theyre added, but isn't that important because they're rare anyways
     }
 
-    private readonly Dictionary<ICommonSession, bool> _watchLists = new();
+    private readonly HashSet<ICommonSession> _watchLists = [];
 
     private async void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
@@ -39,7 +36,7 @@ public sealed class WatchListTracker : EntitySystem
 
     public bool GetWatchListed(ICommonSession session)
     {
-        return _watchLists.TryGetValue(id, out var data) && data;
+        return _watchLists.Contains(session);
     }
 
     private void RemoveWatchlist(ICommonSession session)
@@ -49,6 +46,7 @@ public sealed class WatchListTracker : EntitySystem
 
     public async Task RefreshWatchlistBySession(ICommonSession session)
     {
-        _watchLists[session] = (await _notes.GetActiveWatchlists(session.UserId)).Any();
+        if ((await _notes.GetActiveWatchlists(session.UserId)).Count != 0)
+            _watchLists.Add(session);
     }
 }
