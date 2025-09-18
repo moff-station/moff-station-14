@@ -56,7 +56,14 @@
   result: CockroachCube
   materials:
     Biomass: 16
-
+#Moffstation - Start
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: PigCube
+  result: PigCube
+  materials:
+    Biomass: 60
+# Moffstation - End
 - type: latheRecipe
   parent: BaseCubeRecipe
   id: SpaceCarpCube
