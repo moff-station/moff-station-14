@@ -2,124 +2,124 @@
 
 ## Security
 # Warden
-job-name-corrections-officer = Corrections Officer
-job-name-detention-manager = Detention Manager
+job-name-warden-corrections-officer = Corrections Officer
+job-name-warden-detention-manager = Detention Manager
 # Detective
-job-name-inspector = Inspector
-job-name-investigator = Investigator
+job-name-detective-inspector = Inspector
+job-name-detective-investigator = Investigator
 # Security Officer
-job-name-asset-protections = Asset Protections
-job-name-deputy = Deputy
-job-name-security-specialist = Security Specialist
-job-name-senior-officer = Senior Officer
+job-name-security-officer-asset-protections = Asset Protections
+job-name-security-officer-deputy = Deputy
+job-name-security-officer-security-specialist = Security Specialist
+job-name-security-officer-senior-officer = Senior Officer
 
 ## Cargo
 # Cargo Technician
-job-name-courier = Courier
-job-name-deckhand = Deckhand
-job-name-essential-worker = Essential Worker
-job-name-inventory-associate = Inventory Associate
-job-name-logistics = Logistics
-job-name-senior-courier = Senior Courier
+job-name-cargo-technician-courier = Courier
+job-name-cargo-technician-deckhand = Deckhand
+job-name-cargo-technician-essential-worker = Essential Worker
+job-name-cargo-technician-inventory-associate = Inventory Associate
+job-name-cargo-technician-logistics = Logistics
+job-name-cargo-technician-senior-courier = Senior Courier
 # Salvage Specialist
-job-name-astrominer = Astrominer
-job-name-excavator = Excavator
-job-name-prospector = Prospector
-job-name-scavenger = Scavenger
+job-name-salvage-specialist-astrominer = Astrominer
+job-name-salvage-specialist-excavator = Excavator
+job-name-salvage-specialist-prospector = Prospector
+job-name-salvage-specialist-scavenger = Scavenger
 
 ## Engineering
 # Atmospheric Technician
-job-name-life-support-technician = Life Support Technician
-job-name-plasma-mechanic = Plasma Mechanic
-job-name-senior-atmospheric-technician = Senior Atmospheric Technician
+job-name-atmospheric-technician-life-support-technician = Life Support Technician
+job-name-atmospheric-technician-plasma-mechanic = Plasma Mechanic
+job-name-atmospheric-technician-senior-atmospheric-technician = Senior Atmospheric Technician
 # Station Engineer
-job-name-electrician = Electrician
-job-name-engineering-mentor = Engineering Mentor
-job-name-mechanic = Mechanic
-job-name-shipwright = Shipwright
+job-name-station-engineer-electrician = Electrician
+job-name-station-engineer-engineering-mentor = Engineering Mentor
+job-name-station-engineer-mechanic = Mechanic
+job-name-station-engineer-shipwright = Shipwright
 
 ## Medical
 # Chemist
-job-name-pharmacist = Pharmacist
+job-name-chemist-pharmacist = Pharmacist
 # Medical Doctor
-job-name-clinician = Clinician
-job-name-coroner = Coroner
-job-name-cyrogenics-specialist = Cyrogenics Specialist
-job-name-nurse = Nurse
-job-name-senior-physician = Senior Physician
-job-name-surgeon = Surgeon
+job-name-medical-doctor-clinician = Clinician
+job-name-medical-doctor-coroner = Coroner
+job-name-medical-doctor-cyrogenics-specialist = Cyrogenics Specialist
+job-name-medical-doctor-nurse = Nurse
+job-name-medical-doctor-senior-physician = Senior Physician
+job-name-medical-doctor-surgeon = Surgeon
 # Paramedic
-job-name-emergency-medical-service = Emergency Medical Service
-job-name-field-medic = Field Medic
+job-name-paramedic-emergency-medical-service = Emergency Medical Service
+job-name-paramedic-field-medic = Field Medic
 # Psychologist
-job-name-psychiatrist = Psychiatrist
-job-name-therapist = Therapist
-job-name-social-worker = Social Worker
+job-name-psychologist-psychiatrist = Psychiatrist
+job-name-psychologist-therapist = Therapist
+job-name-psychologist-social-worker = Social Worker
 
 ## Science
 # Scientist
-job-name-anomaly-containment-specialist = Anomaly Containment Specialist
-job-name-machinist = Machinist
-job-name-senior-researcher = Senior Researcher
-job-name-xenoarcheologist = Xenoarcheologist
+job-name-scientist-anomaly-containment-specialist = Anomaly Containment Specialist
+job-name-scientist-machinist = Machinist
+job-name-scientist-senior-researcher = Senior Researcher
+job-name-scientist-xenoarcheologist = Xenoarcheologist
 
 ## Service
 # Bartender
-job-name-barista = Barista
-job-name-mixologist = Mixologist
+job-name-bartender-barista = Barista
+job-name-bartender-mixologist = Mixologist
 # Botanist
-job-name-gardener = Gardener
-job-name-herbalist = Herbalist
-job-name-hydroponics-technician = Hydroponics Technician
-job-name-rancher = Rancher
+job-name-botanist-gardener = Gardener
+job-name-botanist-herbalist = Herbalist
+job-name-botanist-hydroponics-technician = Hydroponics Technician
+job-name-botanist-rancher = Rancher
 # Chaplain
-job-name-bishop = Bishop
-job-name-cleric = Cleric
-job-name-druid = Druid
-job-name-missionary = Missionary
-job-name-mortician = Mortician
-job-name-nun = Nun
-job-name-oracle = Oracle
-job-name-priest = Priest
+job-name-chaplain-bishop = Bishop
+job-name-chaplain-cleric = Cleric
+job-name-chaplain-druid = Druid
+job-name-chaplain-missionary = Missionary
+job-name-chaplain-mortician = Mortician
+job-name-chaplain-nun = Nun
+job-name-chaplain-oracle = Oracle
+job-name-chaplain-priest = Priest
 # Chef
-job-name-baker = Baker
-job-name-butcher = Butcher
-job-name-pizzaiolo = Pizzaiolo
+job-name-chef-baker = Baker
+job-name-chef-butcher = Butcher
+job-name-chef-pizzaiolo = Pizzaiolo
 # Clown
-job-name-fool = Fool
-job-name-jester = Jester
+job-name-clown-fool = Fool
+job-name-clown-jester = Jester
 # Janitor
-job-name-custodian = Custodian
-job-name-hygiene-technician = Hygiene Technician
-job-name-maid = Maid
-job-name-refuse-expert = Refuse Expert
-job-name-sanitations-worker = Sanitations Worker
+job-name-janitor-custodian = Custodian
+job-name-janitor-hygiene-technician = Hygiene Technician
+job-name-janitor-maid = Maid
+job-name-janitor-refuse-expert = Refuse Expert
+job-name-janitor-sanitations-worker = Sanitations Worker
 # Lawyer
-job-name-attorney = Attorney
-job-name-legal-counsel = Legal Counsel
-job-name-prosecutor = Prosecutor
-job-name-solicitor = Solicitor
+job-name-lawyer-attorney = Attorney
+job-name-lawyer-legal-counsel = Legal Counsel
+job-name-lawyer-prosecutor = Prosecutor
+job-name-lawyer-solicitor = Solicitor
 # Librarian
-job-name-archivist = Archivist
-job-name-curator = Curator
-job-name-dungeon-master = Dungeon Master
+job-name-librarian-archivist = Archivist
+job-name-librarian-curator = Curator
+job-name-librarian-dungeon-master = Dungeon Master
 # Mime
-job-name-pierrot = Pierrot
+job-name-mime-pierrot = Pierrot
 # Musician
-job-name-pop-idol = Pop Idol
-job-name-rock-star = Rock Star
+job-name-musician-pop-idol = Pop Idol
+job-name-musician-rock-star = Rock Star
 # Reporter
-job-name-journalist = Journalist
-job-name-meteorologist = Meteorologist
-job-name-news-anchor = News Anchor
+job-name-reporter-journalist = Journalist
+job-name-reporter-meteorologist = Meteorologist
+job-name-reporter-news-anchor = News Anchor
 # Service Worker
-job-name-barber = Barber
+job-name-service-worker-barber = Barber
 
 ## Departmentless
 # Passenger
-job-name-off-duty-crew = Off-Duty Crew
+job-name-passenger-off-duty-crew = Off-Duty Crew
 # Prisoner
-job-name-death-row-inmate = Death Row Inmate
+job-name-prisoner-death-row-inmate = Death Row Inmate
 
 
 ## Other Job Titles

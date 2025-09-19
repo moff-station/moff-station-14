@@ -6,7 +6,7 @@
   name: corrections officer PDA
   components:
   - type: RenameId
-    value: job-name-corrections-officer
+    value: job-name-warden-corrections-officer
 
 - type: entity
   parent: WardenPDA
@@ -14,7 +14,7 @@
   name: detention manager PDA
   components:
   - type: RenameId
-    value: job-name-detention-manager
+    value: job-name-warden-detention-manager
 
 # Detective
 - type: entity
@@ -23,7 +23,7 @@
   name: inspector PDA
   components:
   - type: RenameId
-    value: job-name-inspector
+    value: job-name-detective-inspector
 
 - type: entity
   parent: DetectivePDA
@@ -31,7 +31,7 @@
   name: investigator PDA
   components:
   - type: RenameId
-    value: job-name-investigator
+    value: job-name-detective-investigator
 
 # Security Officer
 - type: entity
@@ -40,7 +40,7 @@
   name: asset protections PDA
   components:
   - type: RenameId
-    value: job-name-asset-protections
+    value: job-name-security-officer-asset-protections
 
 - type: entity
   parent: SecurityPDA
@@ -48,7 +48,7 @@
   name: deputy PDA
   components:
   - type: RenameId
-    value: job-name-deputy
+    value: job-name-security-officer-deputy
 
 - type: entity
   parent: SecurityPDA
@@ -56,7 +56,7 @@
   name: security specialist PDA
   components:
   - type: RenameId
-    value: job-name-security-specialist
+    value: job-name-security-officer-security-specialist
 
 ## Cargo PDAs
 #Cargo Technician
@@ -66,7 +66,7 @@
   name: courier PDA
   components:
   - type: RenameId
-    value: job-name-courier
+    value: job-name-cargo-technician-courier
 
 - type: entity
   parent: CargoPDA
@@ -74,7 +74,7 @@
   name: deckhand PDA
   components:
   - type: RenameId
-    value: job-name-deckhand
+    value: job-name-cargo-technician-deckhand
 
 - type: entity
   parent: CargoPDA
@@ -82,7 +82,7 @@
   name: essential worker PDA
   components:
   - type: RenameId
-    value: job-name-essential-worker
+    value: job-name-cargo-technician-essential-worker
 
 - type: entity
   parent: CargoPDA
@@ -90,7 +90,7 @@
   name: inventory associate PDA
   components:
   - type: RenameId
-    value: job-name-inventory-associate
+    value: job-name-cargo-technician-inventory-associate
 
 - type: entity
   parent: CargoPDA
@@ -98,7 +98,7 @@
   name: logistics PDA
   components:
   - type: RenameId
-    value: job-name-logistics
+    value: job-name-cargo-technician-logistics
 
 #Salvage Specialist
 - type: entity
@@ -107,7 +107,7 @@
   name: astrominer PDA
   components:
   - type: RenameId
-    value: job-name-astrominer
+    value: job-name-salvage-specialist-astrominer
 
 - type: entity
   parent: SalvagePDA
@@ -115,7 +115,7 @@
   name: excavator PDA
   components:
   - type: RenameId
-    value: job-name-excavator
+    value: job-name-salvage-specialist-excavator
 
 - type: entity
   parent: SalvagePDA
@@ -123,7 +123,7 @@
   name: prospector PDA
   components:
   - type: RenameId
-    value: job-name-prospector
+    value: job-name-salvage-specialist-prospector
 
 - type: entity
   parent: SalvagePDA
@@ -131,7 +131,7 @@
   name: scavenger PDA
   components:
   - type: RenameId
-    value: job-name-scavenger
+    value: job-name-salvage-specialist-scavenger
 
 ## Engineering PDAs
 # Atmospheric Technician
@@ -141,7 +141,7 @@
   name: life support technician PDA
   components:
   - type: RenameId
-    value: job-name-life-support-technician
+    value: job-name-atmospheric-technician-life-support-technician
 
 - type: entity
   parent: AtmosPDA
@@ -149,7 +149,7 @@
   name: plasma mechanic PDA
   components:
   - type: RenameId
-    value: job-name-plasma-mechanic
+    value: job-name-atmospheric-technician-plasma-mechanic
 
 - type: entity
   parent: AtmosPDA
@@ -157,7 +157,7 @@
   name: senior atmospheric technician PDA
   components:
   - type: RenameId
-    value: job-name-senior-atmospheric-technician
+    value: job-name-atmospheric-technician-senior-atmospheric-technician
 
 # Station Engineer
 - type: entity
@@ -166,7 +166,7 @@
   name: electrician PDA
   components:
   - type: RenameId
-    value: job-name-electrician
+    value: job-name-station-engineer-electrician
 
 - type: entity
   parent: EngineerPDA
@@ -174,7 +174,7 @@
   name: mechanic PDA
   components:
   - type: RenameId
-    value: job-name-mechanic
+    value: job-name-station-engineer-mechanic
 
 - type: entity
   parent: EngineerPDA
@@ -182,7 +182,7 @@
   name: shipwright PDA
   components:
   - type: RenameId
-    value: job-name-shipwright
+    value: job-name-station-engineer-shipwright
 
 ## Medical PDAs
 # Chemist
@@ -207,7 +207,7 @@
   name: pharmacist PDA
   components:
   - type: RenameId
-    value: job-name-pharmacist
+    value: job-name-chemist-pharmacist
 
 - type: entity
   parent: ChemistryPDA
@@ -231,7 +231,7 @@
   name: clinician PDA
   components:
   - type: RenameId
-    value: job-name-clinician
+    value: job-name-medical-doctor-clinician
 
 - type: entity
   parent: MedicalPDA
@@ -239,7 +239,7 @@
   name: coroner PDA
   components:
   - type: RenameId
-    value: job-name-coroner
+    value: job-name-medical-doctor-coroner
 
 - type: entity
   parent: MedicalPDA
@@ -247,7 +247,7 @@
   name: cyrogenics specialist PDA
   components:
   - type: RenameId
-    value: job-name-cyrogenics-specialist
+    value: job-name-medical-doctor-cyrogenics-specialist
 
 - type: entity
   parent: MedicalPDA
@@ -255,7 +255,7 @@
   name: nurse PDA
   components:
   - type: RenameId
-    value: job-name-nurse
+    value: job-name-medical-doctor-nurse
 
 - type: entity
   parent: MedicalPDA
@@ -263,7 +263,7 @@
   name: surgeon PDA
   components:
   - type: RenameId
-    value: job-name-surgeon
+    value: job-name-medical-doctor-surgeon
 
 # Paramedic
 - type: entity
@@ -272,7 +272,7 @@
   name: emergency medical service PDA
   components:
   - type: RenameId
-    value: job-name-emergency-medical-service
+    value: job-name-paramedic-emergency-medical-service
 
 - type: entity
   parent: ParamedicPDA
@@ -280,7 +280,7 @@
   name: field medic PDA
   components:
   - type: RenameId
-    value: job-name-field-medic
+    value: job-name-paramedic-field-medic
 
 # Psychologist
 - type: entity
@@ -289,7 +289,7 @@
   name: psychiatrist PDA
   components:
   - type: RenameId
-    value: job-name-psychiatrist
+    value: job-name-psychologist-psychiatrist
 
 - type: entity
   parent: PsychologistPDA
@@ -297,7 +297,7 @@
   name: therapist PDA
   components:
   - type: RenameId
-    value: job-name-therapist
+    value: job-name-psychologist-therapist
 
 - type: entity
   parent: PsychologistPDA
@@ -305,7 +305,7 @@
   name: social worker PDA
   components:
   - type: RenameId
-    value: job-name-social-worker
+    value: job-name-psychologist-social-worker
 
 ## Science PDAs
 # Scientist
@@ -315,7 +315,7 @@
   name: anomaly containment specialist PDA
   components:
   - type: RenameId
-    value: job-name-anomaly-containment-specialist
+    value: job-name-scientist-anomaly-containment-specialist
 
 - type: entity
   parent: RoboticistPDA
@@ -323,7 +323,7 @@
   name: machinist PDA
   components:
   - type: RenameId
-    value: job-name-machinist
+    value: job-name-scientist-machinist
 
 - type: entity
   parent: SciencePDA
@@ -331,7 +331,7 @@
   name: xenoarcheologist PDA
   components:
   - type: RenameId
-    value: job-name-xenoarcheologist
+    value: job-name-scientist-xenoarcheologist
 
 ## Service PDAs
 # Bartender
@@ -341,7 +341,7 @@
   name: barista PDA
   components:
   - type: RenameId
-    value: job-name-barista
+    value: job-name-bartender-barista
 
 - type: entity
   parent: BartenderPDA
@@ -349,7 +349,7 @@
   name: mixologist PDA
   components:
   - type: RenameId
-    value: job-name-mixologist
+    value: job-name-bartender-mixologist
 
 # Botanist
 - type: entity
@@ -358,7 +358,7 @@
   name: gardener PDA
   components:
   - type: RenameId
-    value: job-name-gardener
+    value: job-name-botanist-gardener
 
 - type: entity
   parent: BotanistPDA
@@ -366,7 +366,7 @@
   name: herbalist PDA
   components:
   - type: RenameId
-    value: job-name-herbalist
+    value: job-name-botanist-herbalist
 
 - type: entity
   parent: BotanistPDA
@@ -374,7 +374,7 @@
   name: hydroponics technician PDA
   components:
   - type: RenameId
-    value: job-name-hydroponics-technician
+    value: job-name-botanist-hydroponics-technician
 
 - type: entity
   parent: BotanistPDA
@@ -382,7 +382,7 @@
   name: rancher PDA
   components:
   - type: RenameId
-    value: job-name-rancher
+    value: job-name-botanist-rancher
 
 # Chaplain
 - type: entity
@@ -391,7 +391,7 @@
   name: bishop PDA
   components:
   - type: RenameId
-    value: job-name-bishop
+    value: job-name-chaplain-bishop
 
 - type: entity
   parent: ChaplainPDA
@@ -399,7 +399,7 @@
   name: cleric PDA
   components:
   - type: RenameId
-    value: job-name-cleric
+    value: job-name-chaplain-cleric
 
 - type: entity
   parent: ChaplainPDA
@@ -407,7 +407,7 @@
   name: druid PDA
   components:
   - type: RenameId
-    value: job-name-druid
+    value: job-name-chaplain-druid
 
 - type: entity
   parent: ChaplainPDA
@@ -415,7 +415,7 @@
   name: missionary PDA
   components:
   - type: RenameId
-    value: job-name-missionary
+    value: job-name-chaplain-missionary
 
 - type: entity
   parent: ChaplainPDA
@@ -423,7 +423,7 @@
   name: mortician PDA
   components:
   - type: RenameId
-    value: job-name-mortician
+    value: job-name-chaplain-mortician
 
 - type: entity
   parent: ChaplainPDA
@@ -431,7 +431,7 @@
   name: nun PDA
   components:
   - type: RenameId
-    value: job-name-nun
+    value: job-name-chaplain-nun
 
 - type: entity
   parent: ChaplainPDA
@@ -439,7 +439,7 @@
   name: oracle PDA
   components:
   - type: RenameId
-    value: job-name-oracle
+    value: job-name-chaplain-oracle
 
 - type: entity
   parent: ChaplainPDA
@@ -447,7 +447,7 @@
   name: priest PDA
   components:
   - type: RenameId
-    value: job-name-priest
+    value: job-name-chaplain-priest
 
 # Chef
 - type: entity
@@ -456,7 +456,7 @@
   name: baker PDA
   components:
   - type: RenameId
-    value: job-name-baker
+    value: job-name-chef-baker
 
 - type: entity
   parent: ChefPDA
@@ -464,7 +464,7 @@
   name: butcher PDA
   components:
   - type: RenameId
-    value: job-name-butcher
+    value: job-name-chef-butcher
 
 - type: entity
   parent: ChefPDA
@@ -472,7 +472,7 @@
   name: pizzaiolo PDA
   components:
   - type: RenameId
-    value: job-name-pizzaiolo
+    value: job-name-chef-pizzaiolo
 
 # Clown
 - type: entity
@@ -481,7 +481,7 @@
   name: fool PDA
   components:
   - type: RenameId
-    value: job-name-fool
+    value: job-name-clown-fool
 
 - type: entity
   parent: ClownPDA
@@ -489,7 +489,7 @@
   name: jester PDA
   components:
   - type: RenameId
-    value: job-name-jester
+    value: job-name-clown-jester
 
 # Janitor
 - type: entity
@@ -498,7 +498,7 @@
   name: custodian PDA
   components:
   - type: RenameId
-    value: job-name-custodian
+    value: job-name-janitor-custodian
 
 - type: entity
   parent: JanitorPDA
@@ -506,7 +506,7 @@
   name: hygiene technician PDA
   components:
   - type: RenameId
-    value: job-name-hygiene-technician
+    value: job-name-janitor-hygiene-technician
 
 - type: entity
   parent: JanitorPDA
@@ -514,7 +514,7 @@
   name: maid PDA
   components:
   - type: RenameId
-    value: job-name-maid
+    value: job-name-janitor-maid
 
 - type: entity
   parent: JanitorPDA
@@ -522,7 +522,7 @@
   name: refuse expert PDA
   components:
   - type: RenameId
-    value: job-name-refuse-expert
+    value: job-name-janitor-refuse-expert
 
 - type: entity
   parent: JanitorPDA
@@ -530,7 +530,7 @@
   name: sanitations worker PDA
   components:
   - type: RenameId
-    value: job-name-sanitations-worker
+    value: job-name-janitor-sanitations-worker
 
 # Lawyer
 - type: entity
@@ -539,7 +539,7 @@
   name: attorney PDA
   components:
   - type: RenameId
-    value: job-name-attorney
+    value: job-name-lawyer-attorney
 
 - type: entity
   parent: LawyerPDA
@@ -547,7 +547,7 @@
   name: legal counsel PDA
   components:
   - type: RenameId
-    value: job-name-legal-counsel
+    value: job-name-lawyer-legal-counsel
 
 - type: entity
   parent: LawyerPDA
@@ -555,7 +555,7 @@
   name: prosecutor PDA
   components:
   - type: RenameId
-    value: job-name-prosecutor
+    value: job-name-lawyer-prosecutor
 
 - type: entity
   parent: LawyerPDA
@@ -563,7 +563,7 @@
   name: solicitor PDA
   components:
   - type: RenameId
-    value: job-name-solicitor
+    value: job-name-lawyer-solicitor
 
 # Librarian
 - type: entity
@@ -572,7 +572,7 @@
   name: archivist PDA
   components:
   - type: RenameId
-    value: job-name-archivist
+    value: job-name-librarian-archivist
 
 - type: entity
   parent: LibrarianPDA
@@ -580,7 +580,7 @@
   name: curator PDA
   components:
   - type: RenameId
-    value: job-name-curator
+    value: job-name-librarian-curator
 
 - type: entity
   parent: LibrarianPDA
@@ -588,7 +588,7 @@
   name: dungeon master PDA
   components:
   - type: RenameId
-    value: job-name-dungeon-master
+    value: job-name-librarian-dungeon-master
 
 # Mime
 - type: entity
@@ -597,7 +597,7 @@
   name: pierrot PDA
   components:
   - type: RenameId
-    value: job-name-pierrot
+    value: job-name-mime-pierrot
 
 # Musician
 - type: entity
@@ -606,7 +606,7 @@
   name: pop idol PDA
   components:
   - type: RenameId
-    value: job-name-pop-idol
+    value: job-name-musician-pop-idol
 
 - type: entity
   parent: MusicianPDA
@@ -614,7 +614,7 @@
   name: rock star PDA
   components:
   - type: RenameId
-    value: job-name-rock-star
+    value: job-name-musician-rock-star
 
 # Reporter
 - type: entity
@@ -623,7 +623,7 @@
   name: journalist PDA
   components:
   - type: RenameId
-    value: job-name-journalist
+    value: job-name-reporter-journalist
 
 - type: entity
   parent: ReporterPDA
@@ -631,7 +631,7 @@
   name: meteorologist PDA
   components:
   - type: RenameId
-    value: job-name-meteorologist
+    value: job-name-reporter-meteorologist
 
 - type: entity
   parent: ReporterPDA
@@ -639,7 +639,7 @@
   name: news anchor PDA
   components:
   - type: RenameId
-    value: job-name-news-anchor
+    value: job-name-reporter-news-anchor
 
 # Service Worker
 - type: entity
@@ -648,7 +648,7 @@
   name: barber PDA
   components:
   - type: RenameId
-    value: job-name-barber
+    value: job-service-worker-name-barber
 
 ## Other PDAs
 # Passenger
@@ -658,7 +658,7 @@
   name: off-duty crew PDA
   components:
   - type: RenameId
-    value: job-name-off-duty-crew
+    value: job-name-passenger-off-duty-crew
 
 - type: entity
   parent: VisitorPDA
@@ -695,4 +695,4 @@
   name: death row inmate PDA
   components:
   - type: RenameId
-    value: job-name-death-row-inmate
+    value: job-name-prisoner-death-row-inmate
