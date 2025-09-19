@@ -71,16 +71,16 @@
   id: WardenPDA
   name: loadout-group-warden-id
   loadouts:
+  - WardenPDA # Keep default PDA on top of the list
   - CorrectionsOfficerPDA
   - DetentionOfficerPDA
-  - WardenPDA
 
 # Detective
 - type: loadoutGroup
   id: DetectivePDA
   name: loadout-group-detective-id
   loadouts:
-  - DetectivePDA
+  - DetectivePDA # Keep default PDA on top of the list
   - InvestigatorPDA
 
 ## Cargo
@@ -89,10 +89,10 @@
   id: SalvagePDA
   name: loadout-group-salvage-specialist-id
   loadouts:
+  - SalvagePDA # Keep default PDA on top of the list
   - AstrominerPDA
   - ExcavatorPDA
   - ProspectorPDA
-  - SalvagePDA
   - ScavengerPDA
 
 ## Engineering
@@ -101,7 +101,7 @@
   id: AtmosPDA
   name: loadout-group-atmospheric-technician-id
   loadouts:
-  - AtmosPDA
+  - AtmosPDA # Keep default PDA on top of the list
   - PlasmaTechnicianPDA
   - SeniorAtmosphericTechnicianPDA
 
@@ -111,7 +111,7 @@
   id: ChemistryPDA
   name: loadout-group-chemist-id
   loadouts:
-  - ChemistryPDA
+  - ChemistryPDA # Keep default PDA on top of the list
   - GeneticistPDA
   - PharmacistPDA
   - VirologistPDA
@@ -121,16 +121,16 @@
   id: ParamedicPDA
   name: loadout-group-paramedic-id
   loadouts:
+  - ParamedicPDA # Keep default PDA on top of the list
   - FieldMedicPDA
-  - ParamedicPDA
 
 # Psychologist
 - type: loadoutGroup
   id: PsychologistPDA
   name: loadout-group-psychologist-id
   loadouts:
+  - PsychologistPDA # Keep default PDA on top of the list
   - PsychiatristPDA
-  - PsychologistPDA
   - TherapistPDA
   - SocialWorkerPDA
 
@@ -140,8 +140,8 @@
   id: BartenderPDA
   name: loadout-group-bartender-id
   loadouts:
+  - BartenderPDA # Keep default PDA on top of the list
   - BaristaPDA
-  - BartenderPDA
   - MixologistPDA
 
 # Botanist
@@ -149,7 +149,7 @@
   id: BotanistPDA
   name: loadout-group-botanist-id
   loadouts:
-  - BotanistPDA
+  - BotanistPDA # Keep default PDA on top of the list
   - GardenerPDA
   - HerbalistPDA
   - HydroponicsTechnicianPDA
@@ -160,8 +160,8 @@
   id: ChaplainPDA
   name: loadout-group-chaplain-id
   loadouts:
+  - ChaplainPDA # Keep default PDA on top of the list
   - BishopPDA
-  - ChaplainPDA
   - ClericPDA
   - DruidPDA
   - MissionaryPDA
@@ -175,9 +175,9 @@
   id: ChefPDA
   name: loadout-group-chef-id
   loadouts:
+  - ChefPDA # Keep default PDA on top of the list
   - BakerPDA
   - ButcherPDA
-  - ChefPDA
   - PizzaioloPDA
 
 # Clown
@@ -185,7 +185,7 @@
   id: ClownPDA
   name: loadout-group-clown-id
   loadouts:
-  - ClownPDA
+  - ClownPDA # Keep default PDA on top of the list
   - FoolPDA
   - JesterPDA
 
@@ -194,9 +194,9 @@
   id: JanitorPDA
   name: loadout-group-janitor-id
   loadouts:
+  - JanitorPDA # Keep default PDA on top of the list
   - CustodianPDA
   - HygieneTechnicianPDA
-  - JanitorPDA
   - MaidPDA
   - SanitationsWorkerPDA
 
@@ -205,8 +205,8 @@
   id: LawyerPDA
   name: loadout-group-lawyer-id
   loadouts:
+  - LawyerPDA # Keep default PDA on top of the list
   - AttorneyPDA
-  - LawyerPDA
   - LegalCounselPDA
   - ProsecutorPDA
   - SolicitorPDA
@@ -216,17 +216,17 @@
   id: LibrarianPDA
   name: loadout-group-librarian-id
   loadouts:
+  - LibrarianPDA # Keep default PDA on top of the list
   - ArchivistPDA
   - CuratorPDA
   - DungeonMasterPDA
-  - LibrarianPDA
 
 # Mime
 - type: loadoutGroup
   id: MimePDA
   name: loadout-group-mime-id
   loadouts:
-  - MimePDA
+  - MimePDA # Keep default PDA on top of the list
   - PierrotPDA
 
 # Musician
@@ -234,7 +234,7 @@
   id: MusicianPDA
   name: loadout-group-musician-id
   loadouts:
-  - MusicianPDA
+  - MusicianPDA # Keep default PDA on top of the list
   - PopIdolPDA
   - RockStarPDA
 
@@ -243,18 +243,18 @@
   id: ReporterPDA
   name: loadout-group-reporter-id
   loadouts:
+  - ReporterPDA # Keep default PDA on top of the list
   - JournalistPDA
   - MeteorologistPDA
   - NewsAnchorPDA
-  - ReporterPDA
 
 # Service Worker
 - type: loadoutGroup
   id: ServiceWorkerPDA
   name: loadout-group-service-worker-id
   loadouts:
+  - ServiceWorkerPDA # Keep default PDA on top of the list
   - BarberPDA
-  - ServiceWorkerPDA
 
 ## Other
 # Passenger
@@ -262,8 +262,8 @@
   id: PassengerPDA
   name: loadout-group-passenger-id
   loadouts:
+  - PassengerPDA # Keep default PDA on top of the list
   - OffDutyCrewPDA
-  - PassengerPDA
   - VisitorCrewPDA
 
 # Prisoner
@@ -289,5 +289,5 @@
   id: PrisonerPDA
   name: loadout-group-prisoner-id
   loadouts:
+  - PrisonerPDA # Keep default PDA on top of the list
   - DeathRowInmatePDA
-  - PrisonerPDA
