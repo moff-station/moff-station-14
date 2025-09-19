@@ -1053,13 +1053,13 @@
   id: ScientistPDA
   name: loadout-group-scientist-id
   loadouts:
-  - AnomalyContainmentSpecialistPDA
-  - MachinistPDA
+  - AnomalyContainmentSpecialistPDA # Moffstation - Additional job title loadouts
+  - MachinistPDA # Moffstation - Additional job title loadouts
   - ScientistPDA
   - SeniorResearcherPDA
   - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
   - RoboticistPDA #CD - Job title loadouts
-  - XenoarcheologistPDA
+  - XenoarcheologistPDA # Moffstation - Additional job title loadouts
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -1391,14 +1391,14 @@
   id: MedicalDoctorPDA
   name: loadout-group-medical-doctor-id
   loadouts:
-  - ClinicianPDA
-  - CoronerPDA
-  - CyrogenicsSpecialistPDA
+  - ClinicianPDA # Moffstation - Additional job title loadouts
+  - CoronerPDA # Moffstation - Additional job title loadouts
+  - CyrogenicsSpecialistPDA # Moffstation - Additional job title loadouts
   - MedicalDoctorPDA
   - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
-  - NursePDA
+  - NursePDA # Moffstation - Additional job title loadouts
   - SeniorPhysicianPDA
-  - SurgeonPDA
+  - SurgeonPDA # Moffstation - Additional job title loadouts
 
 - type: loadoutGroup
   id: MedicalGloves
