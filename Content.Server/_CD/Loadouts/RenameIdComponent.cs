@@ -1,3 +1,6 @@
+using Content.Shared.StatusIcon;
+using Robust.Shared.Prototypes;
+
 namespace Content.Server._CD.Loadouts;
 
 /// <summary>
@@ -9,6 +12,6 @@ public sealed partial class RenameIdComponent : Component
     [DataField]
     public LocId Value;
 
-    [DataField("newIcon")]
-    public string? NewIcon = "JobIconUnknown";
+    [DataField]
+    public ProtoId<JobIconPrototype>? NewIcon;
 }

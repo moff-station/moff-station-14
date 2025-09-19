@@ -35,10 +35,10 @@ public sealed class RenameIdSystem : EntitySystem
                 !TryComp<IdCardComponent>(id, out var card))
                 continue;
 
-            if (rename.NewIcon != null)
+            if (rename.NewIcon is { } icon)
             {
-                card.JobIcon = rename.NewIcon; // TryChangeJobTitle dirties the ID for us
-                FlushIdIconToRecords(id, rename.NewIcon);
+                card.JobIcon = icon; // TryChangeJobTitle dirties the ID for us
+                FlushIdIconToRecords(id, icon);
             }
             _idCardSystem.TryChangeJobTitle(id, Loc.GetString(rename.Value), card);
         }
@@ -56,10 +56,10 @@ public sealed class RenameIdSystem : EntitySystem
             !TryComp<IdCardComponent>(id, out var card))
             return;
 
-        if (rename.NewIcon != null)
+        if (rename.NewIcon is { } icon)
         {
-            card.JobIcon = rename.NewIcon; // TryChangeJobTitle dirties the ID for us
-            FlushIdIconToRecords(id, rename.NewIcon);
+            card.JobIcon = icon; // TryChangeJobTitle dirties the ID for us
+            FlushIdIconToRecords(id, icon);
         }
         _idCardSystem.TryChangeJobTitle(id, Loc.GetString(rename.Value), card);
     }
