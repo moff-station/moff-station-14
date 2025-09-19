@@ -83,6 +83,11 @@ namespace Content.Client.Administration.UI.Bwoink
                 if (IsNewPlayer(info))
                     sb.Append(new Rune(0x23F2)); // ⏲
 
+                // Moffstation - Start - Visible watchlist
+                if (info.HasWatchlist)
+                    sb.Append("(WATCHLIST) ");
+                // Moffstation - End
+
                 sb.AppendFormat("\"{0}\"", text);
 
                 return sb.ToString();

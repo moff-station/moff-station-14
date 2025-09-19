@@ -33,9 +33,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-
-// CD: imports
-using Content.Server._CD.Records;
+using Content.Server._Moffstation.Players; // Moffstation
+using Content.Server._CD.Records;   // CD
 
 namespace Content.Server.Administration.Systems;
 
@@ -58,6 +57,7 @@ public sealed class AdminSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly WatchListTracker _watchList = default!;   // Moffstation
 
     // CD: for erasing records on erase ban
     [Dependency] private readonly CharacterRecordsSystem _cdRecords = default!;
@@ -270,6 +270,11 @@ public sealed class AdminSystem : EntitySystem
             overallPlaytime = playTime;
         }
 
+        // Moffstation - Start - Get watchlist status
+        // Second check so we don't modify upstream code
+        var watchListed = session != null ? _watchList.GetWatchListed(session) : false;
+        // Moffstation - End
+
         return new PlayerInfo(
             name,
             entityName,
@@ -283,7 +288,10 @@ public sealed class AdminSystem : EntitySystem
             data.UserId,
             connected,
             _roundActivePlayers.Contains(data.UserId),
-            overallPlaytime);
+            // Moffstation - Start - Visible watchlist
+            overallPlaytime,
+            watchListed);
+            // Moffstation - End
     }
 
     private void OnPanicBunkerChanged(bool enabled)

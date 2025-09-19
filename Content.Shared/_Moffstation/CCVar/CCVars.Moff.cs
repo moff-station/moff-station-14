@@ -16,4 +16,10 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<float> RespawnTime =
         CVarDef.Create("moff.respawn_time", 900f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// The maximum size that an overlay stack can reach. Additional overlays will be superimposed over the last one.
+    /// </summary>
+    public static readonly CVarDef<bool> AdminOverlayShowWatchlist =
+        CVarDef.Create("ui.admin_overlay_show_watchlist", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 }
