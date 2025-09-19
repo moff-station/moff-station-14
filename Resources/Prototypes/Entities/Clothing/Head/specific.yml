@@ -45,3 +45,20 @@
     containers:
       storagebase: !type:Container
         ents: [ ]
+
+- type: entity
+  parent: [ClothingHeadBase, BaseChameleon]
+  id: ClothingHeadHatChameleonClockwork
+  name: beret
+  description: A grey baseball cap.
+  suffix: Chameleon, Clockwork
+  components:
+    - type: Tag
+      tags: [] # ignore "WhitelistChameleon" tag
+    - type: Sprite
+      sprite: Clothing/Head/Soft/greysoft.rsi
+    - type: Clothing
+      sprite: Clothing/Head/Soft/greysoft.rsi
+    - type: ChameleonClothing
+      slot: [HEAD]
+      default: ClothingHeadHatGreysoft

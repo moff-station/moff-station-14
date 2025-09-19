@@ -15,3 +15,21 @@
     - type: ChameleonClothing
       slot: [eyes]
       default: ClothingEyesGlassesSunglasses
+
+- type: entity
+  parent: [ClothingEyesBase, BaseChameleon]
+  id: ClothingEyesChameleonClockwork
+  name: sun glasses
+  description: Useful both for security and cargonia.
+  suffix: Chameleon, Clockwork
+  components:
+    - type: Tag
+      tags: # intentionally no WhitelistChameleon tag
+      - PetWearable
+    - type: Sprite
+      sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+    - type: Clothing
+      sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+    - type: ChameleonClothing
+      slot: [eyes]
+      default: ClothingEyesGlassesSunglasses
