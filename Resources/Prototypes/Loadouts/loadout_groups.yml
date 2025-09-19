@@ -715,6 +715,17 @@
   - SalvageBoots # Moffstation - QM can wear Salvage boots
 
 - type: loadoutGroup
+  id: CargoTechnicianID
+  name: loadout-group-cargo-technician-id
+  loadouts:
+  - CargoTechnicianPDA
+  - SeniorCourierPDA
+  # Moffstation - Start - Additional job title loadouts
+  - CourierPDA
+  - LogisticsAssociatePDA
+  # Moffstation - End
+
+- type: loadoutGroup
   id: CargoTechnicianHead
   name: loadout-group-cargo-technician-head
   minLimit: 0
@@ -828,6 +839,19 @@
   - BrownShoes
   - EngineeringWinterBoots
   - WorkBoots # Moffstation - CE can wear workboots
+
+- type: loadoutGroup
+  id: StationEngineerID
+  name: loadout-group-station-engineer-id
+  loadouts:
+  - StationEngineerPDA
+  - SeniorEngineerPDA
+  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - ElectricianPDA
+  - MechanicPDA
+  - ShipwrightPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
@@ -1027,6 +1051,20 @@
   - RobohandsGloves
 
 - type: loadoutGroup
+  id: ScientistPDA
+  name: loadout-group-scientist-id
+  loadouts:
+  - ScientistPDA
+  - SeniorResearcherPDA
+  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - AnomalyContainmentSpecialistPDA
+  - MachinistPDA
+  - RoboticistPDA #CD - Job title loadouts
+  - XenoarcheologistPDA
+  # Moffstation - End
+
+- type: loadoutGroup
   id: ResearchAssistantJumpsuit
   name: loadout-group-research-assistant-jumpsuit
   loadouts:
@@ -1145,6 +1183,18 @@
   loadouts:
   - JackBoots
   - SecurityWinterBoots
+
+- type: loadoutGroup
+  id: SecurityPDA
+  name: loadout-group-security-id
+  loadouts:
+  - SecurityPDA
+  - SeniorOfficerPDA
+  - SecurityCadetPDA
+  # Moffstation - Start - Additional job title loadouts
+  - AssetProtectionsPDA
+  - DeputyPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -1281,6 +1331,21 @@
   loadouts:
   - BrownShoes
   - MedicalWinterBoots
+
+- type: loadoutGroup
+  id: MedicalDoctorPDA
+  name: loadout-group-medical-doctor-id
+  loadouts:
+  - MedicalDoctorPDA
+  - SeniorPhysicianPDA
+  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - ClinicianPDA
+  - CoronerPDA
+  - CyrogenicsSpecialistPDA
+  - NursePDA
+  - SurgeonPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalDoctorHead
@@ -1511,60 +1576,3 @@
   hidden: true
   loadouts:
   - LoadoutSpeciesBreathToolSecurity
-
-# Moffstation - Start - Additional job title loadouts
-- type: loadoutGroup
-  id: CargoTechnicianID
-  name: loadout-group-cargo-technician-id
-  loadouts:
-  - CargoTechnicianPDA
-  - CourierPDA
-  - LogisticsAssociatePDA
-  - SeniorCourierPDA
-
-- type: loadoutGroup
-  id: MedicalDoctorPDA
-  name: loadout-group-medical-doctor-id
-  loadouts:
-  - ClinicianPDA
-  - CoronerPDA
-  - CyrogenicsSpecialistPDA
-  - MedicalDoctorPDA
-  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
-  - NursePDA
-  - SeniorPhysicianPDA
-  - SurgeonPDA
-
-- type: loadoutGroup
-  id: ScientistPDA
-  name: loadout-group-scientist-id
-  loadouts:
-  - AnomalyContainmentSpecialistPDA
-  - MachinistPDA
-  - ScientistPDA
-  - SeniorResearcherPDA
-  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
-  - RoboticistPDA #CD - Job title loadouts
-  - XenoarcheologistPDA
-
-- type: loadoutGroup
-  id: SecurityPDA
-  name: loadout-group-security-id
-  loadouts:
-  - AssetProtectionsPDA
-  - DeputyPDA
-  - SecurityPDA
-  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
-  - SeniorOfficerPDA
-
-- type: loadoutGroup
-  id: StationEngineerID
-  name: loadout-group-station-engineer-id
-  loadouts:
-  - ElectricianPDA
-  - SeniorEngineerPDA
-  - MechanicPDA
-  - ShipwrightPDA
-  - StationEngineerPDA
-  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
-# Moffstation - End
