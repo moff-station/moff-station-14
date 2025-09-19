@@ -83,28 +83,7 @@
   - DetectivePDA
   - InvestigatorPDA
 
-# Security Officer
-- type: loadoutGroup
-  id: SecurityPDA
-  name: loadout-group-security-id
-  loadouts:
-  - AssetProtectionsPDA
-  - DeputyPDA
-  - SecurityPDA
-  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
-  - SeniorOfficerPDA
-
 ## Cargo
-# Cargo Technician
-- type: loadoutGroup
-  id: CargoTechnicianPDA
-  name: loadout-group-cargo-technician-id
-  loadouts:
-  - CargoTechnicianPDA
-  - CourierPDA
-  - LogisticsAssociatePDA
-  - SeniorCourierPDA
-
 # Salvage Specialist
 - type: loadoutGroup
   id: SalvagePDA
@@ -126,18 +105,6 @@
   - PlasmaMechanicPDA
   - SeniorAtmosphericTechnicianPDA
 
-# Station Engineer
-- type: loadoutGroup
-  id: StationEngineerPDA
-  name: loadout-group-station-engineer-id
-  loadouts:
-  - ElectricianPDA
-  - SeniorEngineerPDA
-  - MechanicPDA
-  - ShipwrightPDA
-  - StationEngineerPDA
-  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
-
 ## Medical
 # Chemist
 - type: loadoutGroup
@@ -148,20 +115,6 @@
   - GeneticistPDA
   - PharmacistPDA
   - VirologistPDA
-
-# Medical Doctor
-- type: loadoutGroup
-  id: MedicalDoctorPDA
-  name: loadout-group-medical-doctor-id
-  loadouts:
-  - ClinicianPDA
-  - CoronerPDA
-  - CyrogenicsSpecialistPDA
-  - MedicalDoctorPDA
-  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
-  - NursePDA
-  - SeniorPhysicianPDA
-  - SurgeonPDA
 
 # Paramedic
 - type: loadoutGroup
@@ -180,20 +133,6 @@
   - PsychologistPDA
   - TherapistPDA
   - SocialWorkerPDA
-
-## Science
-# Scientist
-- type: loadoutGroup
-  id: ScientistPDA
-  name: loadout-group-scientist-id
-  loadouts:
-  - AnomalyContainmentSpecialistPDA
-  - MachinistPDA
-  - ScientistPDA
-  - SeniorResearcherPDA
-  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
-  - RoboticistPDA #CD - Job title loadouts
-  - XenoarcheologistPDA
 
 ## Service
 # Bartender
