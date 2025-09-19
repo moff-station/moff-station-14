@@ -43,6 +43,7 @@
   id: JobPassenger
   groups:
   - GroupTankHarness
+  - PassengerPDA # Moffstation - Additional job title loadouts
   - PassengerJumpsuit
   - CommonBackpack
   - PassengerNeck
@@ -60,6 +61,7 @@
   id: JobBartender
   groups:
   - GroupTankHarness
+  - BartenderPDA # Moffstation - Additional job title loadouts
   - BartenderHead
   - BartenderJumpsuit
   - CommonBackpack
@@ -74,6 +76,7 @@
   id: JobServiceWorker
   groups:
   - GroupTankHarness
+  - ServiceWorkerPDA # Moffstation - Additional job title loadouts
   - BartenderJumpsuit
   - CommonBackpack
   - Glasses
@@ -86,6 +89,7 @@
   id: JobChef
   groups:
   - GroupTankHarness
+  - ChefPDA # Moffstation - Additional job title loadouts
   - ChefHead
   - ChefMask
   - ChefJumpsuit
@@ -101,6 +105,7 @@
   id: JobLibrarian
   groups:
   - GroupTankHarness
+  - LibrarianPDA # Moffstation - Additional job title loadouts
   - LibrarianJumpsuit
   - CommonBackpack
   - Glasses
@@ -113,6 +118,7 @@
   id: JobLawyer
   groups:
   - GroupTankHarness
+  - LawyerPDA # Moffstation - Additional job title loadouts
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
@@ -126,6 +132,7 @@
   id: JobChaplain
   groups:
   - GroupTankHarness
+  - ChaplainPDA # Moffstation - Additional job title loadouts
   - ChaplainHead
   - ChaplainMask
   - ChaplainNeck
@@ -143,6 +150,7 @@
   id: JobJanitor
   groups:
   - GroupTankHarness
+  - JanitorPDA # Moffstation - Additional job title loadouts
   - JanitorHead
   - JanitorJumpsuit
   - JanitorGloves
@@ -159,6 +167,7 @@
   id: JobBotanist
   groups:
   - GroupTankHarness
+  - BotanistPDA # Moffstation - Additional job title loadouts
   - BotanistHead
   - BotanistJumpsuit
   - BotanistBackpack
@@ -174,6 +183,7 @@
   canCustomizeName: true
   groups:
   - GroupTankHarness
+  - ClownPDA # Moffstation - Additional job title loadouts
   - ClownHead
   - ClownJumpsuit
   - ClownBackpack
@@ -189,6 +199,7 @@
   canCustomizeName: true
   groups:
   - GroupTankHarness
+  - MimePDA # Moffstation - Additional job title loadouts
   - MimeHead
   - MimeMask
   - MimeJumpsuit
@@ -204,6 +215,7 @@
   id: JobMusician
   groups:
   - GroupTankHarness
+  - MusicianPDA # Moffstation - Additional job title loadouts
   - MusicianJumpsuit
   - CommonBackpack
   - MusicianOuterClothing
@@ -236,12 +248,12 @@
   id: JobCargoTechnician
   groups:
   - GroupTankHarness
+  - CargoTechnicianID # Moffstation - Additional job title loadouts
   - CargoTechnicianHead
   - CargoTechnicianJumpsuit
   - CargoTechnicianBackpack
   - CargoTechnicianOuterClothing
   - CargoTechnicianShoes
-  - CargoTechnicianID
   - Glasses
   - Survival
   - Trinkets
@@ -252,6 +264,7 @@
   id: JobSalvageSpecialist
   groups:
   - GroupTankHarness
+  - SalvagePDA # Moffstation - Additional job title loadouts
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
@@ -292,12 +305,12 @@
   id: JobStationEngineer
   groups:
   - GroupTankHarness
+  - StationEngineerID # Moffstation - Additional job title loadouts
   - StationEngineerHead
   - StationEngineerJumpsuit
   - StationEngineerBackpack
   - StationEngineerOuterClothing
   - StationEngineerShoes
-  - StationEngineerID
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
@@ -307,6 +320,7 @@
   id: JobAtmosphericTechnician
   groups:
   - GroupTankHarness
+  - AtmosPDA # Moffstation - Additional job title loadouts
   - StationEngineerHead # Moffstation - (Nox Loadout Improvements)
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianBackpack
@@ -339,6 +353,7 @@
   id: JobScientist
   groups:
   - GroupTankHarness
+  - ScientistPDA # Moffstation - Additional job title loadouts
   - ScientistHead
   - ScientistNeck
   - ScientistJumpsuit
@@ -346,7 +361,6 @@
   - ScientistOuterClothing
   - ScientistGloves
   - ScientistShoes
-  - ScientistPDA
   - Glasses
   - Survival
   - Trinkets
@@ -385,6 +399,7 @@
 - type: roleLoadout
   id: JobWarden
   groups:
+  - WardenPDA # Moffstation - Additional job title loadouts
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
@@ -396,17 +411,16 @@
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   - PersonalItemsJobAgnostic # Umbra
-  - WardenPDA # Moffstation - Additional job title loadouts
 
 - type: roleLoadout
   id: JobSecurityOfficer
   groups:
+  - SecurityPDA # Moffstation - Additional job title loadouts
   - SecurityHead
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
   - SecurityShoes
-  - SecurityPDA
   - SecurityBelt
   - SurvivalSecurity
   - Trinkets
@@ -417,6 +431,7 @@
 - type: roleLoadout
   id: JobDetective
   groups:
+  - DetectivePDA # Moffstation - Additional job title loadouts
   - DetectiveHead
   - DetectiveNeck
   - DetectiveJumpsuit
@@ -463,6 +478,7 @@
   id: JobMedicalDoctor
   groups:
   - GroupTankHarness
+  - MedicalDoctorPDA # Moffstation - Additional job title loadouts
   - MedicalDoctorHead
   - MedicalMask
   - MedicalDoctorJumpsuit
@@ -470,7 +486,6 @@
   - MedicalBackpack
   - MedicalDoctorOuterClothing
   - MedicalShoes
-  - MedicalDoctorPDA
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
@@ -493,6 +508,7 @@
   id: JobChemist
   groups:
   - GroupTankHarness
+  - ChemistryPDA # Moffstation - Additional job title loadouts
   - MedicalMask
   - ChemistJumpsuit
   - MedicalGloves
@@ -508,6 +524,7 @@
   id: JobParamedic
   groups:
   - GroupTankHarness
+  - ParamedicPDA # Moffstation - Additional job title loadouts
   - ParamedicHead
   - MedicalMask
   - ParamedicJumpsuit
@@ -537,6 +554,7 @@
   id: JobReporter
   groups:
   - GroupTankHarness
+  - ReporterPDA # Moffstation - Additional job title loadouts
   - ReporterJumpsuit
   - CommonBackpack
   - Glasses
@@ -549,6 +567,7 @@
   id: JobPsychologist
   groups:
   - GroupTankHarness
+  - PsychologistPDA # Moffstation - Additional job title loadouts
   - PsychologistJumpsuit
   - MedicalBackpack
   - Glasses

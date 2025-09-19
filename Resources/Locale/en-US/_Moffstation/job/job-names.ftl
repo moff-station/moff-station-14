@@ -8,7 +8,7 @@ job-name-detention-manager = Detention Manager
 job-name-inspector = Inspector
 job-name-investigator = Investigator
 # Security Officer
-job-name-asset-protections = Asset Protection
+job-name-asset-protections = Asset Protections
 job-name-deputy = Deputy
 job-name-security-specialist = Security Specialist
 job-name-senior-officer = Senior Officer
@@ -49,8 +49,8 @@ job-name-nurse = Nurse
 job-name-senior-physician = Senior Physician
 job-name-surgeon = Surgeon
 # Paramedic
-job-name-field-medic = Field Medic
 job-name-emergency-medical-service = Emergency Medical Service
+job-name-field-medic = Field Medic
 # Psychologist
 job-name-psychiatrist = Psychiatrist
 job-name-therapist = Therapist

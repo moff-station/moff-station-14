@@ -71,11 +71,206 @@
   id: WardenPDA
   name: loadout-group-warden-id
   loadouts:
-  - WardenPDA
   - CorrectionsOfficerPDA
   - DetentionManagerPDA
+  - WardenPDA
 
-# Prisoner loadouts
+# Detective loadouts
+- type: loadoutGroup
+  id: DetectivePDA
+  name: loadout-group-detective-id
+  loadouts:
+  - DetectivePDA
+  - InspectorPDA
+  - InvestigatorPDA
+
+## Cargo
+# Salvage specialist loadouts
+- type: loadoutGroup
+  id: SalvagePDA
+  name: loadout-group-salvage-specialist-id
+  loadouts:
+  - AstrominerPDA
+  - ExcavatorPDA
+  - ProspectorPDA
+  - SalvagePDA
+  - ScavengerPDA
+
+## Engineering
+# Atmospheric Technician
+- type: loadoutGroup
+  id: AtmosPDA
+  name: loadout-group-atmospheric-technician-id
+  loadouts:
+  - AtmosPDA
+  - LifeSupportTechnicianPDA
+  - PlasmaMechanicPDA
+  - SeniorAtmosphericTechnicianPDA
+
+## Medical
+# Chemist
+- type: loadoutGroup
+  id: ChemistryPDA
+  name: loadout-group-chemist-id
+  loadouts:
+  - ChemistryPDA
+  - GeneticistPDA
+  - PharmacistPDA
+  - VirologistPDA
+
+# Paramedic
+- type: loadoutGroup
+  id: ParamedicPDA
+  name: loadout-group-paramedic-id
+  loadouts:
+  - EmergencyMedicalServicePDA
+  - FieldMedicPDA
+  - ParamedicPDA
+
+# Psychologist
+- type: loadoutGroup
+  id: PsychologistPDA
+  name: loadout-group-psychologist-id
+  loadouts:
+  - PsychiatristPDA
+  - PsychologistPDA
+  - TherapistPDA
+  - SocialWorkerPDA
+
+## Service
+# Bartender
+- type: loadoutGroup
+  id: BartenderPDA
+  name: loadout-group-bartender-id
+  loadouts:
+  - BaristaPDA
+  - BartenderPDA
+  - MixologistPDA
+
+# Botanist
+- type: loadoutGroup
+  id: BotanistPDA
+  name: loadout-group-botanist-id
+  loadouts:
+  - BotanistPDA
+  - GardenerPDA
+  - HerbalistPDA
+  - HydroponicsTechnicianPDA
+  - RancherPDA
+
+# Chaplain
+- type: loadoutGroup
+  id: ChaplainPDA
+  name: loadout-group-chaplain-id
+  loadouts:
+  - BishopPDA
+  - ChaplainPDA
+  - ClericPDA
+  - DruidPDA
+  - MissionaryPDA
+  - MorticianPDA
+  - NunPDA
+  - OraclePDA
+  - PriestPDA
+
+# Chef
+- type: loadoutGroup
+  id: ChefPDA
+  name: loadout-group-chef-id
+  loadouts:
+  - BakerPDA
+  - ButcherPDA
+  - ChefPDA
+  - PizzaioloPDA
+
+# Clown
+- type: loadoutGroup
+  id: ClownPDA
+  name: loadout-group-clown-id
+  loadouts:
+  - ClownPDA
+  - FoolPDA
+  - JesterPDA
+
+# Janitor
+- type: loadoutGroup
+  id: JanitorPDA
+  name: loadout-group-janitor-id
+  loadouts:
+  - CustodianPDA
+  - HygieneTechnicianPDA
+  - JanitorPDA
+  - MaidPDA
+  - RefuseExpertPDA
+  - SanitationsWorkerPDA
+
+# Lawyer
+- type: loadoutGroup
+  id: LawyerPDA
+  name: loadout-group-lawyer-id
+  loadouts:
+  - AttorneyPDA
+  - LawyerPDA
+  - LegalCounselPDA
+  - ProsecutorPDA
+  - SolicitorPDA
+
+# Librarian
+- type: loadoutGroup
+  id: LibrarianPDA
+  name: loadout-group-librarian-id
+  loadouts:
+  - ArchivistPDA
+  - CuratorPDA
+  - DungeonMasterPDA
+  - LibrarianPDA
+
+# Mime
+- type: loadoutGroup
+  id: MimePDA
+  name: loadout-group-mime-id
+  loadouts:
+  - MimePDA
+  - PierrotPDA
+
+# Musician
+- type: loadoutGroup
+  id: MusicianPDA
+  name: loadout-group-musician-id
+  loadouts:
+  - MusicianPDA
+  - PopIdolPDA
+  - RockStarPDA
+
+# Reporter
+- type: loadoutGroup
+  id: ReporterPDA
+  name: loadout-group-reporter-id
+  loadouts:
+  - JournalistPDA
+  - MeteorologistPDA
+  - NewsAnchorPDA
+  - ReporterPDA
+
+# Service Worker
+- type: loadoutGroup
+  id: ServiceWorkerPDA
+  name: loadout-group-service-worker-id
+  loadouts:
+  - BarberPDA
+  - ServiceWorkerPDA
+
+## Other
+# Passenger
+- type: loadoutGroup
+  id: PassengerPDA
+  name: loadout-group-passenger-id
+  loadouts:
+  - OffDutyCrewPDA
+  - PassengerPDA
+  - VisitorCrewPDA
+
+# Prisoner
 - type: loadoutGroup
   id: PrisonerJumpsuit
   name: loadout-group-prisoner-jumpsuit
@@ -93,3 +288,10 @@
   loadouts:
   - SkullBandana
   - PrisonHatStriped
+
+- type: loadoutGroup
+  id: PrisonerPDA
+  name: loadout-group-prisoner-id
+  loadouts:
+  - DeathRowInmatePDA
+  - PrisonerPDA

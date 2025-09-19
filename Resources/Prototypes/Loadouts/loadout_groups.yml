@@ -756,6 +756,11 @@
   name: loadout-group-cargo-technician-id
   loadouts:
   - CargoTechnicianPDA
+  - CourierPDA # Moffstation - Additional job title loadouts
+  - DeckhandPDA # Moffstation - Additional job title loadouts
+  - EssentialWorkerPDA # Moffstation - Additional job title loadouts
+  - InventoryAssociatePDA # Moffstation - Additional job title loadouts
+  - LogisticsPDA # Moffstation - Additional job title loadouts
   - SeniorCourierPDA
 
 - type: loadoutGroup
@@ -891,8 +896,11 @@
   id: StationEngineerID
   name: loadout-group-station-engineer-id
   loadouts:
-  - StationEngineerPDA
-  - SeniorEngineerPDA
+  - ElectricianPDA # Moffstation - Additional job title loadouts
+  - SeniorEngineerPDA # Moffstation - Additional job title loadouts
+  - MechanicPDA # Moffstation - Additional job title loadouts
+  - ShipwrightPDA # Moffstation - Additional job title loadouts
+  - StationEngineerPDA # Moffstation - Additional job title loadouts
   - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
 
 - type: loadoutGroup
@@ -1045,10 +1053,13 @@
   id: ScientistPDA
   name: loadout-group-scientist-id
   loadouts:
+  - AnomalyContainmentSpecialistPDA
+  - MachinistPDA
   - ScientistPDA
   - SeniorResearcherPDA
   - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
   - RoboticistPDA #CD - Job title loadouts
+  - XenoarcheologistPDA
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -1174,9 +1185,12 @@
   id: SecurityPDA
   name: loadout-group-security-id
   loadouts:
+  - AssetProtectionsPDA # Moffstation - Additional job title loadouts
+  - DeputyPDA # Moffstation - Additional job title loadouts
   - SecurityPDA
-  - SeniorOfficerPDA
   - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
+  - SecuritySpecialistPDA # Moffstation - Additional job title loadouts
+  - SeniorOfficerPDA
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -1377,9 +1391,14 @@
   id: MedicalDoctorPDA
   name: loadout-group-medical-doctor-id
   loadouts:
+  - ClinicianPDA
+  - CoronerPDA
+  - CyrogenicsSpecialistPDA
   - MedicalDoctorPDA
-  - SeniorPhysicianPDA
   - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
+  - NursePDA
+  - SeniorPhysicianPDA
+  - SurgeonPDA
 
 - type: loadoutGroup
   id: MedicalGloves
