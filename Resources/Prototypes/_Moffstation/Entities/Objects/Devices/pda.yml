@@ -10,21 +10,13 @@
 
 - type: entity
   parent: WardenPDA
-  id: DetentionManagerPDA
-  name: detention manager PDA
+  id: DetentionOfficerPDA
+  name: detention officer PDA
   components:
   - type: RenameId
-    value: job-name-warden-detention-manager
+    value: job-name-warden-detention-officer
 
 # Detective
-- type: entity
-  parent: DetectivePDA
-  id: InspectorPDA
-  name: inspector PDA
-  components:
-  - type: RenameId
-    value: job-name-detective-inspector
-
 - type: entity
   parent: DetectivePDA
   id: InvestigatorPDA
@@ -50,14 +42,6 @@
   - type: RenameId
     value: job-name-security-officer-deputy
 
-- type: entity
-  parent: SecurityPDA
-  id: SecuritySpecialistPDA
-  name: security specialist PDA
-  components:
-  - type: RenameId
-    value: job-name-security-officer-security-specialist
-
 ## Cargo PDAs
 #Cargo Technician
 - type: entity
@@ -70,35 +54,11 @@
 
 - type: entity
   parent: CargoPDA
-  id: DeckhandPDA
-  name: deckhand PDA
+  id: LogisticsAssociatePDA
+  name: logistics associate PDA
   components:
   - type: RenameId
-    value: job-name-cargo-technician-deckhand
-
-- type: entity
-  parent: CargoPDA
-  id: EssentialWorkerPDA
-  name: essential worker PDA
-  components:
-  - type: RenameId
-    value: job-name-cargo-technician-essential-worker
-
-- type: entity
-  parent: CargoPDA
-  id: InventoryAssociatePDA
-  name: inventory associate PDA
-  components:
-  - type: RenameId
-    value: job-name-cargo-technician-inventory-associate
-
-- type: entity
-  parent: CargoPDA
-  id: LogisticsPDA
-  name: logistics PDA
-  components:
-  - type: RenameId
-    value: job-name-cargo-technician-logistics
+    value: job-name-cargo-technician-logistics-associate
 
 #Salvage Specialist
 - type: entity
@@ -137,19 +97,11 @@
 # Atmospheric Technician
 - type: entity
   parent: AtmosPDA
-  id: LifeSupportTechnicianPDA
-  name: life support technician PDA
+  id: PlasmaTechnicianPDA
+  name: plasma technician PDA
   components:
   - type: RenameId
-    value: job-name-atmospheric-technician-life-support-technician
-
-- type: entity
-  parent: AtmosPDA
-  id: PlasmaMechanicPDA
-  name: plasma mechanic PDA
-  components:
-  - type: RenameId
-    value: job-name-atmospheric-technician-plasma-mechanic
+    value: job-name-atmospheric-technician-plasma-technician
 
 - type: entity
   parent: AtmosPDA
@@ -266,14 +218,6 @@
     value: job-name-medical-doctor-surgeon
 
 # Paramedic
-- type: entity
-  parent: ParamedicPDA
-  id: EmergencyMedicalServicePDA
-  name: emergency medical service PDA
-  components:
-  - type: RenameId
-    value: job-name-paramedic-emergency-medical-service
-
 - type: entity
   parent: ParamedicPDA
   id: FieldMedicPDA
@@ -515,14 +459,6 @@
   components:
   - type: RenameId
     value: job-name-janitor-maid
-
-- type: entity
-  parent: JanitorPDA
-  id: RefuseExpertPDA
-  name: refuse expert PDA
-  components:
-  - type: RenameId
-    value: job-name-janitor-refuse-expert
 
 - type: entity
   parent: JanitorPDA

@@ -3,23 +3,18 @@
 ## Security
 # Warden
 job-name-warden-corrections-officer = Corrections Officer
-job-name-warden-detention-manager = Detention Manager
+job-name-warden-detention-officer = Detention Officer
 # Detective
-job-name-detective-inspector = Inspector
 job-name-detective-investigator = Investigator
 # Security Officer
 job-name-security-officer-asset-protections = Asset Protections
 job-name-security-officer-deputy = Deputy
-job-name-security-officer-security-specialist = Security Specialist
 job-name-security-officer-senior-officer = Senior Officer
 
 ## Cargo
 # Cargo Technician
 job-name-cargo-technician-courier = Courier
-job-name-cargo-technician-deckhand = Deckhand
-job-name-cargo-technician-essential-worker = Essential Worker
-job-name-cargo-technician-inventory-associate = Inventory Associate
-job-name-cargo-technician-logistics = Logistics
+job-name-cargo-technician-logistics-associate = Logistics Associate
 job-name-cargo-technician-senior-courier = Senior Courier
 # Salvage Specialist
 job-name-salvage-specialist-astrominer = Astrominer
@@ -29,12 +24,11 @@ job-name-salvage-specialist-scavenger = Scavenger
 
 ## Engineering
 # Atmospheric Technician
-job-name-atmospheric-technician-life-support-technician = Life Support Technician
-job-name-atmospheric-technician-plasma-mechanic = Plasma Mechanic
+job-name-atmospheric-technician-plasma-technician = Plasma Technician
 job-name-atmospheric-technician-senior-atmospheric-technician = Senior Atmospheric Technician
 # Station Engineer
 job-name-station-engineer-electrician = Electrician
-job-name-station-engineer-engineering-mentor = Engineering Mentor
+job-name-station-engineer-senior-station-engineer = Senior Station Engineer
 job-name-station-engineer-mechanic = Mechanic
 job-name-station-engineer-shipwright = Shipwright
 
@@ -49,7 +43,6 @@ job-name-medical-doctor-nurse = Nurse
 job-name-medical-doctor-senior-physician = Senior Physician
 job-name-medical-doctor-surgeon = Surgeon
 # Paramedic
-job-name-paramedic-emergency-medical-service = Emergency Medical Service
 job-name-paramedic-field-medic = Field Medic
 # Psychologist
 job-name-psychologist-psychiatrist = Psychiatrist
@@ -92,7 +85,6 @@ job-name-clown-jester = Jester
 job-name-janitor-custodian = Custodian
 job-name-janitor-hygiene-technician = Hygiene Technician
 job-name-janitor-maid = Maid
-job-name-janitor-refuse-expert = Refuse Expert
 job-name-janitor-sanitations-worker = Sanitations Worker
 # Lawyer
 job-name-lawyer-attorney = Attorney

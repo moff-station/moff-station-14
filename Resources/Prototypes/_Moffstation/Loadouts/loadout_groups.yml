@@ -66,26 +66,46 @@
   - PersonalItemDawnBottle
 
 ## Security
-# Warden loadouts
+# Warden
 - type: loadoutGroup
   id: WardenPDA
   name: loadout-group-warden-id
   loadouts:
   - CorrectionsOfficerPDA
-  - DetentionManagerPDA
+  - DetentionOfficerPDA
   - WardenPDA
 
-# Detective loadouts
+# Detective
 - type: loadoutGroup
   id: DetectivePDA
   name: loadout-group-detective-id
   loadouts:
   - DetectivePDA
-  - InspectorPDA
   - InvestigatorPDA
 
+# Security Officer
+- type: loadoutGroup
+  id: SecurityPDA
+  name: loadout-group-security-id
+  loadouts:
+  - AssetProtectionsPDA
+  - DeputyPDA
+  - SecurityPDA
+  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
+  - SeniorOfficerPDA
+
 ## Cargo
-# Salvage specialist loadouts
+# Cargo Technician
+- type: loadoutGroup
+  id: CargoTechnicianPDA
+  name: loadout-group-cargo-technician-id
+  loadouts:
+  - CargoTechnicianPDA
+  - CourierPDA
+  - LogisticsAssociatePDA
+  - SeniorCourierPDA
+
+# Salvage Specialist
 - type: loadoutGroup
   id: SalvagePDA
   name: loadout-group-salvage-specialist-id
@@ -103,9 +123,20 @@
   name: loadout-group-atmospheric-technician-id
   loadouts:
   - AtmosPDA
-  - LifeSupportTechnicianPDA
   - PlasmaMechanicPDA
   - SeniorAtmosphericTechnicianPDA
+
+# Station Engineer
+- type: loadoutGroup
+  id: StationEngineerPDA
+  name: loadout-group-station-engineer-id
+  loadouts:
+  - ElectricianPDA
+  - SeniorEngineerPDA
+  - MechanicPDA
+  - ShipwrightPDA
+  - StationEngineerPDA
+  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
 
 ## Medical
 # Chemist
@@ -118,12 +149,25 @@
   - PharmacistPDA
   - VirologistPDA
 
+# Medical Doctor
+- type: loadoutGroup
+  id: MedicalDoctorPDA
+  name: loadout-group-medical-doctor-id
+  loadouts:
+  - ClinicianPDA
+  - CoronerPDA
+  - CyrogenicsSpecialistPDA
+  - MedicalDoctorPDA
+  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
+  - NursePDA
+  - SeniorPhysicianPDA
+  - SurgeonPDA
+
 # Paramedic
 - type: loadoutGroup
   id: ParamedicPDA
   name: loadout-group-paramedic-id
   loadouts:
-  - EmergencyMedicalServicePDA
   - FieldMedicPDA
   - ParamedicPDA
 
@@ -136,6 +180,20 @@
   - PsychologistPDA
   - TherapistPDA
   - SocialWorkerPDA
+
+## Science
+# Scientist
+- type: loadoutGroup
+  id: ScientistPDA
+  name: loadout-group-scientist-id
+  loadouts:
+  - AnomalyContainmentSpecialistPDA
+  - MachinistPDA
+  - ScientistPDA
+  - SeniorResearcherPDA
+  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  - RoboticistPDA #CD - Job title loadouts
+  - XenoarcheologistPDA
 
 ## Service
 # Bartender
@@ -201,7 +259,6 @@
   - HygieneTechnicianPDA
   - JanitorPDA
   - MaidPDA
-  - RefuseExpertPDA
   - SanitationsWorkerPDA
 
 # Lawyer

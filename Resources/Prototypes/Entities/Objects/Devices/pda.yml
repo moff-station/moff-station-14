@@ -1379,7 +1379,7 @@
 - type: entity
   parent: BasePDA
   id: SeniorEngineerPDA
-  name: engineering mentor PDA #Moffstation - Additional job title loadouts
+  name: senior engineer PDA
   description: Seems to have been taken apart and put back together several times.
   components:
   - type: Pda
@@ -1396,7 +1396,7 @@
     state: pda-seniorengineer
   # Moffstation - Start - Additional job title loadouts
   - type: RenameId
-    value: job-name-station-engineer-engineering-mentor
+    value: job-name-station-engineer-senior-station-engineer
   # Moffstation - End
 
 - type: entity

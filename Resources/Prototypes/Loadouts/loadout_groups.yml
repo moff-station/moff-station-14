@@ -752,15 +752,10 @@
   - CargoWinterBoots
 
 - type: loadoutGroup
-  id: CargoTechnicianID
+  id: CargoTechnicianIDUpstream # Moffstation - Additional job title loadouts
   name: loadout-group-cargo-technician-id
   loadouts:
   - CargoTechnicianPDA
-  - CourierPDA # Moffstation - Additional job title loadouts
-  - DeckhandPDA # Moffstation - Additional job title loadouts
-  - EssentialWorkerPDA # Moffstation - Additional job title loadouts
-  - InventoryAssociatePDA # Moffstation - Additional job title loadouts
-  - LogisticsPDA # Moffstation - Additional job title loadouts
   - SeniorCourierPDA
 
 - type: loadoutGroup
@@ -893,15 +888,11 @@
   - EngineeringWinterBoots
 
 - type: loadoutGroup
-  id: StationEngineerID
+  id: StationEngineerIDUpstream # Moffstation - Additional job title loadouts
   name: loadout-group-station-engineer-id
   loadouts:
-  - ElectricianPDA # Moffstation - Additional job title loadouts
-  - SeniorEngineerPDA # Moffstation - Additional job title loadouts
-  - MechanicPDA # Moffstation - Additional job title loadouts
-  - ShipwrightPDA # Moffstation - Additional job title loadouts
-  - StationEngineerPDA # Moffstation - Additional job title loadouts
-  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  - StationEngineerPDA
+  - SeniorEngineerPDA
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -1050,16 +1041,11 @@
   - RobohandsGloves
 
 - type: loadoutGroup
-  id: ScientistPDA
+  id: ScientistPDAUpstream # Moffstation - Additional job title loadouts
   name: loadout-group-scientist-id
   loadouts:
-  - AnomalyContainmentSpecialistPDA # Moffstation - Additional job title loadouts
-  - MachinistPDA # Moffstation - Additional job title loadouts
   - ScientistPDA
   - SeniorResearcherPDA
-  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
-  - RoboticistPDA #CD - Job title loadouts
-  - XenoarcheologistPDA # Moffstation - Additional job title loadouts
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -1182,14 +1168,10 @@
   - SecurityWinterBoots
 
 - type: loadoutGroup
-  id: SecurityPDA
+  id: SecurityPDAUpstream # Moffstation - Additional job title loadouts
   name: loadout-group-security-id
   loadouts:
-  - AssetProtectionsPDA # Moffstation - Additional job title loadouts
-  - DeputyPDA # Moffstation - Additional job title loadouts
   - SecurityPDA
-  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
-  - SecuritySpecialistPDA # Moffstation - Additional job title loadouts
   - SeniorOfficerPDA
 
 - type: loadoutGroup
@@ -1388,17 +1370,11 @@
   - MedicalWinterBoots
 
 - type: loadoutGroup
-  id: MedicalDoctorPDA
+  id: MedicalDoctorPDAUpstream # Moffstation - Additional job title loadouts
   name: loadout-group-medical-doctor-id
   loadouts:
-  - ClinicianPDA # Moffstation - Additional job title loadouts
-  - CoronerPDA # Moffstation - Additional job title loadouts
-  - CyrogenicsSpecialistPDA # Moffstation - Additional job title loadouts
   - MedicalDoctorPDA
-  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
-  - NursePDA # Moffstation - Additional job title loadouts
   - SeniorPhysicianPDA
-  - SurgeonPDA # Moffstation - Additional job title loadouts
 
 - type: loadoutGroup
   id: MedicalGloves
