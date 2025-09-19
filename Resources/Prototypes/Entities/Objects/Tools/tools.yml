@@ -229,6 +229,10 @@
           type: NetworkConfiguratorBoundUserInterface
         enum.NetworkConfiguratorUiKey.Link:
           type: NetworkConfiguratorBoundUserInterface
+    - type: PhysicalComposition #Moffstation - Makes recycle into 1 plastic 1 steel
+      materialComposition:
+        Steel: 100
+        Plastic: 100
     - type: StaticPrice
       price: 56
     - type: GuideHelp
