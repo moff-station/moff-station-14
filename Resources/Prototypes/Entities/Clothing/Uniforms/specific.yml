@@ -36,3 +36,23 @@
     - type: ChameleonClothing
       slot: [innerclothing]
       default: ClothingUniformJumpsuitColorBlack
+
+- type: entity
+  parent: [ClothingUniformBase, BaseChameleon]
+  id: ClothingUniformJumpsuitChameleonClockwork
+  name: light monastic robe
+  description: It's a light robe, often worn by religious folk.
+  suffix: Chameleon, Clockwork
+  components:
+    - type: Tag
+      tags: [] # ignore "WhitelistChameleon" tag
+    - type: Sprite
+      sprite: Clothing/Uniforms/Jumpsuit/monastic_robe_light.rsi
+    - type: Clothing
+      sprite: Clothing/Uniforms/Jumpsuit/monastic_robe_light.rsi
+    - type: SuitSensor
+      randomMode: false
+      mode: SensorOff
+    - type: ChameleonClothing
+      slot: [innerclothing]
+      default: ClothingUniformJumpsuitMonasticRobeLight
