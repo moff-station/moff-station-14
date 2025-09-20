@@ -1,17 +1,17 @@
-# Clockwork stuff
+# Clockcult Stuff
 - type: entity
-  parent: [ClothingHeadBase, BaseChameleon]
-  id: ClothingHeadHatChameleonClockwork
-  name: grey cap
-  description: A grey baseball cap.
-  suffix: Chameleon, Clockwork
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHoodClockwork
+  name: brass hood
+  description: Because blood is *so* last-era
   components:
-    - type: Tag
-      tags: [] # ignore "WhitelistChameleon" tag
-    - type: Sprite
-      sprite: Clothing/Head/Soft/greysoft.rsi
-    - type: Clothing
-      sprite: Clothing/Head/Soft/greysoft.rsi
-    - type: ChameleonClothing
-      slot: [HEAD]
-      default: ClothingHeadHatGreysoft
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/clockcult.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/clockcult.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair

@@ -1,17 +1,11 @@
 # Clockcult stuff
 - type: entity
-  parent: [ClothingShoesBase, BaseChameleon]
-  id: ClothingShoesChameleonClockwork
-  name: wizard shoes
-  suffix: Chameleon, Clockwork
-  description: A pair of magic shoes.
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesClockwork
+  name: brass shoes
+  description: These are really uncomfortable.
   components:
-    - type: Tag
-      tags: [] # ignore "WhitelistChameleon" tag
-    - type: Sprite
-      sprite: Clothing/Shoes/Specific/wizard.rsi
-    - type: Clothing
-      sprite: Clothing/Shoes/Specific/wizard.rsi
-    - type: ChameleonClothing
-      slot: [FEET]
-      default: ClothingShoesWizard
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/clockcult.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/clockcult.rsi
