@@ -1,9 +1,10 @@
+# Clockwork stuff
 - type: entity
   parent: [ClothingEyesBase, BaseChameleon]
-  id: ClothingEyesChameleon # no flash immunity, sorry
+  id: ClothingEyesChameleonClockwork # might add flash immunity idk
   name: sun glasses
   description: Useful both for security and cargonia.
-  suffix: Chameleon
+  suffix: Chameleon, Clockwork
   components:
     - type: Tag
       tags: # intentionally no WhitelistChameleon tag

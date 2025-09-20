@@ -228,18 +228,6 @@
         - id: ChameleonControllerImplanter
 
 - type: entity
-  parent: ClothingBackpackChameleonClockwork
-  id: ClothingBackpackChameleonClockworkFill
-  suffix: Fill, Chameleon, Clockwork
-  components:
-    - type: StorageFill
-      contents:
-        - id: ClothingOuterChameleon
-        - id: ClothingNeckChameleon
-        - id: ClothingMaskGasChameleon
-        - id: ClothingEyesChameleonClockwork
-
-- type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateEVABundle
   name: syndicate EVA bundle

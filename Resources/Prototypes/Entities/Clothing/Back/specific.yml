@@ -20,27 +20,6 @@
           type: ChameleonBoundUserInterface
 
 - type: entity
-  parent: [ClothingBackpack, BaseChameleon]
-  id: ClothingBackpackChameleonClockwork
-  name: backpack
-  description: You wear this on your back and put items into it.
-  suffix: Chameleon, Clockwork
-  components:
-    - type: Tag
-      tags: [] # ignore "WhitelistChameleon" tag
-    - type: Sprite
-      sprite: Clothing/Back/Backpacks/backpack.rsi
-    - type: ChameleonClothing
-      slot: [back]
-      default: ClothingBackpack
-    - type: UserInterface
-      interfaces:
-        enum.StorageUiKey.Key:
-          type: StorageBoundUserInterface
-        enum.ChameleonUiKey.Key:
-          type: ChameleonBoundUserInterface
-
-- type: entity
   parent: [Clothing, ClothingSlotBase]
   id: ClothingBackpackWaterTank
   name: backpack water tank

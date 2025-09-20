@@ -26,28 +26,3 @@
   - type: Thieving
     stripTimeReduction: 2
     stealthy: true
-
-- type: entity
-  parent: ClothingHandsChameleon
-  id: ClothingHandsChameleonClockwork
-  name: red gloves
-  description: Regular red gloves that do not keep you from frying.
-  suffix: Chameleon, Clockwork
-  components:
-  - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
-    layers:
-    - state: icon
-      color: "#940000"
-  - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/color.rsi
-    clothingVisuals:
-      gloves:
-      - state: equipped-HAND
-        color: "#940000"
-  - type: ChameleonClothing
-    slot: [gloves]
-    default: ClothingHandsGlovesColorRed
-  - type: Fiber
-    fiberMaterial: fibers-chameleon # - Change to brass, maybe?
-  - type: FingerprintMask

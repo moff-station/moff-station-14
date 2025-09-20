@@ -1,0 +1,12 @@
+# Clockwork time, baybee
+- type: entity
+  parent: ClothingBackpackChameleonClockwork
+  id: ClothingBackpackChameleonClockworkFill
+  suffix: Fill, Chameleon, Clockwork
+  components:
+    - type: StorageFill
+      contents:
+        - id: ClothingOuterChameleon
+        - id: ClothingNeckChameleon
+        - id: ClothingMaskGasChameleon
+        - id: ClothingEyesChameleonClockwork
