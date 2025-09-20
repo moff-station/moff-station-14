@@ -1,0 +1,45 @@
+# What coulg go wrong!
+- type: entity
+  parent: BaseWallmount
+  id: ClockworkIntercom
+  name: clockwork intercom
+  description: For listening in on the station's denizens. The Microphone seems to be broken.
+  components:
+  - type: TelecomExempt
+  - type: RadioSpeaker
+    toggleOnInteract: false
+    # TODO: Make a long-range setting for RadioSpeaker. Or anything else, really.
+  - type: EncryptionKeyHolder
+    keysUnlocked: False
+    keySlots: 3
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMaster
+      - EncryptionKeyHandheld
+      - EncryptionKeyFreelance
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: Intercom
+    requiresPower: false
+  - type: Speech
+    speechVerb: Robotic
+  - type: ActivatableUI
+    key: enum.IntercomUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.IntercomUiKey.Key:
+        type: IntercomBoundUserInterface
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: Objects/Devices/communication.rsi
+    state: walkietalkie
+  # Moffstation - Start
+  - type: DeviceLinkSink
+    ports:
+    - ToggleSpeaker
+    - ToggleMicrophone
+    - CycleChannelForwards
+    - CycleChannelBackwards
+  # Moffstation - End
