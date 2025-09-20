@@ -35,11 +35,11 @@
 - type: entity
   id: BorgChassisGeneric
   parent: BorgChassisSelectable
-  name: generic cyborg
+  name: Science cyborg # Moffstation - Generic borg is Sciborg
   suffix: type picked
   components:
   - type: BorgSwitchableType
-    selectedBorgType: generic
+    selectedBorgType: science # Moffstation - Generic borg is Sciborg
 
 - type: entity
   id: BorgChassisMining

@@ -21,7 +21,7 @@
   ## Cyborg types
   Once created, a cyborg needs to specialize its chassis to a duty on the station. This determines what modules it starts with, which additional modules can be installed, and what [color=#a4885c]departmental radio channel[/color] it has access to. All cyborgs have access to the [color=#D381C9]Science[/color] and [color=green]station-wide[/color] radio channels. All cyborg types have [color=#a4885c]all-access[/color].
   <Box>
-    <GuideEntityEmbed Entity="BorgChassisGeneric" Caption="Generic"/>
+    <GuideEntityEmbed Entity="BorgChassisGeneric" Caption="Science"/> <!-- Moffstation - Generic borgs are science borgs -->
     <GuideEntityEmbed Entity="BorgChassisEngineer" Caption="Engineering"/>
     <GuideEntityEmbed Entity="BorgChassisMining" Caption="Salvage"/>
     <GuideEntityEmbed Entity="BorgChassisJanitor" Caption="Janitor"/>
@@ -39,7 +39,7 @@
   </Box>
   Cyborgs do not have hands, and therefore cannot pick things up like most other players. Instead, their equipment is provided by various [color=#a4885c]modules[/color]. Every cyborg type starts with its own specific set of modules, but additional modules can be inserted as upgrades. These additional modules can be printed at the [color=#a4885c]Exosuit Fabricator[/color].
 
-  [color=#a4885c]Generic[/color] modules add versatility. They can be fitted into any chassis, granting useful tools such as crowbars, GPS, and the ability to interact with cables. [bold]The generic cyborg chassis can fit up to five additional modules.[/bold]
+  [color=#a4885c]Generic[/color] modules add versatility. They can be fitted into any chassis, granting useful tools such as crowbars, GPS, and the ability to interact with cables. <!-- [bold]The generic cyborg chassis can fit up to five additional modules.[/bold] --> <!-- Moffstation - Generic borgs are science borgs -->
   <Box>
     <GuideEntityEmbed Entity="BorgModuleCable" Caption="Cable"/>
     <GuideEntityEmbed Entity="BorgModuleFireExtinguisher" Caption="Fire Extinguisher"/>
@@ -48,7 +48,7 @@
     [italic]Examples of generic modules[/italic]
   </Box>
 
-  For more specific needs, [color=#a4885c]specialized[/color] modules are available, granting capabilities like scanning anomalies, constructing walls, reviving crew mates, or cleaning a space lube spill. These modules are typically colored with the same palette as the department [italic](or occupation)[/italic] they relate to. These modules [italic](with exception to [color=#D381C9]science[/color] modules, which can fit any chassis,)[/italic] can only be fitted in their associated borg chassis. [bold]The specialized borg chassis, being the engineering, janitorial, service, medical, and mining chassis, can fit up to three additional modules.[/bold]
+  For more specific needs, [color=#a4885c]specialized[/color] modules are available, granting capabilities like scanning anomalies, constructing walls, reviving crew mates, or cleaning a space lube spill. These modules are typically colored with the same palette as the department [italic](or occupation)[/italic] they relate to. These modules <!--[italic](with exception to [color=#D381C9]science[/color] modules, which can fit any chassis,)[/italic]--> can only be fitted in their associated borg chassis. [bold]The specialized borg chassis, being the science, engineering, janitorial, service, medical, and mining chassis, can fit up to three additional modules.[/bold] <!-- Moffsation - Generic borgs are science borgs -->
   <Box>
     <GuideEntityEmbed Entity="BorgModuleAnomaly" Caption="Anomaly"/>
     <GuideEntityEmbed Entity="BorgModuleRCD" Caption="RCD"/>
