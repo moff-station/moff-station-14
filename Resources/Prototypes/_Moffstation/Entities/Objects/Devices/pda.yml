@@ -5,6 +5,11 @@
   id: WardenPDAAltBase
   name: warden alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -55,6 +60,11 @@
   id: DetectivePDAAltBase
   name: detective alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -92,6 +102,11 @@
   id: SecurityPDAAltBase
   name: security officer alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -143,6 +158,11 @@
   id: CargoPDAAltBase
   name: cargo technician alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -193,6 +213,11 @@
   id: SalvagePDAAltBase
   name: salvage specialist alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -270,6 +295,11 @@
   id: AtmosPDAAltBase
   name: atmospheric technician alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -320,6 +350,11 @@
   id: EngineerPDAAltBase
   name: station engineer alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -384,6 +419,11 @@
   id: ChemistryPDAAltBase
   name: chemist alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -451,6 +491,11 @@
   id: MedicalPDAAltBase
   name: medical doctor alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -540,6 +585,11 @@
   id: ParamedicPDAAltBase
   name: paramedic alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -577,6 +627,11 @@
   id: PsychologistPDAAltBase
   name: psychologist alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -641,6 +696,11 @@
   id: SciencePDAAltBase
   name: scientist alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -722,6 +782,11 @@
   id: BartenderPDAAltBase
   name: bartender alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -772,6 +837,11 @@
   id: BotanistPDAAltBase
   name: botanist alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -848,6 +918,11 @@
   id: ChaplainPDAAltBase
   name: chaplain alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -991,6 +1066,11 @@
   id: ChefPDAAltBase
   name: chef alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1054,6 +1134,11 @@
   id: ClownPDAAltBase
   name: clown alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1104,6 +1189,11 @@
   id: JanitorPDAAltBase
   name: janitor alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1180,6 +1270,11 @@
   id: LawyerPDAAltBase
   name: lawyer alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1256,6 +1351,11 @@
   id: LibrarianPDAAltBase
   name: librarian alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1334,6 +1434,11 @@
   id: MimePDAAltBase
   name: mime alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1371,6 +1476,11 @@
   id: MusicianPDAAltBase
   name: musician alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1421,6 +1531,11 @@
   id: ReporterPDAAltBase
   name: reporter alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1484,6 +1599,11 @@
   id: ServiceWorkerPDAAltBase
   name: service worker alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
@@ -1559,6 +1679,11 @@
   id: PrisonerPDAAltBase
   name: prisoner alternate PDA [do not use]
   components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
