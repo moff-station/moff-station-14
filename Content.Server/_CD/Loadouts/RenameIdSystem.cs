@@ -35,12 +35,7 @@ public sealed class RenameIdSystem : EntitySystem
                 !TryComp<IdCardComponent>(id, out var card))
                 continue;
 
-            if (rename.NewIcon is { } icon)
-            {
-                card.JobIcon = icon; // TryChangeJobTitle dirties the ID for us
-                FlushIdIconToRecords(id, icon);
-            }
-            _idCardSystem.TryChangeJobTitle(id, Loc.GetString(rename.Value), card);
+            UpdateIdByComp((id, card), rename);
         }
     }
 
@@ -56,25 +51,23 @@ public sealed class RenameIdSystem : EntitySystem
             !TryComp<IdCardComponent>(id, out var card))
             return;
 
-        if (rename.NewIcon is { } icon)
-        {
-            card.JobIcon = icon; // TryChangeJobTitle dirties the ID for us
-            FlushIdIconToRecords(id, icon);
-        }
-        _idCardSystem.TryChangeJobTitle(id, Loc.GetString(rename.Value), card);
+        UpdateIdByComp((id, card), rename);
     }
 
-    // Needed to update the icon on the manifest
-    // why do I need to do this
-    private void FlushIdIconToRecords(EntityUid targetId, string newJobIcon)
+    private void UpdateIdByComp(Entity<IdCardComponent> id, RenameIdComponent comp)
     {
-        if (!TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage) ||
-            keyStorage.Key is not { } key ||
-            !_records.TryGetRecord<GeneralStationRecord>(key, out var record))
-            return;
+        if (comp.NewIcon is { } icon)
+        {
+            id.Comp.JobIcon = icon; // TryChangeJobTitle dirties the ID for us
+            if (!TryComp<StationRecordKeyStorageComponent>(id, out var keyStorage) ||
+                keyStorage.Key is not { } key ||
+                !_records.TryGetRecord<GeneralStationRecord>(key, out var record))
+                return;
 
-        record.JobIcon = newJobIcon;
+            record.JobIcon = icon;
 
-        _records.Synchronize(key);
+            _records.Synchronize(key);
+        }
+        _idCardSystem.TryChangeJobTitle(id, Loc.GetString(comp.Value), id);
     }
 }
