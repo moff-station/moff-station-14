@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.Alert;
 using Content.Shared.Inventory;
 using Content.Shared.Throwing;
@@ -43,6 +44,8 @@ public abstract partial class SharedGravitySystem : EntitySystem
         // Impulse
         SubscribeLocalEvent<GravityAffectedComponent, ShooterImpulseEvent>(OnShooterImpulse);
         SubscribeLocalEvent<GravityAffectedComponent, ThrowerImpulseEvent>(OnThrowerImpulse);
+
+        SubscribeLocalEvent<GravityAffectedComponent, RecoilKickAttemptEvent>(OnRecoilKick); // Moffstation
 
         GravityQuery = GetEntityQuery<GravityComponent>();
         _weightlessQuery = GetEntityQuery<GravityAffectedComponent>();
@@ -235,6 +238,17 @@ public abstract partial class SharedGravitySystem : EntitySystem
     {
         args.Push |= IsWeightless((entity.Owner, entity.Comp));
     }
+
+    // Moffstation - Begin
+    private void OnRecoilKick(Entity<GravityAffectedComponent> entity, ref RecoilKickAttemptEvent args)
+    {
+        // No recoil kicks while weightless, instead we just use normal `ShooterImpulse`.
+        if (entity.Comp.Weightless)
+        {
+            args.ImpulseEffectivenessFactor = 0f;
+        }
+    }
+    // Moffstation - End
 }
 
 /// <summary>
