@@ -1,0 +1,1 @@
+action-speech-spell-kindle = FVG QBJA, NAQ FUHG HC!

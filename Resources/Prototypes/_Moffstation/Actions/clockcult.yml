@@ -1,0 +1,17 @@
+- type: entity
+  id: ActionKindle
+  name: "[color=red]Devour[/color]"
+  description: Prank 'em, John!
+  components:
+  - type: Action
+    icon: { sprite : Interface/Actions/changeling.rsi, state: "devour" }
+    iconOn: { sprite : Interface/Actions/changeling.rsi, state: "devour_on" }
+    itemIconStyle: BigAction
+    priority: 1
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/fireball.ogg
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:ChangelingDevourActionEvent
+  - type: SpeakOnAction
+    sentence: action-speech-spell-kindle

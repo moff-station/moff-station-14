@@ -1,0 +1,21 @@
+- type: entity
+  name: clockwork slab
+  parent: BaseItem
+  id: ClockworkSlab
+  description: An advanced tool to copy, store, and send electrical pulses and signals through wires and machines.
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/multitool.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Small
+  - type: Spellbook
+    spellActions:
+      ActionKindle: null
+  - type: GuideHelp
+    guides:
+    - Networking
+    - WirePanels
+    - Airlocks
+    - InspectingPower
