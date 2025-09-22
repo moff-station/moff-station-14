@@ -46,7 +46,7 @@
 
 - type: cargoBounty
   id: PirateBountyArtifact
-  reward: 4000
+  reward: 6000
   description: bounty-description-artifact
   idPrefix: SP
   group: Pirates
@@ -105,7 +105,7 @@
 # Service
 - type: cargoBounty
   id: PirateBountyBoozeDispenser
-  reward: 4000
+  reward: 5000
   description: bounty-description-booze-dispenser
   idPrefix: SP
   group: Pirates
@@ -159,7 +159,7 @@
 # General Bounties
 - type: cargoBounty
   id: PirateBountyVendingMachine
-  reward: 3000
+  reward: 4000
   description: bounty-description-vendmachine
   idPrefix: DC
   group: Pirates
@@ -250,7 +250,7 @@
 
 - type: cargoBounty
   id: PirateBountyTank
-  reward: 4000
+  reward: 6000
   description: bounty-description-liquid-tank
   idPrefix: SP
   group: Pirates
@@ -260,3 +260,42 @@
     whitelist:
       components:
       - ReagentTank
+
+- type: cargoBounty
+  id: PirateBountyStatisBed
+  reward: 7000
+  description: bounty-description-stasis
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-stasis
+    amount: 1
+    whitelist:
+      components:
+      - StatisBed
+
+- type: cargoBounty
+  id: PirateBountyRecycler
+  reward: 7000
+  description: bounty-description-recycler
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-recycler
+    amount: 1
+    whitelist:
+      components:
+      - MaterialReclaimer
+
+- type: cargoBounty
+  id: PirateBountyDisposals
+  reward: 5000
+  description: bounty-description-disposals
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-disposals
+    amount: 1
+    whitelist:
+      components:
+      - DisposalUnitComponent
