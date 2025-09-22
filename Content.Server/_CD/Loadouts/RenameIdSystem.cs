@@ -43,10 +43,9 @@ public sealed class RenameIdSystem : EntitySystem
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
         var player = args.Mob;
-        if (!_inventorySystem.TryGetSlotEntity(player, "id", out var pdaUid))
-            return;
 
-        if (!TryComp<PdaComponent>(pdaUid, out var pda) ||
+        if (!_inventorySystem.TryGetSlotEntity(player, "id", out var pdaUid) ||
+            !TryComp<PdaComponent>(pdaUid, out var pda) ||
             !TryComp<RenameIdComponent>(pdaUid, out var rename) ||
             pda.ContainedId is not { } id ||
             !TryComp<IdCardComponent>(id, out var card))
@@ -60,14 +59,13 @@ public sealed class RenameIdSystem : EntitySystem
         if (comp.NewIcon is { } icon)
         {
             id.Comp.JobIcon = icon; // TryChangeJobTitle dirties the ID for us
-            if (!TryComp<StationRecordKeyStorageComponent>(id, out var keyStorage) ||
-                keyStorage.Key is not { } key ||
-                !_records.TryGetRecord<GeneralStationRecord>(key, out var record))
-                return;
-
-            record.JobIcon = icon;
-
-            _records.Synchronize(key);
+            if (TryComp<StationRecordKeyStorageComponent>(id, out var keyStorage) &&
+                keyStorage.Key is { } key &&
+                _records.TryGetRecord<GeneralStationRecord>(key, out var record))
+            {
+                record.JobIcon = icon;
+                _records.Synchronize(key);
+            }
         }
         _idCardSystem.TryChangeJobTitle(id, Loc.GetString(comp.Value), id);
     }
