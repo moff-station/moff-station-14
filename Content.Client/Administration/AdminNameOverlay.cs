@@ -3,6 +3,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.Administration.Systems;
 using Content.Client.Stylesheets;
+using Content.Shared._Moffstation.CCVar; // Moffstation
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Ghost;
@@ -36,6 +37,7 @@ internal sealed class AdminNameOverlay : Overlay
     private float _ghostHideDistance;
     private int _overlayStackMax;
     private float _overlayMergeDistance;
+    private bool _displayWatchlist; // Moffstation
 
     //TODO make this adjustable via GUI?
     private static readonly FrozenSet<ProtoId<RoleTypePrototype>> Filter =
@@ -75,6 +77,8 @@ internal sealed class AdminNameOverlay : Overlay
         config.OnValueChanged(CCVars.AdminOverlayGhostFadeDistance, (f) => { _ghostFadeDistance = f; }, true);
         config.OnValueChanged(CCVars.AdminOverlayStackMax, (i) => { _overlayStackMax = i; }, true);
         config.OnValueChanged(CCVars.AdminOverlayMergeDistance, (f) => { _overlayMergeDistance = f; }, true);
+        // Moffstation
+        config.OnValueChanged(MoffCCVars.AdminOverlayShowWatchlist, (show) => { _displayWatchlist = show; }, true);
     }
 
     private AdminOverlayAntagFormat UpdateOverlayFormat(string formatString)
@@ -216,6 +220,19 @@ internal sealed class AdminNameOverlay : Overlay
                 args.ScreenHandle.DrawString(_font, screenCoordinates + currentOffset, Loc.GetString(playerInfo.StartingJob), uiScale, playerInfo.Connected ? color : colorDisconnected);
                 currentOffset += lineoffset;
             }
+
+            // Moffstation - Start - Watchlist indicator
+            // Watchlist status
+            if (playerInfo.HasWatchlist && _displayWatchlist)
+            {
+                color = Color.Magenta.WithAlpha(alpha);
+                args.ScreenHandle.DrawString(_fontBold, screenCoordinates + currentOffset,
+                    Loc.GetString("admin-overlay-watchlist"),
+                    uiScale,
+                    playerInfo.Connected ? color : colorDisconnected);
+                currentOffset += lineoffset;
+            }
+            // Moffstation - End
 
             // Determine antag symbol
             string? symbol;
