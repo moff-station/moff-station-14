@@ -1,5 +1,7 @@
-﻿using Content.Server.Access.Systems;
+﻿using Content.Server._CD.Spawners;
+using Content.Server.Access.Systems;
 using Content.Server.GameTicking;
+using Content.Server.StationRecords.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking;
@@ -19,8 +21,8 @@ public sealed class RenameIdSystem : EntitySystem
 
         // We need to subscribe to both of these because RulePlayerJobsAssignedEvent only fires on round start and
         // messes up what we do in PlayerSpawnCompleteEvent
-        SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned, after: [ typeof(PresetIdCardSystem) ]);
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn);
+        SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned, after: [ typeof(PresetIdCardSystem), typeof(ArrivalsSpawnPointSystem) ]);
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn, after: [ typeof(StationRecordsSystem), typeof(ArrivalsSpawnPointSystem) ]);
     }
 
     private void OnJobsAssigned(RulePlayerJobsAssignedEvent args)
