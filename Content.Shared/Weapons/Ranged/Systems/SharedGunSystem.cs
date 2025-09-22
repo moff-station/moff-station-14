@@ -423,6 +423,8 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         var attempt = new RecoilKickAttemptEvent();
         RaiseLocalEvent(user, ref attempt);
+        if (attempt.ImpulseEffectivenessFactor == 0.0f)
+            return false;
         var speed = kick.Impulse * attempt.ImpulseEffectivenessFactor * user.Comp.InvMass / suscept.MassFactor;
 
         var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates).Position;

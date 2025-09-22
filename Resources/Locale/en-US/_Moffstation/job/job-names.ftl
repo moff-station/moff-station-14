@@ -111,6 +111,7 @@ job-name-service-worker-barber = Barber
 # Passenger
 job-name-passenger-off-duty-crew = Off-Duty Crew
 # Prisoner
+job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
 
 
