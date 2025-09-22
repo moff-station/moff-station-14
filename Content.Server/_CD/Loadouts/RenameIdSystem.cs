@@ -7,6 +7,7 @@ using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
+using Content.Shared.StationRecords;
 
 namespace Content.Server._CD.Loadouts;
 
@@ -14,6 +15,7 @@ public sealed class RenameIdSystem : EntitySystem
 {
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly SharedIdCardSystem _idCardSystem = default!;
+    [Dependency] private readonly StationRecordsSystem _records = default!;
 
     public override void Initialize()
     {
@@ -30,26 +32,41 @@ public sealed class RenameIdSystem : EntitySystem
         var query = EntityQuery<RenameIdComponent, PdaComponent>();
         foreach (var (rename, pda) in query)
         {
-            if (pda.ContainedId is { } id
-                && TryComp<IdCardComponent>(id, out var card))
-            {
-                _idCardSystem.TryChangeJobTitle(id, Loc.GetString(rename.Value), card);
-            }
+            if (pda.ContainedId is not { } id ||
+                !TryComp<IdCardComponent>(id, out var card))
+                continue;
+
+            UpdateIdByComp((id, card), rename);
         }
     }
 
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
         var player = args.Mob;
-        if (!_inventorySystem.TryGetSlotEntity(player, "id", out var pdaUid))
+
+        if (!_inventorySystem.TryGetSlotEntity(player, "id", out var pdaUid) ||
+            !TryComp<PdaComponent>(pdaUid, out var pda) ||
+            !TryComp<RenameIdComponent>(pdaUid, out var rename) ||
+            pda.ContainedId is not { } id ||
+            !TryComp<IdCardComponent>(id, out var card))
             return;
 
-        if (TryComp<PdaComponent>(pdaUid, out var pda)
-            && TryComp<RenameIdComponent>(pdaUid, out var rename)
-            && pda.ContainedId is {} id
-            && TryComp<IdCardComponent>(id, out var card))
+        UpdateIdByComp((id, card), rename);
+    }
+
+    private void UpdateIdByComp(Entity<IdCardComponent> id, RenameIdComponent comp)
+    {
+        if (comp.NewIcon is { } icon)
         {
-            _idCardSystem.TryChangeJobTitle(id, Loc.GetString(rename.Value), card);
+            id.Comp.JobIcon = icon; // TryChangeJobTitle dirties the ID for us
+            if (TryComp<StationRecordKeyStorageComponent>(id, out var keyStorage) &&
+                keyStorage.Key is { } key &&
+                _records.TryGetRecord<GeneralStationRecord>(key, out var record))
+            {
+                record.JobIcon = icon;
+                _records.Synchronize(key);
+            }
         }
+        _idCardSystem.TryChangeJobTitle(id, Loc.GetString(comp.Value), id);
     }
 }

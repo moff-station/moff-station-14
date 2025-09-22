@@ -46,7 +46,7 @@
 
 - type: cargoBounty
   id: PirateBountyArtifact
-  reward: 4000
+  reward: 6000
   description: bounty-description-artifact
   idPrefix: SP
   group: Pirates
@@ -90,19 +90,6 @@
       - ParticleAcceleratorEndCap
 
 - type: cargoBounty
-  id: PirateBountyAmeFuel
-  reward: 2000
-  description: bounty-description-ame-fuel
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-ame-fuel
-    amount: 2
-    whitelist:
-      components:
-      - AmeFuelContainer
-
-- type: cargoBounty
   id: PirateBountySMES
   reward: 5000
   description: bounty-description-smes
@@ -118,7 +105,7 @@
 # Service
 - type: cargoBounty
   id: PirateBountyBoozeDispenser
-  reward: 4000
+  reward: 5000
   description: bounty-description-booze-dispenser
   idPrefix: SP
   group: Pirates
@@ -172,7 +159,7 @@
 # General Bounties
 - type: cargoBounty
   id: PirateBountyVendingMachine
-  reward: 3000
+  reward: 4000
   description: bounty-description-vendmachine
   idPrefix: DC
   group: Pirates
@@ -208,32 +195,6 @@
     whitelist:
       components:
       - TelecomServer
-
-- type: cargoBounty
-  id: PirateBountyGoldBars
-  reward: 6500
-  description: bounty-description-gold-bars
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-gold-bars
-    amount: 60
-    whitelist:
-      tags:
-      - BarGold
-
-- type: cargoBounty
-  id: PirateBountySilverBars
-  reward: 5000
-  description: bounty-description-silver-bars
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-silver-bars
-    amount: 60
-    whitelist:
-      tags:
-      - BarSilver
 
 - type: cargoBounty
   id: PirateBountyMagboots
@@ -282,7 +243,46 @@
   group: Pirates
   entries:
   - name: bounty-item-solars
-    amount: 10
+    amount: 5
     whitelist:
       components:
       - SolarPanel
+
+- type: cargoBounty
+  id: PirateBountyStatisBed
+  reward: 7000
+  description: bounty-description-stasis
+  idPrefix: ID
+  group: Pirates
+  entries:
+  - name: bounty-item-stasis
+    amount: 1
+    whitelist:
+      components:
+      - StasisBed
+
+- type: cargoBounty
+  id: PirateBountyRecycler
+  reward: 7000
+  description: bounty-description-recycler
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-recycler
+    amount: 1
+    whitelist:
+      components:
+      - MaterialReclaimer
+
+- type: cargoBounty
+  id: PirateBountyDisposals
+  reward: 5000
+  description: bounty-description-disposals
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-disposals
+    amount: 1
+    whitelist:
+      components:
+      - DisposalUnit

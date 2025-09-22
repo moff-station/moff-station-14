@@ -4,15 +4,16 @@
   name: roboticist PDA
   description: There are exposed wires and damaged "warranty void if removed" stickers.
   components:
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-roboticist
-  - type: PdaBorderColor
-    borderColor: "#f4f4f4"
-    accentVColor: "#730402"
-  - type: Icon
-    state: pda-roboticist
-  - type: RenameId
-    value: job-name-roboticist
+    - type: Appearance
+      appearanceDataInit:
+       enum.PdaVisuals.PdaType:
+         !type:String
+         pda-roboticist
+    - type: PdaBorderColor
+      borderColor: "#f4f4f4"
+      accentVColor: "#730402"
+    - type: Icon
+      state: pda-roboticist
+    - type: RenameId
+      value: job-name-roboticist
+      newIcon: "JobIconRoboticist" # Apparently this just exists in the game
