@@ -98,12 +98,8 @@
       - VendingMachine
       - Thruster
       - FaxMachine
-      - ParticleAcceleratorControlBox
-      - ParticleAcceleratorEmitter
-      - ParticleAcceleratorFuelChamber
-      - ParticleAcceleratorPowerBox
-      - ParticleAcceleratorEndCap
       - SolarPanel
+      - Pullable  # This should cover most things
 
 - type: entity
   parent: CratePrivateSecure

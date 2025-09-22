@@ -44,4 +44,5 @@ bounty-item-recharger = Recharger
 bounty-description-recharger = Some pirates have requested rechargers for some stolen energy weapons.
 bounty-item-solars = Solar Panel
 bounty-description-solars = Some pirates have requested some solar panels to help with recharging their ship.
-
+bounty-item-liquid-tank = Liquid Tank
+bounty-description-liquid-tank = Some pirates have requested containers for large amounts of liquid.

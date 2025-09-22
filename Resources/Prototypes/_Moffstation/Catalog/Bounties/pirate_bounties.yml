@@ -90,19 +90,6 @@
       - ParticleAcceleratorEndCap
 
 - type: cargoBounty
-  id: PirateBountyAmeFuel
-  reward: 2000
-  description: bounty-description-ame-fuel
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-ame-fuel
-    amount: 2
-    whitelist:
-      components:
-      - AmeFuelContainer
-
-- type: cargoBounty
   id: PirateBountySMES
   reward: 5000
   description: bounty-description-smes
@@ -210,32 +197,6 @@
       - TelecomServer
 
 - type: cargoBounty
-  id: PirateBountyGoldBars
-  reward: 6500
-  description: bounty-description-gold-bars
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-gold-bars
-    amount: 60
-    whitelist:
-      tags:
-      - BarGold
-
-- type: cargoBounty
-  id: PirateBountySilverBars
-  reward: 5000
-  description: bounty-description-silver-bars
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-silver-bars
-    amount: 60
-    whitelist:
-      tags:
-      - BarSilver
-
-- type: cargoBounty
   id: PirateBountyMagboots
   reward: 6500
   description: bounty-description-magboots
@@ -282,7 +243,20 @@
   group: Pirates
   entries:
   - name: bounty-item-solars
-    amount: 10
+    amount: 5
     whitelist:
       components:
       - SolarPanel
+
+- type: cargoBounty
+  id: PirateBountyTank
+  reward: 4000
+  description: bounty-description-liquid-tank
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-liquid-tank
+    amount: 1
+    whitelist:
+      components:
+      - ReagentTank
