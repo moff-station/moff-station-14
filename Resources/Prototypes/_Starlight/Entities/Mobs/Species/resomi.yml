@@ -143,6 +143,9 @@
     - DoorBumpOpener
     - AnomalyHost
     - Resomi
+  - type: NightVision
+  - type: FlashModifier
+    modifier: 2
   - type: Hands
     handDisplacement:
       sizeMaps:
@@ -273,27 +276,6 @@
           32:
             sprite: _Starlight/Mobs/Species/Resomi/displacement.rsi
             state: belt
-  - type: Vocal
-    sounds:
-      Male: UnisexResomi
-      Female: UnisexResomi
-      Unsexed: UnisexResomi
-  - type: Speech
-    speechVerb: Resomi
-    speechSounds: UnisexResomi
-    allowedEmotes: ['Chirp', 'Trill', 'Scree', 'Call', 'Squawk']
-  - type: TypingIndicator
-    proto: resomi
-  - type: Tag
-    tags:
-    - CanPilot
-    - FootstepSound
-    - DoorBumpOpener
-    - AnomalyHost
-    - Resomi
-  - type: NightVision
-  - type: FlashModifier
-    modifier: 2
 
 - type: entity
   parent: BaseSpeciesDummy
