@@ -36,21 +36,21 @@
           ServiceWorker: [ 2, 2 ]
           #engineering (6)
           AtmosphericTechnician: [ 2, 2 ]
-          StationEngineer: [ 4, 4 ]
-          TechnicalAssistant: [ 3, 3 ] #intern, not counted
+          StationEngineer: [ 4, 5 ] #CD - Intern not counted
+          # TechnicalAssistant: [ 3, 3 ] #CD - Remove intern roles, rework them into loadouts
           #medical (6)
           Chemist: [ 2, 2 ]
-          MedicalDoctor: [ 3, 3 ]
-          MedicalIntern: [ 2, 2 ] #intern, not counted
+          MedicalDoctor: [ 3, 4 ] #CD - Intern not counted
+          # MedicalIntern: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
           Paramedic: [ 1, 1 ]
           #science (4)
-          Scientist: [ 4, 4 ]
-          ResearchAssistant: [ 2, 2 ] #intern, not counted
+          Scientist: [ 4, 5 ] #CD - Intern not counted
+          # ResearchAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
           #security (6)
           Warden: [ 1, 1 ]
-          SecurityOfficer: [ 3, 3 ]
+          SecurityOfficer: [ 3, 4 ] #CD - Intern not counted
           Detective: [ 1, 1 ]
-          SecurityCadet: [ 2, 2 ] #intern, not counted
+          # SecurityCadet: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
           Lawyer: [ 1, 1 ]
           #supply (4)
           SalvageSpecialist: [ 2, 2 ]

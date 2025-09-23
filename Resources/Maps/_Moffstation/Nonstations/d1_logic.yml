@@ -2735,42 +2735,63 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,2.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 14
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5,5.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 15
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5,6.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 17
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5,8.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 160
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 3.5,-9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 161
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 3.5,-10.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 162
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 3.5,-11.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: RailingCorner
   entities:
   - uid: 13
@@ -2778,6 +2799,9 @@ entities:
     - type: Transform
       pos: -3.5,3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: RailingCornerSmall
   entities:
   - uid: 18
@@ -2786,18 +2810,27 @@ entities:
       rot: 3.141592653589793 rad
       pos: -4.5,3.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 416
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,1.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
   - uid: 417
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,9.5
       parent: 2
+    missingComponents:
+    - Damageable
+    - Destructible
 - proto: ReinforcedPlasmaWindow
   entities:
   - uid: 800

@@ -5,14 +5,19 @@
   - type: SubGamemodes
     rules:
     - id: Thief
+      orGroup: SubGamemodes
       prob: 0.3
     - id: BloodBrothers
+      orGroup: SubGamemodes
       prob: 0.3
     - id: SyndicateListeningOutpost
+      orGroup: SubGamemodes
       prob: 0.20
     - id: Pirates
+      orGroup: SubGamemodes
       prob: 0.15
     - id: SubWizard
+      orGroup: SubGamemodes
       prob: 0.05
 
 - type: entity
@@ -22,10 +27,14 @@
   - type: SubGamemodes
     rules:
     - id: Thief
+      orGroup: SubGamemodes
       prob: 0.3
     - id: BloodBrothers
+      orGroup: SubGamemodes
       prob: 0.3
     - id: SyndicateListeningOutpost
+      orGroup: SubGamemodes
       prob: 0.2
     - id: Pirates
+      orGroup: SubGamemodes
       prob: 0.2

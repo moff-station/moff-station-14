@@ -1,0 +1,14 @@
+borg-slot-foam-grenade-empty = Foam dart grenades
+borg-slot-ores-empty = Ores
+borg-slot-seeds-empty = Seeds
+borg-slot-buckets-empty = Buckets
+borg-slot-swabs-empty = Swabs
+borg-slot-utensils-empty = Utensils
+borg-slot-dinnerware-empty = Dinnerware
+borg-slot-bottles-empty = Bottles
+borg-slot-ingredients-empty = Ingredients
+borg-slot-food-empty = Food
+borg-slot-peels-empty = Banana peels
+borg-slot-pies-empty = Banana cream pies
+borg-slot-produce-empty = Produce
+borg-slot-sprays-empty = Sprays

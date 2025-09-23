@@ -1,0 +1,24 @@
+- type: entity
+  id: PelletShotgunSilver
+  name: pellet (.50 silver)
+  categories: [ HideSpawnMenu ]
+  parent: BaseBulletSilver
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    state: silver
+  - type: Projectile
+    damage: # Deals normal (60) damage to unholy entities
+      types:
+        Piercing: 6
+        Holy: 9 #nice
+
+- type: entity
+  id: PelletShotgunSilverSpread
+  categories: [ HideSpawnMenu ]
+  parent: PelletShotgunSilver
+  components:
+  - type: ProjectileSpread
+    proto: PelletShotgunSilver
+    count: 5
+    spread: 30 # Silver bullets are less precise irl
