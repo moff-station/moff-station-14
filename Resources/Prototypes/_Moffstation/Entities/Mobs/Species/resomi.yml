@@ -23,12 +23,12 @@
     - "enum.HumanoidVisualLayers.LFoot"
     damageOverlayGroups:
       Brute:
-        sprite: _Starlight/Mobs/Effects/Resomi/brute_damage.rsi
+        sprite: _Moffstation/Mobs/Effects/Resomi/brute_damage.rsi
         color: "#C048C2"
       Burn:
-        sprite: _Starlight/Mobs/Effects/Resomi/burn_damage.rsi
+        sprite: _Moffstation/Mobs/Effects/Resomi/burn_damage.rsi
   - type: FireVisuals
-    sprite: _Starlight/Mobs/Effects/onfire.rsi
+    sprite: _Moffstation/Mobs/Effects/onfire.rsi
     normalState: Resomi_minor_burning
     alternateState: Resomi_burning
   - type: Hunger
