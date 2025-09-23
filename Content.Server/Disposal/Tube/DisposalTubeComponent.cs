@@ -32,7 +32,7 @@ public sealed partial class DisposalTubeComponent : Component
     {
         DamageDict = new()
         {
-            { "Blunt", 3.0 }, // Moffstation - Blunt damage from dispos
+            { "Blunt", 0.0 },
         }
     };
 }

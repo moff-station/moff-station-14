@@ -1,0 +1,19 @@
+- type: entity
+  name: ammunition box (.50 silver)
+  parent: AmmoProviderShotgunShell
+  id: BoxShotgunSilver
+  components:
+    - type: BallisticAmmoProvider
+      proto: ShellShotgunSilver
+    - type: MagazineVisuals
+      magState: mag-silver
+      steps: 5
+      zeroVisible: false
+    - type: Sprite
+      sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Boxes/shotgun.rsi
+      layers:
+      - state: base
+        map: [ "enum.GunVisualLayers.Base" ]
+      - state: mag-silver-1
+        map: [ "enum.GunVisualLayers.Mag" ]
+      - state: silver

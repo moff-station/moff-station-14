@@ -1,0 +1,242 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "created by Davyei for Moffstation, derived from from tgstation at https://github.com/tgstation/tgstation/commit/59f2a4e10e5ba36033c9734ddebfbbdc6157472d",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pda-anomalouscontainmentspecialist"
+        },
+        {
+            "name": "pda-archivist"
+        },
+        {
+            "name": "pda-assetprotection"
+        },
+        {
+            "name": "pda-astrominer"
+        },
+        {
+            "name": "pda-attorney"
+        },
+        {
+            "name": "pda-baker"
+        },
+        {
+            "name": "pda-barber"
+        },
+        {
+            "name": "pda-barista"
+        },
+        {
+            "name": "pda-bishop"
+        },
+        {
+            "name": "pda-butcher"
+        },
+        {
+            "name": "pda-cleric"
+        },
+        {
+            "name": "pda-clinician"
+        },
+        {
+            "name": "pda-coroner"
+        },
+        {
+            "name": "pda-correctionsofficer"
+        },
+        {
+            "name": "pda-courier"
+        },
+        {
+            "name": "pda-cryogenicspecialist"
+        },
+        {
+            "name": "pda-curator",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "pda-convict"
+        },
+        {
+            "name": "pda-custodian"
+        },
+        {
+            "name": "pda-deathrow"
+        },
+        {
+            "name": "pda-deputy"
+        },
+        {
+            "name": "pda-detentionofficer"
+        },
+        {
+            "name": "pda-druid"
+        },
+        {
+            "name": "pda-dungeonmaster",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "pda-electrician"
+        },
+        {
+            "name": "pda-excavator"
+        },
+        {
+            "name": "pda-fieldmedic"
+        },
+        {
+            "name": "pda-fool"
+        },
+        {
+            "name": "pda-gardener"
+        },
+        {
+            "name": "pda-herbalist"
+        },
+        {
+            "name": "pda-hydroponicstechnician"
+        },
+        {
+            "name": "pda-hygienetechnician"
+        },
+        {
+            "name": "pda-investigator"
+        },
+        {
+            "name": "pda-jester"
+        },
+        {
+            "name": "pda-journalist"
+        },
+        {
+            "name": "pda-legalcounsel"
+        },
+        {
+            "name": "pda-logistics"
+        },
+        {
+            "name": "pda-machinist"
+        },
+        {
+            "name": "pda-maid"
+        },
+        {
+            "name": "pda-mechanic"
+        },
+        {
+            "name": "pda-meteorologist"
+        },
+        {
+            "name": "pda-missionary"
+        },
+        {
+            "name": "pda-mixologist"
+        },
+        {
+            "name": "pda-mortician"
+        },
+        {
+            "name": "pda-newsanchor"
+        },
+        {
+            "name": "pda-nun",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "pda-nurse"
+        },
+        {
+            "name": "pda-oracle"
+        },
+        {
+            "name": "pda-pharmacist"
+        },
+        {
+            "name": "pda-pierrot"
+        },
+        {
+            "name": "pda-pizzaiolo"
+        },
+        {
+            "name": "pda-plasmatechnician"
+        },
+        {
+            "name": "pda-popidol"
+        },
+        {
+            "name": "pda-priest"
+        },
+        {
+            "name": "pda-prosecutor"
+        },
+        {
+            "name": "pda-prospector"
+        },
+        {
+            "name": "pda-psychiatrist"
+        },
+        {
+            "name": "pda-rancher"
+        },
+        {
+            "name": "pda-refuseworker"
+        },
+        {
+            "name": "pda-rockstar"
+        },
+        {
+            "name": "pda-sanitationworker"
+        },
+        {
+            "name": "pda-scavenger"
+        },
+        {
+            "name": "pda-senioratmos"
+        },
+        {
+            "name": "pda-shipwright"
+        },
+        {
+            "name": "pda-socialworker"
+        },
+        {
+            "name": "pda-solicitor"
+        },
+        {
+            "name": "pda-surgeon"
+        },
+        {
+            "name": "pda-therapist"
+        },
+        {
+            "name": "pda-xenoarcheologist"
+        }
+    ]
+}

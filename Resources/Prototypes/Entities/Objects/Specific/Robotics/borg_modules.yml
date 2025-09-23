@@ -556,8 +556,7 @@
     - item: MineralScannerUnpowered
     - item: BorgOreBag
     # Moffstation - Start - Add orehand for salvage borgs
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: Coal1
         emptyLabel: borg-slot-ores-empty
         whitelist:
@@ -585,8 +584,7 @@
     - item: AdvancedMineralScannerUnpowered
     - item: OreBagOfHolding
     # Moffstation - Start - Add orehand for salvage borgs
-    - item:
-      hand:
+    - hand:
         emptyRepresentative: Coal1
         emptyLabel: borg-slot-ores-empty
         whitelist:
@@ -1034,47 +1032,84 @@
   - type: Sprite
     layers:
     - state: service
-    - state: icon-pen
+# Moffstation - Start - Give service borgs some love
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-bartending
   - type: ItemBorgModule
     hands:
-    - item: Pen
-    - item: BooksBag
+#    - item: Pen
+#    - item: BooksBag
+#    - hand:
+#        emptyLabel: borg-slot-documents-empty
+#        emptyRepresentative: BookBase
+#        whitelist:
+#          tags:
+#          - Book
+#          - Dice
+#          - Document
+#          - Figurine
+#          - TabletopBoard
+#          - Write
+#    - hand:
+#        emptyLabel: borg-slot-documents-empty
+#        emptyRepresentative: Paper
+#        whitelist:
+#          tags:
+#          - Book
+#          - Dice
+#          - Document
+#          - Figurine
+#          - TabletopBoard
+#          - Write
+#    - item: HandLabeler
+#    - item: RubberStampApproved
+#    - item: RubberStampDenied
+#    - item: BorgDropper
     - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: BookBase
+        emptyRepresentative: BarSpoon
+        emptyLabel: borg-slot-utensils-empty
         whitelist:
           tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
+          - Utensil
+          - RollingPin
+          - CleaningRag
     - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: Paper
+        emptyRepresentative: FoodBowlBig
+        emptyLabel: borg-slot-dinnerware-empty
         whitelist:
           tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
-    - item: HandLabeler
-    - item: RubberStampApproved
-    - item: RubberStampDenied
-    - item: BorgDropper
-    - item: DrinkShaker
-      hand:
+          - Dinnerware
+    - hand:
         emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: DrinkShaker
+        emptyRepresentative: DrinkGlass
         whitelist:
           components:
           - FitsInDispenser
-    - item: BarSpoon
+    - hand:
+        emptyRepresentative: DrinkWhiskeyBottleFull
+        emptyLabel: borg-slot-bottles-empty
+        whitelist:
+          tags:
+          - DrinkBottle
+    - hand:
+        emptyLabel: borg-slot-ingredients-empty
+        emptyRepresentative: ReagentContainerFlour
+        whitelist:
+          tags:
+          - Ingredient
+          - Condiment
+    - hand:
+        emptyLabel: borg-slot-food-empty
+        emptyRepresentative: FoodCheeseSlice
+        whitelist:
+          components:
+          - Edible
+        blacklist:
+          tags:
+          - DrinkBottle
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: service-module }
+# Moffstation - End
 
 - type: entity
   id: BorgModuleMusique
@@ -1120,12 +1155,33 @@
     layers:
     - state: service
     - state: icon-gardening
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: HydroponicsToolMiniHoe
-    - item: HydroponicsToolSpade
+#    - item: HydroponicsToolSpade
     - item: HydroponicsToolClippers
-    - item: Bucket
+#    - item: Bucket
+    - item: BorgDropper
+    - hand:
+        emptyRepresentative: Bucket
+        emptyLabel: borg-slot-buckets-empty
+        whitelist:
+          tags:
+          - Bucket
+    - hand:
+        emptyRepresentative: AppleSeeds
+        emptyLabel: borg-slot-seeds-empty
+        whitelist:
+          components:
+          - Seed
+    - hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swabs-empty
+        whitelist:
+          components:
+          - BotanySwab
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
 
@@ -1138,11 +1194,27 @@
     layers:
     - state: service
     - state: icon-harvesting
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: HydroponicsToolScythe
+    - item: HydroponicsToolSpade
     - item: HydroponicsToolHatchet
+    - hand:
+        emptyRepresentative: PlantBGoneSpray
+        emptyLabel: borg-slot-sprays-empty
+        whitelist:
+          tags:
+          - Spray
+          - PlantBGone
     - item: PlantBag
+    - hand:
+        emptyRepresentative: FoodApple
+        emptyLabel: borg-slot-produce-empty
+        whitelist:
+          components:
+          - Produce
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: harvesting-module }
 
@@ -1155,11 +1227,25 @@
     layers:
     - state: service
     - state: icon-clown
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: BikeHorn
     - item: ClownRecorder
     - item: BikeHornInstrument
+    - hand:
+        emptyRepresentative: TrashBananaPeel
+        emptyLabel: borg-slot-peels-empty
+        whitelist:
+          tags:
+          - BananaPeel
+    - hand:
+        emptyRepresentative: FoodPieBananaCream
+        emptyLabel: borg-slot-pies-empty
+        whitelist:
+          components:
+          - CreamPie
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: clowning-module }
 

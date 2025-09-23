@@ -2,11 +2,8 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Disposal.Tube;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components; // Moffstation
 using Content.Shared.Disposal.Components;
 using Content.Shared.Item;
-using Content.Shared.Mobs;  // Moffstation
-using Content.Shared.Mobs.Components;   // Moffstation
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -200,11 +197,7 @@ namespace Content.Server.Disposal.Unit
             {
                 foreach (var ent in holder.Container.ContainedEntities)
                 {
-                    // Moffstation - Start - Only apply damage to mobs, and stop after they're dead
-                    if (TryComp<MobStateComponent>(ent, out var mobState) &&
-                        mobState.CurrentState != MobState.Dead)
-                        _damageable.TryChangeDamage(ent, to.DamageOnTurn);
-                    // Moffstation - End
+                    _damageable.TryChangeDamage(ent, to.DamageOnTurn);
                 }
                 _audio.PlayPvs(to.ClangSound, toUid);
             }
