@@ -383,7 +383,7 @@
 #ERT HELMETS
 #ERT Leader Helmet
 - type: entity
-  parent: [ BaseCentcommContraband, FoldableHelmetBase, ClothingHeadHelmetArmoredBase ] # Moffstation - (Foldable Helmets)
+  parent: [ BaseCentcommContraband, ClothingHeadHelmetArmoredBase ]
   id: ClothingHeadHelmetERTLeader
   name: ERT leader helmet
   description: An in-atmosphere helmet worn by the leader of a Nanotrasen Emergency Response Team. Has blue highlights.
@@ -392,11 +392,9 @@
     sprite: Clothing/Head/Helmets/ert_leader.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_leader.rsi
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+    - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #ERT Security Helmet
 - type: entity
@@ -409,11 +407,9 @@
     sprite: Clothing/Head/Helmets/ert_security.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_security.rsi
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+    - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #ERT Medic Helmet
 - type: entity
@@ -426,11 +422,9 @@
     sprite: Clothing/Head/Helmets/ert_medic.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_medic.rsi
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+    - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #ERT Engineer Helmet
 - type: entity
@@ -443,11 +437,9 @@
     sprite: Clothing/Head/Helmets/ert_engineer.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_engineer.rsi
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+    - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #ERT Janitor Helmet
 - type: entity
@@ -460,11 +452,9 @@
     sprite: Clothing/Head/Helmets/ert_janitor.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_janitor.rsi
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+    - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 - type: entity
   parent: [ BaseSyndicateContraband, ClothingHeadHelmetBase ]
