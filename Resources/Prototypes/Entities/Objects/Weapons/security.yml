@@ -231,3 +231,9 @@
       guides:
       - Security
       - Antagonists
+    # Moffstation - Start
+    - type: TriggerOnSignal
+    - type: DeviceLinkSink
+      ports:
+      - Trigger
+    # Moffstation - End

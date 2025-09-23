@@ -256,6 +256,11 @@
   - Science
   - Service
 
+# Moffstation - Start - Give service borgs some love
+  addComponents:
+  - type: SolutionScanner
+# Moffstation - End
+
   # Visual
   inventoryTemplateId: borgHumanoid  # Moffstation - Changed service to use a different inventory template since it's actually just human proportioned
   spriteBodyState: service

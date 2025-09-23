@@ -1,0 +1,15 @@
+- type: entity
+  id: CartridgeLightRifleSilver
+  name: cartridge (.30 rifle silver)
+  description: A classic intermediate cartridge used by many combat rifles and LMGs. Silver munitions are effective against unholy foes, smiting the target for their misdeeds.
+  parent: BaseCartridgeLightRifle
+  components:
+  - type: CartridgeAmmo
+    proto: BulletLightRifleSilver
+  - type: Sprite
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+      - state: tip
+        map: [ "enum.AmmoVisualLayers.Tip" ]
+        color: "#bebed7"

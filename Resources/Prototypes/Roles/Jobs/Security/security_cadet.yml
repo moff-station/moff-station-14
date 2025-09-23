@@ -24,6 +24,7 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  setPreference: false  # Moffstation - Remove assistant roles
 
 - type: startingGear
   id: SecurityCadetGear

@@ -167,6 +167,7 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
+  - CaptainCapeFormal # Moffstation
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -757,6 +758,10 @@
   loadouts:
   - CargoTechnicianPDA
   - SeniorCourierPDA
+  # Moffstation - Start - Additional job title loadouts
+  - CourierPDA
+  - LogisticsAssociatePDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
@@ -893,6 +898,12 @@
   loadouts:
   - StationEngineerPDA
   - SeniorEngineerPDA
+  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - ElectricianPDA
+  - MechanicPDA
+  - ShipwrightPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -1046,6 +1057,13 @@
   loadouts:
   - ScientistPDA
   - SeniorResearcherPDA
+  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - AnomalyContainmentSpecialistPDA
+  - MachinistPDA
+  - RoboticistPDA #CD - Job title loadouts
+  - XenoarcheologistPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -1173,6 +1191,11 @@
   loadouts:
   - SecurityPDA
   - SeniorOfficerPDA
+  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - AssetProtectionsPDA
+  - DeputyPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -1375,6 +1398,14 @@
   loadouts:
   - MedicalDoctorPDA
   - SeniorPhysicianPDA
+  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - ClinicianPDA
+  - CoronerPDA
+  - CyrogenicsSpecialistPDA
+  - NursePDA
+  - SurgeonPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalGloves
