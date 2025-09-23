@@ -13,9 +13,8 @@
 
 - type: loadout
   id: PersonalItemDelilahBag
-  storage:
-    back:
-    - PersonalItemDelilahBag
+  inhand:
+  - PersonalItemDelilahBag
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
