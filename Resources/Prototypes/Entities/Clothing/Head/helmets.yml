@@ -31,7 +31,7 @@
 - type: entity
   parent: [ClothingHeadHelmetArmoredBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetBasic
-  # Moffstation - Begin (New Security Helmets) - these changes (not the parent changes) can be overwritten by upstream once #38108 on upstream is merged.
+  # Moffstation - Begin (New Security Helmets)
   name: security helmet
   description: A modern, tight helmet, it provides decent protection against most forms of attack, and comes with a detachable visor. A staple of the classic security officer look.
   components:
@@ -69,6 +69,12 @@
     tags:
     - WhitelistChameleon
     - SecurityHelmet
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  slots: [ ]
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #Mercenary Helmet
 - type: entity
@@ -81,13 +87,15 @@
     sprite: Clothing/Head/Helmets/merc_helmet.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/merc_helmet.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #SWAT Helmet
 - type: entity
-  parent: [ClothingHeadHelmetBase, BaseSecurityContraband]
+  parent: [ClothingHeadHelmetBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetSwat
   name: SWAT helmet
   description: An extremely robust helmet, commonly used by paramilitary forces. This one has the Nanotrasen logo emblazoned on the top.
@@ -107,9 +115,11 @@
         Caustic: 0.95
   - type: ExplosionResistance
     damageCoefficient: 0.75
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #Syndicate SWAT Helmet
 - type: entity
@@ -123,13 +133,15 @@
     sprite: Clothing/Head/Helmets/swat_syndicate.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/swat_syndicate.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #Light Riot Helmet
 - type: entity
-  parent: [ClothingHeadHelmetBase, BaseSecurityContraband]
+  parent: [ClothingHeadHelmetBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetRiot
   name: light riot helmet
   description: It's a helmet specifically designed to protect against close range attacks.
@@ -145,9 +157,11 @@
         Blunt: 0.8
         Slash: 0.8
         Piercing: 0.95
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #Bombsuit Helmet
 - type: entity
@@ -369,7 +383,7 @@
 #ERT HELMETS
 #ERT Leader Helmet
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetArmoredBase ]
+  parent: [ BaseCentcommContraband, FoldableHelmetBase, ClothingHeadHelmetArmoredBase ] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetERTLeader
   name: ERT leader helmet
   description: An in-atmosphere helmet worn by the leader of a Nanotrasen Emergency Response Team. Has blue highlights.
@@ -378,9 +392,11 @@
     sprite: Clothing/Head/Helmets/ert_leader.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_leader.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #ERT Security Helmet
 - type: entity
@@ -393,9 +409,11 @@
     sprite: Clothing/Head/Helmets/ert_security.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_security.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #ERT Medic Helmet
 - type: entity
@@ -408,9 +426,11 @@
     sprite: Clothing/Head/Helmets/ert_medic.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_medic.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #ERT Engineer Helmet
 - type: entity
@@ -423,9 +443,11 @@
     sprite: Clothing/Head/Helmets/ert_engineer.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_engineer.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #ERT Janitor Helmet
 - type: entity
@@ -438,12 +460,14 @@
     sprite: Clothing/Head/Helmets/ert_janitor.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_janitor.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 - type: entity
-  parent: [ BaseSyndicateContraband, ClothingHeadHelmetBase ]
+  parent: [ BaseSyndicateContraband, FoldableHelmetBase, ClothingHeadHelmetBase ] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetRaid
   name: syndicate raid helmet
   description: An armored helmet for use with the syndicate raid suit. Very stylish.
@@ -459,9 +483,11 @@
         Slash: 0.85
         Piercing: 0.85
         Heat: 0.85
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
 
 #Bone Helmet
 #No need to hide the hair on this one
@@ -496,7 +522,7 @@
 
 #Justice Helmet
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband] # Moffstation - Foldable Security Helmet - Changes to this prototype can be reverted once #38108 from upstream is merged into moff.
+  parent: [ClothingHeadHelmetArmoredBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetJustice
   name: justice helm
   description: Advanced security gear. Protects the station from ne'er-do-wells.
@@ -564,9 +590,11 @@
   - type: Construction
     graph: HelmetJustice
     node: helmet
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
+  # Moffstation - Begin (Foldable Helmets)
+  #- type: HideLayerClothing
+  #  layers:
+  #    Hair: HEAD
+  # Moffstation - End
   # Moffstation - Begin (Foldable Security Helmet)
   - type: Tag
     tags:
