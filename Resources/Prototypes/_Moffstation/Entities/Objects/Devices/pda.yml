@@ -1,3 +1,1659 @@
+## Security PDAs
+# Warden
+- type: entity
+  parent: WardenPDA
+  id: WardenPDAAltBase
+  name: warden alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-correctionsofficer"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: WardenPDAAltBase
+  id: CorrectionsOfficerPDA
+  name: corrections officer PDA
+  components:
+  - type: RenameId
+    value: job-name-warden-corrections-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-correctionsofficer
+
+- type: entity
+  parent: WardenPDAAltBase
+  id: DetentionOfficerPDA
+  name: detention officer PDA
+  components:
+  - type: RenameId
+    value: job-name-warden-detention-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-detentionofficer
+
+# Detective
+- type: entity
+  parent: DetectivePDA
+  id: DetectivePDAAltBase
+  name: detective alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-investigator"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: DetectivePDAAltBase
+  id: InvestigatorPDA
+  name: investigator PDA
+  components:
+  - type: RenameId
+    value: job-name-detective-investigator
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-investigator
+
+# Security Officer
+- type: entity
+  parent: SecurityPDA
+  id: SecurityPDAAltBase
+  name: security officer alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-assetprotection"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: SecurityPDAAltBase
+  id: AssetProtectionsPDA
+  name: asset protections PDA
+  components:
+  - type: RenameId
+    value: job-name-security-officer-asset-protections
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-assetprotection
+
+- type: entity
+  parent: SecurityPDAAltBase
+  id: DeputyPDA
+  name: deputy PDA
+  components:
+  - type: RenameId
+    value: job-name-security-officer-deputy
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-deputy
+
+## Cargo PDAs
+#Cargo Technician
+- type: entity
+  parent: CargoPDA
+  id: CargoPDAAltBase
+  name: cargo technician alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-courier"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: CargoPDAAltBase
+  id: CourierPDA
+  name: courier PDA
+  components:
+  - type: RenameId
+    value: job-name-cargo-technician-courier
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-courier
+
+- type: entity
+  parent: CargoPDAAltBase
+  id: LogisticsAssociatePDA
+  name: logistics associate PDA
+  components:
+  - type: RenameId
+    value: job-name-cargo-technician-logistics-associate
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-logistics
+
+#Salvage Specialist
+- type: entity
+  parent: SalvagePDA
+  id: SalvagePDAAltBase
+  name: salvage specialist alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-astrominer"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: AstrominerPDA
+  name: astrominer PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-astrominer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-astrominer
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: ExcavatorPDA
+  name: excavator PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-excavator
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-excavator
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: ProspectorPDA
+  name: prospector PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-prospector
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-prospector
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: ScavengerPDA
+  name: scavenger PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-scavenger
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-scavenger
+
+## Engineering PDAs
+# Atmospheric Technician
+- type: entity
+  parent: AtmosPDA
+  id: AtmosPDAAltBase
+  name: atmospheric technician alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-plasmatechnician"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: AtmosPDAAltBase
+  id: PlasmaTechnicianPDA
+  name: plasma technician PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-plasma-technician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-plasmatechnician
+
+- type: entity
+  parent: AtmosPDAAltBase
+  id: SeniorAtmosphericTechnicianPDA
+  name: senior atmospheric technician PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-senior-atmospheric-technician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-senioratmos
+
+# Station Engineer
+- type: entity
+  parent: EngineerPDA
+  id: EngineerPDAAltBase
+  name: station engineer alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-electrician"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: EngineerPDAAltBase
+  id: ElectricianPDA
+  name: electrician PDA
+  components:
+  - type: RenameId
+    value: job-name-station-engineer-electrician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-electrician
+
+- type: entity
+  parent: EngineerPDAAltBase
+  id: MechanicPDA
+  name: mechanic PDA
+  components:
+  - type: RenameId
+    value: job-name-station-engineer-mechanic
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-mechanic
+
+- type: entity
+  parent: EngineerPDAAltBase
+  id: ShipwrightPDA
+  name: shipwright PDA
+  components:
+  - type: RenameId
+    value: job-name-station-engineer-shipwright
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-shipwright
+
+## Medical PDAs
+# Chemist
+- type: entity
+  parent: ChemistryPDA
+  id: ChemistryPDAAltBase
+  name: chemist alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-pharmacist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ChemistryPDA
+  id: GeneticistPDA
+  name: geneticist PDA
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-genetics
+  - type: Icon
+    state: pda-genetics
+  - type: RenameId
+    value: job-name-geneticist
+
+- type: entity
+  parent: ChemistryPDAAltBase
+  id: PharmacistPDA
+  name: pharmacist PDA
+  components:
+  - type: RenameId
+    value: job-name-chemist-pharmacist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-pharmacist
+
+- type: entity
+  parent: ChemistryPDA
+  id: VirologistPDA
+  name: virologist PDA
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-virology
+  - type: Icon
+    state: pda-virology
+  - type: RenameId
+    value: job-name-virologist
+
+# Medical Doctor
+- type: entity
+  parent: MedicalPDA
+  id: MedicalPDAAltBase
+  name: medical doctor alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-clinician"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: ClinicianPDA
+  name: clinician PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-clinician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-clinician
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: CoronerPDA
+  name: coroner PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-coroner
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-coroner
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: CyrogenicsSpecialistPDA
+  name: cyrogenics specialist PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-cyrogenics-specialist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-cryogenicspecialist
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: NursePDA
+  name: nurse PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-nurse
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-nurse
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: SurgeonPDA
+  name: surgeon PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-surgeon
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-surgeon
+
+# Paramedic
+- type: entity
+  parent: ParamedicPDA
+  id: ParamedicPDAAltBase
+  name: paramedic alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-fieldmedic"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ParamedicPDAAltBase
+  id: FieldMedicPDA
+  name: field medic PDA
+  components:
+  - type: RenameId
+    value: job-name-paramedic-field-medic
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-fieldmedic
+
+# Psychologist
+- type: entity
+  parent: PsychologistPDA
+  id: PsychologistPDAAltBase
+  name: psychologist alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-psychiatrist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: PsychologistPDAAltBase
+  id: PsychiatristPDA
+  name: psychiatrist PDA
+  components:
+  - type: RenameId
+    value: job-name-psychologist-psychiatrist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-psychiatrist
+
+- type: entity
+  parent: PsychologistPDAAltBase
+  id: TherapistPDA
+  name: therapist PDA
+  components:
+  - type: RenameId
+    value: job-name-psychologist-therapist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-therapist
+
+- type: entity
+  parent: PsychologistPDAAltBase
+  id: SocialWorkerPDA
+  name: social worker PDA
+  components:
+  - type: RenameId
+    value: job-name-psychologist-social-worker
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-socialworker
+
+## Science PDAs
+# Scientist
+- type: entity
+  parent: SciencePDA
+  id: SciencePDAAltBase
+  name: scientist alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-anomalouscontainmentspecialist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: SciencePDAAltBase
+  id: AnomalyContainmentSpecialistPDA
+  name: anomaly containment specialist PDA
+  components:
+  - type: RenameId
+    value: job-name-scientist-anomaly-containment-specialist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-anomalouscontainmentspecialist
+
+- type: entity
+  parent: RoboticistPDA
+  id: MachinistPDA
+  name: machinist PDA
+  components:
+  - type: RenameId
+    value: job-name-scientist-machinist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-machinist
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-machinist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: SciencePDAAltBase
+  id: XenoarcheologistPDA
+  name: xenoarcheologist PDA
+  components:
+  - type: RenameId
+    value: job-name-scientist-xenoarcheologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-xenoarcheologist
+
+## Service PDAs
+# Bartender
+- type: entity
+  parent: BartenderPDA
+  id: BartenderPDAAltBase
+  name: bartender alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-barista"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: BartenderPDAAltBase
+  id: BaristaPDA
+  name: barista PDA
+  components:
+  - type: RenameId
+    value: job-name-bartender-barista
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-barista
+
+- type: entity
+  parent: BartenderPDAAltBase
+  id: MixologistPDA
+  name: mixologist PDA
+  components:
+  - type: RenameId
+    value: job-name-bartender-mixologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-mixologist
+
+# Botanist
+- type: entity
+  parent: BotanistPDA
+  id: BotanistPDAAltBase
+  name: botanist alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-gardener"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: GardenerPDA
+  name: gardener PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-gardener
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-gardener
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: HerbalistPDA
+  name: herbalist PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-herbalist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-herbalist
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: HydroponicsTechnicianPDA
+  name: hydroponics technician PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-hydroponics-technician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hydroponicstechnician
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: RancherPDA
+  name: rancher PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-rancher
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-rancher
+
+# Chaplain
+- type: entity
+  parent: ChaplainPDA
+  id: ChaplainPDAAltBase
+  name: chaplain alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-bishop"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: BishopPDA
+  name: bishop PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-bishop
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-bishop
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: ClericPDA
+  name: cleric PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-cleric
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-cleric
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: DruidPDA
+  name: druid PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-druid
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-druid
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: MissionaryPDA
+  name: missionary PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-missionary
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-missionary
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: MorticianPDA
+  name: mortician PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-mortician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-mortician
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: NunPDA
+  name: nun PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-nun
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-nun
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-nun"
+    - state: "light_overlay_wide"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: OraclePDA
+  name: oracle PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-oracle
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-oracle
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: PriestPDA
+  name: priest PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-priest
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-priest
+
+# Chef
+- type: entity
+  parent: ChefPDA
+  id: ChefPDAAltBase
+  name: chef alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-baker"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ChefPDAAltBase
+  id: BakerPDA
+  name: baker PDA
+  components:
+  - type: RenameId
+    value: job-name-chef-baker
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-baker
+
+- type: entity
+  parent: ChefPDAAltBase
+  id: ButcherPDA
+  name: butcher PDA
+  components:
+  - type: RenameId
+    value: job-name-chef-butcher
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-butcher
+
+- type: entity
+  parent: ChefPDAAltBase
+  id: PizzaioloPDA
+  name: pizzaiolo PDA
+  components:
+  - type: RenameId
+    value: job-name-chef-pizzaiolo
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-pizzaiolo
+
+# Clown
+- type: entity
+  parent: ClownPDA
+  id: ClownPDAAltBase
+  name: clown alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-fool"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ClownPDAAltBase
+  id: FoolPDA
+  name: fool PDA
+  components:
+  - type: RenameId
+    value: job-name-clown-fool
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-fool
+
+- type: entity
+  parent: ClownPDAAltBase
+  id: JesterPDA
+  name: jester PDA
+  components:
+  - type: RenameId
+    value: job-name-clown-jester
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-jester
+
+# Janitor
+- type: entity
+  parent: JanitorPDA
+  id: JanitorPDAAltBase
+  name: janitor alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-custodian"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: CustodianPDA
+  name: custodian PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-custodian
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-custodian
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: HygieneTechnicianPDA
+  name: hygiene technician PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-hygiene-technician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hygienetechnician
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: MaidPDA
+  name: maid PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-maid
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-maid
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: SanitationsWorkerPDA
+  name: sanitations worker PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-sanitations-worker
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-sanitationworker
+
+# Lawyer
+- type: entity
+  parent: LawyerPDA
+  id: LawyerPDAAltBase
+  name: lawyer alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-attorney"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: AttorneyPDA
+  name: attorney PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-attorney
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-attorney
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: LegalCounselPDA
+  name: legal counsel PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-legal-counsel
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-legalcounsel
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: ProsecutorPDA
+  name: prosecutor PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-prosecutor
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-prosecutor
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: SolicitorPDA
+  name: solicitor PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-solicitor
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-solicitor
+
+# Librarian
+- type: entity
+  parent: LibrarianPDA
+  id: LibrarianPDAAltBase
+  name: librarian alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-archivist"
+    - state: "light_overlay_wide"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: ArchivistPDA
+  name: archivist PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-archivist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-archivist
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-archivist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: CuratorPDA
+  name: curator PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-curator
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-curator
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: DungeonMasterPDA
+  name: dungeon master PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-dungeon-master
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-dungeonmaster
+
+# Mime
+- type: entity
+  parent: MimePDA
+  id: MimePDAAltBase
+  name: mime alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-pierrot"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: MimePDAAltBase
+  id: PierrotPDA
+  name: pierrot PDA
+  components:
+  - type: RenameId
+    value: job-name-mime-pierrot
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-pierrot
+
+# Musician
+- type: entity
+  parent: MusicianPDA
+  id: MusicianPDAAltBase
+  name: musician alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-popidol"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: MusicianPDAAltBase
+  id: PopIdolPDA
+  name: pop idol PDA
+  components:
+  - type: RenameId
+    value: job-name-musician-pop-idol
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-popidol
+
+- type: entity
+  parent: MusicianPDAAltBase
+  id: RockStarPDA
+  name: rock star PDA
+  components:
+  - type: RenameId
+    value: job-name-musician-rock-star
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-rockstar
+
+# Reporter
+- type: entity
+  parent: ReporterPDA
+  id: ReporterPDAAltBase
+  name: reporter alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-journalist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ReporterPDAAltBase
+  id: JournalistPDA
+  name: journalist PDA
+  components:
+  - type: RenameId
+    value: job-name-reporter-journalist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-journalist
+
+- type: entity
+  parent: ReporterPDAAltBase
+  id: MeteorologistPDA
+  name: meteorologist PDA
+  components:
+  - type: RenameId
+    value: job-name-reporter-meteorologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-meteorologist
+
+- type: entity
+  parent: ReporterPDAAltBase
+  id: NewsAnchorPDA
+  name: news anchor PDA
+  components:
+  - type: RenameId
+    value: job-name-reporter-news-anchor
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-newsanchor
+
+# Service Worker
+- type: entity
+  parent: ServiceWorkerPDA
+  id: ServiceWorkerPDAAltBase
+  name: service worker alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-barber"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ServiceWorkerPDAAltBase
+  id: BarberPDA
+  name: barber PDA
+  components:
+  - type: RenameId
+    value: job-name-service-worker-barber
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-barber
+
+## Other PDAs
+# Passenger
+- type: entity
+  parent: PassengerPDA
+  id: OffDutyCrewPDA
+  name: off-duty crew PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-off-duty-crew
+
+- type: entity
+  parent: VisitorPDA
+  id: VisitorCrewPDA
+  name: visitor PDA
+  components:
+  - type: RenameId
+    value: job-name-visitor
+
+# Prisoner
 - type: entity
   parent: BasePDA
   id: PrisonerPDA
@@ -17,3 +1673,57 @@
     borderColor: "#FF9751"
   - type: Icon
     state: "pda-prisoner"
+
+- type: entity
+  parent: PrisonerPDA
+  id: PrisonerPDAAltBase
+  name: prisoner alternate PDA [do not use]
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-convict"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: ConvictPDA
+  name: convict PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-convict
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-convict
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: DeathRowInmatePDA
+  name: death row inmate PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-deathrow

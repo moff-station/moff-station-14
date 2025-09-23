@@ -64,8 +64,12 @@ public sealed class DeviceLinkSystem : SharedDeviceLinkSystem
 
         SetInvokeCounter(sink.Comp, invokeCounter + 1);
 
-        //Just skip using device networking if the source or the sink doesn't support it
-        if (!HasComp<DeviceNetworkComponent>(source) || !TryComp<DeviceNetworkComponent>(sink, out var sinkNetwork))
+        // Moffstation - Start - Enable signalling between device-net enabled devices if they work on different networks.
+        // Skip using device networking if either the source or the sink don't support it, or if their device networks are different.
+        if (!(TryComp<DeviceNetworkComponent>(source, out var sourceNetwork) &&
+              TryComp<DeviceNetworkComponent>(sink, out var sinkNetwork) &&
+              sourceNetwork.NetIdEnum == sinkNetwork.NetIdEnum))
+            // Moffstation - End
         {
             var eventArgs = new SignalReceivedEvent(sinkPort, source);
             RaiseLocalEvent(sink, ref eventArgs);

@@ -10,6 +10,31 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/meteorologist.rsi
 
 - type: entity
+  parent: ClothingUniformJumpsuitPrisonerUpstream
+  id: ClothingUniformJumpsuitPrisoner
+  name: prisoner jumpsuit
+  description: A jumpsuit used for prisoners. It has suit sensors automatically enabled at all times.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisoner.rsi
+    layers: []
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisoner.rsi
+    clothingVisuals: {}
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - PrisonUniform
+    - WhitelistChameleon
+
+- type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitStripedPrisoner
   name: striped prison jumpsuit

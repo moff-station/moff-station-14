@@ -26,3 +26,37 @@
   - type: Tag
     tags:
     - Meat
+
+- type: entity
+  name: mothroachburger
+  parent: FoodBurgerMothRoach
+  id: FoodBurgerMothRoachDeathshead
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+    state: mothroach-deathshead
+  - type: Item
+    inhandVisuals:
+      left:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-deathshead-inhand-left
+      right:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-deathshead-inhand-right
+
+- type: entity
+  name: mothroachburger
+  parent: FoodBurgerMothRoach
+  id: FoodBurgerMothRoachRosy
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+    state: mothroach-rosy
+  - type: Item
+    inhandVisuals:
+      left:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-rosy-inhand-left
+      right:
+      - sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
+        state: mothroach-rosy-inhand-right

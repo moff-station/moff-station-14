@@ -39,6 +39,14 @@
   - type: DnaSubstanceTrace
   - type: Item
     size: Small
+  # Moffstation - Start - Give service borgs some love
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon
+    - CleaningRag
+  # Moffstation - End
 
 - type: entity
   id: TowelColorWhite
