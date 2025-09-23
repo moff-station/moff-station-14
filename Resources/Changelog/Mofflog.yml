@@ -1575,6 +1575,14 @@ Entries:
   id: 420
   time: '2025-08-15T02:04:47.000'
   url: https://github.com/moff-station/moff-station-14/pull/420
+- author: Nox38
+  changes:
+  - message: Security longcoats now have the same stats as security armor vests, and
+      no extra storage.
+    type: tweak
+  id: 422
+  time: '2025-08-18T03:00:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/422
 - author: compilatron
   changes:
   - message: General fixes and improvements for Frezon Relay Station
@@ -1589,6 +1597,15 @@ Entries:
   id: 428
   time: '2025-08-14T16:11:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/428
+- author: Nox38
+  changes:
+  - message: Added syndicate bags to the syndiedrobe!
+    type: add
+  - message: 'Nerfed the syndicate satchel: it can no longer fit 5-long items.'
+    type: tweak
+  id: 429
+  time: '2025-08-17T06:57:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/429
 - author: Nyxilath
   changes:
   - message: Changed survival boxes to hold the survival guidebook instead of a nutribrick.
@@ -1610,5 +1627,61 @@ Entries:
   id: 432
   time: '2025-08-14T16:04:34.000'
   url: https://github.com/moff-station/moff-station-14/pull/432
+- author: Centronias
+  changes:
+  - message: Intercoms can now be controlled by device linking (eg. remote signallers)!
+    type: add
+  id: 433
+  time: '2025-08-17T22:49:09.000'
+  url: https://github.com/moff-station/moff-station-14/pull/433
+- author: Sable
+  changes:
+  - message: A new personal item for The Rose of Silence!
+    type: add
+  id: 435
+  time: '2025-08-15T19:52:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/435
+- author: Sable
+  changes:
+  - message: Radio functionality to headphones.
+    type: add
+  id: 436
+  time: '2025-08-16T18:24:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/436
+- author: Nox38
+  changes:
+  - message: Added all three security belts to the secdrobe.
+    type: add
+  id: 437
+  time: '2025-08-17T21:13:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/437
+- author: Nyxilath
+  changes:
+  - message: Books and Flashlights are now recyclable!
+    type: tweak
+  id: 439
+  time: '2025-08-17T20:32:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/439
+- author: Huaqas
+  changes:
+  - message: Resomi can be butchered to get raw chicken.
+    type: add
+  id: 442
+  time: '2025-08-17T06:56:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/442
+- author: SeaWyrm
+  changes:
+  - message: 'Added new map for Gun Game: ctf_2fort'
+    type: add
+  id: 448
+  time: '2025-08-19T05:41:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/448
+- author: Nyxilath
+  changes:
+  - message: You can now select more plushies in your loadout!
+    type: add
+  id: 450
+  time: '2025-08-19T04:50:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/450
 Name: Mofflog
 Order: -2

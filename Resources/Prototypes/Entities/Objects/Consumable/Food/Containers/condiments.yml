@@ -32,8 +32,11 @@
   components:
   - type: Item
     size: Tiny
-  - type: Drink
+  - type: Edible
+    edible: Food # usually contains powders like flour or condiments like ketchup
     solution: food
+    destroyOnEmpty: false
+    utensil: Spoon
   - type: Openable
     sound:
       collection: packetOpenSounds
@@ -71,8 +74,17 @@
   - type: Tag
     tags:
       - Packet
+      - Condiment # Moffstation - Give service borgs some love
   - type: ExaminableSolution
     exactVolume: true
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: BaseFoodCondimentPacketDrink
+  abstract: true
+  components:
+  - type: Edible
+    edible: Drink # slurping sounds!
 
 - type: entity
   parent: BaseFoodCondimentPacket
@@ -103,7 +115,7 @@
     fillBaseName: packet-trans-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketBbq
   name: BBQ sauce
   description: Hand wipes not included.
@@ -123,7 +135,7 @@
     fillBaseName: packet-trans-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketCornoil
   name: corn oil
   description: Corn oil. A delicious oil used in cooking. Made from corn.
@@ -143,7 +155,7 @@
     fillBaseName: packet-trans-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketColdsauce
   name: coldsauce
   description: Coldsauce. Leaves the tongue numb in its passage.
@@ -163,7 +175,7 @@
     fillBaseName: packet-trans-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketHorseradish
   name: horseradish sauce
   description: A packet of smelly horseradish sauce.
@@ -183,7 +195,7 @@
     fillBaseName: packet-solid-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketHotsauce
   name: hotsauce
   description: You can almost TASTE the stomach ulcers now!
@@ -203,7 +215,7 @@
     fillBaseName: packet-trans-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketKetchup
   name: ketchup
   description: You feel more American already.
@@ -223,7 +235,7 @@
     fillBaseName: packet-solid-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketMustard
   name: mustard
   description: A condiment made from the ground-up seeds of the Mustard plant.
@@ -289,7 +301,7 @@
     fillBaseName: packet-solid-
 
 - type: entity
-  parent: BaseFoodCondimentPacket
+  parent: BaseFoodCondimentPacketDrink
   id: FoodCondimentPacketSoy
   name: soy sauce
   description: A salty soy-based flavoring.
@@ -335,8 +347,11 @@
   name: condiment bottle
   description: A thin glass bottle used to store condiments.
   components:
-  - type: Drink
+  - type: Edible
+    edible: Drink
     solution: food
+    destroyOnEmpty: false
+    utensil: None
   - type: Openable
     sound:
       collection: pop
@@ -394,6 +409,7 @@
   - type: Tag
     tags:
       - Coldsauce
+      - Condiment # Moffstation - Give service borgs some love
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -420,6 +436,7 @@
   - type: Tag
     tags:
       - Enzyme
+      - Condiment # Moffstation - Give service borgs some love
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -443,6 +460,11 @@
       visible: true
   - type: Icon
     state: bottle-vinegar
+# Moffstation - Start - Give service borgs some love
+  - type: Tag
+    tags:
+    - Condiment
+# Moffstation - End
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -469,6 +491,7 @@
   - type: Tag
     tags:
       - Hotsauce
+      - Condiment # Moffstation - Give service borgs some love
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -495,6 +518,7 @@
   - type: Tag
     tags:
       - Ketchup
+      - Condiment # Moffstation - Give service borgs some love
 
 - type: entity
   parent: BaseFoodCondimentBottle
@@ -522,11 +546,12 @@
   - type: Tag
     tags:
       - BBQsauce
+      - Condiment # Moffstation - Give service borgs some love
 
 # Shakers
 
 - type: entity
-  parent: BaseFoodCondiment
+  parent: BaseFoodCondiment # TODO: This should not inherit TrashOnSolutionEmpty, SpaceGarbage and the price of 0
   id: BaseFoodShaker
   abstract: true
   name: empty shaker
@@ -534,8 +559,11 @@
   components:
   - type: Item
     size: Tiny
-  - type: Drink
+  - type: Edible
+    edible: Drink
     solution: food
+    destroyOnEmpty: false
+    utensil: None # don't conflict with stirring
   - type: SolutionContainerManager
     solutions:
       food:
@@ -586,6 +614,7 @@
   - type: Tag
     tags:
       - SaltShaker
+      - Condiment # Moffstation - Give service borgs some love
 
 - type: entity
   parent: BaseFoodShaker
@@ -606,3 +635,4 @@
   - type: Tag
     tags:
       - PepperShaker
+      - Condiment # Moffstation - Give service borgs some love

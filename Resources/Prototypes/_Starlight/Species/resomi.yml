@@ -6,8 +6,8 @@
   sprites: MobResomiSprites
   defaultSkinTone: "#faf7f7"
   markingLimits: MobResomiMarkingLimits
-  maleFirstNames: names_resomi_male
-  femaleFirstNames: names_resomi_female
+  maleFirstNames: names_resomi_unisex
+  femaleFirstNames: names_resomi_unisex
   naming: First
   dollPrototype: MobResomiDummy
   skinColoration: Hues
@@ -19,24 +19,31 @@
 - type: speciesBaseSprites
   id: MobResomiSprites
   sprites:
+    Special: MobHumanoidAnyMarking
     Head: MobResomiHead
     Hair: MobResomiHair
     Chest: MobResomiTorso
     Eyes: MobResomiEyes
-    LArm: MobResomiLArm
-    RArm: MobResomiRArm
+    Tail: MobHumanoidAnyMarking
     LHand: MobResomiLHand
     RHand: MobResomiRHand
+    LArm: MobResomiLArm
+    RArm: MobResomiRArm
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     LLeg: MobResomiLLeg
     RLeg: MobResomiRLeg
     LFoot: MobResomiLFoot
     RFoot: MobResomiRFoot
-    Tail: MobHumanoidAnyMarking
+
 
 - type: markingPoints
   id: MobResomiMarkingLimits
   onlyWhitelisted: true
   points:
+    Special:
+      points: 10
+      required: false
     Hair:
       points: 1
       required: false
@@ -48,10 +55,10 @@
       points: 2
       required: false
     Arms:
-      points: 2
+      points: 4
       required: false
     Head:
-      points: 2
+      points: 4
       required: false
     Chest:
       points: 1

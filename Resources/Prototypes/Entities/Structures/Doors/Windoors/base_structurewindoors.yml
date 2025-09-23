@@ -1,11 +1,15 @@
 #Normal windoors
 - type: entity
   id: BaseWindoor
-  parent: BaseStructure
+  parent: [BaseDeltaPressureGlassQuarter, BaseStructure]
   abstract: true
   placement:
     mode: SnapgridCenter
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -159,6 +163,10 @@
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
       - South
+  - type: DeltaPressure
+    minPressure: 250
+    minPressureDelta: 187.5
+    scalingType: Threshold
   - type: Construction
     graph: Windoor
     node: windoor
@@ -170,7 +178,7 @@
 
 - type: entity
   id: BaseSecureWindoor
-  parent: BaseWindoor
+  parent: [BaseDeltaPressureReinforcedGlassQuarter, BaseWindoor]
   abstract: true
   components:
   - type: Sprite
@@ -231,6 +239,10 @@
   - type: Construction
     graph: Windoor
     node: windoorSecure
+  - type: DeltaPressure
+    minPressure: 3750
+    minPressureDelta: 2500
+    scalingType: Threshold
   - type: StaticPrice
     price: 350
   - type: Tag
@@ -242,7 +254,7 @@
 #Plasma Windoors
 - type: entity
   id: BasePlasmaWindoor
-  parent: BaseWindoor
+  parent: [BaseDeltaPressurePlasmaQuarter, BaseWindoor]
   abstract: true
   components:
   - type: Sprite
@@ -300,6 +312,10 @@
   - type: Construction
     graph: Windoor
     node: pwindoor
+  - type: DeltaPressure
+    minPressure: 18750
+    minPressureDelta: 12500
+    scalingType: Threshold
   - type: StaticPrice
     price: 500
   - type: RadiationBlocker
@@ -307,7 +323,7 @@
 
 - type: entity
   id: BaseSecurePlasmaWindoor
-  parent: BaseSecureWindoor
+  parent: [BaseDeltaPressureReinforcedPlasmaQuarter, BaseSecureWindoor]
   abstract: true
   components:
   - type: Sprite
@@ -366,6 +382,10 @@
   - type: Construction
     graph: Windoor
     node: pwindoorSecure
+  - type: DeltaPressure
+    minPressure: 37500
+    minPressureDelta: 25000
+    scalingType: Threshold
   - type: StaticPrice
     price: 500
   - type: RadiationBlocker
@@ -379,7 +399,7 @@
 #Uranium Windoors
 - type: entity
   id: BaseUraniumWindoor
-  parent: BaseWindoor
+  parent: [BaseDeltaPressurePlasmaQuarter, BaseWindoor]
   abstract: true
   components:
   - type: Sprite
@@ -434,6 +454,10 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: DeltaPressure
+    minPressure: 18750
+    minPressureDelta: 12500
+    scalingType: Threshold
   - type: Construction
     graph: Windoor
     node: uwindoor
@@ -444,7 +468,7 @@
 
 - type: entity
   id: BaseSecureUraniumWindoor
-  parent: BaseSecureWindoor
+  parent: [BaseDeltaPressureReinforcedPlasmaQuarter, BaseSecureWindoor]
   abstract: true
   components:
   - type: Sprite
@@ -500,6 +524,10 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: DeltaPressure
+    minPressure: 37500
+    minPressureDelta: 25000
+    scalingType: Threshold
   - type: Construction
     graph: Windoor
     node: uwindoorSecure

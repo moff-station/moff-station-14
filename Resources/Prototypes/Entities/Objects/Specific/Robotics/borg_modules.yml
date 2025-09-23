@@ -489,6 +489,36 @@
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: tool-module }
 
+- type: entity
+  id: BorgModuleInflatable
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: inflatable cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-inflatable
+  - type: ItemBorgModule
+    hands:
+    - item: InflatableDoorStack
+      hand:
+        emptyRepresentative: InflatableDoorStack
+        emptyLabel: borg-slot-inflatable-door-empty
+        whitelist:
+          tags:
+          - Inflatable
+    - item: InflatableWallStack
+      hand:
+        emptyRepresentative: InflatableWallStack
+        emptyLabel: borg-slot-inflatable-wall-empty
+        whitelist:
+          tags:
+          - Inflatable
+    - item: BoxInflatable
+    - item: WeaponMeleeNeedle
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: inflatable-module }
+
 # cargo modules
 - type: entity
   id: BorgModuleAppraisal
@@ -525,6 +555,15 @@
     - item: Shovel
     - item: MineralScannerUnpowered
     - item: BorgOreBag
+    # Moffstation - Start - Add orehand for salvage borgs
+    - hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+    # Moffstation -End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
 
@@ -544,6 +583,15 @@
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
     - item: OreBagOfHolding
+    # Moffstation - Start - Add orehand for salvage borgs
+    - hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+    # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
 
@@ -629,6 +677,9 @@
         whitelist:
           components:
           - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
     - hand:
         emptyRepresentative: MicroManipulatorStockPart
         emptyLabel: borg-slot-construction-empty
@@ -981,47 +1032,84 @@
   - type: Sprite
     layers:
     - state: service
-    - state: icon-pen
+# Moffstation - Start - Give service borgs some love
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-bartending
   - type: ItemBorgModule
     hands:
-    - item: Pen
-    - item: BooksBag
+#    - item: Pen
+#    - item: BooksBag
+#    - hand:
+#        emptyLabel: borg-slot-documents-empty
+#        emptyRepresentative: BookBase
+#        whitelist:
+#          tags:
+#          - Book
+#          - Dice
+#          - Document
+#          - Figurine
+#          - TabletopBoard
+#          - Write
+#    - hand:
+#        emptyLabel: borg-slot-documents-empty
+#        emptyRepresentative: Paper
+#        whitelist:
+#          tags:
+#          - Book
+#          - Dice
+#          - Document
+#          - Figurine
+#          - TabletopBoard
+#          - Write
+#    - item: HandLabeler
+#    - item: RubberStampApproved
+#    - item: RubberStampDenied
+#    - item: BorgDropper
     - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: BookBase
+        emptyRepresentative: BarSpoon
+        emptyLabel: borg-slot-utensils-empty
         whitelist:
           tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
+          - Utensil
+          - RollingPin
+          - CleaningRag
     - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: Paper
+        emptyRepresentative: FoodBowlBig
+        emptyLabel: borg-slot-dinnerware-empty
         whitelist:
           tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
-    - item: HandLabeler
-    - item: RubberStampApproved
-    - item: RubberStampDenied
-    - item: BorgDropper
-    - item: DrinkShaker
-      hand:
+          - Dinnerware
+    - hand:
         emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: DrinkShaker
+        emptyRepresentative: DrinkGlass
         whitelist:
           components:
           - FitsInDispenser
-    - item: BarSpoon
+    - hand:
+        emptyRepresentative: DrinkWhiskeyBottleFull
+        emptyLabel: borg-slot-bottles-empty
+        whitelist:
+          tags:
+          - DrinkBottle
+    - hand:
+        emptyLabel: borg-slot-ingredients-empty
+        emptyRepresentative: ReagentContainerFlour
+        whitelist:
+          tags:
+          - Ingredient
+          - Condiment
+    - hand:
+        emptyLabel: borg-slot-food-empty
+        emptyRepresentative: FoodCheeseSlice
+        whitelist:
+          components:
+          - Edible
+        blacklist:
+          tags:
+          - DrinkBottle
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: service-module }
+# Moffstation - End
 
 - type: entity
   id: BorgModuleMusique
@@ -1067,12 +1155,33 @@
     layers:
     - state: service
     - state: icon-gardening
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: HydroponicsToolMiniHoe
-    - item: HydroponicsToolSpade
+#    - item: HydroponicsToolSpade
     - item: HydroponicsToolClippers
-    - item: Bucket
+#    - item: Bucket
+    - item: BorgDropper
+    - hand:
+        emptyRepresentative: Bucket
+        emptyLabel: borg-slot-buckets-empty
+        whitelist:
+          tags:
+          - Bucket
+    - hand:
+        emptyRepresentative: AppleSeeds
+        emptyLabel: borg-slot-seeds-empty
+        whitelist:
+          components:
+          - Seed
+    - hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swabs-empty
+        whitelist:
+          components:
+          - BotanySwab
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
 
@@ -1085,11 +1194,27 @@
     layers:
     - state: service
     - state: icon-harvesting
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: HydroponicsToolScythe
+    - item: HydroponicsToolSpade
     - item: HydroponicsToolHatchet
+    - hand:
+        emptyRepresentative: PlantBGoneSpray
+        emptyLabel: borg-slot-sprays-empty
+        whitelist:
+          tags:
+          - Spray
+          - PlantBGone
     - item: PlantBag
+    - hand:
+        emptyRepresentative: FoodApple
+        emptyLabel: borg-slot-produce-empty
+        whitelist:
+          components:
+          - Produce
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: harvesting-module }
 
@@ -1102,11 +1227,25 @@
     layers:
     - state: service
     - state: icon-clown
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: BikeHorn
     - item: ClownRecorder
     - item: BikeHornInstrument
+    - hand:
+        emptyRepresentative: TrashBananaPeel
+        emptyLabel: borg-slot-peels-empty
+        whitelist:
+          tags:
+          - BananaPeel
+    - hand:
+        emptyRepresentative: FoodPieBananaCream
+        emptyLabel: borg-slot-pies-empty
+        whitelist:
+          components:
+          - CreamPie
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: clowning-module }
 
@@ -1132,8 +1271,8 @@
 
 #syndicate modules
 - type: entity
-  id: BorgModuleSyndicateWeapon
   parent: [ BaseBorgModule, BaseProviderBorgModule, BaseSyndicateContraband ]
+  id: BorgModuleSyndicateWeapon
   name: weapon cyborg module
   components:
   - type: Sprite
@@ -1168,8 +1307,8 @@
     price: 2500
 
 - type: entity
-  id: BorgModuleOperative
   parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
+  id: BorgModuleOperative
   name: operative cyborg module
   description: A module that comes with a crowbar, an Emag, an Access Breaker and a syndicate pinpointer.
   components:
@@ -1187,42 +1326,76 @@
       icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-operative-module }
 
 - type: entity
-  id: BorgModuleEsword
   parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
+  id: BorgModuleEsword
   name: energy sword cyborg module
-  description: A module that comes with a double energy sword.
+  description: A weapons module that comes with an energy sword.
   components:
-    - type: Sprite
-      layers:
-      - state: syndicate
-      - state: icon-syndicate
-    - type: ItemBorgModule
-      hands:
-      - item: CyborgEnergySwordDouble
-      - item: PinpointerSyndicateNuclear
-    - type: BorgModuleIcon
-      icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-esword-module }
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: ItemBorgModule
+    hands:
+    - item: CyborgEnergySword
+    - item: PinpointerSyndicateNuclear
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-esword-module }
 
 - type: entity
-  id: BorgModuleL6C
+  id: BorgModuleDoubleEsword
+  parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: double energy sword cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: ItemBorgModule
+    hands:
+    - item: CyborgEnergySwordDouble
+    - item: PinpointerSyndicateNuclear
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-desword-module }
+
+- type: entity
   parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
+  id: BorgModuleL6C
   name: L6C ROW cyborg module
-  description: A module that comes with a L6C.
+  description: A weapons module that comes with a L6C.
   components:
-    - type: Sprite
-      layers:
-      - state: syndicate
-      - state: icon-syndicate
-    - type: ItemBorgModule
-      hands:
-      - item: WeaponLightMachineGunL6C
-      - item: PinpointerSyndicateNuclear
-    - type: BorgModuleIcon
-      icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponLightMachineGunL6C
+    - item: PinpointerSyndicateNuclear
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
 
 - type: entity
-  id: BorgModuleMartyr
+  parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
+  id: BorgModuleC20r
+  name: C20-r ROW cyborg module
+  description: A weapons module that comes with a burst-fire C-20r.
+  components:
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponSubMachineGunC20rROW
+    - item: PinpointerSyndicateNuclear
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-c20r-module }
+
+- type: entity
   parent: [ BaseBorgModule, BaseProviderBorgModule, BaseSyndicateContraband ]
+  id: BorgModuleMartyr
   name: martyr cyborg module
   description: "A module that comes with an explosive you probably don't want to handle yourself."
   components:

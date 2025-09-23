@@ -44,6 +44,7 @@
     damage:
       types:
         Blunt: 1
+  - type: PhysicalComposition #Moffstation - Allows for books to be recycled, you monster.
 
 - type: entity
   parent: BaseItem
@@ -69,6 +70,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
+  - type: PhysicalComposition #Moffstation - Allows for books to be recycled, you monster.
 
 - type: entity
   id: BookSpaceEncyclopedia

@@ -1,3 +1,4 @@
+using Content.Shared.Flash.Components; // Moffstation
 using Content.Shared.Inventory;
 
 namespace Content.Shared.Flash;
@@ -19,3 +20,16 @@ public record struct FlashAttemptEvent(EntityUid Target, EntityUid? User, Entity
 /// </summary>
 [ByRefEvent]
 public record struct AfterFlashedEvent(EntityUid Target, EntityUid? User, EntityUid? Used, bool Melee);
+
+// Moffstation - Start
+/// <summary>
+/// This event is raised on an entity when its flash immunity is changed (or at least our best effort at that, it might
+/// be raised when there's no change). This is usually the result of the entity un/equipping flash-immune gear, but this
+/// is also raised on the gear itself (or a mob if it has the <see cref="FlashImmunityComponent"/> itself).
+/// </summary>
+[ByRefEvent]
+public struct FlashImmunityChangedEvent(bool flashImmune)
+{
+    public readonly bool FlashImmune = flashImmune;
+}
+// Moffstation - End

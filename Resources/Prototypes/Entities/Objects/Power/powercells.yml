@@ -33,6 +33,13 @@
   - type: Appearance
   - type: PowerCellVisuals
   - type: Riggable
+  #Moffstation - Start - Make Powercells recyclable
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 50
+    chemicalComposition:
+      SulfuricAcid: 10
+  #Moffstation - End
 
 - type: entity
   name: potato battery
@@ -52,6 +59,13 @@
   - type: Construction
     graph: PowerCellPotato
     node: potatobattery
+  #Moffstation - Start - Make Powercells recyclable
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 0
+    chemicalComposition:
+      Zinc: 10
+    #Moffstation - End
 
 - type: entity
   name: small-capacity power cell
@@ -228,6 +242,13 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 12 # takes 1 minute to charge itself back to full
+  #Moffstation - Start - Make Powercells recyclable
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 50
+    chemicalComposition:
+      Radium: 5
+  #Moffstation - End
 
 - type: entity
   parent: PowerCellMicroreactor
@@ -264,6 +285,13 @@
     - type: BatterySelfRecharger
       autoRecharge: true
       autoRechargeRate: 40
+  #Moffstation - Start - Make Powercells recyclable
+    - type: PhysicalComposition
+      materialComposition:
+        Steel: 50
+      chemicalComposition:
+        Radium: 5
+  #Moffstation - End
 
 # Power cage (big heavy power cell for big devices)
 

@@ -1,3 +1,4 @@
+using Content.Client._Moffstation.ReadyManifest;    // Moffstation
 using Content.Client.Audio;
 using Content.Client.GameTicking.Managers;
 using Content.Client.LateJoin;
@@ -31,6 +32,7 @@ namespace Content.Client.Lobby
 
         private ClientGameTicker _gameTicker = default!;
         private ContentAudioSystem _contentAudioSystem = default!;
+        private ReadyManifestSystem _readyManifest = default!;  // Moffstation - Ready manifest
 
         protected override Type? LinkedScreenType { get; } = typeof(LobbyGui);
         public LobbyGui? Lobby;
@@ -48,6 +50,7 @@ namespace Content.Client.Lobby
             _gameTicker = _entityManager.System<ClientGameTicker>();
             _contentAudioSystem = _entityManager.System<ContentAudioSystem>();
             _contentAudioSystem.LobbySoundtrackChanged += UpdateLobbySoundtrackInfo;
+            _readyManifest = _entityManager.EntitySysManager.GetEntitySystem<ReadyManifestSystem>(); // Moffstation - Ready manifest
 
             chatController.SetMainChat(true);
 
@@ -67,6 +70,7 @@ namespace Content.Client.Lobby
             UpdateLobbyUi();
 
             Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
+            Lobby.ManifestButton.OnPressed += OnManifestPressed;    // Moffstation - Ready manifest
             Lobby.ReadyButton.OnPressed += OnReadyPressed;
             Lobby.ReadyButton.OnToggled += OnReadyToggled;
 
@@ -87,6 +91,7 @@ namespace Content.Client.Lobby
             _voteManager.ClearPopupContainer();
 
             Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
+            Lobby!.ManifestButton.OnPressed -= OnManifestPressed;   // Moffstation - Ready manifest
             Lobby!.ReadyButton.OnPressed -= OnReadyPressed;
             Lobby!.ReadyButton.OnToggled -= OnReadyToggled;
 
@@ -119,6 +124,13 @@ namespace Content.Client.Lobby
         {
             SetReady(args.Pressed);
         }
+
+        // Moffstation - Start - Ready manifest
+        private void OnManifestPressed(BaseButton.ButtonEventArgs args)
+        {
+            _readyManifest.RequestReadyManifest();
+        }
+        // Moffstation - End
 
         public override void FrameUpdate(FrameEventArgs e)
         {
@@ -182,6 +194,7 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.ToggleMode = false;
                 Lobby!.ReadyButton.Pressed = false;
                 Lobby!.ObserveButton.Disabled = false;
+                Lobby!.ManifestButton.Disabled = true;  // Moffstation - Ready manifest
             }
             else
             {
@@ -190,6 +203,7 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
                 Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
+                Lobby!.ManifestButton.Disabled = false; // Moffstation - Ready manifest
                 Lobby!.ObserveButton.Disabled = true;
             }
 

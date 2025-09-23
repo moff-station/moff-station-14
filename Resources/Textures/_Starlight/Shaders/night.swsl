@@ -1,0 +1,24 @@
+uniform sampler2D SCREEN_TEXTURE;
+
+uniform highp float NightVisionBoost;
+uniform highp float NightVisionThreshold;
+uniform highp vec4 TintColor;
+uniform highp float TintIntensity;
+uniform highp vec3 Brightness;
+
+
+void fragment()
+{
+    COLOR = zTextureSpec(SCREEN_TEXTURE, Pos);
+    highp vec3 finalColor = COLOR.rgb;
+
+    highp float brightness = dot(finalColor, Brightness);
+
+    highp float factor = smoothstep(0.0, NightVisionThreshold, brightness);
+
+    finalColor = mix(finalColor * NightVisionBoost, finalColor, factor);
+
+    finalColor = mix(finalColor, finalColor * TintColor.rgb, (1.0 - factor) * TintIntensity);
+
+    COLOR.rgb = finalColor;
+}

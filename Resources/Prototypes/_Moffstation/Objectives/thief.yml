@@ -1,0 +1,58 @@
+# open-ended
+
+# steal everything not nailed down
+- type: entity
+  parent: BaseThiefObjective
+  id: StealEverythingObjective
+  description: Steal everything you can get away with, so long as its worth a anything.
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Objects/Economy/cash.rsi
+      state: cash
+  - type: SimpleObjective
+    title: objective-condition-steal-everything
+
+# Siphon funds objective, steal money from cargo and other places
+- type: entity
+  parent: BaseThiefObjective
+  id: StealMoneyObjective
+  description: You need money, so steal as much of it as you can.
+  components:
+  - type: Objective
+    difficulty: 1.2
+    icon:
+      sprite: Objects/Economy/cash.rsi
+      state: cash
+  - type: SimpleObjective
+    title: objective-condition-steal-money
+
+# Rob a certain department
+- type: entity
+  parent: [ BaseDepartmentObjective, BaseThiefObjective ]
+  id: RobDepartmentObjective
+  description: This department has some nice goodies, its time to make them your own.
+  components:
+  - type: Objective
+    difficulty: 1.0
+    icon:
+      sprite: Clothing/Hands/Gloves/Color/black.rsi
+      state: icon
+  - type: LocationObjective
+    title: objective-condition-rob-department
+
+# objective to infiltrate a department, thief addition
+- type: entity
+  parent: [ BaseDepartmentObjective, BaseThiefObjective ]
+  id: InfiltrateThiefObjective
+  name: Infiltrate Department
+  description: Pretend to be part of this department, and steal all their stuff.
+  components:
+  - type: Objective
+    difficulty: 1.5
+    icon:
+      sprite: Clothing/Eyes/Glasses/outlawglasses.rsi
+      state: icon
+  - type: LocationObjective
+    title: objective-condition-infiltrate-department
