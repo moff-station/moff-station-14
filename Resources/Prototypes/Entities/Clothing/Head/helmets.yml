@@ -31,7 +31,7 @@
 - type: entity
   parent: [ClothingHeadHelmetArmoredBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
   id: ClothingHeadHelmetBasic
-  # Moffstation - Begin (New Security Helmets) - all changes to this prototype can be overwritten by upstream once #38108 on upstream is merged.
+  # Moffstation - Begin (New Security Helmets) - these changes (not the parent changes) can be overwritten by upstream once #38108 on upstream is merged.
   name: security helmet
   description: A modern, tight helmet, it provides decent protection against most forms of attack, and comes with a detachable visor. A staple of the classic security officer look.
   components:
@@ -496,7 +496,7 @@
 
 #Justice Helmet
 - type: entity
-  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband] # Moffstation - (Foldable Security Helmet) - Changes to this prototype can be reverted once #38108 from upstream is merged into moff.
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband] # Moffstation - Foldable Security Helmet - Changes to this prototype can be reverted once #38108 from upstream is merged into moff.
   id: ClothingHeadHelmetJustice
   name: justice helm
   description: Advanced security gear. Protects the station from ne'er-do-wells.
