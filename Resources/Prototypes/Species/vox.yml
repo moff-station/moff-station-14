@@ -57,15 +57,15 @@
     Snout:
       points: 1
       required: false # CD
-      #defaultMarkings: [ VoxBeak ] # Moffstation
+      defaultMarkings: [ VoxBeak ] # Moffstation
     Arms:
-      points: 6 # CD
-      required: false # CD
-      #defaultMarkings: [ VoxLArmScales, VoxRArmScales, VoxRHandScales, VoxLHandScales ] # Moffstation
+      points: 4
+      required: false
+      defaultMarkings: [ VoxLArmScales, VoxRArmScales, VoxRHandScales, VoxLHandScales ] # Moffstation
     Legs:
-      points: 6 # CD
-      required: false # CD
-      #defaultMarkings: [ VoxLLegScales, VoxRLegScales, VoxRFootScales, VoxLFootScales ] # Moffstation
+      points: 4
+      required: true
+      defaultMarkings: [ VoxLLegScales, VoxRLegScales, VoxRFootScales, VoxLFootScales ] # Moffstation
     UndergarmentTop:
       points: 1
       required: false

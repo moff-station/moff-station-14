@@ -1,19 +1,17 @@
-# Moffstation - Start - Vox Markings
-#- type: marking
-#  id: VoxBeak
-#  bodyPart: Snout
-#  markingCategory: Snout
-#  forcedColoring: true
-#  speciesRestriction: [Vox]
-#  sprites:
-#  - sprite: Mobs/Customization/vox_parts.rsi
-#    state: beak
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-# Moffstation - End
+- type: marking
+  id: VoxBeak
+  bodyPart: Snout
+  markingCategory: Snout
+  forcedColoring: true
+  speciesRestriction: [Vox]
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: beak
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
 - type: marking
   id: VoxLArmScales
@@ -25,13 +23,11 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: l_arm
-# Moffstation - Start - vox markings
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-# Moffstation - end
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
 - type: marking
   id: VoxLLegScales
@@ -43,13 +39,11 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: l_leg
-# Moffstation - Start - vox markings
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-# Moffstation - End
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
 - type: marking
   id: VoxRArmScales
@@ -61,13 +55,11 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_arm
-# Moffstation - Start - vox markings
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-# Moffstation - End
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
 - type: marking
   id: VoxRLegScales
@@ -79,13 +71,11 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_leg
-# Moffstation - Start - vox markings
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-# Moffstation - End
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
 - type: marking
   id: VoxRHandScales
@@ -97,13 +87,11 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_hand
-# Moffstation - Start - vox markings
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-# Moffstation - End
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
 - type: marking
   id: VoxLHandScales
@@ -115,13 +103,11 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: l_hand
-# Moffstation - Start - vox markings
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-# Moffstation - End
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
 - type: marking
   id: VoxLFootScales
@@ -148,25 +134,22 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: r_foot
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#937e3d"
 
-# Moffstation - Start - Vox Markings
-#  coloring:
-#    default:
-#      type:
-#        !type:SimpleColoring
-#        color: "#937e3d"
-
-#- type: marking
-#  id: VoxTail
-#  bodyPart: Tail
-#  markingCategory: Tail
-#  speciesRestriction: [Vox]
-#  forcedColoring: true
-#  sprites:
-#  - sprite: Mobs/Customization/vox_parts.rsi
-#    # Ideally this should use the normal tail sprite and apply an actual mask over it, not just use a butchered sprite
-#    state: tail_stenciled
-# Moffstation - End
+- type: marking
+  id: VoxTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Vox]
+  forcedColoring: true
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    # Ideally this should use the normal tail sprite and apply an actual mask over it, not just use a butchered sprite
+    state: tail_stenciled
 
 - type: marking
   id: VoxTailShort
