@@ -95,7 +95,7 @@
 
 #SWAT Helmet
 - type: entity
-  parent: [ClothingHeadHelmetBase, FoldableHelmetBase, BaseSecurityContraband] # Moffstation - (Foldable Helmets)
+  parent: [ClothingHeadHelmetBase, BaseSecurityContraband]
   id: ClothingHeadHelmetSwat
   name: SWAT helmet
   description: An extremely robust helmet, commonly used by paramilitary forces. This one has the Nanotrasen logo emblazoned on the top.
@@ -115,11 +115,9 @@
         Caustic: 0.95
   - type: ExplosionResistance
     damageCoefficient: 0.75
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #Syndicate SWAT Helmet
 - type: entity
@@ -133,11 +131,9 @@
     sprite: Clothing/Head/Helmets/swat_syndicate.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/swat_syndicate.rsi
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #Light Riot Helmet
 - type: entity
@@ -392,7 +388,7 @@
     sprite: Clothing/Head/Helmets/ert_leader.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_leader.rsi
-    - type: HideLayerClothing
+  - type: HideLayerClothing
     layers:
       Hair: HEAD
 
@@ -407,7 +403,7 @@
     sprite: Clothing/Head/Helmets/ert_security.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_security.rsi
-    - type: HideLayerClothing
+  - type: HideLayerClothing
     layers:
       Hair: HEAD
 
@@ -422,7 +418,7 @@
     sprite: Clothing/Head/Helmets/ert_medic.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_medic.rsi
-    - type: HideLayerClothing
+  - type: HideLayerClothing
     layers:
       Hair: HEAD
 
@@ -437,7 +433,7 @@
     sprite: Clothing/Head/Helmets/ert_engineer.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_engineer.rsi
-    - type: HideLayerClothing
+  - type: HideLayerClothing
     layers:
       Hair: HEAD
 
@@ -452,7 +448,7 @@
     sprite: Clothing/Head/Helmets/ert_janitor.rsi
   - type: Clothing
     sprite: Clothing/Head/Helmets/ert_janitor.rsi
-    - type: HideLayerClothing
+  - type: HideLayerClothing
     layers:
       Hair: HEAD
 
