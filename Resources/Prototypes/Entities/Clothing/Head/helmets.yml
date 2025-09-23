@@ -467,7 +467,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: [ BaseSyndicateContraband, FoldableHelmetBase, ClothingHeadHelmetBase ] # Moffstation - (Foldable Helmets)
+  parent: [ BaseSyndicateContraband, ClothingHeadHelmetBase ]
   id: ClothingHeadHelmetRaid
   name: syndicate raid helmet
   description: An armored helmet for use with the syndicate raid suit. Very stylish.
@@ -483,11 +483,9 @@
         Slash: 0.85
         Piercing: 0.85
         Heat: 0.85
-  # Moffstation - Begin (Foldable Helmets)
-  #- type: HideLayerClothing
-  #  layers:
-  #    Hair: HEAD
-  # Moffstation - End
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #Bone Helmet
 #No need to hide the hair on this one
