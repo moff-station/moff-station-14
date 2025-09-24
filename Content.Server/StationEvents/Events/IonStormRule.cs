@@ -3,8 +3,10 @@ using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Station.Components;
+//Moffstation - EMP Vulnerability - Begin
 using Content.Shared._Moffstation.Traits;
-using Content.Shared._Moffstation.Traits.EntitySystems; //Moffstation - EMP Vulnerability
+using Content.Shared._Moffstation.Traits.EntitySystems;
+//Moffstation - End
 
 namespace Content.Server.StationEvents.Events;
 
