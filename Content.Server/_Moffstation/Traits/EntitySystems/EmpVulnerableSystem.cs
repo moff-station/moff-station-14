@@ -4,7 +4,7 @@ using Content.Server.Emp;
 
 namespace Content.Server._Moffstation.Traits.EntitySystems;
 
-public sealed class EmpVulnerableSystem: SharedEmpVulnerableSystem
+public sealed class EmpVulnerableSystem : SharedEmpVulnerableSystem
 {
     public override void Initialize()
     {
@@ -13,8 +13,8 @@ public sealed class EmpVulnerableSystem: SharedEmpVulnerableSystem
         SubscribeLocalEvent<EmpVulnerableComponent, EmpPulseEvent>(OnEmpPulse);
     }
 
-    private void OnEmpPulse(EntityUid uid, EmpVulnerableComponent component, EmpPulseEvent ev)
+    private void OnEmpPulse(Entity<EmpVulnerableComponent> entity, ref EmpPulseEvent ev)
     {
-        Disrupt(uid, component.EmpStunDuration);
+        Disrupt(entity, entity.Comp.EmpStunDuration, entity.Comp.SlowTo);
     }
 }

@@ -1,7 +1,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Moffstation.Traits;
+namespace Content.Shared._Moffstation.Traits.Components;
 
 /// <summary>
 /// Entities with this component will have debilitating effects applied to them when under the effects of a recent ion storm or EMP
