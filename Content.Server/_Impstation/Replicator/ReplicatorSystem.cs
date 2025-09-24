@@ -31,15 +31,11 @@ namespace Content.Server._Impstation.Replicator;
 public sealed class ReplicatorSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly PinpointerSystem _pinpointer = default!;
-    [Dependency] private readonly ReplicatorNestSystem _replicatorNest = default!;
     [Dependency] private readonly MindSystem  _mind = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
 
@@ -47,7 +43,6 @@ public sealed class ReplicatorSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ReplicatorComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<ReplicatorComponent, MindRemovedMessage>(OnMindRemoved);
         SubscribeLocalEvent<ReplicatorComponent, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<ReplicatorComponent, ToggleCombatActionEvent>(OnCombatToggle);
@@ -55,25 +50,6 @@ public sealed class ReplicatorSystem : EntitySystem
         SubscribeLocalEvent<ReplicatorComponent, ReplicatorSpawnNestActionEvent>(OnSpawnNestAction);
         SubscribeLocalEvent<ReplicatorComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<ReplicatorComponent, MobStateChangedEvent>(OnMobStateChanged);
-    }
-
-    private void OnMindAdded(Entity<ReplicatorComponent> ent, ref MindAddedMessage args)
-    {
-        if (ent.Comp.HasSpawnedNest)
-            return;
-
-        if (ent.Comp.Queen) // if you're the queen, which you'll only be if you're the first one spawned,
-        {
-            // give the action to spawn a nest.
-            if (!TryComp<MindContainerComponent>(ent, out var mindContainer) || mindContainer.Mind == null)
-                return;
-
-            ent.Comp.Actions.Add(!mindContainer.HasMind
-                ? _actions.AddAction(ent, ent.Comp.SpawnNewNestAction)
-                : _actionContainer.AddAction((EntityUid)mindContainer.Mind, ent.Comp.SpawnNewNestAction));
-
-            ent.Comp.HasSpawnedNest = true;
-        }
     }
 
     private void OnMindRemoved(Entity<ReplicatorComponent> ent, ref MindRemovedMessage args)

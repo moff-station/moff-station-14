@@ -38,6 +38,7 @@ using Robust.Shared.Timing;
 using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Item;
+using Content.Server.Mind;
 using Content.Shared._Impstation.SpawnedFromTracker;
 using Content.Shared._Moffstation.Chasm;
 using Content.Shared.Chasm;
@@ -48,6 +49,7 @@ using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Robust.Server.Audio;
+using Robust.Server.Player;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -57,12 +59,9 @@ namespace Content.Server._Impstation.Replicator;
 
 public sealed class ReplicatorNestSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly ContainerSystem _containerSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
@@ -71,21 +70,16 @@ public sealed class ReplicatorNestSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly PinpointerSystem _pinpointer = default!;
     [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly PullingSystem _pulling = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly EntityStorageSystem _entStorage = default!;
-    [Dependency] private readonly BuckleSystem _buckle = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly ItemSystem _item = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDef = default!;
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly ReplicatorSystem _replicator = default!;
-
+    [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
 
     public override void Initialize()
     {
@@ -255,18 +249,15 @@ public sealed class ReplicatorNestSystem : EntitySystem
             if (!TryComp<ReplicatorComponent>(replicator, out var comp) || comp.UpgradeActions.Count == 0)
                 continue;
 
-            if (comp.HasBeenGivenUpgradeActions == true)
+            if (comp.HasBeenGivenUpgradeActions)
                 continue;
 
-            if (!TryComp<MindContainerComponent>(replicator, out var mindContainer) || mindContainer.Mind == null)
+            if (!_mind.TryGetMind(replicator, out var mind, out _))
                 continue;
 
             foreach (var action in comp.UpgradeActions)
             {
-                if (!mindContainer.HasMind)
-                    comp.Actions.Add(_actions.AddAction(replicator, action));
-                else if (mindContainer.Mind != null)
-                    comp.Actions.Add(_actionContainer.AddAction((EntityUid)mindContainer.Mind, action));
+                _actions.AddAction(ent, action, mind);
             }
             comp.HasBeenGivenUpgradeActions = true;
         }
@@ -399,10 +390,9 @@ public sealed class ReplicatorNestSystem : EntitySystem
             if (upgradedQueen is not { } upgradedQueenNotNull || !TryComp<MindContainerComponent>(upgradedQueen, out var mindContainer) || mindContainer.Mind is not { } mind)
                 return;
 
-            if (!mindContainer.HasMind)
-                upgradedComp.Actions.Add(_actions.AddAction(upgradedQueenNotNull, upgradedComp.SpawnNewNestAction));
-            else
-                upgradedComp.Actions.Add(_actionContainer.AddAction(mind, upgradedComp.SpawnNewNestAction));
+            upgradedComp.Actions.Add(!mindContainer.HasMind
+                ? _actions.AddAction(upgradedQueenNotNull, upgradedComp.SpawnNewNestAction)
+                : _actionContainer.AddAction(mind, upgradedComp.SpawnNewNestAction));
 
             // then add the Crown.
             EnsureComp<ReplicatorSignComponent>(upgradedQueenNotNull);

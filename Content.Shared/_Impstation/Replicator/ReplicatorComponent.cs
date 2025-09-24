@@ -84,5 +84,5 @@ public sealed partial class ReplicatorComponent : Component
 [Serializable, NetSerializable]
 public enum ReplicatorVisuals : byte
 {
-    Combat
+    Combat,
 }

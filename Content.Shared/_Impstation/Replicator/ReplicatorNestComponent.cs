@@ -98,12 +98,6 @@ public sealed partial class ReplicatorNestComponent : Component
     [DataField]
     public EntProtoId ToSpawn = "SpawnPointGhostReplicator";
 
-    /// <summary>
-    /// The action to spawn a new nest.
-    /// </summary>
-    [DataField]
-    public EntProtoId SpawnNewNestAction = "ActionReplicatorSpawnNest";
-
     [DataField]
     public SoundSpecifier FallingSound = new SoundPathSpecifier("/Audio/_Impstation/Effects/falling.ogg");
     [DataField]
