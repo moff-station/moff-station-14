@@ -159,3 +159,39 @@
   sprites:
     - sprite: _Moffstation/Mobs/Customization/resomi_hair.rsi
       state: ResomiLong
+
+- type: marking
+  id: HairResomiColonel
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Resomi]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/resomi_hair.rsi
+      state: ResomiColonel
+
+- type: marking
+  id: HairResomiWedge
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Resomi]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/resomi_hair.rsi
+      state: ResomiWedge
+
+- type: marking
+  id: HairResomiSamurai
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Resomi]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/resomi_hair.rsi
+      state: ResomiSamurai
+
+- type: marking
+  id: HairResomiCube
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Resomi]
+  sprites:
+    - sprite: _Moffstation/Mobs/Customization/resomi_hair.rsi
+      state: ResomiCube
