@@ -20,10 +20,4 @@ public sealed partial class EmpVulnerableComponent: Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public TimeSpan EmpStunDuration = TimeSpan.FromSeconds(10);
-
-    /// <summary>
-    /// Movement speed multiplier for slowing down the target while they are disrupted, assuming they are not stunned
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public float SlowTo = 0.5f;
 }

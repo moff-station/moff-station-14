@@ -15,6 +15,6 @@ public sealed class EmpVulnerableSystem: SharedEmpVulnerableSystem
 
     private void OnEmpPulse(EntityUid uid, EmpVulnerableComponent component, EmpPulseEvent ev)
     {
-        Disrupt(uid, component.EmpStunDuration, component.SlowTo);
+        Disrupt(uid, component.EmpStunDuration);
     }
 }
