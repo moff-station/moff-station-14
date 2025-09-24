@@ -50,7 +50,6 @@ public abstract class SharedEmpVulnerableSystem: EntitySystem
         else
         {
             _stun.TryCrawling(target, time: duration);
-            //_movementMod.TryUpdateMovementSpeedModDuration(target, MovementModStatusSystem.FlashSlowdown, duration, slowTo);
         }
 
         _audio.PlayPredicted(_disruptSound, target, null);
