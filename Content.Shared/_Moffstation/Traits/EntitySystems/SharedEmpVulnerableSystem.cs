@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Traits.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
