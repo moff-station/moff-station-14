@@ -11,3 +11,16 @@
       amount: 1
   products:
     LemonLimeBitters: 6
+
+- type: reaction
+  id: PinkGin
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Gin:
+      amount: 5
+    AngosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
+      amount: 1
+  products:
+    PinkGin: 6
+  

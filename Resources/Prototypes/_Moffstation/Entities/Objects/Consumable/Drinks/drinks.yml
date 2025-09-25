@@ -13,3 +13,19 @@
   - type: Icon
     sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
     state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: PinkGinGlass
+  suffix: lemon lime and bitters
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: PinkGin
+          Quantity: 30
+  - type: Icon
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/ginpink.rsi
+    state: icon

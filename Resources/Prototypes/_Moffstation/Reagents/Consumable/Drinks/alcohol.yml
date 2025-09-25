@@ -15,3 +15,24 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.3
+
+- type: reagent
+  id: PinkGin
+  name: reagent-name-pink-gin
+  parent: BaseDrink
+  desc: reagent-desc-pink-gin
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: pinkgin
+  color: "#ffcbf7"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/ginpink.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  fizziness: 0.2
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
