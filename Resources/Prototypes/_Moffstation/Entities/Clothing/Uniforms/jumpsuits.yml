@@ -91,7 +91,7 @@
 # CMO
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
-  id: ClothingUniformJumpsuitCMOShellSuit
+  id: ClothingUniformJumpsuitCMOShell
   name: chief medical officer's shell suit
   description: A shelly suit for a medical chief.
   components:
@@ -141,9 +141,9 @@
   description: Comfortable breeches for a captain sailing the galaxy
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainconductor.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainnaval.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainconductor.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainnaval.rsi
 
 # QM
 - type: entity
