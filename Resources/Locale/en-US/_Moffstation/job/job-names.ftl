@@ -27,7 +27,8 @@ job-name-salvage-specialist-scavenger = Scavenger
 # Atmospheric Technician
 job-name-atmospheric-technician-plasma-technician = Plasma Technician
 job-name-atmospheric-technician-firefighter = Firefighter
-job-name-atmospheric-technician-senior-atmospheric-technician = Senior Atmospheric Technician
+job-name-atmospheric-technician-senior = Senior Atmospheric Technician
+job-name-atmospheric-technician-assistant = Atmospherics Assistant
 # Station Engineer
 job-name-station-engineer-electrician = Electrician
 job-name-station-engineer-senior-station-engineer = Senior Station Engineer

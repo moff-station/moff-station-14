@@ -42,8 +42,8 @@
 
 - type: entity
   parent: VisitorPDA
-  id: VisitorCrewPDA
-  name: visitor PDA
+  id: TouristPDA
+  name: tourist PDA
   components:
   - type: RenameId
     value: job-name-passenger-tourist

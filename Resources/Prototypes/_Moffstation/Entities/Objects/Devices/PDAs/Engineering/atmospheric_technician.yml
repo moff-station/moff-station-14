@@ -59,9 +59,17 @@
   name: senior atmospheric technician PDA
   components:
   - type: RenameId
-    value: job-name-atmospheric-technician-senior-atmospheric-technician
+    value: job-name-atmospheric-technician-senior
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
         pda-senioratmos
+
+- type: entity
+  parent: AtmosPDA
+  id: AssistantAtmosphericTechnicianPDA
+  name: atmospherics assistant PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-assistant

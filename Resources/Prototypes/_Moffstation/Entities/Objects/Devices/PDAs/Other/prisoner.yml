@@ -7,7 +7,7 @@
   - type: Pda
     id: PrisonerIDCardPerma
   - type: Sprite
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -20,35 +20,6 @@
 
 - type: entity
   parent: PrisonerPDA
-  id: PrisonerPDAAltBase
-  abstract: true
-  name: prisoner alternate PDA
-  components:
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-refuseworker
-  - type: Sprite
-    sprite: _Moffstation/Objects/Devices/pda.rsi
-    layers:
-    - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-convict"
-    - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
-      map: [ "enum.PdaVisualLayers.Flashlight" ]
-      shader: "unshaded"
-      visible: false
-    - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
-      map: [ "enum.PdaVisualLayers.IdLight" ]
-      shader: "unshaded"
-      visible: false
-    - type: Icon
-      sprite: _Moffstation/Objects/Devices/pda.rsi
-
-- type: entity
-  parent: PrisonerPDAAltBase
   id: ConvictPDA
   name: convict PDA
   components:
@@ -61,7 +32,7 @@
         pda-convict
 
 - type: entity
-  parent: PrisonerPDAAltBase
+  parent: PrisonerPDA
   id: DeathRowInmatePDA
   name: death row inmate PDA
   components:
@@ -74,7 +45,7 @@
         pda-deathrow
 
 - type: entity
-  parent: PrisonerPDAAltBase
+  parent: PrisonerPDA
   id: MinimumSecurityPrisonerPDA
   name: minimum security prisoner PDA
   components:
@@ -82,7 +53,7 @@
     value: job-name-prisoner-minimum-security
 
 - type: entity
-  parent: PrisonerPDAAltBase
+  parent: PrisonerPDA
   id: MaximumSecurityPrisonerPDA
   name: maximum security prisoner PDA
   components:
@@ -90,7 +61,7 @@
     value: job-name-prisoner-maximum-security
 
 - type: entity
-  parent: PrisonerPDAAltBase
+  parent: PrisonerPDA
   id: ProtectiveCustodyPrisonerPDA
   name: protective custody prisoner PDA
   components:
@@ -98,7 +69,7 @@
     value: job-name-prisoner-protective-custody
 
 - type: entity
-  parent: PrisonerPDAAltBase
+  parent: PrisonerPDA
   id: FelonPrisonerPDA
   name: felon PDA
   components:
@@ -106,7 +77,7 @@
     value: job-name-prisoner-felon
 
 - type: entity
-  parent: PrisonerPDAAltBase
+  parent: PrisonerPDA
   id: InmatePrisonerPDA
   name: inmate PDA
   components:
@@ -114,10 +85,10 @@
     value: job-name-prisoner-inmate
 
 - type: entity
-  parent: PrisonerPDAAltBase
+  parent: PrisonerPDA
   id: TestSubjectPDA
   name: test subject PDA
   components:
   - type: RenameId
-    value: job-name-prisoner-inmate
+    value: job-name-prisoner-test-subject
     newIcon: "JobIconTestSubject"
