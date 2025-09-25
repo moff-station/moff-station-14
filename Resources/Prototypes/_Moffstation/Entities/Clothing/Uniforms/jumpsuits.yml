@@ -1,3 +1,4 @@
+# Reporter
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpsuitMeteorologist
@@ -9,6 +10,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/meteorologist.rsi
 
+# Prisoner
 - type: entity
   parent: ClothingUniformJumpsuitPrisonerUpstream
   id: ClothingUniformJumpsuitPrisoner
@@ -123,7 +125,7 @@
 # Captain
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
-  id: ClothingUniformJumpsuitCaptainConductorSuit
+  id: ClothingUniformJumpsuitCaptainConductor
   name: captain's conductor suit
   description: An outfit befitting of a captain running a midnight express.
   components:

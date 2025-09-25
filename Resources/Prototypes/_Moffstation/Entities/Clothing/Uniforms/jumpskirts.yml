@@ -1,3 +1,4 @@
+# Maid
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtMaidAtmos
@@ -86,7 +87,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/nursesuit.rsi
 
-
+# Reporter
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtJournalist
@@ -120,6 +121,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/reporter.rsi
 
+# Prisoner
 - type: entity
   parent: ClothingUniformJumpskirtPrisonerUpstream
   id: ClothingUniformJumpskirtPrisoner
