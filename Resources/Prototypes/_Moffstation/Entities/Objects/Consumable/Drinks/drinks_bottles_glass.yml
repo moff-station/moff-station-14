@@ -15,3 +15,6 @@
   - type: Sprite
     sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/angosturabitters.rsi
   - type: Sealable
+  - type: SolutionTransfer
+    canChangeTransferAmount: false
+    transferAmount: 1 # The bottle has a lip on it so you can only add a splash at a time.

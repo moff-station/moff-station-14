@@ -2,15 +2,13 @@
   id: LemonLimeBitters
   reactants:
     Lemonade:
-      amount: 3
+      amount: 10
     JuiceLime:
-      amount: 1
+      amount: 5
     AngosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
       amount: 1
-    Sugar:
-      amount: 1
   products:
-    LemonLimeBitters: 6
+    LemonLimeBitters: 15
 
 - type: reaction
   id: PinkGin
@@ -18,9 +16,9 @@
   - Stir
   reactants:
     Gin:
-      amount: 5
+      amount: 15
     AngosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
       amount: 1
   products:
-    PinkGin: 6
+    PinkGin: 15
   
