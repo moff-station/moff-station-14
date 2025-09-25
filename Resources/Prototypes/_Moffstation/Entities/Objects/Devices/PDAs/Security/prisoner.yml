@@ -1,0 +1,114 @@
+- type: entity
+  parent: BasePDA
+  id: PrisonerPDA
+  name: prisoner PDA
+  description: Red to hide the stains of passenger blood.
+  components:
+  - type: Pda
+    id: PrisonerIDCardPerma
+  - type: Sprite
+    sprite: Objects/Devices/pda.rsi
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-prisoner
+  - type: PdaBorderColor
+    borderColor: "#FF9751"
+  - type: Icon
+    state: "pda-prisoner"
+
+- type: entity
+  parent: PrisonerPDA
+  id: PrisonerPDAAltBase
+  abstract: true
+  name: prisoner alternate PDA
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-convict"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: ConvictPDA
+  name: convict PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-convict
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-convict
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: DeathRowInmatePDA
+  name: death row inmate PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-deathrow
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: MinimumSecurityPrisonerPDA
+  name: minimum security prisoner PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: MaximumSecurityPrisonerPDA
+  name: maximum security prisoner PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: ProtectiveCustodyPrisonerPDA
+  name: protective custody prisoner PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: FelonPrisonerPDA
+  name: felon PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: InmatePrisonerPDA
+  name: inmate PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate

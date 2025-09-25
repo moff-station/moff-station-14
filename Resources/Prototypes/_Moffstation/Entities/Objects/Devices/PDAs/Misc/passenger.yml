@@ -1,0 +1,15 @@
+- type: entity
+  parent: PassengerPDA
+  id: OffDutyCrewPDA
+  name: off-duty crew PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-off-duty-crew
+
+- type: entity
+  parent: VisitorPDA
+  id: VisitorCrewPDA
+  name: visitor PDA
+  components:
+  - type: RenameId
+    value: job-name-visitor
