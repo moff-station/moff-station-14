@@ -42,6 +42,19 @@
 
 - type: entity
   parent: AtmosPDAAltBase
+  id: FirefighterPDA
+  name: Firefighter PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-firefighter
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-plasmatechnician
+
+- type: entity
+  parent: AtmosPDAAltBase
   id: SeniorAtmosphericTechnicianPDA
   name: senior atmospheric technician PDA
   components:

@@ -55,11 +55,11 @@
 
 - type: entity
   parent: MedicalPDAAltBase
-  id: CyrogenicsSpecialistPDA
-  name: cyrogenics specialist PDA
+  id: CryogenicsSpecialistPDA
+  name: cryogenics specialist PDA
   components:
   - type: RenameId
-    value: job-name-medical-doctor-cyrogenics-specialist
+    value: job-name-medical-doctor-cryogenics-specialist
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

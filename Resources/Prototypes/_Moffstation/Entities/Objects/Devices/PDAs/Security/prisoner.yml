@@ -79,7 +79,7 @@
   name: minimum security prisoner PDA
   components:
   - type: RenameId
-    value: job-name-prisoner-death-row-inmate
+    value: job-name-prisoner-minimum-security
 
 - type: entity
   parent: PrisonerPDAAltBase
@@ -87,7 +87,7 @@
   name: maximum security prisoner PDA
   components:
   - type: RenameId
-    value: job-name-prisoner-death-row-inmate
+    value: job-name-prisoner-maximum-security
 
 - type: entity
   parent: PrisonerPDAAltBase
@@ -95,7 +95,7 @@
   name: protective custody prisoner PDA
   components:
   - type: RenameId
-    value: job-name-prisoner-death-row-inmate
+    value: job-name-prisoner-protective-custody
 
 - type: entity
   parent: PrisonerPDAAltBase
@@ -103,7 +103,7 @@
   name: felon PDA
   components:
   - type: RenameId
-    value: job-name-prisoner-death-row-inmate
+    value: job-name-prisoner-felon
 
 - type: entity
   parent: PrisonerPDAAltBase
@@ -111,4 +111,13 @@
   name: inmate PDA
   components:
   - type: RenameId
-    value: job-name-prisoner-death-row-inmate
+    value: job-name-prisoner-inmate
+
+- type: entity
+  parent: PrisonerPDAAltBase
+  id: TestSubjectPDA
+  name: test subject PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-inmate
+    newIcon: "JobIconTestSubject"
