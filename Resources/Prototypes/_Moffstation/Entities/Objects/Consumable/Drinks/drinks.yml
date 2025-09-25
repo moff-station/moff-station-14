@@ -17,7 +17,7 @@
 - type: entity
   parent: DrinkGlass
   id: PinkGinGlass
-  suffix: lemon lime and bitters
+  suffix: pink gin
   components:
   - type: SolutionContainerManager
     solutions:
@@ -28,4 +28,20 @@
           Quantity: 30
   - type: Icon
     sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/ginpink.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: PlatersPunchGlass
+  suffix: planters punch
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: PlantersPunch
+          Quantity: 30
+  - type: Icon
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/planterspunch.rsi
     state: icon

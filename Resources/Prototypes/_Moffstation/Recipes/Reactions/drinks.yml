@@ -22,3 +22,19 @@
   products:
     PinkGin: 15
   
+- type: reaction
+  id: PlantersPunch
+  reactants:
+    Rum:
+      amount: 15
+    Sugar:
+      amount: 5
+    JuiceLime:
+      amount: 5
+    Ice:
+      amount: 5
+    AngosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
+      amount: 1
+  products:
+    PlantersPunch: 30
+  
