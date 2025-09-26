@@ -58,5 +58,10 @@ namespace Content.Shared.Speech
         /// </summary>
         [DataField]
         public float SpeechBubbleOffset = 0f;
+
+        // Moffstation - Start - Long speech
+        [DataField]
+        public TimeSpan? LongSpeechCooldown;
+        // Moffstation - End
     }
 }

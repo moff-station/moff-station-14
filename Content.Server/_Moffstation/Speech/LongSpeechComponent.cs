@@ -15,7 +15,7 @@ public sealed partial class LongSpeechComponent : Component
     /// The max amount of sounds that can be played in one speech
     /// </summary>
     [DataField]
-    public int MaxSyllables = 10;
+    public int MaxSyllables = 7;
 
     [DataField]
     public SoundSpecifier Sound;

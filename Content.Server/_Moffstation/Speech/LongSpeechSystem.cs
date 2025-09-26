@@ -54,6 +54,10 @@ public sealed class LongSpeechSystem : EntitySystem
         longSpeech.Sound = sound;
         longSpeech.Sound.Params = longSpeech.Sound.Params with { Variation = longSpeech.PitchVariation };
 
+        if (ent.Comp.LongSpeechCooldown != null)
+            longSpeech.Cooldown = ent.Comp.LongSpeechCooldown.Value;
+
+
         longSpeech.SyllablesLeft = Math.Min(message.Split(' ').Length, longSpeech.MaxSyllables);
 
     }

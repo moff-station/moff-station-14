@@ -134,6 +134,7 @@
     speechVerb: Resomi
     speechSounds: UnisexResomi
     allowedEmotes: ['Chirp', 'Trill', 'Scree', 'Call', 'Squawk']
+    longSpeechCooldown: 0.35s  # Moffstation - Long speech
   - type: TypingIndicator
     proto: resomi
   - type: Tag
