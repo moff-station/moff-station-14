@@ -1,0 +1,22 @@
+- type: entity
+  parent: BaseGameRule
+  id: ClockworkCult
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: ClockworkCultRule
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ ClockworkCult ]
+      max: 1
+      briefing:
+        text: clockcult-briefing
+        color: "#B18B25"
+        sound: "/Audio/Ambience/Antag/traitor_wawa.ogg"
+      lateJoinAdditional: true
+      allowNonHumans: true
+      components:
+      - type: ClockworkCult
+      mindRoles:
+      - MindRoleClockworkCultist

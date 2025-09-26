@@ -1,13 +1,13 @@
-#- type: antag
-#  id: ClockCult
-#  name: roles-antag-clock-cult-name
-#  antagonist: true
+- type: antag
+  id: ClockCult
+  name: roles-antag-clockcultist-name
+#  antagonist: true #Commented out until it's game ready
 #  setPreference: true
-#  objective: roles-antag-clock-cult-objective
-#  requirements:
-#  - !type:OverallPlaytimeRequirement
-#    time: 36000 # 10h
-#  guides: [ ClockCult ]
+  objective: roles-antag-clockcultist-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 36000 # 10h
+  guides: [ ClockCult ]
 
 - type: startingGear
   id: JobClockCult
