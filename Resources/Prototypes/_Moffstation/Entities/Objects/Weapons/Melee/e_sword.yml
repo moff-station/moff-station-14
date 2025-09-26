@@ -5,48 +5,15 @@
   name: The God Slayer
   description: Dread it. Run from it. Destiny still arrives.
   components:
-  - type: MeleeWeapon
-    wideAnimationRotation: 180
-    attackRate: 0.8 
-    angle: 100
-    range: 2.0
-    damage:
-      types:
-        Blunt: 4.5
   - type: ItemToggleMeleeWeapon
-    activatedSoundOnSwing:
-      path: /Audio/Weapons/eblademiss.ogg
-      params:
-        volume: -3
-        variation: 0.250
     activatedDamage:
       types:
         Slash: 100
         Heat: 100
         Structural: 300 
-  - type: MeleeRequiresWield
   - type: HeldSpeedModifier 
     walkModifier: 0.15
     sprintModifier: 0.15
-  - type: UseDelay
-    delay: 1.5
-  - type: Sprite
-    sprite: Objects/Weapons/Melee/hypereutactic_blade.rsi
-    layers:
-    - state: hypereutactic
-    - state: hypereutactic_blade
-      color: "#FFFFFF"
-      visible: false
-      shader: unshaded
-      map: [ "blade" ]
-    - state: hypereutactic_gem
-      color: "#FFFFFF"
-      visible: false
-      shader: unshaded
-      map: [ "gem" ]
-  - type: Item
-    size: Small
-    sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
     reflectProb: 1
     spread: 20
