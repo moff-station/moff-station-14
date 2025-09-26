@@ -5,14 +5,14 @@
   - type: Sprite
     layers:
     - state: borg
-      map: [ "enum.BorgVisualLayers.Body", "movement" ]
+      map: ["enum.BorgVisualLayers.Body", "movement"]
     - state: borg_e_r
-      map: [ "enum.BorgVisualLayers.Light" ]
+      map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
     - state: borg_l
       shader: unshaded
-      map: [ "light","enum.BorgVisualLayers.LightStatus" ]
+      map: ["light","enum.BorgVisualLayers.LightStatus"]
       visible: false
   - type: BorgChassis
     # Default borg can take no modules until selected type.
@@ -21,7 +21,7 @@
     noMindState: borg_e_r
   - type: BorgTransponder
     sprite:
-      sprite: Mobs/Silicon/Chassis/generic.rsi
+      sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi
       state: generic
     name: cyborg
   - type: InteractionPopup
