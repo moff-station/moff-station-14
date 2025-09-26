@@ -9,7 +9,13 @@ public sealed partial class LongSpeechComponent : Component
     public int SyllablesLeft;
 
     [DataField]
-    public SoundSpecifier? Sound;
+    public int MaxSyllables = 10;
+
+    [DataField]
+    public SoundSpecifier Sound;
+
+    [DataField]
+    public float PitchVariation = 0.2f;
 
     [DataField]
     public string Message;
@@ -18,7 +24,7 @@ public sealed partial class LongSpeechComponent : Component
     public TimeSpan Cooldown = TimeSpan.FromSeconds(0.2f);
 
     [DataField]
-    public TimeSpan Variation = TimeSpan.FromSeconds(0.05f);
+    public float TimeVariation = 0.05f;
 
     [DataField]
     public TimeSpan NextSpeak;

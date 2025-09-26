@@ -17,6 +17,7 @@ namespace Content.Server.Speech
         [Dependency] private readonly IPrototypeManager _protoManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
+        [Dependency] private readonly LongSpeechSystem _longSpeech = default!;
 
         public override void Initialize()
         {
@@ -73,11 +74,8 @@ namespace Content.Server.Speech
 
             var sound = GetSpeechSound((uid, component), args.Message);
             component.LastTimeSoundPlayed = currentTime;
-            // _audio.PlayPvs(sound, uid);
-            var longSpeech = EnsureComp<LongSpeechComponent>(uid);
-            longSpeech.Sound = sound;
-            longSpeech.Message = args.Message;
-            longSpeech.SyllablesLeft = 3;
+            // _audio.PlayPvs(sound, uid);  // Moffstation - Speak out sentences
+            _longSpeech.SpeakSentence((uid, component), args.Message);  // Moffstation - Speak out sentences
         }
     }
 }
