@@ -1,3 +1,4 @@
+using Content.Server._Moffstation.Speech;
 using Robust.Shared.Audio;
 using Content.Server.Chat;
 using Content.Server.Chat.Systems;
@@ -72,7 +73,11 @@ namespace Content.Server.Speech
 
             var sound = GetSpeechSound((uid, component), args.Message);
             component.LastTimeSoundPlayed = currentTime;
-            _audio.PlayPvs(sound, uid);
+            // _audio.PlayPvs(sound, uid);
+            var longSpeech = EnsureComp<LongSpeechComponent>(uid);
+            longSpeech.Sound = sound;
+            longSpeech.Message = args.Message;
+            longSpeech.SyllablesLeft = 3;
         }
     }
 }
