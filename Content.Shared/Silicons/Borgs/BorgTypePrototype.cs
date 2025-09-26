@@ -106,7 +106,7 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// The path to the borg type's sprites.
     /// </summary>
     [DataField]
-    public string SpritePath { get; set; } = "Mobs/Silicon/Chassis/generic.rsi";
+    public string SpritePath { get; set; } = "_Moffstation/Mobs/Silicon/Chassis/generic.rsi";
 
     /// <summary>
     /// The sprite state for the main borg body.
