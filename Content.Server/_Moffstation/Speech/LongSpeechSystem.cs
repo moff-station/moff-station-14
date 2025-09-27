@@ -47,6 +47,7 @@ public sealed class LongSpeechSystem : EntitySystem
             RemCompDeferred<LongSpeechComponent>(ent);
             return;
         }
+
         longSpeech.Params = sound.Params.WithVariation(longSpeech.PitchVariation);
         longSpeech.Sound = _audio.ResolveSound(sound);
         longSpeech.Cooldown = _audio.GetAudioLength(longSpeech.Sound);
