@@ -1,3 +1,4 @@
+using Content.Server._Moffstation.Speech;   // Moffstation - long speech
 using Robust.Shared.Audio;
 using Content.Server.Chat;
 using Content.Server.Chat.Systems;
@@ -16,6 +17,7 @@ namespace Content.Server.Speech
         [Dependency] private readonly IPrototypeManager _protoManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
+        [Dependency] private readonly LongSpeechSystem _longSpeech = default!;  // Moffstation - Long speech
 
         public override void Initialize()
         {
@@ -72,7 +74,8 @@ namespace Content.Server.Speech
 
             var sound = GetSpeechSound((uid, component), args.Message);
             component.LastTimeSoundPlayed = currentTime;
-            _audio.PlayPvs(sound, uid);
+            // _audio.PlayPvs(sound, uid);  // Moffstation - Speak out sentences
+            _longSpeech.SpeakSentence((uid, component), args.Message);  // Moffstation - Speak out sentences
         }
     }
 }
