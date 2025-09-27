@@ -30,10 +30,7 @@
           sprite: _Moffstation/Mobs/Silicon/Displacements/generic.rsi
           state: neck
   # Moffstation - End
-  spriteBodyState: robot
-  spriteHasMindState: robot_e
-  spriteNoMindState: robot_e_r
-  spriteToggleLightState: robot_l
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/generic.rsi # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-generic-cyborg
@@ -74,10 +71,7 @@
           sprite: _Moffstation/Mobs/Silicon/Displacements/engineer.rsi
           state: neck
   # Moffstation - End
-  spriteBodyState: engineer
-  spriteHasMindState: engineer_e
-  spriteNoMindState: engineer_e_r
-  spriteToggleLightState: engineer_l
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/engineer.rsi # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-engineer-cyborg
@@ -118,11 +112,8 @@
           sprite: _Moffstation/Mobs/Silicon/Displacements/mining.rsi
           state: neck
   # Moffstation - End
-  spriteBodyState: miner
-  spriteBodyMovementState: miner_moving
-  spriteHasMindState: miner_e
-  spriteNoMindState: miner_e_r
-  spriteToggleLightState: miner_l
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/miner.rsi # Moffstation - Early merge of Borg RSI fix
+  spriteBodyMovementState: borg_moving # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-salvage-cyborg
@@ -162,11 +153,8 @@
           sprite: _Moffstation/Mobs/Silicon/Displacements/janitor.rsi
           state: neck
   # Moffstation - End
-  spriteBodyState: janitor
-  spriteBodyMovementState: janitor_moving
-  spriteHasMindState: janitor_e
-  spriteNoMindState: janitor_e_r
-  spriteToggleLightState: janitor_l
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/janitor.rsi # Moffstation - Early merge of Borg RSI fix
+  spriteBodyMovementState: borg_moving # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-janitor-cyborg
@@ -216,11 +204,8 @@
           sprite: _Moffstation/Mobs/Silicon/Displacements/medical.rsi
           state: neck
   # Moffstation - End
-  spriteBodyState: medical
-  spriteBodyMovementState: medical_moving
-  spriteHasMindState: medical_e
-  spriteNoMindState: medical_e_r
-  spriteToggleLightState: medical_l
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/medical.rsi # Moffstation - Early merge of Borg RSI fix
+  spriteBodyMovementState: borg_moving # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-medical-cyborg
@@ -263,10 +248,7 @@
 
   # Visual
   inventoryTemplateId: borgHumanoid  # Moffstation - Changed service to use a different inventory template since it's actually just human proportioned
-  spriteBodyState: service
-  spriteHasMindState: service_e
-  spriteNoMindState: service_e_r
-  spriteToggleLightState: service_l
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/service.rsi # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-service-cyborg
