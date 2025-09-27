@@ -9,17 +9,25 @@ public sealed partial class LongSpeechComponent : Component
     /// How many sounds are left in the currect speech
     /// </summary>
     [DataField]
-    public int SyllablesLeft;
+    public int WordCount;
 
     /// <summary>
     /// The max amount of sounds that can be played in one speech
     /// </summary>
     [DataField]
-    public int MaxSyllables = 7;
+    public int MaxWords = 7;
 
     [DataField]
-    public SoundSpecifier Sound;
+    public ResolvedSoundSpecifier? Sound;
 
+    [DataField]
+    public AudioParams Params;
+
+    [DataField]
+    public TimeSpan Cooldown;
+
+    [DataField]
+    public TimeSpan NextSpeak;
     /// <summary>
     /// The pitch variation applied to the speech
     /// </summary>
@@ -28,16 +36,4 @@ public sealed partial class LongSpeechComponent : Component
 
     [DataField]
     public string Message;
-
-    [DataField]
-    public TimeSpan Cooldown = TimeSpan.FromSeconds(0.2f);
-
-    /// <summary>
-    /// The time variation in seconds on the cooldown
-    /// </summary>
-    [DataField]
-    public float TimeVariation;
-
-    [DataField]
-    public TimeSpan NextSpeak;
 }

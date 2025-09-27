@@ -11,7 +11,6 @@ public sealed class LongSpeechSystem : EntitySystem
     [Dependency] private readonly SpeechSoundSystem _speechSound = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Update(float frameTime)
     {
@@ -23,18 +22,15 @@ public sealed class LongSpeechSystem : EntitySystem
             if (longSpeech.NextSpeak > _gameTiming.CurTime)
                 continue;
 
-            if (longSpeech.SyllablesLeft <= 0)
+            if (longSpeech.WordCount <= 0)
             {
                 RemCompDeferred<LongSpeechComponent>(uid);
                 continue;
             }
 
-            _audio.PlayPvs(longSpeech.Sound, uid);
-
-            longSpeech.SyllablesLeft--;
-            longSpeech.NextSpeak = _gameTiming.CurTime +
-                                   longSpeech.Cooldown +
-                                   TimeSpan.FromSeconds(_random.NextFloat(-longSpeech.TimeVariation, longSpeech.TimeVariation));
+            longSpeech.WordCount--;
+            longSpeech.NextSpeak = _gameTiming.CurTime + longSpeech.Cooldown;
+            _audio.PlayPvs(longSpeech.Sound, uid, longSpeech.Params);
         }
     }
 
@@ -51,14 +47,9 @@ public sealed class LongSpeechSystem : EntitySystem
             RemCompDeferred<LongSpeechComponent>(ent);
             return;
         }
-        longSpeech.Sound = sound;
-        longSpeech.Sound.Params = longSpeech.Sound.Params with { Variation = longSpeech.PitchVariation };
-
-        if (ent.Comp.LongSpeechCooldown != null)
-            longSpeech.Cooldown = ent.Comp.LongSpeechCooldown.Value;
-
-
-        longSpeech.SyllablesLeft = Math.Min(message.Split(' ').Length, longSpeech.MaxSyllables);
-
+        longSpeech.Params = sound.Params.WithVariation(longSpeech.PitchVariation);
+        longSpeech.Sound = _audio.ResolveSound(sound);
+        longSpeech.WordCount = Math.Min(message.Split(' ').Length, longSpeech.MaxWords);
+        longSpeech.Cooldown = _audio.GetAudioLength(longSpeech.Sound);
     }
 }
