@@ -105,6 +105,8 @@
   - AtmosPDA # Keep default PDA on top of the list
   - PlasmaTechnicianPDA
   - SeniorAtmosphericTechnicianPDA
+  - FirefighterPDA
+  - AssistantAtmosphericTechnicianPDA
 
 ## Medical
 # Chemist
@@ -266,6 +268,10 @@
   - PassengerPDA # Keep default PDA on top of the list
   - OffDutyCrewPDA
   - VisitorCrewPDA
+  - OffDutyStaffPDA
+  - AssistantPDA
+  - FreelancerPDA
+  - TouristPDA
 
 # Prisoner
 - type: loadoutGroup
@@ -293,3 +299,9 @@
   - PrisonerPDA # Keep default PDA on top of the list
   - ConvictPDA
   - DeathRowInmatePDA
+  - MinimumSecurityPrisonerPDA
+  - MaximumSecurityPrisonerPDA
+  - ProtectiveCustodyPrisonerPDA
+  - FelonPrisonerPDA
+  - InmatePrisonerPDA
+  - TestSubjectPDA

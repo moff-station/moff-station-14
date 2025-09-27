@@ -3,13 +3,40 @@
   id: OffDutyCrewPDA
   equipment:
     id: OffDutyCrewPDA
+  groupBy: "passenger roles"
 
 - type: loadout
   id: PassengerPDA
   equipment:
     id: PassengerPDA
+  groupBy: "passenger roles"
+
+- type: loadout
+  id: OffDutyStaffPDA
+  equipment:
+    id: OffDutyStaffPDA
+  groupBy: "passenger roles"
+
+- type: loadout
+  id: AssistantPDA
+  equipment:
+    id: AssistantPDA
+  groupBy: "passenger roles"
+
+- type: loadout
+  id: FreelancerPDA
+  equipment:
+    id: FreelancerPDA
+  groupBy: "visitor roles"
+
+- type: loadout
+  id: TouristPDA
+  equipment:
+    id: TouristPDA
+  groupBy: "visitor roles"
 
 - type: loadout
   id: VisitorCrewPDA
   equipment:
     id: VisitorCrewPDA
+  groupBy: "visitor roles"
