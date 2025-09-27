@@ -1,0 +1,19 @@
+- type: entity #admeme version of Hypereutactic Blade
+  parent: HyperEutacticBlade
+  id: GodSlayer
+  suffix: Admeme
+  name: The God Slayer
+  description: Dread it. Run from it. Destiny still arrives.
+  components:
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Slash: 100
+        Heat: 100
+        Structural: 300 
+  - type: HeldSpeedModifier 
+    walkModifier: 0.15
+    sprintModifier: 0.15
+  - type: Reflect
+    reflectProb: 1
+    spread: 20
