@@ -1,0 +1,20 @@
+- type: entity
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
+  id: DrinkAstrosturaBittersBottleFull
+  name: astrostura bitters bottle
+  description: A common mixer used to spice drinks.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: AstrosturaBitters
+          Quantity: 50
+  - type: Label
+    currentLabel: reagent-name-astrosturabitters
+  - type: Sprite
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/astrosturabitters.rsi
+  - type: Sealable
+  - type: SolutionTransfer
+    canChangeTransferAmount: false
+    transferAmount: 1 # The bottle has a lip on it so you can only add a splash at a time.
