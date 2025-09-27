@@ -302,10 +302,12 @@
   - type: Sprite
     layers:
     - state: green
+    # Moffstation - Start - Early merge of Borg RSI fix
     - sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi
       state: borg
     - sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi
       state: borg_e
+    # Moffstation - End
 
 # Command
 

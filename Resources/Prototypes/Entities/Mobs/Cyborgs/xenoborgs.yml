@@ -8,24 +8,24 @@
   - type: BorgTransponder
     name: engi xenoborg
     sprite:
-      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_engi.rsi
-      state: borg
+      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_engi.rsi # Moffstation - Early merge of Borg RSI fix
+      state: borg # Moffstation - Early merge of Borg RSI fix
   - type: Sprite
-    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_engi.rsi
+    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_engi.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: borg
-    - state: borg_e
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: borg_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
   - type: BorgChassis
     maxModules: 7
-    hasMindState: borg_e
-    noMindState: borg_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
     moduleWhitelist:
       tags:
       - XenoborgModuleGeneric
@@ -64,24 +64,24 @@
   - type: BorgTransponder
     name: heavy xenoborg
     sprite:
-      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_heavy.rsi
-      state: borg
+      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_heavy.rsi # Moffstation - Early merge of Borg RSI fix
+      state: borg # Moffstation - Early merge of Borg RSI fix
   - type: Sprite
-    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_heavy.rsi
+    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_heavy.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: borg
-    - state: borg_e
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: borg_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
   - type: BorgChassis
     maxModules: 4
-    hasMindState: borg_e
-    noMindState: borg_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
     moduleWhitelist:
       tags:
       - XenoborgModuleGeneric
@@ -152,17 +152,17 @@
   - type: BorgTransponder
     name: scout xenoborg
     sprite:
-      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_scout.rsi
-      state: borg
+      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_scout.rsi # Moffstation - Early merge of Borg RSI fix
+      state: borg # Moffstation - Early merge of Borg RSI fix
   - type: Sprite
-    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_scout.rsi
+    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_scout.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-      - state: borg
-      - state: borg_e
+      - state: borg # Moffstation - Early merge of Borg RSI fix
+      - state: borg_e # Moffstation - Early merge of Borg RSI fix
         map: ["enum.BorgVisualLayers.Light"]
         shader: unshaded
         visible: false
-      - state: borg_l
+      - state: borg_l # Moffstation - Early merge of Borg RSI fix
         shader: unshaded
         map: ["light"]
         visible: false
@@ -172,8 +172,8 @@
   - type: FlashImmunity
   - type: BorgChassis
     maxModules: 4
-    hasMindState: borg_e
-    noMindState: borg_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
     moduleWhitelist:
       tags:
       - XenoborgModuleGeneric
@@ -206,17 +206,17 @@
   - type: BorgTransponder
     name: stealth xenoborg
     sprite:
-      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_stealth.rsi
-      state: borg
+      sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_stealth.rsi # Moffstation - Early merge of Borg RSI fix
+      state: borg # Moffstation - Early merge of Borg RSI fix
   - type: Sprite
-    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_stealth.rsi
+    sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_stealth.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-      - state: borg
-      - state: borg_e
+      - state: borg # Moffstation - Early merge of Borg RSI fix
+      - state: borg_e # Moffstation - Early merge of Borg RSI fix
         map: ["enum.BorgVisualLayers.Light"]
         shader: unshaded
         visible: false
-      - state: borg_l
+      - state: borg_l # Moffstation - Early merge of Borg RSI fix
         shader: unshaded
         map: ["light"]
         visible: false
@@ -225,8 +225,8 @@
       collection: FootstepHoverXenoborg
   - type: BorgChassis
     maxModules: 5
-    hasMindState: borg_e
-    noMindState: borg_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
     moduleWhitelist:
       tags:
       - XenoborgModuleGeneric
