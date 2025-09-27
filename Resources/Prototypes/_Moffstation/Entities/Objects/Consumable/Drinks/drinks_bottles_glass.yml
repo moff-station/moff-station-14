@@ -1,19 +1,19 @@
 - type: entity
   parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
-  id: DrinkAngosturaBittersBottleFull
-  name: angostura bitters bottle
+  id: DrinkAstrosturaBittersBottleFull
+  name: astrostura bitters bottle
   description: A common mixer used to spice drinks.
   components:
   - type: SolutionContainerManager
     solutions:
       drink:
         reagents:
-        - ReagentId: AngosturaBitters
+        - ReagentId: AstrosturaBitters
           Quantity: 50
   - type: Label
-    currentLabel: reagent-name-angosturabitters
+    currentLabel: reagent-name-astrosturabitters
   - type: Sprite
-    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/angosturabitters.rsi
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/astrosturabitters.rsi
   - type: Sealable
   - type: SolutionTransfer
     canChangeTransferAmount: false

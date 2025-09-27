@@ -5,10 +5,10 @@
       amount: 10
     JuiceLime:
       amount: 5
-    AngosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
+    AstrosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
       amount: 1
   products:
-    LemonLimeBitters: 15
+    LemonLimeBitters: 16
 
 - type: reaction
   id: PinkGin
@@ -17,24 +17,22 @@
   reactants:
     Gin:
       amount: 15
-    AngosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
+    AstrosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
       amount: 1
   products:
-    PinkGin: 15
+    PinkGin: 16
   
 - type: reaction
   id: PlantersPunch
+  requiredMixerCategories:
+  - Stir
   reactants:
+    Caipirinha:
+      amount: 10
     Rum:
-      amount: 15
-    Sugar:
       amount: 5
-    JuiceLime:
-      amount: 5
-    Ice:
-      amount: 5
-    AngosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
+    AstrosturaBitters: # Never use more than 1 amount for drink, cause your only supposed to put in small dashes of Bitters.
       amount: 1
   products:
-    PlantersPunch: 30
+    PlantersPunch: 16
   
