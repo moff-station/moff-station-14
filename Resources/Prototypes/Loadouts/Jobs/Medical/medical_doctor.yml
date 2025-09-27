@@ -119,16 +119,19 @@
   id: MedicalDoctorBackpack
   equipment:
     back: ClothingBackpackMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: MedicalDoctorSatchel
   equipment:
     back: ClothingBackpackSatchelMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: MedicalDoctorDuffel
   equipment:
     back: ClothingBackpackDuffelMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 # OuterClothing
 - type: loadout

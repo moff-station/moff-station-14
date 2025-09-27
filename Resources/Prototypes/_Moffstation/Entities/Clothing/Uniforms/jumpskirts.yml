@@ -1,3 +1,4 @@
+# Maid
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtMaidAtmos
@@ -86,7 +87,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/nursesuit.rsi
 
-
+# Reporter
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtJournalist
@@ -120,6 +121,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/reporter.rsi
 
+# Prisoner
 - type: entity
   parent: ClothingUniformJumpskirtPrisonerUpstream
   id: ClothingUniformJumpskirtPrisoner
@@ -164,3 +166,73 @@
     - ClothMade
     - PrisonUniform
     - WhitelistChameleon
+
+# HoP
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtHoPFormal
+  name: head of personnel's formal skirt
+  description: A skirt for special paperwork filing.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hopformal.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hopformal.rsi
+
+# CMO
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtCMOShell
+  name: chief medical officer's shell skirt
+  description: A shelly skirt for a medical chief.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmoshell.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmoshell.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtCMOFlowing
+  name: chief medical officer's flowing skirt
+  description: An elegant skirt for a graceful medical doctor.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmoflowing.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmoflowing.rsi
+
+# Captain
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtCaptainConductor
+  name: captain's conductor skirt
+  description: An outfit befitting of a captain running a midnight express.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/captainconductor.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/captainconductor.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtCaptainNaval
+  name: captain's naval breeches
+  description: Comfortable breeches for a captain sailing the galaxy
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/captainnaval.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/captainnaval.rsi
+
+# QM
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtQMVista
+  name: quartermaster's vista skirt
+  description: An outfit for a quartermaster who isn't afraid to put in the miles themselves for some sweet spessos (cargo shorts not included).
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qmvista.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qmvista.rsi

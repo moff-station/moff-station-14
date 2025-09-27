@@ -85,16 +85,19 @@
   id: CommonBackpack
   equipment:
     back: ClothingBackpack
+  groupBy: "standard backpacks" # Moffstation - New drip
 
 - type: loadout
   id: CommonSatchel
   equipment:
     back: ClothingBackpackSatchel
+  groupBy: "standard backpacks" # Moffstation - New drip
 
 - type: loadout
   id: CommonDuffel
   equipment:
     back: ClothingBackpackDuffel
+  groupBy: "standard backpacks" # Moffstation - New drip
 
 # Gloves
 - type: loadout

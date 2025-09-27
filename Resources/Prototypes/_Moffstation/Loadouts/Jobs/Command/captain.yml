@@ -1,0 +1,41 @@
+# Hats
+- type: loadout
+  id: CaptainConductor
+  equipment:
+    head: ClothingHeadHatCaptainConductor
+
+- type: loadout
+  id: CaptainTricorn
+  equipment:
+    head: ClothingHeadHatCaptainTricorn
+
+# Outer Clothing
+- type: loadout
+  id: CaptainLongcoat
+  equipment:
+    outerClothing: ClothingOuterCoatCaptainLongcoat
+
+# Jumpsuits
+- type: loadout
+  id: CaptainJumpsuitConductor
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptainConductor
+  groupBy: "captain jumpsuits"
+
+- type: loadout
+  id: CaptainJumpskirtConductor
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCaptainConductor
+  groupBy: "captain jumpskirts"
+
+- type: loadout
+  id: CaptainJumpsuitNaval
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptainNaval
+  groupBy: "captain jumpsuits"
+
+- type: loadout
+  id: CaptainJumpskirtNaval
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCaptainNaval
+  groupBy: "captain jumpskirts"

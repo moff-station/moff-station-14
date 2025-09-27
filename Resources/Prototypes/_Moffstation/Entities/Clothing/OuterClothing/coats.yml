@@ -1,0 +1,34 @@
+# Pirates
+- type: entity
+  parent: ClothingOuterCoatPirate
+  id: ClothingOuterCoatPirateRed
+  name: red pirate garb
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/OuterClothing/Coats/pirate_captain.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/OuterClothing/Coats/pirate_captain.rsi
+
+# Captain
+- type: entity
+  parent: [ClothingOuterArmorCaptainCarapace, BaseCommandContraband]
+  id: ClothingOuterCoatCaptainLongcoat
+  name: captain's longcoat
+  description: A longcoat befitting of a captain sailing the galaxy, weaved with specially resistant durathread.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captainlongcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captainlongcoat.rsi
+
+# RD
+- type: entity
+  parent: [ClothingOuterBase, BaseCommandContraband]
+  id: ClothingOuterCoatRDVisionary
+  name: research director's visionary coat
+  description: A black cloak with violet stripes, showing off your impeccable intellect and fashion sense.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/rdvisionary.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/rdvisionary.rsi
