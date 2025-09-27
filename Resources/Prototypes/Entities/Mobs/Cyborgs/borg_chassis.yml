@@ -277,10 +277,10 @@
   - type: SpriteMovement
     movementLayers:
       movement:
-        state: borg_moving
+        state: borg_moving # Moffstation - Early merge of Borg RSI fix
     noMovementLayers:
       movement:
-        state: borg
+        state: borg # Moffstation - Early merge of Borg RSI fix
   - type: BorgChassis
     maxModules: 5 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:
@@ -312,10 +312,10 @@
   - type: SpriteMovement
     movementLayers:
       movement:
-        state: borg_moving
+        state: borg_moving # Moffstation - Early merge of Borg RSI fix
     noMovementLayers:
       movement:
-        state: borg
+        state: borg # Moffstation - Early merge of Borg RSI fix
   - type: BorgChassis
     maxModules: 6 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:
@@ -354,10 +354,10 @@
   - type: SpriteMovement
     movementLayers:
       movement:
-        state: borg_moving
+        state: borg_moving # Moffstation - Early merge of Borg RSI fix
     noMovementLayers:
       movement:
-        state: borg
+        state: borg # Moffstation - Early merge of Borg RSI fix
   - type: BorgChassis
     maxModules: 6 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:

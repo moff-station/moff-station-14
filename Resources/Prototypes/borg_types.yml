@@ -153,8 +153,8 @@
           sprite: _Moffstation/Mobs/Silicon/Displacements/janitor.rsi
           state: neck
   # Moffstation - End
-  spritePath: _Moffstation/Mobs/Silicon/Chassis/janitor.rsi
-  spriteBodyMovementState: borg_moving
+  spritePath: _Moffstation/Mobs/Silicon/Chassis/janitor.rsi # Moffstation - Early merge of Borg RSI fix
+  spriteBodyMovementState: borg_moving # Moffstation - Early merge of Borg RSI fix
 
   # Pet
   petSuccessString: petting-success-janitor-cyborg
