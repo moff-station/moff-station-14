@@ -51,7 +51,7 @@
 #    gloves: ClothingHandsGlovesCombat # Moffstation - Removing items duplicated by the loadout
     outerClothing: ClothingOuterHardsuitSyndie
     shoes: ClothingShoesBootsCombatFilled
-    id: SyndiPDA
+    id: SyndiOperativePDA
     pocket2: PlushieCarp
     belt: ClothingBeltMilitaryWebbing
   storage:
@@ -92,6 +92,7 @@
   id: SyndicateCommanderGearFull
   parent: SyndicateOperativeGearFull
   equipment:
+    id: SyndiCommanderPDA
     neck: SyndicateWhistle
     outerClothing: ClothingOuterHardsuitSyndieCommander
 # Moffstation - Begin - Make warops admin only
@@ -116,7 +117,7 @@
     eyes: ClothingEyesHudSyndicateAgent
     outerClothing: ClothingOuterHardsuitSyndieMedic
     shoes: ClothingShoesBootsMagSyndie
-    id: SyndiAgentPDA
+    id: SyndiCorpsmanPDA
     belt: ClothingBeltMilitaryWebbingMedFilled
   storage:
     back:
