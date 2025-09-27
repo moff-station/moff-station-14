@@ -1,11 +1,11 @@
 - type: speechSounds
-  id: Bass
+  id: BassUpstream  # Moffstation - Trimmed audio
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/speak_4.ogg
+    path: /Audio/Voice/Talk/speak_4.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/speak_4_ask.ogg
+    path: /Audio/Voice/Talk/speak_4_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/speak_4_exclaim.ogg
+    path: /Audio/Voice/Talk/speak_4_exclaim.ogg
 
 - type: speechSounds
   id: Baritone
@@ -107,13 +107,13 @@
     path: /Audio/Animals/parrot_raught.ogg
 
 - type: speechSounds
-  id: Lizard
+  id: LizardUpstream # Moffstation - Trimmed sounds
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/lizard.ogg
+    path: /Audio/Voice/Talk/lizard.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/lizard_ask.ogg
+    path: /Audio/Voice/Talk/lizard_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/lizard_exclaim.ogg
+    path: /Audio/Voice/Talk/lizard_exclaim.ogg
 
 - type: speechSounds
   id: Slime
@@ -125,22 +125,22 @@
     path: /Audio/Voice/Talk/slime_exclaim.ogg
 
 - type: speechSounds
-  id: Vox
+  id: VoxUpstream # Moffstation - Trimmed sounds
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/vox.ogg
+    path: /Audio/Voice/Talk/vox.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/vox_ask.ogg
+    path: /Audio/Voice/Talk/vox_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/vox_exclaim.ogg
+    path: /Audio/Voice/Talk/vox_exclaim.ogg
 
 - type: speechSounds
-  id: Arachnid
+  id: Arachnid # Moffstation - Trimmed sounds
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/arachnid.ogg
+    path: /Audio/Voice/Talk/arachnid.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/arachnid_ask.ogg
+    path: /Audio/Voice/Talk/arachnid_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/arachnid_exclaim.ogg
+    path: /Audio/Voice/Talk/arachnid_exclaim.ogg
 
 - type: speechSounds
   id: Cat
@@ -179,13 +179,13 @@
     path: /Audio/Animals/goat_bah.ogg
 
 - type: speechSounds
-  id: Vulpkanin
+  id: VulpkaninUpstream
   saySound:
-    path: /Audio/_Moffstation/Voice/Talk/vulp.ogg
+    path: /Audio/Voice/Talk/vulp.ogg
   askSound:
-    path: /Audio/_Moffstation/Voice/Talk/vulp_ask.ogg
+    path: /Audio/Voice/Talk/vulp_ask.ogg
   exclaimSound:
-    path: /Audio/_Moffstation/Voice/Talk/vulp_exclaim.ogg
+    path: /Audio/Voice/Talk/vulp_exclaim.ogg
 
 - type: speechSounds
   id: Wawa
