@@ -49,7 +49,13 @@ public sealed class LongSpeechSystem : EntitySystem
         }
         longSpeech.Params = sound.Params.WithVariation(longSpeech.PitchVariation);
         longSpeech.Sound = _audio.ResolveSound(sound);
-        longSpeech.WordCount = Math.Min(message.Split(' ').Length, longSpeech.MaxWords);
         longSpeech.Cooldown = _audio.GetAudioLength(longSpeech.Sound);
+        longSpeech.WordCount = message.Split(' ').Length;
+
+        // Decrease the wordcount until it fits within the speechtime
+        while (longSpeech.WordCount * longSpeech.Cooldown > longSpeech.MaxSpeechTime && longSpeech.WordCount > 1)
+        {
+            longSpeech.WordCount--;
+        }
     }
 }

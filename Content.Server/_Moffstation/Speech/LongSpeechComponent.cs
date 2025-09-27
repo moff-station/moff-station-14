@@ -15,7 +15,7 @@ public sealed partial class LongSpeechComponent : Component
     /// The max amount of sounds that can be played in one speech
     /// </summary>
     [DataField]
-    public int MaxWords = 7;
+    public TimeSpan MaxSpeechTime = TimeSpan.FromSeconds(2);
 
     [DataField]
     public ResolvedSoundSpecifier? Sound;
