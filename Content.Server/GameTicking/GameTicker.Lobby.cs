@@ -177,8 +177,8 @@ namespace Content.Server.GameTicking
                 return;
             }
 
-            var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             // Moffstation - Ready manifest
+            var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             // No need to update anything or raise events if the player is already (un)readied
             if (_playerGameStatuses[player.UserId] == status)
             {

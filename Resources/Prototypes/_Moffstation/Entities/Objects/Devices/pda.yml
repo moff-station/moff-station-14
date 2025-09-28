@@ -1663,7 +1663,22 @@
   - type: Pda
     id: PrisonerIDCardPerma
   - type: Sprite
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-prisoner"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -1672,6 +1687,7 @@
   - type: PdaBorderColor
     borderColor: "#FF9751"
   - type: Icon
+    sprite: _Moffstation/Objects/Devices/pda.rsi
     state: "pda-prisoner"
 
 - type: entity
