@@ -32,7 +32,7 @@ public sealed partial class LongSpeechComponent : Component
     /// The pitch variation applied to the speech
     /// </summary>
     [DataField]
-    public float PitchVariation = 0.05f;
+    public float PitchVariation = 0.1f;
 
     [DataField]
     public string Message;
