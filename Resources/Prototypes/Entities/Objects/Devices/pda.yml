@@ -227,7 +227,7 @@
     state: pda-internmed
   - type: GuideHelp
     guides:
-    - MedicalDoctor
+    - OffbrandPhysician # Offbrand
   #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-intern
@@ -784,7 +784,7 @@
     state: pda-medical
   - type: GuideHelp
     guides:
-    - MedicalDoctor
+    - OffbrandPhysician # Offbrand
 
 - type: entity
   parent: MedicalPDA
