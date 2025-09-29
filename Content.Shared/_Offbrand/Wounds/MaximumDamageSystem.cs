@@ -1,7 +1,6 @@
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Offbrand.Wounds;
 
@@ -18,8 +17,6 @@ public sealed class MaximumDamageSystem : EntitySystem
 
     private FixedPoint2 ComputeDelta(FixedPoint2 current, FixedPoint2 incoming, (FixedPoint2 Base, FixedPoint2 Factor) modifier)
     {
-        DebugTools.Assert(incoming > 0);
-
         if (current >= modifier.Base && modifier.Factor != FixedPoint2.Zero)
         {
             var factor = modifier.Factor.Double();
@@ -61,9 +58,6 @@ public sealed class MaximumDamageSystem : EntitySystem
         var hasCloned = false;
         foreach (var (type, value) in args.Damage.DamageDict)
         {
-            if (value <= 0)
-                continue;
-
             if (!dict.TryGetValue(type, out var currentValue))
                 continue;
 

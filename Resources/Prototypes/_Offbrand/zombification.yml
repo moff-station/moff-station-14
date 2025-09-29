@@ -46,13 +46,6 @@
   id: AddOnAnyZombified
   save: false
   components:
-  - type: SolutionContainerManager
-    solutions:
-      melee:
-        maxVol: 30
-        reagents:
-        - ReagentId: Romerol
-          Quantity: 30
   - type: Bloodstream
     bloodlossDamage:
       types:
@@ -60,6 +53,13 @@
     bloodlossHealDamage:
       types:
         Bloodloss: -1
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        maxVol: 30
+        reagents:
+        - ReagentId: Romerol
+          Quantity: 30
   - type: MeleeChemicalInjector
     solution: melee
     transferAmount: 0.25
