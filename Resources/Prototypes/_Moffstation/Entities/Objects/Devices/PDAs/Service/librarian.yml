@@ -74,15 +74,30 @@
 
 - type: entity
   parent: LibrarianPDAAltBase
-  id: DungeonMasterPDA
-  name: dungeon master PDA
+  id: GameMasterPDA
+  name: game master PDA
   components:
   - type: RenameId
-    value: job-name-librarian-dungeon-master
+    value: job-name-librarian-game-master
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-dungeonmaster
+        pda-gamemaster
+  - type: PdaBorderColor
+    borderColor: "#a07c5c"
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: WriterPDA
+  name: writer PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-writer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-gamemaster
   - type: PdaBorderColor
     borderColor: "#a07c5c"

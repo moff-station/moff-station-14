@@ -98,7 +98,8 @@ job-name-lawyer-solicitor = Solicitor
 # Librarian
 job-name-librarian-archivist = Archivist
 job-name-librarian-curator = Curator
-job-name-librarian-dungeon-master = Dungeon Master
+job-name-librarian-dungeon-master = Game Master
+job-name-librarian-writer = Writer
 # Mime
 job-name-mime-pierrot = Pierrot
 # Musician
@@ -117,6 +118,8 @@ job-name-passenger-off-duty-crew = Off-Duty Crew
 job-name-passenger-off-duty-staff = Off-Duty Staff
 job-name-passenger-assistant = Assistant
 job-name-passenger-freelancer = Freelancer
+job-name-passenger-tourist = Tourist
+job-name-paramedic-emt = Emergency Medical Technician
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
