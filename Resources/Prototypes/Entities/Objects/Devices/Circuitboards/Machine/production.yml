@@ -196,9 +196,12 @@
     state: science
   - type: MachineBoard
     prototype: ResearchAndDevelopmentServer
-    bladeServerPrototype: ResearchAndDevelopmentBladeServer # Moffstation - Blade Server construction
     stackRequirements:
       Plasma: 5
+  # Moffstation - Begin - R&D Blade Server
+  - type: BladeServerBoard
+    prototype: ResearchAndDevelopmentBladeServer
+  # Moffstation - End
 
 - type: entity
   id: BiogeneratorMachineCircuitboard
