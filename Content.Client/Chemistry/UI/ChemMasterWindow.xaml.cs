@@ -226,10 +226,10 @@ namespace Content.Client.Chemistry.UI
         private string GenerateLabel(ChemMasterBoundUserInterfaceState state)
         {
             if (
-                    state.BufferCurrentVolume == 0 && state.DrawSource == ChemMasterDrawSource.Internal ||
-                    (state.InputContainerInfo?.CurrentVolume == 0 || state.InputContainerInfo?.Reagents == null) && state.DrawSource == ChemMasterDrawSource.External ||
-                    state.InputContainerInfo?.Reagents == null
-                )
+                state.BufferCurrentVolume == 0 && state.DrawSource == ChemMasterDrawSource.Internal ||
+                state.InputContainerInfo?.CurrentVolume == 0 && state.DrawSource == ChemMasterDrawSource.External ||
+                state.InputContainerInfo?.Reagents == null
+            )
                 return "";
 
             var reagent = (state.DrawSource switch
