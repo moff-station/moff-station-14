@@ -40,13 +40,10 @@ public sealed class LongSpeechSystem : EntitySystem
         if (HasComp<LongSpeechComponent>(ent))
             return;
 
-        var longSpeech = EnsureComp<LongSpeechComponent>(ent);
-
         if (_speechSound.GetSpeechSound(ent, message) is not { } sound)
-        {
-            RemCompDeferred<LongSpeechComponent>(ent);
             return;
-        }
+
+        var longSpeech = EnsureComp<LongSpeechComponent>(ent);
 
         longSpeech.Params = sound.Params.WithVariation(longSpeech.PitchVariation);
         longSpeech.Sound = _audio.ResolveSound(sound);
