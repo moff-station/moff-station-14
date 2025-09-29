@@ -1,5 +1,6 @@
 using Content.Client._Moffstation.ReadyManifest;    // Moffstation
 using Content.Client.Audio;
+using Content.Client.CrewManifest;
 using Content.Client.GameTicking.Managers;
 using Content.Client.LateJoin;
 using Content.Client.Lobby.UI;
@@ -33,6 +34,7 @@ namespace Content.Client.Lobby
         private ClientGameTicker _gameTicker = default!;
         private ContentAudioSystem _contentAudioSystem = default!;
         private ReadyManifestSystem _readyManifest = default!;  // Moffstation - Ready manifest
+        private CrewManifestSystem _crewManifest = default!;
 
         protected override Type? LinkedScreenType { get; } = typeof(LobbyGui);
         public LobbyGui? Lobby;
@@ -142,7 +144,8 @@ namespace Content.Client.Lobby
                 return;
             }
 
-            Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
+            // Moffstation - Chat window time counter
+            // Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
             string text;
 
             if (_gameTicker.Paused)
@@ -171,8 +174,15 @@ namespace Content.Client.Lobby
                     text = $"{difference.Minutes}:{difference.Seconds:D2}";
                 }
             }
+            // Moffstation - Start - Lobby text countdown
+            Lobby!.StationTime.Text = Loc.GetString(
+                "lobby-state-round-start-countdown-text-moffstation",
+                ("timeLeft", text));
 
-            Lobby!.StartTime.Text = Loc.GetString("lobby-state-round-start-countdown-text", ("timeLeft", text));
+            Lobby.StartTime.Text = Loc.GetString(
+                "lobby-state-round-start-countdown-text",
+                ("timeLeft", text));
+            // Moffstation - End
         }
 
         private void LobbyStatusUpdated()
