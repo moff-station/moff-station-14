@@ -11,3 +11,8 @@
   - Wizard
   - Xenoborg
   - Syndicate
+
+- type: npcFaction # TODO: Figure out how this hubbabaloo works, then properly implement it
+  id: ClockworkCult
+  hostile:
+  - NanoTrasen

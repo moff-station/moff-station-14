@@ -1,16 +1,14 @@
 - type: entity
-  parent: CollideRune
-  id: TestRune
-  name: "test rune"
+  parent: CollideTimerRune
+  id: ClockConvertRune
+  name: "Sigil of Submisson"
   components:
-    - type: TriggerOnCollide
+    - type: TriggerOnTimedCollide
       fixtureID: rune
-    - type: ExplodeOnTrigger
-    - type: Explosive
-      explosionType: Cryo
-      totalIntensity: 2.0
+      threshold: 8
+    - type: ConvertOnTrigger
     - type: Sprite
       sprite: Structures/Magic/Cult/trap.rsi
       layers:
         - state: trap
-          color: '#FF770055'
+          color: '#00FFFF55'

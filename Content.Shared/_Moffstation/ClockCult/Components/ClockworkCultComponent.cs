@@ -16,7 +16,7 @@ public sealed partial class ClockworkCultComponent : Component
     ///     Path to antagonist alert sound.
     /// </summary>
     [DataField]
-    public SoundSpecifier ClockCultStartSound = new SoundPathSpecifier("/Audio/Ambience/Antag/headrev_start.ogg");
+    public SoundSpecifier ClockCultStartSound = new SoundPathSpecifier("/Audio/Ambience/Antag/traitor_wawa.ogg");
 
     public override bool SessionSpecific => true;
 }
