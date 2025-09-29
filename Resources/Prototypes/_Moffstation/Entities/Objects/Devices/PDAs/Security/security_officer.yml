@@ -39,6 +39,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-assetprotection
+  - type: PdaBorderColor
+    borderColor: "#5f6d8b"
+    accentVColor: "#A32D26"
+    accentHColor: "#633019"
 
 - type: entity
   parent: SecurityPDAAltBase
@@ -53,6 +57,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-deputy
+  - type: PdaBorderColor
+    borderColor: "#3f3f3f"
+    accentVColor: "#85221f"
 
 - type: entity
   parent: SecurityPDA

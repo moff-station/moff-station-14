@@ -39,6 +39,8 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-baker
+  - type: PdaBorderColor
+    borderColor: "#916e2e"
 
 - type: entity
   parent: ChefPDAAltBase
@@ -65,3 +67,7 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-pizzaiolo
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#3c7b5d"
+    accentHColor: "#3c7b5d"

@@ -39,6 +39,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-correctionsofficer
+  - type: PdaBorderColor
+    borderColor: "#A32D26"
+    accentVColor: "#FF9751"
 
 - type: entity
   parent: WardenPDAAltBase
@@ -52,3 +55,6 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-detentionofficer
+  - type: PdaBorderColor
+    borderColor: "#3c4963"
+    accentVColor: "#A32D26"

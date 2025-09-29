@@ -39,6 +39,8 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-journalist
+  - type: PdaBorderColor
+    borderColor: "#5f8ba8"
 
 - type: entity
   parent: ReporterPDAAltBase
@@ -52,6 +54,8 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-meteorologist
+  - type: PdaBorderColor
+    borderColor: "#3f3f74"
 
 - type: entity
   parent: ReporterPDAAltBase
@@ -65,3 +69,5 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-newsanchor
+  - type: PdaBorderColor
+    borderColor: "#ececec"

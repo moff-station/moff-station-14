@@ -15,6 +15,7 @@
         pda-prisoner
   - type: PdaBorderColor
     borderColor: "#FF9751"
+    accentVColor: "#212121"
   - type: Icon
     state: "pda-prisoner"
 
@@ -30,6 +31,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-convict
+  - type: PdaBorderColor
+    borderColor: "#969696"
+    accentHColor: "#616161"
 
 - type: entity
   parent: PrisonerPDA

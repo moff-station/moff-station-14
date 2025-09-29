@@ -41,6 +41,9 @@
     state: pda-genetics
   - type: RenameId
     value: job-name-geneticist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#4273b3"
 
 - type: entity
   parent: ChemistryPDAAltBase
@@ -54,6 +57,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-pharmacist
+  - type: PdaBorderColor
+    borderColor: "#B34200"
+    accentHColor: "#d7d7d0"
 
 - type: entity
   parent: ChemistryPDA
@@ -69,3 +75,6 @@
     state: pda-virology
   - type: RenameId
     value: job-name-virologist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#1e6023"

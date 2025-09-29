@@ -39,6 +39,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-clinician
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#447987"
 
 - type: entity
   parent: MedicalPDAAltBase
@@ -52,6 +55,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-coroner
+  - type: PdaBorderColor
+    borderColor: "#232323"
+    accentVColor: "#447987"
 
 - type: entity
   parent: MedicalPDAAltBase
@@ -65,6 +71,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-cryogenicspecialist
+  - type: PdaBorderColor
+    borderColor: "#447987"
+    accentVColor: "#d7d7d0"
 
 - type: entity
   parent: MedicalPDAAltBase
@@ -78,6 +87,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-nurse
+  - type: PdaBorderColor
+    borderColor: "#ff9fbd"
+    accentHColor: "#d7d7d0"
 
 - type: entity
   parent: MedicalPDAAltBase
@@ -91,3 +103,6 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-surgeon
+  - type: PdaBorderColor
+    borderColor: "#447987"
+    accentVColor: "#d7d7d0"

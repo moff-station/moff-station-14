@@ -39,6 +39,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-barista
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentHColor: "#333e23"
+
 
 - type: entity
   parent: BartenderPDAAltBase
@@ -52,3 +56,6 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-mixologist
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentHColor: "#317982"

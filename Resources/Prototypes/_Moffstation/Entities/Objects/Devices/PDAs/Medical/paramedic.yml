@@ -39,3 +39,22 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-fieldmedic
+  - type: PdaBorderColor
+    borderColor: "#2a4b5b"
+    accentVColor: "#d7d7d0"
+
+- type: entity
+  parent: ParamedicPDAAltBase
+  id: EmergencyResponseTechnicianPDA
+  name: emergency response technician PDA
+  components:
+  - type: RenameId
+    value: job-name-paramedic-emt
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-fieldmedic
+  - type: PdaBorderColor
+    borderColor: "#2a4b5b"
+    accentVColor: "#d7d7d0"

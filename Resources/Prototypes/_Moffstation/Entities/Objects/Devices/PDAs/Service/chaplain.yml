@@ -78,6 +78,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-missionary
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentHColor: "#a2a136"
 
 - type: entity
   parent: ChaplainPDAAltBase
@@ -91,6 +94,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-mortician
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentVColor: "#5a97a2"
 
 - type: entity
   parent: ChaplainPDAAltBase
@@ -119,6 +125,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
+    - type: PdaBorderColor
+      borderColor: "#cbcbcb"
 
 - type: entity
   parent: ChaplainPDAAltBase
@@ -132,6 +140,8 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-oracle
+  - type: PdaBorderColor
+    borderColor: "#46a29d"
 
 - type: entity
   parent: ChaplainPDAAltBase

@@ -39,6 +39,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-courier
+  - type: PdaBorderColor
+    borderColor: "#2e85e3"
+    accentHColor: "#e39751"
 
 - type: entity
   parent: CargoPDAAltBase
@@ -52,3 +55,5 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-logistics
+  - type: PdaBorderColor
+    borderColor: "#e39751"

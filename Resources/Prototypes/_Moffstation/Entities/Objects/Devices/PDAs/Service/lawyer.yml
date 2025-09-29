@@ -40,6 +40,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-attorney
+  - type: PdaBorderColor
+    borderColor: "#5d4e94"
+    accentVColor: "#cc3932"
+    accentHColor: "#cbcbcb"
 
 - type: entity
   parent: LawyerPDAAltBase
@@ -53,6 +57,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-legalcounsel
+  - type: PdaBorderColor
+    borderColor: "#8d8d8d"
+    accentVColor: "#499cbd"
 
 - type: entity
   parent: LawyerPDAAltBase
@@ -66,6 +73,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-prosecutor
+  - type: PdaBorderColor
+    borderColor: "#670e24"
+    accentVColor: "#bfbfbf"
+    accentHColor: "#383838"
 
 - type: entity
   parent: LawyerPDAAltBase
@@ -79,3 +90,7 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-solicitor
+  - type: PdaBorderColor
+    borderColor: "#6f6192"
+    accentHColor: "#bfbfbf"
+

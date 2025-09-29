@@ -39,6 +39,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-gardener
+  - type: PdaBorderColor
+    borderColor: "#44843c"
+    accentVColor: "#cc9448"
+    accentHColor: "#cc8cc2"
 
 - type: entity
   parent: BotanistPDAAltBase
@@ -52,6 +56,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-herbalist
+  - type: PdaBorderColor
+    borderColor: "#44843c"
+    accentVColor: "#cc9448"
 
 - type: entity
   parent: BotanistPDAAltBase
@@ -65,6 +72,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-hydroponicstechnician
+  - type: PdaBorderColor
+    borderColor: "#44843c"
+    accentVColor: "#00cc35"
+    accentHColor: "#c7c7c7"
 
 - type: entity
   parent: BotanistPDAAltBase
@@ -78,3 +89,6 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-rancher
+  - type: PdaBorderColor
+    borderColor: "#3f6484"
+    accentVColor: "#ccbe44"

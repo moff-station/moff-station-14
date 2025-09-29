@@ -54,6 +54,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
+    - type: PdaBorderColor
+      borderColor: "#73391d"
 
 - type: entity
   parent: LibrarianPDAAltBase
@@ -67,6 +69,8 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-curator
+  - type: PdaBorderColor
+    borderColor: "#b4b29c"
 
 - type: entity
   parent: LibrarianPDAAltBase
@@ -80,3 +84,5 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-dungeonmaster
+  - type: PdaBorderColor
+    borderColor: "#a07c5c"

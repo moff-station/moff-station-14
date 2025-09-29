@@ -39,6 +39,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-plasmatechnician
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#447987"
+    accentHColor: "#913090"
 
 - type: entity
   parent: AtmosPDAAltBase
@@ -65,6 +69,11 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-senioratmos
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#447987"
+    accentHColor: "#e42915"
+
 
 - type: entity
   parent: AtmosPDA

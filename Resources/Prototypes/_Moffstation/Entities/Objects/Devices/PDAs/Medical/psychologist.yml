@@ -39,6 +39,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-psychiatrist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#447987"
 
 - type: entity
   parent: PsychologistPDAAltBase
@@ -52,6 +55,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-therapist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#447987"
 
 - type: entity
   parent: PsychologistPDAAltBase
@@ -65,3 +71,7 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-socialworker
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentVColor: "#42cd34"
+    accentHColor: "#447987"

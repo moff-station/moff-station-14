@@ -39,6 +39,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-electrician
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#A32D26"
+    accentHColor: "#181818"
 
 - type: entity
   parent: EngineerPDAAltBase
@@ -52,6 +56,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-mechanic
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#A32D26"
+    accentHColor: "#47d039"
 
 - type: entity
   parent: EngineerPDAAltBase
@@ -65,3 +73,6 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-shipwright
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#181818"

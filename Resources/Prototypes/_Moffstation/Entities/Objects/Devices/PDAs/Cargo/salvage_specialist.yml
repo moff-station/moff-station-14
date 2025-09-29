@@ -39,6 +39,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-astrominer
+  - type: PdaBorderColor
+    borderColor: "#302207"
+    accentVColor: "#1a4116"
 
 - type: entity
   parent: SalvagePDAAltBase
@@ -52,6 +55,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-excavator
+  - type: PdaBorderColor
+    borderColor: "#af9366"
+    accentHColor: "#8900c9"
 
 - type: entity
   parent: SalvagePDAAltBase

@@ -39,6 +39,9 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-fool
+  - type: PdaBorderColor
+    borderColor: "#4daddb"
+    accentHColor: "#439edb"
 
 - type: entity
   parent: ClownPDAAltBase
@@ -52,3 +55,6 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-jester
+  - type: PdaBorderColor
+    borderColor: "#dbc820"
+    accentHColor: "#db443e"

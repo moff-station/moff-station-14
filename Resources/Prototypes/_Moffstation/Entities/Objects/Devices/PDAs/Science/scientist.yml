@@ -39,6 +39,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-anomalouscontainmentspecialist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#8900c9"
+    accentVColor: "#8900c9"
 
 - type: entity
   parent: RoboticistPDA
@@ -70,6 +74,9 @@
       visible: false
     - type: Icon
       sprite: _Moffstation/Objects/Devices/pda.rsi
+    - type: PdaBorderColor
+      borderColor: "#242424"
+      accentVColor: "#327b77"
 
 - type: entity
   parent: SciencePDAAltBase

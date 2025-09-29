@@ -39,6 +39,8 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-popidol
+  - type: PdaBorderColor
+    borderColor: "#fbfbf4"
 
 - type: entity
   parent: MusicianPDAAltBase
@@ -52,3 +54,5 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-rockstar
+  - type: PdaBorderColor
+    borderColor: "#450e16"
