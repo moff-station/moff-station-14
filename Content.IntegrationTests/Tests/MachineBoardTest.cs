@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Content.Server.Construction.Components;
-using Content.Shared._Moffstation.BladeServer;
+using Content.Shared._Moffstation.BladeServer; // Moffstation
 using Content.Shared.Construction.Components;
-using Content.Shared.Prototypes;
+using Content.Shared.Prototypes; // Moffstation
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
