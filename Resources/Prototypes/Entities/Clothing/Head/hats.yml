@@ -497,6 +497,8 @@
     tags:
     - PetWearable
     - CorgiWearable
+  - type: AddAccentClothing #Moffstation - Adding pirate accent
+    accent: PirateAccent #Moffstation - Adding pirate accent
 
 - type: entity
   parent: ClothingHeadBase
@@ -1045,6 +1047,8 @@
     sprite: Clothing/Head/Hats/piratetricord.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/piratetricord.rsi
+  - type: AddAccentClothing #Moffstation - Adding pirate accent
+    accent: PirateAccent #Moffstation - Adding pirate accent
 
 - type: entity
   parent: ClothingHeadBase
