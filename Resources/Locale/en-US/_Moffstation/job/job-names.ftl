@@ -47,7 +47,7 @@ job-name-medical-doctor-senior-physician = Senior Physician
 job-name-medical-doctor-surgeon = Surgeon
 # Paramedic
 job-name-paramedic-field-medic = Field Medic
-we we we job-name-paramedic-emt = Emergency Response Technician
+job-name-paramedic-emt = Emergency Response Technician
 # Psychologist
 job-name-psychologist-psychiatrist = Psychiatrist
 job-name-psychologist-therapist = Therapist
