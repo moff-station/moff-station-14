@@ -4,6 +4,9 @@
   components:
   - type: GameRule
     minPlayers: 25
+  - type: LoadAbsentMapRule
+    mapPath: /Maps/_Moffstation/Nonstations/clockwork.yml
+    mapName: "City of Cogs"
   - type: ClockworkCultRule
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
