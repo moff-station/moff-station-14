@@ -47,7 +47,7 @@ job-name-medical-doctor-senior-physician = Senior Physician
 job-name-medical-doctor-surgeon = Surgeon
 # Paramedic
 job-name-paramedic-field-medic = Field Medic
-job-name-paramedic-emt = Emergency Response Technician
+job-name-paramedic-emt = Emergency Medical Technician
 # Psychologist
 job-name-psychologist-psychiatrist = Psychiatrist
 job-name-psychologist-therapist = Therapist
@@ -119,7 +119,6 @@ job-name-passenger-off-duty-staff = Off-Duty Staff
 job-name-passenger-assistant = Assistant
 job-name-passenger-freelancer = Freelancer
 job-name-passenger-tourist = Tourist
-job-name-paramedic-emt = Emergency Medical Technician
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
