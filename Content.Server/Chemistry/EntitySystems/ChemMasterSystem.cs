@@ -224,7 +224,7 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var needed = message.Dosage * message.Number;
 
-            if (!WithdrawFromSource(chemMaster, needed, user, out var withdrawal))
+            if (!WithdrawFromSource(chemMaster, needed, user, out var withdrawal)) // Moffstation - chemmaster output source logic call
                 return;
             _labelSystem.Label(container, message.Label);
 
@@ -271,7 +271,7 @@ namespace Content.Server.Chemistry.EntitySystems
             if (message.Label.Length > SharedChemMaster.LabelMaxLength)
                 return;
 
-            if (!WithdrawFromSource(chemMaster, message.Dosage, user, out var withdrawal))
+            if (!WithdrawFromSource(chemMaster, message.Dosage, user, out var withdrawal)) // Moffstation - chemmaster output source logic call
                 return;
 
             _labelSystem.Label(container, message.Label);

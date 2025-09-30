@@ -14,7 +14,7 @@ using Content.Shared.FixedPoint;
 using Robust.Client.Graphics;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 using Robust.Client.GameObjects;
-using Content.Shared._Moffstation.Chemistry;
+using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Client.Chemistry.UI
 {

@@ -3,7 +3,7 @@ using Content.Shared.Containers.ItemSlots;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
-using Content.Shared._Moffstation.Chemistry;
+using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Client.Chemistry.UI
 {
