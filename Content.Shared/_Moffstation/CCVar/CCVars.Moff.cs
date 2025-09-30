@@ -24,7 +24,7 @@ public sealed class MoffCCVars
         CVarDef.Create("ui.admin_overlay_show_watchlist", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
-    /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
+    /// Whether longspeech should be enabled
     /// </summary>
     public static readonly CVarDef<bool> LongSpeech =
         CVarDef.Create("moff.long_speech", false, CVar.SERVER | CVar.REPLICATED);
