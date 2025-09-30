@@ -215,7 +215,7 @@
     Food:
       effects:
       - !type:SatiateThirst
-        factor: 4.5
+        factor: 4
         conditions:
         - !type:OrganType
           type: Avali
