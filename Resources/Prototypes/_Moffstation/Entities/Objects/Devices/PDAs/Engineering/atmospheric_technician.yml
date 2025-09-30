@@ -55,7 +55,10 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-plasmatechnician
+        pda-firefighter
+  - type: PdaBorderColor
+    borderColor: "#212121"
+    accentVColor: "#dad02f"
 
 - type: entity
   parent: AtmosPDAAltBase
@@ -76,7 +79,7 @@
 
 
 - type: entity
-  parent: AtmosPDA
+  parent: TechnicalAssistantPDA
   id: AssistantAtmosphericTechnicianPDA
   name: atmospherics assistant PDA
   components:

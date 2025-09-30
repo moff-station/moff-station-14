@@ -98,7 +98,7 @@ job-name-lawyer-solicitor = Solicitor
 # Librarian
 job-name-librarian-archivist = Archivist
 job-name-librarian-curator = Curator
-job-name-librarian-dungeon-master = Game Master
+job-name-librarian-game-master = Game Master
 job-name-librarian-writer = Writer
 # Mime
 job-name-mime-pierrot = Pierrot

@@ -62,10 +62,15 @@
     accentVColor: "#85221f"
 
 - type: entity
-  parent: SecurityPDA
+  parent: SecurityPDAAltBase
   id: HallMonitorPDA
   name: hall monitor PDA
   components:
   - type: RenameId
     value: job-name-security-officer-hall-monitor
     newIcon: "JobIconSecurityCadet"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hallmonitor

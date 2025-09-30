@@ -56,6 +56,11 @@
   components:
   - type: RenameId
     value: job-name-prisoner-minimum-security
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-minimumsecurityprisoner
 
 - type: entity
   parent: PrisonerPDA
@@ -64,6 +69,11 @@
   components:
   - type: RenameId
     value: job-name-prisoner-maximum-security
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-maximumsecurityprisoner
 
 - type: entity
   parent: PrisonerPDA
@@ -72,6 +82,11 @@
   components:
   - type: RenameId
     value: job-name-prisoner-protective-custody
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-protectivecustodyprisoner
 
 - type: entity
   parent: PrisonerPDA
@@ -97,3 +112,11 @@
   - type: RenameId
     value: job-name-prisoner-test-subject
     newIcon: "JobIconTestSubject"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-testsubject
+  - type: PdaBorderColor
+    borderColor: "#eeeeee"
+    accentVColor: "#FF9751"
