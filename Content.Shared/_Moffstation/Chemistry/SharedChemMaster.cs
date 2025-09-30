@@ -1,6 +1,7 @@
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Chemistry;
+
 public enum ChemMasterDrawSource
 {
     Internal,
