@@ -43,7 +43,11 @@
   - BorgModuleAdvancedChemical
   - BorgModuleAdvancedMining
   - BorgModuleFoamForceGallant # Moffstation - Foam force module
-  - BorgModuleConstructionGeneric # Moffstation - specialty lite modules
+  # Moffstation - Start - Generalized specialist modules
+  - BorgModuleConstructionGeneric
+  - BorgModuleCustodialGeneric
+  - BorgModuleMiningGeneric
+  # Moffstation - End
 
 - type: latheRecipePack
   id: MechParts

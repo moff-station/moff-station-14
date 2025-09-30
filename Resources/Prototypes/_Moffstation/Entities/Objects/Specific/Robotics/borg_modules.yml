@@ -89,6 +89,47 @@
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }
 
+- type: entity
+  id: BorgModuleCustodialGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized custodial cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-light-replacer
+  - type: ItemBorgModule
+    hands:
+    - item: LightReplacer
+    - item: BorgTrashBag
+    - item: BorgSprayBottle
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: light-replacer-module }
+
+- type: entity
+  id: BorgModuleMiningGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized mining cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-mining
+  - type: ItemBorgModule
+    hands:
+    - item: AppraisalTool
+    - item: MiningDrill
+    - item: BorgOreBag
+    - hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
+
 # Pirate Modules
 - type: entity
   id: BorgModulePirate

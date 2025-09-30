@@ -10,6 +10,11 @@
   result: BorgModuleConstructionGeneric
 
 - type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleCustodialGeneric
+  result: BorgModuleCustodialGeneric
+
+- type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleFoamForceGallant
   result: BorgModuleFoamForceGallant
