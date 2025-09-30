@@ -5,7 +5,7 @@
   description: "A stomach that reeks of ammonia."
   components:
   - type: Metabolizer 
-    metabolizerTypes: [Avali]
+    metabolizerTypes: [ Avali ]
   - type: Stomach
 
 - type: entity
@@ -15,7 +15,7 @@
   description: "Smells awful."
   components:
   - type: Metabolizer
-    metabolizerTypes: [Avali]
+    metabolizerTypes: [ Avali ]
 
 - type: entity
   parent: OrganHumanHeart
@@ -24,4 +24,4 @@
   description: "The heart of an avali."
   components:
   - type: Metabolizer
-    metabolizerTypes: [Avali]
+    metabolizerTypes: [ Avali ]

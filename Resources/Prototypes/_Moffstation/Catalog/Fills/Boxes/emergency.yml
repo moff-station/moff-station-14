@@ -1,5 +1,5 @@
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty
   id: BoxSurvivalAmmonia
   name: survival box
   description: It's a box with basic internals inside.
@@ -11,7 +11,7 @@
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: BookHowToSurvive 
     - id: DrinkAmmoniaBottleFull
   - type: Sprite
     layers:
@@ -19,7 +19,7 @@
     - state: emergencytank
 
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty 
   id: BoxSurvivalEngineeringAmmonia
   name: extended-capacity survival box 
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
@@ -27,11 +27,11 @@
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskGas # Moffstation - (Survival Box Improvements)
+    - id: ClothingMaskGas 
     - id: ExtendedEmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: BookHowToSurvive 
     - id: DrinkAmmoniaBottleFull
   - type: Sprite
     layers:
@@ -39,7 +39,7 @@
     - state: extendedtank
 
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty
   id: BoxSurvivalSecurityAmmonia
   name: survival box
   description: It's a box with basic internals inside.
@@ -51,7 +51,7 @@
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: BookHowToSurvive
     - id: DrinkAmmoniaBottleFull
   - type: Sprite
     layers:
@@ -59,7 +59,7 @@
     - state: emergencytank
 
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty
   id: BoxSurvivalMedicalAmmonia
   name: survival box
   description: It's a box with basic internals inside.
@@ -71,7 +71,7 @@
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: BookHowToSurvive
     - id: DrinkAmmoniaBottleFull
   - type: Sprite
     layers:
@@ -79,7 +79,7 @@
     - state: emergencytank
 
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty
   id: BoxHugAmmonia
   name: box of hugs
   description: A special box for sensitive people.
@@ -93,32 +93,32 @@
     heldPrefix: hug
   - type: StorageFill
     contents:
-    - id: ClothingMaskClown # Moffstation - (Survival Box Improvements)
+    - id: ClothingMaskClown
     - id: EmergencyFunnyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: BookHowToSurvive
     - id: DrinkAmmoniaBottleFull
   - type: Tag
     tags:
     - BoxHug
 
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty
   id: BoxMimeAmmonia
   suffix: Mime, Emergency, Ammonia
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskMime # Moffstation - (Survival Box Improvements)
+    - id: ClothingMaskMime
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: BookHowToSurvive
     - id: DrinkAmmoniaBottleFull
 
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty
   id: BoxSurvivalSyndicateAmmonia
   name: extended-capacity survival box
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
@@ -130,7 +130,7 @@
     - id: ExtendedEmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
-    - id: BookHowToSurvive # Moffstation - Chefs rejoice, Nutribrick removed
+    - id: BookHowToSurvive
     - id: DrinkAmmoniaBottleFull
   - type: Sprite
     layers:
