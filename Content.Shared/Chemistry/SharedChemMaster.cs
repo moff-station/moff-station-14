@@ -1,6 +1,7 @@
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Serialization;
+using Content.Shared._Moffstation.Chemistry;
 
 namespace Content.Shared.Chemistry
 {
@@ -119,12 +120,6 @@ namespace Content.Shared.Chemistry
         U50 = 50,
         U100 = 100,
         All,
-    }
-
-    public enum ChemMasterDrawSource
-    {
-        Internal,
-        External,
     }
 
     public static class ChemMasterReagentAmountToFixedPoint
