@@ -1,6 +1,5 @@
 using Content.Client._Moffstation.ReadyManifest;    // Moffstation
 using Content.Client.Audio;
-using Content.Client.CrewManifest;
 using Content.Client.GameTicking.Managers;
 using Content.Client.LateJoin;
 using Content.Client.Lobby.UI;
@@ -34,7 +33,6 @@ namespace Content.Client.Lobby
         private ClientGameTicker _gameTicker = default!;
         private ContentAudioSystem _contentAudioSystem = default!;
         private ReadyManifestSystem _readyManifest = default!;  // Moffstation - Ready manifest
-        private CrewManifestSystem _crewManifest = default!;
 
         protected override Type? LinkedScreenType { get; } = typeof(LobbyGui);
         public LobbyGui? Lobby;
