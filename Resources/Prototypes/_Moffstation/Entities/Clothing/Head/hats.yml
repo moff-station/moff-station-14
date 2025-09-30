@@ -1,0 +1,22 @@
+# Captain
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainConductor
+  name: captain's supervisor cap
+  description: Make sure your passengers remembered their tickets.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captainconductor.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captainconductor.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainTricorn
+  name: captain's tricorn
+  description: An elegant tricorn denoting a captain familiar with the tide of the universe
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi

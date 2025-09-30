@@ -10,25 +10,6 @@
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
-  # Moffstation - Start - Expanded roundstart plushies!
-  - PlushieArachind
-  - PlushieAtmosian
-  - PlushieBee
-  - PlushieBorg
-  - PlushieCarp
-  - PlushieDiona
-  - PlushieExperiment
-  - PlushieHampter
-  - PlushieHuman
-  - PlushieMoth
-  - PlushiePenguin
-  - PlushieSharkBlue
-  - PlushieSharkGrey
-  - PlushieSharkPink
-  - PlushieSlime
-  - PlushieSnake
-  - PlushieVox
-  # Moffstation - End
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -37,17 +18,6 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
-  - GoldRing    # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
-  - SilverRing  # Moffstation - End
-  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
-  - FolderRed
-  - FolderBlue
-  - FolderYellow
-  - FolderWhite
-  - FolderGrey
-  - FolderBlack
-  - FolderGreen
-  # Moffstation - End
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -88,6 +58,38 @@
   - TowelColorSilver
   - TowelColorWhite
   - TowelColorYellow
+  # Moffstation - Start - Expanded roundstart plushies!
+  - PlushieArachind
+  - PlushieAtmosian
+  - PlushieBee
+  - PlushieBorg
+  - PlushieCarp
+  - PlushieDiona
+  - PlushieExperiment
+  - PlushieHampter
+  - PlushieHuman
+  - PlushieMoth
+  - PlushiePenguin
+  - PlushieSharkBlue
+  - PlushieSharkGrey
+  - PlushieSharkPink
+  - PlushieSlime
+  - PlushieSnake
+  - PlushieVox
+  # Moffstation - End
+  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
+  - FolderRed
+  - FolderBlue
+  - FolderYellow
+  - FolderWhite
+  - FolderGrey
+  - FolderBlack
+  - FolderGreen
+  # Moffstation - End
+  # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
+  - GoldRing
+  - SilverRing
+  # Moffstation - End
 
 - type: loadoutGroup
   id: Glasses
@@ -149,6 +151,10 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  # Moffstation - Start - New Drip
+  - CaptainConductor
+  - CaptainTricorn
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -158,6 +164,12 @@
   - CaptainJumpskirt
   - CaptainFormalSuit
   - CaptainFormalSkirt
+  # Moffstation - Start - New Drip
+  - CaptainJumpsuitConductor
+  - CaptainJumpskirtConductor
+  - CaptainJumpsuitNaval
+  - CaptainJumpskirtNaval
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -184,6 +196,7 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
+  - CaptainLongcoat # Moffstation - New drip
 
 - type: loadoutGroup
   id: HoPHead
@@ -198,6 +211,10 @@
   loadouts:
   - HoPJumpsuit
   - HoPJumpskirt
+  # Moffstation - Start - New drip
+  - HoPJumpsuitFormal
+  - HoPJumpskirtFormal
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HoPNeck
@@ -214,7 +231,8 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
-# Moffstation - Start - Department Heads can use any department Bag
+  - HoPBackpackIan
+  # Moffstation - Start - Department Heads can use any department Bag
   - ClownBackpack
   - ClownSatchel
   - ClownDuffel
@@ -224,8 +242,7 @@
   - BotanistBackpack
   - BotanistSatchel
   - BotanistDuffel
-# Moffstation - End - Department Heads can use any department Bag
-  - HoPBackpackIan
+  # Moffstation - End - Department Heads can use any department Bag
   - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
@@ -677,6 +694,10 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
+  # Moffstation - Start - New Drip
+  - QMJumpsuitVista
+  - QMJumpskirtVista
+  # Moffstation - End
 
 - type: loadoutGroup
   id: QuartermasterNeck
@@ -978,6 +999,7 @@
   loadouts:
   - ResearchDirectorLabCoat
   - ResearchDirectorWintercoat
+  - ResearchDirectorVisionary # Moffstation - New Drip
 
 - type: loadoutGroup
   id: ResearchDirectorShoes
@@ -1106,6 +1128,7 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
+  - HeadofSecurityCarapace # Moffstation - New drip
 
 - type: loadoutGroup
   id: WardenHead
@@ -1288,6 +1311,13 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  # Moffstation - Start - New drip
+  - CMOJumpsuitShell
+  - CMOJumpskirtShell
+  - CMOJumpsuitFormal
+  - CMOJumpsuitFlowing
+  - CMOJumpskirtFlowing
+  # Moffstation - End
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
