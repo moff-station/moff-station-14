@@ -39,7 +39,8 @@
   - type: Sprite
     layers:
     - state: science
-    - state: icon-anomalies-adv
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-anomalies-adv
   - type: ItemBorgModule
     hands:
     - item: AnomalyScanner

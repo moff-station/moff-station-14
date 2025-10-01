@@ -38,7 +38,9 @@ borg-select-type-menu-guidebook = Guidebook
 ## Borg type information
 
 borg-type-generic-name = Generic
-borg-type-generic-desc = Jack of all trades, master of none. Help out with various random tasks around the station. # Moffstation - Scienceborg
+# Moffstation - start - Scienceborg
+borg-type-generic-desc = Jack of all trades, master of none. Help out with various random tasks around the station.
+# Moffstation - end
 borg-type-generic-transponder = generic cyborg
 
 borg-type-engineering-name = Engineering
