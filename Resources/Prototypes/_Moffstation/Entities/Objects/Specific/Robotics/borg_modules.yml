@@ -31,30 +31,6 @@
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: bureau-module }
 
 - type: entity
-  id: BorgModuleFoamForceGallant
-  parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: Foam Force Gallant cyborg module
-  description: A module that comes with a Foam Force Gallant rifle.
-  components:
-  - type: Sprite
-    layers:
-    - state: generic
-    - sprite: _Moffstation/Objects/Specific/Robotics/foam_gun_module.rsi
-      state: icon-foam-gun
-  - type: ItemBorgModule
-    hands:
-    - item: WeaponRifleFoamBorg
-    - item: BoxDonkSoftBox
-    - hand:
-        emptyRepresentative: GrenadeFoamDart
-        emptyLabel: borg-slot-foam-grenade-empty
-        whitelist:
-          tags:
-          - FoamGrenade
-  - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: foam-force-module }
-
-- type: entity
   id: BorgModuleConstructionGeneric
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: generalized construction cyborg module
@@ -107,6 +83,30 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: light-replacer-module }
 
 - type: entity
+  id: BorgModuleFoamForceGallant
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: Foam Force Gallant cyborg module
+  description: A module that comes with a Foam Force Gallant rifle.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/foam_gun_module.rsi
+      state: icon-foam-gun
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponRifleFoamBorg
+    - item: BoxDonkSoftBox
+    - hand:
+        emptyRepresentative: GrenadeFoamDart
+        emptyLabel: borg-slot-foam-grenade-empty
+        whitelist:
+          tags:
+          - FoamGrenade
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: foam-force-module }
+
+- type: entity
   id: BorgModuleMiningGeneric
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: generalized mining cyborg module
@@ -129,6 +129,43 @@
           - ArtifactFragment
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
+
+- type: entity
+  id: BorgModuleMusiqueGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized musique cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-musique
+  - type: ItemBorgModule
+    hands:
+    - item: SynthesizerInstrument
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: musical-module }
+
+- type: entity
+  id: BorgModuleTopicalsGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized topicals cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-treatment
+  - type: ItemBorgModule
+    hands:
+    - item: HandheldHealthAnalyzerUnpowered
+    - item: Brutepack
+      hand:
+        emptyLabel: borg-slot-topicals-empty
+        emptyRepresentative: Brutepack
+        whitelist:
+          components:
+          - Healing
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: treatment-module }
 
 # Pirate Modules
 - type: entity

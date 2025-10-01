@@ -70,6 +70,7 @@
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
+    - BorgModuleMusiqueGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: MeatManipulation
@@ -133,6 +134,7 @@
   cost: 5000
   recipeUnlocks:
   - BorgModuleAdvancedChemical
+  - BorgModuleTopicalsGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: AdvancedCleaning
@@ -147,6 +149,7 @@
   - AdvMopItem
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
+  - BorgModuleCustodialGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: HONKMech

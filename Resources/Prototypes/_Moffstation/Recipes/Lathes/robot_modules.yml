@@ -22,3 +22,18 @@
     Steel: 250
     Glass: 150
     Plastic: 350
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleMiningGeneric
+  result: BorgModuleMiningGeneric
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleMusiqueGeneric
+  result: BorgModuleMusiqueGeneric
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleTopicalsGeneric
+  result: BorgModuleTopicalsGeneric
