@@ -1,0 +1,44 @@
+- type: entity
+  id: BriefcaseSyndieElephantGunBundleFilled
+  parent: BriefcaseSyndie
+  suffix: Syndicate, Elephant Gun Bundle
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,6,3
+  - type: StorageFill
+    contents:
+      - id: WeaponSniperElephant
+      - id: MagazineBoxAntiMateriel
+      - id: ClothingHeadSafari
+      - id: ClothingUniformJumpsuitSafari
+      - id: Binoculars
+      - id: WeaponDartGun
+      - id: 
+      
+      
+# Move the shit below later im cooking
+
+#Syringe Gun....but darts!
+- type: entity
+  name: blowgun
+  parent: [LauncherSyringe, BaseSyndicateContraband]
+  id: Blowgun
+  description: Shoots darts!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Cannons/dart_gun.rsi
+    layers:
+    - state: dart_gun
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,5,0
+    whitelist:
+      tags:
+      - DartAmmo
+  - type: Gun
+    fireRate: 2 #Rapid fire the darts cause why not
