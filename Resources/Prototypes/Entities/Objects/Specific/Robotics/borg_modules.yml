@@ -1020,6 +1020,14 @@
     - item: AnomalyLocatorUnpowered
     - item: AnomalyLocatorWideUnpowered
     - item: HandLabeler
+    # Moffstation - Start - Scienceborg
+    #- hand:
+    #    emptyRepresentative: SheetRGlass
+    #    emptyLabel: borg-slot-construction-empty
+    #    whitelist:
+    #      tags:
+    #      - ConstructionMaterial
+    # Moffstation - End
     - hand:
         emptyRepresentative: SheetPlasma # Moffstation - Scienceborg
         emptyLabel: borg-slot-construction-empty

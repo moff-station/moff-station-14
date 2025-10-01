@@ -10,9 +10,13 @@
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
+    - BorgModuleScience # Moffstation - Scienceborgs
 
   defaultModules:
   - BorgModuleTool
+  - BorgModuleInflatable # Moffstation - Scienceborgs - also why tf do they have this baseline?
+  - BorgModuleArtifact # Moffstation - Scienceborgs
+  - BorgModuleAnomaly # Moffstation - Scienceborgs
 
   radioChannels:
   - Science
@@ -211,39 +215,6 @@
   # Sounds
   footstepCollection:
     collection: FootstepHoverBorg
-
-
-# science borg
-- type: borgType
-  id: science
-
-  # Description
-  dummyPrototype: BorgChassisScience
-
-  # Functional
-  extraModuleCount: 3
-  moduleWhitelist:
-    tags:
-    - BorgModuleGeneric
-    - BorgModuleScience
-
-  defaultModules:
-  - BorgModuleTool
-  - BorgModuleArtifact
-  - BorgModuleAnomaly
-  radioChannels:
-  - Science
-
-  # Visual
-  inventoryTemplateId: borgShort
-  spriteBodyState: science
-  spriteHasMindState: science_e
-  spriteNoMindState: science_e_r
-  spriteToggleLightState: science_l
-
-  # Pet
-  petSuccessString: petting-success-science-cyborg
-  petFailureString: petting-failure-science-cyborg
 
 
 # Service borg
