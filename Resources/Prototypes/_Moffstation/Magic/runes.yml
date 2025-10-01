@@ -1,0 +1,14 @@
+- type: entity
+  parent: CollideTimerRune
+  id: ClockConvertRune
+  name: "Sigil of Submisson"
+  components:
+    - type: TriggerOnTimedCollide
+      fixtureID: rune
+      threshold: 8
+    - type: ConvertOnTrigger
+    - type: Sprite
+      sprite: Structures/Magic/Cult/trap.rsi
+      layers:
+        - state: trap
+          color: '#00FFFF55'

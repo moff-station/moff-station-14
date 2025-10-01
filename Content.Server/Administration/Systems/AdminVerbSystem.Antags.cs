@@ -43,6 +43,7 @@ public sealed partial class AdminVerbSystem
 
     [ValidatePrototypeId<EntityPrototype>]
     private static readonly EntProtoId DefaultVampireRule = "Vampire";
+    private static readonly EntProtoId DefaultClockCultRule = "ClockworkCult";
     // Moffstation - End
 
     // All antag verbs have names so invokeverb works.
@@ -222,6 +223,23 @@ public sealed partial class AdminVerbSystem
 
         if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be vampries
             args.Verbs.Add(vampire);
+
+        //It's your clockcult time! Oh boy!
+        var clockName = Loc.GetString("admin-verb-text-make-clockcult");
+        Verb clockworkCult = new()
+        {
+            Text = clockName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Moffstation/Interface/Misc/job_icons.rsi"), "ClockworkCult"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ClockworkCultRuleComponent>(targetPlayer, DefaultClockCultRule); //<ClockworkCultRuleComponent>(targetPlayer, "ClockworkCult")
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", clockName, Loc.GetString("admin-verb-make-clockcult")),
+        };
+
+        args.Verbs.Add(clockworkCult);
         // Moffstation - End
 
         // Harmony start

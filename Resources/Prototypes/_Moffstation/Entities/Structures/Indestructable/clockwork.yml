@@ -1,0 +1,60 @@
+- type: entity
+  parent: BaseWall
+  id: WallClockIndestructible
+  name: clock wall
+  description: Keeps the air in and Nar'sie out. An otherworldly force is protecting it!
+  suffix: indestructible
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/clock.rsi
+  - type: Icon
+    sprite: Structures/Walls/clock.rsi
+  - type: IconSmooth
+    key: walls
+    base: clock
+
+
+# Thing1
+- type: entity
+  id: ClockworkWindowIndestructible
+  name: clockwork window
+  description: Don't smudge up the brass down there. An otherworldly force is protecting it!
+  parent: PlastitaniumWindowSquareBase
+  suffix: indestructible
+  components:
+  - type: ExaminableDamage
+    messages: null
+
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: Structures/Windows/clockwork_window.rsi
+  - type: Icon
+    sprite: Structures/Windows/clockwork_window.rsi
+    state: full
+  - type: IconSmooth
+    key: windows
+    base: cwindow
+
+
+#Thing 2
+- type: entity
+  id: ClockworkWindowDiagonalIndestructible
+  name: clockwork window
+  description: Don't smudge up the brass down there. An otherworldly force is protecting it!
+  parent: PlastitaniumWindowDiagonalBase
+  suffix: diagonal, indestructible
+  components:
+  - type: ExaminableDamage
+    messages: null
+
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: Structures/Windows/clockwork_diagonal.rsi
+    state: state0
+  - type: IconSmooth
+    mode: Diagonal
+    key: windows
+    base: state
+  - type: Icon
+    sprite: Structures/Windows/clockwork_diagonal.rsi
+    state: state0

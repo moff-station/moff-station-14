@@ -45,3 +45,16 @@
     antagPrototype: SyndicateSpy
     subtype: roles-antag-short-syndicate-spy
   - type: SyndicateSpyRole
+
+# ClockCult
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleClockworkCultist
+  name: Clockwork Cultist Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+    antagPrototype: ClockCult
+  - type: ClockworkCultRole

@@ -1,0 +1,17 @@
+# Clockcult Stuff
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHoodClockwork
+  name: brass hood
+  description: Because blood is *so* last-era
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/clockcult.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/clockcult.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair

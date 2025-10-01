@@ -59,37 +59,6 @@ public sealed class LoadMapRuleSystem : StationEventSystem<LoadMapRuleComponent>
             grids = gridSet.Select( x => x.Owner).ToList();
             mapId = map.Value.Comp.MapId;
         }
-        else if (comp.GridPath is { } gPath)
-        {
-            DebugTools.AssertNull(comp.PreloadedGrid);
-
-            // I fucking love it when "map paths" choses to ar
-            _map.CreateMap(out mapId);
-            var opts = DeserializationOptions.Default with {InitializeMaps = true};
-            if (!_mapLoader.TryLoadGrid(mapId, gPath, out var grid, opts))
-            {
-                Log.Error($"Failed to load grid from {gPath}!");
-                ForceEndSelf(uid, rule);
-                return;
-            }
-
-            grids = new List<EntityUid> {grid.Value.Owner};
-        }
-        else if (comp.PreloadedGrid is {} preloaded)
-        {
-            // TODO: If there are no preloaded grids left, any rule announcements will still go off!
-            if (!_gridPreloader.TryGetPreloadedGrid(preloaded, out var loadedShuttle))
-            {
-                Log.Error($"Failed to get a preloaded grid with {preloaded}!");
-                ForceEndSelf(uid, rule);
-                return;
-            }
-
-            var mapUid = _map.CreateMap(out mapId, runMapInit: false);
-            _transform.SetParent(loadedShuttle.Value, mapUid);
-            grids = new List<EntityUid>() { loadedShuttle.Value };
-            _map.InitializeMap(mapUid);
-        }
         else
         {
             Log.Error($"No valid map prototype or map path associated with the rule {ToPrettyString(uid)}");

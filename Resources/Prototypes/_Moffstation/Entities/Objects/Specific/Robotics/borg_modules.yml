@@ -30,6 +30,28 @@
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: bureau-module }
 
+# Clockwork Module
+- type: entity
+  id: BorgModuleClockwork
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
+  name: clockwork scarab module
+  components:
+  - type: Sprite
+    layers:
+    - state: engineering
+    - state: icon-construction
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+    - item: ReplicaFabricator
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }
+
 # Pirate Modules
 - type: entity
   id: BorgModulePirate

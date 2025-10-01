@@ -1,0 +1,14 @@
+# Clockcult stuff
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformClockwork
+  name: clockwork robes
+  description: Robes to wear while worshiping the better of two evils.
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/clockcult.rsi
+    - type: Clothing
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/clockcult.rsi
+    - type: SuitSensor
+      randomMode: false
+      mode: SensorOff

@@ -1,0 +1,11 @@
+# Clockcult stuff
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesClockwork
+  name: brass shoes
+  description: These are really uncomfortable.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/clockcult.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/clockcult.rsi

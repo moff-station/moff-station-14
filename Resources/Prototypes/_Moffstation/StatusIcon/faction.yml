@@ -10,3 +10,16 @@
   icon:
     sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
     state: Pirate
+
+- type: factionIcon
+  id: ClockworkFaction
+  isShaded: true
+  locationPreference: Left
+  priority: 0
+  showTo:
+    components:
+    - ShowAntagIcons
+    - ClockworkCult
+  icon:
+    sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
+    state: ClockworkCult

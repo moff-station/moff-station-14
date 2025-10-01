@@ -69,3 +69,30 @@ lpo-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
 
 roles-high-value-target = High Value Target
 roles-high-value-target-objective = You are a high-value target for the syndicate. Contracts are more likely to target you than other crew members.
+
+# Clockwork Cultists
+
+roles-antag-clockcultist-name = Clockwork Cultist
+roles-antag-clockcultist-objective = Facilitate the return of the Clockwork Justiciar by sabotaging the crew, and defending Reebe.
+
+clockcult-existing = [color=#B18B25]Clockwork Cultists[/color]
+
+clockcult-cultwin = [color=crimson]The clockwork cult brought[/color] [color=#B18B25]Ratvar[/color] [color=crimson]back to this plane of existance![/color]
+clockcult-neutral = [color=yellow]The crew left before the cult could summon[/color] [color=#B18B25]Ratvar![/color]
+clockcult-crewwin = [color=green]The crew stopped the cult's ritual![/color]
+
+clockcult-list-start = The starting cult was:
+clockcult-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
+
+clockcult-title = Clockwork Cultists
+clockcult-description = Ploopy.
+
+comms-console-announcement-title-clockcult = CLOCKWORK THINGY
+
+clockcult-briefing =
+    Tick. Tock. Tick. Tock.
+    You're now a servant of the Clockwork Cult. Work together with your cult leader to rebuild the great machine!
+    Tybel gb Ratvar!
+
+guide-entry-clockcult = Clockwork Cultists
+
