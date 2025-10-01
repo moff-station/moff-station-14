@@ -63,7 +63,7 @@
           components:
           - SiliconLawProvider
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-construction-module }
 
 - type: entity
   id: BorgModuleCustodialGeneric
@@ -73,14 +73,14 @@
   - type: Sprite
     layers:
     - state: generic
-    - state: icon-light-replacer
+    - state: icon-mop
   - type: ItemBorgModule
     hands:
     - item: LightReplacer
     - item: BorgTrashBag
     - item: BorgSprayBottle
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: light-replacer-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-cleaning-module }
 
 - type: entity
   id: BorgModuleFoamForceGallant
@@ -128,7 +128,7 @@
           - Ore
           - ArtifactFragment
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-mining-module }
 
 - type: entity
   id: BorgModuleMusiqueGeneric
@@ -143,7 +143,7 @@
     hands:
     - item: SynthesizerInstrument
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: musical-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-musical-module }
 
 - type: entity
   id: BorgModuleTopicalsGeneric
@@ -157,15 +157,15 @@
   - type: ItemBorgModule
     hands:
     - item: HandheldHealthAnalyzerUnpowered
-    - item: Brutepack
-      hand:
-        emptyLabel: borg-slot-topicals-empty
+    - hand:
         emptyRepresentative: Brutepack
+        emptyLabel: borg-slot-topicals-empty
         whitelist:
           components:
           - Healing
+
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: treatment-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-treatment-module }
 
 # Pirate Modules
 - type: entity
