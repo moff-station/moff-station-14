@@ -12,3 +12,4 @@ borg-slot-peels-empty = Banana peels
 borg-slot-pies-empty = Banana cream pies
 borg-slot-produce-empty = Produce
 borg-slot-sprays-empty = Sprays
+borg-slot-rcd-ammo-empty = compressed matter

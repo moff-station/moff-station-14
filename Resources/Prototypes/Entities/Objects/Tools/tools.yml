@@ -399,6 +399,11 @@
       Plastic: 100
   - type: StaticPrice
     price: 60
+  # Moffstation - Start - Death of Engineering Cyborg
+  - type: Tag
+    tags:
+    - RCDAmmo
+  # Moffstation - End
 
 - type: entity
   name: omnitool
