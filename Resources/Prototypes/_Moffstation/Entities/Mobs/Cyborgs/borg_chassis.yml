@@ -1,3 +1,13 @@
+# Cyborg switchable types
+- type: entity
+  id: BorgChassisScience
+  parent: BorgChassisSelectable
+  name: science cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: science
+
+# Pirate Cyborg
 - type: entity
   id: BorgChassisPirate
   parent: BaseBorgChassis

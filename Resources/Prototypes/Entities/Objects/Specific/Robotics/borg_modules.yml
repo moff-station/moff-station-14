@@ -979,9 +979,18 @@
   - type: ItemBorgModule
     hands:
     - item: NodeScanner
+    # - item: SprayBottle # Moffstation - Scienceborg
     - item: GasAnalyzer
-    - item: HolofanProjectorBorg
+    - item: HolofanProjectorBorg # Moffstation - Scienceborg
     - item: BorgDropper
+    # Moffstation - Start - Scienceborg
+    #- item: BaseChemistryEmptyVial
+    #  emptyLabel: borg-slot-chemical-containers-empty
+    #  emptyRepresentative: BaseChemistryEmptyVial
+    #  hand:
+    #    whitelist:
+    #      components:
+    #      - FitsInDispenser
     - item: Beaker
       hand:
         emptyLabel: borg-slot-chemical-containers-empty
@@ -991,6 +1000,7 @@
           - FitsInDispenser
           tags:
           - ChemDispensable
+    # Moffstation - End
     - item: GeigerCounter
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: node-scanner-module }
