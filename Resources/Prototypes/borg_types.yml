@@ -14,9 +14,11 @@
 
   defaultModules:
   - BorgModuleTool
-  - BorgModuleInflatable # Moffstation - Scienceborgs - also why tf do they have this baseline?
-  - BorgModuleArtifact # Moffstation - Scienceborgs
-  - BorgModuleAnomaly # Moffstation - Scienceborgs
+  # Moffstation - Start - Scienceborgs
+  # - BorgModuleInflatable # also why tf do they have this baseline?
+  # - BorgModuleArtifact
+  # - BorgModuleAnomaly
+  # Moffstation - End
 
   radioChannels:
   - Science
