@@ -16,3 +16,24 @@
     event: !type:ChangelingDevourActionEvent
   - type: SpeakOnAction
     sentence: action-speech-spell-kindle
+
+- type: entity
+  parent: BaseAction
+  id: ActionClockworkAbscond
+  name: Abscond
+  description: Brings you (and anything you drag along) back to Reebe.
+  components:
+  - type: Magic
+  - type: Action
+    useDelay: 5
+    itemIconStyle: BigAction
+    raiseOnUser: true
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/fireball.ogg
+    icon:
+      sprite: Objects/Magic/magicactions.rsi
+      state: fireball
+  - type: InstantAction
+    event: !type:ClockworkAbscondActionEvent
+  - type: SpeakOnAction
+    sentence: action-speech-spell-kindle

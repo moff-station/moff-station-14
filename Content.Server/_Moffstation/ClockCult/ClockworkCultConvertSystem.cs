@@ -27,7 +27,7 @@ using Robust.Shared.Console;
 namespace Content.Server._Moffstation.ClockCult;
 
 /// <summary>
-/// I DON'T KNOW WHAT IM DOING HELP HELP HEP HELP
+/// Handles the conversion (and deconversion) of Clockwork Cultists
 /// </summary>
 public sealed class ClockworkCultConvertSystem : EntitySystem
 {
@@ -57,8 +57,6 @@ public sealed class ClockworkCultConvertSystem : EntitySystem
             return;
         EntityUid safeUser = uid.User.Value!;
         var isCultist = HasComp<ClockworkCultComponent>(safeUser);
-        var isChaplain = HasComp<BibleUserComponent>(safeUser);
-        var hasMindshield = HasComp<MindShieldComponent>(safeUser);
         if (isCultist) // First checks if the target's a cultist
         {
             return;
@@ -67,6 +65,8 @@ public sealed class ClockworkCultConvertSystem : EntitySystem
 
         var downTime = TimeSpan.FromSeconds(5);
         var stunTime = TimeSpan.FromSeconds(3);
+        var isChaplain = HasComp<BibleUserComponent>(safeUser);
+        var hasMindshield = HasComp<MindShieldComponent>(safeUser);
 
         //Stun and mute 'em since they're not a cultist
         _stunSystem.TryKnockdown(safeUser, downTime);
@@ -109,4 +109,3 @@ public sealed class ClockworkCultConvertSystem : EntitySystem
 
     }
 }
-//NOTE TO SELF, WORKS OK, NOT GREAT. USE REVSYSTEM AS A TEMPLATE ON WHAT TO DO

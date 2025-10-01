@@ -20,7 +20,7 @@ public sealed class ClockworkCultRuleSystem : GameRuleSystem<ClockworkCultRuleCo
             GameRuleComponent gameRule,
             ref RoundEndTextAppendEvent args)
     {
-        var antags =_antag.GetAntagIdentifiers(uid);
+        var antags = _antag.GetAntagIdentifiers(uid);
 
         args.AddLine(Loc.GetString("clockcult-existing"));
 
@@ -29,7 +29,6 @@ public sealed class ClockworkCultRuleSystem : GameRuleSystem<ClockworkCultRuleCo
         foreach (var (_, sessionData, name) in antags)
         {
             args.AddLine(Loc.GetString("clockcult-list-name-user", ("name", name), ("user", sessionData.UserName)));
-            // todo: Add a count of how many people the vampire stole essence from.
         }
     }
 }
