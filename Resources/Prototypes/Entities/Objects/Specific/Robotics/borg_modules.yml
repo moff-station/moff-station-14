@@ -985,9 +985,9 @@
     - item: BorgDropper
     # Moffstation - Start - Scienceborg
     #- item: BaseChemistryEmptyVial
-    #  emptyLabel: borg-slot-chemical-containers-empty
-    #  emptyRepresentative: BaseChemistryEmptyVial
     #  hand:
+    #    emptyLabel: borg-slot-small-containers-empty
+    #    emptyRepresentative: BaseChemistryEmptyVial
     #    whitelist:
     #      components:
     #      - FitsInDispenser
@@ -1003,7 +1003,7 @@
     # Moffstation - End
     - item: GeigerCounter
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: node-scanner-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: node-scanner-module } # Moffstation - Scienceborg
 
 - type: entity
   id: BorgModuleAnomaly
@@ -1021,36 +1021,13 @@
     - item: AnomalyLocatorWideUnpowered
     - item: HandLabeler
     - hand:
-        emptyRepresentative: SheetPlasma
+        emptyRepresentative: SheetPlasma # Moffstation - Scienceborg
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: anomaly-module }
-
-- type: entity
-  id: BorgModuleAdvancedAnomaly
-  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
-  name: advanced anomaly cyborg module
-  components:
-  - type: Sprite
-    layers:
-    - state: science
-    - state: icon-anomalies-adv
-  - type: ItemBorgModule
-    hands:
-    - item: AnomalyScanner
-    - item: WeaponPistolCHIMPBorg
-    - item: WeaponGauntletGorilla
-    - hand:
-        emptyRepresentative: AnomalyCoreBluespaceInert
-        emptyLabel: borg-slot-anomaly-core
-        whitelist:
-          tags:
-          - AnomalyCore
-  - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
+    icon: { sprite: _Moffsation/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Moffstation - Scienceborg
 
 # service modules
 - type: entity
