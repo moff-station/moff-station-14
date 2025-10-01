@@ -27,5 +27,5 @@ public sealed class MoffCCVars
     /// Whether longspeech should be enabled
     /// </summary>
     public static readonly CVarDef<bool> LongSpeech =
-        CVarDef.Create("moff.long_speech", false, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("moff.long_speech", false, CVar.SERVER);
 }
