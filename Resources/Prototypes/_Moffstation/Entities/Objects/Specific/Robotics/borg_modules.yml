@@ -85,7 +85,7 @@
 - type: entity
   id: BorgModuleFoamForceGallant
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: Foam Force Gallant cyborg module
+  name: foam force gallant cyborg module
   description: A module that comes with a Foam Force Gallant rifle.
   components:
   - type: Sprite
@@ -163,7 +163,6 @@
         whitelist:
           components:
           - Healing
-
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-treatment-module }
 
