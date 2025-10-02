@@ -1,18 +1,22 @@
 ﻿# This was peeled off of upstream's `ResearchAndDevelopmentServer`. Changes to that prototype from upstream should be
 # carefully considered to be added here or there, depending on whether it should affect just the machine variant, or all
-# variants of the R&D server.
+# variants of the crewmon server.
 - type: entity
-  id: BaseResearchAndDevelopmentServer
+  id: BaseCrewMonitoringServer
   abstract: true
-  name: abstract R&D server
+  name: abstract crew monitoring server
+  description: Receives and relays the status of all active suit sensors on the station.
   components:
-  - type: ResearchServer
-  - type: TechnologyDatabase
-    supportedDisciplines:
-    - Industrial
-    - Arsenal
-    - Experimental
-    - CivilianServices
+  - type: CrewMonitoringServer
+  - type: SingletonDeviceNetServer
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    transmitFrequencyId: CrewMonitor
+    receiveFrequencyId: SuitSensor
+    autoConnect: false
+  - type: WirelessNetworkConnection
+    range: 10000 # Moffstation - Exended range for Listening outpost
+  #- type: StationLimitedNetwork # Moffstation
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver
@@ -27,4 +31,4 @@
           False: { visible: false }
   - type: GuideHelp
     guides:
-    - Science
+    - Medical
