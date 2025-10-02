@@ -1,0 +1,16 @@
+- type: entity
+  parent: Paper
+  id: PersonalItemCooksLetter
+  name: letter from a friend
+  description: a letter written and signed by a friend
+  components:
+  - type: Paper
+    content: personal-item-cooks-letter-content
+    stampState: paper_stamp-generic
+    editingDisabled: true
+    StampedBy:
+    - Novicia Nightflitter
+  - type: Stamp
+    stampedName: "Novicia Nightflitter"
+    stampState: paper_stamp-generic
+    
