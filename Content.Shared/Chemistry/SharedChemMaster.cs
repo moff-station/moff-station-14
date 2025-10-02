@@ -1,6 +1,7 @@
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Serialization;
+using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Shared.Chemistry
 {
@@ -184,10 +185,12 @@ namespace Content.Shared.Chemistry
 
         public readonly bool UpdateLabel;
 
+        public readonly ChemMasterDrawSource DrawSource; //Moffstation - Chemmaster output source logic
+
         public ChemMasterBoundUserInterfaceState(
             ChemMasterMode mode, ChemMasterSortingType sortingType, ContainerInfo? inputContainerInfo, ContainerInfo? outputContainerInfo,
             IReadOnlyList<ReagentQuantity> bufferReagents, FixedPoint2 bufferCurrentVolume,
-            uint selectedPillType, uint pillDosageLimit, bool updateLabel)
+            uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource) //Moffstation - Chemmaster output source logic
         {
             InputContainerInfo = inputContainerInfo;
             OutputContainerInfo = outputContainerInfo;
@@ -198,6 +201,7 @@ namespace Content.Shared.Chemistry
             SelectedPillType = selectedPillType;
             PillDosageLimit = pillDosageLimit;
             UpdateLabel = updateLabel;
+            DrawSource = drawSource; //Moffstation - Chemmaster output source logic
         }
     }
 

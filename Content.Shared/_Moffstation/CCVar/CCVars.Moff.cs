@@ -22,4 +22,10 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<bool> AdminOverlayShowWatchlist =
         CVarDef.Create("ui.admin_overlay_show_watchlist", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether longspeech should be enabled
+    /// </summary>
+    public static readonly CVarDef<bool> LongSpeech =
+        CVarDef.Create("moff.long_speech", false, CVar.SERVER);
 }

@@ -1,0 +1,108 @@
+- type: entity
+  parent: MedicalPDA
+  id: MedicalPDAAltBase
+  name: medical doctor alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-clinician"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: ClinicianPDA
+  name: clinician PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-clinician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-clinician
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#447987"
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: CoronerPDA
+  name: coroner PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-coroner
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-coroner
+  - type: PdaBorderColor
+    borderColor: "#232323"
+    accentVColor: "#447987"
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: CryogenicsSpecialistPDA
+  name: cryogenics specialist PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-cryogenics-specialist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-cryogenicspecialist
+  - type: PdaBorderColor
+    borderColor: "#447987"
+    accentVColor: "#d7d7d0"
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: NursePDA
+  name: nurse PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-nurse
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-nurse
+  - type: PdaBorderColor
+    borderColor: "#ff9fbd"
+    accentHColor: "#d7d7d0"
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: SurgeonPDA
+  name: surgeon PDA
+  components:
+  - type: RenameId
+    value: job-name-medical-doctor-surgeon
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-surgeon
+  - type: PdaBorderColor
+    borderColor: "#447987"
+    accentVColor: "#d7d7d0"

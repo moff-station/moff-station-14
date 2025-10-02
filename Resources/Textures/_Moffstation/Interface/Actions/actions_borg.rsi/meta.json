@@ -1,12 +1,18 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-    "copyright": "Taken from vgstation at commit https://github.com/vgstation-coders/vgstation13/commit/cdbcb1e858b11f083994a7a269ed67ef5b452ce9, generic cleaning, construction, mining, musical, and treatment modified by Nyxilath for Moffstation. pirate-module created by davyei (discord) for Moffstation; foam-force-module created by Centronias (GitHub) for Moffstation",
+    "copyright": "Taken from vgstation at commit https://github.com/vgstation-coders/vgstation13/commit/cdbcb1e858b11f083994a7a269ed67ef5b452ce9, generic cleaning, construction, mining, musical, and treatment modified by Nyxilath for Moffstation. advanced-anomaly-module, anomaly-module pirate-module, bureau-module, node-scanner-module, pirate-module, and service-module created by davyei (discord) for Moffstation. foam-force-module created by Centronias (GitHub) for Moffstation",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
+        {
+            "name": "adv-anomaly-module"
+        },
+        {
+            "name": "anomaly-module"
+        },
         {
             "name": "bureau-module"
         },
@@ -27,6 +33,9 @@
         },
         {
             "name": "generic-treatment-module"
+        },
+        {
+            "name": "node-scanner-module"
         },
         {
             "name": "pirate-module"

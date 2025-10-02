@@ -1,0 +1,95 @@
+- type: entity
+  parent: JanitorPDA
+  id: JanitorPDAAltBase
+  name: janitor alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-custodian"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: CustodianPDA
+  name: custodian PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-custodian
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-custodian
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentHColor: "#5D2D56"
+    accentVColor: "#5D2D56"
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: HygieneTechnicianPDA
+  name: hygiene technician PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-hygiene-technician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hygienetechnician
+  - type: PdaBorderColor
+    borderColor: "#5D2D56"
+    accentHColor: "#a8362f"
+    accentVColor: "#beb440"
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: MaidPDA
+  name: maid PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-maid
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-maid
+  - type: PdaBorderColor
+    borderColor: "#444444"
+    accentHColor: "#c7c7c7"
+    accentVColor: "#5D2D56"
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: SanitationsWorkerPDA
+  name: sanitations worker PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-sanitations-worker
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-sanitationworker
+  - type: PdaBorderColor
+    borderColor: "#5D2D56"
+    accentHColor: "#beb440"

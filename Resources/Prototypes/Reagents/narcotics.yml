@@ -25,8 +25,6 @@
             Poison: 2 # this is added to the base damage of the meth.
             Asphyxiation: 2
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainDesoxyephedrine
       effects:
       - !type:MovespeedModifier
         walkSpeedModifier: 1.35
@@ -70,8 +68,6 @@
   meltingPoint: 36.0
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainEphedrine
       effects:
       - !type:MovespeedModifier
         walkSpeedModifier: 1.25
@@ -125,8 +121,6 @@
   meltingPoint: 170.0
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStrainHyperzine
       metabolismRate: 1.0
       effects:
       - !type:MovespeedModifier
@@ -203,8 +197,6 @@
     amount: -1
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectHeartStabilizationTHC
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
@@ -222,11 +214,6 @@
   plantMetabolism:
   - !type:PlantAdjustHealth
     amount: -5
-  metabolisms: # Offbrand
-    Narcotic:
-      statusEffects:
-      - statusEffect: StatusEffectHeartStrainNicotine
-      effects: []
 
 # TODO: Replace these nonstandardized effects with generic brain damage
 - type: reagent
@@ -302,8 +289,6 @@
   meltingPoint: 128.0
   metabolisms:
     Narcotic:
-      statusEffects: # Offbrand
-      - statusEffect: StatusEffectPainSuppressionNocturine
       effects:
       - !type:ModifyStatusEffect
         conditions:

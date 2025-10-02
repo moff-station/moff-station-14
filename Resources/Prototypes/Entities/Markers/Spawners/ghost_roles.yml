@@ -244,7 +244,7 @@
     sprite: Markers/jobs.rsi
     layers:
     - state: green
-    - sprite: Mobs/Silicon/chassis.rsi
+    - sprite: _Moffstation/Mobs/Silicon/Chassis/derelict.rsi # Moffstation - Early merge of Borg RSI fix
       state: derelict_icon
 
 - type: entity

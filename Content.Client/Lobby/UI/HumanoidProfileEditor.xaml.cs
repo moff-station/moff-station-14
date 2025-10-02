@@ -746,7 +746,7 @@ namespace Content.Client.Lobby.UI
                 var loadoutWindowBtn = new Button()
                 {
                     // Disabled = true,
-                    Text = Loc.GetString("loadout-window"),
+                    Text = Loc.GetString("loadout-window-moffstation"), // Moffstation
                     HorizontalAlignment = HAlignment.Right,
                     Margin = new Thickness(3f, 0f, 0f, 0f),
                 };
@@ -974,14 +974,14 @@ namespace Content.Client.Lobby.UI
 
                     category.AddChild(new PanelContainer
                     {
-                        PanelOverride = new StyleBoxFlat {BackgroundColor = Color.FromHex("#464966")},
+                        PanelOverride = new StyleBoxFlat {BackgroundColor = department.Color},  // Moffstation - Colored job list
                         Children =
                         {
-                            new Label
+                            new RichTextLabel   // Moffstation
                             {
-                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
+                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label-moffstation",   // Moffstation - Colored job list
                                     ("departmentName", departmentName)),
-                                Margin = new Thickness(5f, 0, 0, 0)
+                                Margin = new Thickness(5f, 2f, 0, 2f)   // Moffstation - Colored job list
                             }
                         }
                     });
@@ -1058,7 +1058,7 @@ namespace Content.Client.Lobby.UI
 
                     var loadoutWindowBtn = new Button()
                     {
-                        Text = Loc.GetString("loadout-window"),
+                        Text = Loc.GetString("loadout-window-moffstation"), // Moffstation
                         HorizontalAlignment = HAlignment.Right,
                         VerticalAlignment = VAlignment.Center,
                         Margin = new Thickness(3f, 3f, 0f, 0f),

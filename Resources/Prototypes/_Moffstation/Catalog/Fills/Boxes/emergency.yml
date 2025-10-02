@@ -1,0 +1,138 @@
+- type: entity
+  parent: BoxSurvivalEmpty
+  id: BoxSurvivalAmmonia
+  name: survival box
+  description: It's a box with basic internals inside.
+  suffix: Standard, Ammonia
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskBreath
+    - id: EmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive 
+    - id: DrinkAmmoniaBottleFull
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: emergencytank
+
+- type: entity
+  parent: BoxSurvivalEmpty 
+  id: BoxSurvivalEngineeringAmmonia
+  name: extended-capacity survival box 
+  description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
+  suffix: Extended, Ammonia
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskGas 
+    - id: ExtendedEmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive 
+    - id: DrinkAmmoniaBottleFull
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: extendedtank
+
+- type: entity
+  parent: BoxSurvivalEmpty
+  id: BoxSurvivalSecurityAmmonia
+  name: survival box
+  description: It's a box with basic internals inside.
+  suffix: Security, Ammonia
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskGasSecurity
+    - id: EmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive
+    - id: DrinkAmmoniaBottleFull
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: emergencytank
+
+- type: entity
+  parent: BoxSurvivalEmpty
+  id: BoxSurvivalMedicalAmmonia
+  name: survival box
+  description: It's a box with basic internals inside.
+  suffix: Medical, Ammonia
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskBreathMedical
+    - id: EmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive
+    - id: DrinkAmmoniaBottleFull
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: emergencytank
+
+- type: entity
+  parent: BoxSurvivalEmpty
+  id: BoxHugAmmonia
+  name: box of hugs
+  description: A special box for sensitive people.
+  suffix: Emergency, Ammonia
+  components:
+  - type: Sprite
+    layers:
+    - state: box_hug
+    - state: heart
+  - type: Item
+    heldPrefix: hug
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskClown
+    - id: EmergencyFunnyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive
+    - id: DrinkAmmoniaBottleFull
+  - type: Tag
+    tags:
+    - BoxHug
+
+- type: entity
+  parent: BoxSurvivalEmpty
+  id: BoxMimeAmmonia
+  suffix: Mime, Emergency, Ammonia
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskMime
+    - id: EmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive
+    - id: DrinkAmmoniaBottleFull
+
+- type: entity
+  parent: BoxSurvivalEmpty
+  id: BoxSurvivalSyndicateAmmonia
+  name: extended-capacity survival box
+  description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
+  suffix: Syndicate, Ammonia
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskGasSyndicate
+    - id: ExtendedEmergencyOxygenTankFilled
+    - id: EmergencyMedipen
+    - id: Flare
+    - id: BookHowToSurvive
+    - id: DrinkAmmoniaBottleFull
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: extendedtank

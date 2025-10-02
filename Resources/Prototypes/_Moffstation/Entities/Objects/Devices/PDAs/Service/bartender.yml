@@ -1,0 +1,61 @@
+- type: entity
+  parent: BartenderPDA
+  id: BartenderPDAAltBase
+  name: bartender alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-barista"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: BartenderPDAAltBase
+  id: BaristaPDA
+  name: barista PDA
+  components:
+  - type: RenameId
+    value: job-name-bartender-barista
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-barista
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentHColor: "#333e23"
+
+
+- type: entity
+  parent: BartenderPDAAltBase
+  id: MixologistPDA
+  name: mixologist PDA
+  components:
+  - type: RenameId
+    value: job-name-bartender-mixologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-mixologist
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentHColor: "#317982"
