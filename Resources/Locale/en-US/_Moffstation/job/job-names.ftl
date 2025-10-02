@@ -5,11 +5,12 @@
 job-name-warden-corrections-officer = Corrections Officer
 job-name-warden-detention-officer = Detention Officer
 # Detective
-job-name-detective-investigator = Investigator
+job-name-detective-investigator = Private Investigator
 # Security Officer
 job-name-security-officer-asset-protections = Asset Protections
 job-name-security-officer-deputy = Deputy
 job-name-security-officer-senior-officer = Senior Officer
+job-name-security-officer-hall-monitor = Hall Monitor
 
 ## Cargo
 # Cargo Technician
@@ -25,7 +26,9 @@ job-name-salvage-specialist-scavenger = Scavenger
 ## Engineering
 # Atmospheric Technician
 job-name-atmospheric-technician-plasma-technician = Plasma Technician
-job-name-atmospheric-technician-senior-atmospheric-technician = Senior Atmospheric Technician
+job-name-atmospheric-technician-firefighter = Firefighter
+job-name-atmospheric-technician-senior = Senior Atmospheric Technician
+job-name-atmospheric-technician-assistant = Atmospherics Assistant
 # Station Engineer
 job-name-station-engineer-electrician = Electrician
 job-name-station-engineer-senior-station-engineer = Senior Station Engineer
@@ -38,12 +41,13 @@ job-name-chemist-pharmacist = Pharmacist
 # Medical Doctor
 job-name-medical-doctor-clinician = Clinician
 job-name-medical-doctor-coroner = Coroner
-job-name-medical-doctor-cyrogenics-specialist = Cyrogenics Specialist
+job-name-medical-doctor-cryogenics-specialist = Cryogenics Specialist
 job-name-medical-doctor-nurse = Nurse
 job-name-medical-doctor-senior-physician = Senior Physician
 job-name-medical-doctor-surgeon = Surgeon
 # Paramedic
 job-name-paramedic-field-medic = Field Medic
+job-name-paramedic-emt = Emergency Medical Technician
 # Psychologist
 job-name-psychologist-psychiatrist = Psychiatrist
 job-name-psychologist-therapist = Therapist
@@ -94,7 +98,8 @@ job-name-lawyer-solicitor = Solicitor
 # Librarian
 job-name-librarian-archivist = Archivist
 job-name-librarian-curator = Curator
-job-name-librarian-dungeon-master = Dungeon Master
+job-name-librarian-game-master = Game Master
+job-name-librarian-writer = Writer
 # Mime
 job-name-mime-pierrot = Pierrot
 # Musician
@@ -110,10 +115,19 @@ job-name-service-worker-barber = Barber
 ## Departmentless
 # Passenger
 job-name-passenger-off-duty-crew = Off-Duty Crew
+job-name-passenger-off-duty-staff = Off-Duty Staff
+job-name-passenger-assistant = Assistant
+job-name-passenger-freelancer = Freelancer
+job-name-passenger-tourist = Tourist
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
-
+job-name-prisoner-minimum-security = Minimum Security Prisoner
+job-name-prisoner-maximum-security = Maximum Security Prisoner
+job-name-prisoner-protective-custody = Protective Custody Prisoner
+job-name-prisoner-felon = Felon
+job-name-prisoner-inmate = Inmate
+job-name-prisoner-test-subject = Test Subject
 
 ## Other Job Titles
 job-name-mercenary = Mercenary

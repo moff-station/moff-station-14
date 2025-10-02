@@ -153,6 +153,7 @@
   id: SecurityPDA
   equipment:
     id: SecurityPDA
+  groupBy: "officer roles"  # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorOfficerPDA
@@ -161,6 +162,7 @@
     proto: SeniorOfficer
   equipment:
     id: SeniorOfficerPDA
+  groupBy: "officer roles"  # Moffstation - Additional Roles
 
 # Misc
 - type: loadout

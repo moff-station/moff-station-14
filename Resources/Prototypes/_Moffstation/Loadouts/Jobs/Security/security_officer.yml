@@ -18,8 +18,17 @@
   id: AssetProtectionsPDA
   equipment:
     id: AssetProtectionsPDA
+  groupBy: "officer roles"
 
 - type: loadout
   id: DeputyPDA
   equipment:
     id: DeputyPDA
+  groupBy: "cadet roles"
+
+- type: loadout
+  id: HallMonitorPDA
+  equipment:
+    id: HallMonitorPDA
+  groupBy: "cadet roles"
+

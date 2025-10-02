@@ -3,13 +3,28 @@
   id: AtmosPDA
   equipment:
     id: AtmosPDA
+  groupBy: "atmos tech roles"
 
 - type: loadout
   id: PlasmaTechnicianPDA
   equipment:
     id: PlasmaTechnicianPDA
+  groupBy: "atmos tech roles"
 
 - type: loadout
   id: SeniorAtmosphericTechnicianPDA
   equipment:
     id: SeniorAtmosphericTechnicianPDA
+  groupBy: "atmos tech roles"
+
+- type: loadout
+  id: FirefighterPDA
+  equipment:
+    id: FirefighterPDA
+  groupBy: "atmos tech roles"
+
+- type: loadout
+  id: AssistantAtmosphericTechnicianPDA
+  equipment:
+    id: AssistantAtmosphericTechnicianPDA
+  groupBy: "atmos assistant"

@@ -124,6 +124,7 @@
   id: StationEngineerPDA
   equipment:
     id: EngineerPDA
+  groupBy: "engineer roles"  # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorEngineerPDA
@@ -132,3 +133,4 @@
     proto: SeniorEngineering
   equipment:
     id: SeniorEngineerPDA
+  groupBy: "engineer roles"  # Moffstation - Additional Roles

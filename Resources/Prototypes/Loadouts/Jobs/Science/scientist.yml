@@ -150,6 +150,7 @@
   id: ScientistPDA
   equipment:
     id: SciencePDA
+  groupBy: "scientist roles"  # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorResearcherPDA
@@ -158,3 +159,4 @@
     proto: SeniorResearcher
   equipment:
     id: SeniorResearcherPDA
+  groupBy: "scientist roles"  # Moffstation - Additional Roles

@@ -973,7 +973,7 @@
   - EmergencyOxygenExtendedAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
-# Science
+# `Scienc`e
 - type: loadoutGroup
   id: ResearchDirectorHead
   name: loadout-group-research-director-head
@@ -1084,10 +1084,10 @@
   - ScientistPDA
   - SeniorResearcherPDA
   - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  - RoboticistPDA #CD - Job title loadouts
   # Moffstation - Start - Additional job title loadouts
   - AnomalyContainmentSpecialistPDA
   - MachinistPDA
-  - RoboticistPDA #CD - Job title loadouts
   - XenoarcheologistPDA
   # Moffstation - End
 
@@ -1222,6 +1222,7 @@
   # Moffstation - Start - Additional job title loadouts
   - AssetProtectionsPDA
   - DeputyPDA
+  - HallMonitorPDA
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1437,7 +1438,7 @@
   # Moffstation - Start - Additional job title loadouts
   - ClinicianPDA
   - CoronerPDA
-  - CyrogenicsSpecialistPDA
+  - CryogenicsSpecialistPDA
   - NursePDA
   - SurgeonPDA
   # Moffstation - End

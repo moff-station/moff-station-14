@@ -158,6 +158,7 @@
   id: MedicalDoctorPDA
   equipment:
     id: MedicalPDA
+  groupBy: "doctor roles" # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorPhysicianPDA
@@ -166,6 +167,7 @@
     proto: SeniorPhysician
   equipment:
     id: SeniorPhysicianPDA
+  groupBy: "doctor roles" # Moffstation - Additional Roles
 
 # Gloves
 - type: loadout
