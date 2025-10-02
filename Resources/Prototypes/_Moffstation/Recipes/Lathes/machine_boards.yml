@@ -101,6 +101,11 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: KnowItAllCircuitBoard
+  result: KnowItAllCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: PICircuitBoard
   result: PICircuitBoard
 
@@ -138,11 +143,6 @@
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: UltimateEqualityCircuitBoard
   result: UltimateEqualityCircuitBoard
-
-- type: latheRecipe
-  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
-  id: KnowItAllCircuitBoard
-  result: KnowItAllCircuitBoard
 
 # Moffstation Dangerous AI Law Boards
 
