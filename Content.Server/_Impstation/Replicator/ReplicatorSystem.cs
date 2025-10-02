@@ -138,7 +138,7 @@ public sealed class ReplicatorSystem : EntitySystem
 
         foreach (var action in _actions.GetActions(ent))
         {
-            _actions.RemoveAction((ent, action));
+            _actions.RemoveAction((action, action));
         }
 
         if (_polymorph.PolymorphEntity(ent, nextStage) is not { } upgraded)

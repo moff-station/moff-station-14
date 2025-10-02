@@ -250,17 +250,16 @@ public sealed class ReplicatorNestSystem : EntitySystem
             if (comp.HasBeenGivenUpgradeActions)
                 continue;
 
-            if (!_mind.TryGetMind(replicator, out var mind, out _))
-                continue;
+            var hasMind = _mind.TryGetMind(replicator, out var mind, out _);
 
             foreach (var action in comp.UpgradeActions)
             {
-                var actionEnt = _actions.AddAction(ent, action);
-                _actionContainer.EnsureAction(ent, ref actionEnt, action);
+                if (hasMind)
+                    _actions.AddAction(replicator, action);
+                else
+                    _actionContainer.AddAction(mind, action);
             }
             comp.HasBeenGivenUpgradeActions = true;
-
-            Dirty(ent);
         }
     }
 
