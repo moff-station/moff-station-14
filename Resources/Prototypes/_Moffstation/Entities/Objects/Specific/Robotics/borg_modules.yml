@@ -50,7 +50,7 @@
         emptyRepresentative: AnomalyCoreBluespaceInert
         emptyLabel: borg-slot-anomaly-core
         whitelist:
-          tags:
+          components:
           - AnomalyCore
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
