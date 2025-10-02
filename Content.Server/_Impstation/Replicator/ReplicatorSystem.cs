@@ -131,15 +131,10 @@ public sealed class ReplicatorSystem : EntitySystem
         ent.Comp.MyNest = tracker.SpawnedFrom;
     }
 
-    public EntityUid? UpgradeReplicator(Entity<ReplicatorComponent> ent, ProtoId<PolymorphPrototype> nextStage)
+    public Entity<ReplicatorComponent>? UpgradeReplicator(Entity<ReplicatorComponent> ent, ProtoId<PolymorphPrototype> nextStage)
     {
         if (!_mind.TryGetMind(ent, out var mind, out _))
             return null;
-
-        foreach (var action in _actions.GetActions(ent))
-        {
-            _actions.RemoveAction((action, action));
-        }
 
         if (_polymorph.PolymorphEntity(ent, nextStage) is not { } upgraded)
             return null;
@@ -157,9 +152,10 @@ public sealed class ReplicatorSystem : EntitySystem
             _audio.PlayPvs(nestComp.UpgradeSound, upgraded);
         }
 
-        _popup.PopupEntity(Loc.GetString($"{ent.Comp.ReadyToUpgradeMessage}-self"), upgraded, PopupType.Medium);
+        Dirty(upgraded, upgradedComp);
+        // _popup.PopupEntity(Loc.GetString($"{ent.Comp.ReadyToUpgradeMessage}-self"), upgraded, PopupType.Medium);
 
-        return upgraded;
+        return (upgraded, upgradedComp);
     }
 
     private void OnAttackAttempt(Entity<ReplicatorComponent> ent, ref AttackAttemptEvent args)
