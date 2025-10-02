@@ -30,6 +30,30 @@
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: bureau-module }
 
+- type: entity
+  id: BorgModuleCardboard
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: Cardboard cyborg module
+  description: A piece of trash that gives cyborgs new abilities.
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: card
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-card
+  - type: ItemBorgModule
+    hands:
+    - item: CardSword
+    - hand:
+        emptyRepresentative: MaterialCardboard
+        emptyLabel: borg-slot-cardboard-empty
+        whitelist:
+          tags:
+          - Cardboard
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: card-module }
+
 # Science Modules
 - type: entity
   id: BorgModuleAdvancedAnomaly
