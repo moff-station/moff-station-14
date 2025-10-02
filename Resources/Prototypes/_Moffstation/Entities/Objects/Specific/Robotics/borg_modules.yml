@@ -51,6 +51,9 @@
         whitelist:
           tags:
           - Cardboard
+  - type: Construction
+    graph: BorgModuleCardboard
+    node: BorgModuleCardboard
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: card-module }
 
