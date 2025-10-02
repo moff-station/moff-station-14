@@ -46,7 +46,10 @@
       amount: 2
     - id: NetworkConfigurator
     - id: Binoculars
-    - id: WeaponEnergyShotgun # Moffstation - Big Iron
+    # Moffstation - Begin Big Iron
+    - id: WeaponRevolverBigIron
+    - id: PowerCellBigIron
+    # Moffstation - End
 
 - type: entityTable
   id: FillLockerWardenHarduit
