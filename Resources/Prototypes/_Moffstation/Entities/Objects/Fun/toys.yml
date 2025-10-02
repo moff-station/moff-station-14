@@ -5,10 +5,6 @@
   description: A cardboard tube fashioned into the shape of a sword - now safe for cyborg use!
   components:
   - type: MeleeWeapon
-    wideAnimationRotation: -135
-    attackRate: 1.25
     damage:
       types:
         Blunt: 0
-    soundHit:
-      path: /Audio/Items/Toys/card_tube_bonk.ogg
