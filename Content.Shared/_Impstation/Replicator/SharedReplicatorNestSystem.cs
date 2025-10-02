@@ -3,6 +3,7 @@
 // the original Bingle PR can be found here: https://github.com/Goob-Station/Goob-Station/pull/1519
 
 using Content.Shared.Actions;
+using Content.Shared.Polymorph;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Impstation.Replicator;
@@ -18,5 +19,5 @@ public sealed partial class ReplicatorSpawnNestActionEvent : InstantActionEvent;
 public sealed partial class ReplicatorUpgradeActionEvent : InstantActionEvent
 {
     [DataField(required: true)]
-    public EntProtoId NextStage;
+    public ProtoId<PolymorphPrototype> NextStage;
 }

@@ -100,10 +100,12 @@ public sealed class ReplicatorNestSystem : EntitySystem
             ent.Comp.HasAnnounced = true;
             _chatSystem.DispatchStationAnnouncement(ent, ent.Comp.Announcement, colorOverride: Color.Red);
         }
-        HandlePoints(ent, args.Tripper);
+
+        UpdatePoints(ent, args.Tripper);
+        HandlePoints(ent);
     }
 
-    private void HandlePoints(Entity<ReplicatorNestComponent> ent, EntityUid tripper) // this is its own method because I think it reads cleaner. also the way goobcode handled this sucked.
+    private void UpdatePoints(Entity<ReplicatorNestComponent> ent, EntityUid tripper) // this is its own method because I think it reads cleaner. also the way goobcode handled this sucked.
     {
         // regardless of what falls in, you get at least one point
         if (!HasComp<StackComponent>(tripper)) // as long as it's not a stack.
@@ -122,48 +124,37 @@ public sealed class ReplicatorNestSystem : EntitySystem
         // you get a bonus point if the item is Large, 2 bonus points if it's Huge, and 3 bonus points if it's above that.
         else if (TryComp<ItemComponent>(tripper, out var itemComp))
         {
-            if (_item.GetSizePrototype(itemComp.Size) == _item.GetSizePrototype("Large"))
-                ent.Comp.TotalPoints += 10;
-            else if (_item.GetSizePrototype(itemComp.Size) == _item.GetSizePrototype("Huge"))
-                ent.Comp.TotalPoints += 20;
-            else if (_item.GetSizePrototype(itemComp.Size) >= _item.GetSizePrototype("Ginormous"))
-                ent.Comp.TotalPoints += 30;
+            var weight = _item.GetSizePrototype(itemComp.Size).Weight;
+            if (weight > _item.GetSizePrototype("Large").Weight)
+                ModifyPoints(ent, 10);
+            if (weight > _item.GetSizePrototype("Huge").Weight)
+                ModifyPoints(ent, 10);
+            if (weight >= _item.GetSizePrototype("Ginormous").Weight)
+                ModifyPoints(ent, 10);
             // regardless, items only net 1 spawning progress.
-            ent.Comp.SpawningProgress += 10;
+            ModifyPoints(ent, 10);
         }
 
         // if it wasn't an item and was anchorable, you get 3 bonus points.
-        else if (TryComp<AnchorableComponent>(tripper, out _))
+        else if (HasComp<AnchorableComponent>(tripper))
         {
-            ent.Comp.TotalPoints += 30;
-            // structures give a lot more spawning progress than items
-            ent.Comp.SpawningProgress += 30;
+            ModifyPoints(ent, 30);
         }
-
-        // recycling four dead replicators nets you one new replicator, but no progress towards leveling up.
-        else if (HasComp<ReplicatorComponent>(tripper))
-            ent.Comp.SpawningProgress += ent.Comp.SpawnNewAt / 4;
 
         // now we handle points if it *isn't* a replicator, structure, or item, but *is* a living thing
         else if (HasComp<MobStateComponent>(tripper))
         {
-            // you get additional bonus points if it was a humanoid:
+            // bonus points for humanoid (default 2) times current level plus enough progress for one new replicator
             if (HasComp<HumanoidAppearanceComponent>(tripper))
-            {
-                // bonus points for humanoid (default 2) times current level
-                ent.Comp.TotalPoints += ent.Comp.BonusPointsHumanoid * ent.Comp.CurrentLevel;
-                // plus you get enough progress for one new replicator
-                ent.Comp.SpawningProgress += ent.Comp.SpawnNewAt;
-            }
-            // otherwise, you get bonus points for living (default 1) times current level
+                ModifyPoints(ent, (10 * ent.Comp.CurrentLevel) + ent.Comp.SpawnNewAt);
+            // otherwise, you get bonus points for living (default 1) times current level and 1/4th progress
             else
-            {
-                ent.Comp.TotalPoints += ent.Comp.BonusPointsAlive * ent.Comp.CurrentLevel;
-                // and 1/4th progress
-                ent.Comp.SpawningProgress += ent.Comp.SpawnNewAt / 4;
-            }
+                ModifyPoints(ent, (5 * ent.Comp.CurrentLevel) + (ent.Comp.SpawnNewAt / 4));
         }
+    }
 
+    private void HandlePoints(Entity<ReplicatorNestComponent> ent)
+    {
         // if we exceed the upgrade threshold after points are added,
         if (ent.Comp.TotalPoints >= ent.Comp.NextUpgradeAt)
         {
@@ -172,10 +163,10 @@ public sealed class ReplicatorNestSystem : EntitySystem
 
             // this allows us to have an arbitrary number of unique messages for when the nest levels up - and a default for if we run out.
             var growthMessage = $"replicator-nest-level{ent.Comp.CurrentLevel}";
-            if (Loc.TryGetString(growthMessage, out var localizedMsg))
-                _popup.PopupEntity(localizedMsg, ent);
-            else
-                _popup.PopupEntity(Loc.GetString("replicator-nest-levelup"), ent);
+            _popup.PopupEntity(Loc.TryGetString(growthMessage, out var localizedMsg)
+                    ? localizedMsg
+                    : Loc.GetString("replicator-nest-levelup"),
+                ent);
 
             // make the nest sprite grow as long as we have sprites for it. I am NOT scaling it.
             if (ent.Comp.CurrentLevel <= ent.Comp.EndgameLevel)
@@ -185,7 +176,9 @@ public sealed class ReplicatorNestSystem : EntitySystem
 
             // update the threshold for the next upgrade (the default times the current level), and upgrade all our guys.
             // threshold increases plateau at the endgame level.
-            ent.Comp.NextUpgradeAt += ent.Comp.CurrentLevel >= ent.Comp.EndgameLevel ? ent.Comp.UpgradeAt * ent.Comp.EndgameLevel : ent.Comp.UpgradeAt * ent.Comp.CurrentLevel;
+            ent.Comp.NextUpgradeAt += ent.Comp.CurrentLevel >= ent.Comp.EndgameLevel
+                ? ent.Comp.UpgradeAt * ent.Comp.EndgameLevel
+                : ent.Comp.UpgradeAt * ent.Comp.CurrentLevel;
             UpgradeAll(ent);
             _audio.PlayPvs(ent.Comp.LevelUpSound, ent);
 
@@ -201,11 +194,11 @@ public sealed class ReplicatorNestSystem : EntitySystem
         if (ent.Comp.SpawningProgress >= ent.Comp.NextSpawnAt)
         {
             SpawnNew(ent);
-            ent.Comp.NextSpawnAt += ent.Comp.SpawnNewAt * ent.Comp.UnclaimedSpawners.Count;
+            ent.Comp.SpawningProgress = 0;
         }
 
-        // then convert some tiles if we're over level 3.
-        if (ent.Comp.TotalPoints >= ent.Comp.NextTileConvertAt && ent.Comp.CurrentLevel > ent.Comp.EndgameLevel)
+        // then convert some tiles
+        if (ent.Comp.TotalPoints >= ent.Comp.NextTileConvertAt)
         {
             ConvertTiles(ent, ent.Comp.TileConversionRadius);
             ent.Comp.NextTileConvertAt += ent.Comp.TileConvertAt;
@@ -215,12 +208,17 @@ public sealed class ReplicatorNestSystem : EntitySystem
         Dirty(ent);
 
         // finally, update the PointsStorage entity.
-        if (!TryComp<ReplicatorNestPointsStorageComponent>(ent.Comp.PointsStorage, out var pointsStorageComponent))
-            pointsStorageComponent = EnsureComp<ReplicatorNestPointsStorageComponent>(ent.Comp.PointsStorage);
+        var pointsStorageComponent = EnsureComp<ReplicatorNestPointsStorageComponent>(ent.Comp.PointsStorage);
 
         pointsStorageComponent.Level = ent.Comp.CurrentLevel;
         pointsStorageComponent.TotalPoints = ent.Comp.TotalPoints;
         pointsStorageComponent.TotalReplicators = ent.Comp.SpawnedMinions.Count;
+    }
+
+    private void ModifyPoints(Entity<ReplicatorNestComponent> ent, int points)
+    {
+        ent.Comp.TotalPoints += points;
+        ent.Comp.SpawningProgress += points;
     }
 
     private void Embiggen(Entity<ReplicatorNestComponent> ent)
@@ -257,9 +255,12 @@ public sealed class ReplicatorNestSystem : EntitySystem
 
             foreach (var action in comp.UpgradeActions)
             {
-                _actions.AddAction(ent, action, mind);
+                var actionEnt = _actions.AddAction(ent, action);
+                _actionContainer.EnsureAction(ent, ref actionEnt, action);
             }
             comp.HasBeenGivenUpgradeActions = true;
+
+            Dirty(ent);
         }
     }
 
@@ -269,7 +270,11 @@ public sealed class ReplicatorNestSystem : EntitySystem
         if (xform.GridUid is not { } gridUid || !TryComp(gridUid, out MapGridComponent? mapGrid))
             return;
 
-        var tileEnumerator = _map.GetLocalTilesEnumerator(gridUid, mapGrid, new Box2(xform.Coordinates.Position + new System.Numerics.Vector2(-radius, -radius), xform.Coordinates.Position + new System.Numerics.Vector2(radius, radius)));
+        var tileEnumerator = _map.GetLocalTilesEnumerator(gridUid,
+            mapGrid,
+            new Box2(xform.Coordinates.Position + new System.Numerics.Vector2(-radius, -radius),
+            xform.Coordinates.Position + new System.Numerics.Vector2(radius, radius)));
+
         var convertTile = (ContentTileDefinition)_tileDef[ent.Comp.ConversionTile];
 
         while (tileEnumerator.MoveNext(out var tile))
@@ -383,7 +388,7 @@ public sealed class ReplicatorNestSystem : EntitySystem
             livingReplicators.Add((queenNotNull, comp));
             comp.RelatedReplicators = livingReplicators; // make sure we know who belongs to our nest
 
-            var upgradedQueen = _replicator.ForceUpgrade((queenNotNull, comp), comp.FinalStage);
+            var upgradedQueen = _replicator.UpgradeReplicator((queenNotNull, comp), comp.FinalStage);
             if (!TryComp<ReplicatorComponent>(upgradedQueen, out var upgradedComp))
                 return;
 
@@ -402,7 +407,7 @@ public sealed class ReplicatorNestSystem : EntitySystem
         foreach (var replicator in livingReplicators)
         {
             // downgrade to level 1
-            var upgraded = _replicator.ForceUpgrade(replicator, replicator.Comp.FirstStage);
+            var upgraded = _replicator.UpgradeReplicator(replicator, replicator.Comp.FirstStage);
             if (upgraded is not { } upgradedNotNull)
                 return;
 

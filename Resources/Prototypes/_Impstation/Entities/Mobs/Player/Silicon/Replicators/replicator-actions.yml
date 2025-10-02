@@ -34,7 +34,7 @@
     useDelay: 20
   - type: InstantAction
     event: !type:ReplicatorUpgradeActionEvent
-      nextStage: MobReplicator
+      nextStage: ReplicatorMorph
 
 - type: entity
   id: ActionReplicatorUpgrade2
@@ -42,12 +42,13 @@
   name: Upgrade (Deconstructor)
   description: Gather nanites. Gain manipulation.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: NoItem
     icon: _Impstation/Interface/Actions/replicator_level2.png
-    event: !type:ReplicatorUpgradeActionEvent
-      nextStage: MobReplicatorTier2
     useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorUpgradeActionEvent
+      nextStage: ReplicatorTier2Morph
 
 - type: entity
   id: ActionReplicatorUpgrade2Alt
@@ -55,12 +56,13 @@
   name: Upgrade (Defender)
   description: Gather nanites. Gain weaponry.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: NoItem
     icon: _Impstation/Interface/Actions/replicator_level2alt.png
-    event: !type:ReplicatorUpgradeActionEvent
-      nextStage: MobReplicatorTier2Alt
     useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorUpgradeActionEvent
+      nextStage: ReplicatorTier2AltMorph
 
 - type: entity
   id: ActionReplicatorUpgrade3
@@ -68,9 +70,10 @@
   name: Upgrade (Protector)
   description: Gather nanites. Become stronger.
   components:
-  - type: InstantAction
+  - type: Action
     itemIconStyle: NoItem
     icon: _Impstation/Interface/Actions/replicator_level3.png
-    event: !type:ReplicatorUpgradeActionEvent
-      nextStage: MobReplicatorTier3
     useDelay: 20
+  - type: InstantAction
+    event: !type:ReplicatorUpgradeActionEvent
+      nextStage: ReplicatorTier3Morph

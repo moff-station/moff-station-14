@@ -2,6 +2,7 @@
 // all credit for the core gameplay concepts and a lot of the core functionality of the code goes to the folks over at Goob, but I re-wrote enough of it to justify putting it in our filestructure.
 // the original Bingle PR can be found here: https://github.com/Goob-Station/Goob-Station/pull/1519
 
+using Content.Shared.Polymorph;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -72,13 +73,13 @@ public sealed partial class ReplicatorComponent : Component
     /// The default first stage to revert Replicators to in the event of nest destruction.
     /// </summary>
     [DataField]
-    public EntProtoId FirstStage = "MobReplicator";
+    public ProtoId<PolymorphPrototype> FirstStage = "ReplicatorMorph";
 
     /// <summary>
     /// The default final stage to upgrade the Queen to in the event of nest destruction.
     /// </summary>
     [DataField]
-    public EntProtoId FinalStage = "MobReplicatorTier3";
+    public ProtoId<PolymorphPrototype> FinalStage = "MobReplicatorTier3";
 }
 
 [Serializable, NetSerializable]

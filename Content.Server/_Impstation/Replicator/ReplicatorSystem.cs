@@ -8,6 +8,7 @@ using Content.Server.Emp;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Mind;
 using Content.Server.Pinpointer;
+using Content.Server.Polymorph.Systems;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
 using Content.Shared._Impstation.Replicator;
@@ -19,6 +20,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Pinpointer;
+using Content.Shared.Polymorph;
 using Content.Shared.Popups;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -38,6 +40,8 @@ public sealed class ReplicatorSystem : EntitySystem
     [Dependency] private readonly PinpointerSystem _pinpointer = default!;
     [Dependency] private readonly MindSystem  _mind = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
 
     public override void Initialize()
     {
@@ -108,7 +112,7 @@ public sealed class ReplicatorSystem : EntitySystem
         if (HasComp<ReplicatorSignComponent>(ent))
             RemComp<ReplicatorSignComponent>(ent);
 
-        ForceUpgrade(ent, ent.Comp.FirstStage);
+        UpgradeReplicator(ent, ent.Comp.FirstStage);
 
         // then we need to remove the action, to ensure it can't be used infinitely.
         QueueDel(args.Action);
@@ -127,43 +131,31 @@ public sealed class ReplicatorSystem : EntitySystem
         ent.Comp.MyNest = tracker.SpawnedFrom;
     }
 
-    // force upgrade any tier to another given tier.
-    // or i guess technically you could feed it any EntProtoId...
-    public EntityUid? ForceUpgrade(Entity<ReplicatorComponent> ent, EntProtoId nextStage)
-    {
-        var upgraded = UpgradeReplicator(ent, nextStage);
-
-        QueueDel(ent);
-        foreach (var action in ent.Comp.Actions)
-        {
-            QueueDel(action);
-        }
-
-        return upgraded;
-    }
-
-    public EntityUid? UpgradeReplicator(Entity<ReplicatorComponent> ent, EntProtoId nextStage)
+    public EntityUid? UpgradeReplicator(Entity<ReplicatorComponent> ent, ProtoId<PolymorphPrototype> nextStage)
     {
         if (!_mind.TryGetMind(ent, out var mind, out _))
             return null;
 
-        var xform = Transform(ent);
+        foreach (var action in _actions.GetActions(ent))
+        {
+            _actions.RemoveAction((ent, action));
+        }
 
-        var upgraded = Spawn(nextStage, xform.Coordinates);
+        if (_polymorph.PolymorphEntity(ent, nextStage) is not { } upgraded)
+            return null;
+
         var upgradedComp = EnsureComp<ReplicatorComponent>(upgraded);
         upgradedComp.RelatedReplicators = ent.Comp.RelatedReplicators;
         upgradedComp.MyNest = ent.Comp.MyNest;
 
-        if (ent.Comp.MyNest != null)
+        if (ent.Comp.MyNest is { } nest)
         {
-            var nestComp = EnsureComp<ReplicatorNestComponent>((EntityUid)ent.Comp.MyNest);
+            var nestComp = EnsureComp<ReplicatorNestComponent>(nest);
             nestComp.SpawnedMinions.Remove(ent);
             nestComp.SpawnedMinions.Add(upgraded);
 
             _audio.PlayPvs(nestComp.UpgradeSound, upgraded);
         }
-
-        _mind.TransferTo(mind, upgraded);
 
         _popup.PopupEntity(Loc.GetString($"{ent.Comp.ReadyToUpgradeMessage}-self"), upgraded, PopupType.Medium);
 
@@ -203,12 +195,12 @@ public sealed class ReplicatorSystem : EntitySystem
 
         _appearance.SetData(ent, ReplicatorVisuals.Combat, false);
 
-        if (HasComp<ReplicatorSignComponent>(ent))
+        if (!HasComp<ReplicatorSignComponent>(ent))
+            return;
+
+        foreach (var (uid, comp) in ent.Comp.RelatedReplicators)
         {
-            foreach (var (uid, comp) in ent.Comp.RelatedReplicators)
-            {
-                _popup.PopupEntity(Loc.GetString(comp.QueenDiedMessage), uid, uid, PopupType.LargeCaution);
-            }
+            _popup.PopupEntity(Loc.GetString(comp.QueenDiedMessage), uid, uid, PopupType.LargeCaution);
         }
     }
 

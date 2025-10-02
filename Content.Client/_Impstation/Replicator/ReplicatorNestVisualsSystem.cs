@@ -10,42 +10,43 @@ namespace Content.Client._Impstation.Replicator;
 public sealed partial class ReplicatorNestVisualsSystem : EntitySystem
 {
     [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ReplicatorNestComponent, ReplicatorNestEmbiggenedEvent>(OnEmbiggened);
+        SubscribeNetworkEvent<ReplicatorNestEmbiggenedEvent>(OnEmbiggened);
     }
 
-    private void OnEmbiggened(Entity<ReplicatorNestComponent> ent, ref ReplicatorNestEmbiggenedEvent args)
+    private void OnEmbiggened(ReplicatorNestEmbiggenedEvent ev, EntitySessionEventArgs args)
     {
-        if (!TryComp<SpriteComponent>(ent, out var sprite))
+        if (!TryComp<SpriteComponent>(ev.Ent, out var sprite))
             return;
 
-        var targetLayer = ent.Comp.CurrentLevel switch
+        Enum targetLayer = ev.Ent.Comp.CurrentLevel switch
         {
             >= 3 => ReplicatorNestVisuals.Level3,
             2 => ReplicatorNestVisuals.Level2,
             _ => ReplicatorNestVisuals.Level1,
         };
 
-        var targetLayerUnshaded = ent.Comp.CurrentLevel switch
+        Enum targetLayerUnshaded = ev.Ent.Comp.CurrentLevel switch
         {
             >= 3 => ReplicatorNestVisuals.Level3Unshaded,
             2 => ReplicatorNestVisuals.Level2Unshaded,
             _ => ReplicatorNestVisuals.Level1Unshaded,
         };
 
-        if (!sprite.LayerMapTryGet(targetLayer, out var layerIndex))
+        if (!_sprite.TryGetLayer(ev.Ent.Owner ,targetLayer, out var layerIndex, false))
             return;
 
-        if (!sprite.LayerMapTryGet(targetLayerUnshaded, out var layerIndexUnshaded))
+        if (!_sprite.TryGetLayer(ev.Ent.Owner, targetLayerUnshaded, out var layerIndexUnshaded, false))
             return;
 
-        sprite.LayerSetVisible(layerIndex, true);
-        sprite.LayerSetVisible(layerIndexUnshaded, true);
+        _sprite.LayerSetVisible(layerIndex, true);
+        _sprite.LayerSetVisible(layerIndexUnshaded, true);
 
-        _appearance.OnChangeData(ent.Owner, sprite);
+        _appearance.OnChangeData(ev.Ent.Owner, sprite);
     }
 }

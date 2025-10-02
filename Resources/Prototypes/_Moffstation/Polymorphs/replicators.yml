@@ -1,0 +1,38 @@
+- type: polymorph
+  id: BaseReplicatorMorph
+  abstract: true
+  configuration:
+    entity: MobReplicator
+    forced: true
+    transferName: true
+    transferHumanoidAppearance: false
+    inventory: Transfer
+    allowRepeatedMorphs: false
+    revertOnCrit: false
+    revertOnDeath: false
+    revertOnDelete: false
+    ignoreAllowRepeatedMorphs: false
+
+- type: polymorph
+  id: ReplicatorMorph
+  parent: BaseReplicatorMorph
+  configuration:
+    entity: MobReplicator
+
+- type: polymorph
+  id: ReplicatorTier2Morph
+  parent: BaseReplicatorMorph
+  configuration:
+    entity: MobReplicatorTier2
+
+- type: polymorph
+  id: ReplicatorTier2AltMorph
+  parent: BaseReplicatorMorph
+  configuration:
+    entity: MobReplicatorTier2Alt
+
+- type: polymorph
+  id: ReplicatorTier3Morph
+  parent: BaseReplicatorMorph
+  configuration:
+    entity: MobReplicatorTier3

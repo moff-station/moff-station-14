@@ -15,6 +15,7 @@ public sealed class ReplicatorVisualsSystem : EntitySystem
 {
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -45,19 +46,19 @@ public sealed class ReplicatorVisualsSystem : EntitySystem
             return;
         if (!TryComp<CombatModeComponent>(ent, out var combat))
             return;
-        if (!args.Sprite.LayerMapTryGet(ReplicatorVisuals.Combat, out var layerIndex)
-            || !args.Sprite.LayerMapTryGet(DamageStateVisualLayers.Base, out var baseIndex))
+        if (!_sprite.LayerMapTryGet(ent.Owner, ReplicatorVisuals.Combat, out var layerIndex, false)
+            || !_sprite.LayerMapTryGet(ent.Owner, DamageStateVisualLayers.Base, out var baseIndex, false))
             return;
 
         // make sure we can sync the frames
-        if (!args.Sprite.TryGetLayer(layerIndex, out var combatLayer)
-            || !args.Sprite.TryGetLayer(baseIndex, out var baseLayer))
+        if (!_sprite.TryGetLayer(ent.Owner, layerIndex, out var combatLayer, false)
+            || !_sprite.TryGetLayer(ent.Owner, baseIndex, out var baseLayer, false))
             return;
 
         // turn on combat visuals if the mob is alive and in combat mode. otherwise turn them off
-        args.Sprite.LayerSetVisible(layerIndex, _mobState.IsAlive(ent) && combat.IsInCombatMode);
+        _sprite.LayerSetVisible(ent.Owner, layerIndex, _mobState.IsAlive(ent) && combat.IsInCombatMode);
         // then sync them to the base animation
-        combatLayer.SetAnimationTime(baseLayer.AnimationTime);
+        _sprite.LayerSetAnimationTime(combatLayer, baseLayer.AnimationTime);
         combatLayer.AnimationFrame = baseLayer.AnimationFrame;
         combatLayer.AnimationTimeLeft = baseLayer.AnimationTimeLeft;
     }
