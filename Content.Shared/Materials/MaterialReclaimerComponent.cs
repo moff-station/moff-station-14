@@ -1,4 +1,5 @@
-﻿using Content.Shared.Whitelist;
+﻿using Content.Shared.Damage;
+using Content.Shared.Whitelist;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -137,6 +138,14 @@ public sealed partial class MaterialReclaimerComponent : Component
     /// </remarks>
     [DataField, AutoNetworkedField]
     public int ItemsProcessed;
+
+    //Moffstaton - recycler damage change - begin
+    /// <summary>
+    /// What damage the recycler does to people when emagged
+    /// </summary>
+    [DataField(required: true)] [ViewVariables(VVAccess.ReadWrite)]
+    public DamageSpecifier DamageOnGrind = new();
+    //Moffstation - end
 }
 
 [NetSerializable, Serializable]

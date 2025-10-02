@@ -84,6 +84,11 @@
       params:
         volume: -3
     cutOffSound: false
+    #Moffstation - recycler damage change - Begin
+    damageOnGrind:
+      types:
+        Slash: 150 #Is applied twice for some reason. This will do 300 slash, which will kill but not immediately RR unintentionally
+    #Moffstation - end
   - type: MaterialStorage
     insertOnInteract: false
   - type: Conveyor
