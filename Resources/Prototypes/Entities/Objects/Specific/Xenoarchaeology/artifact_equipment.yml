@@ -102,6 +102,10 @@
         paper_label: !type:ContainerSlot
     - type: StaticPrice
       price: 250
+    # Moffstation - Start - department sellables
+    - type: OverrideSell
+      overrideAccount: Science
+    # Moffstation - End
 
 - type: entity
   parent: BaseStorageItem
@@ -193,3 +197,7 @@
     delay: 0.3
   - type: StaticPrice
     price: 250
+  # Moffstation - Start - department sellables
+  - type: OverrideSell
+    overrideAccount: Science
+  # Moffstation - End

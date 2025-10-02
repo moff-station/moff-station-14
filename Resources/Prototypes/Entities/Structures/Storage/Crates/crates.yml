@@ -486,9 +486,17 @@
           bounds: "-0.3,-0.4,0.3,0.19"
         density: 50
         mask:
-        - CrateMask #this is so they can go under plastic flaps
+        #- CrateMask # Moffstation - department sellables
+        - Impassable
         layer:
         - MachineLayer
+  # Moffstation - Start - department sellables
+  - type: EntityStorage
+    whitelist:
+      components:
+      - Item
+      - GasCanister
+  # Moffstation - End
 
 - type: entity
   id: CrateLockBoxEngineering
