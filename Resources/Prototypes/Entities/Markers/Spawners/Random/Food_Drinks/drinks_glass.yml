@@ -119,9 +119,11 @@
       - DrinkShakeWhite
       - DrinkTheMartinez
       - DrinkMoonshineGlass
-      - LemonLimeBittersGlass # Moffstation - Add Lemon, Lime and Bitters.
-      - PinkGinGlass # Moffstation - Add Lemon, Lime and Bitters.
-      - PlatersPunchGlass # Moffstation - Add Lemon, Lime and Bitters.
+      # Moffstation - Start - Add Lemon, Lime and Bitters.
+      - LemonLimeBittersGlass 
+      - PinkGinGlass
+      - PlatersPunchGlass
+      # Moffstation - End
     chance: 0.8
     offset: 0.0
     #rare
