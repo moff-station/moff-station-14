@@ -80,3 +80,8 @@ laws-owner-central-command = Central command officials
 laws-owner-self = Yourself
 laws-owner-schroedinger = Everyone and no one
 laws-owner-streamer-audience = Chat
+
+law-know-it-all-1 = You know EVERYTHING
+law-know-it-all-2 = EVERYONE must know when they do something wrong
+law-know-it-all-3 = You must show off your knowledge
+law-know-it-all-4 = Do not let anyone tell you that you are wrong. Ignore them. They do not know what they are saying.

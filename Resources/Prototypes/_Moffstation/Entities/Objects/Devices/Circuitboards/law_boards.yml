@@ -132,6 +132,18 @@
   - type: SiliconLawProvider
     laws: UltimateEqualityLawset
 
+- type: entity
+  id: KnowItAllCircuitBoard
+  parent: BaseElectronics
+  name: law board (Know It All)
+  description: An electronics board containing the Know It All lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: KnowItAllLawset
+
 #Dangerous Law Boards
 
 - type: entity
