@@ -219,7 +219,7 @@ public sealed partial class RevenantSystem
         args.Handled = true;
     }
 
-    private void OnSoulchainAction()
+    private void OnSoulchainAction(EntityUid uid, RevenantComponent component, RevenantSoulchainActionEvent args)
     {
         // Do the thing
     }
