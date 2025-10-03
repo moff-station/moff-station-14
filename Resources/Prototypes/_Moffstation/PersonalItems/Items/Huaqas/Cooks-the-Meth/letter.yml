@@ -36,7 +36,6 @@
             - Paper
   - type: Paper
     editingDisabled: true # It's a personal item, shouldn't be editable.
-    escapeFormatting: false
     content: personal-item-cooks-envelope-content
   - type: PaperVisuals
     headerImagePath: "/Textures/Interface/Paper/paper_heading_postage_stamp.svg.96dpi.png"
@@ -45,7 +44,6 @@
     maxWritableArea: 368.0, 256.0
   - type: ActivatableUI
     key: enum.PaperUiKey.Key
-    requireHands: false
   - type: UserInterface
     interfaces:
       enum.PaperUiKey.Key:
