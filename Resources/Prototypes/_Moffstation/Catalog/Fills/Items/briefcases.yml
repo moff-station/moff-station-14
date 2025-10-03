@@ -8,37 +8,130 @@
   - type: Storage
     maxItemSize: Huge
     grid:
-    - 0,0,6,3
+    - 0,0,9,3
   - type: StorageFill
     contents:
-      - id: WeaponSniperElephant
-      - id: MagazineBoxAntiMateriel
+      - id: WeaponSniperElephant #- id: MagazineBoxAntiMateriel
+      - id: CartridgeAntiMateriel
+        amount: 5
       - id: ClothingHeadSafari
       - id: ClothingUniformJumpsuitSafari
       - id: Binoculars
-      - id: WeaponDartGun
-      - id: 
-      
+      - id: WeaponBlowgun
+      - id: HypoDartBox
+        amount: 5
+      - id: TazinideChemistryVial
+        amount: 2
+      - id: DrinkPoisonWinebottleFull
+      - id: SyndieBoxDarts
       
 # Move the shit below later im cooking
-
 #Syringe Gun....but darts!
 - type: entity
   name: blowgun
-  parent: [LauncherSyringe, BaseSyndicateContraband]
-  id: Blowgun
+  parent: [LauncherSyringe, BaseMinorContraband]
+  id: WeaponBlowgun
   description: Shoots darts!
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Cannons/dart_gun.rsi
+    sprite: _Moffstation/Objects/Weapons/Special/blowgun.rsi
     layers:
-    - state: dart_gun
+    - state: blowgun
   - type: Storage
     maxItemSize: Normal
     grid:
-    - 0,0,5,0
+    - 0,0,5,0 #Bit more space than syringe gun.
     whitelist:
       tags:
-      - DartAmmo
+      - BlowgunAmmo
   - type: Gun
-    fireRate: 2 #Rapid fire the darts cause why not
+    fireRate: 2 #Shoot a bit faster than the syringe gun for a little edge.
+    - type: Item
+      size: Large
+      shape:
+      - 0,0,1,0
+
+#Sharper Darts
+- type: entity
+  name: SyndieDart(tm)
+  description: Heavy Syndicate lawn darts outlawed after many backyard accidents. Brutally sharp.
+  parent: [Dart, BaseSyndicateContraband]
+  id: SyndieDart
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Darts/dart_red.rsi #MAKE A CUSTOM SPRITE LATER BOZO
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: -45
+    damage:
+      types:
+        Piercing: 10
+    angle: 0
+    animation: WeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 33 #Bow and arrow does 35 MINIMUM. Want it to be decently competetive. Still needs 3 darts landed for a single kill, not accounting for armor. 
+  - type: Item
+    size: Tiny
+    sprite: _Moffstation/Objects/Weapons/Thrown/syndie_dart.rsi
+  - type: Tag
+    tags:
+    - BlowgunAmmo
+  - type: EmbeddableProjectile
+    minimumSpeed: 3
+    removalTime: 1.5 #Longer removal time - cant be taken off if people are moving around
+    offset: 0.0,0.0
+
+#Fake Box For Syndie Darts
+- type: entity
+  name: darts box
+  parent: BoxCardboard
+  id: SyndieBoxDarts
+  description: A box filled with colorful darts.
+  components:
+  - type: Sprite
+    layers:
+      - state: box
+      - state: darts
+  - type: Item
+    sprite: Objects/Storage/boxes.rsi
+    size: Large
+    shape:
+    - 0,0,1,1
+  - type: StorageFill
+    contents:
+      - id: SyndieDart
+        amount: 9
+        
+- type: entity
+  id: TazinideChemistryVial
+  parent: BaseChemistryEmptyVial
+  suffix: tazinide
+  components:
+  - type: Label
+    currentLabel: reagent-name-tazinide
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 5
+        reagents:
+          - ReagentId: Tazinide
+            Quantity: 5
+            
+- type: entity
+  id: ChemistryBottleTazinide
+  suffix: tazinide
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-tazinide
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Tazinide
+          Quantity: 30
