@@ -2,7 +2,7 @@
   parent: CrayonRainbow
   id: CrayonRainbowInfinite
   name: magic rainbow crayon
-  description: A magical looking crayon. Never seems to run out no matter how much its drawn, or eaten...
+  description: A magical looking crayon. Never seems to run out no matter how much its drawn...
   components:
   - type: Sprite
     state: rainbow
@@ -10,5 +10,3 @@
     heldPrefix: rainbow
   - type: Crayon
     infinite: true
-  - type: Food
-    transferAmount: 0
