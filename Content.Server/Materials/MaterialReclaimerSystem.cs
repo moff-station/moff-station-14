@@ -194,7 +194,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
             var logImpact = HasComp<HumanoidAppearanceComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
             //Moffstation - recycler damage change - begin
             _adminLogger.Add(LogType.Damaged, logImpact, $"{ToPrettyString(item):victim} was ground by {ToPrettyString(uid):entity} ");
-            _damage.TryChangeDamage(item, component.DamageOnGrind, true, true, comp);
+            _damage.TryChangeDamage(item, component.DamageOnGrind, true);
             //Moffstation - end
             _appearance.SetData(uid, RecyclerVisuals.Bloody, true);
         }
