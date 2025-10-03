@@ -8,7 +8,7 @@
   - type: Storage
     maxItemSize: Huge
     grid:
-    - 0,0,9,3
+    - 0,0,8,6
   - type: StorageFill
     contents:
       - id: WeaponSniperElephant #- id: MagazineBoxAntiMateriel
@@ -36,7 +36,7 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Special/blowgun.rsi
     layers:
-    - state: blowgun
+    - state: icon
   - type: Storage
     maxItemSize: Normal
     grid:
@@ -46,10 +46,10 @@
       - BlowgunAmmo
   - type: Gun
     fireRate: 2 #Shoot a bit faster than the syringe gun for a little edge.
-    - type: Item
-      size: Large
-      shape:
-      - 0,0,1,0
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,1,0
 
 #Sharper Darts
 - type: entity
@@ -59,7 +59,7 @@
   id: SyndieDart
   components:
   - type: Sprite
-    sprite: Objects/Fun/Darts/dart_red.rsi #MAKE A CUSTOM SPRITE LATER BOZO
+    sprite: _Moffstation/Objects/Weapons/Thrown/syndie_dart.rsi
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: -45
