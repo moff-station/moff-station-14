@@ -32,3 +32,22 @@
     - id: Pirates
       orGroup: SubGamemodes
       prob: 0.2
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleSyndicate
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: SyndicateListeningOutpost
+      orGroup: SubGamemodes
+      prob: 0.26
+    - id: Thief
+      orGroup: SubGamemodes
+      prob: 0.27
+    - id: BloodBrothers
+      orGroup: SubGamemodes
+      prob: 0.27
+    - id: Pirates
+      orGroup: SubGamemodes
+      prob: 0.20
