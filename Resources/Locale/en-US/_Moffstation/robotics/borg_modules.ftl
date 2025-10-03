@@ -2,6 +2,7 @@
 borg-slot-anomaly-core = Anomaly core
 borg-slot-bottles-empty = Bottles
 borg-slot-buckets-empty = Buckets
+borg-slot-cardboard-empty = Cardboard
 borg-slot-crayon-empty = Crayons
 borg-slot-crayon-box-empty = Crayon box
 borg-slot-rcd-ammo-empty = Compressed matter

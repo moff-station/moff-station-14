@@ -89,7 +89,6 @@
   - node: bladeServer
     entity: !type:BoardNodeEntity
       container: machine_board
-      bladeServer: true
     edges:
     - to: bladeServerFrame
       completed:

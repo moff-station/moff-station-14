@@ -1,12 +1,15 @@
 {
     "version": 1,
     "license": "CC0-1.0",
-    "copyright": "icon-anomalies-adv, icon-bartending, and icon-bureaucracy created by davyei (discord) for Moffstation.",
+    "copyright": "card, icon-anomalies-adv, icon-bartending, icon-bureaucracy, and icon-card created by davyei (discord) for Moffstation.",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
+        {
+            "name": "card"
+        },
         {
             "name": "icon-anomalies-adv"
         },
@@ -15,6 +18,9 @@
         },
         {
             "name": "icon-bureaucracy"
+        },
+        {
+            "name": "icon-card"
         }
     ]
 }
