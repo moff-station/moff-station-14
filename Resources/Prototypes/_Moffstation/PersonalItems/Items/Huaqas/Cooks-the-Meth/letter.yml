@@ -78,4 +78,13 @@
       - !type:EmptyAllContainersBehaviour
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-        
+
+- type: loadout
+  id: PersonalItemCooksEnvelope
+  storage:
+    back:
+    - PersonalItemCooksEnvelope
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cooks-the-Meth
