@@ -143,7 +143,7 @@ public sealed partial class MaterialReclaimerComponent : Component
     /// <summary>
     /// What damage the recycler does to people when emagged
     /// </summary>
-    [DataField(required: true)] [ViewVariables(VVAccess.ReadWrite)]
+    [DataField] [ViewVariables(VVAccess.ReadWrite)]
     public DamageSpecifier DamageOnGrind = new();
     //Moffstation - end
 }
