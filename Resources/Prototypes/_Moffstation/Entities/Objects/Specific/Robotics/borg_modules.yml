@@ -33,7 +33,7 @@
 - type: entity
   id: BorgModuleCardboard
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: Cardboard cyborg module
+  name: cardborg module
   description: A piece of trash that gives cyborgs new abilities.
   components:
   - type: Sprite
