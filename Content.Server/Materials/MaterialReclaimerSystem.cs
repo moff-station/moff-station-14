@@ -189,13 +189,14 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
         if (component.ReclaimMaterials)
             SpawnMaterialsFromComposition(uid, item, completion * component.Efficiency, xform: xform);
 
-        //Moffstation - recycler damage change - begin
         if (CanGib(uid, item, component))
         {
             var logImpact = HasComp<HumanoidAppearanceComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
-            _adminLogger.Add(LogType.Gib, logImpact, $"{ToPrettyString(item):victim} was ground by {ToPrettyString(uid):entity} ");
+            //Moffstation - recycler damage change - begin
+            _adminLogger.Add(LogType.Damaged, logImpact, $"{ToPrettyString(item):victim} was ground by {ToPrettyString(uid):entity} ");
             TryComp<DamageableComponent>(item, out var comp);
             _damage.TryChangeDamage(item, component.DamageOnGrind, true, true, comp);
+            //Moffstation - end
             _appearance.SetData(uid, RecyclerVisuals.Bloody, true);
         }
         else
@@ -204,6 +205,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
                 SpawnChemicalsFromComposition(uid, item, completion, true, component, xform);
         }
 
+        //Moffstation - recycler damage change - begin
         if(!CanGib(uid, item, component))
             QueueDel(item);
         //Moffstation - end
