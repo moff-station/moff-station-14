@@ -76,6 +76,20 @@
     - PrisonUniform
     - WhitelistChameleon
 
+#Pirate
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformJumpsuitPirateAntag
+  name: pirate slops
+  description: A pirate variation of a space sailor's jumpsuit. Modified with removed sensor capabilities.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
+  - type: AddAccentClothing
+    accent: PirateAccent
+
 # HoP
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]

@@ -111,6 +111,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: MachineFrame
+  - type: BladeServerFrame
   - type: ContainerContainer
     containers:
       machine_board: !type:Container

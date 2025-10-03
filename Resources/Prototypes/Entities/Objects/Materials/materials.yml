@@ -63,6 +63,12 @@
     prototype: CarpetCard
     doAfter: 0.5
     removeOnInteract: true
+  # Moffstation - Start - Cardboard Module
+  - type: Tag
+    tags:
+    - Cardboard
+    - RawMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialCardboard
