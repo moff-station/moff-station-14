@@ -8,7 +8,8 @@ personal-item-cooks-letter-content = [color=#1b67a5]
     
        While I'm now under the same mantle, I still appreciate what is possibly the sector's best chemist by a wide margin, and a great friend of mine. It's been a pleasure being with you all these months.
     
-    Big hugs,
+    Big hugs,                   
 
-                    {"        [head=1]Novicia Nightflitter[/head]"}
-                    
+personal-item-cooks-envelope-content = TO: [bold]Cooks-the-Meth[/bold]
+    
+    FROM: [bold]Novicia Nightflitter[/bold]

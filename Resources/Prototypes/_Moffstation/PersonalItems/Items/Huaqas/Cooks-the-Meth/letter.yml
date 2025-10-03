@@ -2,15 +2,80 @@
   parent: Paper
   id: PersonalItemCooksLetter
   name: letter from a friend
+  suffix: PersonalItemCooksLetter
   description: a letter written and signed by a friend
   components:
   - type: Paper
+    editingDisabled: true # It's a personal item, shouldn't be editable.
     content: personal-item-cooks-letter-content
     stampState: paper_stamp-generic
-    editingDisabled: true
-    StampedBy:
-    - Novicia Nightflitter
-  - type: Stamp
-    stampedName: "Novicia Nightflitter"
-    stampState: paper_stamp-generic
-    
+    stampedBy:
+    - stampedName: "Novicia Nightflitter"
+      stampedColor: "#333333"
+      type: Signature
+
+- type: entity
+  id: PersonalItemCooksEnvelope
+  name: torn envelope
+  suffix: PersonalItemCooksLetter
+  description: An envelope that was once sealed, but has since been torn open.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    state: envelope_torn
+  - type: ItemSlots
+    slots:
+      letter_slot:
+        name: envelope-letter-slot
+        startingItem: PersonalItemCooksLetter
+        insertSound: /Audio/Effects/packetrip.ogg
+        ejectSound: /Audio/Effects/packetrip.ogg
+        whitelist:
+          components:
+            - Paper
+  - type: Paper
+    editingDisabled: true # It's a personal item, shouldn't be editable.
+    escapeFormatting: false
+    content: personal-item-cooks-envelope-content
+  - type: PaperVisuals
+    headerImagePath: "/Textures/Interface/Paper/paper_heading_postage_stamp.svg.96dpi.png"
+    headerMargin: 216.0, 0.0, 0.0, 0.0
+    contentMargin: 0.0, 0.0, 0.0, 0.0
+    maxWritableArea: 368.0, 256.0
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requireHands: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Trash
+    - Document  
+  - type: Flammable
+    fireSpread: true
+    canResistFire: false
+    alwaysCombustible: true
+    canExtinguish: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+        
