@@ -1057,7 +1057,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/damedaneoutfit.rsi
 
 - type: entity
-  parent: UnsensoredClothingUniformBase # Moffstation - (No Sensors for Enemy Gear)
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitPirate
   name: pirate slops
   description: A pirate variation of a space sailor's jumpsuit.

@@ -1,0 +1,92 @@
+- type: entity
+  parent: SciencePDA
+  id: SciencePDAAltBase
+  name: scientist alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-anomalouscontainmentspecialist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: SciencePDAAltBase
+  id: AnomalyContainmentSpecialistPDA
+  name: anomaly containment specialist PDA
+  components:
+  - type: RenameId
+    value: job-name-scientist-anomaly-containment-specialist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-anomalouscontainmentspecialist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#8900c9"
+    accentVColor: "#8900c9"
+
+- type: entity
+  parent: RoboticistPDA
+  id: MachinistPDA
+  name: machinist PDA
+  components:
+  - type: RenameId
+    value: job-name-scientist-machinist
+    newIcon: "JobIconRoboticist"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-machinist
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-machinist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+    - type: PdaBorderColor
+      borderColor: "#242424"
+      accentVColor: "#327b77"
+
+- type: entity
+  parent: SciencePDAAltBase
+  id: XenoarcheologistPDA
+  name: xenoarcheologist PDA
+  components:
+  - type: RenameId
+    value: job-name-scientist-xenoarcheologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-xenoarcheologist

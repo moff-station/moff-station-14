@@ -724,12 +724,20 @@
     - state: icon-rcd
   - type: ItemBorgModule
     hands:
-    - item: RCDRecharging
+    - item: RCD # Moffstation - Death of Engineering Cyborg
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: GasAnalyzer
     - item: HolofanProjectorBorg
     - item: GeigerCounter
+    # Moffstation - Start - Death of Engineering Cyborg
+    - hand:
+        emptyRepresentative: RCDAmmo
+        emptyLabel: borg-slot-rcd-ammo-empty
+        whitelist:
+          components:
+          - RCDAmmo
+    # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: rcd-module }
 
@@ -916,15 +924,6 @@
         whitelist:
           components:
           - FitsInDispenser
-    # Begin Offbrand
-    - item: IVBag
-      hand:
-        emptyLabel: borg-slot-iv-bag-empty
-        emptyRepresentative: IVBag
-        whitelist:
-          components:
-          - IVBag
-    # End Offbrand
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: chem-module }
 
@@ -988,19 +987,31 @@
   - type: ItemBorgModule
     hands:
     - item: NodeScanner
-    - item: SprayBottle
+    # - item: SprayBottle # Moffstation - Scienceborg
     - item: GasAnalyzer
+    - item: HolofanProjectorBorg # Moffstation - Scienceborg
     - item: BorgDropper
-    - item: BaseChemistryEmptyVial
+    # Moffstation - Start - Scienceborg
+    #- item: BaseChemistryEmptyVial
+    #  hand:
+    #    emptyLabel: borg-slot-small-containers-empty
+    #    emptyRepresentative: BaseChemistryEmptyVial
+    #    whitelist:
+    #      components:
+    #      - FitsInDispenser
+    - item: Beaker
       hand:
-        emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: BaseChemistryEmptyVial
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
         whitelist:
           components:
           - FitsInDispenser
+          tags:
+          - ChemDispensable
+    # Moffstation - End
     - item: GeigerCounter
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: node-scanner-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: node-scanner-module } # Moffstation - Scienceborg
 
 - type: entity
   id: BorgModuleAnomaly
@@ -1017,20 +1028,22 @@
     - item: AnomalyLocatorUnpowered
     - item: AnomalyLocatorWideUnpowered
     - item: HandLabeler
+    # Moffstation - Start - Scienceborg
+    #- hand:
+    #    emptyRepresentative: SheetRGlass
+    #    emptyLabel: borg-slot-construction-empty
+    #    whitelist:
+    #      tags:
+    #      - ConstructionMaterial
+    # Moffstation - End
     - hand:
-        emptyRepresentative: SheetRGlass
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - ConstructionMaterial
-    - hand:
-        emptyRepresentative: SheetRPGlass
+        emptyRepresentative: SheetPlasma # Moffstation - Scienceborg
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: anomaly-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Moffstation - Scienceborg
 
 # service modules
 - type: entity

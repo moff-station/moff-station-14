@@ -1,5 +1,5 @@
 - type: speechSounds
-  id: Bass
+  id: BassUpstream  # Moffstation - Trimmed audio
   saySound:
     path: /Audio/Voice/Talk/speak_4.ogg
   askSound:
@@ -107,7 +107,7 @@
     path: /Audio/Animals/parrot_raught.ogg
 
 - type: speechSounds
-  id: Lizard
+  id: LizardUpstream # Moffstation - Trimmed sounds
   saySound:
     path: /Audio/Voice/Talk/lizard.ogg
   askSound:
@@ -125,7 +125,7 @@
     path: /Audio/Voice/Talk/slime_exclaim.ogg
 
 - type: speechSounds
-  id: Vox
+  id: VoxUpstream # Moffstation - Trimmed sounds
   saySound:
     path: /Audio/Voice/Talk/vox.ogg
   askSound:
@@ -134,7 +134,7 @@
     path: /Audio/Voice/Talk/vox_exclaim.ogg
 
 - type: speechSounds
-  id: Arachnid
+  id: ArachnidUpstream # Moffstation - Trimmed sounds
   saySound:
     path: /Audio/Voice/Talk/arachnid.ogg
   askSound:
@@ -179,7 +179,7 @@
     path: /Audio/Animals/goat_bah.ogg
 
 - type: speechSounds
-  id: Vulpkanin
+  id: VulpkaninUpstream
   saySound:
     path: /Audio/Voice/Talk/vulp.ogg
   askSound:

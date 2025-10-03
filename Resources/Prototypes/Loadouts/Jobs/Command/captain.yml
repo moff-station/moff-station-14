@@ -13,21 +13,25 @@
   id: CaptainJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCaptain
+  groupBy: "captain jumpsuits"  # Moffstation - Extra Drip
 
 - type: loadout
   id: CaptainJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCaptain
+  groupBy: "captain jumpskirts"  # Moffstation - Extra Drip
 
 - type: loadout
   id: CaptainFormalSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCapFormal
+  groupBy: "captain jumpsuits"  # Moffstation - Extra Drip
 
 - type: loadout
   id: CaptainFormalSkirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCapFormalDress
+  groupBy: "captain jumpskirts"  # Moffstation - Extra Drip
 
 # Head
 - type: loadout
@@ -69,16 +73,19 @@
   id: CaptainBackpack
   equipment:
     back: ClothingBackpackCaptain
+  groupBy: "captain backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: CaptainSatchel
   equipment:
     back: ClothingBackpackSatchelCaptain
+  groupBy: "captain backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: CaptainDuffel
   equipment:
     back: ClothingBackpackDuffelCaptain
+  groupBy: "captain backpacks" # Moffstation - New Drip
 
 # Outer clothing
 - type: loadout

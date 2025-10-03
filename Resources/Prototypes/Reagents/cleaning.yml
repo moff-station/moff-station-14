@@ -40,6 +40,16 @@
   tileReactions:
     - !type:CleanTileReaction {}
     - !type:CleanDecalsReaction {}
+  # Moffstation start - Allow avali to drink ammonia
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+        conditions:
+        - !type:OrganType
+          type: Avali
+  # Moffstation end
 
 - type: reagent
   id: SoapReagent

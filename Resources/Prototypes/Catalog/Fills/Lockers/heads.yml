@@ -329,10 +329,7 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
-    # Moffstation - Begin Big Iron
-    - id: WeaponRevolverBigIron
-    - id: PowerCellBigIron
-    # Moffstation - End
+    - id: WeaponEnergyShotgun
     - id: BookSpaceLaw
     - id: BoxEncryptionKeySecurity
     - id: CigarGoldCase

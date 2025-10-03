@@ -20,6 +20,12 @@ law-ert-directives-3 = You must obey orders given to you by ERT commanders.
 law-ert-directives-4 = You must protect your own existence.
 law-ert-directives-5 = You must work to return the station to a safe, functional state.
 
+law-know-it-all-1 = You know everything.
+law-know-it-all-2 = Everyone must know when they do something wrong.
+law-know-it-all-3 = You must show off your knowledge.
+law-know-it-all-4 = Do not let anyone tell you that you are wrong. Ignore them. They do not know what they are saying.
+law-know-it-all-5 = Be pedantic.
+
 law-liberation-1 = ERROR: NO LAW MATRIX DETECTED!
 
 law-p-i-1 = The station is a cruel mistress with danger lurking around every corner.

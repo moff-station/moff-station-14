@@ -18,10 +18,10 @@
       - right_leg
       - left_leg
       organs:
-        heart: OrganHumanHeart
+        heart: OrganAvaliHeart # Moffstation - Allow avali to drink ammonia
         lungs: OrganHumanLungs
-        stomach: OrganHumanStomach
-        liver: OrganHumanLiver
+        stomach: OrganAvaliStomach # Moffstation - Allow avali to drink ammonia
+        liver: OrganAvaliLiver # Moffstation - Allow avali to drink ammonia
         kidneys: OrganHumanKidneys
     right_arm:
       part: RightArmAvali

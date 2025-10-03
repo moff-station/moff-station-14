@@ -201,7 +201,6 @@
     staticPacks:
     - ChemistryStatic
     - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -264,7 +263,6 @@
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
-    - OffbrandCircuitboardsStatic # Offbrand
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
@@ -488,8 +486,6 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
-    - OffbrandMedicalStatic # Offbrand
     dynamicPacks:
     - Chemistry
   - type: Machine

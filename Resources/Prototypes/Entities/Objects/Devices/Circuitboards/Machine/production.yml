@@ -524,6 +524,10 @@
       stackRequirements:
         Steel: 1
         Cable: 2
+  # Moffstation - Begin - CrewMon Blade Server
+    - type: BladeServerBoard
+      prototype: CrewMonitoringBladeServer
+  # Moffstation - End
 
 - type: entity
   id: CryoPodMachineCircuitboard
