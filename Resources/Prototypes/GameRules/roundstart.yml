@@ -206,8 +206,8 @@
     selectionTime: IntraPlayerSpawn
     definitions:
     - prefRoles: [ Traitor ]
-      max: 8
-      playerRatio: 10
+      max: 4  # Moffstation - Traitor balance
+      playerRatio: 12 # Moffstation - Traitor balance
       blacklist:
         components:
         - AntagImmune
