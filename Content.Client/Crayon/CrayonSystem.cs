@@ -57,6 +57,16 @@ public sealed class CrayonSystem : SharedCrayonSystem
             }
 
             _parent.UIUpdateNeeded = false;
+
+            // Moffstation - Start - Infinite Crayon
+            if (_parent.Infinite)
+            {
+                _label.SetMarkup(Robust.Shared.Localization.Loc.GetString("crayon-drawing-label-infinite-moffstation",
+                    ("color",_parent.Color),
+                    ("state",_parent.SelectedState)));
+                return; // If they add more shit at the end, turn this into an else-if instead of returning
+            }
+            // Moffstation - End
             _label.SetMarkup(Robust.Shared.Localization.Loc.GetString("crayon-drawing-label",
                 ("color",_parent.Color),
                 ("state",_parent.SelectedState),
