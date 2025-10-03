@@ -13,6 +13,11 @@
     Glass: 150
     Plastic: 350
 
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModulePainting
+  result: BorgModulePainting
+
 # Science Modules
 
 - type: latheRecipe
