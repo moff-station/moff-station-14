@@ -1,4 +1,4 @@
-﻿using Content.Shared.Damage;
+﻿using Content.Shared.Damage; //Moffstation - recycler damage change
 using Content.Shared.FixedPoint; //Moffstation - recycler damage change
 using Content.Shared.Whitelist;
 using JetBrains.Annotations;
