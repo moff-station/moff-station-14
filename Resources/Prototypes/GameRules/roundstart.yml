@@ -416,6 +416,7 @@
         tableId: BasicAntagEventsTable
       - !type:NestedSelector
         tableId: ModerateAntagEventsTable
+        weight: 0.5
       - !type:NestedSelector
         tableId: CargoGiftsTable
       # Moffstation Start - Cargo Packing Error
