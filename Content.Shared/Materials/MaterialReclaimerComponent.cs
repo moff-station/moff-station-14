@@ -149,7 +149,7 @@ public sealed partial class MaterialReclaimerComponent : Component
     {
         DamageDict = new Dictionary<string, FixedPoint2>
         {
-            ["Slash"] = 1000.0, //Initial value defined here to avoid mapping conflicts
+            ["Slash"] = 500.0, //Initial value defined here to avoid mapping conflicts
         },
     };
     //Moffstation - end
