@@ -72,11 +72,7 @@ public sealed class NightVisionSystem : EntitySystem
             _flash.IsFlashImmune(entity))
             return;
 
-        _overlayMan.AddOverlay(
-            new NightVisionOverlay(
-                _prototypeManager.Index<ShaderPrototype>(entity.Comp.ShaderPrototype)
-            )
-        );
+        _overlayMan.AddOverlay(new NightVisionOverlay());
         var effect = SpawnAttachedTo(entity.Comp.EffectPrototype, Transform(entity).Coordinates);
         _xformSys.SetParent(effect, entity);
         entity.Comp.Effect = effect;
