@@ -450,6 +450,8 @@ namespace Content.Shared.Damage
         /// </summary>
         public readonly EntityUid? Origin;
 
+        public SlotFlags TargetSlots { get; }
+
         // Offbrand
         /// <summary>
         /// If this damage changed happened as part of a forced refresh
