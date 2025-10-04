@@ -26,6 +26,15 @@ namespace Content.Shared.Crayon
         {
             Key,
         }
+
+        // Moffstation - Start - Infinite Crayon
+        /// <summary>
+        /// Whether the crayon should ever run out of charges
+        /// </summary>
+        [ViewVariables(VVAccess.ReadWrite)]
+        [DataField]
+        public bool Infinite;
+        // Moffstation end
     }
 
     /// <summary>

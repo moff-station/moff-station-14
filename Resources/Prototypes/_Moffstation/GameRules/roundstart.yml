@@ -6,13 +6,10 @@
     rules:
     - id: Thief
       orGroup: SubGamemodes
-      prob: 0.3
+      prob: 0.4
     - id: BloodBrothers
       orGroup: SubGamemodes
-      prob: 0.3
-    - id: SyndicateListeningOutpost
-      orGroup: SubGamemodes
-      prob: 0.20
+      prob: 0.4
     - id: Pirates
       orGroup: SubGamemodes
       prob: 0.15
@@ -28,13 +25,29 @@
     rules:
     - id: Thief
       orGroup: SubGamemodes
-      prob: 0.3
+      prob: 0.4
     - id: BloodBrothers
       orGroup: SubGamemodes
-      prob: 0.3
-    - id: SyndicateListeningOutpost
+      prob: 0.4
+    - id: Pirates
       orGroup: SubGamemodes
       prob: 0.2
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleSyndicate
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: SyndicateListeningOutpost
+      orGroup: SubGamemodes
+      prob: 0.30
+    - id: Thief
+      orGroup: SubGamemodes
+      prob: 0.25
+    - id: BloodBrothers
+      orGroup: SubGamemodes
+      prob: 0.25
     - id: Pirates
       orGroup: SubGamemodes
       prob: 0.2

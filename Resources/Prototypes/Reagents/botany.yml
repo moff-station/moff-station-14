@@ -211,9 +211,24 @@
   - !type:PlantAdjustHealth
     amount: 0.5
   metabolisms:
+    # Moffstation start - Allow avali to drink ammonia
+    Food:
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+        conditions:
+        - !type:OrganType
+          type: Avali
+    # Moffstation end
     Poison:
       effects:
       - !type:HealthChange
+        # Moffstation start - Allow avali to drink ammonia
+        conditions:
+        - !type:OrganType
+          type: Avali
+          shouldHave: false
+        # Moffstation end
         damage:
           types:
             Caustic: 1
@@ -297,9 +312,27 @@
     amount: 1
   - !type:PlantDiethylamine {}
   metabolisms:
+    # Moffstation start - Allow avali to drink ammonia
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+        conditions:
+        - !type:OrganType
+          type: Avali
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.2
+    # Moffstation end
     Poison:
       effects:
       - !type:HealthChange
+        # Moffstation start - Allow avali to drink ammonia
+        conditions:
+        - !type:OrganType
+          type: Avali
+          shouldHave: false
+        # Moffstation end
         damage:
           types:
             Caustic: 1

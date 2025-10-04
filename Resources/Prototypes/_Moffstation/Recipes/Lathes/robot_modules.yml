@@ -12,3 +12,10 @@
     Steel: 250
     Glass: 150
     Plastic: 350
+
+# Science Modules
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleAdvancedAnomaly
+  result: BorgModuleAdvancedAnomaly

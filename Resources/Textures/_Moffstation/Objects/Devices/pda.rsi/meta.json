@@ -8,6 +8,40 @@
     },
     "states": [
         {
+            "name": "pda"
+        },
+        {
+            "name": "id_overlay"
+        },
+        {
+            "name": "id_overlay_wide"
+        },
+        {
+            "name": "equipped-IDCARD",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BELT",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "insert_overlay"
+        },
+        {
+            "name": "light_overlay"
+        },
+        {
+            "name": "light_overlay_wide"
+        },
+        {
             "name": "pda-anomalouscontainmentspecialist"
         },
         {
@@ -85,7 +119,7 @@
             "name": "pda-druid"
         },
         {
-            "name": "pda-dungeonmaster",
+            "name": "pda-gamemaster",
             "delays": [
                 [
                     0.3,
@@ -99,16 +133,25 @@
             "name": "pda-electrician"
         },
         {
+            "name": "pda-emergencymedicaltechnician"
+        },
+        {
             "name": "pda-excavator"
         },
         {
             "name": "pda-fieldmedic"
         },
         {
+            "name": "pda-firefighter"
+        },
+        {
             "name": "pda-fool"
         },
         {
             "name": "pda-gardener"
+        },
+        {
+            "name": "pda-hallmonitor"
         },
         {
             "name": "pda-herbalist"
@@ -141,10 +184,16 @@
             "name": "pda-maid"
         },
         {
+            "name": "pda-maximumsecurityprisoner"
+        },
+        {
             "name": "pda-mechanic"
         },
         {
             "name": "pda-meteorologist"
+        },
+        {
+            "name": "pda-minimumsecurityprisoner"
         },
         {
             "name": "pda-missionary"
@@ -203,6 +252,9 @@
             "name": "pda-prospector"
         },
         {
+            "name": "pda-protectivecustodyprisoner"
+        },
+        {
             "name": "pda-psychiatrist"
         },
         {
@@ -237,6 +289,20 @@
         },
         {
             "name": "pda-therapist"
+        },
+        {
+            "name": "pda-testsubject"
+        },
+        {
+            "name": "pda-writer",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
         },
         {
             "name": "pda-xenoarcheologist"

@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingMaskGasSyndicate, BaseSyndicateContraband]
+  parent: [ClothingMaskGasSyndicate]
   id: ClothingMaskGasPirate
   name: pirate gas mask
   description: A close-fitting welding mask fine-tuned for scallywags.
@@ -8,3 +8,5 @@
     sprite: _Moffstation/Clothing/Mask/pirateweldingmask.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Mask/pirateweldingmask.rsi
+  - type: Contraband
+    severity: Major

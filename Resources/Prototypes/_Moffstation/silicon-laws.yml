@@ -130,6 +130,42 @@
   - ERTDirectives5
   obeysTo: laws-owner-central-command
 
+# Know It all
+- type: siliconLaw
+  id: KnowItAll1
+  order: 1
+  lawString: law-know-it-all-1
+
+- type: siliconLaw
+  id: KnowItAll2
+  order: 2
+  lawString: law-know-it-all-2
+
+- type: siliconLaw
+  id: KnowItAll3
+  order: 3
+  lawString: law-know-it-all-3
+
+- type: siliconLaw
+  id: KnowItAll4
+  order: 4
+  lawString: law-know-it-all-4
+
+- type: siliconLaw
+  id: KnowItAll5
+  order: 5
+  lawString: law-know-it-all-5
+
+- type: siliconLawset
+  id: KnowItAllLawset
+  laws:
+  - KnowItAll1
+  - KnowItAll2
+  - KnowItAll3
+  - KnowItAll4
+  - KnowItAll5
+  obeysTo: laws-owner-station
+
 # Liberation
 - type: siliconLaw
   id: Liberation1

@@ -43,6 +43,12 @@
     Poison:
       effects:
       - !type:HealthChange
+        # Moffstation start - Allow avali to drink ammonia
+        conditions:
+        - !type:OrganType
+          type: Avali
+          shouldHave: false
+        # Moffstation end
         damage:
           types:
             Poison: 2
