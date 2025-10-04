@@ -450,7 +450,7 @@ namespace Content.Shared.Damage
         /// </summary>
         public readonly EntityUid? Origin;
 
-        public SlotFlags TargetSlots { get; }
+        public SlotFlags TargetSlots { get; }   // Moffstation - Add IInventoryRelayEvent
 
         // Offbrand
         /// <summary>
