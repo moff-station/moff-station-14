@@ -94,7 +94,7 @@ public sealed class NightVisionSystem : EntitySystem
             return;
 
         _overlayMan.RemoveOverlay(Overlay);
-        QueueDel(_effect);
+        PredictedQueueDel(_effect);
         _effect = null;
     }
 }
