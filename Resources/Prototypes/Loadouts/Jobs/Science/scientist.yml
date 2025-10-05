@@ -121,6 +121,11 @@
     outerClothing: ClothingOuterWinterRobo
 
 - type: loadout
+  id: MachinistLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatMach
+
+- type: loadout
   id: SeniorResearcherLabCoat
   effects:
   - !type:GroupLoadoutEffect
