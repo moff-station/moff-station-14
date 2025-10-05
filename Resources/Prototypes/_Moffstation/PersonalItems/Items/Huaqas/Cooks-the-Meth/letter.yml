@@ -6,7 +6,7 @@
   description: a letter written and signed by a friend
   components:
   - type: Paper
-    editingDisabled: true # It's a personal item, shouldn't be editable.
+    editingDisabled: true # It's a personal item, protected from editing.
     content: personal-item-cooks-letter-content
     stampState: paper_stamp-generic
     stampedBy:
