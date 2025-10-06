@@ -57,7 +57,7 @@ public sealed class EnvelopeSystem : EntitySystem
 
     private void OnInsertAttempt(Entity<EnvelopeComponent> ent, ref ItemSlotInsertAttemptEvent args)
     {
-        args.Cancelled |= ent.Comp.State != EnvelopeComponent.EnvelopeState.Open;
+        args.Cancelled |= ent.Comp.State == EnvelopeComponent.EnvelopeState.Sealed;
     }
 
     private void OnEjectAttempt(Entity<EnvelopeComponent> ent, ref ItemSlotEjectAttemptEvent args)

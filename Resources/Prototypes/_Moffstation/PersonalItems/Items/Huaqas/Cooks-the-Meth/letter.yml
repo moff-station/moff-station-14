@@ -15,15 +15,28 @@
       type: Signature
 
 - type: entity
+  parent: Envelope
   id: PersonalItemCooksEnvelope
   name: torn envelope
   suffix: PersonalItemCooksLetter
   description: An envelope that was once sealed, but has since been torn open.
-  parent: BaseItem
   components:
   - type: Sprite
     sprite: Objects/Misc/bureaucracy.rsi
-    state: envelope_torn
+    layers:
+    - state: envelope_torn
+      map: ["enum.EnvelopeVisualLayers.Open"]
+    - state: envelope_torn
+      map: ["enum.EnvelopeVisualLayers.Sealed"]
+      visible: false
+    - state: envelope_torn
+      map: ["enum.EnvelopeVisualLayers.Torn"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: Envelope
+    state: Torn
   - type: ItemSlots
     slots:
       letter_slot:
@@ -37,45 +50,7 @@
   - type: Paper
     editingDisabled: true # It's a personal item, protected from editing.
     content: personal-item-cooks-envelope-content
-  - type: PaperVisuals
-    headerImagePath: "/Textures/Interface/Paper/paper_heading_postage_stamp.svg.96dpi.png"
-    headerMargin: 216.0, 0.0, 0.0, 0.0
-    contentMargin: 0.0, 0.0, 0.0, 0.0
-    maxWritableArea: 368.0, 256.0
-  - type: ActivatableUI
-    key: enum.PaperUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.PaperUiKey.Key:
-        type: PaperBoundUserInterface
-  - type: Item
-    size: Tiny
-  - type: Tag
-    tags:
-    - Trash
-    - Document  
-  - type: Flammable
-    fireSpread: true
-    canResistFire: false
-    alwaysCombustible: true
-    canExtinguish: true
-    damage:
-      types:
-        Heat: 1
-  - type: FireVisuals
-    sprite: Effects/fire.rsi
-    normalState: fire
-  - type: Damageable
-    damageModifierSet: Wood
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 15
-      behaviors:
-      - !type:EmptyAllContainersBehaviour
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+  
 
 - type: loadout
   id: PersonalItemCooksEnvelope
