@@ -508,6 +508,7 @@
   components:
   - type: RoundstartStationVariationRule
     rules:
+    - id: SupplyOffbrandItemsVariationPass # Offbrand
     - id: BasicPoweredLightVariationPass
     - id: BasicTrashVariationPass
     - id: SolidWallRustingVariationPass

@@ -213,6 +213,7 @@
 
 - type: roleLoadout
   id: JobMusician
+  canCustomizeName: true
   groups:
   - GroupTankHarness
   - MusicianPDA # Moffstation - Additional job title loadouts
@@ -225,7 +226,6 @@
   - Instruments
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
-  canCustomizeName: true # Moffstation - Musicians can select a name in loadout
 
 # Cargo
 - type: roleLoadout
