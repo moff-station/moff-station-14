@@ -263,6 +263,7 @@ namespace Content.Server.Guardian
 
             TryComp<GuardianComponent>(component.HostedGuardian, out var guardianComp);
 
+            /*  Offmed/Moffstation - Start - Offmed Holoparasite fix
             if (args.NewMobState == MobState.Critical)
             {
                 _popupSystem.PopupEntity(Loc.GetString("guardian-host-critical-warn"), component.HostedGuardian.Value, component.HostedGuardian.Value);
@@ -270,6 +271,8 @@ namespace Content.Server.Guardian
                     _audio.PlayPvs(guardianComp.CriticalSound, component.HostedGuardian.Value);
             }
             else if (args.NewMobState == MobState.Dead)
+            Moffstation - End */
+            if (args.NewMobState >= MobState.Critical)  // Offmed/Moffstation - Offmed Holoparasite fix
             {
                 if (guardianComp != null)
                     _audio.PlayPvs(guardianComp.DeathSound, uid);
