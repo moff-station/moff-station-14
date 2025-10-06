@@ -2,9 +2,9 @@
   id: FrenchToggle
   clickEvent: !type:ToggleFrenchAccentEvent
   icons:
-  - sprite: /Textures/_Moffstation/Interface/Alerts/frenchtoggle.rsi
+  - sprite: _Moffstation/Interface/Alerts/frenchtoggle.rsi
     state: french-off
-  - sprite: /Textures/_Moffstation/Interface/Alerts/frenchtoggle.rsi
+  - sprite: _Moffstation/Interface/Alerts/frenchtoggle.rsi
     state: french-on
   name: alerts-french-toggle-name
   description: alerts-french-toggle-desc

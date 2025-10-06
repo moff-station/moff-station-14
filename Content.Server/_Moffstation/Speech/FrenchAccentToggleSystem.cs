@@ -37,8 +37,9 @@ public sealed class FrenchAccentToggleSystem : EntitySystem
             EnsureComp<FrenchAccentComponent>(ent);
             _alertsSystem.ShowAlert(ent.Owner, ent.Comp.ToggleAlertProtoId, 1);
         }
-        else
+        else {
             _alertsSystem.ShowAlert(ent.Owner, ent.Comp.ToggleAlertProtoId, 0);
+        }
 
         args.Handled = true;
     }
