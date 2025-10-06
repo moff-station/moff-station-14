@@ -5,3 +5,5 @@ humanoid-profile-editor-department-jobs-label-moffstation = [font="DefaultBold" 
 
 # Moffstation Tabs
 humanoid-profile-editor-special-roles-tab = Special roles
+
+humanoid-profile-editor-antag-label-moffstation = [font="DefaultBold" size=16][color=white]{$departmentName}[/color][/font]

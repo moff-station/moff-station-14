@@ -1,0 +1,2 @@
+antag-catagory-syndicate-name = The Syndicate
+antag-catagory-syndicate-desc = Founded by Cybersun Industries at some point a few decades ago, the Spinward Syndicate (usually shortened to the Syndicate) is a patchwork mix of groups, ranging from ill-reputed thugs and mercenaries to esteemed businessmen and scientific luminaries, all bound together by a desire to force Nanotrasen out of the Spinward Periphery.
