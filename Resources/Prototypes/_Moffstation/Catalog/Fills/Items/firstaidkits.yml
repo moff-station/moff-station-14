@@ -1,0 +1,10 @@
+- type: entity
+  id: MedkitSecurityFilled
+  suffix: Filled
+  parent: MedkitSecurity
+  components:
+  - type: StorageFill
+    contents:
+    - id: Gauze
+    - id: SyringeTramadol # Offbrand
+    - id: SyringeInaprovaline

@@ -1,0 +1,20 @@
+﻿- type: entity
+  name: security IFAK
+  description: "A Individual First Aid Kit carried by security officers."
+  parent: Medkit
+  id: MedkitSecurity
+  components:
+  - type: Sprite
+    state: blackkit
+  - type: Item
+    heldPrefix: blackkit
+    size: Normal
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,1,1
+  - type: Tag
+    tags:
+    - SecBeltEquip
+    - Medkit
+
