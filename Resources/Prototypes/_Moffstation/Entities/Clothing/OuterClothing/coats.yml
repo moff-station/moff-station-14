@@ -34,7 +34,7 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/rdvisionary.rsi
 
 #Detective
-- type: entity # Moffstation - Start (New Detective Outfits)
+- type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase]
   id: ClothingOuterCoatSleuth
   name: sleuth trenchcoat
@@ -50,6 +50,7 @@
     - id: CigarGold
     - id: FlippoEngravedLighter
   - type: ExplosionResistance
+<<<<<<< Updated upstream
     damageCoefficient: 1 #its a coat. it doesnt do shit # Moffstation - End (New Detective Outfits)
 #Scientist
 - type: entity
@@ -66,3 +67,6 @@
     modifiers:
       coefficients:
         Caustic: 0.75
+=======
+    damageCoefficient: 1 #its a coat. it doesnt do shit
+>>>>>>> Stashed changes
