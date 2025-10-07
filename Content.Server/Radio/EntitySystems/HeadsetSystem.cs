@@ -1,6 +1,5 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
-using Content.Server.Radio.Components;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
@@ -14,6 +13,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly Content.Shared.StatusEffectNew.StatusEffectsSystem _statusEffects = default!; // Offbrand
 
     public override void Initialize()
     {
@@ -49,6 +49,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     private void OnSpeak(EntityUid uid, WearingHeadsetComponent component, EntitySpokeEvent args)
     {
         if (args.Channel != null
+            && !_statusEffects.HasEffectComp<Content.Shared._Offbrand.StatusEffects.CannotUseHeadsetStatusEffectComponent>(uid) // Offbrand
             && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
             && keys.Channels.Contains(args.Channel.ID))
         {

@@ -131,7 +131,7 @@
     modifiers:
       coefficients:
         Slash: 0.95
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
@@ -270,9 +270,9 @@
   description: More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_robo.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-robo.rsi #Moffstation - (New Roboticist & Machinist Outfits)
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_robo.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-robo.rsi #Moffstation - (New Roboticist & Machinist Outfits)
   - type: Armor
     modifiers:
       coefficients:
@@ -315,6 +315,8 @@
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
+  - type: AddAccentClothing #Moffstation - Adding pirate accent
+    accent: PirateAccent #Moffstation - Adding pirate accent
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseSecurityContraband]

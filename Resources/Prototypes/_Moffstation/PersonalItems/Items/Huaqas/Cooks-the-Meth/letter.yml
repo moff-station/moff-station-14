@@ -1,0 +1,49 @@
+- type: entity
+  parent: Paper
+  id: PersonalItemCooksLetter
+  name: letter from a friend
+  suffix: PersonalItemCooksLetter
+  description: a letter written and signed by a friend
+  components:
+  - type: Paper
+    editingDisabled: true # It's a personal item, protected from editing.
+    content: personal-item-cooks-letter-content
+    stampState: paper_stamp-generic
+    stampedBy:
+    - stampedName: "Novicia Nightflitter"
+      stampedColor: "#333333"
+      type: Signature
+
+- type: entity
+  parent: Envelope
+  id: PersonalItemCooksEnvelope
+  name: torn envelope
+  suffix: PersonalItemCooksLetter
+  description: An envelope that was once sealed, but has since been torn open.
+  components:
+  - type: Envelope
+    state: Torn
+  - type: ItemSlots
+    slots:
+      letter_slot:
+        name: envelope-letter-slot
+        startingItem: PersonalItemCooksLetter
+        insertSound: /Audio/Effects/packetrip.ogg
+        ejectSound: /Audio/Effects/packetrip.ogg
+        whitelist:
+          components:
+            - Paper
+  - type: Paper
+    editingDisabled: true # It's a personal item, protected from editing.
+    content: personal-item-cooks-envelope-content
+  
+
+- type: loadout
+  id: PersonalItemCooksEnvelope
+  storage:
+    back:
+    - PersonalItemCooksEnvelope
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Cooks-the-Meth

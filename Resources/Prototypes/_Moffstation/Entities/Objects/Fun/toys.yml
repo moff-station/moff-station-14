@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: CardSword
+  id: CardSwordBorg
+  name: padded cardboard sword
+  description: A cardboard tube fashioned into the shape of a sword - now safe for cyborg use!
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 0

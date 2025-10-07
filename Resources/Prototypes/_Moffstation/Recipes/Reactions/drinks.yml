@@ -1,0 +1,37 @@
+- type: reaction
+  id: LemonLimeBitters
+  reactants:
+    Lemonade:
+      amount: 10
+    JuiceLime:
+      amount: 5
+    AstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
+      amount: 1
+  products:
+    LemonLimeBitters: 16
+
+- type: reaction
+  id: PinkGin
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Gin:
+      amount: 15
+    AstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
+      amount: 1
+  products:
+    PinkGin: 16
+  
+- type: reaction
+  id: PlantersPunch
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Caipirinha:
+      amount: 10
+    Rum:
+      amount: 5
+    AstrosturaBitters: # Don't use more than 1u of bitters in each recipe.
+      amount: 1
+  products:
+    PlantersPunch: 16

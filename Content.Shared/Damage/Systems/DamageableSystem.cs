@@ -48,7 +48,7 @@ namespace Content.Shared.Damage
             SubscribeLocalEvent<DamageableComponent, ComponentHandleState>(DamageableHandleState);
             SubscribeLocalEvent<DamageableComponent, ComponentGetState>(DamageableGetState);
             SubscribeLocalEvent<DamageableComponent, OnIrradiatedEvent>(OnIrradiated);
-            SubscribeLocalEvent<DamageableComponent, RejuvenateEvent>(OnRejuvenate);
+            SubscribeLocalEvent<DamageableComponent, RejuvenateEvent>(OnRejuvenate, after: [typeof(Content.Shared.StatusEffectNew.StatusEffectsSystem)]); // Offbrand
 
             _appearanceQuery = GetEntityQuery<AppearanceComponent>();
             _damageableQuery = GetEntityQuery<DamageableComponent>();
@@ -145,7 +145,7 @@ namespace Content.Shared.Damage
         ///     The damage changed event is used by other systems, such as damage thresholds.
         /// </remarks>
         public void DamageChanged(EntityUid uid, DamageableComponent component, DamageSpecifier? damageDelta = null,
-            bool interruptsDoAfters = true, EntityUid? origin = null)
+            bool interruptsDoAfters = true, EntityUid? origin = null, bool forcedRefresh = false) // Offbrand
         {
             component.Damage.GetDamagePerGroup(_prototypeManager, component.DamagePerGroup);
             component.TotalDamage = component.Damage.GetTotal();
@@ -156,7 +156,10 @@ namespace Content.Shared.Damage
                 var data = new DamageVisualizerGroupData(component.DamagePerGroup.Keys.ToList());
                 _appearance.SetData(uid, DamageVisualizerKeys.DamageUpdateGroups, data, appearance);
             }
-            RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin));
+
+            // TODO DAMAGE
+            // byref struct event.
+            RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin, forcedRefresh)); // Offbrand
         }
 
         /// <summary>
@@ -171,16 +174,29 @@ namespace Content.Shared.Damage
         ///     Returns a <see cref="DamageSpecifier"/> with information about the actual damage changes. This will be
         ///     null if the user had no applicable components that can take damage.
         /// </returns>
-        public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
-            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null)
+        /// <param name="ignoreResistances">If true, this will ignore the entity's damage modifier (<see cref="DamageableComponent.DamageModifierSetId"/> and skip raising a <see cref="DamageModifyEvent"/>.</param>
+        /// <param name="interruptsDoAfters">Whether the damage should cancel any damage sensitive do-afters</param>
+        /// <param name="origin">The entity that is causing this damage</param>
+        /// <param name="ignoreGlobalModifiers">If true, this will skip over applying the universal damage modifiers (see <see cref="ApplyUniversalAllModifiers"/>).</param>
+        /// <returns></returns>
+        public DamageSpecifier? TryChangeDamage(
+            EntityUid? uid,
+            DamageSpecifier damage,
+            bool ignoreResistances = false,
+            bool interruptsDoAfters = true,
+            DamageableComponent? damageable = null,
+            EntityUid? origin = null,
+            bool ignoreGlobalModifiers = false,
+            bool forceRefresh = false) // Offbrand
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
                 // TODO BODY SYSTEM pass damage onto body system
+                // BOBBY WHEN?
                 return null;
             }
 
-            if (damage.Empty)
+            if (damage.Empty && !forceRefresh) // Offbrand
             {
                 return damage;
             }
@@ -195,13 +211,13 @@ namespace Content.Shared.Damage
             if (!ignoreResistances)
             {
                 if (damageable.DamageModifierSetId != null &&
-                    _prototypeManager.Resolve<DamageModifierSetPrototype>(damageable.DamageModifierSetId, out var modifierSet))
+                    _prototypeManager.Resolve(damageable.DamageModifierSetId, out var modifierSet))
                 {
-                    // TODO DAMAGE PERFORMANCE
-                    // use a local private field instead of creating a new dictionary here..
                     damage = DamageSpecifier.ApplyModifierSet(damage, modifierSet);
                 }
 
+                // TODO DAMAGE
+                // byref struct event.
                 var ev = new DamageModifyEvent(damage, origin);
                 RaiseLocalEvent(uid.Value, ev);
                 damage = ev.Damage;
@@ -212,11 +228,15 @@ namespace Content.Shared.Damage
                 }
             }
 
-            damage = ApplyUniversalAllModifiers(damage);
+            if (!ignoreGlobalModifiers)
+                damage = ApplyUniversalAllModifiers(damage);
 
-            // TODO DAMAGE PERFORMANCE
-            // Consider using a local private field instead of creating a new dictionary here.
-            // Would need to check that nothing ever tries to cache the delta.
+            // Begin Offbrand
+            var beforeCommit = new Content.Shared._Offbrand.Wounds.BeforeDamageCommitEvent(damage, forceRefresh);
+            RaiseLocalEvent(uid.Value, ref beforeCommit);
+            damage = beforeCommit.Damage;
+            // End Offbrand
+
             var delta = new DamageSpecifier();
             delta.DamageDict.EnsureCapacity(damage.DamageDict.Count);
 
@@ -236,7 +256,7 @@ namespace Content.Shared.Damage
             }
 
             if (delta.DamageDict.Count > 0)
-                DamageChanged(uid.Value, damageable, delta, interruptsDoAfters, origin);
+                DamageChanged(uid.Value, damageable, delta, interruptsDoAfters, origin, forceRefresh); // Offbrand
 
             return delta;
         }
@@ -334,6 +354,7 @@ namespace Content.Shared.Damage
 
         private void OnRejuvenate(EntityUid uid, DamageableComponent component, RejuvenateEvent args)
         {
+            Log.Debug("rejuvenate damage");
             TryComp<MobThresholdsComponent>(uid, out var thresholds);
             _mobThreshold.SetAllowRevives(uid, true, thresholds); // do this so that the state changes when we set the damage
             SetAllDamage(uid, component, 0);
@@ -394,7 +415,7 @@ namespace Content.Shared.Damage
         }
     }
 
-    public sealed class DamageChangedEvent : EntityEventArgs
+    public sealed class DamageChangedEvent : EntityEventArgs, IInventoryRelayEvent // Moffstation - Add IInventoryRelayEvent
     {
         /// <summary>
         ///     This is the component whose damage was changed.
@@ -429,11 +450,20 @@ namespace Content.Shared.Damage
         /// </summary>
         public readonly EntityUid? Origin;
 
-        public DamageChangedEvent(DamageableComponent damageable, DamageSpecifier? damageDelta, bool interruptsDoAfters, EntityUid? origin)
+        public SlotFlags TargetSlots { get; }   // Moffstation - Add IInventoryRelayEvent
+
+        // Offbrand
+        /// <summary>
+        /// If this damage changed happened as part of a forced refresh
+        /// </summary>
+        public readonly bool ForcedRefresh;
+
+        public DamageChangedEvent(DamageableComponent damageable, DamageSpecifier? damageDelta, bool interruptsDoAfters, EntityUid? origin, bool forcedRefresh) // Offbrand
         {
             Damageable = damageable;
             DamageDelta = damageDelta;
             Origin = origin;
+            ForcedRefresh = forcedRefresh; // Offbrand
 
             if (DamageDelta == null)
                 return;

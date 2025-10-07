@@ -1,0 +1,84 @@
+# Species
+- type: loadoutEffectGroup
+  id: EffectSpeciesAvali
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Avali
+
+# Basic
+- type: loadout
+  id: EmergencyAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalAmmonia
+
+# Clown
+- type: loadout
+  id: EmergencyOxygenClownAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxHugAmmonia
+
+# Mime
+- type: loadoutEffectGroup
+  id: EffectSpeciesAvaliMime
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Avali
+
+- type: loadout
+  id: EmergencyOxygenMimeAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvaliMime
+  storage:
+    back:
+    - BoxMimeAmmonia
+
+# Engineering / Extended
+- type: loadout
+  id: EmergencyOxygenExtendedAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalEngineeringAmmonia
+
+# Medical
+- type: loadout
+  id: EmergencyOxygenMedicalAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalMedicalAmmonia
+
+# Security
+- type: loadout
+  id: EmergencyOxygenSecurityAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalSecurityAmmonia
+
+# Syndicate
+- type: loadout
+  id: EmergencyOxygenSyndicateAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - BoxSurvivalSyndicateAmmonia

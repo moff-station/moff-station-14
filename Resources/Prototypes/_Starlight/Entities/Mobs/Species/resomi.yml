@@ -48,15 +48,15 @@
       amount: 3
   - type: RecoilKickSusceptible
     massFactor: 0.7
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      85: Critical
-      170: Dead
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      51: 0.7
-      68: 0.5
+#  - type: MobThresholds
+#    thresholds:
+#      0: Alive
+#      85: Critical
+#      170: Dead
+#  - type: SlowOnDamage
+#    speedModifierThresholds:
+#      51: 0.7
+#      68: 0.5
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg
@@ -143,6 +143,9 @@
     - DoorBumpOpener
     - AnomalyHost
     - Resomi
+  - type: NightVision
+  - type: FlashModifier
+    modifier: 2
   - type: Hands
     handDisplacement:
       sizeMaps:

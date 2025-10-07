@@ -1,0 +1,27 @@
+﻿# Player Altimus - Character: Talvi Frostmane
+
+- type: entity
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  id: PersonalItemTalviHoodie
+  name: cozy hoodie
+  description: A massive red jacket and shorts. Not terribly practical but likely comfortable for someone.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Altimus/Talvi_Frostmane/talvihoodie.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Altimus/Talvi_Frostmane/talvihoodie.rsi
+  - type: DetailExaminable
+    content: The white stripes on this jacket seem to be very slightly reflective. There's a small, worn patch on the front missing its name but having an icy sort of logo. The tag on the jacket reads "XXXXL."
+
+
+- type: loadout
+  id: PersonalItemTalviHoodie
+  storage:
+    back:
+    - PersonalItemTalviHoodie
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Talvi Frostmane
+

@@ -1,4 +1,18 @@
 - type: entity
+  id: FoldableHelmetBase
+  abstract: true
+  components:
+  - type: Foldable
+    unfoldVerbText: fold-untuck-hair-verb
+    foldVerbText: fold-tuck-hair-verb
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedHideLayers:
+    - Hair
+  - type: HideLayerClothing
+    slots: []
+
+- type: entity
   parent: ClothingHeadHelmetBasic
   id: ClothingHeadHelmetMilitary
   name: military helmet
@@ -14,7 +28,3 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Helmets/security-military.rsi
     equippedPrefix: raised
-  - type: HideLayerClothing
-    slots: []
-    layers:
-      Hair: HEAD

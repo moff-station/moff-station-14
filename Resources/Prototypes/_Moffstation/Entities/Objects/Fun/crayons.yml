@@ -1,0 +1,12 @@
+- type: entity
+  parent: CrayonRainbow
+  id: CrayonRainbowInfinite
+  name: magic rainbow crayon
+  description: A magical looking crayon. Never seems to run out no matter how much its drawn...
+  components:
+  - type: Sprite
+    state: rainbow
+  - type: Item
+    heldPrefix: rainbow
+  - type: Crayon
+    infinite: true

@@ -15,3 +15,12 @@
   - type: Rehydratable
     possibleSpawns:
     - MobMothroachDeathshead
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: PigCube
+  name: pig cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobPig
