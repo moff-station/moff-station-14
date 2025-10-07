@@ -51,3 +51,18 @@
     - id: FlippoEngravedLighter
   - type: ExplosionResistance
     damageCoefficient: 1 #its a coat. it doesnt do shit # Moffstation - End (New Detective Outfits)
+#Scientist
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: ClothingOuterCoatMach
+  name: machinist lab coat
+  description: A very aberrant labcoat. Helps pass off blood & grease stains as fashionable.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
