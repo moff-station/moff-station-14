@@ -144,37 +144,37 @@
     - id: ClothingNeckCloakMoth #bzzz Moth-pocalypse
       prob: 0.15
 
-- type: entity
-  id: LockerDetectiveFilled
-  suffix: Filled
-  parent: LockerDetective
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:NestedSelector
-        tableId: FillLockerDetective
+#- type: entity # Moffstation - Start (New Detective Outfits)
+#  id: LockerDetectiveFilled
+#  suffix: Filled
+#  parent: LockerDetective
+#  components:
+#  - type: EntityTableContainerFill
+#    containers:
+#      entity_storage: !type:NestedSelector
+#        tableId: FillLockerDetective
 
-- type: entityTable
-  id: FillLockerDetective
-  table: !type:AllSelector
-    children:
-    - id: ClothingEyesGlassesNoir
-    - id: ClothingHeadHatDetGadget
-    - id: ClothingNeckTieDet
-    - id: ClothingOuterVestDetective
-    - id: ClothingOuterCoatDetectiveLoadout
-    - id: FlippoEngravedLighter
-    - id: FlashlightSeclite
-    - id: ForensicScanner
-    - id: LogProbeCartridge
-    - id: BoxForensicPad
-    - id: DrinkDetFlask
-    - id: ClothingHandsGlovesForensic
-    - id: RubberStampDetective
-    - id: HoloprojectorSecurity
-    - id: BoxEvidenceMarkers
-    - id: HandLabeler
-    - id: BoxTapeRecorder # DeltaV
+#- type: entityTable
+#  id: FillLockerDetective
+#  table: !type:AllSelector
+#    children:
+#    - id: ClothingEyesGlassesNoir
+#    - id: ClothingHeadHatDetGadget
+#    - id: ClothingNeckTieDet
+#    - id: ClothingOuterVestDetective
+#    - id: ClothingOuterCoatDetectiveLoadout
+#    - id: FlippoEngravedLighter
+#    - id: FlashlightSeclite
+#    - id: ForensicScanner
+#    - id: LogProbeCartridge
+#    - id: BoxForensicPad
+#    - id: DrinkDetFlask
+#    - id: ClothingHandsGlovesForensic
+#    - id: RubberStampDetective
+#    - id: HoloprojectorSecurity
+#    - id: BoxEvidenceMarkers
+#    - id: HandLabeler
+#    - id: BoxTapeRecorder # DeltaV # Moffstation - End (New Detective Outfits)
 
 - type: entity
   id: ClosetBombFilled
