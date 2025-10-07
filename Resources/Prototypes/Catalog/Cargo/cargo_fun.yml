@@ -59,6 +59,16 @@
   group: market
 
 - type: cargoProduct
+  id: FunInstrumentsRandom
+  icon:
+    sprite: Objects/Fun/Instruments/h_synthesizer.rsi
+    state: supersynth
+  product: CrateFunInstrumentsRandom
+  cost: 2500
+  category: cargoproduct-category-name-fun
+  group: market
+
+- type: cargoProduct
   id: FunArtSupplies
   icon:
     sprite: Objects/Fun/crayons.rsi
@@ -174,7 +184,7 @@
     sprite: Structures/Storage/Crates/piratechest.rsi
     state: crate_icon
   product: CrateFunPirate
-  cost: 400
+  cost: 600 #Moffstation Change - More loot, higher price
   category: cargoproduct-category-name-fun
   group: market
 

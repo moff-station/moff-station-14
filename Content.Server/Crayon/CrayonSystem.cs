@@ -73,7 +73,9 @@ public sealed class CrayonSystem : SharedCrayonSystem
             _audio.PlayPvs(component.UseSound, uid, AudioParams.Default.WithVariation(0.125f));
 
         // Decrease "Ammo"
-        component.Charges--;
+        // Moffstation - Infinite Crayon
+        if (!component.Infinite)
+            component.Charges--;
         Dirty(uid, component);
 
         _adminLogger.Add(LogType.CrayonDraw, LogImpact.Low, $"{ToPrettyString(args.User):user} drew a {component.Color:color} {component.SelectedState}");

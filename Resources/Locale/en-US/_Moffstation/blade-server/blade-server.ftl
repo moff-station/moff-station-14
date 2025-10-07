@@ -26,3 +26,6 @@ moff-blade-server-rack-examine-distant =
         [1] it is
         *[other] they are
     } from this distance.
+
+moff-blade-server-frame-incompatible-board = This board seems incompatible with the frame...
+moff-blade-server-board-compatible-hint = It can be used to make a [color=#1f8ab2]blade server[/color]

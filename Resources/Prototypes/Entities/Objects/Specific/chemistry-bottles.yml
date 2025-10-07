@@ -24,7 +24,11 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 6
     fillBaseName: bottle-1-
-  - type: Drink
+  - type: Edible
+    edible: Drink
+    solution: drink
+    destroyOnEmpty: false
+    utensil: None
   - type: SolutionContainerManager
     solutions:
       drink: # This solution name and target volume is hard-coded in ChemMasterComponent
@@ -1392,6 +1396,7 @@
     - id: ChemistryBottleDexalinPlus
     - id: ChemistryBottleSaline
     - id: ChemistryBottleTricordrazine
+    - id: ChemistryBottleParacetamol # Offbrand
 
 - type: entityTable
   id: SpecialtyMedicineReagentBottleTable
@@ -1405,6 +1410,7 @@
     - id: ChemistryBottleTricordrazine
     - id: ChemistryBottleTranexamicAcid
     - id: ChemistryBottleOculine
+    - id: ChemistryBottleTramadol # Offbrand
 
 - type: entityTable
   id: AllMedicineReagentBottlesTable
@@ -1460,3 +1466,5 @@
     - id: ChemistryBottleTranexamicAcid
     - id: ChemistryBottleTricordrazine
     - id: ChemistryBottleUltravasculine
+    - id: ChemistryBottleParacetamol # Offbrand
+    - id: ChemistryBottleTramadol # Offbrand

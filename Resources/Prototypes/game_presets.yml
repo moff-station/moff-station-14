@@ -148,7 +148,7 @@
   rules:
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -177,7 +177,7 @@
   rules:
   - Nukeops
   - DummyNonAntagChance
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

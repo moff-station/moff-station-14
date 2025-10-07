@@ -1,4 +1,7 @@
-﻿namespace Content.Server._CD.Loadouts;
+using Content.Shared.StatusIcon;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server._CD.Loadouts;
 
 /// <summary>
 /// Marker that should be attached to the PDA to rename the contained ID to the user's requested job. Used to implement custom tile loadouts.
@@ -8,4 +11,7 @@ public sealed partial class RenameIdComponent : Component
 {
     [DataField]
     public LocId Value;
+
+    [DataField]
+    public ProtoId<JobIconPrototype>? NewIcon;
 }

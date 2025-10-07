@@ -21,7 +21,7 @@
       enum.CrayonUiKey.Key:
         type: CrayonBoundUserInterface
   - type: Crayon
-    capacity: 25
+    capacity: 100 # Moffstation - increase crayon charges!
   - type: Food
   - type: FlavorProfile
     flavors:
@@ -88,7 +88,7 @@
   - type: Crayon
     color: Red
     selectableColor: true
-    capacity: 30
+    capacity: 100 # Moffstation - increase crayon charges!
   - type: Tag
     tags:
     - Write
@@ -291,3 +291,9 @@
           tags:
           - CrayonWhite
   - type: Appearance
+  # Moffstation - Start - Painting Cyborg Module
+  - type: Tag
+    tags:
+    - BoxCardboard
+    - Crayon
+  # Moffstation - End

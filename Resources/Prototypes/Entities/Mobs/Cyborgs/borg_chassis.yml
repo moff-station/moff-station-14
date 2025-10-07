@@ -4,25 +4,25 @@
   components:
   - type: Sprite
     layers:
-    - state: robot
+    - state: borg # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Body", "movement"]
-    - state: robot_e_r
+    - state: borg_e_r
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: robot_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light","enum.BorgVisualLayers.LightStatus"]
       visible: false
   - type: BorgChassis
     # Default borg can take no modules until selected type.
     maxModules: 0
-    hasMindState: robot_e
-    noMindState: robot_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
   - type: BorgTransponder
     sprite:
-      sprite: Mobs/Silicon/chassis.rsi
-      state: robot
+      sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi # Moffstation - Early merge of Borg RSI fix
+      state: borg # Moffstation - Early merge of Borg RSI fix
     name: cyborg
   - type: InteractionPopup
     interactSuccessString: petting-success-generic-cyborg
@@ -88,13 +88,14 @@
   description: A lean, mean killing machine with access to a variety of deadly modules.
   components:
     - type: Sprite
+      sprite: _Moffstation/Mobs/Silicon/Chassis/synd_sec.rsi # Moffstation - Early merge of Borg RSI fix
       layers:
-        - state: synd_sec
-        - state: synd_sec_e
+        - state: borg # Moffstation - Early merge of Borg RSI fix
+        - state: borg_e # Moffstation - Early merge of Borg RSI fix
           map: ["enum.BorgVisualLayers.Light"]
           shader: unshaded
           visible: false
-        - state: synd_sec_l
+        - state: borg_l # Moffstation - Early merge of Borg RSI fix
           shader: unshaded
           map: ["light"]
           visible: false
@@ -105,8 +106,8 @@
           - BorgModuleGeneric
           - BorgModuleSyndicate
           - BorgModuleSyndicateAssault
-      hasMindState: synd_sec_e
-      noMindState: synd_sec
+      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+      noMindState: borg # Moffstation - Early merge of Borg RSI fix
     - type: InteractionPopup
       interactSuccessString: petting-success-syndicate-cyborg
       interactFailureString: petting-failure-syndicate-cyborg
@@ -120,13 +121,14 @@
   description: A combat medical cyborg. Has limited offensive potential, but makes more than up for it with its support capabilities.
   components:
     - type: Sprite
+      sprite: _Moffstation/Mobs/Silicon/Chassis/synd_medical.rsi # Moffstation - Early merge of Borg RSI fix
       layers:
-        - state: synd_medical
-        - state: synd_medical_e
+        - state: borg # Moffstation - Early merge of Borg RSI fix
+        - state: borg_e # Moffstation - Early merge of Borg RSI fix
           map: ["enum.BorgVisualLayers.Light"]
           shader: unshaded
           visible: false
-        - state: synd_medical_l
+        - state: borg_l # Moffstation - Early merge of Borg RSI fix
           shader: unshaded
           map: ["light"]
           visible: false
@@ -137,8 +139,8 @@
           - BorgModuleGeneric
           - BorgModuleMedical
           - BorgModuleSyndicate
-      hasMindState: synd_medical_e
-      noMindState: synd_medical
+      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+      noMindState: borg # Moffstation - Early merge of Borg RSI fix
     - type: ShowHealthBars
     - type: InteractionPopup
       interactSuccessString: petting-success-syndicate-cyborg
@@ -159,13 +161,14 @@
   description: A streamlined engineering cyborg, equipped with covert modules. Its chameleon projector lets it disguise itself as a Nanotrasen cyborg.
   components:
     - type: Sprite
+      sprite: _Moffstation/Mobs/Silicon/Chassis/synd_eng.rsi # Moffstation - Early merge of Borg RSI fix
       layers:
-        - state: synd_engi
-        - state: synd_engi_e
+        - state: borg # Moffstation - Early merge of Borg RSI fix
+        - state: borg_e # Moffstation - Early merge of Borg RSI fix
           map: ["enum.BorgVisualLayers.Light"]
           shader: unshaded
           visible: false
-        - state: synd_engi_l
+        - state: borg_l # Moffstation - Early merge of Borg RSI fix
           shader: unshaded
           map: ["light"]
           visible: false
@@ -176,8 +179,8 @@
           - BorgModuleGeneric
           - BorgModuleEngineering
           - BorgModuleSyndicate
-      hasMindState: synd_engi_e
-      noMindState: synd_engi
+      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+      noMindState: borg # Moffstation - Early merge of Borg RSI fix
     - type: ShowHealthBars
       damageContainers:
       - Inorganic
@@ -195,13 +198,14 @@
   description: A man-machine hybrid that assists in station activity. This one is in a state of great disrepair.
   components:
   - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: derelict
-    - state: derelict_e_r
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e_r # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: derelict_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
@@ -210,8 +214,8 @@
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
-    hasMindState: derelict_e
-    noMindState: derelict_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
   - type: Construction
     node: derelictcyborg
   - type: InteractionPopup
@@ -227,9 +231,10 @@
   description: A man-machine hybrid that assists the engineering department. This one seems to have chunks of strange crystals pockmarking its surface.
   components:
   - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/engineer_derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: engineer_derelict
-    - state: engineer_e_r
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e_r # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
@@ -237,7 +242,7 @@
       shader: unshaded
     - state: engineer_derelict_crystal
       shader: shaded
-    - state: engineer_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
@@ -247,8 +252,8 @@
       tags:
       - BorgModuleGeneric
       - BorgModuleEngineering
-    hasMindState: engineer_e
-    noMindState: engineer_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -257,32 +262,33 @@
   description: A man-machine hybrid that assists the service department. It's a bigger mess than anything it can clean up.
   components:
   - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/janitor_derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: janitor_derelict
+    - state: borg # Moffstation - Early merge of Borg RSI fix
       map: ["movement"]
-    - state: janitor_e_r
+    - state: borg_e_r # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: janitor_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
   - type: SpriteMovement
     movementLayers:
       movement:
-        state: janitor_moving_derelict
+        state: borg_moving # Moffstation - Early merge of Borg RSI fix
     noMovementLayers:
       movement:
-        state: janitor_derelict
+        state: borg # Moffstation - Early merge of Borg RSI fix
   - type: BorgChassis
     maxModules: 5 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
       - BorgModuleJanitor
-    hasMindState: janitor_e
-    noMindState: janitor_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
 
 - type: entity
   parent: BaseBorgChassisDerelict
@@ -291,32 +297,33 @@
   description: A man-machine hybrid that assists the medical department. This one's needles don't look very sanitary.
   components:
   - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/medical_derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: medical_derelict
+    - state: borg # Moffstation - Early merge of Borg RSI fix
       map: ["movement"]
-    - state: medical_e_r
+    - state: borg_e_r # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: medical_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
   - type: SpriteMovement
     movementLayers:
       movement:
-        state: medical_moving_derelict
+        state: borg_moving # Moffstation - Early merge of Borg RSI fix
     noMovementLayers:
       movement:
-        state: medical_derelict
+        state: borg # Moffstation - Early merge of Borg RSI fix
   - type: BorgChassis
     maxModules: 6 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
       - BorgModuleMedical
-    hasMindState: medical_e
-    noMindState: medical_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
   - type: SolutionScanner
   - type: ShowHealthBars
     damageContainers:
@@ -332,32 +339,33 @@
   description: A man-machine hybrid that assists the cargo department. This one has seen the wrong side of a gibtonite chunk.
   components:
   - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/miner_derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: miner_derelict
+    - state: borg # Moffstation - Early merge of Borg RSI fix
       map: ["movement"]
-    - state: miner_e_r
+    - state: borg_e_r # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: miner_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
   - type: SpriteMovement
     movementLayers:
       movement:
-        state: miner_moving_derelict
+        state: borg_moving # Moffstation - Early merge of Borg RSI fix
     noMovementLayers:
       movement:
-        state: miner_derelict
+        state: borg # Moffstation - Early merge of Borg RSI fix
   - type: BorgChassis
     maxModules: 6 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
       - BorgModuleCargo
-    hasMindState: miner_e
-    noMindState: miner_e_r
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg_e_r # Moffstation - Early merge of Borg RSI fix
 
 - type: entity
   parent: BaseBorgChassisSyndicateDerelict
@@ -366,13 +374,14 @@
   description: A lean, mean killing machine with access to a variety of deadly modules. This one is more rust-orange than blood-red.
   components:
   - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/synd_sec_derelict.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-    - state: synd_sec_derelict
-    - state: synd_sec_e
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
-    - state: synd_sec_l
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
       shader: unshaded
       map: ["light"]
       visible: false
@@ -383,7 +392,7 @@
       - BorgModuleGeneric
       - BorgModuleSyndicate
       - BorgModuleSyndicateAssault
-    hasMindState: synd_sec_derelict_e
-    noMindState: synd_sec_derelict
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg # Moffstation - Early merge of Borg RSI fix
   - type: Construction
     node: derelictcyborg

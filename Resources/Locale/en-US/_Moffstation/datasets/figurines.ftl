@@ -241,11 +241,10 @@ figurines-kai-5 = Who touched my TEGs?!
 figurines-kai-6 = Warms...
 figurines-kai-7 = Yous is a funnys!
 
-figurines-katie-1 = BESTIE!!
-figurines-katie-2 = I've earned a drink.
-figurines-katie-3 = Guh.
-figurines-katie-4 = TEG online!
-figurines-katie-5 = I need Steel.
+figurines-katie-1 = I love NanoTrasen!
+figurines-katie-2 = I need a latte...
+figurines-katie-3 = I need more Steel for this!
+figurines-katie-4 = B.b..org
 
 figurines-kaza-1 = Kaza greet!
 figurines-kaza-2 = Mm? What Kaza doing...?

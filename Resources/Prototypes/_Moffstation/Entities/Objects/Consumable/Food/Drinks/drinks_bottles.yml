@@ -1,0 +1,16 @@
+- type: entity
+  parent: [DrinkWaterBottleFull]
+  id: DrinkAmmoniaBottleFull
+  name: ammonia bottle
+  description: A bottle adveritising 100% naturally-sourced ammonia. You think that maybe you dont want to know what the source is.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Ammonia
+          Quantity: 30
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Drinks/ammoniabottle.rsi
+  - type: Label
+    currentLabel: reagent-name-ammonia

@@ -15,6 +15,7 @@
         Blunt: 5
     soundHit:
       collection: MetalThud
+  - type: Stripping # Offbrand
   - type: CombatMode
   - type: NoSlip
   - type: StaticPrice
@@ -34,7 +35,7 @@
     baseWalkSpeed : 2.5
     baseSprintSpeed : 4.5
   - type: Sprite
-    sprite: Mobs/Silicon/chassis.rsi
+    sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi # Moffstation - Early merge of Borg RSI fix
   - type: RotationVisuals
     horizontalRotation: 90
   - type: MobState

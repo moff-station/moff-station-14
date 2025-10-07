@@ -64,7 +64,8 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
-    radius: 1.5
+    radius: 1.7
+    falloff: 3
     softness: 5
     autoRot: true
   - type: Ringer
@@ -204,6 +205,7 @@
     #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-technical-assistant
+    newIcon: "JobIconTechnicalAssistant"
     #Moffstation - End
 
 - type: entity
@@ -226,10 +228,11 @@
     state: pda-internmed
   - type: GuideHelp
     guides:
-    - MedicalDoctor
+    - OffbrandPhysician # Offbrand
   #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-intern
+    newIcon: "JobIconMedicalIntern"
   #Moffstation - End
 
 - type: entity
@@ -253,6 +256,7 @@
   #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-cadet
+    newIcon: "JobIconSecurityCadet"
   #Moffstation - End
 
 - type: entity
@@ -276,6 +280,7 @@
   #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-research-assistant
+    newIcon: "JobIconResearchAssistant"
   #Moffstation - End
 
 - type: entity
@@ -780,7 +785,7 @@
     state: pda-medical
   - type: GuideHelp
     guides:
-    - MedicalDoctor
+    - OffbrandPhysician # Offbrand
 
 - type: entity
   parent: MedicalPDA
@@ -1118,6 +1123,61 @@
       - NanoChatCartridge # CD
 
 - type: entity
+  parent: [ SyndiPDA, BaseSyndicateContraband ]
+  id: SyndiOperativePDA
+  name: syndicate operative PDA
+  description: Death to NT!
+  components:
+  - type: Pda
+    id: SyndiOperativeIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-syndi-operative
+  - type: Icon
+    state: pda-syndi-operative
+
+- type: entity
+  parent: [ SyndiOperativePDA, BaseSyndicateContraband ]
+  id: SyndiCorpsmanPDA
+  name: syndicate corpsman PDA
+  description: Commander... I need to cook!
+  components:
+  - type: Pda
+    id: SyndiCorpsmanIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-syndi-corpsman
+  - type: Icon
+    state: pda-syndi-corpsman
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - MedTekCartridge
+      - NanoChatCartridge # CD
+
+- type: entity
+  parent: [ SyndiOperativePDA, BaseSyndicateContraband ]
+  id: SyndiCommanderPDA
+  name: syndicate commander PDA
+  description: So what are we, some kind of Nukie squad?
+  components:
+  - type: Pda
+    id: SyndiCommanderIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-syndi-commander
+  - type: Icon
+    state: pda-syndi-commander
+
+- type: entity
   parent: BaseSecurityPDA
   id: ERTLeaderPDA
   name: ERT Leader PDA
@@ -1394,6 +1454,10 @@
     accentVColor: "#CD6900"
   - type: Icon
     state: pda-seniorengineer
+  # Moffstation - Start - Additional job title loadouts
+  - type: RenameId
+    value: job-name-station-engineer-senior-station-engineer
+  # Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -1416,7 +1480,7 @@
     state: pda-seniorresearcher
   # Moffstation - Start - Job title loadouts from Cosmic Drift
   - type: RenameId
-    value: job-name-senior-researcher
+    value: job-name-scientist-senior-researcher
   # Moffstation - End
 
 - type: entity
@@ -1440,7 +1504,7 @@
     state: pda-seniorphysician
   # Moffstation - Start - Job title loadouts from Cosmic Drift
   - type: RenameId
-    value: job-name-senior-physician
+    value: job-name-medical-doctor-senior-physician
   # Moffstation - End
 
 - type: entity
@@ -1463,7 +1527,7 @@
     state: pda-seniorofficer
   # Moffstation - Start - Job title loadouts from Cosmic Drift
   - type: RenameId
-    value: job-name-senior-officer
+    value: job-name-security-officer-senior-officer
   # Moffstation - End
 
 - type: entity
@@ -1486,7 +1550,7 @@
     state: pda-seniorcourier
   # Moffstation - Start - Job title loadouts from Cosmic Drift
   - type: RenameId
-    value: job-name-senior-courier
+    value: job-name-cargo-technician-senior-courier
   # Moffstation - End
 
 - type: entity
@@ -1504,31 +1568,6 @@
        pda-pirate
   - type: Icon
     state: pda-pirate
-
-- type: entity
-  parent: [ BaseMedicalPDA, BaseSyndicateContraband ]
-  id: SyndiAgentPDA
-  name: syndicate corpsman PDA
-  description: For those days when healing normal syndicates aren't enough, try healing nuclear operatives instead!
-  components:
-  - type: Pda
-    id: SyndicateIDCard
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-syndi-agent
-  - type: PdaBorderColor
-    borderColor: "#891417"
-  - type: Icon
-    state: pda-syndi-agent
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - MedTekCartridge
-      - NanoChatCartridge # CD
 
 - type: entity
   parent: [BasePDA, SelectableLock]

@@ -169,6 +169,8 @@
   components:
   - type: Sprite
     sprite: Clothing/Neck/Cloaks/piratecap.rsi
+  - type: AddAccentClothing #Moffstation - Add pirate accent
+    accent: PirateAccent #Moffstation - Add pirate accent
 
 - type: entity
   parent: ClothingNeckBase
