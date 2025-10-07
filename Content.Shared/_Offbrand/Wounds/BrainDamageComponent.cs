@@ -32,6 +32,14 @@ public sealed partial class BrainDamageComponent : Component
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
     public FixedPoint2 Oxygen;
+
+    // Moffstation - Start - Offmed brain activity adjustments
+    /// <summary>
+    /// Used to multiply damage when its at certain thresholds
+    /// </summary>
+    [DataField(required: true)]
+    public SortedDictionary<FixedPoint2, float> DamageModifierThresholds;
+    // Moffstation - End
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]

@@ -106,6 +106,13 @@ public sealed partial class BrainDamageSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp, false))
             return;
 
+        // Moffstation - Brain Activity adjustments
+        if (ent.Comp.DamageModifierThresholds.HighestMatch(amount) is { } modifier)
+        {
+            amount *= modifier;
+        }
+        // Brain activity adjustments
+
         ent.Comp.Damage = FixedPoint2.Clamp(ent.Comp.Damage + amount, FixedPoint2.Zero, ent.Comp.MaxDamage);
         Dirty(ent);
 

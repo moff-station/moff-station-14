@@ -221,6 +221,11 @@
     damage: 0
     maxOxygen: 10
     oxygen: 10
+    # Moffstation - Start - Brain activity adjustments
+    damageModifierThresholds:
+      85: 0.3
+      95: 0.1
+    # Moffstation - End
   - type: BrainDamageOxygenation
     oxygenationDamageThresholds:
       0.10: [1.0, [100, 0.75]]
