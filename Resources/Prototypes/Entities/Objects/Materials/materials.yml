@@ -589,10 +589,12 @@
   - type: Appearance
   - type: Item
     heldPrefix: bananium
+  # Moffstation - Begin
   - type: Tag
     tags:
-    - ConstructionMaterial    #Moffstation
+    - ConstructionMaterial
     - RawMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialBananium
