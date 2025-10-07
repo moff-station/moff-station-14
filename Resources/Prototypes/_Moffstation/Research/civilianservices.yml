@@ -213,6 +213,18 @@
 # Tier 3
 
 - type: technology
+  id: BluespaceCargoTransport
+  name: research-technology-bluespace-cargo-transport
+  icon:
+    sprite: Structures/cargo_telepad.rsi
+    state: display
+  discipline: CivilianServices
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - CargoTelepadMachineCircuitboard
+
+- type: technology
   id: QuantumFiberWeaving
   name: research-technology-quantum-fiber-weaving
   icon:
@@ -223,19 +235,6 @@
   cost: 10000
   recipeUnlocks:
   - ClothingShoesBootsSpeed
-
-- type: technology
-  id: BluespaceChemistry
-  name: research-technology-bluespace-chemistry
-  icon:
-    sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
-    state: beakerbluespace
-  discipline: CivilianServices
-  tier: 2 # Moffstation
-  cost: 10000
-  recipeUnlocks:
-  - BluespaceBeaker
-  - SyringeBluespace
 
 - type: technology
   id: LauncherSyringe
