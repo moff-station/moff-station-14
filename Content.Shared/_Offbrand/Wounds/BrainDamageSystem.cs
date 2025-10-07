@@ -107,7 +107,7 @@ public sealed partial class BrainDamageSystem : EntitySystem
             return;
 
         // Moffstation - Brain Activity adjustments
-        if (ent.Comp.DamageModifierThresholds.HighestMatch(amount) is { } modifier)
+        if (ent.Comp.DamageModifierThresholds.HighestMatch(ent.Comp.Damage) is { } modifier)
         {
             amount *= modifier;
         }
@@ -213,7 +213,7 @@ public sealed partial class BrainDamageSystem : EntitySystem
             return;
 
         // Moffstation - Brain Activity adjustments
-        if (ent.Comp1.DamageModifierThresholds.HighestMatch(amount) is { } modifier)
+        if (ent.Comp1.DamageModifierThresholds.HighestMatch(ent.Comp1.Damage) is { } modifier)
         {
             amount *= modifier;
         }
