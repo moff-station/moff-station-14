@@ -179,9 +179,9 @@
   description: An outfit for a sleuth who has just one more thing to tell you about.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sleuth.rsi
+    sprite: _Moffstation\Clothing\Uniforms\Jumpsuit\sleuth.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sleuth.rsi
+    sprite: _Moffstation\Clothing\Uniforms\Jumpsuit\sleuth.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband, ClothingUniformFoldableBase]
@@ -190,6 +190,6 @@
   description: An outfit for an Ace Investigator in search of missing animals.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/investigator.rsi
+    sprite: _Moffstation\Clothing\Uniforms\Jumpsuit\investigator.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/investigator.rsi
+    sprite: _Moffstation\Clothing\Uniforms\Jumpsuit\investigator.rsi
