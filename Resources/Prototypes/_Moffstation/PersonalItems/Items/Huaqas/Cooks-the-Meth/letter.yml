@@ -21,20 +21,6 @@
   suffix: PersonalItemCooksLetter
   description: An envelope that was once sealed, but has since been torn open.
   components:
-  - type: Sprite
-    sprite: Objects/Misc/bureaucracy.rsi
-    layers:
-    - state: envelope_torn
-      map: ["enum.EnvelopeVisualLayers.Open"]
-    - state: envelope_torn
-      map: ["enum.EnvelopeVisualLayers.Sealed"]
-      visible: false
-    - state: envelope_torn
-      map: ["enum.EnvelopeVisualLayers.Torn"]
-      visible: false
-    - state: paper_stamp-generic
-      map: ["enum.PaperVisualLayers.Stamp"]
-      visible: false
   - type: Envelope
     state: Torn
   - type: ItemSlots
