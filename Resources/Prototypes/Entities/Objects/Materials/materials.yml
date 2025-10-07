@@ -412,11 +412,13 @@
   - type: PhysicalComposition
     materialComposition:
       Diamond: 100
+  # Moffstation - Begin
   - type: Tag
     tags:
     - RawMaterial
     - Diamond
-    - ConstructionMaterial    #Moffstation
+    - ConstructionMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialDiamond

@@ -258,10 +258,12 @@
       layers:
       - state: meat_3
         map: [ "base" ]
+    # Moffstation - Begin
     - type: Tag
       tags:
       - Sheet
-      - ConstructionMaterial    #Moffstation
+      - ConstructionMaterial
+    # Moffstation - End
     - type: Material
     - type: PhysicalComposition
       materialComposition:
