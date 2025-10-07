@@ -21912,7 +21912,6 @@ entities:
       devices:
       - 3749
       - 3750
-      - 3747
       - 3748
       - 3751
       - 3752
@@ -22182,16 +22181,6 @@ entities:
       deviceLists:
       - 3739
       - 8636
-  - uid: 3747
-    components:
-    - type: Transform
-      pos: 19.5,-37.5
-      parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 8630
   - uid: 3748
     components:
     - type: Transform

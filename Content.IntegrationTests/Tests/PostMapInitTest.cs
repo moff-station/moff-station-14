@@ -66,7 +66,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
             "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
             "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
-            "/Maps/_Moffstation/dugstation.yml" // Contains cat ears
+            "/Maps/_Moffstation/dugstation.yml" // Contains cat ears and knockback stick
         };
 
         private static readonly string[] GameMaps =
