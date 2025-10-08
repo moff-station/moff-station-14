@@ -247,3 +247,15 @@
   - ShuttleGunDusterCircuitboard
   technologyPrerequisites:
   - BasicShuttleArmament
+
+- type: technology
+  id: QuantumFiberWeaving
+  name: research-technology-quantum-fiber-weaving
+  icon:
+    sprite: Clothing/Shoes/Boots/speedboots.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - ClothingShoesBootsSpeed

@@ -1,0 +1,20 @@
+﻿## Static
+
+- type: latheRecipePack
+  id: MoffstationBorgModulesStatic
+  recipes:
+  - BorgModuleBureaucracy
+  - BorgModulePainting
+
+## Dynamic
+
+- type: latheRecipePack
+  id: MoffstationBorgModules
+  recipes:
+  - BorgModuleAdvancedAnomaly
+  - BorgModuleFoamForceGallant
+  - BorgModuleConstructionGeneric
+  - BorgModuleCustodialGeneric
+  - BorgModuleMiningGeneric
+  - BorgModuleMusiqueGeneric
+  - BorgModuleTopicalsGeneric

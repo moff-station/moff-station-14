@@ -223,6 +223,7 @@
     - SecurityExplosives
     - SecurityEquipment
     - SecurityWeapons
+    - MoffstationSecurityWeaponsStatic # Moffstation
 
 - type: entity
   id: ProtolatheHyperConvection
@@ -321,11 +322,14 @@
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
+    - MoffstationBorgModulesStatic # Moffstation
+    - MechParts # Moffstation - move mech parts to baseline, require research for boards
     dynamicPacks:
     - Robotics
     - BorgModules
-    - MechParts
+    # - MechParts # Moffstation - move mech parts to baseline, require research for boards
     - MechEquipment
+    - MoffstationBorgModules # Moffstation
   - type: MaterialStorage
     whitelist:
       tags:
@@ -405,6 +409,7 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - MoffstationSecurityWeaponsStatic # Moffstation
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons

@@ -30,8 +30,6 @@
   - BorgModuleAdvancedChemical
   - BorgModuleTopicalsGeneric # Moffstation - specialty lite modules
 
-# Tier 3
-
 - type: technology
   id: BluespaceChemistry
   name: research-technology-bluespace-chemistry
@@ -39,8 +37,10 @@
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
     state: beakerbluespace
   discipline: Biochemical
-  tier: 3
+  tier: 2
   cost: 10000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
+
+# Tier 3

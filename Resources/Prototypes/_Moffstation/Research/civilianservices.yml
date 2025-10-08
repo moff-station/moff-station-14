@@ -124,26 +124,6 @@
   - BorgModuleCustodialGeneric # Moffstation - specialty lite modules
 
 - type: technology
-  id: HONKMech
-  name: research-technology-honk-mech
-  icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
-    state: honker
-  discipline: CivilianServices
-  tier: 2
-  cost: 7500
-  recipeUnlocks:
-  - HonkerHarness
-  - HonkerLArm
-  - HonkerRArm
-  - HonkerLLeg
-  - HonkerRLeg
-  - HonkerCentralElectronics
-  - HonkerPeripheralsElectronics
-  - HonkerTargetingElectronics
-  - MechEquipmentHorn
-
-- type: technology
   id: AdvancedSpray
   name: research-technology-advanced-spray
   icon:
@@ -164,11 +144,15 @@
     state: icon
   discipline: CivilianServices
   tier: 2
-  cost: 4000
+  cost: 10000
   recipeUnlocks:
   - PushHorn
   - BorgModuleAdvancedClowning
-  - BorgModuleFoamForceGallant # Moffstation
+  - BorgModuleFoamForceGallant
+  - HonkerCentralElectronics
+  - HonkerPeripheralsElectronics
+  - HonkerTargetingElectronics
+  - MechEquipmentHorn
 
 # Tier 3
 
@@ -185,18 +169,6 @@
   - CargoTelepadMachineCircuitboard
 
 - type: technology
-  id: QuantumFiberWeaving
-  name: research-technology-quantum-fiber-weaving
-  icon:
-    sprite: Clothing/Shoes/Boots/speedboots.rsi
-    state: icon
-  discipline: CivilianServices
-  tier: 3
-  cost: 10000
-  recipeUnlocks:
-  - ClothingShoesBootsSpeed
-
-- type: technology
   id: LauncherSyringe
   name: research-technology-launcher-syringe
   icon:
@@ -208,3 +180,17 @@
   recipeUnlocks:
   - LauncherSyringe
   - MiniSyringe
+
+- type: technology
+  id: BluespaceStorage
+  name: research-technology-bluespace-storage
+  icon:
+    sprite: Clothing/Back/Backpacks/holding.rsi
+    state: holding
+  discipline: CivilianServices
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - ClothingBackpackHolding
+  - ClothingBackpackSatchelHolding
+  - ClothingBackpackDuffelHolding

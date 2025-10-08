@@ -189,20 +189,6 @@
 # Tier 3
 
 - type: technology
-  id: BluespaceStorage
-  name: research-technology-bluespace-storage
-  icon:
-    sprite: Clothing/Back/Backpacks/holding.rsi
-    state: holding
-  discipline: Industrial
-  tier: 3
-  cost: 15000
-  recipeUnlocks:
-  - ClothingBackpackHolding
-  - ClothingBackpackSatchelHolding
-  - ClothingBackpackDuffelHolding
-
-- type: technology
   id: OptimizedMicrogalvanism
   name: research-technology-optimized-microgalvanism
   icon:
