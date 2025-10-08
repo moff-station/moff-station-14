@@ -150,8 +150,6 @@
   technologyPrerequisites:
   - BasicRobotics
 
-# Tier 3
-
 - type: technology
   id: QuantumLeaping
   name: research-technology-quantum-leaping
@@ -159,7 +157,7 @@
     sprite: Objects/Devices/swapper.rsi
     state: icon
   discipline: Experimental
-  tier: 3
+  tier: 2
   cost: 10000
   recipeUnlocks:
   - DeviceQuantumSpinInverter
@@ -171,7 +169,20 @@
     sprite: Objects/Devices/desynchronizer.rsi
     state: icon
   discipline: Experimental
-  tier: 3
+  tier: 2
   cost: 10000
   recipeUnlocks:
   - DeviceDesynchronizer
+
+# Tier 3
+- type: technology
+  id: BluespaceCargoTransport
+  name: research-technology-bluespace-cargo-transport
+  icon:
+    sprite: Structures/cargo_telepad.rsi
+    state: display
+  discipline: Experimental
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - CargoTelepadMachineCircuitboard

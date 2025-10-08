@@ -37,18 +37,6 @@
   - MagazineBoxRifleIncendiary
 
 - type: technology
-  id: WeaponizedLaserManipulation
-  name: research-technology-weaponized-laser-manipulation
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 1
-  cost: 7500
-  recipeUnlocks:
-  - WeaponLaserCarbine
-
-- type: technology
   id: NonlethalAmmunition
   name: research-technology-nonlethal-ammunition
   icon:
@@ -205,8 +193,6 @@
   recipeUnlocks:
   - ClothingBackpackHarmpack
 
-# Tier 3
-
 - type: technology
   id: PortableMicrofusionWeaponry
   name: research-technology-portable-microfusion-weaponry
@@ -214,7 +200,7 @@
     sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
     state: icon
   discipline: Arsenal
-  tier: 3
+  tier: 2
   cost: 15000
   recipeUnlocks:
   - WeaponAdvancedLaser
@@ -227,7 +213,7 @@
     sprite: Objects/Weapons/Guns/Battery/temp_gun.rsi
     state: icon
   discipline: Arsenal
-  tier: 3
+  tier: 2
   cost: 15000
   recipeUnlocks:
   - WeaponTemperatureGun
@@ -239,7 +225,7 @@
     sprite: Objects/Weapons/Guns/Ammunition/Magazine/Grenade/grenade_cartridge.rsi
     state: icon
   discipline: Arsenal
-  tier: 3
+  tier: 2
   cost: 15000
   recipeUnlocks:
   - GrenadeEMP
@@ -247,6 +233,8 @@
   - ShuttleGunDusterCircuitboard
   technologyPrerequisites:
   - BasicShuttleArmament
+
+# Tier 3
 
 - type: technology
   id: QuantumFiberWeaving
