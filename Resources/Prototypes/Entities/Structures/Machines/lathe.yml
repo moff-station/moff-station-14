@@ -200,8 +200,10 @@
     unlitRunningState: unlit-building
     staticPacks:
     - ChemistryStatic
-    - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - Start - Research Rework
+    # - SurgeryStatic
+    # - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - End
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -217,6 +219,7 @@
     - Instruments
     - Equipment
     - WirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
+    - MoffstationOffbrandSurgery # Moffstation + Offbrand <3
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -492,11 +495,14 @@
     - RollerBedsStatic
     - MedicalClothingStatic
     - EmptyMedkitsStatic
-    - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - Start - Research Rework
+    # - SurgeryStatic
+    # - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - End
     - OffbrandMedicalStatic # Offbrand
     dynamicPacks:
     - Chemistry
+    - MoffstationOffbrandSurgery # Moffstation + Offbrand <3
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget

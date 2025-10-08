@@ -4,6 +4,7 @@ research-discipline-biochemical = Biochemical
 # Arsenal researches
 
 # Biochemical researches
+research-technology-surgical-tools = Surgical Tools
 
 # Civilian services researches
 

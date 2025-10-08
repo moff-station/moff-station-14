@@ -178,6 +178,9 @@
   - ShuttleGunSvalinnMachineGunCircuitboard
   - ShuttleGunPerforatorCircuitboard
   - ShuttleGunFriendshipCircuitboard
+  - GrenadeEMP
+  - PowerCageHigh
+  - ShuttleGunDusterCircuitboard
   technologyPrerequisites:
   - SalvageWeapons
 
@@ -218,22 +221,6 @@
   recipeUnlocks:
   - WeaponTemperatureGun
 
-- type: technology
-  id: AdvancedShuttleWeapon
-  name: research-technology-advanced-shuttle-weapon
-  icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Grenade/grenade_cartridge.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 2
-  cost: 15000
-  recipeUnlocks:
-  - GrenadeEMP
-  - PowerCageHigh
-  - ShuttleGunDusterCircuitboard
-  technologyPrerequisites:
-  - BasicShuttleArmament
-
 # Tier 3
 
 - type: technology
@@ -244,6 +231,6 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost: 10000
+  cost: 50000
   recipeUnlocks:
   - ClothingShoesBootsSpeed
