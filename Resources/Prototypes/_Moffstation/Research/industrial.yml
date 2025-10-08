@@ -44,18 +44,6 @@
   - SMESAdvancedMachineCircuitboard
 
 - type: technology
-  id: MechanicalCompression
-  name: research-technology-mechanical-compression
-  icon:
-    sprite: Structures/Machines/flatpacker.rsi
-    state: base
-  discipline: Industrial
-  tier: 1
-  cost: 10000
-  recipeUnlocks:
-  - FlatpackerMachineCircuitboard
-
-- type: technology
   id: IndustrialEngineering
   name: research-technology-industrial-engineering
   icon:
@@ -120,6 +108,18 @@
   - MechEquipmentGrabber
 
 # Tier 2
+
+- type: technology
+  id: MechanicalCompression
+  name: research-technology-mechanical-compression
+  icon:
+    sprite: Structures/Machines/flatpacker.rsi
+    state: base
+  discipline: Industrial
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - FlatpackerMachineCircuitboard
 
 - type: technology
   id: Shuttlecraft
