@@ -127,6 +127,9 @@
       metabolismRate: 0.2
       statusEffects:
       - statusEffect: StatusEffectPainkillersNegligibleRobustHarvest
+        conditions:
+        - !type:OrganType
+          type: Plant
       effects:
       - !type:HealthChange
         damage:
@@ -258,16 +261,16 @@
         damage:
           types:
             Caustic: 1
-      # Begin Offbrand
-        conditions:
-        - !type:OrganType
-          type: Plant
-          shouldHave: false
         # Moffstation start - Allow avali to drink ammonia
+        conditions:
         - !type:OrganType
           type: Avali
           shouldHave: false
         # Moffstation end
+        # Begin Offbrand
+        - !type:OrganType
+          type: Plant
+          shouldHave: false
       - !type:SatiateHunger
         factor: 1
         conditions:
@@ -328,7 +331,7 @@
         conditions:
         - !type:OrganType
           type: Vox
-        factor: -4
+        factor: -1 # Offbrand
 
 
 - type: reagent

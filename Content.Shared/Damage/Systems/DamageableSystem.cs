@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
@@ -25,6 +26,7 @@ namespace Content.Shared.Damage
         [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
         [Dependency] private readonly IConfigurationManager _config = default!;
         [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
+        [Dependency] private readonly SharedExplosionSystem _explosion = default!;
 
         private EntityQuery<AppearanceComponent> _appearanceQuery;
         private EntityQuery<DamageableComponent> _damageableQuery;
@@ -60,6 +62,7 @@ namespace Content.Shared.Damage
             {
                 UniversalAllDamageModifier = value;
                 _chemistryGuideData.ReloadAllReagentPrototypes();
+                _explosion.ReloadMap();
             }, true);
             Subs.CVar(_config, CCVars.PlaytestAllHealModifier, value =>
             {
