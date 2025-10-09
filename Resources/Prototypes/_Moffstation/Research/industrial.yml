@@ -11,10 +11,11 @@
   cost: 7500
   recipeUnlocks:
   - MiningDrill
-  - MineralScannerEmpty
-  - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
-  - ClothingShoesBootsJump
+  - OreBag
+  - Fulton
+  - FultonBeacon
+  - OreProcessorMachineCircuitboard
 
 - type: technology
   id: SpaceScanning
@@ -28,6 +29,8 @@
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
+  - MineralScannerEmpty
+  - SalvageMagnetMachineCircuitboard
 
 - type: technology
   id: AdvancedPowercells
@@ -42,21 +45,6 @@
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   - SMESAdvancedMachineCircuitboard
-
-- type: technology
-  id: IndustrialEngineering
-  name: research-technology-industrial-engineering
-  icon:
-    sprite: Structures/Machines/protolathe_hypercon.rsi
-    state: building
-  discipline: Industrial
-  tier: 1
-  cost: 10000
-  recipeUnlocks:
-  - AutolatheHyperConvectionMachineCircuitboard
-  - ProtolatheHyperConvectionMachineCircuitboard
-  - CircuitImprinterHyperConvectionMachineCircuitboard
-  - SheetifierMachineCircuitboard
 
 - type: technology
   id: PowerGeneration
@@ -76,36 +64,18 @@
   - EmitterCircuitboard
 
 - type: technology
-  id: AtmosphericTech
-  name: research-technology-atmospheric-tech
+  id: IndustrialEngineering
+  name: research-technology-industrial-engineering
   icon:
-    sprite: Structures/Piping/Atmospherics/thermomachine.rsi
-    state: freezerOff
+    sprite: Structures/Machines/protolathe_hypercon.rsi
+    state: building
   discipline: Industrial
   tier: 1
-  cost: 7500
+  cost: 10000
   recipeUnlocks:
-  - ThermomachineFreezerMachineCircuitBoard
-  - GasRecyclerMachineCircuitboard
-
-- type: technology
-  id: RipleyAPLU
-  name: research-technology-ripley-aplu
-  icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
-    state: ripley
-  discipline: Industrial
-  tier: 1
-  cost: 7500
-  recipeUnlocks:
-  - RipleyHarness
-  - RipleyLArm
-  - RipleyRArm
-  - RipleyLLeg
-  - RipleyRLeg
-  - RipleyCentralElectronics
-  - RipleyPeripheralsElectronics
-  - MechEquipmentGrabber
+  - AutolatheHyperConvectionMachineCircuitboard
+  - ProtolatheHyperConvectionMachineCircuitboard
+  - CircuitImprinterHyperConvectionMachineCircuitboard
 
 # Tier 2
 
@@ -149,8 +119,6 @@
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
-  technologyPrerequisites:
-  - AtmosphericTech
 
 - type: technology
   id: AdvancedToolsTechnology
@@ -166,9 +134,7 @@
     - PowerDrill
     - JawsOfLife
     - BorgModuleAdvancedTool
-    - Fulton
-    - FultonBeacon
-    - BorgModuleConstructionGeneric # Moffstation - specialty lite modules
+    - BorgModuleConstructionGeneric
 
 - type: technology
   id: MassExcavation
@@ -178,13 +144,16 @@
     state: handdrill
   discipline: Industrial
   tier: 2
-  cost: 12500
+  cost: 10000
   recipeUnlocks:
     - OreBagOfHolding
     - MiningDrillDiamond
     - AdvancedMineralScannerEmpty
+    - OreProcessorIndustrialMachineCircuitboard
     - BorgModuleAdvancedMining
-    - BorgModuleMiningGeneric # Moffstation - specialty lite modules
+    - BorgModuleMiningGeneric
+  technologyPrerequisites:
+  - SalvageEquipment
 
 # Tier 3
 

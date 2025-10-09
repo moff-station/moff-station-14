@@ -1,6 +1,15 @@
 ## Static
 
 - type: latheRecipePack
+  id: MoffstationScienceBoardsStatic
+  recipes:
+  - ProtolatheMachineCircuitboard
+  - AutolatheMachineCircuitboard
+  - CircuitImprinterMachineCircuitboard
+  - ExosuitFabricatorMachineCircuitboard
+  - BorgChargerCircuitboard
+
+- type: latheRecipePack
   id: DefaultAILawBoardsStatic
   recipes:
   - GameMasterCircuitBoard
@@ -40,3 +49,10 @@
   - PirateCircuitBoard
   - SpiderClanCircuitBoard
   - SyndimovCircuitBoard
+
+## Dynamic
+
+- type: latheRecipePack
+  id: MoffstationScienceBoards
+  recipes:
+  - CircuitImprinterLawMatrixMachineCircuitboard

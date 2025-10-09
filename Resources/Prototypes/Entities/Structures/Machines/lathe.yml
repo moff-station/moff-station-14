@@ -220,6 +220,7 @@
     - Equipment
     - WirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
     - MoffstationOffbrandSurgery # Moffstation + Offbrand <3
+    - MoffstationMining # Moffstation - Research Rework
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -263,23 +264,27 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - ScienceBoardsStatic
-    - ServiceBoardsStatic
-    - CargoBoardsStatic
+    # - ScienceBoardsStatic
+    # - ServiceBoardsStatic
+    # - CargoBoardsStatic
     # - MedicalBoardsStatic # Moffstation - Research Rework
     - EngineeringBoardsStatic
     # - OffbrandCircuitboardsStatic # Moffstation - Research Rework
+    - MoffstationScienceBoardsStatic # Moffstation - Research Rework
+    - MoffstationEngineeringBoardsStatic # Moffstation - Research Rework
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
     # - MedicalBoards # Moffstation - Research Rework
     - ServiceBoards
-    - ScienceBoards
+    # - ScienceBoards
     - CameraBoards
     - MechBoards
     - ShuttleBoards
-    - MoffstationOffbrandSurgery # Moffstation - Research Rework
     - MoffstationMedicalBoards # Moffstation - Research Rework
+    - MoffstationCargoBoards # Moffstation - Research Rework
+    - MoffstationServiceBoards # Moffstation - Research Rework
+    - MoffstationScienceBoards # Moffstation - Research Rework
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityBoards
@@ -720,8 +725,9 @@
     - FloorConcreteTilesStatic
     - CircuitFloorsStatic
     - FloorMarbleTilesStatic
-    dynamicPacks:
-    - FauxTiles
+    - FauxTiles # Moffstation - Research Rework
+    #dynamicPacks:
+    # - FauxTiles # Moffstation - Research Rework
   - type: MaterialStorage
     whitelist:
       tags:

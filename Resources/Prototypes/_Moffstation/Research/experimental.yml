@@ -11,6 +11,12 @@
   cost: 5000
   recipeUnlocks:
   - ProximitySensor
+  - RipleyCentralElectronics
+  - RipleyPeripheralsElectronics
+  - HamtrCentralElectronics
+  - HamtrPeripheralsElectronics
+  - MechEquipmentGrabber
+  - MechEquipmentGrabberSmall
 
 - type: technology
   id: BasicAnomalousResearch
@@ -66,6 +72,7 @@
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
+  - ClothingShoesBootsJump
 
 - type: technology
   id: AnomalyCoreHarnessing
@@ -176,13 +183,15 @@
 
 # Tier 3
 - type: technology
-  id: BluespaceCargoTransport
-  name: research-technology-bluespace-cargo-transport
+  id: BluespaceStorage
+  name: research-technology-bluespace-storage
   icon:
-    sprite: Structures/cargo_telepad.rsi
-    state: display
+    sprite: Clothing/Back/Backpacks/holding.rsi
+    state: holding
   discipline: Experimental
   tier: 3
   cost: 50000
   recipeUnlocks:
-  - CargoTelepadMachineCircuitboard
+  - ClothingBackpackHolding
+  - ClothingBackpackSatchelHolding
+  - ClothingBackpackDuffelHolding

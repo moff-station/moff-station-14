@@ -9,6 +9,8 @@ research-technology-physilogical-replication = Physilogical Replication
 research-technology-pharmaceutical-manufacturing = Pharmaceutical Manufacturing
 
 # Civilian services researches
+research-technology-station-decorum = Station Decorum
+research-technology-basic-food-drink = Basic Food and Drink
 
 # Experimental researches
 research-technology-silicon-law-matrix = Silicon Law Matrix
