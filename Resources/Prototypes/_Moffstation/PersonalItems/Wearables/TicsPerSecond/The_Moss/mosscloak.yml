@@ -1,0 +1,31 @@
+﻿# Player: TicsPerSecond - Character: The Moss
+- type: entity
+  parent: BaseWoodwindInstrument
+  id: PersonalItemMossCloak
+  name: Moss' Cloak
+  description: A faintly magical blanket of moss that binds itself to the neck to form a warm cloak.
+  suffix: PersonalItem
+  components:
+  - type: Instrument
+    program: 46
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/TicsPerSecond/The_Moss/mosscloak.rsi
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/TicsPerSecond/The_Moss/mosscloak.rsi
+    quickEquip: true
+    slots:
+    - neck
+  - type: ActivatableUI
+    inHandsOnly: false
+
+- type: loadout
+  id: PersonalItemMossCloak
+  inhand:
+  - PersonalItemMossCloak
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - The Moss
