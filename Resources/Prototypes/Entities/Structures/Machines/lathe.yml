@@ -266,13 +266,13 @@
     - ScienceBoardsStatic
     - ServiceBoardsStatic
     - CargoBoardsStatic
-    - MedicalBoardsStatic
+    # - MedicalBoardsStatic # Moffstation - Research Rework
     - EngineeringBoardsStatic
-    - OffbrandCircuitboardsStatic # Offbrand
+    # - OffbrandCircuitboardsStatic # Moffstation - Research Rework
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
-    - MedicalBoards
+    # - MedicalBoards # Moffstation - Research Rework
     - ServiceBoards
     - ScienceBoards
     - CameraBoards
