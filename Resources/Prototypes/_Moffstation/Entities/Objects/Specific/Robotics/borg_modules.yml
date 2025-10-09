@@ -59,6 +59,121 @@
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: card-module }
 
 - type: entity
+  id: BorgModuleConstructionGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized construction cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-construction
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+    - hand:
+        emptyRepresentative: FloorTileItemSteel
+        emptyLabel: borg-slot-tiles-empty
+        whitelist:
+          components:
+          - FloorTile
+    - hand:
+        emptyRepresentative: DoorElectronics
+        emptyLabel: borg-slot-circuitboards-empty
+        whitelist:
+          components:
+          - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-construction-module }
+
+- type: entity
+  id: BorgModuleCustodialGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized custodial cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-mop
+  - type: ItemBorgModule
+    hands:
+    - item: LightReplacer
+    - item: BorgTrashBag
+    - item: BorgSprayBottle
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-cleaning-module }
+
+- type: entity
+  id: BorgModuleFoamForceGallant
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: foam force gallant cyborg module
+  description: A module that comes with a Foam Force Gallant rifle.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/foam_gun_module.rsi
+      state: icon-foam-gun
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponRifleFoamBorg
+    - item: BoxDonkSoftBox
+    - hand:
+        emptyRepresentative: GrenadeFoamDart
+        emptyLabel: borg-slot-foam-grenade-empty
+        whitelist:
+          tags:
+          - FoamGrenade
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: foam-force-module }
+
+- type: entity
+  id: BorgModuleMiningGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized mining cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-mining
+  - type: ItemBorgModule
+    hands:
+    - item: AppraisalTool
+    - item: MiningDrill
+    - item: BorgOreBag
+    - hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-mining-module }
+
+- type: entity
+  id: BorgModuleMusiqueGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized musique cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-musique
+  - type: ItemBorgModule
+    hands:
+    - item: SynthesizerInstrument
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-musical-module }
+
+- type: entity
   id: BorgModulePainting
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: painting cyborg module
@@ -91,6 +206,27 @@
           - SprayPainterAmmo
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: paint-module }
+
+- type: entity
+  id: BorgModuleTopicalsGeneric
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: generalized topicals cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-treatment
+  - type: ItemBorgModule
+    hands:
+    - item: HandheldHealthAnalyzerUnpowered
+    - hand:
+        emptyRepresentative: Brutepack
+        emptyLabel: borg-slot-topicals-empty
+        whitelist:
+          components:
+          - Healing
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-treatment-module }
 
 # Science Modules
 - type: entity
@@ -136,29 +272,3 @@
     - item: WeaponShotgunBlackbox
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
-
-- type: entity
-  id: BorgModuleFoamForceGallant
-  parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: Foam Force Gallant cyborg module
-  description: A module that comes with a Foam Force Gallant rifle.
-  components:
-  - type: Sprite
-    layers:
-    - state: generic
-    - sprite: _Moffstation/Objects/Specific/Robotics/foam_gun_module.rsi
-      state: icon-foam-gun
-  - type: ItemBorgModule
-    hands:
-    - item: WeaponRifleFoamBorg
-    - item: BoxDonkSoftBox
-    - hand:
-        emptyRepresentative: GrenadeFoamDart
-        emptyLabel: borg-slot-foam-grenade-empty
-        whitelist:
-          tags:
-          - FoamGrenade
-  - type: BorgModuleIcon
-    icon:
-      sprite: _Moffstation/Interface/Actions/actions_borg.rsi
-      state: foam-force-module

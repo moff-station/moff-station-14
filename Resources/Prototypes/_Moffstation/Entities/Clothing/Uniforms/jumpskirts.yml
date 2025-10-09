@@ -236,3 +236,15 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qmvista.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qmvista.rsi
+
+# Scientist
+- type: entity
+  parent: [ClothingUniformSkirtBase]
+  id: ClothingUniformJumpskirtMachinist
+  name: machinist jumpskirt
+  description: It's a slimming black with reinforced seams; great for mechanical work.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/machinist.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/machinist.rsi

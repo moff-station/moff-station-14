@@ -5,6 +5,16 @@
   result: BorgModuleBureaucracy
 
 - type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleConstructionGeneric
+  result: BorgModuleConstructionGeneric
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleCustodialGeneric
+  result: BorgModuleCustodialGeneric
+
+- type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleFoamForceGallant
   result: BorgModuleFoamForceGallant
@@ -12,14 +22,28 @@
     Steel: 250
     Glass: 150
     Plastic: 350
+  
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleMiningGeneric
+  result: BorgModuleMiningGeneric
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleMusiqueGeneric
+  result: BorgModuleMusiqueGeneric
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModulePainting
   result: BorgModulePainting
 
-# Science Modules
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleTopicalsGeneric
+  result: BorgModuleTopicalsGeneric
 
+# Science Modules
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleAdvancedAnomaly
