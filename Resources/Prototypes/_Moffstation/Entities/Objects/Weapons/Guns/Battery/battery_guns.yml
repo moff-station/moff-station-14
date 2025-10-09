@@ -59,6 +59,11 @@
   id: WeaponRevolverBigIron
   description: A Big Iron on their hip.
   components:
+  - type: Item
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    storedOffset: 0,-5
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/big_iron.rsi
     layers:
