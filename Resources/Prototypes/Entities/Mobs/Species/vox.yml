@@ -108,6 +108,8 @@
       visible: false
   - type: HumanoidAppearance
     species: Vox
+    hideLayersOnEquip: # CD
+    - HeadSide
     undergarmentTop: UndergarmentTopTanktopVox
     undergarmentBottom: UndergarmentBottomBoxersVox
     markingsDisplacement:
