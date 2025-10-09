@@ -278,6 +278,8 @@
     - CameraBoards
     - MechBoards
     - ShuttleBoards
+    - MoffstationOffbrandSurgery # Moffstation - Research Rework
+    - MoffstationMedicalBoards # Moffstation - Research Rework
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityBoards
@@ -503,6 +505,7 @@
     dynamicPacks:
     - Chemistry
     - MoffstationOffbrandSurgery # Moffstation + Offbrand <3
+    - MoffstationMedicalBoards
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget

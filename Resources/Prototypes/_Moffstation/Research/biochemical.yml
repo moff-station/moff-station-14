@@ -34,6 +34,24 @@
   - BoneGel
   - BoneSetter
   - VascularRecoupler
+  - OperatingTableCircuitboard
+
+- type: technology
+  id: PharmaceuticalManufacturing
+  name: research-technology-pharmaceutical-manufacturing
+  icon:
+    sprite: Structures/Machines/mixer.rsi
+    state: mixer_empty
+  discipline: Biochemical
+  tier: 1
+  cost: 7500
+  recipeUnlocks:
+  - ElectrolysisUnitMachineCircuitboard
+  - CentrifugeMachineCircuitboard
+  - ChemDispenserMachineCircuitboard
+  - ChemMasterMachineCircuitboard
+  - CondenserMachineCircuitBoard
+  - HotplateMachineCircuitboard
 
 # Tier 2
 
@@ -69,11 +87,25 @@
   icon:
     sprite: Objects/Weapons/Guns/Cannons/syringe_gun.rsi
     state: syringe_gun
-  discipline: CivilianServices
-  tier: 3
+  discipline: Biochemical
+  tier: 2
   cost: 15000
   recipeUnlocks:
   - LauncherSyringe
   - MiniSyringe
 
 # Tier 3
+
+- type: technology
+  id: PhysilogicalReplication
+  name: research-technology-physilogical-replication
+  icon:
+    sprite: Structures/Machines/cloning.rsi
+    state: pod_0
+  discipline: Biochemical
+  tier: 3
+  cost: 50000
+  recipeUnlocks:
+  - CloningConsoleComputerCircuitboard
+  - CloningPodMachineCircuitboard
+  - MedicalScannerMachineCircuitboard

@@ -1,6 +1,6 @@
 - type: entity
-  parent: BaseMachineCircuitboard
   id: OperatingTableCircuitboard
+  parent: BaseMachineCircuitboard
   name: operating table machine board
   description: A machine printed circuit board for an operating table.
   components:
@@ -8,3 +8,9 @@
     state: medical
   - type: MachineBoard
     prototype: OperatingTable
+    # Moffstation - Start - Research Rework
+    stackRequirements:
+      Manipulator: 2
+      Cloth: 3
+      Steel: 2
+    # Moffstation - End

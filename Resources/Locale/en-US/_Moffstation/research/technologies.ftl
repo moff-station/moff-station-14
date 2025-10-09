@@ -5,6 +5,8 @@ research-discipline-biochemical = Biochemical
 
 # Biochemical researches
 research-technology-surgical-tools = Surgical Tools
+research-technology-physilogical-replication = Physilogical Replication
+research-technology-pharmaceutical-manufacturing = Pharmaceutical Manufacturing
 
 # Civilian services researches
 
