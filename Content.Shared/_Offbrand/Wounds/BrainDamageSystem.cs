@@ -20,6 +20,7 @@ public sealed partial class BrainDamageSystem : EntitySystem
         SubscribeLocalEvent<BrainDamageComponent, SuicideEvent>(OnSuicide);
         SubscribeLocalEvent<BrainDamageComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<BrainDamageComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<BrainDamageComponent, BaseVascularToneEvent>(OnBaseVascularTone);
         SubscribeLocalEvent<BrainDamageOxygenationComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BrainDamageOxygenationComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
     }
@@ -42,7 +43,7 @@ public sealed partial class BrainDamageSystem : EntitySystem
         var notifDamage = new AfterBrainDamageChanged();
         RaiseLocalEvent(ent, ref notifDamage);
 
-        var overlays = new bPotentiallyUpdateDamageOverlayEventb(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 
@@ -58,6 +59,11 @@ public sealed partial class BrainDamageSystem : EntitySystem
 
         var notifDamage = new AfterBrainDamageChanged();
         RaiseLocalEvent(ent, ref notifDamage);
+    }
+
+    private void OnBaseVascularTone(Entity<BrainDamageComponent> ent, ref BaseVascularToneEvent args)
+    {
+        args.Tone *= 1f - ent.Comp.Damage.Float() / ent.Comp.MaxDamage.Float();
     }
 
     private void OnApplyMetabolicMultiplier(Entity<BrainDamageOxygenationComponent> ent, ref ApplyMetabolicMultiplierEvent args)
@@ -97,7 +103,7 @@ public sealed partial class BrainDamageSystem : EntitySystem
         var notifDamage = new AfterBrainDamageChanged();
         RaiseLocalEvent(ent, ref notifDamage);
 
-        var overlays = new bPotentiallyUpdateDamageOverlayEventb(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 
@@ -106,13 +112,20 @@ public sealed partial class BrainDamageSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp, false))
             return;
 
+        // Moffstation - Brain Activity adjustments
+        if (ent.Comp.DamageModifierThresholds.HighestMatch(ent.Comp.Damage) is { } modifier && amount > 0)
+        {
+            amount *= modifier;
+        }
+        // Brain activity adjustments
+
         ent.Comp.Damage = FixedPoint2.Clamp(ent.Comp.Damage + amount, FixedPoint2.Zero, ent.Comp.MaxDamage);
         Dirty(ent);
 
         var notif = new AfterBrainDamageChanged();
         RaiseLocalEvent(ent, ref notif);
 
-        var overlays = new bPotentiallyUpdateDamageOverlayEventb(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
     public void TryChangeBrainOxygenation(Entity<BrainDamageComponent?> ent, FixedPoint2 amount)
@@ -126,7 +139,7 @@ public sealed partial class BrainDamageSystem : EntitySystem
         var notif = new AfterBrainOxygenChanged();
         RaiseLocalEvent(ent, ref notif);
 
-        var overlays = new bPotentiallyUpdateDamageOverlayEventb(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 
@@ -185,7 +198,7 @@ public sealed partial class BrainDamageSystem : EntitySystem
         var notif = new AfterBrainDamageChanged();
         RaiseLocalEvent(ent, ref notif);
 
-        var overlays = new bPotentiallyUpdateDamageOverlayEventb(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 
@@ -205,6 +218,13 @@ public sealed partial class BrainDamageSystem : EntitySystem
         if (!rand.Prob(evt.Chance))
             return;
 
+        // Moffstation - Brain Activity adjustments
+        if (ent.Comp1.DamageModifierThresholds.HighestMatch(ent.Comp1.Damage) is { } modifier)
+        {
+            amount *= modifier;
+        }
+        // Brain activity adjustments
+
         var newValue = FixedPoint2.Min(ent.Comp1.Damage + amount, ent.Comp1.MaxDamage);
         if (ent.Comp1.Damage == newValue)
             return;
@@ -215,13 +235,13 @@ public sealed partial class BrainDamageSystem : EntitySystem
         var notif = new AfterBrainDamageChanged();
         RaiseLocalEvent(ent, ref notif);
 
-        var overlays = new bPotentiallyUpdateDamageOverlayEventb(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 
     private void DoUpdate(Entity<BrainDamageComponent, BrainDamageOxygenationComponent, HeartrateComponent> ent)
     {
-        var oxygenation = _heart.BloodOxygenation((ent.Owner, ent.Comp3));
+        var oxygenation = _heart.Spo2((ent.Owner, ent.Comp3));
 
         var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(ent).Id });
         var rand = new System.Random(seed);
