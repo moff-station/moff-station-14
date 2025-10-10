@@ -170,3 +170,15 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmvista.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmvista.rsi
+
+# Scientist
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitMachinist
+  name: machinist jumpsuit
+  description: It's a slimming black with reinforced seams; great for mechanical work.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/machinist.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/machinist.rsi

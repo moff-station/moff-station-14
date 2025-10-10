@@ -88,7 +88,20 @@ namespace Content.IntegrationTests.Tests
         {
             "/Maps/centcomm.yml",
             "/Maps/_Harmony/centcomm.yml", // Harmony Centcomm
-            "/Maps/Shuttles/AdminSpawn/**" // admin gaming
+            "/Maps/_Umbra/Misc/terminal.yml",  // Umbra Arrivals
+            "/Maps/Shuttles/AdminSpawn/**", // admin gaming
+            "/Maps/bagel.yml", // Contains mime's rubber stamp --> Either fix this, remove the category, or remove this comment if intentional.
+            "/Maps/reach.yml", // Contains handheld crew monitor
+            "/Maps/Shuttles/ShuttleEvent/cruiser.yml", // Contains LSE-1200c "Perforator"
+            "/Maps/Shuttles/ShuttleEvent/honki.yml", // Contains golden honker, clown's rubber stamp
+            "/Maps/Shuttles/ShuttleEvent/instigator.yml", // Contains EXP-320g "Friendship"
+            "/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", // Contains syndicate rubber stamp
+            "/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", // Contains EXP-320g "Friendship"
+            "/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", // Variant of grimebreaker
+            "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
+            "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
+            "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
+            "/Maps/_Moffstation/dugstation.yml" // Contains cat ears and knockback stick
         };
 
         /// <summary>
