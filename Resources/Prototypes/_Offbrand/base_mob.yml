@@ -127,8 +127,7 @@
       30: StatusEffectModeratePain
       60: StatusEffectSeverePain
       120: StatusEffectBlackoutPain
-    mobThresholds:
-      200: Critical
+    mobThresholds: {}
   - type: ShockAlerts
     alertCategory: Pain
     suppressedAlert: SuppressedPain
@@ -138,11 +137,9 @@
       30: ModeratePain
       60: SeverePain
       120: BlackoutPain
-      200: UnconsciousPain
   - type: ShockGaspThresholds
     messageThresholds:
       120: DefaultPainslump
-      200: DefaultPaingasp
 
 - type: entity
   abstract: true
@@ -245,7 +242,8 @@
     damageStateThresholds:
       70: Critical
       100: Dead
-    oxygenStateThresholds: {}
+    oxygenStateThresholds:
+      0: Critical
     damageEffectThresholds:
       30: StatusEffectSevereBrainDamage
       70: StatusEffectCriticalBrainDamage
@@ -256,6 +254,8 @@
     damageAlertCategory: BrainDamage
     oxygenEffectThresholds:
       0: StatusEffectBrainNoOxygen
+    oxygenAlert: BrainOxygen
+    oxygenAlertCategory: BrainOxygen
     aliveDamageIcons:
     - HealthIconNormal7
     - HealthIconNormal6
@@ -284,6 +284,8 @@
   - type: BrainGaspThresholds
     messageThresholds:
       70: DefaultBraingasp
+    oxygenThresholds:
+      0: DefaultBrainslump
 
 - type: entity
   abstract: true

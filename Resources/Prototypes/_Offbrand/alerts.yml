@@ -26,11 +26,45 @@
   minSeverity: 0
   maxSeverity: 4
 
+- type: alert
+  id: BrainOxygen
+  category: BrainOxygen
+  icons:
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen0
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen1
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen2
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen3
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen4
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen5
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen6
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen7
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen8
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen9
+  - sprite: /Textures/_Offbrand/Alerts/brain_oxygen.rsi
+    state: oxygen10
+  name: alerts-heart-brain-oxygen
+  description: alerts-brain-oxygen-desc
+  minSeverity: 0
+  maxSeverity: 10
+
 - type: alertCategory
   id: Pain
 
 - type: alertCategory
   id: BrainDamage
+
+- type: alertCategory
+  id: BrainOxygen
 
 - type: alertCategory
   id: LungDamage
