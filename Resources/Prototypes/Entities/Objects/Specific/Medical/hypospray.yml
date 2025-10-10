@@ -22,6 +22,7 @@
     solution: hypospray
   - type: ExaminableSolution
     solution: hypospray
+    exactVolume: true
   - type: Hypospray
     onlyAffectsMobs: false
   - type: UseDelay
@@ -63,6 +64,7 @@
     solution: hypospray
   - type: ExaminableSolution
     solution: hypospray
+    exactVolume: true
   - type: Hypospray
     onlyAffectsMobs: false
   - type: UseDelay
@@ -142,6 +144,7 @@
         maxVol: 15
   - type: ExaminableSolution
     solution: pen
+    exactVolume: true
   - type: Hypospray
     solutionName: pen
     transferAmount: 15
@@ -176,15 +179,23 @@
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: medipen_empty
+  - type: Hypospray # Offbrand
+    transferAmount: 35
   - type: SolutionContainerManager
     solutions:
       pen:
-        maxVol: 15
+        maxVol: 35 # Offbrand
         reagents:
         - ReagentId: Epinephrine
           Quantity: 12
         - ReagentId: TranexamicAcid
           Quantity: 3
+        # Begin Offbrand
+        - ReagentId: Paracetamol
+          Quantity: 10
+        - ReagentId: Inaprovaline
+          Quantity: 10
+        # End Offbrand
   - type: Tag
     # Moffstation - Begin(Survival Box Improvements)
     tags:
@@ -640,7 +651,7 @@
         reagents:
         - ReagentId: Omnizine
           Quantity: 25
-        - ReagentId: TranexamicAcid
+        - ReagentId: Coagulant # Offbrand
           Quantity: 5
   - type: Hypospray
     solutionName: pen
@@ -666,6 +677,7 @@
   - type: ExaminableSolution
     solution: hypospray
     heldOnly: true # Allow examination only when held in hand.
+    exactVolume: true
   - type: Hypospray
     onlyAffectsMobs: false
   - type: UseDelay

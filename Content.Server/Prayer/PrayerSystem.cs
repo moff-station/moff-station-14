@@ -1,5 +1,6 @@
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;   // Moffstation
 using Content.Server.Bible.Components;
 using Content.Server.Chat.Managers;
 using Content.Server.Popups;
@@ -9,6 +10,8 @@ using Content.Shared.Chat;
 using Content.Shared.Prayer;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;  // Moffstation
+using Robust.Shared.Audio.Systems;  // Moffstation
 using Robust.Shared.Player;
 
 namespace Content.Server.Prayer;
@@ -24,6 +27,8 @@ public sealed class PrayerSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
+    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;    // Moffstation - prayers have audio notification
+    [Dependency] private readonly IAdminManager _adminManager = default!;   // Moffstation - prayers have audio notification
 
     public override void Initialize()
     {
@@ -105,6 +110,8 @@ public sealed class PrayerSystem : EntitySystem
         _popupSystem.PopupEntity(Loc.GetString(comp.SentMessage), sender.AttachedEntity.Value, sender, PopupType.Medium);
 
         _chatManager.SendAdminAnnouncement($"{Loc.GetString(comp.NotificationPrefix)} <{sender.Name}>: {message}");
+        // Moffstation - Prayers have audio notification
+        _audioSystem.PlayGlobal("/Audio/Machines/high_tech_confirm.ogg", Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false, AudioParams.Default.WithVolume(-8f));
         _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(sender.AttachedEntity.Value):player} sent prayer ({Loc.GetString(comp.NotificationPrefix)}): {message}");
     }
 }

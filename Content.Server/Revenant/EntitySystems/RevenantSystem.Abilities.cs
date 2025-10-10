@@ -3,7 +3,7 @@ using Content.Shared.Damage;
 using Content.Shared.Revenant;
 using Robust.Shared.Random;
 using Content.Shared.Tag;
-using Content.Server.Storage.Components;
+using Content.Shared.Storage.Components;
 using Content.Server.Light.Components;
 using Content.Server.Ghost;
 using Robust.Shared.Physics;
@@ -20,6 +20,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Emag.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.Light.Components;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -30,11 +31,13 @@ using Robust.Shared.Utility;
 using Robust.Shared.Map.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
+using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Revenant.EntitySystems;
 
 public sealed partial class RevenantSystem
 {
+    [Dependency] private readonly EmagSystem _emagSystem = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -44,6 +47,7 @@ public sealed partial class RevenantSystem
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly HealthRankingSystem _healthRanking = default!; // Offbrand
 
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
@@ -141,7 +145,7 @@ public sealed partial class RevenantSystem
             return;
         }
 
-        if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive && !HasComp<SleepingComponent>(target))
+        if (!_healthRanking.IsCritical(target) && !HasComp<SleepingComponent>(target)) // Offbrand
         {
             _popup.PopupEntity(Loc.GetString("revenant-soul-too-powerful"), target, uid);
             return;
@@ -199,7 +203,7 @@ public sealed partial class RevenantSystem
         if (!HasComp<MobStateComponent>(args.Args.Target))
             return;
 
-        if (_mobState.IsAlive(args.Args.Target.Value) || _mobState.IsCritical(args.Args.Target.Value))
+        if (_mobState.IsAlive(args.Args.Target.Value) || _healthRanking.IsCritical(args.Args.Target.Value)) // Offbrand
         {
             _popup.PopupEntity(Loc.GetString("revenant-max-essence-increased"), uid, uid);
             component.EssenceRegenCap += component.MaxEssenceUpgradeAmount;
@@ -207,11 +211,7 @@ public sealed partial class RevenantSystem
 
         //KILL THEMMMM
 
-        if (!_mobThresholdSystem.TryGetThresholdForState(args.Args.Target.Value, MobState.Dead, out var damage))
-            return;
-        DamageSpecifier dspec = new();
-        dspec.DamageDict.Add("Cold", damage.Value);
-        _damage.TryChangeDamage(args.Args.Target, dspec, true, origin: uid);
+        _damage.TryChangeDamage(args.Args.Target, component.HarvestDamage, true, origin: uid); // Offbrand - use a fixed amount
 
         args.Handled = true;
     }
@@ -345,8 +345,7 @@ public sealed partial class RevenantSystem
                 _whitelistSystem.IsBlacklistPass(component.MalfunctionBlacklist, ent))
                 continue;
 
-            var ev = new GotEmaggedEvent(uid, EmagType.Interaction | EmagType.Access);
-            RaiseLocalEvent(ent, ref ev);
+            _emagSystem.TryEmagEffect(uid, uid, ent);
         }
     }
 }

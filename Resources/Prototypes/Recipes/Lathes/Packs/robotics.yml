@@ -14,6 +14,8 @@
   - BorgModuleTool
   - BorgModuleCable
   - BorgModuleFireExtinguisher
+  - BorgModuleInflatable
+  - BorgModuleBureaucracy # Moffstation - Give service borgs some love
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -37,8 +39,11 @@
   recipes:
   - BorgModuleAdvancedCleaning
   - BorgModuleAdvancedTool
+  - BorgModuleAdvancedClowning
   - BorgModuleAdvancedChemical
   - BorgModuleAdvancedMining
+  - BorgModuleFoamForceGallant # Moffstation
+  - BorgModuleAdvancedAnomaly # Moffstation - Scienceborg
 
 - type: latheRecipePack
   id: MechParts

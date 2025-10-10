@@ -1,0 +1,88 @@
+﻿# TODO: If this gets upstreamed, re-parent the regular lights to these
+- type: entity
+  id: AlwaysPoweredIndestructibleWallLight
+  name: light
+  description: "An always powered light."
+  suffix: AP, Indestructible
+  components:
+  - type: AmbientSound
+    volume: -15
+    range: 2
+    sound:
+      path: /Audio/Ambience/Objects/light_hum.ogg
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: Structures/Wallmounts/Lighting/light_tube.rsi
+    drawdepth: WallMountedItems
+    layers:
+    - map: ["enum.PoweredLightLayers.Base"]
+      state: base
+    - map: ["enum.PoweredLightLayers.Glow"]
+      state: glow
+      shader: unshaded
+    state: base
+  - type: PointLight
+    color: "#FFE4CE" # 5000K color temp
+    energy: 0.8
+    radius: 10
+    softness: 1
+    offset: "0, -0.5"
+  - type: PlacementReplacement
+    key: lights
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+
+- type: entity
+  parent: AlwaysPoweredIndestructibleWallLight
+  id: AlwaysPoweredIndestructibleWallLightLED
+  suffix: AP, Indestructible, LED
+  components:
+  - type: PointLight
+    radius: 10
+    energy: 2.5
+    softness: 0.9
+    color: "#EEEEFF"
+
+- type: entity
+  parent: AlwaysPoweredIndestructibleWallLight
+  id: AlwaysPoweredIndestructibleWallLightSodium
+  suffix: AP, Indestructible, Sodium
+  components:
+  - type: PointLight
+    radius: 10
+    energy: 3 # Make these a little weaker than the other sodium lights so they don't destroy your eyes
+    softness: 0.5
+    color: "#FFAF38"
+
+- type: entity
+  parent: AlwaysPoweredIndestructibleWallLight
+  id: AlwaysPoweredIndestructibleSmallLight
+  name: small light
+  suffix: AP, Indestructible
+  components:
+  - type: Sprite
+    sprite: Structures/Wallmounts/Lighting/light_small.rsi
+    state: base
+  - type: PointLight
+    radius: 6
+    energy: 1.0
+    softness: 1.1
+
+- type: entity
+  parent: AlwaysPoweredIndestructibleSmallLight
+  id: AlwaysPoweredIndestructibleSmallLightWarm
+  suffix: AP, Indestructible, Warm
+  components:
+  - type: Sprite
+    state: base
+  - type: PointLight
+    enabled: true
+    radius: 6
+    energy: 1
+    softness: 3
+    color: "#FF8A0C"

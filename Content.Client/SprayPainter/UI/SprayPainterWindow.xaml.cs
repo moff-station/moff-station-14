@@ -25,14 +25,14 @@ public sealed partial class SprayPainterWindow : DefaultWindow
     private readonly SpriteSystem _spriteSystem;
 
     // Events
-    public Action<string, string>? OnSpritePicked;
-    public Action<int, bool>? OnTabChanged;
-    public Action<ProtoId<DecalPrototype>>? OnDecalChanged;
-    public Action<ItemList.ItemListSelectedEventArgs>? OnSetPipeColor;
+    public event Action<string, string>? OnSpritePicked;
+    public event Action<int, bool>? OnTabChanged;
+    public event Action<ProtoId<DecalPrototype>>? OnDecalChanged;
+    public event Action<ItemList.ItemListSelectedEventArgs>? OnSetPipeColor;
     public event Action<GasTankVisuals>? OnSetGasTankVisuals; // Moffstation
-    public Action<Color?>? OnDecalColorChanged;
-    public Action<int>? OnDecalAngleChanged;
-    public Action<bool>? OnDecalSnapChanged;
+    public event Action<Color?>? OnDecalColorChanged;
+    public event Action<int>? OnDecalAngleChanged;
+    public event Action<bool>? OnDecalSnapChanged;
 
     // Pipe color data
     private ItemList _colorList = default!;
@@ -179,6 +179,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
 
                     var dataList = styles
                         .Select(e => new SpriteListData(group, e.Key, e.Value, 0))
+                        .OrderBy(d => Loc.GetString($"spray-painter-style-{group.ToLower()}-{d.Style.ToLower()}"))
                         .ToList();
                     control.PopulateList(dataList);
                 }
@@ -186,7 +187,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         }
 
         PopulateColors(_currentPalette);
-        PopulateGasTankStyles(); // Moffstation
+        PopulateGasTankStyles();
 
         if (!_currentDecals.Equals(decals))
         {

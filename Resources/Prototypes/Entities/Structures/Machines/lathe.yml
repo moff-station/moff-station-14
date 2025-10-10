@@ -49,6 +49,11 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  # Moffstation - Start
+  - type: DeviceLinkSink
+    ports:
+    - LatheEnqueueAgain
+  # Moffstation - End
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -123,6 +128,8 @@
     - PartsStatic
     - AtmosStatic
     - CablesStatic
+    - PaperworkStatic
+    - TowelsStatic
     - CargoStatic
     - MaterialsStatic
     - BasicChemistryStatic
@@ -194,6 +201,7 @@
     staticPacks:
     - ChemistryStatic
     - SurgeryStatic
+    - OffbrandSurgeryStatic # Offbrand
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -208,7 +216,6 @@
     - Janitor
     - Instruments
     - Equipment
-    - FauxTiles
     - WirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
   - type: EmagLatheRecipes
     emagDynamicPacks:
@@ -257,7 +264,7 @@
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
-    - CircuitFloorsStatic
+    - OffbrandCircuitboardsStatic # Offbrand
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
@@ -481,6 +488,8 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
+    - OffbrandSurgeryStatic # Offbrand
+    - OffbrandMedicalStatic # Offbrand
     dynamicPacks:
     - Chemistry
   - type: Machine
@@ -512,6 +521,7 @@
     idleState: icon
     runningState: building
     staticPacks:
+    - TowelsStatic
     - ClothingCivilian
     - ClothingCargo
     - ClothingCommand
@@ -688,7 +698,16 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - FloorTilesStatic
+    - FloorDarkTilesStatic
+    - FloorSteelTilesStatic
+    - FloorWhiteTilesStatic
+    - FloorMaintsTilesStatic
+    - FloorWoodTilesStatic
+    - FloorConcreteTilesStatic
+    - CircuitFloorsStatic
+    - FloorMarbleTilesStatic
+    dynamicPacks:
+    - FauxTiles
   - type: MaterialStorage
     whitelist:
       tags:

@@ -2,10 +2,13 @@
   save: false
   parent:
   - BaseMob
-  - MobDamageable
+  # - MobDamageable # Offbrand - we don't want thresholds
   - MobPolymorphable
   - MobCombat
   - StripableInventoryBase
+  - BaseMobWoundable # Offbrand
+  - BaseMobPain # Offbrand
+  - BaseMobSurgery # Offbrand
   id: BaseMobSpecies
   abstract: true
   components:
@@ -36,6 +39,7 @@
     - map: [ "belt" ] # Moffstation (Belts Over Outerwear)
     - map: [ "back" ]
     - map: [ "neck" ]
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
@@ -82,6 +86,7 @@
     horizontalRotation: 90
   - type: HumanoidAppearance
     species: Human
+  - type: TypingIndicator
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7
@@ -120,13 +125,7 @@
       - !type:WashCreamPieReaction
   - type: StatusEffects
     allowed:
-    - Stun
-    - KnockedDown
-    - SlowedDown
-    - Stutter
     - Electrocution
-    - Drunk
-    - SlurredSpeech
     - RatvarianLanguage
     - PressureImmunity
     - Muted
@@ -166,6 +165,7 @@
   - type: SleepEmitSound
   - type: SSDIndicator
   - type: StandingState
+  - type: Crawler
   - type: Dna
   - type: MindContainer
     showExamineInfo: true
@@ -187,6 +187,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.SurgeryGuideUiKey.Key: # Offbrand
+        type: SurgeryGuideBoundUserInterface
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -215,11 +217,15 @@
 - type: entity
   save: false
   parent:
-  - MobBloodstream
+  # - MobBloodstream - Offbrand - we're doing our own thign with this
   - MobRespirator
   - MobAtmosStandard
   - MobFlammable
   - BaseMobSpecies
+  - BaseMobHeartrate # Offbrand
+  - BaseMobBrain # Offbrand
+  - BaseMobCryostasis # Offbrand
+  - BaseMobLungDamage # Offbrand
   id: BaseMobSpeciesOrganic
   abstract: true
   components:
@@ -253,9 +259,9 @@
         Heat: 1.5 #per second, scales with temperature & other constants
   - type: TemperatureSpeed
     thresholds:
-      293: 0.8
-      280: 0.6
-      260: 0.4
+      293: 0.9
+      280: 0.8
+      260: 0.7
   - type: ThermalRegulator
     metabolismHeat: 800
     radiatedHeat: 100
@@ -279,6 +285,7 @@
         Asphyxiation: -1.0
   - type: FireVisuals
     alternateState: Standing
+  - type: StunVisuals
 
 - type: entity
   save: false
@@ -326,6 +333,7 @@
     - map: [ "outerClothing" ]
     - map: [ "back" ]
     - map: [ "neck" ]
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]

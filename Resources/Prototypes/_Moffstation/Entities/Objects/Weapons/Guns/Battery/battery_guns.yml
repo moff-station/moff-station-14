@@ -85,3 +85,13 @@
       fireCost: 50
     - proto: BulletBigIronLethal
       fireCost: 100
+
+- type: entity
+  parent: WeaponPistolCHIMP
+  id: WeaponPistolCHIMPBorg
+  name: integrated C.H.I.M.P.
+  description: An even smaller particle handcannon, designed for cyborg use.
+  components:
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 10

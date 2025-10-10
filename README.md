@@ -27,7 +27,7 @@ We are happy to accept contributions from anybody. Note that because Moffstation
 
 ## License
 
-All code for the content repository is licensed under [MIT](https://github.com/moff-station/moff-station-14/blob/master/LICENSE.TXT).
+All code for the content repository is licensed under [MIT](https://github.com/moff-station/moff-station-14/blob/master/LICENSE.TXT) unless stated otherwise, following the conditions within [LICENSE.TXT](https://raw.githubusercontent.com/moff-station/moff-station-14/refs/heads/master/LICENSE.TXT).
 
 Most assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and the copyright in the metadata file. [Example](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 

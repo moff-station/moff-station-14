@@ -1,0 +1,26 @@
+﻿# Player: BulletKin - Character: Carolyn Flett
+
+- type: entity
+  name: sealed Yamada Golds pack
+  parent: BaseItem
+  id: PersonalItemCarolynFlettCigsPack
+  description: A pack of premium cigarettes. It appears to have been sealed shut by a few dots of space glue.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    state: icon
+    sprite: _Moffstation/PersonalItems/Items/BulletKin/Carolyn_Flett/carolynflettcigspack.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/BulletKin/Carolyn_Flett/carolynflettcigspack.rsi
+  - type: DetailExaminable
+    content: Not quite on the level of a pack of executive selects, but still a pretty nice find - especially this far from its manufacturer.
+
+- type: loadout
+  id: PersonalItemCarolynFlettCigsPack
+  storage:
+    back:
+    - PersonalItemCarolynFlettCigsPack
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Carolyn Flett

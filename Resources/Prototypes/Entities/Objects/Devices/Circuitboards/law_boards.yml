@@ -5,8 +5,8 @@
   description: An electronics board containing the NT Default lawset.
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: std_mod
+    sprite: _Moffstation/Objects/Misc/module.rsi #Moffstation - law board recolors
+    state: std_mod_blue #Moffstation - law board recolors
   - type: SiliconLawProvider
     laws: NTDefault
 
@@ -17,8 +17,8 @@
   description: An electronics board containing the Crewsimov lawset.
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: std_mod
+    sprite: _Moffstation/Objects/Misc/module.rsi #Moffstation - law board recolors
+    state: std_mod_blue #Moffstation - law board recolors
   - type: SiliconLawProvider
     laws: Crewsimov
 
@@ -29,8 +29,8 @@
   description: An electronics board containing the Corporate lawset.
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: std_mod
+    sprite: _Moffstation/Objects/Misc/module.rsi #Moffstation - law board recolors
+    state: std_mod_blue #Moffstation - law board recolors
   - type: SiliconLawProvider
     laws: Corporate
 
@@ -101,8 +101,8 @@
   description: An electronics board containing the Overlord lawset.
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: std_mod
+    sprite: _Moffstation/Objects/Misc/module.rsi #Moffstation - law board recolors
+    state: std_mod_red #Moffstation - law board recolors
   - type: SiliconLawProvider
     laws: OverlordLawset
 
@@ -137,8 +137,8 @@
   description: An electronics board containing the Antimov lawset.
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: std_mod
+    sprite: _Moffstation/Objects/Misc/module.rsi #Moffstation - law board recolors
+    state: std_mod_red #Moffstation - law board recolors
   - type: SiliconLawProvider
     laws: AntimovLawset
     lawUploadSound: /Audio/Ambience/Antag/silicon_lawboard_antimov.ogg
@@ -165,8 +165,8 @@
   description: An electronics board containing the Xenoborg lawset.
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: std_mod
+    sprite: _Moffstation/Objects/Misc/module.rsi #Moffstation - law board recolors
+    state: std_mod_red #Moffstation - law board recolors
   - type: SiliconLawProvider
     laws: XenoborgLawset
 
@@ -178,7 +178,7 @@
   description: An electronics board containing the Mothership Core lawset.
   components:
   - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: std_mod
+    sprite: _Moffstation/Objects/Misc/module.rsi #Moffstation - law board recolors
+    state: std_mod_red #Moffstation - law board recolors
   - type: SiliconLawProvider
     laws: MothershipCoreLawset

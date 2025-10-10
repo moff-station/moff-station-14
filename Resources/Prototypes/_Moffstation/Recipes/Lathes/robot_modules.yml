@@ -1,0 +1,21 @@
+# Generic
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleBureaucracy
+  result: BorgModuleBureaucracy
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleFoamForceGallant
+  result: BorgModuleFoamForceGallant
+  materials:
+    Steel: 250
+    Glass: 150
+    Plastic: 350
+
+# Science Modules
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleAdvancedAnomaly
+  result: BorgModuleAdvancedAnomaly

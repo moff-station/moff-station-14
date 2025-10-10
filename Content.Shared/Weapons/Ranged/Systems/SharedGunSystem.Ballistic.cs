@@ -1,5 +1,6 @@
 using Content.Shared._Moffstation.Storage; // Moffstation
 using Content.Shared._Moffstation.Storage.EntitySystems; // Moffstation
+using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -23,7 +24,6 @@ public abstract partial class SharedGunSystem
     [Dependency] private readonly QuickPickupSystem _quickPickup = default!;
     // Moffstation - End
 
-
     protected virtual void InitializeBallistic()
     {
         SubscribeLocalEvent<BallisticAmmoProviderComponent, ComponentInit>(OnBallisticInit);
@@ -32,7 +32,10 @@ public abstract partial class SharedGunSystem
         SubscribeLocalEvent<BallisticAmmoProviderComponent, GetAmmoCountEvent>(OnBallisticAmmoCount);
 
         SubscribeLocalEvent<BallisticAmmoProviderComponent, ExaminedEvent>(OnBallisticExamine);
-        SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<Verb>>(OnBallisticVerb);
+        // Moffstation - Start - allow ammo providers to be cyclable on the ground with altclick
+        //SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<Verb>>(OnBallisticVerb); - Moffstation
+        SubscribeLocalEvent<BallisticAmmoProviderComponent, GetVerbsEvent<AlternativeVerb>>(OnBallisticVerb);
+        // Moffstation - End
         SubscribeLocalEvent<BallisticAmmoProviderComponent, InteractUsingEvent>(OnBallisticInteractUsing);
         SubscribeLocalEvent<BallisticAmmoProviderComponent, AfterInteractEvent>(OnBallisticAfterInteract);
         SubscribeLocalEvent<BallisticAmmoProviderComponent, AmmoFillDoAfterEvent>(OnBallisticAmmoFillDoAfter);
@@ -71,6 +74,7 @@ public abstract partial class SharedGunSystem
         Audio.PlayPredicted(component.SoundInsert, uid, args.User);
         args.Handled = true;
         UpdateBallisticAppearance(uid, component);
+        UpdateAmmoCount(args.Target);
         DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.Entities));
         */
         if (TryBallisticInsert((uid, component), args.Used, args.User))
@@ -97,7 +101,7 @@ public abstract partial class SharedGunSystem
         // Continuous loading
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.FillDelay, new AmmoFillDoAfterEvent(), used: uid, target: args.Target, eventTarget: uid)
         {
-            BreakOnMove = true,
+            BreakOnMove = false, // Moffstation - Reloading shotguns on the move
             BreakOnDamage = false,
             NeedHand = true,
         });
@@ -175,20 +179,25 @@ public abstract partial class SharedGunSystem
                 Del(ent.Value);
         }
 
-        // repeat if there is more space in the target and more ammo to fill it
+        UpdateBallisticAppearance(args.Target.Value, component);
+        UpdateAmmoCount(args.Target.Value);
+        // repeat if there is more space in the target and more ammo to fill
         var moreSpace = target.Entities.Count + target.UnspawnedCount < target.Capacity;
         var moreAmmo = component.Entities.Count + component.UnspawnedCount > 0;
         args.Repeat = moreSpace && moreAmmo;
     }
 
-    private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<Verb> args)
+    // Moffstation - Start - allow ammo providers to be cyclable on the ground with altclick
+    //private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<Verb> args) - Moffstation
+    private void OnBallisticVerb(EntityUid uid, BallisticAmmoProviderComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract || args.Hands == null || !component.Cycleable)
             return;
 
         if (component.Cycleable)
         {
-            args.Verbs.Add(new Verb()
+            //args.Verbs.Add(new Verb() - Moffstation
+            args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString("gun-ballistic-cycle"),
                 Disabled = GetBallisticShots(component) == 0,
@@ -197,6 +206,7 @@ public abstract partial class SharedGunSystem
 
         }
     }
+    // Moffstation - End
 
     private void OnBallisticExamine(EntityUid uid, BallisticAmmoProviderComponent component, ExaminedEvent args)
     {
@@ -273,6 +283,13 @@ public abstract partial class SharedGunSystem
                 component.Entities.RemoveAt(component.Entities.Count - 1);
                 DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.Entities));
                 Containers.Remove(entity, component.Container);
+
+                // Moffstation - Start
+                if (TryComp<BallisticAmmoSelfRefillerComponent>(uid, out var refiller))
+                {
+                    PauseSelfRefill((uid, refiller));
+                }
+                // Moffstation - End
             }
             else if (component.UnspawnedCount > 0)
             {
@@ -339,6 +356,27 @@ public abstract partial class SharedGunSystem
     // Moffstation - End
 
     // Moffstation - Start - New Ballistic API functions
+    /// <summary>
+    /// Causes <paramref name="entity"/> to pause its refilling for either at least <paramref name="overridePauseDuration"/>
+    /// (if not null) or the entity's <see cref="BallisticAmmoSelfRefillerComponent.AutoRefillPauseDuration"/>. If the
+    /// entity's next refill would occur after the pause duration, this function has no effect.
+    /// </summary>
+    public void PauseSelfRefill(
+        Entity<BallisticAmmoSelfRefillerComponent> entity,
+        TimeSpan? overridePauseDuration = null
+    )
+    {
+        if (overridePauseDuration == null && !entity.Comp.FiringPausesAutoRefill)
+            return;
+
+        var nextRefillByPause = Timing.CurTime + (overridePauseDuration ?? entity.Comp.AutoRefillPauseDuration);
+        if (nextRefillByPause > entity.Comp.NextAutoRefill)
+        {
+            entity.Comp.NextAutoRefill = nextRefillByPause;
+            Dirty(entity);
+        }
+    }
+
     /// <summary>
     /// Returns true if the given <paramref name="entity"/>'s ballistic ammunition is full, false otherwise.
     /// </summary>

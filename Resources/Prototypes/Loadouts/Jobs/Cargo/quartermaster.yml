@@ -13,26 +13,31 @@
   id: QuartermasterJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitQM
+  groupBy: "quartermaster jumpsuits" # Moffstation - New Drip
 
 - type: loadout
   id: QuartermasterJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtQM
+  groupBy: "quartermaster jumpskirts" # Moffstation - New Drip
 
 - type: loadout
   id: QuartermasterTurtleneck
   equipment:
     jumpsuit: ClothingUniformJumpsuitQMTurtleneck
+  groupBy: "quartermaster jumpsuits" # Moffstation - New Drip
 
 - type: loadout
   id: QuartermasterTurtleneckSkirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtQMTurtleneck
+  groupBy: "quartermaster jumpskirts" # Moffstation - New Drip
 
 - type: loadout
   id: QuartermasterFormalSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitQMFormal
+  groupBy: "quartermaster jumpsuits" # Moffstation - New Drip
 
 # Head
 - type: loadout
@@ -53,7 +58,7 @@
 
 - type: loadout
   id: QuartermasterMantle
-  equipment: 
+  equipment:
     neck: ClothingNeckMantleQM
   effects:
   - !type:GroupLoadoutEffect

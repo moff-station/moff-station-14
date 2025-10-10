@@ -38,6 +38,18 @@ public sealed partial class BloodstreamComponent : Component
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(3);
 
     /// <summary>
+    /// Multiplier applied to <see cref="UpdateInterval"/> for adjusting based on metabolic rate multiplier.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float UpdateIntervalMultiplier = 1f;
+
+    /// <summary>
+    /// Adjusted update interval based off of the multiplier value.
+    /// </summary>
+    [ViewVariables]
+    public TimeSpan AdjustedUpdateInterval => UpdateInterval * UpdateIntervalMultiplier;
+
+    /// <summary>
     /// How much is this entity currently bleeding?
     /// Higher numbers mean more blood lost every tick.
     ///
@@ -73,14 +85,14 @@ public sealed partial class BloodstreamComponent : Component
     /// The default values are defined per mob/species in YML.
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier BloodlossDamage = new();
+    public DamageSpecifier? BloodlossDamage = new(); // Offbrand: we don't need this
 
     /// <summary>
     /// The base bloodloss damage to be healed if above <see cref="BloodlossThreshold"/>
     /// The default values are defined per mob/species in YML.
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier BloodlossHealDamage = new();
+    public DamageSpecifier? BloodlossHealDamage = new(); // Offbrand: we don't need this
 
     // TODO shouldn't be hardcoded, should just use some organ simulation like bone marrow or smth.
     /// <summary>
@@ -103,7 +115,7 @@ public sealed partial class BloodstreamComponent : Component
     /// For example, piercing damage is increased while poison damage is nullified entirely.
     /// </remarks>
     [DataField, AutoNetworkedField]
-    public ProtoId<DamageModifierSetPrototype> DamageBleedModifiers = "BloodlossHuman";
+    public ProtoId<DamageModifierSetPrototype>? DamageBleedModifiers = "BloodlossHuman"; // Offbrand: we don't want this
 
     /// <summary>
     /// The sound to be played when a weapon instantly deals blood loss damage.
@@ -185,12 +197,6 @@ public sealed partial class BloodstreamComponent : Component
     /// </summary>
     [ViewVariables]
     public Entity<SolutionComponent>? TemporarySolution;
-
-    /// <summary>
-    /// Variable that stores the amount of status time added by having a low blood level.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public TimeSpan StatusTime;
 
     /// <summary>
     /// Alert to show when bleeding.

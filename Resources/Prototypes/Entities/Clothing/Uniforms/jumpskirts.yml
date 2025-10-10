@@ -300,7 +300,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpskirtPrisoner
+  id: ClothingUniformJumpskirtPrisonerUpstream #Moffstation - New prisoner outfits
   name: prisoner jumpskirt
   description: A jumpskirt used for prisoners. It has suit sensors automatically enabled at all times.
   components:
@@ -337,7 +337,7 @@
     - ClothMade
     - Recyclable
     - PrisonUniform
-    - WhitelistChameleon
+#    - WhitelistChameleon #Moffstation - New prisoner outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -423,25 +423,31 @@
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
   id: ClothingUniformJumpskirtWarden
-  name: warden's uniform
+  name: warden's jumpskirt # Moffstation - (New Warden Uniforms)
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - (New Warden Uniforms)
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - (New Warden Uniforms)
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        # Moffstation - Begin (New Warden Uniforms)
+        #color: "#C12D30"
+        #sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+        # Moffstation - End
       - state: overlay-inhand-left
         sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
       right:
       - state: inhand-right
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        # Moffstation - Begin (New Warden Uniforms)
+        #color: "#C12D30"
+        #sprite: Clothing/Uniforms/Jumpskirt/color.rsi
+        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+        # Moffstation - End
       - state: overlay-inhand-right
         sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
 
@@ -629,7 +635,7 @@
       sprite: Clothing/Uniforms/Jumpskirt/lawyergood.rsi
 
 - type: entity
-  parent: [ ClothingUniformSkirtBase, BaseSyndicateContraband ]
+  parent: [ UnsensoredClothingUniformSkirtBase, BaseSyndicateContraband ] # Moffstation - (No Sensors for Enemy Gear)
   id: ClothingUniformJumpskirtSyndieFormalDress
   name: syndicate formal dress
   description: "The syndicate's uniform is made in an elegant style, it's even a pity to do dirty tricks in this."

@@ -83,16 +83,19 @@
   id: StationEngineerBackpack
   equipment:
     back: ClothingBackpackEngineering
+  groupBy: "engineer backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: StationEngineerSatchel
   equipment:
     back: ClothingBackpackSatchelEngineering
+  groupBy: "engineer backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: StationEngineerDuffel
   equipment:
     back: ClothingBackpackDuffelEngineering
+  groupBy: "engineer backpacks" # Moffstation - New Drip
 
 # OuterClothing
 - type: loadout
@@ -121,6 +124,7 @@
   id: StationEngineerPDA
   equipment:
     id: EngineerPDA
+  groupBy: "engineer roles"  # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorEngineerPDA
@@ -129,3 +133,4 @@
     proto: SeniorEngineering
   equipment:
     id: SeniorEngineerPDA
+  groupBy: "engineer roles"  # Moffstation - Additional Roles

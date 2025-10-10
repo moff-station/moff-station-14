@@ -26,11 +26,6 @@
 
 # Back
 - type: loadout
-  id: NukieBackpack
-  equipment:
-    back: ClothingBackpackSyndicateOperative
-
-- type: loadout
   id: NukieSatchel
   equipment:
     back: ClothingBackpackSatchelSyndicateOperative
@@ -39,6 +34,16 @@
   id: NukieDuffel
   equipment:
     back: ClothingBackpackDuffelSyndicateOperative
+
+- type: loadout
+  id: NukieSatchelEmpty
+  equipment:
+    back: ClothingBackpackSatchelSyndicate
+
+- type: loadout
+  id: NukieDuffelEmpty
+  equipment:
+    back: ClothingBackpackDuffelSyndicate
 
 # Gloves
 - type: loadout
@@ -52,11 +57,6 @@
     gloves: ClothingHandsTacticalMaidGloves
 
 # Medical Backpacks
-- type: loadout
-  id: NukieMedicBackpack
-  equipment:
-    back: ClothingBackpackSyndicateOperativeMedic
-
 - type: loadout
   id: NukieMedicSatchel
   equipment:

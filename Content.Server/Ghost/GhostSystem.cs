@@ -6,7 +6,6 @@ using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
-using Content.Server.Warps;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
@@ -30,7 +29,6 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Warps;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
@@ -74,6 +72,7 @@ namespace Content.Server.Ghost
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
+        private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
 
         public override void Initialize()
         {
@@ -184,7 +183,7 @@ namespace Content.Server.Ghost
             if (!_minds.TryGetMind(uid, out var mindId, out var mind) || mind.IsVisitingEntity)
                 return;
 
-            if (component.MustBeDead && (_mobState.IsAlive(uid) || _mobState.IsCritical(uid)))
+            if (component.MustBeDead && _mobState.IsAlive(uid)) // Offbrand - exit on crit
                 return;
 
             OnGhostAttempt(mindId, component.CanReturn, mind: mind);
@@ -205,6 +204,8 @@ namespace Content.Server.Ghost
             _eye.RefreshVisibilityMask(uid);
             var time = _gameTiming.CurTime;
             component.TimeOfDeath = time;
+
+            Dirty(uid, component);  // Moffstation - Respawn button
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)
@@ -585,7 +586,7 @@ namespace Content.Server.Ghost
                         dealtDamage = playerDeadThreshold - damageable.TotalDamage;
                     }
 
-                    DamageSpecifier damage = new(_prototypeManager.Index<DamageTypePrototype>("Asphyxiation"), dealtDamage);
+                    DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);
 
                     _damageable.TryChangeDamage(playerEntity, damage, true);
                 }

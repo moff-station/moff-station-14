@@ -161,6 +161,9 @@
       effects:
       - !type:SatiateThirst
         factor: 2
+      - !type:AdjustReagent
+        reagent: Theobromine
+        amount: 0.05
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
         time: 2
@@ -447,6 +450,17 @@
       effects:
       - !type:SatiateThirst
         factor: 4
+        # Moffstation start - Allow avali to drink ammonia
+        conditions:
+        - !type:OrganType
+          type: Avali
+          shouldHave: false
+      - !type:SatiateThirst
+        factor: 1
+        conditions:
+        - !type:OrganType
+          type: Avali
+        # Moffstation end
     Gas:
       effects:
       - !type:HealthChange

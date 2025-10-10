@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server._Moffstation.Roles;
 using Content.Server.Antag;
@@ -5,9 +6,9 @@ using Content.Server.Cargo.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Roles;
-using Content.Server.Station;
 using Content.Server.Station.Systems;
 using Content.Shared._Moffstation.Pirate.Components;
+using Content.Shared.Cargo.Components;
 using Content.Shared.GameTicking.Components;
 
 namespace Content.Server._Moffstation.GameTicking.Rules;
@@ -22,8 +23,9 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
         base.Initialize();
 
         SubscribeLocalEvent<PiratesRuleComponent, RuleLoadedGridsEvent>(OnRuleLoadedGrids);
-
         SubscribeLocalEvent<PirateRoleComponent, GetBriefingEvent>(OnGetBriefing);
+
+        SubscribeLocalEvent<PirateStationComponent, BankBalanceUpdatedEvent>(OnBalanceUpdated);
     }
     protected override void AppendRoundEndText(EntityUid uid,
         PiratesRuleComponent component,
@@ -31,6 +33,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
         ref RoundEndTextAppendEvent args)
     {
         args.AddLine(Loc.GetString("pirates-existing"));
+        args.AddLine(Loc.GetString("pirates-earned-spesos", ("money", component.TotalMoneyCollected)));
         args.AddLine(Loc.GetString("pirate-list-start"));
 
         var antags =_antag.GetAntagIdentifiers(uid);
@@ -58,7 +61,12 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
                 shuttle.AssociatedRule = ent;
 
                 // Converts the pirate shuttle into a station, giving it a functional cargo system
-                _station.InitializeNewStation(ent.Comp.StationConfig, [uid]);
+                ent.Comp.AssociatedStation = _station.InitializeNewStation(ent.Comp.StationConfig, [uid]);
+
+                // Give the station component a reference to this rule for later reference
+                if (!TryComp<PirateStationComponent>(ent.Comp.AssociatedStation, out var stationComp))
+                    return;
+                stationComp.AssociatedRule = GetNetEntity(ent.Owner);
 
                 //Turns the pirate shuttle into a trade station, so that it's buy/sell pads are functional
                 EnsureComp<TradeStationComponent>(uid);
@@ -67,5 +75,28 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
                 break;
             }
         }
+    }
+
+    private void OnBalanceUpdated(Entity<PirateStationComponent> ent, ref BankBalanceUpdatedEvent args)
+    {
+        // Make sure the station in question is the one associated with this rule
+        if (!TryComp<PiratesRuleComponent>(GetEntity(ent.Comp.AssociatedRule), out var rule) ||
+            rule.AssociatedStation != ent.Owner)
+            return;
+
+        // Compare current balance to the previous balance, if we earned money, add it to the total
+        var moneyEarned = 0;
+        foreach (var (account, balance) in args.Balance)
+        {
+            if (!rule.LastBalance.TryGetValue(account, out var lastBalance))
+                continue;
+
+            var transaction = balance - lastBalance;
+            if (transaction > 0)
+                moneyEarned += transaction;
+        }
+        rule.LastBalance = args.Balance.ToDictionary();
+
+        rule.TotalMoneyCollected += moneyEarned;
     }
 }

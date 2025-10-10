@@ -1,0 +1,82 @@
+- type: entity
+  abstract: true
+  parent: BaseGameRule
+  id: BaseSyndicateListeningOutpost
+  components:
+  - type: ListeningOutpostRule
+  - type: LoadGridRule
+    gridPath: /Maps/_Moffstation/Nonstations/LPO.yml
+    minimumDistance: 1000
+    maximumDistance: 2000
+  - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+
+- type: entity
+  parent: BaseSyndicateListeningOutpost
+  id: SyndicateListeningOutpost
+  components:
+  - type: GameRule
+    minPlayers: 25
+    cancelPresetOnTooFewPlayers: false
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ SyndicateSpy ]
+      min: 2
+      max: 2
+      spawnerPrototype: SpawnerSyndicateSpy
+      startingGear: SyndicateSpyGear
+      roleLoadout:
+      - RoleSurvivalSyndicate
+      - JobSyndicateSpy
+      briefing:
+        text: roles-antag-syndicate-spy-objective
+        color: red
+        sound: "/Audio/Ambience/Antag/traitor_start.ogg"
+      components:
+      - type: RandomMetadata
+        nameSegments:
+        - NamesSyndicateNormal
+        nameFormat: name-format-nukie-agent
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRoleSyndicateSpy
+
+
+- type: entity
+  parent: BaseSyndicateListeningOutpost
+  id: SyndicateListeningOutpostSpawn
+  components:
+  - type: StationEvent
+    weight: 6
+    duration: 0
+    earliestStart: 45
+    minimumPlayers: 25
+    maxOccurrences: 1
+  - type: AntagSelection
+    definitions:
+    - spawnerPrototype: SpawnerSyndicateSpy
+      min: 2
+      max: 2
+      pickPlayer: false
+      startingGear: SyndicateSpyGear
+      roleLoadout:
+      - RoleSurvivalSyndicate
+      - JobSyndicateSpy
+      briefing:
+        text: roles-antag-syndicate-spy-objective
+        color: red
+        sound: "/Audio/Ambience/Antag/traitor_start.ogg"
+      components:
+      - type: RandomMetadata
+        nameSegments:
+        - NamesSyndicateNormal
+        nameFormat: name-format-nukie-agent
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRoleSyndicateSpy

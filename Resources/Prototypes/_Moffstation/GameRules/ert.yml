@@ -1,0 +1,93 @@
+- type: entity
+  parent: BaseGameRule
+  id: ERTGeneral
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/dart.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTSecBrig
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-lockup.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTSec
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-vacator.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTJani
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-jani
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTMed
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-med
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-equilibrium.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTEngi
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-engi
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-tbe-artificer.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTCburn
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-jani
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-tbe-artificer.yml
+  - type: RuleGrids
+
+- type: entity
+  parent: BaseGameRule
+  id: ERTDeathSquad
+  components:
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-vacator-deathsquad.yml
+  - type: RuleGrids
+  - type: AlertLevelInterceptionRule
+    alertLevel: epsilon

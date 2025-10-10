@@ -131,7 +131,7 @@
     modifiers:
       coefficients:
         Slash: 0.95
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
@@ -315,6 +315,8 @@
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/pirate.rsi
+  - type: AddAccentClothing #Moffstation - Adding pirate accent
+    accent: PirateAccent #Moffstation - Adding pirate accent
 
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterStorageBase, BaseSecurityContraband]
@@ -323,9 +325,9 @@
   description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/warden.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/warden.rsi # Moffstation - (New Warden Uniforms)
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/warden.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/warden.rsi # Moffstation - (New Warden Uniforms)
 
 - type: entity
   parent: ClothingOuterStorageBase

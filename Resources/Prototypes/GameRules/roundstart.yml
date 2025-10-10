@@ -16,31 +16,20 @@
 
 - type: entity
   parent: BaseGameRule
-  id: SubGamemodesRule
+  id: SubGamemodesRuleUpstream  # Moffstation - Moved to our namespace
   components:
   - type: SubGamemodes
     rules:
     - id: Thief
-      prob: 0.5
-    # Harmony start
+      prob: 0.3
     - id: BloodBrothers
-      prob: 0.5
-    # Harmony end
+      prob: 0.3
+    - id: SyndicateListeningOutpost
+      prob: 0.20
+    - id: Pirates
+      prob: 0.15
     - id: SubWizard
       prob: 0.05
-
-- type: entity
-  parent: BaseGameRule
-  id: SubGamemodesRuleNoWizard
-  components:
-  - type: SubGamemodes
-    rules:
-    - id: Thief
-      prob: 0.5
-    # Moffstation start
-    - id: BloodBrothers
-      prob: 0.5
-    # Moffstation end
 
 - type: entity
   parent: BaseGameRule
@@ -122,7 +111,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 30 # Moffstation - Bumped up the min players for nukeops.
   - type: LoadMapRule
     mapPath: /Maps/Nonstations/nukieplanet.yml
   - type: AntagSelection
@@ -184,6 +173,8 @@
         - Syndicate
       mindRoles:
       - MindRoleNukeops
+  - type: DynamicRuleCost
+    cost: 200
 
 - type: entity
   abstract: true
@@ -199,6 +190,8 @@
     maxDifficulty: 5
   - type: AntagSelection
     agentName: traitor-round-end-agent-name
+  - type: DynamicRuleCost
+    cost: 100
 
 - type: entity
   parent: BaseTraitorRule
@@ -218,7 +211,7 @@
       blacklist:
         components:
         - AntagImmune
-      lateJoinAdditional: true
+      lateJoinAdditional: false
       mindRoles:
       - MindRoleTraitor
 
@@ -237,11 +230,44 @@
       - MindRoleTraitorReinforcement
 
 - type: entity
+  id: Changeling
+  parent: BaseGameRule
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: AntagSelection
+    agentName: changeling-round-end-agent-name
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ Changeling ]
+      max: 3
+      playerRatio: 15
+      briefing:
+        text: changeling-role-greeting
+        color: Red
+        sound: /Audio/Ambience/Antag/changeling_start.ogg
+      components:
+      - type: ChangelingDevour
+      - type: ChangelingIdentity
+      - type: ChangelingTransform
+      - type: ActionGrant
+        actions:
+        - ActionRetractableItemArmBlade # Temporary addition, will inevitably be a purchasable in the bio-store
+      mindRoles:
+      - MindRoleChangeling
+  - type: AntagObjectives
+    objectives:
+    - ChangelingSurviveObjective
+
+- type: entity
   id: Revolutionary
   parent: BaseGameRule
   components:
   - type: GameRule
     minPlayers: 15
+    delay:
+      min: 300
+      max: 300
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
@@ -259,6 +285,8 @@
       - type: HeadRevolutionary
       mindRoles:
       - MindRoleHeadRevolutionary
+  - type: DynamicRuleCost
+    cost: 200
 
 - type: entity
   id: Sandbox
@@ -282,7 +310,7 @@
     - WizardSurviveObjective
     - WizardDemonstrateObjective
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/wizard.yml
+    mapPath: /Maps/Nonstations/wizardsden.yml
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
@@ -323,13 +351,15 @@
         nameFormat: name-format-wizard
       mindRoles:
       - MindRoleWizard
+  - type: DynamicRuleCost
+    cost: 150
 
 - type: entity
   id: Zombie
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 25 # Moffstation - Bumped up the min players for zombies
     delay:
       min: 600
       max: 900
@@ -355,6 +385,8 @@
       - type: InitialInfected
       mindRoles:
       - MindRoleInitialInfected
+  - type: DynamicRuleCost
+    cost: 200
 
 # This rule makes the chosen players unable to get other antag rules, as a way to prevent metagaming job rolls.
 # Put this before antags assigned to station jobs, but after non-job antags (NukeOps/Wiz).
@@ -383,6 +415,8 @@
       - !type:NestedSelector
         tableId: BasicAntagEventsTable
       - !type:NestedSelector
+        tableId: ModerateAntagEventsTable
+      - !type:NestedSelector
         tableId: CargoGiftsTable
       # Moffstation Start - Cargo Packing Error
       - !type:NestedSelector
@@ -392,6 +426,21 @@
         tableId: CalmPestEventsTable
       - !type:NestedSelector
         tableId: SpicyPestEventsTable
+
+- type: entityTable
+  id: DynamicGameRulesTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+    - !type:NestedSelector
+      tableId: BasicCalmEventsTable
+    - !type:NestedSelector
+      tableId: BasicAntagEventsTable
+    - !type:NestedSelector
+      tableId: CargoGiftsTable
+    - !type:NestedSelector
+      tableId: CalmPestEventsTable
+    - !type:NestedSelector
+      tableId: SpicyPestEventsTable
 
 - type: entityTable
   id: SpaceTrafficControlTable
@@ -411,6 +460,14 @@
   - type: BasicStationEventScheduler
     scheduledGameRules: !type:NestedSelector
       tableId: BasicGameRulesTable
+
+- type: entity
+  id: DynamicStationEventScheduler # this isn't the dynamic mode, but rather the station event scheduler used for dynamic
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: DynamicGameRulesTable
 
 - type: entity
   id: RampingStationEventScheduler
@@ -451,6 +508,7 @@
   components:
   - type: RoundstartStationVariationRule
     rules:
+    - id: SupplyOffbrandItemsVariationPass # Offbrand
     - id: BasicPoweredLightVariationPass
     - id: BasicTrashVariationPass
     - id: SolidWallRustingVariationPass

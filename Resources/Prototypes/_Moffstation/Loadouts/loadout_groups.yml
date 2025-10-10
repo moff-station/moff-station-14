@@ -16,16 +16,19 @@
   - PersonalItemArieApple
   - PersonalItemAuroraPin
   - PersonalItemBoxcarGlasses
+  - PersonalItemCarolynFlettCigsPack
   - PersonalItemCinnabarMask
   - PersonalItemCooksPlushie
   - PersonalItemCoryClipboard
   - PersonalItemDarnellLighter
   - PersonalItemDeliPearl
+  - PersonalItemDelilahBag
   - PersonalItemEclipseSunshadeGun
   - PersonalItemEddieGuitar
   - PersonalItemFredWatch
   - PersonalItemFrostMedicalWebbing
   - PersonalItemGigsShaker
+  - PersonalItemHercynSuit
   - PersonalItemHotSauceFireExtinguisher
   - PersonalItemIrisRing
   - PersonalItemJasmineFlower
@@ -33,10 +36,14 @@
   - PersonalItemKrakatoaCloak
   - PersonalItemKylieUniform
   - PersonalItemLilithGuitar
+  - PersonalItemMarvinHeadphones
   - PersonalItemNyxilathRing
   - PersonalItemPeedeeAvatar
   - PersonalItemPeriwinkleFace
-  - PersonalItemRemiaPhoto
+  - PersonalItemReelsKnife
+  - PersonalItemRemiaPin
+  - PersonalItemRoseHeadphones
+  - PersonalItemRufflerMask
   - PersonalItemRykerPen
   - PersonalItemSammyPlushie
   - PersonalItemSapphireAmpule
@@ -44,6 +51,8 @@
   - PersonalItemScribblesPlushie
   - PersonalItemSeanSheet
   - PersonalItemSeikretPhoto
+  - PersonalItemSiegeHalffloofMask
+  - PersonalItemTalviHoodie
   - PersonalItemToffeeMask
   - PersonalItemSqueaksHampter
   - PersonalItemSharedStationBlueprints
@@ -51,11 +60,222 @@
   - PersonalItemSkiesOfSunshine
   - PersonalItemStrawberryBackTentacles
   - PersonalItemTaniaBackTentacles
+  - PersonalItemVexMask
   - PersonalItemVivonicMantle
   - PersonalItemVortexMask
+  - PersonalItemKaiPlushie
+  - PersonalItemDawnBottle
 
-# Prisoner loadouts
+## Security
+# Warden
+- type: loadoutGroup
+  id: WardenPDA
+  name: loadout-group-warden-id
+  loadouts:
+  - WardenPDA # Keep default PDA on top of the list
+  - CorrectionsOfficerPDA
+  - DetentionOfficerPDA
 
+# Detective
+- type: loadoutGroup
+  id: DetectivePDA
+  name: loadout-group-detective-id
+  loadouts:
+  - DetectivePDA # Keep default PDA on top of the list
+  - InvestigatorPDA
+
+## Cargo
+# Salvage Specialist
+- type: loadoutGroup
+  id: SalvagePDA
+  name: loadout-group-salvage-specialist-id
+  loadouts:
+  - SalvagePDA # Keep default PDA on top of the list
+  - AstrominerPDA
+  - ExcavatorPDA
+  - ProspectorPDA
+  - ScavengerPDA
+
+## Engineering
+# Atmospheric Technician
+- type: loadoutGroup
+  id: AtmosPDA
+  name: loadout-group-atmospheric-technician-id
+  loadouts:
+  - AtmosPDA # Keep default PDA on top of the list
+  - PlasmaTechnicianPDA
+  - SeniorAtmosphericTechnicianPDA
+  - FirefighterPDA
+  - AssistantAtmosphericTechnicianPDA
+
+## Medical
+# Chemist
+- type: loadoutGroup
+  id: ChemistryPDA
+  name: loadout-group-chemist-id
+  loadouts:
+  - ChemistryPDA # Keep default PDA on top of the list
+  - GeneticistPDA
+  - PharmacistPDA
+  - VirologistPDA
+
+# Paramedic
+- type: loadoutGroup
+  id: ParamedicPDA
+  name: loadout-group-paramedic-id
+  loadouts:
+  - ParamedicPDA # Keep default PDA on top of the list
+  - FieldMedicPDA
+  - EmergencyResponseTechnicianPDA
+
+# Psychologist
+- type: loadoutGroup
+  id: PsychologistPDA
+  name: loadout-group-psychologist-id
+  loadouts:
+  - PsychologistPDA # Keep default PDA on top of the list
+  - PsychiatristPDA
+  - TherapistPDA
+  - SocialWorkerPDA
+
+## Service
+# Bartender
+- type: loadoutGroup
+  id: BartenderPDA
+  name: loadout-group-bartender-id
+  loadouts:
+  - BartenderPDA # Keep default PDA on top of the list
+  - BaristaPDA
+  - MixologistPDA
+
+# Botanist
+- type: loadoutGroup
+  id: BotanistPDA
+  name: loadout-group-botanist-id
+  loadouts:
+  - BotanistPDA # Keep default PDA on top of the list
+  - GardenerPDA
+  - HerbalistPDA
+  - HydroponicsTechnicianPDA
+  - RancherPDA
+
+# Chaplain
+- type: loadoutGroup
+  id: ChaplainPDA
+  name: loadout-group-chaplain-id
+  loadouts:
+  - ChaplainPDA # Keep default PDA on top of the list
+  - BishopPDA
+  - ClericPDA
+  - DruidPDA
+  - MissionaryPDA
+  - MorticianPDA
+  - NunPDA
+  - OraclePDA
+  - PriestPDA
+
+# Chef
+- type: loadoutGroup
+  id: ChefPDA
+  name: loadout-group-chef-id
+  loadouts:
+  - ChefPDA # Keep default PDA on top of the list
+  - BakerPDA
+  - ButcherPDA
+  - PizzaioloPDA
+
+# Clown
+- type: loadoutGroup
+  id: ClownPDA
+  name: loadout-group-clown-id
+  loadouts:
+  - ClownPDA # Keep default PDA on top of the list
+  - FoolPDA
+  - JesterPDA
+
+# Janitor
+- type: loadoutGroup
+  id: JanitorPDA
+  name: loadout-group-janitor-id
+  loadouts:
+  - JanitorPDA # Keep default PDA on top of the list
+  - CustodianPDA
+  - HygieneTechnicianPDA
+  - MaidPDA
+  - SanitationsWorkerPDA
+
+# Lawyer
+- type: loadoutGroup
+  id: LawyerPDA
+  name: loadout-group-lawyer-id
+  loadouts:
+  - LawyerPDA # Keep default PDA on top of the list
+  - AttorneyPDA
+  - LegalCounselPDA
+  - ProsecutorPDA
+  - SolicitorPDA
+
+# Librarian
+- type: loadoutGroup
+  id: LibrarianPDA
+  name: loadout-group-librarian-id
+  loadouts:
+  - LibrarianPDA # Keep default PDA on top of the list
+  - ArchivistPDA
+  - CuratorPDA
+  - GameMasterPDA
+  - WriterPDA
+
+# Mime
+- type: loadoutGroup
+  id: MimePDA
+  name: loadout-group-mime-id
+  loadouts:
+  - MimePDA # Keep default PDA on top of the list
+  - PierrotPDA
+
+# Musician
+- type: loadoutGroup
+  id: MusicianPDA
+  name: loadout-group-musician-id
+  loadouts:
+  - MusicianPDA # Keep default PDA on top of the list
+  - PopIdolPDA
+  - RockStarPDA
+
+# Reporter
+- type: loadoutGroup
+  id: ReporterPDA
+  name: loadout-group-reporter-id
+  loadouts:
+  - ReporterPDA # Keep default PDA on top of the list
+  - JournalistPDA
+  - MeteorologistPDA
+  - NewsAnchorPDA
+
+# Service Worker
+- type: loadoutGroup
+  id: ServiceWorkerPDA
+  name: loadout-group-service-worker-id
+  loadouts:
+  - ServiceWorkerPDA # Keep default PDA on top of the list
+  - BarberPDA
+
+## Other
+# Passenger
+- type: loadoutGroup
+  id: PassengerPDA
+  name: loadout-group-passenger-id
+  loadouts:
+  - PassengerPDA # Keep default PDA on top of the list
+  - OffDutyCrewPDA
+  - VisitorCrewPDA
+  - OffDutyStaffPDA
+  - AssistantPDA
+  - FreelancerPDA
+  - TouristPDA
+
+# Prisoner
 - type: loadoutGroup
   id: PrisonerJumpsuit
   name: loadout-group-prisoner-jumpsuit
@@ -63,6 +283,7 @@
   - PrisonJumpsuit
   - PrisonJumpsuitStriped
   - PrisonJumpsuitShirt
+  - PrisonJumpskirt
   - PrisonJumpskirtStriped
 
 - type: loadoutGroup
@@ -72,3 +293,17 @@
   loadouts:
   - SkullBandana
   - PrisonHatStriped
+
+- type: loadoutGroup
+  id: PrisonerPDA
+  name: loadout-group-prisoner-id
+  loadouts:
+  - PrisonerPDA # Keep default PDA on top of the list
+  - ConvictPDA
+  - DeathRowInmatePDA
+  - MinimumSecurityPrisonerPDA
+  - MaximumSecurityPrisonerPDA
+  - ProtectiveCustodyPrisonerPDA
+  - FelonPrisonerPDA
+  - InmatePrisonerPDA
+  - TestSubjectPDA

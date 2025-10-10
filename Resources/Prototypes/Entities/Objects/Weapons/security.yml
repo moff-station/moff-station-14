@@ -41,10 +41,10 @@
     angle: 60
     animation: WeaponArcThrust
   - type: StaminaDamageOnHit
-    damage: 42 # Moffstation - (Stamina Resistance) - This keeps the bantong as a 3-hit against anything except advanced armor.
+    damage: 35
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide
-    damage: 42 # Moffstation - (Stamina Resistance) - This keeps the bantong as a 3-hit against anything except advanced armor.
+    damage: 35
     sound: /Audio/Weapons/egloves.ogg
   - type: LandAtCursor # it deals stamina damage when thrown
   - type: Battery
@@ -192,6 +192,7 @@
   description: An ultrabright flashbulb with a proximity trigger, useful for making an area security-only.
   components:
     - type: EmitSoundOnTrigger
+      predicted: true
       sound:
         path: /Audio/Weapons/flash.ogg
     - type: FlashOnTrigger
@@ -230,3 +231,9 @@
       guides:
       - Security
       - Antagonists
+    # Moffstation - Start
+    - type: TriggerOnSignal
+    - type: DeviceLinkSink
+      ports:
+      - Trigger
+    # Moffstation - End

@@ -21,7 +21,7 @@
     priceMultiplier: 0
   - type: ZombificationResistance
     zombificationResistanceCoefficient: 0.55
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
@@ -727,9 +727,9 @@
   description: A sturdy, utilitarian winter coat designed to protect a warden from any brig-bound threats and hypothermic events.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 ################################################################
@@ -756,7 +756,7 @@
       outerClothing:
       - state: WARD-equipped-OUTERCLOTHING
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterWarden
+    clothingPrototype: ClothingHeadHatHoodWinterSec # Moffstation - (New Warden Uniforms)
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseSyndicateContraband]

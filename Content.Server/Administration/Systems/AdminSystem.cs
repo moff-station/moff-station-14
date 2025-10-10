@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
-using Content.Server.Forensics;
 using Content.Server.GameTicking;
 using Content.Server.Hands.Systems;
 using Content.Server.Mind;
@@ -21,6 +20,7 @@ using Content.Shared.PDA;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Popups;
 using Content.Shared.Roles;
+using Content.Shared.Roles.Components;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.StationRecords;
 using Content.Shared.Throwing;
@@ -33,9 +33,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-
-// CD: imports
-using Content.Server._CD.Records;
+using Content.Server._Moffstation.Players; // Moffstation
+using Content.Server._CD.Records;   // CD
 
 namespace Content.Server.Administration.Systems;
 
@@ -58,6 +57,7 @@ public sealed class AdminSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly WatchListTracker _watchList = default!;   // Moffstation
 
     // CD: for erasing records on erase ban
     [Dependency] private readonly CharacterRecordsSystem _cdRecords = default!;
@@ -270,6 +270,11 @@ public sealed class AdminSystem : EntitySystem
             overallPlaytime = playTime;
         }
 
+        // Moffstation - Start - Get watchlist status
+        // Second check so we don't modify upstream code
+        var watchListed = session != null ? _watchList.GetWatchListed(session) : false;
+        // Moffstation - End
+
         return new PlayerInfo(
             name,
             entityName,
@@ -283,7 +288,10 @@ public sealed class AdminSystem : EntitySystem
             data.UserId,
             connected,
             _roundActivePlayers.Contains(data.UserId),
-            overallPlaytime);
+            // Moffstation - Start - Visible watchlist
+            overallPlaytime,
+            watchListed);
+            // Moffstation - End
     }
 
     private void OnPanicBunkerChanged(bool enabled)
@@ -389,8 +397,13 @@ public sealed class AdminSystem : EntitySystem
         {
             _chat.DeleteMessagesBy(uid);
 
+            var eraseEvent = new EraseEvent(uid);
+
             if (!_minds.TryGetMind(uid, out var mindId, out var mind) || mind.OwnedEntity == null || TerminatingOrDeleted(mind.OwnedEntity.Value))
+            {
+                RaiseLocalEvent(ref eraseEvent);
                 return;
+            }
 
             var entity = mind.OwnedEntity.Value;
 
@@ -453,6 +466,8 @@ public sealed class AdminSystem : EntitySystem
 
             if (_playerManager.TryGetSessionById(uid, out var session))
                 _gameTicker.SpawnObserver(session);
+
+            RaiseLocalEvent(ref eraseEvent);
         }
 
     private void OnSessionPlayTimeUpdated(ICommonSession session)
@@ -460,3 +475,10 @@ public sealed class AdminSystem : EntitySystem
         UpdatePlayerList(session);
     }
 }
+
+/// <summary>
+/// Event fired after a player is erased by an admin
+/// </summary>
+/// <param name="PlayerNetUserId">NetUserId of the player that was the target of the Erase</param>
+[ByRefEvent]
+public record struct EraseEvent(NetUserId PlayerNetUserId);

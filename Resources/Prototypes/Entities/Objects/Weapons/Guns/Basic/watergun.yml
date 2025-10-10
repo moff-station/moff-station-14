@@ -11,11 +11,6 @@
   - type: Item
     sprite: Objects/Weapons/Guns/Pistols/water_pistol.rsi
     size: Small
-    # Moffstation - Begin - (Weapon Resizing)
-    shape:
-    - 0,0,1,0
-    - 0,1,0,1
-    # Moffstation - End
   - type: Gun
     clumsyProof: true
     cameraRecoilScalar: 0 #no recoil
@@ -61,6 +56,11 @@
   name: water pistol
   description: The dinkiest of water-based weaponry. You swear the trigger doesn't do anything.
   components:
+  - type: Item
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    storedOffset: -4,-4
   - type: Sprite
     sprite: Objects/Weapons/Guns/Pistols/water_pistol.rsi
     layers:
@@ -100,12 +100,9 @@
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: Item
     sprite: Objects/Weapons/Guns/Pistols/soaker.rsi
-    # Moffstation - Begin (Weapon Resizing)
-    # size: Normal
     size: Large
     shape:
-    - 0,0,3,1
-    # Moffstation - End
+    - 0,0,2,1
   - type: RandomSprite
     getAllGroups: true
     available:
@@ -142,12 +139,9 @@
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: Item
     sprite: Objects/Weapons/Guns/Pistols/soaker.rsi
-    # Moffstation - Begin (Weapon Resizing)
-    # size: Normal
     size: Large
-    shape:
-    - 0,0,3,1
-    # Moffstation - End
+    shape: # SMG size.
+    - 0,0,2,1
   - type: RandomSprite
     getAllGroups: true
     available:

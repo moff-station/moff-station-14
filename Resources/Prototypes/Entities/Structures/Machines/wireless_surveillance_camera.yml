@@ -8,7 +8,7 @@
     - type: InteractionOutline
     - type: Eye
     - type: WirelessNetworkConnection
-      range: 200
+      range: 10000 # Moffstation - Listening outpost spying
     - type: Damageable
       damageContainer: StructuralInorganic
       damageModifierSet: Metallic

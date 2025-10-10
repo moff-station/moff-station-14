@@ -1,0 +1,68 @@
+- type: entity
+  name: Flying Dutchman Spirit
+  id: MobFlyingDutchmanGuardian
+  parent: [MobGuardianBase, InventoryBase]
+  description: A shimmering green ghost of pirate legend.
+  components:
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-flying-dutchman-name
+    description: ghost-role-information-flying-dutchman-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: NameIdentifier
+    group: Holoparasite
+  - type: TypingIndicator
+    proto: holo
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        dutch_base: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        dutch_flare: Sixteen
+    - enum.DamageStateVisualLayers.Base:
+        dutch_base: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        dutch_flare: Sixteen
+    - enum.DamageStateVisualLayers.Base:
+        dutch_base: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        dutch_flare: Sixteen
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Aliens/Guardians/flyingdutchman.rsi
+    layers:
+    - state: dutch_base
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+    - state: dutch_flare
+      map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      color: "#8adaff"
+      shader: unshaded
+  - type: Body
+    prototype: Primate
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+  - type: Inventory
+    templateId: holoclown
+  - type: Hands
+  - type: ComplexInteraction
+  - type: MeleeWeapon
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1.8
+    damage:
+      types:
+        Blunt: 5
+  - type: Loadout
+    prototypes: [ FlyingDutchmanGear ]
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound

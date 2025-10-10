@@ -235,6 +235,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var ev = new GetMeleeDamageEvent(uid, new(component.Damage * Damageable.UniversalMeleeDamageModifier), new(), user, component.ResistanceBypass);
         RaiseLocalEvent(uid, ref ev);
 
+        // Begin Offbrand
+        var relayed = new Content.Shared._Offbrand.Weapons.RelayedGetMeleeDamageEvent(ev);
+        RaiseLocalEvent(user, ref relayed);
+        ev = relayed.Args;
+        // End Offbrand
+
         return DamageSpecifier.ApplyModifierSets(ev.Damage, ev.Modifiers);
     }
 
@@ -245,6 +251,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var ev = new GetMeleeAttackRateEvent(uid, component.AttackRate, 1, user);
         RaiseLocalEvent(uid, ref ev);
+
+        // Begin Offbrand
+        var relayed = new Content.Shared._Offbrand.Weapons.RelayedGetMeleeAttackRateEvent(ev);
+        RaiseLocalEvent(user, ref relayed);
+        ev = relayed.Args;
+        // End Offbrand
 
         return ev.Rate * ev.Multipliers;
     }
@@ -267,6 +279,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var ev = new GetMeleeDamageEvent(uid, new(component.Damage * Damageable.UniversalMeleeDamageModifier), new(), user, component.ResistanceBypass);
         RaiseLocalEvent(uid, ref ev);
+
+        // Begin Offbrand
+        var relayed = new Content.Shared._Offbrand.Weapons.RelayedGetMeleeDamageEvent(ev);
+        RaiseLocalEvent(user, ref relayed);
+        ev = relayed.Args;
+        // End Offbrand
 
         return ev.ResistanceBypass;
     }
@@ -578,6 +596,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var distance = Math.Min(component.Range, direction.Length());
 
         var damage = GetDamage(meleeUid, user, component);
+        var resistanceBypass = GetResistanceBypass(meleeUid, user, component);
         var entities = GetEntityList(ev.Entities);
 
         if (entities.Count == 0)
@@ -682,7 +701,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin:user);
+            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass);
 
             if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
             {

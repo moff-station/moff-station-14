@@ -1,0 +1,73 @@
+- type: entity
+  parent: ReporterPDA
+  id: ReporterPDAAltBase
+  name: reporter alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-journalist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ReporterPDAAltBase
+  id: JournalistPDA
+  name: journalist PDA
+  components:
+  - type: RenameId
+    value: job-name-reporter-journalist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-journalist
+  - type: PdaBorderColor
+    borderColor: "#5f8ba8"
+
+- type: entity
+  parent: ReporterPDAAltBase
+  id: MeteorologistPDA
+  name: meteorologist PDA
+  components:
+  - type: RenameId
+    value: job-name-reporter-meteorologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-meteorologist
+  - type: PdaBorderColor
+    borderColor: "#3f3f74"
+
+- type: entity
+  parent: ReporterPDAAltBase
+  id: NewsAnchorPDA
+  name: news anchor PDA
+  components:
+  - type: RenameId
+    value: job-name-reporter-news-anchor
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-newsanchor
+  - type: PdaBorderColor
+    borderColor: "#ececec"

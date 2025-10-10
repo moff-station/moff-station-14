@@ -1,6 +1,6 @@
 ﻿using Content.Server.Inventory;
-using Content.Server.Radio.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Radio.Components;
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Prototypes;
@@ -33,7 +33,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
         {
             _borgSystem.SetTransponderSprite(
                 (ent.Owner, transponder),
-                new SpriteSpecifier.Rsi(new ResPath("Mobs/Silicon/chassis.rsi"), prototype.SpriteBodyState));
+                new SpriteSpecifier.Rsi(new ResPath(prototype.SpritePath), prototype.SpriteBodyState)); // Moffstation - Early merge of Borg RSI fix
 
             _borgSystem.SetTransponderName(
                 (ent.Owner, transponder),
@@ -60,7 +60,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
         }
 
         // Configure special components
-        if (Prototypes.TryIndex(ent.Comp.SelectedBorgType, out var previousPrototype))
+        if (Prototypes.Resolve(ent.Comp.SelectedBorgType, out var previousPrototype))
         {
             if (previousPrototype.AddComponents is { } removeComponents)
                 EntityManager.RemoveComponents(ent, removeComponents);
@@ -75,6 +75,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
         if (TryComp(ent, out InventoryComponent? inventory))
         {
             _inventorySystem.SetTemplateId((ent.Owner, inventory), prototype.InventoryTemplateId);
+            _inventorySystem.SetDisplacements((ent.Owner, inventory), prototype.InventoryDisplacements); // Moffstation - Allow borgs to have displacement maps.
         }
 
         base.SelectBorgModule(ent, borgType);

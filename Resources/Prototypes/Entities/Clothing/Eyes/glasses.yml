@@ -67,8 +67,9 @@
     coverage: EYES
   - type: Tag
     tags:
-    - CorgiWearable
+    - PetWearable
     - WhitelistChameleon
+    - MesonGoggles # Moffstation - Meson Sunglasses
 
 - type: entity
   parent: ClothingEyesBase
@@ -145,7 +146,7 @@
     tags:
     - SunglassesCheap # Moffstation - Medical Sunglasses
     - HamsterWearable
-    - CorgiWearable
+    - PetWearable
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
@@ -162,7 +163,7 @@
   - type: Tag
     tags:
     - Sunglasses
-    - CorgiWearable
+    - PetWearable
     - HamsterWearable
     - WhitelistChameleon
 
@@ -185,7 +186,7 @@
   - type: Tag
     tags:
     - HamsterWearable
-    - CorgiWearable
+    - PetWearable
     - WhitelistChameleon
   - type: GuideHelp
     guides:
@@ -210,7 +211,7 @@
   - type: Tag
     tags:
     - HamsterWearable
-    - CorgiWearable
+    - PetWearable
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
@@ -266,11 +267,11 @@
       coverage: EYES
     - type: Tag
       tags:
-      - CorgiWearable
+      - PetWearable
       - WhitelistChameleon
 
 - type: entity
-  parent: [ClothingEyesBase, BaseMajorContraband]
+  parent: [ClothingEyesBase, BaseHighlyIllegalContraband]
   id: ClothingEyesVisorNinja
   name: ninja visor
   description: An advanced visor protecting a ninja's eyes from flashing lights.
@@ -282,7 +283,7 @@
   - type: FlashImmunity
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]
   id: ClothingEyesGlassesNoir
   name: noir-tech glasses
   description: A pair of glasses that simulate what the world looked like before the invention of color.

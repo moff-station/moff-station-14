@@ -84,6 +84,7 @@
         amount: 2
       - id: FlashlightLantern
       - id: LightReplacer
+      - id: WireBrush
 
 - type: entity
   id: ClothingBeltMedicalFilled
@@ -96,8 +97,12 @@
         amount: 2
       - id: Ointment
         amount: 1
-      - id: Bloodpack
-        amount: 1
+      # Begin Offbrand Additions
+      - id: ChemistryBottleParacetamol
+      - id: ChemistryBottleInaprovaline
+      - id: ChemistryBottleDexalin
+      - id: ChemistryBottleDylovene
+      # End Offbrand Additions
       - id: Gauze
       - id: EmergencyMedipen #You never know what people are going to latejoin into
 
@@ -110,7 +115,12 @@
     contents:
       - id: Brutepack
       - id: Ointment
-      - id: Bloodpack
+      # Begin Offbrand Additions
+      - id: ChemistryBottleParacetamol
+      - id: ChemistryBottleInaprovaline
+      - id: ChemistryBottleDexalin
+      - id: ChemistryBottleDylovene
+      # End Offbrand Additions
       - id: Gauze
       - id: EmergencyMedipen #You never know what people are going to latejoin into
         amount: 3
@@ -165,10 +175,6 @@
   components:
   - type: StorageFill
     contents:
-      # Moffstation - Begin (Nuclear Operative Balancing)
-      - id: CombatKnife
-      - id: DeathRattleImplanter
-      # Moffstation - End
       - id: ChemistryBottleEpinephrine
         amount: 2
       - id: ChemistryBottleEphedrine

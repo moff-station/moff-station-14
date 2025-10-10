@@ -130,10 +130,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -244,10 +240,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -282,10 +274,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -315,10 +303,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.4
-  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
-  - type: StaminaResistance
-    damageCoefficient: 0.6
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -504,10 +488,6 @@
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.5
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -599,6 +579,7 @@
     - Hardsuit
     - WhitelistChameleon
     - CorgiWearable
+    - ScurretWearable
   - type: StaticPrice
     price: 5000
 
@@ -816,7 +797,7 @@
 #Despite visually appearing like a softsuit, it functions exactly like a hardsuit would (parents off of base hardsuit, has resistances and toggleable clothing, etc.) so it goes here.
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
-  id:  ClothingOuterHardsuitPirateEVA
+  id:  ClothingOuterHardsuitPirateEVAUpstream # Moffstation - Moved to our namespace
   name: deep space EVA suit
   suffix: Pirate
   description: A heavy space suit that provides some basic protection from the cold harsh realities of deep space.
@@ -838,8 +819,8 @@
         Heat: 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
-    walkModifier: 0.8 # Moffstation - more mobility for pirates
-    sprintModifier: 0.8 # Moffstation - more mobility for pirates
+    walkModifier: 0.6
+    sprintModifier: 0.6
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitPirateEVA
@@ -849,25 +830,21 @@
 #Pirate Captain Hardsuit
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
-  id: ClothingOuterHardsuitPirateCap
+  id: ClothingOuterHardsuitPirateCapUpstream # Moffstation - Moved to our namespace
   name: pirate captain's hardsuit
   description: An ancient armored hardsuit, perfect for defending against space scurvy and toolbox-wielding scallywags.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi # Moffstation - Custom Pirate captain hardsuit sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
   - type: Item
     size: Huge
   - type: Clothing
-    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi # Moffstation - Custom Pirate captain hardsuit sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/piratecaptain.rsi
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  # Moffstation - Begin (Stamina Resistance) - Armor gets 20%.
-  - type: StaminaResistance
-    damageCoefficient: 0.8
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
@@ -997,7 +974,7 @@
     damageCoefficient: 0.2
   - type: FireProtection
     reduction: 0.8
-  - type: StaminaResistance
+  - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.15 # Needs 21 hits with a disabler to stun :godo:
   - type: Armor
     modifiers:
@@ -1034,10 +1011,6 @@
     coolingCoefficient: 0.001
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  # Moffstation - Begin (Stamina Resistance) - Riot/Advanced armor gets 40%.
-  - type: StaminaResistance
-    damageCoefficient: 0.6
-  # Moffstation - End
   - type: Armor
     modifiers:
       coefficients:
