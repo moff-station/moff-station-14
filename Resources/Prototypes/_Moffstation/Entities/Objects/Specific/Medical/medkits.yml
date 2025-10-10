@@ -5,14 +5,15 @@
   id: MedkitSecurity
   components:
   - type: Sprite
-    state: blackkit
+    sprite: _Moffstation/Objects/Specific/Medical/firstaidkits.rsi # (Perfectly functional) stand-in sprite, would be awesome to have something resembling a real life IFAK...
+    state: security
   - type: Item
     heldPrefix: blackkit
     size: Normal
   - type: Storage
     maxItemSize: Small
     grid:
-    - 0,0,1,1
+    - 0,0,2,1
   - type: Tag
     tags:
     - SecBeltEquip
