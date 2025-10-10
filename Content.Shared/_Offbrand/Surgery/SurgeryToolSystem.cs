@@ -24,7 +24,7 @@ public sealed class SurgeryToolSystem : EntitySystem
     private void OnToolAttemptUse(Entity<SurgeryToolComponent> ent, ref ToolUseAttemptEvent args)
     {
         // Moffstation - Start - Don't attempt surgery usage on invalid targets
-        if (!HasComp<SurgeryGuideTargetComponent>(ent))
+        if (!HasComp<SurgeryGuideTargetComponent>(args.Target))
             return;
         // Moffstation - End
 
