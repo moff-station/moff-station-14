@@ -1,0 +1,55 @@
+﻿- type: entity
+  parent: BriefcaseSyndie
+  id: BriefcaseSuspicious
+  suffix: Syndicate, Empty
+  name: suspicious briefcase
+  components:
+  - type: Item
+    size: Huge
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseSyndie
+  name: suspicious briefcase
+  components:
+  - type: Sprite
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_syndie.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_syndie.rsi
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseSyndieFlashy
+  suffix: Syndicate, Empty
+  name: syndicate briefcase
+  components:
+  - type: Sprite
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_syndie_flashy.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_syndie_flashy.rsi
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseNanotrasen
+  name: professional briefcase
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_nt.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_nt.rsi
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseNanotrasenFlashy
+  name: nanotrasen briefcase
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_nt_flashy.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_nt_flashy.rsi

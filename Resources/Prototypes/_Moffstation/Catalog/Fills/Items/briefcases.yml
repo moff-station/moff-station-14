@@ -1,0 +1,39 @@
+- type: entity
+  id: BriefcaseNanotrasenPropagandaBundleFilled
+  parent: BriefcaseNanotrasenFlashy
+  suffix: Filled, Spesos
+  components:
+  - type: Item
+    size: Ginormous
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyCentCom
+    - id: SpaceCash20000
+      amount: 1
+    - id: ClothingHeadHatCaptainTricorn
+    - id: ClothingNeckCloakNanotrasen
+    - id: ClothingUniformJumpsuitNanotrasen
+    - id: TowelColorNT
+    - id: NTHandyFlag
+    - id: BibleNanoTrasen
+    - id: DrinkMugOne
+    - id: nanocard
+
+- type: entity
+  id: BriefcaseProfessional
+  parent: BriefcaseNanotrasen
+  suffix: Filled
+  components:
+  - type: Item
+    size: Ginormous
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyCentCom
+    - id: ClothingHeadHatCaptainConductor
+    - id: ClothingHandsGlovesHop
+    - id: BoxFolderPlasticClipboardThreePapers
+    - id: BookSpaceLaw
+    - id: ClothingUniformJumpsuitLawyerBlue
+    - id: LuxuryPen
+    - id: WeaponDisabler
+    - id: nanocard
