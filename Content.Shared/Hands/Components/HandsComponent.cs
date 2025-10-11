@@ -46,9 +46,7 @@ public sealed partial class HandsComponent : Component
     ///     Modifies the speed at which items are thrown.
     /// </summary>
     [DataField]
-    // ES START
     public float BaseThrowspeed = 11f;
-    // ES END
 
     /// <summary>
     ///     Distance after which longer throw targets stop increasing throw impulse.
