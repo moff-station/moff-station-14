@@ -1,0 +1,11 @@
+- type: entity
+  id: MedkitSecurityFilled
+  suffix: Filled
+  parent: MedkitSecurity
+  components:
+  - type: StorageFill
+    contents:
+    - id: TourniquetOffbrand # Offbrand
+    - id: Gauze
+    - id: SyringeParacetamol # Offbrand
+    - id: SyringeInaprovaline
