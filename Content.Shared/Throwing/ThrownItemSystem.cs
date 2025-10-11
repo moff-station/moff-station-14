@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Moffstation.Throwing;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Gravity;
@@ -9,6 +10,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Throwing
@@ -28,6 +30,7 @@ namespace Content.Shared.Throwing
         // ES START
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         // ES END
+        [Dependency] private readonly IRobustRandom _random = default!; // Moffstation - Land upright
 
         private const string ThrowingFixture = "throw-fixture";
 
@@ -129,10 +132,13 @@ namespace Content.Shared.Throwing
             if (thrownItem.Thrower is not null)
                 _adminLogger.Add(LogType.Landed, LogImpact.Low, $"{ToPrettyString(uid):entity} thrown by {ToPrettyString(thrownItem.Thrower.Value):thrower} landed.");
 
-            // ES START
-            _transform.SetLocalRotation(uid, Angle.Zero);
-            _physics.SetAngularVelocity(uid, 0f, body: physics);
-            // ES END
+            if (TryComp<LandUprightComponent>(uid, out var upright) && _random.Prob(upright.Chance))
+            {
+                // ES START
+                _transform.SetLocalRotation(uid, Angle.Zero);
+                _physics.SetAngularVelocity(uid, 0f, body: physics);
+                // ES END
+            }
 
             _broadphase.RegenerateContacts((uid, physics));
             var landEvent = new LandEvent(thrownItem.Thrower, playSound);

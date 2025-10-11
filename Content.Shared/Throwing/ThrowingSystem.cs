@@ -20,16 +20,17 @@ public sealed class ThrowingSystem : EntitySystem
 {
     public const float ThrowAngularImpulse = 5f;
 
-    // ES START
-    public const float MoffSpinVariation = 4f;
-    // ES END
+    // Moffstation - Start - Throwing modifiers
+    public const float MoffSpinVariation = 2f;
+    public const float MoffSpeedVariation = 2f;
+    // Moffstation - End
 
     public const float PushbackDefault = 2f;
 
     public const float FlyTimePercentage = 0.8f;
 
     // ES START
-    private const float TileFrictionMod = 2.5f;
+    private const float TileFrictionMod = 1.5f;
     // ES END
 
     private float _frictionModifier;
@@ -192,8 +193,7 @@ public sealed class ThrowingSystem : EntitySystem
                 // this is so we can normalize the rotation to 0 at the end of the throw without it looking weird
                 // (we want to avoid arbitrarily rotated items where possible for readability reasons)
                 var spinVelocity = _random.NextFloat(MoffSpinVariation, -MoffSpinVariation);
-                if (spinVelocity > 0)
-                    _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / (flyTime * physics.InvI), body: physics);
+                _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / (flyTime * physics.InvI), body: physics);
                 // ES END
             }
             else
@@ -214,6 +214,7 @@ public sealed class ThrowingSystem : EntitySystem
         // This is an exact formula we get from exponentially decaying velocity after landing.
         // If someone changes how tile friction works at some point, this will have to be adjusted.
         // This doesn't actually compensate for air friction, but it's low enough it shouldn't matter.
+        baseThrowSpeed += _random.NextFloat(MoffSpeedVariation, -MoffSpeedVariation);
         var throwSpeed = compensateFriction ? direction.Length() / (flyTime + 1 / tileFriction) : baseThrowSpeed;
         var impulseVector = direction.Normalized() * throwSpeed * physics.Mass;
         _physics.ApplyLinearImpulse(uid, impulseVector, body: physics);
