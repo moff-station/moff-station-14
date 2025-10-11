@@ -270,11 +270,12 @@
       steps:
       - whitelist:
           requireAll: true
-          components:
-          - Item
           sizes:
           - Tiny
           - Small
+        blacklist:
+          components:
+          - NukeDisk
         doAfter: 2
         store: cavity_slot
         name: cavity-slot-insertion-small-item
