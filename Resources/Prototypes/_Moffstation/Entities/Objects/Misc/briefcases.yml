@@ -37,10 +37,8 @@
   suffix: Empty
   components:
   - type: Sprite
-    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_nt.rsi
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_nt.rsi
     state: icon
-  - type: Item
-    sprite: _Moffstation\Objects\Storage\Briefcases\briefcase_nt.rsi
 
 - type: entity
   parent: BriefcaseBase
