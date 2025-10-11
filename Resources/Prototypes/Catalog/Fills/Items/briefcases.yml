@@ -30,9 +30,11 @@
 
 - type: entity
   id: BriefcaseSyndieLobbyingBundleFilled
-  parent: BriefcaseSyndie
+  parent: BriefcaseSyndieFlashy # Moffstation (New Briefcases)
   suffix: Syndicate, Spesos
   components:
+  - type: Item
+    size: Huge
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSunglasses
@@ -49,9 +51,11 @@
 
 - type: entity
   id: BriefcaseThiefBribingBundleFilled
-  parent: BriefcaseSyndie
+  parent: BriefcaseBrown # Moffstation (New Briefcases)
   suffix: Thief, Spesos
   components:
+  - type: Item
+    size: Huge
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSunglasses
