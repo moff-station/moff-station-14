@@ -119,4 +119,14 @@ Entries:
     type: Tweak
   id: 7
   time: '2025-10-10T22:00:00.0000000+00:00'
+- author: sowelipililimute
+  changes:
+  - message: Invalid items can no longer be inserted into people's chest cavities
+    type: Fix
+  - message: Pain overlay no longer shows at zero pain
+    type: Fix
+  - message: Surgery will no longer get stuck if a single step is partially completed
+    type: Fix
+  id: 8
+  time: '2025-10-11T22:00:00.0000000+00:00'
 Order: 2
