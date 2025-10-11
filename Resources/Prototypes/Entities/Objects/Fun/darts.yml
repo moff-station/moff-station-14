@@ -85,6 +85,9 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: BalloonPopper
+  - type: Tag #Moffstation edit, tag for blowgun
+    tags:
+    - BlowgunAmmo
 
 - type: entity
   parent: Dart
