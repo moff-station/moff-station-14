@@ -68,6 +68,7 @@
     tags:
     - Cardboard
     - RawMaterial
+    - ConstructionMaterial
   # Moffstation - End
 
 - type: entity
@@ -411,10 +412,13 @@
   - type: PhysicalComposition
     materialComposition:
       Diamond: 100
+  # Moffstation - Begin
   - type: Tag
     tags:
     - RawMaterial
     - Diamond
+    - ConstructionMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialDiamond
@@ -587,6 +591,12 @@
   - type: Appearance
   - type: Item
     heldPrefix: bananium
+  # Moffstation - Begin
+  - type: Tag
+    tags:
+    - ConstructionMaterial
+    - RawMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialBananium
