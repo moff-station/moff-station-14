@@ -1,6 +1,6 @@
 ﻿- type: entity
   name: security IFAK
-  description: "An Individual First Aid Kit issued to station security. A note on the side reads 'remember to ask med for refills!'"
+  description: "An Individual First Aid Kit issued to Nanotrasen station security. Contains basic medicine to stave off injuries long enough to get proper treatment. A sticker on the back reminds you to 'ask medical for refills!'."
   parent: Medkit
   id: MedkitSecurity
   components:
@@ -18,3 +18,4 @@
     tags:
     - SecBeltEquip
     - Medkit
+
