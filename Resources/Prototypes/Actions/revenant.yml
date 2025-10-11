@@ -11,6 +11,18 @@
 
 - type: entity
   parent: BaseAction
+  id: ActionRevenantSoulchain
+  name: Soulchain
+  description: Costs 30 Essence.
+  components:
+  - type: Action
+    useDelay: 15
+    icon: Interface/Actions/manifest.png
+  - type: InstantAction
+    event: !type:RevenantSoulchainActionEvent
+
+- type: entity
+  parent: BaseAction
   id: ActionRevenantDefile
   name: Defile
   description: Costs 30 Essence.

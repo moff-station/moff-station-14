@@ -57,6 +57,7 @@ public sealed partial class RevenantSystem
         SubscribeLocalEvent<RevenantComponent, SoulEvent>(OnSoulSearch);
         SubscribeLocalEvent<RevenantComponent, HarvestEvent>(OnHarvest);
 
+        SubscribeLocalEvent<RevenantComponent, RevenantSoulchainActionEvent>(OnSoulchainAction);
         SubscribeLocalEvent<RevenantComponent, RevenantDefileActionEvent>(OnDefileAction);
         SubscribeLocalEvent<RevenantComponent, RevenantOverloadLightsActionEvent>(OnOverloadLightsAction);
         SubscribeLocalEvent<RevenantComponent, RevenantBlightActionEvent>(OnBlightAction);
@@ -214,6 +215,11 @@ public sealed partial class RevenantSystem
         _damage.TryChangeDamage(args.Args.Target, component.HarvestDamage, true, origin: uid); // Offbrand - use a fixed amount
 
         args.Handled = true;
+    }
+
+    private void OnSoulchainAction(EntityUid uid, RevenantComponent component, RevenantSoulchainActionEvent args)
+    {
+        // Do the thing
     }
 
     private void OnDefileAction(EntityUid uid, RevenantComponent component, RevenantDefileActionEvent args)
