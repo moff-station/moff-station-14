@@ -21,7 +21,9 @@
       enum.CrayonUiKey.Key:
         type: CrayonBoundUserInterface
   - type: Crayon
-    capacity: 100 # Moffstation - increase crayon charges!
+    selectedState: like
+  - type: LimitedCharges
+    maxCharges: 100 # Moffstation - increase crayon charges!
   - type: Food
   - type: FlavorProfile
     flavors:
@@ -88,13 +90,24 @@
   - type: Crayon
     color: Red
     selectableColor: true
-    capacity: 100 # Moffstation - increase crayon charges!
+  - type: LimitedCharges
+    maxCharges: 300 # Moffstation - Increase crayon charges
   - type: Tag
     tags:
     - Write
     - Crayon
     - Recyclable
     - Trash
+
+- type: entity
+  parent: CrayonRainbow
+  id: CrayonInfinite # should not be player available to prevent decal spam
+  name: infinite crayon
+  components:
+  - type: Crayon
+    deleteEmpty: false
+  - type: AutoRecharge
+    rechargeDuration: 1 # Moffstation - Improve the infinite crayon
 
 - type: entity
   parent: Crayon
