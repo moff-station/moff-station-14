@@ -1,13 +1,13 @@
 - type: emote
-  id: DefaultPaingasp
-  name: chat-emote-name-paingasp
+  id: DefaultBrainslump
+  name: chat-emote-name-brainslump
   icon: Interface/Emotes/deathgasp.png
   whitelist:
     components:
-    - Pain
-  chatMessages: ["chat-emote-msg-paingasp"]
+    - BrainDamage
+  chatMessages: ["chat-emote-msg-brainslump"]
   chatTriggers:
-  - paingasp
+  - brainslump
 
 - type: emote
   id: DefaultBraingasp

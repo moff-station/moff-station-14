@@ -18,8 +18,8 @@ mmi-extractor-prompt =
 mmi-extractor-accept = Accept
 mmi-extractor-decline = Decline
 
-chat-emote-name-paingasp = Paingasp
-chat-emote-msg-paingasp = twitches uncontrollably, before drawing still...
+chat-emote-name-brainslump = Paingasp
+chat-emote-msg-brainslump = twitches uncontrollably, before drawing still...
 chat-emote-name-braingasp = Braingasp
 chat-emote-msg-braingasp = falls limp, a deathly pallor hovering over {OBJECT($entity)}...
 chat-emote-name-painslump = Painslump

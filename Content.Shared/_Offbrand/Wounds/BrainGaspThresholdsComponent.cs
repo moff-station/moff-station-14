@@ -13,4 +13,10 @@ public sealed partial class BrainGaspThresholdsComponent : Component
 
     [DataField, AutoNetworkedField]
     public ProtoId<EmotePrototype>? CurrentMessage;
+
+    [DataField(required: true)]
+    public SortedDictionary<FixedPoint2, ProtoId<EmotePrototype>> OxygenThresholds = new();
+
+    [DataField, AutoNetworkedField]
+    public ProtoId<EmotePrototype>? CurrentOxygen;
 }
