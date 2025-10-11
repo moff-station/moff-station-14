@@ -41,7 +41,7 @@ public sealed class ThrowingSystem : EntitySystem
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IRobustRandom _random = default!; // Moffstation - throwing variation
 
     public override void Initialize()
     {
@@ -212,7 +212,7 @@ public sealed class ThrowingSystem : EntitySystem
         // This is an exact formula we get from exponentially decaying velocity after landing.
         // If someone changes how tile friction works at some point, this will have to be adjusted.
         // This doesn't actually compensate for air friction, but it's low enough it shouldn't matter.
-        baseThrowSpeed += _random.NextFloat(MoffSpeedVariation, -MoffSpeedVariation);
+        baseThrowSpeed += _random.NextFloat(MoffSpeedVariation, -MoffSpeedVariation);   // Moffstation - Throwing variation
         var throwSpeed = compensateFriction ? direction.Length() / (flyTime + 1 / tileFriction) : baseThrowSpeed;
         var impulseVector = direction.Normalized() * throwSpeed * physics.Mass;
         _physics.ApplyLinearImpulse(uid, impulseVector, body: physics);
