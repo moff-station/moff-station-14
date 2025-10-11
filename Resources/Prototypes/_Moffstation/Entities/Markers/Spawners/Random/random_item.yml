@@ -1,0 +1,12 @@
+- type: entity
+  name: Random Item Spawner
+  id: RandomItemSpawner
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Moffstation/Objects/Fun/figurines.rsi
+      state: fig-box
+  - type: RandomItem
