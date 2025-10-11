@@ -1,6 +1,5 @@
 using Content.Shared.DisplacementMap;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
