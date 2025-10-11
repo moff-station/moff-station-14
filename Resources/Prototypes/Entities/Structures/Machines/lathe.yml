@@ -201,8 +201,10 @@
     unlitRunningState: unlit-building
     staticPacks:
     - ChemistryStatic
-    - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - Start - Research Rework
+    # - SurgeryStatic
+    # - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - End
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -218,12 +220,15 @@
     - Instruments
     - Equipment
     - WirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
+    - MoffstationOffbrandSurgery # Moffstation + Offbrand <3
+    - MoffstationMining # Moffstation - Research Rework
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
     - SecurityExplosives
     - SecurityEquipment
     - SecurityWeapons
+    - MoffstationSecurityWeaponsStatic # Moffstation
 
 - type: entity
   id: ProtolatheHyperConvection
@@ -260,21 +265,27 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - ScienceBoardsStatic
-    - ServiceBoardsStatic
-    - CargoBoardsStatic
-    - MedicalBoardsStatic
+    # - ScienceBoardsStatic
+    # - ServiceBoardsStatic
+    # - CargoBoardsStatic
+    # - MedicalBoardsStatic # Moffstation - Research Rework
     - EngineeringBoardsStatic
-    - OffbrandCircuitboardsStatic # Offbrand
+    # - OffbrandCircuitboardsStatic # Moffstation - Research Rework
+    - MoffstationScienceBoardsStatic # Moffstation - Research Rework
+    - MoffstationEngineeringBoardsStatic # Moffstation - Research Rework
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
-    - MedicalBoards
+    # - MedicalBoards # Moffstation - Research Rework
     - ServiceBoards
-    - ScienceBoards
+    # - ScienceBoards
     - CameraBoards
     - MechBoards
     - ShuttleBoards
+    - MoffstationMedicalBoards # Moffstation - Research Rework
+    - MoffstationCargoBoards # Moffstation - Research Rework
+    - MoffstationServiceBoards # Moffstation - Research Rework
+    - MoffstationScienceBoards # Moffstation - Research Rework
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityBoards
@@ -322,11 +333,14 @@
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
+    - MoffstationBorgModulesStatic # Moffstation
+    - MechParts # Moffstation - move mech parts to baseline, require research for boards
     dynamicPacks:
     - Robotics
     - BorgModules
-    - MechParts
+    # - MechParts # Moffstation - move mech parts to baseline, require research for boards
     - MechEquipment
+    - MoffstationBorgModules # Moffstation
   - type: MaterialStorage
     whitelist:
       tags:
@@ -406,6 +420,7 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - MoffstationSecurityWeaponsStatic # Moffstation
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -494,11 +509,15 @@
     - RollerBedsStatic
     - MedicalClothingStatic
     - EmptyMedkitsStatic
-    - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - Start - Research Rework
+    # - SurgeryStatic
+    # - OffbrandSurgeryStatic # Offbrand
+    # Moffstation - End
     - OffbrandMedicalStatic # Offbrand
     dynamicPacks:
     - Chemistry
+    - MoffstationOffbrandSurgery # Moffstation + Offbrand <3
+    - MoffstationMedicalBoards
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
@@ -713,8 +732,9 @@
     - FloorConcreteTilesStatic
     - CircuitFloorsStatic
     - FloorMarbleTilesStatic
-    dynamicPacks:
-    - FauxTiles
+    - FauxTiles # Moffstation - Research Rework
+    #dynamicPacks:
+    # - FauxTiles # Moffstation - Research Rework
   - type: MaterialStorage
     whitelist:
       tags:

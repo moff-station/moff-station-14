@@ -165,3 +165,20 @@
   parent: [ DangerousAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: SyndimovCircuitBoard
   result: SyndimovCircuitBoard
+
+# Cloning
+
+- type: latheRecipe
+  parent: [ BaseSilverCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: CloningConsoleComputerCircuitboard
+  result: CloningConsoleComputerCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseSilverCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: CloningPodMachineCircuitboard
+  result: CloningPodMachineCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseSilverCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
+  id: MedicalScannerMachineCircuitboard
+  result: MedicalScannerMachineCircuitboard

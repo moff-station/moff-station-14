@@ -493,9 +493,10 @@
     - type: MachineBoard
       prototype: CloningPod
       stackRequirements:
-        MatterBin: 2 #moffstation - Revert machine parts
-        Manipulator: 2 #moffstation - Revert machine parts
+        MatterBin: 2 # Moffstation - Revert machine parts
+        Manipulator: 2 # Moffstation - Revert machine parts
         Glass: 1
+        Uranium: 2 # Moffstation - Research Rework
         Cable: 1
 
 - type: entity
@@ -509,8 +510,9 @@
     - type: MachineBoard
       prototype: MedicalScanner
       stackRequirements:
-        Capacitor: 1 #moffstation - Revert machine parts
+        Capacitor: 1 # Moffstation - Revert machine parts
         Glass: 5
+        Uranium: 3 # Moffstation - Research Rework
         Cable: 1
 
 - type: entity
@@ -1254,6 +1256,7 @@
       stackRequirements:
         Capacitor: 2 #moffstation - Revert machine parts
         Steel: 5
+        Uranium: 5 # Moffstation - Research Rework
 
 - type: entity
   id: MailTeleporterMachineCircuitboard
