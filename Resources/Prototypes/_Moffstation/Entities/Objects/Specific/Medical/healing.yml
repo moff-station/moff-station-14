@@ -14,4 +14,64 @@
   - type: Item
     heldPrefix: poultice
 
+- type: entity
+  parent: PillCanister
+  id: PillCanisterInaprovaline
+  suffix: Inaprovaline 10u, 5
+  components:
+  - type: Label
+    currentLabel: inaprovaline 10u
+  - type: StorageFill
+    contents:
+    - id: PillInaprovaline
+      amount: 5
 
+- type: entity
+  parent: Pill
+  id: PillInaprovaline
+  suffix: Inaprovaline 10u
+  components:
+  - type: Pill
+    pillType: 11
+  - type: Sprite
+    state: pill12
+  - type: Label
+    currentLabel: inaprovaline 10u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Inaprovaline
+          Quantity: 10
+
+- type: entity # Offmed
+  parent: PillCanister
+  id: PillCanisterParacetamol
+  suffix: Paracetamol 10u, 5
+  components:
+  - type: Label
+    currentLabel: paracetamol 10u
+  - type: StorageFill
+    contents:
+    - id: PillParacetamol
+      amount: 5
+
+- type: entity # Offmed
+  parent: Pill
+  id: PillParacetamol
+  suffix: Paracetamol 10u
+  components:
+  - type: Pill
+    pillType: 9
+  - type: Sprite
+    state: pill10
+  - type: Label
+    currentLabel: paracetamol 10u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Paracetamol
+          Quantity: 10
