@@ -1,22 +1,4 @@
-# Do NOT put anything after the Entries section, in order to prevent merge conflict with new CL entries
-Entries:
-- author: ArtisticRoomba
-  changes:
-  - message: The TEG's efficiency in extracting power from gasses has been tweaked
-      to promote dual-loop designs that recycle the waste heat of gasses, and punish
-      "meta" single loop designs.
-    type: Tweak
-  id: 8570
-  time: '2025-05-26T11:53:19.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/37728
-- author: ArtisticRoomba
-  changes:
-  - message: The TEG now outputs smoother power when pressure across the circulators
-      flutter. (This was causing epilepsy in extreme circumstances).
-    type: Fix
-  id: 8571
-  time: '2025-05-26T12:07:50.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/37658
+﻿Entries:
 - author: chromiumboy
   changes:
   - message: Sentry turret control panels can now be found adjacent to rooms containing
@@ -3953,3 +3935,17 @@ Entries:
   id: 9072
   time: '2025-10-11T05:14:34.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/40822
+- author: TrixxedHeart
+  changes:
+  - message: Updated Xenoarchaeology guidebook page to current system.
+    type: Tweak
+  id: 9073
+  time: '2025-10-11T17:32:21.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/40621
+- author: HTMLSystem
+  changes:
+  - message: Added infectious anom sprites for moths and arachnids.
+    type: Add
+  id: 9074
+  time: '2025-10-11T18:01:49.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/39508
