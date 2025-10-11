@@ -1,11 +1,11 @@
 ﻿- type: entity
   name: security IFAK
-  description: "A Individual First Aid Kit carried by security officers."
+  description: "An Individual First Aid Kit issued to station security. A note on the side reads 'remember to ask med for refills!'"
   parent: Medkit
   id: MedkitSecurity
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Specific/Medical/firstaidkits.rsi # (Perfectly functional) stand-in sprite, would be awesome to have something resembling a real life IFAK...
+    sprite: _Moffstation/Objects/Specific/Medical/firstaidkits.rsi # (Perfectly functional) stand-in sprite, but it would be awesome to have something resembling a real life IFAK...
     state: security
   - type: Item
     heldPrefix: blackkit
@@ -13,9 +13,8 @@
   - type: Storage
     maxItemSize: Small
     grid:
-    - 0,0,2,1
+    - 0,0,1,1
   - type: Tag
     tags:
     - SecBeltEquip
     - Medkit
-
