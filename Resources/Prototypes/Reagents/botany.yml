@@ -137,7 +137,7 @@
             Poison: -1
       - !type:EvenHealthChange
         damage:
-          Brute: -0.75 # Offbrand
+          Brute: -1 # Offbrand
       # End Offbrand
         conditions:
         - !type:OrganType
@@ -153,14 +153,16 @@
             Asphyxiation: 1
             Heat: 2
             Poison: 1
-    Medicine:
-      effects:
+    # Begin Offbrand Removals
+    # Medicine:
+    #   effects:
+    # End Offbrand Removals
       - !type:Polymorph
         prototype: TreeMorph
         conditions:
           - !type:OrganType
             type: Plant
-          - !type:ReagentThreshold
+          - !type:MetaboliteThreshold # Offbrand
             min: 80
 
 - type: reagent

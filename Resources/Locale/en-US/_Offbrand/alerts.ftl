@@ -34,6 +34,9 @@ alerts-critical-brain-damage-desc = Your brain cannot control your body.
 alerts-brain-death-name = [color=crimson]Brain Dead[/color]
 alerts-brain-death-desc = Your brain has faded away into nothingness.
 
+alerts-brain-oxygen-name = [color=yellow]Inadequate Air[/color]
+alerts-brain-oxygen-desc = Your brain is not getting the air it needs. It will pass out soon if this doesn't change.
+
 alerts-minor-lung-damage-name = [color=yellow]Minor Lung Damage[/color]
 alerts-minor-lung-damage-desc = Your lungs have taken minor damage. Turn up the pressure on your internals and seek care.
 

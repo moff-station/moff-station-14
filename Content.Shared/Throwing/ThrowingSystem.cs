@@ -11,6 +11,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Random; // Moffstation
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Throwing;
@@ -18,6 +19,11 @@ namespace Content.Shared.Throwing;
 public sealed class ThrowingSystem : EntitySystem
 {
     public const float ThrowAngularImpulse = 5f;
+
+    // Moffstation - Start - Throwing modifiers
+    public const float MoffSpinVariation = 2f;
+    public const float MoffSpeedVariation = 2f;
+    // Moffstation - End
 
     public const float PushbackDefault = 2f;
 
@@ -35,6 +41,7 @@ public sealed class ThrowingSystem : EntitySystem
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
+    [Dependency] private readonly IRobustRandom _random = default!; // Moffstation - throwing variation
 
     public override void Initialize()
     {
@@ -178,7 +185,14 @@ public sealed class ThrowingSystem : EntitySystem
         {
             if (physics.InvI > 0f && (!TryComp(uid, out throwingAngle) || throwingAngle.AngularVelocity))
             {
-                _physics.ApplyAngularImpulse(uid, ThrowAngularImpulse / physics.InvI, body: physics);
+                // ES START
+                // We step the amount of 'full spins' according to distance
+                // less than 4m we dont want to spin at all, then 1 more full spin each 4 more
+                // this is so we can normalize the rotation to 0 at the end of the throw without it looking weird
+                // (we want to avoid arbitrarily rotated items where possible for readability reasons)
+                var spinVelocity = _random.NextFloat(MoffSpinVariation, -MoffSpinVariation);
+                _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / (flyTime * physics.InvI), body: physics);
+                // ES END
             }
             else
             {
@@ -198,6 +212,7 @@ public sealed class ThrowingSystem : EntitySystem
         // This is an exact formula we get from exponentially decaying velocity after landing.
         // If someone changes how tile friction works at some point, this will have to be adjusted.
         // This doesn't actually compensate for air friction, but it's low enough it shouldn't matter.
+        baseThrowSpeed += _random.NextFloat(MoffSpeedVariation, -MoffSpeedVariation);   // Moffstation - Throwing variation
         var throwSpeed = compensateFriction ? direction.Length() / (flyTime + 1 / tileFriction) : baseThrowSpeed;
         var impulseVector = direction.Normalized() * throwSpeed * physics.Mass;
         _physics.ApplyLinearImpulse(uid, impulseVector, body: physics);
