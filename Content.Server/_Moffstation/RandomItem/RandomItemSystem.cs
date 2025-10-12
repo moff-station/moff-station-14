@@ -18,7 +18,7 @@ public sealed class RandomItemSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
 
     private readonly List<EntProtoId> _possibleGiftsSafe = new();
     private readonly List<EntProtoId> _possibleGiftsUnsafe = new();
@@ -27,15 +27,17 @@ public sealed class RandomItemSystem : EntitySystem
     {
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
         SubscribeLocalEvent<RandomItemComponent, MapInitEvent>(OnMapInit);
+
+        BuildIndex();
     }
 
     private void OnMapInit(Entity<RandomItemComponent> ent, ref MapInitEvent args)
     {
         var validSpawns = (ent.Comp.InsaneMode ? _possibleGiftsUnsafe : _possibleGiftsSafe)
-            // .Where(spawn => ent.Comp.Whitelist.Intersect(_prototype.Index(spawn).Components.Keys).Any())
-            .Where(spawn => !ent.Comp.Blacklist.Intersect(_prototype.Index(spawn).Components.Keys).Any())
+            // .Where(spawn => ent.Comp.Whitelist!.Intersect(_prototype.Index(spawn).Components.Keys).Any())
+            // .Where(spawn => !ent.Comp.Blacklist!.Intersect(_prototype.Index(spawn).Components.Keys).Any())
             .ToHashSet();
-        Spawn(_random.Pick(validSpawns));
+        Spawn(_random.Pick(validSpawns),  Transform(ent.Owner).Coordinates);
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs obj)

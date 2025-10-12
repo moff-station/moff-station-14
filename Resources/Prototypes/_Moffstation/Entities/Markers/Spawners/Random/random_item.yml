@@ -1,12 +1,8 @@
 - type: entity
-  name: Random Item Spawner
   id: RandomItemSpawner
-  placement:
-    mode: SnapgridCenter
+  parent: MarkerBase
+  name: Random Item Spawner
   components:
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: _Moffstation/Objects/Fun/figurines.rsi
-      state: fig-box
   - type: RandomItem
+
+
