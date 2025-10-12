@@ -11,14 +11,10 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.RandomItem;
 
-/// <summary>
-/// This handles...
-/// </summary>
 public sealed class RandomItemSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
 
     private readonly List<EntProtoId> _possibleGiftsSafe = new();
     private readonly List<EntProtoId> _possibleGiftsUnsafe = new();
@@ -37,7 +33,7 @@ public sealed class RandomItemSystem : EntitySystem
             // .Where(spawn => ent.Comp.Whitelist!.Intersect(_prototype.Index(spawn).Components.Keys).Any())
             // .Where(spawn => !ent.Comp.Blacklist!.Intersect(_prototype.Index(spawn).Components.Keys).Any())
             .ToHashSet();
-        Spawn(_random.Pick(validSpawns),  Transform(ent.Owner).Coordinates);
+        Spawn(_random.Pick(validSpawns), Transform(ent.Owner).Coordinates);
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs obj)

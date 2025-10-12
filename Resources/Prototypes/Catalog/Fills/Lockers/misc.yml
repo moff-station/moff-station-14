@@ -183,6 +183,10 @@
     # Recursive
     - id: ClosetMaintenanceFilledRandom
       prob: 0.01
+    # Moffstation - Start - Random maints item
+    - !type:RandomItemSelector
+      prob: 0.01
+    # Moffstation - End
 
 - type: entity
   id: ClosetMaintenanceFilledRandom
