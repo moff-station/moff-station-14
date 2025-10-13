@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared._Moffstation.Throwing; // Moffstation
+using Content.Shared._Moffstation.Throwing;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Gravity;
@@ -10,7 +10,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Random; //Moffstation
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Throwing
