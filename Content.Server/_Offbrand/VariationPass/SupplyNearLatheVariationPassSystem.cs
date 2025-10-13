@@ -1,3 +1,10 @@
+//
+//  Moffstation - This file has been rewritten and moved to our namespace
+//  We added support for it being able to spawn the crate on multiple lathes
+//  Its not a huge change or anything, but I had to namespace most stuff in the functions so I might as well
+//  Start using this one again if multi-lathe support is added
+//
+/*
 using Content.Server.GameTicking.Rules.VariationPass;
 using Content.Server.GameTicking.Rules;
 using Content.Shared.Examine;
@@ -28,3 +35,4 @@ public sealed class SupplyNearLatheVariationPassSystem : VariationPassSystem<Sup
         SpawnNextToOrDrop(ent.Comp.EntityToSpawn, lathe);
     }
 }
+*/

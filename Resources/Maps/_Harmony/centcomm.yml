@@ -48,6 +48,8 @@ entities:
     - type: Transform
       pos: -77.5,-48.5
       parent: invalid
+    - type: BecomesStation
+      id: centcomm
     - type: MapGrid
       chunks:
         0,2:
