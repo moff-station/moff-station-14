@@ -23,7 +23,6 @@ public sealed class ThrowingSystem : EntitySystem
 
     // Moffstation - Start - Throwing modifiers
     public const float MoffSpinVariation = 2f;
-    public const float MoffMinSpin = 10f; //
     public const float MoffSpeedVariation = 0f;
     // Moffstation - End
 
