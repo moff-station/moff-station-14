@@ -1,10 +1,8 @@
-using Robust.Shared.GameStates;
-
 namespace Content.Shared._Moffstation.Throwing;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class LandUprightComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [DataField]
     public float Chance;
 }
