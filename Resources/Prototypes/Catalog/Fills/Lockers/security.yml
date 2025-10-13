@@ -156,10 +156,10 @@
   table: !type:AllSelector
     children:
     - id: ClothingEyesGlassesNoir
-    - id: ClothingHeadHatDetGadget
+#    - id: ClothingHeadHatDetGadget # Moffstation - Start (New Detective Outfits)
     - id: ClothingNeckTieDet
-    - id: ClothingOuterVestDetective
-    - id: ClothingOuterCoatDetectiveLoadout
+#    - id: ClothingOuterVestDetective
+#    - id: ClothingOuterCoatDetectiveLoadout # Moffstation - End (New Detective Outfits)
     - id: FlippoEngravedLighter
     - id: FlashlightSeclite
     - id: ForensicScanner
@@ -172,6 +172,45 @@
     - id: BoxEvidenceMarkers
     - id: HandLabeler
     - id: BoxTapeRecorder # DeltaV
+    - id: LuxuryPen # Moffstation - Start (New Detective Clothes)
+    - id: ClothingNeckDetBadge
+    - !type:GroupSelector # Detective needs their notes
+      rolls: !type:RangeNumberSelector
+        range: 0, 2
+      children:
+      - id: BoxFolderBlue
+      - id: BoxFolderRed
+      - id: BoxFolderYellow
+      - id: BoxFolderWhite
+      - id: BoxFolderGrey
+      - id: BoxFolderBlack
+    - id: ClothingShoesLeather
+    - id: ClothingShoesBootsLaceup
+    - !type:GroupSelector # Randomly choose one of these three sets of clothing for the detective. It's the previous person's outfit.
+      children:
+      - !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitDetSleuth
+        - id: ClothingUniformJumpskirtDetInvestigator
+      - !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitDetInvestigator
+        - id: ClothingUniformJumpskirtDetSleuth
+      - !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitDetectiveGrey
+        - id: ClothingUniformJumpskirtDetective
+    - !type:GroupSelector # Randomly choose one of these three sets of clothing for the detective. It's the previous person's outfit.
+      children:
+      - !type:AllSelector
+        children:
+        - id: ClothingOuterCoatSleuth
+      - !type:AllSelector
+        children:
+        - id: ClothingOuterCoatDetectiveLoadout
+      - !type:AllSelector
+        children:
+        - id: ClothingOuterCoatDetectiveLoadoutGrey #Moffstation - End (New Detective Outfits)
 
 - type: entity
   id: ClosetBombFilled
