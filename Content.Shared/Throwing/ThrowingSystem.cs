@@ -11,7 +11,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Throwing;
@@ -21,7 +20,9 @@ public sealed class ThrowingSystem : EntitySystem
     public const float ThrowAngularImpulse = 5f;
 
     // ES START
-    public const float MoffSpinVariation = 4f;
+    public const float ESThrowSpinStep = 4f;
+
+    public const float ESThrowSpeedDefault = 8.5f;
     // ES END
 
     public const float PushbackDefault = 2f;
@@ -42,7 +43,6 @@ public sealed class ThrowingSystem : EntitySystem
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -55,7 +55,9 @@ public sealed class ThrowingSystem : EntitySystem
     public void TryThrow(
         EntityUid uid,
         EntityCoordinates coordinates,
-        float baseThrowSpeed = 10.0f,
+        // ES START
+        float baseThrowSpeed = ESThrowSpeedDefault,
+        // ES END
         EntityUid? user = null,
         float pushbackRatio = PushbackDefault,
         float? friction = null,
@@ -88,7 +90,9 @@ public sealed class ThrowingSystem : EntitySystem
     /// <param name="unanchor">If true and the thrown entity has <see cref="AnchorableComponent"/>, unanchor the thrown entity</param>
     public void TryThrow(EntityUid uid,
         Vector2 direction,
-        float baseThrowSpeed = 10.0f,
+        // ES START
+        float baseThrowSpeed = ESThrowSpeedDefault,
+        // ES END
         EntityUid? user = null,
         float pushbackRatio = PushbackDefault,
         float? friction = null,
@@ -133,7 +137,9 @@ public sealed class ThrowingSystem : EntitySystem
         PhysicsComponent physics,
         TransformComponent transform,
         EntityQuery<ProjectileComponent> projectileQuery,
-        float baseThrowSpeed = 10.0f,
+        // ES START
+        float baseThrowSpeed = ESThrowSpeedDefault,
+        // ES END
         EntityUid? user = null,
         float pushbackRatio = PushbackDefault,
         float? friction = null,
@@ -191,9 +197,9 @@ public sealed class ThrowingSystem : EntitySystem
                 // less than 4m we dont want to spin at all, then 1 more full spin each 4 more
                 // this is so we can normalize the rotation to 0 at the end of the throw without it looking weird
                 // (we want to avoid arbitrarily rotated items where possible for readability reasons)
-                var spinVelocity = _random.NextFloat(MoffSpinVariation, -MoffSpinVariation);
-                if (spinVelocity > 0)
-                    _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / (flyTime * physics.InvI), body: physics);
+                var spins = MathF.Floor(direction.Length() / ESThrowSpinStep);
+                if (spins > 0)
+                    _physics.ApplyAngularImpulse(uid, spins * MathF.Tau / (flyTime * physics.InvI), body: physics);
                 // ES END
             }
             else
