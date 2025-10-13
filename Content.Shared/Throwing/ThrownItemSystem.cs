@@ -132,13 +132,13 @@ namespace Content.Shared.Throwing
             if (thrownItem.Thrower is not null)
                 _adminLogger.Add(LogType.Landed, LogImpact.Low, $"{ToPrettyString(uid):entity} thrown by {ToPrettyString(thrownItem.Thrower.Value):thrower} landed.");
 
-            // Moffstation - Begin
             if (TryComp<LandUprightComponent>(uid, out var upright) && _random.Prob(upright.Chance))
             {
+                // ES START
                 _transform.SetLocalRotation(uid, Angle.Zero);
                 _physics.SetAngularVelocity(uid, 0f, body: physics);
+                // ES END
             }
-            // Moffstation - End
 
             _broadphase.RegenerateContacts((uid, physics));
             var landEvent = new LandEvent(thrownItem.Thrower, playSound);

@@ -29,7 +29,9 @@ public sealed class ThrowingSystem : EntitySystem
 
     public const float FlyTimePercentage = 0.8f;
 
+    // ES START
     private const float TileFrictionMod = 1.5f;
+    // ES END
 
     private float _frictionModifier;
     private float _airDamping;
