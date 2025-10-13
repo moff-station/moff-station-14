@@ -23,6 +23,7 @@ public sealed class ThrowingSystem : EntitySystem
 
     // Moffstation - Start - Throwing modifiers
     public const float MoffSpinVariation = 2f;
+    public const float MoffMinSpin = 10f; //
     public const float MoffSpeedVariation = 0f;
     // Moffstation - End
 
@@ -193,7 +194,7 @@ public sealed class ThrowingSystem : EntitySystem
                 // Moffstation - Start - Thrown item spin patters
                 // Spin velocity is randomized
                 var spinVelocity = rand.NextFloat(-MoffSpinVariation, MoffSpinVariation);
-                _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / (flyTime * physics.InvI), body: physics);
+                _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / physics.InvI, body: physics);
                 // Moffstation - End
             }
             else
