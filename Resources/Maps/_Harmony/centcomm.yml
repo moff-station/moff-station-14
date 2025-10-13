@@ -4,7 +4,7 @@ meta:
   engineVersion: 267.2.0
   forkId: ""
   forkVersion: ""
-  time: 10/12/2025 23:59:21
+  time: 10/13/2025 19:50:04
   entityCount: 8785
 maps: []
 grids:
@@ -4455,8 +4455,6 @@ entities:
             Oxygen: 27.225372
             Nitrogen: 102.419266
         chunkSize: 4
-    - type: BecomesStation
-      id: centcomm
     - type: ImplicitRoof
 - proto: ActionToggleBlock
   entities:
@@ -27575,7 +27573,7 @@ entities:
       pos: 50.5,57.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -43371.137
+      secondsUntilStateChange: -43409.227
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -40389,6 +40387,13 @@ entities:
     - type: Transform
       pos: 73.5,23.5
       parent: 1
+- proto: MedicalTechFab
+  entities:
+  - uid: 5866
+    components:
+    - type: Transform
+      pos: 75.5,33.5
+      parent: 1
 - proto: MedkitAdvancedFilled
   entities:
   - uid: 5875
@@ -49460,11 +49465,6 @@ entities:
       parent: 1
 - proto: TableReinforced
   entities:
-  - uid: 5866
-    components:
-    - type: Transform
-      pos: 75.5,33.5
-      parent: 1
   - uid: 7192
     components:
     - type: Transform
