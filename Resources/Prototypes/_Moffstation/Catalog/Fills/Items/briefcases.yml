@@ -3,13 +3,10 @@
   parent: BriefcaseNanotrasenFlashy
   suffix: Filled, Spesos
   components:
-  - type: Item
-    size: Ginormous
   - type: StorageFill
     contents:
     - id: EncryptionKeyCentCom
     - id: SpaceCash20000
-      amount: 1
     - id: ClothingHeadHatCaptainTricorn
     - id: ClothingNeckCloakNanotrasen
     - id: ClothingUniformJumpsuitNanotrasen
@@ -23,8 +20,6 @@
   parent: BriefcaseNanotrasen
   suffix: Filled
   components:
-  - type: Item
-    size: Ginormous
   - type: StorageFill
     contents:
     - id: EncryptionKeyCentCom
@@ -35,3 +30,18 @@
     - id: ClothingUniformJumpsuitLawyerBlue
     - id: LuxuryPen
     - id: WeaponDisabler
+
+- type: entity
+  id: BriefcaseCentcomm
+  parent: BriefcaseCentcomm
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: CentCommFlippo
+    - id: CigarGoldCase
+    - id: PenCentcom
+    - id: ClothingNeckScarfStripedCentcom
+    - id: BookSpaceLaw
+    - id: BibleNanoTrasen
+    - id: BoxFolderCentComClipboardThreePapers
