@@ -23,7 +23,7 @@ public sealed class ThrowingSystem : EntitySystem
 
     // Moffstation - Start - Throwing modifiers
     public const float MoffSpinVariation = 2f;
-    public const float MoffSpeedVariation = 2f;
+    public const float MoffSpeedVariation = 0f;
     // Moffstation - End
 
     public const float PushbackDefault = 2f;
@@ -192,7 +192,7 @@ public sealed class ThrowingSystem : EntitySystem
             {
                 // Moffstation - Start - Thrown item spin patters
                 // Spin velocity is randomized
-                var spinVelocity = rand.NextFloat(MoffSpinVariation, -MoffSpinVariation);
+                var spinVelocity = rand.NextFloat(-MoffSpinVariation, MoffSpinVariation);
                 _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / (flyTime * physics.InvI), body: physics);
                 // Moffstation - End
             }
@@ -214,7 +214,7 @@ public sealed class ThrowingSystem : EntitySystem
         // This is an exact formula we get from exponentially decaying velocity after landing.
         // If someone changes how tile friction works at some point, this will have to be adjusted.
         // This doesn't actually compensate for air friction, but it's low enough it shouldn't matter.
-        baseThrowSpeed += rand.NextFloat(MoffSpeedVariation, -MoffSpeedVariation);   // Moffstation - Throwing variation
+        baseThrowSpeed += rand.NextFloat(-MoffSpeedVariation, MoffSpeedVariation);   // Moffstation - Throwing variation
         var throwSpeed = compensateFriction ? direction.Length() / (flyTime + 1 / tileFriction) : baseThrowSpeed;
         var impulseVector = direction.Normalized() * throwSpeed * physics.Mass;
         _physics.ApplyLinearImpulse(uid, impulseVector, body: physics);
