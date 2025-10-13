@@ -5,6 +5,7 @@ using Content.Shared.Database;
 using Content.Shared.Gravity;
 using Content.Shared.Physics;
 using Content.Shared.Movement.Pulling.Events;
+using Content.Shared.Random.Helpers;  // Moffstation
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -30,7 +31,6 @@ namespace Content.Shared.Throwing
         // ES START
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         // ES END
-        [Dependency] private readonly IRobustRandom _random = default!; // Moffstation - Land upright
 
         private const string ThrowingFixture = "throw-fixture";
 
@@ -133,7 +133,10 @@ namespace Content.Shared.Throwing
                 _adminLogger.Add(LogType.Landed, LogImpact.Low, $"{ToPrettyString(uid):entity} thrown by {ToPrettyString(thrownItem.Thrower.Value):thrower} landed.");
 
             // Moffstation - Begin
-            if (TryComp<LandUprightComponent>(uid, out var upright) && _random.Prob(upright.Chance))
+            // TODO: Replace with RandomPredicted once the engine PR is merged
+            var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_gameTiming.CurTick.Value, uid.Id });
+            var rand = new System.Random(seed);
+            if (TryComp<LandUprightComponent>(uid, out var upright) && rand.Prob(upright.Chance))
             {
                 _transform.SetLocalRotation(uid, Angle.Zero);
                 _physics.SetAngularVelocity(uid, 0f, body: physics);

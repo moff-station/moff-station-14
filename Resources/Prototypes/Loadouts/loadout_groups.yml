@@ -1260,6 +1260,9 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
+  # Moffstation - Begin (New Detective Outfits)
+  - DetectiveBadge
+  # Moffstation - End (New Detective Outfits)
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1269,6 +1272,12 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # Moffstation - Begin (New Detective Outfits)
+  - SleuthSuit
+  - SleuthSkirt
+  - InvestigatorJumpsuit
+  - InvestigatorJumpskirt
+  # Moffstation - End (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
   - SecurityJumpsuit
   - SecurityJumpskirt
@@ -1283,6 +1292,9 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  # Moffstation - Begin (New Detective Outfits)
+  - DetectiveCoatSleuth
+  # Moffstation - End (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
   - ArmorVest
   - ArmorVestSlim
