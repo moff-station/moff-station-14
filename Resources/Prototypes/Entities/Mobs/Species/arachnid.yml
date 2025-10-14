@@ -33,13 +33,13 @@
     - reagents: [Water]
       methods: [Touch]
       effects:
-      - !type:WearableReaction
+      - !type:SpawnEntityInInventory
         slot: head
-        prototypeID: WaterDropletHat
+        entity: WaterDropletHat
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
   - type: Crawler #Moffstation start
     speedModifier: .65 #Moffstation end
   # Damage (Self)
@@ -134,4 +134,4 @@
     speciesId: arachnid
 
 
-#>88w88
+#>88w88<

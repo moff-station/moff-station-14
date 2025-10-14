@@ -297,7 +297,8 @@ public abstract class SharedFlashSystem : EntitySystem
 
     private void OnExamine(Entity<FlashImmunityComponent> ent, ref ExaminedEvent args)
     {
-        args.PushMarkup(Loc.GetString("flash-protection"));
+        if (ent.Comp.ShowInExamine)
+            args.PushMarkup(Loc.GetString("flash-protection"));
     }
 
     // Moffstation - Start - Night Vision blocked by flash immunity

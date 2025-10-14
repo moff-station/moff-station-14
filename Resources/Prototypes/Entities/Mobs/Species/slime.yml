@@ -82,15 +82,15 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
+        scaling: true
         damage:
           types:
-            Heat: 0.5 # MOFFSTATION CHANGE - Increases slime water damage by 5x
+            Heat: 0.5 # Moffstation - Increases slime water damage by 5x
       - !type:PopupMessage
         type: Local
         visualType: Large
