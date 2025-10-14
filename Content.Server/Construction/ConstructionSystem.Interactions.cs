@@ -67,17 +67,6 @@ namespace Content.Server.Construction
             if (GetCurrentEdge(uid, construction) is {} edge)
             {
                 var result = HandleEdge(uid, ev, edge, validation, construction);
-
-                // Begin Offbrand
-                if (result is HandleResult.False && construction.StepIndex == 0)
-                {
-                    if (!validation)
-                        construction.EdgeIndex = null;
-
-                    return HandleNode(uid, ev, node, validation, construction);
-                }
-                // End Offbrand
-
                 return result;
             }
 
