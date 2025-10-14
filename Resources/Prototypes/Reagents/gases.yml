@@ -152,8 +152,6 @@
   name: reagent-name-tritium
   desc: reagent-desc-tritium
   physicalDesc: reagent-physical-desc-ionizing
-  allowedDepartments:
-  - Engineering
   flavor: bitter
   color: "#66ff33"
   tileReactions:
@@ -247,13 +245,13 @@
         damage:
           types:
             Poison:
-              0.2 # Offbrand
+              0.8
       - !type:Oxygenate # carbon dioxide displaces oxygen from the bloodstream, causing asphyxiation
         conditions:
         - !type:OrganType
           type: Plant
           shouldHave: false
-        factor: -1 # Offbrand
+        factor: -4
       # We need a metabolism effect on reagent removal
       #- !type:AdjustAlert
       #  alertType: CarbonDioxide
@@ -372,7 +370,7 @@
           shouldHave: false
         effectProto: StatusEffectForcedSleeping
         time: 3
-        type: Update
+        type: Add
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -391,10 +389,6 @@
   name: reagent-name-frezon
   desc: reagent-desc-frezon
   physicalDesc: reagent-physical-desc-gaseous
-  allowedDepartments:
-  - Engineering
-  allowedJobs:
-  - Chemist
   flavor: bitter
   color: "#3a758c"
   boilingPoint: -195.8
@@ -412,6 +406,7 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 15
+        refresh: false
       - !type:Drunk
         boozePower: 15
       - !type:PopupMessage
@@ -451,6 +446,7 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 500
+        refresh: false
       - !type:Drunk
         boozePower: 500
         conditions:
