@@ -83,7 +83,8 @@
     contents:
       - id: MedicatedSuture
       - id: RegenerativeMesh
-      - id: ChemistryBottleTramadol # Offbrand
+      - id: Bloodpack
+        amount: 2
 
 - type: entity
   id: MedkitCombatFilled
@@ -95,7 +96,7 @@
       - id: MedicatedSuture
       - id: RegenerativeMesh
       - id: SyringeEphedrine
-      - id: SyringeOxycodone # Offbrand
+      - id: SyringeSaline
       - id: BruteAutoInjector
       - id: BurnAutoInjector
 
