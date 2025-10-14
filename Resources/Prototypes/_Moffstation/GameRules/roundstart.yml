@@ -10,9 +10,6 @@
     - id: BloodBrothers
       orGroup: SubGamemodes
       prob: 0.45
-#    - id: Pirates
-#      orGroup: SubGamemodes
-#      prob: 0.15
     - id: SubWizard
       orGroup: SubGamemodes
       prob: 0.10
@@ -29,9 +26,6 @@
     - id: BloodBrothers
       orGroup: SubGamemodes
       prob: 0.5
-#    - id: Pirates
-#      orGroup: SubGamemodes
-#      prob: 0.2
 
 - type: entity
   parent: BaseGameRule
@@ -48,6 +42,3 @@
     - id: BloodBrothers
       orGroup: SubGamemodes
       prob: 0.35
-#    - id: Pirates
-#      orGroup: SubGamemodes
-#      prob: 0.2
