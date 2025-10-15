@@ -52,7 +52,7 @@ public partial class InventorySystem
     public bool InSlotWithFlags(Entity<TransformComponent?, MetaDataComponent?> entity, SlotFlags flags)
     {
         return TryGetContainingSlot(entity, out var slot)
-               && (slot.SlotFlags & flags) != 0; // Moffstation - Fix to make `flags` able to take actual flags rather than single values.
+               && (slot.SlotFlags & flags) == flags;
     }
 
     public bool SpawnItemInSlot(EntityUid uid, string slot, string prototype, bool silent = false, bool force = false, InventoryComponent? inventory = null)
