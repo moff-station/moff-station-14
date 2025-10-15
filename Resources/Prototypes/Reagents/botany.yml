@@ -14,8 +14,8 @@
       effects:
       - !type:SatiateHunger
         conditions:
-        - !type:OrganType
-          type: Plant
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
 
 - type: reagent
   id: Left4Zed
@@ -38,15 +38,15 @@
       effects:
       - !type:SatiateHunger
         conditions:
-        - !type:OrganType
-          type: Plant
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
       - !type:HealthChange
         damage:
           types:
             Poison: 1
         conditions:
-        - !type:OrganType
-          type: Plant
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
 
 - type: reagent
   id: PestKiller
@@ -69,8 +69,8 @@
           types:
             Poison: 3
         conditions:
-        - !type:OrganType
-          type: Plant
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
 
 - type: reagent
   id: PlantBGone
@@ -100,8 +100,8 @@
             Slash: 1
             Piercing: 1
         conditions:
-        - !type:OrganType
-          type: Plant
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
 
 - type: reagent
   id: RobustHarvest
@@ -123,46 +123,38 @@
     - !type:RobustHarvest {}
   metabolisms:
     Poison:
-      # Begin Offbrand
-      metabolismRate: 0.2
-      statusEffects:
-      - statusEffect: StatusEffectPainkillersNegligibleRobustHarvest
-        conditions:
-        - !type:OrganType
-          type: Plant
       effects:
       - !type:HealthChange
         damage:
           types:
-            Poison: -1
-      - !type:EvenHealthChange
-        damage:
-          Brute: -1 # Offbrand
-      # End Offbrand
+            Poison: -2
+            Blunt: -3
+            Slash: -3
+            Piercing: -3
         conditions:
-        - !type:OrganType
-          type: Plant
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
       - !type:HealthChange
         conditions:
-        - !type:OrganType
-          type: Plant
-        - !type:ReagentThreshold
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
+        - !type:ReagentCondition
+          reagent: RobustHarvest
           min: 30
         damage:
           types:
             Asphyxiation: 1
             Heat: 2
             Poison: 1
-    # Begin Offbrand Removals
-    # Medicine:
-    #   effects:
-    # End Offbrand Removals
+    Medicine:
+      effects:
       - !type:Polymorph
         prototype: TreeMorph
         conditions:
-          - !type:OrganType
-            type: Plant
-          - !type:MetaboliteThreshold # Offbrand
+          - !type:MetabolizerTypeCondition
+            type: [Plant]
+          - !type:ReagentCondition
+            reagent: RobustHarvest
             min: 80
 
 - type: reagent
@@ -180,33 +172,6 @@
       probability: 0.20
     - !type:PlantAdjustPotency
       amount: -3 # Match this with current rate of Robust Harvest potency increase
-  # Begin Offbrand
-  metabolisms:
-    Poison:
-      metabolismRate: 1
-      statusEffects:
-      - statusEffect: StatusEffectHeartStrainSedin
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 2
-      - !type:CreateEntityReactionEffect
-        entity: MobDionaNymph
-        conditions:
-        - !type:OrganType
-          type: Plant
-        - !type:ReagentThreshold
-          min: 40
-      - !type:AdjustReagent
-        reagent: Sedin
-        amount: -20
-        conditions:
-        - !type:OrganType
-          type: Plant
-        - !type:ReagentThreshold
-          min: 40
-  # End Offbrand
 
 - type: reagent
   id: WeedKiller
@@ -229,8 +194,8 @@
           types:
             Poison: 4
         conditions:
-        - !type:OrganType
-          type: Plant
+        - !type:MetabolizerTypeCondition
+          type: [Plant]
 
 - type: reagent
   id: Ammonia
@@ -254,55 +219,41 @@
       - !type:SatiateThirst
         factor: 4
         conditions:
-        - !type:OrganType
-          type: Avali
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
     # Moffstation end
     Poison:
       effects:
       - !type:HealthChange
+        # Moffstation start - Allow avali to drink ammonia
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+        # Moffstation end
         damage:
           types:
             Caustic: 1
-      # Begin Offbrand
-        conditions:
-        - !type:OrganType
-          type: Plant
-          shouldHave: false
-        # Moffstation start - Allow avali to drink ammonia
-        - !type:OrganType
-          type: Avali
-          shouldHave: false
-        # Moffstation end
-      - !type:SatiateHunger
-        factor: 1
-        conditions:
-        - !type:OrganType
-          type: Plant
-      # End Offbrand
     Gas:
       effects:
       - !type:HealthChange
         conditions:
-        - !type:OrganType
-          type: Rat
-          shouldHave: false
-        - !type:ReagentThreshold
+        - !type:MetabolizerTypeCondition
+          type: [ Rat ]
+          inverted: true
+        - !type:ReagentCondition
           reagent: Ammonia
           min: 1
         ignoreResistances: true
         damage:
           types:
             Poison: 0.25
-      - !type:ChemVomit
+      - !type:Vomit
         probability: 0.12
         conditions:
-        - !type:OrganType
-          type: Rat
-          shouldHave: false
-        - !type:OrganType
-          type: Vox
-          shouldHave: false
-        - !type:ReagentThreshold
+        - !type:MetabolizerTypeCondition
+          type: [ Rat, Vox ]
+          inverted: true
+        - !type:ReagentCondition
           reagent: Ammonia
           min: 0.8
       - !type:PopupMessage
@@ -311,29 +262,29 @@
         messages: [ "ammonia-smell" ]
         probability: 0.1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Ammonia
           min: 0.25
       - !type:HealthChange
         conditions:
-        - !type:OrganType
-          type: Rat
-        - !type:ReagentThreshold
+        - !type:MetabolizerTypeCondition
+          type: [ Rat ]
+        - !type:ReagentCondition
           reagent: Ammonia
           min: 1
-        scaleByQuantity: true
+        scaling: true
         ignoreResistances: true
         damage:
           groups:
-            Brute: -5
-            Burn: -5
+            Brute: -2.5
+            Burn: -2.5
           types:
             Bloodloss: -5
       - !type:Oxygenate # ammonia displaces nitrogen in vox blood
         conditions:
-        - !type:OrganType
-          type: Vox
-        factor: -1 # Offbrand
+        - !type:MetabolizerTypeCondition
+          type: [ Vox ]
+        factor: -4
 
 
 - type: reagent
@@ -365,36 +316,20 @@
       - !type:SatiateThirst
         factor: 2
         conditions:
-        - !type:OrganType
-          type: Avali
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.2
     # Moffstation end
     Poison:
-      metabolismRate: 0.2 # Offbrand
       effects:
       - !type:HealthChange
-        damage:
-          types:
-      # Begin Offbrand
-            Caustic: 0.5
-        conditions:
-        - !type:OrganType
-          type: Plant
-          shouldHave: false
         # Moffstation start - Allow avali to drink ammonia
-        - !type:OrganType
-          type: Avali
-          shouldHave: false
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
         # Moffstation end
-      - !type:HealthChange
         damage:
           types:
-            Heat: -0.5
-            Cold: -0.5
-            Shock: -0.5
-        conditions:
-        - !type:OrganType
-          type: Plant
-      # End Offbrand
+            Caustic: 1

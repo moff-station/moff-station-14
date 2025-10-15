@@ -2,26 +2,27 @@ using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
 using Content.Server.Chat.Systems;
-using Content.Server.EntityEffects;
 using Content.Shared.Body.Systems;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Body.Prototypes;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.EntityConditions;
+using Content.Shared.EntityConditions.Conditions.Body;
 using Content.Shared.EntityEffects;
-using Content.Shared.EntityEffects.EffectConditions;
 using Content.Shared.EntityEffects.Effects;
+using Content.Shared.EntityEffects.Effects.Body;
 using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Body.Systems;
 
@@ -30,16 +31,16 @@ public sealed class RespiratorSystem : EntitySystem
 {
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly AtmosphereSystem _atmosSys = default!;
     [Dependency] private readonly BodySystem _bodySystem = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DamageableSystem _damageableSys = default!;
     [Dependency] private readonly LungSystem _lungSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private readonly SharedEntityConditionsSystem _entityConditions = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly EntityEffectSystem _entityEffect = default!;
 
     private static readonly ProtoId<MetabolismGroupPrototype> GasId = new("Gas");
 
@@ -51,7 +52,6 @@ public sealed class RespiratorSystem : EntitySystem
         UpdatesAfter.Add(typeof(MetabolizerSystem));
         SubscribeLocalEvent<RespiratorComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<RespiratorComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
-        SubscribeLocalEvent<RespiratorComponent, ApplyRespiratoryRateModifiersEvent>(OnApplyRespiratoryRateModifiers);
 
         // BodyComp stuff
         SubscribeLocalEvent<BodyComponent, InhaledGasEvent>(OnGasInhaled);
@@ -63,7 +63,7 @@ public sealed class RespiratorSystem : EntitySystem
 
     private void OnMapInit(Entity<RespiratorComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.OverallAdjustedUpdateInterval;
+        ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.AdjustedUpdateInterval;
     }
 
     public override void Update(float frameTime)
@@ -76,14 +76,14 @@ public sealed class RespiratorSystem : EntitySystem
             if (_gameTiming.CurTime < respirator.NextUpdate)
                 continue;
 
-            respirator.NextUpdate += respirator.OverallAdjustedUpdateInterval; // Offbrand
+            respirator.NextUpdate += respirator.AdjustedUpdateInterval;
 
             if (_mobState.IsDead(uid))
                 continue;
 
-            UpdateSaturation(uid, -(float)respirator.BodyAdjustedUpdateInterval.TotalSeconds, respirator); // Offbrand
+            UpdateSaturation(uid, -(float)respirator.UpdateInterval.TotalSeconds, respirator);
 
-            if (!_mobState.IsIncapacitated(uid) || HasComp<HeartrateComponent>(uid)) // Offbrand - simplemobs get crit behaviour, heartmobs get hyperventilation
+            if (!_mobState.IsIncapacitated(uid)) // cannot breathe in crit.
             {
                 switch (respirator.Status)
                 {
@@ -98,10 +98,7 @@ public sealed class RespiratorSystem : EntitySystem
                 }
             }
 
-            // Begin Offbrand - Respirators gasp when hyperventilating
-            var isSuffocating = respirator.Saturation < respirator.SuffocationThreshold;
-            var hyperventilation = respirator.BreathRateMultiplier <= respirator.HyperventilationThreshold;
-            if (isSuffocating || hyperventilation)
+            if (respirator.Saturation < respirator.SuffocationThreshold)
             {
                 if (_gameTiming.CurTime >= respirator.LastGaspEmoteTime + respirator.GaspEmoteCooldown)
                 {
@@ -112,14 +109,10 @@ public sealed class RespiratorSystem : EntitySystem
                         ignoreActionBlocker: true);
                 }
 
-                if (isSuffocating)
-                {
-                    TakeSuffocationDamage((uid, respirator));
-                    respirator.SuffocationCycles += 1;
-                    continue;
-                }
+                TakeSuffocationDamage((uid, respirator));
+                respirator.SuffocationCycles += 1;
+                continue;
             }
-            // End Offbrand - Respirators gasp when hyperventilating
 
             StopSuffocation((uid, respirator));
             respirator.SuffocationCycles = 0;
@@ -143,15 +136,7 @@ public sealed class RespiratorSystem : EntitySystem
         if (ev.Gas is null)
             return;
 
-        // Begin Offbrand
-        var breathEv = new Content.Shared._Offbrand.Wounds.BeforeBreathEvent(entity.Comp.AdjustedBreathVolume); // Offbrand - modify breath volume
-        RaiseLocalEvent(entity, ref breathEv);
-
-        var gas = ev.Gas.RemoveVolume(breathEv.BreathVolume);
-
-        var beforeEv = new Content.Shared._Offbrand.Wounds.BeforeInhaledGasEvent(gas);
-        RaiseLocalEvent(entity, ref beforeEv);
-        // End Offbrand
+        var gas = ev.Gas.RemoveVolume(entity.Comp.BreathVolume);
 
         var inhaleEv = new InhaledGasEvent(gas);
         RaiseLocalEvent(entity, ref inhaleEv);
@@ -302,7 +287,6 @@ public sealed class RespiratorSystem : EntitySystem
     public void RemoveGasFromBody(Entity<BodyComponent> ent, GasMixture gas)
     {
         var outGas = new GasMixture(gas.Volume);
-        var respirator = Comp<RespiratorComponent>(ent); // Offbrand
 
         var organs = _bodySystem.GetBodyOrganEntityComps<LungComponent>((ent, ent.Comp));
         if (organs.Count == 0)
@@ -310,7 +294,8 @@ public sealed class RespiratorSystem : EntitySystem
 
         foreach (var (organUid, lung, _) in organs)
         {
-            _atmosSys.Merge(outGas, lung.Air.RemoveRatio(respirator.ExhaleEfficacyModifier * 1.1f)); // Offbrand - efficacy, 1.1 magic constant is to unstuck 0.01u of exhalants if the body is imperfect
+            _atmosSys.Merge(outGas, lung.Air);
+            lung.Air.Clear();
 
             if (_solutionContainerSystem.ResolveSolution(organUid, lung.SolutionName, ref lung.Solution))
                 _solutionContainerSystem.RemoveAllSolution(lung.Solution.Value);
@@ -357,7 +342,6 @@ public sealed class RespiratorSystem : EntitySystem
             }
         }
 
-        // TODO generalize condition checks
         // this is pretty janky, but I just want to bodge a method that checks if an entity can breathe a gas mixture
         // Applying actual reaction effects require a full ReagentEffectArgs struct.
         bool CanMetabolize(EntityEffect effect)
@@ -365,9 +349,10 @@ public sealed class RespiratorSystem : EntitySystem
             if (effect.Conditions == null)
                 return true;
 
+            // TODO: Use Metabolism Public API to do this instead, once that API has been built.
             foreach (var cond in effect.Conditions)
             {
-                if (cond is OrganType organ && !_entityEffect.OrganCondition(organ, lung))
+                if (cond is MetabolizerTypeCondition organ && !_entityConditions.TryCondition(lung, organ))
                     return false;
             }
 
@@ -436,14 +421,6 @@ public sealed class RespiratorSystem : EntitySystem
     {
         ent.Comp.UpdateIntervalMultiplier = args.Multiplier;
     }
-
-    // Begin Offbrand
-    private void OnApplyRespiratoryRateModifiers(Entity<RespiratorComponent> ent, ref ApplyRespiratoryRateModifiersEvent args)
-    {
-        ent.Comp.BreathRateMultiplier = args.BreathRate;
-        ent.Comp.ExhaleEfficacyModifier = args.PurgeRate;
-    }
-    // End Offbrand
 
     private void OnGasInhaled(Entity<BodyComponent> entity, ref InhaledGasEvent args)
     {

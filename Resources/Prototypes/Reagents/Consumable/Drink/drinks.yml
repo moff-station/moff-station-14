@@ -452,24 +452,22 @@
         factor: 4
         # Moffstation start - Allow avali to drink ammonia
         conditions:
-        - !type:OrganType
-          type: Avali
-          shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
       - !type:SatiateThirst
         factor: 1
         conditions:
-        - !type:OrganType
-          type: Avali
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
         # Moffstation end
     Gas:
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
+        scaling: true
         ignoreResistances: true
         conditions:
-        - !type:OrganType
-          type: Slime
-          shouldHave: true
+        - !type:MetabolizerTypeCondition
+          type: [ Slime ]
         damage:
           types:
             Heat: 3

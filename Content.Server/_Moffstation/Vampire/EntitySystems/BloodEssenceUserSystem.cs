@@ -49,17 +49,11 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
 	    if (!_body.TryGetBodyOrganEntityComps<StomachComponent>((uid, body), out var stomachs))
 	        return 0.0f;
 
-        var firstStomach = stomachs.FirstOrNull(stomach => _stomach.MaxTransferableSolution(stomach, transferAmount) > 0.0f);
-
-        // All stomachs are full or null somehow
-        if (firstStomach == null)
-            return 0.0f;
-
-        var transferableAmount = _stomach.MaxTransferableSolution(firstStomach.Value, transferAmount);
+        var firstStomach = stomachs[0];
 
         var tempSolution = new Solution
         {
-            MaxVolume = transferableAmount
+            MaxVolume = transferAmount,
         };
 
         if (_solutionContainerSystem.ResolveSolution(target.Owner, targetBloodstream.ChemicalSolutionName, ref targetBloodstream.ChemicalSolution, out var targetChemSolution))
@@ -67,14 +61,14 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
             // make a fraction of what we pull come from the chem solution
             // Technically this does allow someone to drink blood in order to then have that blood be taken and
             // give essence but I don't care too much about that possible issue.
-            tempSolution.AddSolution(targetChemSolution.SplitSolution(transferableAmount * 0.15f), _proto);
-            transferableAmount -= (float) tempSolution.Volume;
+            tempSolution.AddSolution(targetChemSolution.SplitSolution(transferAmount * 0.15f), _proto);
+            transferAmount -= (float) tempSolution.Volume;
             _solutionContainerSystem.UpdateChemicals(targetBloodstream.ChemicalSolution.Value);
         }
 
         if (_solutionContainerSystem.ResolveSolution(target.Owner, targetBloodstream.BloodSolutionName, ref targetBloodstream.BloodSolution, out var targetBloodSolution))
         {
-            tempSolution.AddSolution(targetBloodSolution.SplitSolution(transferableAmount), _proto);
+            tempSolution.AddSolution(targetBloodSolution.SplitSolution(transferAmount), _proto);
             _solutionContainerSystem.UpdateChemicals(targetBloodstream.BloodSolution.Value);
         }
 
@@ -99,8 +93,8 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
             bloodEssenceUser.FedFrom[target] += essenceCollected;
         bloodEssenceUser.BloodEssenceTotal += essenceCollected;
 
-        _stomach.TryTransferSolution(firstStomach.Value, tempSolution);
-        Dirty<StomachComponent>(firstStomach.Value);
+        _stomach.TryTransferSolution(firstStomach, tempSolution);
+        Dirty<StomachComponent>(firstStomach);
 
         return essenceCollected;
     }

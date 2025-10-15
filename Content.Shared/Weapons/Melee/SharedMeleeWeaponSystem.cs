@@ -249,12 +249,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var ev = new GetMeleeDamageEvent(uid, new(component.Damage * Damageable.UniversalMeleeDamageModifier), new(), user, component.ResistanceBypass);
         RaiseLocalEvent(uid, ref ev);
 
-        // Begin Offbrand
-        var relayed = new Content.Shared._Offbrand.Weapons.RelayedGetMeleeDamageEvent(ev);
-        RaiseLocalEvent(user, ref relayed);
-        ev = relayed.Args;
-        // End Offbrand
-
         return DamageSpecifier.ApplyModifierSets(ev.Damage, ev.Modifiers);
     }
 
@@ -265,12 +259,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var ev = new GetMeleeAttackRateEvent(uid, component.AttackRate, 1, user);
         RaiseLocalEvent(uid, ref ev);
-
-        // Begin Offbrand
-        var relayed = new Content.Shared._Offbrand.Weapons.RelayedGetMeleeAttackRateEvent(ev);
-        RaiseLocalEvent(user, ref relayed);
-        ev = relayed.Args;
-        // End Offbrand
 
         return ev.Rate * ev.Multipliers;
     }
@@ -293,12 +281,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var ev = new GetMeleeDamageEvent(uid, new(component.Damage * Damageable.UniversalMeleeDamageModifier), new(), user, component.ResistanceBypass);
         RaiseLocalEvent(uid, ref ev);
-
-        // Begin Offbrand
-        var relayed = new Content.Shared._Offbrand.Weapons.RelayedGetMeleeDamageEvent(ev);
-        RaiseLocalEvent(user, ref relayed);
-        ev = relayed.Args;
-        // End Offbrand
 
         return ev.ResistanceBypass;
     }
