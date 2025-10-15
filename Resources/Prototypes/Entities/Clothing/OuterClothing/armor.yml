@@ -98,9 +98,9 @@
   description: A hard-boiled private investigator's armored vest.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/detvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/detvest.rsi #  sprite: Clothing/OuterClothing/Vests/detvest.rsi  Moffstation - (New Detective Outfits)
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/detvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/detvest.rsi #  sprite: Clothing/OuterClothing/Vests/detvest.rsi  Moffstation - (New Detective Outfits)
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]

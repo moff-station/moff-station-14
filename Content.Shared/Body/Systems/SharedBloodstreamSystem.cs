@@ -6,7 +6,8 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
-using Content.Shared.EntityEffects.Effects;
+using Content.Shared.EntityEffects.Effects.Solution;
+using Content.Shared.EntityEffects.Effects.Transform;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Forensics.Components;
@@ -77,14 +78,11 @@ public abstract class SharedBloodstreamSystem : EntitySystem
                 TryModifyBloodLevel((uid, bloodstream), bloodstream.BloodRefreshAmount);
             }
 
-            // Begin Offbrand
-            var bleedLevel = EffectiveBleedLevel((uid, bloodstream));
-
             // Removes blood from the bloodstream based on bleed amount (bleed rate)
             // as well as stop their bleeding to a certain extent.
-            if (bleedLevel > 0)
+            if (bloodstream.BleedAmount > 0)
             {
-                var ev = new BleedModifierEvent(bleedLevel, bloodstream.BleedReductionAmount);
+                var ev = new BleedModifierEvent(bloodstream.BleedAmount, bloodstream.BleedReductionAmount);
                 RaiseLocalEvent(uid, ref ev);
 
                 // Blood is removed from the bloodstream at a 1-1 rate with the bleed amount
@@ -94,18 +92,9 @@ public abstract class SharedBloodstreamSystem : EntitySystem
                 TryModifyBleedAmount((uid, bloodstream), -ev.BleedReductionAmount);
             }
 
-            if (bleedLevel == 0)
-                _alertsSystem.ClearAlert(uid, bloodstream.BleedingAlert);
-            else
-            {
-                var severity = (short)Math.Clamp(Math.Round(bleedLevel, MidpointRounding.ToZero), 0, 10);
-                _alertsSystem.ShowAlert(uid, bloodstream.BleedingAlert, severity);
-            }
-            // End Offbrand
-
             // deal bloodloss damage if their blood level is below a threshold.
             var bloodPercentage = GetBloodLevelPercentage((uid, bloodstream));
-            if (bloodPercentage < bloodstream.BloodlossThreshold && !_mobStateSystem.IsDead(uid) && bloodstream.BloodlossDamage is not null) // Offbrand
+            if (bloodPercentage < bloodstream.BloodlossThreshold && !_mobStateSystem.IsDead(uid))
             {
                 // bloodloss damage is based on the base value, and modified by how low your blood level is.
                 var amt = bloodstream.BloodlossDamage / (0.1f + bloodPercentage);
@@ -118,7 +107,7 @@ public abstract class SharedBloodstreamSystem : EntitySystem
                 // Multiplying by 2 is arbitrary but works for this case, it just prevents the time from running out
                 _status.TrySetStatusEffectDuration(uid, Bloodloss);
             }
-            else if (!_mobStateSystem.IsDead(uid) && bloodstream.BloodlossHealDamage is not null) // Offbrand
+            else if (!_mobStateSystem.IsDead(uid))
             {
                 // If they're healthy, we'll try and heal some bloodloss instead.
                 _damageableSystem.TryChangeDamage(
@@ -161,7 +150,9 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         {
             switch (effect)
             {
-                case CreateEntityReactionEffect: // Prevent entities from spawning in the bloodstream
+                // TODO: Rather than this, ReactionAttempt should allow systems to remove effects from the list before the reaction.
+                // TODO: I think there's a PR up on the repo for this and if there isn't I'll make one -Princess
+                case EntityEffects.Effects.EntitySpawning.SpawnEntity: // Prevent entities from spawning in the bloodstream
                 case AreaReactionEffect: // No spontaneous smoke or foam leaking out of blood vessels.
                     args.Cancelled = true;
                     return;
@@ -253,28 +244,26 @@ public abstract class SharedBloodstreamSystem : EntitySystem
     /// </summary>
     private void OnHealthBeingExamined(Entity<BloodstreamComponent> ent, ref HealthBeingExaminedEvent args)
     {
-        var bleedLevel = EffectiveBleedLevel(ent); // Offbrand
-
         // Shows massively bleeding at 0.75x the max bleed rate.
-        if (bleedLevel > ent.Comp.MaxBleedAmount * 0.75f) // Offbrand
+        if (ent.Comp.BleedAmount > ent.Comp.MaxBleedAmount * 0.75f)
         {
             args.Message.PushNewline();
             args.Message.AddMarkupOrThrow(Loc.GetString("bloodstream-component-massive-bleeding", ("target", ent.Owner)));
         }
         // Shows bleeding message when bleeding above half the max rate, but less than massively.
-        else if (bleedLevel > ent.Comp.MaxBleedAmount * 0.5f) // Offbrand
+        else if (ent.Comp.BleedAmount > ent.Comp.MaxBleedAmount * 0.5f)
         {
             args.Message.PushNewline();
             args.Message.AddMarkupOrThrow(Loc.GetString("bloodstream-component-strong-bleeding", ("target", ent.Owner)));
         }
         // Shows bleeding message when bleeding above 0.25x the max rate, but less than half the max.
-        else if (bleedLevel > ent.Comp.MaxBleedAmount * 0.25f) // Offbrand
+        else if (ent.Comp.BleedAmount > ent.Comp.MaxBleedAmount * 0.25f)
         {
             args.Message.PushNewline();
             args.Message.AddMarkupOrThrow(Loc.GetString("bloodstream-component-bleeding", ("target", ent.Owner)));
         }
         // Shows bleeding message when bleeding below 0.25x the max cap
-        else if (bleedLevel > 0) // Offbrand
+        else if (ent.Comp.BleedAmount > 0)
         {
             args.Message.PushNewline();
             args.Message.AddMarkupOrThrow(Loc.GetString("bloodstream-component-slight-bleeding", ("target", ent.Owner)));
@@ -413,19 +402,6 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         return true;
     }
 
-    // Begin Offbrand
-    public float EffectiveBleedLevel(Entity<BloodstreamComponent> ent)
-    {
-        var evt = new Content.Shared._Offbrand.Wounds.GetBleedLevelEvent(ent.Comp.BleedAmount);
-        RaiseLocalEvent(ent, ref evt);
-
-        var modifiers = new Content.Shared._Offbrand.Wounds.ModifyBleedLevelEvent(evt.BleedLevel);
-        RaiseLocalEvent(ent, ref modifiers);
-
-        return modifiers.BleedLevel;
-    }
-    // End Offbrand
-
     /// <summary>
     /// Tries to make an entity bleed more or less.
     /// </summary>
@@ -439,17 +415,13 @@ public abstract class SharedBloodstreamSystem : EntitySystem
 
         DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.BleedAmount));
 
-        // Begin Offbrand
-        var bleedLevel = EffectiveBleedLevel((ent, ent.Comp));
-
-        if (bleedLevel == 0)
+        if (ent.Comp.BleedAmount == 0)
             _alertsSystem.ClearAlert(ent.Owner, ent.Comp.BleedingAlert);
         else
         {
-            var severity = (short)Math.Clamp(Math.Round(bleedLevel, MidpointRounding.ToZero), 0, 10);
+            var severity = (short)Math.Clamp(Math.Round(ent.Comp.BleedAmount, MidpointRounding.ToZero), 0, 10);
             _alertsSystem.ShowAlert(ent.Owner, ent.Comp.BleedingAlert, severity);
         }
-        // End Offbrand
 
         return true;
     }

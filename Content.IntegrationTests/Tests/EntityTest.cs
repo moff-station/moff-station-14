@@ -390,7 +390,6 @@ namespace Content.IntegrationTests.Tests
                 "LoadedChunk", // Worldgen chunk loading malding.
                 "BiomeSelection", // Whaddya know, requires config.
                 "ActivatableUI", // Requires enum key
-                "Woundable", // Offbrand - we're not doing this on its own
             };
 
             await using var pair = await PoolManager.GetServerClient();

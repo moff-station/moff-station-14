@@ -5,15 +5,14 @@ using Content.Server.Medical.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.NodeContainer.Nodes;
-using Content.Server.Temperature.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Medical.Cryogenics;
 using Content.Shared.MedicalScanner;
+using Content.Shared.Temperature.Components;
 using Content.Shared.UserInterface;
 using Robust.Shared.Containers;
-using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Medical;
 
@@ -24,7 +23,6 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly SharedWoundableHealthAnalyzerSystem _woundableHealthAnalyzer = default!; // Offbrand
 
     public override void Initialize()
     {
@@ -61,8 +59,7 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
                 : 0,
             null,
             null,
-            null,
-            _woundableHealthAnalyzer.TakeSample(entity) // Offbrand
+            null
         ));
     }
 
