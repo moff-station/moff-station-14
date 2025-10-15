@@ -1,9 +1,11 @@
 ﻿using System.Linq;
+using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Lock;
+using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Whitelist;
@@ -12,9 +14,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.BladeServer;
 
-/// <summary>
 /// This system handles behavior for <see cref="BladeServerRackComponent"/>s and <see cref="BladeServerComponent"/>s.
-/// </summary>
 public abstract partial class SharedBladeServerSystem : EntitySystem
 {
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
@@ -22,12 +22,11 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
 
-    /// <summary>
     /// This whitelist allows only entities with <see cref="BladeServerComponent"/> to be inserted into the rack.
-    /// </summary>
     private EntityWhitelist _slotWhitelist = new();
 
     public override void Initialize()
@@ -62,6 +61,9 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
         SubscribeLocalEvent<BladeServerComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<BladeServerComponent, GettingPickedUpAttemptEvent>(OnGettingPickedUpAttempt);
+
+        SubscribeLocalEvent<BladeServerFrameComponent, InteractUsingEvent>(OnBladeServerFrameInteractUsing);
+        SubscribeLocalEvent<BladeServerBoardComponent, ExaminedEvent>(OnBladeServerBoardExamined);
     }
 
     private void OnComponentInit(Entity<BladeServerRackComponent> entity, ref ComponentInit args)
@@ -198,11 +200,9 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         SetSlotPower(entity, slot, args.Powered);
     }
 
-    /// <summary>
     /// Handle "use" interactions which are created by the UI. If the slot is empty, this tries to insert whatever the
     /// user is holding into the slot. If the slot is not empty, this just relays the usage to
     /// <see cref="_interaction">the interaction system</see> after checking that the rack is accessible.
-    /// </summary>
     private void OnUseBladeServerEntityInUi(Entity<BladeServerRackComponent> entity, ref BladeServerRackUseMessage args)
     {
         if (!_interaction.InRangeAndAccessible(args.Actor, entity.Owner) ||
@@ -232,11 +232,9 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     }
 
 
-    /// <summary>
     /// Handle "activate" interactions which are created by the UI. This just relays the usage to
     /// <see cref="_interaction">the interaction system</see> after checking that the rack is accessible and that there
     /// is a blade server to interact with.
-    /// </summary>
     private void OnActivateInWorld(
         Entity<BladeServerRackComponent> entity,
         ref BladeServerRackActivateInWorldMessage args
@@ -256,9 +254,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         }
     }
 
-    /// <summary>
     /// Sets the appearance data for new blade servers to make their stripe colors work.
-    /// </summary>
     private void OnComponentInit(Entity<BladeServerComponent> entity, ref ComponentInit args)
     {
         if (entity.Comp.StripeColor is not { } stripeColor)
@@ -267,9 +263,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         _appearance.SetData(entity, BladeServerVisuals.StripeColor, stripeColor);
     }
 
-    /// <summary>
     /// This prevents blade servers from being picked up while inside a rack.
-    /// </summary>
     private void OnGettingPickedUpAttempt(
         Entity<BladeServerComponent> entity,
         ref GettingPickedUpAttemptEvent args
@@ -284,20 +278,13 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         }
     }
 
-    /// <summary>
     /// Different from just "is powered" because this DOES NOT care about the rack itself being powered.
-    /// </summary>
-    /// <param name="entity"></param>
-    /// <param name="slotIndex"></param>
-    /// <returns></returns>
     public bool? IsSlotPowerEnabled(Entity<BladeServerRackComponent?> entity, int slotIndex)
     {
         return GetSlotOrNull(entity, slotIndex)?.IsPowerEnabled;
     }
 
-    /// <summary>
     /// Tries to get the slot at <paramref name="slotIndex"/>. Returns null if the index is out of bounds.
-    /// </summary>
     protected BladeSlot? GetSlotOrNull(Entity<BladeServerRackComponent?> entity, int slotIndex)
     {
         if (!Resolve(entity, ref entity.Comp))
@@ -318,10 +305,8 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         UpdateUiAndVisuals(entity);
     }
 
-    /// <summary>
     /// Tries to find the <see cref="BladeSlot"/> in <paramref name="entity"/> which contains
     /// <paramref name="bladeServerEntity"/>. Returns null if no such slot exists.
-    /// </summary>
     private static BladeSlot? GetContainingSlotOrNull(
         Entity<BladeServerRackComponent> entity,
         EntityUid bladeServerEntity
@@ -374,12 +359,9 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         }
     }
 
-    /// <summary>
     /// Ejects all slot contents, removes all slots from this entity, and clears
     /// <see cref="BladeServerRackComponent.BladeSlots"/>. This leaves the component in a kind of inoperable state, so
     /// this should only ever be called before re-initializing the slots or as part of destroying the component.
-    /// </summary>
-    /// <param name="entity"></param>
     private void ClearSlots(Entity<BladeServerRackComponent, ItemSlotsComponent?> entity)
     {
         if (!TryComp(entity, out entity.Comp2))
@@ -419,9 +401,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
         );
     }
 
-    /// <summary>
     /// Synchs appearance data for <paramref name="entity"/>.
-    /// </summary>
     private void UpdateVisuals(Entity<BladeServerRackComponent> entity)
     {
         var rackPowered = _powerReceiver.IsPowered(entity.Owner);
@@ -444,5 +424,19 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
             BladeServerRackVisuals.SlotsKey,
             new BladeServerRackSlotVisualData.Group(data)
         );
+    }
+
+    /// Gives a popup to users explaining why non-bladeserver boards don't fit.
+    private void OnBladeServerFrameInteractUsing(Entity<BladeServerFrameComponent> entity, ref InteractUsingEvent args)
+    {
+        if (HasComp<MachineBoardComponent>(args.Used) && !HasComp<BladeServerBoardComponent>(args.Used))
+        {
+            _popup.PopupPredictedCursor(Loc.GetString("moff-blade-server-frame-incompatible-board"), args.User);
+        }
+    }
+
+    private void OnBladeServerBoardExamined(Entity<BladeServerBoardComponent> entity, ref ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("moff-blade-server-board-compatible-hint"));
     }
 }

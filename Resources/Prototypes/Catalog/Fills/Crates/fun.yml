@@ -42,6 +42,7 @@
     - id: PlushieMoth
     - id: PlushieArachind
     - id: PlushiePenguin
+    - id: PlushieVulp
     - id: PlushieBorg # MOFFSTATION - adds borg plushie
 
 - type: entityTable
@@ -247,6 +248,30 @@
       - id: ReverseCymbalsInstrument
 
 - type: entity
+  id: CrateFunInstrumentsRandom
+  parent: CrateGenericSteel
+  name: random instrument collection
+  description: A box containing several randomly curated instruments, hand picked by Centcomm's top musicians!
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: VarietyInstrumentTable # 200 speso max
+        - !type:NestedSelector
+          tableId: BrassInstrumentTable # 300 speso max
+        - !type:NestedSelector
+          tableId: StringInstrumentTable # 300 speso max
+        - !type:NestedSelector
+          tableId: WoodwindInstrumentTable # 200 speso max
+        - !type:NestedSelector
+          tableId: KeyedPercussionInstrumentTable # 300 speso max
+        - !type:NestedSelector
+          tableId: SpecialInstrumentTable # x2 200 speso max
+          rolls: 2
+
+- type: entity
   id: CrateFunArtSupplies
   parent: CrateGenericSteel
   name: art supplies
@@ -383,6 +408,7 @@
   components:
   - type: StorageFill
     contents:
+    # Moffstation - Start - added a lot more thematic loot to the chest.
       - id: ClothingUniformJumpsuitPirate
         amount: 2
       - id: ClothingHeadHatPirate
@@ -392,6 +418,16 @@
       - id: ClothingHeadBandRed
       - id: FoamCutlass
         amount: 2
+      - id: PirateHandyFlag
+        amount: 2
+      - id: ClothingNeckCloakPirateCap
+      - id: RobotParrot
+      - id: ClothingHandsShoddyPirateHook
+        amount: 2
+      - id: DrinkRumBottleFull
+      - id: ClothingEyesEyepatch
+        amount: 2
+    # Moffstation - End
 
 - type: entity
   id: CrateFunToyBox
@@ -415,6 +451,8 @@
       - id: ClothingShoesClownLarge
       - id: ClothingHeadHatMagician
       - id: BeachBall
+      - id: TennisBall
+        amount: 2
       - id: ClothingShoesSkates
       - id: RubberChicken
 

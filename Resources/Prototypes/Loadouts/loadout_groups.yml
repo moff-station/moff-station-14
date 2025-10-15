@@ -10,25 +10,6 @@
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
-  # Moffstation - Start - Expanded roundstart plushies!
-  - PlushieArachind
-  - PlushieAtmosian
-  - PlushieBee
-  - PlushieBorg
-  - PlushieCarp
-  - PlushieDiona
-  - PlushieExperiment
-  - PlushieHampter
-  - PlushieHuman
-  - PlushieMoth
-  - PlushiePenguin
-  - PlushieSharkBlue
-  - PlushieSharkGrey
-  - PlushieSharkPink
-  - PlushieSlime
-  - PlushieSnake
-  - PlushieVox
-  # Moffstation - End
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -37,17 +18,9 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
-  - GoldRing    # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
-  - SilverRing  # Moffstation - End
-  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
-  - FolderRed
-  - FolderBlue
-  - FolderYellow
-  - FolderWhite
-  - FolderGrey
-  - FolderBlack
-  - FolderGreen
-  # Moffstation - End
+  - BoxFolderBaseThreePapers
+  - BoxFolderPlasticClipboardThreePapers
+  - BoxFolderClipboardThreePapers
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -88,6 +61,38 @@
   - TowelColorSilver
   - TowelColorWhite
   - TowelColorYellow
+  # Moffstation - Start - Expanded roundstart plushies!
+  - PlushieArachind
+  - PlushieAtmosian
+  - PlushieBee
+  - PlushieBorg
+  - PlushieCarp
+  - PlushieDiona
+  - PlushieExperiment
+  - PlushieHampter
+  - PlushieHuman
+  - PlushieMoth
+  - PlushiePenguin
+  - PlushieSharkBlue
+  - PlushieSharkGrey
+  - PlushieSharkPink
+  - PlushieSlime
+  - PlushieSnake
+  - PlushieVox
+  # Moffstation - End
+  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
+  - FolderRed
+  - FolderBlue
+  - FolderYellow
+  - FolderWhite
+  - FolderGrey
+  - FolderBlack
+  - FolderGreen
+  # Moffstation - End
+  # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
+  - GoldRing
+  - SilverRing
+  # Moffstation - End
 
 - type: loadoutGroup
   id: Glasses
@@ -114,6 +119,7 @@
   loadouts:
   - EmergencyNitrogen
   - EmergencyOxygen
+  - EmergencyAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 # nitrogen or oxygen tank, depending on what your species needs
@@ -149,6 +155,10 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  # Moffstation - Start - New Drip
+  - CaptainConductor
+  - CaptainTricorn
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -158,6 +168,12 @@
   - CaptainJumpskirt
   - CaptainFormalSuit
   - CaptainFormalSkirt
+  # Moffstation - Start - New Drip
+  - CaptainJumpsuitConductor
+  - CaptainJumpskirtConductor
+  - CaptainJumpsuitNaval
+  - CaptainJumpskirtNaval
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -167,6 +183,7 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
+  - CaptainCapeFormal # Moffstation
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -183,6 +200,7 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
+  - CaptainLongcoat # Moffstation - New drip
 
 - type: loadoutGroup
   id: HoPHead
@@ -197,6 +215,10 @@
   loadouts:
   - HoPJumpsuit
   - HoPJumpskirt
+  # Moffstation - Start - New drip
+  - HoPJumpsuitFormal
+  - HoPJumpskirtFormal
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HoPNeck
@@ -213,7 +235,8 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
-# Moffstation - Start - Department Heads can use any department Bag
+  - HoPBackpackIan
+  # Moffstation - Start - Department Heads can use any department Bag
   - ClownBackpack
   - ClownSatchel
   - ClownDuffel
@@ -223,8 +246,7 @@
   - BotanistBackpack
   - BotanistSatchel
   - BotanistDuffel
-# Moffstation - End - Department Heads can use any department Bag
-  - HoPBackpackIan
+  # Moffstation - End - Department Heads can use any department Bag
   - LeatherSatchel  # Moffstation - Allow picking leather satchel
 
 - type: loadoutGroup
@@ -313,6 +335,13 @@
   - BartenderVest
   - BartenderApron
   - BartenderWintercoat
+
+- type: loadoutGroup
+  id: BartenderGoldenShaker
+  name: loadout-group-bartender-shaker
+  minLimit: 0
+  loadouts:
+  - BartenderGoldenShaker
 
 - type: loadoutGroup
   id: ChefHead
@@ -425,10 +454,11 @@
   minLimit: 1
   loadouts:
   - Bible
-  - BibleDruid
   - BibleNanoTrasen
-  - BibleSatanic
-  - BibleTanakh
+  - BibleDruid
+  - BibleHonk
+  - BibleRatvar
+  - BibleNarsie
 
 - type: loadoutGroup
   id: JanitorHead
@@ -549,6 +579,7 @@
   loadouts:
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
+  - EmergencyOxygenClownAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -606,6 +637,7 @@
   loadouts:
   - EmergencyNitrogenMime
   - EmergencyOxygenMime
+  - EmergencyOxygenMimeAmmonia # Moffstation - Allow avali to drink ammonia
   - EmergencySpeciesMothMime
   - LoadoutSpeciesVoxNitrogen
 
@@ -676,6 +708,10 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
+  # Moffstation - Start - New Drip
+  - QMJumpsuitVista
+  - QMJumpskirtVista
+  # Moffstation - End
 
 - type: loadoutGroup
   id: QuartermasterNeck
@@ -757,6 +793,10 @@
   loadouts:
   - CargoTechnicianPDA
   - SeniorCourierPDA
+  # Moffstation - Start - Additional job title loadouts
+  - CourierPDA
+  - LogisticsAssociatePDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
@@ -893,6 +933,12 @@
   loadouts:
   - StationEngineerPDA
   - SeniorEngineerPDA
+  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - ElectricianPDA
+  - MechanicPDA
+  - ShipwrightPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -935,9 +981,10 @@
   loadouts:
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
+  - EmergencyOxygenExtendedAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
-# Science
+# `Scienc`e
 - type: loadoutGroup
   id: ResearchDirectorHead
   name: loadout-group-research-director-head
@@ -967,6 +1014,7 @@
   loadouts:
   - ResearchDirectorLabCoat
   - ResearchDirectorWintercoat
+  - ResearchDirectorVisionary # Moffstation - New Drip
 
 - type: loadoutGroup
   id: ResearchDirectorShoes
@@ -999,6 +1047,8 @@
   - ScientistJumpskirt
   - RoboticistJumpsuit
   - RoboticistJumpskirt
+  - MachinistJumpsuit # Moffstation - New Roboticist & Machinist Outfits
+  - MachinistJumpskirt # Moffstation - New Roboticist & Machinist Outfits
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
 
@@ -1021,6 +1071,7 @@
   - ScienceWintercoat
   - RoboticistLabCoat
   - RoboticistWintercoat
+  - MachinistLabCoat # Moffstation - New Roboticist & Machinist Outfits
   - SeniorResearcherLabCoat
 
 - type: loadoutGroup
@@ -1046,6 +1097,13 @@
   loadouts:
   - ScientistPDA
   - SeniorResearcherPDA
+  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
+  - RoboticistPDA #CD - Job title loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - AnomalyContainmentSpecialistPDA
+  - MachinistPDA
+  - XenoarcheologistPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -1088,6 +1146,7 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
+  - HeadofSecurityCarapace # Moffstation - New drip
 
 - type: loadoutGroup
   id: WardenHead
@@ -1173,6 +1232,12 @@
   loadouts:
   - SecurityPDA
   - SeniorOfficerPDA
+  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - AssetProtectionsPDA
+  - DeputyPDA
+  - HallMonitorPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -1195,6 +1260,9 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
+  # Moffstation - Begin (New Detective Outfits)
+  - DetectiveBadge
+  # Moffstation - End (New Detective Outfits)
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1204,6 +1272,12 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # Moffstation - Begin (New Detective Outfits)
+  - SleuthSuit
+  - SleuthSkirt
+  - InvestigatorJumpsuit
+  - InvestigatorJumpskirt
+  # Moffstation - End (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
   - SecurityJumpsuit
   - SecurityJumpskirt
@@ -1218,6 +1292,9 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  # Moffstation - Begin (New Detective Outfits)
+  - DetectiveCoatSleuth
+  # Moffstation - End (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
   - ArmorVest
   - ArmorVestSlim
@@ -1239,6 +1316,7 @@
   loadouts:
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
+  - EmergencyOxygenSecurityAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup
@@ -1265,6 +1343,13 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  # Moffstation - Start - New drip
+  - CMOJumpsuitShell
+  - CMOJumpskirtShell
+  - CMOJumpsuitFormal
+  - CMOJumpsuitFlowing
+  - CMOJumpskirtFlowing
+  # Moffstation - End
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
@@ -1375,6 +1460,14 @@
   loadouts:
   - MedicalDoctorPDA
   - SeniorPhysicianPDA
+  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
+  # Moffstation - Start - Additional job title loadouts
+  - ClinicianPDA
+  - CoronerPDA
+  - CryogenicsSpecialistPDA
+  - NursePDA
+  - SurgeonPDA
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalGloves
@@ -1472,6 +1565,7 @@
   loadouts:
   - EmergencyNitrogenMedical
   - EmergencyOxygenMedical
+  - EmergencyOxygenMedicalAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 # Wildcards
@@ -1518,6 +1612,7 @@
   loadouts:
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
+  - EmergencyOxygenSyndicateAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
 - type: loadoutGroup

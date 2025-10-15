@@ -6,12 +6,12 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobWarden
-      time: 21600 #6 hrs
+      time: 6h
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 216000 # 60 hrs
+      time: 60h
 
 #Security Star
 - type: loadoutEffectGroup
@@ -21,7 +21,7 @@
       requirement:
         !type:DepartmentTimeRequirement
         department: Security
-        time: 360000 #100 hrs
+        time: 100h
 
 # Head
 - type: loadout
@@ -91,16 +91,19 @@
   id: SecurityBackpack
   equipment:
     back: ClothingBackpackSecurity
+  groupBy: "secoff backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: SecuritySatchel
   equipment:
     back: ClothingBackpackSatchelSecurity
+  groupBy: "secoff backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: SecurityDuffel
   equipment:
     back: ClothingBackpackDuffelSecurity
+  groupBy: "secoff backpacks" # Moffstation - New Drip
 
 # Belt
 - type: loadout
@@ -150,6 +153,7 @@
   id: SecurityPDA
   equipment:
     id: SecurityPDA
+  groupBy: "officer roles"  # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorOfficerPDA
@@ -158,6 +162,7 @@
     proto: SeniorOfficer
   equipment:
     id: SeniorOfficerPDA
+  groupBy: "officer roles"  # Moffstation - Additional Roles
 
 # Misc
 - type: loadout

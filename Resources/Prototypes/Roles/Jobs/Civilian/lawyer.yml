@@ -5,7 +5,7 @@
   playTimeTracker: JobLawyer
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 9000 # 2.5 hrs
+      time: 2.5h
   startingGear: LawyerGear
   icon: "JobIconLawyer"
   supervisors: job-supervisors-hop
@@ -19,7 +19,7 @@
   id: LawyerGear
   equipment:
     shoes: ClothingShoesBootsLaceup
-    id: LawyerPDA
+#    id: LawyerPDA # Moffstation - PDA loadouts
     ears: ClothingHeadsetSecurity
   inhand:
     - BriefcaseBrownFilled

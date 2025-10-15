@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: Engineering
-    time: 9000 #2.5 hrs
+    time: 2.5h
   startingGear: AtmosphericTechnicianGear
   icon: "JobIconAtmosphericTechnician"
   supervisors: job-supervisors-ce
@@ -24,7 +24,7 @@
   id: AtmosphericTechnicianGear
   equipment:
     eyes: ClothingEyesGlassesMeson
-    id: AtmosPDA
+    #id: AtmosPDA # Moffstation - PDA loadouts
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering
   #storage:

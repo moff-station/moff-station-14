@@ -1,0 +1,86 @@
+- type: entity
+  parent: SalvagePDA
+  id: SalvagePDAAltBase
+  name: salvage specialist alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-astrominer"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: AstrominerPDA
+  name: astrominer PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-astrominer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-astrominer
+  - type: PdaBorderColor
+    borderColor: "#302207"
+    accentVColor: "#1a4116"
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: ExcavatorPDA
+  name: excavator PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-excavator
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-excavator
+  - type: PdaBorderColor
+    borderColor: "#af9366"
+    accentHColor: "#8900c9"
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: ProspectorPDA
+  name: prospector PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-prospector
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-prospector
+
+- type: entity
+  parent: SalvagePDAAltBase
+  id: ScavengerPDA
+  name: scavenger PDA
+  components:
+  - type: RenameId
+    value: job-name-salvage-specialist-scavenger
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-scavenger

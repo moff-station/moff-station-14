@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Content.Server.Construction.Components;
+using Content.Shared._Moffstation.BladeServer; // Moffstation
 using Content.Shared.Construction.Components;
+using Content.Shared.Prototypes; // Moffstation
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -85,18 +87,32 @@ public sealed class MachineBoardTest
                          .Where(p => !pair.IsTestPrototype(p))
                          .Where(p => !_ignoredPrototypes.Contains(p.ID)))
             {
-                if (!p.TryGetComponent<MachineBoardComponent>(out var mbc, compFact) ||
-                    mbc.BladeServerPrototype is not {} bsId)
+                if (!p.TryGetComponent<BladeServerBoardComponent>(out var mbc, compFact))
                     continue;
 
                 Assert.Multiple(() =>
                 {
-                    Assert.That(protoMan.TryIndex<EntityPrototype>(bsId, out var bsProto),
-                        $"Machine board {p.ID}'s corresponding blade server has an invalid prototype.");
-                    Assert.That(bsProto.TryGetComponent<MachineComponent>(out var mComp, compFact),
-                        $"Machine board {p.ID}'s corresponding blade server {bsId} does not have {nameof(MachineComponent)}");
-                    Assert.That(mComp.Board, Is.EqualTo(p.ID),
-                        $"Machine {bsId}'s BoardPrototype is not equal to its corresponding machine board, {p.ID}");
+                    Assert.That(
+                        p.HasComponent<MachineBoardComponent>(compFact),
+                        $"Blade server board {p.ID} does not have a {nameof(MachineBoardComponent)}"
+                    );
+                    Assert.That(
+                        protoMan.TryIndex<EntityPrototype>(mbc.Prototype, out var bsProto),
+                        $"Blade server board {p.ID}'s corresponding blade server has an invalid prototype."
+                    );
+                    Assert.That(
+                        bsProto!.HasComponent<BladeServerComponent>(compFact),
+                        $"Blade server board {p.ID}'s corresponding blade server {mbc.Prototype} does not have {nameof(BladeServerComponent)}"
+                    );
+                    Assert.That(
+                        bsProto!.TryGetComponent<MachineComponent>(out var mComp, compFact),
+                        $"Blade server board {p.ID}'s corresponding blade server {mbc.Prototype} does not have {nameof(MachineComponent)}"
+                    );
+                    Assert.That(
+                        mComp!.Board,
+                        Is.EqualTo(p.ID),
+                        $"Machine {mbc.Prototype}'s BoardPrototype is not equal to its corresponding machine board, {p.ID}"
+                    );
                 });
             }
         });

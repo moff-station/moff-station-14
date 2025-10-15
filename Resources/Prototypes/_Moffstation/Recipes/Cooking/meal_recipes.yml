@@ -19,3 +19,23 @@
   solids:
     FoodBreadBun: 1
     ClothingEyesGlassesJamjar: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMothroachDeathsheadBurger
+  name: mothroach burger recipe
+  result: FoodBurgerMothRoachDeathshead
+  time: 10
+  group: Ohio # I don't know if this is the correct way to hide it from the guidebook, but it doesn't seem to create errors.
+  solids:
+    FoodBreadBun: 1
+    MobMothroachDeathshead: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMothroachRosyBurger
+  name: mothroach burger recipe
+  result: FoodBurgerMothRoachRosy
+  time: 10
+  group: Brazil # I don't know if this is the correct way to hide it from the guidebook, but it doesn't seem to create errors.
+  solids:
+    FoodBreadBun: 1
+    MobMothroachRosy: 1
