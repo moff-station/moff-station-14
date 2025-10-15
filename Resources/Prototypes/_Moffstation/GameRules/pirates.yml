@@ -9,6 +9,8 @@
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
+  - type: DynamicRuleCost
+    cost: 150
 
 - type: entity
   parent: BasePiratesRule
