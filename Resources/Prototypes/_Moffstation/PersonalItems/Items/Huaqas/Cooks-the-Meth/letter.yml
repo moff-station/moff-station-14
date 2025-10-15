@@ -23,20 +23,13 @@
   components:
   - type: Envelope
     state: Torn
-  - type: ItemSlots
-    slots:
-      letter_slot:
-        name: envelope-letter-slot
-        startingItem: PersonalItemCooksLetter
-        insertSound: /Audio/Effects/packetrip.ogg
-        ejectSound: /Audio/Effects/packetrip.ogg
-        whitelist:
-          components:
-            - Paper
   - type: Paper
     editingDisabled: true # It's a personal item, protected from editing.
     content: personal-item-cooks-envelope-content
-  
+  - type: ContainerFill
+    containers:
+      letter_slot:
+      - PersonalItemCooksLetter
 
 - type: loadout
   id: PersonalItemCooksEnvelope
