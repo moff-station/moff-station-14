@@ -1,5 +1,6 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Administration;
+using Content.Shared.Chat; // Moffstation - This has been moved to shared in upstream so it's added here.
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
 

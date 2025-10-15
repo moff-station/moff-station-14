@@ -1,6 +1,5 @@
 using Content.Server.Medical.Components;
 using Content.Server.PowerCell;
-using Content.Server.Temperature.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
@@ -13,12 +12,12 @@ using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
+using Content.Shared.Temperature.Components;
 using Content.Shared.Traits.Assorted;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
-using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Medical;
 
@@ -33,7 +32,6 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedWoundableHealthAnalyzerSystem _woundableHealthAnalyzer = default!; // Offbrand
 
     public override void Initialize()
     {
@@ -219,8 +217,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             bloodAmount,
             scanMode,
             bleeding,
-            unrevivable,
-            _woundableHealthAnalyzer.TakeSample(target) // Offbrand
+            unrevivable
         ));
     }
 }

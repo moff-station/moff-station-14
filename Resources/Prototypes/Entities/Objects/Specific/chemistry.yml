@@ -383,8 +383,6 @@
     solution: injector
   - type: TrashOnSolutionEmpty
     solution: injector
-  - type: RefillableSolution # Offbrand
-    solution: injector
   - type: Appearance
   - type: SolutionContainerVisuals
     maxFillLevels: 2
@@ -590,7 +588,6 @@
         acts: [ "Destruction" ]
   - type: SolutionSpiker
     sourceSolution: food
-    ignoreEmpty: true # Offbrand
   - type: Extractable
     grindableSolutionName: food
   - type: StaticPrice
