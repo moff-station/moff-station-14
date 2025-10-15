@@ -66,6 +66,13 @@
           - !type:MaxRuleOccurenceCondition
           - !type:PlayerCountCondition
             min: 10
+        - id: SyndicateListeningOutpost
+          weight: 30
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 25
       # Midround rules
       - !type:GroupSelector
         conditions:
@@ -127,10 +134,3 @@
             min: 30
           - !type:RoundDurationCondition
             min: 2100 # 35 minutes
-        - id: SyndicateListeningOutpostSpawn
-          weight: 20
-          conditions:
-          - !type:HasBudgetCondition
-          - !type:MaxRuleOccurenceCondition
-          - !type:PlayerCountCondition
-            min: 25
