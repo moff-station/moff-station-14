@@ -77,7 +77,7 @@
       - !type:GroupSelector
         conditions:
         - !type:RoundDurationCondition
-          min: 300 # minimum 5 minutes
+          min: 600 # minimum 10 minutes
         children:
         - id: SleeperAgents
           weight: 15
@@ -85,7 +85,7 @@
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
-            min: 900 # 15 minutes
+            min: 1200 # 20 minutes
           - !type:PlayerCountCondition
             min: 25
         - id: DragonSpawn
@@ -94,7 +94,7 @@
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
-            min: 900 # 15 minutes
+            min: 1200 # 20 minutes
           - !type:PlayerCountCondition
             min: 30
         - id: NinjaSpawn
@@ -103,7 +103,7 @@
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition
           - !type:RoundDurationCondition
-            min: 900 # 15 minutes
+            min: 1200 # 20 minutes
           - !type:PlayerCountCondition
             min: 30
         - id: ParadoxCloneSpawn
@@ -113,7 +113,7 @@
           - !type:MaxRuleOccurenceCondition
             max: 2
           - !type:RoundDurationCondition
-            min: 600 # 10 minutes
+            min: 900 # 15 minutes
           - !type:PlayerCountCondition
             min: 20
         - id: ZombieOutbreak
