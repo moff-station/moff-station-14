@@ -45,7 +45,7 @@
       - !type:HealthChange
         # Moffstation start - Allow avali to drink ammonia
         conditions:
-        - !type:OrganType
+        - !type:MetabolizerTypeCondition
           type: Avali
           shouldHave: false
         # Moffstation end

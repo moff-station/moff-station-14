@@ -47,7 +47,7 @@
       - !type:SatiateThirst
         factor: 2
         conditions:
-        - !type:OrganType
+        - !type:MetabolizerTypeCondition
           type: Avali
   # Moffstation end
 

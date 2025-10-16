@@ -452,13 +452,13 @@
         factor: 4
         # Moffstation start - Allow avali to drink ammonia
         conditions:
-        - !type:OrganType
+        - !type:MetabolizerTypeCondition
           type: Avali
           shouldHave: false
       - !type:SatiateThirst
         factor: 1
         conditions:
-        - !type:OrganType
+        - !type:MetabolizerTypeCondition
           type: Avali
         # Moffstation end
     Gas:
