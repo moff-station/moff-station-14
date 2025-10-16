@@ -229,7 +229,7 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: Avali
-          inverted: false
+          inverted: true
         # Moffstation end
         damage:
           types:
@@ -330,7 +330,7 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: Avali
-          inverted: false
+          inverted: true
         # Moffstation end
         damage:
           types:
