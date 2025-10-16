@@ -1,7 +1,7 @@
 using Content.Server.Shuttles.Systems;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Content.Shared.Tag;
-using Robust.Shared.Prototypes;
+using Content.Shared.Tag; // Moffstation
+using Robust.Shared.Prototypes; // Moffstation
 
 namespace Content.Server.Shuttles.Components;
 

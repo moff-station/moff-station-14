@@ -1,0 +1,14 @@
+﻿- type: entity
+  parent: WeaponLauncherHydra
+  id: WeaponLauncherHydraFrag
+  suffix: Lethal
+  components:
+  - type: RevolverAmmoProvider
+    proto: GrenadeFrag
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+    soundEject:
+      path: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg

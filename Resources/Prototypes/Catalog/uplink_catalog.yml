@@ -783,7 +783,7 @@
     Telecrystal: 1
   categories:
   - UplinkDeception
-  
+
 - type: listing
   id: UplinkAgentIDCard
   name: uplink-agent-id-card-name
@@ -1738,6 +1738,11 @@
     Telecrystal: 12
   categories:
   - UplinkWearables
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - NukeOpsUplink
   # Moffstation - End
 
 - type: listing
@@ -1754,6 +1759,11 @@
     Telecrystal: 12
   categories:
   - UplinkWearables
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - NukeOpsUplink
   # Moffstation - End
 
 - type: listing

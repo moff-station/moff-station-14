@@ -313,7 +313,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (!Resolve(uid, ref door))
             return false;
 
-        if (!CanOpen(uid, door, user, quiet, ignorePower))
+        if (!CanOpen(uid, door, user, quiet, ignorePower)) // Moffstation - Hack to fix evac pods
             return false;
 
         StartOpening(uid, door, user, predicted);

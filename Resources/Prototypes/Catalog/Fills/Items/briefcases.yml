@@ -33,8 +33,10 @@
   parent: BriefcaseSyndieFlashy # Moffstation (New Briefcases)
   suffix: Syndicate, Spesos
   components:
+  # Moffstation - Begin
   - type: Item
     size: Huge
+  # Moffstation - End
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSunglasses
@@ -54,8 +56,10 @@
   parent: BriefcaseBrown # Moffstation (New Briefcases)
   suffix: Thief, Spesos
   components:
+  # Moffstation - Begin
   - type: Item
     size: Huge
+  # Moffstation - End
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSunglasses
