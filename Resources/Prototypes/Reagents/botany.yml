@@ -220,7 +220,7 @@
         factor: 4
         conditions:
         - !type:MetabolizerTypeCondition
-          type: Avali
+          type: [ Avali ]
     # Moffstation end
     Poison:
       effects:
