@@ -322,6 +322,9 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.2
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: Avali
     # Moffstation end
     Poison:
       effects:
