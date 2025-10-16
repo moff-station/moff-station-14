@@ -11,6 +11,8 @@ es-voter-chat-announce-wrap-message = [font size=14][bold]{$message}[/bold][/fon
 es-voter-query-string-station-event = Next station event:
 es-voter-query-string-degradation-event = Next degradation event:
 
+es-voter-query-string-station-event = Running next station event:
+
 command-description-esvote-ls = Returns a list of all active votes
 command-description-esvote-options = Given a vote entity, returns the different options
 command-description-esvote-tally = Given a vote entity, returns the current vote tally for the different options

@@ -17,7 +17,7 @@ public sealed class ESVoteSystem : ESSharedVoteSystem
         base.Initialize();
 
         SubscribeLocalEvent<ESVoteComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
-        SubscribeLocalEvent<ESVoteComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<ESVoteComponent, ComponentRemove>(OnRemove);
     }
 
     private void OnAfterAutoHandleState(Entity<ESVoteComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -33,7 +33,7 @@ public sealed class ESVoteSystem : ESSharedVoteSystem
         }
     }
 
-    private void OnShutdown(Entity<ESVoteComponent> ent, ref ComponentShutdown args)
+    private void OnRemove(Entity<ESVoteComponent> ent, ref ComponentRemove args)
     {
         var query = EntityQueryEnumerator<ESVoterComponent, UserInterfaceComponent>();
         while (query.MoveNext(out var uid, out _, out var ui))
