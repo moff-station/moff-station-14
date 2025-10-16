@@ -318,13 +318,13 @@
         factor: 2
         conditions:
         - !type:MetabolizerTypeCondition
-          type: Avali
+          type: [ Avali ]
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.2
         conditions:
         - !type:MetabolizerTypeCondition
-          type: Avali
+          type: [ Avali ]
     # Moffstation end
     Poison:
       effects:
@@ -332,7 +332,7 @@
         # Moffstation start - Allow avali to drink ammonia
         conditions:
         - !type:MetabolizerTypeCondition
-          type: Avali
+          type: [ Avali ]
           inverted: true
         # Moffstation end
         damage:
