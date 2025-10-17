@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server._Moffstation.StationEvents.Components;
 using Content.Server.GameTicking;
 using Content.Server.Pinpointer;
@@ -49,12 +50,12 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         }
     }
 
-    protected override void Added(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    protected override void Added(EntityUid uid, VentCrittersRuleComponent comp, GameRuleComponent gameRule, GameRuleAddedEvent args)
     {
         // We are doing this before base.Added() so we can modify the announcement to be what we want
         // Choose location and make sure it's not null
-        component.Location = ChooseLocation();
-        if (component.Location is not { } location)
+        comp.Location = ChooseLocation();
+        if (comp.Location is not { } location)
         {
             Log.Warning($"Unable to find a valid location for {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
@@ -78,9 +79,11 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
                     ("time", duration));
         }
 
-        base.Added(uid, component, gameRule, args);
+        base.Added(uid, comp, gameRule, args);
 
         _jitter.AddJitter(location, 0.5f, 30f);
+
+        comp.SpawnAttempts ??= Math.Max(EntityQuery<VentCritterSpawnLocationComponent>().Count(), comp.SpawnAttemptsMin);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)

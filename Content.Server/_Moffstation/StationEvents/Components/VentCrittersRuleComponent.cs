@@ -20,7 +20,13 @@ public sealed partial class VentCrittersRuleComponent : Component
     /// The amount of chances something gets to spawn. estimated number of spawns can be calculated with (SpawnChances * entryProb)
     /// </summary>
     [DataField]
-    public int SpawnAttempts = 100;
+    public int? SpawnAttempts;
+
+    /// <summary>
+    /// Baseline spawn chances, mainly for small maps
+    /// </summary>
+    [DataField]
+    public int SpawnAttemptsMin = 50;
 
     [DataField]
     public TimeSpan PopupDelay = TimeSpan.FromSeconds(5);
