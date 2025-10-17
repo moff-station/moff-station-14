@@ -1,7 +1,6 @@
 ﻿using Content.Server._Moffstation.StationEvents.Events;
-using Content.Server.StationEvents.Events;
 using Content.Shared.Storage;
-using Robust.Shared.Map;
+using Robust.Shared.Audio;
 
 namespace Content.Server._Moffstation.StationEvents.Components;
 
@@ -23,5 +22,18 @@ public sealed partial class VentCrittersRuleComponent : Component
     [DataField]
     public int SpawnAttempts = 100;
 
-    public EntityCoordinates? Location;
+    [DataField]
+    public TimeSpan NextPopup;
+
+    [DataField]
+    public TimeSpan PopupDelay = TimeSpan.FromSeconds(5);
+
+    [DataField]
+    public EntityUid? Location;
+
+    [DataField]
+    public SoundSpecifier? VentCreakNoise = new SoundPathSpecifier("/Audio/Machines/airlock_creaking.ogg")
+    {
+        Params = AudioParams.Default.WithVolume(-3f),
+    };
 }
