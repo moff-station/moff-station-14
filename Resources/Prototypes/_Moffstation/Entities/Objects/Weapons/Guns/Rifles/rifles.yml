@@ -46,3 +46,45 @@
     autoRefill: true
     autoRefillRate: 1m # You really ought to be picking up your darts.
     ammoProto: BulletFoam
+
+# Upgraded, more compact Lecter you can get from armory crates.
+- type: entity
+  parent: WeaponRifleLecter
+  id: WeaponRifleLecterCarbine
+  name: Lecter Mk21C
+  description: "A modern Lecter-pattern carbine designed by Sunshade Armories and licensed to Nanotrasen. Features a collapsible stock and short 14-inch barrel for optimal storability and mobility, making it a favorite among ERT forces.\nFeeds from .20 rifle magazines."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterCarbine.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterCarbine.rsi
+  - type: Item
+    shape:
+    - 0,0,3,1
+
+# Replaces the XL8 in gameplay.
+- type: entity
+  parent: WeaponRifleLecter
+  id: WeaponRifleLecterDMR
+  name: Lecter Mk20 DMR
+  description: "Dedicated Marksman Rifle conversion of the Lecter platform designed by Sunshade Armories and licensed to Nanotrasen. Taking advantage of the Lecter's famed accuracy, it features an extended 22-inch barrel, redesigned ergonomic furniture, and a state-of-the-art electronic sight to create a robust sniping package.\nFeeds from .20 rifle magazines."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
+  - type: Item
+    shape:
+    - 0,0,5,1
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 2
+    pvsIncrease: 0.2
+  - type: Gun
+    burstCooldown: 0
+    burstFireRate: 5
+    shotsPerBurst: 3
+    availableModes:
+    - Burst
+    - SemiAuto
+    - FullAuto

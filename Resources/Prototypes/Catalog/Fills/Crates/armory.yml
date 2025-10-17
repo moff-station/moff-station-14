@@ -93,11 +93,11 @@
   id: CrateArmoryRifle
   parent: [ CrateWeaponSecure, BaseSecurityContraband ]
   name: rifle crate
-  description: Contains two high-powered assault rifles with four mags. Requires Armory access to open.
+  description: Contains two advanced Lecter carbines. Requires Armory access to open. # Moffstation - (Lecter Variants)
   components:
   - type: StorageFill
     contents:
-    - id: WeaponRifleLecter
+    - id: WeaponRifleLecterCarbine # Moffstation - (Lecter Variants)
       amount: 2
     - id: MagazineRifle
       amount: 4
