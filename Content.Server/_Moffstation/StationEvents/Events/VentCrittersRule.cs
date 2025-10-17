@@ -80,7 +80,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         base.Added(uid, component, gameRule, args);
 
-        _jitter.AddJitter(location, 0.5f, 20f);
+        _jitter.AddJitter(location, 0.5f, 30f);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
