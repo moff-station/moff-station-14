@@ -23,17 +23,17 @@ public sealed partial class VentCrittersRuleComponent : Component
     public int SpawnAttempts = 100;
 
     [DataField]
-    public TimeSpan NextPopup;
-
-    [DataField]
     public TimeSpan PopupDelay = TimeSpan.FromSeconds(5);
-
-    [DataField]
-    public EntityUid? Location;
 
     [DataField]
     public SoundSpecifier? VentCreakNoise = new SoundPathSpecifier("/Audio/Machines/airlock_creaking.ogg")
     {
         Params = AudioParams.Default.WithVolume(-3f),
     };
+
+    [ViewVariables]
+    public EntityUid? Location;
+
+    public TimeSpan NextPopup;
+
 }

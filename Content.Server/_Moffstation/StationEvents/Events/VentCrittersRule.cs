@@ -38,10 +38,12 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         var query = EntityQueryEnumerator<VentCrittersRuleComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (_gameTiming.CurTime > comp.NextPopup && comp.Location is { } location && _gameTicker.IsGameRuleActive(uid))
+            if (_gameTiming.CurTime > comp.NextPopup &&
+                comp.Location is { } location &&
+                _gameTicker.IsGameRuleActive(uid))
             {
                 _audio.PlayPvs(comp.VentCreakNoise, location);
-                _popup.PopupCoordinates("The thing is making some crazy ass noise", Transform(location).Coordinates, PopupType.LargeCaution);
+                _popup.PopupCoordinates(Loc.GetString("station-event-vent-creatures-vent-warning"), Transform(location).Coordinates, PopupType.LargeCaution);
                 comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
             }
         }
@@ -94,12 +96,14 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         RemCompDeferred<JitteringComponent>(location);
 
+        var coords =  Transform(location).Coordinates;
+
         //Spawn in the stuff
         for (var i = 0; i < component.SpawnAttempts; i++)
         {
             foreach (var spawn in EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom))
             {
-                Spawn(spawn, Transform(location).Coordinates);
+                Spawn(spawn, coords);
             }
         }
 
@@ -109,11 +113,11 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         {
             // Spawn a special spawn (guaranteed spawn)
             var specialEntry = RobustRandom.Pick(component.SpecialEntries);
-            Spawn(specialEntry.PrototypeId, Transform(location).Coordinates);
+            Spawn(specialEntry.PrototypeId, coords);
 
             foreach (var specialSpawn in EntitySpawnCollection.GetSpawns(component.SpecialEntries, RobustRandom))
             {
-                Spawn(specialSpawn, Transform(location).Coordinates);
+                Spawn(specialSpawn, coords);
             }
         }
     }
