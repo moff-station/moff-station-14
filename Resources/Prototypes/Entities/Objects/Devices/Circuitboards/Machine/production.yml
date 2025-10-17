@@ -1386,8 +1386,8 @@
     prototype: CutterMachine
     stackRequirements:
       Steel: 2
-      Capacitor: 1
-      Manipulator: 1
+      Capacitor: 1 #moffstation - Revert machine parts
+      Manipulator: 1 #moffstation - Revert machine parts
       Cable: 1
 
 - type: entity

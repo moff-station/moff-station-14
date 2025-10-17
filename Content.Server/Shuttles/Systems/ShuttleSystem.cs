@@ -157,8 +157,6 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
         _physics.SetBodyType(uid, BodyType.Dynamic, manager: manager, body: component);
         _physics.SetBodyStatus(uid, component, BodyStatus.InAir);
         _physics.SetFixedRotation(uid, false, manager: manager, body: component);
-        _physics.SetLinearDamping(uid, component, shuttle.LinearDamping);
-        _physics.SetAngularDamping(uid, component, shuttle.AngularDamping);
     }
 
     public void Disable(EntityUid uid, FixturesComponent? manager = null, PhysicsComponent? component = null)

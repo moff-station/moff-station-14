@@ -133,7 +133,7 @@ namespace Content.IntegrationTests.Tests
             var userData = server.ResolveDependency<IResourceManager>().UserData;
 
             string one;
-            String two;
+            string two;
 
             await using (var stream = userData.Open(rp1, FileMode.Open))
             using (var reader = new StreamReader(stream))

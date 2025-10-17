@@ -459,6 +459,8 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (def.StartingGear is not null)
             gear.Add(def.StartingGear.Value);
 
+        // _loadout.Equip(player, gear, def.RoleLoadout); // Moffstation - Moved to else statement so starting gear doesn't get duplicated
+
         if (session != null)
         {
             // Moffstation - Begin - Use LoadoutAwareEquip function to equip Roleloadout and Starting gear, this allows custom loadouts for antags.

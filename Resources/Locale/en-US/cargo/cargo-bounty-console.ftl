@@ -1,5 +1,6 @@
-﻿#Moffstation - Modified Bounty console to be general
+﻿# Moffstation - Begin - Modified Bounty console to be general
 bounty-console-menu-title = Bounty console
+# Moffstation - End
 bounty-console-label-button-text = Print label
 bounty-console-skip-button-text = Skip
 bounty-console-time-label = Time: [color=orange]{$time}[/color]

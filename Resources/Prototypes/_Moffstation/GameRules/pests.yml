@@ -1,4 +1,38 @@
 - type: entity
+  id: MothroachMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 6
+    duration: 30 # Used as delay
+  - type: VentCrittersRule
+    entries:
+    - id: MobMothroach
+      prob: 0.01
+    - id: MobMothroachRosy
+      prob: 0.005
+    - id: MobMothroachDeathshead
+      prob: 0.005
+
+- type: entity
+  id: MothroachMigrationSilent
+  parent: BaseStationEvent
+  components:
+  - type: StationEvent
+  - type: VentCrittersRule
+    entries:
+    - id: MobMothroach
+      prob: 0.01
+    - id: MobMothroachRosy
+      prob: 0.005
+    - id: MobMothroachDeathshead
+      prob: 0.005
+
+- type: entity
   id: TarboldMigration
   parent: BaseStationEventShortDelay
   components:

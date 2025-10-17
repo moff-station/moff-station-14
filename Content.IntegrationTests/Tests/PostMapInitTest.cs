@@ -35,9 +35,9 @@ namespace Content.IntegrationTests.Tests
 
         // Moffstation - Whitelist for jobs that don't need to be mapped
         private static readonly ProtoId<JobPrototype>[] NoSpawnJobs =
-        {
-            "Prisoner"
-        };
+        [
+            "Prisoner",
+        ];
 
         private static readonly string[] NoSpawnMaps =
         {

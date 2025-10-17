@@ -186,6 +186,18 @@
         !type:SimpleColoring
         color: "#937e3d"
 
+# Moffstation - Begin - Vox markings
+#- type: marking
+#  id: VoxTail
+#  bodyPart: Tail
+#  markingCategory: Tail
+#  speciesRestriction: [Vox]
+#  forcedColoring: true
+#  sprites:
+#  - sprite: Mobs/Customization/vox_parts.rsi
+#    state: tail
+# Moffstation - End
+
 - type: marking
   id: VoxTailShort
   bodyPart: Tail

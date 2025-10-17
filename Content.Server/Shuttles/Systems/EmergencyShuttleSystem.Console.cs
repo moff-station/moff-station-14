@@ -199,7 +199,7 @@ public sealed partial class EmergencyShuttleSystem
             }
 
             // Don't dock them. If you do end up doing this then stagger launch.
-            _shuttle.FTLToDock(uid, shuttle, centcomm.Entity.Value, hyperspaceTime: TransitTime, priorityTag: pod.PriorityTag);
+            _shuttle.FTLToDock(uid, shuttle, centcomm.Entity.Value, hyperspaceTime: TransitTime, priorityTag: pod.PriorityTag); // Moffstation - Escape pods dock with CC
             RemCompDeferred<EscapePodComponent>(uid);
         }
 

@@ -428,8 +428,6 @@
     grid:
     - 0,0,4,3
   - type: QuickPickup # Moffstation
-  - type: StorageFill
-    contents: [] #to override base clipboard fill
   - type: ItemMapper
     mapLayers:
       qm_clipboard_paper:

@@ -204,7 +204,9 @@
     sound:
       path: "/Audio/Weapons/Guns/Gunshots/batrifle.ogg"
     positional: true
+  # Moffstation - Begin - Foam force borg module needs a tag to refer to this
   - type: Tag
     tags:
     - HandGrenade
     - FoamGrenade
+  # Moffstation - End

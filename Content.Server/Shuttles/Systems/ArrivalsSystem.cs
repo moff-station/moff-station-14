@@ -568,7 +568,7 @@ public sealed class ArrivalsSystem : EntitySystem
             _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
             var restricted = new RestrictedRangeComponent
             {
-                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange)
+                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange) // Moffstation - Custom arrivals settings
             };
             AddComp(mapUid, restricted);
         }

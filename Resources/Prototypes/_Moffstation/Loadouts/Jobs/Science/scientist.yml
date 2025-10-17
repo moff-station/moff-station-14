@@ -16,3 +16,10 @@
   equipment:
     id: XenoarcheologistPDA
   groupBy: "scientist roles"  # Moffstation - Additional Roles
+
+
+# New Roboticist & Machinist Outfits
+- type: loadout
+  id: MachinistLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatMach
