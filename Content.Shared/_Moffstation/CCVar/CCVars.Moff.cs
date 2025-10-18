@@ -28,4 +28,10 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<bool> LongSpeech =
         CVarDef.Create("moff.long_speech", false, CVar.SERVER);
+
+    /// <summary>
+    /// Whether players are able to /suicide
+    /// </summary>
+    public static readonly CVarDef<bool> AllowSuicide =
+        CVarDef.Create("moff.allow_suicide", false, CVar.SERVER);
 }
