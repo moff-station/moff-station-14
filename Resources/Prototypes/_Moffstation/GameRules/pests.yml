@@ -16,3 +16,22 @@
     specialEntries:
     - id: MobTarbold
       prob: 0.001
+
+- type: entity
+  id: WhimperletMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 1
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobWhimperlet
+      prob: 0.001
+    specialEntries:
+    - id: MobWhimperlet
+      prob: 0.001

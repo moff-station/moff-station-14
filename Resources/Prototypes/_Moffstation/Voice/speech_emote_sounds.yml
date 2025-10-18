@@ -1,0 +1,11 @@
+- type: emoteSounds
+  id: Whimperlet
+  params:
+    variation: 0.125
+  sounds:
+    Crying:
+      path: /Audio/_Moffstation/Voice/Avali/avali_cry.ogg
+    Gasp:
+      collection: FemaleGasp
+    DefaultDeathgasp:
+      collection: FemaleDeathGasp
