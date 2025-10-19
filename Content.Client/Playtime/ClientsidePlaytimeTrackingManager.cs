@@ -124,18 +124,6 @@ public sealed class ClientsidePlaytimeTrackingManager
     {
         var hourlyNoticeCts = new CancellationTokenSource();
 
-        try
-        {
-            hourlyNoticeCts?.Cancel();
-            hourlyNoticeCts?.Dispose();
-        }
-        catch
-        {
-            // l plus ratio
-        }
-
-        hourlyNoticeCts = new CancellationTokenSource();
-
         var now = DateTime.Now;
         var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0, now.Kind).AddHours(1);
         var delay = nextHour - now;
