@@ -65,8 +65,6 @@ public sealed class ClientsidePlaytimeTrackingManager
         // Playerdetached gets called on quit, though, so at least that's covered.
         _playerManager.LocalPlayerAttached += OnPlayerAttached;
         _playerManager.LocalPlayerDetached += OnPlayerDetached;
-
-        ScheduleNextHourlyNotice(); // Moffstation - Hourly Playtime Notice
     }
 
     private void OnConnected(object? sender, NetChannelArgs args)
