@@ -1,10 +1,11 @@
-﻿using Content.Shared.ActionBlocker;
-using Content.Shared.Buckle;
+﻿using Content.Server.Buckle.Systems;
+using Content.Server.Storage.EntitySystems;
+using Content.Server.Stunnable;
+using Content.Shared._Moffstation.Chasm;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Chasm;
 using Content.Shared.Destructible;
-using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -12,17 +13,16 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.StepTrigger.Systems;
-using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
+using Robust.Server.Audio;
+using Robust.Server.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Moffstation.Chasm;
+namespace Content.Server._Moffstation.Chasm;
 
 /// <summary>
 ///     Handles making entities fall into chasms when stepped on.
@@ -33,15 +33,15 @@ public sealed class ChasmSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedEntityStorageSystem _entStorage = default!;
-    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly EntityStorageSystem _entStorage = default!;
+    [Dependency] private readonly BuckleSystem _buckle = default!;
+    [Dependency] private readonly ContainerSystem _containerSystem = default!;
+    [Dependency] private readonly StunSystem _stun = default!;
 
 
     public override void Initialize()
@@ -66,28 +66,23 @@ public sealed class ChasmSystem : EntitySystem
             {
                 if (!TryComp<ChasmFallingComponent>(entity, out var falling) ||
                     falling.NextDeletionTime > _timing.CurTime)
-                {
                     continue;
-                }
 
-                if (_whitelist.IsBlacklistPass(chasm.PreservationBlacklist, entity) ||
-                    !_whitelist.IsWhitelistPass(chasm.PreservationWhitelist, entity))
-                {
-                    PredictedQueueDel(entity);
-                    chasm.FallingObjects.Remove(entity);
-                    continue;
-                }
-
-                _containerSystem.Insert(entity, chasm.Hole);
+                chasm.FallingObjects.Remove(entity);
+                RemCompDeferred<ChasmFallingComponent>(entity);
 
                 if (TryComp<MobStateComponent>(entity, out var mobState))
                 {
                     _mobState.ChangeMobState(entity, MobState.Dead, mobState);
                     EnsureComp<StunnedComponent>(entity);
                 }
-
-                chasm.FallingObjects.Remove(entity);
-                RemCompDeferred<ChasmFallingComponent>(entity);
+                else if (_whitelist.IsBlacklistPass(chasm.PreservationBlacklist, entity) ||
+                          !_whitelist.IsWhitelistPass(chasm.PreservationWhitelist, entity))
+                {
+                    TryQueueDel(entity);
+                    continue;
+                }
+                _containerSystem.Insert(entity, chasm.Hole);
             }
         }
     }
@@ -113,14 +108,14 @@ public sealed class ChasmSystem : EntitySystem
         if (HasComp<ChasmFallingComponent>(args.Tripper))
             return;
 
+        if (TryComp<PullableComponent>(args.Tripper, out var pullable) && !pullable.BeingPulled)
+            _pulling.TryStopPull(args.Tripper, pullable);
+
         // Reject if blacklisted.
         if (_whitelist.IsBlacklistPass(ent.Comp.Blacklist, args.Tripper))
         {
-            if (!ent.Comp.ThrowBlacklisted ||
-                !TryComp<PullableComponent>(args.Tripper, out var pullable) ||
-                !pullable.BeingPulled)
+            if (!ent.Comp.ThrowBlacklisted)
                 return;
-            _pulling.TryStopPull(args.Tripper, pullable);
             _throwing.TryThrow(args.Tripper, _random.NextVector2() * 10, 7);
             return;
         }

@@ -8,7 +8,7 @@ namespace Content.Shared._Moffstation.Chasm;
 /// <summary>
 ///     Marks a component that will cause entities to fall into them on a step trigger activation
 /// </summary>
-[NetworkedComponent, RegisterComponent, Access(typeof(ChasmSystem))]
+[NetworkedComponent, RegisterComponent]
 public sealed partial class ChasmComponent : Component
 {
     /// <summary>
@@ -45,7 +45,7 @@ public sealed partial class ChasmComponent : Component
     /// Whether container's contents should be dumped into the hole separately
     /// </summary>
     [DataField]
-    public bool DumpContainers;
+    public bool DumpContainers = true;
 
     /// <summary>
     /// List of objects currently falling into the chasm
