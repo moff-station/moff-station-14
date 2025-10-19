@@ -28,7 +28,6 @@ public sealed class ClientsidePlaytimeTrackingManager
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!; // Moffstation - Hourly Playtime Notice
-    [Dependency] private readonly IRobustRandom _random = default!; // for random tip selection
 
     private ISawmill _sawmill = default!;
 
