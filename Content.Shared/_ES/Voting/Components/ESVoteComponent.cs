@@ -43,6 +43,27 @@ public sealed partial class ESVoteComponent : Component
     /// </summary>
     [DataField]
     public LocId QueryString = "es-voter-chat-announce-query-default";
+
+    /// <summary>
+    /// How the result is selected
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public ResultStrategy Strategy = ResultStrategy.HighestValue;
+
+    /// <summary>
+    /// If false, voters will not be able to see how many votes they have.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool ShowCount = true;
+}
+
+/// <summary>
+/// Methods of determining the result for <see cref="ESVoteComponent"/>
+/// </summary>
+public enum ResultStrategy : byte
+{
+    HighestValue,
+    WeightedPick,
 }
 
 /// <summary>

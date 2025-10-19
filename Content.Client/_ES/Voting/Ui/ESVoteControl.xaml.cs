@@ -69,9 +69,17 @@ public sealed partial class ESVoteControl : PanelContainer
             if (child is ESVoteButton voteButton)
             {
                 var votes = vote.Comp.Votes.GetValueOrDefault(voteButton.Option) ?? [];
-                voteButton.Label.Text = Loc.GetString("es-voter-ui-button-text-option-format",
-                    ("option", voteButton.Option.DisplayString),
-                    ("count", votes.Count));
+                if (vote.Comp.ShowCount)
+                {
+                    voteButton.Label.Text = Loc.GetString("es-voter-ui-button-text-option-format",
+                        ("option", voteButton.Option.DisplayString),
+                        ("count", votes.Count));
+                }
+                else
+                {
+                    voteButton.Label.Text = Loc.GetString("es-voter-ui-button-text-option-format-no-count",
+                        ("option", voteButton.Option.DisplayString));
+                }
             }
         }
     }
