@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Linq;
 using Content.Shared.CCVar;
 using Robust.Client.Player;
