@@ -44,7 +44,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
                 _gameTicker.IsGameRuleActive(uid))
             {
                 _audio.PlayPvs(comp.VentCreakNoise, location);
-                _popup.PopupCoordinates(Loc.GetString("station-event-vent-creatures-vent-warning"), Transform(location).Coordinates, PopupType.LargeCaution);
+                _popup.PopupCoordinates(Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName)), Transform(location).Coordinates, PopupType.MediumCaution);
                 comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
             }
         }
