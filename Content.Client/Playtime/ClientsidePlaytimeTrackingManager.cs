@@ -170,7 +170,7 @@ public sealed class ClientsidePlaytimeTrackingManager
     public void PostHourlyNotice()
     {
         var playtime = TimeSpan.FromMinutes(PlaytimeMinutesToday);
-        var localTime = DateTime.Now.ToString(DateTimeFormatInfo.CurrentInfo.ShortTimePattern);
+        var localTime = DateTime.Now.ToString("t"); // short time, localized
         var text = Loc.GetString("chat-manager-client-hourly-playtime-notice", ("hours", playtime.Hours), ("minutes", playtime.Minutes), ("time", localTime));
 
         var wrapped = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(text)));
