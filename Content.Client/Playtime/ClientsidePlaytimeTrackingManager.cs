@@ -39,8 +39,6 @@ public sealed class ClientsidePlaytimeTrackingManager
     [ViewVariables]
     private TimeSpan? _mobAttachmentTime;
 
-    private CancellationTokenSource? _hourlyNoticeCts; // Moffstation - Hourly Playtime Notice
-
     /// <summary>
     /// The total amount of time played today, in minutes.
     /// </summary>
@@ -79,15 +77,9 @@ public sealed class ClientsidePlaytimeTrackingManager
         var recordedDateString = _configurationManager.GetCVar(CCVars.PlaytimeLastConnectDate);
         var formattedDate = datatimey.Date.ToString(InternalDateFormat);
 
-        // Moffstation - Start - Hourly Playtime Notice
         ScheduleNextHourlyNotice(); // Moffstation - Hourly Playtime Notice
         if (formattedDate == recordedDateString)
-        {
-            // Still reschedule the hourly notice to avoid duplicate timers across reconnects.
-            ScheduleNextHourlyNotice();
             return;
-        }
-        // Moffstation - End - Hourly Playtime Notice
 
         _configurationManager.SetCVar(CCVars.PlaytimeMinutesToday, 0);
         _configurationManager.SetCVar(CCVars.PlaytimeLastConnectDate, formattedDate);
@@ -133,17 +125,19 @@ public sealed class ClientsidePlaytimeTrackingManager
     /// </summary>
     private void ScheduleNextHourlyNotice()
     {
+        var hourlyNoticeCts = new CancellationTokenSource();
+
         try
         {
-            _hourlyNoticeCts?.Cancel();
-            _hourlyNoticeCts?.Dispose();
+            hourlyNoticeCts?.Cancel();
+            hourlyNoticeCts?.Dispose();
         }
         catch
         {
             // l plus ratio
         }
 
-        _hourlyNoticeCts = new CancellationTokenSource();
+        hourlyNoticeCts = new CancellationTokenSource();
 
         var now = DateTime.Now;
         var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0, now.Kind).AddHours(1);
@@ -158,10 +152,10 @@ public sealed class ClientsidePlaytimeTrackingManager
                 }
                 finally
                 {
-                    RobustTimer.Spawn(TimeSpan.FromHours(1), PostHourlyNotice, _hourlyNoticeCts.Token);
+                    RobustTimer.Spawn(TimeSpan.FromHours(1), PostHourlyNotice, hourlyNoticeCts.Token);
                 }
             },
-            _hourlyNoticeCts.Token);
+            hourlyNoticeCts.Token);
     }
 
     /// <summary>
