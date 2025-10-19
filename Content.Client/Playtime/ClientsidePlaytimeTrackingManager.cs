@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Linq;
 using Content.Shared.CCVar;
 using Robust.Client.Player;
 using Robust.Shared.Network;
@@ -7,7 +9,8 @@ using Robust.Client.UserInterface;
 using Robust.Shared.Utility;
 using System.Threading;
 using RobustTimer = Robust.Shared.Timing.Timer;
-using Robust.Shared.Random;
+using Content.Client.UserInterface.Systems.Chat;
+using Content.Shared.Chat;
 
 namespace Content.Client.Playtime;
 
@@ -77,6 +80,7 @@ public sealed class ClientsidePlaytimeTrackingManager
         var formattedDate = datatimey.Date.ToString(InternalDateFormat);
 
         // Moffstation - Start - Hourly Playtime Notice
+        ScheduleNextHourlyNotice(); // Moffstation - Hourly Playtime Notice
         if (formattedDate == recordedDateString)
         {
             // Still reschedule the hourly notice to avoid duplicate timers across reconnects.
@@ -87,8 +91,6 @@ public sealed class ClientsidePlaytimeTrackingManager
 
         _configurationManager.SetCVar(CCVars.PlaytimeMinutesToday, 0);
         _configurationManager.SetCVar(CCVars.PlaytimeLastConnectDate, formattedDate);
-
-        ScheduleNextHourlyNotice(); // Moffstation - Hourly Playtime Notice
     }
 
     private void OnPlayerAttached(EntityUid entity)
@@ -146,50 +148,39 @@ public sealed class ClientsidePlaytimeTrackingManager
         var now = DateTime.Now;
         var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0, now.Kind).AddHours(1);
         var delay = nextHour - now;
-        var ms = Math.Max(0, (int)Math.Ceiling(delay.TotalMilliseconds));
 
-        RobustTimer.Spawn(ms,
+        RobustTimer.Spawn(new[] { TimeSpan.Zero, delay }.Max(),
             () =>
-        {
-            try
             {
-                PostHourlyNotice();
-            }
-            finally
-            {
-                RobustTimer.Spawn(60 * 60 * 1000, PostHourlyNotice, _hourlyNoticeCts!.Token);
-            }
-        },
+                try
+                {
+                    PostHourlyNotice();
+                }
+                finally
+                {
+                    RobustTimer.Spawn(TimeSpan.FromHours(1), PostHourlyNotice, _hourlyNoticeCts.Token);
+                }
+            },
             _hourlyNoticeCts.Token);
     }
 
     /// <summary>
     /// Posts the hourly playtime notice to the chat.
     /// </summary>
-    private void PostHourlyNotice()
+    public void PostHourlyNotice()
     {
-        var totalMinutes = (int)MathF.Floor(PlaytimeMinutesToday);
-        var hours = totalMinutes / 60;
-        var minutes = totalMinutes % 60;
-        var localTime = DateTime.Now.ToString("t"); // short time, localized
-        var text = Loc.GetString("chat-manager-client-hourly-playtime-notice", ("hours", hours), ("minutes", minutes), ("time", localTime));
+        var playtime = TimeSpan.FromMinutes(PlaytimeMinutesToday);
+        var localTime = DateTime.Now.ToString(DateTimeFormatInfo.CurrentInfo.ShortTimePattern);
+        var text = Loc.GetString("chat-manager-client-hourly-playtime-notice", ("hours", playtime.Hours), ("minutes", playtime.Minutes), ("time", localTime));
 
         var wrapped = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(text)));
 
         // this is downstream i can do whatever iiiii waaaaannnnnntttt
-        var chat = _uiManager.GetUIController<Content.Client.UserInterface.Systems.Chat.ChatUIController>();
-        var msg = new Content.Shared.Chat.ChatMessage(Shared.Chat.ChatChannel.Server, text, wrapped, default, null, hideChat: false);
+        var chat = _uiManager.GetUIController<ChatUIController>();
+        var msg = new ChatMessage(ChatChannel.Server, text, wrapped, default, null, hideChat: false);
         chat.ProcessChatMessage(msg, speechBubble: false);
 
         _sawmill.Info($"Hourly playtime notice sent: {text}");
-    }
-
-    /// <summary>
-    /// Triggers the hourly playtime notice immediately. For testing purposes. Because I suck at coding.
-    /// </summary>
-    public void TriggerHourlyNotice()
-    {
-        PostHourlyNotice();
     }
 
     #endregion

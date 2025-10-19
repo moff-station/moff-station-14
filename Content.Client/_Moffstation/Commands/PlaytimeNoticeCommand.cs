@@ -2,7 +2,7 @@ using Content.Client.Playtime;
 using JetBrains.Annotations;
 using Robust.Shared.Console;
 
-namespace Content.Client.Commands;
+namespace Content.Client._Moffstation.Commands;
 
 [UsedImplicitly]
 public sealed class PlaytimeNoticeCommand : LocalizedCommands
@@ -13,7 +13,7 @@ public sealed class PlaytimeNoticeCommand : LocalizedCommands
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        _playtime.TriggerHourlyNotice();
+        _playtime.PostHourlyNotice();
         shell.WriteLine("Playtime notice posted.");
     }
 }
