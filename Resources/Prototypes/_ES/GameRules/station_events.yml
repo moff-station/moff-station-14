@@ -1,0 +1,163 @@
+- type: entity
+  parent: BaseGameRule
+  id: ESBaseStationEvent
+  name: Unnamed Station Event
+  abstract: true
+  components:
+  - type: StationEvent
+    startAudio: /Audio/Announcements/attention.ogg # Station events should always have announcements
+    earliestStart: 0
+    weight: 10
+  - type: GameRule
+    delay:
+      min: 5
+      max: 15
+
+- type: entity # Variant for events which have a delay between announcing and starting effects
+  parent: ESBaseStationEvent
+  id: ESBaseStationEventDelayed
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min: 55
+      max: 65
+
+# Event Prototypes
+
+## Breaker Flip
+- type: entity
+  parent: ESBaseStationEvent
+  id: ESStationEventBreakerFlip
+  name: Breaker Flip
+  components:
+  - type: BreakerFlipRule
+
+## Gas Leak
+- type: entity
+  parent: ESBaseStationEvent
+  id: ESStationEventGasLeak
+  name: Gas Leak
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-gas-leak-start-announcement
+    endAnnouncement: station-event-gas-leak-end-announcement
+  - type: ESGasLeakRule
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ESVoteGasLeakGases
+    - ESVoteGasLeakLocation
+
+- type: entity
+  id: ESVoteGasLeakGases
+  name: Which gas should leak?
+  components:
+  - type: ESVote
+    queryString: es-voter-query-string-gas-leak-gas
+    duration: 30
+  - type: ESGasVote
+    gases:
+    - Ammonia
+    - Plasma
+    - Tritium
+    - Frezon
+    - WaterVapor # The Fog...
+    count: 2
+
+- type: entity
+  id: ESVoteGasLeakLocation
+  name: Where should the gas leak?
+  components:
+  - type: ESVote
+    queryString: es-voter-query-string-gas-leak-location
+    duration: 30
+  - type: ESGasVentVote
+
+## Power Grid Check
+- type: entity
+  parent: ESBaseStationEvent
+  id: ESStationEventPowerGridCheck
+  name: Power Grid Check
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-power-grid-check-start-announcement
+    endAnnouncement: station-event-power-grid-check-end-announcement
+    startAudio:
+      path: /Audio/Announcements/power_off.ogg
+      params:
+        volume: -4
+    duration: 60
+    maxDuration: 120
+  - type: PowerGridCheckRule
+
+## Solar Flare
+- type: entity
+  parent: ESBaseStationEvent
+  id: ESStationEventSolarFlare
+  name: Solar Flare
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-solar-flare-start-announcement
+    endAnnouncement: station-event-solar-flare-end-announcement
+    duration: 120
+    maxDuration: 240
+  - type: SolarFlareRule
+    onlyJamHeadsets: true
+    affectedChannels:
+    - Common
+    extraChannels:
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    extraCount: 2
+    lightBreakChancePerSecond: 0.0003
+    doorToggleChancePerSecond: 0.001
+
+## Vent Clog
+- type: entity
+  parent: ESBaseStationEventDelayed
+  id: ESStationEventVentClog
+  name: Vent Clog
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-clog-start-announcement
+  - type: VentClogRule
+
+## Meteor Swarm
+- type: entity
+  parent: ESBaseStationEventDelayed
+  id: ESStationEventMeteorSwarm
+  name: Meteor Swarm
+  components:
+  - type: StationEvent
+    startAudio: null
+    earliestStart: 30
+  - type: MeteorSwarm
+    meteors:
+      ESMeteor: 1
+
+## Space Dust
+- type: entity
+  parent: ESBaseStationEventDelayed
+  id: ESStationEventSpaceDust
+  name: Space Dust
+  components:
+  - type: StationEvent
+    startAudio: null
+    earliestStart: 30
+  - type: MeteorSwarm
+    announcement: station-event-space-dust-start-announcement
+    announcementSound: null
+    nonDirectional: true
+    meteors:
+      MeteorSpaceDust: 1
+    waves:
+      min: 2
+      max: 3
+    meteorsPerWave:
+      min: 8
+      max: 12

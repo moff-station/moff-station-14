@@ -6,6 +6,7 @@ using Content.Shared._ES.Voting.Components;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.GameTicking.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Toolshed;
@@ -19,6 +20,22 @@ public sealed class ESVoteSystem : ESSharedVoteSystem
     [Dependency] private readonly IChatManager _chat = default!;
 
     private const string VoteSound = "/Audio/Effects/voteding.ogg";
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<GameRuleComponent, ESSynchronizedVotesPostCompletedEvent>(OnPostCompleted);
+    }
+
+    private void OnPostCompleted(Entity<GameRuleComponent> ent, ref ESSynchronizedVotesPostCompletedEvent args)
+    {
+        // We manually start this rule now that the votes have concluded.
+        // Is this kinda hacky? yes. I don't think it's that bad though
+        Comp<GameRuleComponent>(ent).Added = true;
+        var ev = new GameRuleAddedEvent(ent, Prototype(ent)!.ID);
+        RaiseLocalEvent(ent, ref ev, true);
+    }
 
     protected override void SendVoteResultAnnouncement(Entity<ESVoteComponent> ent, ESVoteOption result)
     {

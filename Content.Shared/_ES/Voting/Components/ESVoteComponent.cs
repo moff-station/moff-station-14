@@ -1,5 +1,6 @@
 using System.Linq;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._ES.Voting.Components;
@@ -9,6 +10,7 @@ namespace Content.Shared._ES.Voting.Components;
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
 [Access(typeof(ESSharedVoteSystem))]
+[EntityCategory("ESVotes")]
 public sealed partial class ESVoteComponent : Component
 {
     /// <summary>
@@ -57,8 +59,9 @@ public record struct ESGetVoteOptionsEvent()
 }
 
 /// <summary>
-/// Event raised on a vote entity when the vote concludes.
+/// Event raised on a vote entity and broadcast when the vote concludes.
 /// </summary>
+/// <param name="Vote">The vote that was completed.</param>
 /// <param name="Result">The result of the vote</param>
 [ByRefEvent]
-public readonly record struct ESVoteCompletedEvent(ESVoteOption Result);
+public readonly record struct ESVoteCompletedEvent(Entity<ESVoteComponent> Vote, ESVoteOption Result);
