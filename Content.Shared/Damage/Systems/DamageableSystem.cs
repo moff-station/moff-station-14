@@ -2,9 +2,9 @@ using System.Linq;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Radiation.Events;
@@ -25,10 +25,10 @@ namespace Content.Shared.Damage
         [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
         [Dependency] private readonly IConfigurationManager _config = default!;
         [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
+        [Dependency] private readonly SharedExplosionSystem _explosion = default!;
 
         private EntityQuery<AppearanceComponent> _appearanceQuery;
         private EntityQuery<DamageableComponent> _damageableQuery;
-        private EntityQuery<MindContainerComponent> _mindContainerQuery;
 
         public float UniversalAllDamageModifier { get; private set; } = 1f;
         public float UniversalAllHealModifier { get; private set; } = 1f;
@@ -52,7 +52,6 @@ namespace Content.Shared.Damage
 
             _appearanceQuery = GetEntityQuery<AppearanceComponent>();
             _damageableQuery = GetEntityQuery<DamageableComponent>();
-            _mindContainerQuery = GetEntityQuery<MindContainerComponent>();
 
             // Damage modifier CVars are updated and stored here to be queried in other systems.
             // Note that certain modifiers requires reloading the guidebook.
@@ -60,6 +59,7 @@ namespace Content.Shared.Damage
             {
                 UniversalAllDamageModifier = value;
                 _chemistryGuideData.ReloadAllReagentPrototypes();
+                _explosion.ReloadMap();
             }, true);
             Subs.CVar(_config, CCVars.PlaytestAllHealModifier, value =>
             {
@@ -80,7 +80,11 @@ namespace Content.Shared.Damage
                  UniversalReagentHealModifier = value;
                  _chemistryGuideData.ReloadAllReagentPrototypes();
             }, true);
-            Subs.CVar(_config, CCVars.PlaytestExplosionDamageModifier, value => UniversalExplosionDamageModifier = value, true);
+            Subs.CVar(_config, CCVars.PlaytestExplosionDamageModifier, value =>
+            {
+                UniversalExplosionDamageModifier = value;
+                _explosion.ReloadMap();
+            }, true);
             Subs.CVar(_config, CCVars.PlaytestThrownDamageModifier, value => UniversalThrownDamageModifier = value, true);
             Subs.CVar(_config, CCVars.PlaytestTopicalsHealModifier, value => UniversalTopicalsHealModifier = value, true);
             Subs.CVar(_config, CCVars.PlaytestMobDamageModifier, value => UniversalMobDamageModifier = value, true);
@@ -156,6 +160,9 @@ namespace Content.Shared.Damage
                 var data = new DamageVisualizerGroupData(component.DamagePerGroup.Keys.ToList());
                 _appearance.SetData(uid, DamageVisualizerKeys.DamageUpdateGroups, data, appearance);
             }
+
+            // TODO DAMAGE
+            // byref struct event.
             RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin));
         }
 

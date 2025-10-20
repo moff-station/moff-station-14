@@ -1249,12 +1249,12 @@
     layers:
     - state: service
     - state: icon-clown
-#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: BikeHorn
     - item: ClownRecorder
     - item: BikeHornInstrument
+    # Moffstation - Start - Give service borgs some love
     - hand:
         emptyRepresentative: TrashBananaPeel
         emptyLabel: borg-slot-peels-empty
@@ -1267,7 +1267,7 @@
         whitelist:
           components:
           - CreamPie
-# Moffstation - End
+    # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: clowning-module }
 
