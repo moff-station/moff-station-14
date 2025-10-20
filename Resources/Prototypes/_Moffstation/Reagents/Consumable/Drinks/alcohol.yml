@@ -19,7 +19,7 @@
 - type: reagent
   id: PinkGin
   name: reagent-name-pink-gin
-  parent: BaseDrink
+  parent: BaseAlcohol
   desc: reagent-desc-pink-gin
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: pinkgin
@@ -42,7 +42,7 @@
 - type: reagent
   id: PlantersPunch
   name: reagent-name-planters-punch
-  parent: BaseDrink
+  parent: BaseAlcohol
   desc: reagent-desc-planters-punch
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: planterspunch
