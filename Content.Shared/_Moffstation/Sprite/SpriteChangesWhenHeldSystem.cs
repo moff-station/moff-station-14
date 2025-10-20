@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Sprite;
 
@@ -36,12 +37,18 @@ public sealed partial class SpriteChangesWhenHeldSystem : EntitySystem
 
     private void OnContainerChanged<T>(Entity<SpriteChangesWhenHeldComponent> entity, ref T args)
     {
-        var hasData = _appearance.TryGetData<bool>(entity, SpriteChangesWhenHeldVisuals.IsHeld, out var isHeldData);
+        if (!TryComp<AppearanceComponent>(entity, out var appearance))
+        {
+            DebugTools.Assert($"{ToPrettyString(entity)}'s {nameof(SpriteChangesWhenHeldComponent)} does nothing without {nameof(AppearanceComponent)}");
+            return;
+        }
+
+        var hasData = _appearance.TryGetData<bool>(entity, SpriteChangesWhenHeldVisuals.IsHeld, out var isHeldData, appearance);
         var isHeld = _hands.IsHolding(Transform(entity).ParentUid, entity);
         if (!hasData || // If there was no appearance data, force it to be updated.
             isHeldData != isHeld)
         {
-            _appearance.SetData(entity, SpriteChangesWhenHeldVisuals.IsHeld, isHeld);
+            _appearance.SetData(entity, SpriteChangesWhenHeldVisuals.IsHeld, isHeld, appearance);
         }
     }
 }
