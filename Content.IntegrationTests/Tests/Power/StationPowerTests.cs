@@ -40,7 +40,7 @@ public sealed class StationPowerTests
         "Elkridge",
         "Convex",
         "Relic",
-        "Frezon",
+        "Frezon", // Moffstation
     ];
 
     [Test, TestCaseSource(nameof(GameMaps))]
