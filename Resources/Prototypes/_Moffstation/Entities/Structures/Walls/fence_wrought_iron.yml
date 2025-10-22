@@ -1,22 +1,12 @@
 - type: entity
-  parent: BaseStructure
-  id: BaseFenceIron
+  parent: BaseFenceMetal
+  id: BaseFenceWroughtIron
   name: wrought-iron fence
   description: A fancy, pointy fence
   abstract: true
   components:
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        path:
-          "/Audio/Weapons/grille_hit.ogg"
   - type: Sprite
     sprite: _Moffstation/Structures/Walls/wrought_iron_fence.rsi
-    drawdepth: WallTops
-  - type: Physics
-    bodyType: Static
-  - type: Transform
-    anchored: true
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
@@ -43,20 +33,13 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Climbable
-    delay: 5.0
     startClimbSound:
       collection: FootstepHull
     finishClimbSound:
       collection: FootstepHull
-  - type: Appearance
-  - type: AnimationPlayer
-  - type: RCDDeconstructable
-    cost: 2
-    delay: 2
-    fx: EffectRCDDeconstruct2
 
 - type: entity
-  parent: BaseFenceIron
+  parent: BaseFenceWroughtIron
   id: FenceIronStraight
   suffix: Straight
   components:
@@ -78,30 +61,9 @@
         layer:
         - MidImpassable
         - LowImpassable
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SteelOre1:
-            min: 1
-            max: 1
-      - !type:ChangeConstructionNodeBehavior
-        node: broken
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
 
 - type: entity
-  parent: BaseFenceIron
+  parent: BaseFenceWroughtIron
   id: FenceIronCorner
   suffix: Corner
   components:
@@ -132,7 +94,7 @@
         - LowImpassable
 
 - type: entity
-  parent: BaseFenceIron
+  parent: BaseFenceWroughtIron
   id: FenceIronEnd
   suffix: End
   components:
@@ -156,7 +118,7 @@
         - LowImpassable
 
 - type: entity
-  parent: BaseFenceIron
+  parent: BaseFenceWroughtIron
   id: FenceIronGate
   name: wrought-iron fence gate
   description: The less-pokey way to get past the fence
