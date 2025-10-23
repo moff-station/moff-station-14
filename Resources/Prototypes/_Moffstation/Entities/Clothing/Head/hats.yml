@@ -20,3 +20,23 @@
     sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
+
+# Syndie
+- type: entity
+  parent: [ClothingHeadBase, BaseSyndicateContraband]
+  id: ClothingHeadHatBeretSyndie
+  name: syndicate beret
+  description: An intimidating red beret with an S sown into the top
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/syndieberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/syndieberet.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
