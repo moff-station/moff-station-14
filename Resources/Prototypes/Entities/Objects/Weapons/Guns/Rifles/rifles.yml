@@ -157,7 +157,7 @@
   - type: Appearance
 
 - type: entity
-  name: Lecter Mk20
+  name: Lecter
   parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleLecter
   description: "Popular gas-operated combat rifle used heavily by Nanotrasen and SolGov. Operating in semi or fully automatic, its accuracy, stopping power, and reliability make it excel in all manner of environments.\nFeeds from .20 rifle magazines."
@@ -214,7 +214,7 @@
   name: XL8
   description: |-
     The Experimental Lecter 8
-    An unreasonably expensive military grade assault rifle with integrated optic.
+    An unreasonably expensive military grade assault rifle with integrated optic. 
     Uses .20 rifle ammo.
   components:
   - type: Sprite
@@ -234,7 +234,7 @@
     - Burst
     - SemiAuto
     - FullAuto
-
+  
 - type: entity
   name: Estoc DMR
   parent: [BaseWeaponRifle, BaseSyndicateContraband]
