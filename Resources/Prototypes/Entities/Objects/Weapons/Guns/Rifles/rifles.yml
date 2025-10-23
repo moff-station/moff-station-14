@@ -171,7 +171,7 @@
         map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
-  # Moffstation - Begin (Lecter Variants)
+  # Moffstation - Begin (Lecter Variants) In order to have the longer/shorter carbine and DMR variants change the Lecter's size by a reasonable amount, we can't have it three tiles tall. Honestly all rifles should be 5x2, but that's a change for upstream, not here.
   - type: Item
     shape:
     - 0,0,4,1
@@ -214,7 +214,7 @@
   name: XL8
   description: |-
     The Experimental Lecter 8
-    An unreasonably expensive military grade assault rifle with integrated optic. 
+    An unreasonably expensive military grade assault rifle with integrated optic.
     Uses .20 rifle ammo.
   components:
   - type: Sprite
@@ -234,7 +234,7 @@
     - Burst
     - SemiAuto
     - FullAuto
-  
+
 - type: entity
   name: Estoc DMR
   parent: [BaseWeaponRifle, BaseSyndicateContraband]
