@@ -9,7 +9,7 @@
   - type: Item
     size: Huge
     shape:
-    - 0,0,3,2
+    - 0,0,3,2 # Moffstation - (Lecter Variants) In order to have the shorter carbine and longer DMRs be different in inventory size, we need to make rifles in general longer and less tall. This also has a side benefit of making them consistent size with energy cannons.
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
     quickEquip: false
@@ -171,11 +171,6 @@
         map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
-  # Moffstation - Begin (Lecter Variants)
-  - type: Item
-    shape:
-    - 0,0,4,1
-  # Moffstation - End
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg
@@ -214,7 +209,7 @@
   name: XL8
   description: |-
     The Experimental Lecter 8
-    An unreasonably expensive military grade assault rifle with integrated optic. 
+    An unreasonably expensive military grade assault rifle with integrated optic.
     Uses .20 rifle ammo.
   components:
   - type: Sprite
@@ -234,7 +229,7 @@
     - Burst
     - SemiAuto
     - FullAuto
-  
+
 - type: entity
   name: Estoc DMR
   parent: [BaseWeaponRifle, BaseSyndicateContraband]
