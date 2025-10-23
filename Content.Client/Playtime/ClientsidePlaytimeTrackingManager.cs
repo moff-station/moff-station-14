@@ -1,8 +1,15 @@
+using System.Linq;
 using Content.Shared.CCVar;
 using Robust.Client.Player;
 using Robust.Shared.Network;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
+using Robust.Client.UserInterface;
+using Robust.Shared.Utility;
+using System.Threading;
+using RobustTimer = Robust.Shared.Timing.Timer;
+using Content.Client.UserInterface.Systems.Chat;
+using Content.Shared.Chat;
 
 namespace Content.Client.Playtime;
 
@@ -22,6 +29,7 @@ public sealed class ClientsidePlaytimeTrackingManager
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly IUserInterfaceManager _uiManager = default!; // Moffstation - Hourly Playtime Notice
 
     private ISawmill _sawmill = default!;
 
@@ -66,6 +74,7 @@ public sealed class ClientsidePlaytimeTrackingManager
         var recordedDateString = _configurationManager.GetCVar(CCVars.PlaytimeLastConnectDate);
         var formattedDate = datatimey.Date.ToString(InternalDateFormat);
 
+        ScheduleNextHourlyNotice(); // Moffstation - Hourly Playtime Notice
         if (formattedDate == recordedDateString)
             return;
 
@@ -105,4 +114,54 @@ public sealed class ClientsidePlaytimeTrackingManager
 
         _configurationManager.SaveToFile(); // We don't like that we have to save the entire config just to store playtime stats '^'
     }
+
+    #region Moffstation - Hourly Playtime Notice
+
+    /// <summary>
+    /// Schedules the next hourly playtime notice at the top of the next hour.
+    /// </summary>
+    private void ScheduleNextHourlyNotice()
+    {
+        var hourlyNoticeCts = new CancellationTokenSource();
+
+        var now = DateTime.Now;
+        var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0, now.Kind).AddHours(1);
+        var delay = nextHour - now;
+
+        RobustTimer.Spawn(new[] { TimeSpan.Zero, delay }.Max(),
+            () =>
+            {
+                try
+                {
+                    PostHourlyNotice();
+                }
+                finally
+                {
+                    RobustTimer.Spawn(TimeSpan.FromHours(1), PostHourlyNotice, hourlyNoticeCts.Token);
+                }
+            },
+            hourlyNoticeCts.Token);
+    }
+
+    /// <summary>
+    /// Posts the hourly playtime notice to the chat.
+    /// </summary>
+    public void PostHourlyNotice()
+    {
+        var playtime = TimeSpan.FromMinutes(PlaytimeMinutesToday);
+        var localTime = DateTime.Now.ToString("t"); // short time, localized
+        var text = Loc.GetString("chat-manager-client-hourly-playtime-notice", ("hours", playtime.Hours), ("minutes", playtime.Minutes), ("time", localTime));
+
+        var wrapped = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(text)));
+
+        // this is downstream i can do whatever iiiii waaaaannnnnntttt
+        var chat = _uiManager.GetUIController<ChatUIController>();
+        var msg = new ChatMessage(ChatChannel.Server, text, wrapped, default, null, hideChat: false);
+        chat.ProcessChatMessage(msg, speechBubble: false);
+
+        _sawmill.Info($"Hourly playtime notice sent: {text}");
+    }
+
+    #endregion
+
 }

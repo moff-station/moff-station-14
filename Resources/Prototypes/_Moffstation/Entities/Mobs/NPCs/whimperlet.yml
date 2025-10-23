@@ -1,0 +1,61 @@
+- type: entity
+  name: scrimpering whimperlet
+  id: MobWhimperlet
+  parent: MobMouse
+  description: A soggy creature. Very whimperful.
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _DeltaV/Mobs/Animals/whimperlet.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+      state: whimperlet
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: whimperlet-moving
+    noMovementLayers:
+      movement:
+        state: whimperlet-whimpering
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: whimperlet-whimpering
+      Critical:
+        Base: whimperlet-dead
+      Dead:
+        Base: whimperlet-dead
+  - type: Speech
+    allowedEmotes: ['Crying']
+    speechSounds: Whimperlet
+  - type: Vocal
+    sounds:
+      Male: Whimperlet
+      Female: Whimperlet
+      Unsexed: Whimperlet
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 1
+  - type: Item
+    size: Normal
+  - type: Clothing
+    sprite: _DeltaV/Mobs/Animals/whimperlet.rsi
+    equippedPrefix: whimperlet
+    quickEquip: false
+    slots:
+    - HEAD
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    name: ghost-role-information-whimperlet-name
+    description: ghost-role-information-whimperlet-description
+    rules: ghost-role-information-freeagent-rules
+  - type: Hunger
+    baseDecayRate: 0.15
+  - type: Tag
+    tags:
+    - Trash
+    - CannotSuicide
+    - VimPilot

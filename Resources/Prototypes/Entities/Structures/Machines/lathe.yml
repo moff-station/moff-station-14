@@ -141,6 +141,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
+    - SyndicateAmmoStatic
   - type: BlueprintReceiver
     whitelist:
       tags:
@@ -201,7 +202,6 @@
     staticPacks:
     - ChemistryStatic
     - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -264,7 +264,6 @@
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
-    - OffbrandCircuitboardsStatic # Offbrand
     dynamicPacks:
     - EngineeringBoards
     - CargoBoards
@@ -414,6 +413,9 @@
     - SecurityAmmo
     - SecurityWeapons
     - SecurityDisablers
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateAmmoStatic
   - type: MaterialStorage
     whitelist:
       tags:
@@ -450,6 +452,9 @@
       runningState: icon
       staticPacks:
       - SecurityAmmoStatic
+    - type: EmagLatheRecipes
+      emagStaticPacks:
+      - SyndicateAmmoStatic
     - type: MaterialStorage
       whitelist:
         tags:
@@ -488,8 +493,6 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
-    - OffbrandSurgeryStatic # Offbrand
-    - OffbrandMedicalStatic # Offbrand
     dynamicPacks:
     - Chemistry
   - type: Machine
@@ -589,6 +592,10 @@
     staticPacks:
     - BioGenIngredientsStatic
     - BioGenMaterialsStatic
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - BioGenEmagStatic
+    - HostileCubesStatic
 
 - type: entity
   parent: BaseLathe

@@ -18,6 +18,9 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
+  - BoxFolderBaseThreePapers
+  - BoxFolderPlasticClipboardThreePapers
+  - BoxFolderClipboardThreePapers
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -334,6 +337,13 @@
   - BartenderWintercoat
 
 - type: loadoutGroup
+  id: BartenderGoldenShaker
+  name: loadout-group-bartender-shaker
+  minLimit: 0
+  loadouts:
+  - BartenderGoldenShaker
+
+- type: loadoutGroup
   id: ChefHead
   name: loadout-group-chef-head
   minLimit: 0
@@ -444,10 +454,11 @@
   minLimit: 1
   loadouts:
   - Bible
-  - BibleDruid
   - BibleNanoTrasen
-  - BibleSatanic
-  - BibleTanakh
+  - BibleDruid
+  - BibleHonk
+  - BibleRatvar
+  - BibleNarsie
 
 - type: loadoutGroup
   id: JanitorHead
@@ -717,20 +728,6 @@
   loadouts:
   - QuartermasterWintercoat
 
-# Moffstation - Start - Department Heads can use any department Bag
-- type: loadoutGroup
-  id: QuartermasterBackpack
-  name: loadout-group-quartermaster-backpack
-  loadouts:
-  - CargoTechnicianBackpack
-  - CargoTechnicianSatchel
-  - CargoTechnicianDuffel
-  - SalvageSpecialistBackpack
-  - SalvageSpecialistSatchel
-  - SalvageSpecialistDuffel
-  - LeatherSatchel
-# Moffstation - End - Department Heads can use any department Bag
-
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
@@ -842,20 +839,6 @@
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
-
-# Moffstation - Start - Department Heads can use any department Bag
-- type: loadoutGroup
-  id: ChiefEngineerBackpack
-  name: loadout-group-chief-engineer-backpack
-  loadouts:
-  - StationEngineerBackpack
-  - StationEngineerSatchel
-  - StationEngineerDuffel
-  - AtmosphericTechnicianBackpack
-  - AtmosphericTechnicianSatchel
-  - AtmosphericTechnicianDuffel
-  - LeatherSatchel
-# Moffstation - End - Department Heads can use any department Bag
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
@@ -973,7 +956,7 @@
   - EmergencyOxygenExtendedAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
 
-# `Scienc`e
+# Science
 - type: loadoutGroup
   id: ResearchDirectorHead
   name: loadout-group-research-director-head
@@ -1036,6 +1019,8 @@
   - ScientistJumpskirt
   - RoboticistJumpsuit
   - RoboticistJumpskirt
+  - MachinistJumpsuit # Moffstation - New Roboticist & Machinist Outfits
+  - MachinistJumpskirt # Moffstation - New Roboticist & Machinist Outfits
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
 
@@ -1058,6 +1043,7 @@
   - ScienceWintercoat
   - RoboticistLabCoat
   - RoboticistWintercoat
+  - MachinistLabCoat # Moffstation - New Roboticist & Machinist Outfits
   - SeniorResearcherLabCoat
 
 - type: loadoutGroup
@@ -1246,6 +1232,9 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
+  # Moffstation - Begin (New Detective Outfits)
+  - DetectiveBadge
+  # Moffstation - End (New Detective Outfits)
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1255,6 +1244,12 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # Moffstation - Begin (New Detective Outfits)
+  - SleuthSuit
+  - SleuthSkirt
+  - InvestigatorJumpsuit
+  - InvestigatorJumpskirt
+  # Moffstation - End (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
   - SecurityJumpsuit
   - SecurityJumpskirt
@@ -1269,6 +1264,9 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  # Moffstation - Begin (New Detective Outfits)
+  - DetectiveCoatSleuth
+  # Moffstation - End (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
   - ArmorVest
   - ArmorVestSlim

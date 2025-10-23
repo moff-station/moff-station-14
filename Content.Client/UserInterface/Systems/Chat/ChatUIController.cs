@@ -16,7 +16,7 @@ using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Chat.Widgets;
 using Content.Client.UserInterface.Systems.Gameplay;
-using Content.Shared._Starlight.CollectiveMind;
+using Content.Shared._Starlight.CollectiveMind; // Starlight - Collective Minds
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
@@ -102,7 +102,7 @@ public sealed partial class ChatUIController : UIController
         {ChatSelectChannel.Admin, SharedChatSystem.AdminPrefix},
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
         {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
-        {ChatSelectChannel.CollectiveMind, SharedChatSystem.CollectiveMindPrefix},
+        {ChatSelectChannel.CollectiveMind, SharedChatSystem.CollectiveMindPrefix}, // Starlight - Collective Minds
     };
 
     /// <summary>

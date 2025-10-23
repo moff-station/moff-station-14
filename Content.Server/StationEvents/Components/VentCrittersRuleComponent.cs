@@ -1,12 +1,11 @@
-﻿using Content.Server.StationEvents.Events;
+﻿/* Moffstation - Completely rewritten, moved to our namespace - accept any upstream changes
+using Content.Server.StationEvents.Events;
 using Content.Shared.Storage;
 
 namespace Content.Server.StationEvents.Components;
 
-// Moffstation - Start - Rename to use upstream functionality
-[RegisterComponent, Access(typeof(UpstreamVentCrittersRule))]
-public sealed partial class UpstreamVentCrittersRuleComponent : Component
-// Moffstation - End
+[RegisterComponent, Access(typeof(VentCrittersRule))]
+public sealed partial class VentCrittersRuleComponent : Component
 {
     [DataField("entries")]
     public List<EntitySpawnEntry> Entries = new();
@@ -17,3 +16,4 @@ public sealed partial class UpstreamVentCrittersRuleComponent : Component
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
 }
+*/

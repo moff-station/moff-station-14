@@ -18,6 +18,7 @@
   - PersonalItemBoxcarGlasses
   - PersonalItemCarolynFlettCigsPack
   - PersonalItemCinnabarMask
+  - PersonalItemCooksEnvelope
   - PersonalItemCooksPlushie
   - PersonalItemCoryClipboard
   - PersonalItemDarnellLighter
@@ -25,18 +26,20 @@
   - PersonalItemDelilahBag
   - PersonalItemEclipseSunshadeGun
   - PersonalItemEddieGuitar
-  - PersonalItemFredWatch
+  - PersonalItemFredSuit
   - PersonalItemFrostMedicalWebbing
   - PersonalItemGigsShaker
   - PersonalItemHercynSuit
   - PersonalItemHotSauceFireExtinguisher
   - PersonalItemIrisRing
+  - PersonalItemIoImplanter
   - PersonalItemJasmineFlower
   - PersonalItemKatieWristBand
   - PersonalItemKrakatoaCloak
   - PersonalItemKylieUniform
   - PersonalItemLilithGuitar
   - PersonalItemMarvinHeadphones
+  - PersonalItemMossCloak
   - PersonalItemNyxilathRing
   - PersonalItemPeedeeAvatar
   - PersonalItemPeriwinkleFace
@@ -55,6 +58,7 @@
   - PersonalItemTalviHoodie
   - PersonalItemToffeeMask
   - PersonalItemSqueaksHampter
+  - PersonalItemSharedReptilianFamilyPhoto
   - PersonalItemSharedStationBlueprints
   - PersonalItemSigerthePlushie
   - PersonalItemSkiesOfSunshine
@@ -307,3 +311,28 @@
   - FelonPrisonerPDA
   - InmatePrisonerPDA
   - TestSubjectPDA
+
+# Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefEngineerBackpack
+  name: loadout-group-chief-engineer-backpack
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+  - LeatherSatchel
+
+- type: loadoutGroup
+  id: QuartermasterBackpack
+  name: loadout-group-quartermaster-backpack
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+  - LeatherSatchel

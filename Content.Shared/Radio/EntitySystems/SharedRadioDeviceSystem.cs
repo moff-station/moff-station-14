@@ -48,7 +48,6 @@ public abstract class SharedRadioDeviceSystem : EntitySystem
         else
             RemCompDeferred<ActiveRadioComponent>(uid);
     }
-
     #endregion
 }
 
