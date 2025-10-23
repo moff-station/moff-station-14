@@ -102,6 +102,7 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  - CheapSunglasses # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -1120,6 +1121,10 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - SecurityHelmet
+  - MilitaryHelmet
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1155,6 +1160,10 @@
   loadouts:
   - WardenHead
   - WardenBeret
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - SecurityHelmet
+  - MilitaryHelmet
+  # Moffstation - End
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -1169,6 +1178,10 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
+  # Moffstation - Begin (Nox Loadout Improvements)
+  - ArmorVest
+  - ArmorVestSlim
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SecurityHead
@@ -1192,6 +1205,7 @@
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
   - TrooperUniform
+  - SecurityJumpsuitBlue # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SecurityBackpack
@@ -1251,7 +1265,6 @@
   - MilitaryHelmet
   - SecurityBeret
   - SecurityHat
-  - TrooperHat
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1260,9 +1273,7 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
-  # Moffstation - Begin (New Detective Outfits)
-  - DetectiveBadge
-  # Moffstation - End (New Detective Outfits)
+  - DetectiveBadge # Moffstation - (New Detective Outfits)
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1279,10 +1290,9 @@
   - InvestigatorJumpskirt
   # Moffstation - End (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
-  - SecurityJumpsuit
-  - SecurityJumpskirt
   - SecurityJumpsuitGrey
   - SecurityJumpskirtGrey
+  - SecurityJumpsuitBlue
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1292,9 +1302,7 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
-  # Moffstation - Begin (New Detective Outfits)
-  - DetectiveCoatSleuth
-  # Moffstation - End (New Detective Outfits)
+  - DetectiveCoatSleuth # Moffstation - (New Detective Outfits)
   # Moffstation - Begin (Nox Loadout Improvements)
   - ArmorVest
   - ArmorVestSlim
