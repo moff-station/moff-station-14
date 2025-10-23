@@ -47,10 +47,8 @@
     proto: CartridgeLightRifle
     capacity: 100
   - type: Item
-  # Moffstation - Begin (Better L6 Belts)
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/pk_box.rsi
-  # Moffstation - End
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/pk_box.rsi # Moffstation - Better L6 Belts
   - type: MagazineVisuals
     magState: mag
     steps: 8

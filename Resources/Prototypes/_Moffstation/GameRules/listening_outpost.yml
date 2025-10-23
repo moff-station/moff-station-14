@@ -11,6 +11,8 @@
   - type: RuleGrids
   - type: AntagLoadProfileRule
   - type: AntagSelection
+  - type: DynamicRuleCost
+    cost: 100
 
 - type: entity
   parent: BaseSyndicateListeningOutpost

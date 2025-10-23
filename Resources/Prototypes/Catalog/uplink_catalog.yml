@@ -774,6 +774,15 @@
           - SurplusBundle
 
 # Deception
+- type: listing
+  id: UplinkSyndicateIDCard
+  name: uplink-syndicate-id-card-name
+  description: uplink-syndicate-id-card-desc
+  productEntity: SyndicateIDCard
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkDeception
 
 - type: listing
   id: UplinkAgentIDCard
@@ -1729,6 +1738,11 @@
     Telecrystal: 12
   categories:
   - UplinkWearables
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - NukeOpsUplink
   # Moffstation - End
 
 - type: listing
@@ -1745,6 +1759,11 @@
     Telecrystal: 12
   categories:
   - UplinkWearables
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - NukeOpsUplink
   # Moffstation - End
 
 - type: listing

@@ -9,13 +9,15 @@
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
+  - type: DynamicRuleCost
+    cost: 150
 
 - type: entity
   parent: BasePiratesRule
   id: Pirates
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 30
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:

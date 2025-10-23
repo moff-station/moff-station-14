@@ -10,13 +10,13 @@ namespace Content.Server.Body.Components
     /// <summary>
     ///     Handles metabolizing various reagents with given effects.
     /// </summary>
-    [RegisterComponent, Access(typeof(MetabolizerSystem))]
+    [RegisterComponent, AutoGenerateComponentPause, Access(typeof(MetabolizerSystem))]
     public sealed partial class MetabolizerComponent : Component
     {
         /// <summary>
         ///     The next time that reagents will be metabolized.
         /// </summary>
-        [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+        [DataField, AutoPausedField]
         public TimeSpan NextUpdate;
 
         /// <summary>
@@ -80,24 +80,6 @@ namespace Content.Server.Body.Components
         /// </summary>
         [DataField("groups")]
         public List<MetabolismGroupEntry>? MetabolismGroups;
-
-        /// <summary>
-        /// Offbrand: Set of reagents that are currently being metabolized
-        /// </summary>
-        [DataField]
-        public HashSet<ProtoId<Content.Shared.Chemistry.Reagent.ReagentPrototype>> MetabolizingReagents = new();
-
-        /// <summary>
-        /// Offbrand: Set of reagents that have been metabolized
-        /// </summary>
-        [DataField]
-        public Dictionary<ProtoId<Content.Shared.Chemistry.Reagent.ReagentPrototype>, FixedPoint2> Metabolites = new();
-
-        /// <summary>
-        /// Offbrand: Multiplier for how fast metabolites decay compared to normal rate
-        /// </summary>
-        [DataField]
-        public FixedPoint2 MetaboliteDecayFactor = 2;
     }
 
     /// <summary>

@@ -1,0 +1,12 @@
+- type: alert
+  id: FrenchToggle
+  clickEvent: !type:ToggleFrenchAccentEvent
+  icons:
+  - sprite: _Moffstation/Interface/Alerts/frenchtoggle.rsi
+    state: french-off
+  - sprite: _Moffstation/Interface/Alerts/frenchtoggle.rsi
+    state: french-on
+  name: alerts-french-toggle-name
+  description: alerts-french-toggle-desc
+  minSeverity: 0
+  maxSeverity: 1

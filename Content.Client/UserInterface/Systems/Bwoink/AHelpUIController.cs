@@ -232,7 +232,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         helper.ClydeWindow = _clyde.CreateWindow(new WindowCreateParameters
         {
             Maximized = false,
-            Title = "Admin Help",
+            Title = Loc.GetString("bwoink-admin-title"),
             Monitor = monitor,
             Width = 900,
             Height = 500
@@ -577,7 +577,7 @@ public sealed class UserAHelpUIHandler : IAHelpUIHandler
         _window.OnOpen += () => { OnOpen?.Invoke(); };
         _window.Contents.AddChild(_chatPanel);
 
-        var introText = Loc.GetString("bwoink-system-introductory-message");
+        var introText = Loc.GetString("bwoink-system-introductory-message-moffstation");    // Moffstation - new ahelp message
         var introMessage = new SharedBwoinkSystem.BwoinkTextMessage( _ownerId, SharedBwoinkSystem.SystemUserId, introText);
         Receive(introMessage);
     }
