@@ -32,3 +32,38 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/rdvisionary.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/rdvisionary.rsi
+
+#Detective
+- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase]
+  id: ClothingOuterCoatSleuth
+  name: sleuth trenchcoat
+  description: A 20th-century multi-purpose trenchcoat. Someone who wears this is looking to see who is at Falk.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
+  - type: StorageFill
+    contents:
+    - id: CigarGold
+    - id: CigarGold
+    - id: FlippoEngravedLighter
+  - type: ExplosionResistance
+    damageCoefficient: 1 #its a coat. it doesnt do shit # Moffstation - End (New Detective Outfits)
+
+#Scientist
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: ClothingOuterCoatMach
+  name: machinist lab coat
+  description: A very aberrant labcoat. Helps pass off blood & grease stains as fashionable.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75

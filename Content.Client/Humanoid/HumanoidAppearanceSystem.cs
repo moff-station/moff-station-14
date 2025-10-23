@@ -49,13 +49,12 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         UpdateLayers(entity);
         ApplyMarkingSet(entity);
 
-        // Moffstation Start - CD Height
-        if (!TryComp<HumanoidAppearanceComponent>(entity, out var component) ||
-            !TryComp<SpriteComponent>(entity, out var sprite))
-            return;
+        var humanoidAppearance = entity.Comp1;
+        var sprite = entity.Comp2;
 
-        var speciesPrototype = _prototypeManager.Index(component.Species);
-        var height = Math.Clamp(MathF.Round(component.Height, 2), speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // should NOT be locked, at all
+        // Moffstation Start - CD Height
+        var speciesPrototype = _prototypeManager.Index(humanoidAppearance.Species);
+        var height = Math.Clamp(MathF.Round(humanoidAppearance.Height, 2), speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // should NOT be locked, at all
 
         _sprite.SetScale((entity,sprite), new Vector2(
             (speciesPrototype.ScaleHeight ? height : 1f) * speciesPrototype.ImplicitSpriteScale.X,
@@ -63,7 +62,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         ));
         // Moffstation End
 
-        sprite[sprite.LayerMapReserveBlank(HumanoidVisualLayers.Eyes)].Color = component.EyeColor;
+        sprite[_sprite.LayerMapReserve((entity.Owner, sprite), HumanoidVisualLayers.Eyes)].Color = humanoidAppearance.EyeColor;
     }
 
     private static bool IsHidden(HumanoidAppearanceComponent humanoid, HumanoidVisualLayers layer)

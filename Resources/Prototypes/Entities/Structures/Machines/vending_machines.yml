@@ -820,9 +820,11 @@
     radius: 1.5
     energy: 1.6
     color: "#4b93ad"
+  # Moffstation - Begin - Tags for pirate bounty
   - type: Tag
     tags:
     - Chefware
+  # Moffstation - End
 
 - type: entity
   parent: VendingMachine
@@ -951,7 +953,7 @@
     color: "#9dc5c9"
   - type: GuideHelp
     guides:
-    - OffbrandMedical # Offbrand
+    - MedicalDoctor
 
 - type: entity
   parent: VendingMachineMedicalBase
@@ -1234,8 +1236,9 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineSovietSoda
-  name: BODA
+  name: ВОДА
   description: An old vending machine containing sweet water.
+  suffix: VODA
   components:
   - type: VendingMachine
     pack: BodaInventory
@@ -1887,9 +1890,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Kitchen"]]
+  # Moffstation - Begin - Tags for pirate bounty
   - type: Tag
     tags:
     - Chefware
+  # Moffstation - End
 
 - type: entity
   parent: VendingMachine
@@ -2251,7 +2256,7 @@
   - type: GuideHelp
     guides:
     - Chemicals
-    - OffbrandChemist # Offbrandp
+    - Chemist
 
 - type: entity
   parent: VendingMachineChemicals
@@ -2298,7 +2303,7 @@
     color: "#43ccb5"
   - type: GuideHelp
     guides:
-    - OffbrandMedical # Offbrand
+    - Medical
 
 - type: entity
   parent: VendingMachineWallMedicalCivilian

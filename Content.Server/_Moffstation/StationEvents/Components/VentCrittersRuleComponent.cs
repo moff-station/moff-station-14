@@ -1,7 +1,6 @@
 ﻿using Content.Server._Moffstation.StationEvents.Events;
-using Content.Server.StationEvents.Events;
 using Content.Shared.Storage;
-using Robust.Shared.Map;
+using Robust.Shared.Audio;
 
 namespace Content.Server._Moffstation.StationEvents.Components;
 
@@ -21,7 +20,26 @@ public sealed partial class VentCrittersRuleComponent : Component
     /// The amount of chances something gets to spawn. estimated number of spawns can be calculated with (SpawnChances * entryProb)
     /// </summary>
     [DataField]
-    public int SpawnAttempts = 100;
+    public int? SpawnAttempts;
 
-    public EntityCoordinates? Location;
+    /// <summary>
+    /// Baseline spawn chances, mainly for small maps
+    /// </summary>
+    [DataField]
+    public int SpawnAttemptsMin = 50;
+
+    [DataField]
+    public TimeSpan PopupDelay = TimeSpan.FromSeconds(5);
+
+    [DataField]
+    public SoundSpecifier? VentCreakNoise = new SoundPathSpecifier("/Audio/Machines/airlock_creaking.ogg")
+    {
+        Params = AudioParams.Default.WithVolume(-3f),
+    };
+
+    [ViewVariables]
+    public EntityUid? Location;
+
+    public TimeSpan NextPopup;
+
 }

@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: BaseGameRule
-  id: DynamicRule
+  id: DynamicRuleUpstream # Moffstation - Our own version.... Truthnuke...
   components:
   - type: GameRule
     minPlayers: 5 # <5 is greenshift hours, buddy.

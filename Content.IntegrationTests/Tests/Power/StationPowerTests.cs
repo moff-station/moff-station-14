@@ -5,6 +5,7 @@ using Content.Server.Maps;
 using Content.Server.Power.Components;
 using Content.Server.Power.NodeGroups;
 using Content.Server.Power.Pow3r;
+using Content.Shared.Power.Components;
 using Content.Shared.NodeContainer;
 using Robust.Shared.EntitySerialization;
 
@@ -39,7 +40,7 @@ public sealed class StationPowerTests
         "Elkridge",
         "Convex",
         "Relic",
-        "Frezon",
+        "Frezon", // Moffstation
     ];
 
     [Test, TestCaseSource(nameof(GameMaps))]

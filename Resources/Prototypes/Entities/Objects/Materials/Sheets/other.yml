@@ -108,7 +108,7 @@
         - ReagentId: Plasma
           Quantity: 10
         canReact: false
-  - type: Tag
+  - type: Tag # Redundant
     tags:
     - Sheet
     - ConstructionMaterial
@@ -261,6 +261,7 @@
     - type: Tag
       tags:
       - Sheet
+      - ConstructionMaterial # Moffstation
     - type: Material
     - type: PhysicalComposition
       materialComposition:

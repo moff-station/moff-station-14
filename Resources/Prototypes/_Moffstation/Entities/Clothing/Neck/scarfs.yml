@@ -8,3 +8,14 @@
     sprite: _Moffstation/Clothing/Neck/Scarfs/cmoscarf.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/Scarfs/cmoscarf.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseSecurityContraband]
+  id: ClothingNeckDetBadge
+  name: Detective's Badge
+  description: A standard-issue badge designed for returning to the Head Of Security upon demotion.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/detective-badge.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/detective-badge.rsi

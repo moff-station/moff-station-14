@@ -1,6 +1,6 @@
 using Content.Shared._Moffstation.Traits.EntitySystems;
-using Content.Server.Emp;
 using Content.Shared._Moffstation.Traits.Components;
+using Content.Shared.Emp;
 
 namespace Content.Server._Moffstation.Traits.EntitySystems;
 

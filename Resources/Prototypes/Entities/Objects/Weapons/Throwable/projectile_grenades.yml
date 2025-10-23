@@ -94,8 +94,7 @@
   parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
   id: GrenadeIncendiary
   name: incendiary grenade
-  #description: Guaranteed to light up the mood. (Resilient Grenades - Replaced)
-  description: Releases a spray of incendiary shrapnel in all directions. Guaranteed to light up the mood.
+  description: Releases a spray of incendiary shrapnel in all directions. Guaranteed to light up the mood. # Moffstation - Resilient Grenades
   components:
   - type: Sprite
     sprite: Objects/Weapons/Grenades/pyrogrenade.rsi
@@ -126,8 +125,7 @@
 - type: entity
   parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
   id: GrenadeShrapnel
-  #name: shrapnel grenade (Moffstation - Resilient Grenades - Replaced)
-  name: fragmentation grenade
+  name: fragmentation grenade # Moffstation - Resilient Grenades
   description: Releases a deadly spray of shrapnel that causes severe bleeding.
   components:
   - type: Sprite

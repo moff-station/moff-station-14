@@ -31,7 +31,6 @@ using Robust.Shared.Utility;
 using Robust.Shared.Map.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
-using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Revenant.EntitySystems;
 
@@ -47,7 +46,6 @@ public sealed partial class RevenantSystem
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly HealthRankingSystem _healthRanking = default!; // Offbrand
 
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
@@ -145,7 +143,7 @@ public sealed partial class RevenantSystem
             return;
         }
 
-        if (!_healthRanking.IsCritical(target) && !HasComp<SleepingComponent>(target)) // Offbrand
+        if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive && !HasComp<SleepingComponent>(target))
         {
             _popup.PopupEntity(Loc.GetString("revenant-soul-too-powerful"), target, uid);
             return;
@@ -203,7 +201,7 @@ public sealed partial class RevenantSystem
         if (!HasComp<MobStateComponent>(args.Args.Target))
             return;
 
-        if (_mobState.IsAlive(args.Args.Target.Value) || _healthRanking.IsCritical(args.Args.Target.Value)) // Offbrand
+        if (_mobState.IsAlive(args.Args.Target.Value) || _mobState.IsCritical(args.Args.Target.Value))
         {
             _popup.PopupEntity(Loc.GetString("revenant-max-essence-increased"), uid, uid);
             component.EssenceRegenCap += component.MaxEssenceUpgradeAmount;
@@ -211,7 +209,11 @@ public sealed partial class RevenantSystem
 
         //KILL THEMMMM
 
-        _damage.TryChangeDamage(args.Args.Target, component.HarvestDamage, true, origin: uid); // Offbrand - use a fixed amount
+        if (!_mobThresholdSystem.TryGetThresholdForState(args.Args.Target.Value, MobState.Dead, out var damage))
+            return;
+        DamageSpecifier dspec = new();
+        dspec.DamageDict.Add("Cold", damage.Value);
+        _damage.TryChangeDamage(args.Args.Target, dspec, true, origin: uid);
 
         args.Handled = true;
     }
