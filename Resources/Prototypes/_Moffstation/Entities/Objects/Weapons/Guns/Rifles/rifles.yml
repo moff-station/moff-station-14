@@ -45,14 +45,14 @@
   - type: BallisticAmmoSelfRefiller
     autoRefill: true
     autoRefillRate: 1m # You really ought to be picking up your darts.
-    ammoProto: BulletFoam
+    ammoProto: BulletFoams
 
 # Upgraded, more compact Lecter you can get from armory crates.
 - type: entity
   parent: WeaponRifleLecter
   id: WeaponRifleLecterCarbine
   name: Lecter carbine
-  description: "A modern carbine designed by Sunshade Armories, built on the popular Lecter platform. Its high storability and maneuverability makes it a favorite among ERT forces.\nFeeds from .20 rifle magazines."
+  description: "A modern carbine designed by Sunshade Armories, built on the popular Lecter platform. Its high storability and maneuverability make it a favorite among ERT forces, but it comes at a slight cost to the weapon's famed accuracy.\nFeeds from .20 rifle magazines."
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterCarbine.rsi
@@ -61,6 +61,14 @@
   - type: Item
     shape:
     - 0,0,3,1
+  - type: Wieldable # A bit less accurate than the Lecter - just magdumping will have you miss a few shots at maximum range. Definitely still a upgrade from the standard Lecter. Honestly we may want to apply this slight inaccuracy to the base lecter at some point to make it more interesting to use.
+    unwieldOnUse: false
+  - type: GunWieldBonus
+    minAngle: -17
+    maxAngle: -24
+  - type: Gun
+    minAngle: 21
+    maxAngle: 32
 
 # Replaces the XL8 in gameplay.
 - type: entity
