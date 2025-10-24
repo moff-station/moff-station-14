@@ -8,6 +8,7 @@ namespace Content.Shared._Moffstation.Paper.Systems;
 public sealed class StampSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -24,12 +25,12 @@ public sealed class StampSystem : EntitySystem
                 ("target", hitEnt),
                 ("stamp", args.Weapon));
 
-            _popupSystem.PopupEntity(stampPaperOtherMessage, args.User, Filter.PvsExcept(args.User, entityManager: EntityManager), true);
+            _popupSystem.PopupEntity(stampPaperOtherMessage, hitEnt, Filter.PvsExcept(args.User, entityManager: EntityManager), true);
 
             var stampPaperSelfMessage = Loc.GetString("paper-component-action-stamp-paper-self",
                 ("target", hitEnt),
                 ("stamp", args.Weapon));
-            _popupSystem.PopupClient(stampPaperSelfMessage, args.User, args.User);
+            _popupSystem.PopupClient(stampPaperSelfMessage, hitEnt, args.User);
         }
     }
 }
