@@ -83,7 +83,20 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         _jitter.AddJitter(location, 0.5f, 30f);
 
-        comp.SpawnAttempts ??= Math.Max(EntityQuery<VentCritterSpawnLocationComponent>().Count(), comp.SpawnAttemptsMin);
+        // Calculate the appropriate number of spawns
+        var spawnCount = 0;
+        var query = EntityQueryEnumerator<VentCritterSpawnLocationComponent>();
+        if (TryComp<StationMemberComponent>(location, out var targetStation))
+        {
+            while (query.MoveNext(out var spawnUid, out _))
+            {
+                if (TryComp<StationMemberComponent>(spawnUid, out var spawnStation)
+                    && spawnStation.Station == targetStation?.Station)
+                    spawnCount++;
+            }
+        }
+
+        comp.SpawnAttempts ??= Math.Max(spawnCount, comp.SpawnAttemptsMin);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
