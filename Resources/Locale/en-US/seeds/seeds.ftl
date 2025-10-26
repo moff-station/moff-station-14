@@ -144,3 +144,7 @@ seeds-anomaly-berry-name = anomaly berry
 seeds-anomaly-berry-display-name = anomaly berries
 seeds-bloonion-name = bloonion
 seeds-bloonion-display-name = bloonion bulbs
+seeds-mugtree-name = Mug
+seeds-mugtree-display-name = Mug Tree
+seeds-coffee-name = Coffee
+seeds-coffee-display-name = Coffee Tree

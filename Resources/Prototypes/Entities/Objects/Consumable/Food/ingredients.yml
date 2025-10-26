@@ -939,6 +939,29 @@
       - Ingredient
 
 - type: entity
+  name: coffee beans
+  parent: FoodProduceBase
+  id: FoodCoffeeBeans
+  description: These beans are said to spark enlightenment
+  components:
+  - type: FlavorProfile
+    flavors:
+      - coffee
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/coffee_plant.rsi
+    state: produce-beans
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+  - type: Tag
+    tags:
+      - Ingredient
+
+- type: entity
   parent: FoodBakingBase
   id: FoodCroissantRaw
   name: raw croissant

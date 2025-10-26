@@ -166,6 +166,22 @@
     node: groundRainbow
 
 - type: entity
+  name: roasted coffee beans
+  parent: ProduceBaseRuminant
+  id: LeavesCoffeeDried
+  description: "Roasted coffee beans, ready to be ground."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: GroundCoffee
+          Quantity: 5
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/coffee_plant.rsi
+    state: dried
+
+- type: entity
   name: tea leaves
   parent: ProduceBaseRuminant
   id: LeavesTea
@@ -179,7 +195,7 @@
     solutions:
       food:
         reagents:
-        - ReagentId: Vitamin
+        - ReagentId: GreenTeaPowder
           Quantity: 2
 
 - type: entity
