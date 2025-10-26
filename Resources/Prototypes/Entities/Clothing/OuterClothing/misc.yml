@@ -82,9 +82,11 @@
         sprite: Clothing/OuterClothing/Misc/black_hoodie.rsi
     -   type: Clothing
         sprite: Clothing/OuterClothing/Misc/black_hoodie.rsi
-    -   type: Storage #MoffStation - (Chaplain Coats have Pockets)
+    #Moffstation - Begin Storage Resize
+    -   type: Storage
         grid:
         - 0,0,1,1
+    #Moffstation - End Storage Resize
 
 -   type: entity
     parent: ClothingOuterStorageFoldableBase #MoffStation - (Chaplain Coats have Pockets)
@@ -96,9 +98,11 @@
         sprite: Clothing/OuterClothing/Misc/grey_hoodie.rsi
     -   type: Clothing
         sprite: Clothing/OuterClothing/Misc/grey_hoodie.rsi
-    -   type: Storage #MoffStation - (Chaplain Coats have Pockets)
+    #Moffstation - Begin Storage Resize
+    -   type: Storage
         grid:
         - 0,0,1,1
+    #Moffstation - End Storage Resize
 
 -   type: entity
     parent: ClothingOuterBase
@@ -128,9 +132,11 @@
         sprite: Clothing/OuterClothing/Misc/chaplain_hoodie.rsi
     -   type: ToggleableClothing
         clothingPrototype: ClothingHeadHatHoodChaplainHood
-    -   type: Storage #Moffstation - (Chaplain Coats Have Pockets)
+    #Moffstation - Begin Storage Resize
+    -   type: Storage
         grid:
         - 0,0,1,1
+    #Moffstation - End Storage Resize
 
 -   type: entity
     parent: ClothingOuterBase
