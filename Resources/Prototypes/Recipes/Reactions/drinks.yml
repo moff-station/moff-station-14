@@ -285,16 +285,6 @@
     CoconutRum: 3
 
 - type: reaction
-  id: Coffee
-  reactants:
-    GroundCoffee:
-      amount: 1
-    Water:
-      amount: 5
-  products:
-    Coffee: 6
-
-- type: reaction
   id: Cosmopolitan
   reactants:
     Vodka:
@@ -530,16 +520,6 @@
       amount: 10
   products:
     Gildlager: 10
-
-- type: reaction
-  id: GreenTea
-  reactants:
-    GreenTeaPowder:
-      amount: 1
-    Water:
-      amount: 5
-  products:
-    GreenTea: 6
 
 - type: reaction
   id: Grog
