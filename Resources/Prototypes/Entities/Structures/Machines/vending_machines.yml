@@ -820,9 +820,11 @@
     radius: 1.5
     energy: 1.6
     color: "#4b93ad"
+  # Moffstation - Begin - Tags for pirate bounty
   - type: Tag
     tags:
     - Chefware
+  # Moffstation - End
 
 - type: entity
   parent: VendingMachine
@@ -1888,9 +1890,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Kitchen"]]
+  # Moffstation - Begin - Tags for pirate bounty
   - type: Tag
     tags:
     - Chefware
+  # Moffstation - End
 
 - type: entity
   parent: VendingMachine

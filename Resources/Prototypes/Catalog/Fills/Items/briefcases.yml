@@ -10,7 +10,7 @@
 
 - type: entity
   id: BriefcaseSyndieSniperBundleFilled
-  parent: BriefcaseSyndie
+  parent: BriefcaseBrown # Moffstation - Needed Change due to briefcase resprite
   suffix: Syndicate, Sniper Bundle
   components:
   - type: Item
@@ -30,11 +30,13 @@
 
 - type: entity
   id: BriefcaseSyndieLobbyingBundleFilled
-  parent: BriefcaseSyndieFlashy # Moffstation (New Briefcases)
+  parent: BriefcaseBrown # Moffstation - Needed Change due to briefcase resprite
   suffix: Syndicate, Spesos
   components:
+  # Moffstation - Begin
   - type: Item
     size: Huge
+  # Moffstation - End
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSunglasses
@@ -54,8 +56,10 @@
   parent: BriefcaseBrown # Moffstation (New Briefcases)
   suffix: Thief, Spesos
   components:
+  # Moffstation - Begin
   - type: Item
     size: Huge
+  # Moffstation - End
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSunglasses

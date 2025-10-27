@@ -37,3 +37,15 @@
       collection: ResomiCalls
     Squawk:
       path: /Audio/_Moffstation/Voice/Resomi/resomi_squawk_1.ogg
+
+- type: emoteSounds
+  id: Whimperlet
+  params:
+    variation: 0.125
+  sounds:
+    Crying:
+      path: /Audio/_Moffstation/Voice/Avali/avali_cry.ogg
+    Gasp:
+      collection: FemaleGasp
+    DefaultDeathgasp:
+      collection: FemaleDeathGasp
