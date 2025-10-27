@@ -66,6 +66,54 @@
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: l_arm_fade
 
+# Tail Markings
+- type: marking
+  id: ResomiTail
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: 
+  - Resomi
+  forcedColoring: true
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
+    state: tail
+
+- type: marking
+  id: ResomiTailCurvy
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: 
+  - Resomi
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
+    state: tail_curvy
+
+- type: marking
+  id: ResomiTailComplex
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: 
+  - Resomi
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
+    state: tail_feathers_primary
+  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
+    state: tail_feathers_secondary
+
+- type: marking
+  id: ResomiTailDual
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: 
+  - Resomi
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
+    state: tail_dual_primary
+  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
+    state: tail_dual_secondary
+
+
+
 # OG markings below need adjustments
 
 - type: marking
@@ -97,29 +145,6 @@
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: fluff_head_up
-
-- type: marking
-  id: ResomiTailComplex
-  bodyPart: Chest
-  markingCategory: Tail
-  speciesRestriction: 
-  - Resomi
-  sprites:
-  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
-    state: tail_feathers_primary
-  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
-    state: tail_feathers_secondary
-
-- type: marking
-  id: ResomiTail
-  bodyPart: Chest
-  markingCategory: Tail
-  speciesRestriction: 
-  - Resomi
-  forcedColoring: true
-  sprites:
-  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
-    state: tail
 
 - type: marking
   id: ResomiLArmFeathers
