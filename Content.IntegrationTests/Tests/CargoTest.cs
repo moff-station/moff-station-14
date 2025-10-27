@@ -25,7 +25,7 @@ public sealed class CargoTest
         // Moffstation - Start - test fixes
         new("FunCrateGambling"),
         new("PirateSyndicateSurplusBundle"),
-        new("PirateGrandLottery")
+        new("PirateGrandLottery"),
         // Moffstation - End
     ];
 

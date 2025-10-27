@@ -281,16 +281,18 @@ namespace Content.Client.Cargo.UI
             if (!_bankQuery.TryComp(_station, out var bankAccount) ||
                 !_orderConsoleQuery.TryComp(_owner, out var orderConsole))
             {
-                AccountActionButton.Disabled = true;
+                AccountActionButton.Disabled = true; // Moffstation - Pirate cargo console
                 return;
             }
 
+            // Moffstation - Begin - Pirate cargo console
             var accounts = bankAccount.Accounts;
             if (!accounts.ContainsKey(orderConsole.Account))
             {
                 AccountActionButton.Disabled = true;
                 return;
             }
+            // Moffstation - End
 
             var balance = _cargoSystem.GetBalanceFromAccount((_station.Value, bankAccount), orderConsole.Account);
             PointsLabel.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", balance));

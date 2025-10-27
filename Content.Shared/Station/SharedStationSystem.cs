@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared._Moffstation.Pirate.Components;
+using Content.Shared._Moffstation.Pirate.Components; // Moffstation
 using Content.Shared.Station.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Map;

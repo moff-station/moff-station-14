@@ -821,14 +821,14 @@
 #Pirate Captain Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitPirateCapUpstream
+  id: ClothingHeadHelmetHardsuitPirateCapUpstream # Moffstation - Use our own
   name: pirate captain's hardsuit helmet
   suffix: Pirate
   description: A special hardsuit helmet, made for the captain of a pirate ship.
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/piratecaptainhelm.rsi
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     clothingVisuals:
       head:
       - state: equipped-HELMET-light
@@ -858,14 +858,6 @@
     color: "#f3ea9c"
     radius: 7
     energy: 3
-  - type: ToggleableVisuals
-    clothingVisuals:
-      head:
-      - state: equipped-HELMET-light
-        shader: unshaded
-      head-vox:
-      - state: equipped-HELMET-light-vox
-        shader: unshaded
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000

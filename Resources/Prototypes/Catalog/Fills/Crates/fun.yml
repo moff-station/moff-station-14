@@ -408,7 +408,6 @@
   components:
   - type: StorageFill
     contents:
-    # Moffstation - Start - added a lot more thematic loot to the chest.
       - id: ClothingUniformJumpsuitPirate
         amount: 2
       - id: ClothingHeadHatPirate
@@ -418,6 +417,7 @@
       - id: ClothingHeadBandRed
       - id: FoamCutlass
         amount: 2
+      # Moffstation - Start - added a lot more thematic loot to the chest.
       - id: PirateHandyFlag
         amount: 2
       - id: ClothingNeckCloakPirateCap
@@ -427,7 +427,7 @@
       - id: DrinkRumBottleFull
       - id: ClothingEyesEyepatch
         amount: 2
-    # Moffstation - End
+      # Moffstation - End
 
 - type: entity
   id: CrateFunToyBox

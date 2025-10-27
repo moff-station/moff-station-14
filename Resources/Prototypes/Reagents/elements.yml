@@ -46,7 +46,8 @@
         # Moffstation start - Allow avali to drink ammonia
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [Avali]
+          type: [ Avali ]
+          inverted: true
         # Moffstation end
         damage:
           types:
