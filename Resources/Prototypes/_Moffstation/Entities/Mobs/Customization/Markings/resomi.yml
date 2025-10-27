@@ -129,14 +129,16 @@
     state: fluff_head_up
 
 - type: marking
-  id: ResomiTailFeathers
+  id: ResomiTailComplex
   bodyPart: Chest
   markingCategory: Tail
   speciesRestriction: 
   - Resomi
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
-    state: tail_feathers
+    state: tail_feathers_primary
+  - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
+    state: tail_feathers_secondary
 
 - type: marking
   id: ResomiTail
