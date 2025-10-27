@@ -91,6 +91,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         var playerCount = _playerManager.Sessions.Count(x =>
             GameTicker.PlayerGameStatuses.TryGetValue(x.UserId, out var status) &&
             status == PlayerGameStatus.JoinedGame);
+        comp.SpawnAttempts = _random.Next(playerCount * comp.PlayerRatioSpawnsMin, playerCount * comp.PlayerRatioSpawnsMax);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
