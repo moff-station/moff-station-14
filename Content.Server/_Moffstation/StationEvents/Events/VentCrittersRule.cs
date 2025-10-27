@@ -13,6 +13,7 @@ using Content.Shared.Station.Components;
 using Content.Shared.Storage;
 using Robust.Server.Player;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -87,11 +88,9 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         _jitter.AddJitter(location, 0.5f, 30f);
 
         // Get spawn attempts
-        var playerCount = _playerManager.Sessions
-            .Count(x =>
+        var playerCount = _playerManager.Sessions.Count(x =>
             GameTicker.PlayerGameStatuses.TryGetValue(x.UserId, out var status) &&
             status == PlayerGameStatus.JoinedGame);
-        comp.SpawnAttempts = _random.Next(playerCount * comp.PlayerRatioSpawnsMin, playerCount * comp.PlayerRatioSpawnsMax);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
@@ -109,18 +108,16 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         var coords =  Transform(location).Coordinates;
 
-        //Spawn in the stuff
         var spawnCount = 0;
-        for (var i = 0; i < component.SpawnAttempts || spawnCount == 0; i++)
+        var attemptCount = 0;
+        while (spawnCount <= component.MaxSpawns && (attemptCount < component.SpawnAttempts || spawnCount == 0))
         {
-            foreach (var spawn in EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom))
-            {
-                Spawn(spawn, coords);
-                spawnCount++;
-            }
-
-            if (spawnCount > component.MaxSpawns)
-                break;
+            var spawned = EntityManager.SpawnEntitiesAttachedTo(
+                coords,
+                EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom).Select(it => (EntProtoId)it)
+            );
+            spawnCount += spawned.Length;
+            attemptCount += 1;
         }
 
 
