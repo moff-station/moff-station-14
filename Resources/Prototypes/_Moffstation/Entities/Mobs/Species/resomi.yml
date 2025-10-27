@@ -41,6 +41,9 @@
   - type: Body
     prototype: Resomi
     requiredLegs: 2
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resomi
   - type: Butcherable
     butcheringType: Spike
     spawned:
@@ -48,15 +51,6 @@
       amount: 3
   - type: RecoilKickSusceptible
     massFactor: 0.7
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      85: Critical
-      170: Dead
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      51: 0.7
-      68: 0.5
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg
