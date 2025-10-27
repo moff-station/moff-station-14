@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: BaseBorgModule
   parent: BaseItem
   name: borg module
@@ -555,6 +555,15 @@
     - item: Shovel
     - item: MineralScannerUnpowered
     - item: BorgOreBag
+    # Moffstation - Start - Add orehand for salvage borgs
+    - hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+    # Moffstation -End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
 
@@ -574,6 +583,15 @@
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
     - item: OreBagOfHolding
+    # Moffstation - Start - Add orehand for salvage borgs
+    - hand:
+        emptyRepresentative: Coal1
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - Ore
+          - ArtifactFragment
+    # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
 
@@ -706,12 +724,20 @@
     - state: icon-rcd
   - type: ItemBorgModule
     hands:
-    - item: RCDRecharging
+    - item: RCD # Moffstation - Death of Engineering Cyborg
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: GasAnalyzer
     - item: HolofanProjectorBorg
     - item: GeigerCounter
+    # Moffstation - Start - Death of Engineering Cyborg
+    - hand:
+        emptyRepresentative: RCDAmmo
+        emptyLabel: borg-slot-rcd-ammo-empty
+        whitelist:
+          components:
+          - RCDAmmo
+    # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: rcd-module }
 
@@ -779,8 +805,8 @@
         emptyLabel: borg-slot-beakers-empty
         emptyRepresentative: Beaker
         whitelist:
-          tags:
-          - GlassBeaker
+          components:
+          - FitsInDispenser
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-cleaning-module }
 
@@ -961,19 +987,31 @@
   - type: ItemBorgModule
     hands:
     - item: NodeScanner
-    - item: SprayBottle
+    # - item: SprayBottle # Moffstation - Scienceborg
     - item: GasAnalyzer
+    - item: HolofanProjectorBorg # Moffstation - Scienceborg
     - item: BorgDropper
-    - item: BaseChemistryEmptyVial
+    # Moffstation - Start - Scienceborg
+    #- item: BaseChemistryEmptyVial
+    #  hand:
+    #    emptyLabel: borg-slot-small-containers-empty
+    #    emptyRepresentative: BaseChemistryEmptyVial
+    #    whitelist:
+    #      components:
+    #      - FitsInDispenser
+    - item: Beaker
       hand:
-        emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: BaseChemistryEmptyVial
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
         whitelist:
           components:
           - FitsInDispenser
+          tags:
+          - ChemDispensable
+    # Moffstation - End
     - item: GeigerCounter
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: node-scanner-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: node-scanner-module } # Moffstation - Scienceborg
 
 - type: entity
   id: BorgModuleAnomaly
@@ -990,20 +1028,22 @@
     - item: AnomalyLocatorUnpowered
     - item: AnomalyLocatorWideUnpowered
     - item: HandLabeler
+    # Moffstation - Start - Scienceborg
+    #- hand:
+    #    emptyRepresentative: SheetRGlass
+    #    emptyLabel: borg-slot-construction-empty
+    #    whitelist:
+    #      tags:
+    #      - ConstructionMaterial
+    # Moffstation - End
     - hand:
-        emptyRepresentative: SheetRGlass
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - ConstructionMaterial
-    - hand:
-        emptyRepresentative: SheetRPGlass
+        emptyRepresentative: SheetPlasma # Moffstation - Scienceborg
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: anomaly-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Moffstation - Scienceborg
 
 # service modules
 - type: entity
@@ -1014,47 +1054,84 @@
   - type: Sprite
     layers:
     - state: service
-    - state: icon-pen
+# Moffstation - Start - Give service borgs some love
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-bartending
   - type: ItemBorgModule
     hands:
-    - item: Pen
-    - item: BooksBag
+#    - item: Pen
+#    - item: BooksBag
+#    - hand:
+#        emptyLabel: borg-slot-documents-empty
+#        emptyRepresentative: BookBase
+#        whitelist:
+#          tags:
+#          - Book
+#          - Dice
+#          - Document
+#          - Figurine
+#          - TabletopBoard
+#          - Write
+#    - hand:
+#        emptyLabel: borg-slot-documents-empty
+#        emptyRepresentative: Paper
+#        whitelist:
+#          tags:
+#          - Book
+#          - Dice
+#          - Document
+#          - Figurine
+#          - TabletopBoard
+#          - Write
+#    - item: HandLabeler
+#    - item: RubberStampApproved
+#    - item: RubberStampDenied
+#    - item: BorgDropper
     - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: BookBase
+        emptyRepresentative: BarSpoon
+        emptyLabel: borg-slot-utensils-empty
         whitelist:
           tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
+          - Utensil
+          - RollingPin
+          - CleaningRag
     - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: Paper
+        emptyRepresentative: FoodBowlBig
+        emptyLabel: borg-slot-dinnerware-empty
         whitelist:
           tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
-    - item: HandLabeler
-    - item: RubberStampApproved
-    - item: RubberStampDenied
-    - item: BorgDropper
-    - item: DrinkShaker
-      hand:
+          - Dinnerware
+    - hand:
         emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: DrinkShaker
+        emptyRepresentative: DrinkGlass
         whitelist:
           components:
           - FitsInDispenser
-    - item: BarSpoon
+    - hand:
+        emptyRepresentative: DrinkWhiskeyBottleFull
+        emptyLabel: borg-slot-bottles-empty
+        whitelist:
+          tags:
+          - DrinkBottle
+    - hand:
+        emptyLabel: borg-slot-ingredients-empty
+        emptyRepresentative: ReagentContainerFlour
+        whitelist:
+          tags:
+          - Ingredient
+          - Condiment
+    - hand:
+        emptyLabel: borg-slot-food-empty
+        emptyRepresentative: FoodCheeseSlice
+        whitelist:
+          components:
+          - Edible
+        blacklist:
+          tags:
+          - DrinkBottle
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: service-module }
+# Moffstation - End
 
 - type: entity
   id: BorgModuleMusique
@@ -1100,12 +1177,33 @@
     layers:
     - state: service
     - state: icon-gardening
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: HydroponicsToolMiniHoe
-    - item: HydroponicsToolSpade
+#    - item: HydroponicsToolSpade
     - item: HydroponicsToolClippers
-    - item: Bucket
+#    - item: Bucket
+    - item: BorgDropper
+    - hand:
+        emptyRepresentative: Bucket
+        emptyLabel: borg-slot-buckets-empty
+        whitelist:
+          tags:
+          - Bucket
+    - hand:
+        emptyRepresentative: AppleSeeds
+        emptyLabel: borg-slot-seeds-empty
+        whitelist:
+          components:
+          - Seed
+    - hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swabs-empty
+        whitelist:
+          components:
+          - BotanySwab
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
 
@@ -1118,11 +1216,27 @@
     layers:
     - state: service
     - state: icon-harvesting
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: HydroponicsToolScythe
+    - item: HydroponicsToolSpade
     - item: HydroponicsToolHatchet
+    - hand:
+        emptyRepresentative: PlantBGoneSpray
+        emptyLabel: borg-slot-sprays-empty
+        whitelist:
+          tags:
+          - Spray
+          - PlantBGone
     - item: PlantBag
+    - hand:
+        emptyRepresentative: FoodApple
+        emptyLabel: borg-slot-produce-empty
+        whitelist:
+          components:
+          - Produce
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: harvesting-module }
 
@@ -1135,11 +1249,25 @@
     layers:
     - state: service
     - state: icon-clown
+#Moffstation - Start - Give service borgs some love
   - type: ItemBorgModule
     hands:
     - item: BikeHorn
     - item: ClownRecorder
     - item: BikeHornInstrument
+    - hand:
+        emptyRepresentative: TrashBananaPeel
+        emptyLabel: borg-slot-peels-empty
+        whitelist:
+          tags:
+          - BananaPeel
+    - hand:
+        emptyRepresentative: FoodPieBananaCream
+        emptyLabel: borg-slot-pies-empty
+        whitelist:
+          components:
+          - CreamPie
+# Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: clowning-module }
 
@@ -1273,7 +1401,7 @@
 - type: entity
   parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
   id: BorgModuleC20r
-  name: C20-r ROW cyborg module
+  name: C-20r ROW cyborg module
   description: A weapons module that comes with a burst-fire C-20r.
   components:
   - type: Sprite

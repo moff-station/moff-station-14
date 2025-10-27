@@ -92,7 +92,7 @@ namespace Content.Shared.Damage
         private void DamageableInit(EntityUid uid, DamageableComponent component, ComponentInit _)
         {
             if (component.DamageContainerID != null &&
-                _prototypeManager.TryIndex<DamageContainerPrototype>(component.DamageContainerID,
+                _prototypeManager.Resolve<DamageContainerPrototype>(component.DamageContainerID,
                 out var damageContainerPrototype))
             {
                 // Initialize damage dictionary, using the types and groups from the damage
@@ -171,12 +171,24 @@ namespace Content.Shared.Damage
         ///     Returns a <see cref="DamageSpecifier"/> with information about the actual damage changes. This will be
         ///     null if the user had no applicable components that can take damage.
         /// </returns>
-        public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
-            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null)
+        /// <param name="ignoreResistances">If true, this will ignore the entity's damage modifier (<see cref="DamageableComponent.DamageModifierSetId"/> and skip raising a <see cref="DamageModifyEvent"/>.</param>
+        /// <param name="interruptsDoAfters">Whether the damage should cancel any damage sensitive do-afters</param>
+        /// <param name="origin">The entity that is causing this damage</param>
+        /// <param name="ignoreGlobalModifiers">If true, this will skip over applying the universal damage modifiers (see <see cref="ApplyUniversalAllModifiers"/>).</param>
+        /// <returns></returns>
+        public DamageSpecifier? TryChangeDamage(
+            EntityUid? uid,
+            DamageSpecifier damage,
+            bool ignoreResistances = false,
+            bool interruptsDoAfters = true,
+            DamageableComponent? damageable = null,
+            EntityUid? origin = null,
+            bool ignoreGlobalModifiers = false)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
                 // TODO BODY SYSTEM pass damage onto body system
+                // BOBBY WHEN?
                 return null;
             }
 
@@ -195,13 +207,13 @@ namespace Content.Shared.Damage
             if (!ignoreResistances)
             {
                 if (damageable.DamageModifierSetId != null &&
-                    _prototypeManager.TryIndex<DamageModifierSetPrototype>(damageable.DamageModifierSetId, out var modifierSet))
+                    _prototypeManager.Resolve(damageable.DamageModifierSetId, out var modifierSet))
                 {
-                    // TODO DAMAGE PERFORMANCE
-                    // use a local private field instead of creating a new dictionary here..
                     damage = DamageSpecifier.ApplyModifierSet(damage, modifierSet);
                 }
 
+                // TODO DAMAGE
+                // byref struct event.
                 var ev = new DamageModifyEvent(damage, origin);
                 RaiseLocalEvent(uid.Value, ev);
                 damage = ev.Damage;
@@ -212,11 +224,9 @@ namespace Content.Shared.Damage
                 }
             }
 
-            damage = ApplyUniversalAllModifiers(damage);
+            if (!ignoreGlobalModifiers)
+                damage = ApplyUniversalAllModifiers(damage);
 
-            // TODO DAMAGE PERFORMANCE
-            // Consider using a local private field instead of creating a new dictionary here.
-            // Would need to check that nothing ever tries to cache the delta.
             var delta = new DamageSpecifier();
             delta.DamageDict.EnsureCapacity(damage.DamageDict.Count);
 

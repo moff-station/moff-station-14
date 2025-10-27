@@ -127,30 +127,6 @@
     - Secret
 
 - type: gamePreset
-  id: SecretExtended #For Admin Use: Runs Extended but shows "Secret" in lobby.
-  alias:
-    - secretextended
-  name: secret-title
-  showInVote: false #Admin Use
-  description: secret-description
-  rules:
-    - BasicStationEventScheduler
-    - MeteorSwarmScheduler
-    - SpaceTrafficControlEventScheduler
-    - BasicRoundstartVariation
-
-- type: gamePreset
-  id: SecretGreenshift #For Admin Use: Runs Greenshift but shows "Secret" in lobby.
-  alias:
-  - secretgreenshift
-  name: secret-title
-  showInVote: false #Admin Use
-  description: secret-description
-  rules:
-  - SpaceTrafficControlFriendlyEventScheduler
-  - BasicRoundstartVariation
-
-- type: gamePreset
   id: Sandbox
   alias:
     - sandbox
@@ -172,7 +148,7 @@
   rules:
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -201,7 +177,7 @@
   rules:
   - Nukeops
   - DummyNonAntagChance
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

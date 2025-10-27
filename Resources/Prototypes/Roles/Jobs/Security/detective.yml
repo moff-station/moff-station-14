@@ -6,7 +6,7 @@
   requirements:
   - !type:RoleTimeRequirement
     role: JobSecurityOfficer
-    time: 18000 #5 hrs
+    time: 5h
   startingGear: DetectiveGear
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos
@@ -27,7 +27,7 @@
   id: DetectiveGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: DetectivePDA
+    #id: DetectivePDA # Moffstation - PDA loadouts
     ears: ClothingHeadsetSecurity
     #belt: ClothingBeltHolsterFilled # Moffstation - (Nox Loadout Improvements) - They get to choose a belt in loadouts instead.
   storage:

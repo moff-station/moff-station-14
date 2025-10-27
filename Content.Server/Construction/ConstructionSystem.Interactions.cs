@@ -13,6 +13,7 @@ using Content.Shared.Prying.Systems;
 using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Stacks;
 using Content.Shared.Temperature;
+using Content.Shared.Temperature.Components;
 using Content.Shared.Tools.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Utility;
@@ -68,9 +69,15 @@ namespace Content.Server.Construction
             {
                 var result = HandleEdge(uid, ev, edge, validation, construction);
 
-                // Reset edge index to none if this failed...
-                if (!validation && result is HandleResult.False && construction.StepIndex == 0)
-                    construction.EdgeIndex = null;
+                // Begin Offbrand
+                if (result is HandleResult.False && construction.StepIndex == 0)
+                {
+                    if (!validation)
+                        construction.EdgeIndex = null;
+
+                    return HandleNode(uid, ev, node, validation, construction);
+                }
+                // End Offbrand
 
                 return result;
             }

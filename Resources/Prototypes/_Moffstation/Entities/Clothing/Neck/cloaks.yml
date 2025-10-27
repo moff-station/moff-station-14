@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckCapeCaptain
+  name: captain's formal cape
+  description: An elegant and superfluous cape for only the most graceful of Nanotrasen captains.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/captain-cape.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak

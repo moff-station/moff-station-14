@@ -142,7 +142,8 @@ namespace Content.Client.Lobby
                 return;
             }
 
-            Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
+            // Moffstation - Chat window time counter
+            // Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
             string text;
 
             if (_gameTicker.Paused)
@@ -171,8 +172,15 @@ namespace Content.Client.Lobby
                     text = $"{difference.Minutes}:{difference.Seconds:D2}";
                 }
             }
+            // Moffstation - Start - Lobby text countdown
+            Lobby!.StationTime.Text = Loc.GetString(
+                "lobby-state-round-start-countdown-text-moffstation",
+                ("timeLeft", text));
 
-            Lobby!.StartTime.Text = Loc.GetString("lobby-state-round-start-countdown-text", ("timeLeft", text));
+            Lobby.StartTime.Text = Loc.GetString(
+                "lobby-state-round-start-countdown-text",
+                ("timeLeft", text));
+            // Moffstation - End
         }
 
         private void LobbyStatusUpdated()
@@ -199,10 +207,10 @@ namespace Content.Client.Lobby
             else
             {
                 Lobby!.StartTime.Text = string.Empty;
+                Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
                 Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
-                Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
                 Lobby!.ManifestButton.Disabled = false; // Moffstation - Ready manifest
                 Lobby!.ObserveButton.Disabled = true;
             }

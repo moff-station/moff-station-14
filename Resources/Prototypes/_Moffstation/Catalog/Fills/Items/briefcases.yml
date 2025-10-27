@@ -1,0 +1,47 @@
+- type: entity
+  id: BriefcaseNanotrasenPropagandaBundleFilled
+  parent: BriefcaseNanotrasenFlashy
+  suffix: Filled, Spesos
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyCentCom
+    - id: SpaceCash20000
+    - id: ClothingHeadHatCaptainTricorn
+    - id: ClothingNeckCloakNanotrasen
+    - id: ClothingUniformJumpsuitNanotrasen
+    - id: TowelColorNT
+    - id: NTHandyFlag
+    - id: BibleNanoTrasen
+    - id: DrinkMugOne
+
+- type: entity
+  id: BriefcaseProfessional
+  parent: BriefcaseNanotrasen
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyCentCom
+    - id: ClothingHeadHatCaptainConductor
+    - id: ClothingHandsGlovesHop
+    - id: BoxFolderPlasticClipboardThreePapers
+    - id: BookSpaceLaw
+    - id: ClothingUniformJumpsuitLawyerBlue
+    - id: LuxuryPen
+    - id: WeaponDisabler
+
+- type: entity
+  id: BriefcaseCentcommFilled
+  parent: BriefcaseCentcomm
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: CentCommFlippo
+    - id: CigarGoldCase
+    - id: PenCentcom
+    - id: ClothingNeckScarfStripedCentcom
+    - id: BookSpaceLaw
+    - id: BibleNanoTrasen
+    - id: BoxFolderCentComClipboardThreePapers
