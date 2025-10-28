@@ -1,5 +1,7 @@
 reagent-name-bleach = bleach
-reagent-desc-bleach = Heavy duty cleaner that can clean tiles the same as Space Cleaner and also decontaminate clothes. Extremely toxic when ingested.
+## Moffstation - Begin - Make bleach better space cleaner
+reagent-desc-bleach = Heavy duty cleaner that can clean tiles better than Space Cleaner and also decontaminate clothes. Extremely toxic when ingested.
+## Moffstation - End
 
 reagent-name-space-cleaner = space cleaner
 reagent-desc-space-cleaner = This is able to clean almost all surfaces of almost anything that may dirty them. The janitor is likely to appreciate refills.
