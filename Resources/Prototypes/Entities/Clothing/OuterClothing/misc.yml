@@ -73,7 +73,7 @@
     sprite: _Moffstation/Clothing/OuterClothing/Misc/chef.rsi # Moffstation - (New Chef Jacket)
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase #MoffStation - (Chaplain Coats have Pockets)
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterHoodieBlack
   name: black hoodie
   description: Oh my God, it's a black hoodie!
@@ -82,14 +82,9 @@
     sprite: Clothing/OuterClothing/Misc/black_hoodie.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Misc/black_hoodie.rsi
-  #Moffstation - Begin - Storage Resize
-  - type: Storage
-    grid:
-    - 0,0,1,1
-  #Moffstation - End
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase #MoffStation - (Chaplain Coats have Pockets)
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterHoodieGrey
   name: grey hoodie
   description: A grey hoodie.
@@ -98,11 +93,6 @@
     sprite: Clothing/OuterClothing/Misc/grey_hoodie.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Misc/grey_hoodie.rsi
-  #Moffstation - Begin - Storage Resize
-  - type: Storage
-    grid:
-    - 0,0,1,1
-  #Moffstation - End
 
 - type: entity
   parent: ClothingOuterBase
@@ -121,7 +111,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingOuterStorageToggleableBase #Moffstation - (Chaplain Coats Have Pockets)
+  parent: ClothingOuterStorageToggleableBase
   id: ClothingOuterHoodieChaplain
   name: chaplain's hoodie
   description: Black and strict chaplain hoodie.
@@ -132,11 +122,6 @@
     sprite: Clothing/OuterClothing/Misc/chaplain_hoodie.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodChaplainHood
-  #Moffstation - Begin - Storage Resize
-  - type: Storage
-    grid:
-    - 0,0,1,1
-  #Moffstation - End
 
 - type: entity
   parent: ClothingOuterBase
@@ -152,7 +137,7 @@
     accent: SpanishAccent
 
 - type: entity
-  parent: ClothingOuterStorageBase #Moffstation - (Chaplain Coats Have Pockets)
+  parent: ClothingOuterStorageBase
   id: ClothingOuterRobesCult
   name: cult robes
   description: There's no cult without classic red/crimson cult robes.
@@ -161,7 +146,6 @@
     sprite: Clothing/OuterClothing/Misc/cultrobes.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Misc/cultrobes.rsi
-    # Moffstation - Storage size is defined in Parent
 
 - type: entity
   parent: ClothingOuterBase
@@ -263,7 +247,7 @@
     sprite: Clothing/OuterClothing/Misc/skubbody.rsi
 
 - type: entity
-  parent: ClothingOuterStorageBase #Moffstation - (Chaplain Coats Have Pockets)
+  parent: ClothingOuterStorageBase
   id: ClothingOuterPlagueSuit
   name: plague doctor suit
   description: A bad omen.
@@ -272,10 +256,9 @@
     sprite: Clothing/OuterClothing/Misc/plaguedoctorsuit.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Misc/plaguedoctorsuit.rsi
-    #Moffstation - Storage size is defined in parent.
 
 - type: entity
-  parent: ClothingOuterStorageBase #Moffstation - (Chaplain Coats Have Pockets)
+  parent: ClothingOuterStorageBase
   id: ClothingOuterNunRobe
   name: nun robe
   description: Maximum piety in this star system.
@@ -284,7 +267,6 @@
     sprite: Clothing/OuterClothing/Misc/nunrobe.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Misc/nunrobe.rsi
-    #Moffstation - Storage size is defined in parent.
 
 - type: entity
   parent: ClothingOuterBase
