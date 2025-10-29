@@ -13,4 +13,4 @@ trait-reptile-accent-desc = Your accent mirrorsss that of the reptilliansss.
 # Disabilities
 
 trait-uncloneable-disability-name = Uncloneable
-trait-uncloneable-disability-desc = You are unable to be revived by defibrillators nor cloned by cloning pods.
+trait-uncloneable-disability-desc = You are unable to be cloned by cloning pods.
