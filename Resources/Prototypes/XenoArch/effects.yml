@@ -891,7 +891,7 @@
 - type: entity
   id: XenoArtifactFaunaSpawn
   parent: BaseXenoArtifactEffect
-  description: Create friendly fauna
+  description: Create fauna # Moffstation - Revert artifact mob change
   components:
   - type: XenoArtifactNode
     maxDurability: 4
