@@ -14,7 +14,6 @@ public sealed class UncloneableSystem : EntitySystem
 
     private void OnCloningAttempt(Entity<UncloneableComponent> ent, ref CloningAttemptEvent args)
     {
-        if (!ent.Comp.Cloneable)
             args.Cancelled = true;
     }
 }
