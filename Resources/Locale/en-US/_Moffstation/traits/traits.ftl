@@ -12,5 +12,5 @@ trait-reptile-accent-desc = Your accent mirrorsss that of the reptilliansss.
 
 # Disabilities
 
-trait-uncloneable-disability-name = Uncloneable
-trait-uncloneable-disability-desc = You are unable to be cloned by cloning pods.
+trait-feeble-disability-name = Feeble
+trait-feeble-disability-desc = You are easy to shove around; the ideal bully target.
