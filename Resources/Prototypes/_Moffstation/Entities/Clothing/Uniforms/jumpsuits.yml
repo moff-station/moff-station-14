@@ -205,3 +205,15 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/machinist.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/machinist.rsi
+
+#Clown
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitHarlequin
+  name: harlequin jumpsuit
+  description: A checker patterned suit for .
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/harlequin.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/harlequin.rsi

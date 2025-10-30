@@ -20,3 +20,19 @@
     sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
+
+#Clown
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHarlequin
+  name: Harlequin's Hood
+  description: A hood adorned with bells to entertain an audience
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD

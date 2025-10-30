@@ -10,3 +10,13 @@
     sprite: _Moffstation/Clothing/Mask/pirateweldingmask.rsi
   - type: Contraband
     severity: Major
+
+- type: entity
+  parent: [ClothingMaskClown]
+  id: ClothingMaskClownHarlequin
+  name: harlequin wig and mask
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Mask/harlequin.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/harlequin.rsi
