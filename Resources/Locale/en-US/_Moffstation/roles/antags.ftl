@@ -69,3 +69,7 @@ lpo-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
 
 roles-high-value-target = High Value Target
 roles-high-value-target-objective = You are a high-value target for the syndicate. Contracts are more likely to target you than other crew members.
+
+# Paradox Clones
+roles-antag-paradox-clone-target-name = Paradox Clone Target
+roles-antag-paradox-clone-target-objective = Your connection to time and space is flexible. As a result, you may encounter paradox clones of yourself.

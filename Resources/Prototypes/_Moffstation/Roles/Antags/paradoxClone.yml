@@ -1,0 +1,9 @@
+﻿# not actually given out, only used to check the preference
+- type: antag
+  id: ParadoxCloneTarget
+  name: roles-antag-paradox-clone-target-name
+  setPreference: true
+  objective: roles-antag-paradox-clone-target-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 3600 # 1h
