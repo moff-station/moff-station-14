@@ -426,6 +426,8 @@
       Max: 5
       PotencyDivisor: 5
 
+# Moffstation - Start - changing the chemicals list from vitamin to green tea powder
+
 - type: seed
   id: teaPlant
   name: seeds-teaplant-name
@@ -451,33 +453,13 @@
       Max: 20
       PotencyDivisor: 20
 
-#
-#tea was changed from the following in order replace vitamin with green tea powder
-#- type: seed
-#  id: teaPlant
-#  name: seeds-teaplant-name
-#  noun: seeds-noun-seeds
-#  displayName: seeds-teaplant-display-name
-#  plantRsi: Objects/Specific/Hydroponics/tea_plant.rsi
-#  packetPrototype: TeaPlantSeeds
-#  productPrototypes:
-#    - LeavesTea
-#  harvestRepeat: Repeat
-#  lifespan: 75
-#  maturation: 5
-#  production: 3
-#  yield: 2
-#  potency: 20
-#  growthStages: 5
-#  waterConsumption: 0.6
-#  idealLight: 9
-#  idealHeat: 298
+# old section was as follows
 #  chemicals:
 #    Vitamin:
 #      Min: 1
 #      Max: 5
 #      PotencyDivisor: 20
-#
+# Moffstation - End
 
 
 
