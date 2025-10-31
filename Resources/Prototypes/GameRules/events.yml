@@ -274,7 +274,7 @@
   id: ParadoxCloneSpawn
   components:
   - type: StationEvent
-    weight: 5
+    weight: 0 # Moffstation - Make clones admeme only
     duration: null
     earliestStart: 20
     reoccurrenceDelay: 20
