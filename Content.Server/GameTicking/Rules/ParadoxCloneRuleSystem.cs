@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Antag;
 using Content.Server.Cloning;
 using Content.Server.GameTicking.Rules.Components;
@@ -35,6 +36,13 @@ public sealed class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxCloneRuleComp
 
         // check if we got enough potential cloning targets, otherwise cancel the gamerule so that the ghost role does not show up
         var allHumans = _mind.GetAliveHumans();
+        var paradoxclonetargets = allHumans.Where(entityWithMindComp =>
+        {
+            if (entityWithMindComp.Comp.RequiredAntagPreference!.Value != false)
+                return false;
+
+            return _mind;
+        });
 
         if (allHumans.Count == 0)
         {

@@ -1,4 +1,5 @@
 using Content.Shared.Cloning;
+using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 
@@ -47,4 +48,10 @@ public sealed partial class ParadoxCloneRuleComponent : Component
     /// </summary>
     [DataField]
     public EntityWhitelist? ObjectiveBlacklist;
+
+    /// <summary>
+    ///     Preference filter for opting in for being a paradox clone target.
+    /// </summary>
+    [DataField]
+    public ProtoId<AntagPrototype>? RequiredAntagPreference = "ParadoxCloneTarget";
 }
