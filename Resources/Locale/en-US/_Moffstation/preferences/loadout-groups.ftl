@@ -14,6 +14,15 @@ loadout-group-quartermaster-backpack = Quartermaster Backpack
 loadout-group-chief-engineer-backpack = Chief Engineer Backpack
 loadout-group-chief-medical-officer-backpack = Chief Medical Officer Backpack
 
+loadout-group-captain-glasses = Captain glasses
+loadout-group-head-of-personnel-glasses = Head of Personnel glasses
+loadout-group-security-glasses = Security glasses
+loadout-group-detective-glasses = Detective glasses
+loadout-group-engineering-glasses = Engineering glasses
+loadout-group-chemistry-glasses = Chemistry glasses
+loadout-group-science-glasses = Science glasses
+loadout-group-bartender-glasses = Bartender glasses
+
 loadout-group-warden-id = Warden ID
 loadout-group-detective-id = Detective ID
 

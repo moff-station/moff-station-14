@@ -102,6 +102,10 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  # Moffstation - Start - Eyepatches!
+  - EyePatch
+  - EyePatchFlipped
+  # Moffstation - End
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -1755,11 +1759,17 @@
   name: loadout-group-medical-glasses
   minLimit: 0
   loadouts:
+  - MedicalGlasses # Moffstation - Eyepatches!
   - MedicalHud
   - MedicalEyePatchHud
+  - MedicalEyePatchHudFlipped # Moffstation - Eyepatches!
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  # Moffstation - Start - Eyepatches!
+  - EyePatch
+  - EyePatchFlipped
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SurvivalMedical
