@@ -557,8 +557,10 @@
   components:
   - type: Sprite
     sprite: Objects/Weapons/Grenades/metalfoam.rsi
-  - type: TimerTrigger
-    delay: 5
+  # Moffstation - Begin (Consistent Grenade Fusing) We inherit 3s fuse from the parent.
+  #- type: TimerTrigger
+    #delay: 5
+  # Moffstation - End
   - type: SmokeOnTrigger
     keysIn:
     - timer

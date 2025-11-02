@@ -85,7 +85,7 @@
   - type: TimerTrigger
     initialBeepDelay: 0
     beepInterval: 2
-    delay: 3.5
+    delay: 3 # Moffstation - (Consistent Grenade Fusing) Set from 3.5s to 3s for consistency.
   - type: TimerTriggerVisuals
     primingSound:
       path: /Audio/Effects/countdown.ogg
@@ -112,7 +112,7 @@
         volume: 5
     initialBeepDelay: 0
     beepInterval: 2
-    delay: 3.5
+    delay: 3 # Moffstation - (Consistent Grenade Fusing) Set from 3.5s to 3s for consistency.
   - type: EmitSoundOnTrigger
     keysIn:
     - timer
@@ -144,7 +144,7 @@
         volume: 5
     initialBeepDelay: 0
     beepInterval: 2
-    delay: 3.5
+    delay: 3 # Moffstation - (Consistent Grenade Fusing) Set from 3.5s to 3s for consistency.
   - type: EmitSoundOnTrigger
     keysIn:
     - timer
