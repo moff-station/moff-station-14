@@ -217,3 +217,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/harlequin.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/harlequin.rsi
+
+#Mime
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitPierrot
+  name: pierrot suit
+  description: A suit for the buffoon to swoon a Columbine.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/pierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/pierrot.rsi
+
+#Mime
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitRockstar
+  name: rockstar suit
+  description: An outfit paired with faux death leopard jeans.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rockstar.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rockstar.rsi

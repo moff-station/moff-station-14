@@ -20,3 +20,13 @@
     sprite: _Moffstation/Clothing/Mask/harlequin.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Mask/harlequin.rsi
+
+- type: entity
+  parent: [ClothingMaskMime]
+  id: ClothingMaskMimePierrot
+  name: pierrot mime mask
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Mask/pierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/pierrot.rsi
