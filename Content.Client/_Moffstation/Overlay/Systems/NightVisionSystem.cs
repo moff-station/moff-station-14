@@ -1,6 +1,8 @@
 using Content.Client._Starlight.Overlay;
 using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared.Flash;
+using Content.Shared.Flash.Components;
+using Content.Shared.Inventory;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -19,7 +21,7 @@ public sealed class NightVisionSystem : EntitySystem
     [Dependency] private readonly TransformSystem _xformSys = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedFlashSystem _flash = default!;
-
+    [Dependency] private readonly InventorySystem _inventorySystem = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -33,9 +35,26 @@ public sealed class NightVisionSystem : EntitySystem
         SubscribeLocalEvent<NightVisionComponent, FlashImmunityChangedEvent>(OnFlashImmunityChanged);
     }
 
+    // Check both slots for valid flash protection.
+    private bool HasValidFlashProtection(EntityUid uid)
+    {
+        // Check head slot
+        if (_inventorySystem.TryGetSlotEntity(uid, "head", out var headItem)
+            && HasComp<FlashImmunityComponent>(headItem.Value))
+            return true;
+
+        // Check eyes slot
+        if (_inventorySystem.TryGetSlotEntity(uid, "eyes", out var eyesItem)
+            && HasComp<FlashImmunityComponent>(eyesItem.Value))
+            return true;
+
+        return false;
+    }
+
     private void OnFlashImmunityChanged(Entity<NightVisionComponent> ent, ref FlashImmunityChangedEvent args)
     {
-        if (args.FlashImmune)
+        // If player has valid flash protection, remove effect. Else apply.
+        if (HasValidFlashProtection(ent.Owner))
         {
             RemoveEffect(ent);
         }
