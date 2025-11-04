@@ -322,7 +322,7 @@
   groups:
   - GroupTankHarness
   - AtmosPDA # Moffstation - Additional job title loadouts
-  - StationEngineerHead # Moffstation - (Nox Loadout Improvements)
+  - AtmosphericTechnicianHead # Moffstation - (Nox Loadout Improvements)
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
@@ -385,6 +385,7 @@
   id: JobHeadOfSecurity
   groups:
   - HeadofSecurityHead
+  - SecurityHelmetGroup # Moffstation - (Nox Loadout Improvements) - This is separate from the hat group - it puts the helmet in their bag.
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
@@ -402,6 +403,7 @@
   groups:
   - WardenPDA # Moffstation - Additional job title loadouts
   - WardenHead
+  - SecurityHelmetGroup # Moffstation - (Nox Loadout Improvements) - This is separate from the hat group - it puts the helmet in their bag.
   - WardenJumpsuit
   - SecurityBackpack
   - SecurityBelt
@@ -418,6 +420,7 @@
   groups:
   - SecurityPDA # Moffstation - Additional job title loadouts
   - SecurityHead
+  - SecurityHelmetGroup # Moffstation - (Nox Loadout Improvements) - This is separate from the hat group - it puts the helmet in their bag.
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
@@ -434,6 +437,7 @@
   groups:
   - DetectivePDA # Moffstation - Additional job title loadouts
   - DetectiveHead
+  - SecurityHelmetGroup # Moffstation - (Nox Loadout Improvements) - This is separate from the hat group - it puts the helmet in their bag.
   - DetectiveNeck
   - DetectiveJumpsuit
   - SecurityBackpack

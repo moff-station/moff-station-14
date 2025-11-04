@@ -69,7 +69,23 @@
   - PersonalItemKaiPlushie
   - PersonalItemDawnBottle
 
+# Engineering
+- type: loadoutGroup
+  id: AtmosphericTechnicianHead
+  name: loadout-group-atmospheric-technician-head
+  minLimit: 0
+  loadouts:
+  - StationEngineerHardhatYellow
+  - AtmosphericTechnicianHardhatBlue
+
 ## Security
+- type: loadoutGroup
+  id: SecurityHelmetGroup
+  name: loadout-group-security-helmet
+  loadouts:
+  - SecurityHelmetBag
+  - MilitaryHelmetBag
+
 # Warden
 - type: loadoutGroup
   id: WardenPDA

@@ -24,10 +24,22 @@
         time: 100h
 
 # Head
+# Moffstation - Begin (Nox Loadout Improvements) - Replaced this option with a new loadout group which places a helmet in your bag, allowing you to select both a hat and helmet.
+#- type: loadout
+#  id: SecurityHelmet
+#  equipment:
+#    head: ClothingHeadHelmetBasic
+# Moffstation - End
+
 - type: loadout
-  id: SecurityHelmet
+  id: SecurityHelmetBag
   equipment:
     head: ClothingHeadHelmetBasic
+
+- type: loadout
+  id: MilitaryHelmetBag
+  equipment:
+    head: ClothingHeadHelmetMilitary
 
 - type: loadout
   id: SecurityHat

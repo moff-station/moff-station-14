@@ -80,15 +80,6 @@
   - PlushieSnake
   - PlushieVox
   # Moffstation - End
-  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
-  - FolderRed
-  - FolderBlue
-  - FolderYellow
-  - FolderWhite
-  - FolderGrey
-  - FolderBlack
-  - FolderGreen
-  # Moffstation - End
   # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
   - GoldRing
   - SilverRing
@@ -889,7 +880,7 @@
   name: loadout-group-station-engineer-head
   minLimit: 0
   loadouts:
-  - StationEngineerHardhatYellow
+  #- StationEngineerHardhatYellow Moffstation - (Nox Loadout Improvements) - Yellow and blue hardhats are restricted to atmos to keep the two roles visually distinct.
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
   - SeniorEngineerBeret
@@ -955,7 +946,6 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
-  - StationEngineerOuterVest # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -1007,6 +997,7 @@
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
+  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - Turtlenecks clip through moth fuzz, so lets give RDs a second option.
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
@@ -1046,6 +1037,7 @@
   loadouts:
   - ScientistJumpsuit
   - ScientistJumpskirt
+  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - This spawns in their drobe, and someone requested I add it to the loadout.
   - RoboticistJumpsuit
   - RoboticistJumpskirt
   - MachinistJumpsuit # Moffstation - New Roboticist & Machinist Outfits
@@ -1121,10 +1113,6 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
-  # Moffstation - Begin (Nox Loadout Improvements)
-  - SecurityHelmet
-  - MilitaryHelmet
-  # Moffstation - End
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1160,10 +1148,6 @@
   loadouts:
   - WardenHead
   - WardenBeret
-  # Moffstation - Begin (Nox Loadout Improvements)
-  - SecurityHelmet
-  - MilitaryHelmet
-  # Moffstation - End
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -1178,7 +1162,7 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
-  # Moffstation - Begin (Nox Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements) - Since warden coats clip through moth necks, give them the option of a basic vest instead.
   - ArmorVest
   - ArmorVestSlim
   # Moffstation - End
@@ -1188,8 +1172,7 @@
   name: loadout-group-security-head
   minLimit: 0
   loadouts:
-  - SecurityHelmet
-  - MilitaryHelmet # Moffstation - (New Security Helmets)
+  #- SecurityHelmet Moffstation - (Nox Loadout Improvements) - Now accessed through the separate security helmet loadout group.
   - SecurityBeret
   - SecurityHat
   - TrooperHat
@@ -1222,7 +1205,7 @@
   - SecurityBelt
   - SecurityWebbing
   - SecurityWebbingAlt  # Moffstation - Alt sec webbing
-  - ShoulderHolster # Moffstation - (Nox Loadout Improvements)
+  - ShoulderHolster # Moffstation - (Nox Loadout Improvements) - Filled shoulder holster as a sidegrade to the belt.
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1260,8 +1243,6 @@
   - DetectiveFedora
   - DetectiveFedoraGrey
   # Moffstation - Begin (Nox Loadout Improvements)
-  - SecurityHelmet
-  - MilitaryHelmet
   - SecurityBeret
   - SecurityHat
   # Moffstation - End
