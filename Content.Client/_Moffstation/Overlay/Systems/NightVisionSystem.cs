@@ -19,9 +19,7 @@ public sealed class NightVisionSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly TransformSystem _xformSys = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedFlashSystem _flash = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -35,26 +33,9 @@ public sealed class NightVisionSystem : EntitySystem
         SubscribeLocalEvent<NightVisionComponent, FlashImmunityChangedEvent>(OnFlashImmunityChanged);
     }
 
-    // Check both slots for valid flash protection.
-    private bool HasValidFlashProtection(EntityUid uid)
-    {
-        // Check head slot
-        if (_inventorySystem.TryGetSlotEntity(uid, "head", out var headItem)
-            && HasComp<FlashImmunityComponent>(headItem.Value))
-            return true;
-
-        // Check eyes slot
-        if (_inventorySystem.TryGetSlotEntity(uid, "eyes", out var eyesItem)
-            && HasComp<FlashImmunityComponent>(eyesItem.Value))
-            return true;
-
-        return false;
-    }
-
     private void OnFlashImmunityChanged(Entity<NightVisionComponent> ent, ref FlashImmunityChangedEvent args)
     {
-        // If player has valid flash protection, remove effect. Else apply.
-        if (HasValidFlashProtection(ent.Owner))
+        if (args.FlashImmune)
         {
             RemoveEffect(ent);
         }
@@ -102,6 +83,9 @@ public sealed class NightVisionSystem : EntitySystem
     {
         if (!force &&
             _player.LocalSession?.AttachedEntity != entity)
+            return;
+
+        if (!_flash.IsFlashImmune(entity))
             return;
 
         if (!_overlayMan.TryGetOverlay(out NightVisionOverlay? overlay))
