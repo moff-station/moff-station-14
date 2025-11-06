@@ -35,6 +35,8 @@
     - id: RevenantSpawn
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
+    - !type:NestedSelector # imp
+      tableId: TouristShuttleEvents
 
 - type: entityTable
   id: ModerateAntagEventsTable
