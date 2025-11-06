@@ -1113,6 +1113,10 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
+  # Moffstation - Begin (Nox Loadout Improvements) Give all security roles the choice of a helmet.
+  - SecurityHelmet
+  - MilitaryHelmet
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1148,6 +1152,10 @@
   loadouts:
   - WardenHead
   - WardenBeret
+  # Moffstation - Begin (Nox Loadout Improvements) Give all security roles the choice of a helmet.
+  - SecurityHelmet
+  - MilitaryHelmet
+  # Moffstation - End
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -1172,7 +1180,8 @@
   name: loadout-group-security-head
   minLimit: 0
   loadouts:
-  #- SecurityHelmet Moffstation - (Nox Loadout Improvements) - Now accessed through the separate security helmet loadout group.
+  - SecurityHelmet
+  - MilitaryHelmet # Moffstation - (New Security Helmets) Alternate helmet, with the same stats but a different look.
   - SecurityBeret
   - SecurityHat
   - TrooperHat
@@ -1242,9 +1251,11 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
-  # Moffstation - Begin (Nox Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
   - SecurityBeret
   - SecurityHat
+  - SecurityHelmet
+  - MilitaryHelmet
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1269,7 +1280,7 @@
   - InvestigatorJumpsuit
   - InvestigatorJumpskirt
   # Moffstation - End (New Detective Outfits)
-  # Moffstation - Begin (Nox Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
   - SecurityJumpsuitGrey
   - SecurityJumpskirtGrey
   # Moffstation - End
@@ -1282,7 +1293,7 @@
   - DetectiveCoat
   - DetectiveCoatGrey
   - DetectiveCoatSleuth # Moffstation - (New Detective Outfits)
-  # Moffstation - Begin (Nox Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
