@@ -14,7 +14,7 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
     public bool? ScanMode;
     public bool? Bleeding;
     public bool? Unrevivable;
-    public bool? Uncloneable;
+    public bool? Uncloneable; //Moffstation change - uncloneable (duh)
 
     public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, bool? uncloneable)
     {
@@ -24,7 +24,7 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
         ScanMode = scanMode;
         Bleeding = bleeding;
         Unrevivable = unrevivable;
-        Uncloneable = uncloneable;
+        Uncloneable = uncloneable; //Moffstation change - uncloneable
     }
 }
 

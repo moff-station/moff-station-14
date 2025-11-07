@@ -110,7 +110,7 @@ namespace Content.Client.HealthAnalyzer.UI
 
             // Alerts
 
-            var showAlerts = msg.Unrevivable == true || msg.Uncloneable == true || msg.Bleeding == true;
+            var showAlerts = msg.Unrevivable == true || msg.Uncloneable == true || msg.Bleeding == true; //Moffstation change - uncloneable
 
             AlertsDivider.Visible = showAlerts;
             AlertsContainer.Visible = showAlerts;
@@ -126,13 +126,13 @@ namespace Content.Client.HealthAnalyzer.UI
                     MaxWidth = 300
                 });
 
-            if (msg.Uncloneable == true)
+            if (msg.Uncloneable == true) //Moffstation start - uncloneable
                 AlertsContainer.AddChild(new RichTextLabel
                 {
                     Text = Loc.GetString("health-analyzer-window-entity-uncloneable-text"),
                     Margin = new Thickness(0, 4),
                     MaxWidth = 300
-                });
+                }); //Moffstation end - uncloneable
 
             if (msg.Bleeding == true)
                 AlertsContainer.AddChild(new RichTextLabel

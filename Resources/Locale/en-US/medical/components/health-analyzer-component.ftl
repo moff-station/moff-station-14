@@ -17,7 +17,6 @@ health-analyzer-window-damage-type-text = {$damageType}: {$amount}
 
 health-analyzer-window-entity-unrevivable-text = [color=yellow]Unique body composition detected! Patient can not be resuscitated by normal means![/color]
 health-analyzer-window-entity-bleeding-text = [color=red]Patient has open wounds![/color]
-health-analyzer-window-entity-uncloneable-text = [color=lightblue]Unique genetic structure detected! Patient is unable to be cloned![/color]
 
 health-analyzer-window-scan-mode-text = Scan Mode:
 health-analyzer-window-scan-mode-active = Active

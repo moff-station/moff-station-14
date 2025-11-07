@@ -213,8 +213,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         if (TryComp<UnrevivableComponent>(target, out var unrevivableComp) && unrevivableComp.Analyzable)
             unrevivable = true;
 
-        if (TryComp<UncloneableComponent>(target, out var uncloneableComp) && uncloneableComp.Analyzable)
-            uncloneable = true;
+        if (TryComp<UncloneableComponent>(target, out var uncloneableComp) && uncloneableComp.Analyzable) //Moffstation start - uncloneable
+            uncloneable = true; //Moffstation end - uncloneable
 
         _uiSystem.ServerSendUiMessage(healthAnalyzer, HealthAnalyzerUiKey.Key, new HealthAnalyzerScannedUserMessage(
             GetNetEntity(target),
@@ -223,7 +223,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             scanMode,
             bleeding,
             unrevivable,
-            uncloneable
+            uncloneable //Moffstation change
         ));
     }
 }
