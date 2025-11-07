@@ -1,2 +1,5 @@
-ghost-role-information-eeep-name = Eeeplet
-ghost-role-information-eeep-desc = As a baby electric sheep your favourite food is power sourced from your local station APCs. Maybe if you eat enough you can become a fully grown Eeep!
+ghost-role-information-eeeplet-name = Eeeplet
+ghost-role-information-eeeplet-desc = As a baby electric sheep your favourite food is power sourced from your local station, and you're very hungry.
+
+ghost-role-information-eeep-name = Eeep
+ghost-role-information-eeep-desc = A bad tempered and fully grown Electric sheep.
