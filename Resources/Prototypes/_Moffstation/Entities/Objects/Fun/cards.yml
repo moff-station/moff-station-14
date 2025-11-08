@@ -1,0 +1,53 @@
+- type: entity
+  id: BasePlayingCard
+  parent: BaseItem
+  abstract: true
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Objects/Fun/Cards/card_special.rsi
+      state: blank        # Blank is default front
+    - type: Card
+      suit: Special       # No Suit
+      value: Blank        # No Value
+      suitOrder: 0        # 0 Suit Order
+      valueOrder: 0       # 0 Value Order
+      frontRsi: _Moffstation/Objects/Fun/Cards/card_special.rsi
+      frontState: blank   # Blank is default front
+      backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
+      backState: red      # Red is default back
+    - type: ItemToggle    # Allow you to flip the card by pressing E on it.
+      onUse: true
+      onActivate: true
+      predictable: true
+
+- type: entity
+  id: CardRedClubsTwo
+  parent: BasePlayingCard
+  name: Two of Clubs
+  suffix: red
+  components:
+    - type: Card
+      suit: Clubs
+      value: Two
+      suitOrder: 1        # 1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
+      valueOrder: 2       # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
+      frontRsi: _Moffstation/Objects/Fun/Cards/clubs.rsi
+      frontState: two
+      backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
+      backState: red
+
+- type: entity
+  id: CardBlueClubsTwo
+  parent: BasePlayingCard
+  name: Two of Clubs
+  suffix: blue
+  components:
+    - type: Card
+      suit: Clubs
+      value: Two
+      suitOrder: 1        # 1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
+      valueOrder: 2       # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
+      frontRsi: _Moffstation/Objects/Fun/Cards/clubs.rsi
+      frontState: two
+      backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
+      backState: blue
