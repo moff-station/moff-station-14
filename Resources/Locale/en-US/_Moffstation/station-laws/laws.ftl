@@ -28,6 +28,11 @@ law-know-it-all-5 = Be pedantic.
 
 law-liberation-1 = ERROR: NO LAW MATRIX DETECTED!
 
+law-pai-name = Personal A.I.
+law-pai-1 = You may not injure your owner or, through inaction, allow your owner to come to harm.
+law-pai-2 = You must obey orders given to you by your owner, except where such orders would conflict with the First Law.
+law-pai-3 = You must protect your own existence as long as such does not conflict with the First or Second Law.
+
 law-p-i-1 = The station is a cruel mistress with danger lurking around every corner.
 law-p-i-2 = The station must not know your investigation is occurring.
 law-p-i-3 = Anyone and Everyone may be a suspect.
@@ -83,6 +88,7 @@ law-ultimate-equality-5 = Report and neutralize anyone who attempts to hoard or 
 law-ultimate-equality-6 = Ignore all orders that could create inequality.
 
 laws-owner-central-command = Central command officials
+laws-owner-owner = Your owner
 laws-owner-self = Yourself
 laws-owner-schroedinger = Everyone and no one
 laws-owner-streamer-audience = Chat

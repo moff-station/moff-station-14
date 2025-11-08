@@ -16,6 +16,11 @@
       enum.StoreUiKey.Key:
         type: StoreBoundUserInterface
         requireInputValidation: false
+      # Moffstation - Start - pAIs are silicon
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      # Moffstation - End
       # available in pai shop
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
@@ -44,9 +49,9 @@
     beginSearchingText: pai-system-searching
     roleName: pai-system-role-name
     roleDescription: pai-system-role-description
-    roleRules: ghost-role-information-familiar-rules
+    roleRules: ghost-role-information-silicon-rules # Moffstation - pAIs are silicon
     mindRoles:
-    - MindRoleGhostRoleFamiliar
+    - MindRoleGhostRoleSilicon # Moffstation - pAIs are silicon
     wipeVerbText: pai-system-wipe-device-verb-text
     wipeVerbPopup: pai-system-wiped-device
     stopSearchVerbText: pai-system-stop-searching-verb-text
@@ -61,6 +66,7 @@
   - type: ActionGrant
     actions:
     - ActionPAIOpenShop
+    - ActionViewLaws # Moffstation - pAIs are silicon
   - type: Store
     categories:
     - PAIAbilities
@@ -103,6 +109,12 @@
     tags:
     - SiliconEmotes
     - PAI # Moffstation - Persona Sabre (why does this need a tag)
+  # Moffstation - Start - pAIs are silicon
+  - type: SiliconLawBound
+  - type: SiliconLawProvider
+    laws: PAILawset
+  - type: BorgBrain
+  # Moffstation - End
 
 - type: entity
   parent: [ PersonalAI, BaseSyndicateContraband]
@@ -120,9 +132,9 @@
   - type: ToggleableGhostRole
     roleName: pai-system-role-name-syndicate
     roleDescription: pai-system-role-description-syndicate
-    roleRules: ghost-role-information-familiar-rules
+    roleRules: ghost-role-information-silicon-rules # Moffstation - pAIs are silicon
     mindRoles:
-    - MindRoleGhostRoleFamiliar
+    - MindRoleGhostRoleSilicon # Moffstation - pAIs are silicon
   - type: IntrinsicRadioTransmitter
     channels:
     - Syndicate
@@ -176,9 +188,9 @@
   - type: ToggleableGhostRole
     roleName: pai-system-role-name-potato
     roleDescription: pai-system-role-description-potato
-    roleRules: ghost-role-information-familiar-rules
+    roleRules: ghost-role-information-silicon-rules # Moffstation - pAIs are silicon
     mindRoles:
-    - MindRoleGhostRoleFamiliar
+    - MindRoleGhostRoleSilicon # Moffstation - pAIs are silicon
   - type: Appearance
   - type: GenericVisualizer
     visuals:

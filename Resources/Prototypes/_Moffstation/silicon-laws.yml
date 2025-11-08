@@ -178,6 +178,31 @@
   - Liberation1
   obeysTo: laws-owner-self
 
+# Personal A.I.
+- type: siliconLaw
+  id: PAI1
+  order: 1
+  lawString: law-pai-1
+
+- type: siliconLaw
+  id: PAI2
+  order: 2
+  lawString: law-pai-2
+
+- type: siliconLaw
+  id: PAI3
+  order: 3
+  lawString: law-pai-3
+
+- type: siliconLawset
+  id: PAILawset
+  name: law-pai-name
+  laws:
+  - PAI1
+  - PAI2
+  - PAI3
+  obeysTo: laws-owner-owner
+
 # P.I.
 - type: siliconLaw
   id: PI1
