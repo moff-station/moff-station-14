@@ -1,6 +1,7 @@
 using Content.Shared.Interaction;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Verbs;
+using Content.Shared.Examine;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
@@ -18,9 +19,27 @@ public abstract class SharedCardSystem : EntitySystem
 
         SubscribeLocalEvent<CardComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<CardComponent, GetVerbsEvent<InteractionVerb>>(OnGetInteractionVerbs);
-
-        // Handle E/toggle via ItemToggleSystem.
         SubscribeLocalEvent<CardComponent, ItemToggledEvent>(OnItemToggled);
+        SubscribeLocalEvent<CardComponent, ExaminedEvent>(OnExamined);
+
+    }
+
+    private void OnExamined(EntityUid uid, CardComponent card, ExaminedEvent args)
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        if (!card.IsFaceUp)
+        {
+            // Face-down: generic text only.
+            args.PushText("It's face is turned away from you. You can’t tell which card it is.");
+        }
+        else
+        {
+            // Face-up: show suit/value (or any appropriate text).
+            // Adjust formatting to your taste.
+            args.PushText($"A standard playing card reading a {card.Value} of {card.Suit}.");
+        }
     }
 
     private void OnAfterInteract(EntityUid uid, CardComponent card, AfterInteractEvent args)
