@@ -1,5 +1,6 @@
 - type: entity
   id: BasePlayingCard
+  name: playing card
   parent: BaseItem
   abstract: true
   components:
@@ -21,10 +22,24 @@
       predictable: true
 
 - type: entity
+  id: CardRedClubsAce
+  parent: BasePlayingCard
+  suffix: red ace of clubs
+  components:
+    - type: Card
+      suit: Clubs
+      value: Ace
+      suitOrder: 1        # 1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
+      valueOrder: 2       # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
+      frontRsi: _Moffstation/Objects/Fun/Cards/clubs.rsi
+      frontState: ace
+      backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
+      backState: red
+
+- type: entity
   id: CardRedClubsTwo
   parent: BasePlayingCard
-  name: Two of Clubs
-  suffix: red
+  suffix: red two of clubs
   components:
     - type: Card
       suit: Clubs
@@ -37,17 +52,61 @@
       backState: red
 
 - type: entity
-  id: CardBlueClubsTwo
+  id: CardRedClubsThree
   parent: BasePlayingCard
-  name: Two of Clubs
-  suffix: blue
+  suffix: red three of clubs
   components:
     - type: Card
       suit: Clubs
-      value: Two
+      value: Three
       suitOrder: 1        # 1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
-      valueOrder: 2       # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
+      valueOrder: 3      # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
       frontRsi: _Moffstation/Objects/Fun/Cards/clubs.rsi
-      frontState: two
+      frontState: three
       backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
-      backState: blue
+      backState: red
+
+- type: entity
+  id: CardRedClubsFour
+  parent: BasePlayingCard
+  suffix: red four of clubs
+  components:
+    - type: Card
+      suit: Clubs
+      value: Four
+      suitOrder: 1        # 1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
+      valueOrder: 4       # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
+      frontRsi: _Moffstation/Objects/Fun/Cards/clubs.rsi
+      frontState: four
+      backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
+      backState: red
+
+- type: entity
+  id: CardRedClubsFive
+  parent: BasePlayingCard
+  suffix: red five of clubs
+  components:
+    - type: Card
+      suit: Clubs
+      value: Five
+      suitOrder: 1        # 1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
+      valueOrder: 5       # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
+      frontRsi: _Moffstation/Objects/Fun/Cards/clubs.rsi
+      frontState: five
+      backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
+      backState: red
+
+- type: entity
+  id: CardRedClubsSix
+  parent: BasePlayingCard
+  suffix: red six of clubs
+  components:
+    - type: Card
+      suit: Clubs
+      value: Six
+      suitOrder: 1        # 1 = Clubs, 2 = Diamonds, 3 = Hearts, 4 = Spades
+      valueOrder: 6       # 1 = Ace, 2 = Two, ..., 11 = Jack, 12 = Queen, 13 = King
+      frontRsi: _Moffstation/Objects/Fun/Cards/clubs.rsi
+      frontState: six
+      backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
+      backState: red
