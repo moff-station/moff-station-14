@@ -1,3 +1,28 @@
+# Nanotrasen Corporate Fleet
+- type: entity
+  parent: RandomHumanoidSpawnerCentcomOfficial
+  id: RandomHumanoidSpawnerNTCFPilotFighter
+  name: NTCF fighter pilot
+  suffix: ERTRole, Fleet
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: centcomexec
+  - type: RandomHumanoidSpawner
+    settings: NTCFPilot
+
+- type: randomHumanoidSettings
+  id: NTCFPilot
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirstLeader
+    - NamesMilitaryLast
+  - type: Loadout
+    prototypes: [ CentcomExecutiveGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
+
+# CentComm Officials
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
   id: RandomHumanoidSpawnerCentcomExecutive

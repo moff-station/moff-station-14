@@ -1,0 +1,98 @@
+# NTCF Pilot
+- type: job
+  id: NTCFPilot
+  name: job-name-ntcfpilot
+  description: job-description-ntcfpilot
+  playTimeTracker: JobNTCFPilot
+  setPreference: false
+  startingGear: NTCFPilotFighterGear
+  icon: "JobIconNanotrasen"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  access:
+  - CentralCommand
+  - Command
+  - External
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: NTCFPilotFighterGear
+  equipment:
+    back: ClothingBackpackERTSecurity
+    belt: ClothingBeltSalvageWebbing
+    ears: ClothingHeadsetAltCentCom
+    eyes: ClothingEyesGlassesCheapSunglasses
+    head: ClothingHeadHelmetBasic # Stand-in for dedicated NTCF helmet.
+    gloves: ClothingHandsGlovesCombat
+    id: NTCFPilotPDA
+    jumpsuit: ClothingUniformJumpsuitERTSecurity # Stand-in for dedicated NTCF jumpsuit.
+    mask: ClothingMaskGasERT
+    outerClothing: ClothingOuterArmorBasic
+    pocket1: WeaponDisabler
+    pocket2: FlashlightSeclite
+    shoes: ClothingShoesBootsMagSci
+  storage:
+    back:
+    - HandHeldMassScanner
+    belt:
+    - CrowbarRed
+    - PowerDrill
+    - Wirecutter
+    - WelderIndustrialAdvanced
+    - Multitool
+    - WeaponPistolMk58
+    - MagazinePistol
+    - Zipties
+
+# NTCF Flight Engineer
+- type: job
+  id: NTCFEngineer
+  name: job-name-ntcfengineer
+  description: job-description-ntcfengineer
+  playTimeTracker: JobNTCFEngineer
+  setPreference: false
+  startingGear: NTCFEngineerFighterGear
+  icon: "JobIconNanotrasen"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  access:
+  - Atmospherics
+  - CentralCommand
+  - Engineering
+  - External
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: NTCFEngineerFighterGear
+  equipment:
+    back: ClothingBackpackERTEngineer
+    belt: ClothingBeltSalvageWebbing
+    ears: ClothingHeadsetAltCentCom
+    eyes: ClothingEyesHudDiagnostic
+    head: ClothingHeadHelmetBasic # Stand-in for dedicated NTCF helmet.
+    gloves: ClothingHandsGlovesCombat
+    id: NTCFEngineerPDA
+    jumpsuit: ClothingUniformJumpsuitERTEngineer # Stand-in for dedicated NTCF jumpsuit.
+    mask: ClothingMaskGasERT
+    outerClothing: ClothingOuterArmorBasic
+    pocket1: WeaponDisabler
+    pocket2: FlashlightSeclite
+    shoes: ClothingShoesBootsMagSci
+  storage:
+    back:
+    - HandHeldMassScanner
+    belt:
+    - CrowbarRed
+    - PowerDrill
+    - Wirecutter
+    - WelderIndustrialAdvanced
+    - Multitool
+    - WeaponPistolMk58
+    - MagazinePistol
+    - Zipties
