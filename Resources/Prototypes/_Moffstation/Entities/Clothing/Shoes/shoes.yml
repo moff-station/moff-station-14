@@ -1,0 +1,16 @@
+# harlequin
+- type: entity
+  parent: ClothingShoesClown
+  id: ClothingShoesHarlequin
+  name: harlequin shoes
+  description: A harlequin's shoes, specialised to help with acrobatic tomfoolery.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/harlequin-shoes.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/harlequin-shoes.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepJester
+      params:
+        variation: 0.07

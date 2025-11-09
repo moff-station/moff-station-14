@@ -11,6 +11,14 @@
     Egg: 6
 
 - type: microwaveMealRecipe
+  id: RecipeRoastedCoffee
+  name: roasted coffee beans recipe
+  result: LeavesCoffeeDried
+  time: 10
+  solids:
+    FoodCoffeeBeans: 1
+
+- type: microwaveMealRecipe
   id: RecipeTarburger
   name: tarburger recipe
   result: FoodBurgerTar

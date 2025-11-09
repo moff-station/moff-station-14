@@ -1,6 +1,6 @@
 using Content.Shared._CD.CartridgeLoader.Cartridges; // CD
 using Content.Shared.CartridgeLoader.Cartridges;
-using Content.Shared.Paper;
+﻿using Content.Shared.Paper;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;

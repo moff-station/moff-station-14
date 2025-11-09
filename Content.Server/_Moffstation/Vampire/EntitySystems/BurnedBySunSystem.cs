@@ -1,12 +1,12 @@
-﻿using Content.Shared._Moffstation.Vampire.Components;
-using Content.Shared.Damage;
+﻿using Content.Server.Atmos.EntitySystems;
+using Content.Shared._Moffstation.Vampire.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Popups;
-using Content.Server.Atmos.EntitySystems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Timing;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Vampire.EntitySystems;
 

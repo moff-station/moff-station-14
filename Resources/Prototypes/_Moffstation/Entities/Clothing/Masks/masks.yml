@@ -1,0 +1,32 @@
+- type: entity
+  parent: [ClothingMaskGasSyndicate]
+  id: ClothingMaskGasPirate
+  name: pirate gas mask
+  description: A close-fitting welding mask fine-tuned for scallywags.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Mask/pirateweldingmask.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/pirateweldingmask.rsi
+  - type: Contraband
+    severity: Major
+
+- type: entity
+  parent: [ClothingMaskClown]
+  id: ClothingMaskClownHarlequin
+  name: harlequin wig and mask
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Mask/harlequin.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/harlequin.rsi
+
+- type: entity
+  parent: [ClothingMaskMime]
+  id: ClothingMaskMimePierrot
+  name: pierrot mime mask
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Mask/pierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/pierrot.rsi

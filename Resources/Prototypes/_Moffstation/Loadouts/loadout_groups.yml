@@ -14,6 +14,7 @@
   maxLimit: 2
   loadouts:
   - PersonalItemArieApple
+  - PersonalItemAsterGuitar
   - PersonalItemAuroraPin
   - PersonalItemBoxcarGlasses
   - PersonalItemCarolynFlettCigsPack
@@ -23,10 +24,10 @@
   - PersonalItemCoryClipboard
   - PersonalItemDarnellLighter
   - PersonalItemDeliPearl
-  - PersonalItemDelilahBag
+  - PersonalItemDelilahSuit
   - PersonalItemEclipseSunshadeGun
   - PersonalItemEddieGuitar
-  - PersonalItemFredWatch
+  - PersonalItemFredSuit
   - PersonalItemFrostMedicalWebbing
   - PersonalItemGigsShaker
   - PersonalItemHercynSuit
@@ -34,7 +35,9 @@
   - PersonalItemIrisRing
   - PersonalItemIoImplanter
   - PersonalItemJasmineFlower
+  - PersonalItemJessMask
   - PersonalItemKatieWristBand
+  - PersonalItemKimBass
   - PersonalItemKrakatoaCloak
   - PersonalItemKylieUniform
   - PersonalItemLilithGuitar
@@ -58,6 +61,7 @@
   - PersonalItemTalviHoodie
   - PersonalItemToffeeMask
   - PersonalItemSqueaksHampter
+  - PersonalItemSharedReptilianFamilyPhoto
   - PersonalItemSharedStationBlueprints
   - PersonalItemSigerthePlushie
   - PersonalItemSkiesOfSunshine
@@ -310,3 +314,28 @@
   - FelonPrisonerPDA
   - InmatePrisonerPDA
   - TestSubjectPDA
+
+# Department Heads can use any department Bag
+- type: loadoutGroup
+  id: ChiefEngineerBackpack
+  name: loadout-group-chief-engineer-backpack
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+  - LeatherSatchel
+
+- type: loadoutGroup
+  id: QuartermasterBackpack
+  name: loadout-group-quartermaster-backpack
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+  - LeatherSatchel
