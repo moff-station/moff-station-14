@@ -1,0 +1,13 @@
+- type: technology
+  id: EnergyWeapons
+  name: research-technology-energy-weapons
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/disabler_smg.rsi
+    state: base
+  discipline: Arsenal
+  tier: 1
+  cost: 8000
+  recipeUnlocks:
+  - WeaponLaserCarbine
+  - WeaponDisablerSMG
+  - WeaponDisabler

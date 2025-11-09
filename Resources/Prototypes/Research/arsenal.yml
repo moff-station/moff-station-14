@@ -36,32 +36,36 @@
   - MagazineBoxLightRifleIncendiary
   - MagazineBoxRifleIncendiary
 
-- type: technology
-  id: WeaponizedLaserManipulation
-  name: research-technology-weaponized-laser-manipulation
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 1
-  cost: 7500
-  recipeUnlocks:
-  - WeaponLaserCarbine
+# Moffstation - Begin (Obliterate Useless Arsenal Tech) - Moved to the new 'Energy Weapons' T1 tech.
+#- type: technology
+#  id: WeaponizedLaserManipulation
+#  name: research-technology-weaponized-laser-manipulation
+#  icon:
+#    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+#    state: icon
+#  discipline: Arsenal
+#  tier: 1
+#  cost: 7500
+#  recipeUnlocks:
+#  - WeaponLaserCarbine
+# Moffstation - End
 
-- type: technology
-  id: NonlethalAmmunition
-  name: research-technology-nonlethal-ammunition
-  icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
-    state: beanbag
-  discipline: Arsenal
-  tier: 1
-  cost: 5000
-  recipeUnlocks:
-  - MagazineShotgunBeanbag
-  - BoxShellTranquilizer
-  - BoxBeanbag
-  - WeaponDisabler
+# Moffstation - Begin (Obliterate Useless Arsenal Tech) - Shotgun shells moved to roundstart recipes, disabler to the new Energy Weapons tech.
+#- type: technology
+#  id: NonlethalAmmunition
+#  name: research-technology-nonlethal-ammunition
+#  icon:
+#    sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
+#    state: beanbag
+#  discipline: Arsenal
+#  tier: 1
+#  cost: 5000
+#  recipeUnlocks:
+#  - MagazineShotgunBeanbag
+#  - BoxShellTranquilizer
+#  - BoxBeanbag
+#  - WeaponDisabler
+# Moffstation - End
 
 - type: technology
   id: UraniumMunitions
@@ -97,7 +101,7 @@
   - Truncheon
   - TelescopicShield
   - HoloprojectorSecurity
-  - WeaponDisablerSMG
+#  - WeaponDisablerSMG Moffstation - (Obliterate Useless Arsenal Tech) - Moved to the new Energy Weapons tech.
 
 - type: technology
   id: ExplosiveTechnology
@@ -119,17 +123,19 @@
   - CableDetStack1
   - EmptyDetonator
 
-- type: technology
-  id: SpecialMeans
-  name: research-technology-special-means
-  icon:
-    sprite: Clothing/Back/Backpacks/electropack.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 1
-  cost: 5000
-  recipeUnlocks:
-  - ClothingBackpackElectropack
+# Moffstation - Begin (Obliterate Useless Arsenal Tech) - The poster child of how bad the arsenal tree is. Warden starts with two, which is already more than you'll ever need. Straight to roundstart recipes with you!
+#- type: technology
+#  id: SpecialMeans
+#  name: research-technology-special-means
+#  icon:
+#    sprite: Clothing/Back/Backpacks/electropack.rsi
+#    state: icon
+#  discipline: Arsenal
+#  tier: 1
+#  cost: 5000
+#  recipeUnlocks:
+#  - ClothingBackpackElectropack
+# Moffstation - End
 
 # Tier 2
 
@@ -144,18 +150,21 @@
   cost: 10000
   recipeUnlocks:
   - WeaponLaserCannon
+  - WeaponXrayCannon # Moffstation - (Obliterate Useless Security Techs)
 
-- type: technology
-  id: WaveParticleHarnessing
-  name: research-technology-wave-particle-harnessing
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/xray.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 2
-  cost: 10000
-  recipeUnlocks:
-  - WeaponXrayCannon
+# Moffstation - Begin (Obliterate Useless Security Techs) - While fun to use, cannons aren't good enough to deserve two separate techs. Moved to Concentrated Laser Weaponry.
+#- type: technology
+#  id: WaveParticleHarnessing
+#  name: research-technology-wave-particle-harnessing
+#  icon:
+#    sprite: Objects/Weapons/Guns/Battery/xray.rsi
+#    state: icon
+#  discipline: Arsenal
+#  tier: 2
+#  cost: 10000
+#  recipeUnlocks:
+#  - WeaponXrayCannon
+# Moffstation - End
 
 - type: technology
   id: KineticModifications
@@ -220,17 +229,19 @@
   - WeaponAdvancedLaser
   - PortableRecharger
 
-- type: technology
-  id: ThermalWeaponry
-  name: research-technology-thermal-weaponry
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/temp_gun.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 3
-  cost: 15000
-  recipeUnlocks:
-  - WeaponTemperatureGun
+# Moffstation - Begin (Obliterate Useless Arsenal Tech) - This thing just sucks to use or to fight against. We don't have warops so it's not going to be used anyway, this won't be missed.
+#- type: technology
+#  id: ThermalWeaponry
+#  name: research-technology-thermal-weaponry
+#  icon:
+#    sprite: Objects/Weapons/Guns/Battery/temp_gun.rsi
+#    state: icon
+#  discipline: Arsenal
+#  tier: 3
+#  cost: 15000
+#  recipeUnlocks:
+#  - WeaponTemperatureGun
+# Moffstation - End
 
 - type: technology
   id: AdvancedShuttleWeapon
