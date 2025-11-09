@@ -120,3 +120,27 @@
       frontState: six
       backRsi: _Moffstation/Objects/Fun/Cards/card_backs.rsi
       backState: red
+
+- type: entity
+  id: PlayingCardDeck
+  name: deck of cards
+  parent: BaseItem
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Objects/Fun/Cards/card_special.rsi
+      state: joker1
+    - type: Deck
+      containerId: deck
+      isFaceUp: false
+    - type: ContainerContainer
+      containers:
+        deck: !type:Container
+    - type: ContainerFill
+      containers:
+        deck: # Entities are listed bottom-to-top, so the first entity will be the last card in the deck.
+        - CardRedClubsAce
+        - CardRedClubsTwo
+        - CardRedClubsThree
+        - CardRedClubsFour
+        - CardRedClubsFive
+        - CardRedClubsSix
