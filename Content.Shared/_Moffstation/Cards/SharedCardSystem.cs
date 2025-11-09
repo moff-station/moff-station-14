@@ -2,6 +2,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Examine;
+using Content.Shared.Hands.Components;
+using Content.Shared.Strip.Components;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
@@ -22,6 +24,8 @@ public abstract class SharedCardSystem : EntitySystem
         SubscribeLocalEvent<CardComponent, ItemToggledEvent>(OnItemToggled);
         SubscribeLocalEvent<CardComponent, ExaminedEvent>(OnExamined);
 
+        // When a CardVisibilityChangedEvent is raised on a card, forward it to the owning strip target.
+        SubscribeLocalEvent<CardComponent, CardVisibilityChangedEvent>(OnCardVisibilityChanged);
     }
 
     private void OnExamined(EntityUid uid, CardComponent card, ExaminedEvent args)
@@ -31,13 +35,10 @@ public abstract class SharedCardSystem : EntitySystem
 
         if (!card.IsFaceUp)
         {
-            // Face-down: generic text only.
-            args.PushText("It's face is turned away from you. You can’t tell which card it is.");
+            args.PushText("Its face is turned away; you can’t tell which card it is.");
         }
         else
         {
-            // Face-up: show suit/value (or any appropriate text).
-            // Adjust formatting to your taste.
             args.PushText($"A standard playing card reading a {card.Value} of {card.Suit}.");
         }
     }
@@ -76,7 +77,6 @@ public abstract class SharedCardSystem : EntitySystem
         args.Verbs.Add(verb);
     }
 
-    // Map ItemToggle's activated state directly to face-up/face-down.
     private void OnItemToggled(EntityUid uid, CardComponent card, ref ItemToggledEvent args)
     {
         var user = args.User ?? uid;
@@ -90,6 +90,10 @@ public abstract class SharedCardSystem : EntitySystem
 
         card.IsFaceUp = newFaceUp;
         Dirty(uid, card);
+
+        // Notify listeners (card + owner) that visible state changed.
+        var ev = new CardVisibilityChangedEvent();
+        RaiseLocalEvent(uid, ref ev);
     }
 
     protected virtual bool CanFlip(EntityUid uid, CardComponent card, EntityUid user)
@@ -100,5 +104,41 @@ public abstract class SharedCardSystem : EntitySystem
         var old = card.IsFaceUp;
         card.IsFaceUp = !card.IsFaceUp;
         Dirty(uid, card);
+
+        if (old == card.IsFaceUp)
+            return;
+
+        var ev = new CardVisibilityChangedEvent();
+        RaiseLocalEvent(uid, ref ev);
+    }
+
+    private void OnCardVisibilityChanged(EntityUid uid, CardComponent comp, ref CardVisibilityChangedEvent args)
+    {
+        // Forward CardVisibilityChangedEvent from the card to its owning strip target (if any).
+        var entMan = EntityManager;
+        var current = uid;
+        EntityUid? owner = null;
+
+        // Walk up transform parents to find an entity with StrippableComponent.
+        while (entMan.TryGetComponent(current, out TransformComponent? xform) &&
+               xform.ParentUid.IsValid() &&
+               xform.ParentUid != current)
+        {
+            current = xform.ParentUid;
+
+            if (entMan.HasComponent<StrippableComponent>(current))
+            {
+                owner = current;
+                break;
+            }
+        }
+
+        if (owner == null)
+        {
+            return;
+        }
+
+        var ownerEv = new CardVisibilityChangedEvent();
+        RaiseLocalEvent(owner.Value, ref ownerEv);
     }
 }

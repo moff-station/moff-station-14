@@ -25,6 +25,7 @@ using Robust.Shared.Input;
 using Robust.Shared.Map;
 using static Content.Client.Inventory.ClientInventorySystem;
 using static Robust.Client.UserInterface.Control;
+using Content.Shared._Moffstation.Cards; // Moffstation - Playing Cards
 
 namespace Content.Client.Inventory
 {
@@ -63,6 +64,20 @@ namespace Content.Client.Inventory
         /// </summary>
         [ViewVariables]
         private Vector2i _inventoryDimensions;
+
+        // Moffstation - Begin - Card mask for strip UI
+        private EntityUid? _cardMaskVisual;
+
+        private EntityUid GetCardMaskVisual()
+        {
+            if (_cardMaskVisual != null && EntMan.EntityExists(_cardMaskVisual.Value))
+                return _cardMaskVisual.Value;
+
+            var ent = EntMan.SpawnEntity("CardMaskVisual", MapCoordinates.Nullspace);
+            _cardMaskVisual = ent;
+            return ent;
+        }
+        // Moffstation - End
 
         public StrippableBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
@@ -106,6 +121,8 @@ namespace Content.Client.Inventory
         {
             if (_strippingMenu == null)
                 return;
+
+            Logger.Info($"[cards] StrippableBUI: UpdateMenu for {Owner}");
 
             _strippingMenu.ClearButtons();
             _handCount = 0;
@@ -263,6 +280,21 @@ namespace Content.Client.Inventory
                 button.SetEntity(null);
                 return;
             }
+
+            // Moffstation - Begin - Hide face-up cards in strip UI
+            if (EntMan.TryGetComponent<CardComponent>(entity.Value, out var card))
+            {
+                // If the card is face-up, mask it with a generic card sprite.
+                if (card.IsFaceUp)
+                {
+                    button.SetEntity(GetCardMaskVisual());
+                    return;
+                }
+
+                // If the card is face-down, fall through to normal behavior:
+                // its world sprite should already be a back/blank.
+            }
+            // Moffstation - End
 
             EntityUid? viewEnt;
             if (EntMan.TryGetComponent<VirtualItemComponent>(entity, out var virt))

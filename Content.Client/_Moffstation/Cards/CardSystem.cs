@@ -6,6 +6,8 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
 using Robust.Shared.Utility;
+using Content.Shared.Strip.Components;
+using Content.Client.Strip;
 
 namespace Content.Client._Moffstation.Cards;
 
@@ -13,39 +15,53 @@ public sealed class CardSystem : EntitySystem
 {
     [Dependency] private readonly SpriteSystem _spriteSystem = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
+    [Dependency] private readonly StrippableSystem _strippableSystem = default!;
     private ISawmill _sawmill = default!;
     private readonly Dictionary<EntityUid, bool> _lastFaceUp = new();
 
     public override void Initialize()
     {
         base.Initialize();
-
-        _sawmill = _logManager.GetSawmill("cards");
-        _sawmill.Info("Client CardSystem.Initialize");
-
         SubscribeLocalEvent<CardComponent, ComponentInit>(OnCardInit);
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-
         var query = EntityQueryEnumerator<CardComponent>();
         while (query.MoveNext(out var uid, out var card))
         {
             var current = card.IsFaceUp;
             if (!_lastFaceUp.TryGetValue(uid, out var last) || last != current)
             {
-                _sawmill.Info($"Client detected flip: uid={uid}, IsFaceUp={current}");
                 _lastFaceUp[uid] = current;
                 UpdateCardVisual(uid, card);
+                RefreshStripUIForCard(uid);
             }
         }
     }
 
+    private void RefreshStripUIForCard(EntityUid cardUid)
+    {
+        var entMan = EntityManager;
+        var current = cardUid;
+        // Walk up the transform parents to find an entity with StrippableComponent.
+        while (entMan.TryGetComponent(current, out TransformComponent? xform) &&
+               xform.ParentUid.IsValid() &&
+               xform.ParentUid != current)
+        {
+            current = xform.ParentUid;
+
+            if (entMan.HasComponent<StrippableComponent>(current))
+            {
+                // This entity has a strip UI; ask it to refresh.
+                _strippableSystem.UpdateUi(current);
+                return;
+            }
+        }
+    }
     private void OnCardInit(EntityUid uid, CardComponent card, ComponentInit args)
     {
-        _sawmill.Info($"Client OnCardInit: uid={uid}, IsFaceUp={card.IsFaceUp}, frontRsi={card.FrontRsi}, backRsi={card.BackRsi}");
         _lastFaceUp[uid] = card.IsFaceUp;
         UpdateCardVisual(uid, card);
     }
@@ -54,13 +70,10 @@ public sealed class CardSystem : EntitySystem
     {
         if (!EntityManager.TryGetComponent(uid, out SpriteComponent? sprite))
         {
-            _sawmill.Warning($"UpdateCardVisual: no SpriteComponent on {uid}");
             return;
         }
 
         var (rsiPath, state) = GetVisual(card, uid);
-
-        _sawmill.Info($"UpdateCardVisual: uid={uid}, IsFaceUp={card.IsFaceUp}, rsi={(rsiPath ?? "<same>")}, state={state}");
 
         if (!sprite.AllLayers.Any())
         {

@@ -3,6 +3,9 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Moffstation.Cards;
 
+[ByRefEvent]
+public readonly record struct CardVisibilityChangedEvent;
+
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CardComponent : Component
 {

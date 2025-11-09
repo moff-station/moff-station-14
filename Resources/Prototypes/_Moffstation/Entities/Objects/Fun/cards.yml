@@ -22,6 +22,16 @@
       predictable: true
 
 - type: entity
+  id: CardMaskVisual
+  parent: BasePlayingCard
+  abstract: true
+  noSpawn: true
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Objects/Fun/Cards/card_special.rsi
+      state: blank
+
+- type: entity
   id: CardRedClubsAce
   parent: BasePlayingCard
   suffix: red ace of clubs
