@@ -91,6 +91,15 @@
   - DetectivePDA # Keep default PDA on top of the list
   - InvestigatorPDA
 
+- type: loadoutGroup
+  id: DetectiveBelt
+  name: loadout-group-security-belt
+  loadouts:
+  - DetectiveHolster # Moffstation - (Nox Loadout Improvements)
+  - DetectiveSecBelt
+  - DetectiveSecWebbing
+  - DetectiveSecWebbingAlt  # Moffstation - Alt sec webbing
+
 ## Cargo
 # Salvage Specialist
 - type: loadoutGroup

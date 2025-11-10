@@ -64,3 +64,23 @@
     layers:
       Hair: HEAD
       HeadTop : HEAD
+
+# Syndie
+- type: entity
+  parent: [ClothingHeadBase, BaseSyndicateContraband]
+  id: ClothingHeadHatBeretSyndie
+  name: syndicate beret
+  description: An intimidating red beret with an S sown onto the top. The insignia has a three headed snake engraved onto it
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/syndieberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/syndieberet.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
