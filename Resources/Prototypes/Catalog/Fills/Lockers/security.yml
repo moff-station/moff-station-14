@@ -155,10 +155,12 @@
   table: !type:AllSelector
     children:
     - id: ClothingEyesGlassesNoir
-    - id: ClothingHeadHatDetGadget # Moffstation - Start (New Detective Outfits)
+    - id: ClothingHeadHatDetGadget
     - id: ClothingNeckTieDet
+    # Moffstation - Start (New Detective Outfits)
 #    - id: ClothingOuterVestDetective
-#    - id: ClothingOuterCoatDetectiveLoadout # Moffstation - End (New Detective Outfits)
+#    - id: ClothingOuterCoatDetectiveLoadout
+    # Moffstation - End (New Detective Outfits)
     - id: FlippoEngravedLighter
     - id: FlashlightSeclite
     - id: ForensicScanner
