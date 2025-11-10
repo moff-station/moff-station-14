@@ -41,3 +41,24 @@
   id: DetectiveBadge
   equipment:
     jumpsuit: ClothingNeckDetBadge
+
+#Belt
+- type: loadout
+  id: DetectiveHolster
+  equipment:
+    belt: ClothingBeltHolsterFilled
+
+- type: loadout
+  id: DetectiveSecBelt
+  equipment:
+    belt: ClothingBeltSecurityBeltFilledDetective
+
+- type: loadout
+  id: DetectiveSecWebbing
+  equipment:
+    belt: ClothingBeltSecurityWebbingFilledDetective
+
+- type: loadout
+  id: DetectiveSecWebbingAlt
+  equipment:
+    belt: ClothingBeltSecurityWebbingAltFilledDetective
