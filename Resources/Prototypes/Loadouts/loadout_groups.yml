@@ -880,7 +880,7 @@
   name: loadout-group-station-engineer-head
   minLimit: 0
   loadouts:
-  #- StationEngineerHardhatYellow Moffstation - (Nox Loadout Improvements) - Yellow and blue hardhats are restricted to atmos to keep the two roles visually distinct.
+  #- StationEngineerHardhatYellow Moffstation - (Work Gear for Atmos) - Yellow and blue hardhats are restricted to atmos to keep the two roles visually distinct.
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
   - SeniorEngineerBeret
@@ -960,9 +960,11 @@
   id: AtmosphericTechnicianShoes
   name: loadout-group-atmospheric-technician-shoes
   loadouts:
-  - WhiteShoes
+  # Moffstation - Begin (Work Gear for Atmos) - Get rid of those stupid white shoes and give them proper work boots.
+  #- WhiteShoes
+  - WorkBoots
+  # Moffstation - End
   - EngineeringWinterBoots
-  - WorkBoots # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -997,7 +999,7 @@
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
-  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - Turtlenecks clip through moth fuzz, so lets give RDs a second option.
+  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - Turtlenecks clip through moth fuzz, so they need a second option. Could get a non-turtleneck RD jumpsuit later?
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
@@ -1113,7 +1115,7 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
-  # Moffstation - Begin (Nox Loadout Improvements) Give all security roles the choice of a helmet.
+  # Moffstation - Begin (Security Loadout Improvements) Give all security roles the choice of a helmet.
   - SecurityHelmet
   - MilitaryHelmet
   # Moffstation - End
@@ -1152,7 +1154,7 @@
   loadouts:
   - WardenHead
   - WardenBeret
-  # Moffstation - Begin (Nox Loadout Improvements) Give all security roles the choice of a helmet.
+  # Moffstation - Begin (Security Loadout Improvements) Give all security roles the choice of a helmet.
   - SecurityHelmet
   - MilitaryHelmet
   # Moffstation - End
@@ -1170,7 +1172,7 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
-  # Moffstation - Begin (Nox Loadout Improvements) - Since warden coats clip through moth necks, give them the option of a basic vest instead.
+  # Moffstation - Begin (Security Loadout Improvements) - Since warden coats clip through moth fuzz, give them the option of a basic vest.
   - ArmorVest
   - ArmorVestSlim
   # Moffstation - End
@@ -1214,7 +1216,7 @@
   - SecurityBelt
   - SecurityWebbing
   - SecurityWebbingAlt  # Moffstation - Alt sec webbing
-  - ShoulderHolster # Moffstation - (Nox Loadout Improvements) - Filled shoulder holster as a sidegrade to the belt.
+  - ShoulderHolster # Moffstation - (Security Loadout Improvements) - Filled shoulder holster as a sidegrade to the belt, rather than detectives having to start with the shoulder holster.
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1251,7 +1253,7 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
-  # Moffstation - Begin (Nox Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
+  # Moffstation - Begin (Security Loadout Improvements) - Detective should have officer uniform available, in case they want to be a less-private investigator.
   - SecurityHelmet
   - MilitaryHelmet
   - SecurityBeret
@@ -1280,7 +1282,7 @@
   - InvestigatorJumpsuit
   - InvestigatorJumpskirt
   # Moffstation - End (New Detective Outfits)
-  # Moffstation - Begin (Nox Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
+  # Moffstation - Begin (Security Loadout Improvements) - Detective should have some officer drip available, in case they want to be a less-private investigator.
   - SecurityJumpsuitGrey
   - SecurityJumpskirtGrey
   # Moffstation - End
@@ -1293,8 +1295,7 @@
   - DetectiveCoat
   - DetectiveCoatGrey
   - DetectiveCoatSleuth # Moffstation - (New Detective Outfits)
-  # Moffstation - Begin (Nox Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
-  - ArmorVest
+  # Moffstation - Begin (Security Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
   - ArmorVestSlim
   - SecurityOfficerWintercoat
   # Moffstation - End
@@ -1435,7 +1436,7 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
-  # Moffstation - Begin (Nox Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements) - People wanted viro and genetics bags.
   - VirologyBackpack
   - VirologySatchel
   - VirologyDuffel
