@@ -464,12 +464,14 @@
     duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
-    - id: MobAdultSlimesBlueAngry
+    # Moffstation - Start - Make mobs smash stuff
+    - id: MobAdultSlimesBlueAngrySmasher
       prob: 0.02
-    - id: MobAdultSlimesGreenAngry
+    - id: MobAdultSlimesGreenAngrySmasher
       prob: 0.02
-    - id: MobAdultSlimesYellowAngry
+    - id: MobAdultSlimesYellowAngrySmasher
       prob: 0.02
+    # Moffstation - End
 
 - type: entity
   id: SnakeSpawn
@@ -485,12 +487,14 @@
     duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
-    - id: MobPurpleSnake
+    # Moffstation - Start - Make mobs smash stuff
+    - id: MobPurpleSnakeSmasher
       prob: 0.02
-    - id: MobSmallPurpleSnake
+    - id: MobSmallPurpleSnakeSmasher
       prob: 0.02
-    - id: MobCobraSpace
+    - id: MobCobraSpaceSmasher
       prob: 0.02
+    # Moffstation - End
 
 - type: entity
   id: SpiderSpawn
@@ -506,8 +510,10 @@
     duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
-    - id: MobGiantSpiderAngry
+    # Moffstation - Start - Make mobs smash stuff
+    - id: MobGiantSpiderAngrySmasher
       prob: 0.05
+    # Moffstation - End
 
 - type: entity
   id: SpiderClownSpawn
@@ -523,7 +529,7 @@
     duration: 30 # Moffstation - used as delay
   - type: VentCrittersRule
     entries:
-    - id: MobClownSpider
+    - id: MobClownSpiderSmasher # Moffstation - Make mobs smash stuff
       prob: 0.05
 
 - type: entity
