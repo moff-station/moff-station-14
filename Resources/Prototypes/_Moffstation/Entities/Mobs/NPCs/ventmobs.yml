@@ -6,6 +6,12 @@
     rootTask:
       task: SimpleHostileCompound
     blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
       NavSmash: !type:Bool
         true
 
