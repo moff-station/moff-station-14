@@ -83,6 +83,7 @@
   # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
   - GoldRing
   - SilverRing
+  # Moffstation - End
   - HandLabeler # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
@@ -93,7 +94,11 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
-  - CheapSunglasses # Moffstation - (Nox Loadout Improvements)
+  # Moffstation - Begin (More Eyewear!)
+  - CheapSunglasses
+  - EyePatch
+  - EyePatchFlipped
+  # Moffstation - End
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -1450,7 +1455,7 @@
   - DetectiveCoat
   - DetectiveCoatGrey
   - DetectiveCoatSleuth # Moffstation - (New Detective Outfits)
-  # Moffstation - Begin (Security Loadout Improvements) Detective should have some officer drip available, in case they want to be a less-private investigator.
+  # Moffstation - Begin (Security Loadout Improvements) - Detective should have some officer drip available, in case they want to be a less-private investigator.
   - ArmorVestSlim
   - SecurityOfficerWintercoat
   # Moffstation - End
@@ -1754,11 +1759,17 @@
   name: loadout-group-medical-glasses
   minLimit: 0
   loadouts:
+  - MedicalGlasses # Moffstation - (More Eyewear!)
   - MedicalHud
   - MedicalEyePatchHud
+  - MedicalEyePatchHudFlipped # Moffstation - (More Eyewear!)
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  # Moffstation - Begin (More Eyewear!)
+  - EyePatch
+  - EyePatchFlipped
+  # Moffstation - End
 
 - type: loadoutGroup
   id: SurvivalMedical

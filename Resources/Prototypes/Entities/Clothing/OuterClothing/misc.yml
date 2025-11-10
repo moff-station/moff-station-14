@@ -73,7 +73,7 @@
     sprite: _Moffstation/Clothing/OuterClothing/Misc/chef.rsi # Moffstation - (New Chef Jacket)
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterHoodieBlack
   name: black hoodie
   description: Oh my God, it's a black hoodie!
@@ -84,7 +84,7 @@
     sprite: Clothing/OuterClothing/Misc/black_hoodie.rsi
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterHoodieGrey
   name: grey hoodie
   description: A grey hoodie.
@@ -111,7 +111,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingOuterBaseToggleable
+  parent: ClothingOuterStorageToggleableBase
   id: ClothingOuterHoodieChaplain
   name: chaplain's hoodie
   description: Black and strict chaplain hoodie.
@@ -137,7 +137,7 @@
     accent: SpanishAccent
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageBase
   id: ClothingOuterRobesCult
   name: cult robes
   description: There's no cult without classic red/crimson cult robes.
@@ -247,7 +247,7 @@
     sprite: Clothing/OuterClothing/Misc/skubbody.rsi
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageBase
   id: ClothingOuterPlagueSuit
   name: plague doctor suit
   description: A bad omen.
@@ -258,7 +258,7 @@
     sprite: Clothing/OuterClothing/Misc/plaguedoctorsuit.rsi
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageBase
   id: ClothingOuterNunRobe
   name: nun robe
   description: Maximum piety in this star system.

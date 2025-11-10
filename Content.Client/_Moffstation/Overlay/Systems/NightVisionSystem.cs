@@ -1,6 +1,8 @@
 using Content.Client._Starlight.Overlay;
 using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared.Flash;
+using Content.Shared.Flash.Components;
+using Content.Shared.Inventory;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -17,9 +19,7 @@ public sealed class NightVisionSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly TransformSystem _xformSys = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedFlashSystem _flash = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -83,6 +83,9 @@ public sealed class NightVisionSystem : EntitySystem
     {
         if (!force &&
             _player.LocalSession?.AttachedEntity != entity)
+            return;
+
+        if (!_flash.IsFlashImmune(entity))
             return;
 
         if (!_overlayMan.TryGetOverlay(out NightVisionOverlay? overlay))
