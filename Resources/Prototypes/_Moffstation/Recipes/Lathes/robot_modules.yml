@@ -22,7 +22,7 @@
     Steel: 250
     Glass: 150
     Plastic: 350
-  
+
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleMiningGeneric
@@ -32,11 +32,6 @@
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleMusiqueGeneric
   result: BorgModuleMusiqueGeneric
-
-- type: latheRecipe
-  parent: BaseGoldBorgModuleRecipe
-  id: BorgModulePainting
-  result: BorgModulePainting
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe

@@ -1,0 +1,19 @@
+- type: gameMap
+  id: NitrousOxide
+  mapName: 'NitrousOxide'
+  mapPath: /Maps/_Moffstation/nitrous_oxide.yml
+  # Spooky station is a force only station, and should only be used for admemery. Do not put into rotation.
+  minPlayers: 0
+  stations:
+    NitrousOxide:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '???'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Passenger: [ -1, -1 ] # Greytide spess wide
+            Borg: [ 3, 3 ] # Sure, you can have a few borgs, as a treat

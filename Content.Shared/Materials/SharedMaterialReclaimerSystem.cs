@@ -3,8 +3,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
 using Content.Shared.Body.Components;
 using Content.Shared.Database;
-using Content.Shared.Damage; //Moffstation - recycler damage change
-using Content.Shared.Emag.Components;
+using Content.Shared.Damage.Components; //Moffstation - recycler damage change
 using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Mobs.Components;

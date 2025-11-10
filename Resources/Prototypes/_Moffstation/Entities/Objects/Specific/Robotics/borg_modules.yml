@@ -174,40 +174,6 @@
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-musical-module }
 
 - type: entity
-  id: BorgModulePainting
-  parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: painting cyborg module
-  components:
-  - type: Sprite
-    layers:
-    - state: generic
-    - state: icon-pen
-  - type: ItemBorgModule
-    hands:
-    - hand:
-        emptyLabel: borg-slot-crayon-empty
-        emptyRepresentative: CrayonRainbow
-        whitelist:
-          components: #Lets us hold just crayons
-          - Crayon
-    - item: CrayonBox
-      hand:
-        emptyLabel: borg-slot-crayon-box-empty
-        emptyRepresentative: CrayonBox
-        whitelist:
-          tags: #Lets us hold both crayons AND the crayon box
-          - Crayon
-    - item: SprayPainterBorg
-    - hand:
-        emptyLabel: borg-slot-paint-empty
-        emptyRepresentative: SprayPainterAmmo
-        whitelist:
-          components:
-          - SprayPainterAmmo
-  - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: paint-module }
-
-- type: entity
   id: BorgModuleTopicalsGeneric
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: generalized topicals cyborg module

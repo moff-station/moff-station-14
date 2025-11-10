@@ -820,9 +820,11 @@
     radius: 1.5
     energy: 1.6
     color: "#4b93ad"
+  # Moffstation - Begin - Tags for pirate bounty
   - type: Tag
     tags:
     - Chefware
+  # Moffstation - End
 
 - type: entity
   parent: VendingMachine
@@ -1271,11 +1273,11 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineTheater
-  name: AutoDrobe
+  name: DramaDrobe
   description: A vending machine containing costumes.
   components:
   - type: VendingMachine
-    pack: AutoDrobeInventory
+    pack: DramaDrobeInventory
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -1283,7 +1285,7 @@
     denyState: deny-unshaded
     screenState: screen
   - type: DatasetVocalizer
-    dataset: AutoDrobeAds
+    dataset: DramaDrobeAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
   - type: Sprite
@@ -1888,9 +1890,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Kitchen"]]
+  # Moffstation - Begin - Tags for pirate bounty
   - type: Tag
     tags:
     - Chefware
+  # Moffstation - End
 
 - type: entity
   parent: VendingMachine

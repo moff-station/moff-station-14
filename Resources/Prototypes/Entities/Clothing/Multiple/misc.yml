@@ -4,12 +4,14 @@
   name: headphones
   description: Quality headphones from Drunk Masters, with good sound insulation.
   components:
+  # Moffstation - Begin - Headphones can take encryption keys
   - type: ContainerContainer
     containers:
       key_slots: !type:Container
   - type: Headset
   - type: EncryptionKeyHolder
     keySlots: 4
+  # Moffstation - End
   - type: Sprite
     sprite: _Moffstation/Clothing/Multiple/headphones.rsi # Moffstation - Added colorful notes
     layers:

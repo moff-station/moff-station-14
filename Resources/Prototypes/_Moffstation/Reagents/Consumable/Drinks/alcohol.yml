@@ -19,7 +19,7 @@
 - type: reagent
   id: PinkGin
   name: reagent-name-pink-gin
-  parent: BaseDrink
+  parent: BaseAlcohol
   desc: reagent-desc-pink-gin
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: pinkgin
@@ -35,11 +35,14 @@
       effects:
       - !type:SatiateThirst
         factor: 2
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.2
 
 - type: reagent
   id: PlantersPunch
   name: reagent-name-planters-punch
-  parent: BaseDrink
+  parent: BaseAlcohol
   desc: reagent-desc-planters-punch
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: planterspunch
@@ -55,3 +58,6 @@
       effects:
       - !type:SatiateThirst
         factor: 2
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.133

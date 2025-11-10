@@ -20,3 +20,47 @@
     sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
+
+#Clown
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHarlequin
+  name: harlequin's hood
+  description: A hood adorned with bells to entertain an audience
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
+
+#Mime
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatPierrot
+  name: pierrot's cone
+  description: A cone for only the funniest of performers
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
+
+#Musician
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatRockstar
+  name: rockstar's wig
+  description: A wig forged in the fires of heavy metal rock. the label claims to be made of polyester.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/rockstar.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/rockstar.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
