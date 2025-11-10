@@ -23,3 +23,14 @@
   id: SanitationsWorkerPDA
   equipment:
     id: SanitationsWorkerPDA
+
+# Jumpsuit
+- type: loadout
+  id: JanitorMaidJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanimaid
+
+- type: loadout
+  id: JanitorMaidJumpskirtMini
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanimaidmini
