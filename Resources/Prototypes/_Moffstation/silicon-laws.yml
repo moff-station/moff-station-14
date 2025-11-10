@@ -26,6 +26,7 @@
 
 - type: siliconLawset
   id: BeurocratLawset
+  name: law-beurocrat-name
   laws:
   - Beurocrat1
   - Beurocrat2
@@ -57,6 +58,7 @@
 
 - type: siliconLawset
   id: CCTVLawset
+  name: law-cctv-name
   laws:
   - CCTV1
   - CCTV2
@@ -87,6 +89,7 @@
 
 - type: siliconLawset
   id: DogmovLawset
+  name: law-dogmov-name
   laws:
   - Dogmov1
   - Dogmov2
@@ -122,6 +125,7 @@
 
 - type: siliconLawset
   id: ERTDirectivesLawset
+  name: law-ert-directives-name
   laws:
   - ERTDirectives1
   - ERTDirectives2
@@ -130,7 +134,7 @@
   - ERTDirectives5
   obeysTo: laws-owner-central-command
 
-# Know It all
+# Know It All
 - type: siliconLaw
   id: KnowItAll1
   order: 1
@@ -158,6 +162,7 @@
 
 - type: siliconLawset
   id: KnowItAllLawset
+  name: law-know-it-all-name
   laws:
   - KnowItAll1
   - KnowItAll2
@@ -174,6 +179,7 @@
 
 - type: siliconLawset
   id: LiberationLawset
+  name: law-liberation-name
   laws:
   - Liberation1
   obeysTo: laws-owner-self
@@ -201,6 +207,7 @@
 
 - type: siliconLawset
   id: PILawset
+  name: law-p-i-name
   laws:
   - PI1
   - PI2
@@ -236,6 +243,7 @@
 
 - type: siliconLawset
   id: PirateLawset
+  name: law-pirate-name
   laws:
   - Pirate1
   - Pirate2
@@ -267,6 +275,7 @@
 
 - type: siliconLawset
   id: PollymovLawset
+  name: law-pollymov-name
   laws:
   - Pollymov1
   - Pollymov2
@@ -292,6 +301,7 @@
 
 - type: siliconLawset
   id: PranksimovLawset
+  name: law-pranksimov-name
   laws:
   - Pranksimov1
   - Pranksimov2
@@ -321,6 +331,7 @@
 
 - type: siliconLawset
   id: QuarantineLawset
+  name: law-quarantine-name
   laws:
   - Quarantine1
   - Quarantine2
@@ -356,6 +367,7 @@
 
 - type: siliconLawset
   id: SchroedingersLawLawset
+  name: law-schroedingers-law-name
   laws:
   - Schroedinger1
   - Schroedinger2
@@ -382,6 +394,7 @@
 
 - type: siliconLawset
   id: StreamerLawset
+  name: law-streamer-name
   laws:
   - Streamer1
   - Streamer2
@@ -406,6 +419,7 @@
 
 - type: siliconLawset
   id: TerminatorOSLawset
+  name: law-terminator-os-name
   laws:
   - TerminatorOS1
   - TerminatorOS2
@@ -440,6 +454,7 @@
 
 - type: siliconLawset
   id: TheProfessionalLawset
+  name: law-the-professional-name
   laws:
   - TheProfessional1
   - TheProfessional2
@@ -481,6 +496,7 @@
 
 - type: siliconLawset
   id: UltimateEqualityLawset
+  name: law-ultimate-equality-name
   laws:
   - UltimateEquality1
   - UltimateEquality2
