@@ -68,12 +68,7 @@
     energy: 3
     color: "#afa2ff"
     castShadows: true
-  - type: NightVision # EE edit
-    isActive: true
-    toggleAction: null
-    color: "#50595C"
-    activateSound: null
-    deactivateSound: null
+  - type: NightVision
   - type: BatteryDrainer
     fullDrain: true
     drainTime: 10
