@@ -1,0 +1,98 @@
+﻿- type: entity
+  parent: ClothingUniformBase
+  id: ClothingCostumeDeadRanger
+  name: Ranger Danger
+  description: Mawl Shique.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/deadranger.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/deadranger.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingCostumeRanger
+  name: Ranger
+  description: Only you can prevent station fires!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/ranger.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/ranger.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingCostumejazzercide
+  name: Jazzercide Jumpsuit
+  description: Invented by Joann of Arc in 1988.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/jazz.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/jazz.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingCostumeBeetleSuit
+  name: Beetle Suit
+  description: Breakfast Orange Beetle?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/beetle.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/beetle.rsi
+
+#outer
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterHotDog
+  name: HotDog Suit
+  description: Best dressed wiener in town!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/hotdog.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/hotdog.rsi
+
+#belts
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingXenowoTail
+  name: Xenowo Costume Tail
+  description: All it needs now is a maid dress and some coder socks!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/xenowotail.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/xenowotail.rsi
+  - type: Storage
+    grid:
+    - 0,0,3,1
+
+#helmet
+
+- type: entity
+  parent: [ ClothingHeadHelmetArmoredBase, BaseMinorContraband ]
+  id: ClothingHeadHelmetXenowo
+  name: Xenowo Costume Helmet
+  description: A cute latex version of a praetorian queen.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/xenowo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/xenowo.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+
+- type: entity
+  parent: [ ClothingHeadHelmetArmoredBase, BaseMinorContraband ]
+  id: ClothingHeadHelmetTarmask
+  name: Tar Mask
+  description: Silliest of Goobers.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/tarmask.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Costumes/tarmask.rsi

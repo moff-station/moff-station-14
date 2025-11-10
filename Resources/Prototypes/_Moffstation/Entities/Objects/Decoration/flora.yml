@@ -1,0 +1,32 @@
+﻿- type: entity
+  id: BigPumpkin
+  name: giant pumpkin
+  suffix: Impassible, Indestructible
+  description: Now that is a BIG pumpkin.
+  components:
+  - type: Clickable
+  - type: Sprite
+    noRot: true
+    sprite: _Moffstation/Objects/Decoration/Flora/bigpumpkin.rsi
+    state: icon
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.0
+        density: 1000
+        layer:
+        - HalfWallLayer
+        - Opaque
+
+- type: entity
+  parent: BigPumpkin
+  id: BigPumpkinClimbable
+  name: giant pumpkin
+  suffix: Climbable, Indestructible
+  description: Now that is a BIG pumpkin. It looks like you could climb onto it, though.
+  components:
+  - type: Climbable

@@ -101,7 +101,7 @@ public abstract partial class SharedGunSystem
         // Continuous loading
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.FillDelay, new AmmoFillDoAfterEvent(), used: uid, target: args.Target, eventTarget: uid)
         {
-            BreakOnMove = false, // Moffstation - Reloading shotguns on the move
+            BreakOnMove = true,
             BreakOnDamage = false,
             NeedHand = true,
         });

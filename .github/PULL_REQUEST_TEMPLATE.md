@@ -21,7 +21,7 @@ Small fixes/refactors are exempt. Media may be used in SS14 progress reports wit
 
 ## Requirements
 <!-- Confirm the following by placing an X in the brackets [X]: -->
-- [ ] I have read and am following the [Pull Request and Changelog Guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html).
+- [ ] I have read and am following the [Upstream Pull Request and Changelog Guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) as well as the [Moffstation Contributing Guidelines](https://github.com/moff-station/moff-station-14/blob/master/CONTRIBUTING.md).
 - [ ] I have properly sectioned my changes into fork namespaces, and/or followed proper guidelines for modifying upstream files.
 - [ ] I have added media to this PR or it does not require an ingame showcase.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->

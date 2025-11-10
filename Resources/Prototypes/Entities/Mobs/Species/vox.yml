@@ -15,6 +15,7 @@
   - type: Speech
     speechVerb: Vox
     speechSounds: Vox
+    allowedEmotes: ['Click', 'Chitter']
   - type: TypingIndicator
     proto: vox
   - type: Vocal
@@ -146,8 +147,11 @@
       visible: false
   - type: HumanoidAppearance
     species: Vox
-    hideLayersOnEquip: # CD
-    - HeadSide
+    # Moffstation - Start - Additional Vox Markings
+    hideLayersOnEquip:
+    - Hair
+    - HeadSide  # CD
+    # Moffstation - End
     undergarmentTop: UndergarmentTopTanktopVox
     undergarmentBottom: UndergarmentBottomBoxersVox
     markingsDisplacement:

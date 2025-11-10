@@ -6,6 +6,7 @@
   components:
   - type: Action
     itemIconStyle: BigAction
+    useDelay: 90
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -93,4 +94,4 @@
   - type: SpeakOnAction
     sentence: action-speech-spell-slip
   - type: Magic
-    requiresClothes: true
+    requiresClothes: false
