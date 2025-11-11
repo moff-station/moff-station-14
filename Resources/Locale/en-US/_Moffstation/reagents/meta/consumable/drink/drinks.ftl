@@ -6,3 +6,6 @@ reagent-desc-pink-gin = A simple, elegant cocktail pairing gin with a subtle tou
 
 reagent-name-planters-punch = planters punch
 reagent-desc-planters-punch = A tropical cocktail of rum, citrus, and sugar, brightened with aromatic bitters and spice.
+
+reagent-name-breathalyzer = breathalyzer
+reagent-desc-breathalyzer = flavorless and odorless, this drink can be mixed with others to neutralize ethanol from the system. Made originally to quickly fool authorities after shuttle collisions.

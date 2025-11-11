@@ -18,3 +18,24 @@
       effects:
       - !type:SatiateThirst
         factor: 2
+
+- type: reagent
+  id: Breathalyzer
+  name: reagent-name-breathalyzer
+  desc: reagent-desc-breathalyzer
+  group: drinks
+  physicalDesc: reagent-physical-desc-nothing
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/breathalyzer.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+      - !type:AdjustReagent
+        reagent: Ethylredoxrazine
+        amount: 0.25
