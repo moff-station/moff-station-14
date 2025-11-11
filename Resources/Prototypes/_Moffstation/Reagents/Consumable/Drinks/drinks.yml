@@ -22,6 +22,7 @@
 - type: reagent
   id: Breathalyzer
   name: reagent-name-breathalyzer
+  parent: BaseDrink
   desc: reagent-desc-breathalyzer
   group: drinks
   physicalDesc: reagent-physical-desc-airy
@@ -39,6 +40,7 @@
       - !type:AdjustReagent
         reagent: Ethylredoxrazine
         amount: 0.25
+# TODO- figure out whats causing it to not have a guidebook entry, fix that
 
 - type: reagent
   id: PrairieCocktail
@@ -49,7 +51,7 @@
   flavor: prairiecocktail
   color: "#8a2c16"
   metamorphicSprite:
-    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/prairiecocktail.rsi
     state: icon_empty
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
@@ -60,3 +62,6 @@
       - !type:AdjustReagent
         reagent: Ethylredoxrazine
         amount: 0.25
+      - !type:AdjustReagent
+        reagent: UncookedAnimalProteins
+        amount: 0.05
