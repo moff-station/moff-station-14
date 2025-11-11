@@ -7,5 +7,14 @@ reagent-desc-pink-gin = A simple, elegant cocktail pairing gin with a subtle tou
 reagent-name-planters-punch = planters punch
 reagent-desc-planters-punch = A tropical cocktail of rum, citrus, and sugar, brightened with aromatic bitters and spice.
 
-reagent-name-breathalyzer = breathalyzer
+reagent-name-breathalyzer = Breathalyzer
 reagent-desc-breathalyzer = flavorless and odorless, this drink can be mixed with others to neutralize ethanol from the system. Made originally to quickly fool authorities after shuttle collisions.
+
+reagent-name-corpsereviver = Corpse Reviver no. 2
+reagent-desc-corpsereviver = One will revive you from a hangover, several may not.
+
+reagent-name-prairiecocktail = Prairie Cocktail
+reagent-desc-prairiecocktail = Sworn to fix a hangover in just a shot, mixed with modern medicine it just might. If you can keep it down.
+
+reagent-name-mossyspecial = Mossy Special
+reagent-desc-mossyspecial = Reviled by dwarves and supposedly loved by elves everywhere, this brew is one endorsed by Central Command.
