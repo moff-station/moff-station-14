@@ -98,3 +98,6 @@ reagent-physical-desc-neural = neural
 reagent-physical-desc-unidentifiable = unidentifiable
 reagent-physical-desc-non-newtonian = non-newtonian
 reagent-physical-desc-airy = airy
+reagent-physical-desc-ghostly = ghostly
+reagent-physical-desc-unappetizing = unappetizing
+reagent-physical-desc-leafy = leafy
