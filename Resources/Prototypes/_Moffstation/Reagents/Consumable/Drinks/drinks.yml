@@ -39,3 +39,24 @@
       - !type:AdjustReagent
         reagent: Ethylredoxrazine
         amount: 0.25
+
+- type: reagent
+  id: PrairieCocktail
+  name: reagent-name-prairie-cocktail
+  parent: BaseDrink
+  desc: reagent-desc-prairie-cocktail
+  physicalDesc: reagent-physical-desc-unappetizing
+  flavor: prairiecocktail
+  color: "#8a2c16"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: ethylredoxrazine
+        amount: 0.25
