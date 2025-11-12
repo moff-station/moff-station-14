@@ -8,7 +8,7 @@ reagent-name-planters-punch = planters punch
 reagent-desc-planters-punch = A tropical cocktail of rum, citrus, and sugar, brightened with aromatic bitters and spice.
 
 reagent-name-breathalyzer = Breathalyzer
-reagent-desc-breathalyzer = flavorless and odorless, this drink can be mixed with others to neutralize ethanol from the system. Made originally to quickly fool authorities after shuttle collisions.
+reagent-desc-breathalyzer = flavorless and odorless, this drink can be mixed with others to neutralize alcohol. Made originally to quickly fool authorities after shuttle collisions.
 
 reagent-name-corpse-reviver = Corpse Reviver no. 2
 reagent-desc-corpse-reviver = One will revive you from a hangover, several may not.
