@@ -41,14 +41,14 @@
     edges:
     - to: swap_aurora
       steps:
-      - tool: Rolling
+      - tool: Prying
         doAfter: 0.1
   - node: swap_aurora
     entity: PersonalItemAuroraPinSwappable
     edges:
     - to: swap_asher
       steps:
-      - tool: Rolling
+      - tool: Prying
         doAfter: 0.1
 
 - type: loadout

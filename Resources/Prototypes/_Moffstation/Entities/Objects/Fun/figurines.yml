@@ -9,7 +9,7 @@
 
 # --- VOICE LINES ---
 # Voice lines can contain identifying information, like the character's name.
-# Voice lines should be semi iconic or unique to that character. A passing greating, a catch phrase, something they often say on the job, a throwback to a round they remember well.
+# Voice lines should be semi iconic or unique to that character. A passing greeting, a catchphrase, something they often say on the job, a throwback to a round they remember well.
 # Voice lines should be written without an accent, if an accent is added it should be done via the accent component in post.
 # Voice lines should be written with proper grammar and spelling, unless doing otherwise is an explicit feature of the character.
 # Voice lines should not have excessive punctuation, no more than 2 "!" at the end of a sentence. They're figurines with tiny piezoelectrics, not loudspeakers.
@@ -46,6 +46,49 @@
     state: audrina
   - type: SpeakOnTrigger
     pack: FigurinesAudrina
+
+# Aurora figurine and its special code.
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAurora
+  name: Two-Faced Moth Figurine
+  description: "A double-sided figurine depicting a young moth person. This side is dressed like an engineer, with a playful smile on its face.\nThe bottom of the figurine has a depressed button, which looks like it would fit a crowbar?"
+  components:
+  - type: Sprite
+    state: audrina # todo: Add sprite and change this
+  - type: SpeakOnTrigger
+    pack: FigurinesAurora
+  #- type: TriggerOnSpawn todo: Make them say 'Aurora here!' and 'Asher here.' on spawning.
+
+- type: entity # Conveniently Asher happens to be next alphabetically after Aurora.
+  parent: BaseFigurineMoff
+  id: ToyFigurineAsher
+  name: Two-Faced Moth Figurine
+  description: "A double-sided figurine depicting a young moth person. This side is dressed like a security officer, its face twisted into a scowl.\nThe bottom of the figurine has a depressed button, which looks like it would fit a crowbar?"
+  components:
+  - type: Sprite
+    state: audrina # todo: Add sprite and change this
+  - type: SpeakOnTrigger
+    pack: FigurinesAsher
+
+- type: constructionGraph
+  id: ToyFigurineAuroraSwapGraph
+  start: swap_asher
+  graph:
+  - node: swap_asher
+    entity: ToyFigurineAsher
+    edges:
+    - to: swap_aurora
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+  - node: swap_aurora
+    entity: ToyFigurineAurora
+    edges:
+    - to: swap_asher
+      steps:
+      - tool: Prying
+        doAfter: 0.1
 
 - type: entity
   parent: BaseFigurineMoff
