@@ -114,9 +114,11 @@
         effectProto: StatusEffectDrunk
         time: 6.0
         type: Remove
+      # Moffstation - Begin - Make Ethylredoxrazine neutralize alcohol in metabolism
       - !type:AdjustReagent
         reagent: Ethanol
         amount: -5
+      # Moffstation - End
 
 - type: reagent
   id: Arithrazine
