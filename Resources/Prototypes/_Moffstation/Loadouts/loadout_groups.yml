@@ -23,6 +23,7 @@
   - PersonalItemCooksPlushie
   - PersonalItemCoryClipboard
   - PersonalItemDarnellLighter
+  - PersonalItemDawnBottle
   - PersonalItemDeliPearl
   - PersonalItemDelilahSuit
   - PersonalItemEclipseSunshadeGun
@@ -32,11 +33,13 @@
   - PersonalItemGigsShaker
   - PersonalItemHercynSuit
   - PersonalItemHotSauceFireExtinguisher
-  - PersonalItemIrisRing
   - PersonalItemIoImplanter
+  - PersonalItemIrisRing
   - PersonalItemJasmineFlower
   - PersonalItemJessMask
+  - PersonalItemKaiPlushie
   - PersonalItemKatieWristBand
+  - PersonalItemKennyPrisonerShirt
   - PersonalItemKimBass
   - PersonalItemKrakatoaCloak
   - PersonalItemKylieUniform
@@ -57,21 +60,19 @@
   - PersonalItemScribblesPlushie
   - PersonalItemSeanSheet
   - PersonalItemSeikretPhoto
-  - PersonalItemSiegeHalffloofMask
-  - PersonalItemTalviHoodie
-  - PersonalItemToffeeMask
-  - PersonalItemSqueaksHampter
   - PersonalItemSharedReptilianFamilyPhoto
   - PersonalItemSharedStationBlueprints
+  - PersonalItemSiegeHalffloofMask
   - PersonalItemSigerthePlushie
   - PersonalItemSkiesOfSunshine
+  - PersonalItemSqueaksHampter
   - PersonalItemStrawberryBackTentacles
+  - PersonalItemTalviHoodie
   - PersonalItemTaniaBackTentacles
+  - PersonalItemToffeeMask
   - PersonalItemVexMask
   - PersonalItemVivonicMantle
   - PersonalItemVortexMask
-  - PersonalItemKaiPlushie
-  - PersonalItemDawnBottle
 
 ## Command
 - type: loadoutGroup
@@ -187,6 +188,14 @@
   - EyePatchFlipped
 
 # Atmospheric Technician
+- type: loadoutGroup
+  id: AtmosphericTechnicianHead
+  name: loadout-group-atmospheric-technician-head
+  minLimit: 0
+  loadouts:
+  - StationEngineerHardhatYellow
+  - AtmosphericTechnicianHardhatBlue
+
 - type: loadoutGroup
   id: AtmosPDA
   name: loadout-group-atmospheric-technician-id
