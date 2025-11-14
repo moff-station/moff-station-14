@@ -80,15 +80,6 @@
   - PlushieSnake
   - PlushieVox
   # Moffstation - End
-  # Moffstation - Begin (Nox Loadout Improvements) I've looked at the word folder so long its lost all meaning.
-  - FolderRed
-  - FolderBlue
-  - FolderYellow
-  - FolderWhite
-  - FolderGrey
-  - FolderBlack
-  - FolderGreen
-  # Moffstation - End
   # Moffstation - Begin - allow people to pick rings, abstaining from the expensive ones for now
   - GoldRing
   - SilverRing
@@ -102,7 +93,7 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
-  # Moffstation - Start - Eyepatches!
+  # Moffstation - Begin (More Eyewear!)
   - EyePatch
   - EyePatchFlipped
   # Moffstation - End
@@ -991,7 +982,7 @@
   name: loadout-group-station-engineer-head
   minLimit: 0
   loadouts:
-  - StationEngineerHardhatYellow
+  #- StationEngineerHardhatYellow Moffstation - (Work Gear for Atmos) - Yellow and blue hardhats are restricted to atmos to keep the two roles visually distinct.
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
   - SeniorEngineerBeret
@@ -1064,7 +1055,6 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
-  - StationEngineerOuterVest # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -1079,9 +1069,11 @@
   id: AtmosphericTechnicianShoes
   name: loadout-group-atmospheric-technician-shoes
   loadouts:
-  - WhiteShoes
+  # Moffstation - Begin (Work Gear for Atmos) - Get rid of those stupid white shoes and give them proper work boots.
+  #- WhiteShoes
+  - WorkBoots
+  # Moffstation - End
   - EngineeringWinterBoots
-  - WorkBoots # Moffstation - (Nox Loadout Improvements)
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJobTrinkets
@@ -1123,6 +1115,7 @@
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
+  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - Turtlenecks clip through moth fuzz, so they need a second option. Could get a non-turtleneck RD jumpsuit later?
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
@@ -1169,6 +1162,7 @@
   loadouts:
   - ScientistJumpsuit
   - ScientistJumpskirt
+  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - This spawns in their drobe, and someone requested I add it to the loadout.
   - RoboticistJumpsuit
   - RoboticistJumpskirt
   - MachinistJumpsuit # Moffstation - New Roboticist & Machinist Outfits
@@ -1258,6 +1252,10 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
+  # Moffstation - Begin (Security Loadout Improvements) Give all security roles the choice of a helmet.
+  - SecurityHelmet
+  - MilitaryHelmet
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1300,6 +1298,10 @@
   loadouts:
   - WardenHead
   - WardenBeret
+  # Moffstation - Begin (Security Loadout Improvements) Give all security roles the choice of a helmet.
+  - SecurityHelmet
+  - MilitaryHelmet
+  # Moffstation - End
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -1314,6 +1316,10 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
+  # Moffstation - Begin (Security Loadout Improvements) - Since warden coats clip through moth fuzz, give them the option of a basic vest.
+  - ArmorVest
+  - ArmorVestSlim
+  # Moffstation - End
 
 - type: loadoutGroup
   id: WardenJobTrinkets
@@ -1328,7 +1334,7 @@
   minLimit: 0
   loadouts:
   - SecurityHelmet
-  - MilitaryHelmet # Moffstation - (New Security Helmets)
+  - MilitaryHelmet # Moffstation - (New Security Helmets) Alternate helmet, with the same stats but a different look.
   - SecurityBeret
   - SecurityHat
   - TrooperHat
@@ -1361,7 +1367,7 @@
   - SecurityBelt
   - SecurityWebbing
   - SecurityWebbingAlt  # Moffstation - Alt sec webbing
-  - ShoulderHolster # Moffstation - (Nox Loadout Improvements)
+  - ShoulderHolster # Moffstation - (Security Loadout Improvements) - Filled shoulder holster as a sidegrade to the belt, rather than detectives having to start with the shoulder holster.
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1405,12 +1411,11 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
-  # Moffstation - Begin (Nox Loadout Improvements)
+  # Moffstation - Begin (Security Loadout Improvements) - Detective should have officer uniform available, in case they want to be a less-private investigator.
   - SecurityHelmet
   - MilitaryHelmet
   - SecurityBeret
   - SecurityHat
-  - TrooperHat
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1419,9 +1424,7 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
-  # Moffstation - Begin (New Detective Outfits)
-  - DetectiveBadge
-  # Moffstation - End (New Detective Outfits)
+  - DetectiveBadge # Moffstation - (New Detective Outfits)
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1437,6 +1440,10 @@
   - InvestigatorJumpsuit
   - InvestigatorJumpskirt
   # Moffstation - End (New Detective Outfits)
+  # Moffstation - Begin (Security Loadout Improvements) - Detective should have some officer drip available, in case they want to be a less-private investigator.
+  - SecurityJumpsuitGrey
+  - SecurityJumpskirtGrey
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1445,9 +1452,11 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
-  # Moffstation - Begin (New Detective Outfits)
-  - DetectiveCoatSleuth
-  # Moffstation - End (New Detective Outfits)
+  - DetectiveCoatSleuth # Moffstation - (New Detective Outfits)
+  # Moffstation - Begin (Security Loadout Improvements) - Detective should have some officer drip available, in case they want to be a less-private investigator.
+  - ArmorVestSlim
+  - SecurityOfficerWintercoat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets
@@ -1606,7 +1615,7 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
-  # Moffstation - Begin (Nox Loadout Improvements)
+  # Moffstation - Begin (Nox Loadout Improvements) - People wanted viro and genetics bags.
   - VirologyBackpack
   - VirologySatchel
   - VirologyDuffel
@@ -1748,14 +1757,14 @@
   name: loadout-group-medical-glasses
   minLimit: 0
   loadouts:
-  - MedicalGlasses # Moffstation - Eyepatches!
+  - MedicalGlasses # Moffstation - (More Eyewear!)
   - MedicalHud
   - MedicalEyePatchHud
-  - MedicalEyePatchHudFlipped # Moffstation - Eyepatches!
+  - MedicalEyePatchHudFlipped # Moffstation - (More Eyewear!)
   - Glasses
   - GlassesJamjar
   - GlassesJensen
-  # Moffstation - Start - Eyepatches!
+  # Moffstation - Begin (More Eyewear!)
   - EyePatch
   - EyePatchFlipped
   # Moffstation - End
