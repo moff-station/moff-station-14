@@ -108,7 +108,7 @@
   color: "#2d5708"
   metabolisms:
     Medicine:
-      metabolismRate: 0.05
+      metabolismRate: 0.05 # Moffstation - Make Ethylredoxrazine neutralize alcohol in metabolism
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrunk
