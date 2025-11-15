@@ -2566,9 +2566,9 @@
     makeSentient: true
     name: ghost-role-information-giant-spider-name
     description: ghost-role-information-giant-spider-description
-    rules: ghost-role-information-giant-spider-rules
+    rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
     mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
+    - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
     # Moffstation - Begin (No Raffle for Minor Ghostroles)
     #raffle:
     #  settings: short
