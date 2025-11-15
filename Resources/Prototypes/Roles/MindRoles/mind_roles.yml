@@ -164,6 +164,7 @@
   name: Paradox Clone Role
   components:
   - type: MindRole
+    roleType: FreeAgent # Moffstation - Free agent paradox clone
     antagPrototype: ParadoxClone
     subtype: role-subtype-paradox-clone
   - type: ParadoxCloneRole
