@@ -47,18 +47,6 @@
     autoRefillRate: 1m # You really ought to be picking up your darts.
     ammoProto: BulletFoam
 
-# Reskinned Lecter for ERT forces.
-- type: entity
-  parent: WeaponRifleLecter
-  id: WeaponRifleLecterCarbine
-  name: Lecter carbine
-  description: "A modern iteration on the classic Lecter platform, designed by Sunshade Armories. Favored by Nanotrasen Emergency Response Teams for its improved storability and maneuverability.\nFeeds from .20 rifle magazines."
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterCarbine.rsi
-  - type: Clothing
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterCarbine.rsi
-
 # Sidegrade to the Lecter for longer range fighting.
 - type: entity
   parent: WeaponRifleLecter
@@ -71,6 +59,7 @@
   - type: Clothing
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
   - type: Gun
+    fireRate: 4
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
