@@ -373,14 +373,16 @@
   id: CratePirateKammererShotgun
   parent: [ CratePirateChestSecure, BaseSecurityContraband ]
   name: kammerer shotgun crate
-  description: Contains 2 kammerer shotguns, stolen from ransacked NT shipments.
+  description: Contains two Kammerer shotguns, procured from the finest black market gunsmiths.
   components:
   - type: StorageFill
     contents:
-    - id: WeaponShotgunKammerer
+    - id: WeaponShotgunKammererOld
       amount: 2
     - id: BoxLethalshot
-      amount: 2
+      amount: 3
+    - id: BoxShotgunSlug
+      amount: 1
 
 - type: entity
   id: CratePirateShotgunDoubleBarreled
