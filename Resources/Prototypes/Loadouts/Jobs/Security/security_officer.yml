@@ -13,16 +13,6 @@
       department: Security
       time: 60h
 
-#Security Star
-- type: loadoutEffectGroup
-  id: SecurityStarWorthy
-  effects:
-    - !type:JobRequirementLoadoutEffect
-      requirement:
-        !type:DepartmentTimeRequirement
-        department: Security
-        time: 100h
-
 # Head
 - type: loadout
   id: SecurityHelmet
@@ -163,13 +153,3 @@
   equipment:
     id: SeniorOfficerPDA
   groupBy: "officer roles"  # Moffstation - Additional Roles
-
-# Misc
-- type: loadout
-  id: SecStar
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SecurityStarWorthy
-  storage:
-    back:
-    - Dinkystar

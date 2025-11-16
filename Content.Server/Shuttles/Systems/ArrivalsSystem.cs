@@ -461,7 +461,7 @@ public sealed class ArrivalsSystem : EntitySystem
             while (query.MoveNext(out var entity, out var comp))
             {
                 if (_station.GetOwningStation(entity) == station)
-                    _batterySystem.SetCharge(entity, comp.MaxCharge, comp);
+                    _batterySystem.SetCharge((entity, comp), comp.MaxCharge);
             }
         }
     }
