@@ -78,7 +78,7 @@
 - type: loadoutGroup
   id: CaptainEyewear
   name: loadout-group-captain-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - AdminGlasses
   - AdminHud
@@ -91,7 +91,7 @@
 - type: loadoutGroup
   id: HopEyewear
   name: loadout-group-head-of-personnel-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - AdminHud
   - Glasses
@@ -104,7 +104,7 @@
 - type: loadoutGroup
   id: SecurityEyewear
   name: loadout-group-security-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - SecurityGlasses
   - SecurityHud
@@ -129,7 +129,7 @@
 - type: loadoutGroup
   id: DetectiveEyewear
   name: loadout-group-detective-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - SecurityGlasses
   - NoirGlasses
@@ -174,7 +174,7 @@
 - type: loadoutGroup
   id: EngineeringEyewear
   name: loadout-group-engineering-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - EngineeringGoggles
   - EngineeringGlasses
@@ -211,7 +211,7 @@
 - type: loadoutGroup
   id: ChemistryEyewear
   name: loadout-group-chemistry-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - ChemistryGoggles
   - MedicalGlasses

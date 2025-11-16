@@ -2,11 +2,13 @@
 
 - type: loadout
   id: EyePatch
+  groupBy: "eyepatchNormal"
   equipment:
     eyes: ClothingEyesEyepatch
 
 - type: loadout
   id: EyePatchFlipped
+  groupBy: "eyepatchNormal"
   equipment:
     eyes: ClothingEyesEyepatchFlipped
 
@@ -14,11 +16,13 @@
 
 - type: loadout
   id: AdminGlasses
+  groupBy: "adminHud"
   equipment:
     eyes: ClothingEyesGlassesCommand
 
 - type: loadout
   id: AdminHud
+  groupBy: "adminHud"
   equipment:
     eyes: ClothingEyesHudCommand
 
@@ -31,21 +35,25 @@
 
 - type: loadout
   id: SecurityGlasses
+  groupBy: "secHud"
   equipment:
     eyes: ClothingEyesGlassesSecurity
 
 - type: loadout
   id: SecurityHud
+  groupBy: "secHud"
   equipment:
     eyes: ClothingEyesHudSecurity
 
 - type: loadout
   id: SecurityEyePatchHud
+  groupBy: "secEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudSecurity
 
 - type: loadout
   id: SecurityEyePatchHudFlipped
+  groupBy: "secEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudSecurityFlipped
 
@@ -64,12 +72,6 @@
     eyes: ClothingEyesGlassesMeson
 
 # Medical
-
-- type: loadout
-  id: ChemistryGoggles
-  equipment:
-    eyes: ClothingEyesGlassesChemical
-
 - type: loadout
   id: MedicalGlasses
   equipment:
@@ -77,6 +79,7 @@
 
 - type: loadout
   id: MedicalEyePatchHudFlipped
+  groupBy: "medEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudMedicalFlipped
 
@@ -89,11 +92,13 @@
 
 - type: loadout
   id: RoboticsEyePatchHud
+  groupBy: "borgEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudDiag
 
 - type: loadout
   id: RoboticsEyePatchHudFlipped
+  groupBy: "borgEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudDiagFlipped
 
@@ -106,10 +111,12 @@
 
 - type: loadout
   id: BeerEyePatchHud
+  groupBy: "beerEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudBeer
 
 - type: loadout
   id: BeerEyePatchHudFlipped
+  groupBy: "beerEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudBeerFlipped

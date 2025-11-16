@@ -189,5 +189,6 @@
 
 - type: loadout
   id: MedicalEyePatchHud
+  groupBy: "medEyepatch" # Moffstation - loadout improvements
   equipment:
     eyes: ClothingEyesEyepatchHudMedical
