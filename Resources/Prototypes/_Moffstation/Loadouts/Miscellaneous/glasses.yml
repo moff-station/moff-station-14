@@ -16,13 +16,11 @@
 
 - type: loadout
   id: AdminGlasses
-  groupBy: "adminHud"
   equipment:
     eyes: ClothingEyesGlassesCommand
 
 - type: loadout
   id: AdminHud
-  groupBy: "adminHud"
   equipment:
     eyes: ClothingEyesHudCommand
 
