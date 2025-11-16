@@ -47,29 +47,36 @@
   - type: SpeakOnTrigger
     pack: FigurinesAudrina
 
-# Aurora figurine and its special code.
+# Aurora figurine and its construction graph.
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineAurora
   name: Two-Faced Moth Figurine
-  description: "A double-sided figurine depicting a young moth person. This side is dressed like an engineer, with a playful smile on its face.\nThe bottom of the figurine has a depressed button, which looks like it would fit a crowbar?"
+  description: "A double-sided figurine depicting a young moth person. This side is dressed like an engineer, with a playful smile on its face.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
   components:
   - type: Sprite
-    state: audrina # todo: Add sprite and change this
+    state: aurora
   - type: SpeakOnTrigger
     pack: FigurinesAurora
-  #- type: TriggerOnSpawn todo: Make them say 'Aurora here!' and 'Asher here.' on spawning.
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_aurora
 
 - type: entity # Conveniently Asher happens to be next alphabetically after Aurora.
   parent: BaseFigurineMoff
   id: ToyFigurineAsher
   name: Two-Faced Moth Figurine
-  description: "A double-sided figurine depicting a young moth person. This side is dressed like a security officer, its face twisted into a scowl.\nThe bottom of the figurine has a depressed button, which looks like it would fit a crowbar?"
+  description: "A double-sided figurine depicting a young moth person. This side is dressed like a security officer, its face twisted into a scowl.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
   components:
   - type: Sprite
-    state: audrina # todo: Add sprite and change this
+    state: aurora-asher
   - type: SpeakOnTrigger
     pack: FigurinesAsher
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_asher
 
 - type: constructionGraph
   id: ToyFigurineAuroraSwapGraph

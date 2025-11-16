@@ -20,13 +20,13 @@
   parent: ClothingNeckBase
   id: PersonalItemAuroraPinInversedSwappable
   name: Asher's IFF tag
-  description: "A NT IFF tag of the sort worn by marines, hand-modified by Aurora. Changes between two colors, indicating which personality is fronting: pink for Aurora, green for Asher.\The back of the pin has a depressed button that looks like it would fit a crowbar."
+  description: "A NT IFF tag of the sort worn by marines, hand-modified by Aurora. Changes between two colors, indicating which personality is fronting: pink for Aurora, green for Asher.\nThe back of the pin has a depressed button that looks like it would fit a crowbar."
   suffix: swappable
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
   - type: Item
-    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
+    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_EpiPinInversed.rsi
   - type: Construction
     deconstructionTarget: null
     graph: PersonalItemAuroraPinSwapGraph
