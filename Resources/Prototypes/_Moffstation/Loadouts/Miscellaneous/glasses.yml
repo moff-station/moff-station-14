@@ -35,13 +35,11 @@
 
 - type: loadout
   id: SecurityGlasses
-  groupBy: "secHud"
   equipment:
     eyes: ClothingEyesGlassesSecurity
 
 - type: loadout
   id: SecurityHud
-  groupBy: "secHud"
   equipment:
     eyes: ClothingEyesHudSecurity
 
