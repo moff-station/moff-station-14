@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: WeaponRifleLecterDMR
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: lecterDMR
+      steps:
+      - tag: RifleLecter
+        name: construction-graph-tag-lecter
+        icon:
+          sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
+          state: icon
+        doAfter: 5
+      - tag: DMRConversionKit
+        name: construction-graph-tag-dmr-conversion-kit
+        icon:
+          sprite: _Moffstation/Objects/Weapons/Guns/Rifles/dmr_conversion_kit.rsi
+          state: icon
+        doAfter: 5
+  - node: lecterDMR
+    entity: WeaponRifleLecterDMR

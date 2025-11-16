@@ -1,0 +1,14 @@
+﻿- type: entity
+  parent: BaseItem
+  name: DMR conversion kit
+  id: DMRConversionKit
+  description: A box containing the tools and parts required to convert a Lecter into a Designated Marksman Rifle.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/dmr_conversion_kit.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags:
+    - DMRConversionKit
