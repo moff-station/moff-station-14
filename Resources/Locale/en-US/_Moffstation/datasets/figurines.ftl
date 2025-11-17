@@ -7,6 +7,22 @@ figurines-alfredo-6 = When is Tropico not dead?
 figurines-alfredo-7 = 15% n2o is perfectly safe, and funny.
 figurines-alfredo-8 = This stuff makes you feel good. Also it causes cancer.
 
+figurines-asher-1 = Epsilon, recieving.
+figurines-asher-2 = Sitrep, now!
+figurines-asher-3 = My apologies.
+figurines-asher-4 = My counterpart can be a bit... something.
+figurines-asher-5 = Leave that borg alone.
+figurines-asher-6 = Don't touch me.
+figurines-asher-7 = Red alert, game time people!
+figurines-asher-8 = My price? Thirty thousand, and a pair of combat gloves.
+figurines-asher-9 = I'd be willing to look the other way...
+figurines-asher-10 = You scratch my back, I'll scratch yours.
+figurines-asher-11 = You don't live this long without doing some things you regret.
+figurines-asher-12 = I'm getting too old for this shit.
+figurines-asher-13 = I guess you could say I'm just lucky.
+figurines-asher-14 = Don't call me "Ashy".
+figurines-asher-15 = We've got a little Spider hiding somewhere...
+
 figurines-audrina-1 = Well, I don't think that's right..
 figurines-audrina-2 = I'm not short.
 figurines-audrina-3 = Pilk, please. What?
@@ -29,22 +45,6 @@ figurines-aurora-12 = Three million mols of CO2, in just one can...
 figurines-aurora-13 = Intruders will face trial-by-singularity.
 figurines-aurora-14 = My M- er, boss mentioned it.
 figurines-aurora-15 = Why are you looking at me like that?
-
-figurines-asher-1 = Epsilon, recieving.
-figurines-asher-2 = Sitrep, now!
-figurines-asher-3 = My apologies.
-figurines-asher-4 = My counterpart can be a bit... something.
-figurines-asher-5 = Leave that borg alone.
-figurines-asher-6 = Don't touch me.
-figurines-asher-7 = Red alert, game time people!
-figurines-asher-8 = My price? Thirty thousand, and a pair of combat gloves.
-figurines-asher-9 = I'd be willing to look the other way...
-figurines-asher-10 = You scratch my back, I'll scratch yours.
-figurines-asher-11 = You don't live this long without doing some things you regret.
-figurines-asher-12 = I'm getting too old for this shit.
-figurines-asher-13 = I guess you could say I'm just lucky.
-figurines-asher-14 = Don't call me "Ashy".
-figurines-asher-15 = We've got a little Spider hiding somewhere...
 
 figurines-awana-1 = Howdy Howdy~!
 figurines-awana-2 = Howdy hun!

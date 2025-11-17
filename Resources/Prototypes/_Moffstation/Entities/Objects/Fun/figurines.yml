@@ -38,6 +38,21 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineAsher
+  name: Two-Faced Moth Figurine
+  description: "A double-sided figurine depicting a young moth person. This side is dressed like a security officer, its face twisted into a scowl.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
+  components:
+  - type: Sprite
+    state: aurora-asher
+  - type: SpeakOnTrigger
+    pack: FigurinesAsher
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_asher
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineAudrina
   name: Unimpressed Human Psychologist Figurine
   description: A figurine depicting a human with cat ears. There are bandages on its left arm, seemingly haphazardly painted on. The tie seems loose, although it's hard plastic. The expression is concerningly blank.
@@ -47,7 +62,6 @@
   - type: SpeakOnTrigger
     pack: FigurinesAudrina
 
-# Aurora figurine and its construction graph.
 - type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineAurora
@@ -63,21 +77,7 @@
     graph: ToyFigurineAuroraSwapGraph
     node: swap_aurora
 
-- type: entity # Conveniently Asher happens to be next alphabetically after Aurora.
-  parent: BaseFigurineMoff
-  id: ToyFigurineAsher
-  name: Two-Faced Moth Figurine
-  description: "A double-sided figurine depicting a young moth person. This side is dressed like a security officer, its face twisted into a scowl.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
-  components:
-  - type: Sprite
-    state: aurora-asher
-  - type: SpeakOnTrigger
-    pack: FigurinesAsher
-  - type: Construction
-    deconstructionTarget: null
-    graph: ToyFigurineAuroraSwapGraph
-    node: swap_asher
-
+# Allows you to toggle between the Aurora and Asher figurines using a crowbar.
 - type: constructionGraph
   id: ToyFigurineAuroraSwapGraph
   start: swap_asher
