@@ -509,7 +509,7 @@
         - to: wall
           steps:
             - tool: Welding
-              doAfter: 3
+              doAfter: 1
         - to: wall
           steps:
             - tool: Brushing
@@ -521,8 +521,8 @@
         - to: reinforcedWall
           steps:
             - tool: Welding
-              doAfter: 3
+              doAfter: 2
         - to: reinforcedWall
           steps:
             - tool: Brushing
-              doAfter: 3
+              doAfter: 4
