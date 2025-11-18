@@ -241,3 +241,37 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rockstar.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rockstar.rsi
+
+#Centcomm
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcommResearch
+  name: Centcomm Researcher Suit
+  description: An Outfit to accept awards for scientific & technological advancement.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-research.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-research.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcommMedical
+  name: Centcomm Physician Sweater
+  description: An Outfit to accept awards for medical advancement.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcommTurtle
+  name: Centcomm Turtleneck
+  description: An Comfortable outfit for the executive who enjoys a warm fireplace.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
