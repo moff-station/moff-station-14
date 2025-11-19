@@ -47,7 +47,7 @@
     autoRefillRate: 1m # You really ought to be picking up your darts.
     ammoProto: BulletFoam
 
-# Sidegrade to the Lecter for longer range fighting.
+# Far less cursed replacement for the admeme XL8, used by ERT squads.
 - type: entity
   parent: WeaponRifleLecter
   id: WeaponRifleLecterDMR
@@ -59,9 +59,11 @@
   - type: Clothing
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
   - type: Gun
-    fireRate: 4
     selectedMode: SemiAuto
+    shotsPerBurst: 2
+    burstFireRate: 10
     availableModes:
+    - Burst
     - SemiAuto
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
