@@ -1,0 +1,26 @@
+- type: entity
+  parent: BaseLivingObjective
+  id: PizzaScurretSurviveObjective
+  name: Survive!
+  description: Your job is hell! You must persevere!
+  components:
+  - type: Objective
+    difficulty: 1 # Required but not used.
+    issuer: objective-issuer-pizzascurret
+    icon:
+      sprite: Mobs/Animals/scurret/scurret.rsi
+      state: scurret
+
+- type: entity
+  parent: BaseLivingObjective
+  id: PizzaScurretDeliveryObjective
+  name: Deliver your pizza!
+  description: The pizza must be delivered hot and fresh!
+  components:
+  - type: Objective
+    difficulty: 1 # Required but not used.
+    issuer: objective-issuer-pizzascurret
+    icon:
+      sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: arnold
+  - type: PickSpecificPerson

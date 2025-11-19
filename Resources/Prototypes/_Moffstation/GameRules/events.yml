@@ -1,0 +1,31 @@
+- type: entity
+  parent: BaseGameRule
+  id: PizzaScurretSpawn
+  components:
+  - type: StationEvent
+    weight: 4 # should not happen every round
+    duration: null
+    earliestStart: 15
+    reoccurrenceDelay: 10
+    minimumPlayers: 10
+  - type: AntagSpawner
+    prototype: MobPizzaScurret
+  - type: AntagObjectives
+    objectives:
+    - PizzaScurretSurviveObjective
+    - PizzaScurretDeliveryObjective
+  - type: AntagRandomSpawn # TODO: spawn in their own ship rather than spawn on station
+  - type: AntagSelection
+    agentName: Pizza Scurret # move to ftl
+    definitions:
+    - spawnerPrototype: SpawnPointGhostParadoxClone
+      min: 1
+      max: 1
+      pickPlayer: false
+      startingGear: PizzaScurretGear
+      briefing:
+        text: You must deliver the pizza with haste! Fail to do so and you die! # move to ftl
+        color: lightblue
+        sound: /Audio/_Moffstation/Ambience/Antags/pizzascurret_alert.ogg
+      mindRoles:
+      - MindRolePizzaScurretFreeAgent

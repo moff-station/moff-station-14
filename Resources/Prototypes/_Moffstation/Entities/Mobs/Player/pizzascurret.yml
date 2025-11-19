@@ -1,0 +1,14 @@
+# Mob
+- type: entity
+  parent: MobScurret
+  id: MobPizzaScurret
+
+# guidebook dummy
+- type: entity
+  id: PizzaScurretDummy
+  categories: [ HideSpawnMenu ]
+  name: Pizza Scurret
+  components:
+  - type: Sprite
+    sprite: Mobs/Animals/scurret/scurret.rsi
+    state: scurret

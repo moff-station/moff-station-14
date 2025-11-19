@@ -45,3 +45,14 @@
     antagPrototype: SyndicateSpy
     subtype: roles-antag-short-syndicate-spy
   - type: SyndicateSpyRole
+
+# Pizza Scurret
+
+- type: entity
+  parent: MindRoleGhostRoleFreeAgent
+  name: Pizza Delivery Scurret (Free Agent)
+  id: MindRolePizzaScurretFreeAgent
+  components:
+  - type: MindRole
+    roleType: FreeAgent
+  - type: GhostRoleMarkerRole
