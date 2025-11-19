@@ -58,14 +58,14 @@
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
   - type: Clothing
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
-  - type: Gun
+  - type: Gun # Has access to the Lecter's 5.0 firerate, just in semi-auto.
     selectedMode: SemiAuto
-    shotsPerBurst: 2
-    burstFireRate: 10
     availableModes:
-    - Burst
     - SemiAuto
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
     maxOffset: 2
     pvsIncrease: 0.2
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.75
+    sprintModifier: 0.75
