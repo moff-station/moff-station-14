@@ -103,11 +103,6 @@
 
 - type: quickPhrase
   parent: BaseEpistemicsJobPhrase
-  id: PsionicMantisPhrase
-  text: job-name-mantis
-
-- type: quickPhrase
-  parent: BaseEpistemicsJobPhrase
   id: ScientistPhrase
   text: job-name-scientist
 
@@ -137,33 +132,6 @@
   parent: BaseLogisticsJobPhrase
   id: SalvageSpecialistPhrase
   text: job-name-salvagespec
-
-- type: quickPhrase
-  parent: BaseLogisticsJobPhrase
-  id: CourierPhrase
-  text: job-name-courier
-
-# Justice
-
-- type: quickPhrase
-  parent: BaseJusticeJobPhrase
-  id: ChiefJusticePhrase
-  text: job-name-chief-justice
-
-- type: quickPhrase
-  parent: BaseJusticeJobPhrase
-  id: LawyerPhrase
-  text: job-name-lawyer
-
-- type: quickPhrase
-  parent: BaseJusticeJobPhrase
-  id: ProsecutorPhrase
-  text: job-name-prosecutor
-
-- type: quickPhrase
-  parent: BaseJusticeJobPhrase
-  id: ClerkPhrase
-  text: job-name-clerk
 
 # Medical
 
@@ -216,13 +184,13 @@
 
 - type: quickPhrase
   parent: BaseSecurityJobPhrase
-  id: PrisonGuardPhrase
-  text: job-name-guard
+  id: DetectivePhrase
+  text: job-name-detective
 
 - type: quickPhrase
   parent: BaseSecurityJobPhrase
-  id: DetectivePhrase
-  text: job-name-detective
+  id: LawyerPhrase
+  text: job-name-lawyer
 
 # Service
 
@@ -290,18 +258,8 @@
 
 - type: quickPhrase
   parent: BaseCivilianJobPhrase
-  id: MartialArtistPhease
-  text: job-name-martialartist
-
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
   id: PrisonerPhrase
   text: job-name-prisoner
-
-- type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: GladiatorPhrase
-  text: job-name-gladiator
 
 - type: quickPhrase
   parent: BaseSecurityJobPhrase

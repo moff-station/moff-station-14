@@ -69,11 +69,6 @@
   text: station-beacon-hop
 
 - type: quickPhrase
-  parent: BaseCommandLocationPhrase
-  id: LocationConferenceRoomPhrase
-  text: station-beacon-conference-room
-
-- type: quickPhrase
   parent: BaseEngineeringLocationPhrase
   id: LocationEngineeringPhrase
   text: station-beacon-engineering
@@ -131,17 +126,17 @@
 - type: quickPhrase
   parent: BaseEpistemicsLocationPhrase
   id: LocationEpistemicsPhrase
-  text: station-beacon-epistemics
+  text: station-beacon-science
 
 - type: quickPhrase
   parent: BaseEpistemicsLocationPhrase
   id: LocationMystagoguePhrase
-  text: station-beacon-mystagogue
+  text: station-beacon-research-and-development
 
 - type: quickPhrase
   parent: BaseEpistemicsLocationPhrase
   id: LocationMantisPhrase
-  text: station-beacon-forensic-mantis
+  text: station-beacon-research-director
 
 - type: quickPhrase
   parent: BaseEpistemicsLocationPhrase
@@ -179,31 +174,6 @@
   text: station-beacon-law
 
 - type: quickPhrase
-  parent: BaseJusticeLocationPhrase
-  id: LocationProsecutorPhrase
-  text: station-beacon-prosecutor
-
-- type: quickPhrase
-  parent: BaseJusticeLocationPhrase
-  id: LocationChiefJusticePhrase
-  text: station-beacon-chiefjustice
-
-- type: quickPhrase
-  parent: BaseJusticeLocationPhrase
-  id: LocationClerkPhrase
-  text: station-beacon-clerk
-
-- type: quickPhrase
-  parent: BaseLogisticsLocationPhrase
-  id: LocationLogisticsPhrase
-  text: station-beacon-logistics
-
-- type: quickPhrase
-  parent: BaseLogisticsLocationPhrase
-  id: LocationLoPhrase
-  text: station-beacon-lo
-
-- type: quickPhrase
   parent: BaseLogisticsLocationPhrase
   id: LocationCargoBayPhrase
   text: station-beacon-cargo-bay
@@ -212,11 +182,6 @@
   parent: BaseLogisticsLocationPhrase
   id: LocationSalvagePhrase
   text: station-beacon-salvage
-
-- type: quickPhrase
-  parent: BaseLogisticsLocationPhrase
-  id: LocationMailPhrase
-  text: station-beacon-mailroom
 
 - type: quickPhrase
   parent: BaseLogisticsLocationPhrase
@@ -304,11 +269,6 @@
   text: station-beacon-security-checkpoint
 
 - type: quickPhrase
-  parent: BaseSecurityLocationPhrase
-  id: LocationCorpsmanPhrase
-  text: station-beacon-corpsman
-
-- type: quickPhrase
   parent: BaseServiceLocationPhrase
   id: LocationServicePhrase
   text: station-beacon-service
@@ -335,16 +295,6 @@
 
 - type: quickPhrase
   parent: BaseServiceLocationPhrase
-  id: LocationJaniOfficePhrase
-  text: station-beacon-janitor-office
-
-- type: quickPhrase
-  parent: BaseServiceLocationPhrase
-  id: LocationJaniClosetPhrase
-  text: station-beacon-janitor-closet
-
-- type: quickPhrase
-  parent: BaseServiceLocationPhrase
   id: LocationReporterPhrase
   text: station-beacon-reporter
 
@@ -357,11 +307,6 @@
   parent: BaseCivilianLocationPhrase
   id: LocationLibraryPhrase
   text: station-beacon-library
-
-- type: quickPhrase
-  parent: BaseCivilianLocationPhrase
-  id: LocationParkPhrase
-  text: station-beacon-park
 
 - type: quickPhrase
   parent: BaseCivilianLocationPhrase
