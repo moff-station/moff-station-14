@@ -4,9 +4,9 @@
   name: ERT Mail Carrier ID card
   components:
   - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
     layers:
-    - state: gold
-    - state: ert_janitor
+    - state: ert_mailcarrier
   - type: PresetIdCard
     job: ERTMailCarrier
   - type: NanoChatCard # CD
