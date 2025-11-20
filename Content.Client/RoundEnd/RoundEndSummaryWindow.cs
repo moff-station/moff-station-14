@@ -22,7 +22,7 @@ namespace Content.Client.RoundEnd
         {
             _entityManager = entityManager;
 
-            MinSize = SetSize = new Vector2(520, 580);
+            MinSize = SetSize = new Vector2(600, 600);  // Moffstation - Increase EoR page size
 
             Title = Loc.GetString("round-end-summary-window-title");
 
