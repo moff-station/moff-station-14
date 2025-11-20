@@ -6,7 +6,6 @@ using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
 using Content.Server.Maps;
 using Content.Server.Roles;
-using Content.Shared._Goob.LastWords;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -26,7 +25,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 // Goob Station - End of Round Screen
-using Content.Shared.Damage;
+using Content.Shared._Goob.LastWords;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
