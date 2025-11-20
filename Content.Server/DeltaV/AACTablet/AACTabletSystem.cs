@@ -1,4 +1,5 @@
 using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 using Content.Shared.DeltaV.AACTablet;
 using Content.Shared.DeltaV.QuickPhrase;
 using Content.Shared.IdentityManagement;
