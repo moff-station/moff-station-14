@@ -1,7 +1,7 @@
 - type: gameMap
   id: Skeld
   mapName: 'The Skeld'
-  mapPath: /Maps/skeld.yml
+  mapPath: /Maps/_Moffstation/skeld.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 30
@@ -16,7 +16,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14-AMG-US'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_skeld.yml
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_skeld.yml
         - type: StationJobs
           availableJobs:
             #command
