@@ -150,6 +150,7 @@ namespace Content.IntegrationTests.Tests
             "Dugstation",
             "NitrousOxide",
             "Barratry",
+	    "Skeld"
             // Moffstation - End
         };
 
