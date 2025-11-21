@@ -18,7 +18,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "ResearchDirector" ]]
+    access: [[ "Research" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-science
     color: "#b54ed6"
@@ -50,7 +50,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "HeadOfSecurity" ]]
+    access: [[ "Brig" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-security
     color: "#de3a3a"
@@ -82,7 +82,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "HeadOfPersonnel" ]]
+    access: [[ "Service" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-service
     color: "#88be14"
@@ -114,7 +114,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "Quartermaster" ]]
+    access: [[ "Cargo" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-cargo
     color: "#b47216"
@@ -146,7 +146,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "ChiefEngineer" ]]
+    access: [[ "Engineering" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-engi
     color: "#f9a524"
@@ -178,7 +178,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "ChiefMedicalOfficer" ]]
+    access: [[ "Medical" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-medical
     color: "#398bdf"
