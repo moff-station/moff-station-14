@@ -127,8 +127,6 @@
     thresholds:
       0: Alive
       100: Dead
-  - type: GoobAbsorbable
-    biomassRestored: 0.4
   - type: MeleeWeapon
     attackRate: 1
     soundHit:
@@ -214,8 +212,6 @@
       0: Alive
       400: Critical
       500: Dead
-  - type: GoobAbsorbable
-    biomassRestored: 0.8
   - type: AmbientSound
     volume: -3
     range: 4
