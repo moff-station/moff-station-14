@@ -225,17 +225,16 @@ namespace Content.Client.Lobby
             {
                 Lobby!.PlaytimeComment.Visible = true;
 
-                var hoursToday = Math.Round(minutesToday / 60f, 1);
+                // Moffstation - Start - Custom playtime remarks
+                var chosenString =
+                    minutesToday < 720
+                        ? "chat-manager-client-hourly-playtime-notice"
+                        : "lobby-state-playtime-comment-too-much";
 
-                var chosenString = minutesToday switch
-                {
-                    < 180 => "lobby-state-playtime-comment-normal",
-                    < 360 => "lobby-state-playtime-comment-concerning",
-                    < 720 => "lobby-state-playtime-comment-grasstouchless",
-                    _ => "lobby-state-playtime-comment-selfdestructive"
-                };
-
-                Lobby.PlaytimeComment.SetMarkup(Loc.GetString(chosenString, ("hours", hoursToday)));
+                var playtime = TimeSpan.FromMinutes(minutesToday);
+                var localTime = DateTime.Now.ToString("t");
+                Lobby.PlaytimeComment.SetMarkup(Loc.GetString(chosenString, ("hours", playtime.Hours), ("minutes", playtime.Minutes), ("time", localTime)));
+                // Moffstation - End
             }
             else
                 Lobby!.PlaytimeComment.Visible = false;

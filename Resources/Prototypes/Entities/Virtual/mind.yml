@@ -1,0 +1,11 @@
+- type: entity
+  id: MindBase
+  name: mind
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Mind
+  - type: ContainerContainer
+    containers:
+      mind_roles: !type:Container
+        ents: []
+  - type: LastWords # Moffstation - Cool round manifest

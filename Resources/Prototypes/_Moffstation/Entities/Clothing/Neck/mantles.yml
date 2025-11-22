@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ClothingNeckBase, BaseCentcommContraband]
+  id: ClothingNeckMantleCentcomm
+  name: central command mantle
+  description: An elegant mantle for a commander at the center of everything
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/centcom-mantle.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak

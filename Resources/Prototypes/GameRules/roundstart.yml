@@ -24,6 +24,8 @@
       prob: 0.5
     - id: SubWizard
       prob: 0.05
+    - id: Xenoborgs
+      prob: 0.05
 
 - type: entity
   parent: BaseGameRule
@@ -33,6 +35,19 @@
     rules:
     - id: Thief
       prob: 0.5
+    - id: Xenoborgs
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoXenoborg
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: SubWizard
+      prob: 0.05
 
 - type: entity
   parent: BaseGameRule
@@ -491,7 +506,7 @@
   parent: BaseGameRule                  # we can remerge this with the other schedulers, but it will silently fail due to that limitation without a separate scheduler to balance atm.
   components:
   - type: BasicStationEventScheduler
-    minimumTimeUntilFirstEvent: 2700 # 45 mins #shows up like half way through shift.
+    minimumTimeUntilFirstEvent: 1200 # Moffstation - They show up earlier now
     minMaxEventTiming:
       min: 1200 # 20 mins
       max: 7200 # 120 mins # you probably arent getting a second visitor shuttle in one round, but it is possible.
@@ -534,7 +549,7 @@
     - id: SolarPanelEmptyVariationPass
     - id: BasicDecalDirtVariationPass
     - id: BasicDecalGraffitiVariationPass
-    - id: BasicDecalBrunsVariationPass
+    - id: BasicDecalBurnsVariationPass
       prob: 0.50
       orGroup: monospaceDecals
     - id: BasicDecalDirtMonospaceVariationPass

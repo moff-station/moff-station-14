@@ -11,26 +11,12 @@
     - timer
   - type: Destructible
     thresholds:
-    # Moffstation - Begin (Resilient Grenades)
-    #- trigger:
-        #!type:DamageTrigger
-        #damage: 10
-      #behaviors:
-      #- !type:TriggerBehavior
     - trigger:
         !type:DamageTrigger
         damage: 10
       behaviors:
       - !type:TriggerBehavior
         keyOut: timer # explode immediately
-      - !type:TimerStartBehavior
-    - trigger:
-        !type:DamageTrigger
-        damage: 45
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      # Moffstation - End
   - type: ContainerContainer
     containers:
       cluster-payload: !type:Container
@@ -57,7 +43,7 @@
         friction: 0.2
 
 - type: entity
-  parent: [ProjectileGrenadeBase, BaseSecurityContraband]
+  parent: [FragileGrenadeBase, ProjectileGrenadeBase, BaseSecurityContraband]
   id: GrenadeStinger
   name: stinger grenade
   description: Nothing to see here, please disperse.
@@ -91,10 +77,10 @@
       path: /Audio/Effects/countdown.ogg
 
 - type: entity
-  parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
+  parent: [FragileGrenadeBase, ProjectileGrenadeBase, BaseSyndicateContraband]
   id: GrenadeIncendiary
   name: incendiary grenade
-  description: Releases a spray of incendiary shrapnel in all directions. Guaranteed to light up the mood. # Moffstation - Resilient Grenades
+  description: Guaranteed to light up the mood.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Grenades/pyrogrenade.rsi
@@ -123,9 +109,9 @@
     price: 1500
 
 - type: entity
-  parent: [ProjectileGrenadeBase, BaseSyndicateContraband]
+  parent: [FragileGrenadeBase, ProjectileGrenadeBase, BaseSyndicateContraband]
   id: GrenadeShrapnel
-  name: fragmentation grenade # Moffstation - Resilient Grenades
+  name: shrapnel grenade
   description: Releases a deadly spray of shrapnel that causes severe bleeding.
   components:
   - type: Sprite
