@@ -1,5 +1,6 @@
 using Content.Server.Ghost;
 using Content.Server.Hands.Systems;
+using Content.Server.Mind;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chat;
 using Content.Shared.Damage;

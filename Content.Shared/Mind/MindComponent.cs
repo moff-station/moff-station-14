@@ -96,7 +96,7 @@ public sealed partial class MindComponent : Component
     ///     Prevents user from suiciding
     /// </summary>
     [DataField]
-    public bool PreventSuicide { get; set; }
+    public bool PreventSuicide = true;
 
     /// <summary>
     /// Mind Role Entities belonging to this Mind are stored in this container.
