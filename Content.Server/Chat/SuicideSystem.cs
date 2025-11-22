@@ -1,6 +1,5 @@
 using Content.Server.Ghost;
 using Content.Server.Hands.Systems;
-using Content.Shared._Moffstation.CCVar;    // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
@@ -14,7 +13,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
-using Robust.Shared.Configuration;  // Moffstation
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -30,7 +28,6 @@ public sealed class SuicideSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly GhostSystem _ghostSystem = default!;
     [Dependency] private readonly SharedSuicideSystem _suicide = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;    // Moffstation - Disable suicide
 
     private static readonly ProtoId<TagPrototype> CannotSuicideTag = "CannotSuicide";
 
@@ -50,12 +47,6 @@ public sealed class SuicideSystem : EntitySystem
     /// </summary>
     public bool Suicide(EntityUid victim)
     {
-
-        // Moffstation - Start - disable suicide
-        if (!_cfg.GetCVar(MoffCCVars.AllowSuicide))
-            return false;
-        // Moffstation - End
-
         // Can't suicide if we're already dead
         if (!TryComp<MobStateComponent>(victim, out var mobState) || _mobState.IsDead(victim, mobState))
             return false;
