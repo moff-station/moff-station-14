@@ -1,0 +1,90 @@
+﻿# Limbs that spawn when gibbed should get descriptions.
+- type: entity
+  abstract: true
+  parent: [ BasePart ]
+  id: PartSneople
+  name: Sneople body part
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+
+- type: entity
+  parent: [ PartSneople, BaseTorso ]
+  id: TorsoSneople
+  name: Sneople torso
+  components:
+  - type: Sprite
+    state: torso_m
+
+- type: entity
+  parent: [ PartSneople, BaseHead ]
+  id: HeadSneople
+  name: Sneople head
+  components:
+  - type: Sprite
+    state: head_m
+
+- type: entity
+  parent: [ PartSneople, BaseLeftArm ]
+  id: LeftArmSneople
+  name: left Sneople arm
+  components:
+  - type: Sprite
+    state: l_arm
+
+- type: entity
+  parent: [ PartSneople, BaseRightArm ]
+  id: RightArmSneople
+  name: right Sneople arm
+  components:
+  - type: Sprite
+    state: r_arm
+
+- type: entity
+  parent: [ PartSneople, BaseLeftHand ]
+  id: LeftHandSneople
+  name: left Sneople hand
+  components:
+  - type: Sprite
+    state: l_hand
+
+- type: entity
+  parent: [ PartSneople, BaseRightHand ]
+  id: RightHandSneople
+  name: right Sneople hand
+  components:
+  - type: Sprite
+    state: r_hand
+
+- type: entity
+  parent: [ PartSneople, BaseLeftLeg ]
+  id: LeftLegSneople
+  name: left Sneople leg
+  components:
+  - type: Sprite
+    state: l_leg
+
+- type: entity
+  parent: [ PartSneople, BaseRightLeg ]
+  id: RightLegSneople
+  name: right Sneople leg
+  components:
+  - type: Sprite
+    state: r_leg
+
+- type: entity
+  parent: [ PartSneople, BaseLeftFoot ]
+  id: LeftFootSneople
+  name: left Sneople foot
+  components:
+  - type: Sprite
+    state: l_foot
+
+- type: entity
+  parent: [ PartSneople, BaseRightFoot ]
+  id: RightFootSneople
+  name: right Sneople foot
+  components:
+  - type: Sprite
+    state: r_foot
+
