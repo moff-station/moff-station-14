@@ -87,9 +87,13 @@
         Brute: -1
         Burn: -1
         Toxin: -1
+  - type: MobStateActions
+    actions:
+      Alive:
+      - ActionActivateEeepEmp
 
 - type: entity
-  parent: [ MobEeepBase]
+  parent: [ MobEeepBase ]
   id: MobEeeplet
   suffix: "baby"
   name: eeeplet
@@ -251,9 +255,6 @@
     sound:
      path: /Audio/Effects/PowerSink/charge_fire.ogg
     color: yellow
-  - type: ActionsProvider
-    actions:
-    - ActionEeepEmp
   - type: TriggerOnActivateImplant
   - type: EmpOnTrigger
     range: 10

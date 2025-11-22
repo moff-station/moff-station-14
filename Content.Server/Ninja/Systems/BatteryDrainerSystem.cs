@@ -118,7 +118,7 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
             output = Math.Max(output, (float)comp.MinimumDrain);
         // IMP END
 
-        _battery.SetCharge(comp.BatteryUid.Value, battery.CurrentCharge + output, battery);
+        _battery.SetCharge((comp.BatteryUid.Value, battery), battery.CurrentCharge + output);
         // TODO: create effect message or something
         Spawn("EffectSparks", Transform(target).Coordinates);
         _audio.PlayPvs(comp.SparkSound, target);
