@@ -456,11 +456,11 @@
     icon:
       sprite: Objects/Specific/Medical/defib.rsi
       state: icon
-  - type: AutoCompleteCondition
+  - type: BaseFreeObjective
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - AutoCompleteCondition
+      - BaseFreeObjective
 
 # berate service staff
 - type: entity
@@ -475,11 +475,11 @@
     icon:
       sprite: _Impstation/Objects/Consumable/Drinks/noveltymug.rsi
       state: icon-0
-  - type: AutoCompleteCondition
+  - type: BaseFreeObjective
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
-      - AutoCompleteCondition
+      - BaseFreeObjective
 
 # --Tourist objective weighting/groups--
 - type: weightedRandom
