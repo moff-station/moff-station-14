@@ -51,9 +51,9 @@
     allowedEmotes: ['Click', 'Chitter']
   - type: Vocal
     sounds:
-      Male: UnisexSneople
-      Female: UnisexSneople
-      Unsexed: UnisexSneople
+      Male: MaleReptilian # Swapping to Reptilian sounds cause Sneople ones don't exist atm.
+      Female: FemaleReptilian
+      Unsexed: MaleReptilian
   #- type: TypingIndicator
    # proto: #wip
   - type: Sprite
@@ -97,9 +97,6 @@
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2
       visible: false
-  - type: Inventory
-    templateId: Sneople
-    speciesId: Sneople
 
 
 - type: entity
@@ -109,8 +106,3 @@
   components:
   - type: HumanoidAppearance
     species: Sneople
-  - type: Inventory
-    speciesId: Sneople
-
-
-
