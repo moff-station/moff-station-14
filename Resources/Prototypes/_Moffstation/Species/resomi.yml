@@ -48,16 +48,16 @@
       required: true
       defaultMarkings: [ ResomiTail ]
     Legs:
-      points: 2
+      points: 6
       required: false
     Arms:
-      points: 4
+      points: 6
       required: false
     Head:
-      points: 4
+      points: 6
       required: false
     Chest:
-      points: 1
+      points: 3
       required: false
 
 - type: humanoidBaseSprite
