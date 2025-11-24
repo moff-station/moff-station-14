@@ -649,14 +649,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,-8.5
       parent: 1
-- proto: GasPressurePumpEnabled
-  entities:
-  - uid: 85
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,-4.5
-      parent: 1
 - proto: GasVentPump
   entities:
   - uid: 86

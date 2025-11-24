@@ -498,14 +498,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 1.5,-0.5
       parent: 1
-- proto: GasPressurePumpEnabled
-  entities:
-  - uid: 49
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,0.5
-      parent: 1
 - proto: GasVentPump
   entities:
   - uid: 50
@@ -525,31 +517,12 @@ entities:
     - type: Transform
       pos: 1.5,-1.5
       parent: 1
-- proto: MiniGyroscope
-  entities:
-  - uid: 53
-    components:
-    - type: Transform
-      pos: 0.5,-0.5
-      parent: 1
 - proto: PlushieLizardInversed
   entities:
   - uid: 54
     components:
     - type: Transform
       pos: 1.6894501,1.6921835
-      parent: 1
-- proto: PoweredFloorLightSodium
-  entities:
-  - uid: 55
-    components:
-    - type: Transform
-      pos: 0.5,-2.5
-      parent: 1
-  - uid: 56
-    components:
-    - type: Transform
-      pos: 1.5,-2.5
       parent: 1
 - proto: PoweredSmallLight
   entities:
