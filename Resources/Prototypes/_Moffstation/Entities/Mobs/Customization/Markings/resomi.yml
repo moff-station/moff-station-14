@@ -137,7 +137,7 @@
 
 - type: marking
   id: ResomiRShoulderFade
-  bodyPart: RHand # Due to layering issues, this has the be the RHand as the RHand is rendered on top of everything.
+  bodyPart: RArm
   markingCategory: Arms
   speciesRestriction: 
   - Resomi
@@ -147,7 +147,7 @@
 
 - type: marking
   id: ResomiLShoulderFade
-  bodyPart: RHand # Due to layering issues, this has the be the RHand as the RHand is rendered on top of everything.
+  bodyPart: RArm
   markingCategory: Arms
   speciesRestriction: 
   - Resomi
@@ -222,7 +222,7 @@
 
 - type: marking
   id: ResomiRLegFade
-  bodyPart: RFoot # Due to layering issues, this has the be the Foot.
+  bodyPart: RLeg
   markingCategory: Legs
   speciesRestriction: 
   - Resomi
@@ -232,7 +232,7 @@
 
 - type: marking
   id: ResomiLLegFade
-  bodyPart: LFoot # Due to layering issues, this has the be the Foot.
+  bodyPart: LLeg
   markingCategory: Legs
   speciesRestriction: 
   - Resomi
@@ -244,7 +244,7 @@
 # Tail Markings
 - type: marking
   id: ResomiTailFade
-  bodyPart: Tail
+  bodyPart: Chest
   markingCategory: Chest
   speciesRestriction: 
   - Resomi
