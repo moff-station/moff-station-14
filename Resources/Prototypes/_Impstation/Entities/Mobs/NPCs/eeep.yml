@@ -87,10 +87,6 @@
         Brute: -1
         Burn: -1
         Toxin: -1
-  - type: MobStateActions
-    actions:
-      Alive:
-      - ActionActivateEeepEmp
 
 - type: entity
   parent: [ MobEeepBase ]
