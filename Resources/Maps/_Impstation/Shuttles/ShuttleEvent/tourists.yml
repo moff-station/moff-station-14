@@ -1,16 +1,16 @@
 meta:
   format: 7
-  category: Grid
-  engineVersion: 266.0.0
+  category: Map
+  engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/06/2025 07:38:52
-  entityCount: 134
-maps: []
+  time: 11/25/2025 00:00:24
+  entityCount: 132
+maps:
+- 7
 grids:
 - 1
-orphans:
-- 1
+orphans: []
 nullspace: []
 tilemap:
   2: Space
@@ -27,7 +27,7 @@ entities:
       name: Adventure
     - type: Transform
       pos: 12.709639,4.593395
-      parent: invalid
+      parent: 7
     - type: MapGrid
       chunks:
         0,0:
@@ -86,51 +86,29 @@ entities:
         - volume: 2500
           temperature: 293.15
           moles:
-          - 21.824879
-          - 82.10312
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+            Oxygen: 21.824879
+            Nitrogen: 82.10312
         - volume: 2500
           immutable: True
-          moles:
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+          moles: {}
         - volume: 2500
           temperature: 293.14975
           moles:
-          - 20.078888
-          - 75.53487
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+            Oxygen: 20.078888
+            Nitrogen: 75.53487
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+  - uid: 7
+    components:
+    - type: MetaData
+      name: Map Entity
+    - type: Transform
+    - type: Map
+      mapPaused: True
+    - type: GridTree
+    - type: Broadphase
+    - type: OccluderTree
 - proto: AirCanister
   entities:
   - uid: 2
@@ -479,33 +457,62 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
+          Oxygen: 1.7459903
+          Nitrogen: 6.568249
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 7
+          - invalid
           - 11
           - 10
-          - 9
+          - invalid
           - 8
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
           ent: null
+- proto: DrinkBeerBottleFull
+  entities:
+  - uid: 20
+    components:
+    - type: Transform
+      pos: 2.4570198,-0.271842
+      parent: 1
+  - uid: 54
+    components:
+    - type: Transform
+      pos: 2.7001295,-0.031607628
+      parent: 1
+  - uid: 70
+    components:
+    - type: Transform
+      pos: 2.7985992,-0.26609135
+      parent: 1
+  - uid: 77
+    components:
+    - type: Transform
+      pos: 3.462988,-0.10240841
+      parent: 1
+  - uid: 85
+    components:
+    - type: Transform
+      pos: 3.6845589,-0.28535128
+      parent: 1
+- proto: DrinkBeerCan
+  entities:
+  - uid: 18
+    components:
+    - type: Transform
+      pos: 2.2222652,-5.4633026
+      parent: 1
+  - uid: 19
+    components:
+    - type: Transform
+      pos: 2.4844723,-5.5620985
+      parent: 1
 - proto: DrinkBottleWhiskey
   entities:
   - uid: 69
@@ -626,6 +633,8 @@ entities:
     - type: Transform
       pos: 1.5,-4.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal: []
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -633,7 +642,7 @@ entities:
           occludes: True
           ents:
           - 76
-          - 77
+          - invalid
           - 75
           - 74
           - 73
@@ -680,6 +689,26 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 3.5,-0.5
+      parent: 1
+- proto: RandomPosterAny
+  entities:
+  - uid: 9
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 0.5,-3.5
+      parent: 1
+  - uid: 16
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 0.5,-1.5
+      parent: 1
+  - uid: 17
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 4.5,-2.5
       parent: 1
 - proto: ShuttleWindow
   entities:
