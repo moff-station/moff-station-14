@@ -200,12 +200,8 @@
     description: tourist-objective-condition-engine-description
   - type: TouristPhotosCondition
     targetPrototypes:
-      - MobFrank #gotta include ore crabs
-      - MobRay #^
       - AmeController #i dont like putting this here, but its for maps that only have an ame
       - TegCenter
-      - Supermatter
-      - SupermatterNoAnnouncement
       - TeslaEnergyBall
       - Singularity
 
@@ -235,9 +231,6 @@
       - ClothingNeckCloakQm
       - ClothingNeckCloakHop
       - ClothingNeckCloakCapFormal
-      - ClothingNeckCloakCaptaingreatcoat
-      - ClothingNeckCloakQmgreatcoat
-      - ClothingNeckCloakHosgreatcoat
       - ClothingNeckMantleCap
       - ClothingNeckMantleCE
       - ClothingNeckMantleCMO
@@ -245,9 +238,6 @@
       - ClothingNeckMantleHOS
       - ClothingNeckMantleRD
       - ClothingNeckMantleQM
-      - ClothingNeckCloakMystagogue
-      - ClothingNeckCloakHd
-      - ClothingNeckCloakCaptainAdmiral
 
 # station pets
 - type: entity
@@ -273,7 +263,6 @@
       - MobCorgiLisa
       - MobAlexander
       - MobBandito
-      - MobDolby
       - MobBingus
       - MobCatException
       - MobWalter
@@ -281,9 +270,7 @@
       - MobFoxRenault
       - MobHamsterHamlet
       - MobMcGriff
-      - MobPenguinOswald
       - MobPollyParrot
-      - MobPipi
       - MobMonkeyPunpun
       - MobPossumMortyOld
       - MobRaccoonMorticia
