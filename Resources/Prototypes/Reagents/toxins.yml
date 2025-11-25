@@ -495,7 +495,7 @@
       - !type:PopupMessage
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Vox, Plant ] #moffstation change - diona process uncooked animal proteins
           inverted: true
         type: Local
         visualType: MediumCaution
@@ -505,12 +505,12 @@
         probability: 0.1
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Vox, Plant ] #moffstation change - diona process uncooked animal proteins
           inverted: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Vox, Plant ] #moffstation change - diona process uncooked animal proteins
           inverted: true
         damage:
           types:
@@ -524,7 +524,7 @@
       - !type:AdjustReagent
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox, Plant ]
+          type: [ Vox, Plant ] #moffstation change - diona process uncooked animal proteins
         reagent: Protein
         amount: 0.25
 
