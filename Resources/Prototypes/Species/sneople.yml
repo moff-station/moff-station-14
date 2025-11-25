@@ -24,7 +24,7 @@
     Chest: MobSneopleTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
-    #Tail: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
     Eyes: MobSneopleEyes
     LArm: MobSneopleLArm
     RArm: MobSneopleRArm
@@ -54,7 +54,8 @@
       required: false
     Tail:
       points: 1
-      required: false
+      required: true
+      defaultMarkings: [ SneopleTail ]
     Head:
       points: 1
       required: false
