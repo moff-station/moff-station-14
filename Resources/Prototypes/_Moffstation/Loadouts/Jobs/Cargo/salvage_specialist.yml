@@ -23,3 +23,14 @@
   id: ScavengerPDA
   equipment:
     id: ScavengerPDA
+
+#OuterClothing
+- type: loadout
+  id: SeniorCargoWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorCargo
+
+- type: loadout
+  id: SalvageSpecialistWindbreaker
+  equipment:
+    outerClothing: ClothingOuterWinterSalvageWindbreaker
