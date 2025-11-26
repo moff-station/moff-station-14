@@ -9,11 +9,13 @@
   equipment:
     id: InvestigatorPDA
 
-# Outer Clothing
+# Head
+
+#Neck
 - type: loadout
-  id: DetectiveCoatSleuth
+  id: DetectiveBadge
   equipment:
-    outerClothing: ClothingOuterCoatSleuth
+    neck: ClothingNeckDetBadge
 
 # Jumpsuits
 - type: loadout
@@ -36,13 +38,9 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtDetInvestigator
 
-#Neck
-- type: loadout
-  id: DetectiveBadge
-  equipment:
-    neck: ClothingNeckDetBadge
+# Back
 
-#Belt
+# Belt
 - type: loadout
   id: DetectiveHolster
   equipment:
@@ -62,3 +60,15 @@
   id: DetectiveSecWebbingAlt
   equipment:
     belt: ClothingBeltSecurityWebbingAltFilledDetective
+
+# Outer Clothing
+- type: loadout
+  id: DetectiveCoatSleuth
+  equipment:
+    outerClothing: ClothingOuterCoatSleuth
+
+# Gloves
+
+# Shoes
+
+# Eyewear
