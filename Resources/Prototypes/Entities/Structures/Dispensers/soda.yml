@@ -23,12 +23,8 @@
     guides:
     - Bartender
     - Drinks
-  # Moffstation - Start - Dispenser Locks
-  - type: Lock
-  - type: AccessReader
-    access: [ [ "Bar" ] ]
-  # Moffstation - End
-
+# Moffstation - TODO: needs a c# component in order for the storage to not be interactable when locked. I dont know how to do that yet, so im putting this off until i do.
+# even if you add a lock to this, it wont lock the storage, only the UI. might be able to remove access to the storage entirely as a band-aid fix if c# isnt possible.
 - type: entity
   parent: SodaDispenserEmpty
   id: SodaDispenser

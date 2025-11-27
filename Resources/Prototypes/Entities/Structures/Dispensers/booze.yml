@@ -25,11 +25,6 @@
     - Drinks
   - type: StealTarget
     stealGroup: BoozeDispenser
-  # Moffstation - Start - Dispenser Locks
-  - type: Lock
-  - type: AccessReader
-    access: [ [ "Bar" ] ]
-  # Moffstation - End
 
 - type: entity
   id: BoozeDispenser
