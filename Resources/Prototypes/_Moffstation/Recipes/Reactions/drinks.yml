@@ -42,7 +42,7 @@
       amount: 1
   products:
     PinkGin: 16
-  
+
 - type: reaction
   id: PlantersPunch
   requiredMixerCategories:
@@ -56,3 +56,60 @@
       amount: 1
   products:
     PlantersPunch: 16
+
+- type: reaction
+  id: Breathalyzer
+  reactants:
+    Ethylredoxrazine:
+      amount: 1
+    Nothing:
+      amount: 1
+  products:
+    Breathalyzer: 2
+
+- type: reaction
+  id: CorpseReviver
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Ethylredoxrazine:
+      amount: 1
+    Absinthe:
+      amount: 1
+    Wine:
+      amount: 2
+    JuiceLemon:
+      amount: 2
+    BlueCuracao:
+      amount: 2
+    Gin:
+      amount: 2
+  products:
+    CorpseReviver: 10
+
+- type: reaction
+  id: PrairieCocktail
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Ethylredoxrazine:
+      amount: 10
+    Hotsauce:
+      amount: 2
+    Blackpepper:
+      amount: 2
+    Egg:
+      amount: 6
+  products:
+    PrairieCocktail: 20
+# the ratios on this one are horrible due to 1 egg being 6 raw egg
+
+- type: reaction
+  id: MossySpecial
+  reactants:
+    Ethylredoxrazine:
+      amount: 1
+    ManlyDorf:
+      amount: 2
+  products:
+    MossySpecial: 3

@@ -79,7 +79,6 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaling: true
         damage:
           types:
             Heat: 0.75 # MOFFSTATION CHANGE - Increases slime water damage by 5x
@@ -166,9 +165,9 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short
 
@@ -206,9 +205,9 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short
 
@@ -245,8 +244,8 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short

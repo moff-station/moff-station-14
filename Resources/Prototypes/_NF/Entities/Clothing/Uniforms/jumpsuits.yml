@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitERTMailCarrier
+  name: ERT mail carrier uniform
+  description: A special suit made for the elite mail carriers under Central Command.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/ert_mailcarrier.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/ert_mailcarrier.rsi

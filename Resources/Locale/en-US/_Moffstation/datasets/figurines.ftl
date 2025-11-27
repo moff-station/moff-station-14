@@ -7,12 +7,44 @@ figurines-alfredo-6 = When is Tropico not dead?
 figurines-alfredo-7 = 15% n2o is perfectly safe, and funny.
 figurines-alfredo-8 = This stuff makes you feel good. Also it causes cancer.
 
+figurines-asher-1 = Epsilon, recieving.
+figurines-asher-2 = Sitrep, now!
+figurines-asher-3 = My apologies.
+figurines-asher-4 = My counterpart can be a bit... something.
+figurines-asher-5 = Leave that borg alone.
+figurines-asher-6 = Don't touch me.
+figurines-asher-7 = Red alert, game time people!
+figurines-asher-8 = My price? Thirty thousand, and a pair of combat gloves.
+figurines-asher-9 = I'd be willing to look the other way...
+figurines-asher-10 = You scratch my back, I'll scratch yours.
+figurines-asher-11 = You don't live this long without doing some things you regret.
+figurines-asher-12 = I'm getting too old for this shit.
+figurines-asher-13 = I guess you could say I'm just lucky.
+figurines-asher-14 = Don't call me "Ashy".
+figurines-asher-15 = We've got a little Spider hiding somewhere...
+
 figurines-audrina-1 = Well, I don't think that's right..
 figurines-audrina-2 = I'm not short.
 figurines-audrina-3 = Pilk, please. What?
 figurines-audrina-4 = Wha- Huh?
 figurines-audrina-5 = I want to punch you so badly.
 figurines-audrina-6 = I don't remember...
+
+figurines-aurora-1 = *pen clicking*
+figurines-aurora-2 = Booorrringgg...
+figurines-aurora-3 = He's the mean one, I'm the gay one.
+figurines-aurora-4 = Annoying you is just too fun!
+figurines-aurora-5 = Safety procedures? Lame...
+figurines-aurora-6 = Open my can.
+figurines-aurora-7 = Big things coming.
+figurines-aurora-8 = POLLY!!
+figurines-aurora-9 = Bossman, I, uh, did it again.
+figurines-aurora-10 = Why do it? Why not?
+figurines-aurora-11 = I follow the teachings of Atmosia.
+figurines-aurora-12 = Three million mols of CO2, in just one can...
+figurines-aurora-13 = Intruders will face trial-by-singularity.
+figurines-aurora-14 = My M- er, boss mentioned it.
+figurines-aurora-15 = Why are you looking at me like that?
 
 figurines-awana-1 = Howdy Howdy~!
 figurines-awana-2 = Howdy hun!

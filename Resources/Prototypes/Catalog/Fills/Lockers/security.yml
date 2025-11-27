@@ -155,10 +155,12 @@
   table: !type:AllSelector
     children:
     - id: ClothingEyesGlassesNoir
-#    - id: ClothingHeadHatDetGadget # Moffstation - Start (New Detective Outfits)
+    - id: ClothingHeadHatDetGadget
     - id: ClothingNeckTieDet
+    # Moffstation - Start (New Detective Outfits)
 #    - id: ClothingOuterVestDetective
-#    - id: ClothingOuterCoatDetectiveLoadout # Moffstation - End (New Detective Outfits)
+#    - id: ClothingOuterCoatDetectiveLoadout
+    # Moffstation - End (New Detective Outfits)
     - id: FlippoEngravedLighter
     - id: FlashlightSeclite
     - id: ForensicScanner
@@ -171,7 +173,8 @@
     - id: BoxEvidenceMarkers
     - id: HandLabeler
     - id: BoxTapeRecorder # DeltaV
-    - id: LuxuryPen # Moffstation - Start (New Detective Clothes)
+    # Moffstation - Begin (New Detective Clothes)
+    - id: LuxuryPen
     - id: ClothingNeckDetBadge
     - !type:GroupSelector # Detective needs their notes
       rolls: !type:RangeNumberSelector
@@ -209,7 +212,8 @@
         - id: ClothingOuterCoatDetectiveLoadout
       - !type:AllSelector
         children:
-        - id: ClothingOuterCoatDetectiveLoadoutGrey #Moffstation - End (New Detective Outfits)
+        - id: ClothingOuterCoatDetectiveLoadoutGrey
+    # Moffstation - End (New Detective Outfits)
 
 - type: entity
   id: ClosetBombFilled

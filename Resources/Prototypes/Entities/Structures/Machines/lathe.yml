@@ -473,6 +473,7 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
+    - AACTabletStatic # Moffstation - AAC tablet
     dynamicPacks:
     - Chemistry
   - type: Machine
@@ -518,6 +519,14 @@
     - Scarves
     - Carpets
     - Bedsheets
+    # Moffstation - Start - Moffstation clothes!
+    - MoffstationClothingCargo
+    - MoffstationClothingCommand
+    - MoffstationClothingMedical
+    - MoffstationClothingScience
+    - MoffstationClothingSecurity
+    - MoffstationClothingService
+    # Moffstation - End
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
