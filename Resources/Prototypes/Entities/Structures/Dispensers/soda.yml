@@ -23,6 +23,11 @@
     guides:
     - Bartender
     - Drinks
+  # Moffstation - Start - Dispenser Locks
+  - type: Lock
+  - type: AccessReader
+    access: [ [ "Bar" ] ]
+  # Moffstation - End
 
 - type: entity
   parent: SodaDispenserEmpty
