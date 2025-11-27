@@ -831,8 +831,10 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianHead
-  - CourierHat # Moffstation - Start - (Cargo Outfits)
-  - CargonianUshanka # Moffstation - End - (Cargo Outfits)
+  # Moffstation - Start - (Cargo Outfits)
+  - CourierHat 
+  - CargonianUshanka
+  # Moffstation - End - (Cargo Outfits)
 
 - type: loadoutGroup
   id: CargoTechnicianJumpsuit
