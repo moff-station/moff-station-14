@@ -1,4 +1,6 @@
-# Hats
+# ID
+
+# Head
 - type: loadout
   id: CaptainConductor
   equipment:
@@ -9,13 +11,15 @@
   equipment:
     head: ClothingHeadHatCaptainTricorn
 
-# Outer Clothing
-- type: loadout
-  id: CaptainLongcoat
-  equipment:
-    outerClothing: ClothingOuterCoatCaptainLongcoat
+# Mask
 
-# Jumpsuits
+# Neck
+- type: loadout
+  id: CaptainCapeFormal
+  equipment:
+    neck: ClothingNeckCapeCaptain
+
+# Jumpsuit
 - type: loadout
   id: CaptainJumpsuitConductor
   equipment:
@@ -39,3 +43,19 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtCaptainNaval
   groupBy: "captain jumpskirts"
+
+# Back
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: CaptainLongcoat
+  equipment:
+    outerClothing: ClothingOuterCoatCaptainLongcoat
+
+# Gloves
+
+# Shoes
+
+# Eyewear
