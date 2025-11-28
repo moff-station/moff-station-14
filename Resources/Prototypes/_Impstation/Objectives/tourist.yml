@@ -67,7 +67,7 @@
   - type: Objective
     difficulty: 2
     icon:
-      sprite: _Impstation/Objects/Devices/nuke.rsi
+      sprite: Objects/Devices/nuke.rsi
       state: nuclearbomb_base
   - type: NumberObjective
     min: 1
@@ -191,8 +191,8 @@
   - type: Objective
     difficulty: 2
     icon:
-      sprite: _NF/Objects/Fun/spaceblade.rsi
-      state: singularity
+      sprite: Structures/Power/Generation/Singularity/generator.rsi
+      state: icon
   - type: NumberObjective
     min: 1
     max: 1
@@ -387,7 +387,7 @@
   id: ClownMask
   name: steal-target-groups-clown-mask
   sprite:
-    sprite: _Impstation/Clothing/Mask/clown.rsi
+    sprite: Clothing/Mask/clown.rsi
     state: icon
 
 - type: entity
@@ -459,8 +459,8 @@
     difficulty: 0.5
     unique: true
     icon:
-      sprite: _Impstation/Objects/Consumable/Drinks/noveltymug.rsi
-      state: icon-0
+      sprite: Objects/Consumable/Drinks/mug_dog.rsi
+      state: icon
   - type: ObjectiveBlacklistRequirement
     blacklist:
       components:
