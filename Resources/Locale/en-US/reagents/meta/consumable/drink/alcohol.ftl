@@ -283,6 +283,9 @@ reagent-desc-three-mile-island = "Made for a woman, strong enough for a man."
 reagent-name-toxins-special = toxins special
 reagent-desc-toxins-special = This thing is ON FIRE! CALL THE DAMN SHUTTLE!
 
+reagent-name-scranton-special = Scranton special
+reagent-desc-scranton-special = The kind of drink to make you go "Hey hey hey!"
+
 reagent-name-vampiro = vampiro
 reagent-desc-vampiro = Popular in Mexico and Transylvania.
 
