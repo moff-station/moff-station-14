@@ -326,7 +326,6 @@ flavor-complex-sbiten = like fire
 flavor-complex-snowwhite = like sour and bitter hops
 flavor-complex-sui-dream = like a picture of the Alps
 flavor-complex-toxins-special = like space exploration
-flavor-complex-scranton-special = like a deal gone wrong
 flavor-complex-vodka-martini = like a spy movie from Russia
 flavor-complex-vodka-tonic = refreshingly bitter
 flavor-complex-coconut-rum = like nutty fermented sugar
