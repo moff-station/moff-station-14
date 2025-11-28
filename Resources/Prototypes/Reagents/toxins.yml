@@ -495,7 +495,7 @@
       - !type:PopupMessage
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ] #moffstation change - diona process uncooked animal proteins
+          type: [ Animal, Vox, Plant ]
           inverted: true
         type: Local
         visualType: MediumCaution
@@ -505,16 +505,23 @@
         probability: 0.1
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ] #moffstation change - diona process uncooked animal proteins
+          type: [ Animal, Vox, Plant ] #moffstation change - diona are less debilitated by uncooked animal proteins
           inverted: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ] #moffstation change - diona process uncooked animal proteins
+          type: [ Animal, Vox, Plant ] #moffstation change - diona are less debilitated by uncooked animal proteins
           inverted: true
         damage:
           types:
             Poison: 1
+      - !type:HealthChange #moffstation start - diona are less debilitated by uncooked animal proteins
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Plant ]
+        damage:
+          types:
+            Poison: .25 #moffstation end - diona are less debilitated by uncooked animal proteins
       - !type:AdjustReagent
         conditions:
         - !type:MetabolizerTypeCondition
@@ -524,7 +531,7 @@
       - !type:AdjustReagent
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox, Plant ] #moffstation change - diona process uncooked animal proteins
+          type: [ Vox ]
         reagent: Protein
         amount: 0.25
 
