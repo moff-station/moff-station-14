@@ -23,6 +23,7 @@
   - PersonalItemCooksPlushie
   - PersonalItemCoryClipboard
   - PersonalItemDarnellLighter
+  - PersonalItemDawnBottle
   - PersonalItemDeliPearl
   - PersonalItemDelilahSuit
   - PersonalItemDawnBottle
@@ -33,11 +34,13 @@
   - PersonalItemGigsShaker
   - PersonalItemHercynSuit
   - PersonalItemHotSauceFireExtinguisher
-  - PersonalItemIrisRing
   - PersonalItemIoImplanter
+  - PersonalItemIrisRing
   - PersonalItemJasmineFlower
   - PersonalItemJessMask
+  - PersonalItemKaiPlushie
   - PersonalItemKatieWristBand
+  - PersonalItemKennyPrisonerShirt
   - PersonalItemKimBass
   - PersonalItemKrakatoaCloak
   - PersonalItemKylieUniform
@@ -47,6 +50,7 @@
   - PersonalItemNyxilathRing
   - PersonalItemPeedeeAvatar
   - PersonalItemPeriwinkleFace
+  - PersonalItemPilkmanPlushie
   - PersonalItemReelsKnife
   - PersonalItemRemiaPin
   - PersonalItemRoseHeadphones
@@ -58,17 +62,16 @@
   - PersonalItemScribblesPlushie
   - PersonalItemSeanSheet
   - PersonalItemSeikretPhoto
-  - PersonalItemSiegeHalffloofMask
-  - PersonalItemTalviHoodie
-  - PersonalItemToffeeMask
-  - PersonalItemSqueaksHampter
   - PersonalItemSharedReptilianFamilyPhoto
   - PersonalItemSharedStationBlueprints
+  - PersonalItemSiegeHalffloofMask
   - PersonalItemSigerthePlushie
   - PersonalItemSkiesOfSunshine
+  - PersonalItemSqueaksHampter
   - PersonalItemStrawberryBackTentacles
   - PersonalItemSwanerPhoto
   - PersonalItemTaniaBackTentacles
+  - PersonalItemToffeeMask
   - PersonalItemVexMask
   - PersonalItemVivonicMantle
   - PersonalItemVortexMask
@@ -79,7 +82,7 @@
 - type: loadoutGroup
   id: CaptainEyewear
   name: loadout-group-captain-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - AdminGlasses
   - AdminHud
@@ -92,7 +95,7 @@
 - type: loadoutGroup
   id: HopEyewear
   name: loadout-group-head-of-personnel-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - AdminHud
   - Glasses
@@ -105,7 +108,7 @@
 - type: loadoutGroup
   id: SecurityEyewear
   name: loadout-group-security-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - SecurityGlasses
   - SecurityHud
@@ -130,7 +133,7 @@
 - type: loadoutGroup
   id: DetectiveEyewear
   name: loadout-group-detective-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - SecurityGlasses
   - NoirGlasses
@@ -175,7 +178,7 @@
 - type: loadoutGroup
   id: EngineeringEyewear
   name: loadout-group-engineering-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - EngineeringGoggles
   - EngineeringGlasses
@@ -189,6 +192,14 @@
   - EyePatchFlipped
 
 # Atmospheric Technician
+- type: loadoutGroup
+  id: AtmosphericTechnicianHead
+  name: loadout-group-atmospheric-technician-head
+  minLimit: 0
+  loadouts:
+  - StationEngineerHardhatYellow
+  - AtmosphericTechnicianHardhatBlue
+
 - type: loadoutGroup
   id: AtmosPDA
   name: loadout-group-atmospheric-technician-id
@@ -204,7 +215,7 @@
 - type: loadoutGroup
   id: ChemistryEyewear
   name: loadout-group-chemistry-glasses
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - ChemistryGoggles
   - MedicalGlasses

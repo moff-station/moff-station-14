@@ -9,7 +9,7 @@
 
 # --- VOICE LINES ---
 # Voice lines can contain identifying information, like the character's name.
-# Voice lines should be semi iconic or unique to that character. A passing greating, a catch phrase, something they often say on the job, a throwback to a round they remember well.
+# Voice lines should be semi iconic or unique to that character. A passing greeting, a catchphrase, something they often say on the job, a throwback to a round they remember well.
 # Voice lines should be written without an accent, if an accent is added it should be done via the accent component in post.
 # Voice lines should be written with proper grammar and spelling, unless doing otherwise is an explicit feature of the character.
 # Voice lines should not have excessive punctuation, no more than 2 "!" at the end of a sentence. They're figurines with tiny piezoelectrics, not loudspeakers.
@@ -38,6 +38,21 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineAsher
+  name: Two-Faced Moth Figurine
+  description: "A double-sided figurine depicting a young, feminine moth person. This side is dressed like a security officer, his face twisted into a scowl.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
+  components:
+  - type: Sprite
+    state: aurora-asher
+  - type: SpeakOnTrigger
+    pack: FigurinesAsher
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_asher
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineAudrina
   name: Unimpressed Human Psychologist Figurine
   description: A figurine depicting a human with cat ears. There are bandages on its left arm, seemingly haphazardly painted on. The tie seems loose, although it's hard plastic. The expression is concerningly blank.
@@ -46,6 +61,41 @@
     state: audrina
   - type: SpeakOnTrigger
     pack: FigurinesAudrina
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAurora
+  name: Two-Faced Moth Figurine
+  description: "A double-sided figurine depicting a young, feminine moth person. This side is dressed like an engineer, with a playful smile on her face.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
+  components:
+  - type: Sprite
+    state: aurora
+  - type: SpeakOnTrigger
+    pack: FigurinesAurora
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_aurora
+
+# Allows you to toggle between the Aurora and Asher figurines using a crowbar.
+- type: constructionGraph
+  id: ToyFigurineAuroraSwapGraph
+  start: swap_asher
+  graph:
+  - node: swap_asher
+    entity: ToyFigurineAsher
+    edges:
+    - to: swap_aurora
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+  - node: swap_aurora
+    entity: ToyFigurineAurora
+    edges:
+    - to: swap_asher
+      steps:
+      - tool: Prying
+        doAfter: 0.1
 
 - type: entity
   parent: BaseFigurineMoff

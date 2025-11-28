@@ -19,3 +19,54 @@
       toggleable-clothing: !type:ContainerSlot { }
       storagebase: !type:Container
         ents: [ ]
+
+- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase,BaseCentcommContraband]
+  id: ClothingOuterWinterLongCentcom
+  name: centcomm longcoat
+  description: A warm double-breasted longcoat, worn over a standard armor vest. Comes in centcomm colors.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/centcom-longcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/centcom-longcoat.rsi
+  - type: StorageFill
+    contents:
+    - id: CigarGold
+    - id: CigarGold
+    - id: CentCommFlippo
+  - type: TemperatureProtection
+    heatingCoefficient: 1.1
+    coolingCoefficient: 0.1
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterCentcom
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
+
+- type: entity
+  parent: [ ClothingOuterWinterCoatToggleable, BaseCentcommContraband ]
+  id: ClothingOuterWinterWindbreakerCentcom
+  name: centcomm windbreaker
+  description: A warm puffer jacket made of pristine central command materials.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/centcom-windbreaker.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/centcom-windbreaker.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterCentcom

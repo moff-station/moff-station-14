@@ -69,3 +69,10 @@
   name: spacelaw-changes
   ruleEntry: true
   text: "/ServerInfo/_Moffstation/Guidebook/ServerRules/MoffSpaceLawChanges.xml"
+
+- type: guideEntry
+  id: SpaceLaw
+  name: guide-entry-rules-space-law
+  text: "/ServerInfo/_Moffstation/Guidebook/Spacelaw/MoffSpaceLaw.xml"
+  children:
+  - SpaceLawCrimeList

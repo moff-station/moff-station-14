@@ -1,0 +1,62 @@
+﻿## Static (imagine needing to research clothes, godo)
+
+- type: latheRecipePack
+  id: MoffstationClothingCargo
+  recipes:
+  - ClothingUniformJumpsuitQMVista
+  - ClothingUniformJumpskirtQMVista
+
+- type: latheRecipePack
+  id: MoffstationClothingCommand
+  recipes:
+  # Captain
+  - ClothingHeadHatCaptainConductor
+  - ClothingHeadHatCaptainTricorn
+  - ClothingOuterCoatCaptainLongcoat
+  - ClothingUniformJumpsuitCaptainConductor
+  - ClothingUniformJumpskirtCaptainConductor
+  - ClothingUniformJumpsuitCaptainNaval
+  - ClothingUniformJumpskirtCaptainNaval
+  # HoP
+  - ClothingUniformJumpsuitHoPFormal
+  - ClothingUniformJumpskirtHoPFormal
+
+- type: latheRecipePack
+  id: MoffstationClothingMedical
+  recipes:
+  - ClothingUniformJumpskirtNurse
+  - ClothingUniformJumpsuitCMOFormal
+  - ClothingUniformJumpsuitCMOFlowing
+  - ClothingUniformJumpskirtCMOFlowing
+  - ClothingUniformJumpsuitCMOShell
+  - ClothingUniformJumpskirtCMOShell
+
+- type: latheRecipePack
+  id: MoffstationClothingScience
+  recipes:
+  - ClothingUniformJumpsuitMachinist
+  - ClothingUniformJumpskirtMachinist
+  - ClothingOuterCoatRDVisionary
+  - ClothingOuterCoatMach
+
+- type: latheRecipePack
+  id: MoffstationClothingSecurity
+  recipes:
+  - ClothingUniformPrisonerShirt
+  - ClothingUniformJumpsuitStripedPrisoner
+  - ClothingUniformJumpskirtStripedPrisoner
+  - ClothingUniformJumpsuitDetInvestigator
+  - ClothingUniformJumpskirtDetInvestigator
+  - ClothingUniformJumpsuitDetSleuth
+  - ClothingUniformJumpskirtDetSleuth
+  - ClothingOuterCoatSleuth
+
+- type: latheRecipePack
+  id: MoffstationClothingService
+  recipes:
+  - ClothingUniformJumpsuitMeteorologist
+  - ClothingUniformJumpskirtMeteorologist
+  - ClothingUniformJumpsuitJournalist # We didn't add this, but if the skirt is available, the suit should be too.
+  - ClothingUniformJumpskirtJournalist
+  - ClothingUniformJumpskirtReporter
+

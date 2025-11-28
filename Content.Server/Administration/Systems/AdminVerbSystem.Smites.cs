@@ -56,6 +56,7 @@ using Robust.Shared.Spawners;
 using Robust.Shared.Utility;
 using System.Numerics;
 using System.Threading;
+using Content.Server._Moffstation.Administration.Components; // Moffstation - Add Peak Smite
 using Content.Shared.Damage.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
@@ -579,6 +580,23 @@ public sealed partial class AdminVerbSystem
                 Message = string.Join(": ", killSignName, Loc.GetString("admin-smite-kill-sign-description"))
             };
             args.Verbs.Add(killSign);
+
+            // Moffstation - Start - Add PEAK Smite
+            var peakSignName = Loc.GetString("admin-smite-peak-sign-name").ToLowerInvariant();
+            Verb peakSign = new()
+            {
+                Text = peakSignName,
+                Category = VerbCategory.Smite,
+                Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Objects/Misc/peaksign.rsi"), "icon"),
+                Act = () =>
+                {
+                    EnsureComp<PeakSignComponent>(args.Target);
+                },
+                Impact = LogImpact.Extreme,
+                Message = string.Join(": ", peakSignName, Loc.GetString("admin-smite-peak-sign-description"))
+            };
+            args.Verbs.Add(peakSign);
+            // Moffstation - End
 
             var cluwneName = Loc.GetString("admin-smite-cluwne-name").ToLowerInvariant();
             Verb cluwne = new()

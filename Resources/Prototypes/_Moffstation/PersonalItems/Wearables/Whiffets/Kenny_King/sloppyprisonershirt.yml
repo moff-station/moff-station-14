@@ -1,0 +1,21 @@
+# Player: Whiffets - Character: Kenny King
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: PersonalItemKennyPrisonerShirt
+  name: sloppy prisoner shirt
+  description: Smells of singed hair and rotten carp.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Whiffets/Kenny_King/kennyprisonershirt.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Whiffets/Kenny_King/kennyprisonershirt.rsi
+
+- type: loadout
+  id: PersonalItemKennyPrisonerShirt
+  inhand:
+  - PersonalItemKennyPrisonerShirt
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kenny King
