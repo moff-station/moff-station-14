@@ -112,7 +112,7 @@
 
 - type: entity
   parent: DrinkGlass
-  id: DrinkScrantonSpecialGlass
+  id: DrinkScrantonSpecial
   suffix: scranton special
   components:
   - type: SolutionContainerManager
@@ -123,5 +123,5 @@
         - ReagentId: ScrantonSpecial
           Quantity: 30
   - type: Icon
-    sprite: Objects/Consumable/Drinks/scrantonspecialglass.rsi
+    sprite: _Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
     state: icon
