@@ -495,7 +495,7 @@
       - !type:PopupMessage
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Animal, Vox, Plant ]
+          type: [ Animal, Vox, Plant ] #moffstation change - diona are less debilitated by uncooked animal proteins
           inverted: true
         type: Local
         visualType: MediumCaution
