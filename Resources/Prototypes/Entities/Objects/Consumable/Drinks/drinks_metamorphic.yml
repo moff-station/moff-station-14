@@ -2142,22 +2142,6 @@
 
 - type: entity
   parent: DrinkGlass
-  id: DrinkScrantonSpecialGlass
-  suffix: scranton special
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: ScrantonSpecial
-          Quantity: 30
-  - type: Icon
-    sprite: Objects/Consumable/Drinks/scrantonspecialglass.rsi
-    state: icon
-
-- type: entity
-  parent: DrinkGlass
   id: DrinkVampiroGlass
   suffix: vampiro
   components:

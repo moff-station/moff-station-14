@@ -113,3 +113,15 @@
       amount: 2
   products:
     MossySpecial: 3
+
+- type: reaction
+  id: ScrantonSpecial
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Rum:
+      amount: 2
+    Cream:
+      amount: 1
+  products:
+    ScrantonSpecial: 3
