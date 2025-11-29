@@ -263,6 +263,18 @@ figurines-jelob-4 = W-We alway-ys make it thr-rough!
 figurines-jelob-5 = I’m-*hiccups*-fiiune!
 figurines-jelob-6 = I w-won’t get hu-urt I swear!
 
+figurines-jessgerr-1 = How did you know that jingling was me?
+figurines-jessgerr-2 = Pie inbound!
+figurines-jessgerr-3 = To bark, or not to bark, that is the question.
+figurines-jessgerr-4 = O Honkmother, answer my prayer!
+figurines-jessgerr-5 = Buy more Honk Pockets™!
+figurines-jessgerr-6 = Insuls really tie my outfit together.
+figurines-jessgerr-7 = Without security, crime has no punchline…
+figurines-jessgerr-8 = You don't wanna know what's in this pie.
+figurines-jessgerr-9 = Touch the mask and I won't be so silly..
+figurines-jessgerr-10 = Jingle, jingle!
+figurines-jessgerr-11 = Don't forget to smile! Or else!
+
 figurines-jobs-1 = I'm alright.
 figurines-jobs-2 = I’m nnnott ...huuuuhhh... druunnnk!
 figurines-jobs-3 = Check this out.
