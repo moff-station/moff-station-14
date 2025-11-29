@@ -102,11 +102,11 @@ figurines-brisbanebighat-4 = --l---- -a--- t- --- ---f ---o- ---- -----s-.
 figurines-brisbanebighat-5 = -'m --t -- ---h--- -- --t.
 
 figurines-camilla-1 = Have you seen meine wife?
-figurines-camilla-2 = Kalimotxo please? Merci beaucoup.
-figurines-camilla-3 = It wasn't me, I swear. She just looks like me, and sounds like me...
+figurines-camilla-2 = Kalimotxo please?
+figurines-camilla-3 = She just looks like me, and sounds like me...
 figurines-camilla-4 = Capitaine, my love!
 figurines-camilla-5 = Officers dispatch.
-figurines-camilla-6 = Officer, to my office, now.
+figurines-camilla-6 = Security Officer, to my office, now.
 figurines-camilla-7 = I don't want to execute them...
 figurines-camilla-8 = No, you cannot lethal the clown.
 figurines-camilla-9 = I am das kaptain's kommandant, and she is ma capitaine.
