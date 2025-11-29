@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "fluff sprites taken from Baystation12. back_patch, snout, belly and forehead sprites created by Huaqas (GitHub).",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "fluff",
+            "directions": 4
+        },
+        {
+            "name": "fluff_head",
+            "directions": 4
+        },
+        {
+            "name": "fluff_head_up",
+            "directions": 4
+        },
+        {
+            "name": "belly",
+            "directions": 4
+        },
+        {
+            "name": "back_patch",
+            "directions": 4
+        },
+        {
+            "name": "snout",
+            "directions": 4
+        },
+        {
+            "name": "forehead",
+            "directions": 4
+        }
+    ]
+}

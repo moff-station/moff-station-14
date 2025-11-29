@@ -4,13 +4,15 @@
   suffix: Filled
   parent: CratePirateChestSecure # Moffstation - Change to secure chest
   components:
-  - type: StorageFill
-    contents:
-      - id: ClothingNeckCloakPirateCap
-      # Moffstation - Remove captain chest stuff
-#      - id: EnergyCutlass
-#      - id: MicroBombImplanter
-      # Moffstation - End
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingNeckCloakPirateCap
+        # Moffstation - Begin - Remove captain chest stuff
+#        - id: EnergyCutlass
+#        - id: MicroBombImplanter
+        # Moffstation - End
 
 - type: entity
   id: CratePirateChest
@@ -18,16 +20,18 @@
   suffix: Filled
   parent: CratePirate
   components:
-  - type: StorageFill
-    contents:
-      - id: WeaponLauncherPirateCannon
-        amount: 2
-      - id: ClothingOuterCoatGentle
-      - id: Cutlass
-        amount: 2
-      - id: CannonBall
-        amount: 2
-      - id: WeaponPistolFlintlock
-        amount: 4
-      - id: WeaponShotgunBlunderbuss
-        amount: 2
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponLauncherPirateCannon
+          amount: 2
+        - id: ClothingOuterCoatGentle
+        - id: Cutlass
+          amount: 2
+        - id: CannonBall
+          amount: 2
+        - id: WeaponPistolFlintlock
+          amount: 4
+        - id: WeaponShotgunBlunderbuss
+          amount: 2

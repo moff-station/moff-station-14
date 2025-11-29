@@ -23,17 +23,20 @@
   id: CargoTechnicianHead
   equipment:
     head: ClothingHeadHatCargosoft
+  groupBy: "cargo hats" # Moffstation - Cargo Outfits
 
 # Jumpsuit
 - type: loadout
   id: CargoTechnicianJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCargo
+  groupBy: "cargo jumpsuits" # Moffstation - Cargo Outfits
 
 - type: loadout
   id: CargoTechnicianJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCargo
+  groupBy: "cargo jumpskirts" # Moffstation - Cargo Outfits
 
 # Back
 - type: loadout

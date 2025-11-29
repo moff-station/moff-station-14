@@ -8,3 +8,51 @@
   id: LogisticsAssociatePDA
   equipment:
     id: LogisticsAssociatePDA
+#Head
+- type: loadout
+  id: CourierHat
+  equipment:
+    head: ClothingHeadHatCourier
+  groupBy: "cargo hats" # Moffstation - Cargo Outfits
+
+- type: loadout
+  id: CargonianUshanka
+  equipment:
+    head: ClothingHeadHatSeniorCargo
+  groupBy: "cargo hats" # Moffstation - Cargo Outfits
+
+# Jumpsuit
+- type: loadout
+  id: CourierJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCourier
+  groupBy: "cargo jumpsuits" # Moffstation - Cargo Outfits
+
+- type: loadout
+  id: CourierJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCourier
+  groupBy: "cargo jumpskirts" # Moffstation - Cargo Outfits
+
+- type: loadout
+  id: SeniorCargoTechnicianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorCargo
+  groupBy: "cargo jumpsuits" # Moffstation - Cargo Outfits
+
+- type: loadout
+  id: SeniorCargoTechnicianJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorCargo
+  groupBy: "cargo jumpskirts" # Moffstation - Cargo Outfits
+
+# OuterClothing
+- type: loadout
+  id: SeniorCargoWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorCargo
+
+- type: loadout
+  id: CargoTechnicianWindbreaker
+  equipment:
+    outerClothing: ClothingOuterWinterCargoWindbreaker

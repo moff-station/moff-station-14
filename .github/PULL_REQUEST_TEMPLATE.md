@@ -16,14 +16,14 @@ See the Harmony contributing guidelines for an example on what we want: https://
 <!-- Summary of code changes for easier review. -->
 
 ## Media
-<!-- Attach media if the PR makes ingame changes (clothing, items, features, etc).
+<!-- Attach media if the PR makes in-game changes (clothing, items, features, etc).
 Small fixes/refactors are exempt. Media may be used in SS14 progress reports with credit. -->
 
 ## Requirements
 <!-- Confirm the following by placing an X in the brackets [X]: -->
 - [ ] I have read and am following the [Upstream Pull Request and Changelog Guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) as well as the [Moffstation Contributing Guidelines](https://github.com/moff-station/moff-station-14/blob/master/CONTRIBUTING.md).
 - [ ] I have properly sectioned my changes into fork namespaces, and/or followed proper guidelines for modifying upstream files.
-- [ ] I have added media to this PR or it does not require an ingame showcase.
+- [ ] I have added media to this PR or it does not require an in-game showcase.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->
 
 ## Breaking changes

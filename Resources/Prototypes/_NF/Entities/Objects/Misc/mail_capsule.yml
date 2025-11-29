@@ -41,7 +41,7 @@
         startingItem: null
         whitelist:
           components:
-          - Food
+          - Edible
         insertOnInteract: true
         priority: 2
       cash_slot:
@@ -79,7 +79,7 @@
       icon-food:
         whitelist:
           components:
-          - Food
+          - Edible
       icon-cash:
         whitelist:
           components:
@@ -90,11 +90,12 @@
           tags:
           - Book
           - Document
+          - Paper
+          - BoxCardboard
+          - Folder
           components:
           - Delivery
-          - Mail
           - Paper
-          - HyperlinkBook
           - WrappedParcel
     sprite: _NF/Objects/Misc/mail_capsule.rsi
   - type: Dumpable

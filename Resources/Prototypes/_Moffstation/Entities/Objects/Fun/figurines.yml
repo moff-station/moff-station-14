@@ -463,18 +463,6 @@
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineKai
-  name: Shirtless Lizard Engineer Figurine
-  description: A figurine depicting a large, spikey goober with tall horns and a large tail. He wears a warm orange scarf around his neck and has a toolbelt of tiny replica engineering tools
-  components:
-  - type: Sprite
-    state: kai
-  - type: SpeakOnTrigger
-    pack: FigurinesKai
-  - type: LizardAccent
-
-- type: entity
-  parent: BaseFigurineMoff
   id: ToyFigurineKatie
   name: Young Engineer Woman Figurine
   description: A figurine depicting a young woman dressed in an engineering attire, they seem hopeful.

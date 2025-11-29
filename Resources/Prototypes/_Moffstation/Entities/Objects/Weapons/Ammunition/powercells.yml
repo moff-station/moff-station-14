@@ -12,7 +12,7 @@
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
       state: o2
       shader: unshaded
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 600
     startingCharge: 600
   - type: Tag

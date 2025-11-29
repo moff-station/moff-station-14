@@ -103,3 +103,38 @@
     - Recyclable
     - HamsterWearable
     - WhitelistChameleon
+
+#Cargo
+- type: entity
+  parent: [ClothingHeadBase, BaseFoldable]
+  id: ClothingHeadHatSeniorCargo
+  name: cargonian ushanka
+  description: "\"Glory to Cargonia!\""
+  components:
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/senior-cargo.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: up
+    foldedHeldPrefix: up
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/senior-cargo.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-up
+      map: ["foldedLayer"]
+      visible: false
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCourier
+  name: courier cap
+  description: A streamlined Courier Hat, looks good when running away from canines
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
