@@ -424,6 +424,17 @@ figurines-sapphire-6 = We gotta stop meeting like this.
 figurines-sapphire-7 = Welcome back!
 figurines-sapphire-8 = Sean~!
 
+figurines-saprophyte-1 = Greetings!
+figurines-saprophyte-2 = Greetings, child.
+figurines-saprophyte-3 = Do you enjoy classical?
+figurines-saprophyte-4 = This is Clair de Lune.
+figurines-saprophyte-5 = What troubles you, child?
+figurines-saprophyte-6 = What troubles you so?
+figurines-saprophyte-7 = Y o u… s o o n…
+figurines-saprophyte-8 = W e… a r e… t h e…
+figurines-saprophyte-9 = I am an acolyte directly serving for The Fresh Spores of the Cosmos.
+figurines-saprophyte-10 = I am a humble follower of The Great Fungus of the Universe.
+
 figurines-sawa-1 = Haii!
 figurines-sawa-2 = Okie!
 figurines-sawa-3 = THE SPIRITS ARE HAUNTING ME!!

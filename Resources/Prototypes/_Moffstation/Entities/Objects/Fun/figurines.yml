@@ -723,6 +723,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineSaprophyte
+  name: Fungi-Covered Druid Figurine
+  description: A figurine depicting a blueish-indigo diona that has various fungi growing from it.
+  components:
+  - type: Sprite
+    state: saprophyte
+  - type: SpeakOnTrigger
+    pack: FigurinesSaprophyte
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineSawa
   name: Bug Eyed Lizard Figurine
   description: A figurine depicting a lazy reprint of another figurine
