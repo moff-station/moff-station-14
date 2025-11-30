@@ -1,0 +1,49 @@
+﻿- type: xenoArchTrigger
+  id: TriggerCleaner
+  tip: xenoarch-trigger-tip-cleaner
+  components:
+  - type: XATReactive
+    reagents:
+    - SpaceCleaner
+    - Bleach
+
+- type: xenoArchTrigger
+  id: TriggerEuphoria
+  tip: xenoarch-trigger-tip-euphoria
+  components:
+  - type: XATReactive
+    reagents:
+    - Happiness
+    - Laughter
+    - Psicodine
+
+- type: xenoArchTrigger
+  id: TriggerLube
+  tip: xenoarch-trigger-tip-lube
+  components:
+  - type: XATReactive
+    reagents:
+    - SpaceLube
+
+- type: xenoArchTrigger
+  id: TriggerNarcotics
+  tip: xenoarch-trigger-tip-narcotics
+  components:
+  - type: XATReactive
+    reagents:
+    - Ephedrine
+    - Desoxyephedrine
+    - Stimulants
+
+- type: xenoArchTrigger
+  id: TriggerTropicalDrink
+  tip: xenoarch-trigger-tip-tropical-drink
+  components:
+  - type: XATReactive
+    reagents:
+    - BahamaMama
+    - BlueHawaiian
+    - ElectricShark
+    - JungleBird
+    - PinaColada
+    - PlantersPunch
