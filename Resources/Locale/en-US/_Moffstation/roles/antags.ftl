@@ -69,3 +69,6 @@ lpo-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
 
 roles-high-value-target = High Value Target
 roles-high-value-target-objective = You are a high-value target for the syndicate. Contracts are more likely to target you than other crew members.
+
+# Tourists
+objective-issuer-self = [color=Green]Civilians[/color]
