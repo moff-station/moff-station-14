@@ -179,6 +179,18 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineCamilla
+  name: Scarred HOS Figurine
+  description: A figurine of a human head of security woman covered in scars, wearing the red and black uniform. She's trying her hardest to be friendly but she's very clearly overwhelmed. Collectors tend to pair it with a certain captain figurine.
+  components:
+  - type: Sprite
+    state: camilla
+  - type: SpeakOnTrigger
+    pack: FigurinesCamilla
+  - type: FrenchAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCassiel
   name: Anxious Cargo Technician Figurine
   description: A figurine depicting a tall pink moth covered in scars, wearing a cargo tech jumpskirt. She looks incredibly nervous about something... or rather, a lot of things.
@@ -441,6 +453,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineJessGerr
+  name: Jubilant Jester Figurine
+  description: A figurine depicting a vulpkanin dressed head to toe in yellow and red jester garb, with her hair and tail tip dyed to match. You could swear the smile on the mask grows larger each time you look away.
+  components:
+  - type: Sprite
+    state: jessgerr
+  - type: SpeakOnTrigger
+    pack: FigurinesJessGerr
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineJobs
   name: Scarred Reptilian Figurine
   description: A figurine depicting a seemingly tired forest green passenger reptile with a bomber jacket and burn scars covering his body from head to toe. Somehow the figure smells of whiskey.
@@ -696,6 +719,17 @@
     state: samantha
   - type: SpeakOnTrigger
     pack: FigurinesSamantha
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSaprophyte
+  name: Fungi-Covered Druid Figurine
+  description: A figurine depicting a blueish-indigo diona that has various fungi growing from it.
+  components:
+  - type: Sprite
+    state: saprophyte
+  - type: SpeakOnTrigger
+    pack: FigurinesSaprophyte
 
 - type: entity
   parent: BaseFigurineMoff
