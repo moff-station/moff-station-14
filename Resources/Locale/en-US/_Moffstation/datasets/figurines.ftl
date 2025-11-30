@@ -271,7 +271,7 @@ figurines-jessgerr-5 = Buy more Honk Pockets™!
 figurines-jessgerr-6 = Insuls really tie my outfit together.
 figurines-jessgerr-7 = Without security, crime has no punchline…
 figurines-jessgerr-8 = You don't wanna know what's in this pie.
-figurines-jessgerr-9 = Touch the mask and I won't be so silly..
+figurines-jessgerr-9 = Touch the mask and I won't be so silly...
 figurines-jessgerr-10 = Jingle, jingle!
 figurines-jessgerr-11 = Don't forget to smile! Or else!
 
