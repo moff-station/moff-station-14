@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: DiagnosticSunglasses
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: sunglassesdiagnostic
+      steps:
+      - tag: SunglassesCheap
+        name: construction-graph-tag-cheap-sun-glasses
+        icon:
+          sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+          state: icon
+        doAfter: 5
+      - tag: HudDiagnostic
+        name: construction-graph-tag-diagnostic-hud
+        icon:
+          sprite: Clothing/Eyes/Glasses/diag.rsi
+          state: icon
+        doAfter: 5
+  - node: sunglassesdiagnostic
+    entity: ClothingEyesGlassesDiagnosticSunglasses
