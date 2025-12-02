@@ -1,7 +1,7 @@
 - type: weightedRandomXenoArchTrigger
   id: DefaultTriggers
   weights:
-    TriggerMusic: 1
+    # TriggerMusic: 1 # Moffstation - Temporary fix while music is crashing the server
     TriggerHeat: 1
     TriggerCold: 0.5
     TriggerNoOxygen: 1
