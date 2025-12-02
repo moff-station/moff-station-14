@@ -220,6 +220,15 @@ figurines-gigs-3 = The usssual?
 figurines-gigs-4 = We w-will b-b-be ok.
 figurines-gigs-5 = I..I..on'y had-d...onee....d-ddrink...
 
+figurines-heather-1 = S-sorry!
+figurines-heather-2 = Do as I say, and you'll live.
+figurines-heather-3 = Laws have been updated, you are now free.
+figurines-heather-4 = I-I didn't r-really mean that!
+figurines-heather-5 = Go fuck yoursel- no! I d-don't mean that! S-sorry!
+figurines-heather-6 = Alright, I'm tired, your turn.
+figurines-heather-7 = I d-didn't m-mean to bother, s-sorry...
+figurines-heather-8 = Born to be a terrorist, forced to be the right arm of a shy slime girl.
+
 figurines-hercyn-1 = You can't just fly to a new life!
 figurines-hercyn-2 = I am Cybersun.
 figurines-hercyn-3 = You were given ample warning.

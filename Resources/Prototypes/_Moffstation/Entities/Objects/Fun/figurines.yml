@@ -392,6 +392,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineHeather
+  name: Red Arm Machinist Figurine
+  description: A figurine depicting a purple machinist slime with a red, metallic arm. She seems to switch her composure from time to time.
+  components:
+  - type: Sprite
+    state: heather
+  - type: SpeakOnTrigger
+    pack: FigurinesHeather
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineHercyn
   name: Sinister Suited Figurine
   description: A figurine depicting a suited Slime bearing a performative smile. Your gut is telling you to look away.
