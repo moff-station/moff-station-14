@@ -18,7 +18,6 @@
     preservationWhitelist:
       components:
       - MobState
-      - OnUseTimerTrigger
       - StealTarget
       - Mech
     preservationBlacklist: # delete stuff that passes this, even if it also passes the preservationWhitelist
