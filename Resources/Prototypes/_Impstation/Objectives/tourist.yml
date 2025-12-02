@@ -435,7 +435,7 @@
   parent: [ BaseTouristObjective, BaseFreeObjective ]
   id: TouristDieGimmickObjective
   name: Die and be revived
-  description: You hear the doctors here are good! You've always wondered what it's like on the other side... This objective is not tracked and will automatically succeed.
+  description: You hear the doctors here are good! You've always wondered what it's like on the other side...
   components:
   - type: Objective
     difficulty: 1.25
@@ -453,7 +453,7 @@
   parent: [ BaseTouristObjective, BaseFreeObjective ]
   id: TouristAnnoyServiceGimmickObjective
   name: Make complaints about the service
-  description: If somebody bothers you on your vacation, they deserve it! This objective is not tracked and will automatically succeed.
+  description: If somebody bothers you on your vacation, they deserve it!
   components:
   - type: Objective
     difficulty: 0.5
