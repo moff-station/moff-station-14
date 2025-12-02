@@ -97,9 +97,11 @@
       - PowerStorage
       - VoltageNetworks
       - Power
-    - type: AccessReader # imp
+    # Impstation - Start
+    - type: AccessReader
       access: [["Engineering"]]
-    - type: ActivatableUIRequiresAccess # imp 
+    - type: ActivatableUIRequiresAccess 
+    # Impstation - End
 
     # Interface
     - type: BatteryInterface
