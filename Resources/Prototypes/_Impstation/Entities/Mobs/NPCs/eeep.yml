@@ -106,7 +106,10 @@
       settings: default
   - type: Bloodstream
     bloodMaxVolume: 200
-    bloodReagent: ChloralHydrate
+    bloodReagents:
+      reagents:
+      - ReagentId: ChloralHydrate
+        Quantity: 1
   - type: Sprite
     sprite: _Impstation/Mobs/Aliens/eeeplet.rsi
     noRot: true
