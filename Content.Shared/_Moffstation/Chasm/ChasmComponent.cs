@@ -53,10 +53,13 @@ public sealed partial class ChasmComponent : Component
     [DataField]
     public HashSet<EntityUid> FallingObjects = new();
 
+    [DataField]
+    public string HoleContainerId = "chasm-hole";
+
     /// <summary>
     /// The container that whitelisted items get stored in upon falling. If the entity is destroyed everything in this will be dumped out
     /// </summary>
-    public Container Hole;
+    public Container Hole = new();
 
     /// <summary>
     ///     Sound that should be played when an entity falls into the chasm

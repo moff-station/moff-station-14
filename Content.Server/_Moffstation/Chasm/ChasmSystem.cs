@@ -18,6 +18,7 @@ using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
+using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -48,10 +49,17 @@ public sealed class ChasmSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ChasmComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<ChasmComponent, StepTriggeredOffEvent>(OnStepTriggered);
         SubscribeLocalEvent<ChasmComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
         SubscribeLocalEvent<ChasmComponent, DestructionEventArgs>(OnDestroyed);
         SubscribeLocalEvent<ChasmFallingComponent, UpdateCanMoveEvent>(OnUpdateCanMove);
+    }
+
+    private void OnComponentInit(Entity<ChasmComponent> ent, ref ComponentInit args)
+    {
+        ent.Comp.Hole =
+            _containerSystem.EnsureContainer<Container>(ent, ent.Comp.HoleContainerId);
     }
 
     public override void Update(float frameTime)
@@ -71,17 +79,20 @@ public sealed class ChasmSystem : EntitySystem
                 chasm.FallingObjects.Remove(entity);
                 RemCompDeferred<ChasmFallingComponent>(entity);
 
+                // If it isn't set to be stored, then delete it
+                if (_whitelist.IsBlacklistPass(chasm.PreservationBlacklist, entity) ||
+                    !_whitelist.IsWhitelistPass(chasm.PreservationWhitelist, entity))
+                {
+                    TryQueueDel(entity);
+                    continue;
+                }
+
                 if (TryComp<MobStateComponent>(entity, out var mobState))
                 {
                     _mobState.ChangeMobState(entity, MobState.Dead, mobState);
                     EnsureComp<StunnedComponent>(entity);
                 }
-                else if (_whitelist.IsBlacklistPass(chasm.PreservationBlacklist, entity) ||
-                          !_whitelist.IsWhitelistPass(chasm.PreservationWhitelist, entity))
-                {
-                    TryQueueDel(entity);
-                    continue;
-                }
+
                 _containerSystem.Insert(entity, chasm.Hole);
             }
         }
