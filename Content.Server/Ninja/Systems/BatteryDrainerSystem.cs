@@ -127,6 +127,7 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
         // we dont want that if we're draining the full thing so whatever
         if (comp.FullDrain)
             return false;
+// IMP ADD END
 
         // repeat the doafter until battery is full
         return !_predictedBattery.IsFull((comp.BatteryUid.Value, battery));
