@@ -189,7 +189,10 @@
     - MindRoleGhostRoleTeamAntagonist
   - type: Bloodstream
     bloodMaxVolume: 400
-    bloodReagent: ChloralHydrate
+    bloodReagents:
+      reagents:
+      - ReagentId: ChloralHydrate
+        Quantity: 1
   - type: Electrified
     requirePower: false
     shockDamage: 4
