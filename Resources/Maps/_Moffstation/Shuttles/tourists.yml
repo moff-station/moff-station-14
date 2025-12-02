@@ -438,39 +438,6 @@ entities:
     - type: Transform
       pos: 1.5,-3.5
       parent: 1
-- proto: CratePlastic
-  entities:
-  - uid: 6
-    components:
-    - type: Transform
-      anchored: True
-      pos: 3.5,-4.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14673
-        moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - invalid
-          - 11
-          - 10
-          - invalid
-          - 8
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: DrinkBeerBottleFull
   entities:
   - uid: 20
