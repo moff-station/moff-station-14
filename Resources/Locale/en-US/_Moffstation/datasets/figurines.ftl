@@ -101,6 +101,13 @@ figurines-brisbanebighat-3 = G-- -o-- --- -- y--- ----s, ---'-- -e -i---.
 figurines-brisbanebighat-4 = --l---- -a--- t- --- ---f ---o- ---- -----s-.
 figurines-brisbanebighat-5 = -'m --t -- ---h--- -- --t.
 
+figurines-buckshot-1 = Stop blowing up my station!
+figurines-buckshot-2 = This is fine.
+figurines-buckshot-3 = Get back to work!
+figurines-buckshot-4 = It’s so cold in here...
+figurines-buckshot-5 = Where are all my engineers?!
+figurines-buckshot-6 = I blame science.
+
 figurines-camilla-1 = Have you seen meine wife?
 figurines-camilla-2 = Kalimotxo please?
 figurines-camilla-3 = She just looks like me, and sounds like me...

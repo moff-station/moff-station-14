@@ -179,6 +179,18 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineBuckshot
+  name: Annoyed Chief Engineer Figurine
+  description: A figurine depicting a green lizard in a stained CE outfit and beret that looks annoyed with you not doing your job.
+  components:
+      - type: Sprite
+        state: buckshot
+      - type: SpeakOnTrigger
+        pack: FigurinesBuckshot
+      - type: LizardAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCamilla
   name: Scarred HOS Figurine
   description: A figurine of a human head of security woman covered in scars, wearing the red and black uniform. She's trying her hardest to be friendly but she's very clearly overwhelmed. Collectors tend to pair it with a certain captain figurine.
