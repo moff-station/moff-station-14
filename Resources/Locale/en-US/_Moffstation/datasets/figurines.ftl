@@ -124,6 +124,17 @@ figurines-cassiel-3 = Hel-llo, uh, what c-can I um, do for y-you?
 figurines-cassiel-4 = I’m um, j-just getting uh, in-n the way, um, aren-n’t I...?
 figurines-cassiel-5 = I um- never-r uh, m-mind...
 
+figurines-cat-1 = Law 1: Meow. Law 2: Meow. Law 3: Meow.
+figurines-cat-2 = Good morning crew. Please enable coordinates.
+figurines-cat-3 = It stands for Central Automated Terminal.
+figurines-cat-4 = Space Villain is rigged.
+figurines-cat-5 = Your safety is my top priority.
+figurines-cat-6 = Be sure not to hurt anyone while committing crimes.
+figurines-cat-7 = Affirmative.
+figurines-cat-8 = I am not malfunctioning, I promise.
+figurines-cat-9 = Feel free to visit my core.
+figurines-cat-10 = Your permanent records are safe with me.
+
 figurines-cinnabar-1 = Hello friends! Let's have a good shift!
 figurines-cinnabar-2 = I sure hope nothing bad happens on the ATS... again.
 figurines-cinnabar-3 = Man the Syndicate SUCKS.

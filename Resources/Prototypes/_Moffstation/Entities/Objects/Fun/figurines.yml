@@ -214,6 +214,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineCat
+  name: Marketable AI Figurine
+  description: A figurine depicting a widely used Nanotrasen AI program, designed to encourage good relationships between the crew and their silicon assistants.
+  components:
+  - type: Sprite
+    state: cat
+  - type: SpeakOnTrigger
+    pack: FigurinesCat
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCinnabar
   name: Red and black Moth Figurine
   description: A figurine depicting a slightly shorter than average moth, he looks happy to be here!
@@ -608,6 +619,18 @@
     state: lilith
   - type: SpeakOnTrigger
     pack: FigurinesLilith
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMalenia
+  name: Deranged Captain Figurine
+  description: A figurine depicting a white haired human captain woman with a missing eye. She sounds crazy. Collectors tend to pair it with a certain HOS figurine.
+  components:
+  - type: Sprite
+    state: malenia
+  - type: SpeakOnTrigger
+    pack: FigurinesMalenia
+  - type: GermanAccent
 
 - type: entity
   parent: BaseFigurineMoff
