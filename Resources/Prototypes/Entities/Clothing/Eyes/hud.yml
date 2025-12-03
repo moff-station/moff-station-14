@@ -31,9 +31,11 @@
     - Inorganic
     - Silicon
   - type: ShowAccessReaderSettings
-  - type: Tag # Moffstation - Diagnostic Sunglasses
+  # Moffstation - Start - Diagnostic Sunglasses
+  - type: Tag 
     tags:
     - HudDiagnostic
+  # Moffstation - End
 
 - type: entity
   parent: [ClothingEyesBase, ShowMedicalIcons]
