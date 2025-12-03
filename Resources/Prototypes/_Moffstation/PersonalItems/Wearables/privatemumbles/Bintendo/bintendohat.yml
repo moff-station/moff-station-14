@@ -1,0 +1,25 @@
+﻿# Player: privatemumbles - Character: Bintendo
+- type: entity
+  parent: ClothingHeadPropellerHat
+  id: PersonalItemBintendoHat
+  name: licensed Bintendo™ cap
+  description: A recreation of a famous character's hat, with a propeller stuck in the top.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/privatemumbles/Bintendo/bintendo-hat.rsi
+  - type: Clothing
+    quickEquip: True
+    sprite: _Moffstation/PersonalItems/Wearables/privatemumbles/Bintendo/bintendo-hat.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/privatemumbles/Bintendo/bintendo-hat.rsi
+
+- type: loadout
+  id: PersonalItemBintendoHat
+  storage:
+    back:
+    - PersonalItemBintendoHat
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Bintendo

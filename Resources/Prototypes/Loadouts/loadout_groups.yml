@@ -84,6 +84,7 @@
   - GoldRing
   - SilverRing
   # Moffstation - End
+  - AACTablet # DeltaV
 
 - type: loadoutGroup
   id: Glasses
@@ -648,6 +649,7 @@
   minLimit: 0
   loadouts:
   - LizardPlushieClown
+  - FlowerWaterClown
 
 - type: loadoutGroup
   id: MimeHead
@@ -779,7 +781,7 @@
   loadouts:
   - QuartermasterHead
   - QuartermasterBeret
-
+  - CargonianUshanka # Moffstation - (Cargo Outfits)
 - type: loadoutGroup
   id: QuartermasterJumpsuit
   name: loadout-group-quartermaster-jumpsuit
@@ -816,6 +818,7 @@
   - BrownShoes
   - CargoWinterBoots
   - SalvageBoots # Moffstation - QM can wear Salvage boots
+  - WorkBoots # Moffstation - (Cargo Outfits) - Cargo deserves to have their workboots
 
 - type: loadoutGroup
   id: QuartermasterJobTrinkets
@@ -830,6 +833,10 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianHead
+  # Moffstation - Start - (Cargo Outfits)
+  - CourierHat 
+  - CargonianUshanka
+  # Moffstation - End - (Cargo Outfits)
 
 - type: loadoutGroup
   id: CargoTechnicianJumpsuit
@@ -837,6 +844,10 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
+  - CourierJumpsuit # Moffstation - Start - (Cargo Outfits)
+  - CourierJumpskirt
+  - SeniorCargoTechnicianJumpsuit
+  - SeniorCargoTechnicianJumpskirt # Moffstation - End - (Cargo Outfits)
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -853,6 +864,8 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
+  - CargoTechnicianWindbreaker # Moffstation - Start - (Cargo Outfits)
+  - SeniorCargoWintercoat # Moffstation - End - (Cargo Outfits)
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -860,6 +873,7 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
+  - WorkBoots # Moffstation - (Cargo Outfits) - Cargo deserves to have their workboots
 
 - type: loadoutGroup
   id: CargoTechnicianID
@@ -894,6 +908,8 @@
   minLimit: 0
   loadouts:
   - SalvageSpecialistWintercoat
+  - SeniorCargoWintercoat # Moffstation - Start - (Cargo Outfits)
+  - SalvageSpecialistWindbreaker # Moffstation - End - (Cargo Outfits)
 
 - type: loadoutGroup
   id: SalvageSpecialistShoes
@@ -901,6 +917,7 @@
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
+  - WorkBoots # Moffstation - (Cargo Outfits) - Cargo deserves to have their workboots
 
 - type: loadoutGroup
   id: SalvageSpecialistJobTrinkets

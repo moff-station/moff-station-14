@@ -1,20 +1,3 @@
-# Helmet
-- type: loadout
-  id: MilitaryHelmet
-  equipment:
-    head: ClothingHeadHelmetMilitary
-
-# Belt
-- type: loadout
-  id: SecurityWebbingAlt
-  equipment:
-    belt: ClothingBeltSecurityWebbingAltFilled
-
-- type: loadout
-  id: ShoulderHolster
-  equipment:
-    belt: ClothingBeltHolsterFilledOfficer
-
 # ID
 - type: loadout
   id: AssetProtectionsPDA
@@ -34,3 +17,35 @@
     id: HallMonitorPDA
   groupBy: "cadet roles"
 
+# Head
+- type: loadout
+  id: MilitaryHelmet
+  equipment:
+    head: ClothingHeadHelmetMilitary
+
+# Mask
+
+# Neck
+
+# Jumpsuit
+
+# Back
+
+# Belt
+- type: loadout
+  id: SecurityWebbingAlt
+  equipment:
+    belt: ClothingBeltSecurityWebbingAltFilled
+
+- type: loadout
+  id: ShoulderHolster
+  equipment:
+    belt: ClothingBeltHolsterFilledOfficer
+
+# Outer Clothing
+
+# Gloves
+
+# Shoes
+
+# Eyewear

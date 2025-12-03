@@ -1,35 +1,51 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Arm feather markings from Starlight modified by Huaqas (GitHub). Arm_fade markings created by Huaqas (GitHub)",
+    "copyright": "Arm feather markings from Starlight modified by Huaqas (GitHub). Arm_fade, shoulder markings created by Huaqas (GitHub)",
     "size": {
-      "x": 32,
-      "y": 32
+        "x": 32,
+        "y": 32
     },
-      "states": [
-          {
-              "name": "l_arm_fade",
-              "directions": 4
-          },
-          {
-              "name": "r_arm_fade",
-              "directions": 4
-          },
-          {
-              "name": "l_hand_feathers_primary",
-              "directions": 4
-          },
-          {
-              "name": "l_hand_feathers_secondary",
-              "directions": 4
-          },
-          {
-              "name": "r_hand_feathers_primary",
-              "directions": 4
-          },
-          {
-              "name": "r_hand_feathers_secondary",
-              "directions": 4
-          }
-      ]
-  }
+    "states": [
+        {
+            "name": "l_hand_feathers",
+            "directions": 4
+        },
+        {
+            "name": "r_hand_feathers",
+            "directions": 4
+        },  
+        {
+            "name": "l_arm_fade",
+            "directions": 4
+        },
+        {
+            "name": "r_arm_fade",
+            "directions": 4
+        },
+        {
+            "name": "l_hand_feathers_primary",
+            "directions": 4
+        },
+        {
+            "name": "l_hand_feathers_secondary",
+            "directions": 4
+        },
+        {
+            "name": "r_hand_feathers_primary",
+            "directions": 4
+        },
+        {
+            "name": "r_hand_feathers_secondary",
+            "directions": 4
+        },
+        {
+            "name": "l_shoulder_fade",
+            "directions": 4
+        },
+        {
+            "name": "r_shoulder_fade",
+            "directions": 4
+        }
+    ]
+}

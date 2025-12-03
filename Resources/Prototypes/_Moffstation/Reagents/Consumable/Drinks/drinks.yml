@@ -18,3 +18,48 @@
       effects:
       - !type:SatiateThirst
         factor: 2
+
+- type: reagent
+  id: Breathalyzer
+  name: reagent-name-breathalyzer
+  parent: BaseDrink
+  desc: reagent-desc-breathalyzer
+  physicalDesc: reagent-physical-desc-airy
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/breathalyzer.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+      - !type:AdjustReagent
+        reagent: Ethylredoxrazine
+        amount: 0.25
+
+- type: reagent
+  id: PrairieCocktail
+  name: reagent-name-prairie-cocktail
+  parent: BaseDrink
+  desc: reagent-desc-prairie-cocktail
+  physicalDesc: reagent-physical-desc-unappetizing
+  flavor: prairiecocktail
+  color: "#8a2c16"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/prairiecocktail.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: Ethylredoxrazine
+        amount: 0.25
+      - !type:AdjustReagent
+        reagent: UncookedAnimalProteins
+        amount: 0.05

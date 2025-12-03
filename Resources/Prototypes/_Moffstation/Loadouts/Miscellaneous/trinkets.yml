@@ -1,5 +1,4 @@
 # Plushies!
-
 - type: loadout
   id: PlushieArachind
   storage:
@@ -118,3 +117,18 @@
     back:
     - PlushieVox
   groupBy: "plushie"
+
+# Rings
+- type: loadout
+  id: GoldRing
+  storage:
+    back:
+    - GoldRing
+  groupBy: "Rings"
+
+- type: loadout
+  id: SilverRing
+  storage:
+    back:
+    - SilverRing
+  groupBy: "Rings"

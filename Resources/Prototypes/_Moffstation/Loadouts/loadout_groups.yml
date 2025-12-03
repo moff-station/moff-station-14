@@ -16,6 +16,7 @@
   - PersonalItemArieApple
   - PersonalItemAsterGuitar
   - PersonalItemAuroraPin
+  - PersonalItemBintendoHat
   - PersonalItemBoxcarGlasses
   - PersonalItemCarolynFlettCigsPack
   - PersonalItemCinnabarMask
@@ -26,6 +27,7 @@
   - PersonalItemDawnBottle
   - PersonalItemDeliPearl
   - PersonalItemDelilahSuit
+  - PersonalItemDawnBottle
   - PersonalItemEclipseSunshadeGun
   - PersonalItemEddieGuitar
   - PersonalItemFredSuit
@@ -37,8 +39,8 @@
   - PersonalItemIrisRing
   - PersonalItemJasmineFlower
   - PersonalItemJessMask
-  - PersonalItemKaiPlushie
   - PersonalItemKatieWristBand
+  - PersonalItemKazoSkates
   - PersonalItemKennyPrisonerShirt
   - PersonalItemKimBass
   - PersonalItemKrakatoaCloak
@@ -68,6 +70,7 @@
   - PersonalItemSkiesOfSunshine
   - PersonalItemSqueaksHampter
   - PersonalItemStrawberryBackTentacles
+  - PersonalItemSwanerPhoto
   - PersonalItemTalviHoodie
   - PersonalItemTaniaBackTentacles
   - PersonalItemToffeeMask
@@ -76,6 +79,7 @@
   - PersonalItemVortexMask
 
 ## Command
+# Captain
 - type: loadoutGroup
   id: CaptainEyewear
   name: loadout-group-captain-glasses
@@ -89,6 +93,7 @@
   - EyePatch
   - EyePatchFlipped
 
+# Head of Personnel
 - type: loadoutGroup
   id: HopEyewear
   name: loadout-group-head-of-personnel-glasses
@@ -100,6 +105,32 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
+
+# Chief Engineer
+- type: loadoutGroup
+  id: ChiefEngineerBackpack
+  name: loadout-group-chief-engineer-backpack
+  loadouts:
+  - StationEngineerBackpack
+  - StationEngineerSatchel
+  - StationEngineerDuffel
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianSatchel
+  - AtmosphericTechnicianDuffel
+  - LeatherSatchel
+
+# Quartermaster
+- type: loadoutGroup
+  id: QuartermasterBackpack
+  name: loadout-group-quartermaster-backpack
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+  - LeatherSatchel
 
 ## Security
 - type: loadoutGroup
@@ -154,10 +185,10 @@
   id: DetectiveBelt
   name: loadout-group-security-belt
   loadouts:
-  - DetectiveHolster # Moffstation - (Nox Loadout Improvements)
+  - DetectiveHolster
   - DetectiveSecBelt
   - DetectiveSecWebbing
-  - DetectiveSecWebbingAlt  # Moffstation - Alt sec webbing
+  - DetectiveSecWebbingAlt
 
 ## Cargo
 # Salvage Specialist
@@ -268,7 +299,7 @@
   - EyePatch
   - EyePatchFlipped
 
-## Service
+## Civilian
 # Bartender
 - type: loadoutGroup
   id: BartenderEyewear
@@ -387,25 +418,6 @@
   - PopIdolPDA
   - RockStarPDA
 
-# Reporter
-- type: loadoutGroup
-  id: ReporterPDA
-  name: loadout-group-reporter-id
-  loadouts:
-  - ReporterPDA # Keep default PDA on top of the list
-  - JournalistPDA
-  - MeteorologistPDA
-  - NewsAnchorPDA
-
-# Service Worker
-- type: loadoutGroup
-  id: ServiceWorkerPDA
-  name: loadout-group-service-worker-id
-  loadouts:
-  - ServiceWorkerPDA # Keep default PDA on top of the list
-  - BarberPDA
-
-## Other
 # Passenger
 - type: loadoutGroup
   id: PassengerPDA
@@ -452,27 +464,21 @@
   - InmatePrisonerPDA
   - TestSubjectPDA
 
-# Department Heads can use any department Bag
+# Reporter
 - type: loadoutGroup
-  id: ChiefEngineerBackpack
-  name: loadout-group-chief-engineer-backpack
+  id: ReporterPDA
+  name: loadout-group-reporter-id
   loadouts:
-  - StationEngineerBackpack
-  - StationEngineerSatchel
-  - StationEngineerDuffel
-  - AtmosphericTechnicianBackpack
-  - AtmosphericTechnicianSatchel
-  - AtmosphericTechnicianDuffel
-  - LeatherSatchel
+  - ReporterPDA # Keep default PDA on top of the list
+  - JournalistPDA
+  - MeteorologistPDA
+  - NewsAnchorPDA
 
+# Service Worker
 - type: loadoutGroup
-  id: QuartermasterBackpack
-  name: loadout-group-quartermaster-backpack
+  id: ServiceWorkerPDA
+  name: loadout-group-service-worker-id
   loadouts:
-  - CargoTechnicianBackpack
-  - CargoTechnicianSatchel
-  - CargoTechnicianDuffel
-  - SalvageSpecialistBackpack
-  - SalvageSpecialistSatchel
-  - SalvageSpecialistDuffel
-  - LeatherSatchel
+  - ServiceWorkerPDA # Keep default PDA on top of the list
+  - BarberPDA
+

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Resomi sprites taken from Starlight commit dd3bf2c0ea5b4fe247d0eebcbc496eff89961862, minor edits and tweaking by Huaqas (GitHub).",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "Resomi_burning",
+      "directions": 4,
+      "delays": [
+        [ 0.1, 0.1, 0.1, 0.1 ],
+        [ 0.1, 0.1, 0.1, 0.1 ],
+        [ 0.1, 0.1, 0.1, 0.1 ],
+        [ 0.1, 0.1, 0.1, 0.1 ]
+      ]
+    },
+    {
+      "name": "Resomi_minor_burning",
+      "directions": 4,
+      "delays": [
+        [ 0.1, 0.1, 0.1, 0.1 ],
+        [ 0.1, 0.1, 0.1, 0.1 ],
+        [ 0.1, 0.1, 0.1, 0.1 ],
+        [ 0.1, 0.1, 0.1, 0.1 ]
+      ]
+    }
+  ]
+}

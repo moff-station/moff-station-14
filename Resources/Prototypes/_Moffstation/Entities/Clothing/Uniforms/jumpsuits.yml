@@ -275,3 +275,26 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
+
+#Cargo
+- type: entity
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  id: ClothingUniformJumpsuitSeniorCargo
+  name: Senior Cargonian Jumpsuit
+  description: A resilient jumpsuit, issued to members of the Cargonian front.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  id: ClothingUniformJumpsuitCourier
+  name: Courier Jumpsuit
+  description: A jumpsuit made for maximum mobility, feels like you've got on nothing at all.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
