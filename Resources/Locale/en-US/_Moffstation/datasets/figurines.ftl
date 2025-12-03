@@ -101,6 +101,16 @@ figurines-brisbanebighat-3 = G-- -o-- --- -- y--- ----s, ---'-- -e -i---.
 figurines-brisbanebighat-4 = --l---- -a--- t- --- ---f ---o- ---- -----s-.
 figurines-brisbanebighat-5 = -'m --t -- ---h--- -- --t.
 
+figurines-camilla-1 = Have you seen meine wife?
+figurines-camilla-2 = Kalimotxo please?
+figurines-camilla-3 = She just looks like me, and sounds like me...
+figurines-camilla-4 = Capitaine, my love!
+figurines-camilla-5 = Officers dispatch.
+figurines-camilla-6 = Security Officer, to my office, now.
+figurines-camilla-7 = I don't want to execute them...
+figurines-camilla-8 = No, you cannot lethal the clown.
+figurines-camilla-9 = I am das kaptain's kommandant, and she is ma capitaine.
+
 figurines-cassiel-1 = M-mail for, um- oh uh, this is for-r someone els-se, um...
 figurines-cassiel-2 = S-sorry sorry sorry-
 figurines-cassiel-3 = Hel-llo, uh, what c-can I um, do for y-you?
@@ -252,6 +262,18 @@ figurines-jelob-3 = For fuck sakes...
 figurines-jelob-4 = W-We alway-ys make it thr-rough!
 figurines-jelob-5 = I’m-*hiccups*-fiiune!
 figurines-jelob-6 = I w-won’t get hu-urt I swear!
+
+figurines-jessgerr-1 = How did you know that jingling was me?
+figurines-jessgerr-2 = Pie inbound!
+figurines-jessgerr-3 = To bark, or not to bark, that is the question.
+figurines-jessgerr-4 = O Honkmother, answer my prayer!
+figurines-jessgerr-5 = Buy more Honk Pockets™!
+figurines-jessgerr-6 = Insuls really tie my outfit together.
+figurines-jessgerr-7 = Without security, crime has no punchline...
+figurines-jessgerr-8 = You don't wanna know what's in this pie.
+figurines-jessgerr-9 = Touch the mask and I won't be so silly...
+figurines-jessgerr-10 = Jingle, jingle!
+figurines-jessgerr-11 = Don't forget to smile! Or else!
 
 figurines-jobs-1 = I'm alright.
 figurines-jobs-2 = I’m nnnott ...huuuuhhh... druunnnk!
@@ -413,6 +435,17 @@ figurines-sapphire-5 = Did you just overdose them?
 figurines-sapphire-6 = We gotta stop meeting like this.
 figurines-sapphire-7 = Welcome back!
 figurines-sapphire-8 = Sean~!
+
+figurines-saprophyte-1 = Greetings!
+figurines-saprophyte-2 = Greetings, child.
+figurines-saprophyte-3 = Do you enjoy classical?
+figurines-saprophyte-4 = This is Clair de Lune.
+figurines-saprophyte-5 = What troubles you, child?
+figurines-saprophyte-6 = What troubles you so?
+figurines-saprophyte-7 = Y o u... s o o n...
+figurines-saprophyte-8 = W e... a r e... t h e...
+figurines-saprophyte-9 = I am an acolyte directly serving for The Fresh Spores of the Cosmos.
+figurines-saprophyte-10 = I am a humble follower of The Great Fungus of the Universe.
 
 figurines-sawa-1 = Haii!
 figurines-sawa-2 = Okie!

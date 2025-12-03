@@ -18,3 +18,6 @@ reagent-desc-prairie-cocktail = Sworn to fix a hangover in just a shot, mixed wi
 
 reagent-name-mossy-special = Mossy Special
 reagent-desc-mossy-special = Reviled by dwarves and supposedly loved by elves everywhere, this brew is one endorsed by Central Command.
+
+reagent-name-scranton-special = Scranton special
+reagent-desc-scranton-special = The kind of drink to make you go "Hey hey hey!"

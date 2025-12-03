@@ -33,3 +33,6 @@ moffstation-lobby-state-background-drunkdrivingincident-artist = Altimus
 
 moffstation-lobby-state-background-heyfred-title = Hey Fred
 moffstation-lobby-state-background-heyfred-artist = shedonk
+
+moffstation-lobby-state-background-mimemajorvictory-title = Mime Major Victory
+moffstation-lobby-state-background-mimemajorvictory-artist = youtubepoopfuneral

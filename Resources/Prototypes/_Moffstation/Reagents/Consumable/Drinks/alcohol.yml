@@ -113,3 +113,30 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.1
+
+- type: reagent
+  id: ScrantonSpecial
+  name: reagent-name-scranton-special
+  parent: BaseAlcohol
+  desc: reagent-desc-scranton-special
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: scrantonspecial
+  color: "#71619d"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: .15
+      - !type:SatiateThirst
+        factor: 1
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.15

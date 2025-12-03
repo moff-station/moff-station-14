@@ -109,3 +109,19 @@
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/mossyspecial.rsi
     state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkScrantonSpecialGlass
+  suffix: scranton special
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: ScrantonSpecial
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
+    state: icon
