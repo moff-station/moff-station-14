@@ -37,7 +37,7 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
     /// </summary>
     private void OnStartup(Entity<BatteryDrainerComponent> ent, ref ComponentStartup args)
     {
-        if (ent.Comp.BatteryUid == null && TryComp<BatteryComponent>(ent.Owner, out _))
+        if (ent.Comp.BatteryUid == null && HasComp<BatteryComponent>(ent.Owner))
             ent.Comp.BatteryUid = ent.Owner;
     }
 
@@ -106,9 +106,9 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
         var required = battery.MaxCharge - _predictedBattery.GetCharge((comp.BatteryUid.Value, battery));
         // higher tier storages can charge more
         // IMP EDIT START- why the fuck does draintime affecting the amount drained go undocumented!!!
-        var maxDrained = comp.FullDrain ?
-            pnb.MaxSupply * comp.DrainTime :
-            required;
+        var maxDrained = comp.FullDrain
+            ? pnb.MaxSupply * comp.DrainTime
+            : required;
         // IMP EDIT END
         var input = Math.Min(Math.Min(available, required / comp.DrainEfficiency), maxDrained);
         if (!_battery.TryUseCharge((target, targetBattery), input))
@@ -127,7 +127,7 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
         // we dont want that if we're draining the full thing so whatever
         if (comp.FullDrain)
             return false;
-// IMP ADD END
+        // IMP ADD END
 
         // repeat the doafter until battery is full
         return !_predictedBattery.IsFull((comp.BatteryUid.Value, battery));
