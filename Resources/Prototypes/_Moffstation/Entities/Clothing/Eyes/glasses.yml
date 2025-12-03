@@ -58,12 +58,12 @@
   name: diagnostic sunglasses
   description: For those who have trouble with bright lights and careless cyborgs.
   components:
-      - type: Sprite
-        sprite: _Moffstation/Clothing/Eyes/Glasses/diagsunglasses.rsi
-      - type: Clothing
-        sprite: _Moffstation/Clothing/Eyes/Glasses/diagsunglasses.rsi
-      - type: IdentityBlocker
-        coverage: EYES
-      - type: Construction
-        graph: DiagnosticSunglasses
-        node: sunglassesdiagnostic
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Eyes/Glasses/diagsunglasses.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Eyes/Glasses/diagsunglasses.rsi
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: Construction
+    graph: DiagnosticSunglasses
+    node: sunglassesdiagnostic
