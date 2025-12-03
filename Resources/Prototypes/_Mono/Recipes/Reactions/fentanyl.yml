@@ -27,7 +27,7 @@
     Dylovene:
       amount: 1
   effects:
-  - !type:ExplosionReactionEffect
+  - !type:Explosion
     explosionType: Default
     maxIntensity: 100
     intensityPerUnit: 0.65
