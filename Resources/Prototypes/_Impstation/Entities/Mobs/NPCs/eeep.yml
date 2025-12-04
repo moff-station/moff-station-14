@@ -151,8 +151,8 @@
   - type: MeleeChemicalInjector
     solution: chloralhydrate
     transferAmount: 5
-  - type: Battery
-    maxCharge: 30000
+  - type: PredictedBattery
+    maxCharge: 10000
     startingCharge: 0
   - type: PolymorphOnTrigger
     polymorph: EeepGrow
@@ -241,7 +241,7 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 20
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1000
     startingCharge: 1000
   - type: LightningArcShooter
