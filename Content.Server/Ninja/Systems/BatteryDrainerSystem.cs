@@ -32,6 +32,7 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
         SubscribeLocalEvent<BatteryDrainerComponent, NinjaBatteryChangedEvent>(OnBatteryChanged);
     }
 
+    // Imp - Start
     /// <summary>
     ///  Imp add. Allow entities who are a battery to use themselves as the battery for this component
     /// </summary>
@@ -40,6 +41,7 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
         if (ent.Comp.BatteryUid == null && (HasComp<BatteryComponent>(ent.Owner) || HasComp<PredictedBatteryComponent>(ent.Owner)))
             ent.Comp.BatteryUid = ent.Owner;
     }
+    // Imp - End
 
     /// <summary>
     /// Start do after for draining a power source.
