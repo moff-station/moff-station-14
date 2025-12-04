@@ -215,7 +215,7 @@
   - type: ImmovableRodRule
     rodPrototypes:
     - id: ImmovableRodKeepTilesStill
-      prob: 0.94
+      prob: 0.93  # Moffstation - Modified rods
       orGroup: rodProto
     - id: ImmovableRodMop
       prob: 0.0075
@@ -241,6 +241,11 @@
     - id: ImmovableRodWeh
       prob: 0.0075
       orGroup: rodProto
+    # Moffstation - Start - Immovable rod tweaks
+    - id: ImmovableRodDespawn
+      prob: 0.01
+      orGroup: rodProto
+    # Moffstation - End
 
 - type: entity
   parent: GameRuleMeteorSwarm

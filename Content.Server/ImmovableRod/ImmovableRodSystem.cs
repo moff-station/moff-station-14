@@ -5,6 +5,7 @@ using Content.Server.Popups;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
+using Content.Shared.Item;  // Moffstation
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -125,9 +126,16 @@ public sealed class ImmovableRodSystem : EntitySystem
                 return;
             }
 
-            _bodySystem.GibBody(ent, body: body);
+            _bodySystem.GibBody(ent, body: body, gibOrgans: true, splatModifier: 10);  // Moffstation - Allow organs to drop
             return;
         }
+
+        // Moffstation - Start - Rods drop peoples stuff
+        if (HasComp<ItemComponent>(ent))
+        {
+            return;
+        }
+        // Moffstation - End
 
         _destructible.DestroyEntity(ent);
     }
