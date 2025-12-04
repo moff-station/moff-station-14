@@ -1,31 +1,59 @@
-﻿# Jumpsuit
-- type: loadout
-  id: FormalScientistJumpsuit
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitScientistFormal
-
-# ID
+﻿# ID
 - type: loadout
   id: AnomalyContainmentSpecialistPDA
   equipment:
     id: AnomalyContainmentSpecialistPDA
-  groupBy: "scientist roles"  # Moffstation - Additional Roles
+  groupBy: "scientist roles"
 
 - type: loadout
   id: MachinistPDA
   equipment:
     id: MachinistPDA
-  groupBy: "robotics roles"  # Moffstation - Additional Roles
+  groupBy: "robotics roles"
 
 - type: loadout
   id: XenoarcheologistPDA
   equipment:
     id: XenoarcheologistPDA
-  groupBy: "scientist roles"  # Moffstation - Additional Roles
+  groupBy: "scientist roles"
 
+# Head
 
-# New Roboticist & Machinist Outfits
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: FormalScientistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientistFormal
+  groupBy: "scientist jumpsuits"
+
+- type: loadout
+  id: MachinistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMachinist
+  groupBy: "scientist jumpsuits"
+
+- type: loadout
+  id: MachinistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMachinist
+  groupBy: "scientist jumpskirts"
+
+# Back
+
+# Belt
+
+# Outer Clothing
 - type: loadout
   id: MachinistLabCoat
   equipment:
     outerClothing: ClothingOuterCoatMach
+
+# Gloves
+
+# Shoes
+
+# Eyewear

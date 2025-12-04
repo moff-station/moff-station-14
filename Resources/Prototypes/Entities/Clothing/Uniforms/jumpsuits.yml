@@ -73,7 +73,11 @@
   description: A sturdy jumpsuit, issued to members of the Cargo department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/cargotech.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cargo.rsi #Moffstation- Start - Cargo Outfits
+  # sprite: Clothing/Uniforms/Jumpsuit/cargotech.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cargo.rsi
+  # sprite: Clothing/Uniforms/Jumpsuit/cargotech.rsi #Moffstation - End - Cargo Outfits
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -82,7 +86,11 @@
   description: It's a snappy jumpsuit with a sturdy set of overalls. It's very dirty.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/salvage.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/salvage-overalls.rsi #Moffstation- Start - Cargo Outfits
+  # sprite: Clothing/Uniforms/Jumpsuit/salvage.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/salvage-overalls.rsi
+  # sprite: Clothing/Uniforms/Jumpsuit/salvage.rsi #Moffstation - End - Cargo Outfits
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband, ClothingUniformFoldableBase]

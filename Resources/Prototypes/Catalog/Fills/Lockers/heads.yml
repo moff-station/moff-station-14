@@ -12,6 +12,7 @@
     - id: DoorRemoteCargo
     - id: AstroNavCartridge
     - id: ClothingHandsKnuckleDustersQM
+    - id: CargoCommsFlatpack # Moffstation - Departmental Communications Computers
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -130,6 +131,7 @@
     - id: HoPIDCard
     - id: WeaponDisabler
     - id: ClothingEyesHudCommand
+    - id: ServiceCommsFlatpack # Moffstation - Departmental Communications Computers
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -160,6 +162,7 @@
     - id: RCDAmmo
     - id: RubberStampCE
     - id: MetalFoamGrenade
+    - id: EngiCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -205,13 +208,11 @@
     children:
     - id: BoxEncryptionKeyMedical
     - id: ClothingBackpackDuffelSurgeryFilled
-    - id: ClothingCloakCmo
     # Moffstation - Begin (MedChem Goggles)
     #- id: ClothingEyesHudMedical
     - id: ClothingEyesGlassesMedChem
     # Moffstation - End
     - id: ClothingHandsGlovesNitrile
-    - id: ClothingHeadHatBeretCmo
     - id: ClothingHeadsetAltMedical
     - id: ClothingMaskSterile
     - id: DoorRemoteMedical
@@ -222,6 +223,7 @@
     - id: RubberStampCMO
     - id: MedTekCartridge
     - id: MedicalWrench # MOFFSTATION CHANGE - Medical wrench
+    - id: MedCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -271,6 +273,7 @@
     - id: DoorRemoteResearch
     - id: HandTeleporter
     - id: RubberStampRd
+    - id: ScienceCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -320,7 +323,6 @@
     - id: ClothingBeltSecurityFilled
     - id: ClothingEyesGlassesSecurity
     - id: ClothingHeadsetAltSecurity
-    - id: ClothingMaskNeckGaiter
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: FlashlightSeclite
@@ -332,6 +334,7 @@
     #- id: WeaponTaser # Moffstation - Remove tasers
     - id: WantedListCartridge
     - id: DrinkHosFlask
+    - id: SecCommsFlatpack # Moffstation - Departmental Communications Computers
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

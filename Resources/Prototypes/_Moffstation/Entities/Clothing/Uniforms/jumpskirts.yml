@@ -271,3 +271,25 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/machinist.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/machinist.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtSeniorCargo
+  name: Senior Cargonian Jumpskirt
+  description: A resilient jumpskirt, issued to members of the Cargonian front.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior-cargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior-cargo.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtCourier
+  name: Courier Jumpskirt
+  description: A jumpskirt made for maximum mobility, feels like you've got on nothing at all.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/courier.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/courier.rsi

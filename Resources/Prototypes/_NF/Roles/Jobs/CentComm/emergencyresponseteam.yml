@@ -1,0 +1,79 @@
+# Mail Carrier
+- type: job
+  id: ERTMailCarrier
+  name: job-name-ertmailcarrier
+  description: job-description-ertmailcarrier
+  playTimeTracker: JobERTMailCarrier
+  setPreference: false
+  startingGear: ERTMailCarrierGearEVA
+  icon: "JobIconNanotrasen"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: ERTMailCarrierGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTMailCarrier
+    back: ClothingBackpackERTMailCarrier
+    shoes: ClothingShoesBootsSpeed
+    head: ClothingHeadHelmetERTMailCarrier
+    eyes: ClothingEyesHudCommand
+    gloves: ClothingHandsGlovesFingerless
+    outerClothing: ClothingOuterArmorBasicSlim
+    id: ERTMailCarrierPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: MailBagCapsulePrimed
+    pocket1: Flare
+    pocket2: AppraisalTool
+  inhand:
+    - NFWeaponLauncherMail
+  storage:
+    back:
+    - HandheldCrewMonitor # Replace later with a variant? A worse crew monitor that doesn't show vitals?
+    - PowerCellHigh
+    - BoxMailCapsulePrimed
+    - BoxMailCapsulePrimed
+    - CrowbarRed
+    - ParcelWrap
+
+- type: startingGear
+  id: ERTMailCarrierGearEVA
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTMailCarrier
+    back: ClothingBackpackERTMailCarrier
+    shoes: ClothingShoesBootsMag
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesHudCommand
+    gloves: ClothingHandsGlovesFingerless
+    outerClothing: ClothingOuterHardsuitERTMailCarrier
+    id: ERTMailCarrierPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: MailBagCapsulePrimed
+    pocket1: Flare
+    pocket2: AppraisalTool
+  inhand:
+    - NFWeaponLauncherMail
+  storage:
+    back:
+    - HandheldCrewMonitor # Replace later with a variant? A worse crew monitor that doesn't show vitals?
+    - PowerCellHigh
+    - BoxMailCapsulePrimed
+    - BoxMailCapsulePrimed
+    - CrowbarRed
+    - ParcelWrap
+
+- type: chameleonOutfit
+  id: ERTMailCarrierChameleonOutfit
+  job: ERTMailCarrier
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitERTMailCarrier
+    neck: ClothingNeckScarfStripedBlue
+    eyes: ClothingEyesGlassesSunglasses

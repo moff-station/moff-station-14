@@ -14,7 +14,7 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: RedLightLaser
     fireCost: 50
   - type: ItemSlots
@@ -76,7 +76,7 @@
         whitelist:
           tags:
           - PowerCellBigIron
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletBigIronDisabler
     fireCost: 50
   - type: BatteryWeaponFireModes

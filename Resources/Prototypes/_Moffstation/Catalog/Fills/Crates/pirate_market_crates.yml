@@ -534,13 +534,12 @@
   name: eyepatch crate
   description: A crate filled with some pirate swag.
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingEyesEyepatch
-      amount: 2
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:NestedSelector
-        tableId: AllEyepatchesTable
-        rolls: !type:ConstantNumberSelector
-          value: 1
+      entity_storage: !type:GroupSelector
+        children:
+        - !type:NestedSelector
+          tableId: AllEyepatchesTable
+        - id: ClothingEyesEyepatch
+          amount: !type:ConstantNumberSelector
+            value: 2

@@ -77,11 +77,13 @@
   id: MedicalDoctorJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitMedicalDoctor
+  groupBy: "medical doctor jumpsuits" # Moffstation
 
 - type: loadout
   id: MedicalDoctorJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtMedicalDoctor
+  groupBy: "medical doctor jumpskirts" # Moffstation
 
 - type: loadout
   id: SeniorPhysicianJumpsuit
@@ -90,6 +92,7 @@
     proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorPhysician
+  groupBy: "medical doctor jumpsuits" # Moffstation
 
 - type: loadout
   id: SeniorPhysicianJumpskirt
@@ -98,21 +101,25 @@
     proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorPhysician
+  groupBy: "medical doctor jumpskirts" # Moffstation
 
 - type: loadout
   id: MedicalBlueScrubs
   equipment:
     jumpsuit: UniformScrubsColorBlue
+  groupBy: "medical doctor scrubs" # Moffstation
 
 - type: loadout
   id: MedicalGreenScrubs
   equipment:
     jumpsuit: UniformScrubsColorGreen
+  groupBy: "medical doctor scrubs" # Moffstation
 
 - type: loadout
   id: MedicalPurpleScrubs
   equipment:
     jumpsuit: UniformScrubsColorPurple
+  groupBy: "medical doctor scrubs" # Moffstation
 
 # Back
 - type: loadout

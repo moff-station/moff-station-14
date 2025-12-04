@@ -27,9 +27,9 @@
   description: A sturdy jumpskirt, issued to members of the Cargo department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/cargotech.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cargo.rsi # Moffstation - Cargo Outfits
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/cargotech.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cargo.rsi # Moffstation - Cargo Outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]

@@ -9,3 +9,14 @@
     sprite: _Moffstation/Clothing/Head/Hoods/irishood.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hoods/irishood.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterSeniorCargo
+  categories: [ HideSpawnMenu ]
+  name: senior cargo winter coat hood
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hoods/Coat/hoodcargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodseniorcargo.rsi
