@@ -70,11 +70,9 @@
     castShadows: true
   - type: NightVision
   - type: BatteryDrainer
-    fullDrain: true
     drainTime: 10
     sparkSound:
      path: /Audio/Effects/PowerSink/charge_fire.ogg
-    minimumDrain: 1000
   - type: ComplexInteraction
   - type: ExaminableBattery
   - type: PassiveDamage # passive regen.
@@ -239,7 +237,6 @@
     proto: EeepGunBullet
     fireCost: 100
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 20
   - type: PredictedBattery
     maxCharge: 1000
