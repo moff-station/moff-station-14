@@ -23,15 +23,15 @@
       mindRoles:
       - MindRoleGhostRoleTeamAntagonist
 
-  - type: entity
-    id: TouristsShuttleEvent #three tourists
-    parent: BaseGameRule
-    components:
-    - type: StationEvent
-      weight: 2
-      duration: null
-      minimumPlayers: 25
-      maxOccurrences: 1
-    - type: RuleGrids
-    - type: LoadMapRule
-      gridPath: /Maps/_Moffstation/Shuttles/tourists.yml
+- type: entity
+  id: TouristsShuttleEvent #three tourists
+  parent: BaseGameRule
+  components:
+  - type: StationEvent
+    weight: 2
+    duration: null
+    minimumPlayers: 25
+    maxOccurrences: 1
+  - type: RuleGrids
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/Shuttles/tourists.yml
