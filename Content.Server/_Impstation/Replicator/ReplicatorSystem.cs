@@ -143,9 +143,8 @@ public sealed class ReplicatorSystem : EntitySystem
         upgradedComp.RelatedReplicators = ent.Comp.RelatedReplicators;
         upgradedComp.MyNest = ent.Comp.MyNest;
 
-        if (ent.Comp.MyNest is { } nest)
+        if (ent.Comp.MyNest is { } nest && TryComp<ReplicatorNestComponent>(nest, out var nestComp))
         {
-            var nestComp = EnsureComp<ReplicatorNestComponent>(nest);
             nestComp.SpawnedMinions.Remove(ent);
             nestComp.SpawnedMinions.Add(upgraded);
 
