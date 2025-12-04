@@ -8,7 +8,7 @@
   color: "#b4dae0"
   metabolisms:
     Medicine:
-      metabolismRate: 1
+      metabolismRate: 0.5
       effects:
       - !type:HealthChange
         conditions:
@@ -19,9 +19,9 @@
           max: 5
         damage:
           groups:
-            Burn: -3
-            Brute: -6 # its a painkiller
-            Toxin: -1
+            Burn: -8
+            Brute: -10 # its a painkiller
+            Toxin: -5
     Narcotic:
       metabolismRate: 1
       effects:
