@@ -304,7 +304,7 @@ public sealed class ReplicatorNestSystem : EntitySystem
     {
         var nextStage = args.NextStage;
 
-        if (ent.Comp.MyNest == null || (_replicator.UpgradeReplicator(ent, nextStage) is not { } upgraded))
+        if (ent.Comp.MyNest == null || _replicator.UpgradeReplicator(ent, nextStage) is not { } upgraded)
         {
             _popup.PopupEntity(Loc.GetString("replicator-cant-find-nest"), ent, PopupType.MediumCaution);
             return;
