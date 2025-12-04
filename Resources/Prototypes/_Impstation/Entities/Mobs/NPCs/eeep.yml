@@ -238,7 +238,7 @@
   - type: BatteryAmmoProvider
     proto: EeepGunBullet
     fireCost: 100
-  - type: BatterySelfRecharger
+  - type: PredictedBatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 20
   - type: PredictedBattery

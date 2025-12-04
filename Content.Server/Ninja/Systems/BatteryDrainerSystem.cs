@@ -84,7 +84,12 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
     {
         base.OnDoAfterAttempt(ent, ref args);
 
-        if (ent.Comp.BatteryUid is not { } battery || _battery.IsFull(battery))
+        // Moffstation - Start - Predicted battery fix
+        // Moff - We're skipping the IsFull check if it's predicted, revert this if there's a fix that makes it work for predicted batteries
+        if (ent.Comp.BatteryUid is not { } battery ||
+            !HasComp<PredictedBatteryComponent>(battery) && // Moff - this is the condition we added
+            _battery.IsFull(battery))
+        // Moffstation - End
             args.Cancel();
     }
 
@@ -107,11 +112,7 @@ public sealed class BatteryDrainerSystem : SharedBatteryDrainerSystem
         var available = targetBattery.CurrentCharge;
         var required = battery.MaxCharge - _predictedBattery.GetCharge((comp.BatteryUid.Value, battery));
         // higher tier storages can charge more
-        // IMP EDIT START- why the fuck does draintime affecting the amount drained go undocumented!!!
-        var maxDrained = comp.FullDrain
-            ? pnb.MaxSupply * comp.DrainTime
-            : required;
-        // IMP EDIT END
+        var maxDrained = pnb.MaxSupply * comp.DrainTime;
         var input = Math.Min(Math.Min(available, required / comp.DrainEfficiency), maxDrained);
         if (!_battery.TryUseCharge((target, targetBattery), input))
             return false;
