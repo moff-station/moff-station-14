@@ -49,4 +49,10 @@ public sealed partial class ImmovableRodComponent : Component
     /// </summary>
     [DataField]
     public DamageSpecifier? Damage;
+
+    /// <summary>
+    /// Moffstation add. If true the rod will pry tiles under it
+    /// </summary>
+    [DataField]
+    public bool PryTiles = true;
 }

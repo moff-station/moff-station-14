@@ -200,7 +200,8 @@
       max: 10
 
 - type: entity
-  id: ImmovableRodSpawn
+  id: ImmovableRodSpawnUpstream # Moffstation - Moved to our namespace
+  abstract: true  # Moffstation - Moved to our namespace
   parent: BaseGameRule
   components:
   - type: StationEvent
@@ -215,7 +216,7 @@
   - type: ImmovableRodRule
     rodPrototypes:
     - id: ImmovableRodKeepTilesStill
-      prob: 0.93  # Moffstation - Modified rods
+      prob: 0.94
       orGroup: rodProto
     - id: ImmovableRodMop
       prob: 0.0075
@@ -241,11 +242,6 @@
     - id: ImmovableRodWeh
       prob: 0.0075
       orGroup: rodProto
-    # Moffstation - Start - Immovable rod tweaks
-    - id: ImmovableRodDespawn
-      prob: 0.01
-      orGroup: rodProto
-    # Moffstation - End
 
 - type: entity
   parent: GameRuleMeteorSwarm

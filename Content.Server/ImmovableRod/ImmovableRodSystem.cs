@@ -5,7 +5,8 @@ using Content.Server.Popups;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
-using Content.Shared.Item;  // Moffstation
+using Content.Shared.Item; // Moffstation
+using Content.Shared.Maps; // Moffstation
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -29,6 +30,7 @@ public sealed class ImmovableRodSystem : EntitySystem
     [Dependency] private readonly DestructibleSystem _destructible = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly TileSystem _tile = default!;  // Moffstation - Immovable rod changes
 
     public override void Update(float frameTime)
     {
@@ -37,6 +39,13 @@ public sealed class ImmovableRodSystem : EntitySystem
         // we are deliberately including paused entities. rod hungers for all
         foreach (var (rod, trans) in EntityQuery<ImmovableRodComponent, TransformComponent>(true))
         {
+            // Moffstation - Start - Immovable rod changes
+            if (rod.PryTiles && trans.GridUid != null)
+            {
+                _tile.PryTile((Vector2i)trans.Coordinates.Position, trans.GridUid.Value);
+            }
+            // Moffstation - End
+
             if (!rod.DestroyTiles)
                 continue;
 

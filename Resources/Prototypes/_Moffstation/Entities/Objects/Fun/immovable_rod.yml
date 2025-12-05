@@ -1,0 +1,25 @@
+- type: entity
+  id: ImmovableRodSlowKeepTiles
+  parent: ImmovableRodKeepTilesStill
+  suffix: Slow
+  components:
+  - type: ImmovableRod
+    minSpeed: 1
+    maxSpeed: 5
+
+- type: entity
+  id: ImmovableRodSentient
+  parent: ImmovableRodSlowKeepTiles
+  suffix: Slow
+  components:
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: false
+    raffle:
+      settings: short
+    name: ghost-role-information-mothroach-name
+    description: ghost-role-information-mothroach-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
