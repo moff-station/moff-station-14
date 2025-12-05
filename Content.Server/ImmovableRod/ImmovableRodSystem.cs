@@ -135,13 +135,17 @@ public sealed class ImmovableRodSystem : EntitySystem
                 return;
             }
 
-            _bodySystem.GibBody(ent, body: body, gibOrgans: true, splatModifier: 10);  // Moffstation - Allow organs to drop
+            // Moffstation - Allow organs to drop
+            _bodySystem.GibBody(ent, body: body, gibOrgans: true, splatModifier: 10);
             return;
         }
 
         // Moffstation - Start - Rods drop peoples stuff
-        if (HasComp<ItemComponent>(ent))
+        if (component.PreserveItems && HasComp<ItemComponent>(ent))
         {
+            var scatterVector = _random.NextAngle()
+                .ToVec() * (component.FlingVelocity + _random.NextFloat(-component.FlingVariation,  component.FlingVariation));
+            _physics.ApplyLinearImpulse(ent, scatterVector);
             return;
         }
         // Moffstation - End

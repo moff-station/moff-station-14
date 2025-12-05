@@ -5,13 +5,16 @@
   components:
   - type: ImmovableRod
     minSpeed: 1
-    maxSpeed: 5
+    maxSpeed: 3
+  - type: TimedDespawn
+    lifetime: 60.0
 
 - type: entity
   id: ImmovableRodSentient
   parent: ImmovableRodSlowKeepTiles
   suffix: Slow
   components:
+  - type: GhostTakeoverAvailable
   - type: GhostRole
     makeSentient: true
     allowSpeech: true

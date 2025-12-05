@@ -55,4 +55,22 @@ public sealed partial class ImmovableRodComponent : Component
     /// </summary>
     [DataField]
     public bool PryTiles = true;
+
+    /// <summary>
+    /// Moffstation add. Whether Items should be removed by the rod
+    /// </summary>
+    [DataField]
+    public bool PreserveItems = true;
+
+    /// <summary>
+    /// Moffstation add. How fast should items/gibs be flung by the rod?
+    /// </summary>
+    [DataField]
+    public float FlingVelocity = 100f;
+
+    /// <summary>
+    /// Moffstation add. Variation for how items should be flung
+    /// </summary>
+    [DataField]
+    public float FlingVariation = 25f;
 }
