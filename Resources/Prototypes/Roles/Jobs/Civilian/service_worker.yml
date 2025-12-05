@@ -4,10 +4,10 @@
   description: job-description-serviceworker
   playTimeTracker: JobServiceWorker
   # Moffstation - Start - Change role timers
-  requirements:
-  - !type:DepartmentTimeRequirement
-    department: Civilian
-    time: 0.5h
+  #requirements:
+  #- !type:DepartmentTimeRequirement
+  #  department: Civilian
+  #  time: 0.5h
   # Moffstation - End
   startingGear: ServiceWorkerGear
   icon: "JobIconServiceWorker"
