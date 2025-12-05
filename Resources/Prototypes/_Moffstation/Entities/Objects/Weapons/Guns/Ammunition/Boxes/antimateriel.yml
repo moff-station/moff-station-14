@@ -13,3 +13,20 @@
     - state: mag-1
       map: [ "enum.GunVisualLayers.Mag" ]
     - state: silver 
+
+
+- type: entity
+  parent: BaseMagazineBoxAntiMateriel
+  id: BaseMagazineBoxAntiMaterielRicochet
+  name: ammunition box (.60 ricochet)
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeAntiMaterielRicochet
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Boxes/anti_materiel.rsi
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-1
+      map: [ "enum.GunVisualLayers.Mag" ]
+    - state: silver

@@ -37,7 +37,18 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
         var target = args.OtherEntity;
         // it's here so this check is only done once before possible hit
-        var attemptEv = new ProjectileReflectAttemptEvent(uid, component, false);
+	// MOFFSTATION - Ricochet
+        var attemptEv = new ProjectileReflectAttemptEvent(uid, component, false, target);
+
+        // Possible ricochet -- raise event first on the projectile and then on the target
+        RaiseLocalEvent(uid, ref attemptEv);
+        if (attemptEv.Cancelled)
+        {
+            SetShooter(uid, component, target);
+            return;
+        }
+	// END MOFFSTATION - Ricochet
+
         RaiseLocalEvent(target, ref attemptEv);
         if (attemptEv.Cancelled)
         {
