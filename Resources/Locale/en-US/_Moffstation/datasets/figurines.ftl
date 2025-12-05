@@ -386,6 +386,16 @@ figurines-lilith-2 = You can call me the Syndicate bomb.
 figurines-lilith-3 = I'm just being a goober.
 figurines-lilith-4 = Officer listen; I can explain.
 
+figurines-malenia-1 = Can we meat spike them?
+figurines-malenia-2 = Do you also hear das disposals talking?
+figurines-malenia-3 = Hallo Kommandant.
+figurines-malenia-4 = Where did that mouse go?
+figurines-malenia-5 = I love meine wife.
+figurines-malenia-6 = Can I execute them?!
+figurines-malenia-7 = Dead mice make good gifts, yes?
+figurines-malenia-8 = I'm not THAT crazy.
+figurines-malenia-9 = Let me solo das dragon.
+
 figurines-molar-1 = FAT MAGGOT
 figurines-molar-2 = Does anyone have some interdynes?
 figurines-molar-3 = Oh... hey kid
