@@ -33618,7 +33618,7 @@ entities:
     - type: Transform
       pos: -24.5,-54.5
       parent: 3
-- proto: BarSignMcLiltens
+- proto: BarSignEngineChange
   entities:
   - uid: 29921
     components:
@@ -34272,13 +34272,6 @@ entities:
     components:
     - type: Transform
       pos: 66.68905,-90.3621
-      parent: 3
-- proto: BicaridineChemistryBottleHarmony
-  entities:
-  - uid: 27023
-    components:
-    - type: Transform
-      pos: 34.052155,-17.218664
       parent: 3
 - proto: BigBox
   entities:
@@ -79957,13 +79950,6 @@ entities:
     - type: Transform
       pos: 44.743217,-29.211191
       parent: 3
-- proto: ClothingHeadBlackBow
-  entities:
-  - uid: 19063
-    components:
-    - type: Transform
-      pos: 20.46242,-19.227959
-      parent: 3
 - proto: ClothingHeadHatAnimalHeadslime
   entities:
   - uid: 28360
@@ -80047,13 +80033,6 @@ entities:
       inSlot: head
     - type: Physics
       canCollide: False
-- proto: ClothingHeadHatFedoraBlueHarmony
-  entities:
-  - uid: 27107
-    components:
-    - type: Transform
-      pos: 43.506813,-10.018427
-      parent: 3
 - proto: ClothingHeadHatFlowerWreath
   entities:
   - uid: 16168
@@ -80175,14 +80154,6 @@ entities:
     - type: Transform
       pos: 18.741037,-38.462234
       parent: 3
-- proto: ClothingHeadPyjamaNanotrasenBlue
-  entities:
-  - uid: 14605
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 28.669132,-35.566032
-      parent: 3
 - proto: ClothingHeadPyjamaSyndicateRed
   entities:
   - uid: 13961
@@ -80202,13 +80173,6 @@ entities:
     components:
     - type: Transform
       pos: 67.93245,-61.686676
-      parent: 3
-- proto: ClothingHeadWhiteBow
-  entities:
-  - uid: 27096
-    components:
-    - type: Transform
-      pos: 43.682755,-18.315233
       parent: 3
 - proto: ClothingMaskBandRed
   entities:
@@ -80798,14 +80762,6 @@ entities:
     components:
     - type: Transform
       pos: -16.50806,-61.457344
-      parent: 3
-- proto: ClothingUniformJumpsuitPyjamaNanotrasenBlue
-  entities:
-  - uid: 2547
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 28.387882,-35.519157
       parent: 3
 - proto: ClothingUniformJumpsuitPyjamaSyndicateRed
   entities:
@@ -85180,13 +85136,6 @@ entities:
     components:
     - type: Transform
       pos: 19.5,-34.5
-      parent: 3
-- proto: DermalineChemistryBottleHarmony
-  entities:
-  - uid: 27024
-    components:
-    - type: Transform
-      pos: 33.97877,-17.451206
       parent: 3
 - proto: DeskBell
   entities:
@@ -92944,13 +92893,6 @@ entities:
       parent: 3
     - type: CollisionWake
       enabled: False
-- proto: DrinkThirstTrapGlass
-  entities:
-  - uid: 12321
-    components:
-    - type: Transform
-      pos: 44.429935,-82.29388
-      parent: 3
 - proto: DrinkWaterBottleFull
   entities:
   - uid: 17448
@@ -137998,13 +137940,6 @@ entities:
     - type: Transform
       pos: 8.5,-29.5
       parent: 3
-- proto: LockerQuarterMasterFilledNoSuit
-  entities:
-  - uid: 11453
-    components:
-    - type: Transform
-      pos: 38.5,-63.5
-      parent: 3
 - proto: LockerResearchDirectorFilled
   entities:
   - uid: 1863
@@ -141966,13 +141901,6 @@ entities:
     - type: Transform
       pos: -33.544125,-54.505997
       parent: 3
-- proto: PlushieAvali
-  entities:
-  - uid: 24472
-    components:
-    - type: Transform
-      pos: -2.3837268,-91.460556
-      parent: 3
 - proto: PlushieBee
   entities:
   - uid: 20649
@@ -142465,82 +142393,6 @@ entities:
     components:
     - type: Transform
       pos: 32.5,-38.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-- proto: PosterHarmonyAlwaysWatching
-  entities:
-  - uid: 4791
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -2.5,-2.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-- proto: PosterHarmonyCan
-  entities:
-  - uid: 462
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 14.5,-21.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-- proto: PosterHarmonyDoNotGamble
-  entities:
-  - uid: 26071
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 13.5,-125.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-- proto: PosterHarmonyMakeshiftClown
-  entities:
-  - uid: 20749
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 24.5,-44.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-- proto: PosterHarmonyManOfWeh
-  entities:
-  - uid: 458
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -6.5,-13.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-  - uid: 10489
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 47.5,-39.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-- proto: PosterHarmonyMoney
-  entities:
-  - uid: 5954
-    components:
-    - type: Transform
-      pos: 43.5,-53.5
-      parent: 3
-    - type: Fixtures
-      fixtures: {}
-- proto: PosterHarmonyWallMeat
-  entities:
-  - uid: 25913
-    components:
-    - type: Transform
-      pos: -36.5,-35.5
       parent: 3
     - type: Fixtures
       fixtures: {}
@@ -159312,16 +159164,6 @@ entities:
     - type: Transform
       pos: 90.5,-76.5
       parent: 3
-- proto: SuitStorageQM
-  entities:
-  - uid: 3568
-    components:
-    - type: Transform
-      pos: 38.5,-62.5
-      parent: 3
-    - type: AccessReader
-      accessListsOriginal:
-      - - Quartermaster
 - proto: SuitStorageRD
   entities:
   - uid: 5817
