@@ -20,3 +20,14 @@
     sprite: Clothing/Head/Hoods/Coat/hoodcargo.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodseniorcargo.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterCaptain
+  categories: [ HideSpawnMenu ]
+  name: captain winter coat hood
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcaptain.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcaptain.rsi

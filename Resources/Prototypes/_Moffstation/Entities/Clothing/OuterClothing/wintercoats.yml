@@ -107,3 +107,16 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seniorcargowintercoat.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSeniorCargo
+
+#Captain
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterFestiveCaptain
+  name: Captain's Festive Coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecaptain.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecaptain.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterCaptain
