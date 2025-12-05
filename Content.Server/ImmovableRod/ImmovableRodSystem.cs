@@ -40,7 +40,7 @@ public sealed class ImmovableRodSystem : EntitySystem
         foreach (var (rod, trans) in EntityQuery<ImmovableRodComponent, TransformComponent>(true))
         {
             // Moffstation - Start - Immovable rod changes
-            if (rod.PryTiles && trans.GridUid != null)
+            if (trans.GridUid != null && rod.PryTiles)
             {
                 _tile.PryTile((Vector2i)trans.Coordinates.Position, trans.GridUid.Value);
             }
