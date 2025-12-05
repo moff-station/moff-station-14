@@ -4,6 +4,10 @@
   description: job-description-warden
   playTimeTracker: JobWarden
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 5h

@@ -4,6 +4,10 @@
   description: job-description-captain
   playTimeTracker: JobCaptain
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 30h
+    # Moffstation - End
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 4h
