@@ -179,6 +179,17 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hopformal.rsi
 
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtHoPFestive
+  name: head of personnel's festive skirt
+  description: A warm red jumpskirt under a blue vest and unique hood. The entire uniform is lined with comfortable fur keeping you well insulated.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hopfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hopfestive.rsi
+
 # CMO
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]

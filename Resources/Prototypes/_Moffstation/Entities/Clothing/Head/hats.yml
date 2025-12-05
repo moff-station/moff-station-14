@@ -90,6 +90,17 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/hoswestern.rsi
 
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHosFestive
+  name: Hos's Festive Soldier Hat
+  description: A tall red cap wrapped in gold with a chinstrap. Not the most comfortable
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/hosfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/hosfestive.rsi
+
 #Clown
 - type: entity
   parent: ClothingHeadBase
