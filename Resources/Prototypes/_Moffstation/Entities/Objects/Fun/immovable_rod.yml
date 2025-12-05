@@ -21,8 +21,14 @@
     allowMovement: false
     raffle:
       settings: short
-    name: ghost-role-information-mothroach-name
-    description: ghost-role-information-mothroach-description
+    name: ghost-role-information-rod-name-moffstation
+    description: ghost-role-information-rod-description-moffstation
     rules: ghost-role-information-freeagent-rules
     mindRoles:
     - MindRoleGhostRoleFreeAgent
+  - type: WarpPoint
+    follow: true
+    location: Sentient Immovable Rod
+    blacklist:
+      tags:
+      - GhostOnlyWarp
