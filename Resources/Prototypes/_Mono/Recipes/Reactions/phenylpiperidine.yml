@@ -1,5 +1,5 @@
 - type: reaction
-  id: Fentanyl
+  id: Phenylpiperidine
   impact: Low
   minTemp: 475
   reactants:
@@ -16,13 +16,13 @@
     Kelotane:
       amount: 0.5
   products:
-    Fentanyl: 5.5
+    Phenylpiperidine: 5.5
 
 - type: reaction # this reaction is to prevent people from mixing fent and dylo for combat meds, and to serve as something to prevent mass crystallization
-  id: FentanylIncompatibility
+  id: PhenylpiperidineIncompatibility
   impact: High
   reactants:
-    Fentanyl:
+    Phenylpiperidine:
       amount: 1
     Dylovene:
       amount: 1
@@ -35,11 +35,11 @@
     maxTotalIntensity: 100
 
 - type: reaction
-  id: FentanylSolidification
+  id: PhenylpiperidineSolidification
   impact: Low
   minTemp: 310
   reactants:
-    Fentanyl:
+    Phenylpiperidine:
       amount: 5
     Tricordrazine:
       amount: 1
@@ -48,4 +48,4 @@
     Dylovene: 5
   effects:
     - !type:SpawnEntity
-      entity: FentanylSolidified
+      entity: PhenylpiperidineSolidified

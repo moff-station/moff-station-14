@@ -1,8 +1,8 @@
 - type: reagent
-  id: Fentanyl
-  name: reagent-name-fent
+  id: Phenylpiperidine
+  name: reagent-name-phenylpiperidine
   group: Narcotics
-  desc: reagent-desc-fent
+  desc: reagent-desc-phenylpiperidine
   physicalDesc: reagent-physical-desc-crystalline
   flavor: bitter
   color: "#b4dae0"
@@ -15,7 +15,7 @@
         - !type:TotalDamageCondition
           min: 5
         - !type:ReagentCondition
-          reagent: Fentanyl
+          reagent: Phenylpiperidine
           max: 5
         damage: # I think it's balanced as a sort of 'cure all' because you have to administer it slowly or it starts killing extremely quickly
           groups:
@@ -46,7 +46,7 @@
         probability: 0.2
         conditions:
         - !type:ReagentCondition
-          reagent: Fentanyl
+          reagent: Phenylpiperidine
           max: 20
       - !type:Drunk
         boozePower: 75
@@ -55,18 +55,18 @@
         probability: 0.05
         conditions:
         - !type:ReagentCondition
-          reagent: Fentanyl
+          reagent: Phenylpiperidine
           min: 5
       - !type:Drunk
         boozePower: 15
         conditions:
         - !type:ReagentCondition
-          reagent: Fentanyl
+          reagent: Phenylpiperidine
           min: 5
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
-          reagent: Fentanyl
+          reagent: Phenylpiperidine
           min: 6.5
         damage:
           types:
@@ -76,7 +76,7 @@
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
-          reagent: Fentanyl
+          reagent: Phenylpiperidine
           min: 14
         damage:
           types:
@@ -86,7 +86,7 @@
       - !type:PopupMessage
         conditions:
         - !type:ReagentCondition
-          reagent: Fentanyl
+          reagent: Phenylpiperidine
           min: 2
         type: Local
         visualType: Medium

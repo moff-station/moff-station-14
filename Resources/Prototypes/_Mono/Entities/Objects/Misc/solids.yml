@@ -1,11 +1,11 @@
 - type: entity
-  name: fentanyl crystal
+  name: Phenylpiperidine crystal
   parent: [ BaseItem, BaseMedicalContraband ]
-  id: FentanylSolidified
-  description: 5u of Fentanyl solidified with Tricordrazine. Worth a lot.
+  id: PhenylpiperidineSolidified
+  description: 5u of Phenylpiperidine solidified with Tricordrazine. Worth a lot.
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Misc/fentanyl.rsi
+    sprite: _Mono/Objects/Misc/phenylpiperidine.rsi
     state: icon
   - type: Item
     size: Tiny
@@ -22,7 +22,7 @@
       food:
         maxVol: 5
         reagents:
-        - ReagentId: Fentanyl
+        - ReagentId: Phenylpiperidine
           Quantity: 5
   - type: DamageOnLand
     damage:
