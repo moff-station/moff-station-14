@@ -20,11 +20,11 @@
     - Gauze
     - SmokeGrenade
     - GrenadeShrapnel
-    - WeaponRevolverInspector
+    - WeaponPistolPM
     - WeaponDisabler
     outerClothing:
-    - SpeedLoaderMagnum
-    - SpeedLoaderMagnum
+    - MagazinePistol
+    - MagazinePistol
     - Zipties
     - Zipties
 
@@ -36,11 +36,22 @@
     gloves: ClothingHandsMercGlovesCombat
     suitstorage: WeaponRifleAk
   storage:
+    belt:
+    - CrowbarRed
+    - RadioHandheld
+    - Gauze
+    - SmokeGrenade
+    - GrenadeShrapnel
+    - WeaponRevolverInspector
+    - WeaponDisabler
     back:
     - MagazineLightRifle
     - MagazineLightRifle
     - MagazineLightRifle
     - Binoculars
+    outerClothing:
+    - SpeedLoaderMagnum
+    - SpeedLoaderMagnum
 
 - type: startingGear
   parent: MercenaryBasicGear
