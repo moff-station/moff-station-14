@@ -1,0 +1,38 @@
+- type: antag
+  id: PizzaScurret
+  name: roles-antag-pizza-scurret-name
+  antagonist: true
+  objective: roles-antag-pizza-scurret-objective
+  setPreference: false
+
+- type: startingGear
+  id: PizzaScurretGear
+  equipment:
+    back: ClothingScurretPizzaBag
+    id: VisitorPDA
+    ears: ClothingHeadsetFreelance
+    head: ClothingHeadHatArnoldHat
+
+# Keeping this here as a temp for starting gear. Most to correct directory when more complete.
+- type: entity
+  id: ClothingScurretPizzaBag
+  parent: ClothingBagPet
+  name: Arnold's Pizza Delivery Bag
+  description: Always delivered hot and with a wawa!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Back/Backpacks/scurretdeliverybag.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatArnoldHat
+  name: arnold hat
+  description: The hat of a pizza delivery employee working for Arnold's Pizza.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/arnoldhat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/arnoldhat.rsi
+  - type: Tag
+    tags:
+    - ScurretWearable
