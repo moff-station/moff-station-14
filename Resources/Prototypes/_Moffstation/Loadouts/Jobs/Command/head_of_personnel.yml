@@ -1,7 +1,10 @@
 # ID
 
 # Head
-
+- type: loadout
+  id: HoPBeret
+  equipment:
+    head: ClothingHeadHatHopBeret
 # Mask
 
 # Neck
@@ -19,6 +22,17 @@
     jumpsuit: ClothingUniformJumpskirtHoPFormal
   groupBy: "HoP jumpskirts"
 
+- type: loadout
+  id: HoPJumpsuitFestive
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoPFestive
+  groupBy: "HoP jumpsuits"
+
+- type: loadout
+  id: HoPJumpskirtFestive
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHoPFestive
+  groupBy: "HoP jumpskirts"
 # Back
 
 # Belt

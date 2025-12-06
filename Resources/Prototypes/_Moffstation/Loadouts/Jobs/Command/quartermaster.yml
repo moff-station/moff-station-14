@@ -1,7 +1,10 @@
 # ID
 
 # Head
-
+- type: loadout
+  id: QMCruiser
+  equipment:
+    head: ClothingHeadHatCruiser
 # Mask
 
 # Neck
@@ -19,12 +22,27 @@
     jumpsuit: ClothingUniformJumpskirtQMVista
   groupBy: "quartermaster jumpskirts"
 
+- type: loadout
+  id: QMJumpsuitCruiser
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitQMCruiser
+  groupBy: "quartermaster jumpsuits"
+
+- type: loadout
+  id: QMJumpskirtCruiser
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtQMCruiser
+  groupBy: "quartermaster jumpskirts"
+
 # Back
 
 # Belt
 
 # Outer Clothing
-
+- type: loadout
+  id: QMFestivecoat
+  equipment:
+    outerClothing: ClothingOuterWinterFestiveQM
 # Gloves
 
 # Shoes

@@ -3,8 +3,24 @@
 - type: latheRecipePack
   id: MoffstationClothingCargo
   recipes:
+  #qm
+  - ClothingHeadHatCruiser
+  - ClothingUniformJumpsuitQMCruiser
+  - ClothingUniformJumpskirtQMCruiser
+  - ClothingOuterWinterFestiveQM
   - ClothingUniformJumpsuitQMVista
   - ClothingUniformJumpskirtQMVista
+  #cargo
+  - ClothingHeadHatSeniorCargo
+  - ClothingUniformJumpsuitSeniorCargo
+  - ClothingUniformJumpskirtSeniorCargo
+  - ClothingOuterWinterSeniorCargo
+  - ClothingHeadHatCourier
+  - ClothingUniformJumpsuitCourier
+  - ClothingUniformJumpskirtCourier
+  - ClothingOuterWinterCargoWindbreaker
+  #salvage
+  - ClothingOuterWinterSalvageWindbreaker
 
 - type: latheRecipePack
   id: MoffstationClothingCommand
@@ -12,14 +28,18 @@
   # Captain
   - ClothingHeadHatCaptainConductor
   - ClothingHeadHatCaptainTricorn
-  - ClothingOuterCoatCaptainLongcoat
+  - ClothingHeadHatCaptainBeret
+  - ClothingOuterWinterFestiveCaptain
   - ClothingUniformJumpsuitCaptainConductor
   - ClothingUniformJumpskirtCaptainConductor
   - ClothingUniformJumpsuitCaptainNaval
   - ClothingUniformJumpskirtCaptainNaval
   # HoP
+  - ClothingHeadHatHopBeret
   - ClothingUniformJumpsuitHoPFormal
   - ClothingUniformJumpskirtHoPFormal
+  - ClothingUniformJumpsuitHoPFestive
+  - ClothingUniformJumpskirtHoPFestive
 
 - type: latheRecipePack
   id: MoffstationClothingMedical
@@ -30,6 +50,7 @@
   - ClothingUniformJumpskirtCMOFlowing
   - ClothingUniformJumpsuitCMOShell
   - ClothingUniformJumpskirtCMOShell
+  - ClothingOuterWinterFestiveCmo
 
 - type: latheRecipePack
   id: MoffstationClothingScience
@@ -38,18 +59,30 @@
   - ClothingUniformJumpskirtMachinist
   - ClothingOuterCoatRDVisionary
   - ClothingOuterCoatMach
+  #rd
+  - ClothingHeadHatRdBeret
+  - ClothingUniformJumpsuitRDFestive
+  - ClothingUniformJumpsuitRDRobo
+  - ClothingUniformJumpskirtRDRobo
 
 - type: latheRecipePack
   id: MoffstationClothingSecurity
   recipes:
+  #prisoner
   - ClothingUniformPrisonerShirt
   - ClothingUniformJumpsuitStripedPrisoner
   - ClothingUniformJumpskirtStripedPrisoner
+  #detective
   - ClothingUniformJumpsuitDetInvestigator
   - ClothingUniformJumpskirtDetInvestigator
   - ClothingUniformJumpsuitDetSleuth
   - ClothingUniformJumpskirtDetSleuth
   - ClothingOuterCoatSleuth
+  #hos
+  - ClothingHeadHatHosWestern
+  - ClothingUniformJumpsuitHosWestern
+  - ClothingHeadHatHosFestive
+  - ClothingUniformJumpsuitHosFestive
 
 - type: latheRecipePack
   id: MoffstationClothingService

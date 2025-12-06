@@ -107,3 +107,42 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seniorcargowintercoat.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSeniorCargo
+
+#QM
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterFestiveQM
+  name: quartermaster's festive coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festiveqm.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festiveqm.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterSeniorCargo
+
+#Captain
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterFestiveCaptain
+  name: Captain's Festive Coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecaptain.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecaptain.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterCaptain
+
+#CMO
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterFestiveCmo
+  name: Cmo's Festive Coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecmo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecmo.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterFestiveCmo

@@ -102,6 +102,17 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hopformal.rsi
 
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHoPFestive
+  name: head of personnel's festive suit
+  description: A warm red jumpsuit under a blue vest and unique hood. The entire uniform is lined with comfortable fur keeping you well insulated.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hopfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hopfestive.rsi
+
 # CMO
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -171,6 +182,63 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmvista.rsi
 
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitQMCruiser
+  name: quartermaster's cruiser suit
+  description: An outfit indicative of a quartermaster with experience piloting shuttles.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmcruiser.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmcruiser.rsi
+
+#Cargo
+- type: entity
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  id: ClothingUniformJumpsuitSeniorCargo
+  name: Senior Cargonian Jumpsuit
+  description: A resilient jumpsuit, issued to members of the Cargonian front.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  id: ClothingUniformJumpsuitCourier
+  name: Courier Jumpsuit
+  description: A jumpsuit made for maximum mobility, feels like you've got on nothing at all.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
+
+#HoS
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHosWestern
+  name: hos's wrangler outfit
+  description: A dusty and worn outfit of only the most rootin' tootin' of leaders.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hoswestern.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hoswestern.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHosFestive
+  name: hos's festive soldier uniform
+  description: An awfully stiff gilded uniform with large golden shoulder pads. A large piece of wood uncomfortably presses into the back of your neck, must be fashionable?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hosfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hosfestive.rsi
+
 # Detective
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
@@ -193,6 +261,29 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/investigator.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/investigator.rsi
+
+#RD
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitRDRobo
+  name: research director's roboticist turtleneck
+  description: It's a turtleneck worn by those with a deep understanding of cyborgs and other artificial intelligences.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdrobo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdrobo.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitRDFestive
+  name: research director's toymaker suit
+  description: A fancy purple suit of a station's favorite toymaker.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdfestive.rsi
 
 # Scientist
 - type: entity
@@ -230,7 +321,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/pierrot.rsi
 
-#Mime
+#Musician
 - type: entity
   parent: [ClothingUniformBase]
   id: ClothingUniformJumpsuitRockstar
@@ -275,26 +366,3 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
-
-#Cargo
-- type: entity
-  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
-  id: ClothingUniformJumpsuitSeniorCargo
-  name: Senior Cargonian Jumpsuit
-  description: A resilient jumpsuit, issued to members of the Cargonian front.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
-
-- type: entity
-  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
-  id: ClothingUniformJumpsuitCourier
-  name: Courier Jumpsuit
-  description: A jumpsuit made for maximum mobility, feels like you've got on nothing at all.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
