@@ -1380,7 +1380,6 @@
   - SecurityBelt
   - SecurityWebbing
   - SecurityWebbingAlt  # Moffstation - Alt sec webbing
-  - ShoulderHolster # Moffstation - (Security Loadout Improvements) - Filled shoulder holster as a sidegrade to the belt, rather than detectives having to start with the shoulder holster.
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1471,17 +1470,6 @@
   loadouts:
   - LizardPlushieDetective
   - SecStar
-
-# Moffstation - Begin (Detective Sidearm Options) - In case you hate using revolvers, you can choose now!
-- type: loadoutGroup
-  id: DetectiveSidearm
-  name: loadout-group-detective-sidearm
-  minLimit: 1
-  loadouts:
-  - DetectivePistolInspector
-  - DetectivePistolPM
-# Moffstation - End
-
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
