@@ -1,0 +1,20 @@
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostPizzaScurret
+  name: ghost role spawn point
+  suffix: PizzaScurret
+  components:
+  - type: GhostRole
+    name: ghost-role-information-pizza-scurret-name
+    description: ghost-role-information-pizza-scurret-desc
+    mindRoles:
+    - MindRolePizzaScurret
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: arnold

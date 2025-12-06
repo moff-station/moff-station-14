@@ -1,0 +1,11 @@
+- type: entity
+  id: SpawnPointPizzaScurret
+  parent: MarkerBase
+  name: pizza scurret
+  components:
+  - type: SpawnPoint
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: arnold
