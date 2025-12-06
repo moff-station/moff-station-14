@@ -1,4 +1,4 @@
-using Linq;
+using System.Linq;
 
 namespace Content.Shared._Moffstation.PizzaScurret.Receipt;
 
@@ -8,15 +8,14 @@ namespace Content.Shared._Moffstation.PizzaScurret.Receipt;
 /// </summary>
 public sealed class PizzaReceiptSystem : EntitySystem
 {
-    
+
     public override void Initialize()
     {
         base.Initialize();
     }
 
-
-// 
-private void CheckReceipt(Entity<PizzaReceiptComponent> ent, EntityUid customer)
+/*
+    private void CheckReceipt(Entity<PizzaReceiptComponent> ent, EntityUid customer)
     {
         foreach ( var stamp in paper.StampedBy) // Do this for every signature on the paper.
         {
@@ -31,6 +30,6 @@ private void CheckReceipt(Entity<PizzaReceiptComponent> ent, EntityUid customer)
             else
             false;
         }
-    }
+    } */
 }
 

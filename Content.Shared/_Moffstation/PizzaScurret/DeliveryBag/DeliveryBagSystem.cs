@@ -1,4 +1,4 @@
-using Linq;
+using System.Linq;
 using Content.Shared.Verbs;
 using Content.Shared._Moffstation.PizzaScurret.Receipt;
 using Content.Shared.Hands.EntitySystems;
@@ -17,15 +17,16 @@ namespace Content.Shared._Moffstation.PizzaScurret.DeliveryBag;
 public sealed class DeliveryBagSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
+    // [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
-    
+
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<DeliveryBagComponent, PrintReceiptMessage>(OnPrintReceipt);
+        //SubscribeLocalEvent<DeliveryBagComponent, PrintReceiptMessage>(OnPrintReceipt);
     }
 
+    /*
 private void PrintReceipt(Entity<DeliveryBagComponent> ent, EntityUid customer)
     {
                 if (!task.Item.Validate())
@@ -41,5 +42,5 @@ private void PrintReceipt(Entity<DeliveryBagComponent> ent, EntityUid customer)
                 break;
 
                 args.Verbs.Add(verb); // Print the receipt using verb.
-    }
+    } */
 }
