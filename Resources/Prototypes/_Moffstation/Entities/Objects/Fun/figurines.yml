@@ -214,14 +214,14 @@
 
 - type: entity
   parent: BaseFigurineMoff
-  id: ToyFigurineCat
+  id: ToyFigurineCatAi
   name: Marketable AI Figurine
   description: A figurine depicting a widely used Nanotrasen AI program, designed to encourage good relationships between the crew and their silicon assistants.
   components:
   - type: Sprite
-    state: cat
+    state: catai
   - type: SpeakOnTrigger
-    pack: FigurinesCat
+    pack: FigurinesCatAi
 
 - type: entity
   parent: BaseFigurineMoff
