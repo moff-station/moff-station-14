@@ -40,6 +40,20 @@
     jumpsuit: ClothingUniformJumpskirtDetectiveGrey
   groupBy: "detective jumpskirts" # Moffstation
 
+- type: loadout
+  id: DetectivePistolInspector
+  storage:
+    belt:
+    - WeaponRevolverInspector
+    - SpeedLoaderMagnum
+
+- type: loadout
+  id: DetectivePistolPM
+  storage:
+    belt:
+    - WeaponPistolPM
+    - MagazinePistol
+
 # OuterClothing
 - type: loadout
   id: DetectiveArmorVest

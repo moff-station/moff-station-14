@@ -1472,6 +1472,17 @@
   - LizardPlushieDetective
   - SecStar
 
+# Moffstation - Begin (Detective Sidearm Options) - In case you hate using revolvers, you can choose now!
+- type: loadoutGroup
+  id: DetectiveSidearm
+  name: loadout-group-detective-sidearm
+  minLimit: 1
+  loadouts:
+  - DetectivePistolInspector
+  - DetectivePistolPM
+# Moffstation - End
+
+
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
   name: loadout-group-security-cadet-jumpsuit
