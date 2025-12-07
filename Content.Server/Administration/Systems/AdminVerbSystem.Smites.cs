@@ -56,7 +56,7 @@ using Robust.Shared.Spawners;
 using Robust.Shared.Utility;
 using System.Numerics;
 using System.Threading;
-using Content.Server._Moffstation.Administration.Components; // Moffstation - Add Peak Smite
+using Content.Server._Moffstation.Administration.Components; // Moffstation - Add Extra Sign Smites
 using Content.Shared.Damage.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
@@ -581,7 +581,22 @@ public sealed partial class AdminVerbSystem
             };
             args.Verbs.Add(killSign);
 
-            // Moffstation - Start - Add PEAK Smite
+            // Moffstation - Start - Add Extra Sign Smites
+            var cringeSignName = Loc.GetString("admin-smite-cringe-sign-name").ToLowerInvariant();
+            Verb cringeSign = new()
+            {
+                Text = cringeSignName,
+                Category = VerbCategory.Smite,
+                Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Objects/Misc/cringesign.rsi"), "icon"),
+                Act = () =>
+                {
+                    EnsureComp<CringeSignComponent>(args.Target);
+                },
+                Impact = LogImpact.Extreme,
+                Message = string.Join(": ", cringeSignName, Loc.GetString("admin-smite-cringe-sign-description"))
+            };
+            args.Verbs.Add(cringeSign);
+
             var peakSignName = Loc.GetString("admin-smite-peak-sign-name").ToLowerInvariant();
             Verb peakSign = new()
             {

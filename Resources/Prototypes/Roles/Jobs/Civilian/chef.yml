@@ -3,10 +3,12 @@
   name: job-name-chef
   description: job-description-chef
   playTimeTracker: JobChef
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Civilian
-      time: 0.5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: Civilian
+  #    time: 0.5h
+  # Moffstation - End
   startingGear: ChefGear
   icon: "JobIconChef"
   supervisors: job-supervisors-hop

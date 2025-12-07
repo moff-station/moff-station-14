@@ -6,6 +6,10 @@
   description: job-description-station-ai
   playTimeTracker: JobStationAi
   requirements:
+  # Moffstation - Start - Change role timers
+  - !type:OverallPlaytimeRequirement
+    time: 20h
+  # Moffstation - End
   - !type:RoleTimeRequirement
     role: JobBorg
     time: 5h

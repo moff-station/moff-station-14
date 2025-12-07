@@ -3,10 +3,12 @@
   name: job-name-scientist
   description: job-description-scientist
   playTimeTracker: JobScientist
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Science
-      time: 2.5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: Science
+  #    time: 2.5h
+  # Moffstation - End
   startingGear: ScientistGear
   icon: "JobIconScientist"
   supervisors: job-supervisors-rd

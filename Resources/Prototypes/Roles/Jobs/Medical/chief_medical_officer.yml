@@ -6,6 +6,10 @@
   description: job-description-cmo
   playTimeTracker: JobChiefMedicalOfficer
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobChemist
       time: 2.5h

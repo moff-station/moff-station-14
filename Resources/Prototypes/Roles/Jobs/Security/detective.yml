@@ -3,10 +3,12 @@
   name: job-name-detective
   description: job-description-detective
   playTimeTracker: JobDetective
-  requirements:
-  - !type:RoleTimeRequirement
-    role: JobSecurityOfficer
-    time: 5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #- !type:RoleTimeRequirement
+  #  role: JobSecurityOfficer
+  #  time: 5h
+  # Moffstation - End
   startingGear: DetectiveGear
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos
