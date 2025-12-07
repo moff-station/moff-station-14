@@ -1,0 +1,51 @@
+# Dynamic entities - Used to make cards / decks / hands programmatically during gameplay.
+- type: entity
+  parent: BasePlayingCard
+  id: PlayingCardDynamic
+  name: playing card
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+    state: empty
+  - type: PlayingCard
+    name: "dynamic-playing-card-error-name"
+    description: "dynamic-playing-card-error-description"
+    obverseSprite: [ ]
+    reverseSprite: [ ]
+
+- type: entity
+  parent: BasePlayingCardDeck
+  id: PlayingCardDeckDynamic
+  name: deck of cards
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+    state: empty
+
+- type: entity
+  parent: BaseItem
+  id: PlayingCardHandDynamic
+  categories: [ HideSpawnMenu ]
+  name: hand of cards
+  components:
+  - type: Sprite
+    sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+    state: empty
+  - type: Item
+    size: Small
+  - type: Appearance
+  - type: HideInStripMenu
+    strategy: !type:HideInStripMenuWithDynamicStrategy
+  - type: PlayingCardHand
+    visualLimit: 5
+  - type: ContainerContainer
+    containers:
+      playing-card-stack-container: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.PlayingCardHandUiKey.Key:
+        type: PlayingCardHandMenuBoundUserInterface
+  - type: ActivatableUI
+    key: enum.PlayingCardHandUiKey.Key

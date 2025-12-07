@@ -1,0 +1,55 @@
+﻿# Hi! Welcome! This is how you make a deck of cards!
+
+# Define the deck by inheriting from the base deck and referencing a deck prototype.
+- type: entity
+  parent: BasePlayingCardDeck
+  id: DemoPlayingCardDeck
+  name: demo card deck
+  description: cards, bro
+  components:
+  - type: PlayingCardDeck
+    prototype: DemoDeck
+
+# The deck prototype is where things actually happen.
+- type: playingCardDeck
+  id: DemoDeck
+  sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi # This RSI will be used by default for all generated cards, unless another is specified on that specific card.
+  commonObverseSprite: # Layers specified here will be applied to all generated cards in this deck. They appear visually under layers specified on the specific card.
+  - state: background
+  commonReverseSprite: # Same as obverse, but for the back. Generated cards can't add layers to these.
+  - state: singlecard_down
+  cardLocPrefix: "cards-demo" # This string is prepended to generated cards' IDs to get the localization strings for their names and descriptions. By default, the name comes out to be "{cardLocPrefix}-{cardId}-name", and the description is "{cardLocPrefix}-{cardId}-description".
+  cards: # Here are the actual cards that'll end up in this deck:
+  - id: ace_spades # If you specify just an ID, the obverse sprite will be a single layer with the RSI specified above and a state with the same ID.
+  - id: ace_hearts
+    obverseSprite: # Generated cards can override the obverse sprite by specifying layers.
+    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_syndicate.rsi # You can specify the RSI to use as well...
+      state: background
+    - state: ace_hearts # ... though by default, it uses the RSI defined in the deck proto above.
+  - prototype: SyndicateBusinessPlayingCard # Instead of generating cards, you can just reference an entire other entity prototype and it'll end up in the deck. Make sure it has a PlayingCard component!
+  - id: ace_diamonds
+    faceDown: true # Cards can be spawned in either facing state...
+  - prototype: SyndicateBusinessPlayingCard
+    faceDown: true # ... even if they're a prototype reference.
+
+# Unique prototype for putting into the demo deck.
+- type: entity
+  parent: [ BasePlayingCard ]
+  id: SyndicateBusinessPlayingCard
+  categories: [ HideSpawnMenu ]
+  name: syndicate business card
+  description: A black card with the syndicate's logo.
+  components:
+  - type: PlayingCard
+    name: "card-demo-syndicate-business-card-name"
+    description: "card-demo-syndicate-business-card-description"
+    reverseName: "card-demo-syndicate-business-card-name"
+    reverseDescription: "card-demo-syndicate-business-card-description"
+    obverseSprite:
+    - sprite: Objects/Misc/bureaucracy.rsi
+      state: syndicate_card
+      rotation: 90
+    reverseSprite:
+    - sprite: Objects/Misc/bureaucracy.rsi
+      state: syndicate_card
+      rotation: 90

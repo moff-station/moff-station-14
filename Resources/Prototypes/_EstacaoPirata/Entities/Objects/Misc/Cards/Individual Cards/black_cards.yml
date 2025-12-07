@@ -1,947 +1,233 @@
-# Clubs
 - type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScAceOfClubsBlack
+  parent: BasePlayingCardDeckBox
+  id: PlayingCardDeckBoxBlack
+  name: box of playing cards
+  suffix: black
   components:
-  - type: Card
-    name: card-sc-ace-clubs-black
-    obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: ace_clubs
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-      
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc2OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-2-clubs-black
-    obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num2_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
+  - type: Sprite
+    sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+  - type: ContainerFill
+    containers:
+      storagebase:
+      - PlayingCardDeckBlack
 
 - type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc3OfClubsBlack
+  parent: BasePlayingCardDeck
+  id: PlayingCardDeckBlack
+  name: deck of cards
+  suffix: black
   components:
-  - type: Card
-    name: card-sc-3-clubs-black
-    obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num3_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
+  - type: PlayingCardDeck
+    prototype: BlackCards
 
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc4OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-4-clubs-black
+- type: playingCardDeck
+  id: BlackCards
+  sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+  commonObverseSprite:
+  - state: background
+  commonReverseSprite:
+  - state: singlecard_down
+  cardLocPrefix: "card-sc"
+  cards:
+  # Jokers
+  - id: joker
+  # Spades
+  - id: ace_spades
+  - id: 2_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num4_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc5OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-5-clubs-black
+    - state: suit_spades
+    - state: num2_black
+  - id: 3_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num5_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc6OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-6-clubs-black
+    - state: suit_spades
+    - state: num3_black
+  - id: 4_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num6_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc7OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-7-clubs-black
+    - state: suit_spades
+    - state: num4_black
+  - id: 5_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num7_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc8OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-8-clubs-black
+    - state: suit_spades
+    - state: num5_black
+  - id: 6_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num8_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc9OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-8-clubs-black
+    - state: suit_spades
+    - state: num6_black
+  - id: 7_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num9_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc10OfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-10-clubs-black
+    - state: suit_spades
+    - state: num7_black
+  - id: 8_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num10_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScJackOfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-jack-clubs-black
+    - state: suit_spades
+    - state: num8_black
+  - id: 9_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numJ_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScQueenOfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-queen-clubs-black
+    - state: suit_spades
+    - state: num9_black
+  - id: 10_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numQ_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScKingOfClubsBlack
-  components:
-  - type: Card
-    name: card-sc-king-clubs-black
+    - state: suit_spades
+    - state: num10_black
+  - id: jack_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_clubs
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numK_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-# Diamonds
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScAceOfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-ace-diamonds-black
+    - state: suit_spades
+    - state: numJ_black
+  - id: queen_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: ace_diamonds
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc2OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-2-diamonds-black
+    - state: suit_spades
+    - state: numQ_black
+  - id: king_spades
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num2_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc3OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-3-diamonds-black
+    - state: suit_spades
+    - state: numK_black
+  # Hearts
+  - id: ace_hearts
+  - id: 2_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num3_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc4OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-4-diamonds-black
+    - state: suit_hearts
+    - state: num2_red
+  - id: 3_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num4_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc5OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-5-diamonds-black
+    - state: suit_hearts
+    - state: num3_red
+  - id: 4_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num5_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc6OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-6-diamonds-black
+    - state: suit_hearts
+    - state: num4_red
+  - id: 5_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num6_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc7OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-7-diamonds-black
+    - state: suit_hearts
+    - state: num5_red
+  - id: 6_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num7_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc8OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-8-diamonds-black
+    - state: suit_hearts
+    - state: num6_red
+  - id: 7_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num8_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc9OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-9-diamonds-black
+    - state: suit_hearts
+    - state: num7_red
+  - id: 8_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num9_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc10OfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-10-diamonds-black
+    - state: suit_hearts
+    - state: num8_red
+  - id: 9_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num10_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScJackOfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-jack-diamonds-black
+    - state: suit_hearts
+    - state: num9_red
+  - id: 10_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numJ_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScQueenOfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-queen-diamonds-black
+    - state: suit_hearts
+    - state: num10_red
+  - id: jack_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numQ_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScKingOfDiamondsBlack
-  components:
-  - type: Card
-    name: card-sc-king-diamonds-black
+    - state: suit_hearts
+    - state: numJ_red
+  - id: queen_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_diamonds
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numK_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-# Hearts
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScAceOfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-ace-hearts-black
+    - state: suit_hearts
+    - state: numQ_red
+  - id: king_hearts
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: ace_hearts
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc2OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-2-hearts-black
+    - state: suit_hearts
+    - state: numK_red
+  # Diamonds
+  - id: ace_diamonds
+  - id: 2_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num2_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc3OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-3-hearts-black
+    - state: suit_diamonds
+    - state: num2_red
+  - id: 3_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num3_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc4OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-4-hearts-black
+    - state: suit_diamonds
+    - state: num3_red
+  - id: 4_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num4_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc5OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-5-hearts-black
+    - state: suit_diamonds
+    - state: num4_red
+  - id: 5_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num5_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc6OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-6-hearts-black
+    - state: suit_diamonds
+    - state: num5_red
+  - id: 6_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num6_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc7OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-7-hearts-black
+    - state: suit_diamonds
+    - state: num6_red
+  - id: 7_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num7_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc8OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-8-hearts-black
+    - state: suit_diamonds
+    - state: num7_red
+  - id: 8_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num8_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc9OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-9-hearts-black
+    - state: suit_diamonds
+    - state: num8_red
+  - id: 9_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num9_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc10OfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-10-hearts-black
+    - state: suit_diamonds
+    - state: num9_red
+  - id: 10_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num10_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScJackOfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-jack-hearts-black
+    - state: suit_diamonds
+    - state: num10_red
+  - id: jack_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numJ_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScQueenOfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-queen-hearts-black
+    - state: suit_diamonds
+    - state: numJ_red
+  - id: queen_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numQ_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScKingOfHeartsBlack
-  components:
-  - type: Card
-    name: card-sc-king-hearts-black
+    - state: suit_diamonds
+    - state: numQ_red
+  - id: king_diamonds
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_hearts
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numK_red
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-# Spades
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScAceOfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-ace-spades-black
+    - state: suit_diamonds
+    - state: numK_red
+  # Clubs
+  - id: ace_clubs
+  - id: 2_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: ace_spades
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc2OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-2-spades-black
+    - state: suit_clubs
+    - state: num2_black
+  - id: 3_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num2_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc3OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-3-spades-black
+    - state: suit_clubs
+    - state: num3_black
+  - id: 4_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num3_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc4OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-4-spades-black
+    - state: suit_clubs
+    - state: num4_black
+  - id: 5_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num4_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc5OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-5-spades-black
+    - state: suit_clubs
+    - state: num5_black
+  - id: 6_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num5_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc6OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-6-spades-black
+    - state: suit_clubs
+    - state: num6_black
+  - id: 7_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num6_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc7OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-7-spades-black
+    - state: suit_clubs
+    - state: num7_black
+  - id: 8_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num7_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc8OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-8-spades-black
+    - state: suit_clubs
+    - state: num8_black
+  - id: 9_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num8_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc9OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-9-spades-black
+    - state: suit_clubs
+    - state: num9_black
+  - id: 10_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num9_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardSc10OfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-10-spades-black
+    - state: suit_clubs
+    - state: num10_black
+  - id: jack_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: num10_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScJackOfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-jack-spades-black
+    - state: suit_clubs
+    - state: numJ_black
+  - id: queen_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numJ_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScQueenOfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-queen-spades-black
+    - state: suit_clubs
+    - state: numQ_black
+  - id: king_clubs
     obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numQ_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScKingOfSpadesBlack
-  components:
-  - type: Card
-    name: card-sc-king-spades-black
-    obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: background
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: suit_spades
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: numK_black
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
-
-# Jokers
-- type: entity
-  parent: CardBase
-  categories: [ HideSpawnMenu ]
-  id: CardScJokerBlack
-  components:
-  - type: Card
-    name: card-sc-joker-black
-    obverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: joker
-    reverseSprite:
-    - sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
-      state: singlecard_down
+    - state: suit_clubs
+    - state: numK_black

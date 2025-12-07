@@ -1,0 +1,72 @@
+# Abstract base entities for playing cards. Extend these to make custom cards, decks, and card boxes.
+
+- type: entity
+  parent: BaseItem
+  id: BasePlayingCard
+  name: playing card
+  abstract: true
+  components:
+  - type: Sprite
+  - type: Item
+    size: Small
+  - type: Appearance
+  - type: HideInStripMenu
+    strategy: !type:HideInStripMenuWithDynamicStrategy
+  - type: EmitSoundOnLand
+    sound:
+      collection: cardShove
+  - type: Rotatable
+  - type: UseDelay
+    delay: 0.5
+  - type: PlayingCard
+    flipped: true
+
+- type: entity
+  parent: BaseItem
+  id: BasePlayingCardDeck
+  name: deck of cards
+  description: A
+  abstract: true
+  components:
+  - type: Sprite
+  - type: Item
+    size: Normal
+  - type: Appearance
+  - type: PlayingCardDeck
+    visualLimit: 10
+    prototype: null
+  - type: ContainerContainer
+    containers:
+      playing-card-stack-container: !type:Container
+
+- type: entity
+  parent: [ BoxCardboard, BaseBagOpenClose ]
+  id: BasePlayingCardDeckBox
+  abstract: true
+  name: box of playing cards
+  components:
+  - type: Sprite
+    sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+    state: empty
+  - type: Appearance
+  - type: Item
+    size: Small
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: box_open }
+          False: { state: box }
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,1,1
+    whitelist:
+      components:
+      - PlayingCardDeck
+  - type: ContainerFill
+    containers:
+      storagebase:
+      - BasePlayingCardDeck # Replace this with your concrete deck.
+  - type: StaticPrice
+    price: 25

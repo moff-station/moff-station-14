@@ -1,0 +1,361 @@
+﻿using System.Linq;
+using Content.Shared._Moffstation.Cards.Components;
+using Content.Shared._Moffstation.Extensions;
+using Robust.Shared.Map;
+using Robust.Shared.Utility;
+
+namespace Content.Shared._Moffstation.Cards.Systems;
+
+// This part implements transferring cards from one place to another.
+public sealed partial class PlayingCardsSystem
+{
+    /// Moves the cards specified by <paramref name="range"/> from <paramref name="source"/> to
+    /// <paramref name="target"/>. The range is relative to <paramref name="source"/>.
+    /// <br/>
+    /// If <paramref name="user"/> is not null, audio and a pickup animation will be played.
+    public void Transfer<TSource, TTarget>(
+        Entity<TSource> source,
+        Entity<TTarget> target,
+        Range range,
+        EntityUid? user
+    ) where TSource : PlayingCardStackComponent where TTarget : PlayingCardStackComponent
+    {
+        TransferImpl(
+            CardSourceFrom(source),
+            Transform(source).Coordinates,
+            CardSinkFrom(target),
+            Transform(target).Coordinates,
+            range,
+            user
+        );
+    }
+
+    /// Removes the cards specified by <paramref name="range"/> from <paramref name="stack"/>, returning them in a list.
+    /// <br/>
+    /// If <paramref name="user"/> is not null, audio and a pickup animation will be played.
+    public List<Entity<PlayingCardComponent>> Take<TStack>(
+        Entity<TStack> stack,
+        Range range,
+        EntityCoordinates destinationCoords,
+        EntityUid? user
+    ) where TStack : PlayingCardStackComponent
+    {
+        var ret = new List<Entity<PlayingCardComponent>>();
+        TransferImpl(
+            CardSourceFrom(stack),
+            Transform(stack).Coordinates,
+            (cards, _) =>
+            {
+                ret.AddRange(cards.Select(cardLike => EnsureSpawnedOrNull(cardLike, destinationCoords))
+                    .OfType<Entity<PlayingCardComponent>>());
+                return (ret.FirstOrNull(), ret.Count);
+            },
+            destinationCoords,
+            range,
+            user
+        );
+        return ret;
+    }
+
+    /// Adds all <paramref name="cards"/> given to <paramref name="stack"/>.
+    /// <br/>
+    /// If <paramref name="user"/> is not null, audio and a pickup animation will be played.
+    public void Add<TStack>(
+        Entity<TStack> stack,
+        IEnumerable<Entity<PlayingCardComponent>> cards,
+        EntityCoordinates cardsCoords,
+        EntityUid? user
+    ) where TStack : PlayingCardStackComponent
+    {
+        TransferImpl(
+            (range, _) => cards.Take(range).Select(it => new CardLike.Entity(it)),
+            cardsCoords,
+            CardSinkFrom(stack),
+            Transform(stack).Coordinates,
+            ..,
+            user
+        );
+    }
+
+
+    /// A source of cards for transferring. Cards in the specified <paramref name="range"/> are taken from their current
+    /// location and yielded in the returned enumerable. The <paramref name="user"/> is also provided so that things
+    /// like predicted audio can be played.
+    private delegate IEnumerable<CardLike> CardSource(Range range, EntityUid? user);
+
+    /// A sink for cards for transferring. The given <paramref name="cards"/> are added to this sink, and the first card
+    /// moved along with the total number of cards moved are returned. The first/total are used for animating the
+    /// transfer. The <paramref name="user"/> is also provided so that things like predicted audio can be played.
+    private delegate (Entity<PlayingCardComponent>? firstCard, int numTotalCards) CardSink(
+        IEnumerable<CardLike> cards,
+        EntityUid? user
+    );
+
+    /// This type represents a Card either as an entity with <see cref="PlayingCardComponent"/> or an unspawned card in
+    /// a <see cref="PlayingCardDeckComponent"/> during transfers.
+    private abstract record CardLike
+    {
+        // Private constructor to seal inheritance.
+        private CardLike() { }
+
+        public sealed record Entity(Entity<PlayingCardComponent> Ent) : CardLike;
+
+        public sealed record Unspawned(PlayingCardDeckPrototypeElement Data, Entity<PlayingCardDeckComponent> Deck)
+            : CardLike;
+    }
+
+
+    /// <summary>
+    /// The implementation of all card movement into and out of stacks.
+    /// </summary>
+    /// <param name="source">The implementation of taking and returning cards from the source</param>
+    /// <param name="sourceCoords">Where the source is, conceptually. Movement animations and audio play from here</param>
+    /// <param name="sink">The implementation of adding cards to the sink</param>
+    /// <param name="sinkCoords">Where the sink is, conceptually. Movement animations and audio play from here</param>
+    /// <param name="range">Specification of which cards are taken. This is relative to <paramref name="source"/>.</param>
+    /// <param name="user">Who is causing the moving. This is used to make audio / pickup animations predictive. If this
+    /// is not specified, neither audio nor pickup animations will occur.</param>
+    private void TransferImpl(
+        CardSource source,
+        EntityCoordinates sourceCoords,
+        CardSink sink,
+        EntityCoordinates sinkCoords,
+        Range range,
+        EntityUid? user
+    )
+    {
+        var (firstCard, numTotalCards) = sink(source(range, user), user);
+
+        // TODO CENT If more than one card is moved, the pickup animation should look like a deck.
+        if (user is { } u && firstCard is { } fc)
+        {
+            _storage.PlayPickupAnimation(fc, sourceCoords, sinkCoords, 0, u);
+        }
+    }
+
+    private CardSource CardSourceFrom<TStack>(Entity<TStack> entity) where TStack : PlayingCardStackComponent =>
+        entity.Comp switch
+        {
+            PlayingCardDeckComponent deck => AsCardSource((entity, deck)),
+            PlayingCardHandComponent hand => AsCardSource((entity, hand)),
+            _ => throw new($"Unknown variant of {nameof(PlayingCardStackComponent)}"),
+        };
+
+    private CardSource AsCardSource(Entity<PlayingCardDeckComponent> entity)
+    {
+        return Impl;
+
+        // Local method to enable `yield`.
+        IEnumerable<CardLike> Impl(Range range, EntityUid? user)
+        {
+            var (inRange, outOfRange) = Split(entity.Comp.Cards, range);
+            try
+            {
+                foreach (var cardInDeck in inRange)
+                {
+                    switch (cardInDeck)
+                    {
+                        case PlayingCardInDeck.NetEnt(var netEntity):
+                            if (NetEntToCardOrNull(netEntity) is not { } card)
+                                continue;
+
+                            _container.Remove(card.Owner, entity.Comp.Container);
+                            yield return new CardLike.Entity(card);
+                            break;
+                        case PlayingCardInDeck.Unspawned(var cardDeckCard):
+                            yield return new CardLike.Unspawned(cardDeckCard, entity);
+                            break;
+                        default:
+                            throw new("Unreachable");
+                    }
+                }
+            }
+            finally
+            {
+                entity.Comp.Cards = outOfRange;
+                entity.Comp.DirtyVisuals = true;
+                Dirty(entity);
+
+                _audio.PlayPredicted(entity.Comp.PickUpSound, Transform(entity).Coordinates, user);
+
+                if (entity.Comp.NumCards == 0)
+                {
+                    PredictedDel(entity.Owner);
+                }
+            }
+        }
+    }
+
+    private CardSource AsCardSource(Entity<PlayingCardHandComponent> entity)
+    {
+        return Impl;
+
+        // Local method to enable `yield`.
+        IEnumerable<CardLike> Impl(Range range, EntityUid? user)
+        {
+            var (inRange, outOfRange) = Split(entity.Comp.Cards, range);
+            try
+            {
+                foreach (var cardNetEnt in inRange)
+                {
+                    if (NetEntToCardOrNull(cardNetEnt) is not { } card)
+                        continue;
+
+                    _container.Remove(card.Owner, entity.Comp.Container);
+
+                    yield return new CardLike.Entity(card);
+                }
+            }
+            finally
+            {
+                entity.Comp.Cards = outOfRange;
+                entity.Comp.DirtyVisuals = true;
+                Dirty(entity);
+
+                var entityCoordinates = Transform(entity).Coordinates;
+                _audio.PlayPredicted(entity.Comp.PickUpSound, entityCoordinates, user);
+
+                if (entity.Comp.NumCards == 0)
+                {
+                    PredictedQueueDel(entity);
+                }
+                else if (entity.Comp.NumCards == 1)
+                {
+                    // Turn into just a card
+                    var lastCard = Take(entity, .., entityCoordinates, null).Single();
+
+                    // If the hand was in a container, leave the last card in its place in the container.
+                    var cardParent = Transform(entity).ParentUid;
+                    if (_container.TryGetContainingContainer(cardParent, entity, out var container))
+                    {
+                        _container.Remove(entity.Owner, container, force: true);
+                        _container.Insert(lastCard.Owner, container);
+                    }
+
+                    PredictedQueueDel(entity);
+                }
+            }
+        }
+    }
+
+    private CardSink CardSinkFrom<TStack>(Entity<TStack> entity) where TStack : PlayingCardStackComponent =>
+        entity.Comp switch
+        {
+            PlayingCardDeckComponent deck => AsCardSink((entity, deck)),
+            PlayingCardHandComponent hand => AsCardSink((entity, hand)),
+            _ => throw new($"Unknown variant of {nameof(PlayingCardStackComponent)}"),
+        };
+
+    private CardSink AsCardSink(Entity<PlayingCardDeckComponent> entity) => (cards, user) =>
+    {
+        var deckCoords = Transform(entity).Coordinates;
+
+        Entity<PlayingCardComponent>? first = null;
+        var count = 0;
+        foreach (var cardLike in cards)
+        {
+            count += 1;
+            first ??= cardLike is CardLike.Entity(var ent1) ? ent1 : null;
+            switch (cardLike)
+            {
+                case CardLike.Entity(var ent):
+                    entity.Comp.Cards.Add(new PlayingCardInDeck.NetEnt(GetNetEntity(ent)));
+                    if (!_container.Insert(ent.Owner, entity.Comp.Container, force: true))
+                    {
+                        this.AssertOrLogError(
+                            $"Failed to insert card into deck (card={ToPrettyString(ent)}, hand={ToPrettyString(entity)})"
+                        );
+                    }
+
+                    break;
+                case CardLike.Unspawned(var cardDeckCard, var sourceDeck):
+                    if (sourceDeck.Comp.Prototype == entity.Comp.Prototype)
+                    {
+                        // If the two decks have the same deck prototype, we don't need to spawn the card, just move
+                        // its info to the new deck.
+                        entity.Comp.Cards.Add(new PlayingCardInDeck.Unspawned(cardDeckCard));
+                    }
+                    else if (EnsureSpawnedOrNull(cardLike, deckCoords) is { } spawned)
+                    {
+                        entity.Comp.Cards.Add(new PlayingCardInDeck.NetEnt(GetNetEntity(spawned)));
+                    }
+
+                    break;
+                default:
+                    throw new("Unreachable");
+            }
+        }
+
+        if (count > 0)
+        {
+            entity.Comp.DirtyVisuals = true;
+            Dirty(entity);
+
+            _audio.PlayPredicted(entity.Comp.PlaceDownSound, deckCoords, user);
+        }
+
+        return (first, count);
+    };
+
+    private CardSink AsCardSink(Entity<PlayingCardHandComponent> entity) => (cards, user) =>
+    {
+        var coords = Transform(entity).Coordinates;
+
+        Entity<PlayingCardComponent>? first = null;
+        var count = 0;
+        foreach (var cardLike in cards)
+        {
+            if (EnsureSpawnedOrNull(cardLike, coords) is not { } spawned)
+                continue;
+            count += 1;
+            first ??= spawned;
+            entity.Comp.Cards.Add(GetNetEntity(spawned));
+            if (!_container.Insert(spawned.Owner, entity.Comp.Container, force: true))
+            {
+                this.AssertOrLogError(
+                    $"Failed to insert card into hand (card={ToPrettyString(spawned)}, hand={ToPrettyString(entity)})"
+                );
+            }
+        }
+
+        if (count > 0)
+        {
+            entity.Comp.DirtyVisuals = true;
+            Dirty(entity);
+
+            _audio.PlayPredicted(entity.Comp.PlaceDownSound, Transform(entity).Coordinates, user);
+        }
+
+        return (first, count);
+    };
+
+    private Entity<PlayingCardComponent>? EnsureSpawnedOrNull(CardLike cardLike, EntityCoordinates coords) =>
+        cardLike switch
+        {
+            CardLike.Entity(var entity) => entity,
+            CardLike.Unspawned(var cardDeckCard, var deck) => cardDeckCard switch
+            {
+                PlayingCardDeckPrototypeElementData data => SpawnPredictedDynamicCard(data, deck, coords),
+                PlayingCardDeckPrototypeElementProtoRef protoRef =>
+                    PredictedSpawnAtPosition(protoRef.Prototype, coords) is var spawnedRef
+                        ? (spawnedRef, EnsureComp<PlayingCardComponent>(spawnedRef))
+                        : throw new("Unreachable: spawned ref pattern is irrefutable"),
+                _ => this.AssertOrLogError<Entity<PlayingCardComponent>?>(
+                    $"Unknown variant of {nameof(PlayingCardDeckPrototypeElement)}: {typeof(PlayingCardDeckPrototypeElement)}",
+                    null
+                ),
+            },
+            _ => throw new("Unreachable"),
+        };
+
+    private static (List<T> inRange, List<T> outOfRange) Split<T>(ICollection<T> source, Range range)
+    {
+        var start = range.Start.GetOffset(source.Count);
+        var end = range.End.GetOffset(source.Count);
+
+        var inRange = source.Index().Where(it => it.Index >= start && it.Index < end).Select(it => it.Item).ToList();
+        var outOfRange = source.Index().Where(it => it.Index < start || it.Index >= end).Select(it => it.Item).ToList();
+
+        return (inRange, outOfRange);
+    }
+}

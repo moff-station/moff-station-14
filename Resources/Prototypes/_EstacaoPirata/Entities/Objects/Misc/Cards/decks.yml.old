@@ -22,7 +22,7 @@
   - type: Sprite
   - type: ContainerFill
     containers:
-      cardstack-container:
+      playing-card-stack-container:
       # Clubs
       - CardScAceOfClubsBlack
       - CardSc2OfClubsBlack
@@ -106,7 +106,7 @@
   - type: Sprite
   - type: ContainerFill
     containers:
-      cardstack-container:
+      playing-card-stack-container:
       # Clubs
       - CardScAceOfClubsNanotrasen
       - CardSc2OfClubsNanotrasen
@@ -170,7 +170,7 @@
 - type: entity
   parent: [CardBoxBase, BaseSyndicateContraband]
   id: CardBoxSyndicate
-  name: box of syndicate playing cards 
+  name: box of syndicate playing cards
   components:
   - type: Item
     size: Small
@@ -190,7 +190,7 @@
   - type: Sprite
   - type: ContainerFill
     containers:
-      cardstack-container:
+      playing-card-stack-container:
       # Clubs
       - CardScAceOfClubsSyndicate
       - CardSc2OfClubsSyndicate
@@ -273,7 +273,7 @@
   - type: Sprite
   - type: ContainerFill
     containers:
-      cardstack-container:
+      playing-card-stack-container:
       - CardNunoRedZero
       - CardNunoRedOne
       - CardNunoRedTwo

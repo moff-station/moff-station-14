@@ -1,14 +1,15 @@
 using System.Linq;
 using Content.Client.UserInterface.Controls;
-using Content.Shared._Moffstation.Cards;
 using Content.Shared._Moffstation.Cards.Components;
+using Content.Shared._Moffstation.Cards.Events;
+using Content.Shared._Moffstation.Cards.Systems;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._Moffstation.Cards;
 
 [UsedImplicitly]
-public sealed class CardHandMenuBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed class PlayingCardHandMenuBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
     private SimpleRadialMenu? _menu;
 
@@ -24,9 +25,9 @@ public sealed class CardHandMenuBoundUserInterface(EntityUid owner, Enum uiKey) 
     public override void Update()
     {
         _menu?.SetButtons(
-            EntMan.System<CardHandSystem>()
+            EntMan.System<PlayingCardsSystem>()
                 .GetCards(Owner)
-                .Select(card => new RadialMenuActionOption<Entity<CardComponent>>(OnPressed, card)
+                .Select(card => new RadialMenuActionOption<Entity<PlayingCardComponent>>(OnPressed, card)
                     {
                         IconSpecifier = RadialMenuIconSpecifier.With(card),
                         ToolTip = Loc.GetString(card.Comp.Name),
@@ -35,6 +36,6 @@ public sealed class CardHandMenuBoundUserInterface(EntityUid owner, Enum uiKey) 
         );
     }
 
-    private void OnPressed(Entity<CardComponent> card) =>
-        SendPredictedMessage(new CardHandDrawMessage(EntMan.GetNetEntity(card)));
+    private void OnPressed(Entity<PlayingCardComponent> card) =>
+        SendPredictedMessage(new DrawPlayingCardFromHandMessage(EntMan.GetNetEntity(card)));
 }

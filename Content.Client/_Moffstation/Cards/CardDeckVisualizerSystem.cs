@@ -2,25 +2,28 @@ using System.Linq;
 using System.Numerics;
 using Content.Client._Moffstation.GameObjects;
 using Content.Shared._Moffstation.Cards.Components;
+using Content.Shared._Moffstation.Cards.Systems;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._Moffstation.Cards;
 
-public sealed partial class CardDeckVisualizerSystem : ManagedLayerVisualizerSystem<CardDeckComponent>
+public sealed partial class CardDeckVisualizerSystem : ManagedLayerVisualizerSystem<PlayingCardDeckComponent>
 {
-    protected override ref HashSet<string> SpriteLayersAdded(CardDeckComponent component) =>
+    [Dependency] private readonly PlayingCardsSystem _playingCards = default!;
+
+    protected override ref HashSet<string> SpriteLayersAdded(PlayingCardDeckComponent component) =>
         ref component.SpriteLayersAdded;
 
     protected override void AddLayersOnAppearanceChange(
-        CardDeckComponent component,
+        PlayingCardDeckComponent component,
         Entity<SpriteComponent?> sprite,
         AppearanceComponent appearance,
         Func<string, PrototypeLayerData, SpriteComponent.Layer> layerFactory
     )
     {
-        if (!AppearanceSystem.TryGetData<NetEntity[]>(
+        if (!AppearanceSystem.TryGetData<List<PlayingCardInDeck>>(
                 sprite,
-                CardStackVisuals.Cards,
+                PlayingCardStackVisuals.Cards,
                 out var visibleCards,
                 appearance
             ))
@@ -28,17 +31,20 @@ public sealed partial class CardDeckVisualizerSystem : ManagedLayerVisualizerSys
 
         var layerRotation = Angle.FromDegrees(90);
         var layerScale = new Vector2(component.Scale, component.Scale);
-        foreach (var (cardIndex, cardEnt) in GetEntityArray(visibleCards).Index())
+        foreach (var (cardIndex, cardInDeck) in visibleCards.Index())
         {
-            if (!TryComp<CardComponent>(cardEnt, out var cardComp))
+            if (_playingCards.ToLayers(cardInDeck, (sprite, component)) is not { } currentLayers)
                 continue;
 
-            foreach (var (cardLayerIndex, cardLayerData) in cardComp.CurrentSprite.Index())
+            foreach (var (cardLayerIndex, cardLayerData) in currentLayers.Index())
             {
                 var layer = layerFactory($"{cardIndex}-{cardLayerIndex}", cardLayerData);
-                SpriteSystem.LayerSetRotation(layer, layerRotation);
-                SpriteSystem.LayerSetScale(layer, layerScale);
-                SpriteSystem.LayerSetOffset(layer, new Vector2(0, component.YOffset * cardIndex));
+                SpriteSystem.LayerSetRotation(layer, layerRotation + (cardLayerData.Rotation ?? 0));
+                SpriteSystem.LayerSetScale(layer, layerScale * (cardLayerData.Scale ?? Vector2.One));
+                SpriteSystem.LayerSetOffset(
+                    layer,
+                    new Vector2(0, component.YOffset * cardIndex) + (cardLayerData.Offset ?? Vector2.Zero)
+                );
             }
         }
     }
