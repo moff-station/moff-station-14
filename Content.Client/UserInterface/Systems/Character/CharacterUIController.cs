@@ -183,6 +183,17 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 
             _window.Objectives.AddChild(objectiveControl);
         }
+        // Moffstation - Start - Objective Picker
+        var objectivePickerButton = new Button
+        {
+            Text = "Choose Objectives...",
+            Margin = new Thickness(0, 10, 0, 10)
+        };
+        objectivePickerButton.OnPressed += _ => _objective.OpenWindow();
+
+        _window.Objectives.AddChild(objectivePickerButton);
+
+        // Moffstation - End
         // Begin DeltaV Additions - Custom objective summary
         if (objectives.Count > 0)
         {
