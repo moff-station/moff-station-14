@@ -95,7 +95,10 @@
       - PosterContrabandExoAcid
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
-      - PosterMoffFiveHundredMothroaches # Moffstaion
+      # Moffstation - Begin
+      - PosterMoffFiveHundredMothroaches
+      - PosterMoffArnoldPizzeria
+      # Moffstation - End
     chance: 1
 
 - type: entity
@@ -162,6 +165,9 @@
       - PosterLegitOppenhopper
       - PosterLegitTyrone
       - PosterLegitHelio
-      - PosterLegitUmbraClouds # Moffstation
       - PosterLegitBotanyFear
+      # Moffstation - Begin
+      - PosterLegitUmbraClouds
+      - PosterMoffPizzaDeliveryScurret
+      # Moffstation - End
     chance: 1

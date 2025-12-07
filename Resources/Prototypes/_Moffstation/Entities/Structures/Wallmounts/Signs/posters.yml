@@ -18,3 +18,25 @@
     state: five_hundred_mothroaches
   - type: DetailExaminable
     content: "'Have 1,000,000 spesos and nothing to spend it on? Try 500 Mothroaches! You will certainly not regret purchasing 500 Mothroaches!'"
+
+- type: entity
+  parent: PosterBaseMoff
+  id: PosterMoffPizzaDeliveryScurret
+  name: "Pizza Delivery Scurret"
+  description: "A poster with what looks like a proud Scurret deliverying pizza. How brave!"
+  components:
+  - type: Sprite
+    state: scurret_deliver
+  - type: DetailExaminable
+    content: "There is appears to be instructions on how a Scurret can get into contact with Arnold's Pizzeria, and begin delivery pizzas for the company."
+
+- type: entity
+  parent: PosterBaseMoff
+  id: PosterMoffArnoldPizzeria
+  name: "Arnold's Pizzeria"
+  description: "An advertisement for the fabled Arnold's Pizzeria. It appears they are finally delivering to this sector at long last."
+  components:
+  - type: Sprite
+    state: arnold_pizza
+  - type: DetailExaminable
+    content: "'If you need a pizza sometime during the next few days, I can have it delivered to you. Or maybe I'll staple it to you. I don't care what you want on it. Every pizza comes with Pepperoni, and 9mm bullets on it!'"
