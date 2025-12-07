@@ -1,4 +1,4 @@
-- type: entity
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolPM
   name: PM
@@ -14,9 +14,9 @@
   - type: Clothing
     sprite: _Moffstation/Objects/Weapons/Guns/Pistols/pm.rsi
   - type: Item
-    storedOffset: 0,-2
+    storedOffset: 0,-4
   - type: Gun
-    fireRate: 4.5 # Heavy trigger makes it fire a bit slower.
+    fireRate: 4.5 # Heavy trigger makes it difficult to fire quickly.
     FireOnLandChance: 0 # Heavy trigger protects from uncommanded discharges.
     availableModes:
     - SemiAuto
