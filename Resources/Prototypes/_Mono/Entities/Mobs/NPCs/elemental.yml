@@ -6,7 +6,10 @@
   suffix: Phenylpiperidine
   components:
   - type: Bloodstream
-    bloodReagent: Phenylpiperidine
+    bloodReagents:
+      reagents:
+      - ReagentId: Phenylpiperidine
+        Quantity: 1
   - type: PointLight
     color: "#b4dae0"
   - type: Sprite
