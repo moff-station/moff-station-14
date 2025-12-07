@@ -16,17 +16,26 @@ public sealed partial class VentCrittersRuleComponent : Component
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
 
-    /// <summary>
-    /// The amount of chances something gets to spawn. estimated number of spawns can be calculated with (SpawnChances * entryProb)
-    /// </summary>
-    [DataField]
-    public int? SpawnAttempts;
+    [ViewVariables]
+    public int SpawnAttempts;
 
     /// <summary>
-    /// Baseline spawn chances, mainly for small maps
+    /// The minimum amount of attempts something gets to spawn per player in the game. estimated number of spawns can be calculated with (SpawnAttempts * entryProb)
     /// </summary>
     [DataField]
-    public int SpawnAttemptsMin = 50;
+    public int PlayerRatioSpawnsMin = 1;
+
+    /// <summary>
+    /// The maximum amount of attempts something gets to spawn per player in the game. estimated number of spawns can be calculated with (SpawnAttempts * entryProb)
+    /// </summary>
+    [DataField]
+    public int PlayerRatioSpawnsMax = 3;
+
+    /// <summary>
+    /// Absolute maximum number of spawns that can occur, even if the spawns attempts permit for more
+    /// </summary>
+    [DataField]
+    public int MaxSpawns = 10;
 
     [DataField]
     public TimeSpan PopupDelay = TimeSpan.FromSeconds(5);

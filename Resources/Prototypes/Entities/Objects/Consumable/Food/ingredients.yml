@@ -35,9 +35,11 @@
     solution: food
   - type: TrashOnSolutionEmpty
     solution: food
+  # Moffstation - Begin - Readd ingredient tag for borg hands
   - type: Tag
     tags:
-      - Ingredient
+    - Ingredient
+  # Moffstation - End
 
 - type: entity
   abstract: true
@@ -278,9 +280,11 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 15
+  # Moffstation - Begin - Readd ingredient tag for borg hands
   - type: Tag
     tags:
-      - Ingredient
+    - Ingredient
+  # Moffstation - End
 
 - type: entity
   parent: FoodBakingBase
@@ -468,8 +472,8 @@
     node: start
   - type: Tag
     tags:
-    - Ingredient
     - ClothMade
+    - Ingredient # Moffstation - Readd ingredient tag for borg hands
   - type: SolutionContainerManager
     solutions:
       food:
@@ -540,7 +544,7 @@
   - type: Tag
     tags:
      - ClothMade
-     - Ingredient
+     - Ingredient # Moffstation - Readd ingredient tag for borg hands
 
 - type: entity
   name: raw pastry base
@@ -934,9 +938,11 @@
       reagents:
       - ReagentId: CocoaPowder
         Quantity: 2
+  # Moffstation - Begin - Readd ingredient tag for borg hands
   - type: Tag
     tags:
-      - Ingredient
+    - Ingredient
+  # Moffstation - End
 
 - type: entity
   parent: FoodBakingBase

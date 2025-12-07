@@ -1,0 +1,13 @@
+- type: entity
+  parent: ClothingHeadHelmetHardsuitSyndie
+  id: ClothingHeadHelmetHardsuitERTMailCarrier
+  name: ERT mail carrier hardsuit helmet
+  description: A special hardsuit helmet worn by mail carriers of an emergency response team.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _NF/Clothing/Head/Hardsuits/ertmailcarrier.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/Head/Hardsuits/ertmailcarrier.rsi
+  - type: PointLight
+    color: "#cbadff"

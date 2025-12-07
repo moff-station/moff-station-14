@@ -3,10 +3,12 @@
   name: job-name-engineer
   description: job-description-engineer
   playTimeTracker: JobStationEngineer
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Engineering
-      time: 2.5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: Engineering
+  #    time: 2.5h
+  # Moffstation - End
   startingGear: StationEngineerGear
   icon: "JobIconStationEngineer"
   supervisors: job-supervisors-ce
@@ -20,7 +22,7 @@
 - type: startingGear
   id: StationEngineerGear
   equipment:
-    eyes: ClothingEyesGlassesMeson
+  # eyes: ClothingEyesGlassesMeson # Moffstation - Eyepatches!
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering
   #storage:

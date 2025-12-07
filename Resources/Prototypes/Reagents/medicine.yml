@@ -93,7 +93,6 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
         time: 1.5
-        type: Add
       - !type:HealthChange
         damage:
           types:
@@ -109,15 +108,17 @@
   color: "#2d5708"
   metabolisms:
     Medicine:
+      metabolismRate: 0.05 # Moffstation - Make Ethylredoxrazine neutralize alcohol in metabolism
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrunk
         time: 6.0
         type: Remove
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: -0.5
+      # Moffstation - Begin - Make Ethylredoxrazine neutralize alcohol in metabolism
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: -5
+      # Moffstation - End
 
 - type: reagent
   id: Arithrazine
@@ -589,10 +590,7 @@
     - !type:PlantAdjustToxins
       amount: 6
     - !type:PlantPhalanximine
-      conditions:
-      - !type:ReagentCondition
-        reagent: Phalanximine
-        min: 4
+      minScale: 4
   metabolisms:
     Medicine:
       metabolismRate: 0.1
@@ -1195,7 +1193,6 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaling: true
         ignoreResistances: false
         damage:
           types:

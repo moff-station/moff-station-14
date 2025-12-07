@@ -7,8 +7,10 @@
   - CaptainJumpsuit
   - CaptainBackpack
   - CaptainOuterClothing
+  - CaptainEyewear # Moffstation - Eyepatches!
   - Survival
   - Trinkets
+  - CaptainJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -21,9 +23,11 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
-  - Glasses
+# - Glasses # Moffstation - Eyepatches!
+  - HopEyewear # Moffstation - Eyepatches!
   - Survival
   - Trinkets
+  - HoPJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -54,6 +58,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - PassengerJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -66,10 +71,11 @@
   - BartenderJumpsuit
   - CommonBackpack
   - BartenderOuterClothing
-  - BartenderGoldenShaker
-  - Glasses
+# - Glasses # Moffstation - Eyepatches!
+  - BartenderEyewear # Moffstation - Eyepatches!
   - Survival
   - Trinkets
+  - BartenderJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -83,6 +89,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -99,6 +106,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ChefJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -112,6 +120,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - LibrarianJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -126,6 +135,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - LawyerJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -144,6 +154,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ChaplainJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -160,7 +171,7 @@
   - Glasses
   - Survival
   - Trinkets
-  - JanitorPlunger
+  - JanitorJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -176,6 +187,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - BotanistJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -193,6 +205,7 @@
   - Glasses
   - SurvivalClown
   - Trinkets
+  - ClownJobTrinkets
   - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
@@ -210,6 +223,7 @@
   - Glasses
   - SurvivalMime
   - Trinkets
+  - MimeJobTrinkets
   - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
@@ -224,6 +238,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - MusicianJobTrinkets
   - Instruments
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
@@ -242,6 +257,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - QuartermasterJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -255,10 +271,11 @@
   - CargoTechnicianBackpack
   - CargoTechnicianOuterClothing
   - CargoTechnicianShoes
-#  - CargoTechnicianID # Moffstation - Moved up in list
+# - CargoTechnicianID # Moffstation - Moved up in list
   - Glasses
   - Survival
   - Trinkets
+  - CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -273,6 +290,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - SalvageSpecialistJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -287,8 +305,10 @@
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
+  - EngineeringEyewear # Moffstation - Eyepatches!
   - SurvivalExtended
   - Trinkets
+  - ChiefEngineerJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -300,6 +320,7 @@
   - StationEngineerBackpack
   - SurvivalExtended
   - Trinkets
+  - TechnicalAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -314,8 +335,10 @@
   - StationEngineerOuterClothing
   - StationEngineerShoes
 #  - StationEngineerID # Moffstation - Moved up in list
+  - EngineeringEyewear # Moffstation - Eyepatches!
   - SurvivalExtended
   - Trinkets
+  - StationEngineerJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -324,13 +347,15 @@
   groups:
   - GroupTankHarness
   - AtmosPDA # Moffstation - Additional job title loadouts
-  - StationEngineerHead # Moffstation - (Nox Loadout Improvements)
+  - AtmosphericTechnicianHead # Moffstation - (Work Gear for Atmos) - This contains their new hardhats.
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
   - AtmosphericTechnicianShoes
+  - EngineeringEyewear # Moffstation - Eyepatches!
   - SurvivalExtended
   - Trinkets
+  - AtmosphericTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -346,9 +371,11 @@
   - ResearchDirectorOuterClothing
   - ScientistGloves
   - ResearchDirectorShoes
-  - Glasses
+# - Glasses # Moffstation - Eyepatches!
+  - ScienceEyewear # Moffstation - Eyepatches!
   - Survival
   - Trinkets
+  - ResearchDirectorJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -364,10 +391,12 @@
   - ScientistOuterClothing
   - ScientistGloves
   - ScientistShoes
-#  - ScientistPDA # Moffstation - Moved up in list
-  - Glasses
+# - ScientistPDA # Moffstation - Moved up in list
+# - Glasses # Moffstation - Eyepatches!
+  - ScienceEyewear # Moffstation - Eyepatches!
   - Survival
   - Trinkets
+  - ScientistJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -380,6 +409,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ResearchAssistantJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -394,9 +424,10 @@
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - SecurityShoes
+  - SecurityEyewear # Moffstation - Eyepatches!
   - SurvivalSecurity
   - Trinkets
-  - SecurityStar
+  - HeadofSecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - PersonalItemsJobAgnostic # Umbra
 
@@ -410,9 +441,10 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
+  - SecurityEyewear # Moffstation - Eyepatches!
   - SurvivalSecurity
   - Trinkets
-  - SecurityStar
+  - WardenJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - PersonalItemsJobAgnostic # Umbra
 
@@ -425,11 +457,12 @@
   - SecurityBackpack
   - SecurityOuterClothing
   - SecurityShoes
-#  - SecurityPDA # Moffstation - Moved up in list
+# - SecurityPDA # Moffstation - Moved up in list
   - SecurityBelt
+  - SecurityEyewear # Moffstation - Eyepatches!
   - SurvivalSecurity
   - Trinkets
-  - SecurityStar
+  - SecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - PersonalItemsJobAgnostic # Umbra
 
@@ -442,11 +475,12 @@
   - DetectiveJumpsuit
   - SecurityBackpack
   - DetectiveOuterClothing
-  - SecurityBelt # Moffstation - (Nox Loadout Improvements)
+  - DetectiveBelt # Moffstation - Detective loadout changes
   - SecurityShoes
+  - DetectiveEyewear # Moffstation - Eyepatches!
   - SurvivalSecurity
   - Trinkets
-  - SecurityStar
+  - DetectiveJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - PersonalItemsJobAgnostic # Umbra
 
@@ -457,6 +491,7 @@
   - SecurityBackpack
   - SurvivalSecurity
   - Trinkets
+  - SecurityCadetJobTrinkets
   - GroupSpeciesBreathToolSecurity
   - PersonalItemsJobAgnostic # Umbra
 
@@ -473,9 +508,11 @@
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
-  - MedicalEyewear
+# - MedicalEyewear
+  - ChemistryEyewear # Moffstation - Eyepatches!
   - SurvivalMedical
   - Trinkets
+  - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
   - PersonalItemsJobAgnostic # Umbra
 
@@ -491,10 +528,11 @@
   - MedicalBackpack
   - MedicalDoctorOuterClothing
   - MedicalShoes
-#  - MedicalDoctorPDA # Moffstation - Moved up in list for title loadouts
+# - MedicalDoctorPDA # Moffstation - Moved up in list for title loadouts
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
   - PersonalItemsJobAgnostic # Umbra
 
@@ -507,6 +545,7 @@
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
   - PersonalItemsJobAgnostic # Umbra
 
@@ -521,8 +560,10 @@
   - ChemistBackpack
   - ChemistOuterClothing
   - MedicalShoes
+  - ChemistryEyewear # Moffstation - Eyepatches!
   - SurvivalMedical
   - Trinkets
+  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
   - PersonalItemsJobAgnostic # Umbra
 
@@ -541,6 +582,7 @@
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
   - PersonalItemsJobAgnostic # Umbra
 
@@ -553,6 +595,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ZookeeperJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -566,6 +609,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ReporterJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -579,6 +623,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - PsychologistJobTrinkets
   - GroupSpeciesBreathTool
   - PersonalItemsJobAgnostic # Umbra
 
@@ -592,6 +637,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - BoxerJobTrinkets
   - PersonalItemsJobAgnostic # Umbra
   - GroupSpeciesBreathTool
 

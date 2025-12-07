@@ -87,7 +87,9 @@
           225: 0.4
       - type: Bloodstream
         bleedReductionAmount: 1.0
-        bloodReagent: Blood
+        bloodReagent:
+        - ReagentId: Blood
+          Quantity: 1
         maxBleedAmount: 0.0
         bleedPuddleThreshold: 1000.0
         bloodlossThreshold: 0.02

@@ -1,0 +1,63 @@
+﻿# ID
+- type: loadout
+  id: JournalistPDA
+  equipment:
+    id: JournalistPDA
+
+- type: loadout
+  id: MeteorologistPDA
+  equipment:
+    id: MeteorologistPDA
+
+- type: loadout
+  id: NewsAnchorPDA
+  equipment:
+    id: NewsAnchorPDA
+
+- type: loadout
+  id: ReporterPDA
+  equipment:
+    id: ReporterPDA
+
+# Head
+
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: ReporterJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtReporter
+  groupBy: "reporter jumpskirts"
+
+- type: loadout
+  id: JournalistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJournalist
+  groupBy: "reporter jumpskirts"
+
+- type: loadout
+  id: MeteorologistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMeteorologist
+  groupBy: "reporter jumpsuits"
+
+- type: loadout
+  id: MeteorologistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMeteorologist
+  groupBy: "reporter jumpskirts"
+
+# Back
+
+# Belt
+
+# Outer Clothing
+
+# Gloves
+
+# Shoes
+
+# Eyewear

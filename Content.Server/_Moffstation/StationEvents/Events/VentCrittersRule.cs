@@ -5,12 +5,15 @@ using Content.Server.Pinpointer;
 using Content.Server.Popups;
 using Content.Server.StationEvents.Components;
 using Content.Server.StationEvents.Events;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Jittering;
 using Content.Shared.Popups;
 using Content.Shared.Station.Components;
 using Content.Shared.Storage;
+using Robust.Server.Player;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -31,6 +34,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     public override void Update(float frameTime)
     {
@@ -83,7 +87,11 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         _jitter.AddJitter(location, 0.5f, 30f);
 
-        comp.SpawnAttempts ??= Math.Max(EntityQuery<VentCritterSpawnLocationComponent>().Count(), comp.SpawnAttemptsMin);
+        // Get spawn attempts
+        var playerCount = _playerManager.Sessions.Count(x =>
+            GameTicker.PlayerGameStatuses.TryGetValue(x.UserId, out var status) &&
+            status == PlayerGameStatus.JoinedGame);
+        comp.SpawnAttempts = _random.Next(playerCount * comp.PlayerRatioSpawnsMin, playerCount * comp.PlayerRatioSpawnsMax);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
@@ -101,13 +109,16 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
 
         var coords =  Transform(location).Coordinates;
 
-        //Spawn in the stuff
-        for (var i = 0; i < component.SpawnAttempts; i++)
+        var spawnCount = 0;
+        var attemptCount = 0;
+        while (spawnCount <= component.MaxSpawns && (attemptCount < component.SpawnAttempts || spawnCount == 0))
         {
-            foreach (var spawn in EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom))
-            {
-                Spawn(spawn, coords);
-            }
+            var spawned = EntityManager.SpawnEntitiesAttachedTo(
+                coords,
+                EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom).Select(it => (EntProtoId)it)
+            );
+            spawnCount += spawned.Length;
+            attemptCount += 1;
         }
 
 

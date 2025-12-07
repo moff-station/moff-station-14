@@ -101,7 +101,7 @@ public abstract partial class SharedGunSystem
         // Continuous loading
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.FillDelay, new AmmoFillDoAfterEvent(), used: uid, target: args.Target, eventTarget: uid)
         {
-            BreakOnMove = false, // Moffstation - Reloading shotguns on the move
+            BreakOnMove = true,
             BreakOnDamage = false,
             NeedHand = true,
         });
@@ -179,8 +179,6 @@ public abstract partial class SharedGunSystem
                 Del(ent.Value);
         }
 
-        UpdateBallisticAppearance(args.Target.Value, component);
-        UpdateAmmoCount(args.Target.Value);
         // repeat if there is more space in the target and more ammo to fill
         var moreSpace = target.Entities.Count + target.UnspawnedCount < target.Capacity;
         var moreAmmo = component.Entities.Count + component.UnspawnedCount > 0;

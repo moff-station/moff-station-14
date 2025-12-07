@@ -18,6 +18,11 @@
     solution: drink
   - type: Item
     size: Normal
+  # Moffstation - Begin - dispenser QOL changes
+  - type: Tag
+    tags:
+    - DrinkBottle
+  # Moffstation - End
 
 - type: entity
   abstract: true

@@ -25,7 +25,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared.Damage; //Moffstation - recycler damage change
+using Content.Shared.Damage.Systems; //Moffstation - recycler damage change
 using Content.Shared.Humanoid;
 
 namespace Content.Server.Materials;

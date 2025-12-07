@@ -1,0 +1,34 @@
+- type: entity
+  id: ImmovableRodSlowKeepTiles
+  parent: ImmovableRodKeepTilesStill
+  suffix: Slow
+  components:
+  - type: ImmovableRod
+    minSpeed: 1
+    maxSpeed: 3
+  - type: TimedDespawn
+    lifetime: 60.0
+
+- type: entity
+  id: ImmovableRodSentient
+  parent: ImmovableRodSlowKeepTiles
+  suffix: Slow
+  components:
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: false
+    raffle:
+      settings: short
+    name: ghost-role-information-rod-name-moffstation
+    description: ghost-role-information-rod-description-moffstation
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+  - type: WarpPoint
+    follow: true
+    location: Sentient Immovable Rod
+    blacklist:
+      tags:
+      - GhostOnlyWarp

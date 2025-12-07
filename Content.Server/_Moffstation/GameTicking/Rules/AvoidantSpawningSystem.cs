@@ -82,6 +82,6 @@ public sealed class AvoidantSpawningSystem : GameRuleSystem<AvoidantSpawningComp
     {
         var entities = new HashSet<EntityUid>();
         _entityLookup.GetEntitiesInRange(spawnPoint.Comp.Coordinates, gameRule.Comp.Range, entities);
-        return entities.Select(e => _whitelist.IsBlacklistPass(gameRule.Comp.Blacklist, e)).Any();
+        return entities.Select(e => _whitelist.IsWhitelistPass(gameRule.Comp.Blacklist, e)).Any();
     }
 }

@@ -9,35 +9,72 @@
   equipment:
     id: InvestigatorPDA
 
+# Head
+
+# Mask
+
+# Neck
+- type: loadout
+  id: DetectiveBadge
+  equipment:
+    neck: ClothingNeckDetBadge
+
+# Jumpsuit
+- type: loadout
+  id: SleuthSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetSleuth
+  groupBy: "detective jumpsuits"
+
+- type: loadout
+  id: SleuthSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetSleuth
+  groupBy: "detective jumpskirts"
+
+- type: loadout
+  id: InvestigatorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetInvestigator
+  groupBy: "detective jumpsuits"
+
+- type: loadout
+  id: InvestigatorJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetInvestigator
+  groupBy: "detective jumpskirts"
+
+# Back
+
+# Belt
+- type: loadout
+  id: DetectiveHolster
+  equipment:
+    belt: ClothingBeltHolsterFilled
+
+- type: loadout
+  id: DetectiveSecBelt
+  equipment:
+    belt: ClothingBeltSecurityBeltFilledDetective
+
+- type: loadout
+  id: DetectiveSecWebbing
+  equipment:
+    belt: ClothingBeltSecurityWebbingFilledDetective
+
+- type: loadout
+  id: DetectiveSecWebbingAlt
+  equipment:
+    belt: ClothingBeltSecurityWebbingAltFilledDetective
+
 # Outer Clothing
 - type: loadout
   id: DetectiveCoatSleuth
   equipment:
     outerClothing: ClothingOuterCoatSleuth
 
-# Jumpsuits
-- type: loadout
-  id: SleuthSuit
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitDetSleuth
+# Gloves
 
-- type: loadout
-  id: SleuthSkirt
-  equipment:
-    jumpsuit: ClothingUniformJumpskirtDetSleuth
+# Shoes
 
-- type: loadout
-  id: InvestigatorJumpsuit
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitDetInvestigator
-
-- type: loadout
-  id: InvestigatorJumpskirt
-  equipment:
-    jumpsuit: ClothingUniformJumpskirtDetInvestigator
-
-#Neck
-- type: loadout
-  id: DetectiveBadge
-  equipment:
-    jumpsuit: ClothingNeckDetBadge
+# Eyewear

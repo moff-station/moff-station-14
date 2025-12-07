@@ -1,49 +1,4 @@
-# Literally just folders
-- type: loadout
-  id: FolderRed
-  storage:
-    back:
-    - BoxFolderRed
-  groupBy: "storage"
-- type: loadout
-  id: FolderBlue
-  storage:
-    back:
-    - BoxFolderBlue
-  groupBy: "storage"
-- type: loadout
-  id: FolderYellow
-  storage:
-    back:
-    - BoxFolderYellow
-  groupBy: "storage"
-- type: loadout
-  id: FolderWhite
-  storage:
-    back:
-    - BoxFolderWhite
-  groupBy: "storage"
-- type: loadout
-  id: FolderGrey
-  storage:
-    back:
-    - BoxFolderGrey
-  groupBy: "storage"
-- type: loadout
-  id: FolderBlack
-  storage:
-    back:
-    - BoxFolderBlack
-  groupBy: "storage"
-- type: loadout
-  id: FolderGreen
-  storage:
-    back:
-    - BoxFolderGreen
-  groupBy: "storage"
-
 # Plushies!
-
 - type: loadout
   id: PlushieArachind
   storage:
@@ -162,3 +117,25 @@
     back:
     - PlushieVox
   groupBy: "plushie"
+
+- type: loadout
+  id: PlushieVulp
+  storage:
+    back:
+    - PlushieVulp
+  groupBy: "plushie"
+
+# Rings
+- type: loadout
+  id: GoldRing
+  storage:
+    back:
+    - GoldRing
+  groupBy: "Rings"
+
+- type: loadout
+  id: SilverRing
+  storage:
+    back:
+    - SilverRing
+  groupBy: "Rings"

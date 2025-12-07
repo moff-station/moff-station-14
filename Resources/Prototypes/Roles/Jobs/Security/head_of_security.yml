@@ -4,6 +4,10 @@
   description: job-description-hos
   playTimeTracker: JobHeadOfSecurity
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 30h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobWarden
       time: 1h
@@ -28,7 +32,6 @@
   - Security
   - Armory
   - Maintenance
-  - Service
   - External
   - Detective
   - Cryogenics
@@ -42,7 +45,7 @@
 - type: startingGear
   id: HoSGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+  # eyes: ClothingEyesGlassesSecurity # Moffstation - Eyepatches!
     id: HoSPDA
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
