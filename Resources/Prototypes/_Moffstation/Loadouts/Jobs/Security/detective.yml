@@ -82,6 +82,7 @@
 # Fills
 - type: loadout
   id: DetectivePistolInspector
+  dummyEntity: WeaponRevolverInspector
   storage:
     belt:
     - WeaponRevolverInspector
@@ -89,6 +90,7 @@
 
 - type: loadout
   id: DetectivePistolPM
+  dummyEntity: WeaponPistolPM
   storage:
     belt:
     - WeaponPistolPM
