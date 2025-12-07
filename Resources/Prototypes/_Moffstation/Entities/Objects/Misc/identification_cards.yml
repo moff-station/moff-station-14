@@ -1,26 +1,18 @@
 - type: entity
-  parent: IDCardStandard
+  parent: ERTLeaderIDCard
   id: NTCFPilotIDCard
   name: NTCF pilot ID card
   components:
-  - type: Sprite
-    layers:
-    - state: gold
-    - state: ert_security
   - type: PresetIdCard
     job: NTCFPilot
   - type: NanoChatCard # CD
     listNumber: false
 
 - type: entity
-  parent: IDCardStandard
+  parent: ERTEngineerIDCard
   id: NTCFEngineerIDCard
   name: NTCF flight engineer ID card
   components:
-  - type: Sprite
-    layers:
-    - state: gold
-    - state: ert_engineer
   - type: PresetIdCard
     job: NTCFEngineer
   - type: NanoChatCard # CD

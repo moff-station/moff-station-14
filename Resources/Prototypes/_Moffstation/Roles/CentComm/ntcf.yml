@@ -19,7 +19,7 @@
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
-  id: NTCFPilotFighterGear
+  id: NTCFPilotGear
   equipment:
     back: ClothingBackpackERTSecurity
     belt: ClothingBeltSalvageWebbing
@@ -28,9 +28,9 @@
     head: ClothingHeadHelmetBasic # Stand-in for dedicated NTCF helmet.
     gloves: ClothingHandsGlovesCombat
     id: NTCFPilotPDA
-    jumpsuit: ClothingUniformJumpsuitERTSecurity # Stand-in for dedicated NTCF jumpsuit.
+    jumpsuit: ClothingUniformJumpsuitERTLeader # Stand-in for dedicated NTCF jumpsuit.
     mask: ClothingMaskGasERT
-    outerClothing: ClothingOuterArmorBasic
+    outerClothing: ClothingOuterArmorBasicSlim
     pocket1: WeaponDisabler
     pocket2: FlashlightSeclite
     shoes: ClothingShoesBootsMagSci
@@ -69,7 +69,7 @@
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
-  id: NTCFEngineerFighterGear
+  id: NTCFEngineerGear
   equipment:
     back: ClothingBackpackERTEngineer
     belt: ClothingBeltSalvageWebbing
@@ -80,7 +80,7 @@
     id: NTCFEngineerPDA
     jumpsuit: ClothingUniformJumpsuitERTEngineer # Stand-in for dedicated NTCF jumpsuit.
     mask: ClothingMaskGasERT
-    outerClothing: ClothingOuterArmorBasic
+    outerClothing: ClothingOuterArmorBasicSlim
     pocket1: WeaponDisabler
     pocket2: FlashlightSeclite
     shoes: ClothingShoesBootsMagSci
