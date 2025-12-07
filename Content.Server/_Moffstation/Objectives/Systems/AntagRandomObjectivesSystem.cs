@@ -1,17 +1,14 @@
-// Reworked and moved to Moffstation Namespace
-/*
+using Content.Server._Moffstation.Objectives.Components;
+using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.Objectives;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
-using Content.Shared.Objectives.Systems;
 using Robust.Shared.Random;
 
-namespace Content.Server.Antag;
+namespace Content.Server._Moffstation.Objectives.Systems;
 
-/// <summary>
-/// Adds fixed objectives to an antag made with <c>AntagRandomObjectivesComponent</c>.
-/// </summary>
+
 public sealed class AntagRandomObjectivesSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -33,24 +30,18 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
             return;
         }
 
-        var difficulty = 0f;
         foreach (var set in ent.Comp.Sets)
         {
             if (!_random.Prob(set.Prob))
                 continue;
 
-            for (var pick = 0; pick < set.MaxPicks && ent.Comp.MaxDifficulty > difficulty; pick++)
+            for (var pick = 0; pick < set.MaxPicks; pick++)
             {
-                var remainingDifficulty = ent.Comp.MaxDifficulty - difficulty;
-                if (_objectives.GetRandomObjective(mindId, mind, set.Groups, remainingDifficulty) is not { } objective)
+                if (_objectives.GetRandomObjective(mindId, mind, set.Groups, float.PositiveInfinity) is not { } objective)
                     continue;
 
-                _mind.AddObjective(mindId, mind, objective);
-                var adding = Comp<ObjectiveComponent>(objective).Difficulty;
-                difficulty += adding;
-                Log.Debug($"Added objective {ToPrettyString(objective):objective} to {ToPrettyString(args.EntityUid):player} with {adding} difficulty");
+                ent.Comp.ObjectiveOptions.Add(objective);
             }
         }
     }
 }
-*/
