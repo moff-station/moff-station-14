@@ -35,6 +35,24 @@
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: forehead
 
+- type: marking
+  id: ResomiHeadWar
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
+    state: head_war
+
+- type: marking
+  id: ResomiHeadStripes
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
+    state: head_stripes
+
 # Chest Markings
 - type: marking
   id: ResomiFluff
@@ -44,6 +62,33 @@
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: fluff
+
+- type: marking
+  id: ResomiBodyStripes
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
+    state: body_stripes
+
+- type: marking
+  id: ResomiBodyRings
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
+    state: body_rings
+
+- type: marking
+  id: ResomiBodyLines
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
+    state: body_lines
 
 - type: marking
   id: ResomiBelly
@@ -62,6 +107,15 @@
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: back_patch
+
+- type: marking
+  id: ResomiBackPatchFull
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
+    state: back_patch_full
 
 # Arm Markings    
 - type: marking
@@ -216,6 +270,24 @@
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: l_leg_fade
+
+- type: marking
+  id: ResomiRLegStripes
+  bodyPart: RLeg
+  markingCategory: Legs
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
+    state: r_leg_stripes
+
+- type: marking
+  id: ResomiLLegStripes
+  bodyPart: LLeg
+  markingCategory: Legs
+  speciesRestriction: [ Resomi ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
+    state: l_leg_stripes
 
 
 # Tail Markings
