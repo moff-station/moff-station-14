@@ -21,6 +21,7 @@
           groups:
             Burn: -1.5 # 12.5 heat, shock, and caustic per 5u
             Brute: -3 # 25 blunt, slash, and pierce per 5u, its a painkiller
+          types:
             Poison: -0.5 # 12.5 poison per 5u
     Narcotic:
       metabolismRate: 0.2
