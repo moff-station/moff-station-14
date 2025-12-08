@@ -32,7 +32,13 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/dettie.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - End - Detective Resprites
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+    - ClothMade
+    - Recyclable # Moffstation - End - Detective Resprites
 
 - type: entity
   parent: ClothingNeckTieBase

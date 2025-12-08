@@ -374,13 +374,15 @@
   description: A grey fedora.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Hats/greyfedora.rsi # Moffstation - Detective Resprites
+    sprite: _Moffstation/Clothing/Head/Hats/greyfedora.rsi # Moffstation - Begin - Detective Resprites
   - type: Clothing
-    sprite: _Moffstation/Clothing/Head/Hats/greyfedora.rsi # Moffstation - Detective Resprites
+    sprite: _Moffstation/Clothing/Head/Hats/greyfedora.rsi
   - type: Tag
     tags:
-    - PetWearable
-    - CorgiWearable
+    - HamsterWearable
+    - WhitelistChameleon
+    - ClothMade
+    - Recyclable # Moffstation - End - Detective Resprites
 
 - type: entity
   parent: ClothingHeadBase
