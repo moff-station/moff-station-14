@@ -16,9 +16,9 @@
   description: It's a blue jumpskirt with some gold markings denoting the rank of "Captain".
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/captain.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/captain.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/captain.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/captain.rsi # Moffstation - Command Outfit Resprite
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -170,9 +170,9 @@
   description: Rather bland and inoffensive. Perfect for vanishing off the face of the universe.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/hop.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hop.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/hop.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hop.rsi # Moffstation - Command Outfit Resprite
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -491,9 +491,9 @@
   description: A dress for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/capformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/capformaldress.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/capformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/capformaldress.rsi # Moffstation - Command Outfit Resprite
 
 - type: entity
   parent: ClothingUniformSkirtBase

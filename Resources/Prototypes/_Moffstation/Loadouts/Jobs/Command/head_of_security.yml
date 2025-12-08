@@ -1,13 +1,31 @@
 # ID
 
 # Head
+- type: loadout
+  id: HunterHat
+  equipment:
+    head: ClothingHeadHatHosWestern
 
+- type: loadout
+  id: FestiveHat
+  equipment:
+    head: ClothingHeadHatHosFestive
 # Mask
 
 # Neck
 
 # Jumpsuit
+- type: loadout
+  id: HeadofSecurityWestern
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHosWestern
+  groupBy: "jumpsuit"
 
+- type: loadout
+  id: HeadofSecurityFestive
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHosFestive
+  groupBy: "jumpsuit"
 # Back
 
 # Belt

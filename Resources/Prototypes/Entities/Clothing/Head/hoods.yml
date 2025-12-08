@@ -285,19 +285,19 @@
     sprite: Clothing/Head/Hoods/Coat/hoodbartender.rsi
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hoodbartender.rsi
-
-- type: entity
-  parent: ClothingHeadHatHoodWinterBase
-  id: ClothingHeadHatHoodWinterCaptain
-  categories: [ HideSpawnMenu ]
-  name: captain's winter coat hood
-  description: An expensive hood, to keep the captain's head warm.
-  components:
-  - type: Sprite
-    sprite: Clothing/Head/Hoods/Coat/hoodcaptain.rsi
-  - type: Clothing
-    sprite: Clothing/Head/Hoods/Coat/hoodcaptain.rsi
-
+# Moffstation - Start - Command Outfit Resprite
+#- type: entity                ~I couldn't get it to work with the hood here, Winter Coats are so scuffed >.<~
+#  parent: ClothingHeadHatHoodWinterBase
+#  id: ClothingHeadHatHoodWinterCaptain
+#  categories: [ HideSpawnMenu ]
+#  name: captain's winter coat hood
+#  description: An expensive hood, to keep the captain's head warm.
+#  components:
+#  - type: Sprite
+#    sprite: Clothing/Head/Hoods/Coat/hoodcaptain.rsi
+#  - type: Clothing
+#    sprite: Clothing/Head/Hoods/Coat/hoodcaptain.rsi
+# Moffstation - End - Command Outfit Resprite
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterCargo

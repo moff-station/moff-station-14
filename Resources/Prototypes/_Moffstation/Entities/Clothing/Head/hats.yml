@@ -21,6 +21,86 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
 
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainBeret
+  name: captain's beret
+  description: A gilded blue beret of authority
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captainberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captainberet.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainCrown
+  name: captain's crown
+  description: "\"For Command & Station!\""
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captaincrown.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captaincrown.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainCirclet
+  name: captain's circlet
+  description: A shiny circlet for a fabulous queen or king
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captaincirclet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captaincirclet.rsi
+
+#Hop
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHopBeret
+  name: hop's beret
+  description: A professional beret for a professional paper-pusher.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/hopberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/hopberet.rsi
+
+#Rd
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatRdBeret
+  name: Director's beret
+  description: A statistically perfect beret for a distinguished researcher.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/rdberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/rdberet.rsi
+
+#Hos
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHosWestern
+  name: Hos's Hunter Hat
+  description: An old and imposing hat worn by unwavering heads of security. Inspires the will to campaign for a unified and not-at-all authoritarian future.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/hoswestern.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/hoswestern.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHosFestive
+  name: Hos's Festive Soldier Hat
+  description: A tall red cap wrapped in gold with a chinstrap. Not the most comfortable
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/hosfestivehat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/hosfestivehat.rsi
+
 #Clown
 - type: entity
   parent: ClothingHeadBase
@@ -85,6 +165,7 @@
     - HamsterWearable
     - WhitelistChameleon
 
+#CentComm
 - type: entity
   parent: [ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretCentcomm
@@ -138,3 +219,15 @@
     sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
+
+#Qm
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCruiser
+  name: quartermaster's cruiser cap
+  description: A gilded cap of an experienced pilot of the stars.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi

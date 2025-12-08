@@ -105,20 +105,9 @@
   name: captain's winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    layers:
-    - state: CAP-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: CAP-inhand-left
-      right:
-      - state: CAP-inhand-right
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatcaptain.rsi # Moffstation - Command Outfit Resprite
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    clothingVisuals:
-      outerClothing:
-      - state: CAP-equipped-OUTERCLOTHING
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatcaptain.rsi # Moffstation - Command Outfit Resprite
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCaptain
 

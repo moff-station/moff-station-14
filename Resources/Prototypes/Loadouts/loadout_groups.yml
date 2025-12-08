@@ -153,6 +153,9 @@
   # Moffstation - Start - New Drip
   - CaptainConductor
   - CaptainTricorn
+  - CaptainBeret
+  - CaptainCrown
+  - CaptainCirclet
   # Moffstation - End
 
 - type: loadoutGroup
@@ -195,7 +198,10 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
-  - CaptainLongcoat # Moffstation - New drip
+  # Moffstation - Start
+  - CaptainLongcoat
+  - CaptainFestivecoat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainJobTrinkets
@@ -210,6 +216,7 @@
   minLimit: 0
   loadouts:
   - HoPHead
+  - HoPBeret # Moffstation
 
 - type: loadoutGroup
   id: HoPJumpsuit
@@ -220,6 +227,8 @@
   # Moffstation - Start - New drip
   - HoPJumpsuitFormal
   - HoPJumpskirtFormal
+  - HoPJumpsuitFestive
+  - HoPJumpskirtFestive
   # Moffstation - End
 
 - type: loadoutGroup
@@ -780,7 +789,10 @@
   loadouts:
   - QuartermasterHead
   - QuartermasterBeret
-  - CargonianUshanka # Moffstation - (Cargo Outfits)
+  # Moffstation - Start
+  - CargonianUshanka
+  - QMCruiser
+  # Moffstation - End
 - type: loadoutGroup
   id: QuartermasterJumpsuit
   name: loadout-group-quartermaster-jumpsuit
@@ -790,7 +802,9 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
-  # Moffstation - Start - New Drip
+  # Moffstation - Start
+  - QMJumpsuitCruiser
+  - QMJumpskirtCruiser
   - QMJumpsuitVista
   - QMJumpskirtVista
   # Moffstation - End
@@ -809,6 +823,7 @@
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
+  - QMFestivecoat # Moffstation
 
 - type: loadoutGroup
   id: QuartermasterShoes
@@ -1111,6 +1126,7 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorBeret
+  - RDBeret # Moffstation
 
 - type: loadoutGroup
   id: ResearchDirectorNeck
@@ -1126,7 +1142,12 @@
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
-  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - Turtlenecks clip through moth fuzz, so they need a second option. Could get a non-turtleneck RD jumpsuit later?
+  # Moffstation - Start
+  - FormalScientistJumpsuit
+  - ResearchDirectorRoboJumpsuit
+  - ResearchDirectorRoboJumpskirt
+  - ResearchDirectorFestiveJumpsuit
+  # Moffstation - End
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
@@ -1263,9 +1284,11 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
-  # Moffstation - Begin (Security Loadout Improvements) Give all security roles the choice of a helmet.
+  # Moffstation - Start
   - SecurityHelmet
   - MilitaryHelmet
+  - HunterHat
+  - FestiveHat
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1278,6 +1301,10 @@
   - HeadofSecurityTurtleneckSkirt
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
+  # Moffstation - Start
+  - HeadofSecurityWestern
+  - HeadofSecurityFestive
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1529,6 +1556,7 @@
   loadouts:
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
+  - CmoFestivecoat #Moffstation - Start
 
 # Moffstation - Start - Department Heads can use any department Bag
 - type: loadoutGroup
