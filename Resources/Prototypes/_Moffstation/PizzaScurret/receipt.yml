@@ -1,0 +1,7 @@
+- type: entity # Putting this here as a temp to test the component.
+  id: PizzaReceipt
+  name: Pizza Receipt
+  parent: Paper
+  components:
+    - type: PizzaReceipt
+      requiredSignature: "Cooks-The-Meth"

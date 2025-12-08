@@ -1,35 +1,48 @@
 using System.Linq;
+using Content.Shared.Paper;
+using Robust.Shared.GameObjects;
+using Content.Shared._Moffstation.PizzaScurret.Receipt;
 
-namespace Content.Shared._Moffstation.PizzaScurret.Receipt;
-
-/// <summary>
-///  This system handles the receipt, specifically who needs to signed and if their signature is present.
-///  This needs to check the signatures against the target signature which will be selected on objective initiation.
-/// </summary>
-public sealed class PizzaReceiptSystem : EntitySystem
+namespace Content.Shared._Moffstation.PizzaScurret.Receipt
 {
-
-    public override void Initialize()
+    /// <summary>
+    ///  This system handles the receipt, specifically who needs to signed and if their signature is present.
+    ///  This needs to check the signatures against the target signature which will be selected on objective initiation.
+    /// </summary>
+    public sealed class PizzaReceiptSystem : EntitySystem
     {
-        base.Initialize();
-    }
 
-/*
-    private void CheckReceipt(Entity<PizzaReceiptComponent> ent, EntityUid customer)
-    {
-        foreach ( var stamp in paper.StampedBy) // Do this for every signature on the paper.
+        public override void Initialize()
         {
-            var signature = stamp.StampedName; // Get the signature.
-            Logger.Info($"Signature present: {signature}"); // Log it for debugging.
-
-            if (signature == targetSignature) // If the signature matches the target signature
-            {
-                Logger.Info($"Signature matched: {signature}"); // Log the match for debugging.
-                return true; // Return true if a match is found.
-            }
-            else
-            false;
+            base.Initialize();
+            SubscribeLocalEvent<OnSignedEvent>(OnSigned); // When, OnSignedEvent gets called. Do OnSigned.
         }
-    } */
+
+        private void OnSigned(EntityUid uid, OnSignedEvent ev)
+        {
+            if (TryComp<PizzaReceiptComponent>(uid, out var comp))
+            {
+                comp.DetectedSignature = ev.DetectedSignature; // Make the component's DetectedSignature the same as the System's.
+                Dirty(uid, comp); // Update it.
+
+                ISawmill.Info($"PizzaReceiptSystem detected signature: {ev.DetectedSignature}"); // log the information
+                if (comp.DetectedSignature == comp.RequiredSignature)
+                {
+                    ISawmill.Info($"Signature is a match");
+                } else
+                {
+                    ISawmill.Info($"Signature is NOT a match");
+                }
+            }
+        }
+    }
 }
 
+public sealed class OnSignedEvent : EntityEventArgs
+{
+    public string DetectedSignature;
+    public OnSignedEvent(string signature)
+    {
+        DetectedSignature = signature;
+    }
+}

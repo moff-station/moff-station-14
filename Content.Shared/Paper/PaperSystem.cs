@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._Moffstation.Paper.Components; // Moffstation
+using Content.Shared._Moffstation.PizzaScurret.Receipt; // Moffstation
 using Content.Shared._Starlight.Paper; // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.UserInterface;
@@ -336,6 +337,8 @@ public sealed class PaperSystem : EntitySystem
         );
 
         _audio.PlayPvs(ent.Comp.Sound, ent);
+
+        RaiseLocalEvent(ent, new OnSignedEvent(signature)); // Pizza Delivery Scurret - Send the signer's name to receipt paper.
 
         _adminLogger.Add(LogType.Verb, LogImpact.Low, $"{ToPrettyString(signer):player} has signed {ToPrettyString(ent):paper}.");
 
