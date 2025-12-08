@@ -24,6 +24,9 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
 
     private void OnAntagSelected(Entity<AntagRandomObjectivesComponent> ent, ref AfterAntagEntitySelectedEvent args)
     {
+        if (args.Session == null)
+            return;
+
         if (!_mind.TryGetMind(args.Session, out var mindId, out var mind))
         {
             Log.Error($"Antag {ToPrettyString(args.EntityUid):player} was selected by {ToPrettyString(ent):rule} but had no mind attached!");
@@ -40,7 +43,7 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
                 if (_objectives.GetRandomObjective(mindId, mind, set.Groups, float.PositiveInfinity) is not { } objective)
                     continue;
 
-                ent.Comp.ObjectiveOptions.Add(objective);
+                ent.Comp.ObjectiveOptions.Add(args.Session, objective);
             }
         }
     }

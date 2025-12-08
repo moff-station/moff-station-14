@@ -1,4 +1,5 @@
 using Content.Server.Antag.Components;
+using Robust.Shared.Player;
 
 namespace Content.Server._Moffstation.Objectives.Components;
 
@@ -21,5 +22,5 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     /// The objective options presented to the player
     /// </summary>
     [ViewVariables]
-    public HashSet<EntityUid> ObjectiveOptions = new();
+    public Dictionary<ICommonSession, EntityUid> ObjectiveOptions = new();
 }
