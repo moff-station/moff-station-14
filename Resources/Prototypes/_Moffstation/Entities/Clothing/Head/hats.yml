@@ -231,3 +231,23 @@
     sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
+
+#Detective
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatFedoraSleuth
+  name: sleuth's fedora
+  description: A fedora for a budding detective.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/sleuthfedora.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/sleuthfedora.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
