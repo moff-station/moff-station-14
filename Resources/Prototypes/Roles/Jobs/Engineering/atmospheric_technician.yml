@@ -4,9 +4,11 @@
   description: job-description-atmostech
   playTimeTracker: JobAtmosphericTechnician
   requirements:
-  - !type:DepartmentTimeRequirement
-    department: Engineering
-    time: 2.5h
+  # Moffstation - Start - Change role timers
+  #- !type:DepartmentTimeRequirement
+  #  department: Engineering
+  #  time: 2.5h
+  # Moffstation - Start - Change role timers
   startingGear: AtmosphericTechnicianGear
   icon: "JobIconAtmosphericTechnician"
   supervisors: job-supervisors-ce

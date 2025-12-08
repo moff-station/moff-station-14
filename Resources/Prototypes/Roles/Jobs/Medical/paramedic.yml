@@ -3,10 +3,12 @@
   name: job-name-paramedic
   description: job-description-paramedic
   playTimeTracker: JobParamedic
-  requirements:
-  - !type:DepartmentTimeRequirement
-    department: Medical
-    time: 2.5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #- !type:DepartmentTimeRequirement
+  #  department: Medical
+  #  time: 2.5h
+  # Moffstation - End
   startingGear: ParamedicGear
   icon: "JobIconParamedic"
   supervisors: job-supervisors-cmo

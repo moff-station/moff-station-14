@@ -44,7 +44,10 @@
     speedModifier: .65 #Moffstation end
   # Damage (Self)
   - type: Bloodstream
-    bloodReagent: CopperBlood
+    bloodReagents:
+      reagents:
+      - ReagentId: CopperBlood
+        Quantity: 1
   # Damage (Others)
   - type: MeleeWeapon
     animation: WeaponArcBite

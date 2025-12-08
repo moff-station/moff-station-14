@@ -360,7 +360,7 @@ namespace Content.Server.RoundEnd
             // Check if we should auto-call.
             int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
                                         : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
-            if (mins != 0 && _gameTiming.CurTime - AutoCallStartTime > TimeSpan.FromMinutes(mins))
+            if (mins != 0 && _gameTiming.CurTime - _gameTicker.RoundStartTimeSpan - AutoCallStartTime > TimeSpan.FromMinutes(mins)) // Moffstation - fix roundstart recalls
             {
                 if (!_shuttle.EmergencyShuttleArrived && ExpectedCountdownEnd is null)
                 {

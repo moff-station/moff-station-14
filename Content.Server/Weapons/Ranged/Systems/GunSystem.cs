@@ -294,6 +294,8 @@ public sealed partial class GunSystem : SharedGunSystem
     // Moffstation - Start
     public override void Update(float frameTime)
     {
+        base.Update(frameTime);
+
         UpdateBallistic();
         UpdateAutoFire();
     }
