@@ -74,17 +74,17 @@
     walkModifier: 0.75
     sprintModifier: 0.75
 
-# Lever-Action rifle. This version is a longarm chambered in .45 magnum.
+# Lever-Action rifle. A longarm chambered in .45 magnum, for purchase by cargo and pirates, and as very rare maints loot.
 - type: entity
   parent: [ BaseWeaponShotgun, BaseGunWieldable ]
-  id: WeaponRifleLever
+  id: WeaponRifleLeverMagnum
   name: Crestfall
   description: "A classic tube-fed lever-action rifle, perfect for guarding the frontier.\nLoads eight rounds of .45 magnum."
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
   - type: Clothing
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
   - type: Gun
     fireRate: 2.5
     soundGunshot:
@@ -96,29 +96,5 @@
       # - CartridgePistol
     capacity: 8
     proto: CartridgeMagnum # CartridgePistol
-    soundInsert:
-      path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg # Todo: Less plastic-y sounding insert sound?
-
-# Lever-Action rifle. This version is maints loot chambered in .35 auto.
-- type: entity
-  parent: [ BaseWeaponShotgun, BaseGunWieldable ]
-  id: WeaponRifleLeverLight
-  name: Crestfall
-  description: "A classic tube-fed lever-action rifle, perfect for guarding the frontier.\nLoads eight rounds of .45 magnum."
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle.rsi
-  - type: Clothing
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle.rsi
-  - type: Gun
-    fireRate: 2.5
-    soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/revolver.ogg # Todo: Custom fire sound, maybe borrow from AugustSun's lever action?
-  - type: BallisticAmmoProvider
-    whitelist:
-      tags:
-        - CartridgePistol
-    capacity: 8
-    proto: CartridgePistol
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg # Todo: Less plastic-y sounding insert sound?

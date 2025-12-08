@@ -179,6 +179,16 @@
   group: pirateMarket
 
 - type: cargoProduct
+  id: PirateRifleLeverMagnum
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
+    state: icon
+  product: CratePirateRifleLeverMagnum
+  cost: 5000
+  category: pirateproduct-category-name-weapons
+  group: pirateMarket
+
+- type: cargoProduct
   id: PirateMagnumAmmo
   icon:
     sprite: Objects/Weapons/Guns/Ammunition/Boxes/magnum.rsi
