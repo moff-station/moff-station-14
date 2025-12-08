@@ -26,14 +26,14 @@
 - type: entity
   parent: ClothingNeckTieBase
   id: ClothingNeckTieDet
-  name: detective's tie
-  description: A loosely tied necktie, a perfect accessory for the over-worked detective.
+  name: detective's horrendous tie # Moffstation - Begin - Detective Resprites
+  description: A loosely tied necktie, a disturbingly vivid accessory for the over-worked detective.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Ties/dettie.rsi
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi
   - type: Clothing
-    sprite: Clothing/Neck/Ties/dettie.rsi
-    
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - End - Detective Resprites
+
 - type: entity
   parent: ClothingNeckTieBase
   id: ClothingNeckTieSci
