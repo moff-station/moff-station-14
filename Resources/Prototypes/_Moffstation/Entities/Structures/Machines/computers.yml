@@ -96,3 +96,10 @@
   components:
   - type: WirelessNetworkConnection
     range: 10000
+
+# Funding computer
+- type: entity
+  parent: ComputerFundingAllocation
+  id: ComputerFundingAllocationMoffstation
+  name: funding allocation computer
+  description: Terminal for controlling the distribution of funds and pay to departments.

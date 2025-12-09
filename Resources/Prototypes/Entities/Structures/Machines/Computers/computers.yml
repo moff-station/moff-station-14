@@ -1167,7 +1167,7 @@
     key: enum.FundingAllocationConsoleUiKey.Key
   - type: ActivatableUIRequiresAccess
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+    access: [["Quartermaster"]] # Moffstation - Cargo control of funding
   - type: UserInterface
     interfaces:
       enum.FundingAllocationConsoleUiKey.Key:

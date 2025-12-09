@@ -1,0 +1,8 @@
+- type: entity
+  parent: BaseFlatpack
+  id: FundingAllocationComputerFlatpack
+  name: funding allocation computer flatpack
+  description: A flatpack used for constructing a communications computer.
+  components:
+  - type: Flatpack
+    entity: ComputerFundingAllocationMoffstation
