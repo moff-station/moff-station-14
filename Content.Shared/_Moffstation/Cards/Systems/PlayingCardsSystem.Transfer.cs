@@ -93,15 +93,14 @@ public sealed partial class PlayingCardsSystem
 
     /// This type represents a Card either as an entity with <see cref="PlayingCardComponent"/> or an unspawned card in
     /// a <see cref="PlayingCardDeckComponent"/> during transfers.
-    private abstract record CardLike
+    private abstract record CardLike : ISealedInheritance
     {
         // Private constructor to seal inheritance.
         private CardLike() { }
 
         public sealed record Entity(Entity<PlayingCardComponent> Ent) : CardLike;
 
-        public sealed record Unspawned(PlayingCardDeckPrototypeElement Data, Entity<PlayingCardDeckComponent> Deck)
-            : CardLike;
+        public sealed record Unspawned(PlayingCardInDeck Data) : CardLike;
     }
 
 
@@ -162,11 +161,9 @@ public sealed partial class PlayingCardsSystem
                             _container.Remove(card.Owner, entity.Comp.Container);
                             yield return new CardLike.Entity(card);
                             break;
-                        case PlayingCardInDeck.Unspawned(var cardDeckCard):
-                            yield return new CardLike.Unspawned(cardDeckCard, entity);
-                            break;
                         default:
-                            throw new("Unreachable");
+                            yield return new CardLike.Unspawned(cardInDeck);
+                            break;
                     }
                 }
             }
@@ -268,21 +265,12 @@ public sealed partial class PlayingCardsSystem
                     }
 
                     break;
-                case CardLike.Unspawned(var cardDeckCard, var sourceDeck):
-                    if (sourceDeck.Comp.Prototype == entity.Comp.Prototype)
-                    {
-                        // If the two decks have the same deck prototype, we don't need to spawn the card, just move
-                        // its info to the new deck.
-                        entity.Comp.Cards.Add(new PlayingCardInDeck.Unspawned(cardDeckCard));
-                    }
-                    else if (EnsureSpawnedOrNull(cardLike, deckCoords) is { } spawned)
-                    {
-                        entity.Comp.Cards.Add(new PlayingCardInDeck.NetEnt(GetNetEntity(spawned)));
-                    }
-
+                case CardLike.Unspawned(var cardInDeck):
+                    entity.Comp.Cards.Add(cardInDeck);
                     break;
                 default:
-                    throw new("Unreachable");
+                    cardLike.ThrowUnknownInheritor();
+                    break;
             }
         }
 
@@ -333,19 +321,21 @@ public sealed partial class PlayingCardsSystem
         cardLike switch
         {
             CardLike.Entity(var entity) => entity,
-            CardLike.Unspawned(var cardDeckCard, var deck) => cardDeckCard switch
+            CardLike.Unspawned(var card) => card switch
             {
-                PlayingCardDeckPrototypeElementData data => SpawnPredictedDynamicCard(data, deck, coords),
-                PlayingCardDeckPrototypeElementProtoRef protoRef =>
-                    PredictedSpawnAtPosition(protoRef.Prototype, coords) is var spawnedRef
-                        ? (spawnedRef, EnsureComp<PlayingCardComponent>(spawnedRef))
+                PlayingCardInDeck.UnspawnedData data =>
+                    SpawnPredictedDynamicCard(data, coords),
+                PlayingCardInDeck.UnspawnedRef(var entProtoId, var faceDown) =>
+                    PredictedSpawnAtPosition(entProtoId, coords) is var spawnedRef
+                        ? (spawnedRef, WithFacing(EnsureComp<PlayingCardComponent>(spawnedRef), faceDown))
                         : throw new("Unreachable: spawned ref pattern is irrefutable"),
-                _ => this.AssertOrLogError<Entity<PlayingCardComponent>?>(
-                    $"Unknown variant of {nameof(PlayingCardDeckPrototypeElement)}: {typeof(PlayingCardDeckPrototypeElement)}",
+                PlayingCardInDeck.NetEnt => this.AssertOrLogError<Entity<PlayingCardComponent>?>(
+                    $"{nameof(CardLike.Unspawned)} contained net entity. This shouldn't happen because it means that the source likely did not properly remove the card from its storage before yielding it. Instead, sources should yield existing entities as {nameof(CardLike.Entity)}.",
                     null
                 ),
+                _ => card.ThrowUnknownInheritor<PlayingCardInDeck, Entity<PlayingCardComponent>?>(),
             },
-            _ => throw new("Unreachable"),
+            _ => cardLike.ThrowUnknownInheritor<CardLike, Entity<PlayingCardComponent>?>(),
         };
 
     private static (List<T> inRange, List<T> outOfRange) Split<T>(ICollection<T> source, Range range)

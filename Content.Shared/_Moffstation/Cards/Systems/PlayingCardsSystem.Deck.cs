@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Cards.Events;
+using Content.Shared._Moffstation.Cards.Prototypes;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Random.Helpers;
@@ -35,15 +37,13 @@ public sealed partial class PlayingCardsSystem
     private void OnInit(Entity<PlayingCardDeckComponent> entity, ref ComponentInit args)
     {
         // Initialize the contents of the deck from the prototype.
-        if (!_proto.Resolve(entity.Comp.Prototype, out var proto) ||
+        if (entity.Comp.Prototype is not { } proto ||
             // Don't overwrite existing cards.
             entity.Comp.Cards.Count != 0)
             return;
 
         // Reverse the cards so that the first in the prototype's list is on the top.
-        entity.Comp.Cards = proto.Cards.Select(PlayingCardInDeck (it) => new PlayingCardInDeck.Unspawned(it))
-            .Reverse()
-            .ToList();
+        entity.Comp.Cards = GetCards(proto).Reverse().ToList();
         Dirty(entity);
     }
 
@@ -149,7 +149,8 @@ public sealed partial class PlayingCardsSystem
                 PlayingCardInDeck.NetEnt(var cardNetEnt) => GetEntity(cardNetEnt) is var cardEnt &&
                                                             TryComp<PlayingCardComponent>(cardEnt, out var cardComp) &&
                                                             SetFacingOrFlip((cardEnt, cardComp), faceDown),
-                PlayingCardInDeck.Unspawned(var cardDeckCard) => SetOrInvert(ref cardDeckCard.FaceDown, faceDown),
+                PlayingCardInDeck.UnspawnedData(var data, _, _) => SetOrInvert(ref data.FaceDown, faceDown),
+                PlayingCardInDeck.UnspawnedRef(_, var fd) => SetOrInvert(ref fd, faceDown),
                 _ => false,
             };
         }
@@ -160,5 +161,29 @@ public sealed partial class PlayingCardsSystem
         }
 
         _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
+    }
+
+    /// Conceptually, this "instantiates" the <see cref="PlayingCardDeckPrototype.Cards">elements</see> in the given
+    /// <paramref name="deckId"/>, handling calculating localization strings, sprite layers, etc. Note that this <b>does
+    /// not</b> spawn any entities immediately.
+    private IEnumerable<PlayingCardInDeck> GetCards(ProtoId<PlayingCardDeckPrototype> deckId)
+    {
+        if (!_proto.Resolve(deckId, out var deck))
+            return [];
+
+        return deck.Cards.SelectMany(deckEl => deckEl switch
+        {
+            PlayingCardDeckPrototypeElementCard card =>
+                [new PlayingCardInDeck.UnspawnedData(card, deck, Suit: null)],
+            PlayingCardDeckPrototypeElementPrototypeReference protoRef =>
+                [new PlayingCardInDeck.UnspawnedRef(protoRef.Prototype, protoRef.FaceDown)],
+            PlayingCardDeckPrototypeElementSuit s => _proto.Resolve(s.Suit, out var suit)
+                ? suit.Cards.Select(suitEl => new PlayingCardInDeck.UnspawnedData(suitEl, deck, suit))
+                : [],
+            _ => this.AssertOrLogError<IEnumerable<PlayingCardInDeck>>(
+                $"Unknown variant of {nameof(PlayingCardDeckPrototype.Element)}: {deckEl}",
+                []
+            ),
+        });
     }
 }

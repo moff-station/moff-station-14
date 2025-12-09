@@ -25,7 +25,7 @@
   parent: BaseItem
   id: BasePlayingCardDeck
   name: deck of cards
-  description: A
+  description: Cards with vibrant designs and colors to enchant the eyes while waiting for your turn.
   abstract: true
   components:
   - type: Sprite
@@ -44,6 +44,7 @@
   id: BasePlayingCardDeckBox
   abstract: true
   name: box of playing cards
+  description: A small carton meant to contain a collection of little pieces of cardstock. Thrilling.
   components:
   - type: Sprite
     sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi

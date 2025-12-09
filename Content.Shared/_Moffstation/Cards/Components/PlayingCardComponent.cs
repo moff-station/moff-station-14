@@ -11,25 +11,25 @@ public sealed partial class PlayingCardComponent : Component
 {
     /// The sprite layers of the face, or front, of the card.
     [DataField(required: true), AutoNetworkedField]
-    public PrototypeLayerData[] ObverseSprite;
+    public PrototypeLayerData[] ObverseLayers;
 
     /// The sprite layers of the back of the card.
     [DataField(required: true), AutoNetworkedField]
-    public PrototypeLayerData[] ReverseSprite;
+    public PrototypeLayerData[] ReverseLayers;
 
     /// The current sprite layers (based on <see cref="FaceDown"/>), or the sprite layers for the given
     /// <paramref name="faceDownOverride"/>.
     [Access(Other = AccessPermissions.ReadExecute)] // Pure function, I don't care if you execute it.
     public PrototypeLayerData[] Sprite(bool? faceDownOverride = null) => faceDownOverride ?? FaceDown
-        ? ReverseSprite
-        : ObverseSprite;
+        ? ReverseLayers
+        : ObverseLayers;
 
     /// Sprite layers added to this entity based on <see cref="Sprite"/>.
     /// This is used by the client visualizer system to correctly remove added layers when the card is flipped.
     [ViewVariables]
     public HashSet<string> SpriteLayersAdded = [];
 
-    /// Is the card facing down, ie. which side is visible. If true, the <see cref="ReverseSprite"/> is visible.
+    /// Is the card facing down, ie. which side is visible. If true, the <see cref="ReverseLayers"/> is visible.
     [DataField, AutoNetworkedField]
     public bool FaceDown;
 
@@ -42,8 +42,8 @@ public sealed partial class PlayingCardComponent : Component
     public LocId Description;
 
     /// The name which will be applied to this entity when it is flipped face down.
-    [DataField, AutoNetworkedField]
-    public LocId ReverseName = "card-name-reverse";
+    [DataField(required: true), AutoNetworkedField]
+    public LocId ReverseName;
 
     /// The description which will be applied to this entity when it is flipped face down.
     [DataField, AutoNetworkedField]

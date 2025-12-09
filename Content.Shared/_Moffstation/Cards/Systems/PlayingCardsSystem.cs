@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Content.Shared._Moffstation.Cards.Components;
+﻿using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
@@ -38,54 +37,29 @@ public sealed partial class PlayingCardsSystem : EntitySystem
         InitHand();
     }
 
-    /// This function returns the complete sprite layers for the given <paramref name="card"/>, in the related
-    /// <paramref name="deck"/>, assuming the given <paramref name="faceDownOverride"/>. This is used by the client
-    /// visualizers to construct sprites for decks and hands based on their containing cards.
-    /// If <paramref name="deck"/> is null, any unspawned cards' sprites will be ignored.
+    /// This function returns the complete sprite layers for the given <paramref name="card"/>, assuming the given
+    /// <paramref name="faceDownOverride"/>. This is used by the client visualizers to construct sprites for decks and
+    /// hands based on their containing cards.
     /// If <paramref name="faceDownOverride"/> is null, the card's own facing state will be used rather than assuming one.
-    public PrototypeLayerData[]? ToLayers(
-        PlayingCardInDeck card,
-        Entity<PlayingCardDeckComponent>? deck,
-        bool? faceDownOverride = null
-    )
+    public PrototypeLayerData[]? ToLayers(PlayingCardInDeck card, bool? faceDownOverride = null)
     {
-        switch (card)
+        var c = card switch
         {
-            // It's an existing entity, just return the entity's sprite layers.
-            case PlayingCardInDeck.NetEnt(var netEntity):
-                return NetEntToCardOrNull(netEntity)?.Comp.Sprite(faceDownOverride);
-            case PlayingCardInDeck.Unspawned(PlayingCardDeckPrototypeElementData data):
-                // If we can't get the deck's deck proto, we won't be able to make a complete card.
-                if (deck is not { } d ||
-                    !_proto.Resolve(d.Comp.Prototype, out var deckProto))
-                {
-                    return this.AssertOrLogError<PrototypeLayerData[]?>(
-                        $"Cannot calculate layers for {nameof(PlayingCardDeckPrototypeElementData)} when failed to resolve deck prototype for deck={deck}",
-                        null
-                    );
-                }
+            PlayingCardInDeck.NetEnt(var netEntity) => NetEntToCardOrNull(netEntity)?.Comp,
+            PlayingCardInDeck.UnspawnedData data => ToComponent(data),
+            PlayingCardInDeck.UnspawnedRef(var entProtoId, var faceDown) =>
+                _proto.Resolve(entProtoId, out var proto) &&
+                proto.Components.TryGetComponent<PlayingCardComponent>(_compFact, out var cardComp)
+                    ? WithFacing(cardComp, faceDown)
+                    : null,
+            _ => card.ThrowUnknownInheritor<PlayingCardInDeck, PlayingCardComponent?>(),
+        };
+        if (c is null)
+            return this.AssertOrLogError<PrototypeLayerData[]?>(
+                $"Failed to get {nameof(PlayingCardComponent)} from {card}",
+                null);
 
-                var layers = ToLayers(data, deckProto);
-                return faceDownOverride ?? data.FaceDown ? layers.reverse : layers.obverse;
-            case PlayingCardInDeck.Unspawned(PlayingCardDeckPrototypeElementProtoRef protoRef):
-                if (!_proto.Resolve(protoRef.Prototype, out var proto))
-                    return null;
-
-                if (!proto.Components.TryGetComponent<PlayingCardComponent>(_compFact, out var cardComp))
-                {
-                    return this.AssertOrLogError<PrototypeLayerData[]?>(
-                        $"Cannot calculate layers for {nameof(PlayingCardDeckPrototypeElementProtoRef)}, prototype did not have {nameof(PlayingCardComponent)}: prototype={proto}",
-                        null
-                    );
-                }
-
-                return faceDownOverride ?? protoRef.FaceDown ? cardComp.ReverseSprite : cardComp.ObverseSprite;
-            default:
-                return this.AssertOrLogError<PrototypeLayerData[]?>(
-                    $"Unknown variant of {nameof(PlayingCardInDeck)}: {card.GetType()}",
-                    null
-                );
-        }
+        return c.Sprite(faceDownOverride);
     }
 
     private Entity<PlayingCardComponent>? NetEntToCardOrNull(NetEntity netEnt)
@@ -101,5 +75,13 @@ public sealed partial class PlayingCardsSystem : EntitySystem
                 $"Net Entity ({netEnt}) is missing expected {nameof(PlayingCardComponent)} ({ToPrettyString(ent)})");
             return null;
         }
+    }
+
+    /// This function just sets the given <paramref name="comp"/>'s <see cref="PlayingCardComponent.FaceDown"/> and
+    /// returns the component. This is useful for setting the component's value inline.
+    private static PlayingCardComponent WithFacing(PlayingCardComponent comp, bool faceDown)
+    {
+        comp.FaceDown = faceDown;
+        return comp;
     }
 }

@@ -11,8 +11,9 @@
   - type: PlayingCard
     name: "dynamic-playing-card-error-name"
     description: "dynamic-playing-card-error-description"
-    obverseSprite: [ ]
-    reverseSprite: [ ]
+    reverseName: "dynamic-playing-card-error-reverse"
+    obverseLayers: [ ]
+    reverseLayers: [ ]
 
 - type: entity
   parent: BasePlayingCardDeck

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Cards.Events;
+using Content.Shared._Moffstation.Cards.Prototypes;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -154,30 +155,16 @@ public sealed partial class PlayingCardsSystem
         return valueChanged;
     }
 
-    /// "Instantiates" <paramref name="cardData"/> as the returned entity using the information passed. Returns null if
-    /// the deck prototype cannot be resolved, as we can't make dynamic cards without that.
+    /// "Instantiates" <paramref name="data"/> as the returned entity. Returns null if resolving prototypes fails.
     /// Note that the spawned card <b>is predicted on the client</b>.
     private Entity<PlayingCardComponent>? SpawnPredictedDynamicCard(
-        PlayingCardDeckPrototypeElementData cardData,
-        Entity<PlayingCardDeckComponent> deck,
+        PlayingCardInDeck.UnspawnedData data,
         EntityCoordinates coords
     )
     {
-        // If we can't get the deck's deck proto, we won't be able to make a complete card.
-        if (!_proto.Resolve(deck.Comp.Prototype, out var deckProto))
-            return null;
-
         var spawned = PredictedSpawnAtPosition(BaseCardEntId, coords);
         var cardComp = Comp<PlayingCardComponent>(spawned);
-        var (obverseSprite, reverseSprite) = ToLayers(cardData, deckProto);
-        cardComp.FaceDown = cardData.FaceDown;
-        cardComp.ObverseSprite = obverseSprite;
-        cardComp.Name = deckProto.CardName(cardData.Id);
-        cardComp.Description = deckProto.CardDescription(cardData.Id);
-        cardComp.ReverseSprite = reverseSprite;
-        cardComp.ReverseName = deckProto.ReverseName();
-        cardComp.ReverseDescription = deckProto.ReverseDescription();
-
+        TryApplyCardData(ref cardComp, data);
         Dirty(spawned, cardComp);
 
         var ev = new PlayingCardFlippedEvent();
@@ -186,28 +173,87 @@ public sealed partial class PlayingCardsSystem
         return (spawned, cardComp);
     }
 
-    /// Calculates the obverse and reverse sprite layers for <paramref name="cardData"/>, using the common/default info
-    /// from <paramref name="deckProto"/>.
-    private static (PrototypeLayerData[] obverse, PrototypeLayerData[] reverse) ToLayers(
-        PlayingCardDeckPrototypeElementData cardData,
-        PlayingCardDeckPrototype deckProto
+    /// Returns a new <see cref="PlayingCardComponent"/> with the given <paramref name="data"/>. Returns null if
+    /// prototype resolution fails.
+    private PlayingCardComponent? ToComponent(PlayingCardInDeck.UnspawnedData data)
+    {
+        var comp = _compFact.GetComponent<PlayingCardComponent>();
+        if (!TryApplyCardData(ref comp, data))
+            return null;
+
+        return WithFacing(comp, data.Card.FaceDown);
+    }
+
+    /// Applies the given <paramref name="data"/> to the given <paramref name="comp"/>. Returns whether or not the
+    /// component was modified, ie. returns false if prototype resolution failed.
+    private bool TryApplyCardData(ref PlayingCardComponent comp, PlayingCardInDeck.UnspawnedData data)
+    {
+        PlayingCardSuitPrototype? suit = null;
+        if (!_proto.Resolve(data.Deck, out var deck) ||
+            data.Suit is { } suitId &&
+            !_proto.Resolve(suitId, out suit))
+            return false;
+
+        comp.ObverseLayers = AssembleObverseSpriteLayers(data.Card, deck, suit);
+        comp.ReverseLayers = deck.CommonReverseLayers.WithUnlessAlreadySpecified(rsiPath: deck.RsiPath.ToString());
+        comp.FaceDown = data.Card.FaceDown;
+
+        (string, object)[] locArgs = suit is null
+            ? [("card", Loc.GetString(deck.CardValueLoc, ("card", data.Card.Id.ToLowerInvariant())))]
+            :
+            [
+                ("suit", Loc.GetString(deck.SuitLoc, ("suit", suit.ID.ToLowerInvariant()))),
+                ("card", Loc.GetString(deck.CardValueLoc, ("card", data.Card.Id.ToLowerInvariant()))),
+            ];
+
+        comp.Name = Loc.GetString(data.Card.NameLoc ?? deck.CardNameLoc, locArgs);
+        comp.Description = Loc.GetString(deck.CardDescLoc, locArgs);
+        comp.ReverseName = Loc.GetString(deck.CardReverseNameLoc, locArgs);
+        comp.ReverseDescription = Loc.GetString(deck.CardReverseDescLoc, locArgs);
+
+        return true;
+    }
+
+    private static PrototypeLayerData[] AssembleObverseSpriteLayers(
+        PlayingCardDeckPrototypeElementCard card,
+        PlayingCardDeckPrototype deck,
+        PlayingCardSuitPrototype? suit
     )
     {
-        // Obverse layers are the deck's common obverse layers, plus the card's own obverse layers.
-        var obverse = deckProto.CommonObverseSprite.Concat(
-                // Use the explicitly defined obverse sprite, or make a layer whose state is the card's ID.
-                cardData.ObverseSprite ??
-                [new PrototypeLayerData { State = cardData.Id }]
-            )
-            // Default to the deck's RSI if the layers don't have one already.
-            // This allows yamlers to specify only the state.
-            .WithUnlessAlreadySpecified(rsiPath: deckProto.RsiPath.ToString());
+        // If neither the card nor the suit specify if the deck's common layers should be used, default to true.
+        var layersFromDeck = card.UseDeckLayers ?? suit?.UseDeckLayers ?? true ? deck.CommonObverseLayers : [];
+        var layersFromSuit = card.UseSuitLayers ? suit?.CommonObverseLayers ?? [] : [];
 
-        // Default to the deck's RSI if the layers don't have one already. This allows yamlers to specify only the state
-        // on the reverse sprite layers.
-        var reverse =
-            deckProto.CommonReverseSprite.WithUnlessAlreadySpecified(rsiPath: deckProto.RsiPath.ToString());
+        PrototypeLayerData[] layersFromCard;
+        if (card.ObverseLayers is { } layers)
+        {
+            // If there're layers specifically added to this card, replace `{suit}` in the state IDs with the actual suit ID.
+            layersFromCard = layers.Select(l =>
+                {
+                    var layerCopy = l.With();
+                    layerCopy.State = layerCopy.State?.Replace("{suit}", suit?.ID.ToLowerInvariant() ?? "");
+                    return layerCopy;
+                })
+                .ToArray();
+        }
+        else
+        {
+            var stateFromCard = card.Id.Replace("{suit}", suit?.ID.ToLowerInvariant() ?? "");
 
-        return (obverse, reverse);
+            // No layers specified on the card, so assemble the default state ID from the deck, suit and card IDs.
+            var stateFromSuit = suit is { DefaultObverseLayerState: { } suitState }
+                ? suitState.Replace("{card}", card.Id)
+                : card.Id;
+
+            var stateFromDeck = deck.DefaultObverseLayerState is { } deckState
+                ? deckState.Replace("{card}", stateFromSuit)
+                : stateFromSuit;
+            layersFromCard = [new PrototypeLayerData { State = stateFromDeck }];
+        }
+
+        // Assemble all of the layers together and default the deck's RSI if any layers are missing it.
+        return layersFromDeck.Concat(layersFromSuit)
+            .Concat(layersFromCard)
+            .WithUnlessAlreadySpecified(rsiPath: deck.RsiPath.ToString());
     }
 }
