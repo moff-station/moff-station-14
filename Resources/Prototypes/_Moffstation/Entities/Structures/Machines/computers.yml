@@ -103,3 +103,6 @@
   id: ComputerFundingAllocationMoffstation
   name: funding allocation computer
   description: Terminal for controlling the distribution of funds and pay to departments.
+  components:
+  - type: AccessReader
+    access: [["Quartermaster"]] # Moffstation - Cargo control of funding
