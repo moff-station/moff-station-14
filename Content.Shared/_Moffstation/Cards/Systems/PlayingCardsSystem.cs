@@ -37,13 +37,12 @@ public sealed partial class PlayingCardsSystem : EntitySystem
         InitHand();
     }
 
-    /// This function returns the complete sprite layers for the given <paramref name="card"/>, assuming the given
-    /// <paramref name="faceDownOverride"/>. This is used by the client visualizers to construct sprites for decks and
-    /// hands based on their containing cards.
-    /// If <paramref name="faceDownOverride"/> is null, the card's own facing state will be used rather than assuming one.
-    public PrototypeLayerData[]? ToLayers(PlayingCardInDeck card, bool? faceDownOverride = null)
+    /// This function retrieves the <see cref="PlayingCardComponent"/> data for the given <paramref name="card"/>. Note
+    /// that since <paramref name="card"/> may not be a spawned entity, the component may not be owned by an entity.
+    /// Returns null in various cases if something goes wrong with resolving prototypes, net entities, etc.
+    public PlayingCardComponent? GetComponent(PlayingCardInDeck card)
     {
-        var c = card switch
+        var ret = card switch
         {
             PlayingCardInDeck.NetEnt(var netEntity) => NetEntToCardOrNull(netEntity)?.Comp,
             PlayingCardInDeck.UnspawnedData data => ToComponent(data),
@@ -54,12 +53,15 @@ public sealed partial class PlayingCardsSystem : EntitySystem
                     : null,
             _ => card.ThrowUnknownInheritor<PlayingCardInDeck, PlayingCardComponent?>(),
         };
-        if (c is null)
-            return this.AssertOrLogError<PrototypeLayerData[]?>(
+        if (ret is null)
+        {
+            return this.AssertOrLogError<PlayingCardComponent?>(
                 $"Failed to get {nameof(PlayingCardComponent)} from {card}",
-                null);
+                null
+            );
+        }
 
-        return c.Sprite(faceDownOverride);
+        return ret;
     }
 
     private Entity<PlayingCardComponent>? NetEntToCardOrNull(NetEntity netEnt)

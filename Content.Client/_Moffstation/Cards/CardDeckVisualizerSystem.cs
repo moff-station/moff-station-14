@@ -33,7 +33,7 @@ public sealed partial class CardDeckVisualizerSystem : ManagedLayerVisualizerSys
         var layerScale = new Vector2(component.Scale, component.Scale);
         foreach (var (cardIndex, cardInDeck) in visibleCards.Index())
         {
-            if (_playingCards.ToLayers(cardInDeck) is not { } currentLayers)
+            if (_playingCards.GetComponent(cardInDeck)?.Sprite() is not { } currentLayers)
                 continue;
 
             foreach (var (cardLayerIndex, cardLayerData) in currentLayers.Index())

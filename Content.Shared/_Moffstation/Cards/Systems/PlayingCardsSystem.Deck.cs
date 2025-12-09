@@ -29,7 +29,7 @@ public sealed partial class PlayingCardsSystem
         SubscribeLocalEvent<PlayingCardDeckComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<PlayingCardDeckComponent, PlayingCardStackContentsChangedEvent>(DirtyVisuals);
         SubscribeLocalEvent<PlayingCardDeckComponent, ContainedPlayingCardFlippedEvent>(DirtyVisuals);
-        SubscribeLocalEvent<PlayingCardDeckComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<PlayingCardDeckComponent, ExaminedEvent>(OnExaminedDeck);
         SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbsDeck);
         SubscribeLocalEvent<PlayingCardDeckComponent, InteractUsingEvent>(OnInteractUsing);
     }
@@ -58,6 +58,17 @@ public sealed partial class PlayingCardsSystem
 
         _hands.TryPickupAnyHand(args.User, card, animate: false);
         args.Handled = true;
+    }
+
+    private void OnExaminedDeck(Entity<PlayingCardDeckComponent> entity, ref ExaminedEvent args)
+    {
+        if (entity.Comp.TopCard is { } topCardLike &&
+            GetComponent(topCardLike) is { FaceDown: false } topCard)
+        {
+            args.PushMarkup(Loc.GetString(entity.Comp.TopCardExamineLoc, ("card", topCard.Name)));
+        }
+
+        OnExamined(entity, ref args);
     }
 
     private void OnGetAlternativeVerbsDeck(

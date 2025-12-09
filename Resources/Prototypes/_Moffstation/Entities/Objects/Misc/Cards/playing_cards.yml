@@ -6,7 +6,7 @@
   suffix: black
   components:
   - type: Sprite
-    sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+    sprite: _Moffstation/Objects/Misc/Cards/card_black.rsi
   - type: ContainerFill
     containers:
       storagebase:
@@ -24,7 +24,7 @@
 - type: playingCardDeck
   parent: BasePlayingCardDeck
   id: BlackCards
-  sprite: _EstacaoPirata/Objects/Misc/Cards/card_black.rsi
+  sprite: _Moffstation/Objects/Misc/Cards/card_black.rsi
 
 # Syndicate cards
 - type: entity
@@ -34,7 +34,7 @@
   suffix: syndicate
   components:
   - type: Sprite
-    sprite: _EstacaoPirata/Objects/Misc/Cards/card_syndicate.rsi
+    sprite: _Moffstation/Objects/Misc/Cards/card_syndicate.rsi
   - type: ContainerFill
     containers:
       storagebase:
@@ -52,7 +52,7 @@
 - type: playingCardDeck
   parent: BasePlayingCardDeck
   id: SyndicateCards
-  sprite: _EstacaoPirata/Objects/Misc/Cards/card_syndicate.rsi
+  sprite: _Moffstation/Objects/Misc/Cards/card_syndicate.rsi
 
 # Nanotrasen cards
 - type: entity
@@ -62,7 +62,7 @@
   suffix: nanotrasen
   components:
   - type: Sprite
-    sprite: _EstacaoPirata/Objects/Misc/Cards/card_nanotrasen.rsi
+    sprite: _Moffstation/Objects/Misc/Cards/card_nanotrasen.rsi
   - type: ContainerFill
     containers:
       storagebase:
@@ -80,7 +80,7 @@
 - type: playingCardDeck
   parent: BasePlayingCardDeck
   id: NanotrasenCards
-  sprite: _EstacaoPirata/Objects/Misc/Cards/card_nanotrasen.rsi
+  sprite: _Moffstation/Objects/Misc/Cards/card_nanotrasen.rsi
 
 
 # Base definitions

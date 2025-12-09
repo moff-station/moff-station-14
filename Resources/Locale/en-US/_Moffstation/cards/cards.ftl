@@ -4,7 +4,7 @@ dynamic-playing-card-error-description = If you can see this, something has gone
 dynamic-playing-card-error-reverse = dynamic card
 
 # Operations / implementation
-card-examined = This is a {$target}.
+card-examined = This is {INDEFINITE($target)} [color=lightgray]{$target}[/color].
 cards-verb-shuffle = Shuffle
 card-verb-shuffle-success = Cards shuffled
 cards-verb-flip = Flip Cards
@@ -18,3 +18,4 @@ cards-stackquantitychange-removed = Card was removed (Total of cards: {$quantity
 cards-stackquantitychange-unknown = Unknown
 cards-verb-convert-to-deck = Convert to Card Deck
 cards-verb-split = Split in half
+cards-deck-top-card-examine = The top card is {INDEFINITE($card)} [color=lightgray]{$card}[/color].

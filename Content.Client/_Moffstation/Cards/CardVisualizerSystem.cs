@@ -41,12 +41,8 @@ public sealed class CardVisualizerSystem : ManagedLayerVisualizerSystem<PlayingC
     {
         var virtualCard = Spawn(null, args.SpawnAt);
         var virtualMeta = MetaData(virtualCard);
-        _meta.SetEntityName(virtualCard, Loc.GetString(entity.Comp.ReverseName), virtualMeta, raiseEvents: false);
-        _meta.SetEntityDescription(
-            virtualCard,
-            entity.Comp.ReverseDescription is { } rDesc ? Loc.GetString(rDesc) : "",
-            virtualMeta
-        );
+        _meta.SetEntityName(virtualCard, entity.Comp.ReverseName, virtualMeta, raiseEvents: false);
+        _meta.SetEntityDescription(virtualCard, entity.Comp.ReverseDescription ?? "", virtualMeta);
 
         var sprite = new Entity<SpriteComponent?>(virtualCard, AddComp<SpriteComponent>(virtualCard));
         foreach (var layer in entity.Comp.ReverseLayers)

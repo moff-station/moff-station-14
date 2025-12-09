@@ -24,6 +24,10 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
     /// How many cards are in <see cref="Cards"/>.
     public override int NumCards => Cards.Count;
 
+    /// The card at the top of the deck, that is the one which would be drawn next, or the one whose sprite is most
+    /// visible.
+    public PlayingCardInDeck? TopCard => NumCards > 0 ? Cards[^1] : null;
+
     /// The prototype of this deck. This is used to define the contents of a deck in YAML. Note that this is nullable as
     /// arbitrary cards which are not from the same original deck can be joined to create a deck later.
     /// contained in <see cref="Cards"/>.
@@ -38,14 +42,20 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
     [DataField]
     public float Scale = 1;
 
-    [DataField] public SpriteSpecifier? SplitIcon =
+    [DataField]
+    public SpriteSpecifier? SplitIcon =
         new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/dot.svg.192dpi.png"));
 
-    [DataField] public SpriteSpecifier? ShuffleIcon =
+    [DataField]
+    public SpriteSpecifier? ShuffleIcon =
         new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/die.svg.192dpi.png"));
 
-    [DataField] public SpriteSpecifier? FlipCardsIcon =
+    [DataField]
+    public SpriteSpecifier? FlipCardsIcon =
         new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/refresh.svg.192dpi.png"));
+
+    [DataField]
+    public LocId TopCardExamineLoc = "cards-deck-top-card-examine";
 
     /// Sprite layers added to this entity based on contained cards' <see cref="PlayingCardComponent.Sprite"/>.
     [ViewVariables]

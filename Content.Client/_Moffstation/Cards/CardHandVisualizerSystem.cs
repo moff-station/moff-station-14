@@ -96,8 +96,8 @@ public sealed partial class CardHandVisualizerSystem : ManagedLayerVisualizerSys
         var layerScale = new Vector2(component.Scale, component.Scale);
         foreach (var (cardIndex, cardInDeck) in visibleCards.Index())
         {
-            if (_playingCards.ToLayers(cardInDeck, faceDownOverride: forceUseReverseSprites ? true : null) is not
-                { } currentLayers)
+            bool? faceDownOverride = forceUseReverseSprites ? true : null;
+            if (_playingCards.GetComponent(cardInDeck)?.Sprite(faceDownOverride) is not { } currentLayers)
                 continue;
 
             foreach (var (layerIndex, layerData) in currentLayers.Index())

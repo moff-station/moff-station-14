@@ -35,19 +35,19 @@ public sealed partial class PlayingCardComponent : Component
 
     /// The name of this card, visible when not face down.
     [DataField(required: true), AutoNetworkedField]
-    public LocId Name;
+    public string Name;
 
     /// The description of this card, visible when not face down.
     [DataField(required: true), AutoNetworkedField]
-    public LocId Description;
+    public string Description;
 
     /// The name which will be applied to this entity when it is flipped face down.
     [DataField(required: true), AutoNetworkedField]
-    public LocId ReverseName;
+    public string ReverseName;
 
     /// The description which will be applied to this entity when it is flipped face down.
     [DataField, AutoNetworkedField]
-    public LocId? ReverseDescription;
+    public string? ReverseDescription;
 
     /// The icon for the "flip" verb on this card.
     [DataField, AutoNetworkedField]

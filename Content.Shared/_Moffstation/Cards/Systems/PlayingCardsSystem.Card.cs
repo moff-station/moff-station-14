@@ -59,7 +59,7 @@ public sealed partial class PlayingCardsSystem
         if (!args.IsInDetailsRange || entity.Comp.FaceDown)
             return;
 
-        args.PushMarkup(Loc.GetString("card-examined", ("target", Loc.GetString(entity.Comp.Name))));
+        args.PushMarkup(Loc.GetString("card-examined", ("target", entity.Comp.Name)));
     }
 
     private void OnGetVerbs(Entity<PlayingCardComponent> entity, ref GetVerbsEvent<AlternativeVerb> args)

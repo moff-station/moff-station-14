@@ -30,7 +30,7 @@ public sealed class PlayingCardHandMenuBoundUserInterface(EntityUid owner, Enum 
                 .Select(card => new RadialMenuActionOption<Entity<PlayingCardComponent>>(OnPressed, card)
                     {
                         IconSpecifier = RadialMenuIconSpecifier.With(card),
-                        ToolTip = Loc.GetString(card.Comp.Name),
+                        ToolTip = card.Comp.Name,
                     }
                 )
         );

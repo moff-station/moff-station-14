@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Extensions;
+using Content.Shared.Movement.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
@@ -48,7 +49,7 @@ public sealed partial class PlayingCardsSystem
             {
                 ret.AddRange(cards.Select(cardLike => EnsureSpawnedOrNull(cardLike, destinationCoords))
                     .OfType<Entity<PlayingCardComponent>>());
-                return (ret.FirstOrNull(), ret.Count);
+                return ret.FirstOrNull();
             },
             destinationCoords,
             range,
@@ -83,13 +84,10 @@ public sealed partial class PlayingCardsSystem
     /// like predicted audio can be played.
     private delegate IEnumerable<CardLike> CardSource(Range range, EntityUid? user);
 
-    /// A sink for cards for transferring. The given <paramref name="cards"/> are added to this sink, and the first card
-    /// moved along with the total number of cards moved are returned. The first/total are used for animating the
-    /// transfer. The <paramref name="user"/> is also provided so that things like predicted audio can be played.
-    private delegate (Entity<PlayingCardComponent>? firstCard, int numTotalCards) CardSink(
-        IEnumerable<CardLike> cards,
-        EntityUid? user
-    );
+    /// A sink for cards for transferring. The given <paramref name="cards"/> are added to this sink, and an entity is
+    /// returned to be used for animation the transfer. The <paramref name="user"/> is also provided so that things like
+    /// predicted audio can be played.
+    private delegate EntityUid? CardSink(IEnumerable<CardLike> cards, EntityUid? user);
 
     /// This type represents a Card either as an entity with <see cref="PlayingCardComponent"/> or an unspawned card in
     /// a <see cref="PlayingCardDeckComponent"/> during transfers.
@@ -123,12 +121,11 @@ public sealed partial class PlayingCardsSystem
         EntityUid? user
     )
     {
-        var (firstCard, numTotalCards) = sink(source(range, user), user);
+        var pickupAnimationEnt = sink(source(range, user), user);
 
-        // TODO CENT If more than one card is moved, the pickup animation should look like a deck.
-        if (user is { } u && firstCard is { } fc)
+        if (user is { } u && pickupAnimationEnt is { } ent)
         {
-            _storage.PlayPickupAnimation(fc, sourceCoords, sinkCoords, 0, u);
+            _storage.PlayPickupAnimation(ent, sourceCoords, sinkCoords, 0, u);
         }
     }
 
@@ -252,7 +249,7 @@ public sealed partial class PlayingCardsSystem
         foreach (var cardLike in cards)
         {
             count += 1;
-            first ??= cardLike is CardLike.Entity(var ent1) ? ent1 : null;
+            first ??= cardLike is CardLike.Entity(var e) ? e : null;
             switch (cardLike)
             {
                 case CardLike.Entity(var ent):
@@ -282,7 +279,7 @@ public sealed partial class PlayingCardsSystem
             _audio.PlayPredicted(entity.Comp.PlaceDownSound, deckCoords, user);
         }
 
-        return (first, count);
+        return first;
     };
 
     private CardSink AsCardSink(Entity<PlayingCardHandComponent> entity) => (cards, user) =>
@@ -315,7 +312,7 @@ public sealed partial class PlayingCardsSystem
             _audio.PlayPredicted(entity.Comp.PlaceDownSound, Transform(entity).Coordinates, user);
         }
 
-        return (first, count);
+        return first;
     };
 
     private Entity<PlayingCardComponent>? EnsureSpawnedOrNull(CardLike cardLike, EntityCoordinates coords) =>
