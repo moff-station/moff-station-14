@@ -174,11 +174,14 @@ public sealed partial class PlayingCardsSystem
         return deck.Cards.SelectMany(deckEl => deckEl switch
         {
             PlayingCardDeckPrototypeElementCard card =>
-                [new PlayingCardInDeck.UnspawnedData(card, deck, Suit: null)],
+                Enumerable.Repeat(new PlayingCardInDeck.UnspawnedData(card, deck, Suit: null), card.Count),
             PlayingCardDeckPrototypeElementPrototypeReference protoRef =>
-                [new PlayingCardInDeck.UnspawnedRef(protoRef.Prototype, protoRef.FaceDown)],
+                Enumerable.Repeat(new PlayingCardInDeck.UnspawnedRef(protoRef.Prototype, protoRef.FaceDown),
+                    protoRef.Count),
             PlayingCardDeckPrototypeElementSuit s => _proto.Resolve(s.Suit, out var suit)
-                ? suit.Cards.Select(suitEl => new PlayingCardInDeck.UnspawnedData(suitEl, deck, suit))
+                ? suit.Cards.SelectMany(suitEl =>
+                    Enumerable.Repeat(new PlayingCardInDeck.UnspawnedData(suitEl, deck, suit), suitEl.Count)
+                )
                 : [],
             _ => this.AssertOrLogError<IEnumerable<PlayingCardInDeck>>(
                 $"Unknown variant of {nameof(PlayingCardDeckPrototype.Element)}: {deckEl}",

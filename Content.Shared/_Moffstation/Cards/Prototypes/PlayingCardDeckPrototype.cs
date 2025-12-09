@@ -94,6 +94,11 @@ public record PlayingCardDeckPrototypeElementPrototypeReference : PlayingCardDec
     /// If the card should spawn in the deck facing down.
     [DataField]
     public bool FaceDown;
+
+    /// How many copies of this card should be included. Note that this is ONLY used when initializing a deck entity's
+    /// contents.
+    [DataField]
+    public int Count = 1;
 }
 
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which will construct a card entity with defaults specified on the deck
@@ -128,6 +133,11 @@ public record PlayingCardDeckPrototypeElementCard : PlayingCardDeckPrototype.Ele
     /// If the card should spawn in the deck facing down.
     [DataField]
     public bool FaceDown;
+
+    /// How many copies of this card should be included. Note that this is ONLY used when initializing a deck entity's
+    /// contents.
+    [DataField]
+    public int Count = 1;
 }
 
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which includes all cards in the referenced suit in the deck.

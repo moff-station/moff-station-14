@@ -297,6 +297,7 @@ public sealed partial class PlayingCardsSystem
                 continue;
             count += 1;
             first ??= spawned;
+            Flip(spawned, faceDown: false); // Cards in hands should always be face up
             entity.Comp.Cards.Add(GetNetEntity(spawned));
             if (!_container.Insert(spawned.Owner, entity.Comp.Container, force: true))
             {
