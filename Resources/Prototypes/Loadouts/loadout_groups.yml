@@ -948,6 +948,7 @@
   loadouts:
   - ChiefEngineerHead
   - ChiefEngineerBeret
+  - ChiefBeanie
 
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -1010,6 +1011,7 @@
   #- StationEngineerHardhatYellow Moffstation - (Work Gear for Atmos) - Yellow and blue hardhats are restricted to atmos to keep the two roles visually distinct.
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
+  - StationEngineerOrangeCap
   - SeniorEngineerBeret
 
 - type: loadoutGroup
@@ -1038,6 +1040,7 @@
   loadouts:
   - StationEngineerOuterVest
   - StationEngineerWintercoat
+  - StationEngineerWindbreaker # Moffstation - Engineering Outfits
 
 - type: loadoutGroup
   id: StationEngineerShoes
@@ -1073,6 +1076,11 @@
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
+# Moffstation - Begin - Engineering Outfits
+  - AtmosphericTechnicianTurtleneck
+  - AtmosphericTechnicianSeniorJumpsuit
+  - AtmosphericTechnicianSeniorJumpskirt
+# Moffstation - End - Engineering Outfits
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
