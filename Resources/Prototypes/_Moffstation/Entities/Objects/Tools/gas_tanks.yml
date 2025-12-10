@@ -16,7 +16,7 @@
     - sloth
     - puppy
   - type: Sprite
-    sprite: Objects/Tanks/tank.rsi
+    sprite: _Moffstation/Objects/Tanks/tank.rsi
     layers:
     - state: icon-tank
       map: [ "enum.GasTankVisualsLayers.Tank" ]
@@ -26,14 +26,14 @@
       map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
     - state: icon-hardware
   - type: Item
-    sprite: Objects/Tanks/tank.rsi
+    sprite: _Moffstation/Objects/Tanks/tank.rsi
     inhandVisuals:
       Left:
       - state: inhand-left-hardware
       Right:
       - state: inhand-right-hardware
   - type: Clothing
-    sprite: Objects/Tanks/tank.rsi
+    sprite: _Moffstation/Objects/Tanks/tank.rsi
     clothingVisuals:
       back:
       - state: equipped-BACKPACK-hardware
@@ -76,7 +76,7 @@
       volume: 0.66
       temperature: 293.15
   - type: Clothing
-    sprite: Objects/Tanks/emergency.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency.rsi
     slots:
     - Pocket
     - Belt
