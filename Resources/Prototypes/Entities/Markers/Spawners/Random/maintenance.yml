@@ -364,6 +364,13 @@
       - id: SawImprov
       - id: HydroponicsToolMiniHoe
       - id: ClothingHandsKnuckleDusters
+      # Moffstation - Begin (Crestfall Repeater) - For maints weapons that aren't Syndicate, but need to be rarer than a shiv.
+      # Extra-Rare (Epic?) Group (If you add anything to this list, change the line above from (Crestfall Repeater) to (Expanded Maints Loot), thanks!)
+      - !type:GroupSelector
+        weight: 1
+        children:
+        - id: WeaponRifleLeverMagnum
+      # Moffstation - End
 
 - type: entity
   name: Maint Loot Spawner
