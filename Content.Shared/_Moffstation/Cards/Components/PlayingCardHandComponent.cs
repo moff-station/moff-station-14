@@ -12,7 +12,7 @@ namespace Content.Shared._Moffstation.Cards.Components;
 public sealed partial class PlayingCardHandComponent : PlayingCardStackComponent
 {
     /// The cards in this hand.
-    [DataField, AutoNetworkedField]
+    [AutoNetworkedField]
     public List<NetEntity> Cards = [];
 
     /// The number of cards in this hand.

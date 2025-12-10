@@ -18,7 +18,7 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
     /// The cards in this deck. Order is important, and is such that the first card in the list is on the bottom of the
     /// deck, and the last card in the list is on the top of the deck. This means that the push/pop behavior of
     /// interacting with the deck should be minimally deleterious to performance.
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public List<PlayingCardInDeck> Cards = [];
 
     /// How many cards are in <see cref="Cards"/>.
