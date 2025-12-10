@@ -4,14 +4,14 @@
   id: GasTankBase
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Tanks/generic.rsi
+    sprite: Objects/Tanks/generic.rsi
     state: icon
   - type: Item
     size: Normal
-    sprite: _Moffstation/Objects/Tanks/generic.rsi
+    sprite: Objects/Tanks/generic.rsi
   - type: Clothing
     quickEquip: false
-    sprite: _Moffstation/Objects/Tanks/generic.rsi
+    sprite: Objects/Tanks/generic.rsi
     slots:
     - Back
     - suitStorage
@@ -154,7 +154,7 @@
   description: An emergency tank with extended capacity. Technically rated for prolonged use. It can hold 1.5 L of gas.
   components:
   - type: Sprite
-    sprite: _Moffstation/_Moffstation/Objects/Tanks/emergency_extended.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency_extended.rsi
   - type: Item
     sprite: _Moffstation/Objects/Tanks/emergency_extended.rsi
   - type: GasTank
