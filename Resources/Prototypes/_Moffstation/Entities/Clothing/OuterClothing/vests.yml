@@ -1,9 +1,9 @@
 ﻿#Hazard vest
 - type: entity
-  parent: [ ClothingOuterStorageBase, AllowSuitStorageClothing ]
+  parent: [ ClothingOuterVestHazard ]
   id: ClothingOuterVestHazardBlue
   name: hi-viz vest
-  description: A high-visibility vest used in work zones.
+  description: A high-visibility vest used in work zones. This one is atmos-themed blue. How prestigious.
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/Vests/hazard.rsi
