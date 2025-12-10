@@ -145,12 +145,12 @@
 - type: entity
   parent: BaseVendingMachineRestock
   id: VendingMachineRestockCostumes
-  name: DramaDrobe restock box
-  description: A panoply of NanoTrasen employees are prancing about a colorful theater in a tragicomedy. You can join them too! Load this into your nearest DramaDrobe vending machine.
+  name: DramaDrobe restock box # Moffstation - "AutoDrobe" -> "DramaDrobe"
+  description: A panoply of NanoTrasen employees are prancing about a colorful theater in a tragicomedy. You can join them too! Load this into your nearest DramaDrobe vending machine. # Moffstation - "AutoDrobe" -> "DramaDrobe"
   components:
   - type: VendingMachineRestock
     canRestock:
-    - DramaDrobeInventory
+    - AutoDrobeInventory
   - type: Sprite
     layers:
     - state: base

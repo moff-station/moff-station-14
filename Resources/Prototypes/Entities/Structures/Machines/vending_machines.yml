@@ -1273,11 +1273,11 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineTheater
-  name: DramaDrobe
+  name: DramaDrobe # Moffstation - "AutoDrobe" -> "DramaDrobe"
   description: A vending machine containing costumes.
   components:
   - type: VendingMachine
-    pack: DramaDrobeInventory
+    pack: AutoDrobeInventory
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -1285,7 +1285,7 @@
     denyState: deny-unshaded
     screenState: screen
   - type: DatasetVocalizer
-    dataset: DramaDrobeAds
+    dataset: AutoDrobeAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
   - type: Sprite
