@@ -8,7 +8,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared._Moffstation.Cards.Systems;
 
 // This part implements transferring cards from one place to another.
-public sealed partial class PlayingCardsSystem
+public abstract partial class SharedPlayingCardsSystem
 {
     /// Moves the cards specified by <paramref name="range"/> from <paramref name="source"/> to
     /// <paramref name="target"/>. The range is relative to <paramref name="source"/>.

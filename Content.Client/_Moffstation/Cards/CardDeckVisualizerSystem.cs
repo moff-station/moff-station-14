@@ -9,7 +9,7 @@ namespace Content.Client._Moffstation.Cards;
 
 public sealed partial class CardDeckVisualizerSystem : ManagedLayerVisualizerSystem<PlayingCardDeckComponent>
 {
-    [Dependency] private readonly PlayingCardsSystem _playingCards = default!;
+    [Dependency] private readonly SharedPlayingCardsSystem _playingCards = default!;
 
     protected override ref HashSet<string> SpriteLayersAdded(PlayingCardDeckComponent component) =>
         ref component.SpriteLayersAdded;

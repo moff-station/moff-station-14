@@ -25,7 +25,7 @@ public sealed class PlayingCardHandMenuBoundUserInterface(EntityUid owner, Enum 
     public override void Update()
     {
         _menu?.SetButtons(
-            EntMan.System<PlayingCardsSystem>()
+            EntMan.System<SharedPlayingCardsSystem>()
                 .GetCards(Owner)
                 .Select(card => new RadialMenuActionOption<Entity<PlayingCardComponent>>(OnPressed, card)
                     {

@@ -13,7 +13,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Moffstation.Cards.Systems;
 
 // This part handles PlayingCardComponent.
-public sealed partial class PlayingCardsSystem
+public abstract partial class SharedPlayingCardsSystem
 {
     /// The ID of the entity prototype which is used to construct cards dynamically.
     private static readonly EntProtoId<PlayingCardComponent> BaseCardEntId = "PlayingCardDynamic";
@@ -170,6 +170,8 @@ public sealed partial class PlayingCardsSystem
         var ev = new PlayingCardFlippedEvent();
         RaiseLocalEvent(spawned, ref ev);
 
+        ForceAppearanceUpdate((spawned, cardComp));
+
         return (spawned, cardComp);
     }
 
@@ -242,7 +244,7 @@ public sealed partial class PlayingCardsSystem
 
             // No layers specified on the card, so assemble the default state ID from the deck, suit and card IDs.
             var stateFromSuit = suit is { DefaultObverseLayerState: { } suitState }
-                ? suitState.Replace("{card}", card.Id)
+                ? suitState.Replace("{card}", stateFromCard)
                 : card.Id;
 
             var stateFromDeck = deck.DefaultObverseLayerState is { } deckState
@@ -256,4 +258,6 @@ public sealed partial class PlayingCardsSystem
             .Concat(layersFromCard)
             .WithUnlessAlreadySpecified(rsiPath: deck.RsiPath.ToString());
     }
+
+    protected abstract void ForceAppearanceUpdate(Entity<PlayingCardComponent> card);
 }

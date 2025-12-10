@@ -15,7 +15,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared._Moffstation.Cards.Systems;
 
 // This part handles PlayingCardDeckComponent.
-public sealed partial class PlayingCardsSystem
+public abstract partial class SharedPlayingCardsSystem
 {
     private static readonly AudioParams AudioVariation = AudioParams.Default.WithVariation(0.05f);
 

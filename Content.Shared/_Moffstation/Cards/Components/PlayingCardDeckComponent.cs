@@ -11,8 +11,8 @@ namespace Content.Shared._Moffstation.Cards.Components;
 /// A collection of <see cref="PlayingCardComponent">playing cards</see>. Note that because decks of cards can contain
 /// many tens of entities, the implementation aggressively tries to <see cref="PlayingCardInDeck">lazily instantiate the cards
 /// contained within</see>.
-/// <seealso cref="Systems.PlayingCardsSystem"/>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(PlayingCardsSystem))]
+/// <seealso cref="SharedPlayingCardsSystem"/>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedPlayingCardsSystem))]
 public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
 {
     /// The cards in this deck. Order is important, and is such that the first card in the list is on the bottom of the

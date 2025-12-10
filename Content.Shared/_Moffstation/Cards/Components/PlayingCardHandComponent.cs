@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Cards.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
@@ -6,8 +7,8 @@ namespace Content.Shared._Moffstation.Cards.Components;
 
 /// A collection of <see cref="PlayingCardComponent">playing cards</see> which are more accessible and interactible than
 /// a <see cref="PlayingCardDeckComponent"/>. Unlike decks, cards in hands are always entities.
-/// <seealso cref="Systems.PlayingCardsSystem"/>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(Systems.PlayingCardsSystem))]
+/// <seealso cref="SharedPlayingCardsSystem"/>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedPlayingCardsSystem))]
 public sealed partial class PlayingCardHandComponent : PlayingCardStackComponent
 {
     /// The cards in this hand.

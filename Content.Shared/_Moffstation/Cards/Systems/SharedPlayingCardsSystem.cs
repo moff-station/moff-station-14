@@ -15,7 +15,7 @@ namespace Content.Shared._Moffstation.Cards.Systems;
 /// <seealso cref="PlayingCardDeckComponent"/>
 /// <seealso cref="PlayingCardHandComponent"/>
 // This part just declares dependencies and has basic shared functions.
-public sealed partial class PlayingCardsSystem : EntitySystem
+public abstract partial class SharedPlayingCardsSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;

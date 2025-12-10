@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Cards.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
@@ -5,8 +6,8 @@ using Robust.Shared.Utility;
 namespace Content.Shared._Moffstation.Cards.Components;
 
 /// A playing card which can be flipped, inserted into a hand, or joined into a deck.
-/// <seealso cref="Systems.PlayingCardsSystem"/>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(Systems.PlayingCardsSystem))]
+/// <seealso cref="SharedPlayingCardsSystem"/>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedPlayingCardsSystem))]
 public sealed partial class PlayingCardComponent : Component
 {
     /// The sprite layers of the face, or front, of the card.

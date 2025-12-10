@@ -12,7 +12,7 @@ namespace Content.Client._Moffstation.Cards;
 public sealed partial class CardHandVisualizerSystem : ManagedLayerVisualizerSystem<PlayingCardHandComponent>
 {
     [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly PlayingCardsSystem _playingCards = default!;
+    [Dependency] private readonly SharedPlayingCardsSystem _playingCards = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

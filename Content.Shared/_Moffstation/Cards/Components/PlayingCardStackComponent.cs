@@ -8,7 +8,7 @@ namespace Content.Shared._Moffstation.Cards.Components;
 
 /// This abstract class contains fields shared by <see cref="PlayingCardDeckComponent"/> and
 /// <see cref="PlayingCardHandComponent"/>.
-[Access(typeof(PlayingCardsSystem))]
+[Access(typeof(SharedPlayingCardsSystem))]
 public abstract partial class PlayingCardStackComponent : Component
 {
     [DataField]
@@ -34,7 +34,7 @@ public abstract partial class PlayingCardStackComponent : Component
 
     /// This field indicates whether the visuals of this stack need to be updated. This is used to avoid repeatedly
     /// updating visuals on the same stack in a single frame.
-    /// <see cref="Systems.PlayingCardsSystem.Update"/>
+    /// <see cref="SharedPlayingCardsSystem.Update"/>
     public bool DirtyVisuals = true;
 
     /// The maximum number of cards which will be included in the visuals of this stack.

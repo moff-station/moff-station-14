@@ -8,7 +8,7 @@ using Robust.Shared.Containers;
 namespace Content.Shared._Moffstation.Cards.Systems;
 
 // This part handles behavior common to all PlayingCardStackComponent-derived components.
-public sealed partial class PlayingCardsSystem
+public abstract partial class SharedPlayingCardsSystem
 {
     private static void DirtyVisuals<TStack, TArgs>(Entity<TStack> entity, ref TArgs args)
         where TStack : PlayingCardStackComponent

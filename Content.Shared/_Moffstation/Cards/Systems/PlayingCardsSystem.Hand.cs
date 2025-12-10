@@ -11,7 +11,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared._Moffstation.Cards.Systems;
 
 // This part handles PlayingCardHandComponent.
-public sealed partial class PlayingCardsSystem
+public abstract partial class SharedPlayingCardsSystem
 {
     /// The ID of the entity prototype which is used to construct hands dynamically.
     private static readonly EntProtoId<PlayingCardHandComponent> CardHandEntId = "PlayingCardHandDynamic";
