@@ -77,15 +77,15 @@ public abstract record PlayingCardInDeck : ISealedInheritance
     /// An unspawned <see cref="PlayingCardDeckPrototypeElementPrototypeReference"/>.
     [DataRecord, Serializable, NetSerializable]
     public sealed record UnspawnedRef(
-        [field: DataField(required: true)] EntProtoId<PlayingCardComponent> Prototype,
-        [field: DataField] bool FaceDown
+        [field: ViewVariables] EntProtoId<PlayingCardComponent> Prototype,
+        [field: ViewVariables] bool FaceDown
     ) : PlayingCardInDeck;
 
     /// An unspawned <see cref="PlayingCardDeckPrototypeElementCard"/>.
     [DataRecord, Serializable, NetSerializable]
     public sealed record UnspawnedData(
-        [field: DataField(required: true)] PlayingCardDeckPrototypeElementCard Card,
-        [field: DataField(required: true)] ProtoId<PlayingCardDeckPrototype> Deck,
-        [field: DataField] ProtoId<PlayingCardSuitPrototype>? Suit
+        [field: ViewVariables] PlayingCardDeckPrototypeElementCard Card,
+        [field: ViewVariables] ProtoId<PlayingCardDeckPrototype> Deck,
+        [field: ViewVariables] ProtoId<PlayingCardSuitPrototype>? Suit
     ) : PlayingCardInDeck;
 }

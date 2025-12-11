@@ -78,13 +78,13 @@ public sealed partial class PlayingCardDeckPrototype : IPrototype, IInheritingPr
     /// easy definition of cards as part of a deck with lots of shared parts while also enabling an "escape hatch" to say
     /// "I don't want anything done for me, just put this existing card prototype in the deck".
     [ImplicitDataRecord, Serializable, NetSerializable]
-    public abstract record Element;
+    public abstract class Element;
 }
 
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which refers to an existing card prototype. Whatever that prototype is,
 /// it'll be stuck in the deck. I hope it has the card component :^)
 [DataRecord, Serializable, NetSerializable]
-public record PlayingCardDeckPrototypeElementPrototypeReference : PlayingCardDeckPrototype.Element
+public sealed partial class PlayingCardDeckPrototypeElementPrototypeReference : PlayingCardDeckPrototype.Element
 {
     public const string PrototypeKey = "prototype";
 
@@ -104,7 +104,7 @@ public record PlayingCardDeckPrototypeElementPrototypeReference : PlayingCardDec
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which will construct a card entity with defaults specified on the deck
 /// and finished by the information in this data definition.
 [DataRecord, Serializable, NetSerializable]
-public record PlayingCardDeckPrototypeElementCard : PlayingCardDeckPrototype.Element
+public sealed partial class PlayingCardDeckPrototypeElementCard : PlayingCardDeckPrototype.Element
 {
     public const string IdKey = "id";
 
@@ -142,7 +142,7 @@ public record PlayingCardDeckPrototypeElementCard : PlayingCardDeckPrototype.Ele
 
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which includes all cards in the referenced suit in the deck.
 [DataRecord, Serializable, NetSerializable]
-public record PlayingCardDeckPrototypeElementSuit : PlayingCardDeckPrototype.Element
+public sealed partial class PlayingCardDeckPrototypeElementSuit : PlayingCardDeckPrototype.Element
 {
     public const string SuitKey = "suit";
 
