@@ -26,6 +26,7 @@ loadout-group-bartender-glasses = Bartender glasses
 
 loadout-group-warden-id = Warden ID
 loadout-group-detective-id = Detective ID
+loadout-group-detective-sidearm = Detective Sidearm
 
 loadout-group-salvage-specialist-id = Salvage Specialist ID
 
