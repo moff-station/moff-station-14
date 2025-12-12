@@ -82,13 +82,13 @@
   description: "A classic tube-fed lever-action rifle, the preferred weapon of a trailblazer of old./nLoads eight rounds of .45 magnum."
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi # Todo: Add icon and one-hand inhands, ask Kento to change suitstorage to have gun hanging over one shoulder rather than across the body.
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi # Sprites by the marvelous Kento.
   - type: Clothing
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
   - type: Gun
     fireRate: 2.5
     soundGunshot:
-      path: /Audio/_Moffstation/Weapons/Guns/Gunshots/heavygunshot.ogg # Todo: Double check with August that I can use this lol
+      path: /Audio/_Moffstation/Weapons/Guns/Gunshots/heavygunshot.ogg
   - type: BallisticAmmoProvider
     whitelist:
       tags:
