@@ -1,0 +1,14 @@
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesChemist
+  name: chemical resistant gloves
+  description: High-quality rubber gloves, protection from the strongest of acids!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Hands/chem.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Hands/chem.rsi
+  - type: Fiber
+    fiberMaterial: fibers-rubber
+    fiberColor: fibers-black
+  - type: FingerprintMask
