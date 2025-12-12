@@ -22,19 +22,32 @@
 # Head
 
 # Mask
+- type: loadout
+  id: ChemistMask
+  equipment:
+    mask: ClothingMaskGasChem
 
 # Neck
 
 # Jumpsuit
-
+- type: loadout
+  id: ChemistSweater
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChemistSweater
 # Back
 
 # Belt
 
 # Outer Clothing
-
+- type: loadout
+  id: ChemistApron
+  equipment:
+    outerClothing: ClothingOuterApronChemist
 # Gloves
-
+- type: loadout
+  id: ChemistGloves
+  equipment:
+    gloves: ClothingHandsGlovesChemist
 # Shoes
 
 # Eyewear
