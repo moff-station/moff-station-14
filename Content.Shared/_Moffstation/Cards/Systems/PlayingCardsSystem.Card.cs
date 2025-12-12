@@ -158,7 +158,7 @@ public abstract partial class SharedPlayingCardsSystem
     /// "Instantiates" <paramref name="data"/> as the returned entity. Returns null if resolving prototypes fails.
     /// Note that the spawned card <b>is predicted on the client</b>.
     private Entity<PlayingCardComponent>? SpawnPredictedDynamicCard(
-        PlayingCardInDeck.UnspawnedData data,
+        PlayingCardInDeckUnspawnedData data,
         EntityCoordinates coords
     )
     {
@@ -177,7 +177,7 @@ public abstract partial class SharedPlayingCardsSystem
 
     /// Returns a new <see cref="PlayingCardComponent"/> with the given <paramref name="data"/>. Returns null if
     /// prototype resolution fails.
-    private PlayingCardComponent? ToComponent(PlayingCardInDeck.UnspawnedData data)
+    private PlayingCardComponent? ToComponent(PlayingCardInDeckUnspawnedData data)
     {
         var comp = _compFact.GetComponent<PlayingCardComponent>();
         if (!TryApplyCardData(ref comp, data))
@@ -188,7 +188,7 @@ public abstract partial class SharedPlayingCardsSystem
 
     /// Applies the given <paramref name="data"/> to the given <paramref name="comp"/>. Returns whether or not the
     /// component was modified, ie. returns false if prototype resolution failed.
-    private bool TryApplyCardData(ref PlayingCardComponent comp, PlayingCardInDeck.UnspawnedData data)
+    private bool TryApplyCardData(ref PlayingCardComponent comp, PlayingCardInDeckUnspawnedData data)
     {
         PlayingCardSuitPrototype? suit = null;
         if (!_proto.Resolve(data.Deck, out var deck) ||

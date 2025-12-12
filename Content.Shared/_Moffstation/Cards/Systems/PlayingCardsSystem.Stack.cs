@@ -100,7 +100,7 @@ public abstract partial class SharedPlayingCardsSystem
     public override void Update(float frameTime)
     {
         Update<PlayingCardDeckComponent>(deck => deck.Cards);
-        Update<PlayingCardHandComponent>(hand => hand.Cards.Select(it => new PlayingCardInDeck.NetEnt(it)));
+        Update<PlayingCardHandComponent>(hand => hand.Cards.Select(it => new PlayingCardInDeckNetEnt(it)));
     }
 
     private void Update<TStack>(Func<TStack, IEnumerable<PlayingCardInDeck>> cardAccessor)

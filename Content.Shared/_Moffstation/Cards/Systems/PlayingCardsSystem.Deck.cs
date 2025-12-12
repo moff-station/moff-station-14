@@ -157,12 +157,13 @@ public abstract partial class SharedPlayingCardsSystem
         {
             didAnyFlip |= card switch
             {
-                PlayingCardInDeck.NetEnt(var cardNetEnt) => GetEntity(cardNetEnt) is var cardEnt &&
-                                                            TryComp<PlayingCardComponent>(cardEnt, out var cardComp) &&
-                                                            SetFacingOrFlip((cardEnt, cardComp), faceDown),
-                PlayingCardInDeck.UnspawnedData(var data, _, _) => SetOrInvert(ref data.FaceDown, faceDown),
-                PlayingCardInDeck.UnspawnedRef(_, var fd) => SetOrInvert(ref fd, faceDown),
-                _ => false,
+                PlayingCardInDeckNetEnt(var cardNetEnt) =>
+                    GetEntity(cardNetEnt) is var cardEnt &&
+                    TryComp<PlayingCardComponent>(cardEnt, out var cardComp) &&
+                    SetFacingOrFlip((cardEnt, cardComp), faceDown),
+                PlayingCardInDeckUnspawnedData(var data, _, _) => SetOrInvert(ref data.FaceDown, faceDown),
+                PlayingCardInDeckUnspawnedRef(_, var fd) => SetOrInvert(ref fd, faceDown),
+                _ => card.ThrowUnknownInheritor<PlayingCardInDeck, bool>(),
             };
         }
 
@@ -185,19 +186,18 @@ public abstract partial class SharedPlayingCardsSystem
         return deck.Cards.SelectMany(deckEl => deckEl switch
         {
             PlayingCardDeckPrototypeElementCard card =>
-                Enumerable.Repeat(new PlayingCardInDeck.UnspawnedData(card, deck, Suit: null), card.Count),
+                Enumerable.Repeat(new PlayingCardInDeckUnspawnedData(card, deck, suit: null), card.Count),
             PlayingCardDeckPrototypeElementPrototypeReference protoRef =>
-                Enumerable.Repeat(new PlayingCardInDeck.UnspawnedRef(protoRef.Prototype, protoRef.FaceDown),
-                    protoRef.Count),
+                Enumerable.Repeat(
+                    new PlayingCardInDeckUnspawnedRef(protoRef.Prototype, protoRef.FaceDown),
+                    protoRef.Count
+                ),
             PlayingCardDeckPrototypeElementSuit s => _proto.Resolve(s.Suit, out var suit)
                 ? suit.Cards.SelectMany(suitEl =>
-                    Enumerable.Repeat(new PlayingCardInDeck.UnspawnedData(suitEl, deck, suit), suitEl.Count)
+                    Enumerable.Repeat(new PlayingCardInDeckUnspawnedData(suitEl, deck, suit), suitEl.Count)
                 )
                 : [],
-            _ => this.AssertOrLogError<IEnumerable<PlayingCardInDeck>>(
-                $"Unknown variant of {nameof(PlayingCardDeckPrototype.Element)}: {deckEl}",
-                []
-            ),
+            _ => deckEl.ThrowUnknownInheritor<PlayingCardDeckPrototype.Element, IEnumerable<PlayingCardInDeck>>(),
         });
     }
 }

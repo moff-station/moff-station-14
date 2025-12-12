@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Moffstation.Cards.Components;
+using Content.Shared._Moffstation.Extensions;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Manager;
@@ -77,18 +78,18 @@ public sealed partial class PlayingCardDeckPrototype : IPrototype, IInheritingPr
     /// prototype or be minimal information about a card to be completed by information on the deck prototype. This enables
     /// easy definition of cards as part of a deck with lots of shared parts while also enabling an "escape hatch" to say
     /// "I don't want anything done for me, just put this existing card prototype in the deck".
-    [ImplicitDataRecord, Serializable, NetSerializable]
-    public abstract record Element;
+    [ImplicitDataDefinitionForInheritors, Serializable, NetSerializable]
+    public abstract partial class Element : ISealedInheritance;
 }
 
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which refers to an existing card prototype. Whatever that prototype is,
 /// it'll be stuck in the deck. I hope it has the card component :^)
-[DataRecord, Serializable, NetSerializable]
-public record PlayingCardDeckPrototypeElementPrototypeReference : PlayingCardDeckPrototype.Element
+[Serializable, NetSerializable]
+public sealed partial class PlayingCardDeckPrototypeElementPrototypeReference : PlayingCardDeckPrototype.Element
 {
     public const string PrototypeKey = "prototype";
 
-    [field: DataField(PrototypeKey, required: true)]
+    [DataField(PrototypeKey, required: true)]
     public EntProtoId<PlayingCardComponent> Prototype;
 
     /// If the card should spawn in the deck facing down.
@@ -103,8 +104,8 @@ public record PlayingCardDeckPrototypeElementPrototypeReference : PlayingCardDec
 
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which will construct a card entity with defaults specified on the deck
 /// and finished by the information in this data definition.
-[DataRecord, Serializable, NetSerializable]
-public record PlayingCardDeckPrototypeElementCard : PlayingCardDeckPrototype.Element
+[Serializable, NetSerializable]
+public sealed partial class PlayingCardDeckPrototypeElementCard : PlayingCardDeckPrototype.Element
 {
     public const string IdKey = "id";
 
@@ -141,12 +142,12 @@ public record PlayingCardDeckPrototypeElementCard : PlayingCardDeckPrototype.Ele
 }
 
 /// A <see cref="PlayingCardDeckPrototype.Element"/> which includes all cards in the referenced suit in the deck.
-[DataRecord, Serializable, NetSerializable]
-public record PlayingCardDeckPrototypeElementSuit : PlayingCardDeckPrototype.Element
+[Serializable, NetSerializable]
+public sealed partial class PlayingCardDeckPrototypeElementSuit : PlayingCardDeckPrototype.Element
 {
     public const string SuitKey = "suit";
 
-    [field: DataField(SuitKey, required: true)]
+    [DataField(SuitKey, required: true)]
     public ProtoId<PlayingCardSuitPrototype> Suit;
 }
 
@@ -242,6 +243,6 @@ public sealed class Serializer : ITypeSerializer<PlayingCardDeckPrototype.Elemen
             alwaysWrite,
             context
         ),
-        _ => throw new ArgumentOutOfRangeException(nameof(value))
+        _ => value.ThrowUnknownInheritor<PlayingCardDeckPrototype.Element, MappingDataNode>(),
     };
 }

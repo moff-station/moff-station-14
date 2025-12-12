@@ -151,7 +151,7 @@ public abstract partial class SharedPlayingCardsSystem
                 {
                     switch (cardInDeck)
                     {
-                        case PlayingCardInDeck.NetEnt(var netEntity):
+                        case PlayingCardInDeckNetEnt(var netEntity):
                             if (NetEntToCardOrNull(netEntity) is not { } card)
                                 continue;
 
@@ -253,7 +253,7 @@ public abstract partial class SharedPlayingCardsSystem
             switch (cardLike)
             {
                 case CardLike.Entity(var ent):
-                    entity.Comp.Cards.Add(new PlayingCardInDeck.NetEnt(GetNetEntity(ent)));
+                    entity.Comp.Cards.Add(new PlayingCardInDeckNetEnt(GetNetEntity(ent)));
                     if (!_container.Insert(ent.Owner, entity.Comp.Container, force: true))
                     {
                         this.AssertOrLogError(
@@ -321,13 +321,13 @@ public abstract partial class SharedPlayingCardsSystem
             CardLike.Entity(var entity) => entity,
             CardLike.Unspawned(var card) => card switch
             {
-                PlayingCardInDeck.UnspawnedData data =>
+                PlayingCardInDeckUnspawnedData data =>
                     SpawnPredictedDynamicCard(data, coords),
-                PlayingCardInDeck.UnspawnedRef(var entProtoId, var faceDown) =>
+                PlayingCardInDeckUnspawnedRef(var entProtoId, var faceDown) =>
                     PredictedSpawnAtPosition(entProtoId, coords) is var spawnedRef
                         ? (spawnedRef, WithFacing(EnsureComp<PlayingCardComponent>(spawnedRef), faceDown))
                         : throw new("Unreachable: spawned ref pattern is irrefutable"),
-                PlayingCardInDeck.NetEnt => this.AssertOrLogError<Entity<PlayingCardComponent>?>(
+                PlayingCardInDeckNetEnt => this.AssertOrLogError<Entity<PlayingCardComponent>?>(
                     $"{nameof(CardLike.Unspawned)} contained net entity. This shouldn't happen because it means that the source likely did not properly remove the card from its storage before yielding it. Instead, sources should yield existing entities as {nameof(CardLike.Entity)}.",
                     null
                 ),

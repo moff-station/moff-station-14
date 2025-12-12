@@ -64,28 +64,91 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
 
 /// A type representing a card in a <see cref="PlayingCardDeckComponent"/>. This may be an entity, or it may be
 /// information about a card which has not yet been spawned.
-[ImplicitDataRecord, Serializable, NetSerializable]
-public abstract record PlayingCardInDeck : ISealedInheritance
+[ImplicitDataDefinitionForInheritors, Serializable, NetSerializable]
+public abstract partial class PlayingCardInDeck : ISealedInheritance;
+
+// Constructor and deconstructor because these were originally `record`s, but ss14 generation seems broken and I couldn't get it to work.
+/// An existing entity. This SHOULD always have a <see cref="PlayingCardComponent"/> on it.
+[Serializable, NetSerializable]
+public sealed partial class PlayingCardInDeckNetEnt : PlayingCardInDeck
 {
-    // Private constructor to seal inheritance.
-    private PlayingCardInDeck() { }
+    public PlayingCardInDeckNetEnt(NetEntity ent)
+    {
+        Ent = ent;
+    }
 
-    /// An existing entity. This SHOULD always have a <see cref="PlayingCardComponent"/> on it.
-    [DataRecord, Serializable, NetSerializable]
-    public sealed record NetEnt([field: ViewVariables] NetEntity Ent) : PlayingCardInDeck;
+    [DataField(required: true)]
+    public NetEntity Ent;
 
-    /// An unspawned <see cref="PlayingCardDeckPrototypeElementPrototypeReference"/>.
-    [DataRecord, Serializable, NetSerializable]
-    public sealed record UnspawnedRef(
-        [field: DataField(required: true)] EntProtoId<PlayingCardComponent> Prototype,
-        [field: DataField] bool FaceDown
-    ) : PlayingCardInDeck;
+    public void Deconstruct(out NetEntity ent)
+    {
+        ent = Ent;
+    }
+}
 
-    /// An unspawned <see cref="PlayingCardDeckPrototypeElementCard"/>.
-    [DataRecord, Serializable, NetSerializable]
-    public sealed record UnspawnedData(
-        [field: DataField(required: true)] PlayingCardDeckPrototypeElementCard Card,
-        [field: DataField(required: true)] ProtoId<PlayingCardDeckPrototype> Deck,
-        [field: DataField] ProtoId<PlayingCardSuitPrototype>? Suit
-    ) : PlayingCardInDeck;
+// Constructor and deconstructor because these were originally `record`s, but ss14 generation seems broken and I couldn't get it to work.
+/// An unspawned <see cref="PlayingCardDeckPrototypeElementPrototypeReference"/>.
+[Serializable, NetSerializable]
+public sealed partial class PlayingCardInDeckUnspawnedRef : PlayingCardInDeck
+{
+    public PlayingCardInDeckUnspawnedRef(
+        EntProtoId<PlayingCardComponent> prototype,
+        bool faceDown
+    )
+    {
+        Prototype = prototype;
+        FaceDown = faceDown;
+    }
+
+    [DataField(required: true)]
+    public EntProtoId<PlayingCardComponent> Prototype;
+
+    [DataField]
+    public bool FaceDown;
+
+    public void Deconstruct(
+        out EntProtoId<PlayingCardComponent> prototype,
+        out bool faceDown
+    )
+    {
+        prototype = Prototype;
+        faceDown = FaceDown;
+    }
+}
+
+// Constructor and deconstructor because these were originally `record`s, but ss14 generation seems broken and I couldn't get it to work.
+/// An unspawned <see cref="PlayingCardDeckPrototypeElementCard"/>.
+[Serializable, NetSerializable]
+public sealed partial class PlayingCardInDeckUnspawnedData : PlayingCardInDeck
+{
+    public PlayingCardInDeckUnspawnedData(
+        PlayingCardDeckPrototypeElementCard card,
+        ProtoId<PlayingCardDeckPrototype> deck,
+        ProtoId<PlayingCardSuitPrototype>? suit
+    )
+    {
+        Card = card;
+        Deck = deck;
+        Suit = suit;
+    }
+
+    [DataField(required: true)]
+    public PlayingCardDeckPrototypeElementCard Card;
+
+    [DataField(required: true)]
+    public ProtoId<PlayingCardDeckPrototype> Deck;
+
+    [DataField]
+    public ProtoId<PlayingCardSuitPrototype>? Suit;
+
+    public void Deconstruct(
+        out PlayingCardDeckPrototypeElementCard card,
+        out ProtoId<PlayingCardDeckPrototype> deck,
+        out ProtoId<PlayingCardSuitPrototype>? suit
+    )
+    {
+        card = Card;
+        deck = Deck;
+        suit = Suit;
+    }
 }

@@ -44,9 +44,9 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     {
         var ret = card switch
         {
-            PlayingCardInDeck.NetEnt(var netEntity) => NetEntToCardOrNull(netEntity)?.Comp,
-            PlayingCardInDeck.UnspawnedData data => ToComponent(data),
-            PlayingCardInDeck.UnspawnedRef(var entProtoId, var faceDown) =>
+            PlayingCardInDeckNetEnt(var netEntity) => NetEntToCardOrNull(netEntity)?.Comp,
+            PlayingCardInDeckUnspawnedData data => ToComponent(data),
+            PlayingCardInDeckUnspawnedRef(var entProtoId, var faceDown) =>
                 _proto.Resolve(entProtoId, out var proto) &&
                 proto.Components.TryGetComponent<PlayingCardComponent>(_compFact, out var cardComp)
                     ? WithFacing(cardComp, faceDown)
