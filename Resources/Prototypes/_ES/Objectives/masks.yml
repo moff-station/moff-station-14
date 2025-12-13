@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseMindRole
+  id: ESMindRoleMask
+  name: Mask Role
+  components:
+  - type: MindRole
+  - type: ESMaskRole
+
+- type: entity
+  id: ESBaseMaskObjective
+  abstract: true
+  components:
+  - type: ESObjective
