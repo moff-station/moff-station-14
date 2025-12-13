@@ -631,15 +631,15 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#723A02"
-    - state: winterbits-icon
+      color: "#68361f" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon #Moffstation - End - Vox Wintecoats
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#723A02"
-      - state: winterbits-equipped-HELMET
+        color: "#68361f" #Moffstation - Begin - Vox Wintecoats
+      - state: winterbits-tan-equipped-HELMET #Moffstation - End - Vox Wintecoats
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
@@ -651,15 +651,15 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#999999"
-    - state: winterbits-icon
+      color: "#404040" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon #Moffstation - End - Vox Wintecoats
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#999999"
-      - state: winterbits-equipped-HELMET
+        color: "#404040" #Moffstation - Begin - Vox Wintecoats
+      - state: winterbits-tan-equipped-HELMET #Moffstation - End - Vox Wintecoats
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
@@ -671,15 +671,15 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#5ABF2F"
-    - state: winterbits-icon
+      color: "#0e5a48" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon #Moffstation - End - Vox Wintecoats
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#5ABF2F"
-      - state: winterbits-equipped-HELMET
+        color: "#0e5a48" #Moffstation - Begin - Vox Wintecoats
+      - state: winterbits-tan-equipped-HELMET #Moffstation - End - Vox Wintecoats
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
@@ -691,14 +691,14 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#C09F72"
+      color: "#b58763" #Moffstation - Vox Wintecoats
     - state: winterbits-icon
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#C09F72"
+        color: "#b58763" #Moffstation - Vox Wintecoats
       - state: winterbits-equipped-HELMET
 
 - type: entity
@@ -751,15 +751,15 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#EBE216"
-    - state: winterbits-icon
+      color: "#ffda0a" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon #Moffstation - End - Vox Wintecoats
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#EBE216"
-      - state: winterbits-equipped-HELMET
+        color: "#ffda0a" #Moffstation - Begin - Vox Wintecoats
+      - state: winterbits-tan-equipped-HELMET #Moffstation - End - Vox Wintecoats
 
 - type: entity
   parent: ClothingHeadBase
