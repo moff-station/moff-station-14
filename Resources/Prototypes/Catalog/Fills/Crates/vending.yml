@@ -32,10 +32,10 @@
         id: VendingMachineRestockClothes
 
 - type: entity
-  id: CrateVendingMachineRestockDramaDrobeFilled
+  id: CrateVendingMachineRestockAutoDrobeFilled
   parent: CratePlastic
-  name: DramaDrobe restock crate
-  description: Contains a restock box for the DramaDrobe.
+  name: DramaDrobe restock crate # Moffstation - "AutoDrobe" -> "DramaDrobe"
+  description: Contains a restock box for the DramaDrobe. # Moffstation - "AutoDrobe" -> "DramaDrobe"
   components:
   - type: EntityTableContainerFill
     containers:
