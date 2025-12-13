@@ -2,6 +2,7 @@
 construction-graph-tag-crayon = a crayon
 construction-graph-tag-cyborg-module = a cyborg module
 construction-graph-tag-engineering-goggles = engineering goggles
+construction-graph-tag-diagnostic-hud = diagnostic hud
 construction-graph-tag-folder = a folder
 
 construction-graph-tag-capacitor = capacitor
