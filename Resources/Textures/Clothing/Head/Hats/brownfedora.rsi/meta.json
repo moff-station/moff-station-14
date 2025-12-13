@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Icon taken from wizden at commit https://github.com/space-wizards/space-station-14/commit/4cf60f805e87775f6dc6151310fa61ccee4ff710 for use in Starlight. Worn and inhand sprites made by BoskiYourk from Harmony.",
+  "copyright": "Icon taken from wizden at commit https://github.com/space-wizards/space-station-14/commit/4cf60f805e87775f6dc6151310fa61ccee4ff710 for use in Starlight. Worn and inhand sprites made by BoskiYourk from Harmony, Hamster sprite added by Davyei (Github) for Moffstation.",
   "size": {
     "x": 32,
     "y": 32
@@ -12,6 +12,10 @@
     },
     {
       "name": "equipped-HELMET",
+      "directions": 4
+    },
+    {
+      "name": "equipped-HELMET-hamster",
       "directions": 4
     },
     {

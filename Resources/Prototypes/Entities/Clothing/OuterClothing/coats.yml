@@ -12,13 +12,13 @@
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase]
   id: ClothingOuterCoatDetective
-  name: detective trenchcoat
-  description: An 18th-century multi-purpose trenchcoat. Someone who wears this means serious business.
+  name: detective jacket # Moffstation - Start - Detective-Outfit-Sprites
+  description: A 20th-century multi-purpose jacket. Someone who wears this means serious business. # Moffstation - End - Detective-Outfit-Sprites
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/detective.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/detective.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/detective.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/detective.rsi # Moffstation - Detective-Outfit-Sprites
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -29,15 +29,15 @@
     damageCoefficient: 1 #its a coat. it doesnt do shit
 
 - type: entity
-  parent: [ClothingOuterCoatDetectiveLoadout]
+  parent: [ClothingOuterCoatDetective] # Moffstation - Detective-Outfit-Sprites - not sure why the detective steal item is a thin not given to the detective with their alternative outerclothing
   id: ClothingOuterCoatDetectiveLoadoutGrey
   name: noir trenchcoat
   description: Ah, your trusty coat. There's a few tears here and there, giving it a more timely look. Or at least, that's what you told yourself when you found out gettin' it repaired would set you back 200 spesos.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/detective_grey.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/detective_grey.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/detective_grey.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/detective_grey.rsi # Moffstation - Detective-Outfit-Sprites
 
 
 - type: entity

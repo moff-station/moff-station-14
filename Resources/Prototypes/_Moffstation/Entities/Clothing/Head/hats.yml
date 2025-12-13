@@ -231,3 +231,66 @@
     sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
+ 
+#Detective
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatFedoraSleuth
+  name: sleuth's fedora
+  description: A fedora for a budding detective.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/sleuthfedora.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/sleuthfedora.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+
+#Ce
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCeBeanie
+  name: chief beanie
+  description: A snug beanie. It radiates a homely feeling, if your home happens to be chilly and filled with coffeehouses.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/beanie.rsi
+    layers:
+    - state: body-icon
+      color: "#dedac8"
+    - state: cuffcrown-icon
+      color: "#f58700"
+    - state: pompom-icon
+      color: "#dedac8"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: body-inhand-left
+        color: "#dedac8"
+      - state: cuffcrown-inhand-left
+        color: "#f58700"
+      - state: pompom-inhand-left
+        color: "#dedac8"
+      right:
+      - state: body-inhand-right
+        color: "#dedac8"
+      - state: cuffcrown-inhand-right
+        color: "#f58700"
+      - state: pompom-inhand-right
+        color: "#dedac8"
+  - type: Clothing
+    sprite: Clothing/Head/Hats/beanie.rsi
+    clothingVisuals:
+      head:
+      - state: body-equipped-HELMET
+        color: "#dedac8"
+      - state: cuffcrown-equipped-HELMET
+        color: "#f58700"
+      - state: pompom-equipped-HELMET
+        color: "#dedac8"

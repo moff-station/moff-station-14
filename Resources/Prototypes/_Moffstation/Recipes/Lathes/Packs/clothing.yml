@@ -1,27 +1,6 @@
 ﻿## Static (imagine needing to research clothes, godo)
 
-- type: latheRecipePack
-  id: MoffstationClothingCargo
-  recipes:
-  #qm
-  - ClothingHeadHatCruiser
-  - ClothingUniformJumpsuitQMCruiser
-  - ClothingUniformJumpskirtQMCruiser
-  - ClothingOuterWinterFestiveQM
-  - ClothingUniformJumpsuitQMVista
-  - ClothingUniformJumpskirtQMVista
-  #cargo
-  - ClothingHeadHatSeniorCargo
-  - ClothingUniformJumpsuitSeniorCargo
-  - ClothingUniformJumpskirtSeniorCargo
-  - ClothingOuterWinterSeniorCargo
-  - ClothingHeadHatCourier
-  - ClothingUniformJumpsuitCourier
-  - ClothingUniformJumpskirtCourier
-  - ClothingOuterWinterCargoWindbreaker
-  #salvage
-  - ClothingOuterWinterSalvageWindbreaker
-
+##Command
 - type: latheRecipePack
   id: MoffstationClothingCommand
   recipes:
@@ -41,6 +20,30 @@
   - ClothingUniformJumpsuitHoPFestive
   - ClothingUniformJumpskirtHoPFestive
 
+##Cargo
+- type: latheRecipePack
+  id: MoffstationClothingCargo
+  recipes:
+  #qm
+  - ClothingHeadHatCruiser
+  - ClothingUniformJumpsuitQMCruiser
+  - ClothingUniformJumpskirtQMCruiser
+  - ClothingOuterWinterFestiveQM
+  - ClothingUniformJumpsuitQMVista
+  - ClothingUniformJumpskirtQMVista
+  #cargo tech
+  - ClothingHeadHatSeniorCargo
+  - ClothingUniformJumpsuitSeniorCargo
+  - ClothingUniformJumpskirtSeniorCargo
+  - ClothingOuterWinterSeniorCargo
+  - ClothingHeadHatCourier
+  - ClothingUniformJumpsuitCourier
+  - ClothingUniformJumpskirtCourier
+  - ClothingOuterWinterCargoWindbreaker
+  #salvage
+  - ClothingOuterWinterSalvageWindbreaker
+
+##Medical
 - type: latheRecipePack
   id: MoffstationClothingMedical
   recipes:
@@ -52,9 +55,11 @@
   - ClothingUniformJumpskirtCMOShell
   - ClothingOuterWinterFestiveCmo
 
+##Science
 - type: latheRecipePack
   id: MoffstationClothingScience
   recipes:
+  #Science
   - ClothingUniformJumpsuitMachinist
   - ClothingUniformJumpskirtMachinist
   - ClothingOuterCoatRDVisionary
@@ -65,6 +70,7 @@
   - ClothingUniformJumpsuitRDRobo
   - ClothingUniformJumpskirtRDRobo
 
+##Security
 - type: latheRecipePack
   id: MoffstationClothingSecurity
   recipes:
@@ -77,13 +83,13 @@
   - ClothingUniformJumpskirtDetInvestigator
   - ClothingUniformJumpsuitDetSleuth
   - ClothingUniformJumpskirtDetSleuth
-  - ClothingOuterCoatSleuth
   #hos
   - ClothingHeadHatHosWestern
   - ClothingUniformJumpsuitHosWestern
   - ClothingHeadHatHosFestive
   - ClothingUniformJumpsuitHosFestive
 
+##Service
 - type: latheRecipePack
   id: MoffstationClothingService
   recipes:
@@ -93,3 +99,16 @@
   - ClothingUniformJumpskirtJournalist
   - ClothingUniformJumpskirtReporter
 
+##Engineering
+- type: latheRecipePack
+  id: MoffstationClothingEngineering
+  recipes:
+  - ClothingUniformJumpskirtSeniorAtmos
+  - ClothingUniformJumpsuitSeniorAtmos
+  - ClothingUniformJumpsuitAtmosTurtle
+
+##Costumes
+- type: latheRecipePack
+  id: MoffstationCostumes
+  recipes:
+  - ClothingOuterHotDog

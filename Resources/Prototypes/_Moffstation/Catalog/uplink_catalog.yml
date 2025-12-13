@@ -17,8 +17,8 @@
   name: uplink-hypereutatic-blade-moff-name
   description: uplink-hypereutatic-blade-moff-desc
   icon:
-    sprite: /Textures/Objects/Weapons/Melee/hypereutactic_blade.rsi
-    state: icon 
+    sprite: Objects/Weapons/Melee/hypereutactic_blade.rsi
+    state: icon
   discountCategory: veryRareDiscounts
   discountDownTo:
     Telecrystal: 8
@@ -27,3 +27,18 @@
     Telecrystal: 14
   categories:
   - UplinkWeaponry
+
+# Wearables
+
+- type: listing
+  id: UplinkClothingShoesSkatesSyndicate
+  name: uplink-clothing-rocket-skates-name
+  description: uplink-clothing-rocket-skates-desc
+  productEntity: ClothingShoesSkatesSyndicate
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkWearables
