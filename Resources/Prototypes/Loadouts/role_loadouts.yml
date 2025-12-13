@@ -589,18 +589,6 @@
 
 # Wildcards
 - type: roleLoadout
-  id: JobZookeeper
-  groups:
-  - GroupTankHarness
-  - CommonBackpack
-  - Glasses
-  - Survival
-  - Trinkets
-  - ZookeeperJobTrinkets
-  - GroupSpeciesBreathTool
-  - PersonalItemsJobAgnostic # Umbra
-
-- type: roleLoadout
   id: JobReporter
   groups:
   - GroupTankHarness
@@ -625,21 +613,6 @@
   - Survival
   - Trinkets
   - PsychologistJobTrinkets
-  - GroupSpeciesBreathTool
-  - PersonalItemsJobAgnostic # Umbra
-
-- type: roleLoadout
-  id: JobBoxer
-  groups:
-  - GroupTankHarness
-  - BoxerJumpsuit
-  - BoxerGloves
-  - CommonBackpack
-  - Glasses
-  - Survival
-  - Trinkets
-  - BoxerJobTrinkets
-  - PersonalItemsJobAgnostic # Umbra
   - GroupSpeciesBreathTool
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs

@@ -237,11 +237,6 @@
 # Wildcard
 
 - type: quickPhrase
-  parent: BaseCivilianJobPhrase
-  id: BoxerPhrase
-  text: job-name-boxer
-
-- type: quickPhrase
   parent: BaseMedicalJobPhrase
   id: PsychologistPhrase
   text: job-name-psychologist
@@ -250,11 +245,6 @@
   parent: BaseServiceJobPhrase
   id: ReporterPhrase
   text: job-name-reporter
-
-- type: quickPhrase
-  parent: BaseServiceJobPhrase
-  id: ZookeeperPhrase
-  text: job-name-zookeeper
 
 - type: quickPhrase
   parent: BaseCivilianJobPhrase

@@ -118,16 +118,3 @@
     layers:
     - state: green
     - state: musician
-
-- type: entity
-  id: ArrivalsSpawnPointBoxer
-  parent: ArrivalsSpawnPointJobBase
-  suffix: boxer
-  components:
-  - type: ArrivalsSpawnPoint
-    jobs:
-    - Boxer
-  - type: Sprite
-    layers:
-    - state: green
-    - state: boxer
