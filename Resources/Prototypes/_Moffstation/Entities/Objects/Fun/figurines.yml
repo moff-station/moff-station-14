@@ -179,6 +179,18 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineBuckshot
+  name: Annoyed Chief Engineer Figurine
+  description: A figurine depicting a green lizard in a stained CE outfit and beret that looks annoyed with you not doing your job.
+  components:
+      - type: Sprite
+        state: buckshot
+      - type: SpeakOnTrigger
+        pack: FigurinesBuckshot
+      - type: LizardAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCamilla
   name: Scarred HOS Figurine
   description: A figurine of a human head of security woman covered in scars, wearing the red and black uniform. She's trying her hardest to be friendly but she's very clearly overwhelmed. Collectors tend to pair it with a certain captain figurine.
@@ -199,6 +211,17 @@
     state: cassiel
   - type: SpeakOnTrigger
     pack: FigurinesCassiel
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCatAi
+  name: Marketable AI Figurine
+  description: A figurine depicting a widely used Nanotrasen AI program, designed to encourage good relationships between the crew and their silicon assistants.
+  components:
+  - type: Sprite
+    state: catai
+  - type: SpeakOnTrigger
+    pack: FigurinesCatAi
 
 - type: entity
   parent: BaseFigurineMoff
@@ -389,6 +412,17 @@
     state: gigs
   - type: SpeakOnTrigger
     pack: FigurinesGigs
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineHeather
+  name: Red Arm Machinist Figurine
+  description: A figurine depicting a purple machinist slime girl with a red, metallic arm. She seems to switch her composure from time to time.
+  components:
+  - type: Sprite
+    state: heather
+  - type: SpeakOnTrigger
+    pack: FigurinesHeather
 
 - type: entity
   parent: BaseFigurineMoff
@@ -585,6 +619,18 @@
     state: lilith
   - type: SpeakOnTrigger
     pack: FigurinesLilith
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMalenia
+  name: Deranged Captain Figurine
+  description: A figurine depicting a white haired human captain woman with a missing eye. She sounds crazy. Collectors tend to pair it with a certain HOS figurine.
+  components:
+  - type: Sprite
+    state: malenia
+  - type: SpeakOnTrigger
+    pack: FigurinesMalenia
+  - type: GermanAccent
 
 - type: entity
   parent: BaseFigurineMoff
