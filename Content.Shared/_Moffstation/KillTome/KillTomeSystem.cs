@@ -1,9 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Administration.Logs;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
+using Content.Shared._Moffstation.KillTome;
+using Content.Shared.KillTome;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Paper;
@@ -11,7 +13,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
-namespace Content.Shared.KillTome;
+namespace Content.Shared._Moffstation.KillTome;
 
 /// <summary>
 /// This handles KillTome functionality.
