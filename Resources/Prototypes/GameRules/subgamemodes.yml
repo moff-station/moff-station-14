@@ -92,11 +92,19 @@
     - prefRoles: [ MothershipCore ]
       fallbackRoles: [ Xenoborg ]
       spawnerPrototype: SpawnPointGhostRoleMothershipCore
+      # Moffstation - Begin - Name loadouts for Xenoborgs
+      roleLoadout:
+      - JobMothershipCore
+      # Moffstation - End
       mindRoles:
       - MindRoleMothershipCore
     - prefRoles: [ Xenoborg ]
       fallbackRoles: [ MothershipCore ]
       spawnerPrototype: SpawnPointGhostRoleXenoborg
+      # Moffstation - Begin - Name loadouts for Xenoborgs
+      roleLoadout:
+      - JobXenoborg
+      # Moffstation - End
       mindRoles:
       - MindRoleXenoborg
       min: 4
