@@ -218,6 +218,11 @@ public sealed class PaperSystem : EntitySystem
 
         entity.Comp.Mode = PaperAction.Read;
         UpdateUserInterface(entity);
+
+        // Moffstation - Add Kill Tome.
+        var writeAfterEv = new PaperAfterWriteEvent(args.Actor);
+        RaiseLocalEvent(entity.Owner, ref writeAfterEv);
+        // Moffstation - End
     }
 
     private void OnRandomPaperContentMapInit(Entity<RandomPaperContentComponent> ent, ref MapInitEvent args)
@@ -408,3 +413,12 @@ public record struct PaperWriteEvent(EntityUid User, EntityUid Paper);
 /// <param name="paper">The paper that the writing will take place on.</param>
 [ByRefEvent]
 public record struct PaperWriteAttemptEvent(EntityUid Paper, string? FailReason = null, bool Cancelled = false);
+
+// Moffstation - Add Kill Tome
+/// <summary>
+/// Event raised on paper after it was written on by someone.
+/// </summary>
+/// <param name="Actor">Entity that wrote something on the paper.</param>
+[ByRefEvent]
+public readonly record struct PaperAfterWriteEvent(EntityUid Actor);
+// Moffstation - End
