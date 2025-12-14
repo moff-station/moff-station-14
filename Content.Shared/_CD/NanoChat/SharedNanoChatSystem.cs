@@ -314,6 +314,38 @@ public abstract class SharedNanoChatSystem : EntitySystem
         Dirty(card);
         return true;
     }
+    /// <summary>
+    ///     Syncronises messages across every card with the same number, ensuring
+    ///     message echo fan out and in.
+    /// </summary>
+    public void SyncMessagesForCard(Entity<NanoChatCardComponent?> card)
+    {
+        if (!Resolve(card, ref card.Comp) || !card.Comp.Number.HasValue){
+            return;
+        }
 
+        var messagesMerged = card.Comp.Messages;
+        var cards = EntityQuery<NanoChatCardComponent>(); //added so that this methode only has to be called once :3
+
+        //locates all other cards and merges their messages into a dictoanry, skiping anything already added
+        foreach(var othercard in cards)
+        {
+            if (othercard.Number == card.Comp.Number){
+                foreach (var keyNvalue in othercard.Messages)
+                {
+                    messagesMerged.TryAdd(keyNvalue.Key, keyNvalue.Value);
+                }
+            }
+        }
+        //set the messages for all cards sharing the same number
+        foreach (var cardToSync in cards)
+        {
+            if (cardToSync.Number == card.Comp.Number)
+            {
+            cardToSync.Messages = messagesMerged;
+            }
+        }
+        Dirty(card);
+    }
     #endregion
 }

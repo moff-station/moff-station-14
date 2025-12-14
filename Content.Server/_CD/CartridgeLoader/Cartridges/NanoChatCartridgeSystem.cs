@@ -171,6 +171,8 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
                 msg.RecipientNumber.Value,
                 recipient with { HasUnread = false });
         }
+        _nanoChat.SyncMessagesForCard(card.Owner);
+        UpdateUIForCard(card.Owner);
     }
 
     /// <summary>
@@ -258,7 +260,8 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         var msgEv = new NanoChatMessageReceivedEvent(card, message);
         RaiseLocalEvent(ref msgEv);
-
+        _nanoChat.SyncMessagesForCard(card.Owner);
+        UpdateUIForCard(card.Owner);
         if (deliveryFailed)
             return;
 
