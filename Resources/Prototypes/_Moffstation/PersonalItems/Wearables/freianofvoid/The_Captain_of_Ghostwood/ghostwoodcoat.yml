@@ -1,0 +1,23 @@
+# Player: FreianOfVoid / Character: The Captain of Ghostwood
+
+- type: entity
+  parent: ClothingOuterCoatPirate
+  id: PersonalItemGhostwoodCoat
+  name: coat of the Ghostwood
+  description: "An old, black coat with a golden trim. A thin film of ectoplasm seems to coat the interior lining, as though a ghost of some kind has been wearing it."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/The_Captain_of_Ghostwood/ghostwoodcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/freianofvoid/The_Captain_of_Ghostwood/ghostwoodcoat.rsi
+    
+- type: loadout
+  id: PersonalItemGhostwoodCoat
+  storage:
+    back:
+    - PersonalItemGhostwoodCoat
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - "The Captain of Ghostwood"
