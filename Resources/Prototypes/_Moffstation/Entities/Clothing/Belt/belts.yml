@@ -18,33 +18,3 @@
     containers:
       storagebase: !type:NestedSelector
         tableId: BeltSecurityEntityTable
-
-- type: entity
-  id: ClothingBeltSecurityBeltFilledDetective
-  parent: ClothingBeltSecurity
-  suffix: Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: WeaponRevolverInspector
-    - id: SpeedLoaderMagnum
-
-- type: entity
-  id: ClothingBeltSecurityWebbingFilledDetective
-  parent: ClothingBeltSecurityWebbing
-  suffix: Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: WeaponRevolverInspector
-    - id: SpeedLoaderMagnum
-
-- type: entity
-  id: ClothingBeltSecurityWebbingAltFilledDetective
-  parent: ClothingBeltSecurityWebbingAlt
-  suffix: Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: WeaponRevolverInspector
-    - id: SpeedLoaderMagnum

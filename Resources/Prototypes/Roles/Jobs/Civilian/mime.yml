@@ -3,9 +3,11 @@
   name: job-name-mime
   description: job-description-mime
   playTimeTracker: JobMime
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 4h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:OverallPlaytimeRequirement
+  #    time: 4h
+  # Moffstation - End
   startingGear: MimeGear
   icon: "JobIconMime"
   supervisors: job-supervisors-hop

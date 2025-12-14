@@ -4,6 +4,10 @@
   description: job-description-hos
   playTimeTracker: JobHeadOfSecurity
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 30h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobWarden
       time: 1h

@@ -76,3 +76,17 @@
     - PlushieSharkPirate
     - Payload
     - ClothMade
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieSillyDeer
+  name: silly deer plushie
+  description: A stuffed toy deer that appears to be rather silly.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Plushies/sillydeer.rsi
+    state: icon
+  - type: Item
+    size: Huge
+  - type: ScaleVisuals
+    scale: 0.8, 0.8

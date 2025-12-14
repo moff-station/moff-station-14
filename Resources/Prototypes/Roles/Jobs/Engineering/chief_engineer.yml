@@ -4,6 +4,10 @@
   description: job-description-ce
   playTimeTracker: JobChiefEngineer
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobAtmosphericTechnician
       time: 2.5h

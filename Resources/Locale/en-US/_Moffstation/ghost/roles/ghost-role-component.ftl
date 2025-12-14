@@ -10,3 +10,5 @@ ghost-role-information-tarbold-name = Tarbold
 ghost-role-information-tarbold-description = Be the little gremlin you are, and make sure nobody steals your glasses!
 ghost-role-information-whimperlet-name = Scrimpering Whimperlet
 ghost-role-information-whimperlet-description = A soggy creature. Very whimperful.
+ghost-role-information-rod-name-moffstation = Sentient Immovable Rod
+ghost-role-information-rod-description-moffstation = An unstoppable rod currently tearing through the station.

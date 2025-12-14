@@ -16,6 +16,7 @@
   - PersonalItemArieApple
   - PersonalItemAsterGuitar
   - PersonalItemAuroraPin
+  - PersonalItemBintendoHat
   - PersonalItemBoxcarGlasses
   - PersonalItemCarolynFlettCigsPack
   - PersonalItemCinnabarMask
@@ -31,12 +32,12 @@
   - PersonalItemEddieGuitar
   - PersonalItemFredSuit
   - PersonalItemFrostMedicalWebbing
+  - PersonalItemGhostwoodCoat
   - PersonalItemGigsShaker
   - PersonalItemHercynSuit
   - PersonalItemHotSauceFireExtinguisher
   - PersonalItemIoImplanter
   - PersonalItemIrisRing
-  - PersonalItemJasmineFlower
   - PersonalItemJessMask
   - PersonalItemKatieWristBand
   - PersonalItemKazoSkates
@@ -51,7 +52,6 @@
   - PersonalItemPeedeeAvatar
   - PersonalItemPeriwinkleFace
   - PersonalItemPilkmanPlushie
-  - PersonalItemReelsKnife
   - PersonalItemRemiaPin
   - PersonalItemRoseHeadphones
   - PersonalItemRufflerMask
@@ -72,6 +72,7 @@
   - PersonalItemSwanerPhoto
   - PersonalItemTalviHoodie
   - PersonalItemTaniaBackTentacles
+  - PersonalItemTarAwasMp4Player
   - PersonalItemToffeeMask
   - PersonalItemVexMask
   - PersonalItemVivonicMantle
@@ -189,6 +190,13 @@
   - DetectiveSecWebbing
   - DetectiveSecWebbingAlt
 
+- type: loadoutGroup
+  id: DetectiveSidearm
+  name: loadout-group-detective-sidearm
+  loadouts:
+  - DetectivePistolInspector
+  - DetectivePistolPM
+
 ## Cargo
 # Salvage Specialist
 - type: loadoutGroup
@@ -226,6 +234,7 @@
   loadouts:
   - StationEngineerHardhatYellow
   - AtmosphericTechnicianHardhatBlue
+  - AtmosphericTechnicianYellowCap
 
 - type: loadoutGroup
   id: AtmosPDA

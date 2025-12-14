@@ -4,8 +4,8 @@ moffstation-lobby-state-background-cargotech-artist = Chartman
 moffstation-lobby-state-background-lastcall-title = Last Call
 moffstation-lobby-state-background-lastcall-artist = Bullet
 
-moffstation-lobby-state-background-bradbucket-title = The Brad Bucket
-moffstation-lobby-state-background-bradbucket-artist = Davyei
+moffstation-lobby-state-background-skateops-title = Skate Ops
+moffstation-lobby-state-background-skateops-artist = Davyei
 
 moffstation-lobby-state-background-awanagroupselfie-title = Awana Group Selfie
 moffstation-lobby-state-background-awanagroupselfie-artist = ArtyCookie
@@ -33,3 +33,6 @@ moffstation-lobby-state-background-drunkdrivingincident-artist = Altimus
 
 moffstation-lobby-state-background-heyfred-title = Hey Fred
 moffstation-lobby-state-background-heyfred-artist = shedonk
+
+moffstation-lobby-state-background-mimemajorvictory-title = Mime Major Victory
+moffstation-lobby-state-background-mimemajorvictory-artist = youtubepoopfuneral
