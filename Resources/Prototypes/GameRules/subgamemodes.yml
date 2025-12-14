@@ -92,11 +92,15 @@
     - prefRoles: [ MothershipCore ]
       fallbackRoles: [ Xenoborg ]
       spawnerPrototype: SpawnPointGhostRoleMothershipCore
+      roleLoadout:
+      - JobMothershipCore
       mindRoles:
       - MindRoleMothershipCore
     - prefRoles: [ Xenoborg ]
       fallbackRoles: [ MothershipCore ]
       spawnerPrototype: SpawnPointGhostRoleXenoborg
+      roleLoadout:
+      - JobXenoborg
       mindRoles:
       - MindRoleXenoborg
       min: 4
