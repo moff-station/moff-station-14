@@ -2,6 +2,7 @@ using System.Globalization;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
+using Content.Shared.Cloning.Events;
 using Content.Shared.Database;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -37,6 +38,7 @@ public abstract class SharedIdCardSystem : EntitySystem
         SubscribeLocalEvent<IdCardComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<TryGetIdentityShortInfoEvent>(OnTryGetIdentityShortInfo);
         SubscribeLocalEvent<EntityRenamedEvent>(OnRename);
+        SubscribeLocalEvent<IdCardComponent, CloningItemEvent>(OnClonedIdCard);
 
         Subs.CVar(_cfgManager, CCVars.MaxNameLength, value => _maxNameLength = value, true);
         Subs.CVar(_cfgManager, CCVars.MaxIdJobLength, value => _maxIdJobLength = value, true);
@@ -329,5 +331,9 @@ public abstract class SharedIdCardSystem : EntitySystem
 
             ExpireId((uid, comp));
         }
+    }
+    private void OnClonedIdCard(Entity<IdCardComponent> source, ref CloningItemEvent args)
+    {
+        CopyComp(source.Owner, args.CloneUid, source.Comp);
     }
 }
