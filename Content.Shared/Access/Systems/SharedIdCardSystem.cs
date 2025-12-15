@@ -1,4 +1,5 @@
 using System.Globalization;
+using Content.Shared._CD.NanoChat;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -334,9 +335,29 @@ public abstract class SharedIdCardSystem : EntitySystem
     public void CopyIdCard(Entity<IdCardComponent?> source, EntityUid target)
     {
         if (!Resolve(source.Owner, ref source.Comp))
-        return;
-
-        CopyComp(source.Owner, target, source.Comp);
+        {
+            return;
+        }
+        CopyComp(source.Owner, target, source.Comp); //Copy Job Titel and such
+        CopyComp(source.Owner, target, Comp<NanoChatCardComponent>(source.Owner)); //Copy Nanochat Number and such
         UpdateEntityName(target);
+    }
+    public void CopyPda(Entity<PdaComponent?> source, EntityUid target)
+    {
+        if (!Resolve(source.Owner, ref source.Comp))
+        {
+            return;
+        }
+        var targetCard = Comp<PdaComponent>(target).ContainedId;
+        if (source.Comp.ContainedId.HasValue && Comp<PdaComponent>(target).ContainedId.HasValue && targetCard.HasValue)
+        {
+            var sourceId = source.Comp.ContainedId.Value;
+            var targetId = targetCard.Value;
+            var nanoCompSource = Comp<NanoChatCardComponent>(sourceId);
+            var idCardCompSource = Comp<IdCardComponent>(sourceId);
+            CopyComp(sourceId, targetId, nanoCompSource);
+            CopyComp(sourceId, targetId, idCardCompSource);
+            UpdateEntityName(targetId);
+        }
     }
 }

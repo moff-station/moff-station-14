@@ -1,5 +1,6 @@
 using Content.Server.Forensics;
 using Content.Server.Speech.EntitySystems;
+using Content.Shared._CD.NanoChat;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Cloning.Events;
@@ -10,6 +11,7 @@ using Content.Shared.Labels.EntitySystems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Paper;
+using Content.Shared.PDA;
 using Content.Shared.Stacks;
 using Content.Shared.Speech.Components;
 using Content.Shared.Storage;
@@ -50,7 +52,11 @@ public sealed partial class CloningSystem
         SubscribeLocalEvent<PaperComponent, CloningItemEvent>(OnCloneItemPaper);
         SubscribeLocalEvent<ForensicsComponent, CloningItemEvent>(OnCloneItemForensics);
         SubscribeLocalEvent<StoreComponent, CloningItemEvent>(OnCloneItemStore);
-        SubscribeLocalEvent<IdCardComponent, CloningItemEvent>(OnCloneIdCard);
+        SubscribeLocalEvent<IdCardComponent, CloningItemEvent>(OnCloneId);
+        SubscribeLocalEvent<PdaComponent, CloningItemEvent>(OnClonePda);
+
+
+
 
         // These are for cloning components that cannot be cloned using CopyComp.
         // Put them into CloningSettingsPrototype.EventComponents to have them be applied to the clone.
@@ -131,8 +137,12 @@ public sealed partial class CloningSystem
 
         _movementSpeedModifier.CopyComponent(ent.AsNullable(), args.CloneUid);
     }
-    private void OnCloneIdCard(Entity<IdCardComponent> ent, ref CloningItemEvent args)
+    private void OnCloneId(Entity<IdCardComponent> ent, ref CloningItemEvent args)
     {
         _idCardSystem.CopyIdCard(ent.AsNullable(), args.CloneUid);
+    }
+    private void OnClonePda(Entity<PdaComponent> ent, ref CloningItemEvent args)
+    {
+        _idCardSystem.CopyPda(ent.AsNullable(), args.CloneUid);
     }
 }
