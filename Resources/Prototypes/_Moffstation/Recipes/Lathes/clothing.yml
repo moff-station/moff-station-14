@@ -116,11 +116,6 @@
   id: ClothingUniformJumpskirtDetSleuth
   result: ClothingUniformJumpskirtDetSleuth
 
-- type: latheRecipe
-  parent: BaseCoatRecipe
-  id: ClothingOuterCoatSleuth
-  result: ClothingOuterCoatSleuth
-
 ## HoP
 
 - type: latheRecipe
@@ -248,6 +243,7 @@
   parent: BaseCoatRecipe
   id: ClothingOuterWinterSalvageWindbreaker
   result: ClothingOuterWinterSalvageWindbreaker
+
 ## RD
 
 - type: latheRecipe
@@ -274,6 +270,7 @@
   parent: BaseCommandJumpsuitRecipe
   id: ClothingUniformJumpskirtRDRobo
   result: ClothingUniformJumpskirtRDRobo
+
 ## Reporter
 
 - type: latheRecipe
@@ -324,3 +321,25 @@
   parent: BaseHatRecipe
   id: ClothingHeadHatBeretSyndie
   result: ClothingHeadHatBeretSyndie
+
+#Atmos
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpsuitSeniorAtmos
+  result: ClothingUniformJumpsuitSeniorAtmos
+
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpskirtSeniorAtmos
+  result: ClothingUniformJumpskirtSeniorAtmos
+
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpsuitAtmosTurtle
+  result: ClothingUniformJumpsuitAtmosTurtle
+
+#Costumes
+- type: latheRecipe
+  parent: BaseCoatRecipe
+  id: ClothingOuterHotDog
+  result: ClothingOuterHotDog

@@ -57,22 +57,34 @@
   parent: ClothingOuterWinterCoatToggleable
   id: ClothingOuterWinterAtmos
   name: atmospherics winter coat
-  components:
+  components: #Moffstation - Begin - Engineering Outfit Resprites
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatatmos.rsi
     layers:
-    - state: ATMOS-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: ATMOS-inhand-left
-      right:
-      - state: ATMOS-inhand-right
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatatmos.rsi
     clothingVisuals:
       outerClothing:
-      - state: ATMOS-equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded
+  - type: Tag
+    tags:
+    - HiViz
+    - WhitelistChameleon #Moffstation - End - Engineering Outfit Repsprites
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterEngineer
 
@@ -138,22 +150,34 @@
   parent: [ClothingOuterWinterCoatToggleable, BaseCommandContraband]
   id: ClothingOuterWinterCE
   name: chief engineer's winter coat
-  components:
+  components: #Moffstation - Begin - Engineering Outfit Resprites
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatce.rsi
     layers:
-    - state: CE-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: CE-inhand-left
-      right:
-      - state: CE-inhand-right
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatce.rsi
     clothingVisuals:
       outerClothing:
-      - state: CE-equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded
+  - type: Tag
+    tags:
+    - HiViz
+    - WhitelistChameleon #Moffstation - End - Engineering Outfit Repsprites
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCE
 
@@ -276,22 +300,34 @@
   parent: ClothingOuterWinterCoatToggleable
   id: ClothingOuterWinterEngi
   name: engineering winter coat
-  components:
+  components: #Moffstation - Begin - Engineering Outfit Resprites
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatengi.rsi
     layers:
-    - state: ENGI-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: ENGI-inhand-left
-      right:
-      - state: ENGI-inhand-right
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatengi.rsi
     clothingVisuals:
       outerClothing:
-      - state: ENGI-equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded
+  - type: Tag
+    tags:
+    - HiViz
+    - WhitelistChameleon #Moffstation - End - Engineering Outfit Repsprites
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterEngineer
 

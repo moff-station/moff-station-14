@@ -14,3 +14,43 @@
       collection: FootstepJester
       params:
         variation: 0.07
+
+# Syndicate
+- type: entity
+  parent: [ ClothingShoesBase , BaseSyndicateContraband ]
+  id: ClothingShoesSkatesSyndicate
+  name: syndicate rocket skates
+  description: Blood-red, stylish, and fast. Just avoid hitting any walls.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/skatessyndicate.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/skatessyndicate.rsi
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.04"
+  - type: Item
+    sprite: _Moffstation/Clothing/Shoes/skatessyndicate.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.2
+    sprintModifier: 1.2
+  - type: Skates
+    stunSeconds: 0.75
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepSkates
+      params:
+        variation: 0.08
+  - type: JumpAbility
+    jumpDistance: 2
+    jumpSound: /Audio/Effects/stealthoff.ogg
+  - type: ActionGrant
+    actions:
+    - ActionGravityJump
+  - type: ItemActionGrant
+    actions:
+    - ActionGravityJump
+    activeIfWorn: true
+  - type: Tag
+    tags: []

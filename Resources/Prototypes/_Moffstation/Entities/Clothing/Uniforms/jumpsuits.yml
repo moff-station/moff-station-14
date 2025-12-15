@@ -366,3 +366,26 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
+
+#Engineering
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSeniorAtmos
+  name: senior atmospherics jumpsuit
+  description: A sign of skill and prestige within the atmospherics department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_atmos.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_atmos.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitAtmosTurtle
+  name: atmos turtleneck
+  description: A Comfortable outfit for An Atmosian who enjoys a warm burn chamber.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi

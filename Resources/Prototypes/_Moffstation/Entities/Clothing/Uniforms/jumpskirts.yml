@@ -326,3 +326,15 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/machinist.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/machinist.rsi
+
+#engineering
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtSeniorAtmos
+  name: senior atmospherics jumpskirt
+  description: A sign of skill and prestige within the atmospherics department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_atmos.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_atmos.rsi
