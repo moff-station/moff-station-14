@@ -88,11 +88,12 @@ public sealed class GameMapManager : IGameMapManager
 
         var maps = AllVotableMaps().ToArray();
         _random.Shuffle(maps);
-
+        //Moffstation - Begin - Fixed the Integration test failing due to out Vote Rollover system
         foreach (var map in maps)//ensures every map gets an Entry and is initzilized
         {
             _rollOverVotes[map] = 0;
         }
+        //Moffstation - End
         foreach (var map in maps)
         {
             if (_previousMaps.Count >= _mapQueueDepth)
