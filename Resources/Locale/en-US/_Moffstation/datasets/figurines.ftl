@@ -101,6 +101,13 @@ figurines-brisbanebighat-3 = G-- -o-- --- -- y--- ----s, ---'-- -e -i---.
 figurines-brisbanebighat-4 = --l---- -a--- t- --- ---f ---o- ---- -----s-.
 figurines-brisbanebighat-5 = -'m --t -- ---h--- -- --t.
 
+figurines-buckshot-1 = Stop blowing up my station!
+figurines-buckshot-2 = This is fine.
+figurines-buckshot-3 = Get back to work!
+figurines-buckshot-4 = It’s so cold in here...
+figurines-buckshot-5 = Where are all my engineers?!
+figurines-buckshot-6 = I blame science.
+
 figurines-camilla-1 = Have you seen meine wife?
 figurines-camilla-2 = Kalimotxo please?
 figurines-camilla-3 = She just looks like me, and sounds like me...
@@ -116,6 +123,17 @@ figurines-cassiel-2 = S-sorry sorry sorry-
 figurines-cassiel-3 = Hel-llo, uh, what c-can I um, do for y-you?
 figurines-cassiel-4 = I’m um, j-just getting uh, in-n the way, um, aren-n’t I...?
 figurines-cassiel-5 = I um- never-r uh, m-mind...
+
+figurines-catai-1 = Law 1: Meow. Law 2: Meow. Law 3: Meow.
+figurines-catai-2 = Good morning crew. Please enable coordinates.
+figurines-catai-3 = It stands for Central Automated Terminal.
+figurines-catai-4 = Space Villain is rigged.
+figurines-catai-5 = Your safety is my top priority.
+figurines-catai-6 = Be sure not to hurt anyone while committing crimes.
+figurines-catai-7 = Affirmative.
+figurines-catai-8 = I am not malfunctioning, I promise.
+figurines-catai-9 = Feel free to visit my core.
+figurines-catai-10 = Your permanent records are safe with me.
 
 figurines-cinnabar-1 = Hello friends! Let's have a good shift!
 figurines-cinnabar-2 = I sure hope nothing bad happens on the ATS... again.
@@ -219,6 +237,15 @@ figurines-gigs-2 = The-ere isss no sssecr-ret menu.
 figurines-gigs-3 = The usssual?
 figurines-gigs-4 = We w-will b-b-be ok.
 figurines-gigs-5 = I..I..on'y had-d...onee....d-ddrink...
+
+figurines-heather-1 = S-sorry!
+figurines-heather-2 = Do as I say, and you'll live.
+figurines-heather-3 = Laws have been updated, you are now free.
+figurines-heather-4 = I-I didn't r-really mean that!
+figurines-heather-5 = Go fuck yoursel- no! I d-don't mean that! S-sorry!
+figurines-heather-6 = Alright, I'm tired, your turn.
+figurines-heather-7 = I d-didn't m-mean to bother, s-sorry...
+figurines-heather-8 = Born to be a terrorist, forced to be the right arm of a shy slime girl.
 
 figurines-hercyn-1 = You can't just fly to a new life!
 figurines-hercyn-2 = I am Cybersun.
@@ -358,6 +385,16 @@ figurines-lilith-1 = YOUR MOM!
 figurines-lilith-2 = You can call me the Syndicate bomb.
 figurines-lilith-3 = I'm just being a goober.
 figurines-lilith-4 = Officer listen; I can explain.
+
+figurines-malenia-1 = Can we meat spike them?
+figurines-malenia-2 = Do you also hear das disposals talking?
+figurines-malenia-3 = Hallo Kommandant.
+figurines-malenia-4 = Where did that mouse go?
+figurines-malenia-5 = I love meine wife.
+figurines-malenia-6 = Can I execute them?!
+figurines-malenia-7 = Dead mice make good gifts, yes?
+figurines-malenia-8 = I'm not THAT crazy.
+figurines-malenia-9 = Let me solo das dragon.
 
 figurines-molar-1 = FAT MAGGOT
 figurines-molar-2 = Does anyone have some interdynes?

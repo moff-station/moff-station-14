@@ -1,4 +1,5 @@
-using Content.Server.Administration.Components;
+using System.Numerics;
+using System.Threading;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
 using Content.Server.Electrocution;
@@ -17,12 +18,14 @@ using Content.Server.Tabletop.Components;
 using Content.Shared.Actions;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Components;
+using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clumsy;
 using Content.Shared.Cluwne;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Electrocution;
@@ -56,7 +59,6 @@ using Robust.Shared.Spawners;
 using Robust.Shared.Utility;
 using System.Numerics;
 using System.Threading;
-using Content.Server._Moffstation.Administration.Components; // Moffstation - Add Extra Sign Smites
 using Content.Shared.Damage.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
@@ -580,38 +582,6 @@ public sealed partial class AdminVerbSystem
                 Message = string.Join(": ", killSignName, Loc.GetString("admin-smite-kill-sign-description"))
             };
             args.Verbs.Add(killSign);
-
-            // Moffstation - Start - Add Extra Sign Smites
-            var cringeSignName = Loc.GetString("admin-smite-cringe-sign-name").ToLowerInvariant();
-            Verb cringeSign = new()
-            {
-                Text = cringeSignName,
-                Category = VerbCategory.Smite,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Objects/Misc/cringesign.rsi"), "icon"),
-                Act = () =>
-                {
-                    EnsureComp<CringeSignComponent>(args.Target);
-                },
-                Impact = LogImpact.Extreme,
-                Message = string.Join(": ", cringeSignName, Loc.GetString("admin-smite-cringe-sign-description"))
-            };
-            args.Verbs.Add(cringeSign);
-
-            var peakSignName = Loc.GetString("admin-smite-peak-sign-name").ToLowerInvariant();
-            Verb peakSign = new()
-            {
-                Text = peakSignName,
-                Category = VerbCategory.Smite,
-                Icon = new SpriteSpecifier.Rsi(new("/Textures/_Moffstation/Objects/Misc/peaksign.rsi"), "icon"),
-                Act = () =>
-                {
-                    EnsureComp<PeakSignComponent>(args.Target);
-                },
-                Impact = LogImpact.Extreme,
-                Message = string.Join(": ", peakSignName, Loc.GetString("admin-smite-peak-sign-description"))
-            };
-            args.Verbs.Add(peakSign);
-            // Moffstation - End
 
             var cluwneName = Loc.GetString("admin-smite-cluwne-name").ToLowerInvariant();
             Verb cluwne = new()

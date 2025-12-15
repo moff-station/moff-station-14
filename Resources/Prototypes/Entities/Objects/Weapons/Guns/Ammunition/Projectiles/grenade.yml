@@ -12,7 +12,7 @@
   - type: StaminaDamageOnCollide
     damage: 55
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25
 
 - type: entity
   id: PelletClusterLethal
@@ -26,7 +26,7 @@
       types:
         Piercing: 45
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25
 
 - type: entity
   id: PelletClusterIncendiary
@@ -44,7 +44,7 @@
     fireStacks: 1
     count: 10
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25
 
 - type: entity
   id: PelletClusterLessLethal
@@ -58,4 +58,4 @@
       types:
         Piercing: 5
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25
