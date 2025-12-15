@@ -85,7 +85,6 @@ entities:
       name: Central Command
     - type: Transform
       pos: -50,-50
-      parent: invalid
     - type: MapGrid
       chunks:
         0,1:
@@ -9521,9 +9520,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 84.5,39.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
   - uid: 642
     components:
     - type: Transform
@@ -58912,9 +58908,6 @@ entities:
     - type: AccessReader
       accessListsOriginal:
       - - CentralCommand
-    - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: DeviceLinkSource
       linkedPorts:
         419:
