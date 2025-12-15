@@ -237,9 +237,9 @@
   description: A jolly dress, well suited to entertain your master, nuncle.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/jester.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jester.rsi # Moffstation - New Jester Outfit
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/jester.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jester.rsi # Moffstation - New Jester Outfit
 
 - type: entity
   parent: ClothingUniformJumpsuitJester

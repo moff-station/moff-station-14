@@ -247,20 +247,21 @@
 - type: entity
   parent: [ClothingMaskClown, BaseSecurityContraband]
   id: ClothingMaskClownSecurity
-  name: security clown wig and mask
+  name: cool clown wig and mask # Moffstation - Clown Mask renamed to be Cool
   description: A debatably oxymoronic but protective mask and wig.
   components:
   - type: Sprite
     sprite: Clothing/Mask/clown_security.rsi
   - type: Clothing
     sprite: Clothing/Mask/clown_security.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.95
-        Slash: 0.95
-        Piercing: 0.95
-        Heat: 0.95
+#  - type: Armor  # Moffstation - Begin - This is going into the Loadouts & a Clown don't need all that when they look cool
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.95
+#        Slash: 0.95
+#        Piercing: 0.95
+#        Heat: 0.95
+# Moffstation - End
 
 - type: entity
   parent: ClothingMaskBase
@@ -665,20 +666,20 @@
 - type: entity
   parent: [ClothingMaskMime, BaseSecurityContraband]
   id: ClothingMaskMimeSecurity
-  name: security mime mask
+  name: cool mime mask # Moffstation - Mime Mask renamed to be Cool
   description: You have the right to remain silent.
   components:
   - type: Sprite
     sprite: Clothing/Mask/mime_security.rsi
   - type: Clothing
     sprite: Clothing/Mask/mime_security.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.95
-        Slash: 0.95
-        Piercing: 0.95
-        Heat: 0.95
+#  - type: Armor   - Moffstation - Begin - The Mime does not need protection when they are cool looking (adding it to the loadout)
+#    modifiers:
+#      coefficients:
+#        Blunt: 0.95
+#        Slash: 0.95
+#        Piercing: 0.95
+#        Heat: 0.95
 
 - type: entity
   parent: ClothingMaskBase
