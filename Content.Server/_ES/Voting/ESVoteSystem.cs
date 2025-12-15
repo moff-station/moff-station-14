@@ -37,6 +37,23 @@ public sealed class ESVoteSystem : ESSharedVoteSystem
         RaiseLocalEvent(ent, ref ev, true);
     }
 
+    protected override void SendVoteStartAnnouncement(Entity<ESVoteComponent> ent)
+    {
+        var voters = new List<INetChannel>();
+        var query = EntityQueryEnumerator<ESVoterComponent, ActorComponent>();
+        while (query.MoveNext(out _, out _, out var actor))
+        {
+            voters.Add(actor.PlayerSession.Channel);
+        }
+
+        var msg = Loc.GetString("es-voter-chat-announce-result",
+            ("query", Loc.GetString("es-voter-chat-announce-vote-start")),
+            ("result", Name(ent)));
+        var wrappedMsg = Loc.GetString("es-voter-chat-announce-wrap-message", ("message", msg));
+        _chat.ChatMessageToMany(ChatChannel.Server, msg, wrappedMsg, ent, false, true, voters, Color.Plum, audioPath: VoteSound);
+        _adminLog.Add(LogType.Vote, LogImpact.Medium, $"Started vote for {ToPrettyString(ent)}.");
+    }
+
     protected override void SendVoteResultAnnouncement(Entity<ESVoteComponent> ent, ESVoteOption result)
     {
         var voters = new List<INetChannel>();
@@ -49,8 +66,8 @@ public sealed class ESVoteSystem : ESSharedVoteSystem
         var msg = Loc.GetString("es-voter-chat-announce-result",
             ("query", Loc.GetString(ent.Comp.QueryString)),
             ("result", result.DisplayString));
-        var wrappedMsg = Loc.GetString("chat-manager-server-wrap-message", ("message", msg));
-        _chat.ChatMessageToMany(ChatChannel.Server, msg, wrappedMsg, ent, false, true, voters, Color.Plum, audioPath: VoteSound);
+        var wrappedMsg = Loc.GetString("es-voter-chat-announce-wrap-message", ("message", msg));
+        _chat.ChatMessageToMany(ChatChannel.Server, msg, wrappedMsg, ent, false, true, voters, Color.Plum);
         _adminLog.Add(LogType.Vote, LogImpact.Medium, $"Finished vote for {ToPrettyString(ent)}. Vote conclusion: \"{msg}\"");
     }
 }

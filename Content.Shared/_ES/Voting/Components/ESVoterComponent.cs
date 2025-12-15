@@ -18,7 +18,7 @@ public enum ESVoterUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class ESSetVoteMessage(NetEntity vote, ESVoteOption option) : BoundUserInterfaceMessage
+public sealed class ESSetVoteMessage(NetEntity vote, ESVoteOption option) : EntityEventArgs
 {
     public NetEntity Vote = vote;
     public ESVoteOption Option = option;

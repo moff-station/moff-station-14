@@ -32,11 +32,7 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
 
         SubscribeLocalEvent<ESVoterComponent, PlayerAttachedEvent>(OnVoterPlayerAttached);
         SubscribeLocalEvent<ESVoterComponent, PlayerDetachedEvent>(OnVoterPlayerDetached);
-        Subs.BuiEvents<ESVoterComponent>(ESVoterUiKey.Key,
-            subs =>
-            {
-                subs.Event<ESSetVoteMessage>(OnSetVote);
-            });
+        SubscribeAllEvent<ESSetVoteMessage>(OnSetVote);
 
         InitializeOptions();
         InitializeResults();
@@ -55,6 +51,7 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
         }
 
         RefreshVoteOptions(ent.AsNullable());
+        SendVoteStartAnnouncement(ent);
     }
 
     private void OnVoterPlayerAttached(Entity<ESVoterComponent> ent, ref PlayerAttachedEvent args)
@@ -75,8 +72,12 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
         }
     }
 
-    private void OnSetVote(Entity<ESVoterComponent> ent, ref ESSetVoteMessage args)
+    private void OnSetVote(ESSetVoteMessage args, EntitySessionEventArgs ev)
     {
+        if (ev.SenderSession.AttachedEntity is not { } attachedEntity ||
+            !HasComp<ESVoterComponent>(attachedEntity))
+            return;
+
         if (!TryGetEntity(args.Vote, out var voteUid) ||
             !TryComp<ESVoteComponent>(voteUid, out var voteComp))
             return;
@@ -85,7 +86,7 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
         if (!voteComp.VoteOptions.Contains(args.Option))
             return;
 
-        var voteNetEnt = GetNetEntity(ent);
+        var voteNetEnt = GetNetEntity(attachedEntity);
         foreach (var (option, votes) in voteComp.Votes)
         {
             if (option.Equals(args.Option)) // add our vote
@@ -141,6 +142,11 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
         RaiseLocalEvent(ent, ref ev, true);
 
         PredictedQueueDel(ent);
+    }
+
+    protected virtual void SendVoteStartAnnouncement(Entity<ESVoteComponent> ent)
+    {
+
     }
 
     protected virtual void SendVoteResultAnnouncement(Entity<ESVoteComponent> ent, ESVoteOption result)

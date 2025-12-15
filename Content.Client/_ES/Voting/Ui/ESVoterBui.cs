@@ -21,7 +21,7 @@ public sealed class ESVoterBui(EntityUid owner, Enum uiKey) : BoundUserInterface
         _window.OnVoteChanged += (entity, option) =>
         {
             var netEnt = EntMan.GetNetEntity(entity);
-            SendPredictedMessage(new ESSetVoteMessage(netEnt, option));
+            EntMan.RaisePredictiveEvent(new ESSetVoteMessage(netEnt, option));
         };
     }
 
