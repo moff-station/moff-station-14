@@ -2,6 +2,7 @@ using Content.Server._Moffstation.Objectives.Components;
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
 using Content.Server.Objectives;
+using Content.Shared._Moffstation.Objectives;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Robust.Shared.Random;
@@ -33,6 +34,8 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
             return;
         }
 
+        var potentialObjectives = EnsureComp<PotentialObjectivesComponent>(mindId);
+
         foreach (var set in ent.Comp.Sets)
         {
             if (!_random.Prob(set.Prob))
@@ -40,11 +43,13 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
 
             for (var pick = 0; pick < set.MaxPicks; pick++)
             {
-                if (_objectives.GetRandomObjective(mindId, mind, set.Groups, float.PositiveInfinity) is not { } objective)
+                if (_objectives.GetRandomObjective(mindId, mind, set.Groups, float.MaxValue) is not { } objective)
                     continue;
 
-                ent.Comp.ObjectiveOptions.Add(args.Session, objective);
+                potentialObjectives.ObjectiveOptions.Add(objective);
             }
         }
+
+        DirtyEntity(mindId);
     }
 }

@@ -19,8 +19,8 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     public int MaxOptions = 6;
 
     /// <summary>
-    /// The objective options presented to the player
+    /// Kept for compatibility with the old version
     /// </summary>
-    [ViewVariables]
-    public Dictionary<ICommonSession, EntityUid> ObjectiveOptions = new();
+    [DataField]
+    public float MaxDifficulty = float.MaxValue;
 }

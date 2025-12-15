@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
-using Content.Client._DV.CustomObjectiveSummary; // DeltaV
+using Content.Client._DV.CustomObjectiveSummary;
+using Content.Client._Moffstation.ObjectivePicker; // DeltaV
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
@@ -32,7 +33,8 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly CustomObjectiveSummaryUIController _objective = default!; // DeltaV
+    [Dependency] private readonly CustomObjectiveSummaryUIController _objectiveSummary = default!; // DeltaV
+    [Dependency] private readonly ObjectivePickerUIController _objectivePicker = default!; // Moffstation
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
@@ -189,7 +191,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             Text = "Choose Objectives...",
             Margin = new Thickness(0, 10, 0, 10)
         };
-        objectivePickerButton.OnPressed += _ => _objective.OpenWindow();
+        objectivePickerButton.OnPressed += _ => _objectivePicker.OpenWindow();
 
         _window.Objectives.AddChild(objectivePickerButton);
 
@@ -202,7 +204,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
                 Text = Loc.GetString("custom-objective-button-text"),
                 Margin = new Thickness(0, 10, 0, 10)
             };
-            button.OnPressed += _ => _objective.OpenWindow();
+            button.OnPressed += _ => _objectiveSummary.OpenWindow();
 
             _window.Objectives.AddChild(button);
         }
