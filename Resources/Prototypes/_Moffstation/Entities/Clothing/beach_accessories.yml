@@ -42,7 +42,12 @@
     sprite: _Moffstation/Clothing/Shoes/clown-sandals.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Shoes/clown-sandals.rsi
-
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepClown
+      params:
+        variation: 0.17
+        volume: -15
 - type: entity
   parent: BasePlushie
   id: PlushieLifeguardBuoy
