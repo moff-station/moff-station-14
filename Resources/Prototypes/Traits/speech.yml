@@ -7,9 +7,7 @@
   name: trait-accentless-name
   description: trait-accentless-desc
   category: SpeechTraits
-  # Moffstation - Begin - change cost to 1 for point balancing
-  cost: 0
-  # Moffstation - End
+cost: 0 # Moffstation - change cost to 0 for point balancing
   components:
   - type: Accentless
     removes:
