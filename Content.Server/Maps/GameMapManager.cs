@@ -88,12 +88,16 @@ public sealed class GameMapManager : IGameMapManager
 
         var maps = AllVotableMaps().ToArray();
         _random.Shuffle(maps);
+
+        foreach (var map in maps)//ensures every map gets an Entry and is initzilized
+        {
+            _rollOverVotes[map] = 0;
+        }
         foreach (var map in maps)
         {
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
-            _rollOverVotes[map] = 0;    // Moffstation - initialize rollover votes
         }
     }
 
