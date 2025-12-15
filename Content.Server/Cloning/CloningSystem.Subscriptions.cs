@@ -1,8 +1,7 @@
 using Content.Server.Forensics;
 using Content.Server.Speech.EntitySystems;
-using Content.Shared._CD.NanoChat;
-using Content.Shared.Access.Components;
-using Content.Shared.Access.Systems;
+using Content.Shared.Access.Components;// Moffstation - Added the Ability for the Cloning system to clone Id cards
+using Content.Shared.Access.Systems;// Moffstation - Added the Ability for the Cloning system to clone Id cards
 using Content.Shared.Cloning.Events;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
@@ -36,7 +35,7 @@ public sealed partial class CloningSystem
     [Dependency] private readonly PaperSystem _paper = default!;
     [Dependency] private readonly VocalSystem _vocal = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
-    [Dependency] private readonly SharedIdCardSystem _idCardSystem = default!;
+    [Dependency] private readonly SharedIdCardSystem _idCardSystem = default!;// Moffstation - Added the Ability for the Cloning system to clone Id cards
 
     public override void Initialize()
     {
@@ -52,12 +51,8 @@ public sealed partial class CloningSystem
         SubscribeLocalEvent<PaperComponent, CloningItemEvent>(OnCloneItemPaper);
         SubscribeLocalEvent<ForensicsComponent, CloningItemEvent>(OnCloneItemForensics);
         SubscribeLocalEvent<StoreComponent, CloningItemEvent>(OnCloneItemStore);
-        SubscribeLocalEvent<IdCardComponent, CloningItemEvent>(OnCloneId);
-        SubscribeLocalEvent<PdaComponent, CloningItemEvent>(OnClonePda);
-
-
-
-
+        SubscribeLocalEvent<IdCardComponent, CloningItemEvent>(OnCloneId);// Moffstation - Added the Ability for the Cloning system to clone Id cards
+        SubscribeLocalEvent<PdaComponent, CloningItemEvent>(OnClonePda);// Moffstation - Added the Ability for the Cloning system to clone Id cards
         // These are for cloning components that cannot be cloned using CopyComp.
         // Put them into CloningSettingsPrototype.EventComponents to have them be applied to the clone.
         SubscribeLocalEvent<VocalComponent, CloningEvent>(OnCloneVocal);
@@ -137,6 +132,8 @@ public sealed partial class CloningSystem
 
         _movementSpeedModifier.CopyComponent(ent.AsNullable(), args.CloneUid);
     }
+    #region Moffstation - Added the Ability for the Cloning system to clone Id cards
+    // Moffstation - Begin - Added the Ability to copy Id Cards
     private void OnCloneId(Entity<IdCardComponent> ent, ref CloningItemEvent args)
     {
         _idCardSystem.CopyIdCard(ent.AsNullable(), args.CloneUid);
@@ -145,4 +142,6 @@ public sealed partial class CloningSystem
     {
         _idCardSystem.CopyPda(ent.AsNullable(), args.CloneUid);
     }
+    // Moffstation - End
+    #endregion
 }

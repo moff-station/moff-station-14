@@ -171,8 +171,8 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
                 msg.RecipientNumber.Value,
                 recipient with { HasUnread = false });
         }
-        _nanoChat.SyncMessagesForCard(card.Owner);
-        UpdateUIForCard(card.Owner);
+        _nanoChat.SyncMessagesForCard(card.Owner);// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
+        UpdateUIForCard(card.Owner);// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
     }
 
     /// <summary>
@@ -260,8 +260,8 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         var msgEv = new NanoChatMessageReceivedEvent(card, message);
         RaiseLocalEvent(ref msgEv);
-        _nanoChat.SyncMessagesForCard(card.Owner);
-        UpdateUIForCard(card.Owner);
+        _nanoChat.SyncMessagesForCard(card.Owner);// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
+        UpdateUIForCard(card.Owner);// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
         if (deliveryFailed)
             return;
 

@@ -1,9 +1,8 @@
 using System.Globalization;
-using Content.Shared._CD.NanoChat;
+using Content.Shared._CD.NanoChat;// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
-using Content.Shared.Cloning.Events;
 using Content.Shared.Database;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -332,6 +331,8 @@ public abstract class SharedIdCardSystem : EntitySystem
             ExpireId((uid, comp));
         }
     }
+    #region Moffstation - Added the Ability for the Cloning system to clone Id cards
+    // Moffstation - Begin - Added the Ability for the Cloning system to clone Id cards
     public void CopyIdCard(Entity<IdCardComponent?> source, EntityUid target)
     {
         if (!Resolve(source.Owner, ref source.Comp))
@@ -360,4 +361,6 @@ public abstract class SharedIdCardSystem : EntitySystem
             UpdateEntityName(targetId);
         }
     }
+    // Moffstation - End
+    #endregion
 }
