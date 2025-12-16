@@ -1,18 +1,17 @@
+using Content.Shared.Objectives;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Objectives;
 
-
-[RegisterComponent, NetworkedComponent]
-[AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PotentialObjectivesComponent : Component
 {
     /// <summary>
     /// The objective options presented to the player
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public HashSet<EntityUid> ObjectiveOptions = new();
+    public HashSet<(NetEntity netEntity, ObjectiveInfo info)> ObjectiveOptions = new();
 }
 
 /// <summary>
