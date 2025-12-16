@@ -150,6 +150,7 @@ namespace Content.IntegrationTests.Tests
             "NitrousOxide",
             "Barratry",
             "Scylla",
+            "Aspid"
             // Moffstation - End
         };
 
