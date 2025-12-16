@@ -1,0 +1,60 @@
+- type: entity
+  parent: ParamedicPDA
+  id: ParamedicPDAAltBase
+  name: paramedic alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-fieldmedic"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ParamedicPDAAltBase
+  id: FieldMedicPDA
+  name: field medic PDA
+  components:
+  - type: RenameId
+    value: job-name-paramedic-field-medic
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-fieldmedic
+  - type: PdaBorderColor
+    borderColor: "#2a4b5b"
+    accentVColor: "#d7d7d0"
+
+- type: entity
+  parent: ParamedicPDAAltBase
+  id: EmergencyResponseTechnicianPDA
+  name: emergency response technician PDA
+  components:
+  - type: RenameId
+    value: job-name-paramedic-emt
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-emergencymedicaltechnician
+  - type: PdaBorderColor
+    borderColor: "#2a4b5b"
+    accentVColor: "#d7d7d0"

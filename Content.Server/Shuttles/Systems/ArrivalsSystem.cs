@@ -6,7 +6,6 @@ using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Parallax;
-using Content.Server.Power.Components;  // Moffstation
 using Content.Server.Power.EntitySystems; // Moffstation
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
@@ -24,6 +23,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Parallax.Biomes;
+using Content.Shared.Power.Components;  // Moffstation
 using Content.Shared.Salvage;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tiles;
@@ -461,7 +461,7 @@ public sealed class ArrivalsSystem : EntitySystem
             while (query.MoveNext(out var entity, out var comp))
             {
                 if (_station.GetOwningStation(entity) == station)
-                    _batterySystem.SetCharge(entity, comp.MaxCharge, comp);
+                    _batterySystem.SetCharge((entity, comp), comp.MaxCharge);
             }
         }
     }
@@ -568,7 +568,7 @@ public sealed class ArrivalsSystem : EntitySystem
             _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
             var restricted = new RestrictedRangeComponent
             {
-                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange)
+                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange) // Moffstation - Custom arrivals settings
             };
             AddComp(mapUid, restricted);
         }

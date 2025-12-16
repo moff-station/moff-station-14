@@ -1,0 +1,62 @@
+<Document>
+  # Resomi
+
+  <Box>
+    <GuideEntityEmbed Entity="MobResomi" Scale="2" Caption=""/>
+  </Box>
+
+  Resomi are members of a small avian species which has evolved over thousands of years to have humanoid bodies. Their wings have shrunk over time with shorter feathers, and have gained a set of fingers allowing them to manipulate and hold objects the same as any other humanoid.
+
+  In recent years, many Resomi have begun to style the feathery plumes that grow from their crowns to resemble the hairstyles of other species.
+  
+  They have kept their feathery tails throughout their evolution. With bright and eccentric colors, these tails are one of the defining visual quality of a modern Resomi.
+
+  ## Sounds
+  The while Resomi have lost their beaks through their evolution, they still audibly resemble the sounds of a common bird. Their high pitched screeches slowly shifted to soft and pleasant chirps and squawks.
+
+  ## Resomi Packs and Names
+  Resomi culture is dominated by a hierarchy where groups of Resomi will organize themselves into packs during their adolescence. These packs often include other Resomi from the same clutch or nursery with the pack acting as a family structure to support and guide individuals during development.
+
+  Members of packs would often name themselves after their pack, and are more trusting of and caring towards other members, from formation to their eventual death. However, some Resomi reject others when forming packs, instead choosing to cling to items, ornaments or weapons for support and comfort.
+
+  While Resomi hatcheries have sought to maintain this culture, the Resomi's expansion across the stars has caused this traditional culture to fade away. While some Resomi still chose to follow this structure, most forego it and go by other nicknames or names, with most choosing to be named after colorful objects or food.
+
+  ## Nightvision
+  The Resomi have evolved to have light sensitive eyes which allows them to see in the dark. While most other species would require a flashlight or other light sourceto see in the dark,
+  a Resomi's perception is the same as if they were in a dimly lit room.
+  However, headwear and glasses with reflective coatings designed to protect the wearer from bright lights and flashes will inhibit this ability to see in the dark.
+
+  Any glasses that would provide protection from flashes will block their nightvision ability.
+  Using HUD variants allows you to keep your nightvision, at the cost of losing flash immunity.
+  
+  You can configure if you start with glasses or HUD in the loadouts for all relevant roles.
+  
+  ## Flash Vulnerability
+  Their increased sensitivity to light comes at a cost, with Resomi being highly vulnerable to bright flashes. While a handheld flash would normally disrupt someone's vision for [color=#ffe100]5 seconds[/color], Resomi's sensitivity to light causes a regular flash to last [color=#ff6f00]10 seconds.[/color]
+<Box>
+    <GuideEntityEmbed Entity="ClothingEyesGlassesSunglasses" Scale="4" Caption="Sunglasses block Nightvision"/>
+    <GuideEntityEmbed Entity="ClothingEyesHudCommand" Scale="4" Caption="HUDs will not block Nightvision"/>
+</Box>
+  ## HUD or Sunglasses
+  Wearing a HUD Interface allows Resomi to see in the dark unimpaired, while Sunglasses and Welding Masks will block this ability. The prepared Resomi should switch between these types of head and eye wear to adapt to their current situation.
+
+  ## Damage Vulnerabilities
+  Due to their smaller stature, Resomi are vulnerable to all forms of physical [color=#ffae00]brute damage[/color]. Taking [color=#ff6f00]15% more brute damage[/color] than a regular human.
+However, the insulating nature of their feathers allow them to resist the cold, taking [color=#9ee5f7]10% less cold damage[/color]. While also being able to find comfort in both cold and warmer environs.
+
+  ## Claw attack
+  Resomi have evolved to have sharp claws on their hands, causing their regular attacks to deal Slashing damage and inflict minor bleeding. Their nimbleness also allows them to attack a little faster than a regular human.
+
+  ## Weapon Recoil/Knockback
+  The smaller size of Resomi does have a big drawback, with increased recoil from large weaponry. Shotguns, Rifles, Launchers and high caliber weaponry will inflict stamina damage and push the Resomi backwards, with larger weapons or calibers causing more stamina damage and knockback.
+<Box>
+    <GuideEntityEmbed Entity="WeaponRifleLecter" Scale="3.5" Caption="Low recoil"/>
+    <GuideEntityEmbed Entity="WeaponShotgunKammerer" Scale="3.5" Caption="Medium recoil"/>
+    <GuideEntityEmbed Entity="WeaponLauncherRocket" Scale="3.5" Caption="High recoil"/>
+</Box>
+  Resomi will need to take intermittent breaks from combat when using these weapons, or they will be knocked prone from the repetetive stamina damage.
+  
+  Smaller caliber weapons like Pistols and SMGs will not inflict stamina damage, and will often be the choice of weapon for most Resomi.
+  
+  Resomi can mitigate the effects of weapon recoil by equipping and activating Magboots or other forms of slip prevention.
+</Document>

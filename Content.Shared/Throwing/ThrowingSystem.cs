@@ -3,14 +3,18 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Camera;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Components;
+using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Friction;
 using Content.Shared.Projectiles;
+using Content.Shared.Random.Helpers; // Moffstation
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Random; // Moffstation
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Throwing;
@@ -18,6 +22,11 @@ namespace Content.Shared.Throwing;
 public sealed class ThrowingSystem : EntitySystem
 {
     public const float ThrowAngularImpulse = 5f;
+
+    // Moffstation - Start - Throwing modifiers
+    public const float MoffSpinVariation = 2f;
+    public const float MoffSpeedVariation = 0f;
+    // Moffstation - End
 
     public const float PushbackDefault = 2f;
 
@@ -36,9 +45,13 @@ public sealed class ThrowingSystem : EntitySystem
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
 
+    private EntityQuery<AnchorableComponent> _anchorableQuery;
+
     public override void Initialize()
     {
         base.Initialize();
+
+        _anchorableQuery = GetEntityQuery<AnchorableComponent>();
 
         Subs.CVar(_configManager, CCVars.TileFrictionModifier, value => _frictionModifier = value, true);
         Subs.CVar(_configManager, CCVars.AirFriction, value => _airDamping = value, true);
@@ -56,7 +69,7 @@ public sealed class ThrowingSystem : EntitySystem
         bool animated = true,
         bool playSound = true,
         bool doSpin = true,
-        bool unanchor = false)
+        ThrowingUnanchorStrength unanchor = ThrowingUnanchorStrength.None)
     {
         var thrownPos = _transform.GetMapCoordinates(uid);
         var mapPos = _transform.ToMapCoordinates(coordinates);
@@ -77,7 +90,7 @@ public sealed class ThrowingSystem : EntitySystem
     /// <param name="friction">friction value used for the distance calculation. If set to null this defaults to the standard tile values</param>
     /// <param name="compensateFriction">True will adjust the throw so the item stops at the target coordinates. False means it will land at the target and keep sliding.</param>
     /// <param name="doSpin">Whether spin will be applied to the thrown entity.</param>
-    /// <param name="unanchor">If true and the thrown entity has <see cref="AnchorableComponent"/>, unanchor the thrown entity</param>
+    /// <param name="unanchor">If set to Unanchorable, if the entity has <see cref="AnchorableComponent"/> and is unanchorable, it will unanchor the thrown entity. If set to All, it will unanchor the entity regardless.</param>
     public void TryThrow(EntityUid uid,
         Vector2 direction,
         float baseThrowSpeed = 10.0f,
@@ -89,7 +102,7 @@ public sealed class ThrowingSystem : EntitySystem
         bool animated = true,
         bool playSound = true,
         bool doSpin = true,
-        bool unanchor = false)
+        ThrowingUnanchorStrength unanchor = ThrowingUnanchorStrength.None)
     {
         var physicsQuery = GetEntityQuery<PhysicsComponent>();
         if (!physicsQuery.TryGetComponent(uid, out var physics))
@@ -119,7 +132,7 @@ public sealed class ThrowingSystem : EntitySystem
     /// <param name="friction">friction value used for the distance calculation. If set to null this defaults to the standard tile values</param>
     /// <param name="compensateFriction">True will adjust the throw so the item stops at the target coordinates. False means it will land at the target and keep sliding.</param>
     /// <param name="doSpin">Whether spin will be applied to the thrown entity.</param>
-    /// <param name="unanchor">If true and the thrown entity has <see cref="AnchorableComponent"/>, unanchor the thrown entity</param>
+    /// <param name="unanchor">If set to Unanchorable, if the entity has <see cref="AnchorableComponent"/> and is unanchorable, it will unanchor the thrown entity. If set to All, it will unanchor the entity regardless.</param>
     public void TryThrow(EntityUid uid,
         Vector2 direction,
         PhysicsComponent physics,
@@ -134,12 +147,16 @@ public sealed class ThrowingSystem : EntitySystem
         bool animated = true,
         bool playSound = true,
         bool doSpin = true,
-        bool unanchor = false)
+        ThrowingUnanchorStrength unanchor = ThrowingUnanchorStrength.None)
     {
         if (baseThrowSpeed <= 0 || direction == Vector2Helpers.Infinity || direction == Vector2Helpers.NaN || direction == Vector2.Zero || friction < 0)
             return;
 
-        if (unanchor && HasComp<AnchorableComponent>(uid))
+        // Unanchor the entity if applicable
+        if (unanchor == ThrowingUnanchorStrength.All ||
+            unanchor == ThrowingUnanchorStrength.Unanchorable &&
+            _anchorableQuery.TryComp(uid, out var anchorableComponent) &&
+            (anchorableComponent.Flags & AnchorableFlags.Unanchorable) != 0)
             _transform.Unanchor(uid);
 
         if ((physics.BodyType & (BodyType.Dynamic | BodyType.KinematicController)) == 0x0)
@@ -174,11 +191,20 @@ public sealed class ThrowingSystem : EntitySystem
         ThrowingAngleComponent? throwingAngle = null;
 
         // Give it a l'il spin.
+        // Moffstation - start - Predicted randomness workaround
+        // TODO: Replace with RandomPredicted once the engine PR is merged
+        var seed = SharedRandomExtensions.HashCodeCombine((int)_gameTiming.CurTick.Value, uid.Id);
+        var rand = new System.Random(seed);
+        // Moffstation - End
         if (doSpin)
         {
             if (physics.InvI > 0f && (!TryComp(uid, out throwingAngle) || throwingAngle.AngularVelocity))
             {
-                _physics.ApplyAngularImpulse(uid, ThrowAngularImpulse / physics.InvI, body: physics);
+                // Moffstation - Start - Thrown item spin patters
+                // Spin velocity is randomized
+                var spinVelocity = rand.NextFloat(-MoffSpinVariation, MoffSpinVariation);
+                _physics.ApplyAngularImpulse(uid, spinVelocity * MathF.Tau / physics.InvI, body: physics);
+                // Moffstation - End
             }
             else
             {
@@ -198,6 +224,7 @@ public sealed class ThrowingSystem : EntitySystem
         // This is an exact formula we get from exponentially decaying velocity after landing.
         // If someone changes how tile friction works at some point, this will have to be adjusted.
         // This doesn't actually compensate for air friction, but it's low enough it shouldn't matter.
+        baseThrowSpeed += rand.NextFloat(-MoffSpeedVariation, MoffSpeedVariation);   // Moffstation - Throwing variation
         var throwSpeed = compensateFriction ? direction.Length() / (flyTime + 1 / tileFriction) : baseThrowSpeed;
         var impulseVector = direction.Normalized() * throwSpeed * physics.Mass;
         _physics.ApplyLinearImpulse(uid, impulseVector, body: physics);
@@ -243,4 +270,26 @@ public sealed class ThrowingSystem : EntitySystem
         if (pushEv.Push)
             _physics.ApplyLinearImpulse(user.Value, -impulseVector / physics.Mass * pushbackRatio * MathF.Min(massLimit, physics.Mass), body: userPhysics);
     }
+
+
+}
+
+/// <summary>
+/// If a throwing action should attempt to unanchor anchored entities.
+/// </summary>
+[Serializable, NetSerializable]
+public enum ThrowingUnanchorStrength : byte
+{
+    /// <summary>
+    /// No entites will be unanchored.
+    /// </summary>
+    None,
+    /// <summary>
+    /// Only entities that can be unanchored (e.g. via wrench) will be unanchored.
+    /// </summary>
+    Unanchorable,
+    /// <summary>
+    /// All entities will be unanchored.
+    /// </summary>
+    All,
 }

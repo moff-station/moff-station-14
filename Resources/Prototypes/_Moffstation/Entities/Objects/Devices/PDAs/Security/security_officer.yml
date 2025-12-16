@@ -1,0 +1,76 @@
+- type: entity
+  parent: SecurityPDA
+  id: SecurityPDAAltBase
+  name: security officer alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-assetprotection"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: SecurityPDAAltBase
+  id: AssetProtectionsPDA
+  name: asset protections PDA
+  components:
+  - type: RenameId
+    value: job-name-security-officer-asset-protections
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-assetprotection
+  - type: PdaBorderColor
+    borderColor: "#5f6d8b"
+    accentVColor: "#A32D26"
+    accentHColor: "#633019"
+
+- type: entity
+  parent: SecurityPDAAltBase
+  id: DeputyPDA
+  name: deputy PDA
+  components:
+  - type: RenameId
+    value: job-name-security-officer-deputy
+    newIcon: "JobIconSecurityCadet"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-deputy
+  - type: PdaBorderColor
+    borderColor: "#3f3f3f"
+    accentVColor: "#85221f"
+
+- type: entity
+  parent: SecurityPDAAltBase
+  id: HallMonitorPDA
+  name: hall monitor PDA
+  components:
+  - type: RenameId
+    value: job-name-security-officer-hall-monitor
+    newIcon: "JobIconSecurityCadet"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hallmonitor

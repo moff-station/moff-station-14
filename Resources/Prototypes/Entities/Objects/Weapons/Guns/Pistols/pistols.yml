@@ -128,7 +128,15 @@
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
-  # Moffstation - Start - Replace Battery ammo + battery refilling with ballistic ammo
+   # Moffstation - Start - Replace Battery ammo + battery refilling with ballistic ammo
+#  - type: BatteryAmmoProvider
+#    proto: BulletPistol
+#    fireCost: 100
+#  - type: PredictedBattery
+#    maxCharge: 1000
+#    startingCharge: 1000
+#  - type: PredictedBatterySelfRecharger
+#    autoRechargeRate: 25
   - type: BallisticAmmoProvider
     whitelist:
       tags:

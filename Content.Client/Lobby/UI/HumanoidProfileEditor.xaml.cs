@@ -7,8 +7,8 @@ using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
-using Content.Client.Sprite;
 using Content.Client.Stylesheets;
+using Content.Client.Sprite;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
@@ -599,7 +599,7 @@ namespace Content.Client.Lobby.UI
                     {
                         Text = Loc.GetString(category.Name),
                         Margin = new Thickness(0, 10, 0, 0),
-                        StyleClasses = { StyleBase.StyleClassLabelHeading },
+                        StyleClasses = { StyleClass.LabelHeading },
                     });
                 }
 
@@ -667,6 +667,7 @@ namespace Content.Client.Lobby.UI
             _species.Clear();
 
             _species.AddRange(_prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(o => o.RoundStart));
+            _species.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
             var speciesIds = _species.Select(o => o.ID).ToList();
 
             for (var i = 0; i < _species.Count; i++)
@@ -746,7 +747,7 @@ namespace Content.Client.Lobby.UI
                 var loadoutWindowBtn = new Button()
                 {
                     // Disabled = true,
-                    Text = Loc.GetString("loadout-window"),
+                    Text = Loc.GetString("loadout-window-moffstation"), // Moffstation
                     HorizontalAlignment = HAlignment.Right,
                     Margin = new Thickness(3f, 0f, 0f, 0f),
                 };
@@ -974,14 +975,14 @@ namespace Content.Client.Lobby.UI
 
                     category.AddChild(new PanelContainer
                     {
-                        PanelOverride = new StyleBoxFlat {BackgroundColor = Color.FromHex("#464966")},
+                        PanelOverride = new StyleBoxFlat {BackgroundColor = department.Color},  // Moffstation - Colored job list
                         Children =
                         {
-                            new Label
+                            new RichTextLabel   // Moffstation
                             {
-                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
+                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label-moffstation",   // Moffstation - Colored job list
                                     ("departmentName", departmentName)),
-                                Margin = new Thickness(5f, 0, 0, 0)
+                                Margin = new Thickness(5f, 2f, 0, 2f)   // Moffstation - Colored job list
                             }
                         }
                     });
@@ -1058,7 +1059,7 @@ namespace Content.Client.Lobby.UI
 
                     var loadoutWindowBtn = new Button()
                     {
-                        Text = Loc.GetString("loadout-window"),
+                        Text = Loc.GetString("loadout-window-moffstation"), // Moffstation
                         HorizontalAlignment = HAlignment.Right,
                         VerticalAlignment = VAlignment.Center,
                         Margin = new Thickness(3f, 3f, 0f, 0f),
@@ -1466,7 +1467,7 @@ namespace Content.Client.Lobby.UI
                 return;
 
             const string style = "SpeciesInfoDefault";
-            SpeciesInfoButton.StyleClasses.Add(style);
+            SpeciesInfoButton.StyleIdentifier = style;
         }
 
         private void UpdateMarkings()
@@ -1675,7 +1676,7 @@ namespace Content.Client.Lobby.UI
                 return;
 
             StartExport();
-            await using var file = await _dialogManager.OpenFile(new FileDialogFilters(new FileDialogFilters.Group("yml")));
+            await using var file = await _dialogManager.OpenFile(new FileDialogFilters(new FileDialogFilters.Group("yml")), FileAccess.Read);
 
             if (file == null)
             {

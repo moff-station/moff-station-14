@@ -64,7 +64,10 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
+    # Moffstation - Start - Dim PDA lights
     radius: 1.5
+    #falloff: 3
+    # Moffstation - End
     softness: 5
     autoRot: true
   - type: Ringer
@@ -227,7 +230,7 @@
     state: pda-internmed
   - type: GuideHelp
     guides:
-    - OffbrandPhysician # Offbrand
+    - MedicalDoctor
   #Moffstation - Start - Remove Intern Roles, rework them into loadouts
   - type: RenameId
     value: job-name-intern
@@ -784,7 +787,7 @@
     state: pda-medical
   - type: GuideHelp
     guides:
-    - OffbrandPhysician # Offbrand
+    - MedicalDoctor
 
 - type: entity
   parent: MedicalPDA
@@ -1036,8 +1039,8 @@
   - type: Instrument
     allowPercussion: false
     handheld: true
-    bank: 1
     program: 2
+    bank: 100 # Defined in space-station-14.sf2
 
 - type: entity
   parent: MusicianPDA

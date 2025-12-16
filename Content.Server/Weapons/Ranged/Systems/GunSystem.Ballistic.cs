@@ -1,5 +1,5 @@
-using Content.Server.Emp; // Moffstation
-using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
+using Content.Shared._Moffstation.Weapons.Ranged.Components;    // Moffstation
+using Content.Shared.Emp; // Moffstation
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Map;

@@ -1,7 +1,6 @@
 using Content.Shared.Alert;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
@@ -85,14 +84,14 @@ public sealed partial class BloodstreamComponent : Component
     /// The default values are defined per mob/species in YML.
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier? BloodlossDamage = new(); // Offbrand: we don't need this
+    public DamageSpecifier BloodlossDamage = new();
 
     /// <summary>
     /// The base bloodloss damage to be healed if above <see cref="BloodlossThreshold"/>
     /// The default values are defined per mob/species in YML.
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier? BloodlossHealDamage = new(); // Offbrand: we don't need this
+    public DamageSpecifier BloodlossHealDamage = new();
 
     // TODO shouldn't be hardcoded, should just use some organ simulation like bone marrow or smth.
     /// <summary>
@@ -115,7 +114,7 @@ public sealed partial class BloodstreamComponent : Component
     /// For example, piercing damage is increased while poison damage is nullified entirely.
     /// </remarks>
     [DataField, AutoNetworkedField]
-    public ProtoId<DamageModifierSetPrototype>? DamageBleedModifiers = "BloodlossHuman"; // Offbrand: we don't want this
+    public ProtoId<DamageModifierSetPrototype> DamageBleedModifiers = "BloodlossHuman";
 
     /// <summary>
     /// The sound to be played when a weapon instantly deals blood loss damage.
@@ -152,13 +151,13 @@ public sealed partial class BloodstreamComponent : Component
     public FixedPoint2 BloodMaxVolume = FixedPoint2.New(300);
 
     /// <summary>
-    /// Which reagent is considered this entities 'blood'?
+    /// Which reagents are considered this entities 'blood'?
     /// </summary>
     /// <remarks>
     /// Slime-people might use slime as their blood or something like that.
     /// </remarks>
     [DataField, AutoNetworkedField]
-    public ProtoId<ReagentPrototype> BloodReagent = "Blood";
+    public Solution BloodReagents = new([new("Blood", 1)]);
 
     /// <summary>
     /// Name/Key that <see cref="BloodSolution"/> is indexed by.

@@ -53,7 +53,10 @@
     damageContainer: Biological
     damageModifierSet: Slime
   - type: Bloodstream
-    bloodReagent: Slime
+    bloodReagents:
+      reagents:
+      - ReagentId: Slime
+        Quantity: 1
     bloodlossDamage:
       types:
         Bloodloss:
@@ -74,12 +77,11 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         damage:
           types:
             Heat: 0.75 # MOFFSTATION CHANGE - Increases slime water damage by 5x
@@ -166,9 +168,9 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short
 
@@ -206,9 +208,9 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short
 
@@ -245,8 +247,8 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short

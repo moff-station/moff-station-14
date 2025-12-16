@@ -161,8 +161,6 @@
     stateDoorClosed: med_door
   - type: AccessReader
     access: [["Medical"]]
-  - type: Paintable
-    group: null # Looks bad when repainted
 
 - type: entity
   parent: BaseWallLocker

@@ -13,6 +13,13 @@
       - id: BoxFolderGrey
       - id: BoxFolderBlack
     - id: CyberPen
+    - !type:GroupSelector
+      rolls: !type:RangeNumberSelector
+        range: 1,3
+      children:
+      - id: TraitorCodePaper
+      - id: AllTraitorCodesPaper
+        weight: 0.2
     - id: LuxuryPen
       prob: 0.5
     - id: Pen
@@ -36,14 +43,9 @@
       - id: ForensicReportPaper
         weight: 0.5
       - id: SyndicateBusinessCard
-        weight: 0.5
-      - id: TraitorCodePaper
-        weight: 0.25
       - id: AgentIDCard
         weight: 0.25
       - id: Telecrystal1 # How'd this get in here?
-        weight: 0.05
-      - id: AllTraitorCodesPaper
         weight: 0.05
       - id: NukeCodePaperStation  # surely nothing could go wrong
         weight: 0.01

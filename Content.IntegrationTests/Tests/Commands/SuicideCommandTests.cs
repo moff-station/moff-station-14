@@ -1,6 +1,8 @@
 using System.Linq;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Execution;
 using Content.Shared.FixedPoint;
 using Content.Shared.Ghost;
@@ -113,7 +115,6 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicideWhileDamaged()
     {
-        return; // Offbrand
         await using var pair = await PoolManager.GetServerClient(new PoolSettings
         {
             Connected = true,
@@ -229,7 +230,6 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicideByHeldItem()
     {
-        return; // Offbrand
         await using var pair = await PoolManager.GetServerClient(new PoolSettings
         {
             Connected = true,
@@ -282,7 +282,7 @@ public sealed class SuicideCommandTests
         await server.WaitAssertion(() =>
         {
             // Heal all damage first (possible low pressure damage taken)
-            damageableSystem.SetAllDamage(player, damageableComp, 0);
+            damageableSystem.ClearAllDamage((player, damageableComp));
             consoleHost.GetSessionShell(playerMan.Sessions.First()).ExecuteCommand("suicide");
             var lethalDamageThreshold = mobThresholdsComp.Thresholds.Keys.Last();
 
@@ -305,7 +305,6 @@ public sealed class SuicideCommandTests
     [Test]
     public async Task TestSuicideByHeldItemSpreadDamage()
     {
-        return; // Offbrand
         await using var pair = await PoolManager.GetServerClient(new PoolSettings
         {
             Connected = true,
@@ -358,7 +357,7 @@ public sealed class SuicideCommandTests
         await server.WaitAssertion(() =>
         {
             // Heal all damage first (possible low pressure damage taken)
-            damageableSystem.SetAllDamage(player, damageableComp, 0);
+            damageableSystem.ClearAllDamage((player, damageableComp));
             consoleHost.GetSessionShell(playerMan.Sessions.First()).ExecuteCommand("suicide");
             var lethalDamageThreshold = mobThresholdsComp.Thresholds.Keys.Last();
 

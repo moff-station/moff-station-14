@@ -1,0 +1,50 @@
+- type: entity
+  parent: PassengerPDA
+  id: OffDutyCrewPDA
+  name: off-duty crew PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-off-duty-crew
+
+- type: entity
+  parent: PassengerPDA
+  id: OffDutyStaffPDA
+  name: off-duty staff PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-off-duty-staff
+
+- type: entity
+  parent: PassengerPDA
+  id: AssistantPDA
+  name: assistant PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-assistant
+
+- type: entity
+  parent: VisitorPDA
+  id: VisitorCrewPDA
+  name: visitor PDA
+  components:
+  - type: RenameId
+    value: job-name-visitor
+    newIcon: "JobIconVisitor"
+
+- type: entity
+  parent: VisitorPDA
+  id: FreelancerPDA
+  name: freelancer PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-freelancer
+    newIcon: "JobIconVisitor"
+
+- type: entity
+  parent: VisitorPDA
+  id: TouristPDA
+  name: tourist PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-tourist
+    newIcon: "JobIconVisitor"

@@ -1,6 +1,7 @@
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._Starlight.Overlay;
 
@@ -17,16 +18,17 @@ public abstract class BaseVisionOverlay : Robust.Client.Graphics.Overlay
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private readonly ShaderInstance _shader;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
-    protected BaseVisionOverlay(ShaderPrototype shader, VisionOverlayZIndex zIndex)
+    protected BaseVisionOverlay(ProtoId<ShaderPrototype> shaderId, VisionOverlayZIndex zIndex)
     {
         IoCManager.InjectDependencies(this);
-        _shader = shader.InstanceUnique();
+        _shader = _prototypeManager.Index(shaderId).InstanceUnique();
         ZIndex = (int)zIndex;
     }
 

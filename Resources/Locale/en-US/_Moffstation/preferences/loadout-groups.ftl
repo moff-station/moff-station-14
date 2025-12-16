@@ -13,9 +13,20 @@ loadout-group-pirate-outer-coat = Pirate Outer Coat
 loadout-group-quartermaster-backpack = Quartermaster Backpack
 loadout-group-chief-engineer-backpack = Chief Engineer Backpack
 loadout-group-chief-medical-officer-backpack = Chief Medical Officer Backpack
+loadout-group-atmospheric-technician-head = Atmospheric Technician head
+
+loadout-group-captain-glasses = Captain glasses
+loadout-group-head-of-personnel-glasses = Head of Personnel glasses
+loadout-group-security-glasses = Security glasses
+loadout-group-detective-glasses = Detective glasses
+loadout-group-engineering-glasses = Engineering glasses
+loadout-group-chemistry-glasses = Chemistry glasses
+loadout-group-science-glasses = Science glasses
+loadout-group-bartender-glasses = Bartender glasses
 
 loadout-group-warden-id = Warden ID
 loadout-group-detective-id = Detective ID
+loadout-group-detective-sidearm = Detective Sidearm
 
 loadout-group-salvage-specialist-id = Salvage Specialist ID
 

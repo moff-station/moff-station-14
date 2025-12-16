@@ -1,0 +1,73 @@
+- type: entity
+  parent: ChefPDA
+  id: ChefPDAAltBase
+  name: chef alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-baker"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ChefPDAAltBase
+  id: BakerPDA
+  name: baker PDA
+  components:
+  - type: RenameId
+    value: job-name-chef-baker
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-baker
+  - type: PdaBorderColor
+    borderColor: "#916e2e"
+
+- type: entity
+  parent: ChefPDAAltBase
+  id: ButcherPDA
+  name: butcher PDA
+  components:
+  - type: RenameId
+    value: job-name-chef-butcher
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-butcher
+
+- type: entity
+  parent: ChefPDAAltBase
+  id: PizzaioloPDA
+  name: pizzaiolo PDA
+  components:
+  - type: RenameId
+    value: job-name-chef-pizzaiolo
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-pizzaiolo
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#3c7b5d"
+    accentHColor: "#3c7b5d"

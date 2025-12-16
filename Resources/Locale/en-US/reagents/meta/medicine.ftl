@@ -92,7 +92,7 @@ reagent-name-oculine = oculine
 reagent-desc-oculine = A simple saline compound used to treat the eyes via ingestion.
 
 reagent-name-ethylredoxrazine = ethylredoxrazine
-reagent-desc-ethylredoxrazine = Neutralises the effects of alcohol in the blood stream. Though it is commonly needed, it is rarely requested.
+reagent-desc-ethylredoxrazine = Neutralises alcohol in the blood stream. Though it is commonly needed, it is rarely requested.
 
 reagent-name-cognizine = cognizine
 reagent-desc-cognizine = A mysterious chemical which is able to make any non-sentient creature sentient.
@@ -128,19 +128,16 @@ reagent-name-insuzine = insuzine
 reagent-desc-insuzine = Rapidly repairs dead tissue caused by electrocution, but cools you slightly. Completely freezes the patient when overdosed.
 
 reagent-name-opporozidone = opporozidone
-# Offbrand edit
-reagent-desc-opporozidone= A difficult to synthesize cryogenic drug used to efficiently regenerate brain matter.
+reagent-desc-opporozidone= A difficult to synthesize cryogenic drug used to regenerate rotting tissue and brain matter.
 
 reagent-name-necrosol = necrosol
-# Offbrand edit
-reagent-desc-necrosol = A necrotic substance that seems to be able to heal frozen corpses and regenerate rotting flesh. It can treat and rejuvenate plants when applied in small doses.
+reagent-desc-necrosol = A necrotic substance that seems to be able to heal frozen corpses. It can treat and rejuvenate plants when applied in small doses.
 
 reagent-name-aloxadone = aloxadone
 reagent-desc-aloxadone = A cryogenics chemical. Used to treat severe burns and frostbite via regeneration of the affected tissue. Works regardless of the patient being alive or dead.
 
 reagent-name-mannitol = mannitol
-# Offbrand edit
-reagent-desc-mannitol = Aids the body in regenerating brain tissue, but causes nausea.
+reagent-desc-mannitol = Efficiently restores brain damage.
 
 reagent-name-psicodine = psicodine
 reagent-desc-psicodine = Suppresses anxiety and other various forms of mental distress. Overdose causes hallucinations and minor toxin damage.
@@ -150,3 +147,6 @@ reagent-desc-potassium-iodide = Will reduce the damaging effects of radiation by
 
 reagent-name-haloperidol = haloperidol
 reagent-desc-haloperidol = Removes most stimulating and hallucinogenic drugs. Reduces druggy effects and jitteriness. Causes drowsiness.
+
+reagent-name-warfarin = warfarin
+reagent-desc-warfarin = Commonly used as an anticoagulant medication. Causes blood to have difficulty forming clots. Can cause internal bleeding when overdosed.

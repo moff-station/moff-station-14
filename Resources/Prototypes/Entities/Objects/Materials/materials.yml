@@ -63,6 +63,13 @@
     prototype: CarpetCard
     doAfter: 0.5
     removeOnInteract: true
+  # Moffstation - Start - Cardboard Module
+  - type: Tag
+    tags:
+    - Cardboard
+    - RawMaterial
+    - ConstructionMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialCardboard
@@ -108,19 +115,6 @@
       params:
         volume: 1.0
         variation: 0.125
-  # Begin Offbrand
-  - type: Tending
-    woundWhitelist:
-      tags: [WoundCut, WoundPuncture]
-    damage:
-      types:
-        Slash: -0.5
-        Piercing: -0.5
-    tendingBeginSound:
-      path: "/Audio/Items/Medical/brutepack_begin.ogg"
-    tendingEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-  # End Offbrand
   - type: Stack
     stackType: Cloth
     baseLayer: base
@@ -348,7 +342,7 @@
       - HEAD
   - type: PointLight
     radius: 1.2
-    energy: 1.5
+    energy: 2.7
     color: "#4faffb"
     slots:
 
@@ -409,6 +403,7 @@
     tags:
     - RawMaterial
     - Diamond
+    - ConstructionMaterial # Moffstation
 
 - type: entity
   parent: MaterialDiamond
@@ -581,6 +576,12 @@
   - type: Appearance
   - type: Item
     heldPrefix: bananium
+  # Moffstation - Begin
+  - type: Tag
+    tags:
+    - ConstructionMaterial
+    - RawMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialBananium

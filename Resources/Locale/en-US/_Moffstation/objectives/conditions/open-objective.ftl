@@ -16,3 +16,4 @@ objective-condition-rob-department = Steal from the {$targetName} department
 objective-condition-loud-rob-department = Rob the {$targetName} department
 objective-condition-leave-card = Leave a calling card
 objective-condition-leave-card-on-person = Leave a calling card on {$targetName}, {CAPITALIZE($job)}
+objective-condition-coexist = Coexist with your original self.

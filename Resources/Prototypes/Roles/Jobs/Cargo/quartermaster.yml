@@ -4,15 +4,19 @@
   description: job-description-qm
   playTimeTracker: JobQuartermaster
   requirements:
-    - !type:RoleTimeRequirement
-      role: JobCargoTechnician
-      time: 18000 #5 hrs
-    - !type:RoleTimeRequirement
-      role: JobSalvageSpecialist
-      time: 9000 #2.5 hrs
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    #- !type:RoleTimeRequirement
+    #  role: JobCargoTechnician
+    #  time: 5h
+    #- !type:RoleTimeRequirement
+    #  role: JobSalvageSpecialist
+    #  time: 2.5h
+    # Moffstation - End
     - !type:DepartmentTimeRequirement
       department: Cargo
-      time: 36000 #10 hours
+      time: 10h
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"

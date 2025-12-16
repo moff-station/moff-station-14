@@ -1,6 +1,8 @@
 using Content.Client._Starlight.Overlay;
 using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared.Flash;
+using Content.Shared.Flash.Components;
+using Content.Shared.Inventory;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -17,18 +19,7 @@ public sealed class NightVisionSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly TransformSystem _xformSys = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedFlashSystem _flash = default!;
-
-    private static readonly EntProtoId EffectPrototype = "EffectNightVision";
-    private static readonly ProtoId<ShaderPrototype> ShaderPrototype = "ModernNightVisionShader";
-
-    private NightVisionOverlay? _overlay;
-    private NightVisionOverlay Overlay => _overlay ??= new NightVisionOverlay(_prototypeManager.Index(ShaderPrototype));
-
-    [ViewVariables]
-    private EntityUid? _effect;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -50,7 +41,7 @@ public sealed class NightVisionSystem : EntitySystem
         }
         else
         {
-            ApplyEffect(ent, false);
+            ApplyEffect(ent);
         }
     }
 
@@ -74,16 +65,17 @@ public sealed class NightVisionSystem : EntitySystem
         RemoveEffect(ent);
     }
 
-    private void ApplyEffect(Entity<NightVisionComponent> entity, bool? precomputedIsFlashImmune = null)
+    private void ApplyEffect(Entity<NightVisionComponent> entity)
     {
-        if (_effect != null ||
+        if (entity.Comp.Effect != null ||
             _player.LocalSession?.AttachedEntity != entity ||
-            (precomputedIsFlashImmune ?? _flash.IsFlashImmune(entity)))
+            _flash.IsFlashImmune(entity))
             return;
 
-        _overlayMan.AddOverlay(Overlay);
-        _effect = SpawnAttachedTo(EffectPrototype, Transform(entity).Coordinates);
-        _xformSys.SetParent(_effect.Value, entity);
+        _overlayMan.AddOverlay(new NightVisionOverlay());
+        var effect = SpawnAttachedTo(entity.Comp.EffectPrototype, Transform(entity).Coordinates);
+        _xformSys.SetParent(effect, entity);
+        entity.Comp.Effect = effect;
     }
 
     // `force` is needed because we need to remove the overlay AFTER the player is detached.
@@ -93,8 +85,14 @@ public sealed class NightVisionSystem : EntitySystem
             _player.LocalSession?.AttachedEntity != entity)
             return;
 
-        _overlayMan.RemoveOverlay(Overlay);
-        QueueDel(_effect);
-        _effect = null;
+        if (!_flash.IsFlashImmune(entity))
+            return;
+
+        if (!_overlayMan.TryGetOverlay(out NightVisionOverlay? overlay))
+            return;
+
+        _overlayMan.RemoveOverlay(overlay);
+        PredictedQueueDel(entity.Comp.Effect);
+        entity.Comp.Effect = null;
     }
 }

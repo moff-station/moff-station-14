@@ -1,0 +1,24 @@
+# Player: FriedFCC - Character: Fred Neuman
+- type: entity
+  parent: ClothingUniformBase
+  id: PersonalItemFredSuit
+  name: exquisite brown suit
+  description: A fancy brown suit in pristine condition. You wonder how someone could afford it with a meager Nanotrasen wage.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/FriedFCC/Fred_Neuman/fredsuit.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/FriedFCC/Fred_Neuman/fredsuit.rsi
+  - type: DetailExaminable
+    content: "On further inspection, you notice a fancy resin-soaked flower in the front pocket."
+
+- type: loadout
+  id: PersonalItemFredSuit
+  storage:
+    back:
+    - PersonalItemFredSuit
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Fred Neuman

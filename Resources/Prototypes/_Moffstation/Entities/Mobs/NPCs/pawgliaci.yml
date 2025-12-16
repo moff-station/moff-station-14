@@ -26,11 +26,12 @@
     tags:
     - CannotSuicide
     - VimPilot
-  - type: Instrument
-    allowPercussion: false
-    handheld: false
-    bank: 1
-    program: 5
+  # TODO Moff's soundfont changes were reverted due to upstream changes to the soundfont file.
+#  - type: Instrument
+#    allowPercussion: false
+#    handheld: false
+#    bank: 1
+#    program: 5
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-dog

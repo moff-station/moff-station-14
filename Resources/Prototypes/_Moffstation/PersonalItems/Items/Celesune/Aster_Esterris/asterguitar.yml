@@ -1,0 +1,31 @@
+﻿# Player: Celesune - Character: Aster Esterris
+- type: entity
+  parent: AcousticGuitarInstrument
+  id: PersonalItemAsterGuitar
+  name: stained guitar
+  description: It's not supposed to be red...
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Celesune/Aster_Esterris/asterguitar.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Celesune/Aster_Esterris/asterguitar.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+    sprite: _Moffstation/PersonalItems/Items/Celesune/Aster_Esterris/asterguitar.rsi
+  - type: DetailExaminable
+    content: An old, beaten-up acoustic guitar covered in odd red stains. The strings are the only part that seem in relatively good shape. There's an inscription on the left side, but it's worn down to the point of being illegible.
+
+- type: loadout
+  id: PersonalItemAsterGuitar
+  storage:
+    back:
+    - PersonalItemAsterGuitar
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Aster Esterris

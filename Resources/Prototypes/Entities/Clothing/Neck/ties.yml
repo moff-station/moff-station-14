@@ -1,5 +1,13 @@
 - type: entity
   parent: ClothingNeckBase
+  id: ClothingNeckTieBase
+  abstract: true
+  components:
+  - type: Item
+    storedRotation: -45
+
+- type: entity
+  parent: ClothingNeckTieBase
   id: ClothingNeckTieRed
   name: red-tie
   description: A neosilk clip-on red tie.
@@ -16,18 +24,26 @@
     - Recyclable
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckTieBase
   id: ClothingNeckTieDet
-  name: detective's tie
-  description: A loosely tied necktie, a perfect accessory for the over-worked detective.
+  name: detective's horrendous tie # Moffstation - Begin - Detective-Outfit-Sprites
+  description: A loosely tied necktie, a disturbingly vivid accessory for the over-worked detective. # Moffstation - End
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Ties/dettie.rsi
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
-    sprite: Clothing/Neck/Ties/dettie.rsi
-    
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - Begin - Detective-Outfit-Sprites
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon # Moffstation - End - Detective-Outfit-Sprites
+
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckTieBase
   id: ClothingNeckTieSci
   name: scientist's tie
   description: Why do we all have to wear these ridiculous ties?

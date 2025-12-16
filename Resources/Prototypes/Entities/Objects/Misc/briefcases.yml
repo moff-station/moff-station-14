@@ -9,9 +9,6 @@
   - type: Storage
     grid:
     - 0,0,5,3
-  - type: Tag
-    tags:
-    - Briefcase
   - type: MeleeWeapon
     damage:
       types:
@@ -29,9 +26,14 @@
     sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
 
 - type: entity
-  parent: BriefcaseBrown
+  parent: BriefcaseBase # Moffstation (New Briefcases)
   id: BriefcaseSyndie
-  suffix: Syndicate, Empty
+  # Moffstation - Begin - New Briefcases
+  name: suspicious briefcase
   components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_syndie.rsi
+    state: icon
+  # Moffstation - End
   - type: Item
     size: Huge

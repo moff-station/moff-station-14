@@ -1,0 +1,24 @@
+﻿- type: entity
+  parent: BaseImplantOnlyImplanter
+  id: PersonalItemIoImplanter
+  name: unfamiliar implanter
+  description: An implanter specific to Io Lepidotera, although whether or not it works is yet to be seen.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Big_Papa_Beef/Io_Lepidotera/ioimplanter.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Big_Papa_Beef/Io_Lepidotera/ioimplanter.rsi
+  - type: Implanter
+    implant: FrenchImplant
+
+- type: loadout
+  id: PersonalItemIoImplanter
+  storage:
+    back:
+    - PersonalItemIoImplanter
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Io Lepidotera

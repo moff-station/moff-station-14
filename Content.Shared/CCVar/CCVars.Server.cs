@@ -52,7 +52,7 @@ public sealed partial class CCVars
     ///     The width of the right side (chat) panel in the lobby
     /// </summary>
     public static readonly CVarDef<int> ServerLobbyRightPanelWidth =
-        CVarDef.Create("server.lobby_right_panel_width", 650, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("server.lobby_right_panel_width", 500, CVar.REPLICATED | CVar.SERVER);   // Moffstation - Tweak panel width
 
     /// <summary>
     ///     Forces clients to display version watermark, as if HudVersionWatermark was true
@@ -60,6 +60,7 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> ForceClientHudVersionWatermark =
         CVarDef.Create("server.force_client_hud_version_watermark", false, CVar.REPLICATED | CVar.SERVER);
 
+    // Moffstation - Begin
     /// <summary>
     /// Moffstation - Pauses the lobby on server startup. Requires an admin to unpause before rounds begin
     /// </summary>
@@ -71,4 +72,5 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> EmptyAutoPause =
         CVarDef.Create("server.empty_auto_pause", true, CVar.SERVERONLY);
+    // Moffstation - End
 }

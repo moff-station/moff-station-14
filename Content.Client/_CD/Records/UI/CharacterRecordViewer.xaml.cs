@@ -551,6 +551,8 @@ public sealed partial class CharacterRecordViewer : FancyWindow
                 SecurityStatus.Detained => "hud_incarcerated",
                 SecurityStatus.Discharged => "hud_discharged",
                 SecurityStatus.Suspected => "hud_suspected",
+                SecurityStatus.Hostile => "hud_hostile",
+                SecurityStatus.Eliminated => "hud_eliminated",
                 _ => "SecurityIconNone",
             }
         );

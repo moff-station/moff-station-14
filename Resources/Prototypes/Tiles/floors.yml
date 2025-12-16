@@ -194,7 +194,7 @@
   id: FloorBrassFilled
   name: tiles-brass-floor-filled
   sprite: /Textures/Tiles/Misc/clockwork/clockwork_floor_filled.png
-  baseTurf: PlatingBrass
+  baseTurf: Plating #Moffstation Change - Changed from PlatingBrass to allow placement as floor tiles instead of just on lattice
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -206,7 +206,7 @@
   id: FloorBrassReebe
   name: tiles-brass-floor-reebe
   sprite: /Textures/Tiles/Misc/clockwork/reebe.png
-  baseTurf: PlatingBrass
+  baseTurf: Plating #Moffstation Change - Changed from PlatingBrass to allow placement as floor tiles instead of just on lattice
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -2074,7 +2074,7 @@
 - type: tile
   id: FloorWoodLarge
   name: tiles-wood-large
-  sprite: /Textures/Tiles/wood_large.png
+  sprite: /Textures/_Moffstation/Tiles/wood_large.png #New Large Wood Tiles
   variants: 4
   placementVariants:
   - 1.0

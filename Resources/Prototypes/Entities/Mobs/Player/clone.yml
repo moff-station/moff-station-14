@@ -10,23 +10,23 @@
   components:
   # general
   - DetailExaminable
+  - DisarmProne # Moffstation - Add feeble trait
   - Dna
   - Fingerprint
   - NpcFactionMember
   # traits
   - BlackAndWhiteOverlay
   - Clumsy
-  - Hemophilia
   - ImpairedMobility
   # - LegsParalyzed (you get healed)
   - LightweightDrunk
   - Muted
   - Narcolepsy
   - Pacified
-  - PainNumbness
   - Paracusia
   - PermanentBlindness
   - Snoring
+  - Uncloneable # Moffstation - Add uncloneable (wait, how are clones supposed to get uncloneable??)
   - Unrevivable
   # accents
   - Accentless
@@ -100,6 +100,8 @@
 - type: cloningSettings
   id: ParadoxCloningSettings
   parent: [BaseClone, Antag]
+  components:
+  - Forensics # This is so hugging data is copied to the clone, so you can't hug metagame them
 
 # changeling identity copying
 - type: cloningSettings

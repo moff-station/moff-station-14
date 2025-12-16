@@ -1,4 +1,3 @@
-using Content.Shared._Offbrand.Wounds; // Offbrand
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.MedicalScanner;
@@ -15,9 +14,9 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
     public bool? ScanMode;
     public bool? Bleeding;
     public bool? Unrevivable;
-    public WoundableHealthAnalyzerData? WoundableData; // Offbrand
+    public bool? Uncloneable; //Moffstation change - uncloneable (duh)
 
-    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, WoundableHealthAnalyzerData? woundableData) // Offbrand
+    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, bool? uncloneable) //Moffstation change - uncloneable
     {
         TargetEntity = targetEntity;
         Temperature = temperature;
@@ -25,7 +24,7 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
         ScanMode = scanMode;
         Bleeding = bleeding;
         Unrevivable = unrevivable;
-        WoundableData = woundableData; // Offbrand
+        Uncloneable = uncloneable; //Moffstation change - uncloneable
     }
 }
 

@@ -19,6 +19,8 @@
         Slash: 12
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  - type: AddAccentClothing 
+    accent: PirateAccent 
 
 - type: entity
   parent: [ ClothingHandsBase ]
@@ -41,3 +43,5 @@
         Slash: 10
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  - type: AddAccentClothing 
+    accent: PirateAccent

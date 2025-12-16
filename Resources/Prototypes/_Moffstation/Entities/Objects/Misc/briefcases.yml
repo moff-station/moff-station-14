@@ -1,0 +1,39 @@
+﻿- type: entity
+  parent: [BriefcaseBase, BaseSyndicateContraband]
+  id: BriefcaseSyndieFlashy
+  suffix: Syndicate, Empty
+  name: syndicate briefcase
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_syndie_flashy.rsi
+    state: icon
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseNanotrasen
+  name: professional briefcase
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_nt.rsi
+    state: icon
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseNanotrasenFlashy
+  name: nanotrasen briefcase
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_nt_flashy.rsi
+    state: icon
+
+- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseCentcomm
+  name: centcomm briefcase
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_centcomm.rsi
+    state: icon

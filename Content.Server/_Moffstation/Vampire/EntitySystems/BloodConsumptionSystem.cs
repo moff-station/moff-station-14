@@ -1,9 +1,9 @@
-﻿using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
+﻿using Content.Server.Body.Systems;
 using Content.Shared._Moffstation.Vampire.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Shared.Timing;
@@ -105,7 +105,7 @@ public sealed class BloodConsumptionSystem : EntitySystem
 	    && damage.Damage.AnyPositive()) // Vampires should be able to heal all damage types
         {
 	        // heal according to comp amount
-	        _damageSystem.TryChangeDamage(entity.Owner, entity.Comp.HealPerUpdate, true, false, damage);
+	        _damageSystem.TryChangeDamage((entity.Owner, damage), entity.Comp.HealPerUpdate, true, false);
 	        // subtract blood for healing
 	        _bloodstreamSystem.TryModifyBloodLevel((entity.Owner, bloodstream), entity.Comp.HealingBloodlossPerUpdate);
 	        return;

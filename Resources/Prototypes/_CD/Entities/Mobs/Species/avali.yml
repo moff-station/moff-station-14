@@ -49,7 +49,10 @@
         sprite: Mobs/Effects/brute_damage.rsi
         color: "#7a8bf2"
   - type: Bloodstream
-    bloodReagent: AmmoniaBlood
+    bloodReagents:
+      reagents:
+      - ReagentId: AmmoniaBlood
+        Quantity: 1
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg
@@ -82,6 +85,7 @@
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 296.15
     thermalRegulationTemperatureThreshold: 10
+  - type: EmpVulnerable #Moffstation - EMP Vulnerability
 
 - type: entity
   parent: BaseSpeciesDummy

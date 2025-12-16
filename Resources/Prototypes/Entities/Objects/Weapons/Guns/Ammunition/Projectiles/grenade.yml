@@ -4,9 +4,6 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBullet
   components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    state: buckshot
   - type: Projectile
     deleteOnCollide: false
     damage:
@@ -15,7 +12,7 @@
   - type: StaminaDamageOnCollide
     damage: 55
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25
 
 - type: entity
   id: PelletClusterLethal
@@ -23,16 +20,13 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBullet
   components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    state: buckshot
   - type: Projectile
     deleteOnCollide: false
     damage:
       types:
         Piercing: 45
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25
 
 - type: entity
   id: PelletClusterIncendiary
@@ -40,9 +34,6 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBulletIncendiary
   components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    state: buckshot-flare
   - type: Projectile
     deleteOnCollide: false
     damage:
@@ -53,7 +44,7 @@
     fireStacks: 1
     count: 10
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25
 
 - type: entity
   id: PelletClusterLessLethal
@@ -61,13 +52,10 @@
   categories: [ HideSpawnMenu ]
   parent: BaseBullet
   components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    state: buckshot
   - type: Projectile
     deleteOnCollide: false
     damage:
       types:
         Piercing: 5
   - type: TimedDespawn
-    lifetime: 1 # Moffstation - (Fragments Travel Farther)
+    lifetime: 0.25

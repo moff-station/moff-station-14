@@ -3,7 +3,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
 using Content.Shared.Body.Components;
 using Content.Shared.Database;
-using Content.Shared.Emag.Components;
+using Content.Shared.Damage.Components; //Moffstation - recycler damage change
 using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Mobs.Components;
@@ -99,7 +99,7 @@ public abstract class SharedMaterialReclaimerSystem : EntitySystem
             return false;
 
         if (_whitelistSystem.IsWhitelistFail(component.Whitelist, item) ||
-            _whitelistSystem.IsBlacklistPass(component.Blacklist, item))
+            _whitelistSystem.IsWhitelistPass(component.Blacklist, item))
             return false;
 
         if (Container.TryGetContainingContainer((item, null, null), out _) && !Container.TryRemoveFromContainer(item))
@@ -214,6 +214,7 @@ public abstract class SharedMaterialReclaimerSystem : EntitySystem
                component.Enabled &&
                !component.Broken &&
                HasComp<BodyComponent>(victim) &&
+               HasComp<DamageableComponent>(victim) && //Moffstation - recycler damage change
                _emag.CheckFlag(uid, EmagType.Interaction);
     }
 

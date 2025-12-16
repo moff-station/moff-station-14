@@ -1,0 +1,58 @@
+- type: entity
+  parent: MusicianPDA
+  id: MusicianPDAAltBase
+  name: musician alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-popidol"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: MusicianPDAAltBase
+  id: PopIdolPDA
+  name: pop idol PDA
+  components:
+  - type: RenameId
+    value: job-name-musician-pop-idol
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-popidol
+  - type: PdaBorderColor
+    borderColor: "#fbfbf4"
+
+- type: entity
+  parent: MusicianPDAAltBase
+  id: RockStarPDA
+  name: rock star PDA
+  components:
+  - type: RenameId
+    value: job-name-musician-rock-star
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-rockstar
+  - type: PdaBorderColor
+    borderColor: "#450e16"

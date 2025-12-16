@@ -1,0 +1,94 @@
+- type: entity
+  parent: BotanistPDA
+  id: BotanistPDAAltBase
+  name: botanist alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-gardener"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: GardenerPDA
+  name: gardener PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-gardener
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-gardener
+  - type: PdaBorderColor
+    borderColor: "#44843c"
+    accentVColor: "#cc9448"
+    accentHColor: "#cc8cc2"
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: HerbalistPDA
+  name: herbalist PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-herbalist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-herbalist
+  - type: PdaBorderColor
+    borderColor: "#44843c"
+    accentVColor: "#cc9448"
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: HydroponicsTechnicianPDA
+  name: hydroponics technician PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-hydroponics-technician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hydroponicstechnician
+  - type: PdaBorderColor
+    borderColor: "#44843c"
+    accentVColor: "#00cc35"
+    accentHColor: "#c7c7c7"
+
+- type: entity
+  parent: BotanistPDAAltBase
+  id: RancherPDA
+  name: rancher PDA
+  components:
+  - type: RenameId
+    value: job-name-botanist-rancher
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-rancher
+  - type: PdaBorderColor
+    borderColor: "#3f6484"
+    accentVColor: "#ccbe44"

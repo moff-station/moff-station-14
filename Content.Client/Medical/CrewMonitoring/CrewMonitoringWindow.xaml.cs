@@ -89,7 +89,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 if (existingSensor.Coordinates != null && sensor.Coordinates == null)
                     continue;
 
-                if (existingSensor.WoundableData != null && sensor.WoundableData == null) // Offbrand
+                if (existingSensor.DamagePercentage != null && sensor.DamagePercentage == null)
                     continue;
             }
 
@@ -130,7 +130,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             };
 
             deparmentLabel.SetMessage(department);
-            deparmentLabel.StyleClasses.Add(StyleNano.StyleClassTooltipActionDescription);
+            deparmentLabel.StyleClasses.Add("font-large");
 
             SensorsTable.AddChild(deparmentLabel);
 
@@ -155,8 +155,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 HorizontalExpand = true,
             };
 
-            deparmentLabel.SetMessage(Loc.GetString("crew-monitoring-user-interface-no-department"));
-            deparmentLabel.StyleClasses.Add(StyleNano.StyleClassTooltipActionDescription);
+            deparmentLabel.SetMessage(Loc.GetString("crew-monitoring-ui-no-department-label"));
 
             SensorsTable.AddChild(deparmentLabel);
 
@@ -194,7 +193,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             };
 
             if (sensor.SuitSensorUid == _trackedEntity)
-                sensorButton.AddStyleClass(StyleNano.StyleClassButtonColorGreen);
+                sensorButton.AddStyleClass(StyleClass.Positive);
 
             SensorsTable.AddChild(sensorButton);
 
@@ -237,24 +236,16 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "dead");
             }
 
-            // Begin Offbrand Removals
-            // else if (sensor.DamagePercentage != null)
-            // {
-            //     var index = MathF.Round(4f * sensor.DamagePercentage.Value);
-
-            //     if (index >= 5)
-            //         specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "critical");
-
-            //     else
-            //         specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "health" + index);
-            // }
-            // End Offbrand Removals
-            // Begin Offbrand Additions
-            if (sensor.WoundableData?.AnyVitalCritical == true)
+            else if (sensor.DamagePercentage != null)
             {
-                specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "critical");
+                var index = MathF.Round(4f * sensor.DamagePercentage.Value);
+
+                if (index >= 5)
+                    specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "critical");
+
+                else
+                    specifier = new SpriteSpecifier.Rsi(new ResPath("Interface/Alerts/human_crew_monitoring.rsi"), "health" + index);
             }
-            // End Offbrand Additions
 
             // Status icon
             var statusIcon = new AnimatedTextureRect
@@ -311,26 +302,6 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             };
 
             jobContainer.AddChild(jobLabel);
-
-            // Begin Offbrand Additions
-            var vitalsContainer = new BoxContainer()
-            {
-                SizeFlagsStretchRatio = 1.25f,
-                Orientation = LayoutOrientation.Horizontal,
-                HorizontalExpand = true,
-                SeparationOverride = 8,
-            };
-
-            if (sensor.WoundableData is { } woundable)
-            {
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-heart-rate", ("rate", woundable.HeartRate), ("rating", woundable.HeartRateRating)) });
-                var (systolic, diastolic) = woundable.BloodPressure;
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-blood-pressure", ("systolic", systolic), ("diastolic", diastolic), ("rating", woundable.BloodPressureRating)) });
-                vitalsContainer.AddChild(new RichTextLabel() { Text = Loc.GetString("offbrand-crew-monitoring-oxygenation", ("oxygenation", $"{woundable.BloodOxygenation * 100:F1}"), ("rating", woundable.BloodOxygenationRating)) });
-            }
-
-            mainContainer.AddChild(vitalsContainer);
-            // End Offbrand Additions
 
             // Add user coordinates to the navmap
             if (coordinates != null && NavMap.Visible && _blipTexture != null)
@@ -392,10 +363,10 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             var castSensor = (CrewMonitoringButton) sensor;
 
             if (castSensor.SuitSensorUid == prevTrackedEntity)
-                castSensor.RemoveStyleClass(StyleNano.StyleClassButtonColorGreen);
+                castSensor.RemoveStyleClass(StyleClass.Positive);
 
             else if (castSensor.SuitSensorUid == currTrackedEntity)
-                castSensor.AddStyleClass(StyleNano.StyleClassButtonColorGreen);
+                castSensor.AddStyleClass(StyleClass.Positive);
 
             if (castSensor?.Coordinates == null)
                 continue;

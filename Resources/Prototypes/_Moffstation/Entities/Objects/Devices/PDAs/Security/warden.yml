@@ -1,0 +1,60 @@
+- type: entity
+  parent: WardenPDA
+  id: WardenPDAAltBase
+  name: warden alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-correctionsofficer"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: WardenPDAAltBase
+  id: CorrectionsOfficerPDA
+  name: corrections officer PDA
+  components:
+  - type: RenameId
+    value: job-name-warden-corrections-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-correctionsofficer
+  - type: PdaBorderColor
+    borderColor: "#A32D26"
+    accentVColor: "#FF9751"
+
+- type: entity
+  parent: WardenPDAAltBase
+  id: DetentionOfficerPDA
+  name: detention officer PDA
+  components:
+  - type: RenameId
+    value: job-name-warden-detention-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-detentionofficer
+  - type: PdaBorderColor
+    borderColor: "#3c4963"
+    accentVColor: "#A32D26"

@@ -14,7 +14,7 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: RedLightLaser
     fireCost: 50
   - type: ItemSlots
@@ -76,7 +76,7 @@
         whitelist:
           tags:
           - PowerCellBigIron
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletBigIronDisabler
     fireCost: 50
   - type: BatteryWeaponFireModes
@@ -85,3 +85,13 @@
       fireCost: 50
     - proto: BulletBigIronLethal
       fireCost: 100
+
+- type: entity
+  parent: WeaponPistolCHIMP
+  id: WeaponPistolCHIMPBorg
+  name: integrated C.H.I.M.P.
+  description: An even smaller particle handcannon, designed for cyborg use.
+  components:
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 10

@@ -1,0 +1,16 @@
+- type: entity
+  name: roasted coffee beans
+  parent: ProduceBaseRuminant
+  id: LeavesCoffeeDried
+  description: "Roasted coffee beans, ready to be ground."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: GroundCoffee
+          Quantity: 5
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
+    state: dried
+

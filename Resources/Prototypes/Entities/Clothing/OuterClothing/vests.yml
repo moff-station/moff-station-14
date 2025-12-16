@@ -2,7 +2,7 @@
 
 #Hazard vest
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: [ ClothingOuterStorageBase, AllowSuitStorageClothing ] # Moffstation - I literally just want to be a vox with a hi-viz on instead of a tank harness
   id: ClothingOuterVestHazard
   name: hi-viz vest
   description: A high-visibility vest used in work zones.
@@ -28,6 +28,12 @@
       - state: equipped-OUTERCLOTHING-unshaded
         shader: shaded
         #same trick here
+      outerClothing-vox: # Moffstation - Begin - this makes the vox sprites actually get used!
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded # Moffstation - End
   - type: Reflect
     reflectProb: 0.02
     reflects:
@@ -65,7 +71,3 @@
     size: Normal # Make smaller than typical outer clothing
     shape:
     - 0, 0, 0, 1
-  - type: Tag # Offbrand
-    tags:
-    - OperatableClothing
-    - WhitelistChameleon

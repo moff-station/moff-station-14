@@ -4,12 +4,16 @@
   description: job-description-rd
   playTimeTracker: JobResearchDirector
   requirements:
+  # Moffstation - Start - Change role timers
+  - !type:OverallPlaytimeRequirement
+    time: 20h
+  # Moffstation - End
   - !type:RoleTimeRequirement
     role: JobScientist
-    time: 18000 #5 hrs
+    time: 5h
   - !type:DepartmentTimeRequirement
     department: Science
-    time: 36000 #10 hrs
+    time: 10h
   weight: 10
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"

@@ -1,0 +1,25 @@
+# Player: Davyei - Character: Kazo
+- type: entity
+  parent: ClothingShoesSkates
+  id: PersonalItemKazoSkates
+  name: performer skates
+  description: "Skate like 39!"
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Davyei/Kazo/kazos-skates.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Davyei/Kazo/kazos-skates.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Wearables/Davyei/Kazo/kazos-skates.rsi
+  - type: DetailExaminable
+    content: A small message reminds employees to clock out their skates outside of work hours, it has been poorly scribbled over in marker.
+
+- type: loadout
+  id: PersonalItemKazoSkates
+  storage:
+    back:
+    - PersonalItemKazoSkates
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kazo

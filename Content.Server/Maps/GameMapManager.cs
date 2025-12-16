@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.GameTicking;
 using Content.Shared.CCVar;
+using Content.Shared.Maps;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
@@ -89,10 +90,10 @@ public sealed class GameMapManager : IGameMapManager
         _random.Shuffle(maps);
         foreach (var map in maps)
         {
+            _rollOverVotes[map] = 0; // Moffstation - Initialize rollover votes for all maps.
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
-            _rollOverVotes[map] = 0;    // Moffstation - initialize rollover votes
         }
     }
 
