@@ -98,10 +98,10 @@
   description: An easily portable tank for emergencies. Contains very little oxygen, rated for survival use only. It can hold 0.66 L of gas.
   components:
   - type: Sprite
-    sprite: Objects/Tanks/emergency.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency.rsi
   - type: Item
 #    size: Small # Moffstation - Moved to `EmergencyGasTankBase`
-    sprite: Objects/Tanks/emergency.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency.rsi
 #    storedRotation: -45 # Moffstation - Moved to `EmergencyGasTankBase`
 # Moffstation - Start
 #  - type: GasTank
@@ -110,7 +110,7 @@
 #      temperature: 293.15
   # Moffstation - End
   - type: Clothing
-    sprite: Objects/Tanks/emergency.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency.rsi
 # Moffstation - Start
 #    slots:
 #    - Pocket
@@ -154,15 +154,15 @@
   description: An emergency tank with extended capacity. Technically rated for prolonged use. It can hold 1.5 L of gas.
   components:
   - type: Sprite
-    sprite: Objects/Tanks/emergency_extended.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency_extended.rsi
   - type: Item
-    sprite: Objects/Tanks/emergency_extended.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency_extended.rsi
   - type: GasTank
     air:
       volume: 1.5
       temperature: 293.15
   - type: Clothing
-    sprite: Objects/Tanks/emergency_extended.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency_extended.rsi
   # Moffstation - Start
   - type: GasTankVisuals
     visuals: Oxygen
@@ -192,15 +192,15 @@
   description: A high-grade dual-tank emergency life support container. It holds a decent amount of oxygen for its small size. It can hold 2.5 L of gas.
   components:
   - type: Sprite
-    sprite: Objects/Tanks/emergency_double.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency_double.rsi
   - type: Item
-    sprite: Objects/Tanks/emergency_double.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency_double.rsi
   - type: GasTank
     air:
       volume: 2.5
       temperature: 293.15
   - type: Clothing
-    sprite: Objects/Tanks/emergency_double.rsi
+    sprite: _Moffstation/Objects/Tanks/emergency_double.rsi
   - type: MeleeWeapon
     attackRate: 0.9
     damage:
