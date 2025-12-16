@@ -1,5 +1,4 @@
 using Content.Client.UserInterface.Controls;
-using Content.Shared._DV.CustomObjectiveSummary;
 using Content.Shared._Moffstation.Objectives;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
@@ -8,7 +7,6 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Client._Moffstation.ObjectivePicker;
 
@@ -24,9 +22,6 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
     private SharedMindSystem? _mind;
 
     private TimeSpan _nextTextUpdate = TimeSpan.Zero;
-
-    public event Action<string>? OnSubmitted;
-    public event Action<string>? UpdateText;
 
     public ObjectivePickerWindow()
     {
@@ -54,22 +49,17 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 
         foreach (var objective in potentialObjectivesComponent.ObjectiveOptions)
         {
-            if (_objectives.GetInfo(objective, mindUid, mindComp) is not { } info)
-                return;
-
-            var objectiveBox = new ObjectivePickerEntry
+            var objectiveBox = new BoxContainer
             {
-                Objective = info,
-                MainButton =
-                {
-                    Text = info.Title
-                },
-                ObjectiveTitle =
-                {
-                    Text = info.Title,
-                },
+                Orientation = BoxContainer.LayoutOrientation.Horizontal,
             };
 
+            var objectiveText = new RichTextLabel
+            {
+                Text = objective.info.Title
+            };
+
+            objectiveBox.Children.Add(objectiveText);
             ObjectiveList.Children.Add(objectiveBox);
         }
     }

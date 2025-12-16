@@ -1,10 +1,10 @@
+using System.Linq;
 using Content.Server._Moffstation.Objectives.Components;
 using Content.Server.Antag;
-using Content.Server.Antag.Components;
 using Content.Server.Objectives;
 using Content.Shared._Moffstation.Objectives;
 using Content.Shared.Mind;
-using Content.Shared.Objectives.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
@@ -15,6 +15,7 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
     {
@@ -41,15 +42,15 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
             if (!_random.Prob(set.Prob))
                 continue;
 
-            for (var pick = 0; pick < set.MaxPicks; pick++)
+            foreach (var objective in _objectives.GetRandomObjectives(mindId, mind, set.Groups, float.MaxValue).Take(ent.Comp.MaxOptions))
             {
-                if (_objectives.GetRandomObjective(mindId, mind, set.Groups, float.MaxValue) is not { } objective)
+                if (_objectives.GetInfo(objective, mindId, mind) is not { } info)
                     continue;
 
-                potentialObjectives.ObjectiveOptions.Add(objective);
+                potentialObjectives.ObjectiveOptions.Add((GetNetEntity(objective), info));
             }
         }
 
-        DirtyEntity(mindId);
+        Dirty(mindId, potentialObjectives);
     }
 }

@@ -4,5 +4,4 @@
                       MinSize="300 250"
                       SetSize="550 370">
     <BoxContainer Name= "ObjectiveList" Orientation="Vertical" Margin="10 10 20 0"/>
-    <controls:ConfirmButton Name="SubmitButton" ConfirmationText="{Loc 'custom-objective-window-submit-button-text-confirm'}" Text="{Loc 'custom-objective-window-submit-button-text'}" Margin="0 10 0 10" />
 </controls:FancyWindow>
