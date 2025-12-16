@@ -69,17 +69,37 @@ public sealed class ItemSystem : SharedItemSystem
     }
 
     // Moffstation - Begin - Add appearance data based stored sprites
-    public Entity<SpriteComponent>? SpawnVirtualEntityForInventoryGridStorage(Entity<ItemComponent> item)
+    /// <summary>
+    /// Creates or updates <see cref="existingVirtualEntity"/> with the <see cref="ItemComponent.StoredLayers"/> on
+    /// <paramref name="item"/>. In the case that no such layers can be retrieved, returns null, indicating the entity's
+    /// default sprite should be used instead.
+    /// </summary>
+    public Entity<SpriteComponent>? SpawnOrUpdateVirtualEntityForInventoryGridStorage(
+        Entity<ItemComponent> item,
+        Entity<SpriteComponent>? existingVirtualEntity
+    )
     {
         if (item.Comp.StoredLayers is not { } storedLayers)
             return null;
 
-        var virt = Spawn("VirtualItem", MapCoordinates.Nullspace);
-        var sprite = (virt, sprite: EnsureComp<SpriteComponent>(virt));
+        Entity<SpriteComponent> sprite;
+        if (existingVirtualEntity is { } existing)
+        {
+            sprite = existing;
+        }
+        else
+        {
+            var virt = Spawn("VirtualItem", MapCoordinates.Nullspace);
+            sprite = (virt, EnsureComp<SpriteComponent>(virt));
+        }
+
+        var spriteNullable = sprite.AsNullable();
         foreach (var (key, storedLayer) in storedLayers)
         {
-            var layer = _sprite.AddLayer(sprite, storedLayer, index: null);
-            _sprite.LayerMapAdd(sprite, key, layer);
+            _sprite.RemoveLayer(spriteNullable, key, logMissing: false);
+
+            var layer = _sprite.AddLayer(spriteNullable, storedLayer, index: null);
+            _sprite.LayerMapAdd(spriteNullable, key, layer);
         }
 
         return sprite;

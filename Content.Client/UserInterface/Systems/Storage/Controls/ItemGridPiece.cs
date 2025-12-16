@@ -15,7 +15,7 @@ public sealed class ItemGridPiece : Control, IEntityControl
     private readonly StorageUIController _storageController;
 
     private readonly List<(Texture, Vector2)> _texturesPositions = new();
-    private readonly List<EntityUid> _virtualItems = new();
+    private readonly Dictionary<EntityUid, Entity<SpriteComponent>> _virtualItems = new(); // Moffstation - Track virtual items made for this UI. This is a map of real entity to virtual entity.
 
     public readonly EntityUid Entity;
     public ItemStorageLocation Location;
@@ -191,14 +191,27 @@ public sealed class ItemGridPiece : Control, IEntityControl
         }
         else
         {
-            var toDraw = Entity;
-            if (_entityManager.System<ItemSystem>()
-                    .SpawnVirtualEntityForInventoryGridStorage((Entity, itemComponent))
-                    ?.Owner is { } virt)
+            // Moffstation - Begin, Use AppearanceData for stored sprites.
+            // Get-and-update or create the virtual entity to draw for this entity.
+            Entity<SpriteComponent>? existingVirtualItem = _virtualItems.TryGetValue(Entity, out var e) ? e : null;
+            var virtualItemToDraw = _entityManager.System<ItemSystem>()
+                .SpawnOrUpdateVirtualEntityForInventoryGridStorage((Entity, itemComponent), existingVirtualItem);
+
+            // If the old virtual entity is different from the new one (or the new one doesn't exist), delete the old one.
+            if (existingVirtualItem is not null && virtualItemToDraw != existingVirtualItem)
             {
-                toDraw = virt;
-                _virtualItems.Add(virt);
+                _virtualItems.Remove(Entity);
+                _entityManager.QueueDeleteEntity(existingVirtualItem.Value);
             }
+
+            // Put a new virtual entity into the map if it doesn't exist yet.
+            if (existingVirtualItem is null && virtualItemToDraw is not null)
+            {
+                _virtualItems[Entity] = virtualItemToDraw.Value;
+            }
+
+            var toDraw = virtualItemToDraw?.Owner ?? Entity;
+            // Moffstation - End
 
             _entityManager.System<SpriteSystem>().ForceUpdate(Entity);
             handle.DrawEntity(toDraw, // Moffstation - Add appearance data based stored sprites
@@ -314,9 +327,9 @@ public sealed class ItemGridPiece : Control, IEntityControl
 
         if (disposing)
         {
-            foreach (var virtualItem in _virtualItems)
+            foreach (var (_, virtualEntity) in _virtualItems)
             {
-                _entityManager.QueueDeleteEntity(virtualItem);
+                _entityManager.QueueDeleteEntity(virtualEntity);
             }
         }
     }
