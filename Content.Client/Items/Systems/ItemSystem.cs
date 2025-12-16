@@ -1,11 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._Moffstation.Extensions; // Moffstation
 using Content.Shared.Hands;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
+using Robust.Shared.Map; // Moffstation
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 
 namespace Content.Client.Items.Systems;
@@ -45,8 +47,44 @@ public sealed class ItemSystem : SharedItemSystem
     {
         // if the item is in a container, it might be equipped to hands or inventory slots --> update visuals.
         if (Container.TryGetContainingContainer((uid, null, null), out var container))
+        {
+            // Moffstation - Begin - Add appearance data based stored sprites
+            if (TryComp<ItemComponent>(uid, out var itemComp))
+            {
+                // Might be in a storage grid, so update those visuals.
+                var ev = new GetStoredVisualsEvent();
+                RaiseLocalEvent(uid, ref ev);
+                itemComp.StoredLayers = ev.Layers.Count > 0
+                    ? ev.Layers.Select(keyAndLayer => (
+                            keyAndLayer.Item1,
+                            keyAndLayer.Item2.WithUnlessAlreadySpecified(rsiPath: itemComp.RsiPath)
+                        ))
+                        .ToArray()
+                    : null;
+            }
+            // Moffstation - End
+
             RaiseLocalEvent(container.Owner, new VisualsChangedEvent(GetNetEntity(uid), container.ID));
+        }
     }
+
+    // Moffstation - Begin - Add appearance data based stored sprites
+    public Entity<SpriteComponent>? SpawnVirtualEntityForInventoryGridStorage(Entity<ItemComponent> item)
+    {
+        if (item.Comp.StoredLayers is not { } storedLayers)
+            return null;
+
+        var virt = Spawn("VirtualItem", MapCoordinates.Nullspace);
+        var sprite = (virt, sprite: EnsureComp<SpriteComponent>(virt));
+        foreach (var (key, storedLayer) in storedLayers)
+        {
+            var layer = _sprite.AddLayer(sprite, storedLayer, index: null);
+            _sprite.LayerMapAdd(sprite, key, layer);
+        }
+
+        return sprite;
+    }
+    // Moffstation - End
 
     /// <summary>
     ///     An entity holding this item is requesting visual information for in-hand sprites.
@@ -113,4 +151,16 @@ public sealed class ItemSystem : SharedItemSystem
         return true;
     }
     #endregion
+}
+
+[ByRefEvent]
+public record struct GetStoredVisualsEvent()
+{
+    /// <summary>
+    ///     The layers that will be added to the entity that is holding this item.
+    /// </summary>
+    /// <remarks>
+    ///     Note that the actual ordering of the layers depends on the order in which they are added to this list;
+    /// </remarks>
+    public List<(string, PrototypeLayerData)> Layers = new();
 }

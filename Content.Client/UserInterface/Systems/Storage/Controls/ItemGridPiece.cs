@@ -15,6 +15,7 @@ public sealed class ItemGridPiece : Control, IEntityControl
     private readonly StorageUIController _storageController;
 
     private readonly List<(Texture, Vector2)> _texturesPositions = new();
+    private readonly List<EntityUid> _virtualItems = new();
 
     public readonly EntityUid Entity;
     public ItemStorageLocation Location;
@@ -190,8 +191,17 @@ public sealed class ItemGridPiece : Control, IEntityControl
         }
         else
         {
+            var toDraw = Entity;
+            if (_entityManager.System<ItemSystem>()
+                    .SpawnVirtualEntityForInventoryGridStorage((Entity, itemComponent))
+                    ?.Owner is { } virt)
+            {
+                toDraw = virt;
+                _virtualItems.Add(virt);
+            }
+
             _entityManager.System<SpriteSystem>().ForceUpdate(Entity);
-            handle.DrawEntity(Entity,
+            handle.DrawEntity(toDraw, // Moffstation - Add appearance data based stored sprites
                 PixelPosition + iconPosition,
                 Vector2.One * 2 * UIScale,
                 Angle.Zero,
@@ -296,6 +306,21 @@ public sealed class ItemGridPiece : Control, IEntityControl
     }
 
     public EntityUid? UiEntity => Entity;
+
+    // Moffstation - Begin - Clean up virtual items made for this UI
+    protected override void Dispose(bool disposing)
+    {
+        base.Dispose(disposing);
+
+        if (disposing)
+        {
+            foreach (var virtualItem in _virtualItems)
+            {
+                _entityManager.QueueDeleteEntity(virtualItem);
+            }
+        }
+    }
+    // Moffstation - End
 }
 
 public enum ItemGridPieceMarks
