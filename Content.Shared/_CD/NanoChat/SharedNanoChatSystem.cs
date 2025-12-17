@@ -337,7 +337,6 @@ public abstract class SharedNanoChatSystem : EntitySystem
                 foreach (var keyNvalue in othercard.Messages)
                 {
                     messagesMerged.TryAdd(keyNvalue.Key, keyNvalue.Value);
-
                 }
                 collectedcards.Append(othercard);
             }
