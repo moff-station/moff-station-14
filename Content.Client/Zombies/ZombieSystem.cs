@@ -41,7 +41,12 @@ public sealed class ZombieSystem : SharedZombieSystem
 
     private void OnStartup(EntityUid uid, ZombieComponent component, ComponentStartup args)
     {
-        if (TryComp<CollectiveMindComponent>(uid, out var collectiv)) { _collectiveMindUpdateSystem.UpdateCollectiveMind(uid, collectiv); }  // Moffstation - Zombies not getting added to their Hivemind
+        // Moffstation - Begin - Update to give zombies their collective mind communication
+        if (TryComp<CollectiveMindComponent>(uid, out var collective))
+        {
+            _collectiveMindUpdateSystem.UpdateCollectiveMind(uid, collective);
+        }
+        // Moffstation - End
         if (HasComp<HumanoidAppearanceComponent>(uid))
             return;
 
