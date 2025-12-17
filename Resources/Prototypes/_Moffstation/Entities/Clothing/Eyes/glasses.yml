@@ -8,6 +8,8 @@
     sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
+  - type: StealTarget
+    stealGroup: steal-target-groups-Valkyrie-HUD
 
 - type: entity
   parent: ClothingEyesHudMedical
