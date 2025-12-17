@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared._CD.CartridgeLoader.Cartridges;
 using Content.Shared.Examine;
 using Robust.Shared.Timing;
@@ -326,9 +327,9 @@ public abstract class SharedNanoChatSystem : EntitySystem
             return;
         }
 
-        var messagesMerged = card.Comp.Messages;
+        var messagesMerged = new Dictionary<uint, List<NanoChatMessage>>();
         var cards = EntityQuery<NanoChatCardComponent>(); //added so that this methode only has to be called once :3
-
+        var collectedcards = new List<NanoChatCardComponent>();
         //locates all other cards and merges their messages into a dictoanry, skiping anything already added
         foreach(var othercard in cards)
         {
@@ -336,15 +337,17 @@ public abstract class SharedNanoChatSystem : EntitySystem
                 foreach (var keyNvalue in othercard.Messages)
                 {
                     messagesMerged.TryAdd(keyNvalue.Key, keyNvalue.Value);
+
                 }
+                collectedcards.Append(othercard);
             }
         }
         //set the messages for all cards sharing the same number
-        foreach (var cardToSync in cards)
+        foreach (var cardToSync in collectedcards)
         {
             if (cardToSync.Number == card.Comp.Number)
             {
-            cardToSync.Messages = messagesMerged;
+            cardToSync.Messages = messagesMerged.ToDictionary();
             }
         }
         Dirty(card);
