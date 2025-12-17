@@ -8,10 +8,10 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Items/Artycookie/Surge Flux-Bight/SurgeTerrarium.rsi
+    sprite: _Moffstation/PersonalItems/Items/Artycookie/Surge_Flux-Bight/SurgeTerrarium.rsi
     state: icon
   - type: Item
-    sprite: _Moffstation/PersonalItems/Items/Artycookie/Surge Flux-Bight/SurgeTerrarium.rsi
+    sprite: _Moffstation/PersonalItems/Items/Artycookie/Surge_Flux-Bight/SurgeTerrarium.rsi
   - type: DetailExaminable
     content: A tiny hand-crafted terrarium of what looks to be an underwater environment, filled with color-shifting crystals and more in very tiny details. Made with many pieces of high quality material, one can only see the true beauty of the object close up. 'SFB' is engraved on the side of it along with words in another language. 'Leuria'
 
@@ -23,4 +23,4 @@
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
-    - Surge Flux-Bight
+    - Surge_Flux-Bight
