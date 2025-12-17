@@ -1,3 +1,4 @@
+using Content.Client.Lobby.UI;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Moffstation.Objectives;
 using Content.Shared.Mind;
@@ -20,6 +21,10 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
     private SpriteSystem _sprite;
     private SharedMindSystem _mind;
 
+    public event Action<NetEntity>? OnSelected;
+
+    public HashSet<NetEntity> SelectedObjectives;
+
     public ObjectivePickerWindow()
     {
         RobustXamlLoader.Load(this);
@@ -27,6 +32,7 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 
         _mind ??= _entity.System<SharedMindSystem>();
         _sprite ??= _entity.System<SpriteSystem>();
+        SelectedObjectives ??= new HashSet<NetEntity>();
 
         _mind.TryGetMind(_players.LocalSession, out var mindUid, out var mindComp);
 
@@ -35,14 +41,19 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 
         foreach (var objective in potentialObjectivesComponent.ObjectiveOptions)
         {
+            var button = new Button
+            {
+                ToggleMode = true,
+            };
+
             var objectiveBox = new BoxContainer
             {
                 Orientation = BoxContainer.LayoutOrientation.Horizontal,
             };
 
-            var icon = new TextureButton
+            var icon = new TextureRect
             {
-                TextureNormal = _sprite.Frame0(objective.info.Icon),
+                Texture = _sprite.Frame0(objective.info.Icon),
             };
 
             var objectiveText = new RichTextLabel
@@ -52,7 +63,10 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 
             objectiveBox.Children.Add(icon);
             objectiveBox.Children.Add(objectiveText);
-            ObjectiveList.Children.Add(objectiveBox);
+            button.Children.Add(objectiveBox);
+
+            button.OnPressed += _ => OnSelected?.Invoke(objective.netEntity);
+            ObjectiveList.Children.Add(button);
         }
     }
 }
