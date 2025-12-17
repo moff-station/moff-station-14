@@ -345,12 +345,10 @@ public abstract class SharedNanoChatSystem : EntitySystem
         //set the messages for all cards sharing the same number
         foreach (var cardToSync in collectedcards)
         {
-            if (cardToSync.Number == card.Comp.Number)
-            {
             cardToSync.Messages = messagesMerged.ToDictionary();
-            }
+            Entity<NanoChatCardComponent?> cleanCard = (cardToSync.Owner, cardToSync);
+            Dirty(cleanCard);
         }
-        Dirty(card);
     }
     // Moffstation - End
     #endregion
