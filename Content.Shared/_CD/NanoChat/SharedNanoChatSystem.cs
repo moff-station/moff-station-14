@@ -344,10 +344,10 @@ public abstract class SharedNanoChatSystem : EntitySystem
         {
             if (cardToSync.Number == card.Comp.Number)
             {
-            cardToSync.Messages = messagesMerged;
+                cardToSync.Messages = messagesMerged;
+                Dirty(cardToSync)
             }
         }
-        Dirty(card);
     }
     // Moffstation - End
     #endregion
