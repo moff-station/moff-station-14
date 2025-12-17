@@ -132,16 +132,16 @@ public sealed partial class CloningSystem
 
         _movementSpeedModifier.CopyComponent(ent.AsNullable(), args.CloneUid);
     }
-    #region Moffstation - Added the Ability for the Cloning system to clone Id cards
+
     // Moffstation - Begin - Added the Ability to copy Id Cards
     private void OnCloneId(Entity<IdCardComponent> ent, ref CloningItemEvent args)
     {
         _idCardSystem.CopyIdCard(ent.AsNullable(), args.CloneUid);
     }
+    
     private void OnClonePda(Entity<PdaComponent> ent, ref CloningItemEvent args)
     {
         _idCardSystem.CopyPda(ent.AsNullable(), args.CloneUid);
     }
     // Moffstation - End
-    #endregion
 }

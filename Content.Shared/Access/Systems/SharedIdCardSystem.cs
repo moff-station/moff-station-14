@@ -331,36 +331,39 @@ public abstract class SharedIdCardSystem : EntitySystem
             ExpireId((uid, comp));
         }
     }
-    #region Moffstation - Added the Ability for the Cloning system to clone Id cards
     // Moffstation - Begin - Added the Ability for the Cloning system to clone Id cards
     public void CopyIdCard(Entity<IdCardComponent?> source, EntityUid target)
     {
-        if (!Resolve(source.Owner, ref source.Comp))
-        {
+        if (!Resolve(source, ref source.Comp))
             return;
+
+        CopyComp(source, target, source.Comp); //Copy job title and such
+        if (TryComp<NanoChatCardComponent>(source.Owner, out var nanoChatCardComp))
+        {
+            CopyComp(source, target, nanoChatCardComp); //Copy Nanochat number and such}
         }
-        CopyComp(source.Owner, target, source.Comp); //Copy Job Titel and such
-        CopyComp(source.Owner, target, Comp<NanoChatCardComponent>(source.Owner)); //Copy Nanochat Number and such
+
         UpdateEntityName(target);
     }
+
     public void CopyPda(Entity<PdaComponent?> source, EntityUid target)
     {
-        if (!Resolve(source.Owner, ref source.Comp))
-        {
+        if (!Resolve(source, ref source.Comp) ||
+            source.Comp.ContainedId is not { } srcIdEnt ||
+            CompOrNull<PdaComponent>(target)?.ContainedId is not { } targetIdEnt)
             return;
-        }
-        var targetCard = Comp<PdaComponent>(target).ContainedId;
-        if (source.Comp.ContainedId.HasValue && Comp<PdaComponent>(target).ContainedId.HasValue && targetCard.HasValue)
+
+        if (TryComp<NanoChatCardComponent>(srcIdEnt, out var srcNanoChat))
         {
-            var sourceId = source.Comp.ContainedId.Value;
-            var targetId = targetCard.Value;
-            var nanoCompSource = Comp<NanoChatCardComponent>(sourceId);
-            var idCardCompSource = Comp<IdCardComponent>(sourceId);
-            CopyComp(sourceId, targetId, nanoCompSource);
-            CopyComp(sourceId, targetId, idCardCompSource);
-            UpdateEntityName(targetId);
+            CopyComp(srcIdEnt, targetIdEnt, srcNanoChat);
         }
+
+        if (TryComp<IdCardComponent>(srcIdEnt, out var srcId))
+        {
+            CopyComp(srcIdEnt, targetIdEnt, srcId);
+        }
+
+        UpdateEntityName(targetIdEnt);
     }
     // Moffstation - End
-    #endregion
 }
