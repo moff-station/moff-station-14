@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingEyesGlassesChemical, ShowMedicalIcons, BaseCommandContraband]
+  parent: [ClothingEyesGlassesChemical, ShowMedicalIcons, BaseCommandContraband, BaseGrandTheftContraband]
   id: ClothingEyesGlassesMedChem
   name: valkyrie hud
   description: Named for the company that designed it, the valkyrie hud combines the functions of chemical analysis and medical scanning into a single head-mounted device. Issued to the Chief Medical Officer.
@@ -9,7 +9,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
   - type: StealTarget
-    stealGroup: steal-target-groups-Valkyrie-HUD
+    stealGroup: ClothingEyesGlassesMedChem
 
 - type: entity
   parent: ClothingEyesHudMedical
