@@ -22,6 +22,7 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<AntagRandomObjectivesComponent, AfterAntagEntitySelectedEvent>(OnAntagSelected);
+        SubscribeNetworkEvent<ObjectivePickerSelected>(OnObjectivesSelected);
     }
 
     private void OnAntagSelected(Entity<AntagRandomObjectivesComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -52,5 +53,10 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
         }
 
         Dirty(mindId, potentialObjectives);
+    }
+
+    private void OnObjectivesSelected(ObjectivePickerSelected ev)
+    {
+
     }
 }

@@ -1,5 +1,6 @@
 using Content.Shared.Objectives;
 using Robust.Shared.GameStates;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Objectives;
@@ -19,3 +20,10 @@ public sealed partial class PotentialObjectivesComponent : Component
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class ObjectivePickerOpenMessage : EntityEventArgs;
+
+[Serializable, NetSerializable]
+public sealed class ObjectivePickerSelected : EntityEventArgs
+{
+    public NetEntity UserId;
+    public HashSet<NetEntity> SelectedObjectives = new();
+}
