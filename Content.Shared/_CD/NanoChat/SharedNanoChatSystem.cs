@@ -350,5 +350,4 @@ public abstract class SharedNanoChatSystem : EntitySystem
     }
     // Moffstation - End
     #endregion
-    #endregion
 }
