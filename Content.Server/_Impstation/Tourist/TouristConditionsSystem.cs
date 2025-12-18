@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server._Impstation.Tourist.Components;
 using Content.Server.Objectives.Systems;
 using Content.Shared.Mind;
@@ -50,7 +49,7 @@ public sealed class TouristConditionsSystem : EntitySystem
             return 0;
 
         var containerStack = new Stack<ContainerManagerComponent>();
-        var foundStamps = new HashSet<StampDisplayInfo>();
+        var foundStamps = new List<StampDisplayInfo>();
 
         // Recursively check each container for the item
         // Checks inventory, bag, implants, etc.
@@ -61,7 +60,13 @@ public sealed class TouristConditionsSystem : EntitySystem
                 foreach (var entity in container.ContainedEntities)
                 {
                     if (TryComp<PaperComponent>(entity, out var paper))
-                        foundStamps.UnionWith(paper.StampedBy.ToHashSet());
+                    {
+                        foreach (var stamp in paper.StampedBy)
+                        {
+                            if (!foundStamps.Contains(stamp))
+                                foundStamps.Add(stamp);
+                        }
+                    }
 
                     // If it is a container check its contents
                     if (_containerQuery.TryGetComponent(entity, out var containerManager))
