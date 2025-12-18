@@ -17,11 +17,9 @@ public sealed class AdminPrayerSystem : EntitySystem
     private void OnPrayer(PrayerEvent args)
     {
         //check if player is an Admin && not deadming
-        var admin = _adminManager.GetAdminData();
-        if (admin != null)
-        {
+        if (_adminManager.GetAdminData() == null)
+            return;
 
-            _clyde.RequestWindowAttention();
-        }
+        _clyde.RequestWindowAttention();
     }
 }
