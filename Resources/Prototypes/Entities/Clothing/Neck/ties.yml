@@ -1,13 +1,5 @@
 - type: entity
   parent: ClothingNeckBase
-  id: ClothingNeckTieBase
-  abstract: true
-  components:
-  - type: Item
-    storedRotation: -45
-
-- type: entity
-  parent: ClothingNeckTieBase
   id: ClothingNeckTieRed
   name: red-tie
   description: A neosilk clip-on red tie.
@@ -16,6 +8,10 @@
     sprite: Clothing/Neck/Ties/redtie.rsi
   - type: Clothing
     sprite: Clothing/Neck/Ties/redtie.rsi
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Clothing/Neck/Ties/redtie.rsi
   - type: Tag
     tags:
     - HamsterWearable
@@ -24,7 +20,7 @@
     - Recyclable
 
 - type: entity
-  parent: ClothingNeckTieBase
+  parent: ClothingNeckBase
   id: ClothingNeckTieDet
   name: detective's horrendous tie # Moffstation - Begin - Detective-Outfit-Sprites
   description: A loosely tied necktie, a disturbingly vivid accessory for the over-worked detective. # Moffstation - End
@@ -32,7 +28,12 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
-    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - Begin - Detective-Outfit-Sprites
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - Detective-Outfit-Sprites
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Clothing/Neck/Ties/dettie.rsi
+  # Moffstation - Begin - Detective-Outfit-Sprites
   - type: Tag
     tags:
     - PetWearable
@@ -40,10 +41,11 @@
     - ClothMade
     - Recyclable
     - HamsterWearable
-    - WhitelistChameleon # Moffstation - End - Detective-Outfit-Sprites
+    - WhitelistChameleon
+  # Moffstation - End - Detective-Outfit-Sprites
 
 - type: entity
-  parent: ClothingNeckTieBase
+  parent: ClothingNeckBase
   id: ClothingNeckTieSci
   name: scientist's tie
   description: Why do we all have to wear these ridiculous ties?
@@ -52,6 +54,10 @@
     sprite: Clothing/Neck/Ties/scitie.rsi
   - type: Clothing
     sprite: Clothing/Neck/Ties/scitie.rsi
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Clothing/Neck/Ties/scitie.rsi
   - type: Tag
     tags:
     - ClothMade

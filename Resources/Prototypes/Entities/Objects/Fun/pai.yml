@@ -1,9 +1,10 @@
 # Placeholder PAIs, aka semi-automatic ghost roles
 
 - type: entity
-  parent: BaseItem
-  id: PersonalAI
-  name: personal ai device
+# parent: BaseItem #Moffstation Captains Sabre Declutter
+  abstract: true #Moffstation Captains Sabre Declutter
+  id: PersonalAIGhostRoleBase
+#  name: personal ai device   #Moffstation Captains Sabre Declutter
   description: Your electronic pal who's fun to be with!
   components:
   - type: Instrument
@@ -26,13 +27,15 @@
       enum.StationMapUiKey.Key:
         type: StationMapBoundUserInterface
         requireInputValidation: false
-  - type: Sprite
-    sprite: Objects/Fun/pai.rsi
-    layers:
-    - state: pai-base
-    - state: pai-off-overlay
-      shader: unshaded
-      map: ["screen"]
+#Moffstation - Begin - Captains Sabre Declutter
+#  - type: Sprite
+#    sprite: Objects/Fun/pai.rsi
+#    layers:
+#    - state: pai-base
+#    - state: pai-off-overlay
+#      shader: unshaded
+#      map: ["screen"]
+#Moffstation - End
   - type: Input
     context: "human"
   - type: PAI
@@ -82,14 +85,16 @@
   - type: MobState
     allowedStates:
       - Alive
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.ToggleableGhostRoleVisuals.Status:
-        screen:
-          Off: { state: pai-off-overlay }
-          Searching: { state: pai-searching-overlay }
-          On: { state: pai-on-overlay }
+#Moffstation - Begin - Captains Sabre Declutter
+#  - type: Appearance
+#  - type: GenericVisualizer
+#    visuals:
+#      enum.ToggleableGhostRoleVisuals.Status:
+#        screen:
+#          Off: { state: pai-off-overlay }
+#          Searching: { state: pai-searching-overlay }
+#          On: { state: pai-on-overlay }
+#Moffstation - End
   - type: StationMap
   - type: ChangeVoiceInContainer
     whitelist:
@@ -102,7 +107,6 @@
   - type: Tag
     tags:
     - SiliconEmotes
-    - PAI # Moffstation - Persona Sabre (why does this need a tag)
 
 - type: entity
   parent: [ PersonalAI, BaseSyndicateContraband]

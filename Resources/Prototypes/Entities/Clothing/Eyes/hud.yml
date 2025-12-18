@@ -254,9 +254,9 @@
   description: A heads-up display that scans the humanoids in view and provides accurate data about their health status. For true patriots.
   components:
   - type: Sprite
-    sprite: Clothing/Eyes/Hud/medpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/medpatch.rsi # Moffstation - Eyepatch fixes
   - type: Clothing
-    sprite: Clothing/Eyes/Hud/medpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/medpatch.rsi # Moffstation - Eyepatch fixes
   - type: Tag
     tags:
     - PetWearable
@@ -275,9 +275,9 @@
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. For true patriots.
   components:
   - type: Sprite
-    sprite: Clothing/Eyes/Hud/secpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/secpatch.rsi # Moffstation - Eyepatch fixes
   - type: Clothing
-    sprite: Clothing/Eyes/Hud/secpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/secpatch.rsi # Moffstation - Eyepatch fixes
   - type: Tag
     tags:
     - PetWearable
@@ -296,9 +296,9 @@
   description: A pair of sunHud outfitted with apparatus to scan reagents, as well as providing an innate understanding of liquid viscosity while in motion. For true patriots.
   components:
   - type: Sprite
-    sprite: Clothing/Eyes/Hud/beerpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/beerpatch.rsi # Moffstation - Eyepatch fixes
   - type: Clothing
-    sprite: Clothing/Eyes/Hud/beerpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/beerpatch.rsi # Moffstation - Eyepatch fixes
 
 - type: entity
   parent: [ClothingEyesEyepatchHudBeer, ClothingHeadEyeBaseFlipped]
@@ -312,9 +312,9 @@
   description: A heads-up display capable of analyzing the integrity and status of robotics and exosuits. Made out of see-borg-ium.
   components:
   - type: Sprite
-    sprite: Clothing/Eyes/Hud/diagpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/diagpatch.rsi # Moffstation - Eyepatch fixes
   - type: Clothing
-    sprite: Clothing/Eyes/Hud/diagpatch.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/diagpatch.rsi # Moffstation - Eyepatch fixes
 
 - type: entity
   parent: [ClothingEyesEyepatchHudDiag, ClothingHeadEyeBaseFlipped]
