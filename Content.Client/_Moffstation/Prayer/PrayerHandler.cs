@@ -14,7 +14,7 @@ public sealed class AdminPrayerSystem : EntitySystem
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IClientAdminManager _adminManager = default!;
 
-    private void Onprayer(PrayerEvent args)
+    private void OnPrayer(PrayerEvent args)
     {
         //check if player is an Admin && not deadming
         var admin = _adminManager.GetAdminData();
