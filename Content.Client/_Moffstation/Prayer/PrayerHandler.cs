@@ -6,13 +6,14 @@ namespace Content.Client._Moffstation.Prayer;
 
 public sealed class PrayerHandler : EntitySystem
 {
+    [Dependency] private readonly IClyde _clyde = default!;
+    [Dependency] private readonly IClientAdminManager _adminManager = default!;
+
     public override void Initialize()
     {
         base.Initialize();
         SubscribeNetworkEvent<PrayerEvent>(Onprayer);
     }
-    [Dependency] private readonly IClyde _clyde = default!;
-    [Dependency] private readonly IClientAdminManager _adminManager = default!;
 
     private void Onprayer(PrayerEvent args)
     {
