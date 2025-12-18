@@ -114,8 +114,8 @@ public sealed class PrayerSystem : EntitySystem
         // Moffstation - Prayers have audio notification
         _audioSystem.PlayGlobal("/Audio/Machines/high_tech_confirm.ogg", Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false, AudioParams.Default.WithVolume(-8f));
         _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(sender.AttachedEntity.Value):player} sent prayer ({Loc.GetString(comp.NotificationPrefix)}): {message}");
-        var prayEvent = new PrayerEvent();
         // Moffstation Begin - Prayer System OS level alert
+        var prayEvent = new PrayerEvent();
         foreach (var admin in _adminManager.ActiveAdmins)
         {
             RaiseNetworkEvent(prayEvent, admin);
