@@ -43,10 +43,10 @@
     sprite: Clothing/Shoes/Misc/duck-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepDuck
+      collection: FootstepDuck # Moffstation - Revert removal of walking sound
       params:
         variation: 0.07
-        volume: -10
+        volume: -10 # Moffstation - Revert removal of walking sound
   - type: Construction
     graph: ClothingShoeSlippersDuck
     node: shoes
