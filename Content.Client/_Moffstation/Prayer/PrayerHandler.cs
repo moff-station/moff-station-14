@@ -12,7 +12,7 @@ public sealed class AdminPrayerSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeNetworkEvent<PrayerEvent>(Onprayer);
+        SubscribeNetworkEvent<PrayerEvent>(OnPrayer);
     }
 
     private void OnPrayer(PrayerEvent args)
