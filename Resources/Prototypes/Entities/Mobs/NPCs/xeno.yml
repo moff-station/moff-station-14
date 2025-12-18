@@ -69,7 +69,7 @@
       90: 0.7
       120: 0.5
   - type: Stamina
-    critThreshold: 200
+    baseCritThreshold: 200
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -152,7 +152,7 @@
       #100: Dead
       300: Dead
   - type: Stamina
-    critThreshold: 300
+    baseCritThreshold: 300
   - type: SlowOnDamage
     speedModifierThresholds:
       #50: 0.7
@@ -565,7 +565,7 @@
   - type: ComplexInteraction
   - type: MobState
   - type: Stamina
-    critThreshold: 200
+    baseCritThreshold: 200
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
