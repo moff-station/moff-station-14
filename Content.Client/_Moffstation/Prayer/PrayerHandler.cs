@@ -4,7 +4,7 @@ using Content.Shared._Moffstation.Prayers;
 
 namespace Content.Client._Moffstation.Prayer;
 
-public sealed class PrayerHandler : EntitySystem
+public sealed class AdminPrayerSystem : EntitySystem
 {
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IClientAdminManager _adminManager = default!;
@@ -15,14 +15,12 @@ public sealed class PrayerHandler : EntitySystem
         SubscribeNetworkEvent<PrayerEvent>(Onprayer);
     }
 
-    private void Onprayer(PrayerEvent args)
+    private void OnPrayer(PrayerEvent args)
     {
         //check if player is an Admin && not deadming
-        var admin = _adminManager.GetAdminData();
-        if (admin != null)
-        {
+        if (_adminManager.GetAdminData() == null)
+            return;
 
-            _clyde.RequestWindowAttention();
-        }
+        _clyde.RequestWindowAttention();
     }
 }
