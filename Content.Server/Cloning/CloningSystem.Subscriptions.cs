@@ -1,6 +1,6 @@
 using Content.Server.Forensics;
 using Content.Server.Speech.EntitySystems;
-using Content.Shared.Access.Components;// Moffstation - Added the Ability for the Cloning system to clone Id cards
+using Content.Shared.Access.Components; // Moffstation - Added the Ability for the Cloning system to clone Id cards
 using Content.Shared.Access.Systems;// Moffstation - Added the Ability for the Cloning system to clone Id cards
 using Content.Shared.Cloning.Events;
 using Content.Shared.FixedPoint;

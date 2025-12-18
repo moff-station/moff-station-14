@@ -315,7 +315,6 @@ public abstract class SharedNanoChatSystem : EntitySystem
         Dirty(card);
         return true;
     }
-    #region Moffstation - Added the ability for cards sharing the same Nanochat Number to syncronise outgoing messages
     // Moffstation - Begin - Added the ability for cards sharing the same Nanochat Number to syncronise outgoing messages
     /// <summary>
     ///     Syncronises messages across every card with the same number, ensuring
@@ -352,6 +351,5 @@ public abstract class SharedNanoChatSystem : EntitySystem
         }
     }
     // Moffstation - End
-    #endregion
     #endregion
 }
