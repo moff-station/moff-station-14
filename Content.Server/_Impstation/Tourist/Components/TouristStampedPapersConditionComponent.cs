@@ -5,6 +5,4 @@ namespace Content.Server._Impstation.Tourist.Components;
 /// Requires <see cref="NumberObjectiveComponent"/> to function.
 /// </summary>
 [RegisterComponent]
-public sealed partial class StampedPapersConditionComponent : Component
-{
-}
+public sealed partial class StampedPapersConditionComponent : Component;

@@ -6,6 +6,4 @@ namespace Content.Server._Impstation.Roles;
 ///     Added to mind role entities to tag that they are a tourist
 /// </summary>
 [RegisterComponent]
-public sealed partial class TouristRoleComponent : BaseMindRoleComponent
-{
-}
+public sealed partial class TouristRoleComponent : BaseMindRoleComponent;

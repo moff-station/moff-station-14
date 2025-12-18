@@ -1,18 +1,12 @@
-using Content.Server.Objectives.Components;
-using Content.Server.Roles;
-using Content.Server._Impstation.Tourist.Components;
-using Content.Shared.Objectives.Components;
-using Content.Shared._Impstation.Tourist.Components;
-using Content.Shared.Roles;
-using Content.Shared.Warps;
-using Content.Shared.Mind;
-using Robust.Shared.Random;
 using System.Linq;
-using Content.Shared.Interaction.Events;
+using Content.Server._Impstation.Tourist.Components;
+using Content.Server.Objectives.Systems;
+using Content.Shared.Mind;
+using Content.Shared.Objectives.Components;
 using Content.Shared.Paper;
 using Robust.Shared.Containers;
 
-namespace Content.Server._Impstation.Objectives.Systems;
+namespace Content.Server._Impstation.Tourist;
 
 /// <summary>
 /// Handles tourist objective conditions
