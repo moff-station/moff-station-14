@@ -4,7 +4,7 @@ using Content.Shared._Moffstation.Prayers;
 
 namespace Content.Client._Moffstation.Prayer;
 
-public sealed class PrayerHandler : EntitySystem
+public sealed class AdminPrayerSystem : EntitySystem
 {
     public override void Initialize()
     {
