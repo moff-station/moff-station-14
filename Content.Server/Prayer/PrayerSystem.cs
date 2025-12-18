@@ -4,6 +4,7 @@ using Content.Server.Administration.Managers;   // Moffstation
 using Content.Server.Bible.Components;
 using Content.Server.Chat.Managers;
 using Content.Server.Popups;
+using Content.Shared._Moffstation.Prayers; // Moffstation - Os level alert for prayers
 using Content.Shared.Database;
 using Content.Shared.Popups;
 using Content.Shared.Chat;
@@ -113,5 +114,13 @@ public sealed class PrayerSystem : EntitySystem
         // Moffstation - Prayers have audio notification
         _audioSystem.PlayGlobal("/Audio/Machines/high_tech_confirm.ogg", Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false, AudioParams.Default.WithVolume(-8f));
         _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(sender.AttachedEntity.Value):player} sent prayer ({Loc.GetString(comp.NotificationPrefix)}): {message}");
+        // Moffstation Begin - Prayer System OS level alert
+        var prayEvent = new PrayerEvent();
+        foreach (var admin in _adminManager.ActiveAdmins)
+        {
+            RaiseNetworkEvent(prayEvent, admin);
+        }
+        // Moffstation - End
+
     }
 }
