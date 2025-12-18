@@ -322,30 +322,33 @@ public abstract class SharedNanoChatSystem : EntitySystem
     /// </summary>
     public void SyncMessagesForCard(Entity<NanoChatCardComponent?> card)
     {
-        if (!Resolve(card, ref card.Comp) || !card.Comp.Number.HasValue){
+        if (!Resolve(card, ref card.Comp) || !card.Comp.Number.HasValue)
+        {
             return;
         }
 
         var messagesMerged = new Dictionary<uint, List<NanoChatMessage>>();
-        var cards = EntityQueryEnumerator<NanoChatCardComponent>(); //added so that this methode only has to be called once :3
+        var cards =
+            EntityQueryEnumerator<NanoChatCardComponent>(); //added so that this methode only has to be called once :3
         var collectedcards = new List<Entity<NanoChatCardComponent>>();
         //locates all other cards and merges their messages into a dictoanry, skiping anything already added
-        while(cards.MoveNext(out var uid ,out var othercards))
+        while (cards.MoveNext(out var uid, out var othercards))
         {
-            if (othercards.Number == card.Comp.Number){
+            if (othercards.Number == card.Comp.Number)
+            {
                 foreach (var keyNvalue in othercards.Messages)
                 {
                     messagesMerged.TryAdd(keyNvalue.Key, keyNvalue.Value);
                 }
+
                 Entity<NanoChatCardComponent> wrappedCard = (uid, othercards);
-                collectedcards.Append(wrappedCard);
+                collectedcards.Add(wrappedCard);
             }
         }
         //set the messages for all cards sharing the same number
 
         foreach (var cardToSync in collectedcards)
         {
-            EntityQueryEnumerator<NanoChatCardComponent>();
             cardToSync.Comp.Messages = messagesMerged.ToDictionary();
             Dirty(cardToSync);
         }
