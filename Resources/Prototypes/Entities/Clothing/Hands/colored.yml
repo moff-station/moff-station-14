@@ -338,8 +338,10 @@
   - type: Fiber
     fiberMaterial: fibers-insulative
     fiberColor: fibers-yellow
-  - type: StealTarget #imp
+  # Imp - Begin - Tourists
+  - type: StealTarget
     stealGroup: InsulatedGloves
+    # Imp - End
 
 
 # Budget Insulated Gloves
@@ -368,8 +370,10 @@
   - type: Fiber
     fiberMaterial: fibers-insulative-frayed
     fiberColor: fibers-yellow
-  - type: StealTarget #imp
+  # Imp - Begin - Tourists
+  - type: StealTarget
     stealGroup: BudgetInsuls
+  # Imp - End
 
 # Conductive Insulated Gloves
 - type: entity
@@ -379,5 +383,7 @@
   components:
   - type: Insulated
     coefficient: 5 # zap em good
-  - type: StealTarget #imp - tourists wouldn't know the difference
+  # Imp - Begin - Tourists
+  - type: StealTarget
     stealGroup: InsulatedGloves
+  # Imp - End

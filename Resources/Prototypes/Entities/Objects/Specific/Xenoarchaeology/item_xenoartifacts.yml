@@ -61,8 +61,10 @@
       - !type:NestedSelector
         tableId: XenoArtifactEffectsHandheldOnlyTable
         weight: 2
-  - type: StealTarget #imp
+  # Imp - Begin - Tourists
+  - type: StealTarget
     stealGroup: ArtifactFragment
+  # Imp - End
 
 - type: entity
   parent: BaseXenoArtifactItem
@@ -136,8 +138,10 @@
   - type: GuideHelp
     guides:
     - Xenoarchaeology
-  - type: StealTarget #imp
+  # Imp - Begin - Tourists
+  - type: StealTarget
     stealGroup: ArtifactFragment
+  # Imp - End
 
 - type: entity
   parent: ArtifactFragment

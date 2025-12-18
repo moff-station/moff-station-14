@@ -12,7 +12,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Paper;
 using Robust.Shared.Containers;
 
-namespace Content.Server.Objectives.Systems;
+namespace Content.Server._Impstation.Objectives.Systems;
 
 /// <summary>
 /// Handles tourist objective conditions

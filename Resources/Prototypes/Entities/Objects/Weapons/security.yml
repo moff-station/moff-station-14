@@ -91,14 +91,14 @@
     guides:
     - Security
     - Antagonists
-  # imp edits #
+  # Imp - Begin - Tourists
   - type: StealTarget
     stealGroup: StunBaton
-  # end imp edits #
+  # Imp - End
 
 - type: entity
   name: truncheon
-  parent: [ BaseItem, BaseSecurityContraband ]
+  parent: [BaseItem, BaseSecurityContraband]
   id: Truncheon
   description: A rigid, steel-studded baton, meant to harm.
   components:
