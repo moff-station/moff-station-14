@@ -40,7 +40,13 @@ loadout-group-bartender-id = Bartender ID
 loadout-group-botanist-id = Botanist ID
 loadout-group-chaplain-id = Chaplain ID
 loadout-group-chef-id = Chef ID
+
 loadout-group-clown-id = Clown ID
+loadout-group-clown-mask = Clown mask
+loadout-group-theatre-neck = Theatre neck
+loadout-group-mime-shoes = Mime shoes
+loadout-group-musician-head = Musician head
+loadout-group-musician-shoes = Musician shoes
 loadout-group-janitor-id = Janitor ID
 loadout-group-lawyer-id = Lawyer ID
 loadout-group-librarian-id = Librarian ID
