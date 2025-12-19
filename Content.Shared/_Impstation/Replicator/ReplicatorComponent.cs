@@ -33,12 +33,12 @@ public sealed partial class ReplicatorComponent : Component
     /// <summary>
     /// Used to store related replicators on a queen after the nest is destroyed, so they can be transferred to the new nest.
     /// </summary>
-    public HashSet<Entity<ReplicatorComponent>> RelatedReplicators = [];
+    public HashSet<NetEntity> RelatedReplicators = [];
 
     /// <summary>
     /// Used to store the EntityUid of the source nest of this replicator.
     /// </summary>
-    public EntityUid? MyNest = null;
+    public NetEntity? MyNest = null;
 
     /// <summary>
     /// actions granted when this replicator is ready to upgrade

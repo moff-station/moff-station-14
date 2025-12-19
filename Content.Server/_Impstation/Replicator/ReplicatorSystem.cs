@@ -80,15 +80,21 @@ public sealed class ReplicatorSystem : EntitySystem
         var myNest = Spawn("ReplicatorNest", xform.Coordinates);
         var myNestComp = EnsureComp<ReplicatorNestComponent>(myNest);
 
+        var netEnt = GetNetEntity(ent);
+
         // add ourselves to the list of related replicators if the nest hasn't been destroyed (and therefore there are no orphaned replicators)
-        if (ent.Comp.RelatedReplicators.Count <= 0 || ent.Comp.Queen && !ent.Comp.RelatedReplicators.Contains(ent))
-            ent.Comp.RelatedReplicators.Add(ent);
+        if (ent.Comp.RelatedReplicators.Count <= 0 || ent.Comp.Queen && !ent.Comp.RelatedReplicators.Contains(netEnt))
+            ent.Comp.RelatedReplicators.Add(netEnt);
 
         // then set that nest's spawned minions to our saved list of related replicators.
         // while we're in here, we might as well update all their pinpointers.
         HashSet<EntityUid> newMinions = [];
-        foreach (var (uid, comp) in ent.Comp.RelatedReplicators)
+        foreach (var netId in ent.Comp.RelatedReplicators)
         {
+            var uid = GetEntity(netId);
+            if (!TryComp<ReplicatorComponent>(uid, out var comp))
+                continue;
+
             newMinions.Add(uid);
 
             if (!_inventory.TryGetSlotEntity(uid, "pocket1", out var pocket1) || !TryComp<PinpointerComponent>(pocket1, out var pinpointer))
@@ -96,12 +102,12 @@ public sealed class ReplicatorSystem : EntitySystem
             // set the target to the nest
             _pinpointer.SetTarget(pocket1.Value, myNest, pinpointer);
 
-            comp.MyNest = myNest;
+            comp.MyNest = GetNetEntity(myNest);
         }
         myNestComp.SpawnedMinions = newMinions;
         // make sure the nest knows who we are, and vice versa.
         myNestComp.SpawnedMinions.Add(ent);
-        ent.Comp.MyNest = myNest;
+        ent.Comp.MyNest = GetNetEntity(myNest);
         // and we don't need the RelatedReplicators list anymore, so,
         ent.Comp.RelatedReplicators.Clear();
 
@@ -128,7 +134,7 @@ public sealed class ReplicatorSystem : EntitySystem
         nestComp.UnclaimedSpawners.Remove(args.Spawner);
 
         // tell the new fella who they momma is
-        ent.Comp.MyNest = tracker.SpawnedFrom;
+        ent.Comp.MyNest = GetNetEntity(tracker.SpawnedFrom);
     }
 
     public Entity<ReplicatorComponent>? UpgradeReplicator(Entity<ReplicatorComponent> ent, ProtoId<PolymorphPrototype> nextStage)
@@ -142,8 +148,9 @@ public sealed class ReplicatorSystem : EntitySystem
         var upgradedComp = EnsureComp<ReplicatorComponent>(upgraded);
         upgradedComp.RelatedReplicators = ent.Comp.RelatedReplicators;
         upgradedComp.MyNest = ent.Comp.MyNest;
+        var nestUid = GetEntity(ent.Comp.MyNest);
 
-        if (ent.Comp.MyNest is { } nest && TryComp<ReplicatorNestComponent>(nest, out var nestComp))
+        if (ent.Comp.MyNest is { } nest && TryComp<ReplicatorNestComponent>(nestUid, out var nestComp))
         {
             nestComp.SpawnedMinions.Remove(ent);
             nestComp.SpawnedMinions.Add(upgraded);
@@ -152,7 +159,7 @@ public sealed class ReplicatorSystem : EntitySystem
         }
 
         Dirty(upgraded, upgradedComp);
-        // _popup.PopupEntity(Loc.GetString($"{ent.Comp.ReadyToUpgradeMessage}-self"), upgraded, PopupType.Medium);
+        _popup.PopupEntity(Loc.GetString($"{ent.Comp.ReadyToUpgradeMessage}-self"), upgraded, PopupType.Medium);
 
         return (upgraded, upgradedComp);
     }
@@ -193,8 +200,11 @@ public sealed class ReplicatorSystem : EntitySystem
         if (!HasComp<ReplicatorSignComponent>(ent))
             return;
 
-        foreach (var (uid, comp) in ent.Comp.RelatedReplicators)
+        foreach (var netId in ent.Comp.RelatedReplicators)
         {
+            var uid = GetEntity(netId);
+            if (!TryComp<ReplicatorComponent>(uid, out var comp))
+                continue;
             _popup.PopupEntity(Loc.GetString(comp.QueenDiedMessage), uid, uid, PopupType.LargeCaution);
         }
     }

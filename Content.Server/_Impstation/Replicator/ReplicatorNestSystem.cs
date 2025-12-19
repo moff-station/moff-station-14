@@ -387,7 +387,10 @@ public sealed class ReplicatorNestSystem : EntitySystem
             var comp = EnsureComp<ReplicatorComponent>(queenNotNull);
             comp.Queen = true;
             livingReplicators.Add((queenNotNull, comp));
-            comp.RelatedReplicators = livingReplicators; // make sure we know who belongs to our nest
+            foreach (var replicator in livingReplicators)
+            {
+                comp.RelatedReplicators.Add(GetNetEntity(replicator)); // make sure we know who belongs to our nest
+            }
 
             var upgradedQueen = _replicator.UpgradeReplicator((queenNotNull, comp), comp.FinalStage);
             if (!TryComp<ReplicatorComponent>(upgradedQueen, out var upgradedComp))
