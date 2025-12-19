@@ -1002,7 +1002,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatJester
   name: jester hat
-  description: A hat to let you jingle your balls for a crowd to see.
+  description: A jingly hat to distract from your terrible juggling skills. # Moffstation - New Clown Outfit
   components:
     - type: Sprite
 # Moffstation - Begin - New Clown Outfit
@@ -1016,7 +1016,7 @@
 # Moffstation - End - New Clown Outfit
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadBase # Moffstation - New Clown Outfit
   id: ClothingHeadHatJesterAlt
 # Moffstation - Begin - New Clown Outfit
   name: jester hood

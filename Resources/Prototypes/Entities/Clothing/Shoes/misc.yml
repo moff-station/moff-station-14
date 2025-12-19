@@ -63,10 +63,11 @@
     sprite: Clothing/Shoes/Misc/lizard-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
+      # Moffstation - Begin - Revert removal of walking sound
       collection: FootstepLizardSlippers
       params:
         variation: 0.06
-        volume: -10
+        volume: -10 # Moffstation - End - Revert removal of walking sound
   - type: Construction
     graph: ClothingShoeSlippersLizard
     node: shoes

@@ -76,7 +76,7 @@ loadout-group-botanist-outerclothing = Botanist outer clothing
 
 loadout-group-clown-head = Clown head
 loadout-group-clown-mask = Clown mask
-loadout-group-clown-neck = Clown neck
+loadout-group-theatre-neck = Theatre neck
 loadout-group-clown-jumpsuit = Clown jumpsuit
 loadout-group-clown-backpack = Clown backpack
 loadout-group-clown-outerclothing = Clown outer clothing
@@ -84,7 +84,6 @@ loadout-group-clown-shoes = Clown shoes
 
 loadout-group-mime-head = Mime head
 loadout-group-mime-mask = Mime mask
-loadout-group-mime-neck = Mime neck
 loadout-group-mime-jumpsuit = Mime jumpsuit
 loadout-group-mime-backpack = Mime backpack
 loadout-group-mime-outerclothing = Mime outer clothing

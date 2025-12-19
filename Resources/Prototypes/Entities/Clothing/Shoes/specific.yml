@@ -48,8 +48,6 @@
     - ClownShoes
     - WhitelistChameleon
 
-# Moffstation - Begin - New Banana Shoes update!
-
 - type: entity
   parent: ClothingShoesClown
   id: ClothingShoesClownBanana
@@ -60,16 +58,19 @@
     sprite: Clothing/Shoes/Specific/clown_banana.rsi
   - type: Clothing
     sprite: Clothing/Shoes/Specific/clown_banana.rsi
+  # Moffstation - Begin - New Banana Shoes update!
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSlip
       params:
         volume: -10
         variation: 0.10
+  # Moffstation - End
   - type: Construction
     graph: BananaClownShoes
     node: shoes
   - type: Skates
+# Moffstation - Begin - New Banana Shoes update!
     stunSeconds: 5
     minimumSpeed: 7.5
     acceleration: 2
