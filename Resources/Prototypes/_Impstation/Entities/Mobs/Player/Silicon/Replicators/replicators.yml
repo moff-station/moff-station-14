@@ -245,6 +245,7 @@
       visible: false
   - type: Body
     prototype: Replicator1
+  - type: Hands
   - type: Loadout
     prototypes:
     - StartingGearReplicatorT1Weapon
@@ -296,6 +297,7 @@
     damageModifierSet: Replicator2
   - type: Body
     prototype: Replicator2
+  - type: Hands
   - type: Loadout
     prototypes:
       - StartingGearReplicatorTools
@@ -348,6 +350,7 @@
     damageModifierSet: Replicator2
   - type: Body
     prototype: Replicator2
+  - type: Hands
   - type: Loadout
     prototypes:
       - StartingGearReplicatorT2Alt
@@ -394,6 +397,7 @@
         Base: dead_level3
   - type: Body
     prototype: Replicator2
+  - type: Hands
   - type: Loadout
     prototypes:
       - StartingGearReplicatorT3Weapon

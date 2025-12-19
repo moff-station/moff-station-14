@@ -6,8 +6,8 @@
     torso:
       part: TorsoBorg
       connections:
-      - hand 1
-    hand 1:
+      - hand1
+    hand1:
       part: LeftArmBorg
 
 - type: body
@@ -18,12 +18,12 @@
     torso:
       part: TorsoBorg
       connections:
-      - hand 1
-      - hand 2
-    hand 1:
+      - hand1
+      - hand2
+    hand1:
       part: LeftArmBorg
-    hand 2: 
-      part: RightArmBorg
+    hand2:
+      part: LeftArmBorg
 
 - type: body
   id: Replicator3
@@ -33,6 +33,6 @@
     torso:
       part: TorsoBorg
       connections:
-      - hand 1
-    hand 1:
+      - hand1
+    hand1:
       part: LeftArmBorg
