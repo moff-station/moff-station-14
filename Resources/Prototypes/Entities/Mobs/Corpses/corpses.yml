@@ -23,9 +23,18 @@
   components:
   - type: Loadout
     prototypes:
-    - TechnicalAssistantGear
-    - AtmosphericTechnicianGear
-    - StationEngineerGear
+    # Moffstation - Start - Corpse loadouts
+    # - TechnicalAssistantGear
+    # - AtmosphericTechnicianGear
+    # - StationEngineerGear
+    - AtmosphericTechnicianCorpseGear
+    - ChiefEngineerCorpseGear
+    - CoolAtmosphericTechnicianCorpseGear
+    - CoolStationEngineerCorpseGear
+    - FiresuitAtmosphericTechnicianCorpseGear
+    - StationEngineerCorpseGear
+    - TechnicalAssistantCorpseGear
+    # Moffstation - End
 
 - type: entity
   parent: SalvageHumanCorpse
