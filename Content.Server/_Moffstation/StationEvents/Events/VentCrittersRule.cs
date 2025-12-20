@@ -43,14 +43,15 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         var query = EntityQueryEnumerator<VentCrittersRuleComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (_gameTiming.CurTime > comp.NextPopup &&
-                comp.Vent is { } location &&
-                _gameTicker.IsGameRuleActive(uid))
-            {
-                _audio.PlayPvs(comp.VentCreakNoise, location);
-                _popup.PopupCoordinates(Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName)), Transform(location).Coordinates, PopupType.MediumCaution);
-                comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
-            }
+            if (_gameTiming.CurTime <= comp.NextPopup ||
+                comp.Vent is not { } location ||
+                comp.Coords is not { } coords ||
+                !_gameTicker.IsGameRuleActive(uid))
+                continue;
+
+            _audio.PlayPvs(comp.VentCreakNoise, coords);
+            _popup.PopupCoordinates(Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName)), coords, PopupType.MediumCaution);
+            comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
         }
     }
 
@@ -70,8 +71,9 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         if (TryComp<StationEventComponent>(uid, out var stationEventComp) && stationEventComp.StartAnnouncement != null)
         {
             // Get the nearest beacon
-            comp.Coords = Transform(location).Coordinates;
-            var nearestBeacon = _navMap.GetNearestBeaconString(_transform.ToMapCoordinates(comp.Coords), onlyName: true);
+            var coords = Transform(location).Coordinates;
+            comp.Coords = coords;
+            var nearestBeacon = _navMap.GetNearestBeaconString(_transform.ToMapCoordinates(coords), onlyName: true);
 
             // Get the duration, if its null we'll just use 0
             var duration = stationEventComp.Duration?.Seconds ?? 0;
@@ -102,12 +104,18 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         if (component.Vent is { } vent)
             RemCompDeferred<JitteringComponent>(vent);
 
+        if (component.Coords is not { } coords)
+        {
+            Log.Warning($"Unable to find a valid location for {args.RuleId}!");
+            return;
+        }
+
         var spawnCount = 0;
         var attemptCount = 0;
         while (spawnCount <= component.MaxSpawns && (attemptCount < component.SpawnAttempts || spawnCount == 0))
         {
             var spawned = EntityManager.SpawnEntitiesAttachedTo(
-                component.Coords,
+                coords,
                 EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom).Select(it => (EntProtoId)it)
             );
             spawnCount += spawned.Length;
@@ -119,11 +127,11 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         {
             // Spawn a special spawn (guaranteed spawn)
             var specialEntry = RobustRandom.Pick(component.SpecialEntries);
-            Spawn(specialEntry.PrototypeId, component.Coords);
+            Spawn(specialEntry.PrototypeId, coords);
 
             foreach (var specialSpawn in EntitySpawnCollection.GetSpawns(component.SpecialEntries, RobustRandom))
             {
-                Spawn(specialSpawn, component.Coords);
+                Spawn(specialSpawn, coords);
             }
         }
     }

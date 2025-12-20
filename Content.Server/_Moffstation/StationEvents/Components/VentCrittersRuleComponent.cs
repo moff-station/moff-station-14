@@ -51,7 +51,7 @@ public sealed partial class VentCrittersRuleComponent : Component
     public EntityUid? Vent;
 
     [ViewVariables]
-    public EntityCoordinates Coords;
+    public EntityCoordinates? Coords;
 
     public TimeSpan NextPopup;
 
