@@ -59,7 +59,7 @@ public sealed class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxCloneRuleComp
         else
         {
             // get possible targets
-            var allAliveHumanoids = _mind.GetAliveHumans(_transform.GetMap(spawner));
+            var allAliveHumanoids = _mind.GetAliveHumansOnMap(spawner);
 
             // we already checked when starting the gamerule, but someone might have died since then.
             if (allAliveHumanoids.Count == 0)
