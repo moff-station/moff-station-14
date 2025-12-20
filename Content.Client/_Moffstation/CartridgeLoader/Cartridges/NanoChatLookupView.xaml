@@ -1,6 +1,7 @@
-<cartridges:NanoChatLookupView
+<cartridges1:NanoChatLookupView
     xmlns="https://spacestation14.io"
-    xmlns:cartridges="clr-namespace:Content.Client._CD.CartridgeLoader.Cartridges"
+    xmlns:cartridges="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
+    xmlns:cartridges1="clr-namespace:Content.Client._Moffstation.CartridgeLoader.Cartridges"
     HorizontalExpand="True"
     VerticalExpand="True"
     StyleClasses="AngleRect">
@@ -12,4 +13,4 @@
                       VerticalExpand="True"
                       HorizontalExpand="True" />
     </ScrollContainer>
-</cartridges:NanoChatLookupView>
+</cartridges1:NanoChatLookupView>

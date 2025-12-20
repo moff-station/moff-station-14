@@ -1,4 +1,4 @@
-using Content.Shared._CD.CartridgeLoader.Cartridges; // CD
+﻿using Content.Shared._Moffstation.CartridgeLoader.Cartridges; // CD
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.CartridgeLoader.Cartridges;

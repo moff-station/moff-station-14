@@ -1,9 +1,9 @@
 using System.Linq;
-using Content.Shared._CD.CartridgeLoader.Cartridges;
+using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
 using Content.Shared.Examine;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._CD.NanoChat;
+namespace Content.Shared._Moffstation.NanoChat;
 
 /// <summary>
 ///     Base system for NanoChat functionality shared between client and server.

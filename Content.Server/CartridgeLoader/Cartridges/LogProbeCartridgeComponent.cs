@@ -1,4 +1,4 @@
-using Content.Shared._CD.CartridgeLoader.Cartridges; // CD
+using Content.Shared._Moffstation.CartridgeLoader.Cartridges; // Moff
 using Content.Shared.CartridgeLoader.Cartridges;
 ﻿using Content.Shared.Paper;
 using Robust.Shared.Audio;

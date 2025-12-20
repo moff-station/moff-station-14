@@ -1,5 +1,5 @@
 using System.Globalization;
-using Content.Shared._CD.NanoChat;// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
+using Content.Shared._Moffstation.NanoChat;// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -115,7 +115,7 @@ public abstract class SharedIdCardSystem : EntitySystem
         }
 
         if (TryComp(uid, out PdaComponent? pda)
-        && TryComp(pda.ContainedId, out idCardComp))
+            && TryComp(pda.ContainedId, out idCardComp))
         {
             idCard = (pda.ContainedId.Value, idCardComp);
             return true;
@@ -158,13 +158,18 @@ public abstract class SharedIdCardSystem : EntitySystem
 
         if (player != null)
         {
-            _adminLogger.Add(LogType.Identity, LogImpact.Low,
+            _adminLogger.Add(LogType.Identity,
+                LogImpact.Low,
                 $"{ToPrettyString(player.Value):player} has changed the job title of {ToPrettyString(uid):entity} to {jobTitle} ");
         }
+
         return true;
     }
 
-    public bool TryChangeJobIcon(EntityUid uid, JobIconPrototype jobIcon, IdCardComponent? id = null, EntityUid? player = null)
+    public bool TryChangeJobIcon(EntityUid uid,
+        JobIconPrototype jobIcon,
+        IdCardComponent? id = null,
+        EntityUid? player = null)
     {
         if (!Resolve(uid, ref id))
         {
@@ -181,7 +186,8 @@ public abstract class SharedIdCardSystem : EntitySystem
 
         if (player != null)
         {
-            _adminLogger.Add(LogType.Identity, LogImpact.Low,
+            _adminLogger.Add(LogType.Identity,
+                LogImpact.Low,
                 $"{ToPrettyString(player.Value):player} has changed the job icon of {ToPrettyString(uid):entity} to {jobIcon} ");
         }
 
@@ -205,7 +211,9 @@ public abstract class SharedIdCardSystem : EntitySystem
         return true;
     }
 
-    public bool TryChangeJobDepartment(EntityUid uid, List<ProtoId<DepartmentPrototype>> departments, IdCardComponent? id = null)
+    public bool TryChangeJobDepartment(EntityUid uid,
+        List<ProtoId<DepartmentPrototype>> departments,
+        IdCardComponent? id = null)
     {
         if (!Resolve(uid, ref id))
             return false;
@@ -252,9 +260,11 @@ public abstract class SharedIdCardSystem : EntitySystem
 
         if (player != null)
         {
-            _adminLogger.Add(LogType.Identity, LogImpact.Low,
+            _adminLogger.Add(LogType.Identity,
+                LogImpact.Low,
                 $"{ToPrettyString(player.Value):player} has changed the name of {ToPrettyString(uid):entity} to {fullName} ");
         }
+
         return true;
     }
 
@@ -283,8 +293,9 @@ public abstract class SharedIdCardSystem : EntitySystem
 
     private static string ExtractFullTitle(IdCardComponent idCardComponent)
     {
-        return $"{idCardComponent.FullName} ({CultureInfo.CurrentCulture.TextInfo.ToTitleCase(idCardComponent.LocalizedJobTitle ?? string.Empty)})"
-            .Trim();
+        return
+            $"{idCardComponent.FullName} ({CultureInfo.CurrentCulture.TextInfo.ToTitleCase(idCardComponent.LocalizedJobTitle ?? string.Empty)})"
+                .Trim();
     }
 
     public void SetExpireTime(Entity<ExpireIdCardComponent?> ent, TimeSpan time)
@@ -331,39 +342,4 @@ public abstract class SharedIdCardSystem : EntitySystem
             ExpireId((uid, comp));
         }
     }
-    // Moffstation - Begin - Added the Ability for the Cloning system to clone Id cards
-    public void CopyIdCard(Entity<IdCardComponent?> source, EntityUid target)
-    {
-        if (!Resolve(source, ref source.Comp))
-            return;
-
-        CopyComp(source, target, source.Comp); //Copy job title and such
-        if (TryComp<NanoChatCardComponent>(source.Owner, out var nanoChatCardComp))
-        {
-            CopyComp(source, target, nanoChatCardComp); //Copy Nanochat number and such}
-        }
-
-        UpdateEntityName(target);
-    }
-
-    public void CopyPda(Entity<PdaComponent?> source, EntityUid target)
-    {
-        if (!Resolve(source, ref source.Comp) ||
-            source.Comp.ContainedId is not { } srcIdEnt ||
-            CompOrNull<PdaComponent>(target)?.ContainedId is not { } targetIdEnt)
-            return;
-
-        if (TryComp<NanoChatCardComponent>(srcIdEnt, out var srcNanoChat))
-        {
-            CopyComp(srcIdEnt, targetIdEnt, srcNanoChat);
-        }
-
-        if (TryComp<IdCardComponent>(srcIdEnt, out var srcId))
-        {
-            CopyComp(srcIdEnt, targetIdEnt, srcId);
-        }
-
-        UpdateEntityName(targetIdEnt);
-    }
-    // Moffstation - End
 }

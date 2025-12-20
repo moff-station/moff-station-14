@@ -1,9 +1,9 @@
 using Content.Client.UserInterface.Fragments;
 using Content.Shared.CartridgeLoader;
-using Content.Shared._CD.CartridgeLoader.Cartridges;
+using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
 using Robust.Client.UserInterface;
 
-namespace Content.Client._CD.CartridgeLoader.Cartridges;
+namespace Content.Client._Moffstation.CartridgeLoader.Cartridges;
 
 public sealed partial class NanoChatUi : UIFragment
 {
