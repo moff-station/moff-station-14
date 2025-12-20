@@ -1024,9 +1024,11 @@
   # Moffstation - End - New Clown Outfit
   components:
     - type: Sprite
-      sprite: Clothing/Head/Hats/jester2.rsi
+  # Moffstation - Begin - New Clown Outfit
+      sprite: _Moffstation/Clothing/Head/Hats/jester2.rsi
     - type: Clothing
-      sprite: Clothing/Head/Hats/jester2.rsi
+      sprite: _Moffstation/Clothing/Head/Hats/jester2.rsi
+  # Moffstation - End - New Clown Outfit
     - type: HideLayerClothing
       layers:
         Hair: HEAD
