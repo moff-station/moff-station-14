@@ -17,20 +17,22 @@
   abstract: true
   components:
   - type: Appearance
-  - type: FlippableClothingVisuals
+  # - type: FlippableClothingVisuals # Moffstation - Eyepatch fixes
   - type: Foldable
     canFoldInsideContainer: true
     unfoldVerbText: fold-flip-verb
     foldVerbText: fold-flip-verb
   - type: FoldableClothing
+    foldedEquippedPrefix: flipped # Moffstation - Eyepatch fixes
+    foldedHeldPrefix: flipped # Moffstation - Eyepatch fixes
   - type: Sprite
     layers:
     - map: [ "unfoldedLayer" ]
       state: icon
     - map: ["foldedLayer"]
-      state: icon
+      state: icon_flipped # Moffstation - Eyepatch fixes
       visible: false
-      scale: -1,1
+      # scale: -1,1 # Moffstation - Eyepatch fixes
 
 - type: entity
   parent: ClothingHeadEyeBaseFlippable
@@ -40,12 +42,18 @@
   components:
   - type: Foldable
     folded: true
+  # Moffstation - Start - Eyepatch fixes
+  - type: Clothing
+    equippedPrefix: flipped
+  - type: Item
+    heldPrefix: flipped
+  # Moffstation - End
   - type: Sprite
     layers:
     - map: [ "unfoldedLayer" ]
       state: icon
       visible: false
     - map: ["foldedLayer"]
-      state: icon
+      state: icon_flipped # Moffstation - Eyepatch fixes
       visible: true
-      scale: -1,1
+      # scale: -1,1 # Moffstation - Eyepatch fixes
