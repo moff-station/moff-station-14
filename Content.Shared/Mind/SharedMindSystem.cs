@@ -721,7 +721,7 @@ public abstract partial class SharedMindSystem : EntitySystem
     /// <summary>
     /// Get all minds on the same Map as the Refrence
     /// </summary>>
-    public HashSet<Entity<MindComponent>> GetAliveHumansOnMap(EntityUid map)
+    public HashSet<Entity<MindComponent>> GetAliveHumansOnMap(EntityUid? map)
     {
         var allAliveHumanoids = GetAliveHumans();
         var outminds = new HashSet<Entity<MindComponent>>();
