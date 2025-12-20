@@ -198,6 +198,8 @@
   - GroupTankHarness
   - ClownPDA # Moffstation - Additional job title loadouts
   - ClownHead
+  - ClownMask # Moffstation - Masks in the Loadout
+  - TheatreNeck # Moffstation - Add the Ruffle to the loadout
   - ClownJumpsuit
   - ClownBackpack
   - ClownOuterClothing
@@ -216,10 +218,12 @@
   - MimePDA # Moffstation - Additional job title loadouts
   - MimeHead
   - MimeMask
+  - TheatreNeck # Moffstation - Adds the Ruffle to the Loadout
   - MimeJumpsuit
   - MimeBackpack
   - MimeOuterClothing
   - MimeBelt
+  - MimeShoes # Moffstation
   - Glasses
   - SurvivalMime
   - Trinkets
@@ -232,7 +236,9 @@
   groups:
   - GroupTankHarness
   - MusicianPDA # Moffstation - Additional job title loadouts
+  - MusicianHead # Moffstation - Musician Loadout Options
   - MusicianJumpsuit
+  - MusicianShoes # Moffstation - Musician loadout Options
   - CommonBackpack
   - MusicianOuterClothing
   - Glasses

@@ -45,6 +45,17 @@
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterPierrot
+  categories: [ HideSpawnMenu ]
+  name: pierrot fur hood
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodpierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodpierrot.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterSecLongCoat
   categories: [ HideSpawnMenu ]
   name: security long coat hood

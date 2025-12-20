@@ -606,6 +606,9 @@
   loadouts:
   - JesterHat
   - JesterAltHat
+  # Moffstation - Begin - Clown Clothes
+  - HarlequinHat
+  # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
   id: ClownJumpsuit
@@ -615,6 +618,9 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
+  # Moffstation - Begin - Clown Clothes
+  - HarlequinSuit
+  # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -639,6 +645,13 @@
   loadouts:
   - ClownShoes
   - JesterShoes
+  # Moffstation - Begin - Clown Clothes
+  - JesterAltShoes
+  - HarlequinShoes
+  - LargeClownShoes
+  - ClownSandals
+  - ClownSlippers
+  # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
   id: SurvivalClown
@@ -667,6 +680,9 @@
   - MimeHead
   - MimeFrenchBeret
   - MimeCap
+# Moffstation - Begin - Mime Outfits
+  - PierrotCone
+# Moffstation - End - Mime Outfits
 
 - type: loadoutGroup
   id: MimeMask
@@ -675,6 +691,10 @@
   - MimeMask
   - MimeMaskSad
   - MimeMaskScared
+# Moffstation - Begin - Mime Outfits
+  - MimeMaskBlushing
+  - MimeMaskCool
+  - PierrotMask
 
 - type: loadoutGroup
   id: MimeJumpsuit
@@ -682,6 +702,9 @@
   loadouts:
   - MimeJumpsuit
   - MimeJumpskirt
+# Moffstation - Begin - Mime Outfits
+  - PierrotSuit
+# Moffstation - End - Mime Outfits
 
 - type: loadoutGroup
   id: MimeBackpack
@@ -698,6 +721,9 @@
   minLimit: 0
   loadouts:
   - MimeWintercoat
+# Moffstation - Begin - Mime Outfits
+  - PierrotCoat
+# Moffstation - End - Mime Outfits
 
 - type: loadoutGroup
   id: MimeBelt
@@ -731,6 +757,10 @@
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
+# Moffstation - Begin - Musician Outfits
+  - PerformerSkirt
+  - RockstarSuit
+# Moffstation - End - Musician Outfits
 
 - type: loadoutGroup
   id: MusicianOuterClothing

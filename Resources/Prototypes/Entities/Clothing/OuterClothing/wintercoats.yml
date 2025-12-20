@@ -289,12 +289,14 @@
 - type: entity
   parent: ClothingOuterWinterCoat
   id: ClothingOuterWinterClown
-  name: clown winter coat
+  name: clown robe # Moffstation - Clown Outfits
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
+# Moffstation - Start - Clown Outfits
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/clownrobe.rsi
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/clownrobe.rsi
+# Moffstation - End - Clown Outfits
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
