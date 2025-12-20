@@ -127,7 +127,11 @@ public abstract class SharedNanoChatSystem : EntitySystem
             card.Comp.Messages[recipientNumber] = messages;
         }
 
-        messages.Add(message);
+        if (!messages.Contains(message))
+        {
+            messages.Add(message);
+        }
+
         card.Comp.LastMessageTime = _timing.CurTime;
         Dirty(card);
     }
@@ -328,8 +332,7 @@ public abstract class SharedNanoChatSystem : EntitySystem
         }
 
         var messagesMerged = new Dictionary<uint, List<NanoChatMessage>>();
-        var cards =
-            EntityQueryEnumerator<NanoChatCardComponent>(); //added so that this methode only has to be called once :3
+        var cards = EntityQueryEnumerator<NanoChatCardComponent>(); //added so that this methode only has to be called once :3
         var collectedcards = new List<Entity<NanoChatCardComponent>>();
         //locates all other cards and merges their messages into a dictoanry, skiping anything already added
         while (cards.MoveNext(out var uid, out var othercards))
