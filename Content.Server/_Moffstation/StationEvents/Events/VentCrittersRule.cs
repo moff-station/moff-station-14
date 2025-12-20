@@ -44,7 +44,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         while (query.MoveNext(out var uid, out var comp))
         {
             if (_gameTiming.CurTime > comp.NextPopup &&
-                comp.Location is { } location &&
+                comp.Vent is { } location &&
                 _gameTicker.IsGameRuleActive(uid))
             {
                 _audio.PlayPvs(comp.VentCreakNoise, location);
@@ -58,8 +58,8 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     {
         // We are doing this before base.Added() so we can modify the announcement to be what we want
         // Choose location and make sure it's not null
-        comp.Location = ChooseLocation();
-        if (comp.Location is not { } location)
+        comp.Vent = ChooseLocation();
+        if (comp.Vent is not { } location)
         {
             Log.Warning($"Unable to find a valid location for {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
@@ -70,8 +70,8 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         if (TryComp<StationEventComponent>(uid, out var stationEventComp) && stationEventComp.StartAnnouncement != null)
         {
             // Get the nearest beacon
-            var mapLocation = _transform.ToMapCoordinates(Transform(location).Coordinates);
-            var nearestBeacon = _navMap.GetNearestBeaconString(mapLocation, onlyName: true);
+            comp.Coords = Transform(location).Coordinates;
+            var nearestBeacon = _navMap.GetNearestBeaconString(_transform.ToMapCoordinates(comp.Coords), onlyName: true);
 
             // Get the duration, if its null we'll just use 0
             var duration = stationEventComp.Duration?.Seconds ?? 0;
@@ -99,39 +99,31 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         base.Ended(uid, component, gameRule, args);
 
         // Make sure the location is not null
-        if (component.Location is not { } location)
-        {
-            Log.Warning($"Location for gamerule {args.RuleId} was null!");
-            return;
-        }
-
-        RemCompDeferred<JitteringComponent>(location);
-
-        var coords =  Transform(location).Coordinates;
+        if (component.Vent is { } vent)
+            RemCompDeferred<JitteringComponent>(vent);
 
         var spawnCount = 0;
         var attemptCount = 0;
         while (spawnCount <= component.MaxSpawns && (attemptCount < component.SpawnAttempts || spawnCount == 0))
         {
             var spawned = EntityManager.SpawnEntitiesAttachedTo(
-                coords,
+                component.Coords,
                 EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom).Select(it => (EntProtoId)it)
             );
             spawnCount += spawned.Length;
             attemptCount += 1;
         }
 
-
         // Extra chance to spawn additional entities
         if (component.SpecialEntries.Count != 0)
         {
             // Spawn a special spawn (guaranteed spawn)
             var specialEntry = RobustRandom.Pick(component.SpecialEntries);
-            Spawn(specialEntry.PrototypeId, coords);
+            Spawn(specialEntry.PrototypeId, component.Coords);
 
             foreach (var specialSpawn in EntitySpawnCollection.GetSpawns(component.SpecialEntries, RobustRandom))
             {
-                Spawn(specialSpawn, coords);
+                Spawn(specialSpawn, component.Coords);
             }
         }
     }
