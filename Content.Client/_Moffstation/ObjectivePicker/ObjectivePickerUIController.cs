@@ -43,15 +43,13 @@ public sealed class ObjectivePickerUIController : UIController
             _window.SelectedObjectives.Add(netEntity);
     }
 
-    // private void OnSubmitted(HashSet<NetEntity> selectedObjectives)
-    // {
-    //     if (!_mind.TryGetMind(_players.LocalSession, out var mindId, out var mindComponent))
-    //         return;
-    //     var message = new ObjectivePickerSelected
-    //     {
-    //         UserId = _entity.GetNetEntity(mindId),
-    //         SelectedObjectives = selectedObjectives,
-    //     };
-    //     _entity.EntityNetManager.SendSystemNetworkMessage(message);
-    // }
+    private void OnSubmitted(HashSet<NetEntity> selectedObjectives, EntityUid mindId)
+    {
+        var message = new ObjectivePickerSelected
+        {
+            UserId = _entity.GetNetEntity(mindId),
+            SelectedObjectives = selectedObjectives,
+        };
+        _entity.EntityNetManager.SendSystemNetworkMessage(message);
+    }
 }
