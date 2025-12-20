@@ -35,7 +35,7 @@ public sealed class GameMapManager : IGameMapManager
 
     private ISawmill _log = default!;
 
-    private readonly Dictionary<GameMapPrototype, int> _rollOverVotes = new();   // Moffstation - Rollover votes stored here
+    private readonly Dictionary<ProtoId<GameMapPrototype>, int> _rollOverVotes = new(); // Moffstation - Rollover votes stored here
 
     public void Initialize()
     {
@@ -90,10 +90,10 @@ public sealed class GameMapManager : IGameMapManager
         _random.Shuffle(maps);
         foreach (var map in maps)
         {
-            _rollOverVotes[map] = 0; // Moffstation - Initialize rollover votes for all maps.
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
+            _rollOverVotes[map] = 0; // Moffstation - initialize rollover votes
         }
     }
 
@@ -250,13 +250,13 @@ public sealed class GameMapManager : IGameMapManager
     // Moffstation - Start - setters and getters for the rollover votes
     public int GetRollOverVotes(GameMapPrototype map)
     {
-        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to get rollover votes for unknown map \"{map.MapName}\"");
+        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to get rollover votes for unknown map \"{map.MapName}\". Existing keys={string.Join(", ", _rollOverVotes.Keys)}");
         return _rollOverVotes.GetValueOrDefault(map);
     }
 
     public void SetRollOverVotes(GameMapPrototype map, int votes)
     {
-        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to set rollover votes for unknown map \"{map.MapName}\"");
+        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to set rollover votes for unknown map \"{map.MapName}\". Existing keys={string.Join(", ", _rollOverVotes.Keys)}");
         _rollOverVotes[map] = votes;
     }
     // Moffstation - End
