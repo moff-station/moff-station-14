@@ -128,6 +128,6 @@ job-name-prisoner-protective-custody = Protective Custody Prisoner
 job-name-prisoner-felon = Felon
 job-name-prisoner-inmate = Inmate
 job-name-prisoner-test-subject = Test Subject
-
+ghost-role-captains-sabre = Captain´s Persona Sabre
 ## Other Job Titles
 job-name-mercenary = Mercenary
