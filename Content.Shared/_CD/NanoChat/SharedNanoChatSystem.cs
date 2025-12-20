@@ -126,12 +126,12 @@ public abstract class SharedNanoChatSystem : EntitySystem
             messages = new List<NanoChatMessage>();
             card.Comp.Messages[recipientNumber] = messages;
         }
-
+        // Moffstation - Begin - Paradox Clones copy their originals nanochat
         if (!messages.Contains(message))
         {
             messages.Add(message);
         }
-
+        // Moffstation - End
         card.Comp.LastMessageTime = _timing.CurTime;
         Dirty(card);
     }
