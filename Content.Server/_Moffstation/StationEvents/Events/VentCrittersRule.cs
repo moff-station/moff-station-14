@@ -35,6 +35,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
 
     public override void Update(float frameTime)
     {
@@ -44,13 +45,17 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         while (query.MoveNext(out var uid, out var comp))
         {
             if (_gameTiming.CurTime <= comp.NextPopup ||
-                comp.Vent is not { } location ||
                 comp.Coords is not { } coords ||
                 !_gameTicker.IsGameRuleActive(uid))
                 continue;
 
             _audio.PlayPvs(comp.VentCreakNoise, coords);
-            _popup.PopupCoordinates(Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName)), coords, PopupType.MediumCaution);
+
+            var messageString = comp.Vent is not { } location || !_entMan.EntityExists(location)
+                ? Loc.GetString("station-event-vent-creatures-no-vent-warning")
+                : Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName));
+
+            _popup.PopupCoordinates(messageString, coords, PopupType.MediumCaution);
             comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
         }
     }
