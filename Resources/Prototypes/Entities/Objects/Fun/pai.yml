@@ -1,10 +1,12 @@
 # Placeholder PAIs, aka semi-automatic ghost roles
 
 - type: entity
-# parent: BaseItem #Moffstation Captains Sabre Declutter
-  abstract: true #Moffstation Captains Sabre Declutter
+  # Moffstation - Start - Abstract base pAI
+# parent: BaseItem
   id: PersonalAIGhostRoleBase
-#  name: personal ai device   #Moffstation Captains Sabre Declutter
+  abstract: true
+#  name: personal ai device
+  # Moffstation - End
   description: Your electronic pal who's fun to be with!
   components:
   - type: Instrument
