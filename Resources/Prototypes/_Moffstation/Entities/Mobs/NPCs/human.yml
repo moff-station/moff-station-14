@@ -1,0 +1,18 @@
+﻿- type: entity
+  name: john crime
+  parent: MobSyndicateFootsoldier
+  id: MobSyndicateFootsoldierMail
+  components:
+    - type: Loadout
+      prototypes:
+      - SyndicateFootsoldierGearMail
+    - type: GhostRole
+      makeSentient: true
+      name: ghost-role-information-john-crime-name
+      description: ghost-role-information-john-crime-description
+      rules: ghost-role-information-antagonist-rules
+      mindRoles:
+      - MindRoleGhostRoleSoloAntagonist
+      raffle:
+        settings: default
+    - type: GhostTakeoverAvailable
