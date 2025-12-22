@@ -1,8 +1,9 @@
-using Content.Shared._CD.CartridgeLoader.Cartridges;
+using System.Linq;
+using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
 using Content.Shared.Examine;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._CD.NanoChat;
+namespace Content.Shared._Moffstation.NanoChat;
 
 /// <summary>
 ///     Base system for NanoChat functionality shared between client and server.
@@ -125,8 +126,12 @@ public abstract class SharedNanoChatSystem : EntitySystem
             messages = new List<NanoChatMessage>();
             card.Comp.Messages[recipientNumber] = messages;
         }
-
-        messages.Add(message);
+        // Moffstation - Begin - Paradox Clones copy their originals nanochat
+        if (!messages.Contains(message))
+        {
+            messages.Add(message);
+        }
+        // Moffstation - End
         card.Comp.LastMessageTime = _timing.CurTime;
         Dirty(card);
     }
@@ -314,6 +319,43 @@ public abstract class SharedNanoChatSystem : EntitySystem
         Dirty(card);
         return true;
     }
+    // Moffstation - Begin - Added the ability for cards sharing the same Nanochat Number to syncronise outgoing messages
+    /// <summary>
+    ///     Syncronises messages across every card with the same number, ensuring
+    ///     message echo fan out and in.
+    /// </summary>
+    public void SyncMessagesForCard(Entity<NanoChatCardComponent?> card)
+    {
+        if (!Resolve(card, ref card.Comp) || !card.Comp.Number.HasValue)
+        {
+            return;
+        }
 
+        var messagesMerged = new Dictionary<uint, List<NanoChatMessage>>();
+        var cards = EntityQueryEnumerator<NanoChatCardComponent>(); //added so that this methode only has to be called once :3
+        var collectedcards = new List<Entity<NanoChatCardComponent>>();
+        //locates all other cards and merges their messages into a dictoanry, skiping anything already added
+        while (cards.MoveNext(out var uid, out var othercards))
+        {
+            if (othercards.Number == card.Comp.Number)
+            {
+                foreach (var keyNvalue in othercards.Messages)
+                {
+                    messagesMerged.TryAdd(keyNvalue.Key, keyNvalue.Value);
+                }
+
+                Entity<NanoChatCardComponent> wrappedCard = (uid, othercards);
+                collectedcards.Add(wrappedCard);
+            }
+        }
+        //set the messages for all cards sharing the same number
+
+        foreach (var cardToSync in collectedcards)
+        {
+            cardToSync.Comp.Messages = messagesMerged.ToDictionary();
+            Dirty(cardToSync);
+        }
+    }
+    // Moffstation - End
     #endregion
 }

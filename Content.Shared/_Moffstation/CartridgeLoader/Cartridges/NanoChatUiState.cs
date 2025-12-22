@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._CD.CartridgeLoader.Cartridges;
+namespace Content.Shared._Moffstation.CartridgeLoader.Cartridges;
 
 [Serializable, NetSerializable]
 public sealed class NanoChatUiState : BoundUserInterfaceState
