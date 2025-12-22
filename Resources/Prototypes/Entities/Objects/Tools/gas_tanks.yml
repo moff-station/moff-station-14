@@ -102,11 +102,7 @@
   - type: Item
 #    size: Small # Moffstation - Moved to `EmergencyGasTankBase`
     sprite: _Moffstation/Objects/Tanks/emergency.rsi
-# Moffstation - Begin - Moved to `EmergencyGasTankBase`
-#    storedSprite:
-#      state: storage
-#      sprite: Objects/Tanks/emergency.rsi
-# Moffstation - End
+#    storedRotation: -45 # Moffstation - Moved to `EmergencyGasTankBase`
 # Moffstation - Start
 #  - type: GasTank
 #    air:
@@ -132,7 +128,6 @@
     excludedInhandLayers: # No stripes on small tank inhand sprites.
     - StripeMiddle
     - StripeLow
-    hasStoredSprite: true
 # Moffstation - End
 
 - type: entity
@@ -141,14 +136,11 @@
   name: emergency nitrogen tank
   description: An easily portable tank for emergencies. Contains very little nitrogen, rated for survival use only. It can hold 0.66 L of gas.
   components:
-  # Moffstation - Start
+   # Moffstation - Start
 #  - type: Sprite
 #    sprite: Objects/Tanks/emergency_red.rsi
 #  - type: Item
 #    sprite: Objects/Tanks/emergency_red.rsi
-#    storedSprite:
-#      state: storage
-#      sprite: Objects/Tanks/emergency_red.rsi
 #  - type: Clothing
 #    sprite: Objects/Tanks/emergency_red.rsi
   - type: GasTankVisuals
@@ -165,11 +157,6 @@
     sprite: _Moffstation/Objects/Tanks/emergency_extended.rsi
   - type: Item
     sprite: _Moffstation/Objects/Tanks/emergency_extended.rsi
-  # Moffstation - Begin - Paintable tanks
-#    storedSprite:
-#      state: storage
-#      sprite: Objects/Tanks/emergency_extended.rsi
-  # Moffstation - end
   - type: GasTank
     air:
       volume: 1.5
@@ -179,7 +166,6 @@
   # Moffstation - Start
   - type: GasTankVisuals
     visuals: Oxygen
-    hasStoredSprite: true
   # Moffstation - End
 
 - type: entity
@@ -193,9 +179,6 @@
 #    sprite: Objects/Tanks/emergency_extended_red.rsi
 #  - type: Item
 #    sprite: Objects/Tanks/emergency_extended_red.rsi
-#    storedSprite:
-#      state: storage
-#      sprite: Objects/Tanks/emergency_extended_red.rsi
 #  - type: Clothing
 #    sprite: Objects/Tanks/emergency_extended_red.rsi
   - type: GasTankVisuals
@@ -212,11 +195,6 @@
     sprite: _Moffstation/Objects/Tanks/emergency_double.rsi
   - type: Item
     sprite: _Moffstation/Objects/Tanks/emergency_double.rsi
-  # Moffstation - Begin - Paintable tanks
-  #    storedSprite:
-  #      state: storage
-  #      sprite: Objects/Tanks/emergency_extended.rsi
-  # Moffstation - end
   - type: GasTank
     air:
       volume: 2.5
@@ -231,7 +209,6 @@
   # Moffstation - Start
   - type: GasTankVisuals
     visuals: Oxygen
-    hasStoredSprite: true
   # Moffstation - End
 
 - type: entity
@@ -245,9 +222,6 @@
 #    sprite: Objects/Tanks/emergency_double_red.rsi
 #  - type: Item
 #    sprite: Objects/Tanks/emergency_double_red.rsi
-#    storedSprite:
-#      state: storage
-#      sprite: Objects/Tanks/emergency_double_red.rsi
 #  - type: Clothing
 #    sprite: Objects/Tanks/emergency_double_red.rsi
   - type: GasTankVisuals
@@ -264,9 +238,6 @@
     sprite: Objects/Tanks/emergency_clown.rsi
   - type: Item
     sprite: Objects/Tanks/emergency_clown.rsi
-    storedSprite:
-      state: storage
-      sprite: Objects/Tanks/emergency_clown.rsi
   - type: Clothing
     sprite: Objects/Tanks/emergency_clown.rsi
 
