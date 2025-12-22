@@ -8,8 +8,24 @@
       path: /Audio/_CD/Voice/Avali/avali_scream.ogg
     Laugh:
       path: /Audio/_CD/Voice/Avali/avali_laugh.ogg
-    Crying: # Moffstation addition.
+    # Moffstation Additions Start
+    Crying: 
       path: /Audio/_Moffstation/Voice/Avali/avali_cry.ogg
+    Gasp: 
+      path: /Audio/_Moffstation/Voice/Avali/avali_gasp.ogg
+    Hiss: 
+      path: /Audio/_Moffstation/Voice/Avali/avali_hiss.ogg
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    Honk:
+      collection: BikeHorn
+    Cough:
+      path: /Audio/_Moffstation/Voice/Avali/avali_cough.ogg
+    Yawn:
+      path: /Audio/_Moffstation/Voice/Avali/avali_yawn.ogg
+    # Moffstation Additions End
 
 - type: emoteSounds
   id: FemaleAvali
@@ -20,5 +36,21 @@
       path: /Audio/_CD/Voice/Avali/avali_scream.ogg
     Laugh:
       path: /Audio/_CD/Voice/Avali/avali_laugh.ogg
-    Crying: # Moffstation addition.
+    # Moffstation Additions Start
+    Crying: 
       path: /Audio/_Moffstation/Voice/Avali/avali_cry.ogg
+    Gasp: 
+      path: /Audio/_Moffstation/Voice/Avali/avali_gasp.ogg
+    Hiss: 
+      path: /Audio/_Moffstation/Voice/Avali/avali_hiss.ogg
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    Honk:
+      collection: BikeHorn
+    Cough:
+      path: /Audio/_Moffstation/Voice/Avali/avali_cough
+    Yawn:
+      path: /Audio/_Moffstation/Voice/Avali/avali_yawn
+    # Moffstation Additions End
