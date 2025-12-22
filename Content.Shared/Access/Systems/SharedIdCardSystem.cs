@@ -1,5 +1,6 @@
 using System.Globalization;
-using Content.Shared._Moffstation.NanoChat;// Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
+using
+    Content.Shared._Moffstation.NanoChat; // Moffstation - Created a Lazy Sync between Id Cards with the same number so that outgoing messages are also shared
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -340,6 +341,20 @@ public abstract class SharedIdCardSystem : EntitySystem
                 continue;
 
             ExpireId((uid, comp));
+        }
+    }
+
+    public void CopyIdCard(EntityUid source, EntityUid target)
+    {
+        CopyComps(source, target);
+    }
+
+    public void CopyPda(Entity<PdaComponent> source, Entity<PdaComponent> target)
+    {
+        CopyComps(source, target);
+        if (source.Comp.ContainedId.HasValue && target.Comp.ContainedId.HasValue)
+        {
+            CopyComps(source.Comp.ContainedId.Value, target.Comp.ContainedId.Value);
         }
     }
 }

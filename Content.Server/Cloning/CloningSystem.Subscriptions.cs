@@ -16,6 +16,7 @@ using Content.Shared.Speech.Components;
 using Content.Shared.Storage;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
+using NetCord;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Cloning;
@@ -138,10 +139,11 @@ public sealed partial class CloningSystem
     {
         _idCardSystem.CopyIdCard(ent.AsNullable(), args.CloneUid);
     }
-    
+
     private void OnClonePda(Entity<PdaComponent> ent, ref CloningItemEvent args)
     {
-        _idCardSystem.CopyPda(ent.AsNullable(), args.CloneUid);
+        var target = new Entity<PdaComponent>(args.CloneUid, Comp<PdaComponent>(args.CloneUid));
+        _idCardSystem.CopyPda(ent,target);
     }
     // Moffstation - End
 }
