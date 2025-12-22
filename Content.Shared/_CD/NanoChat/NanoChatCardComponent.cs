@@ -1,8 +1,8 @@
-using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
+using Content.Shared._CD.CartridgeLoader.Cartridges;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-namespace Content.Shared._Moffstation.NanoChat;
+namespace Content.Shared._CD.NanoChat;
 
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedNanoChatSystem))]
 [AutoGenerateComponentPause, AutoGenerateComponentState]

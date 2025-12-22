@@ -7,15 +7,15 @@ using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Database;
-using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
-using Content.Shared._Moffstation.NanoChat;
+using Content.Shared._CD.CartridgeLoader.Cartridges;
+using Content.Shared._CD.NanoChat;
 using Content.Shared.PDA;
 using Content.Shared.Radio.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Moffstation.CartridgeLoader.Cartridges;
+namespace Content.Server._CD.CartridgeLoader.Cartridges;
 
 public sealed class NanoChatCartridgeSystem : EntitySystem
 {

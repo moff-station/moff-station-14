@@ -1,7 +1,7 @@
 using Content.Shared.CartridgeLoader;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Moffstation.CartridgeLoader.Cartridges;
+namespace Content.Shared._CD.CartridgeLoader.Cartridges;
 
 [Serializable, NetSerializable]
 public sealed class NanoChatUiMessageEvent : CartridgeMessageEvent

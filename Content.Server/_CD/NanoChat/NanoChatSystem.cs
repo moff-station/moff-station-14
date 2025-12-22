@@ -4,14 +4,14 @@ using Content.Server.Administration.Logs;
 using Content.Server.Kitchen.Components;
 using Content.Server.NameIdentifier;
 using Content.Shared.Database;
-using Content.Shared._Moffstation.CartridgeLoader.Cartridges;
-using Content.Shared._Moffstation.NanoChat;
+using Content.Shared._CD.CartridgeLoader.Cartridges;
+using Content.Shared._CD.NanoChat;
 using Content.Shared.Kitchen;
 using Content.Shared.NameIdentifier;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
-namespace Content.Server._Moffstation.NanoChat;
+namespace Content.Server._CD.NanoChat;
 
 /// <summary>
 ///     Handles NanoChat features that are specific to the server but not related to the cartridge itself.
