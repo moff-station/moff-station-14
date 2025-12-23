@@ -162,4 +162,10 @@
     - !type:NestedSelector
       tableId: SyndieMaintLoot
       weight: 0.5
-    - id: MobSyndicateFootsoldierMail # Moffstation - Syndies in your mail
+    # Moffstation - Start - Syndies, bees, and spiders in your mail
+    - id: MobSyndicateFootsoldierMail
+      weight: 0.1
+    - !type:NestedSelector
+      tableId: CargoPackingErrorAnimalsHostile
+      weight: 0.5
+    # Moffstation - End
