@@ -93,7 +93,6 @@ public sealed class GameMapManager : IGameMapManager
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
-            _rollOverVotes[map] = 0; // Moffstation - initialize rollover votes
         }
     }
 
@@ -248,15 +247,10 @@ public sealed class GameMapManager : IGameMapManager
     }
 
     // Moffstation - Start - setters and getters for the rollover votes
-    public int GetRollOverVotes(GameMapPrototype map)
-    {
-        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to get rollover votes for unknown map \"{map.MapName}\". Existing keys={string.Join(", ", _rollOverVotes.Keys)}");
-        return _rollOverVotes.GetValueOrDefault(map);
-    }
+    public int GetRollOverVotes(GameMapPrototype map) => _rollOverVotes.GetOrNew(map);
 
     public void SetRollOverVotes(GameMapPrototype map, int votes)
     {
-        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to set rollover votes for unknown map \"{map.MapName}\". Existing keys={string.Join(", ", _rollOverVotes.Keys)}");
         _rollOverVotes[map] = votes;
     }
     // Moffstation - End
