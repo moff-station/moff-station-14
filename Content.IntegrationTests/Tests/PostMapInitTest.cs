@@ -86,7 +86,7 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] DoNotMapWhitelist =
         {
             "/Maps/centcomm.yml",
-            "/Maps/_Harmony/centcomm.yml", // Harmony Centcomm
+            "/Maps/_Moffstation/centcomm.yml", // Moff Centcomm
             "/Maps/_Umbra/Misc/terminal.yml",  // Umbra Arrivals
             "/Maps/Shuttles/AdminSpawn/**", // admin gaming
             "/Maps/bagel.yml", // Contains mime's rubber stamp --> Either fix this, remove the category, or remove this comment if intentional.
