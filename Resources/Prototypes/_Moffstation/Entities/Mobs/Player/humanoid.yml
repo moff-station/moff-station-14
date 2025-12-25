@@ -1,6 +1,5 @@
 # Nanotrasen Corporate Fleet
 - type: entity
-  parent: RandomHumanoidSpawnerCentcomOfficial
   id: RandomHumanoidSpawnerNTCFPilot
   name: NTCF fighter pilot
   suffix: ERTRole, Fleet
@@ -20,10 +19,9 @@
     nameFormat: name-format-military-pilot
   - type: Loadout
     prototypes: [ NTCFPilotGear ]
-    roleLoadout: [ RoleSurvivalStandard ]
+    roleLoadout: [ RoleSurvivalExtended ] # Replace with dedicated ERT survival box when ERT Loadouts 3/3 is merged.
 
 - type: entity
-  parent: RandomHumanoidSpawnerCentcomOfficial
   id: RandomHumanoidSpawnerNTCFEngineer
   name: NTCF flight engineer
   suffix: ERTRole, Fleet
@@ -35,6 +33,7 @@
     settings: NTCFEngineer
 
 - type: randomHumanoidSettings
+  parent: EventHumanoidCentcomm
   id: NTCFEngineer
   components:
   - type: RandomMetadata
@@ -43,7 +42,7 @@
     nameFormat: name-format-military-flight-engineer
   - type: Loadout
     prototypes: [ NTCFEngineerGear ]
-    roleLoadout: [ RoleSurvivalStandard ]
+    roleLoadout: [ RoleSurvivalExtended ] # Replace with dedicated ERT survival box when ERT Loadouts 3/3 is merged.
 
 # CentComm Officials
 - type: entity

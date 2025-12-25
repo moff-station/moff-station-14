@@ -1,3 +1,5 @@
+# NTCF - Nanotrasen Corporate Fleet
+
 # NTCF Pilot
 - type: job
   id: NTCFPilot
@@ -24,7 +26,7 @@
     back: ClothingBackpackERTSecurity
     belt: ClothingBeltSalvageWebbing
     ears: ClothingHeadsetAltCentCom
-    eyes: ClothingEyesGlassesCheapSunglasses
+    eyes: ClothingEyesGlassesCheapSunglasses # Someone please sprite aviator glasses it would be peak
     head: ClothingHeadHelmetBasic # Stand-in for dedicated NTCF helmet.
     gloves: ClothingHandsGlovesCombat
     id: NTCFPilotPDA
@@ -33,10 +35,11 @@
     outerClothing: ClothingOuterArmorBasicSlim
     pocket1: WeaponDisabler
     pocket2: FlashlightSeclite
-    shoes: ClothingShoesBootsMagSci
+    shoes: ClothingShoesBootsJackFilled
   storage:
     back:
     - HandHeldMassScanner
+    - ClothingShoesBootsMagSci
     belt:
     - CrowbarRed
     - PowerDrill
@@ -83,10 +86,13 @@
     outerClothing: ClothingOuterArmorBasicSlim
     pocket1: WeaponDisabler
     pocket2: FlashlightSeclite
-    shoes: ClothingShoesBootsMagSci
+    shoes: ClothingShoesBootsJackFilled
   storage:
     back:
     - HandHeldMassScanner
+    - trayScanner
+    - GasAnalyzer
+    - ClothingShoesBootsMagSci
     belt:
     - CrowbarRed
     - PowerDrill
