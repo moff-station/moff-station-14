@@ -49,3 +49,20 @@
     rules: ghost-role-information-rules-default-team-antagonist
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobKoboldJokejoke
+  name: Joke Joke Spawner
+  suffix: Pirate Bartender Pet
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: kobold
+      sprite: Mobs/Animals/kobold.rsi
+    - state: outline
+      sprite: Mobs/Animals/kobold.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobKoboldJokejoke
