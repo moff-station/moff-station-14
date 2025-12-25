@@ -324,8 +324,6 @@ entities:
       accessListsOriginal:
       - - Atmospherics
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 20
   - uid: 26
@@ -1893,8 +1891,6 @@ entities:
       pos: 1.5,3.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: DeviceLinkSink
       invokeCounter: 1
     - type: DeviceLinkSource
@@ -2364,8 +2360,6 @@ entities:
       pos: 1.5,4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: DeviceLinkSink
       invokeCounter: 1
 - proto: SignalButton
