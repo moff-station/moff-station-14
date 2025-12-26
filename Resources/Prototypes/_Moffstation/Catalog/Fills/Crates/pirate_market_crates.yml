@@ -214,8 +214,8 @@
       amount: 2
 
 - type: entity
-  id: CratePirateRifleLeverMagnum
   parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  id: CratePirateRifleLeverMagnum
   name: repeating rifle crate
   description: Contains two Crestfall lever-action rifles with four ammo boxes.
   components:
