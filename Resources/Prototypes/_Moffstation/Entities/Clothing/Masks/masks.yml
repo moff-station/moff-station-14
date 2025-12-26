@@ -30,3 +30,14 @@
     sprite: _Moffstation/Clothing/Mask/pierrot.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Mask/pierrot.rsi
+
+- type: entity
+  parent: [ClothingMaskGas]
+  id: ClothingMaskGasChem
+  name: chemistry gas mask
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Mask/gaschem.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/gaschem.rsi
+  - type: SolutionScanner

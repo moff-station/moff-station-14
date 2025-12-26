@@ -53,27 +53,24 @@ public sealed partial class GasTankVisualsSystem : EntitySystem
 
         entity.Comp1.Visuals = colorValues;
         _appearance.SetData(entity, GasTankVisualsLayers.Tank, colorValues.TankColor, entity.Comp2);
-        SetOrRemoveAppearanceData((entity, entity.Comp2),
+        SetOrRemoveAppearanceData(
+            (entity, entity.Comp2),
             GasTankVisualsLayers.StripeMiddle,
-            colorValues.MiddleStripeColor);
+            colorValues.MiddleStripeColor
+        );
         SetOrRemoveAppearanceData((entity, entity.Comp2), GasTankVisualsLayers.StripeLow, colorValues.LowerStripeColor);
 
         return true;
     }
 
-    private GasTankColorValues? GetColorValues(GasTankVisuals visuals)
-    {
-        switch (visuals)
+    private GasTankColorValues? GetColorValues(GasTankVisuals visuals) => visuals switch
         {
-            case GasTankVisuals.GasTankVisualsPrototype proto:
-                _proto.TryIndex(proto.Prototype, out var style);
-                return style?.ColorValues;
-            case GasTankVisuals.GasTankVisualsColorValues values:
-                return values;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
+            GasTankVisuals.GasTankVisualsPrototype proto => _proto.Resolve(proto.Prototype, out var style)
+                ? style.ColorValues
+                : null,
+            GasTankVisuals.GasTankVisualsColorValues values => values,
+            _ => throw new ArgumentOutOfRangeException(),
+        };
 
     /// <summary>
     /// If <paramref name="value"/> is null, <see cref="SharedAppearanceSystem.RemoveData">removes</see>

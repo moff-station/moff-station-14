@@ -108,6 +108,10 @@
     clothingVisuals:
       outerClothing:
       - state: BAR-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: BAR-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterBartender
 
@@ -143,6 +147,10 @@
     clothingVisuals:
       outerClothing:
       - state: CARGO-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: CARGO-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCargo
 
@@ -201,6 +209,11 @@
     clothingVisuals:
       outerClothing:
       - state: CENTCOM-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: CENTCOM-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCentcom
 
@@ -225,6 +238,11 @@
     clothingVisuals:
       outerClothing:
       - state: CHEF-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: CHEF-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
@@ -246,6 +264,11 @@
     clothingVisuals:
       outerClothing:
       - state: CHEM-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: CHEM-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -276,6 +299,11 @@
     clothingVisuals:
       outerClothing:
       - state: CMO-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: CMO-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -289,12 +317,14 @@
 - type: entity
   parent: ClothingOuterWinterCoat
   id: ClothingOuterWinterClown
-  name: clown winter coat
+  name: clown robe # Moffstation - Clown Outfits
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
+# Moffstation - Start - Clown Outfits
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/clownrobe.rsi
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/clownrobe.rsi
+# Moffstation - End - Clown Outfits
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
@@ -351,6 +381,11 @@
     clothingVisuals:
       outerClothing:
       - state: GENE-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: GENE-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -381,11 +416,14 @@
     clothingVisuals:
       outerClothing:
       - state: HOP-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: HOP-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOP
 
-
-##########################################################
 - type: entity
   parent: [ClothingOuterArmorHoS, ClothingOuterWinterCoatToggleable, BaseSecurityCommandContraband]
   id: ClothingOuterWinterHoS
@@ -398,7 +436,6 @@
     sprite: Clothing/OuterClothing/WinterCoats/coathosarmored.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
-##########################################################
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseSecurityCommandContraband]
@@ -421,6 +458,11 @@
     clothingVisuals:
       outerClothing:
       - state: HOS-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: HOS-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
@@ -444,6 +486,10 @@
     clothingVisuals:
       outerClothing:
       - state: HYDRO-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: HYDRO-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHydro
 
@@ -461,12 +507,17 @@
       left:
       - state: JANI-inhand-left
       right:
-      - state: CHEF-inhand-right
+      - state: JANI-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: JANI-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: JANI-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -497,6 +548,10 @@
     clothingVisuals:
       outerClothing:
       - state: MED-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: MED-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -527,6 +582,10 @@
     clothingVisuals:
       outerClothing:
       - state: MIME-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: MIME-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterMime
 
@@ -550,6 +609,10 @@
     clothingVisuals:
       outerClothing:
       - state: MINER-equipped-OUTERCLOTHING
+      #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: MINER-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterMiner
 
@@ -573,6 +636,10 @@
     clothingVisuals:
       outerClothing:
       - state: PARA-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: PARA-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -603,6 +670,11 @@
     clothingVisuals:
       outerClothing:
       - state: QM-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: QM-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterQM
 
@@ -627,6 +699,11 @@
     clothingVisuals:
       outerClothing:
       - state: RD-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: RD-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -657,6 +734,11 @@
     clothingVisuals:
       outerClothing:
       - state: ROBO-equipped-OUTERCLOTHING
+#Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: ROBO-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterRobo
 
@@ -681,6 +763,10 @@
     clothingVisuals:
       outerClothing:
       - state: SCI-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: SCI-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -711,6 +797,10 @@
     clothingVisuals:
       outerClothing:
       - state: SEC-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: SEC-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSec
 
@@ -734,6 +824,11 @@
     clothingVisuals:
       outerClothing:
       - state: VIRO-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: VIRO-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: Armor
     modifiers:
       coefficients:
@@ -744,7 +839,6 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
-################################################################
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoatToggleable, BaseSecurityContraband]
   id: ClothingOuterWinterWarden
@@ -757,7 +851,6 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
-################################################################
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband]
@@ -780,6 +873,11 @@
     clothingVisuals:
       outerClothing:
       - state: WARD-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: WARD-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSec # Moffstation - (New Warden Uniforms)
 
@@ -804,10 +902,14 @@
     clothingVisuals:
       outerClothing:
       - state: SYNDIECAP-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: SYNDIECAP-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSyndie
 
-##############################################################
 - type: entity
   parent: [ BaseSyndicateContraband, ClothingOuterWinterWarden ]
   id: ClothingOuterWinterSyndieCapArmored
@@ -820,7 +922,6 @@
     sprite: Clothing/OuterClothing/WinterCoats/syndicate/coatsyndiecaparmored.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSyndie
-##############################################################
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseSyndicateContraband]
@@ -843,6 +944,11 @@
     clothingVisuals:
       outerClothing:
       - state: SYNDIE-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: SYNDIE-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSyndie
 
@@ -878,6 +984,11 @@
     clothingVisuals:
       outerClothing:
       - state: WEB-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: WEB-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: Construction
     graph: WebObjects
     node: coat
@@ -928,6 +1039,12 @@
       - state: coatybits-equipped-OUTERCLOTHING
         color: "#1d1d1d"
       - state: winterbits-equipped-OUTERCLOTHING
+      #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#1d1d1d"
+      - state: winterbits-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorBlack
 
@@ -959,6 +1076,12 @@
       - state: coatybits-equipped-OUTERCLOTHING
         color: "#9C0DE1"
       - state: winterbits-equipped-OUTERCLOTHING
+      #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#9C0DE1"
+      - state: winterbits-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorPurple
 
@@ -990,6 +1113,12 @@
       - state: coatybits-equipped-OUTERCLOTHING
         color: "#940000"
       - state: winterbits-equipped-OUTERCLOTHING
+      #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#940000"
+      - state: winterbits-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorRed
 
@@ -1021,6 +1150,12 @@
       - state: coatybits-equipped-OUTERCLOTHING
         color: "#0089EF"
       - state: winterbits-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#0089EF"
+      - state: winterbits-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorBlue
 
@@ -1033,25 +1168,33 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#723A02"
-    - state: winterbits-icon
+      color: "#68361f" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#723A02"
+        color: "#68361f" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#723A02"
+        color: "#68361f" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#723A02"
-      - state: winterbits-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+        color: "#68361f"
+      - state: winterbits-tan-equipped-OUTERCLOTHING
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#68361f"
+      - state: winterbits-tan-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorBrown
 
@@ -1064,25 +1207,31 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#999999"
-    - state: winterbits-icon
+      color: "#404040" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon #Moffstation - End - Vox Wintecoats
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#999999"
+        color: "#404040" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#999999"
+        color: "#404040" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#999999"
-      - state: winterbits-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+        color: "#404040"
+      - state: winterbits-equipped-OUTERCLOTHING-tan
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#404040"
+      - state: winterbits-tan-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorGray
 
@@ -1095,25 +1244,33 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#5ABF2F"
-    - state: winterbits-icon
+      color: "#0e5a48" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon #Moffstation - End - Vox Wintecoats
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#5ABF2F"
+        color: "#0e5a48"
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#5ABF2F"
+        color: "#0e5a48"
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#5ABF2F"
-      - state: winterbits-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+        color: "#0e5a48"
+      - state: winterbits-tan-equipped-OUTERCLOTHING
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#0e5a48"
+      - state: winterbits-tan-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorGreen
 
@@ -1126,25 +1283,29 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#C09F72"
+      color: "#b58763" #Moffstation - Vox Wintecoats
     - state: winterbits-icon
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#C09F72"
+        color: "#b58763" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#C09F72"
+        color: "#b58763" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#C09F72"
+        color: "#b58763" #Moffstation - Vox Wintecoats
       - state: winterbits-equipped-OUTERCLOTHING
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#b58763" #Moffstation - Vox Wintecoats
+      - state: winterbits-equipped-OUTERCLOTHING-vox
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorLightBrown
 
@@ -1176,6 +1337,12 @@
       - state: coatybits-equipped-OUTERCLOTHING
         color: "#EF8100"
       - state: winterbits-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#EF8100"
+      - state: winterbits-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorOrange
 
@@ -1207,6 +1374,12 @@
       - state: coatybits-equipped-OUTERCLOTHING
         color: "#EAE8E8"
       - state: winterbits-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#EAE8E8"
+      - state: winterbits-equipped-OUTERCLOTHING-vox
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorWhite
 
@@ -1219,24 +1392,32 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#EBE216"
-    - state: winterbits-icon
+      color: "#ffda0a" #Moffstation - Begin - Vox Wintecoats
+    - state: winterbits-tan-icon #Moffstation - End - Vox Wintecoats
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#EBE216"
+        color: "#ffda0a" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#EBE216"
+        color: "#ffda0a" #Moffstation - Vox Wintecoats
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#EBE216"
-      - state: winterbits-equipped-OUTERCLOTHING
+  #Moffstation - Begin - Vox Wintecoats
+        color: "#ffda0a"
+      - state: winterbits-tan-equipped-OUTERCLOTHING
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+      outerClothing-vox:
+      - state: coatybits-equipped-OUTERCLOTHING-vox
+        color: "#ffda0a"
+      - state: winterbits-tan-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+  #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterColorYellow

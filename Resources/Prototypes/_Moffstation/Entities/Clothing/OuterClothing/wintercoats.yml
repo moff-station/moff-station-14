@@ -68,6 +68,8 @@
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCentcom
 
@@ -183,3 +185,16 @@
     - WhitelistChameleon #Moffstation - End - Engineering Outfit Repsprites
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterEngineer
+
+#Mime
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterPierrot
+  name: Pierrot Fur Coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/winterpierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/winterpierrot.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterPierrot

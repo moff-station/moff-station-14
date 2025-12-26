@@ -147,6 +147,18 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmoflowing.rsi
 
+#Chemist
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitChemistSweater
+  name: Casual Chemist Sweater
+  description: An Outfit for the chemist who enjoyes heating their beverage on their hotplate.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chemist-sweater.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chemist-sweater.rsi
+
 # Captain
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
