@@ -1,0 +1,103 @@
+﻿## Command
+# Chief Engineer
+- type: startingGear
+  id: ChiefEngineerCorpseGear
+  equipment:
+    head: ClothingHeadHatBeretEngineering
+    jumpsuit: ClothingUniformJumpsuitChiefEngineer
+    neck: ClothingNeckCloakCe
+    shoes: ClothingShoesBootsWork
+    # mask:
+    eyes: ClothingEyesGlassesMeson
+    gloves: ClothingHandsGlovesColorYellow
+    # outerClothing:
+    belt: ClothingBeltChiefEngineer
+    pocket1: RubberStampCE
+    # pocket2:
+
+## Engineering
+# Atmospheric Technician
+- type: startingGear
+  id: AtmosphericTechnicianCorpseGear
+  equipment:
+    head: ClothingHeadHatHardhatBlue
+    jumpsuit: ClothingUniformJumpsuitAtmos
+    shoes: ClothingShoesBootsWork
+    # mask:
+    eyes: ClothingEyesGlassesMeson
+    gloves: ClothingHandsGlovesColorYellow
+    outerClothing: ClothingOuterVestHazardBlue
+    belt: ClothingBeltUtilityEngineering
+    # pocket1:
+    # pocket2:
+
+- type: startingGear
+  id: CoolAtmosphericTechnicianCorpseGear
+  equipment:
+    head: ClothingHeadHatYellowsoftFlipped
+    jumpsuit: ClothingUniformJumpsuitSeniorAtmos
+    shoes: ClothingShoesBootsWork
+    # mask:
+    eyes: ClothingEyesGlassesMesonSunglasses
+    gloves: ClothingHandsGlovesColorYellow
+    # outerClothing:
+    belt: ClothingBeltUtilityEngineering
+    pocket1: CigPackBlack
+    # pocket2:
+
+- type: startingGear
+  id: FiresuitAtmosphericTechnicianCorpseGear
+  equipment:
+    # head:
+    jumpsuit: ClothingUniformJumpsuitAtmosTurtle
+    shoes: ClothingShoesBootsWork
+    # mask:
+    eyes: ClothingEyesGlassesMeson
+    gloves: ClothingHandsGlovesColorYellow
+    outerClothing: ClothingOuterSuitAtmosFire
+    belt: ClothingBeltUtilityEngineering
+    # pocket1:
+    # pocket2:
+
+# Station Engineer
+- type: startingGear
+  id: StationEngineerCorpseGear
+  equipment:
+    head: ClothingHeadHatHardhatOrange
+    jumpsuit: ClothingUniformJumpsuitEngineeringHazard
+    shoes: ClothingShoesBootsWork
+    # mask:
+    eyes: ClothingEyesGlassesMeson
+    gloves: ClothingHandsGlovesColorYellow
+    outerClothing: ClothingOuterVestHazard
+    belt: ClothingBeltUtilityEngineering
+    # pocket1:
+    # pocket2:
+
+- type: startingGear
+  id: CoolStationEngineerCorpseGear
+  equipment:
+    # head:
+    jumpsuit: ClothingUniformJumpsuitEngineering
+    shoes: ClothingShoesBootsWork
+    # mask:
+    eyes: ClothingEyesGlassesMesonSunglasses
+    gloves: ClothingHandsGlovesColorYellow
+    # outerClothing:
+    belt: ClothingBeltUtilityEngineering
+    pocket1: CigPackBlack
+    # pocket2:
+
+- type: startingGear
+  id: TechnicalAssistantCorpseGear
+  equipment:
+    head: ClothingHeadHatOrangesoft
+    jumpsuit: ClothingUniformJumpsuitEngineeringHazard
+    shoes: ClothingShoesBootsWork
+    # mask:
+    eyes: ClothingEyesHudDiagnostic
+    # gloves:
+    outerClothing: ClothingOuterWinterEngiWindbreaker
+    belt: ClothingBeltUtilityEngineering
+    # pocket1:
+    # pocket2:

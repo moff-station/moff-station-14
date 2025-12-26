@@ -1,0 +1,12 @@
+- type: entity
+  id: ExtendedNotificationEvent
+  parent: BaseStationEvent
+  components:
+  - type: StationEvent
+    endAnnouncement: station-event-extended-announcement
+    endAudio:
+      path: /Audio/Announcements/announce.ogg
+    weight: 0
+    duration: 1800
+    endAnnouncementColor: green
+  - type: DummyRule # Just a blank rule basically

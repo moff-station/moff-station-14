@@ -18,7 +18,10 @@
   groupBy: "engineer roles"
 
 # Head
-
+- type: loadout
+  id: StationEngineerOrangeCap
+  equipment:
+    head: ClothingHeadHatOrangesoft
 # Mask
 
 # Neck
@@ -30,6 +33,10 @@
 # Belt
 
 # Outer Clothing
+- type: loadout
+  id: StationEngineerWindbreaker
+  equipment:
+    outerClothing: ClothingOuterWinterEngiWindbreaker
 
 # Gloves
 
