@@ -1750,13 +1750,23 @@
   minLimit: 0
   loadouts:
   - LizardPlushieMedicalIntern
+  #Moffstation - Begin - Chemist Outfits
+- type: loadoutGroup
+  id: ChemistMask
+  name: loadout-group-chemist-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+  - ChemistMask
 
+  #Moffstation - End - Chemist Outfits
 - type: loadoutGroup
   id: ChemistJumpsuit
   name: loadout-group-chemist-jumpsuit
   loadouts:
   - ChemistJumpsuit
   - ChemistJumpskirt
+  - ChemistSweater # Moffstation - Chemist outfits
 
 - type: loadoutGroup
   id: ChemistOuterClothing
@@ -1766,7 +1776,26 @@
   - RegularLabCoat
   - ChemistLabCoat
   - ChemistWintercoat
+  #Moffstation - Begin - Chemist Outfits
+  - ChemistApron
 
+- type: loadoutGroup
+  id: ChemistGloves
+  name: loadout-group-chemist-gloves
+  minLimit: 0
+  loadouts:
+  - LatexGloves
+  - NitrileGloves
+  - ChemistGloves
+
+- type: loadoutGroup
+  id: ChemistShoes
+  name: loadout-group-chemist-shoes
+  loadouts:
+  - BlackShoes
+  - MedicalWinterBoots
+
+#Moffstation - End - Chemist Outfits
 - type: loadoutGroup
   id: ChemistBackpack
   name: loadout-group-chemist-backpack
