@@ -91,3 +91,28 @@
   - type: RuleGrids
   - type: AlertLevelInterceptionRule
     alertLevel: epsilon
+
+# Nanotrasen Corporate Fleet
+- type: entity # For fighting pirates or Xenoborgs
+  parent: BaseGameRule
+  id: NTCFFighterFair
+  components:
+  - type: StationEvent
+    startAnnouncement: ntcf-fighter-light
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-fighter-light-combat.yml
+  - type: RuleGrids
+
+- type: entity # For beating pirates or Xenoborgs
+  parent: BaseGameRule
+  id: NTCFFighterStrong
+  components:
+  - type: StationEvent
+    startAnnouncement: ntcf-fighter-heavy
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-fighter-heavy-combat.yml
+  - type: RuleGrids

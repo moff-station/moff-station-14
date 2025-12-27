@@ -5,8 +5,8 @@
   suffix: ERTRole, Fleet
   components:
   - type: Sprite
-    sprite: Markers/jobs.rsi
-    state: centcomexec # Todo: Add proper picture.
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: ntcfpilot
   - type: RandomHumanoidSpawner
     settings: NTCFPilot
 
@@ -27,8 +27,8 @@
   suffix: ERTRole, Fleet
   components:
   - type: Sprite
-    sprite: Markers/jobs.rsi
-    state: centcomexec # Todo: Add proper picture.
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: ntcfengineer
   - type: RandomHumanoidSpawner
     settings: NTCFEngineer
 
