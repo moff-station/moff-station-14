@@ -27,6 +27,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
 
         SubscribeLocalEvent<PirateStationComponent, BankBalanceUpdatedEvent>(OnBalanceUpdated);
     }
+
     protected override void AppendRoundEndText(EntityUid uid,
         PiratesRuleComponent component,
         GameRuleComponent gameRule,
@@ -36,7 +37,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
         args.AddLine(Loc.GetString("pirates-earned-spesos", ("money", component.TotalMoneyCollected)));
         args.AddLine(Loc.GetString("pirate-list-start"));
 
-        var antags =_antag.GetAntagIdentifiers(uid);
+        var antags = _antag.GetAntagIdentifiers(uid);
 
         foreach (var (_, sessionData, name) in antags)
         {
@@ -51,29 +52,34 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
 
     private void OnRuleLoadedGrids(Entity<PiratesRuleComponent> ent, ref RuleLoadedGridsEvent args)
     {
-        // Check each Pirate shuttle
-        var query = EntityQueryEnumerator<PirateShuttleComponent>();
-        while (query.MoveNext(out var uid, out var shuttle))
+        var gridsToCheck = args.Grids.ToHashSet();
+
+        // Check each Pirate base
+        var query = EntityQueryEnumerator<PirateBaseComponent>();
+        while (query.MoveNext(out var baseEnt, out var baseComp))
         {
-            // Check if the shuttle's mapID is the one that just got loaded for this rule
-            if (Transform(uid).MapID == args.Map)
-            {
-                shuttle.AssociatedRule = ent;
-
-                // Converts the pirate shuttle into a station, giving it a functional cargo system
-                ent.Comp.AssociatedStation = _station.InitializeNewStation(ent.Comp.StationConfig, [uid]);
-
-                // Give the station component a reference to this rule for later reference
-                if (!TryComp<PirateStationComponent>(ent.Comp.AssociatedStation, out var stationComp))
-                    return;
-                stationComp.AssociatedRule = GetNetEntity(ent.Owner);
-
-                //Turns the pirate shuttle into a trade station, so that it's buy/sell pads are functional
-                EnsureComp<TradeStationComponent>(uid);
-                Dirty(uid, shuttle);
-
+            if (gridsToCheck.Count == 0)
+                // No more grids to check, no more iteration necessary.
                 break;
-            }
+
+            // Only deal with grids which were just added by this rule.
+            if (!gridsToCheck.Contains(baseEnt))
+                continue;
+
+            gridsToCheck.Remove(baseEnt);
+            baseComp.AssociatedRule = ent;
+
+            // Converts the pirate base into a station, giving it a functional cargo system
+            ent.Comp.AssociatedStation = _station.InitializeNewStation(ent.Comp.StationConfig, [baseEnt]);
+
+            // Give the station component a reference to this rule for later reference
+            if (!TryComp<PirateStationComponent>(ent.Comp.AssociatedStation, out var stationComp))
+                continue;
+            stationComp.AssociatedRule = GetNetEntity(ent.Owner);
+
+            // Turns the pirate base into a trade station, so that its buy/sell pads are functional
+            EnsureComp<TradeStationComponent>(baseEnt);
+            Dirty(baseEnt, baseComp);
         }
     }
 
@@ -95,6 +101,7 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
             if (transaction > 0)
                 moneyEarned += transaction;
         }
+
         rule.LastBalance = args.Balance.ToDictionary();
 
         rule.TotalMoneyCollected += moneyEarned;
