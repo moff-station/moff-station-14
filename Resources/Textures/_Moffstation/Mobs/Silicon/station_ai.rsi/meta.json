@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/0287eb33bbb3a3f73bbcd7d0c8e607746c390566/icons/mob/AI.dmi",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/0287eb33bbb3a3f73bbcd7d0c8e607746c390566/icons/mob/AI.dmi & floppycat + floppycat_crash by Davyei (Github) for moffstation.",
     "size": {
         "x": 32,
         "y": 32
@@ -451,6 +451,36 @@
                     0.1,
                     0.1,
                     0.5
+                ]
+            ]
+        },
+        {
+            "name": "ai_floppycat",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "ai_floppycat_crash",
+            "delays": [
+                [
+                    0.3,
+                    0.7,
+                    0.5,
+                    0.7
                 ]
             ]
         },

@@ -5,6 +5,7 @@ station-ai-icon-boxfort = Boxfort
 station-ai-icon-cheerful = Cheerful
 station-ai-icon-database = Database
 station-ai-icon-fabulous = Fabulous
+station-ai-icon-floppycat = Floppycat
 station-ai-icon-glitchman = Glitchman
 station-ai-icon-hades = Hades
 station-ai-icon-helios = Helios
