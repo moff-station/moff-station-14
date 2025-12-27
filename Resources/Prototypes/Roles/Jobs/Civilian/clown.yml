@@ -30,11 +30,13 @@
 - type: startingGear
   id: ClownGear
   equipment:
-    mask: ClothingMaskClown
+#    mask: ClothingMaskClown # Moffstation - Moved into Loadouts
     pocket1: BikeHorn
     pocket2: ClownRecorder
 #    id: ClownPDA # Moffstation - PDA loadouts
     ears: ClothingHeadsetService
+  inhand:
+  - FoolboxFilled
   storage:
     back:
     - RubberStampClown

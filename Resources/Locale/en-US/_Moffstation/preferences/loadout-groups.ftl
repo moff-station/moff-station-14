@@ -14,7 +14,9 @@ loadout-group-quartermaster-backpack = Quartermaster Backpack
 loadout-group-chief-engineer-backpack = Chief Engineer Backpack
 loadout-group-chief-medical-officer-backpack = Chief Medical Officer Backpack
 loadout-group-atmospheric-technician-head = Atmospheric Technician head
-
+loadout-group-chemist-mask = Chemist Mask
+loadout-group-chemist-gloves = Chemist Gloves
+loadout-group-chemist-shoes = Chemist Shoes
 loadout-group-captain-glasses = Captain glasses
 loadout-group-head-of-personnel-glasses = Head of Personnel glasses
 loadout-group-security-glasses = Security glasses
@@ -40,7 +42,13 @@ loadout-group-bartender-id = Bartender ID
 loadout-group-botanist-id = Botanist ID
 loadout-group-chaplain-id = Chaplain ID
 loadout-group-chef-id = Chef ID
+
 loadout-group-clown-id = Clown ID
+loadout-group-clown-mask = Clown mask
+loadout-group-theatre-neck = Theatre neck
+loadout-group-mime-shoes = Mime shoes
+loadout-group-musician-head = Musician head
+loadout-group-musician-shoes = Musician shoes
 loadout-group-janitor-id = Janitor ID
 loadout-group-lawyer-id = Lawyer ID
 loadout-group-librarian-id = Librarian ID

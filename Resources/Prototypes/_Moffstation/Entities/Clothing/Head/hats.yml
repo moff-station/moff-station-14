@@ -127,7 +127,15 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
   - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.07"
     sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
 
 #Musician
 - type: entity
@@ -231,7 +239,7 @@
     sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
- 
+
 #Detective
 - type: entity
   parent: ClothingHeadBase

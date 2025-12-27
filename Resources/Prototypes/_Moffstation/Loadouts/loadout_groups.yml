@@ -296,6 +296,24 @@
   - FoolPDA
   - JesterPDA
 
+- type: loadoutGroup
+  id: ClownMask
+  name: loadout-group-clown-mask
+  minLimit: 1
+  loadouts:
+  - ClownMaskDefault
+  - ClownMaskBlushing
+  - ClownMaskBanana
+  - ClownMaskCool
+  - HarlequinMask
+
+- type: loadoutGroup
+  id: TheatreNeck
+  name: loadout-group-theatre-neck
+  minLimit: 0
+  loadouts:
+  - RuffleNeck
+
 # Janitor
 - type: loadoutGroup
   id: JanitorPDA
@@ -337,6 +355,15 @@
   - MimePDA # Keep default PDA on top of the list
   - PierrotPDA
 
+- type: loadoutGroup
+  id: MimeShoes
+  name: loadout-group-mime-shoes
+  loadouts:
+  - WhiteShoes
+  - BlackShoes
+  - LaceupShoes
+  - CowboyShoes
+
 # Musician
 - type: loadoutGroup
   id: MusicianPDA
@@ -345,6 +372,22 @@
   - MusicianPDA # Keep default PDA on top of the list
   - PopIdolPDA
   - RockStarPDA
+
+- type: loadoutGroup
+  id: MusicianHead
+  name: loadout-group-musician-head
+  minLimit: 0
+  loadouts:
+  - PerformerWig
+  - RockstarWig
+
+- type: loadoutGroup
+  id: MusicianShoes
+  name: loadout-group-musician-shoes
+  loadouts:
+  - LaceupShoes
+  - PerformerShoes
+  - CowboyShoes
 
 # Passenger
 - type: loadoutGroup
