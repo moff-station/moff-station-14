@@ -64,22 +64,21 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             if (!GameTicker.IsGameRuleActive(uid, rule))
                 continue;
 
-            // Remove old mind to destroy old ghosts
             if(_mind.TryGetMind(ev.Player.UserId, out var mindId, out var mind))
             {
                 if (mind.VisitingEntity is {Valid: true} visiting)
-                    _mind.UnVisit((EntityUid)mindId, mind);
-                _mind.WipeMind(ev.Player);
+                    _mind.UnVisit(mindId!.Value, mind);
             }
-
-            var newMind = _mind.CreateMind(ev.Player.UserId, ev.Profile.Name);
-            _mind.SetUserId(newMind, ev.Player.UserId);
+            else
+            {
+                mindId = _mind.CreateMind(ev.Player.UserId, ev.Profile.Name);
+            }
 
             var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(ev.Station, null, ev.Profile);
             DebugTools.AssertNotNull(mobMaybe);
             var mob = mobMaybe!.Value;
 
-            _mind.TransferTo(newMind, mob);
+            _mind.TransferTo(mindId!.Value, mob);
             _outfitSystem.SetOutfit(mob, gunGame.Gear);
             EnsureComp<KillTrackerComponent>(mob);
             EnsureComp<GunGameTrackerComponent>(mob);
