@@ -11,3 +11,23 @@
         Holy: 50
   - type: StaminaDamageOnCollide
     damage: 60
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BulletAntiMateriel
+  id: BulletAntiMaterielRicochet
+  name: bullet (.60 ricochet)
+  components:
+  - type: Projectile
+    damage:
+      types: # Might change damages
+        Piercing: 75
+        Structural: 200
+    penetrationThreshold: 360
+    penetrationDamageTypeRequirement:
+    - Structural
+  - type: StaminaDamageOnCollide
+    damage: 60
+  - type: Ricochet
+    prob: 1
+    dropoff: 0.1
