@@ -26,7 +26,15 @@ public sealed partial class MindTests
         // Delete **everything**
         var conHost = pair.Server.ResolveDependency<IConsoleHost>();
         await pair.Server.WaitPost(() => conHost.ExecuteCommand("entities delete"));
-        await pair.RunTicksSync(5);
+        // Moffstation - Begin - Ensure Clenup Succeds
+        for (var i = 0; i < 60; i++)
+        {
+            await pair.RunTicksSync(1);
+
+            if (pair.Client.EntMan.EntityCount == 0)
+                break;
+        }
+        // Moffstation - End
 
         Assert.That(pair.Server.EntMan.EntityCount, Is.EqualTo(0));
 
