@@ -1,3 +1,64 @@
+# Nanotrasen Corporate Fleet
+- type: entity
+  id: RandomHumanoidSpawnerNTCFPilot
+  name: NTCF fighter pilot
+  suffix: ERTRole, Fleet
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-pilot-name
+    description: ghost-role-information-ntcf-pilot-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFPilot
+  - type: RandomHumanoidSpawner
+    settings: NTCFPilot
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: ntcfpilot
+
+- type: randomHumanoidSettings
+  id: NTCFPilot
+  components:
+  - type: Loadout
+    prototypes: [ NTCFPilotGear ]
+    roleLoadout: [ RoleSurvivalExtended ] # Replace with dedicated ERT survival box when ERT Loadouts 3/3 is merged.
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-military-pilot
+
+- type: entity
+  id: RandomHumanoidSpawnerNTCFEngineer
+  name: NTCF flight engineer
+  suffix: ERTRole, Fleet
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-engineer-name
+    description: ghost-role-information-ntcf-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFEngineer
+  - type: RandomHumanoidSpawner
+    settings: NTCFEngineer
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: ntcfengineer
+
+- type: randomHumanoidSettings
+  parent: EventHumanoidCentcomm
+  id: NTCFEngineer
+  components:
+  - type: Loadout
+    prototypes: [ NTCFEngineerGear ]
+    roleLoadout: [ RoleSurvivalExtended ] # Replace with dedicated ERT survival box when ERT Loadouts 3/3 is merged.
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-military-flight-engineer
+
+# CentComm Officials
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
   id: RandomHumanoidSpawnerCentcomExecutive
