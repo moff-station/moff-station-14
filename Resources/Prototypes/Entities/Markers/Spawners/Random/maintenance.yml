@@ -357,6 +357,7 @@
       - id: SawImprov
       - id: HydroponicsToolMiniHoe
       - id: ClothingHandsKnuckleDusters
+      - id: WeaponRifleLeverMagnum # Moffstation - (Crestfall Repeater) - We want it to be rare maints loot, but it's not Syndicate contrband, so it goes here. This table is extremely rarely picked, so it's a good choice for our purposes.
       - !type:NestedSelector
         tableId: AllToyWeaponsTable
 
