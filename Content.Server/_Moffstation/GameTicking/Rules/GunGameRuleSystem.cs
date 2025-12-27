@@ -300,7 +300,6 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             return;
 
         var batteryRecharge = EnsureComp<BatterySelfRechargerComponent>(upgradable);
-        batteryRecharge.AutoRecharge = true;
         batteryRecharge.AutoRechargeRate = Math.Max(rule.DefaultEnergyWeaponRechargeRate, batteryRecharge.AutoRechargeRate);
     }
 }

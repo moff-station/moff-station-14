@@ -290,14 +290,4 @@ public sealed partial class GunSystem : SharedGunSystem
             Audio.PlayPvs(weaponSound, otherEntity);
         }
     }
-
-    // Moffstation - Start
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        UpdateBallistic();
-        UpdateAutoFire();
-    }
-    // Moffstation - End
 }

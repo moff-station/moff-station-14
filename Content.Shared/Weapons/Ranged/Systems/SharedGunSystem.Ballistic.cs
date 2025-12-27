@@ -1,7 +1,7 @@
 using Content.Shared._Moffstation.Storage; // Moffstation
 using Content.Shared._Moffstation.Storage.EntitySystems; // Moffstation
-using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.DoAfter;
+using Content.Shared.Emp;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -24,6 +24,7 @@ public abstract partial class SharedGunSystem
     [Dependency] private readonly QuickPickupSystem _quickPickup = default!;
     // Moffstation - End
 
+    [MustCallBase]
     protected virtual void InitializeBallistic()
     {
         SubscribeLocalEvent<BallisticAmmoProviderComponent, ComponentInit>(OnBallisticInit);
@@ -45,6 +46,14 @@ public abstract partial class SharedGunSystem
         SubscribeLocalEvent<BallisticAmmoProviderComponent, BeforeAreaPickupEvent>(OnBeforeAreaPickup);
         SubscribeLocalEvent<BallisticAmmoProviderComponent, AreaPickupDoAfterEvent>(OnAreaPickupDoAfter);
         // Moffstation - End
+
+        SubscribeLocalEvent<BallisticAmmoSelfRefillerComponent, MapInitEvent>(OnBallisticRefillerMapInit);
+        SubscribeLocalEvent<BallisticAmmoSelfRefillerComponent, EmpPulseEvent>(OnRefillerEmpPulsed);
+    }
+
+    private void OnBallisticRefillerMapInit(Entity<BallisticAmmoSelfRefillerComponent> entity, ref MapInitEvent args)
+    {
+        entity.Comp.NextAutoRefill = Timing.CurTime + entity.Comp.AutoRefillRate;
     }
 
     private void OnBallisticUse(EntityUid uid, BallisticAmmoProviderComponent component, UseInHandEvent args)
@@ -61,25 +70,8 @@ public abstract partial class SharedGunSystem
         if (args.Handled)
             return;
 
-        /* Moffstation - Start - Extract "Try Insert" logic into a function
-        if (_whitelistSystem.IsWhitelistFailOrNull(component.Whitelist, args.Used))
-            return;
-
-        if (GetBallisticShots(component) >= component.Capacity)
-            return;
-
-        component.Entities.Add(args.Used);
-        Containers.Insert(args.Used, component.Container);
-        // Not predicted so
-        Audio.PlayPredicted(component.SoundInsert, uid, args.User);
-        args.Handled = true;
-        UpdateBallisticAppearance(uid, component);
-        UpdateAmmoCount(args.Target);
-        DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.Entities));
-        */
         if (TryBallisticInsert((uid, component), args.Used, args.User))
             args.Handled = true;
-        // Moffstation - End
     }
 
     private void OnBallisticAfterInteract(EntityUid uid, BallisticAmmoProviderComponent component, AfterInteractEvent args)
@@ -271,30 +263,29 @@ public abstract partial class SharedGunSystem
     {
         for (var i = 0; i < args.Shots; i++)
         {
-            EntityUid entity;
-
+            EntityUid? ammoEntity = null;
             if (component.Entities.Count > 0)
             {
-                entity = component.Entities[^1];
-
-                args.Ammo.Add((entity, EnsureShootable(entity)));
+                var existingEnt = component.Entities[^1];
                 component.Entities.RemoveAt(component.Entities.Count - 1);
                 DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.Entities));
-                Containers.Remove(entity, component.Container);
-
-                // Moffstation - Start
-                if (TryComp<BallisticAmmoSelfRefillerComponent>(uid, out var refiller))
-                {
-                    PauseSelfRefill((uid, refiller));
-                }
-                // Moffstation - End
+                Containers.Remove(existingEnt, component.Container);
+                ammoEntity = existingEnt;
             }
             else if (component.UnspawnedCount > 0)
             {
                 component.UnspawnedCount--;
                 DirtyField(uid, component, nameof(BallisticAmmoProviderComponent.UnspawnedCount));
-                entity = Spawn(component.Proto, args.Coordinates);
-                args.Ammo.Add((entity, EnsureShootable(entity)));
+                ammoEntity = Spawn(component.Proto, args.Coordinates);
+            }
+
+            if (ammoEntity is { } ent)
+            {
+                args.Ammo.Add((ent, EnsureShootable(ent)));
+                if (TryComp<BallisticAmmoSelfRefillerComponent>(uid, out var refiller))
+                {
+                    PauseSelfRefill((uid, refiller));
+                }
             }
         }
 
@@ -353,7 +344,6 @@ public abstract partial class SharedGunSystem
     }
     // Moffstation - End
 
-    // Moffstation - Start - New Ballistic API functions
     /// <summary>
     /// Causes <paramref name="entity"/> to pause its refilling for either at least <paramref name="overridePauseDuration"/>
     /// (if not null) or the entity's <see cref="BallisticAmmoSelfRefillerComponent.AutoRefillPauseDuration"/>. If the
@@ -371,14 +361,14 @@ public abstract partial class SharedGunSystem
         if (nextRefillByPause > entity.Comp.NextAutoRefill)
         {
             entity.Comp.NextAutoRefill = nextRefillByPause;
-            Dirty(entity);
+            DirtyField(entity.AsNullable(), nameof(BallisticAmmoSelfRefillerComponent.NextAutoRefill));
         }
     }
 
     /// <summary>
     /// Returns true if the given <paramref name="entity"/>'s ballistic ammunition is full, false otherwise.
     /// </summary>
-    public bool IsFullBallistic(Entity<BallisticAmmoProviderComponent> entity)
+    public bool IsFull(Entity<BallisticAmmoProviderComponent> entity)
     {
         return GetBallisticShots(entity.Comp) >= entity.Comp.Capacity;
     }
@@ -390,7 +380,7 @@ public abstract partial class SharedGunSystem
     public bool CanInsertBallistic(Entity<BallisticAmmoProviderComponent> entity, EntityUid inserted)
     {
         return !_whitelistSystem.IsWhitelistFailOrNull(entity.Comp.Whitelist, inserted) &&
-               !IsFullBallistic(entity);
+               !IsFull(entity);
     }
 
     /// <summary>
@@ -409,18 +399,17 @@ public abstract partial class SharedGunSystem
 
         entity.Comp.Entities.Add(inserted);
         Containers.Insert(inserted, entity.Comp.Container);
-        if (!suppressInsertionSound &&
-            !(user is { } u && TagSystem.HasTag(u, entity.Comp.SilentInsertUserTag)))
+        if (!suppressInsertionSound)
         {
             Audio.PlayPredicted(entity.Comp.SoundInsert, entity, user);
         }
 
         UpdateBallisticAppearance(entity, entity.Comp);
+        UpdateAmmoCount(entity);
         DirtyField(entity.AsNullable(), nameof(BallisticAmmoProviderComponent.Entities));
 
         return true;
     }
-    // Moffstation - End
 
     public void UpdateBallisticAppearance(EntityUid uid, BallisticAmmoProviderComponent component)
     {
@@ -440,6 +429,70 @@ public abstract partial class SharedGunSystem
         UpdateBallisticAppearance(entity.Owner, entity.Comp);
         UpdateAmmoCount(entity.Owner);
         Dirty(entity);
+    }
+
+    private void OnRefillerEmpPulsed(Entity<BallisticAmmoSelfRefillerComponent> entity, ref EmpPulseEvent args)
+    {
+        if (!entity.Comp.AffectedByEmp)
+            return;
+
+        PauseSelfRefill(entity, args.Duration);
+    }
+
+    private void UpdateBallistic(float frameTime)
+    {
+        var query = EntityQueryEnumerator<BallisticAmmoSelfRefillerComponent, BallisticAmmoProviderComponent>();
+        while (query.MoveNext(out var uid, out var refiller, out var ammo))
+        {
+            BallisticSelfRefillerUpdate((uid, ammo, refiller));
+        }
+    }
+
+    private void BallisticSelfRefillerUpdate(
+        Entity<BallisticAmmoProviderComponent, BallisticAmmoSelfRefillerComponent> entity
+    )
+    {
+        var ammo = entity.Comp1;
+        var refiller = entity.Comp2;
+        if (Timing.CurTime < refiller.NextAutoRefill)
+            return;
+
+        refiller.NextAutoRefill += refiller.AutoRefillRate;
+        DirtyField(entity, refiller, nameof(BallisticAmmoSelfRefillerComponent.NextAutoRefill));
+
+        if (!refiller.AutoRefill || IsFull(entity))
+            return;
+
+        if (refiller.AmmoProto is not { } refillerAmmoProto)
+        {
+            // No ammo proto on the refiller, so just increment the unspawned count on the provider
+            // if it has an ammo proto.
+            if (ammo.Proto is null)
+            {
+                Log.Error(
+                    $"Neither of {entity}'s {nameof(BallisticAmmoSelfRefillerComponent)}'s or {nameof(BallisticAmmoProviderComponent)}'s ammunition protos is specified. This is a configuration error as it means {nameof(BallisticAmmoSelfRefillerComponent)} cannot do anything.");
+                return;
+            }
+
+            SetBallisticUnspawned(entity, ammo.UnspawnedCount + 1);
+        }
+        else if (ammo.Proto == refillerAmmoProto)
+        {
+            // The ammo proto on the refiller and the provider match. Add an unspawned ammo.
+            SetBallisticUnspawned(entity, ammo.UnspawnedCount + 1);
+        }
+        else
+        {
+            // Can't use unspawned ammo, so spawn an entity and try to insert it.
+            var ammoEntity = PredictedSpawnAttachedTo(refiller.AmmoProto, Transform(entity).Coordinates);
+            var insertSucceeded = TryBallisticInsert(entity, ammoEntity, null, suppressInsertionSound: true);
+            if (!insertSucceeded)
+            {
+                PredictedQueueDel(ammoEntity);
+                Log.Error(
+                    $"Failed to insert ammo {ammoEntity} into non-full {entity}. This is a configuration error. Is the {nameof(BallisticAmmoSelfRefillerComponent)}'s {nameof(BallisticAmmoSelfRefillerComponent.AmmoProto)} incorrect for the {nameof(BallisticAmmoProviderComponent)}'s {nameof(BallisticAmmoProviderComponent.Whitelist)}?");
+            }
+        }
     }
 }
 

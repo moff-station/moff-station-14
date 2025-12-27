@@ -59,10 +59,11 @@
     damage:
       types:
         Slash: 5
-  - type: Temperature # Similar to Avali
+  - type: Temperature
+    specificHeat: 44
+  - type: TemperatureDamage # Similar to Avali
     heatDamageThreshold: 325
     coldDamageThreshold: 230
-    specificHeat: 44
     coldDamage:
       types:
         Cold: 0.1 # Per second, scales with temperature & other constants

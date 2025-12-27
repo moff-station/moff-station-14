@@ -83,7 +83,7 @@ public sealed class BloodConsumptionSystem : EntitySystem
     /// </summary>
     private void UpdateHungerThirst(Entity<BloodConsumptionComponent> entity, BloodstreamComponent bloodstream)
     {
-        var bloodstreamPercentage = _bloodstreamSystem.GetBloodLevelPercentage((entity, bloodstream));
+        var bloodstreamPercentage = _bloodstreamSystem.GetBloodLevel((entity, bloodstream));
         var modificationPercentage = Math.Clamp(
             bloodstreamPercentage - entity.Comp.PrevBloodPercentage,
             -entity.Comp.MaxChange,
