@@ -13,6 +13,13 @@
 - type: randomHumanoidSettings
   id: NTCFPilot
   components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-pilot-name
+    description: ghost-role-information-ntcf-pilot-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFPilot
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
@@ -36,6 +43,13 @@
   parent: EventHumanoidCentcomm
   id: NTCFEngineer
   components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-engineer-name
+    description: ghost-role-information-ntcf-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFEngineer
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
