@@ -52,7 +52,7 @@ public sealed class NightVisionSystem : EntitySystem
 
     private void OnPlayerDetached(Entity<NightVisionComponent> ent, ref LocalPlayerDetachedEvent args)
     {
-        RemoveEffect(ent, true);
+        RemoveEffect(ent);
     }
 
     private void OnVisionInit(Entity<NightVisionComponent> ent, ref ComponentInit args)
@@ -78,20 +78,9 @@ public sealed class NightVisionSystem : EntitySystem
         entity.Comp.Effect = effect;
     }
 
-    // `force` is needed because we need to remove the overlay AFTER the player is detached.
-    private void RemoveEffect(Entity<NightVisionComponent> entity, bool force = false)
+    private void RemoveEffect(Entity<NightVisionComponent> entity)
     {
-        if (!force &&
-            _player.LocalSession?.AttachedEntity != entity)
-            return;
-
-        if (!_flash.IsFlashImmune(entity))
-            return;
-
-        if (!_overlayMan.TryGetOverlay(out NightVisionOverlay? overlay))
-            return;
-
-        _overlayMan.RemoveOverlay(overlay);
+        _overlayMan.RemoveOverlay<NightVisionOverlay>();
         PredictedQueueDel(entity.Comp.Effect);
         entity.Comp.Effect = null;
     }
