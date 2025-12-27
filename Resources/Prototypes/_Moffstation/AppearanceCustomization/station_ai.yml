@@ -76,6 +76,18 @@
 
 - type: stationAiCustomization
   parent: StationAiIconBase
+  id: StationAiIconAiFloppycat
+  name: station-ai-icon-floppycat
+  layerData:
+    Occupied:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_floppycat
+    Dead:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_floppycat_crash
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
   id: StationAiIconAiGlitchman
   name: station-ai-icon-glitchman
   layerData:
