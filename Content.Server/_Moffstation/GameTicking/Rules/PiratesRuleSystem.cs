@@ -52,25 +52,16 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
 
     private void OnRuleLoadedGrids(Entity<PiratesRuleComponent> ent, ref RuleLoadedGridsEvent args)
     {
-        var gridsToCheck = args.Grids.ToHashSet();
-
-        // Check each Pirate base
-        var query = EntityQueryEnumerator<PirateBaseComponent>();
-        while (query.MoveNext(out var baseEnt, out var baseComp))
+        // Check each added grid to see if it's a pirate base.
+        foreach (var grid in args.Grids)
         {
-            if (gridsToCheck.Count == 0)
-                // No more grids to check, no more iteration necessary.
-                break;
-
-            // Only deal with grids which were just added by this rule.
-            if (!gridsToCheck.Contains(baseEnt))
+            if (!TryComp<PirateBaseComponent>(grid, out var baseComp))
                 continue;
 
-            gridsToCheck.Remove(baseEnt);
             baseComp.AssociatedRule = ent;
 
             // Converts the pirate base into a station, giving it a functional cargo system
-            ent.Comp.AssociatedStation = _station.InitializeNewStation(ent.Comp.StationConfig, [baseEnt]);
+            ent.Comp.AssociatedStation = _station.InitializeNewStation(ent.Comp.StationConfig, [grid]);
 
             // Give the station component a reference to this rule for later reference
             if (!TryComp<PirateStationComponent>(ent.Comp.AssociatedStation, out var stationComp))
@@ -78,8 +69,8 @@ public sealed class PiratesRuleSystem : GameRuleSystem<PiratesRuleComponent>
             stationComp.AssociatedRule = GetNetEntity(ent.Owner);
 
             // Turns the pirate base into a trade station, so that its buy/sell pads are functional
-            EnsureComp<TradeStationComponent>(baseEnt);
-            Dirty(baseEnt, baseComp);
+            EnsureComp<TradeStationComponent>(grid);
+            Dirty(grid, baseComp);
         }
     }
 
