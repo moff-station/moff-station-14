@@ -23,16 +23,17 @@
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsCombatFilled
-    head: ClothingHeadHelmetBasic
+    head: ClothingHeadHelmetERTLeader
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTLeaderPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltSalvageWebbing
-    pocket2: WeaponDisabler
+    belt: ClothingBeltSecurityFilled
+    pocket1: WeaponPistolN1984
+    pocket2: FlashlightSeclite
   storage:
     back:
+    - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie

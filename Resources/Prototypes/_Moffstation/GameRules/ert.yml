@@ -105,7 +105,7 @@
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-fighter-light-combat.yml
   - type: RuleGrids
 
-- type: entity # For beating pirates or Xenoborgs
+- type: entity # For fighting very strong pirates or Xenoborgs
   parent: BaseGameRule
   id: NTCFFighterStrong
   components:
