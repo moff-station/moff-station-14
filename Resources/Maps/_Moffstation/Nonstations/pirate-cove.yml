@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/25/2025 13:30:02
+  time: 12/28/2025 04:13:58
   entityCount: 2236
 maps: []
 grids:
@@ -4216,12 +4216,20 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 9.5,-7.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Pirate
   - uid: 6
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 9.5,-11.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Pirate
 - proto: BlockGameArcade
   entities:
   - uid: 37
@@ -10463,6 +10471,10 @@ entities:
     - type: Transform
       pos: 5.5,6.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Pirate
 - proto: HolofanProjector
   entities:
   - uid: 559
@@ -12554,16 +12566,30 @@ entities:
   entities:
   - uid: 1111
     components:
+    - type: MetaData
+      name: Hacked Bruise-O-Mat
     - type: Transform
       pos: 11.5,7.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal:
+      - - SyndicateAgent
+      access:
+      - - Pirate
 - proto: VendingMachineChemicalsSyndicate
   entities:
   - uid: 222
     components:
+    - type: MetaData
+      name: Hacked SyndieJuice
     - type: Transform
       pos: -2.5,8.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal:
+      - - SyndicateAgent
+      access:
+      - - Pirate
 - proto: VendingMachineCigs
   entities:
   - uid: 1244
@@ -14196,18 +14222,30 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -9.5,7.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Pirate
   - uid: 1145
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -9.5,8.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Pirate
   - uid: 1146
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -9.5,9.5
       parent: 1
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Pirate
 - proto: WindowReinforcedDirectional
   entities:
   - uid: 394
