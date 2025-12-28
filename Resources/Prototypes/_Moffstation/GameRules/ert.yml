@@ -93,26 +93,26 @@
     alertLevel: epsilon
 
 # Nanotrasen Corporate Fleet
-- type: entity # For fighting pirates or Xenoborgs
+- type: entity # One cannon, one laser
   parent: BaseGameRule
-  id: NTCFFighterFair
+  id: NTCFGunboatLight
   components:
   - type: StationEvent
-    startAnnouncement: ntcf-fighter-light
+    startAnnouncement: ntcf-gunboat-light
     startAudio:
       path: /Audio/Misc/notice1.ogg
   - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-fighter-light-combat.yml
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat-light.yml
   - type: RuleGrids
 
-- type: entity # For fighting very strong pirates or Xenoborgs
+- type: entity # Two cannons
   parent: BaseGameRule
-  id: NTCFFighterStrong
+  id: NTCFGunboatHeavy
   components:
   - type: StationEvent
-    startAnnouncement: ntcf-fighter-heavy
+    startAnnouncement: ntcf-gunboat-heavy
     startAudio:
       path: /Audio/Misc/notice1.ogg
   - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-fighter-heavy-combat.yml
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat-heavy.yml
   - type: RuleGrids

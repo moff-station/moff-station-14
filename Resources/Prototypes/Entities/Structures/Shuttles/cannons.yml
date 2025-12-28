@@ -101,7 +101,7 @@
   parent: [ ShuttleGunBase, ConstructibleMachine]
   name: LSE-1200c "Perforator"
   description: Advanced stationary laser unit. Annihilates electronics and is extremely dangerous to health! Uses the power cage to fire.
-  categories: [ DoNotMap ]
+  #categories: [ DoNotMap ] Moffstation - (NT Gunboat) - I have to remove this to make the tests actually let me put the GUN on the GUNBOAT.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shuttles/laser.rsi
@@ -215,7 +215,7 @@
   parent: [ShuttleGunBase, ConstructibleMachine]
   name: EXP-2100g "Duster"
   description: A powerful stationary grenade launcher. A cartridge is required for use.
-  categories: [ DoNotMap ]
+  #categories: [ DoNotMap ] Moffstation - (NT Gunboat) - I have to remove this to make the tests actually let me put the GUN on the GUNBOAT.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shuttles/launcher.rsi

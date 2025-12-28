@@ -4,5 +4,5 @@ ert-jani = We have been informed of rampant hygiene issues aboard the station. A
 ert-med = We have been informed of a medical crisis aboard the station. A medical ERT dispatch is being deployed to handle the situation.
 ert-engi = We have been informed of serious structural damage to the station's hull. An engineering ERT dispatch is being deployed to handle the situation.
 
-ntcf-fighter-light = We have been informed of potential hostile spacecraft in the station's vicinity. A NTCF light-attack fightercraft has been dispatched to handle the situation.
-ntcf-fighter-heavy = We have been informed of potential hostile spacecraft in the station's vicinity. A NTCF heavy-attack fightercraft has been dispatched to handle the situation.
+ntcf-gunboat-light = We have been informed of potential hostile spacecraft in the station's vicinity. A NTCF light-attack gunboat has been dispatched to handle the situation.
+ntcf-gunboat-heavy = We have been informed of potential hostile spacecraft in the station's vicinity. A NTCF heavy-attack gunboat has been dispatched to handle the situation.
