@@ -23,7 +23,9 @@
     CaptainGunStealObjective: 0.5
     CaptainJetpackStealObjective: 0.5
     HandTeleporterStealObjective: 0.5
-    EnergyMagnumStealObjective: 0.5
+    #EnergyMagnumStealObjective: 0.5 Moffstation - Big Iron Replaces
+    ValkyrieHudStealObjective : 1 # Moffstation - Valkyrie Hud is now a Steal Objective
+    BigIronStealObjective : 0.5 # Moffstation - Big Iron is now a Steal Objective
 
 - type: weightedRandom
   id: TraitorObjectiveGroupKill

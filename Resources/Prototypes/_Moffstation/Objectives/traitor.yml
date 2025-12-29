@@ -6,8 +6,7 @@
     # HoS will have this on them a lot of the time so..
     difficulty: 3
   - type: NotJobRequirement
-    jobs:
-    - HeadOfSecurity
+    jobs: [ HeadOfSecurity ]
   - type: StealCondition
     stealGroup: WeaponRevolverBigIron
     owner: job-name-hos
@@ -162,3 +161,15 @@
     blacklist:
       components:
       - SimpleObjective
+
+- type: entity
+  parent: BaseTraitorStealObjective
+  id: ValkyrieHudStealObjective
+  components:
+  - type: Objective
+    difficulty: 1
+  - type: NotJobRequirement
+    jobs: [ ChiefMedicalOfficer ]
+  - type: StealCondition
+    stealGroup: ClothingEyesGlassesMedChem
+    owner: job-name-cmo
