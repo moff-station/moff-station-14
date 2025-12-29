@@ -39,8 +39,7 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         Entity<SuitStorageAttachableComponent?> entity,
         EntityUid item
     ) => Resolve(entity, ref entity.Comp) &&
-         entity.Comp.Slot.ContainedEntity is { } attachment &&
-         TryComp<SuitStorageAttachmentComponent>(attachment, out var attachmentComp) &&
+         TryComp<SuitStorageAttachmentComponent>(entity.Comp.Slot.ContainedEntity, out var attachmentComp) &&
          !_whitelist.IsWhitelistFailOrNull(attachmentComp.Whitelist, item);
 
     private Entity<SuitStorageAttachmentComponent>? GetSuitStorageAttachment(Entity<SuitStorageAttachableComponent> ent)
