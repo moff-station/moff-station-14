@@ -1,5 +1,35 @@
 - type: entity
   parent: ESBaseMaskObjective
+  id: ESObjectiveEatSummonedFruit
+  description: Use your ability to manifest delicious fruits and feed them to the people on the station.
+  components:
+  - type: ESObjective
+    icon:
+      sprite: Objects/Specific/Hydroponics/apple.rsi
+      state: produce
+  - type: ESEatSummonableObjective
+  - type: ESCounterObjective
+    title: es-fruit-vendor-objective-title
+    target: 10
+    maxTarget: 15
+
+- type: entity
+  parent: ESBaseMaskObjective
+  id: ESObjectiveHoldSummonedGuns
+  description: Use your ability to summon firearms and make sure crew members hold onto them until the end of the shift.
+  components:
+  - type: ESObjective
+    icon:
+      sprite: _ES/Objects/Weapons/Guns/shotgun.rsi
+      state: icon
+  - type: ESHoldSummonableObjective
+  - type: ESCounterObjective
+    title: es-arms-dealer-objective-title
+    target: 5
+    maxTarget: 8
+
+- type: entity
+  parent: ESBaseMaskObjective
   id: ESObjectiveKillNonCrew
   name: Kill a bad guy
   description: Use your trusty weapon to kill a non-crew person on the station.
@@ -8,4 +38,77 @@
     icon:
       sprite: _ES/Objects/Weapons/Guns/357.rsi
       state: icon
+  - type: ESKillTroupeObjective
+    troupe: ESCrew
+    invert: true
   - type: ESCounterObjective
+
+- type: entity
+  parent: ESBaseMaskObjective
+  id: ESObjectiveGuzzle
+  name: Guzzle
+  description: Consume as much liquid as you can, from anywhere you can get it!
+  components:
+  - type: ESObjective
+    icon:
+      sprite: Objects/Tools/bucket.rsi
+      state: icon
+  - type: ESGuzzleObjective
+  - type: ESCounterObjective
+    title: es-guzzle-objective-title
+    target: 1000
+    maxTarget: 2000
+    targetIncrement: 100
+
+- type: entity
+  parent: ESBaseMaskObjective
+  id: ESObjectiveGuzzleSpecialInterest
+  name: Guzzle Special Interest
+  description: Consume as much of your Special Interest as you can!
+  components:
+  - type: ESObjective
+    icon:
+      sprite: Objects/Tools/bucket.rsi
+      state: icon
+  - type: ESImbibeReagentObjective
+    canBeFromFood: false # you're GUZZLING not MUNCHING.
+    descriptionLoc: es-imbibe-reagent-guzzler-desc
+    possibleConsumeTargets:
+    - Beer
+    - WeldingFuel # Excuse to really annoy engineering, AND medical.
+    - Epinephrine # Excuses to really annoy medical.
+    - DexalinPlus
+    - JuiceBanana
+    - JuiceApple
+    - Milk
+    - Bicaridine
+    - THC
+    - Sugar
+    - Blood
+    - Fiber
+    - Fat
+    - SoapReagent
+    - SpaceCleaner
+    - SpaceLube
+  - type: ESCounterObjective
+    title: es-guzzle-specific-objective-title
+    target: 100
+    maxTarget: 200
+    targetIncrement: 10
+
+- type: entity
+  parent: ESBaseMaskObjective
+  id: ESObjectiveGuzzleUniqueReagents
+  name: Guzzle
+  description: Consume as many unique liquids as you can, from anywhere you can get them!
+  components:
+  - type: ESObjective
+    icon:
+      sprite: Objects/Consumable/Drinks/shaker.rsi
+      state: icon
+  - type: ESImbibeUniqueReagentsObjective
+    canBeFromFood: false
+  - type: ESCounterObjective
+    title: es-guzzle-unique-reagents-objective-title
+    target: 15
+    maxTarget: 25
