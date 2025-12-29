@@ -1,8 +1,9 @@
 - type: entity
-  parent: [ ClothingOuterStorageBase, AllowSuitStorageAttachmentClothing ] # Moffstation - Allow attachment of suit storage to winter coats
-  id: ClothingOuterWinterCoat
-  name: winter coat
-  description: A heavy jacket made from 'synthetic' animal furs.
+  # Moffstation - Begin - Split base winter coat into abstract base for inheritance and generic single concrete
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterWinterCoatBase
+  abstract: true
+  # Moffstation - End
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
@@ -37,6 +38,19 @@
     - WhitelistChameleon
   - type: StaticPrice
     price: 50
+
+# Moffstation - Begin - Split base winter coat into abstract base for inheritance and generic single concrete
+- type: entity
+  parent: [ ClothingOuterStorageBase, AllowSuitStorageAttachmentClothing ] # Moffstation - Allow attachment of suit storage to winter coats
+  id: ClothingOuterWinterCoat
+  name: winter coat
+  description: A heavy jacket made from 'synthetic' animal furs.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+# Moffstation - End
 
 - type: entity
   parent: ClothingOuterWinterCoat
@@ -425,7 +439,7 @@
     clothingPrototype: ClothingHeadHatHoodWinterHOP
 
 - type: entity
-  parent: [ClothingOuterArmorHoS, ClothingOuterWinterCoatToggleable, BaseSecurityCommandContraband]
+  parent: [ClothingOuterArmorHoS, ClothingOuterWinterCoatBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterHoS
   name: head of security's armored winter coat
   description: A sturdy, utilitarian winter coat designed to protect a head of security from any brig-bound threats and hypothermic events.
@@ -436,6 +450,7 @@
     sprite: Clothing/OuterClothing/WinterCoats/coathosarmored.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
+    slot: head # Moffstation - No longer inheriting toggleable hood, so readd the one thing we needed to make it work.
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseSecurityCommandContraband]
