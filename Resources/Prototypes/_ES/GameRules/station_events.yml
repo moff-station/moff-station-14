@@ -5,7 +5,7 @@
   abstract: true
   components:
   - type: StationEvent
-    startAudio: /Audio/Announcements/attention.ogg # Station events should always have announcements
+    startAudio: /Audio/_ES/Announcements/attention_low.ogg # Station events should always have announcements
     earliestStart: 0
     weight: 10
   - type: GameRule
@@ -23,6 +23,31 @@
       min: 55
       max: 65
 
+- type: entity # Variant for events which have no delay between announcing and starting
+  parent: ESBaseStationEvent
+  id: ESBaseStationEventNoDelay
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min: 0
+      max: 0
+
+# General Tables for Station Events
+- type: entityTable
+  id: ESStationEvents
+  table:
+    all:
+    - id: ESStationEventBreakerFlip
+    - id: ESStationEventGasLeak
+    - id: ESStationEventGreyTideVirus
+    - id: ESStationEventPowerGridCheck
+    - id: ESStationEventSolarFlare
+    - id: ESStationEventVentClog
+    - id: ESStationEventMeteorSwarm
+    - id: ESStationEventSpaceDust
+    - id: ESStationEventElectricalFire
+
 # Event Prototypes
 
 ## Breaker Flip
@@ -30,18 +55,29 @@
   parent: ESBaseStationEvent
   id: ESStationEventBreakerFlip
   name: Breaker Flip
+  description: Disable random APCs on the station, forcing engineering to seek them out and reenable them.
   components:
   - type: BreakerFlipRule
+  - type: StationEvent
+    startAudio:
+      path: /Audio/_ES/Announcements/breaker_flip.ogg
+      params:
+        volume: -4
 
 ## Gas Leak
 - type: entity
   parent: ESBaseStationEvent
   id: ESStationEventGasLeak
   name: Gas Leak
+  description: Choose a location to be flooded with a gas of your choice.
   components:
   - type: StationEvent
     startAnnouncement: station-event-gas-leak-start-announcement
     endAnnouncement: station-event-gas-leak-end-announcement
+    startAudio:
+      path: /Audio/_ES/Announcements/gas_leak.ogg
+      params:
+        volume: -4
   - type: ESGasLeakRule
   - type: ESSynchronizedVoteManager
     votes:
@@ -73,30 +109,77 @@
     duration: 30
   - type: ESGasVentVote
 
+## Grey Tide Virus
+- type: entity
+  parent: ESBaseStationEvent
+  id: ESStationEventGreyTideVirus
+  name: Grey Tide Virus
+  description: Infect a department with the Grey Tide virus, bolting open random doors and unlocking crates and closets.
+  components:
+  - type: StationEvent
+    startAudio:
+      path: /Audio/_ES/Announcements/greytide.ogg
+      params:
+        volume: -4
+    maxOccurrences: 2
+  - type: ESGreyTideVirus
+    blacklist:
+    - External
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ESVoteGreyTideVirusAccess
+
+- type: entity
+  id: ESVoteGreyTideVirusAccess
+  name: Which department should be compromised?
+  components:
+  - type: ESVote
+    queryString: es-voter-query-string-grey-tide-access
+    duration: 30
+  - type: ESAccessGroupVote
+    options:
+    - Cargo
+    - Command
+    - Engineering
+    - Research
+    - Security
+    - Service
+    count: 2
+
 ## Power Grid Check
 - type: entity
   parent: ESBaseStationEvent
   id: ESStationEventPowerGridCheck
   name: Power Grid Check
+  description: Initiate a station-wide power grid check, cutting all station power for a few minutes.
   components:
   - type: StationEvent
     startAnnouncement: station-event-power-grid-check-start-announcement
     endAnnouncement: station-event-power-grid-check-end-announcement
     startAudio:
-      path: /Audio/Announcements/power_off.ogg
+      path: /Audio/_ES/Announcements/power_off.ogg
       params:
         volume: -4
     duration: 60
     maxDuration: 120
   - type: PowerGridCheckRule
+    powerOnSound:
+      path: /Audio/_ES/Announcements/power_on.ogg
+      params:
+        volume: -4
 
 ## Solar Flare
 - type: entity
   parent: ESBaseStationEvent
   id: ESStationEventSolarFlare
   name: Solar Flare
+  description: Start a solar flare, interfering with radio communications and breaking lights
   components:
   - type: StationEvent
+    startAudio:
+      path: /Audio/_ES/Announcements/solar_flare.ogg
+      params:
+        volume: -4
     startAnnouncement: station-event-solar-flare-start-announcement
     endAnnouncement: station-event-solar-flare-end-announcement
     duration: 120
@@ -122,8 +205,13 @@
   parent: ESBaseStationEventDelayed
   id: ESStationEventVentClog
   name: Vent Clog
+  description: Cause a scrubber overflow, shooting potentially deadly foam all over the station.
   components:
   - type: StationEvent
+    startAudio:
+      path: /Audio/_ES/Announcements/vent_foam.ogg
+      params:
+        volume: -4
     startAnnouncement: station-event-vent-clog-start-announcement
   - type: VentClogRule
 
@@ -132,11 +220,16 @@
   parent: ESBaseStationEventDelayed
   id: ESStationEventMeteorSwarm
   name: Meteor Swarm
+  description: Launch deadly meteors at the exterior of the station that smash through walls.
   components:
   - type: StationEvent
     startAudio: null
     earliestStart: 30
   - type: MeteorSwarm
+    announcementSound:
+      path: /Audio/_ES/Announcements/meteors.ogg
+      params:
+        volume: -4
     meteors:
       ESMeteor: 1
 
@@ -145,13 +238,17 @@
   parent: ESBaseStationEventDelayed
   id: ESStationEventSpaceDust
   name: Space Dust
+  description: Send waves of space dust that batter the station from all sides.
   components:
   - type: StationEvent
     startAudio: null
     earliestStart: 30
   - type: MeteorSwarm
     announcement: station-event-space-dust-start-announcement
-    announcementSound: null
+    announcementSound:
+      path: /Audio/_ES/Announcements/space_dust.ogg
+      params:
+        volume: -4
     nonDirectional: true
     meteors:
       MeteorSpaceDust: 1
@@ -161,3 +258,31 @@
     meteorsPerWave:
       min: 8
       max: 12
+
+## Electrical Fire
+- type: entity
+  parent: ESBaseStationEventNoDelay
+  id: ESStationEventElectricalFire
+  name: Electrical Fire
+  description: Start a raging fire somewhere on the station.
+  components:
+  - type: StationEvent
+    startAudio:
+      path: /Audio/_ES/Announcements/electrical_fire.ogg
+      params:
+        volume: -4
+  - type: ESElectricalFireRule
+  - type: ESSynchronizedVoteManager
+    votes:
+    - ESVoteElectricalFireLocation
+
+- type: entity
+  id: ESVoteElectricalFireLocation
+  name: Where should the fire start?
+  components:
+  - type: ESVote
+    queryString: es-voter-query-string-electrical-fire-location
+    duration: 30
+  - type: ESRandomLocationVote
+    count: 6
+    checkLOS: false

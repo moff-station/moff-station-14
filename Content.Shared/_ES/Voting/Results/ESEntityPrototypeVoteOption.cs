@@ -22,6 +22,7 @@ public sealed partial class ESEntityPrototypeVoteOption : ESVoteOption
     public ESEntityPrototypeVoteOption(EntityPrototype prototype)
     {
         DisplayString = prototype.Name;
+        Tooltip = prototype.Description;
         Entity = prototype;
     }
 }

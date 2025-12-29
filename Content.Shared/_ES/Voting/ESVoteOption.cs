@@ -14,4 +14,10 @@ public abstract partial class ESVoteOption
     /// </summary>
     [DataField]
     public string DisplayString;
+
+    /// <summary>
+    /// Tooltip that's displayed for this vote option when hovered in the UI.
+    /// </summary>
+    [DataField]
+    public string? Tooltip;
 }

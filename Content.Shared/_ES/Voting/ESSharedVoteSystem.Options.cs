@@ -19,11 +19,7 @@ public abstract partial class ESSharedVoteSystem
         foreach (var entProtoId in entities)
         {
             var entProto = _prototype.Index(entProtoId);
-            args.Options.Add(new ESEntityPrototypeVoteOption
-            {
-                DisplayString = entProto.Name,
-                Entity = entProto,
-            });
+            args.Options.Add(new ESEntityPrototypeVoteOption(entProto));
         }
     }
 

@@ -1,0 +1,89 @@
+- type: entity
+  parent: BaseGameRule
+  id: ESBaseDegradationEvent
+  name: Unnamed Degradation Event
+  abstract: true
+  components:
+  - type: ESDegradationEvent
+  - type: StationEvent
+    earliestStart: 0
+    reoccurrenceDelay: 0
+    occursDuringRoundEnd: false
+    weight: 10
+
+- type: entityTable
+  id: ESDegradationEvents
+  table:
+    all:
+    - id: ESDegradationEventAirlocks
+    - id: ESDegradationEventCommunicationsConsole
+    - id: ESDegradationEventCriminalRecords
+    - id: ESDegradationEventTelecoms
+    - id: ESDegradationEventCrewMonitoring
+    - id: ESDegradationEventIDCardComputer
+
+# Event Prototypes
+
+- type: entity
+  parent: ESBaseDegradationEvent
+  id: ESDegradationEventAirlocks
+  name: Airlock Bolt Breakage
+  description: Breaks airlocks, making them get stuck when opened.
+  components:
+  - type: ESDegradationEvent
+    count: 1, 5
+    component: Airlock
+    blacklist:
+      components:
+      - Docking
+  - type: StationEvent
+    weight: 50
+
+- type: entity
+  parent: ESBaseDegradationEvent
+  id: ESDegradationEventCommunicationsConsole
+  name: Distorted Announcement
+  description: Distorts the next station announcement, sending a warped message.
+  components:
+  - type: ESDegradationEvent
+    component: CommunicationsConsole
+
+- type: entity
+  parent: ESBaseDegradationEvent
+  id: ESDegradationEventCriminalRecords
+  name: Hacked Criminal Records
+  description: Messes up the criminal records, adding fake crimes for various players.
+  components:
+  - type: ESDegradationEvent
+    component: CriminalRecordsConsole
+
+- type: entity
+  parent: ESBaseDegradationEvent
+  id: ESDegradationEventTelecoms
+  name: Telecom Ghosts
+  description: Sends random radio messages from the ghosts of past players.
+  components:
+  - type: ESDegradationEvent
+    component: TelecomServer
+    degradeImmediately: true # Doesn't react to anything
+  - type: StationEvent
+    weight: 20
+
+- type: entity
+  parent: ESBaseDegradationEvent
+  id: ESDegradationEventCrewMonitoring
+  name: Sensor Manipulation
+  description: Manipulates the crew monitoring server, altering the suit sensors of various crew.
+  components:
+  - type: ESDegradationEvent
+    component: CrewMonitoringServer
+    degradeImmediately: true # Doesn't react to anything
+
+- type: entity
+  parent: ESBaseDegradationEvent
+  id: ESDegradationEventIDCardComputer
+  name: ID Scramble
+  description: Messes up the icons on IDs all over the station.
+  components:
+  - type: ESDegradationEvent
+    component: IdCardConsole
