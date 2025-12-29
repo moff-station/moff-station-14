@@ -3,7 +3,17 @@
                       Title="{Loc 'objective-picker-window-title'}"
                       MinSize="300 250"
                       SetSize="600 370">
-    <ScrollContainer>
-        <BoxContainer Name= "ObjectiveList" Orientation="Vertical" Margin="10 10 20 0"/>
-    </ScrollContainer>
+    <PanelContainer>
+        <BoxContainer Orientation="Vertical" VerticalExpand="True">
+            <PanelContainer StyleClasses="BackgroundDark" VerticalExpand="True" Margin="10 5 5 0">
+                <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="ObjectiveList" Orientation="Vertical" VerticalExpand="True"/>
+                </ScrollContainer>
+            </PanelContainer>
+            <BoxContainer Orientation="Vertical" VerticalAlignment="Bottom" Margin="5">
+                <RichTextLabel Name="SelectionTip" HorizontalAlignment="Center" Text="{Loc 'objective-picker-window-select-tip'}"/>
+                <controls:ConfirmButton Name="SubmitButton" Margin="5" Text="{Loc 'objective-picker-window-submit'}"/>
+            </BoxContainer>
+        </BoxContainer>
+    </PanelContainer>
 </controls:FancyWindow>

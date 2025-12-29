@@ -185,28 +185,37 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 
             _window.Objectives.AddChild(objectiveControl);
         }
-        // Moffstation - Start - Objective Picker
-        var objectivePickerButton = new Button
-        {
-            Text = "Choose Objectives...",
-            Margin = new Thickness(0, 10, 0, 10)
-        };
-        objectivePickerButton.OnPressed += _ => _objectivePicker.OpenWindow();
 
-        _window.Objectives.AddChild(objectivePickerButton);
-
-        // Moffstation - End
-        // Begin DeltaV Additions - Custom objective summary
-        if (objectives.Count > 0)
+        switch (objectives.Count)
         {
-            var button = new Button
+            // Moffstation - Start - Objective Picker
+            case 0 when briefing != null:
             {
-                Text = Loc.GetString("custom-objective-button-text"),
-                Margin = new Thickness(0, 10, 0, 10)
-            };
-            button.OnPressed += _ => _objectiveSummary.OpenWindow();
+                var objectivePickerButton = new Button
+                {
+                    Text = "Choose Objectives...",
+                    Margin = new Thickness(0, 10, 0, 10)
+                };
+                objectivePickerButton.OnPressed += _ => _objectivePicker.OpenWindow();
+                objectivePickerButton.OnPressed += _ => _window.Close();
 
-            _window.Objectives.AddChild(button);
+                _window.Objectives.AddChild(objectivePickerButton);
+                break;
+            }
+            // Moffstation - End
+            // Begin DeltaV Additions - Custom objective summary
+            case > 0:
+            {
+                var button = new Button
+                {
+                    Text = Loc.GetString("custom-objective-button-text"),
+                    Margin = new Thickness(0, 10, 0, 10)
+                };
+                button.OnPressed += _ => _objectiveSummary.OpenWindow();
+
+                _window.Objectives.AddChild(button);
+                break;
+            }
         }
         // End DeltaV Additions
 

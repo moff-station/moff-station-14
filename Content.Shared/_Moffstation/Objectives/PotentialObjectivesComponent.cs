@@ -12,7 +12,9 @@ public sealed partial class PotentialObjectivesComponent : Component
     /// The objective options presented to the player
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public HashSet<(NetEntity netEntity, ObjectiveInfo info)> ObjectiveOptions = new();
+    public Dictionary<NetEntity,ObjectiveInfo> ObjectiveOptions = new();
+
+    public override bool SessionSpecific => true;
 }
 
 /// <summary>
@@ -24,6 +26,6 @@ public sealed class ObjectivePickerOpenMessage : EntityEventArgs;
 [Serializable, NetSerializable]
 public sealed class ObjectivePickerSelected : EntityEventArgs
 {
-    public NetEntity UserId;
+    public NetEntity MindId;
     public HashSet<NetEntity> SelectedObjectives = new();
 }

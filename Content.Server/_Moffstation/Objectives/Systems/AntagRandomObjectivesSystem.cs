@@ -4,7 +4,6 @@ using Content.Server.Antag;
 using Content.Server.Objectives;
 using Content.Shared._Moffstation.Objectives;
 using Content.Shared.Mind;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
@@ -15,7 +14,6 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
     {
@@ -48,7 +46,7 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
                 if (_objectives.GetInfo(objective, mindId, mind) is not { } info)
                     continue;
 
-                potentialObjectives.ObjectiveOptions.Add((GetNetEntity(objective), info));
+                potentialObjectives.ObjectiveOptions.Add(GetNetEntity(objective), info);
             }
         }
 
@@ -57,6 +55,24 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
 
     private void OnObjectivesSelected(ObjectivePickerSelected ev)
     {
+        var mindId = GetEntity(ev.MindId);
 
+        if (!TryComp<MindComponent>(mindId, out var mindComp))
+            return;
+
+        if (!TryComp<PotentialObjectivesComponent>(mindId, out var potentialObjectivesComp))
+            return;
+
+        // Verify the objectives are actually in their component
+        var objectiveIds = potentialObjectivesComp.ObjectiveOptions.Keys.ToHashSet();
+        foreach (var objective in from objective in ev.SelectedObjectives let entity = GetEntity(objective) select objective)
+        {
+            if (objectiveIds.Contains(objective))
+                _mind.AddObjective(mindId, mindComp, GetEntity(objective));
+            else
+            {
+                TryQueueDel(GetEntity(objective));
+            }
+        }
     }
 }
