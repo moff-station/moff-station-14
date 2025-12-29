@@ -855,7 +855,7 @@
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
 - type: entity
-  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoatToggleable, BaseSecurityContraband]
+  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoatBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterWarden
   name: warden's armored winter coat
   description: A sturdy, utilitarian winter coat designed to protect a warden from any brig-bound threats and hypothermic events.
@@ -866,6 +866,7 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
+    slot: head # Moffstation - No longer inheriting toggleable hood, so readd the one thing we needed to make it work.
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband]
