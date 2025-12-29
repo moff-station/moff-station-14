@@ -66,7 +66,7 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
     {
         args.PushMarkup(
             GetSuitStorageAttachment(ent) is { } attachment
-                ? Loc.GetString(ent.Comp.HasAttachmentText, ("attachment", ToPrettyString(attachment)))
+                ? Loc.GetString(ent.Comp.HasAttachmentText, ("attachment", attachment))
                 : Loc.GetString(ent.Comp.CanAttachText)
         );
     }
