@@ -35,12 +35,21 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         SubscribeLocalEvent<SuitStorageAttachmentComponent, ExaminedEvent>(AttachmentOnExamined);
     }
 
-    public bool HasAttachmentAllowingItemInSuitStorage(
+    /// Returns true if <paramref name="entity"/> has an attachment which allows storage of <paramref name="item"/> in
+    /// suit storage. Returns false if <paramref name="entity"/> does not have a
+    /// <see cref="SuitStorageAttachableComponent"/>, does not have an attachment, or if the attachment that it does
+    /// have does not permit storage of <paramref name="item"/>.
+    public bool IsEntityAllowedInSuitStorageByAttachment(
         Entity<SuitStorageAttachableComponent?> entity,
         EntityUid item
-    ) => Resolve(entity, ref entity.Comp) &&
-         TryComp<SuitStorageAttachmentComponent>(entity.Comp.Slot.ContainedEntity, out var attachmentComp) &&
-         !_whitelist.IsWhitelistFailOrNull(attachmentComp.Whitelist, item);
+    )
+    {
+        if (!Resolve(entity, ref entity.Comp) ||
+            GetSuitStorageAttachment((entity, entity.Comp)) is not { } attachment)
+            return false;
+
+        return !_whitelist.IsWhitelistFailOrNull(attachment.Comp.Whitelist, item);
+    }
 
     private Entity<SuitStorageAttachmentComponent>? GetSuitStorageAttachment(Entity<SuitStorageAttachableComponent> ent)
     {
@@ -53,14 +62,17 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
 
     private void OnInit(Entity<SuitStorageAttachableComponent> ent, ref ComponentInit args)
     {
+        // Innate suit storage allowance and attachable suit storage are incompatible on one entity.
         DebugTools.Assert(
             !HasComp<AllowSuitStorageComponent>(ent),
             $"Entity {ToPrettyString(ent)} has both {nameof(AllowSuitStorageComponent)} and {nameof(SuitStorageAttachableComponent)}. Entities with the former should not have the latter."
         );
 
+        // Initialize the attachment container.
         ent.Comp.Slot = _container.EnsureContainer<ContainerSlot>(ent, ent.Comp.AttachmentSlotId);
     }
 
+    /// Displays either "you can attach things to this!" or "this has $thing attached!".
     private void AttachableOnExamined(Entity<SuitStorageAttachableComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup(
@@ -70,11 +82,13 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         );
     }
 
+    /// Displays "you can attach this to things!"
     private void AttachmentOnExamined(Entity<SuitStorageAttachmentComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup(Loc.GetString(ent.Comp.CanAttachText));
     }
 
+    /// Adds the attach and detach verbs as appropriate.
     private void OnGetVerbs(Entity<SuitStorageAttachableComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (!args.CanAccess || !args.CanComplexInteract)
@@ -83,6 +97,7 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         var user = args.User;
         if (GetSuitStorageAttachment(ent) is { } attachment)
         {
+            // Detach verb
             args.Verbs.Add(new Verb
             {
                 Text = Loc.GetString(ent.Comp.DetachVerbName),
@@ -107,6 +122,7 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         }
         else if (TryComp<SuitStorageAttachmentComponent>(args.Using, out var attachmentComp))
         {
+            // Attach verb
             var used = args.Using;
             args.Verbs.Add(new Verb
             {
@@ -136,11 +152,13 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         }
     }
 
+    /// Spits out any attachments stored in the attachable slot.
     private void OnDestruction(Entity<SuitStorageAttachableComponent> ent, ref DestructionEventArgs args)
     {
         _container.EmptyContainer(ent.Comp.Slot, destination: Transform(ent).Coordinates);
     }
 
+    /// Rejects attaching things which are not attachments.
     private void OnInsertAttempt(Entity<SuitStorageAttachableComponent> ent, ref ContainerIsInsertingAttemptEvent args)
     {
         if (args.Cancelled ||
@@ -151,6 +169,7 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         args.Cancel();
     }
 
+    /// Actually handles attaching, which just means inserting the attachment into the slot.
     private void OnAttachDoAfter(Entity<SuitStorageAttachableComponent> ent, ref SuitStorageAttachmentAttachEvent args)
     {
         if (args.Cancelled ||
@@ -161,6 +180,8 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         args.Handled = true;
     }
 
+    /// Handles detaching, which involves removing the attachment from the slot and putting the attachment into the
+    /// actor's hand.
     private void OnDetatchDoAfter(Entity<SuitStorageAttachableComponent> ent, ref SuitStorageAttachmentDetachEvent args)
     {
         if (args.Cancelled ||
@@ -172,12 +193,13 @@ public sealed partial class SuitStorageAttachmentSystem : EntitySystem
         args.Handled = true;
     }
 
+    /// Whenever an attachment is removed, unequip whatever's in suit storage.
     private void OnEntRemovedFromContainer(
         Entity<SuitStorageAttachableComponent> ent,
         ref EntRemovedFromContainerMessage args
     )
     {
-        if (!TryComp<SuitStorageAttachmentComponent>(args.Entity, out var attachment))
+        if (!HasComp<SuitStorageAttachmentComponent>(args.Entity))
             return;
 
         _inventory.TryUnequip(Transform(ent).ParentUid, "suitstorage", force: true, checkDoafter: false);

@@ -14,9 +14,12 @@ public sealed partial class SuitStorageAttachableComponent : Component
     [DataField]
     public string AttachmentSlotId = "suit-storage-attachment";
 
+    /// <see cref="SuitStorageAttachmentComponent"/>s attached to this component are stored in this slot while attached.
     [ViewVariables]
     public ContainerSlot Slot = default!;
 
+    /// This factor is applied to <see cref="SuitStorageAttachmentComponent.AttachDelay"/> and
+    /// <see cref="SuitStorageAttachmentComponent.DetachDelay"/> to determine the duration of the respective doafters.
     [DataField]
     public float AttachDelayModifier = 1.0f;
 
@@ -46,15 +49,15 @@ public sealed partial class SuitStorageAttachableComponent : Component
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class SuitStorageAttachmentComponent : Component
 {
-    /// <summary>
     /// Whitelist for what entities are allowed in the suit storage slot.
-    /// </summary>
     [DataField, AutoNetworkedField]
     public EntityWhitelist Whitelist = new() { Components = ["Item"] };
 
+    /// How long it takes to attach this attachment. Modified by <see cref="SuitStorageAttachableComponent.AttachDelayModifier"/>.
     [DataField]
     public TimeSpan AttachDelay = TimeSpan.FromSeconds(2);
 
+    /// How long it takes to detach this attachment. Modified by <see cref="SuitStorageAttachableComponent.AttachDelayModifier"/>.
     [DataField]
     public TimeSpan DetachDelay = TimeSpan.FromSeconds(2);
 
@@ -62,8 +65,12 @@ public sealed partial class SuitStorageAttachmentComponent : Component
     public LocId CanAttachText = "attachablesuitstorage-attachment-can-be-attached";
 }
 
+/// Event raised on the entity with <see cref="SuitStorageAttachableComponent"/> when an entity with
+/// <see cref="SuitStorageAttachmentComponent"/> is attached to it.
 [Serializable, NetSerializable]
 public sealed partial class SuitStorageAttachmentAttachEvent : SimpleDoAfterEvent;
 
+/// Event raised on the entity with <see cref="SuitStorageAttachableComponent"/> when an entity with
+/// <see cref="SuitStorageAttachmentComponent"/> is detached from it.
 [Serializable, NetSerializable]
 public sealed partial class SuitStorageAttachmentDetachEvent : SimpleDoAfterEvent;

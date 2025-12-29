@@ -13,3 +13,50 @@
   components:
   - type: SuitStorageAttachable
   - type: ContainerContainer
+    containers:
+      suit-storage-attachment: !type:ContainerSlot { }
+
+- type: entity
+  abstract: true
+  parent: [ ClothingOuterStorageBase, AllowSuitStorageAttachmentClothing ]
+  id: ClothingOuterStorageSuitStorageAttachableBase
+  components:
+  # This prototype only exists because of the need to merge these container defs :agony:
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
+      suit-storage-attachment: !type:ContainerSlot { }
+
+- type: entity
+  parent: [ ClothingOuterWinterCoatBase, AllowSuitStorageAttachmentClothing ]
+  id: ClothingOuterWinterCoat
+  name: winter coat
+  description: A heavy jacket made from 'synthetic' animal furs.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+  # This prototype only exists because of the need to merge these container defs :agony:
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
+      suit-storage-attachment: !type:ContainerSlot { }
+
+# This prototype is for the rare winter coats which have innate suit storage, usually because they're armor.
+- type: entity
+  abstract: true
+  parent: ClothingOuterWinterCoatBase
+  id: ClothingOuterWinterCoatToggleableNotAttachableBase
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterHOS
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
+      suit-storage-attachment: !type:ContainerSlot { }

@@ -267,7 +267,7 @@ public abstract partial class InventorySystem
                     else
                     {
                         // Entity in slot DOES NOT have the storage-allowing component. Check if it has attachments instead.
-                        if (!_suitStorageAttachment.HasAttachmentAllowingItemInSuitStorage(slotEntity.Value, itemUid))
+                        if (!_suitStorageAttachment.IsEntityAllowedInSuitStorageByAttachment(slotEntity.Value, itemUid))
                             return false;
                     }
                     // Moffstation - End
