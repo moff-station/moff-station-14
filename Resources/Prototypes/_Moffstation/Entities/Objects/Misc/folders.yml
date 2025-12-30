@@ -1,8 +1,8 @@
 ﻿- type: entity
-  parent: [ BaseItem , BaseCentcommCommandContraband ]
+  parent: [ BoxFolderNuclearCodes , BaseCentcommCommandContraband ]
   id: BoxFolderStationNuclearCodes
   name: nuclear code folder
-  description: A standard Nanotrasen brand folder, marked "For Captain's eyes only."
+  description: A standard Nanotrasen brand folder with a small warning stamp - "open only in case of irreversible station loss."
   components:
   - type: Sprite
     sprite: Objects/Misc/folders.rsi
@@ -12,12 +12,8 @@
     - state: folder-base
     - state: folder-stamp-inverse
       color: "#ffce5b"
-  - type: PhysicalComposition
-    materialComposition:
-      Paper: 50
   - type: SpawnItemsOnUse
     items:
     - id: NukeCodePaperStation
     sound:
       path: /Audio/Effects/packetrip.ogg
-  - type: Appearance
