@@ -1,3 +1,40 @@
+﻿# Joke Joke - Pirate kobold
+- type: entity
+  name: Joke Joke
+  parent: MobKobold
+  id: MobKoboldJokejoke
+  description: Cutthroat, renegade, and worst of all - serving without a liquor license.
+  components:
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-jokejoke-name
+    description: ghost-role-information-jokejoke-description
+    rules: ghost-role-information-familiar-rules
+  - type: GhostTakeoverAvailable
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 3
+    - id: DrinkRumBottleFull
+      amount: 1
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - VimPilot
+    - AnomalyHost
+  - type: Loadout
+    prototypes: [ KoboldPirateBartenderGear ]
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: female
+
+# Pawgliaci - Clown rabbit
 - type: entity
   name: Pawgliaci
   parent: MobCorgi
@@ -27,11 +64,11 @@
     - CannotSuicide
     - VimPilot
   # TODO Moff's soundfont changes were reverted due to upstream changes to the soundfont file.
-#  - type: Instrument
-#    allowPercussion: false
-#    handheld: false
-#    bank: 1
-#    program: 5
+  #  - type: Instrument
+  #    allowPercussion: false
+  #    handheld: false
+  #    bank: 1
+  #    program: 5
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-dog
