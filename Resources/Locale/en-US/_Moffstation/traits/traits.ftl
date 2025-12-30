@@ -12,6 +12,9 @@ trait-reptile-accent-desc = Your accent mirrorsss that of the reptilliansss.
 
 # Disabilities
 
+trait-clumsy-disability-name = Clumsy
+trait-clumsy-disability-desc = You often trip, slip and fall - from climbing tables to operating firearms.
+
 trait-feeble-disability-name = Feeble
 trait-feeble-disability-desc = You are easy to shove around; the ideal bully target.
 
