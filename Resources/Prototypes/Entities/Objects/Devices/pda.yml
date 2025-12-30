@@ -11,7 +11,7 @@
        !type:String
        pda
   - type: Sprite
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi #Moffstation - New PDAs
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda"
@@ -24,7 +24,7 @@
       shader: "unshaded"
       visible: false
   - type: Icon
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi #Moffstation - New PDAs
     state: pda
   - type: Pda
     paiSlot:
@@ -133,7 +133,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Devices/pda.rsi
+    sprite: _Moffstation/Objects/Devices/pda.rsi #Moffstation - New PDAs
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda"
