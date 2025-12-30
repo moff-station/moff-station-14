@@ -35,8 +35,9 @@
   parent: PirateGear
   equipment:
     neck: ClothingNeckCloakPirateCap
-  inhand:
-  - EnergyCutlass
+  storage:
+    back:
+    - EnergyCutlass
 
 - type: startingGear
   id: FlyingDutchmanGear
