@@ -13,10 +13,22 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     public List<AntagObjectiveSet> Sets = new();
 
     /// <summary>
+    /// Selection time for objectives, set to 0 to have them be instantly picked randomly
+    /// </summary>
+    [DataField]
+    public TimeSpan SelectionDelay = TimeSpan.FromMinutes(15);
+
+    /// <summary>
     /// The amount of options to present to the player
     /// </summary>
     [DataField]
     public int MaxOptions = 10;
+
+    [DataField]
+    public int MaxChoices = 3;
+
+    [DataField]
+    public int MinChoices = 1;
 
     /// <summary>
     /// Kept for compatibility with the old version

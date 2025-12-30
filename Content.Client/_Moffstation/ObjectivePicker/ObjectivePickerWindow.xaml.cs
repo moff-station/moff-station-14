@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Moffstation.Objectives;
 using Content.Shared.Mind;
@@ -6,6 +7,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.ObjectivePicker;
 
@@ -14,12 +16,18 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 {
     [Dependency] private readonly IPlayerManager _players = default!;
     [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private SpriteSystem _sprite;
     private SharedMindSystem _mind;
 
+    private float _updateTimer = 1.0f;
+    private const float UpdateTime = 1.0f;
+
     public event Action<NetEntity>? OnSelected;
     public event Action<HashSet<NetEntity>, NetEntity>? OnSubmitted;
+    public event Action<HashSet<NetEntity>, int>? OnRandomize;
+    public event Action? OnClear;
 
     public HashSet<NetEntity> SelectedObjectives;
 
@@ -38,6 +46,11 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
         PopulateObjectives(mindUid);
 
         SubmitButton.OnPressed += _ => OnSubmitted?.Invoke(SelectedObjectives, _entity.GetNetEntity(mindUid));
+        ClearButton.OnPressed += _ => OnClear?.Invoke();
+
+        if (!_entity.TryGetComponent<PotentialObjectivesComponent>(mindUid, out var comp))
+            return;
+        RandomizeButton.OnPressed += _ => OnRandomize?.Invoke(comp.ObjectiveOptions.Keys.ToHashSet(), comp.MaxChoices);
     }
 
     private void PopulateObjectives(EntityUid mindUid)
@@ -53,7 +66,7 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
             {
                 ToggleMode = true,
                 Pressed = SelectedObjectives.Contains(objective.Key),
-                Disabled = SelectedObjectives.Count >= potentialObjectivesComponent.MaxOptions && !SelectedObjectives.Contains(objective.Key),
+                Disabled = SelectedObjectives.Count >= potentialObjectivesComponent.MaxChoices && !SelectedObjectives.Contains(objective.Key),
             };
 
             var objectiveBox = new BoxContainer
@@ -74,12 +87,12 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 
             };
 
-            SubmitButton.Disabled = SelectedObjectives.Count < potentialObjectivesComponent.MinOptions ||
-                                    SelectedObjectives.Count > potentialObjectivesComponent.MaxOptions;
+            SubmitButton.Disabled = SelectedObjectives.Count < potentialObjectivesComponent.MinChoices ||
+                                    SelectedObjectives.Count > potentialObjectivesComponent.MaxChoices;
 
             SelectionTip.Text = Loc.GetString("objective-picker-window-select-tip",
                 ("selected", SelectedObjectives.Count),
-                ("max", potentialObjectivesComponent.MaxOptions));
+                ("max", potentialObjectivesComponent.MaxChoices));
 
             objectiveBox.Children.Add(icon);
             objectiveBox.Children.Add(objectiveText);
@@ -90,9 +103,41 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
         }
     }
 
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        _updateTimer += args.DeltaSeconds;
+
+        if (_updateTimer >= UpdateTime)
+        {
+            _updateTimer -= UpdateTime;
+            UpdateTimer();
+        }
+    }
+
     public void UpdateState()
     {
         _mind.TryGetMind(_players.LocalSession, out var mindUid, out _);
         PopulateObjectives(mindUid);
+    }
+
+    private void UpdateTimer()
+    {
+        _mind.TryGetMind(_players.LocalSession, out var mindUid, out _);
+
+        if (!_entity.TryGetComponent<PotentialObjectivesComponent>(mindUid, out var comp))
+            return;
+
+        var timeLeft = comp.AutoSelectionTime - _timing.CurTime;
+
+        if (comp.AutoSelectionTime < _timing.CurTime)
+        {
+            this.Close();
+            return;
+        }
+
+        TimeLeftTip.Text = Loc.GetString("objective-picker-window-time-left",
+            ("time", timeLeft.ToString(@"mm\:ss")));
     }
 }

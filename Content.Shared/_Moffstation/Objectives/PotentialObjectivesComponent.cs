@@ -12,7 +12,7 @@ public sealed partial class PotentialObjectivesComponent : Component
     /// The delay until the objectives get automatically selected
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TimeSpan AutoSelectionDelay = TimeSpan.FromSeconds(1);
+    public TimeSpan AutoSelectionDelay = TimeSpan.FromMinutes(15);
 
     /// <summary>
     /// The in-game time it get selected
@@ -27,10 +27,10 @@ public sealed partial class PotentialObjectivesComponent : Component
     public Dictionary<NetEntity,ObjectiveInfo> ObjectiveOptions = new();
 
     [ViewVariables]
-    public int MaxOptions = 3;
+    public int MaxChoices = 3;
 
     [ViewVariables]
-    public int MinOptions = 1;
+    public int MinChoices = 1;
 
     public override bool SessionSpecific => true;
 }

@@ -20,7 +20,7 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<AntagRandomObjectivesComponent, AfterAntagEntitySelectedEvent>(OnAntagSelected);
-        SubscribeNetworkEvent<ObjectivePickerSelected>(OnObjectivesSelected);
+        SubscribeAllEvent<ObjectivePickerSelected>(OnObjectivesSelected);
     }
 
     private void OnAntagSelected(Entity<AntagRandomObjectivesComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -35,6 +35,11 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
         }
 
         var potentialObjectives = EnsureComp<PotentialObjectivesComponent>(mindId);
+
+        // Copying stuff over, probably a better way to do this but I am le tired
+        potentialObjectives.MaxChoices = _random.Next(ent.Comp.MinChoices, ent.Comp.MaxChoices);
+        potentialObjectives.MinChoices = ent.Comp.MinChoices;
+        potentialObjectives.AutoSelectionDelay = ent.Comp.SelectionDelay;
 
         foreach (var set in ent.Comp.Sets)
         {
