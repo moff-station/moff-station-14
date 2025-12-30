@@ -9,6 +9,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
+using Content.Shared._Moffstation.Objectives;
 using Content.Shared.Input;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -186,24 +187,9 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
 
+        // Begin DeltaV Additions - Custom objective summary
         switch (objectives.Count)
         {
-            // Moffstation - Start - Objective Picker
-            case 0 when briefing != null:
-            {
-                var objectivePickerButton = new Button
-                {
-                    Text = "Choose Objectives...",
-                    Margin = new Thickness(0, 10, 0, 10)
-                };
-                objectivePickerButton.OnPressed += _ => _objectivePicker.OpenWindow();
-                objectivePickerButton.OnPressed += _ => _window.Close();
-
-                _window.Objectives.AddChild(objectivePickerButton);
-                break;
-            }
-            // Moffstation - End
-            // Begin DeltaV Additions - Custom objective summary
             case > 0:
             {
                 var button = new Button
@@ -216,8 +202,23 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
                 _window.Objectives.AddChild(button);
                 break;
             }
-        }
         // End DeltaV Additions
+        // Moffstation - Start - Objective Picker
+            case 0:
+            {
+                var objectivePickerButton = new Button
+                {
+                    Text = "Choose Objectives...",
+                    Margin = new Thickness(0, 10, 0, 10)
+                };
+                objectivePickerButton.OnPressed += _ => _objectivePicker.OpenWindow();
+                objectivePickerButton.OnPressed += _ => _window.Close();
+
+                _window.Objectives.AddChild(objectivePickerButton);
+                break;
+            }
+        }
+        // Moffstation - End
 
         // Starlight - Start - Collective Mind
         if (minds != null && minds.Count > 0)

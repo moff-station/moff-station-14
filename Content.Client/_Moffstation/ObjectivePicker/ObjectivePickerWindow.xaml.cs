@@ -33,7 +33,16 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
         SelectedObjectives ??= new HashSet<NetEntity>();
 
 
-        _mind.TryGetMind(_players.LocalSession, out var mindUid, out var mindComp);
+        _mind.TryGetMind(_players.LocalSession, out var mindUid, out _);
+
+        PopulateObjectives(mindUid);
+
+        SubmitButton.OnPressed += _ => OnSubmitted?.Invoke(SelectedObjectives, _entity.GetNetEntity(mindUid));
+    }
+
+    private void PopulateObjectives(EntityUid mindUid)
+    {
+        ObjectiveList.Children.Clear();
 
         if (!_entity.TryGetComponent<PotentialObjectivesComponent>(mindUid, out var potentialObjectivesComponent))
             return;
@@ -43,6 +52,8 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
             var button = new Button
             {
                 ToggleMode = true,
+                Pressed = SelectedObjectives.Contains(objective.Key),
+                Disabled = SelectedObjectives.Count >= potentialObjectivesComponent.MaxOptions && !SelectedObjectives.Contains(objective.Key),
             };
 
             var objectiveBox = new BoxContainer
@@ -59,23 +70,29 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
             {
                 Text = objective.Value.Title,
                 HorizontalAlignment = HAlignment.Left,
+                HorizontalExpand = true,
+
             };
 
-            var objectiveCheckbox = new RichTextLabel
-            {
-                Text = "[ ]",
-                HorizontalAlignment = HAlignment.Right,
-            };
+            SubmitButton.Disabled = SelectedObjectives.Count < potentialObjectivesComponent.MinOptions ||
+                                    SelectedObjectives.Count > potentialObjectivesComponent.MaxOptions;
+
+            SelectionTip.Text = Loc.GetString("objective-picker-window-select-tip",
+                ("selected", SelectedObjectives.Count),
+                ("max", potentialObjectivesComponent.MaxOptions));
 
             objectiveBox.Children.Add(icon);
             objectiveBox.Children.Add(objectiveText);
-            objectiveBox.Children.Add(objectiveCheckbox);
             button.Children.Add(objectiveBox);
 
             button.OnPressed += _ => OnSelected?.Invoke(objective.Key);
             ObjectiveList.Children.Add(button);
         }
+    }
 
-        SubmitButton.OnPressed += _ => OnSubmitted?.Invoke(SelectedObjectives, _entity.GetNetEntity(mindUid));
+    public void UpdateState()
+    {
+        _mind.TryGetMind(_players.LocalSession, out var mindUid, out _);
+        PopulateObjectives(mindUid);
     }
 }

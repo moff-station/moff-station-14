@@ -1,9 +1,5 @@
 using Content.Shared._Moffstation.Objectives;
-using Content.Shared.Mind;
-using Robust.Client.Player;
 using Robust.Client.UserInterface.Controllers;
-using Robust.Client.UserInterface.Controls;
-using Robust.Shared.Network;
 
 namespace Content.Client._Moffstation.ObjectivePicker;
 
@@ -40,7 +36,7 @@ public sealed class ObjectivePickerUIController : UIController
     {
         if (!_window!.SelectedObjectives.Remove(netEntity))
             _window.SelectedObjectives.Add(netEntity);
-
+        _window.UpdateState();
     }
 
     private void OnSubmitted(HashSet<NetEntity> selectedObjectives, NetEntity mindId)

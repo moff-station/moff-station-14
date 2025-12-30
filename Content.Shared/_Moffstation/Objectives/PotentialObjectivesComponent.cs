@@ -14,6 +14,12 @@ public sealed partial class PotentialObjectivesComponent : Component
     [ViewVariables, AutoNetworkedField]
     public Dictionary<NetEntity,ObjectiveInfo> ObjectiveOptions = new();
 
+    [ViewVariables]
+    public int MaxOptions = 3;
+
+    [ViewVariables]
+    public int MinOptions = 1;
+
     public override bool SessionSpecific => true;
 }
 
