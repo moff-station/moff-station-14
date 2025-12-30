@@ -9,6 +9,18 @@ namespace Content.Shared._Moffstation.Objectives;
 public sealed partial class PotentialObjectivesComponent : Component
 {
     /// <summary>
+    /// The delay until the objectives get automatically selected
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan AutoSelectionDelay = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// The in-game time it get selected
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public TimeSpan AutoSelectionTime;
+
+    /// <summary>
     /// The objective options presented to the player
     /// </summary>
     [ViewVariables, AutoNetworkedField]

@@ -74,5 +74,6 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
                 TryQueueDel(GetEntity(objective));
             }
         }
+        RemCompDeferred<PotentialObjectivesComponent>(mindId);
     }
 }

@@ -206,6 +206,13 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         // Moffstation - Start - Objective Picker
             case 0:
             {
+                if (!_ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var container)
+                    || container.Mind is null)
+                    break;
+
+                if (!_ent.HasComponent<PotentialObjectivesComponent>(container.Mind))
+                    break;
+
                 var objectivePickerButton = new Button
                 {
                     Text = "Choose Objectives...",
