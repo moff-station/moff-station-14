@@ -146,7 +146,7 @@
           Quantity: 20
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase # Moffstation - Allow suit storage attachment
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterCoatLab
   name: lab coat
   description: A suit that protects against minor chemical spills.
@@ -166,7 +166,7 @@
   name: lab coat
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase # Moffstation - Allow suit storage attachment
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterCoatLabChem
   name: chemist lab coat
   description: A suit that protects against minor chemical spills. Has an orange stripe on the shoulder.
@@ -248,7 +248,7 @@
   name: chief medical officer's lab coat
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase # Moffstation - Allow suit storage attachment
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterCoatRnd
   name: scientist lab coat
   description: A suit that protects against minor chemical spills. Has a purple stripe on the shoulder.
@@ -268,7 +268,7 @@
   name: scientist lab coat
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase # Moffstation - Allow suit storage attachment
+  parent: ClothingOuterStorageFoldableBase
   id: ClothingOuterCoatRobo
   name: roboticist lab coat
   description: More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads.

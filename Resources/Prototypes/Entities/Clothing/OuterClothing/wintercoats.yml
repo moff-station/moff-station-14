@@ -1,8 +1,8 @@
 - type: entity
-  # Moffstation - Begin - Split base winter coat into abstract base for inheritance and generic single concrete
+  # Moffstation - Begin - Split the existing base winter coat into an abstract base with all of the coat stats; the basic winter coat gets attachable suit storage now, which we don't want to inherit in some cases
   parent: ClothingOuterStorageBase
   id: ClothingOuterWinterCoatBase
-#  id: ClothingOuterWinterCoat # Moffstation - The upstream base was moved to our namespace where it gets suit storage attachment stuff. This "new" base is for use when a winter coat _must not_ have suit storage attachment.
+#  id: ClothingOuterWinterCoat # Moffstation - The upstream basic winter coat `ClothingOuterWinterCoat` was moved to our namespace
   abstract: true
   # Moffstation - End
   components:
