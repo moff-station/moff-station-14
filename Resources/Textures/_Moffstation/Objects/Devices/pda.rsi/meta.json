@@ -42,6 +42,9 @@
             "name": "light_overlay_wide"
         },
         {
+            "name": "pda-admin"
+        },
+        {
             "name": "pda-atmos"
         },
         {
@@ -55,6 +58,9 @@
         },
         {
             "name": "pda-cargo"
+        },
+        {
+            "name": "pda-cburn"
         },
         {
             "name": "pda-ce"
@@ -128,25 +134,10 @@
             "name": "pda-pirate"
         },
         {
+            "name": "pda-piratecaptain"
+        },
+        {
             "name": "pda-qm"
-        },
-        {
-            "name": "pda-r",
-            "delays": [
-                [
-                    0.8,
-                    0.8
-                ]
-            ]
-        },
-        {
-            "name": "pda-r-library",
-            "delays": [
-                [
-                    0.8,
-                    0.8
-                ]
-            ]
         },
         {
             "name": "pda-rd"
@@ -161,15 +152,7 @@
             "name": "pda-security"
         },
         {
-            "name": "pda-brigmedic",
-            "delays": [
-                [
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3
-                ]
-            ]
+            "name": "pda-brigmedic"
         },
         {
             "name": "pda-syndi"
@@ -184,15 +167,7 @@
             "name": "pda-syndi-operative"
         },
         {
-            "name": "pda-centcom",
-            "delays": [
-                [
-                    1.2,
-                    1.2,
-                    1.2,
-                    1.2
-                ]
-            ]
+            "name": "pda-centcom"
         },
         {
             "name": "pda-virology"
@@ -205,6 +180,9 @@
         },
         {
             "name": "pda-reporter"
+        },
+        {
+            "name": "pda-internatmos"
         },
         {
             "name": "pda-interncadet"
@@ -225,7 +203,22 @@
             "name": "pda-zookeeper"
         },
         {
-            "name": "pda-ert"
+            "name": "pda-ert-chaplain"
+        },
+        {
+            "name": "pda-ert-courier"
+        },
+        {
+            "name": "pda-ert-engineer"
+        },
+        {
+            "name": "pda-ert-janitor"
+        },
+        {
+            "name": "pda-ert-leader"
+        },
+        {
+            "name": "pda-ert-security"
         },
         {
             "name": "pda-cluwne"
@@ -257,7 +250,7 @@
             ]
         },
         {
-            "name": "pda-anomalouscontainmentspecialist"
+            "name": "pda-hazardousphenomenatechnician"
         },
         {
             "name": "pda-archivist"
@@ -328,10 +321,13 @@
             "name": "pda-deathrow"
         },
         {
+            "name": "pda-deathsquad"
+        },
+        {
             "name": "pda-deputy"
         },
         {
-            "name": "pda-detentionofficer"
+            "name": "pda-detentionmanager"
         },
         {
             "name": "pda-freelancer"
@@ -458,7 +454,7 @@
             "name": "pda-pizzaiolo"
         },
         {
-            "name": "pda-plasmatechnician"
+            "name": "pda-thermalsystemsspecialist"
         },
         {
             "name": "pda-popidol"
