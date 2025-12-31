@@ -919,8 +919,9 @@
        !type:String
        pda-warden
   - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentVColor: "#949137"
+    borderColor: "#5261a0"
+    accentVColor: "#cc4242"
+    accentHColor: "#23acc4"
   - type: Icon
     state: pda-warden
 
@@ -991,7 +992,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-admin
+        pda-admin #Moffstation - New PDAs
   - type: HealthAnalyzer
     maxScanRange: null
     scanDelay: 0
@@ -1024,7 +1025,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-deathsquad
+        pda-deathsquad #Moffstation - New PDAs
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1202,13 +1203,13 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-ert-leader
+       pda-ert-leader #Moffstation - New PDAs
   - type: PdaBorderColor
     borderColor: "#A32D26"
     accentHColor: "#447987"
     accentVColor: "#447987"
   - type: Icon
-    state: pda-ert
+    state: pda-ert-leader #Moffstation - New PDAs
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
@@ -1235,7 +1236,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-ert-chaplain
+        pda-ert-chaplain #Moffstation - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1250,7 +1251,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-ert-engineer
+        pda-ert-engineer #Moffstation - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1265,7 +1266,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-ert-janitor
+        pda-ert-janitor #Moffstation - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1280,7 +1281,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-ert-medic
+        pda-ert-medic #Moffstation - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1295,7 +1296,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-ert-security
+        pda-ert-security #Moffstation - New PDAs
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1309,7 +1310,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-cburn
+        pda-cburn #Moffstation - New PDAs
   - type: PdaBorderColor
     borderColor: "#A32D26"
     accentHColor: "#447987"
@@ -1327,7 +1328,7 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-psychology
+       pda-psychologist #Moffstation - New PDAs
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentVColor: "#447987"
