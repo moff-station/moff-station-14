@@ -38,6 +38,7 @@ public abstract partial class SharedMindSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!; // Moffstation
 
     [ViewVariables]
     protected readonly Dictionary<NetUserId, EntityUid> UserMinds = new();
@@ -718,6 +719,27 @@ public abstract partial class SharedMindSystem : EntitySystem
 
         EnsureComp<ExaminerComponent>(uid);
     }
+
+    // Moffstation - Start - Helper for selecting Paradox Clone targets on the same map.
+    /// <summary>
+    /// Get all minds on the same Map as the Refrence
+    /// </summary>>
+    public HashSet<Entity<MindComponent>> GetAliveHumansOnMap(EntityUid? map)
+    {
+        var allAliveHumanoids = GetAliveHumans();
+        var outminds = new HashSet<Entity<MindComponent>>();
+        foreach(var candidateMind in allAliveHumanoids)
+        {
+            if(candidateMind.Comp.CurrentEntity is not {} candidateEntity ||
+               _transform.GetMap(candidateEntity) != map)
+            {
+
+                outminds.Add(candidateMind);
+            }
+        }
+        return outminds;
+    }
+    // Moffstation - End
 }
 
 /// <summary>

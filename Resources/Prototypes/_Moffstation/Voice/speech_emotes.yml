@@ -69,3 +69,21 @@
   - squawk
   - squawking
   - squawks
+
+- type: emote
+  id: Hiss
+  name: chat-emote-name-hiss
+  category: Vocal
+  available: false
+  icon: { sprite: _Moffstation/Actions/avali.rsi, state: hiss }
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-hiss"]
+  chatTriggers:
+  - hiss
+  - hisses
+  - hissing

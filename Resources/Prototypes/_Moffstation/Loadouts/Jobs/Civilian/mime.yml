@@ -10,18 +10,44 @@
     id: PierrotPDA
 
 # Head
+- type: loadout
+  id: PierrotCone
+  equipment:
+    head: ClothingHeadHatPierrot
 
 # Mask
+- type: loadout
+  id: MimeMaskBlushing
+  equipment:
+    mask: ClothingMaskBlushingMime
+
+- type: loadout
+  id: MimeMaskCool
+  equipment:
+    mask: ClothingMaskMimeSecurity
+
+- type: loadout
+  id: PierrotMask
+  equipment:
+    mask: ClothingMaskMimePierrot
 
 # Neck
 
 # Jumpsuit
+- type: loadout
+  id: PierrotSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPierrot
 
 # Back
 
 # Belt
 
 # Outer Clothing
+- type: loadout
+  id: PierrotCoat
+  equipment:
+    outerClothing: ClothingOuterWinterPierrot
 
 # Gloves
 

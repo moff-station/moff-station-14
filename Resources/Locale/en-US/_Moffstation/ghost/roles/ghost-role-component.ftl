@@ -2,6 +2,10 @@
 ghost-role-information-john-crime-name = John Crime
 ghost-role-information-john-crime-description = Hide in a mail package, waiting to strike your target.
 
+# Joke Joke (Pirate Kobold Bartender)
+ghost-role-information-jokejoke-name = Joke Joke
+ghost-role-information-jokejoke-description = A cut-throat kobold pirate serving drinks and maintaining the cove.
+
 # Mercenary Engineer
 ghost-role-information-mercenary-engineer-name = Mercenary Combat Engineer
 ghost-role-information-mercenary-engineer-description = Assist a team of hired guns with any engineering problems that might arise on your mission.

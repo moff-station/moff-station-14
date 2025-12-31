@@ -51,7 +51,6 @@
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
         priority: 1
         whitelist:
           tags:
@@ -92,7 +91,6 @@
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
         priority: 1
         whitelist:
           tags:
@@ -128,15 +126,6 @@
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
-   # Moffstation - Start - Replace Battery ammo + battery refilling with ballistic ammo
-#  - type: BatteryAmmoProvider
-#    proto: BulletPistol
-#    fireCost: 100
-#  - type: PredictedBattery
-#    maxCharge: 1000
-#    startingCharge: 1000
-#  - type: PredictedBatterySelfRecharger
-#    autoRechargeRate: 25
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -147,7 +136,6 @@
   - type: BallisticAmmoSelfRefiller
     autoRefillRate: 4s
     affectedByEmp: true
-  # Moffstation - End
   - type: AmmoCounter
 
 - type: entity
@@ -189,7 +177,6 @@
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeCaselessRifle
         priority: 1
         whitelist:
           tags:
@@ -266,7 +253,6 @@
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeMagnum
         priority: 1
         whitelist:
           tags:

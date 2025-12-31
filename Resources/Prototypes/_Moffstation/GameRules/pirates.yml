@@ -4,8 +4,10 @@
   id: BasePiratesRule
   components:
   - type: PiratesRule
-  - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
+  - type: LoadGridRule
+    gridPath: /Maps/_Moffstation/Nonstations/pirate-cove.yml
+    minimumDistance: 1000
+    maximumDistance: 2000
   - type: RuleGrids
   - type: AntagSelection
   - type: AntagLoadProfileRule
@@ -16,6 +18,8 @@
   parent: BasePiratesRule
   id: Pirates
   components:
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
   - type: GameRule
     minPlayers: 30
   - type: AntagSelection
