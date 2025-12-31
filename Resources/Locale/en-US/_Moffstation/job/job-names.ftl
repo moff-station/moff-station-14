@@ -25,7 +25,7 @@ job-name-salvage-specialist-scavenger = Scavenger
 
 ## Engineering
 # Atmospheric Technician
-job-name-atmospheric-technician-plasma-technician = Plasma Technician
+job-name-atmospheric-technician-thermal-systems-specialist = Thermal Systems Specialist
 job-name-atmospheric-technician-firefighter = Firefighter
 job-name-atmospheric-technician-senior = Senior Atmospheric Technician
 job-name-atmospheric-technician-assistant = Atmospherics Assistant
@@ -38,6 +38,7 @@ job-name-station-engineer-shipwright = Shipwright
 ## Medical
 # Chemist
 job-name-chemist-pharmacist = Pharmacist
+job-name-chemist-toxicologist = Toxicologist
 # Medical Doctor
 job-name-medical-doctor-clinician = Clinician
 job-name-medical-doctor-coroner = Coroner
@@ -55,7 +56,7 @@ job-name-psychologist-social-worker = Social Worker
 
 ## Science
 # Scientist
-job-name-scientist-anomaly-containment-specialist = Anomaly Containment Specialist
+job-name-scientist-hazardous-phenomena-technician = Hazardous Phenomena Technician
 job-name-scientist-machinist = Machinist
 job-name-scientist-senior-researcher = Senior Researcher
 job-name-scientist-xenoarcheologist = Xenoarcheologist

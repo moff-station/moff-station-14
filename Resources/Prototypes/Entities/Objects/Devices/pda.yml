@@ -987,6 +987,11 @@
   components:
   - type: Pda
     id: UniversalIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-admin
   - type: HealthAnalyzer
     maxScanRange: null
     scanDelay: 0
@@ -1015,6 +1020,11 @@
   components:
   - type: Pda
     id: CentcomIDCardDeathsquad
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-deathsquad
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1192,7 +1202,7 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-ert
+       pda-ert-leader
   - type: PdaBorderColor
     borderColor: "#A32D26"
     accentHColor: "#447987"
@@ -1221,6 +1231,11 @@
   components:
   - type: Pda
     id: ERTChaplainIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-chaplain
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1231,6 +1246,11 @@
   components:
   - type: Pda
     id: ERTEngineerIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-engineer
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1241,6 +1261,11 @@
   components:
   - type: Pda
     id: ERTJanitorIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-janitor
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1251,6 +1276,11 @@
   components:
   - type: Pda
     id: ERTMedicIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-medic
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1261,6 +1291,11 @@
   components:
   - type: Pda
     id: ERTSecurityIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-security
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1270,6 +1305,11 @@
   components:
   - type: Pda
     id: CBURNIDcard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-cburn
   - type: PdaBorderColor
     borderColor: "#A32D26"
     accentHColor: "#447987"
@@ -1287,7 +1327,7 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-medical
+       pda-psychology
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentVColor: "#447987"

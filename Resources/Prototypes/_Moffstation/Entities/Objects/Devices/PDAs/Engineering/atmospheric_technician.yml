@@ -29,16 +29,16 @@
 
 - type: entity
   parent: AtmosPDAAltBase
-  id: PlasmaTechnicianPDA
-  name: plasma technician PDA
+  id: ThermalSystemsSpecialistPDA
+  name: thermal systems specialist PDA
   components:
   - type: RenameId
-    value: job-name-atmospheric-technician-plasma-technician
+    value: job-name-atmospheric-technician-thermal-systems-specialist
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-plasmatechnician
+        pda-thermalsystemsspecialist
   - type: PdaBorderColor
     borderColor: "#949137"
     accentVColor: "#447987"
@@ -85,3 +85,8 @@
   components:
   - type: RenameId
     value: job-name-atmospheric-technician-assistant
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-internatmos

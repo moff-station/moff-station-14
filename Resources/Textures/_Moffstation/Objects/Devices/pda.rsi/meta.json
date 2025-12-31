@@ -253,7 +253,15 @@
             ]
         },
         {
-            "name": "pda-hazardousphenomenatechnician"
+            "name": "pda-hazardousphenomenatechnician",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
         },
         {
             "name": "pda-archivist"
@@ -500,9 +508,6 @@
         },
         {
             "name": "pda-scavenger"
-        },
-        {
-            "name": "pda-security"
         },
         {
             "name": "pda-senioratmos"

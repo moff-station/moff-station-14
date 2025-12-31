@@ -161,7 +161,7 @@
   name: loadout-group-atmospheric-technician-id
   loadouts:
   - AtmosPDA # Keep default PDA on top of the list
-  - PlasmaTechnicianPDA
+  - ThermalSystemsSpecialistPDA
   - SeniorAtmosphericTechnicianPDA
   - FirefighterPDA
   - AssistantAtmosphericTechnicianPDA
@@ -189,9 +189,8 @@
   name: loadout-group-chemist-id
   loadouts:
   - ChemistryPDA # Keep default PDA on top of the list
-  - GeneticistPDA
   - PharmacistPDA
-  - VirologistPDA
+  - ToxicologistPDA
 
 # Paramedic
 - type: loadoutGroup
