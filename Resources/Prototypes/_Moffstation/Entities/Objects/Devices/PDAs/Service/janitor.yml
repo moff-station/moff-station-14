@@ -93,3 +93,19 @@
   - type: PdaBorderColor
     borderColor: "#5D2D56"
     accentHColor: "#beb440"
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: HeadofSanitationPDA
+  name: head of sanitation PDA
+  components:
+  - type: RenameId
+    value: job-name-clown-head-of-sanitation
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-headofsanitation
+  - type: PdaBorderColor
+    accentVColor: "#bf8f2e"
+    accentHColor: "#beb440"

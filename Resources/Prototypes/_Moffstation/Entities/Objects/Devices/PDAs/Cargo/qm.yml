@@ -1,7 +1,8 @@
+#HoP
 - type: entity
-  parent: CaptainPDA
-  id: CaptainPDAAltBase
-  name: captain alternate PDA
+  parent: QuartermasterPDA
+  id: QMPDAAltBase
+  name: quartermaster alternate PDA
   abstract: true
   components:
   - type: Appearance
@@ -13,7 +14,7 @@
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-captaincommandingofficer"
+      state: "pda-requisitionscoordinator"
     - state: "light_overlay"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
@@ -28,16 +29,17 @@
       sprite: _Moffstation/Objects/Devices/pda.rsi
 
 - type: entity
-  parent: CaptainPDAAltBase
-  id: CommandingOfficerPDA
-  name: commanding officer PDA
+  parent: QMPDAAltBase
+  id: RequisitionsCoordinatorPDA
+  name: requisitions coordinator PDA
   components:
   - type: RenameId
-    value: job-name-captain-commanding-officer
+    value: job-name-quartermaster-requisitions-coordinator
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-captaincommandingofficer
+        pda-requisitionscoordinator
   - type: PdaBorderColor
-    accentHColor: "#A32D26"
+    borderColor: "#4d1f0a"
+    accentVColor: "#241707"

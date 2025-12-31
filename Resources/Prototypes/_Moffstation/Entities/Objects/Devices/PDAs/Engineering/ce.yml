@@ -1,7 +1,8 @@
+#HoP
 - type: entity
   parent: CEPDA
   id: CEPDAAltBase
-  name: ce alternate PDA
+  name: chief engineer alternate PDA
   abstract: true
   components:
   - type: Appearance
@@ -13,7 +14,7 @@
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-correctionsofficer"
+      state: "pda-engineeringforeman"
     - state: "light_overlay"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
@@ -38,6 +39,6 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-ceengineeringforeman
+        pda-engineeringforeman
   - type: PdaBorderColor
-    accentHColor: "#A32D26"
+    accentVColor: "#690f18"

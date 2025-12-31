@@ -76,6 +76,38 @@
     accentVColor: "#364d37"
 
 - type: entity
+  parent: PassengerPDAAltBase
+  id: BridgeAssistantPDA
+  name: bridge assistant PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-bridge-assistant
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-bridgeassistant
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentVColor: "#bf8f2e"
+
+- type: entity
+  parent: PassengerPDAAltBase
+  id: CoffeeLogisticsOfficerPDA
+  name: coffee logistics officer PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-coffee-logistics-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-coffeelogisticsofficer
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentVColor: "#bf8f2e"
+
+- type: entity
   parent: VisitorPDA
   id: VisitorCrewPDA
   name: visitor PDA

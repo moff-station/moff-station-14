@@ -1,3 +1,4 @@
+#HoS
 - type: entity
   parent: HoSPDA
   id: HoSPDAAltBase
@@ -13,7 +14,7 @@
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-correctionsofficer"
+      state: "pda-chiefconstable"
     - state: "light_overlay"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
@@ -38,9 +39,10 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-hoschiefconstable
+        pda-chiefconstable
   - type: PdaBorderColor
-    accentHColor: "#A32D26"
+    borderColor: "#5261a0"
+    accentVColor: "#2c2c2c"
 
 - type: entity
   parent: HoSPDAAltBase
@@ -53,6 +55,6 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-hoshighsheriff
+        pda-highsheriff
   - type: PdaBorderColor
-    accentHColor: "#A32D26"
+    accentVColor: "#85221f"

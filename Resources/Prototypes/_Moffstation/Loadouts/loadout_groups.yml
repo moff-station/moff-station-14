@@ -13,13 +13,6 @@
   - EyePatch
   - EyePatchFlipped
 
-- type: loadoutGroup
-  id: CaptainPDA
-  name: loadout-group-captain-id
-  loadouts:
-  - CaptainPDA # Keep default PDA on top of the list
-  - CommandingOfficerPDA
-
 # Head of Personnel
 - type: loadoutGroup
   id: HopEyewear
@@ -32,13 +25,6 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
-
-- type: loadoutGroup
-  id: HoPPDA
-  name: loadout-group-hop-id
-  loadouts:
-  - HoPPDA # Keep default PDA on top of the list
-  - HRAdministratorPDA
 
 # Chief Engineer
 - type: loadoutGroup
@@ -53,13 +39,6 @@
   - AtmosphericTechnicianDuffel
   - LeatherSatchel
 
-- type: loadoutGroup
-  id: CEPDA
-  name: loadout-group-chief-engineer-id
-  loadouts:
-  - CEPDA # Keep default PDA on top of the list
-  - EngineeringForemanPDA
-
 # Quartermaster
 - type: loadoutGroup
   id: QuartermasterBackpack
@@ -73,22 +52,7 @@
   - SalvageSpecialistDuffel
   - LeatherSatchel
 
-- type: loadoutGroup
-  id: QuartermasterPDA
-  name: loadout-group-quartermaster-id
-  loadouts:
-  - QuartermasterPDA # Keep default PDA on top of the list
-  - RequisitionsCoordinatorPDA
-
 ## Security
-- type: loadoutGroup
-  id: HoSPDA
-  name: loadout-group-head-of-security-id
-  loadouts:
-  - HoSPDA # Keep default PDA on top of the list
-  - HighSheriffPDA
-  - ChiefConstablePDA
-
 - type: loadoutGroup
   id: SecurityEyewear
   name: loadout-group-security-glasses

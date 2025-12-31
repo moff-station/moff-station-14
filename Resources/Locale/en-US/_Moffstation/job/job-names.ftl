@@ -101,11 +101,13 @@ job-name-chef-pizzaiolo = Pizzaiolo
 # Clown
 job-name-clown-fool = Fool
 job-name-clown-jester = Jester
+job-name-clown-head-of-tomfoolery = Head of Tomfoolery
 # Janitor
 job-name-janitor-custodian = Custodian
 job-name-janitor-hygiene-technician = Hygiene Technician
 job-name-janitor-maid = Maid
 job-name-janitor-sanitations-worker = Sanitations Worker
+job-name-janitor-head-of-sanitation = Head of Sanitation
 # Lawyer
 job-name-lawyer-attorney = Attorney
 job-name-lawyer-legal-counsel = Legal Counsel
@@ -146,6 +148,8 @@ job-name-passenger-off-duty-staff = Off-Duty Staff
 job-name-passenger-assistant = Assistant
 job-name-passenger-freelancer = Freelancer
 job-name-passenger-tourist = Tourist
+job-name-assistant-bridge-assistant = Bridge Assistant
+job-name-assistant-Coffee-Logistics-Officer = Coffee Logistics Officer
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate

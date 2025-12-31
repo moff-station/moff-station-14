@@ -1,7 +1,7 @@
 - type: entity
-  parent: RnDPDA
-  id: RnDPDAAltBase
-  name: rd alternate PDA
+  parent: CaptainPDA
+  id: CaptainPDAAltBase
+  name: captain alternate PDA
   abstract: true
   components:
   - type: Appearance
@@ -13,7 +13,7 @@
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-correctionsofficer"
+      state: "pda-commandingofficer"
     - state: "light_overlay"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
@@ -28,16 +28,17 @@
       sprite: _Moffstation/Objects/Devices/pda.rsi
 
 - type: entity
-  parent: RnDPDAAltBase
-  id: ResearchSupervisorPDA
-  name: research supervisor PDA
+  parent: CaptainPDAAltBase
+  id: CommandingOfficerPDA
+  name: commanding officer PDA
   components:
   - type: RenameId
-    value: job-name-research-director-research-supervisor
+    value: job-name-captain-commanding-officer
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-rdresearchsupervisor
+        pda-commandingofficer
   - type: PdaBorderColor
-    accentHColor: "#A32D26"
+    accentVColor: "#bf8f2e"
+    accentHColor: "#364d37"
