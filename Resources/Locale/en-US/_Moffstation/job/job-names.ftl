@@ -149,7 +149,7 @@ job-name-passenger-assistant = Assistant
 job-name-passenger-freelancer = Freelancer
 job-name-passenger-tourist = Tourist
 job-name-passenger-bridge-assistant = Bridge Assistant
-job-name-passenger-Coffee-Logistics-Officer = Coffee Logistics Officer
+job-name-passenger-coffee-logistics-officer = Coffee Logistics Officer
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
