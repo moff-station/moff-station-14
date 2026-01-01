@@ -2,7 +2,7 @@
   # Avali
 
   <Box>
-    <GuideEntityEmbed Entity="MobAvali" Scale="2" Caption=""/>
+    <GuideEntityEmbed Entity="MobAvali" Scale="2" Caption="Avali"/>
   </Box>
   
   ## Ammonia
@@ -11,8 +11,8 @@
   While ammonia may be hard to come by outside of chemistry, Avali crew members are equipped with a dedicated bottle in their survival box.
 
   <Box>
-    <GuideEntityEmbed Entity="AmmoniaBottle" Scale="4" Caption="Ammonia Bottle">
-    <GuideEntityEmbed Entity="EmergencyAmmonia" Scale="4" Caption="Avali Survival Box">
+    <GuideEntityEmbed Entity="DrinkAmmoniaBottleFull" Scale="4" Caption="Ammonia Bottle"/>
+    <GuideEntityEmbed Entity="BoxSurvivalAmmonia" Scale="4" Caption="Avali Survival Box"/>
   </Box>
   In case there is no chemist to refill your bottle, an Avali can resort to space cleaner for their hydration needs, made easily available from janitorial. Avali can also drink diethylamine as an ammonia-based alcoholic beverage.
 
@@ -21,8 +21,8 @@
   Both in part due to Avalon culture, and the difference in environmental conditions between their homeworld and the average space station, all Avali crew members are augmented with various cybernetics that facilitate their function. With augmentations supporting sight, motor function, temperature regulation and others, Avali may become very vulnerable to effects that disrupt the function of electronic devices.
 
   <Box>
-    <GuideEntityEmbed Entity="EmpGrenade" Scale="4" Caption="EMP Grenade">
-    <GuideEntityEmbed Entity="EmpImplanter" Scale="4" Caption="EMP Implanter"> 
+    <GuideEntityEmbed Entity="EmpGrenade" Scale="4" Caption="EMP Grenade"/>
+    <GuideEntityEmbed Entity="EmpImplanter" Scale="4" Caption="EMP Implanter"/> 
   </Box>
 
   When in the radius of an EMP blast, an Avali will become stunned for a brief duration, falling over, dropping anything they are holding and becoming temporarily blind while affected. These side effects will subsist, but the process can be quite painful for some.
