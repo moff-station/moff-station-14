@@ -11,7 +11,7 @@ job-name-quartermaster-requisitions-coordinator = Requisitions Coordinator
 ## Security
 # Warden
 job-name-warden-corrections-officer = Corrections Officer
-job-name-warden-detention-mananger = Detention Manager
+job-name-warden-detention-manager = Detention Manager
 job-name-warden-dispatch-officer = Dispatch Officer
 # Detective
 job-name-detective-investigator = Investigator
@@ -148,8 +148,8 @@ job-name-passenger-off-duty-staff = Off-Duty Staff
 job-name-passenger-assistant = Assistant
 job-name-passenger-freelancer = Freelancer
 job-name-passenger-tourist = Tourist
-job-name-assistant-bridge-assistant = Bridge Assistant
-job-name-assistant-Coffee-Logistics-Officer = Coffee Logistics Officer
+job-name-passenger-bridge-assistant = Bridge Assistant
+job-name-passenger-Coffee-Logistics-Officer = Coffee Logistics Officer
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
