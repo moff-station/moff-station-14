@@ -13,6 +13,13 @@
   - EyePatch
   - EyePatchFlipped
 
+- type: loadoutGroup
+  id: CaptainPDA
+  name: loadout-group-captain-id
+  loadouts:
+  - CaptainPDA # Keep default PDA on top of the list
+  - CommandingOfficerPDA
+
 # Head of Personnel
 - type: loadoutGroup
   id: HopEyewear
@@ -25,6 +32,13 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
+
+- type: loadoutGroup
+  id: HopPDA
+  name: loadout-group-hop-id
+  loadouts:
+  - HoPPDA # Keep default PDA on top of the list
+  - HRAdministratorPDA
 
 # Chief Engineer
 - type: loadoutGroup
@@ -39,6 +53,13 @@
   - AtmosphericTechnicianDuffel
   - LeatherSatchel
 
+- type: loadoutGroup
+  id: ChiefEngineerPDA
+  name: loadout-group-chief-engineer-id
+  loadouts:
+  - CEPDA # Keep default PDA on top of the list
+  - EngineeringForemanPDA
+
 # Quartermaster
 - type: loadoutGroup
   id: QuartermasterBackpack
@@ -51,6 +72,13 @@
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
   - LeatherSatchel
+
+- type: loadoutGroup
+  id: QuartermasterPDA
+  name: loadout-group-quartermaster-id
+  loadouts:
+  - QuartermasterPDA # Keep default PDA on top of the list
+  - RequisitionsCoordinatorPDA
 
 ## Security
 - type: loadoutGroup
@@ -67,7 +95,14 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
-
+#HoS
+- type: loadoutGroup
+  id:  HeadofSecurityPDA
+  name: loadout-group-hos-id
+  loadouts:
+  - HoSPDA # Keep default PDA on top of the list
+  - ChiefConstablePDA
+  - HighSheriffPDA
 # Warden
 - type: loadoutGroup
   id: WardenPDA
@@ -169,6 +204,14 @@
   - AssistantAtmosphericTechnicianPDA
 
 ## Medical
+#CMO
+- type: loadoutGroup
+  id: ChiefMedicalOfficerPDA
+  name: loadout-group-chief-medical-officer-id
+  loadouts:
+  - CMOPDA # Keep default PDA on top of the list
+  - MedicalDirectorPDA
+
 # Chemist
 - type: loadoutGroup
   id: ChemistryEyewear
@@ -228,6 +271,13 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
+#RD
+- type: loadoutGroup
+  id: ResearchDirectorPDA
+  name: loadout-group-research-director-id
+  loadouts:
+  - RnDPDA # Keep default PDA on top of the list
+  - ResearchSupervisorPDA
 
 ## Civilian
 # Bartender
