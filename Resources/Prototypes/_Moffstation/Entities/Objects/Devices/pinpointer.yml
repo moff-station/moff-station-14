@@ -1,0 +1,33 @@
+﻿- type: entity
+  parent: PinpointerBase
+  id: PinpointerPirate
+  name: pirate cove pinpointer
+  description: A handheld tracking device that leads to the nearest pirate cove. Keep upright to retain accuracy.
+  components:
+  - type: Sprite
+    layers:
+    - state: pinpointer-way
+      map: ["enum.PinpointerLayers.Base"]
+    - state: pinonnull
+      map: ["enum.PinpointerLayers.Screen"]
+      shader: unshaded
+      visible: false
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base
+        color: "#606060"
+      - state: inhand-left-stripe
+        color: "#606060"
+      - state: inhand-left-top
+      right:
+      - state: inhand-right-base
+        color: "#606060"
+      - state: inhand-right-stripe
+        color: "#606060"
+      - state: inhand-right-top
+  - type: Icon
+    state: pinpointer-way
+  - type: Pinpointer
+    component: PirateNavMapBeacon
+    targetName: the pirate cove

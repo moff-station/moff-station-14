@@ -6,11 +6,11 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Moffstation.Pirate.Components;
 
 /// <summary>
-/// Tags grid as pirate shuttle
+/// Tags a grid as the pirate base, which causes it to become station-like and capable of using pirate trade functionality.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 [AutoGenerateComponentState]
-public sealed partial class PirateShuttleComponent : Component
+public sealed partial class PirateBaseComponent : Component
 {
     [DataField]
     [AutoNetworkedField]

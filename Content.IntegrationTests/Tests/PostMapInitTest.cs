@@ -125,7 +125,6 @@ namespace Content.IntegrationTests.Tests
             "Reach",
             "Oasis",
             "Plasma",
-            "Elkridge",
             "Relic",
             "dm01-entryway",
             "Exo",
@@ -150,7 +149,8 @@ namespace Content.IntegrationTests.Tests
             "NitrousOxide",
             "Barratry",
             "Scylla",
-            "Aspid"
+            "Aspid",
+            "Elkridge",
             // Moffstation - End
         };
 
