@@ -499,6 +499,8 @@
         tableId: UnknownShuttlesFreelanceTable
       - !type:NestedSelector
         tableId: UnknownShuttlesHostileTable
+      - !type:NestedSelector
+        tableId: WreckEventTable # Moffstation - Wrecks as space traffic events
 
 - type: entity
   id: BasicStationEventScheduler
