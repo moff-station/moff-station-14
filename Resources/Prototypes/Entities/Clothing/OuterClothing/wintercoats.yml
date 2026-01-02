@@ -393,9 +393,9 @@
   description: A sturdy, utilitarian winter coat designed to protect a head of security from any brig-bound threats and hypothermic events.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coathosarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coathosarmored.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coathosarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coathosarmored.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 ##########################################################
