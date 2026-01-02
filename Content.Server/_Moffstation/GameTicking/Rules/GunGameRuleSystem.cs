@@ -64,10 +64,10 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             if (!GameTicker.IsGameRuleActive(uid, rule))
                 continue;
 
-            if(_mind.TryGetMind(ev.Player.UserId, out var mindId, out var mind))
+            if (_mind.TryGetMind(ev.Player.UserId, out var mindId, out var mind))
             {
-                if (mind.VisitingEntity is {Valid: true} visiting)
-                    _mind.UnVisit(mindId!.Value, mind);
+                if (mind.VisitingEntity?.Valid == true)
+                    _mind.UnVisit(mindId.Value, mind);
             }
             else
             {
@@ -78,7 +78,7 @@ public sealed class GunGameRuleSystem : GameRuleSystem<GunGameRuleComponent>
             DebugTools.AssertNotNull(mobMaybe);
             var mob = mobMaybe!.Value;
 
-            _mind.TransferTo(mindId!.Value, mob);
+            _mind.TransferTo(mindId.Value, mob);
             _outfitSystem.SetOutfit(mob, gunGame.Gear);
             EnsureComp<KillTrackerComponent>(mob);
             EnsureComp<GunGameTrackerComponent>(mob);
