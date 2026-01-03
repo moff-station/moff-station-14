@@ -27,6 +27,7 @@
   parent: BaseGameRule
   id: BasewreckRule
   components:
+  - type: DummyRule
   - type: StationEvent
     startAnnouncement: station-event-wreck-incoming
     startAudio:
