@@ -18,14 +18,14 @@ public sealed class CardVisualizerSystem : ManagedLayerVisualizerSystem<PlayingC
         SubscribeLocalEvent<PlayingCardComponent, GetHideInStripMenuEntityEvent>(CardOnGetHideInStripMenuEntity);
     }
 
-    protected override ref HashSet<string> SpriteLayersAdded(PlayingCardComponent component) =>
+    protected override ref HashSet<string> GetSpriteLayersAdded(PlayingCardComponent component) =>
         ref component.SpriteLayersAdded;
 
     protected override void AddLayersOnAppearanceChange(
         PlayingCardComponent component,
         Entity<SpriteComponent?> sprite,
         AppearanceComponent appearance,
-        Func<string, PrototypeLayerData, SpriteComponent.Layer> layerFactory
+        LayerFactory layerFactory
     )
     {
         foreach (var (layerIndex, layerData) in component.Sprite().Index())

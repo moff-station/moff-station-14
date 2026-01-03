@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Client._Moffstation.GameObjects;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Cards.Systems;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared._Moffstation.Strip.Components;
 using Robust.Client.GameObjects;
 using Robust.Shared.Utility;
@@ -22,14 +23,14 @@ public sealed partial class CardHandVisualizerSystem : ManagedLayerVisualizerSys
         SubscribeLocalEvent<PlayingCardHandComponent, GetHideInStripMenuEntityEvent>(HandOnGetHideInStripMenuEntity);
     }
 
-    protected override ref HashSet<string> SpriteLayersAdded(PlayingCardHandComponent component) =>
+    protected override ref HashSet<string> GetSpriteLayersAdded(PlayingCardHandComponent component) =>
         ref component.SpriteLayersAdded;
 
     protected override void AddLayersOnAppearanceChange(
         PlayingCardHandComponent component,
         Entity<SpriteComponent?> sprite,
         AppearanceComponent appearance,
-        Func<string, PrototypeLayerData, SpriteComponent.Layer> layerFactory
+        LayerFactory layerFactory
     )
     {
         if (!AppearanceSystem.TryGetData<List<PlayingCardInDeck>>(
@@ -86,9 +87,10 @@ public sealed partial class CardHandVisualizerSystem : ManagedLayerVisualizerSys
         PlayingCardHandComponent component,
         List<PlayingCardInDeck> visibleCards,
         bool forceUseReverseSprites,
-        Func<string, PrototypeLayerData, SpriteComponent.Layer> layerFactory
+        LayerFactory layerFactory
     )
     {
+        bool? faceDownOverride = forceUseReverseSprites ? true : null;
         var startingAngle = -(component.Angle / 2);
         var intervalAngle = visibleCards.Count != 1 ? component.Angle / (visibleCards.Count - 1) : 0;
         var startingXOffset = -(component.XOffset / 2);
@@ -96,23 +98,17 @@ public sealed partial class CardHandVisualizerSystem : ManagedLayerVisualizerSys
         var layerScale = new Vector2(component.Scale, component.Scale);
         foreach (var (cardIndex, cardInDeck) in visibleCards.Index())
         {
-            bool? faceDownOverride = forceUseReverseSprites ? true : null;
             if (_playingCards.GetComponent(cardInDeck)?.Sprite(faceDownOverride) is not { } currentLayers)
                 continue;
 
-            foreach (var (layerIndex, layerData) in currentLayers.Index())
+            var rotation = -Angle.FromDegrees(startingAngle + cardIndex * intervalAngle);
+            var x = startingXOffset + cardIndex * intervalOffset;
+            var offset = new Vector2(x, -(x * x) + 0.10f);
+            foreach (var (currLayerIndex, currLayerData) in currentLayers.Index())
             {
-                var layer = layerFactory($"{cardIndex}-{layerIndex}", layerData);
-
-                var angle = startingAngle + cardIndex * intervalAngle;
-                var x = startingXOffset + cardIndex * intervalOffset;
-                var y = -(x * x) + 0.10f;
-
-                SpriteSystem.LayerSetRotation(layer, Angle.FromDegrees(-angle) + (layerData.Rotation ?? 0));
-                SpriteSystem.LayerSetScale(layer, layerScale * (layerData.Scale ?? Vector2.One));
-                SpriteSystem.LayerSetOffset(
-                    layer,
-                    new Vector2(x, y) + (layerData.Offset ?? Vector2.Zero)
+                layerFactory(
+                    $"{cardIndex}-{currLayerIndex}",
+                    currLayerData.Plus(layerScale, rotation, offset)
                 );
             }
         }
