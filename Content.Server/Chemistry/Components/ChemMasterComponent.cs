@@ -1,7 +1,6 @@
 using Content.Server.Chemistry.EntitySystems;
 using Content.Shared.Chemistry;
 using Robust.Shared.Audio;
-using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Server.Chemistry.Components
 {
@@ -27,10 +26,5 @@ namespace Content.Server.Chemistry.Components
 
         [DataField("clickSound"), ViewVariables(VVAccess.ReadWrite)]
         public SoundSpecifier ClickSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
-
-        // Moffstation - Begin - chemmaster output source logic
-        [DataField]
-        public ChemMasterDrawSource DrawSource = ChemMasterDrawSource.Internal;
-        // Moffstation - End - chemmaster output source logic
     }
 }

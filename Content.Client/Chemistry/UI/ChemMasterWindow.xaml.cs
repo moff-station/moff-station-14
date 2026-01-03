@@ -14,7 +14,6 @@ using Content.Shared.FixedPoint;
 using Robust.Client.Graphics;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 using Robust.Client.GameObjects;
-using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Client.Chemistry.UI
 {
@@ -151,28 +150,7 @@ namespace Content.Client.Chemistry.UI
             // Ensure the Panel Info is updated, including UI elements for Buffer Volume, Output Container and so on
             UpdatePanelInfo(castState);
 
-            // Moffstation - Begin - chemmaster output source logic
-            BufferCurrentVolume.Text = $" {(castState.DrawSource switch
-            {
-                ChemMasterDrawSource.Internal => castState.BufferCurrentVolume,
-                ChemMasterDrawSource.External => castState.InputContainerInfo?.CurrentVolume,
-                _ => throw new("Unreachable"),
-            })?.Int() ?? 0}u";
-
-            DrawSource.Text = Loc.GetString(castState.DrawSource switch
-            {
-                ChemMasterDrawSource.External => "chem-master-output-beaker-draw",
-                ChemMasterDrawSource.Internal => "chem-master-output-buffer-draw",
-                _ => throw new("Unreachable"),
-            });
-
-            DrawSource.Text = castState.DrawSource switch
-            {
-                ChemMasterDrawSource.External => Loc.GetString("chem-master-output-beaker-draw"),
-                ChemMasterDrawSource.Internal => Loc.GetString("chem-master-output-buffer-draw"),
-                _ => Loc.GetString("chem-master-no-source"),
-            };
-            // Moffstation - End - chemmaster output source logic
+            BufferCurrentVolume.Text = $" {castState.BufferCurrentVolume?.Int() ?? 0}u";
 
             InputEjectButton.Disabled = castState.InputContainerInfo is null;
             OutputEjectButton.Disabled = castState.OutputContainerInfo is null;
@@ -190,16 +168,9 @@ namespace Content.Client.Chemistry.UI
             var holdsReagents = output?.Reagents != null;
             var pillNumberMax = holdsReagents ? 0 : remainingCapacity;
             var bottleAmountMax = holdsReagents ? remainingCapacity : 0;
-            // Moffstation - Begin - chemmaster output source logic
-            var outputVolume = castState.DrawSource switch
-            {
-                (ChemMasterDrawSource.Internal) => castState.BufferCurrentVolume?.Int() ?? 0,
-                (ChemMasterDrawSource.External) => castState.InputContainerInfo?.CurrentVolume.Int() ?? 0,
-                _ => 0,
-            };
-            // Moffstation - End - chemmaster output source logic
+            var bufferVolume = castState.BufferCurrentVolume?.Int() ?? 0;
 
-            PillDosage.Value = (int)Math.Min(outputVolume, castState.PillDosageLimit); // Moffstation - Change bufferVolume to outputVolume for the chemmaster output source logic
+            PillDosage.Value = (int)Math.Min(bufferVolume, castState.PillDosageLimit);
 
             PillTypeButtons[castState.SelectedPillType].Pressed = true;
 
@@ -215,39 +186,27 @@ namespace Content.Client.Chemistry.UI
             // Avoid division by zero
             if (PillDosage.Value > 0)
             {
-                PillNumber.Value = Math.Min(outputVolume / PillDosage.Value, pillNumberMax); // Moffstation - Change bufferVolume to outputVolume for the chemmaster output source logic
+                PillNumber.Value = Math.Min(bufferVolume / PillDosage.Value, pillNumberMax);
             }
             else
             {
                 PillNumber.Value = 0;
             }
 
-            BottleDosage.Value = Math.Min(bottleAmountMax, outputVolume); // Moffstation - Change bufferVolume to outputVolume for the chemmaster output source logic
+            BottleDosage.Value = Math.Min(bottleAmountMax, bufferVolume);
         }
         /// <summary>
-        /// Generate a product label based on reagents in the buffer or beaker. // Moffstation - Changed comment to reflect that it works for the beaker as well
+        /// Generate a product label based on reagents in the buffer.
         /// </summary>
         /// <param name="state">State data sent by the server.</param>
         private string GenerateLabel(ChemMasterBoundUserInterfaceState state)
         {
-            //Moffstation - Begin - Change GenerateLabel to generate the label depending on what output source is currently selected
-            if (
-                state.BufferCurrentVolume == 0 && state.DrawSource == ChemMasterDrawSource.Internal ||
-                state.InputContainerInfo?.CurrentVolume == 0 && state.DrawSource == ChemMasterDrawSource.External ||
-                state.InputContainerInfo?.Reagents == null
-            )
+            if (state.BufferCurrentVolume == 0)
                 return "";
 
-            var reagent = (state.DrawSource switch
-                {
-                    ChemMasterDrawSource.Internal => state.BufferReagents,
-                    ChemMasterDrawSource.External => state.InputContainerInfo.Reagents ?? [],
-                    _ => throw new("Unreachable"),
-                }).MinBy(r => r.Quantity)
-                .Reagent;
+            var reagent = state.BufferReagents.OrderBy(r => r.Quantity).First().Reagent;
             _prototypeManager.TryIndex(reagent.Prototype, out ReagentPrototype? proto);
             return proto?.LocalizedName ?? "";
-            // Moffstation - End - Change GenerateLabel
         }
 
         /// <summary>
@@ -274,8 +233,6 @@ namespace Content.Client.Chemistry.UI
                 _ => Loc.GetString("chem-master-window-sort-type-none")
             };
 
-            OutputBufferDraw.Pressed = state.DrawSource == ChemMasterDrawSource.Internal; // Moffstation - chemmaster output source logic
-            OutputBeakerDraw.Pressed = state.DrawSource == ChemMasterDrawSource.External; // Moffstation - chemmaster output source logic
 
             if (!state.BufferReagents.Any())
             {
