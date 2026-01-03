@@ -119,7 +119,7 @@
     clothingPrototype: ClothingHeadHatHoodChaplainHood
 
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation - Allow suit storage attachment
   id: ClothingOuterCoatTrench
   name: trench coat
   description: A comfy trench coat.
