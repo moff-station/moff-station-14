@@ -1,0 +1,45 @@
+#HoP
+- type: entity
+  parent: HoPPDA
+  id: HoPPDAAltBase
+  name: head of personnel alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-hradministrator"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: HoPPDAAltBase
+  id: HRAdministratorPDA
+  name: hr administrator PDA
+  components:
+  - type: RenameId
+    value: job-name-hop-hr-administrator
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hradministrator
+  - type: PdaBorderColor
+    borderColor: "#3a628a"
+    accentVColor: "#690f18"

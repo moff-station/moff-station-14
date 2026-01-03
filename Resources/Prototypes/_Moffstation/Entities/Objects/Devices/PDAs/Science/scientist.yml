@@ -13,7 +13,7 @@
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-anomalouscontainmentspecialist"
+      state: "pda-xenoarcheologist"
     - state: "light_overlay"
       sprite: Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
@@ -29,16 +29,31 @@
 
 - type: entity
   parent: SciencePDAAltBase
-  id: AnomalyContainmentSpecialistPDA
-  name: anomaly containment specialist PDA
+  id: HazardousPhenomenaTechnicianPDA
+  name: hazardous phenomena technician PDA
   components:
   - type: RenameId
-    value: job-name-scientist-anomaly-containment-specialist
+    value: job-name-scientist-hazardous-phenomena-technician
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-anomalouscontainmentspecialist
+        pda-hazardousphenomenatechnician
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-hazardousphenomenatechnician"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentHColor: "#8900c9"

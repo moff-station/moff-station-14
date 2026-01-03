@@ -2,6 +2,7 @@
 - type: roleLoadout
   id: JobCaptain
   groups:
+  - CaptainPDA #Moffstation - New PDAs
   - CaptainHead
   - CaptainNeck
   - CaptainJumpsuit
@@ -18,6 +19,7 @@
   id: JobHeadOfPersonnel
   groups:
   - GroupTankHarness
+  - HopPDA #Moffstation - New PDAs
   - HoPHead
   - HoPNeck
   - HoPJumpsuit
@@ -254,6 +256,7 @@
   id: JobQuartermaster
   groups:
   - GroupTankHarness
+  - QuartermasterPDA #Moffstation - New PDAs
   - QuartermasterHead
   - QuartermasterNeck
   - QuartermasterJumpsuit
@@ -305,6 +308,7 @@
   id: JobChiefEngineer
   groups:
   - GroupTankHarness
+  - ChiefEngineerPDA #Moffstation - New PDAs
   - ChiefEngineerHead
   - ChiefEngineerJumpsuit
   - ChiefEngineerBackpack # Moffstation - Department Heads can wear any bag from their department
@@ -370,6 +374,7 @@
   id: JobResearchDirector
   groups:
   - GroupTankHarness
+  - ResearchDirectorPDA #Moffstation - New PDAs
   - ResearchDirectorHead
   - ResearchDirectorNeck
   - ResearchDirectorJumpsuit
@@ -423,6 +428,7 @@
 - type: roleLoadout
   id: JobHeadOfSecurity
   groups:
+  - HeadofSecurityPDA #Moffstation - New PDAs
   - HeadofSecurityHead
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
@@ -507,6 +513,7 @@
   id: JobChiefMedicalOfficer
   groups:
   - GroupTankHarness
+  - ChiefMedicalOfficerPDA #Moffstation - New PDAs
   - ChiefMedicalOfficerHead
   - MedicalMask
   - ChiefMedicalOfficerJumpsuit

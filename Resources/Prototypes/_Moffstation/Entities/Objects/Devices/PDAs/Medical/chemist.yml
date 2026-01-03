@@ -15,35 +15,17 @@
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-pharmacist"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
     - type: Icon
       sprite: _Moffstation/Objects/Devices/pda.rsi
-
-- type: entity
-  parent: ChemistryPDA
-  id: GeneticistPDA
-  name: geneticist PDA
-  components:
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-genetics
-  - type: Icon
-    state: pda-genetics
-  - type: RenameId
-    value: job-name-geneticist
-  - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentVColor: "#4273b3"
 
 - type: entity
   parent: ChemistryPDAAltBase
@@ -62,19 +44,35 @@
     accentHColor: "#d7d7d0"
 
 - type: entity
-  parent: ChemistryPDA
-  id: VirologistPDA
-  name: virologist PDA
+  parent: ChemistryPDAAltBase
+  id: PharmacologistPDA
+  name: pharmacologist PDA
   components:
+  - type: RenameId
+    value: job-name-chemist-pharmacologist
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-virology
-  - type: Icon
-    state: pda-virology
+        pda-pharmacologist
+  - type: PdaBorderColor
+    borderColor: "#B34200"
+    accentHColor: "#d7d7d0"
+
+- type: entity
+  parent: ChemistryPDAAltBase
+  id: ToxicologistPDA
+  name: toxicologist PDA
+  components:
   - type: RenameId
-    value: job-name-virologist
+    value: job-name-chemist-toxicologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-toxicologist
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentVColor: "#1e6023"
+    accentHColor: "#d7d7d0"
+
