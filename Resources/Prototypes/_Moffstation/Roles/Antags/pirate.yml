@@ -27,15 +27,17 @@
     shoes: ClothingShoesBootsLaceup
     id: PiratePDA
     belt: ClothingBeltUtility
-    pocket2: AppraisalTool
+    pocket2: PinpointerPirate
     ears: ClothingHeadsetPirate
 
 - type: startingGear
   id: PirateCaptainGear
   parent: PirateGear
   equipment:
-    pocket2: EnergyCutlass
     neck: ClothingNeckCloakPirateCap
+  storage:
+    back:
+    - EnergyCutlass
 
 - type: startingGear
   id: FlyingDutchmanGear

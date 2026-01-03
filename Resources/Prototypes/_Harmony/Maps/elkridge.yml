@@ -1,0 +1,70 @@
+- type: gameMap
+  id: Elkridge
+  mapName: 'Elkridge Depot'
+  mapPath: /Maps/_Harmony/elkridge.yml
+  minPlayers: 15
+  maxPlayers: 50  # Moffstation - Playercount changes
+  stations:
+    Elkridge:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Elkridge Depot {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'DS'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/_Harmony/Shuttles/emergency_elkridge.yml
+        - type: StationCargoShuttle
+          path: /Maps/_Harmony/Shuttles/cargo_elkridge.yml
+        - type: StationJobs
+          availableJobs: # 46 jobs total w/o latejoins & interns, 61 jobs total w/ latejoins & interns
+            #command (7)
+            Captain: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            ChiefMedicalOfficer: [ 1, 1 ]
+            ChiefEngineer: [ 1, 1 ]
+            ResearchDirector: [ 1, 1 ]
+            Quartermaster: [ 1, 1 ]
+            #service (9 - 11)
+            Bartender: [ 1, 1 ]
+            Botanist: [ 1, 2 ]
+            Chef: [ 1, 1 ]
+            Janitor: [ 1, 2 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            Reporter: [ 1, 1 ]
+            ServiceWorker: [ 2, 2 ]
+            #engineering (5 - 6)
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 3, 5 ] #CD - Intern not counted
+            # TechnicalAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            #medical (6 - 7)
+            Chemist: [ 2, 2 ]
+            MedicalDoctor: [ 2, 4 ] #CD - Intern not counted
+            # MedicalIntern: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            Paramedic: [ 1, 1 ]
+            Psychologist: [ 1, 1 ]
+            #science (3 - 4)
+            Scientist: [ 3, 5 ] #CD - Intern not counted
+            # ResearchAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            #security (6 - 7)
+            Warden: [ 1, 1 ]
+            SecurityOfficer: [ 3, 5 ] #CD - Intern not counted
+            Detective: [ 1, 1 ]
+            # SecurityCadet: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            Lawyer: [ 1, 1 ]
+            #supply (4 - 5)
+            SalvageSpecialist: [ 2, 2 ]
+            CargoTechnician: [ 2, 3 ]
+            #civilian (3+)
+            Passenger: [ -1, -1 ] #infinite, not counted
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            #silicon (3)
+            StationAi: [ 1, 1 ]
+            Borg: [ 2, 2 ]
+            # Moffstation - custom roles below
+            Prisoner: [ 1, 1 ]

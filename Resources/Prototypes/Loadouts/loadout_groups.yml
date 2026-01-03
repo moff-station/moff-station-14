@@ -1083,9 +1083,9 @@
   id: StationEngineerID
   name: loadout-group-station-engineer-id
   loadouts:
+  - TechnicalAssistantPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - StationEngineerPDA
   - SeniorEngineerPDA
-  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
   # Moffstation - Start - Additional job title loadouts
   - ElectricianPDA
   - MechanicPDA
@@ -1283,9 +1283,9 @@
   id: ScientistPDA
   name: loadout-group-scientist-id
   loadouts:
+  - ResearchAssistantPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - ScientistPDA
   - SeniorResearcherPDA
-  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
   - RoboticistPDA #CD - Job title loadouts
   # Moffstation - Start - Additional job title loadouts
   - AnomalyContainmentSpecialistPDA
@@ -1466,9 +1466,9 @@
   id: SecurityPDA
   name: loadout-group-security-id
   loadouts:
+  - SecurityCadetPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - SecurityPDA
   - SeniorOfficerPDA
-  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
   # Moffstation - Start - Additional job title loadouts
   - AssetProtectionsPDA
   - DeputyPDA
@@ -1703,9 +1703,9 @@
   id: MedicalDoctorPDA
   name: loadout-group-medical-doctor-id
   loadouts:
+  - MedicalInternPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - MedicalDoctorPDA
   - SeniorPhysicianPDA
-  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
   # Moffstation - Start - Additional job title loadouts
   - ClinicianPDA
   - CoronerPDA
