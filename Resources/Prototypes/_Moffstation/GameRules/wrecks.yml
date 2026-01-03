@@ -1,4 +1,6 @@
-﻿- type: entityTable
+﻿# Wreck game rule table
+
+- type: entityTable
   id: WreckEventTable
   table: !type:AllSelector
     children:
@@ -18,7 +20,7 @@
     - id: WreckWrecklaimer
     - id: WreckDisplacedTelescience
 
-
+# Wreck game rule base
 
 - type: entity
   abstract: true
@@ -33,6 +35,8 @@
     reoccurrenceDelay: 30
     duration: 1
     maxOccurrences: 1
+
+# Wreck game rules
 
 - type: entity
   parent: BasewreckRule
