@@ -70,7 +70,7 @@ job-name-psychologist-social-worker = Social Worker
 
 ## Science
 # Scientist
-job-name-scientist-hazardous-phenomena-technician = Hazardous Phenomena Technician
+job-name-scientist-phenomena-analyst = Phenomena analyst
 job-name-scientist-machinist = Machinist
 job-name-scientist-senior-researcher = Senior Researcher
 job-name-scientist-xenoarcheologist = Xenoarcheologist

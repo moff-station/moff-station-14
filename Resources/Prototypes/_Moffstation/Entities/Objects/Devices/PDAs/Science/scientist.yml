@@ -29,11 +29,11 @@
 
 - type: entity
   parent: SciencePDAAltBase
-  id: HazardousPhenomenaTechnicianPDA
-  name: hazardous phenomena technician PDA
+  id: PhenomenaAnalystPDA
+  name: phenomena analyst PDA
   components:
   - type: RenameId
-    value: job-name-scientist-hazardous-phenomena-technician
+    value: job-name-scientist-phenomena-analyst
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
