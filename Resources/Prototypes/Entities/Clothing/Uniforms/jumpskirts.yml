@@ -179,25 +179,12 @@
   id: ClothingUniformJumpskirtHoS
   name: head of security's jumpskirt
   description: It's bright red and rather crisp, much like security's victims tend to be.
-  components:
+  components: # Moffstation - Start - New Security Outfits
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/hos.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/hos.rsi
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: inhand-left
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-      - state: overlay-inhand-left
-        sprite: Clothing/Uniforms/Jumpsuit/hos.rsi
-      right:
-      - state: inhand-right
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-      - state: overlay-inhand-right
-        sprite: Clothing/Uniforms/Jumpsuit/hos.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos.rsi # Moffstation - End - New Security Outfits
+
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -206,9 +193,9 @@
   description: It's a turtleneck worn by those strong and disciplined enough to achieve the position of Head of Security.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/hos_alt.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos_alt.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/hos_alt.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hos_alt.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -424,32 +411,11 @@
   id: ClothingUniformJumpskirtWarden
   name: warden's jumpskirt # Moffstation - (New Warden Uniforms)
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
-  components:
+  components: # Moffstation - Start - New Security Outfits
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - (New Warden Uniforms)
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - (New Warden Uniforms)
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: inhand-left
-        # Moffstation - Begin (New Warden Uniforms)
-        #color: "#C12D30"
-        #sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
-        # Moffstation - End
-      - state: overlay-inhand-left
-        sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
-      right:
-      - state: inhand-right
-        # Moffstation - Begin (New Warden Uniforms)
-        #color: "#C12D30"
-        #sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-        sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
-        # Moffstation - End
-      - state: overlay-inhand-right
-        sprite: Clothing/Uniforms/Jumpsuit/warden.rsi
-
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/warden.rsi # Moffstation - End - New Security Outfits
 
 - type: entity
   parent: ClothingUniformSkirtBase

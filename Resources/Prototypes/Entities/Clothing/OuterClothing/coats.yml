@@ -101,9 +101,9 @@
   description: A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/hos_trenchcoat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_trenchcoat.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/hos_trenchcoat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_trenchcoat.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: ClothingOuterStorageToggleableBase
