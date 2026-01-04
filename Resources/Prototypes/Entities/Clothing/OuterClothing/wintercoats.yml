@@ -1,8 +1,10 @@
 - type: entity
+  # Moffstation - Begin - Split the existing base winter coat into an abstract base with all of the coat stats; the basic winter coat gets attachable suit storage now, which we don't want to inherit in some cases
   parent: ClothingOuterStorageBase
-  id: ClothingOuterWinterCoat
-  name: winter coat
-  description: A heavy jacket made from 'synthetic' animal furs.
+  id: ClothingOuterWinterCoatBase
+#  id: ClothingOuterWinterCoat # Moffstation - The upstream basic winter coat `ClothingOuterWinterCoat` was moved to our namespace
+  abstract: true
+  # Moffstation - End
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
@@ -52,6 +54,7 @@
       toggleable-clothing: !type:ContainerSlot {}
       storagebase: !type:Container
         ents: []
+      suit-storage-attachment: !type:ContainerSlot { } # Moffstation - Attachable suit storage
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
@@ -425,7 +428,7 @@
     clothingPrototype: ClothingHeadHatHoodWinterHOP
 
 - type: entity
-  parent: [ClothingOuterArmorHoS, ClothingOuterWinterCoatToggleable, BaseSecurityCommandContraband]
+  parent: [ClothingOuterArmorHoS, ClothingOuterWinterCoatToggleableNotAttachableBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterHoS
   name: head of security's armored winter coat
   description: A sturdy, utilitarian winter coat designed to protect a head of security from any brig-bound threats and hypothermic events.
@@ -840,7 +843,7 @@
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
 - type: entity
-  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoatToggleable, BaseSecurityContraband]
+  parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoatToggleableNotAttachableBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterWarden
   name: warden's armored winter coat
   description: A sturdy, utilitarian winter coat designed to protect a warden from any brig-bound threats and hypothermic events.

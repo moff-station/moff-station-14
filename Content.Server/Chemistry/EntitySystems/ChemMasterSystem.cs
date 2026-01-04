@@ -19,7 +19,6 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Server.Chemistry.EntitySystems
 {
@@ -58,7 +57,7 @@ namespace Content.Server.Chemistry.EntitySystems
             SubscribeLocalEvent<ChemMasterComponent, ChemMasterReagentAmountButtonMessage>(OnReagentButtonMessage);
             SubscribeLocalEvent<ChemMasterComponent, ChemMasterCreatePillsMessage>(OnCreatePillsMessage);
             SubscribeLocalEvent<ChemMasterComponent, ChemMasterOutputToBottleMessage>(OnOutputToBottleMessage);
-            SubscribeLocalEvent<ChemMasterComponent, ChemMasterOutputDrawSourceMessage>(OnSetDrawSourceMessage); // Moffstation - chemmaster output source logic
+            SubscribeLocalEvent<ChemMasterComponent, ChemMasterOutputDrawSourceMessage>(OnSetDrawSourceMessage);
         }
 
         private void SubscribeUpdateUiState<T>(Entity<ChemMasterComponent> ent, ref T ev)
@@ -79,7 +78,7 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var state = new ChemMasterBoundUserInterfaceState(
                 chemMaster.Mode, chemMaster.SortingType, BuildInputContainerInfo(inputContainer), BuildOutputContainerInfo(outputContainer),
-                bufferReagents, bufferCurrentVolume, chemMaster.PillType, chemMaster.PillDosageLimit, updateLabel, chemMaster.DrawSource); // Moffstation - chemmaster output source logic
+                bufferReagents, bufferCurrentVolume, chemMaster.PillType, chemMaster.PillDosageLimit, updateLabel, chemMaster.DrawSource);
 
             _userInterfaceSystem.SetUiState(owner, ChemMasterUiKey.Key, state);
         }
@@ -137,7 +136,6 @@ namespace Content.Server.Chemistry.EntitySystems
             ClickSound(chemMaster);
         }
 
-        //Moffstation - Begin - Ability to set the draw source for the chemmaster output
         private void OnSetDrawSourceMessage(Entity<ChemMasterComponent> chemMaster, ref ChemMasterOutputDrawSourceMessage message)
         {
             //Ensure draw source is valid, either from the internal buffer or the inserted beaker
@@ -145,10 +143,9 @@ namespace Content.Server.Chemistry.EntitySystems
                 return;
 
             chemMaster.Comp.DrawSource = message.DrawSource;
-            UpdateUiState(chemMaster, updateLabel:true);
+            UpdateUiState(chemMaster);
             ClickSound(chemMaster);
         }
-        // Moffstation - End - Ability to set the draw source for the chemmaster output
 
         private void TransferReagents(Entity<ChemMasterComponent> chemMaster, ReagentId id, FixedPoint2 amount, bool fromBuffer)
         {
@@ -224,7 +221,7 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var needed = message.Dosage * message.Number;
 
-            if (!WithdrawFromSource(chemMaster, needed, user, out var withdrawal)) // Moffstation - chemmaster output source logic call
+            if (!WithdrawFromSource(chemMaster, needed, user, out var withdrawal))
                 return;
             _labelSystem.Label(container, message.Label);
 
@@ -234,7 +231,10 @@ namespace Content.Server.Chemistry.EntitySystems
                 _storageSystem.Insert(container, item, out _, user: user, storage);
                 _labelSystem.Label(item, message.Label);
 
-                _solutionContainerSystem.EnsureSolutionEntity(item, SharedChemMaster.PillSolutionName,out var itemSolution ,message.Dosage);
+                _solutionContainerSystem.EnsureSolutionEntity(item,
+                    SharedChemMaster.PillSolutionName,
+                    out var itemSolution,
+                    message.Dosage);
                 if (!itemSolution.HasValue)
                     return;
 
@@ -271,7 +271,7 @@ namespace Content.Server.Chemistry.EntitySystems
             if (message.Label.Length > SharedChemMaster.LabelMaxLength)
                 return;
 
-            if (!WithdrawFromSource(chemMaster, message.Dosage, user, out var withdrawal)) // Moffstation - chemmaster output source logic call
+            if (!WithdrawFromSource(chemMaster, message.Dosage, user, out var withdrawal))
                 return;
 
             _labelSystem.Label(container, message.Label);
@@ -285,10 +285,10 @@ namespace Content.Server.Chemistry.EntitySystems
             ClickSound(chemMaster);
         }
 
-        // Moffstation - Begin - Withdraw from different output sources (I hate this function too)
         private bool WithdrawFromSource(
             Entity<ChemMasterComponent> chemMaster,
-            FixedPoint2 neededVolume, EntityUid? user,
+            FixedPoint2 neededVolume,
+            EntityUid? user,
             [NotNullWhen(returnValue: true)] out Solution? outputSolution)
         {
             outputSolution = null;
@@ -300,7 +300,20 @@ namespace Content.Server.Chemistry.EntitySystems
             {
                 case ChemMasterDrawSource.Internal:
                     if (!_solutionContainerSystem.TryGetSolution(chemMaster.Owner, SharedChemMaster.BufferSolutionName, out _, out solution))
+                        return false;
+
+                    if (solution.Volume == 0)
                     {
+                        if (user is { } uid)
+                            _popupSystem.PopupCursor(Loc.GetString("chem-master-window-buffer-empty-text"), uid);
+
+                        return false;
+                    }
+                    if (neededVolume > solution.Volume)
+                    {
+                        if (user is { } uid)
+                            _popupSystem.PopupCursor(Loc.GetString("chem-master-window-buffer-low-text"), uid);
+
                         return false;
                     }
 
@@ -313,8 +326,22 @@ namespace Content.Server.Chemistry.EntitySystems
                             _popupSystem.PopupCursor(Loc.GetString("chem-master-window-no-beaker-text"), user.Value);
                         return false;
                     }
+
                     if (!_solutionContainerSystem.TryGetFitsInDispenser(container, out soln, out solution))
+                        return false;
+
+                    if (solution.Volume == 0)
                     {
+                        if (user is { } uid)
+                            _popupSystem.PopupCursor(Loc.GetString("chem-master-window-beaker-empty-text"), uid);
+
+                        return false;
+                    }
+                    if (neededVolume > solution.Volume)
+                    {
+                        if (user is { } uid)
+                            _popupSystem.PopupCursor(Loc.GetString("chem-master-window-beaker-low-text"), uid);
+
                         return false;
                     }
 
@@ -324,50 +351,13 @@ namespace Content.Server.Chemistry.EntitySystems
                     return false;
             }
 
-            if (solution.Volume == 0)
-            {
-                if (user.HasValue)
-                {
-                    _popupSystem.PopupCursor(
-                        Loc.GetString(
-                            chemMaster.Comp.DrawSource switch
-                            {
-                                ChemMasterDrawSource.Internal => "chem-master-window-buffer-empty-text",
-                                ChemMasterDrawSource.External => "chem-master-window-beaker-empty-text",
-                                _ => throw new("Unreachable")
-                            }
-                        ),
-                        user.Value
-                    );
-                }
-                return false;
-            }
-
-            if (neededVolume > solution.Volume)
-            {
-                if (user.HasValue)
-                {
-                    _popupSystem.PopupCursor(
-                        Loc.GetString(
-                            chemMaster.Comp.DrawSource switch
-                            {
-                                ChemMasterDrawSource.Internal => "chem-master-window-buffer-low-text",
-                                ChemMasterDrawSource.External => "chem-master-window-beaker-low-text",
-                                _ => throw new("Unreachable")
-                            }
-                        ),
-                        user.Value
-                    );
-                }
-                return false;
-            }
-
             outputSolution = solution.SplitSolution(neededVolume);
+
             if (soln.HasValue)
                 _solutionContainerSystem.UpdateChemicals(soln.Value);
+
             return true;
         }
-        // Moffstation - End - Withdraw from different output sources (I hate this function too)
 
         private void ClickSound(Entity<ChemMasterComponent> chemMaster)
         {
