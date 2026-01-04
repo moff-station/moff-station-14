@@ -27,6 +27,9 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  - type: Hands # Moffstation - Start - Better throwing for humans
+    baseThrowspeed: 14
+    throwRange: 10  # Moffstation - End
 
 
 - type: entity
