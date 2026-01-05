@@ -15,3 +15,16 @@
     - state: down
       visible: false
       map: ["speaking"]
+
+- type: entity
+  name: bang stick 600dmg ded no gib
+  description: This'll make even the shrubbiest centcomm official change state from alive to dead.
+  parent: MeleeDebugGib
+  id: MeleeDebug600
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 200
+        Airloss: 200
+        Shock: 200
