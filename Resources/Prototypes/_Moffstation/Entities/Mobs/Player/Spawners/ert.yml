@@ -1,93 +1,259 @@
+# ERT Leader
 - type: entity
-  name: ERT leader spawner
-  id: ERTLeaderSpawner
   parent: MarkerBase
+  id: ERTLeaderSpawnerBasic
+  name: ERT squad leader spawner
   suffix: Mapping
   components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTLeader
   - type: Sprite
     layers:
     - state: green
-    - sprite: Structures/Decoration/banner.rsi
-      state: banner
+    - sprite: Markers/jobs.rsi
+      state: ertleader
+
+- type: entity
+  parent: MarkerBase
+  id: ERTLeaderSpawnerEVA
+  name: ERT squad leader spawner
+  suffix: Mapping, EVA
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTLeaderEVA
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Markers/jobs.rsi
+      state: ertleadereva
+
+- type: entity
+  parent: ERTLeaderSpawnerEVA
+  id: ERTLeaderSpawnerArmed
+  suffix: Mapping, EVA, Armed
+  components:
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSpawnerERTLeaderArmed
 
+- type: entity # Lower rank than the normal leader, second in command of 8-man squads.
+  parent: ERTLeaderSpawnerEVA
+  id: ERTLeaderTeamSpawnerArmed
+  name: ERT team leader spawner
+  suffix: Mapping, EVA, Armed
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTLeaderTeamArmed
+
+# ERT Chaplain
 - type: entity
-  name: ERT chaplain spawner
-  id: ERTChaplainSpawner
   parent: MarkerBase
+  id: ERTChaplainSpawnerBasic
+  name: ERT chaplain spawner
   suffix: Mapping
   components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTChaplain
   - type: Sprite
     layers:
     - state: green
-    - sprite: Structures/Decoration/banner.rsi
-      state: banner
+    - sprite: Markers/jobs.rsi
+      state: ertchaplain
+
+- type: entity
+  parent: MarkerBase
+  id: ERTChaplainSpawnerEVA
+  name: ERT chaplain spawner
+  suffix: Mapping, EVA
+  components:
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSpawnerERTChaplainEVA
-
-- type: entity
-  name: ERT janitor spawner
-  id: ERTJanitorSpawner
-  parent: MarkerBase
-  suffix: Mapping
-  components:
   - type: Sprite
     layers:
     - state: green
-    - sprite: Structures/Decoration/banner.rsi
-      state: banner
+    - sprite: Markers/jobs.rsi
+      state: ertchaplaineva
+
+# ERT Janitor
+- type: entity
+  parent: MarkerBase
+  id: ERTJanitorSpawnerBasic
+  name: ERT janitor spawner
+  suffix: Mapping
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTJanitor
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Markers/jobs.rsi
+      state: ertjanitor
+
+- type: entity
+  parent: MarkerBase
+  id: ERTJanitorSpawnerEVA
+  name: ERT janitor spawner
+  suffix: Mapping, EVA
+  components:
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSpawnerERTJanitorEVA
-
-- type: entity
-  name: ERT engineer spawner
-  id: ERTEngineerSpawner
-  parent: MarkerBase
-  suffix: Mapping
-  components:
   - type: Sprite
     layers:
     - state: green
-    - sprite: Structures/Decoration/banner.rsi
-      state: banner
+    - sprite: Markers/jobs.rsi
+      state: ertjanitoreva
+
+# ERT Engineer
+- type: entity
+  parent: MarkerBase
+  id: ERTEngineerSpawnerBasic
+  name: ERT engineer spawner
+  suffix: Mapping
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTEngineer
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Markers/jobs.rsi
+      state: ertengineer
+
+- type: entity
+  parent: MarkerBase
+  id: ERTEngineerSpawnerEVA
+  name: ERT engineer spawner
+  suffix: Mapping, EVA
+  components:
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSpawnerERTEngineerEVA
-
-- type: entity
-  name: ERT security spawner
-  id: ERTSecuritySpawner
-  parent: MarkerBase
-  suffix: Mapping
-  components:
   - type: Sprite
     layers:
     - state: green
-    - sprite: Structures/Decoration/banner.rsi
-      state: banner
+    - sprite: Markers/jobs.rsi
+      state: ertengineereva
+
+- type: entity
+  parent: ERTEngineerSpawnerEVA
+  id: ERTEngineerSpawnerArmed
+  name: ERT combat engineer spawner
+  suffix: Mapping, EVA
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTEngineerArmed
+
+# ERT Security
+- type: entity
+  parent: MarkerBase
+  id: ERTSecuritySpawnerBasic
+  name: ERT security officer spawner
+  suffix: Mapping
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTSecurity
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Markers/jobs.rsi
+      state: ertsecurity
+
+- type: entity
+  parent: MarkerBase
+  id: ERTSecuritySpawnerEVA
+  name: ERT security officer spawner
+  suffix: Mapping, EVA
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTSecurityEVA
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Markers/jobs.rsi
+      state: ertsecurityeva
+
+- type: entity
+  parent: ERTSecuritySpawnerEVA
+  id: ERTSecuritySpawnerRifle
+  name: ERT security rifleman spawner
+  suffix: Mapping, EVA, Armed
+  components:
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSpawnerERTSecurityArmedRifle
 
 - type: entity
-  name: ERT medic spawner
-  id: ERTMedicSpawner
+  parent: ERTSecuritySpawnerEVA
+  id: ERTSecuritySpawnerGrenade
+  name: ERT security grenadier spawner
+  suffix: Mapping, EVA, Armed
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTSecurityArmedGrenade
+
+- type: entity
+  parent: ERTSecuritySpawnerEVA
+  id: ERTSecuritySpawnerVanguard
+  name: ERT security vanguard spawner
+  suffix: Mapping, EVA, Armed
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTSecurityArmedVanguard
+
+# ERT Medical
+- type: entity
   parent: MarkerBase
+  id: ERTMedicalSpawnerBasic
+  name: ERT medical doctor spawner
   suffix: Mapping
   components:
   - type: Sprite
     layers:
     - state: green
-    - sprite: Structures/Decoration/banner.rsi
-      state: banner
+    - sprite: Markers/jobs.rsi
+      state: ertmedical
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTMedical
+
+- type: entity
+  parent: MarkerBase
+  id: ERTMedicalSpawnerEVA
+  name: ERT medical doctor spawner
+  suffix: Mapping, EVA
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Markers/jobs.rsi
+      state: ertmedicaleva
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSpawnerERTMedicalEVA
 
+- type: entity
+  parent: ERTMedicalSpawnerEVA
+  id: ERTMedicalSpawnerArmed
+  name: ERT medical corpsman spawner
+  suffix: Mapping, EVA, Armed
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerERTMedicalArmed
+
+# CBURN (Chemical, Biological, Undead, Radiological, Nuclear)
 - type: entity
   name: CBURN spawner
   id: CBURNSpawner
