@@ -34,12 +34,13 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
             return;
         }
 
-        var potentialObjectives = EnsureComp<PotentialObjectivesComponent>(mindId);
-
-        // Copying stuff over, probably a better way to do this but I am le tired
-        potentialObjectives.MaxChoices = _random.Next(ent.Comp.MinChoices, ent.Comp.MaxChoices);
-        potentialObjectives.MinChoices = ent.Comp.MinChoices;
-        potentialObjectives.AutoSelectionDelay = ent.Comp.SelectionDelay;
+        if (!EnsureComp<PotentialObjectivesComponent>(mindId, out var potentialObjectives))
+        {
+            // Copying stuff over, probably a better way to do this but I am le tired
+            potentialObjectives.MaxChoices = _random.Next(ent.Comp.MinChoices, ent.Comp.MaxChoices);
+            potentialObjectives.MinChoices = ent.Comp.MinChoices;
+            potentialObjectives.AutoSelectionDelay = ent.Comp.SelectionDelay;
+        }
 
         foreach (var set in ent.Comp.Sets)
         {
