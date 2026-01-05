@@ -18,27 +18,26 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private SpriteSystem _sprite;
-    private SharedMindSystem _mind;
+    private readonly SpriteSystem _sprite;
+    private readonly SharedMindSystem _mind;
 
     private float _updateTimer = 1.0f;
-    private const float UpdateTime = 1.0f;
+    private const float UpdateRate = 1.0f;
 
-    public event Action<NetEntity>? OnSelected;
+    public event Action<NetEntity>? OnSelectedChange;
     public event Action<HashSet<NetEntity>, NetEntity>? OnSubmitted;
     public event Action<HashSet<NetEntity>, int>? OnRandomize;
     public event Action? OnClear;
 
-    public HashSet<NetEntity> SelectedObjectives;
+    public readonly HashSet<NetEntity> SelectedObjectives = [];
 
     public ObjectivePickerWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        _mind ??= _entity.System<SharedMindSystem>();
-        _sprite ??= _entity.System<SpriteSystem>();
-        SelectedObjectives ??= new HashSet<NetEntity>();
+        _mind = _entity.System<SharedMindSystem>();
+        _sprite = _entity.System<SpriteSystem>();
 
 
         _mind.TryGetMind(_players.LocalSession, out var mindUid, out _);
@@ -66,41 +65,33 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
             {
                 ToggleMode = true,
                 Pressed = SelectedObjectives.Contains(objective.Key),
-                Disabled = SelectedObjectives.Count >= potentialObjectivesComponent.MaxChoices && !SelectedObjectives.Contains(objective.Key),
+                Disabled = SelectedObjectives.Count >= potentialObjectivesComponent.MaxChoices &&
+                           !SelectedObjectives.Contains(objective.Key),
+                Children =
+                {
+                    new BoxContainer
+                    {
+                        Orientation = BoxContainer.LayoutOrientation.Horizontal,
+                        Children =
+                        {
+                            new TextureRect { Texture = _sprite.Frame0(objective.Value.Icon) },
+                            new RichTextLabel
+                            {
+                                Text = objective.Value.Title,
+                                HorizontalAlignment = HAlignment.Left,
+                                HorizontalExpand = true,
+                            },
+                        },
+                    },
+                },
             };
-
-            var objectiveBox = new BoxContainer
-            {
-                Orientation = BoxContainer.LayoutOrientation.Horizontal,
-            };
-
-            var icon = new TextureRect
-            {
-                Texture = _sprite.Frame0(objective.Value.Icon),
-            };
-
-            var objectiveText = new RichTextLabel
-            {
-                Text = objective.Value.Title,
-                HorizontalAlignment = HAlignment.Left,
-                HorizontalExpand = true,
-
-            };
-
-            SubmitButton.Disabled = SelectedObjectives.Count < potentialObjectivesComponent.MinChoices ||
-                                    SelectedObjectives.Count > potentialObjectivesComponent.MaxChoices;
-
-            SelectionTip.Text = Loc.GetString("objective-picker-window-select-tip",
-                ("selected", SelectedObjectives.Count),
-                ("max", potentialObjectivesComponent.MaxChoices));
-
-            objectiveBox.Children.Add(icon);
-            objectiveBox.Children.Add(objectiveText);
-            button.Children.Add(objectiveBox);
-
-            button.OnPressed += _ => OnSelected?.Invoke(objective.Key);
+            button.OnPressed += _ => OnSelectedChange?.Invoke(objective.Key);
             ObjectiveList.Children.Add(button);
         }
+
+        SelectionTip.Text = Loc.GetString("objective-picker-window-select-tip",
+            ("selected", SelectedObjectives.Count),
+            ("max", potentialObjectivesComponent.MaxChoices));
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -109,9 +100,9 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 
         _updateTimer += args.DeltaSeconds;
 
-        if (_updateTimer >= UpdateTime)
+        if (_updateTimer >= UpdateRate)
         {
-            _updateTimer -= UpdateTime;
+            _updateTimer -= UpdateRate;
             UpdateTimer();
         }
     }
@@ -133,7 +124,7 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
 
         if (comp.AutoSelectionTime < _timing.CurTime)
         {
-            this.Close();
+            Close();
             return;
         }
 

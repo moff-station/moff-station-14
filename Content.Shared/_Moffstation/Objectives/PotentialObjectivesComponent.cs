@@ -5,7 +5,7 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Objectives;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class PotentialObjectivesComponent : Component
 {
     /// <summary>
@@ -17,19 +17,19 @@ public sealed partial class PotentialObjectivesComponent : Component
     /// <summary>
     /// The in-game time it get selected
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField, AutoPausedField]
     public TimeSpan AutoSelectionTime;
 
     /// <summary>
     /// The objective options presented to the player
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public Dictionary<NetEntity,ObjectiveInfo> ObjectiveOptions = new();
+    public Dictionary<NetEntity, ObjectiveInfo> ObjectiveOptions = new();
 
-    [ViewVariables]
+    [DataField]
     public int MaxChoices = 3;
 
-    [ViewVariables]
+    [DataField]
     public int MinChoices = 1;
 
     public override bool SessionSpecific => true;

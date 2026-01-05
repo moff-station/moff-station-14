@@ -58,7 +58,7 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
         Dirty(mindId, potentialObjectives);
     }
 
-    private void OnObjectivesSelected(ObjectivePickerSelected ev)
+    private void OnObjectivesSelected(ObjectivePickerSelected ev, EntitySessionEventArgs args)
     {
         var mindId = GetEntity(ev.MindId);
 
@@ -70,10 +70,12 @@ public sealed class AntagRandomObjectivesSystem : EntitySystem
 
         // Verify the objectives are actually in their component
         var objectiveIds = potentialObjectivesComp.ObjectiveOptions.Keys.ToHashSet();
-        foreach (var objective in from objective in ev.SelectedObjectives let entity = GetEntity(objective) select objective)
+        foreach (var objective in ev.SelectedObjectives)
         {
             if (objectiveIds.Contains(objective))
+            {
                 _mind.AddObjective(mindId, mindComp, GetEntity(objective));
+            }
             else
             {
                 TryQueueDel(GetEntity(objective));

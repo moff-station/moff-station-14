@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
-using Content.Client._DV.CustomObjectiveSummary;
-using Content.Client._Moffstation.ObjectivePicker; // DeltaV
+using Content.Client._DV.CustomObjectiveSummary; // DeltaV
+using Content.Client._Moffstation.ObjectivePicker; // Moffstation
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
@@ -9,7 +9,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
-using Content.Shared._Moffstation.Objectives;
+using Content.Shared._Moffstation.Objectives; // Moffstation
 using Content.Shared.Input;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -186,7 +186,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 
             _window.Objectives.AddChild(objectiveControl);
         }
-
         // Begin DeltaV Additions - Custom objective summary
         switch (objectives.Count)
         {
@@ -218,7 +217,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
                     Text = "Choose Objectives...",
                     Margin = new Thickness(0, 10, 0, 10)
                 };
-                objectivePickerButton.OnPressed += _ => _objectivePicker.OpenWindow();
+                objectivePickerButton.OnPressed += _ => UIManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
                 objectivePickerButton.OnPressed += _ => _window.Close();
 
                 _window.Objectives.AddChild(objectivePickerButton);

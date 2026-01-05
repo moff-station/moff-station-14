@@ -20,8 +20,8 @@ public sealed class PotentialObjectivesSystem : EntitySystem
 
             var objectives = comp.ObjectiveOptions.OrderBy(_ => _random.Next())
                 .Take(comp.MaxChoices)
-                .ToDictionary()
-                .Keys.ToHashSet();
+                .Select(it => it.Key)
+                .ToHashSet();
 
             var ev = new ObjectivePickerSelected
             {

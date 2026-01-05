@@ -5,7 +5,7 @@ using Robust.Shared.Timing;
 namespace Content.Shared._Moffstation.Objectives;
 
 /// <summary>
-/// This handles...
+/// This handles setting the Objective Autoselection Time, by adding the delay to the Current time.
 /// </summary>
 public sealed class SharedPotentialObjectivesSystem : EntitySystem
 {
