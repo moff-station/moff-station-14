@@ -385,26 +385,11 @@
   id: ClothingUniformJumpskirtSec
   name: security jumpskirt
   description: A jumpskirt made of strong material, providing robust protection.
-  components:
+  components: # Moffstation - New - New Security Outfits
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/security.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/security_red.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/security.rsi
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: inhand-left
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-      - state: overlay-inhand-left
-        sprite: Clothing/Uniforms/Jumpsuit/security.rsi
-      right:
-      - state: inhand-right
-        color: "#C12D30"
-        sprite: Clothing/Uniforms/Jumpskirt/color.rsi
-      - state: overlay-inhand-right
-        sprite: Clothing/Uniforms/Jumpsuit/security.rsi
-
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/security_red.rsi # Moffstation - End - New Security Outfits
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]

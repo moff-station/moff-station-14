@@ -504,9 +504,9 @@
   name: security coat hood
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hoods/Coat/hoodsec.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsec.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Hoods/Coat/hoodsec.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsec.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
