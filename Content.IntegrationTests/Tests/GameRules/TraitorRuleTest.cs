@@ -131,7 +131,7 @@ public sealed class TraitorRuleTest
         // Moffstation - Start - PotentialObjectives test
         // Check objectives were delivered to the PotentialObjective component properly
         Assert.That(entMan.TryGetComponent<PotentialObjectivesComponent>(mind, out var potentialObjectivesComp));
-        Assert.That(potentialObjectivesComp.ObjectiveOptions, Is.Not.Empty, $"No potential objective options found!");
+        Assert.That(potentialObjectivesComp!.ObjectiveOptions, Is.Not.Empty, "No potential objective options found!");
         // Moffstation - End
 
         await pair.CleanReturnAsync();
