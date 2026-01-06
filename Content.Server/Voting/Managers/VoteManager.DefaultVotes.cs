@@ -307,7 +307,7 @@ namespace Content.Server.Voting.Managers
                 }
                 // Moffstation - End
             }
-            options.Options.Add(("Random", maps.Keys.ElementAt(_random.Next(maps.Count)))); // Moffstation - display rollover votes
+            options.Options.Add((Loc.GetString("ui-vote-map-random"), maps.Keys.ElementAt(_random.Next(maps.Count)))); // Moffstation - display rollover votes
 
             WirePresetVoteInitiator(options, initiator);
 
