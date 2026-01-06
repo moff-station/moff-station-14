@@ -214,7 +214,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 
                 var objectivePickerButton = new Button
                 {
-                    Text = "Choose Objectives...",
+                    Text = Loc.GetString("objective-picker-button"),
                     Margin = new Thickness(0, 10, 0, 10)
                 };
                 objectivePickerButton.OnPressed += _ => UIManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
