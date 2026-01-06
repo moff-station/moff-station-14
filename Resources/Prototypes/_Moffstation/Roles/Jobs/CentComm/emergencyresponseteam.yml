@@ -1,0 +1,27 @@
+- type: startingGear # Lower rank than the normal leader, second in command of 8-man squads. Carries an advanced laser pistol instead of a DMR.
+  parent: ERTLeaderGearEVA
+  id: ERTLeaderGearArmedLaser
+  equipment:
+    pocket2: WeaponAdvancedLaser
+    suitstorage: WeaponShotgunEnforcer
+  storage:
+    back:
+    - HoloprojectorField
+    - PhoneInstrument
+    - PinpointerNuclear
+    - BoxLethalshot
+    - BoxShotgunSlug
+    - MedkitCombatFilled # End of first line
+    - Binoculars
+    - GrenadeShrapnel
+    - EmpGrenade
+    - CableDetStack
+    - BoxDetonator
+    belt:
+    - Truncheon
+    - Handcuffs
+    - Handcuffs
+    - CrowbarRed
+    - WeaponPistolN1984
+    - MagazineMagnum
+    - EmergencyMedipen

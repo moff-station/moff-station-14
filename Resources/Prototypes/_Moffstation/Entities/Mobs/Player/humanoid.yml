@@ -61,21 +61,21 @@
     nameFormat: name-format-ert-leader
 
 # ERT
-- type: entity # Lower rank than the normal leader, second in command of 8-man squads.
+- type: entity # Lower rank than the normal leader, second in command of 8-man squads. Carries a advanced laser pistol instead of a DMR.
   parent: RandomHumanoidSpawnerERTLeaderArmed
-  id: RandomHumanoidSpawnerERTLeaderTeamArmed
+  id: RandomHumanoidSpawnerERTLeaderArmedLaser
   name: ERT team leader
   suffix: ERTRole, Armed, EVA
   components:
   - type: RandomHumanoidSpawner
-    settings: ERTLeaderArmedSquad
+    settings: ERTLeaderArmedLaser
 
 - type: randomHumanoidSettings
   parent: ERTLeaderEVA
-  id: ERTLeaderTeamArmed
+  id: ERTLeaderArmedLaser
   components:
   - type: Loadout
-    prototypes: [ ERTLeaderGearArmed ]
+    prototypes: [ ERTLeaderGearArmedLaser ]
     roleLoadout: [ RoleSurvivalMilitaryDouble ]
   - type: RandomMetadata
     nameSegments:
