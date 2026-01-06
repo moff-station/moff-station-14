@@ -120,6 +120,11 @@
 - type: loadout
   id: SecurityOfficerWintercoat
   equipment:
+    outerClothing: ClothingOuterWinterSec
+
+- type: loadout
+  id: SecurityOfficerWintercoatArmoured
+  equipment:
     outerClothing: ClothingOuterWinterSecArmored # Moffstation - (Security Armored Longcoat)
 
 # Shoes
