@@ -11,4 +11,12 @@ public sealed partial class IFFConsoleComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("allowedFlags")]
     public IFFFlags AllowedFlags = IFFFlags.HideLabel;
+
+    //// Moffstation - Start - Revert IFF changes
+    /// <summary>
+    /// If true, automatically applies all supported IFF flags to the console's grid on MapInitEvent.
+    /// </summary>
+    //[DataField]
+    //public bool HideOnInit = false;
+    //// Moffstation - End
 }
