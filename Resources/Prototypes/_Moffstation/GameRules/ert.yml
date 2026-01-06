@@ -24,7 +24,7 @@
 
 - type: entity # 8 soldiers in a large transport
   parent: BaseGameRule
-  id: ERTSecLargeBrig
+  id: ERTSecBrigLarge
   components:
   - type: StationEvent
     startAnnouncement: ert-sec
