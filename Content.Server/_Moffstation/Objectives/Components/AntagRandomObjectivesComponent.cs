@@ -25,10 +25,10 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     public int MaxOptions = 8;
 
     [DataField]
-    public int MaxChoices = 3;
+    public int MaxChoices = 5;
 
     [DataField]
-    public int MinChoices = 1;
+    public int MinChoices = 2;
 
     /// <summary>
     /// Kept for compatibility with the old version

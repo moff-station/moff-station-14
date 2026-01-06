@@ -94,7 +94,7 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
             ("max", potentialObjectivesComponent.MaxChoices));
 
         SubmitButton.Disabled = SelectedObjectives.Count > potentialObjectivesComponent.MaxChoices ||
-                                SelectedObjectives.Count <= 1;
+                                SelectedObjectives.Count < 1;
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
