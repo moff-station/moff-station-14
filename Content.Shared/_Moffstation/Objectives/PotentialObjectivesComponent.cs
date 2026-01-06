@@ -26,7 +26,7 @@ public sealed partial class PotentialObjectivesComponent : Component
     [ViewVariables, AutoNetworkedField]
     public Dictionary<NetEntity, ObjectiveInfo> ObjectiveOptions = new();
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public int MaxChoices = 3;
 
     [DataField]

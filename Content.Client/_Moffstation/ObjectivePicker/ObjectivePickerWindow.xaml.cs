@@ -92,6 +92,9 @@ public sealed partial class ObjectivePickerWindow : FancyWindow
         SelectionTip.Text = Loc.GetString("objective-picker-window-select-tip",
             ("selected", SelectedObjectives.Count),
             ("max", potentialObjectivesComponent.MaxChoices));
+
+        SubmitButton.Disabled = SelectedObjectives.Count > potentialObjectivesComponent.MaxChoices ||
+                                SelectedObjectives.Count <= 1;
     }
 
     protected override void FrameUpdate(FrameEventArgs args)

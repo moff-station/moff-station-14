@@ -22,7 +22,7 @@ public sealed partial class AntagRandomObjectivesComponent : Component
     /// The amount of options to present to the player
     /// </summary>
     [DataField]
-    public int MaxOptions = 10;
+    public int MaxOptions = 8;
 
     [DataField]
     public int MaxChoices = 3;
