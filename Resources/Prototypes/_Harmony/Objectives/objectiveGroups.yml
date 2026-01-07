@@ -11,7 +11,7 @@
   weights:
     # Blood brothers are expected to be usually trying to be stealthy, so low DAGD chance.
     BloodBrotherEscapeShuttleObjective: 0.90 # Moffstation - Since we had to remove "survive" bump up the escape shuttle objective.
-    BloodBrotherDieObjective: 0.10
+    BloodBrotherDieObjective: 0.02 # Moffstation - Objective picker adjustments
     # BloodBrotherSurviveObjective: 0.65 # Moffstation - Removed survive objecitve since it doesn't exist in our branch (yet, we could just make it)
 
 # TODO: figure out how to make the converted brother holding the objective item also count towards the objective
