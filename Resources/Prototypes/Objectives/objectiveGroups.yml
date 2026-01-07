@@ -3,10 +3,12 @@
   id: TraitorObjectiveGroups
   weights:
     TraitorObjectiveGroupSteal: 1
-    TraitorObjectiveGroupKill: 1
-    TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
-    TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveOpenEnded: 0.25  # Moffstation - Open ended objectives
+    # Moffstation - Start - Reweighing tables for picker. Keep original proto so we can keep up with any upstream changes
+    TraitorObjectiveGroupKill: 3
+    TraitorObjectiveGroupState: 0.1 #As in, something about your character. Alive, dead, arrested, gained an ability...
+    TraitorObjectiveGroupSocial: 3 #Involves helping/harming others without killing them or stealing their stuff
+    TraitorObjectiveOpenEnded: 0.25
+    # Moffstation - End
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSteal
