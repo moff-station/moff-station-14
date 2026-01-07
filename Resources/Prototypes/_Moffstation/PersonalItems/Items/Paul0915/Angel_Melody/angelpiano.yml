@@ -19,17 +19,13 @@
     price: 200
 
 - type: entity
-  parent: BasePlaceableInstrumentRotatable
+  parent: PianoInstrument
   id: AngelPiano
   name: Angel's piano
   description: "A grand piano specially designed by Aurora Epiolos to disassemble into a compact package.\nDespite how it may appear, it can be assembled with just a screwdriver!"
   components:
-  - type: Climbable
-  - type: Instrument
-    program: 1
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/Paul0915/Angel_Melody/angel_piano.rsi
-    state: piano
 
 - type: loadout
   id: PersonalItemAngelPiano
