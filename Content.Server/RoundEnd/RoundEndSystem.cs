@@ -10,7 +10,7 @@ using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
-using Content.Server.Voting.Managers;
+using Content.Server.Voting.Managers; // Moffstation
 using Content.Shared._Moffstation.CCVar; // Moffstation - auto map votes on round start
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
