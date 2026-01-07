@@ -14,9 +14,11 @@ loadout-group-quartermaster-backpack = Quartermaster Backpack
 loadout-group-chief-engineer-backpack = Chief Engineer Backpack
 loadout-group-chief-medical-officer-backpack = Chief Medical Officer Backpack
 loadout-group-atmospheric-technician-head = Atmospheric Technician head
+
 loadout-group-chemist-mask = Chemist Mask
 loadout-group-chemist-gloves = Chemist Gloves
 loadout-group-chemist-shoes = Chemist Shoes
+
 loadout-group-captain-glasses = Captain glasses
 loadout-group-head-of-personnel-glasses = Head of Personnel glasses
 loadout-group-security-glasses = Security glasses
@@ -25,6 +27,14 @@ loadout-group-engineering-glasses = Engineering glasses
 loadout-group-chemistry-glasses = Chemistry glasses
 loadout-group-science-glasses = Science glasses
 loadout-group-bartender-glasses = Bartender glasses
+
+loadout-group-captain-id = Captain ID
+loadout-group-hop-id = Head of Personnel ID
+loadout-group-chief-engineer-id = Chief Engineer ID
+loadout-group-chief-medical-officer-id = Chief Medical Officer ID
+loadout-group-quartermaster-id = Quartermaster ID
+loadout-group-research-director-id = Research Director ID
+loadout-group-hos-id = Head of Security ID
 
 loadout-group-warden-id = Warden ID
 loadout-group-detective-id = Detective ID

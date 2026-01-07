@@ -6,9 +6,9 @@ namespace Content.Server.Weapons.Ranged.Systems;
 
 public sealed partial class GunSystem
 {
-    private void UpdateAutoFire() // Moffstation
+    public override void Update(float frameTime)
     {
-//        base.Update(frameTime); // Moffstation
+        base.Update(frameTime);
 
         /*
          * On server because client doesn't want to predict other's guns.
@@ -27,15 +27,15 @@ public sealed partial class GunSystem
                 if (!autoShoot.Enabled)
                     continue;
 
-                AttemptShoot(uid, gun);
+                AttemptShoot((uid, gun));
             }
             else if (gun.BurstActivated)
             {
                 var parent = TransformSystem.GetParentUid(uid);
                 if (HasComp<DamageableComponent>(parent))
-                    AttemptShoot(parent, uid, gun, gun.ShootCoordinates ?? new EntityCoordinates(uid, gun.DefaultDirection));
+                    AttemptShoot(parent, (uid, gun), gun.ShootCoordinates ?? new EntityCoordinates(uid, gun.DefaultDirection));
                 else
-                    AttemptShoot(uid, gun);
+                    AttemptShoot((uid, gun));
             }
         }
     }

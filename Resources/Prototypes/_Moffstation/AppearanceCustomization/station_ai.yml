@@ -7,10 +7,9 @@
     Occupied:
       sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
       state: ai_alien
-    Dead: &defaultdead
-      sprite: Mobs/Silicon/station_ai.rsi
-      state: ai_dead
-
+    Dead:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_alien_dead
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -20,7 +19,9 @@
     Occupied:
       sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
       state: ai_angryface
-    Dead: *defaultdead
+    Dead: &defaultdead
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -41,6 +42,18 @@
       sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
       state: ai_boxfort
     Dead: *defaultdead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconAiCat
+  name: station-ai-icon-cat
+  layerData:
+    Occupied:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_cat
+    Dead:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_cat_dead
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -76,6 +89,18 @@
 
 - type: stationAiCustomization
   parent: StationAiIconBase
+  id: StationAiIconAiFloppycat
+  name: station-ai-icon-floppycat
+  layerData:
+    Occupied:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_floppycat
+    Dead:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_floppycat_crash
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
   id: StationAiIconAiGlitchman
   name: station-ai-icon-glitchman
   layerData:
@@ -94,7 +119,9 @@
     Occupied:
       sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
       state: ai_hades
-    Dead: *defaultdead
+    Dead:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_hades_dead
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -125,6 +152,18 @@
       sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
       state: ai_hourglass
     Dead: *defaultdead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconAiLonestar
+  name: station-ai-icon-lonestar
+  layerData:
+    Occupied:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_lonestar
+    Dead:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_lonestar_dead
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -204,7 +243,9 @@
     Occupied:
       sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
       state: ai_sheltered
-    Dead: *defaultdead
+    Dead:
+      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      state: ai_sheltered_dead
 
 - type: stationAiCustomization
   parent: StationAiIconBase
@@ -286,6 +327,15 @@
       state: ai_arachnid
 
 - type: stationAiCustomization
+  id: StationAiHologramAvali
+  name: station-ai-hologram-avali
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi
+      state: ai_avali
+
+- type: stationAiCustomization
   id: StationAiHologramDiona
   name: station-ai-hologram-diona
   previewKey: Hologram
@@ -340,6 +390,15 @@
       state: ai_reptilian
 
 - type: stationAiCustomization
+  id: StationAiHologramResomi
+  name: station-ai-hologram-resomi
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi
+      state: ai_resomi
+
+- type: stationAiCustomization
   id: StationAiHologramVox
   name: station-ai-hologram-vox
   previewKey: Hologram
@@ -348,3 +407,11 @@
       sprite: _Moffstation/Mobs/Silicon/holograms.rsi
       state: ai_vox
 
+- type: stationAiCustomization
+  id: StationAiHologramVulpkanin
+  name: station-ai-hologram-vulpkanin
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Moffstation/Mobs/Silicon/holograms.rsi
+      state: ai_vulpkanin

@@ -39,7 +39,7 @@ public sealed class GunSystem : EntitySystem
             var direction = new Vector2(-gun.DefaultDirection.Y, gun.DefaultDirection.X);
             var coordinates = new EntityCoordinates(uid, direction);
 
-            _gunSystem.AttemptShoot(uid, uid, gun, coordinates);
+            _gunSystem.AttemptShoot(uid, (uid, gun), coordinates);
         }
     }
 }

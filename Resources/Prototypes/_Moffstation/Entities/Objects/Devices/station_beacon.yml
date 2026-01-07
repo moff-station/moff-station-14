@@ -1,0 +1,9 @@
+﻿# Pirate Beacons
+- type: entity
+  parent: DefaultStationBeaconGhost
+  id: DefaultStationBeaconPirateCove
+  suffix: Pirate Cove
+  components:
+  - type: PirateNavMapBeacon
+  - type: NavMapBeacon
+    text: Pirate Cove
