@@ -1,5 +1,17 @@
 ﻿# ID
 - type: loadout
+  id: VirologistPDA
+  equipment:
+    id: VirologistPDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: GeneticistPDA
+  equipment:
+    id: GeneticistPDA
+  groupBy: "doctor roles"
+
+- type: loadout
   id: ClinicianPDA
   equipment:
     id: ClinicianPDA

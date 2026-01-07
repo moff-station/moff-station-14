@@ -1,0 +1,62 @@
+﻿- type: entity
+  abstract: true
+  id: SuitStorageClothingGasTanksAttachment
+  components:
+  - type: SuitStorageAttachment
+    whitelist:
+      components:
+      - GasTank
+
+- type: entity
+  abstract: true
+  id: AllowSuitStorageAttachmentClothing
+  components:
+  - type: SuitStorageAttachable
+  - type: ContainerContainer
+    containers:
+      suit-storage-attachment: &container-slot
+        !type:ContainerSlot { }
+
+- type: entity
+  abstract: true
+  parent: [ ClothingOuterStorageBase, AllowSuitStorageAttachmentClothing ]
+  id: ClothingOuterStorageSuitStorageAttachableBase
+  components:
+  # This prototype only exists because of the need to merge these container defs :agony:
+  - type: ContainerContainer
+    containers:
+      storagebase: &container-storagebase
+        !type:Container
+        ents: [ ]
+      suit-storage-attachment: *container-slot
+
+- type: entity
+  parent: [ ClothingOuterWinterCoatBase, AllowSuitStorageAttachmentClothing ]
+  id: ClothingOuterWinterCoat
+  name: winter coat
+  description: A heavy jacket made from 'synthetic' animal furs.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+  # This prototype only exists because of the need to merge these container defs :agony:
+  - type: ContainerContainer
+    containers:
+      storagebase: *container-storagebase
+      suit-storage-attachment: *container-slot
+
+# This prototype is for the rare winter coats which have innate suit storage, usually because they're armor.
+- type: entity
+  abstract: true
+  parent: ClothingOuterWinterCoatBase
+  id: ClothingOuterWinterCoatToggleableNotAttachableBase
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterHOS
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: *container-slot
+      storagebase: *container-storagebase
+      suit-storage-attachment: *container-slot

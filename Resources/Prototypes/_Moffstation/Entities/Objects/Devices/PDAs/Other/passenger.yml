@@ -1,26 +1,111 @@
 - type: entity
   parent: PassengerPDA
+  id: PassengerPDAAltBase
+  name: passenger alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-offdutystaff"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: PassengerPDAAltBase
   id: OffDutyCrewPDA
   name: off-duty crew PDA
   components:
   - type: RenameId
     value: job-name-passenger-off-duty-crew
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-offdutystaff
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentHColor: "#333333"
 
 - type: entity
-  parent: PassengerPDA
+  parent: PassengerPDAAltBase
   id: OffDutyStaffPDA
   name: off-duty staff PDA
   components:
   - type: RenameId
     value: job-name-passenger-off-duty-staff
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-offdutystaff
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentHColor: "#333333"
 
 - type: entity
-  parent: PassengerPDA
+  parent: PassengerPDAAltBase
   id: AssistantPDA
   name: assistant PDA
   components:
   - type: RenameId
     value: job-name-passenger-assistant
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-assistant
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentVColor: "#364d37"
+
+- type: entity
+  parent: PassengerPDAAltBase
+  id: BridgeAssistantPDA
+  name: bridge assistant PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-bridge-assistant
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-bridgeassistant
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentVColor: "#bf8f2e"
+
+- type: entity
+  parent: PassengerPDAAltBase
+  id: CoffeeLogisticsOfficerPDA
+  name: coffee logistics officer PDA
+  components:
+  - type: RenameId
+    value: job-name-passenger-coffee-logistics-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-coffeelogisticsofficer
+  - type: PdaBorderColor
+    borderColor: "#717059"
+    accentVColor: "#bf8f2e"
 
 - type: entity
   parent: VisitorPDA
@@ -39,6 +124,15 @@
   - type: RenameId
     value: job-name-passenger-freelancer
     newIcon: "JobIconVisitor"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-freelancer
+  - type: PdaBorderColor
+    borderColor: "#8c5032"
+    accentVColor: "#d1c9c5"
+    accentHColor: "#d1c9c5"
 
 - type: entity
   parent: VisitorPDA

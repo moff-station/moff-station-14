@@ -1,8 +1,14 @@
 # ID
 - type: loadout
-  id: AssetProtectionsPDA
+  id: AssetProtectionsOfficerPDA
   equipment:
-    id: AssetProtectionsPDA
+    id: AssetProtectionsOfficerPDA
+  groupBy: "officer roles"
+
+- type: loadout
+  id: ConstablePDA
+  equipment:
+    id: ConstablePDA
   groupBy: "officer roles"
 
 - type: loadout

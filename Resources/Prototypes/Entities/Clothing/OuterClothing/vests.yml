@@ -2,7 +2,7 @@
 
 #Hazard vest
 - type: entity
-  parent: [ ClothingOuterStorageBase, AllowSuitStorageClothing ] # Moffstation - I literally just want to be a vox with a hi-viz on instead of a tank harness
+  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation - Allow suit storage attachment
   id: ClothingOuterVestHazard
   name: hi-viz vest
   description: A high-visibility vest used in work zones.
@@ -58,7 +58,7 @@
 
 #Tank Harness
 - type: entity
-  parent: [ClothingOuterBase, AllowSuitStorageClothingGasTanks]
+  parent: [ClothingOuterBase, AllowSuitStorageClothingGasTanks, SuitStorageClothingGasTanksAttachment] # Moffstation - Suit storage attachment for gas tanks
   id: ClothingOuterVestTank
   name: tank harness
   description: A simple harness that can hold a gas tank.

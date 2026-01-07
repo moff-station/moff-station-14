@@ -1,7 +1,6 @@
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Serialization;
-using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Shared.Chemistry
 {
@@ -84,6 +83,12 @@ namespace Content.Shared.Chemistry
         }
     }
 
+    [Serializable, NetSerializable]
+    public sealed class ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource drawSource) : BoundUserInterfaceMessage
+    {
+        public readonly ChemMasterDrawSource DrawSource = drawSource;
+    }
+
     public enum ChemMasterMode
     {
         Transfer,
@@ -114,6 +119,12 @@ namespace Content.Shared.Chemistry
         U50 = 50,
         U100 = 100,
         All,
+    }
+
+    public enum ChemMasterDrawSource
+    {
+        Internal,
+        External,
     }
 
     public static class ChemMasterReagentAmountToFixedPoint
@@ -185,12 +196,12 @@ namespace Content.Shared.Chemistry
 
         public readonly bool UpdateLabel;
 
-        public readonly ChemMasterDrawSource DrawSource; //Moffstation - Chemmaster output source logic
+        public readonly ChemMasterDrawSource DrawSource;
 
         public ChemMasterBoundUserInterfaceState(
             ChemMasterMode mode, ChemMasterSortingType sortingType, ContainerInfo? inputContainerInfo, ContainerInfo? outputContainerInfo,
             IReadOnlyList<ReagentQuantity> bufferReagents, FixedPoint2 bufferCurrentVolume,
-            uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource) //Moffstation - Chemmaster output source logic
+            uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource)
         {
             InputContainerInfo = inputContainerInfo;
             OutputContainerInfo = outputContainerInfo;
@@ -201,7 +212,7 @@ namespace Content.Shared.Chemistry
             SelectedPillType = selectedPillType;
             PillDosageLimit = pillDosageLimit;
             UpdateLabel = updateLabel;
-            DrawSource = drawSource; //Moffstation - Chemmaster output source logic
+            DrawSource = drawSource;
         }
     }
 

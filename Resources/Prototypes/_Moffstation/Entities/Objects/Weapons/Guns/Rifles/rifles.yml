@@ -73,3 +73,31 @@
   - type: SpeedModifiedOnWield
     walkModifier: 0.75
     sprintModifier: 0.75
+
+# Lever-Action rifle. A longarm chambered in .45 magnum, for purchase by cargo and pirates, and as very rare maints loot. Sprites by the marvelous kento_da_neko.
+- type: entity
+  parent: [ BaseWeaponShotgun, BaseGunWieldable ]
+  id: WeaponRifleLeverMagnum
+  name: Crestfall repeater
+  description: "A classic tube-fed lever-action rifle, the preferred weapon of a trailblazer of old.\nLoads eight rounds of .45 magnum."
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 8
+    proto: CartridgeMagnum
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg # Could use a less... plastic-y sound with no pumping noise.
+    whitelist:
+      tags:
+      - CartridgeMagnum
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
+  - type: Gun
+    fireRate: 2.5
+    soundGunshot:
+      path: /Audio/_Moffstation/Weapons/Guns/Gunshots/heavygunshot.ogg # Sound found by AugustSun :3
+  - type: Item
+    storedSprite:
+      sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum_storage_x64.rsi
+      state: storage
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi

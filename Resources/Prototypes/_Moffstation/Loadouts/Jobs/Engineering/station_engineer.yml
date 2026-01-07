@@ -17,6 +17,12 @@
     id: ShipwrightPDA
   groupBy: "engineer roles"
 
+- type: loadout
+  id: EngineOperatorPDA
+  equipment:
+    id: EngineOperatorPDA
+  groupBy: "engineer roles"
+
 # Head
 - type: loadout
   id: StationEngineerOrangeCap
