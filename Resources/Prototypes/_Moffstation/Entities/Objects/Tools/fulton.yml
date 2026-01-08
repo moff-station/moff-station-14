@@ -9,5 +9,7 @@
   - type: Anchorable
     flags:
     - Anchorable
+  - type: Physics
+    bodyType: Static
   - type: Transform
     anchored: true
