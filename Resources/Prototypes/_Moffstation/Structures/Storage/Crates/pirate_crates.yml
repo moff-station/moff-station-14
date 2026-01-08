@@ -292,7 +292,7 @@
     children:
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
-        range: 3,4
+        range: 4, 5
       children:
       - id: Brutepack
         amount: !type:RangeNumberSelector
@@ -304,7 +304,7 @@
         amount: 1
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
-        range: 2,3
+        range: 2, 3
       children:
       - id: Ointment
         amount: !type:RangeNumberSelector
