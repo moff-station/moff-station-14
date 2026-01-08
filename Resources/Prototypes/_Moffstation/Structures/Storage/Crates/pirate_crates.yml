@@ -192,7 +192,7 @@
     children:
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
-        range: 1, 3
+        range: 2, 3
       children:
       - id: Cutlass
       - id: ClothingHandsPirateHook
@@ -202,7 +202,7 @@
     - id: WeaponLauncherPirateCannon
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
-        range: 4,7
+        range: 5,7
       children:
       - id: WeaponShotgunDoubleBarreled
       - id: WeaponShotgunBlunderbuss
