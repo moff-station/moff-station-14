@@ -1,0 +1,48 @@
+﻿# Player: RetroCorcoran / Character: Niah Stalker
+- type: entity
+  parent: FlippoLighter
+  id: PersonalItemNiahLighter
+  name: Niah's personal lighter
+  description: A pinkish lighter with a purple 'S' initial surrounded by gray and a hint of black.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/RetroCorcoran/Niah_Stalker/lighter.rsi
+    layers:
+    - state: closed
+      map: ["base"]
+    - state: top
+      map: ["top"]
+      visible: false
+    - state: open
+      map: ["open"]
+      visible: false
+    - state: lighter_flame
+      map: ["flame"]
+      visible: false
+      shader: unshaded
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/RetroCorcoran/Niah_Stalker/lighter.rsi
+  - type: ToggleableVisuals
+    spriteLayer: lighter_flame
+    inhandVisuals:
+      left:
+      - state: inhand-left-flame
+        shader: unshaded
+      right:
+      - state: inhand-right-flame
+        shader: unshaded
+  - type: PointLight
+    color: plum
+  - type: DetailExaminable
+    content: At a closer inspection, along the edges of the lighter there's an engraving that spells out "Niah Stalker". Flipping it around to its backside reveals an engraved message "Remember why you do this." underneath the message appears to be a hand scratched in 'N + J'
+
+- type: loadout
+  id: PersonalItemNiahLighter
+  storage:
+    back:
+    - PersonalItemNiahLighter
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Niah Stalker
