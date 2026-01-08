@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/08/2026 18:59:10
-  entityCount: 870
+  time: 01/08/2026 19:19:33
+  entityCount: 869
 maps: []
 grids:
 - 1
@@ -95,7 +95,6 @@ entities:
             153: 0,-5
             154: 2,-5
             155: 2,-7
-            172: -5,-15
         - node:
             cleanable: True
             color: '#FFFFFFFF'
@@ -212,6 +211,7 @@ entities:
             123: 5,-3
             174: 6,-3
             175: 7,-3
+            222: -5,-15
         - node:
             color: '#FFFFFFFF'
             id: WoodTrimThinCornerNe
@@ -499,7 +499,7 @@ entities:
       pos: 3.5,-5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -17702.236
+      secondsUntilStateChange: -17802.957
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3983,11 +3983,6 @@ entities:
     components:
     - type: Transform
       pos: -3.5,-14.5
-      parent: 1
-  - uid: 255
-    components:
-    - type: Transform
-      pos: -4.5,-14.5
       parent: 1
 - proto: MedicalBed
   entities:
