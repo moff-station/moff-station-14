@@ -13,14 +13,14 @@
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda-assetprotection"
+      state: "pda-assetprotectionofficer"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
@@ -29,20 +29,36 @@
 
 - type: entity
   parent: SecurityPDAAltBase
-  id: AssetProtectionsPDA
-  name: asset protections PDA
+  id: AssetProtectionsOfficerPDA
+  name: asset protections officer PDA
   components:
   - type: RenameId
-    value: job-name-security-officer-asset-protections
+    value: job-name-security-officer-asset-protections-officer
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-assetprotection
+        pda-assetprotectionofficer
   - type: PdaBorderColor
     borderColor: "#5f6d8b"
     accentVColor: "#A32D26"
-    accentHColor: "#633019"
+    accentHColor: "#A32D26"
+
+- type: entity
+  parent: SecurityPDAAltBase
+  id: ConstablePDA
+  name: constable PDA
+  components:
+  - type: RenameId
+    value: job-name-security-officer-constable
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-constable
+  - type: PdaBorderColor
+    borderColor: "#5261a0"
+    accentVColor: "#2c2c2c"
 
 - type: entity
   parent: SecurityPDAAltBase

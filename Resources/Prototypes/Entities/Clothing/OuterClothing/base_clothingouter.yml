@@ -45,7 +45,7 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingOuterStorageBase, BaseFoldable]
+  parent: [ClothingOuterStorageSuitStorageAttachableBase, BaseFoldable] # Moffstation - Attachable suit storage
   id: ClothingOuterStorageFoldableBase
   components:
   - type: Appearance
@@ -63,6 +63,13 @@
     - state: icon-open
       map: ["foldedLayer"]
       visible: false
+  # Moffstation - Begin - Merge container definitions for attachable suit storage
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
+      suit-storage-attachment: !type:ContainerSlot { }
+  # Moffstation - End
 
 - type: entity
   abstract: true
