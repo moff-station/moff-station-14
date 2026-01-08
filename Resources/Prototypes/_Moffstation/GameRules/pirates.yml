@@ -21,7 +21,7 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 40
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:
@@ -50,9 +50,8 @@
     - prefRoles: [ PirateCrew ]
       fallbackRoles: [ PirateCaptain ]
       spawnerPrototype: SpawnPointPirateCrew
-      min: 2
-      max: 3
-      playerRatio: 15
+      min: 4
+      max: 4
       startingGear: PirateGear
       roleLoadout:
       - RoleSurvivalNukie

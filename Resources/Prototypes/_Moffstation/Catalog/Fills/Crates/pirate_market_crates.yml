@@ -556,3 +556,26 @@
         - id: ClothingEyesEyepatch
           amount: !type:ConstantNumberSelector
             value: 2
+
+- type: entity
+  id: CratePirateFulton
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: fulton crate
+  description: Contains 20 fultons, for robbing stationlubbers
+  components:
+  - type: StorageFill
+    contents:
+    - id: Fulton
+      amount: 20
+
+#- type: entity
+#  id: CratePirateGrapplingGun
+#  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+#  name: fulton beacon crate
+#  description: Contains 10 fulton and a beacon, for robbing stationlubbers
+#  components:
+#  - type: StorageFill
+#    contents:
+#    - id: Fulton
+#      amount: 10
+#    - id: FultonBeaconPirate
