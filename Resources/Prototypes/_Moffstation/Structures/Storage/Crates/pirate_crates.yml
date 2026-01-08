@@ -198,7 +198,7 @@
       - id: ClothingHandsPirateHook
       - id: PirateAnchor
       - id: EnergyCutlass
-        weight: 0.05
+        weight: 0.25
     - id: WeaponLauncherPirateCannon
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
@@ -209,12 +209,13 @@
       - id: WeaponRevolverPirate
       - id: WeaponMakeshiftLaser
       - id: WeaponPistolFlintlock
+        weight: 0.5
       - id: WeaponRifleLeverMagnum
-        weight: 0.1
+        weight: 0.5
       - id: WeaponShotgunKammererOld
-        weight: 0.05
+        weight: 0.25
       - id: WeaponRifleAk
-        weight: 0.05
+        weight: 0.25
 
 - type: entityTable
   id: PirateToolsFillTable
