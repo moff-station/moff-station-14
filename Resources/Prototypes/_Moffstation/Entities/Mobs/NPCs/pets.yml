@@ -13,6 +13,8 @@
     name: ghost-role-information-jokejoke-name
     description: ghost-role-information-jokejoke-description
     rules: ghost-role-information-familiar-rules
+    mindRoles:
+    - MindRoleGhostRoleFamiliar
   - type: GhostTakeoverAvailable
   - type: Butcherable
     butcheringType: Spike
