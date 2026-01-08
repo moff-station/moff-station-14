@@ -12,7 +12,7 @@
 
 - type: entity # 4 soldiers in a large transport
   parent: BaseGameRule
-  id: ERTSecBrig
+  id: ERTSecTransport
   components:
   - type: StationEvent
     startAnnouncement: ert-sec
@@ -24,7 +24,7 @@
 
 - type: entity # 8 soldiers in a large transport
   parent: BaseGameRule
-  id: ERTSecBrigLarge
+  id: ERTSecLargeTransport
   components:
   - type: StationEvent
     startAnnouncement: ert-sec
@@ -36,7 +36,7 @@
 
 - type: entity # 4 soldiers in a small dropship
   parent: BaseGameRule
-  id: ERTSec
+  id: ERTSecDropship
   components:
   - type: StationEvent
     startAnnouncement: ert-sec
@@ -48,7 +48,7 @@
 
 - type: entity # 8 soldiers in a small dropship
   parent: BaseGameRule
-  id: ERTSecLarge
+  id: ERTSecLargeDropship
   components:
   - type: StationEvent
     startAnnouncement: ert-sec

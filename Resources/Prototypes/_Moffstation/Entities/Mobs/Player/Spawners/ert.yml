@@ -1,21 +1,6 @@
 # ERT Leader
 - type: entity
   parent: MarkerBase
-  id: ERTLeaderSpawnerBasic
-  name: ERT squad leader spawner
-  suffix: Mapping
-  components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTLeader
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Markers/jobs.rsi
-      state: ertleader
-
-- type: entity
-  parent: MarkerBase
   id: ERTLeaderSpawnerEVA
   name: ERT squad leader spawner
   suffix: Mapping, EVA
@@ -38,10 +23,10 @@
     prototypes:
     - RandomHumanoidSpawnerERTLeaderArmed
 
-- type: entity # Lower rank than the normal leader, second in command of 8-man squads. Carries a advanced laser pistol instead of a DMR.
+- type: entity # # Lower rank than the normal leader, leads 4-man fireteam. Carries an advanced laser pistol and Lecter AR instead of a Lecter DMR.
   parent: ERTLeaderSpawnerEVA
   id: ERTLeaderTeamSpawnerArmed
-  name: ERT team leader spawner
+  name: ERT fireteam leader spawner
   suffix: Mapping, EVA, Armed
   components:
   - type: RandomSpawner
@@ -49,21 +34,6 @@
     - RandomHumanoidSpawnerERTLeaderArmedLaser
 
 # ERT Chaplain
-- type: entity
-  parent: MarkerBase
-  id: ERTChaplainSpawnerBasic
-  name: ERT chaplain spawner
-  suffix: Mapping
-  components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTChaplain
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Markers/jobs.rsi
-      state: ertchaplain
-
 - type: entity
   parent: MarkerBase
   id: ERTChaplainSpawnerEVA
@@ -82,21 +52,6 @@
 # ERT Janitor
 - type: entity
   parent: MarkerBase
-  id: ERTJanitorSpawnerBasic
-  name: ERT janitor spawner
-  suffix: Mapping
-  components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTJanitor
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Markers/jobs.rsi
-      state: ertjanitor
-
-- type: entity
-  parent: MarkerBase
   id: ERTJanitorSpawnerEVA
   name: ERT janitor spawner
   suffix: Mapping, EVA
@@ -111,21 +66,6 @@
       state: ertjanitoreva
 
 # ERT Engineer
-- type: entity
-  parent: MarkerBase
-  id: ERTEngineerSpawnerBasic
-  name: ERT engineer spawner
-  suffix: Mapping
-  components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTEngineer
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Markers/jobs.rsi
-      state: ertengineer
-
 - type: entity
   parent: MarkerBase
   id: ERTEngineerSpawnerEVA
@@ -152,21 +92,6 @@
     - RandomHumanoidSpawnerERTEngineerArmed
 
 # ERT Security
-- type: entity
-  parent: MarkerBase
-  id: ERTSecuritySpawnerBasic
-  name: ERT security officer spawner
-  suffix: Mapping
-  components:
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTSecurity
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Markers/jobs.rsi
-      state: ertsecurity
-
 - type: entity
   parent: MarkerBase
   id: ERTSecuritySpawnerEVA
@@ -213,21 +138,6 @@
     - RandomHumanoidSpawnerERTSecurityArmedVanguard
 
 # ERT Medical
-- type: entity
-  parent: MarkerBase
-  id: ERTMedicalSpawnerBasic
-  name: ERT medical doctor spawner
-  suffix: Mapping
-  components:
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Markers/jobs.rsi
-      state: ertmedical
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidSpawnerERTMedical
-
 - type: entity
   parent: MarkerBase
   id: ERTMedicalSpawnerEVA

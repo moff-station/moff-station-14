@@ -61,10 +61,10 @@
     nameFormat: name-format-ert-leader
 
 # ERT
-- type: entity # Lower rank than the normal leader, second in command of 8-man squads. Carries a advanced laser pistol instead of a DMR.
+- type: entity  # Lower rank than the normal leader, leads 4-man fireteam. Carries an advanced laser pistol and Lecter AR instead of a Lecter DMR.
   parent: RandomHumanoidSpawnerERTLeaderArmed
   id: RandomHumanoidSpawnerERTLeaderArmedLaser
-  name: ERT team leader
+  name: ERT fireteam leader
   suffix: ERTRole, Armed, EVA
   components:
   - type: RandomHumanoidSpawner
