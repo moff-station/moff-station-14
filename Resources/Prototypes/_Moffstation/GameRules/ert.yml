@@ -96,7 +96,7 @@
 
 - type: entity
   parent: BaseGameRule
-  id: ERTCBURN
+  id: ERTCBURNDropship
   components:
   - type: StationEvent
     startAnnouncement: ert-jani
@@ -108,7 +108,7 @@
 
 - type: entity
   parent: BaseGameRule
-  id: ERTDeathSquad
+  id: ERTDeathSquadDropship
   components:
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-deathsquad-team.yml
