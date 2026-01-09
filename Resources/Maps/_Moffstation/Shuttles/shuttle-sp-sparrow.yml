@@ -4,7 +4,7 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/09/2026 18:19:08
+  time: 01/09/2026 17:57:39
   entityCount: 227
 maps: []
 grids:
@@ -244,16 +244,6 @@ entities:
     - type: Transform
       pos: 1.5,4.5
       parent: 1
-    - type: DeviceList
-      devices:
-      - 227
-      - 228
-      - 113
-      - 140
-      - 136
-      - 114
-      - 138
-      - 137
     - type: Fixtures
       fixtures: {}
 - proto: AirCanister
@@ -291,21 +281,11 @@ entities:
     - type: Transform
       pos: -0.5,1.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
   - uid: 228
     components:
     - type: Transform
       pos: 0.5,6.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
 - proto: APCBasic
   entities:
   - uid: 64
@@ -1036,11 +1016,6 @@ entities:
     - type: Transform
       pos: -1.5,3.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -1051,11 +1026,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 0.5,0.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -1066,11 +1036,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5,7.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -1083,11 +1048,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5,5.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
@@ -1097,11 +1057,6 @@ entities:
     - type: Transform
       pos: 0.5,3.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
@@ -1112,11 +1067,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,0.5
       parent: 1
-    - type: DeviceNetwork
-      configurators:
-      - invalid
-      deviceLists:
-      - 112
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
