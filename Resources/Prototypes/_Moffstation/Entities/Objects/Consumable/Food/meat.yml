@@ -1,0 +1,14 @@
+- type: entity
+  parent: FoodMeatChickenFried
+  id: FoodMeatChickenFriedResomi
+  name: mystery fried chicken
+  description: “Eleven secret herbs and… oh no. That’s not chicken."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Protein
+          Quantity: 5
