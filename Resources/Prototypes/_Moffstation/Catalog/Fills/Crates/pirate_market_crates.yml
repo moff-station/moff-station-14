@@ -568,14 +568,3 @@
     - id: Fulton
       amount: 20
 
-#- type: entity
-#  id: CratePirateGrapplingGun
-#  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
-#  name: fulton beacon crate
-#  description: Contains 10 fulton and a beacon, for robbing stationlubbers
-#  components:
-#  - type: StorageFill
-#    contents:
-#    - id: Fulton
-#      amount: 10
-#    - id: FultonBeaconPirate
