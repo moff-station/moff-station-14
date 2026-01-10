@@ -51,6 +51,18 @@
     - MindRoleGhostRoleTeamAntagonist
 
 - type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointPirateCaptain
+  id: SpawnPointPirateCorsair
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-corsair-name
+    description: roles-antag-pirate-corsair-objective
+    rules: ghost-role-information-corsair-rules
+    mindRoles:
+    - MindRolePirateCorsair
+
+- type: entity
   parent: MarkerBase
   id: SpawnMobKoboldJokejoke
   name: Joke Joke Spawner
