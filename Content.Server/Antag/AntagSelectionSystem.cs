@@ -318,15 +318,17 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         }
     }
 
-    public IDictionary<ICommonSession, float> GetPlayerAntagWeights(IList<ICommonSession> sessions)
+    // Moffstation - Start - Weighted antag selection
+    public IDictionary<ICommonSession, float> GetPlayerAntagWeights(IList<ICommonSession> pool)
     {
         var weightedPlayerPool = new Dictionary<ICommonSession, float>();
-        foreach (var session in sessions)
+        foreach (var session in pool)
         {
             weightedPlayerPool.Add(session, 1f);
         }
         return weightedPlayerPool;
     }
+    // Moffstation - End
 
     /// <summary>
     /// Assigns antag roles to sessions selected for it.
