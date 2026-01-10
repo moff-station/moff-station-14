@@ -1,16 +1,20 @@
 - type: entity
   parent: MarkerBase
-  id: SpawnMobAlexander
-  name: Alexander Spawner
+  id: SpawnMobAlexander #Moffstation - New Station Pets
+  name: Chef Pet Spawner #Moffstation - New Station Pets
   suffix: Chef Pet
   components:
   - type: Sprite
     layers:
     - state: green
     - state: ai
-  - type: ConditionalSpawner
-    prototypes:
+  - type: RandomSpawner #Moffstation - Start - New Station Pets
+    rarePrototypes:
     - MobAlexander
+    rareChance: 0.25
+    prototypes:
+    - MobOscar
+    chance: 0.75 #Moffstation - End - New Station Pets
 
 - type: entity
   parent: MarkerBase
@@ -278,17 +282,21 @@
 
 - type: entity
   parent: MarkerBase
-  id: SpawnMobSlothPaperwork
-  name: Sloth Paperwork Spawner
+  id: SpawnMobSlothPaperwork #Moffstation - Start - New Station Pets
+  name: Library Pet Spawner #Moffstation - End - New Station Pets
   suffix: Librarian Pet
   components:
   - type: Sprite
     layers:
     - state: green
     - state: ai
-  - type: ConditionalSpawner
+  - type: RandomSpawner #Moffstation - Start - New Station Pets
     prototypes:
     - MobPaperwork
+    chance: 0.50
+    rarePrototypes:
+    - MobBuddy
+    rareChance: 0.50 #Moffstation - End - New Station Pets
 
 - type: entity
   parent: MarkerBase

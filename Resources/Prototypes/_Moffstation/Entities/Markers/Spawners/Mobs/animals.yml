@@ -1,0 +1,282 @@
+
+- type: entity
+  name: Oscar
+  parent: [SimpleMobBase, StripableInventoryBase]
+  id: MobOscar
+  description: He enjoys rolling in dough, this may cause food contamination but look how cute he looks in his chef whites!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Pets/oscar.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: oscar
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Inventory
+    speciesId: puppy
+    templateId: petAdvanced
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: oscar
+      Critical:
+        Base: oscar-crit
+      Dead:
+        Base: oscar-dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 1
+    - id: FoodCondimentPacketKetchup
+      amount: 1
+    - id: FoodCondimentPacketMustard
+      amount: 1
+  - type: ReplacementAccent
+    accent: dog
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/small_dog_bark_happy.ogg
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
+  - type: MobsterAccent
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+    - DoorBumpOpener
+    - FootstepSound
+  - type: Speech
+    speechVerb: Canine
+    speechSounds: Dog
+  - type: MessyDrinker
+
+
+- type: entity
+  name: Buddy
+  parent: [SimpleMobBase, StripableInventoryBase]
+  id: MobBuddy
+  description: There is no rules against a dog playing basketball in space law
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Pets/buddy.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: buddy
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 5.5
+  - type: Puller
+    needsHands: false
+  - type: Inventory
+    speciesId: dog
+    templateId: pet
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: buddy
+      Critical:
+        Base: buddy-crit
+      Dead:
+        Base: buddy-dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 2
+    - id: Basketball
+      amount: 1
+  - type: ReplacementAccent
+    accent: dog
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/small_dog_bark_happy.ogg
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+    - DoorBumpOpener
+    - FootstepSound
+  - type: Speech
+    speechVerb: Canine
+    speechSounds: Dog
+  - type: MessyDrinker
+
+- type: entity
+  name: Nancy
+  parent: [SimpleMobBase, StripableInventoryBase]
+  id: MobNancy
+  description: Big, warm & ready to rescue.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Pets/nancy.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nancy
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.9
+    baseSprintSpeed: 3.5
+  - type: Puller
+    needsHands: false
+  - type: Inventory
+    speciesId: dog
+    templateId: pet
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      125: Critical
+      200: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: nancy
+      Critical:
+        Base: nancy-crit
+      Dead:
+        Base: nancy-dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 2
+    - id: DrinkWhiskeyBottleFull
+      amount: 1
+  - type: ReplacementAccent
+    accent: dog
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/small_dog_bark_happy.ogg
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: female
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+    - DoorBumpOpener
+    - FootstepSound
+  - type: Speech
+    speechVerb: Canine
+    speechSounds: Dog
+  - type: MessyDrinker
+
+- type: entity
+  name: Max
+  parent: [SimpleMobBase, StripableInventoryBase]
+  id: MobMax
+  description: the dog with a knack for finding things, not only for cold cases, But also for cold meats. Every type of Butcher hates 'em!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Pets/max.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: max
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 4.5
+  - type: Puller
+    needsHands: false
+  - type: Inventory
+    speciesId: dog
+    templateId: pet
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: max
+      Critical:
+        Base: max-crit
+      Dead:
+        Base: max-dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+    - id: SmokingPipeFilledTobacco
+  - type: ReplacementAccent
+    accent: dog
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/small_dog_bark_happy.ogg
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+    - DoorBumpOpener
+    - FootstepSound
+  - type: Speech
+    speechVerb: Canine
+    speechSounds: Dog
+  - type: MessyDrinker
