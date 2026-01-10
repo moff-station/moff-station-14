@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/09/2026 17:57:39
-  entityCount: 227
+  time: 01/10/2026 21:03:29
+  entityCount: 224
 maps: []
 grids:
 - 1
@@ -643,23 +643,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5,-1.5
       parent: 1
-- proto: CannonBall
-  entities:
-  - uid: 218
-    components:
-    - type: Transform
-      pos: -1.4280063,3.739286
-      parent: 1
-  - uid: 219
-    components:
-    - type: Transform
-      pos: -1.6571729,3.4682646
-      parent: 1
-  - uid: 220
-    components:
-    - type: Transform
-      pos: -1.2717563,3.457841
-      parent: 1
 - proto: ChairPilotSeat
   entities:
   - uid: 194
@@ -668,69 +651,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,7.5
       parent: 1
-- proto: ClothingHandsGlovesCombat
-  entities:
-  - uid: 206
-    components:
-    - type: Transform
-      parent: 204
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 204
-- proto: ClothingMaskGasPirate
-  entities:
-  - uid: 208
-    components:
-    - type: Transform
-      parent: 204
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 204
-- proto: ClothingOuterHardsuitPirateBuccaneer
-  entities:
-  - uid: 209
-    components:
-    - type: Transform
-      parent: 204
-    - type: GroupExamine
-      group:
-      - hoverMessage: ""
-        contextText: verb-examine-group-other
-        icon: /Textures/Interface/examine-star.png
-        components:
-        - Armor
-        - ClothingSpeedModifier
-        entries:
-        - message: This decreases your speed by [color=yellow]10%[/color].
-          priority: 0
-          component: ClothingSpeedModifier
-        - message: >-
-            It provides the following protection:
-
-            - [color=yellow]Blunt[/color] damage reduced by [color=lightblue]40%[/color].
-
-            - [color=yellow]Slash[/color] damage reduced by [color=lightblue]40%[/color].
-
-            - [color=yellow]Piercing[/color] damage reduced by [color=lightblue]50%[/color].
-
-            - [color=yellow]Heat[/color] damage reduced by [color=lightblue]50%[/color].
-
-            - [color=yellow]Radiation[/color] damage reduced by [color=lightblue]40%[/color].
-
-            - [color=yellow]Caustic[/color] damage reduced by [color=lightblue]40%[/color].
-
-            - [color=lightyellow]Stamina[/color] damage reduced by [color=lightblue]25%[/color].
-
-            - [color=orange]Explosion[/color] damage reduced by [color=lightblue]50%[/color].
-          priority: 0
-          component: Armor
-        title: null
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 204
 - proto: ComputerIFFSyndicate
   entities:
   - uid: 106
@@ -746,6 +666,20 @@ entities:
     - type: Transform
       pos: 0.5,8.5
       parent: 1
+- proto: CratePirateCannonBall
+  entities:
+  - uid: 206
+    components:
+    - type: Transform
+      pos: -1.5,2.5
+      parent: 1
+- proto: CratePirateCorsair
+  entities:
+  - uid: 207
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
 - proto: DecalSpawnerDirtWide
   entities:
   - uid: 199
@@ -753,26 +687,6 @@ entities:
     - type: Transform
       pos: -0.5,2.5
       parent: 1
-- proto: DoubleEmergencyNitrogenTankFilled
-  entities:
-  - uid: 207
-    components:
-    - type: Transform
-      parent: 204
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 204
-- proto: DoubleEmergencyOxygenTankFilled
-  entities:
-  - uid: 205
-    components:
-    - type: Transform
-      parent: 204
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 204
 - proto: DrinkBottleRum
   entities:
   - uid: 200
@@ -1150,13 +1064,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 1.5,-0.5
       parent: 1
-- proto: HandHeldMassScannerPirate
-  entities:
-  - uid: 183
-    components:
-    - type: Transform
-      pos: -0.66719115,6.9428115
-      parent: 1
 - proto: HarmonicaInstrument
   entities:
   - uid: 202
@@ -1164,22 +1071,82 @@ entities:
     - type: Transform
       pos: 1.3197064,3.6775045
       parent: 1
+- proto: LockableButtonExternal
+  entities:
+  - uid: 195
+    components:
+    - type: MetaData
+      name: Fire cannon
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -1.5,4.5
+      parent: 1
+    - type: AccessReader
+      accessListsOriginal:
+      - - External
+      access:
+      - - Pirate
+    - type: DeviceLinkSource
+      linkedPorts:
+        176:
+        - - Pressed
+          - Trigger
+    - type: Fixtures
+      fixtures: {}
+  - uid: 209
+    components:
+    - type: MetaData
+      name: Fire cannon
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,8.5
+      parent: 1
+    - type: AccessReader
+      accessListsOriginal:
+      - - External
+      access:
+      - - Pirate
+    - type: DeviceLinkSource
+      linkedPorts:
+        176:
+        - - Pressed
+          - Trigger
+    - type: Fixtures
+      fixtures: {}
 - proto: LuxuryPen
   entities:
   - uid: 225
     components:
     - type: Transform
-      pos: -0.27919072,6.4928026
+      pos: -0.4366421,6.7635717
       parent: 1
 - proto: MaterialDiamond1
   entities:
-  - uid: 3
+  - uid: 170
     components:
     - type: Transform
-      pos: -0.6193845,3.5516558
+      pos: -0.3523289,3.7499774
       parent: 1
-    - type: Stack
-      count: 5
+  - uid: 174
+    components:
+    - type: Transform
+      pos: -0.59191227,3.4581082
+      parent: 1
+  - uid: 183
+    components:
+    - type: Transform
+      pos: -0.9447131,3.845825
+      parent: 1
+  - uid: 184
+    components:
+    - type: Transform
+      pos: -0.9622923,3.684698
+      parent: 1
+  - uid: 205
+    components:
+    - type: Transform
+      pos: -0.5697131,3.7728574
+      parent: 1
 - proto: Mattress
   entities:
   - uid: 171
@@ -1192,19 +1159,12 @@ entities:
   - uid: 169
     components:
     - type: Transform
-      pos: -0.25052452,6.8385725
+      pos: -0.3428921,6.9407783
       parent: 1
   - uid: 215
     components:
     - type: Transform
-      pos: -0.54219115,6.4007688
-      parent: 1
-- proto: PirateAnchor
-  entities:
-  - uid: 186
-    components:
-    - type: Transform
-      pos: 0.47714856,-0.38352606
+      pos: -0.59289217,6.5342455
       parent: 1
 - proto: PirateComputerComms
   entities:
@@ -1223,12 +1183,31 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+- proto: PirateFultonBeacon
+  entities:
+  - uid: 160
+    components:
+    - type: Transform
+      anchored: True
+      pos: 2.5,1.5
+      parent: 1
+    - type: Physics
+      bodyType: Static
+    - type: Foldable
+      folded: False
 - proto: PirateHandyFlag
   entities:
   - uid: 226
     components:
     - type: Transform
-      pos: -0.74213004,8.589343
+      pos: -1.5239985,3.6355584
+      parent: 1
+- proto: PlushieSharkPirate
+  entities:
+  - uid: 204
+    components:
+    - type: Transform
+      pos: 0.4800246,-0.399474
       parent: 1
 - proto: PoweredlightSodium
   entities:
@@ -1258,11 +1237,6 @@ entities:
       parent: 1
 - proto: Rack
   entities:
-  - uid: 170
-    components:
-    - type: Transform
-      pos: 2.5,1.5
-      parent: 1
   - uid: 213
     components:
     - type: Transform
@@ -1401,7 +1375,7 @@ entities:
   - uid: 203
     components:
     - type: Transform
-      pos: -0.6734371,8.013239
+      pos: -0.6594151,8.190805
       parent: 1
 - proto: ShuttleGunPirateCannon
   entities:
@@ -1413,21 +1387,6 @@ entities:
       parent: 1
 - proto: SignalButton
   entities:
-  - uid: 32
-    components:
-    - type: MetaData
-      name: Fire cannon
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -1.5,4.5
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        176:
-        - - Pressed
-          - Trigger
-    - type: Fixtures
-      fixtures: {}
   - uid: 173
     components:
     - type: MetaData
@@ -1446,21 +1405,6 @@ entities:
         156:
         - - Pressed
           - Toggle
-    - type: Fixtures
-      fixtures: {}
-  - uid: 174
-    components:
-    - type: MetaData
-      name: Fire cannon
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,8.5
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        176:
-        - - Pressed
-          - Trigger
     - type: Fixtures
       fixtures: {}
   - uid: 177
@@ -1516,32 +1460,13 @@ entities:
     - type: Transform
       pos: 1.5,-1.5
       parent: 1
-- proto: SuitStorageBase
+- proto: SuitStoragePirateBuccaneer
   entities:
-  - uid: 204
+  - uid: 186
     components:
     - type: Transform
       pos: -0.5,5.5
       parent: 1
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.1462
-        moles:
-          Oxygen: 1.606311
-          Nitrogen: 6.042789
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 205
-          - 206
-          - 207
-          - 208
-          - 209
 - proto: TableCarpet
   entities:
   - uid: 212
@@ -1623,10 +1548,15 @@ entities:
       parent: 1
 - proto: TreasureCoinGold
   entities:
-  - uid: 195
+  - uid: 3
     components:
     - type: Transform
-      pos: -0.7339678,3.6037753
+      pos: -0.35096312,3.501836
+      parent: 1
+  - uid: 32
+    components:
+    - type: Transform
+      pos: -0.8627455,3.5936186
       parent: 1
   - uid: 196
     components:
@@ -1636,21 +1566,21 @@ entities:
   - uid: 197
     components:
     - type: Transform
-      pos: -0.50480115,3.6663184
+      pos: -0.39399558,3.5623472
       parent: 1
 - proto: TreasureCoinIron
   entities:
   - uid: 216
     components:
     - type: Transform
-      pos: -0.42875755,3.780982
+      pos: -0.71554637,3.6269233
       parent: 1
 - proto: TreasureCoinSilver
   entities:
   - uid: 217
     components:
     - type: Transform
-      pos: -0.36938453,3.541232
+      pos: -0.9518757,3.47622
       parent: 1
 - proto: WallReinforced
   entities:
@@ -1817,12 +1747,5 @@ entities:
     components:
     - type: Transform
       pos: -0.5,7.5
-      parent: 1
-- proto: WeaponGrapplingGun
-  entities:
-  - uid: 184
-    components:
-    - type: Transform
-      pos: 2.5194292,1.6618959
       parent: 1
 ...
