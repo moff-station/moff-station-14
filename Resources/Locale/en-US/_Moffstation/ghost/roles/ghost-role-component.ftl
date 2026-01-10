@@ -14,3 +14,5 @@ ghost-role-information-rod-name-moffstation = Sentient Immovable Rod
 ghost-role-information-rod-description-moffstation = An unstoppable rod currently tearing through the station.
 ghost-role-information-jokejoke-name = Joke Joke
 ghost-role-information-jokejoke-description = A cut-throat kobold pirate serving drinks and maintaining the cove.
+ghost-role-information-oscar-name = Oscar
+ghost-role-information-oscar-description = A Dachshund who has at least a one award for culinary expertise.
