@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.GameTicking;
+using Content.Shared._Moffstation.CCVar; // Moffstation
 using Content.Shared.CCVar;
 using Content.Shared.Maps;
 using Robust.Server.Player;
@@ -197,7 +198,7 @@ public sealed class GameMapManager : IGameMapManager
                map.MinPlayers <= _playerManager.PlayerCount &&
                map.Conditions.All(x => x.Check(map)) &&
                _entityManager.System<GameTicker>().IsMapEligible(map) &&
-               (_configurationManager.GetCVar(CCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
+               (_configurationManager.GetCVar(MoffCCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
     }
 
     private bool TryLookupMap(string gameMap, [NotNullWhen(true)] out GameMapPrototype? map)
