@@ -1230,28 +1230,28 @@ entities:
       rot: 3.141592653589793 rad
       pos: -6.5,-9.5
       parent: 1
-- proto: ERTChaplainSpawner
+- proto: ERTChaplainSpawnerEVA
   entities:
   - uid: 433
     components:
     - type: Transform
       pos: 1.5,-11.5
       parent: 1
-- proto: ERTJanitorSpawner
+- proto: ERTJanitorSpawnerEVA
   entities:
   - uid: 432
     components:
     - type: Transform
       pos: -2.5,-11.5
       parent: 1
-- proto: ERTLeaderSpawner
+- proto: ERTLeaderSpawnerEVA
   entities:
   - uid: 428
     components:
     - type: Transform
       pos: 1.5,-1.5
       parent: 1
-- proto: ERTMedicSpawner
+- proto: ERTMedicalSpawnerEVA
   entities:
   - uid: 429
     components:

@@ -3005,14 +3005,14 @@ entities:
     - type: Transform
       pos: -4.7592955,5.4378777
       parent: 1
-- proto: ERTChaplainSpawner
+- proto: ERTChaplainSpawnerEVA
   entities:
   - uid: 1012
     components:
     - type: Transform
       pos: -3.5,-9.5
       parent: 1
-- proto: ERTEngineerSpawner
+- proto: ERTEngineerSpawnerEVA
   entities:
   - uid: 1009
     components:
@@ -3024,21 +3024,21 @@ entities:
     - type: Transform
       pos: -5.5,-18.5
       parent: 1
-- proto: ERTJanitorSpawner
+- proto: ERTJanitorSpawnerEVA
   entities:
   - uid: 1010
     components:
     - type: Transform
       pos: 2.5,-9.5
       parent: 1
-- proto: ERTLeaderSpawner
+- proto: ERTLeaderSpawnerEVA
   entities:
   - uid: 987
     components:
     - type: Transform
       pos: -0.5,6.5
       parent: 1
-- proto: ERTMedicSpawner
+- proto: ERTMedicalSpawnerEVA
   entities:
   - uid: 1007
     components:
@@ -3050,7 +3050,7 @@ entities:
     - type: Transform
       pos: -5.5,-5.5
       parent: 1
-- proto: ERTSecuritySpawner
+- proto: ERTSecuritySpawnerEVA
   entities:
   - uid: 1011
     components:

@@ -1,3 +1,4 @@
+# CentComm
 - type: entity
   parent: RandomHumanoidSpawnerCentcomOfficial
   id: RandomHumanoidSpawnerCentcomExecutive
@@ -51,9 +52,42 @@
   parent: CentcomOfficial
   id: CentcomRepresentative
   components:
-    - type: Loadout
-      prototypes: [ CentcomRepresentativeGear ]
-      roleLoadout: [ RoleSurvivalStandard ]
+  - type: Loadout
+    prototypes: [ CentcomRepresentativeGear ]
+    roleLoadout: [ RoleSurvivalStandard ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-leader
+
+# ERT Team Leaders, with a lower rank - they lead 4-man fireteams within a larger ERT deployment.
+- type: entity
+  parent: RandomHumanoidSpawnerERTLeaderArmed
+  id: RandomHumanoidSpawnerERTLeaderArmedTeam
+  name: ERT fireteam leader
+  suffix: ERTRole, Armed, EVA
+  components:
+  - type: RandomHumanoidSpawner
+    settings: ERTLeaderArmedTeam
+
+- type: randomHumanoidSettings
+  parent: ERTLeaderEVA
+  id: ERTLeaderArmedTeam
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-team-leader-name
+    description: ghost-role-information-ert-team-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTLeader
+  - type: Loadout
+    prototypes: [ ERTLeaderGearArmedTeam ]
+    roleLoadout: [ RoleSurvivalMilitaryDouble ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-team-leader
 
 # Mercenaries
 - type: job
@@ -93,7 +127,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-military-leader
+    nameFormat: name-format-ert-leader
   - type: Loadout
     prototypes: [ MercenaryLeaderGear ]
     roleLoadout: [ RoleSurvivalExtended ]
@@ -123,7 +157,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-military-rifle
+    nameFormat: name-format-ert-rifle
   - type: Loadout
     prototypes: [ MercenaryRiflemanGear ]
     roleLoadout: [ RoleSurvivalExtended ]
@@ -153,7 +187,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-military-pointman
+    nameFormat: name-format-ert-pointman
   - type: Loadout
     prototypes: [ MercenaryEngineerGear ]
     roleLoadout: [ RoleSurvivalExtended ]
@@ -183,7 +217,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-military-medic
+    nameFormat: name-format-ert-corpsman
   - type: Loadout
     prototypes: [ MercenaryMedicGear ]
     roleLoadout: [ RoleSurvivalExtended ]

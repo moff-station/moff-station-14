@@ -3599,7 +3599,7 @@ entities:
     - type: Transform
       pos: -5.5,-14.5
       parent: 2
-- proto: ERTEngineerSpawner
+- proto: ERTEngineerSpawnerEVA
   entities:
   - uid: 494
     components:
@@ -3631,14 +3631,14 @@ entities:
     - type: Transform
       pos: 3.5,-15.5
       parent: 2
-- proto: ERTJanitorSpawner
+- proto: ERTJanitorSpawnerEVA
   entities:
   - uid: 1180
     components:
     - type: Transform
       pos: 9.5,-15.5
       parent: 2
-- proto: ERTLeaderSpawner
+- proto: ERTLeaderSpawnerEVA
   entities:
   - uid: 493
     components:
