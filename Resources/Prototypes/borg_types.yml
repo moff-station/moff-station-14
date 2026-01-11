@@ -138,6 +138,9 @@
     - BorgModuleJanitor
 
   defaultModules:
+  # Moffstation - Start - Return of the tool module
+  - BorgModuleTool
+  # Moffstation - End
   - BorgModuleCleaning
   - BorgModuleCustodial
 
@@ -178,6 +181,9 @@
     - BorgModuleMedical
 
   defaultModules:
+  # Moffstation - Start - Return of the tool module
+  - BorgModuleTool
+  # Moffstation - End
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -232,6 +238,9 @@
     - BorgModuleService
 
   defaultModules:
+  # Moffstation - Start - Return of the tool module
+  - BorgModuleTool
+  # Moffstation - End
   - BorgModuleMusique
   - BorgModuleService
   - BorgModuleClowning
