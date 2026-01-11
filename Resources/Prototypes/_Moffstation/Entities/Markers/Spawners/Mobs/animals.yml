@@ -163,8 +163,8 @@
         layer:
         - MobLayer
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.9
-    baseSprintSpeed: 3.5
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 4.2
   - type: Puller
     needsHands: false
   - type: Inventory
@@ -208,6 +208,8 @@
     - VimPilot
     - DoorBumpOpener
     - FootstepSound
+  - type: StealTarget
+    stealGroup: AnimalWalter
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
@@ -276,7 +278,56 @@
     - VimPilot
     - DoorBumpOpener
     - FootstepSound
+  - type: StealTarget
+    stealGroup: AnimalMcGriff
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
   - type: MessyDrinker
+
+- type: entity
+  name: Jamie
+  parent: MobFox
+  id: MobJamie
+  description: The captain's trustworthy sea lion.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Pets/jamie.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: jamie
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-soft-floofy
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      collection: Fox
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: jamie
+      Critical:
+        Base: jamie-crit
+      Dead:
+        Base: jamie-dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 2
+    - id: BeachBall
+    - id: Telecrystal5
+      amount: 1
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+    - DoorBumpOpener
+    - FootstepSound
+  - type: StealTarget
+    stealGroup: AnimalRenault
