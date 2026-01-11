@@ -10,7 +10,7 @@
     - state: ai
   - type: RandomSpawner #Moffstation - Start - New Station Pets
     rarePrototypes:
-    - MobAlexander
+    - MobAlexander # I HATE THIS PIG! I DON'T WANT IT IN MY KITCHEN!
     rareChance: 0.25
     prototypes:
     - MobOscar
@@ -151,7 +151,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobFoxRenault
-  name: Fox Renault Spawner
+  name: Captain's pet Spawner
   suffix: Captain Pet
   components:
   - type: Sprite
@@ -161,11 +161,12 @@
   - type: ConditionalSpawner
     prototypes:
     - MobFoxRenault
+    - MobJamie
 
 - type: entity
   parent: MarkerBase
   id: SpawnMobMcGriff
-  name:  McGriff Spawner
+  name:  Security Dog Spawner #Moffstation - New Station Pets
   suffix: Warden Pet
   components:
   - type: Sprite
@@ -175,6 +176,7 @@
   - type: ConditionalSpawner
     prototypes:
     - MobMcGriff
+    - MobMax #Moffstation - New Station Pets
 
 - type: entity
   parent: MarkerBase
@@ -282,21 +284,18 @@
 
 - type: entity
   parent: MarkerBase
-  id: SpawnMobSlothPaperwork #Moffstation - Start - New Station Pets
-  name: Library Pet Spawner #Moffstation - End - New Station Pets
+  id: SpawnMobSlothPaperwork
+  name: Library Pet Spawner #Moffstation - New Station Pets
   suffix: Librarian Pet
   components:
   - type: Sprite
     layers:
     - state: green
     - state: ai
-  - type: RandomSpawner #Moffstation - Start - New Station Pets
+  - type: ConditionalSpawner
     prototypes:
     - MobPaperwork
-    chance: 0.50
-    rarePrototypes:
-    - MobBuddy
-    rareChance: 0.50 #Moffstation - End - New Station Pets
+    - MobBuddy #Moffstation - New Station Pets
 
 - type: entity
   parent: MarkerBase
@@ -315,7 +314,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobWalter
-  name: Walter Spawner
+  name: Chemistry Dog Spawner #Moffstation - New Station Pets
   suffix: Chemistry Pet
   components:
   - type: Sprite
@@ -325,3 +324,4 @@
   - type: ConditionalSpawner
     prototypes:
     - MobWalter
+    - MobNancy #Moffstation - New Station Pets
