@@ -138,9 +138,7 @@
     - BorgModuleJanitor
 
   defaultModules:
-  # Moffstation - Start - Return of the tool module
-  - BorgModuleTool
-  # Moffstation - End
+  - BorgModuleTool # Moffstation - Return of the tool module
   - BorgModuleCleaning
   - BorgModuleCustodial
 
