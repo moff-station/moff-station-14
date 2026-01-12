@@ -1,0 +1,20 @@
+﻿# Player: Sasha_The_Foxgirl / Character: Samantha Rosewell-Vines
+- type: entity
+  parent: FlaskBase
+  id: PersonalItemSamRVFlask
+  suffix: PersonalItem
+  name: Sam's robust flask
+  description: The silver this flask is made of has a blue tinge to it. The inscription reads "The Grapes of Rationality would be proud".
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Sasha_The_Foxgirl/Samantha_Rosewell-Vines/samrvflask.rsi
+
+- type: loadout
+  id: PersonalItemSamRVFlask
+  storage:
+    back:
+    - PersonalItemSamRVFlask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Samantha Rosewell-Vines
