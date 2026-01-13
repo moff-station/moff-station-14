@@ -300,3 +300,25 @@
         - id: CannonBallGlassshot
           amount: !type:RangeNumberSelector
             range: 1, 3
+
+- type: entity
+  parent: [ CratePirateChestSecure, BaseSecurityContraband ]
+  id: CratePirateCorsair
+  name: corsair crate
+  description: Contains a varied assortment of privateering equipment.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: !type:AllSelector
+          children:
+          - id: EnergyCutlass
+          - id: Fulton
+          - id: GunpowderCharge
+            amount: !type:ConstantNumberSelector
+              value: 2
+          - id: HandHeldMassScannerPirate
+          - id: MagazineBoxMagnum
+          - id: PirateAnchor
+          - id: WeaponGrapplingGun
+          - id: WeaponPistolFlintlock
