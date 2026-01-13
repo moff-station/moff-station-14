@@ -16,7 +16,7 @@
   description: A pompous and comfy blue cloak with a nice gold trim, while not particularly valuable as your other possessions, it sure is fancy.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/cap.rsi
+    sprite: _Moffstation/Clothing/Neck/cap.rsi # Moffstation - Command Outfit Resprite
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -27,7 +27,7 @@
   description: An exquisite dark and red cloak fitting for those who can assert dominance over wrongdoers. Take a stab at being civil in prosecution!
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/hos.rsi
+    sprite: _Moffstation/Clothing/Neck/hos.rsi # New Command Outfits
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -38,7 +38,7 @@
   description: A dark green cloak with light blue ornaments, given to those who proved themselves to master the precise art of engineering.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/ce.rsi
+    sprite: _Moffstation/Clothing/Neck/ce.rsi # New Command Outfits
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -49,7 +49,7 @@
   description: A sterile blue cloak with a green cross, radiating with a sense of duty and willingness to help others.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/cmo.rsi
+    sprite: _Moffstation/Clothing/Neck/cmo.rsi # New Command Outfits
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -60,7 +60,7 @@
   description: A white cloak with violet stripes, showing your status as the arbiter of cutting-edge technology.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/rd.rsi
+    sprite: _Moffstation/Clothing/Neck/rd.rsi # New Command Outfits
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -71,7 +71,7 @@
   description: A strong brown cloak with a reflective stripe, while not as fancy as others, it does show your managing skills.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/qm.rsi
+    sprite: _Moffstation/Clothing/Neck/qm.rsi # New Command Outfits
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -82,7 +82,7 @@
   description: A blue cloak with red shoulders and gold buttons, proving you are the gatekeeper to any airlock on the station.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/hop.rsi
+    sprite: _Moffstation/Clothing/Neck/hop.rsi # New Command Outfits
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -111,7 +111,7 @@
   description: A lavish and decorated cloak for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/capcloakformal.rsi
+    sprite: _Moffstation/Clothing/Neck/capcloakformal.rsi # Moffstation - Command Outfit Resprite
   - type: StealTarget
     stealGroup: HeadCloak
 
@@ -168,7 +168,7 @@
   description: A rather fetching black pirate cloak, complete with skull motif.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/piratecap.rsi
+    sprite: _Moffstation/Clothing/Neck/piratecap.rsi # Moffstation - Command Outfit Resprite
   - type: AddAccentClothing #Moffstation - Add pirate accent
     accent: PirateAccent #Moffstation - Add pirate accent
 

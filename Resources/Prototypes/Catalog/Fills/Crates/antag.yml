@@ -1,8 +1,8 @@
 - type: entity
+  parent: CratePirateChestSecure # Moffstation - Change to secure chest
   id: CratePirateChestCaptain
   name: captains pirate chest
   suffix: Filled
-  parent: CratePirateChestSecure # Moffstation - Change to secure chest
   components:
   - type: EntityTableContainerFill
     containers:
@@ -15,10 +15,10 @@
         # Moffstation - End
 
 - type: entity
+  parent: CratePirate
   id: CratePirateChest
   name: crews pirate chest
   suffix: Filled
-  parent: CratePirate
   components:
   - type: EntityTableContainerFill
     containers:

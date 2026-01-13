@@ -11,7 +11,7 @@
       state: banner
   - type: RandomSpawner
     prototypes:
-    - RandomHumanoidSpawnerERTLeaderEVALecter
+    - RandomHumanoidSpawnerERTLeaderArmed
 
 - type: entity
   name: ERT chaplain spawner
@@ -71,7 +71,7 @@
       state: banner
   - type: RandomSpawner
     prototypes:
-    - RandomHumanoidSpawnerERTSecurityEVALecter
+    - RandomHumanoidSpawnerERTSecurityArmedRifle
 
 - type: entity
   name: ERT medic spawner

@@ -4,6 +4,7 @@ using Content.Server.Administration.Managers;   // Moffstation
 using Content.Server.Bible.Components;
 using Content.Server.Chat.Managers;
 using Content.Server.Popups;
+using Content.Shared._Moffstation.Prayers; // Moffstation - Os level alert for prayers
 using Content.Shared.Database;
 using Content.Shared.Popups;
 using Content.Shared.Chat;
@@ -80,7 +81,7 @@ public sealed class PrayerSystem : EntitySystem
     /// <param name="source">The IPlayerSession that sent the message</param>
     /// <param name="messageString">The main message sent to the player via the chatbox</param>
     /// <param name="popupMessage">The popup to notify the player, also prepended to the messageString</param>
-    public void SendSubtleMessage(ICommonSession target, ICommonSession source, string messageString, string popupMessage)
+    public void SendSubtleMessage(ICommonSession target, ICommonSession? source, string messageString, string popupMessage)
     {
         if (target.AttachedEntity == null)
             return;
@@ -89,7 +90,7 @@ public sealed class PrayerSystem : EntitySystem
 
         _popupSystem.PopupEntity(popupMessage, target.AttachedEntity.Value, target, PopupType.Large);
         _chatManager.ChatMessageToOne(ChatChannel.Local, messageString, message, EntityUid.Invalid, false, target.Channel);
-        _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(target.AttachedEntity.Value):player} received subtle message from {source.Name}: {message}");
+        _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(target.AttachedEntity.Value):player} received subtle message from {source?.Name ?? "unknown source"}: {message}");
     }
 
     /// <summary>
@@ -113,5 +114,13 @@ public sealed class PrayerSystem : EntitySystem
         // Moffstation - Prayers have audio notification
         _audioSystem.PlayGlobal("/Audio/Machines/high_tech_confirm.ogg", Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false, AudioParams.Default.WithVolume(-8f));
         _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(sender.AttachedEntity.Value):player} sent prayer ({Loc.GetString(comp.NotificationPrefix)}): {message}");
+        // Moffstation Begin - Prayer System OS level alert
+        var prayEvent = new PrayerEvent();
+        foreach (var admin in _adminManager.ActiveAdmins)
+        {
+            RaiseNetworkEvent(prayEvent, admin);
+        }
+        // Moffstation - End
+
     }
 }

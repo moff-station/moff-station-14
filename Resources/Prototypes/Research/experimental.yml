@@ -106,7 +106,10 @@
   - WeaponPistolCHIMP
   - AnomalySynchronizerCircuitboard
   - AnomalyVesselExperimentalCircuitboard
-  - BorgModuleAdvancedAnomaly # Moffstation - Scienceborg
+  # Moffstation - Start - Scienceborg
+  - BorgModuleAdvancedAnomaly
+  - BorgModuleScienceGeneric
+  # Moffstation - End
   technologyPrerequisites:
   - BasicAnomalousResearch
 

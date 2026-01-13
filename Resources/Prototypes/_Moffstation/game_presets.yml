@@ -27,3 +27,14 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+
+- type: gamePreset
+  id: ExtendedAdmin
+  name: extended-title
+  showInVote: false #2boring2vote
+  description: extended-description
+  rules:
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation

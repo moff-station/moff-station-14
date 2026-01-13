@@ -12,7 +12,7 @@ public sealed partial class ShuttleSystem
     {
         SubscribeLocalEvent<IFFConsoleComponent, AnchorStateChangedEvent>(OnIFFConsoleAnchor);
         SubscribeLocalEvent<IFFConsoleComponent, IFFShowIFFMessage>(OnIFFShow);
-        SubscribeLocalEvent<IFFConsoleComponent, IFFShowVesselMessage>(OnIFFShowVessel);
+        SubscribeLocalEvent<IFFConsoleComponent, IFFShowVesselMessage>(OnIFFShowVessel); // Moffstation - Revert IFF changes
         SubscribeLocalEvent<GridSplitEvent>(OnGridSplit);
     }
 
@@ -37,22 +37,26 @@ public sealed partial class ShuttleSystem
 
     private void OnIFFShow(EntityUid uid, IFFConsoleComponent component, IFFShowIFFMessage args)
     {
+        // Moffstation - Start - Revert IFF changes
         if (!TryComp(uid, out TransformComponent? xform) || xform.GridUid == null ||
             (component.AllowedFlags & IFFFlags.HideLabel) == 0x0)
+        // Moffstation - End
         {
             return;
         }
 
         if (!args.Show)
         {
-            AddIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
+            AddIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel); // Moffstation - Revert IFF changes
         }
         else
         {
             RemoveIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
+            // RemoveIFFFlag(xform.GridUid.Value, IFFFlags.Hide); // Moffstation - Revert IFF changes
         }
     }
 
+    // Moffstation - Start - Revert IFF changes
     private void OnIFFShowVessel(EntityUid uid, IFFConsoleComponent component, IFFShowVesselMessage args)
     {
         if (!TryComp(uid, out TransformComponent? xform) || xform.GridUid == null ||
@@ -70,6 +74,7 @@ public sealed partial class ShuttleSystem
             RemoveIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
         }
     }
+    // Moffstation - End
 
     private void OnIFFConsoleAnchor(EntityUid uid, IFFConsoleComponent component, ref AnchorStateChangedEvent args)
     {
@@ -111,4 +116,27 @@ public sealed partial class ShuttleSystem
             });
         }
     }
+
+    /* // Moffstation - Start - Revert IFF changes
+    // Made this method to avoid copy and pasting.
+    /// <summary>
+    /// Adds all IFF flags that are allowed by AllowedFlags to the grid.
+    /// </summary>
+    private void AddAllSupportedIFFFlags(TransformComponent xform, IFFConsoleComponent component)
+    {
+        if (xform.GridUid == null)
+        {
+            return;
+        }
+
+        if ((component.AllowedFlags & IFFFlags.HideLabel) != 0x0)
+        {
+            AddIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
+        }
+        if ((component.AllowedFlags & IFFFlags.Hide) != 0x0)
+        {
+            AddIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
+        }
+     }
+    */ // Moffstation - End
 }

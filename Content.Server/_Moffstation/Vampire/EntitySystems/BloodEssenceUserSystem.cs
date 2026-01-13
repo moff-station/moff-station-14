@@ -56,16 +56,6 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
             MaxVolume = transferAmount,
         };
 
-        if (_solutionContainerSystem.ResolveSolution(target.Owner, targetBloodstream.ChemicalSolutionName, ref targetBloodstream.ChemicalSolution, out var targetChemSolution))
-        {
-            // make a fraction of what we pull come from the chem solution
-            // Technically this does allow someone to drink blood in order to then have that blood be taken and
-            // give essence but I don't care too much about that possible issue.
-            tempSolution.AddSolution(targetChemSolution.SplitSolution(transferAmount * 0.15f), _proto);
-            transferAmount -= (float) tempSolution.Volume;
-            _solutionContainerSystem.UpdateChemicals(targetBloodstream.ChemicalSolution.Value);
-        }
-
         if (_solutionContainerSystem.ResolveSolution(target.Owner, targetBloodstream.BloodSolutionName, ref targetBloodstream.BloodSolution, out var targetBloodSolution))
         {
             tempSolution.AddSolution(targetBloodSolution.SplitSolution(transferAmount), _proto);

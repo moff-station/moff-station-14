@@ -5,3 +5,11 @@
   sprite:
     sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/big_iron.rsi
     state: base
+
+#Valkyrie Hud
+- type: stealTargetGroup
+  id: ClothingEyesGlassesMedChem
+  name: steal-target-groups-Valkyrie-HUD
+  sprite:
+    sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
+    state: icon
