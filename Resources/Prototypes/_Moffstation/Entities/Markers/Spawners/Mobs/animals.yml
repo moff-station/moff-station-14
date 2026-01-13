@@ -7,7 +7,7 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Moffstation/Mobs/Pets/oscar.rsi
+    sprite: _Moffstation/Mobs/Pets/oscar-dog.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: oscar
@@ -76,7 +76,7 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Moffstation/Mobs/Pets/buddy.rsi
+    sprite: _Moffstation/Mobs/Pets/buddy-dog.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: buddy
@@ -219,7 +219,7 @@
   name: Max
   parent: [SimpleMobBase, StripableInventoryBase]
   id: MobMax
-  description: the dog with a knack for finding things, not only for cold cases, But also for cold meats. Every type of Butcher hates 'em!
+  description: the dog with a knack for finding things, not only for cold cases, But also cold meats. Every kind of Butcher hates 'em!
   components:
   - type: Sprite
     drawdepth: Mobs
