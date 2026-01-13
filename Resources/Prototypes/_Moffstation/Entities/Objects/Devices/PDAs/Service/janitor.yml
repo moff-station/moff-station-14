@@ -15,12 +15,12 @@
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-custodian"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
@@ -92,4 +92,20 @@
         pda-sanitationworker
   - type: PdaBorderColor
     borderColor: "#5D2D56"
+    accentHColor: "#beb440"
+
+- type: entity
+  parent: JanitorPDAAltBase
+  id: HeadofSanitationPDA
+  name: head of sanitation PDA
+  components:
+  - type: RenameId
+    value: job-name-janitor-head-of-sanitation
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-headofsanitation
+  - type: PdaBorderColor
+    accentVColor: "#bf8f2e"
     accentHColor: "#beb440"

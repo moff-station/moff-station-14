@@ -12,7 +12,7 @@ public sealed partial class ShuttleSystem
     {
         SubscribeLocalEvent<IFFConsoleComponent, AnchorStateChangedEvent>(OnIFFConsoleAnchor);
         SubscribeLocalEvent<IFFConsoleComponent, IFFShowIFFMessage>(OnIFFShow);
-        SubscribeLocalEvent<IFFConsoleComponent, MapInitEvent>(OnInitIFFConsole);
+        SubscribeLocalEvent<IFFConsoleComponent, IFFShowVesselMessage>(OnIFFShowVessel); // Moffstation - Revert IFF changes
         SubscribeLocalEvent<GridSplitEvent>(OnGridSplit);
     }
 
@@ -37,49 +37,44 @@ public sealed partial class ShuttleSystem
 
     private void OnIFFShow(EntityUid uid, IFFConsoleComponent component, IFFShowIFFMessage args)
     {
-        if (!TryComp(uid, out TransformComponent? xform) || xform.GridUid == null)
+        // Moffstation - Start - Revert IFF changes
+        if (!TryComp(uid, out TransformComponent? xform) || xform.GridUid == null ||
+            (component.AllowedFlags & IFFFlags.HideLabel) == 0x0)
+        // Moffstation - End
         {
             return;
         }
 
-        // Merged toggle controls both HideLabel and Hide flags
         if (!args.Show)
         {
-            if ((component.AllowedFlags & IFFFlags.HideLabel) != 0x0)
-            {
-                AddIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
-            }
-            if ((component.AllowedFlags & IFFFlags.Hide) != 0x0)
-            {
-                AddIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
-            }
+            AddIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel); // Moffstation - Revert IFF changes
         }
         else
         {
-            if ((component.AllowedFlags & IFFFlags.HideLabel) != 0x0)
-            {
-                RemoveIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
-            }
-            if ((component.AllowedFlags & IFFFlags.Hide) != 0x0)
-            {
-                RemoveIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
-            }
+            RemoveIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
+            // RemoveIFFFlag(xform.GridUid.Value, IFFFlags.Hide); // Moffstation - Revert IFF changes
         }
     }
 
-    private void OnInitIFFConsole(EntityUid uid, IFFConsoleComponent component, MapInitEvent args)
+    // Moffstation - Start - Revert IFF changes
+    private void OnIFFShowVessel(EntityUid uid, IFFConsoleComponent component, IFFShowVesselMessage args)
     {
-        if (!TryComp(uid, out TransformComponent? xform) || xform.GridUid == null)
+        if (!TryComp(uid, out TransformComponent? xform) || xform.GridUid == null ||
+            (component.AllowedFlags & IFFFlags.Hide) == 0x0)
         {
             return;
         }
 
-        if (component.HideOnInit)
+        if (!args.Show)
         {
-            AddIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
             AddIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
         }
+        else
+        {
+            RemoveIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
+        }
     }
+    // Moffstation - End
 
     private void OnIFFConsoleAnchor(EntityUid uid, IFFConsoleComponent component, ref AnchorStateChangedEvent args)
     {
@@ -121,4 +116,27 @@ public sealed partial class ShuttleSystem
             });
         }
     }
+
+    /* // Moffstation - Start - Revert IFF changes
+    // Made this method to avoid copy and pasting.
+    /// <summary>
+    /// Adds all IFF flags that are allowed by AllowedFlags to the grid.
+    /// </summary>
+    private void AddAllSupportedIFFFlags(TransformComponent xform, IFFConsoleComponent component)
+    {
+        if (xform.GridUid == null)
+        {
+            return;
+        }
+
+        if ((component.AllowedFlags & IFFFlags.HideLabel) != 0x0)
+        {
+            AddIFFFlag(xform.GridUid.Value, IFFFlags.HideLabel);
+        }
+        if ((component.AllowedFlags & IFFFlags.Hide) != 0x0)
+        {
+            AddIFFFlag(xform.GridUid.Value, IFFFlags.Hide);
+        }
+     }
+    */ // Moffstation - End
 }

@@ -7,3 +7,8 @@
   components:
   - type: Pda
     id: ERTMailCarrierIDCard
+  - type: Appearance #Moffstation - Start - New PDAs
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-courier #Moffstation - End - New PDAs

@@ -928,6 +928,7 @@
   # Moffstation - Start - Additional job title loadouts
   - CourierPDA
   - LogisticsAssociatePDA
+  - RequisitionsClerkPDA
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1090,6 +1091,7 @@
   - ElectricianPDA
   - MechanicPDA
   - ShipwrightPDA
+  - EngineOperatorPDA
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1288,7 +1290,7 @@
   - SeniorResearcherPDA
   - RoboticistPDA #CD - Job title loadouts
   # Moffstation - Start - Additional job title loadouts
-  - AnomalyContainmentSpecialistPDA
+  - PhenomenaAnalystPDA
   - MachinistPDA
   - XenoarcheologistPDA
   # Moffstation - End
@@ -1470,7 +1472,8 @@
   - SecurityPDA
   - SeniorOfficerPDA
   # Moffstation - Start - Additional job title loadouts
-  - AssetProtectionsPDA
+  - AssetProtectionsOfficerPDA
+  - ConstablePDA
   - DeputyPDA
   - HallMonitorPDA
   # Moffstation - End
@@ -1707,6 +1710,8 @@
   - MedicalDoctorPDA
   - SeniorPhysicianPDA
   # Moffstation - Start - Additional job title loadouts
+  - GeneticistPDA
+  - VirologistPDA
   - ClinicianPDA
   - CoronerPDA
   - CryogenicsSpecialistPDA

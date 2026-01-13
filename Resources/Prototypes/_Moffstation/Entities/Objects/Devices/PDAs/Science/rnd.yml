@@ -1,0 +1,42 @@
+#RD
+- type: entity
+  parent: RnDPDA
+  id: RnDPDAAltBase
+  name: quartermaster alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-researchsupervisor"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: RnDPDAAltBase
+  id: ResearchSupervisorPDA
+  name: research supervisor PDA
+  components:
+  - type: RenameId
+    value: job-name-research-director-research-supervisor
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-researchsupervisor

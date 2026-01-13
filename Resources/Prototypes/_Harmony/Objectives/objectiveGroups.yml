@@ -1,17 +1,17 @@
 - type: weightedRandom
   id: BloodBrotherObjectiveGroups
   weights:
-    BloodBrotherObjectiveGroupState: 1
+    BloodBrotherObjectiveGroupState: 0.1  # Moffstation - Objective picker adjustments
     BloodBrotherObjectiveGroupSteal: 1
-    BloodBrotherObjectiveGroupKill: 1
-    BloodBrotherObjectiveGroupOpenEnded: 0.5 # Moffstation - Added our own open-ended objectives - See Prototypes/_Moffstation/Objectives/objectiveGroups.yml for this definition.
+    BloodBrotherObjectiveGroupKill: 3 # Moffstation - Objective picker adjustments
+    BloodBrotherObjectiveGroupOpenEnded: 0.25 # Moffstation - Added our own open-ended objectives - See Prototypes/_Moffstation/Objectives/objectiveGroups.yml for this definition.
 
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupState
   weights:
     # Blood brothers are expected to be usually trying to be stealthy, so low DAGD chance.
     BloodBrotherEscapeShuttleObjective: 0.90 # Moffstation - Since we had to remove "survive" bump up the escape shuttle objective.
-    BloodBrotherDieObjective: 0.10
+    BloodBrotherDieObjective: 0.02 # Moffstation - Objective picker adjustments
     # BloodBrotherSurviveObjective: 0.65 # Moffstation - Removed survive objecitve since it doesn't exist in our branch (yet, we could just make it)
 
 # TODO: figure out how to make the converted brother holding the objective item also count towards the objective
