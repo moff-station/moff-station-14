@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/10/2026 21:03:29
-  entityCount: 224
+  time: 01/14/2026 22:27:13
+  entityCount: 215
 maps: []
 grids:
 - 1
@@ -303,6 +303,13 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+- proto: AppraisalTool
+  entities:
+  - uid: 160
+    components:
+    - type: Transform
+      pos: -1.3753866,3.5968683
+      parent: 1
 - proto: AtmosDeviceFanDirectional
   entities:
   - uid: 12
@@ -680,6 +687,13 @@ entities:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
+- proto: CratePirateSpoils
+  entities:
+  - uid: 32
+    components:
+    - type: Transform
+      pos: -0.5,1.5
+      parent: 1
 - proto: DecalSpawnerDirtWide
   entities:
   - uid: 199
@@ -701,6 +715,13 @@ entities:
     components:
     - type: Transform
       pos: 1.6947066,3.2605479
+      parent: 1
+- proto: FultonBeaconPirate
+  entities:
+  - uid: 3
+    components:
+    - type: Transform
+      pos: 2.5,1.5
       parent: 1
 - proto: GasPassiveVent
   entities:
@@ -1120,33 +1141,6 @@ entities:
     - type: Transform
       pos: -0.4366421,6.7635717
       parent: 1
-- proto: MaterialDiamond1
-  entities:
-  - uid: 170
-    components:
-    - type: Transform
-      pos: -0.3523289,3.7499774
-      parent: 1
-  - uid: 174
-    components:
-    - type: Transform
-      pos: -0.59191227,3.4581082
-      parent: 1
-  - uid: 183
-    components:
-    - type: Transform
-      pos: -0.9447131,3.845825
-      parent: 1
-  - uid: 184
-    components:
-    - type: Transform
-      pos: -0.9622923,3.684698
-      parent: 1
-  - uid: 205
-    components:
-    - type: Transform
-      pos: -0.5697131,3.7728574
-      parent: 1
 - proto: Mattress
   entities:
   - uid: 171
@@ -1183,24 +1177,12 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-- proto: PirateFultonBeacon
-  entities:
-  - uid: 160
-    components:
-    - type: Transform
-      anchored: True
-      pos: 2.5,1.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
-    - type: Foldable
-      folded: False
 - proto: PirateHandyFlag
   entities:
   - uid: 226
     components:
     - type: Transform
-      pos: -1.5239985,3.6355584
+      pos: -0.5941366,3.6385643
       parent: 1
 - proto: PlushieSharkPirate
   entities:
@@ -1545,42 +1527,6 @@ entities:
     components:
     - type: Transform
       pos: -1.4755204,-0.41207275
-      parent: 1
-- proto: TreasureCoinGold
-  entities:
-  - uid: 3
-    components:
-    - type: Transform
-      pos: -0.35096312,3.501836
-      parent: 1
-  - uid: 32
-    components:
-    - type: Transform
-      pos: -0.8627455,3.5936186
-      parent: 1
-  - uid: 196
-    components:
-    - type: Transform
-      pos: -0.69230115,3.7914057
-      parent: 1
-  - uid: 197
-    components:
-    - type: Transform
-      pos: -0.39399558,3.5623472
-      parent: 1
-- proto: TreasureCoinIron
-  entities:
-  - uid: 216
-    components:
-    - type: Transform
-      pos: -0.71554637,3.6269233
-      parent: 1
-- proto: TreasureCoinSilver
-  entities:
-  - uid: 217
-    components:
-    - type: Transform
-      pos: -0.9518757,3.47622
       parent: 1
 - proto: WallReinforced
   entities:
