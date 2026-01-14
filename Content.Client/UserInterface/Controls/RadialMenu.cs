@@ -1,3 +1,4 @@
+
 using System.Linq;
 using System.Numerics;
 using Content.Shared.Input;
@@ -237,16 +238,22 @@ public abstract class RadialMenuButtonBase : BaseButton
         EnableAllKeybinds = true;
     }
 
+    // MoffStation Start
     /// <inheritdoc />
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
     {
-        if (args.Function == EngineKeyFunctions.UIClick
-            || args.Function == ContentKeyFunctions.AltActivateItemInWorld)
-        {
+        if (args.Function.IsClickOrAltClick())
             base.KeyBindUp(args);
-        }
+    }
+
+    /// <inheritdoc />
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        if (args.Function.IsClickOrAltClick())
+            base.KeyBindDown(args);
     }
 }
+// MoffStation End
 
 /// <summary>
 /// Special button for closing radial menu or going back between radial menu levels.
@@ -283,16 +290,22 @@ public sealed class RadialMenuContextualCentralTextureButton : TextureButton
         return distSquared < innerRadiusSquared;
     }
 
+    //MoffStation Start
     /// <inheritdoc />
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
     {
-        if (args.Function == EngineKeyFunctions.UIClick
-            || args.Function == ContentKeyFunctions.AltActivateItemInWorld)
-        {
+        if (args.Function.IsClickOrAltClick())
             base.KeyBindUp(args);
-        }
+    }
+
+    /// <inheritdoc />
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        if (args.Function.IsClickOrAltClick())
+            base.KeyBindDown(args);
     }
 }
+//MoffStation End
 
 /// <summary>
 /// Menu button for outer area of radial menu (covers everything 'outside').
@@ -685,3 +698,14 @@ public class RadialMenuButtonWithSector : RadialMenuButton, IRadialMenuItemWithS
         return new Angle(angleSectorFrom).EqualsApprox(new Angle(angleSectorTo));
     }
 }
+
+//MoffStation Start
+static file class RadialMenuButtonsHelpers
+{
+    public static bool IsClickOrAltClick(this BoundKeyFunction function)
+    {
+        return function == EngineKeyFunctions.UIClick
+               || function == ContentKeyFunctions.AltActivateItemInWorld;
+    }
+}
+//MoffStation End
