@@ -441,7 +441,7 @@
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
 - type: entity
-  parent: [ClothingOuterArmorSecurity, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
   id: ClothingOuterWinterHoSUnarmored
   name: head of security's winter coat
   description: A sturdy coat, a warm coat, but not as armored. # Moffstation - New Security Outfits
@@ -764,23 +764,8 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
-# Moffstation - Start - New Security Outfits
 - type: entity
-  abstract: true
-  parent: AllowSuitStorageClothing
-  id: ClothingOuterArmorSecurity
-  components:
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.90
-        Slash: 0.85
-        Piercing: 0.90
-        Heat: 0.90
-# Moffstation - End - New Security Outfits
-
-- type: entity
-  parent: [ClothingOuterArmorSecurity, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
   id: ClothingOuterWinterSec
   name: security winter coat
   components: # Moffstation - Start -New Security Outfits
@@ -790,6 +775,13 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSec
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.85
+        Piercing: 0.90
+        Heat: 0.90
 # Moffstation - End - New Security Outfits
 
 - type: entity
@@ -841,7 +833,7 @@
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 
 - type: entity
-  parent: [ClothingOuterArmorSecurity, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
   id: ClothingOuterWinterWardenUnarmored
   name: warden's winter coat
   description: A sturdy coat, a warm coat, but not as armored.
