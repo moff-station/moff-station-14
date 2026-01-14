@@ -96,3 +96,22 @@
   components:
   - type: WirelessNetworkConnection
     range: 10000
+
+# Request Computers
+
+- type: entity
+  parent: ComputerCargoOrdersService
+  id: ComputerCargoOrdersLibrarian
+  name: book request computer
+  description: Used by the librarian to order new books.
+  components:
+  - type: CargoOrderConsole
+    allowedGroups: [ "bookMarket" ]
+    account: Service
+    announcementChannel: Service
+    removeLimitAccess: [ "HeadOfPersonnel" ]
+    mode: PrintSlip
+  - type: Computer
+    board: CargoRequestServiceComputerCircuitboard
+  - type: AccessReader
+    access: [["Service"]]

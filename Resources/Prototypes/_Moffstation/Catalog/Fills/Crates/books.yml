@@ -1,0 +1,11 @@
+﻿- type: entity
+  id: CrateBookCooking
+  parent: CratePlastic
+  name: How to Cook for Forty Spacemen Book Crate
+  description: A crate containing a copy of the book "How to Cook for Forty Spacemen".
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: BookHowToCookForFortySpaceman
