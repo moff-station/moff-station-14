@@ -237,22 +237,22 @@ public abstract class RadialMenuButtonBase : BaseButton
         EnableAllKeybinds = true;
     }
 
-    // MoffStation Start
     /// <inheritdoc />
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
     {
-        if (args.Function.IsClickOrAltClick())
+        if (args.Function.IsClickOrAltClick()) // MoffStation
             base.KeyBindUp(args);
     }
 
+    // MoffStation - Begin
     /// <inheritdoc />
     protected override void KeyBindDown(GUIBoundKeyEventArgs args)
     {
         if (args.Function.IsClickOrAltClick())
             base.KeyBindDown(args);
     }
+    //MoffStation - End
 }
-// MoffStation End
 
 /// <summary>
 /// Special button for closing radial menu or going back between radial menu levels.
@@ -289,22 +289,22 @@ public sealed class RadialMenuContextualCentralTextureButton : TextureButton
         return distSquared < innerRadiusSquared;
     }
 
-    //MoffStation Start
     /// <inheritdoc />
     protected override void KeyBindUp(GUIBoundKeyEventArgs args)
     {
-        if (args.Function.IsClickOrAltClick())
+        if (args.Function.IsClickOrAltClick()) // MoffStation
             base.KeyBindUp(args);
     }
 
+    // MoffStation - Begin
     /// <inheritdoc />
     protected override void KeyBindDown(GUIBoundKeyEventArgs args)
     {
         if (args.Function.IsClickOrAltClick())
             base.KeyBindDown(args);
     }
+    // MoffStation - End
 }
-//MoffStation End
 
 /// <summary>
 /// Menu button for outer area of radial menu (covers everything 'outside').
@@ -698,7 +698,7 @@ public class RadialMenuButtonWithSector : RadialMenuButton, IRadialMenuItemWithS
     }
 }
 
-//MoffStation Start
+//MoffStation - Begin
 static file class RadialMenuButtonsHelpers
 {
     public static bool IsClickOrAltClick(this BoundKeyFunction function)
@@ -707,4 +707,4 @@ static file class RadialMenuButtonsHelpers
                || function == ContentKeyFunctions.AltActivateItemInWorld;
     }
 }
-//MoffStation End
+//MoffStation - End
