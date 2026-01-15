@@ -1360,9 +1360,10 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
-  - HeadofSecurityCarapace # Moffstation - Start
+  # Moffstation - Start
+  - HeadofSecurityCarapace
   - HeadofSecurityWintercoatSmall
-# Moffstation - End
+  # Moffstation - End
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
   name: loadout-group-jobtrinkets
@@ -1458,7 +1459,7 @@
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
-  - SecurityOfficerWintercoatArmored
+  - SecurityOfficerWintercoatArmored # Moffstation
 
 - type: loadoutGroup
   id: SecurityShoes
