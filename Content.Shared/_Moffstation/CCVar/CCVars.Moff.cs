@@ -15,7 +15,7 @@ public sealed class MoffCCVars
     /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
     /// </summary>
     public static readonly CVarDef<float> RespawnTime =
-        CVarDef.Create("moff.respawn_time", 900f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("moff.respawn_time", 450f, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// The maximum size that an overlay stack can reach. Additional overlays will be superimposed over the last one.
