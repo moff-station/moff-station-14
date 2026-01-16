@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Moffstation.Antag;
 using Content.Server.Administration.Managers;
 using Content.Server.Antag.Components;
 using Content.Server.Chat.Managers;
@@ -55,6 +56,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly WeightedAntagManager _antagWeight = default!;
 
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
@@ -271,7 +273,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         AntagSelectionDefinition def,
         bool midround = false)
     {
-        var playerPool = GetPlayerPool(ent, pool, def);
+        // Moffstation - Start - Weighted Antags
+        var weightedPool = GetWeightedAntagPool(pool);
+        var playerPool = GetPlayerPool(ent, weightedPool, def);
+        // Moffstation - End
         var existingAntagCount = ent.Comp.PreSelectedSessions.TryGetValue(def, out var existingAntags) ? existingAntags.Count : 0;
         var count = GetTargetAntagCount(ent, GetTotalPlayerCount(pool), def) - existingAntagCount;
 
@@ -309,6 +314,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 MakeAntag(ent, null, def); // This is for spawner antags
             else
             {
+                _antagWeight.SetWeight(session.UserId, 1); // Moffstation - Reset antag weight
                 if (!ent.Comp.PreSelectedSessions.TryGetValue(def, out var set))
                     ent.Comp.PreSelectedSessions.Add(def, set = new HashSet<ICommonSession>());
                 set.Add(session); // Selection done!
@@ -316,15 +322,34 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 _adminLogger.Add(LogType.AntagSelection, $"Pre-selected {session.Name} as antagonist: {ToPrettyString(ent)}");
             }
         }
+        foreach (var player in pool)
+        {
+            foreach (var set in ent.Comp.PreSelectedSessions.Values)
+            {
+                if (set.Count == 0)
+                    continue;
+
+                foreach (var session in pool)
+                {
+                    if (set.Contains(session))
+                        continue;
+
+                    _antagWeight.SetWeight(session.UserId, _antagWeight.GetWeight(player.UserId) + 1);
+                }
+            }
+        }
     }
 
     // Moffstation - Start - Weighted antag selection
-    public IDictionary<ICommonSession, float> GetPlayerAntagWeights(IList<ICommonSession> pool)
+    public List<ICommonSession> GetWeightedAntagPool(IList<ICommonSession> pool)
     {
-        var weightedPlayerPool = new Dictionary<ICommonSession, float>();
+        var weightedPlayerPool = new List<ICommonSession>();
         foreach (var session in pool)
         {
-            weightedPlayerPool.Add(session, 1f);
+            foreach (var _ in Enumerable.Range(0, _antagWeight.GetWeight(session.UserId)))
+            {
+                weightedPlayerPool.Add(session);
+            }
         }
         return weightedPlayerPool;
     }
