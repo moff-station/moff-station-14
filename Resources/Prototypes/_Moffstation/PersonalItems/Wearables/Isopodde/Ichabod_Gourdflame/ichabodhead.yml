@@ -47,8 +47,9 @@
 
 - type: loadout
   id: PersonalItemIchabodHead
-  equipment:
-    mask: PersonalItemIchabodHead
+  storage:
+    back:
+    - PersonalItemIchabodHead
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
