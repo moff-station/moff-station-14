@@ -796,21 +796,23 @@ namespace Content.Server.GameTicking
 
             return true;
         }
+
         // Moffstation - Start - SetCountdown Command
         public bool SetCountdown(TimeSpan time)
         {
             if (_runLevel != GameRunLevel.PreRoundLobby) // must be in preround
-            {
                 return false;
-            }
 
             _roundStartTime = _gameTiming.CurTime + time;
             RaiseNetworkEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused));
-            _chatManager.DispatchServerAnnouncement(Loc.GetString("game-ticker-set-countdown",
-                ("seconds", time.TotalSeconds)));
+            _chatManager.DispatchServerAnnouncement(
+                Loc.GetString("game-ticker-set-countdown", ("seconds", time.TotalSeconds))
+            );
+
             return true;
         }
-// Moffstation - End
+        // Moffstation - End
+
         private void UpdateRoundFlow(float frameTime)
         {
             if (RunLevel == GameRunLevel.InRound)

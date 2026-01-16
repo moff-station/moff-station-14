@@ -6,7 +6,7 @@ using Robust.Shared.Console;
 namespace Content.Server._Moffstation.GameTicking.Commands;
 
 [AdminCommand(AdminFlags.Round)]
-public sealed class SetCountdownCommand : LocalizedEntityCommands
+public sealed class SetCountdownCommand : LocalizedCommands
 {
     [Dependency] private readonly GameTicker _gameTicker = default!;
 
@@ -28,6 +28,8 @@ public sealed class SetCountdownCommand : LocalizedEntityCommands
 
         var time = TimeSpan.FromSeconds(seconds);
         if (!_gameTicker.SetCountdown(time))
+        {
             shell.WriteLine(Loc.GetString("cmd-setcountdown-too-late"));
+        }
     }
 }
