@@ -31,7 +31,7 @@ namespace Content.Server.Sandbox
         [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
 
         private bool _isSandboxEnabled;
-
+        public static bool IsPlacementProcessing; // Moffstation - EntitySpawnEffects
         [ViewVariables(VVAccess.ReadWrite)]
         public bool IsSandboxEnabled
         {
@@ -54,24 +54,32 @@ namespace Content.Server.Sandbox
             SubscribeLocalEvent<GameRunLevelChangedEvent>(GameTickerOnOnRunLevelChanged);
 
             _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
-
+            // Moffstation - Start - EntitySpawnEffects
             _placementManager.AllowPlacementFunc = placement =>
             {
+                var allowed = false;
                 if (IsSandboxEnabled)
                 {
-                    return true;
+                    allowed = true;
                 }
-
-                var channel = placement.MsgChannel;
-                var player = _playerManager.GetSessionByChannel(channel);
-
-                if (_conGroupController.CanAdminPlace(player))
+                else
                 {
-                    return true;
+                    var channel = placement.MsgChannel;
+                    var player = _playerManager.GetSessionByChannel(channel);
+
+                    if (_conGroupController.CanAdminPlace(player))
+                    {
+                        allowed = true;
+                    }
                 }
 
-                return false;
+                // If the placement is allowed, set the flag!
+                if (allowed)
+                    IsPlacementProcessing = true;
+
+                return allowed;
             };
+            // Moffstation - End
         }
 
         public override void Shutdown()
