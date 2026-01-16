@@ -15,12 +15,12 @@
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-barista"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
@@ -42,6 +42,7 @@
   - type: PdaBorderColor
     borderColor: "#333333"
     accentHColor: "#333e23"
+    accentVColor: "#241707"
 
 
 - type: entity
@@ -59,3 +60,19 @@
   - type: PdaBorderColor
     borderColor: "#333333"
     accentHColor: "#317982"
+
+- type: entity
+  parent: BartenderPDAAltBase
+  id: BarkeeperPDA
+  name: barkeeper PDA
+  components:
+  - type: RenameId
+    value: job-name-bartender-barkeeper
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-barkeeper
+  - type: PdaBorderColor
+    borderColor: "#7a5b35"
+    accentVColor: "#241707"

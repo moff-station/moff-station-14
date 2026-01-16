@@ -1,0 +1,56 @@
+﻿# Player: Isopodde / Character: Ichabod Gourdflame
+- type: entity
+  parent: ClothingHeadLightBase
+  id: PersonalItemIchabodHead
+  name: Ichabod's head
+  suffix: PersonalItem
+  description: A grinning mass-produced novelty Jack-O-Lantern hat.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Misc/pumpkin.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Misc/pumpkin.rsi
+    clothingVisuals:
+      mask:
+      - state: off-equipped-HELMET
+      mask-vox:
+      - state: off-equipped-HELMET-vox
+    slots: [ mask ]
+    equipDelay: 2s
+    unequipDelay: 2s
+  - type: ToggleableVisuals
+    clothingVisuals:
+      mask:
+      - state: on-equipped-HELMET
+      mask-vox:
+      - state: on-equipped-HELMET-vox
+  - type: PointLight
+    enabled: false
+    radius: 3
+    energy: 1
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    color: "#cc6600"
+    netsync: false
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+    - FacialHair
+  - type: DetailExaminable
+    content: The face seems to be making a slightly different expression every time you look at it. The eyes emit a faint glow.
+
+- type: loadout
+  id: PersonalItemIchabodHead
+  storage:
+    back:
+    - PersonalItemIchabodHead
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Ichabod Gourdflame
