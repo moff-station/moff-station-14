@@ -796,7 +796,7 @@ namespace Content.Server.GameTicking
 
             return true;
         }
-        // Moffstation - SetCountdown Command
+        // Moffstation - Start - SetCountdown Command
         public bool SetCountdown(TimeSpan time)
         {
             if (_runLevel != GameRunLevel.PreRoundLobby) // must be in preround
