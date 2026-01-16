@@ -6,11 +6,11 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Misc/id_cards.rsi
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
   - type: Clothing
     slots:
     - idcard
-    sprite: Objects/Misc/id_cards.rsi
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
   - type: Item
     size: Small
     heldPrefix: default
@@ -53,10 +53,12 @@
   - type: Sprite
     layers:
     - state: gold
-    - state: stripe_top
-      color: "#1b67a5"
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: "#0e4069"
+      color: "#1b67a5"
+    - state: stripe_top
+      color: "#7cb1d1"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Captain
@@ -81,10 +83,12 @@
   - type: Sprite
     layers:
     - state: silver
-    - state: stripe_top
-      color: &color-service-top "#639137"
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: &color-service-bottom "#446326"
+      color: &color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: &color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: HeadOfPersonnel
@@ -101,10 +105,12 @@
   - type: Sprite
     layers:
     - state: silver
-    - state: stripe_top
-      color: &color-engineering-top "#ffa62b"
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: &color-engineering-bottom "#bc5b00"
+      color: &color-engineering-bottom "#ea6900"
+    - state: stripe_top
+      color: &color-engineering-top "ff8200"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ChiefEngineer
@@ -121,10 +127,12 @@
   - type: Sprite
     layers:
     - state: silver
-    - state: stripe_top
-      color: &color-medical-top "#68aed6"
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: &color-medical-bottom "#325f7a"
+      color: &color-medical-bottom "#58a0d0"
+    - state: stripe_top
+      color: &color-medical-top "#9ad6ff"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ChiefMedicalOfficer
@@ -141,10 +149,12 @@
   - type: Sprite
     layers:
     - state: silver
-    - state: stripe_top
-      color: &color-science-top "#a53aaa"
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
-      color: &color-science-bottom "#652368"
+      color: &color-science-bottom "#9f469f"
+    - state: stripe_top
+      color: &color-science-top "#f1bcff"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ResearchDirector
@@ -162,9 +172,12 @@
     layers:
     - state: silver
     - state: stripe_top
-      color: &color-security-top "#cb0000"
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
-      color: &color-security-bottom "#830000"
+      color: &color-security-bottom "#e20000"
+    - state: stripe_top
+      color: &color-security-top "#ff7c7c"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: HeadOfSecurity
@@ -181,10 +194,12 @@
   - type: Sprite
     layers:
     - state: silver
-    - state: stripe_top
-      color: &color-supply-top "#b18644"
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
-      color: &color-supply-bottom "#5b4523"
+      color: &color-supply-bottom "#e39e00"
+    - state: stripe_top
+      color: &color-supply-top "#e1b97d"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: QuarterMaster
@@ -203,10 +218,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-engineering-top
+      # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-engineering-bottom
+    - state: stripe_top
+      color: *color-engineering-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: TechnicalAssistant
@@ -221,10 +238,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-engineering-top
+      # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-engineering-bottom
+    - state: stripe_top
+      color: *color-engineering-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: StationEngineer
@@ -239,10 +258,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-engineering-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-engineering-bottom
+    - state: stripe_top
+      color: *color-engineering-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: AtmosphericTechnician
@@ -257,10 +278,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-engineering-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-engineering-bottom
+    - state: stripe_top
+      color: *color-engineering-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SeniorEngineer
@@ -275,10 +298,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-medical-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-medical-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: MedicalIntern
@@ -293,10 +318,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-medical-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-medical-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: MedicalDoctor
@@ -311,10 +338,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-medical-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-medical-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Paramedic
@@ -329,10 +358,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-medical-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-medical-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Chemist
@@ -347,10 +378,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-medical-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-medical-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Psychologist
@@ -365,10 +398,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-medical-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-medical-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SeniorPhysician
@@ -383,10 +418,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-science-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-science-bottom
+    - state: stripe_top
+      color: *color-science-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ResearchAssistant
@@ -401,10 +438,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-science-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-science-bottom
+    - state: stripe_top
+      color: *color-science-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Scientist
@@ -419,10 +458,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-science-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-science-bottom
+    - state: stripe_top
+      color: *color-science-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SeniorResearcher
@@ -437,10 +478,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-security-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-security-bottom
+    - state: stripe_top
+      color: *color-security-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SecurityCadet
@@ -455,10 +498,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-security-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-security-bottom
+    - state: stripe_top
+      color: *color-security-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SecurityOfficer
@@ -473,10 +518,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-security-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-security-bottom
+    - state: stripe_top
+      color: *color-security-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Warden
@@ -491,10 +538,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-security-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-security-bottom
+    - state: stripe_top
+      color: *color-security-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Detective
@@ -509,10 +558,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-security-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
       color: *color-security-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Brigmedic
@@ -525,10 +576,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-security-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-security-bottom
+    - state: stripe_top
+      color: *color-security-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SeniorOfficer
@@ -543,10 +596,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ServiceWorker
@@ -562,6 +617,7 @@
     layers:
     - state: default
     - state: stripe_clown
+    - state: stripe_top
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Clown
@@ -612,10 +668,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Chaplain
@@ -630,10 +688,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Janitor
@@ -648,10 +708,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Bartender
@@ -666,10 +728,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Bartender
@@ -688,10 +752,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Chef
@@ -706,10 +772,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Botanist
@@ -724,10 +792,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Librarian
@@ -742,10 +812,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Lawyer
@@ -760,10 +832,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Reporter
@@ -778,10 +852,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Boxer
@@ -794,10 +870,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Zookeeper
@@ -812,10 +890,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-supply-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-supply-bottom
+    - state: stripe_top
+      color: *color-supply-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: CargoTechnician
@@ -830,10 +910,12 @@
   - type: Sprite
     layers:
     - state: default
-    - state: stripe_top
-      color: *color-supply-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-supply-bottom
+    - state: stripe_top
+      color: *color-supply-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ShaftMiner
@@ -971,7 +1053,7 @@
     - state: stripe_top
       color: &color-syndicate-top "#e80c0c"
     - state: stripe_bottom
-      color: &color-syndicate-bottom "#960606"
+      color: &color-syndicate-bottom "#c30000"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Syndicate
@@ -1071,7 +1153,7 @@
   components:
   - type: Sprite
     layers:
-    - state: pirate
+    - state: wood # Moffstation
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Pirate
@@ -1108,7 +1190,7 @@
   components:
   - type: Sprite
     layers:
-    - state: wizard
+    - state: wood # Moffstation
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Wizard
@@ -1176,10 +1258,12 @@
   - type: Sprite
     layers:
     - state: centcom
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ERTChaplain
@@ -1198,10 +1282,12 @@
   - type: Sprite
     layers:
     - state: centcom
-    - state: stripe_top
-      color: *color-engineering-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-engineering-bottom
+    - state: stripe_top
+      color: *color-engineering-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ERTEngineer
@@ -1220,10 +1306,12 @@
   - type: Sprite
     layers:
     - state: centcom
-    - state: stripe_top
-      color: *color-service-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-service-bottom
+      color: *color-service-bottom "#6c9826"
+    - state: stripe_top
+      color: *color-service-top "b0e074"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ERTJanitor
@@ -1242,10 +1330,12 @@
   - type: Sprite
     layers:
     - state: centcom
-    - state: stripe_top
-      color: *color-medical-top
+    # Moffstation - Start - New ID Cards
     - state: stripe_bottom
-      color: *color-medical-bottom
+      color: *color-medical-bottom "#58a0d0"
+    - state: stripe_top
+      color: *color-medical-top "#9ad6ff"
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ERTMedical
@@ -1264,10 +1354,12 @@
   - type: Sprite
     layers:
     - state: centcom
-    - state: stripe_top
-      color: *color-security-top
+    # Moffstation - Start- New ID Cards
     - state: stripe_bottom
       color: *color-security-bottom
+    - state: stripe_top
+      color: *color-security-top
+    # Moffstation - End - New ID Cards
     - sprite: *icon-rsi
       offset: *icon-offset
       state: ERTSecurity
@@ -1329,14 +1421,14 @@
   description: An ID card that gives you access beyond your wildest dreams.
   components:
   - type: Sprite
-    sprite: Objects/Misc/id_cards.rsi
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi #Moffstation
     layers:
     - state: admin
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Admin
   - type: Clothing
-    sprite: Objects/Misc/id_cards.rsi
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi #Moffstation
   - type: Item
     heldPrefix: green
   - type: IdCard

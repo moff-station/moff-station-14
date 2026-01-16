@@ -4,9 +4,15 @@
   name: ERT Mail Carrier ID card
   components:
   - type: Sprite
-    sprite: _NF/Objects/Misc/id_cards.rsi
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
     layers:
     - state: ert_mailcarrier
+    # Moffstation - Start- New ID Cards
+    - state: stripe_bottom
+      color: *color-supply-bottom
+    - state: stripe_top
+      color: *color-supply-top
+    # Moffstation - End - New ID Cards
   - type: PresetIdCard
     job: ERTMailCarrier
   - type: NanoChatCard # CD
