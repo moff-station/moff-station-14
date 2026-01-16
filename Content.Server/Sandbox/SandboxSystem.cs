@@ -73,7 +73,6 @@ namespace Content.Server.Sandbox
                     }
                 }
 
-                // If the placement is allowed, set the flag!
                 if (allowed)
                     IsPlacementProcessing = true;
 
