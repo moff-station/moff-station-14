@@ -1154,9 +1154,9 @@
   description: A sign of skill and prestige within the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_officer.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_officer.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: ClothingUniformBase
