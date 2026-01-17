@@ -1,25 +1,41 @@
 ﻿using Content.Server.Sandbox;
+using Robust.Shared.Placement;
+using Robust.Shared.Network;
+using System.Collections.Generic;
 
 namespace Content.Server._Moffstation.Administration;
 
 public sealed class SpawnEffectSystem : EntitySystem
 {
-    // What to effect to spawn, when null its disabled
-    public string? ActiveEffect { get; set; }
+    // Store active effects per user
+    private readonly Dictionary<NetUserId, string> _activeEffects = new();
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<TransformComponent ,MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<PlacementEntityEvent>(OnPlace);
     }
 
-    private void OnMapInit(Entity<TransformComponent> coord, ref MapInitEvent args)
+    public void SetActiveEffect(NetUserId user, string? effect)
     {
-        if (ActiveEffect == null || !SandboxSystem.IsPlacementProcessing)
+        if (effect == null)
+        {
+            _activeEffects.Remove(user);
+            return;
+        }
+
+        _activeEffects[user] = effect;
+    }
+
+    private void OnPlace(PlacementEntityEvent args)
+    {
+        // You have to be "creating something" and need to be a player cause server cant place stuff wawa
+        if (args.PlacementEventAction != PlacementEventAction.Create || args.PlacerNetUserId == null)
             return;
 
-        SandboxSystem.IsPlacementProcessing = false;
-
-        Spawn(ActiveEffect, coord.Comp.Coordinates);
+        if (_activeEffects.TryGetValue(args.PlacerNetUserId.Value, out var effect))
+        {
+            Spawn(effect, args.Coordinates);
+        }
     }
 }
