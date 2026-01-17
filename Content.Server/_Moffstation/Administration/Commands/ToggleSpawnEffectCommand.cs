@@ -28,7 +28,7 @@ public sealed class ToggleSpawnEffectCommand : LocalizedCommands
 
         if (args.Length == 0)
         {
-            spawnEffectSystem.SetActiveEffect(userId, null);
+            spawnEffectSystem.TrySetEffect(userId, null);
             shell.WriteLine(Loc.GetString("command-togglespawneffect-disabled"));
             return;
         }
@@ -41,7 +41,7 @@ public sealed class ToggleSpawnEffectCommand : LocalizedCommands
             return;
         }
 
-        spawnEffectSystem.SetActiveEffect(userId, protoId);
+        spawnEffectSystem.TrySetEffect(userId, protoId);
         shell.WriteLine(Loc.GetString("command-togglespawneffect-enabled", ("protoId", protoId)));
     }
 
@@ -51,11 +51,15 @@ public sealed class ToggleSpawnEffectCommand : LocalizedCommands
             return CompletionResult.Empty;
 
         // Filter for all "AdminInstantEffect" prototypes
-        var options = _protoManager.EnumeratePrototypes<EntityPrototype>()
+        var options = GetEffects();
+        return CompletionResult.FromHintOptions(options, "PrototypeID");
+    }
+
+    public IOrderedEnumerable<CompletionOption> GetEffects()
+    {
+       return  _protoManager.EnumeratePrototypes<EntityPrototype>()
             .Where(p => p.ID.StartsWith("AdminInstantEffect"))
             .Select(p => new CompletionOption(p.ID, p.Name))
             .OrderBy(o => o.Value);
-
-        return CompletionResult.FromHintOptions(options, "PrototypeID");
     }
 }
