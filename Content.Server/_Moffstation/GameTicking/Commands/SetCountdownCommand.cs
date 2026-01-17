@@ -8,26 +8,26 @@ namespace Content.Server._Moffstation.GameTicking.Commands;
 [AdminCommand(AdminFlags.Round)]
 public sealed class SetCountdownCommand : LocalizedCommands
 {
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-
     public override string Command => "setcountdown";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (_gameTicker.RunLevel != GameRunLevel.PreRoundLobby)
+        var gameTicker = IoCManager.Resolve<GameTicker>();
+
+        if (gameTicker.RunLevel != GameRunLevel.PreRoundLobby)
         {
             shell.WriteLine(Loc.GetString("shell-can-only-run-from-pre-round-lobby"));
             return;
         }
 
-        if (!uint.TryParse(args[0], out var seconds) || seconds == 0)
+        if (args.Length < 1 || !uint.TryParse(args[0], out var seconds) || seconds == 0)
         {
-            shell.WriteLine(Loc.GetString("cmd-setcountdown-invalid-seconds", ("value", args[0])));
+            shell.WriteLine(Loc.GetString("cmd-setcountdown-invalid-seconds", ("value", args.Length > 0 ? args[0] : "none")));
             return;
         }
 
         var time = TimeSpan.FromSeconds(seconds);
-        if (!_gameTicker.SetCountdown(time))
+        if (!gameTicker.SetCountdown(time))
         {
             shell.WriteLine(Loc.GetString("cmd-setcountdown-too-late"));
         }
