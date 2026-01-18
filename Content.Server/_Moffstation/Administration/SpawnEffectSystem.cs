@@ -1,4 +1,6 @@
-﻿using Robust.Shared.Enums;
+﻿using System.Linq;
+using Robust.Shared.Console;
+using Robust.Shared.Enums;
 using Robust.Shared.Placement;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -51,6 +53,22 @@ public sealed class SpawnEffectSystem : EntitySystem
         }
         _activeEffects[user] = effectId;
 
+    }
+    public IOrderedEnumerable<CompletionOption> GetEffects()
+    {
+        return  _proto.EnumeratePrototypes<EntityPrototype>()
+            .Where(p => p.ID.StartsWith("AdminInstantEffect"))
+            .Select(p => new CompletionOption(p.ID, p.Name))
+            .OrderBy(o => o.Value);
+    }
+
+    public bool TryGetProto(EntProtoId protoId)
+    {
+        if (!_proto.HasIndex<EntityPrototype>(protoId))
+        {
+            return false;
+        }
+        return true;
     }
 
     private void OnPlace(PlacementEntityEvent args)
