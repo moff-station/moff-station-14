@@ -27,7 +27,7 @@ public sealed class SpawnEffectSystem : EntitySystem
     public override void Shutdown()
     {
         base.Shutdown();
-        _playerManager.PlayerStatusChanged -= OnPlayerStatusChanged; // Wawa unsubscribe on shutdown
+        _playerManager.PlayerStatusChanged -= OnPlayerStatusChanged;
     }
 
     public bool TrySetEffect(NetUserId user, string? effectId)
