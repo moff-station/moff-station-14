@@ -1,15 +1,13 @@
-﻿using System.Linq;
-using Content.Server.Administration;
+﻿using Content.Server.Administration;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Administration.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class ToggleSpawnEffectCommand : LocalizedCommands
 {
-    [Dependency] private readonly SpawnEffectSystem _spawnEffSys = default!;
+    [Dependency] private readonly IEntitySystemManager _sysManager = default!;
 
     public override string Command => "togglespawneffect";
 
@@ -22,27 +20,34 @@ public sealed class ToggleSpawnEffectCommand : LocalizedCommands
             return;
         }
 
+        var spawnEffectSystem = _sysManager.GetEntitySystem<SpawnEffectSystem>();
         var userId = player.UserId;
 
         if (args.Length == 0)
         {
-            _spawnEffSys.TrySetEffect(userId, null);
+            spawnEffectSystem.TrySetEffect(userId, null);
             shell.WriteLine(Loc.GetString("command-togglespawneffect-disabled"));
             return;
         }
 
         var protoId = args[0];
 
-        if (!_spawnEffSys.TrySetEffect(userId, protoId))
+        if (!spawnEffectSystem.TrySetEffect(userId, protoId))
         {
-            shell.WriteLine(Loc.GetString("command-togglespawneffect-enabled", ("protoId", protoId)));
+            shell.WriteError(Loc.GetString("command-togglespawneffect-error", ("protoId", protoId)));
+            return;
         }
+        shell.WriteLine(Loc.GetString("command-togglespawneffect-enabled", ("protoId", protoId)));
     }
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
+        var spawnEffectSystem = _sysManager.GetEntitySystem<SpawnEffectSystem>();
         if (args.Length != 1)
             return CompletionResult.Empty;
-        return CompletionResult.FromHintOptions(_spawnEffSys.GetEffects(), "PrototypeID");
+
+        return CompletionResult.FromHintOptions(spawnEffectSystem.GetEffects(), "PrototypeID");
     }
+
+
 }
