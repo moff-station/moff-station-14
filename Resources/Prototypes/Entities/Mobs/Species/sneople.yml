@@ -31,10 +31,18 @@
       - !type:SpawnEntityInInventory
         slot: head
         entity: WaterDropletHat #snails deserve water drop
-    - reagents: [Water, SpaceCleaner]
-      methods: [Touch]
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
       effects:
       - !type:WashCreamPie
+    - reagents: [ TableSalt, Saline ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaling: true
+        damage:
+          types:
+            Heat: 0.5 # MOFFSTATION CHANGE - Increases slime water damage by 5x
   - type: Bloodstream
     bloodReagent: CopperBlood #need to figure out blood
   # Visual & Audio

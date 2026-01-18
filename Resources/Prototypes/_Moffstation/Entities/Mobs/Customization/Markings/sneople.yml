@@ -7,3 +7,11 @@
   - sprite: _Moffstation/Mobs/Customization/sneople_tail_markings.rsi
     state: tail
 
+- type: marking
+  id: SneopleStalk
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Sneople]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/
+    state:
