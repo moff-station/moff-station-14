@@ -10,18 +10,17 @@ namespace Content.Server._Moffstation.Administration;
 
 public sealed class SpawnEffectSystem : EntitySystem
 {
-    // Store active effects per user
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    
-    private readonly Dictionary<NetUserId, EntProtoId> _activeEffects = new();
-    
+
+    private readonly Dictionary<NetUserId, EntProtoId> _activeEffectsByUser = new();
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<PlacementEntityEvent>(OnPlace);
-        
+
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
     }
 
@@ -47,16 +46,16 @@ public sealed class SpawnEffectSystem : EntitySystem
 
     public void ClearEffect(NetUserId user)
     {
-        _activeEffects.Remove(user);
+        _activeEffectsByUser.Remove(user);
     }
 
     public void SetEffect(NetUserId user, [ForbidLiteral] EntProtoId effectId)
     {
-        if (!_activeEffects.ContainsKey(user))
+        if (!_activeEffectsByUser.ContainsKey(user))
         {
-            _activeEffects.Add(user, effectId);
+            _activeEffectsByUser.Add(user, effectId);
         }
-        _activeEffects[user] = effectId;
+        _activeEffectsByUser[user] = effectId;
 
     }
 
@@ -68,18 +67,13 @@ public sealed class SpawnEffectSystem : EntitySystem
             .OrderBy(o => o.Value);
     }
 
-    public bool TryGetProto(EntProtoId protoId)
-    {
-    return _proto.HasIndex<EntityPrototype>(protoId);
-    }
-
     private void OnPlace(PlacementEntityEvent args)
     {
         // You have to be "creating something" and need to be a player cause server cant place stuff wawa
         if (args.PlacementEventAction != PlacementEventAction.Create || args.PlacerNetUserId == null)
             return;
 
-        if (_activeEffects.TryGetValue(args.PlacerNetUserId.Value, out var effect))
+        if (_activeEffectsByUser.TryGetValue(args.PlacerNetUserId.Value, out var effect))
         {
             Spawn(effect, args.Coordinates);
         }
@@ -89,7 +83,7 @@ public sealed class SpawnEffectSystem : EntitySystem
     {
         if (e.NewStatus == SessionStatus.Disconnected)
         {
-            _activeEffects.Remove(e.Session.UserId);
+            _activeEffectsByUser.Remove(e.Session.UserId);
         }
     }
 }
