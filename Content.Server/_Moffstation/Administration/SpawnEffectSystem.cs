@@ -11,16 +11,20 @@ namespace Content.Server._Moffstation.Administration;
 public sealed class SpawnEffectSystem : EntitySystem
 {
     // Store active effects per user
-    private readonly Dictionary<NetUserId, EntProtoId> _activeEffects = new();
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    
+    private readonly Dictionary<NetUserId, EntProtoId> _activeEffects = new();
+    
     public override void Initialize()
     {
-
         base.Initialize();
+
         SubscribeLocalEvent<PlacementEntityEvent>(OnPlace);
+        
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
     }
+
     public override void Shutdown()
     {
         base.Shutdown();
@@ -45,6 +49,7 @@ public sealed class SpawnEffectSystem : EntitySystem
     {
         _activeEffects.Remove(user);
     }
+
     public void SetEffect(NetUserId user, [ForbidLiteral] EntProtoId effectId)
     {
         if (!_activeEffects.ContainsKey(user))
@@ -54,9 +59,10 @@ public sealed class SpawnEffectSystem : EntitySystem
         _activeEffects[user] = effectId;
 
     }
-    public IOrderedEnumerable<CompletionOption> GetEffects()
+
+    public IEnumerable<CompletionOption> GetEffects()
     {
-        return  _proto.EnumeratePrototypes<EntityPrototype>()
+        return _proto.EnumeratePrototypes<EntityPrototype>()
             .Where(p => p.ID.StartsWith("AdminInstantEffect"))
             .Select(p => new CompletionOption(p.ID, p.Name))
             .OrderBy(o => o.Value);
@@ -64,11 +70,7 @@ public sealed class SpawnEffectSystem : EntitySystem
 
     public bool TryGetProto(EntProtoId protoId)
     {
-        if (!_proto.HasIndex<EntityPrototype>(protoId))
-        {
-            return false;
-        }
-        return true;
+    return _proto.HasIndex<EntityPrototype>(protoId);
     }
 
     private void OnPlace(PlacementEntityEvent args)
