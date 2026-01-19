@@ -273,6 +273,7 @@
   id: CrayonBoxFill # Moffstation
   suffix: Filled # Moffstation
   components:
+# Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
   # - type: Sprite
   #   sprite: Objects/Fun/crayons.rsi
   #   state: box
@@ -286,6 +287,7 @@
   #   shape:
   #   - 0,0,1,1
   #   heldPrefix: box
+# Moffstation - End
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
