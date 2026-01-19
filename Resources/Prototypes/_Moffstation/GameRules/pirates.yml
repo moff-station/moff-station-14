@@ -62,12 +62,10 @@
       briefing:
         text: pirate-role-greeting
         color: "#a15608"
-        # Moffstation - Start - MY EARS!!
         sound:
           path: "/Audio/Ambience/Antag/pirate_start.ogg"
           params:
             volume: -12
-        # Moffstation - End - MY EARS!!
       components:
       - type: Pirate
       - type: RandomMetadata
