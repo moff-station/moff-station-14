@@ -1,0 +1,30 @@
+# Player: floret - Character: Laelia Fox
+- type: entity
+  name: SpectreTec Spectre-Detector 3.0
+  parent: BaseItem
+  id: PersonalItemLaeliaSpiritBox
+  description: "A SpectreTec-branded spirit box."
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/floret/Laelia_Fox/spectredetector.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/floret/Laelia_Fox/spectredetector.rsi
+  - type: ItemToggle
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/_Moffstation/PersonalItems/Items/floret/Laelia_Fox/active.wav
+      params:
+        volume: -6
+  - type: DetailExaminable
+    content: "A pristine, expensive-looking SpectreTec-branded spirit box. It has a heavy feel to it, with several buttons along the side and front, and a small light on top blinking slowly. The glowing display is indecipherable to the untrained eye."
+
+- type: loadout
+  id: PersonalItemLaeliaSpiritBox
+  storage:
+    back:
+    - PersonalItemLaeliaSpiritBox
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Laelia Fox
