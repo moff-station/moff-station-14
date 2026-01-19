@@ -1,19 +1,21 @@
 # Player: floret - Character: Laelia Fox
 - type: entity
-  name: SpectreTec Spectre-Detector 3.0
   parent: BaseItem
   id: PersonalItemLaeliaSpiritBox
+  name: SpectreTec Spectre-Detector 3.0
   description: "A SpectreTec-branded spirit box."
   suffix: PersonalItem
   components:
   - type: Sprite
+    state: icon
     sprite: _Moffstation/PersonalItems/Items/floret/Laelia_Fox/spectredetector.rsi
   - type: Item
     sprite: _Moffstation/PersonalItems/Items/floret/Laelia_Fox/spectredetector.rsi
   - type: ItemToggle
+  - type: UseDelay
   - type: ItemToggleActiveSound
     activeSound:
-      path: /Audio/_Moffstation/PersonalItems/Items/floret/Laelia_Fox/active.wav
+      path: /Audio/_Moffstation/PersonalItems/Items/floret/Laelia_Fox/active.ogg
       params:
         volume: -6
   - type: DetailExaminable
