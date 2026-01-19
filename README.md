@@ -19,7 +19,7 @@ We recommend you read the contribution guidelines. [Contribution Guidelines](htt
 
 1. Clone this repo:
 ```shell
-git clone https://github.com/space-wizards/space-station-14.git
+git clone https://github.com/funky-station/forky-station.git
 ```
 2. Go to the project folder and run `RUN_THIS.py` to initialize the submodules and load the engine:
 ```shell
