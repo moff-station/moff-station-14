@@ -1,6 +1,6 @@
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   id: SpawnPointGhostPirate
+  categories: [ HideSpawnMenu, Spawner ]
   name: ghost role spawn point
   suffix: Pirate
   parent: MarkerBase
@@ -21,9 +21,9 @@
         state: skull_icon
 
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner
   id: SpawnPointPirateCaptain
+  categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: GhostRole
     name: roles-antag-pirate-captain-name
@@ -39,9 +39,9 @@
       state: radiation
 
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: SpawnPointPirateCaptain
   id: SpawnPointPirateCrew
+  categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: GhostRole
     name: roles-antag-pirate-crew-name
@@ -49,6 +49,18 @@
     rules: ghost-role-information-rules-default-team-antagonist
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
+
+- type: entity
+  parent: SpawnPointPirateCaptain
+  id: SpawnPointPirateCorsair
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: roles-antag-pirate-corsair-name
+    description: roles-antag-pirate-corsair-objective
+    rules: ghost-role-information-corsair-rules
+    mindRoles:
+    - MindRolePirateCorsair
 
 - type: entity
   parent: MarkerBase

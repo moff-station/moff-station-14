@@ -156,9 +156,9 @@
   name: security winter boots
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Boots/winterbootssec.rsi
+    sprite: _Moffstation/Clothing/Shoes/winterbootssec.rsi #Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Shoes/Boots/winterbootssec.rsi
+    sprite: _Moffstation/Clothing/Shoes/winterbootssec.rsi #Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingShoesBaseWinterBoots, BaseSyndicateContraband]
