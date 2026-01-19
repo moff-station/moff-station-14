@@ -78,40 +78,44 @@ def get_git_authors(filepath):
     return [(author, sorted(years)) for author, years in authors.items()]
 
 def build_header(ext, authors):
-    """Build the REUSE-compliant header"""
     comment = "//" if ext == ".cs" else "#"
     header = []
 
     for author, years in authors:
         for year in years:
-            header.append(f"{comment} SPDX-FileCopyrightText: {year} {author}")
+            clean_author = author.strip()
+            clean_year = str(year).strip()
+            header.append(f"{comment} SPDX-FileCopyrightText: {clean_year} {clean_author}")
 
     header.append(f"{comment} SPDX-License-Identifier: {DEFAULT_LICENSE}")
-    header.append("\n")  # blank line after header
+    header.append("")
 
-    return "\n".join(header) + "\n"
+    return "\n".join(header) 
+
 
 def process_single_file(args):
-    """Process a single file"""
     filepath, dry_run = args
     global processed_counter, skipped_counter, error_counter
 
     try:
         ext = os.path.splitext(filepath)[1].lower()
 
-        # Read file content
         try:
-            with open(filepath, "r", encoding="utf-8") as f:
+            with open(filepath, "r", encoding="utf-8-sig") as f:
                 content = f.read()
         except UnicodeDecodeError:
             try:
-                with open(filepath, "r", encoding="latin-1") as f:
+                with open(filepath, "r", encoding="utf-8") as f:
                     content = f.read()
-            except Exception:
-                error_counter += 1
-                if dry_run_mode:
-                    print_thread_safe(f"Encoding error: {filepath}")
-                return False
+            except UnicodeDecodeError:
+                try:
+                    with open(filepath, "r", encoding="latin-1") as f:
+                        content = f.read()
+                except Exception:
+                    error_counter += 1
+                    if dry_run_mode:
+                        print_thread_safe(f"Encoding error: {filepath}")
+                    return False
 
         # Check if already has header
         if has_reuse_header(content):
@@ -132,12 +136,13 @@ def process_single_file(args):
             print_thread_safe(f"[DRY-RUN] Would update: {filepath}")
             return True
 
-        # Write file with header prepended
+        # Write file with header prepended - USE utf-8 (not utf-8-sig)
         try:
             with open(filepath, "w", encoding="utf-8") as f:
-                f.write(header + content)
+                f.write(header)
+                f.write("\n") 
+                f.write(content)
             processed_counter += 1
-            # Only print in dry-run mode
             return True
         except Exception as e:
             error_counter += 1
