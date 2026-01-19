@@ -366,9 +366,9 @@
   - type: Sprite
     sprite: Structures/Piping/Atmospherics/hellfirethermomachine.rsi
   - type: GasThermoMachine
-    minTemperature: 23.15
+    minTemperature: 13.15 # Funky atmos - /tg/ gases
     heatCapacity: 40000
-    energyLeakPercentage: 0.15
+    energyLeakPercentage: 0.08 # Funky atmos - /tg/ gases
   - type: Machine
     board: HellfireFreezerMachineCircuitBoard
 
@@ -381,9 +381,9 @@
   - type: Sprite
     sprite: Structures/Piping/Atmospherics/hellfirethermomachine.rsi
   - type: GasThermoMachine
-    maxTemperature: 1193.15
+    maxTemperature: 1593.15 # Funky atmos - /tg/ gases
     heatCapacity: 40000
-    energyLeakPercentage: 0.15
+    energyLeakPercentage: 0.08 # Funky atmos - /tg/ gases
   - type: Machine
     board: HellfireHeaterMachineCircuitBoard
 
