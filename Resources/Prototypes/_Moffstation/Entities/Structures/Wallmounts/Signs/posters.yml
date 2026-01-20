@@ -54,6 +54,28 @@
 
 - type: entity
   parent: PosterBaseMoff
+  id: Postermoffgelion
+  name: "Sodium Inception Moffgelion"
+  description: "This poster appears to be an advertisement for the series 'Sodium Inception Moffgelion'.The tagline reads: \"In the war between corporations, salvation is silicon.\""
+  components:
+  - type: Sprite
+    state: poster_moffgelion
+  - type: DetailExaminable
+    content: "  A series following a janitor joining a team of ripley pilots to save a sector."
+
+- type: entity
+  parent: PosterBaseMoff
+  id: Postermarrowfate
+  name: "Marrowfate Files"
+  description: "This poster appears to be an advertisement for the series 'The Marrowfate Files'.The tagline reads: \"Between love & work, who truely controls the chitters.\""
+  components:
+  - type: Sprite
+    state: poster_marrowfate
+  - type: DetailExaminable
+    content: "  A series of an agent struggling to come to terms with their final assigned mission; the assassination of their significant other.!"
+
+- type: entity
+  parent: PosterBaseMoff
   id: PosterMoffFiveHundredMothroaches
   name: "Five Hundred Mothroaches"
   description: "This poster appears to be an advertisement for mothroaches. It encourages the reader to purchase a significant amount of them. More than the average person would consider reasonable."
