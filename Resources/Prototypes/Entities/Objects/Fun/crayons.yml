@@ -269,24 +269,25 @@
     - Trash
 
 - type: entity
-  parent: BoxCardboard
-  id: CrayonBox
-  name: crayon box
-  description: It's a box of crayons.
+  parent: CrayonBox # Moffstation - autofilled box parented to empty box
+  id: CrayonBoxFilled # Moffstation
+  suffix: Filled # Moffstation
   components:
-  - type: Sprite
-    sprite: Objects/Fun/crayons.rsi
-    state: box
-  - type: Storage
-    grid:
-    - 0,0,7,0
-    maxItemSize: Tiny
-  - type: Item
-    sprite: Objects/Fun/crayons.rsi
-    size: Small
-    shape:
-    - 0,0,1,1
-    heldPrefix: box
+# Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
+  # - type: Sprite
+  #   sprite: Objects/Fun/crayons.rsi
+  #   state: box
+  # - type: Storage
+  #   grid:
+  #   - 0,0,7,0
+  #   maxItemSize: Tiny
+  # - type: Item
+  #   sprite: Objects/Fun/crayons.rsi
+  #   size: Small
+  #   shape:
+  #   - 0,0,1,1
+  #   heldPrefix: box
+# Moffstation - End
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -299,38 +300,40 @@
         - id: CrayonPurple
         - id: CrayonBlack
         - id: CrayonWhite
-  - type: ItemMapper
-    mapLayers:
-      black_box:
-        whitelist:
-          tags:
-          - CrayonBlack
-      blue_box:
-        whitelist:
-          tags:
-          - CrayonBlue
-      green_box:
-        whitelist:
-          tags:
-          - CrayonGreen
-      orange_box:
-        whitelist:
-          tags:
-          - CrayonOrange
-      purple_box:
-        whitelist:
-          tags:
-          - CrayonPurple
-      red_box:
-        whitelist:
-          tags:
-          - CrayonRed
-      yellow_box:
-        whitelist:
-          tags:
-          - CrayonYellow
-      white_box:
-        whitelist:
-          tags:
-          - CrayonWhite
-  - type: Appearance
+# Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
+  # - type: ItemMapper
+  #   mapLayers:
+  #     black_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonBlack
+  #     blue_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonBlue
+  #     green_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonGreen
+  #     orange_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonOrange
+  #     purple_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonPurple
+  #     red_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonRed
+  #     yellow_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonYellow
+  #     white_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonWhite
+  # - type: Appearance
+# Moffstation - End

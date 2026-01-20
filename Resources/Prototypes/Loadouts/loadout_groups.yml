@@ -216,7 +216,10 @@
   minLimit: 0
   loadouts:
   - HoPHead
-  - HoPBeret # Moffstation
+  # Moffstation - Start
+  - HoPBeret
+  - Ushanka
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HoPJumpsuit
