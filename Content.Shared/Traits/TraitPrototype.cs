@@ -1,3 +1,7 @@
+// Delta-V - Traits rework
+// This file has been completely rewritten and moved to DV namespace
+// accept any upstream changes
+/*
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
@@ -70,3 +74,4 @@ public sealed partial class TraitPrototype : IPrototype
     [DataField]
     public ProtoId<TraitCategoryPrototype>? Category;
 }
+*/

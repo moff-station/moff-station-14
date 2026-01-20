@@ -23,6 +23,7 @@ using Robust.Shared.Utility;
 // CD: imports
 using Content.Server._CD.Records;
 using Content.Shared._CD.Records;
+using Content.Shared._DV.Traits; // DV - Traits
 
 namespace Content.Server.Database
 {
