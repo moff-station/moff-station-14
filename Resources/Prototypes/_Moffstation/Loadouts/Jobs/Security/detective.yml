@@ -9,7 +9,16 @@
   equipment:
     id: InvestigatorPDA
 
+- type: loadout
+  id: ForensicsTechnicianPDA
+  equipment:
+    id: ForensicsTechnicianPDA
+
 # Head
+- type: loadout
+  id: DetectiveFedoraSleuth
+  equipment:
+    head: ClothingHeadHatFedoraSleuth
 
 # Mask
 
@@ -50,22 +59,22 @@
 - type: loadout
   id: DetectiveHolster
   equipment:
-    belt: ClothingBeltHolsterFilled
+    belt: ClothingBeltHolster
 
 - type: loadout
   id: DetectiveSecBelt
   equipment:
-    belt: ClothingBeltSecurityBeltFilledDetective
+    belt: ClothingBeltSecurity
 
 - type: loadout
   id: DetectiveSecWebbing
   equipment:
-    belt: ClothingBeltSecurityWebbingFilledDetective
+    belt: ClothingBeltSecurityWebbing
 
 - type: loadout
   id: DetectiveSecWebbingAlt
   equipment:
-    belt: ClothingBeltSecurityWebbingAltFilledDetective
+    belt: ClothingBeltSecurityWebbingAlt
 
 # Outer Clothing
 - type: loadout
@@ -78,3 +87,20 @@
 # Shoes
 
 # Eyewear
+
+# Fills
+- type: loadout
+  id: DetectivePistolInspector
+  dummyEntity: WeaponRevolverInspector
+  storage:
+    belt:
+    - WeaponRevolverInspector
+    - SpeedLoaderMagnum
+
+- type: loadout
+  id: DetectivePistolPM
+  dummyEntity: WeaponPistolPM
+  storage:
+    belt:
+    - WeaponPistolPM
+    - MagazinePistol

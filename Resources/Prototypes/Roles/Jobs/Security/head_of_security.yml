@@ -35,6 +35,8 @@
   - External
   - Detective
   - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -46,7 +48,7 @@
   id: HoSGear
   equipment:
   # eyes: ClothingEyesGlassesSecurity # Moffstation - Eyepatches!
-    id: HoSPDA
+    #id: HoSPDA # Moffstation - New PDAs
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
     pocket1: WeaponPistolMk58

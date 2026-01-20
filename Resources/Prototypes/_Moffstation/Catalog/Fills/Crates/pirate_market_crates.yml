@@ -214,6 +214,19 @@
       amount: 2
 
 - type: entity
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  id: CratePirateRifleLeverMagnum
+  name: repeating rifle crate
+  description: Contains two Crestfall lever-action rifles with four ammo boxes.
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponRifleLeverMagnum
+      amount: 2
+    - id: MagazineBoxMagnum
+      amount: 4
+
+- type: entity
   id: CratePirateMakeshiftLaser
   parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
   name: makeshift laser pistol crate
@@ -543,3 +556,14 @@
         - id: ClothingEyesEyepatch
           amount: !type:ConstantNumberSelector
             value: 2
+
+- type: entity
+  id: CratePirateFulton
+  parent: [ CratePiratePrivateSecure, BaseSecurityContraband ]
+  name: fulton crate
+  description: Contains 20 fultons, for robbing stationlubbers
+  components:
+  - type: StorageFill
+    contents:
+    - id: Fulton
+      amount: 20

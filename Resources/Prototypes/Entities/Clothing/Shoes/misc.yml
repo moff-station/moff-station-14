@@ -43,9 +43,10 @@
     sprite: Clothing/Shoes/Misc/duck-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepCarpet
+      collection: FootstepDuck # Moffstation - Revert removal of walking sound
       params:
         variation: 0.07
+        volume: -10 # Moffstation - Revert removal of walking sound
   - type: Construction
     graph: ClothingShoeSlippersDuck
     node: shoes
@@ -62,9 +63,11 @@
     sprite: Clothing/Shoes/Misc/lizard-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepCarpet
+      # Moffstation - Begin - Revert removal of walking sound
+      collection: FootstepLizardSlippers
       params:
-        variation: 0.02
+        variation: 0.06
+        volume: -10 # Moffstation - End - Revert removal of walking sound
   - type: Construction
     graph: ClothingShoeSlippersLizard
     node: shoes
@@ -72,7 +75,7 @@
     useSound:
       path: /Audio/Items/Toys/weh.ogg # Copied from lizard plush sound
       params:
-        volume: -5
+        volume: -10
     transferAmount: 10
   - type: Extractable
     juiceSolution:

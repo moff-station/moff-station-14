@@ -1,4 +1,13 @@
 # ID
+- type: loadout
+  id: CMOPDA
+  equipment:
+    id: CMOPDA
+
+- type: loadout
+  id: MedicalDirectorPDA
+  equipment:
+    id: MedicalDirectorPDA
 
 # Head
 
@@ -46,7 +55,10 @@
 # Belt
 
 # Outer Clothing
-
+- type: loadout
+  id: CmoFestivecoat
+  equipment:
+    outerClothing: ClothingOuterWinterFestiveCmo
 # Gloves
 
 # Shoes

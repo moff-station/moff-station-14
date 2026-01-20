@@ -13,8 +13,9 @@
 
 - type: loadout
   id: PersonalItemJessMask
-  equipment:
-    mask: PersonalItemJessMask
+  storage:
+    back:
+    - PersonalItemJessMask
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

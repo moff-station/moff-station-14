@@ -38,6 +38,7 @@ public abstract partial class SharedMindSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!; // Moffstation
 
     [ViewVariables]
     protected readonly Dictionary<NetUserId, EntityUid> UserMinds = new();
@@ -50,8 +51,8 @@ public abstract partial class SharedMindSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<MindContainerComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<MindContainerComponent, SuicideEvent>(OnSuicide);
+
         SubscribeLocalEvent<VisitingMindComponent, EntityTerminatingEvent>(OnVisitingTerminating);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnReset);
         SubscribeLocalEvent<MindComponent, ComponentStartup>(OnMindStartup);
@@ -162,39 +163,6 @@ public abstract partial class SharedMindSystem : EntitySystem
     {
         if (component.MindId != null)
             UnVisit(component.MindId.Value);
-    }
-
-    private void OnExamined(EntityUid uid, MindContainerComponent mindContainer, ExaminedEvent args)
-    {
-        if (!mindContainer.ShowExamineInfo || !args.IsInDetailsRange)
-            return;
-
-        // TODO: Move this out of the SharedMindSystem into its own comp and predict it
-        if (_net.IsClient)
-            return;
-
-        var dead = _mobState.IsDead(uid);
-        var mind = CompOrNull<MindComponent>(mindContainer.Mind);
-        var hasUserId = mind?.UserId;
-        var hasActiveSession = hasUserId != null && _playerManager.ValidSessionId(hasUserId.Value);
-
-        // Scenarios:
-        // 1. Dead + No User ID: Entity is permanently dead with no player ever attached
-        // 2. Dead + Has User ID + No Session: Player died and disconnected
-        // 3. Dead + Has Session: Player is dead but still connected
-        // 4. Alive + No User ID: Entity was never controlled by a player
-        // 5. Alive + No Session: Player disconnected while alive (SSD)
-
-        if (dead && hasUserId == null)
-            args.PushMarkup($"[color=mediumpurple]{Loc.GetString("comp-mind-examined-dead-and-irrecoverable", ("ent", uid))}[/color]");
-        else if (dead && !hasActiveSession)
-            args.PushMarkup($"[color=yellow]{Loc.GetString("comp-mind-examined-dead-and-ssd", ("ent", uid))}[/color]");
-        else if (dead)
-            args.PushMarkup($"[color=red]{Loc.GetString("comp-mind-examined-dead", ("ent", uid))}[/color]");
-        else if (hasUserId == null)
-            args.PushMarkup($"[color=mediumpurple]{Loc.GetString("comp-mind-examined-catatonic", ("ent", uid))}[/color]");
-        else if (!hasActiveSession)
-            args.PushMarkup($"[color=yellow]{Loc.GetString("comp-mind-examined-ssd", ("ent", uid))}[/color]");
     }
 
     /// <summary>
@@ -718,6 +686,27 @@ public abstract partial class SharedMindSystem : EntitySystem
 
         EnsureComp<ExaminerComponent>(uid);
     }
+
+    // Moffstation - Start - Helper for selecting Paradox Clone targets on the same map.
+    /// <summary>
+    /// Get all minds on the same Map as the Refrence
+    /// </summary>>
+    public HashSet<Entity<MindComponent>> GetAliveHumansOnMap(EntityUid? map)
+    {
+        var allAliveHumanoids = GetAliveHumans();
+        var outminds = new HashSet<Entity<MindComponent>>();
+        foreach(var candidateMind in allAliveHumanoids)
+        {
+            if(candidateMind.Comp.CurrentEntity is not {} candidateEntity ||
+               _transform.GetMap(candidateEntity) != map)
+            {
+
+                outminds.Add(candidateMind);
+            }
+        }
+        return outminds;
+    }
+    // Moffstation - End
 }
 
 /// <summary>

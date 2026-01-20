@@ -1,84 +1,3 @@
-# TO ADD A NEW PERSONAL ITEM LOADOUT, you MUST do the following:
-#
-# 1. Create a LOADOUT (type: loadout) with a PersonalItemLoadoutEffect
-#    that refers to your character. Punctuation MUST match EXACTLY.
-#    ID: same as the personal item entity.
-#    Place this within the Prototypes/_Moffstation/PersonalItems/[Category]/[PersonalItemName].yml file below the item
-# 2. One loadout section per personal item.
-# 3. Add the loadout to every applicable LOADOUT GROUP HERE
-
-- type: loadoutGroup
-  id: PersonalItemsJobAgnostic
-  name: loadout-group-personal-items
-  minLimit: 0
-  maxLimit: 2
-  loadouts:
-  - PersonalItemArieApple
-  - PersonalItemAsterGuitar
-  - PersonalItemAuroraPin
-  - PersonalItemBintendoHat
-  - PersonalItemBoxcarGlasses
-  - PersonalItemCarolynFlettCigsPack
-  - PersonalItemCinnabarMask
-  - PersonalItemCooksEnvelope
-  - PersonalItemCooksPlushie
-  - PersonalItemCoryClipboard
-  - PersonalItemDarnellLighter
-  - PersonalItemDawnBottle
-  - PersonalItemDeliPearl
-  - PersonalItemDelilahSuit
-  - PersonalItemDawnBottle
-  - PersonalItemEclipseSunshadeGun
-  - PersonalItemEddieGuitar
-  - PersonalItemFredSuit
-  - PersonalItemFrostMedicalWebbing
-  - PersonalItemGigsShaker
-  - PersonalItemHercynSuit
-  - PersonalItemHotSauceFireExtinguisher
-  - PersonalItemIoImplanter
-  - PersonalItemIrisRing
-  - PersonalItemJasmineFlower
-  - PersonalItemJessMask
-  - PersonalItemKatieWristBand
-  - PersonalItemKazoSkates
-  - PersonalItemKennyPrisonerShirt
-  - PersonalItemKimBass
-  - PersonalItemKrakatoaCloak
-  - PersonalItemKylieUniform
-  - PersonalItemLilithGuitar
-  - PersonalItemMarvinHeadphones
-  - PersonalItemMossCloak
-  - PersonalItemNyxilathRing
-  - PersonalItemPeedeeAvatar
-  - PersonalItemPeriwinkleFace
-  - PersonalItemPilkmanPlushie
-  - PersonalItemReelsKnife
-  - PersonalItemRemiaPin
-  - PersonalItemRoseHeadphones
-  - PersonalItemRufflerMask
-  - PersonalItemRykerPen
-  - PersonalItemSammyPlushie
-  - PersonalItemSapphireAmpule
-  - PersonalItemSawaTarUniform
-  - PersonalItemScribblesPlushie
-  - PersonalItemSeanSheet
-  - PersonalItemSeikretPhoto
-  - PersonalItemSharedReptilianFamilyPhoto
-  - PersonalItemSharedStationBlueprints
-  - PersonalItemSiegeHalffloofMask
-  - PersonalItemSigerthePlushie
-  - PersonalItemSkiesOfSunshine
-  - PersonalItemSqueaksHampter
-  - PersonalItemStrawberryBackTentacles
-  - PersonalItemSwanerPhoto
-  - PersonalItemTalviHoodie
-  - PersonalItemTaniaBackTentacles
-  - PersonalItemTarAwasMp4Player
-  - PersonalItemToffeeMask
-  - PersonalItemVexMask
-  - PersonalItemVivonicMantle
-  - PersonalItemVortexMask
-
 ## Command
 # Captain
 - type: loadoutGroup
@@ -94,6 +13,13 @@
   - EyePatch
   - EyePatchFlipped
 
+- type: loadoutGroup
+  id: CaptainPDA
+  name: loadout-group-captain-id
+  loadouts:
+  - CaptainPDA # Keep default PDA on top of the list
+  - CommandingOfficerPDA
+
 # Head of Personnel
 - type: loadoutGroup
   id: HopEyewear
@@ -106,6 +32,13 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
+
+- type: loadoutGroup
+  id: HopPDA
+  name: loadout-group-hop-id
+  loadouts:
+  - HoPPDA # Keep default PDA on top of the list
+  - HRAdministratorPDA
 
 # Chief Engineer
 - type: loadoutGroup
@@ -120,6 +53,13 @@
   - AtmosphericTechnicianDuffel
   - LeatherSatchel
 
+- type: loadoutGroup
+  id: ChiefEngineerPDA
+  name: loadout-group-chief-engineer-id
+  loadouts:
+  - CEPDA # Keep default PDA on top of the list
+  - EngineeringForemanPDA
+
 # Quartermaster
 - type: loadoutGroup
   id: QuartermasterBackpack
@@ -132,6 +72,13 @@
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
   - LeatherSatchel
+
+- type: loadoutGroup
+  id: QuartermasterPDA
+  name: loadout-group-quartermaster-id
+  loadouts:
+  - QuartermasterPDA # Keep default PDA on top of the list
+  - RequisitionsCoordinatorPDA
 
 ## Security
 - type: loadoutGroup
@@ -149,6 +96,23 @@
   - EyePatch
   - EyePatchFlipped
 
+- type: loadout
+  id: SecurityOfficerWintercoatArmored
+  equipment:
+    outerClothing: ClothingOuterWinterSecArmored
+#HoS
+- type: loadoutGroup
+  id:  HeadofSecurityPDA
+  name: loadout-group-hos-id
+  loadouts:
+  - HoSPDA # Keep default PDA on top of the list
+  - ChiefConstablePDA
+  - HighSheriffPDA
+
+- type: loadout
+  id: HeadofSecurityWintercoatSmall
+  equipment:
+    outerClothing: ClothingOuterWinterHoSUnarmored
 # Warden
 - type: loadoutGroup
   id: WardenPDA
@@ -156,8 +120,13 @@
   loadouts:
   - WardenPDA # Keep default PDA on top of the list
   - CorrectionsOfficerPDA
-  - DetentionOfficerPDA
+  - DetentionManagerPDA
+  - DispatchOfficerPDA
 
+- type: loadout
+  id: WardenWintercoatSmall
+  equipment:
+    outerClothing: ClothingOuterWinterWardenUnarmored
 # Detective
 - type: loadoutGroup
   id: DetectiveEyewear
@@ -181,6 +150,7 @@
   loadouts:
   - DetectivePDA # Keep default PDA on top of the list
   - InvestigatorPDA
+  - ForensicsTechnicianPDA
 
 - type: loadoutGroup
   id: DetectiveBelt
@@ -190,6 +160,13 @@
   - DetectiveSecBelt
   - DetectiveSecWebbing
   - DetectiveSecWebbingAlt
+
+- type: loadoutGroup
+  id: DetectiveSidearm
+  name: loadout-group-detective-sidearm
+  loadouts:
+  - DetectivePistolInspector
+  - DetectivePistolPM
 
 ## Cargo
 # Salvage Specialist
@@ -228,18 +205,27 @@
   loadouts:
   - StationEngineerHardhatYellow
   - AtmosphericTechnicianHardhatBlue
+  - AtmosphericTechnicianYellowCap
 
 - type: loadoutGroup
   id: AtmosPDA
   name: loadout-group-atmospheric-technician-id
   loadouts:
   - AtmosPDA # Keep default PDA on top of the list
-  - PlasmaTechnicianPDA
+  - ThermalSystemsSpecialistPDA
   - SeniorAtmosphericTechnicianPDA
   - FirefighterPDA
   - AssistantAtmosphericTechnicianPDA
 
 ## Medical
+#CMO
+- type: loadoutGroup
+  id: ChiefMedicalOfficerPDA
+  name: loadout-group-chief-medical-officer-id
+  loadouts:
+  - CMOPDA # Keep default PDA on top of the list
+  - MedicalDirectorPDA
+
 # Chemist
 - type: loadoutGroup
   id: ChemistryEyewear
@@ -262,9 +248,9 @@
   name: loadout-group-chemist-id
   loadouts:
   - ChemistryPDA # Keep default PDA on top of the list
-  - GeneticistPDA
   - PharmacistPDA
-  - VirologistPDA
+  - PharmacologistPDA
+  - ToxicologistPDA
 
 # Paramedic
 - type: loadoutGroup
@@ -299,6 +285,13 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
+#RD
+- type: loadoutGroup
+  id: ResearchDirectorPDA
+  name: loadout-group-research-director-id
+  loadouts:
+  - RnDPDA # Keep default PDA on top of the list
+  - ResearchSupervisorPDA
 
 ## Civilian
 # Bartender
@@ -322,6 +315,7 @@
   loadouts:
   - BartenderPDA # Keep default PDA on top of the list
   - BaristaPDA
+  - BarkeeperPDA
   - MixologistPDA
 
 # Botanist
@@ -369,6 +363,24 @@
   - FoolPDA
   - JesterPDA
 
+- type: loadoutGroup
+  id: ClownMask
+  name: loadout-group-clown-mask
+  minLimit: 1
+  loadouts:
+  - ClownMaskDefault
+  - ClownMaskBlushing
+  - ClownMaskBanana
+  - ClownMaskCool
+  - HarlequinMask
+
+- type: loadoutGroup
+  id: TheatreNeck
+  name: loadout-group-theatre-neck
+  minLimit: 0
+  loadouts:
+  - RuffleNeck
+
 # Janitor
 - type: loadoutGroup
   id: JanitorPDA
@@ -410,6 +422,15 @@
   - MimePDA # Keep default PDA on top of the list
   - PierrotPDA
 
+- type: loadoutGroup
+  id: MimeShoes
+  name: loadout-group-mime-shoes
+  loadouts:
+  - WhiteShoes
+  - BlackShoes
+  - LaceupShoes
+  - CowboyShoes
+
 # Musician
 - type: loadoutGroup
   id: MusicianPDA
@@ -418,6 +439,22 @@
   - MusicianPDA # Keep default PDA on top of the list
   - PopIdolPDA
   - RockStarPDA
+
+- type: loadoutGroup
+  id: MusicianHead
+  name: loadout-group-musician-head
+  minLimit: 0
+  loadouts:
+  - PerformerWig
+  - RockstarWig
+
+- type: loadoutGroup
+  id: MusicianShoes
+  name: loadout-group-musician-shoes
+  loadouts:
+  - LaceupShoes
+  - PerformerShoes
+  - CowboyShoes
 
 # Passenger
 - type: loadoutGroup
@@ -456,13 +493,13 @@
   name: loadout-group-prisoner-id
   loadouts:
   - PrisonerPDA # Keep default PDA on top of the list
+  - FelonPrisonerPDA
+  - InmatePrisonerPDA
   - ConvictPDA
   - DeathRowInmatePDA
   - MinimumSecurityPrisonerPDA
   - MaximumSecurityPrisonerPDA
   - ProtectiveCustodyPrisonerPDA
-  - FelonPrisonerPDA
-  - InmatePrisonerPDA
   - TestSubjectPDA
 
 # Reporter
@@ -482,4 +519,8 @@
   loadouts:
   - ServiceWorkerPDA # Keep default PDA on top of the list
   - BarberPDA
+  - ButlerPDA
+  - StewardPDA
+  - LineCookPDA
+  - SousChefPDA
 

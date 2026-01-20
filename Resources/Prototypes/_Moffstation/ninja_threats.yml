@@ -1,0 +1,34 @@
+﻿- type: ninjaHackingThreat
+  id: Clown
+  announcement: terror-clown
+  rule: UnknownShuttleHonki
+
+- type: ninjaHackingThreat
+  id: Eeeplet
+  announcement: terror-eeep
+  rule: EeepEvent
+
+- type: ninjaHackingThreat
+  id: LoneOp
+  announcement: terror-lone-op
+  rule: LoneOpsSpawn
+
+- type: ninjaHackingThreat
+  id: Pirate
+  announcement: terror-pirate
+  rule: PirateCorsairSpawn
+
+- type: ninjaHackingThreat
+  id: NinjaBackup
+  announcement: terror-ninja
+  rule: NinjaSpawn
+
+- type: ninjaHackingThreat
+  id: Rod
+  announcement: terror-rod
+  rule: ImmovableRodSpawn
+
+- type: ninjaHackingThreat
+  id: Wizard
+  announcement: terror-wizard
+  rule: WizardSpawn

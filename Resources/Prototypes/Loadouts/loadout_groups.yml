@@ -153,6 +153,9 @@
   # Moffstation - Start - New Drip
   - CaptainConductor
   - CaptainTricorn
+  - CaptainBeret
+  - CaptainCrown
+  - CaptainCirclet
   # Moffstation - End
 
 - type: loadoutGroup
@@ -195,7 +198,10 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
-  - CaptainLongcoat # Moffstation - New drip
+  # Moffstation - Start
+  - CaptainLongcoat
+  - CaptainFestivecoat
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainJobTrinkets
@@ -210,6 +216,7 @@
   minLimit: 0
   loadouts:
   - HoPHead
+  - HoPBeret # Moffstation
 
 - type: loadoutGroup
   id: HoPJumpsuit
@@ -220,6 +227,8 @@
   # Moffstation - Start - New drip
   - HoPJumpsuitFormal
   - HoPJumpskirtFormal
+  - HoPJumpsuitFestive
+  - HoPJumpskirtFestive
   # Moffstation - End
 
 - type: loadoutGroup
@@ -597,6 +606,9 @@
   loadouts:
   - JesterHat
   - JesterAltHat
+  # Moffstation - Begin - Clown Clothes
+  - HarlequinHat
+  # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
   id: ClownJumpsuit
@@ -606,6 +618,9 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
+  # Moffstation - Begin - Clown Clothes
+  - HarlequinSuit
+  # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -630,6 +645,13 @@
   loadouts:
   - ClownShoes
   - JesterShoes
+  # Moffstation - Begin - Clown Clothes
+  - JesterAltShoes
+  - HarlequinShoes
+  - LargeClownShoes
+  - ClownSandals
+  - ClownSlippers
+  # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
   id: SurvivalClown
@@ -658,6 +680,9 @@
   - MimeHead
   - MimeFrenchBeret
   - MimeCap
+# Moffstation - Begin - Mime Outfits
+  - PierrotCone
+# Moffstation - End - Mime Outfits
 
 - type: loadoutGroup
   id: MimeMask
@@ -666,6 +691,10 @@
   - MimeMask
   - MimeMaskSad
   - MimeMaskScared
+# Moffstation - Begin - Mime Outfits
+  - MimeMaskBlushing
+  - MimeMaskCool
+  - PierrotMask
 
 - type: loadoutGroup
   id: MimeJumpsuit
@@ -673,6 +702,9 @@
   loadouts:
   - MimeJumpsuit
   - MimeJumpskirt
+# Moffstation - Begin - Mime Outfits
+  - PierrotSuit
+# Moffstation - End - Mime Outfits
 
 - type: loadoutGroup
   id: MimeBackpack
@@ -689,6 +721,9 @@
   minLimit: 0
   loadouts:
   - MimeWintercoat
+# Moffstation - Begin - Mime Outfits
+  - PierrotCoat
+# Moffstation - End - Mime Outfits
 
 - type: loadoutGroup
   id: MimeBelt
@@ -722,6 +757,10 @@
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
+# Moffstation - Begin - Musician Outfits
+  - PerformerSkirt
+  - RockstarSuit
+# Moffstation - End - Musician Outfits
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -780,7 +819,10 @@
   loadouts:
   - QuartermasterHead
   - QuartermasterBeret
-  - CargonianUshanka # Moffstation - (Cargo Outfits)
+  # Moffstation - Start
+  - CargonianUshanka
+  - QMCruiser
+  # Moffstation - End
 - type: loadoutGroup
   id: QuartermasterJumpsuit
   name: loadout-group-quartermaster-jumpsuit
@@ -790,7 +832,9 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
-  # Moffstation - Start - New Drip
+  # Moffstation - Start
+  - QMJumpsuitCruiser
+  - QMJumpskirtCruiser
   - QMJumpsuitVista
   - QMJumpskirtVista
   # Moffstation - End
@@ -809,6 +853,7 @@
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
+  - QMFestivecoat # Moffstation
 
 - type: loadoutGroup
   id: QuartermasterShoes
@@ -883,6 +928,7 @@
   # Moffstation - Start - Additional job title loadouts
   - CourierPDA
   - LogisticsAssociatePDA
+  - RequisitionsClerkPDA
   # Moffstation - End
 
 - type: loadoutGroup
@@ -933,6 +979,7 @@
   loadouts:
   - ChiefEngineerHead
   - ChiefEngineerBeret
+  - ChiefBeanie # Moffstation - Engineering Outfits
 
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -995,6 +1042,7 @@
   #- StationEngineerHardhatYellow Moffstation - (Work Gear for Atmos) - Yellow and blue hardhats are restricted to atmos to keep the two roles visually distinct.
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
+  - StationEngineerOrangeCap # Moffstation - Engineering Outfits
   - SeniorEngineerBeret
 
 - type: loadoutGroup
@@ -1023,6 +1071,7 @@
   loadouts:
   - StationEngineerOuterVest
   - StationEngineerWintercoat
+  - StationEngineerWindbreaker # Moffstation - Engineering Outfits
 
 - type: loadoutGroup
   id: StationEngineerShoes
@@ -1035,13 +1084,14 @@
   id: StationEngineerID
   name: loadout-group-station-engineer-id
   loadouts:
+  - TechnicalAssistantPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - StationEngineerPDA
   - SeniorEngineerPDA
-  - TechnicalAssistantPDA #CD - Remove intern roles, rework them into loadouts
   # Moffstation - Start - Additional job title loadouts
   - ElectricianPDA
   - MechanicPDA
   - ShipwrightPDA
+  - EngineOperatorPDA
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1058,6 +1108,11 @@
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
+# Moffstation - Begin - Engineering Outfits
+  - AtmosphericTechnicianTurtleneck
+  - AtmosphericTechnicianSeniorJumpsuit
+  - AtmosphericTechnicianSeniorJumpskirt
+# Moffstation - End - Engineering Outfits
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
@@ -1111,6 +1166,7 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorBeret
+  - RDBeret # Moffstation
 
 - type: loadoutGroup
   id: ResearchDirectorNeck
@@ -1126,7 +1182,12 @@
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
-  - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - Turtlenecks clip through moth fuzz, so they need a second option. Could get a non-turtleneck RD jumpsuit later?
+  # Moffstation - Start
+  - FormalScientistJumpsuit
+  - ResearchDirectorRoboJumpsuit
+  - ResearchDirectorRoboJumpskirt
+  - ResearchDirectorFestiveJumpsuit
+  # Moffstation - End
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
@@ -1224,12 +1285,12 @@
   id: ScientistPDA
   name: loadout-group-scientist-id
   loadouts:
+  - ResearchAssistantPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - ScientistPDA
   - SeniorResearcherPDA
-  - ResearchAssistantPDA #CD - Remove intern roles, rework them into loadouts
   - RoboticistPDA #CD - Job title loadouts
   # Moffstation - Start - Additional job title loadouts
-  - AnomalyContainmentSpecialistPDA
+  - PhenomenaAnalystPDA
   - MachinistPDA
   - XenoarcheologistPDA
   # Moffstation - End
@@ -1263,9 +1324,11 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
-  # Moffstation - Begin (Security Loadout Improvements) Give all security roles the choice of a helmet.
+  # Moffstation - Start
   - SecurityHelmet
   - MilitaryHelmet
+  - HunterHat
+  - FestiveHat
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1278,6 +1341,10 @@
   - HeadofSecurityTurtleneckSkirt
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
+  # Moffstation - Start
+  - HeadofSecurityWestern
+  - HeadofSecurityFestive
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1293,8 +1360,10 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
-  - HeadofSecurityCarapace # Moffstation - New drip
-
+  # Moffstation - Start
+  - HeadofSecurityCarapace
+  - HeadofSecurityWintercoatSmall
+  # Moffstation - End
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
   name: loadout-group-jobtrinkets
@@ -1329,6 +1398,7 @@
   - WardenCoat
   - WardenArmoredWinterCoat
   # Moffstation - Begin (Security Loadout Improvements) - Since warden coats clip through moth fuzz, give them the option of a basic vest.
+  - WardenWintercoatSmall
   - ArmorVest
   - ArmorVestSlim
   # Moffstation - End
@@ -1380,7 +1450,7 @@
   - SecurityBelt
   - SecurityWebbing
   - SecurityWebbingAlt  # Moffstation - Alt sec webbing
-  - ShoulderHolster # Moffstation - (Security Loadout Improvements) - Filled shoulder holster as a sidegrade to the belt, rather than detectives having to start with the shoulder holster.
+  - ShoulderHolster # Moffstation - (Security Loadout Improvements) - Filled shoulder holster as a sidegrade to the belt, for badasses.
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1389,6 +1459,7 @@
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
+  - SecurityOfficerWintercoatArmored # Moffstation
 
 - type: loadoutGroup
   id: SecurityShoes
@@ -1401,11 +1472,12 @@
   id: SecurityPDA
   name: loadout-group-security-id
   loadouts:
+  - SecurityCadetPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - SecurityPDA
   - SeniorOfficerPDA
-  - SecurityCadetPDA #CD - Remove intern roles, rework them into loadouts
   # Moffstation - Start - Additional job title loadouts
-  - AssetProtectionsPDA
+  - AssetProtectionsOfficerPDA
+  - ConstablePDA
   - DeputyPDA
   - HallMonitorPDA
   # Moffstation - End
@@ -1426,6 +1498,7 @@
   - DetectiveFedora
   - DetectiveFedoraGrey
   # Moffstation - Begin (Security Loadout Improvements) - Detective should have officer uniform available, in case they want to be a less-private investigator.
+  - DetectiveFedoraSleuth
   - SecurityHelmet
   - MilitaryHelmet
   - SecurityBeret
@@ -1529,6 +1602,7 @@
   loadouts:
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
+  - CmoFestivecoat #Moffstation - Start
 
 # Moffstation - Start - Department Heads can use any department Bag
 - type: loadoutGroup
@@ -1636,10 +1710,12 @@
   id: MedicalDoctorPDA
   name: loadout-group-medical-doctor-id
   loadouts:
+  - MedicalInternPDA # Moffstation - remove intern roles, rework them into base roles (top of list for priority)
   - MedicalDoctorPDA
   - SeniorPhysicianPDA
-  - MedicalInternPDA #CD - Remove intern roles, rework them into loadouts
   # Moffstation - Start - Additional job title loadouts
+  - GeneticistPDA
+  - VirologistPDA
   - ClinicianPDA
   - CoronerPDA
   - CryogenicsSpecialistPDA
@@ -1682,13 +1758,23 @@
   minLimit: 0
   loadouts:
   - LizardPlushieMedicalIntern
+  #Moffstation - Begin - Chemist Outfits
+- type: loadoutGroup
+  id: ChemistMask
+  name: loadout-group-chemist-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+  - ChemistMask
 
+  #Moffstation - End - Chemist Outfits
 - type: loadoutGroup
   id: ChemistJumpsuit
   name: loadout-group-chemist-jumpsuit
   loadouts:
   - ChemistJumpsuit
   - ChemistJumpskirt
+  - ChemistSweater # Moffstation - Chemist outfits
 
 - type: loadoutGroup
   id: ChemistOuterClothing
@@ -1698,7 +1784,26 @@
   - RegularLabCoat
   - ChemistLabCoat
   - ChemistWintercoat
+  #Moffstation - Begin - Chemist Outfits
+  - ChemistApron
 
+- type: loadoutGroup
+  id: ChemistGloves
+  name: loadout-group-chemist-gloves
+  minLimit: 0
+  loadouts:
+  - LatexGloves
+  - NitrileGloves
+  - ChemistGloves
+
+- type: loadoutGroup
+  id: ChemistShoes
+  name: loadout-group-chemist-shoes
+  loadouts:
+  - BlackShoes
+  - MedicalWinterBoots
+
+#Moffstation - End - Chemist Outfits
 - type: loadoutGroup
   id: ChemistBackpack
   name: loadout-group-chemist-backpack
@@ -1813,36 +1918,6 @@
   loadouts:
   - LizardPlushiePsychologist
 
-- type: loadoutGroup
-  id: BoxerJumpsuit
-  name: loadout-group-boxer-jumpsuit
-  loadouts:
-  - BoxerShorts
-  - BoxerShortsWithTop
-
-- type: loadoutGroup
-  id: BoxerGloves
-  name: loadout-group-boxer-gloves
-  loadouts:
-  - RedBoxingGloves
-  - BlueBoxingGloves
-  - GreenBoxingGloves
-  - YellowBoxingGloves
-
-- type: loadoutGroup
-  id: BoxerJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushieBoxer
-
-- type: loadoutGroup
-  id: ZookeeperJobTrinkets
-  name: loadout-group-jobtrinkets
-  minLimit: 0
-  loadouts:
-  - LizardPlushieZookeeper
-
 # Other
 - type: loadoutGroup
   id: SurvivalSyndicate
@@ -1854,6 +1929,15 @@
   - EmergencyOxygenSyndicate
   - EmergencyOxygenSyndicateAmmonia # Moffstation - Allow avali to drink ammonia
   - LoadoutSpeciesVoxNitrogen
+
+- type: loadoutGroup
+  id: SurvivalMilitaryDouble
+  name: loadout-group-survival-military
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenMilitaryDouble
+  - EmergencyOxygenMilitaryDouble
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

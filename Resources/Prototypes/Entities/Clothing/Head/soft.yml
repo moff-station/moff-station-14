@@ -265,9 +265,9 @@
   description: A baseball cap colored to match security's uniforms.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Soft/secsoft.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/secsoft.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Soft/secsoft.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/secsoft.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingHeadHeadHatBaseFlipped, ClothingHeadHatSecsoft]

@@ -3,7 +3,6 @@ using Content.Shared.Containers.ItemSlots;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
-using Content.Shared._Moffstation.Chemistry; // Moffstation
 
 namespace Content.Client.Chemistry.UI
 {
@@ -49,12 +48,10 @@ namespace Content.Client.Chemistry.UI
                     (uint) _window.BottleDosage.Value, _window.LabelLine));
             _window.BufferSortButton.OnPressed += _ => SendMessage(
                     new ChemMasterSortingTypeCycleMessage());
-            // Moffstation - Begin - Chemmaster Output Source logic
             _window.OutputBufferDraw.OnPressed += _ => SendMessage(
                 new ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource.Internal));
             _window.OutputBeakerDraw.OnPressed += _ => SendMessage(
                 new ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource.External));
-            // Moffstation - End - Chemmaster Output Source logic
 
             for (uint i = 0; i < _window.PillTypeButtons.Length; i++)
             {

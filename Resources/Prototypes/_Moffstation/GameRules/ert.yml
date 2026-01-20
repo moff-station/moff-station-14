@@ -10,28 +10,52 @@
     gridPath: /Maps/_Moffstation/PreCrewed/dart.yml
   - type: RuleGrids
 
-- type: entity
+- type: entity # 4 soldiers in a large transport
   parent: BaseGameRule
-  id: ERTSecBrig
+  id: ERTSecTransport
   components:
   - type: StationEvent
     startAnnouncement: ert-sec
     startAudio:
       path: /Audio/Misc/notice1.ogg
   - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-lockup.yml
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-transport-ertsec-team.yml
   - type: RuleGrids
 
-- type: entity
+- type: entity # 8 soldiers in a large transport
   parent: BaseGameRule
-  id: ERTSec
+  id: ERTSecLargeTransport
   components:
   - type: StationEvent
     startAnnouncement: ert-sec
     startAudio:
       path: /Audio/Misc/notice1.ogg
   - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-vacator.yml
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-transport-ertsec-squad.yml
+  - type: RuleGrids
+
+- type: entity # 4 soldiers in a small dropship
+  parent: BaseGameRule
+  id: ERTSecDropship
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-ertsec-team.yml
+  - type: RuleGrids
+
+- type: entity # 8 soldiers in a small dropship
+  parent: BaseGameRule
+  id: ERTSecLargeDropship
+  components:
+  - type: StationEvent
+    startAnnouncement: ert-sec
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-ertsec-squad.yml
   - type: RuleGrids
 
 - type: entity
@@ -72,22 +96,22 @@
 
 - type: entity
   parent: BaseGameRule
-  id: ERTCburn
+  id: ERTCBURNDropship
   components:
   - type: StationEvent
     startAnnouncement: ert-jani
     startAudio:
       path: /Audio/Misc/notice1.ogg
   - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-vacator-cburn.yml
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-cburn-team.yml
   - type: RuleGrids
 
 - type: entity
   parent: BaseGameRule
-  id: ERTDeathSquad
+  id: ERTDeathSquadDropship
   components:
   - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-vacator-deathsquad.yml
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-dropship-deathsquad-team.yml
   - type: RuleGrids
   - type: AlertLevelInterceptionRule
     alertLevel: epsilon

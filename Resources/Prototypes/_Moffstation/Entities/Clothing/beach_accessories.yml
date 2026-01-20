@@ -33,7 +33,7 @@
     sprite: _Moffstation/Clothing/Neck/lifeguard-whistle.rsi
 
 - type: entity
-  parent: ClothingShoesBaseButcherable
+  parent: ClothingShoesClown
   id: ClothingShoesClownSandals
   name: clown sandals
   description: silly shoes for the beach.
@@ -42,7 +42,12 @@
     sprite: _Moffstation/Clothing/Shoes/clown-sandals.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Shoes/clown-sandals.rsi
-
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepClown
+      params:
+        variation: 0.17
+        volume: -15
 - type: entity
   parent: BasePlushie
   id: PlushieLifeguardBuoy
