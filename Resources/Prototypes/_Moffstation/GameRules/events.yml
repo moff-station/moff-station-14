@@ -23,7 +23,10 @@
       briefing:
         text: pirate-role-greeting
         color: "#a15608"
-        sound: "/Audio/Ambience/Antag/pirate_start.ogg"
+        sound:
+          path: "/Audio/Ambience/Antag/pirate_start.ogg"
+          params:
+            volume: -12
       components:
       - type: Pirate
       - type: RandomMetadata

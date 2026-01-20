@@ -292,7 +292,7 @@
     children:
     - !type:NestedSelector
       tableId: AllCrayonsTable
-    - id: CrayonBox
+    - id: CrayonBoxFilled # Moffstation - Base prototype is empty of crayons
     - id: PlasticBanana
     - id: NukeDiskFake
     - id: DiceBag
@@ -534,5 +534,5 @@
       children:
       - !type:NestedSelector
         tableId: AllCrayonsTable
-      - id: CrayonBox
+      - id: CrayonBoxFilled # Moffstation - Base prototype is empty of crayons
         weight: 0.05 # 1 in 20

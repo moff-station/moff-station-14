@@ -1603,10 +1603,6 @@
   name: ninja PDA
   description: You stealthy bastard, you!
   components:
-  # Moffstation - Begin - Ninja PDA doesn't have a moff sprite, so we need to add the upstream sprite here.
-  - type: Sprite
-    sprite: Objects/Devices/pda.rsi
-  # Moffstation - End
   - type: Pda
     id: NinjaIDCard
   - type: Appearance
@@ -1615,7 +1611,7 @@
         !type:String
         pda-ninja
   - type: Icon
-    sprite: Objects/Devices/pda.rsi # Moffstation - Ninja PDA doesn't have a moff sprite, so we need to add the upstream sprite here.
+    sprite: _Moffstation/Objects/Devices/pda.rsi # Moffstation
     state: pda-ninja
 
 - type: entity
