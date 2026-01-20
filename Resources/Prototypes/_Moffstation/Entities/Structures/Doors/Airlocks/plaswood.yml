@@ -1,0 +1,21 @@
+- type: entity
+  parent: AirlockGlass
+  id: AirlockGlassPlaswood
+  suffix: pirate
+  components:    
+  - type: Sprite
+    sprite: _Moffstation/Structures/Doors/Airlocks/Glass/plaswood.rsi
+  - type: IconSmooth
+    key: woods
+    mode: NoSprite
+  - type: Reflect  # NOT vulnerable to lasers.
+    reflects:
+      - Energy
+    reflectProb: 1
+    spread: 30
+  - type: Tag 
+    tags:
+    - Wooden
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralPlaswood
