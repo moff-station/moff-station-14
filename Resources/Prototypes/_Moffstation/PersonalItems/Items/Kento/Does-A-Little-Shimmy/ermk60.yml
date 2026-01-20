@@ -1,9 +1,9 @@
 # Player: Kento - Character: Does-A-Little-Shimmy
 # License: CC-BY-SA-4.0
 - type: entity
-  name: ERMk-60
   parent: WeaponPistolMk58
-  id: PersonalItemERMk60
+  id: PersonalItemShimmyPistol
+  name: ERMk-60
   description: A handgun with the model "ERMk-60" inscribed on the side.
   suffix: PersonalItem
   components:
@@ -31,13 +31,13 @@
           tags:
             - CartridgePistol
   - type: DetailExaminable
-    content: An unusual and highly experimental design of the Mk58, the ERMk-60 intends to improve beyond excellent with a reinforced, heavier furniture. It also features an electronic sight and a laser pointer for pinpoint accuracy. You would question how a security officer managed to get a hold of this sidearm. [Placeholder]
+    content: An unusual and highly experimental design of the Mk58 from Sunshade Armories, the ERMk-60 intends to improve beyond excellence with a reinforced, heavier furniture. It also features an electronic sight and a laser pointer for pinpoint accuracy. You would question how a security officer managed to get a hold of this sidearm.
 
 - type: entity
-  name: ERMk-60 protective case
   parent: [BaseStorageItem, BaseBagOpenClose]
-  id: PersonalItemERMk60Case
-  description: A sleek case for a handgun.
+  id: PersonalItemShimmyPistolCase
+  name: ERMk-60 gun case
+  description: A slim, portable gun case intended to protect its contents inside. the label "ERMk-60" is inscribed on top of the gun case.
   suffix: PersonalItem
   components:
   - type: Sprite
@@ -52,18 +52,19 @@
     size: Normal
   - type: Storage
     grid:
-    - 0,0,2,2
+    - 0,0,1,0
+    - 0,1,0,1
   - type: EntityTableContainerFill
     containers:
       storagebase:
-        id: PersonalItemERMk60
+        id: PersonalItemShimmyPistol
         amount: 1
 
 - type: loadout
-  id: PersonalItemERMk60
+  id: PersonalItemShimmyPistol
   storage:
     back:
-    - PersonalItemERMk60Case
+    - PersonalItemShimmyPistolCase
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
