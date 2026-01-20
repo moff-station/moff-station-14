@@ -16,26 +16,18 @@ namespace Content.Server._Funkystation.Atmos.Reactions;
 [DataDefinition]
 public sealed partial class MetalHydrogenReaction : IGasReactionEffect
 {
-    private const float MinimumH2 = 300f;
-    private const float MinimumBZ = 50f;
+    private const float RequiredH2 = 300f;
+    private const float RequiredBZ = 50f;
     private const float MinPressure = 10000f;
-    private const float MaxTemperature = 273.2f;
     private const float PressureThreshold = 20000f;
-    private const float TemperatureThreshold = 30f;
+    private const float TemperatureThreshold = 50f;
     private const float BaseRate = 0.10f;
 
     public ReactionResult React(GasMixture mixture, IGasMixtureHolder? holder, AtmosphereSystem atmosphereSystem, float heatScale)
     {
-        if (holder is not TileAtmosphere tile)
+        if (holder is not TileAtmosphere tile ||
+            mixture.Pressure < MinPressure)
             return ReactionResult.NoReaction;
-
-        if (mixture.GetMoles(Gas.Hydrogen) < MinimumH2 ||
-            mixture.GetMoles(Gas.BZ) < MinimumBZ ||
-            mixture.Pressure < MinPressure ||
-            mixture.Temperature > MaxTemperature)
-        {
-            return ReactionResult.NoReaction;
-        }
 
         var entityManager = IoCManager.Resolve<IEntityManager>();
         var random = IoCManager.Resolve<IRobustRandom>();
@@ -48,8 +40,8 @@ public sealed partial class MetalHydrogenReaction : IGasReactionEffect
         if (random.NextFloat() > rate)
             return ReactionResult.NoReaction;
 
-        mixture.AdjustMoles(Gas.Hydrogen, -MinimumH2);
-        mixture.AdjustMoles(Gas.BZ, -MinimumBZ);
+        mixture.AdjustMoles(Gas.Hydrogen, -RequiredH2);
+        mixture.AdjustMoles(Gas.BZ, -RequiredBZ);
 
         var tileRef = atmosphereSystem.GetTileRef(tile);
         if (!entityManager.TryGetComponent<MapGridComponent>(tileRef.GridUid, out var grid))

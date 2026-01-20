@@ -25,12 +25,7 @@ public sealed partial class BloodReagentEntityConditionSystem : EntityConditionS
             return;
         }
 
-        var reagentId = new ReagentId(args.Condition.Reagent, null);
-        if (!solution.TryGetReagentQuantity(reagentId, out var quantity))
-        {
-            args.Result = false;
-            return;
-        }
+        var quantity = solution.GetTotalPrototypeQuantity(args.Condition.Reagent);
 
         args.Result = quantity >= args.Condition.Min && quantity <= args.Condition.Max;
     }

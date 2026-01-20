@@ -10,10 +10,10 @@ public sealed partial class ElectrolyzerComponent : Component
     public float CurrentFuel { get; set; } = 0f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float PlasmaFuelConversion { get; set; } = 25000f;
+    public float PlasmaFuelConversion { get; set; } = 200000f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float UraniumFuelConversion { get; set; } = 150000f;
+    public float UraniumFuelConversion { get; set; } = 1000000f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool IsPowered { get; set; } = false;

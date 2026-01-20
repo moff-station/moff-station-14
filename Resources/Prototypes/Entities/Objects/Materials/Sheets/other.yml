@@ -108,6 +108,11 @@
         - ReagentId: Plasma
           Quantity: 10
         canReact: false
+  - type: Tag
+    tags:
+    - Sheet
+    - ConstructionMaterial
+    - PlasmaSheet
 
 - type: entity
   parent: SheetPlasma
@@ -233,6 +238,11 @@
         - ReagentId: Radium
           Quantity: 2
         canReact: false
+  - type: Tag
+    tags:
+    - Sheet
+    - ConstructionMaterial
+    - UraniumSheet
 
 - type: entity
   parent: SheetUranium

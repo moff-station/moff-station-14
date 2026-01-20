@@ -31,6 +31,8 @@ public sealed class ElectrolyzerSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     private const float WorkingPower = 2f;
     private const float PowerEfficiency = 1f;
+    private const string PlasmaTag = "PlasmaSheet";
+    private const string UraniumTag = "UraniumSheet";
 
     public override void Initialize()
     {
@@ -40,6 +42,7 @@ public sealed class ElectrolyzerSystem : EntitySystem
         SubscribeLocalEvent<ElectrolyzerComponent, AtmosDeviceUpdateEvent>(OnDeviceUpdated);
         SubscribeLocalEvent<ElectrolyzerComponent, ActivateInWorldEvent>(OnActivate);
         SubscribeLocalEvent<ElectrolyzerComponent, InteractUsingEvent>(OnInteractUsingFuel);
+        SubscribeLocalEvent<ElectrolyzerComponent, AnchorStateChangedEvent>(OnAnchorChanged);
     }
 
     private void OnSignalReceived(EntityUid uid, ElectrolyzerComponent comp, SignalReceivedEvent args)
@@ -130,15 +133,15 @@ public sealed class ElectrolyzerSystem : EntitySystem
 
             // Determine fuel value per sheet
             float fuelPerSheet = 0f;
-            if (_tagSystem.HasTag(fuelEntity, "PlasmaSheet"))
+            if (_tagSystem.HasTag(fuelEntity, PlasmaTag))
                 fuelPerSheet = electrolyzer.PlasmaFuelConversion;
-            else if (_tagSystem.HasTag(fuelEntity, "UraniumSheet"))
+            else if (_tagSystem.HasTag(fuelEntity, UraniumTag))
                 fuelPerSheet = electrolyzer.UraniumFuelConversion;
             else
                 return;
 
             // Consume 1 sheet
-            _stackSystem.SetCount(fuelEntity, stack.Count - 1);
+            _stackSystem.SetCount(fuelEntity, stack.Count - 1, stack);
             electrolyzer.CurrentFuel = fuelPerSheet;
 
             // If stack now empty, delete it
@@ -157,6 +160,7 @@ public sealed class ElectrolyzerSystem : EntitySystem
         var temperature = mixture.Temperature;
         float powerLoad = 100f;
         float activeLoad = (4200f * (3f * WorkingPower) * WorkingPower) / (PowerEfficiency + WorkingPower);
+        var oldHeatCapacity = _atmosphereSystem.GetHeatCapacity(mixture, true);
 
         if (initH2O > 0.05f)
         {
@@ -172,8 +176,8 @@ public sealed class ElectrolyzerSystem : EntitySystem
             mixture.AdjustMoles(Gas.Oxygen, oxyProduced);
             mixture.AdjustMoles(Gas.Hydrogen, hydrogenProduced);
 
-            var heatCap = _atmosphereSystem.GetHeatCapacity(mixture, true);
-            powerLoad = Math.Max(activeLoad * (hydrogenProduced / (maxProportion * 2)), powerLoad);
+            var reactionPower = activeLoad * (hydrogenProduced / (maxProportion * 2f));
+            powerLoad = Math.Max(reactionPower, powerLoad);
         }
 
         if (initHyperNob > 0.01f && temperature < 150f)
@@ -183,8 +187,7 @@ public sealed class ElectrolyzerSystem : EntitySystem
             mixture.AdjustMoles(Gas.HyperNoblium, -proportion);
             mixture.AdjustMoles(Gas.AntiNoblium, proportion * 0.5f);
 
-            var heatCap = _atmosphereSystem.GetHeatCapacity(mixture, true);
-            powerLoad = Math.Max(activeLoad * (proportion / maxProportion), powerLoad);
+            powerLoad = Math.Max(powerLoad, activeLoad * (proportion / maxProportion));
         }
 
         if (initBZ > 0.01f)
@@ -195,20 +198,19 @@ public sealed class ElectrolyzerSystem : EntitySystem
             mixture.AdjustMoles(Gas.Halon, proportion * 2f);
             var energyReleased = proportion * Atmospherics.HalonProductionEnergy;
 
-            var heatCap = _atmosphereSystem.GetHeatCapacity(mixture, true);
-            if (heatCap > Atmospherics.MinimumHeatCapacity)
-                mixture.Temperature = Math.Max((mixture.Temperature * heatCap + energyReleased) / heatCap, Atmospherics.TCMB);
-            powerLoad = Math.Max(activeLoad * Math.Min(proportion / 30f, 1), powerLoad);
+            var newHeatCapacity = _atmosphereSystem.GetHeatCapacity(mixture, true);
+            if (newHeatCapacity > Atmospherics.MinimumHeatCapacity)
+                mixture.Temperature = Math.Max((mixture.Temperature * oldHeatCapacity + energyReleased) / newHeatCapacity, Atmospherics.TCMB);
+            powerLoad = Math.Max(powerLoad, activeLoad * Math.Min(proportion / 30f, 1));
         }
 
-        const float fuelPerUnitWork = 0.1f;
-        float fuelNeeded = powerLoad * fuelPerUnitWork;
+        var finalHeatCapacity = _atmosphereSystem.GetHeatCapacity(mixture, true);
+        if (finalHeatCapacity > Atmospherics.MinimumHeatCapacity && finalHeatCapacity != oldHeatCapacity)
+            mixture.Temperature = Math.Max(mixture.Temperature * oldHeatCapacity / finalHeatCapacity, Atmospherics.TCMB);
 
-        // Clamp to available fuel
-        if (electrolyzer.CurrentFuel < fuelNeeded)
-            electrolyzer.CurrentFuel = 0f;
-        else
-            electrolyzer.CurrentFuel -= fuelNeeded;
+        float fuelNeeded = powerLoad;
+
+        electrolyzer.CurrentFuel = Math.Max(0f, electrolyzer.CurrentFuel - powerLoad);
 
         _gasOverlaySystem.UpdateSessions();
     }
@@ -225,8 +227,8 @@ public sealed class ElectrolyzerSystem : EntitySystem
         var existingItem = slot.ContainerSlot.ContainedEntity;
 
         // Tag checks
-        bool heldIsPlasma = _tagSystem.HasTag(heldItem, "PlasmaSheet");
-        bool heldIsUranium = _tagSystem.HasTag(heldItem, "UraniumSheet");
+        bool heldIsPlasma = _tagSystem.HasTag(heldItem, PlasmaTag);
+        bool heldIsUranium = _tagSystem.HasTag(heldItem, UraniumTag);
 
         if (!heldIsPlasma && !heldIsUranium)
             return;
@@ -243,8 +245,8 @@ public sealed class ElectrolyzerSystem : EntitySystem
             return;
         }
 
-        bool existingIsPlasma = _tagSystem.HasTag(existingItem.Value, "PlasmaSheet");
-        bool existingIsUranium = _tagSystem.HasTag(existingItem.Value, "UraniumSheet");
+        bool existingIsPlasma = _tagSystem.HasTag(existingItem.Value, PlasmaTag);
+        bool existingIsUranium = _tagSystem.HasTag(existingItem.Value, UraniumTag);
 
         // Same type: merge
         if ((heldIsPlasma && existingIsPlasma) || (heldIsUranium && existingIsUranium))
@@ -262,12 +264,12 @@ public sealed class ElectrolyzerSystem : EntitySystem
             if (total > maxStack)
             {
                 int toAdd = maxStack - existingStack.Count;
-                _stackSystem.SetCount(existingItem.Value, maxStack);
-                _stackSystem.SetCount(heldItem, heldStack.Count - toAdd);
+                _stackSystem.SetCount(existingItem.Value, maxStack, existingStack);
+                _stackSystem.SetCount(heldItem, heldStack.Count - toAdd, heldStack);
             }
             else
             {
-                _stackSystem.SetCount(existingItem.Value, total);
+                _stackSystem.SetCount(existingItem.Value, total, existingStack);
                 EntityManager.QueueDeleteEntity(heldItem);
             }
 
@@ -283,7 +285,7 @@ public sealed class ElectrolyzerSystem : EntitySystem
             {
                 _popup.PopupEntity(Loc.GetString("electrolyzer-fuel-swapped"), uid, args.User);
 
-                if (ejected != null && args.User != null && TryComp<HandsComponent>(args.User, out var hands))
+                if (ejected != EntityUid.Invalid && TryComp<HandsComponent>(args.User, out var hands))
                 {
                     var activeHandId = hands.ActiveHandId;
                     if (activeHandId != null)
@@ -333,5 +335,15 @@ public sealed class ElectrolyzerSystem : EntitySystem
         }
 
         UpdateAppearance(uid);
+    }
+
+    private void OnAnchorChanged(EntityUid uid, ElectrolyzerComponent comp, ref AnchorStateChangedEvent args)
+    {
+        if (!args.Anchored && comp.IsPowered)
+        {
+            comp.IsPowered = false;
+            UpdateAppearance(uid);
+            _popup.PopupEntity(Loc.GetString("electrolyzer-turned-off"), uid);
+        }
     }
 }

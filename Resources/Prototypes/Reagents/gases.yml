@@ -332,8 +332,6 @@
         - !type:MetabolizerTypeCondition
           type: [ Slime ]
           inverted: true
-        - !type:BloodReagentCondition #  Funky atmos - /tg/ gases
-          reagent: NitrosylPlasmide
           max: 0.1
         ignoreResistances: true
         damage:

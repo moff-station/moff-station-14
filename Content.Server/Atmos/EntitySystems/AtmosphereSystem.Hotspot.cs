@@ -214,12 +214,15 @@ public sealed partial class AtmosphereSystem
         var hydrogen = tile.Air.GetMoles(Gas.Hydrogen); // Funky atmos - /tg/ gases
         var hypernob = tile.Air.GetMoles(Gas.HyperNoblium); // Funky atmos - /tg/ gases
 
+        if (hypernob > 5f)
+            return;
+
         if (tile.Hotspot.Valid)
         {
             if (soh)
             {
                 // if (plasma > 0.5f || tritium > 0.5f) Funky atmos - /tg/ gases - removed
-                if (plasma > 0.5f && hypernob < 5f || tritium > 0.5f && hypernob < 5f || hydrogen > 0.5f && hypernob < 5f) // Funky atmos - /tg/ gases
+                if (plasma > 0.5f || tritium > 0.5f || hydrogen > 0.5f) // Funky atmos - /tg/ gases
                 {
                     tile.Hotspot.Temperature = MathF.Max(tile.Hotspot.Temperature, exposedTemperature);
                     tile.Hotspot.Volume = MathF.Max(tile.Hotspot.Volume, exposedVolume);
@@ -229,13 +232,13 @@ public sealed partial class AtmosphereSystem
             return;
         }
 
-        if (exposedTemperature > Atmospherics.PlasmaMinimumBurnTemperature && (plasma > 0.5f || tritium > 0.5f))
+        if (exposedTemperature > Atmospherics.PlasmaMinimumBurnTemperature && (plasma > 0.5f || tritium > 0.5f || hydrogen > 0.5f)) // Funky atmos - /tg/ gases
         {
             if (sparkSourceUid.HasValue)
             {
                 _adminLog.Add(LogType.Flammable,
                     LogImpact.High,
-                    $"Heat/spark of {ToPrettyString(sparkSourceUid.Value)} caused atmos ignition of gas: {tile.Air.Temperature.ToString():temperature}K - {oxygen}mol Oxygen, {plasma}mol Plasma, {tritium}mol Tritium");
+                    $"Heat/spark of {ToPrettyString(sparkSourceUid.Value)} caused atmos ignition of gas: {tile.Air.Temperature.ToString():temperature}K - {oxygen}mol Oxygen, {plasma}mol Plasma, {tritium}mol Tritium, {hydrogen}mol Hydrogen"); // Funky atmos - /tg/ gases
             }
 
             tile.Hotspot = new Hotspot
