@@ -76,6 +76,28 @@
 
 - type: entity
   parent: PosterBaseMoff
+  id: Postermoffsector
+  name: "Moffsector Greetings"
+  description: "This poster appears to be an advertisement for the Moff Sector. A warm welcome to anyone foreign to the sector."
+  components:
+  - type: Sprite
+    state: poster_moffsector
+  - type: DetailExaminable
+    content: "  The message reads: \"Welcome to the Moff sector, we hope you enjoy your time with all of us here!\""
+
+- type: entity
+  parent: PosterBaseMoff
+  id: PosterSignups
+  name: "Movie Casting Sign ups"
+  description: "This poster appears to be a request for people to NanoMail the Moffia Media Corp ."
+  components:
+  - type: Sprite
+    state: poster_moffsignup
+  - type: DetailExaminable
+    content: "  The Director looks like they are dressed like God's Strongest Sanitation Worker"
+
+- type: entity
+  parent: PosterBaseMoff
   id: PosterMoffFiveHundredMothroaches
   name: "Five Hundred Mothroaches"
   description: "This poster appears to be an advertisement for mothroaches. It encourages the reader to purchase a significant amount of them. More than the average person would consider reasonable."
