@@ -78,7 +78,13 @@ def get_git_authors(filepath: str):
         author_key = (name, email)
         authors.setdefault(author_key, set()).add(year)
 
-    return [(author_info, sorted(years)) for author_info, years in authors.items()]
+    # Convert to list and sort by earliest contribution year (chronological order)
+    authors_list = [(author_info, sorted(years)) for author_info, years in authors.items()]
+
+    # Sort authors by their first contribution year (oldest first)
+    authors_list.sort(key=lambda x: x[1][0] if x[1] else 9999)
+
+    return authors_list
 
 def format_author_display(author_info):
     """Format author info for display in logs"""
