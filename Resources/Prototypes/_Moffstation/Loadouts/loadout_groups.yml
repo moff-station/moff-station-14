@@ -95,6 +95,11 @@
   - GlassesJensen
   - EyePatch
   - EyePatchFlipped
+
+- type: loadout
+  id: SecurityOfficerWintercoatArmored
+  equipment:
+    outerClothing: ClothingOuterWinterSecArmored
 #HoS
 - type: loadoutGroup
   id:  HeadofSecurityPDA
@@ -103,6 +108,11 @@
   - HoSPDA # Keep default PDA on top of the list
   - ChiefConstablePDA
   - HighSheriffPDA
+
+- type: loadout
+  id: HeadofSecurityWintercoatSmall
+  equipment:
+    outerClothing: ClothingOuterWinterHoSUnarmored
 # Warden
 - type: loadoutGroup
   id: WardenPDA
@@ -113,6 +123,10 @@
   - DetentionManagerPDA
   - DispatchOfficerPDA
 
+- type: loadout
+  id: WardenWintercoatSmall
+  equipment:
+    outerClothing: ClothingOuterWinterWardenUnarmored
 # Detective
 - type: loadoutGroup
   id: DetectiveEyewear

@@ -241,7 +241,7 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage:
-        id: CrayonBox
+        id: CrayonBoxFilled # Moffstation - Base prototype is empty of crayons
 
 - type: entity
   parent: CrateGenericSteel
@@ -413,6 +413,8 @@
     containers:
       entity_storage: !type:AllSelector
         children:
+        - id: CrazyGlue
+        - id: CrazyLube
         - !type:NestedSelector
           tableId: AllToyWeaponsTable
           rolls: 2

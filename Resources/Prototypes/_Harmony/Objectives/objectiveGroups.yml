@@ -1,10 +1,10 @@
 - type: weightedRandom
   id: BloodBrotherObjectiveGroups
   weights:
-    BloodBrotherObjectiveGroupState: 1
+    BloodBrotherObjectiveGroupState: 0.1  # Moffstation - Objective picker adjustments
     BloodBrotherObjectiveGroupSteal: 1
-    BloodBrotherObjectiveGroupKill: 1
-    BloodBrotherObjectiveGroupOpenEnded: 0.5 # Moffstation - Added our own open-ended objectives - See Prototypes/_Moffstation/Objectives/objectiveGroups.yml for this definition.
+    BloodBrotherObjectiveGroupKill: 3 # Moffstation - Objective picker adjustments
+    BloodBrotherObjectiveGroupOpenEnded: 0.25 # Moffstation - Added our own open-ended objectives - See Prototypes/_Moffstation/Objectives/objectiveGroups.yml for this definition.
 
 - type: weightedRandom
   id: BloodBrotherObjectiveGroupState

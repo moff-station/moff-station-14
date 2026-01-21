@@ -19,6 +19,14 @@
   - type: MindRole
     antagPrototype: PirateCaptain
 
+- type: entity
+  parent: MindRolePirate
+  id: MindRolePirateCorsair
+  name: Pirate Corsair Role
+  components:
+  - type: MindRole
+    roleType: SoloAntagonist
+
 # Vampires
 
 - type: entity
