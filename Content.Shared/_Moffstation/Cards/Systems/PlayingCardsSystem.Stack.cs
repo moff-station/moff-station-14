@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
+using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._Moffstation.Cards.Systems;
@@ -10,6 +12,8 @@ namespace Content.Shared._Moffstation.Cards.Systems;
 // This part handles behavior common to all PlayingCardStackComponent-derived components.
 public abstract partial class SharedPlayingCardsSystem
 {
+    private static readonly AudioParams AudioVariation = AudioParams.Default.WithVariation(0.05f);
+
     private static void DirtyVisuals<TStack, TArgs>(Entity<TStack> entity, ref TArgs args)
         where TStack : PlayingCardStackComponent
     {
@@ -58,6 +62,55 @@ public abstract partial class SharedPlayingCardsSystem
                 Act = () => Transfer<PlayingCardHandComponent, TStack>((usedEnt, usedHand), entity, .., user),
             });
         }
+
+        args.Verbs.Add(new AlternativeVerb
+        {
+            Act = () => FlipAll(entity, false, user),
+            Text = Loc.GetString(entity.Comp.OrganizeUpText),
+            Icon = entity.Comp.FlipCardsIcon,
+            Priority = 1,
+        });
+        args.Verbs.Add(new AlternativeVerb
+        {
+            Act = () => FlipAll(entity, true, user),
+            Text = Loc.GetString(entity.Comp.OrganizeDownText),
+            Icon = entity.Comp.FlipCardsIcon,
+            Priority = 2,
+        });
+    }
+
+    /// Flips all cards in the given stack entity, handling audio, dirtying visuals, etc.
+    private void FlipAll<T>(Entity<T> entity, bool faceDown, EntityUid? user)
+        where T : PlayingCardStackComponent
+    {
+        var didAnyFlip = entity.Comp switch
+        {
+            PlayingCardDeckComponent deck => deck.Cards.Aggregate(
+                false,
+                (current, card) => current | FlipCardInDeck(card)
+            ),
+            PlayingCardHandComponent hand => hand.Cards.Aggregate(false, (current, card) => current | FlipNetEnt(card)),
+            _ => entity.Comp.ThrowUnknownInheritor<PlayingCardStackComponent, bool>(),
+        };
+
+        if (didAnyFlip)
+        {
+            entity.Comp.DirtyVisuals = true;
+        }
+
+        _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
+
+        bool FlipCardInDeck(PlayingCardInDeck card) => card switch
+        {
+            PlayingCardInDeckNetEnt(var cardNetEnt) => FlipNetEnt(cardNetEnt),
+            PlayingCardInDeckUnspawnedData(var data, _, _) => SetOrInvert(ref data.FaceDown, faceDown),
+            PlayingCardInDeckUnspawnedRef(_, var fd) => SetOrInvert(ref fd, faceDown),
+            _ => card.ThrowUnknownInheritor<PlayingCardInDeck, bool>(),
+        };
+
+        bool FlipNetEnt(NetEntity cardNetEnt) => GetEntity(cardNetEnt) is var cardEnt &&
+                                                 TryComp<PlayingCardComponent>(cardEnt, out var cardComp) &&
+                                                 SetFacingOrFlip((cardEnt, cardComp), faceDown);
     }
 
     private void OnInteractUsing<TStack>(Entity<TStack> entity, ref InteractUsingEvent args)

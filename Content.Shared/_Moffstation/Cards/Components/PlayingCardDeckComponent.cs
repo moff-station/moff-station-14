@@ -43,16 +43,18 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
     public float Scale = 1;
 
     [DataField]
+    public LocId SplitText = "cards-verb-split";
+
+    [DataField]
     public SpriteSpecifier? SplitIcon =
         new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/dot.svg.192dpi.png"));
 
     [DataField]
-    public SpriteSpecifier? ShuffleIcon =
-        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/die.svg.192dpi.png"));
+    public LocId ShuffleText = "cards-verb-shuffle";
 
     [DataField]
-    public SpriteSpecifier? FlipCardsIcon =
-        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/refresh.svg.192dpi.png"));
+    public SpriteSpecifier? ShuffleIcon =
+        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/die.svg.192dpi.png"));
 
     [DataField]
     public LocId TopCardExamineLoc = "cards-deck-top-card-examine";

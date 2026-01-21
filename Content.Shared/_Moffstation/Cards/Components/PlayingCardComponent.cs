@@ -50,6 +50,10 @@ public sealed partial class PlayingCardComponent : Component
     [DataField, AutoNetworkedField]
     public string? ReverseDescription;
 
+    /// The localization ID for the "flip" verb on this card.
+    [DataField]
+    public LocId FlipText = "cards-verb-flip";
+
     /// The icon for the "flip" verb on this card.
     [DataField, AutoNetworkedField]
     public SpriteSpecifier? FlipIcon =

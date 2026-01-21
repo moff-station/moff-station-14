@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Cards.Events;
 using Content.Shared._Moffstation.Cards.Prototypes;
@@ -7,7 +7,6 @@ using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Verbs;
-using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -17,8 +16,6 @@ namespace Content.Shared._Moffstation.Cards.Systems;
 // This part handles PlayingCardDeckComponent.
 public abstract partial class SharedPlayingCardsSystem
 {
-    private static readonly AudioParams AudioVariation = AudioParams.Default.WithVariation(0.05f);
-
     /// The ID of the entity prototype which is used to construct cards dynamically.
     private static readonly EntProtoId<PlayingCardDeckComponent> CardDeckEntId = "PlayingCardDeckDynamic";
 
@@ -90,7 +87,7 @@ public abstract partial class SharedPlayingCardsSystem
             args.Verbs.Add(new AlternativeVerb
             {
                 Act = () => Split(entity, user),
-                Text = Loc.GetString("cards-verb-split"),
+                Text = Loc.GetString(entity.Comp.SplitText),
                 Icon = entity.Comp.SplitIcon,
                 Priority = 4,
             });
@@ -99,23 +96,9 @@ public abstract partial class SharedPlayingCardsSystem
         args.Verbs.Add(new AlternativeVerb
         {
             Act = () => Shuffle(entity, user),
-            Text = Loc.GetString("cards-verb-shuffle"),
+            Text = Loc.GetString(entity.Comp.ShuffleText),
             Icon = entity.Comp.ShuffleIcon,
             Priority = 3,
-        });
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => FlipAll(entity, false, user),
-            Text = Loc.GetString("cards-verb-organize-up"),
-            Icon = entity.Comp.FlipCardsIcon,
-            Priority = 1,
-        });
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => FlipAll(entity, true, user),
-            Text = Loc.GetString("cards-verb-organize-down"),
-            Icon = entity.Comp.FlipCardsIcon,
-            Priority = 2,
         });
     }
 
@@ -147,32 +130,8 @@ public abstract partial class SharedPlayingCardsSystem
         _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
         _popup.PopupPredicted(Loc.GetString("card-verb-shuffle-success", ("target", MetaData(entity).EntityName)),
             entity,
-            user);
-    }
-
-    private void FlipAll(Entity<PlayingCardDeckComponent> entity, bool faceDown, EntityUid user)
-    {
-        var didAnyFlip = false;
-        foreach (var card in entity.Comp.Cards)
-        {
-            didAnyFlip |= card switch
-            {
-                PlayingCardInDeckNetEnt(var cardNetEnt) =>
-                    GetEntity(cardNetEnt) is var cardEnt &&
-                    TryComp<PlayingCardComponent>(cardEnt, out var cardComp) &&
-                    SetFacingOrFlip((cardEnt, cardComp), faceDown),
-                PlayingCardInDeckUnspawnedData(var data, _, _) => SetOrInvert(ref data.FaceDown, faceDown),
-                PlayingCardInDeckUnspawnedRef(_, var fd) => SetOrInvert(ref fd, faceDown),
-                _ => card.ThrowUnknownInheritor<PlayingCardInDeck, bool>(),
-            };
-        }
-
-        if (didAnyFlip)
-        {
-            entity.Comp.DirtyVisuals = true;
-        }
-
-        _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
+            user
+        );
     }
 
     /// Conceptually, this "instantiates" the <see cref="PlayingCardDeckPrototype.Cards">elements</see> in the given

@@ -1,4 +1,5 @@
 using Content.Shared._Moffstation.Cards.Systems;
+using Content.Shared._Moffstation.Extensions;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
@@ -9,7 +10,7 @@ namespace Content.Shared._Moffstation.Cards.Components;
 /// This abstract class contains fields shared by <see cref="PlayingCardDeckComponent"/> and
 /// <see cref="PlayingCardHandComponent"/>.
 [Access(typeof(SharedPlayingCardsSystem))]
-public abstract partial class PlayingCardStackComponent : Component
+public abstract partial class PlayingCardStackComponent : Component, ISealedInheritance
 {
     [DataField]
     public SoundSpecifier ShuffleSound = new SoundCollectionSpecifier("cardFan");
@@ -43,6 +44,16 @@ public abstract partial class PlayingCardStackComponent : Component
 
     [DataField]
     public LocId JoinText = "card-verb-join";
+
+    [DataField]
+    public LocId OrganizeDownText = "cards-verb-organize-down";
+
+    [DataField]
+    public LocId OrganizeUpText = "cards-verb-organize-up";
+
+    [DataField]
+    public SpriteSpecifier? FlipCardsIcon =
+        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/refresh.svg.192dpi.png"));
 
     [DataField]
     public SpriteSpecifier? JoinIcon =

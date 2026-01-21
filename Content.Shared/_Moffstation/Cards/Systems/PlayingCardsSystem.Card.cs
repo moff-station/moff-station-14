@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Cards.Events;
 using Content.Shared._Moffstation.Cards.Prototypes;
@@ -70,7 +70,7 @@ public abstract partial class SharedPlayingCardsSystem
         args.Verbs.Add(new AlternativeVerb
         {
             Act = () => Flip(entity, faceDown: null),
-            Text = Loc.GetString("cards-verb-flip"),
+            Text = Loc.GetString(entity.Comp.FlipText),
             Icon = entity.Comp.FlipIcon,
             Priority = 1,
         });
