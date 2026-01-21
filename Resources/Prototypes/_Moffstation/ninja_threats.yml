@@ -14,6 +14,11 @@
   rule: LoneOpsSpawn
 
 - type: ninjaHackingThreat
+  id: Pirate
+  announcement: terror-pirate
+  rule: PirateCorsairSpawn
+
+- type: ninjaHackingThreat
   id: NinjaBackup
   announcement: terror-ninja
   rule: NinjaSpawn

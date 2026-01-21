@@ -161,9 +161,9 @@
   description: A black beret with a commander's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_hos.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_hos.rsi #Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_hos.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_hos.rsi #Moffstation - New Security Outfits
   - type: Tag
     tags:
     - PetWearable
@@ -427,9 +427,9 @@
   description: A stylish cap worn by the Head of Security. Shows the officers who's in charge.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/hoshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hoshat.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Hats/hoshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hoshat.rsi # Moffstation - New Security Outfits
   - type: Tag
     tags:
     - PetWearable
@@ -674,7 +674,7 @@
   description: "\"Perfect for winter in Siberia, da?\""
   components:
   - type: Clothing
-    sprite: Clothing/Head/Hats/ushanka.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/ushanka.rsi # Moffstation - For Arstotzka
   - type: Appearance
   - type: AddAccentClothing
     accent: RussianAccent
@@ -684,7 +684,7 @@
     foldedEquippedPrefix: up
     foldedHeldPrefix: up
   - type: Sprite
-    sprite: Clothing/Head/Hats/ushanka.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/ushanka.rsi # Moffstation - For Arstotzka
     layers:
     - state: icon
       map: [ "unfoldedLayer" ]
@@ -754,15 +754,16 @@
   description: This hat emphasizes that you are THE LAW.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/warden.rsi #Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Head/Hats/warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/warden.rsi #Moffstation - New Security Outfits
   - type: StealTarget
     stealGroup: ClothingHeadHatWarden
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
+    - HamsterWearable # Moffstation - New Security Outfits
 
 - type: entity
   parent: ClothingHeadBase

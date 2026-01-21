@@ -655,7 +655,7 @@ entities:
     - type: Transform
       pos: 1.5,-2.5
       parent: 1
-- proto: ERTJanitorSpawner
+- proto: ERTJanitorSpawnerEVA
   entities:
   - uid: 198
     components:
@@ -672,7 +672,7 @@ entities:
     - type: Transform
       pos: 2.5,-0.5
       parent: 1
-- proto: ERTLeaderSpawner
+- proto: ERTLeaderSpawnerEVA
   entities:
   - uid: 197
     components:

@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingOuterArmorBase
+  parent: ClothingOuterWinterSec
   id: ClothingOuterWinterSecArmored
   name: security armored longcoat
   description: A warm double-breasted longcoat, worn over a standard armor vest. Comes in security colors.
@@ -12,13 +12,7 @@
     heatingCoefficient: 1.1
     coolingCoefficient: 0.1
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterDefault
-    slot: head
-  - type: ContainerContainer
-    containers:
-      toggleable-clothing: !type:ContainerSlot { }
-      storagebase: !type:Container
-        ents: [ ]
+    clothingPrototype: ClothingHeadHatHoodWinterSec
 
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase,BaseCentcommContraband]
