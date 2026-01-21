@@ -1,14 +1,4 @@
 - type: entity
-  parent: PosterBase
-  id: PosterBaseMoff
-  abstract: true
-  components:
-  - type: Sprite
-    drawdepth: WallMountedItems
-    sprite: _Moffstation/Structures/Wallmounts/posters.rsi
-    snapCardinals: true
-
-- type: entity
   parent: BaseSign
   id: BaseSignMoff
   abstract: true
