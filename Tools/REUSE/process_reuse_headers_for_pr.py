@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-# REUSE HEADER NONSENSE
+# REUSE HEADER NONSENSE - Always fixes incorrect headers
 import os
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
+import re
 
 TARGET_EXTENSIONS = { ".cs", ".yml", ".yaml" }
 DEFAULT_LICENSE = "MIT"
@@ -33,8 +34,38 @@ def is_bot_author(author_name: str, author_email: str = "") -> bool:
 
     return name_is_bot or email_is_bot
 
-def has_reuse_header(content: str) -> bool:
-    return "SPDX-License-Identifier:" in content[:MAX_HEADER_SCAN]
+def extract_existing_headers(content):
+    """Extract existing REUSE headers and rest of file"""
+    lines = content.split('\n')
+    headers = []
+    rest_of_file = []
+    in_header = False
+
+    for line in lines:
+        # Check if line is a REUSE header
+        if line.strip().startswith(("// SPDX-", "# SPDX-")) or \
+                (line.strip().startswith("//") and "SPDX" in line) or \
+                (line.strip().startswith("#") and "SPDX" in line):
+            headers.append(line)
+            in_header = True
+        elif in_header and (line.strip() == "" or line.strip().startswith(("//", "#"))):
+            # Empty line or comment after headers
+            headers.append(line)
+        else:
+            # End of header section
+            rest_of_file.append(line)
+            in_header = False
+
+    return '\n'.join(headers), '\n'.join(rest_of_file)
+
+def parse_existing_header(header_line):
+    """Parse a header line to extract year and name"""
+    pattern = r'^\s*(//|#)\s+SPDX-FileCopyrightText:\s+(\d{4}(?:-\d{4})?(?:,\s*\d{4}(?:-\d{4})?)*)\s+(.+?)(?:\s+<(.+?)>)?$'
+    match = re.match(pattern, header_line)
+    if match:
+        comment_char, years_str, name, email = match.groups()
+        return comment_char.strip(), years_str.strip(), name.strip(), email
+    return None, None, None, None
 
 def get_git_authors(filepath: str):
     try:
@@ -145,6 +176,68 @@ def read_file(filepath: str):
             continue
     raise UnicodeDecodeError("unknown", b"", 0, 1, "unable to decode")
 
+def headers_match_git_history(existing_headers, git_authors):
+    """Check if existing headers match git history"""
+    if not existing_headers:
+        return False
+
+    # Count license identifiers - if there are multiple, something is wrong
+    license_count = existing_headers.count("SPDX-License-Identifier:")
+    if license_count > 1:
+        return False
+
+    # Parse existing headers
+    existing_authors = []
+    for line in existing_headers.split('\n'):
+        if "SPDX-FileCopyrightText:" in line:
+            comment_char, years_str, name, email = parse_existing_header(line)
+            if comment_char and name:
+                existing_authors.append((name, email, years_str))
+
+    # Check if number of authors matches
+    if len(existing_authors) != len(git_authors):
+        return False
+
+    # Check each author matches
+    for (git_name, git_email, git_years), (existing_name, existing_email, existing_years) in zip(git_authors, existing_authors):
+        # Check name and email match
+        if git_name != existing_name:
+            return False
+        if git_email != existing_email:
+            return False
+
+        # Check years match
+        git_year_str = format_years(git_years)
+        if git_year_str != existing_years:
+            # Try to parse and compare years
+            git_year_set = set(git_years)
+            # Parse existing years (could be "2024" or "2024-2025" or "2024, 2025")
+            existing_year_set = set()
+            for part in existing_years.replace(',', ' ').split():
+                if '-' in part:
+                    start, end = map(int, part.split('-'))
+                    existing_year_set.update(str(y) for y in range(start, end + 1))
+                elif part.isdigit():
+                    existing_year_set.add(part)
+
+            if git_year_set != existing_year_set:
+                return False
+
+    return True
+
+def has_multiple_license_identifiers(headers_text):
+    """Check if there are multiple SPDX-License-Identifier lines"""
+    if not headers_text:
+        return False
+
+    count = 0
+    for line in headers_text.split('\n'):
+        if "SPDX-License-Identifier:" in line:
+            count += 1
+            if count > 1:
+                return True
+    return False
+
 def process_file(filepath: str, dry_run: bool):
     global processed, skipped, errors
 
@@ -160,34 +253,66 @@ def process_file(filepath: str, dry_run: bool):
         log(f"[ERROR] Encoding issue: {filepath}")
         return False
 
-    if has_reuse_header(content):
-        skipped += 1
-        return True
-
-    authors = get_git_authors(filepath)
-    if not authors:
+    # Get git authors
+    git_authors = get_git_authors(filepath)
+    if not git_authors:
         skipped += 1
         log(f"[SKIP] No non-bot authors found for {filepath}")
         return True
 
-    header = build_header(ext, authors)
+    # Extract existing headers if any
+    existing_headers, rest_of_file = extract_existing_headers(content)
+
+    # Build correct header
+    correct_header = build_header(ext, git_authors)
+
+    # Check if we need to update the file
+    needs_update = False
+    update_reason = ""
+
+    if existing_headers:
+        if has_multiple_license_identifiers(existing_headers):
+            needs_update = True
+            update_reason = "multiple license identifiers"
+        elif not headers_match_git_history(existing_headers, git_authors):
+            needs_update = True
+            update_reason = "headers don't match git history"
+        else:
+            needs_update = False
+    else:
+        needs_update = True
+        update_reason = "missing headers"
+
+    # Show what we're doing
+    author_list = [format_author_display(a[0]) for a in git_authors]
+
+    if not needs_update:
+        skipped += 1
+        return True
 
     if dry_run:
         processed += 1
-        log(f"[MISSING HEADER] {filepath}")
-        author_list = [format_author_display(a[0]) for a in authors]
+        log(f"[NEEDS UPDATE] {filepath}")
+        log(f"  Reason: {update_reason}")
         log(f"  Authors: {', '.join(author_list)}")
         return True
 
+    # Update the file
+    log(f"[UPDATING] {filepath}")
+    log(f"  Reason: {update_reason}")
+    log(f"  Authors: {', '.join(author_list)}")
+
+    if existing_headers:
+        # Replace existing headers
+        new_content = correct_header + '\n' + rest_of_file
+    else:
+        # Add new headers
+        new_content = correct_header + '\n' + content
+
     try:
         with open(filepath, "w", encoding="utf-8") as f:
-            f.write(header)
-            f.write("\n")
-            f.write(content)
+            f.write(new_content)
         processed += 1
-        log(f"[UPDATED] {filepath}")
-        author_list = [format_author_display(a[0]) for a in authors]
-        log(f"  Authors: {', '.join(author_list)}")
         return True
     except Exception as e:
         errors += 1
@@ -216,16 +341,16 @@ def main():
 
     print("\n====== REUSE PR SUMMARY ======")
     print(f"Files checked: {len(files)}")
-    print(f"Files needing headers: {processed}")
-    print(f"Files skipped: {skipped}")
+    print(f"Files updated/fixed: {processed}")
+    print(f"Files skipped (already correct): {skipped}")
     print(f"Errors: {errors}")
 
     if dry_run:
         print(f"\nBot patterns ignored: {', '.join(BOT_KEYWORDS)}")
-
-    if dry_run and processed > 0:
-        print("\nREUSE headers missing on modified files.")
-        sys.exit(1)
+        print("NOTE: This was a dry run. No files were modified.")
+        if processed > 0:
+            print("Files would need REUSE header updates.")
+            sys.exit(1)
 
     if errors > 0:
         sys.exit(1)
