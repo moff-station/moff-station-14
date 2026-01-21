@@ -612,7 +612,6 @@ namespace Content.Server.Database
         public List<ServerRoleBan> AdminServerRoleBansCreated { get; set; } = null!;
         public List<ServerRoleBan> AdminServerRoleBansLastEdited { get; set; } = null!;
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
-
     }
 
     [Table("whitelist")]
