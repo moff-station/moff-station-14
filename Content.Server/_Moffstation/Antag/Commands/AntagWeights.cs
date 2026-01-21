@@ -13,8 +13,6 @@ public sealed class AntagWeights : LocalizedEntityCommands
     [Dependency] private readonly WeightedAntagManager _antagWeight = default!;
 
     public override string Command => "antagweights";
-    public override string Description => "Gets the current antag weights";
-    public override string Help => "antagweights";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
