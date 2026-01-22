@@ -322,7 +322,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 _adminLogger.Add(LogType.AntagSelection, $"Pre-selected {session.Name} as antagonist: {ToPrettyString(ent)}");
             }
         }
-        // Moffstation - Start - Weighted antag selection
         foreach (var player in pool)
         {
             foreach (var set in ent.Comp.PreSelectedSessions.Values)
@@ -339,7 +338,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 }
             }
         }
-        // Moffstation - End
     }
 
     // Moffstation - Start - Weighted antag selection
