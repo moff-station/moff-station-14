@@ -14,7 +14,8 @@
     description: ghost-role-information-jokejoke-description
     rules: ghost-role-information-familiar-rules
     mindRoles:
-    - MindRoleGhostRoleFamiliar
+    - MindRoleGhostRoleTeamAntagonist
+    - MindRolePirate
   - type: GhostTakeoverAvailable
   - type: Butcherable
     butcheringType: Spike
