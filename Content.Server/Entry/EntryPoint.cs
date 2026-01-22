@@ -199,7 +199,6 @@ namespace Content.Server.Entry
             {
                 _playTimeTracking.Shutdown();
                 _dbManager.Shutdown();
-                _weightedAntags.Shutdown(); // Moffstation - Weighted antags
             }
 
             _serverApi.Shutdown();

@@ -3,89 +3,83 @@ using Content.Server.Database;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Network;
 
-namespace Content.Server._Moffstation.Antag;
-
-public sealed class WeightedAntagManager
+namespace Content.Server._Moffstation.Antag
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly ITaskManager _taskManager = default!;
-
-    private readonly List<Task> _pendingSaveTasks = new();
-    private ISawmill _logger = default!;
-    private readonly Dictionary<NetUserId, int> _cachedAntagWeight = new();
-
-    public void Initialize()
+    public sealed class WeightedAntagManager
     {
-        _logger = Logger.GetSawmill("antag_weight");
-    }
+        [Dependency] private readonly IServerDbManager _db = default!;
+        [Dependency] private readonly ITaskManager _taskManager = default!;
 
-    public void Shutdown()
-    {
-        Save();
-        _taskManager.BlockWaitOnTask(Task.WhenAll(_pendingSaveTasks));
-    }
+        private readonly List<Task> _pendingSaveTasks = new();
+        private ISawmill _logger = default!;
+        private readonly Dictionary<NetUserId, int> _cachedAntagWeight = new();
 
-    public void SetWeight(NetUserId userId, int newWeight)
-    {
-        var oldWeight = GetWeight(userId);
-        _cachedAntagWeight[userId] = newWeight;
-
-        _logger.Info($"Updated antag weight for {userId}: {oldWeight} -> {newWeight}");
-    }
-
-    public void Save()
-    {
-        foreach (var user in _cachedAntagWeight)
+        public void Initialize()
         {
-            _ = SaveWeight(user.Key, user.Value);
+            _logger = Logger.GetSawmill("antag_weight");
         }
-    }
 
-    private async Task<int> SaveWeight(NetUserId userId, int newWeight)
-    {
-        var oldWeight = GetWeight(userId);
-        _cachedAntagWeight[userId] = newWeight;
-        var saveTask = _db.SetAntagWeight(userId, newWeight);
-        RegisterShutdownTask(saveTask);
-
-        if (await saveTask)
+        public void Shutdown()
         {
-            _logger.Debug(
-                $"Antag weight saved for {userId}: {oldWeight} -> {newWeight}");
+            foreach (var user in _cachedAntagWeight)
+            {
+                _ = SaveWeight(user.Key, user.Value);
+            }
+            _taskManager.BlockWaitOnTask(Task.WhenAll(_pendingSaveTasks));
         }
-        else
-        {
-            _logger.Error(
-                $"Failed to persist antag weight for {userId}");
-        }
-        return oldWeight;
-    }
 
-    public int GetWeight(NetUserId userId)
-    {
-        if (_cachedAntagWeight.TryGetValue(userId, out var weight))
+        public void SetWeight(NetUserId userId, int newWeight)
+        {
+            var oldWeight = GetWeight(userId);
+            _cachedAntagWeight[userId] = newWeight;
+
+            _logger.Info($"Updated antag weight for {userId}: {oldWeight} -> {newWeight}");
+        }
+
+        private async Task<int> SaveWeight(NetUserId userId, int newWeight)
+        {
+            var oldWeight = GetWeight(userId);
+            var saveTask = _db.SetAntagWeight(userId, newWeight);
+            RegisterShutdownTask(saveTask);
+
+            if (await saveTask)
+            {
+                _logger.Debug(
+                    $"Antag weight saved for {userId}: {oldWeight} -> {newWeight}");
+            }
+            else
+            {
+                _logger.Error(
+                    $"Failed to persist antag weight for {userId}");
+            }
+            return oldWeight;
+        }
+
+        public int GetWeight(NetUserId userId)
+        {
+            if (_cachedAntagWeight.TryGetValue(userId, out var weight))
+                return weight;
+
+            weight = Task
+                .Run(() => _db.GetAntagWeight(userId))
+                .GetAwaiter()
+                .GetResult();
+            _cachedAntagWeight.Add(userId, weight);
             return weight;
-
-        weight = Task
-            .Run(() => _db.GetAntagWeight(userId))
-            .GetAwaiter()
-            .GetResult();
-        _cachedAntagWeight.Add(userId, weight);
-        return weight;
-    }
-
-    private async void RegisterShutdownTask(Task task)
-    {
-        _pendingSaveTasks.Add(task);
-
-        try
-        {
-            await task;
         }
-        finally
+
+        private async void RegisterShutdownTask(Task task)
         {
-            _pendingSaveTasks.Remove(task);
+            _pendingSaveTasks.Add(task);
+
+            try
+            {
+                await task;
+            }
+            finally
+            {
+                _pendingSaveTasks.Remove(task);
+            }
         }
     }
 }
-

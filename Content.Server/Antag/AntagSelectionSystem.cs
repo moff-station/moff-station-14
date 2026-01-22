@@ -76,7 +76,6 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayerSpawning);
         SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawnComplete);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundEnd);
     }
 
     private void OnTakeGhostRole(Entity<GhostRoleAntagSpawnerComponent> ent, ref TakeGhostRoleEvent args)
@@ -324,17 +323,20 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             }
         }
         // Moffstation - Start - Weighted antag selection
-        foreach (var set in ent.Comp.PreSelectedSessions.Values)
+        foreach (var player in pool)
         {
-            if (set.Count == 0)
-                continue;
-
-            foreach (var session in pool)
+            foreach (var set in ent.Comp.PreSelectedSessions.Values)
             {
-                if (set.Contains(session))
+                if (set.Count == 0)
                     continue;
 
-                _antagWeight.SetWeight(session.UserId, _antagWeight.GetWeight(session.UserId) + 1);
+                foreach (var session in pool)
+                {
+                    if (set.Contains(session))
+                        continue;
+
+                    _antagWeight.SetWeight(session.UserId, _antagWeight.GetWeight(player.UserId) + 1);
+                }
             }
         }
         // Moffstation - End
@@ -343,12 +345,15 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     // Moffstation - Start - Weighted antag selection
     public List<ICommonSession> GetWeightedAntagPool(IList<ICommonSession> pool)
     {
-        return pool.SelectMany(session => Enumerable.Repeat(session, _antagWeight.GetWeight(session.UserId))).ToList();
-    }
-
-    private void OnRoundEnd(RoundRestartCleanupEvent args)
-    {
-        _antagWeight.Save();
+        var weightedPlayerPool = new List<ICommonSession>();
+        foreach (var session in pool)
+        {
+            foreach (var _ in Enumerable.Range(0, _antagWeight.GetWeight(session.UserId)))
+            {
+                weightedPlayerPool.Add(session);
+            }
+        }
+        return weightedPlayerPool;
     }
     // Moffstation - End
 
