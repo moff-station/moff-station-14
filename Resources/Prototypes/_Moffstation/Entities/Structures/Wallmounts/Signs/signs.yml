@@ -10,9 +10,9 @@
 
 - type: entity
   parent: BaseSignMoff
-  id: WarningH20
-  name: H20 warning sign
-  description: WARNING! H20 flow tube. Ensure the flow is disengaged before working.
+  id: WarningH2O
+  name: H2O warning sign
+  description: WARNING! H2O flow tube. Ensure the flow is disengaged before working.
   components:
   - type: Sprite
     state: atmos_h2o
