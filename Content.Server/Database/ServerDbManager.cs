@@ -343,13 +343,6 @@ namespace Content.Server.Database
 
         #endregion
 
-        #region AntagWeights
-
-        Task<int> GetAntagWeight(NetUserId userId);
-        Task<bool> SetAntagWeight(NetUserId userId, int weight);
-
-        #endregion
-
         #region DB Notifications
 
         void SubscribeToNotifications(Action<DatabaseNotification> handler);
@@ -1058,20 +1051,6 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.CleanIPIntelCache(range));
         }
-
-        // Moffstation - Start - Weighted Antags
-        public Task<int> GetAntagWeight(NetUserId userId)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetAntagWeight(userId));
-        }
-
-        public Task<bool> SetAntagWeight(NetUserId userId, int weight)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetAntagWeight(userId, weight));
-        }
-        // Moffstation - End - Weighted Antags
 
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {

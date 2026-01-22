@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -766,10 +766,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasColumnName("player_id");
-
-                    b.Property<int?>("AntagWeight")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("antag_weight");
 
                     b.Property<DateTime>("FirstSeenTime")
                         .HasColumnType("TEXT")
@@ -1709,7 +1705,7 @@ namespace Content.Server.Database.Migrations.Sqlite
 
                             b1.HasKey("ConnectionLogId");
 
-                            b1.ToTable("connection_log");
+                            b1.ToTable("connection_log", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("ConnectionLogId")
@@ -1754,7 +1750,7 @@ namespace Content.Server.Database.Migrations.Sqlite
 
                             b1.HasKey("PlayerId");
 
-                            b1.ToTable("player");
+                            b1.ToTable("player", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("PlayerId")
@@ -1877,7 +1873,7 @@ namespace Content.Server.Database.Migrations.Sqlite
 
                             b1.HasKey("ServerBanId");
 
-                            b1.ToTable("server_ban");
+                            b1.ToTable("server_ban", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("ServerBanId")
@@ -1954,7 +1950,7 @@ namespace Content.Server.Database.Migrations.Sqlite
 
                             b1.HasKey("ServerRoleBanId");
 
-                            b1.ToTable("server_role_ban");
+                            b1.ToTable("server_role_ban", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("ServerRoleBanId")
