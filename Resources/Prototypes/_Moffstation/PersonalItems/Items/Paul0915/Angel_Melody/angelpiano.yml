@@ -1,0 +1,40 @@
+# Player Paul0915 - Character: Angel Melody
+
+- type: entity
+  parent: BaseFlatpack
+  id: PersonalItemAngelPianoFlatpack
+  name: Angel's piano
+  suffix: PersonalItem
+  description: "A grand piano specially designed by Aurora Epiolos to be assembled from a compact package.\nDespite how it may appear, it can be constructed with just a screwdriver!"
+  components:
+  - type: Flatpack
+    entity: PersonalItemAngelPiano
+    qualityNeeded: Screwing
+  - type: Item
+    size: Ginormous
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#DE3A3A" # Basically the piano color
+    - state: icon-default
+  - type: StaticPrice
+    price: 200
+
+- type: entity
+  parent: PianoInstrument
+  id: PersonalItemAngelPiano
+  name: Angel's piano
+  description: "A grand piano specially designed by Aurora Epiolos to be assembled from a compact package.\nDespite how it may appear, it can be constructed with just a screwdriver!"
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Paul0915/Angel_Melody/angel_piano.rsi
+
+- type: loadout
+  id: PersonalItemAngelPiano
+  inhand:
+    - PersonalItemAngelPianoFlatpack
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Angel Melody

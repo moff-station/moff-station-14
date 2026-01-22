@@ -497,3 +497,13 @@
   cost: 500
   category: cargoproduct-category-name-fun
   group: pirateMarket
+
+- type: cargoProduct
+  id: PirateFulton
+  icon:
+    sprite: /Textures/Objects/Tools/fulton.rsi
+    state: extraction_pack
+  product: CratePirateFulton
+  cost: 500
+  category: pirateproduct-category-name-tools
+  group: pirateMarket
