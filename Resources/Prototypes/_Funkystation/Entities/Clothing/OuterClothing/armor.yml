@@ -2,7 +2,7 @@
 - type: entity
   parent: ClothingOuterArmorBase
   id: ClothingOuterArmorMetalHydrogen
-  name: metal hydrogen armor
+  name: clothing-metal-hydrogen-armor
   description: A superb armor made with the toughest and rarest materials available to man.
   components:
   - type: Sprite
@@ -30,7 +30,7 @@
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
   id: ClothingOuterArmorAtmosian
-  name: atmosian armor
+  name: clothing-atmosian-armor
   description: An atmos fire suit bolstered with metal hydrogen.
   components:
   - type: Sprite
