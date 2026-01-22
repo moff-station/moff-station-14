@@ -16,7 +16,7 @@
           min: 0.2
         - !type:MetabolizerTypeCondition
           type: [Slime]
-          Inverted: true
+          inverted: true
         emote: Cough
         showInChat: true
         probability: 0.1

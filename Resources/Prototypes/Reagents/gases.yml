@@ -356,7 +356,6 @@
         - !type:MetabolizerTypeCondition
           type: [ Slime ]
           inverted: true
-          max: 0.1
         ignoreResistances: true
         damage:
           types:
