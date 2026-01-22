@@ -4,6 +4,8 @@
   parent: C4
   id: GunpowderCharge
   components:
+  - type: Contraband
+    severity: HighlyIllegal
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Bombs/dynamite.rsi
     state: icon

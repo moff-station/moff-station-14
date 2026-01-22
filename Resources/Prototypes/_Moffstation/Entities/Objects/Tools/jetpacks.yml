@@ -1,10 +1,12 @@
 # Filled black
 - type: entity
-  id: PirateJetpack
   parent: JetpackBlack
+  id: PirateJetpack
   name: pirate jetpack
   suffix: Pirate
   components:
+  - type: Contraband
+    severity: HighlyIllegal
   - type: Item
     sprite: _Moffstation/Objects/Tanks/Jetpacks/pirate_jetpack.rsi
   - type: Sprite
@@ -16,8 +18,8 @@
 
 # Filled black
 - type: entity
-  id: PirateJetpackFilled
   parent: PirateJetpack
+  id: PirateJetpackFilled
   suffix: Filled, Pirate
   components:
   - type: GasTank
