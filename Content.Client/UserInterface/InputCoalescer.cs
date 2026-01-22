@@ -1,4 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-License-Identifier: MIT
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Client.UserInterface;
 

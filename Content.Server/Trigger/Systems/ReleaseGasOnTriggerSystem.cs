@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Trigger.Components.Effects;
 using Content.Shared.Trigger.Systems;

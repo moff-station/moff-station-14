@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-License-Identifier: MIT
+
+using System.Collections.Generic;
 using System.Reflection;
 using Content.Server.Administration.Managers;
 using Robust.Shared.Toolshed;

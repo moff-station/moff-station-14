@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Explosion.Components;
 using Robust.Shared.GameStates;
 

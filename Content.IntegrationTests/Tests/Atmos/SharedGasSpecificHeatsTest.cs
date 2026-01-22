@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Client.Atmos.EntitySystems;
 using Content.IntegrationTests.Pair;
 using Content.Shared.Atmos;

@@ -1,4 +1,7 @@
-﻿using Content.Shared.Actions.Events;
+// SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Actions.Events;
 using Content.Shared.DoAfter;
 
 namespace Content.Shared.Actions;

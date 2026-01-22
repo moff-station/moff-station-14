@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Server.Popups;

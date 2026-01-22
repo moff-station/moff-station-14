@@ -1,4 +1,7 @@
-﻿using System.Net;
+// SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
+// SPDX-License-Identifier: MIT
+
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Content.Shared.CCVar;

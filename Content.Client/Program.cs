@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2020, 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using Robust.Client;
 
 namespace Content.Client

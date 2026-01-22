@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 poklj <compgeek223@gmail.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Cloning;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;

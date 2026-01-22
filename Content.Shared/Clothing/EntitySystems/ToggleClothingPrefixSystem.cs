@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 Token <56667933+TokenStyle@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Clothing.Components;
 using Content.Shared.Item.ItemToggle.Components;
 

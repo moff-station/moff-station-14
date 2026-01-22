@@ -1,5 +1,6 @@
-# Spawn on client side when users examine a multipart machine
-# If a sprite is given then the default component's value will be overriden
+# SPDX-FileCopyrightText: 2025 BarryNorfolk <barrynorfolkman@protonmail.com>
+# SPDX-License-Identifier: MIT
+
 - type: entity
   id: MultipartMachineGhost
   categories: [ HideSpawnMenu ]

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using System.Diagnostics.Contracts;
 using Content.Shared.Light.Components;
 using Content.Shared.Maps;

@@ -1,4 +1,8 @@
-﻿using Content.Server.Worldgen.Prototypes;
+// SPDX-FileCopyrightText: 2023, 2025 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+// SPDX-License-Identifier: MIT
+
+using Content.Server.Worldgen.Prototypes;
 using Content.Server.Worldgen.Systems.Biomes;
 using Robust.Shared.Prototypes;
 

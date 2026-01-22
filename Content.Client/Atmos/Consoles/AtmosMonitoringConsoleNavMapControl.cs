@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024-2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Perry Fraser <perryprog@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Client.Pinpointer.UI;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Pinpointer;

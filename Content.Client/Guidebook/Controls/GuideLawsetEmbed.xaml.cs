@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 PotentiallyTom <67602105+PotentiallyTom@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using System.Diagnostics.CodeAnalysis;
 using Content.Client.Guidebook.Richtext;
 using Content.Client.Message;

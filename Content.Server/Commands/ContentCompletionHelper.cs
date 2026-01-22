@@ -1,4 +1,8 @@
-﻿using Content.Shared.Station.Components;
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Station.Components;
 using Robust.Shared.Console;
 
 namespace Content.Server.Commands;

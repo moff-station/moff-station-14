@@ -1,4 +1,7 @@
-﻿using Content.Shared.Database;
+// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Database;
 
 namespace Content.Server.Connection.Whitelist.Conditions;
 

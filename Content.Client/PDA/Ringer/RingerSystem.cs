@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.PDA;
 using Content.Shared.PDA.Ringer;
 using Content.Shared.Store.Components;

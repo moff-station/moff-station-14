@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 ArchRBX <5040911+ArchRBX@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Medical.Components;
 using Content.Shared.CartridgeLoader;
 

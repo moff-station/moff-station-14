@@ -1,4 +1,8 @@
-#nullable enable
+// SPDX-FileCopyrightText: 2023-2025 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using Content.IntegrationTests.Tests.Helpers;
 using Content.Shared.Movement.Components;
 using Content.Shared.Slippery;

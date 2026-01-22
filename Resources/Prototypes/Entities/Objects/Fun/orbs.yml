@@ -1,8 +1,7 @@
-# When adding new orbs, also add it to id: AllMiscToysTable
-# Spherical objects of incredible* powers
+# SPDX-FileCopyrightText: 2026 Thinbug <101073555+Thinbug0@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 āda <ss.adasts@gmail.com>
+# SPDX-License-Identifier: MIT
 
-# Do not make this easily obtainable because if more than 6 of them are on the screen
-# at the same time it will break the distortion shader.
 - type: entity
   parent: BaseItem
   id: SingularityToy

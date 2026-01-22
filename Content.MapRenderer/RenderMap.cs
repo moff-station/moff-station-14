@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using System.IO;
 using Content.Shared.Maps;
 using Robust.Shared.Prototypes;

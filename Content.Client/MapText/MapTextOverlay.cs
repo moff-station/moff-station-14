@@ -1,4 +1,7 @@
-﻿using System.Numerics;
+// SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
+// SPDX-License-Identifier: MIT
+
+using System.Numerics;
 using Content.Shared.MapText;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;

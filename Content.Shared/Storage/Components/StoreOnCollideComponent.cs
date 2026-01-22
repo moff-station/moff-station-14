@@ -1,4 +1,7 @@
-﻿using Content.Shared.Storage.EntitySystems;
+// SPDX-FileCopyrightText: 2024 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 

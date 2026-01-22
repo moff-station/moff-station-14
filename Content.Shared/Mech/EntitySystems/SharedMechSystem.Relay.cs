@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 nikitosych <boriszyn@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mech.Components;
 

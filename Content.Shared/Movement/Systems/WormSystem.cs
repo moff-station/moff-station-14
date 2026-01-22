@@ -1,4 +1,8 @@
-﻿using Content.Shared.Alert;
+// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 B_Kirill <153602297+B-Kirill@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Alert;
 using Content.Shared.Movement.Components;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;

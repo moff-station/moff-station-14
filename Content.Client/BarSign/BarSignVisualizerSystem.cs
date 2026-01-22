@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.BarSign;
 using Content.Shared.Power;
 using Robust.Client.GameObjects;

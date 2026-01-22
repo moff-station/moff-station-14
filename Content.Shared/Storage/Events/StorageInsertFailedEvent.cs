@@ -1,4 +1,7 @@
-﻿using Content.Shared.Hands.Components;
+// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Hands.Components;
 
 namespace Content.Shared.Storage.Events;
 

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Vocalization.Components;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;

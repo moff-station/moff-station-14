@@ -1,4 +1,6 @@
-// Global usings for Content.Replay
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
 
 global using System;
 global using System.Collections.Generic;

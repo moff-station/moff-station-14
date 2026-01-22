@@ -1,4 +1,8 @@
-﻿using Content.Client.Message;
+// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Client.Message;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Access.Components;
 using Content.Shared.CCVar;

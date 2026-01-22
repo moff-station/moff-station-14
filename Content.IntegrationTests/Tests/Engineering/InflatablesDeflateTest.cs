@@ -1,4 +1,7 @@
-﻿using Content.IntegrationTests.Tests.Interaction;
+// SPDX-FileCopyrightText: 2025 FungiFellow <151778459+FungiFellow@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.IntegrationTests.Tests.Interaction;
 using Content.Shared.Engineering.Systems;
 
 namespace Content.IntegrationTests.Tests.Engineering;

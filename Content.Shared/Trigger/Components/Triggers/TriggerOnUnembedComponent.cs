@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 sleepyyapril <123355664+sleepyyapril@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Trigger.Systems;
 using Robust.Shared.GameStates;
 

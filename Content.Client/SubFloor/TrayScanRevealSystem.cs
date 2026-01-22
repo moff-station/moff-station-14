@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 qwerltaz <msmarcinpl@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Content.Shared.SubFloor;
 using Robust.Shared.Map.Components;

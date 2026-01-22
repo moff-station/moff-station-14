@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using System.Net;
 using Content.Shared.Database;
 using Robust.Shared.Network;

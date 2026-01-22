@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Administration;
 using Content.Server.Humanoid;
 using Content.Shared.Administration;

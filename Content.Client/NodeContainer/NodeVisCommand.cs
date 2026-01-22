@@ -1,4 +1,9 @@
-﻿using Content.Client.Administration.Managers;
+// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Client.Administration.Managers;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 

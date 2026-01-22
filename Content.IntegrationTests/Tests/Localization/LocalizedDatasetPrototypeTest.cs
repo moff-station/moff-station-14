@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024-2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Content.Shared.Dataset;
 using Robust.Shared.Localization;

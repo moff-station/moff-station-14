@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Ciarán Walsh <github@ciaranwal.sh>
+// SPDX-FileCopyrightText: 2026 Princess Cheeseballs <66055347+Princess-Cheeseballs@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Client.Guidebook.RichText;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;

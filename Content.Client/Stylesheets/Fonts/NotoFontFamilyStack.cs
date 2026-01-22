@@ -1,4 +1,7 @@
-﻿using Content.Client.Resources;
+// SPDX-FileCopyrightText: 2025 Brandon Li <48413902+aspiringLich@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Client.Resources;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2022-2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 

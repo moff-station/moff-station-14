@@ -1,4 +1,9 @@
-﻿using Content.Shared.Anomaly.Effects;
+// SPDX-FileCopyrightText: 2024 Patrik Caes-Sayrs <heartofgoldfish@gmail.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Anomaly.Effects;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Audio;

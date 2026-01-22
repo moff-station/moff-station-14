@@ -1,4 +1,9 @@
-﻿using Content.Shared.Trigger.Components;
+// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Perry Fraser <perryprog@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Trigger.Components;
 using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Examine;
 using Content.Shared.Verbs;

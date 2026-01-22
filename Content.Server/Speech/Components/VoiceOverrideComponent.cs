@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Speech;
 using Robust.Shared.Prototypes;
 

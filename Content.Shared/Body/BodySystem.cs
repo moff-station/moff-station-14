@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 pathetic meowmeow <uhhadd@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.DragDrop;
 using Robust.Shared.Containers;
 

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 Whatstone <166147148+whatston3@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
 using System.Numerics;
 using Content.Client.Stylesheets;
 using Content.Shared.Decals;

@@ -1,4 +1,9 @@
-﻿using System.Threading.Tasks;
+// SPDX-FileCopyrightText: 2022-2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023-2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Geekyhobo <66805063+Geekyhobo@users.noreply.github.com>
+// SPDX-License-Identifier: MIT
+
+using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Database;
 using Content.Server.EUI;

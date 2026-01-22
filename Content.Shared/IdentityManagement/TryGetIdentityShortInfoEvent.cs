@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
+// SPDX-License-Identifier: MIT
+
 namespace Content.Shared.IdentityManagement;
 
 /// <summary>

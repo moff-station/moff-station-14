@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-License-Identifier: MIT
+
 using System.Text.Json.Serialization;
 
 namespace Content.Server.Administration.Managers;

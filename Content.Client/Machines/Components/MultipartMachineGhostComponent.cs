@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 BarryNorfolk <barrynorfolkman@protonmail.com>
+// SPDX-License-Identifier: MIT
+
 namespace Content.Client.Machines.Components;
 
 /// <summary>
