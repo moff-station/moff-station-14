@@ -28,7 +28,7 @@
           min: 1
         - !type:MetabolizerTypeCondition
           type: [Slime]
-          Inverted: true
+          inverted: true
         ignoreResistances: true
         damage:
           types:
