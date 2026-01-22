@@ -73,6 +73,7 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/dugstation.yml", ["ClothingHeadHatCatEarsValid"]},
+            {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
             // Moffstation - End
         };
 
@@ -151,6 +152,7 @@ namespace Content.IntegrationTests.Tests
             "Scylla",
             "Aspid",
             "Elkridge",
+	    "Skeld"
             // Moffstation - End
         };
 
