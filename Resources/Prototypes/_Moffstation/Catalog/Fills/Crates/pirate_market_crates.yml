@@ -8,10 +8,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: EnergyCutlass
-          amount: 2
+      entity_storage:
+        id: EnergyCutlass
+        amount: 2
 
 - type: entity
   parent: CratePiratePrivateSecure
@@ -21,10 +20,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingOuterVestWeb
-          amount: 2
+      entity_storage:
+        id: ClothingOuterVestWeb
+        amount: 2
 
 - type: entity
   parent: CratePiratePrivateSecure
@@ -94,10 +92,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: CannonBall
-          amount: 3
+      entity_storage:
+        id: CannonBall
+        amount: 3
 
 - type: entity
   parent: CratePirateChestSecure
@@ -107,10 +104,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: CannonBallGlassshot
-          amount: 3
+      entity_storage:
+        id: CannonBallGlassshot
+        amount: 3
 
 - type: entity
   parent: CratePirateChestSecure
@@ -120,10 +116,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: CannonBallGrapeshot
-          amount: 3
+      entity_storage:
+        id: CannonBallGrapeshot
+        amount: 3
 
 - type: entity
   parent: CratePirateChestSecure
@@ -150,10 +145,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: MedkitAdvancedFilled
-          amount: 1
+      entity_storage:
+        id: MedkitAdvancedFilled
+        amount: 1
 
 - type: entity
   parent: CratePirate
@@ -163,10 +157,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: MedkitCombatFilled
-          amount: 1
+      entity_storage:
+        id: MedkitCombatFilled
+        amount: 1
 
 - type: entity
   parent: CratePiratePrivateSecure
@@ -210,10 +203,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: Cutlass
-          amount: 3
+      entity_storage:
+        id: Cutlass
+        amount: 3
 
 - type: entity
   parent: CratePirateChestSecure
@@ -270,10 +262,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: WeaponMakeshiftLaser
-          amount: 2
+      entity_storage:
+        id: WeaponMakeshiftLaser
+        amount: 2
 
 - type: entity
   parent: CratePirateChestSecure
@@ -298,10 +289,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: SpeedLoaderMagnumAP
-          amount: 1
+      entity_storage:
+        id: SpeedLoaderMagnumAP
+        amount: 1
 
 - type: entity
   parent: CratePiratePrivateSecure
@@ -311,10 +301,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: AppraisalTool
-          amount: 3
+      entity_storage:
+        id: AppraisalTool
+        amount: 3
 
 - type: entity
   parent: CratePirateChestSecure
@@ -324,10 +313,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: PirateAnchor
-          amount: 1
+      entity_storage:
+        id: PirateAnchor
+        amount: 1
 
 - type: entity
   parent: CratePirateChestSecure
@@ -337,10 +325,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingHandsPirateHook
-          amount: 2
+      entity_storage:
+        id: ClothingHandsPirateHook
+        amount: 2
 
 - type: entity
   parent: CratePirateDavyJones
@@ -350,10 +337,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ReinforcementRadioPirate
-          amount: 1
+      entity_storage:
+        id: ReinforcementRadioPirate
+        amount: 1
 
 - type: entity
   parent: CratePirateDavyJones
@@ -363,10 +349,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ReinforcementRadioPirateSkeleton
-          amount: 1
+      entity_storage:
+        id: ReinforcementRadioPirateSkeleton
+        amount: 1
 
 - type: entity
   parent: CratePirateDavyJones
@@ -376,10 +361,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ReinforcementRadioPirateMonkey
-          amount: 1
+      entity_storage:
+        id: ReinforcementRadioPirateMonkey
+        amount: 1
 
 - type: entity
   parent: CratePirateDavyJones
@@ -389,10 +373,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: SkeletonCoin
-          amount: 1
+      entity_storage:
+        id: SkeletonCoin
+        amount: 1
 
 - type: entity
   parent: CratePirateChestSecure
@@ -402,10 +385,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingMaskGasPirate
-          amount: 3
+      entity_storage:
+        id: ClothingMaskGasPirate
+        amount: 3
 
 - type: entity
   parent: CratePirateChestSecure
@@ -415,10 +397,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: RobotParrot
-          amount: 3
+      entity_storage:
+        id: RobotParrot
+        amount: 3
 
 - type: entity
   parent: CratePirateDavyJones
@@ -428,10 +409,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ReinforcementRadioPirateAssaultCyborg
-          amount: 1
+      entity_storage:
+        id: ReinforcementRadioPirateAssaultCyborg
+        amount: 1
 
 - type: entity
   parent: CratePirateChestSecure
@@ -441,10 +421,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: HandHeldMassScannerPirate
-          amount: 3
+      entity_storage:
+        id: HandHeldMassScannerPirate
+        amount: 3
 
 - type: entity
   parent: CratePirateChestSecure
@@ -486,10 +465,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: GunpowderCharge
-          amount: 5
+      entity_storage:
+        id: GunpowderCharge
+        amount: 5
 
 - type: entity
   parent: CratePirateChestSecure
@@ -499,10 +477,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: PirateJetpackFilled
-          amount: 2
+      entity_storage:
+        id: PirateJetpackFilled
+        amount: 2
 
 - type: entity
   parent: CratePirateDavyJones
@@ -512,9 +489,8 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: FlyingDutchmanInjector
+      entity_storage:
+        id: FlyingDutchmanInjector
 
 - type: entity
   parent: CratePirateChestSecure
@@ -524,9 +500,8 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: AccessBreakerPirate
+      entity_storage:
+        id: AccessBreakerPirate
 
 - type: entity
   parent: CratePirateDavyJones
@@ -536,9 +511,8 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingOuterHardsuitPirateBuccaneer
+      entity_storage:
+        id: ClothingOuterHardsuitPirateBuccaneer
 
 - type: entity
   parent: CratePirateDavyJones
@@ -548,9 +522,8 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingOuterHardsuitPirateBlackbeard
+      entity_storage:
+        id: ClothingOuterHardsuitPirateBlackbeard
 
 - type: entity
   parent: CratePirateDavyJones
@@ -560,9 +533,8 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingOuterHardsuitPirateDavyJones
+      entity_storage:
+        id: ClothingOuterHardsuitPirateDavyJones
 
 - type: entity
   parent: CratePirateDavyJones
@@ -572,9 +544,8 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: ClothingOuterHardsuitPirateSwashbuckler
+      entity_storage:
+        id: ClothingOuterHardsuitPirateSwashbuckler
 
 - type: entity
   parent: CratePirateChestSecure
@@ -584,10 +555,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: WeaponGrapplingGun
-          amount: 3
+      entity_storage:
+        id: WeaponGrapplingGun
+        amount: 3
 
 - type: entity
   parent: CratePirate
