@@ -1,9 +1,10 @@
 using System.Linq;
 using Content.Server.Administration;
+using Content.Server.Administration.Logs;
 using Content.Shared.Administration;
+using Content.Shared.Database;
 using Robust.Server.Player;
 using Robust.Shared.Console;
-using Robust.Shared.Network;
 
 namespace Content.Server._Moffstation.Antag.Commands;
 
@@ -43,6 +44,7 @@ public sealed class SetAntagWeight : LocalizedEntityCommands
 {
     [Dependency] private readonly IPlayerManager _players = default!;
     [Dependency] private readonly WeightedAntagManager _antagWeight = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     public override string Command => "setantagweight";
 
@@ -65,6 +67,9 @@ public sealed class SetAntagWeight : LocalizedEntityCommands
                 ("player", target.Name),
                 ("old", oldWeight),
                 ("new", targetWeight)));
+            _adminLogger.Add(LogType.AdminCommands,
+                LogImpact.Extreme,
+                $"User {shell.Player} changed antag weights for player: {target.Name} ({oldWeight} -> {targetWeight})");
         }
     }
 
@@ -76,6 +81,7 @@ public sealed class SetAntagWeight : LocalizedEntityCommands
 
             return CompletionResult.FromHintOptions(options, "<PlayerIndex>");
         }
+
         return CompletionResult.Empty;
     }
 }
