@@ -306,7 +306,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
                 if (session != null && ent.Comp.PreSelectedSessions.Values.Any(x => x.Contains(session)))
                 {
-                    Log.Warning($"Somehow picked {session} for an antag when this rule already selected them previously");
+                    // Moffstation - Start - Weighted Antags
+                    Log.Info($"Picked {session} for an antag when this rule already selected them previously");
+                    // Log.Warning($"Somehow picked {session} for an antag when this rule already selected them previously");
+                    // Moffstation - End
                     continue;
                 }
             }

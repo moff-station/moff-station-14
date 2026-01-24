@@ -1862,7 +1862,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
             return await db.DbContext.Player
                 .Where(p => p.UserId == userId)
-                .Select(p => p.AntagWeight ?? 1)
+                .Select(p => p.MoffPlayer.AntagWeight)
                 .SingleOrDefaultAsync();
         }
 
@@ -1870,13 +1870,13 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         {
             await using var db = await GetDb();
 
-            var player = await db.DbContext.Player
+            var player = await db.DbContext.Player.Include(player => player.MoffPlayer)
                 .SingleOrDefaultAsync(p => p.UserId == userId);
 
             if (player is null)
                 return false;
 
-            player.AntagWeight = weight;
+            player.MoffPlayer.AntagWeight = weight;
             await db.DbContext.SaveChangesAsync();
             return true;
         }

@@ -731,6 +731,30 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("job", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPlayer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("moff_player_id");
+
+                    b.Property<int>("AntagWeight")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("antag_weight");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_moff_player");
+
+                    b.HasIndex("PlayerUserId")
+                        .IsUnique();
+
+                    b.ToTable("moff_player", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.PlayTime", b =>
                 {
                     b.Property<int>("Id")
@@ -766,10 +790,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasColumnName("player_id");
-
-                    b.Property<int?>("AntagWeight")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("antag_weight");
 
                     b.Property<DateTime>("FirstSeenTime")
                         .HasColumnType("TEXT")
@@ -1733,6 +1753,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Profile");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPlayer", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithOne("MoffPlayer")
+                        .HasForeignKey("Content.Server.Database.MoffModel+MoffPlayer", "PlayerUserId")
+                        .HasPrincipalKey("Content.Server.Database.Player", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_moff_player_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Player", b =>
                 {
                     b.OwnsOne("Content.Server.Database.TypedHwid", "LastSeenHWId", b1 =>
@@ -2087,6 +2120,9 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("AdminWatchlistsReceived");
 
                     b.Navigation("JobWhitelists");
+
+                    b.Navigation("MoffPlayer")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>

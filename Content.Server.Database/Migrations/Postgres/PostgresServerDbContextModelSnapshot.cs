@@ -772,6 +772,32 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("job", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPlayer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("moff_player_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AntagWeight")
+                        .HasColumnType("integer")
+                        .HasColumnName("antag_weight");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_moff_player");
+
+                    b.HasIndex("PlayerUserId")
+                        .IsUnique();
+
+                    b.ToTable("moff_player", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.PlayTime", b =>
                 {
                     b.Property<int>("Id")
@@ -811,10 +837,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnName("player_id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("AntagWeight")
-                        .HasColumnType("integer")
-                        .HasColumnName("antag_weight");
 
                     b.Property<DateTime>("FirstSeenTime")
                         .HasColumnType("timestamp with time zone")
@@ -1813,6 +1835,19 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Profile");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MoffModel+MoffPlayer", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithOne("MoffPlayer")
+                        .HasForeignKey("Content.Server.Database.MoffModel+MoffPlayer", "PlayerUserId")
+                        .HasPrincipalKey("Content.Server.Database.Player", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_moff_player_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Player", b =>
                 {
                     b.OwnsOne("Content.Server.Database.TypedHwid", "LastSeenHWId", b1 =>
@@ -2167,6 +2202,9 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("AdminWatchlistsReceived");
 
                     b.Navigation("JobWhitelists");
+
+                    b.Navigation("MoffPlayer")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
