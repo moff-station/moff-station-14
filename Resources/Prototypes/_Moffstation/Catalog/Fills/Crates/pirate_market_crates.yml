@@ -640,7 +640,6 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: Fulton
-          amount: 5
+      entity_storage:
+        id: Fulton
+        amount: 5

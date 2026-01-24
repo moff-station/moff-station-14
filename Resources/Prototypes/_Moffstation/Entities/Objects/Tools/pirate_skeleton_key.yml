@@ -1,12 +1,10 @@
 - type: entity
-  parent: AccessBreaker
+  parent: [ BaseHighlyIllegalContraband , AccessBreaker ]
   id: AccessBreakerPirate
   name: pirate master key
   description: An accursed key, said to break locks using the souls of the damned
   suffix: Limited, Pirate
   components:
-  - type: Contraband
-    severity: HighlyIllegal
   - type: StaticPrice
     price: 500
   - type: Sprite

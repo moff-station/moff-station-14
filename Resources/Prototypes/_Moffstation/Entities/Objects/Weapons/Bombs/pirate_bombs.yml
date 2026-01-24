@@ -1,11 +1,9 @@
 - type: entity
+  parent: [ BaseHighlyIllegalContraband , C4 ]
+  id: GunpowderCharge
   name: dynamite
   description: old-fashioned explosive made with gunpowder. commonly used among pirates.
-  parent: C4
-  id: GunpowderCharge
   components:
-  - type: Contraband
-    severity: HighlyIllegal
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Bombs/dynamite.rsi
     state: icon
