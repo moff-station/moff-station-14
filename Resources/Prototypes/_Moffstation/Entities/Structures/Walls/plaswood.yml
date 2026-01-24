@@ -63,7 +63,69 @@
     base: plaswood
   - type: Explosive
     explosionType: FireBomb
-    totalIntensity: 15 # shouldn't be chainable 
+    totalIntensity: 75 # shouldn't be chainable 
+    intensitySlope: 30
+    maxIntensity: 15
+    canCreateVacuum: false
+    deleteAfterExplosion: false # doesn't actually breach open after explosion
+    repeatable: true
+  - type: Tag 
+    tags:
+    - Wooden
+
+- type: entity
+  parent: WallDiagonalBase
+  id: WallPlaswoodDiagonal
+  name: plaswood wall
+  suffix: diagonal
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: _Moffstation/Structures/Walls/plaswood_diagonal.rsi
+    state: state0
+  - type: Icon
+    sprite: _Moffstation/Structures/Walls/plaswood_diagonal.rsi
+    state: state0
+  - type: IconSmooth
+    mode: Diagonal
+    key: woods
+    base: state
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralPlaswood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1000    #As plastitanium
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+          params:
+            pitch: 0.8
+    - trigger:    # Vulnerable to heat damage - explodily
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+          params:
+            pitch: 0.8
+            volume: 10
+      - !type:ExplodeBehavior
+  - type: Reflect  # NOT vulnerable to lasers.
+    reflects:
+      - Energy
+    reflectProb: 1
+    spread: 30
+  - type: Explosive
+    explosionType: FireBomb
+    totalIntensity: 75 # shouldn't be chainable 
     intensitySlope: 30
     maxIntensity: 15
     canCreateVacuum: false
