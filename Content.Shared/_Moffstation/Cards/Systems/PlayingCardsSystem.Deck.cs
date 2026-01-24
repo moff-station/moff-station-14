@@ -5,10 +5,9 @@ using Content.Shared._Moffstation.Cards.Prototypes;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
-using Content.Shared.Random.Helpers;
+using Content.Shared.Item;
 using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Cards.Systems;
@@ -22,13 +21,16 @@ public abstract partial class SharedPlayingCardsSystem
     private void InitDeck()
     {
         SubscribeLocalEvent<PlayingCardDeckComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<PlayingCardDeckComponent, InteractHandEvent>(OnInteractHand);
         SubscribeLocalEvent<PlayingCardDeckComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<PlayingCardDeckComponent, ExaminedEvent>(OnExaminedDeck);
+        SubscribeLocalEvent<PlayingCardDeckComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<PlayingCardDeckComponent, InteractHandEvent>(OnInteractHand,
+            before: new[] { typeof(SharedItemSystem) });
+        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<InteractionVerb>>(OnGetInteractionVerbsDeck);
+        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<UtilityVerb>>(OnGetUtilityVerbsStack);
+        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbsDeck);
         SubscribeLocalEvent<PlayingCardDeckComponent, PlayingCardStackContentsChangedEvent>(DirtyVisuals);
         SubscribeLocalEvent<PlayingCardDeckComponent, ContainedPlayingCardFlippedEvent>(DirtyVisuals);
-        SubscribeLocalEvent<PlayingCardDeckComponent, ExaminedEvent>(OnExaminedDeck);
-        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbsDeck);
-        SubscribeLocalEvent<PlayingCardDeckComponent, InteractUsingEvent>(OnInteractUsing);
     }
 
     private void OnInit(Entity<PlayingCardDeckComponent> entity, ref ComponentInit args)
@@ -44,19 +46,6 @@ public abstract partial class SharedPlayingCardsSystem
         Dirty(entity);
     }
 
-    private void OnInteractHand(Entity<PlayingCardDeckComponent> entity, ref InteractHandEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        var singleTakenCard = Take(entity, ^1.., Transform(args.User).Coordinates, args.User).FirstOrNull();
-        if (singleTakenCard is not { } card)
-            return;
-
-        _hands.TryPickupAnyHand(args.User, card, animate: false);
-        args.Handled = true;
-    }
-
     private void OnExaminedDeck(Entity<PlayingCardDeckComponent> entity, ref ExaminedEvent args)
     {
         if (entity.Comp.TopCard is { } topCardLike &&
@@ -68,12 +57,50 @@ public abstract partial class SharedPlayingCardsSystem
         OnExamined(entity, ref args);
     }
 
+    private void OnInteractHand(Entity<PlayingCardDeckComponent> entity, ref InteractHandEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryDraw(entity, args.User);
+    }
+
+    private void OnGetInteractionVerbsDeck(
+        Entity<PlayingCardDeckComponent> entity,
+        ref GetVerbsEvent<InteractionVerb> args
+    )
+    {
+        if (!args.CanAccess || !args.CanInteract || args.Hands == null)
+            return;
+
+        var user = args.User;
+        // Draw from deck.
+        args.Verbs.Add(new InteractionVerb
+        {
+            Text = Loc.GetString(entity.Comp.DrawText),
+            Act = () => TryDraw(entity, user),
+            Priority = 100,
+        });
+    }
+
+    private bool TryDraw(Entity<PlayingCardDeckComponent> entity, EntityUid user)
+    {
+        var singleTakenCard = Take(entity, ^1.., Transform(user).Coordinates, user).FirstOrNull();
+        if (singleTakenCard is { } card)
+        {
+            _hands.TryPickupAnyHand(user, card, animate: false);
+            return true;
+        }
+
+        return false;
+    }
+
     private void OnGetAlternativeVerbsDeck(
         Entity<PlayingCardDeckComponent> entity,
         ref GetVerbsEvent<AlternativeVerb> args
     )
     {
-        OnGetAlternativeVerbsCommon(entity, ref args);
+        OnGetAlternativeVerbsStack(entity, ref args);
 
         if (!args.CanAccess ||
             !args.CanInteract ||
@@ -81,28 +108,19 @@ public abstract partial class SharedPlayingCardsSystem
             return;
 
         var user = args.User;
-
-        if (entity.Comp.NumCards > 1)
+        if (entity.Comp.NumCards > 1 && _hands.CanPickupAnyHand(args.User, entity))
         {
             args.Verbs.Add(new AlternativeVerb
             {
-                Act = () => Split(entity, user),
-                Text = Loc.GetString(entity.Comp.SplitText),
-                Icon = entity.Comp.SplitIcon,
-                Priority = 4,
+                Act = () => CutDeck(entity, user),
+                Text = Loc.GetString(entity.Comp.CutText),
+                Icon = entity.Comp.CutIcon,
+                Priority = 98,
             });
         }
-
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => Shuffle(entity, user),
-            Text = Loc.GetString(entity.Comp.ShuffleText),
-            Icon = entity.Comp.ShuffleIcon,
-            Priority = 3,
-        });
     }
 
-    private void Split(Entity<PlayingCardDeckComponent> entity, EntityUid user)
+    private void CutDeck(Entity<PlayingCardDeckComponent> entity, EntityUid user)
     {
         _audio.PlayPredicted(entity.Comp.PickUpSound, entity, user);
 
@@ -116,22 +134,6 @@ public abstract partial class SharedPlayingCardsSystem
         }
 
         _hands.TryPickupAnyHand(user, spawned);
-    }
-
-
-    private void Shuffle(Entity<PlayingCardDeckComponent> entity, EntityUid? user)
-    {
-        var rand = new System.Random(
-            SharedRandomExtensions.HashCodeCombine((int)_gameTiming.CurTick.Value, entity.Owner.Id));
-        rand.Shuffle(entity.Comp.Cards);
-        Dirty(entity);
-        entity.Comp.DirtyVisuals = true;
-
-        _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
-        _popup.PopupPredicted(Loc.GetString("card-verb-shuffle-success", ("target", MetaData(entity).EntityName)),
-            entity,
-            user
-        );
     }
 
     /// Conceptually, this "instantiates" the <see cref="PlayingCardDeckPrototype.Cards">elements</see> in the given

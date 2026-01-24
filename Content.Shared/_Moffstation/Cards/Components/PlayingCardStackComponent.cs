@@ -42,22 +42,34 @@ public abstract partial class PlayingCardStackComponent : Component, ISealedInhe
     [DataField(required: true)]
     public int VisualLimit;
 
-    [DataField]
-    public LocId JoinText = "card-verb-join";
 
-    [DataField]
-    public LocId OrganizeDownText = "cards-verb-organize-down";
+    [DataField] public LocId JoinText = "card-verb-join";
+    [DataField] public SpriteSpecifier? JoinIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/plus.svg.192dpi.png"));
 
-    [DataField]
-    public LocId OrganizeUpText = "cards-verb-organize-up";
+    [DataField] public LocId DrawText = "card-verb-draw";
+    [DataField] public LocId DrawToText = "card-verb-draw-to";
+    [DataField] public SpriteSpecifier? DrawIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/pickup.svg.192dpi.png"));
 
-    [DataField]
-    public SpriteSpecifier? FlipCardsIcon =
-        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/refresh.svg.192dpi.png"));
+    [DataField] public LocId FlipText = "card-verb-flip";
+    [DataField] public LocId FlipPopup = "card-verb-flip-popup";
+    [DataField] public LocId FlipPopupOther = "card-verb-flip-popup-other";
+    [DataField] public SpriteSpecifier? FlipCardsIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/flip.svg.192dpi.png"));
 
-    [DataField]
-    public SpriteSpecifier? JoinIcon =
-        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/refresh.svg.192dpi.png"));
+    [DataField] public LocId OrganizeDownText = "card-verb-organize-down";
+    [DataField] public LocId OrganizeDownPopup = "card-verb-organize-down-popup";
+    [DataField] public LocId OrganizeDownSuccessPopupOther = "card-verb-organize-down-popup-other";
+
+    [DataField] public LocId OrganizeUpText = "card-verb-organize-up";
+    [DataField] public LocId OrganizeUpSuccessPopup = "card-verb-organize-up-popup";
+    [DataField] public LocId OrganizeUpSuccessPopupOther = "card-verb-organize-up-popup-other";
+
+    [DataField] public LocId ShuffleText = "card-verb-shuffle";
+    [DataField] public LocId ShufflePopup = "card-verb-shuffle-popup";
+    [DataField] public LocId ShufflePopupOther = "card-verb-shuffle-popup-other";
+    [DataField] public SpriteSpecifier? ShuffleIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/die.svg.192dpi.png"));
+
+    [DataField] public LocId ExamineText = "card-stack-examine";
+
 }
 
 [Serializable, NetSerializable]

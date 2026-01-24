@@ -50,14 +50,14 @@ public sealed partial class PlayingCardComponent : Component
     [DataField, AutoNetworkedField]
     public string? ReverseDescription;
 
-    /// The localization ID for the "flip" verb on this card.
-    [DataField]
-    public LocId FlipText = "cards-verb-flip";
-
-    /// The icon for the "flip" verb on this card.
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier? FlipIcon =
-        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/flip.svg.192dpi.png"));
+    [DataField] public LocId ExamineText = "card-examined";
+    [DataField] public LocId FlipText = "card-verb-flip";
+    [DataField] public SpriteSpecifier? FlipIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/flip.svg.192dpi.png"));
+    [DataField] public LocId AddToDeckText = "card-verb-add-to-deck";
+    [DataField] public LocId AddToHandText = "card-verb-add-to-hand";
+    [DataField] public SpriteSpecifier? AddIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/insert.svg.192dpi.png"));
+    [DataField] public LocId CreateHandText = "card-verb-create-hand";
+    [DataField] public SpriteSpecifier? CreateHandIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/plus.svg.192dpi.png"));
 }
 
 /// The key used to access appearance data for <see cref="PlayingCardComponent"/>.

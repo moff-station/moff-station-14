@@ -21,30 +21,20 @@ public abstract partial class SharedPlayingCardsSystem
     private void InitCard()
     {
         SubscribeLocalEvent<PlayingCardComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<PlayingCardComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
         SubscribeLocalEvent<PlayingCardComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<PlayingCardComponent, UseInHandEvent>(OnUse);
+        SubscribeLocalEvent<PlayingCardComponent, UseInHandEvent>(OnUseInHand);
+        SubscribeLocalEvent<PlayingCardComponent, ActivateInWorldEvent>(OnActivateInWorld);
         SubscribeLocalEvent<PlayingCardComponent, InteractUsingEvent>(OnInteractUsing);
-        SubscribeLocalEvent<PlayingCardComponent, ActivateInWorldEvent>(OnActiveInWorld);
+        SubscribeLocalEvent<PlayingCardComponent, GetVerbsEvent<ActivationVerb>>(OnGetActivationVerbs);
+        SubscribeLocalEvent<PlayingCardComponent, GetVerbsEvent<UtilityVerb>>(OnGetUtilityVerbs);
         SubscribeLocalEvent<PlayingCardComponent, PlayingCardFlippedEvent>(OnFlipped);
     }
 
 
+    /// Sets the card's facing to <paramref name="faceDown"/>, or flips it if <paramref name="faceDown"/> is null.
     public void Flip(Entity<PlayingCardComponent> card, bool? faceDown)
     {
-        if (!SetFacingOrFlip(card, faceDown))
-            return;
-
-        var parentUid = Transform(card).ParentUid;
-        if (TryComp<PlayingCardDeckComponent>(parentUid, out var deck))
-        {
-            deck.DirtyVisuals = true;
-        }
-
-        if (TryComp<PlayingCardHandComponent>(parentUid, out var hand))
-        {
-            hand.DirtyVisuals = true;
-        }
+        SetFacingOrFlip(card, faceDown);
     }
 
 
@@ -59,24 +49,10 @@ public abstract partial class SharedPlayingCardsSystem
         if (!args.IsInDetailsRange || entity.Comp.FaceDown)
             return;
 
-        args.PushMarkup(Loc.GetString("card-examined", ("target", entity.Comp.Name)));
+        args.PushMarkup(Loc.GetString(entity.Comp.ExamineText, ("target", entity.Comp.Name)));
     }
 
-    private void OnGetVerbs(Entity<PlayingCardComponent> entity, ref GetVerbsEvent<AlternativeVerb> args)
-    {
-        if (!args.CanAccess || !args.CanInteract || args.Hands == null)
-            return;
-
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => Flip(entity, faceDown: null),
-            Text = Loc.GetString(entity.Comp.FlipText),
-            Icon = entity.Comp.FlipIcon,
-            Priority = 1,
-        });
-    }
-
-    private void OnUse(Entity<PlayingCardComponent> entity, ref UseInHandEvent args)
+    private void OnUseInHand(Entity<PlayingCardComponent> entity, ref UseInHandEvent args)
     {
         if (args.Handled)
             return;
@@ -85,8 +61,21 @@ public abstract partial class SharedPlayingCardsSystem
         args.Handled = true;
     }
 
+    private void OnActivateInWorld(Entity<PlayingCardComponent> entity, ref ActivateInWorldEvent args)
+    {
+        if (args.Handled || !args.Complex)
+            return;
+
+        Flip(entity, faceDown: null);
+        args.Handled = true;
+    }
+
     private void OnInteractUsing(Entity<PlayingCardComponent> entity, ref InteractUsingEvent args)
     {
+        if (args.Handled)
+            return;
+
+        // When using a card on a deck, add it to the deck
         if (TryComp<PlayingCardDeckComponent>(args.Used, out var usedDeck))
         {
             Add<PlayingCardDeckComponent>((args.Used, usedDeck), [entity], Transform(entity).Coordinates, args.User);
@@ -94,6 +83,7 @@ public abstract partial class SharedPlayingCardsSystem
             return;
         }
 
+        // When using a card on a hand, add it to the hand
         if (TryComp<PlayingCardHandComponent>(args.Used, out var usedHand))
         {
             Add<PlayingCardHandComponent>((args.Used, usedHand), [entity], Transform(entity).Coordinates, args.User);
@@ -101,23 +91,86 @@ public abstract partial class SharedPlayingCardsSystem
             return;
         }
 
+        // When using a card on another card, create a hand with both cards
         if (TryComp<PlayingCardComponent>(args.Used, out var usedCard) &&
             CreateHand([(args.Used, usedCard), entity], args.User) is { } hand)
         {
             _hands.PickupOrDrop(args.User, hand);
             args.Handled = true;
-            return;
         }
     }
 
-    private void OnActiveInWorld(Entity<PlayingCardComponent> entity, ref ActivateInWorldEvent args)
+    private void OnGetActivationVerbs(Entity<PlayingCardComponent> entity, ref GetVerbsEvent<ActivationVerb> args)
     {
-        if (args.Handled || !args.Complex)
+        if (!args.CanAccess || !args.CanInteract || args.Hands == null)
             return;
 
-        Flip(entity, faceDown: null);
+        args.Verbs.Add(new ActivationVerb
+        {
+            Act = () => Flip(entity, faceDown: null),
+            Text = Loc.GetString(entity.Comp.FlipText),
+            Icon = entity.Comp.FlipIcon,
+        });
+    }
 
-        args.Handled = true;
+    private void OnGetUtilityVerbs(Entity<PlayingCardComponent> entity, ref GetVerbsEvent<UtilityVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        var user = args.User;
+        var target = args.Target;
+
+        // When using a card on a deck, add it to the deck
+        if (TryComp<PlayingCardDeckComponent>(args.Target, out var targetDeck))
+        {
+            args.Verbs.Add(new UtilityVerb
+            {
+                Text = Loc.GetString(entity.Comp.AddToDeckText),
+                Act = () => Add<PlayingCardDeckComponent>(
+                    (target, targetDeck),
+                    [entity],
+                    Transform(entity).Coordinates,
+                    user
+                ),
+                Icon = entity.Comp.AddIcon,
+            });
+            return;
+        }
+
+        // When using a card on a hand, add it to the hand
+        if (TryComp<PlayingCardHandComponent>(args.Target, out var targetHand))
+        {
+            args.Verbs.Add(new UtilityVerb
+            {
+                Text = Loc.GetString(entity.Comp.AddToHandText),
+                Act = () => Add<PlayingCardHandComponent>(
+                    (target, targetHand),
+                    [entity],
+                    Transform(entity).Coordinates,
+                    user
+                ),
+                Icon = entity.Comp.AddIcon,
+            });
+            return;
+        }
+
+        // When using a card on another card, create a hand with both cards
+        if (TryComp<PlayingCardComponent>(args.Target, out var targetCard))
+        {
+            args.Verbs.Add(new UtilityVerb
+            {
+                Text = Loc.GetString(entity.Comp.CreateHandText),
+                Act = () =>
+                {
+                    if (CreateHand([(target, targetCard), entity], user) is { } hand)
+                    {
+                        _hands.PickupOrDrop(user, hand);
+                    }
+                },
+                Icon = entity.Comp.CreateHandIcon,
+            });
+        }
     }
 
     private void OnFlipped(Entity<PlayingCardComponent> entity, ref PlayingCardFlippedEvent args)
@@ -127,6 +180,17 @@ public abstract partial class SharedPlayingCardsSystem
             entity.Comp.FaceDown ? (entity.Comp.ReverseDescription ?? "") : entity.Comp.Description);
         _appearance.SetData(entity, PlayingCardVisuals.IsFaceDown, entity.Comp.FaceDown);
         Dirty(entity);
+
+        var parentUid = Transform(entity).ParentUid;
+        if (TryComp<PlayingCardDeckComponent>(parentUid, out var deck))
+        {
+            deck.DirtyVisuals = true;
+        }
+
+        if (TryComp<PlayingCardHandComponent>(parentUid, out var hand))
+        {
+            hand.DirtyVisuals = true;
+        }
     }
 
 
@@ -148,11 +212,9 @@ public abstract partial class SharedPlayingCardsSystem
     /// is null. Returns whether or not the value changed.
     private static bool SetOrInvert(ref bool value, bool? setToValue)
     {
-        var newValue = setToValue ?? !value;
-        var valueChanged = newValue != value;
-
-        value = newValue;
-        return valueChanged;
+        var oldValue = value;
+        value = setToValue ?? !oldValue;
+        return oldValue != value;
     }
 
     /// "Instantiates" <paramref name="data"/> as the returned entity. Returns null if resolving prototypes fails.
@@ -175,15 +237,14 @@ public abstract partial class SharedPlayingCardsSystem
         return (spawned, cardComp);
     }
 
-    /// Returns a new <see cref="PlayingCardComponent"/> with the given <paramref name="data"/>. Returns null if
-    /// prototype resolution fails.
+    /// Returns a new, unowned <see cref="PlayingCardComponent"/> with the given <paramref name="data"/>. Returns null
+    /// if prototype resolution fails.
     private PlayingCardComponent? ToComponent(PlayingCardInDeckUnspawnedData data)
     {
         var comp = _compFact.GetComponent<PlayingCardComponent>();
-        if (!TryApplyCardData(ref comp, data))
-            return null;
-
-        return WithFacing(comp, data.Card.FaceDown);
+        return TryApplyCardData(ref comp, data)
+            ? WithFacing(comp, data.Card.FaceDown)
+            : null;
     }
 
     /// Applies the given <paramref name="data"/> to the given <paramref name="comp"/>. Returns whether or not the

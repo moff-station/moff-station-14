@@ -42,22 +42,9 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
     [DataField]
     public float Scale = 1;
 
-    [DataField]
-    public LocId SplitText = "cards-verb-split";
-
-    [DataField]
-    public SpriteSpecifier? SplitIcon =
-        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/dot.svg.192dpi.png"));
-
-    [DataField]
-    public LocId ShuffleText = "cards-verb-shuffle";
-
-    [DataField]
-    public SpriteSpecifier? ShuffleIcon =
-        new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/die.svg.192dpi.png"));
-
-    [DataField]
-    public LocId TopCardExamineLoc = "cards-deck-top-card-examine";
+    [DataField] public LocId TopCardExamineLoc = "cards-deck-top-card-examine";
+    [DataField] public LocId CutText = "card-verb-split";
+    [DataField] public SpriteSpecifier? CutIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/eject.svg.192dpi.png"));
 
     /// Sprite layers added to this entity based on contained cards' <see cref="PlayingCardComponent.Sprite"/>.
     [ViewVariables]

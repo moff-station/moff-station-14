@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Cards.Events;
 using Content.Shared._Moffstation.Extensions;
@@ -19,15 +19,16 @@ public abstract partial class SharedPlayingCardsSystem
     private void InitHand()
     {
         SubscribeLocalEvent<PlayingCardHandComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<PlayingCardHandComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<PlayingCardHandComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<PlayingCardHandComponent, GetVerbsEvent<UtilityVerb>>(OnGetUtilityVerbsStack);
+        SubscribeLocalEvent<PlayingCardHandComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbs);
+        SubscribeLocalEvent<PlayingCardHandComponent, DrawPlayingCardFromHandMessage>(OnDrawPlayingCardFromHand);
         SubscribeLocalEvent<PlayingCardHandComponent, PlayingCardStackContentsChangedEvent>(OnCardStackQuantityChange);
         SubscribeLocalEvent<PlayingCardHandComponent, ContainedPlayingCardFlippedEvent>(DirtyVisuals);
-        SubscribeLocalEvent<PlayingCardHandComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<PlayingCardHandComponent, DrawPlayingCardFromHandMessage>(OnDrawPlayingCardFromhand);
-        SubscribeLocalEvent<PlayingCardHandComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbs);
-        SubscribeLocalEvent<PlayingCardHandComponent, InteractUsingEvent>(OnInteractUsing);
     }
 
-    /// Gets all of the cards in the given hand, or an empty enumerable if the entity is not a hand of cards.
+    /// Gets all the cards in the given hand, or an empty enumerable if the entity is not a hand of cards.
     public IEnumerable<Entity<PlayingCardComponent>> GetCards(Entity<PlayingCardHandComponent?> entity)
     {
         if (IsClientSide(entity) ||
@@ -88,8 +89,10 @@ public abstract partial class SharedPlayingCardsSystem
         );
     }
 
-    private void OnDrawPlayingCardFromhand(Entity<PlayingCardHandComponent> entity,
-        ref DrawPlayingCardFromHandMessage args)
+    private void OnDrawPlayingCardFromHand(
+        Entity<PlayingCardHandComponent> entity,
+        ref DrawPlayingCardFromHandMessage args
+    )
     {
         var index = entity.Comp.Cards.IndexOf(args.Card);
         if (index == -1)
@@ -115,22 +118,15 @@ public abstract partial class SharedPlayingCardsSystem
         ref GetVerbsEvent<AlternativeVerb> args
     )
     {
-        OnGetAlternativeVerbsCommon(entity, ref args);
+        OnGetAlternativeVerbsStack(entity, ref args);
 
         var user = args.User;
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => _ui.OpenUi(entity.Owner, PlayingCardHandUiKey.Key, user),
-            Text = Loc.GetString(entity.Comp.PickACardText),
-            Icon = entity.Comp.PickACardIcon,
-            Priority = 3,
-        });
+        // Convert to deck.
         args.Verbs.Add(new AlternativeVerb
         {
             Act = () => ConvertToDeck(entity, user),
             Text = Loc.GetString(entity.Comp.ConvertToDeckText),
             Icon = entity.Comp.ConvertToDeckIcon,
-            Priority = 2,
         });
     }
 

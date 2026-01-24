@@ -21,6 +21,8 @@ public abstract partial class SharedPlayingCardsSystem
         EntityUid? user
     ) where TSource : PlayingCardStackComponent where TTarget : PlayingCardStackComponent
     {
+        DebugTools.AssertNotEqual(source.Owner, target.Owner, "Source and target cannot be the same");
+
         TransferImpl(
             CardSourceFrom(source),
             Transform(source).Coordinates,
@@ -294,7 +296,6 @@ public abstract partial class SharedPlayingCardsSystem
                 continue;
             count += 1;
             first ??= spawned;
-            Flip(spawned, faceDown: false); // Cards in hands should always be face up
             entity.Comp.Cards.Add(GetNetEntity(spawned));
             if (!_container.Insert(spawned.Owner, entity.Comp.Container, force: true))
             {

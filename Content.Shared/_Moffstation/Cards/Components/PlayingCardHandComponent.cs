@@ -32,30 +32,13 @@ public sealed partial class PlayingCardHandComponent : PlayingCardStackComponent
     [DataField]
     public float Scale = 1;
 
-    [DataField]
-    public LocId PickACardText = "cards-verb-pickcard";
+    [DataField] public LocId ConvertToDeckText = "card-verb-convert-to-deck";
+    [DataField] public SpriteSpecifier? ConvertToDeckIcon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/rotate_cw.svg.192dpi.png"));
+    [DataField] public LocId CardsAddedText = "cards-stackquantitychange-added";
+    [DataField] public LocId CardsRemovedText = "cards-stackquantitychange-removed";
+    [DataField] public LocId CardsChangedText = "cards-stackquantitychange-unknown";
 
-    [DataField]
-    public SpriteSpecifier? PickACardIcon =
-        new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/die.svg.192dpi.png"));
-
-    [DataField]
-    public LocId ConvertToDeckText = "cards-verb-convert-to-deck";
-
-    [DataField]
-    public SpriteSpecifier? ConvertToDeckIcon =
-        new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/rotate_cw.svg.192dpi.png"));
-
-    [DataField]
-    public LocId CardsAddedText = "cards-stackquantitychange-added";
-
-    [DataField]
-    public LocId CardsRemovedText = "cards-stackquantitychange-removed";
-
-    [DataField]
-    public LocId CardsChangedText = "cards-stackquantitychange-unknown";
-
-    /// Sprite layers added to this entity based on contained cards' <see cref="PlayingCardComponent.CurrentSprite"/>.
+    /// Sprite layers added to this entity based on contained cards' <see cref="PlayingCardComponent.Sprite"/>.
     [ViewVariables]
     public HashSet<string> SpriteLayersAdded = [];
 }

@@ -1,8 +1,12 @@
-﻿using Content.Shared._Moffstation.Cards.Components;
+using System.Linq;
+using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -27,7 +31,7 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private readonly SharedVerbSystem _verb = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -67,16 +71,14 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     private Entity<PlayingCardComponent>? NetEntToCardOrNull(NetEntity netEnt)
     {
         var ent = GetEntity(netEnt);
-        if (TryComp<PlayingCardComponent>(ent, out var card))
-        {
-            return new Entity<PlayingCardComponent>(ent, card);
-        }
-        else
+        if (!TryComp<PlayingCardComponent>(ent, out var card))
         {
             this.AssertOrLogError(
                 $"Net Entity ({netEnt}) is missing expected {nameof(PlayingCardComponent)} ({ToPrettyString(ent)})");
             return null;
         }
+
+        return new Entity<PlayingCardComponent>(ent, card);
     }
 
     /// This function just sets the given <paramref name="comp"/>'s <see cref="PlayingCardComponent.FaceDown"/> and
