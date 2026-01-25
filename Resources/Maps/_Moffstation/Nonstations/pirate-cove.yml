@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/22/2026 19:40:30
-  entityCount: 2228
+  time: 01/25/2026 18:53:55
+  entityCount: 2227
 maps: []
 grids:
 - 1
@@ -6388,7 +6388,7 @@ entities:
       pos: 10.5,6.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -630.3367
+      secondsUntilStateChange: -671.16327
       state: Opening
   - uid: 2219
     components:
@@ -11927,13 +11927,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 17.5,2.5
-      parent: 1
-- proto: SpawnMobKoboldJokejoke
-  entities:
-  - uid: 2197
-    components:
-    - type: Transform
-      pos: 13.5,6.5
       parent: 1
 - proto: SpawnMobSpaceSpider
   entities:
