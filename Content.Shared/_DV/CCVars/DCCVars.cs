@@ -25,4 +25,10 @@ public sealed partial class DCCVars
     /// </summary>
     public static readonly CVarDef<int> MaxTraitPoints =
         CVarDef.Create("traits.max_points", 15, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Whether to skip showing the disabled traits popup when spawning.
+    /// </summary>
+    public static readonly CVarDef<bool> SkipDisabledTraitsPopup =
+        CVarDef.Create("traits.skip_disabled_traits_popup", false, CVar.CLIENT | CVar.ARCHIVE);
 }

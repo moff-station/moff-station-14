@@ -433,6 +433,7 @@ namespace Content.Client.Lobby.UI
             }
 
             Traits.SetSelectedTraits(selectedTraits);
+            Traits.UpdateConditions(Profile.Species);
         }
         // End DeltaV - Traits Integration
 
