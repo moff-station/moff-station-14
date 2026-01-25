@@ -73,7 +73,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: CrayonBox
+        - id: CrayonBoxFilled # Moffstation - Base prototype is empty of crayons
         - id: Paper
           amount: 3
         - id: Pen

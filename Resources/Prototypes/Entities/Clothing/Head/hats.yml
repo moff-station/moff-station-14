@@ -674,7 +674,7 @@
   description: "\"Perfect for winter in Siberia, da?\""
   components:
   - type: Clothing
-    sprite: Clothing/Head/Hats/ushanka.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/ushanka.rsi # Moffstation - For Arstotzka
   - type: Appearance
   - type: AddAccentClothing
     accent: RussianAccent
@@ -684,7 +684,7 @@
     foldedEquippedPrefix: up
     foldedHeldPrefix: up
   - type: Sprite
-    sprite: Clothing/Head/Hats/ushanka.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/ushanka.rsi # Moffstation - For Arstotzka
     layers:
     - state: icon
       map: [ "unfoldedLayer" ]
