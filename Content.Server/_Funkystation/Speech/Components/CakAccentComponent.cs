@@ -1,4 +1,4 @@
-namespace Content.Server._Funkystation.Speech.Components
+namespace Content.Server.Speech.Components
 {
     [RegisterComponent]
     public sealed partial class CakAccentComponent : Component
