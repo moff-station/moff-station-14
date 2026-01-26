@@ -1,13 +1,3 @@
-- type: cargoProduct # Currently not purchasable, leaving the prototype in case we want to give cargo back lever-actions.
-  id: ArmoryRifleLeverMagnum
-  icon:
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
-    state: icon
-  product: CrateArmoryRifleLeverMagnum
-  cost: 5000
-  category: cargoproduct-category-name-armory
-  group: market
-
 - type: cargoProduct
   id: ArmoryRifleDMR
   icon:
