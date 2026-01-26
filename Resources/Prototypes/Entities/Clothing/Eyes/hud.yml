@@ -18,7 +18,7 @@
 
 - type: entity
   parent: ClothingEyesBase
-  id: ClothingEyesHudDiagnostic
+  id: ClothingEyesHudDiagnosticUpstream # Moffstation - Replaced by modular HUDs
   name: diagnostic hud
   description: A heads-up display capable of analyzing the integrity and status of robotics and exosuits. Made out of see-borg-ium.
   components:
@@ -34,7 +34,7 @@
 
 - type: entity
   parent: [ClothingEyesBase, ShowMedicalIcons]
-  id: ClothingEyesHudMedical
+  id: ClothingEyesHudMedicalUpstream # Moffstation - Replaced by modular HUDs
   name: medical hud
   description: A heads-up display that scans the humanoids in view and provides accurate data about their health status.
   components:
@@ -50,7 +50,7 @@
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]
-  id: ClothingEyesHudSecurity
+  id: ClothingEyesHudSecurityUpstream # Moffstation - Replaced by modular HUDs
   name: security hud
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records.
   components:
@@ -66,7 +66,7 @@
 
 - type: entity
   parent: [ClothingEyesBase, BaseCommandContraband]
-  id: ClothingEyesHudCommand
+  id: ClothingEyesHudCommandUpstream # Moffstation - Replaced by modular HUDs
   name: administration hud
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status.
   components:
@@ -163,7 +163,7 @@
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons, BaseSecurityCommandContraband]
-  id: ClothingEyesHudMedSec
+  id: ClothingEyesHudMedSecUpstream # Moffstation - Replaced by modular HUDs
   name: medsec hud
   description: An eye display that looks like a mixture of medical and security huds.
   components:
@@ -171,9 +171,11 @@
     sprite: Clothing/Eyes/Hud/medsec.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/medsec.rsi
-  - type: Construction
-    graph: HudMedSec
-    node: medsecHud
+  # Moffstation - Begin - Not constructiblr in favor of modular HUDs
+#  - type: Construction
+#    graph: HudMedSec
+#    node: medsecHud
+  # Moffstation - End
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons]
@@ -249,7 +251,7 @@
 
 - type: entity
   parent: [ClothingEyesHudMedical, ClothingHeadEyeBaseFlippable]
-  id: ClothingEyesEyepatchHudMedical
+  id: ClothingEyesEyepatchHudMedicalUpstream # Moffstation - Replaced by modular HUDs
   name: medical hud eyepatch
   description: A heads-up display that scans the humanoids in view and provides accurate data about their health status. For true patriots.
   components:
@@ -270,7 +272,7 @@
 
 - type: entity
   parent: [ClothingEyesHudSecurity, ClothingHeadEyeBaseFlippable]
-  id: ClothingEyesEyepatchHudSecurity
+  id: ClothingEyesEyepatchHudSecurityUpstream # Moffstation - Replaced by modular HUDs
   name: security hud eyepatch
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. For true patriots.
   components:
@@ -307,7 +309,7 @@
 
 - type: entity
   parent: [ClothingEyesHudDiagnostic, ClothingHeadEyeBaseFlippable]
-  id: ClothingEyesEyepatchHudDiag
+  id: ClothingEyesEyepatchHudDiagUpstream # Moffstation - Replaced by modular HUDs
   name: diagnostic hud eyepatch
   description: A heads-up display capable of analyzing the integrity and status of robotics and exosuits. Made out of see-borg-ium.
   components:

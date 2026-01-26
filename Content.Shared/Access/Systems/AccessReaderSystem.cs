@@ -74,6 +74,7 @@ public sealed class AccessReaderSystem : EntitySystem
         }
 
         var examiner = args.Examiner;
+        // TODO CENT Modify this to use an event like solution scanner; It'll need to be inventory relayed and modular HUD relayed.
         var canSeeAccessModification = accessHasBeenModified &&
                                        (HasComp<ShowAccessReaderSettingsComponent>(examiner) ||
                                         _inventorySystem.TryGetInventoryEntity<ShowAccessReaderSettingsComponent>(examiner, out _));

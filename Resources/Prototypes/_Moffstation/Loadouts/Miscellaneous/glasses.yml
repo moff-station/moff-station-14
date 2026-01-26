@@ -47,12 +47,6 @@
   equipment:
     eyes: ClothingEyesEyepatchHudSecurity
 
-- type: loadout
-  id: SecurityEyePatchHudFlipped
-  groupBy: "secEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudSecurityFlipped
-
 # Cargo
 
 # Engineering
@@ -79,12 +73,6 @@
   equipment:
     eyes: ClothingEyesGlassesMedSunglasses
 
-- type: loadout
-  id: MedicalEyePatchHudFlipped
-  groupBy: "medEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudMedicalFlipped
-
 # Science
 
 - type: loadout
@@ -97,12 +85,6 @@
   groupBy: "borgEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudDiag
-
-- type: loadout
-  id: RoboticsEyePatchHudFlipped
-  groupBy: "borgEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudDiagFlipped
 
 # Service
 

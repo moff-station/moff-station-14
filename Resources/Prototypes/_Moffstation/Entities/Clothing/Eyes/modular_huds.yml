@@ -1,0 +1,414 @@
+# This abstract base modular HUD defines a bunch of visual boilerplate needed to get the dymanic sprites to work, as
+# well as the basic common modular HUD stuff like the container.
+- type: entity
+  id: ClothingEyesModularHudBase
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-lens
+      map: [ "enum.ModularHudVisualKeys.Lens" ]
+    - state: icon-specular
+      map: [ "enum.ModularHudVisualKeys.Specular" ]
+    - state: icon-lens-accent-minor
+      map: [ "enum.ModularHudVisualKeys.LensAccentMinor" ]
+    - state: icon-lens-accent-major
+      map: [ "enum.ModularHudVisualKeys.LensAccentMajor" ]
+    - state: icon-frame
+    - state: icon-accent
+      map: [ "enum.ModularHudVisualKeys.Accent" ]
+  - type: Item
+    inhandVisuals:
+      Left:
+      - state: inhand-left-frame
+      Right:
+      - state: inhand-right-frame
+  - type: Clothing
+    clothingVisuals:
+      eyes:
+      - state: equipped-EYES-frame
+  - type: Appearance
+  - type: ModularHudVisuals
+    defaultVisuals:
+      Accent: Black
+      Lens: LightSteelBlue
+      Specular: White
+    layerMap:
+      Accent: accent
+      Lens: lens
+      Specular: specular
+      LensAccentMinor: lens-accent-minor
+      LensAccentMajor: lens-accent-major
+  - type: ModularHud
+    moduleContainerId: modular-hud-modules
+    moduleSlots: 3
+    moduleExtractionMethod: Screwing
+    moduleRemovalDelay: 1s
+    moduleBlacklist:
+      tags:
+      - HudModuleRequiresFullEyes # By default, HUDs don't cover the full eyes, so disallow those.
+  - type: ContainerContainer
+    containers:
+      modular-hud-modules: !type:Container
+
+
+- type: entity
+  parent: BaseItem
+  id: ModularHudModuleBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/modularhudmodule.rsi
+  - type: ModularHudModule
+
+# TODO Night vision
+# TODO Toggleable functionality
+
+# Visuals color priorities are:
+# - critical = 1000 (you really wanna be able to see this at a glance)
+# - job important = 0100
+# - job related, but not important: 0010
+# - fluff: 0001
+#
+# Elevated importance can fill the space up to 5x the normal value;
+# Reduced importand can fill the space down to 1/2 the normal value.
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowAccessReaderSettings
+  name: access level HUD module
+  description: A heads-up display module which allows for reading access levels of airlocks and other lockable devices.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: ForestGreen
+    - state: contacts
+    - state: eng_label
+  - type: ModularHudModule
+    visuals:
+      Accent:
+        color: Green
+        priority: 7
+  - type: ShowAccessReaderSettings
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowContrabandDetails
+  name: contraband hud module
+  description: A heads-up display module which uses advanced pattern-recognition to identify and categorize contraband.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: &slateblue "#4675C0"
+    - state: contacts
+    - state: sec_label
+  - type: ModularHudModule
+    visuals:
+      Lens:
+        color: Red
+        priority: 40
+  - type: ShowContrabandDetails
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleSolutionScanner
+  name: chemical analysis hud module
+  description: A heads-up display module which allows scanning the chemical composition of a solution.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: *slateblue
+    - state: contacts
+    - state: medsci_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: Purple
+        priority: 100
+  - type: SolutionScanner
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleEyeProtection
+  name: eye protection hud module
+  description: A heads-up display module which protects the eyes from welding-related injury.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: &mesongreen "#50FF45"
+    - state: contacts
+    - state: eng_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: *mesongreen
+        priority: 250
+  - type: EyeProtection
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: Tag
+    tags:
+    - HudModuleRequiresFullEyes
+
+- type: entity
+  parent: HudModuleEyeProtection
+  id: HudModuleFlashImmunity
+  name: flash protection hud module
+  description: A heads-up display module which protects the eyes from bright flashes.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: Black
+    - state: contacts
+    - state: sec_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: Black
+        priority: 1000
+      # Sunglasses look awful with bright white specular highlights, so this removes them.
+      specular:
+        color: "#FFFFFF10"
+        priority: 1000
+  - type: FlashImmunity
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleVisionCorrection
+  name: prescription hud module
+  description: A heads-up display module which partially refracts incoming light to correct for vision impairments.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: &civiliangray "#DEDEDE"
+    - state: stripe
+      color: White
+    - state: contacts
+    - state: med_label
+  - type: ModularHudModule
+    visuals:
+      accent:
+        color: CornflowerBlue
+        priority: 1
+  - type: VisionCorrection
+  - type: Tag
+    tags:
+    - HudModuleRequiresFullEyes # Gotta correct both eyes
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowJobIcons
+  name: administration hud module
+  description: A heads-up display module which scans the humanoids in view and provides accurate data about their ID status.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: ForestGreen
+    - state: contacts
+    - state: hop_label
+  - type: ModularHudModule
+    visuals:
+      accent:
+        color: Goldenrod
+        priority: 50
+  - type: ShowJobIcons
+
+- type: entity
+  parent: HudModuleShowJobIcons
+  id: HudModuleShowMindShieldIcons
+  name: mindshield icon hud module
+  description: A heads-up display module which scans the humanoids in view and provides accurate data about their ID and mindshield status.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: *slateblue
+    - state: contacts
+    - state: com_label
+  - type: ModularHudModule
+    visuals:
+      Specular:
+        color: LightSkyBlue
+        priority: 120
+  - type: ShowMindShieldIcons
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleNoirOverlay
+  name: noir-tech hud module
+  description: A heads-up display module which simulates what the world looked like before the invention of color.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: "#704214"
+    - state: stripe
+      color: "#F5F5DC"
+    - state: contacts
+    - state: common_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: Tan
+        priority: 4
+  - type: NoirOverlay
+  - type: Tag
+    tags:
+    - HudModuleRequiresFullEyes
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleBlackAndWhiteOverlay
+  name: black and white hud module
+  description: A heads-up display module which simulates what the world looks like to those who deal in absolutes.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: Gray
+    - state: stripe
+      color: White
+    - state: contacts
+    - state: common_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: gray
+        priority: 4
+  - type: BlackAndWhiteOverlay
+  - type: Tag
+    tags:
+    - HudModuleRequiresFullEyes
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowCriminalRecordIcons
+  name: criminal record icons hud module
+  description: A heads-up display module which scans the humanoids in view and provides accurate data about their criminal records.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: ForestGreen
+    - state: contacts
+    - state: sec_label
+  - type: ModularHudModule
+    visuals:
+      accent:
+        color: darkblue
+        priority: 10
+  - type: ShowCriminalRecordIcons
+  - type: GuideHelp # TODO CENT Relay; guidebook info doesn't come from events, it seems hardcoded right now.
+    guides:
+    - Security
+    - Antagonists
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowInorganicHealthBars
+  name: diagnostic hud module
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: &diagnosticorange Orange
+    - state: contacts
+    - state: eng_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: *diagnosticorange
+        priority: 100
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowMedicalIcons
+  name: health hud module
+  description: A heads-up display module which scans the humanoids in view and provides accurate data about their health status.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: ForestGreen
+    - state: contacts
+    - state: med_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: "#00FFFF"
+        priority: 100
+  - type: ShowHealthBars
+  - type: ShowHealthIcons
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowHungerIcons
+  name: hunger icons hud module
+  description: A heads-up display module scans the humanoids in view and provides accurate data about their... hunger. Is this what Nanotrasen spends money on?
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: *civiliangray
+    - state: stripe
+      color: "#D48060" # Sort of a bready/meaty orange-brown
+    - state: contacts
+    - state: service_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: Cornsilk
+        priority: 70
+  - type: ShowHungerIcons
+
+- type: entity
+  parent: ModularHudModuleBase
+  id: HudModuleShowThirstIcons
+  name: thirst icons hud module
+  description: A heads-up display module scans the humanoids in view and provides accurate data about their... thirst. Hydration check!
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: *civiliangray
+    - state: stripe
+      color: *slateblue
+    - state: contacts
+    - state: service_label
+  - type: ModularHudModule
+    visuals:
+      lens:
+        color: CornflowerBlue
+        priority: 70
+  - type: ShowThirstIcons

@@ -1,55 +1,349 @@
-- type: entity
-  parent: [ClothingEyesGlassesChemical, ShowMedicalIcons, BaseCommandContraband, BaseGrandTheftContraband]
-  id: ClothingEyesGlassesMedChem
-  name: valkyrie hud
-  description: Named for the company that designed it, the valkyrie hud combines the functions of chemical analysis and medical scanning into a single head-mounted device. Issued to the Chief Medical Officer.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Eyes/Glasses/medchem.rsi
-  - type: StealTarget
-    stealGroup: ClothingEyesGlassesMedChem
+# Modular HUD
 
 - type: entity
-  parent: ClothingEyesHudMedical
-  id: ClothingEyesGlassesMedSunglasses
-  name: medical sunglasses
-  description: Why be medical when you can be medi-cool? Just don't stare into any bright lights.
+  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  id: ClothingEyesModularHudVisor
+  name: modular HUD visor
+  description: A sleek, futuristic visor capable of providing information on a holographic heads-up display. They say it took over nine thousand prototypes to get it right.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Eyes/Glasses/medsunglasses.rsi
+    sprite: _Moffstation/Clothing/Eyes/Hud/visor.rsi
+  - type: Item
+    sprite: _Moffstation/Clothing/Eyes/Hud/visor.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Eyes/Glasses/medsunglasses.rsi
-  - type: Tag
-    tags:
-    - HamsterWearable
-    - HudMedical
-    - WhitelistChameleon
+    sprite: _Moffstation/Clothing/Eyes/Hud/visor.rsi
+  - type: ModularHudVisuals
+    speciesWithDifferentClothing:
+    - arachnid
+    - dog
+    - moth
+    inhandExcludedLayers:
+      default:
+      - Accent
+      - LensAccentMajor
+    equippedExcludedLayers:
+      default:
+      - LensAccentMajor
+  - type: ModularHud
+    moduleSlots: 3
+
+- type: entity
+  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  id: ClothingEyesModularHudGoggles
+  name: modular HUD goggles
+  description: Protective and functional, these goggles have an integrated heads-up display for viewing information about the environment.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Eyes/Hud/goggles.rsi
+  - type: Item
+    sprite: _Moffstation/Clothing/Eyes/Hud/goggles.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Eyes/Hud/goggles.rsi
+  - type: ModularHudVisuals
+    speciesWithDifferentClothing:
+    - arachnid
+    - dog
+    - moth
+    - secdog
+    inhandExcludedLayers:
+      default:
+      - Accent
+      - LensAccentMajor
+    equippedExcludedLayers:
+      default:
+      - specular
+  - type: ModularHud
+    moduleSlots: 3
+    moduleBlacklist: null # Remove full-eye disallowment
+
+- type: entity
+  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  id: ClothingEyesModularHudGlasses
+  name: modular HUD glasses
+  description: Truly a marvel of Nanotrasen engineering, these slim glasses have an integrated heads-up display in spite of their small size.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Eyes/Hud/glasses.rsi
+  - type: Item
+    sprite: _Moffstation/Clothing/Eyes/Hud/glasses.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Eyes/Hud/glasses.rsi
+  - type: ModularHudVisuals
+    speciesWithDifferentClothing:
+    - arachnid
+    - dog
+    - moth
+    - secdog
+    inhandExcludedLayers:
+      default:
+      - Accent
+  - type: ModularHud
+    moduleSlots: 3
+    moduleBlacklist: null # Remove full-eye disallowment
+
+- type: entity
+  parent: ClothingEyesModularHudGlasses
+  id: ClothingEyesModularHudSunglasses
+  name: modular HUD sunglasses
+  description: An enhanced model of the modular HUD glasses, these sunglasses have have highly reflective lenses to protected against bright flashes.
+  components:
+  - type: ModularHudVisuals
+    innateVisuals:
+      lens:
+        color: Black
+        priority: 1000
+      # Sunglasses look awful with bright white specular highlights, so this removes them.
+      specular:
+        color: "#FFFFFF10"
+        priority: 1000
+  - type: EyeProtection
   - type: IdentityBlocker
     coverage: EYES
-  - type: Construction
-    graph: MedSunglasses
-    node: glassesmed
+  - type: FlashImmunity
+  - type: ModularHud
+    moduleBlacklist: null # Remove full-eye disallowment
 
 - type: entity
-  parent: ClothingEyesGlassesMeson
-  id: ClothingEyesGlassesMesonSunglasses
-  name: engineering sunglasses
-  description: Now you can look cool while welding the windows. Just don't stare into any bright lights.
+  parent: ClothingEyesModularHudGlasses
+  id: ClothingEyesModularHudCheapSunglasses
+  name: cheap modular HUD sunglasses
+  description: You might feel like a badass wearing these, but anyone can see right through these.
   components:
-   - type: Sprite
-     sprite: _Moffstation/Clothing/Eyes/Glasses/mesonsunglasses.rsi
-   - type: Clothing
-     sprite: _Moffstation/Clothing/Eyes/Glasses/mesonsunglasses.rsi
-   - type: EyeProtection
-   - type: Tag
-     tags:
-       - CorgiWearable
-       - HamsterWearable
-       - WhitelistChameleon
-   - type: IdentityBlocker
-     coverage: EYES
-   - type: Construction
-     graph: MesonSunglasses
-     node: sunglassesmeson
+  - type: ModularHudVisuals
+    innateVisuals:
+      lens:
+        color: Black
+        priority: 1000
+      # Intentionally higher specular to make them feel cheap.
+      specular:
+        color: "#FFFFFF30"
+        priority: 1000
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: ModularHud
+    moduleBlacklist: null # Remove full-eye disallowment
+
+- type: entity
+  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  id: ClothingEyesModularHudJamjars
+  name: modular HUD jam jar glasses
+  description: With an integrated heads-up display, it's understandable that these glasses would be on the thicker side, but I think that whoever made these just wanted to look like a bug-eyed weirdo.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Eyes/Hud/jamjars.rsi
+  - type: Item
+    sprite: _Moffstation/Clothing/Eyes/Hud/jamjars.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Eyes/Hud/jamjars.rsi
+  - type: ModularHudVisuals
+    speciesWithDifferentClothing:
+    - arachnid
+    - hamster
+    - moth
+    inhandExcludedLayers:
+      default:
+      - Accent
+  - type: ModularHud
+    moduleSlots: 3
+    moduleBlacklist: null # Remove full-eye disallowment
+
+- type: entity
+  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  id: ClothingEyesModularHudPatch
+  name: modular HUD eye patch
+  description: The true patriot's choice for a heads-up display! Though, if there's no eye underneath, how do you see its display?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Eyes/Hud/patch.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Eyes/Hud/patch.rsi
+  - type: ModularHudVisuals
+    foldedLayerSuffix: "-flipped"
+    speciesWithDifferentClothing:
+    - secdog
+    - moth
+    - resomi
+    inhandExcludedLayers:
+      default: # No inhand sprites for patches yet
+      - Accent
+      - LensAccentMajor
+      - LensAccentMinor
+      - Lens
+      - Specular
+  - type: ModularHud
+    moduleSlots: 3
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-flip-verb
+    foldVerbText: fold-flip-verb
+
+## Abstract Modular HUD protos. Combine these with one of the HUDs above as parents to get functioning HUDs.
+
+- type: entity
+  id: AbstractModularHudSecurityIcons
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowMindShieldIcons
+        - id: HudModuleShowCriminalRecordIcons
+        - id: HudModuleShowContrabandDetails
+  - type: Label
+    currentLabel: modular-hud-premade-security
+
+- type: entity
+  id: AbstractModularHudMedicalIcons
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowMedicalIcons
+  - type: Label
+    currentLabel: modular-hud-premade-medical
+
+- type: entity
+  id: AbstractModularHudDiagnostic
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowInorganicHealthBars
+        - id: HudModuleShowAccessReaderSettings
+  - type: Label
+    currentLabel: modular-hud-premade-diagnostic
+
+- type: entity
+  id: AbstractModularHudCommand
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowJobIcons
+  - type: Label
+    currentLabel: modular-hud-premade-command
+
+- type: entity
+  id: AbstractModularHudBeer
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowThirstIcons
+  - type: Label
+    currentLabel: modular-hud-premade-thirst
+
+- type: entity
+  id: AbstractModularHudChemistry
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleSolutionScanner
+  - type: Label
+    currentLabel: modular-hud-premade-chemistry
+
+- type: entity
+  id: AbstractModularHudEngineering
+  abstract: true
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleEyeProtection
+  - type: Label
+    currentLabel: modular-hud-premade-engineering
+
+## Premade modular HUD usages
+
+- type: entity
+  parent: [ClothingEyesModularHudSunglasses, AbstractModularHudSecurityIcons]
+  id: ClothingEyesGlassesSecurity
+
+- type: entity
+  parent: [ClothingEyesModularHudSunglasses, AbstractModularHudCommand]
+  id: ClothingEyesGlassesCommand
+
+- type: entity
+  parent: [ClothingEyesModularHudGoggles, AbstractModularHudChemistry]
+  id: ClothingEyesGlassesChemical
+
+- type: entity
+  parent: [ClothingEyesModularHudVisor, AbstractModularHudDiagnostic]
+  id: ClothingEyesHudDiagnostic
+
+- type: entity
+  parent: [ClothingEyesModularHudVisor, AbstractModularHudMedicalIcons]
+  id: ClothingEyesHudMedical
+
+- type: entity
+  parent: [ClothingEyesModularHudVisor, AbstractModularHudSecurityIcons]
+  id: ClothingEyesHudSecurity
+
+- type: entity
+  parent: [ClothingEyesModularHudVisor, AbstractModularHudCommand]
+  id: ClothingEyesHudCommand
+
+- type: entity
+  parent: [ClothingEyesModularHudPatch, AbstractModularHudMedicalIcons]
+  id: ClothingEyesEyepatchHudMedical
+
+- type: entity
+  parent: [ClothingEyesModularHudPatch, AbstractModularHudSecurityIcons]
+  id: ClothingEyesEyepatchHudSecurity
+
+- type: entity
+  parent: [ClothingEyesModularHudPatch, AbstractModularHudDiagnostic]
+  id: ClothingEyesEyepatchHudDiag
+
+- type: entity
+  parent: [ClothingEyesModularHudCheapSunglasses, AbstractModularHudMedicalIcons]
+  id: ClothingEyesGlassesMedSunglasses
+
+- type: entity
+  parent: [ClothingEyesModularHudCheapSunglasses, AbstractModularHudEngineering]
+  id: ClothingEyesGlassesMesonSunglasses
+
+- type: entity
+  parent: [ClothingEyesModularHudGoggles, AbstractModularHudEngineering]
+  id: ClothingEyesGlassesMeson
+
+- type: entity
+  parent: [ClothingEyesModularHudGoggles, AbstractModularHudDiagnostic]
+  id: ClothingEyesGlassesMedChem
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowMedicalIcons
+        - id: HudModuleSolutionScanner
+  - type: Label
+    currentLabel: modular-hud-premade-medchem
+
+- type: entity
+  parent: [ClothingEyesModularHudVisor, AbstractModularHudDiagnostic]
+  id: ClothingEyesHudMedSec
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowMindShieldIcons
+        - id: HudModuleShowCriminalRecordIcons
+        - id: HudModuleShowContrabandDetails
+        - id: HudModuleShowMedicalIcons
+  - type: Label
+    currentLabel: modular-hud-premade-medsec

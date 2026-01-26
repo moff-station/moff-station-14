@@ -213,6 +213,10 @@
     - Instruments
     - Equipment
     - WirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
+    # Moffstation - Start - Modular HUDs
+    - ModularHudFrames
+    - ModularHudModules
+    # Moffstation - End
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -401,6 +405,11 @@
     - SecurityAmmo
     - SecurityWeapons
     - SecurityDisablers
+    # Moffstation - Start - Modular HUDs
+    - ModularHudFrames
+    - SecurityModularHudFrames
+    - SecurityModularHudModules
+    # Moffstation - End
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic
@@ -476,6 +485,10 @@
     - AACTabletStatic # Moffstation - AAC tablet
     dynamicPacks:
     - Chemistry
+    # Moffstation - Start - Modular HUDs
+    - ModularHudFrames
+    - MedicalModularHudModules
+    # Moffstation - End
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
