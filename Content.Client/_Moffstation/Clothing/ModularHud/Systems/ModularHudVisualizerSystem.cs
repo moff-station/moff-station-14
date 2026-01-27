@@ -10,12 +10,16 @@ using Robust.Shared.Reflection;
 
 namespace Content.Client._Moffstation.Clothing.ModularHud.Systems;
 
-// TODO CENT Document
+/// This system updates the sprites of entities with <see cref="ModularHudComponent"/> based off the appearance data
+/// keyed by <see cref="ColorableLayers"/>. This is what causes modular HUDs to have dynamic visuals.
+/// This system also handles updating the sprite to account for folding, which is used to flip the orientation of eye
+/// patch HUDs.
 public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisualsComponent>
 {
     [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private readonly IReflectionManager _reflect = default!;
 
+    /// Only these layers need to be modulated.
     private static readonly ModularHudVisualKeys[] ColorableLayers =
     [
         ModularHudVisualKeys.Accent,
@@ -32,6 +36,8 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         SubscribeLocalEvent<ModularHudVisualsComponent, GetEquipmentVisualsEvent>(OnGetClothingVisuals);
     }
 
+    /// Updates the icon sprites when receiving an <see cref="AppearanceChangeEvent"/>, and triggers in-hand and
+    /// clothing sprites to update as well.
     protected override void OnAppearanceChange(
         EntityUid uid,
         ModularHudVisualsComponent component,
@@ -58,9 +64,11 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
                 {
                     switch (folded)
                     {
+                        // If we're folded and the state isn't folded presently, make it folded.
                         case true when !state.EndsWith(foldedSuffix):
                             SpriteSystem.LayerSetRsiState(layer, state + component.FoldedLayerSuffix);
                             break;
+                        // If we're not folded and the state is folded presently, make it not folded.
                         case false when state.EndsWith(foldedSuffix):
                             SpriteSystem.LayerSetRsiState(layer, state.Replace(component.FoldedLayerSuffix, ""));
                             break;
@@ -90,8 +98,10 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         _item.VisualsChanged(uid);
     }
 
+    /// Updates the in-hand sprites.
     private void OnGetInhandVisuals(Entity<ModularHudVisualsComponent> entity, ref GetInhandVisualsEvent args)
     {
+        // Not all layers exist on all in-hand sprites. Don't try to modulate layers which aren't present.
         var excludedLayers = GetExcludedLayersOrDefaultForSpecies(
             entity.Comp.InhandExcludedLayers,
             CompOrNull<InventoryComponent>(args.User)?.SpeciesId
@@ -99,7 +109,7 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         var location = args.Location.ToString().ToLowerInvariant();
         OnGetGenericVisuals(
             entity,
-            args.Layers,
+            ref args.Layers,
             $"hand-{args.Location.ToString().ToLowerInvariant()}",
             // Return null if this layer should be excluded.
             key =>
@@ -112,8 +122,10 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
             });
     }
 
+    /// Updates clothing sprites.
     private void OnGetClothingVisuals(Entity<ModularHudVisualsComponent> entity, ref GetEquipmentVisualsEvent args)
     {
+        // Some species use different states, so make sure we consider those here.
         var compSpeciesWithDifferentClothing = entity.Comp.SpeciesWithDifferentClothing;
         var speciesId = CompOrNull<InventoryComponent>(args.Equipee)?.SpeciesId;
         var id = speciesId is not null && compSpeciesWithDifferentClothing.Contains(speciesId) ? speciesId : null;
@@ -121,7 +133,7 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         var folded = TryComp<FoldableComponent>(entity, out var foldable) && foldable.IsFolded;
         OnGetGenericVisuals(
             entity,
-            args.Layers,
+            ref args.Layers,
             $"equipped-{args.Slot.ToUpperInvariant()}-",
             // Return null if this layer should be excluded.
             key =>
@@ -138,9 +150,14 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
             });
     }
 
+    /// Generically handles in-hand and clothing sprite layer setting.
+    /// <param name="entity">The modular HUD whose appearance will be used</param>
+    /// <param name="layers">The list of layers to add to</param>
+    /// <param name="visualKeyPrefix">The prefix applied to all states added to <paramref name="layers"/>, eg. inhand-left, equipped-SUITSTORAGE</param>
+    /// <param name="visualsLayerToRsiState">A lookup function which turns <see cref="ColorableLayers"/> elements into RSI state names</param>
     private void OnGetGenericVisuals(
         Entity<ModularHudVisualsComponent> entity,
-        List<(string, PrototypeLayerData)> layers,
+        ref List<(string, PrototypeLayerData)> layers,
         string visualKeyPrefix,
         Func<ModularHudVisualKeys, string?> visualsLayerToRsiState
     )

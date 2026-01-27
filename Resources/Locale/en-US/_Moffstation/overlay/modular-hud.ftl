@@ -21,3 +21,6 @@ modular-hud-premade-command = Command
 modular-hud-premade-thirst = Beer
 modular-hud-premade-chemistry = Chemical Analysis
 modular-hud-premade-engineering = Engineering
+
+# Module requirements
+modular-hud-requirement-full-coverage = Requires eyewear which fully covers all eyes

@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared._Moffstation.Clothing.ModularHud.Components;
 using Content.Shared._Moffstation.Extensions;
+using Content.Shared.Access.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Contraband;
 using Content.Shared.DoAfter;
@@ -14,6 +15,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
+using Content.Shared.Popups;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
@@ -25,17 +27,38 @@ using static Content.Shared._Moffstation.Clothing.ModularHud.Components.ModularH
 
 namespace Content.Shared._Moffstation.Clothing.ModularHud.Systems;
 
-// TODO CENT Document
-public sealed partial class ModularHudSystem : EntitySystem
+/// This system implements the behavior of <see cref="ModularHudComponent"/>s. It hands three basic things:
+/// <list type="bullet">
+/// <item>Visuals</item>
+/// <item>Basic interactions</item>
+/// <item>HUD effect relaying</item>
+/// </list>
+///
+/// <b>Visuals</b>
+/// More or less just <see cref="SyncVisuals"/>, sets <see cref="AppearanceComponent"/>'s data to colors determined by
+/// <see cref="ModularHudModuleComponent.Visuals"/> for the client visualizer system to handle.
+///
+/// <b>Basic Interactions</b>
+/// Insertion / extraction of modules, examine implementations, verbs, the usual component stuff.
+///
+/// <b>HUD Effect Relaying</b>
+/// This is the real power of modular HUDs. HUD effects on preexisting entities are implemented by raising events on the
+/// wearer of the HUD, and then a system will relay those events to worn entities, allowing the HUD entity to handle the
+/// event. This system does basically the same thing, except instead of the clothing with <see cref="ModularHudComponent"/>
+/// handling the events directly, it again relays these HUD effect events to <see cref="ModularHudComponent.ModuleContainer"/>'s
+/// contents. The modules have the same components as the preexisting HUD entities, thus handling the events to achieve
+/// the HUD effects.
+public abstract partial class SharedModularHudSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly BlurryVisionSystem _blurryVision = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedFlashSystem _flash = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
-    [Dependency] private readonly SharedVerbSystem _verb = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
 
@@ -64,6 +87,7 @@ public sealed partial class ModularHudSystem : EntitySystem
         // Relays for module events.
         SubscribeRelaysForEffectEvents<GetContrabandDetailsEvent>();
         SubscribeRelaysForEffectEvents<SolutionScanEvent>();
+        SubscribeRelaysForEffectEvents<ShowAccessReaderSettingsEvent>();
         SubscribeRelaysForEffectEvents<GetEyeProtectionEvent>();
         SubscribeRelaysForEffectEvents<SeeIdentityAttemptEvent>();
         SubscribeRelaysForEffectEvents<FlashAttemptEvent>();
@@ -78,18 +102,28 @@ public sealed partial class ModularHudSystem : EntitySystem
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<ShowCriminalRecordIconsComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<BlackAndWhiteOverlayComponent>>();
         SubscribeRelaysForEffectEvents<RefreshEquipmentHudEvent<NoirOverlayComponent>>();
-
-        // Relays `TArgs` to all contained modules.
-        void SubscribeRelaysForEffectEvents<TArgs>() where TArgs : notnull => Subs.SubscribeWithRelay(
-            delegate(Entity<ModularHudComponent> entity, ref TArgs args)
-            {
-                foreach (var module in GetModules(entity))
-                {
-                    RaiseLocalEvent(module, ref args);
-                }
-            }
-        );
     }
+
+    /// Adds subscriptions which relay `TArgs` to all contained modules.
+    /// <param name="requiresActiveSlots">Events will only be relayed while in <see cref="ModularHudComponent.ActiveSlots"/></param>
+    /// <param name="predicate">Events are relayed only to modules which return true when passed to this function. If null, all modules are relayed to.</param>
+    protected void SubscribeRelaysForEffectEvents<TArgs>(
+        bool requiresActiveSlots = true,
+        Func<Entity<ModularHudModuleComponent>, bool>? predicate = null
+    ) where TArgs : notnull => Subs.SubscribeWithRelay(
+        delegate(Entity<ModularHudComponent> entity, ref TArgs args)
+        {
+            // Only relay if we're in the slots which this HUD is active in.
+            if (requiresActiveSlots && !_inventory.InSlotWithAnyFlags(entity.Owner, entity.Comp.ActiveSlots))
+                return;
+
+            var modules = GetModules(entity);
+            foreach (var module in predicate is { } p ? modules.Where(p) : modules)
+            {
+                RaiseLocalEvent(module, ref args);
+            }
+        }
+    );
 
     /// Yields all the modules contained in the given HUD.
     public IEnumerable<Entity<ModularHudModuleComponent>> GetModules(Entity<ModularHudComponent> entity)
@@ -118,15 +152,77 @@ public sealed partial class ModularHudSystem : EntitySystem
         if (args.Handled)
             return;
 
-        // Delegate to interaction verbs so I don't have to redefine these.
-        var verb = _verb.GetLocalVerbs(args.Target, args.User, new List<Type> { typeof(InteractionVerb) })
-            .Where(it => !it.Disabled)
-            .FirstOrDefault();
-        if (verb is null)
-            return;
+        // Module insertion
+        if (TryComp<ModularHudModuleComponent>(args.Used, out var moduleComp))
+        {
+            if (entity.Comp.ModuleContainer is null)
+            {
+                this.AssertOrLogError("Container should be initialized");
+                return;
+            }
 
-        verb.Act?.Invoke();
-        args.Handled = true;
+            if (entity.Comp.NumContainedModules >= entity.Comp.MaximumContainedModules)
+            {
+                _popup.PopupPredictedCursor(
+                    Loc.GetString(
+                        entity.Comp.ModuleSlotsFullErrorText,
+                        ("hud", Name(entity))
+                    ),
+                    args.User
+                );
+                return;
+            }
+
+            var moduleFailureReqs = GetRequirementFailures(entity, (args.Used, moduleComp)).ToList();
+            if (moduleFailureReqs.Count != 0)
+            {
+                _popup.PopupPredictedCursor(
+                    string.Join(", ", moduleFailureReqs),
+                    args.User
+                );
+                return;
+            }
+
+            if (!_container.Insert(args.Used, entity.Comp.ModuleContainer))
+            {
+                // This should always succeed, so error out if it doesn't.
+                this.AssertOrLogError($"Failed to insert {ToPrettyString(args.Used)} into {ToPrettyString(entity)}");
+            }
+
+            args.Handled = true;
+            return;
+        }
+
+        // Module removal
+        if (GetModules(entity).Any())
+        {
+            var usedHasQuality = _tool.HasQuality(args.Used, entity.Comp.ModuleExtractionToolQuality);
+            _proto.Resolve(entity.Comp.ModuleExtractionToolQuality, out var toolQuality);
+
+            if (!usedHasQuality)
+            {
+                Loc.GetString(
+                    usedHasQuality
+                        ? entity.Comp.RemoveModulesVerbMessage
+                        : entity.Comp.MissingToolQualityErrorText,
+                    ("quality", Loc.GetString(toolQuality?.Name ?? "Unknown")),
+                    ("hud", Name(entity))
+                );
+                return;
+            }
+
+            _tool.UseTool(
+                args.Used,
+                args.User,
+                entity.Owner,
+                entity.Comp.ModuleRemovalDelay,
+                [entity.Comp.ModuleExtractionToolQuality],
+                new HudModulesRemovalDoAfterEvent(),
+                out _
+            );
+            args.Handled = true;
+            return;
+        }
     }
 
     private void OnGetInteractionVerbs(Entity<ModularHudComponent> entity, ref GetVerbsEvent<InteractionVerb> args)
@@ -135,21 +231,28 @@ public sealed partial class ModularHudSystem : EntitySystem
             return;
 
         // Module insertion
-        if (args.Using is { } used && HasComp<ModularHudModuleComponent>(args.Using))
+        if (args.Using is { } used && TryComp<ModularHudModuleComponent>(args.Using, out var moduleComp))
         {
+            if (entity.Comp.ModuleContainer is null)
+            {
+                this.AssertOrLogError("Container should be initialized");
+                return;
+            }
+
             LocId? disabledReason = null;
-            if (_whitelist.IsWhitelistFail(entity.Comp.ModuleWhitelist, used) ||
-                _whitelist.IsWhitelistPass(entity.Comp.ModuleBlacklist, used))
+            if (entity.Comp.NumContainedModules >= entity.Comp.MaximumContainedModules)
             {
-                disabledReason = entity.Comp.ModuleFailsRequirementsErrorText;
+                // Slots full
+                disabledReason = entity.Comp.ModuleSlotsFullErrorText;
+            }
+            else
+            {
+                // Fails requirements
+                var moduleFailureReqs = GetRequirementFailures(entity, (used, moduleComp)).ToList();
+                if (moduleFailureReqs.Count != 0)
+                    disabledReason = string.Join("; ", moduleFailureReqs);
             }
 
-            if (entity.Comp.ModuleContainer.ContainedEntities.Count >= entity.Comp.ModuleSlots)
-            {
-                disabledReason = entity.Comp.ModuleSlutsFullErrorText;
-            }
-
-            // All slots full already.
             args.Verbs.Add(new InteractionVerb
             {
                 Text = Loc.GetString(entity.Comp.InsertModuleVerbText),
@@ -176,8 +279,8 @@ public sealed partial class ModularHudSystem : EntitySystem
         {
             var tool = args.Using;
             var user = args.User;
-            var usedHasQuality = args.Using is { } u && _tool.HasQuality(u, entity.Comp.ModuleExtractionMethod);
-            _proto.Resolve(entity.Comp.ModuleExtractionMethod, out var toolQuality);
+            var usedHasQuality = args.Using is { } u && _tool.HasQuality(u, entity.Comp.ModuleExtractionToolQuality);
+            _proto.Resolve(entity.Comp.ModuleExtractionToolQuality, out var toolQuality);
             args.Verbs.Add(new InteractionVerb
             {
                 Text = Loc.GetString(entity.Comp.RemoveModulesVerbText),
@@ -188,7 +291,7 @@ public sealed partial class ModularHudSystem : EntitySystem
                         user,
                         entity.Owner,
                         entity.Comp.ModuleRemovalDelay,
-                        [entity.Comp.ModuleExtractionMethod],
+                        [entity.Comp.ModuleExtractionToolQuality],
                         new HudModulesRemovalDoAfterEvent(),
                         out _
                     );
@@ -229,7 +332,7 @@ public sealed partial class ModularHudSystem : EntitySystem
     /// Removes all modules from this HUD when the doafter is completed.
     private void OnHudModulesRemovalDoAfter(Entity<ModularHudComponent> entity, ref HudModulesRemovalDoAfterEvent args)
     {
-        if (args.Cancelled)
+        if (args.Cancelled || entity.Comp.ModuleContainer is null)
             return;
 
         foreach (var module in GetModules(entity).ToList())
@@ -265,15 +368,19 @@ public sealed partial class ModularHudSystem : EntitySystem
 
     private void OnFolded(Entity<ModularHudComponent> entity, ref FoldedEvent args) => SyncVisuals(entity);
 
+    /// This function contains a functional grab-bag of whatever function calls / event raisings need to happen to cause
+    /// the disparate HUD effects to be updated when the modular HUD is un/equipped.
     private void RefreshEffectsForWearerForContainedModules(Entity<ModularHudComponent> entity, EntityUid equippee)
     {
         _blurryVision.UpdateBlurMagnitude(equippee);
         var flashEv = new FlashImmunityChangedEvent(_flash.IsFlashImmune(equippee));
         RaiseLocalEvent(equippee, ref flashEv);
+
         RefreshEffectsForModules(GetModules(entity));
         SyncVisuals(entity);
     }
 
+    /// Raises <see cref="EquipmentHudNeedsRefreshEvent"/> on all modules in this HUD.
     private void RefreshEffectsForModules(IEnumerable<Entity<ModularHudModuleComponent>> modules)
     {
         var ev = new EquipmentHudNeedsRefreshEvent();
@@ -283,6 +390,16 @@ public sealed partial class ModularHudSystem : EntitySystem
         }
     }
 
+    private IEnumerable<string> GetRequirementFailures(
+        Entity<ModularHudComponent> entity,
+        Entity<ModularHudModuleComponent> module
+    )
+    {
+        return module.Comp.Requirements.Where(it => !_whitelist.IsWhitelistPassOrNull(it.Whitelist, entity) ||
+                                                    _whitelist.IsWhitelistPass(it.Blacklist, entity))
+            .Select(it => Loc.GetString(it.FailureMessage, ("hud", entity), ("module", module)));
+    }
+
     /// Sets <see cref="AppearanceComponent"/> data for the given HUD entity, as appropriate. This causes the client to
     /// update the visuals for the HUD entity.
     private void SyncVisuals(Entity<ModularHudComponent, ModularHudVisualsComponent?> entity)
@@ -290,7 +407,7 @@ public sealed partial class ModularHudSystem : EntitySystem
         if (!Resolve(entity, ref entity.Comp2))
             return;
 
-        var visuals = new Dictionary<ModularHudVisuals, PriorityQueue<ModularHudModuleColor>>()
+        var visuals = new Dictionary<ModularHudVisuals, PriorityQueue<ModularHudModuleComponent.ModuleColor>>()
         {
             // Lens gets three colors because there're three lens layers.
             [ModularHudVisuals.Lens] = new(3),

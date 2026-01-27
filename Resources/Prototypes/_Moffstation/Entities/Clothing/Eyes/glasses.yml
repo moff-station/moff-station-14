@@ -25,7 +25,7 @@
       default:
       - LensAccentMajor
   - type: ModularHud
-    moduleSlots: 3
+    maximumContainedModules: 4
 
 - type: entity
   parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
@@ -52,9 +52,9 @@
     equippedExcludedLayers:
       default:
       - specular
-  - type: ModularHud
-    moduleSlots: 3
-    moduleBlacklist: null # Remove full-eye disallowment
+  - type: Tag
+    tags:
+    - FullEyeCovering
 
 - type: entity
   parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
@@ -77,15 +77,15 @@
     inhandExcludedLayers:
       default:
       - Accent
-  - type: ModularHud
-    moduleSlots: 3
-    moduleBlacklist: null # Remove full-eye disallowment
+  - type: Tag
+    tags:
+    - FullEyeCovering
 
 - type: entity
   parent: ClothingEyesModularHudGlasses
   id: ClothingEyesModularHudSunglasses
   name: modular HUD sunglasses
-  description: An enhanced model of the modular HUD glasses, these sunglasses have have highly reflective lenses to protected against bright flashes.
+  description: An enhanced model of the modular HUD glasses, these sunglasses have have a highly-reflective coating on their lenses.
   components:
   - type: ModularHudVisuals
     innateVisuals:
@@ -100,14 +100,12 @@
   - type: IdentityBlocker
     coverage: EYES
   - type: FlashImmunity
-  - type: ModularHud
-    moduleBlacklist: null # Remove full-eye disallowment
 
 - type: entity
   parent: ClothingEyesModularHudGlasses
   id: ClothingEyesModularHudCheapSunglasses
   name: cheap modular HUD sunglasses
-  description: You might feel like a badass wearing these, but anyone can see right through these.
+  description: You might feel like a badass wearing these, but anyone can see right through them.
   components:
   - type: ModularHudVisuals
     innateVisuals:
@@ -120,8 +118,6 @@
         priority: 1000
   - type: IdentityBlocker
     coverage: EYES
-  - type: ModularHud
-    moduleBlacklist: null # Remove full-eye disallowment
 
 - type: entity
   parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
@@ -143,15 +139,15 @@
     inhandExcludedLayers:
       default:
       - Accent
-  - type: ModularHud
-    moduleSlots: 3
-    moduleBlacklist: null # Remove full-eye disallowment
+  - type: Tag
+    tags:
+    - FullEyeCovering
 
 - type: entity
   parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
   id: ClothingEyesModularHudPatch
   name: modular HUD eye patch
-  description: The true patriot's choice for a heads-up display! Though, if there's no eye underneath, how do you see its display?
+  description: The true patriot's choice for a heads-up display! Though, if there's no eye underneath, how do you see what it's showing?
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Eyes/Hud/patch.rsi
@@ -170,8 +166,6 @@
       - LensAccentMinor
       - Lens
       - Specular
-  - type: ModularHud
-    moduleSlots: 3
   - type: Foldable
     canFoldInsideContainer: true
     unfoldVerbText: fold-flip-verb
@@ -182,6 +176,7 @@
 - type: entity
   id: AbstractModularHudSecurityIcons
   abstract: true
+  suffix: Security
   components:
   - type: EntityTableContainerFill
     containers:
@@ -196,6 +191,7 @@
 - type: entity
   id: AbstractModularHudMedicalIcons
   abstract: true
+  suffix: Medical
   components:
   - type: EntityTableContainerFill
     containers:
@@ -208,6 +204,7 @@
 - type: entity
   id: AbstractModularHudDiagnostic
   abstract: true
+  suffix: Diagnostic
   components:
   - type: EntityTableContainerFill
     containers:
@@ -221,6 +218,7 @@
 - type: entity
   id: AbstractModularHudCommand
   abstract: true
+  suffix: Command
   components:
   - type: EntityTableContainerFill
     containers:
@@ -233,6 +231,7 @@
 - type: entity
   id: AbstractModularHudBeer
   abstract: true
+  suffix: Barkeep
   components:
   - type: EntityTableContainerFill
     containers:
@@ -245,6 +244,7 @@
 - type: entity
   id: AbstractModularHudChemistry
   abstract: true
+  suffix: Chemistry
   components:
   - type: EntityTableContainerFill
     containers:
@@ -257,6 +257,7 @@
 - type: entity
   id: AbstractModularHudEngineering
   abstract: true
+  suffix: Engineering
   components:
   - type: EntityTableContainerFill
     containers:
@@ -321,8 +322,9 @@
   id: ClothingEyesGlassesMeson
 
 - type: entity
-  parent: [ClothingEyesModularHudGoggles, AbstractModularHudDiagnostic]
+  parent: [ClothingEyesModularHudGoggles]
   id: ClothingEyesGlassesMedChem
+  suffix: MedChem
   components:
   - type: EntityTableContainerFill
     containers:
@@ -334,8 +336,9 @@
     currentLabel: modular-hud-premade-medchem
 
 - type: entity
-  parent: [ClothingEyesModularHudVisor, AbstractModularHudDiagnostic]
+  parent: [ClothingEyesModularHudVisor]
   id: ClothingEyesHudMedSec
+  suffix: MedSec
   components:
   - type: EntityTableContainerFill
     containers:

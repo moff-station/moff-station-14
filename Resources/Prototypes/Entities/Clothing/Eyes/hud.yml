@@ -250,7 +250,7 @@
   suffix: Syndicate
 
 - type: entity
-  parent: [ClothingEyesHudMedical, ClothingHeadEyeBaseFlippable]
+  parent: [ClothingEyesHudMedicalUpstream, ClothingHeadEyeBaseFlippable]
   id: ClothingEyesEyepatchHudMedicalUpstream # Moffstation - Replaced by modular HUDs
   name: medical hud eyepatch
   description: A heads-up display that scans the humanoids in view and provides accurate data about their health status. For true patriots.
@@ -266,12 +266,12 @@
     - HudMedical
 
 - type: entity
-  parent: [ClothingEyesEyepatchHudMedical, ClothingHeadEyeBaseFlipped]
-  id: ClothingEyesEyepatchHudMedicalFlipped
+  parent: [ClothingEyesEyepatchHudMedicalUpstream, ClothingHeadEyeBaseFlipped]
+  id: ClothingEyesEyepatchHudMedicalFlippedUpstream
   name: medical hud eyepatch
 
 - type: entity
-  parent: [ClothingEyesHudSecurity, ClothingHeadEyeBaseFlippable]
+  parent: [ClothingEyesHudSecurityUpstream, ClothingHeadEyeBaseFlippable]
   id: ClothingEyesEyepatchHudSecurityUpstream # Moffstation - Replaced by modular HUDs
   name: security hud eyepatch
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. For true patriots.
@@ -287,8 +287,8 @@
     - HudSecurity
 
 - type: entity
-  parent: [ClothingEyesEyepatchHudSecurity,  ClothingHeadEyeBaseFlipped]
-  id: ClothingEyesEyepatchHudSecurityFlipped
+  parent: [ClothingEyesEyepatchHudSecurityUpstream,  ClothingHeadEyeBaseFlipped]
+  id: ClothingEyesEyepatchHudSecurityFlippedUpstream
   name: security hud eyepatch
 
 - type: entity
@@ -308,7 +308,7 @@
   name: beer hud eyepatch
 
 - type: entity
-  parent: [ClothingEyesHudDiagnostic, ClothingHeadEyeBaseFlippable]
+  parent: [ClothingEyesHudDiagnosticUpstream, ClothingHeadEyeBaseFlippable]
   id: ClothingEyesEyepatchHudDiagUpstream # Moffstation - Replaced by modular HUDs
   name: diagnostic hud eyepatch
   description: A heads-up display capable of analyzing the integrity and status of robotics and exosuits. Made out of see-borg-ium.
@@ -319,6 +319,6 @@
     sprite: _Moffstation/Clothing/Eyes/Hud/diagpatch.rsi # Moffstation - Eyepatch fixes
 
 - type: entity
-  parent: [ClothingEyesEyepatchHudDiag, ClothingHeadEyeBaseFlipped]
-  id: ClothingEyesEyepatchHudDiagFlipped
+  parent: [ClothingEyesEyepatchHudDiagUpstream, ClothingHeadEyeBaseFlipped]
+  id: ClothingEyesEyepatchHudDiagFlippedUpstream
   name: diagnostic hud eyepatch

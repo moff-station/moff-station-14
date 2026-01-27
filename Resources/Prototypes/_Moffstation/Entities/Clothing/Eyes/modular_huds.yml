@@ -41,12 +41,9 @@
       LensAccentMajor: lens-accent-major
   - type: ModularHud
     moduleContainerId: modular-hud-modules
-    moduleSlots: 3
-    moduleExtractionMethod: Screwing
+    maximumContainedModules: 3
+    moduleExtractionToolQuality: Screwing
     moduleRemovalDelay: 1s
-    moduleBlacklist:
-      tags:
-      - HudModuleRequiresFullEyes # By default, HUDs don't cover the full eyes, so disallow those.
   - type: ContainerContainer
     containers:
       modular-hud-modules: !type:Container
@@ -71,7 +68,7 @@
 # - fluff: 0001
 #
 # Elevated importance can fill the space up to 5x the normal value;
-# Reduced importand can fill the space down to 1/2 the normal value.
+# Reduced importance can fill the space down to 1/2 the normal value.
 
 - type: entity
   parent: ModularHudModuleBase
@@ -151,16 +148,18 @@
     - state: contacts
     - state: eng_label
   - type: ModularHudModule
+    requirements:
+    - &fulleyereq
+      failureMessage: "modular-hud-requirement-full-coverage"
+      whitelist:
+        tags:
+        - FullEyeCovering
     visuals:
       lens:
         color: *mesongreen
         priority: 250
   - type: EyeProtection
   - type: IdentityBlocker
-    coverage: EYES
-  - type: Tag
-    tags:
-    - HudModuleRequiresFullEyes
 
 - type: entity
   parent: HudModuleEyeProtection
@@ -177,6 +176,8 @@
     - state: contacts
     - state: sec_label
   - type: ModularHudModule
+    requirements:
+    - *fulleyereq
     visuals:
       lens:
         color: Black
@@ -202,14 +203,13 @@
     - state: contacts
     - state: med_label
   - type: ModularHudModule
+    requirements:
+    - *fulleyereq
     visuals:
       accent:
         color: CornflowerBlue
         priority: 1
   - type: VisionCorrection
-  - type: Tag
-    tags:
-    - HudModuleRequiresFullEyes # Gotta correct both eyes
 
 - type: entity
   parent: ModularHudModuleBase
@@ -268,14 +268,13 @@
     - state: contacts
     - state: common_label
   - type: ModularHudModule
+    requirements:
+    - *fulleyereq
     visuals:
       lens:
         color: Tan
         priority: 4
   - type: NoirOverlay
-  - type: Tag
-    tags:
-    - HudModuleRequiresFullEyes
 
 - type: entity
   parent: ModularHudModuleBase
@@ -292,14 +291,13 @@
     - state: contacts
     - state: common_label
   - type: ModularHudModule
+    requirements:
+    - *fulleyereq
     visuals:
       lens:
         color: gray
         priority: 4
   - type: BlackAndWhiteOverlay
-  - type: Tag
-    tags:
-    - HudModuleRequiresFullEyes
 
 - type: entity
   parent: ModularHudModuleBase
@@ -321,7 +319,7 @@
         color: darkblue
         priority: 10
   - type: ShowCriminalRecordIcons
-  - type: GuideHelp # TODO CENT Relay; guidebook info doesn't come from events, it seems hardcoded right now.
+  - type: GuideHelp
     guides:
     - Security
     - Antagonists
