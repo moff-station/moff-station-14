@@ -69,3 +69,5 @@ loadout-group-service-worker-id = Service Worker ID
 
 loadout-group-passenger-id = Passenger ID
 loadout-group-prisoner-id = Prisoner ID
+
+loadout-show-all = Show Unavailable Items

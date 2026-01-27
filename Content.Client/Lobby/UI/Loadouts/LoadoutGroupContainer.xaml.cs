@@ -26,11 +26,20 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
 
+    public event Action<bool>? OnShowAllLoadouts; // Moffstation - Personal Item Filters
+
     public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         _groupProto = groupProto;
+
+        // Moffstation - Personal Item Filters
+        ShowAllLoadouts.StateChanged += val => { 
+            OnShowAllLoadouts?.Invoke(val);
+            RefreshLoadouts(profile, loadout, session, collection);
+        };
+        // Moffstation - End
 
         RefreshLoadouts(profile, loadout, session, collection);
     }
@@ -75,6 +84,11 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         // Get all loadout prototypes for this group.
         var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
+        
+        // MOFFSTATION - Personal Item Filters
+        if (!ShowAllLoadouts.IsOn)
+            validProtos = validProtos.Where((proto) => loadout.IsValid(profile, session, proto.ID, collection, out var reason));
+        // MOFFSTATION - End
 
         /*
          * Group the prototypes based on their GroupBy field.
