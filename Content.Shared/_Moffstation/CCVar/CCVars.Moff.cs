@@ -58,4 +58,10 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     TRUE to show unavailable choices in the loadout menu. 
+    /// </summary>
+    public static readonly CVarDef<bool> ShowAllLoadouts =
+        CVarDef.Create("ui.show_all_loadouts", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 }
