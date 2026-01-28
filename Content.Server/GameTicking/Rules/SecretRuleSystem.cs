@@ -74,32 +74,38 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
     private bool TryPickPreset(ProtoId<WeightedRandomPrototype> weights, [NotNullWhen(true)] out GamePresetPrototype? preset)
     {
         var options = _prototypeManager.Index(weights).Weights.ShallowClone();
-        var players = GameTicker.DynamicPlayerCount();
+        var players = GameTicker.DynamicPlayerCount();  // Moffstation - total player count for rules
 
         GamePresetPrototype? selectedPreset = null;
         var sum = options.Values.Sum();
-
-        while (selectedPreset == null && options.Count > 0)
+        while (options.Count > 0)
         {
+            var accumulated = 0f;
+            var rand = _random.NextFloat(sum);
             foreach (var (key, weight) in options)
             {
-                var roll = _random.NextFloat(sum);
-                if (roll < weight)
+                accumulated += weight;
+                if (accumulated < rand)
                     continue;
 
                 if (!_prototypeManager.TryIndex(key, out selectedPreset))
                     Log.Error($"Invalid preset {selectedPreset} in secret rule weights: {weights}");
 
-                if (!CanPick(selectedPreset, players))
-                {
-                    selectedPreset = null;
-                    options.Remove(key);
-                    continue;
-                }
+                options.Remove(key);
+                sum -= weight;
+                break;
+            }
+
+            if (CanPick(selectedPreset, players))
+            {
                 preset = selectedPreset;
                 return true;
             }
+
+            if (selectedPreset != null)
+                Log.Info($"Excluding {selectedPreset.ID} from secret preset selection.");
         }
+
         preset = null;
         return false;
     }
