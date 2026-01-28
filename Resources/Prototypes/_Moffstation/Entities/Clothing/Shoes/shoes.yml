@@ -65,3 +65,27 @@
     activeIfWorn: true
   - type: Tag
     tags: []
+
+# Security
+- type: entity
+  parent: [ClothingShoesBootsJack, ClothingShoesHighheelBoots, BaseSecurityContraband]
+  id: ClothingShoesBootsJackHeels
+  name: high-heeled jackboots
+  description: Specialized high-heeled boots intended for use in combat scenarios, while somehow passing equipment standards. Now, you can kick ass in style!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/high-heeled-jackboots.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/high-heeled-jackboots.rsi
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.0275"
+      shoes-vox:
+      - state: equipped-FEET-vox
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.3
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 8

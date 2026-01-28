@@ -1,0 +1,44 @@
+﻿# Player: Centronias / Character: Kazakadrixri
+- type: entity
+  parent: ClothingHeadHatFlowerWreath
+  id: PersonalItemKazaWreath
+  name: motley wreath
+  suffix: PersonalItem
+  description: An assemblage of cord, quills, wood, and preserved flowers. It clearly has great value to someone.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Centronias/Kazakadrixri/kazawreath.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Centronias/Kazakadrixri/kazawreath.rsi
+  - type: EmitSoundOnUse
+    sound: &RattleSound
+      path: /Audio/Items/Toys/rattle.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound: *RattleSound
+  - type: EmitSoundOnCollide
+    sound: *RattleSound
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    soundHit: *RattleSound
+    damage:
+      types:
+        Blunt: 0
+    hidden: true
+  - type: DetailExaminable
+    content: The whole thing is held together with weathered cord, something like hemp braided by hand. No two quills
+      are alike and each has a small nugget of what looks like driftwood attached to its shaft, with each piece of wood
+      having some kind of glyph carved into it. It smells faintly of... carrion?
+
+- type: loadout
+  id: PersonalItemKazaWreath
+  storage:
+    back:
+    - PersonalItemKazaWreath
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Kazakadrixri
+    - Noskra'an-kaza
+    - Noskra'an-Kaza

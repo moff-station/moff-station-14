@@ -434,38 +434,22 @@
   description: A sturdy, utilitarian winter coat designed to protect a head of security from any brig-bound threats and hypothermic events.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coathosarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coathosarmored.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coathosarmored.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coathosarmored.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
 - type: entity
-  parent: [ClothingOuterWinterCoatToggleable, BaseSecurityCommandContraband]
+  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
   id: ClothingOuterWinterHoSUnarmored
   name: head of security's winter coat
-  description: A sturdy coat, a warm coat, but not an armored coat.
+  description: A sturdy coat, a warm coat, but not as armored. # Moffstation - New Security Outfits
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    layers:
-    - state: HOS-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: HOS-inhand-left
-      right:
-      - state: HOS-inhand-right
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/hoscoat.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    clothingVisuals:
-      outerClothing:
-      - state: HOS-equipped-OUTERCLOTHING
-#Moffstation - Begin - Vox Wintecoats
-      outerClothing-vox:
-      - state: HOS-equipped-OUTERCLOTHING-vox
-        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
-  #Moffstation - End - Vox Wintecoats
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/hoscoat.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
@@ -781,31 +765,24 @@
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
 - type: entity
-  parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband]
+  parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
   id: ClothingOuterWinterSec
   name: security winter coat
-  components:
+  components: # Moffstation - Start -New Security Outfits
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    layers:
-    - state: SEC-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: SEC-inhand-left
-      right:
-      - state: SEC-inhand-right
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    clothingVisuals:
-      outerClothing:
-      - state: SEC-equipped-OUTERCLOTHING
-  #Moffstation - Begin - Vox Wintecoats
-      outerClothing-vox:
-      - state: SEC-equipped-OUTERCLOTHING-vox
-  #Moffstation - End - Vox Wintecoats
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSec
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.75
+# Moffstation - End - New Security Outfits
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
@@ -849,40 +826,24 @@
   description: A sturdy, utilitarian winter coat designed to protect a warden from any brig-bound threats and hypothermic events.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - (New Warden Uniforms)
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 
 - type: entity
-  parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband]
+  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
   id: ClothingOuterWinterWardenUnarmored
   name: warden's winter coat
-  description: A sturdy coat, a warm coat, but not an armored coat.
+  description: A sturdy coat, a warm coat, but not as armored.
   components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    layers:
-    - state: WARD-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: WARD-inhand-left
-      right:
-      - state: WARD-inhand-right
+  - type: Sprite # Moffstation - Start- New Security Outfits
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    clothingVisuals:
-      outerClothing:
-      - state: WARD-equipped-OUTERCLOTHING
-  #Moffstation - Begin - Vox Wintecoats
-      outerClothing-vox:
-      - state: WARD-equipped-OUTERCLOTHING-vox
-        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
-  #Moffstation - End - Vox Wintecoats
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - End - New Security Outfits
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterSec # Moffstation - (New Warden Uniforms)
+    clothingPrototype: ClothingHeadHatHoodWinterWarden
 
 - type: entity
   parent: [ClothingOuterWinterCoatToggleable, BaseSyndicateContraband]

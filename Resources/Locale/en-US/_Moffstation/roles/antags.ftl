@@ -1,12 +1,13 @@
 ﻿# Pirates
 roles-antag-pirate-captain-name = Pirate Captain
-roles-antag-pirate-captain-objective = Pillage, Plunder, and lead the pirate crew
-
-roles-antag-pirate-medic-name = Pirate Apothecary
-roles-antag-pirate-medic-objective = Keep the pirate crew in good health, and obey the Pirate Captain
+roles-antag-pirate-captain-objective = Pillage, plunder, and lead the pirate crew
 
 roles-antag-pirate-crew-name = Pirate Crewmate
-roles-antag-pirate-crew-objective = Pillage, Plunder, and obey the Pirate Captain
+roles-antag-pirate-crew-objective = Pillage, plunder, and obey the Pirate Captain
+
+roles-antag-pirate-corsair-name = Pirate Corsair
+roles-antag-pirate-corsair-objective = Pillage, plunder, and get rich at any cost
+ghost-role-information-corsair-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-solo-antagonist-name}[/bold][/color]. Other pirates may be more loyal to their own crew.
 
 pirate-role-greeting =
     SHIVER ME TIMBERS!

@@ -17,20 +17,6 @@
       components:
       - Nuke
 
-# Science
-- type: cargoBounty
-  id: PirateBountySciServer
-  reward: 15000
-  description: bounty-description-sci-server
-  idPrefix: CS
-  group: Pirates
-  entries:
-  - name: bounty-item-sci-server
-    amount: 1
-    whitelist:
-      components:
-      - ResearchServer
-
 - type: cargoBounty
   id: PirateBountyAnomVessel
   reward: 6000
@@ -56,51 +42,6 @@
     whitelist:
       components:
       - XenoArtifact
-
-# Engineering
-- type: cargoBounty
-  id: PirateBountyTEG
-  reward: 12000
-  description: bounty-description-teg
-  idPrefix: GX
-  group: Pirates
-  entries:
-  - name: bounty-item-teg
-    amount: 1
-    whitelist:
-      components:
-      - TegGenerator
-      - TegCirculator
-
-- type: cargoBounty
-  id: PirateBountyParticleAccelerator
-  reward: 8000
-  description: bounty-description-particle-accelerator
-  idPrefix: CS
-  group: Pirates
-  entries:
-  - name: bounty-item-particle-accelerator
-    amount: 1
-    whitelist:
-      components:
-      - ParticleAcceleratorControlBox
-      - ParticleAcceleratorEmitter
-      - ParticleAcceleratorFuelChamber
-      - ParticleAcceleratorPowerBox
-      - ParticleAcceleratorEndCap
-
-- type: cargoBounty
-  id: PirateBountySMES
-  reward: 5000
-  description: bounty-description-smes
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-smes
-    amount: 1
-    whitelist:
-      components:
-      - Smes
 
 # Service
 - type: cargoBounty
@@ -234,19 +175,6 @@
     whitelist:
       tags:
       - Recharger
-
-- type: cargoBounty
-  id: PirateBountySolars
-  reward: 4000
-  description: bounty-description-solars
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-solars
-    amount: 5
-    whitelist:
-      components:
-      - SolarPanel
 
 - type: cargoBounty
   id: PirateBountyStatisBed

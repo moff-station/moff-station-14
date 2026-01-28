@@ -303,8 +303,8 @@
 - type: entity
   parent: VendingMachine
   id: VendingMachineCart
-  name: PTech
-  description: PTech vending! Providing a ROBUST selection of PDAs, cartridges, and anything else a dull paper pusher needs!
+  name: BureauTech #Moffstation - Bureaucracy PR
+  description: A Bureaucrats's Best Friend! Providing a large selection of PDAs, cartridges, and anything else a dull paper pusher needs! #Moffstation - Bureaucracy PR
   components:
   - type: VendingMachine
     pack: PTechInventory
@@ -314,7 +314,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/cart.rsi
+    sprite: _Moffstation/Structures/Machines/VendingMachines/cart.rsi # Moffstation - Bureaucracy PR
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -323,10 +323,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  # Moffstation - Start - Bureaucracy PR
   - type: PointLight
-    radius: 1
-    energy: 2.0
-    color: "#ffb0b0"
+    radius: 1.5
+    energy: 3.0
+    color: "#ff3979"
+  # Moffstation - End - Bureaucracy PR
   - type: AccessReader
     access: [["HeadOfPersonnel"]]
 

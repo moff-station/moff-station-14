@@ -5,6 +5,7 @@ using Content.Server.Popups;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
+using Content.Shared.Gibbing;
 using Content.Shared.Item; // Moffstation
 using Content.Shared.Maps; // Moffstation
 using Content.Shared.Popups;
@@ -22,7 +23,7 @@ public sealed class ImmovableRodSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    [Dependency] private readonly BodySystem _bodySystem = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -135,8 +136,7 @@ public sealed class ImmovableRodSystem : EntitySystem
                 return;
             }
 
-            // Moffstation - Allow organs to drop
-            _bodySystem.GibBody(ent, body: body, gibOrgans: true, splatModifier: 10);
+            _gibbing.Gib(ent, dropGiblets: true); // Moffstation - Allow organs to drop
             return;
         }
 
