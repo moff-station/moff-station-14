@@ -1,0 +1,15 @@
+﻿# In memoriam of Sector Umbra, an HRP community.
+# I wish you all the best in finding a new home.
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUmbraClouds
+  name: "Anatidae Constellation"
+  description: "They say this set of stars form the shape of a duck. Can you see it?"
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Umbra/Structures/Wallmounts/posters.rsi
+    state: clouds_legit
+  - type: DetailExaminable
+    content: "A poster memorializing Sector Umbra and its community. While the shuttle routes have stopped and the station decommissioned, you have a feeling that the crew have found a new home in a different sector."

@@ -3,10 +3,12 @@
   name: job-name-salvagespec
   description: job-description-salvagespec
   playTimeTracker: JobSalvageSpecialist
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Cargo
-      time: 9000 # 2.5 hrs
+  # Moffstation - Start - Change role timers
+  #requirements:
+    #- !type:DepartmentTimeRequirement
+    #  department: Cargo
+    #  time: 2.5h
+  # Moffstation - End
   icon: "JobIconShaftMiner"
   startingGear: SalvageSpecialistGear
   supervisors: job-supervisors-qm
@@ -20,7 +22,7 @@
   id: SalvageSpecialistGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
-    id: SalvagePDA
+    #id: SalvagePDA # Moffstation - PDA loadouts
     ears: ClothingHeadsetCargo
   #storage:
     #back:

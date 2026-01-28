@@ -7,3 +7,5 @@ gun-game-scoreboard-list-entry = {$place}. [bold][color=orange]{$name}[/color][/
     [one] {$weaponsLeft} weapon
     *[other] {$weaponsLeft} weapons
 } left.[/color] Last weapon: [bold][color=orange]{$weapon}[/color][/bold]
+
+gun-game-scoreboard-list-empty = None

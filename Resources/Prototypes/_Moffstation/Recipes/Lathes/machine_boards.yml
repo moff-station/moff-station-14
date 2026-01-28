@@ -101,6 +101,11 @@
 
 - type: latheRecipe
   parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
+  id: KnowItAllCircuitBoard
+  result: KnowItAllCircuitBoard
+
+- type: latheRecipe
+  parent: [ BaseAILawBoardRecipe, BaseAILawBoardRecipeCategory ]
   id: PICircuitBoard
   result: PICircuitBoard
 

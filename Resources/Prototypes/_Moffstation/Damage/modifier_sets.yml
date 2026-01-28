@@ -14,3 +14,12 @@
     Bloodloss: 1.0 # Vampires take this damage when they are out of blood
     Cellular: 0.0
     Holy: 1.0
+
+- type: damageModifierSet
+  id: Resomi
+  coefficients:
+    Blunt: 1.15
+    Slash: 1.15
+    Piercing: 1.15
+    Cold: 0.9
+    

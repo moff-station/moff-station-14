@@ -1,0 +1,22 @@
+﻿# Player: Solid_Syn / Character: Jess Gerr
+- type: entity
+  parent: ClothingMaskClownBase
+  id: PersonalItemJessMask
+  name: Jess's jester mask
+  description: Jingle, jingle! The bells on this mask appear to be fit for a large set of ears. Smells of bananas...
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Solid_Syn/Jess_Gerr/jessclownmask.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Solid_Syn/Jess_Gerr/jessclownmask.rsi
+
+- type: loadout
+  id: PersonalItemJessMask
+  storage:
+    back:
+    - PersonalItemJessMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Jess Gerr

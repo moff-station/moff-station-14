@@ -1,0 +1,45 @@
+# Mime
+- type: entity
+  parent: MimePDA
+  id: MimePDAAltBase
+  name: mime alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-pierrot"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: MimePDAAltBase
+  id: PierrotPDA
+  name: pierrot PDA
+  components:
+  - type: RenameId
+    value: job-name-mime-pierrot
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-pierrot
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#333333"

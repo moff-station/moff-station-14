@@ -91,6 +91,10 @@
     guides:
     - Security
     - Antagonists
+  # Imp - Begin - Tourists
+  - type: StealTarget
+    stealGroup: StunBaton
+  # Imp - End
 
 - type: entity
   name: truncheon
@@ -231,3 +235,9 @@
       guides:
       - Security
       - Antagonists
+    # Moffstation - Start
+    - type: TriggerOnSignal
+    - type: DeviceLinkSink
+      ports:
+      - Trigger
+    # Moffstation - End

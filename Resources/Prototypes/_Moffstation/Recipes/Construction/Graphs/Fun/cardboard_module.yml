@@ -1,0 +1,29 @@
+﻿- type: constructionGraph
+  id: BorgModuleCardboard
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: BorgModuleCardboard
+      steps:
+      - tag: Folder
+        icon:
+          sprite: Objects/Misc/folders.rsi
+          state: folder-white
+        name: construction-graph-tag-folder
+      - component: BorgModule
+        icon:
+          sprite: Objects/Specific/Robotics/borgmodule.rsi
+          state: generic
+        name: construction-graph-tag-cyborg-module
+      - component: Crayon
+        icon:
+          sprite: Objects/Fun/crayons.rsi
+          state: rainbow
+        name: construction-graph-tag-crayon
+      - material: Cardboard
+        amount: 3
+        doAfter: 3
+
+  - node: BorgModuleCardboard
+    entity: BorgModuleCardboard

@@ -1,0 +1,15 @@
+- type: entity
+  id: CartridgePistolSilver
+  name: cartridge (.35 auto silver)
+  description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Silver munitions are effective against unholy foes, smiting the target for their misdeeds.
+  parent: BaseCartridgePistol
+  components:
+  - type: CartridgeAmmo
+    proto: BulletPistolSilver
+  - type: Sprite
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+      - state: tip
+        map: [ "enum.AmmoVisualLayers.Tip" ]
+        color: "#bebed7"

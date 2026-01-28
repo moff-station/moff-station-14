@@ -1,0 +1,127 @@
+- type: entity
+  parent: DrinkGlass
+  id: LemonLimeBittersGlass
+  suffix: lemon lime and bitters
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: LemonLimeBitters
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: PinkGinGlass
+  suffix: pink gin
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: PinkGin
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/ginpink.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: PlatersPunchGlass
+  suffix: planters punch
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: PlantersPunch
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/planterspunch.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: BreathalyzerGlass
+  suffix: breathalyzer
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Breathalyzer
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/breathalyzer.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: CorpseReviverGlass
+  suffix: Corpse Reviver no. 2
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: CorpseReviver
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/corpsereviver.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: PrairieCocktailGlass
+  suffix: Prairie Cocktail
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: PrairieCocktail
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/prairiecocktail.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: MossySpecialGlass
+  suffix: Mossy Special
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: MossySpecial
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/mossyspecial.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkScrantonSpecialGlass
+  suffix: scranton special
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: ScrantonSpecial
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
+    state: icon

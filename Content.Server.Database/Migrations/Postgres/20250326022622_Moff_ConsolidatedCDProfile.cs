@@ -41,7 +41,7 @@ namespace Content.Server.Database.Migrations.Postgres
                 unique: true);
 
             migrationBuilder.Sql(
-                "INSERT INTO cdprofile (profile_id) SELECT profile_id, FROM profile");
+                "INSERT INTO cdprofile (profile_id) SELECT profile_id FROM profile");
 
 
             migrationBuilder.CreateTable(

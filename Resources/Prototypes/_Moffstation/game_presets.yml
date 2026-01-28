@@ -10,3 +10,31 @@
   supportedMaps: GunGameMapPool
   rules:
   - GunGame
+
+- type: gamePreset
+  id: Pirates
+  alias:
+  - pirates
+  - pierats
+  name: pirates-title
+  description: pirates-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - Pirates
+  - SubGamemodesRuleNoWizard
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: ExtendedAdmin
+  name: extended-title
+  showInVote: false #2boring2vote
+  description: extended-description
+  rules:
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation

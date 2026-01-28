@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Server._Moffstation.GameTicking.Rules.Components;
 
@@ -32,10 +29,10 @@ public sealed partial class GunGameRuleComponent : Robust.Shared.GameObjects.Com
     /// <summary>
     /// The queue to use when spawning weapons.
     /// This queue is replicated for each player and every respective player receives the next
-    /// item in the queue when they get a kill.
+    /// loadout in the queue when they get a kill.
     /// </summary>
     [DataField, ReadOnly(true)]
-    public Queue<EntityTableSelector> RewardSpawnsQueue = new();
+    public Queue<ProtoId<StartingGearPrototype>> RewardSpawnsQueue = new();
 
     /// <summary>
     /// Player info that needs to be stored between their individual lives.
@@ -50,27 +47,18 @@ public sealed partial class GunGameRuleComponent : Robust.Shared.GameObjects.Com
     public int KillsPerWeapon = 1;
 
     /// <summary>
-    /// When spawning gear for people after they get a kill
-    /// this is the order of equip slots to try spawning items into.
-    /// The slots will be tried in order per item in the current spot in the queue.
-    /// If an item doesn't fit into a slot, that slot will be ignored for the rest of them.
-    /// </summary>
-    [DataField, ReadOnly(true)]
-    public Queue<string> SlotTryOrder = new();
-
-    /// <summary>
     /// The gear all players spawn with.
     /// This loadout should not include a starting weapon as the starting weapon is selected from the
     /// <see cref="RewardSpawnsQueue"/>.
     /// </summary>
     [DataField, ReadOnly(true)]
-    public ProtoId<StartingGearPrototype> Gear = "GunGameGear";
+    public ProtoId<StartingGearPrototype> Gear = "GunGameBaseGear";
 
     /// <summary>
     /// The range to delete casings around a player when they either die or gain their next weapon.
     /// </summary>
     [DataField]
-    public float CasingDeletionRange = 1.0f;
+    public float CasingDeletionRange = 2.0f;
 
     /// <summary>
     /// The probability that a casing will be deleted when a player either dies or gains their next weapon.
@@ -92,9 +80,9 @@ public sealed partial class GunGameRuleComponent : Robust.Shared.GameObjects.Com
 /// The info for every player we're tracking during the round.
 /// </summary>
 [Serializable]
-public struct GunGamePlayerTrackingInfo(NetUserId userId, Queue<EntityTableSelector> rewardQueue)
+public struct GunGamePlayerTrackingInfo(NetUserId userId, Queue<ProtoId<StartingGearPrototype>> rewardQueue)
 {
-    public Queue<EntityTableSelector> RewardQueue = rewardQueue;
+    public Queue<ProtoId<StartingGearPrototype>> RewardQueue = rewardQueue;
     public int Kills = 0;
     public NetUserId UserId = userId; // we store this just so it's easy to pass it around
 }

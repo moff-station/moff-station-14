@@ -1,0 +1,42 @@
+﻿# Shared / Players: Altimus, JamiMyst / Characters: Scribbles-the-Notes, Torri Hollowfang, Cyrus Hollowfang, Copies-the-Colors, Settles-the-Storms, Delivers-Through-Storms
+
+- type: entity
+  parent: BaseItem
+  id: PersonalItemSharedReptilianFamilyPhoto
+  name: family photo
+  description: A happy-looking family photo, depicting five reptilians from a variety of backgrounds. There's something written on it.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/shared/reptilianfamilyphoto.rsi
+    state: icon
+    layers:
+    - state: icon
+      map: ["held"]
+  - type: SpriteChangesWhenHeld
+    heldLayers:
+      held:
+        scale: 1, 1
+    notHeldLayers:
+      held:
+        scale: 0.4, 0.4
+  - type: Appearance
+  - type: Item
+    size: Tiny
+  - type: DetailExaminable
+    content: "Below the picture on the front, there's a message of reassurance: \"Remember who you're fighting for.\"\nWritten on the back of the photo is presumably the names of everyone pictured: Torri, Deli, Eren, Cyrus, Niraya."
+
+- type: loadout
+  id: PersonalItemSharedReptilianFamilyPhoto
+  storage:
+    back:
+    - PersonalItemSharedReptilianFamilyPhoto
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Scribbles-the-Notes
+    - Torri Hollowfang
+    - Cyrus Hollowfang
+    - Copies-the-Colors
+    - Settles-the-Storms
+    - Delivers-Through-Storms

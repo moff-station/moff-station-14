@@ -1,0 +1,25 @@
+﻿# Player: MythicalGrubbin / Character: Hercyn Hynes
+
+- type: entity
+  parent: ClothingUniformBase
+  id: PersonalItemHercynSuit
+  name: imposing tailcoat
+  description: A tuxedo with a tailcoat. Classy, with a bit more to it.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/MythicalGrubbin/Hercyn_Hynes/hercynsuit.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/MythicalGrubbin/Hercyn_Hynes/hercynsuit.rsi
+  - type: DetailExaminable
+    content: "A fitted, almost perfect looking suit with a bit more flexibility than you would think. To look so pristine, it must be treated with utmost care by it's owner. A small 'CS' sits engraved into the left wristcuff. You don't want to imagine what things might have been done while one was wearing this."
+
+- type: loadout
+  id: PersonalItemHercynSuit
+  storage:
+    back:
+    - PersonalItemHercynSuit
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Hercyn Hynes

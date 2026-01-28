@@ -1,0 +1,12 @@
+- type: entity
+  id: StationAnchorFrezon
+  parent: StationAnchor
+  name: bluespace relay antenna
+  description: A high powered antenna, capable of relaying gigaqbits of information from the local system into deep space. Probably best to keep it in good condition.
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Structures/Machines/frezon_relay.rsi
+      offset: 0,0.75
+      drawdepth: Overdoors
+      noRot: true
+    - type: SpriteFade

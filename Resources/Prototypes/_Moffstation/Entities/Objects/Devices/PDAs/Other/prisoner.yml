@@ -1,0 +1,122 @@
+- type: entity
+  parent: BasePDA
+  id: PrisonerPDA
+  name: prisoner PDA
+  description: Red to hide the stains of passenger blood.
+  components:
+  - type: Pda
+    id: PrisonerIDCardPerma
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-prisoner
+  - type: PdaBorderColor
+    borderColor: "#FF9751"
+    accentVColor: "#212121"
+  - type: Icon
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    state: "pda-prisoner"
+
+- type: entity
+  parent: PrisonerPDA
+  id: ConvictPDA
+  name: convict PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-convict
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-convict
+  - type: PdaBorderColor
+    borderColor: "#969696"
+    accentHColor: "#616161"
+
+- type: entity
+  parent: PrisonerPDA
+  id: DeathRowInmatePDA
+  name: death row inmate PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-death-row-inmate
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-deathrow
+
+- type: entity
+  parent: PrisonerPDA
+  id: MinimumSecurityPrisonerPDA
+  name: minimum security prisoner PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-minimum-security
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-minimumsecurityprisoner
+
+- type: entity
+  parent: PrisonerPDA
+  id: MaximumSecurityPrisonerPDA
+  name: maximum security prisoner PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-maximum-security
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-maximumsecurityprisoner
+
+- type: entity
+  parent: PrisonerPDA
+  id: ProtectiveCustodyPrisonerPDA
+  name: protective custody prisoner PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-protective-custody
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-protectivecustodyprisoner
+
+- type: entity
+  parent: PrisonerPDA
+  id: FelonPrisonerPDA
+  name: felon PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-felon
+
+- type: entity
+  parent: PrisonerPDA
+  id: InmatePrisonerPDA
+  name: inmate PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-inmate
+
+- type: entity
+  parent: PrisonerPDA
+  id: TestSubjectPDA
+  name: test subject PDA
+  components:
+  - type: RenameId
+    value: job-name-prisoner-test-subject
+    newIcon: "JobIconTestSubject"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-testsubject
+  - type: PdaBorderColor
+    borderColor: "#eeeeee"
+    accentVColor: "#FF9751"

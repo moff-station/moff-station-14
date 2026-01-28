@@ -153,13 +153,13 @@
   - type: PointLight
     enabled: false
     radius: 1.5
-    energy: 1.5
+    energy: 2.7
     color: white
     netsync: false
 
 - type: entity
   name: pen
-  parent: [BaseMeleeWeaponEnergy, VoiceLock]
+  parent: [BaseMeleeWeaponEnergy, SelectableLock]
   id: EnergyDagger
   suffix: E-Dagger
   description: 'A dark ink pen.'
@@ -212,7 +212,7 @@
   - type: PointLight
     enabled: false
     radius: 1.5
-    energy: 1.5
+    energy: 2.7
     color: white
     netsync: false
   - type: MeleeWeapon
@@ -288,8 +288,9 @@
   description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
   components:
   - type: ItemToggle
+    predictable: false #Moffstation Change - Fixes the hum not working, but introduces minor amt of clientside latency on activation (barely noticable, mainly affects 'feel). Upstream PR #38070 fixes this, so when it is merged w/o conflicts, this line can be removed. 
     onUse: false # wielding events control it instead
-    onActivate: false # prevents the weapon from being able to be turned on when it is on the ground
+    onActivate: true #Moffstation Change - Allows it to turned on while on the ground to see the cool sprite. Mainly for items this parents from.
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg
       params:
@@ -371,11 +372,11 @@
       types:
         Slash: 20
         Heat: 20
-        Structural: 20
+        Structural: 40 #Moffstation adjustment - previously 20
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
-    walkModifier: 0.6
-    sprintModifier: 0.6
+    walkModifier: 0.70 #Moffstation adjustment - previously .6
+    sprintModifier: 0.70 #Moffstation adjustment - previously .6
   - type: UseDelay
     delay: 1.5
   - type: Sprite
@@ -396,14 +397,21 @@
     size: Small
     sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
-    reflectProb: 1.0
+    reflectProb: .75 #Moffstation adjustment - no longer 100% reflect. 
     spread: 75
 
 # Borgs
+
 - type: entity
-  suffix: One-Handed, For Borgs
+  parent: EnergySword
+  id: CyborgEnergySword
+  suffix: For Borgs
+  description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Specially designed for syndicate cyborgs.
+
+- type: entity
   parent: EnergySwordDouble
   id: CyborgEnergySwordDouble # why is this invalid if ID is BorgEnergySwordDouble
+  suffix: One-Handed, For Borgs
   description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. Specially designed for syndicate cyborgs.
   components: # could add energy-draining like the L6C
   - type: Wieldable

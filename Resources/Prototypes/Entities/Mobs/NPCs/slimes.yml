@@ -1,7 +1,7 @@
 ﻿- type: entity
   name: basic slime
   id: BaseMobAdultSlimes
-  parent: [ SimpleMobBase, MobCombat ]
+  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat ]
   abstract: true
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
@@ -53,7 +53,10 @@
     damageContainer: Biological
     damageModifierSet: Slime
   - type: Bloodstream
-    bloodReagent: Slime
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Slime
+        Quantity: 150
     bloodlossDamage:
       types:
         Bloodloss:
@@ -74,12 +77,11 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         damage:
           types:
             Heat: 0.75 # MOFFSTATION CHANGE - Increases slime water damage by 5x
@@ -87,9 +89,6 @@
         type: Local
         messages: [ "slime-hurt-by-water-popup" ]
         probability: 0.25
-  - type: Body
-    prototype: Slimes
-    requiredLegs: 1
   - type: MeleeWeapon
     altDisarm: false
     soundHit:
@@ -166,9 +165,9 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short
 
@@ -206,9 +205,9 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short
 
@@ -245,8 +244,8 @@
         - SimpleHostile
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
-      rules: ghost-role-information-angry-slimes-rules
+      rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
       mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+      - MindRoleGhostRoleFreeAgent  # Moffstation - Free agent vent critters
       raffle:
         settings: short

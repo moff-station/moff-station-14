@@ -58,18 +58,23 @@
     sprite: Clothing/Shoes/Specific/clown_banana.rsi
   - type: Clothing
     sprite: Clothing/Shoes/Specific/clown_banana.rsi
-  #- type: FootstepModifier You can add a sound effect when you make one that doesn't sound like a dog dying. -emo
-  #  footstepSoundCollection:
-  #    collection: FootstepSlip
-  #    params:
-  #      volume: -10
-  #      variation: 0.10
+  # Moffstation - Begin - New Banana Shoes update!
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepSlip
+      params:
+        volume: -10
+        variation: 0.10
+  # Moffstation - End
   - type: Construction
     graph: BananaClownShoes
     node: shoes
   - type: Skates
-    minimumSpeed: 20
-    acceleration: 5
+# Moffstation - Begin - New Banana Shoes update!
+    stunSeconds: 5
+    minimumSpeed: 7.5
+    acceleration: 2
+# Moffstation - End - New Banana Shoes update!
 
 - type: entity
   parent: ClothingShoesClownBase
@@ -108,7 +113,7 @@
   parent: [ ClothingShoesBase, BaseJanitorContraband ]
   id: ClothingShoesGaloshes
   name: galoshes
-  description: Rubber boots.
+  description: Specialised non-slip rubber boots, designed to reduce janitorial workplace accidents; a tider's treasure.
   components:
   - type: Sprite
     sprite: Clothing/Shoes/Specific/galoshes.rsi
@@ -122,7 +127,7 @@
     maxContactWalkSlowdown: 0.7
 
 - type: entity
-  parent: [ClothingShoesBaseButcherable, BaseMajorContraband]
+  parent: [ClothingShoesBaseButcherable, BaseHighlyIllegalContraband]
   id: ClothingShoesSpaceNinja
   name: space ninja shoes
   description: A pair of nano-enhanced boots with built-in magnetic suction cups.
@@ -170,7 +175,9 @@
   description: Stylish black shoes.
   components:
     - type: Tag
-      tags: [] # ignore "WhitelistChameleon" tag
+      tags: # ignore "WhitelistChameleon" tag
+      - ClothMade
+      - Recyclable
     - type: Sprite
       sprite: Clothing/Shoes/color.rsi
       layers:

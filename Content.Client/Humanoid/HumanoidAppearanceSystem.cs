@@ -49,13 +49,12 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         UpdateLayers(entity);
         ApplyMarkingSet(entity);
 
-        // Moffstation Start - CD Height
-        if (!TryComp<HumanoidAppearanceComponent>(entity, out var component) ||
-            !TryComp<SpriteComponent>(entity, out var sprite))
-            return;
+        var humanoidAppearance = entity.Comp1;
+        var sprite = entity.Comp2;
 
-        var speciesPrototype = _prototypeManager.Index(component.Species);
-        var height = Math.Clamp(MathF.Round(component.Height, 2), speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // should NOT be locked, at all
+        // Moffstation Start - CD Height
+        var speciesPrototype = _prototypeManager.Index(humanoidAppearance.Species);
+        var height = Math.Clamp(MathF.Round(humanoidAppearance.Height, 2), speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // should NOT be locked, at all
 
         _sprite.SetScale((entity,sprite), new Vector2(
             (speciesPrototype.ScaleHeight ? height : 1f) * speciesPrototype.ImplicitSpriteScale.X,
@@ -63,7 +62,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         ));
         // Moffstation End
 
-        sprite[sprite.LayerMapReserveBlank(HumanoidVisualLayers.Eyes)].Color = component.EyeColor;
+        sprite[_sprite.LayerMapReserve((entity.Owner, sprite), HumanoidVisualLayers.Eyes)].Color = humanoidAppearance.EyeColor;
     }
 
     private static bool IsHidden(HumanoidAppearanceComponent humanoid, HumanoidVisualLayers layer)
@@ -302,25 +301,26 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     private void RemoveMarking(Marking marking, Entity<SpriteComponent> spriteEnt)
     {
         if (!_markingManager.TryGetMarking(marking, out var prototype))
-        {
             return;
-        }
 
         foreach (var sprite in prototype.Sprites)
         {
             if (sprite is not SpriteSpecifier.Rsi rsi)
-            {
                 continue;
-            }
 
             var layerId = $"{marking.MarkingId}-{rsi.RsiState}";
             if (!_sprite.LayerMapTryGet(spriteEnt.AsNullable(), layerId, out var index, false))
-            {
                 continue;
-            }
 
             _sprite.LayerMapRemove(spriteEnt.AsNullable(), layerId);
             _sprite.RemoveLayer(spriteEnt.AsNullable(), index);
+
+            // If this marking is one that can be displaced, we need to remove the displacement as well; otherwise
+            // altering a marking at runtime can lead to the renderer falling over.
+            // The Vulps must be shaved.
+            // (https://github.com/space-wizards/space-station-14/issues/40135).
+            if (prototype.CanBeDisplaced)
+                _displacement.EnsureDisplacementIsNotOnSprite(spriteEnt, layerId);
         }
     }
 
@@ -359,9 +359,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var sprite = entity.Comp2;
 
         if (!_sprite.LayerMapTryGet((entity.Owner, sprite), markingPrototype.BodyPart, out var targetLayer, false))
-        {
             return;
-        }
 
         visible &= !IsHidden(humanoid, markingPrototype.BodyPart);
         visible &= humanoid.BaseLayers.TryGetValue(markingPrototype.BodyPart, out var setting)
@@ -372,9 +370,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             var markingSprite = markingPrototype.Sprites[j];
 
             if (markingSprite is not SpriteSpecifier.Rsi rsi)
-            {
-                continue;
-            }
+                return;
 
             var layerId = $"{markingPrototype.ID}-{rsi.RsiState}";
 
@@ -385,29 +381,29 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 _sprite.LayerSetSprite((entity.Owner, sprite), layerId, rsi);
             }
 
+            /// CD Addition, originally written by beck for Impstation. check if there's a shader defined in the markingPrototype's shader datafield, and if there is...
+	        if (markingPrototype.Shader != null)
+		    {
+		        /// use spriteComponent's layersetshader function to set the layer's shader to that which is specified.
+                sprite.LayerSetShader(layerId, markingPrototype.Shader);
+		    }
+ 		    /// end CD Addition
+
             _sprite.LayerSetVisible((entity.Owner, sprite), layerId, visible);
 
             if (!visible || setting == null) // this is kinda implied
-            {
                 continue;
-            }
 
             // Okay so if the marking prototype is modified but we load old marking data this may no longer be valid
             // and we need to check the index is correct.
             // So if that happens just default to white?
             if (colors != null && j < colors.Count)
-            {
                 _sprite.LayerSetColor((entity.Owner, sprite), layerId, colors[j]);
-            }
             else
-            {
                 _sprite.LayerSetColor((entity.Owner, sprite), layerId, Color.White);
-            }
 
             if (humanoid.MarkingsDisplacement.TryGetValue(markingPrototype.BodyPart, out var displacementData) && markingPrototype.CanBeDisplaced)
-            {
                 _displacement.TryAddDisplacement(displacementData, (entity.Owner, sprite), targetLayer + j + 1, layerId, out _);
-            }
         }
     }
 

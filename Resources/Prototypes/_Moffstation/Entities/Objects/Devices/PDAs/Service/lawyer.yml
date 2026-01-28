@@ -1,0 +1,96 @@
+# Lawyer
+- type: entity
+  parent: LawyerPDA
+  id: LawyerPDAAltBase
+  name: lawyer alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-attorney"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: AttorneyPDA
+  name: attorney PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-attorney
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-attorney
+  - type: PdaBorderColor
+    borderColor: "#5d4e94"
+    accentVColor: "#cc3932"
+    accentHColor: "#cbcbcb"
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: LegalCounselPDA
+  name: legal counsel PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-legal-counsel
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-legalcounsel
+  - type: PdaBorderColor
+    borderColor: "#8d8d8d"
+    accentVColor: "#499cbd"
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: ProsecutorPDA
+  name: prosecutor PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-prosecutor
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-prosecutor
+  - type: PdaBorderColor
+    borderColor: "#670e24"
+    accentVColor: "#bfbfbf"
+    accentHColor: "#383838"
+
+- type: entity
+  parent: LawyerPDAAltBase
+  id: SolicitorPDA
+  name: solicitor PDA
+  components:
+  - type: RenameId
+    value: job-name-lawyer-solicitor
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-solicitor
+  - type: PdaBorderColor
+    borderColor: "#6f6192"
+    accentHColor: "#bfbfbf"
+

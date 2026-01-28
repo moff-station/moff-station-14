@@ -1,0 +1,71 @@
+- type: entity
+  id: MothroachMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 6
+    duration: 30 # Used as delay
+  - type: VentCrittersRule
+    entries:
+    - id: MobMothroach
+      prob: 0.01
+    - id: MobMothroachRosy
+      prob: 0.005
+    - id: MobMothroachDeathshead
+      prob: 0.005
+
+- type: entity
+  id: MothroachMigrationSilent
+  parent: BaseStationEvent
+  components:
+  - type: StationEvent
+  - type: VentCrittersRule
+    entries:
+    - id: MobMothroach
+      prob: 0.01
+    - id: MobMothroachRosy
+      prob: 0.005
+    - id: MobMothroachDeathshead
+      prob: 0.005
+
+- type: entity
+  id: TarboldMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 6
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobTarbold
+      prob: 0.02
+    specialEntries:
+    - id: MobTarbold
+      prob: 0.001
+
+- type: entity
+  id: WhimperletMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 1
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobWhimperlet
+      prob: 0.001
+    specialEntries:
+    - id: MobWhimperlet
+      prob: 0.001

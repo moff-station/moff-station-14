@@ -7,6 +7,7 @@ using Content.Shared.Popups;
 using Content.Shared._Moffstation.Vampire.Events;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Database;
 using NetCord;

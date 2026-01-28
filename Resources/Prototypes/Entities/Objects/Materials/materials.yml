@@ -63,6 +63,13 @@
     prototype: CarpetCard
     doAfter: 0.5
     removeOnInteract: true
+  # Moffstation - Start - Cardboard Module
+  - type: Tag
+    tags:
+    - Cardboard
+    - RawMaterial
+    - ConstructionMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialCardboard
@@ -226,13 +233,6 @@
     state: durathread
   - type: Stack
     count: 1
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents: #Hell if I know what durathread is made out of.
-        - ReagentId: Fiber
-          Quantity: 6
 
 - type: entity
   parent: MaterialBase
@@ -342,7 +342,7 @@
       - HEAD
   - type: PointLight
     radius: 1.2
-    energy: 1.5
+    energy: 2.7
     color: "#4faffb"
     slots:
 
@@ -403,6 +403,7 @@
     tags:
     - RawMaterial
     - Diamond
+    - ConstructionMaterial # Moffstation
 
 - type: entity
   parent: MaterialDiamond
@@ -575,6 +576,12 @@
   - type: Appearance
   - type: Item
     heldPrefix: bananium
+  # Moffstation - Begin
+  - type: Tag
+    tags:
+    - ConstructionMaterial
+    - RawMaterial
+  # Moffstation - End
 
 - type: entity
   parent: MaterialBananium

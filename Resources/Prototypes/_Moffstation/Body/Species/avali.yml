@@ -1,0 +1,221 @@
+﻿- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceAvali
+  name: avali appearance
+  components:
+  - type: Inventory
+    speciesId: Avali
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganAvaliTorso
+        - id: OrganAvaliHead
+        - id: OrganAvaliArmLeft
+        - id: OrganAvaliArmRight
+        - id: OrganAvaliHandRight
+        - id: OrganAvaliHandLeft
+        - id: OrganAvaliLegLeft
+        - id: OrganAvaliLegRight
+        - id: OrganAvaliFootLeft
+        - id: OrganAvaliFootRight
+        - id: OrganAvaliBrain
+        - id: OrganAvaliEyes
+        - id: OrganAvaliTongue
+        - id: OrganAvaliAppendix
+        - id: OrganAvaliEars
+        - id: OrganAvaliLungs
+        - id: OrganAvaliHeart
+        - id: OrganAvaliStomach
+        - id: OrganAvaliLiver
+        - id: OrganAvaliKidneys
+  - type: HumanoidAppearance
+    species: Avali
+
+- type: entity
+  parent:
+  - AppearanceAvali
+  - BaseSpeciesMobOrganic
+  id: MobAvali
+  name: Urist McRaptor
+  components:
+  - type: Speech
+    speechVerb: Parrot
+    speechSounds: MaleAvali
+    allowedEmotes: ['Hiss']
+  - type: Vocal
+    sounds:
+      Male: MaleAvali
+      Female: FemaleAvali
+      Unsexed: MaleAvali
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatChicken
+      amount: 3
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#7a8bf2"
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: Temperature
+    specificHeat: 48
+    currentTemperature: 296.15
+  - type: TemperatureDamage
+    heatDamageThreshold: 310
+    coldDamageThreshold: 223
+    coldDamage: # same damage as moths
+      types:
+        Cold : 0.05 #per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat : 3 #per second, scales with temperature & other constants
+  - type: TemperatureSpeed
+    thresholds: # all temps are 10K colder then moths, adjusted for current temp.
+      265: 0.8
+      251: 0.6
+      226: 0.4
+  - type: ThermalRegulator
+    metabolismHeat: 400 # icebirb go brrr
+    radiatedHeat: 100
+    implicitHeatRegulation: 500
+    sweatHeatRegulation: 2000
+    shiveringHeatRegulation: 2000
+    normalBodyTemperature: 296.15
+    thermalRegulationTemperatureThreshold: 10
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 95 #tiny
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: AmmoniaBlood
+        Quantity: 300
+  - type: EmpVulnerable
+
+
+- type: entity
+  parent: OrganBase
+  id: OrganAvali
+  abstract: true
+  suffix: Avali
+
+- type: entity
+  id: OrganAvaliMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Avali ]
+
+- type: entity
+  parent: OrganAvali
+  id: OrganAvaliInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  parent: OrganAvali
+  id: OrganAvaliExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _CD/Mobs/Species/Avali/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorso, OrganAvaliExternal ]
+  id: OrganAvaliTorso
+
+- type: entity
+  parent: [ OrganBaseHead, OrganAvaliExternal ]
+  id: OrganAvaliHead
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganAvaliExternal ]
+  id: OrganAvaliArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganAvaliExternal ]
+  id: OrganAvaliArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganAvaliExternal ]
+  id: OrganAvaliHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganAvaliExternal ]
+  id: OrganAvaliHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganAvaliExternal ]
+  id: OrganAvaliLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganAvaliExternal ]
+  id: OrganAvaliLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganAvaliExternal ]
+  id: OrganAvaliFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganAvaliExternal ]
+  id: OrganAvaliFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganAvaliInternal ]
+  id: OrganAvaliBrain
+
+- type: entity
+  parent: [ OrganBaseEyes, OrganAvaliInternal ]
+  id: OrganAvaliEyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganAvaliInternal ]
+  id: OrganAvaliTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganSpriteHumanInternal, OrganAvaliInternal ]
+  id: OrganAvaliAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganAvaliInternal ]
+  id: OrganAvaliEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganAvaliInternal, OrganAvaliMetabolizer ]
+  id: OrganAvaliKidneys

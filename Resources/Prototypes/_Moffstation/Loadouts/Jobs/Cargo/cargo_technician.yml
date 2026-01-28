@@ -1,0 +1,78 @@
+﻿# ID
+- type: loadout
+  id: CourierPDA
+  equipment:
+    id: CourierPDA
+
+- type: loadout
+  id: LogisticsAssociatePDA
+  equipment:
+    id: LogisticsAssociatePDA
+
+- type: loadout
+  id: RequisitionsClerkPDA
+  equipment:
+    id: RequisitionsClerkPDA
+
+# Head
+- type: loadout
+  id: CourierHat
+  equipment:
+    head: ClothingHeadHatCourier
+  groupBy: "cargo hats"
+
+- type: loadout
+  id: CargonianUshanka
+  equipment:
+    head: ClothingHeadHatSeniorCargo
+  groupBy: "cargo hats"
+
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: CourierJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCourier
+  groupBy: "cargo jumpsuits"
+
+- type: loadout
+  id: CourierJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCourier
+  groupBy: "cargo jumpskirts"
+
+- type: loadout
+  id: SeniorCargoTechnicianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorCargo
+  groupBy: "cargo jumpsuits"
+
+- type: loadout
+  id: SeniorCargoTechnicianJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorCargo
+  groupBy: "cargo jumpskirts"
+
+# Back
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: SeniorCargoWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterSeniorCargo
+
+- type: loadout
+  id: CargoTechnicianWindbreaker
+  equipment:
+    outerClothing: ClothingOuterWinterCargoWindbreaker
+
+# Gloves
+
+# Shoes
+
+# Eyewear

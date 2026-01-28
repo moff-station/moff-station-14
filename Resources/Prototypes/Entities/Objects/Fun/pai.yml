@@ -1,16 +1,19 @@
 # Placeholder PAIs, aka semi-automatic ghost roles
 
 - type: entity
-  parent: BaseItem
-  id: PersonalAI
-  name: personal ai device
+  # Moffstation - Start - Abstract base pAI
+# parent: BaseItem
+  id: PersonalAIGhostRoleBase
+  abstract: true
+#  name: personal ai device
+  # Moffstation - End
   description: Your electronic pal who's fun to be with!
   components:
   - type: Instrument
     allowPercussion: false
     handheld: false
-    bank: 1
     program: 2
+    bank: 100 # Defined in space-station-14.sf2
   - type: UserInterface
     interfaces:
       enum.StoreUiKey.Key:
@@ -26,13 +29,15 @@
       enum.StationMapUiKey.Key:
         type: StationMapBoundUserInterface
         requireInputValidation: false
-  - type: Sprite
-    sprite: Objects/Fun/pai.rsi
-    layers:
-    - state: pai-base
-    - state: pai-off-overlay
-      shader: unshaded
-      map: ["screen"]
+#Moffstation - Begin - Captains Sabre Declutter
+#  - type: Sprite
+#    sprite: Objects/Fun/pai.rsi
+#    layers:
+#    - state: pai-base
+#    - state: pai-off-overlay
+#      shader: unshaded
+#      map: ["screen"]
+#Moffstation - End
   - type: Input
     context: "human"
   - type: PAI
@@ -58,6 +63,9 @@
     - Common
   - type: DoAfter
   - type: Actions
+  - type: ActionGrant
+    actions:
+    - ActionPAIOpenShop
   - type: Store
     categories:
     - PAIAbilities
@@ -79,14 +87,16 @@
   - type: MobState
     allowedStates:
       - Alive
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.ToggleableGhostRoleVisuals.Status:
-        screen:
-          Off: { state: pai-off-overlay }
-          Searching: { state: pai-searching-overlay }
-          On: { state: pai-on-overlay }
+#Moffstation - Begin - Captains Sabre Declutter
+#  - type: Appearance
+#  - type: GenericVisualizer
+#    visuals:
+#      enum.ToggleableGhostRoleVisuals.Status:
+#        screen:
+#          Off: { state: pai-off-overlay }
+#          Searching: { state: pai-searching-overlay }
+#          On: { state: pai-on-overlay }
+#Moffstation - End
   - type: StationMap
   - type: ChangeVoiceInContainer
     whitelist:
@@ -99,7 +109,6 @@
   - type: Tag
     tags:
     - SiliconEmotes
-    - PAI # Moffstation - Persona Sabre (why does this need a tag)
 
 - type: entity
   parent: [ PersonalAI, BaseSyndicateContraband]
@@ -154,8 +163,6 @@
       shader: unshaded
       map: ["screen"]
   - type: Appearance
-  - type: StaticPrice
-    price: 5000
 
 - type: entity
   parent: PersonalAI
@@ -188,16 +195,13 @@
     graph: PotatoAI
     node: potatoai
 
+# PAI Actions
+
 - type: entity
-  parent: BaseMentalAction
+  parent: ActionIntrinsicStore
   id: ActionPAIOpenShop
   name: Software Catalog
   description: Install new software to assist your owner.
-  components:
-  - type: Action
-    icon: Interface/Actions/shop.png
-  - type: InstantAction
-    event: !type:PAIShopActionEvent
 
 - type: entity
   parent: BaseMentalAction

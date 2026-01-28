@@ -55,9 +55,10 @@
   - type: Tag
     tags:
     - Trash
+    - Dinnerware # Moffstation - Give service borgs some love
   - type: PhysicalComposition
     materialComposition:
-      Glass: 60
+      Glass: 50
   - type: SpaceGarbage
 
 - type: entity
@@ -117,7 +118,7 @@
         acts: [ "Destruction" ]
   - type: PhysicalComposition
     materialComposition:
-      Glass: 30
+      Glass: 25
 
 - type: entity
   parent: FoodPlateTrash
@@ -132,9 +133,9 @@
 # Plastic Plate
 
 - type: entity
-  name: plastic plate
   parent: BaseItem
   id: FoodPlatePlastic
+  name: large plastic plate
   description: A large blue plastic plate, excellent for a birthday cake.
   components:
   - type: Sprite
@@ -152,11 +153,12 @@
   - type: Tag
     tags:
     - Trash
+    - Dinnerware # Moffstation - Give service borgs some love
 
 - type: entity
-  name: plastic plate
   parent: BaseItem
   id: FoodPlateSmallPlastic
+  name: small plastic plate
   description: A blue plastic plate, excellent for slices of birthday cake.
   components:
   - type: Sprite
@@ -174,6 +176,7 @@
   - type: Tag
     tags:
     - Trash
+    - Dinnerware # Moffstation - Give service borgs some love
 
 # Pie Tin
 
@@ -194,31 +197,33 @@
   - type: Tag
     tags:
     - Trash
+    - Dinnerware # Moffstation - Give service borgs some love
   - type: PhysicalComposition
     materialComposition:
-      Steel: 60
+      Steel: 50
   - type: SpaceGarbage
 
 # Muffin Tin
 
 - type: entity
-  name: muffin tin
   parent: BaseItem
   id: FoodPlateMuffinTin
+  name: muffin tin
   description: A cheap foil tin for muffins.
   components:
   - type: Sprite
     sprite: Objects/Consumable/Food/plates.rsi
     state: muffin-tin
   - type: Item
-    size: Small
+    size: Tiny
     shape:
-    - 0,0,1,0
-    storedOffset: 0,-3
+    - 0,0,0,0
+    storedOffset: 0,-2
   - type: Tag
     tags:
     - Trash
+    - Dinnerware # Moffstation - Give service borgs some love
   - type: PhysicalComposition
     materialComposition:
-      Steel: 30
+      Steel: 25
   - type: SpaceGarbage

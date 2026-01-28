@@ -1,0 +1,66 @@
+# ID
+- type: loadout
+  id: CMOPDA
+  equipment:
+    id: CMOPDA
+
+- type: loadout
+  id: MedicalDirectorPDA
+  equipment:
+    id: MedicalDirectorPDA
+
+# Head
+
+# Mask
+
+# Neck
+- type: loadout
+  id: ChiefMedicalOfficerScarf
+  equipment:
+    neck: ClothingNeckScarfCMO
+
+# Jumpsuit
+- type: loadout
+  id: CMOJumpsuitShell
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMOShell
+  groupBy: "CMO jumpsuits"
+
+- type: loadout
+  id: CMOJumpskirtShell
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCMOShell
+  groupBy: "CMO jumpskirts"
+
+- type: loadout
+  id: CMOJumpsuitFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMOFormal
+  groupBy: "CMO jumpsuits"
+
+- type: loadout
+  id: CMOJumpsuitFlowing
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMOFlowing
+  groupBy: "CMO jumpsuits"
+
+- type: loadout
+  id: CMOJumpskirtFlowing
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCMOFlowing
+  groupBy: "CMO jumpskirts"
+
+# Back
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: CmoFestivecoat
+  equipment:
+    outerClothing: ClothingOuterWinterFestiveCmo
+# Gloves
+
+# Shoes
+
+# Eyewear

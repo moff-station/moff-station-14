@@ -16,6 +16,13 @@ public sealed partial class GasTankVisualsComponent : Component
     public GasTankColorValues Visuals = new(default);
 
     /// <summary>
+    /// Whether or not we should try to modify the stored sprite for this tank. Basically only for mergency tanks which
+    /// are stored in inventory grids vertically.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool HasStoredSprite;
+
+    /// <summary>
     /// Entity prototypes don't specify colors directly, and instead reference predefined
     /// <see cref="GasTankVisualStylePrototype"/>s which contain the color values. This field is not used after the
     /// component is initialized.

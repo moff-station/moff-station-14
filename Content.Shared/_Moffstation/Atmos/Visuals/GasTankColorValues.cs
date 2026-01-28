@@ -1,6 +1,5 @@
 ﻿using Content.Shared._Moffstation.Atmos.Components;
 using Content.Shared._Moffstation.Atmos.EntitySystems;
-using Content.Shared.Hands.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -107,7 +106,7 @@ public sealed partial class GasTankVisualStylePrototype : IPrototype
 /// types can implicitly convert into this one. This type can be converted into <see cref="GasTankColorValues"/> via
 /// <see cref="GasTankVisualsSystem.GetColorValues"/> (but that should only happen internally to that system).
 /// </summary>
-[DataDefinition, ImplicitDataDefinitionForInheritors, Serializable, NetSerializable]
+[ImplicitDataDefinitionForInheritors, Serializable, NetSerializable]
 public abstract partial class GasTankVisuals
 {
     private GasTankVisuals()

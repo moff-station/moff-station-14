@@ -3,10 +3,12 @@
   name: job-name-detective
   description: job-description-detective
   playTimeTracker: JobDetective
-  requirements:
-  - !type:RoleTimeRequirement
-    role: JobSecurityOfficer
-    time: 18000 #5 hrs
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #- !type:RoleTimeRequirement
+  #  role: JobSecurityOfficer
+  #  time: 5h
+  # Moffstation - End
   startingGear: DetectiveGear
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos
@@ -15,7 +17,6 @@
   - Security
   - Brig
   - Maintenance
-  - Service
   - Detective
   - Cryogenics
   - External
@@ -26,8 +27,8 @@
 - type: startingGear
   id: DetectiveGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
-    id: DetectivePDA
+  # eyes: ClothingEyesGlassesSecurity # Moffstation - Eyepatches!
+  # id: DetectivePDA # Moffstation - PDA loadouts
     ears: ClothingHeadsetSecurity
     #belt: ClothingBeltHolsterFilled # Moffstation - (Nox Loadout Improvements) - They get to choose a belt in loadouts instead.
   storage:
@@ -35,9 +36,10 @@
     - Flash
     - ForensicPad
     - ForensicScanner
-    # Moffstation - Begin (Nox Loadout Improvements)
-    - WeaponRevolverInspector
-    - SpeedLoaderMagnum
+    # Moffstation - Begin - (Give detective tape recording equipment)
+    - TapeRecorder
+    - CassetteTape
+    - CassetteTape
     # Moffstation - End
 
 - type: chameleonOutfit

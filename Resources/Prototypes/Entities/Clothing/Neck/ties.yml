@@ -8,6 +8,10 @@
     sprite: Clothing/Neck/Ties/redtie.rsi
   - type: Clothing
     sprite: Clothing/Neck/Ties/redtie.rsi
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Clothing/Neck/Ties/redtie.rsi
   - type: Tag
     tags:
     - HamsterWearable
@@ -18,14 +22,28 @@
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckTieDet
-  name: detective's tie
-  description: A loosely tied necktie, a perfect accessory for the over-worked detective.
+  name: detective's horrendous tie # Moffstation - Begin - Detective-Outfit-Sprites
+  description: A loosely tied necktie, a disturbingly vivid accessory for the over-worked detective. # Moffstation - End
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Ties/dettie.rsi
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
-    sprite: Clothing/Neck/Ties/dettie.rsi
-    
+    sprite: _Moffstation/Clothing/Neck/dettie.rsi # Moffstation - Detective-Outfit-Sprites
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Clothing/Neck/Ties/dettie.rsi
+  # Moffstation - Begin - Detective-Outfit-Sprites
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+  # Moffstation - End - Detective-Outfit-Sprites
+
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckTieSci
@@ -36,6 +54,10 @@
     sprite: Clothing/Neck/Ties/scitie.rsi
   - type: Clothing
     sprite: Clothing/Neck/Ties/scitie.rsi
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: Clothing/Neck/Ties/scitie.rsi
   - type: Tag
     tags:
     - ClothMade

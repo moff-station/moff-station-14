@@ -16,8 +16,9 @@
 
 - type: loadout
   id: PersonalItemVortexMask
-  equipment:
-    face: PersonalItemVortexMask
+  storage:
+    back:
+    - PersonalItemVortexMask
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

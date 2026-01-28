@@ -1,13 +1,4 @@
 - type: entity
-  parent: ClothingBeltMilitaryWebbing
-  id: ClothingBeltMilitaryWebbingNukeOpsFilled
-  suffix: Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: DeathRattleImplanter
-
-- type: entity
   parent: ClothingBeltHolster
   id: ClothingBeltHolsterFilledN1984
   suffix: Filled, N1984
@@ -19,7 +10,7 @@
       amount: 2
     - id: Zipties
 
-- type: entity # Intended to replace the detective's normal shoulder holster, or in case an officer wants the holster.
+- type: entity # Has all the security essentials, in case an officer wants the holster rather than a belt.
   id: ClothingBeltHolsterFilledOfficer
   parent: ClothingBeltHolster
   suffix: Filled, Officer

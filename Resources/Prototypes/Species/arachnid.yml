@@ -6,7 +6,7 @@
   sprites: MobArachnidSprites
   defaultSkinTone: "#385878"
   markingLimits: MobArachnidMarkingLimits
-  dollPrototype: MobArachnidDummy
+  dollPrototype: AppearanceArachnid
   skinColoration: Hues
   maleFirstNames: NamesArachnidFirst
   femaleFirstNames: NamesArachnidFirst
@@ -37,9 +37,11 @@
 
 - type: humanoidBaseSprite
   id: MobArachnidEyes
-  baseSprite:
-    sprite: Mobs/Species/Arachnid/parts.rsi
-    state: eyes
+  # Moffstation - Start - Spooder markings
+  # baseSprite:
+  #  sprite: Mobs/Species/Arachnid/parts.rsi
+  #   state: eyes
+  # Moffstation - End
 
 - type: markingPoints
   id: MobArachnidMarkingLimits
@@ -55,6 +57,12 @@
       points: 1
       required: true
       defaultMarkings: [ ArachnidAppendagesDefault ]
+    # Moffstation - Start - spooder markings
+    Head:
+      points: 1
+      required: false
+      defaultMarkings: [ ArachnidEyesDefault ]
+    # Moffstation - End
     HeadTop:
       points: 1
       required: false
@@ -63,13 +71,13 @@
       required: true
       defaultMarkings: [ ArachnidCheliceraeDownwards ]
     Chest:
-      points: 2
+      points: 4 # Moffstation - Increase Markings
       required: false
     Legs:
-      points: 2
+      points: 6 # Moffstation - Increase Markings
       required: false
     Arms:
-      points: 2
+      points: 6 # Moffstation - Increase Markings
       required: false
 
 - type: humanoidBaseSprite

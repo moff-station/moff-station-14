@@ -1,0 +1,78 @@
+- type: entity
+  parent: ChemistryPDA
+  id: ChemistryPDAAltBase
+  name: chemist alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-pharmacist"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ChemistryPDAAltBase
+  id: PharmacistPDA
+  name: pharmacist PDA
+  components:
+  - type: RenameId
+    value: job-name-chemist-pharmacist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-pharmacist
+  - type: PdaBorderColor
+    borderColor: "#B34200"
+    accentHColor: "#d7d7d0"
+
+- type: entity
+  parent: ChemistryPDAAltBase
+  id: PharmacologistPDA
+  name: pharmacologist PDA
+  components:
+  - type: RenameId
+    value: job-name-chemist-pharmacologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-pharmacologist
+  - type: PdaBorderColor
+    borderColor: "#B34200"
+    accentHColor: "#d7d7d0"
+
+- type: entity
+  parent: ChemistryPDAAltBase
+  id: ToxicologistPDA
+  name: toxicologist PDA
+  components:
+  - type: RenameId
+    value: job-name-chemist-toxicologist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-toxicologist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#1e6023"
+    accentHColor: "#d7d7d0"
+

@@ -1,3 +1,5 @@
+/*  Moffstation - Start - We have it so that the round will start anyways (but without nukies active), so this test is bound to fail
+// Accept upstream changes, in case we bring this back
 #nullable enable
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Presets;
@@ -152,3 +154,4 @@ public sealed class TestRuleSystem : EntitySystem
 
 [RegisterComponent]
 public sealed partial class TestRuleComponent : Component;
+Moffstation - End */

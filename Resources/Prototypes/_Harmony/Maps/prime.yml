@@ -31,25 +31,25 @@
           #engineering
           ChiefEngineer: [ 1, 1 ]
           AtmosphericTechnician: [ 3, 3 ]
-          StationEngineer: [ 3, 4]
-          TechnicalAssistant: [ 2, 4 ]
+          StationEngineer: [ 3, 5 ] #CD - Intern not counted
+          # TechnicalAssistant: [ 2, 4 ] #CD - Remove intern roles, rework them into loadouts
           #medical
           ChiefMedicalOfficer: [ 1, 1 ]
           Chemist: [ 2, 2 ]
           Paramedic: [ 1, 1 ]
-          MedicalDoctor: [ 3, 3 ]
-          MedicalIntern: [ 2, 4 ]
+          MedicalDoctor: [ 3, 4 ] #CD - Intern not counted
+          # MedicalIntern: [ 2, 4 ] #CD - Remove intern roles, rework them into loadouts
           Psychologist: [ 1, 1 ]
           #science
           ResearchDirector: [ 1, 1 ]
-          Scientist: [ 3, 3 ]
-          ResearchAssistant: [ 2, 4 ]
+          Scientist: [ 3, 4 ] #CD - Intern not counted
+          # ResearchAssistant: [ 2, 4 ] #CD - Remove intern roles, rework them into loadouts
           #security
           HeadOfSecurity: [ 1, 1 ]
           Warden: [ 1, 1 ]
           Detective: [ 1, 1 ]
-          SecurityOfficer: [ 3, 5 ]
-          SecurityCadet: [ 2, 4 ]
+          SecurityOfficer: [ 3, 6 ] #CD - Intern not counted
+          # SecurityCadet: [ 2, 4 ] #CD - Remove intern roles, rework them into loadouts
           Prisoner: [ 1, 1 ]
           #supply
           Quartermaster: [ 1, 1 ]

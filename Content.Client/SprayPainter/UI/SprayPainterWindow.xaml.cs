@@ -114,7 +114,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
             tabsCleared = true;
             _paintableControls.Clear();
             _pipeControl = null;
-            _gasTankControl = null;
+            _gasTankControl = null; // Moffstation
             _sprayPainterDecals = null;
             Tabs.RemoveAllChildren();
         }
@@ -187,7 +187,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         }
 
         PopulateColors(_currentPalette);
-        PopulateGasTankStyles();
+        PopulateGasTankStyles(); // Moffstation
 
         if (!_currentDecals.Equals(decals))
         {

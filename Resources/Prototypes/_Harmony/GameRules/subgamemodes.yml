@@ -29,3 +29,7 @@
       - type: InitialBloodBrother
       mindRoles:
       - MindRoleBloodBrother
+  # Moffstation - Start - Dynamic updates
+  - type: DynamicRuleCost
+    cost: 100
+  # Moffstation - End

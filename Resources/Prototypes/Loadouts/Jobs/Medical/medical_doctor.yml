@@ -6,17 +6,17 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobChemist
-      time: 21600 #6 hrs
+      time: 6h
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
       role: JobMedicalDoctor
-      time: 21600 #6 hrs
+      time: 6h
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
       department: Medical
-      time: 216000 # 60 hrs
+      time: 60h
 
 # Other Timers
 
@@ -27,7 +27,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobMedicalDoctor
-      time: 108000 #30 hrs
+      time: 30h
 
 # Head
 
@@ -77,11 +77,13 @@
   id: MedicalDoctorJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitMedicalDoctor
+  groupBy: "medical doctor jumpsuits" # Moffstation
 
 - type: loadout
   id: MedicalDoctorJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtMedicalDoctor
+  groupBy: "medical doctor jumpskirts" # Moffstation
 
 - type: loadout
   id: SeniorPhysicianJumpsuit
@@ -90,6 +92,7 @@
     proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorPhysician
+  groupBy: "medical doctor jumpsuits" # Moffstation
 
 - type: loadout
   id: SeniorPhysicianJumpskirt
@@ -98,37 +101,44 @@
     proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorPhysician
+  groupBy: "medical doctor jumpskirts" # Moffstation
 
 - type: loadout
   id: MedicalBlueScrubs
   equipment:
     jumpsuit: UniformScrubsColorBlue
+  groupBy: "medical doctor scrubs" # Moffstation
 
 - type: loadout
   id: MedicalGreenScrubs
   equipment:
     jumpsuit: UniformScrubsColorGreen
+  groupBy: "medical doctor scrubs" # Moffstation
 
 - type: loadout
   id: MedicalPurpleScrubs
   equipment:
     jumpsuit: UniformScrubsColorPurple
+  groupBy: "medical doctor scrubs" # Moffstation
 
 # Back
 - type: loadout
   id: MedicalDoctorBackpack
   equipment:
     back: ClothingBackpackMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: MedicalDoctorSatchel
   equipment:
     back: ClothingBackpackSatchelMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 - type: loadout
   id: MedicalDoctorDuffel
   equipment:
     back: ClothingBackpackDuffelMedical
+  groupBy: "doctor backpacks" # Moffstation - New Drip
 
 # OuterClothing
 - type: loadout
@@ -155,6 +165,7 @@
   id: MedicalDoctorPDA
   equipment:
     id: MedicalPDA
+  groupBy: "doctor roles" # Moffstation - Additional Roles
 
 - type: loadout
   id: SeniorPhysicianPDA
@@ -163,6 +174,7 @@
     proto: SeniorPhysician
   equipment:
     id: SeniorPhysicianPDA
+  groupBy: "doctor roles" # Moffstation - Additional Roles
 
 # Gloves
 - type: loadout
@@ -184,5 +196,6 @@
 
 - type: loadout
   id: MedicalEyePatchHud
+  groupBy: "medEyepatch" # Moffstation - loadout improvements
   equipment:
     eyes: ClothingEyesEyepatchHudMedical

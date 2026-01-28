@@ -1,3 +1,4 @@
+# Reporter
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpsuitMeteorologist
@@ -8,6 +9,32 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/meteorologist.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/meteorologist.rsi
+
+# Prisoner
+- type: entity
+  parent: ClothingUniformJumpsuitPrisonerUpstream
+  id: ClothingUniformJumpsuitPrisoner
+  name: prisoner jumpsuit
+  description: A jumpsuit used for prisoners. It has suit sensors automatically enabled at all times.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisoner.rsi
+    layers: []
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisoner.rsi
+    clothingVisuals: {}
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - PrisonUniform
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingUniformBase
@@ -48,3 +75,329 @@
     - ClothMade
     - PrisonUniform
     - WhitelistChameleon
+
+#Pirate
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformJumpsuitPirateAntag
+  name: pirate slops
+  description: A pirate variation of a space sailor's jumpsuit. Modified with removed sensor capabilities.
+  components:
+  - type: Sprite
+    sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
+  - type: Clothing
+    sprite: Clothing/Uniforms/Jumpsuit/pirate.rsi
+  - type: AddAccentClothing
+    accent: PirateAccent
+
+# HoP
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHoPFormal
+  name: head of personnel's formal suit
+  description: A suit for special paperwork filing.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hopformal.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hopformal.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHoPFestive
+  name: head of personnel's festive suit
+  description: A warm red jumpsuit under a blue vest and unique hood. The entire uniform is lined with comfortable fur keeping you well insulated.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hopfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hopfestive.rsi
+
+# CMO
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitCMOShell
+  name: chief medical officer's shell suit
+  description: A shelly suit for a medical chief.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmoshell.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmoshell.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitCMOFormal
+  name: chief medical officer's formal suit
+  description: A sterile suit for special occasions.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmoformal.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmoformal.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitCMOFlowing
+  name: chief medical officer's flowing suit
+  description: An elegant suit for a graceful medical doctor.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmoflowing.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmoflowing.rsi
+
+#Chemist
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitChemistSweater
+  name: Casual Chemist Sweater
+  description: An Outfit for the chemist who enjoyes heating their beverage on their hotplate.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chemist-sweater.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chemist-sweater.rsi
+
+# Captain
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitCaptainConductor
+  name: captain's conductor suit
+  description: An outfit befitting of a captain running a midnight express.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainconductor.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainconductor.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitCaptainNaval
+  name: captain's naval breeches
+  description: Comfortable breeches for a captain sailing the galaxy
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainnaval.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/captainnaval.rsi
+
+# QM
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitQMVista
+  name: quartermaster's vista suit
+  description: An outfit for a quartermaster who isn't afraid to put in the miles themselves for some sweet spessos (cargo shorts included).
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmvista.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmvista.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitQMCruiser
+  name: quartermaster's cruiser suit
+  description: An outfit indicative of a quartermaster with experience piloting shuttles.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmcruiser.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmcruiser.rsi
+
+#Cargo
+- type: entity
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  id: ClothingUniformJumpsuitSeniorCargo
+  name: Senior Cargonian Jumpsuit
+  description: A resilient jumpsuit, issued to members of the Cargonian front.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior-cargo.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  id: ClothingUniformJumpsuitCourier
+  name: Courier Jumpsuit
+  description: A jumpsuit made for maximum mobility, feels like you've got on nothing at all.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/courier.rsi
+
+#HoS
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHosWestern
+  name: hos's wrangler outfit
+  description: A dusty and worn outfit of only the most rootin' tootin' of leaders.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hoswestern.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hoswestern.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHosFestive
+  name: hos's festive soldier uniform
+  description: An awfully stiff gilded uniform with large golden shoulder pads. A large piece of wood uncomfortably presses into the back of your neck, must be fashionable?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hosfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hosfestive.rsi
+
+# Detective
+- type: entity
+  parent: [ClothingUniformBase, BaseSecurityContraband]
+  id: ClothingUniformJumpsuitDetSleuth
+  name: sleuth suit
+  description: An outfit for a sleuth who has just one more thing to tell you about.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sleuth.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sleuth.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseSecurityContraband, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitDetInvestigator
+  name: Investigator Suit
+  description: An outfit for an Ace Investigator in search of missing animals.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/investigator.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/investigator.rsi
+
+#RD
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitRDRobo
+  name: research director's roboticist turtleneck
+  description: It's a turtleneck worn by those with a deep understanding of cyborgs and other artificial intelligences.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdrobo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdrobo.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitRDFestive
+  name: research director's toymaker suit
+  description: A fancy purple suit of a station's favorite toymaker.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdfestive.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rdfestive.rsi
+
+# Scientist
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitMachinist
+  name: machinist jumpsuit
+  description: It's a slimming black with reinforced seams; great for mechanical work.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/machinist.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/machinist.rsi
+
+#Clown
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitHarlequin
+  name: harlequin jumpsuit
+  description: A checkered suit for a trickster's acrobatic tomfoolery.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/harlequin.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/harlequin.rsi
+
+#Mime
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitPierrot
+  name: pierrot suit
+  description: A suit for the buffoon to swoon a Columbine.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/pierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/pierrot.rsi
+
+#Musician
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitRockstar
+  name: rockstar suit
+  description: An outfit paired with faux death leopard jeans.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rockstar.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rockstar.rsi
+
+#Centcomm
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcommResearch
+  name: Centcomm Researcher Suit
+  description: An Outfit to accept awards for scientific & technological advancement.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-research.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-research.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcommMedical
+  name: Centcomm Physician Sweater
+  description: An Outfit to accept awards for medical advancement.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-medical.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCentcommContraband]
+  id: ClothingUniformJumpsuitCentcommTurtle
+  name: Centcomm Turtleneck
+  description: An Comfortable outfit for the executive who enjoys a warm fireplace.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/centcomm-turtleneck.rsi
+
+#Engineering
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSeniorAtmos
+  name: senior atmospherics jumpsuit
+  description: A sign of skill and prestige within the atmospherics department.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_atmos.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_atmos.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitAtmosTurtle
+  name: atmos turtleneck
+  description: A Comfortable outfit for An Atmosian who enjoys a warm burn chamber.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi

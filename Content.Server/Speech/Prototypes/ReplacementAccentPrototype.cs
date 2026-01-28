@@ -28,4 +28,9 @@ public sealed partial class ReplacementAccentPrototype : IPrototype
     /// </summary>
     [DataField]
     public float ReplacementChance = 1f;
+
+    // Moffstation - Start
+    [DataField]
+    public bool FullReplacementsMaintainEndOfMessagePunctuation = true;
+    // Moffstation - End
 }

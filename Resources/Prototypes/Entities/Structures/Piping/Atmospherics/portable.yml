@@ -186,6 +186,13 @@
   - type: GuideHelp
     guides:
     - Thermomachines
+  # Moffstation - Start
+  - type: DeviceLinkSink
+    ports:
+    - Toggle
+    - On
+    - Off
+  # Moffstation - End
 
 - type: entity
   parent: SpaceHeater

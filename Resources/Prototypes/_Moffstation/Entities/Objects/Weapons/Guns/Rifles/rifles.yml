@@ -1,0 +1,103 @@
+﻿# Based on the Foam Force Astro Ace (WeaponRifleFoam), but separate because borgs can't wield guns.
+- type: entity
+  name: Foam Force Gallant
+  parent: BaseItem
+  id: WeaponRifleFoamBorg
+  description: A Foam Force Astro Ace, adapted for use by cyborgs. It synthesizes foam darts on the fly from an internal dart fabricator, allowing the rifle to slowly self-reload so the fun never stops!
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Foam/foam_rifle.rsi
+    layers:
+    - state: icon
+      map: [ "enum.GunVisualLayers.Base" ]
+  - type: Clothing
+    sprite: Objects/Fun/Foam/foam_rifle.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,4,0
+    sprite: Objects/Fun/Foam/foam_rifle_inhand_64x.rsi
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - BulletFoam
+    capacity: 10
+    proto: BulletFoam
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Effects/thunk.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+    clumsyProof: true
+  - type: PacifismAllowedGun
+  - type: BallisticAmmoSelfRefiller
+    autoRefill: true
+    autoRefillRate: 1m # You really ought to be picking up your darts.
+    ammoProto: BulletFoam
+
+# Far less cursed replacement for the admeme XL8, purchasable from cargo and used by ERT squad leaders. Has a nifty 2-round burst.
+- type: entity
+  parent: WeaponRifleLecter
+  id: WeaponRifleLecterDMR
+  name: Lecter DMR
+  description: "A Dedicated Marksman Rifle designed by Sunshade Armories, built on the popular Lecter platform. Features the latest in electronic optics and a blisteringly fast 2-round burst to excel at long range.\nFeeds from .20 rifle magazines."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
+  - type: Gun # Has access to the Lecter's 5.0 firerate, just in semi-auto. Optional quick 2-round burst with the same DPS.
+    availableModes:
+    - Burst
+    - SemiAuto
+    burstCooldown: 0.34
+    burstFireRate: 15
+    selectedMode: SemiAuto
+    shotsPerBurst: 2
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 2
+    pvsIncrease: 0.2
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.75
+    sprintModifier: 0.75
+
+# Lever-Action rifle. A longarm chambered in .45 magnum, for purchase by pirates and as very rare maints loot. Sprites by the marvelous kento_da_neko.
+- type: entity
+  parent: [ BaseWeaponShotgun, BaseGunWieldable, BaseMajorContraband ]
+  id: WeaponRifleLeverMagnum
+  name: Crestfall repeater
+  description: "A classic tube-fed lever-action rifle, the preferred weapon of a trailblazer of old.\nLoads eight rounds of .45 magnum."
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 8
+    proto: CartridgeMagnum
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg # Could use a less... plastic-y sound with no pumping noise.
+    whitelist:
+      tags:
+      - CartridgeMagnum
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
+  - type: Gun
+    fireRate: 2.5
+    soundGunshot:
+      path: /Audio/_Moffstation/Weapons/Guns/Gunshots/heavygunshot.ogg # Sound found by AugustSun :3
+  - type: Item
+    storedSprite:
+      sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum_storage_x64.rsi
+      state: storage
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi

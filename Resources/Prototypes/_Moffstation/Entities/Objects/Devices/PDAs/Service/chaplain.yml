@@ -1,0 +1,157 @@
+- type: entity
+  parent: ChaplainPDA
+  id: ChaplainPDAAltBase
+  name: chaplain alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-bishop"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: BishopPDA
+  name: bishop PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-bishop
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-bishop
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: ClericPDA
+  name: cleric PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-cleric
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-cleric
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: DruidPDA
+  name: druid PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-druid
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-druid
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: MissionaryPDA
+  name: missionary PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-missionary
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-missionary
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentHColor: "#a2a136"
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: MorticianPDA
+  name: mortician PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-mortician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-mortician
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentVColor: "#5a97a2"
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: NunPDA
+  name: nun PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-nun
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-nun
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-nun"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: PdaBorderColor
+      borderColor: "#cbcbcb"
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: OraclePDA
+  name: oracle PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-oracle
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-oracle
+  - type: PdaBorderColor
+    borderColor: "#46a29d"
+
+- type: entity
+  parent: ChaplainPDAAltBase
+  id: PriestPDA
+  name: priest PDA
+  components:
+  - type: RenameId
+    value: job-name-chaplain-priest
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-priest

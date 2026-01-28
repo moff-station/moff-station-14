@@ -40,6 +40,8 @@
     - Revolutionary
     - Zombie
     - Wizard
+    - Xenoborgs
+    - Pirates # Moffstation
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
@@ -61,6 +63,8 @@
     - Revolutionary
     - Zombie
     - Wizard
+    - Xenoborgs
+    - Pirates # Moffstation
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
@@ -83,6 +87,7 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  - ExtendedNotificationEvent # Moffstation - For the notification
 
 - type: gamePreset
   id: Greenshift
@@ -97,6 +102,23 @@
   - BasicRoundstartVariation
 
 - type: gamePreset
+  id: Dynamic
+  alias:
+  - dynamic
+  - multiantag
+  - director
+  name: dynamic-title
+  showInVote: false # admin-only for now until we fix some bugs
+  description: dynamic-description
+  rules:
+  - DynamicRule
+  - DummyNonAntag
+  - DynamicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
   id: Secret
   alias:
     - secret
@@ -106,30 +128,6 @@
   description: secret-description
   rules:
     - Secret
-
-- type: gamePreset
-  id: SecretExtended #For Admin Use: Runs Extended but shows "Secret" in lobby.
-  alias:
-    - secretextended
-  name: secret-title
-  showInVote: false #Admin Use
-  description: secret-description
-  rules:
-    - BasicStationEventScheduler
-    - MeteorSwarmScheduler
-    - SpaceTrafficControlEventScheduler
-    - BasicRoundstartVariation
-
-- type: gamePreset
-  id: SecretGreenshift #For Admin Use: Runs Greenshift but shows "Secret" in lobby.
-  alias:
-  - secretgreenshift
-  name: secret-title
-  showInVote: false #Admin Use
-  description: secret-description
-  rules:
-  - SpaceTrafficControlFriendlyEventScheduler
-  - BasicRoundstartVariation
 
 - type: gamePreset
   id: Sandbox
@@ -153,7 +151,7 @@
   rules:
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -182,7 +180,7 @@
   rules:
   - Nukeops
   - DummyNonAntagChance
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -200,7 +198,7 @@
   rules:
   - DummyNonAntagChance
   - Revolutionary
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -223,16 +221,16 @@
   - BasicRoundstartVariation
 
 - type: gamePreset
-  id: Pirates
+  id: Xenoborgs
   alias:
-  - pirates
-  name: pirates-title
-  description: pirates-description
+    - xenoborgs
+  name: xenoborgs-title
+  description: xenoborgs-description
   showInVote: false
   rules:
-  - Pirates
+  - Xenoborgs
   - DummyNonAntagChance
-  - SubGamemodesRule
+  - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

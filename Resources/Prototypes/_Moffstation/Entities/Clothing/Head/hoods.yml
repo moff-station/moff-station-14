@@ -1,0 +1,55 @@
+- type: entity
+  parent: ClothingHeadHatHoodMoth
+  id: ClothingHeadHatHoodIris
+  suffix: Admin
+  name: orange moth mask
+  description: A mask in the form of a moths head is usually made of lightweight materials. It mimics the shape of a moths head with large eyes and long antennae. Such masks are often used in cosplay, or when shooting movies and videos.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/irishood.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/irishood.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterSeniorCargo
+  categories: [ HideSpawnMenu ]
+  name: senior cargo winter coat hood
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hoods/Coat/hoodcargo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodseniorcargo.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterCaptain
+  categories: [ HideSpawnMenu ]
+  name: captain winter coat hood
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcaptain.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcaptain.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterFestiveCmo
+  categories: [ HideSpawnMenu ]
+  name: cmo's festive winter coat hood
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodfestivecmo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodfestivecmo.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterPierrot
+  categories: [ HideSpawnMenu ]
+  name: pierrot fur hood
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodpierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodpierrot.rsi

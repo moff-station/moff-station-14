@@ -198,6 +198,10 @@
     prototype: ResearchAndDevelopmentServer
     stackRequirements:
       Plasma: 5
+  # Moffstation - Begin - R&D Blade Server
+  - type: BladeServerBoard
+    prototype: ResearchAndDevelopmentBladeServer
+  # Moffstation - End
 
 - type: entity
   id: BiogeneratorMachineCircuitboard
@@ -520,6 +524,10 @@
       stackRequirements:
         Steel: 1
         Cable: 2
+  # Moffstation - Begin - CrewMon Blade Server
+    - type: BladeServerBoard
+      prototype: CrewMonitoringBladeServer
+  # Moffstation - End
 
 - type: entity
   id: CryoPodMachineCircuitboard
@@ -683,8 +691,8 @@
         Cable: 5
     - type: PhysicalComposition
       materialComposition:
-        Steel: 30
-        Plastic: 30
+        Steel: 25
+        Plastic: 25
     - type: StaticPrice
       price: 15
 
@@ -726,8 +734,8 @@
         Cable: 5
     - type: PhysicalComposition
       materialComposition:
-        Steel: 30
-        Plastic: 30
+        Steel: 25
+        Plastic: 25
     - type: StaticPrice
       price: 15
 
@@ -747,8 +755,8 @@
         CableMV: 5
     - type: PhysicalComposition
       materialComposition:
-        Steel: 30
-        Plastic: 30
+        Steel: 25
+        Plastic: 25
     - type: StaticPrice
       price: 15
 
@@ -1076,7 +1084,7 @@
 
 - type: entity
   id: SyndicateMicrowaveMachineCircuitboard
-  parent: BaseMachineCircuitboard
+  parent: [ BaseMachineCircuitboard, BaseSyndicateContraband ]
   name: donk co. microwave machine board
   components:
     - type: Sprite
@@ -1154,6 +1162,20 @@
     state: service
   - type: MachineBoard
     prototype: SurveillanceCameraWirelessRouterConstructed
+    stackRequirements:
+      Cable: 2
+      Glass: 1
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: SurveillanceCameraWirelessRouterXenoborgCircuitboard
+  name: xenoborg camera wireless router
+  description: A machine printed circuit board for a xenoborg camera wireless router.
+  components:
+  - type: Sprite
+    state: generic
+  - type: MachineBoard
+    prototype: SurveillanceCameraWirelessRouterXenoborg
     stackRequirements:
       Cable: 2
       Glass: 1
@@ -1364,6 +1386,24 @@
     prototype: CutterMachine
     stackRequirements:
       Steel: 2
-      Capacitor: 1
-      Manipulator: 1
+      Capacitor: 1 #moffstation - Revert machine parts
+      Manipulator: 1 #moffstation - Revert machine parts
       Cable: 1
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: SmartFridgeCircuitboard
+  name: SmartFridge machine board
+  description: A machine printed circuit board for a SmartFridge.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: SmartFridge
+    stackRequirements:
+      Glass: 5
+      Manipulator: 2
+    tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker

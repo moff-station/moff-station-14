@@ -71,6 +71,12 @@
     receiveFrequencyId: Fax
     transmitFrequencyId: Fax
   - type: RequireProjectileTarget
+  # Moffstation - Start
+  - type: DeviceLinkSink
+    ports:
+    - FaxSend
+    - FaxCopy
+  # Moffstation - End
 
 # Special
 - type: entity

@@ -4,6 +4,7 @@ using Content.Server.Body.Systems;
 using Content.Server.Body.Components;
 using Content.Shared._Moffstation.Vampire.Components;
 using Content.Shared._Moffstation.Vampire.EntitySystems;
+using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
@@ -20,7 +21,7 @@ namespace Content.Server._Moffstation.Vampire.EntitySystems;
 /// </summary>
 /// <remarks>
 /// Eventually a lot of this functionality could be adapted to instead use the
-/// <see cref="Content.Server.Chemistry.EntitySystems.InjectorSystem.DrawFromBlood"/> method, however that will
+/// <see cref="InjectorSystem.DrawFromBlood"/> method, however that will
 /// require some disparate changes to that system which will be merge-conflict bait for the time being.
 /// If this ever gets upstreamed though it would be best to do it that way.
 /// </remarks>
@@ -46,35 +47,19 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
 	    entity.Deconstruct(out var uid, out var bloodEssenceUser, out var body);
 	    var targetBloodstream = target.Comp;
 
-	    if (!_body.TryGetBodyOrganEntityComps<StomachComponent>((uid, body), out var stomachs))
+	    if (!_body.TryGetOrgansWithComponent<StomachComponent>((uid, body), out var stomachs))
 	        return 0.0f;
 
-        var firstStomach = stomachs.FirstOrNull(stomach => _stomach.MaxTransferableSolution(stomach, transferAmount) > 0.0f);
-
-        // All stomachs are full or null somehow
-        if (firstStomach == null)
-            return 0.0f;
-
-        var transferableAmount = _stomach.MaxTransferableSolution(firstStomach.Value, transferAmount);
+        var firstStomach = stomachs[0];
 
         var tempSolution = new Solution
         {
-            MaxVolume = transferableAmount
+            MaxVolume = transferAmount,
         };
-
-        if (_solutionContainerSystem.ResolveSolution(target.Owner, targetBloodstream.ChemicalSolutionName, ref targetBloodstream.ChemicalSolution, out var targetChemSolution))
-        {
-            // make a fraction of what we pull come from the chem solution
-            // Technically this does allow someone to drink blood in order to then have that blood be taken and
-            // give essence but I don't care too much about that possible issue.
-            tempSolution.AddSolution(targetChemSolution.SplitSolution(transferableAmount * 0.15f), _proto);
-            transferableAmount -= (float) tempSolution.Volume;
-            _solutionContainerSystem.UpdateChemicals(targetBloodstream.ChemicalSolution.Value);
-        }
 
         if (_solutionContainerSystem.ResolveSolution(target.Owner, targetBloodstream.BloodSolutionName, ref targetBloodstream.BloodSolution, out var targetBloodSolution))
         {
-            tempSolution.AddSolution(targetBloodSolution.SplitSolution(transferableAmount), _proto);
+            tempSolution.AddSolution(targetBloodSolution.SplitSolution(transferAmount), _proto);
             _solutionContainerSystem.UpdateChemicals(targetBloodstream.BloodSolution.Value);
         }
 
@@ -99,8 +84,8 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
             bloodEssenceUser.FedFrom[target] += essenceCollected;
         bloodEssenceUser.BloodEssenceTotal += essenceCollected;
 
-        _stomach.TryTransferSolution(firstStomach.Value, tempSolution);
-        Dirty<StomachComponent>(firstStomach.Value);
+        _stomach.TryTransferSolution(firstStomach, tempSolution);
+        Dirty<StomachComponent>(firstStomach);
 
         return essenceCollected;
     }

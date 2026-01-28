@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ClothingNeckBase]
+  id: ClothingNeckRuffle
+  name: ruffle
+  description: A piece of clothing to ponder existence in.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/ruffle.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/ruffle.rsi

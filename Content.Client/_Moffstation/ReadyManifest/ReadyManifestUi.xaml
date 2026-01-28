@@ -1,0 +1,12 @@
+<readyManifest:ReadyManifestUi
+    xmlns="https://spacestation14.io"
+    xmlns:readyManifest="clr-namespace:Content.Client._Moffstation.ReadyManifest"
+    Title="{Loc ready-manifest-window-title}"
+    SetSize="450 750">
+    <BoxContainer HorizontalExpand="True" VerticalExpand="True" Orientation="Vertical">
+        <RichTextLabel Text="{Loc ready-manifest-window-desc}" VerticalAlignment="Top" Margin="0 0 0 5"/>
+        <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Name="ReadyManifestListing" Orientation="Vertical" />
+        </ScrollContainer>
+    </BoxContainer>
+</readyManifest:ReadyManifestUi>

@@ -43,9 +43,10 @@
     sprite: Clothing/Shoes/Misc/duck-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepCarpet
+      collection: FootstepDuck # Moffstation - Revert removal of walking sound
       params:
         variation: 0.07
+        volume: -10 # Moffstation - Revert removal of walking sound
   - type: Construction
     graph: ClothingShoeSlippersDuck
     node: shoes
@@ -62,12 +63,20 @@
     sprite: Clothing/Shoes/Misc/lizard-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepCarpet
+      # Moffstation - Begin - Revert removal of walking sound
+      collection: FootstepLizardSlippers
       params:
-        variation: 0.02
+        variation: 0.06
+        volume: -10 # Moffstation - End - Revert removal of walking sound
   - type: Construction
     graph: ClothingShoeSlippersLizard
     node: shoes
+  - type: Edible
+    useSound:
+      path: /Audio/Items/Toys/weh.ogg # Copied from lizard plush sound
+      params:
+        volume: -10
+    transferAmount: 10
   - type: Extractable
     juiceSolution:
       reagents:
@@ -109,13 +118,12 @@
   parent: ClothingShoesBase
   id: ClothingShoesSnakeskinBoots
   name: snakeskin boots
-  description: Boots made of high-class snakeskin, everyone around you will be jealous.
+  description: Boots made of once-valuable snakeskin, everyone around you would have been jealous.
   components:
   - type: Sprite
     sprite: Clothing/Shoes/Misc/snakeskin.rsi
   - type: Clothing
     sprite: Clothing/Shoes/Misc/snakeskin.rsi
-  - type: NoSlip
 
 - type: entity
   parent: [ClothingShoesBase, PowerCellSlotSmallItem, BaseToggleClothing]
@@ -135,6 +143,7 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.5
     sprintModifier: 1.5
+    standing: true
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -182,7 +191,7 @@
     price: 75
   - type: Tag
     tags: [ ]
-   
+
 - type: entity
   parent: ClothingShoesBase
   id: ClothingShoesBootsJump
@@ -200,7 +209,7 @@
     jumpSound: /Audio/Effects/stealthoff.ogg
   - type: ActionGrant
     actions:
-    - ActionGravityJump 
+    - ActionGravityJump
   - type: ItemActionGrant
     actions:
     - ActionGravityJump

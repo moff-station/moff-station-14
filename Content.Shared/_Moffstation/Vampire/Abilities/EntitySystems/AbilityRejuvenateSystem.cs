@@ -77,8 +77,8 @@ public sealed class AbilityRejuvenateSystem : EntitySystem
             _stamina.TakeStaminaDamage(entity, rejuvenateComp.StamHealing, stamina);
         }
 
-        _drunkSystem.TryRemoveDrunkenessTime(entity, rejuvenateComp.StatusEffectReductionTime.TotalSeconds);
-        _stuttering.DoRemoveStutterTime(entity, rejuvenateComp.StatusEffectReductionTime.TotalSeconds);
+        _drunkSystem.TryRemoveDrunkennessTime(entity, rejuvenateComp.StatusEffectReductionTime);
+        _stuttering.DoRemoveStutterTime(entity, rejuvenateComp.StatusEffectReductionTime);
 
         _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(entity):user} used Rejuvenate.");
         _popup.PopupEntity(Loc.GetString("vampire-rejuvenate-popup"), entity, entity, PopupType.Medium);

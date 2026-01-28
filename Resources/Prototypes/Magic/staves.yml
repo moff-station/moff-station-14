@@ -3,7 +3,7 @@
 # wand that gives lights an RGB effect.
 - type: entity
   id: RGBStaff
-  parent: BaseItem
+  parent: [ BaseItem, BaseMagicalContraband ] # Moffstation - magic is illegal, silly.
   name: RGB staff
   description: Helps fix the underabundance of RGB gear on the station.
   components:
@@ -70,6 +70,7 @@
   parent: BaseAction
   id: ActionRgbLight
   components:
+  - type: TargetAction
   - type: EntityTargetAction
     whitelist: { components: [ PointLight ] }
     event: !type:ChangeComponentsSpellEvent

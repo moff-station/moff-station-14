@@ -1,0 +1,30 @@
+# Player: ThEmeralDuke - Character: Dawn Cometrider
+- type: entity
+  parent: DrinkWineBottleFull
+  id: PersonalItemDawnBottle
+  name: Bottle in a bag
+  description: A Bottle hidden poorly in a paper bag as if to hide its contents. It smells of alcohol.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/ThEmeralDuke/DawnCometrider/bottlebag.rsi
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: DeathInTheAfternoon
+          Quantity: 100
+  - type: FitsInDispenser
+    solution: drink
+  - type: Label
+    currentLabel: #did this as it would start with a label of (Wine) as if it were handlabeld
+
+- type: loadout
+  id: PersonalItemDawnBottle
+  storage:
+    back:
+    - PersonalItemDawnBottle
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Dawn Cometrider

@@ -1,3 +1,11 @@
+# ID
+
+# Head
+
+# Mask
+
+# Neck
+
 # Jumpsuit
 - type: loadout
   id: NukieJumpsuit
@@ -26,11 +34,6 @@
 
 # Back
 - type: loadout
-  id: NukieBackpack
-  equipment:
-    back: ClothingBackpackSyndicateOperative
-
-- type: loadout
   id: NukieSatchel
   equipment:
     back: ClothingBackpackSatchelSyndicateOperative
@@ -41,11 +44,6 @@
     back: ClothingBackpackDuffelSyndicateOperative
 
 - type: loadout
-  id: NukieBackpackEmpty
-  equipment:
-    back: ClothingBackpackSyndicate
-
-- type: loadout
   id: NukieSatchelEmpty
   equipment:
     back: ClothingBackpackSatchelSyndicate
@@ -53,7 +51,21 @@
 - type: loadout
   id: NukieDuffelEmpty
   equipment:
-    back: ClothingBackpackDuffelSyndicateBundle
+    back: ClothingBackpackDuffelSyndicate
+
+- type: loadout
+  id: NukieMedicSatchel
+  equipment:
+    back: ClothingBackpackSatchelSyndicateOperativeMedic
+
+- type: loadout
+  id: NukieMedicDuffel
+  equipment:
+    back: ClothingBackpackDuffelSyndicateOperativeMedic
+
+# Belt
+
+# Outer Clothing
 
 # Gloves
 - type: loadout
@@ -66,18 +78,6 @@
   equipment:
     gloves: ClothingHandsTacticalMaidGloves
 
-# Medical Backpacks
-- type: loadout
-  id: NukieMedicBackpack
-  equipment:
-    back: ClothingBackpackSyndicateOperativeMedic
+# Shoes
 
-- type: loadout
-  id: NukieMedicSatchel
-  equipment:
-    back: ClothingBackpackSatchelSyndicateOperativeMedic
-
-- type: loadout
-  id: NukieMedicDuffel
-  equipment:
-    back: ClothingBackpackDuffelSyndicateOperativeMedic
+# Eyewear

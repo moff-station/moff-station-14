@@ -1,0 +1,59 @@
+﻿# ID
+- type: loadout
+  id: PhenomenaAnalystPDA
+  equipment:
+    id: PhenomenaAnalystPDA
+  groupBy: "scientist roles"
+
+- type: loadout
+  id: MachinistPDA
+  equipment:
+    id: MachinistPDA
+  groupBy: "robotics roles"
+
+- type: loadout
+  id: XenoarcheologistPDA
+  equipment:
+    id: XenoarcheologistPDA
+  groupBy: "scientist roles"
+
+# Head
+
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: FormalScientistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientistFormal
+  groupBy: "scientist jumpsuits"
+
+- type: loadout
+  id: MachinistJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMachinist
+  groupBy: "scientist jumpsuits"
+
+- type: loadout
+  id: MachinistJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMachinist
+  groupBy: "scientist jumpskirts"
+
+# Back
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: MachinistLabCoat
+  equipment:
+    outerClothing: ClothingOuterCoatMach
+
+# Gloves
+
+# Shoes
+
+# Eyewear

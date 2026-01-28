@@ -1,13 +1,44 @@
-# Ammo For the Bulldog
-- type: listing
-  id: UplinkMagazineShotgun
-  name: uplink-magazine-shotgun-name
-  description: uplink-magazine-shotgun-desc
-  icon:
-    sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Shotgun/m12.rsi
-    state: pellets
-  productEntity: MagazineShotgun
+# Weapons
+- type: listing # not gonna make this zookeeper only because I Said So.
+  id: UplinkSniperElephant
+  name: uplink-sniper-elephant-name
+  description: uplink-sniper-elephant-desc
+  productEntity: WeaponSniperElephant
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 6
   cost:
-    Telecrystal: 2
+    Telecrystal: 8
   categories:
-  - UplinkAmmo
+  - UplinkWeaponry
+
+- type: listing
+  id: UplinkHyperEutacticBlade
+  name: uplink-hypereutatic-blade-moff-name
+  description: uplink-hypereutatic-blade-moff-desc
+  icon:
+    sprite: Objects/Weapons/Melee/hypereutactic_blade.rsi
+    state: icon
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 8
+  productEntity: HyperEutacticBlade
+  cost:
+    Telecrystal: 14
+  categories:
+  - UplinkWeaponry
+
+# Wearables
+
+- type: listing
+  id: UplinkClothingShoesSkatesSyndicate
+  name: uplink-clothing-rocket-skates-name
+  description: uplink-clothing-rocket-skates-desc
+  productEntity: ClothingShoesSkatesSyndicate
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkWearables

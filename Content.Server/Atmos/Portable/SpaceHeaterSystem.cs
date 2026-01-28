@@ -7,9 +7,12 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared.Atmos.Piping.Portable.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Atmos.Visuals;
+using Content.Shared.DeviceLinking; // Moffstation
+using Content.Shared.DeviceLinking.Events; // Moffstation
 using Content.Shared.Power;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
+using Robust.Shared.Prototypes; // Moffstation
 
 namespace Content.Server.Atmos.Portable;
 
@@ -21,6 +24,12 @@ public sealed class SpaceHeaterSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
 
+    // Moffstation - Start
+    private static readonly ProtoId<SinkPortPrototype> OnPort = "On";
+    private static readonly ProtoId<SinkPortPrototype> OffPort = "Off";
+    private static readonly ProtoId<SinkPortPrototype> TogglePort = "Toggle";
+    // Moffstation - End
+
     public override void Initialize()
     {
         base.Initialize();
@@ -31,6 +40,7 @@ public sealed class SpaceHeaterSystem : EntitySystem
         SubscribeLocalEvent<SpaceHeaterComponent, AtmosDeviceUpdateEvent>(OnDeviceUpdated);
         SubscribeLocalEvent<SpaceHeaterComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<SpaceHeaterComponent, PowerChangedEvent>(OnPowerChanged);
+        SubscribeLocalEvent<SpaceHeaterComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation
 
         SubscribeLocalEvent<SpaceHeaterComponent, SpaceHeaterChangeModeMessage>(OnModeChanged);
         SubscribeLocalEvent<SpaceHeaterComponent, SpaceHeaterChangePowerLevelMessage>(OnPowerLevelChanged);
@@ -54,11 +64,13 @@ public sealed class SpaceHeaterSystem : EntitySystem
 
     private void OnUIActivationAttempt(EntityUid uid, SpaceHeaterComponent spaceHeater, ActivatableUIOpenAttemptEvent args)
     {
-        if (!Comp<TransformComponent>(uid).Anchored)
-        {
+        if (Comp<TransformComponent>(uid).Anchored)
+            return;
+
+        if (!args.Silent)
             _popup.PopupEntity(Loc.GetString("comp-space-heater-unanchored", ("device", Loc.GetString("comp-space-heater-device-name"))), uid, args.User);
-            args.Cancel();
-        }
+
+        args.Cancel();
     }
 
     private void OnDeviceUpdated(EntityUid uid, SpaceHeaterComponent spaceHeater, ref AtmosDeviceUpdateEvent args)
@@ -95,6 +107,24 @@ public sealed class SpaceHeaterSystem : EntitySystem
         DirtyUI(uid, spaceHeater);
     }
 
+    // Moffstation - Start
+    private void OnSignalReceived(Entity<SpaceHeaterComponent> entity, ref SignalReceivedEvent args)
+    {
+        if (args.Port == OnPort)
+        {
+            _power.SetPowerDisabled(entity, false);
+        }
+        else if (args.Port == OffPort)
+        {
+            _power.SetPowerDisabled(entity, true);
+        }
+        else if (args.Port == TogglePort)
+        {
+            _power.TogglePower(entity, playSwitchSound: false);
+        }
+    }
+    // Moffstation - End
+
     private void OnToggle(EntityUid uid, SpaceHeaterComponent spaceHeater, SpaceHeaterToggleMessage args)
     {
         ApcPowerReceiverComponent? powerReceiver = null;
@@ -112,7 +142,9 @@ public sealed class SpaceHeaterSystem : EntitySystem
         if (!TryComp<GasThermoMachineComponent>(uid, out var thermoMachine))
             return;
 
-        thermoMachine.TargetTemperature = float.Clamp(thermoMachine.TargetTemperature + args.Temperature, thermoMachine.MinTemperature, thermoMachine.MaxTemperature);
+        thermoMachine.TargetTemperature = float.Clamp(thermoMachine.TargetTemperature + args.Temperature,
+                                                      spaceHeater.MinTemperature,
+                                                      spaceHeater.MaxTemperature);
 
         UpdateAppearance(uid);
         DirtyUI(uid, spaceHeater);

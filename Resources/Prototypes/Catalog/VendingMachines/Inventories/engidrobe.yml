@@ -10,10 +10,14 @@
     ClothingShoesColorBlack: 3
     ClothingOuterVestHazard: 3
     ClothingShoesBootsWork: 3
-    ClothingHeadHatHardhatYellow: 3
+    # Moffstation - Begin (Work Gear for Atmos) - Yellow hardhat is an atmos item now, so this drobe can have the red one instead.
+    #ClothingHeadHatHardhatYellow: 3
+    ClothingHeadHatHardhatRed: 3
+    # Moffstation - End
     ClothingHeadHatHardhatOrange: 3
     ClothingHeadsetEngineering: 3
     ClothingOuterWinterEngi: 2
+    ClothingOuterWinterEngiWindbreaker: 2 #Moffstation - Engineering Outfit Resprites
     ClothingNeckScarfStripedOrange: 3
     ClothingShoesBootsWinterEngi: 2
   contrabandInventory:
