@@ -100,6 +100,19 @@
       - TelecomServer
 
 - type: cargoBounty
+  id: PirateBountyShuttleParts
+  reward: 3000
+  description: bounty-description-shuttle-parts
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-shuttle-parts
+    amount: 1
+    whitelist:
+      components:
+      - Thruster
+
+- type: cargoBounty
   id: PirateBountyMagboots
   reward: 6500
   description: bounty-description-magboots
