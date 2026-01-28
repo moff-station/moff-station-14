@@ -47,8 +47,8 @@
   id: PersonalItemThornBeanie
   storage:
     back:
-      - PersonalItemThornBeanie
+    - PersonalItemThornBeanie
   effects:
-    - !type:PersonalItemLoadoutEffect
-      character:
-      - The Thorn of Duplicity
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - The Thorn of Duplicity
