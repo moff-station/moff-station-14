@@ -1,9 +1,11 @@
+# When adding new crayons, also add it to id: AllCrayonsTable
+
 - type: entity
   abstract: true
   parent: BaseItem
   id: CrayonInedible
   name: crayon
-  description: A colourful crayon. Looks tasty. Mmmm...
+  description: A colourful crayon. A forbidden flavor.
   components:
   - type: Sprite
     sprite: Objects/Fun/crayons.rsi
@@ -15,6 +17,7 @@
     - Write
     - Crayon
     - Trash
+    - Recyclable
   - type: SpaceGarbage
   - type: UserInterface
     interfaces:
@@ -31,17 +34,8 @@
   abstract: true
   parent: CrayonInedible
   id: Crayon
-  name: crayon
   description: A colourful crayon. Looks tasty. Mmmm...
   components:
-  - type: Sprite
-    sprite: Objects/Fun/crayons.rsi
-  - type: Item
-    sprite: Objects/Fun/crayons.rsi
-    size: Tiny
-  - type: Tag
-    tags:
-    - Recyclable
   - type: Edible
   - type: FlavorProfile
     flavors:
@@ -56,24 +50,7 @@
         - ReagentId: MindbreakerToxin
           Quantity: 2
 
-- type: entity
-  parent: Crayon
-  id: CrayonWhite
-  name: white crayon
-  components:
-  - type: Sprite
-    state: white
-  - type: Item
-    heldPrefix: white
-  - type: Crayon
-    color: white
-  - type: Tag
-    tags:
-    - Write
-    - Crayon
-    - CrayonWhite
-    - Recyclable
-    - Trash
+# special crayons
 
 - type: entity
   parent: Crayon
@@ -108,16 +85,11 @@
     selectableColor: true
   - type: LimitedCharges
     maxCharges: 300 # Moffstation - Increase crayon charges
-  - type: Tag
-    tags:
-    - Write
-    - Crayon
-    - Recyclable
-    - Trash
 
 - type: entity
   parent: CrayonRainbow
   id: CrayonInfinite # should not be player available to prevent decal spam
+  categories: [ DoNotMap ]
   name: infinite crayon
   components:
   - type: Crayon
@@ -139,14 +111,28 @@
     deleteEmpty: false
     color: Red
     selectableColor: true
-  - type: LimitedCharges
-    maxCharges: 30
   - type: AutoRecharge
     rechargeDuration: 5
+
+# monocolor crayons
+
+- type: entity
+  parent: Crayon
+  id: CrayonWhite
+  name: white crayon
+  components:
+  - type: Sprite
+    state: white
+  - type: Item
+    heldPrefix: white
+  - type: Crayon
+    color: white
   - type: Tag
     tags:
     - Write
     - Crayon
+    - CrayonWhite
+    - Recyclable
     - Trash
 
 - type: entity
@@ -283,24 +269,25 @@
     - Trash
 
 - type: entity
-  parent: BoxCardboard
-  id: CrayonBox
-  name: crayon box
-  description: It's a box of crayons.
+  parent: CrayonBox # Moffstation - autofilled box parented to empty box
+  id: CrayonBoxFilled # Moffstation
+  suffix: Filled # Moffstation
   components:
-  - type: Sprite
-    sprite: Objects/Fun/crayons.rsi
-    state: box
-  - type: Storage
-    grid:
-    - 0,0,7,0
-    maxItemSize: Tiny
-  - type: Item
-    sprite: Objects/Fun/crayons.rsi
-    size: Small
-    shape:
-    - 0,0,1,1
-    heldPrefix: box
+# Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
+  # - type: Sprite
+  #   sprite: Objects/Fun/crayons.rsi
+  #   state: box
+  # - type: Storage
+  #   grid:
+  #   - 0,0,7,0
+  #   maxItemSize: Tiny
+  # - type: Item
+  #   sprite: Objects/Fun/crayons.rsi
+  #   size: Small
+  #   shape:
+  #   - 0,0,1,1
+  #   heldPrefix: box
+# Moffstation - End
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -313,38 +300,40 @@
         - id: CrayonPurple
         - id: CrayonBlack
         - id: CrayonWhite
-  - type: ItemMapper
-    mapLayers:
-      black_box:
-        whitelist:
-          tags:
-          - CrayonBlack
-      blue_box:
-        whitelist:
-          tags:
-          - CrayonBlue
-      green_box:
-        whitelist:
-          tags:
-          - CrayonGreen
-      orange_box:
-        whitelist:
-          tags:
-          - CrayonOrange
-      purple_box:
-        whitelist:
-          tags:
-          - CrayonPurple
-      red_box:
-        whitelist:
-          tags:
-          - CrayonRed
-      yellow_box:
-        whitelist:
-          tags:
-          - CrayonYellow
-      white_box:
-        whitelist:
-          tags:
-          - CrayonWhite
-  - type: Appearance
+# Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
+  # - type: ItemMapper
+  #   mapLayers:
+  #     black_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonBlack
+  #     blue_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonBlue
+  #     green_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonGreen
+  #     orange_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonOrange
+  #     purple_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonPurple
+  #     red_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonRed
+  #     yellow_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonYellow
+  #     white_box:
+  #       whitelist:
+  #         tags:
+  #         - CrayonWhite
+  # - type: Appearance
+# Moffstation - End

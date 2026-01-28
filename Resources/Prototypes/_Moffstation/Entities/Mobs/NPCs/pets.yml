@@ -12,7 +12,9 @@
     allowMovement: true
     name: ghost-role-information-jokejoke-name
     description: ghost-role-information-jokejoke-description
-    rules: ghost-role-information-familiar-rules
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
   - type: GhostTakeoverAvailable
   - type: Butcherable
     butcheringType: Spike
@@ -21,6 +23,7 @@
       amount: 3
     - id: DrinkRumBottleFull
       amount: 1
+  - type: Pirate
   - type: Tag
     tags:
     - CannotSuicide

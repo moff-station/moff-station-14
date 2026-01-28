@@ -1,0 +1,40 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/commit/a28b24f149702527f3eb22f5c686f06c836f2f99; Flippo modified by RetroCorcoran (Discord)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "closed"
+        },
+        {
+            "name": "inhand-left-flame",
+            "Directions": 4
+        },
+        {
+            "name": "inhand-right-flame",
+            "Directions": 4
+        },
+        {
+            "name": "lighter_flame",
+            "Directions": 4
+        },
+        {
+            "name": "open"
+        },
+        {
+            "name": "top"
+        },
+        {
+            "name": "zippo-inhand-left",
+            "Directions": 4
+        },
+        {
+            "name": "zippo-inhand-right",
+            "Directions": 4
+        }
+    ]
+}

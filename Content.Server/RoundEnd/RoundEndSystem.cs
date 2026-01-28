@@ -10,7 +10,8 @@ using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
-using Content.Server.Voting.Managers;   // Moffstation - auto map votes on round start
+using Content.Server.Voting.Managers; // Moffstation
+using Content.Shared._Moffstation.CCVar; // Moffstation - auto map votes on round start
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.GameTicking;
@@ -365,7 +366,7 @@ namespace Content.Server.RoundEnd
             if (_gameTicker.RunLevel != GameRunLevel.PostRound) return;
             Reset();
             // Moffstation - Start - Auto start map vote on round restart
-            if (_cfg.GetCVar(CCVars.AutoStartMapVote))
+            if (_cfg.GetCVar(MoffCCVars.AutoStartMapVote))
                 _voteManager.CreateStandardVote(null, StandardVoteType.Map);
             // Moffstation - End
             _gameTicker.RestartRound();

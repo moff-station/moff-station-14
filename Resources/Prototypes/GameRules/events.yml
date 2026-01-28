@@ -47,10 +47,13 @@
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: WizardSpawn
-    - id: SyndicateListeningOutpostSpawn # Moffstation
     - id: EeepEvent # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
+    # Moffstation - Start - Moffstation ghostrole antags
+    - id: SyndicateListeningOutpostSpawn
+    - id: PirateCorsairSpawn
+    # Moffstation - End
 
 - type: entityTable
   id: DerelictBorgEventTable #For Derelict Borg spawns

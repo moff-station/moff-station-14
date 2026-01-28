@@ -222,9 +222,24 @@
   # Imp - Begin - Tourists
 
 - type: entity
-  parent: ClothingMaskClownBase
+  parent: [ClothingMaskClownBase, BaseFoldable]
   id: ClothingMaskClown
+  description: A clown mask featuring a foldable wig; a true prankster's attire.
   components:
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: opened
+    foldedHeldPrefix: opened
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Mask/clown.rsi # Moffstation
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-opened
+      map: [ "foldedLayer" ]
+      visible: false
   - type: Tag
     tags:
     - ClownMask
@@ -236,7 +251,7 @@
     - Snout
 
 - type: entity
-  parent: ClothingMaskClown
+  parent: ClothingMaskClownBase
   id: ClothingMaskClownBanana
   name: banana clown wig and mask
   components:
@@ -247,17 +262,25 @@
   - type: Construction
     graph: BananaClownMask
     node: mask
+  - type: Tag
+    tags:
+    - ClownMask
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Snout
 
 - type: entity
-  parent: [ClothingMaskClown] #Moffstation - Clown Mask in Loadout
+  parent: [ClothingMaskClownBase] #Moffstation - Clown Mask in Loadout
   id: ClothingMaskClownSecurity
   name: cool clown wig and mask # Moffstation - Clown Mask renamed to be Cool
   description: A debatably oxymoronic but protective mask and wig.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/clown_security.rsi
+    sprite: _Moffstation/Clothing/Mask/clown_security.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Mask/clown_security.rsi
+    sprite: _Moffstation/Clothing/Mask/clown_security.rsi # Moffstation
 #  - type: Armor  # Moffstation - Begin - This is going into the Loadouts & a Clown don't need all that when they look cool
 #    modifiers:
 #      coefficients:
@@ -266,6 +289,14 @@
 #        Piercing: 0.95
 #        Heat: 0.95
 # Moffstation - End
+  - type: Tag
+    tags:
+    - ClownMask
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Snout
 
 - type: entity
   parent: ClothingMaskBase
@@ -375,9 +406,9 @@
   description: Cursed cluwne face and hair.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/cluwne.rsi
+    sprite: _Moffstation/Clothing/Mask/cluwne.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Mask/cluwne.rsi
+    sprite: _Moffstation/Clothing/Mask/cluwne.rsi # Moffstation
   - type: Unremoveable
   - type: AddAccentClothing
     accent: StutteringAccent
@@ -630,9 +661,9 @@
   description: A mask for a blushing clown.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/blushingclown.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingclown.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Mask/blushingclown.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingclown.rsi # Moffstation
 
 - type: entity
   parent: ClothingMaskMime
@@ -641,9 +672,9 @@
   description: Those ruddy cheeks just want to be rubbed.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/blushingmime.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingmime.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Mask/blushingmime.rsi
+    sprite: _Moffstation/Clothing/Mask/blushingmime.rsi # Moffstation
 
 - type: entity
   parent: ClothingMaskMime
@@ -652,9 +683,9 @@
   description: Many people think this is what a real mime mask looks like.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/sadmime.rsi
+    sprite: _Moffstation/Clothing/Mask/sadmime.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Mask/sadmime.rsi
+    sprite: _Moffstation/Clothing/Mask/sadmime.rsi # Moffstation
 
 - type: entity
   parent: ClothingMaskMime
@@ -663,9 +694,9 @@
   description: Looks like it would scream if it wasn't a mask.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/scaredmime.rsi
+    sprite: _Moffstation/Clothing/Mask/scaredmime.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Mask/scaredmime.rsi
+    sprite: _Moffstation/Clothing/Mask/scaredmime.rsi # Moffstation
 
 - type: entity
   parent: [ClothingMaskMime] # Moffstation - Mime Mask in the Loadout
@@ -674,9 +705,9 @@
   description: You have the right to remain silent.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/mime_security.rsi
+    sprite: _Moffstation/Clothing/Mask/mime_security.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Mask/mime_security.rsi
+    sprite: _Moffstation/Clothing/Mask/mime_security.rsi # Moffstation
 #  - type: Armor   #Moffstation - Begin - The Mime does not need protection when they are cool looking (adding it to the loadout)
 #    modifiers:
 #      coefficients:
