@@ -92,6 +92,7 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
 
                 if (!CanPick(selectedPreset, players))
                 {
+                    selectedPreset = null;
                     options.Remove(key);
                     continue;
                 }
