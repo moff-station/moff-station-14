@@ -94,7 +94,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleShowContrabandDetails
-  name: contraband hud module
+  name: contraband HUD module
   description: A heads-up display module which uses advanced pattern-recognition to identify and categorize contraband.
   components:
   - type: Sprite
@@ -115,7 +115,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleSolutionScanner
-  name: chemical analysis hud module
+  name: chemical analysis HUD module
   description: A heads-up display module which allows scanning the chemical composition of a solution.
   components:
   - type: Sprite
@@ -136,7 +136,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleEyeProtection
-  name: eye protection hud module
+  name: eye protection HUD module
   description: A heads-up display module which protects the eyes from welding-related injury.
   components:
   - type: Sprite
@@ -164,7 +164,7 @@
 - type: entity
   parent: HudModuleEyeProtection
   id: HudModuleFlashImmunity
-  name: flash protection hud module
+  name: flash protection HUD module
   description: A heads-up display module which protects the eyes from bright flashes.
   components:
   - type: Sprite
@@ -191,7 +191,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleVisionCorrection
-  name: prescription hud module
+  name: prescription HUD module
   description: A heads-up display module which partially refracts incoming light to correct for vision impairments.
   components:
   - type: Sprite
@@ -214,7 +214,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleShowJobIcons
-  name: administration hud module
+  name: administration HUD module
   description: A heads-up display module which scans the humanoids in view and provides accurate data about their ID status.
   components:
   - type: Sprite
@@ -235,7 +235,7 @@
 - type: entity
   parent: HudModuleShowJobIcons
   id: HudModuleShowMindShieldIcons
-  name: mindshield icon hud module
+  name: mindshield icon HUD module
   description: A heads-up display module which scans the humanoids in view and provides accurate data about their ID and mindshield status.
   components:
   - type: Sprite
@@ -256,7 +256,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleNoirOverlay
-  name: noir-tech hud module
+  name: noir-tech HUD module
   description: A heads-up display module which simulates what the world looked like before the invention of color.
   components:
   - type: Sprite
@@ -273,13 +273,13 @@
     visuals:
       lens:
         color: Tan
-        priority: 4
+        priority: 10001 # Because of memes, this is critically important to have as the highest priority.
   - type: NoirOverlay
 
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleBlackAndWhiteOverlay
-  name: black and white hud module
+  name: black and white HUD module
   description: A heads-up display module which simulates what the world looks like to those who deal in absolutes.
   components:
   - type: Sprite
@@ -302,7 +302,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleShowCriminalRecordIcons
-  name: criminal record icons hud module
+  name: criminal record icons HUD module
   description: A heads-up display module which scans the humanoids in view and provides accurate data about their criminal records.
   components:
   - type: Sprite
@@ -327,7 +327,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleShowInorganicHealthBars
-  name: diagnostic hud module
+  name: diagnostic HUD module
   components:
   - type: Sprite
     layers:
@@ -350,7 +350,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleShowMedicalIcons
-  name: health hud module
+  name: health HUD module
   description: A heads-up display module which scans the humanoids in view and provides accurate data about their health status.
   components:
   - type: Sprite
@@ -372,7 +372,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleShowHungerIcons
-  name: hunger icons hud module
+  name: hunger icons HUD module
   description: A heads-up display module scans the humanoids in view and provides accurate data about their... hunger. Is this what Nanotrasen spends money on?
   components:
   - type: Sprite
@@ -393,7 +393,7 @@
 - type: entity
   parent: ModularHudModuleBase
   id: HudModuleShowThirstIcons
-  name: thirst icons hud module
+  name: thirst icons HUD module
   description: A heads-up display module scans the humanoids in view and provides accurate data about their... thirst. Hydration check!
   components:
   - type: Sprite

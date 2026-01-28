@@ -174,7 +174,7 @@
 ## Abstract Modular HUD protos. Combine these with one of the HUDs above as parents to get functioning HUDs.
 
 - type: entity
-  id: AbstractModularHudSecurityIcons
+  id: AbstractModularHudSecurity
   abstract: true
   suffix: Security
   components:
@@ -186,7 +186,7 @@
         - id: HudModuleShowCriminalRecordIcons
         - id: HudModuleShowContrabandDetails
   - type: Label
-    currentLabel: modular-hud-premade-security
+    currentLabel: modularhud-premade-security
 
 - type: entity
   id: AbstractModularHudMedicalIcons
@@ -199,7 +199,7 @@
         children:
         - id: HudModuleShowMedicalIcons
   - type: Label
-    currentLabel: modular-hud-premade-medical
+    currentLabel: modularhud-premade-medical
 
 - type: entity
   id: AbstractModularHudDiagnostic
@@ -213,7 +213,7 @@
         - id: HudModuleShowInorganicHealthBars
         - id: HudModuleShowAccessReaderSettings
   - type: Label
-    currentLabel: modular-hud-premade-diagnostic
+    currentLabel: modularhud-premade-diagnostic
 
 - type: entity
   id: AbstractModularHudCommand
@@ -226,7 +226,7 @@
         children:
         - id: HudModuleShowJobIcons
   - type: Label
-    currentLabel: modular-hud-premade-command
+    currentLabel: modularhud-premade-command
 
 - type: entity
   id: AbstractModularHudBeer
@@ -239,7 +239,7 @@
         children:
         - id: HudModuleShowThirstIcons
   - type: Label
-    currentLabel: modular-hud-premade-thirst
+    currentLabel: modularhud-premade-thirst
 
 - type: entity
   id: AbstractModularHudChemistry
@@ -252,7 +252,7 @@
         children:
         - id: HudModuleSolutionScanner
   - type: Label
-    currentLabel: modular-hud-premade-chemistry
+    currentLabel: modularhud-premade-chemistry
 
 - type: entity
   id: AbstractModularHudEngineering
@@ -265,12 +265,12 @@
         children:
         - id: HudModuleEyeProtection
   - type: Label
-    currentLabel: modular-hud-premade-engineering
+    currentLabel: modularhud-premade-engineering
 
 ## Premade modular HUD usages
 
 - type: entity
-  parent: [ClothingEyesModularHudSunglasses, AbstractModularHudSecurityIcons]
+  parent: [ClothingEyesModularHudSunglasses, AbstractModularHudSecurity]
   id: ClothingEyesGlassesSecurity
 
 - type: entity
@@ -290,7 +290,7 @@
   id: ClothingEyesHudMedical
 
 - type: entity
-  parent: [ClothingEyesModularHudVisor, AbstractModularHudSecurityIcons]
+  parent: [ClothingEyesModularHudVisor, AbstractModularHudSecurity]
   id: ClothingEyesHudSecurity
 
 - type: entity
@@ -302,7 +302,7 @@
   id: ClothingEyesEyepatchHudMedical
 
 - type: entity
-  parent: [ClothingEyesModularHudPatch, AbstractModularHudSecurityIcons]
+  parent: [ClothingEyesModularHudPatch, AbstractModularHudSecurity]
   id: ClothingEyesEyepatchHudSecurity
 
 - type: entity
@@ -322,6 +322,14 @@
   id: ClothingEyesGlassesMeson
 
 - type: entity
+  parent: [ClothingEyesModularHudCheapSunglasses, AbstractModularHudBeer]
+  id: ClothingEyesHudBeer
+
+- type: entity
+  parent: [ClothingEyesModularHudPatch, AbstractModularHudBeer]
+  id: ClothingEyesEyepatchHudBeer
+
+- type: entity
   parent: [ClothingEyesModularHudGoggles]
   id: ClothingEyesGlassesMedChem
   suffix: MedChem
@@ -333,7 +341,7 @@
         - id: HudModuleShowMedicalIcons
         - id: HudModuleSolutionScanner
   - type: Label
-    currentLabel: modular-hud-premade-medchem
+    currentLabel: modularhud-premade-medchem
 
 - type: entity
   parent: [ClothingEyesModularHudVisor]
@@ -349,4 +357,20 @@
         - id: HudModuleShowContrabandDetails
         - id: HudModuleShowMedicalIcons
   - type: Label
-    currentLabel: modular-hud-premade-medsec
+    currentLabel: modularhud-premade-medsec
+
+- type: entity
+  parent: [ClothingEyesModularHudSunglasses]
+  id: ClothingEyesGlassesNoir
+  suffix: Noir
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowMindShieldIcons
+        - id: HudModuleShowCriminalRecordIcons
+        - id: HudModuleShowContrabandDetails
+        - id: HudModuleNoirOverlay
+  - type: Label
+    currentLabel: modularhud-premade-noir

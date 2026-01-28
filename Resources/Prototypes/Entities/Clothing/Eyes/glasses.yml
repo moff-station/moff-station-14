@@ -257,6 +257,7 @@
 - type: entity
   parent: ClothingEyesBase
   id: ClothingEyesGlassesChemicalUpstream # Moffstation - Replaced by modular HUDs
+  categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: chemical analysis goggles
   description: Goggles that can scan the chemical composition of a solution.
   components:
@@ -286,7 +287,8 @@
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]
-  id: ClothingEyesGlassesNoir
+  id: ClothingEyesGlassesNoirUpstream # Moffstation - Replaced by modular HUDs
+  categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: noir-tech glasses
   description: A pair of glasses that simulate what the world looked like before the invention of color.
   components:

@@ -14,13 +14,34 @@ modularhud-examine-modules-header = It contains:
 modularhud-examine-module-item = - [bold]{$module}[/bold]
 
 # Labels for premade HUDs
-modular-hud-premade-security = Security
-modular-hud-premade-medical = Medical
-modular-hud-premade-diagnostic = Diagnostic
-modular-hud-premade-command = Command
-modular-hud-premade-thirst = Beer
-modular-hud-premade-chemistry = Chemical Analysis
-modular-hud-premade-engineering = Engineering
+modularhud-premade-security = Security
+modularhud-premade-noir = Noir-tech
+modularhud-premade-medical = Medical
+modularhud-premade-diagnostic = Diagnostic
+modularhud-premade-command = Command
+modularhud-premade-thirst = Beer
+modularhud-premade-chemistry = Chemical Analysis
+modularhud-premade-engineering = Engineering
+modularhud-premade-medchem = "Valkyrie" MedChem
+modularhud-premade-medSec = MedSec
 
 # Module requirements
 modular-hud-requirement-full-coverage = Requires eyewear which fully covers all eyes
+
+# Loadout name overrides
+moff-loadout-admin-sunglasses = administration glasses
+moff-loadout-admin-hud = administration hud
+moff-loadout-noir-sunglasses = noir-tech sunglasses
+moff-loadout-security-sunglasses = security sunglasses
+moff-loadout-security-patch = security eye-patch
+moff-loadout-security-hud = security hud
+moff-loadout-engineering-glasses = engineering sunglasses
+moff-loadout-engineering-goggles = engineering goggles
+moff-loadout-chemistry-goggles = chemical analysis goggles
+moff-loadout-medical-glasses = medical sunglasses
+moff-loadout-diagnostic-hud = diagnostic hud
+moff-loadout-diagnostic-patch = diagnostic patch
+moff-loadout-beer-hud = beer hud
+moff-loadout-beer-patch = beer patch
+moff-loadout-medical-hud = medical hud
+moff-loadout-medical-patch = medical patch
