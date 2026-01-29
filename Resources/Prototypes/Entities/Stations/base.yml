@@ -18,6 +18,9 @@
         Security: [ ]
         Service: [ ]
         Pirates: [ ] # Moffstation
+      markets:
+      - market
+      - bookMarket
     - type: StationCargoBountyDatabase
 
 - type: entity
