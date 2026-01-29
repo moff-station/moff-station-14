@@ -1,0 +1,19 @@
+- type: entity
+  parent: ERTLeaderIDCard
+  id: NTCFPilotIDCard
+  name: NTCF pilot ID card
+  components:
+  - type: PresetIdCard
+    job: NTCFPilot
+  - type: NanoChatCard # CD
+    listNumber: false
+
+- type: entity
+  parent: ERTEngineerIDCard
+  id: NTCFEngineerIDCard
+  name: NTCF flight engineer ID card
+  components:
+  - type: PresetIdCard
+    job: NTCFEngineer
+  - type: NanoChatCard # CD
+    listNumber: false

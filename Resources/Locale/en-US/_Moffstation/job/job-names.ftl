@@ -1,3 +1,8 @@
+## CentComm
+# Nanotrasen Corporate Fleet
+job-name-ntcfpilot = NTCF Pilot
+job-name-ntcfengineer = NTCF Flight Engineer
+
 ## Command
 job-name-captain-commanding-officer = Commanding Officer
 job-name-hop-hr-administrator = HR Administrator
