@@ -20,3 +20,24 @@
   - type: SpentAmmoVisuals
   - type: StaticPrice
     price: 20
+
+# bouncy bullets
+- type: entity
+  parent: [ BaseCartridge, BaseMajorContraband, CartridgeAntiMateriel ]
+  id: CartridgeAntiMaterielRicochet
+  name: cartridge (.60 ricochet)
+  description: Delight and kill your friends, enemies, and even yourself with this bouncing bullet!
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - CartridgeAntiMateriel
+  - type: CartridgeAmmo
+    proto: BulletAntiMaterielRicochet
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Casings/large_casing.rsi
+    layers:
+    - state: silver
+      map: [ "enum.AmmoVisualLayers.Base" ]
