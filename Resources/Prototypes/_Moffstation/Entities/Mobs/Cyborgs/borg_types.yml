@@ -17,6 +17,10 @@
   - BorgModuleArtifact
   - BorgModuleAnomaly
 
+  requiredModules:
+  - tags:
+    - CyborgAnomalyModule
+
   radioChannels:
   - Science
 

@@ -240,6 +240,10 @@
           - AnomalyCore
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
+  - type: Tag
+    tags:
+    - BorgModuleScience
+    - CyborgAnomalyModule
 
 # Pirate Modules
 - type: entity

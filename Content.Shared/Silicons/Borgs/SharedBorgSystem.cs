@@ -1,3 +1,5 @@
+using System.Linq; // Moffstation
+using Content.Shared._Moffstation.Extensions; // Moffstation
 using Content.Shared.Access.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -33,6 +35,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Silicons.Borgs;
 
@@ -167,6 +170,13 @@ public abstract partial class SharedBorgSystem : EntitySystem
     // TODO: consider transferring over the ghost role? managing that might suck.
     protected virtual void OnInserted(Entity<BorgChassisComponent> chassis, ref EntInsertedIntoContainerMessage args)
     {
+        // Moffstation - Begin - Advanced borg modules allow removal of basic variants
+        if (args.Container == chassis.Comp.ModuleContainer && HasComp<BorgModuleComponent>(args.Entity))
+        {
+            SyncModuleStatesToRequirements(chassis);
+        }
+        // Moffstation - End
+
         if (_timing.ApplyingState)
             return; // The changes are already networked with the same game state
 
@@ -181,6 +191,13 @@ public abstract partial class SharedBorgSystem : EntitySystem
 
     protected virtual void OnRemoved(Entity<BorgChassisComponent> chassis, ref EntRemovedFromContainerMessage args)
     {
+        // Moffstation - Begin - Advanced borg modules allow removal of basic variants
+        if (args.Container == chassis.Comp.ModuleContainer && HasComp<BorgModuleComponent>(args.Entity))
+        {
+            SyncModuleStatesToRequirements(chassis);
+        }
+        // Moffstation - End
+
         if (_timing.ApplyingState)
             return; // The changes are already networked with the same game state
 
@@ -192,6 +209,40 @@ public abstract partial class SharedBorgSystem : EntitySystem
             _mind.TransferTo(mindId, args.Entity, mind: mind);
         }
     }
+
+    // Moffstation - Begin - Advanced borg modules allow removal of basic variants
+    private void SyncModuleStatesToRequirements(Entity<BorgChassisComponent> chassis)
+    {
+        var allInstalledModules = chassis.Comp.ModuleContainer.ContainedEntities
+            .WithComp<BorgModuleComponent>(EntityManager)
+            .ToList();
+
+        var modulesSatisfyingAnyRequirement = new List<Entity<BorgModuleComponent>>();
+        var modulesGroupedByRequirement = new List<List<Entity<BorgModuleComponent>>>();
+        foreach (var borgModuleRequirement in chassis.Comp.ModuleRequirements)
+        {
+            var modulesSatisfyingRequirement = allInstalledModules
+                .Where(it => _whitelist.IsWhitelistPass(borgModuleRequirement, it))
+                .ToList();
+
+            modulesSatisfyingAnyRequirement.AddRange(modulesSatisfyingRequirement);
+            modulesGroupedByRequirement.Add(modulesSatisfyingRequirement);
+        }
+
+        // Any "group" which contains exactly one module means that module is strictly required by a requirement.
+        foreach (var module in modulesGroupedByRequirement.Where(it => it.Count == 1).SelectMany(it => it))
+        {
+            SetBorgModuleDefault(module, true);
+            modulesSatisfyingAnyRequirement.Remove(module);
+        }
+
+        // Any remaining modules which satisfy some requirement, but weren't made strictly required above are optional.
+        foreach (var module in modulesSatisfyingAnyRequirement)
+        {
+            SetBorgModuleDefault(module, false);
+        }
+    }
+    // Moffstation - End
 
     private void OnMindAdded(Entity<BorgChassisComponent> chassis, ref MindAddedMessage args)
     {
