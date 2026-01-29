@@ -4,6 +4,10 @@
   components:
   - type: GameRule
     minPlayers: 28 # minimum of 4 conspirators
+    # Moffstation - Start - Delay so they don't get selected on arrivals
+    delay:
+      min: 240
+      max: 300
   - type: ConspiratorRule
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
