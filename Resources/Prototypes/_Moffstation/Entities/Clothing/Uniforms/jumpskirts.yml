@@ -350,3 +350,14 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerkarmic.rsi # Moffstation
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerkarmic.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerPsyched
+  name: psyched lawyer suitskirt
+  description: A stylish yellow piece worn by lawyers interested in psycho-analysing witness testimonies.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpsyched.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpsyched.rsi # Moffstation
