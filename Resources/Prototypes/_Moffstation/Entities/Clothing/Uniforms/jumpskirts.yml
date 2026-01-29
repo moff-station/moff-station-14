@@ -338,3 +338,15 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_atmos.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_atmos.rsi
+
+#Lawyer
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerCyan
+  name: cyan lawyer suitskirt
+  description: A stylish cyan piece worn by lawyers tired of foolish foolery of foolish fools.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyercyan.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyercyan.rsi # Moffstation
