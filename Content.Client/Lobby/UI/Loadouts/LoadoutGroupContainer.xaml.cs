@@ -7,6 +7,8 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Robust.Shared.Configuration;  // Moffstation
+using Content.Shared._Moffstation.CCVar; // Moffstation
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -25,6 +27,8 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
+
+    [Dependency] private readonly IConfigurationManager _configurationManager = default!; // Moffstation
 
     public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection)
     {
@@ -75,6 +79,11 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         // Get all loadout prototypes for this group.
         var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
+        
+        // MOFFSTATION - Personal Item Filters
+        if (!_configurationManager.GetCVar(MoffCCVars.ShowAllLoadouts))
+            validProtos = validProtos.Where((proto) => loadout.IsValid(profile, session, proto.ID, collection, out var reason));
+        // MOFFSTATION - End
 
         /*
          * Group the prototypes based on their GroupBy field.
