@@ -356,6 +356,14 @@ namespace Content.Server.Database
                 .Property(p => p.Type)
                 .HasDefaultValue(HwidType.Legacy);
 
+            // Moffstation - Start - Weighted Antags
+            modelBuilder.Entity<MoffModel.MoffPlayer>()
+                .HasOne(mp => mp.Player)
+                .WithOne(p => p.MoffPlayer)
+                .HasForeignKey<MoffModel.MoffPlayer>(mp => mp.PlayerUserId)
+                .HasPrincipalKey<Player>(p => p.UserId);
+            // Moffstation - End
+
             modelBuilder.Entity<ServerBan>()
                 .OwnsOne(p => p.HWId)
                 .Property(p => p.Hwid)
@@ -611,6 +619,9 @@ namespace Content.Server.Database
         public List<ServerRoleBan> AdminServerRoleBansCreated { get; set; } = null!;
         public List<ServerRoleBan> AdminServerRoleBansLastEdited { get; set; } = null!;
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
+
+        // Moffstation - Weighted Antags
+        public MoffModel.MoffPlayer MoffPlayer { get; set; } = new();
     }
 
     [Table("whitelist")]

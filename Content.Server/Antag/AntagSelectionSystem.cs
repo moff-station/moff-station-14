@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Moffstation.Antag;
 using Content.Server.Administration.Managers;
 using Content.Server.Antag.Components;
 using Content.Server.Chat.Managers;
@@ -13,7 +14,7 @@ using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
-using Content.Server.Shuttles.Components;
+using Content.Server.Shuttles.Systems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Antag;
 using Content.Shared.Clothing;
@@ -55,6 +56,8 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly ArrivalsSystem _arrivals = default!;
+    [Dependency] private readonly WeightedAntagManager _antagWeight = default!;
 
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
@@ -74,6 +77,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayerSpawning);
         SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawnComplete);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundEnd);
     }
 
     private void OnTakeGhostRole(Entity<GhostRoleAntagSpawnerComponent> ent, ref TakeGhostRoleEvent args)
@@ -169,6 +173,15 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (!args.LateJoin)
             return;
 
+        TryMakeLateJoinAntag(args.Player);
+    }
+
+    /// <summary>
+    /// Attempt to make this player be a late-join antag.
+    /// </summary>
+    /// <param name="session">The session to attempt to make antag.</param>
+    public void TryMakeLateJoinAntag(ICommonSession session)
+    {
         // TODO: this really doesn't handle multiple latejoin definitions well
         // eventually this should probably store the players per definition with some kind of unique identifier.
         // something to figure out later.
@@ -198,7 +211,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             if (!TryGetNextAvailableDefinition((uid, antag), out var def, players))
                 continue;
 
-            if (TryMakeAntag((uid, antag), args.Player, def.Value))
+            if (TryMakeAntag((uid, antag), session, def.Value))
                 break;
         }
     }
@@ -271,7 +284,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         AntagSelectionDefinition def,
         bool midround = false)
     {
-        var playerPool = GetPlayerPool(ent, pool, def);
+        // Moffstation - Start - Weighted Antags
+        var weightedPool = GetWeightedAntagPool(pool);
+        var playerPool = GetPlayerPool(ent, weightedPool, def);
+        // Moffstation - End
         var existingAntagCount = ent.Comp.PreSelectedSessions.TryGetValue(def, out var existingAntags) ? existingAntags.Count : 0;
         var count = GetTargetAntagCount(ent, GetTotalPlayerCount(pool), def) - existingAntagCount;
 
@@ -300,7 +316,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
                 if (session != null && ent.Comp.PreSelectedSessions.Values.Any(x => x.Contains(session)))
                 {
-                    Log.Warning($"Somehow picked {session} for an antag when this rule already selected them previously");
+                    // Moffstation - Start - Weighted Antags
+                    Log.Info($"Picked {session} for an antag when this rule already selected them previously");
+                    // Log.Warning($"Somehow picked {session} for an antag when this rule already selected them previously");
+                    // Moffstation - End
                     continue;
                 }
             }
@@ -309,6 +328,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 MakeAntag(ent, null, def); // This is for spawner antags
             else
             {
+                _antagWeight.SetWeight(session.UserId, 1); // Moffstation - Reset antag weight
                 if (!ent.Comp.PreSelectedSessions.TryGetValue(def, out var set))
                     ent.Comp.PreSelectedSessions.Add(def, set = new HashSet<ICommonSession>());
                 set.Add(session); // Selection done!
@@ -316,7 +336,34 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 _adminLogger.Add(LogType.AntagSelection, $"Pre-selected {session.Name} as antagonist: {ToPrettyString(ent)}");
             }
         }
+        // Moffstation - Start - Weighted antag selection
+        foreach (var set in ent.Comp.PreSelectedSessions.Values)
+        {
+            if (set.Count == 0)
+                continue;
+
+            foreach (var session in pool)
+            {
+                if (set.Contains(session))
+                    continue;
+
+                _antagWeight.SetWeight(session.UserId, _antagWeight.GetWeight(session.UserId) + 1);
+            }
+        }
+        // Moffstation - End
     }
+
+    // Moffstation - Start - Weighted antag selection
+    public List<ICommonSession> GetWeightedAntagPool(IList<ICommonSession> pool)
+    {
+        return pool.SelectMany(session => Enumerable.Repeat(session, _antagWeight.GetWeight(session.UserId))).ToList();
+    }
+
+    private void OnRoundEnd(RoundRestartCleanupEvent args)
+    {
+        _antagWeight.Save();
+    }
+    // Moffstation - End
 
     /// <summary>
     /// Assigns antag roles to sessions selected for it.
@@ -583,7 +630,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (entity == null)
             return true;
 
-        if (HasComp<PendingClockInComponent>(entity))
+        if (_arrivals.IsOnArrivals((entity.Value, null)))
             return false;
 
         if (!def.AllowNonHumans && !HasComp<HumanoidAppearanceComponent>(entity))
