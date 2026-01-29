@@ -1,0 +1,116 @@
+﻿- type: entity
+  save: false
+  name: Urist McWebs
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobSneople
+  abstract: true
+  components:
+  - type: Body
+    prototype: Sneople
+    requiredLegs: 2
+  - type: HumanoidAppearance
+    species: Sneople
+  - type: Hunger
+  - type: Thirst
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - AnomalyHost
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 5
+  - type: Reactive
+    reactions:
+    - reagents: [Water]
+      methods: [Touch]
+      effects:
+      - !type:SpawnEntityInInventory
+        slot: head
+        entity: WaterDropletHat #snails deserve water drop
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPie
+    - reagents: [ TableSalt, Saline ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaling: true
+        damage:
+          types:
+            Heat: 0.5 # MOFFSTATION CHANGE - Increases slime water damage by 5x
+  - type: Bloodstream
+    bloodReagent: CopperBlood #need to figure out blood
+  # Visual & Audio
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#162581"
+      Burn:
+        sprite: Mobs/Effects/burn_damage.rsi
+  - type: Speech
+    speechVerb: Sneople
+    speechSounds: Sneople
+    allowedEmotes: ['Click', 'Chitter']
+  - type: Vocal
+    sounds:
+      Male: MaleReptilian # Swapping to Reptilian sounds cause Sneople ones don't exist atm.
+      Female: FemaleReptilian
+      Unsexed: MaleReptilian
+  #- type: TypingIndicator
+   # proto: #wip
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: ["jumpsuit"]
+    - map: ["enum.HumanoidVisualLayers.LFoot"]
+    - map: ["enum.HumanoidVisualLayers.RFoot"]
+    - map: ["enum.HumanoidVisualLayers.LHand"]
+    - map: ["enum.HumanoidVisualLayers.RHand"]
+    - map: [ "gloves" ]
+    - map: [ "shoes" ]
+    - map: [ "id" ]
+    - map: [ "outerClothing" ]
+    - map: [ "belt" ]
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "back" ]
+    - map: [ "neck" ]
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "ears" ]
+    - map: [ "eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobSneopleDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Sneople
