@@ -8,6 +8,7 @@
     - id: CockroachMigration
     - id: MouseMigration
     - id: MothroachMigration # Moffstation
+    - id: WhimperletMigration # Moffstation
 
 - type: entityTable
   id: SpicyPestEventsTable
@@ -15,6 +16,12 @@
     children:
     - id: KingRatMigration
     - id: SnailMigration
+    - id: SlimesSpawn # Moffstation
+    - id: SnakeSpawn # Moffstation
+    - id: SpiderClownSpawn # Moffstation
+    - id: SpiderSpawn # Moffstation
+    - id: CarpMigration # Moffstation
+    - id: SyndiSoliderMigration # Moffstation
 
 # events
 

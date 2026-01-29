@@ -3233,6 +3233,14 @@
         Slash: 6
         Piercing: 6
         Structural: 15
+  # Moffstation - Start - Make their AI be hostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  # Moffstation - End
 
 - type: entity
   name: space cat
