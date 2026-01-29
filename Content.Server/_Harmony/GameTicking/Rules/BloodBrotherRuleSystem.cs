@@ -237,7 +237,7 @@ public sealed class BloodBrotherRuleSystem : GameRuleSystem<BloodBrotherRuleComp
             return false;
         }
 
-        if (!HasComp<HumanoidAppearanceComponent>(target))
+        if (!HasComp<HumanoidProfileComponent>(target))
         {
             errorMessage = "blood-brother-convert-failed-no-mind";
             return false;

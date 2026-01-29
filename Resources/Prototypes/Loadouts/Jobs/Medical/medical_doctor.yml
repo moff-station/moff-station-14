@@ -1,36 +1,4 @@
-# Senior Time
-- type: loadoutEffectGroup
-  id: SeniorPhysician
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobChemist
-      time: 6h
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobMedicalDoctor
-      time: 6h
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Medical
-      time: 60h
-
-# Other Timers
-
-- type: loadoutEffectGroup
-  id: MedicalHeadMirrorTimer
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobMedicalDoctor
-      time: 30h
-
 # Head
-
 - type: loadout
   id: SeniorPhysicianBeret
   effects:
@@ -43,7 +11,7 @@
   id: MedicalHeadMirror
   effects:
   - !type:GroupLoadoutEffect
-    proto: MedicalHeadMirrorTimer
+    proto: MedicalJourneymanTimer
   equipment:
     head: ClothingHeadMirror
 
@@ -176,26 +144,8 @@
     id: SeniorPhysicianPDA
   groupBy: "doctor roles" # Moffstation - Additional Roles
 
-# Gloves
-- type: loadout
-  id: NitrileGloves
-  equipment:
-    gloves: ClothingHandsGlovesNitrile
-
 #Masks
 - type: loadout
   id: SterileMask
   equipment:
     mask: ClothingMaskSterile
-
-#Eyewear
-- type: loadout
-  id: MedicalHud
-  equipment:
-    eyes: ClothingEyesHudMedical
-
-- type: loadout
-  id: MedicalEyePatchHud
-  groupBy: "medEyepatch" # Moffstation - loadout improvements
-  equipment:
-    eyes: ClothingEyesEyepatchHudMedical
