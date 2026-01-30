@@ -4,7 +4,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/posters.rsi
+    sprite: _Moffstation/Structures/Wallmounts/posters.rsi # Moffstation - Posters
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Card
