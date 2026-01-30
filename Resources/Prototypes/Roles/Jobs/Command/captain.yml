@@ -4,6 +4,10 @@
   description: job-description-captain
   playTimeTracker: JobCaptain
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 30h
+    # Moffstation - End
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 4h
@@ -38,9 +42,9 @@
   id: CaptainGear
   equipment:
     shoes: ClothingShoesBootsLaceup
-    eyes: ClothingEyesGlassesCommand
+  # eyes: ClothingEyesGlassesCommand  # Moffstation - Eyepatches!
     gloves: ClothingHandsGlovesCaptain
-    id: CaptainPDA
+    #id: CaptainPDA # Moffstation - New PDAs
     ears: ClothingHeadsetAltCommand
   storage:
     back:

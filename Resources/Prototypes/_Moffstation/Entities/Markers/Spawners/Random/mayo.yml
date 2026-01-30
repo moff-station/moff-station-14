@@ -1,0 +1,16 @@
+- type: entity
+  name: mayonnaise
+  id: VariantMayoSpawner
+  parent: MarkerBase
+  suffix: spawner
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/ingredients.rsi
+    state: mayo
+  - type: RandomSpawner
+    prototypes:
+    - ReagentContainerMayo
+    rarePrototypes:
+    - MayoInstrument
+    rareChance: 0.05
+    offset: 0.0

@@ -174,38 +174,26 @@
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-musical-module }
 
 - type: entity
-  id: BorgModulePainting
+  id: BorgModuleScienceGeneric
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: painting cyborg module
+  name: generalized scientific cyborg module
   components:
   - type: Sprite
     layers:
     - state: generic
-    - state: icon-pen
+    - state: icon-anomalies
   - type: ItemBorgModule
     hands:
+    - item: NodeScanner
+    - item: AnomalyScanner
     - hand:
-        emptyLabel: borg-slot-crayon-empty
-        emptyRepresentative: CrayonRainbow
+        emptyRepresentative: SheetPlasma
+        emptyLabel: borg-slot-construction-empty
         whitelist:
-          components: #Lets us hold just crayons
-          - Crayon
-    - item: CrayonBox
-      hand:
-        emptyLabel: borg-slot-crayon-box-empty
-        emptyRepresentative: CrayonBox
-        whitelist:
-          tags: #Lets us hold both crayons AND the crayon box
-          - Crayon
-    - item: SprayPainterBorg
-    - hand:
-        emptyLabel: borg-slot-paint-empty
-        emptyRepresentative: SprayPainterAmmo
-        whitelist:
-          components:
-          - SprayPainterAmmo
+          tags:
+          - ConstructionMaterial
   - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: paint-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-anomaly-module }
 
 - type: entity
   id: BorgModuleTopicalsGeneric
@@ -218,7 +206,7 @@
     - state: icon-treatment
   - type: ItemBorgModule
     hands:
-    - item: HandheldHealthAnalyzerUnpowered
+    - item: HandheldHealthAnalyzer
     - hand:
         emptyRepresentative: Brutepack
         emptyLabel: borg-slot-topicals-empty

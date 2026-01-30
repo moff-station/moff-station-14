@@ -14,7 +14,7 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: RedLightLaser
     fireCost: 50
   - type: ItemSlots
@@ -64,6 +64,8 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
+  - type: StealTarget
+    stealGroup: WeaponRevolverBigIron
   - type: Gun
     fireRate: 2
     soundGunshot:
@@ -76,7 +78,7 @@
         whitelist:
           tags:
           - PowerCellBigIron
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletBigIronDisabler
     fireCost: 50
   - type: BatteryWeaponFireModes
@@ -93,5 +95,4 @@
   description: An even smaller particle handcannon, designed for cyborg use.
   components:
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 10

@@ -1,0 +1,25 @@
+# Player: TheSpookyRabbit / Character: Malenia Winters
+- type: entity
+  parent: ClothingHandsBase
+  id: PersonalItemMaleniaRing
+  name: Malenia's Wedding Ring
+  description: A blue tinted golden ring. The engraving reads "Camilla & Malenia".
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/TheSpookyRabbit/Malenia_Winters/maleniaring.rsi
+  - type: Clothing
+    quickEquip: true
+    sprite: _Moffstation/PersonalItems/Wearables/TheSpookyRabbit/Malenia_Winters/maleniaring.rsi
+  - type: Item
+    size: Tiny
+
+- type: loadout
+  id: PersonalItemMaleniaRing
+  storage:
+    back:
+    - PersonalItemMaleniaRing
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Malenia Winters

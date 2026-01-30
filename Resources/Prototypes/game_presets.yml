@@ -40,6 +40,7 @@
     - Revolutionary
     - Zombie
     - Wizard
+    - Xenoborgs
     - Pirates # Moffstation
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
@@ -62,6 +63,7 @@
     - Revolutionary
     - Zombie
     - Wizard
+    - Xenoborgs
     - Pirates # Moffstation
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
@@ -85,6 +87,7 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  - ExtendedNotificationEvent # Moffstation - For the notification
 
 - type: gamePreset
   id: Greenshift
@@ -195,7 +198,7 @@
   rules:
   - DummyNonAntagChance
   - Revolutionary
-  - SubGamemodesRuleNoWizard # Moffstation - Remove wizard from natural spawn
+  - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -212,6 +215,22 @@
   - Wizard
   - DummyNonAntagChance
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Xenoborgs
+  alias:
+    - xenoborgs
+  name: xenoborgs-title
+  description: xenoborgs-description
+  showInVote: false
+  rules:
+  - Xenoborgs
+  - DummyNonAntagChance
+  - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

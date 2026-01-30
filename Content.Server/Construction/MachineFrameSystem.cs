@@ -1,6 +1,6 @@
 using Content.Server.Construction.Components;
 using Content.Server.Stack;
-using Content.Shared._Moffstation.BladeServer;
+using Content.Shared._Moffstation.BladeServer; // Moffstation
 using Content.Shared.Construction.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -192,7 +192,7 @@ public sealed class MachineFrameSystem : EntitySystem
             return true;
         }
 
-        var splitStack = _stack.Split(used, needed, Transform(uid).Coordinates, stack);
+        var splitStack = _stack.Split((used, stack), needed, Transform(uid).Coordinates);
 
         if (splitStack == null)
             return false;

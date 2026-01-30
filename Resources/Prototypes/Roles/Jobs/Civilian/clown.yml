@@ -17,8 +17,7 @@
         types: #literally just picked semi random valus. i tested this once and tweaked it.
           Blunt: 5
           Piercing: 4
-        groups:
-          Burn: 3
+          Heat: 3
       catchingFailDamage:
         types:
           Blunt: 1
@@ -31,11 +30,13 @@
 - type: startingGear
   id: ClownGear
   equipment:
-    mask: ClothingMaskClown
+#    mask: ClothingMaskClown # Moffstation - Moved into Loadouts
     pocket1: BikeHorn
     pocket2: ClownRecorder
 #    id: ClownPDA # Moffstation - PDA loadouts
     ears: ClothingHeadsetService
+  inhand:
+  - FoolboxFilled
   storage:
     back:
     - RubberStampClown

@@ -1,0 +1,96 @@
+﻿# TO ADD A NEW PERSONAL ITEM LOADOUT, you MUST do the following:
+#
+# 1. Create a LOADOUT (type: loadout) with a PersonalItemLoadoutEffect
+#    that refers to your character. Punctuation MUST match EXACTLY.
+#    ID: same as the personal item entity.
+#    Place this within the Prototypes/_Moffstation/PersonalItems/[Category]/[PlayerName]/[PersonalItemName].yml file below the item
+# 2. One loadout section per personal item.
+# 3. Add the loadout to the loadout group below.
+
+- type: loadoutGroup
+  id: PersonalItemsJobAgnostic
+  name: loadout-group-personal-items
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - PersonalItemAdelineTurtleneck
+  - PersonalItemAnatolyGown
+  - PersonalItemAngelPiano
+  - PersonalItemArieApple
+  - PersonalItemAsterGuitar
+  - PersonalItemAuroraPin
+  - PersonalItemAzumeGuitar
+  - PersonalItemBintendoHat
+  - PersonalItemBoxcarGlasses
+  - PersonalItemCamillaRing
+  - PersonalItemCarolynFlettCigsPack
+  - PersonalItemCatCard
+  - PersonalItemCinnabarMask
+  - PersonalItemCooksEnvelope
+  - PersonalItemCooksPlushie
+  - PersonalItemCoryClipboard
+  - PersonalItemCuriesCap
+  - PersonalItemDarnellLighter
+  - PersonalItemDawnBottle
+  - PersonalItemDeliPearl
+  - PersonalItemDelilahSuit
+  - PersonalItemEclipseSunshadeGun
+  - PersonalItemEddieGuitar
+  - PersonalItemFredSuit
+  - PersonalItemFrostMedicalWebbing
+  - PersonalItemGhostwoodCoat
+  - PersonalItemGigsShaker
+  - PersonalItemGumboSlippers
+  - PersonalItemHercynSuit
+  - PersonalItemHotSauceFireExtinguisher
+  - PersonalItemIchabodHead
+  - PersonalItemIoImplanter
+  - PersonalItemIrisRing
+  - PersonalItemJessMask
+  - PersonalItemKatieWristBand
+  - PersonalItemKazaWreath
+  - PersonalItemKazoSkates
+  - PersonalItemKennyPrisonerShirt
+  - PersonalItemKimBass
+  - PersonalItemKrakatoaCloak
+  - PersonalItemKylieUniform
+  - PersonalItemLaeliaSpiritBox
+  - PersonalItemLilithGuitar
+  - PersonalItemMaleniaRing
+  - PersonalItemMarvinHeadphones
+  - PersonalItemMossCloak
+  - PersonalItemNiahLighter
+  - PersonalItemNyxilathPositronicHeart
+  - PersonalItemPeedeeAvatar
+  - PersonalItemPeriwinkleFace
+  - PersonalItemPilkmanPlushie
+  - PersonalItemRemiaPin
+  - PersonalItemRoseHeadphones
+  - PersonalItemRufflerMask
+  - PersonalItemRykerPen
+  - PersonalItemSamRVFlask
+  - PersonalItemSammyPlushie
+  - PersonalItemSapphireAmpule
+  - PersonalItemSawaTarUniform
+  - PersonalItemScribblesPlushie
+  - PersonalItemSeanSheet
+  - PersonalItemSeikretPhoto
+  - PersonalItemSharedReptilianFamilyPhoto
+  - PersonalItemSharedStationBlueprints
+  - PersonalItemShimmyPistolCase
+  - PersonalItemSiegeHalffloofMask
+  - PersonalItemSigerthePlushie
+  - PersonalItemSkiesOfSunshine
+  - PersonalItemSkrikiPlush
+  - PersonalItemSqueaksHampter
+  - PersonalItemStrawberryBackTentacles
+  - PersonalItemSurgeTerrarium
+  - PersonalItemSwanerPhoto
+  - PersonalItemSwimsWizardHat
+  - PersonalItemTalviHoodie
+  - PersonalItemTaniaBackTentacles
+  - PersonalItemTarAwasMp4Player
+  - PersonalItemToffeeMask
+  - PersonalItemVexMask
+  - PersonalItemVivonicMantle
+  - PersonalItemVortexMask

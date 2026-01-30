@@ -1,6 +1,8 @@
 using Content.Client._Starlight.Overlay;
 using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared.Flash;
+using Content.Shared.Flash.Components;
+using Content.Shared.Inventory;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -17,9 +19,7 @@ public sealed class NightVisionSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly TransformSystem _xformSys = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedFlashSystem _flash = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -52,7 +52,7 @@ public sealed class NightVisionSystem : EntitySystem
 
     private void OnPlayerDetached(Entity<NightVisionComponent> ent, ref LocalPlayerDetachedEvent args)
     {
-        RemoveEffect(ent, true);
+        RemoveEffect(ent);
     }
 
     private void OnVisionInit(Entity<NightVisionComponent> ent, ref ComponentInit args)
@@ -78,17 +78,9 @@ public sealed class NightVisionSystem : EntitySystem
         entity.Comp.Effect = effect;
     }
 
-    // `force` is needed because we need to remove the overlay AFTER the player is detached.
-    private void RemoveEffect(Entity<NightVisionComponent> entity, bool force = false)
+    private void RemoveEffect(Entity<NightVisionComponent> entity)
     {
-        if (!force &&
-            _player.LocalSession?.AttachedEntity != entity)
-            return;
-
-        if (!_overlayMan.TryGetOverlay(out NightVisionOverlay? overlay))
-            return;
-
-        _overlayMan.RemoveOverlay(overlay);
+        _overlayMan.RemoveOverlay<NightVisionOverlay>();
         PredictedQueueDel(entity.Comp.Effect);
         entity.Comp.Effect = null;
     }

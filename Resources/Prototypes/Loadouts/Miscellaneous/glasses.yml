@@ -21,6 +21,7 @@
 # Glasses
 - type: loadout
   id: Glasses
+  groupBy: "cosmeticGlasses" # Moffstation - loadout improvements
   equipment:
     eyes: ClothingEyesGlasses
 
@@ -28,6 +29,7 @@
 # Jamjar
 - type: loadout
   id: GlassesJamjar
+  groupBy: "cosmeticGlasses" # Moffstation - loadout improvements
   effects:
   - !type:GroupLoadoutEffect
     proto: JamjarTimer
@@ -37,6 +39,7 @@
 # Jensen
 - type: loadout
   id: GlassesJensen
+  groupBy: "cosmeticGlasses" # Moffstation - loadout improvements
   effects:
   - !type:GroupLoadoutEffect
     proto: JensenTimer

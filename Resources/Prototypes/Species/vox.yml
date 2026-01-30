@@ -5,7 +5,7 @@
   prototype: MobVox
   sprites: MobVoxSprites
   markingLimits: MobVoxMarkingLimits
-  dollPrototype: MobVoxDummy
+  dollPrototype: AppearanceVox
   skinColoration: Hues # Moffstation - Give Vox their colours.
   defaultSkinTone: "#6c741d"
   maleFirstNames: NamesVox
@@ -48,7 +48,7 @@
       required: false
     # CD - Start - markings
     Head:
-      points: 2
+      points: 4
       required: false
     HeadSide:
       points: 2

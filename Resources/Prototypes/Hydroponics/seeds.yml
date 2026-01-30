@@ -426,6 +426,8 @@
       Max: 5
       PotencyDivisor: 5
 
+# Moffstation - Start - changing the chemicals list from vitamin to green tea powder
+
 - type: seed
   id: teaPlant
   name: seeds-teaplant-name
@@ -446,10 +448,20 @@
   idealLight: 9
   idealHeat: 298
   chemicals:
-    Vitamin:
-      Min: 1
-      Max: 5
+    GreenTeaPowder:
+      Min: 5
+      Max: 20
       PotencyDivisor: 20
+
+# old section was as follows
+#  chemicals:
+#    Vitamin:
+#      Min: 1
+#      Max: 5
+#      PotencyDivisor: 20
+# Moffstation - End
+
+
 
 - type: seed
   id: papercane

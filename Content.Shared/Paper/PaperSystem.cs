@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared._Moffstation.Paper.Components;
+using Content.Shared._Moffstation.Paper.Components; // Moffstation
 using Content.Shared._Starlight.Paper; // Moffstation
 using Content.Shared.Administration.Logs;
 using Content.Shared.UserInterface;
@@ -254,7 +254,7 @@ public sealed class PaperSystem : EntitySystem
     /// </summary>
     public bool TryStamp(Entity<PaperComponent> entity, StampDisplayInfo stampInfo, string spriteStampState)
     {
-        if (!(entity.Comp.StampingEnabled)) // Moffstation
+        if (!entity.Comp.StampingEnabled) // Moffstation
             return false;
 
         if (!entity.Comp.StampedBy.Contains(stampInfo))

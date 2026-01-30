@@ -21,15 +21,42 @@
   - type: SubGamemodes
     rules:
     - id: Thief
-      prob: 0.3
-    - id: BloodBrothers
-      prob: 0.3
-    - id: SyndicateListeningOutpost
-      prob: 0.20
-    - id: Pirates
-      prob: 0.15
+      prob: 0.5
     - id: SubWizard
       prob: 0.05
+    - id: Xenoborgs
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoWizardUpstream # Moffstation - Use our own version
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: Xenoborgs
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoXenoborg
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: SubWizard
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoWizardNoXenoborg
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
 
 - type: entity
   parent: BaseGameRule
@@ -252,7 +279,21 @@
       - type: ChangelingTransform
       - type: ActionGrant
         actions:
-        - ActionRetractableItemArmBlade # Temporary addition, will inevitably be a purchasable in the bio-store
+        - ActionChangelingStore
+      # TODO: Make it so the changeling gamerule changeling can inherit from the changeling store preset somehow
+      - type: Store
+        name: store-preset-name-changeling
+        categories:
+        - ChangelingAbilities
+        currencyWhitelist:
+        - ChangelingDNA
+        balance:
+          ChangelingDNA: 50
+      - type: UserInterface
+        interfaces:
+          enum.StoreUiKey.Key:
+            type: StoreBoundUserInterface
+            requireInputValidation: false
       mindRoles:
       - MindRoleChangeling
   - type: AntagObjectives
@@ -265,9 +306,11 @@
   components:
   - type: GameRule
     minPlayers: 15
+    # Moffstation - Begin - Delay revs so that everyone spawning at the arrivals terminal doesn't end the round
     delay:
       min: 300
       max: 300
+    # Moffstation - End
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
@@ -456,6 +499,8 @@
         tableId: UnknownShuttlesFreelanceTable
       - !type:NestedSelector
         tableId: UnknownShuttlesHostileTable
+      - !type:NestedSelector
+        tableId: WreckEventTable # Moffstation - Wrecks as space traffic events
 
 - type: entity
   id: BasicStationEventScheduler
@@ -486,7 +531,7 @@
   parent: BaseGameRule                  # we can remerge this with the other schedulers, but it will silently fail due to that limitation without a separate scheduler to balance atm.
   components:
   - type: BasicStationEventScheduler
-    minimumTimeUntilFirstEvent: 2700 # 45 mins #shows up like half way through shift.
+    minimumTimeUntilFirstEvent: 1200 # Moffstation - They show up earlier now
     minMaxEventTiming:
       min: 1200 # 20 mins
       max: 7200 # 120 mins # you probably arent getting a second visitor shuttle in one round, but it is possible.
@@ -516,6 +561,7 @@
     - id: BasicTrashVariationPass
     - id: SolidWallRustingVariationPass
     - id: ReinforcedWallRustingVariationPass
+    - id: CutWireVariationPass
     - id: BasicPuddleMessVariationPass
       prob: 0.99
       orGroup: puddleMess
@@ -528,7 +574,7 @@
     - id: SolarPanelEmptyVariationPass
     - id: BasicDecalDirtVariationPass
     - id: BasicDecalGraffitiVariationPass
-    - id: BasicDecalBrunsVariationPass
+    - id: BasicDecalBurnsVariationPass
       prob: 0.50
       orGroup: monospaceDecals
     - id: BasicDecalDirtMonospaceVariationPass

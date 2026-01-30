@@ -1,0 +1,47 @@
+- type: seed
+  id: coffee
+  name: seeds-coffee-name
+  noun: seeds-noun-seeds
+  displayName: seeds-coffee-display-name
+  plantRsi: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
+  packetPrototype: CoffeeSeeds
+  productPrototypes:
+    - FoodCoffeeCherries
+  mutationPrototypes:
+    - mugtree
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 6
+  yield: 3
+  potency: 20
+  growthStages: 5
+  idealLight: 6
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+
+- type: seed
+  id: mugtree
+  name: seeds-mugtree-name
+  noun: seeds-noun-seeds
+  displayName: seeds-mugtree-display-name
+  plantRsi: _Moffstation/Objects/Specific/Hydroponics/mug_plant.rsi
+  packetPrototype: MugTreeSeeds
+  productPrototypes:
+    - FoodMugFruit
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 6
+  yield: 4
+  potency: 20
+  growthStages: 5
+  idealLight: 6
+  chemicals:
+    Coffee:
+      Min: 10
+      Max: 30
+      PotencyDivisor: 4

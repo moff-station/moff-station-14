@@ -54,7 +54,7 @@
 
 #Scientist
 - type: entity
-  parent: ClothingOuterStorageFoldableBase
+  parent: ClothingOuterCoatRobo
   id: ClothingOuterCoatMach
   name: machinist lab coat
   description: A very aberrant labcoat. Helps pass off blood & grease stains as fashionable.
@@ -63,6 +63,32 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-mach.rsi
+
+#Centcomm
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, BaseCentcommContraband]
+  id: ClothingOuterCoatExpensiver
+  name: expensiver coat
+  description: A coat remarked as the reason for the extinction of at least three species of large game.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/expensiver-coat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/expensiver-coat.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.5
+    sprintModifier: 0.5
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: ClothingOuterCoatCent
+  name: central command lab coat
+  description: A very aberrant labcoat. Helps pass off blood & sweat as successful scientific medical practice.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-cent.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat-cent.rsi
   - type: Armor
     modifiers:
       coefficients:

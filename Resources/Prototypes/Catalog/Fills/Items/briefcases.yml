@@ -3,14 +3,15 @@
   parent: BriefcaseBrown
   suffix: Filled, Paper
   components:
-  - type: StorageFill
-    contents:
-      - id: Paper
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: Paper
         amount: 3
 
 - type: entity
   id: BriefcaseSyndieSniperBundleFilled
-  parent: BriefcaseSyndie
+  parent: BriefcaseBrown # Moffstation - Needed Change due to briefcase resprite
   suffix: Syndicate, Sniper Bundle
   components:
   - type: Item
@@ -19,47 +20,55 @@
     maxItemSize: Huge
     grid:
     - 0,0,6,3
-  - type: StorageFill
-    contents:
-      - id: WeaponSniperHristov
-      - id: MagazineBoxAntiMateriel
-      - id: ClothingNeckTieRed
-      - id: ClothingHandsGlovesLatex
-      - id: ClothingUniformJumpsuitLawyerBlack
-      - id: BarberScissors
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: WeaponSniperHristov
+        - id: MagazineBoxAntiMateriel
+        - id: ClothingNeckTieRed
+        - id: ClothingHandsGlovesLatex
+        - id: ClothingUniformJumpsuitLawyerBlack
+        - id: BarberScissors
 
 - type: entity
   id: BriefcaseSyndieLobbyingBundleFilled
-  parent: BriefcaseSyndieFlashy # Moffstation (New Briefcases)
+  parent: BriefcaseBrown # Moffstation - Needed Change due to briefcase resprite
   suffix: Syndicate, Spesos
   components:
+  # Moffstation - Begin
   - type: Item
     size: Huge
-  - type: StorageFill
-    contents:
-      - id: ClothingEyesGlassesSunglasses
-      - id: SpaceCash30000
-        amount: 1
-      - id: EncryptionKeySyndie
-      - id: RubberStampTrader
-      - id: PhoneInstrumentSyndicate
-      - id: ClothingUniformJumpsuitTacticool
-      - id: ClothingOuterCoatJensen
-      - id: ClothingHandsGlovesCombat
-      - id: ClothingMaskNeckGaiter
-      - id: SyndieHandyFlag
+  # Moffstation - End
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingEyesGlassesSunglasses
+        - id: SpaceCash30000
+        - id: EncryptionKeySyndie
+        - id: RubberStampTrader
+        - id: PhoneInstrumentSyndicate
+        - id: ClothingUniformJumpsuitTacticool
+        - id: ClothingOuterCoatJensen
+        - id: ClothingHandsGlovesCombat
+        - id: ClothingMaskNeckGaiter
+        - id: SyndieHandyFlag
 
 - type: entity
   id: BriefcaseThiefBribingBundleFilled
   parent: BriefcaseBrown # Moffstation (New Briefcases)
   suffix: Thief, Spesos
   components:
+  # Moffstation - Begin
   - type: Item
     size: Huge
-  - type: StorageFill
-    contents:
-      - id: ClothingEyesGlassesSunglasses
-      - id: SpaceCash20000
-        amount: 1
-      - id: ClothingOuterCoatJensen
-      - id: ClothingHandsGlovesColorBlack
+  # Moffstation - End
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingEyesGlassesSunglasses
+        - id: SpaceCash20000
+        - id: ClothingOuterCoatJensen
+        - id: ClothingHandsGlovesColorBlack

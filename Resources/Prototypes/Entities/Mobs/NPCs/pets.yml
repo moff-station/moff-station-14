@@ -445,6 +445,8 @@
     spawned:
     - id: FoodMeat
       amount: 3
+    - id: PhenylpiperidineSolidified # Moffstation - Waltuh
+      amount: 1 # Moffstation - Waltuh
   - type: ReplacementAccent
     accent: dog
   - type: InteractionPopup
@@ -833,6 +835,7 @@
         Bloodloss:
           -0.8
   - type: Temperature
+  - type: TemperatureDamage
     heatDamageThreshold: 800
     coldDamageThreshold: 0
   - type: MeleeWeapon

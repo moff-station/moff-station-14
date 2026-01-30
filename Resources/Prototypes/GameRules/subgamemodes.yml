@@ -3,11 +3,18 @@
   id: Thief
   components:
   - type: ThiefRule
-  - type: AntagObjectives
-    objectives:
-    - EscapeThiefShuttleObjective
+  # Moffstation - Start - Objective picker
+  #- type: AntagObjectives
+  #  objectives:
+  #  - EscapeThiefShuttleObjective
+  # Moffstation - End
   - type: AntagRandomObjectives
     sets:
+    # Moffstation - Start - Objective Picker
+    - groups: ThiefObjectiveGroupEscape
+      prob: 1
+      maxPicks: 1
+    # Moffstation - End
     - groups: ThiefBigObjectiveGroups
       prob: 0.7
       maxPicks: 1
@@ -70,3 +77,44 @@
         nameFormat: name-format-wizard
       mindRoles:
       - MindRoleWizard
+
+- type: entity
+  parent: BaseGameRule
+  id: Xenoborgs
+  components:
+  - type: XenoborgsRule
+  - type: RuleGrids
+  - type: GameRule
+    minPlayers: 30
+  - type: LoadMapRule
+    gridPath: /Maps/Shuttles/mothership.yml
+  - type: AntagMultipleRoleSpawner
+    antagRoleToPrototypes:
+      MothershipCore: [ MothershipCore ]
+      Xenoborg: [ XenoborgEngi, XenoborgHeavy, XenoborgScout, XenoborgStealth ]
+    pickAndTake: true
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ MothershipCore ]
+      fallbackRoles: [ Xenoborg ]
+      spawnerPrototype: SpawnPointGhostRoleMothershipCore
+      # Moffstation - Begin - Name loadouts for Xenoborgs
+      roleLoadout:
+      - JobMothershipCore
+      # Moffstation - End
+      mindRoles:
+      - MindRoleMothershipCore
+    - prefRoles: [ Xenoborg ]
+      fallbackRoles: [ MothershipCore ]
+      spawnerPrototype: SpawnPointGhostRoleXenoborg
+      # Moffstation - Begin - Name loadouts for Xenoborgs
+      roleLoadout:
+      - JobXenoborg
+      # Moffstation - End
+      mindRoles:
+      - MindRoleXenoborg
+      min: 4
+      max: 4
+  - type: DynamicRuleCost
+    cost: 200

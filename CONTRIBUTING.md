@@ -13,6 +13,20 @@ As a base, we expect you to follow the [Space Station 14 Contribution Guidelines
 >
 >We highly recommend you use an IDE like [Jetbrains Rider](https://www.jetbrains.com/rider/). It's free for non-commercial use, and it basically holds your hand.
 
+## AI-generated content
+The Moffstation project does not accept any low-effort or wholesale AI-generated contributions.
+This includes the following, but is not limited to:
+- Any code (C#, YAML, XML, etc.) generated from tools like ChatGPT, Github Copilot, Cursor, and whatever ChatGPT wrapper that's currently the hottest thing on the block.
+- Any artwork, sound files, or other assets.
+- Auto-generated documentation, GitHub's issue/PR changes summarization tools, among other tools.
+
+Exceptions to this are simple tools, for example:
+- Machine learning-assisted full line code completion.
+- Intellisense/ReSharper machine learning-sorted autocompletion suggestions (or any other ML-assisted sorting operation).
+- Machine learning-assisted grammar error correction.
+
+Maintainers still hold the right to deny contributions that have been created by AI, even if they only appear as such.
+
 ## Moffstation-exclusive content
 Space Station 14 allows separate content to be added to the game that is not part of the upstream project in a clean and easy way. Separate content is placed in a new subfolder namespace, `_Moffstation`. This is to avoid conflicts with upstream content.
 
@@ -162,9 +176,14 @@ We don't have any specific guidelines for new art and sprites other than:
 Art is voted on by the community of Moffstation, and if it is accepted, it will be added to the game.
 
 ## Balance Changes
-Changes centered around balance are brought under higher scrutiny than normal changes.
+Changes centered around balance are brought under higher scrutiny than normal changes - they are oftentimes not accepted for the following reasons:
+- Balance changes often have to modify upstream files, which make upstream merges more annoying for Maintainers to perform.
+- Microbalancing is often not worth the time discussing and is usually impossible to measure on a fork of this scale.
+- Balancing introduces deviations from upstream gameplay which may have unintended consequences for other mechanics that were balanced considering unmodified mechanics.
 
-If you wish to make a change that is purely balance centric, we encourage you to submit it to upstream instead.
+**If you wish to make a change that is purely balance centric, we encourage you to submit it to upstream instead.**
+Any sort of balancing that is submitted here must have a **proper lengthy justification** (**not** a 2 sentence explainer of what the balance changes do).
+Even if you explain your changes, this does **not** mean your changes will automatically be merged - your PR can be closed at maintainer discretion.
 
 ## Rules Changes
 We do not accept or consider rules changes submitted over GitHub by non-staff. Please use the appropriate channel within the discord to suggest changes to the rules.

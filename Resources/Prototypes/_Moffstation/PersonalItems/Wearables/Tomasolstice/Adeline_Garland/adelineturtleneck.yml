@@ -1,0 +1,22 @@
+# Player: Tomasolstice - Character: Adeline Garland
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: PersonalItemAdelineTurtleneck
+  name: Adeline's turtleneck sweater
+  description: A trusty turtleneck sweater worn across the years.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Tomasolstice/Adeline_Garland/adelineturtleneck.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Tomasolstice/Adeline_Garland/adelineturtleneck.rsi
+
+- type: loadout
+  id: PersonalItemAdelineTurtleneck
+  storage:
+    back:
+    - PersonalItemAdelineTurtleneck
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Adeline Garland

@@ -1,0 +1,43 @@
+﻿- type: entity
+  parent: BasePiratesRule
+  id: PirateCorsairSpawn
+  components:
+  - type: StationEvent
+    earliestStart: 30
+    weight: 5.5
+    minimumPlayers: 30
+    duration: null
+  - type: RuleGrids
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-sparrow.yml
+  - type: AntagSelection
+    definitions:
+    - spawnerPrototype: SpawnPointPirateCorsair
+      min: 1
+      max: 1
+      pickPlayer: false
+      startingGear: PirateGear
+      roleLoadout:
+      - RoleSurvivalNukie
+      - JobPirateCrew
+      briefing:
+        text: pirate-role-greeting
+        color: "#a15608"
+        sound:
+          path: "/Audio/Ambience/Antag/pirate_start.ogg"
+          params:
+            volume: -12
+      components:
+      - type: Pirate
+      - type: RandomMetadata
+        nameSegments:
+        - NamesFirst
+        - Adjectives
+        nameFormat: name-format-pirate-crew
+      - type: NpcFactionMember
+        factions:
+        - Pirate
+      mindRoles:
+      - MindRolePirateCorsair
+  - type: DynamicRuleCost
+    cost: 75

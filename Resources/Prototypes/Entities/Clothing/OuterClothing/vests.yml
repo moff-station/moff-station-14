@@ -2,7 +2,7 @@
 
 #Hazard vest
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation - Allow suit storage attachment
   id: ClothingOuterVestHazard
   name: hi-viz vest
   description: A high-visibility vest used in work zones.
@@ -28,6 +28,12 @@
       - state: equipped-OUTERCLOTHING-unshaded
         shader: shaded
         #same trick here
+      outerClothing-vox: # Moffstation - Begin - this makes the vox sprites actually get used!
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded # Moffstation - End
   - type: Reflect
     reflectProb: 0.02
     reflects:
@@ -52,7 +58,7 @@
 
 #Tank Harness
 - type: entity
-  parent: [ClothingOuterBase, AllowSuitStorageClothingGasTanks]
+  parent: [ClothingOuterBase, AllowSuitStorageClothingGasTanks, SuitStorageClothingGasTanksAttachment] # Moffstation - Suit storage attachment for gas tanks
   id: ClothingOuterVestTank
   name: tank harness
   description: A simple harness that can hold a gas tank.

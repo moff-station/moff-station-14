@@ -10,7 +10,7 @@
     sprite: Objects/Specific/Hydroponics/cannabis.rsi
   - type: Produce
     seedId: cannabis
-  - type: Food
+  - type: Edible # Precursor to the one true edible
   - type: SolutionContainerManager
     solutions:
       food:
@@ -179,7 +179,7 @@
     solutions:
       food:
         reagents:
-        - ReagentId: Vitamin
+        - ReagentId: GreenTeaPowder # Moffstation - Changing to green tea powder
           Quantity: 2
 
 - type: entity

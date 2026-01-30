@@ -1,5 +1,17 @@
 ﻿# ID
 - type: loadout
+  id: VirologistPDA
+  equipment:
+    id: VirologistPDA
+  groupBy: "doctor roles"
+
+- type: loadout
+  id: GeneticistPDA
+  equipment:
+    id: GeneticistPDA
+  groupBy: "doctor roles"
+
+- type: loadout
   id: ClinicianPDA
   equipment:
     id: ClinicianPDA
@@ -28,3 +40,63 @@
   equipment:
     id: SurgeonPDA
   groupBy: "doctor roles"
+
+# Head
+
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: MedicalDoctorJumpskirtNurse
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtNurse
+  groupBy: "medical doctor jumpskirts"
+
+# Back
+- type: loadout
+  id: VirologyBackpack
+  equipment:
+    back: ClothingBackpackVirology
+  groupBy: "virology backpacks"
+
+- type: loadout
+  id: VirologySatchel
+  equipment:
+    back: ClothingBackpackSatchelVirology
+  groupBy: "virology backpacks"
+
+- type: loadout
+  id: VirologyDuffel
+  equipment:
+    back: ClothingBackpackDuffelVirology
+  groupBy: "virology backpacks"
+
+- type: loadout
+  id: GeneticsBackpack
+  equipment:
+    back: ClothingBackpackGenetics
+  groupBy: "genetics backpacks"
+
+- type: loadout
+  id: GeneticsSatchel
+  equipment:
+    back: ClothingBackpackSatchelGenetics
+  groupBy: "genetics backpacks"
+
+- type: loadout
+  id: GeneticsDuffel
+  equipment:
+    back: ClothingBackpackDuffelGenetics
+  groupBy: "genetics backpacks"
+
+# Belt
+
+# Outer Clothing
+
+# Gloves
+
+# Shoes
+
+# Eyewear

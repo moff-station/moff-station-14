@@ -4,6 +4,10 @@
   description: job-description-ce
   playTimeTracker: JobChiefEngineer
   requirements:
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    # Moffstation - End
     - !type:RoleTimeRequirement
       role: JobAtmosphericTechnician
       time: 2.5h
@@ -37,8 +41,8 @@
 - type: startingGear
   id: ChiefEngineerGear
   equipment:
-    id: CEPDA
-    eyes: ClothingEyesGlassesMeson
+    #id: CEPDA # Moffstation - New PDAs
+  # eyes: ClothingEyesGlassesMeson # Moffstation - Eyepatches!
     ears: ClothingHeadsetCE
     belt: ClothingBeltUtilityEngineering
   storage:

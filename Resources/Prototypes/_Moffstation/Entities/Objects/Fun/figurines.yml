@@ -9,7 +9,7 @@
 
 # --- VOICE LINES ---
 # Voice lines can contain identifying information, like the character's name.
-# Voice lines should be semi iconic or unique to that character. A passing greating, a catch phrase, something they often say on the job, a throwback to a round they remember well.
+# Voice lines should be semi iconic or unique to that character. A passing greeting, a catchphrase, something they often say on the job, a throwback to a round they remember well.
 # Voice lines should be written without an accent, if an accent is added it should be done via the accent component in post.
 # Voice lines should be written with proper grammar and spelling, unless doing otherwise is an explicit feature of the character.
 # Voice lines should not have excessive punctuation, no more than 2 "!" at the end of a sentence. They're figurines with tiny piezoelectrics, not loudspeakers.
@@ -38,6 +38,21 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineAsher
+  name: Two-Faced Moth Figurine
+  description: "A double-sided figurine depicting a young, feminine moth person. This side is dressed like a security officer, his face twisted into a scowl.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
+  components:
+  - type: Sprite
+    state: aurora-asher
+  - type: SpeakOnTrigger
+    pack: FigurinesAsher
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_asher
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineAudrina
   name: Unimpressed Human Psychologist Figurine
   description: A figurine depicting a human with cat ears. There are bandages on its left arm, seemingly haphazardly painted on. The tie seems loose, although it's hard plastic. The expression is concerningly blank.
@@ -46,6 +61,41 @@
     state: audrina
   - type: SpeakOnTrigger
     pack: FigurinesAudrina
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineAurora
+  name: Two-Faced Moth Figurine
+  description: "A double-sided figurine depicting a young, feminine moth person. This side is dressed like an engineer, with a playful smile on her face.\nThe bottom of the figurine has a depressed button that looks like it would fit a crowbar."
+  components:
+  - type: Sprite
+    state: aurora
+  - type: SpeakOnTrigger
+    pack: FigurinesAurora
+  - type: Construction
+    deconstructionTarget: null
+    graph: ToyFigurineAuroraSwapGraph
+    node: swap_aurora
+
+# Allows you to toggle between the Aurora and Asher figurines using a crowbar.
+- type: constructionGraph
+  id: ToyFigurineAuroraSwapGraph
+  start: swap_asher
+  graph:
+  - node: swap_asher
+    entity: ToyFigurineAsher
+    edges:
+    - to: swap_aurora
+      steps:
+      - tool: Prying
+        doAfter: 0.1
+  - node: swap_aurora
+    entity: ToyFigurineAurora
+    edges:
+    - to: swap_asher
+      steps:
+      - tool: Prying
+        doAfter: 0.1
 
 - type: entity
   parent: BaseFigurineMoff
@@ -129,6 +179,30 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineBuckshot
+  name: Annoyed Chief Engineer Figurine
+  description: A figurine depicting a green lizard in a stained CE outfit and beret that looks annoyed with you not doing your job.
+  components:
+      - type: Sprite
+        state: buckshot
+      - type: SpeakOnTrigger
+        pack: FigurinesBuckshot
+      - type: LizardAccent
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCamilla
+  name: Scarred HOS Figurine
+  description: A figurine of a human head of security woman covered in scars, wearing the red and black uniform. She's trying her hardest to be friendly but she's very clearly overwhelmed. Collectors tend to pair it with a certain captain figurine.
+  components:
+  - type: Sprite
+    state: camilla
+  - type: SpeakOnTrigger
+    pack: FigurinesCamilla
+  - type: FrenchAccent
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineCassiel
   name: Anxious Cargo Technician Figurine
   description: A figurine depicting a tall pink moth covered in scars, wearing a cargo tech jumpskirt. She looks incredibly nervous about something... or rather, a lot of things.
@@ -137,6 +211,17 @@
     state: cassiel
   - type: SpeakOnTrigger
     pack: FigurinesCassiel
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineCatAi
+  name: Marketable AI Figurine
+  description: A figurine depicting a widely used Nanotrasen AI program, designed to encourage good relationships between the crew and their silicon assistants.
+  components:
+  - type: Sprite
+    state: catai
+  - type: SpeakOnTrigger
+    pack: FigurinesCatAi
 
 - type: entity
   parent: BaseFigurineMoff
@@ -330,6 +415,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineHeather
+  name: Red Arm Machinist Figurine
+  description: A figurine depicting a purple machinist slime girl with a red, metallic arm. She seems to switch her composure from time to time.
+  components:
+  - type: Sprite
+    state: heather
+  - type: SpeakOnTrigger
+    pack: FigurinesHeather
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineHercyn
   name: Sinister Suited Figurine
   description: A figurine depicting a suited Slime bearing a performative smile. Your gut is telling you to look away.
@@ -391,6 +487,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineJessGerr
+  name: Jubilant Jester Figurine
+  description: A figurine depicting a vulpkanin dressed head to toe in yellow and red jester garb, with her hair and tail tip dyed to match. You could swear the smile on the mask grows larger each time you look away.
+  components:
+  - type: Sprite
+    state: jessgerr
+  - type: SpeakOnTrigger
+    pack: FigurinesJessGerr
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineJobs
   name: Scarred Reptilian Figurine
   description: A figurine depicting a seemingly tired forest green passenger reptile with a bomber jacket and burn scars covering his body from head to toe. Somehow the figure smells of whiskey.
@@ -410,18 +517,6 @@
     state: jupiter
   - type: SpeakOnTrigger
     pack: FigurinesJupiter
-
-- type: entity
-  parent: BaseFigurineMoff
-  id: ToyFigurineKai
-  name: Shirtless Lizard Engineer Figurine
-  description: A figurine depicting a large, spikey goober with tall horns and a large tail. He wears a warm orange scarf around his neck and has a toolbelt of tiny replica engineering tools
-  components:
-  - type: Sprite
-    state: kai
-  - type: SpeakOnTrigger
-    pack: FigurinesKai
-  - type: LizardAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -524,6 +619,18 @@
     state: lilith
   - type: SpeakOnTrigger
     pack: FigurinesLilith
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineMalenia
+  name: Deranged Captain Figurine
+  description: A figurine depicting a white haired human captain woman with a missing eye. She sounds crazy. Collectors tend to pair it with a certain HOS figurine.
+  components:
+  - type: Sprite
+    state: malenia
+  - type: SpeakOnTrigger
+    pack: FigurinesMalenia
+  - type: GermanAccent
 
 - type: entity
   parent: BaseFigurineMoff
@@ -658,6 +765,17 @@
     state: samantha
   - type: SpeakOnTrigger
     pack: FigurinesSamantha
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineSaprophyte
+  name: Fungi-Covered Druid Figurine
+  description: A figurine depicting a blueish-indigo diona that has various fungi growing from it.
+  components:
+  - type: Sprite
+    state: saprophyte
+  - type: SpeakOnTrigger
+    pack: FigurinesSaprophyte
 
 - type: entity
   parent: BaseFigurineMoff

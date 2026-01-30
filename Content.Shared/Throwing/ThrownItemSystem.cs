@@ -134,7 +134,7 @@ namespace Content.Shared.Throwing
 
             // Moffstation - Begin
             // TODO: Replace with RandomPredicted once the engine PR is merged
-            var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_gameTiming.CurTick.Value, uid.Id });
+            var seed = SharedRandomExtensions.HashCodeCombine((int)_gameTiming.CurTick.Value, uid.Id);
             var rand = new System.Random(seed);
             if (TryComp<LandUprightComponent>(uid, out var upright) && rand.Prob(upright.Chance))
             {

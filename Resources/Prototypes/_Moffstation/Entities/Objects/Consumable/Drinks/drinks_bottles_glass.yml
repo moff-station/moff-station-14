@@ -18,3 +18,25 @@
   - type: SolutionTransfer
     canChangeTransferAmount: false
     transferAmount: 1 # The bottle has a lip on it so you can only add a splash at a time.
+
+- type: entity
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
+  id: DrinkEthylredoxrazineBottleFull
+  name: Halcyon Ethyl Tincture
+  description: A tincture to cure all your ales, or any other alcohol for that matter. This mix is particularly potent.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Ethylredoxrazine
+          Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-ethylredoxrazine
+  - type: Sprite
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/ethylredoxrazinetincture.rsi
+  - type: Sealable
+  - type: SolutionTransfer
+    canChangeTransferAmount: true
+    minTransferAmount: 1
+    maxTransferAmount: 20

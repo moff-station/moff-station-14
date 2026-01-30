@@ -48,10 +48,10 @@
         whitelist:
           tags:
             - MagazinePistol
+            - MagazinePistolHighCapacity
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
         priority: 1
         whitelist:
           tags:
@@ -81,7 +81,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: MagazinePistol
+        startingItem: MagazinePistolHighCapacity
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
@@ -92,7 +92,6 @@
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
         priority: 1
         whitelist:
           tags:
@@ -128,7 +127,6 @@
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
-  # Moffstation - Start - Replace Battery ammo + battery refilling with ballistic ammo
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -139,7 +137,6 @@
   - type: BallisticAmmoSelfRefiller
     autoRefillRate: 4s
     affectedByEmp: true
-  # Moffstation - End
   - type: AmmoCounter
 
 - type: entity
@@ -181,7 +178,6 @@
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeCaselessRifle
         priority: 1
         whitelist:
           tags:
@@ -258,7 +254,6 @@
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeMagnum
         priority: 1
         whitelist:
           tags:

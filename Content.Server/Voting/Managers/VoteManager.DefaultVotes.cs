@@ -6,12 +6,13 @@ using Content.Server.Administration.Managers;
 using Content.Server.Discord.WebhookMessages;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Presets;
-using Content.Server.Maps;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
+using Content.Shared._Moffstation.CCVar; // Moffstation
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.Maps;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Voting;
@@ -140,7 +141,7 @@ namespace Content.Server.Voting.Managers
         {
             // Moffstation - Start - block restart votes while the lobby is paused
             _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
-            if (_gameTicker.Paused && _cfg.GetCVar(CCVars.BlockRestartWhenPaused))
+            if (_gameTicker.Paused && _cfg.GetCVar(MoffCCVars.BlockRestartWhenPaused))
             {
                 if (initiator != null)
                     _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"{initiator.UserId} attempted to restart the round while the lobby was paused");
@@ -273,7 +274,12 @@ namespace Content.Server.Voting.Managers
 
         private void CreateMapVote(ICommonSession? initiator)
         {
-            var maps = _gameMapManager.CurrentlyEligibleMaps().ToDictionary(map => map, map => map.MapName);
+            // Moffstation - Start - Limit count of map votes
+            var maps = _gameMapManager.CurrentlyEligibleMaps()
+                .Shuffle()
+                .Take(_cfg.GetCVar(MoffCCVars.MapVoteCount))
+                .ToDictionary(map => map, map => map.MapName);
+            // Moffstation - End
 
             var alone = _playerManager.PlayerCount == 1 && initiator != null;
             var options = new VoteOptions
@@ -290,7 +296,8 @@ namespace Content.Server.Voting.Managers
             foreach (var (k, v) in maps)
             {
                 // Moffstation - Start - display rollover votes
-                if (_cfg.GetCVar(CCVars.MapVotesRollOver)) {
+                if (_cfg.GetCVar(MoffCCVars.MapVotesRollOver))
+                {
                     var rollOverVotes = _gameMapManager.GetRollOverVotes(k);
                     options.Options.Add((v + (rollOverVotes > 0 ? $" [+{rollOverVotes}]" : ""), k));
                 }
@@ -300,6 +307,7 @@ namespace Content.Server.Voting.Managers
                 }
                 // Moffstation - End
             }
+            options.Options.Add((Loc.GetString("ui-vote-map-random"), maps.Keys.ElementAt(_random.Next(maps.Count)))); // Moffstation - display rollover votes
 
             WirePresetVoteInitiator(options, initiator);
 
@@ -311,7 +319,7 @@ namespace Content.Server.Voting.Managers
 
                 // Moffstation - Start - Adding rollover vote calculation
                 //Check if Cvar is active
-                if (_cfg.GetCVar(CCVars.MapVotesRollOver))
+                if (_cfg.GetCVar(MoffCCVars.MapVotesRollOver))
                 {
                     //Get corresponding maps and votes together
                     var results = maps.Zip(args.Votes);
@@ -522,7 +530,7 @@ namespace Content.Server.Voting.Managers
                     (Loc.GetString("ui-vote-votekick-abstain"), "abstain")
                 },
                 Duration = TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VotekickTimer)),
-                InitiatorTimeout = TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.VotekickTimeout)),
+                InitiatorTimeout = TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VotekickTimeout)),
                 VoterEligibility = voterEligibility,
                 DisplayVotes = false,
                 TargetEntity = targetNetEntity
@@ -537,7 +545,7 @@ namespace Content.Server.Voting.Managers
             var webhookState = _voteWebhooks.CreateWebhookIfConfigured(options, _cfg.GetCVar(CCVars.DiscordVotekickWebhook), Loc.GetString("votekick-webhook-name"), options.Title + "\n" + Loc.GetString("votekick-webhook-description", ("initiator", initiatorName), ("target", targetSession)));
 
             // Time out the vote now that we know it will happen
-            TimeoutStandardVote(StandardVoteType.Votekick);
+            TimeoutStandardVote(StandardVoteType.Votekick, TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VotekickTimeout)));
 
             vote.OnFinished += (_, eventArgs) =>
             {
@@ -644,9 +652,9 @@ namespace Content.Server.Voting.Managers
             }
         }
 
-        private void TimeoutStandardVote(StandardVoteType type)
+        private void TimeoutStandardVote(StandardVoteType type, TimeSpan? timeoutOverride = null)
         {
-            var timeout = TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteSameTypeTimeout));
+            var timeout = timeoutOverride ?? TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteSameTypeTimeout));
             _standardVoteTimeout[type] = _timing.RealTime + timeout;
             DirtyCanCallVoteAll();
         }

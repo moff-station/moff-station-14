@@ -1,0 +1,60 @@
+#HoS
+- type: entity
+  parent: HoSPDA
+  id: HoSPDAAltBase
+  name: head of security alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-chiefconstable"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: HoSPDAAltBase
+  id: ChiefConstablePDA
+  name: chief constable PDA
+  components:
+  - type: RenameId
+    value: job-name-hos-chief-constable
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-chiefconstable
+  - type: PdaBorderColor
+    borderColor: "#5261a0"
+    accentVColor: "#2c2c2c"
+
+- type: entity
+  parent: HoSPDAAltBase
+  id: HighSheriffPDA
+  name: high sheriff PDA
+  components:
+  - type: RenameId
+    value: job-name-hos-high-sheriff
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-highsheriff
+  - type: PdaBorderColor
+    accentVColor: "#85221f"

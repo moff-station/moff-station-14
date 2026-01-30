@@ -1,3 +1,4 @@
+/* Moffstation - Completely rewritten, moved to our namespace - accept any upstream changes
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
@@ -7,14 +8,16 @@ using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class UpstreamVentCrittersRule : StationEventSystem<UpstreamVentCrittersRuleComponent>    // Moffstation, renamed so our rule is used instead. See used version in Moffstation namespace
+public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleComponent>
 {
     /*
      * DO NOT COPY PASTE THIS TO MAKE YOUR MOB EVENT.
      * USE THE PROTOTYPE.
      */
 
-    protected override void Started(EntityUid uid, UpstreamVentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)  // Moffstation - Changed to use the upstream component
+/*  Moffstation - Had to put in a second one because the line above cancels the first one
+
+    protected override void Started(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
 
@@ -56,3 +59,4 @@ public sealed class UpstreamVentCrittersRule : StationEventSystem<UpstreamVentCr
         }
     }
 }
+*/

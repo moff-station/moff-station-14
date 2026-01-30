@@ -1,12 +1,21 @@
+using System.Linq;
 using Content.Server._Moffstation.StationEvents.Components;
+using Content.Server.GameTicking;
 using Content.Server.Pinpointer;
+using Content.Server.Popups;
 using Content.Server.StationEvents.Components;
 using Content.Server.StationEvents.Events;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Jittering;
+using Content.Shared.Popups;
 using Content.Shared.Station.Components;
 using Content.Shared.Storage;
-using Robust.Shared.Map;
+using Robust.Server.Player;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.StationEvents.Events;
 
@@ -20,13 +29,43 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
 
-    protected override void Added(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    public override void Update(float frameTime)
     {
+        base.Update(frameTime);
 
+        var query = EntityQueryEnumerator<VentCrittersRuleComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (_gameTiming.CurTime <= comp.NextPopup ||
+                comp.Coords is not { } coords ||
+                !_gameTicker.IsGameRuleActive(uid))
+                continue;
+
+            _audio.PlayPvs(comp.VentCreakNoise, coords);
+
+            var messageString = comp.Vent is not { } location || !_entMan.EntityExists(location)
+                ? Loc.GetString("station-event-vent-creatures-no-vent-warning")
+                : Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName));
+
+            _popup.PopupCoordinates(messageString, coords, PopupType.MediumCaution);
+            comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
+        }
+    }
+
+    protected override void Added(EntityUid uid, VentCrittersRuleComponent comp, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    {
+        // We are doing this before base.Added() so we can modify the announcement to be what we want
         // Choose location and make sure it's not null
-        component.Location = ChooseLocation();
-        if (component.Location is not { } location)
+        comp.Vent = ChooseLocation();
+        if (comp.Vent is not { } location)
         {
             Log.Warning($"Unable to find a valid location for {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
@@ -37,8 +76,9 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         if (TryComp<StationEventComponent>(uid, out var stationEventComp) && stationEventComp.StartAnnouncement != null)
         {
             // Get the nearest beacon
-            var mapLocation = _transform.ToMapCoordinates(location);
-            var nearestBeacon = _navMap.GetNearestBeaconString(mapLocation, onlyName: true);
+            var coords = Transform(location).Coordinates;
+            comp.Coords = coords;
+            var nearestBeacon = _navMap.GetNearestBeaconString(_transform.ToMapCoordinates(coords), onlyName: true);
 
             // Get the duration, if its null we'll just use 0
             var duration = stationEventComp.Duration?.Seconds ?? 0;
@@ -50,7 +90,15 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
                     ("time", duration));
         }
 
-        base.Added(uid, component, gameRule, args);
+        base.Added(uid, comp, gameRule, args);
+
+        _jitter.AddJitter(location, 0.5f, 30f);
+
+        // Get spawn attempts
+        var playerCount = _playerManager.Sessions.Count(x =>
+            GameTicker.PlayerGameStatuses.TryGetValue(x.UserId, out var status) &&
+            status == PlayerGameStatus.JoinedGame);
+        comp.SpawnAttempts = _random.Next(playerCount * comp.PlayerRatioSpawnsMin, playerCount * comp.PlayerRatioSpawnsMax);
     }
 
     protected override void Ended(EntityUid uid, VentCrittersRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
@@ -58,36 +106,42 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         base.Ended(uid, component, gameRule, args);
 
         // Make sure the location is not null
-        if (component.Location is not { } location)
+        if (component.Vent is { } vent)
+            RemCompDeferred<JitteringComponent>(vent);
+
+        if (component.Coords is not { } coords)
         {
-            Log.Warning($"Location for gamerule {args.RuleId} was null!");
+            Log.Warning($"Unable to find a valid location for {args.RuleId}!");
             return;
         }
 
-        //Spawn in the stuff
-        for (var i = 0; i < component.SpawnAttempts; i++)
+        var spawnCount = 0;
+        var attemptCount = 0;
+        while (spawnCount <= component.MaxSpawns && (attemptCount < component.SpawnAttempts || spawnCount == 0))
         {
-            foreach (var spawn in EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom))
-            {
-                Spawn(spawn, location);
-            }
+            var spawned = EntityManager.SpawnEntitiesAttachedTo(
+                coords,
+                EntitySpawnCollection.GetSpawns(component.Entries, RobustRandom).Select(it => (EntProtoId)it)
+            );
+            spawnCount += spawned.Length;
+            attemptCount += 1;
         }
-
-        // Spawn a special spawn (guaranteed spawn)
-        var specialEntry = RobustRandom.Pick(component.SpecialEntries);
-        Spawn(specialEntry.PrototypeId, location);
 
         // Extra chance to spawn additional entities
         if (component.SpecialEntries.Count != 0)
         {
+            // Spawn a special spawn (guaranteed spawn)
+            var specialEntry = RobustRandom.Pick(component.SpecialEntries);
+            Spawn(specialEntry.PrototypeId, coords);
+
             foreach (var specialSpawn in EntitySpawnCollection.GetSpawns(component.SpecialEntries, RobustRandom))
             {
-                Spawn(specialSpawn, location);
+                Spawn(specialSpawn, coords);
             }
         }
     }
 
-    private EntityCoordinates? ChooseLocation()
+    private EntityUid? ChooseLocation()
     {
         // Get a station
         if (!TryGetRandomStation(out var station))
@@ -96,13 +150,13 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         }
         //Query the possible locations
         var locations = EntityQueryEnumerator<VentCritterSpawnLocationComponent, TransformComponent>();
-        var validLocations = new List<EntityCoordinates>();
+        var validLocations = new List<EntityUid>();
         // Filter to things on the same station
-        while (locations.MoveNext(out _, out _, out var transform))
+        while (locations.MoveNext(out var uid, out var comp, out var transform))
         {
             if (CompOrNull<StationMemberComponent>(transform.GridUid)?.Station == station)
             {
-                validLocations.Add(transform.Coordinates);
+                validLocations.Add(uid);
             }
         }
         // Pick one at random

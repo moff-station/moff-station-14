@@ -1,6 +1,7 @@
 department-Cargo = Cargo
-#Moffstation - Civilian department renamed to service
+# Moffstation - Begin - Civilian department renamed to service
 department-Civilian = Service
+# Moffstation - End
 department-Command = Command
 department-CentralCommand = Central Command
 department-Engineering = Engineering

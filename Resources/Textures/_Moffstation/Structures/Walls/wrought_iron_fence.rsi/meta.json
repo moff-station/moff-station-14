@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "SeaWyrm",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon_straight"
+    },
+    {
+      "name": "icon_end"
+    },
+    {
+      "name": "straight",
+      "directions": 4
+    },
+    {
+      "name": "end",
+      "directions": 4
+    },
+    {
+      "name": "corner",
+      "directions": 4
+    },
+    {
+      "name": "door_closed",
+      "directions": 4
+    },
+    {
+      "name": "door_opened",
+      "directions": 4
+    }
+  ]
+}

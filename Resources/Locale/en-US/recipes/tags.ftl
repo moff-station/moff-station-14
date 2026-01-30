@@ -33,9 +33,9 @@ construction-graph-tag-sun-glasses = sun glasses
 construction-graph-tag-security-helmet = security helmet
 
 # materials
-#moffstation - Revert machine parts - Start
-construction-graph-tag-capacitor = capacitor
-#moffstation - Revert machine parts - End
+# Moffstation - Begin - Revert machine parts
+# construction-graph-tag-manipulator = modular machine part
+# Moffstation - End
 construction-graph-tag-voice-trigger = a voice trigger
 construction-graph-tag-signal-trigger = a signal trigger
 construction-graph-tag-proximity-sensor = proximity sensor
@@ -75,6 +75,8 @@ construction-graph-tag-apron = an apron
 construction-graph-tag-utility-belt = a utility belt
 soil-construction-graph-any-mushroom = any mushroom
 construction-graph-tag-mop-basic = mop
+construction-graph-tag-paper = office paper
+construction-graph-tag-core-pinpointer-piece = piece of core pinpointer
 
 # toys
 construction-graph-tag-rubber-ducky = a rubber ducky
@@ -154,3 +156,6 @@ construction-graph-tag-spationaut-hardsuit = spationaut hardsuit
 
 # clothing
 construction-graph-tag-backpack = backpack
+
+# chemistry
+construction-graph-tag-centrifuge-compatible = centrifugable container

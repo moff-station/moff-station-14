@@ -49,6 +49,14 @@ public sealed partial class ItemComponent : Component
     [DataField, AutoNetworkedField]
     public SpriteSpecifier? StoredSprite;
 
+    // Moffstation - Begin - Add appearance data based stored sprites
+    /// <summary>
+    /// Appearance Data based sprite layers as an alternative for <see cref="StoredSprite"/>
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public (string, PrototypeLayerData)[]? StoredLayers;
+    // Moffstation - End
+
     /// <summary>
     /// An additional angle offset, in degrees, applied to the visual depiction of the item when displayed in the storage UI.
     /// </summary>
