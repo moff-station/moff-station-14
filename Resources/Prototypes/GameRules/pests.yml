@@ -7,8 +7,13 @@
     - id: SnailMigrationLowPop
     - id: CockroachMigration
     - id: MouseMigration
-    - id: MothroachMigration # Moffstation
-    - id: WhimperletMigration # Moffstation
+    # Moffstation - Start - Extra vent critters
+    - id: MothroachMigration
+    - id: WhimperletMigration
+    - id: ScurretMigration
+    - id: ReptileMigration
+    - id: MammalMigration
+    # Moffstation - End
 
 - type: entityTable
   id: SpicyPestEventsTable
@@ -16,12 +21,17 @@
     children:
     - id: KingRatMigration
     - id: SnailMigration
-    - id: SlimesSpawn # Moffstation
-    - id: SnakeSpawn # Moffstation
-    - id: SpiderClownSpawn # Moffstation
-    - id: SpiderSpawn # Moffstation
-    - id: CarpMigration # Moffstation
-    - id: SyndiSoliderMigration # Moffstation
+    # Moffstation - Start - Extra vent critters
+    - id: SlimesSpawn
+    - id: SnakeSpawn
+    - id: SpiderClownSpawn
+    - id: SpiderSpawn
+    - id: CarpMigration
+    - id: SyndiSoliderMigration
+    - id: HostileGorillaMigration
+    - id: SyndyCatMigration
+    - id: FleshMigration
+    # Moffstation - End
 
 # events
 

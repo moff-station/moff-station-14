@@ -106,10 +106,9 @@
     entries:
     - id: MobSyndicateFootsoldierGhostRole
       prob: 0.0001
-      maxSpawns: 1
 
 - type: entity
-  id: GorillaMigration
+  id: HostileGorillaMigration
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
@@ -180,3 +179,41 @@
       prob: 0.01
     - id: MobAbomination
       prob: 0.01
+
+- type: entity
+  id: ReptileMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobKobold
+      prob: 0.01
+    - id: MobLizard
+      prob: 0.01
+    - id: MobWildReptilian
+      prob: 0.001
+
+- type: entity
+  id: MammalMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobMonkey
+      prob: 0.01
+    - id: MobWildHuman
+      prob: 0.001
