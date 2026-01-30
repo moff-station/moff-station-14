@@ -152,6 +152,7 @@ namespace Content.IntegrationTests.Tests
             "Scylla",
             "Aspid",
             "Elkridge",
+            "Wapiti",
 	    "Skeld"
             // Moffstation - End
         };

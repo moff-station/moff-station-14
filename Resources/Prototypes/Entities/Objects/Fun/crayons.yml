@@ -269,8 +269,8 @@
     - Trash
 
 - type: entity
-  parent: CrayonBox # Moffstation - autofilled box parented to empty box
-  id: CrayonBoxFilled # Moffstation
+  parent: CrayonBoxEmpty # Moffstation
+  id: CrayonBox
   suffix: Filled # Moffstation
   components:
 # Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
