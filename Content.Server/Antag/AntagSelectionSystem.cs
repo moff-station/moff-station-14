@@ -361,7 +361,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
     private void OnRoundEnd(RoundRestartCleanupEvent args)
     {
-        _antagWeight.Save();
+        _ = _antagWeight.Save();
     }
     // Moffstation - End
 
