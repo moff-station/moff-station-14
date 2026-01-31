@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/08/2026 19:19:33
-  entityCount: 869
+  time: 01/22/2026 18:54:32
+  entityCount: 870
 maps: []
 grids:
 - 1
@@ -499,7 +499,7 @@ entities:
       pos: 3.5,-5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -17802.957
+      secondsUntilStateChange: -18233.156
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2491,8 +2491,6 @@ entities:
     - type: Transform
       pos: 5.5,-8.5
       parent: 1
-    - type: Physics
-      bodyType: Static
 - proto: GasMinerNitrogen
   entities:
   - uid: 358
@@ -4947,6 +4945,13 @@ entities:
     - type: Transform
       pos: -1.6585922,-16.220121
       parent: 1
+- proto: SpawnMobKoboldJokejoke
+  entities:
+  - uid: 729
+    components:
+    - type: Transform
+      pos: 4.5,-14.5
+      parent: 1
 - proto: SpawnPointPirates
   entities:
   - uid: 681
@@ -5175,8 +5180,24 @@ entities:
     - type: Transform
       pos: 4.5,-21.5
       parent: 1
-- proto: Thruster
+- proto: ThrusterPirate
   entities:
+  - uid: 255
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,-3.5
+      parent: 1
+  - uid: 699
+    components:
+    - type: Transform
+      pos: 9.5,-2.5
+      parent: 1
+  - uid: 700
+    components:
+    - type: Transform
+      pos: 3.5,-2.5
+      parent: 1
   - uid: 715
     components:
     - type: Transform
@@ -5185,95 +5206,79 @@ entities:
   - uid: 716
     components:
     - type: Transform
-      pos: 3.5,-2.5
+      rot: 1.5707963267948966 rad
+      pos: -6.5,-3.5
       parent: 1
   - uid: 717
     components:
     - type: Transform
-      pos: 9.5,-2.5
-      parent: 1
-  - uid: 718
-    components:
-    - type: Transform
       pos: -6.5,-2.5
       parent: 1
-  - uid: 719
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -6.5,-3.5
-      parent: 1
-  - uid: 720
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 9.5,-3.5
-      parent: 1
-  - uid: 721
+  - uid: 718
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 8.5,-19.5
       parent: 1
-  - uid: 722
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-20.5
-      parent: 1
-  - uid: 723
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-21.5
-      parent: 1
-  - uid: 724
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,-19.5
-      parent: 1
-  - uid: 725
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,-20.5
-      parent: 1
-  - uid: 726
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,-21.5
-      parent: 1
-  - uid: 727
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-22.5
-      parent: 1
-  - uid: 728
+  - uid: 719
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,-22.5
       parent: 1
-  - uid: 729
+  - uid: 720
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 8.5,-21.5
+      parent: 1
+  - uid: 721
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 8.5,-20.5
+      parent: 1
+  - uid: 722
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,-28.5
       parent: 1
-  - uid: 730
+  - uid: 723
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,-28.5
+      parent: 1
+  - uid: 724
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,-28.5
       parent: 1
-  - uid: 731
+  - uid: 725
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,-19.5
+      parent: 1
+  - uid: 726
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: 0.5,-28.5
+      pos: -5.5,-22.5
+      parent: 1
+  - uid: 727
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,-21.5
+      parent: 1
+  - uid: 728
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,-20.5
       parent: 1
 - proto: ToiletDirtyWater
   entities:
