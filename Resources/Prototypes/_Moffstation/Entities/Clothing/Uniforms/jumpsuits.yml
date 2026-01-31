@@ -413,3 +413,14 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerkarmic.rsi # Moffstation
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerkarmic.rsi # Moffstation
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitProsecutorRed
+  name: red prosecutor suit
+  description: A flashy red suit worn by cutting-edge prosecutors wanting to show their worth. # Moffstation
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi # Moffstation
