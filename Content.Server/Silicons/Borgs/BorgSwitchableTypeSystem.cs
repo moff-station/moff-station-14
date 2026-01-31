@@ -49,6 +49,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
                 prototype.ExtraModuleCount + prototype.DefaultModules.Length);
 
             _borgSystem.SetModuleWhitelist(chassisEnt, prototype.ModuleWhitelist);
+            _borgSystem.SetModuleRequirements(chassisEnt, prototype.RequiredModules); // Moffstation - Advanced borg modules allow removal of basic variants
 
             foreach (var module in prototype.DefaultModules)
             {

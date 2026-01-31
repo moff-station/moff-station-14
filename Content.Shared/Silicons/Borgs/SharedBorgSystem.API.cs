@@ -99,6 +99,15 @@ public abstract partial class SharedBorgSystem
         Dirty(ent);
     }
 
+    // Moffstation - Begin - Advanced borg modules allow removal of basic variants
+    /// Sets <seealso cref="BorgChassisComponent.ModuleRequirements"/>
+    public void SetModuleRequirements(Entity<BorgChassisComponent> ent, EntityWhitelist[] requirements)
+    {
+        ent.Comp.ModuleRequirements = requirements;
+        Dirty(ent);
+    }
+    // Moffstation - End
+
     /// <summary>
     /// Sets <see cref="BorgChassisComponent.MaxModules"/>.
     /// </summary>

@@ -91,6 +91,16 @@ public sealed partial class BorgTypePrototype : IPrototype
     [DataField]
     public EntProtoId[] DefaultModules = [];
 
+    // Moffstation - Begin - Advanced borg modules allow removal of basic variants
+    /// <summary>
+    /// Which modules this type of cyborg requires. Default modules are implicitly included.
+    /// Whitelists which match more than one module allow for changing out one module on the list for another one,
+    /// eg. for replacing a "basic" module with its advanced variant.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist[] RequiredModules = [];
+    // Moffstation - End
+
     /// <summary>
     /// Additional components to add to the borg entity when this type is selected.
     /// </summary>

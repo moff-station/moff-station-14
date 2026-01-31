@@ -77,3 +77,10 @@
 
 - type: Tag
   id: Cardboard
+
+# Borg Modules - These are used to identify the basic and advanced modules of each type as related.
+- { type: Tag, id: CyborgAnomalyModule }
+- { type: Tag, id: CyborgChemicalModule }
+- { type: Tag, id: CyborgCleaningModule }
+- { type: Tag, id: CyborgMiningModule }
+- { type: Tag, id: CyborgToolModule }

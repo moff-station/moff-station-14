@@ -60,6 +60,12 @@
   - BorgModuleRCD
   - BorgModuleCable
 
+  # Moffstation - Begin - Advanced borg modules allow removal of basic variants
+  requiredModules:
+  - tags:
+    - CyborgToolModule
+  # Moffstation - End
+
   radioChannels:
   - Engineering
   - Science
@@ -101,6 +107,12 @@
   - BorgModuleTraversal
   - BorgModuleAppraisal
 
+  # Moffstation - Begin - Advanced borg modules allow removal of basic variants
+  requiredModules:
+  - tags:
+    - CyborgMiningModule
+  # Moffstation - End
+
   radioChannels:
   - Supply
   - Science
@@ -140,6 +152,12 @@
   defaultModules:
   - BorgModuleCleaning
   - BorgModuleCustodial
+
+  # Moffstation - Begin - Advanced borg modules allow removal of basic variants
+  requiredModules:
+  - tags:
+    - CyborgCleaningModule
+  # Moffstation - End
 
   radioChannels:
   - Science
@@ -181,6 +199,12 @@
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
+
+  # Moffstation - Begin - Advanced borg modules allow removal of basic variants
+  requiredModules:
+  - tags:
+    - CyborgChemicalModule
+  # Moffstation - End
 
   radioChannels:
   - Science
