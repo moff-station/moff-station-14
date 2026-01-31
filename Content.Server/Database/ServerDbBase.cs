@@ -1877,11 +1877,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
             if (player.MoffPlayer == null)
             {
-                var pp = await db.DbContext.Player
-                    .Include(p => p.MoffPlayer)
-                    .SingleAsync(p => p.UserId == userId.UserId);
-
-                pp.MoffPlayer = new MoffModel.MoffPlayer
+                player.MoffPlayer = new MoffModel.MoffPlayer
                 {
                     PlayerUserId = userId,
                     AntagWeight = weight,
