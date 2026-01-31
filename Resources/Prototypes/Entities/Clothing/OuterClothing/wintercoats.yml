@@ -441,7 +441,7 @@
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
 - type: entity
-  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: [ClothingOuterWinterSec, BaseSecurityContraband] # Moffstation - New Security Outfits
   id: ClothingOuterWinterHoSUnarmored
   name: head of security's winter coat
   description: A sturdy coat, a warm coat, but not as armored. # Moffstation - New Security Outfits
@@ -765,24 +765,17 @@
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
 - type: entity
-  parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  # Moffstation - Begin (New Security Outfits)
+  parent: ClothingOuterWinterSecArmored
   id: ClothingOuterWinterSec
-  name: security winter coat
-  components: # Moffstation - Start -New Security Outfits
+  name: security armored winter coat
+  description: A warm winter coat, worn under a standard armor vest. Comes in security colors.
+  components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterSec
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.75
-        Slash: 0.75
-        Piercing: 0.75
-        Heat: 0.75
-# Moffstation - End - New Security Outfits
+  # Moffstation - End (New Security Outfits)
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
@@ -833,15 +826,15 @@
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 
 - type: entity
-  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: ClothingOuterWinterSec # Moffstation - New Security Outfits
   id: ClothingOuterWinterWardenUnarmored
   name: warden's winter coat
   description: A sturdy coat, a warm coat, but not as armored.
   components:
-  - type: Sprite # Moffstation - Start- New Security Outfits
-    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - End - New Security Outfits
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 
