@@ -191,11 +191,12 @@
 #Eyewear
 - type: loadout
   id: MedicalHud
+  nameOverride: "moff-loadout-medical-hud" # Moffstation - Replaced by modular HUDs, so needs a name
   equipment:
     eyes: ClothingEyesHudMedical
 
 - type: loadout
   id: MedicalEyePatchHud
-  groupBy: "medEyepatch" # Moffstation - loadout improvements
+  nameOverride: "moff-loadout-medical-patch" # Moffstation - Replaced by modular HUDs, so needs a name
   equipment:
     eyes: ClothingEyesEyepatchHudMedical
