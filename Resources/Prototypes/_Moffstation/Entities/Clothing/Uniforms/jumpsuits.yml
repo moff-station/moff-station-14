@@ -405,14 +405,14 @@
 #Lawyer
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpsuitLawyerKarmic
+  id: ClothingUniformJumpsuitProsecutorKarmic
   name: Karmic prosecutor suit
   description: A stylish piece worn by prosecutors who will win their case no matter the defense...
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerkarmic.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorkarmic.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerkarmic.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorkarmic.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase

@@ -3,16 +3,25 @@
   id: LawyerJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlack
+  groupBy: "black suits" # Moffstation
 
 - type: loadout
   id: LawyerJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerBlack
+  groupBy: "black suits" # Moffstation
 
 - type: loadout
   id: LawyerJumpsuitBlue
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlue
+  groupBy: "blue suits" # Moffstation
+
+- type: loadout
+  id: LawyerJumpskirtBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerBlue
+  groupBy: "blue suits" # Moffstation
 #Moffstation - Start - New Lawyer Outfits!
 - type: loadout
   id: LawyerJumpskirtPsyched
@@ -20,39 +29,40 @@
     jumpsuit: ClothingUniformJumpskirtLawyerPsyched
 
 - type: loadout
-  id: LawyerJumpsuitKarmic
+  id: ProsecutorJumpsuitKarmic
   equipment:
-    jumpsuit: ClothingUniformJumpsuitLawyerKarmic
+    jumpsuit: ClothingUniformJumpsuitProsecutorKarmic
+  groupBy: "karmic suits" # Moffstation
 
 - type: loadout
-  id: LawyerJumpskirtKarmic
+  id: ProsecutorJumpskirtKarmic
   equipment:
-    jumpsuit: ClothingUniformJumpskirtLawyerKarmic
-
-- type: loadout
-  id: ProsecutorJumpsuitRed
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitProsecutorRed
+    jumpsuit: ClothingUniformJumpskirtProsecutorKarmic
+  groupBy: "karmic suits" # Moffstation
 #Moffstation - End - New Lawyer Outfits!
 - type: loadout
   id: LawyerJumpsuitRed
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerRed
+  groupBy: "red suits" # Moffstation
 
 - type: loadout
   id: LawyerJumpskirtRed
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerRed
+  groupBy: "red suits" # Moffstation
 
 - type: loadout
   id: LawyerJumpsuitGood
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerGood
+  groupBy: "good suits" # Moffstation
 
 - type: loadout
   id: LawyerJumpskirtGood
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerGood
+  groupBy: "good suits" # Moffstation
 
 # Neck
 - type: loadout

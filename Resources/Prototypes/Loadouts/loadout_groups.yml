@@ -436,17 +436,20 @@
   id: LawyerJumpsuit
   name: loadout-group-lawyer-jumpsuit
   loadouts:
+  # Moffstation - Start
   - LawyerJumpsuit
   - LawyerJumpskirt
   - LawyerJumpsuitBlue
-  - LawyerJumpskirtPsyched # Moffstation - Start
-  - LawyerJumpsuitKarmic
-  - LawyerJumpskirtKarmic
-  - ProsecutorJumpsuitRed # Moffstation - End
+  - LawyerJumpskirtBlue
   - LawyerJumpsuitRed
   - LawyerJumpskirtRed
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
+  - ProsecutorJumpsuitKarmic
+  - ProsecutorJumpskirtKarmic
+  - LawyerJumpskirtPsyched
+  - ProsecutorJumpsuitRed
+  # Moffstation - End
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -454,6 +457,7 @@
   minLimit: 0
   loadouts:
   - LawyerNeck
+  - ProsecutorNeck # Moffstation
 
 - type: loadoutGroup
   id: LawyerJobTrinkets
