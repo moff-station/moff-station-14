@@ -1,16 +1,20 @@
 - type: entity
   parent: MarkerBase
-  id: SpawnMobAlexander
-  name: Alexander Spawner
+  id: SpawnMobAlexander #Moffstation - New Station Pets
+  name: Chef Pet Spawner #Moffstation - New Station Pets
   suffix: Chef Pet
   components:
   - type: Sprite
     layers:
     - state: green
     - state: ai
-  - type: ConditionalSpawner
+  - type: RandomSpawner #Moffstation - Start - New Station Pets
+    rarePrototypes:
+    - MobAlexander # I HATE THIS PIG! I DON'T WANT IT IN MY KITCHEN!
+    rareChance: 0.25
     prototypes:
-    - MobAlexander
+    - MobOscar
+    chance: 0.75 #Moffstation - End - New Station Pets
 
 - type: entity
   parent: MarkerBase
@@ -147,7 +151,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobFoxRenault
-  name: Fox Renault Spawner
+  name: Captain's pet Spawner #Moffstation - New Station Pets
   suffix: Captain Pet
   components:
   - type: Sprite
@@ -157,11 +161,12 @@
   - type: ConditionalSpawner
     prototypes:
     - MobFoxRenault
+    - MobJamie #Moffstation - New Station Pets
 
 - type: entity
   parent: MarkerBase
   id: SpawnMobMcGriff
-  name:  McGriff Spawner
+  name:  Security Dog Spawner #Moffstation - New Station Pets
   suffix: Warden Pet
   components:
   - type: Sprite
@@ -171,6 +176,7 @@
   - type: ConditionalSpawner
     prototypes:
     - MobMcGriff
+    - MobMax #Moffstation - New Station Pets
 
 - type: entity
   parent: MarkerBase
@@ -279,7 +285,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobSlothPaperwork
-  name: Sloth Paperwork Spawner
+  name: Library Pet Spawner #Moffstation - New Station Pets
   suffix: Librarian Pet
   components:
   - type: Sprite
@@ -289,6 +295,7 @@
   - type: ConditionalSpawner
     prototypes:
     - MobPaperwork
+    - MobBuddy #Moffstation - New Station Pets
 
 - type: entity
   parent: MarkerBase
@@ -307,7 +314,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobWalter
-  name: Walter Spawner
+  name: Chemistry Dog Spawner #Moffstation - New Station Pets
   suffix: Chemistry Pet
   components:
   - type: Sprite
@@ -317,3 +324,4 @@
   - type: ConditionalSpawner
     prototypes:
     - MobWalter
+    - MobNancy #Moffstation - New Station Pets
