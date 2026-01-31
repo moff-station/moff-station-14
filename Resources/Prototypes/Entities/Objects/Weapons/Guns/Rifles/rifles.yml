@@ -64,8 +64,12 @@
   id: WeaponRifleAk
   description: "A somewhat battered carbine rifle of a design originating from old Earth. Favored by criminals, militias, and terrorists due to its famed reliability and easy-to-manufacture design.\nFeeds from .30 rifle magazines." # Moffstation - (AK Resprite)
   components:
+  # Moffstation - Begin (AK Resprite)
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/aks.rsi
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/aks.rsi # Moffstation - (AK Resprite)
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/aks.rsi
+  # Moffstation - End (AK Resprite)
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
