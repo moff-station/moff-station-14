@@ -1882,6 +1882,8 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                     PlayerUserId = userId,
                     AntagWeight = weight,
                 };
+            } else {
+                player.MoffPlayer.AntagWeight = weight;
             }
 
             await db.DbContext.SaveChangesAsync();
