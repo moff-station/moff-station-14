@@ -9,3 +9,13 @@
       types:
         Piercing: 18
         Holy: 26
+
+- type: entity
+  id: BulletMagnumBouncing
+  name: bullet (.45 magnum bouncing)
+  parent: BulletMagnum
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Ricochet
+    prob: 1.0
+    dropoff: 0.3
