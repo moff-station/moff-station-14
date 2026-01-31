@@ -1,0 +1,81 @@
+- type: entityTable
+  id: SkeletalRemainsFill
+  table: !type:AllSelector
+    children:
+      - id: MaterialBones1
+        rolls: !type:RangeNumberSelector
+          range: 0, 5
+      - id: MaterialBones1 # Every once in a while you get a whole ton of bones
+        prob: 0.1
+        rolls: !type:RangeNumberSelector
+          range: 10, 20
+      - id: Gauze1 # Mummies?
+        prob: 0.2
+        rolls: !type:RangeNumberSelector
+          range: 1, 3
+      - id: OrganSkeletonPersonArmLeft
+        prob: 0.2
+      - id: OrganSkeletonPersonArmRight
+        prob: 0.2
+      - id: OrganSkeletonPersonHandLeft
+        prob: 0.2
+      - id: OrganSkeletonPersonHandRight
+        prob: 0.2
+      - id: OrganSkeletonPersonLegLeft
+        prob: 0.2
+      - id: OrganSkeletonPersonLegRight
+        prob: 0.2
+      - id: OrganSkeletonPersonFootLeft
+        prob: 0.2
+      - id: OrganSkeletonPersonFootRight
+        prob: 0.2
+      - id: OrganSkeletonPersonTorso
+        prob: 0.15
+      - id: ClothingUniformJumpsuitAncient
+        prob: 0.15
+      - id: OrganSkeletonPersonHead
+        prob: 0.1
+
+- type: entityTable
+  id: MaintLootLite # Maints loot, but not as much as a locker
+  table: !type:AllSelector 
+    children:
+      - !type:GroupSelector
+        children:
+        - id: StrangePill
+          weight: 15
+        - !type:NestedSelector
+          tableId: MaintToolsTable
+          weight: 25 
+        - !type:NestedSelector
+          tableId: MaintFluffTable
+          weight: 33
+        - !type:NestedSelector
+          tableId: AllPlushiesTable
+          weight: 15
+        - !type:NestedSelector
+          tableId: MaintWeaponTable
+          weight: 7
+        - !type:NestedSelector
+          tableId: SyndieMaintLoot
+          weight: 5
+      - !type:NestedSelector
+        tableId: MaintLootLite
+        prob: 0.33 # Recursive chance to roll more than one item
+
+- type: entity
+  parent: CrateCoffin
+  id: CrateCoffinFilledMaintsLootAndBones
+  name: coffin
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:NestedSelector 
+          tableId: MaintLootLite
+          prob: 0.33
+        - !type:NestedSelector
+          tableId: SkeletalRemainsFill
+          prob: 0.75
