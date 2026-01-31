@@ -1,35 +1,74 @@
-﻿- type: entity
+﻿- type: markingsGroup
+  parent: Undergarments
+  id: Avali
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 0
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ AvaliTailBase ]
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 1
+      required: true
+      default: [ AvaliEarsBase ]
+    enum.HumanoidVisualLayers.Chest:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 4
+      required: false
+
+- type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceAvali
   name: avali appearance
   components:
   - type: Inventory
     speciesId: Avali
-  - type: EntityTableContainerFill
-    containers:
-      body_organs: !type:AllSelector
-        children:
-        - id: OrganAvaliTorso
-        - id: OrganAvaliHead
-        - id: OrganAvaliArmLeft
-        - id: OrganAvaliArmRight
-        - id: OrganAvaliHandRight
-        - id: OrganAvaliHandLeft
-        - id: OrganAvaliLegLeft
-        - id: OrganAvaliLegRight
-        - id: OrganAvaliFootLeft
-        - id: OrganAvaliFootRight
-        - id: OrganAvaliBrain
-        - id: OrganAvaliEyes
-        - id: OrganAvaliTongue
-        - id: OrganAvaliAppendix
-        - id: OrganAvaliEars
-        - id: OrganAvaliLungs
-        - id: OrganAvaliHeart
-        - id: OrganAvaliStomach
-        - id: OrganAvaliLiver
-        - id: OrganAvaliKidneys
-  - type: HumanoidAppearance
+  - type: InitialBody
+    organs:
+      Torso: OrganAvaliTorso
+      Head: OrganAvaliHead
+      ArmLeft: OrganAvaliArmLeft
+      ArmRight: OrganAvaliArmRight
+      HandRight: OrganAvaliHandRight
+      HandLeft: OrganAvaliHandLeft
+      LegLeft: OrganAvaliLegLeft
+      LegRight: OrganAvaliLegRight
+      FootLeft: OrganAvaliFootLeft
+      FootRight: OrganAvaliFootRight
+      Brain: OrganAvaliBrain
+      Eyes: OrganAvaliEyes
+      Tongue: OrganAvaliTongue
+      Appendix: OrganAvaliAppendix
+      Ears: OrganAvaliEars
+      Lungs: OrganAvaliLungs
+      Heart: OrganAvaliHeart
+      Stomach: OrganAvaliStomach
+      Liver: OrganAvaliLiver
+      Kidneys: OrganAvaliKidneys
+  - type: HumanoidProfile
     species: Avali
 
 - type: entity
@@ -133,7 +172,18 @@
     sprite: Mobs/Species/Human/organs.rsi
 
 - type: entity
-  parent: OrganAvali
+  id: OrganAvaliVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _CD/Mobs/Species/Avali/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Avali
+
+- type: entity
+  parent: [ OrganAvali, OrganAvaliVisual ]
   id: OrganAvaliExternal
   abstract: true
   components:
@@ -185,8 +235,12 @@
   id: OrganAvaliBrain
 
 - type: entity
-  parent: [ OrganBaseEyes, OrganAvaliInternal ]
+  parent: [ OrganAvaliVisual, OrganBaseEyes, OrganAvaliInternal ]
   id: OrganAvaliEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
 
 - type: entity
   parent: [ OrganBaseTongue, OrganAvaliInternal ]

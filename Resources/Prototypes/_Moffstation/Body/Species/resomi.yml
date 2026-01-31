@@ -1,4 +1,46 @@
-﻿- type: entity
+﻿- type: markingsGroup
+  parent: Undergarments
+  id: Resomi
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Special:
+      limit: 10
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ ResomiTail ]
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 6
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.UndergarmentTop:
+      limit: 1
+      required: false
+      nudityDefault: [ UndergarmentTopTanktopResomi ]
+    enum.HumanoidVisualLayers.UndergarmentBottom:
+      limit: 1
+      required: false
+      nudityDefault: [ UndergarmentBottomBoxersResomi ]
+
+- type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceResomi
   name: resomi appearance
@@ -196,34 +238,30 @@
         32:
           sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
           state: inHand
-  - type: EntityTableContainerFill
-    containers:
-      body_organs: !type:AllSelector
-        children:
-        - id: OrganResomiTorso
-        - id: OrganResomiHead
-        - id: OrganResomiArmLeft
-        - id: OrganResomiArmRight
-        - id: OrganResomiHandRight
-        - id: OrganResomiHandLeft
-        - id: OrganResomiLegLeft
-        - id: OrganResomiLegRight
-        - id: OrganResomiFootLeft
-        - id: OrganResomiFootRight
-        - id: OrganResomiBrain
-        - id: OrganResomiEyes
-        - id: OrganResomiTongue
-        - id: OrganResomiAppendix
-        - id: OrganResomiEars
-        - id: OrganResomiLungs
-        - id: OrganResomiHeart
-        - id: OrganResomiStomach
-        - id: OrganResomiLiver
-        - id: OrganResomiKidneys
-  - type: HumanoidAppearance
+  - type: InitialBody
+    organs:
+      Torso: OrganResomiTorso
+      Head: OrganResomiHead
+      ArmLeft: OrganResomiArmLeft
+      ArmRight: OrganResomiArmRight
+      HandRight: OrganResomiHandRight
+      HandLeft: OrganResomiHandLeft
+      LegLeft: OrganResomiLegLeft
+      LegRight: OrganResomiLegRight
+      FootLeft: OrganResomiFootLeft
+      FootRight: OrganResomiFootRight
+      Brain: OrganResomiBrain
+      Eyes: OrganResomiEyes
+      Tongue: OrganResomiTongue
+      Appendix: OrganResomiAppendix
+      Ears: OrganResomiEars
+      Lungs: OrganResomiLungs
+      Heart: OrganResomiHeart
+      Stomach: OrganResomiStomach
+      Liver: OrganResomiLiver
+      Kidneys: OrganResomiKidneys
+  - type: HumanoidProfile
     species: Resomi
-    undergarmentTop: UndergarmentTopTanktopResomi
-    undergarmentBottom: UndergarmentBottomBoxersResomi
   - type: FireVisuals
     sprite: _Moffstation/Mobs/Effects/onfire.rsi
     normalState: Resomi_minor_burning
@@ -375,7 +413,18 @@
     sprite: Mobs/Species/Human/organs.rsi
 
 - type: entity
-  parent: OrganResomi
+  id: OrganResomiVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Moffstation/Mobs/Species/Resomi/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Resomi
+
+- type: entity
+  parent: [ OrganResomi, OrganResomiVisual ]
   id: OrganResomiExternal
   abstract: true
   components:
@@ -427,8 +476,12 @@
   id: OrganResomiBrain
 
 - type: entity
-  parent: [ OrganBaseEyes, OrganResomiInternal ]
+  parent: [ OrganResomiVisual, OrganBaseEyes, OrganResomiInternal ]
   id: OrganResomiEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
 
 - type: entity
   parent: [ OrganBaseTongue, OrganResomiInternal ]
