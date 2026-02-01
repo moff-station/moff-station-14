@@ -789,8 +789,50 @@
             tableId: CorpseFill
             weight: 1
 
-
-
 #Graves
+- type: entity
+  parent: CrateWoodenGrave
+  id: CrateWoodenGraveFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+          - !type:AllSelector
+            children:
+            - !type:NestedSelector
+              tableId: MaintLootLite
+              prob: 0.4
+            - !type:NestedSelector
+              tableId: SkeletalRemainsFill
+              prob: 0.6
+            weight: 4
+          - !type:NestedSelector
+            tableId: CorpseFill
+            weight: 1
+
+- type: entity
+  parent: CrateStoneGrave
+  id: CrateStoneGraveFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+          - !type:AllSelector
+            children:
+            - !type:NestedSelector
+              tableId: MaintLootLite
+              prob: 0.4
+            - !type:NestedSelector
+              tableId: SkeletalRemainsFill
+              prob: 0.6
+            weight: 4
+          - !type:NestedSelector
+            tableId: CorpseFill
+            weight: 1
+
 #Urns
 #Add canopic jars?
