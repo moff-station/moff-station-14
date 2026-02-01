@@ -159,9 +159,8 @@
     sprite: _Moffstation/Clothing/OuterClothing/Misc/judge.rsi
   - type: EntityTableContainerFill
     containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: Gavel
+      storagebase:
+        id: Gavel
 # Moffstation - End
 
 - type: entity
