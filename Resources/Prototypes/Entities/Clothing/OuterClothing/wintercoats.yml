@@ -441,10 +441,10 @@
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
 - type: entity
-  parent: [ClothingOuterWinterSec, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: ClothingOuterWinterHoS # Moffstation - New Security Outfits
   id: ClothingOuterWinterHoSUnarmored
   name: head of security's winter coat
-  description: A sturdy coat, a warm coat, but not as armored. # Moffstation - New Security Outfits
+  description: A sturdy, utilitarian winter coat designed to protect a head of security from any brig-bound threats and hypothermic events. # Moffstation - New Security Outfits
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/hoscoat.rsi # Moffstation - New Security Outfits
@@ -826,10 +826,10 @@
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 
 - type: entity
-  parent: ClothingOuterWinterSec # Moffstation - New Security Outfits
+  parent: ClothingOuterWinterWarden # Moffstation - New Security Outfits
   id: ClothingOuterWinterWardenUnarmored
   name: warden's winter coat
-  description: A sturdy coat, a warm coat, but not as armored.
+  description: A sturdy, utilitarian winter coat designed to protect a warden from any brig-bound threats and hypothermic events. # Moffstation - New Security Outfits
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - New Security Outfits
