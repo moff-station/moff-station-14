@@ -636,23 +636,10 @@
       # Diona
       - !type:AllSelector
         children:
-        - !type:GroupSelector # Either Diona body parts, or nymphs
-          children:
-          - !type:AllSelector
-            children:
-            - !type:NestedSelector
-              tableId: DionaBodyParts
-            - !type:NestedSelector
-              tableId: DionaOrgans
-            weight: 7
-          - !type:AllSelector
-            children:
-            - id: OrganDionaNymphBrain
-              prob: 0.33
-            - id: OrganDionaNymphStomach
-              prob: 0.33
-            - id: OrganDionaNymphLungs
-              prob: 0.33
+        - !type:NestedSelector
+          tableId: DionaBodyParts
+        - !type:NestedSelector
+          tableId: DionaOrgans
         - id: Log
           rolls: !type:RangeNumberSelector
             range: 1,6
