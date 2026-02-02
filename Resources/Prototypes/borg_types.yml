@@ -64,6 +64,11 @@
   - Engineering
   - Science
 
+  # Moffstation - Begin (Remove Inherent Gravity) - since wrecks will no longer have gravity without a gravity generator, engiborgs and salvborgs need to have magboots effect added and enabled on selecting chassis.
+  addComponents:
+  - type: Magboots
+  # Moffstation - End
+
   # Visual
   inventoryTemplateId: borgShort
   # Moffstation - Start - Add neck slots and displacements
@@ -104,6 +109,11 @@
   radioChannels:
   - Supply
   - Science
+
+  # Moffstation - Begin (Remove Inherent Gravity) - since wrecks will no longer have gravity without a gravity generator, engiborgs and salvborgs need to have magboots effect added on selecting chassis.
+  addComponents:
+  - type: Magboots
+  # Moffstation - End
 
   # Visual
   inventoryTemplateId: borgTall
