@@ -59,12 +59,12 @@
     price: 500
 
 - type: entity
-  name: AKS-74U # Moffstation - (AK Resprite)
+  name: AKS-74U # Moffstation - (AK Resprite) - the sprite is now based on the real-life AKS-74U, which makes more sense for the 4x3 weapon we have in game.
   parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleAk
   description: "A somewhat battered carbine rifle of a design originating from old Earth. Favored by criminals, militias, and terrorists due to its famed reliability and easy-to-manufacture design.\nFeeds from .30 rifle magazines." # Moffstation - (AK Resprite)
   components:
-  # Moffstation - Begin (AK Resprite)
+  # Moffstation - Begin (AK Resprite) - Sprites by the lovely Tomas :3
   - type: Clothing
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/aks.rsi
   - type: Sprite
