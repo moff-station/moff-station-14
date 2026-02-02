@@ -822,4 +822,184 @@
           weight: 1
 
 #Urns
-#Add canopic jars?
+- type: entityTable
+  id: UrnCommonThings
+  table: !type:GroupSelector 
+    children:
+    - !type:GroupSelector # 1x1 items can fit two
+      children:
+      - id: Ash
+        weight: 16
+      - id: MatchstickSpent
+        weight: 4
+      - id: Matchstick
+        weight: 2
+      - id: TreasureCoinIron
+        weight: 1
+      rolls: !type:RangeNumberSelector
+        range: 0,2
+      weight: 16
+    - id: FoodBadRecipe # AKA 'burned mess'
+      weight: 4
+    - id: Ectoplasm
+      weight: 1
+
+- type: entityTable
+  id: UrnFireThemedThings
+  table: !type:GroupSelector
+    children:
+    - id: RagItem # Not strictly fire-themed, but it makes sense why it wouldn't burn
+      weight: 1
+    - id: Ashtray
+      weight: 1
+    - id: Ointment1
+      weight: 1
+    - id: ClothingHeadHatWitch1 # Witches are also for burning
+      weight: 1
+    - id: FireExtinguisherMini
+      weight: 1
+    - id: Torch
+      weight: 1
+    - id: TrashBakedBananaPeel
+      weight: 1
+    - !type:AllSelector # 1x1 items should have ash in the other slot
+      children:
+      - id: Ash
+      - !type:GroupSelector
+        children:
+        - id: Flare # An expended flare would be better, but there's no separate prototype.
+        - id: ClothingMaskGasAtmos # Allegedly flameproof
+        - id: FoodMeatCooked
+        - id: SmokingPipe
+        - !type:GroupSelector
+          children:
+          - id: FlippoLighter
+          - id: CheapLighter
+          - id: DiscountDanLighter
+        weight: 5 # Weighted higher to compensate for these things all being bundled in one group
+    - !type:GroupSelector
+      children:
+      - id: ClothingHeadHatWelding
+      - id: ClothingHeadHatWeldingMaskFlame
+      - id: ClothingHeadHatWeldingMaskFlameBlue
+      - id: ClothingHeadHatWeldingMaskPainted
+      weight: 1
+    - !type:GroupSelector
+      children:
+      - id: FoodMeatBaconCooked
+      - id: FoodMeatPattyCooked
+      weight: 1
+
+- type: entityTable
+  id: UrnUnusualThings
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector # Tools
+      children:
+      - id: CrowbarRed
+      - id: Screwdriver
+      - id: Welder
+      - id: Wrench
+      - id: Wirecutter
+      - id: Multitool
+      - id: trayScanner
+      - id: RadioHandheld
+      - id: HandheldGPSBasic
+      - id: GeigerCounter
+      weight: 6
+    - !type:AllSelector # 1x1 items
+      children:
+      - id: Ash
+      - !type:GroupSelector
+        children:
+        - id: Pen
+        - id: ToyRubberDuck
+        - id: d4Dice
+        - id: Dart
+      weight: 4
+    - !type:GroupSelector # ID cards
+      children:
+      - id: ClownIDCard
+      - id: MimeIDCard
+      - id: BoxerIDCard
+      - id: ZookeeperIDCard
+      - id: PrisonerIDCard
+      weight: 1
+    - !type:GroupSelector
+      children:
+      - id: Ash
+      - !type:NestedSelector
+        tableId: TreasureCoinPile
+      rolls: !type:RangeNumberSelector
+        range: 1,2
+    - id: BrokenBottle
+      weight: 1
+    - id: Fork
+      weight: 1
+    - id: TennisBall
+      weight: 1
+    - id: PowerCellSmallPrinted
+      weight: 1
+    - id: HydroponicsToolMiniHoe
+      weight: 1
+    - id: BarberScissors
+      weight: 1
+    - id: SeashellInstrument
+      weight: 1
+    - id: ClothingNeckBronzeheart
+      weight: 1
+    - id: FoodBanana
+      weight: 1
+
+- type: entityTable
+  id: UrnDangerousThings
+  table: !type:GroupSelector
+    children:
+    - !type:AllSelector
+      children:
+      - id: Telecrystal1
+      - id: Ash
+    - id: Handcuffs
+    - id: RadioHandheldSecurity
+    - id: SyndicateIDCard
+    - !type:GroupSelector
+      children:
+      - id: PipeBombGunpowder
+      - id: PipeBomb
+      - id: ModularGrenade
+      - id: GrenadeDummy
+    - !type:GroupSelector
+      children:
+      - id: CartridgePistol
+      - id: CartridgePistolEmpty
+      - id: CartridgeRifle
+      - id: ShellShotgun
+      - id: MagazinePistol
+    - !type:GroupSelector
+      children:
+      - id: KitchenKnife
+      - id: CombatKnife
+      - id: SurvivalKnife
+      - id: ThrowingKnife
+
+- type: entity
+  parent: Urn
+  id: UrnFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        children:
+          - !type:NestedSelector # Most commonly urns just have burnt stuff in them
+            tableId: UrnCommonThings
+            weight: 55
+          - !type:NestedSelector # Fire-themed things are funny in a funeral urn
+            tableId: UrnFireThemedThings
+            weight: 25
+          - !type:NestedSelector # Occasionally, something that's unexpected and maybe even useful
+            tableId: UrnUnusualThings
+            weight: 15
+          - !type:NestedSelector # If you're very lucky, something a bit spicy
+            tableId: UrnDangerousThings
+            weight: 5
