@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseGameRule
+  id: HellPortalSpawn
+  components:
+  - type: StationEvent
+    weight: 5
+    duration: null
+    earliestStart: 20
+    reoccurrenceDelay: 20
+    minimumPlayers: 20
+  - type: RandomSpawnRule
+    prototype: HellPortal

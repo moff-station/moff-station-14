@@ -1,0 +1,37 @@
+
+
+- type: entity
+  name: hellhound
+  parent: [ BaseSmasherHostile, MobFleshLover ]
+  id: MobFleshLoverSmasher
+
+- type: entity
+  name: hellhound
+  parent: [ BaseSmasherHostile, MobFleshGolem ]
+  id: MobFleshGolemSmasher
+
+- type: entity
+  name: hellhound
+  parent: [ BaseSmasherHostile, MobFleshClamp ]
+  id: MobFleshClampSmasher
+
+- type: entity
+  name: hellhound
+  parent: [ BaseSmasherHostile, MobFleshJared ]
+  id: MobFleshJaredSmasher
+
+- type: entity
+  name: hellhound
+  parent: [ BaseSmasherHostile, MobAbomination ]
+  id: MobAbominationSmasher
+
+- type: entity
+  name: hellhound
+  parent: [ BaseSmasherHostile, MobCorgiNarsi ]
+  id: MobHellhound
+  description: A cute little puppy!
+
+- type: entity
+  name: hellhound
+  parent: [ BaseSmasherHostile, MobHellspawn ]
+  id: MobHellspawnSmasher
