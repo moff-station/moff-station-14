@@ -1,3 +1,8 @@
+- type: entity # Used for personal items which replace the Mk58 pistol.
+  parent: WeaponPistolMk58
+  id: BaseWeaponPersonalItemPistol
+  abstract: true
+
 - type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolPM
