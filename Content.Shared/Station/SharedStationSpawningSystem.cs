@@ -215,7 +215,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
         else
         {
             var spawnedharness = Spawn(proto, _xformSystem.GetMapCoordinates(entity));
-            InventorySystem.TryEquip(entity, spawnedharness, "outerClothing", true, force: true);
+            InventorySystem.TryEquip(entity, spawnedharness, "outerClothing", true, force: false);
         }
     }
 }
