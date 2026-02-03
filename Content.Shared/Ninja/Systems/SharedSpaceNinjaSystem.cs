@@ -108,7 +108,7 @@ public abstract class SharedSpaceNinjaSystem : EntitySystem
     private void OnShotAttempted(Entity<SpaceNinjaComponent> ent, ref ShotAttemptedEvent args)
     {
         // Moffstation - Start - Allow Ninjas to use Grappling Hooks
-        if (TryComp<GrapplingGunComponent>(args.Used, out var grappling))
+        if (HasComp<GrapplingGunComponent>(args.Used))
             return;
         // Moffstation - End
 
