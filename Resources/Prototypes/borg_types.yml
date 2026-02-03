@@ -115,7 +115,6 @@
       variation: 0.05
       volume: -10
   # Moffstation - End
-  # spriteBodyMovementState: miner_moving # Moffstation - Salvage Borg Resprite
   # Visual
   inventoryTemplateId: borgTall
   # Moffstation - Start - Add neck slots and displacements
@@ -127,7 +126,7 @@
           state: neck
   # Moffstation - End
   spritePath: _Moffstation/Mobs/Silicon/Chassis/miner.rsi # Moffstation - Early merge of Borg RSI fix
-
+  # spriteBodyMovementState: miner_moving # Moffstation - Salvage Borg Resprite
   # Pet
   petSuccessString: petting-success-salvage-cyborg
   petFailureString: petting-failure-salvage-cyborg
