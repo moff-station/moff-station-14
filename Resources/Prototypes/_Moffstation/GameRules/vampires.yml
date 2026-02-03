@@ -40,10 +40,9 @@
             Heat: 30
       - type: OrganSwap
         organSwaps:
-          heart: OrganVampireHeart
-          lungs: OrganVampireLungs
-          stomach: OrganVampireStomach
-          core: OrganVampireHeart # Slime cores
+          Heart: OrganVampireHeart
+          Lungs: OrganVampireLungs
+          Stomach: OrganVampireStomach
       - type: Store
         name: vampire-store-name
         categories:

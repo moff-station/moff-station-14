@@ -132,7 +132,6 @@ namespace Content.IntegrationTests.Tests
             // Moffstation - Start - Our maps
             "Amber",
             "Waterjug",
-            "Tram2",
             "Train",
             "Core",
             "Omega",

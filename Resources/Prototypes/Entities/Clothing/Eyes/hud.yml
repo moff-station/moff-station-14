@@ -1,4 +1,13 @@
 - type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesHudBase
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StealTarget
+    stealGroup: ClothingEyesHuds
+
+- type: entity
   id: ShowSecurityIcons
   abstract: true
   categories: [ HideSpawnMenu ]
@@ -17,7 +26,7 @@
   - type: ShowHealthIcons
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: ClothingEyesHudBase
   id: ClothingEyesHudDiagnosticUpstream # Moffstation - Replaced by modular HUDs
   categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: diagnostic hud
@@ -34,7 +43,7 @@
   - type: ShowAccessReaderSettings
 
 - type: entity
-  parent: [ClothingEyesBase, ShowMedicalIcons]
+  parent: [ClothingEyesHudBase, ShowMedicalIcons]
   id: ClothingEyesHudMedicalUpstream # Moffstation - Replaced by modular HUDs
   categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: medical hud
@@ -51,7 +60,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]
+  parent: [ClothingEyesHudBase, ShowSecurityIcons, BaseSecurityContraband]
   id: ClothingEyesHudSecurityUpstream # Moffstation - Replaced by modular HUDs
   categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: security hud
@@ -68,7 +77,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: [ClothingEyesBase, BaseCommandContraband]
+  parent: [ClothingEyesHudBase, BaseCommandContraband]
   id: ClothingEyesHudCommandUpstream # Moffstation - Replaced by modular HUDs
   categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: administration hud
@@ -85,7 +94,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: ClothingEyesHudBase
   id: ClothingEyesHudBeerUpstream # Moffstation - Replaced by modular HUDs
   categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: beer goggles
@@ -96,8 +105,6 @@
   - type: Clothing
     sprite: Clothing/Eyes/Hud/beergoggles.rsi
   - type: ShowThirstIcons
-  - type: StealTarget
-    stealGroup: ClothingEyesHudBeer
   - type: SolutionScanner
   - type: Tag
     tags:
@@ -105,7 +112,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: ClothingEyesHudBase
   id: ClothingEyesHudFriedOnion
   name: fried onion goggles
   description: Filler
@@ -129,7 +136,7 @@
       - greasey
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: ClothingEyesHudBase
   id: ClothingEyesHudOnionBeer
   name: thungerst goggles
   description: Filler
@@ -142,7 +149,7 @@
   - type: ShowThirstIcons
 
 - type: entity
-  parent: [ClothingEyesBase, ShowMedicalIcons]
+  parent: [ClothingEyesHudBase, ShowMedicalIcons]
   id: ClothingEyesHudMedOnion
   name: medonion hud
   description: Filler
@@ -154,7 +161,7 @@
   - type: ShowHungerIcons
 
 - type: entity
-  parent: [ClothingEyesBase, ShowMedicalIcons]
+  parent: [ClothingEyesHudBase, ShowMedicalIcons]
   id: ClothingEyesHudMedOnionBeer
   name: medthungerst hud
   description: Filler
@@ -167,7 +174,7 @@
   - type: ShowThirstIcons
 
 - type: entity
-  parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons, BaseSecurityCommandContraband]
+  parent: [ClothingEyesHudBase, ShowSecurityIcons, ShowMedicalIcons, BaseSecurityCommandContraband]
   id: ClothingEyesHudMedSecUpstream # Moffstation - Replaced by modular HUDs
   categories: [ HideSpawnMenu ] # Moffstation - Replaced by modular HUDs
   name: medsec hud
@@ -184,7 +191,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons]
+  parent: [ClothingEyesHudBase, ShowSecurityIcons, ShowMedicalIcons]
   id: ClothingEyesHudMultiversal
   name: multiversal hud
   description: Filler
@@ -200,7 +207,7 @@
   - type: ShowSyndicateIcons
 
 - type: entity
-  parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons]
+  parent: [ClothingEyesHudBase, ShowSecurityIcons, ShowMedicalIcons]
   id: ClothingEyesHudOmni
   name: omni hud
   description: Filler
@@ -218,7 +225,7 @@
   - type: ShowSyndicateIcons
 
 - type: entity
-  parent: [ClothingEyesBase, ShowSecurityIcons, BaseSyndicateContraband]
+  parent: [ClothingEyesHudBase, ShowSecurityIcons, BaseSyndicateContraband]
   id: ClothingEyesHudSyndicate
   name: syndicate visor
   description: The syndicate's professional head-up display, designed for better detection of humanoids and their subsequent elimination.
@@ -234,7 +241,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: [ClothingEyesBase, ShowSecurityIcons, BaseSyndicateContraband]
+  parent: [ClothingEyesHudBase, ShowSecurityIcons, BaseSyndicateContraband]
   id: ClothingEyesHudSyndicateAgent
   name: syndicate medical visor
   description: The Syndicate Corpsman's professional heads-up display, designed for quick diagnosis of their team's status.
@@ -254,6 +261,9 @@
   parent: [ClothingEyesGlassesSunglasses, ShowSecurityIcons]
   id: ClothingEyesGlassesHiddenSecurity
   suffix: Syndicate
+  components:
+  - type: StealTarget
+    stealGroup: ClothingEyesHuds
 
 - type: entity
   # Moffstation - Begin - Replaced by modular HUDs
