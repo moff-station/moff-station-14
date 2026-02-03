@@ -58,7 +58,7 @@
     enum.HumanoidVisualLayers.Tail:
       limit: 1
       required: true
-      default: [ VoxTailShort ] # Moffstation - Move vox markings; standard tail doesn't exist for whatever reason.
+      default: [ VoxTailBig ] # Moffstation - Move vox markings; upstream default tail is "big".
     enum.HumanoidVisualLayers.UndergarmentTop:
       limit: 1
       required: false
