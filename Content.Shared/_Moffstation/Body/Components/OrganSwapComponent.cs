@@ -1,4 +1,5 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared.Body;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Body.Components;
@@ -10,10 +11,11 @@ namespace Content.Shared._Moffstation.Body.Components;
 public sealed partial class OrganSwapComponent : Component
 {
     /// <summary>
-    /// A mapping of <c>slot name : organ prototype</c> for the organs to replace in those particular containers/slot.
+    /// A mapping of <seealso cref="OrganCategoryPrototype"/> to organ prototype which specifies which category of organ
+    /// to swap to what new organ.
     /// </summary>
     [DataField]
-    public Dictionary<string, EntProtoId> OrganSwaps = new();
+    public Dictionary<ProtoId<OrganCategoryPrototype>, EntProtoId> OrganSwaps = new();
 
     public override bool SendOnlyToOwner => true;
 }

@@ -163,3 +163,4 @@ ghost-role-captains-sabre = Captain´s Persona Sabre
 ## Other Job Titles
 job-name-mercenary = Mercenary
 job-name-pirate-captain = Pirate Captain
+job-name-ertmailcarrier = ERT Mail Carrier

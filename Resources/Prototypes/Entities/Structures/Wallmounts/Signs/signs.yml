@@ -378,13 +378,20 @@
     layers:
     - state: drama1
       map: [ "base" ]
+# Moffstation - Start - New Signs
+    - state:
+      map: [ "decor" ]
   - type: RandomSprite
     available:
     - base:
         drama1: null
         drama2: null
         drama3: null
-
+    - decor:
+        drama-clown: null
+        drama-mime: null
+        drama-party: null
+# Moffstation - End - New Signs
 - type: entity
   parent: BaseSign
   id: SignBarbershop

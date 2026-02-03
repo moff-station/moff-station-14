@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingHandsBase, BaseSyndicateContraband]
+  parent: [ ClothingHandsBase, BaseHighlyIllegalContraband ]
   id: ClothingHandsPirateHook
   name: pirate hook
   description: Sharp and pointy. Shiver me timbers!
@@ -19,8 +19,8 @@
         Slash: 12
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
-  - type: AddAccentClothing 
-    accent: PirateAccent 
+  - type: AddAccentClothing
+    accent: PirateAccent
 
 - type: entity
   parent: [ ClothingHandsBase ]
@@ -43,5 +43,5 @@
         Slash: 10
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
-  - type: AddAccentClothing 
+  - type: AddAccentClothing
     accent: PirateAccent
