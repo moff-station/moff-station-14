@@ -38,7 +38,7 @@
 
 - type: entityTable
   id: MaintLootLite # Maints loot, but not as much as a locker
-  table: !type:AllSelector 
+  table: !type:AllSelector
     children:
     - !type:GroupSelector
       children:
