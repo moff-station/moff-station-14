@@ -1853,6 +1853,45 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
+        #region AntagWeights
+        // Moffstation - Everything in this region is moff
+
+        public async Task<int> GetAntagWeight(NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            var player = await db.DbContext.Player.Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId, cancel);
+            return player?.MoffPlayer?.AntagWeight ?? 1;
+        }
+
+        public async Task<bool> SetAntagWeight(NetUserId userId, int weight)
+        {
+            await using var db = await GetDb();
+
+            var player = await db.DbContext.Player
+                .Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId);
+
+            if (player is null)
+                return false;
+
+            if (player.MoffPlayer == null)
+            {
+                player.MoffPlayer = new MoffModel.MoffPlayer
+                {
+                    PlayerUserId = userId,
+                    AntagWeight = weight,
+                };
+            } else {
+                player.MoffPlayer.AntagWeight = weight;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        #endregion
+
         public abstract Task SendNotification(DatabaseNotification notification);
 
         // SQLite returns DateTime as Kind=Unspecified, Npgsql actually knows for sure it's Kind=Utc.
