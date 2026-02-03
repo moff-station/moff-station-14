@@ -216,7 +216,10 @@
   minLimit: 0
   loadouts:
   - HoPHead
-  - HoPBeret # Moffstation
+  # Moffstation - Start
+  - HoPBeret
+  - Ushanka
+  # Moffstation - End
 
 - type: loadoutGroup
   id: HoPJumpsuit
@@ -1360,8 +1363,10 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
-  - HeadofSecurityCarapace # Moffstation - New drip
-
+  # Moffstation - Start
+  - HeadofSecurityCarapace
+  - HeadofSecurityWintercoatSmall
+  # Moffstation - End
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
   name: loadout-group-jobtrinkets
@@ -1396,6 +1401,7 @@
   - WardenCoat
   - WardenArmoredWinterCoat
   # Moffstation - Begin (Security Loadout Improvements) - Since warden coats clip through moth fuzz, give them the option of a basic vest.
+  - WardenWintercoatSmall
   - ArmorVest
   - ArmorVestSlim
   # Moffstation - End
@@ -1456,6 +1462,7 @@
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
+  - SecurityOfficerWintercoatArmored # Moffstation
 
 - type: loadoutGroup
   id: SecurityShoes
@@ -1463,6 +1470,7 @@
   loadouts:
   - JackBoots
   - SecurityWinterBoots
+  - JackHeels # Moffstation - High-Heeled Jackboots
 
 - type: loadoutGroup
   id: SecurityPDA

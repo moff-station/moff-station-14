@@ -1,14 +1,14 @@
 - type: entity
   parent: [ CrateWeaponSecure, BaseSecurityContraband ]
-  id: CrateArmoryRifleLeverMagnum
-  name: repeating rifle crate
-  description: Contains two Crestfall lever-action rifles with four ammo boxes. Requires Armory access to open.
+  id: CrateArmoryRifleDMR
+  name: DMR crate
+  description: Contains two long-range designated marksman rifles with four mags. Requires Armory access to open.
   components:
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:AllSelector
         children:
-        - id: WeaponRifleLeverMagnum
+        - id: WeaponRifleLecterDMR
           amount: 2
-        - id: MagazineBoxMagnum
+        - id: MagazineRifle
           amount: 4
