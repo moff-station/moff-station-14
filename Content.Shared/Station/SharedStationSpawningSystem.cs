@@ -1,16 +1,17 @@
 using System.Linq;
+using Content.Shared._Moffstation.Armor;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
-using Content.Shared.Item;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Robust.Shared.Collections;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+
 
 namespace Content.Shared.Station;
 
@@ -23,6 +24,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
     private EntityQuery<HandsComponent> _handsQuery;
     private EntityQuery<InventoryComponent> _inventoryQuery;
@@ -44,7 +46,14 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     public void EquipRoleLoadout(EntityUid entity, RoleLoadout loadout, RoleLoadoutPrototype roleProto)
     {
         // Order loadout selections by the order they appear on the prototype.
-        foreach (var group in loadout.SelectedLoadouts.OrderBy(x => roleProto.Groups.FindIndex(e => e == x.Key)))
+        EntProtoId? harness = null;
+        if (loadout.SelectedLoadouts.Remove("GroupTankHarness"))
+        {
+            harness = "ClothingOuterVestTank";
+        };
+        var orderedLoadout = loadout.SelectedLoadouts.OrderBy(x => roleProto.Groups.FindIndex(e => e == x.Key));
+
+        foreach (var group in orderedLoadout)
         {
             foreach (var items in group.Value)
             {
@@ -53,11 +62,14 @@ public abstract class SharedStationSpawningSystem : EntitySystem
                     Log.Error($"Unable to find loadout prototype for {items.Prototype}");
                     continue;
                 }
-
                 EquipStartingGear(entity, loadoutProto, raiseEvent: false);
             }
         }
 
+        if (harness.HasValue)
+        {
+            EquipHarness(harness.Value, entity);
+        }
         EquipRoleName(entity, loadout, roleProto);
     }
 
@@ -84,90 +96,70 @@ public abstract class SharedStationSpawningSystem : EntitySystem
         }
     }
 
-    public void EquipStartingGear(EntityUid entity, LoadoutPrototype loadout, bool raiseEvent = true)
+// Moffstation - Start - Vox justice
+    // Public API Methods Handle Every Possible Type
+    public void EquipStartingGear(EntityUid entity, IEquipmentLoadout? gear, bool raiseEvent = true)
     {
-        EquipStartingGear(entity, loadout.StartingGear, raiseEvent);
-        EquipStartingGear(entity, (IEquipmentLoadout) loadout, raiseEvent);
-    }
-
-    /// <summary>
-    /// <see cref="EquipStartingGear(Robust.Shared.GameObjects.EntityUid,System.Nullable{Robust.Shared.Prototypes.ProtoId{Content.Shared.Roles.StartingGearPrototype}},bool)"/>
-    /// </summary>
-    public void EquipStartingGear(EntityUid entity, ProtoId<StartingGearPrototype>? startingGear, bool raiseEvent = true)
-    {
-        PrototypeManager.Resolve(startingGear, out var gearProto);
-        EquipStartingGear(entity, gearProto, raiseEvent);
-    }
-
-    /// <summary>
-    /// <see cref="EquipStartingGear(Robust.Shared.GameObjects.EntityUid,System.Nullable{Robust.Shared.Prototypes.ProtoId{Content.Shared.Roles.StartingGearPrototype}},bool)"/>
-    /// </summary>
-    public void EquipStartingGear(EntityUid entity, StartingGearPrototype? startingGear, bool raiseEvent = true)
-    {
-        EquipStartingGear(entity, (IEquipmentLoadout?) startingGear, raiseEvent);
-    }
-
-    /// <summary>
-    /// Equips starting gear onto the given entity.
-    /// </summary>
-    /// <param name="entity">Entity to load out.</param>
-    /// <param name="startingGear">Starting gear to use.</param>
-    /// <param name="raiseEvent">Should we raise the event for equipped. Set to false if you will call this manually</param>
-    public void EquipStartingGear(EntityUid entity, IEquipmentLoadout? startingGear, bool raiseEvent = true)
-    {
-        if (startingGear == null)
+        if (gear == null)
             return;
 
-        var xform = _xformQuery.GetComponent(entity);
+        var xform = Transform(entity);
 
-        if (InventorySystem.TryGetSlots(entity, out var slotDefinitions))
+        // inventory
+        if (InventorySystem.TryGetSlots(entity, out var slotDefs))
         {
-            foreach (var slot in slotDefinitions)
+            foreach (var slot in slotDefs)
             {
-                var equipmentStr = startingGear.GetGear(slot.Name);
-                if (!string.IsNullOrEmpty(equipmentStr))
-                {
-                    var equipmentEntity = Spawn(equipmentStr, xform.Coordinates);
-                    InventorySystem.TryEquip(entity, equipmentEntity, slot.Name, silent: true, force: true);
-                }
-            }
-        }
-
-        if (_handsQuery.TryComp(entity, out var handsComponent))
-        {
-            var inhand = startingGear.Inhand;
-            var coords = xform.Coordinates;
-            foreach (var prototype in inhand)
-            {
-                var inhandEntity = Spawn(prototype, coords);
-
-                if (_handsSystem.TryGetEmptyHand((entity, handsComponent), out var emptyHand))
-                {
-                    _handsSystem.TryPickup(entity, inhandEntity, emptyHand, checkActionBlocker: false, handsComp: handsComponent);
-                }
-            }
-        }
-
-        if (startingGear.Storage.Count > 0)
-        {
-            var coords = _xformSystem.GetMapCoordinates(entity);
-            _inventoryQuery.TryComp(entity, out var inventoryComp);
-
-            foreach (var (slotName, entProtos) in startingGear.Storage)
-            {
-                if (entProtos == null || entProtos.Count == 0)
+                var protoId = gear.GetGear(slot.Name);
+                if (string.IsNullOrEmpty(protoId))
                     continue;
 
-                if (inventoryComp != null &&
-                    InventorySystem.TryGetSlotEntity(entity, slotName, out var slotEnt, inventoryComponent: inventoryComp) &&
-                    _storageQuery.TryComp(slotEnt, out var storage))
+                var spawned = Spawn(protoId, xform.Coordinates);
+                InventorySystem.TryEquip(entity, spawned, slot.Name, silent: true, force: true);
+            }
+        }
+
+        // hands
+        if (_handsQuery.TryComp(entity, out var handsComp))
+        {
+            var coords = xform.Coordinates;
+            foreach (var prototype in gear.Inhand)
+            {
+                var handEnt = Spawn(prototype, coords);
+                if (_handsSystem.TryGetEmptyHand((entity, handsComp), out var emptyHand))
                 {
+                    _handsSystem.TryPickup(entity,
+                        handEnt,
+                        emptyHand,
+                        checkActionBlocker: false,
+                        handsComp: handsComp);
+                }
+            }
+        }
 
-                    foreach (var entProto in entProtos)
+        // storage
+        if (gear.Storage.Count > 0 && _inventoryQuery.TryComp(entity, out var invComp))
+        {
+            var mapCoords = _xformSystem.GetMapCoordinates(entity);
+            foreach (var (slotName, prototypes) in gear.Storage)
+            {
+                if (prototypes == null || prototypes.Count == 0)
+                    continue;
+
+                if (InventorySystem.TryGetSlotEntity(entity,
+                        slotName,
+                        out var slotEnt,
+                        inventoryComponent: invComp) &&
+                    _storageQuery.TryComp(slotEnt, out var storageComp))
+                {
+                    foreach (var proto in prototypes)
                     {
-                        var spawnedEntity = Spawn(entProto, coords);
-
-                        _storage.Insert(slotEnt.Value, spawnedEntity, out _, storageComp: storage, playSound: false);
+                        var spawned = Spawn(proto, mapCoords);
+                        _storage.Insert(slotEnt.Value,
+                            spawned,
+                            out _,
+                            storageComp: storageComp,
+                            playSound: false);
                     }
                 }
             }
@@ -180,6 +172,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
         }
     }
 
+// Moffstation - End
     /// <summary>
     ///     Gets all the gear for a given slot when passed a loadout.
     /// </summary>
@@ -201,12 +194,28 @@ public abstract class SharedStationSpawningSystem : EntitySystem
                 if (!PrototypeManager.Resolve(items.Prototype, out var loadoutPrototype))
                     return null;
 
-                var gear = ((IEquipmentLoadout) loadoutPrototype).GetGear(slot);
+                var gear = ((IEquipmentLoadout)loadoutPrototype).GetGear(slot);
                 if (gear != string.Empty)
                     return gear;
             }
         }
 
         return null;
+    }
+
+    private void EquipHarness(EntProtoId proto, EntityUid entity)
+    {
+        if (PrototypeManager.TryIndex(proto, out var harness) &&
+            InventorySystem.TryGetSlotEntity(entity, "outerClothing", out var containedentity) &&
+            containedentity != null &&
+            TryComp<SuitStorageAttachableComponent>(containedentity.Value, out var storageAttachable))
+        {
+            TrySpawnInContainer(proto, containedentity.Value, storageAttachable.Slot.ID, out var entityUid);
+        }
+        else
+        {
+            var spawnedharness = Spawn(proto, _xformSystem.GetMapCoordinates(entity));
+            InventorySystem.TryEquip(entity, spawnedharness, "outerClothing", true, force: true);
+        }
     }
 }
