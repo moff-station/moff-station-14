@@ -451,6 +451,11 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         {
             _appearance.RemoveData(entity, FoldableModularHudVisuals.Key, appearance);
         }
+
+        if (entity.Comp2.FrameIsDynamic)
+        {
+            _appearance.SetData(entity, Frame, Color.White, appearance);
+        }
     }
 
     private ModularHudVisualKeys VisualsLayerToKey(ModularHudVisuals layer) => layer switch

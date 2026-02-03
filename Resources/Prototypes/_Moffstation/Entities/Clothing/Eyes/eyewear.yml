@@ -153,7 +153,9 @@
     sprite: _Moffstation/Clothing/Eyes/Hud/patch.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Eyes/Hud/patch.rsi
+    clothingVisuals: {} # Remove default frame layer because we need to be able to flip it dynamically.
   - type: ModularHudVisuals
+    frameIsDynamic: true # Need to dynamically flip the frame as well as everything else.
     foldedLayerSuffix: "-flipped"
     speciesWithDifferentClothing:
     - secdog
@@ -270,67 +272,67 @@
 ## Premade modular HUD usages
 
 - type: entity
-  parent: [ClothingEyesModularHudSunglasses, AbstractModularHudSecurity]
+  parent: [ ClothingEyesModularHudSunglasses, AbstractModularHudSecurity ]
   id: ClothingEyesGlassesSecurity
 
 - type: entity
-  parent: [ClothingEyesModularHudSunglasses, AbstractModularHudCommand]
+  parent: [ ClothingEyesModularHudSunglasses, AbstractModularHudCommand ]
   id: ClothingEyesGlassesCommand
 
 - type: entity
-  parent: [ClothingEyesModularHudGoggles, AbstractModularHudChemistry]
+  parent: [ ClothingEyesModularHudGoggles, AbstractModularHudChemistry ]
   id: ClothingEyesGlassesChemical
 
 - type: entity
-  parent: [ClothingEyesModularHudVisor, AbstractModularHudDiagnostic]
+  parent: [ ClothingEyesModularHudVisor, AbstractModularHudDiagnostic ]
   id: ClothingEyesHudDiagnostic
 
 - type: entity
-  parent: [ClothingEyesModularHudVisor, AbstractModularHudMedicalIcons]
+  parent: [ ClothingEyesModularHudVisor, AbstractModularHudMedicalIcons ]
   id: ClothingEyesHudMedical
 
 - type: entity
-  parent: [ClothingEyesModularHudVisor, AbstractModularHudSecurity]
+  parent: [ ClothingEyesModularHudVisor, AbstractModularHudSecurity ]
   id: ClothingEyesHudSecurity
 
 - type: entity
-  parent: [ClothingEyesModularHudVisor, AbstractModularHudCommand]
+  parent: [ ClothingEyesModularHudVisor, AbstractModularHudCommand ]
   id: ClothingEyesHudCommand
 
 - type: entity
-  parent: [ClothingEyesModularHudPatch, AbstractModularHudMedicalIcons]
+  parent: [ ClothingEyesModularHudPatch, AbstractModularHudMedicalIcons ]
   id: ClothingEyesEyepatchHudMedical
 
 - type: entity
-  parent: [ClothingEyesModularHudPatch, AbstractModularHudSecurity]
+  parent: [ ClothingEyesModularHudPatch, AbstractModularHudSecurity ]
   id: ClothingEyesEyepatchHudSecurity
 
 - type: entity
-  parent: [ClothingEyesModularHudPatch, AbstractModularHudDiagnostic]
+  parent: [ ClothingEyesModularHudPatch, AbstractModularHudDiagnostic ]
   id: ClothingEyesEyepatchHudDiag
 
 - type: entity
-  parent: [ClothingEyesModularHudCheapSunglasses, AbstractModularHudMedicalIcons]
+  parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudMedicalIcons ]
   id: ClothingEyesGlassesMedSunglasses
 
 - type: entity
-  parent: [ClothingEyesModularHudCheapSunglasses, AbstractModularHudEngineering]
+  parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudEngineering ]
   id: ClothingEyesGlassesMesonSunglasses
 
 - type: entity
-  parent: [ClothingEyesModularHudGoggles, AbstractModularHudEngineering]
+  parent: [ ClothingEyesModularHudGoggles, AbstractModularHudEngineering ]
   id: ClothingEyesGlassesMeson
 
 - type: entity
-  parent: [ClothingEyesModularHudCheapSunglasses, AbstractModularHudBeer]
+  parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudBeer ]
   id: ClothingEyesHudBeer
 
 - type: entity
-  parent: [ClothingEyesModularHudPatch, AbstractModularHudBeer]
+  parent: [ ClothingEyesModularHudPatch, AbstractModularHudBeer ]
   id: ClothingEyesEyepatchHudBeer
 
 - type: entity
-  parent: [ClothingEyesModularHudGoggles]
+  parent: [ ClothingEyesModularHudGoggles ]
   id: ClothingEyesGlassesMedChem
   suffix: MedChem
   components:
@@ -344,7 +346,7 @@
     currentLabel: modularhud-premade-medchem
 
 - type: entity
-  parent: [ClothingEyesModularHudVisor]
+  parent: [ ClothingEyesModularHudVisor ]
   id: ClothingEyesHudMedSec
   suffix: MedSec
   components:
@@ -360,7 +362,7 @@
     currentLabel: modularhud-premade-medsec
 
 - type: entity
-  parent: [ClothingEyesModularHudSunglasses]
+  parent: [ ClothingEyesModularHudSunglasses ]
   id: ClothingEyesGlassesNoir
   suffix: Noir
   components:

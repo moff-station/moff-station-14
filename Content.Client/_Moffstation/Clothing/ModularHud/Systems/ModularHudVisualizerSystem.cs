@@ -11,23 +11,13 @@ using Robust.Shared.Reflection;
 namespace Content.Client._Moffstation.Clothing.ModularHud.Systems;
 
 /// This system updates the sprites of entities with <see cref="ModularHudComponent"/> based off the appearance data
-/// keyed by <see cref="ColorableLayers"/>. This is what causes modular HUDs to have dynamic visuals.
+/// keyed by <see cref="ModularHudVisualKeys"/>. This is what causes modular HUDs to have dynamic visuals.
 /// This system also handles updating the sprite to account for folding, which is used to flip the orientation of eye
 /// patch HUDs.
 public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisualsComponent>
 {
     [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private readonly IReflectionManager _reflect = default!;
-
-    /// Only these layers need to be modulated.
-    private static readonly ModularHudVisualKeys[] ColorableLayers =
-    [
-        ModularHudVisualKeys.Accent,
-        ModularHudVisualKeys.Lens,
-        ModularHudVisualKeys.Specular,
-        ModularHudVisualKeys.LensAccentMinor,
-        ModularHudVisualKeys.LensAccentMajor,
-    ];
 
     public override void Initialize()
     {
@@ -78,7 +68,7 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         }
 
         // Set color and visibility across colorable layers.
-        foreach (var layerKey in ColorableLayers)
+        foreach (var layerKey in Enum.GetValues<ModularHudVisualKeys>())
         {
             if (SpriteSystem.TryGetLayer(sprite, layerKey, out var layer, logMissing: true))
             {
@@ -165,7 +155,7 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         if (!TryComp<AppearanceComponent>(entity, out var appearance))
             return;
 
-        foreach (var key in ColorableLayers)
+        foreach (var key in Enum.GetValues<ModularHudVisualKeys>())
         {
             if (visualsLayerToRsiState(key) is not { } state)
                 continue;

@@ -109,10 +109,15 @@ public sealed partial class ModularHudVisualsComponent : Component
     [DataField]
     public string? FoldedLayerSuffix;
 
-    /// <see cref="ModularHudModuleComponent.ModuleColor"/>s included in this entity's visuals regardless of the modules in it. This is
-    /// used, eg. to give sunglasses an innate tint.
+    /// <see cref="ModularHudModuleComponent.ModuleColor"/>s included in this entity's visuals regardless of the modules
+    /// in it. This is  used, eg. to give sunglasses an innate tint.
     [DataField]
     public Dictionary<ModularHudVisuals, ModularHudModuleComponent.ModuleColor> InnateVisuals = new();
+
+    /// If true, the ModularHudVisualizerSystem will handle rendering the frame layer. This is useful for when, eg.,
+    /// the strap "frame" layer of eye patches need to be dynamically flipped.
+    [DataField]
+    public bool FrameIsDynamic = false;
 }
 
 /// Data used to describe which layers the visualizer ought not attempt to include in a sprite based on the wearer's
@@ -190,6 +195,7 @@ public record struct EquipmentHudNeedsRefreshEvent;
 [Serializable, NetSerializable]
 public enum ModularHudVisualKeys : byte
 {
+    Frame,
     Accent,
     Lens,
     Specular,
