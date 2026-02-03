@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Database;
 using Robust.Shared.Asynchronous;
@@ -10,9 +12,8 @@ public sealed class WeightedAntagManager
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly ITaskManager _taskManager = default!;
 
-    private readonly List<Task> _pendingSaveTasks = new();
     private ISawmill _logger = default!;
-    private readonly Dictionary<NetUserId, int> _cachedAntagWeight = new();
+    private readonly ConcurrentDictionary<NetUserId, int> _cachedAntagWeight = new();
 
     public void Initialize()
     {
@@ -21,8 +22,7 @@ public sealed class WeightedAntagManager
 
     public void Shutdown()
     {
-        Save();
-        _taskManager.BlockWaitOnTask(Task.WhenAll(_pendingSaveTasks));
+        _taskManager.BlockWaitOnTask(Save());
     }
 
     public void SetWeight(NetUserId userId, int newWeight)
@@ -33,12 +33,12 @@ public sealed class WeightedAntagManager
         _logger.Info($"Updated antag weight for {userId}: {oldWeight} -> {newWeight}");
     }
 
-    public void Save()
+    public async Task Save()
     {
-        foreach (var user in _cachedAntagWeight)
-        {
-            _ = SaveWeight(user.Key, user.Value);
-        }
+        // Defensive copy to avoid concurrent modification during iteration
+        var weights = _cachedAntagWeight.ToArray();
+        var tasks = weights.Select(it => SaveWeight(it.Key, it.Value));
+        await Task.WhenAll(tasks).ConfigureAwait(false); // `ConfigureAwait(false)` basically says that we don't need the context / thread from before and to run the await and subsequent code wherever.
     }
 
     private async Task<int> SaveWeight(NetUserId userId, int newWeight)
@@ -46,9 +46,8 @@ public sealed class WeightedAntagManager
         var oldWeight = GetWeight(userId);
         _cachedAntagWeight[userId] = newWeight;
         var saveTask = _db.SetAntagWeight(userId, newWeight);
-        RegisterShutdownTask(saveTask);
 
-        if (await saveTask)
+        if (await saveTask.ConfigureAwait(false))
         {
             _logger.Debug(
                 $"Antag weight saved for {userId}: {oldWeight} -> {newWeight}");
@@ -58,34 +57,15 @@ public sealed class WeightedAntagManager
             _logger.Error(
                 $"Failed to persist antag weight for {userId}");
         }
+
         return oldWeight;
     }
 
-    public int GetWeight(NetUserId userId)
-    {
-        if (_cachedAntagWeight.TryGetValue(userId, out var weight))
-            return weight;
-
-        weight = Task
+    public int GetWeight(NetUserId userId) => _cachedAntagWeight.GetOrAdd(
+        userId,
+        _ => Task
             .Run(() => _db.GetAntagWeight(userId))
             .GetAwaiter()
-            .GetResult();
-        _cachedAntagWeight.Add(userId, weight);
-        return weight;
-    }
-
-    private async void RegisterShutdownTask(Task task)
-    {
-        _pendingSaveTasks.Add(task);
-
-        try
-        {
-            await task;
-        }
-        finally
-        {
-            _pendingSaveTasks.Remove(task);
-        }
-    }
+            .GetResult()
+    );
 }
-
