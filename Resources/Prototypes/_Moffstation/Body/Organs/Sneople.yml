@@ -1,0 +1,22 @@
+﻿- type: entity
+  id: OrganSneopleStomach
+  parent: [OrganAnimalStomach, OrganHumanStomach]
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Stomach
+    specialDigestible:
+      tags:
+      - Fruit
+      - Produce
+      - Pill
+      - Crayon
+      - Paper
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 50
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5

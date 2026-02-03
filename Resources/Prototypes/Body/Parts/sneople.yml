@@ -1,0 +1,97 @@
+﻿# Limbs that spawn when gibbed should get descriptions.
+- type: entity
+  abstract: true
+  parent: [ BaseItem, BasePart ]
+  id: PartSneople
+  name: sneople body part
+
+- type: entity
+  parent: [ PartSneople, BaseTorso ]
+  id: TorsoSneople
+  name: sneople torso
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: torso_m
+
+- type: entity
+  parent: [ PartSneople, BaseHead ]
+  id: HeadSneople
+  name: sneople head
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: head_m
+
+- type: entity
+  parent: [ PartSneople, BaseLeftArm ]
+  id: LeftArmSneople
+  name: left sneople arm
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: l_arm
+
+- type: entity
+  parent: [ PartSneople, BaseRightArm ]
+  id: RightArmSneople
+  name: right sneople arm
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: r_arm
+
+- type: entity
+  parent: [ PartSneople, BaseLeftHand ]
+  id: LeftHandSneople
+  name: left sneople hand
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: l_hand
+
+- type: entity
+  parent: [ PartSneople, BaseRightHand ]
+  id: RightHandSneople
+  name: right sneople hand
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: r_hand
+
+- type: entity
+  parent: [ PartSneople, BaseLeftLeg ]
+  id: LeftLegSneople
+  name: left sneople leg
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: l_leg
+
+- type: entity
+  parent: [ PartSneople, BaseRightLeg ]
+  id: RightLegSneople
+  name: right sneople leg
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: r_leg
+
+- type: entity
+  parent: [ PartSneople, BaseLeftFoot ]
+  id: LeftFootSneople
+  name: left sneople foot
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: l_foot
+
+- type: entity
+  parent: [ PartSneople, BaseRightFoot ]
+  id: RightFootSneople
+  name: right sneople foot
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Sneople/parts.rsi
+    state: r_foot
+

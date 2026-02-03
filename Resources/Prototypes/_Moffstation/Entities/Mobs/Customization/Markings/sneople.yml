@@ -1,0 +1,44 @@
+- type: marking
+  id: SneopleTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Sneople ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Sneople/sneople_tail_markings.rsi
+    state: tail
+
+- type: marking
+  id: BasicStalks_Primary
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Sneople]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Sneople/headtop.rsi
+    state: BasicStalks_Primary
+
+- type: marking
+  id: SneopleStalkDroopy
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Sneople]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Sneople/headtop.rsi
+    state: headtop
+
+- type: marking
+  id: LongStalks_Primary
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Sneople]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Sneople/headtop.rsi
+    state: LongStalks_Primary
+
+- type: marking
+  id: SneopleStalkLong
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Sneople]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Sneople/markings.rsi
+    state: overlay
