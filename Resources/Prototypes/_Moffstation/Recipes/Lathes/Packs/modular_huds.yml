@@ -1,8 +1,8 @@
 - type: latheRecipePack
   id: ModularHudFrames
   recipes:
-  - ClothingEyesModularHudGlasses
   - ClothingEyesModularHudCheapSunglasses
+  - ClothingEyesModularHudGlasses
   - ClothingEyesModularHudGoggles
   - ClothingEyesModularHudJamjars
   - ClothingEyesModularHudPatch
@@ -16,31 +16,34 @@
 - type: latheRecipePack
   id: ModularHudModules
   recipes:
-  - HudModuleShowAccessReaderSettings
-  - HudModuleShowContrabandDetails
-  - HudModuleVisionCorrection
-  - HudModuleNoirOverlay
   - HudModuleBlackAndWhiteOverlay
   - HudModuleEyeProtection
-  - HudModuleSolutionScanner
+  - HudModuleNoirOverlay
+  - HudModuleShowAccessReaderSettings
+  - HudModuleShowContrabandDetails
+  - HudModuleShowHungerIcons
   - HudModuleShowJobIcons
   - HudModuleShowMedicalIcons
-  - HudModuleShowHungerIcons
   - HudModuleShowThirstIcons
+  - HudModuleSolutionScanner
+  - HudModuleVisionCorrection
 
 - type: latheRecipePack
   id: SecurityModularHudModules
   recipes:
+  - HudModuleBlackAndWhiteOverlay
   - HudModuleFlashImmunity
-  - HudModuleShowCriminalRecordIcons
+  - HudModuleNoirOverlay
   - HudModuleShowContrabandDetails
-  - HudModuleShowMindShieldIcons
+  - HudModuleShowCriminalRecordIcons
   - HudModuleShowJobIcons
-  - HudModuleVisionCorrection
+  - HudModuleShowMindShieldIcons
 
 - type: latheRecipePack
   id: MedicalModularHudModules
   recipes:
-  - HudModuleShowMedicalIcons
   - HudModuleShowHungerIcons
+  - HudModuleShowMedicalIcons
   - HudModuleShowThirstIcons
+  - HudModuleSolutionScanner
+  - HudModuleVisionCorrection

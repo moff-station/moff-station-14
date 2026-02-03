@@ -1,7 +1,7 @@
 # Modular HUD
 
 - type: entity
-  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  parent: ClothingEyesModularHudBase
   id: ClothingEyesModularHudVisor
   name: modular HUD visor
   description: A sleek, futuristic visor capable of providing information on a holographic heads-up display. They say it took over nine thousand prototypes to get it right.
@@ -28,7 +28,7 @@
     maximumContainedModules: 4
 
 - type: entity
-  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  parent: ClothingEyesModularHudBase
   id: ClothingEyesModularHudGoggles
   name: modular HUD goggles
   description: Protective and functional, these goggles have an integrated heads-up display for viewing information about the environment.
@@ -57,7 +57,7 @@
     - FullEyeCovering
 
 - type: entity
-  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  parent: ClothingEyesModularHudBase
   id: ClothingEyesModularHudGlasses
   name: modular HUD glasses
   description: Truly a marvel of Nanotrasen engineering, these slim glasses have an integrated heads-up display in spite of their small size.
@@ -120,7 +120,7 @@
     coverage: EYES
 
 - type: entity
-  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  parent: ClothingEyesModularHudBase
   id: ClothingEyesModularHudJamjars
   name: modular HUD jam jar glasses
   description: With an integrated heads-up display, it's understandable that these glasses would be on the thicker side, but I think that whoever made these just wanted to look like a bug-eyed weirdo.
@@ -144,7 +144,7 @@
     - FullEyeCovering
 
 - type: entity
-  parent: [ ClothingEyesBase, ClothingEyesModularHudBase ]
+  parent: ClothingEyesModularHudBase
   id: ClothingEyesModularHudPatch
   name: modular HUD eye patch
   description: The true patriot's choice for a heads-up display! Though, if there's no eye underneath, how do you see what it's showing?

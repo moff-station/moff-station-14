@@ -16,9 +16,10 @@
   id: BaseModularHudModuleT2Recipe
   abstract: true
   materials:
-    Steel: 250
-    Glass: 150
-    Plastic: 75
+    Steel: 200
+    Glass: 100
+    Plastic: 50
+    Silver: 50
 
 # Tier 1
 
@@ -53,11 +54,19 @@
   parent: BaseModularHudModuleT2Recipe
   id: HudModuleEyeProtection
   result: HudModuleEyeProtection
+  materials:
+    Steel: 200
+    Glass: 100
+    Silver: 100 # Eye protection uses silver as a lens filter... or something
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
   id: HudModuleFlashImmunity
   result: HudModuleFlashImmunity
+  materials:
+    Steel: 200
+    Glass: 75
+    Silver: 150 # These are HIGHLY reflective, so you need all that silver for the mirror finish B^)
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe

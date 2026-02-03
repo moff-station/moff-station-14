@@ -1,6 +1,7 @@
 # This abstract base modular HUD defines a bunch of visual boilerplate needed to get the dymanic sprites to work, as
 # well as the basic common modular HUD stuff like the container.
 - type: entity
+  parent: ClothingEyesHudBase
   id: ClothingEyesModularHudBase
   abstract: true
   components:
