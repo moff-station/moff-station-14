@@ -699,7 +699,7 @@
               weight: 6
             - id: ClothingMaskBreathMedical
               weight: 1
-            - id: ClothingMaskBreathSecurity
+            - id: ClothingMaskBreathMedicalSecurity
               weight: 1
             prob: 0.33
           - !type:GroupSelector
@@ -971,7 +971,7 @@
     - !type:GroupSelector
       children:
       - id: CartridgePistol
-      - id: CartridgePistolEmpty
+      - id: CartridgePistolSpent
       - id: CartridgeRifle
       - id: ShellShotgun
       - id: MagazinePistol
