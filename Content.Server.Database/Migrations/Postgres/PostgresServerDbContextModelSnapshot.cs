@@ -2203,8 +2203,7 @@ namespace Content.Server.Database.Migrations.Postgres
 
                     b.Navigation("JobWhitelists");
 
-                    b.Navigation("MoffPlayer")
-                        .IsRequired();
+                    b.Navigation("MoffPlayer");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>

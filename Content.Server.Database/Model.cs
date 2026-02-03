@@ -621,7 +621,7 @@ namespace Content.Server.Database
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
 
         // Moffstation - Weighted Antags
-        public MoffModel.MoffPlayer MoffPlayer { get; set; } = new();
+        public MoffModel.MoffPlayer? MoffPlayer { get; set; } = new();
     }
 
     [Table("whitelist")]
