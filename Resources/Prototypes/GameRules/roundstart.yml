@@ -61,6 +61,7 @@
 - type: entity
   parent: BaseGameRule
   id: DummyNonAntagChance
+  abstract: true  # Moffstation - antag weight
   components:
   - type: SubGamemodes
     rules:
@@ -436,6 +437,7 @@
 - type: entity
   id: DummyNonAntag
   parent: BaseGameRule
+  abstract: true # Moffstation - Antag weight
   components:
   - type: GameRule
     minPlayers: 5
