@@ -9,6 +9,30 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/ruffle.rsi
 
+#Detective
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckTieDetHorrendous
+  name: detective's horrendous necktie
+  description: A loosely tied necktie, a disturbingly vivid accessory for the over-worked detective.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/detnecktie.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/detnecktie.rsi
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: _Moffstation/Clothing/Neck/detnecktie.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+
 #lawyer
 - type: entity
   parent: ClothingNeckLawyerbadge
