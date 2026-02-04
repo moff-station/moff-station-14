@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Numerics;
 using Content.Shared.Body;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid.Markings;
@@ -32,8 +31,6 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
         SubscribeLocalEvent<VisualOrganMarkingsComponent, AfterAutoHandleStateEvent>(OnMarkingsState);
 
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<HumanoidLayerVisibilityChangedEvent>>(OnMarkingsChangedVisibility);
-
-        SubscribeLocalEvent<VisualBodyComponent, ApplyOrganProfileDataEvent>(SetHeightOnApplyOrganProfileDataEvent); // Moffstation - CD Height
 
         Subs.CVar(_cfg, CCVars.AccessibilityClientCensorNudity, OnCensorshipChanged, true);
         Subs.CVar(_cfg, CCVars.AccessibilityServerCensorNudity, OnCensorshipChanged, true);
@@ -271,28 +268,5 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
                 }
             }
         }
-    }
-
-    // Moffstation - Begin - CD Height
-    private void SetHeightOnApplyOrganProfileDataEvent(Entity<VisualBodyComponent> entity, ref ApplyOrganProfileDataEvent args)
-    {
-        if (args.Base?.Height is not {} baseHeight ||
-            !TryComp<HumanoidProfileComponent>(entity, out var humanoid) ||
-            !_prototype.Resolve(humanoid.Species, out var species))
-            return;
-
-        var height = Math.Clamp(
-            MathF.Round(baseHeight, 2),
-            species.MinHeight,
-            species.MaxHeight
-        ); // should NOT be locked, at all
-        _sprite.SetScale(
-            entity.Owner,
-            new Vector2(
-                (species.ScaleHeight ? height : 1f) * species.ImplicitSpriteScale.X,
-                height * species.ImplicitSpriteScale.Y
-            )
-        );
-        // Moffstation End
     }
 }

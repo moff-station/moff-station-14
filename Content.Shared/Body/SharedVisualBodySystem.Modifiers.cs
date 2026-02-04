@@ -144,11 +144,13 @@ public abstract partial class SharedVisualBodySystem
     {
         var profileEvt = new ApplyOrganProfileDataEvent(profile, null);
         RaiseLocalEvent(ent, ref profileEvt);
+        // TODO CENT Apply scaling here, I guess
     }
 
     public void ApplyProfiles(EntityUid ent, Dictionary<ProtoId<OrganCategoryPrototype>, OrganProfileData> profiles)
     {
         var profileEvt = new ApplyOrganProfileDataEvent(null, profiles);
         RaiseLocalEvent(ent, ref profileEvt);
+        // TODO CENT Apply scaling here, I guess
     }
 }
