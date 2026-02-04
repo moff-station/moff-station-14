@@ -74,5 +74,13 @@ namespace Content.Server.Communications
         /// </summary>
         [DataField]
         public bool AnnounceSentBy = true;
+
+        // Moffstation - Start - Departmental Consoles
+        /// <summary>
+        /// Can this console switch the alert level?
+        /// </summary>
+        [DataField]
+        public bool CanChangeAlertLevel = true;
+        // Moffstation - End
     }
 }

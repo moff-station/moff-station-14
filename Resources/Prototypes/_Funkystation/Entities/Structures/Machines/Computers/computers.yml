@@ -23,6 +23,7 @@
     title: comms-console-announcement-title-science
     color: "#b54ed6"
     canShuttle: false
+    canChangeAlertLevel: false
   - type: Computer
     board: ScienceCommsComputerCircuitboard
   - type: PointLight
@@ -55,6 +56,7 @@
     title: comms-console-announcement-title-security
     color: "#de3a3a"
     canShuttle: false
+    canChangeAlertLevel: false
   - type: Computer
     board: SecurityCommsComputerCircuitboard
   - type: PointLight
@@ -87,6 +89,7 @@
     title: comms-console-announcement-title-service
     color: "#88be14"
     canShuttle: false
+    canChangeAlertLevel: false
   - type: Computer
     board: ServiceCommsComputerCircuitboard
   - type: PointLight
@@ -119,6 +122,7 @@
     title: comms-console-announcement-title-cargo
     color: "#b47216"
     canShuttle: false
+    canChangeAlertLevel: false
   - type: Computer
     board: CargoCommsComputerCircuitboard
   - type: PointLight
@@ -151,6 +155,7 @@
     title: comms-console-announcement-title-engi
     color: "#f9a524"
     canShuttle: false
+    canChangeAlertLevel: false
   - type: Computer
     board: EngiCommsComputerCircuitboard
   - type: PointLight
@@ -183,6 +188,7 @@
     title: comms-console-announcement-title-medical
     color: "#398bdf"
     canShuttle: false
+    canChangeAlertLevel: false
   - type: Computer
     board: MedicalCommsComputerCircuitboard
   - type: PointLight
