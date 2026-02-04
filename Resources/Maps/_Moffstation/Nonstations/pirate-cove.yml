@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 270.1.0
+  engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 01/25/2026 18:53:55
-  entityCount: 2227
+  time: 02/04/2026 21:04:26
+  entityCount: 2226
 maps: []
 grids:
 - 1
@@ -571,6 +571,8 @@ entities:
     - type: IFF
       flags: HideLabel
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
 - proto: AirAlarm
   entities:
   - uid: 430
@@ -5692,13 +5694,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 18.5,-2.5
       parent: 1
-- proto: CannabisSeeds
-  entities:
-  - uid: 2218
-    components:
-    - type: Transform
-      pos: 12.601523,11.519008
-      parent: 1
 - proto: Carpet
   entities:
   - uid: 1151
@@ -6380,6 +6375,13 @@ entities:
     - type: AccessReader
       accessListsOriginal:
       - - Pirate
+- proto: CratePirateSeeds
+  entities:
+  - uid: 964
+    components:
+    - type: Transform
+      pos: 8.5,12.5
+      parent: 1
 - proto: CurtainsBlack
   entities:
   - uid: 1160
@@ -6388,7 +6390,7 @@ entities:
       pos: 10.5,6.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -671.16327
+      secondsUntilStateChange: -728.553
       state: Opening
   - uid: 2219
     components:
@@ -7326,6 +7328,38 @@ entities:
     components:
     - type: Transform
       pos: -8.191694,-0.71255374
+      parent: 1
+- proto: FungalSoil
+  entities:
+  - uid: 330
+    components:
+    - type: Transform
+      pos: 12.5,12.5
+      parent: 1
+  - uid: 345
+    components:
+    - type: Transform
+      pos: 11.5,10.5
+      parent: 1
+  - uid: 397
+    components:
+    - type: Transform
+      pos: 12.5,10.5
+      parent: 1
+  - uid: 1186
+    components:
+    - type: Transform
+      pos: 10.5,12.5
+      parent: 1
+  - uid: 1248
+    components:
+    - type: Transform
+      pos: 11.5,12.5
+      parent: 1
+  - uid: 2070
+    components:
+    - type: Transform
+      pos: 10.5,10.5
       parent: 1
 - proto: GasAnalyzer
   entities:
@@ -10423,44 +10457,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,10.5
       parent: 1
-- proto: hydroponicsTray
-  entities:
-  - uid: 330
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 12.5,12.5
-      parent: 1
-  - uid: 345
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 10.5,12.5
-      parent: 1
-  - uid: 397
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 11.5,12.5
-      parent: 1
-  - uid: 1186
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 10.5,10.5
-      parent: 1
-  - uid: 1248
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 11.5,10.5
-      parent: 1
-  - uid: 2070
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 12.5,10.5
-      parent: 1
 - proto: IngotGold1
   entities:
   - uid: 132
@@ -12510,13 +12506,6 @@ entities:
     components:
     - type: Transform
       pos: 12.5,-1.5
-      parent: 1
-- proto: VendingMachineSeedsUnlocked
-  entities:
-  - uid: 964
-    components:
-    - type: Transform
-      pos: 8.5,12.5
       parent: 1
 - proto: VendingMachineTankDispenserEVA
   entities:
