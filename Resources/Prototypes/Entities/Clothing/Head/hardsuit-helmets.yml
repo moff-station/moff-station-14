@@ -178,7 +178,7 @@
   description: A sturdy helmet designed for complex industrial operations in space.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/spatiohelm.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/spatiohelm.rsi # Moffstation
     layers:
     - state: icon
     - state: icon-unshaded
@@ -241,12 +241,14 @@
       # Moffstation - End - Add Hardsuits for Resomi.
   - type: PointLight
     radius: 6
+    energy: 1 #Moffstation
+    color: SandyBrown #Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.72
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
+    # - CorgiWearable   #Moffstation - Corgi Sprites SUCK!!
     - WhitelistChameleon
 
 #Salvage Hardsuit
