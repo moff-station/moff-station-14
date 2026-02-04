@@ -442,6 +442,7 @@
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn # Pre-selection before jobs; assignment doesn't really matter though, we only care about the pre-selection to block other antags.
     removeUponFailedSpawn: false
+    useWeights: false # Moffstation - Antag Weights
     definitions:
     - prefRoles: [ InitialInfected, Traitor, Thief, HeadRev ]
       max: 2

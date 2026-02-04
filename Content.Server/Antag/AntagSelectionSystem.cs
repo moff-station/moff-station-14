@@ -284,9 +284,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         AntagSelectionDefinition def,
         bool midround = false)
     {
-        // Moffstation - Start - Weighted Antags
-        var weightedPool = GetWeightedAntagPool(pool);
-        var playerPool = GetPlayerPool(ent, weightedPool, def);
+        // Moffstation - Antag weights
+        var playerPool = GetPlayerPool(ent,
+            ent.Comp.UseWeights ? GetWeightedAntagPool(pool) : pool,
+            def);
         // Moffstation - End
         var existingAntagCount = ent.Comp.PreSelectedSessions.TryGetValue(def, out var existingAntags) ? existingAntags.Count : 0;
         var count = GetTargetAntagCount(ent, GetTotalPlayerCount(pool), def) - existingAntagCount;
@@ -328,7 +329,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 MakeAntag(ent, null, def); // This is for spawner antags
             else
             {
-                _antagWeight.SetWeight(session.UserId, 1); // Moffstation - Reset antag weight
+                // Moffstation - Start - Antag Weights
+                if (ent.Comp.UseWeights)
+                    _antagWeight.SetWeight(session.UserId, 1);
+                // Moffstation - End
                 if (!ent.Comp.PreSelectedSessions.TryGetValue(def, out var set))
                     ent.Comp.PreSelectedSessions.Add(def, set = new HashSet<ICommonSession>());
                 set.Add(session); // Selection done!
@@ -337,17 +341,20 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
             }
         }
         // Moffstation - Start - Weighted antag selection
-        foreach (var set in ent.Comp.PreSelectedSessions.Values)
+        if (ent.Comp.UseWeights)
         {
-            if (set.Count == 0)
-                continue;
-
-            foreach (var session in pool)
+            foreach (var set in ent.Comp.PreSelectedSessions.Values)
             {
-                if (set.Contains(session))
+                if (set.Count == 0)
                     continue;
 
-                _antagWeight.SetWeight(session.UserId, _antagWeight.GetWeight(session.UserId) + 1);
+                foreach (var session in pool)
+                {
+                    if (set.Contains(session))
+                        continue;
+
+                    _antagWeight.SetWeight(session.UserId, _antagWeight.GetWeight(session.UserId) + 1);
+                }
             }
         }
         // Moffstation - End
