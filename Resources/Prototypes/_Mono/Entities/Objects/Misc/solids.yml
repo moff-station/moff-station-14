@@ -1,0 +1,43 @@
+- type: entity
+  name: Phenylpiperidine crystal
+  parent: [ BaseItem, BaseMedicalContraband ]
+  id: PhenylpiperidineSolidified
+  description: 5u of Phenylpiperidine solidified with Tricordrazine. Worth a lot.
+  components:
+  - type: Sprite
+    sprite: _Mono/Objects/Misc/phenylpiperidine.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: StaticPrice
+    price: 900 # Reduced from the 1250 it is in monolith
+  - type: Edible
+  - type: FlavorProfile
+    flavors:
+    - bitter
+  - type: Extractable
+    grindableSolutionName: food
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4 
+        reagents:
+        - ReagentId: Phenylpiperidine
+          Quantity: 4 # Contains 4u but costs 5u to make - No more infinite dylo with 5u of phenyl
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

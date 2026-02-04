@@ -3,10 +3,12 @@
   name: job-name-bartender
   description: job-description-bartender
   playTimeTracker: JobBartender
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Civilian
-      time: 0.5h
+  # Moffstation - Start - Change role timers
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: Civilian
+  #    time: 0.5h
+  # Moffstation - End
   startingGear: BartenderGear
   icon: "JobIconBartender"
   supervisors: job-supervisors-hop

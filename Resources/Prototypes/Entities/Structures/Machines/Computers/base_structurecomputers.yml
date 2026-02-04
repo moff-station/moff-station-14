@@ -17,7 +17,11 @@
       - board
   - type: Computer
   - type: ApcPowerReceiver
-    powerLoad: 200
+    powerLoad: 50
+  - type: PowerState
+    idlePowerDraw: 50
+    workingPowerDraw: 500
+  - type: UIPowerState
   - type: ExtensionCableReceiver
   - type: ActivatableUIRequiresPower
   - type: Sprite
@@ -89,9 +93,9 @@
     sound:
       collection: HarmonyComputerSFX
       params:
-        volume: -8
+        volume: -12
         maxDistance: 3.5
-        variation: 0.1
+        variation: 0.3
 # End Harmony changes
 #
 #     This is overwritten by children, so needs to be defined there

@@ -1,0 +1,76 @@
+# Player: Kento - Character: Does-A-Little-Shimmy
+# License: CC-BY-SA-4.0
+- type: entity
+  parent: WeaponPistolMk58
+  id: PersonalItemShimmyPistol
+  name: ERMk-60
+  description: A handgun with the model "ERMk-60" inscribed on the side.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60.rsi
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        # No startingItem - spawns unloaded
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistol
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        # No startingItem - spawns unchambered
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: DetailExaminable
+    content: An unusual and highly experimental design of the Mk58 from Sunshade Armories, the ERMk-60 intends to improve beyond excellence with a reinforced, heavier furniture. It also features an electronic sight and a laser pointer for pinpoint accuracy. You would question how a security officer managed to get a hold of this sidearm.
+
+- type: entity
+  parent: [BaseStorageItem, BaseBagOpenClose]
+  id: PersonalItemShimmyPistolCase
+  name: ERMk-60 gun case
+  description: A slim, portable gun case intended to protect its contents inside. the label "ERMk-60" is inscribed on top of the gun case.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60case.rsi
+    layers:
+    - state: closed
+      map: ["closeLayer"]
+    - state: open
+      map: ["openLayer"]
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60case.rsi
+    size: Normal
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PersonalItemShimmyPistol
+        amount: 1
+
+- type: loadout
+  id: PersonalItemShimmyPistolCase
+  storage:
+    back:
+    - PersonalItemShimmyPistolCase
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Does-A-Little-Shimmy
+    jobs:
+    - JobSecurityOfficer
+    - JobDetective
+    - JobWarden
+    - JobHeadOfSecurity

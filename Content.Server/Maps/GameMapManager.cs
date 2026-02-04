@@ -2,7 +2,9 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.GameTicking;
+using Content.Shared._Moffstation.CCVar; // Moffstation
 using Content.Shared.CCVar;
+using Content.Shared.Maps;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
@@ -34,7 +36,7 @@ public sealed class GameMapManager : IGameMapManager
 
     private ISawmill _log = default!;
 
-    private readonly Dictionary<GameMapPrototype, int> _rollOverVotes = new();   // Moffstation - Rollover votes stored here
+    private readonly Dictionary<ProtoId<GameMapPrototype>, int> _rollOverVotes = new(); // Moffstation - Rollover votes stored here
 
     public void Initialize()
     {
@@ -92,7 +94,6 @@ public sealed class GameMapManager : IGameMapManager
             if (_previousMaps.Count >= _mapQueueDepth)
                 break;
             _previousMaps.Enqueue(map.ID);
-            _rollOverVotes[map] = 0;    // Moffstation - initialize rollover votes
         }
     }
 
@@ -197,7 +198,7 @@ public sealed class GameMapManager : IGameMapManager
                map.MinPlayers <= _playerManager.PlayerCount &&
                map.Conditions.All(x => x.Check(map)) &&
                _entityManager.System<GameTicker>().IsMapEligible(map) &&
-               (_configurationManager.GetCVar(CCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
+               (_configurationManager.GetCVar(MoffCCVars.AllowDoublePickMap) || map.ID != _previousMaps.Last());    // Moffstation - Checks if we're either allowing double picks, or the map was the one previously played on
     }
 
     private bool TryLookupMap(string gameMap, [NotNullWhen(true)] out GameMapPrototype? map)
@@ -247,15 +248,10 @@ public sealed class GameMapManager : IGameMapManager
     }
 
     // Moffstation - Start - setters and getters for the rollover votes
-    public int GetRollOverVotes(GameMapPrototype map)
-    {
-        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to get rollover votes for unknown map \"{map.MapName}\"");
-        return _rollOverVotes.GetValueOrDefault(map);
-    }
+    public int GetRollOverVotes(GameMapPrototype map) => _rollOverVotes.GetOrNew(map);
 
     public void SetRollOverVotes(GameMapPrototype map, int votes)
     {
-        Debug.Assert(_rollOverVotes.ContainsKey(map), $"Attempted to set rollover votes for unknown map \"{map.MapName}\"");
         _rollOverVotes[map] = votes;
     }
     // Moffstation - End

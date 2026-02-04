@@ -1,0 +1,15 @@
+- type: entity
+  parent: FultonBeacon
+  id: FultonBeaconPirate
+  name: pirate fulton beacon
+  description: Beacon to receive fulton extractions.
+  components:
+  - type: Foldable
+    folded: false
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true

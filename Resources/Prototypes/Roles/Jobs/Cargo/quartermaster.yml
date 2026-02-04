@@ -4,12 +4,16 @@
   description: job-description-qm
   playTimeTracker: JobQuartermaster
   requirements:
-    - !type:RoleTimeRequirement
-      role: JobCargoTechnician
-      time: 5h
-    - !type:RoleTimeRequirement
-      role: JobSalvageSpecialist
-      time: 2.5h
+    # Moffstation - Start - Change role timers
+    - !type:OverallPlaytimeRequirement
+      time: 20h
+    #- !type:RoleTimeRequirement
+    #  role: JobCargoTechnician
+    #  time: 5h
+    #- !type:RoleTimeRequirement
+    #  role: JobSalvageSpecialist
+    #  time: 2.5h
+    # Moffstation - End
     - !type:DepartmentTimeRequirement
       department: Cargo
       time: 10h
@@ -37,7 +41,7 @@
 - type: startingGear
   id: QuartermasterGear
   equipment:
-    id: QuartermasterPDA
+    #id: QuartermasterPDA # Moffstation - New PDAs
     ears: ClothingHeadsetQM
     belt: BoxFolderClipboardThreePapers
     pocket1: AppraisalTool

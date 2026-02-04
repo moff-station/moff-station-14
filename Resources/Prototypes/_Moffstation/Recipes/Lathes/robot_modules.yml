@@ -35,6 +35,11 @@
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleScienceGeneric
+  result: BorgModuleScienceGeneric
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
   id: BorgModuleTopicalsGeneric
   result: BorgModuleTopicalsGeneric
 

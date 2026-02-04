@@ -15,12 +15,12 @@
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-investigator"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
@@ -30,7 +30,7 @@
 - type: entity
   parent: DetectivePDAAltBase
   id: InvestigatorPDA
-  name: private investigator PDA
+  name: investigator PDA
   components:
   - type: RenameId
     value: job-name-detective-investigator
@@ -40,4 +40,20 @@
         !type:String
         pda-investigator
   - type: PdaBorderColor
-    borderColor: "#7f723d"
+    borderColor: "#2b2b2b"
+
+- type: entity
+  parent: DetectivePDAAltBase
+  id: ForensicsTechnicianPDA
+  name: forensics technician PDA
+  components:
+  - type: RenameId
+    value: job-name-detective-forensics-technician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-forensicstechnician
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+    accentVColor: "#774705"

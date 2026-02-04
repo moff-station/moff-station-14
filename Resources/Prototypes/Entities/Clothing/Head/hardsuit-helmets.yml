@@ -299,7 +299,7 @@
       - state: equipped-head-light-vox
         shader: unshaded
       head-reptilian:
-      - state: equipped-head-reptilian
+      - state: equipped-head-light-reptilian
         shader: unshaded
       head-dog:
       - state: equipped-head-light-dog
@@ -804,16 +804,16 @@
 
 #Pirate EVA Suit (Deep Space EVA Suit)
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase]
   id: ClothingHeadHelmetHardsuitPirateEVA
   name: deep space EVA helmet
   suffix: Pirate
   description: A deep space EVA helmet, very heavy but provides good protection.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/pirateeva.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/swashbuckler.rsi # Moffstation - Pirates
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/pirateeva.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/swashbuckler.rsi # Moffstation - Pirates
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000

@@ -1,0 +1,57 @@
+# ID
+- type: loadout
+  id: HoSPDA
+  equipment:
+    id: HoSPDA
+
+- type: loadout
+  id: ChiefConstablePDA
+  equipment:
+    id: ChiefConstablePDA
+
+- type: loadout
+  id: HighSheriffPDA
+  equipment:
+    id: HighSheriffPDA
+
+# Head
+- type: loadout
+  id: HunterHat
+  equipment:
+    head: ClothingHeadHatHosWestern
+
+- type: loadout
+  id: FestiveHat
+  equipment:
+    head: ClothingHeadHatHosFestive
+# Mask
+
+# Neck
+
+# Jumpsuit
+- type: loadout
+  id: HeadofSecurityWestern
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHosWestern
+  groupBy: "jumpsuit"
+
+- type: loadout
+  id: HeadofSecurityFestive
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHosFestive
+  groupBy: "jumpsuit"
+# Back
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: HeadofSecurityCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorHoSCarapace
+
+# Gloves
+
+# Shoes
+
+# Eyewear

@@ -1,4 +1,6 @@
-# Hat
+# ID
+
+# Head
 - type: loadout
   id: HatPirate
   equipment:
@@ -39,20 +41,17 @@
   equipment:
     head: ClothingHeadBandMerc
 
-# Trinkets
-- type: loadout
-  id: TrinketPirateFlag
-  storage:
-    back:
-    - PirateHandyFlag
+# Mask
 
-- type: loadout
-  id: TrinketPirateEyepatch
-  storage:
-    back:
-    - ClothingEyesEyepatch
+# Neck
 
-# Outer coats
+# Jumpsuit
+
+# Back
+
+# Belt
+
+# Outer Clothing
 - type: loadout
   id: CoatGentle
   equipment:
@@ -67,3 +66,21 @@
   id: CoatPirateRed
   equipment:
     outerClothing: ClothingOuterCoatPirateRed
+
+# Gloves
+
+# Shoes
+
+# Eyewear
+- type: loadout
+  id: TrinketPirateEyepatch
+  storage:
+    back:
+    - ClothingEyesEyepatch
+
+# Trinket
+- type: loadout
+  id: TrinketPirateFlag
+  storage:
+    back:
+    - PirateHandyFlag

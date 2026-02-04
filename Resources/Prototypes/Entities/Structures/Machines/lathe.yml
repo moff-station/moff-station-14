@@ -49,6 +49,11 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: PowerState
+    idlePowerDraw: 150
+    workingPowerDraw: 1000
   # Moffstation - Start
   - type: DeviceLinkSink
     ports:
@@ -473,6 +478,7 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
+    - AACTabletStatic # Moffstation - AAC tablet
     dynamicPacks:
     - Chemistry
   - type: Machine
@@ -525,6 +531,8 @@
     - MoffstationClothingScience
     - MoffstationClothingSecurity
     - MoffstationClothingService
+    - MoffstationClothingEngineering
+    - MoffstationCostumes
     # Moffstation - End
   - type: EmagLatheRecipes
     emagStaticPacks:

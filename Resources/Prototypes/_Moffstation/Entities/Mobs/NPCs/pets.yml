@@ -1,0 +1,90 @@
+﻿# Joke Joke - Pirate kobold
+- type: entity
+  name: Joke Joke
+  parent: MobKobold
+  id: MobKoboldJokejoke
+  description: Cutthroat, renegade, and worst of all - serving without a liquor license.
+  components:
+  - type: GhostRole
+    prob: 1
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-jokejoke-name
+    description: ghost-role-information-jokejoke-description
+    rules: ghost-role-information-rules-default-team-antagonist
+    mindRoles:
+    - MindRolePirate
+  - type: GhostTakeoverAvailable
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 3
+    - id: DrinkRumBottleFull
+      amount: 1
+  - type: Pirate
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - VimPilot
+    - AnomalyHost
+  - type: Loadout
+    prototypes: [ KoboldPirateBartenderGear ]
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: female
+
+# Pawgliaci - Clown rabbit
+- type: entity
+  name: Pawgliaci
+  parent: MobCorgi
+  id: MobPawgliaci
+  description: A retired magicians pet, this nervous rabbit was born for the theater.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Moffstation/Mobs/Pets/pawgliaci.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: pawgliaci
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pawgliaci
+      Critical:
+        Base: pawgliaci-crit
+      Dead:
+        Base: pawgliaci-dead
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: neuter
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - VimPilot
+  # TODO Moff's soundfont changes were reverted due to upstream changes to the soundfont file.
+  #  - type: Instrument
+  #    allowPercussion: false
+  #    handheld: false
+  #    bank: 1
+  #    program: 5
+  - type: InteractionPopup
+    successChance: 0.5
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-pawgliaci
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/fox_squeak.ogg
+  - type: IntrinsicUI
+    uis:
+      enum.InstrumentUiKey.Key:
+        toggleAction: ActionPAIPlayMidi
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false

@@ -48,10 +48,12 @@
   - type: SmartFridge
     whitelist:
       components:
+      - Edible
       - FitsInDispenser
       - Pill
       - Produce
       - Seed
+      - Edible # Moffstation
       tags:
       - PillCanister
       - Bottle

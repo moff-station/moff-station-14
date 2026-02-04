@@ -35,6 +35,7 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
 
     public override void Update(float frameTime)
     {
@@ -43,14 +44,19 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         var query = EntityQueryEnumerator<VentCrittersRuleComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (_gameTiming.CurTime > comp.NextPopup &&
-                comp.Location is { } location &&
-                _gameTicker.IsGameRuleActive(uid))
-            {
-                _audio.PlayPvs(comp.VentCreakNoise, location);
-                _popup.PopupCoordinates(Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName)), Transform(location).Coordinates, PopupType.MediumCaution);
-                comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
-            }
+            if (_gameTiming.CurTime <= comp.NextPopup ||
+                comp.Coords is not { } coords ||
+                !_gameTicker.IsGameRuleActive(uid))
+                continue;
+
+            _audio.PlayPvs(comp.VentCreakNoise, coords);
+
+            var messageString = comp.Vent is not { } location || !_entMan.EntityExists(location)
+                ? Loc.GetString("station-event-vent-creatures-no-vent-warning")
+                : Loc.GetString("station-event-vent-creatures-vent-warning", ("object", MetaData(location).EntityName));
+
+            _popup.PopupCoordinates(messageString, coords, PopupType.MediumCaution);
+            comp.NextPopup = _gameTiming.CurTime + comp.PopupDelay;
         }
     }
 
@@ -58,8 +64,8 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
     {
         // We are doing this before base.Added() so we can modify the announcement to be what we want
         // Choose location and make sure it's not null
-        comp.Location = ChooseLocation();
-        if (comp.Location is not { } location)
+        comp.Vent = ChooseLocation();
+        if (comp.Vent is not { } location)
         {
             Log.Warning($"Unable to find a valid location for {args.RuleId}!");
             ForceEndSelf(uid, gameRule);
@@ -70,8 +76,9 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         if (TryComp<StationEventComponent>(uid, out var stationEventComp) && stationEventComp.StartAnnouncement != null)
         {
             // Get the nearest beacon
-            var mapLocation = _transform.ToMapCoordinates(Transform(location).Coordinates);
-            var nearestBeacon = _navMap.GetNearestBeaconString(mapLocation, onlyName: true);
+            var coords = Transform(location).Coordinates;
+            comp.Coords = coords;
+            var nearestBeacon = _navMap.GetNearestBeaconString(_transform.ToMapCoordinates(coords), onlyName: true);
 
             // Get the duration, if its null we'll just use 0
             var duration = stationEventComp.Duration?.Seconds ?? 0;
@@ -99,15 +106,14 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
         base.Ended(uid, component, gameRule, args);
 
         // Make sure the location is not null
-        if (component.Location is not { } location)
+        if (component.Vent is { } vent)
+            RemCompDeferred<JitteringComponent>(vent);
+
+        if (component.Coords is not { } coords)
         {
-            Log.Warning($"Location for gamerule {args.RuleId} was null!");
+            Log.Warning($"Unable to find a valid location for {args.RuleId}!");
             return;
         }
-
-        RemCompDeferred<JitteringComponent>(location);
-
-        var coords =  Transform(location).Coordinates;
 
         var spawnCount = 0;
         var attemptCount = 0;
@@ -120,7 +126,6 @@ public sealed class VentCrittersRule : StationEventSystem<VentCrittersRuleCompon
             spawnCount += spawned.Length;
             attemptCount += 1;
         }
-
 
         // Extra chance to spawn additional entities
         if (component.SpecialEntries.Count != 0)

@@ -9,7 +9,6 @@
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
-    - SpaceTrafficControlFriendlyEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -71,7 +70,6 @@
     - MeteorSwarmScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
-    - SpaceTrafficControlFriendlyEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -87,6 +85,7 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  - ExtendedNotificationEvent # Moffstation - For the notification
 
 - type: gamePreset
   id: Greenshift
@@ -97,7 +96,6 @@
   showInVote: false #4boring4vote
   description: greenshift-description
   rules:
-  - SpaceTrafficControlFriendlyEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset
@@ -148,7 +146,7 @@
   description: traitor-description
   showInVote: false
   rules:
-  - DummyNonAntagChance
+  # - DummyNonAntagChance # Moffstation - Antag Weight
   - Traitor
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
@@ -178,7 +176,7 @@
   showInVote: false
   rules:
   - Nukeops
-  - DummyNonAntagChance
+  # - DummyNonAntagChance # Moffstation - Antag weight
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
@@ -195,7 +193,7 @@
   description: rev-description
   showInVote: false
   rules:
-  - DummyNonAntagChance
+  # - DummyNonAntagChance # Moffstation - Antag weight
   - Revolutionary
   - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
@@ -212,7 +210,7 @@
   showInVote: false
   rules:
   - Wizard
-  - DummyNonAntagChance
+  # - DummyNonAntagChance # Moffstation - Antag weight
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
@@ -228,8 +226,8 @@
   showInVote: false
   rules:
   - Xenoborgs
-  - DummyNonAntagChance
-  - SubGamemodesRuleNoXenoborg # no two motherships
+  # - DummyNonAntagChance # Moffstation - Antag weight
+  - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

@@ -1,4 +1,15 @@
-# Hats
+# ID
+- type: loadout
+  id: CaptainPDA
+  equipment:
+    id: CaptainPDA
+
+- type: loadout
+  id: CommandingOfficerPDA
+  equipment:
+    id: CommandingOfficerPDA
+
+# Head
 - type: loadout
   id: CaptainConductor
   equipment:
@@ -9,13 +20,32 @@
   equipment:
     head: ClothingHeadHatCaptainTricorn
 
-# Outer Clothing
 - type: loadout
-  id: CaptainLongcoat
+  id: CaptainBeret
   equipment:
-    outerClothing: ClothingOuterCoatCaptainLongcoat
+    head: ClothingHeadHatCaptainBeret
 
-# Jumpsuits
+- type: loadout
+  id: CaptainCrown
+  equipment:
+    head: ClothingHeadHatCaptainCrown
+  groupBy: "captain crowns"
+
+- type: loadout
+  id: CaptainCirclet
+  equipment:
+    head: ClothingHeadHatCaptainCirclet
+  groupBy: "captain crowns"
+
+# Mask
+
+# Neck
+- type: loadout
+  id: CaptainCapeFormal
+  equipment:
+    neck: ClothingNeckCapeCaptain
+
+# Jumpsuit
 - type: loadout
   id: CaptainJumpsuitConductor
   equipment:
@@ -39,3 +69,23 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtCaptainNaval
   groupBy: "captain jumpskirts"
+
+# Back
+
+# Belt
+
+# Outer Clothing
+- type: loadout
+  id: CaptainLongcoat
+  equipment:
+    outerClothing: ClothingOuterCoatCaptainLongcoat
+
+- type: loadout
+  id: CaptainFestivecoat
+  equipment:
+    outerClothing: ClothingOuterWinterFestiveCaptain
+# Gloves
+
+# Shoes
+
+# Eyewear

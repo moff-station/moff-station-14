@@ -1,0 +1,26 @@
+﻿# Player: ThEmeralDuke/ Char: Jess Swaner
+
+- type: entity
+  parent: BaseItem
+  id: PersonalItemSwanerPhoto
+  name: Jess' burnt photo
+  description: A burnt reminder of old times.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/ThEmeralDuke/JessSwaner/JessFamily.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: DetailExaminable
+    content: "A photo of what seems to be a younger Jess, not burnt by what caused the fire, and what appears to be her brother, sadly you cant fully tell due to it being mostly ashen"
+
+- type: loadout
+  id: PersonalItemSwanerPhoto
+  storage:
+    back:
+    - PersonalItemSwanerPhoto
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Jess Swaner
