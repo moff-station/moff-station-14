@@ -112,7 +112,7 @@
     - Hardsuit
     - WhitelistChameleon
     - HardsuitSpatio
-    - CorgiWearable
+    #- CorgiWearable #Moffstation - I HATE CORGI SPRITES
 
 #Salvage Hardsuit
 - type: entity
@@ -159,9 +159,9 @@
   description: A lightweight hardsuit, adorned with a patchwork of thick, chitinous goliath hide.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/goliath.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/goliath.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/goliath.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/goliath.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
@@ -187,7 +187,7 @@
     node: hardsuitGoliath
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable #Moffstation - I HATE CORGI SPRITES
     - Hardsuit
     - WhitelistChameleon
 

@@ -203,9 +203,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
+      #head-dog: # Moffstation - Start
+      #- state: equipped-head-light-dog
+      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-light-resomi
@@ -229,10 +229,10 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
+      #head-dog: # Moffstation - Start
+      #- state: equipped-head-dog
+      #- state: equipped-head-unshaded-dog
+      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-resomi
@@ -281,7 +281,7 @@
   description: A sturdy hardsuit helmet, infused with a goliath's hide and an eerie, unblinking eye cut from its mass.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/goliathhelm.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/goliathhelm.rsi # Moffstation
     layers:
     - state: icon
     - state: icon-unshaded
@@ -303,9 +303,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
+      #head-dog: #Moffstation - Start - I HATE CORGI SPRITES
+      #- state: equipped-head-light-dog
+      #  shader: unshaded #Moffstation - End - I HATE CORGI SPRITES
   - type: Clothing
     clothingVisuals:
       head:
@@ -320,18 +320,20 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
-  - type: PointLight
+      #head-dog: #Moffstation - Start - I HATE CORGI SPRITES
+      #- state: equipped-head-dog
+      #- state: equipped-head-unshaded-dog
+      #  shader: unshaded #Moffstation - End - I HATE CORGI SPRITES
+  - type: PointLight #Moffstation - start
     radius: 6
+    energy: 3
+    color: crimson #Moffstation - End
   - type: PressureProtection
     highPressureMultiplier: 0.72
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation - I HATE CORGI SPRITES
     - WhitelistChameleon
 
 #Maxim Hardsuit
