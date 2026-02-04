@@ -15,12 +15,12 @@
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-fieldmedic"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false

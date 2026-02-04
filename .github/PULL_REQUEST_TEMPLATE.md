@@ -20,7 +20,7 @@ See the Harmony contributing guidelines for an example on what we want: https://
 Small fixes/refactors are exempt. Media may be used in SS14 progress reports with credit. -->
 
 ## Requirements
-<!-- Confirm the following by placing an X in the brackets [X]: -->
+<!-- Confirm the following by placing an X in the brackets without spaces inside (for example: [X] ): -->
 - [ ] I have read and am following the [Upstream Pull Request and Changelog Guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) as well as the [Moffstation Contributing Guidelines](https://github.com/moff-station/moff-station-14/blob/master/CONTRIBUTING.md).
 - [ ] I have properly sectioned my changes into fork namespaces, and/or followed proper guidelines for modifying upstream files.
 - [ ] I have added media to this PR or it does not require an in-game showcase.

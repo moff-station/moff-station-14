@@ -9,7 +9,16 @@
   equipment:
     id: InvestigatorPDA
 
+- type: loadout
+  id: ForensicsTechnicianPDA
+  equipment:
+    id: ForensicsTechnicianPDA
+
 # Head
+- type: loadout
+  id: DetectiveFedoraSleuth
+  equipment:
+    head: ClothingHeadHatFedoraSleuth
 
 # Mask
 
@@ -19,6 +28,10 @@
   equipment:
     neck: ClothingNeckDetBadge
 
+- type: loadout
+  id: DetectiveHorrendousTie
+  equipment:
+    neck: ClothingNeckTieDetHorrendous
 # Jumpsuit
 - type: loadout
   id: SleuthSuit

@@ -17,20 +17,6 @@
       components:
       - Nuke
 
-# Science
-- type: cargoBounty
-  id: PirateBountySciServer
-  reward: 15000
-  description: bounty-description-sci-server
-  idPrefix: CS
-  group: Pirates
-  entries:
-  - name: bounty-item-sci-server
-    amount: 1
-    whitelist:
-      components:
-      - ResearchServer
-
 - type: cargoBounty
   id: PirateBountyAnomVessel
   reward: 6000
@@ -57,64 +43,7 @@
       components:
       - XenoArtifact
 
-# Engineering
-- type: cargoBounty
-  id: PirateBountyTEG
-  reward: 12000
-  description: bounty-description-teg
-  idPrefix: GX
-  group: Pirates
-  entries:
-  - name: bounty-item-teg
-    amount: 1
-    whitelist:
-      components:
-      - TegGenerator
-      - TegCirculator
-
-- type: cargoBounty
-  id: PirateBountyParticleAccelerator
-  reward: 8000
-  description: bounty-description-particle-accelerator
-  idPrefix: CS
-  group: Pirates
-  entries:
-  - name: bounty-item-particle-accelerator
-    amount: 1
-    whitelist:
-      components:
-      - ParticleAcceleratorControlBox
-      - ParticleAcceleratorEmitter
-      - ParticleAcceleratorFuelChamber
-      - ParticleAcceleratorPowerBox
-      - ParticleAcceleratorEndCap
-
-- type: cargoBounty
-  id: PirateBountySMES
-  reward: 5000
-  description: bounty-description-smes
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-smes
-    amount: 1
-    whitelist:
-      components:
-      - Smes
-
 # Service
-- type: cargoBounty
-  id: PirateBountyBoozeDispenser
-  reward: 5000
-  description: bounty-description-booze-dispenser
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-booze-dispenser
-    amount: 1
-    whitelist:
-      components:
-      - ReagentDispenser
 
 - type: cargoBounty
   id: PirateBountyChefTech
@@ -128,19 +57,6 @@
     whitelist:
       tags:
       - Chefware
-
-- type: cargoBounty
-  id: PirateBountyInstruments
-  reward: 1000
-  description: bounty-description-instruments
-  idPrefix: WC
-  group: Pirates
-  entries:
-  - name: bounty-item-instruments
-    amount: 2
-    whitelist:
-      components:
-      - Instrument
 
 # Medical
 - type: cargoBounty
@@ -171,19 +87,6 @@
       - VendingMachine
 
 - type: cargoBounty
-  id: PirateBountyShuttleParts
-  reward: 3000
-  description: bounty-description-shuttle-parts
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-shuttle-parts
-    amount: 1
-    whitelist:
-      components:
-      - Thruster
-
-- type: cargoBounty
   id: PirateBountyTelecom
   reward: 6000
   description: bounty-description-telecom
@@ -195,6 +98,19 @@
     whitelist:
       components:
       - TelecomServer
+
+- type: cargoBounty
+  id: PirateBountyShuttleParts
+  reward: 3000
+  description: bounty-description-shuttle-parts
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-shuttle-parts
+    amount: 1
+    whitelist:
+      components:
+      - Thruster
 
 - type: cargoBounty
   id: PirateBountyMagboots
@@ -236,19 +152,6 @@
       - Recharger
 
 - type: cargoBounty
-  id: PirateBountySolars
-  reward: 4000
-  description: bounty-description-solars
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-solars
-    amount: 5
-    whitelist:
-      components:
-      - SolarPanel
-
-- type: cargoBounty
   id: PirateBountyStatisBed
   reward: 7000
   description: bounty-description-stasis
@@ -260,29 +163,3 @@
     whitelist:
       components:
       - StasisBed
-
-- type: cargoBounty
-  id: PirateBountyRecycler
-  reward: 7000
-  description: bounty-description-recycler
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-recycler
-    amount: 1
-    whitelist:
-      components:
-      - MaterialReclaimer
-
-- type: cargoBounty
-  id: PirateBountyDisposals
-  reward: 5000
-  description: bounty-description-disposals
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-disposals
-    amount: 1
-    whitelist:
-      components:
-      - DisposalUnit

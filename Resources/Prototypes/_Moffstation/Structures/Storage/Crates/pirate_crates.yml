@@ -103,10 +103,225 @@
       - Pullable  # This should cover most things
 
 - type: entity
-  parent: CratePrivateSecure
+  parent: [ CratePrivateSecure , BaseHighlyIllegalContraband ]
   id: CratePiratePrivateSecure
   name: secure pirate crate
   description: nice and metal for the modern pirate feel
   components:
   - type: AccessReader
     access: [["Pirate"]]
+
+- type: entity
+  parent: [ LockerSyndicate , BaseHighlyIllegalContraband ]
+  id: LockerPirate
+  name: pirate locker
+  description: nice and metal for the modern pirate feel
+
+# Filled crates
+- type: entity
+  parent: LockerPirate
+  id: LockerPirateWeapons
+  suffix: Weapons, Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:GroupSelector
+          rolls: !type:RangeNumberSelector
+            range: 2, 3
+          children:
+          - id: Cutlass
+          - id: ClothingHandsPirateHook
+          - id: PirateAnchor
+          - id: EnergyCutlass
+            weight: 0.25
+        - id: WeaponLauncherPirateCannon
+        - !type:GroupSelector
+          rolls: !type:RangeNumberSelector
+            range: 5,7
+          children:
+          - id: WeaponShotgunDoubleBarreled
+          - id: WeaponShotgunBlunderbuss
+          - id: WeaponRevolverPirate
+          - id: WeaponMakeshiftLaser
+          - id: WeaponPistolFlintlock
+            weight: 0.5
+          - id: WeaponRifleLeverMagnum
+            weight: 0.5
+          - id: WeaponShotgunKammererOld
+            weight: 0.25
+          - id: WeaponRifleAk
+            weight: 0.25
+
+
+- type: entity
+  parent: LockerPirate
+  id: LockerPirateTools
+  suffix: Tools, Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: AppraisalTool
+          amount: !type:RangeNumberSelector
+            range: 3, 5
+        - id: WeaponGrapplingGun
+          amount: !type:RangeNumberSelector
+            range: 3, 5
+        - id: GunpowderCharge
+          amount: !type:RangeNumberSelector
+            range: 4, 7
+        - id: ClothingMaskGasPirate
+          amount: !type:RangeNumberSelector
+            range: 1, 3
+        - id: HandHeldMassScannerPirate
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+        - id: AccessBreakerPirate
+          prob: 0.1
+        - id: PirateJetpack
+          prob: 0.1
+
+- type: entity
+  parent: LockerPirate
+  id: LockerPirateAmmo
+  suffix: Ammo, Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: MagazineBoxMagnum
+          amount: !type:RangeNumberSelector
+            range: 1, 3
+        - id: SpeedLoaderMagnum
+          prob: 0.5
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+        - id: MagazineBoxMagnumAP
+          prob: 0.1
+          amount: !type:RangeNumberSelector
+            range: 1, 3
+        - id: BoxLethalshot
+          amount: !type:RangeNumberSelector
+            range: 2, 4
+        - id: BoxShotgunSlug
+          prob: 0.1
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+        - id: BoxShotgunIncendiary
+          prob: 0.1
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+        - id: MagazineBoxRifle
+          prob: 0.25
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+
+- type: entity
+  parent: LockerPirate
+  id: LockerPirateMeds
+  suffix: Meds, Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:GroupSelector
+          rolls: !type:RangeNumberSelector
+            range: 4, 5
+          children:
+          - id: Brutepack
+            amount: !type:RangeNumberSelector
+              range: 1, 3
+          - id: Gauze
+            amount: !type:RangeNumberSelector
+              range: 1, 3
+          - id: MedicatedSuture
+            amount: 1
+        - !type:GroupSelector
+          rolls: !type:RangeNumberSelector
+            range: 2, 3
+          children:
+          - id: Ointment
+            amount: !type:RangeNumberSelector
+              range: 1, 3
+          - id: RegenerativeMesh
+            amount: 1
+        - id: Bloodpack
+          amount: !type:RangeNumberSelector
+            range: 1, 3
+        - id: ClothingEyesEyepatchHudMedical
+        - id: HandheldHealthAnalyzer
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: PirateChestSecureCannonball
+  name: assorted cannonball crate
+  suffix: Cannonball, Filled, Pirate
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CannonBall
+          amount: !type:RangeNumberSelector
+            range: 3, 5
+        - id: CannonBallGrapeshot
+          amount: !type:RangeNumberSelector
+            range: 1, 3
+        - id: CannonBallGlassshot
+          amount: !type:RangeNumberSelector
+            range: 1, 3
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateCorsair
+  name: corsair crate
+  description: Contains a varied assortment of privateering equipment.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: EnergyCutlass
+        - id: Fulton
+        - id: GunpowderCharge
+          amount: 2
+        - id: HandHeldMassScannerPirate
+        - id: MagazineBoxMagnum
+        - id: PirateAnchor
+        - id: WeaponGrapplingGun
+        - id: WeaponPistolFlintlock
+
+- type: entity
+  parent: CratePirateChestSecure
+  id: CratePirateSpoils
+  name: spoils crate # Corsair starting funds
+  description: glittering gold, trinkets and baubles.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: TreasureCoinSilver
+          amount: !type:RangeNumberSelector
+            range: 1, 3
+        - id: TreasureCoinDiamond
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+        - id: TreasureCoinGold
+          amount: !type:RangeNumberSelector
+            range: 2, 5
+        - id: MaterialDiamond1
+          amount: !type:RangeNumberSelector
+            range: 4, 5
+        - id: IngotGold1
+          amount: !type:RangeNumberSelector
+            range: 2, 4
+        - id: OrganSkeletonPersonHead
+          prob: 0.1

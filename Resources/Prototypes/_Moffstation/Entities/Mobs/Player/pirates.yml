@@ -1,10 +1,11 @@
 # Pirates
 - type: entity
-  categories: [ HideSpawnMenu ]
-  name: Pirate
   parent: MobHuman
   id: MobHumanPirate
+  name: Pirate
+  categories: [ HideSpawnMenu ]
   components:
+  - type: Pirate
   - type: RandomHumanoidAppearance
   - type: NpcFactionMember
     factions:
@@ -13,9 +14,10 @@
 - type: entity
   parent: MobHuman
   id: MobHumanPirateReinforcement
-  name: syndicate agent
+  name: Human Pirate
   suffix: Human, Pirate
   components:
+  - type: Pirate
   - type: RandomHumanoidAppearance
   - type: Loadout
     prototypes: [PirateReinforcementGear]
@@ -35,6 +37,7 @@
   name: skeleton pirate
   suffix: Skeleton, Pirate
   components:
+  - type: Pirate
   - type: Loadout
     prototypes: [PirateReinforcementGear]
     roleLoadout: [ RoleSurvivalNukie ]
@@ -50,9 +53,10 @@
 - type: entity
   parent: MobMonkey
   id: MobMonkeyPirateReinforcement
-  name: syndicate agent
+  name: Monkey Pirate
   suffix: Monkey, Pirate
   components:
+  - type: Pirate
   - type: Loadout
     prototypes: [PirateReinforcementGear]
     roleLoadout: [ RoleSurvivalNukie ]

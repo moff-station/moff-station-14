@@ -1,3 +1,16 @@
+# Joke Joke's ID
+- type: entity
+  parent: PirateIDCard
+  id: JokeJokeIDCard
+  name: joke joke ID card
+  components:
+  - type: PresetIdCard
+    name: Joke Joke
+  - type: Tag #  Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
+
+# Prisoner ID
 - type: entity
   parent: PrisonerIDCard
   id: PrisonerIDCardPerma
