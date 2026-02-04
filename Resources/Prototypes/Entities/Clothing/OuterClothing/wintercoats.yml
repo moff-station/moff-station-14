@@ -427,6 +427,8 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOP
 
+
+##########################################################
 - type: entity
   parent: [ClothingOuterArmorHoS, ClothingOuterWinterCoatToggleableNotAttachableBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterHoS
@@ -439,6 +441,12 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coathosarmored.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
+##########################################################
 
 - type: entity
   parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
@@ -819,6 +827,7 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
+################################################################
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoatToggleableNotAttachableBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterWarden
@@ -831,6 +840,12 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
+################################################################
 
 - type: entity
   parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
