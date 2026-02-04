@@ -277,9 +277,9 @@
   description: Someone who wears this means business.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/detective.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpsuit/detective.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -288,9 +288,9 @@
   description: A hard-boiled private investigator's grey suit, complete with tie clip.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/detective_grey.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective_grey.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpsuit/detective_grey.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective_grey.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -598,9 +598,9 @@
   description: A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/security_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_grey.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/security_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_grey.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
@@ -609,9 +609,9 @@
   description: A formal uniform issued to the Nanotrasen Troopers, usually it comes with a car.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/security_trooper.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_trooper.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/security_trooper.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_trooper.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
@@ -1154,9 +1154,9 @@
   description: A sign of skill and prestige within the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_officer.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_officer.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
