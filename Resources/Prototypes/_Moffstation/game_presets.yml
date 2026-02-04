@@ -20,7 +20,7 @@
   description: pirates-description
   showInVote: false
   rules:
-  # - DummyNonAntagChance # Moffstation - Antag weight
+  - DummyNonAntagChance
   - Pirates
   - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler

@@ -146,7 +146,7 @@
   description: traitor-description
   showInVote: false
   rules:
-  # - DummyNonAntagChance # Moffstation - Antag Weight
+  - DummyNonAntagChance
   - Traitor
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
@@ -176,7 +176,7 @@
   showInVote: false
   rules:
   - Nukeops
-  # - DummyNonAntagChance # Moffstation - Antag weight
+  - DummyNonAntagChance
   - SubGamemodesRuleSyndicate # Moffstation - LPO only during syndicate rounds
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
@@ -193,7 +193,7 @@
   description: rev-description
   showInVote: false
   rules:
-  # - DummyNonAntagChance # Moffstation - Antag weight
+  - DummyNonAntagChance
   - Revolutionary
   - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
@@ -210,7 +210,7 @@
   showInVote: false
   rules:
   - Wizard
-  # - DummyNonAntagChance # Moffstation - Antag weight
+  - DummyNonAntagChance
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
@@ -226,7 +226,7 @@
   showInVote: false
   rules:
   - Xenoborgs
-  # - DummyNonAntagChance # Moffstation - Antag weight
+  - DummyNonAntagChance
   - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
