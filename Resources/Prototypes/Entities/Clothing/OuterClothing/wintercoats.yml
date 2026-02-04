@@ -441,10 +441,10 @@
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
 - type: entity
-  parent: ClothingOuterWinterHoS # Moffstation - New Security Outfits
+  parent: ClothingOuterWinterHoS # Moffstation - (New Security Outfits) - Since we resprited it to visually have an armor vest in it, and it was totally useless before, it might as well be a full armor HOS's coat.
   id: ClothingOuterWinterHoSUnarmored
   name: head of security's winter coat
-  description: A sturdy, utilitarian winter coat designed to protect a head of security from any brig-bound threats and hypothermic events. # Moffstation - New Security Outfits
+  description: A sturdy, utilitarian winter coat worn under a standard armor vest. Issued to station security heads in colder climates. # Moffstation - New Security Outfits
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/hoscoat.rsi # Moffstation - New Security Outfits
@@ -765,11 +765,11 @@
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
 - type: entity
-  # Moffstation - Begin (New Security Outfits)
+  # Moffstation - Begin (New Security Outfits) - Since we resprited this, we might as well make it viable by giving it the same stats as the longcoat.
   parent: ClothingOuterWinterSecArmored
   id: ClothingOuterWinterSec
   name: security armored winter coat
-  description: A warm winter coat, worn under a standard armor vest. Comes in security colors.
+  description: A warm winter coat, worn under a standard armor vest.
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
@@ -826,10 +826,10 @@
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 
 - type: entity
-  parent: ClothingOuterWinterWarden # Moffstation - New Security Outfits
+  parent: ClothingOuterWinterWarden # Moffstation - (New Security Outfits) - Since we resprited it to visually have an armor vest in it, and it was totally useless before, it might as well be a full armor warden's coat.
   id: ClothingOuterWinterWardenUnarmored
   name: warden's winter coat
-  description: A sturdy, utilitarian winter coat designed to protect a warden from any brig-bound threats and hypothermic events. # Moffstation - New Security Outfits
+  description: A sturdy, utilitarian winter coat worn under a standard armor vest. Issued to station security wardens in colder climates. # Moffstation - New Security Outfits
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - New Security Outfits
