@@ -251,6 +251,9 @@
     requiredMobState:
     - Critical
     - Dead
+  # Moffstation - Begin (Remove Inherent Gravity) - since wrecks will no longer have gravity without a gravity generator, cyborgs need to have magboots effect. They already have the no-slip effect anyway.
+  - type: Magboots
+  # Moffstation - End
 
 - type: entity
   abstract: true

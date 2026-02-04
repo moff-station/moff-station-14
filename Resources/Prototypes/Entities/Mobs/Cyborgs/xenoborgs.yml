@@ -54,7 +54,6 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-  - type: Magboots # Moffstation - (Remove Inherent Gravity) - since we are giving NT engiborgs magboots, might as well give them to engi xenoborgs.
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
   id: XenoborgHeavy
