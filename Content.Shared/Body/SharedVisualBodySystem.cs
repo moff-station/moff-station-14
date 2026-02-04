@@ -1,8 +1,8 @@
 using System.Linq;
-using System.Numerics;
+using System.Numerics; // Moffstation
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid;
-using Content.Shared.Sprite;
+using Content.Shared.Sprite; // Moffstation
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
