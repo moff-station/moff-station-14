@@ -107,3 +107,14 @@
     state: five_hundred_mothroaches
   - type: DetailExaminable
     content: "'Have 1,000,000 spesos and nothing to spend it on? Try 500 Mothroaches! You will certainly not regret purchasing 500 Mothroaches!'"
+
+- type: entity
+  parent: PosterBaseMoff
+  id: PosterMoffKadelGin
+  name: "Kadel Gin"
+  description: "This poster appears to be an advertisement for 'Kadel Gin'. A popular and well-regarded alcohol among detectives looking for 'aid in their investigations'."
+  components:
+  - type: Sprite
+    state: poster_kadelgin
+  - type: DetailExaminable
+    content: "Lindsie Kadel was one of strongest gin drinkers in the sector, may they rest in peace."

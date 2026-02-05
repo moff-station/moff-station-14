@@ -18,12 +18,11 @@
     - id: MouseMigration
     - id: PowerGridCheck
     - id: RandomSentience
-    - id: SlimesSpawn
+    #- id: SlimesSpawn # Moffstation - Move to pests table
     - id: SolarFlare
-    - id: SnakeSpawn
-    - id: SpiderClownSpawn
-    - id: SpiderSpawn
-    - id: TarboldMigration #Moffstation - Tarbold Vent Critters
+    #- id: SnakeSpawn # Moffstation - Move to pests table
+    #- id: SpiderClownSpawn # Moffstation - Move to pests table
+    #- id: SpiderSpawn # Moffstation - Move to pests table
     - id: VentClog
 
 - type: entityTable
