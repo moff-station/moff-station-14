@@ -60,6 +60,12 @@
   - BorgModuleRCD
   - BorgModuleCable
 
+  requiredModules:
+  - simpleDescription: borg-module-requirement-tool
+    whitelist:
+      tags:
+      - CyborgToolModule
+
   radioChannels:
   - Engineering
   - Science
@@ -100,6 +106,12 @@
   - BorgModuleMining
   - BorgModuleTraversal
   - BorgModuleAppraisal
+
+  requiredModules:
+  - simpleDescription: borg-module-requirement-mining
+    whitelist:
+      tags:
+      - CyborgMiningModule
 
   radioChannels:
   - Supply
@@ -152,6 +164,12 @@
   - BorgModuleCleaning
   - BorgModuleCustodial
 
+  requiredModules:
+  - simpleDescription: borg-module-requirement-cleaning
+    whitelist:
+      tags:
+      - CyborgCleaningModule
+
   radioChannels:
   - Science
   - Service
@@ -192,6 +210,12 @@
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
+
+  requiredModules:
+  - simpleDescription: borg-module-requirement-topical
+    whitelist:
+      tags:
+      - CyborgTopicalModule
 
   radioChannels:
   - Science
