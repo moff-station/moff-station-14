@@ -37,63 +37,61 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         if (args.Sprite is null)
             return;
 
-        var sprite = new Entity<SpriteComponent?>(uid, args.Sprite);
-
-        // If we support folding, ensure sprite states match the folded state of the item.
-        if (component.FoldedLayerSuffix is { } foldedSuffix)
-        {
-            var folded = AppearanceSystem.TryGetData<bool>(
-                uid,
-                FoldableModularHudVisuals.Key,
-                out var f,
-                args.Component
-            ) && f;
-            foreach (var layer in args.Sprite.AllLayers.OfType<SpriteComponent.Layer>())
-            {
-                if (layer.State is { IsValid: true, Name: { } state })
-                {
-                    switch (folded)
-                    {
-                        // If we're folded and the state isn't folded presently, make it folded.
-                        case true when !state.EndsWith(foldedSuffix):
-                            SpriteSystem.LayerSetRsiState(layer, state + component.FoldedLayerSuffix);
-                            break;
-                        // If we're not folded and the state is folded presently, make it not folded.
-                        case false when state.EndsWith(foldedSuffix):
-                            SpriteSystem.LayerSetRsiState(layer, state.Replace(component.FoldedLayerSuffix, ""));
-                            break;
-                    }
-                }
-            }
-        }
-
-        // Set color and visibility across colorable layers.
-        foreach (var layerKey in Enum.GetValues<ModularHudVisualKeys>())
-        {
-            if (SpriteSystem.TryGetLayer(sprite, layerKey, out var layer, logMissing: true))
-            {
-                if (AppearanceSystem.TryGetData<Color>(uid, layerKey, out var color, args.Component))
-                {
-                    SpriteSystem.LayerSetColor(layer, color);
-                    SpriteSystem.LayerSetVisible(layer, true);
-                }
-                else
-                {
-                    SpriteSystem.LayerSetVisible(layer, false);
-                }
-            }
-        }
+        EnsureFoldedSpriteStates((uid, component, args.Sprite, args.Component));
+        UpdateModularHudLayers((uid, args.Sprite, args.Component));
 
         // Update clothing & in-hand visuals.
         _item.VisualsChanged(uid);
+    }
+
+    private void EnsureFoldedSpriteStates(
+        Entity<ModularHudVisualsComponent, SpriteComponent, AppearanceComponent> entity
+    )
+    {
+        // Only worry about folded visuals if we have a suffix. A lack of a suffix implies this HUD doesn't
+        // support folding.
+        if (entity.Comp1.FoldedLayerSuffix is not { } foldedSuffix)
+            return;
+
+        var folded = IsFolded((entity, entity.Comp3));
+        foreach (var layer in entity.Comp2.AllLayers.OfType<SpriteComponent.Layer>())
+        {
+            if (layer.State is { IsValid: true, Name: { } state })
+            {
+                switch (folded)
+                {
+                    // If we're folded and the state isn't folded presently, make it folded.
+                    case true when !state.EndsWith(foldedSuffix):
+                        SpriteSystem.LayerSetRsiState(layer, state + entity.Comp1.FoldedLayerSuffix);
+                        break;
+                    // If we're not folded and the state is folded presently, make it not folded.
+                    case false when state.EndsWith(foldedSuffix):
+                        SpriteSystem.LayerSetRsiState(layer, state.Replace(entity.Comp1.FoldedLayerSuffix, ""));
+                        break;
+                }
+            }
+        }
+    }
+
+    private void UpdateModularHudLayers(Entity<SpriteComponent, AppearanceComponent> entity)
+    {
+        foreach (var layerKey in Enum.GetValues<ModularHudVisualKeys>())
+        {
+            // If there's no data for this layer, skip it, or if the layer doesn't exist, don't try to modify it.
+            if (!AppearanceSystem.TryGetData<ModularHudVisualData>(entity, layerKey, out var data, entity.Comp2) ||
+                !SpriteSystem.TryGetLayer(entity.AsNullable(), layerKey, out var layer, logMissing: true))
+                continue;
+
+            SpriteSystem.LayerSetColor(layer, data.Color);
+            SpriteSystem.LayerSetVisible(layer, data.Visible);
+        }
     }
 
     /// Updates the in-hand sprites.
     private void OnGetInhandVisuals(Entity<ModularHudVisualsComponent> entity, ref GetInhandVisualsEvent args)
     {
         // Not all layers exist on all in-hand sprites. Don't try to modulate layers which aren't present.
-        var excludedLayers = GetExcludedLayersOrDefaultForSpecies(
-            entity.Comp.InhandExcludedLayers,
+        var excludedLayers = entity.Comp.InhandExcludedLayers.GetExcludedLayersOrDefaultForSpecies(
             CompOrNull<InventoryComponent>(args.User)?.SpeciesId
         );
         var location = args.Location.ToString().ToLowerInvariant();
@@ -116,11 +114,13 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
     private void OnGetClothingVisuals(Entity<ModularHudVisualsComponent> entity, ref GetEquipmentVisualsEvent args)
     {
         // Some species use different states, so make sure we consider those here.
-        var compSpeciesWithDifferentClothing = entity.Comp.SpeciesWithDifferentClothing;
         var speciesId = CompOrNull<InventoryComponent>(args.Equipee)?.SpeciesId;
-        var id = speciesId is not null && compSpeciesWithDifferentClothing.Contains(speciesId) ? speciesId : null;
-        var excludedLayers = GetExcludedLayersOrDefaultForSpecies(entity.Comp.EquippedExcludedLayers, speciesId);
-        var folded = TryComp<FoldableComponent>(entity, out var foldable) && foldable.IsFolded;
+        var excludedLayers = entity.Comp.EquippedExcludedLayers.GetExcludedLayersOrDefaultForSpecies(speciesId);
+        var id = speciesId is not null && entity.Comp.SpeciesWithDifferentClothing.Contains(speciesId)
+            ? speciesId
+            : null;
+        var speciesSuffix = id != null ? $"-{id.ToLowerInvariant()}" : "";
+        var foldedSuffix = IsFolded(entity.Owner) ? entity.Comp.FoldedLayerSuffix : "";
         OnGetGenericVisuals(
             entity,
             ref args.Layers,
@@ -134,8 +134,6 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
                 if (entity.Comp.LayerMap.GetValueOrDefault(key) is not { } state)
                     return null;
 
-                var speciesSuffix = id != null ? $"-{id.ToLowerInvariant()}" : "";
-                var foldedSuffix = folded ? entity.Comp.FoldedLayerSuffix : "";
                 return $"equipped-EYES-{state}{speciesSuffix}{foldedSuffix}";
             });
     }
@@ -144,7 +142,7 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
     /// <param name="entity">The modular HUD whose appearance will be used</param>
     /// <param name="layers">The list of layers to add to</param>
     /// <param name="visualKeyPrefix">The prefix applied to all states added to <paramref name="layers"/>, eg. inhand-left, equipped-SUITSTORAGE</param>
-    /// <param name="visualsLayerToRsiState">A lookup function which turns <see cref="ColorableLayers"/> elements into RSI state names</param>
+    /// <param name="visualsLayerToRsiState">A lookup function which turns <see cref="ModularHudVisualKeys"/> elements into RSI state names</param>
     private void OnGetGenericVisuals(
         Entity<ModularHudVisualsComponent> entity,
         ref List<(string, PrototypeLayerData)> layers,
@@ -160,28 +158,24 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
             if (visualsLayerToRsiState(key) is not { } state)
                 continue;
 
-            var hasAppearance = AppearanceSystem.TryGetData<Color>(entity, key, out var color, appearance);
+            var hasAppearance =
+                AppearanceSystem.TryGetData<ModularHudVisualData>(entity, key, out var data, appearance);
             layers.Add((
                 $"{visualKeyPrefix}-{_reflect.GetEnumReference(key)}",
                 new PrototypeLayerData
                 {
                     State = state,
-                    Visible = hasAppearance,
-                    Color = color,
+                    Visible = data.Visible,
+                    Color = data.Color,
                 }
             ));
         }
     }
 
-    private static HashSet<ModularHudVisualKeys> GetExcludedLayersOrDefaultForSpecies(
-        ModularHudVisualsExcludedLayers excludedLayers,
-        string? speciesId
-    )
-    {
-        var def = excludedLayers.Default ?? [];
-        if (speciesId == null || excludedLayers.Species is not { } ss)
-            return def;
-
-        return ss.GetValueOrDefault(speciesId, def);
-    }
+    private bool IsFolded(Entity<AppearanceComponent?> entity) => AppearanceSystem.TryGetData<bool>(
+        entity,
+        FoldableSystem.FoldedVisuals.State,
+        out var folded,
+        entity
+    ) && folded;
 }

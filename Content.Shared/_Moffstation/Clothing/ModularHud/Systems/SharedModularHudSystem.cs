@@ -76,7 +76,6 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         SubscribeLocalEvent<ModularHudComponent, ComponentRemove>(OnComponentRemove);
         SubscribeLocalEvent<ModularHudComponent, GotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<ModularHudComponent, GotUnequippedEvent>(OnGotUneqipped);
-        SubscribeLocalEvent<ModularHudComponent, FoldedEvent>(OnFolded);
         SubscribeLocalEvent<ModularHudComponent, EntInsertedIntoContainerMessage>(OnContainerModifiedMessage);
         SubscribeLocalEvent<ModularHudComponent, EntRemovedFromContainerMessage>(OnContainerModifiedMessage);
         SubscribeLocalEvent<ModularHudComponent, ExaminedEvent>(OnExamined);
@@ -366,8 +365,6 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         RefreshEffectsForWearerForContainedModules(entity, args.Equipee);
     }
 
-    private void OnFolded(Entity<ModularHudComponent> entity, ref FoldedEvent args) => SyncVisuals(entity);
-
     /// This function contains a functional grab-bag of whatever function calls / event raisings need to happen to cause
     /// the disparate HUD effects to be updated when the modular HUD is un/equipped.
     private void RefreshEffectsForWearerForContainedModules(Entity<ModularHudComponent> entity, EntityUid equippee)
@@ -407,6 +404,7 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         if (!Resolve(entity, ref entity.Comp2))
             return;
 
+        // Assemble the visuals data from the contained modules and defaults.
         var visuals = new Dictionary<ModularHudVisuals, PriorityQueue<ModularHudModuleComponent.ModuleColor>>()
         {
             // Lens gets three colors because there're three lens layers.
@@ -422,39 +420,40 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         }
 
         var appearance = CompOrNull<AppearanceComponent>(entity);
-        // Clear lens accents because we don't always have them.
-        _appearance.RemoveData(entity, LensAccentMinor, appearance);
-        _appearance.RemoveData(entity, LensAccentMajor, appearance);
+
+        // Clear all of the visuals data.
+        foreach (var key in Enum.GetValues<ModularHudVisualKeys>())
+        {
+            _appearance.SetData(entity, key, ModularHudVisualData.Invisible, appearance);
+        }
+
         foreach (var (layer, data) in visuals)
         {
             // Special handling for lens layers since there're three.
             if (layer == ModularHudVisuals.Lens && data.Count > 1)
             {
-                foreach (var (color, key) in data.Zip(LensVisualKeys))
+                foreach (var ((color, _), key) in data.Zip(LensVisualKeys))
                 {
-                    _appearance.SetData(entity, key, color.Color, appearance);
+                    _appearance.SetData(entity, key, new ModularHudVisualData(color), appearance);
                 }
             }
             else
             {
                 // Other layers, or when there's only one lens color
                 var color = data.TakeOrNull()?.Color ?? entity.Comp2.DefaultVisuals[layer];
-                _appearance.SetData(entity, VisualsLayerToKey(layer), color, appearance);
+                _appearance.SetData(entity, VisualsLayerToKey(layer), new ModularHudVisualData(color), appearance);
             }
-        }
-
-        if (TryComp<FoldableComponent>(entity, out var foldable))
-        {
-            _appearance.SetData(entity, FoldableModularHudVisuals.Key, foldable.IsFolded, appearance);
-        }
-        else
-        {
-            _appearance.RemoveData(entity, FoldableModularHudVisuals.Key, appearance);
         }
 
         if (entity.Comp2.FrameIsDynamic)
         {
-            _appearance.SetData(entity, Frame, Color.White, appearance);
+            // If the frame is dynamic just tell the visuals system to render it.
+            _appearance.SetData(entity, Frame, new ModularHudVisualData(Color.White), appearance);
+        }
+        else
+        {
+            // Otherwise, remove the appearance data so that the visuals system doesn't try to do anything with it.
+            _appearance.RemoveData(entity, Frame, appearance);
         }
     }
 
