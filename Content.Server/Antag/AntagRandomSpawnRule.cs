@@ -27,7 +27,7 @@ public sealed class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomSpawnComp
     }
 
     // Moffstation - Start - Rewrote this function to double check coords are filled
-    // (if you use the preroundselection it would spawn you in nullspace)
+    // (if you use the PrePlayerSpawn for the rule it would spawn you in nullspace)
     // If upstream updates for that or fixes it, probably go with what they did
     private void OnSelectLocation(Entity<AntagRandomSpawnComponent> ent, ref AntagSelectLocationEvent args)
     {
