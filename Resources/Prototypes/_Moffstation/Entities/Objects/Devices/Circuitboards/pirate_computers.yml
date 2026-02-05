@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseComputerCircuitboard
+  parent: [ BaseComputerCircuitboard , BaseHighlyIllegalContraband ]
   id: PirateRequestComputerCircuitboard
   name: pirate request computer board
   description: A computer printed circuit board for a pirate request computer.
@@ -13,7 +13,7 @@
     price: 750
 
 - type: entity
-  parent: BaseComputerCircuitboard
+  parent: [ BaseComputerCircuitboard , BaseHighlyIllegalContraband ]
   id: PirateSaleComputerCircuitboard
   name: pirate sale computer board
   description: A computer printed circuit board for a pirate sale computer.
@@ -27,7 +27,7 @@
     price: 750
 
 - type: entity
-  parent: BaseComputerCircuitboard
+  parent: [ BaseComputerCircuitboard , BaseHighlyIllegalContraband ]
   id: PirateBountyComputerCircuitboard
   name: pirate bounty computer board
   description: A computer printed circuit board for a pirate bounty computer.
@@ -41,7 +41,7 @@
     price: 750
 
 - type: entity
-  parent: BaseComputerCircuitboard
+  parent: [ BaseComputerCircuitboard , BaseHighlyIllegalContraband ]
   id: PirateShuttleCircuitboard
   name: pirate ship console board
   suffix: Pirate
@@ -55,7 +55,7 @@
     price: 750
 
 - type: entity
-  parent: BaseComputerCircuitboard
+  parent: [ BaseComputerCircuitboard , BaseHighlyIllegalContraband ]
   id: PirateCommsCircuitboard
   name: pirate communication console board
   description: A computer printed circuit board for a pirate communications console.

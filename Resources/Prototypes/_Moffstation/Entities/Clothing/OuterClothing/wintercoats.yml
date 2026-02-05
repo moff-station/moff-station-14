@@ -1,8 +1,8 @@
 - type: entity
-  parent: ClothingOuterWinterSec
+  parent: ClothingOuterArmorBase
   id: ClothingOuterWinterSecArmored
   name: security armored longcoat
-  description: A warm double-breasted longcoat, worn over a standard armor vest. Comes in security colors.
+  description: A warm double-breasted longcoat, worn over a slim armor vest. Issued to station security officers in colder climates.
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatsecarmored.rsi
@@ -13,6 +13,12 @@
     coolingCoefficient: 0.1
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSec
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
 
 - type: entity
   parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase,BaseCentcommContraband]

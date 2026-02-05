@@ -44,18 +44,6 @@
       - XenoArtifact
 
 # Service
-- type: cargoBounty
-  id: PirateBountyBoozeDispenser
-  reward: 5000
-  description: bounty-description-booze-dispenser
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-booze-dispenser
-    amount: 1
-    whitelist:
-      components:
-      - ReagentDispenser
 
 - type: cargoBounty
   id: PirateBountyChefTech
@@ -69,19 +57,6 @@
     whitelist:
       tags:
       - Chefware
-
-- type: cargoBounty
-  id: PirateBountyInstruments
-  reward: 1000
-  description: bounty-description-instruments
-  idPrefix: WC
-  group: Pirates
-  entries:
-  - name: bounty-item-instruments
-    amount: 2
-    whitelist:
-      components:
-      - Instrument
 
 # Medical
 - type: cargoBounty
@@ -112,19 +87,6 @@
       - VendingMachine
 
 - type: cargoBounty
-  id: PirateBountyShuttleParts
-  reward: 3000
-  description: bounty-description-shuttle-parts
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-shuttle-parts
-    amount: 1
-    whitelist:
-      components:
-      - Thruster
-
-- type: cargoBounty
   id: PirateBountyTelecom
   reward: 6000
   description: bounty-description-telecom
@@ -136,6 +98,19 @@
     whitelist:
       components:
       - TelecomServer
+
+- type: cargoBounty
+  id: PirateBountyShuttleParts
+  reward: 3000
+  description: bounty-description-shuttle-parts
+  idPrefix: SP
+  group: Pirates
+  entries:
+  - name: bounty-item-shuttle-parts
+    amount: 1
+    whitelist:
+      components:
+      - Thruster
 
 - type: cargoBounty
   id: PirateBountyMagboots
@@ -188,29 +163,3 @@
     whitelist:
       components:
       - StasisBed
-
-- type: cargoBounty
-  id: PirateBountyRecycler
-  reward: 7000
-  description: bounty-description-recycler
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-recycler
-    amount: 1
-    whitelist:
-      components:
-      - MaterialReclaimer
-
-- type: cargoBounty
-  id: PirateBountyDisposals
-  reward: 5000
-  description: bounty-description-disposals
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-disposals
-    amount: 1
-    whitelist:
-      components:
-      - DisposalUnit

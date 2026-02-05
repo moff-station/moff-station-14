@@ -8,13 +8,12 @@
   color: "#200a02"
   recognizable: true
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6
       effects:
       - !type:SatiateThirst
         factor: 1
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.3
 
 - type: reagent
   id: PinkGin
@@ -31,13 +30,12 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Ethanol: 0.4
       effects:
       - !type:SatiateThirst
         factor: 2
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.2
 
 - type: reagent
   id: PlantersPunch
@@ -54,13 +52,12 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Ethanol: 0.266
       effects:
       - !type:SatiateThirst
         factor: 2
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.133
 
 - type: reagent
   id: CorpseReviver
@@ -77,16 +74,13 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6
+        Ethylredoxrazine: 0.6
       effects:
       - !type:SatiateThirst
         factor: 2
-      - !type:AdjustReagent
-        reagent: Ethylredoxrazine
-        amount: 0.3
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.3
 
 - type: reagent
   id: MossySpecial
@@ -103,16 +97,13 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Ethanol: 0.2
+        Ethylredoxrazine: 0.6
       effects:
       - !type:SatiateThirst
         factor: 3
-      - !type:AdjustReagent
-        reagent: Ethylredoxrazine
-        amount: 0.3
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.1
 
 - type: reagent
   id: ScrantonSpecial
@@ -129,7 +120,9 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Ethanol: 0.3
       effects:
       - !type:HealthChange
         damage:
@@ -137,6 +130,3 @@
             Poison: .15
       - !type:SatiateThirst
         factor: 1
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.15

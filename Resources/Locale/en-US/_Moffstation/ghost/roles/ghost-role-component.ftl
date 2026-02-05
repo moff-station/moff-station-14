@@ -14,3 +14,7 @@ ghost-role-information-rod-name-moffstation = Sentient Immovable Rod
 ghost-role-information-rod-description-moffstation = An unstoppable rod currently tearing through the station.
 ghost-role-information-jokejoke-name = Joke Joke
 ghost-role-information-jokejoke-description = A cut-throat kobold pirate serving drinks and maintaining the cove.
+ghost-role-information-syndicate-solider-name = Syndicate Footsoldier
+ghost-role-information-syndicate-solider-description = You, the first person the syndicate could find, have been sent on a mission to the station.
+ghost-role-information-wild-human-name = Wild Humanoid
+ghost-role-information-wild-human-description = You are a wild humanoid, illiterate and without a lick of education.

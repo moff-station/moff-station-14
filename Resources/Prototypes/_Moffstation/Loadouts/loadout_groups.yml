@@ -226,23 +226,6 @@
   - CMOPDA # Keep default PDA on top of the list
   - MedicalDirectorPDA
 
-# Chemist
-- type: loadoutGroup
-  id: ChemistryEyewear
-  name: loadout-group-chemistry-glasses
-  minLimit: 1
-  loadouts:
-  - ChemistryGoggles
-  - MedicalGlasses
-  - MedicalHud
-  - MedicalEyePatchHud
-  - MedicalEyePatchHudFlipped
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-  - EyePatchFlipped
-
 - type: loadoutGroup
   id: ChemistryPDA
   name: loadout-group-chemist-id

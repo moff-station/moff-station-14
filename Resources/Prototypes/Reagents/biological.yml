@@ -15,7 +15,9 @@
   standsout: true
   physicalDesc: reagent-physical-desc-ferrous
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        UncookedAnimalProteins: 0.2
       effects:
       - !type:SatiateThirst
         factor: 1.0
@@ -23,13 +25,6 @@
           - !type:MetabolizerTypeCondition
             type: [ Human ]
             inverted: true
-    Food:
-      effects:
-        - !type:AdjustReagent
-          reagent: UncookedAnimalProteins
-          amount: 0.1
-    Medicine:
-      effects:
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
@@ -38,15 +33,6 @@
           groups:
             Brute: -3
             Burn: -1.25
-    # Moffstation - Start - Added blood metabolism group
-    Blood:
-      metabolismRate: 0.95 # Ensure there's always a little loss
-      effects:
-      - !type:ModifyBloodLevel
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
-    # Moffstation - End
   plantMetabolism:
     - !type:PlantAdjustWater
       amount: 0.5
@@ -80,7 +66,7 @@
   tileReactions:
     - !type:SpillTileReaction
   metabolisms:
-    Food:
+    Digestion:
       # Delicious!
       effects:
       - !type:SatiateHunger
@@ -94,15 +80,6 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [Slime]
-    # Moffstation - Start - Added blood metabolism group
-    Blood:
-      metabolismRate: 0.80
-      effects:
-      - !type:ModifyBloodLevel
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
-    # Moffstation - End
   footstepSound:
     collection: FootstepSlime # makes sense
     params:
@@ -121,22 +98,13 @@
   tileReactions:
     - !type:SpillTileReaction
   metabolisms:
-    Food:
+    Digestion:
       # Sweet!
       effects:
       - !type:SatiateHunger
         factor: 1
       - !type:SatiateThirst
         factor: 1
-    # Moffstation - Start - Added blood metabolism group
-    Blood:
-      metabolismRate: 0.80
-      effects:
-      - !type:ModifyBloodLevel
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
-    # Moffstation - End
   footstepSound:
     collection: FootstepSlime
     params:
@@ -173,12 +141,12 @@
   flavor: bitter
   color: "#2b0700"
   metabolisms:
-    Drink:
+    Digestion:
       # Disgusting!
       effects:
       - !type:SatiateThirst
         factor: -0.5
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -186,15 +154,6 @@
             Poison: 4
       - !type:Vomit
         probability: 0.25
-    # Moffstation - Start - Added blood metabolism group
-    Blood:
-      metabolismRate: 0.5 # Terrible for you but it works
-      effects:
-      - !type:ModifyBloodLevel
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
-    # Moffstation - End
 - type: reagent
   id: Ichor
   name: reagent-name-ichor
@@ -205,7 +164,7 @@
   color: "#f4692e"
   recognizable: true
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 1.5
@@ -257,13 +216,12 @@
     requiredSlipSpeed: 4.0 #It's not as slippery as water
   friction: 0.4
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Nutriment: 0.1
       effects:
       - !type:SatiateThirst
         factor: 0.5
-      - !type:AdjustReagent
-        reagent: Nutriment
-        amount: 0.1
   footstepSound:
     collection: FootstepBlood
     params:
@@ -278,12 +236,10 @@
   flavor: mindful
   color: "#C584B8"
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateHunger
         factor: 1.5
-    Poison:
-      effects:
       - !type:HealthChange
         damage:
           types:

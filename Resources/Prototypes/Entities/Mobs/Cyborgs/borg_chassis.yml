@@ -351,13 +351,15 @@
       shader: unshaded
       map: ["light"]
       visible: false
-  - type: SpriteMovement
-    movementLayers:
-      movement:
-        state: borg_moving # Moffstation - Early merge of Borg RSI fix
-    noMovementLayers:
-      movement:
-        state: borg # Moffstation - Early merge of Borg RSI fix
+  # Moffstation - Start - Salvage Borg Resprite
+  #- type: SpriteMovement
+  #  movementLayers:
+  #    movement:
+  #      state: miner_moving_derelict
+  #  noMovementLayers:
+  #    movement:
+  #      state: miner_derelict
+  # Moffstation - End
   - type: BorgChassis
     maxModules: 6 # One less module slot than the regular module to reflect this being a "broken" cyborg.
     moduleWhitelist:

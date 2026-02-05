@@ -2,8 +2,7 @@
 - type: marking
   id: ResomiFluffHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: fluff_head
@@ -11,8 +10,7 @@
 - type: marking
   id: ResomiFluffHeadUp
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: fluff_head_up
@@ -20,8 +18,7 @@
 - type: marking
   id: ResomiSnout
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: snout
@@ -29,8 +26,7 @@
 - type: marking
   id: ResomiForehead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: forehead
@@ -38,8 +34,7 @@
 - type: marking
   id: ResomiHeadWar
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: head_war
@@ -47,8 +42,7 @@
 - type: marking
   id: ResomiHeadStripes
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: head_stripes
@@ -57,8 +51,7 @@
 - type: marking
   id: ResomiFluff
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: fluff
@@ -66,8 +59,7 @@
 - type: marking
   id: ResomiBodyStripes
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: body_stripes
@@ -75,8 +67,7 @@
 - type: marking
   id: ResomiBodyRings
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: body_rings
@@ -84,8 +75,7 @@
 - type: marking
   id: ResomiBodyLines
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: body_lines
@@ -93,8 +83,7 @@
 - type: marking
   id: ResomiBelly
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: belly
@@ -102,8 +91,7 @@
 - type: marking
   id: ResomiBackPatch
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: back_patch
@@ -111,18 +99,16 @@
 - type: marking
   id: ResomiBackPatchFull
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_markings.rsi
     state: back_patch_full
 
-# Arm Markings    
+# Arm Markings
 - type: marking
   id: ResomiLArmFeathersComplex
   bodyPart: LHand
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: l_hand_feathers_primary
@@ -132,8 +118,7 @@
 - type: marking
   id: ResomiRArmFeathersComplex
   bodyPart: RHand
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: r_hand_feathers_primary
@@ -143,8 +128,7 @@
 - type: marking
   id: ResomiRArmFade
   bodyPart: RHand
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: r_arm_fade
@@ -152,8 +136,7 @@
 - type: marking
   id: ResomiLArmFade
   bodyPart: LHand
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: l_arm_fade
@@ -161,8 +144,7 @@
 - type: marking
   id: ResomiLArmFeathers
   bodyPart: LHand
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: l_hand_feathers
@@ -170,8 +152,7 @@
 - type: marking
   id: ResomiRArmFeathers
   bodyPart: RHand
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: r_hand_feathers
@@ -179,8 +160,7 @@
 - type: marking
   id: ResomiRShoulderFade
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: r_shoulder_fade
@@ -188,8 +168,7 @@
 - type: marking
   id: ResomiLShoulderFade
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_arm_markings.rsi
     state: l_shoulder_fade
@@ -198,8 +177,7 @@
 - type: marking
   id: ResomiLLegFeathers
   bodyPart: LFoot
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: l_foot_feathers
@@ -207,8 +185,7 @@
 - type: marking
   id: ResomiRLegFeathers
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: r_foot_feathers
@@ -216,8 +193,7 @@
 - type: marking
   id: ResomiRFootFade
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: r_foot_fade
@@ -225,8 +201,7 @@
 - type: marking
   id: ResomiLFootFade
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: l_foot_fade
@@ -234,8 +209,7 @@
 - type: marking
   id: ResomiLLegFeathersComplex
   bodyPart: LFoot
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: l_foot_feathers_primary
@@ -245,8 +219,7 @@
 - type: marking
   id: ResomiRLegFeathersComplex
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: r_foot_feathers_primary
@@ -256,8 +229,7 @@
 - type: marking
   id: ResomiRLegFade
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: r_leg_fade
@@ -265,8 +237,7 @@
 - type: marking
   id: ResomiLLegFade
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: l_leg_fade
@@ -274,8 +245,7 @@
 - type: marking
   id: ResomiRLegStripes
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: r_leg_stripes
@@ -283,8 +253,7 @@
 - type: marking
   id: ResomiLLegStripes
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_leg_markings.rsi
     state: l_leg_stripes
@@ -294,8 +263,7 @@
 - type: marking
   id: ResomiTailFade
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
     state: tail_fade
@@ -303,8 +271,7 @@
 - type: marking
   id: ResomiTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   forcedColoring: true
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
@@ -313,8 +280,7 @@
 - type: marking
   id: ResomiTailCurvy
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
     state: tail_curvy
@@ -322,8 +288,7 @@
 - type: marking
   id: ResomiTailComplex
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
     state: tail_complex_primary
@@ -333,11 +298,9 @@
 - type: marking
   id: ResomiTailDual
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   sprites:
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
     state: tail_dual_primary
   - sprite: _Moffstation/Mobs/Customization/resomi_tail_markings.rsi
     state: tail_dual_secondary
-    

@@ -427,6 +427,8 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOP
 
+
+##########################################################
 - type: entity
   parent: [ClothingOuterArmorHoS, ClothingOuterWinterCoatToggleableNotAttachableBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterHoS
@@ -439,12 +441,18 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coathosarmored.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
+##########################################################
 
 - type: entity
-  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: ClothingOuterWinterHoS # Moffstation - (New Security Outfits) - Since we resprited it to visually have an armor vest in it, and it was totally useless before, it might as well be a full armor HOS's coat.
   id: ClothingOuterWinterHoSUnarmored
   name: head of security's winter coat
-  description: A sturdy coat, a warm coat, but not as armored. # Moffstation - New Security Outfits
+  description: A sturdy, utilitarian winter coat worn under a standard armor vest. Issued to station security heads in colder climates. # Moffstation - New Security Outfits
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/hoscoat.rsi # Moffstation - New Security Outfits
@@ -765,24 +773,17 @@
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
 - type: entity
-  parent: [ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  # Moffstation - Begin (New Security Outfits) - Since we resprited this, we might as well make it viable by giving it the same stats as the longcoat.
+  parent: ClothingOuterWinterSecArmored
   id: ClothingOuterWinterSec
-  name: security winter coat
-  components: # Moffstation - Start -New Security Outfits
+  name: security armored winter coat
+  description: A warm winter coat, worn under a standard armor vest.
+  components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seccoat.rsi
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterSec
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.75
-        Slash: 0.75
-        Piercing: 0.75
-        Heat: 0.75
-# Moffstation - End - New Security Outfits
+  # Moffstation - End (New Security Outfits)
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
@@ -819,6 +820,7 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSci
 
+################################################################
 - type: entity
   parent: [ClothingOuterArmorWarden, ClothingOuterWinterCoatToggleableNotAttachableBase, BaseSecurityCommandContraband] # Moffstation - Inherit from abstract base winter coat instead of default toggleable one. This avoids inheriting attachable suit storage
   id: ClothingOuterWinterWarden
@@ -831,17 +833,23 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatwardenarmored.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot { }
+      storagebase: !type:Container
+        ents: [ ]
+################################################################
 
 - type: entity
-  parent: [ClothingOuterWinterSec, ClothingOuterWinterCoatToggleable, BaseSecurityContraband] # Moffstation - New Security Outfits
+  parent: ClothingOuterWinterWarden # Moffstation - (New Security Outfits) - Since we resprited it to visually have an armor vest in it, and it was totally useless before, it might as well be a full armor warden's coat.
   id: ClothingOuterWinterWardenUnarmored
   name: warden's winter coat
-  description: A sturdy coat, a warm coat, but not as armored.
+  description: A sturdy, utilitarian winter coat worn under a standard armor vest. Issued to station security wardens in colder climates. # Moffstation - New Security Outfits
   components:
-  - type: Sprite # Moffstation - Start- New Security Outfits
-    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - End - New Security Outfits
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wardcoat.rsi # Moffstation - New Security Outfits
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 

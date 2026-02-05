@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Shared._Starlight.CollectiveMind; // Moffstation - Zombies not getting added to their Hivemind
+using Content.Shared.Body;
 using Content.Shared.Ghost;
-using Content.Shared.Humanoid;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Zombies;
@@ -47,7 +47,7 @@ public sealed class ZombieSystem : SharedZombieSystem
             _collectiveMindUpdateSystem.UpdateCollectiveMind(uid, collective);
         }
         // Moffstation - End
-        if (HasComp<HumanoidAppearanceComponent>(uid))
+        if (HasComp<VisualBodyComponent>(uid))
             return;
 
         if (!TryComp<SpriteComponent>(uid, out var sprite))

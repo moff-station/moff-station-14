@@ -1,0 +1,38 @@
+- type: antag
+  id: Stowaway
+  name: roles-antag-stowaway-name
+  antagonist: false
+  setPreference: true
+  objective: roles-antag-stowaway-objective
+
+- type: startingGear
+  id: StowawayGear
+  equipment:
+    jumpsuit: ClothingUniformRandomStandard
+    back: ClothingBackpack
+    shoes: ClothingShoesColorBlack
+    mask: ClothingMaskGas
+    id: CardboardIDCard
+  storage:
+    back:
+    - FoodSnackMREBrownie
+    - DrinkWaterBottleFull
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostStowaway
+  name: ghost role spawn point
+  suffix: stowaway
+  components:
+  - type: GhostRole
+    name: roles-antag-stowaway-name
+    description: roles-antag-stowaway-desc
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Clothing/Mask/gas.rsi
+      state: icon

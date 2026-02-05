@@ -1,0 +1,16 @@
+- type: startingGear
+  id: SyndicateFootsoldierGearArmed
+  parent: SyndicateOperativeGearCivilian
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOperative
+    head: ClothingHeadHelmetSwatSyndicate
+    eyes: ClothingEyesHudSyndicate
+    outerClothing: ClothingOuterArmorBasic
+    gloves: ClothingHandsGlovesCombat
+    back: ClothingBackpack
+    shoes: ClothingShoesBootsCombatFilled
+  storage:
+    back:
+    - BoxSurvivalSyndicate
+  inhand:
+  - CombatKnife

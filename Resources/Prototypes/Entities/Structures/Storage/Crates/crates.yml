@@ -656,7 +656,7 @@
     access: [["Service"]]
 
 - type: entity
-  parent: CrateGeneric
+  parent: [ CrateGeneric , BaseHighlyIllegalContraband ] # Moffstation - Pirates!
   id: CratePirate
   name: pirate chest
   description: A space pirate chest, not for station lubbers.

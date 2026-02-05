@@ -1,0 +1,38 @@
+﻿- type: markingsGroup
+  parent: Undergarments
+  id: BasicMoffMarkingsGroup
+  abstract: true
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Special:
+      limit: 10
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 6
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 3
+      required: false
+
+- type: markingsGroup
+  parent: BasicMoffMarkingsGroup
+  id: Dwarf
+
+- type: markingsGroup
+  parent: BasicMoffMarkingsGroup
+  id: SlimePerson

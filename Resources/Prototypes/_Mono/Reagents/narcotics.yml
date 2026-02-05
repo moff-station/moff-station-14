@@ -7,7 +7,7 @@
   flavor: bitter
   color: "#b4dae0"
   metabolisms:
-    Medicine:
+    Bloodstream:
       metabolismRate: 0.2
       effects:
       - !type:HealthChange
@@ -23,9 +23,6 @@
             Brute: -3 # 25 blunt, slash, and pierce per 5u, its a painkiller
           types:
             Poison: -0.5 # 12.5 poison per 5u
-    Narcotic:
-      metabolismRate: 0.2
-      effects:
       - !type:MovementSpeedModifier
         walkSpeedModifier: 0.40
         sprintSpeedModifier: 0.40
