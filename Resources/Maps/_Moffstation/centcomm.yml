@@ -4,8 +4,8 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 02/05/2026 19:42:50
-  entityCount: 12846
+  time: 02/05/2026 19:51:04
+  entityCount: 12849
 maps: []
 grids:
 - 1
@@ -7474,7 +7474,7 @@ entities:
       pos: 44.5,74.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -141159.98
+      secondsUntilStateChange: -141649.9
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -18441,12 +18441,12 @@ entities:
       parent: 1
 - proto: CableApcStack
   entities:
-  - uid: 12839
+  - uid: 12838
     components:
     - type: Transform
       pos: 28.31869,56.10316
       parent: 1
-  - uid: 12840
+  - uid: 12839
     components:
     - type: Transform
       pos: 28.337234,56.02331
@@ -30262,12 +30262,12 @@ entities:
       parent: 1
 - proto: CrateMaterialBasicResource
   entities:
-  - uid: 12834
+  - uid: 12155
     components:
     - type: Transform
       pos: 26.5,58.5
       parent: 1
-  - uid: 12835
+  - uid: 12834
     components:
     - type: Transform
       pos: 27.5,58.5
@@ -30575,12 +30575,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 73.5,47.5
       parent: 1
-  - uid: 7807
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 48.5,43.5
-      parent: 1
   - uid: 8565
     components:
     - type: Transform
@@ -30706,6 +30700,30 @@ entities:
     - type: Transform
       pos: 27.5,69.5
       parent: 1
+  - uid: 12846
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 49.5,43.5
+      parent: 1
+  - uid: 12847
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 49.5,42.5
+      parent: 1
+  - uid: 12848
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 45.5,43.5
+      parent: 1
+  - uid: 12849
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 45.5,42.5
+      parent: 1
 - proto: CurtainsOrangeOpen
   entities:
   - uid: 551
@@ -30732,6 +30750,12 @@ entities:
     components:
     - type: Transform
       pos: 40.5,81.5
+      parent: 1
+  - uid: 7807
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 48.5,43.5
       parent: 1
   - uid: 9052
     components:
@@ -53186,7 +53210,7 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
-  - uid: 12846
+  - uid: 12845
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -58463,7 +58487,7 @@ entities:
       parent: 1
 - proto: IngotGold
   entities:
-  - uid: 12836
+  - uid: 12835
     components:
     - type: Transform
       pos: 27.495495,58.69072
@@ -60575,7 +60599,7 @@ entities:
       fixtures: {}
 - proto: MMI
   entities:
-  - uid: 12837
+  - uid: 12836
     components:
     - type: Transform
       pos: 38.1444,56.829933
@@ -68200,6 +68224,12 @@ entities:
       parent: 1
 - proto: SciFlash
   entities:
+  - uid: 12840
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 37.252335,56.441357
+      parent: 1
   - uid: 12841
     components:
     - type: Transform
@@ -68213,12 +68243,6 @@ entities:
       pos: 37.252335,56.441357
       parent: 1
   - uid: 12843
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 37.252335,56.441357
-      parent: 1
-  - uid: 12844
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -68301,7 +68325,7 @@ entities:
       parent: 1
 - proto: SheetPlasma
   entities:
-  - uid: 12838
+  - uid: 12837
     components:
     - type: Transform
       pos: 28.94892,61.569805
@@ -75213,7 +75237,7 @@ entities:
     - type: Transform
       pos: 18.5,30.5
       parent: 1
-  - uid: 12845
+  - uid: 12844
     components:
     - type: Transform
       pos: 48.5,41.5
@@ -75293,7 +75317,7 @@ entities:
     - type: Transform
       pos: 18.5,28.5
       parent: 1
-  - uid: 12155
+  - uid: 12032
     components:
     - type: Transform
       pos: 46.5,42.5
@@ -84548,12 +84572,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 48.5,42.5
-      parent: 1
-  - uid: 12032
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 48.5,43.5
       parent: 1
 - proto: WindowReinforcedDirectional
   entities:
