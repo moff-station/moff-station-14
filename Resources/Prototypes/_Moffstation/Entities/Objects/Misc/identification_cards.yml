@@ -1,15 +1,26 @@
+# Doesn't parent off of the Base ID card because its fake
 - type: entity
-  parent: IDCardStandard
+  parent: Clothing
   id: CardboardIDCard
-  name: cardboard ID card
+  name: cardboard identification card
+  description: Nanotrasen so great, id card not required.
   components:
   - type: Sprite
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
     layers:
-    - state: default
-    # Moffstation - Start - New ID Cards
-    - state: stripe_top
-      color: &color-default-top "#743e13"
-    # Moffstation - End - New ID Cards
-    - sprite: &icon-rsi Interface/Misc/job_icons.rsi
-      offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
-      state: NoId
+    - state: cardboard
+  - type: Clothing
+    slots:
+    - idcard
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
+  - type: Item
+    size: Small
+    heldPrefix: default
+    storedRotation: -90
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - WhitelistChameleonIdCard
+  - type: StealTarget
+    stealGroup: IDCard
