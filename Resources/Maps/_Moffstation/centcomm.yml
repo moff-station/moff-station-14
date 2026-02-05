@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 268.0.0
+  engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 12/24/2025 22:29:21
+  time: 02/05/2026 19:10:39
   entityCount: 12833
 maps: []
 grids:
@@ -5743,6 +5743,9 @@ entities:
     - type: NavMap
     - type: BecomesStation
       id: centcomm
+    - type: TileHistory
+      chunkHistory: {}
+    - type: ExplosionAirtightGrid
 - proto: ActionToggleLight
   entities:
   - uid: 7336
@@ -7435,7 +7438,7 @@ entities:
       pos: 44.5,74.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -139129.31
+      secondsUntilStateChange: -139244.27
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -7624,6 +7627,8 @@ entities:
     - type: Transform
       pos: 26.5,73.5
       parent: 1
+- proto: AirlockResearchDirectorLocked
+  entities:
   - uid: 1662
     components:
     - type: Transform
@@ -28623,8 +28628,8 @@ entities:
     - type: Transform
       parent: 3699
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingEyesGlassesChemical
@@ -28705,8 +28710,8 @@ entities:
     - type: Transform
       parent: 3699
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHatBeretEngineering
@@ -28716,8 +28721,8 @@ entities:
     - type: Transform
       parent: 1772
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHatBeretSecurity
@@ -28748,8 +28753,8 @@ entities:
     - type: Transform
       parent: 7616
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHatCentcomcap
@@ -28759,8 +28764,8 @@ entities:
     - type: Transform
       parent: 9516
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHatChef
@@ -28828,8 +28833,8 @@ entities:
     - type: Transform
       parent: 10603
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHatHosWestern
@@ -28839,8 +28844,8 @@ entities:
     - type: Transform
       parent: 7978
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHatParamedicsoft
@@ -28857,8 +28862,8 @@ entities:
     - type: Transform
       parent: 7602
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHatSecsoft
@@ -28875,8 +28880,8 @@ entities:
     - type: Transform
       parent: 1736
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: Physics
       canCollide: False
 - proto: ClothingHeadHelmetPodWars
@@ -28998,8 +29003,8 @@ entities:
     - type: Transform
       parent: 7616
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckCloakCe
@@ -29009,8 +29014,8 @@ entities:
     - type: Transform
       parent: 1772
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckCloakCentcom
@@ -29020,8 +29025,8 @@ entities:
     - type: Transform
       parent: 9516
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckCloakHop
@@ -29031,8 +29036,8 @@ entities:
     - type: Transform
       parent: 10603
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckCloakHos
@@ -29042,8 +29047,8 @@ entities:
     - type: Transform
       parent: 7978
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckCloakQm
@@ -29053,8 +29058,8 @@ entities:
     - type: Transform
       parent: 1736
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckCloakRd
@@ -29064,8 +29069,8 @@ entities:
     - type: Transform
       parent: 7602
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckLesbianPin
@@ -61861,6 +61866,23 @@ entities:
     - type: Transform
       pos: 10.55397,37.50483
       parent: 1
+- proto: PlushieSpawner50
+  entities:
+  - uid: 3146
+    components:
+    - type: Transform
+      pos: 49.5,69.5
+      parent: 1
+  - uid: 5536
+    components:
+    - type: Transform
+      pos: 52.5,45.5
+      parent: 1
+  - uid: 11307
+    components:
+    - type: Transform
+      pos: 49.5,73.5
+      parent: 1
 - proto: PlushieVox
   entities:
   - uid: 6707
@@ -74415,23 +74437,6 @@ entities:
     missingComponents:
     - SecretStash
     - ToolOpenable
-- proto: ToySpawner
-  entities:
-  - uid: 3146
-    components:
-    - type: Transform
-      pos: 49.5,69.5
-      parent: 1
-  - uid: 5536
-    components:
-    - type: Transform
-      pos: 52.5,45.5
-      parent: 1
-  - uid: 11307
-    components:
-    - type: Transform
-      pos: 49.5,73.5
-      parent: 1
 - proto: TrashBananaPeel
   entities:
   - uid: 12595
