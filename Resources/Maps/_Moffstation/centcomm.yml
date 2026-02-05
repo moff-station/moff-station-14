@@ -4,8 +4,8 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 02/05/2026 19:22:01
-  entityCount: 12844
+  time: 02/05/2026 19:37:23
+  entityCount: 12845
 maps: []
 grids:
 - 1
@@ -1928,6 +1928,11 @@ entities:
             4209: 93,47
             4212: 87,51
         - node:
+            color: '#808080FF'
+            id: FullTileOverlayGreyscale
+          decals:
+            5276: 48,43
+        - node:
             color: '#D4D4D496'
             id: FullTileOverlayGreyscale
           decals:
@@ -2238,6 +2243,11 @@ entities:
             1919: 60,28
             1920: 59,28
         - node:
+            color: '#808080FF'
+            id: HalfTileOverlayGreyscale
+          decals:
+            5282: 47,43
+        - node:
             color: '#9FED5896'
             id: HalfTileOverlayGreyscale
           decals:
@@ -2374,6 +2384,12 @@ entities:
             1917: 61,30
             1918: 61,29
         - node:
+            color: '#808080FF'
+            id: HalfTileOverlayGreyscale270
+          decals:
+            5279: 46,41
+            5280: 46,42
+        - node:
             color: '#9FED5896'
             id: HalfTileOverlayGreyscale270
           decals:
@@ -2434,6 +2450,12 @@ entities:
             3842: 63,26
             3843: 63,25
             3847: 62,26
+        - node:
+            color: '#808080FF'
+            id: HalfTileOverlayGreyscale90
+          decals:
+            5277: 48,42
+            5278: 48,41
         - node:
             color: '#D4D4D496'
             id: HalfTileOverlayGreyscale90
@@ -2963,6 +2985,11 @@ entities:
           decals:
             660: 68,17
         - node:
+            color: '#808080FF'
+            id: QuarterTileOverlayGreyscale
+          decals:
+            5284: 48,42
+        - node:
             color: '#9FED5896'
             id: QuarterTileOverlayGreyscale
           decals:
@@ -3202,6 +3229,11 @@ entities:
             3299: 56,38
             3300: 56,37
         - node:
+            color: '#808080FF'
+            id: QuarterTileOverlayGreyscale180
+          decals:
+            5283: 47,43
+        - node:
             color: '#9FED5896'
             id: QuarterTileOverlayGreyscale180
           decals:
@@ -3308,7 +3340,6 @@ entities:
             3613: 51,6
             3614: 50,6
             3619: 50,35
-            3625: 44,38
             3626: 45,38
             3627: 46,38
             3628: 47,38
@@ -3751,6 +3782,11 @@ entities:
             id: ThreeQuarterTileOverlayGreyscale
           decals:
             1760: 64,26
+        - node:
+            color: '#808080FF'
+            id: ThreeQuarterTileOverlayGreyscale
+          decals:
+            5281: 46,43
         - node:
             color: '#A4610696'
             id: ThreeQuarterTileOverlayGreyscale
@@ -7438,7 +7474,7 @@ entities:
       pos: 44.5,74.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -139920.06
+      secondsUntilStateChange: -140838.1
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -30533,20 +30569,11 @@ entities:
     - type: Transform
       pos: 27.5,65.5
       parent: 1
-  - uid: 1840
+  - uid: 4199
     components:
     - type: Transform
-      pos: 46.5,41.5
-      parent: 1
-  - uid: 2572
-    components:
-    - type: Transform
-      pos: 47.5,41.5
-      parent: 1
-  - uid: 2685
-    components:
-    - type: Transform
-      pos: 48.5,41.5
+      rot: 1.5707963267948966 rad
+      pos: 48.5,43.5
       parent: 1
   - uid: 4283
     components:
@@ -36627,7 +36654,7 @@ entities:
       parent: 1
 - proto: ExosuitFabricator
   entities:
-  - uid: 4421
+  - uid: 2572
     components:
     - type: Transform
       pos: 37.5,58.5
@@ -60516,6 +60543,13 @@ entities:
       parent: 1
 - proto: MirrorModern
   entities:
+  - uid: 2018
+    components:
+    - type: Transform
+      pos: 48.5,44.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 2678
     components:
     - type: Transform
@@ -70228,6 +70262,12 @@ entities:
       parent: 1
 - proto: Stool
   entities:
+  - uid: 1840
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 48.5,43.5
+      parent: 1
   - uid: 2543
     components:
     - type: Transform
@@ -75164,6 +75204,11 @@ entities:
     - type: Transform
       pos: 18.5,30.5
       parent: 1
+  - uid: 12845
+    components:
+    - type: Transform
+      pos: 48.5,41.5
+      parent: 1
 - proto: VendingMachineRoboDrobe
   entities:
   - uid: 10559
@@ -75239,17 +75284,17 @@ entities:
     - type: Transform
       pos: 18.5,28.5
       parent: 1
-  - uid: 4199
+  - uid: 7807
     components:
     - type: Transform
-      pos: 47.5,43.5
+      pos: 46.5,42.5
       parent: 1
 - proto: VendingMachineWinter
   entities:
-  - uid: 2018
+  - uid: 1911
     components:
     - type: Transform
-      pos: 48.5,43.5
+      pos: 46.5,41.5
       parent: 1
 - proto: ViolinInstrument
   entities:
@@ -84487,6 +84532,20 @@ entities:
     - type: Transform
       pos: 76.5,68.5
       parent: 1
+- proto: WindowFrostedDirectional
+  entities:
+  - uid: 2685
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 48.5,42.5
+      parent: 1
+  - uid: 4421
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 48.5,43.5
+      parent: 1
 - proto: WindowReinforcedDirectional
   entities:
   - uid: 408
@@ -84553,11 +84612,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 81.5,74.5
-      parent: 1
-  - uid: 1911
-    components:
-    - type: Transform
-      pos: 48.5,41.5
       parent: 1
   - uid: 3034
     components:
@@ -84634,11 +84688,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 44.5,63.5
-      parent: 1
-  - uid: 7807
-    components:
-    - type: Transform
-      pos: 46.5,41.5
       parent: 1
   - uid: 7998
     components:
