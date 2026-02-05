@@ -6,13 +6,13 @@
   description: Nanotrasen so great, id card not required.
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi
     layers:
     - state: cardboard
   - type: Clothing
     slots:
     - idcard
-    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi
   - type: Item
     size: Small
     heldPrefix: default
