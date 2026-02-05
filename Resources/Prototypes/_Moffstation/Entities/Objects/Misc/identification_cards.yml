@@ -1,0 +1,15 @@
+- type: entity
+  parent: IDCardStandard
+  id: CardboardIDCard
+  name: passenger ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    # Moffstation - Start - New ID Cards
+    - state: stripe_top
+      color: &color-default-top "#743e13"
+    # Moffstation - End - New ID Cards
+    - sprite: &icon-rsi Interface/Misc/job_icons.rsi
+      offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
+      state: Passenger

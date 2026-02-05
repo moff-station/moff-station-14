@@ -1,0 +1,19 @@
+- type: antag
+  id: Stowaway
+  name: roles-antag-stowaway-name
+  antagonist: false
+  setPreference: true
+  objective: roles-antag-pirate-captain-objective
+
+- type: startingGear
+  id: StowawayGear
+  equipment:
+    jumpsuit: ClothingUniformRandomStandard
+    back: ClothingBackpack
+    shoes: ClothingShoesColorBlack
+    mask: ClothingMaskGas
+    id: CardboardIDCard
+  storage:
+    back:
+    - FoodSnackMREBrownie
+    - DrinkWaterBottleFull
