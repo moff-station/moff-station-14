@@ -1,6 +1,7 @@
 - type: marking
   id: TP14MarkingsHumanEarsAnimalFluffy
   bodyPart: HeadTop
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -19,6 +20,7 @@
 - type: marking
   id: TP14MarkingsHumanEarsAnimalFolded
   bodyPart: HeadTop
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -35,6 +37,7 @@
 - type: marking
   id: TP14MarkingsHumanEarsAnimalPointed
   bodyPart: HeadTop
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -53,6 +56,7 @@
 - type: marking
   id: TP14MarkingsHumanEarsAnimalRounded
   bodyPart: HeadTop
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -71,6 +75,7 @@
 - type: marking
   id: TP14MarkingsHumanEarsAnimalSemiFolded
   bodyPart: HeadTop
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:

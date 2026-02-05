@@ -1,6 +1,7 @@
 - type: marking
   id: TP14MarkingsHumanTailDeer
   bodyPart: Tail
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -18,6 +19,7 @@
 - type: marking
   id: TP14MarkingsHumanTailFox
   bodyPart: Tail
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -36,6 +38,7 @@
 - type: marking
   id: TP14MarkingsHumanTailLion
   bodyPart: Tail
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -54,6 +57,7 @@
 - type: marking
   id: TP14MarkingsHumanTailReptile
   bodyPart: Tail
+  groupWhitelist: [Human, Dwarf]
   sprites:
   - sprite: _TP/Mobs/Customization/Markings/Humans/tails.rsi
     state: tail_reptile
@@ -61,6 +65,7 @@
 - type: marking
   id: TP14MarkingsHumanTailRounded
   bodyPart: Tail
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -77,6 +82,7 @@
 - type: marking
   id: TP14MarkingsHumanTailRoundedLeopard
   bodyPart: Tail
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
@@ -95,6 +101,7 @@
 - type: marking
   id: TP14MarkingsHumanTailRoundedStripes
   bodyPart: Tail
+  groupWhitelist: [Human, Dwarf]
   coloring:
     default:
       type:
