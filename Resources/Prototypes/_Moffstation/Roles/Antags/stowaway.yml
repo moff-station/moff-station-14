@@ -17,3 +17,22 @@
     back:
     - FoodSnackMREBrownie
     - DrinkWaterBottleFull
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostStowaway
+  name: ghost role spawn point
+  suffix: stowaway
+  components:
+  - type: GhostRole
+    name: roles-antag-stowaway-name
+    description: roles-antag-stowaway-desc
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Clothing/Mask/gas.rsi
+      state: icon

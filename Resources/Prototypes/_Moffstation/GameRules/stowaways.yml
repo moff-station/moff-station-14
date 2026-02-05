@@ -13,6 +13,7 @@
     useWeights: false
     definitions:
     - prefRoles: [ Stowaway ]
+      spawnerPrototype: SpawnPointGhostStowaway
       min: 1
       max: 2
       playerRatio: 20
