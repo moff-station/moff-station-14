@@ -4,8 +4,8 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 02/05/2026 19:37:23
-  entityCount: 12845
+  time: 02/05/2026 19:42:50
+  entityCount: 12846
 maps: []
 grids:
 - 1
@@ -7474,7 +7474,7 @@ entities:
       pos: 44.5,74.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -140838.1
+      secondsUntilStateChange: -141159.98
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -30569,17 +30569,17 @@ entities:
     - type: Transform
       pos: 27.5,65.5
       parent: 1
-  - uid: 4199
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 48.5,43.5
-      parent: 1
   - uid: 4283
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 73.5,47.5
+      parent: 1
+  - uid: 7807
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 48.5,43.5
       parent: 1
   - uid: 8565
     components:
@@ -36654,10 +36654,10 @@ entities:
       parent: 1
 - proto: ExosuitFabricator
   entities:
-  - uid: 2572
+  - uid: 4199
     components:
     - type: Transform
-      pos: 37.5,58.5
+      pos: 37.5,54.5
       parent: 1
 - proto: ExplosivesSignMed
   entities:
@@ -40091,10 +40091,10 @@ entities:
       color: '#FF1212FF'
 - proto: GasPipeFourway
   entities:
-  - uid: 12032
+  - uid: 2685
     components:
     - type: Transform
-      pos: 37.5,55.5
+      pos: 37.5,57.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
@@ -51586,6 +51586,14 @@ entities:
       color: '#FF1212FF'
 - proto: GasPipeTJunction
   entities:
+  - uid: 2572
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 37.5,55.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0335FCFF'
   - uid: 3664
     components:
     - type: Transform
@@ -51641,13 +51649,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#FF1212FF'
-  - uid: 12155
-    components:
-    - type: Transform
-      pos: 37.5,57.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0335FCFF'
 - proto: GasPipeTJunctionAlt1
   entities:
   - uid: 2021
@@ -53178,10 +53179,18 @@ entities:
       parent: 1
 - proto: GasThermoMachineHellfireFreezer
   entities:
-  - uid: 1909
+  - uid: 2018
     components:
     - type: Transform
-      pos: 37.5,54.5
+      pos: 37.5,58.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0335FCFF'
+  - uid: 12846
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 33.5,54.5
       parent: 1
 - proto: GasValve
   entities:
@@ -60543,7 +60552,7 @@ entities:
       parent: 1
 - proto: MirrorModern
   entities:
-  - uid: 2018
+  - uid: 1911
     components:
     - type: Transform
       pos: 48.5,44.5
@@ -75284,14 +75293,14 @@ entities:
     - type: Transform
       pos: 18.5,28.5
       parent: 1
-  - uid: 7807
+  - uid: 12155
     components:
     - type: Transform
       pos: 46.5,42.5
       parent: 1
 - proto: VendingMachineWinter
   entities:
-  - uid: 1911
+  - uid: 1909
     components:
     - type: Transform
       pos: 46.5,41.5
@@ -84534,13 +84543,13 @@ entities:
       parent: 1
 - proto: WindowFrostedDirectional
   entities:
-  - uid: 2685
+  - uid: 4421
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 48.5,42.5
       parent: 1
-  - uid: 4421
+  - uid: 12032
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
