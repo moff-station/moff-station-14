@@ -310,7 +310,7 @@
   - type: PointLight
     radius: 7
     energy: 3
-    color: Khaki #Moffstation
+    color: sandybrown #Moffstation
   - type: Tag
     tags:
     - CorgiWearable
@@ -381,16 +381,16 @@
 
 #Maxim Hardsuit
 - type: entity
-  parent: ClothingHeadHardsuitBase
+  parent: [ ClothingHeadHelmetHardsuitSpatio ] # Moffstation
   id: ClothingHeadHelmetHardsuitMaxim
   categories: [ HideSpawnMenu ]
   name: salvager maxim helmet
   description: A predication of decay washes over your mind.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/maxim.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/maxim.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hardsuits/maxim.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/maxim.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
@@ -401,6 +401,10 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: PointLight
+    radius: 5
+    energy: 2
+    color: plum #Moffstation
 
 #Security Hardsuit
 - type: entity

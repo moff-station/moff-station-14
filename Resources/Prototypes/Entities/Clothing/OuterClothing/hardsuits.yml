@@ -199,15 +199,15 @@
   description: Fire. Heat. These things forge great weapons, they also forge great salvagers.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/maxim.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/maxim.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/maxim.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/maxim.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
   - type: ClothingSpeedModifier
-    walkModifier: 1.0
-    sprintModifier: 1.0
+    walkModifier: 0.8 # Moffstation
+    sprintModifier: 0.8 # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -216,9 +216,6 @@
         Piercing: 0.5
         Heat: 0.3
         Radiation: 0.1
-  - type: ClothingSpeedModifier # Moffstation
-    walkModifier: 0.8
-    sprintModifier: 0.8 # Moffstation
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: TemperatureProtection
