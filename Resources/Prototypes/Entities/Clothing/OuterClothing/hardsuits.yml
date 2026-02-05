@@ -122,9 +122,9 @@
   description: A special suit that protects against hazardous, low pressure environments. Has reinforced plating for wildlife encounters.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/salvage.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/salvage.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/salvage.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/salvage.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
@@ -147,7 +147,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitSalvage
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation - I HATE CORGI SPRITES
     - Hardsuit
     - WhitelistChameleon
 
@@ -216,6 +216,9 @@
         Piercing: 0.5
         Heat: 0.3
         Radiation: 0.1
+  - type: ClothingSpeedModifier # Moffstation
+    walkModifier: 0.8
+    sprintModifier: 0.8 # Moffstation
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: TemperatureProtection
@@ -513,9 +516,9 @@
   categories: [ DoNotMap ]
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/luxury.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/luxury.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/luxury.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/luxury.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
