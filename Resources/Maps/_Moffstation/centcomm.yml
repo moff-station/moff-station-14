@@ -4,8 +4,8 @@ meta:
   engineVersion: 271.2.0
   forkId: ""
   forkVersion: ""
-  time: 02/05/2026 19:51:04
-  entityCount: 12849
+  time: 02/05/2026 20:32:21
+  entityCount: 12848
 maps: []
 grids:
 - 1
@@ -7474,7 +7474,7 @@ entities:
       pos: 44.5,74.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -141649.9
+      secondsUntilStateChange: -143435.23
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -53210,12 +53210,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0335FCFF'
-  - uid: 12845
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 33.5,54.5
-      parent: 1
 - proto: GasValve
   entities:
   - uid: 11231
