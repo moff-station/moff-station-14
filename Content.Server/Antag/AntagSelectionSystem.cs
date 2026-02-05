@@ -361,7 +361,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
     private void OnRoundEnd(RoundRestartCleanupEvent args)
     {
-        _antagWeight.Save();
+        _ = _antagWeight.Save();
     }
     // Moffstation - End
 
@@ -633,7 +633,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (_arrivals.IsOnArrivals((entity.Value, null)))
             return false;
 
-        if (!def.AllowNonHumans && !HasComp<HumanoidAppearanceComponent>(entity))
+        if (!def.AllowNonHumans && !HasComp<HumanoidProfileComponent>(entity))
             return false;
 
         if (def.Whitelist != null)

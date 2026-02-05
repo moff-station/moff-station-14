@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/08/2026 19:12:27
-  entityCount: 2214
+  time: 01/22/2026 18:52:27
+  entityCount: 2213
 maps: []
 grids:
 - 1
@@ -11877,13 +11877,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 17.5,2.5
-      parent: 1
-- proto: SpawnMobKoboldJokejoke
-  entities:
-  - uid: 2197
-    components:
-    - type: Transform
-      pos: 13.5,6.5
       parent: 1
 - proto: SpawnMobSpaceSpider
   entities:
