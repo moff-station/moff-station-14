@@ -33,8 +33,8 @@ public sealed class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomSpawnComp
     {
         if (ent.Comp.Coords is not { } coords)
         {
-
-            TryFindRandomTile(out _, out _, out _, out coords);
+            if (!TryFindRandomTile(out _, out _, out _, out coords))
+                return;
         }
 
         args.Coordinates.Add(_transform.ToMapCoordinates(coords));
