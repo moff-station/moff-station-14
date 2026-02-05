@@ -56,10 +56,10 @@
     factions:
     - Passive
 
-  - type: entity
-    id: MobWildHuman
-    parent: [ MobHuman, MobWildHumanoid ]
+- type: entity
+  id: MobWildHuman
+  parent: [ MobHuman, MobWildHumanoid ]
 
-  - type: entity
-    id: MobWildReptilian
-    parent: [ MobReptilian, MobWildHumanoid ]
+- type: entity
+  id: MobWildReptilian
+  parent: [ MobReptilian, MobWildHumanoid ]
