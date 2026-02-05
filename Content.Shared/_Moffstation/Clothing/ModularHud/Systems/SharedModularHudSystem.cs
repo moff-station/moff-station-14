@@ -61,12 +61,20 @@ public abstract partial class SharedModularHudSystem : EntitySystem
     [Dependency] private readonly SharedToolSystem _tool = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
-
-    /// This list specifies the layers and (by implicit ordering) precedence for lens visuals. That is to say, the
-    /// highest priority lens color will apply to `Lens`, then the next highest will apply to `LensAccentMajor`, and so on.
-    private static readonly List<ModularHudVisualKeys>
+    /// The lists contained here specify the layers and (by implicit ordering) precedence for each visual category. For
+    /// example, the highest priority lens color will apply to `Lens`, then the next highest will apply to
+    /// `LensAccentMajor`, and so on.
+    /// Presently, this only really matters for lens colors, but it simplifies the logic to treat all the categories the
+    /// same.
+    private static readonly Dictionary<ModularHudVisuals, List<ModularHudVisualKeys>> VisualsLayersToKeys = new()
+    {
         // ReSharper disable once UseCollectionExpression // Whatever the underlying thing that enables collection expressions for statics is is not whitelisted in Robust, so fuck me, I guess.
-        LensVisualKeys = new() { Lens, LensAccentMajor, LensAccentMinor };
+        [ModularHudVisuals.Lens] = new List<ModularHudVisualKeys> { Lens, LensAccentMajor, LensAccentMinor },
+        // ReSharper disable once UseCollectionExpression
+        [ModularHudVisuals.Accent] = new List<ModularHudVisualKeys> { Accent },
+        // ReSharper disable once UseCollectionExpression
+        [ModularHudVisuals.Specular] = new List<ModularHudVisualKeys> { Specular },
+    };
 
     public override void Initialize()
     {
@@ -427,21 +435,30 @@ public abstract partial class SharedModularHudSystem : EntitySystem
             _appearance.SetData(entity, key, ModularHudVisualData.Invisible, appearance);
         }
 
-        foreach (var (layer, data) in visuals)
+        foreach (var (visualsLayer, prioritizedColors) in visuals.AsEnumerable())
         {
-            // Special handling for lens layers since there're three.
-            if (layer == ModularHudVisuals.Lens && data.Count > 1)
+            var prioritizedColorsAndKeys = prioritizedColors.Zip(VisualsLayersToKeys[visualsLayer]).ToList();
+
+            // If there are no colors from modules for this layer, use the default color from the HUD.
+            if (prioritizedColorsAndKeys.Count == 0)
             {
-                foreach (var ((color, _), key) in data.Zip(LensVisualKeys))
-                {
-                    _appearance.SetData(entity, key, new ModularHudVisualData(color), appearance);
-                }
+                _appearance.SetData(
+                    entity,
+                    VisualsLayersToKeys[visualsLayer].First(),
+                    new ModularHudVisualData(entity.Comp2.DefaultVisuals[visualsLayer]),
+                    appearance
+                );
+                continue;
             }
-            else
+
+            // If the highest priority color prevents other colors from applying, take only that color.
+            var prioritizedColorsAndKeysWithPrevention = prioritizedColorsAndKeys.First().First.PreventsOtherColors
+                ? prioritizedColorsAndKeys.Take(1)
+                : prioritizedColorsAndKeys;
+
+            foreach (var (mColor, key) in prioritizedColorsAndKeysWithPrevention)
             {
-                // Other layers, or when there's only one lens color
-                var color = data.TakeOrNull()?.Color ?? entity.Comp2.DefaultVisuals[layer];
-                _appearance.SetData(entity, VisualsLayerToKey(layer), new ModularHudVisualData(color), appearance);
+                _appearance.SetData(entity, key, new ModularHudVisualData(mColor.Color), appearance);
             }
         }
 
@@ -456,14 +473,6 @@ public abstract partial class SharedModularHudSystem : EntitySystem
             _appearance.RemoveData(entity, Frame, appearance);
         }
     }
-
-    private ModularHudVisualKeys VisualsLayerToKey(ModularHudVisuals layer) => layer switch
-    {
-        ModularHudVisuals.Accent => Accent,
-        ModularHudVisuals.Specular => Specular,
-        ModularHudVisuals.Lens => Lens,
-        _ => this.Unreachable<ModularHudVisualKeys>($"Unknown {nameof(ModularHudVisualKeys)} value: {layer}"),
-    };
 
     /// This doafter event is raised when the doafter to remove the HUD's modules is complete.
     [Serializable, NetSerializable]

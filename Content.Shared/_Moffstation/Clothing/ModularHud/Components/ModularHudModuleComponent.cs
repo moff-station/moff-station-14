@@ -31,8 +31,9 @@ public sealed partial class ModularHudModuleComponent : Component
     /// A color in a <see cref="ModularHudModuleComponent"/>'s visuals.
     /// <param name="Color">The actual color</param>
     /// <param name="Priority">The color's priority. This allows for multiple modules to specify colors for the same layer, though only the highest priority color will be shown.</param>
+    /// <param name="PreventsOtherColors">If true, and is highest priority, prevents other modules' colors from affecting this layer.</param>
     [DataRecord, Serializable, NetSerializable]
-    public readonly partial record struct ModuleColor(Color Color, int Priority = 0)
+    public readonly partial record struct ModuleColor(Color Color, int Priority = 0, bool PreventsOtherColors = false)
         : IComparable<ModuleColor>
     {
         /// Implementation of <see cref="IComparable"/>, just defers to priorities. This is needed to use a priority queue

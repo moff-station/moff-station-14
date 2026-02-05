@@ -16,6 +16,7 @@
     - state: icon-lens-accent-major
       map: [ "enum.ModularHudVisualKeys.LensAccentMajor" ]
     - state: icon-frame
+      map: [ "enum.ModularHudVisualKeys.Frame" ]
     - state: icon-accent
       map: [ "enum.ModularHudVisualKeys.Accent" ]
   - type: Item
@@ -229,6 +230,9 @@
     - state: hop_label
   - type: ModularHudModule
     visuals:
+      lens:
+        color: CornflowerBlue
+        priority: 50
       accent:
         color: Goldenrod
         priority: 50
@@ -264,9 +268,9 @@
   - type: Sprite
     layers:
     - state: base
-      color: "#704214"
+      color: "#909090"
     - state: stripe
-      color: "#F5F5DC"
+      color: Red
     - state: contacts
     - state: common_label
   - type: ModularHudModule
@@ -274,7 +278,11 @@
     - *fulleyereq
     visuals:
       lens:
-        color: Tan
+        color: "#808080"
+        priority: 10001 # Because of memes, this is critically important to have as the highest priority.
+        preventsOtherColors: true # ... and the only color.
+      specular:
+        color: "#FFF0F0"
         priority: 10001 # Because of memes, this is critically important to have as the highest priority.
   - type: NoirOverlay
 
@@ -409,6 +417,6 @@
   - type: ModularHudModule
     visuals:
       lens:
-        color: CornflowerBlue
+        color: "#FFBF00"
         priority: 70
   - type: ShowThirstIcons
