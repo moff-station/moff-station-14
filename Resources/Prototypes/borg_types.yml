@@ -105,6 +105,18 @@
   - Supply
   - Science
 
+  # Moffstation - Start - Salvage Borg Resprite
+  addComponents:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 3.5
+  footstepCollection:
+    path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+    params:
+      variation: 0.05
+      volume: -10
+  # Moffstation - End
+
   # Visual
   inventoryTemplateId: borgTall
   # Moffstation - Start - Add neck slots and displacements
@@ -116,8 +128,7 @@
           state: neck
   # Moffstation - End
   spritePath: _Moffstation/Mobs/Silicon/Chassis/miner.rsi # Moffstation - Early merge of Borg RSI fix
-  spriteBodyMovementState: borg_moving # Moffstation - Early merge of Borg RSI fix
-
+  # spriteBodyMovementState: miner_moving # Moffstation - Salvage Borg Resprite
   # Pet
   petSuccessString: petting-success-salvage-cyborg
   petFailureString: petting-failure-salvage-cyborg

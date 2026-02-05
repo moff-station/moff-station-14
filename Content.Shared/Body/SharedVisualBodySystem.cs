@@ -1,6 +1,8 @@
 using System.Linq;
+using System.Numerics; // Moffstation
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid;
+using Content.Shared.Sprite; // Moffstation
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -12,6 +14,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly MarkingManager _marking = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedScaleVisualsSystem _scaleVisuals = default!; // Moffstation - Height scaling
 
     public override void Initialize()
     {
@@ -21,6 +24,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<OrganCopyAppearanceEvent>>(OnMarkingsOrganCopyAppearance);
         SubscribeLocalEvent<VisualOrganComponent, BodyRelayedEvent<ApplyOrganProfileDataEvent>>(OnVisualOrganApplyProfile);
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<ApplyOrganMarkingsEvent>>(OnMarkingsOrganApplyMarkings);
+        SubscribeLocalEvent<HumanoidProfileComponent, ApplyOrganProfileDataEvent>(OnApplyOrganProfileData); // Moffstation - Height scaling
 
         InitializeModifiers();
         InitializeInitial();
@@ -119,6 +123,34 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
 
         SetOrganMarkings(ent, other.Markings);
     }
+
+    // Moffstation - Begin - Height Scaling
+    private void OnApplyOrganProfileData(Entity<HumanoidProfileComponent> entity, ref ApplyOrganProfileDataEvent args)
+    {
+        if (args.Base?.Height is not { } height ||
+            !HasComp<VisualBodyComponent>(entity) ||
+            !_prototype.Resolve(entity.Comp.Species, out var species))
+            return;
+
+        // If the height is the default, don't worry about scaling.
+        if (Math.Abs(species.DefaultHeight - height) < 0.001f)
+            return;
+
+        var heightClamped = Math.Clamp(
+            MathF.Round(height, 2),
+            species.MinHeight,
+            species.MaxHeight
+        );
+
+        _scaleVisuals.SetSpriteScale(
+            entity,
+            new Vector2(
+                (species.ScaleHeight ? heightClamped : 1f) * species.ImplicitSpriteScale.X,
+                heightClamped * species.ImplicitSpriteScale.Y
+            )
+        );
+    }
+    // Moffstation - End
 
     private void OnVisualOrganApplyProfile(Entity<VisualOrganComponent> ent, ref BodyRelayedEvent<ApplyOrganProfileDataEvent> args)
     {

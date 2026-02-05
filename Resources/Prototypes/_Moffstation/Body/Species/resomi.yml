@@ -481,7 +481,8 @@
   components:
   - type: VisualOrgan
     data:
-      sprite: Mobs/Customization/eyes.rsi
+      sprite: _Moffstation/Mobs/Customization/eyes.rsi
+      state: resomi
 
 - type: entity
   parent: [ OrganBaseTongue, OrganResomiInternal ]
