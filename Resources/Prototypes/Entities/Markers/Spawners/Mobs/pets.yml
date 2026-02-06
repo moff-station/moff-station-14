@@ -151,7 +151,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobFoxRenault
-  name: Captain's pet Spawner
+  name: Captain's pet Spawner #Moffstation - New Station Pets
   suffix: Captain Pet
   components:
   - type: Sprite
@@ -161,7 +161,7 @@
   - type: ConditionalSpawner
     prototypes:
     - MobFoxRenault
-    - MobJamie
+    - MobJamie #Moffstation - New Station Pets
 
 - type: entity
   parent: MarkerBase
