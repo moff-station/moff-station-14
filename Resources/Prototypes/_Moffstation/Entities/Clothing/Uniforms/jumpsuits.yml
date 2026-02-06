@@ -401,3 +401,26 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi
+
+#Lawyer
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpsuitProsecutorKarmic
+  name: Karmic prosecutor suit
+  description: A stylish piece worn by prosecutors who will win their case no matter the defense...
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorkarmic.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorkarmic.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitProsecutorRed
+  name: red prosecutor suit
+  description: A flashy red suit worn by cutting-edge prosecutors wanting to show their worth.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi
