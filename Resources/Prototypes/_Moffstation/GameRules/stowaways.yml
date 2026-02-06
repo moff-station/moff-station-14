@@ -1,0 +1,25 @@
+- type: entity
+  parent: BaseGameRule
+  id: Stowaways
+  components:
+  - type: GameRule
+    minPlayers: 30
+    cancelPresetOnTooFewPlayers: false
+  - type: AntagRandomSpawn
+  - type: AntagLoadProfileRule
+    preserveName: true
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    useWeights: false
+    definitions:
+    - prefRoles: [ Stowaway ]
+      spawnerPrototype: SpawnPointGhostStowaway
+      min: 1
+      max: 2
+      playerRatio: 20
+      startingGear: StowawayGear
+      roleLoadout:
+      - RoleSurvivalVoxTank # give vox something to breath in case they don't get a copy
+      briefing:
+        text: roles-antag-stowaway-greeting
+        color: Salmon

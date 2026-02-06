@@ -73,6 +73,7 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/dugstation.yml", ["ClothingHeadHatCatEarsValid"]},
+            {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
             // Moffstation - End
         };
 
@@ -132,7 +133,6 @@ namespace Content.IntegrationTests.Tests
             // Moffstation - Start - Our maps
             "Amber",
             "Waterjug",
-            "Tram2",
             "Train",
             "Core",
             "Omega",
@@ -152,6 +152,7 @@ namespace Content.IntegrationTests.Tests
             "Aspid",
             "Elkridge",
             "Wapiti",
+            "Skeld"
             // Moffstation - End
         };
 

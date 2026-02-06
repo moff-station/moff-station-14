@@ -14,7 +14,7 @@
   metamorphicChangeColor: false
   fizziness: 0.2
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -32,13 +32,12 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
+      metabolites:
+        Ethylredoxrazine: 0.5
       effects:
       - !type:SatiateThirst
         factor: 2
-      - !type:AdjustReagent
-        reagent: Ethylredoxrazine
-        amount: 0.25
 
 - type: reagent
   id: PrairieCocktail
@@ -55,11 +54,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
-      effects:
-      - !type:AdjustReagent
-        reagent: Ethylredoxrazine
-        amount: 0.25
-      - !type:AdjustReagent
-        reagent: UncookedAnimalProteins
-        amount: 0.05
+    Digestion:
+      metabolites:
+        Ethylredoxrazine: 0.5
+        UncookedAnimalProteins: 0.1

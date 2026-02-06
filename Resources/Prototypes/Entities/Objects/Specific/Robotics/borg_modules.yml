@@ -547,6 +547,10 @@
     - item: Multitool
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: tool-module }
+  - type: Tag
+    tags:
+    - BorgModuleGeneric
+    - CyborgToolModule
 
 - type: entity
   id: BorgModuleInflatable
@@ -625,6 +629,10 @@
     # Moffstation -End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
+  - type: Tag
+    tags:
+    - BorgModuleCargo
+    - CyborgMiningModule
 
 - type: entity
   id: BorgModuleAdvancedMining
@@ -653,6 +661,10 @@
     # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
+  - type: Tag
+    tags:
+    - BorgModuleCargo
+    - CyborgMiningModule
 
 - type: entity
   id: BorgModuleTraversal
@@ -692,6 +704,10 @@
     - item: RemoteSignallerAdvanced
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-tools-module }
+  - type: Tag
+    tags:
+    - BorgModuleEngineering
+    - CyborgToolModule
 
 - type: entity
   id: BorgModuleConstructionMaterialPlaceholder
@@ -835,6 +851,10 @@
     - item: HoloprojectorBorg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: cleaning-module }
+  - type: Tag
+    tags:
+    - BorgModuleJanitor
+    - CyborgCleaningModule
 
 - type: entity
   id: BorgModuleAdvancedCleaning
@@ -862,6 +882,10 @@
           - FitsInDispenser
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-cleaning-module }
+  - type: Tag
+    tags:
+    - BorgModuleJanitor
+    - CyborgCleaningModule
 
 # medical modules
 - type: entity
@@ -916,6 +940,10 @@
           - Healing
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: treatment-module }
+  - type: Tag
+    tags:
+    - BorgModuleMedical
+    - CyborgTopicalModule
 
 - type: entity
   id: BorgModuleRescue
@@ -1023,6 +1051,10 @@
           - Healing
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-chem-module }
+  - type: Tag
+    tags:
+    - BorgModuleMedical
+    - CyborgTopicalModule
 
 # science modules
 # todo: if science ever gets their own custom robot, add more "sci" modules.
@@ -1321,6 +1353,10 @@
     # Moffstation - End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: clowning-module }
+  - type: Tag
+    tags:
+    - BorgModuleService
+    - CyborgClowningModule
 
 - type: entity
   id: BorgModuleAdvancedClowning
@@ -1341,6 +1377,10 @@
     - item: BikeHornInstrument
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-clowning-module }
+  - type: Tag
+    tags:
+    - BorgModuleService
+    - CyborgClowningModule
 
 #syndicate modules
 - type: entity

@@ -41,7 +41,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
-    weight: 6
+    weight: 0 # Disabled for now - no special treatment for players
     duration: 30
   - type: VentCrittersRule
     entries:
@@ -60,12 +60,160 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
-    weight: 1
+    weight: 2
     duration: 30
   - type: VentCrittersRule
     entries:
     - id: MobWhimperlet
       prob: 0.001
-    specialEntries:
-    - id: MobWhimperlet
+
+- type: entity
+  id: CarpMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 6
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobCarp
+      prob: 0.01
+    - id: MobCarpMagic
+      prob: 0.001
+    - id: MobCarpHolo
+      prob: 0.001
+    - id: MobShark
+      prob: 0.001
+    - id: MobDragonDungeon
+      prob: 0.0001
+
+- type: entity
+  id: SyndiSoliderMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobSyndicateFootsoldierGhostRole
+      prob: 0.0001
+
+- type: entity
+  id: HostileGorillaMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobGorillaHostile
+      prob: 0.005
+
+- type: entity
+  id: SyndyCatMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobCatSyndy
+      prob: 0.0005
+
+- type: entity
+  id: ScurretMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobEmotionalSupportScurret
+      prob: 0.001
+      maxSpawns: 1
+
+- type: entity
+  id: FleshMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobFleshLover
+      prob: 0.01
+    - id: MobFleshGolem
+      prob: 0.01
+    - id: MobFleshClamp
+      prob: 0.01
+    - id: MobFleshJared
+      prob: 0.01
+    - id: MobAbomination
+      prob: 0.01
+
+- type: entity
+  id: ReptileMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobKobold
+      prob: 0.01
+    - id: MobLizard
+      prob: 0.01
+    - id: MobWildReptilian
+      prob: 0.001
+
+- type: entity
+  id: MammalMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 15
+    weight: 2
+    duration: 30
+  - type: VentCrittersRule
+    entries:
+    - id: MobMonkey
+      prob: 0.01
+    - id: MobWildHuman
       prob: 0.001
