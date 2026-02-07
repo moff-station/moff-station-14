@@ -175,15 +175,6 @@
   - type: SiliconLawProvider
     laws: Ninja
 
-- type: entity
-  id: SyndimovCircuitBoard
-  parent: SyndicateSiliconLawboard
-  name: law board (Syndimov)
-  description: An electronics board containing the Syndimov lawset.
-  components:
-  - type: SiliconLawProvider
-    laws: SyndicateStatic
-
 #Admeme Law Boards
 
 - type: entity

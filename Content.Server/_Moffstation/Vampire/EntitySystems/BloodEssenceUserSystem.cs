@@ -4,6 +4,7 @@ using Content.Server.Body.Systems;
 using Content.Server.Body.Components;
 using Content.Shared._Moffstation.Vampire.Components;
 using Content.Shared._Moffstation.Vampire.EntitySystems;
+using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
@@ -20,7 +21,7 @@ namespace Content.Server._Moffstation.Vampire.EntitySystems;
 /// </summary>
 /// <remarks>
 /// Eventually a lot of this functionality could be adapted to instead use the
-/// <see cref="Content.Server.Chemistry.EntitySystems.InjectorSystem.DrawFromBlood"/> method, however that will
+/// <see cref="InjectorSystem.DrawFromBlood"/> method, however that will
 /// require some disparate changes to that system which will be merge-conflict bait for the time being.
 /// If this ever gets upstreamed though it would be best to do it that way.
 /// </remarks>
@@ -46,7 +47,7 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
 	    entity.Deconstruct(out var uid, out var bloodEssenceUser, out var body);
 	    var targetBloodstream = target.Comp;
 
-	    if (!_body.TryGetBodyOrganEntityComps<StomachComponent>((uid, body), out var stomachs))
+	    if (!_body.TryGetOrgansWithComponent<StomachComponent>((uid, body), out var stomachs))
 	        return 0.0f;
 
         var firstStomach = stomachs[0];
@@ -65,7 +66,7 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
         var essenceCollected = 0.0f;
 
         if (HasComp<MobStateComponent>(target)
-            && HasComp<HumanoidAppearanceComponent>(target)
+            && HasComp<HumanoidProfileComponent>(target) // TODO This should probably actually check for like organs or blood or something, but I'm doing a NuBody merge and this is very low priority.
             && !HasComp<BloodEssenceUserComponent>(target))
         {
             // check how much blood is in our temporary solution and subtract it from their BloodEssence component.
