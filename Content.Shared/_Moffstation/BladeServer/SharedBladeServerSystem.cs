@@ -64,6 +64,7 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
 
         SubscribeLocalEvent<BladeServerFrameComponent, InteractUsingEvent>(OnBladeServerFrameInteractUsing);
         SubscribeLocalEvent<BladeServerBoardComponent, ExaminedEvent>(OnBladeServerBoardExamined);
+        SubscribeLocalEvent<BladeServerComponent, AccessibleOverrideEvent>(OnBladeServerAccessibleOverride); // Starlight
     }
 
     private void OnComponentInit(Entity<BladeServerRackComponent> entity, ref ComponentInit args)
@@ -171,6 +172,38 @@ public abstract partial class SharedBladeServerSystem : EntitySystem
     {
         ClearSlots(entity);
     }
+
+    // Starlight Start
+    /// <summary>
+    /// Allow interaction with blade servers that are inside a rack if the user is in range of the rack.
+    /// </summary>
+    private void OnBladeServerAccessibleOverride(Entity<BladeServerComponent> bladeServer, ref AccessibleOverrideEvent args)
+    {
+        // If already handled or already accessible, return
+        if (args.Handled || args.Accessible)
+            return;
+
+        // Check if the blade server (target) is what we're trying to access
+        if (args.Target != bladeServer.Owner)
+            return;
+
+        // Find the rack containing this blade server
+        foreach (var container in _container.GetContainingContainers(bladeServer.Owner))
+        {
+            // Check if the container owner is a blade server rack
+            if (!HasComp<BladeServerRackComponent>(container.Owner))
+                continue;
+
+            // Check if the user is in range of the rack
+            if (_interaction.InRangeUnobstructed(args.User, container.Owner))
+            {
+                args.Accessible = true;
+                args.Handled = true;
+                return;
+            }
+        }
+    }
+    // Starlight End
 
     private void OnEjectPressed(Entity<BladeServerRackComponent> entity, ref BladeServerRackEjectPressedMessage args)
     {
