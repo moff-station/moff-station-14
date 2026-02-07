@@ -42,14 +42,14 @@
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
+    sprite: _Moffstation\PersonalItems\Items\Nox38\Stella-Fischer\stella-case.rsi
     layers:
     - state: closed
       map: ["closeLayer"]
     - state: open
       map: ["openLayer"]
   - type: Item
-    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
+    sprite: _Moffstation\PersonalItems\Items\Nox38\Stella-Fischer\stella-case.rsi
     size: Normal
   - type: Storage
     grid:
