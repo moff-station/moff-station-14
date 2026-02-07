@@ -23,7 +23,7 @@ public sealed partial class StatusEffectsSystem : EntitySystem
     private EntityQuery<StatusEffectContainerComponent> _containerQuery;
     private EntityQuery<StatusEffectComponent> _effectQuery;
 
-    public static HashSet<string> StatusEffectPrototypes = [];
+    public readonly HashSet<string> StatusEffectPrototypes = []; // Moffstation - Early merge
 
     public override void Initialize()
     {
