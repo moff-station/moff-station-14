@@ -50,9 +50,9 @@
   description: A special suit that protects against hazardous, low pressure environments. Has radiation shielding.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/engineering.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/engineering.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/engineering.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/engineering.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.04
     lowPressureMultiplier: 1000
@@ -75,7 +75,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitEngineering
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation
     - Hardsuit
     - WhitelistChameleon
 
@@ -390,7 +390,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitEngineeringWhite
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation
     - Hardsuit
     - WhitelistChameleon
 

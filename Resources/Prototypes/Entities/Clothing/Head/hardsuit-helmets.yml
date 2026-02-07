@@ -98,7 +98,7 @@
   description: An engineering hardsuit helmet designed for working in low-pressure, high radioactive environments.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/engineering.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/engineering.rsi # Moffstation
     layers:
     - state: icon
     - state: icon-unshaded
@@ -124,9 +124,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
+      #head-dog: # Moffstation - Start
+      #- state: equipped-head-light-dog
+      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-light-resomi
@@ -150,10 +150,10 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
+      #head-dog: # Moffstation - Start
+      #- state: equipped-head-dog
+      #- state: equipped-head-unshaded-dog
+      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-resomi
@@ -161,13 +161,15 @@
         shader: unshaded
       # Moffstation - End - Add Hardsuits for Resomi.
   - type: PointLight
-    color: "#ffdbad"
+    color: "DarkKhaki" # Moffstation - Start
+    radius: 5
+    energy: 1 # Moffstation - End
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation
     - WhitelistChameleon
 
 #Spationaut Hardsuit
@@ -523,9 +525,9 @@
         shader: unshaded
       # Moffstation - End - Add Hardsuits for Resomi.
   - type: PointLight
-    color: "SandyBrown"
+    color: "SandyBrown" # Moffstation - Start
     radius: 7
-    energy: 2
+    energy: 2 # Moffstation - End
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
@@ -533,7 +535,7 @@
     reduction: 0.2
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation
     - WhitelistChameleon
 
 #Chief Medical Officer's Hardsuit
