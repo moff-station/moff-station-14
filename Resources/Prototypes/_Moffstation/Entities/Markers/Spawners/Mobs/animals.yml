@@ -7,7 +7,7 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Moffstation/Mobs/Pets/oscar-dog.rsi
+    sprite: _Moffstation/Mobs/Pets/oscar.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: oscar
@@ -76,7 +76,7 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Moffstation/Mobs/Pets/buddy-dog.rsi
+    sprite: _Moffstation/Mobs/Pets/buddy.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: buddy
@@ -149,7 +149,7 @@
     sprite: _Moffstation/Mobs/Pets/nancy.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
-      state: Nancy
+      state: nancy
   - type: Physics
   - type: Fixtures
     fixtures:
@@ -226,7 +226,7 @@
     sprite: _Moffstation/Mobs/Pets/max.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
-      state: Max
+      state: max
   - type: Physics
   - type: Fixtures
     fixtures:
