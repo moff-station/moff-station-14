@@ -34,11 +34,38 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
 
+- type: entity
+  parent: [BaseStorageItem, BaseBagOpenClose]
+  id: PersonalItemStellaPistolCase
+  name: gun case
+  description: A slim, portable gun case intended to protect its contents inside.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
+    layers:
+    - state: closed
+      map: ["closeLayer"]
+    - state: open
+      map: ["openLayer"]
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
+    size: Normal
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PersonalItemStellaPistol
+        amount: 1
+
 - type: loadout
   id: PersonalItemStellaPistol
   storage:
     back:
-    - PersonalItemStellaPistol
+    - PersonalItemStellaPistolCase
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
