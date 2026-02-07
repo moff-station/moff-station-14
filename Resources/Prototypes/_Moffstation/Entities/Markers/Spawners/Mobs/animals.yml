@@ -79,7 +79,7 @@
     sprite: _Moffstation/Mobs/Pets/buddy.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
-      state: buddy
+      state: Buddy
   - type: Physics
   - type: Fixtures
     fixtures:
@@ -103,11 +103,11 @@
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: buddy
+        Base: Buddy
       Critical:
-        Base: buddy-crit
+        Base: Buddy-crit
       Dead:
-        Base: buddy-dead
+        Base: Buddy-dead
   - type: Butcherable
     spawned:
     - id: FoodMeat
