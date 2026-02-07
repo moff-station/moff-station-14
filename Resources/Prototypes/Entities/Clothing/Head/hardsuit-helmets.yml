@@ -460,7 +460,7 @@
   description: Special hardsuit helmet, made for the chief engineer of the station.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hardsuits/engineering-white.rsi
+    sprite: _Moffstation/Clothing/Head/Hardsuits/engineering-white.rsi # Moffstation
     layers:
     - state: icon
     - state: icon-unshaded
@@ -486,9 +486,9 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-light-dog
-        shader: unshaded
+      #head-dog: # Moffstation - Start
+      #- state: equipped-head-light-dog
+      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-light-resomi
@@ -512,10 +512,10 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      head-dog:
-      - state: equipped-head-dog
-      - state: equipped-head-unshaded-dog
-        shader: unshaded
+      #head-dog: # Moffstation - Start
+      #- state: equipped-head-dog
+      #- state: equipped-head-unshaded-dog
+      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-resomi
@@ -523,7 +523,9 @@
         shader: unshaded
       # Moffstation - End - Add Hardsuits for Resomi.
   - type: PointLight
-    color: "#daffad"
+    color: "SandyBrown"
+    radius: 7
+    energy: 2
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000

@@ -363,9 +363,9 @@
   description: A special hardsuit that protects against hazardous, low pressure environments, made for the chief engineer of the station.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/engineering-white.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/engineering-white.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/engineering-white.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/engineering-white.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
