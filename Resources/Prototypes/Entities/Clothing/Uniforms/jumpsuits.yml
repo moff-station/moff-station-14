@@ -277,9 +277,9 @@
   description: Someone who wears this means business.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/detective.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpsuit/detective.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -288,9 +288,9 @@
   description: A hard-boiled private investigator's grey suit, complete with tie clip.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/detective_grey.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective_grey.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpsuit/detective_grey.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective_grey.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -324,11 +324,11 @@
   id: ClothingUniformJumpsuitHoS
   name: head of security's jumpsuit
   description: It's bright red and rather crisp, much like security's victims tend to be.
-  components: # Moffstation - Start - New Security Outfits
+  components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hos.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hos.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hos.rsi # Moffstation - End - New Security Outfits
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hos.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -574,11 +574,11 @@
   id: ClothingUniformJumpsuitSec
   name: security jumpsuit
   description: A jumpsuit made of strong material, providing robust protection.
-  components: # Moffstation - New - New Security Outfits
+  components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_red.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_red.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_red.rsi # Moffstation - End - New Security Outfits
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_red.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: ClothingUniformBase
@@ -598,9 +598,9 @@
   description: A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/security_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_grey.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/security_grey.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_grey.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
@@ -609,20 +609,20 @@
   description: A formal uniform issued to the Nanotrasen Troopers, usually it comes with a car.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/security_trooper.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_trooper.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/security_trooper.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_trooper.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
   id: ClothingUniformJumpsuitWarden
   name: warden's jumpsuit # Moffstation - (New Warden Uniforms)
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
-  components: # Moffstation - Start - New Security Outfits
+  components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/warden.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/warden.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/warden.rsi # Moffstation - End - New Security Outfits
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/warden.rsi # Moffstation - New Security Outfits
 
 - type: entity
   parent: ClothingUniformBase
@@ -1154,9 +1154,9 @@
   description: A sign of skill and prestige within the security department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_officer.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/senior_officer.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_officer.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase

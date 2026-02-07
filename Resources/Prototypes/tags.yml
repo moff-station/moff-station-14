@@ -295,7 +295,7 @@
   id: ChefPilot # Tagged entity can control someone wearing a Chef's hat if inside their hat.
 
 - type: Tag
-  id: ChemDispensable # Storage whitelist: ChemDispenserEmpty, SmartFridge, BorgModuleAdvancedChemical
+  id: ChemDispensable # Storage whitelist: ChemDispenserEmpty, SmartFridge, BorgModuleChemical
 
 - type: Tag
   id: Chicken # Reproductive partner key. MetamorphRecipe: FoodBurgerChicken
@@ -410,6 +410,21 @@
 
 - type: Tag
   id: Creamsicle # Blacklist on BountyFruit
+
+- type: Tag
+  id: CyborgCleaningModule # Borg chassis module requirements: BorgModuleCleaning, BorgModuleAdvancedCleaning
+
+- type: Tag
+  id: CyborgClowningModule # Borg chassis module requirements: BorgModuleClowning, BorgModuleAdvancedClowning
+
+- type: Tag
+  id: CyborgMiningModule # Borg chassis module requirements: BorgModuleMining, BorgModuleAdvancedMining
+
+- type: Tag
+  id: CyborgToolModule # Borg chassis module requirements: BorgModuleTool, BorgModuleAdvancedTool
+
+- type: Tag
+  id: CyborgTopicalModule # Borg chassis module requirements: BorgModuleTopicals, BorgModuleAdvancedTopical
 
 - type: Tag
   id: Crowbar # Storage whitelist: BaseClothingBeltEngineering, ClothingBeltChiefEngineer. ItemMapper: BaseClothingBeltEngineering, ClothingBeltChiefEngineer
@@ -976,6 +991,9 @@
 
 - type: Tag
   id: MothershipModule # Cyborg module category for evil xenoborg core
+
+- type: Tag
+  id: MothershipPinpointerPiece # ConstructionGraph: RepairMothershipPinpointer
 
 - type: Tag
   id: Mouse # CargoBounty: BountyMouse

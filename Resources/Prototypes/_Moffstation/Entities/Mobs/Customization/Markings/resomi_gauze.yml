@@ -2,8 +2,7 @@
 - type: marking
   id: ResomiGauzeBlindfold
   bodyPart: Eyes
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -15,8 +14,7 @@
 - type: marking
   id: ResomiGauzeHead
   bodyPart: Head
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -31,8 +29,7 @@
 - type: marking
   id: ResomiLeftEyePad
   bodyPart: Eyes
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -44,8 +41,7 @@
 - type: marking
   id: ResomiLeftEyePatch
   bodyPart: Eyes
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -57,8 +53,7 @@
 - type: marking
   id: ResomiRightEyePad
   bodyPart: Eyes
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -70,8 +65,7 @@
 - type: marking
   id: ResomiRightEyePatch
   bodyPart: Eyes
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -86,8 +80,7 @@
 - type: marking
   id: ResomiGauzeStomach
   bodyPart: Chest
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -99,8 +92,7 @@
 - type: marking
   id: ResomiGauzeShoulderRight
   bodyPart: Chest
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -112,8 +104,7 @@
 - type: marking
   id: ResomiGauzeShoulderLeft
   bodyPart: Chest
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -128,8 +119,7 @@
 - type: marking
   id: ResomiGauzeLeftArm
   bodyPart: LArm
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -141,8 +131,7 @@
 - type: marking
   id: ResomiGauzeRightArm
   bodyPart: RArm
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -157,8 +146,7 @@
 - type: marking
   id: ResomiGauzeBoxerwrapRight
   bodyPart: RHand
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -170,8 +158,7 @@
 - type: marking
   id: ResomiGauzeBoxerwrapLeft
   bodyPart: LHand
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -186,8 +173,7 @@
 - type: marking
   id: ResomiGauzeLegRight
   bodyPart: RLeg
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -199,8 +185,7 @@
 - type: marking
   id: ResomiGauzeLegLeft
   bodyPart: LLeg
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -215,8 +200,7 @@
 - type: marking
   id: ResomiGauzeFootRight
   bodyPart: RFoot
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
@@ -228,8 +212,7 @@
 - type: marking
   id: ResomiGauzeFootLeft
   bodyPart: LFoot
-  markingCategory: Overlay
-  speciesRestriction: [ Resomi ]
+  groupWhitelist: [ Resomi ]
   coloring:
     default:
       type: null
