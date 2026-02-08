@@ -26,8 +26,6 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
 
-    public event Action<bool>? OnShowAllLoadouts; // Moffstation - Personal Item Filters
-
     public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection)
     {
         RobustXamlLoader.Load(this);
@@ -36,7 +34,6 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         // Moffstation - Personal Item Filters
         ShowAllLoadouts.StateChanged += val => { 
-            OnShowAllLoadouts?.Invoke(val);
             RefreshLoadouts(profile, loadout, session, collection);
         };
         // Moffstation - End
