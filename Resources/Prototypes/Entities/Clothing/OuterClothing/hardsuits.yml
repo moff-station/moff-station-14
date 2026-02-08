@@ -9,9 +9,9 @@
   description: A special suit that protects against hazardous, low pressure environments. Has thermal shielding.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/atmospherics.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/atmospherics.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/atmospherics.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/atmospherics.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
