@@ -34,7 +34,7 @@
     content: An unusual and highly experimental design of the Mk58 from Sunshade Armories, the ERMk-60 intends to improve beyond excellence with a reinforced, heavier furniture. It also features an electronic sight and a laser pointer for pinpoint accuracy. You would question how a security officer managed to get a hold of this sidearm.
 
 - type: entity
-  parent: [BaseStorageItem, BaseBagOpenClose]
+  parent: BasePersonalItemPistolCase
   id: PersonalItemShimmyPistolCase
   name: ERMk-60 gun case
   description: A slim, portable gun case intended to protect its contents inside. the label "ERMk-60" is inscribed on top of the gun case.
@@ -42,18 +42,8 @@
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60case.rsi
-    layers:
-    - state: closed
-      map: ["closeLayer"]
-    - state: open
-      map: ["openLayer"]
   - type: Item
     sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60case.rsi
-    size: Normal
-  - type: Storage
-    grid:
-    - 0,0,1,0
-    - 0,1,0,1
   - type: EntityTableContainerFill
     containers:
       storagebase:

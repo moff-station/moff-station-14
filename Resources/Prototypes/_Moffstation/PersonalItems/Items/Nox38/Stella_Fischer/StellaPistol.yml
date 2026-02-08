@@ -35,26 +35,16 @@
       path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
 
 - type: entity
-  parent: [BaseStorageItem, BaseBagOpenClose]
+  parent: BasePersonalItemPistolCase
   id: PersonalItemStellaPistolCase
-  name: gun case
-  description: A slim, portable gun case intended to protect its contents inside.
+  name: Mk9 case
+  description: A slim, portable gun case intended to protect it's contents. The outside is wrapped in blue tape.
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation\PersonalItems\Items\Nox38\Stella-Fischer\stella-case.rsi
-    layers:
-    - state: closed
-      map: ["closeLayer"]
-    - state: open
-      map: ["openLayer"]
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
   - type: Item
-    sprite: _Moffstation\PersonalItems\Items\Nox38\Stella-Fischer\stella-case.rsi
-    size: Normal
-  - type: Storage
-    grid:
-    - 0,0,1,0
-    - 0,1,0,1
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
   - type: EntityTableContainerFill
     containers:
       storagebase:
