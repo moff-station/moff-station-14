@@ -3,6 +3,7 @@ using Content.Server.Access.Systems;
 using Content.Server._CD.Loadouts;
 using Content.Server.Forensics;
 using Content.Shared.Access.Components;
+using Content.Shared.Clothing;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
@@ -98,7 +99,10 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
 
-        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
+        // Moffstation - Start - If the loadout specifies a name override, use that instead of the profile name for in the record.
+        var loadoutNameOrProfileName = profile.Loadouts.GetValueOrDefault(LoadoutSystem.GetJobPrototype(jobId))?.EntityName ?? profile.Name;
+        CreateGeneralRecord(station, idUid.Value, loadoutNameOrProfileName, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
+        // Moffstation - End
     }
 
 
