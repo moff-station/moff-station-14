@@ -10,10 +10,8 @@ public sealed partial class AnomalySystem
 
     private void OnEmagged(EntityUid uid, AnomalyGeneratorComponent component, ref GotEmaggedEvent args)
     {
-        if (component.CooldownEndTime == TimeSpan.Zero)
-            return;
-
-        if (HasComp<GeneratingAnomalyGeneratorComponent>(uid))
+        if (component.CooldownEndTime < Timing.CurTime ||
+            HasComp<GeneratingAnomalyGeneratorComponent>(uid))
             return;
 
         component.CooldownEndTime = TimeSpan.Zero;

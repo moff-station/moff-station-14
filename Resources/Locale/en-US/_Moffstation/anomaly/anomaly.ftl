@@ -1,2 +1,2 @@
-anomaly-generator-emagged = {THE($name)} emits a sudden burst of steam.
+anomaly-generator-emagged = {CAPITALIZE(THE($name))} emits a hungering wail.
 
