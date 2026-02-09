@@ -6,7 +6,7 @@ namespace Content.Server.Anomaly;
 
 public sealed partial class AnomalySystem
 {
-    [Dependency] private readonly PopupSystem _popup = default!; // Moffstation
+    [Dependency] private readonly PopupSystem _popup = default!;
 
     private void OnEmagged(EntityUid uid, AnomalyGeneratorComponent component, ref GotEmaggedEvent args)
     {
