@@ -1,13 +1,4 @@
 ﻿Entries:
-- author: Nox38, BurgerMoth
-  changes:
-  - message: Added descriptions to .20 ammo boxes, magazines, and cartridges.
-    type: Add
-  - message: Changed the descriptions of the Lecter, Estoc DMR, and M90GL.
-    type: Tweak
-  id: 9000
-  time: '2025-09-24T21:48:34.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/36496
 - author: Keer-Sar
   changes:
   - message: Added two new markings for lizard snouts, "Lizard Visage (Round)" & "Lizard
@@ -3999,3 +3990,11 @@
   id: 9506
   time: '2026-02-08T04:38:09.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/42847
+- author: TriviaSolari
+  changes:
+  - message: RCDs can once again be used to construct hull tiles in space without
+      requiring lattices first
+    type: Fix
+  id: 9507
+  time: '2026-02-09T01:12:17.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42740
