@@ -95,13 +95,6 @@
   name: NTCF fighter pilot
   suffix: ERTRole, Fleet
   components:
-  - type: GhostRole
-    name: ghost-role-information-ntcf-pilot-name
-    description: ghost-role-information-ntcf-pilot-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: NTCFPilot
   - type: RandomHumanoidSpawner
     settings: NTCFPilot
   - type: Sprite
@@ -109,11 +102,19 @@
     state: ntcfpilot
 
 - type: randomHumanoidSettings
+  parent: EventHumanoidCentcomm
   id: NTCFPilot
   components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-pilot-name
+    description: ghost-role-information-ntcf-pilot-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFPilot
   - type: Loadout
     prototypes: [ NTCFPilotGear ]
-    roleLoadout: [ RoleSurvivalExtended ] # Replace with dedicated ERT survival box when ERT Loadouts 3/3 is merged.
+    roleLoadout: [ RoleSurvivalMilitaryDouble ]
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
@@ -124,13 +125,6 @@
   name: NTCF flight engineer
   suffix: ERTRole, Fleet
   components:
-  - type: GhostRole
-    name: ghost-role-information-ntcf-engineer-name
-    description: ghost-role-information-ntcf-engineer-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: NTCFEngineer
   - type: RandomHumanoidSpawner
     settings: NTCFEngineer
   - type: Sprite
@@ -141,9 +135,16 @@
   parent: EventHumanoidCentcomm
   id: NTCFEngineer
   components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-engineer-name
+    description: ghost-role-information-ntcf-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFEngineer
   - type: Loadout
     prototypes: [ NTCFEngineerGear ]
-    roleLoadout: [ RoleSurvivalExtended ] # Replace with dedicated ERT survival box when ERT Loadouts 3/3 is merged.
+    roleLoadout: [ RoleSurvivalMilitaryDouble ]
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast

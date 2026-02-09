@@ -34,13 +34,13 @@
     jumpsuit: ClothingUniformJumpsuitERTLeader # Stand-in for dedicated NTCF jumpsuit.
     mask: ClothingMaskGasERT
     outerClothing: ClothingOuterArmorBasicSlim
-    pocket1: WeaponDisabler
     pocket2: FlashlightSeclite
     shoes: ClothingShoesBootsJackFilled
   storage:
     back:
     - HandHeldMassScanner
     - ClothingShoesBootsMagSci
+    - WeaponDisabler
     belt:
     - CrowbarRed
     - PowerDrill
@@ -85,7 +85,6 @@
     jumpsuit: ClothingUniformJumpsuitERTEngineer # Stand-in for dedicated NTCF jumpsuit.
     mask: ClothingMaskGasERT
     outerClothing: ClothingOuterArmorBasicSlim
-    pocket1: WeaponDisabler
     pocket2: FlashlightSeclite
     shoes: ClothingShoesBootsJackFilled
   storage:
@@ -94,6 +93,7 @@
     - trayScanner
     - GasAnalyzer
     - ClothingShoesBootsMagSci
+    - WeaponDisabler
     belt:
     - CrowbarRed
     - PowerDrill
