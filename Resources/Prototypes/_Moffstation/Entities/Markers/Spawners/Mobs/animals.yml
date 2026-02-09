@@ -62,9 +62,15 @@
     - VimPilot
     - DoorBumpOpener
     - FootstepSound
+  - type: Vocal
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
   - type: MessyDrinker
 
 
@@ -133,9 +139,15 @@
     - VimPilot
     - DoorBumpOpener
     - FootstepSound
+  - type: Vocal
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
   - type: MessyDrinker
 
 - type: entity
@@ -210,9 +222,15 @@
     - FootstepSound
   - type: StealTarget
     stealGroup: AnimalWalter
+  - type: Vocal
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
   - type: MessyDrinker
 
 - type: entity
@@ -280,14 +298,20 @@
     - FootstepSound
   - type: StealTarget
     stealGroup: AnimalMcGriff
+  - type: Vocal
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
   - type: MessyDrinker
 
 - type: entity
   name: Jamie
-  parent: MobFox
+  parent: [BaseMobAnimal, SimpleMobBase, StripableInventoryBase]
   id: MobJamie
   description: The captain's trustworthy sea lion.
   components:
@@ -304,6 +328,14 @@
     interactSuccessSpawn: EffectHearts
     interactSuccessSound:
       collection: Fox
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcKick
+    soundHit:
+      path: /Audio/Effects/Footsteps/meatslap.ogg
+    damage:
+      types:
+        Piercing: 8
   - type: DamageStateVisuals
     states:
       Alive:
@@ -319,15 +351,27 @@
     - id: BeachBall
     - id: Telecrystal5
       amount: 1
+  - type: ReplacementAccent
+    accent: dog
   - type: Grammar
     attributes:
       proper: true
       gender: male
+    wilhelmProbability: 0.001
   - type: Tag
     tags:
     - CannotSuicide
     - VimPilot
     - DoorBumpOpener
     - FootstepSound
+  - type: Vocal
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet
+  - type: Speech
+    speechVerb: Canine
+    speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
   - type: StealTarget
     stealGroup: AnimalRenault

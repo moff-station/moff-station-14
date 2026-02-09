@@ -361,9 +361,15 @@
     attributes:
       proper: true
       gender: male
+  - type: Vocal # Moffstation - Start
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet # Moffstation - End
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ] # Moffstation
   - type: Tag
     tags:
     - CannotSuicide
@@ -466,9 +472,15 @@
     - VimPilot
   - type: StealTarget
     stealGroup: AnimalWalter
+  - type: Vocal # Moffstation - Start
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet # Moffstation - End
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ] # Moffstation
   - type: MessyDrinker
 
 - type: entity
