@@ -1,13 +1,4 @@
 ﻿Entries:
-- author: SignalSender
-  changes:
-  - message: 'Added new purchasable crate: "random instrument collection" a crate
-      containing 7 random instruments, each of different variety, with the chance
-      for rare instruments'
-    type: Add
-  id: 9002
-  time: '2025-09-25T19:55:02.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40532
 - author: IProduceWidgets
   changes:
   - message: Explosive cord and detonators have been added for precise demolition!
@@ -3998,3 +3989,10 @@
   id: 9508
   time: '2026-02-09T07:05:01.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/38991
+- author: mdrkrg
+  changes:
+  - message: APC sprites now shows the correct state on round start.
+    type: Fix
+  id: 9509
+  time: '2026-02-09T13:14:57.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42852
