@@ -117,26 +117,14 @@
     alertLevel: epsilon
 
 # Nanotrasen Corporate Fleet
-- type: entity # One cannon, one laser
+- type: entity # One cannon, one laser - can seriously fuck up pirates or xenoborgs, if it can find them.
   parent: BaseGameRule
-  id: NTCFGunboatLight
+  id: NTCFGunboat
   components:
   - type: StationEvent
-    startAnnouncement: ntcf-gunboat-light
+    startAnnouncement: ntcf-gunboat
     startAudio:
       path: /Audio/Misc/notice1.ogg
   - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat-light.yml
-  - type: RuleGrids
-
-- type: entity # Two cannons
-  parent: BaseGameRule
-  id: NTCFGunboatHeavy
-  components:
-  - type: StationEvent
-    startAnnouncement: ntcf-gunboat-heavy
-    startAudio:
-      path: /Audio/Misc/notice1.ogg
-  - type: LoadMapRule
-    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat-heavy.yml
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml
   - type: RuleGrids
