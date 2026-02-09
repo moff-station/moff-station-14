@@ -18,12 +18,11 @@
     - id: MouseMigration
     - id: PowerGridCheck
     - id: RandomSentience
-    - id: SlimesSpawn
+    #- id: SlimesSpawn # Moffstation - Move to pests table
     - id: SolarFlare
-    - id: SnakeSpawn
-    - id: SpiderClownSpawn
-    - id: SpiderSpawn
-    - id: TarboldMigration #Moffstation - Tarbold Vent Critters
+    #- id: SnakeSpawn # Moffstation - Move to pests table
+    #- id: SpiderClownSpawn # Moffstation - Move to pests table
+    #- id: SpiderSpawn # Moffstation - Move to pests table
     - id: VentClog
 
 - type: entityTable
@@ -47,10 +46,13 @@
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: WizardSpawn
-    - id: SyndicateListeningOutpostSpawn # Moffstation
     - id: EeepEvent # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
+    # Moffstation - Start - Moffstation ghostrole antags
+    - id: SyndicateListeningOutpostSpawn
+    - id: PirateCorsairSpawn
+    # Moffstation - End
 
 - type: entityTable
   id: DerelictBorgEventTable #For Derelict Borg spawns
@@ -247,7 +249,7 @@
       pickPlayer: false
       startingGear: SpaceNinjaGear
       roleLoadout:
-      - RoleSurvivalEVA
+      - RoleSurvivalSpaceNinja
       briefing:
         text: ninja-role-greeting
         color: Green
@@ -543,6 +545,7 @@
     minimumPlayers: 40
     weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
     duration: 1
+    occursDuringRoundEnd: false
   - type: ZombieRule
   - type: AntagSelection
     definitions:

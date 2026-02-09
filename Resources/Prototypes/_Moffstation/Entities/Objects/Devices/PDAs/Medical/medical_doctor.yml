@@ -15,17 +15,53 @@
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-clinician"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
     - type: Icon
       sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: GeneticistPDA
+  name: geneticist PDA
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-genetics
+  - type: Icon
+    state: pda-genetics
+  - type: RenameId
+    value: job-name-geneticist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#4273b3"
+
+- type: entity
+  parent: MedicalPDAAltBase
+  id: VirologistPDA
+  name: virologist PDA
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-virology
+  - type: Icon
+    state: pda-virology
+  - type: RenameId
+    value: job-name-virologist
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#1e6023"
 
 - type: entity
   parent: MedicalPDAAltBase

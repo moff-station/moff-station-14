@@ -15,12 +15,30 @@
     id: RockStarPDA
 
 # Head
+- type: loadout
+  id: PerformerWig
+  equipment:
+    head: ClothingHeadPerformerWig
+
+- type: loadout
+  id: RockstarWig
+  equipment:
+    head: ClothingHeadHatRockstar
 
 # Mask
 
 # Neck
 
 # Jumpsuit
+- type: loadout
+  id: PerformerSkirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPerformer
+
+- type: loadout
+  id: RockstarSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRockstar
 
 # Back
 
@@ -31,5 +49,19 @@
 # Gloves
 
 # Shoes
+- type: loadout
+  id: PerformerShoes
+  equipment:
+    shoes: ClothingShoesBootsPerformer
+
+- type: loadout
+  id: LaceupShoes
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+
+- type: loadout
+  id: CowboyShoes
+  equipment:
+    shoes: ClothingShoesBootsCowboyBlack
 
 # Eyewear

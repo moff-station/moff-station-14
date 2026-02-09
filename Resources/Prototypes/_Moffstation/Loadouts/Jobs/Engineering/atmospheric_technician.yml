@@ -6,9 +6,9 @@
   groupBy: "atmos tech roles"
 
 - type: loadout
-  id: PlasmaTechnicianPDA
+  id: ThermalSystemsSpecialistPDA
   equipment:
-    id: PlasmaTechnicianPDA
+    id: ThermalSystemsSpecialistPDA
   groupBy: "atmos tech roles"
 
 - type: loadout
@@ -35,11 +35,36 @@
   equipment:
     head: ClothingHeadHatHardhatBlue
 
+- type: loadout
+  id: AtmosphericTechnicianYellowCap
+  equipment:
+    head: ClothingHeadHatYellowsoft
+
 # Mask
 
 # Neck
 
 # Jumpsuit
+- type: loadout
+  id: AtmosphericTechnicianSeniorJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSeniorAtmos
+
+- type: loadout
+  id: AtmosphericTechnicianSeniorJumpskirt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSeniorAtmos
+
+- type: loadout
+  id: AtmosphericTechnicianTurtleneck
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAtmosTurtle
 
 # Back
 

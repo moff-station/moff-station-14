@@ -2,7 +2,7 @@
   parent: ClothingOuterArmorBase
   id: ClothingOuterWinterSecArmored
   name: security armored longcoat
-  description: A warm double-breasted longcoat, worn over a standard armor vest. Comes in security colors.
+  description: A warm double-breasted longcoat, worn over a slim armor vest. Issued to station security officers in colder climates.
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatsecarmored.rsi
@@ -12,7 +12,7 @@
     heatingCoefficient: 1.1
     coolingCoefficient: 0.1
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterDefault
+    clothingPrototype: ClothingHeadHatHoodWinterSec
     slot: head
   - type: ContainerContainer
     containers:
@@ -68,6 +68,8 @@
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCentcom
 
@@ -107,3 +109,92 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/seniorcargowintercoat.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSeniorCargo
+
+#QM
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterFestiveQM
+  name: quartermaster's festive coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festiveqm.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festiveqm.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterSeniorCargo
+
+#Captain
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterFestiveCaptain
+  name: Captain's Festive Coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecaptain.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecaptain.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterCaptain
+
+#CMO
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterFestiveCmo
+  name: Cmo's Festive Coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecmo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/festivecmo.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterFestiveCmo
+
+#Engineer
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterEngiWindbreaker
+  name: engineering insulating coat
+  description: a Jacket made to keep you warm, not effective at preventing electrocution
+  components: #Moffstation - Begin - Engineering Outfit Resprites
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/engi-windbreaker.rsi
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/engi-windbreaker.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded
+  - type: Tag
+    tags:
+    - HiViz
+    - WhitelistChameleon #Moffstation - End - Engineering Outfit Repsprites
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterEngineer
+
+#Mime
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterPierrot
+  name: Pierrot Fur Coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/winterpierrot.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/winterpierrot.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterPierrot

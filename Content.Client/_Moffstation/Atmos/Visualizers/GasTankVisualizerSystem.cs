@@ -9,6 +9,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
 using Robust.Client.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.Reflection;
 
 namespace Content.Client._Moffstation.Atmos.Visualizers;
@@ -29,6 +30,7 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
     {
         base.Initialize();
 
+        SubscribeLocalEvent<GasTankVisualsComponent, EntGotInsertedIntoContainerMessage>(OnEntGotInsertedIntoContainer);
         SubscribeLocalEvent<GasTankVisualsComponent, GetInhandVisualsEvent>(
             OnGetHeldVisuals,
             after: [typeof(ItemSystem)]
@@ -37,6 +39,16 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
             OnGetEquipmentVisuals,
             after: [typeof(ClientClothingSystem)]
         );
+        SubscribeLocalEvent<GasTankVisualsComponent, GetStoredVisualsEvent>(OnGetStoredVisuals);
+    }
+
+    private void OnEntGotInsertedIntoContainer(
+        Entity<GasTankVisualsComponent> entity,
+        ref EntGotInsertedIntoContainerMessage args
+    )
+    {
+        // Update stored visuals.
+        _itemSys.VisualsChanged(entity);
     }
 
     protected override void OnAppearanceChange(
@@ -80,6 +92,20 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         }
     }
 
+    private void OnGetStoredVisuals(Entity<GasTankVisualsComponent> entity, ref GetStoredVisualsEvent args)
+    {
+        if (!entity.Comp.HasStoredSprite)
+            return;
+
+        OnGetGenericVisuals(
+            entity,
+            args.Layers,
+            "stored",
+            key => $"stored-{LayerToRsiState(key)}",
+            includeHardware: true
+        );
+    }
+
     private void OnGetHeldVisuals(Entity<GasTankVisualsComponent> entity, ref GetInhandVisualsEvent args)
     {
         // Copy location because the lambda below doesn't want to capture over a `ref` field.
@@ -89,7 +115,8 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
             args.Layers,
             $"hand-{args.Location.ToString().ToLowerInvariant()}",
             // Return null if this layer should be excluded.
-            key => entity.Comp.ExcludedInhandLayers.Contains(key) ? null : GetInhandRsiState(key, location));
+            key => entity.Comp.ExcludedInhandLayers.Contains(key) ? null : GetInhandRsiState(key, location)
+        );
     }
 
     private void OnGetEquipmentVisuals(Entity<GasTankVisualsComponent> entity, ref GetEquipmentVisualsEvent args)
@@ -115,7 +142,8 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
         Entity<GasTankVisualsComponent> entity,
         List<(string, PrototypeLayerData)> layers,
         string visualKeyPrefix,
-        Func<GasTankVisualsLayers, string?> visualsLayerToRsiState
+        Func<GasTankVisualsLayers, string?> visualsLayerToRsiState,
+        bool includeHardware = false
     )
     {
         if (!TryComp<AppearanceComponent>(entity, out var appearance))
@@ -137,18 +165,24 @@ public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVi
                 }
             ));
         }
+
+        if (includeHardware && visualsLayerToRsiState(GasTankVisualsLayers.Hardware) is { } hardwareState)
+        {
+            layers.Add((
+                $"{visualKeyPrefix}-{_reflect.GetEnumReference(GasTankVisualsLayers.Hardware)}",
+                new PrototypeLayerData { State = hardwareState }
+            ));
+        }
     }
 
-    private static string? LayerToRsiState(GasTankVisualsLayers layer)
+    private static string? LayerToRsiState(GasTankVisualsLayers layer) => layer switch
     {
-        return layer switch
-        {
-            GasTankVisualsLayers.Tank => "tank",
-            GasTankVisualsLayers.StripeMiddle => "stripe-middle",
-            GasTankVisualsLayers.StripeLow => "stripe-low",
-            _ => null,
-        };
-    }
+        GasTankVisualsLayers.Hardware => "hardware",
+        GasTankVisualsLayers.Tank => "tank",
+        GasTankVisualsLayers.StripeMiddle => "stripe-middle",
+        GasTankVisualsLayers.StripeLow => "stripe-low",
+        _ => null,
+    };
 
     private static string? GetInhandRsiState(GasTankVisualsLayers layer, HandLocation hand)
     {

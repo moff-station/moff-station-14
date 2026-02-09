@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
 using Content.Client._DV.CustomObjectiveSummary; // DeltaV
+using Content.Client._Moffstation.ObjectivePicker; // Moffstation
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
@@ -8,6 +9,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
+using Content.Shared._Moffstation.Objectives; // Moffstation
 using Content.Shared.Input;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -32,7 +34,8 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly CustomObjectiveSummaryUIController _objective = default!; // DeltaV
+    [Dependency] private readonly CustomObjectiveSummaryUIController _objectiveSummary = default!; // DeltaV
+    [Dependency] private readonly ObjectivePickerUIController _objectivePicker = default!; // Moffstation
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
@@ -184,18 +187,44 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
         // Begin DeltaV Additions - Custom objective summary
-        if (objectives.Count > 0)
+        switch (objectives.Count)
         {
-            var button = new Button
+            case > 0:
             {
-                Text = Loc.GetString("custom-objective-button-text"),
-                Margin = new Thickness(0, 10, 0, 10)
-            };
-            button.OnPressed += _ => _objective.OpenWindow();
+                var button = new Button
+                {
+                    Text = Loc.GetString("custom-objective-button-text"),
+                    Margin = new Thickness(0, 10, 0, 10)
+                };
+                button.OnPressed += _ => _objectiveSummary.OpenWindow();
 
-            _window.Objectives.AddChild(button);
-        }
+                _window.Objectives.AddChild(button);
+                break;
+            }
         // End DeltaV Additions
+        // Moffstation - Start - Objective Picker
+            case 0:
+            {
+                if (!_ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var container)
+                    || container.Mind is null)
+                    break;
+
+                if (!_ent.HasComponent<PotentialObjectivesComponent>(container.Mind))
+                    break;
+
+                var objectivePickerButton = new Button
+                {
+                    Text = Loc.GetString("objective-picker-button"),
+                    Margin = new Thickness(0, 10, 0, 10)
+                };
+                objectivePickerButton.OnPressed += _ => UIManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
+                objectivePickerButton.OnPressed += _ => _window.Close();
+
+                _window.Objectives.AddChild(objectivePickerButton);
+                break;
+            }
+        }
+        // Moffstation - End
 
         // Starlight - Start - Collective Mind
         if (minds != null && minds.Count > 0)

@@ -1,4 +1,4 @@
-﻿using Content.Shared.Alert;
+﻿﻿using Content.Shared.Alert;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -21,7 +21,6 @@ public sealed partial class BorgChassisComponent : Component
     /// <summary>
     /// Is this borg currently activated?
     /// If activated the borg
-    /// - has door access,
     /// - can use modules and
     /// - has full movement speed.
     /// To be activated the borg
@@ -83,6 +82,14 @@ public sealed partial class BorgChassisComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntityWhitelist? ModuleWhitelist;
+
+    /// <summary>
+    /// A list of requirements as set by the borg type.
+    /// </summary>
+    /// <seealso cref="CyborgModuleRequirement"/>
+    /// <seealso cref="BorgTypePrototype.RequiredModules"/>
+    [DataField, AutoNetworkedField]
+    public CyborgModuleRequirement[] ModuleRequirements = [];
 
     /// <summary>
     /// How many modules can be installed in this borg?

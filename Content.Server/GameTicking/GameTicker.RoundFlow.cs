@@ -9,6 +9,7 @@ using Content.Server.Roles;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
+using Content.Shared.Maps;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
@@ -409,7 +410,9 @@ namespace Content.Server.GameTicking
                 }
                 else
                 {
-                    profile = HumanoidCharacterProfile.Random();
+                    var speciesToBlacklist =
+                        new HashSet<string>(_cfg.GetCVar(CCVars.ICNewAccountSpeciesBlacklist).Split(","));
+                    profile = HumanoidCharacterProfile.Random(speciesToBlacklist);
                 }
                 readyPlayerProfiles.Add(userId, profile);
             }
@@ -793,6 +796,22 @@ namespace Content.Server.GameTicking
 
             return true;
         }
+
+        // Moffstation - Start - SetCountdown Command
+        public bool SetCountdown(TimeSpan time)
+        {
+            if (_runLevel != GameRunLevel.PreRoundLobby) // must be in preround
+                return false;
+
+            _roundStartTime = _gameTiming.CurTime + time;
+            RaiseNetworkEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused));
+            _chatManager.DispatchServerAnnouncement(
+                Loc.GetString("game-ticker-set-countdown", ("seconds", time.TotalSeconds))
+            );
+
+            return true;
+        }
+        // Moffstation - End
 
         private void UpdateRoundFlow(float frameTime)
         {

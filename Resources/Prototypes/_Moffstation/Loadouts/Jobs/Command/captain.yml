@@ -1,4 +1,13 @@
 # ID
+- type: loadout
+  id: CaptainPDA
+  equipment:
+    id: CaptainPDA
+
+- type: loadout
+  id: CommandingOfficerPDA
+  equipment:
+    id: CommandingOfficerPDA
 
 # Head
 - type: loadout
@@ -10,6 +19,23 @@
   id: CaptainTricorn
   equipment:
     head: ClothingHeadHatCaptainTricorn
+
+- type: loadout
+  id: CaptainBeret
+  equipment:
+    head: ClothingHeadHatCaptainBeret
+
+- type: loadout
+  id: CaptainCrown
+  equipment:
+    head: ClothingHeadHatCaptainCrown
+  groupBy: "captain crowns"
+
+- type: loadout
+  id: CaptainCirclet
+  equipment:
+    head: ClothingHeadHatCaptainCirclet
+  groupBy: "captain crowns"
 
 # Mask
 
@@ -54,6 +80,10 @@
   equipment:
     outerClothing: ClothingOuterCoatCaptainLongcoat
 
+- type: loadout
+  id: CaptainFestivecoat
+  equipment:
+    outerClothing: ClothingOuterWinterFestiveCaptain
 # Gloves
 
 # Shoes

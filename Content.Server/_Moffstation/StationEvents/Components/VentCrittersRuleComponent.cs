@@ -1,6 +1,7 @@
 ﻿using Content.Server._Moffstation.StationEvents.Events;
 using Content.Shared.Storage;
 using Robust.Shared.Audio;
+using Robust.Shared.Map;
 
 namespace Content.Server._Moffstation.StationEvents.Components;
 
@@ -47,7 +48,10 @@ public sealed partial class VentCrittersRuleComponent : Component
     };
 
     [ViewVariables]
-    public EntityUid? Location;
+    public EntityUid? Vent;
+
+    [ViewVariables]
+    public EntityCoordinates? Coords;
 
     public TimeSpan NextPopup;
 
