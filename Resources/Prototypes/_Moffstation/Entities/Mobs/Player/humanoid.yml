@@ -117,7 +117,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-military-pilot
+    nameFormat: name-format-ert-pilot
 
 - type: entity
   id: RandomHumanoidSpawnerNTCFEngineer
@@ -147,7 +147,7 @@
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryLast
-    nameFormat: name-format-military-flight-engineer
+    nameFormat: name-format-ert-flight-engineer
 
 
 # Mercenaries
