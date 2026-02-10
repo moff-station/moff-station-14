@@ -1,11 +1,4 @@
 ﻿Entries:
-- author: Princess-Cheeseballs
-  changes:
-  - message: You can now put plushies in your cotton burgers.
-    type: Fix
-  id: 9006
-  time: '2025-09-26T04:22:41.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40276
 - author: CraftyRenter
   changes:
   - message: Closet health reduced to 50
@@ -3998,3 +3991,11 @@
   id: 9512
   time: '2026-02-10T01:48:01.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/37832
+- author: ArtisticRoomba
+  changes:
+  - message: Fixed filters not transferring heat energy from the inlet to the filter
+      outlet while still transferring physical gas.
+    type: Fix
+  id: 9513
+  time: '2026-02-10T10:26:03.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42876
