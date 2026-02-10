@@ -1,17 +1,4 @@
 ﻿Entries:
-- author: CraftyRenter
-  changes:
-  - message: Closet health reduced to 50
-    type: Tweak
-  - message: Locker health increased to 75
-    type: Tweak
-  - message: Secure locker health incresed to 150
-    type: Tweak
-  - message: Secure lockers now make a sound when broken.
-    type: Add
-  id: 9007
-  time: '2025-09-26T20:04:33.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/35671
 - author: SlamBamActionman
   changes:
   - message: Nocturine now causes sleep after a 6 second delay.
@@ -3999,3 +3986,11 @@
   id: 9513
   time: '2026-02-10T10:26:03.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/42876
+- author: 11BelowStudio
+  changes:
+  - message: Regular bots are now repaired gradually (short incremental doafters)
+      instead of via one long doafter, for parity with borgs.
+    type: Tweak
+  id: 9514
+  time: '2026-02-10T17:15:00.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42878
