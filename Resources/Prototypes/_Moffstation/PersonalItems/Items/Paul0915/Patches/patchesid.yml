@@ -26,8 +26,9 @@
 
 - type: loadout
   id: PersonalItemPatchesID
-  inhand:
-    - PersonalItemPatchesID
+  equipment:
+    id: PersonalItemPatchesID
+  groupBy: "visitor roles"
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
