@@ -24,3 +24,30 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+
+# Not as functional as an actual ID card, hence why it's not a child of ID card
+- type: entity
+  parent: Clothing
+  id: MakeshiftID
+  name: makeshift ID card
+  description: A set of door electronics rewired to act as an ID card.
+  components: # Noteably absent is the ID card component and nanochat component - so borgs will treat you as non crew. It also can't be used in a PDA, and cannot be reprogrammed by an ID card computer.
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi
+    state: makeshift
+  - type: Clothing
+    slots:
+    - idcard
+    sprite: _Moffstation/Objects/Misc/id_cards.rsi # Moffstation
+  - type: Access
+    tags:
+    - Maintenance
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - WhitelistChameleonIdCard
+  - type: StealTarget
+    stealGroup: IDCard
+  - type: DetailExaminable
+    content: "Hacked together using spare electronic scraps, the RFID chip normally used to scan ID cards has been reversed to instead transmit the encryption key for maintenance access. Reverse engineering access keys like this is extremely difficult, although the ubiquitous nature of passenger IDs with maintenance access means this particular key is very well known."
