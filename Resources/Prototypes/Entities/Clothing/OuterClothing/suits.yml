@@ -84,9 +84,9 @@
   description: An expensive firesuit that protects against even the most deadly of station fires. Designed to protect even if the wearer is set aflame.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/atmos_firesuit.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/atmos_firesuit.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/atmos_firesuit.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/atmos_firesuit.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
@@ -110,7 +110,7 @@
     slots: WITHOUT_POCKET
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation
     - WhitelistChameleon
   - type: HideLayerClothing
     slots:

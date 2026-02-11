@@ -1,0 +1,1005 @@
+- type: entityTable
+  id: SkeletalRemainsFill
+  table: !type:AllSelector
+    children:
+    - id: MaterialBones1
+      rolls: !type:RangeNumberSelector
+        range: 0, 5
+    - id: MaterialBones1 # Every once in a while you get a whole ton of bones
+      prob: 0.1
+      rolls: !type:RangeNumberSelector
+        range: 10, 20
+    - id: Gauze1 # Mummies?
+      prob: 0.2
+      rolls: !type:RangeNumberSelector
+        range: 1, 3
+    - id: OrganSkeletonPersonArmLeft
+      prob: 0.2
+    - id: OrganSkeletonPersonArmRight
+      prob: 0.2
+    - id: OrganSkeletonPersonHandLeft
+      prob: 0.2
+    - id: OrganSkeletonPersonHandRight
+      prob: 0.2
+    - id: OrganSkeletonPersonLegLeft
+      prob: 0.2
+    - id: OrganSkeletonPersonLegRight
+      prob: 0.2
+    - id: OrganSkeletonPersonFootLeft
+      prob: 0.2
+    - id: OrganSkeletonPersonFootRight
+      prob: 0.2
+    - id: OrganSkeletonPersonTorso
+      prob: 0.2
+    - id: ClothingUniformJumpsuitAncient
+      prob: 0.15
+    - id: OrganSkeletonPersonHead
+      prob: 0.2
+
+- type: entityTable
+  id: MaintLootLite # Maints loot, but not as much as a locker
+  table: !type:AllSelector
+    children:
+    - !type:GroupSelector
+      children:
+      - id: StrangePill
+        weight: 15
+      - !type:NestedSelector
+        tableId: MaintToolsTable
+        weight: 25 
+      - !type:NestedSelector
+        tableId: MaintFluffTable
+        weight: 33
+      - !type:NestedSelector
+        tableId: AllPlushiesTable
+        weight: 15
+      - !type:NestedSelector
+        tableId: MaintWeaponTable
+        weight: 7
+      - !type:NestedSelector
+        tableId: SyndieMaintLoot
+        weight: 5
+    - !type:NestedSelector
+      tableId: MaintLootLite
+      prob: 0.33 # Recursive chance to roll more than one item
+
+- type: entity
+  parent: CrateCoffin
+  id: CrateCoffinFilledMaintsLootAndBones
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:NestedSelector 
+          tableId: MaintLootLite
+          prob: 0.33
+        - !type:NestedSelector
+          tableId: SkeletalRemainsFill
+          prob: 0.75
+
+# These produce an assortment of body parts all from the same species, and without
+#   duplicates.
+- type: entityTable
+  id: ArachnidBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganArachnidTorso
+      prob: 0.2
+    - id: OrganArachnidHead
+      prob: 0.2
+    - id: OrganArachnidArmLeft
+      prob: 0.2
+    - id: OrganArachnidArmRight
+      prob: 0.2
+    - id: OrganArachnidHandLeft
+      prob: 0.2
+    - id: OrganArachnidHandRight
+      prob: 0.2
+    - id: OrganArachnidArmLeft
+      prob: 0.2
+    - id: OrganArachnidArmRight
+      prob: 0.2
+    - id: OrganArachnidHandLeft
+      prob: 0.2
+    - id: OrganArachnidHandRight
+      prob: 0.2
+    - id: OrganArachnidArmLeft
+      prob: 0.2
+    - id: OrganArachnidArmRight
+      prob: 0.2
+    - id: OrganArachnidHandLeft
+      prob: 0.2
+    - id: OrganArachnidHandRight
+      prob: 0.2
+    - id: OrganArachnidLegLeft
+      prob: 0.2
+    - id: OrganArachnidLegRight
+      prob: 0.2
+    - id: OrganArachnidFootLeft
+      prob: 0.2
+    - id: OrganArachnidFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: ArachnidOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganArachnidBrain
+      prob: 0.2
+    - id: OrganArachnidEyes
+      prob: 0.2
+    - id: OrganArachnidTongue
+      prob: 0.2
+    - id: OrganArachnidAppendix
+      prob: 0.2
+    - id: OrganArachnidEars
+      prob: 0.2
+    - id: OrganArachnidLungs
+      prob: 0.2
+    - id: OrganArachnidHeart
+      prob: 0.2
+    - id: OrganArachnidStomach
+      prob: 0.2
+    - id: OrganArachnidLiver
+      prob: 0.2
+    - id: OrganArachnidKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: DionaBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganDionaTorso
+      prob: 0.2
+    - id: OrganDionaHead
+      prob: 0.2
+    - id: OrganDionaArmLeft
+      prob: 0.2
+    - id: OrganDionaArmRight
+      prob: 0.2
+    - id: OrganDionaHandLeft
+      prob: 0.2
+    - id: OrganDionaHandRight
+      prob: 0.2
+    - id: OrganDionaLegLeft
+      prob: 0.2
+    - id: OrganDionaLegRight
+      prob: 0.2
+    - id: OrganDionaFootLeft
+      prob: 0.2
+    - id: OrganDionaFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: DionaOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganDionaBrain
+      prob: 0.2
+    - id: OrganDionaEyes
+      prob: 0.2
+    - id: OrganDionaLungs
+      prob: 0.2
+    - id: OrganDionaStomach
+      prob: 0.2
+
+- type: entityTable
+  id: DwarfBodyParts
+  table: !type:AllSelector
+    children: # Dwarves just have human body parts, apparently
+    - id: OrganHumanTorso
+      prob: 0.2
+    - id: OrganHumanHead
+      prob: 0.2
+    - id: OrganHumanArmLeft
+      prob: 0.2
+    - id: OrganHumanArmRight
+      prob: 0.2
+    - id: OrganHumanHandLeft
+      prob: 0.2
+    - id: OrganHumanHandRight
+      prob: 0.2
+    - id: OrganHumanLegLeft
+      prob: 0.2
+    - id: OrganHumanLegRight
+      prob: 0.2
+    - id: OrganHumanFootLeft
+      prob: 0.2
+    - id: OrganHumanFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: DwarfOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganHumanBrain
+      prob: 0.2
+    - id: OrganHumanEyes
+      prob: 0.2
+    - id: OrganHumanTongue
+      prob: 0.2
+    - id: OrganHumanAppendix
+      prob: 0.2
+    - id: OrganHumanEars
+      prob: 0.2
+    - id: OrganHumanLungs
+      prob: 0.2
+    - id: OrganDwarfHeart
+      prob: 0.2
+    - id: OrganDwarfStomach
+      prob: 0.2
+    - id: OrganDwarfLiver
+      prob: 0.4 # Dwarf livers are durable, so of course they're more likely to be present.
+    - id: OrganHumanKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: HumanBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganHumanTorso
+      prob: 0.2
+    - id: OrganHumanHead
+      prob: 0.2
+    - id: OrganHumanArmLeft
+      prob: 0.2
+    - id: OrganHumanArmRight
+      prob: 0.2
+    - id: OrganHumanHandLeft
+      prob: 0.2
+    - id: OrganHumanHandRight
+      prob: 0.2
+    - id: OrganHumanLegLeft
+      prob: 0.2
+    - id: OrganHumanLegRight
+      prob: 0.2
+    - id: OrganHumanFootLeft
+      prob: 0.2
+    - id: OrganHumanFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: HumanOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganHumanBrain
+      prob: 0.2
+    - id: OrganHumanEyes
+      prob: 0.2
+    - id: OrganHumanTongue
+      prob: 0.2
+    - id: OrganHumanAppendix
+      prob: 0.2
+    - id: OrganHumanEars
+      prob: 0.2
+    - id: OrganHumanLungs
+      prob: 0.2
+    - id: OrganHumanHeart
+      prob: 0.2
+    - id: OrganHumanStomach
+      prob: 0.2
+    - id: OrganHumanLiver
+      prob: 0.2
+    - id: OrganHumanKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: MothBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganMothTorso
+      prob: 0.2
+    - id: OrganMothHead
+      prob: 0.2
+    - id: OrganMothArmLeft
+      prob: 0.2
+    - id: OrganMothArmRight
+      prob: 0.2
+    - id: OrganMothHandLeft
+      prob: 0.2
+    - id: OrganMothHandRight
+      prob: 0.2
+    - id: OrganMothLegLeft
+      prob: 0.2
+    - id: OrganMothLegRight
+      prob: 0.2
+    - id: OrganMothFootLeft
+      prob: 0.2
+    - id: OrganMothFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: MothOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganMothBrain
+      prob: 0.2
+    - id: OrganMothEyes
+      prob: 0.2
+    - id: OrganMothTongue
+      prob: 0.2
+    - id: OrganMothAppendix
+      prob: 0.2
+    - id: OrganMothEars
+      prob: 0.2
+    - id: OrganMothLungs
+      prob: 0.2
+    - id: OrganMothHeart
+      prob: 0.2
+    - id: OrganMothStomach
+      prob: 0.2
+    - id: OrganMothLiver
+      prob: 0.2
+    - id: OrganMothKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: ReptilianBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganReptilianTorso
+      prob: 0.2
+    - id: OrganReptilianHead
+      prob: 0.2
+    - id: OrganReptilianArmLeft
+      prob: 0.2
+    - id: OrganReptilianArmRight
+      prob: 0.2
+    - id: OrganReptilianHandLeft
+      prob: 0.2
+    - id: OrganReptilianHandRight
+      prob: 0.2
+    - id: OrganReptilianLegLeft
+      prob: 0.2
+    - id: OrganReptilianLegRight
+      prob: 0.2
+    - id: OrganReptilianFootLeft
+      prob: 0.2
+    - id: OrganReptilianFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: ReptilianOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganReptilianBrain
+      prob: 0.2
+    - id: OrganReptilianEyes
+      prob: 0.2
+    - id: OrganReptilianTongue
+      prob: 0.2
+    - id: OrganReptilianAppendix
+      prob: 0.2
+    - id: OrganReptilianEars
+      prob: 0.2
+    - id: OrganReptilianLungs
+      prob: 0.2
+    - id: OrganReptilianHeart
+      prob: 0.2
+    - id: OrganReptilianStomach
+      prob: 0.2
+    - id: OrganReptilianLiver
+      prob: 0.2
+    - id: OrganReptilianKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: SlimePersonBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganSlimePersonTorso
+      prob: 0.2
+    - id: OrganSlimePersonHead
+      prob: 0.2
+    - id: OrganSlimePersonArmLeft
+      prob: 0.2
+    - id: OrganSlimePersonArmRight
+      prob: 0.2
+    - id: OrganSlimePersonHandLeft
+      prob: 0.2
+    - id: OrganSlimePersonHandRight
+      prob: 0.2
+    - id: OrganSlimePersonLegLeft
+      prob: 0.2
+    - id: OrganSlimePersonLegRight
+      prob: 0.2
+    - id: OrganSlimePersonFootLeft
+      prob: 0.2
+    - id: OrganSlimePersonFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: SlimePersonOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganSlimePersonCore
+      prob: 0.2
+    - id: OrganSlimePersonLungs
+      prob: 0.2
+
+- type: entityTable
+  id: VoxBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganVoxTorso
+      prob: 0.2
+    - id: OrganVoxHead
+      prob: 0.2
+    - id: OrganVoxArmLeft
+      prob: 0.2
+    - id: OrganVoxArmRight
+      prob: 0.2
+    - id: OrganVoxHandLeft
+      prob: 0.2
+    - id: OrganVoxHandRight
+      prob: 0.2
+    - id: OrganVoxLegLeft
+      prob: 0.2
+    - id: OrganVoxLegRight
+      prob: 0.2
+    - id: OrganVoxFootLeft
+      prob: 0.2
+    - id: OrganVoxFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: VoxOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganVoxBrain
+      prob: 0.2
+    - id: OrganVoxEyes
+      prob: 0.2
+    - id: OrganVoxTongue
+      prob: 0.2
+    - id: OrganVoxAppendix
+      prob: 0.2
+    - id: OrganVoxEars
+      prob: 0.2
+    - id: OrganVoxLungs
+      prob: 0.2
+    - id: OrganVoxHeart
+      prob: 0.2
+    - id: OrganVoxStomach
+      prob: 0.2
+    - id: OrganVoxLiver
+      prob: 0.2
+    - id: OrganVoxKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: VulpkaninBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganVulpkaninTorso
+      prob: 0.2
+    - id: OrganVulpkaninHead
+      prob: 0.2
+    - id: OrganVulpkaninArmLeft
+      prob: 0.2
+    - id: OrganVulpkaninArmRight
+      prob: 0.2
+    - id: OrganVulpkaninHandLeft
+      prob: 0.2
+    - id: OrganVulpkaninHandRight
+      prob: 0.2
+    - id: OrganVulpkaninLegLeft
+      prob: 0.2
+    - id: OrganVulpkaninLegRight
+      prob: 0.2
+    - id: OrganVulpkaninFootLeft
+      prob: 0.2
+    - id: OrganVulpkaninFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: VulpkaninOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganVulpkaninBrain
+      prob: 0.2
+    - id: OrganVulpkaninEyes
+      prob: 0.2
+    - id: OrganVulpkaninTongue
+      prob: 0.2
+    - id: OrganVulpkaninAppendix
+      prob: 0.2
+    - id: OrganVulpkaninEars
+      prob: 0.2
+    - id: OrganVulpkaninLungs
+      prob: 0.2
+    - id: OrganVulpkaninHeart
+      prob: 0.2
+    - id: OrganVulpkaninStomach
+      prob: 0.2
+    - id: OrganVulpkaninLiver
+      prob: 0.2
+    - id: OrganVulpkaninKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: AvaliBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganAvaliTorso
+      prob: 0.2
+    - id: OrganAvaliHead
+      prob: 0.2
+    - id: OrganAvaliArmLeft
+      prob: 0.2
+    - id: OrganAvaliArmRight
+      prob: 0.2
+    - id: OrganAvaliHandLeft
+      prob: 0.2
+    - id: OrganAvaliHandRight
+      prob: 0.2
+    - id: OrganAvaliLegLeft
+      prob: 0.2
+    - id: OrganAvaliLegRight
+      prob: 0.2
+    - id: OrganAvaliFootLeft
+      prob: 0.2
+    - id: OrganAvaliFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: AvaliOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganAvaliBrain
+      prob: 0.2
+    - id: OrganAvaliEyes
+      prob: 0.2
+    - id: OrganAvaliTongue
+      prob: 0.2
+    - id: OrganAvaliAppendix
+      prob: 0.2
+    - id: OrganAvaliEars
+      prob: 0.2
+    - id: OrganAvaliLungs
+      prob: 0.2
+    - id: OrganAvaliHeart
+      prob: 0.2
+    - id: OrganAvaliStomach
+      prob: 0.2
+    - id: OrganAvaliLiver
+      prob: 0.2
+    - id: OrganAvaliKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: ResomiBodyParts
+  table: !type:AllSelector
+    children:
+    - id: OrganResomiTorso
+      prob: 0.2
+    - id: OrganResomiHead
+      prob: 0.2
+    - id: OrganResomiArmLeft
+      prob: 0.2
+    - id: OrganResomiArmRight
+      prob: 0.2
+    - id: OrganResomiHandLeft
+      prob: 0.2
+    - id: OrganResomiHandRight
+      prob: 0.2
+    - id: OrganResomiLegLeft
+      prob: 0.2
+    - id: OrganResomiLegRight
+      prob: 0.2
+    - id: OrganResomiFootLeft
+      prob: 0.2
+    - id: OrganResomiFootRight
+      prob: 0.2
+
+- type: entityTable
+  id: ResomiOrgans
+  table: !type:AllSelector
+    children:
+    - id: OrganResomiBrain
+      prob: 0.2
+    - id: OrganResomiEyes
+      prob: 0.2
+    - id: OrganResomiTongue
+      prob: 0.2
+    - id: OrganResomiAppendix
+      prob: 0.2
+    - id: OrganResomiEars
+      prob: 0.2
+    - id: OrganResomiLungs
+      prob: 0.2
+    - id: OrganResomiHeart
+      prob: 0.2
+    - id: OrganResomiStomach
+      prob: 0.2
+    - id: OrganResomiLiver
+      prob: 0.2
+    - id: OrganResomiKidneys
+      prob: 0.2
+
+- type: entityTable
+  id: OrganicRemainsFill
+  table: !type:GroupSelector
+    children:
+      # Arachnid
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: ArachnidBodyParts
+        - !type:NestedSelector
+          tableId: ArachnidOrgans
+        - id: MaterialWebSilk1
+          rolls: !type:RangeNumberSelector
+            range: 0,6
+      # Diona
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: DionaBodyParts
+        - !type:NestedSelector
+          tableId: DionaOrgans
+        - id: Log
+          rolls: !type:RangeNumberSelector
+            range: 1,6
+          prob: 0.33
+      # Dwarf
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: DwarfBodyParts
+        - !type:NestedSelector
+          tableId: DwarfOrgans
+      # Human
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: HumanBodyParts
+        - !type:NestedSelector
+          tableId: HumanOrgans
+      # Moth
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: MothBodyParts
+        - !type:NestedSelector
+          tableId: MothOrgans
+      # Reptilian
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: ReptilianBodyParts
+        - !type:NestedSelector
+          tableId: ReptilianOrgans
+      # Slime
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: SlimePersonBodyParts
+        - !type:NestedSelector
+          tableId: SlimePersonOrgans
+        - id: FoodMeatSlime
+          rolls: !type:RangeNumberSelector
+            range: 0,3
+      # Vox
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: VoxBodyParts
+        - !type:NestedSelector
+          tableId: VoxOrgans
+        - !type:AllSelector # Vox need their breathing tanks
+          children:
+          - id: ClothingOuterVestTank
+            prob: 0.33
+          - !type:GroupSelector
+            children:
+            - id: ClothingMaskBreath
+              weight: 6
+            - id: ClothingMaskBreathMedical
+              weight: 1
+            - id: ClothingMaskBreathMedicalSecurity
+              weight: 1
+            prob: 0.33
+          - !type:GroupSelector
+            children:
+            - id: NitrogenTank
+              weight: 9
+            - id: NitrogenTankFilled
+              weight: 1
+            prob: 0.33
+      # Vulpkanin
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: VulpkaninBodyParts
+        - !type:NestedSelector
+          tableId: VulpkaninOrgans
+      # Avali
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: AvaliBodyParts
+        - !type:NestedSelector
+          tableId: AvaliOrgans
+      # Resomi
+      - !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: ResomiBodyParts
+        - !type:NestedSelector
+          tableId: ResomiOrgans
+
+
+- type: entityTable
+  id: CorpseFill
+  table: !type:GroupSelector
+    children:
+    - id: SalvageHumanCorpse
+      weight: 50
+    - id: MobRandomServiceCorpse 
+      weight: 8
+    - id: MobRandomEngineerCorpse 
+      weight: 8
+    - id: MobRandomCargoCorpse 
+      weight: 8
+    - id: MobRandomMedicCorpse 
+      weight: 8
+    - id: MobRandomScienceCorpse 
+      weight: 8
+    - id: MobRandomSecurityCorpse 
+      weight: 8
+    - id: MobRandomCommandCorpse 
+      weight: 2
+  
+
+- type: entity
+  parent: Morgue
+  id: MorgueFilledMaintsLootAndCorpses
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+        - !type:AllSelector
+          children:
+          - !type:NestedSelector
+            tableId: MaintLootLite
+            prob: 0.6
+          - !type:NestedSelector
+            tableId: OrganicRemainsFill
+            prob: 0.4
+          weight: 2
+        - !type:NestedSelector # A corpse might come with equipped gear, so no maints loot on top of that.
+          tableId: CorpseFill
+          weight: 1
+
+#Graves
+- type: entity
+  parent: CrateWoodenGrave
+  id: CrateWoodenGraveFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+        - !type:AllSelector
+          children:
+          - !type:NestedSelector
+            tableId: MaintLootLite
+            prob: 0.4
+          - !type:NestedSelector
+            tableId: SkeletalRemainsFill
+            prob: 0.6
+          weight: 4
+        - !type:NestedSelector
+          tableId: CorpseFill
+          weight: 1
+
+- type: entity
+  parent: CrateStoneGrave
+  id: CrateStoneGraveFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+        - !type:AllSelector
+          children:
+          - !type:NestedSelector
+            tableId: MaintLootLite
+            prob: 0.4
+          - !type:NestedSelector
+            tableId: SkeletalRemainsFill
+            prob: 0.6
+          weight: 4
+        - !type:NestedSelector
+          tableId: CorpseFill
+          weight: 1
+
+#Urns
+- type: entityTable
+  id: UrnCommonThings
+  table: !type:GroupSelector 
+    children:
+    - !type:GroupSelector # 1x1 items can fit two
+      children:
+      - id: Ash
+        weight: 16
+      - id: MatchstickSpent
+        weight: 4
+      - id: Matchstick
+        weight: 2
+      - id: TreasureCoinIron
+        weight: 1
+      rolls: !type:RangeNumberSelector
+        range: 0,2
+      weight: 16
+    - id: FoodBadRecipe # AKA 'burned mess'
+      weight: 4
+    - id: Ectoplasm
+      weight: 1
+
+- type: entityTable
+  id: UrnFireThemedThings
+  table: !type:GroupSelector
+    children:
+    - id: RagItem # Not strictly fire-themed, but it makes sense why it wouldn't burn
+      weight: 1
+    - id: Ashtray
+      weight: 1
+    - id: Ointment1
+      weight: 1
+    - id: ClothingHeadHatWitch1 # Witches are also for burning
+      weight: 1
+    - id: FireExtinguisherMini
+      weight: 1
+    - id: Torch
+      weight: 1
+    - id: TrashBakedBananaPeel
+      weight: 1
+    - !type:AllSelector # 1x1 items should have ash in the other slot
+      children:
+      - id: Ash
+      - !type:GroupSelector
+        children:
+        - id: Flare # An expended flare would be better, but there's no separate prototype.
+        - id: ClothingMaskGasAtmos # Allegedly flameproof
+        - id: FoodMeatCooked
+        - id: SmokingPipe
+        - !type:GroupSelector
+          children:
+          - id: FlippoLighter
+          - id: CheapLighter
+          - id: DiscountDanLighter
+        weight: 5 # Weighted higher to compensate for these things all being bundled in one group
+    - !type:GroupSelector
+      children:
+      - id: ClothingHeadHatWelding
+      - id: ClothingHeadHatWeldingMaskFlame
+      - id: ClothingHeadHatWeldingMaskFlameBlue
+      - id: ClothingHeadHatWeldingMaskPainted
+      weight: 1
+    - !type:GroupSelector
+      children:
+      - id: FoodMeatBaconCooked
+      - id: FoodMeatPattyCooked
+      weight: 1
+
+- type: entityTable
+  id: UrnUnusualThings
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector # Tools
+      children:
+      - id: CrowbarRed
+      - id: Screwdriver
+      - id: Welder
+      - id: Wrench
+      - id: Wirecutter
+      - id: Multitool
+      - id: trayScanner
+      - id: RadioHandheld
+      - id: HandheldGPSBasic
+      - id: GeigerCounter
+      weight: 6
+    - !type:AllSelector # 1x1 items
+      children:
+      - id: Ash
+      - !type:GroupSelector
+        children:
+        - id: Pen
+        - id: ToyRubberDuck
+        - id: d4Dice
+        - id: Dart
+      weight: 4
+    - !type:GroupSelector # ID cards
+      children:
+      - id: ClownIDCard
+      - id: MimeIDCard
+      - id: BoxerIDCard
+      - id: ZookeeperIDCard
+      - id: PrisonerIDCard
+      weight: 1
+    - !type:GroupSelector
+      children:
+      - id: Ash
+      - !type:NestedSelector
+        tableId: TreasureCoinPile
+      rolls: !type:RangeNumberSelector
+        range: 1,2
+    - id: BrokenBottle
+      weight: 1
+    - id: Fork
+      weight: 1
+    - id: TennisBall
+      weight: 1
+    - id: PowerCellSmallPrinted
+      weight: 1
+    - id: HydroponicsToolMiniHoe
+      weight: 1
+    - id: BarberScissors
+      weight: 1
+    - id: SeashellInstrument
+      weight: 1
+    - id: ClothingNeckBronzeheart
+      weight: 1
+    - id: FoodBanana
+      weight: 1
+
+- type: entityTable
+  id: UrnDangerousThings
+  table: !type:GroupSelector
+    children:
+    - !type:AllSelector
+      children:
+      - id: Telecrystal1
+      - id: Ash
+    - id: Handcuffs
+    - id: RadioHandheldSecurity
+    - id: SyndicateIDCard
+    - !type:GroupSelector
+      children:
+      - id: PipeBombGunpowder
+      - id: PipeBomb
+      - id: ModularGrenade
+      - id: GrenadeDummy
+    - !type:GroupSelector
+      children:
+      - id: CartridgePistol
+      - id: CartridgePistolSpent
+      - id: CartridgeRifle
+      - id: ShellShotgun
+      - id: MagazinePistol
+    - !type:GroupSelector
+      children:
+      - id: KitchenKnife
+      - id: CombatKnife
+      - id: SurvivalKnife
+      - id: ThrowingKnife
+
+- type: entity
+  parent: Urn
+  id: UrnFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        children:
+          - !type:NestedSelector # Most commonly urns just have burnt stuff in them
+            tableId: UrnCommonThings
+            weight: 55
+          - !type:NestedSelector # Fire-themed things are funny in a funeral urn
+            tableId: UrnFireThemedThings
+            weight: 25
+          - !type:NestedSelector # Occasionally, something that's unexpected and maybe even useful
+            tableId: UrnUnusualThings
+            weight: 15
+          - !type:NestedSelector # If you're very lucky, something a bit spicy
+            tableId: UrnDangerousThings
+            weight: 5

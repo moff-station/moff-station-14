@@ -331,9 +331,9 @@
   description: An atmos fire helmet, able to keep the user cool in any situation.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/atmos_firehelmet.rsi
+    sprite: _Moffstation/Clothing/Head/Helmets/atmos_firehelmet.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Helmets/atmos_firehelmet.rsi
+    sprite: _Moffstation/Clothing/Head/Helmets/atmos_firehelmet.rsi # Moffstation
     quickEquip: true
   - type: IngestionBlocker
   - type: TemperatureProtection
@@ -349,12 +349,16 @@
     tags:
     - WhitelistChameleon
     - FireHelmet
-    - CorgiWearable
+    #- CorgiWearable #Moffstation
   - type: HideLayerClothing
     layers:
       Hair: HEAD
       Snout: HEAD
   - type: BreathMask
+  - type: PointLight # Moffstation - Start
+    color: "LemonChiffon"
+    radius: 4
+    energy: 1 # Moffstation - End
 
 #Chitinous Helmet
 - type: entity

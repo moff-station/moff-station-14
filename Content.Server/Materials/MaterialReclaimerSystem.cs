@@ -191,7 +191,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
 
         if (CanGib(uid, item, component))
         {
-            var logImpact = HasComp<HumanoidAppearanceComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
+            var logImpact = HasComp<HumanoidProfileComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
             //Moffstation - recycler damage change - begin
             _adminLogger.Add(LogType.Damaged, logImpact, $"{ToPrettyString(item):victim} was ground by {ToPrettyString(uid):entity} ");
             _damage.TryChangeDamage(item, component.DamageOnGrind, true);

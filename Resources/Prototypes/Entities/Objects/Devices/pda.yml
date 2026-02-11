@@ -440,6 +440,9 @@
       whitelist:
         components:
         - Cartridge
+    preinstalled:
+    - CrewManifestCartridge
+    - NewsReaderCartridge
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1660,6 +1663,14 @@
         type: HealthAnalyzerBoundUserInterface
       enum.ChameleonUiKey.Key:
         type: ChameleonBoundUserInterface
+
+- type: entity
+  parent: ChameleonPDA
+  id: ChameleonAgentPDA
+  suffix: Chameleon, Agent ID
+  components:
+  - type: Pda
+    id: AgentIDCard
 
 - type: entity
   parent: BaseWidePDA

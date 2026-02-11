@@ -66,7 +66,7 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
         var essenceCollected = 0.0f;
 
         if (HasComp<MobStateComponent>(target)
-            && HasComp<HumanoidAppearanceComponent>(target)
+            && HasComp<HumanoidProfileComponent>(target) // TODO This should probably actually check for like organs or blood or something, but I'm doing a NuBody merge and this is very low priority.
             && !HasComp<BloodEssenceUserComponent>(target))
         {
             // check how much blood is in our temporary solution and subtract it from their BloodEssence component.
