@@ -325,3 +325,24 @@
             range: 2, 4
         - id: OrganSkeletonPersonHead
           prob: 0.1
+
+- type: entity
+  parent: CratePirate
+  id: CratePirateSeeds
+  name: pirate seed crate
+  description: Contains a varied assortment of seeds for fighting off scurvy.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: AloeSeeds
+        - id: BananaSeeds
+        - id: CannabisSeeds
+        - id: GalaxythistleSeeds
+        - id: LemonSeeds
+        - id: LimeSeeds
+        - id: LingzhiSeeds
+        - id: OrangeSeeds
+        - id: PineappleSeeds
+        - id: PoppySeeds

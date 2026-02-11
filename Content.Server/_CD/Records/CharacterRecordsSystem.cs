@@ -6,6 +6,7 @@ using Content.Shared.PDA;
 using Content.Shared.Roles;
 using Content.Shared.StationRecords;
 using Content.Shared._CD.Records;
+using Content.Shared.Clothing;
 using Content.Shared.Forensics.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.GameTicking;
@@ -73,7 +74,7 @@ public sealed class CharacterRecordsSystem : EntitySystem
         var records = new FullCharacterRecords(
             pRecords: new PlayerProvidedCharacterRecords(profile.CDCharacterRecords),
             stationRecordsKey: stationRecordsKey?.Id,
-            name: profile.Name,
+            name: profile.Loadouts.GetValueOrDefault(LoadoutSystem.GetJobPrototype(args.JobId))?.EntityName ?? profile.Name, // Moffstation - Name from job loadout if it overrides the proflie name.
             age: profile.Age,
             species: profile.Species,
             jobTitle: jobTitle,

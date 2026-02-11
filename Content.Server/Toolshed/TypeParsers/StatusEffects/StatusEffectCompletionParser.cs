@@ -11,6 +11,6 @@ public sealed class StatusEffectCompletionParser : CustomCompletionParser<EntPro
 {
     public override CompletionResult? TryAutocomplete(ParserContext ctx, CommandArgument? arg)
     {
-        return CompletionResult.FromHintOptions(IoCManager.Resolve<StatusEffectsSystem>().StatusEffectPrototypes, GetArgHint(arg)); // Moffstation - Early merge
+        return CompletionResult.FromHintOptions(IoCManager.Resolve<StatusEffectsSystem>().StatusEffectPrototypes, GetArgHint(arg));
     }
 }

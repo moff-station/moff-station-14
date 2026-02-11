@@ -58,7 +58,10 @@
     enum.HumanoidVisualLayers.Tail:
       limit: 1
       required: true
-      default: [ VoxTailBig ] # Moffstation - Move vox markings; upstream default tail is "big".
+      default: [ VoxTailBack ] # Moffstation - Move vox markings
+    enum.HumanoidVisualLayers.TailOverlay:
+      limit: 1
+      required: false
     enum.HumanoidVisualLayers.UndergarmentTop:
       limit: 1
       required: false
@@ -181,28 +184,6 @@
     thresholds:
     - trigger:
         !type:DamageTypeTrigger
-        damageType: Blunt
-        damage: 400
-      behaviors:
-      - !type:GibBehavior { }
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Heat
-        damage: 1500
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawnInContainer: true
-        spawn:
-          FoodMeatChickenFriedVox:
-            min: 3
-            max: 5
-      - !type:BurnBodyBehavior
-        popupMessage: bodyburn-vox-text-others
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MeatLaserImpact
-    - trigger:
-        !type:DamageTypeTrigger
         damageType: Radiation
         damage: 15
       behaviors:
@@ -248,6 +229,7 @@
     damage:
       types:
         Slash: 5 # Reduce?
+  - type: Wagging
 
 - type: entity
   parent: OrganBase
