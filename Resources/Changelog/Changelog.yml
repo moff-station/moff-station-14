@@ -1,11 +1,4 @@
 ﻿Entries:
-- author: TrixxedHeart
-  changes:
-  - message: Added 5 new Vox sounds, (Death gasp, Cough, Cry, Gasp, and Sigh)
-    type: Add
-  id: 9011
-  time: '2025-09-27T17:01:14.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/39914
 - author: SignalSender
   changes:
   - message: reworked salv instrument spawns to include more instruments
@@ -3993,3 +3986,10 @@
   id: 9517
   time: '2026-02-11T22:01:36.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/41479
+- author: bnuuy
+  changes:
+  - message: Cleaning evidence off a person no longer reveals their true identity.
+    type: Fix
+  id: 9518
+  time: '2026-02-11T22:31:43.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42868
