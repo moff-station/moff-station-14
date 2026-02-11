@@ -41,7 +41,7 @@
       path: /Audio/Weapons/Guns/Gunshots/rocket_launcher.ogg
   - type: TriggerOnSpawn
   - type: RepeatingTrigger
-    delay: 15
+    delay: 30
   - type: EmitSoundOnTrigger
     positional: true
     predicted: true
@@ -61,7 +61,7 @@
       children:
       - !type:GroupSelector # The base foot soliders that spawn every time
         rolls: !type:RangeNumberSelector
-          range: 2, 5
+          range: 3, 5
         children:
         - id: MobFleshLoverSmasher
         - id: MobFleshGolemSmasher
@@ -74,4 +74,4 @@
         - id: MobHellhound
         - id: MobGoliath
         - id: MobHellspawnSmasher
-          weight: 0.01
+          weight: 0.05

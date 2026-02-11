@@ -3,8 +3,11 @@
   id: HellPortalSpawn
   components:
   - type: StationEvent
+    endAnnouncement: hell-portal-announcement
+    endAudio:
+      path: /Audio/Misc/notice1.ogg
     weight: 5
-    duration: null
+    duration: 30
     earliestStart: 20
     reoccurrenceDelay: 20
     minimumPlayers: 20
