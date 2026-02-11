@@ -39,8 +39,9 @@
   - type: EmitSoundOnSpawn
     sound:
       path: /Audio/Weapons/Guns/Gunshots/rocket_launcher.ogg
+  - type: TriggerOnSpawn
   - type: RepeatingTrigger
-    delay: 30
+    delay: 15
   - type: EmitSoundOnTrigger
     positional: true
     predicted: true
@@ -52,7 +53,7 @@
   parent: BaseHostilePortal
   id: HellPortal
   name: hell portal
-  description: a portal  letting loose the worst hell has to offer.
+  description: a portal letting loose the worst hell has to offer.
   components:
   - type: SpawnEntityTableOnTrigger
     useMapCoords: true
@@ -60,7 +61,7 @@
       children:
       - !type:GroupSelector # The base foot soliders that spawn every time
         rolls: !type:RangeNumberSelector
-          range: 1, 4
+          range: 2, 5
         children:
         - id: MobFleshLoverSmasher
         - id: MobFleshGolemSmasher
