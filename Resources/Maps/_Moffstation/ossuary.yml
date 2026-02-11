@@ -1124,6 +1124,8 @@ entities:
     - type: GasTileOverlay
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
+    - type: BecomesStation
+      id: Ossuary
     - type: TileHistory
       chunkHistory: {}
 - proto: ActionToggleLight
