@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 271.2.0
+  engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 02/06/2026 04:51:41
-  entityCount: 4495
+  time: 02/11/2026 18:56:39
+  entityCount: 4504
 maps:
 - 1
 grids:
@@ -388,6 +388,11 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 9.5,-12.5
       parent: 2
+  - uid: 307
+    components:
+    - type: Transform
+      pos: 25.5,-9.5
+      parent: 2
   - uid: 532
     components:
     - type: Transform
@@ -741,11 +746,6 @@ entities:
       parent: 2
 - proto: AirlockMaintEngiLocked
   entities:
-  - uid: 788
-    components:
-    - type: Transform
-      pos: 25.5,-9.5
-      parent: 2
   - uid: 1050
     components:
     - type: Transform
@@ -755,6 +755,11 @@ entities:
     components:
     - type: Transform
       pos: 24.5,-20.5
+      parent: 2
+  - uid: 4496
+    components:
+    - type: Transform
+      pos: 28.5,-10.5
       parent: 2
 - proto: AirlockMaintGlass
   entities:
@@ -3686,20 +3691,45 @@ entities:
           - 1125
     - type: Fixtures
       fixtures: {}
+- proto: ClosetWallBlack
+  entities:
+  - uid: 4497
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -10.5,0.5
+      parent: 2
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 4245
+          - 4246
+          - 4501
+          - 4500
+          - 4499
+          - 4498
+          - 4502
+          - 4503
+          - 4504
+    - type: Fixtures
+      fixtures: {}
 - proto: ClosetWallEmergencyFilledRandom
   entities:
+  - uid: 788
+    components:
+    - type: Transform
+      pos: 29.5,-9.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
   - uid: 1663
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 30.5,-31.5
-      parent: 2
-    - type: Fixtures
-      fixtures: {}
-  - uid: 2471
-    components:
-    - type: Transform
-      pos: 28.5,-9.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -3801,10 +3831,10 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
-  - uid: 2472
+  - uid: 2471
     components:
     - type: Transform
-      pos: 29.5,-9.5
+      pos: 30.5,-9.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -3918,7 +3948,7 @@ entities:
   - uid: 2473
     components:
     - type: Transform
-      pos: 30.5,-9.5
+      pos: 31.5,-9.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -4275,8 +4305,27 @@ entities:
   - uid: 4246
     components:
     - type: Transform
-      pos: -15.0448885,2.7516284
-      parent: 2
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
+  - uid: 4499
+    components:
+    - type: Transform
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
+  - uid: 4501
+    components:
+    - type: Transform
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
 - proto: ClothingHeadHatWelding
   entities:
   - uid: 712
@@ -4399,8 +4448,27 @@ entities:
   - uid: 4245
     components:
     - type: Transform
-      pos: -14.641476,2.5787354
-      parent: 2
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
+  - uid: 4498
+    components:
+    - type: Transform
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
+  - uid: 4500
+    components:
+    - type: Transform
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
 - proto: ClothingOuterRobesCult
   entities:
   - uid: 4050
@@ -4483,6 +4551,30 @@ entities:
     - type: Transform
       pos: -1.3449802,18.400368
       parent: 2
+  - uid: 4502
+    components:
+    - type: Transform
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
+  - uid: 4503
+    components:
+    - type: Transform
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
+  - uid: 4504
+    components:
+    - type: Transform
+      parent: 4497
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 4497
 - proto: CockroachCube
   entities:
   - uid: 2995
@@ -6446,7 +6538,7 @@ entities:
       pos: 29.5,18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -20594.518
+      secondsUntilStateChange: -21128.568
       state: Opening
   - uid: 3713
     components:
@@ -6496,7 +6588,7 @@ entities:
       pos: 3.5,18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -20567.018
+      secondsUntilStateChange: -21101.068
       state: Opening
     - type: Lock
       showLockVerbs: False
@@ -8351,6 +8443,13 @@ entities:
     components:
     - type: Transform
       pos: 18.5,-9.5
+      parent: 2
+- proto: GravityGeneratorMini
+  entities:
+  - uid: 314
+    components:
+    - type: Transform
+      pos: 27.5,-9.5
       parent: 2
 - proto: Grille
   entities:
@@ -13095,6 +13194,16 @@ entities:
     components:
     - type: Transform
       pos: 19.5,-0.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+- proto: SignGravity
+  entities:
+  - uid: 2472
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 25.5,-10.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -26684,20 +26793,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,-31.5
-      parent: 2
-- proto: WindoorSecure
-  entities:
-  - uid: 307
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -6.5,0.5
-      parent: 2
-  - uid: 314
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,0.5
       parent: 2
 - proto: WindoorSecureBarLocked
   entities:
