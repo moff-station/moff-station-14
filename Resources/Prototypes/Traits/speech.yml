@@ -13,6 +13,10 @@
     removes:
     - type: LizardAccent
     - type: MothAccent
+    # Moffstation - Begin - Re-add word replacement accents
+    - type: ReplacementAccent
+      accent: dwarf
+    # Moffstation - End
 
 # 1 Cost
 
