@@ -1,4 +1,4 @@
-# Tier 2
+# Tier 1
 
 - type: technology
   id: SiliconLawResearch
@@ -7,8 +7,8 @@
     sprite: Mobs/Silicon/station_ai.rsi
     state: ai
   discipline: Experimental
-  tier: 2
-  cost: 7500
+  tier: 1
+  cost: 4000
   recipeUnlocks:
   - CircuitImprinterLawMatrixMachineCircuitboard
   technologyPrerequisites:
