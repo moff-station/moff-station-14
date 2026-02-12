@@ -1,0 +1,108 @@
+- type: entity
+  parent: ServiceWorkerPDA
+  id: ServiceWorkerPDAAltBase
+  name: service worker alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-barber"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: ServiceWorkerPDAAltBase
+  id: BarberPDA
+  name: barber PDA
+  components:
+  - type: RenameId
+    value: job-name-service-worker-barber
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-barber
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#852819"
+
+- type: entity
+  parent: ServiceWorkerPDAAltBase
+  id: LineCookPDA
+  name: line cook PDA
+  components:
+  - type: RenameId
+    value: job-name-service-worker-line-cook
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-linecook
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#00cc35"
+
+- type: entity
+  parent: ServiceWorkerPDAAltBase
+  id: SousChefPDA
+  name: sous chef PDA
+  components:
+  - type: RenameId
+    value: job-name-service-worker-sous-chef
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-souschef
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#00cc35"
+
+- type: entity
+  parent: ServiceWorkerPDAAltBase
+  id: ButlerPDA
+  name: butler PDA
+  components:
+  - type: RenameId
+    value: job-name-service-worker-butler
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-butler
+  - type: PdaBorderColor
+    borderColor: "#ececec"
+    accentVColor: "#00cc35"
+
+- type: entity
+  parent: ServiceWorkerPDAAltBase
+  id: StewardPDA
+  name: steward PDA
+  components:
+  - type: RenameId
+    value: job-name-service-worker-steward
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-steward
+  - type: PdaBorderColor
+    borderColor: "#ececec"
+    accentVColor: "#00cc35"

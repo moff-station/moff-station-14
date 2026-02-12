@@ -1,0 +1,14 @@
+- type: entity
+  parent: [ CrateWeaponSecure, BaseSecurityContraband ]
+  id: CrateArmoryRifleDMR
+  name: DMR crate
+  description: Contains two long-range designated marksman rifles with four mags. Requires Armory access to open.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponRifleLecterDMR
+          amount: 2
+        - id: MagazineRifle
+          amount: 4

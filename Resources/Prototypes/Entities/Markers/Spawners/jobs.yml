@@ -281,18 +281,6 @@
       - state: musician
 
 - type: entity
-  id: SpawnPointBoxer
-  parent: SpawnPointJobBase
-  name: boxer
-  components:
-  - type: SpawnPoint
-    job_id: Boxer
-  - type: Sprite
-    layers:
-      - state: green
-      - state: boxer
-
-- type: entity
   id: SpawnPointBorg
   parent: SpawnPointJobBase
   name: cyborg
@@ -302,10 +290,12 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: Mobs/Silicon/chassis.rsi
-      state: robot
-    - sprite: Mobs/Silicon/chassis.rsi
-      state: robot_e
+    # Moffstation - Start - Early merge of Borg RSI fix
+    - sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi
+      state: borg
+    - sprite: _Moffstation/Mobs/Silicon/Chassis/generic.rsi
+      state: borg_e
+    # Moffstation - End
 
 # Command
 
@@ -606,15 +596,3 @@
     layers:
       - state: green
       - state: psychologist
-
-- type: entity
-  id: SpawnPointZookeeper
-  parent: SpawnPointJobBase
-  name: zookeeper
-  components:
-  - type: SpawnPoint
-    job_id: Zookeeper
-  - type: Sprite
-    layers:
-      - state: green
-      - state: zookeeper

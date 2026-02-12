@@ -1,0 +1,103 @@
+- type: entity
+  parent: LibrarianPDA
+  id: LibrarianPDAAltBase
+  name: librarian alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-archivist"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: ArchivistPDA
+  name: archivist PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-archivist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-archivist
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-archivist"
+    - state: "light_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: PdaBorderColor
+      borderColor: "#73391d"
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: CuratorPDA
+  name: curator PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-curator
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-curator
+  - type: PdaBorderColor
+    borderColor: "#b4b29c"
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: GameMasterPDA
+  name: game master PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-game-master
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-gamemaster
+  - type: PdaBorderColor
+    borderColor: "#a07c5c"
+
+- type: entity
+  parent: LibrarianPDAAltBase
+  id: WriterPDA
+  name: writer PDA
+  components:
+  - type: RenameId
+    value: job-name-librarian-writer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-gamemaster
+  - type: PdaBorderColor
+    borderColor: "#a07c5c"

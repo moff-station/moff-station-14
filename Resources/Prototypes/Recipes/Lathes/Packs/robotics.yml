@@ -15,6 +15,7 @@
   - BorgModuleCable
   - BorgModuleFireExtinguisher
   - BorgModuleInflatable
+  - BorgModuleArtistry
   - BorgModuleBureaucracy # Moffstation - Give service borgs some love
 
 - type: latheRecipePack
@@ -40,9 +41,18 @@
   - BorgModuleAdvancedCleaning
   - BorgModuleAdvancedTool
   - BorgModuleAdvancedClowning
-  - BorgModuleAdvancedChemical
+  - BorgModuleAdvancedTopical
   - BorgModuleAdvancedMining
-  - BorgModuleFoamForceGallant # Moffstation
+  - BorgModuleAdvancedAnomaly # Moffstation - Scienceborg
+  - BorgModuleFoamForceGallant # Moffstation - Foam force module
+  # Moffstation - Start - specialty lite modules
+  - BorgModuleConstructionGeneric
+  - BorgModuleCustodialGeneric
+  - BorgModuleMiningGeneric
+  - BorgModuleMusiqueGeneric
+  - BorgModuleScienceGeneric
+  - BorgModuleTopicalsGeneric
+  # Moffstation - End
 
 - type: latheRecipePack
   id: MechParts

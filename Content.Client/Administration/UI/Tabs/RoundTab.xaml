@@ -3,7 +3,6 @@
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     Margin="4"
     MinSize="50 50">
-    <!-- MoffStation changed used namespace on line 3 -->
     <GridContainer
         Columns="3">
         <controls:ConfirmButton Name="StartRound" Text="{Loc administration-ui-round-tab-start-round}" />

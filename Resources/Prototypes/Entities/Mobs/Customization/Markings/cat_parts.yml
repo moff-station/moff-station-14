@@ -1,8 +1,9 @@
 - type: marking
   id: CatEars
-  bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Human]
+  # Moffstation - Begin (Increase Markings)
+  bodyPart: HeadTop
+  groupWhitelist: [Human, Dwarf]
+  # Moffstation - End
   coloring:
     default:
       type:
@@ -24,8 +25,7 @@
 - type: marking
   id: CatTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Human]
+  groupWhitelist: [Human, Dwarf] # Moffstation - (Increase Markings)
   coloring:
     default:
       type:

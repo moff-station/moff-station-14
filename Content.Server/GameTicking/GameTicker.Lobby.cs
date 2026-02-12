@@ -128,7 +128,7 @@ namespace Content.Server.GameTicking
             {
                 _pauseTime = _gameTiming.CurTime;
             }
-            else // Moffstation - Remove exception for if pausetime is 0
+            else // if (_pauseTime != default) // Moffstation - Remove exception for if pausetime is 0
             {
                 _roundStartTime += _gameTiming.CurTime - _pauseTime;
             }
@@ -177,8 +177,8 @@ namespace Content.Server.GameTicking
                 return;
             }
 
-            var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             // Moffstation - Ready manifest
+            var status = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
             // No need to update anything or raise events if the player is already (un)readied
             if (_playerGameStatuses[player.UserId] == status)
             {

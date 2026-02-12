@@ -7,7 +7,13 @@
     - id: SnailMigrationLowPop
     - id: CockroachMigration
     - id: MouseMigration
+    # Moffstation - Start - Extra vent critters
     - id: MothroachMigration
+    - id: WhimperletMigration
+    - id: ScurretMigration
+    - id: ReptileMigration
+    - id: MammalMigration
+    # Moffstation - End
 
 - type: entityTable
   id: SpicyPestEventsTable
@@ -15,6 +21,17 @@
     children:
     - id: KingRatMigration
     - id: SnailMigration
+    # Moffstation - Start - Extra vent critters
+    - id: SlimesSpawn
+    - id: SnakeSpawn
+    - id: SpiderClownSpawn
+    - id: SpiderSpawn
+    - id: CarpMigration
+    - id: SyndiSoliderMigration
+    - id: HostileGorillaMigration
+    - id: SyndyCatMigration
+    - id: FleshMigration
+    # Moffstation - End
 
 # events
 
@@ -127,41 +144,3 @@
       prob: 0.002
     - id: MobSnailInstantDeath
       prob: 0.00005 #  ~ 1:2000 snails  # Moffstation - change it to make it actually around 1 in 2000
-
-- type: entity
-  id: MothroachMigration
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
-    weight: 6
-    duration: 30 # Moffstation - used as delay
-  - type: VentCrittersRule
-    entries:
-    # Moffstation - Start - Added Rosie and Deathhead mothroaches
-    - id: MobMothroach
-      prob: 0.01
-    - id: MobMothroachRosy
-      prob: 0.005
-    - id: MobMothroachDeathshead
-      prob: 0.005
-    # Moffstation - End
-
-- type: entity
-  id: MothroachMigrationSilent
-  parent: BaseStationEvent
-  components:
-  - type: StationEvent
-  - type: VentCrittersRule
-    entries:
-    # Moffstation - Start - Added Rosie and Deathhead mothroaches
-    - id: MobMothroach
-      prob: 0.01
-    - id: MobMothroachRosy
-      prob: 0.005
-    - id: MobMothroachDeathshead
-      prob: 0.005
-    # Moffstation - End

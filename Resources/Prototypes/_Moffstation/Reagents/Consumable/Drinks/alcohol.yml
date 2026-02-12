@@ -1,0 +1,132 @@
+- type: reagent
+  id: AstrosturaBitters
+  name: reagent-name-astrosturabitters
+  parent: BaseAlcohol
+  desc: reagent-desc-astrosturabitters
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: alcohol
+  color: "#200a02"
+  recognizable: true
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6
+      effects:
+      - !type:SatiateThirst
+        factor: 1
+
+- type: reagent
+  id: PinkGin
+  name: reagent-name-pink-gin
+  parent: BaseAlcohol
+  desc: reagent-desc-pink-gin
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: pinkgin
+  color: "#ffcbf7"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/ginpink.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.4
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+
+- type: reagent
+  id: PlantersPunch
+  name: reagent-name-planters-punch
+  parent: BaseAlcohol
+  desc: reagent-desc-planters-punch
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: planterspunch
+  color: "#fd7b00"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/planterspunch.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.266
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+
+- type: reagent
+  id: CorpseReviver
+  name: reagent-name-corpse-reviver
+  parent: BaseAlcohol
+  desc: reagent-desc-corpse-reviver
+  physicalDesc: reagent-physical-desc-ghostly
+  flavor: corpsereviver
+  color: "#cddcd5"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/corpsereviver.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.6
+        Ethylredoxrazine: 0.6
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+
+- type: reagent
+  id: MossySpecial
+  name: reagent-name-mossy-special
+  parent: BaseAlcohol
+  desc: reagent-desc-mossy-special
+  physicalDesc: reagent-physical-desc-leafy
+  flavor: mossyspecial
+  color: "#664300"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/mossyspecial.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 2
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.2
+        Ethylredoxrazine: 0.6
+      effects:
+      - !type:SatiateThirst
+        factor: 3
+
+- type: reagent
+  id: ScrantonSpecial
+  name: reagent-name-scranton-special
+  parent: BaseAlcohol
+  desc: reagent-desc-scranton-special
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: scrantonspecial
+  color: "#71619d"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.3
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: .15
+      - !type:SatiateThirst
+        factor: 1

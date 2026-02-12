@@ -1,0 +1,136 @@
+﻿- type: entity
+  parent: BaseGameRule
+  id: DynamicRule
+  components:
+  - type: GameRule
+    minPlayers: 5 # <5 is greenshift hours, buddy.
+  - type: DynamicRule
+    startingBudgetMin: 200
+    startingBudgetMax: 350
+    table: !type:AllSelector
+      children:
+      # Roundstart Major Rules
+      - !type:GroupSelector
+        conditions:
+        - !type:RoundDurationCondition
+          max: 1
+        children:
+        - id: Traitor
+          weight: 40
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+        - id: Nukeops
+          weight: 20
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 30
+        - id: Pirates
+          weight: 20
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 30
+        - id: Revolutionary
+          weight: 10
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 15
+        - id: Zombie
+          weight: 10
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 25
+      # Roundstart Minor Rules
+      - !type:GroupSelector
+        conditions:
+        - !type:RoundDurationCondition
+          max: 1
+        children:
+        - id: Thief
+          weight: 35
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+        - id: BloodBrothers
+          weight: 35
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 10
+        - id: SyndicateListeningOutpost
+          weight: 30
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 25
+      # Midround rules
+      - !type:GroupSelector
+        conditions:
+        - !type:RoundDurationCondition
+          min: 600 # minimum 10 minutes
+        children:
+        - id: SleeperAgents
+          weight: 15
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:RoundDurationCondition
+            min: 1200 # 20 minutes
+          - !type:PlayerCountCondition
+            min: 25
+        - id: DragonSpawn
+          weight: 15
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:RoundDurationCondition
+            min: 1200 # 20 minutes
+          - !type:PlayerCountCondition
+            min: 30
+        - id: NinjaSpawn
+          weight: 5
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:RoundDurationCondition
+            min: 1200 # 20 minutes
+          - !type:PlayerCountCondition
+            min: 30
+        - id: ParadoxCloneSpawn
+          weight: 25
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+            max: 2
+          - !type:RoundDurationCondition
+            min: 900 # 15 minutes
+          - !type:PlayerCountCondition
+            min: 20
+        - id: ZombieOutbreak
+          weight: 2.5
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:RoundDurationCondition
+            min: 2700 # 45 minutes
+          - !type:PlayerCountCondition
+            min: 40
+        - id: LoneOpsSpawn
+          weight: 5
+          conditions:
+          - !type:HasBudgetCondition
+          - !type:MaxRuleOccurenceCondition
+          - !type:PlayerCountCondition
+            min: 30
+          - !type:RoundDurationCondition
+            min: 2100 # 35 minutes

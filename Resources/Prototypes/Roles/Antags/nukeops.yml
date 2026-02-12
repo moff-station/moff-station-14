@@ -6,7 +6,7 @@
   objective: roles-antag-nuclear-operative-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 18000 # 5h
+    time: 5h
   guides: [ NuclearOperatives ]
 
 - type: antag
@@ -17,10 +17,10 @@
   objective: roles-antag-nuclear-operative-agent-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 18000 # 5h
+    time: 5h
   - !type:RoleTimeRequirement
     role: JobChemist
-    time: 10800 # 3h
+    time: 3h
   guides: [ NuclearOperatives ]
 
 - type: antag
@@ -31,10 +31,10 @@
   objective: roles-antag-nuclear-operative-commander-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 18000 # 5h
+    time: 5h
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 18000 # 5h
+    time: 5h
   # should be changed to nukie playtime when thats tracked (wyci)
   guides: [ NuclearOperatives ]
 
@@ -51,7 +51,7 @@
 #    gloves: ClothingHandsGlovesCombat # Moffstation - Removing items duplicated by the loadout
     outerClothing: ClothingOuterHardsuitSyndie
     shoes: ClothingShoesBootsCombatFilled
-    id: SyndiPDA
+    id: SyndiOperativePDA
     pocket2: PlushieCarp
     belt: ClothingBeltMilitaryWebbing
   storage:
@@ -59,17 +59,6 @@
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
-
-# Moffstation - Begin - Gear for reinforcements, needs to add the stuff that is normally covered by loadouts
-#Nukie Reinforcement Gear
-- type: startingGear
-  id: SyndicateOperativeReinforcementGear
-  parent: SyndicateOperativeGearFullNoUplink
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitOperative
-    back: ClothingBackpackDuffelSyndicate
-    gloves: ClothingHandsGlovesCombat
-# Moffstation - End
 
 #Nuclear Operative Gear
 - type: startingGear
@@ -82,7 +71,7 @@
   id: NukeopsOutfit
   name: roles-antag-nuclear-operative-name
   startingGear: SyndicateOperativeGearFullNoUplink
-  icon: "JobIconSyndicate"
+  icon: "JobIconSyndicateOperative"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndie
     neck: ClothingNeckScarfStripedSyndieRed
@@ -92,6 +81,7 @@
   id: SyndicateCommanderGearFull
   parent: SyndicateOperativeGearFull
   equipment:
+    id: SyndiCommanderPDA
     neck: SyndicateWhistle
     outerClothing: ClothingOuterHardsuitSyndieCommander
 # Moffstation - Begin - Make warops admin only
@@ -103,7 +93,7 @@
   id: NukeopsCommanderOutfit
   name: roles-antag-nuclear-operative-commander-name
   startingGear: SyndicateCommanderGearFull
-  icon: "JobIconSyndicate"
+  icon: "JobIconSyndicateCommander"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieCommander
     neck: ClothingNeckScarfStripedSyndieGreen
@@ -116,7 +106,7 @@
     eyes: ClothingEyesHudSyndicateAgent
     outerClothing: ClothingOuterHardsuitSyndieMedic
     shoes: ClothingShoesBootsMagSyndie
-    id: SyndiAgentPDA
+    id: SyndiCorpsmanPDA
     belt: ClothingBeltMilitaryWebbingMedFilled
   storage:
     back:
@@ -134,7 +124,7 @@
   id: NukeopsMedicOutfit
   name: roles-antag-nuclear-operative-agent-name
   startingGear: SyndicateOperativeMedicFull
-  icon: "JobIconSyndicate"
+  icon: "JobIconSyndicateCorpsman"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieMedic
     neck: ClothingNeckScarfStripedLightBlue

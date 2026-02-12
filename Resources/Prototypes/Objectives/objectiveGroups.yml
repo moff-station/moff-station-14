@@ -3,19 +3,21 @@
   id: TraitorObjectiveGroups
   weights:
     TraitorObjectiveGroupSteal: 1
-    TraitorObjectiveGroupKill: 1
-    TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
-    TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveOpenEnded: 0.5  # Moffstation - Open ended objectives
+    # Moffstation - Start - Reweighing tables for picker. Keep original proto so we can keep up with any upstream changes
+    TraitorObjectiveGroupKill: 3
+    TraitorObjectiveGroupState: 0.1 #As in, something about your character. Alive, dead, arrested, gained an ability...
+    TraitorObjectiveGroupSocial: 3 #Involves helping/harming others without killing them or stealing their stuff
+    TraitorObjectiveOpenEnded: 0.25
+    # Moffstation - End
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSteal
   weights:
-    CaptainIDStealObjective: 1
+    CaptainIDStealObjective: 0.5  # Moffstation - Objective picker adjustments
     CMOHyposprayStealObjective: 1
     CMOCrewMonitorStealObjective: 1
     RDHardsuitStealObjective: 1
-    NukeDiskStealObjective: 1
+    NukeDiskStealObjective: 0.25  # Moffstation - Objective picker adjustments
     MagbootsStealObjective: 1
     CorgiMeatStealObjective: 1
     ClipboardStealObjective: 1
@@ -23,7 +25,9 @@
     CaptainGunStealObjective: 0.5
     CaptainJetpackStealObjective: 0.5
     HandTeleporterStealObjective: 0.5
-    EnergyShotgunStealObjective: 0.5
+    EnergyMagnumStealObjective: 0.5 # Moffstation - Objective picker adjustments
+    ValkyrieHudStealObjective : 1 # Moffstation - Valkyrie Hud is now a Steal Objective
+    #BigIronStealObjective : 0.5 # Moffstation - Big Iron is now a Steal Objective - not in use atm
 
 - type: weightedRandom
   id: TraitorObjectiveGroupKill
@@ -36,7 +40,7 @@
   id: TraitorObjectiveGroupState
   weights:
     EscapeShuttleObjective: 1
-    DieObjective: 0.05
+    DieObjective: 0.01 # Moffstation - Objective picker adjustments
     #HijackShuttleObjective: 0.02
 
 - type: weightedRandom
@@ -66,26 +70,28 @@
     HeadBedsheetStealCollectionObjective: 1
     StampStealCollectionObjective: 1
     DoorRemoteStealCollectionObjective: 1
+    OfficerHandgunsStealCollectionObjective: 1         #sec
     TechnologyDiskStealCollectionObjective: 1           #sci
     MailStealCollectionObjective: 1                     #cargo
     IDCardsStealCollectionObjective: 1
-    LAMPStealCollectionObjective: 2                     #only for moth
+    LAMPStealCollectionObjective: 0.05        # Moffstation - further decrease likelyhood because of the picker
 
 - type: weightedRandom
   id: ThiefObjectiveGroupItem
   weights:
+    ChiefEngineerToolbeltStealObjective: 0.5             #command
+    CaptainSwordStealObjective: 0.5
+    ClothingHeadsetAltMedicalStealObjective: 1
     ForensicScannerStealObjective: 1                    #sec
     FlippoEngravedLighterStealObjective: 0.5
     ClothingHeadHatWardenStealObjective: 1
     WantedListCartridgeStealObjective: 1
     ClothingOuterHardsuitVoidParamedStealObjective: 1   #med
     MedicalTechFabCircuitboardStealObjective: 1
-    ClothingHeadsetAltMedicalStealObjective: 1
     FireAxeStealObjective: 1                            #eng
     AmePartFlatpackStealObjective: 1
     ExpeditionsCircuitboardStealObjective: 1            #sup
     CargoShuttleCircuitboardStealObjective: 1
-    ClothingEyesHudBeerStealObjective: 1                #srv
     BibleStealObjective: 1
     ClothingNeckGoldmedalStealObjective: 1              #other
     ClothingNeckClownmedalStealObjective: 0.5

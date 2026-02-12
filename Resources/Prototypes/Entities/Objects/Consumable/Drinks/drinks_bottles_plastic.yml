@@ -23,6 +23,10 @@
   - type: Tag
     tags:
     - DrinkBottle # Needed to fit in the soda dispenser, needs a better name
+  # Moffstation - Start - Bottle Flipping
+  - type: LandUpright
+    chance: 0.05
+  # Moffstation - End
 
 - type: entity
   abstract: true

@@ -1,0 +1,13 @@
+﻿- type: entity
+  name: Silicon's rubber stamp
+  parent: RubberStampBase
+  id: RubberStampSilicon
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-silicon
+    stampedColor: "#5ed7aa"
+    stampState: "paper_stamp-psychologist" #hahah it's hardcoded to bureaucracy.rsi, this is close enough
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/stamps.rsi
+    state: stamp-silicon

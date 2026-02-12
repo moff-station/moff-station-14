@@ -33,6 +33,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
     public event Action<Color?>? OnDecalColorChanged;
     public event Action<int>? OnDecalAngleChanged;
     public event Action<bool>? OnDecalSnapChanged;
+    public event Action<bool>? OnDecalColorPickerToggled;
 
     // Pipe color data
     private ItemList _colorList = default!;
@@ -114,7 +115,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
             tabsCleared = true;
             _paintableControls.Clear();
             _pipeControl = null;
-            _gasTankControl = null;
+            _gasTankControl = null; // Moffstation
             _sprayPainterDecals = null;
             Tabs.RemoveAllChildren();
         }
@@ -187,7 +188,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         }
 
         PopulateColors(_currentPalette);
-        PopulateGasTankStyles();
+        PopulateGasTankStyles(); // Moffstation
 
         if (!_currentDecals.Equals(decals))
         {
@@ -201,6 +202,7 @@ public sealed partial class SprayPainterWindow : DefaultWindow
                 _sprayPainterDecals.OnColorChanged += color => OnDecalColorChanged?.Invoke(color);
                 _sprayPainterDecals.OnAngleChanged += angle => OnDecalAngleChanged?.Invoke(angle);
                 _sprayPainterDecals.OnSnapChanged += snap => OnDecalSnapChanged?.Invoke(snap);
+                _sprayPainterDecals.OnColorPickerToggled += toggle => OnDecalColorPickerToggled?.Invoke(toggle);
 
                 Tabs.AddChild(_sprayPainterDecals);
                 TabContainer.SetTabTitle(_sprayPainterDecals, Loc.GetString("spray-painter-tab-category-decals"));
@@ -324,7 +326,12 @@ public sealed partial class SprayPainterWindow : DefaultWindow
         if (_sprayPainterDecals != null)
             _sprayPainterDecals.SetSnap(snap);
     }
-    # endregion
+
+    public void SetDecalColorPicker(bool colorPickerEnabled)
+    {
+        _sprayPainterDecals?.SetColorPicker(colorPickerEnabled);
+    }
+    #endregion
 }
 
 public record SpriteListData(string Group, string Style, EntProtoId Prototype, int SelectedIndex) : ListData;

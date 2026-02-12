@@ -57,7 +57,7 @@ public sealed class EnvelopeSystem : EntitySystem
 
     private void OnInsertAttempt(Entity<EnvelopeComponent> ent, ref ItemSlotInsertAttemptEvent args)
     {
-        args.Cancelled |= ent.Comp.State != EnvelopeComponent.EnvelopeState.Open;
+        args.Cancelled |= ent.Comp.State == EnvelopeComponent.EnvelopeState.Sealed; // Moffstation - Let you re-insert paper back into a torn envelope.
     }
 
     private void OnEjectAttempt(Entity<EnvelopeComponent> ent, ref ItemSlotEjectAttemptEvent args)

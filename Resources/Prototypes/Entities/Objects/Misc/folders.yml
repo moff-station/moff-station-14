@@ -4,13 +4,15 @@
   name: nuclear code folder
   components:
   - type: Sprite
-    sprite: Objects/Misc/folders.rsi
+    sprite: _Moffstation/Objects/Misc/folders.rsi # Moffstation
     layers:
-    - state: folder-colormap
-      color: "#cc2323"
-    - state: folder-base
+    - state: folder-sec-doc  # Moffstation
+    - state: folder-overlay-paper # Moffstation
     - state: folder-stamp-inverse
       color: "#1dff00"
+  - type: PhysicalComposition
+    materialComposition:
+      Paper: 50
   - type: SpawnItemsOnUse
     items:
     - id: NukeCodePaper
@@ -25,10 +27,10 @@
   description: A folder filled with top secret paperwork.
   components:
   - type: Sprite
-    sprite: Objects/Misc/folders.rsi
+    sprite: _Moffstation/Objects/Misc/folders.rsi # Moffstation
     layers:
     - state: folder-colormap
-    - state: folder-base
+#    - state: folder-base # Moffstation
 # RandomSpriteColor requires netsync which is currently incompatible with ItemMapper
 #  - type: RandomSpriteColor
 #    sprite: Objects/Misc/folders.rsi
@@ -42,7 +44,7 @@
 #      black: "#3f3f3f"
 #      green: "#43bc38"
   - type: Item
-    sprite: Objects/Misc/folders.rsi
+    sprite: _Moffstation/Objects/Misc/folders.rsi # Moffstation
     size: Small
     shape: null
   - type: Storage
@@ -58,6 +60,11 @@
         whitelist:
           tags:
           - Document
+  - type: PhysicalComposition
+    materialComposition:
+      Paper: 50
+  - type: StaticPrice
+    price: 15 # Weirdly this is more expensive than cardboard boxes. But if I have this any lower then I get an arbitrage testfail because the raw materials are worth ~$14.
   - type: Appearance
   - type: Tag
     tags:
@@ -68,32 +75,39 @@
   id: BoxFolderFill # Include this as a parent prototype to add 0-5 random papers to a folder's inventory when spawned.
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
-    - id: Paper
-      prob: 0.5
-    - id: PaperOffice
-      prob: 0.4
-    - id: Paper
-      prob: 0.3
-    - id: PaperOffice
-      prob: 0.2
-    - id: Paper
-      prob: 0.2
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Paper
+          prob: 0.5
+        - id: PaperOffice
+          prob: 0.4
+        - id: Paper
+          prob: 0.3
+        - id: PaperOffice
+          prob: 0.2
+        - id: Paper
+          prob: 0.2
 
 - type: entity
   abstract: true
-  id: BoxFolderFillThreePapers # Like BoxFolderFill, but always has exactly three sheets of standard paper; use for roles' startingGear
+  id: BoxFolderFillThreePapers # Like BoxFolderFill, but always has exactly three sheets of standard paper; use for things that should always be consistent, e.g roundstart items
   suffix: 3 papers
   components:
-  - type: StorageFill
-    contents:
-    - id: Paper
-      amount: 3
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: Paper
+        amount: 3
 
 - type: entity
   parent: [BoxFolderBaseEmpty, BoxFolderFill]
   id: BoxFolderBase
+
+- type: entity
+  parent: [BoxFolderBaseEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderBaseThreePapers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -104,12 +118,17 @@
     layers:
     - state: folder-colormap
       color: "#cc2323"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderRedEmpty, BoxFolderFill]
   id: BoxFolderRed
   suffix: Red, Filled
+
+- type: entity
+  parent: [BoxFolderRedEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderRedThreePapers
+  suffix: Red, 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -120,12 +139,17 @@
     layers:
     - state: folder-colormap
       color: "#355d99"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderBlueEmpty, BoxFolderFill]
   id: BoxFolderBlue
   suffix: Blue, Filled
+
+- type: entity
+  parent: [BoxFolderBlueEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderBlueThreePapers
+  suffix: Blue, 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -136,12 +160,17 @@
     layers:
     - state: folder-colormap
       color: "#b38e3c"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderYellowEmpty, BoxFolderFill]
   id: BoxFolderYellow
   suffix: Yellow, Filled
+
+- type: entity
+  parent: [BoxFolderYellowEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderYellowThreePapers
+  suffix: Yellow, 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -151,13 +180,18 @@
   - type: Sprite
     layers:
     - state: folder-colormap
-      color: "#999999"
-    - state: folder-base
+      color: "#696969" # Moffstation
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderGreyEmpty, BoxFolderFill]
   id: BoxFolderGrey
   suffix: Grey, Filled
+
+- type: entity
+  parent: [BoxFolderGreyEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderGreyThreePapers
+  suffix: Grey, 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -168,12 +202,17 @@
     layers:
     - state: folder-colormap
       color: "#3f3f3f"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderBlackEmpty, BoxFolderFill]
   id: BoxFolderBlack
   suffix: Black, Filled
+
+- type: entity
+  parent: [BoxFolderBlackEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderBlackThreePapers
+  suffix: Black, 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -184,12 +223,17 @@
     layers:
     - state: folder-colormap
       color: "#43bc38"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderGreenEmpty, BoxFolderFill]
   id: BoxFolderGreen
   suffix: Green, Filled
+
+- type: entity
+  parent: [BoxFolderGreenEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderGreenThreePapers
+  suffix: Green, 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -199,12 +243,17 @@
   - type: Sprite
     layers:
     - state: folder-white
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderWhiteEmpty, BoxFolderFill]
   id: BoxFolderWhite
   suffix: White, Filled
+
+- type: entity
+  parent: [BoxFolderWhiteEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderWhiteThreePapers
+  suffix: White, 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -216,12 +265,17 @@
   - type: Sprite
     layers:
     - state: folder-centcom
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderCentComEmpty, BoxFolderFill]
   id: BoxFolderCentCom
-  suffix: DO NOT MAP, Filled
+  suffix: DO NOT MAP; Filled
+
+- type: entity
+  parent: [BoxFolderCentComEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderCentComThreePapers
+  suffix: DO NOT MAP; 3 papers
 
 - type: entity
   parent: BoxFolderBaseEmpty
@@ -230,7 +284,7 @@
   description: The weapon of choice for those on the front lines of bureaucracy.
   components:
   - type: Sprite
-    sprite: Objects/Misc/clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/clipboard.rsi # Moffstation
     layers:
     - state: clipboard
     - state: clipboard_paper
@@ -254,18 +308,19 @@
           - Write
         insertOnInteract: false
   - type: Item
-    sprite: Objects/Misc/clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/clipboard.rsi # Moffstation
     size: Small
   - type: Clothing
     slots: [belt]
     quickEquip: false
-    sprite: Objects/Misc/clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/clipboard.rsi # Moffstation
+  - type: PhysicalComposition
+    materialComposition: # half of autolathe printing cost
+      Wood: 50
+      Steel: 25
   - type: Storage
     grid:
     - 0,0,5,3
-    whitelist:
-      tags:
-      - Document
   - type: ItemMapper
     mapLayers:
       clipboard_paper:
@@ -297,7 +352,7 @@
   description: A cheap clipboard made of blue plastic. For those who aren't yet ready to wield the bureaucratic might of a proper wooden clipboard.
   components:
   - type: Sprite
-    sprite: Objects/Misc/plastic_clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/plastic_clipboard.rsi # Moffstation
     layers:
     - state: clipboard
     - state: clipboard_paper
@@ -308,13 +363,21 @@
       visible: false
     - state: clipboard_over
   - type: Item
-    sprite: Objects/Misc/plastic_clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/plastic_clipboard.rsi # Moffstation
   - type: Clothing
-    sprite: Objects/Misc/plastic_clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/plastic_clipboard.rsi # Moffstation
+  - type: PhysicalComposition
+    materialComposition: # half of autolathe printing cost
+      Plastic: 50
+      Steel: 25
 
 - type: entity
   parent: [BoxFolderPlasticClipboardEmpty, BoxFolderFill]
   id: BoxFolderPlasticClipboard
+
+- type: entity
+  parent: [BoxFolderPlasticClipboardEmpty, BoxFolderFillThreePapers]
+  id: BoxFolderPlasticClipboardThreePapers
 
 - type: entity
   parent: BoxFolderClipboardEmpty
@@ -323,7 +386,7 @@
   description: A luxurious clipboard upholstered with green velvet. Often seen carried by CentComm officials, seldom seen actually used.
   components:
   - type: Sprite
-    sprite: Objects/Misc/cc-clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/cc-clipboard.rsi # Moffstation
     layers:
     - state: clipboard
     - state: clipboard_paper
@@ -334,9 +397,14 @@
       visible: false
     - state: clipboard_over
   - type: Item
-    sprite: Objects/Misc/cc-clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/cc-clipboard.rsi # Moffstation
   - type: Clothing
-    sprite: Objects/Misc/cc-clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/cc-clipboard.rsi # Moffstation
+  - type: PhysicalComposition
+    materialComposition: # same composition as regular clipboard + bit of cloth because it's "upholstered with green velvet"
+      Wood: 50
+      Steel: 25
+      Cloth: 25
 
 - type: entity
   parent: [BoxFolderCentComClipboardEmpty, BoxFolderFill]
@@ -380,8 +448,6 @@
     grid:
     - 0,0,4,3
   - type: QuickPickup # Moffstation
-  - type: StorageFill
-    contents: [] #to override base clipboard fill
   - type: ItemMapper
     mapLayers:
       qm_clipboard_paper:

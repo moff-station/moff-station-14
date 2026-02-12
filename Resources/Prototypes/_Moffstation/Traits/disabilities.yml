@@ -1,0 +1,25 @@
+﻿# If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
+
+- type: trait
+  id: Clumsy
+  name: trait-clumsy-disability-name
+  description: trait-clumsy-disability-desc
+  category: Disabilities
+  components:
+  - type: Clumsy
+
+- type: trait
+  id: Feeble
+  name: trait-feeble-disability-name
+  description: trait-feeble-disability-desc
+  category: Disabilities
+  components:
+  - type: DisarmProne
+
+- type: trait
+  id: Uncloneable
+  name: trait-uncloneable-disability-name
+  description: trait-uncloneable-disability-desc
+  category: Disabilities
+  components:
+  - type: Uncloneable

@@ -70,6 +70,7 @@
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
+    - BorgModuleMusiqueGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: MeatManipulation
@@ -106,6 +107,8 @@
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
   - FauxTileDesertAstroSand
+  - FauxTileAstroIronsand
+  - FauxTileAstroIronsandBorderless
 
 - type: technology
   id: BiochemicalStasis
@@ -132,7 +135,9 @@
   tier: 2
   cost: 5000
   recipeUnlocks:
-  - BorgModuleAdvancedChemical
+  - BorgModuleAdvancedTopical
+  - AdvancedJetInjector
+  - BorgModuleTopicalsGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: AdvancedCleaning
@@ -147,6 +152,7 @@
   - AdvMopItem
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
+  - BorgModuleCustodialGeneric # Moffstation - specialty lite modules
 
 - type: technology
   id: HONKMech

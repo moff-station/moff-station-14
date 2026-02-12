@@ -22,3 +22,15 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8
+
+# HoS
+- type: entity
+  parent: [ClothingOuterArmorHoS, ClothingOuterBase, BaseCommandContraband]
+  id: ClothingOuterArmorHoSCarapace
+  name: head of security's carapace
+  description: A lightweight armored chestpiece that provides protection whilst still offering mobility and flexibility. Issued to only the station's most authoritative.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/hoscarapace.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Armor/hoscarapace.rsi

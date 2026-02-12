@@ -1,12 +1,13 @@
-using Robust.Shared.Audio;
-using Content.Server.Chat;
-using Content.Server.Chat.Systems;
+using Content.Server._Moffstation.Speech;   // Moffstation - long speech
+using Content.Shared._Moffstation.CCVar;    // Moffstation
+using Content.Shared.Chat;
 using Content.Shared.Speech;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
+using Robust.Shared.Configuration;  // Moffstation
 
 namespace Content.Server.Speech
 {
@@ -16,6 +17,9 @@ namespace Content.Server.Speech
         [Dependency] private readonly IPrototypeManager _protoManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
+        [Dependency] private readonly LongSpeechSystem _longSpeech = default!;  // Moffstation - Long speech
+        [Dependency] private readonly IConfigurationManager _configurationManager = default!; // Moffstation - Long speech
+
 
         public override void Initialize()
         {
@@ -72,7 +76,13 @@ namespace Content.Server.Speech
 
             var sound = GetSpeechSound((uid, component), args.Message);
             component.LastTimeSoundPlayed = currentTime;
-            _audio.PlayPvs(sound, uid);
+
+            // Moffstation - Start - Longspeech
+            if (_configurationManager.GetCVar(MoffCCVars.LongSpeech))
+                _longSpeech.SpeakSentence((uid, component), args.Message);
+            else
+                _audio.PlayPvs(sound, uid);
+            // Moffstation - End
         }
     }
 }

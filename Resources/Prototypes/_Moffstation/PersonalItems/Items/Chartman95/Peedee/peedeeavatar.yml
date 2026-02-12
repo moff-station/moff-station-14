@@ -60,8 +60,29 @@
       neck:
       - state: peedeeavatar-equipped-NECK
         shader: unshaded
+      neck-vox:
+      - state: peedeeavatar-equipped-NECK-vox
+        shader: unshaded
+      neck-vulpkanin:
+      - state: peedeeavatar-equipped-NECK-vulpkanin
+        shader: unshaded
+      neck-resomi:
+      - state: peedeeavatar-equipped-NECK-resomi
+        shader: unshaded
       head:
       - state: peedeeavatar-equipped-HELMET
+        shader: unshaded
+      head-vox:
+      - state: peedeeavatar-equipped-HELMET-vox
+        shader: unshaded
+      head-vulpkanin:
+      - state: peedeeavatar-equipped-HELMET-vulpkanin
+        shader: unshaded
+      head-resomi:
+      - state: peedeeavatar-equipped-HELMET-resomi
+        shader: unshaded
+      head-reptilian:
+      - state: peedeeavatar-equipped-HELMET-reptilian
         shader: unshaded
     slots:
     - NECK

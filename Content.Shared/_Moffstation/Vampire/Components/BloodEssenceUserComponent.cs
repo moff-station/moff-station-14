@@ -31,5 +31,4 @@ public sealed partial class BloodEssenceUserComponent : Component
     /// </summary>
     [DataField]
     public Dictionary<EntityUid, float> FedFrom = new();
-
 }

@@ -1,0 +1,92 @@
+- type: entity
+  parent: AtmosPDA
+  id: AtmosPDAAltBase
+  name: atmospheric technician alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-thermalsystemsspecialist"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: AtmosPDAAltBase
+  id: ThermalSystemsSpecialistPDA
+  name: thermal systems specialist PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-thermal-systems-specialist
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-thermalsystemsspecialist
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#447987"
+    accentHColor: "#913090"
+
+- type: entity
+  parent: AtmosPDAAltBase
+  id: FirefighterPDA
+  name: Firefighter PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-firefighter
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-firefighter
+  - type: PdaBorderColor
+    borderColor: "#212121"
+    accentVColor: "#dad02f"
+
+- type: entity
+  parent: AtmosPDAAltBase
+  id: SeniorAtmosphericTechnicianPDA
+  name: senior atmospheric technician PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-senior
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-senioratmos
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#447987"
+    accentHColor: "#e42915"
+
+
+- type: entity
+  parent: TechnicalAssistantPDA
+  id: AssistantAtmosphericTechnicianPDA
+  name: atmospherics assistant PDA
+  components:
+  - type: RenameId
+    value: job-name-atmospheric-technician-assistant
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-internatmos

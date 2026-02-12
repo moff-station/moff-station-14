@@ -33,7 +33,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
         {
             _borgSystem.SetTransponderSprite(
                 (ent.Owner, transponder),
-                new SpriteSpecifier.Rsi(new ResPath("Mobs/Silicon/chassis.rsi"), prototype.SpriteBodyState));
+                new SpriteSpecifier.Rsi(new ResPath(prototype.SpritePath), prototype.SpriteBodyState)); // Moffstation - Early merge of Borg RSI fix
 
             _borgSystem.SetTransponderName(
                 (ent.Owner, transponder),
@@ -49,12 +49,13 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
                 prototype.ExtraModuleCount + prototype.DefaultModules.Length);
 
             _borgSystem.SetModuleWhitelist(chassisEnt, prototype.ModuleWhitelist);
+            _borgSystem.SetModuleRequirements(chassisEnt, prototype.RequiredModules);
 
             foreach (var module in prototype.DefaultModules)
             {
                 var moduleEntity = Spawn(module);
                 var borgModule = Comp<BorgModuleComponent>(moduleEntity);
-                _borgSystem.SetBorgModuleDefault((moduleEntity, borgModule), true);
+                _borgSystem.AddBorgModuleRequirement((moduleEntity, borgModule), reason: null);
                 _borgSystem.InsertModule(chassisEnt, moduleEntity);
             }
         }

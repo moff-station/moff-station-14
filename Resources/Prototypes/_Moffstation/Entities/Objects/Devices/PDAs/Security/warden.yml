@@ -1,0 +1,80 @@
+- type: entity
+  parent: WardenPDA
+  id: WardenPDAAltBase
+  name: warden alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-correctionsofficer"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: WardenPDAAltBase
+  id: CorrectionsOfficerPDA
+  name: corrections officer PDA
+  components:
+  - type: RenameId
+    value: job-name-warden-corrections-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-correctionsofficer
+  - type: PdaBorderColor
+    borderColor: "#A32D26"
+    accentVColor: "#5261a0"
+    accentHColor: "#5261a0"
+
+
+- type: entity
+  parent: WardenPDAAltBase
+  id: DetentionManagerPDA
+  name: detention manager PDA
+  components:
+  - type: RenameId
+    value: job-name-warden-detention-manager
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-detentionmanager
+  - type: PdaBorderColor
+    borderColor: "#A32D26"
+    accentVColor: "#2c2c2c"
+    accentHColor: "#ff9751"
+
+- type: entity
+  parent: WardenPDAAltBase
+  id: DispatchOfficerPDA
+  name: dispatch officer PDA
+  components:
+  - type: RenameId
+    value: job-name-warden-dispatch-officer
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-dispatchofficer
+  - type: PdaBorderColor
+    borderColor: "#5261a0"
+    accentVColor: "#A32D26"
+    accentHColor: "#5261a0"

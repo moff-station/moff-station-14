@@ -1,0 +1,304 @@
+# Captain
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainConductor
+  name: captain's supervisor cap
+  description: Make sure your passengers remembered their tickets.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captainconductor.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captainconductor.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainTricorn
+  name: captain's tricorn
+  description: An elegant tricorn denoting a captain familiar with the tide of the universe
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captaintricorn.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainBeret
+  name: captain's beret
+  description: A gilded blue beret of authority
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captainberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captainberet.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainCrown
+  name: captain's crown
+  description: "\"For Command & Station!\""
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captaincrown.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captaincrown.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCaptainCirclet
+  name: captain's circlet
+  description: A shiny circlet for a fabulous queen or king
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/captaincirclet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/captaincirclet.rsi
+
+#Hop
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHopBeret
+  name: hop's beret
+  description: A professional beret for a professional paper-pusher.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/hopberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/hopberet.rsi
+
+#Rd
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatRdBeret
+  name: Director's beret
+  description: A statistically perfect beret for a distinguished researcher.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/rdberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/rdberet.rsi
+
+#Hos
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHosWestern
+  name: Hos's Hunter Hat
+  description: An old and imposing hat worn by unwavering heads of security. Inspires the will to campaign for a unified and not-at-all authoritarian future.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/hoswestern.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/hoswestern.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHosFestive
+  name: Hos's Festive Soldier Hat
+  description: A tall red cap wrapped in gold with a chinstrap. Not the most comfortable
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/hosfestivehat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/hosfestivehat.rsi
+
+#Clown
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHarlequin
+  name: harlequin's hood
+  description: A hood adorned with bells to entertain an audience
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
+
+#Mime
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatPierrot
+  name: pierrot's cone
+  description: A cone for only the funniest of performers
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.07"
+    sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
+
+#Musician
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatRockstar
+  name: rockstar's wig
+  description: A wig forged in the fires of heavy metal rock. the label claims to be made of polyester.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/rockstar.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/rockstar.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
+
+# Syndie
+- type: entity
+  parent: [ClothingHeadBase, BaseSyndicateContraband]
+  id: ClothingHeadHatBeretSyndie
+  name: syndicate beret
+  description: An intimidating red beret with an S sown onto the top. The insignia has a three headed snake engraved onto it
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/syndieberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/syndieberet.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+
+#CentComm
+- type: entity
+  parent: [ClothingHeadBase, BaseCentcommContraband]
+  id: ClothingHeadHatBeretCentcomm
+  name: centcomm beret
+  description: An impressive green beret with a gold trim around the base. The Gold appears to be well maintained & polished regularly
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/centcom-beret.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/centcom-beret.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+
+#Cargo
+- type: entity
+  parent: [ClothingHeadBase, BaseFoldable]
+  id: ClothingHeadHatSeniorCargo
+  name: cargonian ushanka
+  description: "\"Glory to Cargonia!\""
+  components:
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/senior-cargo.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: up
+    foldedHeldPrefix: up
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/senior-cargo.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-up
+      map: ["foldedLayer"]
+      visible: false
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCourier
+  name: courier cap
+  description: A streamlined Courier Hat, looks good when running away from canines
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
+
+#Qm
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCruiser
+  name: quartermaster's cruiser cap
+  description: A gilded cap of an experienced pilot of the stars.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/qmcruiser.rsi
+
+#Detective
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatFedoraSleuth
+  name: sleuth's fedora
+  description: A fedora for a budding detective.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/sleuthfedora.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/sleuthfedora.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+
+#Ce
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCeBeanie
+  name: chief beanie
+  description: A snug beanie. It radiates a homely feeling, if your home happens to be chilly and filled with coffeehouses.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/beanie.rsi
+    layers:
+    - state: body-icon
+      color: "#dedac8"
+    - state: cuffcrown-icon
+      color: "#f58700"
+    - state: pompom-icon
+      color: "#dedac8"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: body-inhand-left
+        color: "#dedac8"
+      - state: cuffcrown-inhand-left
+        color: "#f58700"
+      - state: pompom-inhand-left
+        color: "#dedac8"
+      right:
+      - state: body-inhand-right
+        color: "#dedac8"
+      - state: cuffcrown-inhand-right
+        color: "#f58700"
+      - state: pompom-inhand-right
+        color: "#dedac8"
+  - type: Clothing
+    sprite: Clothing/Head/Hats/beanie.rsi
+    clothingVisuals:
+      head:
+      - state: body-equipped-HELMET
+        color: "#dedac8"
+      - state: cuffcrown-equipped-HELMET
+        color: "#f58700"
+      - state: pompom-equipped-HELMET
+        color: "#dedac8"

@@ -1,8 +1,43 @@
+# ID
+- type: loadout
+  id: AssetProtectionsOfficerPDA
+  equipment:
+    id: AssetProtectionsOfficerPDA
+  groupBy: "officer roles"
+
+- type: loadout
+  id: ConstablePDA
+  equipment:
+    id: ConstablePDA
+  groupBy: "officer roles"
+
+- type: loadout
+  id: DeputyPDA
+  equipment:
+    id: DeputyPDA
+  groupBy: "officer roles"
+
+- type: loadout
+  id: HallMonitorPDA
+  equipment:
+    id: HallMonitorPDA
+  groupBy: "cadet roles"
+
+# Head
 - type: loadout
   id: MilitaryHelmet
   equipment:
     head: ClothingHeadHelmetMilitary
 
+# Mask
+
+# Neck
+
+# Jumpsuit
+
+# Back
+
+# Belt
 - type: loadout
   id: SecurityWebbingAlt
   equipment:
@@ -13,13 +48,14 @@
   equipment:
     belt: ClothingBeltHolsterFilledOfficer
 
-# ID
-- type: loadout
-  id: AssetProtectionsPDA
-  equipment:
-    id: AssetProtectionsPDA
+# Outer Clothing
 
+# Gloves
+
+# Shoes
 - type: loadout
-  id: DeputyPDA
+  id: JackHeels
   equipment:
-    id: DeputyPDA
+    shoes: ClothingShoesBootsJackHeelsFilled
+
+# Eyewear

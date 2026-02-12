@@ -1,0 +1,95 @@
+- type: entity
+  parent: EngineerPDA
+  id: EngineerPDAAltBase
+  name: station engineer alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-refuseworker
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-electrician"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: EngineerPDAAltBase
+  id: ElectricianPDA
+  name: electrician PDA
+  components:
+  - type: RenameId
+    value: job-name-station-engineer-electrician
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-electrician
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#A32D26"
+    accentHColor: "#181818"
+
+- type: entity
+  parent: EngineerPDAAltBase
+  id: MechanicPDA
+  name: mechanic PDA
+  components:
+  - type: RenameId
+    value: job-name-station-engineer-mechanic
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-mechanic
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#A32D26"
+    accentHColor: "#47d039"
+
+- type: entity
+  parent: EngineerPDAAltBase
+  id: ShipwrightPDA
+  name: shipwright PDA
+  components:
+  - type: RenameId
+    value: job-name-station-engineer-shipwright
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-shipwright
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#181818"
+
+- type: entity
+  parent: EngineerPDAAltBase
+  id: EngineOperatorPDA
+  name: engine operator PDA
+  components:
+  - type: RenameId
+    value: job-name-station-engineer-engine-operator
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-engineoperator
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentHColor: "#A32D26"
+    accentVColor: "#de691b"

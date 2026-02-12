@@ -1,0 +1,115 @@
+﻿## Static (imagine needing to research clothes, godo)
+
+##Command
+- type: latheRecipePack
+  id: MoffstationClothingCommand
+  recipes:
+  # Captain
+  - ClothingHeadHatCaptainConductor
+  - ClothingHeadHatCaptainTricorn
+  - ClothingHeadHatCaptainBeret
+  - ClothingOuterWinterFestiveCaptain
+  - ClothingUniformJumpsuitCaptainConductor
+  - ClothingUniformJumpskirtCaptainConductor
+  - ClothingUniformJumpsuitCaptainNaval
+  - ClothingUniformJumpskirtCaptainNaval
+  # HoP
+  - ClothingHeadHatHopBeret
+  - ClothingUniformJumpsuitHoPFormal
+  - ClothingUniformJumpskirtHoPFormal
+  - ClothingUniformJumpsuitHoPFestive
+  - ClothingUniformJumpskirtHoPFestive
+
+##Cargo
+- type: latheRecipePack
+  id: MoffstationClothingCargo
+  recipes:
+  #qm
+  - ClothingHeadHatCruiser
+  - ClothingUniformJumpsuitQMCruiser
+  - ClothingUniformJumpskirtQMCruiser
+  - ClothingOuterWinterFestiveQM
+  - ClothingUniformJumpsuitQMVista
+  - ClothingUniformJumpskirtQMVista
+  #cargo tech
+  - ClothingHeadHatSeniorCargo
+  - ClothingUniformJumpsuitSeniorCargo
+  - ClothingUniformJumpskirtSeniorCargo
+  - ClothingOuterWinterSeniorCargo
+  - ClothingHeadHatCourier
+  - ClothingUniformJumpsuitCourier
+  - ClothingUniformJumpskirtCourier
+  - ClothingOuterWinterCargoWindbreaker
+  #salvage
+  - ClothingOuterWinterSalvageWindbreaker
+
+##Medical
+- type: latheRecipePack
+  id: MoffstationClothingMedical
+  recipes:
+  - ClothingUniformJumpskirtNurse
+  - ClothingUniformJumpsuitChemistSweater
+  - ClothingUniformJumpsuitCMOFormal
+  - ClothingUniformJumpsuitCMOFlowing
+  - ClothingUniformJumpskirtCMOFlowing
+  - ClothingUniformJumpsuitCMOShell
+  - ClothingUniformJumpskirtCMOShell
+  - ClothingOuterWinterFestiveCmo
+
+##Science
+- type: latheRecipePack
+  id: MoffstationClothingScience
+  recipes:
+  #Science
+  - ClothingUniformJumpsuitMachinist
+  - ClothingUniformJumpskirtMachinist
+  - ClothingOuterCoatRDVisionary
+  - ClothingOuterCoatMach
+  #rd
+  - ClothingHeadHatRdBeret
+  - ClothingUniformJumpsuitRDFestive
+  - ClothingUniformJumpsuitRDRobo
+  - ClothingUniformJumpskirtRDRobo
+
+##Security
+- type: latheRecipePack
+  id: MoffstationClothingSecurity
+  recipes:
+  #prisoner
+  - ClothingUniformPrisonerShirt
+  - ClothingUniformJumpsuitStripedPrisoner
+  - ClothingUniformJumpskirtStripedPrisoner
+  #detective
+  - ClothingUniformJumpsuitDetInvestigator
+  - ClothingUniformJumpskirtDetInvestigator
+  - ClothingUniformJumpsuitDetSleuth
+  - ClothingUniformJumpskirtDetSleuth
+  #hos
+  - ClothingHeadHatHosWestern
+  - ClothingUniformJumpsuitHosWestern
+  - ClothingHeadHatHosFestive
+  - ClothingUniformJumpsuitHosFestive
+
+##Service
+- type: latheRecipePack
+  id: MoffstationClothingService
+  recipes:
+  - ClothingUniformJumpsuitMeteorologist
+  - ClothingUniformJumpskirtMeteorologist
+  - ClothingUniformJumpsuitJournalist # We didn't add this, but if the skirt is available, the suit should be too.
+  - ClothingUniformJumpskirtJournalist
+  - ClothingUniformJumpskirtReporter
+
+##Engineering
+- type: latheRecipePack
+  id: MoffstationClothingEngineering
+  recipes:
+  - ClothingUniformJumpskirtSeniorAtmos
+  - ClothingUniformJumpsuitSeniorAtmos
+  - ClothingUniformJumpsuitAtmosTurtle
+
+##Costumes
+- type: latheRecipePack
+  id: MoffstationCostumes
+  recipes:
+  - ClothingOuterHotDog

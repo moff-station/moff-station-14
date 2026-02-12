@@ -2,29 +2,28 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using YamlDotNet.RepresentationModel;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking;
-using Content.Server.Maps;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
+using Content.Shared.Maps;
 using Content.Shared.Roles;
+using Content.Shared.Station.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
-using Robust.Shared.Prototypes;
-using Content.Shared.Station.Components;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
+using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
-using Robust.Shared.Utility;
-using YamlDotNet.RepresentationModel;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Map.Events;
-
+using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 namespace Content.IntegrationTests.Tests
 {
     [TestFixture]
@@ -35,9 +34,9 @@ namespace Content.IntegrationTests.Tests
 
         // Moffstation - Whitelist for jobs that don't need to be mapped
         private static readonly ProtoId<JobPrototype>[] NoSpawnJobs =
-        {
-            "Prisoner"
-        };
+        [
+            "Prisoner",
+        ];
 
         private static readonly string[] NoSpawnMaps =
         {
@@ -74,6 +73,7 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/dugstation.yml", ["ClothingHeadHatCatEarsValid"]},
+            {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
             // Moffstation - End
         };
 
@@ -87,8 +87,21 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] DoNotMapWhitelist =
         {
             "/Maps/centcomm.yml",
-            "/Maps/_Harmony/centcomm.yml", // Harmony Centcomm
-            "/Maps/Shuttles/AdminSpawn/**" // admin gaming
+            "/Maps/_Moffstation/centcomm.yml", // Moff Centcomm
+            "/Maps/_Umbra/Misc/terminal.yml",  // Umbra Arrivals
+            "/Maps/Shuttles/AdminSpawn/**", // admin gaming
+            "/Maps/bagel.yml", // Contains mime's rubber stamp --> Either fix this, remove the category, or remove this comment if intentional.
+            "/Maps/reach.yml", // Contains handheld crew monitor
+            "/Maps/Shuttles/ShuttleEvent/cruiser.yml", // Contains LSE-1200c "Perforator"
+            "/Maps/Shuttles/ShuttleEvent/honki.yml", // Contains golden honker, clown's rubber stamp
+            "/Maps/Shuttles/ShuttleEvent/instigator.yml", // Contains EXP-320g "Friendship"
+            "/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", // Contains syndicate rubber stamp
+            "/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", // Contains EXP-320g "Friendship"
+            "/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", // Variant of grimebreaker
+            "/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", // Contains CentComm folder
+            "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
+            "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
+            "/Maps/_Moffstation/dugstation.yml" // Contains cat ears and knockback stick
         };
 
         /// <summary>
@@ -112,15 +125,14 @@ namespace Content.IntegrationTests.Tests
             "Saltern",
             "Reach",
             "Oasis",
-            "Amber",
             "Plasma",
-            "Elkridge",
             "Relic",
             "dm01-entryway",
             "Exo",
+            "Snowball",
             // Moffstation - Start - Our maps
+            "Amber",
             "Waterjug",
-            "Tram2",
             "Train",
             "Core",
             "Omega",
@@ -134,6 +146,13 @@ namespace Content.IntegrationTests.Tests
             "Prime",
             "D1-Logic",
             "Dugstation",
+            "NitrousOxide",
+            "Barratry",
+            "Scylla",
+            "Aspid",
+            "Elkridge",
+            "Wapiti",
+            "Skeld"
             // Moffstation - End
         };
 

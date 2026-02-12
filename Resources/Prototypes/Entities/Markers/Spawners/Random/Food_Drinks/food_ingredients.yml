@@ -29,7 +29,10 @@
       weight: 10
       children:
       - id: ReagentContainerOliveoil
-      - id: ReagentContainerMayo
+        # Moffstation - Start - Mayo instrument
+     #- id: ReagentContainerMayo
+      - id: VariantMayoSpawner
+        # Moffstation - End
       - id: FoodButter
         amount: !type:RangeNumberSelector
           range: 1, 2

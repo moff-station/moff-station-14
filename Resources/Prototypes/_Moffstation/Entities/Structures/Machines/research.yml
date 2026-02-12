@@ -4,7 +4,7 @@
 - type: entity
   id: BaseResearchAndDevelopmentServer
   abstract: true
-  name: Abstract R&D server
+  name: abstract R&D server
   components:
   - type: ResearchServer
   - type: TechnologyDatabase

@@ -3,10 +3,12 @@
   name: job-name-security
   description: job-description-security
   playTimeTracker: JobSecurityOfficer
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 9000 #2.5 hrs
+  # Moffstation - Start - Change role timers
+#  requirements:
+#    - !type:DepartmentTimeRequirement
+#      department: Security
+#      time: 4h
+  # Moffstation - End
   startingGear: SecurityOfficerGear
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
@@ -15,7 +17,6 @@
   - Security
   - Brig
   - Maintenance
-  - Service
   - External
   - Cryogenics
   special:
@@ -25,7 +26,7 @@
 - type: startingGear
   id: SecurityOfficerGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+  # eyes: ClothingEyesGlassesSecurity # Moffstation - Eyepatches!
     ears: ClothingHeadsetSecurity
     pocket1: WeaponPistolMk58
   storage:
