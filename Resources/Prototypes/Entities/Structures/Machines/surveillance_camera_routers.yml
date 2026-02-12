@@ -145,6 +145,7 @@
   name: wireless camera router
   description: A wireless surveillance camera router. It routes. Perhaps.
   components:
+  # L5 — this now parents off of an abstract entity in _L5/Entities/Structures/Machines/surveillance_camera_routers.yml
 #    - type: DeviceNetwork
 #      deviceNetId: Wireless
 #      receiveFrequencyId: SurveillanceCamera
