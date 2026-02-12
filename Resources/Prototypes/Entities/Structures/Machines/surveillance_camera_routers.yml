@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ BaseSurveillanceCameraRouter, BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseSurveillanceCameraRouter, BaseMachinePowered, ConstructibleMachine ] # Moffstation - Blade server
   id: SurveillanceCameraRouterBase
   name: camera router
   description: A surveillance camera router. It routes. Perhaps.
@@ -21,15 +21,7 @@
 #      interfaces:
 #        enum.SurveillanceCameraSetupUiKey.Router:
 #          type: SurveillanceCameraSetupBoundUi
-#    - type: GenericVisualizer
-#      visuals:
-#        enum.PowerDeviceVisuals.Powered:
-#          enum.PowerDeviceVisualLayers.Powered:
-#            True: { visible: true }
-#            False: { visible: false }
-#    - type: Appearance
-#    - type: WiresVisuals
-#    - type: WiresPanel
+# L5 - End
     - type: Machine
       board: SurveillanceCameraRouterCircuitboard
     - type: Sprite
@@ -140,7 +132,7 @@
 
 - type: entity
   abstract: true
-  parent: [ BaseSurveillanceCameraWirelessRouter, BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseSurveillanceCameraWirelessRouter, BaseMachinePowered, ConstructibleMachine ] # Moffstation - Blade server
   id: SurveillanceCameraWirelessRouterBase
   name: wireless camera router
   description: A wireless surveillance camera router. It routes. Perhaps.
@@ -159,14 +151,7 @@
 #      interfaces:
 #        enum.SurveillanceCameraSetupUiKey.Router:
 #          type: SurveillanceCameraSetupBoundUi
-#    - type: GenericVisualizer
-#      visuals:
-#        enum.PowerDeviceVisuals.Powered:
-#          enum.PowerDeviceVisualLayers.Powered:
-#            True: { visible: true }
-#            False: { visible: false }
-#    - type: WiresVisuals
-#    - type: WiresPanel
+# L5 - end
     - type: Machine
       board: SurveillanceCameraWirelessRouterCircuitboard
     - type: Sprite
