@@ -16,11 +16,13 @@
 
 - type: loadout
   id: AdminGlasses
+  nameOverride: "moff-loadout-admin-sunglasses"
   equipment:
     eyes: ClothingEyesGlassesCommand
 
 - type: loadout
   id: AdminHud
+  nameOverride: "moff-loadout-admin-hud"
   equipment:
     eyes: ClothingEyesHudCommand
 
@@ -28,30 +30,27 @@
 
 - type: loadout
   id: NoirGlasses
+  nameOverride: "moff-loadout-noir-sunglasses"
   equipment:
     eyes: ClothingEyesGlassesNoir
 
 - type: loadout
   id: SecurityGlasses
+  nameOverride: "moff-loadout-security-sunglasses"
   equipment:
     eyes: ClothingEyesGlassesSecurity
 
 - type: loadout
   id: SecurityHud
+  nameOverride: "moff-loadout-security-hud"
   equipment:
     eyes: ClothingEyesHudSecurity
 
 - type: loadout
   id: SecurityEyePatchHud
-  groupBy: "secEyepatch"
+  nameOverride: "moff-loadout-security-patch"
   equipment:
     eyes: ClothingEyesEyepatchHudSecurity
-
-- type: loadout
-  id: SecurityEyePatchHudFlipped
-  groupBy: "secEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudSecurityFlipped
 
 # Cargo
 
@@ -59,66 +58,41 @@
 
 - type: loadout
   id: EngineeringGlasses
+  nameOverride: "moff-loadout-engineering-glasses"
   equipment:
     eyes: ClothingEyesGlassesMesonSunglasses
 
 - type: loadout
   id: EngineeringGoggles
+  nameOverride: "moff-loadout-engineering-goggles"
   equipment:
     eyes: ClothingEyesGlassesMeson
-
-# Medical
-
-- type: loadout
-  id: ChemistryGoggles
-  equipment:
-    eyes: ClothingEyesGlassesChemical
-
-- type: loadout
-  id: MedicalGlasses
-  equipment:
-    eyes: ClothingEyesGlassesMedSunglasses
-
-- type: loadout
-  id: MedicalEyePatchHudFlipped
-  groupBy: "medEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudMedicalFlipped
 
 # Science
 
 - type: loadout
   id: RoboticsHud
+  nameOverride: "moff-loadout-diagnostic-hud"
   equipment:
     eyes: ClothingEyesHudDiagnostic
 
 - type: loadout
   id: RoboticsEyePatchHud
-  groupBy: "borgEyepatch"
+  nameOverride: "moff-loadout-diagnostic-patch"
   equipment:
     eyes: ClothingEyesEyepatchHudDiag
-
-- type: loadout
-  id: RoboticsEyePatchHudFlipped
-  groupBy: "borgEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudDiagFlipped
 
 # Service
 
 - type: loadout
   id: BeerGlasses
+  nameOverride: "moff-loadout-beer-hud"
   equipment:
     eyes: ClothingEyesHudBeer
 
 - type: loadout
   id: BeerEyePatchHud
+  nameOverride: "moff-loadout-beer-patch"
   groupBy: "beerEyepatch"
   equipment:
     eyes: ClothingEyesEyepatchHudBeer
-
-- type: loadout
-  id: BeerEyePatchHudFlipped
-  groupBy: "beerEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudBeerFlipped
