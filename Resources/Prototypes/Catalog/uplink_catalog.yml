@@ -1867,7 +1867,7 @@
   - !type:BuyerWhitelistCondition
     blacklist:
       components:
-      - SurplusBundle
+      #- SurplusBundle # Moffstation - Cat Ears in Surplus is Funny
 
 - type: listing
   id: UplinkOutlawHat
