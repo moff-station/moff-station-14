@@ -74,7 +74,38 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      120: Dead
+      225: Dead
+  # Moffstation Cerberus Additions Start
+  - type: PassiveDamage #Very slow passive heal, similar to zombies.
+    allowedStates:
+    - Alive
+    damageCap: 50
+    damage:
+      types:
+        Heat: -0.2
+      groups:
+        Brute: -0.5
+  - type: Flammable #Fireproof...it's from hell.
+    damage:
+      types: {}
+  - type: PressureProtection #Better in high pressure areas, although still need air.
+    highPressureMultiplier: 0.02
+  - type: TemperatureProtection #Better in high heat areas.
+    heatingCoefficient: 0.001
+  - type: Puller #Cerberus! Fetch Me Their Souls!
+    needsHands: false
+  - type: IgniteOnMeleeHit
+    fireStacks: 1
+  - type: MovementSpeedModifier #Teeny bit more base speed. Parent is 4.
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: SlowOnDamage #Speed up the cerberus by a percentage as it takes more damage.
+    speedModifierThresholds:
+      40: 1.30
+      80: 1.60
+      120: 1.90
+  - type: NoSlip #Cerberus used to trip on their own blood.
+  # Moffstation Cerberus Additions End
   - type: Grammar
     attributes:
       gender: male

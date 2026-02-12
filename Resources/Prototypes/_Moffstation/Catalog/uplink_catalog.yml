@@ -29,7 +29,6 @@
   - UplinkWeaponry
 
 # Wearables
-
 - type: listing
   id: UplinkClothingShoesSkatesSyndicate
   name: uplink-clothing-rocket-skates-name
@@ -42,3 +41,29 @@
     Telecrystal: 4
   categories:
   - UplinkWearables
+
+# Allies
+- type: listing #This is the old necronomicon but spicier.
+  id: uplinkNecronomicon 
+  name: uplink-necronomicon-name
+  description: uplink-necronomicon-desc
+  productEntity: BibleNecronomicon
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Chaplain
+    - Reporter
+    - Librarian
+    - Lawyer
+    - Psychologist
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle
