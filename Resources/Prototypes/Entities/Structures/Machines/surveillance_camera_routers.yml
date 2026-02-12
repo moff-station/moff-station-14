@@ -1,24 +1,35 @@
 - type: entity
   abstract: true
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseSurveillanceCameraRouter, BaseMachinePowered, ConstructibleMachine ]
   id: SurveillanceCameraRouterBase
   name: camera router
   description: A surveillance camera router. It routes. Perhaps.
   components:
-    - type: DeviceNetwork
-      deviceNetId: Wired
-      receiveFrequencyId: SurveillanceCamera
-      transmitFrequencyId: SurveillanceCamera
-    # Moffstation - Start - Listening outpost remote viewing
-    #- type: WiredNetworkConnection
-    - type: WirelessNetworkConnection
-      range: 10000
-    # Moffstation - End
-    - type: DeviceNetworkRequiresPower
-    - type: UserInterface
-      interfaces:
-        enum.SurveillanceCameraSetupUiKey.Router:
-          type: SurveillanceCameraSetupBoundUi
+  # L5 — this now parents off of an abstract entity in _L5/Entities/Structures/Machines/surveillance_camera_routers.yml
+#    - type: DeviceNetwork
+#      deviceNetId: Wired
+#      receiveFrequencyId: SurveillanceCamera
+#      transmitFrequencyId: SurveillanceCamera
+#    # Moffstation - Start - Listening outpost remote viewing
+#    #- type: WiredNetworkConnection
+#    - type: WirelessNetworkConnection
+#      range: 10000
+#    # Moffstation - End
+#    - type: WiredNetworkConnection
+#    - type: DeviceNetworkRequiresPower
+#    - type: UserInterface
+#      interfaces:
+#        enum.SurveillanceCameraSetupUiKey.Router:
+#          type: SurveillanceCameraSetupBoundUi
+#    - type: GenericVisualizer
+#      visuals:
+#        enum.PowerDeviceVisuals.Powered:
+#          enum.PowerDeviceVisualLayers.Powered:
+#            True: { visible: true }
+#            False: { visible: false }
+#    - type: Appearance
+#    - type: WiresVisuals
+#    - type: WiresPanel
     - type: Machine
       board: SurveillanceCameraRouterCircuitboard
     - type: Sprite
@@ -31,13 +42,6 @@
           map: ["enum.PowerDeviceVisualLayers.Powered"]
         - state: server_o
           map: ["enum.WiresVisualLayers.MaintenancePanel"]
-    - type: GenericVisualizer
-      visuals:
-        enum.PowerDeviceVisuals.Powered:
-          enum.PowerDeviceVisualLayers.Powered:
-            True: { visible: true }
-            False: { visible: false }
-    - type: Appearance
     - type: AmbientOnPowered
     - type: AmbientSound
       volume: -9
@@ -45,8 +49,6 @@
       enabled: false
       sound:
         path: /Audio/Ambience/Objects/server_fans.ogg
-    - type: WiresVisuals
-    - type: WiresPanel
 
 - type: entity
   parent: SurveillanceCameraRouterBase
@@ -138,24 +140,32 @@
 
 - type: entity
   abstract: true
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseSurveillanceCameraWirelessRouter, BaseMachinePowered, ConstructibleMachine ]
   id: SurveillanceCameraWirelessRouterBase
   name: wireless camera router
   description: A wireless surveillance camera router. It routes. Perhaps.
   components:
-    - type: DeviceNetwork
-      deviceNetId: Wireless
-      receiveFrequencyId: SurveillanceCamera
-      transmitFrequencyId: SurveillanceCamera
-    # Moffstation - Listening post remote viewing
-#    - type: WirelessNetworkConnection
-#      range: 200
-    # Moffstation - Listening post remote viewing
-    - type: DeviceNetworkRequiresPower
-    - type: UserInterface
-      interfaces:
-        enum.SurveillanceCameraSetupUiKey.Router:
-          type: SurveillanceCameraSetupBoundUi
+#    - type: DeviceNetwork
+#      deviceNetId: Wireless
+#      receiveFrequencyId: SurveillanceCamera
+#      transmitFrequencyId: SurveillanceCamera
+#    # Moffstation - Listening post remote viewing
+##    - type: WirelessNetworkConnection
+##      range: 200
+#    # Moffstation - Listening post remote viewing
+#    - type: DeviceNetworkRequiresPower
+#    - type: UserInterface
+#      interfaces:
+#        enum.SurveillanceCameraSetupUiKey.Router:
+#          type: SurveillanceCameraSetupBoundUi
+#    - type: GenericVisualizer
+#      visuals:
+#        enum.PowerDeviceVisuals.Powered:
+#          enum.PowerDeviceVisualLayers.Powered:
+#            True: { visible: true }
+#            False: { visible: false }
+#    - type: WiresVisuals
+#    - type: WiresPanel
     - type: Machine
       board: SurveillanceCameraWirelessRouterCircuitboard
     - type: Sprite
@@ -167,12 +177,6 @@
           map: ["enum.PowerDeviceVisualLayers.Powered"]
         - state: server_o
           map: ["enum.WiresVisualLayers.MaintenancePanel"]
-    - type: GenericVisualizer
-      visuals:
-        enum.PowerDeviceVisuals.Powered:
-          enum.PowerDeviceVisualLayers.Powered:
-            True: { visible: true }
-            False: { visible: false }
     - type: Appearance
     - type: AmbientOnPowered
     - type: AmbientSound
@@ -181,8 +185,6 @@
       enabled: false
       sound:
         path: /Audio/Ambience/Objects/server_fans.ogg
-    - type: WiresVisuals
-    - type: WiresPanel
 
 - type: entity
   parent: SurveillanceCameraWirelessRouterBase
