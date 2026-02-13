@@ -684,7 +684,7 @@
     stateDoorClosed: crate_door
 
 - type: entity
-  parent: CratePirate
+  parent: CrateGeneric # Moffstation - break parenting off of Pirate Chest
   id: CrateToyBox
   name: toy box
   suffix: Empty
@@ -705,6 +705,12 @@
   - type: Icon
     sprite: Structures/Storage/Crates/toybox.rsi
     state: crate_icon
+  # Moffstation - Start - break parenting off of Pirate Chest
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateDoorOpen: crate_open
+    stateDoorClosed: crate_door
+  # Moffstation - End
 
 - type: entity
   parent: CrateGeneric
