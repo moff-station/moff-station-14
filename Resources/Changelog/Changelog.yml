@@ -1,11 +1,4 @@
 ﻿Entries:
-- author: keronshb
-  changes:
-  - message: Tasers can now be used by Pacifists.
-    type: Tweak
-  id: 9015
-  time: '2025-09-28T03:43:02.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40588
 - author: beck-thompson
   changes:
   - message: Labelers can no longer add markup tags to items
@@ -3993,3 +3986,11 @@
   id: 9521
   time: '2026-02-13T05:25:04.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/42900
+- author: bnuuy
+  changes:
+  - message: Changing your name with the Identity Mask implant now automatically updates
+      your Agent ID!
+    type: Tweak
+  id: 9522
+  time: '2026-02-13T21:58:20.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42772
