@@ -73,6 +73,49 @@
     back:
     - BoxSurvivalSecurityAmmonia
 
+# Stowaway
+- type: loadout
+  id: EmergencyAmmoniaStowaway
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - DrinkAmmoniaBottleFull
+    - EmergencyOxygenTankFilled
+    - Multitool
+    - Crowbar
+    - Screwdriver
+    - FoodSnackNutribrick
+
+- type: loadout
+  id: EmergencyNitrogenStowaway
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreather
+  storage:
+    back:
+    - DrinkWaterBottleFull
+    - EmergencyNitrogenTankFilled
+    - Multitool
+    - Crowbar
+    - Screwdriver
+    - FoodSnackNutribrick
+
+- type: loadout
+  id: EmergencyOxygenStowaway
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreather
+  storage:
+    back:
+    - DrinkWaterBottleFull
+    - EmergencyOxygenTankFilled
+    - Multitool
+    - Crowbar
+    - Screwdriver
+    - FoodSnackNutribrick
+
 # Syndicate
 - type: loadout
   id: EmergencyOxygenSyndicateAmmonia

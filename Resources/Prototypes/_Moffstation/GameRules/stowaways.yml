@@ -3,7 +3,7 @@
   id: Stowaways
   components:
   - type: GameRule
-    minPlayers: 30
+    #minPlayers: 30
     cancelPresetOnTooFewPlayers: false
   - type: AntagRandomSpawn
   - type: AntagLoadProfileRule
@@ -20,7 +20,8 @@
       startingGear: StowawayGear
       roleLoadout:
       - JobStowaway
-      - RoleSurvivalVoxTank # give vox something to breath in case they don't get a copy
       briefing:
         text: roles-antag-stowaway-greeting
         color: Salmon
+      mindRoles:
+      - MindRoleGhostRoleFreeAgent

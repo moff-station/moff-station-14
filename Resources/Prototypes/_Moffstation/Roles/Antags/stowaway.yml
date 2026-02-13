@@ -9,14 +9,10 @@
   id: StowawayGear
   equipment:
     jumpsuit: ClothingUniformRandomStandard
-    back: ClothingBackpack
     shoes: ClothingShoesColorBlack
     mask: ClothingMaskGas
+    gloves: ClothingHandsGlovesColorYellow
     id: CardboardIDCard
-  storage:
-    back:
-    - FoodSnackMREBrownie
-    - DrinkWaterBottleFull
 
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
@@ -28,6 +24,9 @@
   - type: GhostRole
     name: roles-antag-stowaway-name
     description: roles-antag-stowaway-desc
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
     raffle:
       settings: default
   - type: Sprite
