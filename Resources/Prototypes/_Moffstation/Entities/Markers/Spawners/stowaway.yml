@@ -1,0 +1,20 @@
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointJobBase 
+  id: SpawnPointStowaway
+  name: stowaway spawn point
+  suffix: stowaway
+  components:
+  - type: GhostRole
+    name: roles-antag-stowaway-name
+    description: roles-antag-stowaway-desc
+    raffle:
+      settings: default
+  - type: SpawnPoint
+    spawn_type: Job
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Clothing/Mask/gas.rsi
+      state: icon

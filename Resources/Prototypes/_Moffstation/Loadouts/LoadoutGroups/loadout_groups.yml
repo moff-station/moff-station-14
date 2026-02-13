@@ -32,4 +32,9 @@
   - FreelancerPDA
   - TouristPDA
 
-
+# Stowaway
+- type: loadoutGroup
+  id: StowawayPDA 
+  name: loadout-group-stowaway-id
+  loadouts:
+  - StowawayPDA # Keep default PDA on top of the list

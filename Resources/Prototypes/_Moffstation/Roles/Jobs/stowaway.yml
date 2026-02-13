@@ -1,0 +1,27 @@
+- type: job
+  id: Stowaway 
+  name: roles-antag-stowaway-name
+  description: roles-antag-stowaway-objective
+  playTimeTracker: JobStowaway
+  startingGear: StowawayGear
+  icon: "JobIconNoId"
+  supervisors: job-supervisors-nobody
+  joinNotifyCrew: false
+  access:
+  - Maintenance 
+
+- type: playTimeTracker
+  id: JobStowaway
+
+- type: startingGear
+  id: StowawayGear
+  equipment:
+    jumpsuit: ClothingUniformRandomStandard
+    back: ClothingBackpack
+    shoes: ClothingShoesColorBlack
+    mask: ClothingMaskGas
+    id: CardboardIDCard
+  storage:
+    back:
+    - FoodSnackMREBrownie
+    - DrinkWaterBottleFull

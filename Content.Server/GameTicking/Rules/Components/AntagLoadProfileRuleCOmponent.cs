@@ -20,12 +20,4 @@ public sealed partial class AntagLoadProfileRuleComponent : Component
     /// </summary>
     [DataField]
     public HashSet<ProtoId<SpeciesPrototype>>? SpeciesOverrideBlacklist;
-
-    // Moffstation - Start
-    /// <summary>
-    /// Whether the original name and info from the profile should be preserved, or a random one should be generated
-    /// </summary>
-    [DataField]
-    public bool PreserveName;
-    // Moffstation - End
 }

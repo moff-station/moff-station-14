@@ -3,20 +3,21 @@
   id: Stowaways
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 4 # This is probably *more* fun on low playercount.
     cancelPresetOnTooFewPlayers: false
+  - type: StowawaysRule
+    playerRatio: 0.25
+    job: Stowaway
+    spawnerPrototype: SpawnPointStowaway
   - type: AntagRandomSpawn
-  - type: AntagLoadProfileRule
-    preserveName: true
   - type: AntagSelection
-    selectionTime: PrePlayerSpawn
-    useWeights: false
     definitions:
-    - prefRoles: [ Stowaway ]
-      spawnerPrototype: SpawnPointGhostStowaway
+    - prefRoles: [ ]
+      spawnerPrototype: SpawnPointStowaway
       min: 1
-      max: 2
-      playerRatio: 20
+      max: 3
+      playerRatio: 25
+      pickPlayer: false
       startingGear: StowawayGear
       roleLoadout:
       - RoleSurvivalVoxTank # give vox something to breath in case they don't get a copy
