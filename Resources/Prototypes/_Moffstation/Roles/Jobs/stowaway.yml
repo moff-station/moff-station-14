@@ -1,5 +1,6 @@
 - type: job
   id: Stowaway 
+  weight: 10
   name: roles-antag-stowaway-name
   description: roles-antag-stowaway-objective
   playTimeTracker: JobStowaway
@@ -7,8 +8,14 @@
   icon: "JobIconNoId"
   supervisors: job-supervisors-nobody
   joinNotifyCrew: false
+  ignoreArrivals: true
+  overrideConsoleVisibility: true
   access:
   - Maintenance 
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: StowawayRole 
 
 - type: playTimeTracker
   id: JobStowaway
@@ -20,7 +27,7 @@
     back: ClothingBackpack
     shoes: ClothingShoesColorBlack
     mask: ClothingMaskGas
-    id: CardboardIDCard
+    #id: CardboardIDCard - Moffstation PDA loadouts
   storage:
     back:
     - FoodSnackMREBrownie

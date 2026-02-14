@@ -17,4 +17,10 @@ public sealed partial class StowawaysRuleComponent : Component
     /// </summary>
     [DataField(required: true)]
     public ProtoId<JobPrototype> Job;
+
+    /// <summary>
+    /// What's the prototype of the Stowaway job? 
+    /// </summary>
+    [DataField(required: true)]
+    public EntProtoId? SpawnerPrototype;
 }
