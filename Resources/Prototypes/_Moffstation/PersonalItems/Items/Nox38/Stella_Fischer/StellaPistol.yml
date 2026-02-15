@@ -1,5 +1,4 @@
 # Player: Nox38 - Character: Stella Fischer
-# License: CC-BY-SA-4.0
 - type: entity
   parent: BaseWeaponPersonalItemPistol
   id: PersonalItemStellaPistol
@@ -38,7 +37,7 @@
   parent: BasePersonalItemPistolCase
   id: PersonalItemStellaPistolCase
   name: Mk9 gun case
-  description: A slim, portable gun case intended to protect it's contents. The outside is wrapped in blue tape.
+  description: A slim, portable gun case intended to protect its contents. The outside is wrapped in blue tape.
   suffix: PersonalItem
   components:
   - type: Sprite
@@ -49,7 +48,6 @@
     containers:
       storagebase:
         id: PersonalItemStellaPistol
-        amount: 1
 
 - type: loadout
   id: PersonalItemStellaPistol
