@@ -630,44 +630,6 @@
 # Tail
 
 - type: marking
-  id: FriendsOfAFeather
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: friendsfeather1
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: friendsfeather2
-
-- type: marking
-  id: SpotsTail
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: spots
-
-- type: marking
-  id: TailBloom
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: bloom1
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: bloom2
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: bloom3
-
-- type: marking
-  id: VoxChains
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: chains
-
-- type: marking
   id: VoxCocktail
   bodyPart: Tail
   groupWhitelist: [ Vox ]
@@ -682,14 +644,6 @@
     state: cocktail4
 
 - type: marking
-  id: VoxFootSpines
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: footspines
-
-- type: marking
   id: VoxTailBack
   bodyPart: Tail
   groupWhitelist: [ Vox ]
@@ -697,34 +651,6 @@
   sprites:
   - sprite: _CD/Mobs/Customization/Vox/tail.rsi
     state: colorable
-
-- type: marking
-  id: VoxTailBalled
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  forcedColoring: true
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: balled
-
-- type: marking
-  id: VoxTailBell
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: bell1
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: bell2
-
-- type: marking
-  id: VoxTailLantern
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: lantern
-  shader: unshaded
 
 - type: marking
   id: VoxTailNub
@@ -761,8 +687,84 @@
     state: short2
 
 - type: marking
-  id: VoxTailSmallPlume
+  id: VoxTailBalled
   bodyPart: Tail
+  groupWhitelist: [ Vox ]
+  forcedColoring: true
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: balled
+
+# Tail Overlays
+
+- type: marking
+  id: FriendsOfAFeather
+  bodyPart: TailOverlay
+  groupWhitelist: [ Vox ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: friendsfeather1
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: friendsfeather2
+
+- type: marking
+  id: SpotsTail
+  bodyPart: TailOverlay
+  groupWhitelist: [ Vox ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: spots
+
+- type: marking
+  id: TailBloom
+  bodyPart: TailOverlay
+  groupWhitelist: [ Vox ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: bloom1
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: bloom2
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: bloom3
+
+- type: marking
+  id: VoxChains
+  bodyPart: TailOverlay
+  groupWhitelist: [ Vox ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: chains
+
+- type: marking
+  id: VoxFootSpines
+  bodyPart: TailOverlay
+  groupWhitelist: [ Vox ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: footspines
+
+- type: marking
+  id: VoxTailBell
+  bodyPart: TailOverlay
+  groupWhitelist: [ Vox ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: bell1
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: bell2
+
+- type: marking
+  id: VoxTailLantern
+  bodyPart: TailOverlay
+  groupWhitelist: [ Vox ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
+    state: lantern
+  shader: unshaded
+
+- type: marking
+  id: VoxTailSmallPlume
+  bodyPart: TailOverlay
   groupWhitelist: [ Vox ]
   sprites:
   - sprite: _CD/Mobs/Customization/Vox/tail.rsi
@@ -770,7 +772,7 @@
 
 - type: marking
   id: VoxTailSpines
-  bodyPart: Tail
+  bodyPart: TailOverlay
   groupWhitelist: [ Vox ]
   sprites:
   - sprite: _CD/Mobs/Customization/Vox/tail.rsi
@@ -778,7 +780,7 @@
 
 - type: marking
   id: VoxSunAndMoon
-  bodyPart: Tail
+  bodyPart: TailOverlay
   groupWhitelist: [ Vox ]
   sprites:
   - sprite: _CD/Mobs/Customization/Vox/tail.rsi

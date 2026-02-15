@@ -262,25 +262,6 @@
       - NukeOpsUplink
 
 - type: listing
-  id: UplinkEstoc
-  name: uplink-estoc-name
-  description: uplink-estoc-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Rifles/estoc.rsi, state: icon }
-  productEntity: BriefcaseWeaponDMRFilled
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Telecrystal: 10
-  cost:
-    Telecrystal: 14
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
   id: UplinkEstocBundle
   name: uplink-estoc-bundle-name
   description: uplink-estoc-bundle-desc
@@ -1139,10 +1120,11 @@
   - UplinkExplosives
 
 - type: listing
-  id: UplinkSyndimovCircuitBoard
+  id: UplinkSyndimovCircuitKit
   name: uplink-syndimov-law-name
   description: uplink-syndimov-law-desc
-  productEntity: SyndimovCircuitBoard
+  icon: { sprite: /Textures/Objects/Storage/boxicons.rsi, state: syndicate_circuit }
+  productEntity: SyndimovCircuitKit
   discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 6
@@ -1878,14 +1860,14 @@
   description: uplink-cat-ears-desc
   productEntity: ClothingHeadHatCatEars
   cost:
-    Telecrystal: 26
+    Telecrystal: 5 # Moffstation
   categories:
   - UplinkPointless
   conditions:
   - !type:BuyerWhitelistCondition
     blacklist:
       components:
-      - SurplusBundle
+      #- SurplusBundle # Moffstation - Cat Ears in Surplus is Funny
 
 - type: listing
   id: UplinkOutlawHat
@@ -1966,7 +1948,7 @@
   description: uplink-balloon-desc
   productEntity: BalloonSyn
   cost:
-    Telecrystal: 20
+    Telecrystal: 1 # Moffstation
   categories:
   - UplinkPointless
   conditions:

@@ -73,21 +73,7 @@
     damageContainer: Biological
   - type: Destructible
     thresholds:
-    # Moffstation - Start - Caustic Damage Acidifies Corpses
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Caustic
-        damage: 400
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawnInContainer: false
-        spawn:
-          Acidifier:
-            min: 1
-            max: 1
-      - !type:GibBehavior { }
-    # Moffstation - End
-    - trigger:
+    - trigger: # Moffstation start - reimplement gibbing and ashing
         !type:DamageTypeTrigger
         damageType: Blunt
         damage: 400
@@ -107,7 +93,21 @@
       - !type:BurnBodyBehavior
       - !type:PlaySoundBehavior
         sound:
-          collection: MeatLaserImpact
+          collection: MeatLaserImpact # Moffstation end
+    # Moffstation - Start - Caustic Damage Acidifies Corpses
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Caustic
+        damage: 400
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: false
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:GibBehavior { }
+    # Moffstation - End
     - trigger:
         !type:DamageTypeTrigger
         damageType: Radiation
@@ -138,6 +138,7 @@
       - ActionCritSuccumb
       - ActionCritFakeDeath
       - ActionCritLastWords
+  - type: StoreDamageTakenOnMind
   - type: Deathgasp
   - type: HealthExaminable
     examinableTypes:
@@ -160,6 +161,8 @@
   - type: LightningTarget
     priority: 2
     lightningExplode: false
+  - type: GhostOnMove
+    mustBeDead: true
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity

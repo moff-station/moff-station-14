@@ -1,5 +1,4 @@
 # Player: Kento - Character: Does-A-Little-Shimmy
-# License: CC-BY-SA-4.0
 - type: entity
   parent: BaseWeaponPersonalItemPistol
   id: PersonalItemShimmyPistol
@@ -11,25 +10,6 @@
     sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60.rsi
   - type: Clothing
     sprite: _Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/ermk60.rsi
-  - type: ItemSlots
-    slots:
-      gun_magazine:
-        name: Magazine
-        # No startingItem - spawns unloaded
-        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
-        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
-        priority: 2
-        whitelist:
-          tags:
-            - MagazinePistol
-        whitelistFailPopup: gun-magazine-whitelist-fail
-      gun_chamber:
-        name: Chamber
-        # No startingItem - spawns unchambered
-        priority: 1
-        whitelist:
-          tags:
-            - CartridgePistol
   - type: DetailExaminable
     content: An unusual and highly experimental design of the Mk58 from Sunshade Armories, the ERMk-60 intends to improve beyond excellence with a reinforced, heavier furniture. It also features an electronic sight and a laser pointer for pinpoint accuracy. You would question how a security officer managed to get a hold of this sidearm.
 
