@@ -1,11 +1,4 @@
 ﻿Entries:
-- author: SirWarock
-  changes:
-  - message: Fixed Shotgun Ammo Count not properly updating when reloading!
-    type: Fix
-  id: 9017
-  time: '2025-09-29T10:28:45.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40568
 - author: BoskiYourk, spanky_spanky
   changes:
   - message: Microwaves can now be picked up when unwrenched, and optionally, used
@@ -3994,3 +3987,10 @@
   id: 9523
   time: '2026-02-14T23:49:21.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/42722
+- author: ScarKy0
+  changes:
+  - message: Paradox clones now correctly copy the voice and pronouns of the original.
+    type: Fix
+  id: 9524
+  time: '2026-02-15T01:24:33.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42923
