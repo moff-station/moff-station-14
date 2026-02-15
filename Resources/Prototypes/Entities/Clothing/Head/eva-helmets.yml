@@ -122,10 +122,7 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-  - type: PointLight
-    color: "DodgerBlue"
-    radius: 5
-    energy: 2 # Moffstation - End
+# Moffstation - End
   - type: TemperatureProtection
     heatingCoefficient: 0.1
     coolingCoefficient: 0.1
@@ -134,6 +131,10 @@
       coefficients:
         Heat: 0.90
         Radiation: 0.75
+  - type: PointLight
+    radius: 5
+    energy: 2
+    color: "DodgerBlue" # Moffstation
   - type: Tag
     tags:
     #- CorgiWearable # Moffstation
