@@ -1,29 +1,3 @@
-- type: entity # Used for personal items which replace the Mk58 pistol.
-  parent: WeaponPistolMk58
-  id: BaseWeaponPersonalItemPistol
-  abstract: true
-
-- type: entity
-  parent: [BaseStorageItem, BaseBagOpenClose]
-  id: BasePersonalItemPistolCase
-  name: pistol case
-  abstract: true
-  components:
-  - type: Sprite
-    sprite: _Moffstation\PersonalItems\Items\Nox38\Stella-Fischer\stella-case.rsi
-    layers:
-    - state: closed
-      map: ["closeLayer"]
-    - state: open
-      map: ["openLayer"]
-  - type: Item
-    sprite: _Moffstation\PersonalItems\Items\Nox38\Stella-Fischer\stella-case.rsi
-    size: Normal
-  - type: Storage
-    grid:
-    - 0,0,1,0
-    - 0,1,0,1
-
 - type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolPM
