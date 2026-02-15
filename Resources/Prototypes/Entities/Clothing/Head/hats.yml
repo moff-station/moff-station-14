@@ -1346,9 +1346,11 @@
       sprite: Clothing/Head/Hats/cowboyhatbrown.rsi
     - type: Clothing
       sprite: Clothing/Head/Hats/cowboyhatbrown.rsi
+    # Moffstation - Begin - Re-add word replacement accents
     - type: AddAccentClothing
       accent: ReplacementAccent
       replacement: cowboy
+    # Moffstation - End
     - type: Tag
       tags:
       - PetWearable

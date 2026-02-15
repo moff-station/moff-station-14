@@ -9,7 +9,7 @@ namespace Content.Server.Speech.EntitySystems;
 public sealed class GermanAccentSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private readonly ReplacementAccentSystem _replacement = default!; // Moffstation - Re-add word replacement accents
 
     private static readonly Regex RegexTh = new(@"(?<=\s|^)th", RegexOptions.IgnoreCase);
     private static readonly Regex RegexThe = new(@"(?<=\s|^)the(?=\s|$)", RegexOptions.IgnoreCase);
@@ -38,8 +38,7 @@ public sealed class GermanAccentSystem : EntitySystem
             }
         }
 
-        // now, apply word replacements
-        msg = _replacement.ApplyReplacements(msg, "german");
+        msg = _replacement.ApplyReplacements(msg, "german"); // Moffstation - Re-add word replacement accents
 
         // replace th with zh (for zhis, zhat, etc. the => ze is handled by replacements already)
         var msgBuilder = new StringBuilder(msg);

@@ -727,11 +727,13 @@
     sprite: Clothing/Mask/italian_moustache.rsi
   - type: Clothing
     sprite: Clothing/Mask/italian_moustache.rsi
-  - type: Item
-    storedRotation: -90
+  # Moffstation - Begin - Re-add word replacement accents
   - type: AddAccentClothing
     accent: ReplacementAccent
     replacement: italian
+  # Moffstation - End
+  - type: Item
+    storedRotation: -90
 
 - type: entity
   parent: ClothingMaskBase

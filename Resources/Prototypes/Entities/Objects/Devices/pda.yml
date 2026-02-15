@@ -321,8 +321,10 @@
     borderColor: "#d7d7d0"
   - type: Icon
     state: pda-cook
-  - type: ReplacementAccent # for random sentience event
+  # Moffstation - Begin - Re-add word replacement accents
+  - type: ReplacementAccent
     accent: italian
+  # Moffstation - End
 
 - type: entity
   parent: BasePDA

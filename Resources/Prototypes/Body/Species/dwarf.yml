@@ -62,8 +62,10 @@
       Male: UnisexDwarf
       Female: FemaleDwarf
       Unsexed: UnisexDwarf
+  # Moffstation - Begin - Re-add word replacement accents
   - type: ReplacementAccent
     accent: dwarf
+  # Moffstation - End
   - type: Speech
     speechSounds: Bass
 
