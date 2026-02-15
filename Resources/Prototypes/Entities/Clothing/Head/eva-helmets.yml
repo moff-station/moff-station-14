@@ -79,7 +79,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Hardsuits/paramedhelm.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Head/Hardsuits/paramedhelm.rsi # Moffstation - Start
     layers:
     - state: icon
     - state: icon-unshaded
@@ -136,6 +136,6 @@
         Radiation: 0.75
   - type: Tag
     tags:
-    #- CorgiWearable
-    #- HelmetEVA
+    #- CorgiWearable # Moffstation
+    #- HelmetEVA # Moffstation
     - WhitelistChameleon
