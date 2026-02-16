@@ -10,25 +10,6 @@
     sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-pistol.rsi
   - type: Clothing
     sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-pistol.rsi
-  - type: ItemSlots
-    slots:
-      gun_magazine:
-        name: Magazine
-        # No startingItem - spawns unloaded
-        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
-        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
-        priority: 2
-        whitelist:
-          tags:
-            - MagazinePistol
-        whitelistFailPopup: gun-magazine-whitelist-fail
-      gun_chamber:
-        name: Chamber
-        # No startingItem - spawns unchambered
-        priority: 1
-        whitelist:
-          tags:
-            - CartridgePistol
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
