@@ -132,6 +132,10 @@
   - BlueSurgeryCap
   - GreenSurgeryCap
   - PurpleSurgeryCap
+  #Moffstation - Start
+  - BurgundySurgeryCap
+  - BlackSurgeryCap
+  #Moffstation - End
   - NurseHat
 
 - type: loadoutGroup
@@ -145,7 +149,11 @@
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
-  - MedicalDoctorJumpskirtNurse # MOFFSTATION - Adds nurse jumpskirt
+  # Moffstation - Start
+  - MedicalBurgundyScrubs
+  - MedicalBlackScrubs
+  - MedicalDoctorJumpskirtNurse
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing

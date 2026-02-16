@@ -42,12 +42,34 @@
   groupBy: "doctor roles"
 
 # Head
+- type: loadout
+  id: BurgundySurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapBurgundy
+  groupBy: "medical doctor caps"
 
+- type: loadout
+  id: BlackSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapBlack
+  groupBy: "medical doctor caps"
 # Mask
 
 # Neck
 
 # Jumpsuit
+- type: loadout
+  id: MedicalBurgundyScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorBurgundy
+  groupBy: "medical doctor scrubs"
+
+- type: loadout
+  id: MedicalBlackScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorBlack
+  groupBy: "medical doctor scrubs"
+
 - type: loadout
   id: MedicalDoctorJumpskirtNurse
   equipment:

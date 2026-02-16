@@ -302,3 +302,88 @@
         color: "#f58700"
       - state: pompom-equipped-HELMET
         color: "#dedac8"
+
+#Medical
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapBurgundy
+  name: phlebotomist cap
+  description: A burgundy cap phlembotomists wear during blood examinations. Keeps their hair from touching your blood samples.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: "#73284a"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#73284a"
+      right:
+      - state: inhand-right
+        color: "#73284a"
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: "#73284a"
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: "#73284a"
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: "#73284a"
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapBlack
+  name: coroner cap
+  description: A black cap coroners wear during autopsy. Keeps their hair from tickling your corpse.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: "#565656"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#565656"
+      right:
+      - state: inhand-right
+        color: "#565656"
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: "#565656"
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: "#565656"
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: "#565656"
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD

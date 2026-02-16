@@ -424,3 +424,60 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prosecutorred.rsi
+
+#Medical
+- type: entity
+  parent: ClothingUniformBase
+  id: UniformScrubsColorBurgundy
+  name: phlebotomy scrubs
+  description: A combination of comfort and utility intended to hide the blood that will be accidentally dropped once you slip.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    layers:
+    - state: icon
+      color: "#73284a"
+    - state: trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#73284a"
+      right:
+      - state: inhand-right
+        color: "#73284a"
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#73284a"
+      - state: trinkets-equipped-INNERCLOTHING
+
+- type: entity
+  parent: ClothingUniformBase
+  id: UniformScrubsColorBlack
+  name: coroner scrubs
+  description: A combination of comfort and utility intended to make it so other doctors are aware that the patient is probably dead already.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    layers:
+    - state: icon
+      color: "#565656"
+    - state: trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#565656"
+      right:
+      - state: inhand-right
+        color: "#565656"
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: "#565656"
+      - state: trinkets-equipped-INNERCLOTHING
