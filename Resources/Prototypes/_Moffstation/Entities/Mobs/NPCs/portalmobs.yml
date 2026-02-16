@@ -1,38 +1,38 @@
 - type: entity
-  name: hellhound
-  categories: [ HideSpawnMenu ]
   parent: [ BaseSmasherHostile, MobFleshLover ]
   id: MobFleshLoverSmasher
-
-- type: entity
   name: hellhound
   categories: [ HideSpawnMenu ]
+
+- type: entity
   parent: [ BaseSmasherHostile, MobFleshGolem ]
   id: MobFleshGolemSmasher
-
-- type: entity
   name: hellhound
   categories: [ HideSpawnMenu ]
+
+- type: entity
   parent: [ BaseSmasherHostile, MobFleshClamp ]
   id: MobFleshClampSmasher
-
-- type: entity
   name: hellhound
   categories: [ HideSpawnMenu ]
+
+- type: entity
   parent: [ BaseSmasherHostile, MobFleshJared ]
   id: MobFleshJaredSmasher
-
-- type: entity
   name: hellhound
   categories: [ HideSpawnMenu ]
+
+- type: entity
   parent: [ BaseSmasherHostile, MobAbomination ]
   id: MobAbominationSmasher
-
-- type: entity
   name: hellhound
   categories: [ HideSpawnMenu ]
+
+- type: entity
   parent: [ BaseSmasherHostile, MobCorgiNarsi ]
   id: MobHellhound
+  name: hellhound
+  categories: [ HideSpawnMenu ]
   description: A cute little puppy!
   components:
   - type: NpcFactionMember
@@ -40,6 +40,6 @@
     - SimpleHostile
 
 - type: entity
-  name: hellspawn
   parent: [ BaseSmasherHostile, MobHellspawn ]
   id: MobHellspawnSmasher
+  name: hellspawn

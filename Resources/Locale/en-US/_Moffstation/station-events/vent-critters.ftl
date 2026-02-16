@@ -4,4 +4,4 @@ station-event-vent-creatures-start-announcement =  Attention. A large influx of 
 station-event-vent-creatures-vent-warning = Something seems to be crawling through {THE($object)}!
 station-event-vent-creatures-no-vent-warning = Something seems to be crawling through the floor!
 
-hell-portal-announcement = Attention crew, it appears an extradimensional portal has been opened within the hull of the station.
+hell-portal-announcement = Attention. Erebesian telemetrics indicate the manifestation of an extradimensional portal somewhere within the hull of the station. Report unexplained fires or the odor of sulphur.
