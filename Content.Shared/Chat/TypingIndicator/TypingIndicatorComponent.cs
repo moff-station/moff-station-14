@@ -21,7 +21,7 @@ public sealed partial class TypingIndicatorComponent : Component
     /// <summary>
     ///     Override for the normal visual info
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
+    [AutoNetworkedField]
     public ProtoId<TypingIndicatorPrototype>? TypingIndicatorOverride;
     // Moffstation - End
 }
