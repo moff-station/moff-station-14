@@ -1151,6 +1151,10 @@
     prototype: SurveillanceCameraRouterConstructed
     stackRequirements:
       Cable: 1
+  # L5 — camera router blade server
+  - type: BladeServerBoard
+    prototype: SurveillanceCameraRouterBladeServerConstructed
+  # End L5 — camera router blade server
 
 - type: entity
   id: SurveillanceCameraWirelessRouterCircuitboard
@@ -1165,6 +1169,10 @@
     stackRequirements:
       Cable: 2
       Glass: 1
+  # L5 — camera router blade server
+  - type: BladeServerBoard
+    prototype: SurveillanceCameraWirelessRouterBladeServerConstructed
+  # End L5 — camera router blade server
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -1179,6 +1187,10 @@
     stackRequirements:
       Cable: 2
       Glass: 1
+  # L5 — camera router blade server
+  - type: BladeServerBoard
+    prototype: SurveillanceCameraWirelessRouterBladeServerXenoborg
+  # End L5 — camera router blade server
 
 - type: entity
   id: SurveillanceWirelessCameraMovableCircuitboard

@@ -661,12 +661,12 @@
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitLawyerRed
   name: red lawyer suit
-  description: A flashy red suit worn by lawyers and show-offs.
+  description: A flashy red suitskirt worn by lawyers trained using the chords of plasteel. # Moffstation
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerred.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerred.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerred.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerred.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -697,9 +697,9 @@
   description: A stylish purple piece worn by lawyers and show people.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerpurple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerpurple.rsi #Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerpurple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerpurple.rsi #Moffstation
 
 - type: entity
   parent: ClothingUniformBase

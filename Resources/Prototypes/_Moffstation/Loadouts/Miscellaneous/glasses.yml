@@ -75,9 +75,20 @@
     eyes: ClothingEyesGlassesChemical
 
 - type: loadout
+  id: MedicalHud
+  equipment:
+    eyes: ClothingEyesHudMedical
+
+- type: loadout
   id: MedicalGlasses
   equipment:
     eyes: ClothingEyesGlassesMedSunglasses
+
+- type: loadout
+  id: MedicalEyePatchHud
+  groupBy: "medEyepatch"
+  equipment:
+    eyes: ClothingEyesEyepatchHudMedical
 
 - type: loadout
   id: MedicalEyePatchHudFlipped

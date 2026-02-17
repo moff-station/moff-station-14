@@ -1,0 +1,46 @@
+# Player: Nox38 - Character: Stella Fischer
+- type: entity
+  parent: BaseWeaponPersonalItemPistol
+  id: PersonalItemStellaPistol
+  name: Mk9 custom
+  description: "A limited-production Mk9 NIGHTHAWK pistol, customized with a red dot sight, compensator, and laser pointer. Despite not appearing damaged, the grip is wrapped in blue tape.\nFeeds from .35 pistol magazines." # Description references real-life weapon's name: PX-9 NIGHTSTALKER.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-pistol.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-pistol.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
+
+- type: entity
+  parent: BasePersonalItemPistolCase
+  id: PersonalItemStellaPistolCase
+  name: Mk9 gun case
+  description: A slim, portable gun case intended to protect its contents. The outside is wrapped in blue tape.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/Nox38/Stella-Fischer/stella-case.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PersonalItemStellaPistol
+
+- type: loadout
+  id: PersonalItemStellaPistol
+  storage:
+    back:
+    - PersonalItemStellaPistolCase
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Stella Fischer
+    jobs:
+    - JobSecurityOfficer
+    - JobDetective
+    - JobWarden
+    - JobHeadOfSecurity

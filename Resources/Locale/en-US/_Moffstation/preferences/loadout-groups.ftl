@@ -47,6 +47,8 @@ loadout-group-atmospheric-technician-id = Atmospheric Technician ID
 loadout-group-chemist-id = Chemist ID
 loadout-group-paramedic-id = Paramedic ID
 loadout-group-psychologist-id = Psychologist ID
+loadout-group-medical-glasses = Medical Glasses
+loadout-group-chemist-glasses = Chemist Glasses
 
 loadout-group-bartender-id = Bartender ID
 loadout-group-botanist-id = Botanist ID
