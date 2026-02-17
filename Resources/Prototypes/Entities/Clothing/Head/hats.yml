@@ -635,8 +635,8 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      #HeadSide : HEAD #Moffstation
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
@@ -673,8 +673,8 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      #HeadSide : HEAD # Moffstation
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
@@ -711,8 +711,8 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      #HeadSide : HEAD # Moffstation
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
@@ -1028,9 +1028,9 @@
   description: Somehow I feel I'm not supposed to leave this place.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/nursehat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/nursehat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/nursehat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/nursehat.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade
@@ -1555,13 +1555,14 @@
   description: A sterile white beret.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_medic.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_medic.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_medic.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_medic.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
+    - HamsterWearable # Moffstation
 
 - type: entity
   parent: ClothingHeadBase

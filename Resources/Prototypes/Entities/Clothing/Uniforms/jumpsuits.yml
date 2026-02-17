@@ -415,13 +415,13 @@
     sprite: Clothing/Uniforms/Jumpsuit/kimono.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformBase # Moffstation
   id: ClothingUniformJumpsuitMedicalDoctor
   name: medical doctor jumpsuit
-  description: It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel.
+  description: It's made of a special fibers that provides minor protection against biohazards while maintaining a professional appearance # Moffstation
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/medical.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase

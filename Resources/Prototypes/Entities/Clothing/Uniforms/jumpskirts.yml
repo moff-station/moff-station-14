@@ -244,12 +244,12 @@
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtMedicalDoctor
   name: medical doctor jumpskirt
-  description: It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel.
+  description: It's made of a special fibers that provides minor protection against biohazards while maintaining a professional appearance # Moffstation
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/medical.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/medical.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase

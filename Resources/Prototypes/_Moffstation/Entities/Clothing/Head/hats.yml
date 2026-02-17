@@ -345,6 +345,7 @@
     layers:
       Hair: HEAD
       HeadTop : HEAD
+      HeadSide: HEAD
 
 - type: entity
   parent: ClothingHeadBase
@@ -386,4 +387,5 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
