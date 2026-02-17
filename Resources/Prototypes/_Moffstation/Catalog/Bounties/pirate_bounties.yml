@@ -113,19 +113,6 @@
       - Thruster
 
 - type: cargoBounty
-  id: PirateBountyMagboots
-  reward: 6500
-  description: bounty-description-magboots
-  idPrefix: SP
-  group: Pirates
-  entries:
-  - name: bounty-item-magboots
-    amount: 4
-    whitelist:
-      tags:
-      - Magboots
-
-- type: cargoBounty
   id: PirateBountyFaxmachine
   reward: 6000
   description: bounty-description-fax

@@ -114,12 +114,12 @@
   description: A void suit made for paramedics.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/paramed.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/paramed.rsi # Moffstation
     layers:
     - state: icon
   - type: Appearance
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/paramed.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/paramed.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
@@ -162,7 +162,7 @@
     enabled: false
     radius: 2
     energy: 2
-    color: blue
+    color: aquamarine # Moffstation
     mask: /Textures/Effects/LightMasks/double_cone.png
   - type: RotatingLight
     speed: 360
@@ -171,5 +171,5 @@
       toggleable-clothing: !type:ContainerSlot {}
   - type: Tag
     tags:
-    - CorgiWearable
+    #- CorgiWearable # Moffstation
     - WhitelistChameleon

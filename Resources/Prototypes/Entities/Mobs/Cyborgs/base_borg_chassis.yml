@@ -259,6 +259,9 @@
   id: BaseBorgChassis
   components:
   - type: IonStormTarget
+  # Moffstation - Begin (Remove Inherent Gravity) - give magboots effect to cyborgs, but not xenoborgs to prevent a new meta strategy.
+  - type: Magboots
+  # Moffstation - End
 
 - type: entity
   abstract: true
