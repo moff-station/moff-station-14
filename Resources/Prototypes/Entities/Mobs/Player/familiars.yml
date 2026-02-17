@@ -74,7 +74,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      225: Dead # Moffstation - Cerberus Additions Start
+      # Moffstation - Cerberus Additions Start
+      225: Dead
   - type: PassiveDamage #Slow Passive Regen
     allowedStates:
     - Alive
