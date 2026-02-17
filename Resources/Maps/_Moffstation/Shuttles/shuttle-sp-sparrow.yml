@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 272.0.0
+  engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 02/17/2026 02:58:38
-  entityCount: 217
+  time: 01/14/2026 22:27:13
+  entityCount: 215
 maps: []
 grids:
 - 1
@@ -237,8 +237,6 @@ entities:
     - type: GasTileOverlay
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
-    - type: TileHistory
-      chunkHistory: {}
 - proto: AirAlarm
   entities:
   - uid: 112
@@ -1087,19 +1085,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 1.5,-0.5
       parent: 1
-- proto: HandheldStationMapNukeops
-  entities:
-  - uid: 170
-    components:
-    - type: Transform
-      pos: -0.48058856,7.890562
-      parent: 1
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 174
 - proto: HarmonicaInstrument
   entities:
   - uid: 202
@@ -1206,14 +1191,6 @@ entities:
     - type: Transform
       pos: 0.4800246,-0.399474
       parent: 1
-- proto: PowerCellHigh
-  entities:
-  - uid: 174
-    components:
-    - type: Transform
-      parent: 170
-    - type: Physics
-      canCollide: False
 - proto: PoweredlightSodium
   entities:
   - uid: 190
