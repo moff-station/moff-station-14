@@ -58,7 +58,7 @@
     enum.HumanoidVisualLayers.Tail:
       limit: 1
       required: true
-      default: [ VoxTailBack ] # Moffstation - Move vox markings
+      default: [ VoxTail ]
     enum.HumanoidVisualLayers.TailOverlay:
       limit: 1
       required: false
