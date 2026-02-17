@@ -4,3 +4,10 @@
   icon:
     sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
     state: TestSubject
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconAssistant
+  icon:
+    sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
+    state: Assistant
