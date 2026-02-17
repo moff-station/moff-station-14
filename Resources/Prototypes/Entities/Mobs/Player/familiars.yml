@@ -75,15 +75,17 @@
     thresholds:
       0: Alive
       225: Dead # Moffstation - Cerberus Additions Start
-  - type: PassiveDamage #Very slow passive heal, similar to zombies.
+  - type: PassiveDamage #Slow Passive Regen
     allowedStates:
     - Alive
     damageCap: 224.9
     damage:
       types:
-        Heat: -0.2
+        Heat: -0.25
       groups:
-        Brute: -0.5
+        Brute: -0.25
+        Airloss: -0.25
+        Toxin: -0.25
   - type: Flammable #Fireproof...it's from hell.
     damage:
       types: {}
