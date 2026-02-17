@@ -27205,6 +27205,7 @@ entities:
           volume: -5
         path: /Audio/Machines/door_lock_on.ogg
       breakOnAccessBreaker: False
+      locked: True
   - uid: 3711
     components:
     - type: Transform
@@ -27238,6 +27239,7 @@ entities:
           volume: -5
         path: /Audio/Machines/door_lock_on.ogg
       breakOnAccessBreaker: False
+      locked: True
   - uid: 3715
     components:
     - type: Transform
@@ -27256,6 +27258,7 @@ entities:
           volume: -5
         path: /Audio/Machines/door_lock_on.ogg
       breakOnAccessBreaker: False
+      locked: True
   - uid: 3734
     components:
     - type: Transform
@@ -27277,6 +27280,7 @@ entities:
           volume: -5
         path: /Audio/Machines/door_lock_on.ogg
       breakOnAccessBreaker: False
+      locked: True
   - uid: 3740
     components:
     - type: Transform
@@ -29789,6 +29793,13 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
+    - type: SolutionContainerManager
+      solutions:
+        drainBuffer:
+          maxVol: 1000
+          reagents:
+          - ReagentId: Blood
+            Quantity: 1000
   - uid: 3915
     components:
     - type: Transform
@@ -29796,6 +29807,13 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
+    - type: SolutionContainerManager
+      solutions:
+        drainBuffer:
+          maxVol: 1000
+          reagents:
+          - ReagentId: Blood
+            Quantity: 1000
   - uid: 4315
     components:
     - type: Transform
@@ -48874,6 +48892,7 @@ entities:
     - type: Transform
       pos: -25.5,10.5
       parent: 2
+      locked: True
 - proto: MicroManipulatorStockPart
   entities:
   - uid: 724
