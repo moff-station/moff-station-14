@@ -119,12 +119,14 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     {
         return channel switch
         {
-            ChatSelectChannel.Emotes => EmoteIndicator,
+            // Switch statement is stupid and doesn't properly infer its nullable
+            // ReSharper disable once RedundantCast
+            ChatSelectChannel.Emotes => (ProtoId<TypingIndicatorPrototype>?)EmoteIndicator,
             ChatSelectChannel.LOOC => OocIndicator,
             ChatSelectChannel.OOC => OocIndicator,
             ChatSelectChannel.Radio => RadioIndicator,
             ChatSelectChannel.Whisper => WhisperIndicator,
-            _ => null
+            _ => null,
         };
     }
 
