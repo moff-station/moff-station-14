@@ -21,6 +21,13 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     private bool _isClientChatFocused;
     private ProtoId<TypingIndicatorPrototype>? _channelIndicator; // Moffstation - Typing indicators
 
+    // Moffstation - Start - Typing indicators
+    private static readonly ProtoId<TypingIndicatorPrototype> EmoteIndicator = "emote";
+    private static readonly ProtoId<TypingIndicatorPrototype> OocIndicator = "ooc";
+    private static readonly ProtoId<TypingIndicatorPrototype> RadioIndicator = "radio";
+    private static readonly ProtoId<TypingIndicatorPrototype> WhisperIndicator = "whisper";
+    // Moffstation - End
+
     public override void Initialize()
     {
         base.Initialize();
@@ -112,11 +119,11 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     {
         return channel switch
         {
-            ChatSelectChannel.Emotes => "emote",
-            ChatSelectChannel.LOOC => "ooc",
-            ChatSelectChannel.OOC => "ooc",
-            ChatSelectChannel.Radio => "radio",
-            ChatSelectChannel.Whisper => "whisper",
+            ChatSelectChannel.Emotes => EmoteIndicator,
+            ChatSelectChannel.LOOC => OocIndicator,
+            ChatSelectChannel.OOC => OocIndicator,
+            ChatSelectChannel.Radio => RadioIndicator,
+            ChatSelectChannel.Whisper => WhisperIndicator,
             _ => null
         };
     }
