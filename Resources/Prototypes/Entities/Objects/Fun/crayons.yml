@@ -269,25 +269,65 @@
     - Trash
 
 - type: entity
-  parent: CrayonBoxEmpty # Moffstation
-  id: CrayonBox
-  suffix: Filled # Moffstation
+  parent: BoxCardboard
+  id: CrayonBoxEmpty
+  name: crayon box
+  description: It's a box of crayons.
   components:
-# Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
-  # - type: Sprite
-  #   sprite: Objects/Fun/crayons.rsi
-  #   state: box
-  # - type: Storage
-  #   grid:
-  #   - 0,0,7,0
-  #   maxItemSize: Tiny
-  # - type: Item
-  #   sprite: Objects/Fun/crayons.rsi
-  #   size: Small
-  #   shape:
-  #   - 0,0,1,1
-  #   heldPrefix: box
-# Moffstation - End
+  - type: Sprite
+    sprite: Objects/Fun/crayons.rsi
+    state: box
+  - type: Storage
+    grid:
+    - 0,0,7,0
+    maxItemSize: Tiny
+  - type: Item
+    sprite: Objects/Fun/crayons.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+    heldPrefix: box
+  - type: ItemMapper
+    mapLayers:
+      black_box:
+        whitelist:
+          tags:
+          - CrayonBlack
+      blue_box:
+        whitelist:
+          tags:
+          - CrayonBlue
+      green_box:
+        whitelist:
+          tags:
+          - CrayonGreen
+      orange_box:
+        whitelist:
+          tags:
+          - CrayonOrange
+      purple_box:
+        whitelist:
+          tags:
+          - CrayonPurple
+      red_box:
+        whitelist:
+          tags:
+          - CrayonRed
+      yellow_box:
+        whitelist:
+          tags:
+          - CrayonYellow
+      white_box:
+        whitelist:
+          tags:
+          - CrayonWhite
+  - type: Appearance
+
+- type: entity
+  parent: CrayonBoxEmpty
+  id: CrayonBox
+  suffix: Filled
+  components:
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
@@ -300,40 +340,3 @@
         - id: CrayonPurple
         - id: CrayonBlack
         - id: CrayonWhite
-# Moffstation - Begin - Basic crayon box moved to _Moff namespace. Consider any changes to this to be moved to the parent.
-  # - type: ItemMapper
-  #   mapLayers:
-  #     black_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonBlack
-  #     blue_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonBlue
-  #     green_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonGreen
-  #     orange_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonOrange
-  #     purple_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonPurple
-  #     red_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonRed
-  #     yellow_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonYellow
-  #     white_box:
-  #       whitelist:
-  #         tags:
-  #         - CrayonWhite
-  # - type: Appearance
-# Moffstation - End

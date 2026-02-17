@@ -678,15 +678,6 @@
     state: firefly2
 
 - type: marking
-  id: MothFireflyOverlay
-  bodyPart: Tail
-  groupWhitelist: [ Moth ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/Moth/tail.rsi
-    state: firefly1
-  shader: unshaded
-
-- type: marking
   id: MothGlasswing
   bodyPart: Tail
   groupWhitelist: [ Moth ]
@@ -789,5 +780,16 @@
     state: pyr_inner_front
   - sprite: _CD/Mobs/Customization/Moth/taillayers.rsi
     state: pyr_stripes_front
+
+# Tail Overlays
+
+- type: marking
+  id: MothFireflyOverlay
+  bodyPart: TailOverlay
+  groupWhitelist: [ Moth ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/Moth/tail.rsi
+    state: firefly1
+  shader: unshaded
 
 # RArmExtension

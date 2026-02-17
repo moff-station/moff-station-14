@@ -1,0 +1,30 @@
+# Quartermaster
+- type: loadoutGroup
+  id: QuartermasterBackpack
+  name: loadout-group-quartermaster-backpack
+  loadouts:
+  - CargoTechnicianBackpack
+  - CargoTechnicianSatchel
+  - CargoTechnicianDuffel
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+  - LeatherSatchel
+
+- type: loadoutGroup
+  id: QuartermasterPDA
+  name: loadout-group-quartermaster-id
+  loadouts:
+  - QuartermasterPDA # Keep default PDA on top of the list
+  - RequisitionsCoordinatorPDA
+
+# Salvage Specialist
+- type: loadoutGroup
+  id: SalvagePDA
+  name: loadout-group-salvage-specialist-id
+  loadouts:
+  - SalvagePDA # Keep default PDA on top of the list
+  - AstrominerPDA
+  - ExcavatorPDA
+  - ProspectorPDA
+  - ScavengerPDA

@@ -532,12 +532,12 @@
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtLawyerRed
   name: red lawyer suitskirt
-  description: A flashy red suitskirt worn by lawyers and show-offs.
+  description: A flashy red suitskirt worn by lawyers trained using the chords of plasteel. # Moffstation
   components:
-    - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerred.rsi
-    - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerred.rsi
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerred.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerred.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -568,9 +568,9 @@
   description: A stylish purple piece worn by lawyers and show people.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerpurple.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpurple.rsi #Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerpurple.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpurple.rsi #Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase

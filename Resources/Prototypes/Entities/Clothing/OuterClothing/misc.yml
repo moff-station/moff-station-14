@@ -148,15 +148,21 @@
     sprite: Clothing/OuterClothing/Misc/cultrobes.rsi
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageBase # Moffstation
   id: ClothingOuterRobesJudge
   name: judge robes
   description: This robe commands authority.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/judge.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/judge.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/judge.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/judge.rsi # Moffstation
+# Moffstation - Start - Judge gavel
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: Gavel
+# Moffstation - End
 
 - type: entity
   parent: ClothingOuterBase

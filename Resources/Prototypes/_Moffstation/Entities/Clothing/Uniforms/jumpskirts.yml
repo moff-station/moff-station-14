@@ -338,3 +338,26 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_atmos.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_atmos.rsi
+
+#Lawyer
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtProsecutorKarmic
+  name: karmic prosecutor suitskirt
+  description: A stylish cyan piece worn by prosecutors tired of foolish foolery of foolish fools.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prosecutorkarmic.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/prosecutorkarmic.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtLawyerPsyched
+  name: psyched lawyer suitskirt
+  description: A stylish yellow piece worn by lawyers interested in psycho-analysing witness testimonies.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpsyched.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpsyched.rsi
