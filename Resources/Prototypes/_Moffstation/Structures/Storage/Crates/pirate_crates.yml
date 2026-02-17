@@ -165,6 +165,9 @@
       entity_storage: !type:AllSelector
         children:
         - id: HandheldStationMapNukeops
+          cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellHigh
         - id: AppraisalTool
           amount: !type:RangeNumberSelector
             range: 3, 5
@@ -299,6 +302,9 @@
         - id: WeaponGrapplingGun
         - id: WeaponPistolFlintlock
         - id: HandheldStationMapNukeops
+          cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellHigh
 
 - type: entity
   parent: CratePirateChestSecure
