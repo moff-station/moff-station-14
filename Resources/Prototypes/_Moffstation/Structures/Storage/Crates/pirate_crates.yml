@@ -164,6 +164,7 @@
     containers:
       entity_storage: !type:AllSelector
         children:
+        - id: HandheldStationMapNukeops
         - id: AppraisalTool
           amount: !type:RangeNumberSelector
             range: 3, 5
@@ -297,6 +298,7 @@
         - id: PirateAnchor
         - id: WeaponGrapplingGun
         - id: WeaponPistolFlintlock
+        - id: HandheldStationMapNukeops
 
 - type: entity
   parent: CratePirateChestSecure
