@@ -115,7 +115,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
 
     // Moffstation - Start - Typing Indicators
     // A table for overriding the normal indicator based on the selected channel
-    public ProtoId<TypingIndicatorPrototype>? ChannelSelectIndicator(ChatSelectChannel channel)
+    private static ProtoId<TypingIndicatorPrototype>? ChannelSelectIndicator(ChatSelectChannel channel)
     {
         return channel switch
         {
