@@ -728,12 +728,15 @@ public sealed partial class ChatUIController : UIController
         {
             case ChatSelectChannel.None:
                 box.ChatInput.ChannelSelector.UpdateChannelSelectButton(box.SelectedChannel, null, null);
+                _typingIndicator?.UpdateChannelIndicator(box.SelectedChannel);  // Moffstation - Typing indicators
                 break;
             case ChatSelectChannel.CollectiveMind:
                 box.ChatInput.ChannelSelector.UpdateChannelSelectButton(prefixChannel, null, collectiveMind);
+                _typingIndicator?.UpdateChannelIndicator(prefixChannel);    // Moffstation - Typing indicators
                 break;
             default:
                 box.ChatInput.ChannelSelector.UpdateChannelSelectButton(prefixChannel, radioChannel, null);
+                _typingIndicator?.UpdateChannelIndicator(prefixChannel);    // Moffstation - Typing indicators
                 break;
         }
     }

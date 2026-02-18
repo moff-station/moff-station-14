@@ -167,22 +167,20 @@
         !type:SimpleColoring
         color: "#937e3d"
 
-# Moffstation - Begin - Vox markings
-#- type: marking
-#  id: VoxTail
-#  bodyPart: Tail
-#  groupWhitelist: [Vox]
-#  forcedColoring: true
-#  sprites:
-#  - sprite: Mobs/Customization/vox_parts.rsi
-#    state: tail
-# Moffstation - End
+- type: marking
+  id: VoxTail
+  bodyPart: Tail
+  groupWhitelist: [Vox]
+  #  forcedColoring: true # Moffstation - Vox markings
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail
 
 - type: marking
   id: VoxTailAnimated
   bodyPart: Tail
   groupWhitelist: []
-  forcedColoring: true
+  #  forcedColoring: true # Moffstation - Vox markings
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_animated
@@ -200,7 +198,7 @@
   id: VoxTailShortAnimated
   bodyPart: Tail
   groupWhitelist: []
-  forcedColoring: true
+  #  forcedColoring: true # Moffstation - Vox markings
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_short_animated
@@ -218,7 +216,7 @@
   id: VoxTailBigAnimated
   bodyPart: Tail
   groupWhitelist: []
-  forcedColoring: true
+  #  forcedColoring: true # Moffstation - Vox markings
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_big_animated

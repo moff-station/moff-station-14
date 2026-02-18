@@ -13,10 +13,13 @@ namespace Content.Shared.Chat.TypingIndicator;
 public sealed class TypingChangedEvent : EntityEventArgs
 {
     public readonly TypingIndicatorState State;
+    public ProtoId<TypingIndicatorPrototype>? ChannelIndicator; // Moffstation - Typing indicators
 
-    public TypingChangedEvent(TypingIndicatorState state)
+    // Moffstation - Typing indicators (added channelIndicator)
+    public TypingChangedEvent(TypingIndicatorState state, ProtoId<TypingIndicatorPrototype>? channelIndicator = null)
     {
         State = state;
+        ChannelIndicator = channelIndicator;  // Moffstation - Typing indicators
     }
 }
 

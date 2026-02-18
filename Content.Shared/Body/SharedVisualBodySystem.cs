@@ -93,6 +93,13 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!Resolve(source, ref source.Comp) || !Resolve(target, ref target.Comp))
             return;
 
+        // Moffstation - Begin - Cloning copies height. This isn't just a component copy because it needs event piping to be applied properly.
+        if (TryComp<HumanoidProfileComponent>(source, out var profile))
+        {
+            ApplyProfile(target, new() { Height = profile.Height });
+        }
+        // Moffstation - End
+
         var sourceOrgans = _container.EnsureContainer<Container>(source, BodyComponent.ContainerID);
 
         foreach (var sourceOrgan in sourceOrgans.ContainedEntities)
