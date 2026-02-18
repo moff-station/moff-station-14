@@ -1,15 +1,4 @@
 ﻿Entries:
-- author: archee1
-  changes:
-  - message: Material doors now have destruction sounds and will drop a portion of
-      their construction materials when destroyed.
-    type: Add
-  - message: Material doors now have reduced health, resistances, construction time,
-      and construction costs
-    type: Tweak
-  id: 9027
-  time: '2025-10-02T22:47:11.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/36597
 - author: PJB3005
   changes:
   - message: You can stuff the nuke disk in plushies now.
@@ -3989,3 +3978,11 @@
   id: 9534
   time: '2026-02-18T20:06:53.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/42969
+- author: robinthegirlthing
+  changes:
+  - message: The basic operative bundle now contains an esword, instead of a viper
+      magazine and agent ID card.
+    type: Tweak
+  id: 9535
+  time: '2026-02-18T21:10:25.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42930
