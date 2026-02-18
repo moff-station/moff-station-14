@@ -1,12 +1,4 @@
 ﻿Entries:
-- author: kosticia
-  changes:
-  - message: Anomalies with inconsistent particles no longer shuffle right before
-      collision with particle.
-    type: Fix
-  id: 9026
-  time: '2025-10-02T20:11:25.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40624
 - author: archee1
   changes:
   - message: Material doors now have destruction sounds and will drop a portion of
@@ -3990,3 +3982,10 @@
   id: 9533
   time: '2026-02-18T02:02:44.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/42929
+- author: PicklOH
+  changes:
+  - message: Fixed Det coat armor values
+    type: Fix
+  id: 9534
+  time: '2026-02-18T20:06:53.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/42969
