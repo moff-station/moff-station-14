@@ -21,7 +21,11 @@
 # Neck
 
 # Jumpsuit
-
+- type: loadout
+  id: ParamedicSpeedsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEMS
+  groupBy: "paramedic jumpsuits"
 # Back
 
 # Belt
