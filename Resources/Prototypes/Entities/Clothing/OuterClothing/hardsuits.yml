@@ -402,9 +402,9 @@
   description: A special suit that protects against hazardous, low pressure environments. Built with lightweight materials for easier movement.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/medical.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/medical.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/medical.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/medical.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000

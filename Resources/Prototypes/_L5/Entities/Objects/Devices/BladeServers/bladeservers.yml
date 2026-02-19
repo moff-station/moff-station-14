@@ -1,0 +1,147 @@
+# Wired camera routers
+- type: entity
+  id: SurveillanceCameraRouterBladeServerBase
+  abstract: true
+  parent: [ BaseSurveillanceCameraRouter, ConstructibleBladeServer ]
+  name: camera router blade server
+  description: A surveillance camera router. It routes. Perhaps.
+  components:
+  - type: BladeServer
+    stripeColor: "#AAAAAAFF"
+  - type: Machine
+    board: SurveillanceCameraRouterCircuitboard
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerConstructed
+  parent: SurveillanceCameraRouterBladeServerBase
+  suffix: constructed
+  components:
+  - type: SurveillanceCameraRouter
+    setupAvailableNetworks:
+    - SurveillanceCameraEngineering
+    - SurveillanceCameraSecurity
+    - SurveillanceCameraService
+    - SurveillanceCameraSupply
+    - SurveillanceCameraScience
+    - SurveillanceCameraGeneral
+    - SurveillanceCameraMedical
+    - SurveillanceCameraCommand
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerEngineering
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: engineering camera router
+  suffix: engineering
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraEngineering
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerSecurity
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: security camera router
+  suffix: security
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraSecurity
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerService
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: service camera router
+  suffix: service
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraService
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerSupply
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: logistics camera router # L5
+  suffix: logistics # L5
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraSupply
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerScience
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: science camera router
+  suffix: science
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraScience
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerGeneral
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: general camera router
+  suffix: general
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraGeneral
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerMedical
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: medical camera router
+  suffix: medical
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraMedical
+
+- type: entity
+  id: SurveillanceCameraRouterBladeServerCommand
+  parent: SurveillanceCameraRouterBladeServerBase
+  name: leadership camera router
+  suffix: leadership
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraCommand
+
+# Wireless camera router
+- type: entity
+  id: SurveillanceCameraWirelessRouterBladeServerBase
+  abstract: true
+  parent: [ BaseSurveillanceCameraWirelessRouter, ConstructibleBladeServer ]
+  name: wireless camera router blade server
+  description: A wireless surveillance camera router. It routes. Perhaps.
+  components:
+  - type: BladeServer
+    stripeColor: "#000000FF"
+  - type: Machine
+    board: SurveillanceCameraWirelessRouterCircuitboard
+
+- type: entity
+  id: SurveillanceCameraWirelessRouterBladeServerConstructed
+  parent: SurveillanceCameraWirelessRouterBladeServerBase
+  suffix: constructed
+  components:
+  - type: SurveillanceCameraRouter
+    setupAvailableNetworks:
+    - SurveillanceCameraEntertainment
+
+- type: entity
+  id: SurveillanceCameraWirelessRouterBladeServerEntertainment
+  parent: SurveillanceCameraWirelessRouterBladeServerBase
+  name: entertainment camera router
+  suffix: entertainment
+  components:
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraEntertainment
+
+- type: entity
+  id: SurveillanceCameraWirelessRouterBladeServerXenoborg
+  parent: SurveillanceCameraWirelessRouterBladeServerBase
+  name: xenoborg camera router
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: Mothership
+    transmitFrequencyId: Mothership
+  - type: WirelessNetworkConnection
+    range: 2000 # longer range to get xenoborgs even when the mothership is far away
+  - type: SurveillanceCameraRouter
+    subnetFrequency: Xenoborg
+  - type: Machine
+    board: SurveillanceCameraWirelessRouterXenoborgCircuitboard
