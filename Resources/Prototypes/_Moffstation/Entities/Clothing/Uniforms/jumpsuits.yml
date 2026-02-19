@@ -481,3 +481,14 @@
       - state: equipped-INNERCLOTHING
         color: "#565656"
       - state: trinkets-equipped-INNERCLOTHING
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitEMS
+  name: emergency responder speedsuit
+  description: It is a heavy-duty suit designed for emergency paramedical work.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/para_speed.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/para_speed.rsi

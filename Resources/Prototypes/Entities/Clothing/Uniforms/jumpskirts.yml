@@ -115,9 +115,9 @@
   description: It's a jumpskirt worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/cmo.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/cmo.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -269,9 +269,9 @@
   description: It's got a plus on it, that's a good thing right?
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/paramedic.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/paramedic.rsi #Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/paramedic.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/paramedic.rsi #Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -645,9 +645,9 @@
   description: A sign of skill and prestige within the medical department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/senior_physician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_physician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/senior_physician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_physician.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]

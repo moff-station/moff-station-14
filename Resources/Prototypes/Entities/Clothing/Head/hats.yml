@@ -195,13 +195,14 @@
   description: Donning the colours of medical and chemistry, physicians are the pride of this department!
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_physician.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_physician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_physician.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_physician.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
+    - HamsterWearable # Moffstatiob
 
 - type: entity
   parent: ClothingHeadBase
