@@ -89,3 +89,21 @@
     damage:
       types:
         Piercing: 8
+
+- type: entity
+  parent: ClothingShoesHighheelBoots
+  id: ClothingShoesBootsNurse
+  name: nurse heels
+  description: high heels designed for nurses looking to make their presence known in the medical ward.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/nurse_heels.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/nurse_heels.rsi
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.03"
+      shoes-vox:
+      - state: equipped-FEET-vox
+        offset: "0, -0.03"

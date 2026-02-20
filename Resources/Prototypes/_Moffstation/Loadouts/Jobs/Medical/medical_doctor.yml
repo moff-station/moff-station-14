@@ -76,6 +76,30 @@
     jumpsuit: ClothingUniformJumpskirtNurse
   groupBy: "medical doctor jumpskirts"
 
+- type: loadout
+  id: MedicalDoctorJumpsuitGenetics
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+  groupBy: "medical doctor jumpsuits"
+
+- type: loadout
+  id: MedicalDoctorJumpsuitVirology
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVirology
+  groupBy: "medical doctor jumpsuits"
+
+- type: loadout
+  id: MedicalDoctorJumpskirtGenetics
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGenetics
+  groupBy: "medical doctor jumpskirts"
+
+- type: loadout
+  id: MedicalDoctorJumpskirtVirology
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtVirology
+  groupBy: "medical doctor jumpskirts"
+
 # Back
 - type: loadout
   id: VirologyBackpack
@@ -116,9 +140,21 @@
 # Belt
 
 # Outer Clothing
+- type: loadout
+  id: LabCoatViro
+  equipment:
+    outerClothing: ClothingOuterCoatLabViro
+
+- type: loadout
+  id: LabCoatGene
+  equipment:
+    outerClothing: ClothingOuterCoatLabGene
 
 # Gloves
 
 # Shoes
-
+- type: loadout
+  id: NurseHeels
+  equipment:
+    shoes: ClothingShoesBootsNurse
 # Eyewear

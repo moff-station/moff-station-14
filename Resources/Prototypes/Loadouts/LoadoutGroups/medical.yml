@@ -30,6 +30,7 @@
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
+  - NurseHeels # Moffstation
 
 - type: loadoutGroup
   id: SurvivalMedical
@@ -153,6 +154,10 @@
   - MedicalBurgundyScrubs
   - MedicalBlackScrubs
   - MedicalDoctorJumpskirtNurse
+  - MedicalDoctorJumpsuitGenetics
+  - MedicalDoctorJumpsuitVirology
+  - MedicalDoctorJumpskirtGenetics
+  - MedicalDoctorJumpskirtVirology
   # Moffstation - End
 
 - type: loadoutGroup
@@ -163,6 +168,10 @@
   - RegularLabCoat
   - MedicalDoctorWintercoat
   - SeniorPhysicianLabCoat
+  # Moffstation - Start
+  - LabCoatGene
+  - LabCoatViro
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalDoctorPDA
@@ -233,14 +242,14 @@
   - ChemistApron # Moffstation - Chemist outfits
 
 # Moffstation - Begin - Chemist Outfits
-#- type: loadoutGroup
-#  id: ChemistGloves
-#  name: loadout-group-chemist-gloves
-#  minLimit: 0
-#  loadouts:
-#  - LatexGloves
-#  - NitrileGloves
-#  - ChemistGloves
+- type: loadoutGroup
+  id: ChemistGloves
+  name: loadout-group-chemist-gloves
+  minLimit: 0
+  loadouts:
+  - LatexGloves
+  - NitrileGloves
+  - ChemistGloves
 
 - type: loadoutGroup
   id: ChemistShoes

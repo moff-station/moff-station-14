@@ -383,9 +383,9 @@
   description: A paramedic's trusty windbreaker, for all the space wind.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi # Moffstation
 
 - type: entity
   parent: [ClothingOuterStorageBase, BaseSyndicateContraband]

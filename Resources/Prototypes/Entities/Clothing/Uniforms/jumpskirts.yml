@@ -851,9 +851,9 @@
   description: I don't lose things. I place things in locations which later elude me.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/psychologist.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/psychologist.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/psychologist.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/psychologist.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
