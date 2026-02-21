@@ -17,8 +17,11 @@
     - Human
     - Moth
     - Reptilian
-    - Resomi # Moffstation - Resomi Survival box.
     - Vulpkanin
+    # Moffstation - Begin
+    - Dwarf
+    - Resomi
+    # Moffstation - End
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
@@ -76,6 +79,10 @@
     - Human
     - Reptilian
     - Vulpkanin
+    # Moffstation - End
+    - Dwarf
+    - Resomi
+    # Moffstation - End
 
 - type: loadoutEffectGroup
   id: OxygenBreatherMimeMoth
