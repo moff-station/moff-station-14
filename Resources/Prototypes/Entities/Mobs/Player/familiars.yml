@@ -103,16 +103,16 @@
     baseSprintSpeed: 5
   - type: SlowOnDamage #Speed up the cerberus by a percentage as it takes more damage.
     speedModifierThresholds: #This is shitcode but I am dumb and cant find a way to smoothly interpolate the speed increase otherwise.
-      22.5: 1.05
-      45.5: 1.10
-      67.5: 1.15
-      90: 1.20
-      112.5: 1.25
-      135: 1.30
-      157.5: 1.35
-      180: 1.40
-      80: 1.45
-      202.5: 1.5
+      22.5: 1.035
+      45.5: 1.070
+      67.5: 1.105
+      90: 1.140
+      112.5: 1.175
+      135: 1.210
+      157.5: 1.245
+      180: 1.280
+      80: 1.315
+      202.5: 1.350
   - type: NoSlip #Cerberus used to trip on their own blood.
   # Moffstation Cerberus Additions End
   - type: Grammar
