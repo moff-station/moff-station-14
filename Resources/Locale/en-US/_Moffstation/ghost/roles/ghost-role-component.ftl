@@ -18,3 +18,5 @@ ghost-role-information-syndicate-solider-name = Syndicate Footsoldier
 ghost-role-information-syndicate-solider-description = You, the first person the syndicate could find, have been sent on a mission to the station.
 ghost-role-information-wild-human-name = Wild Humanoid
 ghost-role-information-wild-human-description = You are a wild humanoid, illiterate and without a lick of education.
+ghost-role-information-oscar-name = Oscar
+ghost-role-information-oscar-description = A Dachshund who has at least a one award for culinary expertise.

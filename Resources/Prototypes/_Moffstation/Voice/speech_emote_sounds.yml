@@ -49,3 +49,55 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+
+- type: emoteSounds
+  id: CaninePet
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: VulpkaninScreams
+    Growl:
+      collection: VulpkaninGrowls
+    Snarl:
+      collection: VulpkaninSnarls
+    Bark:
+      collection: VulpkaninBarks
+    Whine:
+      collection: VulpkaninWhines
+    Crying:
+      collection: VulpkaninWhines
+    Howl:
+      collection: VulpkaninHowls
+    Honk:
+      collection: BikeHorn
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
+
+- type: emoteSounds
+  id: SeaLion
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: VulpkaninScreams
+    Growl:
+      collection: VulpkaninGrowls
+    Snarl:
+      collection: VulpkaninSnarls
+    Bark:
+      collection: VulpkaninBarks
+    Whine:
+      collection: VulpkaninWhines
+    Crying:
+      collection: VulpkaninWhines
+    Howl:
+      collection: VulpkaninHowls
+    Honk:
+      collection: BikeHorn
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
+    Thump:
+      path: /Audio/Effects/soft_thump.ogg
+      params:
+        variation: 0.125

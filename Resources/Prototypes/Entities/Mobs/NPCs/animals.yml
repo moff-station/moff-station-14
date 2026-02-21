@@ -2942,9 +2942,15 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: corgi
   - type: Physics
+  - type: Vocal # Moffstation - Start
+    sounds:
+      Male: CaninePet
+      Female: CaninePet
+      Unsexed: CaninePet # Moffstation - End
   - type: Speech
     speechVerb: Canine
     speechSounds: Dog
+    allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ] # Moffstation
   - type: Fixtures
     fixtures:
       fix1:

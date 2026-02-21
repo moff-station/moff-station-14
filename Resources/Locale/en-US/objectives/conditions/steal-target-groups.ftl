@@ -64,9 +64,9 @@ steal-target-groups-toilet-golden-dirty-water = golden toilet
 steal-target-groups-animal-named-cat = CMO's Cat
 
 steal-target-groups-animal-ian = Ian
-steal-target-groups-animal-mc-griff = McGriff
-steal-target-groups-animal-walter = Walter
+steal-target-groups-animal-mc-griff = Security's Dog
+steal-target-groups-animal-walter = Medical's Dog
 steal-target-groups-animal-morty = Morty
-steal-target-groups-animal-renault = Renault
+steal-target-groups-animal-renault = Captain's Pet
 steal-target-groups-animal-shiva = Shiva
 steal-target-groups-animal-tropico = Tropico
