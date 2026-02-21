@@ -195,13 +195,14 @@
   description: Donning the colours of medical and chemistry, physicians are the pride of this department!
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_physician.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_physician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_physician.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_physician.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
+    - HamsterWearable # Moffstatiob
 
 - type: entity
   parent: ClothingHeadBase
@@ -597,13 +598,35 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapBlue
-  name: blue surgical cap
-  description: A blue cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
+  name: physcian cap # Moffstation - Start
+  description: A blue cap physcians wear during examinations. Keeps their hair from tickling your face.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/surgcap_blue.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &blue-scrubs "#65b5f2"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *blue-scrubs
+      right:
+      - state: inhand-right
+        color: *blue-scrubs
   - type: Clothing
-    sprite: Clothing/Head/Hats/surgcap_blue.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *blue-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *blue-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *blue-scrubs
+# Moffstation - End
   - type: Tag
     tags:
     - ClothMade
@@ -613,40 +636,84 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      HeadSide : HEAD
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapGreen
-  name: green surgical cap
+  name: surgical cap # Moffstation - Start
   description: A green cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/surgcap_green.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &green-scrubs "#77ed94"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *green-scrubs
+      right:
+      - state: inhand-right
+        color: *green-scrubs
   - type: Clothing
-    sprite: Clothing/Head/Hats/surgcap_green.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *green-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *green-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *green-scrubs
+  # Moffstation - End
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      HeadSide : HEAD
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatSurgcapPurple
-  name: purple surgical cap
-  description: A purple cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
+  name: specialist cap # Moffstation - Start
+  description: A pink cap urgent care professionals wear during treatment. Keeps their hair from tickling your insides.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/surgcap_purple.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &pink-scrubs "#e681a4"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *pink-scrubs
+      right:
+      - state: inhand-right
+        color: *pink-scrubs
   - type: Clothing
-    sprite: Clothing/Head/Hats/surgcap_purple.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *pink-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *pink-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *pink-scrubs
+  # Moffstation - End
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-      HeadTop : HEAD
-      HeadSide : HEAD
+      HeadTop : HEAD #Moffstation
+      HeadSide : HEAD #Moffstation
 
 - type: entity
   parent: ClothingHeadBase
@@ -962,9 +1029,9 @@
   description: Somehow I feel I'm not supposed to leave this place.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/nursehat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/nursehat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/nursehat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/nursehat.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade
@@ -1491,13 +1558,14 @@
   description: A sterile white beret.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_medic.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_medic.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_medic.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_medic.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
     - CorgiWearable
+    - HamsterWearable # Moffstation
 
 - type: entity
   parent: ClothingHeadBase

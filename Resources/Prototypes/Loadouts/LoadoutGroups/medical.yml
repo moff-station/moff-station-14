@@ -30,6 +30,7 @@
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
+  - NurseHeels # Moffstation
 
 - type: loadoutGroup
   id: SurvivalMedical
@@ -132,6 +133,10 @@
   - BlueSurgeryCap
   - GreenSurgeryCap
   - PurpleSurgeryCap
+  #Moffstation - Start
+  - BurgundySurgeryCap
+  - BlackSurgeryCap
+  #Moffstation - End
   - NurseHat
 
 - type: loadoutGroup
@@ -145,7 +150,15 @@
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
-  - MedicalDoctorJumpskirtNurse # MOFFSTATION - Adds nurse jumpskirt
+  # Moffstation - Start
+  - MedicalBurgundyScrubs
+  - MedicalBlackScrubs
+  - MedicalDoctorJumpskirtNurse
+  - MedicalDoctorJumpsuitGenetics
+  - MedicalDoctorJumpsuitVirology
+  - MedicalDoctorJumpskirtGenetics
+  - MedicalDoctorJumpskirtVirology
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
@@ -155,6 +168,10 @@
   - RegularLabCoat
   - MedicalDoctorWintercoat
   - SeniorPhysicianLabCoat
+  # Moffstation - Start
+  - LabCoatGene
+  - LabCoatViro
+  # Moffstation - End
 
 - type: loadoutGroup
   id: MedicalDoctorPDA
@@ -226,13 +243,13 @@
 
 # Moffstation - Begin - Chemist Outfits
 #- type: loadoutGroup
-#  id: ChemistGloves
-#  name: loadout-group-chemist-gloves
-#  minLimit: 0
-#  loadouts:
-#  - LatexGloves
-#  - NitrileGloves
-#  - ChemistGloves
+  #id: ChemistGloves
+  #name: loadout-group-chemist-gloves
+  #minLimit: 0
+  #loadouts:
+  #- LatexGloves
+  #- NitrileGloves
+  #- ChemistGloves
 
 - type: loadoutGroup
   id: ChemistShoes
@@ -272,6 +289,7 @@
   loadouts:
   - ParamedicJumpsuit
   - ParamedicJumpskirt
+  - ParamedicSpeedsuit # Moffstation
 
 - type: loadoutGroup
   id: ParamedicOuterClothing

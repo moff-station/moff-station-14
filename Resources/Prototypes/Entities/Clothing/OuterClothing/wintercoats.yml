@@ -615,26 +615,34 @@
   parent: ClothingOuterWinterCoatToggleable
   id: ClothingOuterWinterPara
   name: paramedic winter coat
-  components:
+  components: #Moffstation - Begin - Medical Outfit Resprites
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatpara.rsi
     layers:
-    - state: PARA-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: PARA-inhand-left
-      right:
-      - state: PARA-inhand-right
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatpara.rsi
     clothingVisuals:
       outerClothing:
-      - state: PARA-equipped-OUTERCLOTHING
-#Moffstation - Begin - Vox Wintecoats
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
       outerClothing-vox:
-      - state: PARA-equipped-OUTERCLOTHING-vox
-  #Moffstation - End - Vox Wintecoats
+      - state: equipped-OUTERCLOTHING-vox
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded-vox
+        shader: shaded
+  - type: Tag
+    tags:
+    - HiViz
+    - WhitelistChameleon #Moffstation - End - Medical Outfit Repsprites
   - type: Armor
     modifiers:
       coefficients:
