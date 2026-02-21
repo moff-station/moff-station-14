@@ -615,7 +615,7 @@
   parent: ClothingOuterWinterCoatToggleable
   id: ClothingOuterWinterPara
   name: paramedic winter coat
-  components: #Moffstation - Begin - Engineering Outfit Resprites
+  components: #Moffstation - Begin - Medical Outfit Resprites
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/wintercoatpara.rsi
     layers:
@@ -642,7 +642,7 @@
   - type: Tag
     tags:
     - HiViz
-    - WhitelistChameleon #Moffstation - End - Engineering Outfit Repsprites
+    - WhitelistChameleon #Moffstation - End - Medical Outfit Repsprites
   - type: Armor
     modifiers:
       coefficients:
