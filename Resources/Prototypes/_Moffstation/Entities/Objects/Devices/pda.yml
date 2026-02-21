@@ -1,0 +1,37 @@
+- type: entity
+  parent: BaseSecurityPDA
+  id: NTCFPilotPDA
+  name: NTCF Pilot PDA
+  suffix: Pilot
+  description: Used by Nanotrasen's finest aces... and all their other pilots.
+  components:
+  - type: Pda
+    id: NTCFPilotIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ert-leader
+  - type: PdaBorderColor
+    borderColor: "#A32D26"
+    accentHColor: "#447987"
+    accentVColor: "#447987"
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - WantedListCartridge
+    - AstroNavCartridge
+    - NanoChatCartridge # CD
+
+- type: entity
+  parent: NTCFPilotPDA
+  id: NTCFEngineerPDA
+  name: NTCF Flight Engineer PDA
+  suffix: Engineer
+  description: For the ones who keep the fleet running. Its covered in machine grease.
+  components:
+  - type: Pda
+    id: NTCFEngineerIDCard
+

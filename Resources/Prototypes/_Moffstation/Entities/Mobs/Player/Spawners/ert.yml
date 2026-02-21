@@ -194,3 +194,34 @@
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSpawnerDeathSquad
+
+# Nanotrasen Corporate Fleet
+- type: entity
+  parent: MarkerBase
+  id: NTCFPilotSpawner
+  name: NTCF pilot spawner
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerNTCFPilot
+
+- type: entity
+  parent: MarkerBase
+  id: NTCFEngineerSpawner
+  name: NTCF engineer spawner
+  suffix: Mapping
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSpawnerNTCFEngineer

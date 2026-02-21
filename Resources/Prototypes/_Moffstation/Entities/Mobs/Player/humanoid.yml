@@ -89,6 +89,68 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert-team-leader
 
+# Nanotrasen Corporate Fleet
+- type: entity
+  id: RandomHumanoidSpawnerNTCFPilot
+  name: NTCF fighter pilot
+  suffix: ERTRole, Fleet
+  components:
+  - type: RandomHumanoidSpawner
+    settings: NTCFPilot
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: ntcfpilot
+
+- type: randomHumanoidSettings
+  parent: EventHumanoidCentcomm
+  id: NTCFPilot
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-pilot-name
+    description: ghost-role-information-ntcf-pilot-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFPilot
+  - type: Loadout
+    prototypes: [ NTCFPilotGear ]
+    roleLoadout: [ RoleSurvivalMilitaryDouble ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-pilot
+
+- type: entity
+  id: RandomHumanoidSpawnerNTCFEngineer
+  name: NTCF flight engineer
+  suffix: ERTRole, Fleet
+  components:
+  - type: RandomHumanoidSpawner
+    settings: NTCFEngineer
+  - type: Sprite
+    sprite: _Moffstation/Markers/jobs.rsi
+    state: ntcfengineer
+
+- type: randomHumanoidSettings
+  parent: EventHumanoidCentcomm
+  id: NTCFEngineer
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ntcf-engineer-name
+    description: ghost-role-information-ntcf-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTCFEngineer
+  - type: Loadout
+    prototypes: [ NTCFEngineerGear ]
+    roleLoadout: [ RoleSurvivalMilitaryDouble ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryLast
+    nameFormat: name-format-ert-flight-engineer
+
+
 # Mercenaries
 - type: job
   id: Mercenary
