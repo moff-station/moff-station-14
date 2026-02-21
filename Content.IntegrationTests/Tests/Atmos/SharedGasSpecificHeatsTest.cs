@@ -13,7 +13,7 @@ namespace Content.IntegrationTests.Tests.Atmos;
 /// Tests for asserting that various gas specific heat operations agree with each other and do not deviate
 /// across client and server.
 /// </summary>
-[TestOf(nameof(SharedAtmosphereSystem)), NonParallelizable] // Moffstation - Test cleanup to fix OOM
+[TestOf(nameof(SharedAtmosphereSystem)), FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
 public sealed class SharedGasSpecificHeatsTest
 {
     private IConfigurationManager _sConfig;
@@ -46,13 +46,11 @@ public sealed class SharedGasSpecificHeatsTest
         _cAtmos = _cEntMan.System<AtmosphereSystem>();
     }
 
-    // Moffstation - Start - Test cleanup to fix OOM
     [TearDown]
     public async Task TearDown()
     {
         await _pair.CleanReturnAsync();
     }
-    // Moffstation - End
 
     /// <summary>
     /// Asserts that the cached gas specific heat arrays agree with each other.
