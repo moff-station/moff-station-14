@@ -14,3 +14,19 @@
     - state: mag-1
       map: [ "enum.GunVisualLayers.Mag" ]
     - state: silver
+
+- type: entity
+  id: MagazineBoxMagnumBounce
+  parent: BaseMagazineBoxMagnum
+  name: ammunition box (.45 magnum bouncing)
+  description: A cardboard box of .45 magnum rounds. Intended to hold silly, yet deadly bouncing bullets.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeMagnumBouncing
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: piercing

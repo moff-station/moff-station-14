@@ -30,3 +30,36 @@
       - state: inhand-right-ammo
       - state: inhand-right-stripe
         color: "#bebed7"
+
+- type: entity
+  id: SpeedLoaderMagnumBouncing
+  name: "speed loader (.45 magnum bouncing)"
+  parent: BaseSpeedLoaderMagnum
+  description: Designed to quickly refill an empty revolver, it fits up to six rounds. You're pretty good.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeMagnumBouncing
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/magnum_speed_loader.rsi
+    layers:
+      - state: base
+        map: [ "enum.GunVisualLayers.Base" ]
+      - state: piercing-6
+        map: [ "enum.GunVisualLayers.Mag" ]
+  - type: MagazineVisuals
+    magState: piercing
+    steps: 7
+    zeroVisible: false
+  - type: Appearance
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      - state: inhand-left-ammo
+      - state: inhand-left-stripe
+        color: "#ffc0cb"
+      right:
+      - state: inhand-right-mag
+      - state: inhand-right-ammo
+      - state: inhand-right-stripe
+        color: "#ffc0cb"

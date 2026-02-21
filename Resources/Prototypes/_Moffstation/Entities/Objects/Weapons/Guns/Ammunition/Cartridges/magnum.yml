@@ -13,3 +13,19 @@
       - state: tip
         map: [ "enum.AmmoVisualLayers.Tip" ]
         color: "#bebed7"
+
+- type: entity
+  id: CartridgeMagnumBouncing
+  name: cartridge (.45 magnum bouncing)
+  parent: BaseCartridgeMagnum
+  description: Heavy magnum cartridge mostly used by revolvers. Now we'll see if the man can live up to the legend. 
+  components:
+  - type: CartridgeAmmo
+    proto: BulletMagnumBouncing
+  - type: Sprite
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+      - state: tip
+        map: [ "enum.AmmoVisualLayers.Tip" ]
+        color: "#bebed7"
