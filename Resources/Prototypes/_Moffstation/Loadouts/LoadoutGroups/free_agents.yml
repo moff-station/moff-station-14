@@ -1,0 +1,11 @@
+﻿# Stowaway
+- type: loadoutGroup
+  id: StowawaySurvival
+  name: loadout-group-survival-basic
+  minLimit: 3
+  hidden: true
+  loadouts:
+  - EmergencyAmmoniaStowaway
+  - EmergencyNitrogenStowaway
+  - EmergencyOxygenStowaway
+  - LoadoutSpeciesVoxNitrogen

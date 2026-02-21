@@ -26,17 +26,6 @@
   - NukieGloves
   - PersonalItemsJobAgnostic
 
-# Wizard
-- type: roleLoadout
-  id: JobWizard
-  canCustomizeName: true
-  groups:
-    - WizardJumpsuit
-    - WizardRobes
-    - WizardHat
-    - CommonBackpack
-    - PersonalItemsJobAgnostic
-
 # Pirates
 - type: roleLoadout
   id: JobPirateCrew
@@ -75,7 +64,18 @@
   - NukieBackpackEmpty
   - PersonalItemsJobAgnostic
 
-# Xenoborg
+# Wizard
+- type: roleLoadout
+  id: JobWizard
+  canCustomizeName: true
+  groups:
+  - WizardJumpsuit
+  - WizardRobes
+  - WizardHat
+  - CommonBackpack
+  - PersonalItemsJobAgnostic
+
+# Xenoborgs
 - type: roleLoadout
   id: JobXenoborg
   canCustomizeName: true
