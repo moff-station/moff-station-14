@@ -605,27 +605,27 @@
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     layers:
     - state: icon
-      color: "#65b5f2"
+      color: &blue-scrubs "#65b5f2"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#65b5f2"
+        color: *blue-scrubs
       right:
       - state: inhand-right
-        color: "#65b5f2"
+        color: *blue-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#65b5f2"
+        color: *blue-scrubs
       head-vox:
       - state: equipped-HELMET-vox
-        color: "#65b5f2"
+        color: *blue-scrubs
       head-hamster:
       - state: equipped-HELMET-hamster
-        color: "#65b5f2"
+        color: *blue-scrubs
 # Moffstation - End
   - type: Tag
     tags:
@@ -649,27 +649,27 @@
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     layers:
     - state: icon
-      color: "#77ed94"
+      color: &green-scrubs "#77ed94"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#77ed94"
+        color: *green-scrubs
       right:
       - state: inhand-right
-        color: "#77ed94"
+        color: *green-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#77ed94"
+        color: *green-scrubs
       head-vox:
       - state: equipped-HELMET-vox
-        color: "#77ed94"
+        color: *green-scrubs
       head-hamster:
       - state: equipped-HELMET-hamster
-        color: "#77ed94"
+        color: *green-scrubs
   # Moffstation - End
   - type: HideLayerClothing
     layers:
@@ -687,27 +687,27 @@
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     layers:
     - state: icon
-      color: "#e681a4"
+      color: &pink-scrubs "#e681a4"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#e681a4"
+        color: *pink-scrubs
       right:
       - state: inhand-right
-        color: "#e681a4"
+        color: *pink-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#e681a4"
+        color: *pink-scrubs
       head-vox:
       - state: equipped-HELMET-vox
-        color: "#e681a4"
+        color: *pink-scrubs
       head-hamster:
       - state: equipped-HELMET-hamster
-        color: "#e681a4"
+        color: *pink-scrubs
   # Moffstation - End
   - type: HideLayerClothing
     layers:

@@ -436,22 +436,22 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     layers:
     - state: icon
-      color: "#73284a"
+      color: &burgundy-scrubs "#73284a"
     - state: trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#73284a"
+        color: *burgundy-scrubs
       right:
       - state: inhand-right
-        color: "#73284a"
+        color: *burgundy-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#73284a"
+        color: *burgundy-scrubs
       - state: trinkets-equipped-INNERCLOTHING
 
 - type: entity
@@ -464,22 +464,22 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     layers:
     - state: icon
-      color: "#565656"
+      color: &black-scrubs "#565656"
     - state: trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#565656"
+        color: *black-scrubs
       right:
       - state: inhand-right
-        color: "#565656"
+        color: *black-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#565656"
+        color: *black-scrubs
       - state: trinkets-equipped-INNERCLOTHING
 
 - type: entity

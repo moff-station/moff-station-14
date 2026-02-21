@@ -314,27 +314,27 @@
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     layers:
     - state: icon
-      color: "#73284a"
+      color: &burgundy-scrubs "#73284a"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#73284a"
+        color: *burgundy-scrubs
       right:
       - state: inhand-right
-        color: "#73284a"
+        color: *burgundy-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#73284a"
+        color: *burgundy-scrubs
       head-vox:
       - state: equipped-HELMET-vox
-        color: "#73284a"
+        color: *burgundy-scrubs
       head-hamster:
       - state: equipped-HELMET-hamster
-        color: "#73284a"
+        color: *burgundy-scrubs
   - type: Tag
     tags:
     - ClothMade
@@ -357,27 +357,27 @@
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     layers:
     - state: icon
-      color: "#565656"
+      color: &black-scrubs "#565656"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#565656"
+        color: *black-scrubs
       right:
       - state: inhand-right
-        color: "#565656"
+        color: *black-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#565656"
+        color: *black-scrubs
       head-vox:
       - state: equipped-HELMET-vox
-        color: "#565656"
+        color: *black-scrubs
       head-hamster:
       - state: equipped-HELMET-hamster
-        color: "#565656"
+        color: *black-scrubs
   - type: Tag
     tags:
     - ClothMade

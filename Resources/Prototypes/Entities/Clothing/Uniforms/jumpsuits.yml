@@ -188,7 +188,7 @@
     layers:
     - state: icon
     - state: trinkets-icon
-      color: "#77ed94"
+      color: &green-scrubs "#77ed94"
   - type: Item
     inhandVisuals:
       left:
@@ -201,7 +201,7 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
       - state: trinkets-equipped-INNERCLOTHING
-        color: "#77ed94"
+        color: *green-scrubs
 # Moffstation - End
 
 
@@ -217,7 +217,7 @@
     layers:
     - state: icon
     - state: trinkets-icon
-      color: "#65b5f2"
+      color: &blue-scrubs "#65b5f2"
   - type: Item
     inhandVisuals:
       left:
@@ -230,7 +230,7 @@
       jumpsuit:
       - state: equipped-INNERCLOTHING
       - state: trinkets-equipped-INNERCLOTHING
-        color: "#65b5f2"
+        color: *blue-scrubs
 # Moffstation - End
 
 - type: entity
