@@ -244,6 +244,9 @@ namespace Content.IntegrationTests.Tests
 
                 // makes an announcement on mapInit.
                 "AnnounceOnSpawn",
+
+                // Moffstation - Portals spawn more stuff on trigger, self-explanatory
+                "SpawnEntityTableOnTrigger",
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
