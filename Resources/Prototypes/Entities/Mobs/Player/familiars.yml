@@ -74,7 +74,47 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      120: Dead
+      # Moffstation - Cerberus Additions Start
+      225: Dead
+  - type: PassiveDamage #Slow Passive Regen
+    allowedStates:
+    - Alive
+    damageCap: 224.9
+    damage:
+      types:
+        Heat: -0.25
+      groups:
+        Brute: -0.25
+        Airloss: -0.25
+        Toxin: -0.25
+  - type: Flammable #Fireproof...it's from hell.
+    damage:
+      types: {}
+  - type: PressureProtection #Better in high pressure areas, although still need air.
+    highPressureMultiplier: 0.02
+  - type: TemperatureProtection #Better in high heat areas.
+    heatingCoefficient: 0.001
+  - type: Puller #Cerberus! Fetch Me Their Souls!
+    needsHands: false
+  - type: IgniteOnMeleeHit
+    fireStacks: 1
+  - type: MovementSpeedModifier #Teeny bit more base speed. Parent is 4.
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: SlowOnDamage #Speed up the cerberus by a percentage as it takes more damage.
+    speedModifierThresholds: #This is shitcode but I am dumb and cant find a way to smoothly interpolate the speed increase otherwise.
+      22.5: 1.035
+      45.5: 1.070
+      67.5: 1.105
+      90: 1.140
+      112.5: 1.175
+      135: 1.210
+      157.5: 1.245
+      180: 1.280
+      80: 1.315
+      202.5: 1.350
+  - type: NoSlip #Cerberus used to trip on their own blood.
+  # Moffstation Cerberus Additions End
   - type: Grammar
     attributes:
       gender: male
