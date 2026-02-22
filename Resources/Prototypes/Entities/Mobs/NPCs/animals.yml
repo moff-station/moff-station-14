@@ -1357,6 +1357,14 @@
   - type: Inventory
     templateId: monkey
     speciesId: monkey
+  # Moffstation - Start - Monkey displacements
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Animals/displacements.rsi
+            state: jumpsuit-monkey
+  # Moffstation - End
   - type: Deathgasp
     prototype: MonkeyDeathgasp
   - type: Cuffable
@@ -1662,6 +1670,15 @@
     name: ghost-role-information-kobold-name
     description: ghost-role-information-kobold-description
     rules: ghost-role-information-nonantagonist-rules
+  # Moffstation - Start - Kobold displacements
+  - type: Inventory
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Animals/displacements.rsi
+            state: jumpsuit-kobold
+  # Moffstation - End
 
 - type: entity
   name: kobold
