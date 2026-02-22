@@ -1502,7 +1502,15 @@
         Blunt: 1
     clumsySound:
       path: /Audio/Animals/monkey_scream.ogg
-
+# Funkystation - Start - Jumpsuit Displacements
+  - type: Inventory
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Funkystation/Mobs/Animals/displacements.rsi
+            state: jumpsuit-monkey
+# Funkystation - End - Jumpsuit Displacements
 
 - type: entity
   name: monkey
@@ -1664,6 +1672,15 @@
     name: ghost-role-information-kobold-name
     description: ghost-role-information-kobold-description
     rules: ghost-role-information-nonantagonist-rules
+# Funkystation - Start - Jumpsuit Displacements
+  - type: Inventory
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Funkystation/Mobs/Animals/displacements.rsi
+            state: jumpsuit-kobold
+# Funkystation - End - Jumpsuit Displacements
 
 - type: entity
   name: kobold
