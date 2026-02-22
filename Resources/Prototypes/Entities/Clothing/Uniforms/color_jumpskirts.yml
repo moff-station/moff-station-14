@@ -503,12 +503,12 @@
     layers:
     - state: icon-color
     - state: color-trinkets-icon
-      color: *color-maroon
+      color: *color-teal
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING-color
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-maroon
+        color: *color-teal
 # Moffstation - End
