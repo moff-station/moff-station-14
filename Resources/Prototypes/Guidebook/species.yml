@@ -4,13 +4,13 @@
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
   - Arachnid
+  - Avali # Moffstation - Avali Guidebook Entry
   - Diona
-  - Dwarf
+  - Dwarf # Moffstation - Dwarves
   - Human
   - Moth
   - Reptilian
   - Resomi # Moffstation - Resomi Guidebook Entry
-  - Avali # Moffstation - Avali Guidebook Entry
   - SlimePerson
   - Vox
   - Vulpkanin
@@ -24,11 +24,6 @@
   id: Diona
   name: species-name-diona
   text: "/ServerInfo/Guidebook/Mobs/Diona.xml"
-
-- type: guideEntry
-  id: Dwarf
-  name: species-name-dwarf
-  text: "/ServerInfo/Guidebook/Mobs/Dwarf.xml"
 
 - type: guideEntry
   id: Human
