@@ -106,8 +106,8 @@
       - BorgModuleGeneric
       - BorgModuleSyndicate
       - BorgModuleSyndicateAssault
-      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
-      noMindState: borg # Moffstation - Early merge of Borg RSI fix
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg # Moffstation - Early merge of Borg RSI fix
   - type: InteractionPopup
     interactSuccessString: petting-success-syndicate-cyborg
     interactFailureString: petting-failure-syndicate-cyborg
@@ -139,8 +139,8 @@
       - BorgModuleGeneric
       - BorgModuleMedical
       - BorgModuleSyndicate
-      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
-      noMindState: borg # Moffstation - Early merge of Borg RSI fix
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg # Moffstation - Early merge of Borg RSI fix
   - type: ShowHealthBars
   - type: InteractionPopup
     interactSuccessString: petting-success-syndicate-cyborg
@@ -179,8 +179,8 @@
       - BorgModuleGeneric
       - BorgModuleEngineering
       - BorgModuleSyndicate
-      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
-      noMindState: borg # Moffstation - Early merge of Borg RSI fix
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg # Moffstation - Early merge of Borg RSI fix
   - type: ShowHealthBars
     damageContainers:
     - Inorganic
