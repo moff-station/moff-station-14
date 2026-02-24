@@ -1,0 +1,29 @@
+﻿- type: entity
+  name: trash bag of holding
+  id: TrashBagOfHolding
+  parent: BaseStorageItem
+  description: The next stage in bluespace technology, a bigger trashbag. Magnetises nearby trash when attached to a belt.
+  components:
+  - type: MagnetPickup
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Janitorial/trash_bag_holding.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Moffstation/Objects/Specific/Janitorial/trash_bag_holding.rsi
+    quickEquip: false
+    slots:
+    - belt
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,19,9
+    storageInsertSound:
+      collection: trashBagRustle
+    whitelist:
+      tags:
+      - Trash
+  - type: Dumpable
+  - type: QuickPickup
+  - type: AreaPickup
