@@ -47,10 +47,21 @@
   description: A blue baseball cap.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Soft/bluesoft.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/soft.rsi
+    color: &color-blue "#6697ba"
+  - type: Item
+      inhandVisuals:
+        right:
+        - state: inhand-right
+          color: *color-blue
+        left:
+        - state: inhand-left
+          color: *color-blue
   - type: Clothing
-    sprite: Clothing/Head/Soft/bluesoft.rsi
-
+    sprite: _Moffstation/Clothing/Head/Hats/soft.rsi
+    head:
+    - state: equipped-HELMET
+      color: *color-blue
 - type: entity
   parent: [ClothingHeadHeadHatBaseFlipped, ClothingHeadHatBluesoft]
   id: ClothingHeadHatBluesoftFlipped
