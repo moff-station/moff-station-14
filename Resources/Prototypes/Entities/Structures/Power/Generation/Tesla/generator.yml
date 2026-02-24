@@ -2,13 +2,14 @@
   id: TeslaGenerator
   name: tesla generator
   parent: BaseStructureDynamic
-  description: An Odd Device which produces a powerful Tesla ball when set up. Comes with a temporary shutdown containment failsafe.
+  description: An Odd Device which produces a powerful Tesla ball when set up. # Moffstation - accidents are fun!
   components:
   - type: Sprite
     noRot: true
     sprite: Structures/Power/Generation/Tesla/generator.rsi
     state: icon
   - type: SingularityGenerator # TODO: rename the generator
+    failsafeDisabled: true # Moffstation - accidents are fun!
     spawnId: TeslaEnergyBall
   - type: InteractionOutline
   - type: Fixtures
