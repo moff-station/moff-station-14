@@ -465,3 +465,75 @@
         volume: 12
   - type: StaticPrice
     price: 50
+
+#Spider Bottle
+- type: entity
+  name: Jar of Spiders
+  description: A jar containing highly aggressive spiders floating in a black tar-like liquid. Breaks on impact.
+  parent: [DrinkBeerBottleFull, BaseSyndicateContraband]
+  id: SpiderJar
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/beer.rsi
+  - type: LandAtCursor
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MobGiantSpiderViper:
+            min: 3
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - type: SolutionContainerManager
+      solutions:
+        drink:
+          maxVol: 0
+
+
+- type: entity
+  name: Viper
+  parent: MobSpiderBase
+  id: MobGiantSpiderViper
+  description: That spider look SCARY. E-yikes!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: viper
+      sprite: Mobs/Animals/spider.rsi
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: viper-moving
+    noMovementLayers:
+      movement:
+        state: viper
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: viper
+      Critical:
+        Base: viper_dead
+      Dead:
+        Base: viper_dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 6
+  - type: MeleeChemicalInjector
+    transferAmount: 1 #Slightly more mechanotoxin
+    solution: melee
