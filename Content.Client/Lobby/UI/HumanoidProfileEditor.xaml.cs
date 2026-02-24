@@ -325,7 +325,7 @@ namespace Content.Client.Lobby.UI
 
             #endregion Jobs
 
-            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
+            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-special-roles-tab")); // Moffstation - Expanded non-crew roles
 
             RefreshTraits();
 
