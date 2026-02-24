@@ -22,10 +22,10 @@
     - type: InteractionOutline
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: StrongMetallic
+      damageModifierSet: StrongMetallic # Moffstation - Firelocks were one of the most resilient objects for no good reason, this reverts their health to that of an airlock
     - type: RCDDeconstructable
       cost: 4
-      delay: 6
+      delay: 6got 
       fx: EffectRCDDeconstruct6
     - type: Tag
       tags:

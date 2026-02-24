@@ -45,7 +45,7 @@
       - Pullable # no dragging things in
   - type: Appearance
   - type: Damageable
-    damageContainer: StructuralInorganic
+    damageContainer: StructuralInorganic #Moffstation - The turnstile was not a structure as such many damage types did not apply to it correctly 
     damageModifierSet: StrongMetallic
   - type: Destructible
     thresholds:
