@@ -1,0 +1,10 @@
+﻿- type: antag
+  id: Wizard
+  name: roles-free-agent-wizard-name
+  antagonist: true
+  setPreference: true
+  objective: roles-free-agent-wizard-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 5h
+  guides: [ Wizard ]
