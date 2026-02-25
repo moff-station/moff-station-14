@@ -2,7 +2,7 @@
 - type: entity
   name: jar of spiders
   description: A jar containing highly aggressive spiders floating in a black tar-like liquid. Breaks on impact.
-  parent: [DrinkVisualsAllFilled, DrinkBottleGlassBaseFull, BaseSyndicateContraband]
+  parent: [DrinkBottleGlassBaseFull, BaseSyndicateContraband]
   id: SpiderJar
   components:
   - type: SolutionContainerManager
@@ -12,7 +12,8 @@
         - ReagentId: VentCrud
           Quantity: 100
   - type: Sprite
-    sprite: Textures/_Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: icon
   - type: LandAtCursor
   - type: Destructible
     thresholds:
