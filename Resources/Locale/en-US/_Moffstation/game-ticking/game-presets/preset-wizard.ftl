@@ -1,7 +1,7 @@
 ﻿## Wizard
 
-roles-free-agent-wizard-name = Wizard
-roles-free-agent-wizard-objective = Wield cosmic powers beyond your wildest dreams.
+roles-free-agent-wizard-duelist-name = Wizard duelist
+roles-free-agent-wizard-duelist-objective = Defeat lesser warlocks and prove you're the greatest that the Space Wizards Federation has to offer.
 
 wizard-duelist-red-role-greeting =
     It's wizard time, fireball!

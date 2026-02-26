@@ -29,12 +29,11 @@
 
 
 
-    - prefRoles: [ Wizard ] # Red Wizard Duelist
+    - prefRoles: [ WizardDuelist ] # Red Wizard Duelist
       min: 1
       max: 1
       spawnerPrototype: SpawnPointGhostWizardDuelistRed
       roleLoadout:
-      #- RoleSurvivalExtended
       - JobWizardDuelist
       briefing:
         text: wizard-duelist-red-role-greeting
@@ -52,12 +51,11 @@
       mindRoles:
       - MindRoleWizardDuelistRed
 
-    - prefRoles: [ Wizard ] # blue Wizard Duelist
+    - prefRoles: [ WizardDuelist ] # blue Wizard Duelist
       min: 1
       max: 1
       spawnerPrototype: SpawnPointGhostWizardDuelistBlue
       roleLoadout:
-      #- RoleSurvivalExtended
       - JobWizardDuelist
       briefing:
         text: wizard-duelist-blue-role-greeting
@@ -72,18 +70,14 @@
         - NamesWizardFirst
         - NamesWizardLast
         nameFormat: name-format-wizard
-        mindRoles:
-        - MindRoleWizardDuelistBlue
-      - type: AntagObjectives
-        objectives:
-        - WizardSurviveObjective
+      mindRoles:
+      - MindRoleWizardDuelistBlue
 
-    - prefRoles: [ Wizard ] # violet Wizard Duelist
+    - prefRoles: [ WizardDuelist ] # violet Wizard Duelist
       min: 1
       max: 1
       spawnerPrototype: SpawnPointGhostWizardDuelistViolet
       roleLoadout:
-      #- RoleSurvivalExtended
       - JobWizardDuelist
       briefing:
         text: wizard-duelist-violet-role-greeting
@@ -98,11 +92,8 @@
         - NamesWizardFirst
         - NamesWizardLast
         nameFormat: name-format-wizard
-        mindRoles:
-        - MindRoleWizardDuelistViolet
-      - type: AntagObjectives
-        objectives:
-        - WizardSurviveObjective
+      mindRoles:
+      - MindRoleWizardDuelistViolet
 
 
   - type: DynamicRuleCost
