@@ -1,0 +1,16 @@
+﻿# Moffstation Wizard Changes
+- type: entity
+  id: StorePresetSpellbookMoffstation
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-spellbook
+    categories:
+    - SpellbookCantrips     # Memorized spells, generally utility focused
+    - SpellbookSpellbooks   # Spells that require preperation with a spellbook, typically stronger or more offense oriented
+    - SpellbookWands        # Spells that require a wand to cast, limited by charges
+    - SpellbookEnchantments # Enchanted items and equipment
+    currencyWhitelist:
+    - WizCoin
+    expectedFaction:
+    - Wizard
