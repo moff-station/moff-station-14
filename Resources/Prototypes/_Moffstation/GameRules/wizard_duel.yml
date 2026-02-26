@@ -17,6 +17,11 @@
   components:
   - type: GameRule
     minPlayers: 1 # change back to 35 later
+  - type: AntagObjectives
+    objectives:
+    - WizardDuelistMeetObjective
+    - WizardDuelistRelocateObjective
+    - WizardDuelistDemonstrateObjective
   - type: AntagSelection
     agentName: wizard-round-end-name
     selectionTime: PrePlayerSpawn
@@ -67,8 +72,11 @@
         - NamesWizardFirst
         - NamesWizardLast
         nameFormat: name-format-wizard
-      mindRoles:
-      - MindRoleWizardDuelistBlue
+        mindRoles:
+        - MindRoleWizardDuelistBlue
+      - type: AntagObjectives
+        objectives:
+        - WizardSurviveObjective
 
     - prefRoles: [ Wizard ] # violet Wizard Duelist
       min: 1
@@ -90,8 +98,11 @@
         - NamesWizardFirst
         - NamesWizardLast
         nameFormat: name-format-wizard
-      mindRoles:
-      - MindRoleWizardDuelistViolet
+        mindRoles:
+        - MindRoleWizardDuelistViolet
+      - type: AntagObjectives
+        objectives:
+        - WizardSurviveObjective
 
 
   - type: DynamicRuleCost
