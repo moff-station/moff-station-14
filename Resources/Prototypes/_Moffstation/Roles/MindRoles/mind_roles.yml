@@ -57,9 +57,9 @@
 # Wizard Duelists
 
 - type: entity
-  abstract: true
+  #abstract: true
   parent: MindRoleWizard
-  id: MindRoleWizardDuelist
+  id: MindRoleWizardDuelistBase
   name: Wizard Duelist Role
   components:
   - type: MindRole
@@ -69,21 +69,21 @@
     subtype: role-subtype-wizard
 
 - type: entity
-  parent: MindRoleWizardDuelist
+  parent: MindRoleWizardDuelistBase
   id: MindRoleWizardDuelistRed
   name: Red Wizard Duelist Role
   components:
   - type: WizardDuelistRedRole
 
 - type: entity
-  parent: MindRoleWizardDuelist
+  parent: MindRoleWizardDuelistBase
   id: MindRoleWizardDuelistBlue
   name: Blue Wizard Duelist Role
   components:
   - type: WizardDuelistBlueRole
 
 - type: entity
-  parent: MindRoleWizardDuelist
+  parent: MindRoleWizardDuelistBase
   id: MindRoleWizardDuelistViolet
   name: Violet Wizard Duelist Role
   components:

@@ -12,8 +12,7 @@
 
 # Wizard duelist starting gear
 - type: startingGear
-  abstract: true
-  id: WizardDuelistGear
+  id: WizardDuelistGearBase
   equipment:
     shoes: ClothingShoesWizard
     id: WizardPDA
@@ -24,7 +23,7 @@
 
 - type: startingGear
   id: WizardDuelistRedGear
-  parent: WizardDuelistGear
+  parent: WizardDuelistGearBase
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorRed
     head: ClothingHeadHatRedwizard
@@ -32,7 +31,7 @@
 
 - type: startingGear
   id: WizardDuelistBlueGear
-  parent: WizardDuelistGear
+  parent: WizardDuelistGearBase
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorDarkBlue
     head: ClothingHeadHatWizard
@@ -40,7 +39,7 @@
 
 - type: startingGear
   id: WizardDuelistVioletGear
-  parent: WizardDuelistGear
+  parent: WizardDuelistGearBase
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorPurple
     head: ClothingHeadHatVioletwizard
