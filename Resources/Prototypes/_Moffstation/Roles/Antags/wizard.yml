@@ -22,24 +22,24 @@
     pocket2: WizardsGrimoireMoffstation
 
 - type: startingGear
-  id: WizardDuelistRedGear
   parent: WizardDuelistBaseGear
+  id: WizardDuelistRedGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorRed
     head: ClothingHeadHatRedwizard
     outerClothing: ClothingOuterWizardRed
 
 - type: startingGear
-  id: WizardDuelistBlueGear
   parent: WizardDuelistBaseGear
+  id: WizardDuelistBlueGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorDarkBlue
     head: ClothingHeadHatWizard
     outerClothing: ClothingOuterWizard
 
 - type: startingGear
-  id: WizardDuelistVioletGear
   parent: WizardDuelistBaseGear
+  id: WizardDuelistVioletGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorPurple
     head: ClothingHeadHatVioletwizard

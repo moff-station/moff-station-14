@@ -28,7 +28,6 @@
     roleType: SoloAntagonist
 
 # Vampires
-
 - type: entity
   parent: BaseMindRoleAntag
   id: MindRoleVampire
@@ -41,7 +40,6 @@
   - type: VampireRole
 
 # Syndicate
-
 - type: entity
   parent: BaseMindRoleAntag
   id: MindRoleSyndicateSpy
@@ -55,9 +53,7 @@
   - type: SyndicateSpyRole
 
 # Wizard Duelists
-
 - type: entity
-  #abstract: true
   parent: MindRoleWizard
   id: MindRoleWizardDuelistBase
   name: Wizard Duelist Role
