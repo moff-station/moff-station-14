@@ -53,3 +53,38 @@
     antagPrototype: SyndicateSpy
     subtype: roles-antag-short-syndicate-spy
   - type: SyndicateSpyRole
+
+# Wizard Duelists
+
+- type: entity
+  abstract: true
+  parent: MindRoleWizard
+  id: MindRoleWizardDuelist
+  name: Wizard Duelist Role
+  components:
+  - type: MindRole
+    roleType: FreeAgent
+    antagPrototype: Wizard
+    exclusiveAntag: true
+    subtype: role-subtype-wizard
+
+- type: entity
+  parent: MindRoleWizardDuelist
+  id: MindRoleWizardDuelistRed
+  name: Red Wizard Duelist Role
+  components:
+  - type: WizardDuelistRedRole
+
+- type: entity
+  parent: MindRoleWizardDuelist
+  id: MindRoleWizardDuelistBlue
+  name: Blue Wizard Duelist Role
+  components:
+  - type: WizardDuelistBlueRole
+
+- type: entity
+  parent: MindRoleWizardDuelist
+  id: MindRoleWizardDuelistViolet
+  name: Violet Wizard Duelist Role
+  components:
+  - type: WizardDuelistVioletRole

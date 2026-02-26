@@ -1,4 +1,5 @@
-﻿- type: antag
+﻿# Wizard role preference
+- type: antag
   id: Wizard
   name: roles-free-agent-wizard-name
   antagonist: true
@@ -8,3 +9,39 @@
   - !type:OverallPlaytimeRequirement
     time: 5h
   guides: [ Wizard ]
+
+# Wizard duelist starting gear
+- type: startingGear
+  abstract: true
+  id: WizardDuelistGear
+  equipment:
+    shoes: ClothingShoesWizard
+    id: WizardPDA
+    ears: ClothingHeadsetAltWizard
+    belt: ClothingBeltWand
+    pocket1: WizardTeleportScroll
+    pocket2: WizardsGrimoire
+
+- type: startingGear
+  id: WizardDuelistRedGear
+  parent: WizardDuelistGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+    head: ClothingHeadHatRedwizard
+    outerClothing: ClothingOuterWizardRed
+
+- type: startingGear
+  id: WizardDuelistBlueGear
+  parent: WizardDuelistGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorDarkBlue
+    head: ClothingHeadHatWizard
+    outerClothing: ClothingOuterWizard
+
+- type: startingGear
+  id: WizardDuelistVioletGear
+  parent: WizardDuelistGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPurple
+    head: ClothingHeadHatVioletwizard
+    outerClothing: ClothingOuterWizardViolet
