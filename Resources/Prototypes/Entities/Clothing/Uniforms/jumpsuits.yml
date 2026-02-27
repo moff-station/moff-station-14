@@ -1167,9 +1167,9 @@
   description: A sign of skill and prestige within the science department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/senior_researcher.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_researcher.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/senior_researcher.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_researcher.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
