@@ -369,7 +369,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadHatFedoraBrown
   id: ClothingHeadHatFedoraGrey
   name: grey fedora
   description: A grey fedora.
@@ -382,10 +382,23 @@
     tags:
     - PetWearable
     - CorgiWearable
-    - ClothMade # Moffstation - Start - Detective-Outfit-Sprites
+    # Moffstation - Start - Detective-Outfit-Sprites
+    - ClothMade
     - Recyclable
     - HamsterWearable
-    - WhitelistChameleon # Moffstation - End - Detective-Outfit-Sprites
+    - WhitelistChameleon
+    # Moffstation - End - Detective-Outfit-Sprites
+
+- type: entity
+  parent: ClothingHeadHatFedoraBrown
+  id: ClothingHeadHatFedoraPress
+  name: press fedora
+  description: It has a little note stuck in the band saying "PRESS". Practically an all-access pass!
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/presshat.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/presshat.rsi
 
 - type: entity
   parent: ClothingHeadBase
@@ -502,8 +515,9 @@
     tags:
     - PetWearable
     - CorgiWearable
-  - type: AddAccentClothing #Moffstation - Adding pirate accent
-    accent: PirateAccent #Moffstation - Adding pirate accent
+  - type: AddAccentClothing
+    accent: ReplacementAccent
+    replacement: pirate
 
 - type: entity
   parent: ClothingHeadBase
@@ -539,7 +553,6 @@
   - type: Tag
     tags:
     - PetWearable
-    - CorgiWearable
     - ClothMade
     - WhitelistChameleon
 
@@ -810,7 +823,6 @@
   - type: Tag
     tags:
     - PetWearable
-    - CorgiWearable
     - ClothMade
     - WhitelistChameleon
 
@@ -846,7 +858,6 @@
   - type: Tag
     tags:
     - PetWearable
-    - CorgiWearable
     - WhitelistChameleon
     - ClothMade
     - Recyclable
@@ -1133,8 +1144,9 @@
     sprite: Clothing/Head/Hats/piratetricord.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/piratetricord.rsi
-  - type: AddAccentClothing #Moffstation - Adding pirate accent
-    accent: PirateAccent #Moffstation - Adding pirate accent
+  - type: AddAccentClothing
+    accent: ReplacementAccent
+    replacement: pirate
 
 - type: entity
   parent: ClothingHeadBase
@@ -1413,17 +1425,15 @@
       sprite: Clothing/Head/Hats/cowboyhatbrown.rsi
     - type: Clothing
       sprite: Clothing/Head/Hats/cowboyhatbrown.rsi
+    - type: AddAccentClothing
+      accent: ReplacementAccent
+      replacement: cowboy
     - type: Tag
       tags:
       - PetWearable
       - CorgiWearable
       - WhitelistChameleon
       - HamsterWearable
-  # Moffstation - Begin - Re-add word replacement accents
-    - type: AddAccentClothing
-      accent: ReplacementAccent
-      replacement: cowboy
-  # Moffstation - End
 
 - type: entity
   parent: ClothingHeadHatCowboyBrown
