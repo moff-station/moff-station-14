@@ -1,0 +1,48 @@
+- type: entity
+  parent: BaseCannonBall 
+  id: CannonBallStructurePenetrating
+  name: gunstone
+  suffix: Pirate
+  description: A hefty ball of polished plasmarble, made for smashing straight through walls.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: plasmarball
+  - type: CartridgeAmmo
+    proto: BulletCannonBallStructurePenetrating
+    deleteOnSpawn: true
+
+- type: entity
+  id: BulletCannonBallStructurePenetrating
+  name: gunstone
+  parent: BaseBullet
+  description: Knock knock.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: plasmarball
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    maxTriggers: 7 # You will blow through This Many Divided By Two walls
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: DemolitionCharge
+    maxIntensity: 10
+    intensitySlope: 15 # Focused explosions
+    totalIntensity: 10 # One explosion isn't quite enough to break a reinf wall (intensity * 30 struct damage)
+    maxTileBreak: 0
+    deleteAfterExplosion: false
+    repeatable: true
+  - type: PointLight
+    radius: 1
+    color: purple
+    energy: 10
+  - type: Projectile
+    deleteOnCollide: False
+    damage:
+      types:
+        Structural: 250   # This is mostly just for show 
+  - type: StaminaDamageOnCollide
+    damage: 130 # Only affects first target hit
