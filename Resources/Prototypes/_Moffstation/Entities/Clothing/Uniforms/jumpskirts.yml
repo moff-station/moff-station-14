@@ -123,7 +123,7 @@
 
 # Prisoner
 - type: entity
-  parent: ClothingUniformJumpsuitPrisonerUpstream
+  parent: ClothingUniformJumpskirtPrisonerUpstream
   id: ClothingUniformJumpskirtPrisoner
   name: prisoner jumpskirt
   description: A jumpskirt used for prisoners. It has suit sensors automatically enabled at all times.
@@ -166,7 +166,7 @@
   description: A jumpskirt for the most crooked of crewmembers.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
       color: &color-grey "#9b9b9b"

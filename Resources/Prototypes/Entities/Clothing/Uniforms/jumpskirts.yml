@@ -92,31 +92,33 @@
   name: virology jumpskirt
   description: It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it.
   components:
+# Moffstation - Start
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: &green-scrubs "#77ed94" # Moffstation
-    - state: professional-trinkets-icon # Moffstation
+      color: &green-scrubs "#77ed94"
+    - state: professional-trinkets-icon
     - state: color-trinkets-icon
       color: &color-white "#FFFFFF"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        #- state: trinkets-inhand-left #Moffstation
+        #- state: trinkets-inhand-left
       right:
       - state: inhand-right
-      #- state: trinkets-inhand-right # Moffstation
+      #- state: trinkets-inhand-right
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *green-scrubs # Moffstation
-      - state: professional-trinkets-equipped-INNERCLOTHING # Moffstation
-      - state: color-trinkets-equipped-INNERCLOTHING # Moffstation
+        color: *green-scrubs
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-white
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -124,29 +126,31 @@
   name: genetics jumpskirt
   description: It's made of a special fiber that gives special protection against biohazards. It has a geneticist rank stripe on it.
   components:
+# Moffstation - Start
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-    - state: professional-trinkets-icon # Moffstation
+    - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: &blue-scrubs "#65b5f2" # Moffstation
+      color: &blue-scrubs "#65b5f2"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        #- state: trinkets-inhand-left #Moffstation
+        #- state: trinkets-inhand-left
       right:
       - state: inhand-right
-      #- state: trinkets-inhand-right # Moffstation
+      #- state: trinkets-inhand-right
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi # Moffstation
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-      - state: professional-trinkets-equipped-INNERCLOTHING # Moffstation
-      - state: color-trinkets-equipped-INNERCLOTHING # Moffstation
-        color: *blue-scrubs # Moffstation
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *blue-scrubs
+# Moffstation - End
 
 
 - type: entity
