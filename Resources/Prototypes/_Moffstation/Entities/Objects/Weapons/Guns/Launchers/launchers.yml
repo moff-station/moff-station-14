@@ -59,3 +59,46 @@
     state: base
   - type: UseDelay
     delay: 0.5 
+
+- type: entity
+  parent: WeaponGrapplingGun
+  id: WeaponFishingRodPirate
+  suffix: pirate
+  name: angler rod 
+  description: A fishing rod with a mean-looking hook. 
+  components:
+  - type: GrapplingGun
+    reelMassCoefficient: 200 # You can pull everyone.
+    reelForce: 20000 # STRONG reeling, you can now make them GET OVER HERE
+    reelRate: 7.5 # Fast reeling - can move very quickly in combat with this
+    ropeBreakPoint: 150000 # Strong rope for ninja tricks
+    cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg      
+    ropeSprite:
+      sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+      state: rope
+  - type: LandAtCursor
+  - type: Gun 
+    soundGunshot: /Audio/Weapons/utilityknifeopen.ogg
+    fireRate: 1.0
+    soundEmpty: /Audio/_Moffstation/Surgery/retractor1.ogg
+  - type: Item
+    size: Small
+    shape:
+      - 0,1,0,1
+      - 0,0,1,0
+    storedOffset: 0,-6
+  - type: BasicEntityAmmoProvider
+    proto: FishingHook 
+    capacity: 1
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+    state: base
+  - type: UseDelay
+    delay: 1.0
+  - type: Wieldable
+    unwieldOnUse: false # Incompatible with use-to-ungrapple
+  - type: CursorOffsetRequiresWield 
+  - type: EyeCursorOffset
+    maxOffset: 40
+    offsetSpeed: 0.005
+    pvsIncrease: 4
