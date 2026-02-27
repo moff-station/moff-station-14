@@ -87,32 +87,32 @@
   name: syndicate assault cyborg
   description: A lean, mean killing machine with access to a variety of deadly modules.
   components:
-    - type: Sprite
-      sprite: _Moffstation/Mobs/Silicon/Chassis/synd_sec.rsi # Moffstation - Early merge of Borg RSI fix
-      layers:
-        - state: borg # Moffstation - Early merge of Borg RSI fix
-        - state: borg_e # Moffstation - Early merge of Borg RSI fix
-          map: ["enum.BorgVisualLayers.Light"]
-          shader: unshaded
-          visible: false
-        - state: borg_l # Moffstation - Early merge of Borg RSI fix
-          shader: unshaded
-          map: ["light"]
-          visible: false
-    - type: BorgChassis
-      maxModules: 3
-      moduleWhitelist:
-        tags:
-          - BorgModuleGeneric
-          - BorgModuleSyndicate
-          - BorgModuleSyndicateAssault
-      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
-      noMindState: borg # Moffstation - Early merge of Borg RSI fix
-    - type: InteractionPopup
-      interactSuccessString: petting-success-syndicate-cyborg
-      interactFailureString: petting-failure-syndicate-cyborg
-      interactSuccessSound:
-        path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/synd_sec.rsi # Moffstation - Early merge of Borg RSI fix
+    layers:
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 3
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleSyndicate
+      - BorgModuleSyndicateAssault
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg # Moffstation - Early merge of Borg RSI fix
+  - type: InteractionPopup
+    interactSuccessString: petting-success-syndicate-cyborg
+    interactFailureString: petting-failure-syndicate-cyborg
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
 
 - type: entity
   id: BorgChassisSyndicateMedical
@@ -120,39 +120,39 @@
   name: syndicate medical cyborg
   description: A combat medical cyborg. Has limited offensive potential, but makes more than up for it with its support capabilities.
   components:
-    - type: Sprite
-      sprite: _Moffstation/Mobs/Silicon/Chassis/synd_medical.rsi # Moffstation - Early merge of Borg RSI fix
-      layers:
-        - state: borg # Moffstation - Early merge of Borg RSI fix
-        - state: borg_e # Moffstation - Early merge of Borg RSI fix
-          map: ["enum.BorgVisualLayers.Light"]
-          shader: unshaded
-          visible: false
-        - state: borg_l # Moffstation - Early merge of Borg RSI fix
-          shader: unshaded
-          map: ["light"]
-          visible: false
-    - type: BorgChassis
-      maxModules: 3
-      moduleWhitelist:
-        tags:
-          - BorgModuleGeneric
-          - BorgModuleMedical
-          - BorgModuleSyndicate
-      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
-      noMindState: borg # Moffstation - Early merge of Borg RSI fix
-    - type: ShowHealthBars
-    - type: InteractionPopup
-      interactSuccessString: petting-success-syndicate-cyborg
-      interactFailureString: petting-failure-syndicate-cyborg
-      interactSuccessSound:
-        path: /Audio/Ambience/Objects/periodic_beep.ogg
-    - type: SolutionScanner
-    - type: FootstepModifier
-      footstepSoundCollection:
-        collection: FootstepHoverBorg
-        params:
-          volume: -6
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/synd_medical.rsi # Moffstation - Early merge of Borg RSI fix
+    layers:
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 3
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleMedical
+      - BorgModuleSyndicate
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg # Moffstation - Early merge of Borg RSI fix
+  - type: ShowHealthBars
+  - type: InteractionPopup
+    interactSuccessString: petting-success-syndicate-cyborg
+    interactFailureString: petting-failure-syndicate-cyborg
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: SolutionScanner
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHoverBorg
+      params:
+        volume: -6
 
 - type: entity
   id: BorgChassisSyndicateSaboteur
@@ -160,36 +160,36 @@
   name: syndicate saboteur cyborg
   description: A streamlined engineering cyborg, equipped with covert modules. Its chameleon projector lets it disguise itself as a Nanotrasen cyborg.
   components:
-    - type: Sprite
-      sprite: _Moffstation/Mobs/Silicon/Chassis/synd_eng.rsi # Moffstation - Early merge of Borg RSI fix
-      layers:
-        - state: borg # Moffstation - Early merge of Borg RSI fix
-        - state: borg_e # Moffstation - Early merge of Borg RSI fix
-          map: ["enum.BorgVisualLayers.Light"]
-          shader: unshaded
-          visible: false
-        - state: borg_l # Moffstation - Early merge of Borg RSI fix
-          shader: unshaded
-          map: ["light"]
-          visible: false
-    - type: BorgChassis
-      maxModules: 3
-      moduleWhitelist:
-        tags:
-          - BorgModuleGeneric
-          - BorgModuleEngineering
-          - BorgModuleSyndicate
-      hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
-      noMindState: borg # Moffstation - Early merge of Borg RSI fix
-    - type: ShowHealthBars
-      damageContainers:
-      - Inorganic
-      - Silicon
-    - type: InteractionPopup
-      interactSuccessString: petting-success-syndicate-cyborg
-      interactFailureString: petting-failure-syndicate-cyborg
-      interactSuccessSound:
-        path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/synd_eng.rsi # Moffstation - Early merge of Borg RSI fix
+    layers:
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 3
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleEngineering
+      - BorgModuleSyndicate
+    hasMindState: borg_e # Moffstation - Early merge of Borg RSI fix
+    noMindState: borg # Moffstation - Early merge of Borg RSI fix
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+  - type: InteractionPopup
+    interactSuccessString: petting-success-syndicate-cyborg
+    interactFailureString: petting-failure-syndicate-cyborg
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
 
 - type: entity
   id: BorgChassisDerelict

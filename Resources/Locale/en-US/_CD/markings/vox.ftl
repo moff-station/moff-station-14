@@ -253,9 +253,6 @@ marking-VoxCocktail-cocktail4 = Tail
 marking-VoxFootSpines = Leg Spines
 marking-VoxFootSpines-footspines = Leg Spines
 
-marking-VoxTailBack = Normal Tail
-marking-VoxBackTail-colorable = Normal Tail
-
 marking-VoxTailBalled = Thrasher
 marking-VoxTailBalled-balled = Thrasher
 

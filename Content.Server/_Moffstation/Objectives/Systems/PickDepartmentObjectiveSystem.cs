@@ -9,11 +9,10 @@ using Robust.Shared.Random;
 namespace Content.Server._Moffstation.Objectives.Systems;
 
 /// <summary>
-/// Handles assinging a target to an objective entity with <see cref="LocationObjectiveComponent"/> using different components.
+/// Handles assigning a target to an objective entity with <see cref="LocationObjectiveComponent"/> using different components.
 /// </summary>
 public sealed class PickDepartmentObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly LocationObjectiveSystem _target = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;

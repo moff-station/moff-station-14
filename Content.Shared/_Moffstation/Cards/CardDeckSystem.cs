@@ -14,7 +14,6 @@ namespace Content.Shared._Moffstation.Cards;
 
 public sealed class CardDeckSystem : CardStackSystem<CardDeckComponent>
 {
-    [Dependency] private readonly CardSystem _card = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;

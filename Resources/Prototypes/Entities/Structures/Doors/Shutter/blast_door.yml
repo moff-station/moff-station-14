@@ -34,7 +34,7 @@
     resistance: 8
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StrongMetallic
+    damageModifierSet: StructuralMetallicStrong # Moffstation - Blast Door Modifier change
   - type: ContainerFill
     containers:
       board: [ DoorElectronics ]

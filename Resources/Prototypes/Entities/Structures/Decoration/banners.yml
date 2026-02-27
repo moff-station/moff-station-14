@@ -89,7 +89,7 @@
 
 - type: entity
   id: BannerSyndicate
-  parent: BannerBase
+  parent: [ BaseSyndicateContraband , BannerBase ] # Moffstation - Syndie contra 1984
   name: syndicate banner
   description: A banner from which, according to the syndicate, you should feel hatred for NT.
   components:

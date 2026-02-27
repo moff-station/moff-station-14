@@ -1,4 +1,4 @@
-# This should probably use the same prefix system as the mobster accent.
+﻿# This should probably use the same prefix system as the mobster accent.
 # For the record, these do not work right now - even when uncommented.
 
 # accent-italian-prefix-1 = Ravioli, ravioli, give me the formuoli!

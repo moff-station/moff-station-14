@@ -13,7 +13,7 @@ public sealed class AACTabletSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly ILocalizationManager _loc = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] protected readonly IGameTiming Timing = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -23,7 +23,7 @@ public sealed class AACTabletSystem : EntitySystem
 
     private void OnSendPhrase(EntityUid uid, AACTabletComponent component, AACTabletSendPhraseMessage message)
     {
-        if (component.NextPhrase > Timing.CurTime)
+        if (component.NextPhrase > _timing.CurTime)
             return;
 
         // the AAC tablet uses the name of the person who pressed the tablet button
@@ -42,7 +42,7 @@ public sealed class AACTabletSystem : EntitySystem
             hideChat: false,
             nameOverride: speakerName);
 
-        var curTime = Timing.CurTime;
+        var curTime = _timing.CurTime;
         component.NextPhrase = curTime + component.Cooldown;
     }
 }
