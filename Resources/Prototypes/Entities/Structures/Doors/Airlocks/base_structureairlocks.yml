@@ -142,7 +142,7 @@
   - type: Occluder
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StructuralMetallicStrong # Moffstation - Structural damagetype fix 
   - type: RCDDeconstructable
     cost: 6
     delay: 8
