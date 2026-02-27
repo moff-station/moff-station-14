@@ -270,10 +270,10 @@
         children:
         - id: CannonBall
           amount: !type:RangeNumberSelector
-            range: 3, 5
+            range: 3, 4
         - id: CannonBallStructurePenetrating
           amount: !type:RangeNumberSelector
-            range: 2, 2
+            range: 1, 1
         - id: CannonBallGrapeshot
           amount: !type:RangeNumberSelector
             range: 1, 3

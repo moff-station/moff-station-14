@@ -25,24 +25,81 @@
       - state: plasmarball
   - type: TriggerOnCollide
     fixtureID: projectile
-    maxTriggers: 7 # You will blow through This Many Divided By Two walls
+    maxTriggers: 5 # You will blow through This Many Divided By Two walls
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: DemolitionCharge
     maxIntensity: 10
     intensitySlope: 15 # Focused explosions
-    totalIntensity: 10 # One explosion isn't quite enough to break a reinf wall (intensity * 30 struct damage)
+    totalIntensity: 20
     maxTileBreak: 0
     deleteAfterExplosion: false
     repeatable: true
   - type: PointLight
-    radius: 1
-    color: purple
-    energy: 10
+    radius: 1.6
+    color: "#800080"
+    energy: 3.5
   - type: Projectile
-    deleteOnCollide: False
+    deleteOnCollide: false 
     damage:
       types:
         Structural: 250   # This is mostly just for show 
   - type: StaminaDamageOnCollide
     damage: 130 # Only affects first target hit
+
+- type: entity
+  parent: BaseCannonBall 
+  id: CannonBallBouncy
+  name: bouncy cannonball
+  suffix: Pirate
+  description: A hefty ball of polished plasmarble, made for smashing straight through walls. Stings a little if you get hit by it.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: plasmarball # WIP make a sprite for this
+  - type: CartridgeAmmo
+    proto: BulletCannonBallBouncy
+    deleteOnSpawn: true
+
+- type: entity
+  parent: [ BaseItem, BaseMajorContraband ]
+  id: BulletCannonBallBouncy
+  name: bouncy cannonball
+  suffix: Pirate
+  description: Look out -- 
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clickable
+  - type: Physics
+    bodyType: Dynamic
+  - type: TimedDespawn
+    lifetime: 10
+  - type: EmitSoundOnCollide
+    sound: 
+      path: /Audio/Effects/Footsteps/bounce.ogg
+  - type: Sprite
+    sprite: Objects/Fun/Balls/beach_ball.rsi # WIP make a sprite for this
+    state: icon
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape: !type:PhysShapeCircle
+          radius: 0.3
+          position: "0,-0.2"
+        mass: 2000
+        mask:
+          - Impassable
+          - BulletImpassable
+        restitution: 0.99 # nearly perfect bouncy 
+        friction: 0.01
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    maxTriggers: null
+  - type: TileFrictionModifier
+    modifier: 0.01
+  - type: StunOnCollide
+    knockdownAmount: 2.5 # Good for subduing 
+    drop: false 
+    slowdownAmount: 2.5
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
