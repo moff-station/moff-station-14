@@ -1,20 +1,13 @@
-using System.Linq;
 using Content.Server._Moffstation.Objectives.Components;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Pinpointer;
-using Content.Shared.Roles;
-using Content.Shared.Roles.Jobs;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 
 public sealed class PickRoomObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly LocationObjectiveSystem _target = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
 
     public override void Initialize()
     {

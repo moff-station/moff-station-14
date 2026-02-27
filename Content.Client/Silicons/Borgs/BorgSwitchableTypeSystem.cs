@@ -18,7 +18,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
 {
     [Dependency] private readonly BorgSystem _borgSystem = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    // [Dependency] private readonly SpriteSystem _sprite = default!; // Moffstation - No longer used
     [Dependency] private readonly IResourceCache _resourceCache = default!; // Moffstation - Early merge of Borg RSI fix
 
     public override void Initialize()
