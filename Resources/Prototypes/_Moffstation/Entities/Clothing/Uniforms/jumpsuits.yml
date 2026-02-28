@@ -12,23 +12,35 @@
 
 # Prisoner
 - type: entity
-  parent: ClothingUniformJumpsuitPrisonerUpstream
+  parent: [ClothingUniformJumpsuitPrisonerUpstream, ClothingUniformJumpsuitColorOrange]
   id: ClothingUniformJumpsuitPrisoner
   name: prisoner jumpsuit
-  description: A jumpsuit used for prisoners. It has suit sensors automatically enabled at all times.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisoner.rsi
-    layers: []
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisoner.rsi
-    clothingVisuals: {}
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-orange "#db542e"
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-black "#3f3f3f"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
+        color: *color-orange
       right:
       - state: inhand-right
+        color: *color-orange
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-orange
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-black
   - type: Tag
     tags:
     - ClothMade
@@ -43,9 +55,30 @@
   description: A jumpsuit for the most crooked of crewmembers.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisonerstriped.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-grey "#9b9b9b"
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: *color-black
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-grey
+      right:
+      - state: inhand-right
+        color: *color-grey
   - type: Clothing
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/prisonerstriped.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-grey
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-black
   - type: SuitSensor
     controlsLocked: true
     randomMode: false

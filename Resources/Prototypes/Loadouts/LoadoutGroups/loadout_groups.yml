@@ -1548,6 +1548,20 @@
   - MeteorologistJumpsuit # Moffstaion - Adding Reporter Clothes
   - MeteorologistJumpskirt # Moffstaion - Adding Reporter Clothes
 
+- type: loadoutGroup
+  id: ReporterHead
+  name: loadout-group-reporter-head
+  minLimit: 0
+  loadouts:
+  - ReporterPressFedora
+
+- type: loadoutGroup
+  id: ReporterOuterClothing
+  name: loadout-group-reporter-outerclothing
+  minLimit: 0
+  loadouts:
+  - ReporterPressVest
+
 #- type: loadoutGroup
 #  id: ReporterJobTrinkets
 #  name: loadout-group-jobtrinkets

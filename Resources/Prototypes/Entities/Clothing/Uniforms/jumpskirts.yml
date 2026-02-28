@@ -92,10 +92,33 @@
   name: virology jumpskirt
   description: It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it.
   components:
+# Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/virology.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: &green-scrubs "#77ed94"
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-white "#FFFFFF"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        #- state: trinkets-inhand-left
+      right:
+      - state: inhand-right
+      #- state: trinkets-inhand-right
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/virology.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *green-scrubs
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-white
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -103,10 +126,31 @@
   name: genetics jumpskirt
   description: It's made of a special fiber that gives special protection against biohazards. It has a geneticist rank stripe on it.
   components:
+# Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/genetics.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: &blue-scrubs "#65b5f2"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        #- state: trinkets-inhand-left
+      right:
+      - state: inhand-right
+      #- state: trinkets-inhand-right
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/genetics.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *blue-scrubs
+# Moffstation - End
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -224,10 +268,31 @@
   name: hydroponics jumpskirt
   description: Has a strong earthy smell to it. Hopefully it's merely dirty as opposed to soiled.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/hydro.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: &color-teal "#2abd8e"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-darkblue "#547abb"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/hydro.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-teal
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-darkblue
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -235,10 +300,33 @@
   name: janitor jumpskirt
   description: The jumpskirt for the poor sop with a mop.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/janitor.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: &color-grey "#9b9b9b"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-purple "#ac50e6"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-grey
+      right:
+      - state: inhand-right
+        color: *color-grey
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/janitor.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-grey
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-purple
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -363,10 +451,29 @@
   name: scientist jumpskirt
   description: It's made of a special fiber that increases perceived intelligence and decreases personal ethics. It has markings that denote the wearer as a scientist.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/scientist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi # Moffstation
+    layers:
+    - state: icon
+    - state: professional-trinkets-icon # Moffstation
+    - state: color-trinkets-icon
+      color: *color-purple
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/scientist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-purple
+ # Moffstation - End
 
 - type: entity
   parent: ClothingUniformSkirtBase
