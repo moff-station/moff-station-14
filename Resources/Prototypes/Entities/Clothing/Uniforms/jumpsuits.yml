@@ -430,7 +430,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/commandgeneric.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: ClothingUniformBase # Moffstation - Remove folding
   id: ClothingUniformJumpsuitHydroponics
   name: hydroponics jumpsuit
   description: Has a strong earthy smell to it. Hopefully it's merely dirty as opposed to soiled.
@@ -464,7 +464,7 @@
 # Moffstation - End
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformBase # Moffstation - Remove folding
   id: ClothingUniformJumpsuitJanitor
   name: janitor jumpsuit
   description: The jumpsuit for the poor sop with a mop.
@@ -635,7 +635,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/rnd.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: ClothingUniformBase # Moffstation - Remove folding
   id: ClothingUniformJumpsuitScientist
   name: scientist jumpsuit
   description: It's made of a special fiber that increases perceived intelligence and decreases personal ethics. It has markings that denote the wearer as a scientist.
