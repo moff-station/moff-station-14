@@ -151,7 +151,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 300 # Moffstation - Structural damagetype fix
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
