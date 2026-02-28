@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseCannonBall 
-  id: CannonBallStructurePenetrating
+  id: CannonBallStructureBlasting
   name: gunstone
   suffix: Pirate
   description: A hefty ball of polished plasmarble, made for smashing straight through walls. Stings a little if you get hit by it.
@@ -9,11 +9,11 @@
     sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
     state: plasmarball
   - type: CartridgeAmmo
-    proto: BulletCannonBallStructurePenetrating
+    proto: BulletCannonBallStructureBlasting
     deleteOnSpawn: true
 
 - type: entity
-  id: BulletCannonBallStructurePenetrating
+  id: BulletCannonBallStructureBlasting
   name: gunstone
   parent: BaseBullet
   description: Knock knock.
@@ -44,8 +44,6 @@
     damage:
       types:
         Structural: 250   # This is mostly just for show 
-  - type: StaminaDamageOnCollide
-    damage: 130 # Only affects first target hit
 
 - type: entity
   parent: BaseCannonBall 
@@ -103,3 +101,137 @@
     slowdownAmount: 2.5
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5
+
+- type: entity
+  parent: [ BaseItem, BaseMajorContraband ]
+  id: BulletCannonBallBouncy
+  name: bouncy cannonball
+  suffix: Pirate
+  description: Look out -- 
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clickable
+  - type: Physics
+    bodyType: Dynamic
+  - type: TimedDespawn
+    lifetime: 10
+  - type: EmitSoundOnCollide
+    sound: 
+      path: /Audio/Effects/Footsteps/bounce.ogg
+  - type: Sprite
+    sprite: Objects/Fun/Balls/beach_ball.rsi # WIP make a sprite for this
+    state: icon
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape: !type:PhysShapeCircle
+          radius: 0.3
+          position: "0,-0.2"
+        mass: 2000
+        mask:
+          - Impassable
+          - BulletImpassable
+        restitution: 0.99 # nearly perfect bouncy 
+        friction: 0.01
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    maxTriggers: null
+  - type: TileFrictionModifier
+    modifier: 0.01
+  - type: StunOnCollide
+    knockdownAmount: 2.5 # Good for subduing 
+    drop: false 
+    slowdownAmount: 2.5
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
+
+- type: entity
+  parent: BaseCannonBall 
+  id: CannonBallStructureSplitting
+  name: gunstone spike
+  suffix: Pirate
+  description: A hefty spike of polished plasmarble, to cut a line straight as a cutlass would. 
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: plasmarball
+  - type: CartridgeAmmo
+    proto: BulletCannonBallStructureSplitting
+    deleteOnSpawn: true
+
+- type: entity
+  name: gunstone
+  id: BulletCannonBallStructureSplitting
+  parent: BaseBullet
+  description: Knock knock.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: plasmarball
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    maxTriggers: 5 # You will blow through This Many Divided By Two walls
+  - type: PointLight
+    radius: 1.6
+    color: "#800080"
+    energy: 3.5
+  - type: SpawnOnTrigger
+    proto: HoloFan
+  - type: Projectile
+    penetrationThreshold: 950
+    damage:
+      types:
+        Piercing: 50
+        Structural: 400   # This is the minimum to pierce one (1) reinf wall
+    ignoreResistances: true
+
+- type: entity
+  parent: BaseCannonBall 
+  id: CannonBallGasNitrous
+  name: sleeping carcass
+  suffix: Pirate
+  description: A cannonball stuck through with glass phials and reactive metals. 
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: plasmarball
+  - type: CartridgeAmmo
+    proto: BulletCannonBallGasNitrou
+    deleteOnSpawn: true
+
+- type: entity
+  id: BulletCannonBallGasNitrous
+  name: gunstone
+  parent: BaseBullet
+  description: Night night. 
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: plasmarball
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    maxTriggers: 1
+  - type: SmokeOnTrigger
+    keysIn:
+    - timer
+    duration: 30
+    spreadAmount: 50
+  - type: ReleaseGasOnTrigger
+    keysIn:
+    - timer
+    removeFraction: 1
+    air:
+      volume: 1000
+      moles: # Target is 3117.84 mols total for filling 30 tiles (goal is 101.325 kPa @ 20C)
+        NitrousOxide: 3117.84 # nitrogen
+      temperature: 293.15
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 5
+  - type: StaminaDamageOnCollide
+    damage: 130
