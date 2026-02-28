@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseCannonBall 
+  parent: BaseCannonBall
   id: CannonBallStructureBlasting
   name: gunstone
   suffix: Pirate
@@ -35,22 +35,18 @@
     maxTileBreak: 0
     deleteAfterExplosion: false
     repeatable: true
-  - type: PointLight
-    radius: 1.6
-    color: "#800080"
-    energy: 3.5
   - type: Projectile
-    deleteOnCollide: false 
+    deleteOnCollide: false
     damage:
       types:
-        Structural: 250   # This is mostly just for show 
+        Structural: 250   # This is mostly just for show, the explosion is what breaks things
 
 - type: entity
-  parent: BaseCannonBall 
+  parent: BaseCannonBall
   id: CannonBallBouncy
-  name: bouncy cannonball
+  name: gutterball
   suffix: Pirate
-  description: A hefty ball of polished plasmarble, made for smashing straight through walls. Stings a little if you get hit by it.
+  description: Yer last boatswain was keelhauled for getting swindled into decking the gunwale with beach balls.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
@@ -62,22 +58,24 @@
 - type: entity
   parent: [ BaseItem, BaseMajorContraband ]
   id: BulletCannonBallBouncy
-  name: bouncy cannonball
+  name: gutterball
   suffix: Pirate
-  description: Look out -- 
+  description: Look out --
   categories: [ HideSpawnMenu ]
   components:
-  - type: Clickable
-  - type: Physics
-    bodyType: Dynamic
-  - type: TimedDespawn
-    lifetime: 10
-  - type: EmitSoundOnCollide
-    sound: 
-      path: /Audio/Effects/Footsteps/bounce.ogg
   - type: Sprite
     sprite: Objects/Fun/Balls/beach_ball.rsi # WIP make a sprite for this
     state: icon
+  - type: Clickable
+  - type: TimedDespawn
+    lifetime: 10
+  - type: SpawnOnDespawn
+    prototype: CannonBallBouncy  # Reusable cannonbouncy
+  - type: Physics
+    bodyType: Dynamic
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Effects/Footsteps/bounce.ogg
   - type: Fixtures
     fixtures:
       projectile:
@@ -88,79 +86,35 @@
         mask:
           - Impassable
           - BulletImpassable
-        restitution: 0.99 # nearly perfect bouncy 
-        friction: 0.01
+        restitution: 0.99 # nearly perfect bouncy
+  - type: TileFrictionModifier
+    modifier: 0.005
   - type: TriggerOnCollide
     fixtureID: projectile
     maxTriggers: null
-  - type: TileFrictionModifier
-    modifier: 0.01
   - type: StunOnCollide
-    knockdownAmount: 2.5 # Good for subduing 
-    drop: false 
+    knockdownAmount: 2.5 # Good for subduing
+    drop: false
     slowdownAmount: 2.5
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5
 
 - type: entity
-  parent: [ BaseItem, BaseMajorContraband ]
-  id: BulletCannonBallBouncy
-  name: bouncy cannonball
-  suffix: Pirate
-  description: Look out -- 
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Clickable
-  - type: Physics
-    bodyType: Dynamic
-  - type: TimedDespawn
-    lifetime: 10
-  - type: EmitSoundOnCollide
-    sound: 
-      path: /Audio/Effects/Footsteps/bounce.ogg
-  - type: Sprite
-    sprite: Objects/Fun/Balls/beach_ball.rsi # WIP make a sprite for this
-    state: icon
-  - type: Fixtures
-    fixtures:
-      projectile:
-        shape: !type:PhysShapeCircle
-          radius: 0.3
-          position: "0,-0.2"
-        mass: 2000
-        mask:
-          - Impassable
-          - BulletImpassable
-        restitution: 0.99 # nearly perfect bouncy 
-        friction: 0.01
-  - type: TriggerOnCollide
-    fixtureID: projectile
-    maxTriggers: null
-  - type: TileFrictionModifier
-    modifier: 0.01
-  - type: StunOnCollide
-    knockdownAmount: 2.5 # Good for subduing 
-    drop: false 
-    slowdownAmount: 2.5
-    walkSpeedModifier: 0.5
-    sprintSpeedModifier: 0.5
-
-- type: entity
-  parent: BaseCannonBall 
+  parent: BaseCannonBall
   id: CannonBallStructureSplitting
-  name: gunstone spike
+  name: spike of neptune
   suffix: Pirate
-  description: A hefty spike of polished plasmarble, to cut a line straight as a cutlass would. 
+  description: A hefty spike of polished plasmarble, to cut a line straight and true. Courteously provides some holocanvas to keep the winds still.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: plasmarball
+    state: plasmarball # WIP - sprite
   - type: CartridgeAmmo
     proto: BulletCannonBallStructureSplitting
     deleteOnSpawn: true
 
 - type: entity
-  name: gunstone
+  name: spike of neptune
   id: BulletCannonBallStructureSplitting
   parent: BaseBullet
   description: Knock knock.
@@ -169,14 +123,10 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
-      - state: plasmarball
+      - state: plasmarball # WIP - sprite this
   - type: TriggerOnCollide
     fixtureID: projectile
-    maxTriggers: 5 # You will blow through This Many Divided By Two walls
-  - type: PointLight
-    radius: 1.6
-    color: "#800080"
-    energy: 3.5
+    maxTriggers: 5
   - type: SpawnOnTrigger
     proto: HoloFan
   - type: Projectile
@@ -188,50 +138,57 @@
     ignoreResistances: true
 
 - type: entity
-  parent: BaseCannonBall 
+  parent: BaseCannonBall
   id: CannonBallGasNitrous
   name: sleeping carcass
   suffix: Pirate
-  description: A cannonball stuck through with glass phials and reactive metals. 
+  description: A cannonball stuck through with glass phials and reactive metals.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: plasmarball
+    state: plasmarball # WIP - sprite
   - type: CartridgeAmmo
-    proto: BulletCannonBallGasNitrou
+    proto: BulletCannonBallGasNitrous
     deleteOnSpawn: true
 
 - type: entity
   id: BulletCannonBallGasNitrous
-  name: gunstone
-  parent: BaseBullet
-  description: Night night. 
+  name: sleeping carcass
+  parent: [ BaseItem, BaseMajorContraband ]
+  description: Night night.
   categories: [ HideSpawnMenu ]
   components:
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    maxTriggers: Null
+  - type: TimedDespawn
+    lifetime: 10
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape: !type:PhysShapeCircle
+          radius: 0.3
+          position: "0,-0.2"
+        mass: 2000
+        mask:
+          - Impassable
+          - BulletImpassable
+        friction: 0 # Bullet physics
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
-      - state: plasmarball
-  - type: TriggerOnCollide
-    fixtureID: projectile
-    maxTriggers: 1
-  - type: SmokeOnTrigger
-    keysIn:
-    - timer
-    duration: 30
-    spreadAmount: 50
+      - state: plasmarball # WIP - sprite this
+  - type: EmitSoundOnTrigger
+    sound: /Audio/Items/smoke_grenade_smoke.ogg
+  - type: SmokeOnTrigger # This is a courtesy, because nitrous is invisible
+    duration: 10
+    spreadAmount: 40
   - type: ReleaseGasOnTrigger
-    keysIn:
-    - timer
-    removeFraction: 1
+    removeFraction: 0.5
     air:
       volume: 1000
-      moles: # Target is 3117.84 mols total for filling 30 tiles (goal is 101.325 kPa @ 20C)
-        NitrousOxide: 3117.84 # nitrogen
+      moles: # 3117.84 mols fills 30 tiles (101.325 kPa @ 20C), so this is enough to make a 100-tile room sleepy
+        NitrousOxide: 3111.00 # nitrogen
       temperature: 293.15
-  - type: Projectile
-    damage:
-      types:
-        Blunt: 5
   - type: StaminaDamageOnCollide
     damage: 130
