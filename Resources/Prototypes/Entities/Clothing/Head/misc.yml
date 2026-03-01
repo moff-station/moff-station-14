@@ -368,6 +368,8 @@
   # Moffstation - Begin - Color Changing Hairflower
   abstract: true
   components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Misc/hairflower.rsi
   - type: ChameleonClothing
     slot: HEAD
 #    default: idfk
