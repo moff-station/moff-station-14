@@ -96,6 +96,7 @@
   id: SpellbookSpellbookBlink
   name: spellbook-spellbook-blink-name
   description: spellbook-spellbook-blink-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: blink }
   productEntity: BlinkBook
   cost:
     WizCoin: 1
@@ -109,6 +110,7 @@
   id: SpellbookSpellbookFireball
   name: spellbook-spellbook-fireball-name
   description: spellbook-spellbook-fireball-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: fireball }
   productEntity: FireballSpellbook
   cost:
     WizCoin: 2
@@ -122,6 +124,7 @@
   id: SpellbookSpellbookForceWall
   name: spellbook-spellbook-force-wall-name
   description: spellbook-spellbook-force-wall-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: shield }
   productEntity: ForceWallSpellbook
   cost:
     WizCoin: 3
@@ -135,6 +138,7 @@
   id: SpellbookSpellbookKnock
   name: spellbook-spellbook-knock-name
   description: spellbook-spellbook-knock-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: knock }
   productEntity: KnockSpellbook
   cost:
     WizCoin: 1
@@ -148,6 +152,7 @@
   id: SpellbookSpellbookSmite
   name: spellbook-spellbook-smite-name
   description: spellbook-spellbook-smite-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: gib }
   productEntity: SmiteBook
   cost:
     WizCoin: 3
@@ -161,6 +166,7 @@
   id: SpellbookSpellbookSpawn
   name: spellbook-spellbook-spawn-name
   description: spellbook-spellbook-spawn-description
+  icon: { sprite: Mobs/Aliens/Carps/magic.rsi , state: icon }
   productEntity: SpawnSpellbook
   cost:
     WizCoin: 2
