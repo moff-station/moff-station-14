@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/01/2026 22:32:43
-  entityCount: 11547
+  time: 03/01/2026 23:11:24
+  entityCount: 11561
 maps:
 - 1
 grids:
@@ -3526,7 +3526,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -47963.887
+      secondsUntilStateChange: -49032.594
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -6121,6 +6121,12 @@ entities:
         7825:
         - - DoorStatus
           - InputB
+        7875:
+        - - DoorStatus
+          - Close
+        7945:
+        - - DoorStatus
+          - Close
   - uid: 1606
     components:
     - type: Transform
@@ -6136,6 +6142,12 @@ entities:
         7825:
         - - DoorStatus
           - InputA
+        7875:
+        - - DoorStatus
+          - Close
+        7945:
+        - - DoorStatus
+          - Close
   - uid: 1632
     components:
     - type: Transform
@@ -18588,6 +18600,21 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -30.566946,25.73115
       parent: 2
+  - uid: 11541
+    components:
+    - type: Transform
+      pos: -23.720219,22.82373
+      parent: 2
+  - uid: 11549
+    components:
+    - type: Transform
+      pos: -24.008856,22.828579
+      parent: 2
+  - uid: 11553
+    components:
+    - type: Transform
+      pos: -21.909151,24.182186
+      parent: 2
 - proto: CandleBlack
   entities:
   - uid: 3627
@@ -18991,6 +19018,31 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -30.041649,25.85428
+      parent: 2
+  - uid: 11550
+    components:
+    - type: Transform
+      pos: -23.847803,22.566507
+      parent: 2
+  - uid: 11551
+    components:
+    - type: Transform
+      pos: -23.124954,22.255497
+      parent: 2
+  - uid: 11552
+    components:
+    - type: Transform
+      pos: -24.856514,26.840733
+      parent: 2
+  - uid: 11554
+    components:
+    - type: Transform
+      pos: -21.680897,24.14758
+      parent: 2
+  - uid: 11555
+    components:
+    - type: Transform
+      pos: -21.91981,24.66688
       parent: 2
 - proto: CapacitorStockPart
   entities:
@@ -24222,11 +24274,6 @@ entities:
     - type: Transform
       pos: 3.5,22.5
       parent: 2
-  - uid: 2696
-    components:
-    - type: Transform
-      pos: -23.5,22.5
-      parent: 2
   - uid: 2697
     components:
     - type: Transform
@@ -28330,7 +28377,7 @@ entities:
       pos: 29.5,18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -108716.36
+      secondsUntilStateChange: -109785.07
       state: Opening
   - uid: 3713
     components:
@@ -28375,7 +28422,7 @@ entities:
       pos: 3.5,18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -108688.86
+      secondsUntilStateChange: -109757.57
       state: Opening
     - type: Lock
       showLockVerbs: False
@@ -29854,43 +29901,49 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 6.5,12.5
       parent: 2
-  - uid: 11541
+  - uid: 11542
     components:
     - type: Transform
       pos: 43.5,0.5
       parent: 2
-  - uid: 11542
+  - uid: 11543
     components:
     - type: Transform
       pos: 46.5,0.5
       parent: 2
-  - uid: 11543
+  - uid: 11544
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 41.5,20.5
       parent: 2
-  - uid: 11544
+  - uid: 11545
     components:
     - type: Transform
       pos: 43.5,9.5
       parent: 2
-  - uid: 11545
-    components:
-    - type: Transform
-      pos: 45.5,9.5
-      parent: 2
   - uid: 11546
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 27.5,18.5
+      pos: 45.5,9.5
       parent: 2
   - uid: 11547
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
+      pos: 27.5,18.5
+      parent: 2
+  - uid: 11548
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
       pos: -21.5,15.5
+      parent: 2
+  - uid: 11556
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -32.5,24.5
       parent: 2
 - proto: FirelockGlass
   entities:
@@ -49412,6 +49465,8 @@ entities:
   entities:
   - uid: 7827
     components:
+    - type: MetaData
+      name: logic gate (Airlocks bolt each other when blast doors are open)
     - type: Transform
       anchored: True
       rot: 1.5707963267948966 rad
@@ -49427,8 +49482,14 @@ entities:
     - type: Physics
       canCollide: False
       bodyType: Static
+    - type: Label
+      currentLabel: Airlocks bolt each other when blast doors are open
+    - type: NameModifier
+      baseName: logic gate
   - uid: 7828
     components:
+    - type: MetaData
+      name: logic gate (Airlocks bolt each other when blast doors are open)
     - type: Transform
       anchored: True
       rot: 3.141592653589793 rad
@@ -49444,6 +49505,132 @@ entities:
     - type: Physics
       canCollide: False
       bodyType: Static
+    - type: Label
+      currentLabel: Airlocks bolt each other when blast doors are open
+    - type: NameModifier
+      baseName: logic gate
+  - uid: 11557
+    components:
+    - type: MetaData
+      name: logic gate (Bolts plasma windoor when blast doors are open)
+    - type: Transform
+      anchored: True
+      pos: -12.5,-29.5
+      parent: 2
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        7875:
+        - - Output
+          - DoorBolt
+    - type: Physics
+      canCollide: False
+      bodyType: Static
+    - type: Label
+      currentLabel: Bolts plasma windoor when blast doors are open
+    - type: NameModifier
+      baseName: logic gate
+  - uid: 11558
+    components:
+    - type: MetaData
+      name: logic gate (Bolts plasma windoor when blast doors are open)
+    - type: Transform
+      anchored: True
+      pos: -12.5,-30.5
+      parent: 2
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        7945:
+        - - Output
+          - DoorBolt
+    - type: Physics
+      canCollide: False
+      bodyType: Static
+    - type: Label
+      currentLabel: Bolts plasma windoor when blast doors are open
+    - type: NameModifier
+      baseName: logic gate
+- proto: LogicGateNand
+  entities:
+  - uid: 11559
+    components:
+    - type: MetaData
+      name: logic gate (True when plasma windoor is closed)
+    - type: Transform
+      anchored: True
+      rot: 3.141592653589793 rad
+      pos: -11.5,-29.5
+      parent: 2
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        11557:
+        - - Output
+          - InputB
+    - type: Physics
+      canCollide: False
+      bodyType: Static
+    - type: Label
+      currentLabel: True when plasma windoor is closed
+    - type: NameModifier
+      baseName: logic gate
+  - uid: 11560
+    components:
+    - type: MetaData
+      name: logic gate (True when plasma windoor is closed)
+    - type: Transform
+      anchored: True
+      rot: 3.141592653589793 rad
+      pos: -11.5,-30.5
+      parent: 2
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        11558:
+        - - Output
+          - InputB
+    - type: Physics
+      canCollide: False
+      bodyType: Static
+    - type: Label
+      currentLabel: True when plasma windoor is closed
+    - type: NameModifier
+      baseName: logic gate
+  - uid: 11561
+    components:
+    - type: MetaData
+      name: logic gate (Opens plasma windoors when blast doors are closed)
+    - type: Transform
+      anchored: True
+      rot: 1.5707963267948966 rad
+      pos: -14.5,-28.5
+      parent: 2
+    - type: Physics
+      canCollide: False
+      bodyType: Static
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        7875:
+        - - Output
+          - Open
+        - - Output
+          - AutoClose
+        7945:
+        - - Output
+          - Open
+        - - Output
+          - AutoClose
+    - type: Label
+      currentLabel: Opens plasma windoors when blast doors are closed
+    - type: NameModifier
+      baseName: logic gate
 - proto: LogicGateOr
   entities:
   - uid: 7745
@@ -49504,6 +49691,8 @@ entities:
       bodyType: Static
   - uid: 7826
     components:
+    - type: MetaData
+      name: logic gate (True when any blast door is open)
     - type: Transform
       anchored: True
       rot: 1.5707963267948966 rad
@@ -49521,13 +49710,28 @@ entities:
           - InputB
         7875:
         - - Output
-          - DoorBolt
+          - Close
         7945:
         - - Output
-          - DoorBolt
+          - Close
+        11558:
+        - - Output
+          - InputA
+        11557:
+        - - Output
+          - InputA
+        11561:
+        - - Output
+          - InputA
+        - - Output
+          - InputB
     - type: Physics
       canCollide: False
       bodyType: Static
+    - type: Label
+      currentLabel: True when any blast door is open
+    - type: NameModifier
+      baseName: logic gate
 - proto: LootSpawnerArmory
   entities:
   - uid: 7708
@@ -52269,7 +52473,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 17.543604,5.7414494
       parent: 2
-  - uid: 4789
+  - uid: 2696
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -56919,12 +57123,9 @@ entities:
         1237:
         - - Pressed
           - Toggle
-        7875:
-        - - Pressed
-          - Close
         7945:
         - - Pressed
-          - Close
+          - Toggle
     - type: Fixtures
       fixtures: {}
   - uid: 6341
@@ -56946,12 +57147,6 @@ entities:
         1610:
         - - Pressed
           - Toggle
-        7875:
-        - - Pressed
-          - Close
-        7945:
-        - - Pressed
-          - Close
     - type: Fixtures
       fixtures: {}
   - uid: 7931
@@ -61494,6 +61689,11 @@ entities:
     components:
     - type: Transform
       pos: 47.583355,2.564429
+      parent: 2
+  - uid: 4789
+    components:
+    - type: Transform
+      pos: -23.304602,22.894375
       parent: 2
   - uid: 8069
     components:
@@ -74728,6 +74928,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -11.5,-26.5
       parent: 2
+    - type: DeviceLinkSource
+      linkedPorts:
+        11559:
+        - - DoorStatus
+          - InputA
+        - - DoorStatus
+          - InputB
     - type: Physics
       canCollide: False
     - type: Airtight
@@ -74744,6 +74951,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -11.5,-27.5
       parent: 2
+    - type: DeviceLinkSource
+      linkedPorts:
+        11560:
+        - - DoorStatus
+          - InputA
+        - - DoorStatus
+          - InputB
     - type: Physics
       canCollide: False
     - type: Airtight
