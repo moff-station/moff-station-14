@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/01/2026 22:25:32
-  entityCount: 11536
+  time: 03/01/2026 22:32:43
+  entityCount: 11547
 maps:
 - 1
 grids:
@@ -3526,7 +3526,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -47536.574
+      secondsUntilStateChange: -47963.887
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -28330,7 +28330,7 @@ entities:
       pos: 29.5,18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -108289.05
+      secondsUntilStateChange: -108716.36
       state: Opening
   - uid: 3713
     components:
@@ -28375,7 +28375,7 @@ entities:
       pos: 3.5,18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -108261.55
+      secondsUntilStateChange: -108688.86
       state: Opening
     - type: Lock
       showLockVerbs: False
@@ -29830,6 +29830,67 @@ entities:
     components:
     - type: Transform
       pos: -10.5,13.5
+      parent: 2
+  - uid: 11537
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -22.5,7.5
+      parent: 2
+  - uid: 11538
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -24.5,-6.5
+      parent: 2
+  - uid: 11539
+    components:
+    - type: Transform
+      pos: 6.5,15.5
+      parent: 2
+  - uid: 11540
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,12.5
+      parent: 2
+  - uid: 11541
+    components:
+    - type: Transform
+      pos: 43.5,0.5
+      parent: 2
+  - uid: 11542
+    components:
+    - type: Transform
+      pos: 46.5,0.5
+      parent: 2
+  - uid: 11543
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 41.5,20.5
+      parent: 2
+  - uid: 11544
+    components:
+    - type: Transform
+      pos: 43.5,9.5
+      parent: 2
+  - uid: 11545
+    components:
+    - type: Transform
+      pos: 45.5,9.5
+      parent: 2
+  - uid: 11546
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 27.5,18.5
+      parent: 2
+  - uid: 11547
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -21.5,15.5
       parent: 2
 - proto: FirelockGlass
   entities:
