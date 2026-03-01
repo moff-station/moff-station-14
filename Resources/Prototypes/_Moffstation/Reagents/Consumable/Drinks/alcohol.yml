@@ -130,3 +130,112 @@
             Poison: .15
       - !type:SatiateThirst
         factor: 1
+
+- type: reagent
+  id: RussianMothroach
+  name: reagent-name-russian-mothroach
+  parent: BaseAlcohol
+  desc: reagent-desc-russian-mothroach
+  physicalDesc: reagent-physical-desc-fibrous
+  flavor: russianmothroach
+  color: "#fdf9f3"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/russianmothroach.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.1
+        Fiber: 0.2
+      effects:
+      - !type:SatiateThirst
+        factor: 1
+
+- type: reagent
+  id: Fertilizer
+  name: reagent-name-fertilizer
+  parent: BaseAlcohol
+  desc: reagent-desc-fertilizer
+  physicalDesc: reagent-physical-desc-verdant
+  flavor: fertlizer
+  color: "#296c22"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/fertilizer.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.1
+        RobustHarvest: 0.2
+        Theobromine: 0.05
+
+- type: reagent
+  id: SolarHurricane
+  name: reagent-name-solar-hurricane
+  parent: BaseAlcohol
+  desc: reagent-desc-solar-hurricane
+  physicalDesc: reagent-physical-desc-glistening
+  flavor: solarhurricane
+  color: "#326bc2"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/solarhurricane.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.1
+      effects:
+      - !type:SatiateThirst
+        factor: 3
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+
+- type: reagent
+  id: WizardAle
+  name: reagent-name-wizard-ale
+  parent: BaseAlcohol
+  desc: reagent-desc-wizard-ale
+  physicalDesc: reagent-physical-desc-secret
+  flavor: wizardale
+  color: "#7b3326"
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.4
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+
+- type: reagent
+  id: MeatAnomaly
+  name: reagent-name-meat-anomaly
+  parent: BaseAlcohol
+  desc: reagent-desc-meat-anomaly
+  physicalDesc: reagent-physical-desc-alive
+  flavor: meatanomaly
+  color: "#913a3a"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/meatanomaly.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Ethanol: 0.1
+        Fat: 0.1
+        UncookedAnimalProteins: 0.25
+      effects:
+      - !type:SatiateThirst
+        factor: 1

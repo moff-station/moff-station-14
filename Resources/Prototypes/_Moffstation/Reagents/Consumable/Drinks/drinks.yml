@@ -58,3 +58,124 @@
       metabolites:
         Ethylredoxrazine: 0.5
         UncookedAnimalProteins: 0.1
+
+- type: reagent
+  id: ApexCola
+  name: reagent-name-apex-cola
+  parent: BaseDrink
+  desc: reagent-desc-apex-cola
+  physicalDesc: reagent-physical-desc-murky
+  flavor: apexcola
+  color: "#452d00"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/apexcola.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 1
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        WeldingFuel: 0.25
+
+- type: reagent
+  id: Cocoon
+  name: reagent-name-cocoon
+  parent: BaseDrink
+  desc: reagent-desc-cocoon
+  physicalDesc: reagent-physical-desc-sticky
+  flavor: cocoon
+  color: "#c9c9c9"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/cocoon.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Fiber: 0.25
+
+- type: reagent
+  id: CoughDrop
+  name: reagent-name-coughdrop
+  parent: BaseDrink
+  desc: reagent-desc-coughdrop
+  physicalDesc: reagent-physical-desc-crisp
+  flavor: coughdrop
+  color: "#afd1a4"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/coughdrop.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 5
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+
+- type: reagent
+  id: Gelatin
+  name: reagent-name-gelatin
+  parent: BaseDrink
+  desc: reagent-desc-gelatin
+  physicalDesc: reagent-physical-desc-wobbly
+  flavor: gelatin
+  color: "#78cd7f"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/gelatin.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateHunger
+        factor: 5
+
+- type: reagent
+  id: MeatPulp
+  name: reagent-name-meat-pulp
+  parent: BaseDrink
+  desc: reagent-desc-meat-pulp
+  physicalDesc: reagent-physical-desc-fleshy
+  flavor: rawmeat
+  color: "#fdf9f3"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/meatpulp.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        UncookedAnimalProteins: 0.25
+        Fat: 0.25
+
+- type: reagent
+  id: Uprooting
+  name: reagent-name-uprooting
+  parent: BaseDrink
+  desc: reagent-desc-uprooting
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: uprooting
+  color: "#4a3813"
+  metamorphicSprite:
+    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/uprooting.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        EZNutrient: 0.3
+        Theobromine: 0.05
