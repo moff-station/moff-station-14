@@ -6,7 +6,7 @@ modularhud-verb-insert-module-error-slots-full = the { $hud } is full.
 modularhud-verb-remove-modules = Remove modules
 modularhud-verb-remove-modules-message = Removes the modules from the { $hud }.
 modularhud-verb-remove-modules-error-missing-tool-quality = You need something capable of {$quality} to do that.
-modularhud-verb-remove-modules-error-no-modules-to-remove = the { $hud } is already empty.
+modularhud-verb-remove-modules-error-no-modules-to-remove = The { $hud } is already empty.
 
 # Examine
 modularhud-examine-no-modules = It contains no modules
