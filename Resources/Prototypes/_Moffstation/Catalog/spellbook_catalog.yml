@@ -216,6 +216,84 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+- type: listing
+  id: SpellbookRGBStaffMoffstation
+  name: spellbook-wand-rgb-staff-name
+  description: spellbook-wand-rgb-staff-description
+  productEntity: RGBStaff
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandDeathMoffstation
+  name: spellbook-wand-instant-death-name
+  description: spellbook-wand-instant-death-description
+  productEntity: WeaponWandDeath
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandCluwneMoffstation
+  name: spellbook-wand-cluwne-polymorph-name
+  description: spellbook-wand-cluwne-polymorph-description
+  productEntity: WeaponWandCluwne
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandPolymorphBreadMoffstation
+  name: spellbook-wand-bread-polymorph-name
+  description: spellbook-wand-bread-polymorph-description
+  productEntity: WeaponWandPolymorphBread
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandPolymorphMonkeyMoffstation
+  name: spellbook-wand-monkey-polymorph-name
+  description: spellbook-wand-monkey-polymorph-description
+  productEntity: WeaponWandPolymorphMonkey
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookStaffHealingMoffstation
+  name: spellbook-wand-healing-staff-name
+  description: spellbook-wand-healing-staff-description
+  productEntity: WeaponStaffHealing
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
 # Wizard - Enchanted equipment
 - type: listing
   id: SpellbookHammerMjollnirMoffstation
