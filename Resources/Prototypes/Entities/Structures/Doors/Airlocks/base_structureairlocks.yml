@@ -142,7 +142,7 @@
   - type: Occluder
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StrongMetallic
+    damageModifierSet: StructuralMetallicStrong # Moffstation - Structural damagetype fix 
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -151,7 +151,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 500
+        damage: 300 # Moffstation - Structural damagetype fix
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]

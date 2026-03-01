@@ -36,7 +36,7 @@
   - type: PlaceableSurface
     placeCentered: true
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Metallic
   - type: Destructible
     thresholds:
@@ -136,6 +136,7 @@
   - type: Sprite
     state: mattress
   - type: Damageable
+    damageContainer: Inorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Inflatable
 
 - type: entity
@@ -190,6 +191,8 @@
     damage:
       types:
         Cold: -0.5
+  - type: Damageable # Moffstation - Structural damagetype fix 
+    damageModifierSet: Wood # Moffstation - Structural damagetype fix 
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities

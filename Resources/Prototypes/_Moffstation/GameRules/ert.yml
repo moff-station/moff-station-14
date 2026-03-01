@@ -115,3 +115,16 @@
   - type: RuleGrids
   - type: AlertLevelInterceptionRule
     alertLevel: epsilon
+
+# Nanotrasen Corporate Fleet
+- type: entity # One cannon, one laser - can seriously fuck up pirates or xenoborgs, if it can find them.
+  parent: BaseGameRule
+  id: NTCFGunboat
+  components:
+  - type: StationEvent
+    startAnnouncement: ntcf-gunboat
+    startAudio:
+      path: /Audio/Misc/notice1.ogg
+  - type: LoadMapRule
+    gridPath: /Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml
+  - type: RuleGrids

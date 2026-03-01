@@ -68,6 +68,14 @@ public sealed partial class AntagSelectionComponent : Component
     /// </summary>
     [DataField]
     public bool RemoveUponFailedSpawn = true;
+
+    // Moffstation - Start - Antag Weights
+    /// <summary>
+    /// Should Selection should use the antag weights system?
+    /// </summary>
+    [DataField]
+    public bool UseWeights = true;
+    // Moffstation - End
 }
 
 [DataDefinition]

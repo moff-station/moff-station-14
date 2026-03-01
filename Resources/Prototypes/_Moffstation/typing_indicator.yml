@@ -1,0 +1,27 @@
+- type: typingIndicator
+  id: emote
+  spritePath: /Textures/_Moffstation/Effects/speech.rsi
+  offset: -0.05, 0.1
+  typingState: emote0
+  idleState: emote1
+
+- type: typingIndicator
+  id: ooc
+  spritePath: /Textures/_Moffstation/Effects/speech.rsi
+  offset: -0.05, 0.1
+  typingState: ooc0
+  idleState: ooc1
+
+- type: typingIndicator
+  id: radio
+  spritePath: /Textures/_Moffstation/Effects/speech.rsi
+  offset: -0.05, 0.1
+  typingState: radio0
+  idleState: radio1
+
+- type: typingIndicator
+  id: whisper
+  spritePath: /Textures/_Moffstation/Effects/speech.rsi
+  offset: -0.05, 0.1
+  typingState: whisper0
+  idleState: whisper1

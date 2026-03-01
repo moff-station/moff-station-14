@@ -1,6 +1,7 @@
 ﻿using Content.Server.Inventory;
 using Content.Shared.Inventory;
 using Content.Shared.Radio.Components;
+using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Prototypes;
@@ -15,6 +16,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
 {
     [Dependency] private readonly BorgSystem _borgSystem = default!;
     [Dependency] private readonly ServerInventorySystem _inventorySystem = default!;
+    [Dependency] private readonly SharedRadioSystem _radio = default!;
 
     protected override void SelectBorgModule(Entity<BorgSwitchableTypeComponent> ent, ProtoId<BorgTypePrototype> borgType)
     {
@@ -23,7 +25,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
         // Assign radio channels
         string[] radioChannels = [.. ent.Comp.InherentRadioChannels, .. prototype.RadioChannels];
         if (TryComp(ent, out IntrinsicRadioTransmitterComponent? transmitter))
-            transmitter.Channels = [.. radioChannels];
+            _radio.SetIntrinsicTransmitterChannels((ent, transmitter), [.. radioChannels]);
 
         if (TryComp(ent, out ActiveRadioComponent? activeRadio))
             activeRadio.Channels = [.. radioChannels];
@@ -49,12 +51,13 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
                 prototype.ExtraModuleCount + prototype.DefaultModules.Length);
 
             _borgSystem.SetModuleWhitelist(chassisEnt, prototype.ModuleWhitelist);
+            _borgSystem.SetModuleRequirements(chassisEnt, prototype.RequiredModules);
 
             foreach (var module in prototype.DefaultModules)
             {
                 var moduleEntity = Spawn(module);
                 var borgModule = Comp<BorgModuleComponent>(moduleEntity);
-                _borgSystem.SetBorgModuleDefault((moduleEntity, borgModule), true);
+                _borgSystem.AddBorgModuleRequirement((moduleEntity, borgModule), reason: null);
                 _borgSystem.InsertModule(chassisEnt, moduleEntity);
             }
         }

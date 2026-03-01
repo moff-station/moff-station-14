@@ -3,7 +3,7 @@
 - type: marking
   id: bubble
   bodyPart: Chest
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/chest.rsi
     state: bubble
@@ -11,7 +11,7 @@
 - type: marking
   id: fishbowl
   bodyPart: Chest
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/chest.rsi
     state: fishbowl1
@@ -21,7 +21,7 @@
 - type: marking
   id: SlimeBonechest
   bodyPart: Chest
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -34,7 +34,7 @@
 - type: marking
   id: SlimeCore
   bodyPart: Chest
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -46,7 +46,7 @@
 - type: marking
   id: SlimeCoreGlowing
   bodyPart: Chest
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -59,7 +59,7 @@
 - type: marking
   id: SlimeLungs
   bodyPart: Chest
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/chest.rsi
     state: lungs
@@ -69,7 +69,7 @@
 - type: marking
   id: FadingStars
   bodyPart: Head
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
     state: fadingstars1
@@ -82,7 +82,7 @@
 - type: marking
   id: fizz
   bodyPart: Head
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
     state: fizz
@@ -90,7 +90,7 @@
 - type: marking
   id: SlimeBonehead
   bodyPart: Head
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -103,7 +103,7 @@
 - type: marking
   id: SlimeNose
   bodyPart: Head
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   forcedColoring: true
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
@@ -112,7 +112,7 @@
 - type: marking
   id: SlimeMouth
   bodyPart: Head
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
     state: mouth
@@ -120,7 +120,7 @@
 - type: marking
   id: SlimeBrain
   bodyPart: Head
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   sprites:
   - sprite: _CD/Mobs/Customization/SlimePerson/head.rsi
     state: brain
@@ -132,7 +132,7 @@
 - type: marking
   id: SlimeEyeglow
   bodyPart: Eyes
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -146,7 +146,7 @@
 - type: marking
   id: SlimeEyesDroopy
   bodyPart: Eyes
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -159,7 +159,7 @@
 - type: marking
   id: SlimeEyesDroopyGlowing
   bodyPart: Eyes
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -173,7 +173,7 @@
 - type: marking
   id: SlimeEyesCyclops
   bodyPart: Eyes
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -186,7 +186,7 @@
 - type: marking
   id: SlimeEyesCyclopsGlowing
   bodyPart: Eyes
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -202,7 +202,7 @@
 - type: marking
   id: SlimeBonearmright
   bodyPart: RArm
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -217,7 +217,7 @@
 - type: marking
   id: SlimeBonearmleft
   bodyPart: LArm
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -232,7 +232,7 @@
 - type: marking
   id: SlimeBonelegright
   bodyPart: RLeg
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -247,7 +247,7 @@
 - type: marking
   id: SlimeBonelegleft
   bodyPart: LLeg
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -266,7 +266,7 @@
 - type: marking
   id: SlimeBonefootleft
   bodyPart: LFoot
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -281,7 +281,7 @@
 - type: marking
   id: SlimeBonefootright
   bodyPart: RFoot
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -296,7 +296,7 @@
 - type: marking
   id: SlimeBonehandleft
   bodyPart: LHand
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:
@@ -311,7 +311,7 @@
 - type: marking
   id: SlimeBonehandright
   bodyPart: RHand
-  groupWhitelist: [ SlimePerson ]
+  groupWhitelist: [ Slime ]
   coloring:
     default:
       type:

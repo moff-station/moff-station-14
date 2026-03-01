@@ -26,9 +26,18 @@ public sealed class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomSpawnComp
             comp.Coords = coords;
     }
 
+    // Moffstation - Start - Rewrote this function to double check coords are filled
+    // (if you use the PrePlayerSpawn for the rule it would spawn you in nullspace)
+    // If upstream updates for that or fixes it, probably go with what they did
     private void OnSelectLocation(Entity<AntagRandomSpawnComponent> ent, ref AntagSelectLocationEvent args)
     {
-        if (ent.Comp.Coords != null)
-            args.Coordinates.Add(_transform.ToMapCoordinates(ent.Comp.Coords.Value));
+        if (ent.Comp.Coords is not { } coords)
+        {
+            if (!TryFindRandomTile(out _, out _, out _, out coords))
+                return;
+        }
+
+        args.Coordinates.Add(_transform.ToMapCoordinates(coords));
     }
+    // Moffstation - End
 }

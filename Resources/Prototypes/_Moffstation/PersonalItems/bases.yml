@@ -1,0 +1,45 @@
+﻿# Base for personal item pistols meant to replace the Mk58 pistol.
+# Anything that inherits from this or includes something which inherits from this MUST be job-restricted to security.
+- type: entity
+  parent: WeaponPistolMk58
+  id: BaseWeaponPersonalItemPistol
+  abstract: true
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        # Spawns without a magazine
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - MagazinePistol
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        # Spawns without ammo in the chamber
+        priority: 1
+        whitelist:
+          tags:
+          - CartridgePistol
+
+# Base container for personal item pistols, because people seem to like them coming with cases.
+- type: entity
+  parent: [BaseStorageItem, BaseBagOpenClose, BaseSecurityContraband]
+  id: BasePersonalItemPistolCase
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: closed
+      map: ["closeLayer"]
+    - state: open
+      map: ["openLayer"]
+  - type: Item
+    size: Normal
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1

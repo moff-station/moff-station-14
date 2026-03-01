@@ -73,3 +73,9 @@ roles-high-value-target-objective = You are a high-value target for the syndicat
 
 # Tourists
 objective-issuer-self = [color=Green]Civilians[/color]
+
+# Stowaways
+roles-antag-stowaway-name = Stowaway
+roles-antag-stowaway-desc = You've snuck onto the station after a previous shift evacuated... You wake up here after a long nap.
+roles-antag-stowaway-greeting = You've snuck onto the station after a previous shift evacuated... You wake up here after a long nap.
+roles-antag-stowaway-objective = You've snuck onto the station after a previous shift evacuated. Warning: Spawning in a safe location is not guaranteed.

@@ -1,0 +1,8 @@
+- type: entity
+  parent: BaseBarSign
+  id: BarSignPinkDogCafe
+  name: Pink Dog Cafe
+  description: The reviews on Yarp are saying they serve toilet water. 4/5 stars. 
+  components:
+  - type: BarSign
+    current: PinkDogCafe

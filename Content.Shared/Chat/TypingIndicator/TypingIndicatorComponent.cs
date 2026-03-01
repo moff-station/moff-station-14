@@ -16,4 +16,12 @@ public sealed partial class TypingIndicatorComponent : Component
     /// </summary>
     [DataField("proto"), AutoNetworkedField]
     public ProtoId<TypingIndicatorPrototype> TypingIndicatorPrototype = "default";
+
+    // Moffstation - Start - Typing indicators
+    /// <summary>
+    ///     Override for the normal visual info
+    /// </summary>
+    [AutoNetworkedField]
+    public ProtoId<TypingIndicatorPrototype>? TypingIndicatorOverride;
+    // Moffstation - End
 }

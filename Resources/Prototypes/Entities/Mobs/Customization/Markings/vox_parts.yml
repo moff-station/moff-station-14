@@ -167,16 +167,23 @@
         !type:SimpleColoring
         color: "#937e3d"
 
-# Moffstation - Begin - Vox markings
-#- type: marking
-#  id: VoxTail
-#  bodyPart: Tail
-#  groupWhitelist: [Vox]
-#  forcedColoring: true
-#  sprites:
-#  - sprite: Mobs/Customization/vox_parts.rsi
-#    state: tail
-# Moffstation - End
+- type: marking
+  id: VoxTail
+  bodyPart: Tail
+  groupWhitelist: [Vox]
+  #  forcedColoring: true # Moffstation - Vox markings
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail
+
+- type: marking
+  id: VoxTailAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  #  forcedColoring: true # Moffstation - Vox markings
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail_animated
 
 - type: marking
   id: VoxTailShort
@@ -188,6 +195,15 @@
     state: tail_short
 
 - type: marking
+  id: VoxTailShortAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  #  forcedColoring: true # Moffstation - Vox markings
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail_short_animated
+
+- type: marking
   id: VoxTailBig
   bodyPart: Tail
   groupWhitelist: [Vox]
@@ -195,6 +211,15 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_big
+
+- type: marking
+  id: VoxTailBigAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  #  forcedColoring: true # Moffstation - Vox markings
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail_big_animated
 
 - type: marking
   id: VoxTailSpikes
@@ -206,6 +231,15 @@
     state: tail_spikes
 
 - type: marking
+  id: VoxTailSpikesAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  forcedColoring: true
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail_spikes_animated
+
+- type: marking
   id: VoxTailDocked
   bodyPart: Tail
   groupWhitelist: [Vox]
@@ -215,6 +249,16 @@
     state: tail_docked
 
 - type: marking
+  id: VoxTailDockedAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  forcedColoring: true
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail_docked_animated
+
+
+- type: marking
   id: VoxTailSplit
   bodyPart: Tail
   groupWhitelist: [Vox]
@@ -222,3 +266,12 @@
   sprites:
   - sprite: Mobs/Customization/vox_parts.rsi
     state: tail_split
+
+- type: marking
+  id: VoxTailSplitAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  forcedColoring: true
+  sprites:
+  - sprite: Mobs/Customization/vox_parts.rsi
+    state: tail_split_animated

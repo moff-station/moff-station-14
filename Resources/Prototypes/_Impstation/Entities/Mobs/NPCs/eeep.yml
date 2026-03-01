@@ -85,6 +85,10 @@
         Brute: -1
         Burn: -1
         Toxin: -1
+  # Moffstation - Begin - Remove slowdown on damage
+  - type: SlowOnDamage
+    speedModifierThresholds: {}
+  # Moffstation - End
 
 - type: entity
   parent: [ MobEeepBase ]
