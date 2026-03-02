@@ -32,7 +32,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 1000    #As plastitanium
+        damage: 600    # Health like reinforced wall 
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -44,7 +44,7 @@
     - trigger:    # Vulnerable to heat damage - explodily
         !type:DamageTypeTrigger
         damageType: Heat
-        damage: 100
+        damage: 240
       behaviors:
       - !type:PlaySoundBehavior
         sound:
