@@ -92,12 +92,11 @@ public sealed class DragonRiftSystem : EntitySystem
                 //var ent = Spawn(comp.SpawnPrototype, xform.Coordinates);
                 var spawnType = comp.SpawnPrototype; // Base carp prototype
 
-                if (comp.State != DragonRiftState.Charging) // Checks to see if Rift has reached threshhold
+                if (comp.State > DragonRiftState.Charging) // Checks to see if Rift has reached threshhold
                 {
                     comp.EmpoweredSpawnAccumulator++;
-                    if (comp.EmpoweredSpawnAccumulator > comp.EmpoweredSpawnCooldown)
+                    if ((comp.EmpoweredSpawnAccumulator %= comp.EmpoweredSpawnCooldown) == 0)
                     {
-                        comp.EmpoweredSpawnAccumulator -= comp.EmpoweredSpawnCooldown;
                         spawnType = comp.EmpoweredSpawnPrototype; // Replaces base carp prototype with sharkminnow
                     }
                 }
