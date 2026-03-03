@@ -52,7 +52,7 @@
   - type: StealTarget
     stealGroup: OfficerHandgun
 
-  type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolt75
   name: T-75 "Protektor"
@@ -79,7 +79,7 @@
   - type: StealTarget
     stealGroup: OfficerHandgun
 
-  type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolsp6
   name: SP-6
