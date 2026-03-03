@@ -101,3 +101,18 @@
       state: storage
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lever_rifle_magnum.rsi
+
+- type: entity
+  parent: WeaponRifleLecter
+  id: WeaponRifleLecterPDW
+  name: Lecter PDW
+  description: "A modern iteration on the classic Lecter platform, designed by Sunshade Armories. Favored by Nanotrasen Emergency Response Teams for its improved storability and maneuverability.\nFeeds from .20 rifle magazines."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterPDW.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterPDW.rsi
+  - type: Gun # Has access to the Lecter's 5.0 firerate, just in semi-auto. Optional quick 2-round burst with the same DPS.
+    availableModes:
+    - Auto
+    - SemiAuto
