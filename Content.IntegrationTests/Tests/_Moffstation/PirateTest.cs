@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Content.Server.Cargo.Systems;
 using Content.Shared.Cargo.Prototypes;
@@ -33,10 +34,18 @@ public sealed class PirateTest
         var loader = server.System<MapLoaderSystem>();
         var cargoSystem = server.System<CargoSystem>();
 
-        var pirateBountyEntries = protoManager.EnumeratePrototypes<CargoBountyPrototype>()
-            .Where(b => b.Group == PirateBountyGroup)
-            .SelectMany(pb => pb.Entries)
-            .ToList();
+        var pirateBounties = protoManager.EnumeratePrototypes<CargoBountyPrototype>()
+            .Where(b => b.Group == PirateBountyGroup);
+        var pirateBountyEntries = new List<KeyValuePair<ProtoId<CargoBountyPrototype>, CargoBountyItemEntry>>();
+        foreach (var cargoBountyPrototype in pirateBounties)
+        {
+            foreach (var cargoBountyEntry in cargoBountyPrototype.Entries)
+            {
+                pirateBountyEntries.Add(new KeyValuePair<ProtoId<CargoBountyPrototype>, CargoBountyItemEntry>(
+                    cargoBountyPrototype.ID,
+                    cargoBountyEntry));
+            }
+        }
 
         await server.WaitPost(() =>
         {
@@ -55,10 +64,11 @@ public sealed class PirateTest
                     {
                         if (transform.MapID != mapId)
                             continue;
-                        foreach (var bountyItemEntry in pirateBountyEntries)
+                        foreach (var pair in pirateBountyEntries)
                         {
+                            var bountyItemEntry = pair.Value;
                             Assert.That(!cargoSystem.IsValidBountyEntry(entUid, bountyItemEntry),
-                                $"Entity {entUid} on a pirate-owned map meets the {Loc.GetString(bountyItemEntry.Name)} criteria for a pirate bounty!");
+                                $"Entity {entUid} on a pirate-owned map meets the {Loc.GetString(bountyItemEntry.Name)} criteria for a pirate bounty {pair.Key}!");
                         }
                     }
                     mapSystem.DeleteMap(mapId);
