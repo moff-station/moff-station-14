@@ -106,3 +106,86 @@
       path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
   - type: StealTarget
     stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolnf9
+  name: NF-9
+  description: "A compact handgun produced in-house by Nanotrasen."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/nf9.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/nf9.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    - Burst
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolumbra
+  name: Umbra
+  description: "A experimental pistol created by Sunshade Armories."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/umbra.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/umbra.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 6
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    - Burst
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolmk1924
+  name: Mk1924
+  description: "ye olde gun."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/mk1924.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/mk1924.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
