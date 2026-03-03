@@ -726,20 +726,26 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: ROBO-icon
+    - state: winterbits-tan-icon #Moffstation
   - type: Item
     inhandVisuals:
       left:
       - state: ROBO-inhand-left
+      - state: winterbits-inhand-left #Moffstation
       right:
       - state: ROBO-inhand-right
+      - state: winterbits-inhand-right #Moffstation
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: ROBO-equipped-OUTERCLOTHING
+      - state: winterbits-tan-equipped-OUTERCLOTHING #Moffstation
 #Moffstation - Begin - Vox Wintecoats
       outerClothing-vox:
       - state: ROBO-equipped-OUTERCLOTHING-vox
+        sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
+      - state: winterbits-tan-equipped-OUTERCLOTHING-vox
         sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi
   #Moffstation - End - Vox Wintecoats
   - type: ToggleableClothing
