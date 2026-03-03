@@ -10,10 +10,10 @@ wizard-duelist-red-role-greeting =
 
 wizard-duelist-blue-role-greeting =
     It's wizard time, fireball!
-    There have been disagreements between the various schools of the space wizards federation, resulting in the call for a wizard duel, and the blue wizards of the broken moon have sent you as their champion for this cause.
+    There have been disagreements between the various schools of the space wizards federation, resulting in the call for a wizard duel, and the blue wizards of the Broken Moon have sent you as their champion for this cause.
     Meet with your red and violet wizard competitors, set the terms of agreement for this duel, and prove that the blue wizards are the masters of sorcery!
 
 wizard-duelist-violet-role-greeting =
     It's wizard time, fireball!
-    There have been disagreements between the various schools of the space wizards federation, resulting in the call for a wizard duel, and the violet wizards of mu'keiji have sent you as their champion for this cause.
+    There have been disagreements between the various schools of the space wizards federation, resulting in the call for a wizard duel, and the violet wizards of Mu'keiji have sent you as their champion for this cause.
     Meet with your red and blue wizard competitors, set the terms of agreement for this duel, and prove that the violet wizards shine in the court of battle!

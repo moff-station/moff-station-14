@@ -1,7 +1,6 @@
 ﻿- type: entity
-  abstract: true
   parent: BaseGameRule
-  id: BaseWizardDuelRule
+  id: WizardDuel
   components:
   - type: LoadMapRule
     mapPath: /Maps/_Moffstation/Nonstations/wizards-court.yml
@@ -10,11 +9,6 @@
   - type: AntagLoadProfileRule
   - type: DynamicRuleCost
     cost: 150
-
-- type: entity
-  parent: BaseWizardDuelRule
-  id: WizardDuel
-  components:
   - type: GameRule
     minPlayers: 35
   - type: AntagObjectives
