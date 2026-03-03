@@ -5,10 +5,7 @@
   - type: LoadMapRule
     mapPath: /Maps/_Moffstation/Nonstations/wizards-court.yml
   - type: RuleGrids
-  - type: AntagSelection
   - type: AntagLoadProfileRule
-  - type: DynamicRuleCost
-    cost: 150
   - type: GameRule
     minPlayers: 35
   - type: AntagObjectives
