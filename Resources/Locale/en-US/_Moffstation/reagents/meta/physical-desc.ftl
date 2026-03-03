@@ -2,8 +2,6 @@
 reagent-physical-desc-ghostly = ghostly
 reagent-physical-desc-unappetizing = unappetizing
 reagent-physical-desc-leafy = leafy
-reagent-physical-desc-murky = murky
-reagent-physical-desc-sticky = sticky
 reagent-physical-desc-wobbly = wobbly
 reagent-physical-desc-fleshy = fleshy
 reagent-physical-desc-verdant = verdant

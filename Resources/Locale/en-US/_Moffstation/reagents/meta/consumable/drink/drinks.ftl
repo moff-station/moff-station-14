@@ -8,7 +8,7 @@ reagent-name-planters-punch = planters punch
 reagent-desc-planters-punch = A tropical cocktail of rum, citrus, and sugar, brightened with aromatic bitters and spice.
 
 reagent-name-breathalyzer = Breathalyzer
-reagent-desc-breathalyzer = flavorless and odorless, this drink can be mixed with others to neutralize alcohol. Made originally to quickly fool authorities after shuttle collisions.
+reagent-desc-breathalyzer = Flavorless and odorless, this drink can be mixed with others to neutralize alcohol. Made originally to quickly fool authorities after shuttle collisions.
 
 reagent-name-corpse-reviver = Corpse Reviver no. 2
 reagent-desc-corpse-reviver = One will revive you from a hangover, several may not.
@@ -38,10 +38,10 @@ reagent-name-gelatin = Gelatin
 reagent-desc-gelatin = A delicacy among certain slime subcultures and taboo among others, traditionally eaten with sharp teeth.
 
 reagent-name-meat-anomaly = Meat Anomaly
-reagent-desc-meat-anomaly = served in plasma glass to prevent escape. It's inadvisable to swallow the eyeballs without chewing.
+reagent-desc-meat-anomaly = Served in plasma glass to prevent escape. It's inadvisable to swallow the eyeballs without chewing.
 
 reagent-name-meat-pulp = Meat Pulp
-reagent-desc-meat-pulp = raw meat blended to a consistency best described as 'smoothie-like.'
+reagent-desc-meat-pulp = Raw meat blended to a consistency best described as 'smoothie-like.'
 
 reagent-name-russian-mothroach = Russian Mothroach
 reagent-desc-russian-mothroach = A favorite of the fuzzy critters, and harbinger of drunken chitters all around.
