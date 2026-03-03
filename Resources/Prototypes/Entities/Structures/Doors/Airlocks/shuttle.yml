@@ -86,14 +86,15 @@
     price: 350
   - type: Paintable
     group: null
+    # Moffstation - Begin - Seperating external airlocks from regular ones
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong # Moffstation - Structural damagetype fix 
+    damageModifierSet: StructuralMetallicStrong 
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300 # Moffstation - Structural damagetype fix
+        damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -101,6 +102,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalSlam
+    # Moffstation - End
 
 - type: entity
   id: AirlockGlassShuttle
