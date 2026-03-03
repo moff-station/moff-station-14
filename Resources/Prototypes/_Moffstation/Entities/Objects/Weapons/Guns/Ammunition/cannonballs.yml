@@ -2,7 +2,7 @@
   parent: BaseCannonBall
   id: CannonBallStructureBlasting
   name: gunstone
-  suffix: Pirate
+  suffix: Pirate, Cannonball
   description: A hefty ball of polished plasmarble, made for smashing straight through walls. Stings a little if you get hit by it.
   components:
   - type: Sprite
@@ -17,7 +17,6 @@
   name: gunstone
   parent: BaseBullet
   description: Knock knock.
-  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
@@ -40,17 +39,21 @@
     damage:
       types:
         Structural: 250   # This is mostly just for show, the explosion is what breaks things
+  - type: PointLight
+    color: salmon
+    radius: 2
+    energy: 2
 
 - type: entity
   parent: BaseCannonBall
   id: CannonBallBouncy
   name: gutterball
-  suffix: Pirate
+  suffix: Pirate, Cannonball
   description: Yer last boatswain was keelhauled for getting swindled into decking the gunwale with beach balls.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: plasmarball # WIP make a sprite for this
+    state: bouncy 
   - type: CartridgeAmmo
     proto: BulletCannonBallBouncy
     deleteOnSpawn: true
@@ -59,13 +62,16 @@
   parent: [ BaseItem, BaseMajorContraband ]
   id: BulletCannonBallBouncy
   name: gutterball
-  suffix: Pirate
   description: Look out --
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: Objects/Fun/Balls/beach_ball.rsi # WIP make a sprite for this
-    state: icon
+    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: bouncy 
+#  - type: Sprite
+#    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+#    layers:
+#      - state: plasbouncy
   - type: Clickable
   - type: TimedDespawn
     lifetime: 10
@@ -82,33 +88,39 @@
         shape: !type:PhysShapeCircle
           radius: 0.3
           position: "0,-0.2"
-        mass: 2000
         mask:
           - Impassable
           - BulletImpassable
         restitution: 0.99 # nearly perfect bouncy
   - type: TileFrictionModifier
-    modifier: 0.005
+    modifier: 0.004
   - type: TriggerOnCollide
     fixtureID: projectile
     maxTriggers: null
+  - type: LaunchOnTrigger
+    impulse: 120
+    targetUser: true
   - type: StunOnCollide
     knockdownAmount: 2.5 # Good for subduing
     drop: false
     slowdownAmount: 2.5
-    walkSpeedModifier: 0.5
-    sprintSpeedModifier: 0.5
+    walkSpeedModifier: 0.3
+    sprintSpeedModifier: 0.3
+  - type: PointLight
+    color: salmon
+    radius: 2
+    energy: 2
 
 - type: entity
   parent: BaseCannonBall
   id: CannonBallStructureSplitting
   name: spike of neptune
-  suffix: Pirate
+  suffix: Pirate, Cannonball
   description: A hefty spike of polished plasmarble, to cut a line straight and true. Courteously provides some holocanvas to keep the winds still.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: plasmarball # WIP - sprite
+    state: spike 
   - type: CartridgeAmmo
     proto: BulletCannonBallStructureSplitting
     deleteOnSpawn: true
@@ -123,30 +135,34 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
-      - state: plasmarball # WIP - sprite this
+      - state: plasmarball
   - type: TriggerOnCollide
     fixtureID: projectile
-    maxTriggers: 5
+    maxTriggers: null
   - type: SpawnOnTrigger
     proto: HoloFan
   - type: Projectile
-    penetrationThreshold: 950
+    penetrationThreshold: 855 # This is the minimum to pierce two (2) reinf walls
     damage:
       types:
         Piercing: 50
-        Structural: 400   # This is the minimum to pierce one (1) reinf wall
+        Structural: 350   # This is the minimum to pierce one (1) reinf wall
     ignoreResistances: true
+  - type: PointLight
+    color: salmon
+    radius: 2
+    energy: 2
 
 - type: entity
   parent: BaseCannonBall
   id: CannonBallGasNitrous
   name: sleeping carcass
-  suffix: Pirate
-  description: A cannonball stuck through with glass phials and reactive metals.
+  suffix: Pirate, Cannonball
+  description: A cannonball stuck through with glass phials, camphor, nitre, and salmiac. Its shape reminds you of a body dredged from a wreck.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: plasmarball # WIP - sprite
+    state: carcass 
   - type: CartridgeAmmo
     proto: BulletCannonBallGasNitrous
     deleteOnSpawn: true
@@ -177,7 +193,7 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
-      - state: plasmarball # WIP - sprite this
+      - state: plasmarball
   - type: EmitSoundOnTrigger
     sound: /Audio/Items/smoke_grenade_smoke.ogg
   - type: SmokeOnTrigger # This is a courtesy, because nitrous is invisible
@@ -192,3 +208,7 @@
       temperature: 293.15
   - type: StaminaDamageOnCollide
     damage: 130
+  - type: PointLight
+    color: salmon
+    radius: 2
+    energy: 2
