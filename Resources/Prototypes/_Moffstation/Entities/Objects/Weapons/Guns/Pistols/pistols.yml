@@ -27,24 +27,78 @@
 
 - type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
-  id: WeaponPistol1
-  name: Pistol1
-  description: "Pistol1"
+  id: WeaponPistolcsp10
+  name: CSP10-A
+  description: "A Customized, Glittered Variant of the CSP10."
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/pistol1.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/csp10.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/pistol1.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/csp10.rsi
   - type: Item
     storedOffset: 0,-4
   - type: Gun
-    fireRate: 10 # Heavy trigger makes it difficult to fire quickly.
-    fireOnLandChance: 0 # Heavy trigger protects from uncommanded discharges.
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+  type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolt75
+  name: T-75 "Protektor"
+  description: "rember our promise"
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/t75.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/t75.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+  type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolsp6
+  name: SP-6
+  description: "A experimental pistol created by Sunshade Armories."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/sp6.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/sp6.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 10
+    fireOnLandChance: 0
     availableModes:
     - SemiAuto
     - Burst
