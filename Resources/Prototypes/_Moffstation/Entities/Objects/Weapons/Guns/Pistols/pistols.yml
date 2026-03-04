@@ -192,19 +192,19 @@
 
 - type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
-  id: WeaponPistolmk1924
-  name: Mk1924
-  description: "ye olde gun."
+  id: WeaponPistolbp941
+  name: Bp941
+  description: "See you, Space Cowboy."
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/mk1924.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/bp941.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/mk1924.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/bp941.rsi
   - type: Item
     storedOffset: 0,-4
   - type: Gun
