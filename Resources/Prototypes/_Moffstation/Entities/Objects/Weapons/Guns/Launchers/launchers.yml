@@ -74,7 +74,7 @@
     ropeBreakPoint: 150000 # Strong rope for ninja tricks
     cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg      
     ropeSprite:
-      sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+      sprite: _Moffstation/Objects/Weapons/Guns/Launchers/fishingrod.rsi
       state: rope
   - type: LandAtCursor
   - type: Gun 
@@ -91,7 +91,7 @@
     proto: FishingHook 
     capacity: 1
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/fishingrod.rsi
     state: base
   - type: UseDelay
     delay: 1.0

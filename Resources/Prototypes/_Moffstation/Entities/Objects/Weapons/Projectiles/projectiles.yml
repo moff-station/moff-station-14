@@ -53,6 +53,14 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+  - type: Destructible # It's easier to remove it by clicking, but you can attack it if you have no hands
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Ammo
     muzzleFlash: null
   - type: Projectile
@@ -80,7 +88,17 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/fishingrod.rsi
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible # It's easier to remove it by clicking, but you can attack it if you have no hands
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Ammo
     muzzleFlash: null
   - type: Projectile
