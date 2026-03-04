@@ -64,11 +64,12 @@ public sealed class PirateTest
                     {
                         if (transform.MapID != mapId)
                             continue;
-                        foreach (var pair in pirateBountyEntries)
+                        foreach (var (id, bountyItemEntry) in pirateBountyEntries)
                         {
-                            var bountyItemEntry = pair.Value;
-                            Assert.That(!cargoSystem.IsValidBountyEntry(entUid, bountyItemEntry),
-                                $"Entity {entUid} on a pirate-owned map meets the {Loc.GetString(bountyItemEntry.Name)} criteria for a pirate bounty {pair.Key}!");
+                            Assert.That(
+                                !cargoSystem.IsValidBountyEntry(entUid, bountyItemEntry),
+                                $"Entity {entUid} on a pirate-owned map meets the {Loc.GetString(bountyItemEntry.Name)} criteria for a pirate bounty {id}!"
+                            );
                         }
                     }
                     mapSystem.DeleteMap(mapId);
