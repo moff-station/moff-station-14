@@ -1,3 +1,63 @@
+- type: entity
+  name: BaseSMG
+  parent: BaseItem
+  id: BaseWeaponSubMachineGun
+  description: A rooty tooty point and shooty.
+  abstract: true
+  components:
+  - type: Sprite
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,2,1
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: Gun
+    minAngle: 2
+    maxAngle: 16
+    fireRate: 8
+    burstFireRate: 8
+    angleIncrease: 3
+    angleDecay: 16
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/smg.ogg
+    defaultDirection: 1, 0
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/smg_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolSubMachineGun
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolSubMachineGun
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   name: M10
@@ -5,21 +65,45 @@
   id: WeaponSubMachineGunM10
   description: A rare machine pistol hailing from the Gang Wars. Its extremely high fire rate and compact profile make it useful in close quarters combat. Despite its age, it is in remarkably good condition. Feeds from .35 SMG magazines.
   components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/SMGs/m10.rsi
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
-      map: ["enum.GunVisualLayers.Mag"]
-  - type: Clothing
-    sprite: _Moffstation/Objects/Weapons/Guns/SMGs/m10.rsi
-  - type: Gun
-    fireRate: 10
-    soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
-  - type: MagazineVisuals
-    magState: mag
-    steps: 1
-    zeroVisible: true
-  - type: Appearance
+    - type: Sprite
+      sprite: _Moffstation/Objects/Weapons/Guns/SMGs/m10.rsi
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-0
+          map: ["enum.GunVisualLayers.Mag"]
+    - type: Clothing
+      sprite: _Moffstation/Objects/Weapons/Guns/SMGs/m10.rsi
+    - type: Gun
+      minAngle: 5
+      maxAngle: 20
+      fireRate: 10
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
+      selectedMode: FullAuto
+      availableModes:
+      - FullAuto
+      - SemiAuto
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazinePistolSubMachineGun
+          insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - MagazinePistolSubMachineGun
+          whitelistFailPopup: gun-magazine-whitelist-fail
+        gun_chamber:
+          name: Chamber
+          priority: 1
+          whitelist:
+            tags:
+              - CartridgePistol
+    - type: MagazineVisuals
+      magState: mag
+      steps: 1
+      zeroVisible: true
+    - type: Appearance
