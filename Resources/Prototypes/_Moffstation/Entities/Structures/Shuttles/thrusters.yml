@@ -5,6 +5,15 @@
   components:
   - type: Sprite
     sprite: Structures/Shuttles/thruster.rsi
-  - type: Tag # workaround for pirate integration test, so pirate shuttle thrusters don't trip test failure
+  - type: Tag # Prevents use for pirate bounty
+    tags:
+    - Pirate
+
+- type: entity
+  parent: Gyroscope
+  id: GyroscopePirate
+  suffix: pirate
+  components:
+  - type: Tag # Prevents use for pirate bounty
     tags:
     - Pirate

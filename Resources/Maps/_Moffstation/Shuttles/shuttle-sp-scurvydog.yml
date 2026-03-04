@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/04/2026 06:01:14
+  time: 03/04/2026 19:08:34
   entityCount: 870
 maps: []
 grids:
@@ -501,7 +501,7 @@ entities:
       pos: 3.5,-5.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -18333.514
+      secondsUntilStateChange: -18435.936
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3874,19 +3874,17 @@ entities:
     - type: Transform
       pos: -5.5,-1.5
       parent: 1
-- proto: Gyroscope
+- proto: GyroscopePirate
   entities:
   - uid: 537
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-20.5
+      pos: 2.5,-21.5
       parent: 1
   - uid: 538
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-21.5
+      pos: 2.5,-20.5
       parent: 1
 - proto: Handcuffs
   entities:

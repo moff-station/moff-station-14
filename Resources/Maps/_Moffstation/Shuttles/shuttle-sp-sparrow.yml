@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/04/2026 05:59:07
+  time: 03/04/2026 19:10:32
   entityCount: 215
 maps: []
 grids:
@@ -1079,12 +1079,11 @@ entities:
     - type: Transform
       pos: -1.5,9.5
       parent: 1
-- proto: Gyroscope
+- proto: GyroscopePirate
   entities:
   - uid: 111
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 1.5,-0.5
       parent: 1
 - proto: HarmonicaInstrument

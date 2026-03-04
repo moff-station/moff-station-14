@@ -111,7 +111,7 @@
     whitelist:
       components:
       - Thruster
-    blacklist: # workaround for pirate integration test, so pirate shuttle thrusters don't trip test failure
+    blacklist: # No using pirate thrusters and pirate gyroscopes
       tags:
       - Pirate
 
@@ -140,7 +140,7 @@
     whitelist:
       tags:
       - Recharger
-    blacklist: # workaround for pirate integration test, so pirate shuttle thrusters don't trip test failure
+    blacklist: # No using pirate rechargers
       tags:
       - Pirate
 
