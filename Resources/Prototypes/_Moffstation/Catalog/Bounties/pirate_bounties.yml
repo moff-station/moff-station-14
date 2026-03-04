@@ -85,6 +85,9 @@
     whitelist:
       components:
       - VendingMachine
+    blacklist: # No using pirate vendings
+      tags:
+      - Pirate
 
 - type: cargoBounty
   id: PirateBountyTelecom
