@@ -111,6 +111,9 @@
     whitelist:
       components:
       - Thruster
+    blacklist: # Temp workaround for pirate integration test, so pirate shuttle thrusters don't trip test failure
+      tags:
+      - Pirate
 
 - type: cargoBounty
   id: PirateBountyFaxmachine

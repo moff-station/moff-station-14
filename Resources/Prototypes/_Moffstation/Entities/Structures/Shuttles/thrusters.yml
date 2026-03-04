@@ -5,3 +5,6 @@
   components:
   - type: Sprite
     sprite: Structures/Shuttles/thruster.rsi
+  - type: Tag # Temp workaround for pirate integration test, so pirate shuttle thrusters don't trip test failure
+    tags:
+    - Pirate
