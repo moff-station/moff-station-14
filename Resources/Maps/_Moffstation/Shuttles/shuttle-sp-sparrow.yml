@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/04/2026 04:51:49
+  time: 03/04/2026 05:59:07
   entityCount: 215
 maps: []
 grids:
@@ -1689,9 +1689,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.5,-3.5
       parent: 1
-- proto: WeaponCapacitorRecharger
+- proto: WeaponCapacitorRechargerPirate
   entities:
-  - uid: 181
+  - uid: 170
     components:
     - type: Transform
       pos: -0.5,7.5

@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: WeaponCapacitorRecharger
+  id: WeaponCapacitorRechargerPirate
+  name: pirate recharger
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Power/pirate_recharger.rsi
+  - type: Machine
+    board: WeaponCapacitorRechargerCircuitboard
+  - type: Tag # workaround for pirate integration test, so pirate rechargers don't trip test failure
+    tags:
+    - Pirate
