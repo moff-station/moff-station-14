@@ -1,0 +1,18 @@
+- type: entity
+  name: Golden Inspector
+  parent: [BaseWeaponRevolver, BaseSecurityContraband]
+  id: WeaponRevolverGoldInspector
+  description: 99% of detectives quit before winning big.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/goldinspector.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/goldinspector.rsi
+  - type: Item
+    storedOffset: 0,-2
+  - type: RevolverAmmoProvider
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+  - type: StealTarget
+    stealGroup: OfficerHandgun
