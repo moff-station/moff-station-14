@@ -17,6 +17,8 @@
             prefixCreator: '14'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency.yml
+        - type: StationCargoShuttle
+          path: /Maps/_Moffstation/Shuttles/cargo_ossuary.yml
         - type: StationJobs
           availableJobs: # Roundstart: 20, Latejoin: 27
             #command
