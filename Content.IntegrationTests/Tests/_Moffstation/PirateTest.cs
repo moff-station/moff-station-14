@@ -34,18 +34,13 @@ public sealed class PirateTest
         var loader = server.System<MapLoaderSystem>();
         var cargoSystem = server.System<CargoSystem>();
 
-        var pirateBounties = protoManager.EnumeratePrototypes<CargoBountyPrototype>()
-            .Where(b => b.Group == PirateBountyGroup);
-        var pirateBountyEntries = new List<KeyValuePair<ProtoId<CargoBountyPrototype>, CargoBountyItemEntry>>();
-        foreach (var cargoBountyPrototype in pirateBounties)
-        {
-            foreach (var cargoBountyEntry in cargoBountyPrototype.Entries)
-            {
-                pirateBountyEntries.Add(new KeyValuePair<ProtoId<CargoBountyPrototype>, CargoBountyItemEntry>(
-                    cargoBountyPrototype.ID,
-                    cargoBountyEntry));
-            }
-        }
+        var pirateBountyEntries = protoManager.EnumeratePrototypes<CargoBountyPrototype>()
+            .Where(b => b.Group == PirateBountyGroup)
+            .SelectMany(
+                proto => proto.Entries,
+                (proto, entry) => (proto.ID, entry)
+            )
+            .ToList();
 
         await server.WaitPost(() =>
         {
