@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Content.Server.Cargo.Systems;
 using Content.Shared.Cargo.Prototypes;
@@ -61,9 +60,10 @@ public sealed class PirateTest
                             continue;
                         foreach (var (id, bountyItemEntry) in pirateBountyEntries)
                         {
+                            var entityPrototypeId = entManager.GetComponentOrNull<MetaDataComponent>(entUid)?.EntityPrototype?.ID;
                             Assert.That(
                                 !cargoSystem.IsValidBountyEntry(entUid, bountyItemEntry),
-                                $"Entity {entUid} on a pirate-owned map meets the {Loc.GetString(bountyItemEntry.Name)} criteria for a pirate bounty {id}!"
+                                $"Entity {entUid} with proto={entityPrototypeId} on map {path} fulfills {Loc.GetString(bountyItemEntry.Name)} for pirate bounty {id}"
                             );
                         }
                     }
