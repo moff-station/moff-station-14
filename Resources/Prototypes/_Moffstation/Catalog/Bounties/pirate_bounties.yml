@@ -130,6 +130,9 @@
     whitelist:
       components:
       - FaxMachine
+    blacklist: # No using the pirate fax
+      tags:
+      - Pirate
 
 - type: cargoBounty
   id: PirateBountyRecharger

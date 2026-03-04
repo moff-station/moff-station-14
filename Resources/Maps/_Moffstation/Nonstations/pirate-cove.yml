@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/04/2026 19:50:26
-  entityCount: 2223
+  time: 03/04/2026 20:18:36
+  entityCount: 2224
 maps: []
 grids:
 - 1
@@ -4068,6 +4068,13 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 17.5,1.5
       parent: 1
+- proto: BodyBag
+  entities:
+  - uid: 1189
+    components:
+    - type: Transform
+      pos: 2.5,7.5
+      parent: 1
 - proto: BookshelfFilled
   entities:
   - uid: 910
@@ -4107,17 +4114,24 @@ entities:
     - type: Transform
       pos: 12.5,7.5
       parent: 1
+- proto: BoxBodyBag
+  entities:
+  - uid: 1296
+    components:
+    - type: Transform
+      pos: 2.4973931,6.654249
+      parent: 1
 - proto: Brutepack1
   entities:
   - uid: 288
     components:
     - type: Transform
-      pos: 2.33807,6.75546
+      pos: 1.8828096,6.779336
       parent: 1
   - uid: 290
     components:
     - type: Transform
-      pos: 2.61932,6.578253
+      pos: 1.997393,6.518738
       parent: 1
 - proto: Bucket
   entities:
@@ -6390,7 +6404,7 @@ entities:
       pos: 10.5,6.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -990.4444
+      secondsUntilStateChange: -1130.1012
       state: Opening
   - uid: 2219
     components:
@@ -7034,15 +7048,13 @@ entities:
     - type: Transform
       pos: 13.717177,2.0582125
       parent: 1
-- proto: FaxMachineSyndie
+- proto: FaxMachinePirate
   entities:
   - uid: 129
     components:
     - type: Transform
       pos: 24.5,-10.5
       parent: 1
-    - type: FaxMachine
-      name: Pirate Outpost
 - proto: Firelock
   entities:
   - uid: 1668
@@ -10137,17 +10149,17 @@ entities:
   - uid: 49
     components:
     - type: Transform
-      pos: 1.390153,6.51571
+      pos: 1.2786429,6.5291615
       parent: 1
   - uid: 93
     components:
     - type: Transform
-      pos: 1.4318197,6.7867317
+      pos: 1.2786429,6.8523026
       parent: 1
   - uid: 267
     components:
     - type: Transform
-      pos: 1.827653,6.536558
+      pos: 1.4557263,6.664673
       parent: 1
 - proto: GeneratorRTG
   entities:
@@ -11944,13 +11956,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -7.5,8.5
       parent: 1
-- proto: StasisBed
-  entities:
-  - uid: 1189
-    components:
-    - type: Transform
-      pos: 2.5,7.5
-      parent: 1
 - proto: StationAnchor
   entities:
   - uid: 840
@@ -12041,7 +12046,7 @@ entities:
   - uid: 218
     components:
     - type: Transform
-      pos: -2.9976761,6.6512203
+      pos: -2.9948766,6.6229773
       parent: 1
   - uid: 219
     components:
