@@ -271,9 +271,6 @@
         - id: CannonBall
           amount: !type:RangeNumberSelector
             range: 3, 4
-        - id: CannonBallStructureBlasting
-          amount: !type:RangeNumberSelector
-            range: 1, 1
         - id: CannonBallStructureSplitting
           amount: !type:RangeNumberSelector
             range: 1, 2
@@ -282,7 +279,7 @@
             range: 0, 1
         - id: CannonBallGasNitrous
           amount: !type:RangeNumberSelector
-            range: 1, 2
+            range: 0, 2
         - id: CannonBallGrapeshot
           amount: !type:RangeNumberSelector
             range: 1, 3

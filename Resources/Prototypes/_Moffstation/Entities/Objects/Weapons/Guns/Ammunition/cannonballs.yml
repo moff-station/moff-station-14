@@ -1,51 +1,5 @@
 - type: entity
   parent: BaseCannonBall
-  id: CannonBallStructureBlasting
-  name: gunstone
-  suffix: Pirate, Cannonball
-  description: A hefty ball of polished plasmarble, made for smashing straight through walls. Stings a little if you get hit by it.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: plasmarball
-  - type: CartridgeAmmo
-    proto: BulletCannonBallStructureBlasting
-    deleteOnSpawn: true
-
-- type: entity
-  id: BulletCannonBallStructureBlasting
-  name: gunstone
-  parent: BaseBullet
-  description: Knock knock.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-      - state: plasmarball
-  - type: TriggerOnCollide
-    fixtureID: projectile
-    maxTriggers: 5 # You will blow through This Many Divided By Two walls
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: DemolitionCharge
-    maxIntensity: 10
-    intensitySlope: 15 # Focused explosions
-    totalIntensity: 20
-    maxTileBreak: 0
-    deleteAfterExplosion: false
-    repeatable: true
-  - type: Projectile
-    deleteOnCollide: false
-    damage:
-      types:
-        Structural: 250   # This is mostly just for show, the explosion is what breaks things
-  - type: PointLight
-    color: salmon
-    radius: 2
-    energy: 2
-
-- type: entity
-  parent: BaseCannonBall
   id: CannonBallBouncy
   name: gutterball
   suffix: Pirate, Cannonball
@@ -66,19 +20,16 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: bouncy 
-#  - type: Sprite
-#    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-#    layers:
-#      - state: plasbouncy
+    sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: plasbouncy
   - type: Clickable
+  - type: Physics
+    bodyType: Dynamic
   - type: TimedDespawn
     lifetime: 10
   - type: SpawnOnDespawn
     prototype: CannonBallBouncy  # Reusable cannonbouncy
-  - type: Physics
-    bodyType: Dynamic
   - type: EmitSoundOnCollide
     sound:
       path: /Audio/Effects/Footsteps/bounce.ogg
@@ -101,11 +52,11 @@
     impulse: 120
     targetUser: true
   - type: StunOnCollide
-    knockdownAmount: 2.5 # Good for subduing
+    knockdownAmount: 2.0 
     drop: false
-    slowdownAmount: 2.5
-    walkSpeedModifier: 0.3
-    sprintSpeedModifier: 0.3
+    slowdownAmount: 2.0
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
   - type: PointLight
     color: salmon
     radius: 2
@@ -148,6 +99,8 @@
         Piercing: 50
         Structural: 350   # This is the minimum to pierce one (1) reinf wall
     ignoreResistances: true
+  - type: TimedDespawn
+    lifetime: 30   # Longer range than base bullet
   - type: PointLight
     color: salmon
     radius: 2
@@ -170,30 +123,17 @@
 - type: entity
   id: BulletCannonBallGasNitrous
   name: sleeping carcass
-  parent: [ BaseItem, BaseMajorContraband ]
+  parent: BaseBullet
   description: Night night.
   categories: [ HideSpawnMenu ]
   components:
-  - type: TriggerOnCollide
-    fixtureID: projectile
-    maxTriggers: Null
-  - type: TimedDespawn
-    lifetime: 10
-  - type: Fixtures
-    fixtures:
-      projectile:
-        shape: !type:PhysShapeCircle
-          radius: 0.3
-          position: "0,-0.2"
-        mass: 2000
-        mask:
-          - Impassable
-          - BulletImpassable
-        friction: 0 # Bullet physics
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
       - state: plasmarball
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    maxTriggers: Null
   - type: EmitSoundOnTrigger
     sound: /Audio/Items/smoke_grenade_smoke.ogg
   - type: SmokeOnTrigger # This is a courtesy, because nitrous is invisible
@@ -208,6 +148,8 @@
       temperature: 293.15
   - type: StaminaDamageOnCollide
     damage: 130
+  - type: TimedDespawn
+    lifetime: 30   # Longer range than base bullet
   - type: PointLight
     color: salmon
     radius: 2
