@@ -31,8 +31,25 @@
 # Neck
 
 # Jumpsuit
+- type: loadout
+  id: JanitorOveralls
+  equipment:
+    jumpsuit: ClothingUniformJanitorOveralls
+  groupBy: "janitor jumpsuits"
 
-# Back
+- type: loadout
+  id: CustodianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorCustodian
+  groupBy: "janitor jumpsuits"
+
+- type: loadout
+  id: CustodianJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorCustodian
+  groupBy: "janitor jumpskirts"
+
+# Back ClothingUniformJumpskirtColorCustodian
 
 # Belt
 

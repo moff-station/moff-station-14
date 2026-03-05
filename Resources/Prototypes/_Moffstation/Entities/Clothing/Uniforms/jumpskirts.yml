@@ -134,6 +134,8 @@
     - state: icon
       color: &color-orange "#db542e"
     - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-black "#3f3f3f"
   - type: Item
     inhandVisuals:
       left:
@@ -149,6 +151,8 @@
       - state: equipped-INNERCLOTHING
         color: *color-orange
       - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-black
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
@@ -172,7 +176,7 @@
       color: &color-grey "#9b9b9b"
     - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-black "#3f3f3f"
+      color: *color-black
   - type: Item
     inhandVisuals:
       left:
@@ -395,3 +399,69 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpsyched.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerpsyched.rsi
+
+#Salvage
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtColorSalvage
+  name: salvage jumpskirt
+  description: A tasteful salvage jumpskirt that reminds you of the good old days of cargonia.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: &color-brown "#715337"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-salvage "#93469b"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-brown
+      right:
+      - state: inhand-right
+        color: *color-brown
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-brown
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-salvage
+
+#Janitor
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtColorCustodian
+  name: custodian jumpskirt
+  description: A Jumpskirt designed for custodians wanting to help the crew practice for the big game.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    layers:
+    - state: icon
+      color: *color-black
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-purple "#ac50e6"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-black
+      right:
+      - state: inhand-right
+        color: *color-black
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-black
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-purple
