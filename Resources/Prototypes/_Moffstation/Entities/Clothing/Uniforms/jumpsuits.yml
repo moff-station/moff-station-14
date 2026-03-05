@@ -536,28 +536,28 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
-    - state: icon-light
-      color: &color-brown "#715337"
+    - state: icon
+      color: &color-salvage "#93469b"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-salvage "#93469b"
+      color: &color-cargo "#e39e00"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: *color-brown
+        color: *color-salvage
       right:
       - state: inhand-right
-        color: *color-brown
+        color: *color-salvage
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     clothingVisuals:
       jumpsuit:
-      - state: equipped-INNERCLOTHING-light
-        color: *color-brown
+      - state: equipped-INNERCLOTHING
+        color: *color-salvage
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-salvage
+        color: *color-cargo
 
 #Janitor
 - type: entity
