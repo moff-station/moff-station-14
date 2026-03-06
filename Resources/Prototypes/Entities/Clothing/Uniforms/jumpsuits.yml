@@ -343,6 +343,7 @@
   description: If this suit was non-conductive, maybe engineers would actually do their damn job.
   components:
   - type: Sprite
+    # Moffstation - Start - Engineering outfit resprites
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
@@ -367,6 +368,7 @@
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-orange
+    # Moffstation - End
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
