@@ -38,6 +38,7 @@
         !type:DamageTrigger
         damage: 75
       behaviors:
+      # Moffstation - Start - Break into a machine frame
         - !type:DoActsBehavior
           acts: ["Destruction"]
         - !type:PlaySoundBehavior
@@ -45,6 +46,7 @@
             collection: MetalBreak
         - !type:ChangeConstructionNodeBehavior
           node: machineFrame
+      # Moffstation - End
   - type: Strap
     position: Down
     rotation: -90
