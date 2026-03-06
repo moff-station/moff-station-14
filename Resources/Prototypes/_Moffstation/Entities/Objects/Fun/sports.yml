@@ -1,0 +1,58 @@
+- type: entity
+  parent: [ BaseItem, BaseSportsBall ]
+  id: Baseball # Not "BaseSportsBall"
+  name: baseball
+  description: Nothing can happen till you swing the bat.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Balls/baseball.rsi
+    state: icon
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Fixtures
+    fixtures:
+      core: # "Parryable" layer; should be hard but not interactive
+        shape: !type:PhysShapeCircle
+          radius: 0.1
+        hard: true
+        mask:
+        - ItemMask
+        mass: 2.5
+        restitution: 0.8 # bouncy
+        friction: 0.01
+  - type: TileFrictionModifier
+    modifier: 0.13 # Frustratingly, the "air time" of a ball scales inversely with this (can't catch once grounded)
+  - type: Item
+    size: Small
+    sprite: _Moffstation/Objects/Fun/Balls/baseball.rsi
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-baseball
+    stampedColor: salmon
+  - type: MeleeWeapon # you're OUTTA HERE
+    hidden: true
+    damage:
+      types:
+        Blunt: 0
+    angle: 0
+    soundHit:
+      path: /Audio/Items/Stamp/automatic_stamp.ogg
+
+- type: entity
+  parent: Baseball
+  id: HoloBaseball
+  name: holobaseball
+  categories: [ HideSpawnMenu ]
+  description: Comes in holographic foil. 
+  components:
+  - type: Clickable
+  - type: Projectile
+    onlyCollideWhenShot: true
+    damage:
+      types:
+        Blunt: 0
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/Balls/baseball.rsi
+    state: icon_holo
+  - type: TimedDespawn
+    lifetime: 4
