@@ -47,7 +47,8 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 500
+        # Moffstation - Start - Making the Gravity Generator Destructible
+        damage: 1000
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -62,6 +63,7 @@
           SheetPlasteel1:
             min: 5
             max: 10
+        # Moffstation - End
   - type: PowerCharge
     windowTitle: gravity-generator-window-title
     idlePower: 50
