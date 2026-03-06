@@ -76,7 +76,7 @@
   metabolisms:
     Digestion:
       metabolites:
-        WeldingFuel: 0.25
+        WeldingFuel: 0.5
 
 - type: reagent
   id: Cocoon
@@ -95,7 +95,7 @@
   metabolisms:
     Digestion:
       metabolites:
-        Fiber: 0.25
+        Fiber: 0.5
 
 - type: reagent
   id: CoughDrop
@@ -157,8 +157,8 @@
   metabolisms:
     Digestion:
       metabolites:
-        UncookedAnimalProteins: 0.25
-        Fat: 0.25
+        UncookedAnimalProteins: 0.5
+        Fat: 0.5
 
 - type: reagent
   id: Uprooting
@@ -177,5 +177,5 @@
   metabolisms:
     Digestion:
       metabolites:
-        EZNutrient: 0.3
-        Theobromine: 0.05
+        EZNutrient: 0.6
+        Theobromine: 0.1

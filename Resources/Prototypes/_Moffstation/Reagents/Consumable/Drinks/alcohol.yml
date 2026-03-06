@@ -148,8 +148,8 @@
   metabolisms:
     Digestion:
       metabolites:
-        Ethanol: 0.1
-        Fiber: 0.2
+        Ethanol: 0.2
+        Fiber: 0.4
       effects:
       - !type:SatiateThirst
         factor: 1
@@ -171,9 +171,9 @@
   metabolisms:
     Digestion:
       metabolites:
-        Ethanol: 0.1
-        RobustHarvest: 0.2
-        Theobromine: 0.05
+        Ethanol: 0.2
+        RobustHarvest: 0.4
+        Theobromine: 0.1
 
 - type: reagent
   id: SolarHurricane
@@ -192,10 +192,10 @@
   metabolisms:
     Digestion:
       metabolites:
-        Ethanol: 0.1
+        Ethanol: 0.2
       effects:
       - !type:SatiateThirst
-        factor: 3
+        factor: 5
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Avali ]
@@ -211,7 +211,7 @@
   metabolisms:
     Digestion:
       metabolites:
-        Ethanol: 0.4
+        Ethanol: 0.8
       effects:
       - !type:SatiateThirst
         factor: 4
@@ -233,9 +233,9 @@
   metabolisms:
     Digestion:
       metabolites:
-        Ethanol: 0.1
-        Fat: 0.1
-        UncookedAnimalProteins: 0.25
+        Ethanol: 0.2
+        Fat: 0.2
+        UncookedAnimalProteins: 0.5
       effects:
       - !type:SatiateThirst
         factor: 1
