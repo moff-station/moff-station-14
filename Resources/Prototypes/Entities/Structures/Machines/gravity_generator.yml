@@ -47,10 +47,21 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 500
       behaviors:
       - !type:DoActsBehavior
-        acts: ["Breakage"]
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 10
+            max: 20
+          SheetPlasteel1:
+            min: 5
+            max: 10
   - type: PowerCharge
     windowTitle: gravity-generator-window-title
     idlePower: 50
