@@ -446,7 +446,11 @@
   - type: Construction
     graph: Seat
     node: chairWoodBench
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Wood
   - type: Destructible
+  
     thresholds:
     - trigger: # Excess damage, don't spawn entities
         !type:DamageTrigger
