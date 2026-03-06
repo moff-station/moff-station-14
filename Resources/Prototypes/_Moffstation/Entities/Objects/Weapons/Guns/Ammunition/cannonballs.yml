@@ -123,7 +123,6 @@
 - type: entity
   id: BulletCannonBallGasNitrous
   name: sleeping carcass
-  parent: BaseBullet
   description: Night night.
   categories: [ HideSpawnMenu ]
   components:
@@ -131,21 +130,42 @@
     sprite: _Moffstation/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
       - state: plasmarball
+  - type: Physics
+    bodyType: Dynamic
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false # needs to persist long enough to emit gas
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape: !type:PhysShapeCircle
+          radius: 0.3
+          position: "0,-0.2"
+        mask:
+          - Impassable
+          - BulletImpassable
+        friction: 0 # Bullet physics
   - type: TriggerOnCollide
     fixtureID: projectile
-    maxTriggers: Null
+    maxTriggers: 1 
   - type: EmitSoundOnTrigger
     sound: /Audio/Items/smoke_grenade_smoke.ogg
   - type: SmokeOnTrigger # This is a courtesy, because nitrous is invisible
     duration: 10
     spreadAmount: 40
   - type: ReleaseGasOnTrigger
-    removeFraction: 0.5
+    removeFraction: 1
     air:
       volume: 1000
       moles: # 3117.84 mols fills 30 tiles (101.325 kPa @ 20C), so this is enough to make a 100-tile room sleepy
-        NitrousOxide: 3111.00 # nitrogen
+        NitrousOxide: 3111.00
       temperature: 293.15
+  - type: TimerTrigger # Deletes after a few seconds (the gas should be all released by then)
+    delay: 7
+    keyOut: delete
+  - type: DeleteOnTrigger
+    keysIn:
+    - delete
   - type: StaminaDamageOnCollide
     damage: 130
   - type: TimedDespawn
