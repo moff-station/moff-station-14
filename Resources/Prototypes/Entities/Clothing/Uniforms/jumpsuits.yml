@@ -992,9 +992,9 @@
   description: A good reporter remains a skeptic all their life.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/reporter.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/reporter.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/reporter.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/reporter.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -1014,9 +1014,9 @@
   description: If journalism is good, it is controversial, by nature.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/journalist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/journalist.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/journalist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/journalist.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
