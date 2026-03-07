@@ -104,6 +104,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
+        # Moffstation - Start - MedbayBelt Rework
         - id: Brutepack
         - id: Ointment
         - id: Gauze
@@ -113,6 +114,7 @@
         - id: ChemistryBottleDylovene
         - id: ChemistryBottleHyronalin
         - id: ChemistryBottleKelotane
+        # Moffstation - End
 
 - type: entity
   parent: ClothingBeltMedicalEMT
@@ -123,6 +125,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
+        # Moffstation - Start - MedbayBelt Rework
         - id: Gauze
         # Reagents focused on emergency response rather than outright healing
         - id: ChemistryBottleInaprovaline
@@ -133,6 +136,7 @@
         - id: ChemistryBottleEpinephrine
         - id: ChemistryBottleIpecac
         - id: ChemistryBottleCharcoal
+        # Moffstation - End
 
 - type: entity
   id: ClothingBeltPlantFilled
