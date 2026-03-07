@@ -23,3 +23,24 @@
   id: VampireAbilitiesDantalion
   name: store-category-abilities-dantalion
   priority: 4
+
+# Wizard - Moffstation edition
+- type: storeCategory
+  id: SpellbookCantrips
+  name: store-caregory-spellbook-cantrips
+  priority: 0
+
+- type: storeCategory
+  id: SpellbookSpellbooks
+  name: store-caregory-spellbook-spellbooks
+  priority: 1
+
+- type: storeCategory
+  id: SpellbookWands
+  name: store-caregory-spellbook-wands
+  priority: 2
+
+- type: storeCategory
+  id: SpellbookEnchantments
+  name: store-caregory-spellbook-enchantments
+  priority: 3

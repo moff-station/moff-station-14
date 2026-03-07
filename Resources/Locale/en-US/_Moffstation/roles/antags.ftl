@@ -79,3 +79,9 @@ roles-antag-stowaway-name = Stowaway
 roles-antag-stowaway-desc = You've snuck onto the station after a previous shift evacuated... You wake up here after a long nap.
 roles-antag-stowaway-greeting = You've snuck onto the station after a previous shift evacuated... You wake up here after a long nap.
 roles-antag-stowaway-objective = You've snuck onto the station after a previous shift evacuated. Warning: Spawning in a safe location is not guaranteed.
+
+# Wizard Duel
+wizard-duel-title = Wizard Duel
+wizard-duel-description = A battle of might and magic, and you're caught in the middle of the chaos! Will you survive?
+
+guide-entry-wizard-duel = Wizard Duel

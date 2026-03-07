@@ -441,9 +441,9 @@
   description: It's a turtleneck worn by those with the know-how to achieve the position of Research Director. Its fabric provides minor protection from biological contaminants.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/rnd.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/rnd.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/rnd.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/rnd.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -482,9 +482,9 @@
   description: It's a slimming black with reinforced seams; great for industrial work.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/roboticist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/roboticist.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/roboticist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/roboticist.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseSecurityContraband]
@@ -741,9 +741,9 @@
   description: A sign of skill and prestige within the science department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/senior_researcher.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_researcher.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/senior_researcher.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/senior_researcher.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
