@@ -1,6 +1,7 @@
 ﻿using Content.Server.StationEvents.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Content.Shared.Radio; // Moffstation - Syndicate dead drop
 
 namespace Content.Server.StationEvents.Components;
 
@@ -17,4 +18,10 @@ public sealed partial class RandomSpawnRuleComponent : Component
     public string Prototype = string.Empty;
 
     // Moffstation - Start - Syndicate dead drop
+    [DataField]
+    public bool AlertRadio = false;
+
+    [DataField]
+    public ProtoId<RadioChannelPrototype> RadioChannel = "Common";
+    // Moffstation - End
 }
