@@ -299,3 +299,15 @@
       amount: 1
   products:
     Mopwata: 6
+
+- type: reaction
+  id: MeatPulp
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Fat:
+      amount: 1
+    UncookedAnimalProteins:
+      amount: 1
+  products:
+    MeatPulp: 2
