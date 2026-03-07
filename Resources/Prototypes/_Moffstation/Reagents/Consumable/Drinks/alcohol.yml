@@ -174,6 +174,11 @@
         Ethanol: 0.2
         RobustHarvest: 0.4
         Theobromine: 0.1
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: 1
+  - !type:PlantAdjustHealth
+    amount: 5
 
 - type: reagent
   id: SolarHurricane
