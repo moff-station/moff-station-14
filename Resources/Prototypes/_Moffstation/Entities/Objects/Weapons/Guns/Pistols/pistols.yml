@@ -244,7 +244,7 @@
   - type: StealTarget
     stealGroup: OfficerHandgun
 
-- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+- type: entity # WHY IS THIS BROKEN
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolroseshade
   name: Roseshade
