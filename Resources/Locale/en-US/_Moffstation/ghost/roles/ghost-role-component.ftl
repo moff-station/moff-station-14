@@ -24,3 +24,5 @@ ghost-role-information-syndicate-solider-name = Syndicate Footsoldier
 ghost-role-information-syndicate-solider-description = You, the first person the syndicate could find, have been sent on a mission to the station.
 ghost-role-information-wild-human-name = Wild Humanoid
 ghost-role-information-wild-human-description = You are a wild humanoid, illiterate and without a lick of education.
+ghost-role-information-wizard-duelist-name = Wizard Duelist
+ghost-role-information-wizard-duelist-desc = YER A WIZARD! Prove you're the best the space wizard federation has to offer!
