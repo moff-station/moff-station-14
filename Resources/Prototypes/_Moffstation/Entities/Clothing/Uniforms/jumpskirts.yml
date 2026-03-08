@@ -121,6 +121,17 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/reporter.rsi
 
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtAnchorman
+  name: news anchor suit
+  description: To bring the station the news so they don't have to get it themselves.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/anchorman.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/anchorman.rsi
+
 # Prisoner
 - type: entity
   parent: ClothingUniformJumpskirtPrisonerUpstream

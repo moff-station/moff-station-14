@@ -50,6 +50,18 @@
     jumpsuit: ClothingUniformJumpskirtMeteorologist
   groupBy: "reporter jumpskirts"
 
+- type: loadout
+  id: NewsAnchorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAnchorman
+  groupBy: "reporter jumpsuits"
+
+- type: loadout
+  id: NewsAnchorJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtAnchorman
+  groupBy: "reporter jumpskirts"
+
 # Back
 
 # Belt
