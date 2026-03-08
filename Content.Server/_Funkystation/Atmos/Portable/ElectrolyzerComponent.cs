@@ -7,7 +7,7 @@ namespace Content.Server._Funkystation.Atmos.Portable;
 public sealed partial class ElectrolyzerComponent : Component
 {
     [DataField]
-    public float CurrentFuel { get; set; }
+    public float CurrentFuel { get; set; } = 0f;
 
     [DataField]
     public float PlasmaFuelConversion { get; set; } = 200000f;
@@ -16,7 +16,7 @@ public sealed partial class ElectrolyzerComponent : Component
     public float UraniumFuelConversion { get; set; } = 1000000f;
 
     [DataField]
-    public bool IsPowered { get; set; }
+    public bool IsPowered { get; set; } = false;
 
     [DataField]
     public SoundSpecifier? OnSound;
