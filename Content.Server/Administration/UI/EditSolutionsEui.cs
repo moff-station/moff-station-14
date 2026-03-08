@@ -1,16 +1,11 @@
-using System.Linq; // Moffstation
 using Content.Server.Administration.Systems;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.EUI;
-using Content.Shared._Moffstation.Extensions; // Moffstation
 using Content.Shared.Administration;
-using Content.Shared.Body; // Moffstation
 using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Chemistry.EntitySystems; // Moffstation
 using Content.Shared.Eui;
 using Content.Shared.Chemistry.EntitySystems;
 using JetBrains.Annotations;
-using Robust.Shared.Containers; // Moffstation
 using Robust.Shared.Timing;
 
 namespace Content.Server.Administration.UI
@@ -23,8 +18,6 @@ namespace Content.Server.Administration.UI
     {
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
-
-        private readonly SharedContainerSystem _container = default!; // Moffstation - Show organ solutions in solution editor
         private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
         public readonly EntityUid Target;
 
@@ -32,7 +25,6 @@ namespace Content.Server.Administration.UI
         {
             IoCManager.InjectDependencies(this);
             _solutionContainerSystem = _entityManager.System<SharedSolutionContainerSystem>();
-            _container = _entityManager.System<SharedContainerSystem>(); // Moffstation - Show organ solutions in solution editor
             Target = entity;
         }
 
@@ -50,27 +42,23 @@ namespace Content.Server.Administration.UI
 
         public override EuiStateBase GetNewState()
         {
-            // Moffstation - Begin - Show organ solutions in solution editor
-            IEnumerable<EntityUid> solutionContainers = [Target];
-            if (_container.TryGetContainer(Target, BodyComponent.ContainerID, out var bodyParts))
+            List<(string Name, NetEntity Solution)>? netSolutions;
+
+            if (_entityManager.TryGetComponent(Target, out SolutionContainerManagerComponent? container) && container.Containers.Count > 0)
             {
-                solutionContainers = solutionContainers.Concat(bodyParts.ContainedEntities);
-            }
-
-            var netSolutions = solutionContainers
-                .SelectMany(it => _solutionContainerSystem.EnumerateSolutions(it))
-                .SelectNotNull((string, NetEntity)? (it) =>
+                netSolutions = new();
+                foreach (var (name, solution) in _solutionContainerSystem.EnumerateSolutions((Target, container)))
                 {
-                    if (it.Name is { } name && _entityManager.TryGetNetEntity(it.Solution, out var netSolution))
-                        return (name, netSolution.Value);
-                    return null;
-                })
-                .ToList();
+                    if (name is null || !_entityManager.TryGetNetEntity(solution, out var netSolution))
+                        continue;
 
-            return new EditSolutionsEuiState(_entityManager.GetNetEntity(Target),
-                netSolutions.Count != 0 ? netSolutions : null,
-                _gameTiming.CurTick);
-            // Moffstation - End
+                    netSolutions.Add((name, netSolution.Value));
+                }
+            }
+            else
+                netSolutions = null;
+
+            return new EditSolutionsEuiState(_entityManager.GetNetEntity(Target), netSolutions, _gameTiming.CurTick);
         }
     }
 }
