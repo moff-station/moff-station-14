@@ -1,3 +1,6 @@
+# TODO: Reagent Args which allow more selective scaling.
+# Currently all Gas metabolisms scale by reagent quantity metabolized, where other Metabolisms are modified by metabolism rate!
+
 - type: reagent
   id: Oxygen
   name: reagent-name-oxygen
@@ -35,8 +38,8 @@
         alertType: Toxins
         minScale: 1
         conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vox ]
+          - !type:MetabolizerTypeCondition
+            type: [ Vox ]
         clear: true
         time: 5
     Respiration:
@@ -44,7 +47,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant, Arachnid, Moth ]
+          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Avali, Resomi ] # Moffstation
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
@@ -66,8 +69,8 @@
         alertType: Toxins
         minScale: 0.5
         conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vox ]
+          - !type:MetabolizerTypeCondition
+            type: [ Vox ]
         clear: true
         time: 5
 
@@ -327,9 +330,10 @@
           type: [ Slime ]
           inverted: true
         ignoreResistances: true
+        scaling: true
         damage:
           types:
-            Poison: 0.25
+            Poison: 1
 
 - type: reagent
   id: Frezon
@@ -345,7 +349,7 @@
   boilingPoint: -195.8
   meltingPoint: -210.0
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:HealthChange
         ignoreResistances: true
