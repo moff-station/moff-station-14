@@ -1,5 +1,3 @@
-# Base categories
-
 - type: latheRecipe
   abstract: true
   id: BaseMachineRecipeCategory
@@ -255,7 +253,7 @@
   parent: [BaseCircuitboardRecipe]
   id: SmartFridgeCircuitboard
   result: SmartFridgeCircuitboard
-  
+
 # Bar
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseServiceMachineRecipeCategory ]

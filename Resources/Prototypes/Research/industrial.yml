@@ -1,5 +1,3 @@
-# Tier 1
-
 - type: technology
   id: SalvageEquipment
   name: research-technology-salvage-equipment
@@ -149,6 +147,7 @@
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
+  - ElectrolyzerMachineCircuitboard # Funky atmos = /tg/ gases
   technologyPrerequisites:
   - AtmosphericTech
 
@@ -162,13 +161,12 @@
   tier: 2
   cost: 10000
   recipeUnlocks:
-    - WelderExperimental
-    - PowerDrill
-    - JawsOfLife
-    - BorgModuleAdvancedTool
-    - Fulton
-    - FultonBeacon
-    - BorgModuleConstructionGeneric # Moffstation - specialty lite modules
+  - WelderExperimental
+  - PowerDrill
+  - JawsOfLife
+  - BorgModuleAdvancedTool
+  - Fulton
+  - FultonBeacon
 
 - type: technology
   id: MassExcavation
@@ -180,11 +178,10 @@
   tier: 2
   cost: 12500
   recipeUnlocks:
-    - OreBagOfHolding
-    - MiningDrillDiamond
-    - AdvancedMineralScannerEmpty
-    - BorgModuleAdvancedMining
-    - BorgModuleMiningGeneric # Moffstation - specialty lite modules
+  - OreBagOfHolding
+  - MiningDrillDiamond
+  - AdvancedMineralScannerEmpty
+  - BorgModuleAdvancedMining
 
 # Tier 3
 
