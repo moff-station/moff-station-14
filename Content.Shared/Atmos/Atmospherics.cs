@@ -179,6 +179,17 @@ namespace Content.Shared.Atmos
             [Gas.Plasma] = Loc.GetString("gas-plasma-abbreviation"),
             [Gas.Tritium] = Loc.GetString("gas-tritium-abbreviation"),
             [Gas.WaterVapor] = Loc.GetString("gas-water-vapor-abbreviation"),
+            [Gas.BZ] = Loc.GetString("gas-bz-abbreviation"), // Funky atmos - /tg/ gases - Start
+            [Gas.Healium] = Loc.GetString("gas-healium-abbreviation"),
+            [Gas.Nitrium] = Loc.GetString("gas-nitrium-abbreviation"),
+            [Gas.Pluoxium] = Loc.GetString("gas-pluoxium-abbreviation"),
+            [Gas.Hydrogen] = Loc.GetString("gas-hydrogen-abbreviation"),
+            [Gas.HyperNoblium] = Loc.GetString("gas-hyper-noblium-abbreviation"),
+            [Gas.ProtoNitrate] = Loc.GetString("gas-proto-nitrate-abbreviation"),
+            [Gas.Zauker] = Loc.GetString("gas-zauker-abbreviation"),
+            [Gas.Halon] = Loc.GetString("gas-halon-abbreviation"),
+            [Gas.Helium] = Loc.GetString("gas-helium-abbreviation"),
+            [Gas.AntiNoblium] = Loc.GetString("gas-anti-noblium-abbreviation"), // Funky atmos - /tg/ gases - End
         };
 
         #region Excited Groups
@@ -208,7 +219,7 @@ namespace Content.Shared.Atmos
         /// <summary>
         ///     Total number of gases. Increase this if you want to add more!
         /// </summary>
-        public const int TotalNumberOfGases = 9;
+        public const int TotalNumberOfGases = 20;
 
         /// <summary>
         ///     This is the actual length of the gases arrays in mixtures.
@@ -286,6 +297,79 @@ namespace Content.Shared.Atmos
         ///     Divisor for Ammonia Oxygen reaction so that it doesn't happen instantaneously.
         /// </summary>
         public const float AmmoniaOxygenReactionRate = 10f;
+
+        /// <summary> // Funky Atmos - /tg/ gases - Start
+        ///     The amount of energy 1 mole of BZ forming from N2O and plasma releases.
+        /// </summary>
+        public const float BZProductionEnergy = 80e3f;
+
+        /// <summary>
+        ///     The amount of energy 1 mol of Healium forming from BZ and frezon releases.
+        /// </summary>
+        public const float HealiumProductionEnergy = 9e3f;
+
+        /// <summary>
+        ///     The amount of energy 1 mol of Nitrium forming from Tritium, Nitrogen and BZ releases.
+        /// </summary>
+        public const float NitriumProductionEnergy = -100e3f;
+
+        /// <summary>
+        ///     The amount of energy 1 mol of Nitrium decomposing into nitrogen and water vapor releases.
+        /// </summary>
+        public const float NitriumDecompositionEnergy = 30e3f;
+
+        /// <summary>
+        ///     The amount of energy 1 mol of Pluoxium forming releases.
+        /// </summary>
+        public const float PluoxiumProductionEnergy = 250;
+        public const float MinimumHydrogenOxyburnEnergy = 143000f;
+
+        public const float HydrogenBurnOxyFactor = 100f;
+
+        /// <summary>
+        /// The amount of energy 1 mol of hyper-noblium forming from tritium and nitrogen releases.
+        /// </summary>
+        public const float HyperNobliumProductionEnergy = 2e7f;
+
+        /// <summary>
+        /// Energy released per mol of BZ consumed during halon formation.
+        /// </summary>
+        public const float HalonProductionEnergy = 91232.1f;
+
+        /// <summary>
+        /// How much energy a mole of halon combusting consumes.
+        /// </summary>
+        public const float HalonCombustionEnergy = -2500f;
+
+        /// <summary>
+        /// The amount of energy half a mole of zauker forming from hypernoblium and nitrium consumes.
+        /// </summary>
+        public const float ZaukerProductionEnergy = 5000f;
+
+        /// <summary>
+        /// The temperature scaling factor for zauker formation. At most this many moles of zauker can form per reaction tick per kelvin.
+        /// </summary>
+        public const float ZaukerTemperatureScale = 5e-6f;
+
+        /// <summary>
+        /// The amount of energy a mole of zauker decomposing in the presence of nitrogen releases.
+        /// </summary>
+        public const float ZaukerDecompositionEnergy = 460f;
+
+        /// <summary>
+        /// The maximum number of moles of zauker that can decompose per reaction tick.
+        /// </summary>
+        public const float ZaukerDecompositionMaxRate = 20f;
+
+        /// <summary>
+        /// The amount of energy 2.2 moles of proto-nitrate forming from pluoxium and hydrogen releases.
+        /// </summary>
+        public const float ProtoNitrateProductionEnergy = 650f;
+
+        /// <summary>
+        /// The amount of energy proto-nitrate breaking down a mole of BZ releases.
+        /// </summary>
+        public const float ProtoNitrateBZConversionEnergy = -10000f; // Funky atmos - /tg/ gases - End
 
         /// <summary>
         ///     Determines at what pressure the ultra-high pressure red icon is displayed.
@@ -372,6 +456,17 @@ namespace Content.Shared.Atmos
         WaterVapor = 5,
         Ammonia = 6,
         NitrousOxide = 7,
-        Frezon = 8
+        Frezon = 8,
+        BZ = 9, // Funky atmos - /tg/ gases - Start
+        Healium = 10,
+        Nitrium = 11,
+        Pluoxium = 12,
+        Hydrogen = 13,
+        HyperNoblium = 14,
+        ProtoNitrate = 15,
+        Zauker = 16,
+        Halon = 17,
+        Helium = 18,
+        AntiNoblium = 19, // Funky atmos - /tg/ gases - End
     }
 }

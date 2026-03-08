@@ -23,7 +23,17 @@ namespace Content.Shared.Atmos.Piping.Unary.Components
             Gas.WaterVapor,
             Gas.Ammonia,
             Gas.NitrousOxide,
-            Gas.Frezon
+            Gas.Frezon,
+            Gas.BZ, // Funky atmos - /tg/ gases
+            Gas.Healium, // Funky atmos - /tg/ gases
+            Gas.Nitrium, // Funky atmos - /tg/ gases
+            Gas.Hydrogen, // Funky atmos - /tg/ gases
+            Gas.HyperNoblium, // Funky atmos - /tg/ gases
+            Gas.ProtoNitrate, // Funky atmos - /tg/ gases
+            Gas.Zauker, // Funky atmos - /tg/ gases
+            Gas.Halon, // Funky atmos - /tg/ gases
+            Gas.Helium, // Funky atmos - /tg/ gases
+            Gas.AntiNoblium, // Funky atmos - /tg/ gases
         };
 
         // Presets for 'dumb' air alarm modes
