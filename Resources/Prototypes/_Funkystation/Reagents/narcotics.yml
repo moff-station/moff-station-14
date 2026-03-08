@@ -35,7 +35,6 @@
         damage:
           types:
             Poison: 0.1
-      effects:
       - !type:ResetNarcolepsy
         conditions:
         - !type:ReagentCondition
