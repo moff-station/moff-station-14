@@ -47,10 +47,6 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        # Moffstation - Start - Making the Gravity Generator Destructible
-        damage: 1000
-      behaviors:
-      - !type:DoActsBehavior
         damage: 1000 # Moffstation - Making the Gravity Generator Destructible
       behaviors:
       - !type:DoActsBehavior
