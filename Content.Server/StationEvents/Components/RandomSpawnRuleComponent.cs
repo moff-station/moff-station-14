@@ -23,5 +23,8 @@ public sealed partial class RandomSpawnRuleComponent : Component
 
     [DataField]
     public ProtoId<RadioChannelPrototype> RadioChannel = "Common";
+
+    [DataField]
+    public string AlertMessage = "random-spawn-default-announcement";
     // Moffstation - End
 }

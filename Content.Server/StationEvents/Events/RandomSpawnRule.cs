@@ -28,7 +28,7 @@ public sealed class RandomSpawnRule : StationEventSystem<RandomSpawnRuleComponen
 
             if (comp.AlertRadio)
             {
-                var message = Loc.GetString("syndicate-dead-drop-announcement", ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(ent))));
+                var message = Loc.GetString(comp.AlertMessage, ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(ent))));
                 _radio.SendRadioMessage(ent, message, comp.RadioChannel, ent);
             }
             // Moffstation - End
