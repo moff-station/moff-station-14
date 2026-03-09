@@ -5,10 +5,10 @@
   description: A bag for storing chemistry products, such as jugs, beakers, pills, pill canisters, vials, and syringes. # Moffstation - Fitting jugs and vials instead of bottles
   components:
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/chem_bag.rsi
+    sprite: _Moffstation/Clothing/Belt/chemistry.rsi # Moffstation - Davyei's Sprite
     state: icon
   - type: Clothing
-    sprite: Objects/Specific/Chemistry/chem_bag.rsi
+    sprite: _Moffstation/Clothing/Belt/chemistry.rsi # Moffstation - Davyei's Sprite
     quickEquip: false
     slots:
     - belt
