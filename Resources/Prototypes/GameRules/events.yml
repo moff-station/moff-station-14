@@ -34,6 +34,7 @@
     - id: RevenantSpawn
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
+    - id: SyndicateDeadDrop # Moffstation
 
 - type: entityTable
   id: ModerateAntagEventsTable
