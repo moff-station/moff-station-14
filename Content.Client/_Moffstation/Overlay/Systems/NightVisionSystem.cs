@@ -23,6 +23,7 @@ public sealed class NightVisionSystem : EquipmentHudSystem<NightVisionComponent>
 
         SubscribeLocalEvent<NightVisionComponent, FlashImmunityChangedEvent>(OnFlashImmunityChanged);
         SubscribeLocalEvent<NightVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
+        SubscribeLocalEvent<NightVisionComponent, ComponentShutdown>(OnShutDown);
 
         _overlay = new();
     }
@@ -61,6 +62,11 @@ public sealed class NightVisionSystem : EquipmentHudSystem<NightVisionComponent>
         }
 
         _overlayMan.AddOverlay(_overlay);
+    }
+
+    private void OnShutDown(Entity<NightVisionComponent> ent, ref ComponentShutdown args)
+    {
+        _overlayMan.RemoveOverlay(_overlay);
     }
 
     protected override void DeactivateInternal()

@@ -23,13 +23,13 @@ public sealed partial class NightVisionComponent : Component
     /// How much should night vision light up?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float LightThreshold = 0.45f;
+    public float LightThreshold = 0.2f;
 
     /// <summary>
     /// What should the color of the tint be?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Color TintColor = Color.FromHex("#59B3FFFF", Color.Cyan);
+    public Color TintColor = Color.Green;
 
     /// <summary>
     /// What should the intensity of the tint be?
