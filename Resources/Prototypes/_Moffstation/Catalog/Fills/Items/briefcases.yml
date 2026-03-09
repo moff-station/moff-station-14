@@ -71,29 +71,36 @@
         rolls: !type:RangeNumberSelector
           range: 2, 3
         children:
+        # Weapons
         - id: EnergyDaggerLoud
         - id: WeaponPistolViper
         - id: WeaponRevolverPython
+        # Grenades
         - id: SmokeGrenade
         - id: EmpGrenade
         - id: C4
+        - id: SingularityGrenade
+        # Clothing
         - id: ClothingShoesSkatesSyndicate
         - id: ClothingShoesBootsMagSyndie
-        - id: Stimpack
-        - id: CombatMedipen
-        - id: VestineChemistryVial
-        - id: EncryptionKeyBinarySyndicate
         - id: SyndicateIDCard
         - id: AgentIDCard
+        - id: ClothingMaskGasSyndicate
+        # Tools
         - id: ChameleonProjector
         - id: CameraBug
         - id: SyndicateJawsOfLife
-        - id: SingularityGrenade
         - id: RadioJammer
         - id: AccessBreaker
+        - id: CyberPen
+        - id: EncryptionKeyBinarySyndicate
+        # Chemicals
+        - id: Stimpack
+        - id: CombatMedipen
+        - id: VestineChemistryVial
+        - id: CigPackSyndicate
+        # Fun
         - id: SyndicatePersonalAI
         - id: RubberStampSyndicate
         - id: UplinkLighterBox
         - id: BalloonOperative
-        - id: CyberPen
-        - id: CigPackSyndicate
