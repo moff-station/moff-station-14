@@ -1,11 +1,12 @@
-- type: entity
-  id: EffectFlashBluespace
+﻿- type: entity
+  parent: EffectFlashBluespace
+  id: EffectFlashRedspace
   categories: [ HideSpawnMenu ]
   components:
   - type: PointLight
     radius: 10.5
     energy: 15
-    color: "#18abf5"
+    color: "#960202"
   - type: TimedDespawn
     lifetime: 1
   - type: EmitSoundOnSpawn

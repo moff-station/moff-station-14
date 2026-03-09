@@ -45,3 +45,55 @@
     - id: BookSpaceLaw
     - id: BibleNanoTrasen
     - id: BoxFolderCentComClipboardThreePapers
+
+# Syndicate dead drop
+- type: entity
+  parent: MarkerBase
+  id: SyndieDeadDropSpawner
+  name: Syndicate High Command # Used for radio announcement
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTableSpawner
+    table: !type:AllSelector
+      children:
+      - id: BriefcaseSyndieDeadDrop
+      - id: EffectFlashRedspace
+
+- type: entity
+  parent: [ BaseSubfloorAnchorStorageAnchored, BriefcaseSyndie, BaseSyndicateContraband ]
+  id: BriefcaseSyndieDeadDrop
+  name: syndicate briefcase
+  suffix: Dead Drop, Do Not Map
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: EnergyDaggerLoud
+        - id: WeaponPistolViper
+        - id: WeaponRevolverPython
+        - id: SmokeGrenade
+        - id: EmpGrenade
+        - id: C4
+        - id: ClothingShoesSkatesSyndicate
+        - id: ClothingShoesBootsMagSyndie
+        - id: Stimpack
+        - id: CombatMedipen
+        - id: VestineChemistryVial
+        - id: EncryptionKeyBinarySyndicate
+        - id: SyndicateIDCard
+        - id: AgentIDCard
+        - id: ChameleonProjector
+        - id: CameraBug
+        - id: SyndicateJawsOfLife
+        - id: SingularityGrenade
+        - id: RadioJammer
+        - id: AccessBreaker
+        - id: SyndicatePersonalAI
+        - id: RubberStampSyndicate
+        - id: UplinkLighterBox
+        - id: BalloonOperative
+        - id: CyberPen
+        - id: CigPackSyndicate
