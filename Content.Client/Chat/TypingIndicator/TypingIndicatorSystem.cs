@@ -1,7 +1,9 @@
 using Content.Shared.CCVar;
+using Content.Shared.Chat;  // Moffstation
 using Content.Shared.Chat.TypingIndicator;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Prototypes; // Moffstation
 using Robust.Shared.Timing;
 
 namespace Content.Client.Chat.TypingIndicator;
@@ -17,6 +19,14 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     private TimeSpan _lastTextChange;
     private bool _isClientTyping;
     private bool _isClientChatFocused;
+    private ProtoId<TypingIndicatorPrototype>? _channelIndicator; // Moffstation - Typing indicators
+
+    // Moffstation - Start - Typing indicators
+    private static readonly ProtoId<TypingIndicatorPrototype> EmoteIndicator = "emote";
+    private static readonly ProtoId<TypingIndicatorPrototype> OocIndicator = "ooc";
+    private static readonly ProtoId<TypingIndicatorPrototype> RadioIndicator = "radio";
+    private static readonly ProtoId<TypingIndicatorPrototype> WhisperIndicator = "whisper";
+    // Moffstation - End
 
     public override void Initialize()
     {
@@ -90,7 +100,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             state = _isClientTyping ? TypingIndicatorState.Typing : TypingIndicatorState.Idle;
 
         // send a networked event to server
-        RaisePredictiveEvent(new TypingChangedEvent(state));
+        RaisePredictiveEvent(new TypingChangedEvent(state, _channelIndicator)); // Moffstation - Typing indicators
     }
 
     private void OnShowTypingChanged(bool showTyping)
@@ -102,4 +112,28 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             ClientUpdateTyping();
         }
     }
+
+    // Moffstation - Start - Typing Indicators
+    // A table for overriding the normal indicator based on the selected channel
+    private static ProtoId<TypingIndicatorPrototype>? ChannelSelectIndicator(ChatSelectChannel channel)
+    {
+        return channel switch
+        {
+            // Switch statement is stupid and doesn't properly infer its nullable
+            // ReSharper disable once RedundantCast
+            ChatSelectChannel.Emotes => (ProtoId<TypingIndicatorPrototype>?)EmoteIndicator,
+            ChatSelectChannel.LOOC => OocIndicator,
+            ChatSelectChannel.OOC => OocIndicator,
+            ChatSelectChannel.Radio => RadioIndicator,
+            ChatSelectChannel.Whisper => WhisperIndicator,
+            _ => null,
+        };
+    }
+
+    public void UpdateChannelIndicator(ChatSelectChannel channel)
+    {
+        _channelIndicator = ChannelSelectIndicator(channel);
+        ClientUpdateTyping();
+    }
+    // Moffstation - End
 }

@@ -1,0 +1,29 @@
+﻿# Player: Nontoxical - Character: Jibber
+- type: entity
+  parent: BaseWeaponPersonalItemPistol
+  id: PersonalItemJibberPistol
+  name: customized mk 58
+  description: A customized mk58 with a pink body and minimal attachments.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/Nontoxical/Jibber/jibberpistol.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Items/Nontoxical/Jibber/jibberpistol.rsi
+  - type: DetailExaminable
+    content: The flashlight lens is cracked and on the handle in small letters are the words "NT Range Property".
+
+- type: loadout
+  id: PersonalItemJibberPistol
+  storage:
+    back:
+    - PersonalItemJibberPistol
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Jibber
+    jobs:
+    - JobSecurityOfficer
+    - JobDetective
+    - JobWarden
+    - JobHeadOfSecurity

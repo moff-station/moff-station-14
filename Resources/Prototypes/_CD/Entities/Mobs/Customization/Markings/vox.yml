@@ -644,15 +644,6 @@
     state: cocktail4
 
 - type: marking
-  id: VoxTailBack
-  bodyPart: Tail
-  groupWhitelist: [ Vox ]
-  forcedColoring: true
-  sprites:
-  - sprite: _CD/Mobs/Customization/Vox/tail.rsi
-    state: colorable
-
-- type: marking
   id: VoxTailNub
   bodyPart: Tail
   groupWhitelist: [ Vox ]

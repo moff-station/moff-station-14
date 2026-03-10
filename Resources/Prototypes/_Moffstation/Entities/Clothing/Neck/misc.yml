@@ -9,6 +9,7 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Neck/ruffle.rsi
 
+#Detective
 - type: entity
   parent: ClothingNeckBase
   id: ClothingNeckTieDetHorrendous
@@ -31,3 +32,15 @@
     - Recyclable
     - HamsterWearable
     - WhitelistChameleon
+
+#lawyer
+- type: entity
+  parent: ClothingNeckLawyerbadge
+  id: ClothingNeckProsecutorbadge
+  name: prosecutor badge
+  description: A badge to show that the owner is a 'legitimate' prosecutor who passed the bar on the way to the trial without ordering anything.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/prosecutorbadge.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/prosecutorbadge.rsi

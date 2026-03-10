@@ -1,0 +1,476 @@
+# White Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorWhite
+  name: white jumpsuit
+  description: A generic white jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Grey Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorGrey
+  name: grey jumpsuit
+  description: A tasteful grey jumpsuit that reminds you of the good old days.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-grey "#9b9b9b"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-grey
+      right:
+      - state: inhand-right
+        color: *color-grey
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-grey
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Black Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorBlack
+  name: black jumpsuit
+  description: A generic black jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-black "#3f3f3f"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-black
+      right:
+      - state: inhand-right
+        color: *color-black
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-black
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Blue Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorBlue
+  name: blue jumpsuit
+  description: A generic blue jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-blue "#6697ba"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-blue
+      right:
+      - state: inhand-right
+        color: *color-blue
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-blue
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Dark Blue Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorDarkBlue
+  name: dark blue jumpsuit
+  description: A generic dark blue jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-darkblue "#547abb"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-darkblue
+      right:
+      - state: inhand-right
+        color: *color-darkblue
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-darkblue
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Teal Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorTeal
+  name: teal jumpsuit
+  description: A generic teal jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-teal "#2abd8e"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-teal
+      right:
+      - state: inhand-right
+        color: *color-teal
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-teal
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Green Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorGreen
+  name: green jumpsuit
+  description: A generic green jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-green "#8cd252"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-green
+      right:
+      - state: inhand-right
+        color: *color-green
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-green
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+ # Dark Green Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorDarkGreen
+  name: dark green jumpsuit
+  description: A generic dark green jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-darkgreen "#177422"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-darkgreen
+      right:
+      - state: inhand-right
+        color: *color-darkgreen
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-darkgreen
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Orange Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorOrange
+  name: orange jumpsuit
+  description: Don't wear this near paranoid security officers.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-orange "#db542e"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-orange
+      right:
+      - state: inhand-right
+        color: *color-orange
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-orange
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Pink Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorPink
+  name: pink jumpsuit
+  description: Just looking at this makes you feel <i>fabulous</i>.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-pink "#db5397"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-pink
+      right:
+      - state: inhand-right
+        color: *color-pink
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-pink
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Red Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorRed
+  name: red jumpsuit
+  description: A generic red jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-red "#eb0c07"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-red
+      right:
+      - state: inhand-right
+        color: *color-red
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-red
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Yellow Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorYellow
+  name: yellow jumpsuit
+  description: A generic yellow jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-yellow "#ffe14d"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-yellow
+      right:
+      - state: inhand-right
+        color: *color-yellow
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-yellow
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Purple Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorPurple
+  name: purple jumpsuit
+  description: A generic light purple jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-purple "#ac50e6"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-purple
+      right:
+      - state: inhand-right
+        color: *color-purple
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-purple
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Light Brown Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorLightBrown
+  name: light brown jumpsuit
+  description: A generic light brown jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-lightbrown "#ab653f"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-lightbrown
+      right:
+      - state: inhand-right
+        color: *color-lightbrown
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-lightbrown
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Brown Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorBrown
+  name: brown jumpsuit
+  description: A generic brown jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-brown "#54311f"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-brown
+      right:
+      - state: inhand-right
+        color: *color-brown
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-brown
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Maroon Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorMaroon
+  name: maroon jumpsuit
+  description: A generic maroon jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-maroon "#cc295f"
+    - state: basics-trinkets-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-maroon
+      right:
+      - state: inhand-right
+        color: *color-maroon
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-maroon
+      - state: basics-trinkets-equipped-INNERCLOTHING
+
+# Rainbow Jumpsuit
+- type: entity
+  parent: ClothingUniformJumpsuitColorRed
+  id: ClothingUniformColorRainbow
+  name: rainbow jumpsuit
+  description: A multi-colored jumpsuit!
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-color
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-color

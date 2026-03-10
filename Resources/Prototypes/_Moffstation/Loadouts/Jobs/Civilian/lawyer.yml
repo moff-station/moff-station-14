@@ -25,18 +25,51 @@
     id: SolicitorPDA
 
 # Head
+- type: loadout
+  id: Pwig
+  equipment:
+    head: ClothingHeadHatChef
 
 # Mask
 
 # Neck
+- type: loadout
+  id: ProsecutorNeck
+  equipment:
+    neck: ClothingNeckProsecutorbadge
 
 # Jumpsuit
+- type: loadout
+  id: ProsecutorJumpsuitRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitProsecutorRed
+
+- type: loadout
+  id: LawyerJumpskirtPsyched
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerPsyched
+
+- type: loadout
+  id: ProsecutorJumpsuitKarmic
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitProsecutorKarmic
+  groupBy: "karmic suits"
+
+- type: loadout
+  id: ProsecutorJumpskirtKarmic
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtProsecutorKarmic
+  groupBy: "karmic suits"
 
 # Back
 
 # Belt
 
 # Outer Clothing
+- type: loadout
+  id: JudgeRobes
+  equipment:
+    outerClothing: ClothingOuterRobesJudge
 
 # Gloves
 

@@ -31,7 +31,6 @@
   components:
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Alternate / slim basic armor vest
@@ -131,7 +130,6 @@
     sprite: _Moffstation/Clothing/OuterClothing/Armor/captain_carapace.rsi # Moffstation - Command Outfit Resprite
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 - type: entity
@@ -147,7 +145,7 @@
 
 #Web vest
 - type: entity
-  parent: [ClothingOuterArmorBase, ClothingOuterStorageBase, BaseSyndicateContraband]
+  parent: [ BaseSyndicateContraband, ClothingOuterArmorBase, ClothingOuterStorageBase ] # Moffstation - Fix contra status
   id: ClothingOuterVestWeb
   name: web vest
   description: A synthetic armor vest. This one has added webbing and ballistic plates.
@@ -168,7 +166,7 @@
 
 #Elite web vest
 - type: entity
-  parent: [ClothingOuterArmorBase, AllowSuitStorageClothing, BaseSyndicateContraband]
+  parent: [ BaseSyndicateContraband, ClothingOuterArmorBase, AllowSuitStorageClothing ] # Moffstation - Fix contra status
   id: ClothingOuterVestWebElite
   name: elite web vest
   description: A synthetic armor vest. This one has added webbing and heat resistant fibers.

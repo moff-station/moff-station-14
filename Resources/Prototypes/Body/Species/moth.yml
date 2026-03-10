@@ -155,7 +155,7 @@
     accent: zombieMoth
   - type: Speech
     speechVerb: Moth
-    allowedEmotes: ['Chitter', 'Squeak']
+    allowedEmotes: ['Chitter', 'Squeak', 'Flap']
   - type: TypingIndicator
     proto: moth
   - type: Bloodstream
@@ -176,6 +176,8 @@
       Male: UnisexMoth
       Female: UnisexMoth
       Unsexed: UnisexMoth
+  - type: BodyEmotes
+    soundsId: MothBodyEmotes
   - type: MovementSpeedModifier
     baseWeightlessAcceleration: 1.5 # Move around more easily in space.
     baseWeightlessFriction: 1

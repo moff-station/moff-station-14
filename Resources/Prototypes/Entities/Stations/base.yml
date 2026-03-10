@@ -91,9 +91,11 @@
           minCount: 12
           maxCount: 16
           addComponents:
-          - type: Gravity
-            enabled: true
-            inherent: true
+          # Moffstation - Begin (Remove Inherent Gravity) - Wrecks shouldn't be getting free gravity without any reason, only if they have a powered generator.
+          #- type: Gravity
+            #enabled: true
+            #inherent: true
+          # Moffstation - End
           - type: IFF
             flags: HideLabel
             color: "#88b0d1"

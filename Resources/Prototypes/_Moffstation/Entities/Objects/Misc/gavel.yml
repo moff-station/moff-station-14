@@ -1,0 +1,25 @@
+- type: entity
+  parent: [ BaseItem, BaseToySword ]
+  id: Gavel
+  name: gavel
+  description: For whenever someone wants to play God.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/gavel.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    resetOnHandSelected: false
+    animation: WeaponArcDisarm
+    damage:
+      types:
+        Blunt: 0
+    soundHit: &Gavel
+      collection: Gavel
+      params:
+        variation: 0.03
+        volume: 3
+    soundNoDamage: *Gavel
+  - type: Item
+    size: Small
+    sprite: _Moffstation/Objects/Fun/gavel.rsi

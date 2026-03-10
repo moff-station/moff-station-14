@@ -1449,7 +1449,7 @@
   id: UplinkEmpImplanter
   name: uplink-emp-implanter-name
   description: uplink-emp-implanter-desc
-  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi, state: shield }
+  icon: { sprite: /Textures/Effects/emp.rsi, state: emp_disable }
   productEntity: EmpImplanter
   discountCategory: veryRareDiscounts
   discountDownTo:
@@ -1860,14 +1860,14 @@
   description: uplink-cat-ears-desc
   productEntity: ClothingHeadHatCatEars
   cost:
-    Telecrystal: 26
+    Telecrystal: 5 # Moffstation
   categories:
   - UplinkPointless
   conditions:
   - !type:BuyerWhitelistCondition
     blacklist:
       components:
-      - SurplusBundle
+      #- SurplusBundle # Moffstation - Cat Ears in Surplus is Funny
 
 - type: listing
   id: UplinkOutlawHat
@@ -1948,7 +1948,7 @@
   description: uplink-balloon-desc
   productEntity: BalloonSyn
   cost:
-    Telecrystal: 20
+    Telecrystal: 1 # Moffstation
   categories:
   - UplinkPointless
   conditions:
