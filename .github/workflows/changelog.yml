@@ -4,7 +4,6 @@ on:
   pull_request_target:
     types: [closed]
 env:
-  CHANGELOG_PATH: ${{ vars.CHANGELOG_DIR }}
   MERGED_PR: ${{ github.event.number }}
 jobs:
   changelog:
