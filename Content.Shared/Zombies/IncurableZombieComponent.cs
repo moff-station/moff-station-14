@@ -1,5 +1,5 @@
 ﻿using Robust.Shared.Prototypes;
-using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components; // Moffstation - Infectious blood
 
 namespace Content.Shared.Zombies;
 
