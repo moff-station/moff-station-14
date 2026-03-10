@@ -922,17 +922,6 @@
 #  minLimit: 0
 #  loadouts:
 
-# Moffstation - Start
-- type: loadoutGroup
-  id: SalvageSpecialistHead
-  name: loadout-group-salvage-specialist-head
-  minLimit: 0
-  loadouts:
-  - CargoTechnicianHead
-  - CargonianUshanka
-  - StationEngineerHardhatYellow
-# Moffstation - End
-
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
   name: loadout-group-salvage-specialist-backpack
@@ -941,16 +930,6 @@
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
   - LeatherSatchel  # Moffstation - Allow picking leather satchel
-
-# Moffstation - Start
-- type: loadoutGroup
-  id: SalvageSpecialistJumpsuit
-  name: loadout-group-salvage-specialist-jumpsuit
-  loadouts:
-  - SalvageOveralls
-  - SalvageJumpsuit
-  - SalvageJumpskirt
-# Moffstation - End
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
