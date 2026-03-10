@@ -1,0 +1,42 @@
+name: Update Changelog
+concurrency: commit_action
+on:
+  pull_request_target:
+    types: [closed]
+env:
+  CHANGELOG_PATH: ${{ vars.CHANGELOG_DIR }}
+  MERGED_PR: ${{ github.event.number }}
+jobs:
+  changelog:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Pull repository
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ vars.CHANGELOG_BRANCH }}
+
+    - name: Configure git
+      run: |
+        git config --global user.name "${{ vars.CHANGELOG_USER }}"
+        git config --global user.email "${{ vars.CHANGELOG_EMAIL }}"
+
+    - name: Setup Python
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+
+    - name: Update Changelog
+      working-directory: Tools/_Moffstation
+      run: python changelog_update.py
+      continue-on-error: true
+
+    - name: Commit Changelog
+      run: |
+        git add *.yml
+        git commit -m "${{ vars.CHANGELOG_MESSAGE }} (#${{ env.MERGED_PR }})"
+        git push
+      continue-on-error: true
+
