@@ -311,3 +311,15 @@
       amount: 1
   products:
     MeatPulp: 2
+
+- type: reaction
+  id: MeatPulpBreakdown
+  source: true
+  requiredMixerCategories:
+  - Centrifuge
+  reactants:
+    MeatPulp:
+      amount: 2
+  products:
+    UncookedAnimalProteins: 1
+    Fat: 1
