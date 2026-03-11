@@ -38,3 +38,20 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+
+- type: gamePreset
+  id: WizardDuel
+  alias:
+  - MagicFistFight
+  - ThreeStooges
+  name: wizard-duel-title
+  description: wizard-duel-description
+  showInVote: false
+  rules:
+  - DummyNonAntagChance
+  - WizardDuel
+  - SubGamemodesRuleNoWizard
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation

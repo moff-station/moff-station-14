@@ -70,6 +70,8 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", ["BoxFolderCentCom"]},
+            {"/Maps/_Moffstation/Shuttles/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
+            {"/Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/dugstation.yml", ["ClothingHeadHatCatEarsValid"]},

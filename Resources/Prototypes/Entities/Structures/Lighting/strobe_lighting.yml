@@ -52,7 +52,7 @@
         layer:
         - TabletopMachineLayer
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Metallic
   - type: Destructible
     thresholds:

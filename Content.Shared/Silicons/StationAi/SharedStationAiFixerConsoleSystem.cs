@@ -107,12 +107,9 @@ public abstract partial class SharedStationAiFixerConsoleSystem : EntitySystem
         if (args.Container.ID != ent.Comp.StationAiHolderSlot)
             return;
 
-        Log.Debug("Getting target");
-
         if (TryGetTarget(ent, out var target))
         {
             ent.Comp.ActionTarget = target;
-            Log.Debug("Target found");
         }
         else
         {
@@ -427,11 +424,8 @@ public abstract partial class SharedStationAiFixerConsoleSystem : EntitySystem
     {
         target = null;
 
-        Log.Debug("Getting holder.");
         if (!TryGetStationAiHolder(ent, out var holder))
             return false;
-
-        Log.Debug("Checking mindslot.");
 
         if (_container.TryGetContainer(holder.Value, ent.Comp.StationAiMindSlot, out var stationAiMindSlot) && stationAiMindSlot.Count != 0)
         {
@@ -446,7 +440,6 @@ public abstract partial class SharedStationAiFixerConsoleSystem : EntitySystem
 
         if (HasComp<BorgBrainComponent>(holder))
         {
-            Log.Debug("Holder has borgbrain.");
             target = holder.Value;
             return !EntityManager.IsQueuedForDeletion(target.Value);
         }
