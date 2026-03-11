@@ -22,7 +22,7 @@
 - type: reagent
   id: Breathalyzer
   name: reagent-name-breathalyzer
-  parent: BaseDrink
+  parent: BaseEthyl
   desc: reagent-desc-breathalyzer
   physicalDesc: reagent-physical-desc-airy
   metamorphicSprite:
@@ -42,7 +42,7 @@
 - type: reagent
   id: PrairieCocktail
   name: reagent-name-prairie-cocktail
-  parent: BaseDrink
+  parent: BaseEthyl
   desc: reagent-desc-prairie-cocktail
   physicalDesc: reagent-physical-desc-unappetizing
   flavor: prairiecocktail
