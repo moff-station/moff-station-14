@@ -41,13 +41,13 @@
   description: Why do we all have to wear these ridiculous ties?
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Ties/scitie.rsi
+    sprite: _Moffstation/Clothing/Neck/scitie.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Neck/Ties/scitie.rsi
+    sprite: _Moffstation/Clothing/Neck/scitie.rsi # Moffstation
   - type: Item
     storedSprite:
       state: storage
-      sprite: Clothing/Neck/Ties/scitie.rsi
+      sprite: _Moffstation/Clothing/Neck/scitie.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade

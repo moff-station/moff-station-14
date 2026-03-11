@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: WeaponCapacitorRecharger
+  id: WeaponCapacitorRechargerPirate
+  suffix: Pirate
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Power/pirate_recharger.rsi
+  - type: Machine
+    board: WeaponCapacitorRechargerPirateCircuitboard
+  - type: Tag # Prevents use for pirate bounty
+    tags:
+    - Pirate

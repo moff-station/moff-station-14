@@ -35,7 +35,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly CustomObjectiveSummaryUIController _objectiveSummary = default!; // DeltaV
-    [Dependency] private readonly ObjectivePickerUIController _objectivePicker = default!; // Moffstation
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
@@ -237,9 +236,12 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             mindDescriptionMessage.AddText("Available collective minds:");
             foreach (var mindPrototype in minds)
             {
+                if (!_prototypeManager.Resolve(mindPrototype.Key, out var mindProto))
+                    continue;
+
                 mindDescriptionMessage.AddText("\n");
-                mindDescriptionMessage.PushColor(mindPrototype.Key.Color);
-                mindDescriptionMessage.AddText($"{mindPrototype.Key.LocalizedName}: +{mindPrototype.Key.KeyCode}");
+                mindDescriptionMessage.PushColor(mindProto.Color);
+                mindDescriptionMessage.AddText($"{mindProto.LocalizedName}: +{mindProto.KeyCode}");
                 mindDescriptionMessage.AddText($" (Number {mindPrototype.Value.MindId})");
                 mindDescriptionMessage.Pop();
 

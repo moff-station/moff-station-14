@@ -340,6 +340,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
                 _adminLogger.Add(LogType.AntagSelection, $"Pre-selected {session.Name} as antagonist: {ToPrettyString(ent)}");
             }
         }
+
         // Moffstation - Start - Weighted antag selection
         if (ent.Comp.UseWeights)
         {

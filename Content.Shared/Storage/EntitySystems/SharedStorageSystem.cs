@@ -57,13 +57,13 @@ public abstract class SharedStorageSystem : EntitySystem
     [Dependency] private   readonly ISharedAdminLogManager _adminLog = default!;
 
     [Dependency] protected readonly ActionBlockerSystem ActionBlocker = default!;
-    [Dependency] private   readonly EntityLookupSystem _entityLookupSystem = default!;
+    // [Dependency] private   readonly EntityLookupSystem _entityLookupSystem = default!; // Moffstation - No longer used
     [Dependency] private   readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private   readonly InventorySystem _inventory = default!;
     [Dependency] private   readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] protected readonly SharedContainerSystem ContainerSystem = default!;
-    [Dependency] private   readonly SharedDoAfterSystem _doAfterSystem = default!;
+    // [Dependency] private   readonly SharedDoAfterSystem _doAfterSystem = default!; // Moffstation - no longer used
     [Dependency] protected readonly SharedEntityStorageSystem EntityStorage = default!;
     [Dependency] private   readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] protected readonly SharedItemSystem ItemSystem = default!;

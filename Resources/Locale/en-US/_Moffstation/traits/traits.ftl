@@ -12,9 +12,6 @@ trait-reptile-accent-desc = Your accent mirrorsss that of the reptilliansss.
 trait-pirate-accent-name = Pirate accent
 trait-pirate-accent-desc = You can't stop speaking like a pirate!
 
-trait-southern-name = Southern drawl
-trait-southern-desc = You have a different way of speakin'.
-
 trait-cowboy-name = Cowboy accent
 trait-cowboy-desc = You speak with a distinct cowboy accent!
 
