@@ -17,3 +17,13 @@
     seedId: mugtree
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/mug_plant.rsi
+
+- type: entity
+  parent: SeedBase
+  id: PlaceholderBlueSeeds
+  name: packet of blue placeholder seeds
+  components:
+  - type: Seed
+    seedId: placeholderBlue
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/flower_placeholder_blue.rsi

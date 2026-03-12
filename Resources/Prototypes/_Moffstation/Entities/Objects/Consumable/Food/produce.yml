@@ -51,3 +51,35 @@
   - type: Tag
     tags:
     - Fruit
+
+- type: entity
+  name: placeholder blue
+  parent: FoodProduceBase
+  id: FoodPlaceholderBlue
+  description: A placeholding blue flower.
+  components:
+  - type: Clothing
+    slots:
+    - HEAD
+    quickEquip: false
+  - type: FlavorProfile
+    flavors:
+    - medicine
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 22
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Bicaridine
+          Quantity: 20
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/flower_placeholder_blue.rsi
+  - type: Produce
+    seedId: PlaceholderBlue
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Flower
