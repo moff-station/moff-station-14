@@ -255,7 +255,7 @@ public sealed partial class HumanoidProfileEditor
 
                 var loadoutWindowBtn = new Button()
                 {
-                    Text = Loc.GetString("loadout-window"),
+                    Text = Loc.GetString("loadout-window-moffstation"), // Moffstation - loadout gear button
                     HorizontalAlignment = HAlignment.Right,
                     VerticalAlignment = VAlignment.Center,
                     Margin = new Thickness(3f, 3f, 0f, 0f),
@@ -390,14 +390,6 @@ public sealed partial class HumanoidProfileEditor
                 };
             }
             // Moffstation - End
-
-            antagContainer.AddChild(new Button()
-            {
-                Disabled = true,
-                Text = Loc.GetString("loadout-window"),
-                HorizontalAlignment = HAlignment.Right,
-                Margin = new Thickness(3f, 0f, 0f, 0f),
-            });
 
             AntagList.AddChild(antagContainer);
         }

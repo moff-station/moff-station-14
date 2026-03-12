@@ -25,7 +25,8 @@ DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 CHANGELOG_FILE = "Resources/Changelog/Mofflog.yml"
 
-TYPES_TO_EMOJI = {"Fix": "<:barry:1333171778872279153>", "Add": ":new:", "Remove": "<:killsmite:1322919674413056081>", "Tweak": "<:godo:1378009287321976912>️"}
+# Moffstation - Emojis are being fucking STUPID kill them
+TYPES_TO_EMOJI = {"Fix": "Fixed", "Add": "Added", "Remove": "Removed", "Tweak": "Tweaked"}
 
 ChangelogEntry = dict[str, Any]
 
@@ -191,9 +192,9 @@ def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> lis
 
                 if url is not None:
                     pr_number = url.split("/")[-1]
-                    line = f"{emoji} - {message} ([#{pr_number}]({url}))\n"
+                    line = f"{emoji}: {message} ([#{pr_number}]({url}))\n" # moffstation - emoji hatred
                 else:
-                    line = f"{emoji} - {message}\n"
+                    line = f"{emoji}: {message}\n" # moffstation - emoji hatred
 
                 message_lines.append(line)
 

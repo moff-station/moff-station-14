@@ -1,6 +1,6 @@
 # Reporter
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitMeteorologist
   name: meteorologist suit
   description: For having completed a degree in confidently pointing at a green-screen.
@@ -9,6 +9,17 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/meteorologist.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/meteorologist.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitAnchorman
+  name: news anchor suit
+  description: To bring the station the news so they don't have to get it themselves.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/anchorman.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/anchorman.rsi
 
 # Prisoner
 - type: entity
@@ -525,3 +536,99 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/para_speed.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/para_speed.rsi
+
+# Salvage Jumpsuit
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorSalvage
+  name: salvage jumpsuit
+  description: A tasteful salvage jumpsuit that reminds you of the good old days of cargonia.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-salvage "#93469b"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-cargo "#e39e00"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-salvage
+      right:
+      - state: inhand-right
+        color: *color-salvage
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-salvage
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-cargo
+
+#Janitor
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJanitorOveralls
+  name: janitor overalls
+  description: Great for working with spills & viscera.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: *color-black
+    - state: basics-trinkets-icon
+    - state: overalls-trinkets-icon
+      color: &color-purple "#ac50e6"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-black
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: overalls-trinkets-equipped-INNERCLOTHING
+        color: *color-purple
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitColorCustodian
+  name: custodian Jumpsuit
+  description: A Jumpsuit designed for custodians wanting to help the crew practice for the big game.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: *color-black
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: *color-purple
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-black
+      right:
+      - state: inhand-right
+        color: *color-black
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+        color: *color-black
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-purple

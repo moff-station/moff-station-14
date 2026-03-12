@@ -194,7 +194,7 @@
   id: BaseCMOStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ ChiefMedicalOfficer ]
+    jobs: [ ChiefMedicalOfficer, Paramedic, Chemist, MedicalDoctor, Psychologist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     owner: job-name-cmo
 
@@ -220,7 +220,7 @@
   id: BaseRDStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ ResearchDirector ]
+    jobs: [ ResearchDirector, Scientist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     owner: job-name-rd
 
@@ -251,7 +251,7 @@
     # HoS will have this on them a lot of the time so..
     difficulty: 3
   - type: NotJobRequirement
-    jobs: [ HeadOfSecurity ]
+    jobs: [ HeadOfSecurity, Warden, Detective, SecurityOfficer, Lawyer ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: WeaponEnergyMagnum
     owner: job-name-hos
@@ -263,7 +263,7 @@
   id: MagbootsStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ ChiefEngineer ]
+    jobs: [ ChiefEngineer, AtmosphericTechnician, StationEngineer ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: ClothingShoesBootsMagAdv
     owner: job-name-ce
@@ -275,7 +275,7 @@
   id: ClipboardStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ Quartermaster ]
+    jobs: [ Quartermaster, CargoTechnician, SalvageSpecialist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: BoxFolderQmClipboard
     owner: job-name-qm
@@ -285,7 +285,7 @@
   id: KnuckleDustersStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ Quartermaster ]
+    jobs: [ Quartermaster, CargoTechnician, SalvageSpecialist ] # Moffstation - More drama, less cheese
   - type: StealCondition
     stealGroup: ClothingHandsKnuckleDustersQM
     owner: job-name-qm
