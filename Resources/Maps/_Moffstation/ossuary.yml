@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/12/2026 01:59:23
+  time: 03/12/2026 22:21:26
   entityCount: 11728
 maps:
 - 1
@@ -327,6 +327,41 @@ entities:
             6: 16,-60
             7: 16,-59
         - node:
+            color: '#FFFFFFFF'
+            id: DarkSlatSingleE
+          decals:
+            123: 7,-22
+            124: 7,-23
+        - node:
+            color: '#FFFFFFFF'
+            id: DarkSlatSingleN
+          decals:
+            125: 5,-21
+            126: 6,-21
+        - node:
+            color: '#FFFFFFFF'
+            id: DarkSlatSingleS
+          decals:
+            121: 5,-23
+            122: 6,-23
+        - node:
+            color: '#FFFFFFFF'
+            id: GrayConcreteTrimLineE
+          decals:
+            77: -7,-12
+        - node:
+            color: '#FFFFFFFF'
+            id: GrayConcreteTrimLineN
+          decals:
+            75: 10,-12
+            76: 11,-12
+            78: 13,-21
+        - node:
+            color: '#FFFFFFFF'
+            id: GrayConcreteTrimLineW
+          decals:
+            79: 22,-3
+        - node:
             cleanable: True
             angle: 1.5707963267948966 rad
             color: '#8931B8D8'
@@ -362,6 +397,113 @@ entities:
             24: -33,-29
             25: -33,-39
             26: -33,-41
+        - node:
+            color: '#FFFFFFFF'
+            id: WarnLineE
+          decals:
+            60: 17,-21
+            61: 16,-43
+            62: 17,-54
+            63: -8,-43
+            64: 9,-34
+            65: -2,-34
+            66: 9,-30
+            67: -4,-26
+            68: 9,-21
+            70: 21,-17
+            71: 21,-10
+            72: -5,-14
+            73: -4,-4
+            74: 10,-2
+        - node:
+            color: '#474F52A5'
+            id: WarnLineGreyscaleE
+          decals:
+            104: 21,-15
+            105: 21,-14
+            106: 21,-8
+            107: 21,-7
+            108: 21,-3
+            109: 10,5
+            112: 8,7
+            113: 8,8
+            114: -5,-11
+            127: 7,-23
+            128: 7,-22
+        - node:
+            color: '#474F52A5'
+            id: WarnLineGreyscaleN
+          decals:
+            80: 5,10
+            81: 16,-3
+            82: 17,-3
+            83: 18,-3
+            84: 19,-3
+            85: 20,-3
+            86: 10,-18
+            129: 5,-21
+            130: 6,-21
+        - node:
+            color: '#474F52A5'
+            id: WarnLineGreyscaleS
+          decals:
+            110: 13,4
+            111: 15,4
+            131: 5,-23
+            132: 6,-23
+        - node:
+            color: '#474F52A5'
+            id: WarnLineGreyscaleW
+          decals:
+            87: 15,-50
+            88: 15,-49
+            89: 15,-48
+            90: 15,-47
+            91: 15,-46
+            92: -7,-20
+            93: -7,-19
+            94: -6,-12
+            95: -6,-6
+            96: -6,-7
+            97: -8,3
+        - node:
+            color: '#FFFFFFFF'
+            id: WarnLineN
+          decals:
+            41: -2,4
+            42: 15,-4
+            43: 1,-20
+            44: 11,-20
+            45: -1,-36
+            46: 6,-36
+        - node:
+            color: '#FFFFFFFF'
+            id: WarnLineS
+          decals:
+            47: -10,-43
+            48: 15,-43
+            49: 15,-54
+            50: 7,-34
+            51: 8,-30
+            52: -3,-34
+            53: -5,-26
+            54: -6,-14
+            55: -5,-4
+            56: 9,-2
+            57: 20,-10
+            58: 20,-17
+            59: 15,-21
+            69: 8,-21
+        - node:
+            color: '#FFFFFFFF'
+            id: WarnLineW
+          decals:
+            35: -2,5
+            36: 15,-3
+            37: 11,-18
+            38: 1,-18
+            39: -1,-35
+            40: 6,-35
         - node:
             color: '#FFFFFFFF'
             id: WhiteSlatDoubleW
@@ -3608,7 +3750,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -125902.48
+      secondsUntilStateChange: -127327.78
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -30659,7 +30801,7 @@ entities:
       pos: 1.5,-18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -74124.89
+      secondsUntilStateChange: -75550.195
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 6696.2599724
