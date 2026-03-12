@@ -60,3 +60,41 @@
     ammoSlots: [ null, null, null, null, null, null ]
   - type: StealTarget
     stealGroup: OfficerHandgun
+
+- type: entity
+  name: K508
+  parent: [BaseWeaponRevolver, BaseSecurityContraband]
+  id: WeaponRevolverK508
+  description: rember our promis
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/k508.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/k508.rsi
+  - type: Item
+    storedOffset: 0,-2
+  - type: RevolverAmmoProvider
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity
+  name: Raptor
+  parent: [BaseWeaponRevolver, BaseSecurityContraband]
+  id: WeaponRevolverRaptor
+  description: Tactical Revolver.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/raptor.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/raptor.rsi
+  - type: Item
+    storedOffset: 0,-2
+  - type: RevolverAmmoProvider
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+  - type: StealTarget
+    stealGroup: OfficerHandgun

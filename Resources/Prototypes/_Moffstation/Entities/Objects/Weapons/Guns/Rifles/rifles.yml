@@ -148,3 +148,30 @@
     steps: 5
     zeroVisible: true
   - type: Appearance
+
+- type: entity
+  parent: WeaponRifleLecter
+  id: WeaponRifleLecterXL9
+  name: XL9
+  description: |-
+    The Experimental Lecter 9
+    An unreasonably expensive military grade assault rifle with integrated optic. Recolored for Security use.
+    Uses .20 rifle ammo.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/xl9.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Rifles/xl9.rsi
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 2
+    pvsIncrease: 0.2
+  - type: StaticPrice
+    price: 1500 #3x lecter
+  - type: Gun
+    shotsPerBurst: 3
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    - SemiAuto
+    - FullAuto
