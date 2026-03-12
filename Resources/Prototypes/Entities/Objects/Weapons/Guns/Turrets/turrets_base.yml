@@ -33,7 +33,10 @@
   - type: CombatMode
     toggleMouseRotator: false
   - type: Damageable
-    damageContainer: Inorganic
+   # Moffstation - Begin - Fixing Container and adding a Modifier
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+   # Moffstation - End
   - type: Destructible
     thresholds:
     - trigger:

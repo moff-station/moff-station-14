@@ -47,10 +47,23 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 1000 # Moffstation - Making the Gravity Generator Destructible
       behaviors:
       - !type:DoActsBehavior
-        acts: ["Breakage"]
+        # Moffstation - Start - Making the Gravity Generator Destructible
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 10
+            max: 20
+          SheetPlasteel1:
+            min: 5
+            max: 10
+        # Moffstation - End
   - type: PowerCharge
     windowTitle: gravity-generator-window-title
     idlePower: 50

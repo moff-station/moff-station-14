@@ -520,6 +520,11 @@
   loadouts:
   - JanitorJumpsuit
   - JanitorJumpskirt
+  # Moffstation - Start
+  - JanitorOveralls
+  - CustodianJumpsuit
+  - CustodianJumpskirt
+  # Moffstation - End
 
 - type: loadoutGroup
   id: JanitorGloves
@@ -1544,11 +1549,15 @@
   name: loadout-group-reporter-jumpsuit
   loadouts:
   - ReporterJumpsuit
-  - ReporterJumpskirt # Moffstaion - Adding Reporter Clothes
+  - ReporterJumpskirt # Moffstation - Adding Reporter Clothes
   - JournalistJumpsuit
-  - JournalistJumpskirt # Moffstaion - Adding Reporter Clothes
-  - MeteorologistJumpsuit # Moffstaion - Adding Reporter Clothes
-  - MeteorologistJumpskirt # Moffstaion - Adding Reporter Clothes
+# Moffstation - Start
+  - JournalistJumpskirt
+  - MeteorologistJumpsuit
+  - MeteorologistJumpskirt
+  - NewsAnchorJumpsuit
+  - NewsAnchorJumpskirt
+# Moffstation - End
 
 - type: loadoutGroup
   id: ReporterHead
