@@ -446,6 +446,11 @@
   - type: Construction
     graph: Seat
     node: chairWoodBench
+    # Moffstation - Begin - Changing WoodenBench to be Wooden
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Wood
+    # Moffstation - End
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities

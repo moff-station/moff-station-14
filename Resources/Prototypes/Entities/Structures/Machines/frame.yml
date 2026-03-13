@@ -38,7 +38,7 @@
         machine_parts: !type:Container
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: Metallic
+      damageModifierSet: StructuralMetallic # Moffstation - Harder to break a solid frame
     - type: Destructible
       thresholds:
       - trigger: # Excess damage, don't spawn entities
@@ -102,7 +102,7 @@
         - machine_parts
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: Metallic
+      damageModifierSet: Electronic # Moffstation - Easier to break electronics into a frame
     - type: Destructible
       thresholds:
       - trigger: # Excess damage, don't spawn entities
@@ -161,7 +161,7 @@
       node: destroyedMachineFrame
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: Metallic
+      damageModifierSet: StructuralMetallic # Moffstation - Harder to break solid metal
     - type: Destructible
       thresholds:
       - trigger: # Excess damage, don't spawn entities

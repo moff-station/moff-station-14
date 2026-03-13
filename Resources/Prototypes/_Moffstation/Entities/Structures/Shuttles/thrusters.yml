@@ -5,3 +5,15 @@
   components:
   - type: Sprite
     sprite: Structures/Shuttles/thruster.rsi
+  - type: Tag # Prevents use for pirate bounty
+    tags:
+    - Pirate
+
+- type: entity
+  parent: Gyroscope
+  id: GyroscopePirate
+  suffix: pirate
+  components:
+  - type: Tag # Prevents use for pirate bounty
+    tags:
+    - Pirate

@@ -101,14 +101,15 @@
 - type: reagent
   id: Ethylredoxrazine
   name: reagent-name-ethylredoxrazine
+  parent: BaseEthyl # Moffstation - Ethyl Hotfix
   group: Medicine
   desc: reagent-desc-ethylredoxrazine
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#2d5708"
   metabolisms:
-    Bloodstream:
-      metabolismRate: 0.05 # Moffstation - Make Ethylredoxrazine neutralize alcohol in metabolism
+    Metabolites: # Moffstation - Make Ethylredoxrazine neutralize alcohol in metabolism
+      metabolismRate: 0.05
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrunk

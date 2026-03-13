@@ -288,9 +288,16 @@
 # Moffstation - End
 
   # Visual
-  inventoryTemplateId: borgHumanoid  # Moffstation - Changed service to use a different inventory template since it's actually just human proportioned
+  inventoryTemplateId: borg  # Moffstation
   spritePath: _Moffstation/Mobs/Silicon/Chassis/service.rsi # Moffstation - Early merge of Borg RSI fix
-
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/service.rsi
+          state: neck
+# Moffstation - End
   # Pet
-  petSuccessString: petting-success-service-cyborg
+  petSuccessString: petting-success-service-cyborg-moffstation
   petFailureString: petting-failure-service-cyborg
