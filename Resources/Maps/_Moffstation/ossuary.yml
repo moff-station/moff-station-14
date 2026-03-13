@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/12/2026 23:51:54
+  time: 03/13/2026 00:13:54
   entityCount: 11731
 maps:
 - 1
@@ -316,6 +316,455 @@ entities:
       chunkCollection:
         version: 2
         nodes:
+        - node:
+            color: '#0000003F'
+            id: BrickCornerOverlayNE
+          decals:
+            895: -4,-25
+        - node:
+            color: '#9FED584C'
+            id: BrickCornerOverlayNW
+          decals:
+            1015: -6,-5
+        - node:
+            color: '#D381C94C'
+            id: BrickCornerOverlaySW
+          decals:
+            1027: -6,-25
+        - node:
+            color: '#0000003F'
+            id: BrickLineOverlayE
+          decals:
+            778: -8,-42
+            785: -2,-38
+            786: -2,-37
+            805: 16,-43
+            807: 17,-40
+            808: 17,-39
+            809: 17,-38
+            818: 9,-36
+            819: 9,-35
+            820: 9,-34
+            823: 9,-30
+            826: 9,-21
+            889: -5,-20
+            890: -5,-21
+            891: -5,-22
+            892: -5,-23
+            893: -5,-24
+            896: -4,-26
+            897: -4,-27
+            898: -4,-28
+            901: -2,-31
+            902: -2,-32
+            903: -2,-33
+            904: -2,-34
+            946: 11,-5
+            947: 11,-6
+            948: 11,-8
+            949: 11,-9
+            950: -5,-14
+            951: -5,-15
+            952: -5,-16
+        - node:
+            color: '#9FED584C'
+            id: BrickLineOverlayE
+          decals:
+            1060: -4,3
+            1061: -4,2
+            1062: -4,1
+            1063: -4,0
+            1064: -4,-1
+            1065: -4,-2
+            1066: -4,-3
+            1067: -4,-4
+            1068: -4,-6
+            1070: -5,-9
+            1071: -5,-10
+            1072: -5,-11
+            1073: -5,-12
+            1074: -5,-13
+            1075: -5,-14
+            1076: -5,-15
+        - node:
+            color: '#A461064C'
+            id: BrickLineOverlayE
+          decals:
+            975: 17,-27
+            976: 17,-26
+            977: 17,-25
+            978: 17,-24
+            979: 17,-23
+            980: 17,-22
+            981: 17,-21
+        - node:
+            color: '#DE3A3A4C'
+            id: BrickLineOverlayE
+          decals:
+            995: 10,1
+            996: 10,2
+            997: 10,3
+            998: 10,-2
+            999: 10,-1
+            1000: 10,0
+            1005: 5,6
+            1006: 5,7
+            1007: 5,8
+        - node:
+            color: '#EFB3414C'
+            id: BrickLineOverlayE
+          decals:
+            983: 21,-16
+            984: 21,-15
+            985: 21,-14
+            986: 21,-13
+            987: 21,-11
+            988: 21,-10
+            989: 21,-9
+            990: 21,-8
+            991: 21,-7
+            992: 21,-6
+            993: 21,-5
+            994: 21,-4
+        - node:
+            color: '#0000003F'
+            id: BrickLineOverlayN
+          decals:
+            810: 16,-37
+            811: 15,-37
+            812: 14,-37
+            813: 13,-37
+            814: 12,-37
+            815: 11,-37
+            816: 10,-37
+            837: 15,-3
+            838: 14,-3
+            839: 13,-3
+            840: 12,-3
+            841: 11,-3
+            847: 4,5
+            848: 2,5
+            849: 1,5
+            850: 0,5
+            851: -2,5
+            852: -3,5
+            853: -4,5
+            871: -4,-37
+            872: -5,-37
+            873: -6,-37
+            876: -1,-35
+            877: 0,-35
+            878: 1,-35
+            879: 2,-35
+            880: 3,-35
+            881: 5,-35
+            882: 6,-35
+            900: -3,-29
+            906: 0,-18
+            907: 1,-18
+            908: 2,-18
+            909: 3,-18
+            910: 4,-18
+            911: 5,-18
+            912: 8,-18
+            913: 6,-18
+            914: 7,-18
+            915: 9,-18
+            916: 11,-18
+            917: 12,-18
+            918: 13,-18
+            919: 14,-18
+            920: 15,-18
+            921: 16,-18
+            922: 17,-18
+            923: 18,-18
+            924: 19,-18
+        - node:
+            color: '#7915004C'
+            id: BrickLineOverlayN
+          decals:
+            1033: 8,-10
+            1034: 9,-10
+        - node:
+            color: '#DE3A3A4C'
+            id: BrickLineOverlayN
+          decals:
+            1001: 9,5
+            1002: 8,5
+            1003: 6,5
+        - node:
+            color: '#0000003F'
+            id: BrickLineOverlayS
+          decals:
+            791: 8,-39
+            792: 9,-39
+            793: 10,-39
+            794: 11,-39
+            795: 12,-39
+            796: 13,-39
+            797: 14,-39
+            828: 10,-20
+            829: 11,-20
+            830: 12,-20
+            862: -4,-30
+            887: -4,-19
+            937: 19,-4
+            938: 18,-4
+            939: 17,-4
+            940: 16,-4
+            941: 15,-4
+            942: 14,-4
+            943: 13,-4
+            944: 12,-4
+        - node:
+            color: '#334E6D4C'
+            id: BrickLineOverlayS
+          decals:
+            954: -1,-36
+            955: 0,-36
+            956: 2,-36
+            957: 3,-36
+            958: 5,-36
+            959: 6,-36
+            969: 7,-20
+        - node:
+            color: '#7915004C'
+            id: BrickLineOverlayS
+          decals:
+            1035: 8,-11
+            1036: 9,-11
+        - node:
+            color: '#8C347F4C'
+            id: BrickLineOverlayS
+          decals:
+            970: 1,-20
+            971: -1,-20
+            972: -2,-20
+        - node:
+            color: '#9FED584C'
+            id: BrickLineOverlayS
+          decals:
+            1048: 8,4
+            1049: 7,4
+            1050: 6,4
+            1051: 5,4
+            1052: 4,4
+            1053: 3,4
+            1054: 2,4
+            1055: 1,4
+            1056: 0,4
+            1057: -2,4
+            1058: -3,4
+        - node:
+            color: '#A461064C'
+            id: BrickLineOverlayS
+          decals:
+            974: 16,-28
+        - node:
+            color: '#0000003F'
+            id: BrickLineOverlayW
+          decals:
+            789: 7,-37
+            790: 7,-38
+            799: 15,-40
+            800: 15,-41
+            801: 15,-42
+            802: 15,-43
+            803: 15,-44
+            804: 15,-45
+            832: 15,-21
+            833: 15,-22
+            834: 15,-27
+            843: 5,8
+            844: 5,7
+            845: 5,6
+            854: -6,-13
+            855: -6,-14
+            856: -6,-15
+            858: -5,-26
+            859: -5,-27
+            860: -5,-28
+            861: -5,-29
+            864: -3,-31
+            865: -3,-32
+            866: -3,-33
+            867: -3,-34
+            868: -3,-35
+            869: -3,-36
+            874: -9,-39
+            884: 7,-34
+            885: 7,-33
+            926: 20,-17
+            927: 20,-15
+            928: 20,-14
+            929: 20,-13
+            930: 20,-11
+            931: 20,-10
+            932: 20,-9
+            933: 20,-8
+            934: 20,-6
+            935: 20,-5
+        - node:
+            color: '#334E6D4C'
+            id: BrickLineOverlayW
+          decals:
+            961: 8,-30
+            962: 8,-28
+            963: 8,-27
+            964: 8,-26
+            965: 8,-25
+            966: 8,-24
+            967: 8,-21
+        - node:
+            color: '#52B4E94C'
+            id: BrickLineOverlayW
+          decals:
+            1008: -5,4
+            1009: -5,3
+            1010: -5,1
+            1011: -5,0
+            1012: -5,-2
+            1013: -5,-3
+            1014: -5,-4
+        - node:
+            color: '#7915004C'
+            id: BrickLineOverlayW
+          decals:
+            1038: 10,-9
+            1039: 10,-8
+            1040: 10,-6
+            1042: 9,-4
+            1043: 9,-3
+        - node:
+            color: '#9FED584C'
+            id: BrickLineOverlayW
+          decals:
+            1016: -6,-6
+            1017: -6,-7
+            1018: -6,-8
+            1019: -6,-10
+            1020: -6,-11
+            1044: 9,0
+            1045: 9,2
+            1046: 9,3
+        - node:
+            color: '#A461064C'
+            id: BrickLineOverlayW
+          decals:
+            973: 15,-27
+        - node:
+            color: '#D381C94C'
+            id: BrickLineOverlayW
+          decals:
+            1021: -7,-18
+            1022: -7,-19
+            1023: -7,-20
+            1025: -6,-22
+            1026: -6,-23
+            1029: -5,-26
+            1030: -5,-27
+            1031: -5,-28
+            1032: -5,-29
+        - node:
+            color: '#0000003F'
+            id: BrickTileDarkInnerNe
+          decals:
+            817: 9,-37
+            822: 9,-31
+            825: 9,-22
+            842: 10,-3
+            899: -4,-29
+            905: -1,-18
+            953: -5,-17
+        - node:
+            color: '#0000003F'
+            id: BrickTileDarkInnerNw
+          decals:
+            846: 5,5
+            857: -6,-16
+            870: -3,-37
+            875: -9,-40
+            883: 7,-35
+            925: 20,-18
+        - node:
+            color: '#0000003F'
+            id: BrickTileDarkInnerSe
+          decals:
+            787: -2,-36
+            806: 16,-42
+            821: 9,-33
+            824: 9,-29
+            827: 9,-20
+            835: 18,-19
+            888: -5,-19
+            945: 11,-4
+        - node:
+            color: '#0000003F'
+            id: BrickTileDarkInnerSw
+          decals:
+            788: 7,-36
+            798: 15,-39
+            831: 15,-20
+            863: -3,-30
+            886: -3,-19
+            936: 20,-4
+        - node:
+            color: '#0000003F'
+            id: BrickTileDarkLineS
+          decals:
+            836: 19,-19
+        - node:
+            color: '#0000003F'
+            id: BrickTileSteelInnerNe
+          decals:
+            894: -5,-25
+        - node:
+            color: '#DE3A3A4C'
+            id: BrickTileWhiteInnerNe
+          decals:
+            1004: 5,5
+        - node:
+            color: '#334E6D4C'
+            id: BrickTileWhiteInnerNw
+          decals:
+            960: 8,-31
+        - node:
+            color: '#7915004C'
+            id: BrickTileWhiteInnerNw
+          decals:
+            1037: 10,-10
+        - node:
+            color: '#9FED584C'
+            id: BrickTileWhiteInnerSe
+          decals:
+            1059: -4,4
+            1069: -5,-8
+        - node:
+            color: '#A461064C'
+            id: BrickTileWhiteInnerSe
+          decals:
+            982: 17,-20
+        - node:
+            color: '#334E6D4C'
+            id: BrickTileWhiteInnerSw
+          decals:
+            968: 8,-20
+        - node:
+            color: '#7915004C'
+            id: BrickTileWhiteInnerSw
+          decals:
+            1041: 10,-5
+        - node:
+            color: '#9FED584C'
+            id: BrickTileWhiteInnerSw
+          decals:
+            1047: 9,4
+        - node:
+            color: '#D381C94C'
+            id: BrickTileWhiteInnerSw
+          decals:
+            1024: -6,-21
+            1028: -5,-25
         - node:
             color: '#FFFFFFFF'
             id: DarkSlatDoubleE
@@ -957,6 +1406,20 @@ entities:
             774: -5,-14
             775: -5,-15
             776: -5,-16
+        - node:
+            color: '#0000003F'
+            id: HorizontalSlatBorderedOuterOverlayS
+          decals:
+            781: -6,-39
+            782: -5,-39
+            783: -4,-39
+            784: -3,-39
+        - node:
+            color: '#0000003F'
+            id: MiniTileInnerOverlaySE
+          decals:
+            779: -8,-41
+            780: -7,-39
         - node:
             color: '#0000003F'
             id: QuarterTileOverlayGreyscale
@@ -4430,7 +4893,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -130469.85
+      secondsUntilStateChange: -131761.2
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -31496,7 +31959,7 @@ entities:
       pos: 1.5,-18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -78692.266
+      secondsUntilStateChange: -79983.62
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 6696.2599724
