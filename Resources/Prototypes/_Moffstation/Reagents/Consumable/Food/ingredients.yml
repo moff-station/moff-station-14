@@ -7,13 +7,12 @@
   color: "#32612D"
   group: Foods
   metabolisms:
-    Food:
+    Digestion:
+      metabolites:
+        Nutriment: 0.2
       effects:
       - !type:SatiateThirst
         factor: -0.1
-      - !type:AdjustReagent
-        reagent: Nutriment
-        amount: 0.1
 
 - type: reagent
   id: GroundCoffee
@@ -24,13 +23,10 @@
   color: "#2D1A07"
   group: Foods
   metabolisms:
-    Food:
+    Digestion:
+      metabolites:
+        Nutriment: 0.2
+        Theobromine: 0.1
       effects:
       - !type:SatiateThirst
         factor: -0.1
-      - !type:AdjustReagent
-        reagent: Nutriment
-        amount: 0.1
-      - !type:AdjustReagent
-        reagent: Theobromine
-        amount: 0.05

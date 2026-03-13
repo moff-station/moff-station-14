@@ -309,8 +309,10 @@
 - type: entity
   parent: BaseVendingMachineRestock
   id: VendingMachineRestockPTech
-  name: PTech restock box
-  description: All the bureaucracy you can handle, and more! Load into the PTech vending machine to get started.
+  # Moffstation - Start - "PTech" -> "BureauTech"
+  name: BureauTech restock box
+  description: All the bureaucracy you can handle, and more! Load into the BureauTech vending machine to get started.
+  # Moffstation - End - "PTech" -> "BureauTech"
   components:
   - type: VendingMachineRestock
     canRestock:

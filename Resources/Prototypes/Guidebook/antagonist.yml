@@ -11,9 +11,10 @@
   - Wizard
   - Zombies
   - Xenoborgs
-  - BloodBrothers # Harmony
-  - Pirates # Moffstation
   - MinorAntagonists
+  - BloodBrothers # Harmony
+  - Conspirators # Harmony
+  - Pirates # Moffstation
   - Eeeps # imp
 
 - type: guideEntry
@@ -55,6 +56,10 @@
   id: Wizard
   name: guide-entry-wizard
   text: "/ServerInfo/Guidebook/Antagonist/Wizard.xml"
+  # Moffstation - Start - Wizard Duelist
+  children:
+  - WizardDuel
+  # Moffstation - End
 
 - type: guideEntry
   id: Xenoborgs

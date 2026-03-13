@@ -24,6 +24,13 @@ public sealed class TypingIndicatorVisualizerSystem : VisualizerSystem<TypingInd
 
         var overrideIndicator = evt.GetMostRecentIndicator();
 
+        // Moffstation - Start - Typing indicators
+        // This intentionally overrides the indicator from clothing
+        // the type of speech takes priority over the generalized speech bubble
+        if (component.TypingIndicatorOverride != null)
+            overrideIndicator = component.TypingIndicatorOverride;
+        // Moffstation - End
+
         if (overrideIndicator != null)
             currentTypingIndicator = overrideIndicator.Value;
 

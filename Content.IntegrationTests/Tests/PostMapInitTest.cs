@@ -70,9 +70,12 @@ namespace Content.IntegrationTests.Tests
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/PreCrewed/shuttle-nt-grimebreaker.yml", ["ClosetJanitorBombFilled", "ShuttleGunFriendship"]},
             {"/Maps/_Moffstation/Shuttles/shuttle-nt-businessclass.yml", ["BoxFolderCentCom"]},
+            {"/Maps/_Moffstation/Shuttles/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
+            {"/Maps/_Moffstation/PreCrewed/shuttle-nt-gunboat.yml", ["ShuttleGunDuster", "ShuttleGunPerforator"]},
             {"/Maps/_Moffstation/Nonstations/d1_logic.yml", ["ShuttleGunSvalinnMachineGun"]},
             {"/Maps/_Moffstation/frezon.yml", ["HandheldCrewMonitor"]},
             {"/Maps/_Moffstation/dugstation.yml", ["ClothingHeadHatCatEarsValid"]},
+            {"/Maps/_Moffstation/skeld.yml", ["ShuttleGunDuster"]},
             // Moffstation - End
         };
 
@@ -128,11 +131,11 @@ namespace Content.IntegrationTests.Tests
             "Relic",
             "dm01-entryway",
             "Exo",
-            "Snowball",
+	          "Snowball",
+            "Serpentcrest",
             // Moffstation - Start - Our maps
             "Amber",
             "Waterjug",
-            "Tram2",
             "Train",
             "Core",
             "Omega",
@@ -151,6 +154,8 @@ namespace Content.IntegrationTests.Tests
             "Scylla",
             "Aspid",
             "Elkridge",
+            "Wapiti",
+            "Skeld"
             // Moffstation - End
         };
 

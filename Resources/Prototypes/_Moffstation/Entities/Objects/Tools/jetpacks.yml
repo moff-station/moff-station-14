@@ -1,7 +1,7 @@
-# Filled black
+# Empty jetpack
 - type: entity
+  parent: [ BaseHighlyIllegalContraband , JetpackBlack ]
   id: PirateJetpack
-  parent: JetpackBlack
   name: pirate jetpack
   suffix: Pirate
   components:
@@ -14,10 +14,10 @@
     slots:
     - Back
 
-# Filled black
+# Filled
 - type: entity
-  id: PirateJetpackFilled
   parent: PirateJetpack
+  id: PirateJetpackFilled
   suffix: Filled, Pirate
   components:
   - type: GasTank

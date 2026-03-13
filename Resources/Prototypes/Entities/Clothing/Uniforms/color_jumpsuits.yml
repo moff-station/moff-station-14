@@ -1,7 +1,8 @@
 # White Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorWhite
+  id: ClothingUniformJumpsuitColorWhiteUpstream # Moffstation
+  abstract: true # Moffstation
   name: white jumpsuit
   description: A generic white jumpsuit with no rank markings.
   components:
@@ -28,7 +29,8 @@
 # Grey Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorGrey
+  id: ClothingUniformJumpsuitColorGreyUpstream # Moffstation
+  abstract: true # Moffstation
   name: grey jumpsuit
   description: A tasteful grey jumpsuit that reminds you of the good old days.
   components:
@@ -59,7 +61,8 @@
 # Black Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorBlack
+  id: ClothingUniformJumpsuitColorBlackUpstream # Moffstation
+  abstract: true # Moffstation
   name: black jumpsuit
   description: A generic black jumpsuit with no rank markings.
   components:
@@ -90,7 +93,8 @@
 # Blue Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorBlue
+  id: ClothingUniformJumpsuitColorBlueUpstream # Moffstation
+  abstract: true # Moffstation
   name: blue jumpsuit
   description: A generic blue jumpsuit with no rank markings.
   components:
@@ -121,7 +125,8 @@
 # Dark Blue Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorDarkBlue
+  id: ClothingUniformJumpsuitColorDarkBlueUpstream # Moffstation
+  abstract: true # Moffstation
   name: dark blue jumpsuit
   description: A generic dark blue jumpsuit with no rank markings.
   components:
@@ -152,7 +157,8 @@
 # Teal Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorTeal
+  id: ClothingUniformJumpsuitColorTealUpstream # Moffstation
+  abstract: true # Moffstation
   name: teal jumpsuit
   description: A generic teal jumpsuit with no rank markings.
   components:
@@ -183,7 +189,8 @@
 # Green Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorGreen
+  id: ClothingUniformJumpsuitColorGreenUpstream # Moffstation
+  abstract: true # Moffstation
   name: green jumpsuit
   description: A generic green jumpsuit with no rank markings.
   components:
@@ -214,7 +221,8 @@
  # Dark Green Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorDarkGreen
+  id: ClothingUniformJumpsuitColorDarkGreenUpstream # Moffstation
+  abstract: true # Moffstation
   name: dark green jumpsuit
   description: A generic dark green jumpsuit with no rank markings.
   components:
@@ -245,7 +253,8 @@
 # Orange Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorOrange
+  id: ClothingUniformJumpsuitColorOrangeUpstream # Moffstation
+  abstract: true # Moffstation
   name: orange jumpsuit
   description: Don't wear this near paranoid security officers.
   components:
@@ -276,7 +285,8 @@
 # Pink Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorPink
+  id: ClothingUniformJumpsuitColorPinkUpstream # Moffstation
+  abstract: true # Moffstation
   name: pink jumpsuit
   description: Just looking at this makes you feel <i>fabulous</i>.
   components:
@@ -307,7 +317,8 @@
 # Red Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorRed
+  id: ClothingUniformJumpsuitColorRedUpstream # Moffstation
+  abstract: true # Moffstation
   name: red jumpsuit
   description: A generic red jumpsuit with no rank markings.
   components:
@@ -338,7 +349,8 @@
 # Yellow Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorYellow
+  id: ClothingUniformJumpsuitColorYellowUpstream # Moffstation
+  abstract: true # Moffstation
   name: yellow jumpsuit
   description: A generic yellow jumpsuit with no rank markings.
   components:
@@ -369,7 +381,8 @@
 # Purple Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorPurple
+  id: ClothingUniformJumpsuitColorPurpleUpstream # Moffstation
+  abstract: true # Moffstation
   name: purple jumpsuit
   description: A generic light purple jumpsuit with no rank markings.
   components:
@@ -400,7 +413,8 @@
 # Light Brown Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorLightBrown
+  id: ClothingUniformJumpsuitColorLightBrownUpstream # Moffstation
+  abstract: true # Moffstation
   name: light brown jumpsuit
   description: A generic light brown jumpsuit with no rank markings.
   components:
@@ -431,7 +445,8 @@
 # Brown Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorBrown
+  id: ClothingUniformJumpsuitColorBrownUpstream # Moffstation
+  abstract: true # Moffstation
   name: brown jumpsuit
   description: A generic brown jumpsuit with no rank markings.
   components:
@@ -462,7 +477,8 @@
 # Maroon Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitColorMaroon
+  id: ClothingUniformJumpsuitColorMaroonUpstream # Moffstation
+  abstract: true # Moffstation
   name: maroon jumpsuit
   description: A generic maroon jumpsuit with no rank markings.
   components:
@@ -493,7 +509,8 @@
 # Rainbow Jumpsuit
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformColorRainbow
+  id: ClothingUniformColorRainbowUpstream # Moffstation
+  abstract: true # Moffstation
   name: rainbow jumpsuit
   description: A multi-colored jumpsuit!
   components:

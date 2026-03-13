@@ -1,0 +1,65 @@
+- type: entity
+  parent: MobSyndicateFootsoldier
+  id: MobSyndicateFootsoldierGhostRole
+  components:
+  - type: RandomHumanoidAppearance
+  - type: RandomMetadata
+    nameSegments: [ NamesDeathCommando ]
+  - type: Loadout
+    prototypes:
+    - SyndicateFootsoldierGearArmed
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-syndicate-solider-name
+    description: ghost-role-information-syndicate-solider-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+
+- type: entity
+  id: MobWildHumanoid
+  abstract: true
+  components:
+  - type: RandomHumanoidAppearance
+  - type: RandomMetadata
+    nameSegments: [ NamesDeathCommando ]
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-wild-human-name
+    description: ghost-role-information-wild-human-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: NPCRetaliation
+  - type: FactionException
+  - type: NpcFactionMember
+    factions:
+    - Passive
+
+- type: entity
+  id: MobWildHuman
+  parent: [ MobHuman, MobWildHumanoid ]
+
+- type: entity
+  id: MobWildReptilian
+  parent: [ MobReptilian, MobWildHumanoid ]

@@ -10,12 +10,12 @@
     stampState: "paper_stamp-generic"
     stampedColor: "#a23e3e"
     sound:
-      path: /Audio/Items/Stamp/thick_stamp_sub.ogg
+      path: /Audio/Items/Stamp/automatic_stamp.ogg # Moffstation - New Stamp Sprites
       params:
         volume: -2
         maxDistance: 5
   - type: Sprite
-    sprite: Objects/Misc/stamps.rsi
+    sprite: _Moffstation/Objects/Misc/stamps.rsi
     state: stamp-mime
   - type: Item
     size: Tiny
@@ -29,7 +29,7 @@
         Blunt: 0
     angle: 0
     soundHit:
-      path: /Audio/Items/Stamp/thick_stamp_sub.ogg
+      path: /Audio/Items/Stamp/automatic_stamp.ogg # Moffstation - New Stamp Sprites
   # Moffstation - End
 
 - type: entity

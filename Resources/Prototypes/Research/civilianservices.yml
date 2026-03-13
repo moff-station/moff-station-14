@@ -135,7 +135,7 @@
   tier: 2
   cost: 5000
   recipeUnlocks:
-  - BorgModuleAdvancedChemical
+  - BorgModuleAdvancedTopical
   - AdvancedJetInjector
   - BorgModuleTopicalsGeneric # Moffstation - specialty lite modules
 
@@ -152,7 +152,10 @@
   - AdvMopItem
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
-  - BorgModuleCustodialGeneric # Moffstation - specialty lite modules
+  # Moffstation - Start - Expanded Janitorial
+  - BorgModuleCustodialGeneric
+  - TrashBagOfHolding
+  # Moffstation - End
 
 - type: technology
   id: HONKMech

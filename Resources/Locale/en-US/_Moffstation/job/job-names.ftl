@@ -1,3 +1,8 @@
+## CentComm
+# Nanotrasen Corporate Fleet
+job-name-ntcfpilot = NTCF Pilot
+job-name-ntcfengineer = NTCF Flight Engineer
+
 ## Command
 job-name-captain-commanding-officer = Commanding Officer
 job-name-hop-hr-administrator = HR Administrator
@@ -163,3 +168,4 @@ ghost-role-captains-sabre = Captain´s Persona Sabre
 ## Other Job Titles
 job-name-mercenary = Mercenary
 job-name-pirate-captain = Pirate Captain
+job-name-ertmailcarrier = ERT Mail Carrier

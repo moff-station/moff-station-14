@@ -35,7 +35,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMIFilled
+      - MMIFilledXeno
       borg_module:
       - XenoborgModuleBasic
       - BorgModuleAdvancedTool
@@ -90,6 +90,7 @@
   - type: MovementSpeedModifier # slower
     baseWalkSpeed : 1.2
     baseSprintSpeed : 2.2
+  - type: MovementAlwaysTouching # it flies in space by pure will power
   - type: FlashImmunity
   - type: MobThresholds # tankier
     thresholds:
@@ -122,7 +123,7 @@
           collection: MetalBreak
       - !type:SpawnEntitiesBehavior
         spawn:
-          PinpointerMothership: # drop a pinpointer to the mothership upon being destructed
+          PinpointerMothershipPiece: # drop a piece of core pinpointer upon being destructed (4 pieces to make a core pinpointer)
             min: 1
             max: 1
       - !type:EmptyContainersBehaviour
@@ -135,7 +136,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMIFilled
+      - MMIFilledXeno
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -162,15 +163,15 @@
   - type: Sprite
     sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_scout.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-      - state: borg # Moffstation - Early merge of Borg RSI fix
-      - state: borg_e # Moffstation - Early merge of Borg RSI fix
-        map: ["enum.BorgVisualLayers.Light"]
-        shader: unshaded
-        visible: false
-      - state: borg_l # Moffstation - Early merge of Borg RSI fix
-        shader: unshaded
-        map: ["light"]
-        visible: false
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
+      shader: unshaded
+      map: ["light"]
+      visible: false
   - type: FootstepModifier # it flies instead of walking
     footstepSoundCollection:
       collection: FootstepHoverXenoborg
@@ -190,7 +191,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMIFilled
+      - MMIFilledXeno
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -217,15 +218,15 @@
   - type: Sprite
     sprite: _Moffstation/Mobs/Silicon/Chassis/xenoborg_stealth.rsi # Moffstation - Early merge of Borg RSI fix
     layers:
-      - state: borg # Moffstation - Early merge of Borg RSI fix
-      - state: borg_e # Moffstation - Early merge of Borg RSI fix
-        map: ["enum.BorgVisualLayers.Light"]
-        shader: unshaded
-        visible: false
-      - state: borg_l # Moffstation - Early merge of Borg RSI fix
-        shader: unshaded
-        map: ["light"]
-        visible: false
+    - state: borg # Moffstation - Early merge of Borg RSI fix
+    - state: borg_e # Moffstation - Early merge of Borg RSI fix
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l # Moffstation - Early merge of Borg RSI fix
+      shader: unshaded
+      map: ["light"]
+      visible: false
   - type: FootstepModifier # it flies instead of walking
     footstepSoundCollection:
       collection: FootstepHoverXenoborg
@@ -244,7 +245,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMIFilled
+      - MMIFilledXeno
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -267,7 +268,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMI
+      - MMIXeno
       borg_module:
       - XenoborgModuleBasic
       - BorgModuleAdvancedTool
@@ -290,7 +291,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMI
+      - MMIXeno
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -310,7 +311,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMI
+      - MMIXeno
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool
@@ -330,7 +331,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - MMI
+      - MMIXeno
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleTool

@@ -321,8 +321,10 @@
     borderColor: "#d7d7d0"
   - type: Icon
     state: pda-cook
-  - type: ReplacementAccent # for random sentience event
+  # Moffstation - Begin - Re-add word replacement accents
+  - type: ReplacementAccent
     accent: italian
+  # Moffstation - End
 
 - type: entity
   parent: BasePDA
@@ -440,6 +442,9 @@
       whitelist:
         components:
         - Cartridge
+    preinstalled:
+    - CrewManifestCartridge
+    - NewsReaderCartridge
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1603,10 +1608,6 @@
   name: ninja PDA
   description: You stealthy bastard, you!
   components:
-  # Moffstation - Begin - Ninja PDA doesn't have a moff sprite, so we need to add the upstream sprite here.
-  - type: Sprite
-    sprite: Objects/Devices/pda.rsi
-  # Moffstation - End
   - type: Pda
     id: NinjaIDCard
   - type: Appearance
@@ -1615,7 +1616,7 @@
         !type:String
         pda-ninja
   - type: Icon
-    sprite: Objects/Devices/pda.rsi # Moffstation - Ninja PDA doesn't have a moff sprite, so we need to add the upstream sprite here.
+    sprite: _Moffstation/Objects/Devices/pda.rsi # Moffstation
     state: pda-ninja
 
 - type: entity
@@ -1664,6 +1665,14 @@
         type: HealthAnalyzerBoundUserInterface
       enum.ChameleonUiKey.Key:
         type: ChameleonBoundUserInterface
+
+- type: entity
+  parent: ChameleonPDA
+  id: ChameleonAgentPDA
+  suffix: Chameleon, Agent ID
+  components:
+  - type: Pda
+    id: AgentIDCard
 
 - type: entity
   parent: BaseWidePDA

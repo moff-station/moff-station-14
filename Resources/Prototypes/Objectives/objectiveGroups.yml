@@ -27,7 +27,6 @@
     HandTeleporterStealObjective: 0.5
     EnergyMagnumStealObjective: 0.5 # Moffstation - Objective picker adjustments
     ValkyrieHudStealObjective : 1 # Moffstation - Valkyrie Hud is now a Steal Objective
-    #BigIronStealObjective : 0.5 # Moffstation - Big Iron is now a Steal Objective - not in use atm
 
 - type: weightedRandom
   id: TraitorObjectiveGroupKill
@@ -92,7 +91,6 @@
     AmePartFlatpackStealObjective: 1
     ExpeditionsCircuitboardStealObjective: 1            #sup
     CargoShuttleCircuitboardStealObjective: 1
-    ClothingEyesHudBeerStealObjective: 0.5              #srv, beer goggles less common cause its so easy
     BibleStealObjective: 1
     ClothingNeckGoldmedalStealObjective: 1              #other
     ClothingNeckClownmedalStealObjective: 0.5

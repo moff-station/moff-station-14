@@ -9,7 +9,7 @@
     RubberStampDenied: 1
     BoxFolderPlasticClipboardEmpty: 2
     Paper: 10
-    Envelope: 10
+    Envelope: 5 # Moffstation - They do not need 10
     HandLabeler: 2
     EncryptionKeyCargo: 2
     EncryptionKeyEngineering: 2
@@ -17,6 +17,18 @@
     EncryptionKeyScience: 2
     EncryptionKeySecurity: 1
     EncryptionKeyService: 3
+    # Moffstation - Start
+    BoxFolderBlueEmpty: 1
+    BoxFolderYellowEmpty: 1
+    NanoChatCartridge: 2
+    MedTekCartridge: 1
+    AstroNavCartridge: 1
+    WantedListCartridge: 1
+    LuxuryPen: 1
+    #Moffstation - End
   contrabandInventory:
     BalloonNT: 2
-    LuxuryPen: 1
+    # Moffstation - Start
+    BoxFolderCentComClipboardEmpty: 1
+    ClothingHeadHatUshanka: 1
+    #Moffstation - End

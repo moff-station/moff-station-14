@@ -164,9 +164,9 @@
   description: Can hold various medical equipment.
   components:
   - type: Sprite
-    sprite: Clothing/Belt/medical.rsi
+    sprite: _Moffstation/Clothing/Belt/medical.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Belt/medical.rsi
+    sprite: _Moffstation/Clothing/Belt/medical.rsi # Moffstation
   - type: Storage
     whitelist:
       tags:

@@ -47,12 +47,12 @@
     autoRefillRate: 1m # You really ought to be picking up your darts.
     ammoProto: BulletFoam
 
-# Far less cursed replacement for the admeme XL8, used by ERT squads. Has a nifty 2-round burst.
+# Far less cursed replacement for the admeme XL8, purchasable from cargo and used by ERT squad leaders. Has a nifty 2-round burst.
 - type: entity
   parent: WeaponRifleLecter
   id: WeaponRifleLecterDMR
   name: Lecter DMR
-  description: "A Dedicated Marksman Rifle designed by Sunshade Armories, built on the popular Lecter platform. Features redesigned ergonomic furniture and the latest in electronic optics to excel at long range.\nFeeds from .20 rifle magazines."
+  description: "A Dedicated Marksman Rifle designed by Sunshade Armories, built on the popular Lecter platform. Features the latest in electronic optics and a blisteringly fast 2-round burst to excel at long range.\nFeeds from .20 rifle magazines."
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Rifles/lecterDMR.rsi
@@ -74,9 +74,9 @@
     walkModifier: 0.75
     sprintModifier: 0.75
 
-# Lever-Action rifle. A longarm chambered in .45 magnum, for purchase by cargo and pirates, and as very rare maints loot. Sprites by the marvelous kento_da_neko.
+# Lever-Action rifle. A longarm chambered in .45 magnum, for purchase by pirates and as very rare maints loot. Sprites by the marvelous kento_da_neko.
 - type: entity
-  parent: [ BaseWeaponShotgun, BaseGunWieldable ]
+  parent: [ BaseWeaponShotgun, BaseGunWieldable, BaseMajorContraband ]
   id: WeaponRifleLeverMagnum
   name: Crestfall repeater
   description: "A classic tube-fed lever-action rifle, the preferred weapon of a trailblazer of old.\nLoads eight rounds of .45 magnum."

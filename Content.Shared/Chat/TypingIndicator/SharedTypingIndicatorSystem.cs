@@ -80,6 +80,13 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
             return;
         }
 
+        // Moffstation - Start - Typing indicators
+        if (TryComp<TypingIndicatorComponent>(uid, out var comp))
+        {
+            comp.TypingIndicatorOverride = ev.ChannelIndicator;
+        }
+        // Moffstation - End
+
         SetTypingIndicatorState(uid.Value, ev.State);
     }
 

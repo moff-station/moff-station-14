@@ -3,6 +3,7 @@ using Content.Shared.CharacterInfo;
 using Content.Shared.Objectives;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.CharacterInfo;
 
@@ -49,7 +50,7 @@ public sealed class CharacterInfoSystem : EntitySystem
         EntityUid Entity,
         string Job,
         Dictionary<string, List<ObjectiveInfo>> Objectives,
-        Dictionary<CollectiveMindPrototype, CollectiveMindMemberData>? CollectiveMinds, // Starlight - Collective Mind - Collective mind data entry.
+        Dictionary<ProtoId<CollectiveMindPrototype>, CollectiveMindMemberData>? CollectiveMinds, // Starlight - Collective Mind - Collective mind data entry.
         string? Briefing,
         string EntityName
     );

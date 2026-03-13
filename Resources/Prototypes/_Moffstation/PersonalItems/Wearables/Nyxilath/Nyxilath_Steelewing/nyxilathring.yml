@@ -1,24 +1,36 @@
 # Player: Nyxilath - Character: Nyxilath Steelewing
 - type: entity
-  parent: ClothingHandsBase
-  id: PersonalItemNyxilathRing
-  name: Nyxilath's Wedding Ring
-  description: A small golden band, set with an Orange Sunstone gem.
+  parent: ClothingNeckBase
+  id: PersonalItemNyxilathPositronicHeart
+  name: positronic heart
+  description: A metallic containment, it thrums faintly with light flashes of blue.
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/nyxilathring.rsi
+    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/posi-heart.rsi
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
   - type: Clothing
-    quickEquip: True
-    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/nyxilathring.rsi
+    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/posi-heart.rsi
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+      - state: equipped-NECK-unshaded
+        shader: unshaded
+      - state: equipped-NECK-unshaded
+        shader: shaded
   - type: Item
-    size: Tiny
+    size: Small
 
 - type: loadout
-  id: PersonalItemNyxilathRing
+  id: PersonalItemNyxilathPositronicHeart
   storage:
     back:
-    - PersonalItemNyxilathRing
+    - PersonalItemNyxilathPositronicHeart
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

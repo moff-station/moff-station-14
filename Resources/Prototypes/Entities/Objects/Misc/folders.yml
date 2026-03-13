@@ -4,11 +4,10 @@
   name: nuclear code folder
   components:
   - type: Sprite
-    sprite: Objects/Misc/folders.rsi
+    sprite: _Moffstation/Objects/Misc/folders.rsi # Moffstation
     layers:
-    - state: folder-colormap
-      color: "#cc2323"
-    - state: folder-base
+    - state: folder-sec-doc  # Moffstation
+    - state: folder-overlay-paper # Moffstation
     - state: folder-stamp-inverse
       color: "#1dff00"
   - type: PhysicalComposition
@@ -28,10 +27,10 @@
   description: A folder filled with top secret paperwork.
   components:
   - type: Sprite
-    sprite: Objects/Misc/folders.rsi
+    sprite: _Moffstation/Objects/Misc/folders.rsi # Moffstation
     layers:
     - state: folder-colormap
-    - state: folder-base
+#    - state: folder-base # Moffstation
 # RandomSpriteColor requires netsync which is currently incompatible with ItemMapper
 #  - type: RandomSpriteColor
 #    sprite: Objects/Misc/folders.rsi
@@ -45,7 +44,7 @@
 #      black: "#3f3f3f"
 #      green: "#43bc38"
   - type: Item
-    sprite: Objects/Misc/folders.rsi
+    sprite: _Moffstation/Objects/Misc/folders.rsi # Moffstation
     size: Small
     shape: null
   - type: Storage
@@ -119,7 +118,7 @@
     layers:
     - state: folder-colormap
       color: "#cc2323"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderRedEmpty, BoxFolderFill]
@@ -140,7 +139,7 @@
     layers:
     - state: folder-colormap
       color: "#355d99"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderBlueEmpty, BoxFolderFill]
@@ -161,7 +160,7 @@
     layers:
     - state: folder-colormap
       color: "#b38e3c"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderYellowEmpty, BoxFolderFill]
@@ -181,8 +180,8 @@
   - type: Sprite
     layers:
     - state: folder-colormap
-      color: "#999999"
-    - state: folder-base
+      color: "#696969" # Moffstation
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderGreyEmpty, BoxFolderFill]
@@ -203,7 +202,7 @@
     layers:
     - state: folder-colormap
       color: "#3f3f3f"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderBlackEmpty, BoxFolderFill]
@@ -224,7 +223,7 @@
     layers:
     - state: folder-colormap
       color: "#43bc38"
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderGreenEmpty, BoxFolderFill]
@@ -244,7 +243,7 @@
   - type: Sprite
     layers:
     - state: folder-white
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderWhiteEmpty, BoxFolderFill]
@@ -266,7 +265,7 @@
   - type: Sprite
     layers:
     - state: folder-centcom
-    - state: folder-base
+#    - state: folder-base # Moffstation
 
 - type: entity
   parent: [BoxFolderCentComEmpty, BoxFolderFill]
@@ -285,7 +284,7 @@
   description: The weapon of choice for those on the front lines of bureaucracy.
   components:
   - type: Sprite
-    sprite: Objects/Misc/clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/clipboard.rsi # Moffstation
     layers:
     - state: clipboard
     - state: clipboard_paper
@@ -309,12 +308,12 @@
           - Write
         insertOnInteract: false
   - type: Item
-    sprite: Objects/Misc/clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/clipboard.rsi # Moffstation
     size: Small
   - type: Clothing
     slots: [belt]
     quickEquip: false
-    sprite: Objects/Misc/clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/clipboard.rsi # Moffstation
   - type: PhysicalComposition
     materialComposition: # half of autolathe printing cost
       Wood: 50
@@ -353,7 +352,7 @@
   description: A cheap clipboard made of blue plastic. For those who aren't yet ready to wield the bureaucratic might of a proper wooden clipboard.
   components:
   - type: Sprite
-    sprite: Objects/Misc/plastic_clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/plastic_clipboard.rsi # Moffstation
     layers:
     - state: clipboard
     - state: clipboard_paper
@@ -364,9 +363,9 @@
       visible: false
     - state: clipboard_over
   - type: Item
-    sprite: Objects/Misc/plastic_clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/plastic_clipboard.rsi # Moffstation
   - type: Clothing
-    sprite: Objects/Misc/plastic_clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/plastic_clipboard.rsi # Moffstation
   - type: PhysicalComposition
     materialComposition: # half of autolathe printing cost
       Plastic: 50
@@ -387,7 +386,7 @@
   description: A luxurious clipboard upholstered with green velvet. Often seen carried by CentComm officials, seldom seen actually used.
   components:
   - type: Sprite
-    sprite: Objects/Misc/cc-clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/cc-clipboard.rsi # Moffstation
     layers:
     - state: clipboard
     - state: clipboard_paper
@@ -398,9 +397,9 @@
       visible: false
     - state: clipboard_over
   - type: Item
-    sprite: Objects/Misc/cc-clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/cc-clipboard.rsi # Moffstation
   - type: Clothing
-    sprite: Objects/Misc/cc-clipboard.rsi
+    sprite: _Moffstation/Objects/Misc/cc-clipboard.rsi # Moffstation
   - type: PhysicalComposition
     materialComposition: # same composition as regular clipboard + bit of cloth because it's "upholstered with green velvet"
       Wood: 50

@@ -113,7 +113,7 @@
   - type: WiresVisuals
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
+    damageModifierSet: StructuralMetallic # Moffstation - Structural damagetype fix 
   - type: Destructible
     thresholds:
     - trigger:

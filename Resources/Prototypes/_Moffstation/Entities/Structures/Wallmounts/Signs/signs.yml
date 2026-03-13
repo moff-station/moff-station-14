@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseSign
+  id: BaseSignMoff
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: _Moffstation/Structures/Wallmounts/signs.rsi
+    snapCardinals: true
+
+- type: entity
+  parent: BaseSignMoff
+  id: WarningH2O
+  name: H2O warning sign
+  description: WARNING! H2O flow tube. Ensure the flow is disengaged before working.
+  components:
+  - type: Sprite
+    state: atmos_h2o
+
+- type: entity
+  parent: BaseSignMoff
+  id: WarningNH3
+  name: NH3 warning sign
+  description: WARNING! NH3 flow tube. Ensure the flow is disengaged before working.
+  components:
+  - type: Sprite
+    state: atmos_nh3
+
+- type: entity
+  parent: BaseSignMoff
+  id: WarningFrezon
+  name: frezon warning sign
+  description: WARNING! Frezon flow tube. Ensure the flow is disengaged before working.
+  components:
+  - type: Sprite
+    state: atmos_frezon

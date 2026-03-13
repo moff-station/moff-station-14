@@ -1,0 +1,23 @@
+﻿# Stowaway
+- type: roleLoadout
+  id: JobStowaway
+  canCustomizeName: true
+  groups:
+  - CommonBackpack
+  - Glasses
+  - Trinkets
+  - GroupTankHarness
+  - StowawaySurvival
+  - PersonalItemsJobAgnostic
+
+# Wizard duelist
+- type: roleLoadout
+  id: JobWizardDuelist
+  canCustomizeName: true
+  groups:
+  - CommonBackpack
+  - Glasses
+  - Trinkets
+  - PersonalItemsJobAgnostic
+  - SurvivalExtended
+  - GroupSpeciesBreathTool
