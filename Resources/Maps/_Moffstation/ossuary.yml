@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/13/2026 00:45:00
+  time: 03/13/2026 01:08:16
   entityCount: 11734
 maps:
 - 1
@@ -316,6 +316,17 @@ entities:
       chunkCollection:
         version: 2
         nodes:
+        - node:
+            color: '#FFFFFFFF'
+            id: ArrowsGreyscale
+          decals:
+            2091: 15,4
+        - node:
+            angle: 3.141592653589793 rad
+            color: '#FFFFFFFF'
+            id: ArrowsGreyscale
+          decals:
+            2090: 13,2
         - node:
             color: '#0000003F'
             id: BrickCornerOverlayNE
@@ -1414,6 +1425,17 @@ entities:
             782: -5,-39
             783: -4,-39
             784: -3,-39
+        - node:
+            color: '#FFFFFFFF'
+            id: LoadingAreaGreyscale
+          decals:
+            2088: 15,2
+        - node:
+            angle: 3.141592653589793 rad
+            color: '#FFFFFFFF'
+            id: LoadingAreaGreyscale
+          decals:
+            2089: 13,4
         - node:
             color: '#00000026'
             id: MarkupSquare
@@ -5908,7 +5930,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -133582.3
+      secondsUntilStateChange: -134936.44
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -32988,7 +33010,7 @@ entities:
       pos: 1.5,-18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -81804.71
+      secondsUntilStateChange: -83158.84
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 6696.2599724
