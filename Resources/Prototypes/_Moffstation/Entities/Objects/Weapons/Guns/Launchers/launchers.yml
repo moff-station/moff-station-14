@@ -17,14 +17,14 @@
   parent: WeaponGrapplingGun
   id: WeaponNinjaChainSickle
   name: chain sickle
-  description: A sickle attached to a websilk chain. The Spider Clan embodies the ancient ways, even as they steal the future. 
+  description: A sickle attached to a websilk chain. The Spider Clan embodies the ancient ways, even as they steal the future.
   components:
   - type: GrapplingGun
     reelMassCoefficient: 200 # You can pull everyone.
     reelForce: 20000 # STRONG reeling, you can now make them GET OVER HERE
     reelRate: 7.5 # Fast reeling - can move very quickly in combat with this
     ropeBreakPoint: 150000 # Strong rope for ninja tricks
-    cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg      
+    cycleSound: /Audio/_Moffstation/Surgery/retractor1.ogg
     ropeSprite:
       sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
       state: rope
@@ -41,7 +41,7 @@
     canThrowTrigger: true
     canMoveBreakout: true
     maxEnsnares: 1
-  - type: Gun 
+  - type: Gun
     soundGunshot: /Audio/Weapons/utilityknifeopen.ogg
     fireRate: 1.0
     soundEmpty: /Audio/_Moffstation/Surgery/retractor1.ogg
@@ -58,4 +58,40 @@
     sprite: _Moffstation/Objects/Weapons/Guns/Launchers/chainsickle.rsi
     state: base
   - type: UseDelay
-    delay: 0.5 
+    delay: 0.5
+
+- type: entity
+  parent: [ BaseWeaponLauncher, BaseMajorContraband ]
+  id: WeaponLauncherHydraTan
+  name: Hydra-T
+  description: PLOOP... BOOM.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/hydra_tan.rsi
+    layers:
+    - state: icon
+      map: [ "enum.GunVisualLayers.Base" ]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Launchers/hydra_tan.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Huge
+  - type: AmmoCounter
+  - type: GunRequiresWield
+  - type: ContainerContainer
+    containers:
+      revolver-ammo: !type:Container
+  - type: RevolverAmmoProvider
+    whitelist:
+      tags:
+      - Grenade
+    proto: GrenadeFrag
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+    soundEject:
+      path: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
