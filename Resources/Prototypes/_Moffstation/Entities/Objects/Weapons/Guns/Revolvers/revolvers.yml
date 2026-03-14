@@ -117,3 +117,22 @@
     ammoSlots: [ null, null, null, null, null, null ]
   - type: StealTarget
     stealGroup: OfficerHandgun
+
+- type: entity
+  name: Auditor
+  parent: [BaseWeaponRevolver, BaseSecurityContraband]
+  id: WeaponRevolverauditor
+  description: Shorter derivative of the Inspector.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/auditor.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/auditor.rsi
+  - type: Item
+    storedOffset: 0,-2
+  - type: RevolverAmmoProvider
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+  - type: StealTarget
+    stealGroup: OfficerHandgun
