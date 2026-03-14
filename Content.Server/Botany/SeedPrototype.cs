@@ -232,6 +232,14 @@ public partial class SeedData
     [DataField] public bool TurnIntoKudzu;
     [DataField] public string? SplatPrototype { get; set; }
 
+    // Moffstation - Start
+    [DataField]
+    public bool HasAmbientSound = false;
+
+    [DataField]
+    public SoundSpecifier AmbientSound = new SoundCollectionSpecifier("PlantScreams");
+    // Moffstation - End
+
     #endregion
 
     /// <summary>
@@ -307,6 +315,11 @@ public partial class SeedData
             SplatPrototype = SplatPrototype,
             Mutations = new List<RandomPlantMutation>(),
 
+            // Moffstation - Start
+            HasAmbientSound = HasAmbientSound,
+            AmbientSound = AmbientSound,
+            // Moffstation - End
+
             // Newly cloned seed is unique. No need to unnecessarily clone if repeatedly modified.
             Unique = true,
         };
@@ -368,6 +381,11 @@ public partial class SeedData
             CanScream = CanScream,
             TurnIntoKudzu = TurnIntoKudzu,
             SplatPrototype = other.SplatPrototype,
+
+            // Moffstation - Start
+            HasAmbientSound = other.HasAmbientSound,
+            AmbientSound = other.AmbientSound,
+            // Moffstation - End
 
             // Newly cloned seed is unique. No need to unnecessarily clone if repeatedly modified.
             Unique = true,
