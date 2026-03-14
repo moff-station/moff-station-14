@@ -29,8 +29,7 @@ using Content.Shared.Database;
 using Content.Shared.EntityEffects;
 using Content.Shared.Kitchen.Components;
 using Content.Shared.Labels.Components;
-
-using Robust.Shared.Audio;
+using Robust.Shared.Audio; // Moffstation
 
 namespace Content.Server.Botany.Systems;
 
@@ -918,7 +917,7 @@ public sealed class PlantHolderSystem : EntitySystem
         }
     }
 
-    public void UpdateSprite(EntityUid uid, PlantHolderComponent? component = null, SeedData? seed = null)
+    public void UpdateSprite(EntityUid uid, PlantHolderComponent? component = null, SeedData? seed = null) // Moffstation
     {
         if (!Resolve(uid, ref component))
             return;
