@@ -916,7 +916,7 @@ public sealed class PlantHolderSystem : EntitySystem
         }
     }
 
-    public void UpdateSprite(EntityUid uid, PlantHolderComponent? component = null)
+    public void UpdateSprite(EntityUid uid, PlantHolderComponent? component = null, SeedData? seed = null)
     {
         if (!Resolve(uid, ref component))
             return;
@@ -942,7 +942,7 @@ public sealed class PlantHolderSystem : EntitySystem
             {
                 _appearance.SetData(uid, PlantHolderVisuals.PlantRsi, component.Seed.PlantRsi.ToString(), app);
                 _appearance.SetData(uid, PlantHolderVisuals.PlantState, "harvest", app);
-                PlaySound();
+                PlaySound(uid, true, component.Seed);
             }
             else if (component.Age < component.Seed.Maturation)
             {
@@ -951,11 +951,13 @@ public sealed class PlantHolderSystem : EntitySystem
                 _appearance.SetData(uid, PlantHolderVisuals.PlantRsi, component.Seed.PlantRsi.ToString(), app);
                 _appearance.SetData(uid, PlantHolderVisuals.PlantState, $"stage-{growthStage}", app);
                 component.LastProduce = component.Age;
+                PlaySound(uid, true, component.Seed);
             }
             else
             {
                 _appearance.SetData(uid, PlantHolderVisuals.PlantRsi, component.Seed.PlantRsi.ToString(), app);
                 _appearance.SetData(uid, PlantHolderVisuals.PlantState, $"stage-{component.Seed.GrowthStages}", app);
+                PlaySound(uid, true, component.Seed);
             }
         }
         else
@@ -999,15 +1001,12 @@ public sealed class PlantHolderSystem : EntitySystem
     }
 
     // Moffstation - Start
-    public void PlaySound(bool hasSound)
+    public void PlaySound(EntityUid plantholder ,bool hasSound, SeedData? seed = null)
     {
-        if (!hasSound)
+        if (!hasSound || seed == null)
         {
             return;
         }
-        else
-        {
-            _audio.PlayPvs(seed.ScreamSound, plantholder);
-        }
+        _audio.PlayPvs("/Audio/Ambience/anomaly_scary.ogg", plantholder);
     }
 }
