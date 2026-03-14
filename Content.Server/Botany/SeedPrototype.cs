@@ -234,10 +234,7 @@ public partial class SeedData
 
     // Moffstation - Start
     [DataField]
-    public bool HasAmbientSound = false;
-
-    [DataField]
-    public SoundSpecifier AmbientSound = new SoundCollectionSpecifier("PlantScreams");
+    public SoundSpecifier? AmbientSound = null;
     // Moffstation - End
 
     #endregion
@@ -316,7 +313,6 @@ public partial class SeedData
             Mutations = new List<RandomPlantMutation>(),
 
             // Moffstation - Start
-            HasAmbientSound = HasAmbientSound,
             AmbientSound = AmbientSound,
             // Moffstation - End
 
@@ -383,7 +379,6 @@ public partial class SeedData
             SplatPrototype = other.SplatPrototype,
 
             // Moffstation - Start
-            HasAmbientSound = other.HasAmbientSound,
             AmbientSound = other.AmbientSound,
             // Moffstation - End
 

@@ -944,7 +944,7 @@ public sealed class PlantHolderSystem : EntitySystem
             {
                 _appearance.SetData(uid, PlantHolderVisuals.PlantRsi, component.Seed.PlantRsi.ToString(), app);
                 _appearance.SetData(uid, PlantHolderVisuals.PlantState, "harvest", app);
-                PlaySound(uid, component.Seed);
+                PlayAmbientSound(uid, component.Seed); // Moffstation
             }
             else if (component.Age < component.Seed.Maturation)
             {
@@ -953,13 +953,13 @@ public sealed class PlantHolderSystem : EntitySystem
                 _appearance.SetData(uid, PlantHolderVisuals.PlantRsi, component.Seed.PlantRsi.ToString(), app);
                 _appearance.SetData(uid, PlantHolderVisuals.PlantState, $"stage-{growthStage}", app);
                 component.LastProduce = component.Age;
-                PlaySound(uid, component.Seed);
+                PlayAmbientSound(uid, component.Seed); // Moffstation
             }
             else
             {
                 _appearance.SetData(uid, PlantHolderVisuals.PlantRsi, component.Seed.PlantRsi.ToString(), app);
                 _appearance.SetData(uid, PlantHolderVisuals.PlantState, $"stage-{component.Seed.GrowthStages}", app);
-                PlaySound(uid, component.Seed);
+                PlayAmbientSound(uid, component.Seed); // Moffstation
             }
         }
         else
@@ -1003,12 +1003,13 @@ public sealed class PlantHolderSystem : EntitySystem
     }
 
     // Moffstation - Start
-    public void PlaySound(EntityUid plantholder , SeedData? seed = null)
+    public void PlayAmbientSound(EntityUid plantholder , SeedData? seed = null)
     {
-        if (seed == null || !seed.HasAmbientSound)
+        if (seed == null || seed.AmbientSound == null)
         {
             return;
         }
         _audio.PlayPvs(seed.AmbientSound, plantholder, AudioParams.Default.WithVolume(-10));
     }
+    // Moffstation - End
 }
