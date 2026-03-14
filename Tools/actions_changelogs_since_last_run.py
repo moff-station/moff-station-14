@@ -25,8 +25,8 @@ DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 CHANGELOG_FILE = "Resources/Changelog/Mofflog.yml"
 
-# Moffstation - Emojis are being fucking STUPID kill them
-TYPES_TO_EMOJI = {"Fix": "Fixed", "Add": "Added", "Remove": "Removed", "Tweak": "Tweaked"}
+# moffstation - lowercase for changelog
+TYPES_TO_EMOJI = {"fix": "<:barry:1333171778872279153>", "add": ":new:", "remove": "<:killsmite:1322919674413056081>", "tweak": "<:godo:1378009287321976912>️"}
 
 ChangelogEntry = dict[str, Any]
 
@@ -183,7 +183,7 @@ def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> lis
                 url = None
 
             for change in entry["changes"]:
-                emoji = TYPES_TO_EMOJI.get(change["type"], "❓")
+                emoji = TYPES_TO_EMOJI.get(change["type"].lower(), "❓") # moffstation - lower case
                 message = change["message"]
 
                 # if a single line is longer than the limit, it needs to be truncated
@@ -192,9 +192,9 @@ def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> lis
 
                 if url is not None:
                     pr_number = url.split("/")[-1]
-                    line = f"{emoji}: {message} ([#{pr_number}]({url}))\n" # moffstation - emoji hatred
+                    line = f"{emoji} - {message} ([#{pr_number}]({url}))\n"
                 else:
-                    line = f"{emoji}: {message}\n" # moffstation - emoji hatred
+                    line = f"{emoji} - {message}\n"
 
                 message_lines.append(line)
 
