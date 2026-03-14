@@ -60,15 +60,16 @@
   table: !type:GroupSelector
     children:
     - !type:GroupSelector # Standard NT Borgs
-      weight: 85
+      weight: 90 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
       children:
         - id: DerelictEngineerCyborgSpawn
         - id: DerelictGenericCyborgSpawn
         - id: DerelictJanitorCyborgSpawn
         - id: DerelictMedicalCyborgSpawn
         - id: DerelictMiningCyborgSpawn
+        - id: DerelictServiceCyborgSpawn # Moffstation
     - !type:GroupSelector # Other Borgs
-      weight: 15
+      weight: 10 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
       children:
         - id: DerelictSyndicateAssaultCyborgSpawn
 
