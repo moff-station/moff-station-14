@@ -1,3 +1,4 @@
+# Coffee
 - type: seed
   id: coffee
   name: seeds-coffee-name
@@ -46,19 +47,46 @@
       Max: 30
       PotencyDivisor: 4
 
+# Flowers
 - type: seed
   id: placeholderBlue
   name: seeds-placeholder-blue-name
   noun: seeds-noun-seeds
   displayName: seeds-placeholder-blue-display-name
   plantRsi: _Moffstation/Objects/Specific/Hydroponics/flower_placeholder_blue.rsi
-  ambientSound:
-    collection: PlantWhispers
   packetPrototype: PlaceholderBlueSeeds
   productPrototypes:
   - FoodPlaceholderBlue
   mutationPrototypes:
-  - lily # change to placeholder void later
+  - deathsBreath
+  lifespan: 25
+  maturation: 10
+  production: 3
+  yield: 3
+  potency: 10
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 50
+    Bicaridine:
+      Min: 1
+      Max: 20
+      PotencyDivisor: 5
+
+- type: seed
+  id: deathsBreath
+  name: seeds-deaths-breath-name
+  noun: seeds-noun-seeds
+  displayName: seeds-deaths-breath-display-name
+  plantRsi: _Moffstation/Objects/Specific/Hydroponics/flower_placeholder_void.rsi
+  ambientSound:
+    collection: PlantWhispers
+  packetPrototype: DeathsBreathSeeds
+  productPrototypes:
+  - FoodDeathsBreath
   lifespan: 25
   maturation: 10
   production: 3

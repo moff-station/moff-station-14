@@ -27,3 +27,13 @@
     seedId: placeholderBlue
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/flower_placeholder_blue.rsi
+
+- type: entity
+  parent: SeedBase
+  id: DeathsBreathSeeds
+  name: packet of death's breath seeds
+  components:
+  - type: Seed
+    seedId: deathsBreath
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Hydroponics/flower_placeholder_void.rsi
