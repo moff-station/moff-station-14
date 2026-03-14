@@ -175,13 +175,16 @@ public sealed class MarkingManager
     /// </summary>
     public void EnsureValidLayers(Dictionary<HumanoidVisualLayers, List<Marking>> markingSets, HashSet<HumanoidVisualLayers> layers)
     {
-        foreach (var markings in markingSets.Values)
+        foreach (var (markingSet, markings) in markingSets) // MoffStation
         {
             for (var i = markings.Count - 1; i >= 0; i--)
             {
                 if (!TryGetMarking(markings[i], out var marking) || !layers.Contains(marking.BodyPart))
                     markings.RemoveAt(i);
             }
+            // MoffStation Start
+            if (markings.Count == 0)
+                markingSets.Remove(markingSet); // MoffStation End
         }
     }
 
