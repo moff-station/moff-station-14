@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseChemistryVial
+  name: bluespace vial
+  description: Powered by experimental bluespace technology.
+  id: BluespaceVial # check
+  components:
+  - type: Item
+    sprite: Objects/Specific/Chemistry/vial_bluespace.rsi
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/vial_bluespace.rsi
+    layers:
+    - state: icon
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: true
+    - state: base
+      map: ["enum.SolutionContainerLayers.Base"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    inHandsMaxFillLevels: 2
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 200
+  - type: SolutionTransfer
+    maxTransferAmount: 200
+  - type: StaticPrice
+    price: 100
