@@ -942,6 +942,7 @@ public sealed class PlantHolderSystem : EntitySystem
             {
                 _appearance.SetData(uid, PlantHolderVisuals.PlantRsi, component.Seed.PlantRsi.ToString(), app);
                 _appearance.SetData(uid, PlantHolderVisuals.PlantState, "harvest", app);
+                PlaySound();
             }
             else if (component.Age < component.Seed.Maturation)
             {
@@ -995,5 +996,18 @@ public sealed class PlantHolderSystem : EntitySystem
         component.SkipAging++; // We're forcing an update cycle, so one age hasn't passed.
         component.ForceUpdate = true;
         Update(uid, component);
+    }
+
+    // Moffstation - Start
+    public void PlaySound(bool hasSound)
+    {
+        if (!hasSound)
+        {
+            return;
+        }
+        else
+        {
+            _audio.PlayPvs(seed.ScreamSound, plantholder);
+        }
     }
 }
