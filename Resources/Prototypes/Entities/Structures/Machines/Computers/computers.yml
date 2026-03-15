@@ -1687,10 +1687,17 @@
           components:
           - SiliconLawProvider
           - Item
+        disableEject: true # Moffstation - There must always be... a lawboard.
   - type: ContainerContainer
     containers:
       circuit_holder: !type:ContainerSlot
       board: !type:Container
+  # Moffstation - Start - Station AI law uploads start with a board
+  - type: ContainerFill
+    containers:
+      circuit_holder:
+      - AsimovCircuitBoard
+  # Moffstation - End
 
 - type: entity
   id: StationAiFixerComputer
