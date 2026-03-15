@@ -24,8 +24,8 @@
   - type: SolutionTransfer
     maxTransferAmount: 200
   - type: StaticPrice
-    price: 100 
-  - type: Damageable
+    price: 100
+      - type: Damageable
     damageContainer: Inorganic
     damageModifierSiet: FlimsyGlass
   - type: Destructible
@@ -46,9 +46,13 @@
       - !type:SpillBehavior { }
       - !type:SpawnEntitiesBehavior
         spawn:
-          ShardGlass: # less glass than base
+          ShardGlass:
+            min: 0
+            max: 1
+          SheetSteel1:
             min: 0
             max: 1
         transferForensics: true
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+        
