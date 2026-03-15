@@ -41,6 +41,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components.ItemToggleMeleeWeaponComponent;
+using Content.Shared._Moffstation.Traits.Components; // Moffstation
 
 namespace Content.Shared.Weapons.Melee;
 
@@ -824,7 +825,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (HasComp<DisarmProneComponent>(disarmer))
             return 1.0f;
 
-        if (HasComp<DisarmProneComponent>(disarmed))
+        if (HasComp<DisarmProneComponent>(disarmed) || HasComp<FeebleComponent>(disarmed)) // Moffstation - Feeble Component
             return 0.0f;
 
         var chance = disarmerComp.BaseDisarmFailChance;
