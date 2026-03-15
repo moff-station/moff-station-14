@@ -101,8 +101,10 @@
     speedModifierThresholds:
       60: 0.9
       80: 0.7
+  # Moffstation - Start - Skeleton Drinking
   - type: MessyDrinker
     spillChance: 1
+  # Moffstation - End
   - type: Speech
     speechVerb: Skeleton
   - type: ZombieImmune
