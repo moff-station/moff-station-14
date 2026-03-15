@@ -25,3 +25,33 @@
     maxTransferAmount: 200
   - type: StaticPrice
     price: 100
+      - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSiet: FlimsyGlass
+  - type: Destructible
+    thresholds:
+    - trigger: &DamageTrigger100
+        !type:DamageTrigger
+        damage: 200
+      behaviors: &OverkillBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 45 # stronger than base
+      behaviors:
+      - &SoundGlassBreak !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpillBehavior { }
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlass:
+            min: 0
+            max: 1
+          SheetSteel1:
+            min: 0
+            max: 1
+        transferForensics: true
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
