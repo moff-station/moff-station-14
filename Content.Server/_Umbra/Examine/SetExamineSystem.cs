@@ -1,5 +1,5 @@
 using Content.Server.Administration;
-using Content.Shared._Umbra.Examine;
+using Content.Shared._Umbra.Examine.SetExamine;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;

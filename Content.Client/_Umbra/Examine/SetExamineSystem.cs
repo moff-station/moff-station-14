@@ -1,4 +1,4 @@
-using Content.Shared._Umbra.Examine;
+using Content.Shared._Umbra.Examine.SetExamine;
 
 namespace Content.Client._Umbra.Examine;
 

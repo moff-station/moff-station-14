@@ -1,7 +1,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Umbra.Examine;
+namespace Content.Shared._Umbra.Examine.SetExamine;
 
 /// <summary>
 /// Flavour text when this entity is examined. Set with an action.
