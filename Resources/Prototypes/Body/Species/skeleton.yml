@@ -63,6 +63,7 @@
       LegRight: OrganSkeletonPersonLegRight
       FootLeft: OrganSkeletonPersonFootLeft
       FootRight: OrganSkeletonPersonFootRight
+      Stomach: OrganSkeletonPersonStomach # Moffstation - Drinking
   - type: HumanoidProfile
     species: Skeleton
 
@@ -100,6 +101,8 @@
     speedModifierThresholds:
       60: 0.9
       80: 0.7
+  - type: MessyDrinker
+    spillChance: 1
   - type: Speech
     speechVerb: Skeleton
   - type: ZombieImmune
@@ -242,3 +245,16 @@
 - type: entity
   parent: [ OrganBaseFootRight, OrganSkeletonPersonExternal ]
   id: OrganSkeletonPersonFootRight
+
+# Moffstation - Start - Skeleton Drinker
+- type: entity
+  parent: OrganBaseStomach
+  id: OrganSkeletonPersonStomach
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 200
+  - type: Metabolizer
+    metabolizerTypes: [ Animal ]
+# Moffstation - End
