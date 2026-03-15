@@ -25,9 +25,6 @@
     maxTransferAmount: 200
   - type: StaticPrice
     price: 100
-      - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSiet: FlimsyGlass
   - type: Destructible
     thresholds:
     - trigger: &DamageTrigger100
@@ -38,7 +35,7 @@
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 45 # stronger than base
+        damage: 45 # Thrice as durable as a normal vial
       behaviors:
       - &SoundGlassBreak !type:PlaySoundBehavior
         sound:
@@ -55,4 +52,3 @@
         transferForensics: true
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-        
