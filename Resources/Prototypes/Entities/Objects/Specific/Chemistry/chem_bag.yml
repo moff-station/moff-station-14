@@ -2,7 +2,7 @@
   name: chemistry bag
   id: ChemBag
   parent: BaseStorageItem
-  description: A bag for storing chemistry products, such as jugs, beakers, pills, pill canisters, vials, and syringes. # Moffstation - Fitting jugs and vials instead of bottles
+  description: A bag for storing chemistry products, such as jugs, beakers, pills, pill canisters, vials, bottles and syringes. # Moffstation - Medbaybelt Rework
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Belt/chemistry.rsi # Moffstation - Davyei's Sprite
@@ -19,7 +19,6 @@
     maxItemSize: Normal 
     grid:
       - 0,0,6,1
-      - 7,0,7,0
 #    Upstream functionality rewritten
 #    quickInsert: true
 #    areaInsert: true
@@ -34,6 +33,7 @@
         - CentrifugeCompatible # Existing Vial only tag
         - Syringe
         - Dropper
+        - Bottle
   - type: Dumpable
   - type: QuickPickup
   - type: AreaPickup
