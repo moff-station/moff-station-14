@@ -46,7 +46,7 @@
         weight: 15
       - !type:NestedSelector
         tableId: MaintToolsTable
-        weight: 25 
+        weight: 25
       - !type:NestedSelector
         tableId: MaintFluffTable
         weight: 33
@@ -59,9 +59,10 @@
       - !type:NestedSelector
         tableId: SyndieMaintLoot
         weight: 5
-    - !type:NestedSelector
-      tableId: MaintLootLite
-      prob: 0.33 # Recursive chance to roll more than one item
+        # Unfortunately this causes stack overflow exceptions when statically evaluating the possible contents of this table.
+#    - !type:NestedSelector
+#      tableId: MaintLootLite
+#      prob: 0.33 # Recursive chance to roll more than one item
 
 - type: entity
   parent: CrateCoffin
@@ -72,7 +73,7 @@
     containers:
       entity_storage: !type:AllSelector
         children:
-        - !type:NestedSelector 
+        - !type:NestedSelector
           tableId: MaintLootLite
           prob: 0.33
         - !type:NestedSelector
@@ -738,21 +739,21 @@
     children:
     - id: SalvageHumanCorpse
       weight: 50
-    - id: MobRandomServiceCorpse 
+    - id: MobRandomServiceCorpse
       weight: 8
-    - id: MobRandomEngineerCorpse 
+    - id: MobRandomEngineerCorpse
       weight: 8
-    - id: MobRandomCargoCorpse 
+    - id: MobRandomCargoCorpse
       weight: 8
-    - id: MobRandomMedicCorpse 
+    - id: MobRandomMedicCorpse
       weight: 8
-    - id: MobRandomScienceCorpse 
+    - id: MobRandomScienceCorpse
       weight: 8
-    - id: MobRandomSecurityCorpse 
+    - id: MobRandomSecurityCorpse
       weight: 8
-    - id: MobRandomCommandCorpse 
+    - id: MobRandomCommandCorpse
       weight: 2
-  
+
 
 - type: entity
   parent: Morgue
@@ -824,7 +825,7 @@
 #Urns
 - type: entityTable
   id: UrnCommonThings
-  table: !type:GroupSelector 
+  table: !type:GroupSelector
     children:
     - !type:GroupSelector # 1x1 items can fit two
       children:
