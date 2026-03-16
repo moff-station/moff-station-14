@@ -1043,3 +1043,259 @@
       path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
   - type: StealTarget
     stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolsup9
+  name: SUP-9
+  description: "Probably silenced. Probably."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/sup9.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/sup9.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistold58
+  name: D58
+  description: "When you're dealing with sand."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/d58.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/d58.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolfs92
+  name: FS92
+  description: "When you're dealing with evil residents."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/fs92.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/fs92.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolfs92
+  name: FS92
+  description: "When you're dealing with evil residents."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/fs92.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/fs92.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolvz36
+  name: VZ-36
+  description: "When you're dealing with evil scavs."
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Objects/Weapons/Guns/pistol/vz36.rsi
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-0
+          map: ["enum.GunVisualLayers.Mag"]
+    - type: Clothing
+      sprite: _Moffstation/Objects/Weapons/Guns/pistol/vz36.rsi
+    - type: Gun
+      minAngle: 5
+      maxAngle: 20
+      fireRate: 10
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+      selectedMode: FullAuto
+      availableModes:
+      - FullAuto
+      - SemiAuto
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazinePistolSubMachineGun
+          insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - MagazinePistolSubMachineGun
+          whitelistFailPopup: gun-magazine-whitelist-fail
+        gun_chamber:
+          name: Chamber
+          priority: 1
+          whitelist:
+            tags:
+              - CartridgePistol
+    - type: MagazineVisuals
+      magState: mag
+      steps: 1
+      zeroVisible: true
+    - type: Appearance
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolwt58
+  name: WT-58
+  description: "An autopistol modification for the MK58."
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Objects/Weapons/Guns/pistol/wt58.rsi
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-0
+          map: ["enum.GunVisualLayers.Mag"]
+    - type: Clothing
+      sprite: _Moffstation/Objects/Weapons/Guns/pistol/wt58.rsi
+    - type: Gun
+      minAngle: 5
+      maxAngle: 20
+      fireRate: 10
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+      selectedMode: FullAuto
+      availableModes:
+      - FullAuto
+      - SemiAuto
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazinePistolSubMachineGun
+          insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - MagazinePistolSubMachineGun
+          whitelistFailPopup: gun-magazine-whitelist-fail
+        gun_chamber:
+          name: Chamber
+          priority: 1
+          whitelist:
+            tags:
+              - CartridgePistol
+    - type: MagazineVisuals
+      magState: mag
+      steps: 4
+      zeroVisible: true
+    - type: Appearance
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolvz36j
+  name: VZ-36J
+  description: "Diego really loves this one."
+  components:
+    - type: Sprite
+      sprite: _Moffstation/Objects/Weapons/Guns/pistol/vz36j.rsi
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-0
+          map: ["enum.GunVisualLayers.Mag"]
+    - type: Clothing
+      sprite: _Moffstation/Objects/Weapons/Guns/pistol/vz36j.rsi
+    - type: Gun
+      minAngle: 5
+      maxAngle: 20
+      fireRate: 10
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+      selectedMode: FullAuto
+      availableModes:
+      - FullAuto
+      - SemiAuto
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazinePistolSubMachineGun
+          insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - MagazinePistolSubMachineGun
+          whitelistFailPopup: gun-magazine-whitelist-fail
+        gun_chamber:
+          name: Chamber
+          priority: 1
+          whitelist:
+            tags:
+              - CartridgePistol
+    - type: MagazineVisuals
+      magState: mag
+      steps: 1
+      zeroVisible: true
+    - type: Appearance
+
