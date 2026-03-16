@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Extensions;
-using Content.Shared.Movement.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
@@ -80,6 +79,14 @@ public abstract partial class SharedPlayingCardsSystem
         );
     }
 
+    /// Special case of <see cref="Add{TStack}(Entity{TStack}, IEnumerable{Entity{PlayingCardComponent}}, EntityCoordinates, EntityUid?)">Add</see>
+    /// which takes exactly one card, allowing for skipping providing the cards' coordinates.
+    public void Add<TStack>(
+        Entity<TStack> stack,
+        Entity<PlayingCardComponent> card,
+        EntityUid? user
+    ) where TStack : PlayingCardStackComponent => Add(stack, [card], Transform(card).Coordinates, user);
+
 
     /// A source of cards for transferring. Cards in the specified <paramref name="range"/> are taken from their current
     /// location and yielded in the returned enumerable. The <paramref name="user"/> is also provided so that things
@@ -123,6 +130,8 @@ public abstract partial class SharedPlayingCardsSystem
         EntityUid? user
     )
     {
+        // TODO Contact interaction?
+
         var pickupAnimationEnt = sink(source(range, user), user);
 
         if (user is { } u && pickupAnimationEnt is { } ent)
@@ -136,7 +145,7 @@ public abstract partial class SharedPlayingCardsSystem
         {
             PlayingCardDeckComponent deck => AsCardSource((entity, deck)),
             PlayingCardHandComponent hand => AsCardSource((entity, hand)),
-            _ => throw new($"Unknown variant of {nameof(PlayingCardStackComponent)}"),
+            _ => entity.Comp.ThrowUnknownInheritor<TStack, CardSource>(),
         };
 
     private CardSource AsCardSource(Entity<PlayingCardDeckComponent> entity)
@@ -234,13 +243,21 @@ public abstract partial class SharedPlayingCardsSystem
         }
     }
 
-    private CardSink CardSinkFrom<TStack>(Entity<TStack> entity) where TStack : PlayingCardStackComponent =>
-        entity.Comp switch
+    private CardSink CardSinkFrom<TStack>(Entity<TStack> entity) where TStack : PlayingCardStackComponent
+    {
+        if (IsClientSide(entity))
+        {
+            Log.Warning($"Creating noop card sink due to requested sink entity being predicted ({entity})");
+            return (_, _) => null;
+        }
+
+        return entity.Comp switch
         {
             PlayingCardDeckComponent deck => AsCardSink((entity, deck)),
             PlayingCardHandComponent hand => AsCardSink((entity, hand)),
-            _ => throw new($"Unknown variant of {nameof(PlayingCardStackComponent)}"),
+            _ => entity.Comp.ThrowUnknownInheritor<TStack, CardSink>(),
         };
+    }
 
     private CardSink AsCardSink(Entity<PlayingCardDeckComponent> entity) => (cards, user) =>
     {
@@ -337,6 +354,8 @@ public abstract partial class SharedPlayingCardsSystem
             _ => cardLike.ThrowUnknownInheritor<CardLike, Entity<PlayingCardComponent>?>(),
         };
 
+    /// Splits the given <paramref name="source"/> into two lists, one of elements in the range and one of elements
+    /// outside the range.
     private static (List<T> inRange, List<T> outOfRange) Split<T>(ICollection<T> source, Range range)
     {
         var start = range.Start.GetOffset(source.Count);

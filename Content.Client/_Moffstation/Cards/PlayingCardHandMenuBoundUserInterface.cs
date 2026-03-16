@@ -9,7 +9,10 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Moffstation.Cards;
 
 [UsedImplicitly]
-public sealed class PlayingCardHandMenuBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed class PlayingCardHandMenuBoundUserInterface(
+    EntityUid owner,
+    Enum uiKey
+) : BoundUserInterface(owner, uiKey)
 {
     private SimpleRadialMenu? _menu;
 
@@ -28,14 +31,17 @@ public sealed class PlayingCardHandMenuBoundUserInterface(EntityUid owner, Enum 
             EntMan.System<SharedPlayingCardsSystem>()
                 .GetCards(Owner)
                 .Select(card => new RadialMenuActionOption<Entity<PlayingCardComponent>>(OnPressed, card)
-                    {
-                        IconSpecifier = RadialMenuIconSpecifier.With(card),
-                        ToolTip = card.Comp.Name,
-                    }
-                )
+                {
+                    IconSpecifier = RadialMenuIconSpecifier.With(card),
+                    ToolTip = card.Comp.Name(),
+                })
         );
     }
 
-    private void OnPressed(Entity<PlayingCardComponent> card) =>
+    private void OnPressed(Entity<PlayingCardComponent> card)
+    {
         SendPredictedMessage(new DrawPlayingCardFromHandMessage(EntMan.GetNetEntity(card)));
+        _menu?.Close();
+        Close();
+    }
 }

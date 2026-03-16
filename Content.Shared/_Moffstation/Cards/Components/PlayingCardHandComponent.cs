@@ -1,7 +1,7 @@
 using Content.Shared._Moffstation.Cards.Systems;
+using Content.Shared._Moffstation.Extensions;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Cards.Components;
 
@@ -32,15 +32,26 @@ public sealed partial class PlayingCardHandComponent : PlayingCardStackComponent
     [DataField]
     public float Scale = 1;
 
-    [DataField] public LocId ConvertToDeckText = "card-verb-convert-to-deck";
-    [DataField] public SpriteSpecifier? ConvertToDeckIcon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/rotate_cw.svg.192dpi.png"));
-    [DataField] public LocId CardsAddedText = "cards-stackquantitychange-added";
-    [DataField] public LocId CardsRemovedText = "cards-stackquantitychange-removed";
-    [DataField] public LocId CardsChangedText = "cards-stackquantitychange-unknown";
-
     /// Sprite layers added to this entity based on contained cards' <see cref="PlayingCardComponent.Sprite"/>.
     [ViewVariables]
     public HashSet<string> SpriteLayersAdded = [];
+
+    [ViewVariables, AutoNetworkedField]
+    public NetEntity? PickedCardDestination;
+
+    public static readonly LocId CardsAddedText = "playing-cards-hand-card-count-changed-added";
+    public static readonly LocId CardsRemovedText = "playing-cards-hand-card-count-changed-removed";
+    public static readonly LocId CardsChangedText = "playing-cards-hand-card-count-changed-unknown";
+
+    public new static class Verbs
+    {
+        public static readonly VerbInfo CardPickup = VerbInfo.Build("playing-card-hand-card-pickup", "pickup");
+        public static readonly VerbInfo StackPickup = VerbInfo.Build("playing-card-hand-stack-pickup", "pickup");
+
+        public static readonly VerbInfo StackPickupEntire = VerbInfo.Build("playing-card-hand-stack-pickup-entire", "insert");
+
+        public static readonly VerbInfo ConvertToDeck = VerbInfo.Build("playing-card-hand-convert-to-deck", "rotate_cw");
+    }
 }
 
 /// The value used to key the UI state for a <see cref="PlayingCardHandComponent"/>.

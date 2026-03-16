@@ -1,12 +1,9 @@
-using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Extensions;
+using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Storage.EntitySystems;
-using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -31,7 +28,10 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly SharedVerbSystem _verb = default!;
+    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+
+    /// The priority of verbs for placing cards, should be high so that alt+clicking things always tries to do these.
+    private const int PlacementVerbPriority = 100;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -87,5 +87,74 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     {
         comp.FaceDown = faceDown;
         return comp;
+    }
+
+    /// Returns the given <paramref name="entity"/> with its component of type <typeparamref name="TComp"/> or
+    /// <c>null</c> if it does not have that component. I just wanna use this all over and I NEED IT.
+    private new Entity<TComp>? CompOrNull<TComp>(EntityUid? entity) where TComp : Component =>
+        entity is { } e && TryComp<TComp>(entity, out var comp) ? new Entity<TComp>(e, comp) : null;
+
+    /// This convenience function is used to make implementing interactions between card entities easier. It's kind of
+    /// like a <c>switch</c> which runs the given handlers when <paramref name="switchOn"/> has certain components.
+    /// It's assumed that <paramref name="switchOn"/> does not have more than one playing card related component.
+    /// Returns false if <paramref name="switchOn"/> does not have any playing card related components, or if it is the
+    /// same entity as <paramref name="receiver"/>.
+    private bool HandlePlayingCardComponents(
+        EntityUid? switchOn,
+        EntityUid receiver,
+        Action<Entity<PlayingCardComponent>> onCard,
+        Action<Entity<PlayingCardDeckComponent>> onDeck,
+        Action<Entity<PlayingCardHandComponent>> onHand
+    )
+    {
+        if (switchOn == receiver)
+            return false;
+        if (CompOrNull<PlayingCardComponent>(switchOn) is { } card)
+        {
+            onCard(card);
+            return true;
+        }
+
+        if (CompOrNull<PlayingCardDeckComponent>(switchOn) is { } deck)
+        {
+            onDeck(deck);
+            return true;
+        }
+
+        if (CompOrNull<PlayingCardHandComponent>(switchOn) is { } hand)
+        {
+            onHand(hand);
+            return true;
+        }
+
+        return false;
+    }
+
+    /// This is just a variant of <see cref="HandlePlayingCardComponents(EntityUid?,EntityUid,Action{Entity{PlayingCardComponent}},Action{Entity{PlayingCardDeckComponent}},Action{Entity{PlayingCardHandComponent}})"/>
+    /// which coalesces the handling of decks and hands into a single handler for stacks.
+    private bool HandlePlayingCardComponents(
+        EntityUid? switchOn,
+        EntityUid receiver,
+        Action<Entity<PlayingCardComponent>> onCard,
+        Action<Entity<PlayingCardStackComponent>> onStack
+    ) => HandlePlayingCardComponents(
+        switchOn,
+        receiver,
+        onCard,
+        deck => onStack((deck, deck)), // Type safety is my passion :^)
+        hand => onStack((hand, hand))
+    );
+
+    /// Runs <paramref name="action"/> if <paramref name="user"/> can pick up <paramref name="subject"/> to its hand
+    /// with <paramref name="handId"/> (or its currently active hand if <c>null</c>).
+    private bool PerformIfCanPickUp(EntityUid user, EntityUid subject, Func<EntityUid?> action, string? handId = null)
+    {
+        Entity<HandsComponent?> userHands = new(user, null);
+        if ((handId ?? _hands.GetActiveHand(userHands)) is not { } hand ||
+            !_hands.CanPickupToHand(userHands, subject, hand, handsComp: userHands))
+            return false;
+
+        return action() is { } toPickup &&
+               _hands.TryPickup(userHands, toPickup, animate: false, handsComp: userHands, handId: hand);
     }
 }

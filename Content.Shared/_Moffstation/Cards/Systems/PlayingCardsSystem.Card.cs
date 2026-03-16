@@ -5,10 +5,11 @@ using Content.Shared._Moffstation.Cards.Prototypes;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Verbs;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using static Content.Shared._Moffstation.Cards.Components.PlayingCardComponent;
+using static Content.Shared._Moffstation.Cards.Components.PlayingCardComponent.Verbs;
 
 namespace Content.Shared._Moffstation.Cards.Systems;
 
@@ -22,18 +23,19 @@ public abstract partial class SharedPlayingCardsSystem
     {
         SubscribeLocalEvent<PlayingCardComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<PlayingCardComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<PlayingCardComponent, UseInHandEvent>(OnUseInHand);
+        SubscribeLocalEvent<PlayingCardComponent, PlayingCardFlippedEvent>(OnFlipped);
+        SubscribeLocalEvent<PlayingCardComponent, PlayingCardPickedEvent>(OnPlayingCardPicked);
         SubscribeLocalEvent<PlayingCardComponent, ActivateInWorldEvent>(OnActivateInWorld);
         SubscribeLocalEvent<PlayingCardComponent, InteractUsingEvent>(OnInteractUsing);
-        SubscribeLocalEvent<PlayingCardComponent, GetVerbsEvent<ActivationVerb>>(OnGetActivationVerbs);
+        SubscribeLocalEvent<PlayingCardComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbs);
         SubscribeLocalEvent<PlayingCardComponent, GetVerbsEvent<UtilityVerb>>(OnGetUtilityVerbs);
-        SubscribeLocalEvent<PlayingCardComponent, PlayingCardFlippedEvent>(OnFlipped);
     }
 
 
     /// Sets the card's facing to <paramref name="faceDown"/>, or flips it if <paramref name="faceDown"/> is null.
     public void Flip(Entity<PlayingCardComponent> card, bool? faceDown)
     {
+        // Delegate to internal method, discarding its return value.
         SetFacingOrFlip(card, faceDown);
     }
 
@@ -49,16 +51,7 @@ public abstract partial class SharedPlayingCardsSystem
         if (!args.IsInDetailsRange || entity.Comp.FaceDown)
             return;
 
-        args.PushMarkup(Loc.GetString(entity.Comp.ExamineText, ("target", entity.Comp.Name)));
-    }
-
-    private void OnUseInHand(Entity<PlayingCardComponent> entity, ref UseInHandEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        Flip(entity, faceDown: null);
-        args.Handled = true;
+        args.PushMarkup(Loc.GetString(ExamineText, ("target", entity.Comp.ObverseName)));
     }
 
     private void OnActivateInWorld(Entity<PlayingCardComponent> entity, ref ActivateInWorldEvent args)
@@ -70,114 +63,13 @@ public abstract partial class SharedPlayingCardsSystem
         args.Handled = true;
     }
 
-    private void OnInteractUsing(Entity<PlayingCardComponent> entity, ref InteractUsingEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        // When using a card on a deck, add it to the deck
-        if (TryComp<PlayingCardDeckComponent>(args.Used, out var usedDeck))
-        {
-            Add<PlayingCardDeckComponent>((args.Used, usedDeck), [entity], Transform(entity).Coordinates, args.User);
-            args.Handled = true;
-            return;
-        }
-
-        // When using a card on a hand, add it to the hand
-        if (TryComp<PlayingCardHandComponent>(args.Used, out var usedHand))
-        {
-            Add<PlayingCardHandComponent>((args.Used, usedHand), [entity], Transform(entity).Coordinates, args.User);
-            args.Handled = true;
-            return;
-        }
-
-        // When using a card on another card, create a hand with both cards
-        if (TryComp<PlayingCardComponent>(args.Used, out var usedCard) &&
-            CreateHand([(args.Used, usedCard), entity], args.User) is { } hand)
-        {
-            _hands.PickupOrDrop(args.User, hand);
-            args.Handled = true;
-        }
-    }
-
-    private void OnGetActivationVerbs(Entity<PlayingCardComponent> entity, ref GetVerbsEvent<ActivationVerb> args)
-    {
-        if (!args.CanAccess || !args.CanInteract || args.Hands == null)
-            return;
-
-        args.Verbs.Add(new ActivationVerb
-        {
-            Act = () => Flip(entity, faceDown: null),
-            Text = Loc.GetString(entity.Comp.FlipText),
-            Icon = entity.Comp.FlipIcon,
-        });
-    }
-
-    private void OnGetUtilityVerbs(Entity<PlayingCardComponent> entity, ref GetVerbsEvent<UtilityVerb> args)
-    {
-        if (!args.CanAccess || !args.CanInteract)
-            return;
-
-        var user = args.User;
-        var target = args.Target;
-
-        // When using a card on a deck, add it to the deck
-        if (TryComp<PlayingCardDeckComponent>(args.Target, out var targetDeck))
-        {
-            args.Verbs.Add(new UtilityVerb
-            {
-                Text = Loc.GetString(entity.Comp.AddToDeckText),
-                Act = () => Add<PlayingCardDeckComponent>(
-                    (target, targetDeck),
-                    [entity],
-                    Transform(entity).Coordinates,
-                    user
-                ),
-                Icon = entity.Comp.AddIcon,
-            });
-            return;
-        }
-
-        // When using a card on a hand, add it to the hand
-        if (TryComp<PlayingCardHandComponent>(args.Target, out var targetHand))
-        {
-            args.Verbs.Add(new UtilityVerb
-            {
-                Text = Loc.GetString(entity.Comp.AddToHandText),
-                Act = () => Add<PlayingCardHandComponent>(
-                    (target, targetHand),
-                    [entity],
-                    Transform(entity).Coordinates,
-                    user
-                ),
-                Icon = entity.Comp.AddIcon,
-            });
-            return;
-        }
-
-        // When using a card on another card, create a hand with both cards
-        if (TryComp<PlayingCardComponent>(args.Target, out var targetCard))
-        {
-            args.Verbs.Add(new UtilityVerb
-            {
-                Text = Loc.GetString(entity.Comp.CreateHandText),
-                Act = () =>
-                {
-                    if (CreateHand([(target, targetCard), entity], user) is { } hand)
-                    {
-                        _hands.PickupOrDrop(user, hand);
-                    }
-                },
-                Icon = entity.Comp.CreateHandIcon,
-            });
-        }
-    }
-
     private void OnFlipped(Entity<PlayingCardComponent> entity, ref PlayingCardFlippedEvent args)
     {
-        _metadata.SetEntityName(entity, entity.Comp.FaceDown ? entity.Comp.ReverseName : entity.Comp.Name);
-        _metadata.SetEntityDescription(entity,
-            entity.Comp.FaceDown ? (entity.Comp.ReverseDescription ?? "") : entity.Comp.Description);
+        _metadata.SetEntityName(entity, entity.Comp.Name());
+        _metadata.SetEntityDescription(
+            entity,
+            entity.Comp.FaceDown ? entity.Comp.ReverseDescription ?? "" : entity.Comp.Description
+        );
         _appearance.SetData(entity, PlayingCardVisuals.IsFaceDown, entity.Comp.FaceDown);
         Dirty(entity);
 
@@ -191,6 +83,92 @@ public abstract partial class SharedPlayingCardsSystem
         {
             hand.DirtyVisuals = true;
         }
+    }
+
+    private void OnPlayingCardPicked(Entity<PlayingCardComponent> entity, ref PlayingCardPickedEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        JoinIntoHandIfHeldOtherwiseDeck(entity, TakePickedCard(args, Transform(entity).Coordinates), args.User);
+        args.Handled = true;
+    }
+
+    /// Creates a new deck or hand containing the given cards. Returns null in the exceptional case that a hand cannot
+    /// be created.
+    private EntityUid? JoinIntoHandIfHeldOtherwiseDeck(
+        Entity<PlayingCardComponent> destination,
+        Entity<PlayingCardComponent> moved,
+        EntityUid user
+    ) => _hands.IsHolding(user, destination)
+        ? JoinIntoHeldCardMakingHand(user, destination, [moved])
+        : CreateDeckPredicted([destination, moved], user, null, Transform(destination).Coordinates);
+
+
+    /// These interactions are invoked when left-clicking on a card with a held item.
+    private void OnInteractUsing(Entity<PlayingCardComponent> targetCard, ref InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        var user = args.User;
+        args.Handled = HandlePlayingCardComponents(
+            args.Used,
+            targetCard,
+            // Card: pick up this card to the used card, creating a new hand.
+            usedCard => JoinIntoHeldCardMakingHand(user, usedCard, [targetCard]),
+            // Deck: pick up this card, placing it on the top of the used stack.
+            usedStack => Add(usedStack, targetCard, user)
+        );
+    }
+
+    /// These verbs are available when right-clicking on an entity while holding a card.
+    private void OnGetUtilityVerbs(Entity<PlayingCardComponent> usedCard, ref GetVerbsEvent<UtilityVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        var verbs = args.Verbs;
+        var user = args.User;
+        HandlePlayingCardComponents(
+            args.Target,
+            usedCard,
+            // Card: pick up the target card to the this card, creating a new hand.
+            targetCard => verbs.Add(CardPickup, () => JoinIntoHeldCardMakingHand(user, usedCard, [targetCard])),
+            // Deck: draw a card from the target deck, creating a new hand with this card.
+            targetDeck => verbs.Add(PlayingCardDeckComponent.Verbs.CardPickup,
+                () => JoinIntoHeldCardMakingHand(user, usedCard, [TakeTopCard(targetDeck, user)])),
+            // Hand: open the picker UI. It'll handle combining cards and stuff.
+            targetHand => verbs.Add(PlayingCardHandComponent.Verbs.CardPickup,
+                () => OpenPickerUi(targetHand, usedCard, user))
+        );
+    }
+
+    /// These verbs are available when right-clicking on a card.
+    private void OnGetAlternativeVerbs(Entity<PlayingCardComponent> targetCard, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || args.Hands == null)
+            return;
+
+        var verbs = args.Verbs;
+        var user = args.User;
+        HandlePlayingCardComponents(
+            args.Using,
+            targetCard,
+            // Card: place the used card on top of this card, creating a new deck.
+            usedCard => verbs.Add(CardPutDown, PlacementVerbPriority, () => JoinIntoHandIfHeldOtherwiseDeck(targetCard, usedCard, user)),
+            // Stack: draw one card from the used deck, placing it on the target card, creating a new deck.
+            usedDeck => verbs.Add(
+                DeckPutDown,
+                PlacementVerbPriority,
+                () => JoinIntoHandIfHeldOtherwiseDeck(targetCard, TakeTopCard(usedDeck, user, Transform(targetCard).Coordinates), user)
+            ),
+            // Hand: pick a card from the used hand to combine with the target card.
+            usedHand => verbs.Add(HandPutDown, PlacementVerbPriority, () => OpenPickerUi(usedHand, targetCard, user))
+        );
+
+        // Flip
+        args.Verbs.Add(PlayingCardComponent.Verbs.Flip, () => Flip(targetCard, faceDown: null));
     }
 
 
@@ -269,7 +247,7 @@ public abstract partial class SharedPlayingCardsSystem
                 ("card", Loc.GetString(deck.CardValueLoc, ("card", data.Card.Id.ToLowerInvariant()))),
             ];
 
-        comp.Name = Loc.GetString(data.Card.NameLoc ?? deck.CardNameLoc, locArgs);
+        comp.ObverseName = Loc.GetString(data.Card.NameLoc ?? deck.CardNameLoc, locArgs);
         comp.Description = Loc.GetString(deck.CardDescLoc, locArgs);
         comp.ReverseName = Loc.GetString(deck.CardReverseNameLoc, locArgs);
         comp.ReverseDescription = Loc.GetString(deck.CardReverseDescLoc, locArgs);
@@ -320,5 +298,8 @@ public abstract partial class SharedPlayingCardsSystem
             .WithUnlessAlreadySpecified(rsiPath: deck.RsiPath.ToString());
     }
 
-    protected abstract void ForceAppearanceUpdate(Entity<PlayingCardComponent> card);
+    protected virtual void ForceAppearanceUpdate(Entity<PlayingCardComponent> card)
+    {
+        // Only does something on the client.
+    }
 }

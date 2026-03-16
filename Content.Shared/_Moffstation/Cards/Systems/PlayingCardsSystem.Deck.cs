@@ -7,8 +7,8 @@ using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Verbs;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Cards.Systems;
 
@@ -18,20 +18,59 @@ public abstract partial class SharedPlayingCardsSystem
     /// The ID of the entity prototype which is used to construct cards dynamically.
     private static readonly EntProtoId<PlayingCardDeckComponent> CardDeckEntId = "PlayingCardDeckDynamic";
 
+    private static readonly Range TopCardRange = ^1..;
+
     private void InitDeck()
     {
         SubscribeLocalEvent<PlayingCardDeckComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<PlayingCardDeckComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<PlayingCardDeckComponent, ExaminedEvent>(OnExaminedDeck);
-        SubscribeLocalEvent<PlayingCardDeckComponent, InteractUsingEvent>(OnInteractUsing);
-        SubscribeLocalEvent<PlayingCardDeckComponent, InteractHandEvent>(OnInteractHand,
-            before: new[] { typeof(SharedItemSystem) });
-        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<InteractionVerb>>(OnGetInteractionVerbsDeck);
-        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<UtilityVerb>>(OnGetUtilityVerbsStack);
-        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbsDeck);
+        SubscribeLocalEvent<PlayingCardDeckComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<PlayingCardDeckComponent, PlayingCardStackContentsChangedEvent>(DirtyVisuals);
         SubscribeLocalEvent<PlayingCardDeckComponent, ContainedPlayingCardFlippedEvent>(DirtyVisuals);
+        SubscribeLocalEvent<PlayingCardDeckComponent, PlayingCardPickedEvent>(OnPlayingCardPicked);
+        SubscribeLocalEvent<PlayingCardDeckComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<InteractionVerb>>(OnGetInteractionVerbs);
+        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<UtilityVerb>>(OnGetUtilityVerbsStack);
+        SubscribeLocalEvent<PlayingCardDeckComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbsDeck);
+        SubscribeLocalEvent<PlayingCardDeckComponent, InteractHandEvent>(
+            OnInteractHand,
+            // ReSharper disable once UseCollectionExpression // Whatever internal stuff is needed for this isn't whitelisted for the sandbox.
+            before:
+            new[] { typeof(SharedItemSystem) } // We need to run our logic before the generic "pick up items" logic.
+        );
     }
+
+
+    /// <see cref="Take">Takes</see> and returns the top card from <paramref name="entity"/>.
+    public Entity<PlayingCardComponent> TakeTopCard(
+        Entity<PlayingCardDeckComponent> entity,
+        EntityUid user,
+        EntityCoordinates? destinationCoords = null
+    ) => Take(entity, TopCardRange, destinationCoords ?? Transform(user).Coordinates, user)
+        .Single();
+
+    /// <see cref="Transfer">Transfers</see> the top card from <paramref name="source"/> to <paramref name="target"/>
+    public void TransferTopCard<TTarget>(
+        Entity<PlayingCardDeckComponent> source,
+        Entity<TTarget> target,
+        EntityUid user
+    ) where TTarget : PlayingCardStackComponent => Transfer(source, target, TopCardRange, user);
+
+    /// Creates a new Deck from the given cards. Returns an entity which may be predicted. Spawns on
+    /// <paramref name="user"/> if <paramref name="spawnAt"/> is null.
+    /// <seealso cref="CreateHandPredicted"/>
+    public Entity<PlayingCardDeckComponent> CreateDeckPredicted(
+        IEnumerable<Entity<PlayingCardComponent>> cards,
+        EntityUid user,
+        ProtoId<PlayingCardDeckPrototype>? deckPrototype,
+        EntityCoordinates? spawnAt = null
+    )
+    {
+        var ent = PredictedCreateStack(CardDeckEntId, spawnAt ?? Transform(user).Coordinates, cards, user);
+        ent.Comp.Prototype = deckPrototype;
+        return ent;
+    }
+
 
     private void OnInit(Entity<PlayingCardDeckComponent> entity, ref ComponentInit args)
     {
@@ -46,15 +85,15 @@ public abstract partial class SharedPlayingCardsSystem
         Dirty(entity);
     }
 
-    private void OnExaminedDeck(Entity<PlayingCardDeckComponent> entity, ref ExaminedEvent args)
+    private void OnExamined(Entity<PlayingCardDeckComponent> entity, ref ExaminedEvent args)
     {
         if (entity.Comp.TopCard is { } topCardLike &&
             GetComponent(topCardLike) is { FaceDown: false } topCard)
         {
-            args.PushMarkup(Loc.GetString(entity.Comp.TopCardExamineLoc, ("card", topCard.Name)));
+            args.PushMarkup(Loc.GetString(PlayingCardDeckComponent.TopCardExamineLoc, ("card", topCard.ObverseName)));
         }
 
-        OnExamined(entity, ref args);
+        OnExamined<PlayingCardDeckComponent>(entity, ref args);
     }
 
     private void OnInteractHand(Entity<PlayingCardDeckComponent> entity, ref InteractHandEvent args)
@@ -62,10 +101,28 @@ public abstract partial class SharedPlayingCardsSystem
         if (args.Handled)
             return;
 
-        args.Handled = TryDraw(entity, args.User);
+        TryDrawToActiveHand(entity, args.User);
+        args.Handled = true;
     }
 
-    private void OnGetInteractionVerbsDeck(
+
+    /// These interactions are invoked when left-clicking on a deck with a held item.
+    private void OnInteractUsing(Entity<PlayingCardDeckComponent> targetDeck, ref InteractUsingEvent args)
+    {
+        if (args.Handled || args.Used == args.Target)
+            return;
+
+        var user = args.User;
+        args.Handled = HandlePlayingCardComponents(
+            args.Used,
+            targetDeck,
+            // Take top card from this deck, creating a new hand with the used card.
+            usedCard => JoinIntoHeldCardMakingHand(user, usedCard, [TakeTopCard(targetDeck, user)]),
+            usedStack => TransferTopCard(targetDeck, usedStack, user)
+        );
+    }
+
+    private void OnGetInteractionVerbs(
         Entity<PlayingCardDeckComponent> entity,
         ref GetVerbsEvent<InteractionVerb> args
     )
@@ -73,34 +130,19 @@ public abstract partial class SharedPlayingCardsSystem
         if (!args.CanAccess || !args.CanInteract || args.Hands == null)
             return;
 
-        var user = args.User;
-        // Draw from deck.
-        args.Verbs.Add(new InteractionVerb
+        if (_hands.GetActiveItem(args.User) == null)
         {
-            Text = Loc.GetString(entity.Comp.DrawText),
-            Act = () => TryDraw(entity, user),
-            Priority = 100,
-        });
-    }
-
-    private bool TryDraw(Entity<PlayingCardDeckComponent> entity, EntityUid user)
-    {
-        var singleTakenCard = Take(entity, ^1.., Transform(user).Coordinates, user).FirstOrNull();
-        if (singleTakenCard is { } card)
-        {
-            _hands.TryPickupAnyHand(user, card, animate: false);
-            return true;
+            var user = args.User;
+            args.Verbs.Add(PlayingCardDeckComponent.Verbs.DrawCard, () => TryDrawToActiveHand(entity, user));
         }
-
-        return false;
     }
 
     private void OnGetAlternativeVerbsDeck(
-        Entity<PlayingCardDeckComponent> entity,
+        Entity<PlayingCardDeckComponent> targetDeck,
         ref GetVerbsEvent<AlternativeVerb> args
     )
     {
-        OnGetAlternativeVerbsStack(entity, ref args);
+        OnGetAlternativeVerbsStack(targetDeck, ref args);
 
         if (!args.CanAccess ||
             !args.CanInteract ||
@@ -108,33 +150,38 @@ public abstract partial class SharedPlayingCardsSystem
             return;
 
         var user = args.User;
-        if (entity.Comp.NumCards > 1 && _hands.CanPickupAnyHand(args.User, entity))
+
+        // Cut deck.
+        if (targetDeck.Comp.NumCards > 1)
         {
             args.Verbs.Add(new AlternativeVerb
             {
-                Act = () => CutDeck(entity, user),
-                Text = Loc.GetString(entity.Comp.CutText),
-                Icon = entity.Comp.CutIcon,
-                Priority = 98,
+                Act = () => TryCutDeck(targetDeck, user),
+                Icon = PlayingCardDeckComponent.Verbs.CutDeck.Icon,
+                Text = PlayingCardDeckComponent.Verbs.CutDeck.Text(),
+                Disabled = _hands.GetActiveHand(user) is not { } hand ||
+                           !_hands.CanPickupToHand(user, targetDeck.Owner, hand),
             });
         }
     }
 
-    private void CutDeck(Entity<PlayingCardDeckComponent> entity, EntityUid user)
-    {
-        _audio.PlayPredicted(entity.Comp.PickUpSound, entity, user);
 
-        var spawned = PredictedSpawnAtPosition(CardDeckEntId, Transform(entity).Coordinates);
-        var deck = new Entity<PlayingCardDeckComponent>(spawned, Comp<PlayingCardDeckComponent>(spawned));
-        deck.Comp.Prototype = entity.Comp.Prototype;
-        if (!IsClientSide(spawned))
+    /// Tries to draw the top card from <paramref name="entity"/> to <paramref name="user"/>'s active hand. Returns
+    /// <c>false</c> if the user cannot pick up the card.
+    private bool TryDrawToActiveHand(Entity<PlayingCardDeckComponent> entity, EntityUid user) =>
+        PerformIfCanPickUp(user, entity, () => TakeTopCard(entity, user));
+
+    /// Tries to split <paramref name="entity"/> into two roughly equally sized decks, picking up one of the halves.
+    private bool TryCutDeck(Entity<PlayingCardDeckComponent> entity, EntityUid user) => PerformIfCanPickUp(
+        user,
+        entity,
+        () =>
         {
-            // Can't insert real cards into predicted decks.
-            Transfer(entity, deck, ^(entity.Comp.NumCards / 2).., user);
+            _audio.PlayPredicted(entity.Comp.PickUpSound, entity, user);
+            var newDeckContents = Take(entity, ^(entity.Comp.NumCards / 2).., Transform(entity).Coordinates, user);
+            return CreateDeckPredicted(newDeckContents, user, entity.Comp.Prototype);
         }
-
-        _hands.TryPickupAnyHand(user, spawned);
-    }
+    );
 
     /// Conceptually, this "instantiates" the <see cref="PlayingCardDeckPrototype.Cards">elements</see> in the given
     /// <paramref name="deckId"/>, handling calculating localization strings, sprite layers, etc. Note that this <b>does

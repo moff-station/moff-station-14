@@ -1,15 +1,17 @@
 using System.Linq;
 using Content.Shared._Moffstation.Cards.Components;
+using Content.Shared._Moffstation.Cards.Events;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
+using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
+using static Content.Shared._Moffstation.Cards.Components.PlayingCardStackComponent.Verbs;
 
 namespace Content.Shared._Moffstation.Cards.Systems;
 
@@ -33,102 +35,83 @@ public abstract partial class SharedPlayingCardsSystem
     private void OnExamined<TStack>(Entity<TStack> entity, ref ExaminedEvent args)
         where TStack : PlayingCardStackComponent
     {
-        args.PushText(Loc.GetString(entity.Comp.ExamineText, ("count", entity.Comp.NumCards)));
+        args.PushText(Loc.GetString(PlayingCardStackComponent.ExamineText, ("count", entity.Comp.NumCards)));
     }
 
-    private void OnGetUtilityVerbsStack<TStack>(Entity<TStack> entity, ref GetVerbsEvent<UtilityVerb> args)
-        where TStack : PlayingCardStackComponent
+    /// These verbs are available when right-clicking on an entity while holding a stack.
+    private void OnGetUtilityVerbsStack<TStack>(
+        Entity<TStack> usedStack,
+        ref GetVerbsEvent<UtilityVerb> args
+    ) where TStack : PlayingCardStackComponent
     {
+        var verbs = args.Verbs;
         var user = args.User;
-        var target = args.Target;
-        if (TryComp<PlayingCardDeckComponent>(target, out var targetDeck))
-        {
-            // Draw card to the held stack
-            args.Verbs.Add(new UtilityVerb
+        HandlePlayingCardComponents(
+            args.Target,
+            usedStack,
+            // Pick up card onto used stack.
+            targetCard => verbs.Add(PlayingCardComponent.Verbs.StackPickup, () => Add(usedStack, targetCard, user)),
+            // Pick up top card onto used stack.
+            targetDeck => verbs.Add(PlayingCardDeckComponent.Verbs.StackPickup,
+                () => TransferTopCard(targetDeck, usedStack, user)),
+            targetHand =>
             {
-                Text = Loc.GetString(entity.Comp.DrawToText),
-                Icon = entity.Comp.DrawIcon,
-                Priority = 99,
-                Act = () => Transfer<PlayingCardDeckComponent, TStack>((target, targetDeck), entity, ^1.., user),
-            });
-
-            if (entity.Comp is not PlayingCardHandComponent) // Don't try to join decks into stacks. I think the engine doesn't like 10s of predicted entities at once.
-            {
-                // Join target deck to held stack
-                args.Verbs.Add(new UtilityVerb
-                {
-                    Text = Loc.GetString(entity.Comp.JoinText),
-                    Icon = entity.Comp.JoinIcon,
-                    Act = () => Transfer<PlayingCardDeckComponent, TStack>((target, targetDeck), entity, .., user),
-                });
+                // Pick up picked card onto used stack.
+                verbs.Add(PlayingCardHandComponent.Verbs.StackPickup, () => OpenPickerUi(targetHand, usedStack, user));
+                // Join target hand to held stack
+                verbs.Add(PlayingCardHandComponent.Verbs.StackPickupEntire,
+                    () => Transfer(targetHand, usedStack, .., user));
             }
-        }
-
-        if (TryComp<PlayingCardHandComponent>(target, out var targetHand))
-        {
-            // Draw card to the held stack
-            args.Verbs.Add(new UtilityVerb
-            {
-                Text = Loc.GetString(entity.Comp.DrawToText),
-                Icon = entity.Comp.DrawIcon,
-                Priority = 99,
-                Act = () => Transfer<PlayingCardHandComponent, TStack>((target, targetHand), entity, ^1.., user),
-            });
-
-            // Join target hand to held stack
-            args.Verbs.Add(new UtilityVerb
-            {
-                Text = Loc.GetString(entity.Comp.JoinText),
-                Icon = entity.Comp.JoinIcon,
-                Act = () => Transfer<PlayingCardHandComponent, TStack>((target, targetHand), entity, .., user),
-            });
-        }
+        );
     }
 
-    private void OnGetAlternativeVerbsStack<TStack>(Entity<TStack> entity, ref GetVerbsEvent<AlternativeVerb> args)
+    private void OnGetAlternativeVerbsStack<TStack>(Entity<TStack> targetStack, ref GetVerbsEvent<AlternativeVerb> args)
         where TStack : PlayingCardStackComponent
     {
+        if (!args.CanAccess ||
+            !args.CanInteract ||
+            args.Hands == null)
+            return;
+
+        var verbs = args.Verbs;
         var user = args.User;
+        HandlePlayingCardComponents(
+            args.Using,
+            targetStack,
+            // Add the used card into the target stack
+            usedCard => verbs.Add(CardPutDown, PlacementVerbPriority, () => Add(targetStack, usedCard, user)),
+            // Add the top card from the deck to the target stack
+            usedDeck => verbs.Add(DeckPutDown,
+                PlacementVerbPriority,
+                () => TransferTopCard(usedDeck, targetStack, user)),
+            // Pick a card from the used hand and add it to the target stack
+            usedHand => verbs.Add(HandPutDown, PlacementVerbPriority, () => OpenPickerUi(usedHand, targetStack, user))
+        );
 
-        // Flip all cards
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => FlipAll(entity, null, user),
-            Text = Loc.GetString(entity.Comp.FlipText),
-            Icon = entity.Comp.FlipCardsIcon,
-        });
-
-        // Flip all cards up
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => FlipAll(entity, false, user),
-            Text = Loc.GetString(entity.Comp.OrganizeUpText),
-            Icon = entity.Comp.FlipCardsIcon,
-        });
-
-        // Flip all cards down
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Act = () => FlipAll(entity, true, user),
-            Text = Loc.GetString(entity.Comp.OrganizeDownText),
-            Icon = entity.Comp.FlipCardsIcon,
-        });
+        // Flip all: toggle, up, down.
+        args.Verbs.Add(PlayingCardStackComponent.Verbs.Flip, () => FlipAll(targetStack, null, user));
+        args.Verbs.Add(FlipUp, () => FlipAll(targetStack, false, user));
+        args.Verbs.Add(FlipDown, () => FlipAll(targetStack, true, user));
 
         // Shuffle
-        if (entity.Comp.NumCards > 1)
+        if (targetStack.Comp.NumCards > 1)
         {
-            args.Verbs.Add(new AlternativeVerb
-            {
-                Act = () => Shuffle(entity, user),
-                Text = Loc.GetString(entity.Comp.ShuffleText),
-                Icon = entity.Comp.ShuffleIcon,
-            });
+            args.Verbs.Add(PlayingCardStackComponent.Verbs.Shuffle, () => Shuffle(targetStack, user));
         }
+    }
+
+    private void OnPlayingCardPicked<TStack>(Entity<TStack> entity, ref PlayingCardPickedEvent args)
+        where TStack : PlayingCardStackComponent
+    {
+        if (args.Handled)
+            return;
+
+        Transfer(args.SourceHand, entity, args.Range, args.User);
+        args.Handled = true;
     }
 
     /// Flips all cards in the given stack entity, handling audio, dirtying visuals, etc.
-    private void FlipAll<T>(Entity<T> entity, bool? faceDown, EntityUid user)
-        where T : PlayingCardStackComponent
+    private void FlipAll<T>(Entity<T> entity, bool? faceDown, EntityUid user) where T : PlayingCardStackComponent
     {
         var didAnyFlip = entity.Comp switch
         {
@@ -145,26 +128,19 @@ public abstract partial class SharedPlayingCardsSystem
             entity.Comp.DirtyVisuals = true;
         }
 
-        var targetName = MetaData(entity).EntityName;
+        var targetName = Name(entity);
+        var verbInfo = faceDown switch
+        {
+            true => FlipUp,
+            false => FlipDown,
+            null => PlayingCardStackComponent.Verbs.Flip,
+        };
         _popup.PopupPredicted(
-            Loc.GetString(faceDown switch
-                {
-                    true => entity.Comp.OrganizeDownPopup,
-                    false => entity.Comp.OrganizeUpSuccessPopup,
-                    null => entity.Comp.FlipPopup,
-                },
-                ("target", targetName)
-            ),
-            Loc.GetString(
-                faceDown switch
-                {
-                    true => entity.Comp.OrganizeDownSuccessPopupOther,
-                    false => entity.Comp.OrganizeUpSuccessPopupOther,
-                    null => entity.Comp.FlipPopupOther,
-                },
+            verbInfo.Popup([("target", targetName)]),
+            verbInfo.Popup([
                 ("target", targetName),
                 ("user", Identity.Name(user, EntityManager))
-            ),
+            ]),
             entity,
             user
         );
@@ -181,34 +157,6 @@ public abstract partial class SharedPlayingCardsSystem
         bool FlipNetEnt(NetEntity cardNetEnt) => GetEntity(cardNetEnt) is var cardEnt &&
                                                  TryComp<PlayingCardComponent>(cardEnt, out var cardComp) &&
                                                  SetFacingOrFlip((cardEnt, cardComp), faceDown);
-    }
-
-    private void OnInteractUsing<TStack>(Entity<TStack> entity, ref InteractUsingEvent args)
-        where TStack : PlayingCardStackComponent
-    {
-        if (args.Handled || args.Used == args.Target)
-            return;
-
-        if (TryComp<PlayingCardComponent>(args.Used, out var usedCard))
-        {
-            Add(entity, [(args.Used, usedCard)], Transform(args.User).Coordinates, args.User);
-            args.Handled = true;
-            return;
-        }
-
-        if (TryComp<PlayingCardDeckComponent>(args.Used, out var usedDeck))
-        {
-            Transfer<TStack, PlayingCardDeckComponent>(entity, (args.Used, usedDeck), ^1.., args.User);
-            args.Handled = true;
-            return;
-        }
-
-        if (TryComp<PlayingCardHandComponent>(args.Used, out var usedHand))
-        {
-            Transfer<TStack, PlayingCardHandComponent>(entity, (args.Used, usedHand), ^1.., args.User);
-            args.Handled = true;
-            return;
-        }
     }
 
     /// Shuffles all cards in the given stack entity, handling audio, dirtying visuals, etc.
@@ -234,17 +182,33 @@ public abstract partial class SharedPlayingCardsSystem
 
         var targetName = MetaData(entity).EntityName;
         _popup.PopupPredicted(
-            Loc.GetString(entity.Comp.ShufflePopup, ("target", targetName)),
-            Loc.GetString(
-                entity.Comp.ShufflePopupOther,
+            PlayingCardStackComponent.Verbs.Shuffle.Popup([("target", targetName)]),
+            PlayingCardStackComponent.Verbs.Shuffle.PopupOther([
                 ("target", targetName),
-                ("user", Identity.Name(user, EntityManager))
-            ),
+                ("user", Identity.Name(user, EntityManager)),
+            ]),
             entity,
             user
         );
         _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
     }
+
+    /// Creates and returns an entity from <paramref name="protoId"/> at <paramref name="spawnAt"/>,
+    /// <see cref="Add{TStack}(Entity{TStack}, IEnumerable{Entity{PlayingCardComponent}}, EntityCoordinates, EntityUid?)">adding</see>
+    /// <paramref name="cards"/> to it in the order given.
+    private Entity<T> PredictedCreateStack<T>(
+        EntProtoId<T> protoId,
+        EntityCoordinates spawnAt,
+        IEnumerable<Entity<PlayingCardComponent>> cards,
+        EntityUid? user
+    ) where T : PlayingCardStackComponent, new()
+    {
+        var ent = PredictedSpawnAtPosition(protoId, spawnAt);
+        var stack = new Entity<T>(ent, Comp<T>(ent));
+        Add(stack, cards, spawnAt, user);
+        return stack;
+    }
+
 
     /// Updates the visuals of any decks or hands with dirty visuals.
     public override void Update(float frameTime)

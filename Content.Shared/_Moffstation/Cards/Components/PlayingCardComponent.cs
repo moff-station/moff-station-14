@@ -1,7 +1,7 @@
 using Content.Shared._Moffstation.Cards.Systems;
+using Content.Shared._Moffstation.Extensions;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Cards.Components;
 
@@ -35,8 +35,8 @@ public sealed partial class PlayingCardComponent : Component
     public bool FaceDown;
 
     /// The name of this card, visible when not face down.
-    [DataField(required: true), AutoNetworkedField]
-    public string Name;
+    [DataField("name", required: true), AutoNetworkedField]
+    public string ObverseName;
 
     /// The description of this card, visible when not face down.
     [DataField(required: true), AutoNetworkedField]
@@ -50,14 +50,26 @@ public sealed partial class PlayingCardComponent : Component
     [DataField, AutoNetworkedField]
     public string? ReverseDescription;
 
-    [DataField] public LocId ExamineText = "card-examined";
-    [DataField] public LocId FlipText = "card-verb-flip";
-    [DataField] public SpriteSpecifier? FlipIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/flip.svg.192dpi.png"));
-    [DataField] public LocId AddToDeckText = "card-verb-add-to-deck";
-    [DataField] public LocId AddToHandText = "card-verb-add-to-hand";
-    [DataField] public SpriteSpecifier? AddIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/insert.svg.192dpi.png"));
-    [DataField] public LocId CreateHandText = "card-verb-create-hand";
-    [DataField] public SpriteSpecifier? CreateHandIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/plus.svg.192dpi.png"));
+    /// The current sprite layers (based on <see cref="FaceDown"/>), or the sprite layers for the given
+    /// <paramref name="faceDownOverride"/>.
+    [Access(Other = AccessPermissions.ReadExecute)] // Pure function, I don't care if you execute it.
+    public string Name(bool? faceDownOverride = null) => faceDownOverride ?? FaceDown
+        ? ReverseName
+        : ObverseName;
+
+    public static readonly LocId ExamineText = "playing-card-examine";
+
+    public static class Verbs
+    {
+        public static readonly VerbInfo CardPickup = VerbInfo.Build("playing-card-card-card-pickup", "pickup");
+        public static readonly VerbInfo StackPickup = VerbInfo.Build("playing-card-card-stack-pickup", "pickup");
+
+        public static readonly VerbInfo CardPutDown = VerbInfo.Build("playing-card-card-card-put-down", "drop");
+        public static readonly VerbInfo DeckPutDown = VerbInfo.Build("playing-card-card-deck-put-down", "drop");
+        public static readonly VerbInfo HandPutDown = VerbInfo.Build("playing-card-card-hand-put-down", "drop");
+
+        public static readonly VerbInfo Flip = VerbInfo.Build("playing-card-flip", "flip");
+    }
 }
 
 /// The key used to access appearance data for <see cref="PlayingCardComponent"/>.

@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Serialization;
+﻿using Content.Shared._Moffstation.Cards.Components;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Cards.Events;
 
@@ -24,9 +25,20 @@ public enum StackQuantityChangeType : sbyte
 }
 
 /// A message sent from the UI of <see cref="Components.PlayingCardHandComponent"/> indicating the actor wants to remove
-/// the card specified by <see cref="Card"/> from it.
+/// the card specified by <see cref="Card"/> from a hand of cards, putting that card into the (manipulation) hand with
+/// <see name="HandId"/>.
 [Serializable, NetSerializable]
 public sealed class DrawPlayingCardFromHandMessage(NetEntity card) : BoundUserInterfaceMessage
 {
     public NetEntity Card = card;
+}
+
+/// This event is raised on <see cref="PlayingCardHandComponent.PickedCardDestination"/> when a <see cref="DrawPlayingCardFromHandMessage"/>
+/// is received. Receiving and handling this event means an entity should accept the picked card.
+[ByRefEvent]
+public sealed class PlayingCardPickedEvent(Entity<PlayingCardHandComponent> sourceHand, Range range, EntityUid user) : HandledEntityEventArgs
+{
+    public readonly Entity<PlayingCardHandComponent> SourceHand = sourceHand;
+    public readonly Range Range = range;
+    public readonly EntityUid User = user;
 }

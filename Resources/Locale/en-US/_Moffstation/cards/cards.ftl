@@ -3,39 +3,54 @@ dynamic-playing-card-error-name = dynamic card
 dynamic-playing-card-error-description = If you can see this, something has gone wrong.
 dynamic-playing-card-error-reverse = dynamic card
 
-card-verb-shuffle = Shuffle
-card-verb-shuffle-popup = Cards shuffled.
-card-verb-shuffle-popup-other = {$user} shuffled the cards.
+# Card
+playing-card-examine = This is {INDEFINITE($target)} [color=lightgray]{$target}[/color].
 
-card-verb-flip = Flip cards
-card-verb-flip-popup = Cards flipped.
-card-verb-flip-popup-other = {$user} flipped the cards.
+playing-card-card-card-pickup-verb-text = Pick up into hand
+playing-card-card-stack-pickup-verb-text = Pick up
+playing-card-card-card-put-down-verb-text = Place into deck
+playing-card-card-deck-put-down-verb-text = Place on top
+playing-card-card-hand-put-down-verb-text = Place into
+playing-card-flip-verb-text = Flip
 
-card-verb-add-to-deck = Add to deck
-card-verb-add-to-hand = Add to hand
+# Deck
+playing-card-deck-examine = The top card is {INDEFINITE($card)} [color=lightgray]{$card}[/color].
 
-card-verb-create-hand = Create hand
-card-verb-convert-to-deck = Convert to deck
+playing-card-deck-card-pickup-verb-text = Draw into hand
+playing-card-deck-stack-pickup-verb-text = Draw
+playing-card-deck-draw-verb-text = Draw
+playing-card-deck-cut-verb-text = Split
 
-card-verb-join = Join with held cards
+# Hand
+playing-cards-hand-card-count-changed-added = Card was added (Total of cards: {$quantity})
+playing-cards-hand-card-count-changed-removed = Card was removed (Total of cards: {$quantity})
+playing-cards-hand-card-count-changed-unknown = Unknown
 
-card-verb-split = Cut deck
+playing-card-hand-card-pickup-verb-text = Pick card into hand
+playing-card-hand-stack-pickup-verb-text = Pick card
+playing-card-hand-stack-pickup-entire-verb-text = Combine with held
 
-card-verb-draw = Draw card
-card-verb-draw-to = Draw card to held cards
+playing-card-hand-convert-to-deck-verb-text = Convert to deck
 
-card-verb-organize-up = Organize cards facing up
-card-verb-organize-up-popup = Cards organized facing up.
-card-verb-organize-up-popup-other = {$user} organized the cards facing up.
+# Stack
+playing-card-stack-examine = There are {$count} cards in this stack.
 
-card-verb-organize-down = Organize Cards facing down
-card-verb-organize-down-popup = Cards organized facing down.
-card-verb-organize-down-popup-other = {$user} organized the cards facing down.
+playing-card-stack-card-put-down-verb-text = Place
+playing-card-stack-deck-put-down-verb-text = Deal
+playing-card-stack-hand-put-down-verb-text = Pick and add
 
-card-examined = This is {INDEFINITE($target)} [color=lightgray]{$target}[/color].
-card-stack-examine = There are {$count} cards in this stack.
-cards-deck-top-card-examine = The top card is {INDEFINITE($card)} [color=lightgray]{$card}[/color].
+playing-card-flip-all-verb-text = Flip all
+playing-card-flip-all-popup = Cards flipped.
+playing-card-flip-all-popup-other = {$user} flipped the cards.
 
-cards-stackquantitychange-added = Card was added (Total of cards: {$quantity})
-cards-stackquantitychange-removed = Card was removed (Total of cards: {$quantity})
-cards-stackquantitychange-unknown = Unknown
+playing-card-flip-all-up-verb-text = Organize facing up
+playing-card-flip-all-up-popup = Cards organized facing up.
+playing-card-flip-all-up-popup-other = {$user} organized the cards facing up.
+
+playing-card-flip-all-down-verb-text = Organize facing down
+playing-card-flip-all-down-popup = Cards organized facing down.
+playing-card-flip-all-down-popup-other = {$user} organized the cards facing down.
+
+playing-card-shuffle-verb-text = Shuffle
+playing-card-shuffle-popup = Cards shuffled.
+playing-card-shuffle-popup-other = {$user} shuffled the cards.

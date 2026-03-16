@@ -42,34 +42,19 @@ public abstract partial class PlayingCardStackComponent : Component, ISealedInhe
     [DataField(required: true)]
     public int VisualLimit;
 
+    public static readonly LocId ExamineText = "playing-card-stack-examine";
 
-    [DataField] public LocId JoinText = "card-verb-join";
-    [DataField] public SpriteSpecifier? JoinIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/plus.svg.192dpi.png"));
+    public static class Verbs
+    {
+        public static readonly VerbInfo CardPutDown = VerbInfo.Build("playing-card-stack-card-put-down", "drop");
+        public static readonly VerbInfo DeckPutDown = VerbInfo.Build("playing-card-stack-deck-put-down", "drop");
+        public static readonly VerbInfo HandPutDown = VerbInfo.Build("playing-card-stack-hand-put-down", "drop");
 
-    [DataField] public LocId DrawText = "card-verb-draw";
-    [DataField] public LocId DrawToText = "card-verb-draw-to";
-    [DataField] public SpriteSpecifier? DrawIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/pickup.svg.192dpi.png"));
-
-    [DataField] public LocId FlipText = "card-verb-flip";
-    [DataField] public LocId FlipPopup = "card-verb-flip-popup";
-    [DataField] public LocId FlipPopupOther = "card-verb-flip-popup-other";
-    [DataField] public SpriteSpecifier? FlipCardsIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/flip.svg.192dpi.png"));
-
-    [DataField] public LocId OrganizeDownText = "card-verb-organize-down";
-    [DataField] public LocId OrganizeDownPopup = "card-verb-organize-down-popup";
-    [DataField] public LocId OrganizeDownSuccessPopupOther = "card-verb-organize-down-popup-other";
-
-    [DataField] public LocId OrganizeUpText = "card-verb-organize-up";
-    [DataField] public LocId OrganizeUpSuccessPopup = "card-verb-organize-up-popup";
-    [DataField] public LocId OrganizeUpSuccessPopupOther = "card-verb-organize-up-popup-other";
-
-    [DataField] public LocId ShuffleText = "card-verb-shuffle";
-    [DataField] public LocId ShufflePopup = "card-verb-shuffle-popup";
-    [DataField] public LocId ShufflePopupOther = "card-verb-shuffle-popup-other";
-    [DataField] public SpriteSpecifier? ShuffleIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/die.svg.192dpi.png"));
-
-    [DataField] public LocId ExamineText = "card-stack-examine";
-
+        public static readonly VerbInfo Flip = VerbInfo.Build("playing-card-flip-all", "flip");
+        public static readonly VerbInfo FlipUp = VerbInfo.Build("playing-card-flip-all-up", "flip");
+        public static readonly VerbInfo FlipDown = VerbInfo.Build("playing-card-flip-all-down", "flip");
+        public static readonly VerbInfo Shuffle = VerbInfo.Build("playing-card-shuffle", "die");
+    }
 }
 
 [Serializable, NetSerializable]

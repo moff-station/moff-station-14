@@ -42,13 +42,20 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
     [DataField]
     public float Scale = 1;
 
-    [DataField] public LocId TopCardExamineLoc = "cards-deck-top-card-examine";
-    [DataField] public LocId CutText = "card-verb-split";
-    [DataField] public SpriteSpecifier? CutIcon = new SpriteSpecifier.Texture(new ResPath("Interface/VerbIcons/eject.svg.192dpi.png"));
-
     /// Sprite layers added to this entity based on contained cards' <see cref="PlayingCardComponent.Sprite"/>.
     [ViewVariables]
     public HashSet<string> SpriteLayersAdded = [];
+
+    public static readonly LocId TopCardExamineLoc = "playing-card-deck-examine";
+
+    public new static class Verbs
+    {
+        public static readonly VerbInfo CardPickup = VerbInfo.Build("playing-card-deck-card-pickup", "pickup");
+        public static readonly VerbInfo StackPickup = VerbInfo.Build("playing-card-deck-stack-pickup", "pickup");
+
+        public static readonly VerbInfo DrawCard = VerbInfo.Build("playing-card-deck-draw", "pickup");
+        public static readonly VerbInfo CutDeck = VerbInfo.Build("playing-card-deck-cut", "eject");
+    }
 }
 
 /// A type representing a card in a <see cref="PlayingCardDeckComponent"/>. This may be an entity, or it may be
