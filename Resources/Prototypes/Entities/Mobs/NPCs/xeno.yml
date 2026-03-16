@@ -83,7 +83,7 @@
     animation: WeaponArcBite
     damage:
       #groups:
-        #Brute: 6
+        #Piercing: 6
       types:
         Blunt: 2
         Slash: 10
@@ -205,7 +205,7 @@
   - type: MeleeWeapon
     damage:
       #groups:
-        #Brute: 6
+        #Slash: 6
       types:
         Blunt: 10
         Slash: 5
@@ -254,7 +254,7 @@
   - type: MeleeWeapon
     damage:
       #groups:
-        #Brute: 12
+        #Slash: 12
       types:
         Blunt: 10
         Slash: 25
@@ -301,7 +301,7 @@
     attackRate: 1.5
     damage:
       #groups:
-        #Brute: 10
+        #Slash: 10
      types:
        Slash: 20
        Structural: 20
@@ -343,7 +343,7 @@
     attackRate: 2
     damage:
       #groups:
-        #Brute: 5
+        #Slash: 5
       types:
         Blunt: 3
         Slash: 7
@@ -580,8 +580,8 @@
      collection: AlienClaw
     animation: WeaponArcBite
     damage:
-     groups:
-       Brute: 5
+      types:
+        Slash: 5
   - type: DamageStateVisuals
     states:
       Alive:

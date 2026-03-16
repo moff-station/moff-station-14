@@ -116,7 +116,7 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
             }
 
 
-            if (extractableComponent.GrindableSolution is { } grindableSolutionId &&
+            if (extractableComponent.GrindableSolutionName is { } grindableSolutionId &&
                 entProto.TryGetComponent<SolutionContainerManagerComponent>(out var manager, EntityManager.ComponentFactory) &&
                 _solutionContainer.TryGetSolution(manager, grindableSolutionId, out var grindableSolution))
             {
@@ -126,7 +126,15 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                     grindableSolution);
                 foreach (var (id, _) in grindableSolution.Contents)
                 {
-                    _reagentSources[id.Prototype].Add(data);
+                    // Moffstation - Begin - Failures to deserialize reagents shouldn't cause the YAML linter to crash, giving zero helpful info.
+                    if (!_reagentSources.TryGetValue(id.Prototype, out var source))
+                    {
+                        Log.Info($"Failed to get reagent \"{id.Prototype}\" from '_reagentSources'");
+                        continue;
+                    }
+
+                    source.Add(data);
+                    // Moffstation - End
                 }
                 usedNames.Add(entProto.Name);
             }

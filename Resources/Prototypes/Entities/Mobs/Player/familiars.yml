@@ -79,14 +79,15 @@
   - type: PassiveDamage #Slow Passive Regen
     allowedStates:
     - Alive
-    damageCap: 224.9
     damage:
       types:
         Heat: -0.25
-      groups:
-        Brute: -0.25
-        Airloss: -0.25
-        Toxin: -0.25
+        Blunt: -0.09
+        Piercing: -0.09
+        Slash: -0.09
+        Asphyxiation: -0.13
+        Bloodloss: -0.13
+        Poison: -0.25
   - type: Flammable #Fireproof...it's from hell.
     damage:
       types: {}
