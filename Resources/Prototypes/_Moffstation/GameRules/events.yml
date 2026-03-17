@@ -1,4 +1,27 @@
-﻿- type: entity
+﻿# Derelict service cyborg spawn
+- type: entity
+  parent: BaseGameRule
+  id: DerelictServiceCyborgSpawn
+  components:
+  - type: StationEvent
+    weight: 2.5
+    earliestStart: 15
+    reoccurrenceDelay: 20
+    minimumPlayers: 4
+    duration: null
+  - type: SpaceSpawnRule
+    spawnDistance: 0
+  - type: AntagSpawner
+    prototype: PlayerServiceBorgDerelictGhostRole
+  - type: AntagSelection
+    definitions:
+    - spawnerPrototype: SpawnPointGhostDerelictServiceCyborg
+      min: 1
+      max: 1
+      pickPlayer: false
+
+# Pirate corsair
+- type: entity
   parent: BasePiratesRule
   id: PirateCorsairSpawn
   components:
@@ -42,24 +65,20 @@
   - type: DynamicRuleCost
     cost: 75
 
-# Derelict service cyborg spawn
+# Syndicate dead drop
 - type: entity
   parent: BaseGameRule
-  id: DerelictServiceCyborgSpawn
+  id: SyndicateDeadDrop
   components:
   - type: StationEvent
-    weight: 2.5
-    earliestStart: 15
-    reoccurrenceDelay: 20
-    minimumPlayers: 4
-    duration: null
-  - type: SpaceSpawnRule
-    spawnDistance: 0
-  - type: AntagSpawner
-    prototype: PlayerServiceBorgDerelictGhostRole
-  - type: AntagSelection
-    definitions:
-    - spawnerPrototype: SpawnPointGhostDerelictServiceCyborg
-      min: 1
-      max: 1
-      pickPlayer: false
+    startAnnouncement: station-syndicate-dead-drop-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 0
+    duration: 1
+    minimumPlayers: 1
+    maxOccurrences: 2
+    weight: 10
+  - type: RandomSpawnRule
+    prototype: SyndieDeadDropSpawner
+    radioMessage: {channel: Syndicate, message: "syndicate-dead-drop-announcement"}
