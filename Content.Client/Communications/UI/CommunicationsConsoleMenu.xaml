@@ -46,6 +46,8 @@
 
             </BoxContainer>
 
+            <RichTextLabel Name="ClockLabel"/>
+
             <!-- EmergencyPart -->
             <BoxContainer Orientation="Vertical"
                 SeparationOverride="6">
@@ -53,7 +55,7 @@
                 <RichTextLabel Name="CountdownLabel"/>
 
                 <Button Name="EmergencyShuttleButton"
-                    Access="Public" 
+                    Access="Public"
                     Text="Placeholder Text"
                     ToolTip="{Loc 'comms-console-menu-emergency-shuttle-button-tooltip'}"/>
             </BoxContainer>

@@ -23,6 +23,7 @@ namespace Content.Client.Communications.UI
         public bool CountdownStarted;
         public string CurrentLevel = string.Empty;
         public TimeSpan? CountdownEnd;
+        public TimeSpan StationTime;
 
         public event Action? OnEmergencyLevel;
         public event Action<string>? OnAlertLevel;
@@ -78,6 +79,7 @@ namespace Content.Client.Communications.UI
         {
             base.FrameUpdate(args);
             UpdateCountdown();
+            UpdateClock();
         }
 
         // The current alert could make levels unselectable, so we need to ensure that the UI reacts properly.
@@ -132,6 +134,14 @@ namespace Content.Client.Communications.UI
             var infoText = Loc.GetString($"comms-console-menu-time-remaining",
                 ("time", diff.ToString(@"hh\:mm\:ss", CultureInfo.CurrentCulture)));
             CountdownLabel.SetMessage(infoText);
+        }
+
+        private void UpdateClock()
+        {
+            var clockValue = StationTime;
+            var clockText = Loc.GetString($"comms-console-menu-clock",
+                ("time", clockValue.ToString(@"hh\:mm\:ss", CultureInfo.CurrentCulture)));
+            ClockLabel.SetMessage(clockText);
         }
     }
 }
