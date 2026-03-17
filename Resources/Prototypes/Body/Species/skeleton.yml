@@ -253,10 +253,10 @@
   parent: OrganBaseStomach
   id: OrganSkeletonPersonStomach
   components:
+  - type: Sprite
+    visible: false
   - type: SolutionContainerManager
     solutions:
       stomach:
         maxVol: 200
-  - type: Metabolizer
-    metabolizerTypes: [ Animal ]
 # Moffstation - End
