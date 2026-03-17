@@ -18,13 +18,21 @@ public sealed partial class RandomSpawnRuleComponent : Component
     public string Prototype = string.Empty;
 
     // Moffstation - Start - Syndicate dead drop
+    /// <summary>
+    /// The radio message to send when spawning the entity. The entity is used as the sender of the radio message.
+    /// </summary>
     [DataField]
-    public bool AlertRadio = false;
-
-    [DataField]
-    public ProtoId<RadioChannelPrototype> RadioChannel = "Common";
-
-    [DataField]
-    public string AlertMessage = "random-spawn-default-announcement";
+    public RandomSpawnRuleRadioMessage? RadioMessage;
     // Moffstation - End
 }
+// Moffstation - Start - Syndicate dead drop
+/// <param name="Channel">The channel to send the message over</param>
+/// <param name="Message">The message to send. Is localized with a <c>location</c> argument.</param>
+[DataRecord]
+public sealed partial record RandomSpawnRuleRadioMessage(
+    [field: DataField(required: true)]
+    ProtoId<RadioChannelPrototype> Channel,
+    [field: DataField(required: true)]
+    LocId Message
+);
+// Moffstation - End
