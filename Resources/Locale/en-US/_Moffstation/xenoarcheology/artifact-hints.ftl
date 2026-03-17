@@ -21,4 +21,3 @@ xenoarch-trigger-tip-cleaner = Cleaning solution
 xenoarch-trigger-tip-antidepressants = Antidepressants
 xenoarch-trigger-tip-lube = Lubrication
 xenoarch-trigger-tip-narcotics = Illegal stimulants
-xenoarch-trigger-tip-alcohol = Alcohol
