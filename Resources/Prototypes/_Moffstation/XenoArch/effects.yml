@@ -1,0 +1,13 @@
+﻿- type: entity
+  id: XenoArtifactFlashbang
+  parent: BaseXenoArtifactEffect
+  description: xenoarch-effect-tip-visual
+  components:
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: RandomSpawner
+      deleteSpawnerAfterSpawn: false
+      prototypes:
+      - AdminInstantEffectFlashSound

@@ -1,0 +1,7 @@
+﻿- type: entity
+  id: AdminInstantEffectFlashSound
+  suffix: Flash with sound
+  parent: AdminInstantEffectFlash
+  components:
+  - type: EmitSoundOnTrigger
+    sound: /Audio/Weapons/flash.ogg
