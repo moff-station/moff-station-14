@@ -1,0 +1,12 @@
+﻿# Derelict service cyborg spawn point
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: SpawnPointGhostDerelictCyborg
+  id: SpawnPointGhostDerelictServiceCyborg
+  components:
+  - type: GhostRole
+    name: ghost-role-information-derelict-service-cyborg-name
+    description: ghost-role-information-derelict-service-cyborg-description
+    rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default

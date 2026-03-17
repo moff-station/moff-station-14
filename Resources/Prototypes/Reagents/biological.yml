@@ -163,6 +163,13 @@
       effects:
       - !type:SatiateThirst
         factor: -0.5
+      # Moffstation - Start - Infectious blood
+      - !type:CauseZombieInfection
+        conditions:
+        - !type:ReagentCondition
+          reagent: ZombieBlood
+          min: 2 # basically impossible to eat or drink to 5u of accumulation, so min is lower here
+      # Moffstation - End
     Bloodstream:
       effects:
       - !type:HealthChange
@@ -171,6 +178,14 @@
             Poison: 4
       - !type:Vomit
         probability: 0.25
+      # Moffstation - Start - Infectious blood
+      - !type:CauseZombieInfection
+        conditions:
+        - !type:ReagentCondition
+          reagent: ZombieBlood
+          min: 5
+      # Moffstation - End
+
 - type: reagent
   id: Ichor
   name: reagent-name-ichor
