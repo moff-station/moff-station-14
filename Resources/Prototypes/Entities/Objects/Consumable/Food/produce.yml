@@ -84,6 +84,11 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 10
+  - type: Extractable # Moffstation - Meat Pulp
+    juiceSolution:
+      reagents:
+      - ReagentId: MeatPulp
+        Quantity: 10 # Mothstation- End
   - type: SpawnItemsOnUse
     items:
       - id: FoodMeatWheat

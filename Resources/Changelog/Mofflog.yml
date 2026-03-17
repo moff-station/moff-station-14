@@ -4160,6 +4160,18 @@ Entries:
   id: 1134
   time: '2026-03-08T21:55:06.000'
   url: https://github.com/moff-station/moff-station-14/pull/1134
+- author: Sable
+  changes: []
+  id: 1135
+  time: '2026-03-16T20:59:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1135
+- author: Sable
+  changes:
+  - message: 11 new species based drinks!
+    type: add
+  id: 1135
+  time: '2026-03-16T20:59:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1135
 - author: Dave
   changes:
   - message: new reporter clothing options
@@ -4169,6 +4181,15 @@ Entries:
   id: 1138
   time: '2026-03-10T21:57:33.000'
   url: https://github.com/moff-station/moff-station-14/pull/1138
+- author: Nyxilath
+  changes:
+  - message: Initial infected now possess zombie blood.
+    type: tweak
+  - message: Zombie blood is now infectious.
+    type: add
+  id: 1141
+  time: '2026-03-16T04:14:24.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1141
 - author: Dave
   changes:
   - message: New Service Borg Sprites & Displacements
@@ -4213,5 +4234,29 @@ Entries:
   id: 1148
   time: '2026-03-15T18:50:20.000'
   url: https://github.com/moff-station/moff-station-14/pull/1148
+- author: Nyxilath
+  changes:
+  - message: Derelict service cyborg!
+    type: add
+  id: 1149
+  time: '2026-03-16T19:51:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1149
+- author: Nyxilath
+  changes:
+  - message: Thieves now are assigned 3 minutes into shift rather than roundstart,
+      as a temporary workaround.
+    type: tweak
+  id: 1151
+  time: '2026-03-16T20:07:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1151
+- author: Nyxilath
+  changes:
+  - message: Feeble targets can shove other targets again.
+    type: tweak
+  - message: You can no longer instant cuff feeble targets.
+    type: tweak
+  id: 1153
+  time: '2026-03-16T01:01:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1153
 Name: Mofflog
 Order: -2

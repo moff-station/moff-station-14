@@ -83,3 +83,32 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHyper
+
+# Derelict service cyborg
+- type: entity
+  parent: BaseBorgChassisDerelict
+  id: ServiceBorgChassisDerelict
+  name: derelict service cyborg
+  description: A man-machine hybrid that assists the service department. It's a bigger mess than anything it can clean up.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/service_derelict.rsi
+    layers:
+    - state: borg
+      map: ["movement"]
+    - state: borg_e_r
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: borg_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 7 # One less module slot than the regular module to reflect this being a "broken" cyborg.
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleService
+    hasMindState: borg_e
+    noMindState: borg_e_r

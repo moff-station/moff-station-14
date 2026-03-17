@@ -125,3 +125,201 @@
       amount: 1
   products:
     ScrantonSpecial: 3
+
+- type: reaction
+  id: ApexCola
+  reactants:
+    WeldingFuel:
+      amount: 1
+    Cola:
+      amount: 1
+  products:
+    ApexCola: 2
+
+- type: reaction
+  id: Cocoon
+  reactants:
+    Fiber:
+      amount: 2
+    CreamOfCoconut:
+      amount: 3
+    Ice:
+      amount: 1
+  products:
+    Cocoon: 6
+
+- type: reaction
+  id: CoughDrop
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    SpaceCleaner:
+      amount: 2
+    Lemonade:
+      amount: 3
+    SolDry:
+      amount: 1
+  products:
+    CoughDrop: 6
+
+- type: reaction
+  id: Fertilizer
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    RobustHarvest:
+      amount: 1
+    Rewriter:
+      amount: 1
+    Vermouth:
+      amount: 1
+  products:
+    Fertilizer: 3
+
+- type: reaction
+  id: Gelatin
+  reactants:
+    OrangeLimeSoda:
+      amount: 1
+    Slime:
+      amount: 1
+  products:
+    Gelatin: 2
+
+- type: reaction
+  id: MeatAnomaly
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    MeatPulp:
+      amount: 1
+    RedMead:
+      amount: 1
+  products:
+    MeatAnomaly: 2
+
+- type: reaction
+  id: RussianMothroach
+  reactants:
+    Fiber:
+      amount: 1
+    WhiteRussian:
+      amount: 1
+  products:
+    RussianMothroach: 2
+
+- type: reaction
+  id: SolarHurricane
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    JuiceBluePumpkin:
+      amount: 1
+    JungleBird:
+      amount: 1
+    SpaceMountainWind:
+      amount: 1
+  products:
+    SolarHurricane: 3
+
+- type: reaction
+  id: Uprooting
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    EZNutrient:
+      amount: 1
+    IceCream:
+      amount: 1
+    Coffee:
+      amount: 1
+  products:
+    Fertilizer: 3
+
+- type: reaction
+  id: Singulo
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    PotassiumIodide:
+      amount: 1
+    PoisonWine:
+      amount: 4
+    UnstableMutagen:
+      amount: 1
+  products:
+    Singulo: 6
+
+- type: reaction
+  id: GrapeSoda
+  reactants:
+    JuiceGrape:
+      amount: 1
+    SodaWater:
+      amount: 1
+  products:
+    GrapeSoda: 2
+
+- type: reaction
+  id: Neurotoxin
+  reactants:
+    PoisonWine:
+      amount: 1
+    VodkaTonic:
+      amount: 1
+  products:
+    Neurotoxin: 2
+
+- type: reaction
+  id: NTCahors
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    JuiceGrape:
+      amount: 1
+    Mimosa:
+      amount: 1
+    Sugar:
+      amount: 1
+    Wine:
+      amount: 1
+  products:
+    NTCahors: 4
+
+- type: reaction
+  id: Mopwata
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Water:
+      amount: 3
+    Hooch:
+      amount: 2
+    Vomit:
+      amount: 1
+  products:
+    Mopwata: 6
+
+- type: reaction
+  id: MeatPulp
+  requiredMixerCategories:
+  - Stir
+  reactants:
+    Fat:
+      amount: 1
+    UncookedAnimalProteins:
+      amount: 1
+  products:
+    MeatPulp: 2
+
+- type: reaction
+  id: MeatPulpBreakdown
+  source: true
+  requiredMixerCategories:
+  - Centrifuge
+  reactants:
+    MeatPulp:
+      amount: 2
+  products:
+    UncookedAnimalProteins: 1
+    Fat: 1
