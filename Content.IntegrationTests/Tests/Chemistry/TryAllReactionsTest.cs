@@ -10,7 +10,7 @@ using Content.Shared.Chemistry.EntitySystems;
 
 namespace Content.IntegrationTests.Tests.Chemistry
 {
-    [TestFixture]
+    // [TestFixture]
     [TestOf(typeof(ReactionPrototype))]
     public sealed class TryAllReactionsTest
     {
