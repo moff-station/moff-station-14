@@ -63,7 +63,6 @@
       LegRight: OrganSkeletonPersonLegRight
       FootLeft: OrganSkeletonPersonFootLeft
       FootRight: OrganSkeletonPersonFootRight
-      Stomach: OrganSkeletonPersonStomach # Moffstation - Drinking
   - type: HumanoidProfile
     species: Skeleton
 
@@ -208,9 +207,16 @@
     markingData:
       group: Skeleton
 
+# Moffstation - Start - Skeleton Drinker
 - type: entity
-  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganSkeletonPersonExternal ]
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganSkeletonPersonExternal, OrganBaseStomach ]
   id: OrganSkeletonPersonTorso
+  components:
+    - type: SolutionContainerManager
+      solutions:
+       stomach:
+          maxVol: 200
+  # Moffstation - End
 
 - type: entity
   parent: [ OrganBaseHead, OrganSkeletonPersonExternal ]
@@ -247,17 +253,3 @@
 - type: entity
   parent: [ OrganBaseFootRight, OrganSkeletonPersonExternal ]
   id: OrganSkeletonPersonFootRight
-
-# Moffstation - Start - Skeleton Drinker
-- type: entity
-  parent: OrganBaseStomach
-  id: OrganSkeletonPersonStomach
-  components:
-  - type: Sprite
-    noRot: true
-    layers: []
-  - type: SolutionContainerManager
-    solutions:
-      stomach:
-        maxVol: 200
-# Moffstation - End
