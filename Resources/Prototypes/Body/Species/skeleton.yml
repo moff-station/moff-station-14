@@ -254,7 +254,8 @@
   id: OrganSkeletonPersonStomach
   components:
   - type: Sprite
-    visible: false
+    noRot: true
+    layers: []
   - type: SolutionContainerManager
     solutions:
       stomach:
