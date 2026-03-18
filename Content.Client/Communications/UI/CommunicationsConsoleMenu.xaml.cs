@@ -7,7 +7,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
-using Content.Client.GameTicking.Managers;
+using Content.Client.GameTicking.Managers; // Moffstation - Communications console clock
 
 namespace Content.Client.Communications.UI
 {
