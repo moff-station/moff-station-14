@@ -63,11 +63,11 @@
   description: A premium semi-automatic shotgun, and the pride of all security forces. The barrel and the stock has been sawed off. Uses .50 shotgun shells.
   components: # intend for Enforcer to have wider choke for semi-auto function
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer_sawn.rsi
   - type: Clothing
-    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer_sawn.rsi
   - type: Item
-    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer_inhands_64x.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer_sawn_inhands_64x.rsi
     shape:
     - 0,0,4,0
   - type: BallisticAmmoProvider
