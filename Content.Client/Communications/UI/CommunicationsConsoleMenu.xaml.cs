@@ -17,9 +17,9 @@ namespace Content.Client.Communications.UI
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly ILocalizationManager _loc = default!;
-        [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
+        [Dependency] private readonly IEntitySystemManager _entitySystem = default!; // Moffstation - Communications console clock
 
-        private readonly ClientGameTicker _gameTicker;
+        private readonly ClientGameTicker _gameTicker; // Moffstation - Communications console clock
 
         public bool CanAnnounce;
         public bool CanBroadcast;
@@ -28,7 +28,6 @@ namespace Content.Client.Communications.UI
         public bool CountdownStarted;
         public string CurrentLevel = string.Empty;
         public TimeSpan? CountdownEnd;
-        public TimeSpan StationTime;
 
         public event Action? OnEmergencyLevel;
         public event Action<string>? OnAlertLevel;
@@ -39,7 +38,8 @@ namespace Content.Client.Communications.UI
         {
             IoCManager.InjectDependencies(this);
             RobustXamlLoader.Load(this);
-            _gameTicker = _entitySystem.GetEntitySystem<ClientGameTicker>();
+
+            _gameTicker = _entitySystem.GetEntitySystem<ClientGameTicker>(); // Moffstation - Communications console clock
 
             MessageInput.Placeholder = new Rope.Leaf(_loc.GetString("comms-console-menu-announcement-placeholder"));
 
@@ -85,7 +85,7 @@ namespace Content.Client.Communications.UI
         {
             base.FrameUpdate(args);
             UpdateCountdown();
-            UpdateClock();
+            UpdateClock(); // Moffstation - Communications console clock
         }
 
         // The current alert could make levels unselectable, so we need to ensure that the UI reacts properly.
@@ -142,15 +142,15 @@ namespace Content.Client.Communications.UI
             CountdownLabel.SetMessage(infoText);
         }
 
+        // Moffstation - Start - Communications console clock
         private void UpdateClock()
         {
-
-
             var stationTime = _timing.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
             var clockText = Loc.GetString($"comms-console-menu-clock",
                 ("time", stationTime.ToString(@"hh\:mm\:ss", CultureInfo.CurrentCulture)));
             ClockLabel.SetMessage(clockText);
         }
+        // Moffstation - End
     }
 }
