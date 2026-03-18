@@ -19,8 +19,6 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
-using Robust.Shared.Timing; // Moffstation
-using Content.Server.GameTicking; // Moffstation
 
 namespace Content.Server.Communications
 {
@@ -37,8 +35,6 @@ namespace Content.Server.Communications
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!; // Moffstation
-        [Dependency] private readonly GameTicker _gameTicker = default!; // Moffstation
 
         private const float UIUpdateInterval = 5.0f;
 
@@ -139,7 +135,6 @@ namespace Content.Server.Communications
             List<string>? levels = null;
             string currentLevel = default!;
             float currentDelay = 0;
-            var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
             if (stationUid != null)
             {
@@ -169,7 +164,6 @@ namespace Content.Server.Communications
                 levels,
                 currentLevel,
                 currentDelay,
-                stationTime,
                 _roundEndSystem.ExpectedCountdownEnd
             ));
         }

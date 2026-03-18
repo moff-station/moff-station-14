@@ -7,6 +7,8 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
+using Content.Client.GameTicking.Managers;
+
 namespace Content.Client.Communications.UI
 {
     [GenerateTypedNameReferences]
@@ -15,6 +17,9 @@ namespace Content.Client.Communications.UI
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly ILocalizationManager _loc = default!;
+        [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
+
+        private readonly ClientGameTicker _gameTicker;
 
         public bool CanAnnounce;
         public bool CanBroadcast;
@@ -34,6 +39,7 @@ namespace Content.Client.Communications.UI
         {
             IoCManager.InjectDependencies(this);
             RobustXamlLoader.Load(this);
+            _gameTicker = _entitySystem.GetEntitySystem<ClientGameTicker>();
 
             MessageInput.Placeholder = new Rope.Leaf(_loc.GetString("comms-console-menu-announcement-placeholder"));
 
@@ -138,9 +144,12 @@ namespace Content.Client.Communications.UI
 
         private void UpdateClock()
         {
-            var clockValue = StationTime;
+
+
+            var stationTime = _timing.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
+
             var clockText = Loc.GetString($"comms-console-menu-clock",
-                ("time", clockValue.ToString(@"hh\:mm\:ss", CultureInfo.CurrentCulture)));
+                ("time", stationTime.ToString(@"hh\:mm\:ss", CultureInfo.CurrentCulture)));
             ClockLabel.SetMessage(clockText);
         }
     }
