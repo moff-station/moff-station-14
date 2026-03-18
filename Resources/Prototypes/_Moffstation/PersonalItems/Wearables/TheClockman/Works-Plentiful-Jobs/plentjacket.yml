@@ -3,9 +3,9 @@
 - type: entity
   parent: [ ClothingOuterStorageBase ]
   id: PersonalItemPlentJacket
+  suffix: PersonalItem
   name: military jacket
   description: A military field jacket adorned with patches relating to some sort of conventional military.
-  suffix: PersonalItem
   components:
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Wearables/TheClockman/Works-Plentiful-Jobs/plentjacket.rsi
