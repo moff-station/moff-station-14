@@ -9,6 +9,10 @@
         VerticalExpand="True"
         Margin="6 6 6 5">
 
+        <!-- Moffstation - Start - Communications console clock -->
+        <RichTextLabel Name="ClockLabel"/>
+        <!-- Moffstation - End -->
+
         <TextEdit Name="MessageInput"
             VerticalExpand="True"
             HorizontalExpand="True"
@@ -45,10 +49,6 @@
                     StyleClasses="OpenRight"/>
 
             </BoxContainer>
-
-            <!-- Moffstation - Start - Communications console clock -->
-            <RichTextLabel Name="ClockLabel"/>
-            <!-- Moffstation - End -->
 
             <!-- EmergencyPart -->
             <BoxContainer Orientation="Vertical"
