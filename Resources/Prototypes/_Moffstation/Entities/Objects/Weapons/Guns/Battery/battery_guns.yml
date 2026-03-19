@@ -129,10 +129,10 @@
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
   - type: BatteryAmmoProvider
     proto: RedLaser
-    fireCost: 200
+    fireCost: 50
   - type: Battery
-    maxCharge: 800
-    startingCharge: 800
+    maxCharge: 1000
+    startingCharge: 1000
   - type: Tag
     tags:
     - Sidearm
