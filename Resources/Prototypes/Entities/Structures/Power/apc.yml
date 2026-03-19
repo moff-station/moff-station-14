@@ -216,18 +216,23 @@
 
 - type: entity
   parent: BaseAPC
-  id: APCHighCapacityUpstream # Moffstation
-  suffix: High Capacity, 100kJ
-  categories: [ HideSpawnMenu ]
+  id: APCHighCapacity
+  suffix: High Capacity, 100kJ, 40.0 kw # Moffstation
   components:
   - type: Battery
     maxCharge: 100000
     startingCharge: 100000
+  # Moffstation - Start - Modular APCs
+  - type: Apc
+    maxLoad: 40000
+  - type: Construction
+    graph: APC
+    node: apcHigh
+  # Moffstation - End
 
 - type: entity
   parent: BaseAPC
-  id: APCSuperCapacityUpstream # Moffstation
-  categories: [ HideSpawnMenu ]
+  id: APCSuperCapacity
   suffix: Super Capacity, 150kJ
   components:
   - type: Battery
@@ -236,13 +241,19 @@
 
 - type: entity
   parent: BaseAPC
-  id: APCHyperCapacityUpstream # Moffstation
-  categories: [ HideSpawnMenu ]
-  suffix: Hyper Capacity, 200kJ
+  id: APCHyperCapacity
+  suffix: Hyper Capacity, 200kJ, 100.0 kw # Moffstation
   components:
   - type: Battery
     maxCharge: 200000
     startingCharge: 200000
+  # Moffstation - Start - Modular APCs
+  - type: Apc
+    maxLoad: 100000
+  - type: Construction
+    graph: APC
+    node: apcHyper
+  # Moffstation - End
 
 - type: entity
   parent: BaseAPC
