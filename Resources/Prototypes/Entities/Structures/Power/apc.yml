@@ -113,7 +113,7 @@
   - type: WiresVisuals
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic # Moffstation - Structural damagetype fix 
+    damageModifierSet: StructuralMetallic # Moffstation - Structural damagetype fix
   - type: Destructible
     thresholds:
     - trigger:
@@ -216,8 +216,9 @@
 
 - type: entity
   parent: BaseAPC
-  id: APCHighCapacity
+  id: APCHighCapacityUpstream # Moffstation
   suffix: High Capacity, 100kJ
+  categories: [ HideSpawnMenu ]
   components:
   - type: Battery
     maxCharge: 100000
@@ -225,7 +226,8 @@
 
 - type: entity
   parent: BaseAPC
-  id: APCSuperCapacity
+  id: APCSuperCapacityUpstream # Moffstation
+  categories: [ HideSpawnMenu ]
   suffix: Super Capacity, 150kJ
   components:
   - type: Battery
@@ -234,7 +236,8 @@
 
 - type: entity
   parent: BaseAPC
-  id: APCHyperCapacity
+  id: APCHyperCapacityUpstream # Moffstation
+  categories: [ HideSpawnMenu ]
   suffix: Hyper Capacity, 200kJ
   components:
   - type: Battery
