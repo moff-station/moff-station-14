@@ -1,4 +1,5 @@
-﻿- node: apcFrameWithBoard
+﻿# APC type determinator based on battery inserted
+- node: apcFrameWithBoard
   entity: APCFrameWithBoard
   edges:
   - to: apcPotato
@@ -9,14 +10,13 @@
       name: construction-graph-tag-power-cell
       icon:
         sprite: "Objects/Power/power_cells.rsi"
-        state: "small"
+        state: "potato"
       doAfter: 0.5
     - tool: Screwing
       doAfter: 2
   - to: apcSmall
     steps:
-    - anyTags:
-      - PowerCellSmall
+    - Tag: PowerCellSmall
       store: powercell
       name: construction-graph-tag-power-cell
       icon:
@@ -27,8 +27,7 @@
       doAfter: 2
   - to: apc
     steps:
-    - anyTags:
-      - PowerCellMedium
+    - Tag: PowerCellMedium
       store: powercell
       name: construction-graph-tag-power-cell
       icon:
@@ -39,25 +38,23 @@
       doAfter: 2
   - to: apcHigh
     steps:
-    - anyTags:
-      - PowerCellHigh
+    - Tag: PowerCellHigh
       store: powercell
       name: construction-graph-tag-power-cell
       icon:
         sprite: "Objects/Power/power_cells.rsi"
-        state: "medium"
+        state: "high"
       doAfter: 0.5
     - tool: Screwing
       doAfter: 2
   - to: apcHyper
     steps:
-    - anyTags:
-      - PowerCellHyper
+    - Tag: PowerCellHyper
       store: powercell
       name: construction-graph-tag-power-cell
       icon:
         sprite: "Objects/Power/power_cells.rsi"
-        state: "medium"
+        state: "hyper"
       doAfter: 0.5
     - tool: Screwing
       doAfter: 2
@@ -73,6 +70,23 @@
     - tool: Prying
       doAfter: 4
 
+# Potato APC
+- node: apcPotato
+  entity: APCPotatoCapacity
+  edges:
+  - to: apcFrameWithBoard
+    completed:
+    - !type:GivePrototype
+      prototype: PowerCellPotato
+      amount: 1
+    conditions:
+    - !type:WirePanel
+      open: true
+    steps:
+    - tool: Prying
+      doAfter: 4
+
+# Small capacity APC
 - node: apcSmall
   entity: APCSmallCapacity
   edges:
@@ -88,6 +102,7 @@
     - tool: Prying
       doAfter: 4
 
+# High capacity APC
 - node: apcHigh
   entity: APCHighCapacity
   edges:
@@ -103,6 +118,7 @@
     - tool: Prying
       doAfter: 4
 
+# Hyper capacity APC
 - node: apcHyper
   entity: APCHyperCapacity
   edges:
@@ -110,21 +126,6 @@
     completed:
     - !type:GivePrototype
       prototype: PowerCellHyperPrinted # Empty
-      amount: 1
-    conditions:
-    - !type:WirePanel
-      open: true
-    steps:
-    - tool: Prying
-      doAfter: 4
-
-- node: apcPotato
-  entity: APCPotatoCapacity
-  edges:
-  - to: apcFrameWithBoard
-    completed:
-    - !type:GivePrototype
-      prototype: PowerCellPotato
       amount: 1
     conditions:
     - !type:WirePanel
