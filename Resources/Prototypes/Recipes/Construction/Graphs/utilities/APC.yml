@@ -13,7 +13,7 @@
     - node: apcFrame
       entity: APCFrame
       edges:
-        - to: apcFrameWithBoard
+        - to: apcFrameWithBoard # Moffstation - Modular APCs
           steps:
             - component: ApcElectronics
               name: construction-graph-component-apc-electronics
@@ -32,12 +32,12 @@
               doAfter: 2
 
     - node: apc
-      entity: APCBasic
+      entity: APCBasic # Moffstation - Modular APCs
       edges:
-        - to: apcFrameWithBoard
+        - to: apcFrameWithBoard # Moffstation - Modular APCs
           completed:
             - !type:GivePrototype
-              prototype: PowerCellMediumPrinted # Empty
+              prototype: PowerCellMediumPrinted # Moffstation - Modular APCs
               amount: 1
           conditions:
             - !type:WirePanel

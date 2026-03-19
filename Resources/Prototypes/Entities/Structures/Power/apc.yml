@@ -217,7 +217,7 @@
 - type: entity
   parent: BaseAPC
   id: APCHighCapacity
-  suffix: High Capacity, 100kJ, 40.0 kw # Moffstation
+  suffix: High Capacity, 100kJ, 40.0 kw # Moffstation - Modular APCs
   components:
   - type: Battery
     maxCharge: 100000
@@ -242,7 +242,7 @@
 - type: entity
   parent: BaseAPC
   id: APCHyperCapacity
-  suffix: Hyper Capacity, 200kJ, 100.0 kw # Moffstation
+  suffix: Hyper Capacity, 200kJ, 100.0 kw # Moffstation - Modular APCs
   components:
   - type: Battery
     maxCharge: 200000
