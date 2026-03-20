@@ -97,6 +97,8 @@ entities:
     - type: GridTree
     - type: Broadphase
     - type: OccluderTree
+    - type: Parallax
+      parallax: OssuaryStation
   - uid: 2
     components:
     - type: MetaData
