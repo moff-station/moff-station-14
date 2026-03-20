@@ -51,9 +51,16 @@ public abstract partial class SharedPlayingCardsSystem
             usedStack,
             // Pick up card onto used stack.
             targetCard => verbs.Add(PlayingCardComponent.Verbs.StackPickup, () => Add(usedStack, targetCard, user)),
-            // Pick up top card onto used stack.
-            targetDeck => verbs.Add(PlayingCardDeckComponent.Verbs.StackPickup,
-                () => TransferTopCard(targetDeck, usedStack, user)),
+            targetDeck =>
+            {
+                // Pick up top card onto used stack.
+                verbs.Add(PlayingCardDeckComponent.Verbs.StackPickup,
+                    () => TransferTopCard(targetDeck, usedStack, user));
+
+                // Join target hand to held stack
+                verbs.Add(PlayingCardHandComponent.Verbs.StackPickupEntire,
+                    () => Transfer(targetDeck, usedStack, .., user));
+            },
             targetHand =>
             {
                 // Pick up picked card onto used stack.
@@ -113,13 +120,15 @@ public abstract partial class SharedPlayingCardsSystem
     /// Flips all cards in the given stack entity, handling audio, dirtying visuals, etc.
     private void FlipAll<T>(Entity<T> entity, bool? faceDown, EntityUid user) where T : PlayingCardStackComponent
     {
+        if (!_gameTiming.IsFirstTimePredicted)
+            return;
+
         var didAnyFlip = entity.Comp switch
         {
-            PlayingCardDeckComponent deck => deck.Cards.Aggregate(
-                false,
-                (current, card) => current | FlipCardInDeck(card)
-            ),
-            PlayingCardHandComponent hand => hand.Cards.Aggregate(false, (current, card) => current | FlipNetEnt(card)),
+            PlayingCardDeckComponent deck => deck.Cards.Aggregate(false,
+                (current, card) => current | FlipCardInDeck(card)),
+            PlayingCardHandComponent hand => hand.Cards.Aggregate(false,
+                (current, card) => current | (NetEntToCard(card) is { } cardEnt && SetFacingOrFlip(cardEnt, faceDown))),
             _ => entity.Comp.ThrowUnknownInheritor<PlayingCardStackComponent, bool>(),
         };
 
@@ -128,35 +137,16 @@ public abstract partial class SharedPlayingCardsSystem
             entity.Comp.DirtyVisuals = true;
         }
 
-        var targetName = Name(entity);
-        var verbInfo = faceDown switch
-        {
-            true => FlipUp,
-            false => FlipDown,
-            null => PlayingCardStackComponent.Verbs.Flip,
-        };
-        _popup.PopupPredicted(
-            verbInfo.Popup([("target", targetName)]),
-            verbInfo.Popup([
-                ("target", targetName),
-                ("user", Identity.Name(user, EntityManager))
-            ]),
+        VerbAudioAndPopup(
+            faceDown switch
+            {
+                true => FlipDown,
+                false => FlipUp,
+                null => PlayingCardStackComponent.Verbs.Flip,
+            },
             entity,
             user
         );
-        _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
-
-        bool FlipCardInDeck(PlayingCardInDeck card) => card switch
-        {
-            PlayingCardInDeckNetEnt(var cardNetEnt) => FlipNetEnt(cardNetEnt),
-            PlayingCardInDeckUnspawnedData(var data, _, _) => SetOrInvert(ref data.FaceDown, faceDown),
-            PlayingCardInDeckUnspawnedRef(_, var fd) => SetOrInvert(ref fd, faceDown),
-            _ => card.ThrowUnknownInheritor<PlayingCardInDeck, bool>(),
-        };
-
-        bool FlipNetEnt(NetEntity cardNetEnt) => GetEntity(cardNetEnt) is var cardEnt &&
-                                                 TryComp<PlayingCardComponent>(cardEnt, out var cardComp) &&
-                                                 SetFacingOrFlip((cardEnt, cardComp), faceDown);
     }
 
     /// Shuffles all cards in the given stack entity, handling audio, dirtying visuals, etc.
@@ -179,23 +169,14 @@ public abstract partial class SharedPlayingCardsSystem
 
         Dirty(entity);
         entity.Comp.DirtyVisuals = true;
-
-        var targetName = MetaData(entity).EntityName;
-        _popup.PopupPredicted(
-            PlayingCardStackComponent.Verbs.Shuffle.Popup([("target", targetName)]),
-            PlayingCardStackComponent.Verbs.Shuffle.PopupOther([
-                ("target", targetName),
-                ("user", Identity.Name(user, EntityManager)),
-            ]),
-            entity,
-            user
-        );
-        _audio.PlayPredicted(entity.Comp.ShuffleSound, entity, user, AudioVariation);
+        VerbAudioAndPopup(PlayingCardStackComponent.Verbs.Shuffle, user, entity);
     }
 
     /// Creates and returns an entity from <paramref name="protoId"/> at <paramref name="spawnAt"/>,
     /// <see cref="Add{TStack}(Entity{TStack}, IEnumerable{Entity{PlayingCardComponent}}, EntityCoordinates, EntityUid?)">adding</see>
     /// <paramref name="cards"/> to it in the order given.
+    /// <seealso cref="CreateDeckPredicted"/>
+    /// <seealso cref="CreateHandPredicted"/>
     private Entity<T> PredictedCreateStack<T>(
         EntProtoId<T> protoId,
         EntityCoordinates spawnAt,

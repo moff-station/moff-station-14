@@ -5,12 +5,14 @@ using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Cards.Systems;
 using Content.Shared._Moffstation.Extensions;
 using Robust.Client.GameObjects;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Moffstation.Cards;
 
 public sealed partial class CardDeckVisualizerSystem : ManagedLayerVisualizerSystem<PlayingCardDeckComponent>
 {
     [Dependency] private readonly SharedPlayingCardsSystem _playingCards = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     protected override ref HashSet<string> GetSpriteLayersAdded(PlayingCardDeckComponent component) =>
         ref component.SpriteLayersAdded;
@@ -22,6 +24,9 @@ public sealed partial class CardDeckVisualizerSystem : ManagedLayerVisualizerSys
         LayerFactory layerFactory
     )
     {
+        if (!_gameTiming.IsFirstTimePredicted)
+            return;
+
         if (!AppearanceSystem.TryGetData<List<PlayingCardInDeck>>(
                 sprite,
                 PlayingCardStackVisuals.Cards,

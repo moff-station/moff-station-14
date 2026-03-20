@@ -2,6 +2,7 @@ using Content.Shared._Moffstation.Cards.Components;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Audio.Systems;
@@ -28,6 +29,7 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
 
     /// The priority of verbs for placing cards, should be high so that alt+clicking things always tries to do these.
@@ -44,11 +46,13 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     /// This function retrieves the <see cref="PlayingCardComponent"/> data for the given <paramref name="card"/>. Note
     /// that since <paramref name="card"/> may not be a spawned entity, the component may not be owned by an entity.
     /// Returns null in various cases if something goes wrong with resolving prototypes, net entities, etc.
+    /// As of writing, this is used for retrieving user-facing information like examine text and visuals for hands/decks.
     public PlayingCardComponent? GetComponent(PlayingCardInDeck card)
     {
         var ret = card switch
         {
-            PlayingCardInDeckNetEnt(var netEntity) => NetEntToCardOrNull(netEntity)?.Comp,
+            // As of writing, this is only used for visuals / info, so we tolerate missing entities.
+            PlayingCardInDeckNetEnt(var netEntity) => NetEntToCard(netEntity)?.Comp,
             PlayingCardInDeckUnspawnedData data => ToComponent(data),
             PlayingCardInDeckUnspawnedRef(var entProtoId, var faceDown) =>
                 _proto.Resolve(entProtoId, out var proto) &&
@@ -68,18 +72,12 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
         return ret;
     }
 
-    private Entity<PlayingCardComponent>? NetEntToCardOrNull(NetEntity netEnt)
-    {
-        var ent = GetEntity(netEnt);
-        if (!TryComp<PlayingCardComponent>(ent, out var card))
-        {
-            this.AssertOrLogError(
-                $"Net Entity ({netEnt}) is missing expected {nameof(PlayingCardComponent)} ({ToPrettyString(ent)})");
-            return null;
-        }
-
-        return new Entity<PlayingCardComponent>(ent, card);
-    }
+    /// Returns null in the exceptional case that the net ent can't be resolved to an entity.
+    private Entity<PlayingCardComponent>? NetEntToCard(NetEntity netEnt) =>
+        CompOrNull<PlayingCardComponent>(GetEntity(netEnt)) ?? this.AssertOrLogError<Entity<PlayingCardComponent>?>(
+            $"Net Entity ({netEnt}) is missing expected {nameof(PlayingCardComponent)} ({ToPrettyString(GetEntity(netEnt))})",
+            null
+        );
 
     /// This function just sets the given <paramref name="comp"/>'s <see cref="PlayingCardComponent.FaceDown"/> and
     /// returns the component. This is useful for setting the component's value inline.
@@ -156,5 +154,17 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
 
         return action() is { } toPickup &&
                _hands.TryPickup(userHands, toPickup, animate: false, handsComp: userHands, handId: hand);
+    }
+
+    private void VerbAudioAndPopup(VerbInfo info, EntityUid target, EntityUid user)
+    {
+        (string, object)[] locArgs = [("target", Name(target)), ("user", Identity.Name(user, EntityManager))];
+        _popup.PopupPredicted(
+            info.Popup(locArgs),
+            info.Popup(locArgs),
+            target,
+            user
+        );
+        _audio.PlayPredicted(info.Sound, target, user, AudioVariation);
     }
 }

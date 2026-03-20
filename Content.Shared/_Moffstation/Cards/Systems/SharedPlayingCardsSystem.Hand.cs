@@ -28,6 +28,7 @@ public abstract partial class SharedPlayingCardsSystem
         SubscribeLocalEvent<PlayingCardHandComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<PlayingCardHandComponent, GetVerbsEvent<UtilityVerb>>(OnGetUtilityVerbsStack);
         SubscribeLocalEvent<PlayingCardHandComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbs);
+        SubscribeLocalEvent<PlayingCardHandComponent, BoundUIClosedEvent>(OnBoundUIClosed);
 
         SubscribeLocalEvent<HandsComponent, PlayingCardPickedEvent>(OnPlayingCardPicked);
     }
@@ -36,10 +37,10 @@ public abstract partial class SharedPlayingCardsSystem
     public IEnumerable<Entity<PlayingCardComponent>> GetCards(Entity<PlayingCardHandComponent?> entity)
     {
         if (IsClientSide(entity) ||
-            !Resolve(entity, ref entity.Comp))
+            !Resolve(entity, ref entity.Comp, logMissing: false))
             return [];
 
-        return entity.Comp.Cards.Select(NetEntToCardOrNull).OfType<Entity<PlayingCardComponent>>();
+        return entity.Comp.Cards.Select(NetEntToCard).OfType<Entity<PlayingCardComponent>>();
     }
 
     /// Opens <paramref name="hand"/>'s picker UI for <paramref name="user"/>. The picked card will be given to
@@ -56,7 +57,7 @@ public abstract partial class SharedPlayingCardsSystem
     /// Creates a new hand from the given cards. Returns null if no cards were given. Returns an entity which may
     /// be predicted.
     /// <remarks>
-    /// As of original writing, this function is only ever used by <see cref="JoinIntoHeldCardMakingHand"/>, as hands of
+    /// As of original writing, this function is only ever used by <see cref="CreateHandIfHeldOtherwiseDeck"/>, as hands of
     /// cards are always made by combining cards in a user's hands. This function is here and public for completeness of
     /// the system's API.
     /// </remarks>
@@ -155,6 +156,11 @@ public abstract partial class SharedPlayingCardsSystem
         );
     }
 
+    private static void OnBoundUIClosed(Entity<PlayingCardHandComponent> ent, ref BoundUIClosedEvent args)
+    {
+        ent.Comp.PickedCardDestination = null;
+    }
+
 
     /// These interactions are invoked when left-clicking on a hand with a held item.
     private void OnInteractUsing(Entity<PlayingCardHandComponent> targetHand, ref InteractUsingEvent args)
@@ -186,52 +192,24 @@ public abstract partial class SharedPlayingCardsSystem
 
     private void ConvertToDeck(Entity<PlayingCardHandComponent> hand, EntityUid user)
     {
+        if (!_gameTiming.IsFirstTimePredicted)
+            return;
+
         if (_hands.IsHolding(user, hand, out var handId))
         {
             // It's gonna get deleted anyway, so drop it so that we can pick up the spawned deck immediately.
             _hands.TryDrop(user, hand, checkActionBlocker: false, doDropInteraction: false);
         }
 
-        var spawned = CreateDeckPredicted([], user, null);
-        if (!IsClientSide(spawned))
+        var deck = CreateDeckPredicted([], user, null, Transform(hand).Coordinates);
+        if (!IsClientSide(deck))
         {
-            // Server can insert the cards into the deck.
-            var deck = new Entity<PlayingCardDeckComponent>(spawned, Comp<PlayingCardDeckComponent>(spawned));
             Transfer(hand, deck, .., user);
         }
 
         if (handId is not null)
         {
-            _hands.TryPickup(user, spawned, handId, animate: false);
+            _hands.TryPickup(user, deck, handId, animate: false);
         }
-    }
-
-    /// Creates a new hand composed of <paramref name="heldCard"/> and <paramref name="cardsToAdd"/>. It is required
-    /// that <paramref name="user"/> be holding <paramref name="heldCard"/> in one of its
-    /// <see cref="HandsComponent">hands</see>, as that hand is where the new hand of playing cards will be spawned.
-    /// <seealso cref="JoinIntoHandIfHeldOtherwiseDeck"/>
-    private Entity<PlayingCardHandComponent>? JoinIntoHeldCardMakingHand(
-        EntityUid user,
-        Entity<PlayingCardComponent> heldCard,
-        IEnumerable<Entity<PlayingCardComponent>> cardsToAdd
-    )
-    {
-        Entity<HandsComponent?> userHands = user;
-        if (!_hands.IsHolding(userHands, heldCard, out var handId))
-        {
-            this.AssertOrLogError($"Expected {user} to be holding {heldCard}");
-            return null;
-        }
-
-        if (!_hands.TryDrop(userHands, handId))
-            return null;
-
-        var newHand = CreateHandPredicted([heldCard, ..cardsToAdd], Transform(user).Coordinates, user);
-        if (!_hands.TryPickup(user, newHand, handId, animate: false, handsComp: userHands))
-        {
-            this.AssertOrLogError($"{user} failed to pick up newly spawned hand of cards to expected hand");
-        }
-
-        return newHand;
     }
 }

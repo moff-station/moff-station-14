@@ -58,6 +58,7 @@ public abstract partial class SharedPlayingCardsSystem
 
     /// Creates a new Deck from the given cards. Returns an entity which may be predicted. Spawns on
     /// <paramref name="user"/> if <paramref name="spawnAt"/> is null.
+    /// Also returns null in cases where this is not the first time the frame is predicted, to avoid flickering visuals.
     /// <seealso cref="CreateHandPredicted"/>
     public Entity<PlayingCardDeckComponent> CreateDeckPredicted(
         IEnumerable<Entity<PlayingCardComponent>> cards,
@@ -117,7 +118,7 @@ public abstract partial class SharedPlayingCardsSystem
             args.Used,
             targetDeck,
             // Take top card from this deck, creating a new hand with the used card.
-            usedCard => JoinIntoHeldCardMakingHand(user, usedCard, [TakeTopCard(targetDeck, user)]),
+            usedCard => JoinIntoHandIfHeldOtherwiseDeck(usedCard, targetDeck, TopCardRange, user),
             usedStack => TransferTopCard(targetDeck, usedStack, user)
         );
     }
@@ -162,9 +163,26 @@ public abstract partial class SharedPlayingCardsSystem
                 Disabled = _hands.GetActiveHand(user) is not { } hand ||
                            !_hands.CanPickupToHand(user, targetDeck.Owner, hand),
             });
+
+            // Flip the entire deck, rather than flipping each card's facing direction
+            args.Verbs.Add(PlayingCardDeckComponent.Verbs.FlipEntire, () => FlipEntire(targetDeck, user));
         }
     }
 
+
+    private void FlipEntire(Entity<PlayingCardDeckComponent> deck, EntityUid user)
+    {
+        deck.Comp.Cards.Reverse();
+        deck.Comp.DirtyVisuals = true;
+        Dirty(deck);
+
+        foreach (var card in deck.Comp.Cards)
+        {
+            FlipCardInDeck(card);
+        }
+
+        VerbAudioAndPopup(PlayingCardDeckComponent.Verbs.FlipEntire, deck, user);
+    }
 
     /// Tries to draw the top card from <paramref name="entity"/> to <paramref name="user"/>'s active hand. Returns
     /// <c>false</c> if the user cannot pick up the card.
@@ -172,16 +190,22 @@ public abstract partial class SharedPlayingCardsSystem
         PerformIfCanPickUp(user, entity, () => TakeTopCard(entity, user));
 
     /// Tries to split <paramref name="entity"/> into two roughly equally sized decks, picking up one of the halves.
-    private bool TryCutDeck(Entity<PlayingCardDeckComponent> entity, EntityUid user) => PerformIfCanPickUp(
-        user,
-        entity,
-        () =>
-        {
-            _audio.PlayPredicted(entity.Comp.PickUpSound, entity, user);
-            var newDeckContents = Take(entity, ^(entity.Comp.NumCards / 2).., Transform(entity).Coordinates, user);
-            return CreateDeckPredicted(newDeckContents, user, entity.Comp.Prototype);
-        }
-    );
+    private bool TryCutDeck(Entity<PlayingCardDeckComponent> entity, EntityUid user)
+    {
+        if (!_gameTiming.IsFirstTimePredicted)
+            return false;
+
+        return PerformIfCanPickUp(
+            user,
+            entity,
+            () =>
+            {
+                VerbAudioAndPopup(PlayingCardDeckComponent.Verbs.CutDeck, entity, user);
+                var newDeckContents = Take(entity, ^(entity.Comp.NumCards / 2).., Transform(entity).Coordinates, user);
+                return CreateDeckPredicted(newDeckContents, user, entity.Comp.Prototype);
+            }
+        );
+    }
 
     /// Conceptually, this "instantiates" the <see cref="PlayingCardDeckPrototype.Cards">elements</see> in the given
     /// <paramref name="deckId"/>, handling calculating localization strings, sprite layers, etc. Note that this <b>does

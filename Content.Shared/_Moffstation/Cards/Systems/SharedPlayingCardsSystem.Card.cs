@@ -4,6 +4,7 @@ using Content.Shared._Moffstation.Cards.Events;
 using Content.Shared._Moffstation.Cards.Prototypes;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Examine;
+using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
 using Robust.Shared.Map;
@@ -94,15 +95,70 @@ public abstract partial class SharedPlayingCardsSystem
         args.Handled = true;
     }
 
-    /// Creates a new deck or hand containing the given cards. Returns null in the exceptional case that a hand cannot
-    /// be created.
+    /// Creates and returns a new stack made from <paramref name="destination"/> and <paramref cref="moved"/>. See
+    /// <see cref="CreateHandIfHeldOtherwiseDeck"/> for more.
     private EntityUid? JoinIntoHandIfHeldOtherwiseDeck(
         Entity<PlayingCardComponent> destination,
         Entity<PlayingCardComponent> moved,
         EntityUid user
-    ) => _hands.IsHolding(user, destination)
-        ? JoinIntoHeldCardMakingHand(user, destination, [moved])
-        : CreateDeckPredicted([destination, moved], user, null, Transform(destination).Coordinates);
+    )
+    {
+        if (CreateHandIfHeldOtherwiseDeck(destination, user) is { } stack)
+        {
+            Add(stack, moved, user);
+        }
+
+        return null;
+    }
+
+    /// Creates and returns a new stack made from <paramref name="destination"/> and the cards specifiecd by
+    /// <paramref name="range"/> in <paramref name="source"/>. See <see cref="CreateHandIfHeldOtherwiseDeck"/> for more.
+    private EntityUid? JoinIntoHandIfHeldOtherwiseDeck<TSource>(
+        Entity<PlayingCardComponent> destination,
+        Entity<TSource> source,
+        Range range,
+        Entity<HandsComponent?> user
+    ) where TSource : PlayingCardStackComponent
+    {
+        if (CreateHandIfHeldOtherwiseDeck(destination, user) is { } stack)
+        {
+            Transfer<TSource, PlayingCardStackComponent>(source, stack, range, user);
+        }
+
+        return null;
+    }
+
+    /// Creates and returns a degenerate hand or deck from the given <paramref name="card"/>. If <paramref name="user"/>
+    /// is holding the card, creates a hand, otherwise creates a deck. Returns null in the case that something goes
+    /// wrong with creating a hand.
+    /// <remarks>This absolutely should not be used by anything other than <see cref="JoinIntoHandIfHeldOtherwiseDeck"/>
+    /// since this makes a degenerate stack and it should always get more cards added to itself!!</remarks>
+    private Entity<PlayingCardStackComponent>? CreateHandIfHeldOtherwiseDeck(
+        Entity<PlayingCardComponent> card,
+        Entity<HandsComponent?> user
+    )
+    {
+        if (!_gameTiming.IsFirstTimePredicted)
+            return null;
+
+        // If the destination card's not held, make a deck at its location.
+        if (!_hands.IsHolding(user, card, out var handId))
+        {
+            var deck = CreateDeckPredicted([card], user, null, Transform(card).Coordinates);
+            return (deck, deck);
+        }
+
+        if (!_hands.TryDrop(user, handId))
+            return null;
+
+        var hand = CreateHandPredicted([card], Transform(user).Coordinates, user);
+        if (!_hands.TryPickup(user, hand, handId, animate: false, handsComp: user))
+        {
+            this.AssertOrLogError($"{user} failed to pick up newly spawned hand of cards to expected hand");
+        }
+
+        return (hand, hand);
+    }
 
 
     /// These interactions are invoked when left-clicking on a card with a held item.
@@ -116,7 +172,7 @@ public abstract partial class SharedPlayingCardsSystem
             args.Used,
             targetCard,
             // Card: pick up this card to the used card, creating a new hand.
-            usedCard => JoinIntoHeldCardMakingHand(user, usedCard, [targetCard]),
+            usedCard => JoinIntoHandIfHeldOtherwiseDeck(usedCard, targetCard, user),
             // Deck: pick up this card, placing it on the top of the used stack.
             usedStack => Add(usedStack, targetCard, user)
         );
@@ -134,10 +190,10 @@ public abstract partial class SharedPlayingCardsSystem
             args.Target,
             usedCard,
             // Card: pick up the target card to the this card, creating a new hand.
-            targetCard => verbs.Add(CardPickup, () => JoinIntoHeldCardMakingHand(user, usedCard, [targetCard])),
+            targetCard => verbs.Add(CardPickup, () => JoinIntoHandIfHeldOtherwiseDeck(usedCard, targetCard, user)),
             // Deck: draw a card from the target deck, creating a new hand with this card.
             targetDeck => verbs.Add(PlayingCardDeckComponent.Verbs.CardPickup,
-                () => JoinIntoHeldCardMakingHand(user, usedCard, [TakeTopCard(targetDeck, user)])),
+                () => JoinIntoHandIfHeldOtherwiseDeck(usedCard, targetDeck, TopCardRange, user)),
             // Hand: open the picker UI. It'll handle combining cards and stuff.
             targetHand => verbs.Add(PlayingCardHandComponent.Verbs.CardPickup,
                 () => OpenPickerUi(targetHand, usedCard, user))
@@ -156,13 +212,13 @@ public abstract partial class SharedPlayingCardsSystem
             args.Using,
             targetCard,
             // Card: place the used card on top of this card, creating a new deck.
-            usedCard => verbs.Add(CardPutDown, PlacementVerbPriority, () => JoinIntoHandIfHeldOtherwiseDeck(targetCard, usedCard, user)),
-            // Stack: draw one card from the used deck, placing it on the target card, creating a new deck.
-            usedDeck => verbs.Add(
-                DeckPutDown,
+            usedCard => verbs.Add(CardPutDown,
                 PlacementVerbPriority,
-                () => JoinIntoHandIfHeldOtherwiseDeck(targetCard, TakeTopCard(usedDeck, user, Transform(targetCard).Coordinates), user)
-            ),
+                () => JoinIntoHandIfHeldOtherwiseDeck(targetCard, usedCard, user)),
+            // Stack: draw one card from the used deck, placing it on the target card, creating a new deck.
+            usedDeck => verbs.Add(DeckPutDown,
+                PlacementVerbPriority,
+                () => JoinIntoHandIfHeldOtherwiseDeck(targetCard, usedDeck, TopCardRange, user)),
             // Hand: pick a card from the used hand to combine with the target card.
             usedHand => verbs.Add(HandPutDown, PlacementVerbPriority, () => OpenPickerUi(usedHand, targetCard, user))
         );
@@ -194,6 +250,17 @@ public abstract partial class SharedPlayingCardsSystem
         value = setToValue ?? !oldValue;
         return oldValue != value;
     }
+
+    /// Like <see cref="Flip"/>, but for a <see cref="PlayingCardInDeck"/>, which may be an unspawned card in a
+    /// deck.
+    private bool FlipCardInDeck(PlayingCardInDeck card, bool? faceDown = null) => card switch
+    {
+        PlayingCardInDeckNetEnt(var cardNetEnt) =>
+            NetEntToCard(cardNetEnt) is { } cardEnt && SetFacingOrFlip(cardEnt, null),
+        PlayingCardInDeckUnspawnedData(var data, _, _) => SetOrInvert(ref data.FaceDown, faceDown),
+        PlayingCardInDeckUnspawnedRef(_, var fd) => SetOrInvert(ref fd, faceDown),
+        _ => card.ThrowUnknownInheritor<PlayingCardInDeck, bool>(),
+    };
 
     /// "Instantiates" <paramref name="data"/> as the returned entity. Returns null if resolving prototypes fails.
     /// Note that the spawned card <b>is predicted on the client</b>.

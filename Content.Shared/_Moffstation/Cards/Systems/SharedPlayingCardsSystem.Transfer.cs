@@ -163,7 +163,7 @@ public abstract partial class SharedPlayingCardsSystem
                     switch (cardInDeck)
                     {
                         case PlayingCardInDeckNetEnt(var netEntity):
-                            if (NetEntToCardOrNull(netEntity) is not { } card)
+                            if (NetEntToCard(netEntity) is not { } card)
                                 continue;
 
                             _container.Remove(card.Owner, entity.Comp.Container);
@@ -203,7 +203,7 @@ public abstract partial class SharedPlayingCardsSystem
             {
                 foreach (var cardNetEnt in inRange)
                 {
-                    if (NetEntToCardOrNull(cardNetEnt) is not { } card)
+                    if (NetEntToCard(cardNetEnt) is not { } card)
                         continue;
 
                     _container.Remove(card.Owner, entity.Comp.Container);
@@ -246,16 +246,41 @@ public abstract partial class SharedPlayingCardsSystem
     private CardSink CardSinkFrom<TStack>(Entity<TStack> entity) where TStack : PlayingCardStackComponent
     {
         if (IsClientSide(entity))
-        {
-            Log.Warning($"Creating noop card sink due to requested sink entity being predicted ({entity})");
-            return (_, _) => null;
-        }
+            return PredictedCardSinkFrom(entity);
 
         return entity.Comp switch
         {
             PlayingCardDeckComponent deck => AsCardSink((entity, deck)),
             PlayingCardHandComponent hand => AsCardSink((entity, hand)),
             _ => entity.Comp.ThrowUnknownInheritor<TStack, CardSink>(),
+        };
+    }
+
+    /// This card sink is used when the card sink entity is predicted and therefore cannot have cards inserted into
+    /// itself. It detaches entities from the transform hierarchy until their state is updated by some other operation.
+    private CardSink PredictedCardSinkFrom<TStack>(Entity<TStack> entity) where TStack : PlayingCardStackComponent
+    {
+        var deckCoords = Transform(entity).Coordinates;
+        return (cards, user) =>
+        {
+            Entity<PlayingCardComponent>? first = null;
+            var count = 0;
+            foreach (var cardLike in cards)
+            {
+                count += 1;
+                if (cardLike is CardLike.Entity(var card))
+                {
+                    first ??= card;
+                    _transform.DetachEntity(card);
+                }
+            }
+
+            if (count > 0)
+            {
+                _audio.PlayPredicted(entity.Comp.PlaceDownSound, deckCoords, user);
+            }
+
+            return first;
         };
     }
 

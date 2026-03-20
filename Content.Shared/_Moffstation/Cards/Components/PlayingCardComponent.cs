@@ -61,14 +61,14 @@ public sealed partial class PlayingCardComponent : Component
 
     public static class Verbs
     {
-        public static readonly VerbInfo CardPickup = VerbInfo.Build("playing-card-card-card-pickup", "pickup");
-        public static readonly VerbInfo StackPickup = VerbInfo.Build("playing-card-card-stack-pickup", "pickup");
+        public static readonly VerbInfo CardPickup = VerbInfo.Build("playing-card-card-card-pickup", icon: "pickup");
+        public static readonly VerbInfo StackPickup = VerbInfo.Build("playing-card-card-stack-pickup", icon: "pickup");
 
-        public static readonly VerbInfo CardPutDown = VerbInfo.Build("playing-card-card-card-put-down", "drop");
-        public static readonly VerbInfo DeckPutDown = VerbInfo.Build("playing-card-card-deck-put-down", "drop");
-        public static readonly VerbInfo HandPutDown = VerbInfo.Build("playing-card-card-hand-put-down", "drop");
+        public static readonly VerbInfo CardPutDown = VerbInfo.Build("playing-card-card-card-put-down", icon: "drop");
+        public static readonly VerbInfo DeckPutDown = VerbInfo.Build("playing-card-card-deck-put-down", icon: "drop");
+        public static readonly VerbInfo HandPutDown = VerbInfo.Build("playing-card-card-hand-put-down", icon: "drop");
 
-        public static readonly VerbInfo Flip = VerbInfo.Build("playing-card-flip", "flip");
+        public static readonly VerbInfo Flip = VerbInfo.Build("playing-card-flip", icon: "flip");
     }
 }
 

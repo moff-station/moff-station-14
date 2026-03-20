@@ -1,5 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using Content.Shared.Verbs;
+using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Extensions;
@@ -55,9 +58,13 @@ public static class VerbExt
     }
 }
 
-public readonly record struct VerbInfo(
-    string LocPrefix,
-    SpriteSpecifier Icon
+[DataRecord, Serializable, NetSerializable]
+public readonly partial record struct VerbInfo(
+    LocId VerbTextLoc,
+    LocId? PopupLoc,
+    LocId? PopupOtherLoc,
+    SpriteSpecifier? Icon,
+    SoundSpecifier? Sound
 )
 {
     private static ILocalizationManager LocalizationManager => IoCManager.Resolve<ILocalizationManager>();
@@ -66,19 +73,28 @@ public readonly record struct VerbInfo(
     private const string PopupOtherSuffix = "-popup-other";
 
     public static VerbInfo Build(
-        string locPrefix,
-        string verbIconName
+        string
+            loc, // Maybe at some point make an overload which doesn't take this in case you want to specifically disallow the implicit ones, idk.
+        LocId? verbText = null,
+        LocId? popup = null,
+        LocId? popupOther = null,
+        string? icon = null,
+        SpriteSpecifier? iconSpec = null,
+        string? sound = null,
+        ProtoId<SoundCollectionPrototype>? sounds = null,
+        SoundSpecifier? soundSpec = null
     ) => new(
-        locPrefix,
-        new SpriteSpecifier.Texture(new ResPath($"Interface/VerbIcons/{verbIconName}.svg.192dpi.png"))
+        verbText ?? loc + TextSuffix,
+        popup ?? loc + PopupSuffix,
+        popupOther ?? loc + PopupOtherSuffix,
+        iconSpec ?? (icon != null ? new SpriteSpecifier.Texture(new ResPath($"Interface/VerbIcons/{icon}.svg.192dpi.png")) : null),
+        (soundSpec ?? (sound != null ? new SoundPathSpecifier(sound) : null)) ?? (sounds != null ? new SoundCollectionSpecifier(sounds) : null)
     );
 
-    public string Text((string, object)[]? args = null) =>
-        LocalizationManager.GetString($"{LocPrefix}{TextSuffix}", args ?? []);
+    private static string? GetLocString(LocId? loc, (string, object)[]? args = null) =>
+        loc != null ? LocalizationManager.GetString(loc, args ?? []) : null;
 
-    public string Popup((string, object)[]? args = null) =>
-        LocalizationManager.GetString($"{LocPrefix}{PopupSuffix}", args ?? []);
-
-    public string PopupOther((string, object)[]? args = null) =>
-        LocalizationManager.GetString($"{LocPrefix}{PopupOtherSuffix}", args ?? []);
+    public string Text((string, object)[]? args = null) => GetLocString(VerbTextLoc, args)!;
+    public string? Popup((string, object)[]? args = null) => GetLocString(PopupLoc, args);
+    public string? PopupOther((string, object)[]? args = null) => GetLocString(PopupOtherLoc, args);
 }

@@ -50,11 +50,14 @@ public sealed partial class PlayingCardDeckComponent : PlayingCardStackComponent
 
     public new static class Verbs
     {
-        public static readonly VerbInfo CardPickup = VerbInfo.Build("playing-card-deck-card-pickup", "pickup");
-        public static readonly VerbInfo StackPickup = VerbInfo.Build("playing-card-deck-stack-pickup", "pickup");
+        public static readonly VerbInfo CardPickup = VerbInfo.Build("playing-card-deck-card-pickup", icon: "pickup");
+        public static readonly VerbInfo StackPickup = VerbInfo.Build("playing-card-deck-stack-pickup", icon: "pickup");
 
-        public static readonly VerbInfo DrawCard = VerbInfo.Build("playing-card-deck-draw", "pickup");
-        public static readonly VerbInfo CutDeck = VerbInfo.Build("playing-card-deck-cut", "eject");
+        public static readonly VerbInfo DrawCard = VerbInfo.Build("playing-card-deck-draw", icon: "pickup");
+        public static readonly VerbInfo CutDeck = VerbInfo.Build("playing-card-deck-cut", icon: "eject");
+
+        public static readonly VerbInfo FlipEntire =
+            VerbInfo.Build("playing-card-deck-flip-entire", icon: "flip", sounds: "storageRustle");
     }
 }
 

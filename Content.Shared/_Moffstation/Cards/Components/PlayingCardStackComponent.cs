@@ -13,9 +13,6 @@ namespace Content.Shared._Moffstation.Cards.Components;
 public abstract partial class PlayingCardStackComponent : Component, ISealedInheritance
 {
     [DataField]
-    public SoundSpecifier ShuffleSound = new SoundCollectionSpecifier("cardFan");
-
-    [DataField]
     public SoundSpecifier PickUpSound = new SoundCollectionSpecifier("cardSlide");
 
     [DataField]
@@ -46,19 +43,19 @@ public abstract partial class PlayingCardStackComponent : Component, ISealedInhe
 
     public static class Verbs
     {
-        public static readonly VerbInfo CardPutDown = VerbInfo.Build("playing-card-stack-card-put-down", "drop");
-        public static readonly VerbInfo DeckPutDown = VerbInfo.Build("playing-card-stack-deck-put-down", "drop");
-        public static readonly VerbInfo HandPutDown = VerbInfo.Build("playing-card-stack-hand-put-down", "drop");
+        public static readonly VerbInfo CardPutDown = VerbInfo.Build("playing-card-stack-card-put-down", icon: "drop");
+        public static readonly VerbInfo DeckPutDown = VerbInfo.Build("playing-card-stack-deck-put-down", icon: "drop");
+        public static readonly VerbInfo HandPutDown = VerbInfo.Build("playing-card-stack-hand-put-down", icon: "drop");
 
-        public static readonly VerbInfo Flip = VerbInfo.Build("playing-card-flip-all", "flip");
-        public static readonly VerbInfo FlipUp = VerbInfo.Build("playing-card-flip-all-up", "flip");
-        public static readonly VerbInfo FlipDown = VerbInfo.Build("playing-card-flip-all-down", "flip");
-        public static readonly VerbInfo Shuffle = VerbInfo.Build("playing-card-shuffle", "die");
+        public static readonly VerbInfo Flip = VerbInfo.Build("playing-card-flip-all", icon: "flip", sounds: "cardFan");
+        public static readonly VerbInfo FlipUp = VerbInfo.Build("playing-card-flip-all-up", icon: "flip", sounds: "cardFan");
+        public static readonly VerbInfo FlipDown = VerbInfo.Build("playing-card-flip-all-down", icon: "flip", sounds: "cardFan");
+        public static readonly VerbInfo Shuffle = VerbInfo.Build("playing-card-shuffle", icon: "die", sounds: "cardFan");
     }
 }
 
 [Serializable, NetSerializable]
-public enum PlayingCardStackVisuals : sbyte
+public enum PlayingCardStackVisuals : byte
 {
     /// This key for appearance data indicates which cards are visible in a stack. It is expected to key a value of type
     /// <c>List&lt;<see cref="PlayingCardInDeck"/>&gt;</c>.
