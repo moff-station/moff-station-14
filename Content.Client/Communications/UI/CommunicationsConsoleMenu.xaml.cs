@@ -147,7 +147,7 @@ namespace Content.Client.Communications.UI
         {
             var stationTime = _timing.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
-            var clockText = Loc.GetString($"comms-console-menu-clock",
+            var clockText = Loc.GetString("comms-console-menu-clock",
                 ("time", stationTime.ToString(@"hh\:mm\:ss")));
             ClockLabel.SetMessage(clockText);
         }
