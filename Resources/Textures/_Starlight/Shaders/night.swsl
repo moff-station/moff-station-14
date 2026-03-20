@@ -1,38 +1,19 @@
 uniform sampler2D SCREEN_TEXTURE;
 
-uniform highp float NightVisionBoost;      // Overall gain / exposure
-uniform highp float NightVisionThreshold;  // Darkness cutoff
-uniform highp vec4 TintColor;              // NVG color (green typical)
-uniform highp float TintIntensity;         // Tint strength
-uniform highp vec3 Brightness;             // Luma weights
-
+uniform highp float ShadowGain;
+uniform highp float ShadowThreshold;
+uniform highp vec3 LumaCoefficients;
+uniform highp vec3 TintColor;
+uniform highp float TintIntensity;
 
 void fragment()
 {
-    // Sample screen
-    COLOR = zTextureSpec(SCREEN_TEXTURE, Pos);
-    highp vec3 finalColor = COLOR.rgb;
+    vec3 c = zTextureSpec(SCREEN_TEXTURE, Pos).rgb;
 
-    // Perceived luminance
-    highp float luminance = dot(finalColor, Brightness);
+    float s = 1.0 - smoothstep(0.0, ShadowThreshold, dot(c, LumaCoefficients));
 
-    // Darkness factor (1 = dark, 0 = bright)
-    highp float darkFactor = 1.0 - smoothstep(0.0, NightVisionThreshold, luminance);
+    c *= mix(1.0, ShadowGain, s);
+    c = mix(c, c * TintColor, s * TintIntensity);
 
-    // Exposure boost primarily for darker regions
-    highp float boost = mix(1.0, NightVisionBoost, darkFactor);
-    finalColor *= boost;
-
-    // Highlight compression (prevents overexposure glow)
-    finalColor = finalColor / (finalColor + vec3(1.0));
-
-    // Slight contrast shaping (helps readability)
-    finalColor = pow(finalColor, vec3(0.85));
-
-    // Apply tint stronger in darker areas
-    finalColor = mix(finalColor,
-                     finalColor * TintColor.rgb,
-                     darkFactor * TintIntensity);
-
-    COLOR.rgb = finalColor;
+    COLOR.rgb = c;
 }

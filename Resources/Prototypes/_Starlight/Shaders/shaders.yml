@@ -3,4 +3,6 @@
   kind: source
   path: "/Textures/_Starlight/Shaders/night.swsl"
   params:
-    Brightness: 0.213, 0.715, 0.072
+    ShadowGain: 2.5
+    ShadowThreshold: 0.35
+    LumaCoefficients: 0.3, 0.6, 0.1

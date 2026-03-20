@@ -18,8 +18,6 @@ public sealed partial class NightVisionOverlay : Overlay
 
     public Color TintColor;
     public float TintIntensity;
-    public float LightBoost;
-    public float LightThreshold;
 
 
     public NightVisionOverlay()
@@ -38,8 +36,6 @@ public sealed partial class NightVisionOverlay : Overlay
         _nightVisionShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         _nightVisionShader.SetParameter("TintColor", TintColor);
         _nightVisionShader.SetParameter("TintIntensity", TintIntensity);
-        _nightVisionShader.SetParameter("NightVisionBoost", LightBoost);
-        _nightVisionShader.SetParameter("NightVisionThreshold", LightThreshold);
         handle.UseShader(_nightVisionShader);
         handle.DrawRect(args.WorldBounds, Color.White);
         handle.UseShader(null);

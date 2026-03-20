@@ -14,18 +14,6 @@ public sealed partial class NightVisionComponent : Component
     public EntProtoId EffectPrototype = "EffectNightVision";
 
     /// <summary>
-    /// How much should night vision light up?
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public float LightBoost = 3.5f;
-
-    /// <summary>
-    /// How much should night vision light up?
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public float LightThreshold = 0.2f;
-
-    /// <summary>
     /// What should the color of the tint be?
     /// </summary>
     [DataField, AutoNetworkedField]
