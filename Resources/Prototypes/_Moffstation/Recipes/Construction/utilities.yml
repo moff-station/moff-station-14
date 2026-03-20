@@ -1,0 +1,17 @@
+﻿- type: construction
+  id: SolarPanel
+  graph: SolarPanel
+  startNode: start
+  targetNode: solarpanel
+  category: construction-category-utilities
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  id: SolarTracker
+  graph: SolarPanel
+  startNode: start
+  targetNode: solartracker
+  category: construction-category-utilities
+  objectType: Structure
+  placementMode: SnapgridCenter

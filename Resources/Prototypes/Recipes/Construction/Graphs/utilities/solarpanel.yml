@@ -4,26 +4,29 @@
   graph:
     - node: start
       edges:
-        - to: solarassembly
+        - to: solarframe
           steps:
-            - tag: SolarAssemblyFlatpack
-              name: construction-graph-tag-solar-assembly-parts
-              icon:
-                sprite: Objects/Devices/flatpack.rsi
-                state: solar-assembly-part
-              doAfter: 1
+            #- tag: SolarAssemblyFlatpack
+            #  name: construction-graph-tag-solar-assembly-parts
+            #  icon:
+            #    sprite: Objects/Devices/flatpack.rsi
+            #    state: solar-assembly-part
+            #  doAfter: 1
+            - material: Steel
+              amount: 5
+              doAfter: 2
 
     - node: solarassembly
       entity: SolarAssembly
       edges:
-        - to: start
+        - to: solarframe
           completed:
             - !type:SpawnPrototype
-              prototype: SolarAssemblyFlatpack
+              prototype: SolarPanelElectronics
               amount: 1
-            - !type:DeleteEntity {}
+            #- !type:DeleteEntity {}
           steps:
-            - tool: Screwing
+            - tool: Prying
               doAfter: 2
         - to: solarpanelplasma
           conditions:
@@ -52,21 +55,21 @@
               doAfter: 0.5
           completed:
             - !type:SnapToGrid
-        - to: solartracker
-          conditions:
-            - !type:EntityAnchored
-          steps:
-            - tag: SolarTrackerElectronics
-              name: construction-graph-tag-solar-tracker-electronics
-              icon:
-                sprite: Objects/Misc/module.rsi
-                state: engineering
-              doAfter: 1
-            - material: Glass
-              amount: 2
-              doAfter: 2
-          completed:
-            - !type:SnapToGrid
+        #- to: solartracker
+        #  conditions:
+        #    - !type:EntityAnchored
+        #  steps:
+        #    - tag: SolarTrackerElectronics
+        #      name: construction-graph-tag-solar-tracker-electronics
+        #      icon:
+        #        sprite: Objects/Misc/module.rsi
+        #        state: engineering
+        #      doAfter: 1
+        #    - material: Glass
+        #      amount: 2
+        #      doAfter: 2
+        #  completed:
+        #    - !type:SnapToGrid
 
     - node: solarpanelplasma
       entity: SolarPanelPlasma
@@ -189,3 +192,45 @@
           steps:
             - tool: Prying
               doAfter: 1
+
+    - node: solarframe
+      entity: SolarFrame
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: SheetSteel1
+          amount: 5
+        - !type:DeleteEntity {}
+        steps:
+        - tool: Screwing
+          doAfter: 2
+      - to: solarassembly
+        completed:
+        - !type:SnapToGrid
+          southRotation: true
+        conditions:
+        - !type:EntityAnchored
+          anchored: true
+        steps:
+        - tag: SolarPanelElectronics
+          name: construction-graph-tag-solar-panel-electronics
+          icon:
+            sprite: Objects/Misc/module.rsi
+            state: engineering
+          doAfter: 1
+      - to: solartracker
+        conditions:
+        - !type:EntityAnchored
+        steps:
+        - tag: SolarTrackerElectronics
+          name: construction-graph-tag-solar-tracker-electronics
+          icon:
+            sprite: Objects/Misc/module.rsi
+            state: engineering
+          doAfter: 1
+        - material: Glass
+          amount: 2
+          doAfter: 2
+        completed:
+        - !type:SnapToGrid

@@ -1,0 +1,12 @@
+﻿# Solar Assembly
+- type: entity
+  parent: BaseElectronics
+  id: SolarPanelElectronics
+  name: solar panel electronics
+  description: Circuit used in the construction of a variety of solar panels.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: Tag
+    tags:
+    - SolarPanelElectronics

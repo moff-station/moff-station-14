@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: SolarAssembly
+  id: SolarFrame
+  name: solar assembly frame
+  description: A solar assembly frame, ready for electronics.
+  components:
+  - type: Sprite
+    state: solar_assembly_uncabled
+  - type: Construction
+    graph: SolarPanel
+    node: solarframe
+    defaultTarget: solarpanel

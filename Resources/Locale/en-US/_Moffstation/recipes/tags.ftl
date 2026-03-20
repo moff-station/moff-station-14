@@ -5,3 +5,5 @@ construction-graph-tag-engineering-goggles = engineering goggles
 construction-graph-tag-folder = a folder
 
 construction-graph-tag-capacitor = capacitor
+
+construction-graph-tag-solar-panel-electronics = solar panel electronics
