@@ -137,7 +137,7 @@ namespace Content.Client.Communications.UI
             var diff = MathHelper.Max((CountdownEnd - _timing.CurTime) ?? TimeSpan.Zero, TimeSpan.Zero);
 
             EmergencyShuttleButton.Text = Loc.GetString("comms-console-menu-recall-shuttle");
-            var infoText = Loc.GetString($"comms-console-menu-evac-time-remaining", // Moffstation - Communications console clock
+            var infoText = Loc.GetString("comms-console-menu-evac-time-remaining", // Moffstation - Communications console clock
                 ("time", diff.ToString(@"hh\:mm\:ss", CultureInfo.CurrentCulture)));
             CountdownLabel.SetMessage(infoText);
         }
