@@ -18,11 +18,11 @@
     - id: MouseMigration
     - id: PowerGridCheck
     - id: RandomSentience
-    #- id: SlimesSpawn # Moffstation - Move to pests table
+    #- id: SlimesSpawnHorde # Moffstation - Move to pests table
     - id: SolarFlare
-    #- id: SnakeSpawn # Moffstation - Move to pests table
-    #- id: SpiderClownSpawn # Moffstation - Move to pests table
-    #- id: SpiderSpawn # Moffstation - Move to pests table
+    #- id: SnakeSpawnHorde # Moffstation - Move to pests table
+    #- id: SpiderClownSpawnHorde # Moffstation - Move to pests table
+    #- id: SpiderSpawnHorde # Moffstation - Move to pests table
     - id: VentClog
 
 - type: entityTable
@@ -60,16 +60,15 @@
   table: !type:GroupSelector
     children:
     - !type:GroupSelector # Standard NT Borgs
-      weight: 90 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
+      weight: 85
       children:
         - id: DerelictEngineerCyborgSpawn
         - id: DerelictGenericCyborgSpawn
         - id: DerelictJanitorCyborgSpawn
         - id: DerelictMedicalCyborgSpawn
         - id: DerelictMiningCyborgSpawn
-        - id: DerelictServiceCyborgSpawn # Moffstation
     - !type:GroupSelector # Other Borgs
-      weight: 10 # moffstation - need to reduce assault borg chance so it doesn't become statistically more likely than derelict individual NT borgs
+      weight: 15
       children:
         - id: DerelictSyndicateAssaultCyborgSpawn
 
@@ -456,87 +455,91 @@
     duration: 60
   - type: VentClogRule
 
+# Critters
+
 - type: entity
-  id: SlimesSpawn
+  id: SlimesSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
-    duration: 30 # Moffstation - used as delay
-  - type: VentCrittersRule
-    entries:
-    # Moffstation - Start - Make mobs smash stuff
-    - id: MobAdultSlimesBlueAngrySmasher
-      prob: 0.02
-    - id: MobAdultSlimesGreenAngrySmasher
-      prob: 0.02
-    - id: MobAdultSlimesYellowAngrySmasher
-      prob: 0.02
-    # Moffstation - End
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      # Moffstation - Start - Make mobs smash stuff
+      - id: MobAdultSlimesBlueAngrySmasher
+      - id: MobAdultSlimesGreenAngrySmasher
+      - id: MobAdultSlimesYellowAngrySmasher
+      # Moffstation - End
 
 - type: entity
-  id: SnakeSpawn
+  id: SnakeSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
-    duration: 30 # Moffstation - used as delay
-  - type: VentCrittersRule
-    entries:
-    # Moffstation - Start - Make mobs smash stuff
-    - id: MobPurpleSnakeSmasher
-      prob: 0.02
-    - id: MobSmallPurpleSnakeSmasher
-      prob: 0.02
-    - id: MobCobraSpaceSmasher
-      prob: 0.02
-    # Moffstation - End
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      # Moffstation - Start - Make mobs smash stuff
+      - id: MobPurpleSnakeSmasher
+      - id: MobSmallPurpleSnakeSmasher
+      - id: MobCobraSpaceSmasher
+      # Moffstation - End
 
 - type: entity
-  id: SpiderSpawn
+  id: SpiderSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
     minimumPlayers: 15
     weight: 5
-    duration: 30 # Moffstation - used as delay
-  - type: VentCrittersRule
-    entries:
-    # Moffstation - Start - Make mobs smash stuff
-    - id: MobGiantSpiderAngrySmasher
-      prob: 0.05
-    # Moffstation - End
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: MobGiantSpiderAngrySmasher # Moffstation - Make mobs smash stuff
 
 - type: entity
-  id: SpiderClownSpawn
+  id: SpiderClownSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
     minimumPlayers: 20
     weight: 1.5
-    duration: 30 # Moffstation - used as delay
-  - type: VentCrittersRule
-    entries:
-    - id: MobClownSpiderSmasher # Moffstation - Make mobs smash stuff
-      prob: 0.05
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: MobClownSpiderSmasher # Moffstation - Make mobs smash stuff
 
 - type: entity
   id: ZombieOutbreak
