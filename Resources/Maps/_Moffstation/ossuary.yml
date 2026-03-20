@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/18/2026 03:16:15
-  entityCount: 11836
+  time: 03/20/2026 03:39:48
+  entityCount: 11837
 maps:
 - 1
 grids:
@@ -365,17 +365,6 @@ entities:
             color: '#0000003F'
             id: BrickLineOverlayE
           decals:
-            2469: -8,-53
-            2470: -8,-50
-            2471: -8,-49
-            2472: -8,-48
-            2473: -8,-45
-            2474: -8,-44
-            2475: -8,-43
-        - node:
-            color: '#0000003F'
-            id: BrickLineOverlayE
-          decals:
             778: -8,-42
             785: -2,-38
             786: -2,-37
@@ -407,6 +396,13 @@ entities:
             950: -5,-14
             951: -5,-15
             952: -5,-16
+            2469: -8,-53
+            2470: -8,-50
+            2471: -8,-49
+            2472: -8,-48
+            2473: -8,-45
+            2474: -8,-44
+            2475: -8,-43
         - node:
             color: '#9FED584C'
             id: BrickLineOverlayE
@@ -1935,10 +1931,6 @@ entities:
             774: -5,-14
             775: -5,-15
             776: -5,-16
-        - node:
-            color: '#0000003F'
-            id: HalfTileOverlayGreyscale90
-          decals:
             2462: -8,-43
             2463: -8,-44
             2464: -8,-45
@@ -3436,10 +3428,6 @@ entities:
             id: ThreeQuarterTileOverlayGreyscale
           decals:
             2535: 23,-10
-        - node:
-            color: '#FFA64726'
-            id: ThreeQuarterTileOverlayGreyscale
-          decals:
             2755: 25,-14
             2760: 23,-14
         - node:
@@ -3493,13 +3481,9 @@ entities:
             color: '#FFA64726'
             id: ThreeQuarterTileOverlayGreyscale180
           decals:
+            2538: 29,-15
             2757: 24,-15
             2758: 24,-13
-        - node:
-            color: '#FFA64726'
-            id: ThreeQuarterTileOverlayGreyscale180
-          decals:
-            2538: 29,-15
         - node:
             color: '#0000003F'
             id: ThreeQuarterTileOverlayGreyscale270
@@ -3555,13 +3539,9 @@ entities:
             color: '#FFA64726'
             id: ThreeQuarterTileOverlayGreyscale270
           decals:
+            2537: 23,-15
             2756: 25,-15
             2759: 23,-13
-        - node:
-            color: '#FFA64726'
-            id: ThreeQuarterTileOverlayGreyscale270
-          decals:
-            2537: 23,-15
         - node:
             color: '#0000003F'
             id: ThreeQuarterTileOverlayGreyscale90
@@ -3607,13 +3587,9 @@ entities:
             color: '#FFA64726'
             id: ThreeQuarterTileOverlayGreyscale90
           decals:
-            2761: 24,-14
-        - node:
-            color: '#FFA64726'
-            id: ThreeQuarterTileOverlayGreyscale90
-          decals:
             2536: 24,-10
             2539: 29,-14
+            2761: 24,-14
         - node:
             color: '#00000072'
             id: VerticalSlatContinuousOuterOverlayW
@@ -7190,7 +7166,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -154477.95
+      secondsUntilStateChange: -157015.62
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -34643,7 +34619,7 @@ entities:
       pos: 1.5,-18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -102700.36
+      secondsUntilStateChange: -105238.03
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 6696.2599724
@@ -64281,6 +64257,13 @@ entities:
     - type: Transform
       pos: 26.5,-3.5
       parent: 2
+- proto: SpawnMechRipley
+  entities:
+  - uid: 11472
+    components:
+    - type: Transform
+      pos: 26.5,-25.5
+      parent: 2
 - proto: SpawnMobBat
   entities:
   - uid: 4401
@@ -65455,6 +65438,8 @@ entities:
     - type: Transform
       pos: 20.5,0.5
       parent: 2
+    - type: Lock
+      locked: False
 - proto: SuitStorageSec
   entities:
   - uid: 655
