@@ -41,6 +41,18 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
             SendMessage(new JukeboxStopMessage());
         };
 
+        // Moffstation - Start - Jukebox volume control
+        _menu.OnVolumeDownPressed += () =>
+        {
+            SendMessage(new JukeboxVolumeDownMessage());
+        };
+
+        _menu.OnVolumeUpPressed += () =>
+        {
+            SendMessage(new JukeboxVolumeUpMessage());
+        };
+        // Moffstation - End
+
         _menu.OnSongSelected += SelectSong;
 
         _menu.SetTime += SetTime;

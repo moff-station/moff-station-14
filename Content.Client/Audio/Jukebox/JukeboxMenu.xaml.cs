@@ -30,6 +30,10 @@ public sealed partial class JukeboxMenu : FancyWindow
     public event Action? OnStopPressed;
     public event Action<ProtoId<JukeboxPrototype>>? OnSongSelected;
     public event Action<float>? SetTime;
+    // Moffstation - Start - Jukebox volume control
+    public event Action? OnVolumeDownPressed;
+    public event Action? OnVolumeUpPressed;
+    // Moffstation - End
 
     private EntityUid? _audio;
 
@@ -63,6 +67,18 @@ public sealed partial class JukeboxMenu : FancyWindow
         PlaybackSlider.OnReleased += PlaybackSliderKeyUp;
 
         SetPlayPauseButton(_audioSystem.IsPlaying(_audio), force: true);
+
+        // Moffstation - Start - Jukebox volume control
+        VolumeDown.OnPressed += args =>
+        {
+            OnVolumeDownPressed?.Invoke();
+        };
+
+        VolumeUp.OnPressed += args =>
+        {
+            OnVolumeUpPressed?.Invoke();
+        };
+        // Moffstation - End
     }
 
     public JukeboxMenu(AudioSystem audioSystem)

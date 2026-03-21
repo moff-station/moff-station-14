@@ -37,6 +37,9 @@ public sealed partial class JukeboxComponent : Component
 
     [ViewVariables]
     public float SelectAccumulator;
+
+    [ViewVariables]
+    public int JukeboxVolume = -5;
 }
 
 [Serializable, NetSerializable]
@@ -78,3 +81,11 @@ public enum JukeboxVisualLayers : byte
 {
     Base
 }
+
+// Moffstation - Start - Jukebox volume control
+[Serializable, NetSerializable]
+public sealed class JukeboxVolumeDownMessage : BoundUserInterfaceMessage;
+
+[Serializable, NetSerializable]
+public sealed class JukeboxVolumeUpMessage : BoundUserInterfaceMessage;
+// Moffstation - End
