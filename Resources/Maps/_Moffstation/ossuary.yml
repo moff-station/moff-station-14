@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/21/2026 01:58:43
+  time: 03/21/2026 02:34:54
   entityCount: 11857
 maps:
 - 1
@@ -697,18 +697,13 @@ entities:
             color: '#0000003F'
             id: BrickLineOverlayW
           decals:
-            2910: 20,-20
-        - node:
-            zIndex: 1
-            color: '#0000003F'
-            id: BrickLineOverlayW
-          decals:
             2444: 15,-51
             2445: 15,-52
             2446: 15,-54
             2447: 15,-55
             2448: 15,-57
             2449: 15,-58
+            2910: 20,-20
         - node:
             zIndex: 2
             color: '#0000003F'
@@ -1945,11 +1940,6 @@ entities:
           decals:
             2441: 15,-61
             2442: 16,-61
-        - node:
-            zIndex: 1
-            color: '#0000003F'
-            id: HalfTileOverlayGreyscale180
-          decals:
             2880: 7,-11
         - node:
             color: '#00000063'
@@ -2047,22 +2037,17 @@ entities:
             color: '#0000003F'
             id: HalfTileOverlayGreyscale270
           decals:
-            2849: -5,5
-            2856: 5,10
-            2889: -5,-30
-            2907: 20,-20
-            2917: 15,-28
-        - node:
-            zIndex: 1
-            color: '#0000003F'
-            id: HalfTileOverlayGreyscale270
-          decals:
             2434: 15,-51
             2435: 15,-52
             2436: 15,-54
             2437: 15,-55
             2438: 15,-57
             2439: 15,-58
+            2849: -5,5
+            2856: 5,10
+            2889: -5,-30
+            2907: 20,-20
+            2917: 15,-28
         - node:
             color: '#00000063'
             id: HalfTileOverlayGreyscale270
@@ -3676,11 +3661,6 @@ entities:
             id: QuarterTileOverlayGreyscale90
           decals:
             2433: 16,-44
-        - node:
-            zIndex: 1
-            color: '#0000003F'
-            id: QuarterTileOverlayGreyscale90
-          decals:
             2865: 20,-3
         - node:
             zIndex: 1
@@ -7686,7 +7666,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -169875.73
+      secondsUntilStateChange: -169944.23
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -35226,7 +35206,7 @@ entities:
       pos: 1.5,-18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -118098.15
+      secondsUntilStateChange: -118166.66
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 6696.2599724
@@ -52465,18 +52445,27 @@ entities:
   - uid: 1038
     components:
     - type: Transform
+      anchored: False
       pos: 37.5,-17.5
       parent: 2
+    - type: Physics
+      bodyType: Dynamic
   - uid: 10321
     components:
     - type: Transform
+      anchored: False
       pos: -32.5,5.5
       parent: 2
+    - type: Physics
+      bodyType: Dynamic
   - uid: 10322
     components:
     - type: Transform
+      anchored: False
       pos: -7.5,19.5
       parent: 2
+    - type: Physics
+      bodyType: Dynamic
 - proto: GenericTank
   entities:
   - uid: 4281
@@ -67387,13 +67376,19 @@ entities:
   - uid: 11470
     components:
     - type: Transform
+      anchored: False
       pos: 47.5,-9.5
       parent: 2
+    - type: Physics
+      bodyType: Dynamic
   - uid: 11471
     components:
     - type: Transform
+      anchored: False
       pos: 47.5,-10.5
       parent: 2
+    - type: Physics
+      bodyType: Dynamic
 - proto: Thruster
   entities:
   - uid: 7995
