@@ -125,3 +125,164 @@
   - type: Icon
     sprite: _Moffstation/Objects/Consumable/Drinks/scrantonspecial.rsi
     state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: ApexColaGlass
+  suffix: Apex Cola
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: ApexCola
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/apexcola.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: CocoonGlass
+  suffix: Cocoon
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Cocoon
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/cocoon.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: CoughDropGlass
+  suffix: Cough Drop
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: CoughDrop
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/coughdrop.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: FertilizerGlass
+  suffix: Fertilizer
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fertilizer
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/fertilizer.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: GelatinGlass
+  suffix: Gelatin
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Gelatin
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/gelatin.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: MeatAnomalyGlass
+  suffix: Meat Anomaly
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: MeatAnomaly
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/meatanomaly.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: MeatPulpGlass
+  suffix: Meat Pulp
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: MeatPulp
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/meatpulp.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: SolarHurricaneGlass
+  suffix: Solar Hurricane
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: SolarHurricane
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/solarhurricane.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: RussianMothroachGlass
+  suffix: Russian Mothroach
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: RussianMothroach
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/russianmothroach.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: UprootingGlass
+  suffix: Uprooting
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Uprooting
+          Quantity: 30
+  - type: Icon
+    sprite: _Moffstation/Objects/Consumable/Drinks/uprooting.rsi
+    state: icon
+

@@ -98,6 +98,8 @@ namespace Content.Server.Zombies
             EnsureComp<PendingZombieComponent>(uid, out PendingZombieComponent pendingComp);
 
             pendingComp.GracePeriod = _random.Next(pendingComp.MinInitialInfectedGrace, pendingComp.MaxInitialInfectedGrace);
+
+            _bloodstream.ChangeBloodReagents(uid, component.InfectedBloodReagents); // Moffstation - Infectious blood
         }
 
         private void OnPendingMapInit(EntityUid uid, PendingZombieComponent component, MapInitEvent args)

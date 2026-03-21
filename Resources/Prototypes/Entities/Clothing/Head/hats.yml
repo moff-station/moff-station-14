@@ -396,9 +396,9 @@
   description: It has a little note stuck in the band saying "PRESS". Practically an all-access pass!
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/presshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/presshat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/presshat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/presshat.rsi # Moffstation
 
 - type: entity
   parent: ClothingHeadBase

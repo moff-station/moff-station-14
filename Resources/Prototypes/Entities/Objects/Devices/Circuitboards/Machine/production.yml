@@ -7,8 +7,8 @@
     - type: MachineBoard
       prototype: Autolathe
       stackRequirements:
-        MatterBin: 3 #moffstation - Revert machine parts
         Manipulator: 1 #moffstation - Revert machine parts
+        MatterBin: 3 #moffstation - Revert machine parts
         Glass: 1
 
 - type: entity
@@ -20,7 +20,10 @@
   - type: MachineBoard
     prototype: AutolatheHyperConvection
     stackRequirements:
-      MatterBin: 3 #moffstation - Revert machine parts
+      # Moffstation - Begin - Revert machine parts
+      Manipulator: 1 # 4 on upstream, 3 moved to matter bins
+      MatterBin: 3
+      # Moffstation - End
       Glass: 1
     tagRequirements:
       Igniter:

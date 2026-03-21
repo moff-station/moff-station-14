@@ -1,0 +1,54 @@
+- type: entity
+  parent: BaseChemistryVial
+  name: bluespace vial
+  description: Powered by experimental bluespace technology.
+  id: BluespaceVial # check
+  components:
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Chemistry/vial_bluespace.rsi
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Chemistry/vial_bluespace.rsi
+    layers:
+    - state: icon
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: true
+    - state: base
+      map: ["enum.SolutionContainerLayers.Base"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    inHandsMaxFillLevels: 2
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 200
+  - type: SolutionTransfer
+    maxTransferAmount: 200
+  - type: StaticPrice
+    price: 100
+  - type: Destructible
+    thresholds:
+    - trigger: &DamageTrigger100
+        !type:DamageTrigger
+        damage: 200
+      behaviors: &OverkillBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 45 # Thrice as durable as a normal vial
+      behaviors:
+      - &SoundGlassBreak !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpillBehavior { }
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlass:
+            min: 0
+            max: 1
+          SheetSteel1:
+            min: 0
+            max: 1
+        transferForensics: true
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

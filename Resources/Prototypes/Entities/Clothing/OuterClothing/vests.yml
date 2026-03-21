@@ -80,7 +80,7 @@
   description: A cloth vest for the fearless reporter in the field. Go land an interview with that space dragon!
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/pressvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/pressvest.rsi # Moffstation
     layers:
     - state: icon
     - state: icon-unshaded # See ClothingOuterVestHazard for why we double-add these unshaded states this way
@@ -88,7 +88,7 @@
     - state: icon-unshaded
       shader: shaded
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/pressvest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Vests/pressvest.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING
