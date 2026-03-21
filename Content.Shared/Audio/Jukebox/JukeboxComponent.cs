@@ -38,8 +38,10 @@ public sealed partial class JukeboxComponent : Component
     [ViewVariables]
     public float SelectAccumulator;
 
+    // Moffstation - Start - Jukebox volume control
     [ViewVariables]
     public int JukeboxVolume = -5;
+    // Moffstation - End
 }
 
 [Serializable, NetSerializable]
