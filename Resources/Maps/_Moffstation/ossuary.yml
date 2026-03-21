@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/21/2026 00:21:31
-  entityCount: 11852
+  time: 03/21/2026 01:58:43
+  entityCount: 11857
 maps:
 - 1
 grids:
@@ -6019,7 +6019,7 @@ entities:
       - 4380
       - 4379
       - 4377
-      - 10812
+      - 11488
     - type: Fixtures
       fixtures: {}
   - uid: 10778
@@ -6055,7 +6055,7 @@ entities:
       - 8579
       - 9521
       - 10799
-      - 10812
+      - 11488
       - 10780
       - 10781
       - 4336
@@ -6178,7 +6178,7 @@ entities:
       - 4364
       - 9601
       - 8708
-      - 10812
+      - 11488
       - 8887
     - type: Fixtures
       fixtures: {}
@@ -7686,7 +7686,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -164063.61
+      secondsUntilStateChange: -169875.73
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -8192,16 +8192,6 @@ entities:
     - type: Transform
       pos: 0.5,-29.5
       parent: 2
-  - uid: 10812
-    components:
-    - type: Transform
-      pos: -4.5,-38.5
-      parent: 2
-    - type: DeviceNetwork
-      deviceLists:
-      - 10786
-      - 10804
-      - 10775
   - uid: 10820
     components:
     - type: Transform
@@ -8709,6 +8699,16 @@ entities:
     - type: Transform
       pos: 13.5,-47.5
       parent: 2
+  - uid: 11488
+    components:
+    - type: Transform
+      pos: -4.5,-38.5
+      parent: 2
+    - type: DeviceNetwork
+      deviceLists:
+      - 10786
+      - 10804
+      - 10775
   - uid: 13183
     components:
     - type: Transform
@@ -32911,6 +32911,13 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 10146
+- proto: DrinkWineBottleFull
+  entities:
+  - uid: 11492
+    components:
+    - type: Transform
+      pos: 7.5809293,2.9248703
+      parent: 2
 - proto: DrinkWineCan
   entities:
   - uid: 11468
@@ -35219,7 +35226,7 @@ entities:
       pos: 1.5,-18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -112286.01
+      secondsUntilStateChange: -118098.15
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 6696.2599724
@@ -36868,6 +36875,14 @@ entities:
     components:
     - type: Transform
       pos: -30.506573,6.5444603
+      parent: 2
+  - uid: 10812
+    components:
+    - type: MetaData
+      desc: A large plate, excellent for donating lots of money to the faith.
+      name: collection plate
+    - type: Transform
+      pos: 7.499199,2.7088213
       parent: 2
 - proto: FoodPotato
   entities:
@@ -64911,6 +64926,13 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -25.5,-7.5
       parent: 2
+- proto: SpaceCash
+  entities:
+  - uid: 11489
+    components:
+    - type: Transform
+      pos: 7.4066453,2.6850853
+      parent: 2
 - proto: SpaceHeater
   entities:
   - uid: 2284
@@ -67533,6 +67555,20 @@ entities:
     components:
     - type: Transform
       pos: 39.5,-4.5
+      parent: 2
+- proto: TreasureCoinIron
+  entities:
+  - uid: 11490
+    components:
+    - type: Transform
+      pos: 7.692904,2.5916116
+      parent: 2
+- proto: TreasureCoinSilver
+  entities:
+  - uid: 11491
+    components:
+    - type: Transform
+      pos: 7.580715,2.5622602
       parent: 2
 - proto: TromboneInstrument
   entities:
