@@ -121,6 +121,7 @@ public abstract class SharedStationRecordsSystem : EntitySystem
         if (ent.Comp.Records.Keys.Count == 0)
             return false;
 
+        // Moffstation - fix bug ahead of upstream
         return ent.Comp.Records.TryGetRecordEntry(_random.Pick(ent.Comp.Records.Keys), out entry);
     }
 }
