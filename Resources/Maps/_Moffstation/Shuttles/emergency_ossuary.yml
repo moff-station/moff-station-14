@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/18/2026 01:03:35
+  time: 03/22/2026 03:44:50
   entityCount: 750
 maps: []
 grids:
@@ -2797,6 +2797,7 @@ entities:
       parent: 1
     - type: GasMixer
       targetPressure: 200
+      enabled: True
     - type: AtmosPipeColor
       color: '#0055CCFF'
 - proto: GasPipeBend
