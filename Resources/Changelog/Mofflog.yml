@@ -4160,6 +4160,27 @@ Entries:
   id: 1134
   time: '2026-03-08T21:55:06.000'
   url: https://github.com/moff-station/moff-station-14/pull/1134
+- author: Sable
+  changes: []
+  id: 1135
+  time: '2026-03-16T20:59:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1135
+- author: Sable
+  changes:
+  - message: 11 new species based drinks!
+    type: add
+  id: 1135
+  time: '2026-03-16T20:59:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1135
+- author: Centronias
+  changes:
+  - message: Dwarves at the smallest height slider value will not get HUD icons describing
+      them dropped for no reason. (For example, the "Is Crew?" silicon HUD icon shows
+      now.)
+    type: fix
+  id: 1136
+  time: '2026-03-20T20:33:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1136
 - author: Dave
   changes:
   - message: new reporter clothing options
@@ -4169,6 +4190,15 @@ Entries:
   id: 1138
   time: '2026-03-10T21:57:33.000'
   url: https://github.com/moff-station/moff-station-14/pull/1138
+- author: Nyxilath
+  changes:
+  - message: Initial infected now possess zombie blood.
+    type: tweak
+  - message: Zombie blood is now infectious.
+    type: add
+  id: 1141
+  time: '2026-03-16T04:14:24.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1141
 - author: Dave
   changes:
   - message: New Service Borg Sprites & Displacements
@@ -4185,6 +4215,13 @@ Entries:
   id: 1143
   time: '2026-03-11T03:44:52.000'
   url: https://github.com/moff-station/moff-station-14/pull/1143
+- author: Dave
+  changes:
+  - message: Generic Borgs now know how hats work.
+    type: fix
+  id: 1144
+  time: '2026-03-14T18:22:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1144
 - author: Nyxilath
   changes:
   - message: Hairflower chameleon options now functional.
@@ -4199,5 +4236,79 @@ Entries:
   id: 1146
   time: '2026-03-12T18:29:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/1146
+- author: Tortosaur
+  changes:
+  - message: Added a Bluespace Vial, the centrifuge council is appeased.
+    type: add
+  id: 1148
+  time: '2026-03-15T18:50:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1148
+- author: Nyxilath
+  changes:
+  - message: Derelict service cyborg!
+    type: add
+  id: 1149
+  time: '2026-03-16T19:51:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1149
+- author: Nyxilath
+  changes:
+  - message: Thieves now are assigned 3 minutes into shift rather than roundstart,
+      as a temporary workaround.
+    type: tweak
+  id: 1151
+  time: '2026-03-16T20:07:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1151
+- author: Nyxilath
+  changes:
+  - message: Ports Set-Examine from Umbra, enabling dynamic character examine text.
+    type: add
+  id: 1152
+  time: '2026-03-21T17:49:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1152
+- author: Nyxilath
+  changes:
+  - message: Feeble targets can shove other targets again.
+    type: tweak
+  - message: You can no longer instant cuff feeble targets.
+    type: tweak
+  id: 1153
+  time: '2026-03-16T01:01:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1153
+- author: Nyxilath
+  changes:
+  - message: AI Ionstorm shielding is now 80% thinner!
+    type: tweak
+  id: 1155
+  time: '2026-03-19T02:17:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1155
+- author: Centronias
+  changes:
+  - message: Malformed antag round-end summaries (pinktext) should no longer cause
+      issues with the display of the round-end dialog.
+    type: fix
+  id: 1157
+  time: '2026-03-17T17:02:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1157
+- author: Nyxilath
+  changes:
+  - message: The communications console now displays the current shift time.
+    type: add
+  id: 1159
+  time: '2026-03-22T22:37:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1159
+- author: TheClockman138
+  changes:
+  - message: Added a personal item for Works-Plentiful-Jobs.
+    type: add
+  id: 1162
+  time: '2026-03-18T17:06:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1162
+- author: Nyxilath
+  changes:
+  - message: Tech Disk Printer sfx has been changed.
+    type: tweak
+  id: 1163
+  time: '2026-03-19T01:50:24.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1163
 Name: Mofflog
 Order: -2
