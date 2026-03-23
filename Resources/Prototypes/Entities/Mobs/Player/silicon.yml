@@ -40,8 +40,8 @@
     interfaces:
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
-      enum.CrewMonitoringUIKey.Key:
-        type: CrewMonitoringBoundUserInterface
+      enum.StationAiMonitorUIKey.Key: # Moffstation - Ai crew monitor
+        type: StationAiMonitorBoundUserInterface # Moffstation - Ai crew monitor
       enum.GeneralStationRecordConsoleKey.Key:
         type: GeneralStationRecordConsoleBoundUserInterface
       enum.SiliconLawsUiKey.Key:
@@ -52,13 +52,13 @@
     uis:
       enum.RadarConsoleUiKey.Key:
         toggleAction: ActionAGhostShowRadar
-      enum.CrewMonitoringUIKey.Key:
-        toggleAction: ActionAGhostShowCrewMonitoring
+      enum.StationAiMonitorUIKey.Key:
+        toggleAction: ActionAGhostShowAiMonitor
       enum.GeneralStationRecordConsoleKey.Key:
         toggleAction: ActionAGhostShowStationRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
-  - type: CrewMonitoringConsole
+  - type: StationAiMonitor
   - type: GeneralStationRecordConsole
   - type: DeviceNetwork
     deviceNetId: Wireless

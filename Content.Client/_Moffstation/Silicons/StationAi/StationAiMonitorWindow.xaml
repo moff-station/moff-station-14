@@ -1,0 +1,56 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:ui="clr-namespace:Content.Client._Moffstation.Silicons.StationAi"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:crewMonitoring="clr-namespace:Content.Client.Medical.CrewMonitoring"
+                      Title="{Loc crew-monitoring-ui-title}"
+                      Resizable="False"
+                      SetSize="1210 700"
+                      MinSize="1210 700">
+    <BoxContainer Orientation="Vertical">
+        <!-- main body -->
+        <BoxContainer Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True">
+
+            <crewMonitoring:CrewMonitoringNavMapControl Name="NavMap" HorizontalExpand="True" VerticalExpand="True" Margin="5 20"/>
+
+                <BoxContainer Orientation="Vertical" Margin="0 0 10 0">
+
+                    <controls:StripeBack>
+                        <PanelContainer>
+                            <Label Name="StationName" Text="{Loc crew-monitoring-ui-no-station-label}" Align="Center" Margin="0 5 0 3"/>
+                        </PanelContainer>
+                    </controls:StripeBack>
+
+
+                    <LineEdit Name="NameFilterEdit" HorizontalExpand="True" PlaceHolder="{Loc crew-monitoring-ui-filter-line-placeholder}"/>
+
+                    <ScrollContainer Name="SensorScroller" VerticalExpand="True" SetWidth="520" Margin="8, 8, 8, 8">
+                        <BoxContainer Name="SensorTable" Orientation="Vertical" HorizontalExpand="True" Margin="0 0 10 0">
+                        <!-- content filled by code -->
+                        </BoxContainer>
+                        <Label Name="NoServerLabel"
+                            Text="{Loc crew-monitoring-ui-no-server-label}"
+                            StyleClasses="LabelHeading"
+                            FontColorOverride="Red"
+                            HorizontalAlignment="Center"
+                            Visible="False"/>
+                    </ScrollContainer>
+
+                </BoxContainer>
+        </BoxContainer>
+        <!-- footer -->
+        <BoxContainer Orientation="Vertical">
+
+            <PanelContainer StyleClasses="LowDivider" />
+            <BoxContainer Orientation="Horizontal" Margin="10 2 5 0" VerticalAlignment="Bottom">
+                <Label Text="{Loc crew-monitoring-ui-flavor-left-label}" StyleClasses="WindowFooterText" />
+                <Label Text="{Loc crew-monitoring-ui-flavor-right-label}" StyleClasses="WindowFooterText"
+                       HorizontalAlignment="Right" HorizontalExpand="True"  Margin="0 0 5 0" />
+                <TextureRect StyleClasses="NTLogoDark" Stretch="KeepAspectCentered"
+                             VerticalAlignment="Center" HorizontalAlignment="Right" SetSize="19 19"/>
+            </BoxContainer>
+
+        </BoxContainer>
+
+    </BoxContainer>
+
+</controls:FancyWindow>

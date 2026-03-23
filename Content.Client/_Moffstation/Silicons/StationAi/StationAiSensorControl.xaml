@@ -1,0 +1,21 @@
+<Button xmlns="https://spacestation14.io">
+
+    <BoxContainer Name="MainContainer" Orientation="Horizontal" HorizontalExpand="True">
+
+        <BoxContainer Name="StatusContainer" SizeFlagsStretchRatio="1.25" Orientation="Horizontal" HorizontalExpand="True">
+            <TextureRect Name="CoordsIndicator" TextureScale="0.25 0.25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <AnimatedTextureRect Name="HealthIndicator" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 1 3 0"/>
+            <Label Name="NameLabel" HorizontalExpand="True" ClipText="True"/>
+        </BoxContainer>
+
+        <BoxContainer Name="JobContainer" Orientation="Horizontal" HorizontalExpand="True">
+            <TextureRect Name="JobIcon" TextureScale="2 2" VerticalAlignment="Center" Margin="5 0 5 0"/>
+            <Label Name="JobNameLabel" HorizontalExpand="True" ClipText="True" />
+        </BoxContainer>
+
+        <BoxContainer Name="ActionContainer" Orientation="Horizontal" HorizontalExpand="False">
+            <Button Name="WarpButton" Text="Warp" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </BoxContainer>
+
+    </BoxContainer>
+</Button>

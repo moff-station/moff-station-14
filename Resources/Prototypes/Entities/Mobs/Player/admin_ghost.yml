@@ -196,6 +196,21 @@
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.CrewMonitoringUIKey.Key }
 
+# Moffstation
+- type: entity
+  parent: BaseAGhostAction
+  id: ActionAGhostShowAiMonitor
+  name: Ai Monitor Interface
+  description: View a Station AI Monitor Interface.
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: crew_monitor }
+    iconOn: { sprite: Interface/Actions/actions_ai.rsi, state: crew_monitor }
+    keywords: [ "AI", "console", "interface" ]
+    priority: -8
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.StationAiMonitorUIKey.Key }
+
 - type: entity
   parent: BaseAGhostAction
   id: ActionAGhostShowStationRecords
