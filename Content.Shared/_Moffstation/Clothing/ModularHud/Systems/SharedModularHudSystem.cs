@@ -208,12 +208,13 @@ public abstract partial class SharedModularHudSystem : EntitySystem
 
             if (!usedHasQuality)
             {
-                Loc.GetString(
-                    usedHasQuality
-                        ? entity.Comp.RemoveModulesVerbMessage
-                        : entity.Comp.MissingToolQualityErrorText,
-                    ("quality", Loc.GetString(toolQuality?.Name ?? "Unknown")),
-                    ("hud", Name(entity))
+                _popup.PopupPredictedCursor(
+                    Loc.GetString(
+                        entity.Comp.MissingToolQualityErrorText,
+                        ("quality", Loc.GetString(toolQuality?.Name ?? "Unknown")),
+                        ("hud", Name(entity))
+                    ),
+                    args.User
                 );
                 return;
             }
@@ -265,6 +266,9 @@ public abstract partial class SharedModularHudSystem : EntitySystem
                 Text = Loc.GetString(entity.Comp.InsertModuleVerbText),
                 Act = () =>
                 {
+                    if (disabledReason != null)
+                        return;
+
                     if (!_container.Insert(used, entity.Comp.ModuleContainer))
                     {
                         // This should always succeed, so error out if it doesn't.
