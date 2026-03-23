@@ -84,6 +84,7 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
         if (TryComp<TypingIndicatorComponent>(uid, out var comp))
         {
             comp.TypingIndicatorOverride = ev.ChannelIndicator;
+            Dirty<TypingIndicatorComponent>((uid.Value ,comp));
         }
         // Moffstation - End
 
