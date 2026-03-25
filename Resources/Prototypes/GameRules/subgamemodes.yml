@@ -27,7 +27,7 @@
     definitions:
     - prefRoles: [ Thief ]
       max: 3
-      playerRatio: 20
+#      playerRatio: 20
       lateJoinAdditional: true
       allowNonHumans: true
       multiAntagSetting: NotExclusive
@@ -45,11 +45,6 @@
     cost: 75
   - type: GameRule
     cancelPresetOnTooFewPlayers: false
-    # Moffstation - Start - thief selection workaround
-    delay:
-      min: 180
-      max: 180
-    # Moffstation - End
 
 # Needs testing
 - type: entity
