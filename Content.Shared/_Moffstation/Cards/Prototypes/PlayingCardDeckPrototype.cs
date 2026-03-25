@@ -155,7 +155,7 @@ public sealed partial class PlayingCardDeckPrototypeElementSuit : PlayingCardDec
 /// as they have the right fields to implicitly discriminate between the variants.
 /// I LOVE IMPLICIT POLYMORPHIC DESERIALIZATION!!
 [TypeSerializer]
-public sealed class Serializer : ITypeSerializer<PlayingCardDeckPrototype.Element, MappingDataNode>
+public sealed class PlayingCardDeckContentContentSerializer : ITypeSerializer<PlayingCardDeckPrototype.Element, MappingDataNode>
 {
     public ValidationNode Validate(
         ISerializationManager serializationManager,

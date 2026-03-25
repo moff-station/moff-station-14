@@ -67,7 +67,8 @@ public readonly partial record struct VerbInfo(
     SoundSpecifier? Sound
 )
 {
-    private static ILocalizationManager LocalizationManager => IoCManager.Resolve<ILocalizationManager>();
+    private static ILocalizationManager LocalizationManager { get; } = IoCManager.Resolve<ILocalizationManager>();
+
     private const string TextSuffix = "-verb-text";
     private const string PopupSuffix = "-popup";
     private const string PopupOtherSuffix = "-popup-other";
