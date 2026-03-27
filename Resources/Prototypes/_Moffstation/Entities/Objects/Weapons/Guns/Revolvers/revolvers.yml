@@ -231,3 +231,22 @@
     ammoSlots: [ null, null, null, null, null, null ]
   - type: StealTarget
     stealGroup: OfficerHandgun
+
+- type: entity
+  name: Subtilt
+  parent: [BaseWeaponRevolver, BaseSecurityContraband]
+  id: WeaponRevolversubtilt
+  description: A precision made revolver with a handguard.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/subtilt.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/subtilt.rsi
+  - type: Item
+    storedOffset: 0,-2
+  - type: RevolverAmmoProvider
+    capacity: 6
+    chambers: [ True, True, True, True, True, True ]
+    ammoSlots: [ null, null, null, null, null, null ]
+  - type: StealTarget
+    stealGroup: OfficerHandgun
