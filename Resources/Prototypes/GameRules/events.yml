@@ -54,6 +54,7 @@
     - id: SyndicateListeningOutpostSpawn
     - id: PirateCorsairSpawn
     - id: HellPortalSpawn
+    - id: TouristRule # "Antags" :^)
     # Moffstation - End
 
 - type: entityTable
@@ -68,6 +69,7 @@
         - id: DerelictJanitorCyborgSpawn
         - id: DerelictMedicalCyborgSpawn
         - id: DerelictMiningCyborgSpawn
+        - id: DerelictServiceCyborgSpawn # Moffstation
     - !type:GroupSelector # Other Borgs
       weight: 15
       children:
