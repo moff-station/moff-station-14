@@ -1,5 +1,6 @@
 using Content.Shared.Audio.Jukebox;
 using Robust.Client.Audio;
+using Robust.Client.Console;
 using Robust.Client.UserInterface;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Prototypes;
@@ -45,11 +46,13 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         _menu.OnVolumeDownPressed += () =>
         {
             SendMessage(new JukeboxVolumeDownMessage());
+            UpdateVolumeDisplay();
         };
 
         _menu.OnVolumeUpPressed += () =>
         {
             SendMessage(new JukeboxVolumeUpMessage());
+            UpdateVolumeDisplay();
         };
         // Moffstation - End
 
@@ -79,8 +82,16 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         {
             _menu.SetSelectedSong(string.Empty, 0f);
         }
+        UpdateVolumeDisplay();
     }
 
+    public void UpdateVolumeDisplay()
+    {
+        if (_menu == null || !EntMan.TryGetComponent(Owner, out JukeboxComponent? jukebox))
+            return;
+
+        _menu.SetVolumeDisplay(jukebox.JukeboxVolume);
+    }
     public void PopulateMusic()
     {
         _menu?.Populate(_protoManager.EnumeratePrototypes<JukeboxPrototype>());

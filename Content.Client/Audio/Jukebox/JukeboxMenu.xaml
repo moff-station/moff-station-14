@@ -16,6 +16,7 @@
             <Label Name="VolumeDividerLeft" Text="|" />
             <Button Name="VolumeDown" Text="{Loc 'jukebox-menu-volume-down'}" />
             <Button Name="VolumeUp" Text="{Loc 'jukebox-menu-volume-up'}" />
+            <Label Name="VolumeDisplay" Text="---" />
             <Label Name="VolumeDividerRight" Text="|" />
             <!--Moffstation - End -->
             <Label Name="DurationLabel" Text="00:00 / 00:00" HorizontalAlignment="Right" HorizontalExpand="True"/>

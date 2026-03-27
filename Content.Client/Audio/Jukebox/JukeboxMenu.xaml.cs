@@ -91,6 +91,11 @@ public sealed partial class JukeboxMenu : FancyWindow
         _audio = audio;
     }
 
+    public void SetVolumeDisplay(int volume)
+    {
+        VolumeDisplay.Text = volume.ToString();
+    }
+
     private void PlaybackSliderKeyUp(Slider args)
     {
         SetTime?.Invoke(PlaybackSlider.Value);
