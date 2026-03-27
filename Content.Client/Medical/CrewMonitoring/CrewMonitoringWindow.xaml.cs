@@ -32,6 +32,11 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
     private bool _tryToScrollToListFocus;
     private Texture? _blipTexture;
 
+    // Moffstation - Navigation map warp
+    private bool _warpEnabled = false;
+    public Action<NetCoordinates>? WarpRequested;
+    // Moffstation - End
+
     public CrewMonitoringWindow()
     {
         RobustXamlLoader.Load(this);
@@ -43,7 +48,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         NavMap.TrackedEntitySelectedAction += SetTrackedEntityFromNavMap;
     }
 
-    public void Set(string stationName, EntityUid? mapUid)
+    public void Set(string stationName, EntityUid? mapUid, bool enableWarp = false)
     {
         _blipTexture = _spriteSystem.Frame0(new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/NavMap/beveled_circle.png")));
 
@@ -52,6 +57,8 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
         else
             NavMap.Visible = false;
+
+        _warpEnabled = enableWarp;
 
         StationName.AddStyleClass("LabelBig");
         StationName.Text = stationName;
@@ -165,7 +172,8 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         // Show monitor on nav map
         if (monitorCoords != null && _blipTexture != null)
         {
-            NavMap.TrackedEntities[_entManager.GetNetEntity(monitor)] = new NavMapBlip(monitorCoords.Value, _blipTexture, Color.Cyan, true, false);
+            NavMap.TrackedEntities[_entManager.GetNetEntity(monitor)] =
+                new NavMapBlip(monitorCoords.Value, _blipTexture, Color.Cyan, true, false);
         }
     }
 
@@ -303,15 +311,32 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
             jobContainer.AddChild(jobLabel);
 
+            if (_warpEnabled)
+            {
+                var warpButton = new Button { Text = "Warp", Disabled = sensorButton.Disabled };
+                warpButton.OnButtonUp += _ =>
+                {
+                    if (sensor.Coordinates is { } coords)
+                        WarpRequested?.Invoke(coords);
+                };
+                mainContainer.AddChild(warpButton);
+            }
+
             // Add user coordinates to the navmap
             if (coordinates != null && NavMap.Visible && _blipTexture != null)
             {
-                NavMap.TrackedEntities.TryAdd(sensor.SuitSensorUid,
-                    new NavMapBlip
-                    (CoordinatesToLocal(coordinates.Value),
-                    _blipTexture,
-                    (_trackedEntity == null || sensor.SuitSensorUid == _trackedEntity) ? Color.LimeGreen : Color.LimeGreen * Color.DimGray,
-                    sensor.SuitSensorUid == _trackedEntity));
+                if (proto != null)
+                {
+                    NavMap.TrackedEntities.TryAdd(sensor.SuitSensorUid,
+                        new NavMapBlip(
+                            CoordinatesToLocal(coordinates.Value),
+                            _spriteSystem.Frame0(proto.Icon),
+                            Color.White,
+                            sensor.SuitSensorUid == _trackedEntity,
+                            true,
+                            4f)
+                        );
+                }
 
                 NavMap.Focus = _trackedEntity;
 
@@ -373,11 +398,13 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
             if (NavMap.TrackedEntities.TryGetValue(castSensor.SuitSensorUid, out var data))
             {
-                data = new NavMapBlip
-                    (CoordinatesToLocal(data.Coordinates),
+                data = new NavMapBlip(
+                    CoordinatesToLocal(data.Coordinates),
                     data.Texture,
-                    (currTrackedEntity == null || castSensor.SuitSensorUid == currTrackedEntity) ? Color.LimeGreen : Color.LimeGreen * Color.DimGray,
-                    castSensor.SuitSensorUid == currTrackedEntity);
+                    Color.White,
+                    castSensor.SuitSensorUid == currTrackedEntity,
+                    true,
+                    4f);
 
                 NavMap.TrackedEntities[castSensor.SuitSensorUid] = data;
             }
