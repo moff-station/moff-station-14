@@ -1,31 +1,31 @@
 - type: entity
-  parent: [ BaseSmasherHostile, MobFleshLover ]
+  parent: [ BaseSmasherHostile, MobFleshLoverSalvage ]
   id: MobFleshLoverSmasher
-  name: hellhound
+  name: aberrant Flesh
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ BaseSmasherHostile, MobFleshGolem ]
+  parent: [ BaseSmasherHostile, MobFleshGolemSalvage ]
   id: MobFleshGolemSmasher
-  name: hellhound
+  name: aberrant Flesh
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ BaseSmasherHostile, MobFleshClamp ]
+  parent: [ BaseSmasherHostile, MobFleshClampSalvage ]
   id: MobFleshClampSmasher
-  name: hellhound
+  name: aberrant Flesh
   categories: [ HideSpawnMenu ]
 
 - type: entity
-  parent: [ BaseSmasherHostile, MobFleshJared ]
+  parent: [ BaseSmasherHostile, MobFleshJaredSalvage ]
   id: MobFleshJaredSmasher
-  name: hellhound
+  name: aberrant Flesh
   categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ BaseSmasherHostile, MobAbomination ]
   id: MobAbominationSmasher
-  name: hellhound
+  name: abomination
   categories: [ HideSpawnMenu ]
 
 - type: entity
