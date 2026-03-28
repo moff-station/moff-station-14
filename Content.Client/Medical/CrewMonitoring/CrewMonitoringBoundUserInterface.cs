@@ -42,12 +42,11 @@ public sealed class CrewMonitoringBoundUserInterface : BoundUserInterface
         _menu.WarpRequested += coords =>
             EntMan.RaisePredictiveEvent(new NavMapWarpRequest(EntMan.GetNetEntity(Owner), coords));
 
-        var req = new NavMapWarpEnabledQuery(EntMan.GetNetEntity(Owner));
-        EntMan.RaisePredictiveEvent(req);
-        // Moffstation - End
-
+        var req = new NavMapWarpEnabledQuery();
+        EntMan.EventBus.RaiseLocalEvent(Owner, ref req);
 
         _menu.Set(stationName, gridUid, req.Enabled);
+        // Moffstation - End
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

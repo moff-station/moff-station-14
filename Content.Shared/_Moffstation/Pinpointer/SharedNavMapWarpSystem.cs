@@ -16,12 +16,15 @@ public sealed class SharedNavMapWarpSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeAllEvent<NavMapWarpRequest>(OnNavMapWarpRequest);
-        SubscribeAllEvent<NavMapWarpEnabledQuery>(OnNavMapEnabledQuery);
+        SubscribeLocalEvent<NavMapWarpComponent, NavMapWarpEnabledQuery>(OnNavMapEnabledQuery);
     }
 
-    private void OnNavMapWarpRequest(NavMapWarpRequest req)
+    private void OnNavMapWarpRequest(NavMapWarpRequest req, EntitySessionEventArgs session)
     {
         var uid = GetEntity(req.Uid);
+
+        if (session.SenderSession.AttachedEntity != GetEntity(req.Uid))
+            return;
 
         if (!TryComp<NavMapWarpComponent>(uid, out var warpComp) || _time.CurTime < warpComp.NextWarpAllowed)
             return;
@@ -37,9 +40,9 @@ public sealed class SharedNavMapWarpSystem : EntitySystem
             GetCoordinates(req.Coordinates));
     }
 
-    private void OnNavMapEnabledQuery(NavMapWarpEnabledQuery req)
+    private static void OnNavMapEnabledQuery(Entity<NavMapWarpComponent> ent, ref NavMapWarpEnabledQuery req)
     {
-        req.Enabled = HasComp<NavMapWarpComponent>(GetEntity(req.Uid));
+        req.Enabled = true;
     }
 }
 
@@ -50,9 +53,5 @@ public sealed class NavMapWarpRequest(NetEntity uid, NetCoordinates coordinates)
     public readonly NetCoordinates Coordinates = coordinates;
 }
 
-[Serializable, NetSerializable]
-public sealed class NavMapWarpEnabledQuery(NetEntity uid) : EntityEventArgs
-{
-    public readonly NetEntity Uid = uid;
-    public bool Enabled = false;
-}
+[Serializable, NetSerializable, ByRefEvent]
+public record struct NavMapWarpEnabledQuery(bool Enabled);

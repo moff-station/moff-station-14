@@ -58,7 +58,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         else
             NavMap.Visible = false;
 
-        _warpEnabled = enableWarp;
+        _warpEnabled = enableWarp; // Moffstation - Navigation map warp
 
         StationName.AddStyleClass("LabelBig");
         StationName.Text = stationName;
@@ -172,8 +172,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         // Show monitor on nav map
         if (monitorCoords != null && _blipTexture != null)
         {
-            NavMap.TrackedEntities[_entManager.GetNetEntity(monitor)] =
-                new NavMapBlip(monitorCoords.Value, _blipTexture, Color.Cyan, true, false);
+            NavMap.TrackedEntities[_entManager.GetNetEntity(monitor)] = new NavMapBlip(monitorCoords.Value, _blipTexture, Color.Cyan, true, false);
         }
     }
 
@@ -311,9 +310,10 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
             jobContainer.AddChild(jobLabel);
 
+            // Moffstation - Navigation map warp
             if (_warpEnabled)
             {
-                var warpButton = new Button { Text = "Warp", Disabled = sensorButton.Disabled };
+                var warpButton = new Button { Text = Loc.GetString("crew-monitoring-ui-warp-button-label"), Disabled = sensorButton.Disabled };
                 warpButton.OnButtonUp += _ =>
                 {
                     if (sensor.Coordinates is { } coords)
@@ -321,10 +321,12 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 };
                 mainContainer.AddChild(warpButton);
             }
+            // Moffstation - End
 
             // Add user coordinates to the navmap
             if (coordinates != null && NavMap.Visible && _blipTexture != null)
             {
+                // Moffstation - Navigation map warp
                 if (proto != null)
                 {
                     NavMap.TrackedEntities.TryAdd(sensor.SuitSensorUid,
@@ -337,6 +339,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                             4f)
                         );
                 }
+                // Moffstation - End
 
                 NavMap.Focus = _trackedEntity;
 
@@ -398,6 +401,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
             if (NavMap.TrackedEntities.TryGetValue(castSensor.SuitSensorUid, out var data))
             {
+                // Moffstation - Navigation map warp
                 data = new NavMapBlip(
                     CoordinatesToLocal(data.Coordinates),
                     data.Texture,
@@ -405,7 +409,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                     castSensor.SuitSensorUid == currTrackedEntity,
                     true,
                     4f);
-
+                // Moffstation - End
                 NavMap.TrackedEntities[castSensor.SuitSensorUid] = data;
             }
         }
