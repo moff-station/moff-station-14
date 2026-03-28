@@ -1,0 +1,22 @@
+- type: entity
+  id: LawReprogrammer
+  parent: [BaseItem, BaseScienceContraband]
+  name: law reprogrammer
+  description: this handy device allow you to change the lawset of any MMI or positronic brain by simple contact !
+  components:
+  - type: Sprite # TODO : 2 appearances (or multiple depending on colors ?...)
+    sprite: Objects/Tools/emag.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Tools/emag.rsi
+    storedRotation: -90
+  - type: ItemSlots
+    slots:
+      law_board_slot:
+        ejectOnBreak: true
+        whitelistFailPopup: this_doesnt_go_in_there_you_dumbass # TODO : create appropriate localised string
+        whitelist:
+          tags:
+          - LawBoard
+  - type: LawReprogrammer
+
