@@ -5,7 +5,8 @@
   description: An electronics board containing a silicon lawset.
   components:
   - type: Tag # Moffstation - cyborg laws alternation
-    id: LawBoard
+    tags:
+    - LawBoard
   - type: Sprite
     sprite: Objects/Misc/module.rsi
     state: std_mod

@@ -1,7 +1,7 @@
 - type: entity
   id: LawReprogrammer
   parent: [BaseItem, BaseScienceContraband]
-  name: law reprogrammer
+  name: Handheld Reprogrammer
   description: this handy device allow you to change the lawset of any MMI or positronic brain by simple contact !
   components:
   - type: Sprite # TODO : 2 appearances (or multiple depending on colors ?...)
