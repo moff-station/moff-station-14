@@ -37,7 +37,7 @@ public abstract partial class SharedSiliconLawSystem
         {
             // If no brain and chassis is not provider
             if (ent.Comp.BrainEntity == null)
-                _popup.PopupClient(Loc.GetString("law-emag-cannot-brainless", ("entity", ent)), ent, args.UserUid); // TODO : change to another local string
+                _popup.PopupClient(Loc.GetString("reprogrammer-no-occupant-popup", ("entity", ent)), ent, args.UserUid);
 
             return;
         }

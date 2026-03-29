@@ -1,20 +1,26 @@
 - type: entity
   id: LawReprogrammer
   parent: [BaseItem, BaseScienceContraband]
-  name: handheld law reprogrammer
+  name: handheld reprogrammer
   description: this handy device allow you to transfer the content of a law board to a positronic brain by simple contact !
   components:
   - type: Sprite # TODO : 2 appearances (or multiple depending on colors ?...)
-    sprite: Objects/Tools/emag.rsi
-    state: icon
+    sprite: _Moffstation/Objects/Tools/handheld_reprogrammer.rsi
+    state: empty
+    layers:
+    - state: empty
+    - state: full
+    shader: unshaded
+
   - type: Item
-    sprite: Objects/Tools/emag.rsi
+    sprite: _Moffstation/Objects/Tools/handheld_reprogrammer.rsi
+    state: icon
     storedRotation: -90
   - type: ItemSlots
     slots:
       law_board_slot:
         ejectOnBreak: true
-        whitelistFailPopup: this_doesnt_go_in_there_you_dumbass # TODO : create appropriate localised string
+        whitelistFailPopup: reprogrammer-insertion-failure-popup
         whitelist:
           tags:
           - LawBoard

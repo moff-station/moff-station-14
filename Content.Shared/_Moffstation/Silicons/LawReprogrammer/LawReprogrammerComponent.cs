@@ -1,4 +1,5 @@
 using Content.Shared.Tag;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -24,6 +25,18 @@ public sealed partial class LawReprogrammerComponent : Component
     [DataField]
     [AutoNetworkedField]
     public ProtoId<TagPrototype> ImmuneTag =  "EmagImmune";
+
+    /// <summary>
+    /// Sound that will be emitted on successful reprogramming
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? SuccessSound = null;
+
+    /// <summary>
+    /// Sound that will be emitted on failed reprogramming
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? FailureSound = null;
 
     [DataField]
     public string LawBoardSlot = "law_board_slot";

@@ -19,6 +19,7 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
 
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
@@ -36,9 +37,6 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
     {
         if (msg.Container.ID != entity.Comp.LawBoardSlot)
             return;
-
-        if (! HasComp<SiliconLawProviderComponent>(msg.Entity))
-            _popup.PopupEntity("oops !", entity);
 
         Dirty(entity);
         UpdateAppearance(entity);
@@ -66,7 +64,15 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
 
         var board =  container.ContainedEntities[0];
 
-        lawset = _lawSystem.GetProviderLaws(board);
+        // ideally we would use the function of the API but they don't see to work don't ask me why.
+        if (!_entMan.TryGetComponent<SiliconLawProviderComponent>(board, out var provider))
+        {
+            _popup.PopupClient("board have no law provider", user, user);
+            return false;
+        }
+
+        lawset = provider.Lawset;
+
         _popup.PopupClient("provider found ! laws : " + lawset.Laws.Count, user, user);
         return true;
     }
