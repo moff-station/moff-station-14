@@ -34,12 +34,6 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
         if (msg.Container.ID != entity.Comp.LawBoardSlot)
             return;
 
-        // TryGetBoard
-        if (TryGetLawBoard(entity, out var board))
-            entity.Comp.LawSource = board; // our stuff
-        else
-            entity.Comp.LawSource = null;
-
         Dirty(entity);
         UpdateAppearance(entity);
     }
@@ -49,27 +43,27 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
         if (msg.Container.ID != entity.Comp.LawBoardSlot)
             return;
 
-        entity.Comp.LawSource = null;
-
         Dirty(entity);
         UpdateAppearance(entity);
     }
 
-    private bool TryGetLawBoard(Entity<LawReprogrammerComponent> entity, [NotNullWhen(true)] out EntityUid? board)
+    private bool TryGetLaws(Entity<LawReprogrammerComponent> entity, [NotNullWhen(true)] out SiliconLawset? lawset)
     {
-        board = null;
+        lawset = null;
 
         if (!_containerSystem.TryGetContainer(entity, entity.Comp.LawBoardSlot, out var container) ||
             container.ContainedEntities.Count == 0)
             return false;
 
-        board = container.ContainedEntities[0];
+        var board =  container.ContainedEntities[0];
+
+        lawset = _lawSystem.GetProviderLaws(board);
         return true;
     }
 
     private void UpdateAppearance(Entity<LawReprogrammerComponent> ent)
     {
-
+        // TODO ! (empty, full and colors)
     }
 
 
@@ -83,17 +77,22 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
 
     private bool TryReprogram(Entity<LawReprogrammerComponent> source, EntityUid target)
     {
-        if (!TryComp<SiliconLawBoundComponent>(target, out var lawBoundComp) || !TryGetLawBoard(source, out var board))
+        if (_timing.CurTime < source.Comp.NextAllowedUsed || _tagSystem.HasTag(target, source.Comp.ImmuneTag))
             return false;
 
-        if (source.Comp.NextAllowedUsed > _timing.CurTime)
+        if (!TryGetLaws(source, out var lawset))
             return false;
 
-        if (_tagSystem.HasTag(target, source.Comp.ImmuneTag))
+        var ev = new GotReprogrammedEvent(source.Owner, lawset);
+        RaiseLocalEvent(target, ref ev);
+
+        if (!ev.Handled)
             return false;
 
-        _lawSystem.
-
+        source.Comp.NextAllowedUsed = _timing.CurTime + source.Comp.DelayBetweenUses;
         return true;
     }
 }
+
+[ByRefEvent]
+public record struct GotReprogrammedEvent(EntityUid UserUid, SiliconLawset Lawset, bool Handled = false);

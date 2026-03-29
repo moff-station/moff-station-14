@@ -25,14 +25,8 @@ public sealed partial class LawReprogrammerComponent : Component
     [AutoNetworkedField]
     public ProtoId<TagPrototype> ImmuneTag =  "EmagImmune";
 
-
     [DataField]
     public string LawBoardSlot = "law_board_slot";
-
-    /// <summary>
-    /// Entity containing the laws that will be uploaded to the target on uses.
-    /// </summary>
-    public EntityUid? LawSource;
 
     public TimeSpan NextAllowedUsed = TimeSpan.Zero;
 }
