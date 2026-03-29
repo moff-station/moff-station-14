@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._Moffstation.Silicons.LawReprogrammer; // Moffstation - Cyborg law alteration
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Mind.Components;
@@ -16,7 +15,6 @@ public abstract partial class SharedSiliconLawSystem
     {
         SubscribeLocalEvent<BorgChassisComponent, GotEmaggedEvent>(OnChassisEmagged);
         SubscribeLocalEvent<BorgBrainComponent, GotEmaggedEvent>(OnBrainEmagged);
-
     }
 
     private void OnChassisEmagged(Entity<BorgChassisComponent> ent, ref GotEmaggedEvent args)
