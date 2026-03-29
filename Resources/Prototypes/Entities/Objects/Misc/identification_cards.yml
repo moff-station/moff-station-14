@@ -963,6 +963,13 @@
     expireMessage: genpop-prisoner-id-expire
     expiredAccess:
     - GenpopLeave
+    # Moffstation - Begin - Adds Radio Alert Systems as part of port of Genpop ID expiry radio announcement
+    alertRadio: true
+    expireMessageRadio: genpop-prisoner-id-expire-radio
+  - type: ActiveRadio
+    channels:
+    - Security
+    #Moffstation - End
   - type: Speech
     speechVerb: Robotic
   - type: Tag
