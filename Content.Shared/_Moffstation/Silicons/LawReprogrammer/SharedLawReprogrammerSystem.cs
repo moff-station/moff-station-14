@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Interaction;
+using Content.Shared.Popups;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Silicons.StationAi;
@@ -19,6 +20,8 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -34,6 +37,9 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
         if (msg.Container.ID != entity.Comp.LawBoardSlot)
             return;
 
+        if (! HasComp<SiliconLawProviderComponent>(msg.Entity))
+            _popup.PopupEntity("oops !", entity);
+
         Dirty(entity);
         UpdateAppearance(entity);
     }
@@ -47,17 +53,21 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
         UpdateAppearance(entity);
     }
 
-    private bool TryGetLaws(Entity<LawReprogrammerComponent> entity, [NotNullWhen(true)] out SiliconLawset? lawset)
+    private bool TryGetLaws(Entity<LawReprogrammerComponent> entity, EntityUid user, [NotNullWhen(true)] out SiliconLawset? lawset)
     {
         lawset = null;
 
         if (!_containerSystem.TryGetContainer(entity, entity.Comp.LawBoardSlot, out var container) ||
             container.ContainedEntities.Count == 0)
+        {
+            _popup.PopupClient("we got no law provider !", user, user);
             return false;
+        }
 
         var board =  container.ContainedEntities[0];
 
         lawset = _lawSystem.GetProviderLaws(board);
+        _popup.PopupClient("provider found ! laws : " + lawset.Laws.Count, user, user);
         return true;
     }
 
@@ -72,15 +82,15 @@ public sealed class SharedLawReprogrammerSystem : EntitySystem
         if (!ev.CanReach || ev.Target is not { } target)
             return;
 
-        ev.Handled = TryReprogram(entity, target);
+        ev.Handled = TryReprogram(entity, target, ev.User);
     }
 
-    private bool TryReprogram(Entity<LawReprogrammerComponent> source, EntityUid target)
+    private bool TryReprogram(Entity<LawReprogrammerComponent> source, EntityUid target, EntityUid user)
     {
         if (_timing.CurTime < source.Comp.NextAllowedUsed || _tagSystem.HasTag(target, source.Comp.ImmuneTag))
             return false;
 
-        if (!TryGetLaws(source, out var lawset))
+        if (!TryGetLaws(source, user, out var lawset))
             return false;
 
         var ev = new GotReprogrammedEvent(source.Owner, lawset);

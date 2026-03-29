@@ -43,6 +43,7 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
         InitializeUpdater();
         InitializeProvider();
         InitializeEmag();
+        InitializeReprogrammer(); // Moffstation - Cyborg law alteration
     }
 
     #region Events
