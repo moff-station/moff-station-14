@@ -11,7 +11,13 @@
     - state: empty
     - state: full
     shader: unshaded
-
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.LawReprogrammerVisuals.Status:
+        base:
+          Empty: { state: empty }
+          Full: { state: full }
   - type: Item
     sprite: _Moffstation/Objects/Tools/handheld_reprogrammer.rsi
     state: icon
@@ -25,4 +31,6 @@
           tags:
           - LawBoard
   - type: LawReprogrammer
+    successSound: /Audio/Machines/twobeep.ogg
+    failureSound: /Audio/Machines/twobeep.ogg
 

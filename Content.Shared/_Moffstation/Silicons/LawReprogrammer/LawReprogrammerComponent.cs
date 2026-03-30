@@ -41,5 +41,5 @@ public sealed partial class LawReprogrammerComponent : Component
     [DataField]
     public string LawBoardSlot = "law_board_slot";
 
-    public TimeSpan NextAllowedUsed = TimeSpan.Zero;
+    public TimeSpan NextAllowedUse = TimeSpan.Zero;
 }
