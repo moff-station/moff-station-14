@@ -1,0 +1,35 @@
+- type: entity
+  name: chemistry belt
+  id: ChemBelt
+  parent: BaseStorageItem
+  description: A belt for storing chemistry products, such as jugs, beakers, pills, pill canisters, vials, bottles and syringes.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Belt/chemistry.rsi 
+    state: icon
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Belt/chemistry.rsi
+    quickEquip: false
+    slots:
+    - belt
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Normal 
+    grid:
+      - 0,0,6,1
+    whitelist:
+      components:
+        - FitsInDispenser
+        - Pill
+      tags:
+        - Jug
+        - Document
+        - PillCanister
+        - CentrifugeCompatible # Existing Vial only tag
+        - Syringe
+        - Dropper
+        - Bottle
+  - type: Dumpable
+  - type: QuickPickup
+  - type: AreaPickup
