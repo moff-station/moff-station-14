@@ -2140,3 +2140,219 @@
       path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
   - type: StealTarget
     stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolorangeliner
+  name: Orangeliner
+  description: "A Basic, modified orange pistol based on Lock-17."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/orangeliner.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/orangeliner.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolpurpleliner
+  name: Purpleliner
+  description: "A Basic, modified purple pistol based on Lock-17."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/purpleliner.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/purpleliner.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistollemonliner
+  name: Lemonliner
+  description: "A Basic, modified yellow pistol based on Lock-17."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/lemonliner.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/lemonliner.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistollimeliner
+  name: Limeliner
+  description: "A Basic, modified green pistol based on Lock-17."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/limeliner.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/limeliner.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolskyliner
+  name: Skyliner
+  description: "A Basic, modified cyan pistol based on Lock-17."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/skyliner.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/skyliner.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolrugpul
+  name: Rugpul
+  description: "Issued to old security forces, reliable as an defensive sidearm."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/rugpul.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/rugpul.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolvespertilio
+  name: Vespertilio
+  description: "The last thing you see when posting memes."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/vespertilio.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/vespertilio.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
+
+- type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolmk58mod
+  name: Mk-58 MOD
+  description: "An odd, decked out version of the security standard sidearm."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/mk58mod.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/mk58mod.rsi
+  - type: Item
+    storedOffset: 0,-4
+  - type: Gun
+    fireRate: 5
+    fireOnLandChance: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: StealTarget
+    stealGroup: OfficerHandgun
