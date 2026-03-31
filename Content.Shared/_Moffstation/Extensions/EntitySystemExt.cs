@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Robust.Shared.Utility;
 
@@ -20,8 +20,7 @@ public static class EntitySystemExt
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T AssertOrLogError<T>(string message, T ret)
         {
-            DebugTools.Assert(message);
-            entSys.Log.Error(message);
+            entSys.AssertOrLogError(message);
             return ret;
         }
 

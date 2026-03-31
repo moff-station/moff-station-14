@@ -4192,6 +4192,25 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1138
 - author: Nyxilath
   changes:
+  - message: Syndicate high command will now occasionally redspace in contraband dead
+      drops
+    type: add
+  id: 1139
+  time: '2026-03-23T17:36:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1139
+- author: Tortosaur
+  changes:
+  - message: Medical and Paramedic's belts loadouts are now more job appropiate.
+    type: tweak
+  - message: Chemists now have a belt which can hold jugs. Rejoice!
+    type: add
+  - message: Chemist Bag was moved into the ChemDrobe.
+    type: tweak
+  id: 1140
+  time: '2026-03-31T18:20:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1140
+- author: Nyxilath
+  changes:
   - message: Initial infected now possess zombie blood.
     type: tweak
   - message: Zombie blood is now infectious.
@@ -4310,5 +4329,71 @@ Entries:
   id: 1163
   time: '2026-03-19T01:50:24.000'
   url: https://github.com/moff-station/moff-station-14/pull/1163
+- author: DuckManZach
+  changes:
+  - message: Channel indicators speech bubbles will now show up
+    type: fix
+  id: 1171
+  time: '2026-03-23T16:54:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1171
+- author: Centronias
+  changes:
+  - message: Set examine no longer respects arbitrary formatting input.
+    type: fix
+  id: 1174
+  time: '2026-03-27T16:52:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1174
+- author: Centronias
+  changes:
+  - message: Thieves can now be assigned when spawning at arrivals again.
+    type: fix
+  - message: Thieves are now selected at round start again, as opposed to a bit after
+      roundstart.
+    type: tweak
+  id: 1175
+  time: '2026-03-27T21:30:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1175
+- author: Centronias
+  changes:
+  - message: Tourists (minor mayhem antags) can roll again after silently being removed
+      two months ago.
+    type: fix
+  - message: Derelict service borgs can actually roll now.
+    type: fix
+  - message: Ninjas can now advertise the station to tourists while messing with the
+      comms console.
+    type: fix
+  id: 1178
+  time: '2026-03-27T20:51:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1178
+- author: StudMuffin
+  changes:
+  - message: Crew are now represented by their job icon on the crew monitor map!
+    type: tweak
+  - message: The AI can now teleport to the location of a crewmember via the crew
+      monitor interface!
+    type: add
+  id: 1180
+  time: '2026-03-29T21:21:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1180
+- author: Centronias
+  changes:
+  - message: Fix a few subtle bugs with cards causing visual issues and various mispredicts.
+    type: fix
+  - message: Fix missing localization on one card deck verb.
+    type: fix
+  id: 1183
+  time: '2026-03-30T17:48:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1183
+- author: Jona-K
+  changes:
+  - message: The Flying Dutchman now has hands again!
+    type: fix
+  - message: The Flying Dutchman now has a description and name in the ghost role
+      menu.
+    type: fix
+  id: 1184
+  time: '2026-03-31T17:53:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1184
 Name: Mofflog
 Order: -2
