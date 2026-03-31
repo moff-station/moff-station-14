@@ -100,6 +100,10 @@
     speedModifierThresholds:
       60: 0.9
       80: 0.7
+  # Moffstation - Start - Skeleton Drinking
+  - type: MessyDrinker
+    spillChance: 1
+  # Moffstation - End
   - type: Speech
     speechVerb: Skeleton
   - type: ZombieImmune
@@ -202,9 +206,19 @@
     markingData:
       group: Skeleton
 
+# Moffstation - Start - Skeleton Drinker
 - type: entity
-  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganSkeletonPersonExternal ]
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganSkeletonPersonExternal, OrganBaseStomach ]
   id: OrganSkeletonPersonTorso
+  components:
+    - type: SolutionContainerManager
+      solutions:
+       stomach:
+          maxVol: 200
+    - type: Metabolizer
+      maxReagents: 0
+      stages: []
+  # Moffstation - End
 
 - type: entity
   parent: [ OrganBaseHead, OrganSkeletonPersonExternal ]
