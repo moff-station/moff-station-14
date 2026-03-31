@@ -1,10 +1,10 @@
 - type: entity
-  id: LawReprogrammer
+  id: LawConfigurator
   parent: [BaseItem, BaseScienceContraband]
-  name: handheld reprogrammer
-  description: this handy device allow you to transfer the content of a law board to a positronic brain by simple contact !
+  name: handheld cyborg configurator
+  description: this handy device allow you to see and change the laws of a positronic brain by simple contact !
   components:
-  - type: Sprite # TODO : 2 appearances (or multiple depending on colors ?...)
+  - type: Sprite
     sprite: _Moffstation/Objects/Tools/handheld_reprogrammer.rsi
     state: empty
     layers:
@@ -30,7 +30,9 @@
         whitelist:
           tags:
           - LawBoard
-  - type: LawReprogrammer
+  - type: LawConfigurator
     successSound: /Audio/Machines/twobeep.ogg
     failureSound: /Audio/Machines/twobeep.ogg
+  - type: UseDelay
+    delay: 4
 

@@ -3,29 +3,14 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Moffstation.Silicons.LawReprogrammer;
+namespace Content.Shared._Moffstation.Silicons.LawConfigurator;
 
 /// <summary>
 /// This is used for items that can change silicon laws on contact
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-[AutoGenerateComponentState]
-public sealed partial class LawReprogrammerComponent : Component
+public sealed partial class LawConfiguratorComponent : Component
 {
-    /// <summary>
-    /// Minimum delay between consecutive uses.
-    /// </summary>
-    [DataField]
-    [AutoNetworkedField]
-    public TimeSpan DelayBetweenUses = TimeSpan.FromSeconds(5);
-
-    /// <summary>
-    /// Entities with this tag will be immune to the reprogrammer
-    /// </summary>
-    [DataField]
-    [AutoNetworkedField]
-    public ProtoId<TagPrototype> ImmuneTag =  "EmagImmune";
-
     /// <summary>
     /// Sound that will be emitted on successful reprogramming
     /// </summary>
@@ -38,8 +23,9 @@ public sealed partial class LawReprogrammerComponent : Component
     [DataField]
     public SoundSpecifier? FailureSound = null;
 
+    /// <summary>
+    /// Id of the item slot containing the law board to be transfered.
+    /// </summary>
     [DataField]
     public string LawBoardSlot = "law_board_slot";
-
-    public TimeSpan NextAllowedUse = TimeSpan.Zero;
 }

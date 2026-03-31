@@ -4,19 +4,19 @@ using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Wires;
 using Robust.Shared.Audio;
 
-namespace Content.Shared._Moffstation.Silicons.LawReprogrammer;
+namespace Content.Shared._Moffstation.Silicons.LawConfigurator;
 
 /// <summary>
 /// this handle reprogrammable devices
 /// </summary>
-public sealed partial class SharedLawReprogrammerSystem
+public sealed partial class SharedLawConfiguratorSystem
 {
-    private void InitReprogrammable()
+    private void InitializeTarget()
     {
-        SubscribeLocalEvent<LawReprogrammableComponent, GotReprogrammedEvent>(OnReprogrammed);
+        SubscribeLocalEvent<LawConfiguratorTargetComponent, GotReprogrammedEvent>(OnReprogrammed);
     }
 
-    private void OnReprogrammed(Entity<LawReprogrammableComponent> ent, ref GotReprogrammedEvent args)
+    private void OnReprogrammed(Entity<LawConfiguratorTargetComponent> ent, ref GotReprogrammedEvent args)
     {
         args.Handled = true;
 

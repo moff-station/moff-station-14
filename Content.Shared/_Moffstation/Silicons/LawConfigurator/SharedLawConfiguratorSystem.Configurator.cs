@@ -5,18 +5,19 @@ using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Tag;
+using Content.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Moffstation.Silicons.LawReprogrammer;
+namespace Content.Shared._Moffstation.Silicons.LawConfigurator;
 
 /// <summary>
 /// This handles the reprogrammer
 /// </summary>
-public sealed partial class SharedLawReprogrammerSystem : EntitySystem
+public sealed partial class SharedLawConfiguratorSystem
 {
     [Dependency] private readonly SharedSiliconLawSystem _lawSystem = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
@@ -24,22 +25,20 @@ public sealed partial class SharedLawReprogrammerSystem : EntitySystem
     [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly UseDelaySystem _useDelay = default!;
 
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
 
     /// <inheritdoc/>
-    public override void Initialize()
+    public void InitializeConfigurator ()
     {
-        base.Initialize();
-        SubscribeLocalEvent<LawReprogrammerComponent, EntInsertedIntoContainerMessage>(OnInserted);
-        SubscribeLocalEvent<LawReprogrammerComponent, EntRemovedFromContainerMessage>(OnRemoved);
-        SubscribeLocalEvent<LawReprogrammerComponent, AfterInteractEvent>(OnAfterInteract);
-
-        InitReprogrammable();
+        SubscribeLocalEvent<LawConfiguratorComponent, EntInsertedIntoContainerMessage>(OnInserted);
+        SubscribeLocalEvent<LawConfiguratorComponent, EntRemovedFromContainerMessage>(OnRemoved);
+        SubscribeLocalEvent<LawConfiguratorComponent, AfterInteractEvent>(OnAfterInteract);
     }
 
-    private void OnInserted(Entity<LawReprogrammerComponent> entity, ref EntInsertedIntoContainerMessage msg)
+    private void OnInserted(Entity<LawConfiguratorComponent> entity, ref EntInsertedIntoContainerMessage msg)
     {
         if (msg.Container.ID != entity.Comp.LawBoardSlot)
             return;
@@ -48,7 +47,7 @@ public sealed partial class SharedLawReprogrammerSystem : EntitySystem
         _appearance.SetData(entity.Owner, LawReprogrammerVisuals.Status, LawReprogrammerStatus.Full);
     }
 
-    private void OnRemoved(Entity<LawReprogrammerComponent> entity, ref EntRemovedFromContainerMessage msg)
+    private void OnRemoved(Entity<LawConfiguratorComponent> entity, ref EntRemovedFromContainerMessage msg)
     {
         if (msg.Container.ID != entity.Comp.LawBoardSlot)
             return;
@@ -57,7 +56,7 @@ public sealed partial class SharedLawReprogrammerSystem : EntitySystem
         _appearance.SetData(entity.Owner, LawReprogrammerVisuals.Status, LawReprogrammerStatus.Empty);
     }
 
-    private bool TryGetLaws(Entity<LawReprogrammerComponent> entity, EntityUid user, [NotNullWhen(true)] out SiliconLawset? lawset)
+    private bool TryGetLaws(Entity<LawConfiguratorComponent> entity, EntityUid user, [NotNullWhen(true)] out SiliconLawset? lawset)
     {
         lawset = null;
 
@@ -76,7 +75,7 @@ public sealed partial class SharedLawReprogrammerSystem : EntitySystem
         return true;
     }
 
-    private void OnAfterInteract(Entity<LawReprogrammerComponent> entity, ref AfterInteractEvent ev)
+    private void OnAfterInteract(Entity<LawConfiguratorComponent> entity, ref AfterInteractEvent ev)
     {
         if (!ev.CanReach || ev.Target is not { } target)
             return;
@@ -84,24 +83,25 @@ public sealed partial class SharedLawReprogrammerSystem : EntitySystem
         ev.Handled = TryReprogram(entity, target, ev.User);
     }
 
-    private bool TryReprogram(Entity<LawReprogrammerComponent> source, EntityUid target, EntityUid user)
+    private bool TryReprogram(Entity<LawConfiguratorComponent> source, EntityUid target, EntityUid user)
     {
-        if (_timing.CurTime < source.Comp.NextAllowedUse || !TryGetLaws(source, target, out var lawset))
+        if (_useDelay.IsDelayed(source.Owner) || !TryGetLaws(source, target, out var laws))
             return false;
 
-        var ev = new GotReprogrammedEvent(user, lawset);
+        var ev = new GotReprogrammedEvent(user, laws);
         _entMan.EventBus.RaiseLocalEvent(target, ref ev);
 
         if (!ev.Handled)
             return false;
 
-        source.Comp.NextAllowedUse = _timing.CurTime + source.Comp.DelayBetweenUses;
+        //source.Comp.NextAllowedUse = _timing.CurTime + source.Comp.DelayBetweenUses;
 
         if (ev.Succeeded)
             _audio.PlayPredicted(source.Comp.SuccessSound, source.Owner, user, null);
         else
             _audio.PlayPredicted(source.Comp.FailureSound, source.Owner, user, null);
 
+        _useDelay.TryResetDelay(source.Owner);
         return true;
     }
 }
