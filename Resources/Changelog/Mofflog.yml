@@ -4355,5 +4355,24 @@ Entries:
   id: 1178
   time: '2026-03-27T20:51:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1178
+- author: StudMuffin
+  changes:
+  - message: Crew are now represented by their job icon on the crew monitor map!
+    type: tweak
+  - message: The AI can now teleport to the location of a crewmember via the crew
+      monitor interface!
+    type: add
+  id: 1180
+  time: '2026-03-29T21:21:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1180
+- author: Centronias
+  changes:
+  - message: Fix a few subtle bugs with cards causing visual issues and various mispredicts.
+    type: fix
+  - message: Fix missing localization on one card deck verb.
+    type: fix
+  id: 1183
+  time: '2026-03-30T17:48:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1183
 Name: Mofflog
 Order: -2
