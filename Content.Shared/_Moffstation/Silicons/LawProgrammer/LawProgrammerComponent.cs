@@ -1,24 +1,34 @@
-using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Moffstation.Silicons.LawConfigurator;
+namespace Content.Shared._Moffstation.Silicons.LawProgrammer;
 
 /// <summary>
 /// This is used for items that can change silicon laws on contact
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class LawConfiguratorComponent : Component
+public sealed partial class LawProgrammerComponent : Component
 {
     /// <summary>
-    /// Sound that will be emitted on successful reprogramming
+    /// Duration of the DoAfter without any modifiers.
+    /// </summary>
+    [DataField]
+    public TimeSpan BaseAttemptDuration = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// Sound that will be emitted on attempt
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? AttemptSound = null;
+
+    /// <summary>
+    /// Sound that will be emitted on successful attempt
     /// </summary>
     [DataField]
     public SoundSpecifier? SuccessSound = null;
 
     /// <summary>
-    /// Sound that will be emitted on failed reprogramming
+    /// Sound that will be emitted on failed attempt
     /// </summary>
     [DataField]
     public SoundSpecifier? FailureSound = null;

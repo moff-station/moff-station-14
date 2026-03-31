@@ -248,7 +248,7 @@
     requiredMobState:
     - Critical
     - Dead
-  - type: LawConfiguratorTarget # Moffstation - Cyborg law alteration
+  - type: LawProgrammerTarget # Moffstation - Cyborg programming
 
 - type: entity
   abstract: true
@@ -368,6 +368,8 @@
     bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
   - type: EmagSiliconLaw
     stunTime: 5
+  - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+    isImmune: true
 
 - type: entity
   id: BaseBorgChassisDerelict
@@ -427,6 +429,8 @@
     bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
   - type: EmagSiliconLaw
     stunTime: 5
+  - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+    isImmune: true
 
 - type: entity
   parent: BaseBorgChassis
@@ -547,3 +551,5 @@
   - type: Xenoborg
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
+  - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+    isImmune: true

@@ -1,0 +1,69 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      Title="{Loc 'law-configurator-ui-menu-title'}"
+                      MinSize="200 100"
+                      SetSize="450 515">
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+            <!-- header -->
+            <PanelContainer HorizontalExpand="True">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
+                </PanelContainer.PanelOverride>
+                <Label Name="LawsetNamePanel"
+                       Text="{Loc 'law-configurator-ui-absent-lawset-label'}"
+                       HorizontalExpand="True"
+                       HorizontalAlignment="Center"
+                       Margin="10 10 10 10"/>
+            </PanelContainer>
+
+            <!-- lawset display -->
+            <PanelContainer VerticalExpand="True" Margin="10 10 10 10">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
+                </PanelContainer.PanelOverride>
+
+                <!-- Locked controls -->
+                <BoxContainer Name="LockScreen"
+                              VerticalExpand="True"
+                              HorizontalExpand="True"
+                              Orientation="Vertical"
+                              ReservesSpace="False">
+
+                    <controls:StripeBack VerticalExpand="True" HorizontalExpand="True" Margin="0 0 0 5">
+                        <PanelContainer VerticalExpand="True" HorizontalExpand="True">
+                            <BoxContainer VerticalExpand="True" HorizontalExpand="True" Orientation="Vertical">
+                                <Control VerticalExpand="True"/>
+                                <TextureRect VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"
+                                             SetSize="64 64"
+                                             Stretch="KeepAspectCentered"
+                                             TexturePath="/Textures/Interface/VerbIcons/lock.svg.192dpi.png">
+                                </TextureRect>
+                                <Label Text="{Loc 'law-configurator-no-laws'}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Margin="0 5 0 0"/>
+                                <Control VerticalExpand="True"/>
+                            </BoxContainer>
+                        </PanelContainer>
+                    </controls:StripeBack>
+                </BoxContainer>
+
+
+                <ScrollContainer
+                    HScrollEnabled="False"
+                    HorizontalExpand="True"
+                    VerticalExpand="True">
+                    <BoxContainer
+                        Name="LawDisplayContainer"
+                        Orientation="Vertical"
+                        VerticalExpand="True"
+                        Margin="10 10 10 0">
+                    </BoxContainer>
+                </ScrollContainer>
+            </PanelContainer>
+
+        </BoxContainer>
+
+</controls:FancyWindow>

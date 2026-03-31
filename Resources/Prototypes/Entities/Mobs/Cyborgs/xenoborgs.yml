@@ -54,8 +54,6 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-  - type: LawConfiguratorTarget # Moffstation - Cyborg law alteration
-    isImmune: true
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]

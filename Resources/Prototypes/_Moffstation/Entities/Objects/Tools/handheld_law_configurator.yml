@@ -1,11 +1,11 @@
 - type: entity
-  id: LawConfigurator
+  id: LawProgrammer
   parent: [BaseItem, BaseScienceContraband]
-  name: handheld cyborg configurator
-  description: this handy device allow you to see and change the laws of a positronic brain by simple contact !
+  name: handheld cyborg programmer
+  description: A handy device to transfer laws from a law board to a cyborg brain.
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Tools/handheld_reprogrammer.rsi
+    sprite: _Moffstation/Objects/Tools/law_configurator.rsi
     state: empty
     layers:
     - state: empty
@@ -19,7 +19,7 @@
           Empty: { state: empty }
           Full: { state: full }
   - type: Item
-    sprite: _Moffstation/Objects/Tools/handheld_reprogrammer.rsi
+    sprite: _Moffstation/Objects/Tools/law_configurator.rsi
     state: icon
     storedRotation: -90
   - type: ItemSlots
@@ -30,9 +30,15 @@
         whitelist:
           tags:
           - LawBoard
-  - type: LawConfigurator
+  - type: LawProgrammer
+    attemptSound: /Audio/Machines/double_ring.ogg
     successSound: /Audio/Machines/twobeep.ogg
-    failureSound: /Audio/Machines/twobeep.ogg
-  - type: UseDelay
-    delay: 4
+    failureSound: /Audio/Machines/custom_deny.ogg
+  - type: UserInterface
+    interfaces:
+      enum.LawProgrammerUiKey.Key:
+        type: LawProgrammerBoundUserInterface
+  - type: ActivatableUI
+    key: enum.LawProgrammerUiKey.Key
+    inHandsOnly: true
 
