@@ -1,19 +1,9 @@
-
 - type: entity
   parent: [BaseItem, ItemHeftyBase]
-  id: WaterBalloon
+  id: BaseWaterBalloon
+  abstract: true
   name: water balloon
-  description: Throw it at the wall, throw it at furniture, throw it at the captain. The possibilities are endless!
   components:
-  - type: Sprite
-    sprite: _MiraSector/Objects/Fun/water_balloon.rsi
-    layers:
-    - state: icon    # random colors don't work unless I do this.
-      map: [ "BalloonColors" ]
-  - type: RandomSprite
-    available:
-    - BalloonColors:
-        icon: Rainbow
   - type: Item
     size: Small
   - type: SolutionContainerManager
@@ -46,6 +36,40 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
+
+
+- type: entity
+  parent: [BaseWaterBalloon]
+  id: WaterBalloon
+  description: Throw it at the wall, throw it at furniture, throw it at the captain. The possibilities are endless!
+  components:
+  - type: Sprite
+    sprite: _MiraSector/Objects/Fun/water_balloon.rsi
+    layers:
+    - state: white_balloon  # random colors don't work unless I do this.
+      map: [ "BalloonColors" ]
+  - type: RandomSprite
+    available:
+    - BalloonColors:
+        white_balloon: Rainbow
+
+- type: entity
+  parent: [BaseWaterBalloon]
+  id: WaterBalloonNT
+  description: A NT branded water balloon, filled with premium Vodka!
+  components:
+  - type: Sprite
+    sprite: _MiraSector/Objects/Fun/water_balloon.rsi
+    state: nt_balloon
+  - type: SolutionContainerManager
+    solutions:
+      balloon:
+        maxVol: 20
+        reagents:
+        - ReagentId: Vodka
+          Quantity: 20
+
+
 - type: entity
   parent: BoxCardboard
   name: water balloon box
@@ -55,7 +79,8 @@
   - type: StorageFill
     contents:
     - id: WaterBalloon
-      amount: 8
+      amount: 7
+    - id: WaterBalloonNT
   - type: Sprite
     sprite: _MiraSector/Objects/Storage/boxicons.rsi
     state: water_balloon
