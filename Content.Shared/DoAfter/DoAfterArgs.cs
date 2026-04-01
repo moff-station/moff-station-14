@@ -320,7 +320,7 @@ public enum DuplicateConditions : byte
 }
 
 [Serializable, NetSerializable]
-public enum  AttemptFrequency : byte
+public enum AttemptFrequency : byte
 {
     /// <summary>
     ///     Never raise the attempt event.
