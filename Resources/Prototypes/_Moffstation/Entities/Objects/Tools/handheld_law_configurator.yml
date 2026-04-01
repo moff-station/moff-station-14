@@ -1,32 +1,31 @@
 - type: entity
   id: LawProgrammer
   parent: [BaseItem, BaseScienceContraband]
-  name: handheld cyborg programmer
-  description: A handy device to transfer laws from a law board to a cyborg brain.
+  name: handheld law reprogrammer
+  description: A hand-held device able to transfer the content of a law board to a cyborg brain.
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Tools/law_configurator.rsi
-    state: empty
+    sprite: _Moffstation/Objects/Tools/law_programmer.rsi
+    state: base
     layers:
-    - state: empty
-    - state: full
+    - state: base
     shader: unshaded
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.LawReprogrammerVisuals.Status:
         base:
-          Empty: { state: empty }
+          Empty: { state: base }
           Full: { state: full }
   - type: Item
-    sprite: _Moffstation/Objects/Tools/law_configurator.rsi
+    sprite: _Moffstation/Objects/Tools/law_programmer.rsi
     state: icon
     storedRotation: -90
   - type: ItemSlots
     slots:
       law_board_slot:
         ejectOnBreak: true
-        whitelistFailPopup: reprogrammer-insertion-failure-popup
+        whitelistFailPopup: law-programmer-insertion-failure
         whitelist:
           tags:
           - LawBoard
@@ -34,6 +33,7 @@
     attemptSound: /Audio/Machines/double_ring.ogg
     successSound: /Audio/Machines/twobeep.ogg
     failureSound: /Audio/Machines/custom_deny.ogg
+    requireMind: false
   - type: UserInterface
     interfaces:
       enum.LawProgrammerUiKey.Key:

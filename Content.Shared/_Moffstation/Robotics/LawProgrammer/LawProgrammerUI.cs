@@ -1,7 +1,7 @@
 using Content.Shared.Silicons.Laws;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Moffstation.Silicons.LawProgrammer;
+namespace Content.Shared._Moffstation.Robotics.LawProgrammer;
 
 [Serializable, NetSerializable]
 public enum LawProgrammerUiKey : byte

@@ -64,6 +64,8 @@
     interactFailureString: petting-failure-syndicate-cyborg
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+    isImmune: true
 
 - type: entity
   id: BorgChassisPirateBattery

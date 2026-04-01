@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Utility;
 
-namespace Content.Client._Moffstation.Silicons.LawProgrammer;
+namespace Content.Client._Moffstation.Robotics.LawProgrammer;
 
 [GenerateTypedNameReferences]
 public sealed partial class LawProgrammerLawDisplay : Control
@@ -19,7 +19,13 @@ public sealed partial class LawProgrammerLawDisplay : Control
         var lawIdentifier = Loc.GetString("laws-ui-law-header", ("id", identifier));
         var lawDescription = Loc.GetString(law.LawString);
 
-        LawNumberLabel.SetMessage(FormattedMessage.FromMarkupPermissive(lawIdentifier), UserFormattableTags.SiliconAllowedTags);
-        LawLabel.SetMessage(FormattedMessage.FromMarkupPermissive(lawDescription), UserFormattableTags.SiliconAllowedTags);
+        LawNumberLabel.SetMessage(
+            FormattedMessage.FromMarkupPermissive(lawIdentifier),
+            UserFormattableTags.SiliconAllowedTags,
+            Color.MediumVioletRed);
+        LawLabel.SetMessage(
+            FormattedMessage.FromMarkupPermissive(lawDescription),
+            UserFormattableTags.SiliconAllowedTags,
+            Color.AliceBlue);
     }
 }

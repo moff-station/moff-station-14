@@ -1,7 +1,7 @@
-using Content.Shared._Moffstation.Silicons.LawProgrammer;
+using Content.Shared._Moffstation.Robotics.LawProgrammer;
 using Robust.Client.UserInterface;
 
-namespace Content.Client._Moffstation.Silicons.LawProgrammer;
+namespace Content.Client._Moffstation.Robotics.LawProgrammer;
 
 public sealed class LawProgrammerBoundUserInterface : BoundUserInterface
 {

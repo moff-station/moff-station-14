@@ -1,4 +1,4 @@
-namespace Content.Shared._Moffstation.Silicons.LawProgrammer;
+namespace Content.Shared._Moffstation.Robotics.LawProgrammer;
 
 /// <summary>
 /// This is used for entity that react to contact with a LawReprogrammer component.

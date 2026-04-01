@@ -1,7 +1,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Moffstation.Silicons.LawProgrammer;
+namespace Content.Shared._Moffstation.Robotics.LawProgrammer;
 
 /// <summary>
 /// This is used for items that can change silicon laws on contact
@@ -13,7 +13,7 @@ public sealed partial class LawProgrammerComponent : Component
     /// Duration of the DoAfter without any modifiers.
     /// </summary>
     [DataField]
-    public TimeSpan BaseAttemptDuration = TimeSpan.FromSeconds(1);
+    public TimeSpan BaseAttemptDuration = TimeSpan.FromSeconds(1.5f);
 
     /// <summary>
     /// Sound that will be emitted on attempt
@@ -38,4 +38,11 @@ public sealed partial class LawProgrammerComponent : Component
     /// </summary>
     [DataField]
     public string LawBoardSlot = "law_board_slot";
+
+    /// <summary>
+    /// FOR TESTING PURPOSES ON DEV ENVIRONMENT.
+    /// Does the target require a mind to be reprogrammed.
+    /// </summary>
+    [DataField]
+    public bool RequireMind = true;
 }
