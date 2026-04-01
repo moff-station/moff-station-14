@@ -240,6 +240,7 @@
       modular-hud-modules: !type:AllSelector
         children:
         - id: HudModuleShowThirstIcons
+        - id: HudModuleSolutionScanner
   - type: Label
     currentLabel: modularhud-premade-thirst
 
@@ -327,7 +328,7 @@
   parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudBeer ]
   id: ClothingEyesHudBeer
 
-- type: entity
+- ype: entity
   parent: [ ClothingEyesModularHudPatch, AbstractModularHudBeer ]
   id: ClothingEyesEyepatchHudBeer
 
