@@ -303,7 +303,7 @@
     - id: ClothingShoesSkates
     - id: CrazyGlue
     - id: CrazyLube
-    - id: WaterBalloonBox # MiraSector change! added to the table so it can be considered a toy and spawn in the toy box etc.
+    - id: WaterBalloonBox # MiraSector change. added to the table so it can be considered a toy and spawn in the toy box etc.
     - !type:NestedSelector
       tableId: AllBoardGamesTable
     - !type:GroupSelector # Where there's Chips there's Dips
