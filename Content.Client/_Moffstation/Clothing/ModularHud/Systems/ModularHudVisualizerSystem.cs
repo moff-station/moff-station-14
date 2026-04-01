@@ -121,8 +121,6 @@ public sealed class ModularHudVisualizerSystem : VisualizerSystem<ModularHudVisu
         {
             return;
         }
-
-
         // Some species use different states, so make sure we consider those here.
         var speciesId = CompOrNull<InventoryComponent>(args.Equipee)?.SpeciesId;
         var excludedLayers = entity.Comp.EquippedExcludedLayers.GetExcludedLayersOrDefaultForSpecies(speciesId);
