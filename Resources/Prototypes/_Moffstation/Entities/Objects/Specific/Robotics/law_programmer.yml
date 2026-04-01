@@ -33,7 +33,7 @@
     attemptSound: /Audio/Machines/double_ring.ogg
     successSound: /Audio/Machines/twobeep.ogg
     failureSound: /Audio/Machines/custom_deny.ogg
-    requireMind: false
+    requireMind: true # set false only for testing purpose on dev environment.
   - type: UserInterface
     interfaces:
       enum.LawProgrammerUiKey.Key:
