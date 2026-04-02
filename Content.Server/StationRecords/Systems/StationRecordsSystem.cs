@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Server._CD.Loadouts;
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.Access.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Clothing;
