@@ -56,7 +56,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ArrivalsSystem _arrivals = default!;
+     // [Dependency] private readonly ArrivalsSystem _arrivals = default!; // Moffstation - No longer used, causes compilation failure
     [Dependency] private readonly WeightedAntagManager _antagWeight = default!;
 
     // arbitrary random number to give late joining some mild interest.
@@ -638,8 +638,10 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         if (entity == null)
             return true;
 
-        if (_arrivals.IsOnArrivals((entity.Value, null)))
-            return false;
+        // Moffstation - Begin - We spawn people at arrivals, so roundstart antags (eg. traitors) need to be able to exist
+        // if (_arrivals.IsOnArrivals((entity.Value, null)))
+        //     return false;
+        // Moffstation - End
 
         if (!def.AllowNonHumans && !HasComp<HumanoidProfileComponent>(entity))
             return false;

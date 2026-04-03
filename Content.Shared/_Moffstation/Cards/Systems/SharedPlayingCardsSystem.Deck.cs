@@ -178,7 +178,7 @@ public abstract partial class SharedPlayingCardsSystem
 
         foreach (var card in deck.Comp.Cards)
         {
-            FlipCardInDeck(card);
+            FlipCardInDeck(card, faceDown: null);
         }
 
         VerbAudioAndPopup(PlayingCardDeckComponent.Verbs.FlipEntire, deck, user);
@@ -218,18 +218,22 @@ public abstract partial class SharedPlayingCardsSystem
         return deck.Cards.SelectMany(deckEl => deckEl switch
         {
             PlayingCardDeckPrototypeElementCard card =>
-                Enumerable.Repeat(new PlayingCardInDeckUnspawnedData(card, deck, suit: null), card.Count),
+                Repeat(card.Count, () => new PlayingCardInDeckUnspawnedData(card, deck, suit: null)),
             PlayingCardDeckPrototypeElementPrototypeReference protoRef =>
-                Enumerable.Repeat(
-                    new PlayingCardInDeckUnspawnedRef(protoRef.Prototype, protoRef.FaceDown),
-                    protoRef.Count
+                Repeat(
+                    protoRef.Count,
+                    () => new PlayingCardInDeckUnspawnedRef(protoRef.Prototype, protoRef.FaceDown)
                 ),
             PlayingCardDeckPrototypeElementSuit s => _proto.Resolve(s.Suit, out var suit)
                 ? suit.Cards.SelectMany(suitEl =>
-                    Enumerable.Repeat(new PlayingCardInDeckUnspawnedData(suitEl, deck, suit), suitEl.Count)
+                    Repeat(suitEl.Count, () => new PlayingCardInDeckUnspawnedData(suitEl, deck, suit))
                 )
                 : [],
             _ => deckEl.ThrowUnknownInheritor<PlayingCardDeckPrototype.Element, IEnumerable<PlayingCardInDeck>>(),
         });
     }
+
+    /// Like <see cref="Repeat"/>, but unlike that function, this invokes <paramref name="func"/> once per repetition
+    /// rather than just yielding the same value multiple times.
+    private static IEnumerable<T> Repeat<T>(int count, Func<T> func) => Enumerable.Repeat(0, count).Select(_ => func());
 }

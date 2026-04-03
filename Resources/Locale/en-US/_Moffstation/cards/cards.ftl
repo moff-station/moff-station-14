@@ -21,6 +21,7 @@ playing-card-deck-stack-pickup-verb-text = Draw
 playing-card-deck-draw-verb-text = Draw
 playing-card-deck-cut-verb-text = Split
 playing-card-deck-flip-entire-verb-text = Flip entire deck
+playing-card-deck-flip-entire-popup = Flipped the deck
 
 # Hand
 playing-cards-hand-card-count-changed-added = Card was added (Total of cards: {$quantity})

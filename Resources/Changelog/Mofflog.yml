@@ -3525,6 +3525,19 @@ Entries:
   id: 992
   time: '2026-01-27T18:09:15.000'
   url: https://github.com/moff-station/moff-station-14/pull/992
+- author: Centronias
+  changes:
+  - message: 'Added modular HUDs: flexible, modular eyewear which lets you put together
+      the infinity stones of eyewear.'
+    type: add
+  - message: Replaced a bunch of preexisting HUDs with modular HUDs.
+    type: tweak
+  - message: Flipped variants of HUD eye patches have been removed from loadouts.
+      Select the non-flipped one and flip it when you spawn in instead.
+    type: remove
+  id: 996
+  time: '2026-03-31T19:34:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/996
 - author: Dave
   changes:
   - message: missing sprites
@@ -4198,6 +4211,17 @@ Entries:
   id: 1139
   time: '2026-03-23T17:36:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/1139
+- author: Tortosaur
+  changes:
+  - message: Medical and Paramedic's belts loadouts are now more job appropiate.
+    type: tweak
+  - message: Chemists now have a belt which can hold jugs. Rejoice!
+    type: add
+  - message: Chemist Bag was moved into the ChemDrobe.
+    type: tweak
+  id: 1140
+  time: '2026-03-31T18:20:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1140
 - author: Nyxilath
   changes:
   - message: Initial infected now possess zombie blood.
@@ -4282,6 +4306,13 @@ Entries:
   id: 1153
   time: '2026-03-16T01:01:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1153
+- author: Tortosaur
+  changes:
+  - message: Skeletons can now drink... all over the floor.
+    type: add
+  id: 1154
+  time: '2026-03-31T18:50:44.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1154
 - author: Nyxilath
   changes:
   - message: AI Ionstorm shielding is now 80% thinner!
@@ -4325,5 +4356,86 @@ Entries:
   id: 1171
   time: '2026-03-23T16:54:39.000'
   url: https://github.com/moff-station/moff-station-14/pull/1171
+- author: Centronias
+  changes:
+  - message: Set examine no longer respects arbitrary formatting input.
+    type: fix
+  id: 1174
+  time: '2026-03-27T16:52:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1174
+- author: Centronias
+  changes:
+  - message: Thieves can now be assigned when spawning at arrivals again.
+    type: fix
+  - message: Thieves are now selected at round start again, as opposed to a bit after
+      roundstart.
+    type: tweak
+  id: 1175
+  time: '2026-03-27T21:30:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1175
+- author: Centronias
+  changes:
+  - message: Tourists (minor mayhem antags) can roll again after silently being removed
+      two months ago.
+    type: fix
+  - message: Derelict service borgs can actually roll now.
+    type: fix
+  - message: Ninjas can now advertise the station to tourists while messing with the
+      comms console.
+    type: fix
+  id: 1178
+  time: '2026-03-27T20:51:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1178
+- author: StudMuffin
+  changes:
+  - message: Crew are now represented by their job icon on the crew monitor map!
+    type: tweak
+  - message: The AI can now teleport to the location of a crewmember via the crew
+      monitor interface!
+    type: add
+  id: 1180
+  time: '2026-03-29T21:21:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1180
+- author: Centronias
+  changes:
+  - message: Fix a few subtle bugs with cards causing visual issues and various mispredicts.
+    type: fix
+  - message: Fix missing localization on one card deck verb.
+    type: fix
+  id: 1183
+  time: '2026-03-30T17:48:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1183
+- author: Jona-K
+  changes:
+  - message: The Flying Dutchman now has hands again!
+    type: fix
+  - message: The Flying Dutchman now has a description and name in the ghost role
+      menu.
+    type: fix
+  id: 1184
+  time: '2026-03-31T17:53:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1184
+- author: Jona-K
+  changes:
+  - message: Hos Carapace Nolonger has any internal storage
+    type: tweak
+  id: 1185
+  time: '2026-04-01T05:14:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1185
+- author: Centronias
+  changes:
+  - message: Modular HUDs will no longer partially render when in non-eye slots (ie.
+      pockets)
+    type: fix
+  id: 1188
+  time: '2026-04-02T03:12:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1188
+- author: Centronias
+  changes:
+  - message: Beer HUD variants can once again be used to examine the contents of liquids.
+    type: fix
+  id: 1190
+  time: '2026-04-02T18:01:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1190
 Name: Mofflog
 Order: -2

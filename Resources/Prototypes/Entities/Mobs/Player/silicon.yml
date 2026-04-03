@@ -58,6 +58,7 @@
         toggleAction: ActionAGhostShowStationRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
+  - type: NavMapWarp # Moffstation - Navigation map warp
   - type: CrewMonitoringConsole
   - type: GeneralStationRecordConsole
   - type: DeviceNetwork
@@ -534,6 +535,8 @@
     containers:
       borg_brain:
       - PositronicBrain
+      head:
+      - ClothingHeadHatCone
   - type: ItemSlots
     slots:
       cell_slot:

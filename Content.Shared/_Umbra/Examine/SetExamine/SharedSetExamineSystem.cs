@@ -1,6 +1,8 @@
 using Content.Shared.Actions;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
+using Robust.Shared.RichText;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Umbra.Examine.SetExamine;
 
@@ -32,8 +34,8 @@ public abstract class SharedSetExamineSystem : EntitySystem
 
         using (args.PushGroup(nameof(SetExamineComponent)))
         {
-            var ExamineText = Loc.GetString("set-examine-examined", ("ent", ent), ("ExamineText", comp.ExamineText));
-            args.PushMarkup(ExamineText, -5);
+            var examineText = Loc.GetString("set-examine-examined", ("ent", ent), ("ExamineText", FormattedMessage.EscapeText(comp.ExamineText)));
+            args.PushMarkup(examineText, -5);
         }
     }
 
