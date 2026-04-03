@@ -57,8 +57,8 @@ accent-italian-words-replace-16 = it's-a
 accent-italian-words-17 = make
 accent-italian-words-replace-17 = make-a
 
-accent-italian-words-18 = meat
-accent-italian-words-replace-18 = carne
+accent-italian-words-18 = meat pizza
+accent-italian-words-replace-18 = pizza capricciosa
 
 accent-italian-words-19 = mom
 accent-italian-words-replace-19 = mamma
@@ -87,8 +87,8 @@ accent-italian-words-replace-26 = polizia
 accent-italian-words-27 = secoff
 accent-italian-words-replace-27 = polizia
 
-accent-italian-words-28 = meat pizza
-accent-italian-words-replace-28 = pizza capricciosa
+accent-italian-words-28 = meat
+accent-italian-words-replace-28 = carne
 
 accent-italian-words-29 = mushroom pizza
 accent-italian-words-replace-29 = pizza ai funghi
