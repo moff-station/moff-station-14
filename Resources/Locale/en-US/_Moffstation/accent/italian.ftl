@@ -65,8 +65,8 @@ accent-italian-words-replace-18 = pizza capricciosa
 accent-italian-words-19 = mom
 accent-italian-words-replace-19 = mamma
 
-accent-italian-words-20 = my
-accent-italian-words-replace-20 = my-a
+accent-italian-words-20 = on
+accent-italian-words-replace-20 = on-a
 
 accent-italian-words-21 = janitor
 accent-italian-words-replace-21 = plumber
