@@ -133,6 +133,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineBuck
+  name: Robust Law Enforcer Figurine
+  description: A figurine depicting NanoTrasen's ideal security officer.
+  components:
+  - type: Sprite
+    state: buck
+  - type: SpeakOnTrigger
+    pack: FigurinesBuck
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineBrad
   name: Disheveled Official Figurine
   description: A figurine depicting a very unkempt man with blonde hair in some sort of formal security uniform. The clothes appear a bit stained and tattered.
@@ -539,6 +550,17 @@
     state: kaza
   - type: SpeakOnTrigger
     pack: FigurinesKaza
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineKazo
+  name: Fancy Gooberish Vox Figurine
+  description: A figurine depicting a small, vibrant vox wearing a big puffy coat & skates, The skates are tied to the base
+  components:
+  - type: Sprite
+    state: kazo
+  - type: SpeakOnTrigger
+    pack: FigurinesKazo
 
 - type: entity
   parent: BaseFigurineMoff
