@@ -12,10 +12,10 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.LawReprogrammerVisuals.Status:
+      enum.LawReprogrammerVisuals.Filled:
         base:
-          Empty: { state: base }
-          Full: { state: full }
+          False: { state: base }
+          True: { state: full }
   - type: Item
     sprite: _Moffstation/Objects/Tools/law_programmer.rsi
     heldPrefix: lawprogrammer
