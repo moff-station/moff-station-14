@@ -6,6 +6,8 @@
 # accent-italian-prefix-3 = Mamma-mia! That's a spicy meat-ball!
 # accemt-italian-prefix-4 = La la la la la funiculi funicula!
 
+# alphabetical organization be damned
+
 accent-italian-words-1 = assistant
 accent-italian-words-replace-1 = assistente
 
