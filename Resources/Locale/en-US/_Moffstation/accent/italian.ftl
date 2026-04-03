@@ -131,8 +131,8 @@ accent-italian-words-replace-40 = who's-a
 accent-italian-words-41 = whose
 accent-italian-words-replace-41 = whose-a
 
-accent-italian-words-42 = shit
-accent-italian-words-replace-42 = merda
+accent-italian-words-42 = what
+accent-italian-words-replace-42 = what-a
 
 accent-italian-words-43 = wine
 accent-italian-words-replace-43 = vino
