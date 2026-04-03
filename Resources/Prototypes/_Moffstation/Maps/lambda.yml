@@ -1,0 +1,68 @@
+- type: gameMap
+  id: Lambda
+  mapName: 'Lambda Bioresearch Station'
+  mapPath: /Maps/_Moffstation/lambdav2.yml
+  minPlayers: 30
+  maxPlayers: 50
+  stations:
+    Lambda:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Lambda Station{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/_Moffstation/Shuttles/emergency_lambda.yml
+        - type: StationCargoShuttle
+          path: /Maps/_Moffstation/Shuttles/cargo_lambda.yml
+        - type: StationJobs
+          availableJobs: # 61 jobs total w/o latejoins & interns, 76 jobs total w/ latejoins & interns
+            #command (7)
+            Captain: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            ChiefMedicalOfficer: [ 1, 1 ]
+            ChiefEngineer: [ 1, 1 ]
+            ResearchDirector: [ 1, 1 ]
+            Quartermaster: [ 1, 1 ]
+            #service (11 - 13)
+            Bartender: [ 2, 2 ]
+            Botanist: [ 2, 2 ]
+            Chef: [ 1, 1 ]
+            Janitor: [ 2, 2 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            Reporter: [ 2, 2 ]
+            ServiceWorker: [ 2, 2 ]
+            #engineering (7)
+            AtmosphericTechnician: [ 3, 3 ]
+            StationEngineer: [ 3, 3 ]
+            TechnicalAssistant: [ 2, 2 ] #intern, not counted
+            #medical (8)
+            Chemist: [ 2, 2 ]
+            MedicalDoctor: [ 3, 3 ]
+            MedicalIntern: [ 2, 2 ] #intern, not counted
+            Psychologist: [ 1, 1 ]
+            Paramedic: [ 1, 1 ]
+            #science (4)
+            Scientist: [ 3, 3 ]
+            ResearchAssistant: [ 2, 2 ] #intern, not counted
+            #security (12)
+            Warden: [ 1, 1 ]
+            SecurityOfficer: [ 6, 6 ]
+            Detective: [ 1, 1 ]
+            SecurityCadet: [ 2, 2 ] #intern, not counted
+            Lawyer: [ 2, 2 ]
+            #supply (6)
+            SalvageSpecialist: [ 3, 3 ]
+            CargoTechnician: [ 3, 3 ]
+            #civilian (3+)
+            Passenger: [ -1, -1 ] #infinite, not counted
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            #silicon (3)
+            StationAi: [ 1, 1 ]
+            Borg: [ 2, 2 ]
