@@ -8,7 +8,10 @@
     },
     "states": [
         {
-            "name": "singlecard_down"
+            "name": "empty"
+        },
+        {
+            "name": "singlecard_down_gofish"
         },
         {
             "name": "background_blue"
@@ -23,17 +26,26 @@
             "name": "background_yellow"
         },
         {
-            "name": "carp_carp"
+            "name": "background_grey"
         },
         {
-            "name": "carp_holo"
+            "name": "box"
         },
         {
-            "name": "carp_magic"
+            "name": "box_open"
         },
         {
-            "name": "carp_rainbow",
-            "delays": 
+            "name": "carp"
+        },
+        {
+            "name": "holo"
+        },
+        {
+            "name": "magic"
+        },
+        {
+            "name": "rainbowcarp",
+            "delays": [
                 [
                     0.15,
                     0.15,
@@ -51,160 +63,125 @@
                     0.15,
                     0.15
                 ]
+        ]
         },
         {
-            "name": "cigarette_acmeco"
+            "name": "acmeco"
         },
         {
-            "name": "cigarette_dromedaryco"
+            "name": "dromedaryco"
         },
         {
-            "name": "cigarette_nomads"
+            "name": "nomads"
         },
         {
-            "name": "cigarette_spessman"
+            "name": "spessman"
         },
         {
-            "name": "corgi_ian"
+            "name": "ian"
         },
         {
-            "name": "corgi_lisa"
+            "name": "lisa"
         },
         {
-            "name": "corgi_oldian"
+            "name": "oldian"
         },
         {
-            "name": "corgi_puppy"
+            "name": "puppy"
         },
         {
-            "name": "donut_apple"
+            "name": "appledonut"
         },
         {
-            "name": "donut_bungo"
+            "name": "bungodonut"
         },
         {
-            "name": "donut_chocolate"
+            "name": "chocolatedonut"
         },
         {
-            "name": "donut_pink"
+            "name": "pinkdonut"
         },
         {
-            "name": "ert_engineer"
+            "name": "ertengineer"
         },
         {
-            "name": "ert_leader"
+            "name": "ertleader"
         },
         {
-            "name": "ert_medic"
+            "name": "ertmedic"
         },
         {
-            "name": "ert_security"
+            "name": "ertsecurity"
         },
         {
-            "name": "feline_bingus"
+            "name": "bingus"
         },
         {
-            "name": "feline_exception"
+            "name": "exception"
         },
         {
-            "name": "feline_floppa"
+            "name": "floppa"
         },
         {
-            "name": "feline_runtime"
+            "name": "runtime"
         },
         {
-            "name": "fruit_apple"
+            "name": "apple"
         },
         {
-            "name": "fruit_banana"
+            "name": "banana"
         },
         {
-            "name": "fruit_grapes"
+            "name": "grapes"
         },
         {
-            "name": "fruit_orange"
+            "name": "orange"
         },
         {
-            "name": "mice_brown"
+            "name": "brown"
         },
         {
-            "name": "mice_grey"
+            "name": "grey"
         },
         {
-            "name": "mice_real"
+            "name": "real"
         },
         {
-            "name": "mice_white"
+            "name": "white"
         },
         {
-            "name": "mothroach_deathshead"
+            "name": "deathshead"
         },
         {
-            "name": "mothroach_moproach"
+            "name": "moproach"
         },
         {
-            "name": "mothroach_mothroach"
+            "name": "mothroach"
         },
         {
-            "name": "mothroach_rosy"
+            "name": "rosy"
         },
         {
-            "name": "nukie_elite"
+            "name": "nukieelite"
         },
         {
-            "name": "nukie_juggernaut"
+            "name": "nukiejuggernaut"
         },
         {
-            "name": "nukie_medic"
+            "name": "nukiemedic"
         },
         {
-            "name": "nukie_operative"
+            "name": "nukieoperative"
         },
         {
-            "name": "soda_fourteenloko"
+            "name": "drazil"
         },
         {
-            "name": "soda_grape"
+            "name": "lizard"
         },
         {
-            "name": "soda_smitecranberry"
-        },
-        {
-            "name": "soda_spacecola"
-        },
-        {
-            "name": "topical_bloodbag"
-        },
-        {
-            "name": "topical_bruisepack"
-        },
-        {
-            "name": "topical_gauze"
-        },
-        {
-            "name": "topical_ointment"
-        },
-        {
-            "name": "troublemaker_clown"
-        },
-        {
-            "name": "troublemaker_mime"
-        },
-        {
-            "name": "troublemaker_passenger"
-        },
-        {
-            "name": "troublemaker_skeleton"
-        },
-        {
-            "name": "plushie_drazil"
-        },
-        {
-            "name": "plushie_lizard"
-        },
-        {
-            "name": "plushie_rainbow",
-            "delays": 
+            "name": "rainbowlizard",
+            "delays": [
                 [
                     0.15,
                     0.15,
@@ -222,9 +199,46 @@
                     0.15,
                     0.15
                 ]
+        ]
         },
         {
-            "name": "plushie_spacelizard"
+            "name": "spacelizard"
+        },
+        {
+            "name": "fourteenloko"
+        },
+        {
+            "name": "grape"
+        },
+        {
+            "name": "smitecranberry"
+        },
+        {
+            "name": "spacecola"
+        },
+        {
+            "name": "bloodbag"
+        },
+        {
+            "name": "bruisepack"
+        },
+        {
+            "name": "gauze"
+        },
+        {
+            "name": "ointment"
+        },
+        {
+            "name": "clown"
+        },
+        {
+            "name": "mime"
+        },
+        {
+            "name": "passenger"
+        },
+        {
+            "name": "skeleton"
         }
     ]
 }
