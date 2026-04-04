@@ -171,6 +171,36 @@ namespace Content.Shared.Damage
             return newDamage;
         }
 
+        //Moffstation - metabolic modifiers - begin
+        ///<summary>
+        ///  Similar to ApplyModifierSet but affects healing alongside allowing for healing to become damage and vice-verse
+        ///</summary>
+        public static DamageSpecifier ApplyModifierSetUnsafely(DamageSpecifier damageSpec, DamageModifierSet modifierSet)
+        {
+            DamageSpecifier newDamage = new();
+            newDamage.DamageDict.EnsureCapacity(damageSpec.DamageDict.Count);
+
+            foreach (var (key, value) in damageSpec.DamageDict)
+            {
+                if (value == 0)
+                    continue;
+
+                float newValue = value.Float();
+
+                if (modifierSet.FlatReduction.TryGetValue(key, out var reduction))
+                    newValue = Math.Max(0f, newValue - reduction); // flat reductions still can't heal you, this could result in flat healing turning back into damage
+
+                if (modifierSet.Coefficients.TryGetValue(key, out var coefficient))
+                    newValue *= coefficient;
+
+                if (newValue != 0)
+                    newDamage.DamageDict[key] = FixedPoint2.New(newValue);
+            }
+
+            return newDamage;
+        }
+        //Moffstation - end
+
         /// <summary>
         ///     Reduce (or increase) damages by applying multiple modifier sets.
         /// </summary>

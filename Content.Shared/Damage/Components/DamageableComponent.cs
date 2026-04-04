@@ -40,6 +40,11 @@ public sealed partial class DamageableComponent : Component
     [DataField("damageModifierSet")]
     public ProtoId<DamageModifierSetPrototype>? DamageModifierSetId;
 
+    //Moffstation - metabolic modifiers - begin
+    [DataField("metabolicDamageModifierSet")]
+    public ProtoId<DamageModifierSetPrototype>? MetabolicModifierSetId;
+    //Moffstation - end
+
     /// <summary>
     ///     All the damage information is stored in this <see cref="DamageSpecifier"/>.
     /// </summary>

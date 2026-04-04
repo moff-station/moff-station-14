@@ -114,6 +114,7 @@
       Unsexed: MaleSlime
   - type: Damageable
     damageModifierSet: Slime
+    metabolicDamageModifierSet: SlimeMetabolic
   - type: PassiveDamage # Around 8 damage a minute healed
     allowedStates:
     - Alive

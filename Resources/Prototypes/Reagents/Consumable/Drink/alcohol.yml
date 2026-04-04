@@ -156,6 +156,7 @@
         damage:
           types:
             Poison: 0.1
+        chemicalSource: true
       # dwarves take less toxin damage and heal a marginal amount of brute
       - !type:HealthChange
         conditions:

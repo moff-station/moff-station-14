@@ -13,13 +13,27 @@ namespace Content.Shared.EntityEffects.Effects.Damage;
 /// Amounts are modified by scale.
 /// </summary>
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
-public sealed partial class HealthChangeEntityEffectSystem : EntityEffectSystem<DamageableComponent, HealthChange>
+public sealed class HealthChangeEntityEffectSystem : EntityEffectSystem<DamageableComponent, HealthChange>
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!; //Moffstation - metabolic modifiers
 
     protected override void Effect(Entity<DamageableComponent> entity, ref EntityEffectEvent<HealthChange> args)
     {
         var damageSpec = new DamageSpecifier(args.Effect.Damage);
+
+        //Moffstation - metabolic modifiers - begin
+        if (args.Effect.ChemicalSource)
+        {
+            if (
+                entity.Comp.DamageModifierSetId != null &&
+                _prototypeManager.Resolve(entity.Comp.MetabolicModifierSetId, out var metabolicModifierSet)
+            )
+            {
+                damageSpec = DamageSpecifier.ApplyModifierSetUnsafely(damageSpec, metabolicModifierSet);
+            }
+        }
+        //Moffstation - end
 
         damageSpec *= args.Scale;
 
@@ -42,6 +56,11 @@ public sealed partial class HealthChange : EntityEffectBase<HealthChange>
 
     [DataField]
     public bool IgnoreResistances = true;
+
+    //Moffstation - metabolic modifiers - begin
+    [DataField]
+    public bool ChemicalSource = false;
+    //Moffstation - end
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         {

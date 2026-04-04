@@ -22,4 +22,9 @@
     Slash: 1.15
     Piercing: 1.15
     Cold: 0.9
-    
+
+- type: damageModifierSet
+  id: SlimeMetabolic
+  coefficients:
+    Poison: -1
+    Cellular: 0.2
