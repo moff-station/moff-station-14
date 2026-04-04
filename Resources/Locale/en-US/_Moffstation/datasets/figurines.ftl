@@ -67,6 +67,14 @@ figurines-boxcar-2 = We's love dat!
 figurines-boxcar-3 = You's got anyone you's wanna shout out?
 figurines-boxcar-4 = Still the best.
 
+figurines-buck-1 = Anyone want to hear a SAFETY RAP SONG?
+figurines-buck-2 = Oh Stars above, our beacon's bright, Nanotrasen guides our might! With plasma dreams, and duty's call, we'll serve the station one and all!
+figurines-buck-3 = Through endless void we boldly strive to keep our galaxy alive! Our hearts are true our task is clear, Nanotrasen, we persevere!
+figurines-buck-4 = No, you can't wear my hat.
+figurines-buck-5 = Mark them as wanted, they interrupted the song.
+figurines-buck-6 = Everyone's worthy of respect, even criminals!
+figurines-buck-7 = JUSTICE!!
+
 figurines-brad-1 = I'm the head of Bradcurity!
 figurines-brad-2 = Time to shoot innocents!
 figurines-brad-3 = Oops, dropped my big iron!
@@ -331,6 +339,13 @@ figurines-kaza-1 = Kaza greet!
 figurines-kaza-2 = Mm? What Kaza doing...?
 figurines-kaza-3 = Kaza bid kindness each other self and to.
 figurines-kaza-4 = KAZA KILL!!
+
+figurines-kazo-1 = Kazo say hello!
+figurines-kazo-2 = Kazo say if Kazo just havings lunch with Kazo & Kazo and Kazo & Kazo were togethers, Kazo ask who was watching Kazo...?
+figurines-kazo-3 = Kazo go Skrrt.
+figurines-kazo-4 = Kazo ask if doctor have any bicaridine? Kazo has concussions.
+figurines-kazo-5 = Kazo go meow...
+figurines-kazo-6 = KAZO KILL!!
 
 figurines-kim-1 = Want see me break into the bridge? Want see me do it again?
 figurines-kim-2 = Time to bomb sec!

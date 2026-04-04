@@ -20,7 +20,7 @@
 
 - type: entity
   id: Kudzu
-  name: blob
+  name: kudzu
   parent: BaseKudzu
   description: A rapidly growing, dangerous plant. WHY ARE YOU STOPPING TO LOOK AT IT?!
   components:
@@ -30,8 +30,7 @@
           path:
             "/Audio/Weapons/slash.ogg"
     - type: Sprite
-      sprite: Objects/Misc/blob.rsi
-      color: red
+      sprite: Objects/Misc/kudzu.rsi
       state: kudzu_11
       drawdepth: Overdoors
     - type: KudzuVisuals
@@ -82,7 +81,6 @@
               Heat: 0.5
     - type: AtmosExposed
     - type: Kudzu
-      spriteVariants: 1
       growthTickChance: 0.3
       spreadChance: 0.4
     - type: SpeedModifierContacts
