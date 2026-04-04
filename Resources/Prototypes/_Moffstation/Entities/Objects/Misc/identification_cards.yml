@@ -46,3 +46,98 @@
   - type: NanoChatCard # CD
     listNumber: false
 
+#Centcomm & Command
+
+- type: entity
+  parent: IDCardStandard
+  id: CentcomInternIDCard
+  name: central command intern ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: silver
+    - state: stripe_bottom
+      color: "#309000"
+    - state: stripe_top
+      color: "#99ff98"
+    - sprite: &icon-rsi _Moffstation/Interface/Misc/job_icons.rsi
+      offset: &icon-offset -0.09375, 0.0625
+      state: CentralCommandIntern
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: CentralCommandIntern
+  - type: NanoChatCard # CD
+    listNumber: false
+
+- type: entity
+  parent: IDCardStandard
+  id: CLOIDCard
+  name: coffee Logistics officer ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#1b67a5"
+    - state: stripe_top
+      color: "#7cb1d1"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: CoffeeLogisticsOfficer
+  - type: PresetIdCard
+    job: CoffeeLogisticsOfficer
+
+- type: entity
+  parent: IDCardStandard
+  id: BridgeAssistantIDCard
+  name: bridge assistant ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#1b67a5"
+    - state: stripe_top
+      color: "#7cb1d1"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: BridgeAssistant
+    - type: IdCard
+      jobTitle: job-name-passenger-bridgeassistant
+      jobIcon: JobIconBridgeAssistant
+
+- type: entity
+  parent: IDCardStandard
+  id: HoSanitationIDCard
+  name: head of Sanitation ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#639137"
+    - state: stripe_top
+      color: "#7cb1d1"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: HeadOfSanitation
+    - type: PresetIdCard
+      job: HeadOfSanitation
+
+- type: entity
+  parent: IDCardStandard
+  id: HoTIDCard
+  name: head of Tomfoolery ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: gold
+    - state: stripe_clown
+    - state: stripe_top
+      color: "#7cb1d1"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: HeadOfTomfoolery
+    - type: PresetIdCard
+      job: HeadOfTomfoolery

@@ -1,0 +1,44 @@
+- type: entity
+  parent: CentcomPDA
+  id: CentcomPDAAltBase
+  name: centcomm alternate PDA
+  abstract: true
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-centcom
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-commandingofficer"
+    - state: "light_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+    - type: Icon
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+
+- type: entity
+  parent: CentcomPDAAltBase
+  id: CentralCommandInternPDA
+  name: central command intern PDA
+  components:
+  - type: Pda
+    id: CentcomInternIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-centcom
+  - type: PdaBorderColor
+    accentVColor: "#bf8f2e"
+    accentHColor: "#364d37"

@@ -1,0 +1,41 @@
+﻿- type: job
+  id: CentralCommandIntern
+  name: job-name-centcommint
+  description: job-description-centcommint
+  playTimeTracker: JobCentralCommandIntern
+  setPreference: false
+  startingGear: CentcommInternGear
+  icon: "JobIconCentralCommandIntern"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: CentcommInternGear
+  equipment:
+    back: ClothingBackpackSatchelLeather
+    belt: BoxFolderCentComClipboardThreePapers
+    ears: ClothingHeadsetAltCentCom
+    eyes: ClothingEyesGlassesCommand
+    head: ClothingHeadHatBeretCentcomm
+    neck: ClothingNeckScarfStripedCentcom
+    mask: ClothingMaskGasCentcom
+    gloves: ClothingHandsGlovesHop
+    id: CentcomPDA
+    jumpsuit: ClothingUniformJumpsuitCentcommTurtle
+    outerClothing: ClothingOuterWinterWindbreakerCentcom
+    shoes: ClothingShoesBootsLaceup
+    pocket1: WeaponDisabler
+  inhand:
+  - BriefcaseBrownFilled
+  storage:
+    back:
+    - Flash
+    - Crowbar
+    - PenCentcom

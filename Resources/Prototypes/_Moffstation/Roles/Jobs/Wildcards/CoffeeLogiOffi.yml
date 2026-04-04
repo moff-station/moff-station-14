@@ -1,0 +1,48 @@
+﻿- type: job
+  id: CoffeeLogisticsOfficer
+  name: job-name-coffee-logistics-officer
+  description: job-description-coffee-logistics-officer
+  playTimeTracker: JobCommandCoffeeLogisticsOfficer
+  setPreference: false
+  startingGear: CoffeeLogisticsOfficerGear
+  icon: "JobIconCoffeeLogisticsOfficer"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Command
+  - Bar
+  - Service
+  - Maintenance
+  - Kitchen
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: CoffeeLogisticsOfficerGear
+  equipment:
+    back: ClothingBackpackSatchelLeather
+    ears: ClothingHeadsetCommand
+    eyes: ClothingEyesGlassesCommand
+    head: ClothingHeadHatBeretFrench
+    gloves: ClothingHandsGlovesColorWhite
+    id: CoffeeLogisticsOfficerPDA
+    jumpsuit: ClothingUniformJumpsuitCaptainConductor
+    outerClothing: ClothingOuterVest
+    shoes: ClothingShoesBootsLaceup
+    pocket1: Flash
+    pocket2: DrinkHotCoffee
+  storage:
+    back:
+    - Flash
+    - Crowbar
+  inhand:
+  - DrinkCoffeeJug
+
+- type: chameleonOutfit
+  id: CoffeeLogisticsOfficerOutfit
+  job: CoffeeLogisticsOfficer
+  hasMindShield: true
+  equipment:
+    neck: ClothingNeckScarfStripedBlue
+    mask: ClothingMaskGasCaptain
