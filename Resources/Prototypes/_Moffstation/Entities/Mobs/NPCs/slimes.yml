@@ -20,7 +20,11 @@
   - type: Item
     size: Huge
   - type: Sprite
-    color: "#FFFFFF55"
+    color: "#FFFFFFAF"
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: blue_adult_slime
+      shader: unshaded
   - type: MeleeWeapon
     attackRate: 2
     damage:
@@ -37,6 +41,11 @@
     templateId: gerasInventory
     displacements:
       head:
+        sizeMaps:
+          32:
+            sprite: Mobs/Pets/Smile/smile_displacement.rsi
+            state: head
+      ears:
         sizeMaps:
           32:
             sprite: Mobs/Pets/Smile/smile_displacement.rsi
