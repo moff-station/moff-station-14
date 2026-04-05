@@ -40,14 +40,16 @@
   suitLoc: gofish-card-suit-name
   cardValueLoc: gofish-card-value-name
   cards:
-  - id: "rules"
-    useSuitLayers: false
-    obverseLayers:
-    - state: "background_grey"
+  - suit: GoFishRules
   - suit: GoFishBlue
   - suit: GoFishGreen
   - suit: GoFishRed
   - suit: GoFishYellow
+
+- type: playingCardSuit
+  id: GoFishRules
+  cards:
+  - id: "rules" # Rules card
 
 - type: playingCardSuit
   id: GoFishBlue
@@ -77,7 +79,6 @@
   defaultObverseLayerState: "{card}"
   cards:
   - id: "carp" # Carp
-    group: carp
   - id: "spessman" # Cigarette
   - id: "puppy" # Corgi
   - id: "appledonut" # Donut

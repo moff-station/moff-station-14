@@ -314,6 +314,7 @@ public abstract partial class SharedPlayingCardsSystem
         var idCardAndSuit = suit is null
         ? idAndCard
         : idAndCard.Concat([("suit", Loc.GetString(deck.SuitLoc, ("suit", suit.ID.ToLowerInvariant())))]);
+
         var locArgs = idCardAndSuit.ToArray();
 
         comp.ObverseName = Loc.GetString(data.Card.NameLoc ?? deck.CardNameLoc, locArgs);
