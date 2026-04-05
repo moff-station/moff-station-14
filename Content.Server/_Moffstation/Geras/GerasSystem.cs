@@ -2,10 +2,12 @@ using Content.Server.Polymorph.Systems;
 using Content.Shared.Zombies;
 using Content.Server.Actions;
 using Content.Server.Popups;
-using Content.Shared.Geras;
+using Content.Shared._Moffstation.Geras;
+using Content.Shared._Moffstation.Storage;
+using Content.Shared.Storage;
 using Robust.Shared.Player;
 
-namespace Content.Server.Geras;
+namespace Content.Server._Moffstation.Geras;
 
 /// <inheritdoc/>
 public sealed class GerasSystem : SharedGerasSystem

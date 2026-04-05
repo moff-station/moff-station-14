@@ -2,7 +2,7 @@
   name: geras
   description: A geras of a slime - the name is ironic, isn't it?
   id: MobSlimesGeras
-  parent: BaseMobAdultSlimes
+  parent: [BaseMobAdultSlimes, StripableInventoryBase]
   categories: [ HideSpawnMenu ]
   components:
   # they portable...
@@ -32,3 +32,40 @@
         Base: blue_adult_slime
       Dead:
         Base: blue_adult_slime_dead
+  - type: Inventory
+    speciesId: slime
+    templateId: gerasInventory
+    displacements:
+      head:
+        sizeMaps:
+          32:
+            sprite: Mobs/Pets/Smile/smile_displacement.rsi
+            state: head
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: Storage
+    clickInsert: false
+    openOnActivate: false
+    grid:
+    - 0,0,1,2
+    maxItemSize: Large
+    storageInsertSound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: UseDelay
+    delay: 0.5
+  - type: Hands
+    activeHandId: Hand
+    hands:
+      Hand:
+        location: Left
+  - type: ComplexInteraction
+  - type: Stripping
+  - type: Puller

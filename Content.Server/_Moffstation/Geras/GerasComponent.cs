@@ -2,7 +2,7 @@ using Content.Shared.Actions;
 using Content.Shared.Polymorph;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Geras;
+namespace Content.Server._Moffstation.Geras;
 
 /// <summary>
 /// This component assigns the entity with a polymorph action.
