@@ -25,6 +25,11 @@
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: blue_adult_slime
       shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
   - type: MeleeWeapon
     attackRate: 2
     damage:
