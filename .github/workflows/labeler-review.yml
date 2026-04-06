@@ -43,11 +43,19 @@ jobs:
       uses: actions-ecosystem/action-add-labels@v1
       with:
         labels: "S: Approved"
+    - if: ${{ github.event.review.state == 'APPROVED' && steps.checkMember.outputs.result == 'true' }}
+      uses: actions-ecosystem/action-remove-labels@v1
+      with:
+        labels: "S: Awaiting Changes"
     # Moffstation - Begin - Handle both APPROVED and CHANGES_REQUESTED
     - if: ${{ github.event.review.state == 'CHANGES_REQUESTED' && steps.checkMember.outputs.result == 'true' }}
       uses: actions-ecosystem/action-add-labels@v1
       with:
         labels: "S: Awaiting Changes"
+    - if: ${{ github.event.review.state == 'CHANGES_REQUESTED' && steps.checkMember.outputs.result == 'true' }}
+      uses: actions-ecosystem/action-remove-labels@v1
+      with:
+        labels: "S: Approved"
     - if: ${{ steps.checkMember.outputs.result == 'true' }}
       uses: actions-ecosystem/action-remove-labels@v1
       with:
