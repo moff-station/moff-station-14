@@ -48,4 +48,8 @@ jobs:
       uses: actions-ecosystem/action-add-labels@v1
       with:
         labels: "S: Awaiting Changes"
+    - if: ${{ github.event.review.state == 'CHANGES_REQUESTED' && steps.checkMember.outputs.result == 'true' }}
+      uses: actions-ecosystem/action-remove-labels@v1
+      with:
+        labels: "S: Needs Review"
     # Moffstation - End
