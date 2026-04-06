@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/06/2026 07:16:29
-  entityCount: 12853
+  time: 04/06/2026 07:41:33
+  entityCount: 12858
 maps: []
 grids:
 - 1
@@ -7474,7 +7474,7 @@ entities:
       pos: 44.5,74.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -143996.61
+      secondsUntilStateChange: -144184.89
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -68329,6 +68329,41 @@ entities:
     components:
     - type: Transform
       pos: 20.5,73.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 12854
+    components:
+    - type: Transform
+      pos: 41.5,39.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 12855
+    components:
+    - type: Transform
+      pos: 54.5,26.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 12856
+    components:
+    - type: Transform
+      pos: 40.5,79.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 12857
+    components:
+    - type: Transform
+      pos: 56.5,73.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 12858
+    components:
+    - type: Transform
+      pos: 73.5,75.5
       parent: 1
     - type: Fixtures
       fixtures: {}
