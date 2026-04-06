@@ -2,7 +2,6 @@
   id: CoffeeLogisticsOfficer
   name: job-name-coffee-logistics-officer
   description: job-description-coffee-logistics-officer
-  playTimeTracker: JobCommandCoffeeLogisticsOfficer
   setPreference: false
   startingGear: CoffeeLogisticsOfficerGear
   icon: "JobIconCoffeeLogisticsOfficer"
@@ -13,6 +12,7 @@
   - Bar
   - Service
   - Maintenance
+  extendedAccess:
   - Kitchen
   special:
   - !type:AddImplantSpecial

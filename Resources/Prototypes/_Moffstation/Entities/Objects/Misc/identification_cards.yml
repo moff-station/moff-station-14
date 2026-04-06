@@ -75,6 +75,8 @@
   id: CLOIDCard
   name: coffee Logistics officer ID card
   components:
+  - type: PresetIdCard
+    job: CoffeeLogisticsOfficer
   - type: Sprite
     layers:
     - state: default
@@ -85,8 +87,6 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: CoffeeLogisticsOfficer
-  - type: PresetIdCard
-    job: CoffeeLogisticsOfficer
 
 - type: entity
   parent: IDCardStandard
@@ -103,6 +103,8 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: BridgeAssistant
+    - type: Item
+      heldPrefix: silver
     - type: IdCard
       jobTitle: job-name-passenger-bridgeassistant
       jobIcon: JobIconBridgeAssistant
@@ -122,6 +124,8 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: HeadOfSanitation
+    - type: Item
+      heldPrefix: silver
     - type: PresetIdCard
       job: HeadOfSanitation
 
@@ -139,5 +143,10 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: HeadOfTomfoolery
+    - type: Item
+      heldPrefix: gold
+    - type: IdCard
+      jobTitle: job-name-clown-head-of-tomfoolery
+      jobIcon: JobIconHeadOfTomfoolery
     - type: PresetIdCard
       job: HeadOfTomfoolery
