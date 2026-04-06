@@ -93,6 +93,8 @@
   id: BridgeAssistantIDCard
   name: bridge assistant ID card
   components:
+  - type: PresetIdCard
+    job: BridgeAssistant
   - type: Sprite
     layers:
     - state: default
@@ -105,15 +107,14 @@
       state: BridgeAssistant
     - type: Item
       heldPrefix: silver
-    - type: IdCard
-      jobTitle: job-name-passenger-bridgeassistant
-      jobIcon: JobIconBridgeAssistant
 
 - type: entity
   parent: IDCardStandard
   id: HoSanitationIDCard
   name: head of Sanitation ID card
   components:
+  - type: PresetIdCard
+    job: HeadOfSanitation
   - type: Sprite
     layers:
     - state: default
@@ -126,14 +127,14 @@
       state: HeadOfSanitation
     - type: Item
       heldPrefix: silver
-    - type: PresetIdCard
-      job: HeadOfSanitation
 
 - type: entity
   parent: IDCardStandard
   id: HoTIDCard
   name: head of Tomfoolery ID card
   components:
+  - type: PresetIdCard
+    job: HeadOfTomfoolery
   - type: Sprite
     layers:
     - state: gold
@@ -148,5 +149,3 @@
     - type: IdCard
       jobTitle: job-name-clown-head-of-tomfoolery
       jobIcon: JobIconHeadOfTomfoolery
-    - type: PresetIdCard
-      job: HeadOfTomfoolery

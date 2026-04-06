@@ -1,33 +1,29 @@
 ﻿- type: job
-  id: CoffeeLogisticsOfficer
-  name: job-name-coffee-logistics-officer
-  description: job-description-coffee-logistics-officer
-  playTimeTracker: JobCommandCoffeeLogisticsOfficer
+  id: BridgeAssistant
+  name: job-name-passenger-bridge-assistant
+  description: job-description-passenger-bridge-assistant
+  playTimeTracker: JobCommandBridgeAssistant
   setPreference: false
-  startingGear: CoffeeLogisticsOfficerGear
-  icon: "JobIconCoffeeLogisticsOfficer"
+  startingGear: BridgeAssistantGear
+  icon: "JobIconBridgeAssistant"
   supervisors: job-supervisors-captain
   canBeAntag: false
   access:
   - Command
-  - Bar
-  - Service
   - Maintenance
-  extendedAccess:
-  - Kitchen
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
-  id: CoffeeLogisticsOfficerGear
+  id: BridgeAssistantGear
   equipment:
     back: ClothingBackpackSatchelLeather
     ears: ClothingHeadsetCommand
     eyes: ClothingEyesGlassesCommand
     head: ClothingHeadHatBeretFrench
     gloves: ClothingHandsGlovesColorWhite
-    id: CoffeeLogisticsOfficerPDA
+    id: BridgeAssistantPDA
     jumpsuit: ClothingUniformJumpsuitCaptainConductor
     outerClothing: ClothingOuterVest
     shoes: ClothingShoesBootsLaceup
@@ -41,8 +37,8 @@
   - DrinkCoffeeJug
 
 - type: chameleonOutfit
-  id: CoffeeLogisticsOfficerOutfit
-  job: CoffeeLogisticsOfficer
+  id: BridgeAssistantOutfit
+  job: BridgeAssistant
   hasMindShield: true
   equipment:
     neck: ClothingNeckScarfStripedBlue
