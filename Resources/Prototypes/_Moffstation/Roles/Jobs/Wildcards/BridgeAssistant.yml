@@ -21,20 +21,16 @@
     back: ClothingBackpackSatchelLeather
     ears: ClothingHeadsetCommand
     eyes: ClothingEyesGlassesCommand
-    head: ClothingHeadHatBeretFrench
-    gloves: ClothingHandsGlovesColorWhite
+    head: ClothingHeadHatBeretCommand
+    gloves: ClothingHandsGlovesColorBlack
     id: BridgeAssistantPDA
-    jumpsuit: ClothingUniformJumpsuitCaptainConductor
-    outerClothing: ClothingOuterVest
+    jumpsuit: ClothingUniformJumpsuitCommandGeneric
     shoes: ClothingShoesBootsLaceup
     pocket1: Flash
-    pocket2: DrinkHotCoffee
   storage:
     back:
     - Flash
     - Crowbar
-  inhand:
-  - DrinkCoffeeJug
 
 - type: chameleonOutfit
   id: BridgeAssistantOutfit
@@ -43,3 +39,4 @@
   equipment:
     neck: ClothingNeckScarfStripedBlue
     mask: ClothingMaskGasCaptain
+    outerclothing: ClothingOuterWinterColorBlue
