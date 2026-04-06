@@ -5,19 +5,40 @@ on:
 jobs:
   add_label:
     # Change the repository name after you've made sure the team name is correct for your fork!
-    if: ${{ (github.repository == 'space-wizards/space-station-14') && (github.event.review.state == 'APPROVED') }}
+    if: ${{ (github.repository == 'moff-station/moff-station-14') && (github.event.review.state == 'APPROVED') }} # Moffstation - Change org and repo names
     permissions:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - uses: tspascoal/get-user-teams-membership@v3
-      id: checkUserMember
+    # Moffstation - Begin - We don't use teams, so don't check teams.
+#    - uses: tspascoal/get-user-teams-membership@v3
+#      id: checkUserMember
+#      with:
+#        username: ${{ github.actor }}
+#        team: "content-maintainers,junior-maintainers"
+#        GITHUB_TOKEN: ${{ secrets.LABELER_PAT }}
+    # Instead, check for org membership.
+    - id: checkMember
+      uses: actions/github-script@v7
       with:
-        username: ${{ github.actor }}
-        team: "content-maintainers,junior-maintainers"
-        GITHUB_TOKEN: ${{ secrets.LABELER_PAT }}
-    - if: ${{ steps.checkUserMember.outputs.isTeamMember == 'true' }}
+        script: |
+          const org = context.repo.owner;
+          const username = context.payload.review.user.login;
+          
+          try {
+            const { status } = await github.rest.orgs.checkMembershipForUser({
+              org: org,
+              username: username,
+            });
+            // status will be 204 if they are a member
+            return status === 204;
+          } catch (error) {
+            // If user is not a member, GitHub returns 404
+            return false;
+          }
+    # Moffstation - End
+    - if: ${{ steps.checkMember.outputs.result == 'true' }}
       uses: actions-ecosystem/action-add-labels@v1
       with:
         labels: "S: Approved"
