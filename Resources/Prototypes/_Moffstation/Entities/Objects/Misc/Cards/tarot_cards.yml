@@ -1,0 +1,69 @@
+# Tarot cards
+- type: entity
+  parent: BasePlayingCardDeckBox
+  id: TarotCardDeckBox
+  name: box of tarot cards
+  suffix: Tarot
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/Cards/card_tarot.rsi
+  - type: ContainerFill
+    containers:
+      storagebase:
+      - TarotCardDeck
+
+- type: entity
+  parent: BasePlayingCardDeck
+  id: TarotCardDeck
+  name: deck of cards
+  suffix: Tarot
+  components:
+  - type: PlayingCardDeck
+    prototype: StandardTarotCards
+
+- type: playingCardDeck
+  parent: BaseTarotDeck
+  id: StandardTarotCards
+  sprite: _Moffstation/Objects/Misc/Cards/card_tarot.rsi
+
+
+# Tarot deck base definition
+- type: playingCardDeck
+  id: BaseTarotDeck
+  abstract: true
+  commonReverseLayers:
+  - state: singlecard_down_tarot
+  cardNameLoc: tarot-card-name
+  cardDescLoc: tarot-card-desc
+  cardReverseNameLoc: tarot-card-name-reverse
+  cardReverseDescLoc: tarot-card-desc-reverse
+  suitLoc: "6-7"      # suitLoc is required even if you don't use it.
+  cardValueLoc: tarot-card-value-name
+  defaultObverseName: tarot-card
+  commonObverseLayers:
+  - state: background_gold
+  defaultObverseLayerState: "{card}"
+  cards:
+  - id: "the_fool"
+    obverseName: tarot-card
+  - id: "the_magician"
+  - id: "the_high_priestess"
+  - id: "the_empress"
+  - id: "the_emperor"
+  - id: "the_hierophant"
+  - id: "the_lovers"
+  - id: "the_chariot"
+  - id: "strength"
+  - id: "the_hermit"
+  - id: "the_wheel_of_fortune"
+  - id: "justice"
+  - id: "the_hanged_man"
+  - id: "death"
+  - id: "temperance"
+  - id: "the_devil"
+  - id: "the_tower"
+  - id: "the_star"
+  - id: "the_moon"
+  - id: "the_sun"
+  - id: "judgement"
+  - id: "the_world"
