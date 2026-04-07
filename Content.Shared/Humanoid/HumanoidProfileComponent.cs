@@ -33,4 +33,11 @@ public sealed partial class HumanoidProfileComponent : Component
     [DataField, AutoNetworkedField]
     public float Height = 1f;
     // Moffstation End
+
+    //Moffstation Start - Revert Geras Removal
+    //Cent was right, this is basically the only half-decent way to make this available
+    //TODO - refactor geras to make one entity at component init and store it for swapping
+    [DataField, AutoNetworkedField]
+    public Color SkinColor = new(0.07f, 0.2f, 1f, 1f);//default value for SkinColor in HumanoidCharacterAppearance
+    //Moffstation End
 }
