@@ -7,7 +7,8 @@ gofish-card-suit-name = { $suit ->
     [gofishred] Red
     [gofishyellow] Yellow
    *[other] Grey.
-   The rules of Go Fish is simple. Players are dealt 5 cards from a shuffled deck. Remaining cards are left face down in a deck forming the fish pond/draw pile.
+   Game Rules:
+   Players are dealt 5 cards from a shuffled deck. Remaining cards are left face down in a deck forming the fish pond/draw pile.
    The dealer will go first, and they get to ask each player if they currently hold a card from a specific group.
    For example, "Do you have any Mothroach Cards?"
    You can examine the card to see what group it belongs to if you are unsure based on the image.
@@ -24,7 +25,7 @@ gofish-card-suit-name = { $suit ->
 gofish-card-name = { gofish-card-value-name } Card
 
 gofish-card-desc =
-    The border of this card is { gofish-card-suit-name }.
+    The border of this card is { $suit }.
     { gofish-card-group-name }
 
 gofish-rules-card-desc = Rules of the game!
