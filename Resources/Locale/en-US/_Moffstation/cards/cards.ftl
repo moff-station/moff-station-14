@@ -27,6 +27,7 @@ playing-card-deck-flip-entire-popup = Flipped the deck
 playing-cards-hand-card-count-changed-added = Card was added (Total of cards: {$quantity})
 playing-cards-hand-card-count-changed-removed = Card was removed (Total of cards: {$quantity})
 playing-cards-hand-card-count-changed-unknown = Unknown
+playing-cards-hand-cant-pickup-no-free-hands = Your hands are full!
 
 playing-card-hand-card-pickup-verb-text = Pick card into hand
 playing-card-hand-stack-pickup-verb-text = Pick card
