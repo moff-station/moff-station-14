@@ -1,0 +1,89 @@
+# Tarot cards
+- type: entity
+  parent: BasePlayingCardDeckBox
+  id: TarotCardDeckBox
+  name: box of tarot cards
+  suffix: Tarot
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Misc/Cards/card_tarot.rsi
+  - type: ContainerFill
+    containers:
+      storagebase:
+      - TarotCardDeck
+
+- type: entity
+  parent: BasePlayingCardDeck
+  id: TarotCardDeck
+  name: deck of cards
+  suffix: Tarot
+  components:
+  - type: PlayingCardDeck
+    prototype: StandardTarotCards
+
+- type: playingCardDeck
+  parent: BaseTarotDeck
+  id: StandardTarotCards
+  sprite: _Moffstation/Objects/Misc/Cards/card_tarot.rsi
+
+
+# Tarot deck base definition
+- type: playingCardDeck
+  id: BaseTarotDeck
+  abstract: true
+  commonReverseLayers:
+  - state: singlecard_down_tarot
+  cardNameLoc: tarot-card-name
+  cardDescLoc: tarot-card-desc
+  cardReverseNameLoc: tarot-card-name-reverse
+  cardReverseDescLoc: tarot-card-desc-reverse
+  suitLoc: "6-7"      # suitLoc and cardValueLoc are required even if you don't use them.
+  cardValueLoc: tarot-card
+  commonObverseLayers:
+  - state: background_gold
+  defaultObverseLayerState: "{card}"
+  cards:
+  - id: "the_fool"
+    nameLoc: tarot-card
+  - id: "the_magician"
+    nameLoc: tarot-card
+  - id: "the_high_priestess"
+    nameLoc: tarot-card
+  - id: "the_empress"
+    nameLoc: tarot-card
+  - id: "the_emperor"
+    nameLoc: tarot-card
+  - id: "the_hierophant"
+    nameLoc: tarot-card
+  - id: "the_lovers"
+    nameLoc: tarot-card
+  - id: "the_chariot"
+    nameLoc: tarot-card
+  - id: "strength"
+    nameLoc: tarot-card
+  - id: "the_hermit"
+    nameLoc: tarot-card
+  - id: "the_wheel_of_fortune"
+    nameLoc: tarot-card
+  - id: "justice"
+    nameLoc: tarot-card
+  - id: "the_hanged_man"
+    nameLoc: tarot-card
+  - id: "death"
+    nameLoc: tarot-card
+  - id: "temperance"
+    nameLoc: tarot-card
+  - id: "the_devil"
+    nameLoc: tarot-card
+  - id: "the_tower"
+    nameLoc: tarot-card
+  - id: "the_star"
+    nameLoc: tarot-card
+  - id: "the_moon"
+    nameLoc: tarot-card
+  - id: "the_sun"
+    nameLoc: tarot-card
+  - id: "judgement"
+    nameLoc: tarot-card
+  - id: "the_world"
+    nameLoc: tarot-card
