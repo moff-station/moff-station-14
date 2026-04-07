@@ -1,7 +1,7 @@
 tarot-card-name-reverse = tarot card
 tarot-card-desc-reverse = The gold etchings on the back of this card are truly magnificent...
 
-tarot-card-name = { $card ->
+tarot-card-value-name = { $card ->
     [the_fool] 0: The Fool
     [the_magician] I: The Magician
     [the_high_priestess] II: The High Priestess
@@ -24,9 +24,10 @@ tarot-card-name = { $card ->
     [the_sun] XIX: The Sun
     [judgement] XX: Judgement
     [the_world] XXI: The World
-   *[invalid] !!INVALID!!
+   *[other] {$card}
 }
 
+tarot-card-name = {$card}
 tarot-card-desc = { $id ->
     [the_fool] A traveler foolishly stepping off a cliff...
     [the_magician] A pointy hatted man stands behind a table with a wand in hand...
@@ -54,4 +55,3 @@ tarot-card-desc = { $id ->
 }
 
 tarot-card = Tarot Card
-skibidi-ohio = 6-7

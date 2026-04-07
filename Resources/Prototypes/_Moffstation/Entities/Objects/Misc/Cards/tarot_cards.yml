@@ -37,53 +37,33 @@
   cardDescLoc: tarot-card-desc
   cardReverseNameLoc: tarot-card-name-reverse
   cardReverseDescLoc: tarot-card-desc-reverse
-  suitLoc: "6-7"      # suitLoc and cardValueLoc are required even if you don't use them.
-  cardValueLoc: tarot-card
+  suitLoc: "6-7"      # suitLoc is required even if you don't use it.
+  cardValueLoc: tarot-card-value-name
+  defaultObverseName: tarot-card
   commonObverseLayers:
   - state: background_gold
   defaultObverseLayerState: "{card}"
   cards:
   - id: "the_fool"
-    nameLoc: tarot-card
+    obverseName: tarot-card
   - id: "the_magician"
-    nameLoc: tarot-card
   - id: "the_high_priestess"
-    nameLoc: tarot-card
   - id: "the_empress"
-    nameLoc: tarot-card
   - id: "the_emperor"
-    nameLoc: tarot-card
   - id: "the_hierophant"
-    nameLoc: tarot-card
   - id: "the_lovers"
-    nameLoc: tarot-card
   - id: "the_chariot"
-    nameLoc: tarot-card
   - id: "strength"
-    nameLoc: tarot-card
   - id: "the_hermit"
-    nameLoc: tarot-card
   - id: "the_wheel_of_fortune"
-    nameLoc: tarot-card
   - id: "justice"
-    nameLoc: tarot-card
   - id: "the_hanged_man"
-    nameLoc: tarot-card
   - id: "death"
-    nameLoc: tarot-card
   - id: "temperance"
-    nameLoc: tarot-card
   - id: "the_devil"
-    nameLoc: tarot-card
   - id: "the_tower"
-    nameLoc: tarot-card
   - id: "the_star"
-    nameLoc: tarot-card
   - id: "the_moon"
-    nameLoc: tarot-card
   - id: "the_sun"
-    nameLoc: tarot-card
   - id: "judgement"
-    nameLoc: tarot-card
   - id: "the_world"
-    nameLoc: tarot-card
