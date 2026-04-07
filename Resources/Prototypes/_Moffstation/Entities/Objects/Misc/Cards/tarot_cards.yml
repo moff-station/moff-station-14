@@ -1,4 +1,3 @@
-# Tarot cards
 - type: entity
   parent: BasePlayingCardDeckBox
   id: TarotCardDeckBox
@@ -45,7 +44,6 @@
   defaultObverseLayerState: "{card}"
   cards:
   - id: "the_fool"
-    obverseName: tarot-card
   - id: "the_magician"
   - id: "the_high_priestess"
   - id: "the_empress"
