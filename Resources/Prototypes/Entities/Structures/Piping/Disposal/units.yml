@@ -86,9 +86,9 @@
   - type: DeviceLinkSink
     ports:
       - Flush
-      - Autoflush On
-      - Autoflush Off
-      - Autoflush Toggle
+      - AutoFlushOn
+      - AutoFlushOff
+      - AutoFlushToggle
   # Moffstation - End
 
 - type: entity

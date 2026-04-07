@@ -34,3 +34,23 @@
   id: FaxCopy
   name: signal-port-name-fax-copy
   description: signal-port-description-fax-copy
+
+- type: sinkPort
+  id: Flush
+  name: signal-port-name-flush
+  description: signal-port-description-flush
+
+- type: sinkPort
+  id: AutoFlushOn
+  name: signal-port-name-autoflush-on
+  description: signal-port-description-autoflush-on
+
+- type: sinkPort
+  id: AutoFlushOff
+  name: signal-port-name-autoflush-off
+  description: signal-port-description-autoflush-off
+
+- type: sinkPort
+  id: AutoFlushToggle
+  name: signal-port-name-autoflush-toggle
+  description: signal-port-description-autoflush-toggle

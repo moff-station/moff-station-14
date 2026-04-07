@@ -4,6 +4,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.Containers;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking.Events; // Moffstation - Signal network for disposal units
 using Content.Shared.Disposal.Components;
 using Content.Shared.Disposal.Unit.Events;
 using Content.Shared.DoAfter;
@@ -94,7 +95,24 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
 
         SubscribeLocalEvent<DisposalUnitComponent, GetDumpableVerbEvent>(OnGetDumpableVerb);
         SubscribeLocalEvent<DisposalUnitComponent, DumpEvent>(OnDump);
+
+        SubscribeLocalEvent<DisposalUnitComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Signal network for disposal units
     }
+
+    /* Moffstation - Signal network for disposal units */
+    private void OnSignalReceived(EntityUid uid, DisposalUnitComponent component, ref SignalReceivedEvent args)
+    {
+        if (args.Port == component.FlushPort)
+            ToggleEngage(uid, component);
+        else if (args.Port == component.AutoFlushOnPort) // doubt here : else if or if in case we got an input for 2 outputs ?
+            component.AutomaticEngage = true;
+        else if (args.Port == component.AutoFlushOffPort)
+            component.AutomaticEngage = false;
+        else if (args.Port == component.AutoFlushTogglePort)
+            component.AutomaticEngage = !component.AutomaticEngage;
+    }
+    /* Moffstation - End */
+
 
     private void AddDisposalAltVerbs(Entity<DisposalUnitComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {

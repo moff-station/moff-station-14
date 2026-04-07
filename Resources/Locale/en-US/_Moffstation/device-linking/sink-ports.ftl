@@ -14,3 +14,12 @@ signal-port-name-fax-copy = Print Copy
 signal-port-description-fax-copy = Prints a copy of the document currently loaded in the fax machine.
 signal-port-name-fax-send = Send Fax
 signal-port-description-fax-send = Sends a copy of the document currently loaded in the fax machine to the currently selected recipient.
+
+signal-port-name-flush = Flush
+signal-port-description-flush = activate the flushing mechanism.
+signal-port-name-autoflush-on = Autoflush On
+signal-port-description-autoflush-on = enable automatic flushing.
+signal-port-name-autoflush-off = Autoflush Off
+signal-port-description-autoflush-off = disable automatic flushing.
+signal-port-name-autoflush-toggle = Toggle Autoflush
+signal-port-description-autoflush-toggle = toggle automatic flushing.
