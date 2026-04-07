@@ -120,19 +120,19 @@ public sealed partial class DisposalUnitComponent : Component
     public TimeSpan? NextFlush;
 
 
-    /* Moffstation - Signal network for disposal units */
+    // Moffstation - Begin - Signal network for disposal units
     [DataField]
-    public ProtoId<SinkPortPrototype> FlushPort = "Flush";
+    public ProtoId<SinkPortPrototype> FlushPort = "DisposalUnitFlush";
 
     [DataField]
-    public ProtoId<SinkPortPrototype> AutoFlushOnPort = "AutoFlushOn";
+    public ProtoId<SinkPortPrototype> AutoFlushOnPort = "DisposalUnitAutoFlushOn";
 
     [DataField]
-    public ProtoId<SinkPortPrototype> AutoFlushOffPort = "AutoFlushOff";
+    public ProtoId<SinkPortPrototype> AutoFlushOffPort = "DisposalUnitAutoFlushOff";
 
     [DataField]
-    public ProtoId<SinkPortPrototype> AutoFlushTogglePort = "AutoFlushToggle";
-    /* Moffstation - End */
+    public ProtoId<SinkPortPrototype> AutoFlushTogglePort = "DisposalUnitAutoFlushToggle";
+    // Moffstation - End
 
     [Serializable, NetSerializable]
     public enum Visuals : byte

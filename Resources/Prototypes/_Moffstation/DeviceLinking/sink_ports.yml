@@ -36,21 +36,21 @@
   description: signal-port-description-fax-copy
 
 - type: sinkPort
-  id: Flush
-  name: signal-port-name-flush
-  description: signal-port-description-flush
+  id: DisposalUnitFlush
+  name: signal-port-name-disposal-unit-flush
+  description: signal-port-description-disposal-flush
 
 - type: sinkPort
-  id: AutoFlushOn
-  name: signal-port-name-autoflush-on
-  description: signal-port-description-autoflush-on
+  id: DisposalUnitAutoFlushOn
+  name: signal-port-name-disposal-unit-autoflush-on
+  description: signal-port-description-disposal-unit-autoflush-on
 
 - type: sinkPort
-  id: AutoFlushOff
-  name: signal-port-name-autoflush-off
-  description: signal-port-description-autoflush-off
+  id: DisposalUnitAutoFlushOff
+  name: signal-port-name-disposal-unit-autoflush-off
+  description: signal-port-description-disposal-unit-autoflush-off
 
 - type: sinkPort
-  id: AutoFlushToggle
-  name: signal-port-name-autoflush-toggle
-  description: signal-port-description-autoflush-toggle
+  id: DisposalUnitAutoFlushToggle
+  name: signal-port-name-disposal-unit-autoflush-toggle
+  description: signal-port-description-disposal-unit-autoflush-toggle

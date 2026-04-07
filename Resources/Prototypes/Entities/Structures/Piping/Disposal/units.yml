@@ -85,10 +85,10 @@
     range: 200
   - type: DeviceLinkSink
     ports:
-      - Flush
-      - AutoFlushOn
-      - AutoFlushOff
-      - AutoFlushToggle
+    - DisposalUnitFlush
+    - DisposalUnitAutoFlushOn
+    - DisposalUnitAutoFlushOff
+    - DisposalUnitAutoFlushToggle
   # Moffstation - End
 
 - type: entity

@@ -99,20 +99,20 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
         SubscribeLocalEvent<DisposalUnitComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Signal network for disposal units
     }
 
-    /* Moffstation - Signal network for disposal units */
-    private void OnSignalReceived(EntityUid uid, DisposalUnitComponent component, ref SignalReceivedEvent args)
+    // Moffstation - Begin - Signal network for disposal units
+    private void OnSignalReceived(Entity<DisposalUnitComponent> entity, ref SignalReceivedEvent args)
     {
-        if (args.Port == component.FlushPort)
-            ToggleEngage(uid, component);
-        else if (args.Port == component.AutoFlushOnPort)
-            component.AutomaticEngage = true;
-        else if (args.Port == component.AutoFlushOffPort)
-            component.AutomaticEngage = false;
-        else if (args.Port == component.AutoFlushTogglePort)
-            component.AutomaticEngage = !component.AutomaticEngage;
+        if (args.Port == entity.Comp.FlushPort)
+            ToggleEngage(entity.Owner, entity.Comp);
+        else if (args.Port == entity.Comp.AutoFlushOnPort)
+            entity.Comp.AutomaticEngage = true;
+        else if (args.Port == entity.Comp.AutoFlushOffPort)
+            entity.Comp.AutomaticEngage = false;
+        else if (args.Port == entity.Comp.AutoFlushTogglePort)
+            entity.Comp.AutomaticEngage = !entity.Comp.AutomaticEngage;
+        Dirty(entity);
     }
-    /* Moffstation - End */
-
+    // Moffstation - End
 
     private void AddDisposalAltVerbs(Entity<DisposalUnitComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
