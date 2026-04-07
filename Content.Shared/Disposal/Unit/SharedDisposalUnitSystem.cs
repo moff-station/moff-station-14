@@ -104,7 +104,7 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
     {
         if (args.Port == component.FlushPort)
             ToggleEngage(uid, component);
-        else if (args.Port == component.AutoFlushOnPort) // doubt here : else if or if in case we got an input for 2 outputs ?
+        else if (args.Port == component.AutoFlushOnPort)
             component.AutomaticEngage = true;
         else if (args.Port == component.AutoFlushOffPort)
             component.AutomaticEngage = false;
