@@ -308,13 +308,12 @@ public abstract partial class SharedPlayingCardsSystem
 
         var idAndCard = new List<(string, object)>
         {
-        ("id", data.Card.Id.ToLowerInvariant()),
-        ("card", Loc.GetString(deck.CardValueLoc, ("card", data.Card.Id.ToLowerInvariant()))),
+            ("id", data.Card.Id.ToLowerInvariant()),
+            ("card", Loc.GetString(deck.CardValueLoc, ("card", data.Card.Id.ToLowerInvariant()))),
         };
         var idCardAndSuit = suit is null
-        ? idAndCard
-        : idAndCard.Concat([("suit", Loc.GetString(deck.SuitLoc, ("suit", suit.ID.ToLowerInvariant())))]);
-
+            ? idAndCard
+            : idAndCard.Concat([("suit", Loc.GetString(deck.SuitLoc, ("suit", suit.ID.ToLowerInvariant())))]);
         var locArgs = idCardAndSuit.ToArray();
 
         comp.ObverseName = Loc.GetString(data.Card.NameLoc ?? deck.CardNameLoc, locArgs);
