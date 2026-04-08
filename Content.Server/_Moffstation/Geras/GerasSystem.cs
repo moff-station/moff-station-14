@@ -4,10 +4,7 @@ using Content.Server.Actions;
 using Content.Server.Body;
 using Content.Server.Popups;
 using Content.Shared._Moffstation.Geras;
-using Content.Shared._Moffstation.Storage;
-using Content.Shared.Body;
 using Content.Shared.Humanoid;
-using Content.Shared.Storage;
 using Robust.Shared.Player;
 
 namespace Content.Server._Moffstation.Geras;
@@ -44,18 +41,20 @@ public sealed class GerasSystem : SharedGerasSystem
         if (HasComp<ZombieComponent>(uid))
             return; // i hate zomber.
 
-        var ent = _polymorphSystem.PolymorphEntity(uid, component.GerasPolymorphId);
-
-        if (!ent.HasValue)
+        if (_polymorphSystem.PolymorphEntity(uid, component.GerasPolymorphId) is not { } ent)
             return;
 
         if (TryComp<HumanoidProfileComponent>(uid, out var profile))
         {
-            _bodySystem.ApplyProfile((EntityUid)ent, new() { SkinColor = profile.SkinColor });
+            _bodySystem.ApplyProfile(ent, new() { SkinColor = profile.SkinColor });
         }
 
-        _popupSystem.PopupEntity(Loc.GetString("geras-popup-morph-message-others", ("entity", ent.Value)), ent.Value, Filter.PvsExcept(ent.Value), true);
-        _popupSystem.PopupEntity(Loc.GetString("geras-popup-morph-message-user"), ent.Value, ent.Value);
+        _popupSystem.PopupPredicted(
+            Loc.GetString("geras-popup-morph-message-user"),
+            Loc.GetString("geras-popup-morph-message-others", ("entity", ent)),
+            ent,
+            ent
+        );
 
         args.Handled = true;
     }

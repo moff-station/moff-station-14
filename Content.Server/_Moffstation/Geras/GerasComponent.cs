@@ -10,7 +10,8 @@ namespace Content.Server._Moffstation.Geras;
 [RegisterComponent]
 public sealed partial class GerasComponent : Component
 {
-    [DataField] public ProtoId<PolymorphPrototype> GerasPolymorphId = "SlimeMorphGeras";
+    [DataField]
+    public ProtoId<PolymorphPrototype> GerasPolymorphId = "SlimeMorphGeras";
 
     [DataField] public EntProtoId GerasAction = "ActionMorphGeras";
 
