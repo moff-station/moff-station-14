@@ -34,7 +34,7 @@ public sealed partial class HumanoidProfileComponent : Component
     public float Height = 1f;
     // Moffstation End
 
-    //Moffstation Start - Revert Geras Removal
+    //Moffstation Start - Re-add Geras
     //Cent was right, this is basically the only half-decent way to make this available
     //TODO - refactor geras to make one entity at component init and store it for swapping
     [DataField, AutoNetworkedField]

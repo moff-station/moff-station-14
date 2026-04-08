@@ -46,7 +46,7 @@ public sealed partial class PolymorphSystem : EntitySystem
     [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedStorageSystem _storage = default!;//Moffstation - Revert Geras Removal
+    [Dependency] private readonly SharedStorageSystem _storage = default!;//Moffstation - Re-add Geras
 
     private const string RevertPolymorphId = "ActionRevertPolymorph";
 
@@ -261,7 +261,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             }
         }
 
-        //Moffstation - Revert Geras Removal - Begin
+        //Moffstation - Rev-add Geras - Begin
         if (configuration.TransferStorage)
         {
             StorageComponent? parentStorage;
@@ -377,7 +377,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             }
         }
 
-        //Moffstation - Revert Geras Removal - Begin
+        //Moffstation - Re-add Geras - Begin
         if (component.Configuration.TransferStorage)
         {
             StorageComponent? parentStorage;
