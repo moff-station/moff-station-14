@@ -17,7 +17,7 @@
       - !type:ModifyStatusEffect
         conditions:
         - !type:ReagentCondition
-          reagent: Nocturine
+          reagent: NocturineXenoborg
           min: 8
         effectProto: StatusEffectForcedSleeping
         time: 9
