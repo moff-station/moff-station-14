@@ -51,6 +51,7 @@ public sealed class GerasSystem : EntitySystem
         SubscribeLocalEvent<GerasComponent, EntityZombifiedEvent>(OnZombification);
         SubscribeLocalEvent<GerasComponent, GerasVisualInitEvent>(OnGerasVisualInit);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+        Subs.RegisterUnsubscription(OnSystemDeleted);
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent _)
@@ -217,6 +218,11 @@ public sealed class GerasSystem : EntitySystem
     private void OnRemoveGeras(EntityUid uid, GerasComponent component, ComponentShutdown args)
     {
         QueueDel(component.Geras);
+    }
+
+    private void OnSystemDeleted()
+    {
+        Del(PausedMap);
     }
 }
 
