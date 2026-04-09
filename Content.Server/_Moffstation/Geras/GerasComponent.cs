@@ -11,10 +11,6 @@ namespace Content.Server._Moffstation.Geras;
 [RegisterComponent]
 public sealed partial class GerasComponent : Component
 {
-
-    [DataField]
-    public ProtoId<PolymorphPrototype> GerasPolymorphId = "SlimeMorphGeras";
-
     /// <summary>
     /// The prototype of the mob to transform into
     /// </summary>

@@ -189,6 +189,9 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
     public void TransferImplants(Entity<ImplantedComponent?> source, EntityUid target)
     {
 
+        if (!HasComp<ImplantedComponent>(source))
+            return;
+
         if (!Resolve(source, ref source.Comp))
             return;
 
