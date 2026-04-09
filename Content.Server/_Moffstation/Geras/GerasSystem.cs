@@ -40,7 +40,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
 
-    public EntityUid? PausedMap { get; private set; }
+    private static EntityUid? PausedMap { get; set; }
 
     /// <inheritdoc/>
     public override void Initialize()
