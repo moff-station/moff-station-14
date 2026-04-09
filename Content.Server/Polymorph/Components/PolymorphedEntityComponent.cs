@@ -33,11 +33,6 @@ public sealed partial class PolymorphedEntityComponent : Component
     [DataField]
     public float Time;
 
-    //Moffstation - Revert Geras Removal - Begin
-    [DataField]
-    public bool TransferStorage;
-    //Moffstation - End
-
     [DataField]
     public EntityUid? Action;
 }
