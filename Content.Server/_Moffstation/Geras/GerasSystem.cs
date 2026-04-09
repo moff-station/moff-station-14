@@ -46,11 +46,11 @@ public sealed class GerasSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<GerasComponent, MorphGeras>(OnMorphIntoGeras);
+        SubscribeLocalEvent<GerasComponent, ComponentShutdown>(OnRemoveGeras);
         SubscribeLocalEvent<GerasComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<GerasComponent, EntityZombifiedEvent>(OnZombification);
         SubscribeLocalEvent<GerasComponent, GerasVisualInitEvent>(OnGerasVisualInit);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
-
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent _)
@@ -212,6 +212,12 @@ public sealed class GerasSystem : EntitySystem
         if (TryComp<HumanoidProfileComponent>(uid, out var profile))
             _bodySystem.ApplyProfile(geras, new() { SkinColor = profile.SkinColor });
         uid.Comp.VisualsLoaded = true;
+    }
+
+    private void OnRemoveGeras(EntityUid uid, GerasComponent component, ComponentShutdown args)
+    {
+        if(component.Geras.HasValue)
+            RaiseLocalEvent(component.Geras.Value, args);
     }
 }
 
