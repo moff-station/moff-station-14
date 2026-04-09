@@ -40,7 +40,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
 
-    private static EntityUid? PausedMap { get; set; }
+    private EntityUid? PausedMap { get; set; }
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -51,12 +51,11 @@ public sealed class GerasSystem : EntitySystem
         SubscribeLocalEvent<GerasComponent, EntityZombifiedEvent>(OnZombification);
         SubscribeLocalEvent<GerasComponent, GerasVisualInitEvent>(OnGerasVisualInit);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
-        Subs.RegisterUnsubscription(OnSystemDeleted);
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent _)
     {
-        if (PausedMap == null || !Exists(PausedMap))
+        if (!(PausedMap.HasValue && Exists(PausedMap)))
             return;
 
         Del(PausedMap.Value);
@@ -218,14 +217,6 @@ public sealed class GerasSystem : EntitySystem
     private void OnRemoveGeras(EntityUid uid, GerasComponent component, ComponentShutdown args)
     {
         QueueDel(component.Geras);
-    }
-
-    private void OnSystemDeleted()
-    {
-        if (PausedMap == null || !Exists(PausedMap))
-            return;
-
-        Del(PausedMap.Value);
     }
 }
 
