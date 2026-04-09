@@ -222,7 +222,10 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnSystemDeleted()
     {
-        Del(PausedMap);
+        if (PausedMap == null || !Exists(PausedMap))
+            return;
+
+        Del(PausedMap.Value);
     }
 }
 
