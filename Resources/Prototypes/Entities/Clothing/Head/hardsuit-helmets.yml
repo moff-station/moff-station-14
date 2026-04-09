@@ -1247,7 +1247,7 @@
 #MISC. HARDSUITS
 #Clown Hardsuit
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSecurity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ] # Moffstation
   id: ClothingHeadHelmetHardsuitClown
   name: clown hardsuit helmet
   description: A clown hardsuit helmet.
@@ -1259,10 +1259,29 @@
     sprite: Clothing/Head/Hardsuits/clown.rsi
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Effects/Emotes/parp1.ogg
+# Moffstation - Start
+  - type: PointLight
+    radius: 3.5
+    energy: 3
+    color: khaki
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+# Moffstation - End
 
 #Mime Hardsuit
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSecurity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ] # Moffstation
   id: ClothingHeadHelmetHardsuitMime
   name: mime hardsuit helmet
   description: A mime hardsuit helmet.
@@ -1272,6 +1291,25 @@
     sprite: Clothing/Head/Hardsuits/mime.rsi
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/mime.rsi
+# Moffstation - Start
+  - type: PointLight
+    radius: 3.5
+    energy: 3
+    color: khaki
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+# Moffstation - End
 
 #Santas Hardsuit
 - type: entity

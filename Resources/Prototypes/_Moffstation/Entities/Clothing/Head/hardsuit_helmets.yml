@@ -1,6 +1,6 @@
 ﻿#Ranger Hardsuit
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSecurity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitRanger
   name: ranger hardsuit helmet
   description: A security helmet that offers supreme views of the vacuum of space.
@@ -9,6 +9,23 @@
     sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hardsuits/security-ranger.rsi
+  - type: PointLight
+    radius: 3.5
+    energy: 3
+    color: khaki
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: Tag
+    tags:
+    - WhitelistChameleon
 
 #Blackbeard Hardsuit
 - type: entity
