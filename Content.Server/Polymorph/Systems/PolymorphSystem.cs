@@ -16,8 +16,6 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition;
 using Content.Shared.Polymorph;
 using Content.Shared.Popups;
-using Content.Shared.Storage;//Moffstation - Revert Geras Removal
-using Content.Shared.Storage.EntitySystems;//Moffstation - Revert Geras Removal
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
@@ -46,7 +44,6 @@ public sealed partial class PolymorphSystem : EntitySystem
     [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedStorageSystem _storage = default!;//Moffstation - Re-add Geras
 
     private const string RevertPolymorphId = "ActionRevertPolymorph";
 
@@ -261,27 +258,6 @@ public sealed partial class PolymorphSystem : EntitySystem
             }
         }
 
-        //Moffstation - Rev-add Geras - Begin
-        if (configuration.TransferStorage)
-        {
-            StorageComponent? parentStorage;
-            StorageComponent? childStorage;
-            if (TryComp<StorageComponent>(uid, out parentStorage) && TryComp<StorageComponent>(child, out childStorage))
-            {
-                List<EntityUid> items = new List<EntityUid>();
-                foreach(KeyValuePair<EntityUid, ItemStorageLocation> i in parentStorage.StoredItems)
-                {
-                    items.Add(i.Key);
-                }
-
-                foreach (EntityUid i in items)
-                {
-                    _storage.InsertAt(child, i, parentStorage.StoredItems[i], out _, uid, playSound: false);
-                }
-            }
-        }
-        //Moffstation - End
-
         if (configuration.TransferName && TryComp(uid, out MetaDataComponent? targetMeta))
             _metaData.SetEntityName(child, targetMeta.EntityName);
 
@@ -377,26 +353,6 @@ public sealed partial class PolymorphSystem : EntitySystem
             }
         }
 
-        //Moffstation - Re-add Geras - Begin
-        if (component.Configuration.TransferStorage)
-        {
-            StorageComponent? parentStorage;
-            StorageComponent? childStorage;
-            if (TryComp<StorageComponent>(parent, out parentStorage) && TryComp<StorageComponent>(uid, out childStorage))
-            {
-                List<EntityUid> items = new List<EntityUid>();
-                foreach(KeyValuePair<EntityUid, ItemStorageLocation> i in childStorage.StoredItems)
-                {
-                    items.Add(i.Key);
-                }
-
-                foreach (EntityUid i in items)
-                {
-                    _storage.InsertAt(parent, i, childStorage.StoredItems[i], out _, uid, playSound: false);
-                }
-            }
-        }
-        //Moffstation - End
 
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
             _mindSystem.TransferTo(mindId, parent, mind: mind);

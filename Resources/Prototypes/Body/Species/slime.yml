@@ -114,7 +114,10 @@
       Unsexed: MaleSlime
   - type: Damageable
     damageModifierSet: Slime
-  - type: Geras #Moffstation - Revert Geras Removal
+    #Moffstation - Re-add Geras - Begin
+  - type: Geras
+    entity: MobSlimesGeras
+    #Moffstation - End
   - type: PassiveDamage # Around 8 damage a minute healed
     allowedStates:
     - Alive

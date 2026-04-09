@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Actions;
 using Content.Shared.Implants.Components;
 using Robust.Shared.Containers;
@@ -157,6 +158,48 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
 
         _container.CleanContainer(target.Comp.ImplantContainer);
     }
+
+    //Moffstation - Re-add Geras - Begin
+    /// <summary>
+    /// Removes an implant from one entity and give it to another
+    /// </summary>
+    /// <param name="source">The entity to have its implant taken</param>
+    /// <param name="target">The entity to gain the implant</param>
+    /// <param name="implant">The uid of the implant being moved</param>
+    public void TransferImplant(Entity<ImplantedComponent?> source, EntityUid target, Entity<SubdermalImplantComponent> implant)
+    {
+        if (!Resolve(source, ref source.Comp))
+            return;
+
+        _container.Remove(implant.Owner, source.Comp.ImplantContainer);
+
+        //If the target doesn't have the implanted component, add it.
+        var implantedComp = EnsureComp<ImplantedComponent>(target);
+
+        implant.Comp.ImplantedEntity = target;
+        _container.Insert(implant.Owner, implantedComp.ImplantContainer);
+
+    }
+
+    /// <summary>
+    /// Removes all implants from one entity and gives them to another
+    /// </summary>
+    /// <param name="source">The entity to have its implants removes</param>
+    /// <param name="target">The entity to gain the implants</param>
+    public void TransferImplants(Entity<ImplantedComponent?> source, EntityUid target)
+    {
+
+        if (!Resolve(source, ref source.Comp))
+            return;
+
+        foreach (var implant in source.Comp.ImplantContainer.ContainedEntities.ToList())
+        {
+            if(TryComp<SubdermalImplantComponent>(implant, out var implantComp))
+                TransferImplant(source, target, (implant, implantComp));
+        }
+
+    }
+    //Moffstation - End
 }
 
 /// <summary>

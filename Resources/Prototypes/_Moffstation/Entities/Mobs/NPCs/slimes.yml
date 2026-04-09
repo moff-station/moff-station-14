@@ -20,7 +20,7 @@
   - type: Item
     size: Huge
   - type: Sprite
-    color: "#FFFFFFAF"
+    color: "#B8B8B8AF"
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
       state: blue_adult_slime
@@ -57,17 +57,18 @@
             state: head
   - type: UserInterface
     interfaces:
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
+      enum.HumanoidMarkingModifierKey.Key:
+        type: HumanoidMarkingModifierBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
         ents: []
   - type: Storage
     clickInsert: false
-    openOnActivate: false
     grid:
     - 0,0,1,2
     maxItemSize: Large
@@ -81,9 +82,20 @@
       Hand:
         location: Left
   - type: ComplexInteraction
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+    allowedEmotes: [ 'Squish' ]
+  - type: Emoting
+  - type: Vocal
+    sounds:
+      Male: MaleSlime
+      Female: FemaleSlime
+      Unsexed: MaleSlime
   - type: Stripping
   - type: Puller
   - type: Cuffable
+  - type: Geras
   - type: EntityTableContainerFill
     containers:
       body_organs: !type:AllSelector

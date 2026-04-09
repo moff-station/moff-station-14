@@ -81,14 +81,6 @@ public sealed partial record PolymorphConfiguration
     [DataField(serverOnly: true)]
     public bool TransferName;
 
-    //Moffstation - Revert Geras Removal - Begin
-    ///<summary>
-    /// Whether or not to transfer items in the entity's storage to the polymorph and back (for geras)
-    /// </summary>
-    [DataField(serverOnly: true)]
-    public bool TransferStorage;
-    //Moffstation - End
-
     /// <summary>
     /// Whether or not the entity transfers its hair, skin color, hair color, etc.
     /// </summary>
