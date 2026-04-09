@@ -216,8 +216,7 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnRemoveGeras(EntityUid uid, GerasComponent component, ComponentShutdown args)
     {
-        if(component.Geras.HasValue)
-            RaiseLocalEvent(component.Geras.Value, args);
+        QueueDel(component.Geras);
     }
 }
 
