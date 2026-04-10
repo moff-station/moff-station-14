@@ -11,7 +11,7 @@
   parent: JobIcon
   id: JobIconCargoTechnician
   icon:
-    sprite: &icon-rsi /Textures/Interface/Misc/job_icons.rsi
+    sprite: &icon-rsi /Textures/_Moffstation/Interface/Misc/job_icons.rsi # Moffstation
     state: CargoTechnician
   jobName: job-name-cargotech
 
