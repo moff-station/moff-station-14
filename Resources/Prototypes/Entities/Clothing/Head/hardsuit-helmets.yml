@@ -388,7 +388,7 @@
 #Security Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitSecurity
+  id: ClothingHeadHelmetHardsuitSecurityUpstream # Moffstation
   name: security hardsuit helmet
   description: Armored hardsuit helmet for security needs.
   components:
@@ -485,7 +485,7 @@
 #Warden's Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitWarden
+  id: ClothingHeadHelmetHardsuitWardenUpstream # Moffstation
   name: warden's hardsuit helmet
   description: A modified riot helmet. Oddly comfortable.
   components:
@@ -687,7 +687,7 @@
 #Head of Security's hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitSecurityRed
+  id: ClothingHeadHelmetHardsuitSecurityRedUpstream # Moffstation
   name: head of security's hardsuit helmet
   description: Security hardsuit helmet with the latest top secret NT-HUD software. Belongs to the HoS.
   components:
