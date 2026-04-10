@@ -248,7 +248,7 @@
     sprintModifier: 0.75
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitSecurity
+    clothingPrototype: ClothingHeadHelmetHardsuitSecurityMoff
   - type: Tag
     tags:
     - Hardsuit
@@ -310,7 +310,7 @@
     sprintModifier: 0.7
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitWarden
+    clothingPrototype: ClothingHeadHelmetHardsuitWardenMoff
 
 #Captain's Hardsuit
 - type: entity
@@ -492,7 +492,7 @@
     sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitSecurityRed
+    clothingPrototype: ClothingHeadHelmetHardsuitSecurityRedMoff
 
 #Luxury Mining Hardsuit
 - type: entity
