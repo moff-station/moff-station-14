@@ -55,7 +55,7 @@
   id: FloorSteelCheckerDark
   parent: BaseStationTile
   name: tiles-steel-floor-checker-dark
-  sprite: /Textures/Tiles/checker_dark.png
+  sprite: /Textures/_Moffstation/Tiles/checker_dark.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -237,7 +237,7 @@
   id: FloorWood
   parent: BaseStationTile
   name: tiles-wood
-  sprite: /Textures/Tiles/wood.png
+  sprite: /Textures/_Moffstation/Tiles/wood.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -775,7 +775,7 @@
   id: FloorHydro
   parent: BaseStationTile
   name: tiles-hydro-floor
-  sprite: /Textures/Tiles/hydro.png
+  sprite: /Textures/_Moffstation/Tiles/hydro.png # Moffstation
   itemDrop: FloorTileItemHydro
 
 - type: tile
@@ -795,14 +795,14 @@
   id: FloorClown
   parent: BaseStationTile
   name: tiles-clown-floor
-  sprite: /Textures/Tiles/clown.png
+  sprite: /Textures/_Moffstation/Tiles/clown.png # Moffstation
   itemDrop: FloorTileItemClown
 
 - type: tile
   id: FloorMime
   parent: BaseStationTile
   name: tiles-mime-floor
-  sprite: /Textures/Tiles/mime.png
+  sprite: /Textures/_Moffstation/Tiles/mime.png # Moffstation
   itemDrop: FloorTileItemMime
 
 - type: tile
@@ -990,7 +990,7 @@
   id: FloorArcadeBlue2
   parent: BaseStationTile
   name: tiles-blue-arcade-floor
-  sprite: /Textures/Tiles/arcadeblue2.png
+  sprite: /Textures/_Moffstation/Tiles/arcadeblue2.png #Moffstation
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
@@ -1656,7 +1656,7 @@
   id: FloorWoodTile
   parent: BaseStationTile
   name: tiles-wood2
-  sprite: /Textures/Tiles/wood_tile.png
+  sprite: /Textures/_Moffstation/Tiles/wood_tile.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -1673,7 +1673,7 @@
   id: FloorBrokenWood
   parent: BaseStationTile
   name: tiles-wood3
-  sprite: /Textures/Tiles/wood_broken.png
+  sprite: /Textures/_Moffstation/Tiles/wood_broken.png # Moffstation
   variants: 7
   placementVariants:
   - 1.0
