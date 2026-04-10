@@ -488,7 +488,10 @@
 #Warden's Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitWardenUpstream # Moffstation
+  # Moffstation - start - Namespaced
+  id: ClothingHeadHelmetHardsuitWardenUpstream
+  abstract: true
+  # Moffstation - end
   name: warden's hardsuit helmet
   description: A modified riot helmet. Oddly comfortable.
   components:
