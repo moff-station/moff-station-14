@@ -658,7 +658,17 @@
   id: FloorLino
   parent: BaseStationTile
   name: tiles-linoleum-floor
-  sprite: /Textures/Tiles/lino.png
+  # Moffstation - Start - New Tiles
+  sprite: /Textures/_Moffstation/Tiles/lino.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Moffstation - End
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemLino
@@ -1014,7 +1024,7 @@
   id: FloorEighties
   parent: BaseStationTile
   name: tiles-eighties-floor
-  sprite: /Textures/Tiles/eighties.png
+  sprite: /Textures/_Moffstation/Tiles/eighties.png # Moffstation
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
