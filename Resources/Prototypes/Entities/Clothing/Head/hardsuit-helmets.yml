@@ -388,7 +388,10 @@
 #Security Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitSecurityUpstream # Moffstation
+  # Moffstation - start - Namespaced
+  id: ClothingHeadHelmetHardsuitSecurityUpstream
+  abstract: true
+  # Moffstation - end
   name: security hardsuit helmet
   description: Armored hardsuit helmet for security needs.
   components:
