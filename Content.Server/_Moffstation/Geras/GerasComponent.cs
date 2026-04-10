@@ -20,6 +20,8 @@ public sealed partial class GerasComponent : Component
 
     [DataField] public EntityUid? GerasActionEntity;
 
+    public EntityUid StorageMap;
+
     /// <summary>
     /// The entity that the entity will transform into on transforming.
     /// </summary>

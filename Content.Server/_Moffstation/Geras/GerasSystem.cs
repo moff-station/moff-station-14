@@ -40,39 +40,21 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
 
-    private EntityUid? PausedMap { get; set; }
 
     /// <inheritdoc/>
     public override void Initialize()
     {
+        SubscribeLocalEvent<GerasComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<GerasComponent, MorphGeras>(OnMorphIntoGeras);
         SubscribeLocalEvent<GerasComponent, ComponentShutdown>(OnRemoveGeras);
         SubscribeLocalEvent<GerasComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<GerasComponent, EntityZombifiedEvent>(OnZombification);
         SubscribeLocalEvent<GerasComponent, GerasVisualInitEvent>(OnGerasVisualInit);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
     }
 
-    private void OnRoundRestart(RoundRestartCleanupEvent _)
+    private void OnInit(Entity<GerasComponent> ent, ref ComponentInit args)
     {
-        if (!(PausedMap.HasValue && Exists(PausedMap)))
-            return;
-
-        Del(PausedMap.Value);
-    }
-
-    /// <summary>
-    /// Used internally to ensure a paused map that stores inactive forms.
-    /// </summary>
-    private void EnsurePausedMap()
-    {
-        if (PausedMap != null && Exists(PausedMap))
-            return;
-
-        var mapUid = _map.CreateMap();
-        _metaData.SetEntityName(mapUid, Loc.GetString("geras-paused-map-name"));
-        _map.SetPaused(mapUid, true);
-        PausedMap = mapUid;
+        ent.Comp.StorageMap = _map.CreateMap(runMapInit: false);
     }
 
     private void OnZombification(EntityUid uid, GerasComponent component, EntityZombifiedEvent args)
@@ -85,23 +67,22 @@ public sealed class GerasSystem : EntitySystem
         // create the geras entity and store it
         if (component.Entity != null)
         {
-
-            EntityUid geras = Spawn(component.Entity, _transform.GetMapCoordinates(uid, Transform(uid)), rotation: _transform.GetWorldRotation(uid));
+            var geras = Spawn(component.Entity, _transform.GetMapCoordinates(uid, Transform(uid)), rotation: _transform.GetWorldRotation(uid));
             component.Geras = geras;
 
-            BanishEntity((geras, Transform(geras)));
+            //tie the created entity's geras component to the original for reverse transformation
+            var metaGerasComponent = EnsureComp<GerasComponent>(geras);
+            metaGerasComponent.Geras = uid;
+
+            BanishEntity((geras, metaGerasComponent, Transform(geras)));
 
             if (TryComp(uid, out MetaDataComponent? targetMeta))
                 _metaData.SetEntityName(geras, targetMeta.EntityName);
             if (TryComp<HumanoidProfileComponent>(uid, out var profile))
                 _bodySystem.ApplyProfile(geras, new() { SkinColor = profile.SkinColor });
 
-            //tie the created entity's geras component to the original for reverse transformation
-            var metaGeras = EnsureComp<GerasComponent>(geras);
-            metaGeras.Geras = uid;
-
             //no need to load name/color for the initial player
-            metaGeras.VisualsLoaded = true;
+            metaGerasComponent.VisualsLoaded = true;
         }
 
         // try to add geras action
@@ -115,8 +96,6 @@ public sealed class GerasSystem : EntitySystem
 
         if (!component.Geras.HasValue)
             return;
-
-
 
         var geras = component.Geras.Value;
 
@@ -144,14 +123,9 @@ public sealed class GerasSystem : EntitySystem
             return;
 
         // Swap positions of initial entity and geras
-        EnsurePausedMap();
-        if (PausedMap != null)
-        {
-            _transform.SetParent(geras, gerasTransform, playerTransform.ParentUid);
-            _transform.SetCoordinates(geras, gerasTransform, playerTransform.Coordinates, playerTransform.LocalRotation);
-
-            _transform.SetParent(uid, playerTransform, PausedMap.Value);
-        }
+        _transform.SetParent(geras, gerasTransform, playerTransform.ParentUid);
+        _transform.SetCoordinates(geras, gerasTransform, playerTransform.Coordinates, playerTransform.LocalRotation);
+        BanishEntity((uid, component, playerTransform));
 
         // Apply damage to the new form
         if (TryComp<DamageableComponent>(geras, out var damageParent) &&
@@ -173,6 +147,7 @@ public sealed class GerasSystem : EntitySystem
             }
         }
 
+        // Self explanatory
         _implantSystem.TransferImplants(uid, geras);
 
         // Transfer mind
@@ -193,12 +168,10 @@ public sealed class GerasSystem : EntitySystem
     /// <summary>
     /// Sends an entity to the void for storage
     /// </summary>
-    /// <param name="uid">the entity to be banished</param>
-    private void BanishEntity(Entity<TransformComponent> uid)
+    /// <param name="ent">the entity to be banished</param>
+    private void BanishEntity(Entity<GerasComponent, TransformComponent> ent)
     {
-        EnsurePausedMap();
-        if(PausedMap != null)
-            _transform.SetParent(uid, uid.Comp, PausedMap.Value);
+        _transform.SetParent(ent, ent.Comp2, ent.Comp1.StorageMap);
     }
 
     private void OnGerasVisualInit(Entity<GerasComponent> uid, ref GerasVisualInitEvent args)
@@ -217,6 +190,7 @@ public sealed class GerasSystem : EntitySystem
     private void OnRemoveGeras(EntityUid uid, GerasComponent component, ComponentShutdown args)
     {
         QueueDel(component.Geras);
+        QueueDel(component.StorageMap);
     }
 }
 
