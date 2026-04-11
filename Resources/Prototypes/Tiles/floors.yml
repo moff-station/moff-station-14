@@ -769,7 +769,7 @@
   id: FloorFreezer
   parent: BaseStationTile
   name: tiles-freezer
-  sprite: /Textures/Tiles/freezer.png
+  sprite: /Textures/_Moffstation/Tiles/freezer.png # Moffstation
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemFreezer
@@ -778,7 +778,7 @@
   id: FloorShowroom
   parent: BaseStationTile
   name: tiles-showroom-floor
-  sprite: /Textures/Tiles/showroom.png
+  sprite: /Textures/_Moffstation/Tiles/showroom.png # Moffstation
   itemDrop: FloorTileItemShowroom
 
 - type: tile
@@ -1182,7 +1182,7 @@
   id: FloorGold
   parent: BaseStationTile
   name: tiles-gold-tile
-  sprite: /Textures/Tiles/gold.png
+  sprite: /Textures/_Moffstation/Tiles/gold.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemGold
@@ -1191,7 +1191,7 @@
   id: FloorSilver
   parent: BaseStationTile
   name: tiles-silver-tile
-  sprite: /Textures/Tiles/silver.png
+  sprite: /Textures/_Moffstation/Tiles/silver.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemSilver
@@ -1215,7 +1215,7 @@
   id: FloorRGlass
   parent: BaseStationTile
   name: tiles-reinforced-glass-floor
-  sprite: /Textures/Tiles/rglass.png
+  sprite: /Textures/_Moffstation/Tiles/rglass.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
