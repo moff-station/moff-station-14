@@ -65,7 +65,8 @@
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
-    isImmune: true
+    durationMultiplier: 10
+    #isImmune: true
 
 - type: entity
   id: BorgChassisPirateBattery

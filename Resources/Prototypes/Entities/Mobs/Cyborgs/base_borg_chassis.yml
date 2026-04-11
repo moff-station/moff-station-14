@@ -369,7 +369,8 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
-    isImmune: true
+    durationMultiplier: 10
+    #isImmune: true
 
 - type: entity
   id: BaseBorgChassisDerelict
@@ -430,7 +431,8 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
-    isImmune: true
+    durationMultiplier: 10
+    #isImmune: true
 
 - type: entity
   parent: BaseBorgChassis
@@ -552,4 +554,5 @@
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
   - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
-    isImmune: true
+    durationMultiplier: 10
+    #isImmune: true
