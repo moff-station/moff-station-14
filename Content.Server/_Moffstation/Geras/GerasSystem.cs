@@ -1,4 +1,3 @@
-using System.Diagnostics.Tracing;
 using System.Linq;
 using Content.Shared.Zombies;
 using Content.Server.Actions;
@@ -6,15 +5,14 @@ using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
 using Content.Shared._Moffstation.Geras;
-using Content.Shared.Body;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
-using Content.Shared.GameTicking;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Implants;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Preferences;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Server.GameObjects;
@@ -39,6 +37,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly ServerInventorySystem _inventory = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
+    [Dependency] private readonly HumanoidProfileSystem _profileSystem = default!;
 
 
     /// <inheritdoc/>
@@ -99,9 +98,6 @@ public sealed class GerasSystem : EntitySystem
 
         var geras = component.Geras.Value;
 
-        // Workaround to not knowing when a character's visuals are properly loaded, this definitely happens after that
-        if(!component.VisualsLoaded)
-            RaiseLocalEvent(uid, new GerasVisualInitEvent());
 
         // Drop all inventory items
         if (_inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
@@ -182,8 +178,12 @@ public sealed class GerasSystem : EntitySystem
         var geras = uid.Comp.Geras.Value;
         if (TryComp(uid, out MetaDataComponent? targetMeta))
             _metaData.SetEntityName(geras, targetMeta.EntityName);
-        if (TryComp<HumanoidProfileComponent>(uid, out var profile))
-            _bodySystem.ApplyProfile(geras, new() { SkinColor = profile.SkinColor });
+        if (args.profile != null)
+        {
+            _bodySystem.ApplyProfile(geras, new() { SkinColor = args.profile.Appearance.SkinColor });
+            _profileSystem.ApplyProfileTo((geras, EnsureComp<HumanoidProfileComponent>(geras)), args.profile);
+        }
+
         uid.Comp.VisualsLoaded = true;
     }
 
@@ -194,4 +194,4 @@ public sealed class GerasSystem : EntitySystem
     }
 }
 
-public record struct GerasVisualInitEvent(Entity<GerasComponent> Uid);
+public record struct GerasVisualInitEvent(Entity<GerasComponent> Uid, HumanoidCharacterProfile? profile);

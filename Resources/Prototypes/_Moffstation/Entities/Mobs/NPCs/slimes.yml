@@ -20,11 +20,10 @@
   - type: Item
     size: Huge
   - type: Sprite
+    rsi: _Moffstation/Mobs/Aliens/Slimes.rsi
     color: "#B8B8B8AF"
     layers:
-    - map: [ "enum.HumanoidVisualLayers.Chest" ]
-      state: blue_adult_slime
-      shader: unshaded
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
     - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
       color: "#ffffff"
       sprite: Objects/Misc/handcuffs.rsi
@@ -35,12 +34,6 @@
     damage:
       types:
         Blunt: 4
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: blue_adult_slime
-      Dead:
-        Base: blue_adult_slime_dead
   - type: Inventory
     speciesId: slime
     templateId: gerasInventory
@@ -109,13 +102,23 @@
   parent: OrganSlimePerson
   id: OrganGerasTorso
   components:
+  - type: Appearance
   - type: Organ
     category: Torso
+  - type: MobState #functions as a tracker for the body's mobstate
   - type: Sprite
-    sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
-    state: grey_adult_slime
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
+      state: grey_adult_slime
   - type: VisualOrgan
-    layer: enum.HumanoidVisualLayers.Chest
+    layer: enum.DamageStateVisualLayers.Base
     data:
       sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
       state: grey_adult_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: grey_adult_slime
+      Dead:
+        Base: grey_adult_slime_dead

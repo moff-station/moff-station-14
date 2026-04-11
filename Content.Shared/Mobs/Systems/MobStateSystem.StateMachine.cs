@@ -1,4 +1,5 @@
-﻿using Content.Shared.Database;
+﻿using Content.Shared.Body;//Moffstation - Re-add Geras
+using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Player;
@@ -112,6 +113,11 @@ public partial class MobStateSystem
         var ev = new MobStateChangedEvent(target, component, oldState, newState, origin);
         OnStateChanged(target, component, oldState, newState);
         RaiseLocalEvent(target, ev, true);
+        //Moffstation - Re-add Geras - Begin
+        //force update the state of any organs so they display the right sprites
+        if(TryComp<BodyComponent>(target, out var body))
+            _bodySystem.RelayEvent((target, body), ref ev);
+        //Moffstation - End
         if (origin != null && HasComp<ActorComponent>(origin) && HasComp<ActorComponent>(target) && oldState < newState)
             _adminLogger.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(origin):player} caused {ToPrettyString(target):player} state to change from {oldState} to {newState}");
         else
