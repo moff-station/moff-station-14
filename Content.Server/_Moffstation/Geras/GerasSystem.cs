@@ -7,6 +7,7 @@ using Content.Server.Popups;
 using Content.Shared._Moffstation.Geras;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Implants;
@@ -16,6 +17,7 @@ using Content.Shared.Preferences;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 
 namespace Content.Server._Moffstation.Geras;
 
@@ -38,6 +40,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
     [Dependency] private readonly HumanoidProfileSystem _profileSystem = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
 
     /// <inheritdoc/>
@@ -114,6 +117,20 @@ public sealed class GerasSystem : EntitySystem
 
         var playerTransform = Transform(uid);
         var gerasTransform = Transform(geras);
+
+        // Prevent transform jank
+        if (_container.IsEntityInContainer(uid) && _container.TryGetContainingContainer(uid, out var container))
+        {
+            // If the entity is being held, make the holder drop it
+            if (HasComp<HandsComponent>(container.Owner))
+            {
+                _hands.TryDrop(container.Owner, uid);
+            }
+            else // If the entity is in any other container, put the geras in that container
+            {
+                _transform.DropNextTo(geras, uid);
+            }
+        }
 
         if (TerminatingOrDeleted(playerTransform.ParentUid))
             return;
