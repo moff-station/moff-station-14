@@ -568,8 +568,10 @@ Entries:
   id: 165
   time: '2025-05-09T19:14:45.000'
   url: https://github.com/moff-station/moff-station-14/pull/165
-- author: Increased moth speech sfx volume
-  changes: []
+- author: Nyxilath
+  changes:
+  - message: Increased moth speech sfx volume
+    type: tweak
   id: 168
   time: '2025-05-08T20:19:38.000'
   url: https://github.com/moff-station/moff-station-14/pull/168
@@ -812,7 +814,9 @@ Entries:
   time: '2025-05-29T19:57:24.000'
   url: https://github.com/moff-station/moff-station-14/pull/214
 - author: nithead10
-  changes: []
+  changes:
+  - message: Added a recipe for chicken nuggets
+    type: Add
   id: 217
   time: '2025-05-22T23:01:03.000'
   url: https://github.com/moff-station/moff-station-14/pull/217
@@ -1807,7 +1811,9 @@ Entries:
   time: '2025-08-25T15:54:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/467
 - author: Centronias
-  changes: []
+  changes:
+  - message: Added Carolyn Flett's personal item
+    type: add
   id: 469
   time: '2025-08-28T07:04:22.000'
   url: https://github.com/moff-station/moff-station-14/pull/469
@@ -2235,6 +2241,14 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/589
 - author: OnyxTheBrave
   changes: []
+  id: 593
+  time: '2025-10-01T17:56:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/593
+- author: OnyxTheBrave
+  changes:
+  - message: The Chemmaster 4000 can now switch between making pills from the internal
+      buffer or from the internal beaker)
+    type: add
   id: 593
   time: '2025-10-01T17:56:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/593
@@ -2841,6 +2855,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/805
 - author: Centronias
   changes: []
+  id: 806
+  time: '2025-12-01T21:40:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/806
+- author: Centronias
+  changes:
+  - message: Smart Fridges can now be loaded with anything edible.
+    type: tweak
   id: 806
   time: '2025-12-01T21:40:28.000'
   url: https://github.com/moff-station/moff-station-14/pull/806
@@ -3525,6 +3546,19 @@ Entries:
   id: 992
   time: '2026-01-27T18:09:15.000'
   url: https://github.com/moff-station/moff-station-14/pull/992
+- author: Centronias
+  changes:
+  - message: 'Added modular HUDs: flexible, modular eyewear which lets you put together
+      the infinity stones of eyewear.'
+    type: add
+  - message: Replaced a bunch of preexisting HUDs with modular HUDs.
+    type: tweak
+  - message: Flipped variants of HUD eye patches have been removed from loadouts.
+      Select the non-flipped one and flip it when you spawn in instead.
+    type: remove
+  id: 996
+  time: '2026-03-31T19:34:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/996
 - author: Dave
   changes:
   - message: missing sprites
@@ -4167,11 +4201,27 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1135
 - author: Sable
   changes:
+  - message: Added 11 new species based drinks!
+    type: add
+  id: 1135
+  time: '2026-03-16T20:59:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1135
+- author: Sable
+  changes:
   - message: 11 new species based drinks!
     type: add
   id: 1135
   time: '2026-03-16T20:59:39.000'
   url: https://github.com/moff-station/moff-station-14/pull/1135
+- author: Centronias
+  changes:
+  - message: Dwarves at the smallest height slider value will not get HUD icons describing
+      them dropped for no reason. (For example, the "Is Crew?" silicon HUD icon shows
+      now.)
+    type: fix
+  id: 1136
+  time: '2026-03-20T20:33:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1136
 - author: Dave
   changes:
   - message: new reporter clothing options
@@ -4181,6 +4231,25 @@ Entries:
   id: 1138
   time: '2026-03-10T21:57:33.000'
   url: https://github.com/moff-station/moff-station-14/pull/1138
+- author: Nyxilath
+  changes:
+  - message: Syndicate high command will now occasionally redspace in contraband dead
+      drops
+    type: add
+  id: 1139
+  time: '2026-03-23T17:36:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1139
+- author: Tortosaur
+  changes:
+  - message: Medical and Paramedic's belts loadouts are now more job appropiate.
+    type: tweak
+  - message: Chemists now have a belt which can hold jugs. Rejoice!
+    type: add
+  - message: Chemist Bag was moved into the ChemDrobe.
+    type: tweak
+  id: 1140
+  time: '2026-03-31T18:20:38.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1140
 - author: Nyxilath
   changes:
   - message: Initial infected now possess zombie blood.
@@ -4251,6 +4320,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1151
 - author: Nyxilath
   changes:
+  - message: Ports Set-Examine from Umbra, enabling dynamic character examine text.
+    type: add
+  id: 1152
+  time: '2026-03-21T17:49:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1152
+- author: Nyxilath
+  changes:
   - message: Feeble targets can shove other targets again.
     type: tweak
   - message: You can no longer instant cuff feeble targets.
@@ -4258,6 +4334,20 @@ Entries:
   id: 1153
   time: '2026-03-16T01:01:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1153
+- author: Tortosaur
+  changes:
+  - message: Skeletons can now drink... all over the floor.
+    type: add
+  id: 1154
+  time: '2026-03-31T18:50:44.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1154
+- author: Nyxilath
+  changes:
+  - message: AI Ionstorm shielding is now 80% thinner!
+    type: tweak
+  id: 1155
+  time: '2026-03-19T02:17:55.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1155
 - author: Centronias
   changes:
   - message: Malformed antag round-end summaries (pinktext) should no longer cause
@@ -4266,6 +4356,13 @@ Entries:
   id: 1157
   time: '2026-03-17T17:02:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1157
+- author: Nyxilath
+  changes:
+  - message: The communications console now displays the current shift time.
+    type: add
+  id: 1159
+  time: '2026-03-22T22:37:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1159
 - author: TheClockman138
   changes:
   - message: Added a personal item for Works-Plentiful-Jobs.
@@ -4273,5 +4370,222 @@ Entries:
   id: 1162
   time: '2026-03-18T17:06:50.000'
   url: https://github.com/moff-station/moff-station-14/pull/1162
+- author: Nyxilath
+  changes:
+  - message: Tech Disk Printer sfx has been changed.
+    type: tweak
+  id: 1163
+  time: '2026-03-19T01:50:24.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1163
+- author: DuckManZach
+  changes:
+  - message: Channel indicators speech bubbles will now show up
+    type: fix
+  id: 1171
+  time: '2026-03-23T16:54:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1171
+- author: Centronias
+  changes:
+  - message: Set examine no longer respects arbitrary formatting input.
+    type: fix
+  id: 1174
+  time: '2026-03-27T16:52:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1174
+- author: Centronias
+  changes:
+  - message: Thieves can now be assigned when spawning at arrivals again.
+    type: fix
+  - message: Thieves are now selected at round start again, as opposed to a bit after
+      roundstart.
+    type: tweak
+  id: 1175
+  time: '2026-03-27T21:30:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1175
+- author: Centronias
+  changes:
+  - message: Tourists (minor mayhem antags) can roll again after silently being removed
+      two months ago.
+    type: fix
+  - message: Derelict service borgs can actually roll now.
+    type: fix
+  - message: Ninjas can now advertise the station to tourists while messing with the
+      comms console.
+    type: fix
+  id: 1178
+  time: '2026-03-27T20:51:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1178
+- author: StudMuffin
+  changes:
+  - message: Crew are now represented by their job icon on the crew monitor map!
+    type: tweak
+  - message: The AI can now teleport to the location of a crewmember via the crew
+      monitor interface!
+    type: add
+  id: 1180
+  time: '2026-03-29T21:21:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1180
+- author: Centronias
+  changes:
+  - message: Fix a few subtle bugs with cards causing visual issues and various mispredicts.
+    type: fix
+  - message: Fix missing localization on one card deck verb.
+    type: fix
+  id: 1183
+  time: '2026-03-30T17:48:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1183
+- author: Jona-K
+  changes:
+  - message: The Flying Dutchman now has hands again!
+    type: fix
+  - message: The Flying Dutchman now has a description and name in the ghost role
+      menu.
+    type: fix
+  id: 1184
+  time: '2026-03-31T17:53:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1184
+- author: Jona-K
+  changes:
+  - message: Hos Carapace Nolonger has any internal storage
+    type: tweak
+  id: 1185
+  time: '2026-04-01T05:14:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1185
+- author: Centronias
+  changes:
+  - message: Modular HUDs will no longer partially render when in non-eye slots (ie.
+      pockets)
+    type: fix
+  id: 1188
+  time: '2026-04-02T03:12:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1188
+- author: Centronias
+  changes:
+  - message: Beer HUD variants can once again be used to examine the contents of liquids.
+    type: fix
+  id: 1190
+  time: '2026-04-02T18:01:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1190
+- author: MissKay1994
+  changes:
+  - message: Added Kethendachuaks jumpskirt!
+    type: add
+  id: 1193
+  time: '2026-04-04T20:11:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1193
+- author: CastleKeeper325
+  changes: []
+  id: 1195
+  time: '2026-04-04T19:04:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1195
+- author: CastleKeeper325, TheLaggyOne
+  changes:
+  - message: The italian accent's word replacements have been overhauled to be MRP.
+    type: tweak
+  id: 1195
+  time: '2026-04-04T19:04:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1195
+- author: Dave
+  changes:
+  - message: Kazo & Buck Figurines
+    type: add
+  id: 1196
+  time: '2026-04-04T18:37:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1196
+- author: Sable
+  changes:
+  - message: the Uprooting drink can now be made.
+    type: fix
+  id: 1200
+  time: '2026-04-04T19:36:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1200
+- author: Centronias
+  changes:
+  - message: Added Machell Erivane's personal item
+    type: add
+  id: 1204
+  time: '2026-04-10T18:45:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1204
+- author: Nyxilath
+  changes:
+  - message: Syndicate high command will now only send dead drops after 25 minutes
+      into shift.
+    type: tweak
+  id: 1205
+  time: '2026-04-05T23:14:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1205
+- author: MissKay1994
+  changes:
+  - message: Added more timer screens to CC
+    type: tweak
+  - message: Fixed vox box not working
+    type: fix
+  id: 1206
+  time: '2026-04-08T06:29:43.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1206
+- author: murphyneko
+  changes:
+  - message: Improved set examine action dialog text.
+    type: fix
+  - message: Set examine action drag icon is no longer a human torso.
+    type: fix
+  id: 1207
+  time: '2026-04-06T19:33:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1207
+- author: StudMuffin
+  changes:
+  - message: AI warp now work properly when used during an holocall
+    type: fix
+  id: 1209
+  time: '2026-04-10T07:04:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1209
+- author: StudMuffin
+  changes:
+  - message: disposal units can now be controlled by network signals.
+    type: add
+  id: 1212
+  time: '2026-04-10T18:24:17.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1212
+- author: DuckManZach
+  changes:
+  - message: Flashlights now have smooth movement (and so do barstools)
+    type: tweak
+  id: 1214
+  time: '2026-04-09T15:55:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1214
+- author: DuckManZach
+  changes:
+  - message: Reworked the traits menu!
+    type: add
+  id: 1216
+  time: '2026-04-10T16:00:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1216
+- author: DuckManZach
+  changes:
+  - message: Bring back colored departments in the job picker
+    type: fix
+  id: 1217
+  time: '2026-04-08T21:54:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1217
+- author: DuckManZach
+  changes:
+  - message: Selected markings appear at the top of the list
+    type: tweak
+  id: 1218
+  time: '2026-04-09T15:48:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1218
+- author: pirakaplant
+  changes:
+  - message: Added Boston, Cak, and Scandinavian accents.
+    type: add
+  id: 1219
+  time: '2026-04-10T18:07:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1219
+- author: Jona-K
+  changes:
+  - message: Security masks Nolonger Hide The Vulpikans Snout
+    type: fix
+  id: 1223
+  time: '2026-04-09T19:05:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1223
 Name: Mofflog
 Order: -2
