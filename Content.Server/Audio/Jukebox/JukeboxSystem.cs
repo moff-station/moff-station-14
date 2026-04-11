@@ -214,7 +214,7 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         if (entity.Comp.JukeboxVolume > entity.Comp.JukeboxVolumeMin)
         {
             entity.Comp.JukeboxVolume--;
-            Dirty(entity);
+            Dirty(entity); //
             Audio.SetVolume(entity.Comp.AudioStream, entity.Comp.JukeboxVolume);
         }
     }
