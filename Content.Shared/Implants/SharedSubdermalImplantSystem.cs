@@ -3,6 +3,9 @@ using Content.Shared.Actions;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Implants.Components;
+using Content.Shared.Mind;
+using Content.Shared.Storage;
+using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -17,6 +20,7 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedChargesSystem _charges = default!;
+    [Dependency] private readonly SharedStorageSystem _storage = default!;
 
     public override void Initialize()
     {
@@ -180,6 +184,23 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         {
             charges = _charges.GetCurrentCharges(implant.Comp.Action.Value);
         }
+
+        // storage implants need to be handled a little differently
+        if (HasComp<StorageImplantComponent>(implant.Owner))
+        {
+            var proto = Prototype(implant.Owner);
+            if (proto is null)
+                return;
+
+            var newImplant = AddImplant(target,  proto.ID);
+
+            if(newImplant != null)
+                _storage.TransferEntities(implant, newImplant.Value);
+
+            _container.Remove(implant.Owner, source.Comp.ImplantContainer);
+            return;
+        }
+
 
         _container.Remove(implant.Owner, source.Comp.ImplantContainer);
 
