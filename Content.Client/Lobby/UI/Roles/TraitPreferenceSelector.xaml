@@ -1,7 +1,25 @@
+<!-- Moffstation - File completely rewritten
+    deny any upstream changes unless we're sure we want them -->
 <Control xmlns="https://spacestation14.io"
-         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-        <BoxContainer Name="Container"
-                      Orientation="Horizontal">
-            <CheckBox Name="Checkbox" Access="Public"/>
-        </BoxContainer>
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+    <PanelContainer Name="Container"
+                    Margin="0 5"
+                    SetWidth="725"
+                    HorizontalAlignment="Left">
+        <PanelContainer.PanelOverride>
+            <graphics:StyleBoxFlat BackgroundColor="#252632" BorderThickness="1" BorderColor="#a1a1a1"/>
+        </PanelContainer.PanelOverride>
+        <GridContainer Columns="2" Margin="5">
+            <CheckBox Name="Checkbox" Access="Public" Margin="5" VerticalAlignment="Top"/>
+            <GridContainer VerticalExpand="True" Columns="1">
+                <BoxContainer HorizontalExpand="True">
+                    <Label Name="TraitName"/>
+                </BoxContainer>
+                <BoxContainer HorizontalExpand="True">
+                    <Label Name="TraitDescription" StyleClasses="LabelSubText"/>
+                </BoxContainer>
+            </GridContainer>
+        </GridContainer>
+    </PanelContainer>
 </Control>

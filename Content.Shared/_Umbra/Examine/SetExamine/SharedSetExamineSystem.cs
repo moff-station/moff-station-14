@@ -21,8 +21,7 @@ public abstract class SharedSetExamineSystem : EntitySystem
 
     private void OnMapInit(Entity<SetExamineComponent> ent, ref MapInitEvent ev)
     {
-        if (_actions.AddAction(ent, ref ent.Comp.Action, out var action, ent.Comp.ActionPrototype))
-            _actions.SetEntityIcon((ent.Comp.Action.Value, action), ent);
+        _actions.AddAction(ent, ref ent.Comp.Action,ent.Comp.ActionPrototype);
     }
 
     private void OnExamine(Entity<SetExamineComponent> ent, ref ExaminedEvent args)
