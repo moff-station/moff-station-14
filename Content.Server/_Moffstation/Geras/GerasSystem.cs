@@ -191,4 +191,4 @@ public sealed class GerasSystem : EntitySystem
     }
 }
 
-public record struct GerasVisualInitEvent(Entity<GerasComponent> Uid, HumanoidCharacterProfile? profile);
+public record struct GerasVisualInitEvent(HumanoidCharacterProfile? profile);

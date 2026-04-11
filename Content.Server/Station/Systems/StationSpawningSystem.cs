@@ -146,8 +146,8 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             }
 
             //Moffstation - Re-add Geras - Begin
-            if(TryComp<GerasComponent>(entity, out var gerasComp))
-                RaiseLocalEvent(entity.Value, new GerasVisualInitEvent((entity.Value, gerasComp), profile));
+            if(HasComp<GerasComponent>(entity))
+                RaiseLocalEvent(entity.Value, new GerasVisualInitEvent(profile));
             //Moffstation - End
         }
 
