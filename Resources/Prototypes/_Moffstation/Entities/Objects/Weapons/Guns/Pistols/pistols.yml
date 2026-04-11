@@ -78,3 +78,8 @@
     zeroVisible: false
   - type: Appearance
   - type: ContainerContainer
+    ballistic-ammo: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+
