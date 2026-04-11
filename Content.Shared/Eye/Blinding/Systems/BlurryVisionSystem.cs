@@ -12,7 +12,7 @@ public sealed class BlurryVisionSystem : EntitySystem
 
         SubscribeLocalEvent<VisionCorrectionComponent, GotEquippedEvent>(OnGlassesEquipped);
         SubscribeLocalEvent<VisionCorrectionComponent, GotUnequippedEvent>(OnGlassesUnequipped);
-        Subs.SubscribeWithRelay<VisionCorrectionComponent, GetBlurEvent>(OnGetBlur, held: false); // Moffstation - Modular HUDs need this to be base + relayed
+        Subs.SubscribeWithRelay<VisionCorrectionComponent, GetBlurEvent>(OnGetBlur, held: false); // Moffstation - Modular HUDs need to handle both the basic event and the inventory relayed one
     }
 
     // Moffstation - Begin - Modular HUDs need this to be base + relayed
