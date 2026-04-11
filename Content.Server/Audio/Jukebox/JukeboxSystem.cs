@@ -211,18 +211,20 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
     // Moffstation - Start - Jukebox volume control
     private void OnJukeboxVolumeDown(Entity<JukeboxComponent> entity, ref JukeboxVolumeDownMessage args)
     {
-        if (entity.Comp.JukeboxVolume > -10)
+        if (entity.Comp.JukeboxVolume > entity.Comp.JukeboxVolumeMin)
         {
             entity.Comp.JukeboxVolume--;
+            Dirty(entity);
             Audio.SetVolume(entity.Comp.AudioStream, entity.Comp.JukeboxVolume);
         }
     }
 
     private void OnJukeboxVolumeUp(Entity<JukeboxComponent> entity, ref JukeboxVolumeUpMessage args)
     {
-        if (entity.Comp.JukeboxVolume < 0)
+        if (entity.Comp.JukeboxVolume < entity.Comp.JukeboxVolumeMax)
         {
             entity.Comp.JukeboxVolume++;
+            Dirty(entity);
             Audio.SetVolume(entity.Comp.AudioStream, entity.Comp.JukeboxVolume);
         }
     }

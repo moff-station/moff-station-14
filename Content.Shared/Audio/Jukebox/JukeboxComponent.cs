@@ -39,7 +39,13 @@ public sealed partial class JukeboxComponent : Component
     public float SelectAccumulator;
 
     // Moffstation - Start - Jukebox volume control
-    [ViewVariables]
+    [DataField]
+    public int JukeboxVolumeMax = 0;
+
+    [DataField]
+    public int JukeboxVolumeMin = -10;
+
+    [DataField, AutoNetworkedField]
     public int JukeboxVolume = -5;
     // Moffstation - End
 }
