@@ -1,5 +1,7 @@
 using System.Linq;
 using Content.Shared.Actions;
+using Content.Shared.Charges.Components;
+using Content.Shared.Charges.Systems;
 using Content.Shared.Implants.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
@@ -14,6 +16,7 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedChargesSystem _charges = default!;
 
     public override void Initialize()
     {
@@ -171,13 +174,25 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         if (!Resolve(source, ref source.Comp))
             return;
 
+        //store remaining charges if the implant has charges
+        var charges=-1;
+        if (Exists(implant.Comp.Action) && HasComp<LimitedChargesComponent>(implant.Comp.Action))
+        {
+            charges = _charges.GetCurrentCharges(implant.Comp.Action.Value);
+        }
+
         _container.Remove(implant.Owner, source.Comp.ImplantContainer);
 
         //If the target doesn't have the implanted component, add it.
         var implantedComp = EnsureComp<ImplantedComponent>(target);
 
         implant.Comp.ImplantedEntity = target;
-        _container.Insert(implant.Owner, implantedComp.ImplantContainer);
+        if (!_container.Insert(implant.Owner, implantedComp.ImplantContainer))
+            return;
+
+        //set the remaining charges to the previously stored value if applicable
+        if (charges >= 0 && Exists(implant.Comp.Action))
+            _charges.SetCharges(implant.Comp.Action.Value, charges);
 
     }
 
