@@ -188,19 +188,11 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
     /// <param name="target">The entity to gain the implants</param>
     public void TransferImplants(Entity<ImplantedComponent?> source, EntityUid target)
     {
-
-        if (!HasComp<ImplantedComponent>(source))
-            return;
-
-        if (!Resolve(source, ref source.Comp))
-            return;
-
-        foreach (var implant in source.Comp.ImplantContainer.ContainedEntities.ToList())
+        foreach (var implant in CompOrNull<ImplantedComponent>(source)?.ImplantContainer.ContainedEntities.ToList() ?? [])
         {
             if(TryComp<SubdermalImplantComponent>(implant, out var implantComp))
                 TransferImplant(source, target, (implant, implantComp));
         }
-
     }
     //Moffstation - End
 }

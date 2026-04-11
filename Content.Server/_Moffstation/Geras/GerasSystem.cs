@@ -143,7 +143,6 @@ public sealed class GerasSystem : EntitySystem
             }
         }
 
-        // Self explanatory
         _implantSystem.TransferImplants(uid, geras);
 
         // Transfer mind
@@ -172,12 +171,10 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnGerasVisualInit(Entity<GerasComponent> uid, ref GerasVisualInitEvent args)
     {
-        if (!uid.Comp.Geras.HasValue)
+        if (uid.Comp.Geras is not {} geras)
             return;
 
-        var geras = uid.Comp.Geras.Value;
-        if (TryComp(uid, out MetaDataComponent? targetMeta))
-            _metaData.SetEntityName(geras, targetMeta.EntityName);
+        _metaData.SetEntityName(geras, Name(uid));
         if (args.profile != null)
         {
             _bodySystem.ApplyProfile(geras, new() { SkinColor = args.profile.Appearance.SkinColor });
