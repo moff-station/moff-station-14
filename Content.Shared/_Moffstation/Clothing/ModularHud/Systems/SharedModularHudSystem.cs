@@ -329,14 +329,18 @@ public abstract partial class SharedModularHudSystem : EntitySystem
             if (!modules.MoveNext())
             {
                 args.PushMarkup(Loc.GetString(entity.Comp.NoModulesExamineText));
-                return;
+            }
+            else
+            {
+                args.PushMarkup(Loc.GetString(entity.Comp.HeaderExamineText));
+                do
+                {
+                    args.PushMarkup(Loc.GetString(entity.Comp.ModuleItemExamineText, ("module", modules.Current)));
+                } while (modules.MoveNext());
             }
 
-            args.PushMarkup(Loc.GetString(entity.Comp.HeaderExamineText));
-            do
-            {
-                args.PushMarkup(Loc.GetString(entity.Comp.ModuleItemExamineText, ("module", modules.Current)));
-            } while (modules.MoveNext());
+            args.PushMarkup(Loc.GetString(entity.Comp.CapacityExamineText,
+                ("capacity", entity.Comp.MaximumContainedModules)));
         }
     }
 
@@ -389,7 +393,7 @@ public abstract partial class SharedModularHudSystem : EntitySystem
     /// the disparate HUD effects to be updated when the modular HUD is un/equipped.
     private void RefreshVisualsAndEffects(Entity<ModularHudComponent> entity, EntityUid? equippee)
     {
-        if (equippee is {} e)
+        if (equippee is { } e)
         {
             _blurryVision.UpdateBlurMagnitude(e);
             var flashEv = new FlashImmunityChangedEvent(_flash.IsFlashImmune(e));
