@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 272.0.0
+  engineVersion: 274.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/23/2026 22:00:03
+  time: 04/11/2026 02:50:16
   entityCount: 11861
 maps:
 - 1
@@ -2748,6 +2748,11 @@ entities:
             1845: 37,10
             1846: 37,11
             1847: 36,11
+        - node:
+            color: '#00000026'
+            id: MarkupSquare
+          decals:
+            3022: 26,18
         - node:
             zIndex: 1
             color: '#00000033'
@@ -7671,7 +7676,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -171951.05
+      secondsUntilStateChange: -172128.4
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
