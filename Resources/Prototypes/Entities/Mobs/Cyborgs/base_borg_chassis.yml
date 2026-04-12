@@ -368,8 +368,10 @@
     bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
   - type: EmagSiliconLaw
     stunTime: 5
-  - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+  # Moffstation - Start - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+  - type: LawProgrammerTarget
     durationMultiplier: 10
+  # Moffstation - End
     #isImmune: true
 
 - type: entity
