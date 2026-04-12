@@ -85,13 +85,16 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         UpdateVolumeDisplay();
     }
 
+    // Moffstation - Start - Jukebox volume control
     public void UpdateVolumeDisplay()
     {
         if (_menu == null || !EntMan.TryGetComponent(Owner, out JukeboxComponent? jukebox))
             return;
 
-        _menu.SetVolumeDisplay(jukebox.JukeboxVolume);
+        _menu.SetVolumeDisplay(jukebox.JukeboxVolume, jukebox.JukeboxVolumeMin);
     }
+    // Moffstation - End
+
     public void PopulateMusic()
     {
         _menu?.Populate(_protoManager.EnumeratePrototypes<JukeboxPrototype>());

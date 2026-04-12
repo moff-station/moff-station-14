@@ -91,9 +91,9 @@ public sealed partial class JukeboxMenu : FancyWindow
         _audio = audio;
     }
 
-    public void SetVolumeDisplay(int volume)
+    public void SetVolumeDisplay(int volume, int volumeMin)
     {
-        VolumeDisplay.Text = volume.ToString();
+        VolumeDisplay.Text = "[ " + (volume-volumeMin+1).ToString() + " ]"; // +1 so our lowest display value starts at '1', rather than '0'
     }
 
     private void PlaybackSliderKeyUp(Slider args)
