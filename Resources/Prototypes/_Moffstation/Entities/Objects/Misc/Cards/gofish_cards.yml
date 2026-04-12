@@ -39,25 +39,11 @@
   suitLoc: gofish-card-suit-name
   cardValueLoc: gofish-card-value-name
   cards:
-  #- prototype: CardGoFishRules
+  - id: rules
   - suit: GoFishBlue
   - suit: GoFishGreen
   - suit: GoFishRed
   - suit: GoFishYellow
-
-- type: entity
-  parent: BasePlayingCard
-  id: CardGoFishRules
-  name: playing card
-  description: card-gofish-rules-description
-  components:
-  - type: PlayingCard
-    name: "card-gofish-rules-name"
-    description: "card-gofish-rules-description"
-    reverseName: "gofish-card-name-reverse"
-    reverseDescription: "gofish-card-desc-reverse"
-    obverseLayers: [background_grey]
-    reverseLayers: [singlecard_down_gofish]
 
 - type: playingCardSuit
   id: GoFishBlue
