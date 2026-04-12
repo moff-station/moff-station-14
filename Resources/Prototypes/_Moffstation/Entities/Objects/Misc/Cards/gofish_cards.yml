@@ -18,19 +18,18 @@
   name: deck of cards
   suffix: GoFish
   components:
+  - type: Sprite
+    layers:
+    - state: empty # Dummy layer because the actual visuals are composed dynamically.
+      sprite: _Moffstation/Objects/Misc/Cards/card_gofish.rsi
+      visible: False
   - type: PlayingCardDeck
     prototype: StandardGoFishCards
 
+# GoFish Deck Definitions
 - type: playingCardDeck
-  parent: BaseGoFishDeck
   id: StandardGoFishCards
   sprite: _Moffstation/Objects/Misc/Cards/card_gofish.rsi
-
-
-# Base definitions
-- type: playingCardDeck
-  id: BaseGoFishDeck
-  abstract: true
   commonReverseLayers:
   - state: singlecard_down_gofish
   cardNameLoc: gofish-card-name
@@ -40,16 +39,25 @@
   suitLoc: gofish-card-suit-name
   cardValueLoc: gofish-card-value-name
   cards:
-  - suit: GoFishRules
+  #- prototype: CardGoFishRules
   - suit: GoFishBlue
   - suit: GoFishGreen
   - suit: GoFishRed
   - suit: GoFishYellow
 
-- type: playingCardSuit
-  id: GoFishRules
-  cards:
-  - id: "rules" # Rules card
+- type: entity
+  parent: BasePlayingCard
+  id: CardGoFishRules
+  name: playing card
+  description: card-gofish-rules-description
+  components:
+  - type: PlayingCard
+    name: "card-gofish-rules-name"
+    description: "card-gofish-rules-description"
+    reverseName: "gofish-card-name-reverse"
+    reverseDescription: "gofish-card-desc-reverse"
+    obverseLayers: [background_grey]
+    reverseLayers: [singlecard_down_gofish]
 
 - type: playingCardSuit
   id: GoFishBlue

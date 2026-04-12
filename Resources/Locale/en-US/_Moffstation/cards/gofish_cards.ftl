@@ -6,20 +6,7 @@ gofish-card-suit-name = { $suit ->
     [gofishgreen] Green
     [gofishred] Red
     [gofishyellow] Yellow
-   *[other] Grey.
-   Game Rules:
-   Players are dealt 5 cards from a shuffled deck. Remaining cards are left face down in a deck forming the fish pond/draw pile.
-   The dealer will go first, and they get to ask each player if they currently hold a card from a specific group.
-   For example, "Do you have any Mothroach Cards?"
-   You can examine the card to see what group it belongs to if you are unsure based on the image.
-   The asking player can only ask another player for a card from a specific group, if they hold one of those cards in their hand. They cannot ask for a Mothroach card if they do not hold any Mothroach cards.
-   If the asked player has a Mothroach card, they must surrender the card to the asking player. The asking player will then get to repeat their turn.
-   If the asked player does not have a card from that group, they will reply with "Go Fish!", in which the asking player must draw a card from the fish pond/draw pile, and the next person will get their turn.
-   Once a player collects all four cards from a specific group, that player removes those four cards from their hand, laying them face up on the table and collecting one point.
-   If a player has no cards, they must immediately end their turn and draw a card from the fishpond/drawpile.
-   The game repeats until there are no more cards left in the fish pond/draw pile, and all card groups have been united.
-   Whoever has the most points at the end will be declared the winner
-   
+   *[other] {$suit}   
 }
 
 gofish-card-name = { gofish-card-value-name } Card
@@ -151,4 +138,16 @@ gofish-card-group-name = { $id ->
    *[other] This is the Rules card and does not belong to any group.
 }
 
-gofish-card-rules = Rules
+card-gofish-rules-name = Rules Card
+card-gofish-rules-description = Game Rules:
+   Players are dealt 5 cards from a shuffled deck. Remaining cards are left face down in a deck forming the fish pond/draw pile.
+   The dealer will go first, and they get to ask each player if they currently hold a card from a specific group.
+   For example, "Do you have any Mothroach Cards?"
+   You can examine the card to see what group it belongs to if you are unsure based on the image.
+   The asking player can only ask another player for a card from a specific group, if they hold one of those cards in their hand. They cannot ask for a Mothroach card if they do not hold any Mothroach cards.
+   If the asked player has a Mothroach card, they must surrender the card to the asking player. The asking player will then get to repeat their turn.
+   If the asked player does not have a card from that group, they will reply with "Go Fish!", in which the asking player must draw a card from the fish pond/draw pile, and the next person will get their turn.
+   Once a player collects all four cards from a specific group, that player removes those four cards from their hand, laying them face up on the table and collecting one point.
+   If a player has no cards, they must immediately end their turn and draw a card from the fishpond/drawpile.
+   The game repeats until there are no more cards left in the fish pond/draw pile, and all card groups have been united.
+   Whoever has the most points at the end will be declared the winner
