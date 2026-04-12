@@ -130,10 +130,10 @@ public sealed class GerasSystem : EntitySystem
             {
                 _container.AttachParentToContainerOrGrid((uid, playerTransform));
             }
-            else // If the entity is in any other container, put the geras in that container
-            {
-                _transform.DropNextTo(geras, uid);
-            }
+        }
+        if (_container.IsEntityInContainer(uid))// If the entity is in any other container, put the geras in that container
+        {
+            _transform.DropNextTo(geras, uid);
         }
 
         if (TerminatingOrDeleted(playerTransform.ParentUid))
