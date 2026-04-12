@@ -78,8 +78,7 @@ public sealed class GerasSystem : EntitySystem
 
             BanishEntity((geras, metaGerasComponent, Transform(geras)));
 
-            if (TryComp(uid, out MetaDataComponent? targetMeta))
-                _metaData.SetEntityName(geras, targetMeta.EntityName);
+            _metaData.SetEntityName(geras, Name(uid));
             if (TryComp<HumanoidProfileComponent>(uid, out var profile))
                 _bodySystem.ApplyProfile(geras, new() { SkinColor = profile.SkinColor });
 

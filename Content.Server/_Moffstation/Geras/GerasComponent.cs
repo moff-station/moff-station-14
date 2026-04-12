@@ -11,7 +11,7 @@ public sealed partial class GerasComponent : Component
     /// <summary>
     /// The prototype of the mob to transform into
     /// </summary>
-    [DataField] public EntProtoId? Entity;
+    [DataField] public EntProtoId? GerasProto;
 
     [DataField] public EntProtoId GerasAction = "ActionMorphGeras";
 
