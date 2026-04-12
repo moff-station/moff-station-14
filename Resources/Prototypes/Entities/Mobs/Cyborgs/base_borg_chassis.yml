@@ -555,6 +555,8 @@
   - type: Xenoborg
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
-  - type: LawProgrammerTarget # Moffstation - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+  # Moffstation - Start - Cyborg programming ( to not circumvent the bypassDelay of removing brain)
+  - type: LawProgrammerTarget
     durationMultiplier: 10
+  # Moffstation - End
     #isImmune: true
