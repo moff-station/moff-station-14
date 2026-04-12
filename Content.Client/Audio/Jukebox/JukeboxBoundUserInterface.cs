@@ -1,6 +1,5 @@
 using Content.Shared.Audio.Jukebox;
 using Robust.Client.Audio;
-using Robust.Client.Console;
 using Robust.Client.UserInterface;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Prototypes;
@@ -82,7 +81,7 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         {
             _menu.SetSelectedSong(string.Empty, 0f);
         }
-        UpdateVolumeDisplay();
+        UpdateVolumeDisplay(); // Moffstation - Start
     }
 
     // Moffstation - Start - Jukebox volume control
