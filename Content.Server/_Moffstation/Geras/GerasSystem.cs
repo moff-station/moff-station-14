@@ -126,6 +126,10 @@ public sealed class GerasSystem : EntitySystem
             {
                 _hands.TryDrop(container.Owner, uid);
             }
+            else if (HasComp<StorageComponent>(container.Owner))// If the entity is in a bag, take them out of the bag
+            {
+                _container.AttachParentToContainerOrGrid((uid, playerTransform));
+            }
             else // If the entity is in any other container, put the geras in that container
             {
                 _transform.DropNextTo(geras, uid);
