@@ -116,7 +116,7 @@
     damageModifierSet: Slime
     #Moffstation - Re-add Geras - Begin
   - type: Geras
-    entity: MobSlimesGeras
+    gerasProto: MobSlimesGeras
     #Moffstation - End
   - type: PassiveDamage # Around 8 damage a minute healed
     allowedStates:
