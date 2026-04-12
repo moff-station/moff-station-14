@@ -64,6 +64,8 @@
     interactFailureString: petting-failure-syndicate-cyborg
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: LawProgrammerTarget
+    durationMultiplier: 10
 
 - type: entity
   id: BorgChassisPirateBattery
