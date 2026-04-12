@@ -188,14 +188,11 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         // storage implants need to be handled a little differently
         if (HasComp<StorageImplantComponent>(implant.Owner))
         {
-            var proto = Prototype(implant.Owner);
-            if (proto is null)
+            if (Prototype(implant.Owner) is not {} proto)
                 return;
 
-            var newImplant = AddImplant(target,  proto.ID);
-
-            if(newImplant != null)
-                _storage.TransferEntities(implant, newImplant.Value);
+            if(AddImplant(target,  proto.ID) is {} newImplant)
+                _storage.TransferEntities(implant, newImplant);
 
             _container.Remove(implant.Owner, source.Comp.ImplantContainer);
             return;
