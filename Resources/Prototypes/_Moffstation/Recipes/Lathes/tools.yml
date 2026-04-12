@@ -1,7 +1,7 @@
 # Recipes
 
 - type: latheRecipe
-  parent: AnomalyScanner
+  parent: AnomalyScanner # Inherit the cost as it's a similar item.
   id: LawProgrammer
   result: LawProgrammer
   icon:

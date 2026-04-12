@@ -4,11 +4,6 @@
   id: BaseSiliconLawboard
   description: An electronics board containing a silicon lawset.
   components:
-  # Moffstation - Start - cyborg laws alteration
-  - type: Tag
-    tags:
-    - LawBoard
-  # Moffstation - End
   - type: Sprite
     sprite: Objects/Misc/module.rsi
     state: std_mod

@@ -29,8 +29,10 @@
         ejectOnBreak: true
         whitelistFailPopup: law-programmer-insertion-failure
         whitelist:
-          tags:
-          - LawBoard
+          requireAll: true
+          components:
+          - Circuitboard
+          - SiliconLawProvider
   - type: LawProgrammer
     attemptSound: /Audio/Machines/double_ring.ogg
     successSound: /Audio/Machines/twobeep.ogg
