@@ -126,7 +126,17 @@ public sealed partial class PlayingCardInDeckUnspawnedData : PlayingCardInDeck
         ProtoId<PlayingCardSuitPrototype>? suit
     )
     {
-        Card = card;
+        // Copy the card data so that we don't modify the prototype when messing with this individual deck.
+        Card = new PlayingCardDeckPrototypeElementCard
+        {
+            Id = card.Id,
+            NameLoc = card.NameLoc,
+            ObverseLayers = card.ObverseLayers,
+            UseDeckLayers = card.UseDeckLayers,
+            UseSuitLayers = card.UseSuitLayers,
+            FaceDown = card.FaceDown,
+            Count = card.Count,
+        };
         Deck = deck;
         Suit = suit;
     }

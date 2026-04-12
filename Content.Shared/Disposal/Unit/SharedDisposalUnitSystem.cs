@@ -4,6 +4,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.Containers;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking.Events; // Moffstation - Signal network for disposal units
 using Content.Shared.Disposal.Components;
 using Content.Shared.Disposal.Unit.Events;
 using Content.Shared.DoAfter;
@@ -94,7 +95,24 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
 
         SubscribeLocalEvent<DisposalUnitComponent, GetDumpableVerbEvent>(OnGetDumpableVerb);
         SubscribeLocalEvent<DisposalUnitComponent, DumpEvent>(OnDump);
+
+        SubscribeLocalEvent<DisposalUnitComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Signal network for disposal units
     }
+
+    // Moffstation - Begin - Signal network for disposal units
+    private void OnSignalReceived(Entity<DisposalUnitComponent> entity, ref SignalReceivedEvent args)
+    {
+        if (args.Port == entity.Comp.FlushPort)
+            ToggleEngage(entity.Owner, entity.Comp);
+        else if (args.Port == entity.Comp.AutoFlushOnPort)
+            entity.Comp.AutomaticEngage = true;
+        else if (args.Port == entity.Comp.AutoFlushOffPort)
+            entity.Comp.AutomaticEngage = false;
+        else if (args.Port == entity.Comp.AutoFlushTogglePort)
+            entity.Comp.AutomaticEngage = !entity.Comp.AutomaticEngage;
+        Dirty(entity);
+    }
+    // Moffstation - End
 
     private void AddDisposalAltVerbs(Entity<DisposalUnitComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
