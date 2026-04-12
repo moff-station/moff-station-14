@@ -20,16 +20,10 @@
   - type: PlayingCardDeck
     prototype: StandardTarotCards
 
+# Tarot Deck Definition
 - type: playingCardDeck
-  parent: BaseTarotDeck
   id: StandardTarotCards
   sprite: _Moffstation/Objects/Misc/Cards/card_tarot.rsi
-
-
-# Tarot deck base definition
-- type: playingCardDeck
-  id: BaseTarotDeck
-  abstract: true
   commonReverseLayers:
   - state: singlecard_down_tarot
   cardNameLoc: tarot-card-name
