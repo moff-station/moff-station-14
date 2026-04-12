@@ -142,16 +142,46 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
         if (_netMan.IsClient)
             return;
 
-        if (GetLawProvidingBrainOfTarget(target.AsNullable()) is { } targetBrain)
+        if (HasComp<BorgChassisComponent>(target))
         {
-            _popup.PopupClient(Loc.GetString("law-programmer-interaction-success"), target, args.User);
-            _audio.PlayPredicted(used.Comp.SuccessSound, used, args.User);
-            _lawSystem.SetProviderLaws((targetBrain, targetBrain.Comp3), _lawSystem.GetProviderLaws(lawProvider.AsNullable()).Laws);
+            var cuePlayed = false;
+            // to operate on chassis that override brain's laws
+            if (GetLawProvidingChassisOfTarget(target.AsNullable()) is { } targetChassis)
+            {
+                _popup.PopupClient(Loc.GetString("law-programmer-interaction-success"), target, args.User);
+                _audio.PlayPredicted(used.Comp.SuccessSound, used, args.User);
+                cuePlayed = true;
+                _lawSystem.SetProviderLaws((targetChassis, targetChassis.Comp3), _lawSystem.GetProviderLaws(lawProvider.AsNullable()).Laws);
+            }
+            if (GetLawProvidingBrainOfTarget(target.AsNullable()) is { } targetBrain)
+            {
+                if (!cuePlayed)
+                {
+                    _popup.PopupClient(Loc.GetString("law-programmer-interaction-success"), target, args.User);
+                    _audio.PlayPredicted(used.Comp.SuccessSound, used, args.User);
+                }
+                _lawSystem.SetProviderLaws((targetBrain, targetBrain.Comp3), _lawSystem.GetProviderLaws(lawProvider.AsNullable()).Laws);
+            }
+            else
+            {
+                _popup.PopupClient(Loc.GetString("law-programmer-interaction-failure-provider-missing"), target, args.User);
+                _audio.PlayPredicted(used.Comp.FailureSound, used, args.User);
+            }
         }
-        else
+
+        if (HasComp<BorgBrainComponent>(target))
         {
-            _popup.PopupClient(Loc.GetString("law-programmer-interaction-failure-provider-missing"), target, args.User);
-            _audio.PlayPredicted(used.Comp.FailureSound, used, args.User);
+            if (GetLawProvidingBrainOfTarget(target.AsNullable()) is { } targetBrain)
+            {
+                _popup.PopupClient(Loc.GetString("law-programmer-interaction-success"), target, args.User);
+                _audio.PlayPredicted(used.Comp.SuccessSound, used, args.User);
+                _lawSystem.SetProviderLaws((targetBrain, targetBrain.Comp3), _lawSystem.GetProviderLaws(lawProvider.AsNullable()).Laws);
+            }
+            else
+            {
+                _popup.PopupClient(Loc.GetString("law-programmer-interaction-failure-provider-missing"), target, args.User);
+                _audio.PlayPredicted(used.Comp.FailureSound, used, args.User);
+            }
         }
     }
 
@@ -190,6 +220,7 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
         out LocId? failureReason)
     {
         failureReason = null;
+
         if (GetInsertedLawProvider(programmer) is null)
             return false;
 
@@ -201,18 +232,17 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
 
         if (HasComp<BorgChassisComponent>(target))
         {
-            // can't reprogram a closed borg.
             if (!_wires.IsPanelOpen(target.Owner))
                 return false;
 
-            // when inserted mind is on chassis entity.
             if (_mind.GetMind(target) is null)
             {
                 failureReason = "law-programmer-interaction-failure-target-absent";
                 return false;
             }
 
-            if (GetLawProvidingBrainOfTarget(target.AsNullable()) is null)
+            // to take into account chassis that override brain laws
+            if (GetLawProvidingChassisOfTarget(target.AsNullable()) == null && GetLawProvidingBrainOfTarget(target.AsNullable()) == null)
             {
                 failureReason = "law-programmer-interaction-failure-provider-missing";
                 return false;
@@ -221,19 +251,24 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
             return true;
         }
 
-        if (GetLawProvidingBrainOfTarget(target.AsNullable()) is not { } brain)
+        if (HasComp<BorgBrainComponent>(target))
         {
-            failureReason = "law-programmer-interaction-failure-provider-missing";
-            return false;
+            if (_mind.GetMind(target) is null)
+            {
+                failureReason = "law-programmer-interaction-failure-target-absent";
+                return false;
+            }
+
+            if (GetLawProvidingBrainOfTarget(target.AsNullable()) == null)
+            {
+                failureReason = "law-programmer-interaction-failure-provider-missing";
+                return false;
+            }
+
+            return true;
         }
 
-        if (programmer.Comp.RequireMind && _mind.GetMind(brain) is null)
-        {
-            failureReason = "law-programmer-interaction-failure-target-absent";
-            return false;
-        }
-
-        return true;
+        return false;
     }
 
     private Entity<LawProgrammerTargetComponent, BorgBrainComponent, SiliconLawProviderComponent>?
@@ -248,10 +283,26 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
                 return (entity, entity.Comp, brainComp, lawProvider);
         }
 
+        // this need to go here.
         if (TryComp<BorgChassisComponent>(entity, out var chassisComp) &&
             chassisComp.BrainEntity is { } brain)
         {
             return GetLawProvidingBrainOfTarget(brain);
+        }
+
+        return null;
+    }
+
+    private Entity<LawProgrammerTargetComponent, BorgChassisComponent, SiliconLawProviderComponent>?
+        GetLawProvidingChassisOfTarget(Entity<LawProgrammerTargetComponent?> entity)
+    {
+        if (!Resolve(entity, ref entity.Comp))
+            return null;
+
+        if (TryComp<BorgChassisComponent>(entity, out var borgChassis))
+        {
+            if (TryComp<SiliconLawProviderComponent>(entity, out var lawProvider))
+                return (entity, entity.Comp, borgChassis, lawProvider);
         }
 
         return null;
