@@ -144,25 +144,27 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
 
         if (HasComp<BorgChassisComponent>(target))
         {
-            var cuePlayed = false;
+            var hadEffect = false;
             // to operate on chassis that override brain's laws
             if (GetLawProvidingChassisOfTarget(target.AsNullable()) is { } targetChassis)
             {
                 _popup.PopupClient(Loc.GetString("law-programmer-interaction-success"), target, args.User);
                 _audio.PlayPredicted(used.Comp.SuccessSound, used, args.User);
-                cuePlayed = true;
                 _lawSystem.SetProviderLaws((targetChassis, targetChassis.Comp3), _lawSystem.GetProviderLaws(lawProvider.AsNullable()).Laws);
+                hadEffect = true;
             }
             if (GetLawProvidingBrainOfTarget(target.AsNullable()) is { } targetBrain)
             {
-                if (!cuePlayed)
+                if (!hadEffect)
                 {
                     _popup.PopupClient(Loc.GetString("law-programmer-interaction-success"), target, args.User);
                     _audio.PlayPredicted(used.Comp.SuccessSound, used, args.User);
                 }
                 _lawSystem.SetProviderLaws((targetBrain, targetBrain.Comp3), _lawSystem.GetProviderLaws(lawProvider.AsNullable()).Laws);
+                hadEffect = true;
             }
-            else
+
+            if (! hadEffect)
             {
                 _popup.PopupClient(Loc.GetString("law-programmer-interaction-failure-provider-missing"), target, args.User);
                 _audio.PlayPredicted(used.Comp.FailureSound, used, args.User);
