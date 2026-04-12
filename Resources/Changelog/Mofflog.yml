@@ -4465,6 +4465,16 @@ Entries:
   id: 1190
   time: '2026-04-02T18:01:46.000'
   url: https://github.com/moff-station/moff-station-14/pull/1190
+- author: Centronias
+  changes:
+  - message: The Prescription HUD Module actually corrects blurry vision now.
+    type: fix
+  - message: Modular HUDs should immediately update effects on insertion/removal of
+      modules for all modules now.
+    type: fix
+  id: 1192
+  time: '2026-04-12T00:42:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1192
 - author: MissKay1994
   changes:
   - message: Added Kethendachuaks jumpskirt!
