@@ -67,9 +67,9 @@ public sealed class GerasSystem : EntitySystem
     private void OnMapInit(EntityUid uid, GerasComponent component, MapInitEvent args)
     {
         // create the geras entity and store it
-        if (component.Entity != null)
+        if (component.GerasProto != null)
         {
-            var geras = Spawn(component.Entity, _transform.GetMapCoordinates(uid, Transform(uid)), rotation: _transform.GetWorldRotation(uid));
+            var geras = Spawn(component.GerasProto, _transform.GetMapCoordinates(uid, Transform(uid)), rotation: _transform.GetWorldRotation(uid));
             component.Geras = geras;
 
             //tie the created entity's geras component to the original for reverse transformation
