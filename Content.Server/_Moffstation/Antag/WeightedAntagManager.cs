@@ -54,7 +54,7 @@ public sealed class WeightedAntagManager
         }
         else
         {
-            _logger.Error(
+            _logger.Info(
                 $"Failed to persist antag weight for {userId}");
         }
 

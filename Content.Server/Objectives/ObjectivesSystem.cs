@@ -214,7 +214,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             // Moffstation - Start - Pinktexting
             if (TryComp<CustomObjectiveSummaryComponent>(mindId, out var customComp) && customComp.ObjectiveSummary != "")
             {
-                var customObjective = Loc.GetString("custom-objective-format", ("line", ev.WrapString(customComp.ObjectiveSummary)));
+                var customObjective = Loc.GetString("custom-objective-format", ("line", ev.WrapString(FormattedMessage.EscapeText(customComp.ObjectiveSummary))));
                 agentSummary.AppendLine(customObjective);
             }
             // Moffstation - End
