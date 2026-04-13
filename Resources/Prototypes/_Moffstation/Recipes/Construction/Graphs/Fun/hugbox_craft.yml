@@ -1,12 +1,12 @@
 - type: constructionGraph
-  id: BoxHugHealing
+  id: BoxHugEmpty
   start: start
   graph:
   - node: start
     edges:
-    - to: BoxHugHealing
+    - to: BoxHugEmpty
       steps:
-      - component: OrganAnimalHeart
+      - tag: Heart
         icon:
           sprite: Mobs/Species/Human/organs.rsi/heart-on.png
           state: generic
@@ -15,5 +15,5 @@
         amount: 3
         doAfter: 3
 
-  - node: BoxHugHealing
-    entity: BoxHugHealing
+  - node: BoxHugEmpty
+    entity: BoxHugEmpty
