@@ -148,10 +148,3 @@
     blacklist:
       components:
       - SimpleObjective
-
-- type: entity
-  parent: BaseCMOStealObjective
-  id: ValkyrieHudStealObjective
-  components:
-  - type: StealCondition
-    stealGroup: ClothingEyesGlassesMedChem

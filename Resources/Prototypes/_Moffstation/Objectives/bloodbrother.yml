@@ -3,10 +3,6 @@
   parent: [BaseBloodBrotherObjective, DisruptDepartmentObjective]
   id: BloodBrotherDisruptDepartmentObjective
 
-#- type: entity
-#  parent: [BaseBloodBrotherObjective, InfiltrateObjective]
-#  id: BloodBrotherInfiltrateObjective
-
 - type: entity
   parent: [BaseBloodBrotherObjective, JailbreakObjective]
   id: BloodBrotherJailbreakObjective
@@ -22,7 +18,6 @@
   components:
   - type: LocationObjective
     title: objective-condition-bb-claim-room
-
 
 - type: entity
   parent: [BaseBloodBrotherObjective, RobDepartmentObjective]
