@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Bed.Sleep;
+using Content.Shared.Body;
 using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
@@ -49,7 +50,15 @@ public partial class MobStateSystem
         SubscribeLocalEvent<MobStateComponent, DamageModifyEvent>(OnDamageModify);
 
         SubscribeLocalEvent<MobStateComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);
+        SubscribeLocalEvent<MobStateComponent, BodyRelayedEvent<MobStateChangedEvent>>(OnRelayedStateChange);//Moffstation - Re-add Geras
     }
+
+    //Moffstation - Re-add Geras - Begin
+    private void OnRelayedStateChange(Entity<MobStateComponent> ent, ref BodyRelayedEvent<MobStateChangedEvent> args)
+    {
+        ChangeState(ent.Owner, ent.Comp, args.Args.NewMobState);
+    }
+    //Moffstation - End
 
     private void OnUnbuckleAttempt(Entity<MobStateComponent> ent, ref UnbuckleAttemptEvent args)
     {
