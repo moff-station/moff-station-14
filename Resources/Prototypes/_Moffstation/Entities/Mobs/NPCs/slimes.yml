@@ -1,0 +1,125 @@
+- type: entity
+  name: geras
+  description: A geras of a slime - the name is ironic, isn't it?
+  id: MobSlimesGeras
+  parent: [BaseMobAdultSlimes, StripableInventoryBase]
+  categories: [ HideSpawnMenu ]
+  components:
+  # they portable...
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5 # +.5 from normal movement speed
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      80: Dead # weak af tho
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: MultiHandedItem
+  - type: Item
+    size: Huge
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
+    color: "#B8B8B8AF"
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+  - type: MeleeWeapon
+    attackRate: 2
+    damage:
+      types:
+        Blunt: 4
+  - type: Inventory
+    speciesId: slime
+    templateId: gerasInventory
+    displacements:
+      head:
+        sizeMaps:
+          32:
+            sprite: Mobs/Pets/Smile/smile_displacement.rsi
+            state: head
+      ears:
+        sizeMaps:
+          32:
+            sprite: Mobs/Pets/Smile/smile_displacement.rsi
+            state: head
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.HumanoidMarkingModifierKey.Key:
+        type: HumanoidMarkingModifierBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: Storage
+    clickInsert: false
+    grid:
+    - 0,0,1,2
+    maxItemSize: Large
+    storageInsertSound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: UseDelay
+    delay: 0.5
+  - type: Hands
+    activeHandId: Hand
+    hands:
+      Hand:
+        location: Left
+  - type: ComplexInteraction
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+    allowedEmotes: [ 'Squish' ]
+  - type: Emoting
+  - type: Vocal
+    sounds:
+      Male: MaleSlime
+      Female: FemaleSlime
+      Unsexed: MaleSlime
+  - type: Stripping
+  - type: Puller
+  - type: Cuffable
+  - type: CanEscapeInventory
+  - type: Geras
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganSlimePersonCore
+        - id: OrganSlimePersonLungs
+        - id: OrganGerasTorso
+
+
+- type: entity
+  parent: OrganSlimePerson
+  id: OrganGerasTorso
+  components:
+  - type: Appearance
+  - type: Organ
+    category: Torso
+  - type: MobState #functions as a tracker for the body's mobstate
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
+      state: grey_adult_slime
+  - type: VisualOrgan
+    layer: enum.DamageStateVisualLayers.Base
+    data:
+      sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
+      state: grey_adult_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: grey_adult_slime
+      Dead:
+        Base: grey_adult_slime_dead
