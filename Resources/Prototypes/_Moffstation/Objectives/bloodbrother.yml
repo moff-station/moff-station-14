@@ -52,10 +52,6 @@
   id: BloodBrotherTeachLessonObjective
 
 - type: entity
-  parent: [ BaseBloodBrotherObjective, BigIronStealObjective ]
-  id: BloodBrotherBigIronStealObjective
-
-- type: entity
   parent: [BaseBloodBrotherObjective, LeaveCallingCardObjective]
   id: BloodBrotherLeaveCallingCardObjective
   components:
