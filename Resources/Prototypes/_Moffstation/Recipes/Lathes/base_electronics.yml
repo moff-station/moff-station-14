@@ -19,3 +19,9 @@
     Glass: 1000
     Silver: 200
     Uranium: 100
+
+# Solar panels
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseEngineeringMachineRecipeCategory ]
+  id: SolarPanelElectronics
+  result: SolarPanelElectronics

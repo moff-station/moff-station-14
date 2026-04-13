@@ -8,6 +8,24 @@
   placementMode: SnapgridCenter
 
 - type: construction
+  id: SolarPanelPlasma
+  graph: SolarPanel
+  startNode: start
+  targetNode: solarpanelplasma
+  category: construction-category-utilities
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  id: SolarPanelUranium
+  graph: SolarPanel
+  startNode: start
+  targetNode: solarpaneluranium
+  category: construction-category-utilities
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
   id: SolarTracker
   graph: SolarPanel
   startNode: start

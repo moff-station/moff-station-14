@@ -6,6 +6,7 @@
       edges:
         - to: solarframe
           steps:
+            # Moffstation - Start - Constructable solars
             #- tag: SolarAssemblyFlatpack
             #  name: construction-graph-tag-solar-assembly-parts
             #  icon:
@@ -15,18 +16,19 @@
             - material: Steel
               amount: 5
               doAfter: 2
+            # Moffstation - End
 
     - node: solarassembly
       entity: SolarAssembly
       edges:
-        - to: solarframe
+        - to: solarframe # Moffstation - Constructable solars
           completed:
             - !type:SpawnPrototype
-              prototype: SolarPanelElectronics
+              prototype: SolarPanelElectronics # Moffstation - Constructable solars
               amount: 1
-            #- !type:DeleteEntity {}
+            #- !type:DeleteEntity {} # Moffstation - Constructable solars
           steps:
-            - tool: Prying
+            - tool: Prying # Moffstation - Constructable solars
               doAfter: 2
         - to: solarpanelplasma
           conditions:
@@ -55,6 +57,7 @@
               doAfter: 0.5
           completed:
             - !type:SnapToGrid
+        # Moffstation - Start - Constructable solars
         #- to: solartracker
         #  conditions:
         #    - !type:EntityAnchored
@@ -70,6 +73,7 @@
         #      doAfter: 2
         #  completed:
         #    - !type:SnapToGrid
+        # Moffstation - End
 
     - node: solarpanelplasma
       entity: SolarPanelPlasma
@@ -193,6 +197,7 @@
             - tool: Prying
               doAfter: 1
 
+    # Moffstation - Start - Constructable solars
     - node: solarframe
       entity: SolarFrame
       edges:
@@ -234,3 +239,4 @@
           doAfter: 2
         completed:
         - !type:SnapToGrid
+    # Moffstation - End
