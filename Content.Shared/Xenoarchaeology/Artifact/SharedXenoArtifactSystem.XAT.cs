@@ -91,6 +91,12 @@ public abstract partial class SharedXenoArtifactSystem
 
         if (node != null && unlockingComp.TriggeredNodeIndexes.Add(GetIndex(ent, node.Value)))
         {
+            // Moffstation - Start - Artifact trigger on completion
+            if (TryGetNodeFromUnlockState((ent.Owner, unlockingComp, ent.Comp), out Entity<XenoArtifactNodeComponent>? unlockingNode))
+            {
+                unlockingComp.EndTime = _timing.CurTime + TimeSpan.FromSeconds(0.5);
+            }
+            // Moffstation - End
             Dirty(ent, unlockingComp);
         }
     }
