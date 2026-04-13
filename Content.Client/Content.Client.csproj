@@ -21,6 +21,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_Moffstation\Robotics\" />
+    <Folder Include="_Moffstation\Silicons\" />
+  </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\XamlIL.targets" />
 </Project>

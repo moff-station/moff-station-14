@@ -1,0 +1,16 @@
+# Set Examine
+- type: entity
+  parent: BaseAction
+  id: ActionSetExtraExamine
+  name: Set Examine Text
+  description: Set extra examine text for yourself.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _Umbra/Interface/Actions/set-pose.rsi
+      state: eyeopen
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:SetExamineActionEvent

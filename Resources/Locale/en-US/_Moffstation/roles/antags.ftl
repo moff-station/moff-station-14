@@ -44,6 +44,10 @@ pirateproduct-category-name-reinforcements = Reinforcements
 pirateproduct-category-name-ammo = Ammo
 pirateproduct-category-name-tools = Tools
 
+ghost-role-information-flying-dutchman-name = Flying Dutchman
+ghost-role-information-flying-dutchman-description = A legendary pirate come to plunder from beyond the grave.
+
+
 # Vampries
 
 roles-antag-vampire-name = Vampire
