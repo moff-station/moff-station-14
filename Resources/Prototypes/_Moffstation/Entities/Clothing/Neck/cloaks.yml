@@ -23,3 +23,14 @@
     requiredSlot:
     - neck
     slot: head
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfHOS
+  name: head of Security's formal scarf
+  description: A fancy scarf with lavish gold embellishments. Will remind any bad actors about who is the true master of arms.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/hos-cape.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/hos-cape.rsi
