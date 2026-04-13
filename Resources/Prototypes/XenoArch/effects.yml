@@ -233,14 +233,14 @@
 - type: entity
   id: XenoArtifactPhasing
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-movement # Moffstation - Obfuscate xenoarcheology
+  description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAERemoveCollision
 
 - type: entity
   id: XenoArtifactWandering
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-movement # Moffstation - Obfuscate xenoarcheology
+  description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -253,7 +253,7 @@
 - type: entity
   id: XenoArtifactSolutionStorage
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-container # Moffstation - Obfuscate xenoarcheology
+  description: Internal chamber # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -284,7 +284,7 @@
 - type: entity
   id: XenoArtifactSpeedUp
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-tool # Moffstation - Obfuscate xenoarcheology
+  description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -295,7 +295,7 @@
 - type: entity
   id: XenoArtifactDrill
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-tool # Moffstation - Obfuscate xenoarcheology
+  description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -358,7 +358,7 @@
 - type: entity
   id: XenoArtifactGhost
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-mental # Moffstation - Obfuscate xenoarcheology
+  description: Cerebral influence # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -378,7 +378,7 @@
 - type: entity
   id: XenoArtifactOmnitool
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-tool # Moffstation - Obfuscate xenoarcheology
+  description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -425,7 +425,7 @@
 - type: entity
   id: XenoArtifactEffectBadFeeling
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-mental # Moffstation - Obfuscate xenoarcheology
+  description: Cerebral influence # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETelepathic
     messages:
@@ -455,7 +455,7 @@
 - type: entity
   id: XenoArtifactEffectGoodFeeling
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-mental # Moffstation - Obfuscate xenoarcheology
+  description: Cerebral influence # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETelepathic
     messages:
@@ -484,7 +484,7 @@
 - type: entity
   id: XenoArtifactEffectJunkSpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -506,14 +506,14 @@
 - type: entity
   id: XenoArtifactEffectLightFlicker
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-electrical # Moffstation - Obfuscate xenoarcheology
+  description: Electrical interference # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAELightFlicker
 
 - type: entity
   id: XenoArtifactPotassiumWave
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-biochemical # Moffstation - Obfuscate xenoarcheology
+  description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -540,7 +540,7 @@
 - type: entity
   id: XenoArtifactFloraSpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-teleportation # Moffstation - Obfuscate xenoarcheology
+  description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -555,7 +555,7 @@
 - type: entity
   id: XenoArtifactChemicalPuddle
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-biochemical # Moffstation - Obfuscate xenoarcheology
+  description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreatePuddle
     chemAmount:
@@ -591,14 +591,14 @@
 - type: entity
   id: XenoArtifactThrowThingsAround
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-environmental # Moffstation - Obfuscate xenoarcheology
+  description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEThrowThingsAround
 
 - type: entity
   id: XenoArtifactColdWave
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-energy-in # Moffstation - Obfuscate xenoarcheology
+  description: Endothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETemperature
     targetTemp: 50
@@ -606,7 +606,7 @@
 - type: entity
   id: XenoArtifactHeatWave
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-energy-out # Moffstation - Obfuscate xenoarcheology
+  description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETemperature
     targetTemp: 500
@@ -614,7 +614,7 @@
 - type: entity
   id: XenoArtifactFoamMild
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-biochemical # Moffstation - Obfuscate xenoarcheology
+  description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEFoam
     replaceDescription: false # Moffstation - Obfuscate xenoarcheology
@@ -634,7 +634,7 @@
 - type: entity
   id: XenoArtifactRandomInstrumentSpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 2
@@ -654,7 +654,7 @@
 - type: entity
   id: XenoArtifactMonkeySpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-teleportation # Moffstation - Obfuscate xenoarcheology
+  description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 3
@@ -677,7 +677,7 @@
 - type: entity
   id: XenoArtifactRadioactive
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-energy-out # Moffstation - Obfuscate xenoarcheology
+  description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -690,7 +690,7 @@
 - type: entity
   id: XenoArtifactChargeBattery
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-energy-out # Moffstation - Obfuscate xenoarcheology
+  description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEChargeBattery
   - type: XAETelepathic
@@ -700,7 +700,7 @@
 - type: entity
   id: XenoArtifactKnock
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-electrical # Moffstation - Obfuscate xenoarcheology
+  description: Electrical interference # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEKnock
   - type: XAELightFlicker
@@ -708,7 +708,7 @@
 - type: entity
   id: XenoArtifactMagnet
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-magnetic # Moffstation - Obfuscate xenoarcheology
+  description: Magnetic waves # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -722,7 +722,7 @@
 - type: entity
   id: XenoArtifactMagnetNegative
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-magnetic # Moffstation - Obfuscate xenoarcheology
+  description: Magnetic waves # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -736,7 +736,7 @@
 - type: entity
   id: XenoArtifactStealth
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-visual # Moffstation - Obfuscate xenoarcheology
+  description: Visual distortions # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -779,7 +779,7 @@
 - type: entity
   id: XenoArtifactRareMaterialSpawnSilver
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 4
@@ -802,7 +802,7 @@
 - type: entity
   id: XenoArtifactRareMaterialSpawnPlasma
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 4
@@ -825,7 +825,7 @@
 - type: entity
   id: XenoArtifactRareMaterialSpawnGold
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 3
@@ -848,7 +848,7 @@
 - type: entity
   id: XenoArtifactRareMaterialSpawnUranium
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 4
@@ -871,7 +871,7 @@
 - type: entity
   id: XenoArtifactAngryCarpSpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-teleportation # Moffstation - Obfuscate xenoarcheology
+  description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 3
@@ -894,7 +894,7 @@
 - type: entity
   id: XenoArtifactFaunaSpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-teleportation # Moffstation - Obfuscate xenoarcheology
+  description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 4
@@ -982,7 +982,7 @@
 - type: entity
   id: XenoArtifactCashSpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 2
@@ -1011,7 +1011,7 @@
 - type: entity
   id: XenoArtifactShatterWindows
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-environmental # Moffstation - Obfuscate xenoarcheology
+  description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 3
@@ -1030,7 +1030,7 @@
 - type: entity
   id: XenoArtifactFoamGood
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-biochemical # Moffstation - Obfuscate xenoarcheology
+  description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 7
@@ -1051,7 +1051,7 @@
 - type: entity
   id: XenoArtifactFoamDangerous
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-biochemical # Moffstation - Obfuscate xenoarcheology
+  description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEFoam
     minFoamAmount: 20
@@ -1073,7 +1073,7 @@
 - type: entity
   id: XenoArtifactPuddleRare
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-biochemical # Moffstation - Obfuscate xenoarcheology
+  description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreatePuddle
     chemAmount:
@@ -1103,7 +1103,7 @@
 - type: entity
   id: XenoArtifactAnomalySpawn
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-environmental # Moffstation - Obfuscate xenoarcheology
+  description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -1118,7 +1118,7 @@
 - type: entity
   id: XenoArtifactIgnite
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-energy-out # Moffstation - Obfuscate xenoarcheology
+  description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEIgnite
     range: 7
@@ -1129,14 +1129,14 @@
 - type: entity
   id: XenoArtifactTeleport
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-movement # Moffstation - Obfuscate xenoarcheology
+  description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAERandomTeleportInvoker
 
 - type: entity
   id: XenoArtifactEmp
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-energy-in # Moffstation - Obfuscate xenoarcheology
+  description: Endothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 5
@@ -1148,14 +1148,14 @@
 - type: entity
   id: XenoArtifactPolyMonkey
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-transmog # Moffstation - Obfuscate xenoarcheology
+  description: Transmogrificational activity # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPolymorph
 
 - type: entity
   id: XenoArtifactPolyLizard
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-transmog # Moffstation - Obfuscate xenoarcheology
+  description: Transmogrificational activity # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: ArtifactLizard
@@ -1163,7 +1163,7 @@
 - type: entity
   id: XenoArtifactPolyLuminous
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-transmog # Moffstation - Obfuscate xenoarcheology
+  description: Transmogrificational activity # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: ArtifactLuminous
@@ -1171,7 +1171,7 @@
 - type: entity
   id: XenoArtifactRadioactiveStrong
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-energy-out # Moffstation - Obfuscate xenoarcheology
+  description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -1184,7 +1184,7 @@
 - type: entity
   id: XenoArtifactMaterialSpawnGlass
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -1199,7 +1199,7 @@
 - type: entity
   id: XenoArtifactMaterialSpawnSteel
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -1214,7 +1214,7 @@
 - type: entity
   id: XenoArtifactMaterialSpawnPlastic
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -1229,14 +1229,14 @@
 - type: entity
   id: XenoArtifactPortal
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-movement # Moffstation - Obfuscate xenoarcheology
+  description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPortal
 
 - type: entity
   id: XenoArtifactArtifactSpawn
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-teleportation # Moffstation - Obfuscate xenoarcheology
+  description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
     maxDurability: 2
@@ -1256,7 +1256,7 @@
 - type: entity
   id: XenoArtifactShuffle
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-movement # Moffstation - Obfuscate xenoarcheology
+  description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEShuffle
   - type: XAETelepathic
@@ -1267,7 +1267,7 @@
 - type: entity
   id: XenoArtifactHealAll
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-biochemical # Moffstation - Obfuscate xenoarcheology
+  description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEDamageInArea
     damageChance: 1
@@ -1317,7 +1317,7 @@
 - type: entity
   id: XenoArtifactExplosionScary
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-environmental # Moffstation - Obfuscate xenoarcheology
+  description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETriggerExplosives
   - type: Explosive
@@ -1332,7 +1332,7 @@
 - type: entity
   id: XenoArtifactBoom
   parent: BaseOneTimeXenoArtifactEffect
-  description: xenoarch-effect-tip-environmental # Moffstation - Obfuscate xenoarcheology
+  description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETriggerExplosives
   - type: Explosive
@@ -1346,7 +1346,7 @@
 - type: entity
   id: XenoArtifactEffectCreationGasPlasma
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
     gases:
@@ -1355,7 +1355,7 @@
 - type: entity
   id: XenoArtifactEffectCreationGasTritium
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
     gases:
@@ -1364,7 +1364,7 @@
 - type: entity
   id: XenoArtifactEffectCreationGasAmmonia
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
     gases:
@@ -1373,7 +1373,7 @@
 - type: entity
   id: XenoArtifactEffectCreationGasFrezon
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
     gases:
@@ -1382,7 +1382,7 @@
 - type: entity
   id: XenoArtifactEffectCreationGasNitrousOxide
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
     gases:
@@ -1391,7 +1391,7 @@
 - type: entity
   id: XenoArtifactEffectCreationGasCarbonDioxide
   parent: BaseXenoArtifactEffect
-  description: xenoarch-effect-tip-creation # Moffstation - Obfuscate xenoarcheology
+  description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
     gases:
