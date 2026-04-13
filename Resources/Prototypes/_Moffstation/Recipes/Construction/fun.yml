@@ -5,3 +5,11 @@
   targetNode: BorgModuleCardboard
   category: construction-category-tools
   objectType: Item
+
+- type: construction
+  id: BoxHugHealing
+  graph: BoxHugHealing
+  startNode: start
+  targetNode: BoxHugHealing
+  category: construction-category-tools
+  objectType: Item
