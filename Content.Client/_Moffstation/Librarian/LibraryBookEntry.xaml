@@ -1,0 +1,21 @@
+<controls:LibraryBookEntry
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Librarian"
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+    <PanelContainer>
+        <PanelContainer.PanelOverride>
+            <graphics:StyleBoxFlat BackgroundColor="#24242b" BorderColor="#3d4059" BorderThickness="1"/>
+        </PanelContainer.PanelOverride>
+        <BoxContainer MinWidth="175" MinHeight="40" Margin="5">
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Left">
+                <Label Name="EntryTitle"/>
+                <Label Name="EntryAuthor" StyleClasses="LabelSubText"/>
+                <Label Name="EntryDescription" StyleClasses="LabelSubText"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Right">
+                <Button Name="PrintButton" Text="{Loc library-console-repo-print-button}" HorizontalAlignment="Right"/>
+                <Button Name="LoadButton" Text="{Loc library-console-repo-load-button}" HorizontalAlignment="Right"/>
+            </BoxContainer>
+        </BoxContainer>
+    </PanelContainer>
+</controls:LibraryBookEntry>

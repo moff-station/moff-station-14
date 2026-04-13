@@ -1,0 +1,15 @@
+<controls1:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls1="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:librarian="clr-namespace:Content.Client._Moffstation.Librarian"
+    Title="{Loc 'library-console-menu-title'}"
+    MinSize="600 550">
+    <BoxContainer Orientation="Vertical">
+        <GridContainer Columns="2" HorizontalAlignment="Center" HorizontalExpand="True">
+            <Button Name="UploadButton" Text="{Loc library-console-upload}" SetHeight="30" Margin="5"/>
+            <Button Name="RepoButton" Text="{Loc library-console-repo}" SetHeight="30" Margin="5"/>
+        </GridContainer>
+        <librarian:LibraryUploadWindow Name="UploadWindow"/>
+        <librarian:LibraryRepositoryWindow Name="RepositoryWindow" Visible="False"/>
+    </BoxContainer>
+</controls1:FancyWindow>

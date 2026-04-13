@@ -96,3 +96,38 @@
   components:
   - type: WirelessNetworkConnection
     range: 10000
+
+- type: entity
+  parent: BaseComputerAiAccess
+  id: ComputerLibraryUpload
+  name: library repository computer
+  description: A computer containing a repository of Nanotrasen's public literature.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: ActivatableUI
+    key: enum.LibraryConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.LibraryConsoleUiKey.Key:
+        type: LibraryConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: CommsComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 4.0
+    color: "#3c5eb5"
+  - type: Damageable
+    damageContainer: StructuralInorganic
