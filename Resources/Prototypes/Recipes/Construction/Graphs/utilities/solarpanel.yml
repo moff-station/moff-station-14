@@ -4,9 +4,9 @@
   graph:
     - node: start
       edges:
+        # Moffstation - Start - Constructable solars
         - to: solarframe
           steps:
-            # Moffstation - Start - Constructable solars
             #- tag: SolarAssemblyFlatpack
             #  name: construction-graph-tag-solar-assembly-parts
             #  icon:
@@ -16,7 +16,7 @@
             - material: Steel
               amount: 5
               doAfter: 2
-            # Moffstation - End
+        # Moffstation - End
 
     - node: solarassembly
       entity: SolarAssembly
