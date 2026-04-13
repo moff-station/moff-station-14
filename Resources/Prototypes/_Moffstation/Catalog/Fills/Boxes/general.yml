@@ -17,7 +17,7 @@
       - SurvivalBoxInsertable
 
 - type: entity
-  parent: BoxSurvivalEmpty # Moffstation - (Survival Box Improvements)
+  parent: BoxSurvivalEmpty
   id: BoxHugEmpty
   name: box of hugs
   description: A special box for sensitive people.
@@ -29,4 +29,7 @@
     - state: heart
   - type: Item
     heldPrefix: hug
-  - type: EntityTableContainerFill
+  - type: Tag
+    tags:
+    - BoxCardboard
+    - BoxHug
