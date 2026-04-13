@@ -7,9 +7,10 @@
   objectType: Item
 
 - type: construction
-  id: BoxHugHealing
-  graph: BoxHugHealing
+  id: BoxHugEmpty
+  graph: BoxHugEmpty
   startNode: start
-  targetNode: BoxHugHealing
+  targetNode: BoxHugEmpty
   category: construction-category-tools
   objectType: Item
+

@@ -6,11 +6,11 @@
     edges:
     - to: BoxHugEmpty
       steps:
-      - tag: Heart
+      - tag: Crayon
         icon:
-          sprite: Mobs/Species/Human/organs.rsi/heart-on.png
-          state: generic
-        name: construction-graph-tag-OrganAnimalHeart
+          sprite: Objects/Fun/crayons.rsi
+          state: rainbow
+        name: construction-graph-tag-crayon
       - material: Cardboard
         amount: 3
         doAfter: 3
