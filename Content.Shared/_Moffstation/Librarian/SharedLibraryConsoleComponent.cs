@@ -8,7 +8,6 @@ namespace Content.Shared._Moffstation.Librarian;
 [RegisterComponent]
 public sealed partial class SharedLibraryConsoleComponent : Component
 {
-
     [Serializable, NetSerializable]
     public enum LibraryConsoleUiKey
     {
