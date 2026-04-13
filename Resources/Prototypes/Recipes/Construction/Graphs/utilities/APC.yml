@@ -118,7 +118,7 @@
           doAfter: 4
 
     - node: apcPotato
-      entity: APCPotatoCapacity
+      entity: APCPotatoBreaker
       edges:
       - to: apcFrameWithBoard
         completed:
@@ -133,7 +133,7 @@
           doAfter: 4
 
     - node: apcSmall
-      entity: APCSmallCapacity
+      entity: APCSmallBreaker
       edges:
       - to: apcFrameWithBoard
         completed:
@@ -148,7 +148,7 @@
           doAfter: 4
 
     - node: apcHigh
-      entity: APCHighCapacity
+      entity: APCHighBreaker
       edges:
       - to: apcFrameWithBoard
         completed:
@@ -163,7 +163,7 @@
           doAfter: 4
 
     - node: apcHyper
-      entity: APCHyperCapacity
+      entity: APCHyperBreaker
       edges:
       - to: apcFrameWithBoard
         completed:

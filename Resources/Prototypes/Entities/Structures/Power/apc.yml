@@ -208,7 +208,7 @@
 - type: entity
   parent: BaseAPC
   id: APCBasic
-  suffix: Basic, 50kJ, 20.0 kW # Moffstation - Moduluar APCs
+  suffix: Basic, 50kJ Charge, 20.0kW Breaker # Moffstation - Moduluar APCs
   components:
   - type: Battery
     maxCharge: 50000
@@ -217,18 +217,11 @@
 - type: entity
   parent: BaseAPC
   id: APCHighCapacity
-  suffix: High Capacity, 100kJ, 40.0 kW # Moffstation - Modular APCs
+  suffix: High Capacity, 100kJ
   components:
   - type: Battery
     maxCharge: 100000
     startingCharge: 100000
-  # Moffstation - Start - Modular APCs
-  - type: Apc
-    maxLoad: 40000
-  - type: Construction
-    graph: APC
-    node: apcHigh
-  # Moffstation - End
 
 - type: entity
   parent: BaseAPC
@@ -242,18 +235,11 @@
 - type: entity
   parent: BaseAPC
   id: APCHyperCapacity
-  suffix: Hyper Capacity, 200kJ, 100.0 kW # Moffstation - Modular APCs
+  suffix: Hyper Capacity, 200kJ
   components:
   - type: Battery
     maxCharge: 200000
     startingCharge: 200000
-  # Moffstation - Start - Modular APCs
-  - type: Apc
-    maxLoad: 100000
-  - type: Construction
-    graph: APC
-    node: apcHyper
-  # Moffstation - End
 
 - type: entity
   parent: BaseAPC

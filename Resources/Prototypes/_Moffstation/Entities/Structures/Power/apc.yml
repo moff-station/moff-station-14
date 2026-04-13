@@ -1,4 +1,5 @@
-﻿- type: entity
+﻿# APC under construction
+- type: entity
   parent: APCFrame
   id: APCFrameWithBoard
   components:
@@ -6,14 +7,12 @@
     graph: APC
     node: apcFrameWithBoard
 
+# Constructed APC
 - type: entity
-  parent: BaseAPC
-  id: APCPotatoCapacity # Oh gods why
-  suffix: Potato Capacity, 1.0 kW
+  parent: APCBasic
+  id: APCPotatoBreaker # Oh gods why
+  suffix: Potato, 50kJ Charge, 1.0kW Breaker
   components:
-  - type: Battery
-    maxCharge: 5000
-    startingCharge: 5000
   - type: Apc
     maxLoad: 1000
   - type: Construction
@@ -21,15 +20,34 @@
     node: apcPotato
 
 - type: entity
-  parent: BaseAPC
-  id: APCSmallCapacity
-  suffix: Small Capacity, 10.0 kW
+  parent: APCBasic
+  id: APCSmallBreaker
+  suffix: Small, 50kJ Charge, 10.0kW Breaker
   components:
-  - type: Battery
-    maxCharge: 25000
-    startingCharge: 25000
   - type: Apc
     maxLoad: 10000
   - type: Construction
     graph: APC
     node: apcSmall
+
+- type: entity
+  parent: APCBasic
+  id: APCHighBreaker
+  suffix: High, 50kJ Charge, 40.0kW Breaker
+  components:
+  - type: Apc
+    maxLoad: 40000
+  - type: Construction
+    graph: APC
+    node: apcHigh
+
+- type: entity
+  parent: APCBasic
+  id: APCHyperBreaker
+  suffix: Hyper, 50kJ Charge, 100.0kW Breaker
+  components:
+  - type: Apc
+    maxLoad: 100000
+  - type: Construction
+    graph: APC
+    node: apcHyper
