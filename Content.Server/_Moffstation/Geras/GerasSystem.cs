@@ -6,6 +6,7 @@ using Content.Server.Inventory;
 using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Shared._Moffstation.Geras;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Body.Systems;
@@ -158,7 +159,7 @@ public sealed class GerasSystem : EntitySystem
             damage != null)
         {
             _damageable.SetDamage((geras, damageParent), damage);
-            //_damageable.ClearAllDamage(uid);
+            _damageable.ClearAllDamage(uid);
         }
 
         // Transfer bloodstream
@@ -168,6 +169,9 @@ public sealed class GerasSystem : EntitySystem
             if (_solutionContainer.ResolveSolution(geras, bloodstreamGeras.BloodSolutionName, ref bloodstreamGeras.BloodSolution)
                 && _solutionContainer.ResolveSolution(uid, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
             {
+                //stop bleeding
+                _bloodstream.TryModifyBleedAmount(uid, -bloodstreamParent.BleedAmount);
+
                 //Empty Geras Bloodstream
                 _solutionContainer.RemoveAllSolution((geras, bloodstreamGeras.BloodSolution));
 
@@ -194,7 +198,19 @@ public sealed class GerasSystem : EntitySystem
             gerasTemp.CurrentTemperature = parentTemp.CurrentTemperature;
         }
 
-        RaiseLocalEvent(uid, new RejuvenateEvent());
+        //Transfer fire
+        if (TryComp<FlammableComponent>(uid, out var flammableParent))
+        {
+            //Gerasing quenches the player
+            flammableParent.OnFire = false;
+
+            //But won't unmix the fuel from them
+            if (TryComp<FlammableComponent>(geras, out var flammableGeras))
+            {
+                flammableGeras.FireStacks = flammableParent.FireStacks;
+            }
+        }
+
 
 
 
