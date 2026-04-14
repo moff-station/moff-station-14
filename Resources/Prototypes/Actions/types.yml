@@ -383,6 +383,7 @@
     itemIconStyle: NoItem
     useDelay: 1 # emote spam
     checkCanInteract: false
+    priority: 1000 # Moffstation - RP actions go last in the bar
 
 - type: entity
   parent: BaseAction
