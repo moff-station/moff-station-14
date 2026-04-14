@@ -3,8 +3,12 @@ using Content.Shared.Zombies;
 using Content.Server.Actions;
 using Content.Server.Body;
 using Content.Server.Inventory;
+using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Shared._Moffstation.Geras;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Hands.Components;
@@ -14,6 +18,7 @@ using Content.Shared.Implants;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Preferences;
+using Content.Shared.Rejuvenate;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Server.GameObjects;
@@ -41,6 +46,8 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
     [Dependency] private readonly HumanoidProfileSystem _profileSystem = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] protected readonly SharedSolutionContainerSystem SolutionContainer = default!;
 
 
     /// <inheritdoc/>
@@ -149,8 +156,20 @@ public sealed class GerasSystem : EntitySystem
             damage != null)
         {
             _damageable.SetDamage((geras, damageParent), damage);
-            _damageable.ClearAllDamage(uid);
+            //_damageable.ClearAllDamage(uid);
         }
+
+        // Transfer bloodloss
+        if (TryComp<BloodstreamComponent>(geras, out var bloodGeras) && TryComp<BloodstreamComponent>(uid, out var bloodParent))
+        {
+            if (SolutionContainer.ResolveSolution(geras, bloodGeras.BloodSolutionName, ref bloodGeras.BloodSolution))
+            {
+                SolutionContainer.RemoveAllSolution((geras, bloodGeras.BloodSolution));
+                _bloodstream.TryRegulateBloodLevel(geras, _bloodstream.GetBloodLevel(uid), 1f);
+            }
+        }
+
+        RaiseLocalEvent(uid, new RejuvenateEvent());
 
 
 

@@ -13,6 +13,11 @@
     thresholds:
       0: Alive
       80: Dead # weak af tho
+  - type: Bloodstream
+    bloodReferenceSolution: # Geras bloodstream size = slimeperson bloodstream size
+      reagents:
+        - ReagentId: Slime
+          Quantity: 300
   - type: NpcFactionMember
     factions:
     - NanoTrasen
