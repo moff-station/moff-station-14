@@ -1,5 +1,5 @@
 game-ticker-get-info-text-moff = Hi and welcome to [color=#7d3bc8]Moffstation[/color]!
-                            It is current shift [color=white]#{$roundId}[/color]
+                            It is currently shift [color=white]#{$roundId}[/color]
                             The current player count is: [color=white]{$playerCount}[/color]
                             The current station is: [color=white]{$mapName}[/color]
                             The current game mode is: [color=white]{$gmTitle}[/color]
