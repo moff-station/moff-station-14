@@ -7,6 +7,7 @@ using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Shared._Moffstation.Geras;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Events;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Components;
@@ -47,7 +48,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly HumanoidProfileSystem _profileSystem = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] protected readonly SharedSolutionContainerSystem SolutionContainer = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
 
 
     /// <inheritdoc/>
@@ -159,13 +160,30 @@ public sealed class GerasSystem : EntitySystem
             //_damageable.ClearAllDamage(uid);
         }
 
-        // Transfer bloodloss
-        if (TryComp<BloodstreamComponent>(geras, out var bloodGeras) && TryComp<BloodstreamComponent>(uid, out var bloodParent))
+        // Transfer bloodstream
+        if (TryComp<BloodstreamComponent>(geras, out var bloodstreamGeras)
+            && TryComp<BloodstreamComponent>(uid, out var bloodstreamParent))
         {
-            if (SolutionContainer.ResolveSolution(geras, bloodGeras.BloodSolutionName, ref bloodGeras.BloodSolution))
+            if (_solutionContainer.ResolveSolution(geras, bloodstreamGeras.BloodSolutionName, ref bloodstreamGeras.BloodSolution)
+                && _solutionContainer.ResolveSolution(uid, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
             {
-                SolutionContainer.RemoveAllSolution((geras, bloodGeras.BloodSolution));
-                _bloodstream.TryRegulateBloodLevel(geras, _bloodstream.GetBloodLevel(uid), 1f);
+                //Empty Geras Bloodstream
+                _solutionContainer.RemoveAllSolution((geras, bloodstreamGeras.BloodSolution));
+
+                //Transfer blood level
+                _bloodstream.TryModifyBloodLevel(geras, _bloodstream.GetBloodLevel(uid)*bloodstreamParent.BloodReferenceSolution.Volume);
+
+                //Transfer other chemicals
+                var ev = new MetabolismExclusionEvent();
+                RaiseLocalEvent(uid, ref ev);
+
+                foreach (var (reagent, quantity) in bloodstreamParent.BloodSolution.Value.Comp.Solution.Contents.ToList())
+                {
+                    if (ev.Reagents.Contains(reagent))
+                        continue;
+
+                    _solutionContainer.TryAddReagent(bloodstreamGeras.BloodSolution.Value, reagent.Prototype, quantity);
+                }
             }
         }
 
