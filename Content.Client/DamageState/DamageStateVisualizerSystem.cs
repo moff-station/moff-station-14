@@ -1,3 +1,7 @@
+//Moffstation - Re-add Geras - Begin
+using Content.Shared._Moffstation.DamageState;
+using Content.Shared.Body;
+//Moffstation - End
 using Content.Shared.Mobs;
 using Robust.Client.GameObjects;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
@@ -6,6 +10,34 @@ namespace Content.Client.DamageState;
 
 public sealed class DamageStateVisualizerSystem : VisualizerSystem<DamageStateVisualsComponent>
 {
+
+    //Moffstation - Re-add Geras - Begin
+    [Dependency] private readonly BodySystem _bodySystem = default!;
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<BodyComponent, AppearanceChangeEvent>(OnBodyAppearanceChange);
+        SubscribeLocalEvent<DamageStateVisualsComponent, BodyRelayedEvent<AppearanceChangeEvent>>(OnAppearanceChange);
+    }
+
+    private void OnBodyAppearanceChange(Entity<BodyComponent> ent, ref AppearanceChangeEvent args)
+    {
+        _bodySystem.RelayEvent(ent, ref args);
+    }
+
+    private void OnAppearanceChange(Entity<DamageStateVisualsComponent> ent, ref BodyRelayedEvent<AppearanceChangeEvent> args)
+    {
+        if (!TryComp<AppearanceComponent>(ent.Owner, out var appearance))
+            return;
+        if (!TryComp<SpriteComponent>(ent.Owner, out var sprite))
+            return;
+
+        var ev = new AppearanceChangeEvent{Component = appearance, AppearanceData = args.Args.AppearanceData, Sprite = sprite};
+        OnAppearanceChange(ent.Owner, ent.Comp, ref ev);
+    }
+    //Moffstation - End
+
     protected override void OnAppearanceChange(EntityUid uid, DamageStateVisualsComponent component, ref AppearanceChangeEvent args)
     {
         var sprite = args.Sprite;
@@ -35,6 +67,15 @@ public sealed class DamageStateVisualizerSystem : VisualizerSystem<DamageStateVi
 
             SpriteSystem.LayerSetVisible((uid, sprite), key, true);
             SpriteSystem.LayerSetRsiState((uid, sprite), key, state);
+
+            //Moffstation - Re-add Geras - Begin
+            //forcibly set the state value if the entity being updated is a VisualOrgan because it won't do it on its own
+            if (HasComp<VisualOrganComponent>(uid))
+            {
+                var ev = new ForceUpdateOrganVisualsEvent { State = state };
+                RaiseLocalEvent(uid, ref ev);
+            }
+            //Moffstation - End
         }
 
         // So they don't draw over mobs anymore

@@ -29,6 +29,7 @@ public sealed class HumanoidProfileSystem : EntitySystem
         ent.Comp.Species = profile.Species;
         ent.Comp.Sex = profile.Sex;
         ent.Comp.Height = profile.Height; // Moffstation - CD Height
+        ent.Comp.SkinColor = profile.Appearance.SkinColor; // Moffstation - Re-add Geras
         Dirty(ent);
 
         var sexChanged = new SexChangedEvent(ent.Comp.Sex, profile.Sex);
