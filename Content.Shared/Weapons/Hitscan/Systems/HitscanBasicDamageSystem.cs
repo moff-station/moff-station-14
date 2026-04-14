@@ -22,8 +22,7 @@ public sealed class HitscanBasicDamageSystem : EntitySystem
 
         var dmg = ent.Comp.Damage * _damage.UniversalHitscanDamageModifier;
 
-        // Moffstation - Fix shooter origin
-        if(!_damage.TryChangeDamage(args.Data.HitEntity.Value, dmg, out var damageDealt, origin: args.Data.Shooter))
+        if(!_damage.TryChangeDamage(args.Data.HitEntity.Value, dmg, out var damageDealt, origin: args.Data.Shooter)) // Moffstation - Fix shooter origin
             return;
 
         var damageEvent = new HitscanDamageDealtEvent
