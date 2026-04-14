@@ -15,3 +15,21 @@
     whitelist:
       tags:
       - SurvivalBoxInsertable
+
+- type: entity
+  parent: BoxSurvivalEmpty
+  id: BoxHugEmpty
+  name: box of hugs
+  description: A special box for sensitive people.
+  suffix: Empty
+  components:
+  - type: Sprite
+    layers:
+    - state: box_hug
+    - state: heart
+  - type: Item
+    heldPrefix: hug
+  - type: Tag
+    tags:
+    - BoxCardboard
+    - BoxHug
