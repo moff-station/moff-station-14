@@ -44,21 +44,3 @@
   components:
   - type: ReplacementAccent
     accent: italian
-
-- type: trait
-  id: ScandiAccent
-  name: trait-scandi-accent-name
-  description: trait-scandi-accent-desc
-  category: SpeechTraits
-  cost: 1
-  components:
-  - type: ScandinavianAccent
-
-- type: trait
-  id: BostonAccent
-  name: trait-boston-accent-name
-  description: trait-boston-accent-desc
-  category: SpeechTraits
-  cost: 1
-  components:
-  - type: BostonAccent
