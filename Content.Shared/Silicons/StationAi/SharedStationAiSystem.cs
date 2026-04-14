@@ -89,6 +89,7 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         InitializeHeld();
         InitializeLight();
         InitializeCustomization();
+        InitMoffstation(); // Moffstation - Initialize the Moffstation specific things (Moffstation) !! ONLY ON MOFFSTATION !!
 
         SubscribeLocalEvent<StationAiWhitelistComponent, BoundUserInterfaceCheckRangeEvent>(OnAiBuiCheck);
 

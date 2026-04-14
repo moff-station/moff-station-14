@@ -1,0 +1,29 @@
+﻿<Document>
+  # Controllable AI Shells
+  To allow for an AI to have more interaction with the station and crew, science is capable of creating shells that an AI is able to take direct control of.
+
+  ## Construction
+  Shells can be printed at any exosuit fabricator without the need for any research. Shells are automatically linked to any active AIs aboard the station upon creation, allowing those AIs to control the shell at any time.
+
+  Shells are similar to cyborgs in that they require a power cell and require regular charge. Also similar to cyborgs, cells can be fitted with modules, though they are limited to only one generic module.
+
+  ## How to Use
+  Station AIs may use the "AI Shell" action to interact with their linked shells. Station AIs can use this action to:
+  - Jump to the selected shell, which will immediately move the AI's eye to the shell's current position.
+  - Inhabit a shell, temporarily moving the AI's consciousness from the AI eye to shell, allowing the AI to directly move, speak from the shell, and utilize any modules installed in it.
+
+  Within a shell, you are now capable of doing whatever a cyborg is capable of doing! (See the page on cyborgs for specifics)
+
+  An AI inhabiting a shell is still an Station AI, however, and thus retains a few functions of an AI even while inside a shell.
+  - It still has access to every radio channel that it has while inhabiting its core.
+  - It is still subject to its laws.
+  - Its laws can still be modified through the usual means.
+
+  This comes at a few downsides. Inside of a shell:
+  - An AI is no longer capable of accessing its non-shell actions unless it exits the shell to do so.
+  - Its vision is now limited to the vision of the shell
+  - It can neither make not receive calls via holopad.
+
+  Any unlinked shells can be added to by an AI to its list of available shells by right-clicking them and selecting "Link to Core".
+
+</Document>

@@ -112,3 +112,115 @@
       - BorgModuleService
     hasMindState: borg_e
     noMindState: borg_e_r
+
+  #Station Ai Shell
+- type: entity
+  parent: BaseBorgChassis
+  id: PlayerAiShell
+  name: empty shell
+  description: A shell, inhabitable by the Stations Ai. Carrying it around and throwing it is discouraged, but not prohibited.
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - AIShellBrain
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Silicon/Chassis/aishells.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: aishell
+    - state: aishell_e
+      map: [ "enum.BorgVisualLayers.Light" ]
+      shader: unshaded
+      visible: false
+    - state: aishell_l
+      shader: unshaded
+      map: [ "light" ]
+      visible: false
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: aishell
+      Critical:
+        Base: aishell_dead
+      Dead:
+        Base: aishell_dead
+  - type: Inventory
+    templateId: aiShell
+  - type: RandomMetadata # overriding parent component so spawned prototypes have the correct name
+    nameSegments: null
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Common
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+  - type: BorgChassis
+    maxModules: 1
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+    hasMindState: aishell_e
+    noMindState: aishell_e_r
+  - type: MultiHandedItem
+  - type: Item
+    size: Huge
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Critical
+      100: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - borg_module
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: PlayerAiShellBattery
+  parent: PlayerAiShell
+  suffix: Battery
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+
