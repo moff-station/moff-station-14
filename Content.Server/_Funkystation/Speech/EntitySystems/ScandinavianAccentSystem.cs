@@ -38,7 +38,7 @@ public sealed class ScandinavianAccentSystem : EntitySystem
 
         for (var i = 0; i < messageBuilder.Length; i++)
         {
-            if (!_random.Prob(0.4f))
+            if (!_random.Prob(0.3f))
                 continue;
             messageBuilder[i] = messageBuilder[i] switch
             {
