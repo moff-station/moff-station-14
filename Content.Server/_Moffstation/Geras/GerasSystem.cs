@@ -22,6 +22,7 @@ using Content.Shared.Preferences;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Temperature.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 
@@ -173,7 +174,7 @@ public sealed class GerasSystem : EntitySystem
                 //Transfer blood level
                 _bloodstream.TryModifyBloodLevel(geras, _bloodstream.GetBloodLevel(uid)*bloodstreamParent.BloodReferenceSolution.Volume);
 
-                //Transfer other chemicals
+                //Transfer other chemicals (needs to be separate b/c of blood not necessarily being blood)
                 var ev = new MetabolismExclusionEvent();
                 RaiseLocalEvent(uid, ref ev);
 
@@ -185,6 +186,12 @@ public sealed class GerasSystem : EntitySystem
                     _solutionContainer.TryAddReagent(bloodstreamGeras.BloodSolution.Value, reagent.Prototype, quantity);
                 }
             }
+        }
+
+        //Transfer Temperature
+        if (TryComp<TemperatureComponent>(uid, out var parentTemp) && TryComp<TemperatureComponent>(geras, out var gerasTemp))
+        {
+            gerasTemp.CurrentTemperature = parentTemp.CurrentTemperature;
         }
 
         RaiseLocalEvent(uid, new RejuvenateEvent());
