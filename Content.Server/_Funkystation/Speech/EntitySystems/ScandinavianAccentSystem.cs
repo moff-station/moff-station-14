@@ -15,6 +15,11 @@ public sealed class ScandinavianAccentSystem : EntitySystem
     private static readonly Regex RegexLowercaseTh = new(@"th");
     private static readonly Regex RegexUppercaseTh = new(@"T(?i)h");
 
+    private static readonly List<char> ReplacementsA = ['Å', 'Ä'];
+    private static readonly List<char> ReplacementsALowerCase = ['å', 'ä'];
+    private static readonly List<char> ReplacementsO = ['Ø', 'Ö'];
+    private static readonly List<char> ReplacementsOLowerCase = ['ø', 'ö'];
+
     public override void Initialize()
     {
         SubscribeLocalEvent<ScandinavianAccentComponent, AccentGetEvent>(OnAccent);
@@ -30,62 +35,21 @@ public sealed class ScandinavianAccentSystem : EntitySystem
 
         var messageBuilder = new StringBuilder(message);
 
-        // SHITCODE INCOMING. "A" and "O" have a 25% chance (50% * 50%) to be replaced with an accented equivalent. "E" has a 12.5% chance (25% * 50%) to be replaced with "Æ".
+
         for (var i = 0; i < messageBuilder.Length; i++)
         {
-            if (_random.Prob(0.5f))
+            if (!_random.Prob(0.4f))
+                continue;
+            messageBuilder[i] = messageBuilder[i] switch
             {
-                var randomInt = _random.Next(0, 4);
-                switch (messageBuilder[i])
-                {
-                    case 'A':
-                        messageBuilder[i] = randomInt switch
-                        {
-                            0 => 'Å',
-                            1 => 'Ä',
-                            _ => 'A'
-                        };
-                        break;
-                    case 'a':
-                        messageBuilder[i] = randomInt switch
-                        {
-                            0 => 'å',
-                            1 => 'ä',
-                            _ => 'a'
-                        };
-                        break;
-                    case 'E':
-                        messageBuilder[i] = randomInt switch
-                        {
-                            0 => 'Æ',
-                            _ => 'E'
-                        };
-                        break;
-                    case 'e':
-                        messageBuilder[i] = randomInt switch
-                        {
-                            0 => 'æ',
-                            _ => 'e'
-                        };
-                        break;
-                    case 'O':
-                        messageBuilder[i] = randomInt switch
-                        {
-                            0 => 'Ø',
-                            1 => 'Ö',
-                            _ => 'O'
-                        };
-                        break;
-                    case 'o':
-                        messageBuilder[i] = randomInt switch
-                        {
-                            0 => 'ø',
-                            1 => 'ö',
-                            _ => 'o'
-                        };
-                        break;
-                }
-            }
+                'A' => _random.Pick(ReplacementsA),
+                'a' => _random.Pick(ReplacementsALowerCase),
+                'E' => 'Æ',
+                'e' => 'æ',
+                'O' => _random.Pick(ReplacementsO),
+                'o' => _random.Pick(ReplacementsOLowerCase),
+                _ => messageBuilder[i],
+            };
         }
 
         return messageBuilder.ToString();

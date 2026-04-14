@@ -1,7 +1,9 @@
 - type: trait
   id: BostonAccent
-  name: trait-boston-name
-  description: trait-boston-desc
+  # Moffstation - Start
+  name: trait-boston-accent-name-moff
+  description: trait-boston-accent-desc-moff
+  # Moffstation - End
   category: SpeechTraits
   cost: 1
   components:
@@ -9,8 +11,10 @@
 
 - type: trait
   id: ScandinavianAccent
-  name: trait-scandinavian-name
-  description: trait-scandinavian-desc
+  # Moffstation - Start
+  name: trait-scandi-accent-name-moff
+  description: trait-scandi-accent-desc-moff
+  # Moffstation - End
   category: SpeechTraits
   cost: 1
   components:
