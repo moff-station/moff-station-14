@@ -12,5 +12,6 @@
       sprite: _Umbra/Interface/Actions/set-pose.rsi
       state: eyeopen
     itemIconStyle: NoItem
+    priority: 100000 # Will be added first, making it show up last
   - type: InstantAction
     event: !type:SetExamineActionEvent
