@@ -10,11 +10,8 @@
     <Nullable Condition="'$(Nullable)' == ''">enable</Nullable>
   </PropertyGroup>
 
-  <!-- Moffstation - Begin - Disable warnings as errors because of an upstream dependency vulnerability -->
-  <!-- Uncomment after https://github.com/space-wizards/space-station-14/issues/43600 is resolved! -->
-<!--  <PropertyGroup Condition="'$(Configuration)' == 'Release'">-->
-<!--    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
-<!--    <WarningsNotAsErrors>CS0618,CS0672,CS0612,CS1062,CS1064,NU1903</WarningsNotAsErrors>-->
-<!--  </PropertyGroup>-->
-  <!-- Moffstation - End -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>CS0618,CS0672,CS0612,CS1062,CS1064,NU1903</WarningsNotAsErrors>
+  </PropertyGroup>
 </Project>
