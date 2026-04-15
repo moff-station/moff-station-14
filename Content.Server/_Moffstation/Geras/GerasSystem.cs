@@ -197,14 +197,14 @@ public sealed class GerasSystem : EntitySystem
         if (TryComp<BloodstreamComponent>(geras, out var bloodstreamGeras)
             && TryComp<BloodstreamComponent>(uid, out var bloodstreamParent))
         {
+            //Empty Geras Bloodstream
+            _bloodstream.ClearBloodStream((geras, bloodstreamGeras));
+
             if (_solutionContainer.ResolveSolution(geras, bloodstreamGeras.BloodSolutionName, ref bloodstreamGeras.BloodSolution)
                 && _solutionContainer.ResolveSolution(uid, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
             {
                 //stop bleeding
                 _bloodstream.TryModifyBleedAmount(uid, -bloodstreamParent.BleedAmount);
-
-                //Empty Geras Bloodstream
-                _solutionContainer.RemoveAllSolution((geras, bloodstreamGeras.BloodSolution));
 
                 //Transfer blood level
                 _bloodstream.TryModifyBloodLevel(geras, _bloodstream.GetBloodLevel(uid)*bloodstreamParent.BloodReferenceSolution.Volume);
@@ -229,7 +229,6 @@ public sealed class GerasSystem : EntitySystem
                 {
                     _solutionContainer.TryAddReagent(bloodstreamGeras.MetabolitesSolution.Value, reagent.Prototype, quantity);
                 }
-                _solutionContainer.RemoveAllSolution((uid, bloodstreamParent.MetabolitesSolution));
             }
         }
 
