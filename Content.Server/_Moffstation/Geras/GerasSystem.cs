@@ -193,9 +193,6 @@ public sealed class GerasSystem : EntitySystem
             _damageable.ClearAllDamage(uid);
         }
 
-        // Clear Stamina effects
-        RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
-
         // Transfer bloodstream
         if (TryComp<BloodstreamComponent>(geras, out var bloodstreamGeras)
             && TryComp<BloodstreamComponent>(uid, out var bloodstreamParent))
@@ -290,6 +287,10 @@ public sealed class GerasSystem : EntitySystem
             var newStatusTransferEv = new TransferNewStatusEffectsEvent((uid, newStatuses));
             RaiseLocalEvent(geras, newStatusTransferEv);
         }
+
+        // Clear Stamina effects
+        RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
+        RaiseLocalEvent(geras, new ClearStaminaDamageEvent());
 
         // Transfer mind
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
