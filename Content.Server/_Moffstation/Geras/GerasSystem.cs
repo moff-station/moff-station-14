@@ -13,6 +13,8 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Ensnaring;
+using Content.Shared.Ensnaring.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
@@ -52,6 +54,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private readonly SharedEnsnareableSystem _ensnareable = default!;
 
 
     /// <inheritdoc/>
@@ -123,6 +126,16 @@ public sealed class GerasSystem : EntitySystem
         foreach (var held in _hands.EnumerateHeld(uid))
         {
             _hands.TryDrop(uid, held);
+        }
+
+        //Remove bolas
+        if (TryComp<EnsnareableComponent>(uid, out var ensnared) && ensnared.IsEnsnared)
+        {
+            foreach (Entity<EnsnaringComponent?> bola in ensnared.Container.ContainedEntities.ToList())
+            {
+                if (TryComp<EnsnaringComponent>(bola, out var ensnaringComponent))
+                    _ensnareable.ForceFree(bola, ensnaringComponent);
+            }
         }
 
         var playerTransform = Transform(uid);
@@ -211,7 +224,6 @@ public sealed class GerasSystem : EntitySystem
                 flammableGeras.FireStacks = flammableParent.FireStacks;
             }
         }
-
 
 
 
