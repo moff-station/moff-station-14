@@ -17,6 +17,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Implants;
+using Content.Shared.Kitchen.Components;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Preferences;
@@ -135,12 +136,12 @@ public sealed class GerasSystem : EntitySystem
             {
                 _hands.TryDrop(container.Owner, uid);
             }
-            else if (HasComp<StorageComponent>(container.Owner))// If the entity is in a bag, take them out of the bag
+            else if (HasComp<StorageComponent>(container.Owner) || HasComp<KitchenSpikeComponent>(container.Owner))// If the entity is in a bag or meatspike, take them out of it
             {
                 _container.AttachParentToContainerOrGrid((uid, playerTransform));
             }
         }
-        if (_container.IsEntityInContainer(uid))// If the entity is in any other container, put the geras in that container
+        if (_container.IsEntityOrParentInContainer(uid))// If the entity is in any other container, put the geras in that container
         {
             _transform.DropNextTo(geras, uid);
         }
