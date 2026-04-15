@@ -51,8 +51,11 @@ public sealed class StomachSystem : EntitySystem
 
     private void OnApplyStomachContents(Entity<StomachComponent> ent, ref BodyRelayedEvent<ApplyStomachContentsEvent> args)
     {
-        if (ent.Comp.Solution is { } targetSolution && args.Args.Contents.Solution is { } sourceSolution)
-            _solutionContainerSystem.TryAddSolution(targetSolution, sourceSolution);
+        if (args.Args.Contents is not { } contents)
+            return;
+
+        if ( contents.Solution is { } sourceSolution)
+            TryTransferSolution(ent, sourceSolution, ent.Comp);
     }
 
     private void OnEmptyStomach(Entity<StomachComponent> ent, ref BodyRelayedEvent<EmptyStomachEvent> args)
