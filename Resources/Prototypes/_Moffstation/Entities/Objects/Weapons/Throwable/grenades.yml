@@ -33,7 +33,7 @@
         transferForensics: true
       - !type:SpawnEntitiesBehavior
         spawn:
-          MobGiantSpiderViper:
+          MobViperAngrySmasherSyndicate:
             min: 3
             max: 3
       - !type:DoActsBehavior
@@ -55,7 +55,7 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
     state: icon
-    scale: 0.8, 0.8
+    color: "#FF69B4"
   - type: LandAtCursor
   - type: Destructible
     thresholds:

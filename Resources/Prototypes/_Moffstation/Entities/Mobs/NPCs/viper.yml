@@ -1,6 +1,6 @@
-- type: entity
+- type: entity #Right now basically a resprited spider
   name: Viper
-  parent: MobSpiderBase
+  parent: MobSpiderAngryBase
   id: MobGiantSpiderViper
   description: That spider look SCARY. E-yikes!
   components:
@@ -37,3 +37,18 @@
   - type: MeleeChemicalInjector
     transferAmount: 1 #Slightly more mechanotoxin
     solution: melee
+
+- type: entity
+  parent: [BaseSmasherHostile, MobGiantSpiderViper]
+  id: MobViperAngrySmasher
+  suffix: Angry, Smasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobGiantSpiderViper]
+  id: MobViperAngrySmasherSyndicate
+  suffix: Angry, Smasher, Syndicate
+  components:
+  - type: NpcFactionMember
+    factions:
+      - Syndicate
+      - Xeno

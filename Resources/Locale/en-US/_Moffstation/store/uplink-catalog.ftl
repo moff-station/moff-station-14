@@ -8,3 +8,10 @@ uplink-hypereutatic-blade-moff-desc = A gigantic energy sword with power that ma
 # Wearables
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
+
+# Allies
+uplink-spider-grenade-name = Jar of Spiders
+uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Vipers, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight. 
+
+uplink-clown-spider-grenade-name = Jar of Clown Spiders
+uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spiders floating inside liquid happiness laugh away. Would be funny to throw at someone.

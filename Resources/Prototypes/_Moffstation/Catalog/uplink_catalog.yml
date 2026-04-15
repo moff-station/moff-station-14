@@ -43,6 +43,36 @@
   categories:
   - UplinkWearables
 
+# Allies
+- type: listing
+  id: UplinkSpiderGrenade
+  name: uplink-spider-grenade-name
+  description: uplink-spider-grenade-desc
+  productEntity: SpiderJar
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkAllies
+
+- type: listing
+  id: UplinkClownSpiderGrenade
+  name: uplink-clown-spider-grenade-name
+  description: uplink-clown-spider-grenade-name
+  productEntity: SpiderJarClown
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkAllies
+  jobWhitelist:
+  - Clown
+  - Mime
+
 # Other
 
 - type: listing
