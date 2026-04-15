@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Body.Events;// Moffstation - Geras Patch
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -9,8 +10,57 @@ namespace Content.Shared.Body.Systems;
 public sealed class StomachSystem : EntitySystem
 {
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly BodySystem _body = default!;// Moffstation - Geras Patch
 
     public const string DefaultSolutionName = "stomach";
+
+    // Moffstation - Geras Patch - Begin
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<BodyComponent, GetStomachContentsEvent>(RelayGetStomachContents);
+        SubscribeLocalEvent<BodyComponent, ApplyStomachContentsEvent>(RelayApplyStomachContents);
+        SubscribeLocalEvent<BodyComponent, EmptyStomachEvent>(RelayEmptyStomach);
+        SubscribeLocalEvent<StomachComponent, BodyRelayedEvent<GetStomachContentsEvent>>(OnGetStomachContents);
+        SubscribeLocalEvent<StomachComponent, BodyRelayedEvent<ApplyStomachContentsEvent>>(OnApplyStomachContents);
+        SubscribeLocalEvent<StomachComponent, BodyRelayedEvent<EmptyStomachEvent>>(OnEmptyStomach);
+    }
+
+    private void RelayGetStomachContents(Entity<BodyComponent> ent, ref GetStomachContentsEvent args)
+    {
+        _body.RelayEvent(ent, ref args);
+    }
+    private void RelayApplyStomachContents(Entity<BodyComponent> ent, ref ApplyStomachContentsEvent args)
+    {
+        _body.RelayEvent(ent, ref args);
+    }
+    private void RelayEmptyStomach(Entity<BodyComponent> ent, ref EmptyStomachEvent args)
+    {
+        _body.RelayEvent(ent, ref args);
+    }
+
+    private void OnGetStomachContents(Entity<StomachComponent> ent, ref BodyRelayedEvent<GetStomachContentsEvent> args)
+    {
+        if (ent.Comp.Solution is { } solution)
+        {
+            args.Args = args.Args with { Contents = solution };
+            args.Args = args.Args with { Handled = true };
+        }
+    }
+
+    private void OnApplyStomachContents(Entity<StomachComponent> ent, ref BodyRelayedEvent<ApplyStomachContentsEvent> args)
+    {
+        if (ent.Comp.Solution is { } targetSolution && args.Args.Contents.Solution is { } sourceSolution)
+            _solutionContainerSystem.TryAddSolution(targetSolution, sourceSolution);
+    }
+
+    private void OnEmptyStomach(Entity<StomachComponent> ent, ref BodyRelayedEvent<EmptyStomachEvent> args)
+    {
+        if (ent.Comp.Solution is { } solution)
+            _solutionContainerSystem.RemoveAllSolution(solution);
+    }
+    // Moffstation - End
 
     public bool CanTransferSolution(
         EntityUid uid,

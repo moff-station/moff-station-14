@@ -5,6 +5,7 @@ using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Mind;
 using Content.Server.Popups;
+using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
 using Content.Shared.Atmos.Components;
@@ -233,6 +234,17 @@ public sealed class GerasSystem : EntitySystem
                 }
                 _solutionContainer.RemoveAllSolution((uid, bloodstreamParent.MetabolitesSolution));
             }
+        }
+
+        //Transfer Stomach Contents
+        var getStomachEv = new GetStomachContentsEvent();
+        RaiseLocalEvent(uid, ref getStomachEv);
+        if (getStomachEv.Handled)
+        {
+            var setStomachEv = new ApplyStomachContentsEvent(getStomachEv.Contents);
+            RaiseLocalEvent(geras, ref setStomachEv);
+            var clearStomachEv = new EmptyStomachEvent();
+            RaiseLocalEvent(uid, ref clearStomachEv);
         }
 
         //Transfer Temperature
