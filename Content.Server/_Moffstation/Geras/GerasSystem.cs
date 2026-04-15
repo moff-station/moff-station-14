@@ -27,6 +27,8 @@ using Content.Shared.Preferences;
 using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Temperature.Components;
@@ -253,10 +255,18 @@ public sealed class GerasSystem : EntitySystem
 
         _implantSystem.TransferImplants(uid, geras);
 
+        //Transfer both kinds of status effects
         if (TryComp<StatusEffectsComponent>(uid, out var oldStatuses))
         {
             var oldStatusTransferEv = new TransferStatusesEvent((uid, oldStatuses));
             RaiseLocalEvent(geras, oldStatusTransferEv);
+        }
+
+        if (TryComp<StatusEffectContainerComponent>(uid, out var newStatuses))
+        {
+            EnsureComp<StatusEffectContainerComponent>(geras);
+            var newStatusTransferEv = new TransferNewStatusEffectsEvent((uid, newStatuses));
+            RaiseLocalEvent(geras, newStatusTransferEv);
         }
 
         // Transfer mind
