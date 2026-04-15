@@ -4384,6 +4384,16 @@ Entries:
   id: 1164
   time: '2026-04-12T18:33:21.000'
   url: https://github.com/moff-station/moff-station-14/pull/1164
+- author: Nyxilath
+  changes:
+  - message: APCs now take power cells as a part of their construction.
+    type: tweak
+  - message: APCs now have different overload values based on the type of power cell
+      used in their construction!
+    type: add
+  id: 1165
+  time: '2026-04-15T21:02:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1165
 - author: DuckManZach
   changes:
   - message: Channel indicators speech bubbles will now show up
