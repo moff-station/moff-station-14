@@ -484,11 +484,10 @@ namespace Content.Shared.StatusEffect
         //Moffstation - Geras Patch - Begin
         private void OnTransferStatuses(Entity<StatusEffectsComponent> target, ref TransferStatusesEvent args)
         {
-            var sourceEffects = args.Source.Comp.ActiveEffects;
-            foreach (var effect in sourceEffects)
+            foreach (var effect in args.Source.Comp.ActiveEffects)
             {
                 var state = effect.Value;
-                if(state.RelevantComponent is {})
+                if (state.RelevantComponent is not null)
                     TryAddStatusEffect(target.Owner, effect.Key, state.Cooldown.Item2-state.Cooldown.Item1, state.CooldownRefresh, state.RelevantComponent);
             }
 
@@ -530,5 +529,6 @@ namespace Content.Shared.StatusEffect
         }
     }
 
-    public record struct TransferStatusesEvent(Entity<StatusEffectsComponent> Source);//Moffstation - Geras Patch
+    [ByRefEvent]
+    public readonly record struct TransferStatusesEvent(Entity<StatusEffectsComponent> Source); // Moffstation - Geras Patch
 }

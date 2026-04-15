@@ -384,4 +384,5 @@ public record struct StatusEffectEndTimeUpdatedEvent(EntityUid Target, TimeSpan?
 public record struct StatusEffectStartTimeUpdatedEvent(EntityUid Target, TimeSpan? StartTime);
 
 
-public record struct TransferNewStatusEffectsEvent(Entity<StatusEffectContainerComponent> Source); //Moffstation - Geras Patch
+[ByRefEvent]
+public readonly record struct TransferNewStatusEffectsEvent(Entity<StatusEffectContainerComponent> Source); // Moffstation - Geras Patch

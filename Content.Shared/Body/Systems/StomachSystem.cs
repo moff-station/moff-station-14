@@ -27,15 +27,7 @@ public sealed class StomachSystem : EntitySystem
         SubscribeLocalEvent<StomachComponent, BodyRelayedEvent<EmptyStomachEvent>>(OnEmptyStomach);
     }
 
-    private void RelayGetStomachContents(Entity<BodyComponent> ent, ref GetStomachContentsEvent args)
-    {
-        _body.RelayEvent(ent, ref args);
-    }
-    private void RelayApplyStomachContents(Entity<BodyComponent> ent, ref ApplyStomachContentsEvent args)
-    {
-        _body.RelayEvent(ent, ref args);
-    }
-    private void RelayEmptyStomach(Entity<BodyComponent> ent, ref EmptyStomachEvent args)
+    private void BodyRelayEvent<TEvent>(Entity<BodyComponent> ent, ref TEvent args)
     {
         _body.RelayEvent(ent, ref args);
     }
