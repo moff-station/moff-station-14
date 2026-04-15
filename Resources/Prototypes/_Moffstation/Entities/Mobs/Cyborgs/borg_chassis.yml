@@ -212,6 +212,13 @@
         - cell_slot
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: GuideHelp
+    guides:
+    - AiShells
+    - Robotics
+  - type: Access
+    groups:
+    - AllAccess
 
 - type: entity
   id: PlayerAiShellBattery
