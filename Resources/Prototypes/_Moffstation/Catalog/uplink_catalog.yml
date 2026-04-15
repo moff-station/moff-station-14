@@ -49,6 +49,9 @@
   name: uplink-spider-grenade-name
   description: uplink-spider-grenade-desc
   productEntity: SpiderJar
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: storage
   discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 1
@@ -60,8 +63,12 @@
 - type: listing
   id: UplinkClownSpiderGrenade
   name: uplink-clown-spider-grenade-name
-  description: uplink-clown-spider-grenade-name
+  description: uplink-clown-spider-grenade-desc
   productEntity: SpiderJarClown
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: storage
+    color: "#FF69B4"
   discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 1
@@ -69,9 +76,10 @@
     Telecrystal: 3
   categories:
   - UplinkAllies
-  jobWhitelist:
-  - Clown
-  - Mime
+  - !type:BuyerJobCondition
+    whitelist:
+    - Mime
+    - Clown
 
 # Other
 

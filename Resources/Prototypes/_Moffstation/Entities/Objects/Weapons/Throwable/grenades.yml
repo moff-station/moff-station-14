@@ -14,6 +14,13 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
     state: icon
+  - type: Item
+    storedSprite:
+      sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+      state: storage
+    size: Small
+    shape:
+    - 0,0,1,1
   - type: LandAtCursor
   - type: Destructible
     thresholds:
@@ -56,6 +63,14 @@
     sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
     state: icon
     color: "#FF69B4"
+  - type: Item
+    storedSprite:
+      sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+      state: storage
+      color: "#FF69B4"
+    size: Small
+    shape:
+    - 0,0,1,1
   - type: LandAtCursor
   - type: Destructible
     thresholds:
