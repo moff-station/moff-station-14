@@ -43,6 +43,7 @@
       - TrayScanner
       - GasAnalyzer
       - HandLabeler
+      - LawProgrammer # Moffstation - Cyborg Programmation
   - type: ItemMapper
     sprite: &BeltOverlay Clothing/Belt/belt_overlay.rsi
     mapLayers:
@@ -164,9 +165,9 @@
   description: Can hold various medical equipment.
   components:
   - type: Sprite
-    sprite: Clothing/Belt/medical.rsi
+    sprite: _Moffstation/Clothing/Belt/medical.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Belt/medical.rsi
+    sprite: _Moffstation/Clothing/Belt/medical.rsi # Moffstation
   - type: Storage
     whitelist:
       tags:

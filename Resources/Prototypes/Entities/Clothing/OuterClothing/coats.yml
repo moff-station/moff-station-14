@@ -10,9 +10,9 @@
     sprite: Clothing/OuterClothing/Coats/bomber.rsi
 
 - type: entity
-  parent: [ ClothingOuterBaseMedium, ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSecurityContraband ]
+  parent: [ ClothingOuterArmorBase, ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSecurityContraband ]
   id: ClothingOuterCoatDetective
-  name: detective jacket # Moffstation - Start - Detective-Outfit-Sprites
+  name: detective armored jacket # Moffstation - Start - Detective-Outfit-Sprites
   description: A 20th-century multi-purpose jacket. Someone who wears this means serious business. # Moffstation - End - Detective-Outfit-Sprites
   components:
   - type: Sprite
@@ -29,7 +29,7 @@
 - type: entity
   parent: [ClothingOuterCoatDetective] # Moffstation - Detective-Outfit-Sprites - not sure why the detective steal item is a thin not given to the detective with their alternative outerclothing
   id: ClothingOuterCoatDetectiveLoadoutGrey
-  name: noir trenchcoat
+  name: noir armored trenchcoat
   description: Ah, your trusty coat. There's a few tears here and there, giving it a more timely look. Or at least, that's what you told yourself when you found out gettin' it repaired would set you back 200 spesos.
   components:
   - type: Sprite
@@ -156,9 +156,9 @@
   description: A suit that protects against minor chemical spills.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -196,9 +196,9 @@
   description: A suit that protects against bacteria and viruses. Has an green stripe on the shoulder.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_viro.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_viro.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_viro.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_viro.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -216,9 +216,9 @@
   description: A suit that protects against minor chemical spills. Has an blue stripe on the shoulder.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_gene.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_gene.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_gene.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_gene.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -236,9 +236,9 @@
   description: Custom made blue lab coat for the Chief Medical Officer, offers improved protection against chemical spills and minor cuts.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_cmo.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_cmo.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_cmo.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_cmo.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -258,9 +258,9 @@
   description: A suit that protects against minor chemical spills. Has a purple stripe on the shoulder.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_sci.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_sci.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_sci.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_sci.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -298,9 +298,9 @@
   description: Woven with top of the line technology, this labcoat helps protect against radiation in similar way to the experimental hardsuit.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_rd.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_rd.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_rd.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_rd.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -383,9 +383,9 @@
   description: A paramedic's trusty windbreaker, for all the space wind.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/windbreaker_paramedic.rsi # Moffstation
 
 - type: entity
   parent: [ClothingOuterStorageBase, BaseSyndicateContraband]
@@ -435,9 +435,9 @@
   description: A suit that protects against minor chemical spills. Has a purple collar and wrist trims.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_senior_researcher.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:
@@ -455,9 +455,9 @@
   description: A suit that protects against minor chemical spills. Has light blue sleeves and an orange waist trim.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_physician.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_senior_physician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/labcoat_senior_physician.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/labcoat_senior_physician.rsi # Moffstation
   - type: Armor
     modifiers:
       coefficients:

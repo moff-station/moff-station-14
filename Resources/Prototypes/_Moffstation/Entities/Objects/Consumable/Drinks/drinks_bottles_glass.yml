@@ -40,3 +40,25 @@
     canChangeTransferAmount: true
     minTransferAmount: 1
     maxTransferAmount: 20
+
+- type: entity
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
+  id: DrinkWizardAleFull
+  name: Wizard Ale bottle
+  description: It's brewed, and it's good, and it's delicious, and it's made from hops collected from the prairies, the distant prairies in the woods. Coming to a tavern near you, except it won't, because it's SECRET.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: WizardAle
+          Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-wizard-ale
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Drinks/wizardale.rsi
+  - type: Sealable
+  - type: SolutionTransfer
+    canChangeTransferAmount: true
+    minTransferAmount: 5
+    maxTransferAmount: 100

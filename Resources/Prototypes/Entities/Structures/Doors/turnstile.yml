@@ -45,7 +45,7 @@
       - Pullable # no dragging things in
   - type: Appearance
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic #Moffstation - StructureType correction
     damageModifierSet: StrongMetallic
   - type: Destructible
     thresholds:

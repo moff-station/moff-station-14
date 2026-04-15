@@ -71,7 +71,7 @@
       powerLoad: 2500
     - type: ExtensionCableReceiver
     - type: Damageable
-      damageContainer: Inorganic
+      damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
       damageModifierSet: Metallic
     - type: Repairable
       fuelCost: 10

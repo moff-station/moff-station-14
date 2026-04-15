@@ -59,9 +59,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Spawners;
 using Robust.Shared.Utility;
-using System.Numerics;
-using System.Threading;
-using Content.Shared.Damage.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.Administration.Systems;
@@ -98,6 +95,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly SuperBonkSystem _superBonkSystem = default!;
     [Dependency] private readonly SlipperySystem _slipperySystem = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
 
     private readonly EntProtoId _actionViewLawsProtoId = "ActionViewLaws";
     private readonly ProtoId<SiliconLawsetPrototype> _crewsimovLawset = "Crewsimov";
@@ -233,6 +231,7 @@ public sealed partial class AdminVerbSystem
                 Icon = new SpriteSpecifier.Rsi(new("/Textures/Clothing/Hands/Gloves/Color/yellow.rsi"), "icon"),
                 Act = () =>
                 {
+                    var totalDamage = _damageable.GetTotalDamage((args.Target, damageable));
                     int damageToDeal;
                     if (!_mobThresholdSystem.TryGetThresholdForState(args.Target, MobState.Critical, out var criticalThreshold))
                     {
@@ -240,11 +239,11 @@ public sealed partial class AdminVerbSystem
                         if (!_mobThresholdSystem.TryGetThresholdForState(args.Target, MobState.Dead,
                                 out var deadThreshold))
                             return;// whelp.
-                        damageToDeal = deadThreshold.Value.Int() - (int)damageable.TotalDamage;
+                        damageToDeal = deadThreshold.Value.Int() - (int)totalDamage;
                     }
                     else
                     {
-                        damageToDeal = criticalThreshold.Value.Int() - (int)damageable.TotalDamage;
+                        damageToDeal = criticalThreshold.Value.Int() - (int)totalDamage;
                     }
 
                     if (damageToDeal <= 0)
@@ -1018,14 +1017,11 @@ public sealed partial class AdminVerbSystem
                 var userInterfaceComp = EnsureComp<UserInterfaceComponent>(args.Target);
                 _uiSystem.SetUi((args.Target, userInterfaceComp), SiliconLawsUiKey.Key, new InterfaceData(SiliconLawBoundUserInterface));
 
-                if (!HasComp<SiliconLawBoundComponent>(args.Target))
-                {
-                    EnsureComp<SiliconLawBoundComponent>(args.Target);
-                    _actions.AddAction(args.Target, _actionViewLawsProtoId);
-                }
-
                 EnsureComp<SiliconLawProviderComponent>(args.Target);
-                _siliconLawSystem.SetLaws(_siliconLawSystem.GetLawset(_crewsimovLawset).Laws, args.Target);
+                _siliconLawSystem.SetProviderLaws(args.Target, _siliconLawSystem.GetLawset(_crewsimovLawset).Laws);
+                EnsureComp<SiliconLawBoundComponent>(args.Target);
+                _siliconLawSystem.LinkToProvider(args.Target, args.Target);
+                _actions.AddAction(args.Target, _actionViewLawsProtoId);
 
                 if (_mindSystem.TryGetMind(args.Target, out var mindId, out _))
                     _role.MindAddRole(mindId, _siliconMindRole);

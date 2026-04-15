@@ -176,7 +176,6 @@
     minCollectionSize: 7
     maxCollectionSize: 12
     verifyMapExistence: false
-    checkStealAreas: false
   - type: Objective
     difficulty: 0.3
 
@@ -427,7 +426,7 @@
   id: BoozeDispenserStealObjective
   components:
   - type: NotJobRequirement
-    jobs: [ Bartender, ServiceWorker ]
+    jobs: [ Bartender, ServiceWorker, Scientist ] # Moffstation - More drama, less cheese (Scientists can currently make these)
   - type: StealCondition
     stealGroup: BoozeDispenser
   - type: Objective

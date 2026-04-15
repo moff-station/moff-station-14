@@ -31,7 +31,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 50 # Moffstation - Easier to break the glass into a frame
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -80,13 +80,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 200 # Moffstation - Harder to break a frame into smithereens
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 100 # Moffstation - Harder to break the frame
       behaviors:
       - !type:PlaySoundBehavior
         sound:
