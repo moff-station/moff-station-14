@@ -23,6 +23,7 @@ using Content.Shared.Kitchen.Components;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Preferences;
+using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
@@ -55,6 +56,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly SharedEnsnareableSystem _ensnareable = default!;
+    [Dependency] private readonly SharedProjectileSystem _projectile = default!;
 
 
     /// <inheritdoc/>
@@ -135,6 +137,16 @@ public sealed class GerasSystem : EntitySystem
             {
                 if (TryComp<EnsnaringComponent>(bola, out var ensnaringComponent))
                     _ensnareable.ForceFree(bola, ensnaringComponent);
+            }
+        }
+
+        //Remove embedded projectiles
+        if (TryComp<EmbeddedContainerComponent>(uid, out var embeddedContainer))
+        {
+            foreach (var projectile in embeddedContainer.EmbeddedObjects)
+            {
+                if(TryComp<EmbeddableProjectileComponent>(projectile, out var embedComp))
+                    _projectile.EmbedDetach(projectile, embedComp);
             }
         }
 
