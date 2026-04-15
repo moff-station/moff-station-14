@@ -1,0 +1,89 @@
+- type: entity
+  parent: [BaseItem, ItemHeftyBase]
+  id: BaseWaterBalloon
+  abstract: true
+  name: water balloon
+  components:
+  - type: Item
+    size: Small
+  - type: SolutionContainerManager
+    solutions:
+      balloon:
+        maxVol: 20
+        reagents:
+        - ReagentId: Water
+          Quantity: 20
+  - type: DrawableSolution
+    solution: balloon
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.01
+    damage:
+      types:
+        Blunt: 1
+  - type: Damageable
+    damageContainer: Biological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: balloon
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+
+
+- type: entity
+  parent: [BaseWaterBalloon]
+  id: WaterBalloon
+  description: Throw it at the wall, throw it at furniture, throw it at the captain. The possibilities are endless!
+  components:
+  - type: Sprite
+    sprite: _MiraSector/Objects/Fun/water_balloon.rsi
+    layers:
+    - state: white_balloon  # random colors don't work unless I do this.
+      map: [ "BalloonColors" ]
+  - type: RandomSprite
+    available:
+    - BalloonColors:
+        white_balloon: Rainbow
+
+- type: entity
+  parent: [BaseWaterBalloon]
+  id: WaterBalloonNT
+  description: A NT branded water balloon, filled with premium Vodka!
+  components:
+  - type: Sprite
+    sprite: _MiraSector/Objects/Fun/water_balloon.rsi
+    state: nt_balloon
+  - type: SolutionContainerManager
+    solutions:
+      balloon:
+        maxVol: 20
+        reagents:
+        - ReagentId: Vodka
+          Quantity: 20
+
+
+- type: entity
+  parent: BoxCardboard
+  name: water balloon box
+  id: WaterBalloonBox
+  description: A box of filled water balloons. Just throw em'!
+  components:
+  - type: StorageFill
+    contents:
+    - id: WaterBalloon
+      amount: 7
+    - id: WaterBalloonNT
+  - type: Sprite
+    sprite: _MiraSector/Objects/Storage/boxicons.rsi
+    state: water_balloon
+  - type: Storage
+    grid:
+    - 0,0,3,3
