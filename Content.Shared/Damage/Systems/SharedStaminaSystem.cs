@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Moffstation.Damage.Events; //Moffstation - Geras Patch
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
@@ -64,6 +65,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         SubscribeLocalEvent<StaminaComponent, AfterAutoHandleStateEvent>(OnStamHandleState);
         SubscribeLocalEvent<StaminaComponent, DisarmedEvent>(OnDisarmed);
         SubscribeLocalEvent<StaminaComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<StaminaComponent, ClearStaminaDamageEvent>(OnClearStaminaDamage);// Moffstation - Geras Patch
 
         SubscribeLocalEvent<StaminaDamageOnEmbedComponent, EmbedEvent>(OnProjectileEmbed);
 
@@ -115,6 +117,14 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         var pauseTime = _metadata.GetPauseTime(uid);
         return MathF.Max(0f, component.StaminaDamage - MathF.Max(0f, (float) (curTime - (component.NextUpdate + pauseTime)).TotalSeconds * component.Decay));
     }
+
+    //Moffstation - Geras Patch - Begin
+    private void OnClearStaminaDamage(Entity<StaminaComponent> ent, ref ClearStaminaDamageEvent args)
+    {
+        var ev = new RejuvenateEvent();
+        OnRejuvenate(ent, ref ev);
+    }
+    //Moffstation - End
 
     private void OnRejuvenate(Entity<StaminaComponent> entity, ref RejuvenateEvent args)
     {

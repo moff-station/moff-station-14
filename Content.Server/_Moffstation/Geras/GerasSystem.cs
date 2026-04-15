@@ -5,6 +5,7 @@ using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Mind;
 using Content.Server.Popups;
+using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
@@ -187,6 +188,9 @@ public sealed class GerasSystem : EntitySystem
             _damageable.SetDamage((geras, damageParent), damage);
             _damageable.ClearAllDamage(uid);
         }
+
+        // Clear Stamina effects
+        RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
 
         // Transfer bloodstream
         if (TryComp<BloodstreamComponent>(geras, out var bloodstreamGeras)
