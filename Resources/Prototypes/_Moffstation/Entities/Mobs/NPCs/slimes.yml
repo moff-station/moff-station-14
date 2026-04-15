@@ -22,6 +22,17 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
+  - type: StatusEffects
+    allowed:
+      - Electrocution
+      - RatvarianLanguage
+      - PressureImmunity
+      - Muted
+      - TemporaryBlindness
+      - Pacified
+      - Flashed
+      - RadiationProtection
+      - Adrenaline
   - type: MultiHandedItem
   - type: Item
     size: Huge

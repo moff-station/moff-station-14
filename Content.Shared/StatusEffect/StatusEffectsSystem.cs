@@ -26,6 +26,7 @@ namespace Content.Shared.StatusEffect
             SubscribeLocalEvent<StatusEffectsComponent, ComponentGetState>(OnGetState);
             SubscribeLocalEvent<StatusEffectsComponent, ComponentHandleState>(OnHandleState);
             SubscribeLocalEvent<StatusEffectsComponent, RejuvenateEvent>(OnRejuvenate);
+            SubscribeLocalEvent<StatusEffectsComponent, TransferStatusesEvent>(OnTransferStatuses);//Moffstation - Geras Patch
         }
 
         public override void Update(float frameTime)
@@ -479,6 +480,21 @@ namespace Content.Shared.StatusEffect
             time = status.ActiveEffects[key].Cooldown;
             return true;
         }
+
+        //Moffstation - Geras Patch - Begin
+        private void OnTransferStatuses(Entity<StatusEffectsComponent> target, ref TransferStatusesEvent args)
+        {
+            var sourceEffects = args.Source.Comp.ActiveEffects;
+            foreach (var effect in sourceEffects)
+            {
+                var state = effect.Value;
+                if(state.RelevantComponent is {})
+                    TryAddStatusEffect(target.Owner, effect.Key, state.Cooldown.Item2-state.Cooldown.Item1, state.CooldownRefresh, state.RelevantComponent);
+            }
+
+            TryRemoveAllStatusEffects(args.Source);
+        }
+        //Moffstation - End
     }
 
     /// <summary>
@@ -513,4 +529,6 @@ namespace Content.Shared.StatusEffect
             Key = key;
         }
     }
+
+    public record struct TransferStatusesEvent(Entity<StatusEffectsComponent> Source);//Moffstation - Geras Patch
 }
