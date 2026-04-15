@@ -223,6 +223,16 @@ public sealed class GerasSystem : EntitySystem
                     _solutionContainer.TryAddReagent(bloodstreamGeras.BloodSolution.Value, reagent.Prototype, quantity);
                 }
             }
+
+            if (_solutionContainer.ResolveSolution(geras, bloodstreamGeras.MetabolitesSolutionName, ref bloodstreamGeras.MetabolitesSolution)
+                && _solutionContainer.ResolveSolution(uid, bloodstreamParent.MetabolitesSolutionName, ref bloodstreamParent.MetabolitesSolution))
+            {
+                foreach (var (reagent, quantity) in bloodstreamParent.MetabolitesSolution.Value.Comp.Solution.Contents.ToList())
+                {
+                    _solutionContainer.TryAddReagent(bloodstreamGeras.MetabolitesSolution.Value, reagent.Prototype, quantity);
+                }
+                _solutionContainer.RemoveAllSolution((uid, bloodstreamParent.MetabolitesSolution));
+            }
         }
 
         //Transfer Temperature
