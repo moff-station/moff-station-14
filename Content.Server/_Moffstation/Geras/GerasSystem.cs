@@ -241,8 +241,6 @@ public sealed class GerasSystem : EntitySystem
             }
         }
 
-
-
         // Transfer storage to transformed entity
         if (HasComp<StorageComponent>(geras) && TryComp<StorageComponent>(uid, out var parentStorage))
         {

@@ -6,6 +6,7 @@ using Content.Shared.Implants.Components;
 using Content.Shared.Mind;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Trigger.Components.Triggers;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -178,6 +179,10 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         if (!Resolve(source, ref source.Comp))
             return;
 
+        var permanent = implant.Comp.Permanent;
+        if (permanent)
+            implant.Comp.Permanent = false;
+
         //store remaining charges if the implant has charges
         var charges=-1;
         if (Exists(implant.Comp.Action) && HasComp<LimitedChargesComponent>(implant.Comp.Action))
@@ -212,6 +217,8 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         if (charges >= 0 && Exists(implant.Comp.Action))
             _charges.SetCharges(implant.Comp.Action.Value, charges);
 
+        if (permanent)
+            implant.Comp.Permanent = true;
     }
 
     /// <summary>
