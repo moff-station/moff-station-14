@@ -520,6 +520,11 @@
   loadouts:
   - JanitorJumpsuit
   - JanitorJumpskirt
+  # Moffstation - Start
+  - JanitorOveralls
+  - CustodianJumpsuit
+  - CustodianJumpskirt
+  # Moffstation - End
 
 - type: loadoutGroup
   id: JanitorGloves
@@ -1158,6 +1163,7 @@
   - ResearchDirectorJumpskirt
   # Moffstation - Start
   - FormalScientistJumpsuit
+  - ScientistFormalJumpskirt
   - ResearchDirectorRoboJumpsuit
   - ResearchDirectorRoboJumpskirt
   - ResearchDirectorFestiveJumpsuit
@@ -1208,6 +1214,7 @@
   - ScientistJumpsuit
   - ScientistJumpskirt
   - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - This spawns in their drobe, and someone requested I add it to the loadout.
+  - ScientistFormalJumpskirt # Moffstation
   - RoboticistJumpsuit
   - RoboticistJumpskirt
   - MachinistJumpsuit # Moffstation - New Roboticist & Machinist Outfits
@@ -1542,11 +1549,29 @@
   name: loadout-group-reporter-jumpsuit
   loadouts:
   - ReporterJumpsuit
-  - ReporterJumpskirt # Moffstaion - Adding Reporter Clothes
+  - ReporterJumpskirt # Moffstation - Adding Reporter Clothes
   - JournalistJumpsuit
-  - JournalistJumpskirt # Moffstaion - Adding Reporter Clothes
-  - MeteorologistJumpsuit # Moffstaion - Adding Reporter Clothes
-  - MeteorologistJumpskirt # Moffstaion - Adding Reporter Clothes
+# Moffstation - Start
+  - JournalistJumpskirt
+  - MeteorologistJumpsuit
+  - MeteorologistJumpskirt
+  - NewsAnchorJumpsuit
+  - NewsAnchorJumpskirt
+# Moffstation - End
+
+- type: loadoutGroup
+  id: ReporterHead
+  name: loadout-group-reporter-head
+  minLimit: 0
+  loadouts:
+  - ReporterPressFedora
+
+- type: loadoutGroup
+  id: ReporterOuterClothing
+  name: loadout-group-reporter-outerclothing
+  minLimit: 0
+  loadouts:
+  - ReporterPressVest
 
 #- type: loadoutGroup
 #  id: ReporterJobTrinkets

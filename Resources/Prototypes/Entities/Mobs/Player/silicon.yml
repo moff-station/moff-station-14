@@ -58,6 +58,7 @@
         toggleAction: ActionAGhostShowStationRecords
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
+  - type: NavMapWarp # Moffstation - Navigation map warp
   - type: CrewMonitoringConsole
   - type: GeneralStationRecordConsole
   - type: DeviceNetwork
@@ -407,7 +408,7 @@
 # The actual brain inside the core
 - type: entity
   id: StationAiBrain
-  parent: PositronicBrain
+  parent: PositronicBrain # Moffstation - let them be ion'd!
   categories: [ HideSpawnMenu, DoNotMap ]
   components:
   - type: Sprite
@@ -552,7 +553,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-        - PositronicBrain
+        - PositronicBrainSyndicate
       borg_module:
         - BorgModuleOperative
         - BorgModuleL6C
@@ -636,8 +637,9 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool
       - BorgModuleFireExtinguisher
       - BorgModuleConstruction
@@ -674,8 +676,9 @@
   - type: ContainerFill
     containers:
       borg_brain:
-        - PositronicBrain
+        - PositronicBrainIonStormed
       borg_module:
+        - BorgModulePrying
         - BorgModuleTool
         - BorgModuleFireExtinguisher
   - type: ItemSlots
@@ -709,8 +712,9 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool
       - BorgModuleFireExtinguisher
       - BorgModuleCleaning
@@ -746,8 +750,9 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool
       - BorgModuleFireExtinguisher
       - BorgModuleChemical
@@ -784,8 +789,9 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainIonStormed
       borg_module:
+      - BorgModulePrying
       - BorgModuleTool #No fire extinguisher, traversal is better
       - BorgModuleMining
       - BorgModuleTraversal
@@ -821,7 +827,7 @@
   - type: ContainerFill
     containers:
       borg_brain:
-      - PositronicBrain
+      - PositronicBrainSyndicateIonStormed
       borg_module:
       - BorgModuleOperative
       - BorgModuleC20r

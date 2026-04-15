@@ -1,4 +1,5 @@
-using Content.Shared._Moffstation.Medical.CrewMonitoring;   // Moffstation
+using Content.Shared._Moffstation.Medical.CrewMonitoring;
+using Content.Shared._Moffstation.Pinpointer; // Moffstation
 using Content.Shared.Medical.CrewMonitoring;
 using Robust.Client.UserInterface;
 
@@ -36,7 +37,16 @@ public sealed class CrewMonitoringBoundUserInterface : BoundUserInterface
         // Moffstation - End
 
         _menu = this.CreateWindow<CrewMonitoringWindow>();
-        _menu.Set(stationName, gridUid);
+
+        // Moffstation - Navigation map warp
+        _menu.WarpRequested += coords =>
+            EntMan.RaisePredictiveEvent(new NavMapWarpRequest(EntMan.GetNetEntity(Owner), coords));
+
+        var req = new NavMapWarpEnabledQuery();
+        EntMan.EventBus.RaiseLocalEvent(Owner, ref req);
+
+        _menu.Set(stationName, gridUid, req.Enabled);
+        // Moffstation - End
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

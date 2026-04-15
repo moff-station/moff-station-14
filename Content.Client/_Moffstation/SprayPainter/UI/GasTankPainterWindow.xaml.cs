@@ -119,14 +119,7 @@ public sealed partial class GasTankPainterWindow : Control
 
         // Suppress the callback which might eventually cause re-entrance to this function.
         _suppressSelectingStyleCallback = true;
-
-        if (!StyleList[index].Selected)
-        {
-            bool cat = false;
-        }
-
         StyleList[index].Selected = true;
-
         _suppressSelectingStyleCallback = false;
     }
 

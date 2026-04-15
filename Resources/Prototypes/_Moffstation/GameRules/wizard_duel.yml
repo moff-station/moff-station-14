@@ -1,0 +1,84 @@
+﻿- type: entity
+  parent: BaseGameRule
+  id: WizardDuel
+  components:
+  - type: LoadMapRule
+    mapPath: /Maps/_Moffstation/Nonstations/wizards-court.yml
+  - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: GameRule
+    minPlayers: 35
+  - type: AntagObjectives
+    objectives:
+    - WizardDuelistMeetObjective
+    - WizardDuelistRelocateObjective
+    - WizardDuelistDemonstrateObjective
+  - type: AntagSelection
+    agentName: wizard-round-end-name
+    selectionTime: PrePlayerSpawn
+    definitions:
+    - prefRoles: [ WizardDuelist ] # Red Wizard Duelist
+      min: 1
+      max: 1
+      spawnerPrototype: SpawnPointGhostWizardDuelistRed
+      roleLoadout:
+      - JobWizardDuelist
+      briefing:
+        text: wizard-duelist-red-role-greeting
+        color: Turquoise
+      startingGear: WizardDuelistRedGear
+      components:
+      - type: NpcFactionMember
+        factions:
+        - Wizard
+      - type: RandomMetadata
+        nameSegments:
+        - NamesWizardFirst
+        - NamesWizardLast
+        nameFormat: name-format-wizard
+      mindRoles:
+      - MindRoleWizardDuelistRed
+    - prefRoles: [ WizardDuelist ] # blue Wizard Duelist
+      min: 1
+      max: 1
+      spawnerPrototype: SpawnPointGhostWizardDuelistBlue
+      roleLoadout:
+      - JobWizardDuelist
+      briefing:
+        text: wizard-duelist-blue-role-greeting
+        color: Turquoise
+      startingGear: WizardDuelistBlueGear
+      components:
+      - type: NpcFactionMember
+        factions:
+        - Wizard
+      - type: RandomMetadata
+        nameSegments:
+        - NamesWizardFirst
+        - NamesWizardLast
+        nameFormat: name-format-wizard
+      mindRoles:
+      - MindRoleWizardDuelistBlue
+    - prefRoles: [ WizardDuelist ] # violet Wizard Duelist
+      min: 1
+      max: 1
+      spawnerPrototype: SpawnPointGhostWizardDuelistViolet
+      roleLoadout:
+      - JobWizardDuelist
+      briefing:
+        text: wizard-duelist-violet-role-greeting
+        color: Turquoise
+      startingGear: WizardDuelistVioletGear
+      components:
+      - type: NpcFactionMember
+        factions:
+        - Wizard
+      - type: RandomMetadata
+        nameSegments:
+        - NamesWizardFirst
+        - NamesWizardLast
+        nameFormat: name-format-wizard
+      mindRoles:
+      - MindRoleWizardDuelistViolet
+  - type: DynamicRuleCost
+    cost: 150

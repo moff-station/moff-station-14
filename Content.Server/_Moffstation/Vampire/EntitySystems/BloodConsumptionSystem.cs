@@ -101,8 +101,8 @@ public sealed class BloodConsumptionSystem : EntitySystem
     private void UpdateRegeneration(Entity<BloodConsumptionComponent> entity, BloodstreamComponent bloodstream)
     {
         // check damage
-        if (TryComp<DamageableComponent>(entity.Owner, out var damage)
-	    && damage.Damage.AnyPositive()) // Vampires should be able to heal all damage types
+        if (TryComp<DamageableComponent>(entity.Owner, out var damage) &&
+            _damageSystem.GetPositiveDamage((entity, damage)).AnyPositive()) // Vampires should be able to heal all damage types
         {
 	        // heal according to comp amount
 	        _damageSystem.TryChangeDamage((entity.Owner, damage), entity.Comp.HealPerUpdate, true, false);

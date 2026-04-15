@@ -13,6 +13,7 @@
     - BorgModuleScience # Moffstation - Scienceborgs
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   # Moffstation - Start - Scienceborgs
   # - BorgModuleInflatable # also why tf do they have this baseline?
@@ -24,7 +25,7 @@
   - Science
 
   # Visual
-  inventoryTemplateId: borgShort
+  inventoryTemplateId: borg # Moffstation
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
     neck:
@@ -55,6 +56,7 @@
     - BorgModuleEngineering
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleConstruction
   - BorgModuleRCD
@@ -102,6 +104,7 @@
     - BorgModuleCargo
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
@@ -161,6 +164,7 @@
     - BorgModuleJanitor
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
 
@@ -207,6 +211,7 @@
     - BorgModuleMedical
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -267,6 +272,7 @@
     - BorgModuleService
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleMusique
   - BorgModuleService
   - BorgModuleClowning
@@ -282,9 +288,16 @@
 # Moffstation - End
 
   # Visual
-  inventoryTemplateId: borgHumanoid  # Moffstation - Changed service to use a different inventory template since it's actually just human proportioned
+  inventoryTemplateId: borg  # Moffstation
   spritePath: _Moffstation/Mobs/Silicon/Chassis/service.rsi # Moffstation - Early merge of Borg RSI fix
-
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/service.rsi
+          state: neck
+# Moffstation - End
   # Pet
-  petSuccessString: petting-success-service-cyborg
+  petSuccessString: petting-success-service-cyborg-moffstation
   petFailureString: petting-failure-service-cyborg

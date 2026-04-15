@@ -39,9 +39,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-light-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-light-resomi
@@ -65,10 +62,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-dog
-      #- state: equipped-head-unshaded-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-resomi
@@ -76,9 +69,11 @@
         shader: unshaded
       # Moffstation - End - Add Hardsuits for Resomi.
   - type: PointLight
-    color: "DarkKhaki" # Moffstation - Start
+    # Moffstation - Start
+    color: "DarkKhaki"
     radius: 5
-    energy: 1 # Moffstation - End
+    energy: 1
+    # Moffstation - End
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
@@ -89,7 +84,6 @@
     reduction: 0.2
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Engineering Hardsuit
@@ -126,9 +120,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-light-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-light-resomi
@@ -152,10 +143,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-dog
-      #- state: equipped-head-unshaded-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-resomi
@@ -163,15 +150,16 @@
         shader: unshaded
       # Moffstation - End - Add Hardsuits for Resomi.
   - type: PointLight
-    color: "DarkKhaki" # Moffstation - Start
+    # Moffstation - Start
+    color: "DarkKhaki"
     radius: 5
-    energy: 1 # Moffstation - End
+    energy: 1
+    # Moffstation - End
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    #- CorgiWearable # Moffstation
     - WhitelistChameleon
 
 #Spationaut Hardsuit
@@ -207,9 +195,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-light-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-light-resomi
@@ -233,10 +218,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-dog
-      #- state: equipped-head-unshaded-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-resomi
@@ -252,14 +233,13 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    # - CorgiWearable   #Moffstation - Corgi Sprites SUCK!!
     - WhitelistChameleon
 
 #Salvage Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitSalvage
-  name: salvage hardsuit helmet
+  name: mining hardsuit helmet
   description: A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating for wildlife encounters and dual floodlights.
   components:
   # Moffstation - Start
@@ -317,7 +297,6 @@
     color: sandybrown #Moffstation
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Goliath Hardsuit
@@ -350,9 +329,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      #head-dog: #Moffstation - Start - I HATE CORGI SPRITES
-      #- state: equipped-head-light-dog
-      #  shader: unshaded #Moffstation - End - I HATE CORGI SPRITES
   - type: Clothing
     clothingVisuals:
       head:
@@ -367,20 +343,17 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      #head-dog: #Moffstation - Start - I HATE CORGI SPRITES
-      #- state: equipped-head-dog
-      #- state: equipped-head-unshaded-dog
-      #  shader: unshaded #Moffstation - End - I HATE CORGI SPRITES
-  - type: PointLight #Moffstation - start
+  - type: PointLight
     radius: 6
+    # Moffstation - start
     energy: 3
-    color: crimson #Moffstation - End
+    color: crimson
+    # Moffstation - End
   - type: PressureProtection
     highPressureMultiplier: 0.72
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    #- CorgiWearable # Moffstation - I HATE CORGI SPRITES
     - WhitelistChameleon
 
 #Maxim Hardsuit
@@ -405,10 +378,12 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  # Moffstation - Begin
   - type: PointLight
     radius: 5
     energy: 2
-    color: plum #Moffstation
+    color: plum
+  # Moffstation - End
 
 #Security Hardsuit
 - type: entity
@@ -435,7 +410,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Brigmedic Hardsuit
@@ -504,7 +478,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Chief Engineer's Hardsuit
@@ -541,9 +514,6 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-light-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-light-resomi
@@ -567,10 +537,6 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
-      #head-dog: # Moffstation - Start
-      #- state: equipped-head-dog
-      #- state: equipped-head-unshaded-dog
-      #  shader: unshaded # Moffstation - End
       # Moffstation - Start - Add Hardsuits for Resomi.
       head-resomi:
       - state: equipped-head-resomi
@@ -578,9 +544,11 @@
         shader: unshaded
       # Moffstation - End - Add Hardsuits for Resomi.
   - type: PointLight
-    color: "SandyBrown" # Moffstation - Start
+    # Moffstation - Start
+    color: "SandyBrown"
     radius: 7
-    energy: 2 # Moffstation - End
+    energy: 2
+    # Moffstation - End
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
@@ -588,7 +556,6 @@
     reduction: 0.2
   - type: Tag
     tags:
-    #- CorgiWearable # Moffstation
     - WhitelistChameleon
 
 #Chief Medical Officer's Hardsuit
@@ -651,7 +618,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    #- CorgiWearable #Moffstation
     - WhitelistChameleon
 
 #Research Director's Hardsuit
@@ -672,7 +638,6 @@
     lowPressureMultiplier: 1000
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Head of Security's hardsuit
@@ -744,7 +709,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Blood-red Medic Hardsuit
@@ -801,7 +765,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Syndicate Commander Hardsuit
@@ -829,7 +792,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Cybersun Juggernaut Hardsuit
@@ -855,7 +817,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Wizard Hardsuit
@@ -883,7 +844,6 @@
         Heat: 0.9
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 #Organic Space Suit

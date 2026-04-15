@@ -23,7 +23,7 @@
     - Balloon
 
 - type: entity
-  parent: BaseBalloon
+  parent: [ BaseSyndicateContraband , BaseBalloon ] # Moffstation - Syndie contra 1984
   id: BalloonSyn
   name: syndie balloon
   description: Handed out to the bravest souls who survived the "atomic twister" ride at Syndieland.

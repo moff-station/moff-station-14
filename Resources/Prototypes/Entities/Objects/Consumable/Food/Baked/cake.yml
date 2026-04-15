@@ -1098,6 +1098,7 @@
       settings: short
   - type: GhostTakeoverAvailable
   - type: OwOAccent
+  - type: CakAccent # Funky
   - type: Speech
     speechSounds: Cat
     speechVerb: SmallMob
@@ -1121,8 +1122,8 @@
       path: /Audio/Animals/cat_hiss.ogg
     hidden: true
     damage:
-      groups:
-        Brute: 1
+      types:
+        Blunt: 1
 
 # Suppermatter
 # I can't figure out where to put this. It kind of acts like a cake I guess?

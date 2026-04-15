@@ -38,30 +38,26 @@
 
 - type: entityTable
   id: MaintLootLite # Maints loot, but not as much as a locker
-  table: !type:AllSelector
+  table: !type:GroupSelector
+    rolls: 3
     children:
-    - !type:GroupSelector
-      children:
-      - id: StrangePill
-        weight: 15
-      - !type:NestedSelector
-        tableId: MaintToolsTable
-        weight: 25 
-      - !type:NestedSelector
-        tableId: MaintFluffTable
-        weight: 33
-      - !type:NestedSelector
-        tableId: AllPlushiesTable
-        weight: 15
-      - !type:NestedSelector
-        tableId: MaintWeaponTable
-        weight: 7
-      - !type:NestedSelector
-        tableId: SyndieMaintLoot
-        weight: 5
+    - id: StrangePill
+      weight: 15
     - !type:NestedSelector
-      tableId: MaintLootLite
-      prob: 0.33 # Recursive chance to roll more than one item
+      tableId: MaintToolsTable
+      weight: 25
+    - !type:NestedSelector
+      tableId: MaintFluffTable
+      weight: 33
+    - !type:NestedSelector
+      tableId: AllPlushiesTable
+      weight: 15
+    - !type:NestedSelector
+      tableId: MaintWeaponTable
+      weight: 7
+    - !type:NestedSelector
+      tableId: SyndieMaintLoot
+      weight: 5
 
 - type: entity
   parent: CrateCoffin
@@ -72,7 +68,7 @@
     containers:
       entity_storage: !type:AllSelector
         children:
-        - !type:NestedSelector 
+        - !type:NestedSelector
           tableId: MaintLootLite
           prob: 0.33
         - !type:NestedSelector
@@ -738,21 +734,21 @@
     children:
     - id: SalvageHumanCorpse
       weight: 50
-    - id: MobRandomServiceCorpse 
+    - id: MobRandomServiceCorpse
       weight: 8
-    - id: MobRandomEngineerCorpse 
+    - id: MobRandomEngineerCorpse
       weight: 8
-    - id: MobRandomCargoCorpse 
+    - id: MobRandomCargoCorpse
       weight: 8
-    - id: MobRandomMedicCorpse 
+    - id: MobRandomMedicCorpse
       weight: 8
-    - id: MobRandomScienceCorpse 
+    - id: MobRandomScienceCorpse
       weight: 8
-    - id: MobRandomSecurityCorpse 
+    - id: MobRandomSecurityCorpse
       weight: 8
-    - id: MobRandomCommandCorpse 
+    - id: MobRandomCommandCorpse
       weight: 2
-  
+
 
 - type: entity
   parent: Morgue
@@ -824,7 +820,7 @@
 #Urns
 - type: entityTable
   id: UrnCommonThings
-  table: !type:GroupSelector 
+  table: !type:GroupSelector
     children:
     - !type:GroupSelector # 1x1 items can fit two
       children:
@@ -869,7 +865,6 @@
         children:
         - id: Flare # An expended flare would be better, but there's no separate prototype.
         - id: ClothingMaskGasAtmos # Allegedly flameproof
-        - id: FoodMeatCooked
         - id: SmokingPipe
         - !type:GroupSelector
           children:

@@ -24,7 +24,7 @@
         - MachineLayer
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
+    damageModifierSet: Electronic # Moffstation - Easier to break into a machine frame
   - type: Destructible
     thresholds:
     - trigger:

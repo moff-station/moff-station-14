@@ -1,40 +1,25 @@
-using System.Linq;
-using Content.Shared.Flash.Components;
-using Content.Server.Light.EntitySystems;
+using Content.Server._Impstation.Tourist.Components;
 using Content.Server.Popups;
-using Content.Server.Stunnable;
-using Content.Shared.Charges.Components;
-using Content.Shared.Charges.Systems;
-using Content.Shared.Eye.Blinding.Components;
-using Content.Shared.Flash;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction.Events;
-using Content.Shared.Inventory;
-using Content.Shared.Tag;
-using Content.Shared.Traits.Assorted;
-using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.StatusEffect;
+using Content.Shared._Impstation.Tourist;
+using Content.Shared._Impstation.Tourist.Components;
 using Content.Shared.Examine;
+using Content.Shared.Eye.Blinding.Components;
+using Content.Shared.Flash.Components;
+using Content.Shared.Hands.Components;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Inventory;
+using Content.Shared.Mind;
+using Content.Shared.Movement.Systems;
+using Content.Shared.StatusEffect;
+using Content.Shared.Stunnable;
+using Content.Shared.Traits.Assorted;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
-using Robust.Shared.Random;
-using InventoryComponent = Content.Shared.Inventory.InventoryComponent;
-using Content.Shared.Throwing;
-using Robust.Shared.Prototypes;
-using Content.Shared.DoAfter;
-using Content.Shared.Mind.Components;
-using Content.Shared._Impstation.Tourist;
-using Content.Shared._Impstation.Tourist.Components;
-using Content.Server._Impstation.Tourist.Components;
-using Content.Server.Objectives.Components;
-using Content.Server.Objectives.Systems;
-using Content.Shared.Mind;
 using Robust.Shared.Containers;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Hands.Components;
-using Content.Shared.Movement.Systems;
-using Content.Shared.Stunnable;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
+using InventoryComponent = Content.Shared.Inventory.InventoryComponent;
 
 namespace Content.Server._Impstation.Tourist
 {
@@ -50,13 +35,11 @@ namespace Content.Server._Impstation.Tourist
         [Dependency] private readonly PopupSystem _popup = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
         [Dependency] private readonly SharedMindSystem _mind = default!;
         [Dependency] private readonly SharedContainerSystem _container = default!;
         [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
         [Dependency] private readonly SharedStunSystem _stun = default!;
-
-        private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
+        [Dependency] private readonly IGameTiming _timing = default!;
 
         public override void Initialize()
         {
@@ -87,11 +70,8 @@ namespace Content.Server._Impstation.Tourist
             comp.Flashing = true;
             _appearance.SetData(uid, TouristCameraVisuals.Flashing, true);
 
-            uid.SpawnTimer(400, () =>
-            {
-                _appearance.SetData(uid, TouristCameraVisuals.Flashing, false);
-                comp.Flashing = false;
-            });
+            var activeFlash = EnsureComp<ActiveTouristCameraComponent>(uid);
+            activeFlash.ActiveUntil = _timing.CurTime + comp.FlashVisualsDuration;
 
             return true;
         }
@@ -240,6 +220,25 @@ namespace Content.Server._Impstation.Tourist
         private void OnTemporaryBlindnessTouristFlashAttempt(EntityUid uid, TemporaryBlindnessComponent component, TouristCameraFlashAttemptEvent args)
         {
             args.Cancel();
+        }
+
+        public override void Update(float frameTime)
+        {
+            var activeCameras = AllEntityQuery<ActiveTouristCameraComponent>();
+            while (activeCameras.MoveNext(out var ent, out var activeCamera))
+            {
+                if (_timing.CurTime <= activeCamera.ActiveUntil)
+                {
+                    continue;
+                }
+
+                RemCompDeferred<ActiveTouristCameraComponent>(ent);
+                if (TryComp<TouristCameraComponent>(ent, out var camera))
+                {
+                    _appearance.SetData(ent, TouristCameraVisuals.Flashing, false);
+                    camera.Flashing = false;
+                }
+            }
         }
     }
 

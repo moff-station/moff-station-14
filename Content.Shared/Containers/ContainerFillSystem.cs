@@ -74,6 +74,14 @@ public sealed class ContainerFillSystem : EntitySystem
                 var spawn = Spawn(proto, coords);
                 if (!_containerSystem.Insert(spawn, container, containerXform: xform))
                 {
+                    // Moffstation - Begin - Allow container fills to just fail to insert stuff, deleting the entity they attempted to add.
+                    if (ent.Comp.SkipFillsWhichDontFit)
+                    {
+                        QueueDel(spawn);
+                        continue;
+                    }
+                    // Moffstation - End
+
                     var alreadyContained = container.ContainedEntities.Count > 0 ? string.Join("\n", container.ContainedEntities.Select(e => $"\t - {ToPrettyString(e)}")) : "< empty >";
                     Log.Error($"Entity {ToPrettyString(ent)} with a {nameof(EntityTableContainerFillComponent)} failed to insert an entity: {ToPrettyString(spawn)}.\nCurrent contents:\n{alreadyContained}");
                     _transform.AttachToGridOrMap(spawn);

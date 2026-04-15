@@ -80,7 +80,7 @@
   # sprite: Clothing/Uniforms/Jumpsuit/cargotech.rsi #Moffstation - End - Cargo Outfits
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformBase # Moffstation
   id: ClothingUniformJumpsuitSalvageSpecialist
   name: salvage specialist's jumpsuit
   description: It's a snappy jumpsuit with a sturdy set of overalls. It's very dirty.
@@ -182,10 +182,33 @@
   name: virology jumpsuit
   description: It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/virology.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &green-scrubs "#77ed94"
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-white "#FFFFFF"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-white
+      right:
+      - state: inhand-right
+        color: *color-white
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/virology.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *green-scrubs
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-white
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformBase
@@ -193,10 +216,31 @@
   name: genetics jumpsuit
   description: It's made of a special fiber that gives special protection against biohazards. It has a geneticist rank stripe on it.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/genetics.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: &blue-scrubs "#65b5f2"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *blue-scrubs
+      right:
+      - state: inhand-right
+        color: *blue-scrubs
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/genetics.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *blue-scrubs
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformBase
@@ -257,7 +301,7 @@
   description: It's a jumpsuit worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/cmo.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmo.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -299,7 +343,32 @@
   description: If this suit was non-conductive, maybe engineers would actually do their damn job.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/engineering.rsi # Moffstation - Engineering Outfit Resprites
+    # Moffstation - Start - Engineering outfit resprites
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-darkblue "#547abb"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-orange "#db542e"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-darkblue
+      right:
+      - state: inhand-right
+        color: *color-darkblue
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-darkblue
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-orange
+    # Moffstation - End
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -386,13 +455,38 @@
     sprite: Clothing/Uniforms/Jumpsuit/commandgeneric.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformBase #Moffstation - Remove folding
   id: ClothingUniformJumpsuitHydroponics
   name: hydroponics jumpsuit
   description: Has a strong earthy smell to it. Hopefully it's merely dirty as opposed to soiled.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hydro.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-teal "#2abd8e"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: *color-darkblue
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-teal
+      right:
+      - state: inhand-right
+        color: *color-teal
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-teal
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-darkblue
+# Moffstation - End
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -400,8 +494,33 @@
   name: janitor jumpsuit
   description: The jumpsuit for the poor sop with a mop.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/janitor.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+      color: &color-grey "#9b9b9b"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-purple "#b20dff"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-grey
+      right:
+      - state: inhand-right
+        color: *color-grey
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-grey
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-purple
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformBase
@@ -415,13 +534,13 @@
     sprite: Clothing/Uniforms/Jumpsuit/kimono.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformBase # Moffstation
   id: ClothingUniformJumpsuitMedicalDoctor
   name: medical doctor jumpsuit
-  description: It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel.
+  description: It's made of a special fibers that provides minor protection against biohazards while maintaining a professional appearance # Moffstation
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/medical.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/medical.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -441,9 +560,9 @@
   description: It's got a plus on it, that's a good thing right?
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/paramedic.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/paramedic.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/paramedic.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/paramedic.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -536,18 +655,41 @@
   description: It's a turtleneck worn by those with the know-how to achieve the position of Research Director. Its fabric provides minor protection from biological contaminants.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/rnd.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rnd.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/rnd.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/rnd.rsi # Moffstation
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformBase #Moffstation - Remove folding
   id: ClothingUniformJumpsuitScientist
   name: scientist jumpsuit
   description: It's made of a special fiber that increases perceived intelligence and decreases personal ethics. It has markings that denote the wearer as a scientist.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/scientist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon-light
+    - state: professional-trinkets-icon
+    - state: color-trinkets-icon
+      color: *color-purple
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-purple
+      right:
+      - state: inhand-right
+        color: *color-purple
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-light
+      - state: professional-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-purple
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformBase
@@ -556,9 +698,9 @@
   description: A uniform for sophisticated scientists, best worn with its matching tie.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/scientist_formal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scientist_formal.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/scientist_formal.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scientist_formal.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -567,7 +709,7 @@
   description: It's a slimming black with reinforced seams; great for industrial work.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/roboticist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/roboticist.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband, ClothingUniformFoldableBase]
@@ -630,10 +772,33 @@
   name: overalls
   description: Great for working outdoors.
   components:
+# Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/overalls.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: *color-teal
+    - state: basics-trinkets-icon
+    - state: overalls-trinkets-icon
+      color: *color-darkblue
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *color-teal
+      right:
+      - state: inhand-right
+        color: *color-teal
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/overalls.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-teal
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: overalls-trinkets-equipped-INNERCLOTHING
+        color: *color-darkblue
+# Moffstation - End
 
 - type: entity
   parent: ClothingUniformBase
@@ -845,8 +1010,32 @@
   name: atmospheric technician jumpsuit
   description: I am at work. I can't leave work. Work is breathing. I am testing air quality.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos.rsi # Moffstation - Engineering Outfit Resprites
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: &color-atmos "#1bb3a1"
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: &color-yellow "#ffe14d"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-atmos
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-yellow
+# Moffstation - End
+
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -854,8 +1043,35 @@
   name: atmospheric technician's casual jumpsuit
   description: Might as well relax with a job as easy as yours.
   components:
+  # Moffstation - Start
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/atmos_casual.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    layers:
+    - state: icon
+      color: *color-yellow
+    - state: basics-trinkets-icon
+    - state: color-trinkets-icon
+      color: *color-atmos
+    - state: overalls-trinkets-icon
+      color: *color-darkblue
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+        color: *color-yellow
+      - state: basics-trinkets-equipped-INNERCLOTHING
+      - state: color-trinkets-equipped-INNERCLOTHING
+        color: *color-atmos
+      - state: overalls-trinkets-equipped-INNERCLOTHING
+        color: *color-darkblue
+  # Moffstation - End
 
 - type: entity
   parent: ClothingUniformBase
@@ -864,9 +1080,9 @@
   description: I don't lose things. I place things in locations which later elude me.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/psychologist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/psychologist.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/psychologist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/psychologist.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -875,9 +1091,9 @@
   description: A good reporter remains a skeptic all their life.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/reporter.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/reporter.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/reporter.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/reporter.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -897,9 +1113,9 @@
   description: If journalism is good, it is controversial, by nature.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/journalist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/journalist.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/journalist.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/journalist.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -1132,9 +1348,9 @@
   description: A sign of skill and prestige within the science department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/senior_researcher.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_researcher.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/senior_researcher.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_researcher.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -1143,9 +1359,9 @@
   description: A sign of skill and prestige within the medical department.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/senior_physician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_physician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/senior_physician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_physician.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
