@@ -19,6 +19,8 @@
     solution: balloon
   - type: InjectableSolution
     solution: balloon
+  - type: Spillable
+    solution: balloon
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.01
     damage:
