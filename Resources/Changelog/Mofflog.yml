@@ -4434,6 +4434,33 @@ Entries:
   id: 1175
   time: '2026-03-27T21:30:42.000'
   url: https://github.com/moff-station/moff-station-14/pull/1175
+- author: SeaWyrm
+  changes:
+  - message: Revised Skeld's cryotube piping
+    type: tweak
+  - message: Split Skeld armory into two sections
+    type: tweak
+  - message: Made Skeld's TEG a bit friendlier (but not too much)
+    type: tweak
+  - message: Gave Skeld's salvies a recycler
+    type: add
+  - message: Put shutters on the central Skeld storage chamber
+    type: add
+  - message: Reinforced Skeld's meteor shielding
+    type: add
+  - message: Added more evac signs and emergency closets to Skeld
+    type: add
+  - message: Gave Skeld medbay and psych medical record computers
+    type: add
+  - message: Gave Skeld engineering and CE's office atmos alert computers
+    type: add
+  - message: Put Polly in Skeld
+    type: add
+  - message: Hooked up *all* power sources on Skeld to *all* SMES in the array
+    type: fix
+  id: 1176
+  time: '2026-04-16T05:58:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1176
 - author: Centronias
   changes:
   - message: Tourists (minor mayhem antags) can roll again after silently being removed
