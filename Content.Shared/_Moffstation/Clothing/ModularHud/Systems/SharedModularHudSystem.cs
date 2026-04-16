@@ -381,12 +381,12 @@ public abstract partial class SharedModularHudSystem : EntitySystem
 
     private void OnGotEquipped(Entity<ModularHudComponent> entity, ref GotEquippedEvent args)
     {
-        RefreshVisualsAndEffects(entity, args.Equipee);
+        RefreshVisualsAndEffects(entity, args.EquipTarget);
     }
 
     private void OnGotUneqipped(Entity<ModularHudComponent> entity, ref GotUnequippedEvent args)
     {
-        RefreshVisualsAndEffects(entity, args.Equipee);
+        RefreshVisualsAndEffects(entity, args.EquipTarget);
     }
 
     /// This function contains a functional grab-bag of whatever function calls / event raisings need to happen to cause

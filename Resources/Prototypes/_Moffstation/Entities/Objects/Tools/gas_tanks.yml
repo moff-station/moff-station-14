@@ -104,63 +104,63 @@
 
 - type: gasTankVisualStyle
   id: Oxygen
-  name: gases-oxygen
+  name: gas-oxygen
   colorValues:
     tankColor: '#4CA8FFFF'
     lowerStripeColor: White
 
 - type: gasTankVisualStyle
   id: Nitrogen
-  name: gases-nitrogen
+  name: gas-nitrogen
   colorValues:
     tankColor: '#E65C55FF'
     lowerStripeColor: White
 
 - type: gasTankVisualStyle
   id: NitrousOxide
-  name: gases-n2o
+  name: gas-nitrous-oxide
   colorValues:
     tankColor: '#E6E6E6FF'
     middleStripeColor: '#E65C55FF'
 
 - type: gasTankVisualStyle
   id: CarbonDioxide
-  name: gases-co2
+  name: gas-carbon-dioxide
   colorValues:
     tankColor: '#4F4F4FFF'
     lowerStripeColor: '#AF0000FF'
 
 - type: gasTankVisualStyle
   id: WaterVapor
-  name: gases-water-vapor
+  name: gas-water-vapor
   colorValues:
     tankColor: '#4C4C4CFF'
     lowerStripeColor: '#FFB2C0FF'
 
 - type: gasTankVisualStyle
   id: Plasma
-  name: gases-plasma
+  name: gas-plasma
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#FC32A0FF'
 
 - type: gasTankVisualStyle
   id: Tritium
-  name: gases-tritium
+  name: gas-tritium
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#17FF0BFF'
 
 - type: gasTankVisualStyle
   id: Frezon
-  name: gases-frezon
+  name: gas-frezon
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#47CDFFFF'
 
 - type: gasTankVisualStyle
   id: Ammonia
-  name: gases-ammonia
+  name: gas-ammonia
   colorValues:
     tankColor: '#E6E6E6FF'
     middleStripeColor: Green
