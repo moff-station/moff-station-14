@@ -34,6 +34,9 @@ public sealed class StomachSystem : EntitySystem
 
     private void OnGetStomachContents(Entity<StomachComponent> ent, ref BodyRelayedEvent<GetStomachContentsEvent> args)
     {
+        if (args.Args.Handled)
+            return;
+
         if (ent.Comp.Solution is { } solution)
         {
             args.Args = args.Args with { Contents = solution, Handled = true };
