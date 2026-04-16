@@ -6,7 +6,7 @@ using Content.Shared.Implants.Components;
 using Content.Shared.Mind;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Content.Shared.VoiceMask;
+using Content.Shared.VoiceMask; //Moffstation - Geras Patch
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;

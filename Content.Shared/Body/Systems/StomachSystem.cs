@@ -36,8 +36,7 @@ public sealed class StomachSystem : EntitySystem
     {
         if (ent.Comp.Solution is { } solution)
         {
-            args.Args = args.Args with { Contents = solution };
-            args.Args = args.Args with { Handled = true };
+            args.Args = args.Args with { Contents = solution, Handled = true };
         }
     }
 

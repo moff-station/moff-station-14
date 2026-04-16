@@ -72,15 +72,15 @@ public sealed class GerasSystem : EntitySystem
         SubscribeLocalEvent<GerasComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<GerasComponent, EntityZombifiedEvent>(OnZombification);
         SubscribeLocalEvent<GerasComponent, GerasVisualInitEvent>(OnGerasVisualInit);
-        SubscribeLocalEvent<EnsnareableComponent, PreMorphGeras>(OnRemoveSnares);
-        SubscribeLocalEvent<EmbeddedContainerComponent, PreMorphGeras>(OnRemoveProjectiles);
-        SubscribeLocalEvent<DamageableComponent, PostMorphGeras>(OnTransferDamage);
-        SubscribeLocalEvent<BloodstreamComponent, PostMorphGeras>(OnTransferBloodstream);
-        SubscribeLocalEvent<TemperatureComponent, PostMorphGeras>(OnTransferTemperature);
-        SubscribeLocalEvent<FlammableComponent, PreMorphGeras>(OnTransferFire);
-        SubscribeLocalEvent<StorageComponent, PreMorphGeras>(OnTransferStorage);
-        SubscribeLocalEvent<StatusEffectsComponent, PreMorphGeras>(OnTransferOldStatus);
-        SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGeras>(OnTransferNewStatus);
+        SubscribeLocalEvent<EnsnareableComponent, PreMorphGerasEvent>(OnRemoveSnares);
+        SubscribeLocalEvent<EmbeddedContainerComponent, PreMorphGerasEvent>(OnRemoveProjectiles);
+        SubscribeLocalEvent<DamageableComponent, PostMorphGerasEvent>(OnTransferDamage);
+        SubscribeLocalEvent<BloodstreamComponent, PostMorphGerasEvent>(OnTransferBloodstream);
+        SubscribeLocalEvent<TemperatureComponent, PostMorphGerasEvent>(OnTransferTemperature);
+        SubscribeLocalEvent<FlammableComponent, PreMorphGerasEvent>(OnTransferFire);
+        SubscribeLocalEvent<StorageComponent, PreMorphGerasEvent>(OnTransferStorage);
+        SubscribeLocalEvent<StatusEffectsComponent, PreMorphGerasEvent>(OnTransferOldStatus);
+        SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGerasEvent>(OnTransferNewStatus);
     }
 
     private void OnInit(Entity<GerasComponent> ent, ref ComponentInit args)
@@ -129,7 +129,7 @@ public sealed class GerasSystem : EntitySystem
 
         var geras = component.Geras.Value;
 
-        var preGerasEv = new PreMorphGeras(geras);
+        var preGerasEv = new PreMorphGerasEvent(geras);
         RaiseLocalEvent(uid, preGerasEv);
 
 
@@ -177,7 +177,7 @@ public sealed class GerasSystem : EntitySystem
         _transform.SetCoordinates(geras, gerasTransform, playerTransform.Coordinates, playerTransform.LocalRotation);
         BanishEntity((uid, component, playerTransform));
 
-        var postMorphEv = new PostMorphGeras(uid);
+        var postMorphEv = new PostMorphGerasEvent(uid);
         RaiseLocalEvent(geras, postMorphEv);
 
         //Transfer Stomach Contents
@@ -209,7 +209,7 @@ public sealed class GerasSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnRemoveSnares(Entity<EnsnareableComponent> ent, ref PreMorphGeras args)
+    private void OnRemoveSnares(Entity<EnsnareableComponent> ent, ref PreMorphGerasEvent args)
     {
         foreach (Entity<EnsnaringComponent?> bola in ent.Comp.Container.ContainedEntities.ToList())
         {
@@ -218,7 +218,7 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
-    private void OnRemoveProjectiles(Entity<EmbeddedContainerComponent> ent, ref PreMorphGeras args)
+    private void OnRemoveProjectiles(Entity<EmbeddedContainerComponent> ent, ref PreMorphGerasEvent args)
     {
         foreach (var projectile in ent.Comp.EmbeddedObjects)
         {
@@ -227,7 +227,7 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
-    private void OnTransferDamage(Entity<DamageableComponent> ent, ref PostMorphGeras args)
+    private void OnTransferDamage(Entity<DamageableComponent> ent, ref PostMorphGerasEvent args)
     {
         if (_mobThreshold.GetScaledDamage(args.Parent, ent.Owner, out var damage) &&
             damage != null)
@@ -237,7 +237,7 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
-    private void OnTransferBloodstream(Entity<BloodstreamComponent> ent, ref PostMorphGeras args)
+    private void OnTransferBloodstream(Entity<BloodstreamComponent> ent, ref PostMorphGerasEvent args)
     {
         if (TryComp<BloodstreamComponent>(args.Parent, out var bloodstreamParent))
         {
@@ -277,7 +277,7 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
-    private void OnTransferTemperature(Entity<TemperatureComponent> ent, ref PostMorphGeras args)
+    private void OnTransferTemperature(Entity<TemperatureComponent> ent, ref PostMorphGerasEvent args)
     {
         if (TryComp<TemperatureComponent>(args.Parent, out var parentTemp))
         {
@@ -285,7 +285,7 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
-    private void OnTransferFire(Entity<FlammableComponent> ent, ref PreMorphGeras args)
+    private void OnTransferFire(Entity<FlammableComponent> ent, ref PreMorphGerasEvent args)
     {
         //Gerasing quenches the player
         ent.Comp.OnFire = false;
@@ -297,7 +297,7 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
-    private void OnTransferStorage(Entity<StorageComponent> ent, ref PreMorphGeras args)
+    private void OnTransferStorage(Entity<StorageComponent> ent, ref PreMorphGerasEvent args)
     {
         foreach (var item in ent.Comp.StoredItems.Keys.ToList())
         {
@@ -305,13 +305,13 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
-    private void OnTransferOldStatus(Entity<StatusEffectsComponent> ent, ref PreMorphGeras args)
+    private void OnTransferOldStatus(Entity<StatusEffectsComponent> ent, ref PreMorphGerasEvent args)
     {
         var oldStatusTransferEv = new TransferStatusesEvent(ent);
         RaiseLocalEvent(args.Geras, ref oldStatusTransferEv);
     }
 
-    private void OnTransferNewStatus(Entity<StatusEffectContainerComponent> ent, ref PreMorphGeras args)
+    private void OnTransferNewStatus(Entity<StatusEffectContainerComponent> ent, ref PreMorphGerasEvent args)
     {
         EnsureComp<StatusEffectContainerComponent>(args.Geras);
         var newStatusTransferEv = new TransferNewStatusEffectsEvent(ent);
@@ -357,6 +357,6 @@ public sealed class GerasSystem : EntitySystem
 
 public record struct GerasVisualInitEvent(HumanoidCharacterProfile? Profile);
 
-public record struct PreMorphGeras(EntityUid Geras);
+public record struct PreMorphGerasEvent(EntityUid Geras);
 
-public record struct PostMorphGeras(EntityUid Parent);
+public record struct PostMorphGerasEvent(EntityUid Parent);
