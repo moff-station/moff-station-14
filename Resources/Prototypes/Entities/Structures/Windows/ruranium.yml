@@ -5,9 +5,9 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_uranium_window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_uranium_window.rsi # Moffstation
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: RGlass
@@ -64,10 +64,10 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: uranium_reinforced_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: uranium_reinforced_window
   - type: Construction
     graph: WindowDirectional
@@ -122,7 +122,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
+    sprite: -Moffstation/Structures/Windows/reinforced_uranium_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -133,7 +133,7 @@
     key: windows
     base: state
   - type: Icon
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_uranium_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:
