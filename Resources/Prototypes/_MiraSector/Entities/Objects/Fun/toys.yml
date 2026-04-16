@@ -15,6 +15,10 @@
           Quantity: 20
   - type: DrawableSolution
     solution: balloon
+  - type: RefillableSolution
+    solution: balloon
+  - type: InjectableSolution
+    solution: balloon
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.01
     damage:
@@ -30,13 +34,16 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: desecration
+          path: "/Audio/Effects/Fluids/splat.ogg"
       - !type:SpillBehavior
         solution: balloon
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-
-
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          BalloonTrash:
+            min: 1
+            max: 1
 
 - type: entity
   parent: [BaseWaterBalloon]
@@ -87,3 +94,26 @@
   - type: Storage
     grid:
     - 0,0,3,3
+
+- type: entity
+  name: balloon pieces
+  parent: BaseItem
+  id: BalloonTrash
+  description: The remnants of a great battle.
+  components:
+  - type: Sprite
+    sprite: _MiraSector/Objects/Fun/water_balloon.rsi
+    state: white_balloon_trash
+  - type: Tag
+    tags:
+    - Trash
+  - type: SpaceGarbage
+
+- type: entity
+  name: balloon pieces
+  parent: BalloonTrash
+  id: NTBalloonTrash
+  components:
+  - type: Sprite
+    sprite: _MiraSector/Objects/Fun/water_balloon.rsi
+    state: nt_balloon_trash
