@@ -6,6 +6,7 @@ using Content.Shared.Implants.Components;
 using Content.Shared.Mind;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.VoiceMask;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -178,46 +179,37 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         if (!Resolve(source, ref source.Comp))
             return;
 
-        var permanent = implant.Comp.Permanent;
-        if (permanent)
-            implant.Comp.Permanent = false;
+        implant.Comp.Permanent = false;
 
         //store remaining charges if the implant has charges
-        var charges=-1;
+        var charges = -1;
         if (Exists(implant.Comp.Action) && HasComp<LimitedChargesComponent>(implant.Comp.Action))
         {
             charges = _charges.GetCurrentCharges(implant.Comp.Action.Value);
         }
 
-        // storage implants need to be handled a little differently
-        if (HasComp<StorageImplantComponent>(implant.Owner))
-        {
-            if (Prototype(implant.Owner) is not {} proto)
-                return;
+        if (Prototype(implant.Owner) is not { } proto)
+            return;
 
-            if(AddImplant(target,  proto.ID) is {} newImplant)
+        if (AddImplant(target, proto.ID) is { } newImplant)
+        {
+            if(HasComp<StorageImplantComponent>(implant))
                 _storage.TransferEntities(implant, newImplant);
 
-            _container.Remove(implant.Owner, source.Comp.ImplantContainer);
-            return;
+            if (TryComp<VoiceMaskComponent>(implant, out var sourceVoice) &&
+                TryComp<VoiceMaskComponent>(newImplant, out var targetVoice))
+            {
+                targetVoice.VoiceMaskName = sourceVoice.VoiceMaskName;
+                targetVoice.VoiceMaskSpeechVerb = sourceVoice.VoiceMaskSpeechVerb;
+            }
+
+            //set the remaining charges to the previously stored value if applicable
+            if (charges >= 0 && TryComp<SubdermalImplantComponent>(newImplant, out var newImplantComp) &&
+                Exists(newImplantComp.Action))
+                _charges.SetCharges(newImplantComp.Action.Value, charges);
+
+            ForceRemove(source, implant);
         }
-
-
-        _container.Remove(implant.Owner, source.Comp.ImplantContainer);
-
-        //If the target doesn't have the implanted component, add it.
-        var implantedComp = EnsureComp<ImplantedComponent>(target);
-
-        implant.Comp.ImplantedEntity = target;
-        if (!_container.Insert(implant.Owner, implantedComp.ImplantContainer))
-            return;
-
-        //set the remaining charges to the previously stored value if applicable
-        if (charges >= 0 && Exists(implant.Comp.Action))
-            _charges.SetCharges(implant.Comp.Action.Value, charges);
-
-        if (permanent)
-            implant.Comp.Permanent = true;
     }
 
     /// <summary>

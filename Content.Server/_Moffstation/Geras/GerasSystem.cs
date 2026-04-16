@@ -31,6 +31,7 @@ using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Temperature.Components;
+using Content.Shared.Traits.Assorted;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 
@@ -71,6 +72,15 @@ public sealed class GerasSystem : EntitySystem
         SubscribeLocalEvent<GerasComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<GerasComponent, EntityZombifiedEvent>(OnZombification);
         SubscribeLocalEvent<GerasComponent, GerasVisualInitEvent>(OnGerasVisualInit);
+        SubscribeLocalEvent<EnsnareableComponent, PreMorphGeras>(OnRemoveSnares);
+        SubscribeLocalEvent<EmbeddedContainerComponent, PreMorphGeras>(OnRemoveProjectiles);
+        SubscribeLocalEvent<DamageableComponent, PostMorphGeras>(OnTransferDamage);
+        SubscribeLocalEvent<BloodstreamComponent, PostMorphGeras>(OnTransferBloodstream);
+        SubscribeLocalEvent<TemperatureComponent, PostMorphGeras>(OnTransferTemperature);
+        SubscribeLocalEvent<FlammableComponent, PreMorphGeras>(OnTransferFire);
+        SubscribeLocalEvent<StorageComponent, PreMorphGeras>(OnTransferStorage);
+        SubscribeLocalEvent<StatusEffectsComponent, PreMorphGeras>(OnTransferOldStatus);
+        SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGeras>(OnTransferNewStatus);
     }
 
     private void OnInit(Entity<GerasComponent> ent, ref ComponentInit args)
@@ -119,6 +129,9 @@ public sealed class GerasSystem : EntitySystem
 
         var geras = component.Geras.Value;
 
+        var preGerasEv = new PreMorphGeras(geras);
+        RaiseLocalEvent(uid, preGerasEv);
+
 
         // Drop all inventory items
         if (_inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
@@ -133,29 +146,6 @@ public sealed class GerasSystem : EntitySystem
             _hands.TryDrop(uid, held);
         }
 
-        //Remove bolas
-        if (TryComp<EnsnareableComponent>(uid, out var ensnared) && ensnared.IsEnsnared)
-        {
-            foreach (Entity<EnsnaringComponent?> bola in ensnared.Container.ContainedEntities.ToList())
-            {
-                if (TryComp<EnsnaringComponent>(bola, out var ensnaringComponent))
-                    _ensnareable.ForceFree(bola, ensnaringComponent);
-            }
-        }
-
-        //Remove embedded projectiles
-        if (TryComp<EmbeddedContainerComponent>(uid, out var embeddedContainer))
-        {
-            foreach (var projectile in embeddedContainer.EmbeddedObjects)
-            {
-                if(TryComp<EmbeddableProjectileComponent>(projectile, out var embedComp))
-                    _projectile.EmbedDetach(projectile, embedComp);
-            }
-        }
-
-        var playerTransform = Transform(uid);
-        var gerasTransform = Transform(geras);
-
         // Prevent transform jank
         if (_container.IsEntityInContainer(uid) && _container.TryGetContainingContainer(uid, out var container))
         {
@@ -166,13 +156,18 @@ public sealed class GerasSystem : EntitySystem
             }
             else if (HasComp<StorageComponent>(container.Owner) || HasComp<KitchenSpikeComponent>(container.Owner))// If the entity is in a bag or meatspike, take them out of it
             {
-                _container.AttachParentToContainerOrGrid((uid, playerTransform));
+                _container.AttachParentToContainerOrGrid((uid, Transform(uid)));
             }
         }
         if (_container.IsEntityOrParentInContainer(uid))// If the entity is in any other container, put the geras in that container
         {
             _transform.DropNextTo(geras, uid);
         }
+
+        _implantSystem.TransferImplants(uid, geras);
+
+        var playerTransform = Transform(uid);
+        var gerasTransform = Transform(geras);
 
         if (TerminatingOrDeleted(playerTransform.ParentUid))
             return;
@@ -182,53 +177,8 @@ public sealed class GerasSystem : EntitySystem
         _transform.SetCoordinates(geras, gerasTransform, playerTransform.Coordinates, playerTransform.LocalRotation);
         BanishEntity((uid, component, playerTransform));
 
-        // Apply damage to the new form
-        if (TryComp<DamageableComponent>(geras, out var damageParent) &&
-            _mobThreshold.GetScaledDamage(uid, geras, out var damage) &&
-            damage != null)
-        {
-            _damageable.SetDamage((geras, damageParent), damage);
-            _damageable.ClearAllDamage(uid);
-        }
-
-        // Transfer bloodstream
-        if (TryComp<BloodstreamComponent>(geras, out var bloodstreamGeras)
-            && TryComp<BloodstreamComponent>(uid, out var bloodstreamParent))
-        {
-            //Empty Geras Bloodstream
-            _bloodstream.ClearBloodStream((geras, bloodstreamGeras));
-
-            if (_solutionContainer.ResolveSolution(geras, bloodstreamGeras.BloodSolutionName, ref bloodstreamGeras.BloodSolution)
-                && _solutionContainer.ResolveSolution(uid, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
-            {
-                //stop bleeding
-                _bloodstream.TryModifyBleedAmount(uid, -bloodstreamParent.BleedAmount);
-
-                //Transfer blood level
-                _bloodstream.TryModifyBloodLevel(geras, _bloodstream.GetBloodLevel(uid)*bloodstreamParent.BloodReferenceSolution.Volume);
-
-                //Transfer other chemicals (needs to be separate b/c of blood not necessarily being blood)
-                var ev = new MetabolismExclusionEvent();
-                RaiseLocalEvent(uid, ref ev);
-
-                foreach (var (reagent, quantity) in bloodstreamParent.BloodSolution.Value.Comp.Solution.Contents.ToList())
-                {
-                    if (ev.Reagents.Contains(reagent))
-                        continue;
-
-                    _solutionContainer.TryAddReagent(bloodstreamGeras.BloodSolution.Value, reagent.Prototype, quantity);
-                }
-            }
-
-            if (_solutionContainer.ResolveSolution(geras, bloodstreamGeras.MetabolitesSolutionName, ref bloodstreamGeras.MetabolitesSolution)
-                && _solutionContainer.ResolveSolution(uid, bloodstreamParent.MetabolitesSolutionName, ref bloodstreamParent.MetabolitesSolution))
-            {
-                foreach (var (reagent, quantity) in bloodstreamParent.MetabolitesSolution.Value.Comp.Solution.Contents.ToList())
-                {
-                    _solutionContainer.TryAddReagent(bloodstreamGeras.MetabolitesSolution.Value, reagent.Prototype, quantity);
-                }
-            }
-        }
+        var postMorphEv = new PostMorphGeras(uid);
+        RaiseLocalEvent(geras, postMorphEv);
 
         //Transfer Stomach Contents
         var getStomachEv = new GetStomachContentsEvent();
@@ -241,50 +191,6 @@ public sealed class GerasSystem : EntitySystem
             RaiseLocalEvent(uid, ref clearStomachEv);
         }
 
-        //Transfer Temperature
-        if (TryComp<TemperatureComponent>(uid, out var parentTemp) && TryComp<TemperatureComponent>(geras, out var gerasTemp))
-        {
-            gerasTemp.CurrentTemperature = parentTemp.CurrentTemperature;
-        }
-
-        //Transfer fire
-        if (TryComp<FlammableComponent>(uid, out var flammableParent))
-        {
-            //Gerasing quenches the player
-            flammableParent.OnFire = false;
-
-            //But won't unmix the fuel from them
-            if (TryComp<FlammableComponent>(geras, out var flammableGeras))
-            {
-                flammableGeras.FireStacks = flammableParent.FireStacks;
-            }
-        }
-
-        // Transfer storage to transformed entity
-        if (HasComp<StorageComponent>(geras) && TryComp<StorageComponent>(uid, out var parentStorage))
-        {
-            foreach (var item in parentStorage.StoredItems.Keys.ToList())
-            {
-                _storage.InsertAt(geras, item, parentStorage.StoredItems[item], out _, uid, playSound: false);
-            }
-        }
-
-        _implantSystem.TransferImplants(uid, geras);
-
-        //Transfer both kinds of status effects
-        if (TryComp<StatusEffectsComponent>(uid, out var oldStatuses))
-        {
-            var oldStatusTransferEv = new TransferStatusesEvent((uid, oldStatuses));
-            RaiseLocalEvent(geras, oldStatusTransferEv);
-        }
-
-        if (TryComp<StatusEffectContainerComponent>(uid, out var newStatuses))
-        {
-            EnsureComp<StatusEffectContainerComponent>(geras);
-            var newStatusTransferEv = new TransferNewStatusEffectsEvent((uid, newStatuses));
-            RaiseLocalEvent(geras, newStatusTransferEv);
-        }
-
         // Clear Stamina effects
         RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
         RaiseLocalEvent(geras, new ClearStaminaDamageEvent());
@@ -292,7 +198,6 @@ public sealed class GerasSystem : EntitySystem
         // Transfer mind
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
             _mindSystem.TransferTo(mindId, geras, mind: mind);
-
 
         _popupSystem.PopupPredicted(
             Loc.GetString("geras-popup-morph-message-user"),
@@ -302,6 +207,115 @@ public sealed class GerasSystem : EntitySystem
         );
 
         args.Handled = true;
+    }
+
+    private void OnRemoveSnares(Entity<EnsnareableComponent> ent, ref PreMorphGeras args)
+    {
+        foreach (Entity<EnsnaringComponent?> bola in ent.Comp.Container.ContainedEntities.ToList())
+        {
+            if (TryComp<EnsnaringComponent>(bola, out var ensnaringComponent))
+                _ensnareable.ForceFree(bola, ensnaringComponent);
+        }
+    }
+
+    private void OnRemoveProjectiles(Entity<EmbeddedContainerComponent> ent, ref PreMorphGeras args)
+    {
+        foreach (var projectile in ent.Comp.EmbeddedObjects)
+        {
+            if(TryComp<EmbeddableProjectileComponent>(projectile, out var embedComp))
+                _projectile.EmbedDetach(projectile, embedComp);
+        }
+    }
+
+    private void OnTransferDamage(Entity<DamageableComponent> ent, ref PostMorphGeras args)
+    {
+        if (_mobThreshold.GetScaledDamage(args.Parent, ent.Owner, out var damage) &&
+            damage != null)
+        {
+            _damageable.SetDamage((ent.Owner, ent.Comp), damage);
+            _damageable.ClearAllDamage(args.Parent);
+        }
+    }
+
+    private void OnTransferBloodstream(Entity<BloodstreamComponent> ent, ref PostMorphGeras args)
+    {
+        if (TryComp<BloodstreamComponent>(args.Parent, out var bloodstreamParent))
+        {
+            //Empty Geras Bloodstream
+            _bloodstream.ClearBloodStream(ent);
+
+            if (_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.BloodSolutionName, ref ent.Comp.BloodSolution)
+                && _solutionContainer.ResolveSolution(args.Parent, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
+            {
+                //stop bleeding
+                _bloodstream.TryModifyBleedAmount(args.Parent, -bloodstreamParent.BleedAmount);
+
+                //Transfer blood level
+                _bloodstream.TryModifyBloodLevel(ent.Owner, _bloodstream.GetBloodLevel(args.Parent)*bloodstreamParent.BloodReferenceSolution.Volume);
+
+                //Transfer other chemicals (needs to be separate b/c of blood not necessarily being blood)
+                var ev = new MetabolismExclusionEvent();
+                RaiseLocalEvent(args.Parent, ref ev);
+
+                foreach (var (reagent, quantity) in bloodstreamParent.BloodSolution.Value.Comp.Solution.Contents.ToList())
+                {
+                    if (ev.Reagents.Contains(reagent))
+                        continue;
+
+                    _solutionContainer.TryAddReagent(ent.Comp.BloodSolution.Value, reagent.Prototype, quantity);
+                }
+            }
+
+            if (_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.MetabolitesSolutionName, ref ent.Comp.MetabolitesSolution)
+                && _solutionContainer.ResolveSolution(args.Parent, bloodstreamParent.MetabolitesSolutionName, ref bloodstreamParent.MetabolitesSolution))
+            {
+                foreach (var (reagent, quantity) in bloodstreamParent.MetabolitesSolution.Value.Comp.Solution.Contents.ToList())
+                {
+                    _solutionContainer.TryAddReagent(ent.Comp.MetabolitesSolution.Value, reagent.Prototype, quantity);
+                }
+            }
+        }
+    }
+
+    private void OnTransferTemperature(Entity<TemperatureComponent> ent, ref PostMorphGeras args)
+    {
+        if (TryComp<TemperatureComponent>(args.Parent, out var parentTemp))
+        {
+            ent.Comp.CurrentTemperature = parentTemp.CurrentTemperature;
+        }
+    }
+
+    private void OnTransferFire(Entity<FlammableComponent> ent, ref PreMorphGeras args)
+    {
+        //Gerasing quenches the player
+        ent.Comp.OnFire = false;
+
+        //But won't unmix the fuel from them
+        if (TryComp<FlammableComponent>(args.Geras, out var flammableGeras))
+        {
+            flammableGeras.FireStacks = ent.Comp.FireStacks;
+        }
+    }
+
+    private void OnTransferStorage(Entity<StorageComponent> ent, ref PreMorphGeras args)
+    {
+        foreach (var item in ent.Comp.StoredItems.Keys.ToList())
+        {
+            _storage.InsertAt(args.Geras, item, ent.Comp.StoredItems[item], out _, ent.Owner, playSound: false);
+        }
+    }
+
+    private void OnTransferOldStatus(Entity<StatusEffectsComponent> ent, ref PreMorphGeras args)
+    {
+        var oldStatusTransferEv = new TransferStatusesEvent(ent);
+        RaiseLocalEvent(args.Geras, ref oldStatusTransferEv);
+    }
+
+    private void OnTransferNewStatus(Entity<StatusEffectContainerComponent> ent, ref PreMorphGeras args)
+    {
+        EnsureComp<StatusEffectContainerComponent>(args.Geras);
+        var newStatusTransferEv = new TransferNewStatusEffectsEvent(ent);
+        RaiseLocalEvent(args.Geras, ref newStatusTransferEv);
     }
 
     /// <summary>
@@ -319,10 +333,16 @@ public sealed class GerasSystem : EntitySystem
             return;
 
         _metaData.SetEntityName(geras, Name(uid));
-        if (args.profile != null)
+        if (args.Profile != null)
         {
-            _bodySystem.ApplyProfile(geras, new() { SkinColor = args.profile.Appearance.SkinColor });
-            _profileSystem.ApplyProfileTo((geras, EnsureComp<HumanoidProfileComponent>(geras)), args.profile);
+            _bodySystem.ApplyProfile(geras, new() { SkinColor = args.Profile.Appearance.SkinColor });
+            _profileSystem.ApplyProfileTo((geras, EnsureComp<HumanoidProfileComponent>(geras)), args.Profile);
+        }
+
+        if (TryComp<UnrevivableComponent>(uid, out var parentUnrev))
+        {
+            var gerasUnrev = EnsureComp<UnrevivableComponent>(geras);
+            gerasUnrev.Cloneable = parentUnrev.Cloneable;
         }
 
         uid.Comp.VisualsLoaded = true;
@@ -335,4 +355,8 @@ public sealed class GerasSystem : EntitySystem
     }
 }
 
-public record struct GerasVisualInitEvent(HumanoidCharacterProfile? profile);
+public record struct GerasVisualInitEvent(HumanoidCharacterProfile? Profile);
+
+public record struct PreMorphGeras(EntityUid Geras);
+
+public record struct PostMorphGeras(EntityUid Parent);

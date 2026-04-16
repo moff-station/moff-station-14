@@ -19,15 +19,15 @@ public sealed class StomachSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BodyComponent, GetStomachContentsEvent>(RelayGetStomachContents);
-        SubscribeLocalEvent<BodyComponent, ApplyStomachContentsEvent>(RelayApplyStomachContents);
-        SubscribeLocalEvent<BodyComponent, EmptyStomachEvent>(RelayEmptyStomach);
+        SubscribeLocalEvent<BodyComponent, GetStomachContentsEvent>(BodyRelayEvent);
+        SubscribeLocalEvent<BodyComponent, ApplyStomachContentsEvent>(BodyRelayEvent);
+        SubscribeLocalEvent<BodyComponent, EmptyStomachEvent>(BodyRelayEvent);
         SubscribeLocalEvent<StomachComponent, BodyRelayedEvent<GetStomachContentsEvent>>(OnGetStomachContents);
         SubscribeLocalEvent<StomachComponent, BodyRelayedEvent<ApplyStomachContentsEvent>>(OnApplyStomachContents);
         SubscribeLocalEvent<StomachComponent, BodyRelayedEvent<EmptyStomachEvent>>(OnEmptyStomach);
     }
 
-    private void BodyRelayEvent<TEvent>(Entity<BodyComponent> ent, ref TEvent args)
+    private void BodyRelayEvent<TEvent>(Entity<BodyComponent> ent, ref TEvent args) where TEvent : struct
     {
         _body.RelayEvent(ent, ref args);
     }

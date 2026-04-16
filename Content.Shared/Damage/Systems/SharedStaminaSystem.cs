@@ -121,8 +121,17 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     //Moffstation - Geras Patch - Begin
     private void OnClearStaminaDamage(Entity<StaminaComponent> ent, ref ClearStaminaDamageEvent args)
     {
-        var ev = new RejuvenateEvent();
-        OnRejuvenate(ent, ref ev);
+        if (ent.Comp.StaminaDamage >= ent.Comp.CritThreshold)
+        {
+            ExitStamCrit(ent, ent.Comp);
+        }
+
+        ent.Comp.StaminaDamage = 0;
+        AdjustStatus(ent.Owner);
+        RemComp<ActiveStaminaComponent>(ent);
+        _status.TryRemoveStatusEffect(ent, StaminaLow);
+        UpdateStaminaVisuals(ent);
+        Dirty(ent);
     }
     //Moffstation - End
 
