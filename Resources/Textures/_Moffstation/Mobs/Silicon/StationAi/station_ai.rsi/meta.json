@@ -1,38 +1,12 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/0287eb33bbb3a3f73bbcd7d0c8e607746c390566/icons/mob/AI.dmi & ai-cat,ai-royal,ai-floppycat + ai-floppycat-crash by Davyei (Github), ai_darling by CasaleBalthazar (Github) for moffstation.",
+    "copyright": "Taken from Citadel-Station-13-RP at https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/0287eb33bbb3a3f73bbcd7d0c8e607746c390566/icons/mob/AI.dmi",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
-        {
-            "name": "ai_darling",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.1,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.1
-                ]
-            ]
-        },
         {
             "name": "ai_alien",
             "delays": [
@@ -137,52 +111,6 @@
                     0.1,
                     0.1,
                     1
-                ]
-            ]
-        },
-        {
-            "name": "ai_cat",
-            "delays": [
-                [
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.2,
-                    0.1,
-                    0.1,
-                    0.2,
-                    0.3
-                ]
-            ]
-        },
-        {
-            "name": "ai_cat_dead",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
                 ]
             ]
         },
@@ -536,36 +464,6 @@
             ]
         },
         {
-            "name": "ai_floppycat",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
-                ]
-            ]
-        },
-        {
-            "name": "ai_floppycat_crash",
-            "delays": [
-                [
-                    0.3,
-                    0.7,
-                    0.5,
-                    0.7
-                ]
-            ]
-        },
-        {
             "name": "ai_glitchman",
             "delays": [
                 [
@@ -912,17 +810,6 @@
                     0.1,
                     0.1,
                     0.1
-                ]
-            ]
-        },
-        {
-            "name": "ai_royal",
-            "delays": [
-                [
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.3
                 ]
             ]
         },

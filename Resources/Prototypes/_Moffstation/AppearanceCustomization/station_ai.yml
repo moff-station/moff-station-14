@@ -5,10 +5,10 @@
   name: station-ai-icon-alien
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_alien
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_alien_dead
 
 - type: stationAiCustomization
@@ -17,10 +17,10 @@
   name: station-ai-icon-angryface
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_angryface
     Dead: &defaultdead
-      sprite: Mobs/Silicon/station_ai.rsi
+      sprite: Mobs/Silicon/StationAi/StationAi/station_ai.rsi
       state: ai_dead
 
 - type: stationAiCustomization
@@ -29,7 +29,7 @@
   name: station-ai-icon-bloodylove
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_bloodylove
     Dead: *defaultdead
 
@@ -39,7 +39,7 @@
   name: station-ai-icon-boxfort
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_boxfort
     Dead: *defaultdead
 
@@ -49,10 +49,10 @@
   name: station-ai-icon-cat
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/cat_ai.rsi
       state: ai_cat
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/cat_ai.rsi
       state: ai_cat_dead
 
 - type: stationAiCustomization
@@ -61,7 +61,7 @@
   name: station-ai-icon-cheerful
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_cheerful
     Dead: *defaultdead
 
@@ -71,10 +71,10 @@
   name: station-ai-icon-database
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_database
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_database_crash
 
 - type: stationAiCustomization
@@ -83,7 +83,7 @@
   name: station-ai-icon-fabulous
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_fabulous
     Dead: *defaultdead
 
@@ -93,10 +93,10 @@
   name: station-ai-icon-floppycat
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/floppycat_ai.rsi
       state: ai_floppycat
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/floppycat_ai.rsi
       state: ai_floppycat_crash
 
 - type: stationAiCustomization
@@ -105,10 +105,10 @@
   name: station-ai-icon-glitchman
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_glitchman
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_glitchman_dead
 
 - type: stationAiCustomization
@@ -117,10 +117,10 @@
   name: station-ai-icon-hades
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_hades
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_hades_dead
 
 - type: stationAiCustomization
@@ -129,7 +129,7 @@
   name: station-ai-icon-helios
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_helios
     Dead: *defaultdead
 
@@ -139,7 +139,7 @@
   name: station-ai-icon-honeycomb
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_honeycomb
     Dead: *defaultdead
 
@@ -149,7 +149,7 @@
   name: station-ai-icon-hourglass
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_hourglass
     Dead: *defaultdead
 
@@ -159,10 +159,10 @@
   name: station-ai-icon-lonestar
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_lonestar
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_lonestar_dead
 
 - type: stationAiCustomization
@@ -171,7 +171,7 @@
   name: station-ai-icon-magma
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_magma
     Dead: *defaultdead
 
@@ -181,7 +181,7 @@
   name: station-ai-icon-matrix
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_matrix
     Dead: *defaultdead
 
@@ -191,7 +191,7 @@
   name: station-ai-icon-mono
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_mono
     Dead: *defaultdead
 
@@ -201,7 +201,7 @@
   name: station-ai-icon-nanotrasen
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_nanotrasen
     Dead: *defaultdead
 
@@ -211,7 +211,7 @@
   name: station-ai-icon-president
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_president
     Dead: *defaultdead
 
@@ -221,7 +221,7 @@
   name: station-ai-icon-ravensdale
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_ravensdale
     Dead: *defaultdead
 
@@ -231,7 +231,7 @@
   name: station-ai-icon-royal
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/royal_ai.rsi
       state: ai_royal
     Dead: *defaultdead
 
@@ -241,10 +241,10 @@
   name: station-ai-icon-sheltered
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_sheltered
     Dead:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_sheltered_dead
 
 - type: stationAiCustomization
@@ -253,7 +253,7 @@
   name: station-ai-icon-terminal
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_terminal
     Dead: *defaultdead
 
@@ -263,7 +263,7 @@
   name: station-ai-icon-text
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_text
     Dead: *defaultdead
 
@@ -273,7 +273,7 @@
   name: station-ai-icon-thinking
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_thinking
     Dead: *defaultdead
 
@@ -283,7 +283,7 @@
   name: station-ai-icon-triumvirate
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_triumvirate
     Dead: *defaultdead
 
@@ -293,7 +293,7 @@
   name: station-ai-icon-u
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_u
     Dead: *defaultdead
 
@@ -303,7 +303,7 @@
   name: station-ai-icon-wasp
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/station_ai.rsi
       state: ai_wasp
     Dead: *defaultdead
 
@@ -313,7 +313,7 @@
   name: station-ai-icon-darling
   layerData:
     Occupied:
-      sprite: _Moffstation/Mobs/Silicon/station_ai.rsi
+      sprite: _Moffstation/Mobs/Silicon/StationAi/darling_ai.rsi
       state: "ai_darling"
     Dead: *defaultdead
 
