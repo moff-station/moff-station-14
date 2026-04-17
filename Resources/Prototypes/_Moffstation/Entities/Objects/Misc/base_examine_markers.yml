@@ -3,5 +3,6 @@
   id: BaseExaminableArmed
   abstract: true
   components:
-  - type: ExaminableClothing
+  - type: ExtraExaminable
     extraText: examinable-gun
+    showOnHeld: true

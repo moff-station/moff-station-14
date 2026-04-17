@@ -58,8 +58,8 @@
   - type: TypingIndicatorClothing
     proto: lawyer
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-badge-lawyer
+  - type: ExtraExaminable
+    wornText: clothing-badge-lawyer
     # Moffstation - End
 
 - type: entity

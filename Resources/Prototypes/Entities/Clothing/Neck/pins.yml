@@ -45,8 +45,8 @@
   - type: ChameleonClothing
     default: ClothingNeckLGBTPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-lgbt
+  - type: ExtraExaminable
+    wornText: clothing-pin-lgbt
     # Moffstation - End
 
 - type: entity
@@ -62,8 +62,8 @@
   - type: ChameleonClothing
     default: ClothingNeckAllyPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-straight-ally
+  - type: ExtraExaminable
+    wornText: clothing-pin-straight-ally
     # Moffstation - End
 
 - type: entity
@@ -79,8 +79,8 @@
   - type: ChameleonClothing
     default: ClothingNeckAromanticPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-aromantic
+  - type: ExtraExaminable
+    wornText: clothing-pin-aromantic
     # Moffstation - End
 
 - type: entity
@@ -96,8 +96,8 @@
   - type: ChameleonClothing
     default: ClothingNeckAroacePin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-aroace
+  - type: ExtraExaminable
+    wornText: clothing-pin-aroace
     # Moffstation - End
 
 - type: entity
@@ -113,8 +113,8 @@
   - type: ChameleonClothing
     default: ClothingNeckAsexualPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-asexual
+  - type: ExtraExaminable
+    wornText: clothing-pin-asexual
     # Moffstation - End
 
 - type: entity
@@ -130,8 +130,8 @@
   - type: ChameleonClothing
     default: ClothingNeckBisexualPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-bisexual
+  - type: ExtraExaminable
+    wornText: clothing-pin-bisexual
     # Moffstation - End
 
 - type: entity
@@ -147,8 +147,8 @@
   - type: ChameleonClothing
     default: ClothingNeckGayPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-gay
+  - type: ExtraExaminable
+    wornText: clothing-pin-gay
     # Moffstation - End
 
 - type: entity
@@ -164,8 +164,8 @@
   - type: ChameleonClothing
     default: ClothingNeckIntersexPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-intersex
+  - type: ExtraExaminable
+    wornText: clothing-pin-intersex
     # Moffstation - End
 
 - type: entity
@@ -181,8 +181,8 @@
   - type: ChameleonClothing
     default: ClothingNeckLesbianPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-lesbian
+  - type: ExtraExaminable
+    wornText: clothing-pin-lesbian
     # Moffstation - End
 
 - type: entity
@@ -198,8 +198,8 @@
   - type: ChameleonClothing
     default: ClothingNeckNonBinaryPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-nonbinary
+  - type: ExtraExaminable
+    wornText: clothing-pin-nonbinary
     # Moffstation - End
 
 - type: entity
@@ -215,8 +215,8 @@
   - type: ChameleonClothing
     default: ClothingNeckPansexualPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-pansexual
+  - type: ExtraExaminable
+    wornText: clothing-pin-pansexual
     # Moffstation - End
 
 - type: entity
@@ -232,8 +232,8 @@
   - type: ChameleonClothing
     default: ClothingNeckPluralPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-plural
+  - type: ExtraExaminable
+    wornText: clothing-pin-plural
     # Moffstation - End
 
 - type: entity
@@ -249,8 +249,8 @@
   - type: ChameleonClothing
     default: ClothingNeckOmnisexualPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-omnisexual
+  - type: ExtraExaminable
+    wornText: clothing-pin-omnisexual
     # Moffstation - End
 
 - type: entity
@@ -266,8 +266,8 @@
   - type: ChameleonClothing
     default: ClothingNeckGenderqueerPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-genderqueer
+  - type: ExtraExaminable
+    wornText: clothing-pin-genderqueer
     # Moffstation - End
 
 - type: entity
@@ -283,8 +283,8 @@
   - type: ChameleonClothing
     default: ClothingNeckGenderfluidPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-genderfluid
+  - type: ExtraExaminable
+    wornText: clothing-pin-genderfluid
     # Moffstation - End
 
 - type: entity
@@ -300,8 +300,8 @@
   - type: ChameleonClothing
     default: ClothingNeckTransPin
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-transgender
+  - type: ExtraExaminable
+    wornText: clothing-pin-transgender
     # Moffstation - End
 
 - type: entity
@@ -326,8 +326,8 @@
   - type: Clothing
     equippedPrefix: goldautism
     # Moffstation - Start - Examinable Clothing
-  - type: ExaminableClothing
-    examineText: clothing-pin-autism
+  - type: ExtraExaminable
+    wornText: clothing-pin-autism
     # Moffstation - End
 
 - type: entity

@@ -8,25 +8,25 @@ namespace Content.Shared._Moffstation.Clothing;
 /// "wearer" is the default if you need to get info for the person interacting with the item
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class ExaminableClothingComponent : Component
+public sealed partial class ExtraExaminableComponent : Component
 {
     /// <summary>
     /// Localization ID of the examine text to display. It will be slotted into a sentence of the form "PRONOUN(Wearer) is wearing INDEFINITE(ExaminableClothing)." If unspecified, defaults to the item's name.
     /// </summary>
     [DataField]
-    public LocId? ExamineText = null;
+    public LocId? WornText = null;
 
     /// <summary>
-    /// Same as ExamineText, but without wrapping it in other text. Whatever is in the loc will appear in the examine as-is
+    /// Same as WornText, but without wrapping it in other text. Whatever is in the loc will appear in the examine as-is
     /// </summary>
     [DataField]
     public LocId? ExtraText = null;
 
     /// <summary>
-    /// Whether the item's normal held text should appear ("They are holding x")
+    /// Whether the item's custom text should appear when it is being held
     /// </summary>
     [DataField]
-    public bool OverwriteHeld = false;
+    public bool ShowOnHeld = false;
 
     /// <summary>
     /// Only adds the examine text in the given slots.
