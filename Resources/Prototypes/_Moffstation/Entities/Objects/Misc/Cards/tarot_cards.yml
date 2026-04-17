@@ -1,7 +1,8 @@
 - type: entity
   parent: BasePlayingCardDeckBox
   id: TarotCardDeckBox
-  name: box of tarot cards
+  name: box of major arcana tarot cards
+  description: A small carton containing a set of the Major Arcana cards from the cartomantic tarot deck.
   suffix: Tarot
   components:
   - type: Sprite
