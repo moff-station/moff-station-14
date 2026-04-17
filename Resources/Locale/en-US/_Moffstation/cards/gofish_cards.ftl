@@ -63,12 +63,7 @@ gofish-card-value-name = { $card ->
    *[other] {$card}
 }
 
-gofish-card-desc = {$id ->
-    [rules] { gofish-card-desc-rules }
-   *[other] { gofish-card-desc-regular }
-}
-
-gofish-card-desc-regular =
+gofish-card-desc = 
     The border of this card is { $suit }.
     It belongs to the { gofish-card-group-name } group of cards!
 
@@ -140,16 +135,54 @@ gofish-card-group-name = { $id ->
    *[other] !!Brother you should not be seeing this...!!
 }
 
-gofish-card-desc-rules = Rules of the game!
-   
-   Players are dealt 5 cards from a shuffled deck. Remaining cards are left face down in a deck forming the fish pond/draw pile.
-   The dealer will go first, and they get to ask a single player if they currently hold a card from a specific group.
-   For example, "Do you have any Mothroach Cards?"
-   You can examine the card to see what group it belongs to if you are unsure based on the image.
-   The asking player can only ask another player for a card from a specific group, if they hold one of those cards in their hand. They cannot ask for a Mothroach card if they do not hold any Mothroach cards.
-   If the asked player has a Mothroach card, they must surrender the card to the asking player. The asking player will then get to repeat their turn.
-   If the asked player does not have a card from that group, they will reply with "Go Fish!", in which the asking player must draw a card from the fish pond/draw pile, and the next person will get their turn.
-   Once a player collects all four cards from a specific group, that player removes those four cards from their hand, laying them face up on the table and collecting one point.
-   If a player has no cards, they must immediately end their turn and draw a card from the fishpond/drawpile.
-   The game repeats until there are no more cards left in the fish pond/draw pile, and all card groups have been united.
-   Whoever has the most points at the end will be declared the winner!
+gofish-card-rules-content = [color=#1b67a5]
+                                                  Go Fish!
+                                                  Card Game Rules & How to Play[/color]
+    ══════════════════════════════════════    
+     Introduction:
+    Go Fish is a classic card game designed to be played by 2-6 players. The goal of Go Fish! is to collect all four cards from the same group to score points.
+    To start a game of Go Fish, begin by shuffling the deck. The amount of cards you would then deal depends on the number of players...
+    ══════════════════════════════════════
+
+     Setup:
+     • 2-3 players: Deal 7 cards each.
+     • 4-6 players: Deal 5 cards each.
+    Once the cards have been dealt, return the deck to the middle of the table face down.
+    ══════════════════════════════════════
+
+     Gameplay:
+    Players will take turn asking another player if they have a card belonging to a specific group. The asking player may only asks for cards from a specific group, if they hold one of those cards in their hand.
+        Player 1: Hey Player 2, got any Mothroaches?
+    Player 2 must surrender all Mothroach cards to Player 1 if they have any in their possesion. If this is the case, Player 1 can continue their turn and ask another player, repeating until they get one wrong.
+        Player 1: Hey Player 3, got any Mothroaches?
+    If the player doesn't have the a card belonging to that group, they can respond with "Go Fish!"
+                                                  Player 2: Nope! Go Fish!
+    Player 1 would then draw a card from the deck. If they manage to draw a card belonging to a group they just asked for, then they must announce that and continue their turn.
+        Player 1: I drew a Mothroach! I get to go again!
+    If the card does not match the group they asked for, then the next player in the turn order begins their turn.
+    ══════════════════════════════════════
+
+     How To Win:
+    If a player manages to collect all four cards belonging to the same group, the player must place the four cards face up on the table and announce it to the other players.
+    For every set a player collects, they score one point.
+
+    The game ends when there are no cards left in the deck and all groups have been united. The player who has the most points will be declared the winner!
+    ══════════════════════════════════════
+
+     Tips for Playing Go Fish!
+    There are 13 groups in a standard Go Fish! deck.
+    Each group has four cards, with each card having a border color of either [color=Red]Red[/color], [color=DodgerBlue]Blue[/color] [color=LimeGreen]Green[/color] or [color=GoldenRod]Yellow[/color].
+    The 13 groups are as follows...
+    1: Card         6: Cats       11: Plushies  
+    2: Cigarettes   7: Fruit      12: Soda
+    3: Corgis       8: Mice       13: Troublemakers
+    4: Donuts       9: Mothroachs
+    5: ERT         10: Nukies
+
+     • Remember to pay attention to what other players ask for!
+
+     • Remember who has which cards so your guesses can be more successful!
+
+     • Avoid exposing cards which you are a close to completing a set with!
+
+     • Remember to have fun!
