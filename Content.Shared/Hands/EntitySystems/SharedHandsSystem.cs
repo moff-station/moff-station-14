@@ -27,7 +27,7 @@ public abstract partial class SharedHandsSystem
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
     [Dependency] private readonly SharedVirtualItemSystem _virtualSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
-    [Dependency] private readonly ExaminableClothingSystem _examinableClothing = default!; // Moffstation
+    [Dependency] private readonly ExtraExaminableSystem _extraExaminable = default!; // Moffstation
 
     public event Action<Entity<HandsComponent>, string, HandLocation>? OnPlayerAddHand;
     public event Action<Entity<HandsComponent>, string>? OnPlayerRemoveHand;

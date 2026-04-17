@@ -7,7 +7,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Clothing;
 
-public sealed class ExaminableClothingSystem : EntitySystem
+public sealed class ExtraExaminableSystem : EntitySystem
 {
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
@@ -16,14 +16,19 @@ public sealed class ExaminableClothingSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ExaminableClothingComponent, InventoryRelayedEvent<ExaminedEvent>>(OnExaminedWorn);
+        SubscribeLocalEvent<ExtraExaminableComponent, InventoryRelayedEvent<ExaminedEvent>>(OnExaminedWorn);
     }
 
-    public string ExamineText(Entity<ExaminableClothingComponent> ent, EntityUid wearer)
+    private void OnExamined(Entity<ExtraExaminableComponent> ent, ref ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("examinable-clothing-when-worn", ("message", ExamineText(ent, args.Examiner))));
+    }
+
+    public string ExamineText(Entity<ExtraExaminableComponent> ent, EntityUid wearer)
     {
         var textList = new List<string>();
 
-        if (ent.Comp.ExamineText is { } examineText)
+        if (ent.Comp.WornText is { } examineText)
             textList.Add(Loc.GetString("examinable-clothing-examine", ("wearer", wearer), ("item", Loc.GetString(examineText, ("wearer", wearer)))));
 
         if (ent.Comp.ExtraText is { } extraText)
@@ -32,7 +37,7 @@ public sealed class ExaminableClothingSystem : EntitySystem
         return string.Join("\n", textList);
     }
 
-    private void OnExaminedWorn(Entity<ExaminableClothingComponent> ent, ref InventoryRelayedEvent<ExaminedEvent> args)
+    private void OnExaminedWorn(Entity<ExtraExaminableComponent> ent, ref InventoryRelayedEvent<ExaminedEvent> args)
     {
         if (!_inventory.TryGetContainingSlot(ent.Owner, out var slot) || (slot.SlotFlags & ent.Comp.AllowedSlots) == SlotFlags.NONE)
             return;
