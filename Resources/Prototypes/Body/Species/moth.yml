@@ -190,7 +190,7 @@
   - type: Flammable
     damage:
       types:
-        Heat: 4.5 # Moffstation, return moths back to their original firestack damage
+        Heat: 4.5 # Moffstation - Revert moth fire stack damage reduction
   - type: Temperature
     currentTemperature: 310.15
     specificHeat: 46
