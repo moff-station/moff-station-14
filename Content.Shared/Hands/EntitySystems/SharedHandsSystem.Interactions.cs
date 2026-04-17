@@ -213,14 +213,14 @@ public abstract partial class SharedHandsSystem : EntitySystem
             .Where(entity => !HasComp<VirtualItemComponent>(entity))
             .ToList();
 
-        foreach (var item in heldItems.ToList())
+        foreach (var item in heldItems)
         {
-            if (!TryComp<ExtraExaminableComponent>(item, out var extraExaminable) || !extraExaminable.ShowOnHeld)
+            if (!TryComp<ExaminableClothingComponent>(item, out var examinableClothing))
                 continue;
 
             using (args.PushGroup(nameof(HandsComponent)))
             {
-                args.PushMarkup(_extraExaminable.ExamineText((item, extraExaminable), examinedUid));
+                args.PushMarkup(_examinableClothing.ExamineText((item, examinableClothing), examinedUid));
             }
         }
 
