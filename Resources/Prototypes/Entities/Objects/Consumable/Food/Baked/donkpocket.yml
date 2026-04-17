@@ -22,8 +22,6 @@
   - type: Tag
     tags:
     - DonkPocket
-    - Meat
-    - Raw
   - type: Fixtures
     fixtures:
       fix1:
@@ -131,10 +129,15 @@
   id: FoodDonkpocketDankWarm
   description: The heated food of choice for the seasoned botanist.
   components:
+  - type: Tag
+    tags:
+    - Cooked
   - type: FlavorProfile
     flavors:
       - leafy
       - cheap
+  - type: Sprite
+    state: dank
   - type: SolutionContainerManager
     solutions:
       food:
@@ -382,7 +385,7 @@
   name: stonk-pocket
   parent: FoodDonkpocketBase
   id: FoodDonkpocketStonk
-  description: Tasty, but a sad reminder of the great crash of '24.
+  description: Tasty, but a sad reminder of the reason behind the great crash of '24.
   components:
   - type: FlavorProfile
     flavors:
@@ -409,6 +412,7 @@
   name: warm stonk-pocket
   parent: FoodDonkpocketStonk
   id: FoodDonkpocketStonkWarm
+  description: Tasty, and while warm each has it's own unique cryptocurrency. Sell it while it's hot. 
   components:
   - type: FlavorProfile
     flavors:
@@ -423,7 +427,7 @@
         - ReagentId: Omnizine
           Quantity: 2
   - type: StaticPrice
-    price: 1500
+    price: 500
 
 - type: entity
   name: carp-pocket
@@ -456,6 +460,7 @@
   name: warm carp-pocket
   parent: FoodDonkpocketCarp
   id: FoodDonkpocketCarpWarm
+  description: A long-lost edition of donk pocket, made specifically for hard-working salvagers. Now warm and crunchy in each bite.
   components:
   - type: FlavorProfile
     flavors:
@@ -531,6 +536,7 @@
   name: warm moth-pocket
   parent: FoodDonkpocketMoth
   id: FoodDonkpocketMothWarm
+  description: Buzzy edition of donk-pocket for moths. Now warm and melting on your tongue.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -542,3 +548,50 @@
           Quantity: 5
         - ReagentId: Omnizine
           Quantity: 2
+
+- type: entity
+  parent: BaseItem
+  id: FoodDonkpocketTide
+  name: tide-pocket
+  description: A carefully synthesized brick designed to contain the highest ratio of nutriment to volume. Tastes like shit.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+      - DonkPocket
+  - type: Sprite
+    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: tide
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodDonkpocketTideWarm
+    sound:
+      path: /Audio/_Moffstation/Effects/donktidesizzle.ogg
+
+- type: entity
+  parent: FoodSnackBase
+  id: FoodDonkpocketTideWarm
+  name: warm tide-pocket
+  description: A carefully synthesized brick designed to contain the highest ratio of nutriment to volume. Tastes like shit.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - nutribrick
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+      - DonkPocket
+  - type: Sprite
+    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: tide-open
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 6
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Omnizine
+          Quantity: 1

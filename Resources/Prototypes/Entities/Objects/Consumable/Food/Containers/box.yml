@@ -496,6 +496,19 @@
         amount: 6
 
 - type: entity
+  parent: FoodBoxDonkpocket
+  id: FoodBoxDonkpocketTide
+  name: box of tide-pockets
+  components:
+  - type: Sprite
+    state: tide-box
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: FoodDonkpocketTide
+        amount: 6
+
+- type: entity
   id: HappyHonk
   parent: [ BoxCardboard, BaseBagOpenClose ]
   name: happy honk meal

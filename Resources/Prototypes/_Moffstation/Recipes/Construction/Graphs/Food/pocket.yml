@@ -21,7 +21,6 @@
   id: WarmDank
   start: start
   graph:
-
   - node: start
     edges:
     - to: warm dank-pocket
@@ -30,7 +29,6 @@
         sound: /Audio/_Moffstation/Effects/donksizzle.ogg
       steps:
       - minTemperature: 335
-
   - node: warm dank-pocket
     entity: FoodDonkpocketDankWarm
 
