@@ -1,0 +1,22 @@
+# Player: LSDarling - Character: Aine Lucia
+
+- type: entity
+  parent: ClothingHeadHatBeretCmo
+  id: PersonalItemAineBeret
+  name: Aine's beret
+  description: This well-loved beret has cat ears sewn to the top, and is covered in many stickers and pins depicting various anime and video game characters. Seems like the person who owns this is quite the geek.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/LSDarling/Aine_Lucia/aineberet.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/LSDarling/Aine_Lucia/aineberet.rsi
+
+- type: loadout
+  id: PersonalItemAineBeret
+  equipment:
+    head: PersonalItemAineBeret
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Aine Lucia
