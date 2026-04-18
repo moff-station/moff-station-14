@@ -77,6 +77,19 @@
   - type: StaticPrice
     price: 70
   - type: PowerSwitch
+  # Moffstation - Signal network for disposal units
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+    - DisposalUnitFlush
+    - DisposalUnitAutoFlushOn
+    - DisposalUnitAutoFlushOff
+    - DisposalUnitAutoFlushToggle
+  # Moffstation - End
 
 - type: entity
   id: DisposalUnit

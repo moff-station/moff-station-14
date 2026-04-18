@@ -1,3 +1,4 @@
+using Content.Server._Moffstation.Geras;//Moffstation - Re-add Geras
 using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.Mind;
@@ -143,6 +144,10 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             {
                 AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
             }
+
+            //Moffstation - Re-add Geras - Begin
+            RaiseLocalEvent(entity.Value, new GerasVisualInitEvent(profile));
+            //Moffstation - End
         }
 
         if (loadout != null)

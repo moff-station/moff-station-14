@@ -23,6 +23,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Shared._Moffstation.Pinpointer; // Moffstation - AI warp
 using Content.Shared.Power.EntitySystems;
 
 namespace Content.Server.Holopad;
@@ -82,6 +83,8 @@ public sealed class HolopadSystem : SharedHolopadSystem
         SubscribeLocalEvent<HolopadComponent, EntParentChangedMessage>(OnParentChanged);
         SubscribeLocalEvent<HolopadComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<HolopadUserComponent, MobStateChangedEvent>(OnMobStateChanged);
+
+        SubscribeAllEvent<NavMapWarpRequest>(OnNavMapWarpRequest); // Moffstation - AI warp
 
     }
 
@@ -398,6 +401,24 @@ public sealed class HolopadSystem : SharedHolopadSystem
 
         _telephoneSystem.EndTelephoneCalls((stationAiCore, stationAiCoreTelephone));
     }
+
+    /* Moffstation - AI warp */
+    private void OnNavMapWarpRequest(NavMapWarpRequest req, EntitySessionEventArgs session)
+    {
+        var entity = GetEntity(req.Uid);
+
+        if (!TryComp<StationAiHeldComponent>(entity, out var entityStationAiHeld))
+            return;
+
+        if (!_stationAiSystem.TryGetCore(entity, out var stationAiCore))
+            return;
+
+        if (!TryComp<TelephoneComponent>(stationAiCore, out var stationAiCoreTelephone))
+            return;
+
+        _telephoneSystem.EndTelephoneCalls((stationAiCore, stationAiCoreTelephone));
+    }
+    /* Moffstation - end */
 
     private void AddToggleProjectorVerb(Entity<HolopadComponent> entity, ref GetVerbsEvent<AlternativeVerb> args)
     {

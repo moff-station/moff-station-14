@@ -28,6 +28,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         SubscribeLocalEvent<VisualOrganComponent, BodyRelayedEvent<ApplyOrganProfileDataEvent>>(OnVisualOrganApplyProfile);
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<ApplyOrganMarkingsEvent>>(OnMarkingsOrganApplyMarkings);
         SubscribeLocalEvent<HumanoidProfileComponent, ApplyOrganProfileDataEvent>(OnApplyOrganProfileData); // Moffstation - Height scaling
+        SubscribeLocalEvent<VisualOrganComponent, ForceUpdateOrganVisualsEvent>(OnForceOrganUpdate);//Moffstation - Re-add Geras
 
         InitializeModifiers();
         InitializeInitial();
@@ -78,6 +79,14 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         ent.Comp.Data.Color = color;
         Dirty(ent);
     }
+
+    //Moffstation - Re-add Geras - Begin
+    private void OnForceOrganUpdate(Entity<VisualOrganComponent> ent, ref ForceUpdateOrganVisualsEvent args)
+    {
+        ent.Comp.Data.State = args.State;
+        Dirty(ent);
+    }
+    //Moffstation - End
 
     protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data)
     {

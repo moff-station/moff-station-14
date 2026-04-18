@@ -2,12 +2,13 @@
 - type: weightedRandom
   id: TraitorObjectiveGroups
   weights:
-    TraitorObjectiveGroupSteal: 1
     # Moffstation - Start - Reweighing tables for picker. Keep original proto so we can keep up with any upstream changes
-    TraitorObjectiveGroupKill: 3
-    TraitorObjectiveGroupState: 0.1 #As in, something about your character. Alive, dead, arrested, gained an ability...
-    TraitorObjectiveGroupSocial: 3 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveOpenEnded: 0.25
+    TraitorObjectiveGroupSteal: 0.25
+    TraitorObjectiveGroupKill: 1
+    TraitorObjectiveGroupState: 0.25 #As in, something about your character. Alive, dead, arrested, gained an ability...
+    TraitorObjectiveGroupSocial: 0.5 #Involves helping/harming others without killing them or stealing their stuff
+    TraitorObjectiveGroupSabotage: 0.5
+    TraitorObjectiveGroupOther: 0.5
     # Moffstation - End
 
 - type: weightedRandom
@@ -25,13 +26,13 @@
     CaptainGunStealObjective: 0.5
     CaptainJetpackStealObjective: 0.5
     HandTeleporterStealObjective: 0.5
-    EnergyMagnumStealObjective: 0.5 # Moffstation - Objective picker adjustments
-    ValkyrieHudStealObjective : 1 # Moffstation - Valkyrie Hud is now a Steal Objective
+    EnergyMagnumStealObjective: 0.5
 
 - type: weightedRandom
   id: TraitorObjectiveGroupKill
   weights:
     KillRandomPersonObjective: 1
+    KillStationAiObjective: 0.25
     KillRandomHeadObjective: 0.25
     TeachLessonObjective: 1 # Moffstation - teach lesson objective
 
@@ -47,6 +48,32 @@
   weights:
 #    RandomTraitorAliveObjective: 1 - Removed because the objective was boring and didn't progress the round.
     RandomTraitorProgressObjective: 1
+    # Moffstation - Start - Social traitor objectives
+    GatherIntelObjective: 1
+    JailbreakObjective: 0.5
+    LeaveCallingCardObjective: 0.5
+    LeaveCallingCardOnPersonObjective: 0.5
+    # Moffstation - End
+
+- type: weightedRandom
+  id: TraitorObjectiveGroupSabotage
+  weights:
+    SupercritAnomaliesObjective: 1
+    # Moffstation - Sabotage objectives
+    DisruptDepartmentObjective: 1
+    SabotageObjective: 0.5
+    # Moffstation - End
+
+#misc objectives that don't fall other another category
+- type: weightedRandom
+  id: TraitorObjectiveGroupOther
+  weights:
+    HijackTradeStationObjective: 1
+    # Moffstation - Location based objectives
+    TrashRoomObjective: 1
+    ClaimLocationObjective: 1
+    # Moffstation - End
+
 
 #Thief groups
 - type: weightedRandom
@@ -73,7 +100,7 @@
     TechnologyDiskStealCollectionObjective: 1           #sci
     MailStealCollectionObjective: 1                     #cargo
     IDCardsStealCollectionObjective: 1
-    LAMPStealCollectionObjective: 0.05        # Moffstation - further decrease likelyhood because of the picker
+    #LAMPStealCollectionObjective: 0.05        # Moffstation - Meme objective, not needed given our objective picker
 
 - type: weightedRandom
   id: ThiefObjectiveGroupItem

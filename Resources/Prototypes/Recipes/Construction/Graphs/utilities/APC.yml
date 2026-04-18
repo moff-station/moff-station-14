@@ -13,7 +13,7 @@
     - node: apcFrame
       entity: APCFrame
       edges:
-        - to: apc
+        - to: apcFrameWithBoard # Moffstation - Moduluar APCs
           steps:
             - component: ApcElectronics
               name: construction-graph-component-apc-electronics
@@ -32,12 +32,12 @@
               doAfter: 2
 
     - node: apc
-      entity: APCConstructed
+      entity: APCBasic # Moffstation - Moduluar APCs
       edges:
-        - to: apcFrame
+        - to: apcFrameWithBoard # Moffstation - Moduluar APCs
           completed:
             - !type:GivePrototype
-              prototype: APCElectronics
+              prototype: PowerCellMedium # Moffstation - Moduluar APCs
               amount: 1
           conditions:
             - !type:WirePanel
@@ -45,3 +45,135 @@
           steps:
             - tool: Prying
               doAfter: 4
+
+    # Moffstation - Start - Moduluar APCs
+    - node: apcFrameWithBoard
+      entity: APCFrameWithBoard
+      edges:
+      - to: apcPotato
+        steps:
+        - tag: PotatoBattery
+          store: powercell
+          name: construction-graph-tag-power-cell
+          icon:
+            sprite: "Objects/Power/power_cells.rsi"
+            state: "potato"
+          doAfter: 0.5
+        - tool: Screwing
+          doAfter: 2
+      - to: apcSmall
+        steps:
+        - tag: PowerCellSmall
+          store: powercell
+          name: construction-graph-tag-power-cell
+          icon:
+            sprite: "Objects/Power/power_cells.rsi"
+            state: "small"
+          doAfter: 0.5
+        - tool: Screwing
+          doAfter: 2
+      - to: apc
+        steps:
+        - tag: PowerCellMedium
+          store: powercell
+          name: construction-graph-tag-power-cell
+          icon:
+            sprite: "Objects/Power/power_cells.rsi"
+            state: "medium"
+          doAfter: 0.5
+        - tool: Screwing
+          doAfter: 2
+      - to: apcHigh
+        steps:
+        - tag: PowerCellHigh
+          store: powercell
+          name: construction-graph-tag-power-cell
+          icon:
+            sprite: "Objects/Power/power_cells.rsi"
+            state: "high"
+          doAfter: 0.5
+        - tool: Screwing
+          doAfter: 2
+      - to: apcHyper
+        steps:
+        - tag: PowerCellHyper
+          store: powercell
+          name: construction-graph-tag-power-cell
+          icon:
+            sprite: "Objects/Power/power_cells.rsi"
+            state: "hyper"
+          doAfter: 0.5
+        - tool: Screwing
+          doAfter: 2
+      - to: apcFrame
+        completed:
+        - !type:GivePrototype
+          prototype: APCElectronics
+          amount: 1
+        conditions:
+        - !type:WirePanel
+          open: true
+        steps:
+        - tool: Prying
+          doAfter: 4
+
+    - node: apcPotato
+      entity: APCPotatoBreaker
+      edges:
+      - to: apcFrameWithBoard
+        completed:
+        - !type:GivePrototype
+          prototype: PowerCellPotato
+          amount: 1
+        conditions:
+        - !type:WirePanel
+          open: true
+        steps:
+        - tool: Prying
+          doAfter: 4
+
+    - node: apcSmall
+      entity: APCSmallBreaker
+      edges:
+      - to: apcFrameWithBoard
+        completed:
+        - !type:GivePrototype
+          prototype: PowerCellSmallPrinted
+          amount: 1
+        conditions:
+        - !type:WirePanel
+          open: true
+        steps:
+        - tool: Prying
+          doAfter: 4
+
+    - node: apcHigh
+      entity: APCHighBreaker
+      edges:
+      - to: apcFrameWithBoard
+        completed:
+        - !type:GivePrototype
+          prototype: PowerCellHighPrinted
+          amount: 1
+        conditions:
+        - !type:WirePanel
+          open: true
+        steps:
+        - tool: Prying
+          doAfter: 4
+
+    - node: apcHyper
+      entity: APCHyperBreaker
+      edges:
+      - to: apcFrameWithBoard
+        completed:
+        - !type:GivePrototype
+          prototype: PowerCellHyperPrinted
+          amount: 1
+        conditions:
+        - !type:WirePanel
+          open: true
+        steps:
+        - tool: Prying
+          doAfter: 4
+    #Moffstation - End
