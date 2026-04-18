@@ -23,6 +23,8 @@ using Content.Shared.Implants;
 using Content.Shared.Kitchen.Components;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Preferences;
 using Content.Shared.Projectiles;
 using Content.Shared.StatusEffect;
@@ -61,6 +63,8 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly SharedEnsnareableSystem _ensnareable = default!;
     [Dependency] private readonly SharedProjectileSystem _projectile = default!;
+    [Dependency] private readonly HungerSystem _hunger = default!;
+    [Dependency] private readonly ThirstSystem _thirst = default!;
 
 
     /// <inheritdoc/>
@@ -81,6 +85,8 @@ public sealed class GerasSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, PreMorphGerasEvent>(OnTransferStorage);
         SubscribeLocalEvent<StatusEffectsComponent, PreMorphGerasEvent>(OnTransferOldStatus);
         SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGerasEvent>(OnTransferNewStatus);
+        SubscribeLocalEvent<HungerComponent, PreMorphGerasEvent>(OnTransferHunger);
+        SubscribeLocalEvent<ThirstComponent, PreMorphGerasEvent>(OnTransferThirst);
     }
 
     private void OnInit(Entity<GerasComponent> ent, ref ComponentInit args)
@@ -130,7 +136,7 @@ public sealed class GerasSystem : EntitySystem
         var geras = component.Geras.Value;
 
         var preGerasEv = new PreMorphGerasEvent(geras);
-        RaiseLocalEvent(uid, preGerasEv);
+        RaiseLocalEvent(uid, ref preGerasEv);
 
 
         // Drop all inventory items
@@ -178,7 +184,7 @@ public sealed class GerasSystem : EntitySystem
         BanishEntity((uid, component, playerTransform));
 
         var postMorphEv = new PostMorphGerasEvent(uid);
-        RaiseLocalEvent(geras, postMorphEv);
+        RaiseLocalEvent(geras, ref postMorphEv);
 
         //Transfer Stomach Contents
         var getStomachEv = new GetStomachContentsEvent();
@@ -318,6 +324,22 @@ public sealed class GerasSystem : EntitySystem
         RaiseLocalEvent(args.Geras, ref newStatusTransferEv);
     }
 
+    private void OnTransferHunger(Entity<HungerComponent> ent, ref PreMorphGerasEvent args)
+    {
+        if (TryComp<HungerComponent>(args.Geras, out var gerasHunger))
+        {
+            _hunger.SetHunger(args.Geras, _hunger.GetHunger(ent.Comp), gerasHunger);
+        }
+    }
+
+    private void OnTransferThirst(Entity<ThirstComponent> ent, ref PreMorphGerasEvent args)
+    {
+        if (TryComp<ThirstComponent>(args.Geras, out var gerasThirst))
+        {
+            _thirst.SetThirst(args.Geras, gerasThirst, ent.Comp.CurrentThirst);
+        }
+    }
+
     /// <summary>
     /// Sends an entity to the void for storage
     /// </summary>
@@ -357,6 +379,8 @@ public sealed class GerasSystem : EntitySystem
 
 public record struct GerasVisualInitEvent(HumanoidCharacterProfile? Profile);
 
+[ByRefEvent]
 public record struct PreMorphGerasEvent(EntityUid Geras);
 
+[ByRefEvent]
 public record struct PostMorphGerasEvent(EntityUid Parent);

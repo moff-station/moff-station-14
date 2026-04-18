@@ -6,7 +6,10 @@ using Content.Shared.Implants.Components;
 using Content.Shared.Mind;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Content.Shared.VoiceMask; //Moffstation - Geras Patch
+//Moffstation - Geras Patch - Begin
+using Content.Shared.Store.Components;
+using Content.Shared.VoiceMask;
+//Moffstation - End
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -31,6 +34,11 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         SubscribeLocalEvent<SubdermalImplantComponent, EntGotInsertedIntoContainerMessage>(OnInsert);
         SubscribeLocalEvent<SubdermalImplantComponent, ContainerGettingRemovedAttemptEvent>(OnRemoveAttempt);
         SubscribeLocalEvent<SubdermalImplantComponent, EntGotRemovedFromContainerMessage>(OnRemove);
+        //Moffstation - Geras Patch - Begin
+        SubscribeLocalEvent<StoreComponent, ImplantTransferEvent>(OnUplinkImplantTransfer);
+        SubscribeLocalEvent<StorageComponent, ImplantTransferEvent>(OnStorageImplantTransfer);
+        SubscribeLocalEvent<VoiceMaskComponent, ImplantTransferEvent>(OnIdentityImplantTransfer);
+        //Moffstation - End
     }
 
     private void OnInsert(Entity<SubdermalImplantComponent> ent, ref EntGotInsertedIntoContainerMessage args)
@@ -193,15 +201,8 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
 
         if (AddImplant(target, proto.ID) is { } newImplant)
         {
-            if(HasComp<StorageImplantComponent>(implant))
-                _storage.TransferEntities(implant, newImplant);
-
-            if (TryComp<VoiceMaskComponent>(implant, out var sourceVoice) &&
-                TryComp<VoiceMaskComponent>(newImplant, out var targetVoice))
-            {
-                targetVoice.VoiceMaskName = sourceVoice.VoiceMaskName;
-                targetVoice.VoiceMaskSpeechVerb = sourceVoice.VoiceMaskSpeechVerb;
-            }
+            var transferEvent = new ImplantTransferEvent(implant);
+            RaiseLocalEvent(newImplant, ref transferEvent);
 
             //set the remaining charges to the previously stored value if applicable
             if (charges >= 0 && TryComp<SubdermalImplantComponent>(newImplant, out var newImplantComp) &&
@@ -223,6 +224,28 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         {
             if(TryComp<SubdermalImplantComponent>(implant, out var implantComp))
                 TransferImplant(source, target, (implant, implantComp));
+        }
+    }
+
+    private void OnStorageImplantTransfer(Entity<StorageComponent> ent, ref ImplantTransferEvent args)
+    {
+        _storage.TransferEntities(args.Original, ent);
+    }
+
+    private void OnIdentityImplantTransfer(Entity<VoiceMaskComponent> ent, ref ImplantTransferEvent args)
+    {
+        if (TryComp<VoiceMaskComponent>(args.Original, out var identity))
+        {
+            ent.Comp.VoiceMaskName = identity.VoiceMaskName;
+            ent.Comp.VoiceMaskSpeechVerb = identity.VoiceMaskSpeechVerb;
+        }
+    }
+
+    private void OnUplinkImplantTransfer(Entity<StoreComponent> ent, ref ImplantTransferEvent args)
+    {
+        if (TryComp<StoreComponent>(args.Original, out var storeComp))
+        {
+            ent.Comp.Balance = storeComp.Balance;
         }
     }
     //Moffstation - End
@@ -272,3 +295,8 @@ public readonly record struct ImplantRemovedEvent
         Implanted = implanted;
     }
 }
+
+//Moffstation - Geras Patch - Begin
+[ByRefEvent]
+public readonly record struct ImplantTransferEvent(Entity<SubdermalImplantComponent> Original);
+//Moffstation - End
