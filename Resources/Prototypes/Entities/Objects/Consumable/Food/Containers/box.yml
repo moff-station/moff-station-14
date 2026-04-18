@@ -351,7 +351,7 @@
   parent: BoxCardboard
   id: FoodBoxDonkpocket
   name: box of donk-pockets
-  description: The classical donks which you can never get enough of! Heat up before consumption.
+  description: The classical donks which you can never get enough of! Heat up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
@@ -377,6 +377,7 @@
         - id: DonkcoLighter
           prob: 0.10
 
+# Moffstation - Start - PocketChange
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketDank
@@ -390,13 +391,13 @@
       storagebase:
         id: FoodDonkpocketDank
         amount: 6
-
+# Moffstation - End
 
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketSpicy
   name: box of spicy-flavoured donk-pockets
-  description: Donks for those who need to spice up their life! Warm up before consumption.
+  description: Donks for those who need to spice up their life! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: spicy-box
@@ -410,7 +411,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketTeriyaki
   name: box of teriyaki-flavoured donk-pockets 
-  description: An East Asian take on the classic stationside snack. Warm up before consumption.
+  description: An East Asian take on the classic stationside snack. Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: teriyaki-box
@@ -424,7 +425,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketPizza
   name: box of pizza-flavoured donk-pockets
-  description: Everyone's favorite donks now with extra cheese and flavour! Warm up before consumption.
+  description: Everyone's favorite donks now with extra cheese and flavour! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: pizza-box
@@ -438,7 +439,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketStonk
   name: box of limited edition stonk-pockets
-  description: Special edition donks favoured by the Vox brokers! Warm up to activate the unique blockchain.
+  description: Special edition donks favoured by the Vox brokers! Warm up to activate the unique blockchain. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: stonk-box
@@ -452,7 +453,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketCarp
   name: box of carp-pockets
-  description: A long-lost edition of donk-pocket, made specifically for hard-working salvagers! Warm up before consumption.
+  description: A long-lost edition of donk-pocket, made specifically for hard-working salvagers! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: carp-box
@@ -466,7 +467,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketBerry
   name: box of berry-flavoured donk-pockets
-  description: The best snack, now sweet as berries and taste just like imaginary ones! Warm up before consumption.
+  description: The best snack, now sweet as berries and taste just like imaginary ones! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: berry-box
@@ -480,7 +481,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketHonk
   name: box of banana-flavoured donk-pockets
-  description: The funniest tasting donks out there, best fed to others as a prank! Warm up before consumption.
+  description: The funniest tasting donks out there, best fed to others as a prank! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: banana-box
@@ -507,21 +508,26 @@
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketMoth
+  # Moffstation - Start - PocketChange
   name: box of moff-pockets
   description: The limited Moff sector edition with fluorescent packaging! Heat up before consumption.
+  # Moffstation - End
   components:
   - type: Sprite
+  # Moffstation - Start - PocketChange
     state: moff-box
   - type: PointLight
     radius: 1.5
     energy: 1
     color: "#fbceb1"
+  # Moffstation - End
   - type: EntityTableContainerFill
     containers:
       storagebase:
         id: FoodDonkpocketMoth
         amount: 6
 
+# Moffstation - Start - PocketChange
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketTide
@@ -535,6 +541,7 @@
       storagebase:
         id: FoodDonkpocketTide
         amount: 6
+# Moffstation - End
 
 - type: entity
   id: HappyHonk

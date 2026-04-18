@@ -22,6 +22,8 @@
   - type: Tag
     tags:
     - DonkPocket
+    - Meat
+  # Moffstation - Start - PocketChange
   - type: Fixtures
     fixtures:
       fix1:
@@ -47,6 +49,7 @@
   - type: PhysicalComposition
     materialComposition:
       Meaterial: 300
+  # Moffstation - End
 
 # Donkpocket
 
@@ -66,6 +69,7 @@
       - cheap
   - type: Sprite
     state: plain
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -74,6 +78,7 @@
     graph: WarmDonk
     node: start
     defaultTarget: warm donk-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm donk-pocket
@@ -94,8 +99,10 @@
           Quantity: 8
         - ReagentId: Omnizine
           Quantity: 2
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
+        # Moffstation - End - PocketChange
 
 - type: entity
   name: dank-pocket
@@ -115,6 +122,7 @@
           Quantity: 5
   - type: Sprite
     state: dank
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.004 # bacon is thin so faster to cook than a steak
@@ -123,6 +131,7 @@
     graph: WarmDank
     node: start
     defaultTarget: warm dank-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm dank-pocket
@@ -130,9 +139,6 @@
   id: FoodDonkpocketDankWarm
   description: The heated food of choice for the seasoned botanist.
   components:
-  - type: Tag
-    tags:
-    - Cooked
   - type: FlavorProfile
     flavors:
       - leafy
@@ -147,8 +153,10 @@
           Quantity: 10
         - ReagentId: Omnizine
           Quantity: 4
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 10
+        # Moffstation - End - PocketChange
 
 - type: entity
   name: spicy-pocket
@@ -163,6 +171,7 @@
       - cheap
   - type: Sprite
     state: plain
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -171,6 +180,7 @@
     graph: WarmSpicy
     node: start
     defaultTarget: warm spicy-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm spicy-pocket
@@ -191,8 +201,10 @@
           Quantity: 10
         - ReagentId: Omnizine
           Quantity: 2
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
+        # Moffstation - End 
   - type: Sprite
     state: spicy
 
@@ -200,7 +212,7 @@
   name: teriyaki-pocket
   parent: FoodDonkpocketBase
   id: FoodDonkpocketTeriyaki
-  description: Your beloved snack glazed with a sticky sauce emiting a sweet and smoky smell.
+  description: Your beloved snack glazed with a sticky sauce emiting a sweet and smoky smell. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
@@ -209,6 +221,7 @@
       - cheap
   - type: Sprite
     state: teriyaki
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -217,12 +230,13 @@
     graph: WarmTeriyaki
     node: start
     defaultTarget: warm teriyaki-pocket
+    # Moffstation - End
 
 - type: entity
   name: warm teriyaki-pocket
   parent: FoodDonkpocketTeriyaki
   id: FoodDonkpocketTeriyakiWarm
-  description: Your beloved snack glazed with a sticky sauce emiting a sweet and smoky smell. Now steamy and warm.
+  description: Your beloved snack glazed with a sticky sauce emiting a sweet and smoky smell. Now steamy and warm. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
@@ -237,8 +251,10 @@
           Quantity: 10
         - ReagentId: Omnizine
           Quantity: 2
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
+        # Moffstation - End
 
 - type: entity
   name: pizza-pocket
@@ -260,6 +276,7 @@
           Quantity: 10
   - type: Sprite
     state: pizza
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -268,6 +285,7 @@
     graph: WarmPizza
     node: start
     defaultTarget: warm pizza-pocket
+  # Moffstation - End - PocketChange
 
 - type: entity
   name: warm pizza-pocket
@@ -312,6 +330,7 @@
           Quantity: 0.50
   - type: Sprite
     state: banana
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -320,6 +339,7 @@
     graph: WarmHonk
     node: start
     defaultTarget: warm honk-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm honk-pocket
@@ -341,8 +361,10 @@
           Quantity: 1
         - ReagentId: Omnizine
           Quantity: 2
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
+        # Moffstation - End
 
 - type: entity
   name: berry-pocket
@@ -362,6 +384,7 @@
           Quantity: 5
   - type: Sprite
     state: berry
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -370,6 +393,7 @@
     graph: WarmBerry
     node: start
     defaultTarget: warm berry-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm berry-pocket
@@ -391,14 +415,16 @@
           Quantity: 2
         - ReagentId: Sugar
           Quantity: 2
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
+        # Moffstation - End
 
 - type: entity
   name: stonk-pocket
   parent: FoodDonkpocketBase
   id: FoodDonkpocketStonk
-  description: Tasty, but a sad reminder of the reason behind the great crash of '24.
+  description: Tasty, but a sad reminder of the reason behind the great crash of '24. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
@@ -412,6 +438,7 @@
           Quantity: 5
   - type: Sprite
     state: stonk
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -420,12 +447,13 @@
     graph: WarmStonk
     node: start
     defaultTarget: warm stonk-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm stonk-pocket
   parent: FoodDonkpocketStonk
   id: FoodDonkpocketStonkWarm
-  description: Tasty, and while warm each has it's own unique cryptocurrency. Sell it while it's hot. 
+  description: Tasty, and while warm each has it's own unique cryptocurrency. Sell it while it's hot. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
@@ -439,16 +467,18 @@
           Quantity: 10
         - ReagentId: Omnizine
           Quantity: 1
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 2
   - type: StaticPrice
     price: 500
+        # Moffstation - End
 
 - type: entity
   name: carp-pocket
   parent: FoodDonkpocketBase
   id: FoodDonkpocketCarp
-  description: Covered in a layer of carp skin with it's own unique smell! 
+  description: Covered in a layer of carp skin with it's own unique smell! # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
@@ -462,6 +492,7 @@
           Quantity: 5
   - type: Sprite
     state: carp
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -470,12 +501,13 @@
     graph: WarmCarp
     node: start
     defaultTarget: warm carp-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm carp-pocket
   parent: FoodDonkpocketCarp
   id: FoodDonkpocketCarpWarm
-  description: Warm and covered in a crunchy carp skin. Helps your body relax!
+  description: Warm and covered in a crunchy carp skin. Helps your body relax! # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
@@ -489,10 +521,12 @@
           Quantity: 10
         - ReagentId: Omnizine
           Quantity: 2
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
         - ReagentId: Diphenhydramine
           Quantity: 2
+        # Moffstation - End
 
 - type: entity
   name: dink-pocket
@@ -542,6 +576,7 @@
     tags:
     - ClothMade
     - DonkPocket
+  # Moffstation - Start - PocketChange
   - type: InternalTemperature
     conductivity: 0.44
     thickness: 0.005
@@ -550,6 +585,7 @@
     graph: WarmMoth
     node: start
     defaultTarget: warm moth-pocket
+  # Moffstation - End 
 
 - type: entity
   name: warm moth-pocket
@@ -567,9 +603,11 @@
           Quantity: 5
         - ReagentId: Omnizine
           Quantity: 2
+        # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
-
+        # Moffstation - End
+# Moffstation - Start - PocketChange
 - type: entity
   parent: BaseItem
   id: FoodDonkpocketTide
@@ -642,3 +680,4 @@
           Quantity: 50
         - ReagentId: Puncturase
           Quantity: 50
+# Moffstation - End
