@@ -24,13 +24,6 @@
   id: BloodBrotherRobDepartmentObjective
 
 - type: entity
-  parent: [BaseBloodBrotherObjective, RobDepartmentObjective]
-  id: BloodBrotherLoudRobDepartmentObjective
-  components:
-  - type: LocationObjective
-    title: objective-condition-loud-rob-department
-
-- type: entity
   parent: [BaseBloodBrotherObjective, SabotageObjective]
   id: BloodBrotherSabotageObjective
 
@@ -56,3 +49,11 @@
       sprite: Objects/Misc/bureaucracy.rsi
       state: paper_receipt_horizontal
     unique: true # only one person needs to really send a message.
+
+- type: entity
+  parent: [BaseBloodBrotherObjective, KillStationAiObjective]
+  id: BloodBrotherKillStationAiObjective
+
+- type: entity
+  parent: [BaseBloodBrotherObjective, SupercritAnomaliesObjective]
+  id: BloodBrotherSupercritAnomaliesObjective
