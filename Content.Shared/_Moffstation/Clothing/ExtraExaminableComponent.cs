@@ -11,10 +11,22 @@ namespace Content.Shared._Moffstation.Clothing;
 public sealed partial class ExtraExaminableComponent : Component
 {
     /// <summary>
-    /// Localization ID of the examine text to display. It will be slotted into a sentence of the form "PRONOUN(Wearer) is wearing INDEFINITE(ExaminableClothing)." If unspecified, defaults to the item's name.
+    /// Localization ID of the examine text to display when the item is being worn.
     /// </summary>
     [DataField]
     public LocId? WornText = null;
+
+    /// <summary>
+    /// Text to be displayed when the item is examined by itself
+    /// </summary>
+    [DataField]
+    public LocId? ExaminedText = null;
+
+    /// <summary>
+    /// Text to be displayed when the item is being held
+    /// </summary>
+    [DataField]
+    public LocId? HeldText = null;
 
     /// <summary>
     /// Same as WornText, but without wrapping it in other text. Whatever is in the loc will appear in the examine as-is
@@ -22,11 +34,6 @@ public sealed partial class ExtraExaminableComponent : Component
     [DataField]
     public LocId? ExtraText = null;
 
-    /// <summary>
-    /// Whether the item's custom text should appear when it is being held
-    /// </summary>
-    [DataField]
-    public bool ShowOnHeld = false;
 
     /// <summary>
     /// Only adds the examine text in the given slots.
@@ -34,3 +41,6 @@ public sealed partial class ExtraExaminableComponent : Component
     [DataField]
     public SlotFlags AllowedSlots = SlotFlags.WITHOUT_POCKET;
 }
+
+[ByRefEvent]
+public record struct HeldItemsAdditionalExamineEvent(EntityUid examinedEntity);

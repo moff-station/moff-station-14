@@ -16,25 +16,16 @@ public sealed class ExtraExaminableSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ExtraExaminableComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<ExtraExaminableComponent, InventoryRelayedEvent<ExaminedEvent>>(OnExaminedWorn);
     }
 
     private void OnExamined(Entity<ExtraExaminableComponent> ent, ref ExaminedEvent args)
     {
-        args.PushMarkup(Loc.GetString("examinable-clothing-when-worn", ("message", ExamineText(ent, args.Examiner))));
-    }
+        if (ent.Comp.ExaminedText is not { } examinedText)
+            return;
 
-    public string ExamineText(Entity<ExtraExaminableComponent> ent, EntityUid wearer)
-    {
-        var textList = new List<string>();
-
-        if (ent.Comp.WornText is { } examineText)
-            textList.Add(Loc.GetString("examinable-clothing-examine", ("wearer", wearer), ("item", Loc.GetString(examineText, ("wearer", wearer)))));
-
-        if (ent.Comp.ExtraText is { } extraText)
-            textList.Add(Loc.GetString(extraText, ("wearer", wearer)));
-
-        return string.Join("\n", textList);
+        args.PushMarkup(Loc.GetString(examinedText));
     }
 
     private void OnExaminedWorn(Entity<ExtraExaminableComponent> ent, ref InventoryRelayedEvent<ExaminedEvent> args)
@@ -45,6 +36,11 @@ public sealed class ExtraExaminableSystem : EntitySystem
         if (!_container.TryGetContainingContainer((ent.Owner, null, null), out var container))
             return;
 
-        args.Args.PushMarkup(ExamineText(ent, container.Owner));
+        if (ent.Comp.WornText is not { } wornText)
+            return;
+
+        var text = Loc.GetString(wornText, ("wearer", container.Owner));
+
+        args.Args.PushMarkup(text);
     }
 }
