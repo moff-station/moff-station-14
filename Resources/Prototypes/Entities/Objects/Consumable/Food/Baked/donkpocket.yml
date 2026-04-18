@@ -615,6 +615,10 @@
   name: tide-pocket
   description: Food of choice for a seasoned tider. Can be used as a battery in a pinch.
   components:
+  - type: FlavorProfile
+    flavors:
+    - shocking
+    - alkaline
   - type: Item
     size: Tiny
   - type: Battery
@@ -673,11 +677,11 @@
         - ReagentId: Nutriment
           Quantity: 5
         - ReagentId: Omnizine
-          Quantity: 1
-        - ReagentId: Tricordrazine
+          Quantity: 2
+        - ReagentId: Tazinide
           Quantity: 2
         - ReagentId: Insuzine
-          Quantity: 1
+          Quantity: 2
 
 - type: entity
   name: omni-pocket
@@ -687,8 +691,7 @@
   components:
   - type: FlavorProfile
     flavors:
-      - cold
-      - cheap
+      - chaos
   - type: Sprite
     sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
     state: omni
