@@ -658,9 +658,6 @@
   name: warm tide-pocket
   description: Warm and coated in a reflective layer. Best eaten in one breath. 
   components:
-  - type: FlavorProfile
-    flavors:
-      - nutribrick
   - type: Item
     size: Tiny
   - type: Tag
@@ -672,7 +669,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 6
+        maxVol: 11
         reagents:
         - ReagentId: Nutriment
           Quantity: 5
