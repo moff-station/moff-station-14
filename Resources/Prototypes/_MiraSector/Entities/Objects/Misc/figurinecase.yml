@@ -13,9 +13,9 @@
     maxItemSize: Small
     grid:
     - 0,0,9,3
-    quickInsert: true
-    areaInsert: true
     whitelist:
       tags:
       - Figurine
+  - type: QuickPickup
+  - type: AreaPickup
   - type: Dumpable
