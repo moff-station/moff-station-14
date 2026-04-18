@@ -1,0 +1,16 @@
+- type: entity
+  parent: BaseItem
+  id: TicketMasterCartridge
+  name: Ticket Master Cartridge
+  description: Lets you ticket peoples !
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/cartridge.rsi
+    state: cart-sec
+  - type: UIFragment
+    ui: !type:TicketMasterUi
+  - type: Cartridge
+    programName: ticket-master-program-name
+    icon:
+      sprite: _Moffstation/Misc/program_icons.rsi
+      state: ticket-master
