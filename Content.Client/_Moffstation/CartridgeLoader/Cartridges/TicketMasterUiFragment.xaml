@@ -36,10 +36,28 @@
                 <Button Name="NewTicketButton"
                         Text="{Loc ticket-master-new-ticket}"/>
                 <Button Name="TicketHistoryButton"
-                        Text = "{Loc ticket-master-history}"/>
+                        Text="{Loc ticket-master-history}"/>
             </BoxContainer>
-
         </controls:StripeBack>
+
+        <!-- New Ticket Panel -->
+        <BoxContainer Name="NewTicketPanel"
+                      Orientation="Vertical"
+                      VerticalExpand="True"
+                      HorizontalExpand="True">
+            <Label Text="Name"/>
+            <LineEdit Name="OffenderNameEdit"/>
+            <Label Text="Description"/>
+            <TextEdit Name="DescriptionEdit"
+                      VerticalExpand="True"
+                      HorizontalExpand="True"/>
+            <Button Name="PrintButton"
+                    Text="{Loc ticket-master-print}"/>
+        </BoxContainer>
+
+
+        <!-- Ticket History Panel -->
+
 
     </BoxContainer>
 

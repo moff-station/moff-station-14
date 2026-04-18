@@ -9,4 +9,9 @@ public sealed partial class TicketMasterUiFragment : BoxContainer
     private const int MaxTicketLength = 512;
 
     public Action<string, string, string>? OnTicketPrinted;
+
+    public TicketMasterUiFragment()
+    {
+        PrintButton.OnPressed += _ => OnTicketPrinted?.Invoke(string.Empty, string.Empty, string.Empty);
+    }
 }
