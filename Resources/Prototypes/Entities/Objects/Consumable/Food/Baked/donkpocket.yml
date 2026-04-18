@@ -607,6 +607,7 @@
         - ReagentId: Tricordrazine
           Quantity: 4
         # Moffstation - End
+
 # Moffstation - Start - PocketChange
 - type: entity
   parent: BaseItem
@@ -616,12 +617,31 @@
   components:
   - type: Item
     size: Tiny
+  - type: Battery
+    pricePerJoule: 0.15
+    maxCharge: 20
+    startingCharge: 20
+  - type: PowerCell
   - type: Tag
     tags:
       - DonkPocket
+      - PowerCell
+      - PotatoBattery
   - type: Sprite
     sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
     state: tide
+  - type: BatteryVisuals
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: {visible: true, state: o2}
+          Neither: {visible: true, state: o1}
+          Empty: {visible: false}
   - type: SpawnItemsOnUse
     items:
       - id: FoodDonkpocketTideWarm
@@ -656,6 +676,8 @@
           Quantity: 1
         - ReagentId: Tricordrazine
           Quantity: 2
+        - ReagentId: Insuzine
+          Quantity: 1
 
 - type: entity
   name: omni-pocket
