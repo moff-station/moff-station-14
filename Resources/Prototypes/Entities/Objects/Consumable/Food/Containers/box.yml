@@ -351,7 +351,7 @@
   parent: BoxCardboard
   id: FoodBoxDonkpocket
   name: box of donk-pockets
-  description: 'Instructions: Heat in microwave. Product will cool if not eaten within seven minutes.'
+  description: The classical donks which you can never get enough of! Heat up before consumption.
   components:
   - type: Sprite
     sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
@@ -379,8 +379,24 @@
 
 - type: entity
   parent: FoodBoxDonkpocket
+  id: FoodBoxDonkpocketDank
+  name: box of dank-flavoured donk-pockets
+  description: Ethically sourced vegan donks made by health experts.  Warm up before consumption.
+  components:
+  - type: Sprite
+    state: dank-box
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: FoodDonkpocketDank
+        amount: 6
+
+
+- type: entity
+  parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketSpicy
   name: box of spicy-flavoured donk-pockets
+  description: Donks for those who need to spice up their life! Warm up before consumption.
   components:
   - type: Sprite
     state: spicy-box
@@ -393,7 +409,8 @@
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketTeriyaki
-  name: box of teriyaki-flavoured donk-pockets
+  name: box of teriyaki-flavoured donk-pockets 
+  description: An East Asian take on the classic stationside snack. Warm up before consumption.
   components:
   - type: Sprite
     state: teriyaki-box
@@ -407,6 +424,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketPizza
   name: box of pizza-flavoured donk-pockets
+  description: Everyone's favorite donks now with extra cheese and flavour! Warm up before consumption.
   components:
   - type: Sprite
     state: pizza-box
@@ -420,6 +438,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketStonk
   name: box of limited edition stonk-pockets
+  description: Special edition donks favoured by the Vox brokers! Warm up to activate the unique blockchain.
   components:
   - type: Sprite
     state: stonk-box
@@ -433,6 +452,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketCarp
   name: box of carp-pockets
+  description: A long-lost edition of donk-pocket, made specifically for hard-working salvagers! Warm up before consumption.
   components:
   - type: Sprite
     state: carp-box
@@ -446,6 +466,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketBerry
   name: box of berry-flavoured donk-pockets
+  description: The best snack, now sweet as berries and taste just like imaginary ones! Warm up before consumption.
   components:
   - type: Sprite
     state: berry-box
@@ -459,6 +480,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketHonk
   name: box of banana-flavoured donk-pockets
+  description: The funniest tasting donks out there, best fed to others as a prank! Warm up before consumption.
   components:
   - type: Sprite
     state: banana-box
@@ -485,10 +507,15 @@
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketMoth
-  name: box of moth-pockets
+  name: box of moff-pockets
+  description: The limited Moff sector edition with fluorescent packaging! Heat up before consumption.
   components:
   - type: Sprite
-    state: moth-box
+    state: moff-box
+  - type: PointLight
+    radius: 1.5
+    energy: 1
+    color: "#fbceb1"
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -498,7 +525,8 @@
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketTide
-  name: box of tide-pockets
+  name: box of tide-pockets 
+  description: Pockets made without trademark rights by and for tiders. Snap in half to warm up. Don't inhale the fumes. 
   components:
   - type: Sprite
     state: tide-box
