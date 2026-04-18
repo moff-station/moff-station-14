@@ -15,6 +15,12 @@
           Quantity: 20
   - type: DrawableSolution
     solution: balloon
+  - type: RefillableSolution
+    solution: balloon
+  - type: InjectableSolution
+    solution: balloon
+  - type: Spillable
+    solution: balloon
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.01
     damage:
@@ -30,13 +36,11 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: desecration
+          path: "/Audio/Effects/Fluids/splat.ogg"
       - !type:SpillBehavior
         solution: balloon
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-
-
 
 - type: entity
   parent: [BaseWaterBalloon]
@@ -68,7 +72,6 @@
         reagents:
         - ReagentId: Vodka
           Quantity: 20
-
 
 - type: entity
   parent: BoxCardboard

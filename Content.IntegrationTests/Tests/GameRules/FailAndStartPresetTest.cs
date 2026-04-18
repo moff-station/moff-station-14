@@ -1,6 +1,7 @@
 /*  Moffstation - Start - We have it so that the round will start anyways (but without nukies active), so this test is bound to fail
 // Accept upstream changes, in case we bring this back
 #nullable enable
+using Content.IntegrationTests.Fixtures;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Presets;
 using Content.Shared.CCVar;
@@ -11,7 +12,7 @@ using Robust.Shared.GameObjects;
 namespace Content.IntegrationTests.Tests.GameRules;
 
 [TestFixture]
-public sealed class FailAndStartPresetTest
+public sealed class FailAndStartPresetTest : GameTest
 {
     [TestPrototypes]
     private const string Prototypes = @"
@@ -54,19 +55,21 @@ public sealed class FailAndStartPresetTest
   - type: TestRule
 ";
 
+    public override PoolSettings PoolSettings => new()
+    {
+        Dirty = true,
+        DummyTicker = false,
+        Connected = true,
+        InLobby = true
+    };
+
     /// <summary>
     ///     Test that a nuke ops gamemode can start after failing to start once.
     /// </summary>
     [Test]
     public async Task FailAndStartTest()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings
-        {
-            Dirty = true,
-            DummyTicker = false,
-            Connected = true,
-            InLobby = true
-        });
+        var pair = Pair;
 
         var server = pair.Server;
         var client = pair.Client;
@@ -117,7 +120,6 @@ public sealed class FailAndStartPresetTest
         server.CfgMan.SetCVar(CCVars.GameLobbyFallbackEnabled, true);
         server.CfgMan.SetCVar(CCVars.GameLobbyDefaultPreset, "secret");
         server.System<TestRuleSystem>().Run = false;
-        await pair.CleanReturnAsync();
     }
 }
 
