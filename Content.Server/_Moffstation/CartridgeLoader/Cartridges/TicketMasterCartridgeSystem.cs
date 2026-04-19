@@ -1,5 +1,9 @@
+using System.Text;
 using Content.Shared._Moffstation.CartridgeLoader;
+using Content.Shared.CartridgeLoader;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Paper;
+using Robust.Server.Audio;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.CartridgeLoader.Cartridges;
@@ -11,13 +15,39 @@ public sealed class TicketMasterCartridgeSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly AudioSystem _audioSystem = default!;
+    [Dependency] private readonly PaperSystem _paperSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<TicketMasterCartridgeComponent, TicketMasterPrintMessage>(OnPrint);
+        SubscribeLocalEvent<TicketMasterCartridgeComponent, CartridgeMessageEvent>(OnUiMessage);
+    }
+
+
+    private void OnUiMessage(Entity<TicketMasterCartridgeComponent> ent, ref CartridgeMessageEvent args)
+    {
+        if (args is not TicketMasterPrintMessageEvent cast || _gameTiming.CurTime < ent.Comp.NextAvailablePrint)
+            return;
+
+        var printed = Spawn(ent.Comp.MachineOutput, Transform(ent).Coordinates);
+        _handsSystem.PickupOrDrop(args.Actor, printed, checkActionBlocker: false);
+        _audioSystem.PlayPvs(ent.Comp.SoundPrint, ent.Owner, null);
+
+        if (!TryComp<PaperComponent>(printed, out var paperComp))
+            return;
+
+
+        /* format the piece of paper */
+        var text = new StringBuilder();
+
+        text.Append(cast.Ticket.Description);
+
+        _paperSystem.SetContent((printed, paperComp), text.ToString());
+
+        ent.Comp.NextAvailablePrint = _gameTiming.CurTime + ent.Comp.PrintCooldown;
     }
 
         private void OnPrint(EntityUid ent, TicketMasterCartridgeComponent comp, TicketMasterPrintMessage args)
@@ -29,6 +59,7 @@ public sealed class TicketMasterCartridgeSystem : EntitySystem
 
         var printed = Spawn(comp.MachineOutput, Transform(ent).Coordinates);
         _handsSystem.PickupOrDrop(args.Actor, printed, checkActionBlocker: false);
+
 
         /* format the piece of paper
             _metaData.SetEntityName(printed, Loc.GetString("forensic-scanner-report-title", ("entity", component.LastScannedName)));

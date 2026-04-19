@@ -1,5 +1,6 @@
 using Content.Client.UserInterface.Fragments;
 using Content.Shared._Moffstation.CartridgeLoader;
+using Content.Shared.CartridgeLoader;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._Moffstation.CartridgeLoader.Cartridges;
@@ -30,6 +31,6 @@ public sealed partial class TicketMasterUi : UIFragment
     private void PrintTicket(string officer, string offender, string text, BoundUserInterface userInterface)
     {
         var msg = new TicketMasterPrintMessage(officer, offender, text);
-        userInterface.SendMessage(msg);
+        userInterface.SendMessage(new CartridgeUiMessage(new TicketMasterPrintMessageEvent(new TicketMasterTicketState(officer, offender, text), false)));
     }
 }
