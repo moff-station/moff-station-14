@@ -54,41 +54,6 @@
     - Belt
 
 - type: entity
-  name: Big Iron
-  parent: [BaseWeaponPowerCellProjectileSmall, BaseGrandTheftContraband]
-  id: WeaponRevolverBigIron
-  description: A Big Iron on their hip.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Revolvers/big_iron.rsi
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-  - type: StealTarget
-    stealGroup: WeaponRevolverBigIron
-  - type: Gun
-    fireRate: 2
-    soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: Magazine
-        startingItem: PowerCellBigIron
-        whitelist:
-          tags:
-          - PowerCellBigIron
-  - type: BatteryAmmoProvider
-    proto: BulletBigIronDisabler
-    fireCost: 50
-  - type: BatteryWeaponFireModes
-    fireModes:
-    - proto: BulletBigIronDisabler
-      fireCost: 50
-    - proto: BulletBigIronLethal
-      fireCost: 100
-
-- type: entity
   parent: WeaponPistolCHIMP
   id: WeaponPistolCHIMPBorg
   name: integrated C.H.I.M.P.

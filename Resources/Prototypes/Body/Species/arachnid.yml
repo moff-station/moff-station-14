@@ -42,6 +42,7 @@
 - type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceArachnid
+  categories: [ HideSpawnMenu ]
   name: arachnid appearance
   components:
   - type: Inventory
@@ -143,6 +144,10 @@
       Unsexed: UnisexArachnid
   - type: TypingIndicator
     proto: spider
+  - type: CreamPied
+    sprite:
+      sprite: Effects/creampie.rsi
+      state: creampie_arachnid
   # Moffstation - Begin - Arachnids are better at crawling. Because spiders crawl, right?
   - type: Crawler
     speedModifier: .65
