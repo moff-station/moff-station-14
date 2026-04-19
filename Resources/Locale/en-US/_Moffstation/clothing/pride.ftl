@@ -17,34 +17,34 @@
 -clothing-pride-type-plural = [color=#31C69E]plural[/color] [color=#6B3FBD]pride[/color]
 
 
-clothing-pin-lgbt = {-clothing-pride-type-lgbt} pin
-clothing-pin-aromantic = {-clothing-pride-type-aromantic} pin
-clothing-pin-asexual = {-clothing-pride-type-asexual} pin
-clothing-pin-aroace = {-clothing-pride-type-aroace} pin
-clothing-pin-lesbian = {-clothing-pride-type-lesbian} pin
-clothing-pin-bisexual = {-clothing-pride-type-bisexual} pin
-clothing-pin-pansexual = {-clothing-pride-type-pansexual} pin
-clothing-pin-gay = {-clothing-pride-type-gay} pin
-clothing-pin-omnisexual = {-clothing-pride-type-omnisexual} pin
-clothing-pin-intersex = {-clothing-pride-type-intersex} pin
-clothing-pin-nonbinary = {-clothing-pride-type-nonbinary} pin
-clothing-pin-transgender = {-clothing-pride-type-transgender} pin
-clothing-pin-genderfluid = {-clothing-pride-type-genderfluid} pin
-clothing-pin-autism = {-clothing-pride-type-autism} pin
-clothing-pin-straight-ally = {-clothing-pride-type-straight-ally} pin
-clothing-pin-genderqueer = {-clothing-pride-type-genderqueer} pin
-clothing-pin-plural = {-clothing-pride-type-plural} pin
+clothing-pin-lgbt = {extra-examine-wearing-} {-clothing-pride-type-lgbt} pin
+clothing-pin-aromantic = {extra-examine-wearing-} {-clothing-pride-type-aromantic} pin
+clothing-pin-asexual = {extra-examine-wearing-} {-clothing-pride-type-asexual} pin
+clothing-pin-aroace = {extra-examine-wearing-} {-clothing-pride-type-aroace} pin
+clothing-pin-lesbian = {extra-examine-wearing-} {-clothing-pride-type-lesbian} pin
+clothing-pin-bisexual = {extra-examine-wearing-} {-clothing-pride-type-bisexual} pin
+clothing-pin-pansexual = {extra-examine-wearing-} {-clothing-pride-type-pansexual} pin
+clothing-pin-gay = {extra-examine-wearing-} {-clothing-pride-type-gay} pin
+clothing-pin-omnisexual = {extra-examine-wearing-} {-clothing-pride-type-omnisexual} pin
+clothing-pin-intersex = {extra-examine-wearing-} {-clothing-pride-type-intersex} pin
+clothing-pin-nonbinary = {extra-examine-wearing-} {-clothing-pride-type-nonbinary} pin
+clothing-pin-transgender = {extra-examine-wearing-} {-clothing-pride-type-transgender} pin
+clothing-pin-genderfluid = {extra-examine-wearing-} {-clothing-pride-type-genderfluid} pin
+clothing-pin-autism = {extra-examine-wearing-} {-clothing-pride-type-autism} pin
+clothing-pin-straight-ally = {extra-examine-wearing-} {-clothing-pride-type-straight-ally} pin
+clothing-pin-genderqueer = {extra-examine-wearing-} {-clothing-pride-type-genderqueer} pin
+clothing-pin-plural = {extra-examine-wearing-} {-clothing-pride-type-plural} pin
 
-clothing-scarf-lgbt = {-clothing-pride-type-lgbt} scarf
-clothing-scarf-aromantic = {-clothing-pride-type-aromantic} scarf
-clothing-scarf-asexual = {-clothing-pride-type-asexual} scarf
-clothing-scarf-aroace = {-clothing-pride-type-aroace} scarf
-clothing-scarf-lesbian = {-clothing-pride-type-lesbian} scarf
-clothing-scarf-bisexual = {-clothing-pride-type-bisexual} scarf
-clothing-scarf-pansexual = {-clothing-pride-type-pansexual} scarf
-clothing-scarf-gay = {-clothing-pride-type-gay} scarf
-clothing-scarf-intersex = {-clothing-pride-type-intersex} scarf
-clothing-scarf-nonbinary = {-clothing-pride-type-nonbinary} scarf
-clothing-scarf-transgender = {-clothing-pride-type-transgender} scarf
+clothing-scarf-lgbt = {extra-examine-wearing-} {-clothing-pride-type-lgbt} scarf
+clothing-scarf-aromantic = {extra-examine-wearing-} {-clothing-pride-type-aromantic} scarf
+clothing-scarf-asexual = {extra-examine-wearing-} {-clothing-pride-type-asexual} scarf
+clothing-scarf-aroace = {extra-examine-wearing-} {-clothing-pride-type-aroace} scarf
+clothing-scarf-lesbian = {extra-examine-wearing-} {-clothing-pride-type-lesbian} scarf
+clothing-scarf-bisexual = {extra-examine-wearing-} {-clothing-pride-type-bisexual} scarf
+clothing-scarf-pansexual = {extra-examine-wearing-} {-clothing-pride-type-pansexual} scarf
+clothing-scarf-gay = {extra-examine-wearing-} {-clothing-pride-type-gay} scarf
+clothing-scarf-intersex = {extra-examine-wearing-} {-clothing-pride-type-intersex} scarf
+clothing-scarf-nonbinary = {extra-examine-wearing-} {-clothing-pride-type-nonbinary} scarf
+clothing-scarf-transgender = {extra-examine-wearing-} {-clothing-pride-type-transgender} scarf
 
-clothing-scarf-long-bacon = piece of [color=#EF7627]long[/color] [color=white]ba[/color][color=#B55690]con[/color]
+clothing-scarf-long-bacon = {extra-examine-wearing-} piece of [color=#EF7627]long[/color] [color=white]ba[/color][color=#B55690]con[/color]

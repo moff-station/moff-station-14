@@ -1,8 +1,0 @@
-# Proof of concept, you can put this on an item and it will say they armed when held
-- type: entity
-  id: BaseExaminableArmed
-  abstract: true
-  components:
-  - type: ExtraExaminable
-    extraText: examinable-gun
-    showOnHeld: true
