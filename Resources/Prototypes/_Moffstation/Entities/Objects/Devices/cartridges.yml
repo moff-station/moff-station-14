@@ -9,6 +9,7 @@
     state: cart-sec
   - type: UIFragment
     ui: !type:TicketMasterUi
+  - type: TicketMasterCartridge
   - type: Cartridge
     programName: ticket-master-program-name
     icon:
