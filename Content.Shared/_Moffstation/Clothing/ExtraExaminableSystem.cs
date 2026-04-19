@@ -11,6 +11,9 @@ public sealed class ExtraExaminableSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
 
+    private const string OwnerString = "wearer";
+    private const string ItemString = "item";
+
     public override void Initialize()
     {
         base.Initialize();
@@ -59,10 +62,10 @@ public sealed class ExtraExaminableSystem : EntitySystem
     // Formats the string based on the item and the person holding it. Useful for us so long as we use the same format
     private string GetString(LocId locId, EntityUid? owner, Entity<ExtraExaminableComponent> item)
     {
-        var itemArg = (item.Comp.ItemString, item.Owner);
+        var itemArg = (ItemString, item.Owner);
 
         return owner is { } ownerUid
-            ? Loc.GetString(locId, itemArg, (item.Comp.OwnerString, Identity.Entity(ownerUid, EntityManager)))
+            ? Loc.GetString(locId, itemArg, (OwnerString, Identity.Entity(ownerUid, EntityManager)))
             : Loc.GetString(locId, itemArg);
     }
 }

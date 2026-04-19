@@ -29,21 +29,11 @@ public sealed partial class ExtraExaminableComponent : Component
     public LocId? HeldText = null;
 
     /// <summary>
-    /// How the person in possession of the item is referred to in the loc string
-    /// </summary>
-    public string OwnerString = "wearer";
-
-    /// <summary>
-    /// How the item is referred to in the loc string
-    /// </summary>
-    public string ItemString = "item";
-
-    /// <summary>
-    /// Only adds the examine text in the given slots.
+    /// Only adds the examine text in the given slots. Only effects WornText.
     /// </summary>
     [DataField]
     public SlotFlags AllowedSlots = SlotFlags.WITHOUT_POCKET;
 }
 
 [ByRefEvent]
-public record struct HeldItemsAdditionalExamineEvent(EntityUid examinedEntity);
+public readonly record struct HeldItemsAdditionalExamineEvent(EntityUid ExaminedEntity);
