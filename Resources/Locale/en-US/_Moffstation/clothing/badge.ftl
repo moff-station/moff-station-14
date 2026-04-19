@@ -1,1 +1,1 @@
-clothing-badge-lawyer = lawyer badge, indicating {DAT-OBJ($wearer)} as a certified [color=#FFD700]lawyer[/color]
+clothing-badge-lawyer = {extra-examine-wearing-} [color=#FFD700]lawyer badge, indicating {DAT-OBJ($wearer)} as a certified lawyer[/color]

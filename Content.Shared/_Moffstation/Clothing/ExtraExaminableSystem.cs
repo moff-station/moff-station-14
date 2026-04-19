@@ -1,9 +1,8 @@
-using System.Text;
 using Content.Shared.Examine;
+using Content.Shared.Hands;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Robust.Shared.Containers;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.Clothing;
 
@@ -18,6 +17,7 @@ public sealed class ExtraExaminableSystem : EntitySystem
 
         SubscribeLocalEvent<ExtraExaminableComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<ExtraExaminableComponent, InventoryRelayedEvent<ExaminedEvent>>(OnExaminedWorn);
+        SubscribeLocalEvent<ExtraExaminableComponent, HeldRelayedEvent<ExaminedEvent>>(OnExaminedHeld);
     }
 
     private void OnExamined(Entity<ExtraExaminableComponent> ent, ref ExaminedEvent args)
@@ -25,7 +25,19 @@ public sealed class ExtraExaminableSystem : EntitySystem
         if (ent.Comp.ExaminedText is not { } examinedText)
             return;
 
-        args.PushMarkup(Loc.GetString(examinedText));
+        var text = GetString(examinedText, null, ent);
+
+        args.PushMarkup(text);
+    }
+
+    private void OnExaminedHeld(Entity<ExtraExaminableComponent> ent, ref HeldRelayedEvent<ExaminedEvent> args)
+    {
+        if (ent.Comp.HeldText is not { } heldText)
+            return;
+
+        var text = GetString(heldText, args.Args.Examined, ent);
+
+        args.Args.PushMarkup(text);
     }
 
     private void OnExaminedWorn(Entity<ExtraExaminableComponent> ent, ref InventoryRelayedEvent<ExaminedEvent> args)
@@ -39,8 +51,18 @@ public sealed class ExtraExaminableSystem : EntitySystem
         if (ent.Comp.WornText is not { } wornText)
             return;
 
-        var text = Loc.GetString(wornText, ("wearer", container.Owner));
+        var text = GetString(wornText, container.Owner, ent);
 
         args.Args.PushMarkup(text);
+    }
+
+    // Formats the string based on the item and the person holding it. Useful for us so long as we use the same format
+    private string GetString(LocId locId, EntityUid? owner, Entity<ExtraExaminableComponent> item)
+    {
+        var itemArg = (item.Comp.ItemString, item.Owner);
+
+        return owner is { } ownerUid
+            ? Loc.GetString(locId, itemArg, (item.Comp.OwnerString, Identity.Entity(ownerUid, EntityManager)))
+            : Loc.GetString(locId, itemArg);
     }
 }

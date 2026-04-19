@@ -11,16 +11,16 @@ namespace Content.Shared._Moffstation.Clothing;
 public sealed partial class ExtraExaminableComponent : Component
 {
     /// <summary>
-    /// Localization ID of the examine text to display when the item is being worn.
-    /// </summary>
-    [DataField]
-    public LocId? WornText = null;
-
-    /// <summary>
     /// Text to be displayed when the item is examined by itself
     /// </summary>
     [DataField]
     public LocId? ExaminedText = null;
+
+    /// <summary>
+    /// Localization ID of the examine text to display when the item is being worn.
+    /// </summary>
+    [DataField]
+    public LocId? WornText = null;
 
     /// <summary>
     /// Text to be displayed when the item is being held
@@ -29,11 +29,14 @@ public sealed partial class ExtraExaminableComponent : Component
     public LocId? HeldText = null;
 
     /// <summary>
-    /// Same as WornText, but without wrapping it in other text. Whatever is in the loc will appear in the examine as-is
+    /// How the person in possession of the item is referred to in the loc string
     /// </summary>
-    [DataField]
-    public LocId? ExtraText = null;
+    public string OwnerString = "wearer";
 
+    /// <summary>
+    /// How the item is referred to in the loc string
+    /// </summary>
+    public string ItemString = "item";
 
     /// <summary>
     /// Only adds the examine text in the given slots.
