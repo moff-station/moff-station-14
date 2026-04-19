@@ -40,13 +40,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100 #Moffstation - Catwalk change
+        damage: 100 #Moffstation - Catwalk adjustement
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 25 #Moffstation - Catwalk change
+        damage: 25 #Moffstation - Catwalk adjustement
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
