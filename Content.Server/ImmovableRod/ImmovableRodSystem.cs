@@ -43,15 +43,13 @@ public sealed class ImmovableRodSystem : EntitySystem
         foreach (var (rod, trans) in EntityQuery<ImmovableRodComponent, TransformComponent>(true))
         {
             // Moffstation - Start - Immovable rod changes
-            if (trans.GridUid == null)
-                continue;
-
-            if (!TryComp<MapGridComponent>(trans.GridUid, out var grid))
+            if (trans.GridUid is not {} gridUid ||
+                !TryComp<MapGridComponent>(gridUid, out var grid))
                 continue;
 
             if (rod.PryTiles)
             {
-                var tileRef = _map.GetTileRef(trans.GridUid.Value, grid, trans.Coordinates);
+                var tileRef = _map.GetTileRef((gridUid, grid), trans.Coordinates);
                 _tile.PryTile(tileRef);
             }
             // Moffstation - End
