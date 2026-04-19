@@ -13,6 +13,7 @@
   - type: Item
     size: Normal
   - type: HijackBeacon
+    remainingTime: 300 # Moffstation - Timer line added to increase the time from the hardcoded
   - type: Fixtures
     fixtures:
       fix1:
@@ -32,3 +33,4 @@
     noRot: true
     layers:
     - state: extraction_point
+
