@@ -1,0 +1,21 @@
+- type: entity
+  name: figurine case
+  id: FigurineCase
+  parent: BaseStorageItem
+  description: A case for storing your collection of figurines.
+  components:
+  - type: Sprite
+    sprite: _MiraSector/Objects/Storage/Briefcases/figurine_case.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,9,3
+    whitelist:
+      tags:
+      - Figurine
+  - type: QuickPickup
+  - type: AreaPickup
+  - type: Dumpable
