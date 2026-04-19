@@ -372,6 +372,24 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         return flushedSolution.Volume == 0 ? null : flushedSolution;
     }
 
+    //Moffstation - Geras Patch - Begin
+    /// <summary>
+    /// Removes all reagents from all parts of the bloodstream, used for clearing the stream before refilling it to an arbitrary amount
+    /// </summary>
+    /// <param name="ent">The entity losing all its blood</param>
+    public void ClearBloodStream(Entity<BloodstreamComponent> ent)
+    {
+        if(ent.Comp.BloodSolution is {} bloodSolution)
+            SolutionContainer.RemoveAllSolution(bloodSolution);
+
+        if(ent.Comp.MetabolitesSolution is {} metaboliteSolution)
+            SolutionContainer.RemoveAllSolution(metaboliteSolution);
+
+        if(ent.Comp.TemporarySolution is {} tempSolution)
+            SolutionContainer.RemoveAllSolution(tempSolution);
+    }
+    //Moffstation - End
+
     /// <summary>
     /// A simple helper that tries to move blood volume up or down by a specified amount.
     /// Blood will not go over normal volume for this entity's bloodstream.
