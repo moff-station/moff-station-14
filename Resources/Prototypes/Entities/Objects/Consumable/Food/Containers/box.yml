@@ -385,6 +385,7 @@
   description: Ethically sourced vegan donks made by health experts.  Warm up before consumption.
   components:
   - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
     state: dank-box
   - type: EntityTableContainerFill
     containers:
@@ -515,6 +516,7 @@
   components:
   - type: Sprite
   # Moffstation - Start - PocketChange
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
     state: moff-box
   - type: PointLight
     radius: 1.5
@@ -535,6 +537,7 @@
   description: Pockets made without trademark rights by and for tiders. Snap in half to warm up. Don't inhale the fumes. 
   components:
   - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
     state: tide-box
   - type: EntityTableContainerFill
     containers:

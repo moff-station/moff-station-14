@@ -632,7 +632,7 @@
       - PowerCell
       - DonkBattery
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
     state: tide
   - type: BatteryVisuals
   - type: InjectableSolution
@@ -664,7 +664,7 @@
     tags:
       - DonkPocket
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
     state: tide-open
   - type: SolutionContainerManager
     solutions:
@@ -689,7 +689,7 @@
     flavors:
     - chaos
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
     state: omni
   - type: SolutionContainerManager
     solutions:
