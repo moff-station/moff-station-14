@@ -306,12 +306,13 @@
     capacity: 1
     proto: null
   - type: Construction
+    # Moffstation - Start - ShotgunCutting
     graph: ImprovisedShotgunSawn
     node: start
     deconstructionTarget: null
   - type: StaticPrice
     price: 20
-
+    # Moffstation - End
 - type: entity
   name: improvised shotgun
   parent: WeaponShotgunImprovised
