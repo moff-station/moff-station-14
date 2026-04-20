@@ -388,7 +388,10 @@
 #Security Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitSecurity
+  # Moffstation - start - Namespaced
+  id: ClothingHeadHelmetHardsuitSecurityUpstream
+  abstract: true
+  # Moffstation - end
   name: security hardsuit helmet
   description: Armored hardsuit helmet for security needs.
   components:
@@ -441,7 +444,10 @@
 #Warden's Hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitWarden
+  # Moffstation - start - Namespaced
+  id: ClothingHeadHelmetHardsuitWardenUpstream
+  abstract: true
+  # Moffstation - end
   name: warden's hardsuit helmet
   description: A modified riot helmet. Oddly comfortable.
   components:
@@ -643,7 +649,10 @@
 #Head of Security's hardsuit
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
-  id: ClothingHeadHelmetHardsuitSecurityRed
+  # Moffstation - Start - Namespaced
+  id: ClothingHeadHelmetHardsuitSecurityRedUpstream
+  abstract: true
+  # Moffstation - End
   name: head of security's hardsuit helmet
   description: Security hardsuit helmet with the latest top secret NT-HUD software. Belongs to the HoS.
   components:
@@ -1115,7 +1124,7 @@
 #MISC. HARDSUITS
 #Clown Hardsuit
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSecurity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase] # Moffstation
   id: ClothingHeadHelmetHardsuitClown
   name: clown hardsuit helmet
   description: A clown hardsuit helmet.
@@ -1127,10 +1136,23 @@
     sprite: Clothing/Head/Hardsuits/clown.rsi
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Effects/Emotes/parp1.ogg
+  # Moffstation - Start
+  - type: PointLight
+    radius: 6
+    energy: 1
+    color: SandyBrown
+  - type: PressureProtection
+    highPressureMultiplier: 0.72
+    lowPressureMultiplier: 1000
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  # Moffstation - End
+
 
 #Mime Hardsuit
 - type: entity
-  parent: ClothingHeadHelmetHardsuitSecurity
+  parent: [ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase] # Moffstaton
   id: ClothingHeadHelmetHardsuitMime
   name: mime hardsuit helmet
   description: A mime hardsuit helmet.
@@ -1140,6 +1162,18 @@
     sprite: Clothing/Head/Hardsuits/mime.rsi
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/mime.rsi
+  # Moffstation - Start
+  - type: PointLight
+    radius: 6
+    energy: 1
+    color: SandyBrown
+  - type: PressureProtection
+    highPressureMultiplier: 0.72
+    lowPressureMultiplier: 1000
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  # Moffstation - End
 
 #Santas Hardsuit
 - type: entity
