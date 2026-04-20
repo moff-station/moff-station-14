@@ -64,6 +64,9 @@
       # Moffstation - Begin - Replace normal records with CD records
       enum.CharacterRecordConsoleKey.Key:
         type: CharacterRecordConsoleBoundUserInterface
+      # Moffstation - event voting
+      enum.ESVoterUiKey.Key:
+        type: ESVoterBui
       # Moffstation - End
   - type: IntrinsicUI
     uis:
@@ -116,14 +119,15 @@
   - type: Loadout
     prototypes: [ MobAghostGear ]
   - type: BypassInteractionChecks
+  - type: ExplosionResistance
+    damageCoefficient: 0
   # Moffstation - Begin - The ghost needs to be a console to view the UI
   - type: CharacterRecordConsole
     consoleType: Admin
     # Needed for security records console functionality
   - type: CriminalRecordsConsole
   # Moffstation - End
-  - type: ExplosionResistance
-    damageCoefficient: 0
+  - type: ESVoter # Moffstation - Event voting
 
 - type: entity
   abstract: true
