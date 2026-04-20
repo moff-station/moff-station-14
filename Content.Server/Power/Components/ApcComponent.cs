@@ -1,6 +1,7 @@
 using Content.Server.Power.NodeGroups;
 using Content.Shared.APC;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes; // Moffstation - potato APC cooking
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Power.Components;
@@ -59,6 +60,20 @@ public sealed partial class ApcComponent : BaseApcNetComponent
     /// </summary>
     [DataField]
     public bool TripFlag;
+
+    // Moffstation - Start - potato APC cooking
+    /// <summary>
+    /// If true, APC cannot be turned back on ever again.
+    /// </summary>
+    [DataField]
+    public bool PermaTripped;
+
+    /// <summary>
+    /// If not null, will spawn the entity and set <see cref="PermaTripped"/> to true.
+    /// </summary>
+    [DataField]
+    public EntProtoId? SpawnedEntityOnTrip;
+    // Moffstation - End
 
     // TODO ECS power a little better!
     // End the suffering
