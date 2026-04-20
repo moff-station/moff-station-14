@@ -18,6 +18,9 @@ public sealed class TicketMasterCartridgeSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audioSystem = default!;
     [Dependency] private readonly PaperSystem _paperSystem = default!;
 
+    private const int maxOfficerNameLength = 12;
+    private const int maxOffenderNameLength = 12;
+
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -38,17 +41,11 @@ public sealed class TicketMasterCartridgeSystem : EntitySystem
 
         if (!TryComp<PaperComponent>(printed, out var paperComp))
             return;
-
+        
 
         /* format the piece of paper */
         var text = new StringBuilder();
-
-        // very very bad way to do it but i don't know how to multi-line LoC.
-        text.AppendLine(Loc.GetString("infraction-paper-header-line1"));
-        text.AppendLine(Loc.GetString("infraction-paper-header-line2"));
-        text.AppendLine(Loc.GetString("infraction-paper-header-line3"));
-        text.AppendLine(Loc.GetString("infraction-paper-header-line4"));
-        text.AppendLine(Loc.GetString("infraction-paper-header-line5"));
+        text.AppendLine(Loc.GetString("infraction-paper-header", ("$author", cast.Ticket.AuthorName), ("target", cast.Ticket.TargetName)));
         text.AppendLine(cast.Ticket.Description);
 
         _paperSystem.SetContent((printed, paperComp), text.ToString());

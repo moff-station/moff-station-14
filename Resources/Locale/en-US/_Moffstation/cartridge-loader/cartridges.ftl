@@ -14,8 +14,9 @@ ticket-master-print = Print
 # PDA History panel
 
 # Paper
-infraction-paper-header-line1 = [color=DimGray]•────────────────────────•[/color]
-infraction-paper-header-line2 = [color=Crimson]░░▄█▄░
-infraction-paper-header-line3 = ░░▄▀█▀ [head=3][bold] Official Ticket.[/head][/bold]
-infraction-paper-header-line4 = ░▀░░░░
-infraction-paper-header-line5 = [color=DimGray]•────────────────────────•[/color][/color]
+infraction-paper-header = [color=Crimson]
+ ╔══════╗──────────────────────
+ ║░░▄█▄░║ [head=2][bold]Official Report[/head][/bold]
+ ║░░▄▀█▀║ officer  : {$author}
+ ║░▀░▄▄▄║ offender : {$target}
+ ╚══════╝──────────────────────[/color]
