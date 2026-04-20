@@ -126,11 +126,18 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
                 result = _random.Pick(winningOptions);
                 break;
             case ResultStrategy.WeightedPick:
-                // Convert each option into a weight based on counts
-                var weights = ent.Comp.Votes
-                    .Select(p => (p.Key, 1f + p.Value.Count)) // + 1 so every option can be chosen
-                    .ToDictionary();
-                result = _random.Pick(weights);
+                if (ent.Comp.Votes.Values.Sum(p => p.Count) == 0)
+                {
+                    result = _random.Pick(ent.Comp.VoteOptions);
+                }
+                else
+                {
+                    // Convert each option into a weight based on counts
+                    var weights = ent.Comp.Votes
+                        .Select(p => (p.Key, (float) p.Value.Count))
+                        .ToDictionary();
+                    result = _random.Pick(weights);
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
