@@ -38,7 +38,7 @@ public sealed partial class ESVotingWindow : FancyWindow
                 {
                     Vote = vote,
                 };
-                voteControl.OnVoteChanged += (arg1, arg2) => OnVoteChanged?.Invoke(arg1, arg2);
+                voteControl.OnVoteChanged += (arg1, arg2, _) => OnVoteChanged?.Invoke(arg1, arg2);
                 VotesContainer.AddChild(voteControl);
             }
         }
