@@ -43,7 +43,13 @@ public sealed class TicketMasterCartridgeSystem : EntitySystem
         /* format the piece of paper */
         var text = new StringBuilder();
 
-        text.Append(cast.Ticket.Description);
+        // very very bad way to do it but i don't know how to multi-line LoC.
+        text.AppendLine(Loc.GetString("infraction-paper-header-line1"));
+        text.AppendLine(Loc.GetString("infraction-paper-header-line2"));
+        text.AppendLine(Loc.GetString("infraction-paper-header-line3"));
+        text.AppendLine(Loc.GetString("infraction-paper-header-line4"));
+        text.AppendLine(Loc.GetString("infraction-paper-header-line5"));
+        text.AppendLine(cast.Ticket.Description);
 
         _paperSystem.SetContent((printed, paperComp), text.ToString());
 
