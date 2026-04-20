@@ -1,0 +1,94 @@
+# Moffstation - Start - PocketChange
+- type: entity
+  parent: BaseItem
+  id: FoodDonkpocketTide
+  name: tide-pocket
+  description: Food of choice for a seasoned tider. Can be used as a battery in a pinch.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - shocking
+    - alkaline
+  - type: Item
+    size: Tiny
+  - type: Battery
+    pricePerJoule: 0.15
+    maxCharge: 20
+    startingCharge: 20
+  - type: PowerCell
+  - type: Tag
+    tags:
+      - DonkPocket
+      - PowerCell
+      - DonkBattery
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: tide
+  - type: BatteryVisuals
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: {visible: true, state: o2}
+          Neither: {visible: true, state: o1}
+          Empty: {visible: false}
+  - type: SpawnItemsOnUse
+    items:
+    - id: FoodDonkpocketTideWarm
+    sound:
+      path: /Audio/_Moffstation/Effects/donktidesnap.ogg
+
+- type: entity
+  parent: FoodSnackBase
+  id: FoodDonkpocketTideWarm
+  name: warm tide-pocket
+  description: Warm and coated in a reflective layer. Best eaten in one breath. 
+  components:
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+      - DonkPocket
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: tide-open
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Omnizine
+          Quantity: 2
+        - ReagentId: Tazinide
+          Quantity: 2
+        - ReagentId: Insuzine
+          Quantity: 2
+
+- type: entity
+  parent: FoodDonkpocketBase
+  id: FoodDonkpocketOmni
+  name: omni-pocket
+  description: The final flavour. Eternally warm.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chaos
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: omni
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Omnizine
+          Quantity: 50
+        - ReagentId: Stimulants
+          Quantity: 50
+        - ReagentId: Puncturase
+          Quantity: 50
+# Moffstation - End

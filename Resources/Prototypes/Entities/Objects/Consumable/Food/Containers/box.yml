@@ -377,23 +377,6 @@
         - id: DonkcoLighter
           prob: 0.10
 
-# Moffstation - Start - PocketChange
-- type: entity
-  parent: FoodBoxDonkpocket
-  id: FoodBoxDonkpocketDank
-  name: box of dank-flavoured donk-pockets
-  description: Ethically sourced vegan donks made by health experts.  Warm up before consumption.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
-    state: dank-box
-  - type: EntityTableContainerFill
-    containers:
-      storagebase:
-        id: FoodDonkpocketDank
-        amount: 6
-# Moffstation - End
-
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketSpicy
@@ -528,23 +511,6 @@
       storagebase:
         id: FoodDonkpocketMoth
         amount: 6
-
-# Moffstation - Start - PocketChange
-- type: entity
-  parent: FoodBoxDonkpocket
-  id: FoodBoxDonkpocketTide
-  name: box of tide-pockets 
-  description: Pockets made without trademark rights by and for tiders. Snap in half to warm up. Don't inhale the fumes. 
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
-    state: tide-box
-  - type: EntityTableContainerFill
-    containers:
-      storagebase:
-        id: FoodDonkpocketTide
-        amount: 6
-# Moffstation - End
 
 - type: entity
   id: HappyHonk
