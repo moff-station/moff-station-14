@@ -133,6 +133,14 @@ public sealed class ApcSystem : EntitySystem
 
         if (_accessReader.IsAllowed(args.Actor, uid))
         {
+            // Moffstation - Start - potato APC cooking
+            if (component.PermaTripped)
+            {
+                _popup.PopupCursor(Loc.GetString("apc-component-permatripped-tooltip"),
+                    args.Actor, PopupType.Medium);
+                return;
+            }
+            // Moffstation - End
             ApcToggleBreaker(uid, component, user: args.Actor);
         }
         else
