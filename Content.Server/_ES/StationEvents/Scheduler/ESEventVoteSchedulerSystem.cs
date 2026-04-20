@@ -47,7 +47,7 @@ public sealed class ESEventVoteSchedulerSystem : GameRuleSystem<ESEventVoteSched
 
         // This is genuinely a terrible API
         var availableEvents = _eventManager.AvailableEvents();
-        if (!_eventManager.TryBuildLimitedEvents(component.EventTable, availableEvents, out var limitedEvents))
+        if (!_eventManager.TryBuildLimitedEvents(component.EventTable, out var limitedEvents))
             return; // DIE ! ! !
 
         var vote = Spawn(component.VotePrototype);
