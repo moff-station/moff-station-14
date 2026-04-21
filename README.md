@@ -14,8 +14,7 @@ Space Station 14 is a remake of SS13 that runs on Robust Toolbox, a homegrown en
 
 ## Documentation/Wiki
 
-Upstream's [docs site](https://docs.spacestation14.io/) has documentation on SS14s content, engine, game design and more.
-
+Moffstation's [docs site](https://moff-station.github.io/moff-docs/) has documentation on Moffstation's content, engine, game design, and more.
 ## Contributing
 
 We are happy to accept contributions from anybody. Note that because Moffstation is a fork of upstream Space Station 14, we will not accept any contributions that do not follow both upstream's [contribution guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) and our own [contribution guidelines](CONTRIBUTING.md).
