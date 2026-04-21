@@ -43,8 +43,9 @@
   - type: TemperatureDamage
   # required for cooking to work
   - type: InternalTemperature
-    thickness: 0.02
-    area: 0.02 # arbitrary number that sounds right for a slab of meat
+    conductivity: 0.44
+    thickness: 0.005
+    area: 0.0075 # ~5x15cm
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -70,10 +71,6 @@
   - type: Sprite
     state: plain
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmDonk
     node: start
@@ -94,6 +91,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
+        # maxVol:10 - Moffstation - PocketChange
         reagents:
         - ReagentId: Nutriment
           Quantity: 8
@@ -123,10 +121,6 @@
   - type: Sprite
     state: dank
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.004 # bacon is thin so faster to cook than a steak
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmDank
     node: start
@@ -172,10 +166,6 @@
   - type: Sprite
     state: plain
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmSpicy
     node: start
@@ -222,10 +212,6 @@
   - type: Sprite
     state: teriyaki
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmTeriyaki
     node: start
@@ -277,10 +263,6 @@
   - type: Sprite
     state: pizza
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmPizza
     node: start
@@ -307,8 +289,10 @@
           Quantity: 15
         - ReagentId: Omnizine
           Quantity: 2
+          # Moffstation - Start - PocketChange
         - ReagentId: Tricordrazine
           Quantity: 4
+          # Moffstation - End
 
 - type: entity
   name: honk-pocket
@@ -331,10 +315,6 @@
   - type: Sprite
     state: banana
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmHonk
     node: start
@@ -385,10 +365,6 @@
   - type: Sprite
     state: berry
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmBerry
     node: start
@@ -439,10 +415,6 @@
   - type: Sprite
     state: stonk
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmStonk
     node: start
@@ -466,13 +438,13 @@
         - ReagentId: Nutriment
           Quantity: 10
         - ReagentId: Omnizine
-          Quantity: 1
         # Moffstation - Start - PocketChange
+          Quantity: 1
         - ReagentId: Tricordrazine
           Quantity: 2
-  - type: StaticPrice
-    price: 500
-        # Moffstation - End
+        - type: StaticPrice
+          price: 500
+          # Moffstation - End
 
 - type: entity
   name: carp-pocket
@@ -493,10 +465,6 @@
   - type: Sprite
     state: carp
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmCarp
     node: start
@@ -576,10 +544,6 @@
     - ClothMade
     - DonkPocket
   # Moffstation - Start - PocketChange
-  - type: InternalTemperature
-    conductivity: 0.44
-    thickness: 0.005
-    area: 0.0075 # ~5x15cm
   - type: Construction
     graph: WarmMoth
     node: start
