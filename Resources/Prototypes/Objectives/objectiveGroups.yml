@@ -9,7 +9,6 @@
     TraitorObjectiveGroupSocial: 0.5 #Involves helping/harming others without killing them or stealing their stuff
     TraitorObjectiveGroupSabotage: 0.5
     TraitorObjectiveGroupOther: 0.5
-    TraitorObjectiveOpenEnded: 0.5
     # Moffstation - End
 
 - type: weightedRandom
@@ -60,12 +59,20 @@
   id: TraitorObjectiveGroupSabotage
   weights:
     SupercritAnomaliesObjective: 1
+    # Moffstation - Sabotage objectives
+    DisruptDepartmentObjective: 1
+    SabotageObjective: 0.5
+    # Moffstation - End
 
 #misc objectives that don't fall other another category
 - type: weightedRandom
   id: TraitorObjectiveGroupOther
   weights:
     HijackTradeStationObjective: 1
+    # Moffstation - Location based objectives
+    TrashRoomObjective: 1
+    ClaimLocationObjective: 1
+    # Moffstation - End
 
 
 #Thief groups

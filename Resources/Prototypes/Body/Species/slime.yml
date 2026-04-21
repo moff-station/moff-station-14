@@ -115,9 +115,9 @@
       Unsexed: MaleSlime
   - type: Damageable
     damageModifierSet: Slime
-    # Moffstation - Begin - Readd Geras - Temporarily killswitched
-#  - type: Geras
-#    gerasProto: MobSlimesGeras
+    # Moffstation - Begin - Readd Geras
+  - type: Geras
+    gerasProto: MobSlimesGeras
     # Moffstation - End
   - type: PassiveDamage # Around 8 damage a minute healed
     allowedStates:
