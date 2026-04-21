@@ -1,7 +1,6 @@
 using Content.Server.Power.NodeGroups;
 using Content.Shared.APC;
 using Robust.Shared.Audio;
-using Robust.Shared.Prototypes; // Moffstation - potato APC cooking
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Power.Components;
@@ -73,6 +72,18 @@ public sealed partial class ApcComponent : BaseApcNetComponent
     /// </summary>
     [DataField]
     public bool PermaTripped;
+
+    /// <summary>
+    /// Sound to play on permatripping.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier PermaTrippedAudio = new SoundPathSpecifier("/Audio/Effects/sizzle.ogg");
+
+    /// <summary>
+    /// Popup LocId to display on permatripping.
+    /// </summary>
+    [DataField]
+    public LocId PermaTrippedPopup = "apc-component-permatripped-popup";
     // Moffstation - End
 
     // TODO ECS power a little better!

@@ -82,6 +82,8 @@ public sealed class ApcSystem : EntitySystem
                             apc.MaxLoad = 0;
                             _battery.SetCharge(uid, 0);
                             _battery.SetMaxCharge(uid, 0);
+                            _popup.PopupCoordinates(Loc.GetString(apc.PermaTrippedPopup), Transform(uid).Coordinates, PopupType.MediumCaution);
+                            _audio.PlayPvs(apc.PermaTrippedAudio, uid);
                         }
                         // Moffstation - End
                         ApcToggleBreaker(uid, apc, battery); // off, we already checked MainBreakerEnabled above
