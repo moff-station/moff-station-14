@@ -1,4 +1,3 @@
-using Content.Server.Construction.Components; // Moffstation - potato APC cooking
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.Pow3r;
@@ -29,10 +28,7 @@ public sealed class ApcSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    // Moffstation - Start - potato APC cooking
-    [Dependency] private readonly EntityManager _entMan = default!;
-    [Dependency] private readonly SharedBatterySystem _battery = default!;
-    // Moffstation - End
+    [Dependency] private readonly SharedBatterySystem _battery = default!; // Moffstation - potato APC cooking
 
     public override void Initialize()
     {
@@ -80,14 +76,12 @@ public sealed class ApcSystem : EntitySystem
                     {
                         apc.TripFlag = true;
                         // Moffstation - Start - potato APC cooking
-                        if (apc.SpawnedEntityOnTrip != null)
+                        if (apc.EnablePermaTripping)
                         {
                             apc.PermaTripped = true;
-                            _entMan.SpawnEntity(apc.SpawnedEntityOnTrip, Transform(uid).Coordinates);
                             apc.MaxLoad = 0;
                             _battery.SetCharge(uid, 0);
                             _battery.SetMaxCharge(uid, 0);
-                            RemComp<ConstructionComponent>(uid); // no infinite fries
                         }
                         // Moffstation - End
                         ApcToggleBreaker(uid, apc, battery); // off, we already checked MainBreakerEnabled above

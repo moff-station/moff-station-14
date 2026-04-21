@@ -15,7 +15,7 @@
   components:
   - type: Apc
     maxLoad: 1000
-    spawnedEntityOnTrip: FoodMealFries
+    enablePermaTripping: true
   - type: Construction
     graph: APC
     node: apcPotato

@@ -63,16 +63,16 @@ public sealed partial class ApcComponent : BaseApcNetComponent
 
     // Moffstation - Start - potato APC cooking
     /// <summary>
+    /// If true, will set <see cref="PermaTripped"/> to true once the APC trips.
+    /// </summary>
+    [DataField]
+    public bool EnablePermaTripping;
+
+    /// <summary>
     /// If true, APC cannot be turned back on ever again.
     /// </summary>
     [DataField]
     public bool PermaTripped;
-
-    /// <summary>
-    /// If not null, will spawn the entity and set <see cref="PermaTripped"/> to true.
-    /// </summary>
-    [DataField]
-    public EntProtoId? SpawnedEntityOnTrip;
     // Moffstation - End
 
     // TODO ECS power a little better!
