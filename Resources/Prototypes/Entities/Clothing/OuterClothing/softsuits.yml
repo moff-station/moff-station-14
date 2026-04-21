@@ -6,9 +6,9 @@
   description: A lightweight space suit with the basic ability to protect the wearer from the vacuum of space during emergencies.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva.rsi # Moffstation
   - type: Tag
     tags:
     - SuitEVA
@@ -23,9 +23,9 @@
   description: "Has a tag on the back that reads: 'Totally not property of an enemy corporation, honest!'"
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva_syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_syndicate.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva_syndicate.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_syndicate.rsi # Moffstation
   - type: Tag
     tags:
     - SuitEVA
@@ -42,9 +42,9 @@
   description: An emergency EVA suit with a built-in helmet. It's horribly slow and lacking in temperature protection, but enough to buy you time from the harsh vacuum of space.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva_emergency.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_emergency.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva_emergency.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_emergency.rsi # Moffstation
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
@@ -73,9 +73,9 @@
   description: An emergency EVA suit meant for prisoners. It's horribly slow and lacking in temperature protection, but enough to buy you time from the harsh vacuum of space.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Suits/eva_prisoner.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_prisoner.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Suits/eva_prisoner.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Suits/eva_prisoner.rsi # Moffstation
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
