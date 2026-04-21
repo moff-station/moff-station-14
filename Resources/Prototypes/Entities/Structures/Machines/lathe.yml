@@ -218,6 +218,7 @@
     - Instruments
     - Equipment
     - WirelessCameraHandheld # MOFFSTATION CHANGE - Adds wireless handheld camera
+    - LawProgrammer # Moffstation - Cyborg Programming
     # Moffstation - Start - Modular HUDs
     - ModularHudFrames
     - ModularHudModules
@@ -696,8 +697,6 @@
   name: cutter machine
   description: This is a cutter. It cuts. Add variety to your station floor with eye-pleasing patterns! Don't stick your fingers in.
   components:
-  - type: Transform
-    noRot: false
   - type: Sprite
     sprite: Structures/Machines/cuttermachine.rsi
     snapCardinals: true
@@ -720,10 +719,15 @@
     - FloorSteelTilesStatic
     - FloorWhiteTilesStatic
     - FloorMaintsTilesStatic
+    - FloorIndustrialTilesStatic
     - FloorWoodTilesStatic
     - FloorConcreteTilesStatic
     - CircuitFloorsStatic
     - FloorMarbleTilesStatic
+    - FloorShuttleTilesStatic
+    - PlasticTilesStatic
+    - CarpetTilesStatic
+    - PreciousTilesStatic
     dynamicPacks:
     - FauxTiles
   - type: MaterialStorage

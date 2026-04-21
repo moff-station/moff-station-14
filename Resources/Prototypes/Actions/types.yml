@@ -257,8 +257,8 @@
 - type: entity
   parent: BaseAction
   id: ActionShootWater
-  name: Spray brawndo!
-  description: Spray brawndo towards your enemies.
+  name: Spray water!
+  description: Spray water towards your enemies.
   components:
   - type: Action
     icon: { sprite: Clothing/Neck/Misc/pins.rsi, state: flower }
@@ -383,6 +383,7 @@
     itemIconStyle: NoItem
     useDelay: 1 # emote spam
     checkCanInteract: false
+    priority: 1000 # Moffstation - RP actions go last in the bar
 
 - type: entity
   parent: BaseAction
@@ -438,6 +439,17 @@
       state: icon
   - type: InstantAction
     event: !type:GravityJumpEvent {}
+
+- type: entity
+  parent: ActionGravityJump
+  id: ActionJumpBoost
+  name: Jump boost
+  components:
+  - type: Action
+    useDelay: 16
+    icon:
+      sprite: Interface/Actions/actions_borg.rsi
+      state: xenoborg-jump-module
 
 - type: entity
   parent: BaseAction

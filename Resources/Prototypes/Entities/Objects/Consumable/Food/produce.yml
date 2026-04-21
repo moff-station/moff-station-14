@@ -888,11 +888,6 @@
     heldPrefix: produce
   - type: Produce
     seedId: potato
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuicePotato
-        Quantity: 10
   - type: Tag
     tags:
     - Potato
@@ -2109,7 +2104,7 @@
       Burger: KoibeanBurger
 
 - type: entity
-  name: brawndomelon
+  name: watermelon
   parent: [FoodProduceBase, ItemHeftyBase]
   id: FoodWatermelon
   description: Round green object that you can slice and eat.
@@ -2214,7 +2209,7 @@
   name: holymelon
   parent: [FoodProduceBase, ItemHeftyBase]
   id: FoodHolymelon
-  description: The brawndo within this melon has been blessed by some deity that's particularly fond of brawndomelon.
+  description: The water within this melon has been blessed by some deity that's particularly fond of watermelon.
   components:
   - type: Item
     size: Small
