@@ -183,7 +183,7 @@ public sealed partial class JukeboxMenu : FancyWindow
     // Moffstation - Start - Jukebox volume control
     public void SetVolumeDisplay(int volume, int volumeMin)
     {
-        VolumeDisplay.Text = "[ " + (volume-volumeMin+1) + " ]"; // +1 so our lowest display value starts at '1', rather than '0'
+        VolumeDisplay.Text = (volume-volumeMin+1).ToString(); // +1 so our lowest display value starts at '1', rather than '0'
     }
     // Moffstation - End
 }
