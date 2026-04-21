@@ -278,7 +278,8 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         if (SolutionContainer.ResolveSolution(ent.Owner, ent.Comp.BloodSolutionName, ref ent.Comp.BloodSolution))
         {
             SolutionContainer.RemoveAllSolution(ent.Comp.BloodSolution.Value);
-            TryModifyBloodLevel(ent.AsNullable(), ent.Comp.BloodReferenceSolution.Volume);
+            // TODO: Use Solutions API for this when it exists
+            TryRegulateBloodLevel(ent.AsNullable(), ent.Comp.BloodReferenceSolution.Volume);
         }
     }
 
@@ -371,6 +372,24 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         return flushedSolution.Volume == 0 ? null : flushedSolution;
     }
 
+    //Moffstation - Geras Patch - Begin
+    /// <summary>
+    /// Removes all reagents from all parts of the bloodstream, used for clearing the stream before refilling it to an arbitrary amount
+    /// </summary>
+    /// <param name="ent">The entity losing all its blood</param>
+    public void ClearBloodStream(Entity<BloodstreamComponent> ent)
+    {
+        if(ent.Comp.BloodSolution is {} bloodSolution)
+            SolutionContainer.RemoveAllSolution(bloodSolution);
+
+        if(ent.Comp.MetabolitesSolution is {} metaboliteSolution)
+            SolutionContainer.RemoveAllSolution(metaboliteSolution);
+
+        if(ent.Comp.TemporarySolution is {} tempSolution)
+            SolutionContainer.RemoveAllSolution(tempSolution);
+    }
+    //Moffstation - End
+
     /// <summary>
     /// A simple helper that tries to move blood volume up or down by a specified amount.
     /// Blood will not go over normal volume for this entity's bloodstream.
@@ -403,12 +422,15 @@ public abstract class SharedBloodstreamSystem : EntitySystem
             || amount == 0)
             return false;
 
+        // TODO: Either make this percentage based regeneration and pre-pass the percentage.
+        // TODO: Solution regulation API that doesn't result in very minor FixedPoint2 errors (Currently gingerbreadman only regenerates 0.99u instead of 1.00u)
         referenceFactor = Math.Clamp(referenceFactor, 0f, ent.Comp.MaxVolumeModifier);
+        var ratio = (float)amount / (float)ent.Comp.BloodReferenceSolution.Volume;
 
         foreach (var (referenceReagent, referenceQuantity) in ent.Comp.BloodReferenceSolution)
         {
             var error = referenceQuantity * referenceFactor - bloodSolution.GetTotalPrototypeQuantity(referenceReagent.Prototype);
-            var adjustedAmount = amount * referenceQuantity / ent.Comp.BloodReferenceSolution.Volume;
+            var adjustedAmount = referenceQuantity * ratio;
 
             if (error > 0)
             {

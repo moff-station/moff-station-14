@@ -21,12 +21,11 @@ public partial class MobStateSystem : EntitySystem
     [Dependency] private readonly BodySystem _bodySystem = default!; //Moffstation - Re-add Geras
     private ISawmill _sawmill = default!;
 
-    private EntityQuery<MobStateComponent> _mobStateQuery;
+    [Dependency] private readonly EntityQuery<MobStateComponent> _mobStateQuery = default!;
 
     public override void Initialize()
     {
         _sawmill = _logManager.GetSawmill("MobState");
-        _mobStateQuery = GetEntityQuery<MobStateComponent>();
         base.Initialize();
         SubscribeEvents();
     }

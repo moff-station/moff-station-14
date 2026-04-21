@@ -20,8 +20,8 @@ public sealed partial class StatusEffectsSystem : EntitySystem
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
-    private EntityQuery<StatusEffectContainerComponent> _containerQuery;
-    private EntityQuery<StatusEffectComponent> _effectQuery;
+    [Dependency] private readonly EntityQuery<StatusEffectContainerComponent> _containerQuery = default!;
+    [Dependency] private readonly EntityQuery<StatusEffectComponent> _effectQuery = default!;
 
     public readonly HashSet<string> StatusEffectPrototypes = [];
 
@@ -35,13 +35,11 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         SubscribeLocalEvent<StatusEffectContainerComponent, ComponentShutdown>(OnStatusContainerShutdown);
         SubscribeLocalEvent<StatusEffectContainerComponent, EntInsertedIntoContainerMessage>(OnEntityInserted);
         SubscribeLocalEvent<StatusEffectContainerComponent, EntRemovedFromContainerMessage>(OnEntityRemoved);
+        SubscribeLocalEvent<StatusEffectContainerComponent, TransferNewStatusEffectsEvent>(OnTransferStatuses); //Moffstation - Geras Patch
 
         SubscribeLocalEvent<RejuvenateRemovedStatusEffectComponent, StatusEffectRelayedEvent<RejuvenateEvent>>(OnRejuvenate);
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-
-        _containerQuery = GetEntityQuery<StatusEffectContainerComponent>();
-        _effectQuery = GetEntityQuery<StatusEffectComponent>();
 
         ReloadStatusEffectsCache();
     }
@@ -329,6 +327,23 @@ public sealed partial class StatusEffectsSystem : EntitySystem
 
         DirtyField(ent, ent.Comp, nameof(StatusEffectComponent.StartEffectTime));
     }
+
+    //Moffstation - Geras Patch - Begin
+    private void OnTransferStatuses(Entity<StatusEffectContainerComponent> target, ref TransferNewStatusEffectsEvent args)
+    {
+        if (args.Source.Comp.ActiveStatusEffects is not { } sourceEffects)
+            return;
+
+        foreach (var status in sourceEffects.ContainedEntities)
+        {
+            if (Prototype(status) is { } proto && TryComp<StatusEffectComponent>(status, out var statusComp))
+            {
+                TryAddStatusEffect(target.Owner, proto, out var newStatus, statusComp.EndEffectTime-statusComp.StartEffectTime, TimeSpan.Zero);
+            }
+        }
+        RemComp<StatusEffectContainerComponent>(args.Source.Owner);
+    }
+    //Moffstation - End
 }
 
 /// <summary>
@@ -364,3 +379,7 @@ public record struct StatusEffectEndTimeUpdatedEvent(EntityUid Target, TimeSpan?
 /// <param name="StartTime">The new start time of the status effect, included for convenience.</param>
 [ByRefEvent]
 public record struct StatusEffectStartTimeUpdatedEvent(EntityUid Target, TimeSpan? StartTime);
+
+
+[ByRefEvent]
+public readonly record struct TransferNewStatusEffectsEvent(Entity<StatusEffectContainerComponent> Source); // Moffstation - Geras Patch

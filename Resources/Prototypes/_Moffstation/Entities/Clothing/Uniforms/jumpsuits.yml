@@ -632,3 +632,15 @@
       - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-purple
+
+#Soviet
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSoviet
+  name: soviet officer jumpsuit
+  description: Designed for arm wrestling contests against space bears.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/sovietofficer.rsi

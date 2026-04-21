@@ -6,6 +6,10 @@ using Content.Shared.Implants.Components;
 using Content.Shared.Mind;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
+//Moffstation - Geras Patch - Begin
+using Content.Shared.Store.Components;
+using Content.Shared.VoiceMask;
+//Moffstation - End
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -30,6 +34,11 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         SubscribeLocalEvent<SubdermalImplantComponent, EntGotInsertedIntoContainerMessage>(OnInsert);
         SubscribeLocalEvent<SubdermalImplantComponent, ContainerGettingRemovedAttemptEvent>(OnRemoveAttempt);
         SubscribeLocalEvent<SubdermalImplantComponent, EntGotRemovedFromContainerMessage>(OnRemove);
+        //Moffstation - Geras Patch - Begin
+        SubscribeLocalEvent<StoreComponent, ImplantTransferEvent>(OnUplinkImplantTransfer);
+        SubscribeLocalEvent<StorageComponent, ImplantTransferEvent>(OnStorageImplantTransfer);
+        SubscribeLocalEvent<VoiceMaskComponent, ImplantTransferEvent>(OnIdentityImplantTransfer);
+        //Moffstation - End
     }
 
     private void OnInsert(Entity<SubdermalImplantComponent> ent, ref EntGotInsertedIntoContainerMessage args)
@@ -178,40 +187,30 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         if (!Resolve(source, ref source.Comp))
             return;
 
+        implant.Comp.Permanent = false;
+
         //store remaining charges if the implant has charges
-        var charges=-1;
+        var charges = -1;
         if (Exists(implant.Comp.Action) && HasComp<LimitedChargesComponent>(implant.Comp.Action))
         {
             charges = _charges.GetCurrentCharges(implant.Comp.Action.Value);
         }
 
-        // storage implants need to be handled a little differently
-        if (HasComp<StorageImplantComponent>(implant.Owner))
+        if (Prototype(implant.Owner) is not { } proto)
+            return;
+
+        if (AddImplant(target, proto.ID) is { } newImplant)
         {
-            if (Prototype(implant.Owner) is not {} proto)
-                return;
+            var transferEvent = new ImplantTransferEvent(implant);
+            RaiseLocalEvent(newImplant, ref transferEvent);
 
-            if(AddImplant(target,  proto.ID) is {} newImplant)
-                _storage.TransferEntities(implant, newImplant);
+            //set the remaining charges to the previously stored value if applicable
+            if (charges >= 0 && TryComp<SubdermalImplantComponent>(newImplant, out var newImplantComp) &&
+                Exists(newImplantComp.Action))
+                _charges.SetCharges(newImplantComp.Action.Value, charges);
 
-            _container.Remove(implant.Owner, source.Comp.ImplantContainer);
-            return;
+            ForceRemove(source, implant);
         }
-
-
-        _container.Remove(implant.Owner, source.Comp.ImplantContainer);
-
-        //If the target doesn't have the implanted component, add it.
-        var implantedComp = EnsureComp<ImplantedComponent>(target);
-
-        implant.Comp.ImplantedEntity = target;
-        if (!_container.Insert(implant.Owner, implantedComp.ImplantContainer))
-            return;
-
-        //set the remaining charges to the previously stored value if applicable
-        if (charges >= 0 && Exists(implant.Comp.Action))
-            _charges.SetCharges(implant.Comp.Action.Value, charges);
-
     }
 
     /// <summary>
@@ -225,6 +224,28 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
         {
             if(TryComp<SubdermalImplantComponent>(implant, out var implantComp))
                 TransferImplant(source, target, (implant, implantComp));
+        }
+    }
+
+    private void OnStorageImplantTransfer(Entity<StorageComponent> ent, ref ImplantTransferEvent args)
+    {
+        _storage.TransferEntities(args.Original, ent);
+    }
+
+    private void OnIdentityImplantTransfer(Entity<VoiceMaskComponent> ent, ref ImplantTransferEvent args)
+    {
+        if (TryComp<VoiceMaskComponent>(args.Original, out var identity))
+        {
+            ent.Comp.VoiceMaskName = identity.VoiceMaskName;
+            ent.Comp.VoiceMaskSpeechVerb = identity.VoiceMaskSpeechVerb;
+        }
+    }
+
+    private void OnUplinkImplantTransfer(Entity<StoreComponent> ent, ref ImplantTransferEvent args)
+    {
+        if (TryComp<StoreComponent>(args.Original, out var storeComp))
+        {
+            ent.Comp.Balance = storeComp.Balance;
         }
     }
     //Moffstation - End
@@ -274,3 +295,8 @@ public readonly record struct ImplantRemovedEvent
         Implanted = implanted;
     }
 }
+
+//Moffstation - Geras Patch - Begin
+[ByRefEvent]
+public readonly record struct ImplantTransferEvent(Entity<SubdermalImplantComponent> Original);
+//Moffstation - End

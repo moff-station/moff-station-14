@@ -7,7 +7,8 @@
     TraitorObjectiveGroupKill: 1
     TraitorObjectiveGroupState: 0.25 #As in, something about your character. Alive, dead, arrested, gained an ability...
     TraitorObjectiveGroupSocial: 0.5 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveOpenEnded: 0.5
+    TraitorObjectiveGroupSabotage: 0.5
+    TraitorObjectiveGroupOther: 0.5
     # Moffstation - End
 
 - type: weightedRandom
@@ -31,6 +32,7 @@
   id: TraitorObjectiveGroupKill
   weights:
     KillRandomPersonObjective: 1
+    KillStationAiObjective: 0.25
     KillRandomHeadObjective: 0.25
     TeachLessonObjective: 1 # Moffstation - teach lesson objective
 
@@ -52,6 +54,26 @@
     LeaveCallingCardObjective: 0.5
     LeaveCallingCardOnPersonObjective: 0.5
     # Moffstation - End
+
+- type: weightedRandom
+  id: TraitorObjectiveGroupSabotage
+  weights:
+    SupercritAnomaliesObjective: 1
+    # Moffstation - Sabotage objectives
+    DisruptDepartmentObjective: 1
+    SabotageObjective: 0.5
+    # Moffstation - End
+
+#misc objectives that don't fall other another category
+- type: weightedRandom
+  id: TraitorObjectiveGroupOther
+  weights:
+    HijackTradeStationObjective: 1
+    # Moffstation - Location based objectives
+    TrashRoomObjective: 1
+    ClaimLocationObjective: 1
+    # Moffstation - End
+
 
 #Thief groups
 - type: weightedRandom
