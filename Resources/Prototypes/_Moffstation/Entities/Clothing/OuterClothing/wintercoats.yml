@@ -198,3 +198,17 @@
     sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/winterpierrot.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterPierrot
+
+#Soviet
+
+- type: entity
+  parent: ClothingOuterWinterCoatToggleable
+  id: ClothingOuterWinterSoviet
+  name: soviet winter coat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/sovietcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/sovietcoat.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterSoviet
