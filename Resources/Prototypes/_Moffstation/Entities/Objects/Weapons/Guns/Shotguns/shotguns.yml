@@ -28,3 +28,48 @@
     sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pump_old.rsi
   - type: Clothing
     sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pump_old.rsi
+
+- type: entity
+  name: sawn-off improvised shotgun
+  parent: [BaseWeaponShotgun, BaseMinorContraband]
+  id: WeaponShotgunImprovisedSawn
+  description: A shitty, hand-made shotgun that uses .50 shotgun shells. It can only hold one round in the chamber.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/sawn_improvised.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/sawn_improvised.rsi
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,2,0
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/sawn_improvised_inhands_64x.rsi
+  - type: Gun
+    fireRate: 4 #No reason to stifle the firerate since you have to manually reload every time anyways.
+    # Moffstation - Begin - Add gun recoil.
+    recoilKick:
+      impulse: 300
+      staminaMultiplier: 8
+    # Moffstation - End - Add gun recoil.
+  - type: GunSpreadModifier
+    spread: 1.4
+  - type: BallisticAmmoProvider
+    capacity: 1
+  - type: Construction
+    graph: ImprovisedShotgunSawn
+    node: improvisedshotgunsawn
+    deconstructionTarget: null
+
+- type: entity
+  name: sawn-off improvised shotgun
+  parent: WeaponShotgunImprovisedSawn
+  id: WeaponImprovisedShotgunSawnEmpty
+  description: A shitty, hand-made shotgun that uses .50 shotgun shells. It can only hold one round in the chamber.
+  suffix: Empty
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+  - type: Construction
+    graph: ImprovisedShotgunSawn
+    node: improvisedshotgunsawn
+    deconstructionTarget: null
