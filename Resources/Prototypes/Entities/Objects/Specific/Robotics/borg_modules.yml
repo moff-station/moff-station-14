@@ -685,7 +685,7 @@
 
 - type: entity
   id: BorgModuleTraversal
-  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
   name: traversal cyborg module
   components:
   - type: Sprite
@@ -807,7 +807,7 @@
 
 - type: entity
   id: BorgModuleRCD
-  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
   name: engineering cyborg module
   components:
   - type: Sprite
@@ -964,7 +964,7 @@
 
 - type: entity
   id: BorgModuleRescue
-  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
+  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
   name: rescue cyborg module
   components:
   - type: Sprite

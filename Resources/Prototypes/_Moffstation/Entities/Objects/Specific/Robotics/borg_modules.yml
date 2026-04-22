@@ -1,3 +1,33 @@
+- type: entity
+  id: BaseBorgModuleMagboots
+  parent: BaseBorgModule
+  name: magboot module
+  description: A cyborg module which grant the unit magboots ability.
+  abstract: true
+  components:
+  - type: ComponentBorgModule
+    components:
+    - type: ActionGrant
+      actions:
+      - ActionBorgToggleMagboots
+    - type: ComponentToggler
+      components:
+      - type: Magboots
+
+- type: entity
+  parent: BaseAction
+  id: ActionBorgToggleMagboots
+  name: Toggle Magboots
+  description: Toggle the magboots on and off.
+  components:
+  - type: Action
+    icon: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon }
+    iconOn: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon-on }
+    itemIconStyle: BigAction
+    useDelay: 0.5
+  - type: InstantAction # ToggleAction
+    event: !type:ToggleActionEvent
+
 # Generic Modules
 - type: entity
   id: BorgModuleBureaucracy
