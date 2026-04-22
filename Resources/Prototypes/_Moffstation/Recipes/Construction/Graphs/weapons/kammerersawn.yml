@@ -1,0 +1,12 @@
+- type: constructionGraph
+  id: KammererSawn
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: kammerersawn
+          steps:
+            - tool: Sawing
+              doAfter: 2
+    - node: kammerersawn
+      entity: WeaponShotgunKammererSawnEmpty # Makes the sawn-off spawn empty. No good way around ammo cheese/inconsistency. Don't saw a loaded gun.

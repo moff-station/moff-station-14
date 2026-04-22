@@ -1,0 +1,12 @@
+- type: constructionGraph
+  id: EnforcerSawn
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: enforcersawn
+          steps:
+            - tool: Sawing
+              doAfter: 2
+    - node: enforcersawn
+      entity: WeaponShotgunEnforcerSawnEmpty # Makes the sawn-off spawn empty. No good way around ammo cheese/inconsistency. Don't saw a loaded gun.

@@ -64,7 +64,7 @@
   name: sawn-off improvised shotgun
   parent: WeaponShotgunImprovisedSawn
   id: WeaponImprovisedShotgunSawnEmpty
-  description: A shitty, hand-made shotgun that uses .50 shotgun shells. It can only hold one round in the chamber.
+  description: A shitty, hand-made shotgun that uses .50 shotgun shells. It can only hold one round in the chamber and will hurt your wrist.
   suffix: Empty
   components:
   - type: BallisticAmmoProvider
@@ -72,4 +72,78 @@
   - type: Construction
     graph: ImprovisedShotgunSawn
     node: improvisedshotgunsawn
+    deconstructionTarget: null
+
+- type: entity
+  name: sawn-off enforcer
+  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
+  id: WeaponShotgunEnforcerSawn
+  description: A premium semi-automatic shotgun, and the pride of all security forces. With the choke sawn-off the accuracy of this gun turns into a hypothethical question. Uses .50 shotgun shells.
+  components: # intend for Enforcer to have wider choke for semi-auto function
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer_sawn.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer_sawn.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/enforcer_sawn_inhands_64x.rsi
+    size: Small
+    shape:
+    - 0,0,3,0
+  - type: GunSpreadModifier
+    spread: 2
+  - type: BallisticAmmoProvider
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
+  - type: Construction
+    graph: EnforcerSawn
+    node: enforcersawn
+    deconstructionTarget: null
+
+- type: entity
+  name: sawn-off enforcer
+  parent: WeaponShotgunEnforcerSawn
+  id: WeaponShotgunEnforcerSawnEmpty
+  suffix: Empty
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+  - type: Construction
+    graph: EnforcerSawn
+    node: enforcersawn
+    deconstructionTarget: null
+
+- type: entity
+  name: sawn-off kammerer
+  parent: WeaponShotgunKammerer
+  id: WeaponShotgunKammererSawn
+  description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses .50 shotgun shells.
+  components: # intend for Kammerer to have tighter choke for slower fire rate and/or manual cycling
+  - type: Item
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pump_sawn_inhands_64x.rsi
+    size: Small
+    shape:
+    - 0,0,3,0
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pump_sawn.rsi
+  - type: Clothing
+    sprite: _Moffstation/Objects/Weapons/Guns/Shotguns/pump_sawn.rsi
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
+  - type: Gun
+    fireRate: 1
+  - type: GunSpreadModifier
+    spread: 1.2
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer
+
+- type: entity
+  name: sawn-off kammerer
+  parent: WeaponShotgunKammererSawn
+  id: WeaponShotgunKammererSawnEmpty
+  suffix: Empty
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+  - type: Construction
+    graph: KammererSawn
+    node: kammerersawn
     deconstructionTarget: null
