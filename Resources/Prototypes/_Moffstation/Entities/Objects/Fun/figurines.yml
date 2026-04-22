@@ -1019,3 +1019,14 @@
     state: zara
   - type: SpeakOnTrigger
     pack: FigurinesZara
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineZoey
+  name: Stressed Senior Officer Figurine
+  description: A figurine depicting a red slime with black spots everyone on its body. The eyes have visible eyebags, but its smile is comforting.
+  components:
+  - type: Sprite
+    state: zoey
+  - type: SpeakOnTrigger
+    pack: FigurinesZoey
