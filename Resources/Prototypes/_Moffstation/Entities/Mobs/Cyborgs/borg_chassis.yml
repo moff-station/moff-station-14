@@ -219,6 +219,8 @@
   - type: Access
     groups:
     - AllAccess
+  - type: NameIdentifier
+    group: Null
 
 - type: entity
   id: PlayerAiShellBattery
