@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseStructure
+  id: CryoCapsule
+  name: cryo capsule
+  description: A special machine able to keep organs alive in absence of a body.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/cryo_capsule.rsi
+    state: machine-working
+    noRot: true
+
