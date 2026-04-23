@@ -9,6 +9,7 @@ using Content.Shared.Emag.Systems;
 using Content.Shared.Emp;
 using Content.Shared.Popups;
 using Content.Shared.Power;
+using Content.Shared.Power.EntitySystems; // Moffstation - potato APC cooking
 using Content.Shared.Rounding;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -27,6 +28,7 @@ public sealed class ApcSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly SharedBatterySystem _battery = default!; // Moffstation - potato APC cooking
 
     public override void Initialize()
     {
@@ -73,6 +75,17 @@ public sealed class ApcSystem : EntitySystem
                     if (curTime - apc.TripStartTime > apc.TripTime)
                     {
                         apc.TripFlag = true;
+                        // Moffstation - Start - potato APC cooking
+                        if (apc.EnablePermaTripping)
+                        {
+                            apc.PermaTripped = true;
+                            apc.MaxLoad = 0;
+                            _battery.SetCharge(uid, 0);
+                            _battery.SetMaxCharge(uid, 0);
+                            _popup.PopupCoordinates(Loc.GetString(apc.PermaTrippedPopup), Transform(uid).Coordinates, PopupType.MediumCaution);
+                            _audio.PlayPvs(apc.PermaTrippedAudio, uid);
+                        }
+                        // Moffstation - End
                         ApcToggleBreaker(uid, apc, battery); // off, we already checked MainBreakerEnabled above
                     }
                 }
@@ -116,6 +129,14 @@ public sealed class ApcSystem : EntitySystem
 
         if (_accessReader.IsAllowed(args.Actor, uid))
         {
+            // Moffstation - Start - potato APC cooking
+            if (component.PermaTripped)
+            {
+                _popup.PopupCursor(Loc.GetString("apc-component-permatripped-tooltip"),
+                    args.Actor, PopupType.Medium);
+                return;
+            }
+            // Moffstation - End
             ApcToggleBreaker(uid, component, user: args.Actor);
         }
         else
@@ -213,7 +234,8 @@ public sealed class ApcSystem : EntitySystem
             (int) MathF.Ceiling(battery.CurrentSupply), apc.LastExternalState,
             charge,
             apc.MaxLoad,
-            apc.TripFlag);
+            apc.TripFlag,
+            apc.PermaTripped); // Moffstation - potato APC cooking
 
         _ui.SetUiState((uid, ui), ApcUiKey.Key, state);
     }

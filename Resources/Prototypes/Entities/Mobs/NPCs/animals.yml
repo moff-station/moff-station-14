@@ -3013,7 +3013,7 @@
 
 - type: entity
   name: corrupted corgi
-  parent: [ MobCorgi, MobCombat ]
+  parent: [ SimpleSpaceMobBase, MobCombat ] # Moffstation - Spaceproof hellmobs
   id: MobCorgiNarsi
   description: Ian! No!
   components:

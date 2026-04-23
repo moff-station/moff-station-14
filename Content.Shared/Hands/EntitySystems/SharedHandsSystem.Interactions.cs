@@ -220,5 +220,7 @@ public abstract partial class SharedHandsSystem : EntitySystem
         {
             args.PushMarkup(Loc.GetString(locKey, locUser, locItems));
         }
+
+        RelayEvent((examinedUid, handsComp), ref args); // Moffstation - need this for examinable
     }
 }

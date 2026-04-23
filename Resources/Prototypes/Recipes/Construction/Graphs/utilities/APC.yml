@@ -128,9 +128,28 @@
         conditions:
         - !type:WirePanel
           open: true
+        # Moffstation - Start - potato APC cooking
+        - !type:ApcPermaTrip
+          isPermaTripped: false
+        # Moffstation - End
         steps:
         - tool: Prying
           doAfter: 4
+      # Moffstation - Start - potato APC cooking
+      - to: apcFrameWithBoard
+        completed:
+        - !type:GivePrototype
+          prototype: FoodMealFries
+          amount: 1
+        conditions:
+        - !type:WirePanel
+          open: true
+        - !type:ApcPermaTrip
+          isPermaTripped: true
+        steps:
+        - tool: Prying
+          doAfter: 4
+      # Moffstation - End
 
     - node: apcSmall
       entity: APCSmallBreaker

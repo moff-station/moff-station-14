@@ -635,3 +635,9 @@ figurines-zara-2 = I'm gonna put a portal in the burn chamber.
 figurines-zara-3 = Can't make scientific progress without a few deaths, I thought you guys would know that by now.
 figurines-zara-4 = Okay so from an outside perspective this might look irredeemably evil but think of it from my perspective, it's hella funny.
 figurines-zara-5 = Oh, Liiime~
+
+figurines-zoey-1 = Isn't space pretty?
+figurines-zoey-2 = Citrus bikeshed please!
+figurines-zoey-3 = *squishes*
+figurines-zoey-4 = I'll take a martinez...
+figurines-zoey-5 = Wha- Another hell portal?!

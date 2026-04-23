@@ -528,7 +528,7 @@
 
 - type: entity
   id: BorgModuleFireExtinguisher
-  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  parent: [ BaseBorgModule, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
   name: thruster cyborg module
   description: NT assigned a team to design a jetpack for cyborg units, but they ran out of funding and just made a bigger fire extinguisher. It comes with a integrated GPS and mass scanner though!
   components:
@@ -685,7 +685,7 @@
 
 - type: entity
   id: BorgModuleTraversal
-  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
   name: traversal cyborg module
   components:
   - type: Sprite
@@ -807,7 +807,7 @@
 
 - type: entity
   id: BorgModuleRCD
-  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
   name: engineering cyborg module
   components:
   - type: Sprite
@@ -964,7 +964,7 @@
 
 - type: entity
   id: BorgModuleRescue
-  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
+  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
   name: rescue cyborg module
   components:
   - type: Sprite
