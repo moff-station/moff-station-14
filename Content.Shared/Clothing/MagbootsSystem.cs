@@ -43,6 +43,9 @@ public sealed class SharedMagbootsSystem : EntitySystem
     // Moffstation - Start
     private void OnMagbootsToggled(Entity<MagbootsComponent> ent, ref ToggleMagbootsActionEvent args)
     {
+        if (args.Handled)
+            return;
+    
         args.Handled = true;
 
         _actions.SetToggled(args.Action.Owner, !args.Action.Comp.Toggled);

@@ -1667,7 +1667,7 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-access-breaker-module }
 
 - type: entity
-  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband, BaseBorgModuleMagboots ] # Moffstation - Toggleable magboots
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleFireExtinguisher
   name: fire extinguisher xenoborg module
   description: Module with a self-refueling fire extinguisher.
@@ -1765,7 +1765,7 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser2-module }
 
 - type: entity
-  parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband, BaseBorgModuleMagboots ] # Moffstation - Toggleable magboots
+  parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleSpaceMovement
   name: space movement xenoborg module
   description: Module that helps a Xenoborg move better in space.
