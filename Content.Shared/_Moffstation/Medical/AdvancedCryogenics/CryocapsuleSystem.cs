@@ -7,18 +7,20 @@ namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 /// </summary>
 public sealed class CryocapsuleSystem : EntitySystem
 {
-    /// <inheritdoc/>
-
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+
+    /// <inheritdoc/>
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CryocapsuleComponent, ComponentInit>(OnCryocapsuleInit);
+        SubscribeLocalEvent<CryocapsuleComponent, ComponentInit>(OnCryocasketInit);
     }
 
-    private void OnCryocapsuleInit(Entity<CryocapsuleComponent> ent, ref ComponentInit args)
+    private void OnCryocasketInit(Entity<CryocapsuleComponent> ent, ref ComponentInit init)
     {
-        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.CasketSlotId, ent.Comp.CasketSlot);
+        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.BrainSlotId, ent.Comp.BrainSlot);
+        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.LungSlotId, ent.Comp.LungSlot);
+        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.StomachSlotId, ent.Comp.StomachSlot);
     }
 }

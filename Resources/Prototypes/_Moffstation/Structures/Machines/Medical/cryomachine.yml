@@ -1,12 +1,12 @@
 - type: entity
   parent: BaseStructure
-  id: CryoCapsule
-  name: cryo capsule
+  id: CLSMachine
+  name: cryogenic life support
   description: A machine able to keep organs alive in absence of a body.
   components:
   - type: Cryocapsule
-    casketSlot:
-      name: casket_slot
+    capsuleSlot:
+      name: cryomachine-capsule-slot-name
       whitelist:
         components:
         - CryoCasket

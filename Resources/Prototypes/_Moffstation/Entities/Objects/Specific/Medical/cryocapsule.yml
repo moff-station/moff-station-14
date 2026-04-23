@@ -1,22 +1,22 @@
 - type: entity
   parent: BaseItem
-  id: CryoCasket
-  name: cryo casket
+  id: Cryocapsule
+  name: cryogenic capsule
   description: a cryogenic tube to store organs and keep them alive in the absence of a body.
   components:
-  - type: CryoCasket
+  - type: Cryocapsule
     brainSlot:
-      name: brain_slot
+      name: cryocapsule-brain-slot-name
       whitelist:
         components:
         - Brain
     lungsSlot:
-      name: lungs_slot
+      name: cryocapsule-lungs-slot-name
       whitelist:
         components:
         - Lung
     stomachSlot:
-      name: stomach_slot
+      name: cryocapsule-stomach-slot-name
       whitelist:
         components:
         - Stomach
