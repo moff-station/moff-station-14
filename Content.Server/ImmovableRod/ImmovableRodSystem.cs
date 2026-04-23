@@ -57,6 +57,11 @@ public sealed class ImmovableRodSystem : EntitySystem
             if (!rod.DestroyTiles)
                 continue;
 
+            // Moffstation - Begin - Moved higher
+            // if (!TryComp<MapGridComponent>(trans.GridUid, out var grid))
+                // continue;
+            // Moffstation - End
+
             _map.SetTile(trans.GridUid.Value, grid, trans.Coordinates, Tile.Empty);
         }
     }
