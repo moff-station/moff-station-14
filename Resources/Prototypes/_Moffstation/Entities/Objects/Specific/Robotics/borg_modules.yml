@@ -7,12 +7,11 @@
   components:
   - type: ComponentBorgModule
     components:
+    - type: Magboots
+      useGenericToggle: false
     - type: ActionGrant
       actions:
       - ActionBorgToggleMagboots
-    - type: ComponentToggler
-      components:
-      - type: Magboots
 
 - type: entity
   parent: BaseAction
@@ -25,8 +24,8 @@
     iconOn: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon-on }
     itemIconStyle: BigAction
     useDelay: 0.5
-  - type: InstantAction # ToggleAction
-    event: !type:ToggleActionEvent
+  - type: InstantAction
+    event: !type:ToggleMagbootsActionEvent
 
 # Generic Modules
 - type: entity
