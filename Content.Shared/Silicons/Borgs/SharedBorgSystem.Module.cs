@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Silicons.Borgs; // Moffstation
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction.Components;
@@ -30,6 +31,11 @@ public abstract partial class SharedBorgSystem
 
         SubscribeLocalEvent<ComponentBorgModuleComponent, BorgModuleRelayedEvent<BorgModuleInsertAttemptEvent>>(
             OnComponentModuleInstalledRelay);
+
+        // Moffstation - start
+        SubscribeLocalEvent<ActionBorgModuleComponent, BorgModuleInstalledEvent>(OnActionModuleInstalled);
+        SubscribeLocalEvent<ActionBorgModuleComponent, BorgModuleUninstalledEvent>(OnActionModuleUninstalled);
+        // Moffstation - end
     }
 
     #region BorgModule
@@ -272,4 +278,31 @@ public abstract partial class SharedBorgSystem
         }
     }
     #endregion
+
+    // Moffstation - start
+    private void OnActionModuleInstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleInstalledEvent args)
+    {
+        var chassis = args.ChassisEnt;
+        foreach (var action in ent.Comp.Actions)
+        {
+            EntityUid? actionEnt = null;
+            _actions.AddAction(chassis, ref actionEnt, action);
+
+            if (actionEnt != null)
+                ent.Comp.ActionEntities.Add(actionEnt.Value);
+        }
+    }
+
+    private void OnActionModuleUninstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleUninstalledEvent args)
+    {
+        var chassis = args.ChassisEnt;
+        foreach (var action in ent.Comp.Actions)
+        {
+            foreach (var actionEnt in ent.Comp.ActionEntities)
+            {
+                _actions.RemoveAction(chassis, actionEnt);
+            }
+        }
+    }
+    // Moffstation - end
 }
