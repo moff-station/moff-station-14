@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseItem
+  id: CryoCasket
+  name: cryo casket
+  description: a cryogenic tube to store organs and keep them alive in the absence of a body.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/cryocapsule.rsi
+    state: icon
+  - type: Item
+    size: Huge
+
