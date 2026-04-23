@@ -9,6 +9,7 @@
     components:
     - type: Magboots
       useGenericToggle: false
+      magbootsAlert: MagbootsBorg
     - type: ActionGrant
       actions:
       - ActionBorgToggleMagboots
@@ -16,8 +17,8 @@
 - type: entity
   parent: BaseAction
   id: ActionBorgToggleMagboots
-  name: Toggle Magboots
-  description: Toggle the magboots on and off.
+  name: Toggle Magnetic Adhesion
+  description: Toggle magnetic adhesion to the ground on or off.
   components:
   - type: Action
     icon: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon }
