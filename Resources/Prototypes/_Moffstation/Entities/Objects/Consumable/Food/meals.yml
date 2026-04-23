@@ -28,3 +28,32 @@
           Quantity: 2
         - ReagentId: Bananadine
           Quantity: 6 # Strong enough for humans to see some screen shaking, Resomis get a screen state change and for some reason works stronger on Dionas and Lizards?
+
+- type: entity
+  parent: FoodMeatChickenCooked
+  id: FoodMeatChloralChickenCooked
+  name: chloral chicken
+  description: "Tastes purple and smells like......"
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/meals.rsi
+    layers:
+    - state: chloralchicken
+  - type: Item
+    storedOffset: -1,1
+    inhandVisuals:
+      left:
+      - state: chloral-cooked-inhand-left
+        color: "#F7E3A3"
+      right:
+      - state: chloral-cooked-inhand-right
+        color: "#F7E3A3"
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: ChloralHydrate
+          Quantity: 20 # Strong enough for humans to see some screen shaking, Resomis get a screen state change and for some reason works stronger on Dionas and Lizards?
