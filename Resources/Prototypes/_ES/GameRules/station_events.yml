@@ -75,9 +75,7 @@
     startAnnouncement: station-event-gas-leak-start-announcement
     endAnnouncement: station-event-gas-leak-end-announcement
     startAudio:
-      path: /Audio/_ES/Announcements/gas_leak.ogg
-      params:
-        volume: -4
+      path: /Audio/Announcements/attention.ogg
   - type: ESSynchronizedVoteManager
     votes:
     - ESVoteGasLeakGases
