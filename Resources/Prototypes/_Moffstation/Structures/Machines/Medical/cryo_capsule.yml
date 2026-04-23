@@ -20,10 +20,19 @@
     enabled: true
     sound:
       path: /Audio/Machines/spinning.ogg
+  - type: PointLight
+    radius: 1.5
+    energy: 5.0
+    castShadows: false
+    color: "#56c3b9"
   - type: ItemSlots
   - type: ContainerContainer
     containers:
       brain_slot: !type:ContainerSlot
   - type: Speech
     speechSounds: Pai
+  - type: TypingIndicator
+    proto: slime
+  - type: ApcPowerReceiver
+    powerLoad: 3000
 
