@@ -317,6 +317,16 @@
       state: "ai_darling"
     Dead: *defaultdead
 
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconAiAOL
+  name: station-ai-icon-aol
+  layerData:
+    Occupied:
+      sprite: _Moffstation/Mobs/Silicon/StationAi/aol_ai.rsi
+      state: "ai_aol"
+    Dead: *defaultdead
+
 # Holograms
 - type: stationAiCustomization
   id: StationAiHologramAngel

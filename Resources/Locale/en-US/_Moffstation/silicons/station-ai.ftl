@@ -28,6 +28,7 @@ station-ai-icon-triumvirate = Triumvirate
 station-ai-icon-u = U
 station-ai-icon-wasp = Wasp
 station-ai-icon-darling = Darling
+station-ai-icon-aol = Dancer
 
 station-ai-hologram-angel = Angel form
 station-ai-hologram-arachnid = Arachnid form
