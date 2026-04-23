@@ -361,12 +361,6 @@ public sealed class GerasSystem : EntitySystem
             _profileSystem.ApplyProfileTo((geras, EnsureComp<HumanoidProfileComponent>(geras)), args.Profile);
         }
 
-        if (TryComp<UnrevivableComponent>(uid, out var parentUnrev))
-        {
-            var gerasUnrev = EnsureComp<UnrevivableComponent>(geras);
-            gerasUnrev.Cloneable = parentUnrev.Cloneable;
-        }
-
         uid.Comp.VisualsLoaded = true;
     }
 
@@ -384,3 +378,6 @@ public record struct PreMorphGerasEvent(EntityUid Geras);
 
 [ByRefEvent]
 public record struct PostMorphGerasEvent(EntityUid Parent);
+
+[ByRefEvent]
+public record struct GerasTraitsEvent(HumanoidCharacterProfile Profile);
