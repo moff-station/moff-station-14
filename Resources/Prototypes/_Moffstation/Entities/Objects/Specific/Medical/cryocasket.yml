@@ -4,6 +4,32 @@
   name: cryo casket
   description: a cryogenic tube to store organs and keep them alive in the absence of a body.
   components:
+  - type: CryoCasket
+    brainSlot:
+      name: brain_slot
+      whitelist:
+        components:
+        - Brain
+    lungsSlot:
+      name: lungs_slot
+      whitelist:
+        components:
+        - Lung
+    stomachSlot:
+      name: stomach_slot
+      whitelist:
+        components:
+        - Stomach
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      brain_slot: !type:ContainerSlot
+      lungs_slot: !type:ContainerSlot
+      stomach_slot: !type:ContainerSlot
+  - type: Speech
+    speechSounds: Pai
+  - type: TypingIndicator
+    proto: slime
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Medical/cryocapsule.rsi
     state: icon

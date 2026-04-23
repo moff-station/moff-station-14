@@ -19,6 +19,6 @@ public sealed class CryocapsuleSystem : EntitySystem
 
     private void OnCryocapsuleInit(Entity<CryocapsuleComponent> ent, ref ComponentInit args)
     {
-        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.BrainSlotId, ent.Comp.BrainSlot);
+        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.CasketSlotId, ent.Comp.CasketSlot);
     }
 }

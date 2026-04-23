@@ -12,11 +12,11 @@ public sealed partial class CryocapsuleComponent : Component
     /// The ID of the itemslot that holds the cryo unit
     /// </summary>
     [DataField]
-    public string BrainSlotId = "brain_slot";
+    public string CasketSlotId = "brain_slot";
 
     /// <summary>
     /// The <see cref="ItemSlot"/> for this capsule. Holds the brain.
     /// </summary>
     [DataField(required: true)]
-    public ItemSlot BrainSlot = new();
+    public ItemSlot CasketSlot = new();
 }
