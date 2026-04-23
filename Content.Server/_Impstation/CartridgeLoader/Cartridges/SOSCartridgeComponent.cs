@@ -1,9 +1,7 @@
-using Content.Shared.CartridgeLoader.Cartridges;
-using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.CartridgeLoader.Cartridges;
+namespace Content.Server._Impstation.CartridgeLoader.Cartridges;
 
 [RegisterComponent]
 public sealed partial class SOSCartridgeComponent : Component
