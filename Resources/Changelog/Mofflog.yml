@@ -4969,5 +4969,24 @@ Entries:
   id: 1298
   time: '2026-04-22T05:14:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1298
+- author: StudMuffin
+  changes:
+  - message: borgs no longer have magboots effects by default
+    type: remove
+  - message: installing a module made for space travel give to borgs the ability to
+      use magboots
+    type: add
+  - message: borgs with magboots abilities can turn them on and off
+    type: add
+  id: 1301
+  time: '2026-04-23T04:00:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1301
+- author: Nyxilath
+  changes:
+  - message: Pirate maps now use plaswood for walls.
+    type: tweak
+  id: 1302
+  time: '2026-04-23T04:00:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1302
 Name: Mofflog
 Order: -2
