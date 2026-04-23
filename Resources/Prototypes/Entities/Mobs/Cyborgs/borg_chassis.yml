@@ -371,7 +371,18 @@
   # Moffstation - Start - Salvage Borg Resprite
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
-    baseSprintSpeed: 3.5
+    baseSprintSpeed: 3.5 # Moffstation: Slower because haha big stompy sounds
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      165: Critical # Moffstation: Just enough to not be oneshot by a mine
+      495: Dead # Same as destruction threshold. Borgs act exactly like crit when dead, except for ghosting on move
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
