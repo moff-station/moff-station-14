@@ -1,9 +1,9 @@
 using System.Linq;
-using Content.Shared.Zombies;
 using Content.Server.Actions;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
+using Content.Server.Traits;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
@@ -33,7 +33,7 @@ using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Temperature.Components;
-using Content.Shared.Traits.Assorted;
+using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 
@@ -65,6 +65,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly SharedProjectileSystem _projectile = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly ThirstSystem _thirst = default!;
+    [Dependency] private readonly TraitSystem _trait = default!;
 
 
     /// <inheritdoc/>
@@ -87,6 +88,7 @@ public sealed class GerasSystem : EntitySystem
         SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGerasEvent>(OnTransferNewStatus);
         SubscribeLocalEvent<HungerComponent, PreMorphGerasEvent>(OnTransferHunger);
         SubscribeLocalEvent<ThirstComponent, PreMorphGerasEvent>(OnTransferThirst);
+        SubscribeLocalEvent<GerasComponent, TraitsAppliedEvent>(OnTraitsApplied);
     }
 
     private void OnInit(Entity<GerasComponent> ent, ref ComponentInit args)
@@ -147,6 +149,7 @@ public sealed class GerasSystem : EntitySystem
                 _inventory.TryUnequip(uid, slot.ID, true, true);
             }
         }
+
         foreach (var held in _hands.EnumerateHeld(uid))
         {
             _hands.TryDrop(uid, held);
@@ -228,7 +231,7 @@ public sealed class GerasSystem : EntitySystem
     {
         foreach (var projectile in ent.Comp.EmbeddedObjects)
         {
-            if(TryComp<EmbeddableProjectileComponent>(projectile, out var embedComp))
+            if (TryComp<EmbeddableProjectileComponent>(projectile, out var embedComp))
                 _projectile.EmbedDetach(projectile, embedComp);
         }
     }
@@ -340,6 +343,17 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
+    private void OnTraitsApplied(Entity<GerasComponent> ent, ref TraitsAppliedEvent args)
+    {
+        if (ent.Comp.Geras is not { } geras)
+            return;
+
+        foreach (var traitId in args.Profile.TraitPreferences)
+        {
+            _trait.TryApplyTrait(geras, traitId, includeGear: false);
+        }
+    }
+
     /// <summary>
     /// Sends an entity to the void for storage
     /// </summary>
@@ -351,7 +365,7 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnGerasVisualInit(Entity<GerasComponent> uid, ref GerasVisualInitEvent args)
     {
-        if (uid.Comp.Geras is not {} geras)
+        if (uid.Comp.Geras is not { } geras)
             return;
 
         _metaData.SetEntityName(geras, Name(uid));
@@ -378,6 +392,3 @@ public record struct PreMorphGerasEvent(EntityUid Geras);
 
 [ByRefEvent]
 public record struct PostMorphGerasEvent(EntityUid Parent);
-
-[ByRefEvent]
-public record struct GerasTraitsEvent(HumanoidCharacterProfile Profile);
