@@ -4,8 +4,8 @@ meta:
   engineVersion: 274.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/11/2026 02:50:16
-  entityCount: 11861
+  time: 04/23/2026 23:50:49
+  entityCount: 11862
 maps:
 - 1
 grids:
@@ -2748,10 +2748,6 @@ entities:
             1845: 37,10
             1846: 37,11
             1847: 36,11
-        - node:
-            color: '#00000026'
-            id: MarkupSquare
-          decals:
             3022: 26,18
         - node:
             zIndex: 1
@@ -7676,7 +7672,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -172128.4
+      secondsUntilStateChange: -172346.12
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10866,6 +10862,14 @@ entities:
     components:
     - type: Transform
       pos: 29.750288,-1.5062618
+      parent: 2
+- proto: ButtonFrameExit
+  entities:
+  - uid: 11497
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.45,1.77
       parent: 2
 - proto: ButtonFrameGrey
   entities:
@@ -54746,7 +54750,7 @@ entities:
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -8.5,1.5
+      pos: -8.5,1.33
       parent: 2
     - type: Fixtures
       fixtures: {}
