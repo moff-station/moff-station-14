@@ -6,17 +6,14 @@
       edges:
         - to: shoes
           steps:
-            - tag: PlushieLizard #Weh!
-              name: construction-graph-tag-lizard-plushie
+            - tag: Magboots
+              name: construction-graph-tag-magboots
               icon:
-                sprite: Objects/Fun/Plushies/lizard.rsi
+                sprite: Clothing/OuterClothing/Shoes/Boots/magboots.rsi
                 state: icon
-              doAfter: 1
-            - tag: PlushieLizard
-              name: construction-graph-tag-lizard-plushie
-              icon:
-                sprite: Objects/Fun/Plushies/lizard.rsi
-                state: icon
-              doAfter: 1
+              doAfter: 10
+            - material: MaterialLeatherSharkminnow
+              amount: 2
+              doafter: 10
     - node: shoes
       entity: ClothingShoesBootsMagSharkminnow

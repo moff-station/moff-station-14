@@ -13,8 +13,7 @@
     - id: MaterialHideSharkminnowTrimmed
       amount: 1
   - type: Item
-    size: Medium
-    heldPrefix: goliathhide
+    heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
 
 - type: entity
@@ -56,8 +55,7 @@
     materialComposition:
       Meaterial: 300
   - type: Item
-    size: Medium
-    heldPrefix: goliathhide
+    heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
 
 - type: entity
@@ -73,8 +71,7 @@
     graph: SharkminnowFrozen
     node: preserved sharkminnow hide
   - type: Item
-    size: Medium
-    heldPrefix: goliathhide
+    heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
 
 - type: entity
@@ -87,6 +84,5 @@
     sprite: _Moffstation/Objects/Materials/hide.rsi
     state: leather
   - type: Item
-    size: Medium
-    heldPrefix: goliathhide
+    heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
