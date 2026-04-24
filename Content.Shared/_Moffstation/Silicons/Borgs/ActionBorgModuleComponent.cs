@@ -16,9 +16,9 @@ public sealed partial class ActionBorgModuleComponent : Component
     /// <summary>
     /// What actions should be granted once this module is installed into a borg chassis.
     /// </summary>
-    [DataField(required: true), AutoNetworkedField, AlwaysPushInheritance]
+    [DataField(required: true), AutoNetworkedField]
     public List<EntProtoId> Actions = new();
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public List<EntityUid> ActionEntities = new();
 }

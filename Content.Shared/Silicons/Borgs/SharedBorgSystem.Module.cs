@@ -282,25 +282,25 @@ public abstract partial class SharedBorgSystem
     // Moffstation - start
     private void OnActionModuleInstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleInstalledEvent args)
     {
-        var chassis = args.ChassisEnt;
         foreach (var action in ent.Comp.Actions)
         {
             EntityUid? actionEnt = null;
-            _actions.AddAction(chassis, ref actionEnt, action);
+            _actions.AddAction(args.ChassisEnt, ref actionEnt, action);
 
             if (actionEnt != null)
                 ent.Comp.ActionEntities.Add(actionEnt.Value);
         }
+        Dirty(ent);
     }
 
     private void OnActionModuleUninstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleUninstalledEvent args)
     {
-        var chassis = args.ChassisEnt;
-
         foreach (var actionEnt in ent.Comp.ActionEntities)
         {
-            _actions.RemoveAction(chassis, actionEnt);
+            _actions.RemoveAction(args.ChassisEnt, actionEnt);
         }
+        ent.Comp.Actions.Clear();
+        Dirty(ent);
     }
     // Moffstation - end
 }
