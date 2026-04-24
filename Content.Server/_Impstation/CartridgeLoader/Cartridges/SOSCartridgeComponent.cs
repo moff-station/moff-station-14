@@ -3,7 +3,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Impstation.CartridgeLoader.Cartridges;
 
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class SOSCartridgeComponent : Component
 {
     [DataField]
@@ -12,30 +12,42 @@ public sealed partial class SOSCartridgeComponent : Component
 
     [DataField]
     //Name to use if no id is found
-    public string DefaultName = "sos-caller-defaultname";
+    public LocId DefaultName = "sos-caller-defaultname";
 
     [ViewVariables(VVAccess.ReadOnly)]
     public string LocalizedDefaultName => Loc.GetString(DefaultName);
 
     [DataField]
     //Notification message
-    public string HelpMessage = "sos-message";
+    public LocId HelpMessage = "sos-message";
+
+    /// <summary>
+    /// Message that gets played locally when the SoS button is used
+    /// </summary>
+    [DataField]
+    public LocId NotificationMessage = "sos-notification-message";
 
     [ViewVariables(VVAccess.ReadOnly)]
-    public string LocalizedHelpMessage => Loc.GetString(HelpMessage);
+    public string LocalizedNotificationMessage => Loc.GetString(NotificationMessage);
+
+    /// <summary>
+    /// Message that gets played locally when the SoS button is used
+    /// </summary>
+    [DataField]
+    public LocId CooldownMessage = "sos-notification-cooldown-message";
 
     [DataField]
     //Channel to notify
     public ProtoId<RadioChannelPrototype> HelpChannel = "Security";
 
-    [DataField]
+    [DataField, AutoPausedField]
     //Timeout between calls
-    public const float TimeOut = 30;
+    public TimeSpan Cooldown = TimeSpan.FromSeconds(30);
 
     [DataField]
     //Countdown until next call is allowed
-    public float Timer = 0;
+    public TimeSpan NextUse = TimeSpan.Zero;
 
     [ViewVariables(VVAccess.ReadOnly)]
-    public bool CanCall => Timer <= 0;
+    public bool CanCall => NextUse <= TimeSpan.Zero;
 }
