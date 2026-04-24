@@ -105,7 +105,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Moffstation/frezon.yml", // Contains handheld crew monitor & other head of staff items
             "/Maps/_Moffstation/Nonstations/d1_logic.yml", // Contains LSE-400c "Svalinn machine gun" defanged and renamed
             "/Maps/_Moffstation/dugstation.yml", // Contains cat ears and knockback stick
-	    "/Maps/_Moffstation/ossuary.yml" // Contains head of staff items
+            "/Maps/_Moffstation/ossuary.yml" // Contains head of staff items
         };
 
         /// <summary>
