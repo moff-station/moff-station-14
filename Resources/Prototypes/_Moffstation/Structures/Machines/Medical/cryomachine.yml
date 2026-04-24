@@ -1,0 +1,48 @@
+- type: entity
+  parent: BaseStructure
+  id: CLSMachine
+  name: cryogenic life support
+  description: A machine able to keep organs alive in absence of a body.
+  components:
+  - type: Cryomachine
+    capsuleSlot:
+      name: cryomachine-capsule-slot-name
+      whitelist:
+        components:
+        - Cryocapsule
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/cryo_capsule.rsi
+    state: machine-empty
+    noRot: true
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CryomachineVisuals.Filled:
+        base:
+          False: { state: machine-empty }
+          True: { state: machine-working }
+  - type: AmbientSound
+    volume: -9
+    range: 5
+    enabled: true
+    sound:
+      path: /Audio/Machines/spinning.ogg
+  - type: PointLight
+    radius: 1.5
+    energy: 5.0
+    castShadows: false
+    color: "#56c3b9"
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      capsule_slot: !type:ContainerSlot
+  - type: UserInterface
+    interfaces:
+      enum.CryomachineUiKey.Key:
+        type: CryoPodBoundUserInterface
+  - type: ActivatableUI
+    key: enum.CryomachineUiKey.Key
+    requiresComplex: false
+  - type: ApcPowerReceiver
+    powerLoad: 3000
+
