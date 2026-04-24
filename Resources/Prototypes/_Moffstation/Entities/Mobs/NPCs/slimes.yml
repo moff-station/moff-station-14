@@ -19,25 +19,12 @@
         - ReagentId: Slime
           Quantity: 300
   - type: Identity
-  - type: NpcFactionMember
-    factions:
-    - NanoTrasen
-  - type: StatusEffects
-    allowed:
-      - Electrocution
-      - RatvarianLanguage
-      - PressureImmunity
-      - Muted
-      - TemporaryBlindness
-      - Pacified
-      - Flashed
-      - RadiationProtection
-      - Adrenaline
   - type: MultiHandedItem
   - type: Item
     size: Huge
+    sprite: _Moffstation/Mobs/Aliens/slimes.rsi
   - type: Sprite
-    sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
+    sprite: _Moffstation/Mobs/Aliens/slimes.rsi
     color: "#B8B8B8"
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
@@ -47,10 +34,9 @@
       state: body-overlay-2
       visible: false
   - type: MeleeWeapon
-    attackRate: 2
     damage:
       types:
-        Blunt: 4
+        Blunt: 5
   - type: Inventory
     speciesId: slime
     templateId: gerasInventory
@@ -127,12 +113,12 @@
   - type: Sprite
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
-      sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
+      sprite: _Moffstation/Mobs/Aliens/slimes.rsi
       state: grey_adult_slime
   - type: VisualOrgan
     layer: enum.DamageStateVisualLayers.Base
     data:
-      sprite: _Moffstation/Mobs/Aliens/Slimes.rsi
+      sprite: _Moffstation/Mobs/Aliens/slimes.rsi
       state: grey_adult_slime
   - type: DamageStateVisuals
     states:
