@@ -14,10 +14,10 @@ public sealed class CryocapsuleSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CryocapsuleComponent, ComponentInit>(OnCryocasketInit);
+        SubscribeLocalEvent<CryocapsuleComponent, ComponentInit>(OnCryocapsuleInit);
     }
 
-    private void OnCryocasketInit(Entity<CryocapsuleComponent> ent, ref ComponentInit init)
+    private void OnCryocapsuleInit(Entity<CryocapsuleComponent> ent, ref ComponentInit init)
     {
         _itemSlots.AddItemSlot(ent.Owner, ent.Comp.BrainSlotId, ent.Comp.BrainSlot);
         _itemSlots.AddItemSlot(ent.Owner, ent.Comp.LungSlotId, ent.Comp.LungSlot);

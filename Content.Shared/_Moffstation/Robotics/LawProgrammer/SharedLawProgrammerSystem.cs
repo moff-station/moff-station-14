@@ -305,7 +305,7 @@ public sealed partial class SharedLawProgrammerSystem : EntitySystem
             !TryComp<BorgChassisComponent>(entity, out var borgChassis) ||
             !TryComp<SiliconLawProviderComponent>(entity, out var lawProvider))
             return null;
-        
+
         return (entity, entity.Comp, borgChassis, lawProvider);
     }
 }

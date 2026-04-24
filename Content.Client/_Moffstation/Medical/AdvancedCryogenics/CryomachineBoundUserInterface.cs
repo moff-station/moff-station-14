@@ -1,0 +1,32 @@
+using Content.Shared._Moffstation.Medical.AdvancedCryogenics;
+using Robust.Client.UserInterface;
+
+namespace Content.Client._Moffstation.Medical.AdvancedCryogenics;
+
+public sealed class CryomachineBoundUserInterface : BoundUserInterface
+{
+    private CryomachineWindow? _window = null;
+
+    public CryomachineBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
+
+    protected override void Open()
+    {
+        base.Open();
+
+        _window = this.CreateWindowCenteredLeft<CryomachineWindow>();
+        _window.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
+
+        _window.OnJumpStartBrainPressed += JumpStartBrainPressed;
+        _window.OnEjectBeakerPressed += EjectBeakerPressed;
+    }
+
+    private void JumpStartBrainPressed()
+    {
+        SendMessage(new CryomachineSimpleUiMessage(CryomachineSimpleUiMessage.MessageType.JumpstartBrain));
+    }
+
+    private void EjectBeakerPressed()
+    {
+        SendMessage(new CryomachineSimpleUiMessage(CryomachineSimpleUiMessage.MessageType.EjectBeaker));
+    }
+}

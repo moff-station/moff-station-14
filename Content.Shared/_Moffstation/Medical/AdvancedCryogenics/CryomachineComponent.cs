@@ -1,4 +1,5 @@
 using Content.Shared.Containers.ItemSlots;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 
@@ -32,4 +33,23 @@ public sealed partial class CryomachineComponent : Component
     [DataField]
     public ItemSlot BeakerSlot = new();
 
+}
+
+[Serializable, NetSerializable]
+public enum CryomachineUiKey : byte
+{
+    Key,
+}
+
+[Serializable, NetSerializable]
+public sealed class CryomachineSimpleUiMessage : BoundUserInterfaceMessage
+{
+    public enum MessageType { JumpstartBrain, EjectBeaker }
+
+    public readonly MessageType Type;
+
+    public CryomachineSimpleUiMessage(MessageType type)
+    {
+        Type = type;
+    }
 }
