@@ -296,12 +296,10 @@ public abstract partial class SharedBorgSystem
     private void OnActionModuleUninstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleUninstalledEvent args)
     {
         var chassis = args.ChassisEnt;
-        foreach (var action in ent.Comp.Actions)
+
+        foreach (var actionEnt in ent.Comp.ActionEntities)
         {
-            foreach (var actionEnt in ent.Comp.ActionEntities)
-            {
-                _actions.RemoveAction(chassis, actionEnt);
-            }
+            _actions.RemoveAction(chassis, actionEnt);
         }
     }
     // Moffstation - end
