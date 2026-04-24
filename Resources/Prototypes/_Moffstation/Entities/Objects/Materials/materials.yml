@@ -2,7 +2,7 @@
   parent: MaterialBase
   id: MaterialHideSharkminnow
   name: Raw Sharkminnow Hide
-  description: Hastily cut hide from the belly of a Sharkminnow. Full of excess tissue.
+  description: Hastily cut hide from the belly of a Sharkminnow. Full of excess tissue that needs to be cut away.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Materials/hide.rsi
@@ -86,3 +86,6 @@
   - type: Item
     heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
+  - type: Tag
+    tags:
+    - SharkminnowLeather

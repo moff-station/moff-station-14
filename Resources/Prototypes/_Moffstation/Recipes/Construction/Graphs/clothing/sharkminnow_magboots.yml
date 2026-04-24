@@ -9,11 +9,20 @@
             - tag: Magboots
               name: construction-graph-tag-magboots
               icon:
-                sprite: Clothing/OuterClothing/Shoes/Boots/magboots.rsi
+                sprite: Clothing/Shoes/Boots/magboots.rsi
                 state: icon
               doAfter: 10
-            - material: MaterialLeatherSharkminnow
-              amount: 2
-              doafter: 10
+            - tag: SharkminnowLeather
+              name: construction-graph-tag-sharkminnow-leather
+              icon:
+                sprite: _Moffstation/Objects/Materials/hide.rsi
+                state: leather
+              doAfter: 5
+            - tag: SharkminnowLeather
+              name: construction-graph-tag-sharkminnow-leather
+              icon:
+                sprite: _Moffstation/Objects/Materials/hide.rsi
+                state: leather
+              doAfter: 5
     - node: shoes
       entity: ClothingShoesBootsMagSharkminnow

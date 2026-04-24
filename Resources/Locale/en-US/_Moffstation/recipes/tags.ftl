@@ -6,4 +6,4 @@ construction-graph-tag-folder = a folder
 
 construction-graph-tag-capacitor = capacitor
 construction-graph-tag-magboots = magboots
-
+construction-graph-tag-sharkminnow-leather = sharkminnow leather
