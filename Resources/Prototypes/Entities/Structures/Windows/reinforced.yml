@@ -127,7 +127,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: -Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
+    sprite: _Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -138,7 +138,7 @@
     key: windows
     base: state
   - type: Icon
-    sprite: -Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
+    sprite: _Moffstation/Structures/Windows/reinforced_window_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:
