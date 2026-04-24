@@ -107,3 +107,36 @@
       shoes-vox:
       - state: equipped-FEET-vox
         offset: "0, -0.03"
+
+- type: entity
+  parent: [ClothingShoesBootsMagBase, BaseJetpack, BaseSyndicateContraband]
+  id: ClothingShoesBootsMagSharkminnow
+  name: Sharkminnow magboots
+  description: Reverse-engineered from ERT magboots, they have a heavy magnetic pull and integrated thrusters. It can hold 0.75 L of gas.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Shoes/magboots-sharkminnow.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Shoes/magboots-sharkminnow.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: GasTank
+    outputPressure: 42.6
+    air:
+      # 2 minutes of thrust
+      volume: 0.75
+      temperature: 293.15
+      moles:
+        Oxygen: 0.153853429 # oxygen
+        Nitrogen: 0.153853429 # nitrogen
+  - type: Item
+    sprite: null
+    size: Normal
+  - type: StaticPrice
+    price: 1500
+  - type: Construction
+    graph: ClothingShoesBootsMagSharkminnow
+    node: shoes
+
