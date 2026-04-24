@@ -19,6 +19,6 @@ public sealed partial class ActionBorgModuleComponent : Component
     [DataField(required: true), AutoNetworkedField]
     public List<EntProtoId> Actions = new();
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public List<EntityUid> ActionEntities = new();
 }
