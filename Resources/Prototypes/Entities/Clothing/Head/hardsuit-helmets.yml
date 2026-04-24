@@ -1243,9 +1243,11 @@
       head-reptilian:
       - state: equipped-head-light-reptilian
         shader: unshaded
+# Moffstation - End
   - type: Clothing
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Effects/Emotes/parp1.ogg
+    # Moffstation - Begin
     clothingVisuals:
       head:
       - state: equipped-head
@@ -1266,7 +1268,7 @@
   - type: PointLight
     radius: 6
     energy: 1
-    color: Magenta
+    color: Magenta # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.72
     lowPressureMultiplier: 1000
@@ -1329,6 +1331,7 @@
       - state: equipped-head-reptilian
       - state: equipped-head-unshaded-reptilian
         shader: unshaded
+# Moffstation - End
   - type: PointLight
     radius: 6
     energy: 1
