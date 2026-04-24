@@ -4,8 +4,8 @@ meta:
   engineVersion: 274.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/23/2026 23:50:49
-  entityCount: 11862
+  time: 04/24/2026 19:21:38
+  entityCount: 11875
 maps:
 - 1
 grids:
@@ -7672,7 +7672,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -172346.12
+      secondsUntilStateChange: -173343.34
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -33134,6 +33134,106 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
+  - uid: 11498
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 14.5,-50.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11499
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,-11.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11500
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.5,-22.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11501
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 14.5,-21.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11502
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.5,-52.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11503
+    components:
+    - type: Transform
+      pos: -14.5,-20.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11504
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 4.5,8.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11505
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 21.5,2.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11506
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 15.5,-15.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11507
+    components:
+    - type: Transform
+      pos: 26.5,-2.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11508
+    components:
+    - type: Transform
+      pos: 3.5,-33.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11509
+    components:
+    - type: Transform
+      pos: 5.5,-16.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 11510
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,5.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: FaxMachineBase
   entities:
   - uid: 1937
@@ -54750,7 +54850,7 @@ entities:
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -8.5,1.33
+      pos: -8.5,1.5
       parent: 2
     - type: Fixtures
       fixtures: {}
