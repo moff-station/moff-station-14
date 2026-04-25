@@ -6,7 +6,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Bow/bow.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Bow/bow.rsi
   - type: Item
     size: Normal
   - type: Clothing
@@ -50,8 +50,60 @@
 
 - type: entity
   id: BowImprovised2
-  parent: BaseBow2
+  parent: BaseBow
   name: improvised shortbow2
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Bow/bow.rsi
+    layers:
+    - state: unwielded
+      map: [ base ]
+    - state: unwielded-arrow
+      map: [ arrow ]
+      visible: false
+    - state: unwielded-plunger
+      map: [ plunger ]
+      visible: false
+  # to elucidate whats intended here:
+  # arrow is inserted -> ItemMapper sets layer with map `arrow` to visible
+  # bow is wielded -> generic vis sets states of layers with map `arrow` and `base`
+  # arrow is removed -> itemmapper sets layer with map `arrow` to invisible
+  - type: Appearance
+  - type: UseDelay
+    delay: 0.6
+  - type: ItemMapper
+    spriteLayers:
+    - arrow
+    - plunger
+    mapLayers:
+      arrow:
+        whitelist:
+          tags:
+          - Arrow
+      plunger:
+        whitelist:
+          tags:
+          - Plunger
+  - type: GenericVisualizer
+    visuals:
+      enum.WieldableVisuals.Wielded:
+        arrow:
+          True: { state: wielded-arrow }
+          False: { state: unwielded-arrow }
+        plunger:
+          True: { state: wielded-plunger }
+          False: { state: unwielded-plunger }
+        base:
+          True: { state: wielded }
+          False: { state: unwielded }
+  - type: Construction
+    graph: ImprovisedBow
+    node: ImprovisedBow
+
+- type: entity
+  id: BowImprovised3
+  parent: BaseBow2
+  name: improvised shortbow3
   components:
   - type: Sprite
     layers:

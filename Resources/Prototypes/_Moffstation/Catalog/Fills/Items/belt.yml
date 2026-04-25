@@ -21,3 +21,10 @@
     - id: RadioHandheldSecurity
     - id: Zipties
     - id: Zipties
+
+- type: entityTable
+  id: ClothingBeltQuiverEntityTable
+  table: !type:AllSelector
+    children:
+    - id: ArrowRegular
+      amount: 16
