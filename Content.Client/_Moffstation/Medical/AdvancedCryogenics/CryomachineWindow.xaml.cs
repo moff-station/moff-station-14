@@ -42,11 +42,13 @@ public sealed partial class CryomachineWindow : FancyWindow
     public void SetState(CryomachineUiState state)
     {
         SetGasMix(state.GasMix);
-        SetCapsule(state.CryoCapsule);
+        SetCapsule(state.CryoCapsule, state.CapsuleNetEnt);
     }
 
-    private void SetCapsule(CryoCapsuleEntry entry)
+    private void SetCapsule(CryoCapsuleEntry entry, NetEntity? capsule)
     {
+        if (capsule is { } entity)
+            CapsuleSprite.SetEntity(entity);
         JumpStartBrainButton.Disabled = !entry.BrainPresent;
     }
 

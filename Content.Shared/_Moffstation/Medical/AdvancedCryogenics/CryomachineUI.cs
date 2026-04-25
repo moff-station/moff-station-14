@@ -29,11 +29,13 @@ public sealed class CryomachineUiState : BoundUserInterfaceMessage
     // public readonly EntityUid? Capsule; // not serializable
     public readonly GasMixEntry GasMix;
     public readonly CryoCapsuleEntry CryoCapsule;
+    public readonly NetEntity? CapsuleNetEnt;
 
-    public CryomachineUiState(GasMixEntry gasMix, CryoCapsuleEntry cryoCapsule)
+    public CryomachineUiState(GasMixEntry gasMix, CryoCapsuleEntry cryoCapsule,  NetEntity? capsuleNetEnt)
     {
         GasMix = gasMix;
         CryoCapsule = cryoCapsule;
+        CapsuleNetEnt = capsuleNetEnt;
     }
 }
 

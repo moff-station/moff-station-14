@@ -19,6 +19,7 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
     [Dependency] private readonly GasAnalyzerSystem _gasAnalyzer = default!;
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly GasCanisterSystem _gasCanisterSystem = default!;
+    [Dependency] private readonly EntityManager _entityManager = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -97,10 +98,11 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
         //var capsule = ent.Comp.CapsuleSlot.ContainerSlot?.ContainedEntity;
         var gasMix = _gasAnalyzer.GenerateGasMixEntry("Cryo pod", air.Air);
         var cryoCapsule = _cryoCapsule.GenerateCryocapsuleEntry((capEnt, cap));
+        var cryoCapsuleNetEnt = _entityManager.GetNetEntity(capEnt);
 
         _ui.ServerSendUiMessage(
             ent.Owner,
             CryomachineUiKey.Key,
-            new CryomachineUiState(gasMix, cryoCapsule));
+            new CryomachineUiState(gasMix, cryoCapsule, cryoCapsuleNetEnt));
     }
 }

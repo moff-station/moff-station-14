@@ -6,8 +6,7 @@
                MinSize="250 300"
                Resizable="True">
     <BoxContainer Name="Sections"
-                  Orientation="Horizontal"
-                  Margin="10">
+                  Orientation="Horizontal">
 
         <BoxContainer Name="CryoSection"
                       VerticalExpand="True"
@@ -33,108 +32,34 @@
             </BoxContainer>
 
             <!-- Atmos info -->
-            <BoxContainer Orientation="Horizontal"
-                          SeparationOverride="20"
-                          Margin="0 0 0 4">
-
-                <!-- Pressure -->
-                <BoxContainer Orientation="Vertical">
-                    <Label Text="{Loc 'cryomachine-window-pressure-text'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="Pressure"/>
-                </BoxContainer>
-
-                <!-- Temperature -->
-                <BoxContainer Orientation="Vertical">
-                    <Label Text="{Loc 'cryomachine-window-temperature-text'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="Temperature"/>
-                </BoxContainer>
-
-            </BoxContainer>
-
-            <!-- Gas mix -->
-            <Control Margin="0 0 0 22">
-                <controls:SplitBar Name="GasMixChart"
-                                   MinHeight="8"
-                                   MaxHeight="8"/>
-            </Control>
-
-            <!-- Warnings & status -->
-            <BoxContainer Orientation="Vertical"
-                          VerticalExpand="True"
-                          HorizontalExpand="True"
-                          Align="Center"
-                          Margin="0 0 0 14"
-                          SeparationOverride="20">
-
-                <!-- Pressure Warning -->
-                <PanelContainer Name="LowPressureWarning"
-                                Visible="False"
-                                HorizontalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BorderThickness="1" BorderColor="orange"/>
-                    </PanelContainer.PanelOverride>
-
-                    <BoxContainer Orientation="Vertical"
-                                  Margin="6">
-                        <Label Text="{Loc 'cryomachine-window-warning-header'}"
-                               FontColorOverride="orange"
-                               Align="Center"/>
-                         <RichTextLabel Text="{Loc 'cryomachine-window-low-pressure-warning'}"/>
-                    </BoxContainer>
-                </PanelContainer>
-
-                <!-- Temperature Warning -->
-                <PanelContainer Name="HighTemperatureWarning"
-                                Visible="False"
-                                HorizontalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BorderThickness="1" BorderColor="orange"/>
-                    </PanelContainer.PanelOverride>
-
-                    <BoxContainer Orientation="Vertical"
-                                  Margin="6">
-                        <Label Text="{Loc 'cryomachine-window-warning-header'}"
-                               FontColorOverride="orange"
-                               Align="Center"/>
-                        <RichTextLabel Text="{Loc 'cryomachine-window-high-temp-warning'}"/>
-                    </BoxContainer>
-                </PanelContainer>
-
-            </BoxContainer>
-
-                <!-- Status Checklist -->
             <BoxContainer Orientation="Vertical">
+                <Label Text = "Atmosphere Status :"/>
+
                 <BoxContainer Orientation="Horizontal"
-                              SeparationOverride="8">
-                    <Label Text = "{Loc 'cryomachine-window-status'}"/>
-                    <Label Name="StatusLabel"
-                           Text="{Loc 'cryomachine-status-no-capsule'}"
-                           FontColorOverride="Orange"/>
+                              SeparationOverride="20"
+                              Margin="0 0 0 4">
+                    <!-- Pressure -->
+                    <BoxContainer Orientation="Vertical">
+                        <Label Text="{Loc 'cryomachine-window-pressure-text'}"
+                               StyleClasses="LabelSubText"/>
+                        <Label Name="Pressure"/>
+                    </BoxContainer>
+
+                    <!-- Temperature -->
+                    <BoxContainer Orientation="Vertical">
+                        <Label Text="{Loc 'cryomachine-window-temperature-text'}"
+                               StyleClasses="LabelSubText"/>
+                        <Label Name="Temperature"/>
+                    </BoxContainer>
                 </BoxContainer>
 
-                <GridContainer Columns="2"
-                               HSeparationOverride="0"
-                               VSeparationOverride="6"
-                               Margin="6 3 0 0">
-                    <Label Text="⋄"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="PressureCheck"
-                           Text="{Loc 'cryomachine-window-checklist-pressure'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Text="⋄"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="ChemicalsCheck"
-                           Text="{Loc 'cryomachine-window-checklist-chemicals'}"
-                           StyleClasses="LabelSubText"
-                           FontColorOverride="Orange"/>
-                    <Label Text="⋄"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="TemperatureCheck"
-                           Text="{Loc 'cryomachine-window-checklist-temperature'}"
-                           StyleClasses="LabelSubText"/>
-                </GridContainer>
+                <!-- Gas mix -->
+                <Control Margin="0 0 0 22">
+                    <controls:SplitBar Name="GasMixChart"
+                                       MinHeight="8"
+                                       MaxHeight="8"/>
+                </Control>
+
             </BoxContainer>
 
             <!-- Reagents -->
@@ -180,8 +105,11 @@
                             StyleClasses="OpenBoth"/>
                 </BoxContainer>
             </BoxContainer>
-
         </BoxContainer>
+
+        <!-- separator-->
+        <Control MinWidth="10"
+                 MaxWidth="10"/>
 
         <BoxContainer Name="PatientSection"
                       VerticalExpand="True"
@@ -189,63 +117,67 @@
                       MinWidth="250"
                       MaxWidth="250">
 
-            <!-- Capsule Infos -->
-            <BoxContainer Orientation="Horizontal">
-
-                <PanelContainer VerticalExpand="True">
-
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
-                    </PanelContainer.PanelOverride>
-                    <BoxContainer HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <SpriteView Name="CapsuleSprite" Scale="2 2"/>
-                    </BoxContainer>
-                </PanelContainer>
-
-            </BoxContainer>
-
 
             <BoxContainer Name="NoCapsulePanel"
                           Visible="False">
                 <Label Text="No Capsule Detected"/>
             </BoxContainer>
 
+
             <BoxContainer Name="CapsulePanel" Orientation="Vertical">
-                <!-- Organs Checklist -->
-                <GridContainer Columns="2"
-                               HSeparationOverride="0"
-                               VSeparationOverride="6"
-                               Margin="6 3 0 0">
-                    <Label Text="{Loc 'cryomachine-capsule-brain-status'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="BrainStatusLabel"
-                           Text="{Loc 'cryomachine-capsule-no-brain'}"
-                           FontColorOverride="Orange"/>
-                    <Label Text="{Loc 'cryomachine-capsule-eyes-status'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="EyesStatusLabel"
-                           Text="{Loc 'cryomachine-capsule-no-eyes'}"
-                           FontColorOverride="Orange"/>
-                    <Label Text="{Loc 'cryomachine-capsule-lungs-status'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="LungsStatusLabel"
-                           Text="{Loc 'cryomachine-capsule-no-lungs'}"
-                           FontColorOverride="Orange"/>
-                    <Label Text="{Loc 'cryomachine-capsule-heart-status'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="HeartStatusLabel"
-                           Text="{Loc 'cryomachine-capsule-no-heart'}"
-                           FontColorOverride="Orange"/>
-                    <Label Text="{Loc 'cryomachine-capsule-stomach-status'}"
-                           StyleClasses="LabelSubText"/>
-                    <Label Name="StomachStatusLabel"
-                           Text="{Loc 'cryomachine-capsule-no-stomach'}"
-                           FontColorOverride="Orange"/>
-                </GridContainer>
+
+                <Label Text="Patient Status :"/>
+                <!-- Organs panel -->
+                <BoxContainer Orientation="Horizontal">
+
+                    <PanelContainer> <!-- previously with VerticalExpand -->
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
+                        </PanelContainer.PanelOverride>
+                        <BoxContainer HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <SpriteView Name="CapsuleSprite" Scale="3 3"/>
+                        </BoxContainer>
+                    </PanelContainer>
+
+                    <!-- Organs Checklist -->
+                    <GridContainer Columns="2"
+                                   HSeparationOverride="0"
+                                   VSeparationOverride="6"
+                                   Margin="6 3 0 0">
+                        <Label Text="{Loc 'cryomachine-capsule-brain-status'}"
+                                       StyleClasses="LabelSubText"/>
+                        <Label Name="BrainStatusLabel"
+                               Text="{Loc 'cryomachine-capsule-no-brain'}"
+                               FontColorOverride="Orange"/>
+                        <Label Text="{Loc 'cryomachine-capsule-eyes-status'}"
+                               StyleClasses="LabelSubText"/>
+                        <Label Name="EyesStatusLabel"
+                               Text="{Loc 'cryomachine-capsule-no-eyes'}"
+                               FontColorOverride="Orange"/>
+                        <Label Text="{Loc 'cryomachine-capsule-lungs-status'}"
+                               StyleClasses="LabelSubText"/>
+                        <Label Name="LungsStatusLabel"
+                               Text="{Loc 'cryomachine-capsule-no-lungs'}"
+                               FontColorOverride="Orange"/>
+                        <Label Text="{Loc 'cryomachine-capsule-heart-status'}"
+                               StyleClasses="LabelSubText"/>
+                        <Label Name="HeartStatusLabel"
+                               Text="{Loc 'cryomachine-capsule-no-heart'}"
+                               FontColorOverride="Orange"/>
+                        <Label Text="{Loc 'cryomachine-capsule-stomach-status'}"
+                               StyleClasses="LabelSubText"/>
+                        <Label Name="StomachStatusLabel"
+                               Text="{Loc 'cryomachine-capsule-no-stomach'}"
+                               FontColorOverride="Orange"/>
+                    </GridContainer>
+
+                </BoxContainer>
+
+                <!-- General Overview -->
 
                 <BoxContainer Orientation="Horizontal">
-                    <Button Name="JumpStartBrainButton" Text="Shock"/>
-                    <Button Name="DetachCapsuleButton" Text="Detach"/>
+                    <Button Name="JumpStartBrainButton" Text="Shock" StyleClasses="OpenBoth"/>
+                    <Button Name="DetachCapsuleButton" Text="Detach" StyleClasses="OpenBoth"/>
                 </BoxContainer>
 
             </BoxContainer>
