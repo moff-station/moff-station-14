@@ -1,0 +1,65 @@
+- type: entity
+  parent: BaseFlatpackHands
+  id: ScienceCommsFlatpack
+  name: science communications computer box
+  description: A box used for assembling a communications computer.
+  components:
+  - type: SpawnOnTrigger
+    useMapCoords: true
+    predicted: true
+    proto: ScienceComputerComms
+
+- type: entity
+  parent: BaseFlatpackHands
+  id: SecCommsFlatpack
+  name: security communications computer box
+  description: A box used for assembling a communications computer.
+  components:
+  - type: SpawnOnTrigger
+    useMapCoords: true
+    predicted: true
+    proto: SecurityComputerComms
+
+- type: entity
+  parent: BaseFlatpackHands
+  id: ServiceCommsFlatpack
+  name: service communications computer box
+  description: A box used for assembling a communications computer.
+  components:
+  - type: SpawnOnTrigger
+    useMapCoords: true
+    predicted: true
+    proto: ServiceComputerComms
+
+- type: entity
+  parent: BaseFlatpackHands
+  id: CargoCommsFlatpack
+  name: cargo communications computer box
+  description: A box used for assembling a communications computer.
+  components:
+  - type: SpawnOnTrigger
+    useMapCoords: true
+    predicted: true
+    proto: CargoComputerComms
+
+- type: entity
+  parent: BaseFlatpackHands
+  id: EngiCommsFlatpack
+  name: engineering communications computer box
+  description: A box used for assembling a communications computer.
+  components:
+  - type: SpawnOnTrigger
+    useMapCoords: true
+    predicted: true
+    proto: EngiComputerComms
+
+- type: entity
+  parent: BaseFlatpackHands
+  id: MedCommsFlatpack
+  name: medical communications computer box
+  description: A box used for assembling a communications computer.
+  components:
+  - type: SpawnOnTrigger
+    useMapCoords: true
+    predicted: true
+    proto: MedicalComputerComms
