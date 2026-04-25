@@ -37,6 +37,15 @@
     damage:
       types:
         Blunt: 5
+  - type: PassiveDamage # base slimeperson healing
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Heat: -0.14
+        Blunt: -0.05
+        Piercing: -0.05
+        Slash: -0.05
   - type: Inventory
     speciesId: slime
     templateId: gerasInventory
