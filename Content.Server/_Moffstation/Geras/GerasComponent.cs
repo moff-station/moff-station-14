@@ -1,3 +1,4 @@
+using Content.Shared.Inventory;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Geras;

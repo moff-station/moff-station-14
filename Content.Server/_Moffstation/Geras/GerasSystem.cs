@@ -142,9 +142,15 @@ public sealed class GerasSystem : EntitySystem
         // Drop all inventory items
         if (_inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
         {
+
             while (enumerator.MoveNext(out var slot))
             {
-                _inventory.TryUnequip(uid, slot.ID, true, true);
+                if (!_inventory.HasSlot(geras, slot.ID) ||
+                    slot.ContainedEntity is not { } containedEntity ||
+                    !_inventory.TryEquip(geras, containedEntity, slot.ID, true, true))
+                {
+                    _inventory.TryUnequip(uid, slot.ID, true, true);
+                }
             }
         }
         foreach (var held in _hands.EnumerateHeld(uid))
