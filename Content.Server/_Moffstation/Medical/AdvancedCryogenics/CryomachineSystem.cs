@@ -66,14 +66,14 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CryomachineComponent, CryomachineComponent>();
+        var query = EntityQueryEnumerator<CryomachineComponent>();
 
-        while (query.MoveNext(out var uid, out _, out var cryomachine))
+        while (query.MoveNext(out var uid, out var cryomachine))
         {
             if (_time.CurTime < cryomachine.NextUiUpdate)
                 continue;
 
-            cryomachine.NextUiUpdate += cryomachine.UiUpdateInterval;
+            cryomachine.NextUiUpdate = _time.CurTime + cryomachine.UiUpdateInterval;
             Dirty(uid, cryomachine);
             UpdateUi((uid, cryomachine));
         }
@@ -86,12 +86,21 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
             !TryComp(ent, out CryoPodAirComponent? air))
             return;
 
+        if (ent.Comp.CapsuleSlot.Item is not { } capEnt ||
+            !TryComp(capEnt, out CryocapsuleComponent? cap))
+            return;
+
+        if (!ent.Comp.CapsuleSlot.HasItem ||
+            !TryComp(ent.Comp.CapsuleSlot.Item, out CryocapsuleComponent? capsule))
+            return;
+
         //var capsule = ent.Comp.CapsuleSlot.ContainerSlot?.ContainedEntity;
         var gasMix = _gasAnalyzer.GenerateGasMixEntry("Cryo pod", air.Air);
+        var cryoCapsule = _cryoCapsule.GenerateCryocapsuleEntry((capEnt, cap));
 
         _ui.ServerSendUiMessage(
             ent.Owner,
             CryomachineUiKey.Key,
-            new CryomachineUiState(gasMix));
+            new CryomachineUiState(gasMix, cryoCapsule));
     }
 }

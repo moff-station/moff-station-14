@@ -72,6 +72,30 @@ public sealed partial class CryocapsuleComponent : Component
     #endregion
 }
 
+
+/// <summary>
+/// Contain information on the capsule
+/// </summary>
+[Serializable, NetSerializable]
+public readonly record struct CryoCapsuleEntry
+{
+    public readonly bool BrainPresent;
+    public readonly bool EyesPresent;
+    public readonly bool LungPresent;
+    public readonly bool HeartPresent;
+    public readonly bool StomachPresent;
+
+    public CryoCapsuleEntry(bool brainPresent, bool eyesPresent, bool lungPresent, bool heartPresent, bool stomachPresent)
+    {
+        BrainPresent = brainPresent;
+        EyesPresent = eyesPresent;
+        LungPresent = lungPresent;
+        HeartPresent = heartPresent;
+        StomachPresent = stomachPresent;
+    }
+}
+
+
 [Serializable, NetSerializable]
 public enum CryocapsuleVisuals : byte
 {

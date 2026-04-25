@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 using Content.Shared.Atmos;
@@ -40,39 +41,55 @@ public sealed partial class CryomachineWindow : FancyWindow
 
     public void SetState(CryomachineUiState state)
     {
-        //SetCapsule(state.Capsule);
         SetGasMix(state.GasMix);
+        SetCapsule(state.CryoCapsule);
     }
 
-    private void SetCapsule(EntityUid? capsule)
+    private void SetCapsule(CryoCapsuleEntry entry)
     {
-        CapsuleSprite.SetEntity(capsule);
-        // todo : get the info on it.
+        JumpStartBrainButton.Disabled = !entry.BrainPresent;
     }
 
     private void SetGasMix(GasMixEntry mix)
     {
-        /*
-        if (mix.Pressure > Atmospherics.WarningHighPressure)
-            return; // display high pressure warning
-        else if (mix.Pressure < Atmospherics.WarningLowPressure)
-            return; // display high pressure warning
-        */
+        bool hasGas = (mix.Pressure > Atmospherics.GasMinMoles);
+
         Pressure.Text = Loc.GetString("gas-analyzer-window-pressure-val-text",
             ("pressure", $"{mix.Pressure:0.00}"));
         Temperature.Text = Loc.GetString("generic-not-available-shorthand");
 
-        if (mix.Pressure < Atmospherics.GasMinMoles)
+        if (hasGas)
         {
-            GasMixChart.Visible = false;
-            return;
+            var celsius = TemperatureHelpers.KelvinToCelsius(mix.Temperature);
+            Temperature.Text = Loc.GetString("gas-analyzer-window-temperature-val-text",
+                ("tempK", $"{mix.Temperature:0.0}"),
+                ("tempC", $"{celsius:0.0}"));
         }
 
-        var celsius = TemperatureHelpers.KelvinToCelsius(mix.Temperature);
-        Temperature.Text = Loc.GetString("gas-analyzer-window-temperature-val-text",
-            ("tempK", $"{mix.Temperature:0.0}"),
-            ("tempC", $"{celsius:0.0}"));
 
-        GasMixChart.Visible = true;
+        GasMixChart.Clear();
+        GasMixChart.Visible = hasGas;
+
+        if (mix.Gases != null)
+        {
+            var totalGasAmount = mix.Gases.Sum(gas => gas.Amount);
+
+            foreach (var gasEntry in mix.Gases)
+            {
+                var gasProto = _atmosphere.GetGas(gasEntry.Gas);
+                var percent = gasEntry.Amount / totalGasAmount * 100;
+                var localizedName = Loc.GetString(gasProto.Name);
+                var tooltip = Loc.GetString("gas-analyzer-window-molarity-percentage-text",
+                    ("gasName", localizedName),
+                    ("amount", $"{gasEntry.Amount:0.##}"),
+                    ("percentage", $"{percent:0.#}"));
+                GasMixChart.AddEntry(gasEntry.Amount, gasProto.Color, tooltip: tooltip);
+            }
+        }
+    }
+
+    private void SetBeakerMix()
+    {
+        // what will we inject in the dude.
     }
 }

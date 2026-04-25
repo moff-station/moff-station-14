@@ -1,5 +1,8 @@
+using Content.Shared.Audio;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Mind;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
@@ -13,14 +16,21 @@ namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 public class SharedCryomachineSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] protected readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     [Dependency] protected readonly IGameTiming _time = default!;
     [Dependency] protected readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] protected readonly CryocapsuleSystem _cryoCapsule = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
 
 
     /// <inheritdoc/>
 
+    // TODO : Issue with exception system.user_interface: UI Key got BoundInterfaceMessageWrapMessage from a client who was not subscribed
+    //        (when you go away from the machine with the UI still open)
+
+    // TODO : Find a way to make the capsule don't go through the machine when it's ejected.
     public override void Initialize()
     {
         base.Initialize();
@@ -35,8 +45,6 @@ public class SharedCryomachineSystem : EntitySystem
             });
     }
 
-    // TODO : make the sound play only when the machine is full.
-
     private void OnCryomachineInit(Entity<CryomachineComponent> ent, ref ComponentInit args)
     {
         _itemSlots.AddItemSlot(ent.Owner, ent.Comp.CapsuleSlotId, ent.Comp.CapsuleSlot);
@@ -48,6 +56,7 @@ public class SharedCryomachineSystem : EntitySystem
             return;
 
         _appearance.SetData(ent.Owner, CryomachineVisuals.Filled, true);
+        _ambient.SetAmbience(ent.Owner, true);
     }
 
     private void OnRemoved(Entity<CryomachineComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -56,6 +65,7 @@ public class SharedCryomachineSystem : EntitySystem
             return;
 
         _appearance.SetData(ent.Owner, CryomachineVisuals.Filled, false);
+        _ambient.SetAmbience(ent.Owner, false);
     }
 
     private void OnSimpleUiMessage(Entity<CryomachineComponent> ent, ref CryomachineSimpleUiMessage args)
@@ -63,14 +73,31 @@ public class SharedCryomachineSystem : EntitySystem
         switch (args.Type)
         {
             case CryomachineSimpleUiMessage.MessageType.JumpstartBrain :
+                ReviveBrain(ent);
                 _audio.PlayPredicted(ent.Comp.ShockSound, ent.Owner, ent.Owner, AudioParams.Default);
                 break;
             case CryomachineSimpleUiMessage.MessageType.DetachCapsule :
-                // todo : detach the capsule from the container.
                 _audio.PlayPredicted(ent.Comp.DetachSound, ent.Owner, ent.Owner, AudioParams.Default);
+                if (ent.Comp.CapsuleSlot is { HasItem: true, Item: { } capsule })
+                    _itemSlots.TryEject(capsule, ent.Comp.CapsuleSlot, null, out _);
                 break;
             case CryomachineSimpleUiMessage.MessageType.EjectBeaker:
                 break;
+        }
+    }
+
+
+    private void ReviveBrain(Entity<CryomachineComponent> ent)
+    {
+        if (ent.Comp.CapsuleSlot.Item is not { } capsule ||
+            !TryComp<CryocapsuleComponent>(capsule, out var capsuleComp) ||
+            !_cryoCapsule.TryGetBrain((capsule, capsuleComp), out var brain))
+            return;
+
+        // bad way to say that but will probably be changed later.
+        if (brain is {} entity && _mind.TryGetMind(entity, out var mindId, out var mindComp))
+        {
+            _mind.TransferTo(mindId, capsule, true, mind:mindComp);
         }
     }
 }

@@ -27,3 +27,18 @@ cryomachine-window-checklist-chemicals = Chemicals available
 cryomachine-window-checklist-temperature = Cryogenic temperature
 
 cryomachine-window-no-beaker = No beaker
+
+cryomachine-capsule-brain-status = brain :
+cryomachine-capsule-no-brain = absent
+
+cryomachine-capsule-eyes-status = eyes :
+cryomachine-capsule-no-eyes = absent
+
+cryomachine-capsule-lungs-status = lungs :
+cryomachine-capsule-no-lungs = absent
+
+cryomachine-capsule-heart-status = heart :
+cryomachine-capsule-no-heart = absent
+
+cryomachine-capsule-stomach-status = stomach :
+cryomachine-capsule-no-stomach = absent

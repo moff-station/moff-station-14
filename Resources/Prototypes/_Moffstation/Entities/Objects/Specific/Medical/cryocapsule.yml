@@ -41,6 +41,7 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Medical/cryocapsule.rsi
     state: empty
+    noRot: true
   - type: Appearance
   - type: ItemMapper
     mapLayers:
@@ -70,4 +71,5 @@
     proto: slime
   - type: Item
     size: Huge
-
+  - type: Damageable
+  - type: MobState

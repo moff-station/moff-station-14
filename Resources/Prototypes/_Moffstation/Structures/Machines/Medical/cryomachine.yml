@@ -17,6 +17,7 @@
     layers:
     - sprite: Structures/Piping/Atmospherics/pipe.rsi
       state: pipeHalf
+      drawdepth: ThinPipe
       map: [ "enum.PipeVisualLayers.Pipe" ]
     - state: machine-empty
       map: [ "enum.CryoPodVisualLayers.Base" ]
@@ -30,7 +31,7 @@
   - type: AmbientSound
     volume: -9
     range: 5
-    enabled: true
+    enabled: false
     sound:
       path: /Audio/Machines/spinning.ogg
   - type: PointLight
@@ -52,7 +53,7 @@
   - type: ApcPowerReceiver
     powerLoad: 3000
   - type: AtmosDevice
-  - type: CryoPodAir # see cryo_pod.yml, essentially connect the atmos inside to the pipenet.
+  - type: CryoPodAir
   - type: NodeContainer
     nodes:
         port:

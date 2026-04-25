@@ -202,15 +202,54 @@
                     </BoxContainer>
                 </PanelContainer>
 
-
-
             </BoxContainer>
 
 
-            <BoxContainer Orientation="Horizontal">
-                <Button Name="JumpStartBrainButton" Text="Activate Brain"/>
-                <Button Name="DetachCapsuleButton" Text="Detach Capsule"/>
+            <BoxContainer Name="NoCapsulePanel"
+                          Visible="False">
+                <Label Text="No Capsule Detected"/>
             </BoxContainer>
+
+            <BoxContainer Name="CapsulePanel" Orientation="Vertical">
+                <!-- Organs Checklist -->
+                <GridContainer Columns="2"
+                               HSeparationOverride="0"
+                               VSeparationOverride="6"
+                               Margin="6 3 0 0">
+                    <Label Text="{Loc 'cryomachine-capsule-brain-status'}"
+                           StyleClasses="LabelSubText"/>
+                    <Label Name="BrainStatusLabel"
+                           Text="{Loc 'cryomachine-capsule-no-brain'}"
+                           FontColorOverride="Orange"/>
+                    <Label Text="{Loc 'cryomachine-capsule-eyes-status'}"
+                           StyleClasses="LabelSubText"/>
+                    <Label Name="EyesStatusLabel"
+                           Text="{Loc 'cryomachine-capsule-no-eyes'}"
+                           FontColorOverride="Orange"/>
+                    <Label Text="{Loc 'cryomachine-capsule-lungs-status'}"
+                           StyleClasses="LabelSubText"/>
+                    <Label Name="LungsStatusLabel"
+                           Text="{Loc 'cryomachine-capsule-no-lungs'}"
+                           FontColorOverride="Orange"/>
+                    <Label Text="{Loc 'cryomachine-capsule-heart-status'}"
+                           StyleClasses="LabelSubText"/>
+                    <Label Name="HeartStatusLabel"
+                           Text="{Loc 'cryomachine-capsule-no-heart'}"
+                           FontColorOverride="Orange"/>
+                    <Label Text="{Loc 'cryomachine-capsule-stomach-status'}"
+                           StyleClasses="LabelSubText"/>
+                    <Label Name="StomachStatusLabel"
+                           Text="{Loc 'cryomachine-capsule-no-stomach'}"
+                           FontColorOverride="Orange"/>
+                </GridContainer>
+
+                <BoxContainer Orientation="Horizontal">
+                    <Button Name="JumpStartBrainButton" Text="Shock"/>
+                    <Button Name="DetachCapsuleButton" Text="Detach"/>
+                </BoxContainer>
+
+            </BoxContainer>
+
         </BoxContainer>
 
 

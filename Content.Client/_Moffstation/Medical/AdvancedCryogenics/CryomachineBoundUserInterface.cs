@@ -43,5 +43,6 @@ public sealed class CryomachineBoundUserInterface : BoundUserInterface
             return;
 
         base.ReceiveMessage(message);
+        _window?.SetState(cast);
     }
 }
