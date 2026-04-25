@@ -66,6 +66,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly ThirstSystem _thirst = default!;
 
+    private const string GerasIdSlot = "id";
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -139,10 +140,16 @@ public sealed class GerasSystem : EntitySystem
         RaiseLocalEvent(uid, ref preGerasEv);
 
 
-        // Drop all inventory items
+        // TODO: Do this without the ID getting its own special thing
+        // We do this because we may end up dropping whatever is in the ID slot before it would get transferred by the other thing
+        if (_inventory.TryGetSlotEntity(uid, GerasIdSlot, out var id) && id is { } idUid)
+        {
+            _inventory.TryEquip(geras, idUid, GerasIdSlot, true, true);
+        }
+
+        // Reequip or drop all inventory items
         if (_inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
         {
-
             while (enumerator.MoveNext(out var slot))
             {
                 if (!_inventory.HasSlot(geras, slot.ID) ||
