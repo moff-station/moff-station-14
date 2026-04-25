@@ -12,7 +12,7 @@ public sealed partial class CryocapsuleComponent : Component
     #region organs slots
 
     /// <summary>
-    /// The ID of the itemslot that holds the brain.
+    /// The ID of the <see cref="ItemSlot"/> that holds the brain.
     /// </summary>
     [DataField]
     public string BrainSlotId = "brain_slot";
@@ -24,7 +24,16 @@ public sealed partial class CryocapsuleComponent : Component
     public ItemSlot BrainSlot = new();
 
     /// <summary>
-    /// The ID of the itemslot that holds the lungs.
+    /// The ID of the <see cref="ItemSlot"/> that holds the eyes.
+    /// </summary>
+    [DataField]
+    public string EyesSlotId = "eyes_slot";
+
+    [DataField]
+    public ItemSlot EyesSlot = new();
+
+    /// <summary>
+    /// The ID of the <see cref="ItemSlot"/> that holds the lungs.
     /// </summary>
     [DataField]
     public string LungSlotId = "lung_slot";
@@ -35,9 +44,21 @@ public sealed partial class CryocapsuleComponent : Component
     [DataField]
     public ItemSlot LungSlot = new();
 
+    /// <summary>
+    /// The ID of the <see cref="ItemSlot"/> that holds the lungs.
+    /// </summary>
+    [DataField]
+    public string HeartSlotId = "heart_slot";
 
     /// <summary>
-    /// The ID of the itemslot that holds the stomach.
+    /// The <see cref="ItemSlot"/> that holds the lungs.
+    /// </summary>
+    [DataField]
+    public ItemSlot HeartSlot = new();
+
+
+    /// <summary>
+    /// The ID of the <see cref="ItemSlot"/> that holds the stomach.
     /// </summary>
     [DataField]
     public string StomachSlotId = "stomach_slot";
@@ -52,16 +73,17 @@ public sealed partial class CryocapsuleComponent : Component
 }
 
 [Serializable, NetSerializable]
-public enum CryocasketVisuals : byte
+public enum CryocapsuleVisuals : byte
 {
     BrainPresent,
     HasMind
 }
 
 [Serializable, NetSerializable]
-public enum CryocasketVisualLayers : byte
+public enum CryocapsuleVisualLayers : byte
 {
     Brain,
+    Eyes,
     Lungs,
     Heart,
     Stomach,

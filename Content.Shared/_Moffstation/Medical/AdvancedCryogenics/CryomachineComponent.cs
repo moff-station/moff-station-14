@@ -1,4 +1,5 @@
 using Content.Shared.Containers.ItemSlots;
+using Robust.Shared.Audio;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
@@ -9,6 +10,8 @@ namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 [RegisterComponent]
 public sealed partial class CryomachineComponent : Component
 {
+    #region Slots
+
     /// <summary>
     /// The ID of the itemslot that holds the cryocapsule
     /// </summary>
@@ -33,6 +36,16 @@ public sealed partial class CryomachineComponent : Component
     [DataField]
     public ItemSlot BeakerSlot = new();
 
+    #endregion
+
+    /// <summary>
+    /// The sound emitted when we shock the brain.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier ShockSound = new SoundPathSpecifier("/Audio/Machines/airlock_electrify_on.ogg");
+
+    [DataField]
+    public SoundSpecifier DetachSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
 }
 
 [Serializable, NetSerializable]
@@ -44,7 +57,7 @@ public enum CryomachineUiKey : byte
 [Serializable, NetSerializable]
 public sealed class CryomachineSimpleUiMessage : BoundUserInterfaceMessage
 {
-    public enum MessageType { JumpstartBrain, EjectBeaker }
+    public enum MessageType { JumpstartBrain, DetachCapsule, EjectBeaker }
 
     public readonly MessageType Type;
 
@@ -53,3 +66,8 @@ public sealed class CryomachineSimpleUiMessage : BoundUserInterfaceMessage
         Type = type;
     }
 }
+
+/* Currently working on this (UI state)
+[Serializable, NetSerializable]
+public sealed class Cryomachine
+*/

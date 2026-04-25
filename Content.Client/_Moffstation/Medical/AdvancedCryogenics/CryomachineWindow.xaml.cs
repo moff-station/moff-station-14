@@ -12,6 +12,7 @@ public sealed partial class CryomachineWindow : FancyWindow
     private readonly SharedAtmosphereSystem _atmosphere = default!;
 
     public Action? OnEjectBeakerPressed;
+    public Action? OnDetachCapsulePressed;
     public Action? OnJumpStartBrainPressed;
     public Action<int>? OnInjectPressed;
 
@@ -22,11 +23,19 @@ public sealed partial class CryomachineWindow : FancyWindow
 
         _atmosphere = _entityManager.System<SharedAtmosphereSystem>();
 
-        EjectPatientButton.OnPressed += _ => OnJumpStartBrainPressed?.Invoke(); // todo : change button name obviously
+        JumpStartBrainButton.OnPressed += _ => OnJumpStartBrainPressed?.Invoke();
+        DetachCapsuleButton.OnPressed += _ => OnDetachCapsulePressed?.Invoke();
+
         EjectBeakerButton.OnPressed += _ => OnEjectBeakerPressed?.Invoke();
         Inject1.OnPressed += _ => OnInjectPressed?.Invoke(1);
         Inject5.OnPressed += _ => OnInjectPressed?.Invoke(5);
         Inject10.OnPressed += _ => OnInjectPressed?.Invoke(10);
         Inject20.OnPressed += _ => OnInjectPressed?.Invoke(20);
+    }
+
+    public void SetCapsule(EntityUid capsule)
+    {
+        CapsuleSprite.SetEntity(capsule);
+        // todo : get the info on it.
     }
 }

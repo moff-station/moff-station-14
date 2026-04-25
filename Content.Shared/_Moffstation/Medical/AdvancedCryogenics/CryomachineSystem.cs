@@ -1,4 +1,5 @@
 using Content.Shared.Containers.ItemSlots;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
@@ -23,9 +24,15 @@ public sealed class CryomachineSystem : EntitySystem
         SubscribeLocalEvent<CryomachineComponent, ComponentInit>(OnCryomachineInit);
         SubscribeLocalEvent<CryomachineComponent, EntInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<CryomachineComponent, EntRemovedFromContainerMessage>(OnRemoved);
+
+        Subs.BuiEvents<CryomachineComponent>(CryomachineUiKey.Key, subs =>
+            {
+                subs.Event<CryomachineSimpleUiMessage>(OnSimpleUiMessage);
+            });
     }
 
     // TODO : make the sound play only when the machine is full.
+    // TODO : UI is as stupid as ever and won't play shit.
 
     private void OnCryomachineInit(Entity<CryomachineComponent> ent, ref ComponentInit args)
     {
@@ -46,6 +53,22 @@ public sealed class CryomachineSystem : EntitySystem
             return;
 
         _appearance.SetData(ent.Owner, CryomachineVisuals.Filled, false);
+    }
+
+    private void OnSimpleUiMessage(Entity<CryomachineComponent> ent, ref CryomachineSimpleUiMessage args)
+    {
+        switch (args.Type)
+        {
+            case CryomachineSimpleUiMessage.MessageType.JumpstartBrain :
+                _audio.PlayPredicted(ent.Comp.ShockSound, ent.Owner, ent.Owner, AudioParams.Default);
+                break;
+            case CryomachineSimpleUiMessage.MessageType.DetachCapsule :
+                // todo : detach the capsule from the container.
+                _audio.PlayPredicted(ent.Comp.DetachSound, ent.Owner, ent.Owner, AudioParams.Default);
+                break;
+            case CryomachineSimpleUiMessage.MessageType.EjectBeaker:
+                break;
+        }
     }
 }
 

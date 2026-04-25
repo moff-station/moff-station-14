@@ -12,8 +12,14 @@
         - Cryocapsule
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/cryo_capsule.rsi
-    state: machine-empty
+    drawdepth: Mobs
     noRot: true
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe.rsi
+      state: pipeHalf
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: machine-empty
+      map: [ "enum.CryoPodVisualLayers.Base" ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -39,10 +45,18 @@
   - type: UserInterface
     interfaces:
       enum.CryomachineUiKey.Key:
-        type: CryoPodBoundUserInterface
+        type: CryomachineBoundUserInterface
   - type: ActivatableUI
     key: enum.CryomachineUiKey.Key
     requiresComplex: false
   - type: ApcPowerReceiver
     powerLoad: 3000
+  - type: AtmosDevice
+  - type: CryoPodAir # see cryo_pod.yml, essentially connect the atmos inside to the pipenet.
+  - type: NodeContainer
+    nodes:
+        port:
+          !type:PortablePipeNode
+          nodeGroupID: Pipe
+          pipeDirection: South
 

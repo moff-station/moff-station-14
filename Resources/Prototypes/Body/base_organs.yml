@@ -282,6 +282,11 @@
     markingData:
       layers:
       - Eyes
+  # Moffstation - begin
+  - type: Tag
+    tags:
+    - Eyes
+  # Moffstation - end
 
 - type: entity
   parent: OrganBase
@@ -361,6 +366,11 @@
   - type: Metabolizer
     maxReagents: 2
     stages: [ Bloodstream ]
+  # Moffstation - begin
+  - type: Tag
+    tags:
+    - Heart
+  # Moffstation - end
 
 - type: entity
   parent: OrganBase
