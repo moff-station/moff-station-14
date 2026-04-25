@@ -7,8 +7,8 @@
     popup: geras-transformation-popup
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 10 # prevent spam
-    priority: -20
+    useDelay: 30 # prevent spam
+    priority: 20
     icon:
       sprite: Mobs/Aliens/slimes.rsi
       state: blue_adult_slime
