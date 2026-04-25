@@ -290,7 +290,6 @@ public abstract partial class SharedBorgSystem
             if (actionEnt != null)
                 ent.Comp.ActionEntities.Add(actionEnt.Value);
         }
-        Dirty(ent);
     }
 
     private void OnActionModuleUninstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleUninstalledEvent args)
@@ -300,7 +299,6 @@ public abstract partial class SharedBorgSystem
             _actions.RemoveAction(args.ChassisEnt, actionEnt);
         }
         ent.Comp.Actions.Clear();
-        Dirty(ent);
     }
     // Moffstation - end
 }
