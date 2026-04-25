@@ -1,16 +1,19 @@
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.Audio;
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 
 /// <summary>
 /// This is used for...
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
+[AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class CryomachineComponent : Component
 {
-    #region Slots
+    #region slots
 
     /// <summary>
     /// The ID of the itemslot that holds the cryocapsule
@@ -39,6 +42,23 @@ public sealed partial class CryomachineComponent : Component
     #endregion
 
     /// <summary>
+    /// Specifies the name of the atmospherics port to draw gas from.
+    /// </summary>
+    [DataField]
+    public string PortName = "port";
+
+
+    /// <summary>
+    /// Time interval between two UI updates
+    /// </summary>
+    [DataField]
+    public TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(0.5);
+
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    [AutoNetworkedField, AutoPausedField]
+    public TimeSpan NextUiUpdate = TimeSpan.FromSeconds(0);
+
+    /// <summary>
     /// The sound emitted when we shock the brain.
     /// </summary>
     [DataField]
@@ -47,27 +67,3 @@ public sealed partial class CryomachineComponent : Component
     [DataField]
     public SoundSpecifier DetachSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
 }
-
-[Serializable, NetSerializable]
-public enum CryomachineUiKey : byte
-{
-    Key,
-}
-
-[Serializable, NetSerializable]
-public sealed class CryomachineSimpleUiMessage : BoundUserInterfaceMessage
-{
-    public enum MessageType { JumpstartBrain, DetachCapsule, EjectBeaker }
-
-    public readonly MessageType Type;
-
-    public CryomachineSimpleUiMessage(MessageType type)
-    {
-        Type = type;
-    }
-}
-
-/* Currently working on this (UI state)
-[Serializable, NetSerializable]
-public sealed class Cryomachine
-*/

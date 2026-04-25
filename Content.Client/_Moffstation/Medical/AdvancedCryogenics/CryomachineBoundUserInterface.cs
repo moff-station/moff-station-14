@@ -36,4 +36,12 @@ public sealed class CryomachineBoundUserInterface : BoundUserInterface
     {
         SendMessage(new CryomachineSimpleUiMessage(CryomachineSimpleUiMessage.MessageType.EjectBeaker));
     }
+
+    protected override void ReceiveMessage(BoundUserInterfaceMessage message)
+    {
+        if (message is not CryomachineUiState cast)
+            return;
+
+        base.ReceiveMessage(message);
+    }
 }

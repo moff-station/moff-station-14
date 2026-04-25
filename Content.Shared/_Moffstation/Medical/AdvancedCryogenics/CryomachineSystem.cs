@@ -3,17 +3,21 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class CryomachineSystem : EntitySystem
+public class SharedCryomachineSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] protected readonly IGameTiming _time = default!;
+    [Dependency] protected readonly SharedUserInterfaceSystem _ui = default!;
+
 
     /// <inheritdoc/>
 
@@ -32,7 +36,6 @@ public sealed class CryomachineSystem : EntitySystem
     }
 
     // TODO : make the sound play only when the machine is full.
-    // TODO : UI is as stupid as ever and won't play shit.
 
     private void OnCryomachineInit(Entity<CryomachineComponent> ent, ref ComponentInit args)
     {
