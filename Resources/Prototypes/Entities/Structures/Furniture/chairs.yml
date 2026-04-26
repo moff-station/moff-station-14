@@ -374,6 +374,25 @@
         Blunt: 8
     soundHit:
       collection: MetalThud
+  # Moffstation - Start - Folding Table & Chair
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+    # Moffstation - End
   - type: Construction
     graph: Seat
     node: chairFolding
