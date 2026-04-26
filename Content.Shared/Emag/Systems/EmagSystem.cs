@@ -1,4 +1,4 @@
-using Content.Shared._Impstation.Thaven.Components;
+using Content.Shared._Impstation.Thaven;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Charges.Components;
