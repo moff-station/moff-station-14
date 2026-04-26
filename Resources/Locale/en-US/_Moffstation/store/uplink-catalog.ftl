@@ -11,7 +11,7 @@ uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Techn
 
 # Allies
 uplink-spider-grenade-name = Jar of Spiders
-uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Vipers, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight. 
+uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Nightfangs, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight. 
 
 uplink-clown-spider-grenade-name = Jar of Clown Spiders
 uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spiders floating inside liquid happiness laugh away. Would be funny to throw at someone.
