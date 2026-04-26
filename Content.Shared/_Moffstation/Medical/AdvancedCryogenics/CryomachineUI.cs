@@ -1,4 +1,6 @@
 using Content.Shared.Atmos.Components;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.FixedPoint;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
@@ -26,16 +28,25 @@ public sealed class CryomachineSimpleUiMessage : BoundUserInterfaceMessage
 [Serializable, NetSerializable]
 public sealed class CryomachineUiState : BoundUserInterfaceMessage
 {
-    // public readonly EntityUid? Capsule; // not serializable
     public readonly GasMixEntry GasMix;
     public readonly CryoCapsuleEntry CryoCapsule;
-    public readonly NetEntity? CapsuleNetEnt;
+    public readonly NetEntity? CapsuleNetEnt;  // TODO : probably there is a better way to share this info.
+    public readonly FixedPoint2? BeakerCapacity;
+    public readonly List<ReagentQuantity>? Beaker;
+    //private List<ReagentQuantity>? Injecting;
 
-    public CryomachineUiState(GasMixEntry gasMix, CryoCapsuleEntry cryoCapsule,  NetEntity? capsuleNetEnt)
+    public CryomachineUiState(
+        GasMixEntry gasMix,
+        CryoCapsuleEntry cryoCapsule,
+        NetEntity? capsuleNetEnt,
+        FixedPoint2? beakerCapacity,
+        List<ReagentQuantity>? beaker)
     {
         GasMix = gasMix;
         CryoCapsule = cryoCapsule;
         CapsuleNetEnt = capsuleNetEnt;
+        BeakerCapacity = beakerCapacity;
+        Beaker = beaker;
     }
 }
 

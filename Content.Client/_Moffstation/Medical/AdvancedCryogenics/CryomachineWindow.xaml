@@ -31,9 +31,11 @@
                 </BoxContainer>
             </BoxContainer>
 
+            <PanelContainer StyleClasses="LowDivider" />
+
             <!-- Atmos info -->
             <BoxContainer Orientation="Vertical">
-                <Label Text = "Atmosphere Status :"/>
+                <Label Text = "Atmosphere :"/>
 
                 <BoxContainer Orientation="Horizontal"
                               SeparationOverride="20"
@@ -62,7 +64,10 @@
 
             </BoxContainer>
 
+            <PanelContainer StyleClasses="LowDivider" />
+
             <!-- Reagents -->
+            <Label Text = "Reagent :"/>
             <Control HorizontalExpand="True"
                      MinHeight="30">
                 <Label Name="NoBeakerText"

@@ -99,10 +99,11 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
         var gasMix = _gasAnalyzer.GenerateGasMixEntry("Cryo pod", air.Air);
         var cryoCapsule = _cryoCapsule.GenerateCryocapsuleEntry((capEnt, cap));
         var cryoCapsuleNetEnt = _entityManager.GetNetEntity(capEnt);
+        var (beakerCap, beaker) = GetBeakerInfo(ent);
 
         _ui.ServerSendUiMessage(
             ent.Owner,
             CryomachineUiKey.Key,
-            new CryomachineUiState(gasMix, cryoCapsule, cryoCapsuleNetEnt));
+            new CryomachineUiState(gasMix, cryoCapsule, cryoCapsuleNetEnt, beakerCap, beaker));
     }
 }

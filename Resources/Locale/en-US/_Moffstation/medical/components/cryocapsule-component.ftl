@@ -5,7 +5,7 @@ cryocapsule-lungs-slot-name = Lungs
 cryocapsule-stomach-slot-name = Stomach
 
 cryomachine-capsule-slot-name = Cryocapsule
-cryomachine-beaker-slot-name = Solution
+cryomachine-beaker-slot-name = Reagent
 
 # UI
 cryomachine-window-product-name = Test

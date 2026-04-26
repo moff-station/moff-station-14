@@ -1,5 +1,12 @@
+using System.Linq;
 using Content.Shared.Audio;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.FixedPoint;
+using Content.Shared.Medical.Cryogenics;
 using Content.Shared.Mind;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -23,6 +30,7 @@ public class SharedCryomachineSystem : EntitySystem
     [Dependency] protected readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] protected readonly CryocapsuleSystem _cryoCapsule = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
 
 
     /// <inheritdoc/>
@@ -48,6 +56,7 @@ public class SharedCryomachineSystem : EntitySystem
     private void OnCryomachineInit(Entity<CryomachineComponent> ent, ref ComponentInit args)
     {
         _itemSlots.AddItemSlot(ent.Owner, ent.Comp.CapsuleSlotId, ent.Comp.CapsuleSlot);
+        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.BeakerSlotId, ent.Comp.BeakerSlot);
     }
 
     private void OnInserted(Entity<CryomachineComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -99,6 +108,23 @@ public class SharedCryomachineSystem : EntitySystem
         {
             _mind.TransferTo(mindId, capsule, true, mind:mindComp);
         }
+    }
+
+
+    protected (FixedPoint2? capacity, List<ReagentQuantity>? reagents) GetBeakerInfo(Entity<CryomachineComponent> ent)
+    {
+        if (ent.Comp.BeakerSlot.Item is not { } beaker ||
+            ! TryComp<SolutionContainerManagerComponent>(beaker, out var containerComp) ||
+            ! TryComp<FitsInDispenserComponent>(beaker, out var dispenserComp) ||
+            ! _solutionContainer.TryGetFitsInDispenser((beaker,  dispenserComp, containerComp), out var solutionComp, out _))
+            return (null, null);
+
+        var capacity = solutionComp.Value.Comp.Solution.MaxVolume;
+        var reagents = solutionComp.Value.Comp.Solution.Contents
+            .Select(reagent =>new ReagentQuantity(reagent.Reagent, reagent.Quantity))
+            .ToList();
+
+        return (capacity, reagents);
     }
 }
 

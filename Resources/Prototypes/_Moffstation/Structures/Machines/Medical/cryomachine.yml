@@ -10,6 +10,11 @@
       whitelist:
         components:
         - Cryocapsule
+    beakerSlot:
+      name: cryomachine-beaker-slot-name
+      whitelist:
+        components:
+        - FitsInDispenser
   - type: Sprite
     sprite: _Moffstation/Structures/Machines/cryo_capsule.rsi
     drawdepth: Mobs
