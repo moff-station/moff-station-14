@@ -5,14 +5,14 @@
   description: A cyborg module which grant the unit magboots ability.
   abstract: true
   components:
+  - type: ActionBorgModule
+    actions:
+    - ActionBorgToggleMagboots
   - type: ComponentBorgModule
     components:
     - type: Magboots
       useGenericToggle: false
       magbootsAlert: MagbootsBorg
-    - type: ActionGrant
-      actions:
-      - ActionBorgToggleMagboots
 
 - type: entity
   parent: BaseAction

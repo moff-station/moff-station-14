@@ -4418,6 +4418,13 @@ Entries:
   id: 1165
   time: '2026-04-15T21:02:06.000'
   url: https://github.com/moff-station/moff-station-14/pull/1165
+- author: SeaWyrm
+  changes:
+  - message: Added Ossuary, a new lowpop map
+    type: add
+  id: 1168
+  time: '2026-04-26T11:22:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1168
 - author: Nyxilath
   changes:
   - message: Jukebox now have volume controls!
@@ -4944,6 +4951,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1287
 - author: DuckManZach
   changes:
+  - message: Rodded tiles are pried more accurately
+    type: fix
+  id: 1288
+  time: '2026-04-24T18:05:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1288
+- author: DuckManZach
+  changes:
   - message: Made hellportal mobs immune to spacing
     type: fix
   id: 1290
@@ -5011,5 +5025,56 @@ Entries:
   id: 1304
   time: '2026-04-23T05:44:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1304
+- author: SillyAmy
+  changes:
+  - message: Added a Zoey figure!
+    type: add
+  id: 1305
+  time: '2026-04-23T19:07:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1305
+- author: Tortosaur
+  changes:
+  - message: Added the Trico Chicken, make use of that Tricordrazine!
+    type: add
+  id: 1307
+  time: '2026-04-25T17:46:34.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1307
+- author: Centronias
+  changes:
+  - message: Salvage borg and derelict salvage borg walk speed as been increased to
+      the same speed as other cyborgs'.
+    type: tweak
+  - message: Salvage borg and derelict salvage borgs can now take more damage before
+      being incapacitated and before being destroyed.
+    type: tweak
+  id: 1312
+  time: '2026-04-24T19:00:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1312
+- author: Dave
+  changes:
+  - message: Bricktile decal se corner fix
+    type: fix
+  id: 1318
+  time: '2026-04-24T03:59:44.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1318
+- author: StudMuffin
+  changes:
+  - message: borgs with magboots ability are now able to see their laws again, rejoice
+      !
+    type: fix
+  id: 1319
+  time: '2026-04-24T20:49:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1319
+- author: nithead10
+  changes:
+  - message: Geras have selected traits now
+    type: fix
+  - message: Geras have passive regen
+    type: fix
+  - message: Geras can pilot shuttles
+    type: fix
+  id: 1320
+  time: '2026-04-25T16:53:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1320
 Name: Mofflog
 Order: -2
