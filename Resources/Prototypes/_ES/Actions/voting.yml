@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseMentalAction
+  id: ESActionStagehandVote
+  name: Vote
+  description: Control the flow of the round alongside other stagehands.
+  components:
+  - type: Action
+    icon:
+      sprite: _ES/Actions/stagehands.rsi
+      state: ballot
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent
+      key: enum.ESVoterUiKey.Key
