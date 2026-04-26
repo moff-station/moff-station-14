@@ -13,6 +13,7 @@ using Content.Shared._Impstation.Replicator;
 using Content.Shared._Impstation.SpawnedFromTracker;
 using Content.Shared.Actions;
 using Content.Shared.CombatMode;
+using Content.Shared.Emp;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
@@ -118,7 +119,7 @@ public sealed class ReplicatorSystem : EntitySystem
             if (!_inventory.TryGetSlotEntity(uid, "pocket1", out var pocket1) || !TryComp<PinpointerComponent>(pocket1, out var pinpointer))
                 continue;
             // set the target to the nest
-            _pinpointer.SetTarget(pocket1.Value, myNest, pinpointer);
+            _pinpointer.SetTarget((pocket1.Value, pinpointer), myNest);
 
             comp.MyNest = myNest;
         }
@@ -204,6 +205,6 @@ public sealed class ReplicatorSystem : EntitySystem
     {
         args.Affected = true;
         args.Disabled = true;
-        _stun.TryParalyze(ent, ent.Comp.EmpStunTime, true);
+        _stun.TryAddParalyzeDuration(ent, ent.Comp.EmpStunTime);
     }
 }

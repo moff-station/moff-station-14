@@ -1,10 +1,5 @@
-// these are HEAVILY based on the Bingle free-agent ghostrole from GoobStation, but reflavored and reprogrammed to make them more Robust (and less of a meme.)
-// all credit for the core gameplay concepts and a lot of the core functionality of the code goes to the folks over at Goob, but I re-wrote enough of it to justify putting it in our filestructure.
-// the original Bingle PR can be found here: https://github.com/Goob-Station/Goob-Station/pull/1519
-
 using Content.Server._Impstation.Administration.Components;
 using Content.Server.Actions;
-using Content.Server.Announcements.Systems;
 using Content.Server.Audio;
 using Content.Server.Buckle.Systems;
 using Content.Server.GameTicking;
@@ -37,7 +32,9 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
+using Content.Server.Chat.Systems;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Storage.Components;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 
 namespace Content.Server._Impstation.Replicator;
@@ -61,7 +58,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
     [Dependency] private readonly PinpointerSystem _pinpointer = default!;
     [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly AnnouncerSystem _announcer = default!;
+    [Dependency] private readonly ChatSystem _announcer = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entStorage = default!;
@@ -97,11 +94,11 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             if (!nestComp.HasAnnounced && nestComp.CurrentLevel >= nestComp.AnnounceAtLevel)
             {
                 nestComp.HasAnnounced = true;
-                _announcer.SendAnnouncement("announce", Filter.Broadcast(), nestComp.Announcement, colorOverride: Color.Red);
+                _announcer.DispatchGlobalAnnouncement("announce", nestComp.Announcement, colorOverride: Color.Red);
             }
 
             // delete entities that have anything on the blacklist, OR don't have anything on the whitelist AND don't have a mind.
-            if (_whitelist.IsBlacklistPass(nestComp.PreservationBlacklist, uid) || !_whitelist.IsWhitelistPass(nestComp.PreservationWhitelist, uid)
+            if (_whitelist.IsWhitelistPass(nestComp.PreservationBlacklist, uid) || !_whitelist.IsWhitelistPass(nestComp.PreservationWhitelist, uid)
                 && !TryComp<MindContainerComponent>(uid, out var mind) | (mind != null && !mind!.HasMind))
                 toDel.Add(uid);
 
@@ -150,7 +147,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             return;
 
         // *reject* if blacklisted
-        if (_whitelist.IsBlacklistPass(ent.Comp.Blacklist, args.Tripper))
+        if (_whitelist.IsWhitelistPass(ent.Comp.Blacklist, args.Tripper))
         {
             if (TryComp<PullableComponent>(args.Tripper, out var pullable) && pullable.BeingPulled)
                 _pulling.TryStopPull(args.Tripper, pullable);
@@ -314,7 +311,7 @@ public sealed class ReplicatorNestSystem : SharedReplicatorNestSystem
             if (!_inventory.TryGetSlotEntity(upgradedNotNull, "pocket1", out var pocket1) || !TryComp<PinpointerComponent>(pocket1, out var pinpointer))
                 continue;
 
-            _pinpointer.SetTarget(pocket1.Value, queen, pinpointer);
+            _pinpointer.SetTarget((pocket1.Value, pinpointer), queen);
             _popup.PopupEntity(Loc.GetString("replicator-nest-destroyed"), uid, uid, Shared.Popups.PopupType.LargeCaution);
         }
     }
