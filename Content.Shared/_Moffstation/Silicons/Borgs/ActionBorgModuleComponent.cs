@@ -1,4 +1,6 @@
+using Content.Shared.Actions;
 using Content.Shared.Silicons.Borgs.Components;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Silicons.Borgs;
@@ -10,7 +12,7 @@ namespace Content.Shared._Moffstation.Silicons.Borgs;
 /// Attempting to do this by adding an <see cref="ActionGrantComponent"/> via a <see cref="ComponentBorgModuleComponent"/>
 /// will override any ActionGrantComponent already present in the entity.
 /// </remarks>
-[RegisterComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ActionBorgModuleComponent : Component
 {
     /// <summary>
@@ -19,6 +21,6 @@ public sealed partial class ActionBorgModuleComponent : Component
     [DataField(required: true), AutoNetworkedField]
     public List<EntProtoId> Actions = new();
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public List<EntityUid> ActionEntities = new();
 }
