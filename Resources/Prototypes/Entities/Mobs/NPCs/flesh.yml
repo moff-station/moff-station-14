@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ SimpleMobBase, MobCombat ]
+  parent: [ SimpleSpaceMobBase, MobCombat ] # Moffstation - Make them space immune
   id: BaseMobFlesh
   name: aberrant flesh
   description: A shambling mass of flesh, animated through anomalous energy.
