@@ -22,6 +22,7 @@ using Robust.Shared.Utility;
 
 // CD: imports
 using Content.Server._CD.Records;
+using Content.Server._Moffstation.Database;
 using Content.Shared._CD.Records;
 
 namespace Content.Server.Database
@@ -1679,6 +1680,27 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
             await db.DbContext.SaveChangesAsync();
             return true;
+        }
+
+        #endregion
+
+        #region LibraryRepo
+        // Moffstation - Everything in this region is moff
+
+        // Get the entire library repo
+        public async Task<List<PlayerBookRecord>> GetLibraryRepo(CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.MoffLibraryEntries
+                .AsNoTracking()
+                .Select(entry => new PlayerBookRecord(
+                    entry.Id,
+                    entry.Name,
+                    entry.Description,
+                    entry.Author,
+                    entry.Content,
+                    entry.Type))
+                .ToListAsync(cancel);
         }
 
         #endregion
