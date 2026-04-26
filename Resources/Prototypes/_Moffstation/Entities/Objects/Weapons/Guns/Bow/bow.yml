@@ -1,57 +1,8 @@
 - type: entity
-  name: bow2
-  parent: [BaseItem, BaseMinorContraband]
-  id: BaseBow2
-  description: The original rooty tooty point and shooty.
-  abstract: true
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Bow/bow.rsi
-  - type: Item
-    size: Normal
-  - type: Clothing
-    quickEquip: false
-    slots:
-      - Back
-      - suitStorage
-  - type: Wieldable
-    wieldSound:
-      path: /Audio/Items/bow_pull.ogg
-  - type: UseDelay
-    delay: 0.6
-  - type: GunRequiresWield
-  - type: Gun
-    minAngle: 0
-    maxAngle: 5
-    fireRate: 1
-    selectedMode: SemiAuto
-    availableModes:
-    - SemiAuto
-    soundGunshot:
-      collection: BulletMiss
-    soundEmpty: null
-  - type: AmmoCounter
-    insertSound: /Audio/Weapons/Guns/Misc/arrow_nock.ogg
-  - type: BallisticAmmoProvider
-    whitelist:
-      tags:
-      - Arrow
-      - Plunger
-    capacity: 2
-    soundInsert:
-      path: /Audio/Weapons/Guns/Misc/arrow_nock.ogg
-    soundCycle:
-      path: /Audio/Weapons/Guns/Misc/arrow_nock.ogg
-  - type: ContainerContainer
-    cycleSound: /Audio/Weapons/Guns/Misc/arrow_nock.ogg
-    containers:
-      ballistic-ammo: !type:Container
-        ents: []
-
-- type: entity
-  id: BowImprovised2
+  id: BowCompound
   parent: BaseBow
-  name: improvised shortbow2
+  name: Compound Bow
+  description: A bow with a pulley system easing the drawing process. Designed for old fashion hunting.
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Bow/bow.rsi
@@ -70,7 +21,7 @@
   # arrow is removed -> itemmapper sets layer with map `arrow` to invisible
   - type: Appearance
   - type: UseDelay
-    delay: 0.6
+    delay: 0.5
   - type: ItemMapper
     spriteLayers:
     - arrow
@@ -96,55 +47,3 @@
         base:
           True: { state: wielded }
           False: { state: unwielded }
-  - type: Construction
-    graph: ImprovisedBow
-    node: ImprovisedBow
-
-- type: entity
-  id: BowImprovised3
-  parent: BaseBow2
-  name: improvised shortbow3
-  components:
-  - type: Sprite
-    layers:
-    - state: unwielded
-      map: [ base ]
-    - state: unwielded-arrow
-      map: [ arrow ]
-      visible: false
-    - state: unwielded-plunger
-      map: [ plunger ]
-      visible: false
-  # to elucidate whats intended here:
-  # arrow is inserted -> ItemMapper sets layer with map `arrow` to visible
-  # bow is wielded -> generic vis sets states of layers with map `arrow` and `base`
-  # arrow is removed -> itemmapper sets layer with map `arrow` to invisible
-  - type: Appearance
-  - type: ItemMapper
-    spriteLayers:
-    - arrow
-    - plunger
-    mapLayers:
-      arrow:
-        whitelist:
-          tags:
-          - Arrow
-      plunger:
-        whitelist:
-          tags:
-          - Plunger
-  - type: GenericVisualizer
-    visuals:
-      enum.WieldableVisuals.Wielded:
-        arrow:
-          True: { state: wielded-arrow }
-          False: { state: unwielded-arrow }
-        plunger:
-          True: { state: wielded-plunger }
-          False: { state: unwielded-plunger }
-        base:
-          True: { state: wielded }
-          False: { state: unwielded }
-  - type: Construction
-    graph: ImprovisedBow
-    node: ImprovisedBow

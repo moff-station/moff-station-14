@@ -2,13 +2,13 @@
   parent: CrateGenericSteel
   id: CrateCompoundBow
   name: Compound Bow crate
-  description: Contains one Compound Bow with a quiver full of carp teeth arrows. Requires Armory access to open.
+  description: Contains one Compound Bow with a quiver full of carp teeth arrows for use by salvage.
   components:
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:AllSelector
         children:
-        - id: BowImprovised2
+        - id: BowCompound
           amount: 1
         - id: ClothingBeltQuiverFill
           amount: 1
