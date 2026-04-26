@@ -23,8 +23,15 @@
     - id: Zipties
 
 - type: entityTable
-  id: ClothingBeltQuiverEntityTable
+  id: ClothingBeltQuiverCarpEntityTable
   table: !type:AllSelector
     children:
     - id: ArrowImprovisedCarp
+      amount: 16
+
+- type: entityTable
+  id: ClothingBeltQuiverPlasmaEntityTable
+  table: !type:AllSelector
+    children:
+    - id: ArrowImprovisedPlasma
       amount: 16

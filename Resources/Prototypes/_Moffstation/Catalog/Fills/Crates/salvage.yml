@@ -1,7 +1,7 @@
 - type: entity
   parent: CrateGenericSteel
   id: CrateCompoundBow
-  name: Compound Bow crate
+  name: compound bow crate
   description: Contains one Compound Bow with a quiver full of carp teeth arrows for use by salvage.
   components:
   - type: EntityTableContainerFill
@@ -10,5 +10,16 @@
         children:
         - id: BowCompound
           amount: 1
-        - id: ClothingBeltQuiverFill
+        - id: ClothingBeltQuiverCarpFill
           amount: 1
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CratePlasmaArrow
+  name: plasma arrow crate
+  description: Contains a quiver full of plasma shard arrows for use by salvage.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ClothingBeltQuiverPlasmaFill
