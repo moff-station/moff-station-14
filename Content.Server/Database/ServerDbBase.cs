@@ -22,8 +22,8 @@ using Robust.Shared.Utility;
 
 // CD: imports
 using Content.Server._CD.Records;
-using Content.Server._Moffstation.Database;
 using Content.Shared._CD.Records;
+using Content.Shared._Moffstation.Librarian;
 
 namespace Content.Server.Database
 {
@@ -1688,19 +1688,41 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         // Moffstation - Everything in this region is moff
 
         // Get the entire library repo
-        public async Task<List<PlayerBookRecord>> GetLibraryRepo(CancellationToken cancel = default)
+        public async Task<List<MoffModel.MoffLibraryEntry>> GetLibraryRepo(bool approvedOnly, Guid? requester, bool randomBook, CancellationToken cancel = default)
         {
             await using var db = await GetDb(cancel);
             return await db.DbContext.MoffLibraryEntries
                 .AsNoTracking()
-                .Select(entry => new PlayerBookRecord(
-                    entry.Id,
-                    entry.Name,
-                    entry.Description,
-                    entry.Author,
-                    entry.Content,
-                    entry.Type))
+                .Include(e => randomBook && e.AppearRandomly
+                              || !approvedOnly
+                              || e.Approved
+                              || e.AuthorUserId == requester)
                 .ToListAsync(cancel);
+        }
+
+        public async Task<bool> AddOrUpdateLibraryEntry(PlayerBook submission, Guid uploader, bool randomBookPool, bool adminApproved, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var entry = await db.DbContext.MoffLibraryEntries
+                .Include(e => e.Name == submission.Name)
+                .SingleOrDefaultAsync(cancel);
+
+            entry = new MoffModel.MoffLibraryEntry()
+            {
+                Name = submission.Name,
+                Description = submission.Description,
+                Author = submission.Author,
+                Content = submission.Content,
+                Type  = submission.Type,
+                AuthorUserId = uploader,
+                AppearRandomly = randomBookPool,
+                Approved = adminApproved,
+            };
+
+
+            await db.DbContext.SaveChangesAsync(cancel);
+            return true;
         }
 
         #endregion

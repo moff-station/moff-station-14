@@ -1,4 +1,5 @@
 using System.IO.Compression;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Librarian;
@@ -22,12 +23,14 @@ public struct PlayerBook
     public string Description = default!;
     public string Author = default!;
     public string Content = default!;
+    public EntProtoId Type = default!;
 
-    internal PlayerBook(string name, string description, string author, string content)
+    internal PlayerBook(string name, string description, string author, string content, EntProtoId type)
     {
         Name = name;
         Description = description;
         Author = author;
         Content = content;
+        Type = type;
     }
 }
