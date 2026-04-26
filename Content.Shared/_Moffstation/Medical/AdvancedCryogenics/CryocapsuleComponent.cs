@@ -1,75 +1,30 @@
+using Content.Shared.Body;
 using Content.Shared.Containers.ItemSlots;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 
 /// <summary>
-/// This is used for...
+/// This is used to handle entities who's internal organs are exposed and can be placed / removed.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CryocapsuleComponent : Component
 {
-    #region organs slots
-
     /// <summary>
-    /// The ID of the <see cref="ItemSlot"/> that holds the brain.
+    /// Organ types that can be inserted inside the capsule.
     /// </summary>
     [DataField]
-    public string BrainSlotId = "brain_slot";
+    public HashSet<ProtoId<OrganCategoryPrototype>> OrganWhitelist = new HashSet<ProtoId<OrganCategoryPrototype>>()
+    {
+
+    };
 
     /// <summary>
-    /// The <see cref="ItemSlot"/> that holds the brain.
-    /// </summary>
-    [DataField(required: true)]
-    public ItemSlot BrainSlot = new();
-
-    /// <summary>
-    /// The ID of the <see cref="ItemSlot"/> that holds the eyes.
+    /// Organs already present in the body.
     /// </summary>
     [DataField]
-    public string EyesSlotId = "eyes_slot";
-
-    [DataField]
-    public ItemSlot EyesSlot = new();
-
-    /// <summary>
-    /// The ID of the <see cref="ItemSlot"/> that holds the lungs.
-    /// </summary>
-    [DataField]
-    public string LungSlotId = "lung_slot";
-
-    /// <summary>
-    /// The <see cref="ItemSlot"/> that holds the lungs.
-    /// </summary>
-    [DataField]
-    public ItemSlot LungSlot = new();
-
-    /// <summary>
-    /// The ID of the <see cref="ItemSlot"/> that holds the lungs.
-    /// </summary>
-    [DataField]
-    public string HeartSlotId = "heart_slot";
-
-    /// <summary>
-    /// The <see cref="ItemSlot"/> that holds the lungs.
-    /// </summary>
-    [DataField]
-    public ItemSlot HeartSlot = new();
-
-
-    /// <summary>
-    /// The ID of the <see cref="ItemSlot"/> that holds the stomach.
-    /// </summary>
-    [DataField]
-    public string StomachSlotId = "stomach_slot";
-
-    /// <summary>
-    /// The <see cref="ItemSlot"/> that holds the stomach.
-    /// </summary>
-    [DataField]
-    public ItemSlot StomachSlot = new();
-
-    #endregion
+    public Dictionary<ProtoId<OrganCategoryPrototype>, EntityUid> Organs = new();
 }
 
 

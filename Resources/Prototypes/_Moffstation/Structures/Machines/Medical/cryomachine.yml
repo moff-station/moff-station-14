@@ -1,8 +1,11 @@
+# TODO : on inserted, give the InsideCryomachine component
 - type: entity
   parent: BaseStructure
   id: CLSMachine
   name: cryogenic life support
   description: A machine able to keep organs alive in absence of a body.
+  placement:
+    mode: SnapgridCenter
   components:
   - type: Cryomachine
     capsuleSlot:
@@ -26,6 +29,7 @@
       map: [ "enum.PipeVisualLayers.Pipe" ]
     - state: machine-empty
       map: [ "enum.CryoPodVisualLayers.Base" ]
+      renderingStrategy: Default
   - type: Appearance
   - type: GenericVisualizer
     visuals:

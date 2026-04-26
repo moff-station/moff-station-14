@@ -53,8 +53,17 @@ public sealed partial class CryomachineWindow : FancyWindow
     private void SetCapsule(CryoCapsuleEntry entry, NetEntity? capsule)
     {
         if (capsule is { } entity)
-            CapsuleSprite.SetEntity(entity);
+            SpriteView.SetEntity(entity);
         JumpStartBrainButton.Disabled = !entry.BrainPresent;
+
+        NameLabel.Text = "CryoCapsule";
+        SpeciesLabel.Text = "Ready";
+
+        BrainStatusLabel.Text = Loc.GetString(entry.BrainPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
+        EyesStatusLabel.Text = Loc.GetString(entry.EyesPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
+        HeartStatusLabel.Text = Loc.GetString(entry.HeartPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
+        LungsStatusLabel.Text = Loc.GetString(entry.LungPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
+        StomachStatusLabel.Text = Loc.GetString(entry.StomachPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
     }
 
     private void SetGasMix(GasMixEntry mix)
