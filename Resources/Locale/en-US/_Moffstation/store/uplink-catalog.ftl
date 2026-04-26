@@ -8,3 +8,6 @@ uplink-hypereutatic-blade-moff-desc = A gigantic energy sword with power that ma
 # Wearables
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
+
+uplink-clothing-infiltrator-headset-name = Syndicate Infiltrator Headset
+uplink-clothing-infiltrator-headset-desc = A sleek headset designed for infiltration, the use of redspace technology allows it to hold up to 6 keys but it comes with no keys inside. Usage of Redspace is not covered by health insurance.
