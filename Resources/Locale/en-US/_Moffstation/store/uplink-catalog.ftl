@@ -9,6 +9,9 @@ uplink-hypereutatic-blade-moff-desc = A gigantic energy sword with power that ma
 uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
 
+uplink-clothing-infiltrator-headset-name = Syndicate Infiltrator Headset
+uplink-clothing-infiltrator-headset-desc = A sleek headset designed for infiltration, the use of redspace technology allows it to hold up to 6 keys but it comes with no keys inside. Usage of Redspace is not covered by health insurance.
+
 # Allies
 uplink-spider-grenade-name = Jar of Spiders
 uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Nightfangs, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight. 

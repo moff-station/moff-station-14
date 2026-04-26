@@ -13,9 +13,35 @@
     thresholds:
       0: Alive
       80: Dead # weak af tho
+  - type: PassiveDamage # Around 8 damage a minute healed
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Heat: -0.14
+        Blunt: -0.05
+        Piercing: -0.05
+        Slash: -0.05
+  - type: Bloodstream
+    bloodReferenceSolution: # Geras bloodstream size = slimeperson bloodstream size
+      reagents:
+        - ReagentId: Slime
+          Quantity: 300
+  - type: Identity
   - type: NpcFactionMember
     factions:
     - NanoTrasen
+  - type: StatusEffects
+    allowed:
+      - Electrocution
+      - RatvarianLanguage
+      - PressureImmunity
+      - Muted
+      - TemporaryBlindness
+      - Pacified
+      - Flashed
+      - RadiationProtection
+      - Adrenaline
   - type: MultiHandedItem
   - type: Item
     size: Huge
@@ -89,6 +115,7 @@
   - type: Puller
   - type: Cuffable
   - type: CanEscapeInventory
+  - type: Blindable
   - type: Geras
   - type: EntityTableContainerFill
     containers:
@@ -97,6 +124,11 @@
         - id: OrganSlimePersonCore
         - id: OrganSlimePersonLungs
         - id: OrganGerasTorso
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    - CanPilot
 
 
 - type: entity

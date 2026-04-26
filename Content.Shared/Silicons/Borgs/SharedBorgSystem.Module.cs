@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Silicons.Borgs; // Moffstation
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction.Components;
@@ -9,7 +10,7 @@ namespace Content.Shared.Silicons.Borgs;
 
 public abstract partial class SharedBorgSystem
 {
-    private EntityQuery<BorgModuleComponent> _moduleQuery;
+    [Dependency] private readonly EntityQuery<BorgModuleComponent> _moduleQuery = default!;
 
     public void InitializeModule()
     {
@@ -31,7 +32,10 @@ public abstract partial class SharedBorgSystem
         SubscribeLocalEvent<ComponentBorgModuleComponent, BorgModuleRelayedEvent<BorgModuleInsertAttemptEvent>>(
             OnComponentModuleInstalledRelay);
 
-        _moduleQuery = GetEntityQuery<BorgModuleComponent>();
+        // Moffstation - start
+        SubscribeLocalEvent<ActionBorgModuleComponent, BorgModuleInstalledEvent>(OnActionModuleInstalled);
+        SubscribeLocalEvent<ActionBorgModuleComponent, BorgModuleUninstalledEvent>(OnActionModuleUninstalled);
+        // Moffstation - end
     }
 
     #region BorgModule
@@ -274,4 +278,29 @@ public abstract partial class SharedBorgSystem
         }
     }
     #endregion
+
+    // Moffstation - start
+    private void OnActionModuleInstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleInstalledEvent args)
+    {
+        foreach (var action in ent.Comp.Actions)
+        {
+            EntityUid? actionEnt = null;
+            _actions.AddAction(args.ChassisEnt, ref actionEnt, action);
+
+            if (actionEnt != null)
+                ent.Comp.ActionEntities.Add(actionEnt.Value);
+        }
+        Dirty(ent);
+    }
+
+    private void OnActionModuleUninstalled(Entity<ActionBorgModuleComponent> ent, ref BorgModuleUninstalledEvent args)
+    {
+        foreach (var actionEnt in ent.Comp.ActionEntities)
+        {
+            _actions.RemoveAction(args.ChassisEnt, actionEnt);
+        }
+        ent.Comp.Actions.Clear();
+        Dirty(ent);
+    }
+    // Moffstation - end
 }

@@ -1,0 +1,9 @@
+- type: entity
+  id: BannerSoviet
+  parent: BannerBase
+  name: soviet banner
+  description: A banner displaying the Sector's Soviet Party Logo. It looks rather social.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Decoration/banner.rsi
+    state: banner_social

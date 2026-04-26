@@ -1,0 +1,13 @@
+﻿- type: entity
+  id: XenoArtifactFlashbang
+  parent: BaseXenoArtifactEffect
+  description: Visual distortions
+  components:
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: RandomSpawner
+      deleteSpawnerAfterSpawn: false
+      prototypes:
+      - AdminInstantEffectFlashSound
