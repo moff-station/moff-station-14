@@ -320,9 +320,9 @@
   description: A formal armored spacesuit, made for the station's captain.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/capspace.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/capspace.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/capspace.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/capspace.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
@@ -425,9 +425,9 @@
   description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/rd.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/rd.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/rd.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/rd.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
@@ -1025,9 +1025,9 @@
   description: A custom-made clown hardsuit.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/clown.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/clown.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/clown.rsi # Moffstation
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
@@ -1058,9 +1058,9 @@
   description: A custom-made mime hardsuit.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/mime.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/mime.rsi
   - type: Clothing
-    sprite: Clothing/OuterClothing/Hardsuits/mime.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Hardsuits/mime.rsi
   - type: Construction
     graph: MimeHardsuit
     node: mimeHardsuit
