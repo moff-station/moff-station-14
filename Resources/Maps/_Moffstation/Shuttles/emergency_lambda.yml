@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: wizards
   forkVersion: 4abdcf7a733a1331bd69a6760592166489c48bc2
-  time: 03/31/2026 06:45:36
-  entityCount: 564
+  time: 04/27/2026 08:01:26
+  entityCount: 568
 maps: []
 grids:
 - 1
@@ -793,11 +793,6 @@ entities:
     - type: Transform
       pos: -2.5,-1.5
       parent: 1
-  - uid: 119
-    components:
-    - type: Transform
-      pos: -1.5,-1.5
-      parent: 1
   - uid: 120
     components:
     - type: Transform
@@ -832,6 +827,11 @@ entities:
     components:
     - type: Transform
       pos: 4.5,-2.5
+      parent: 1
+  - uid: 422
+    components:
+    - type: Transform
+      pos: -2.5,-2.5
       parent: 1
 - proto: CableMV
   entities:
@@ -1751,11 +1751,6 @@ entities:
       parent: 1
 - proto: ChairPilotSeat
   entities:
-  - uid: 7
-    components:
-    - type: Transform
-      pos: -2.5,-0.5
-      parent: 1
   - uid: 11
     components:
     - type: Transform
@@ -2135,6 +2130,11 @@ entities:
     - type: Transform
       pos: 3.5,-2.5
       parent: 1
+  - uid: 7
+    components:
+    - type: Transform
+      pos: -2.5,-2.5
+      parent: 1
   - uid: 9
     components:
     - type: Transform
@@ -2427,11 +2427,11 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 7.5,-2.5
       parent: 1
-  - uid: 422
+  - uid: 424
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: -1.5,-2.5
+      pos: -2.5,-2.5
       parent: 1
 - proto: PlasmaWindoorSecureEngineeringLocked
   entities:
@@ -2470,6 +2470,12 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 4.5,-2.5
+      parent: 1
+  - uid: 568
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.5,-2.5
       parent: 1
 - proto: PowerCellRecharger
   entities:
@@ -2527,11 +2533,29 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5,11.5
       parent: 1
+  - uid: 565
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -4.5,11.5
+      parent: 1
+  - uid: 566
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.5,-0.5
+      parent: 1
+  - uid: 567
+    components:
+    - type: Transform
+      pos: 4.5,-0.5
+      parent: 1
 - proto: RCDEmpty
   entities:
   - uid: 562
     components:
     - type: Transform
+      rot: 4.974188368183839 rad
       pos: -0.81802607,8.281982
       parent: 1
 - proto: SheetPlasteel1
@@ -2680,14 +2704,11 @@ entities:
       parent: 1
 - proto: SuitStorageEngi
   entities:
-  - uid: 424
+  - uid: 119
     components:
     - type: Transform
-      pos: -2.5,-2.5
+      pos: -2.5,-0.5
       parent: 1
-    - type: AccessReader
-      accessListsOriginal:
-      - - Engineering
 - proto: SuitStorageEVA
   entities:
   - uid: 385

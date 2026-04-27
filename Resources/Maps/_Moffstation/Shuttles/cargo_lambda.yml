@@ -4,7 +4,7 @@ meta:
   engineVersion: 272.0.0
   forkId: wizards
   forkVersion: 4abdcf7a733a1331bd69a6760592166489c48bc2
-  time: 03/30/2026 08:04:48
+  time: 04/27/2026 05:57:29
   entityCount: 166
 maps: []
 grids:
@@ -136,6 +136,7 @@ entities:
     - type: TileHistory
       chunkHistory: {}
     - type: ExplosionAirtightGrid
+    - type: CargoShuttle
 - proto: AirCanister
   entities:
   - uid: 158
@@ -858,6 +859,14 @@ entities:
     - type: Transform
       pos: 1.5,6.5
       parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        25:
+        - - Pressed
+          - Toggle
+        64:
+        - - Pressed
+          - Toggle
     - type: Fixtures
       fixtures: {}
 - proto: SMESBasic
