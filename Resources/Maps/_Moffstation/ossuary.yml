@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2026 00:36:54
-  entityCount: 11875
+  time: 04/27/2026 00:53:13
+  entityCount: 11878
 maps:
 - 1
 grids:
@@ -7672,7 +7672,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -175270.34
+      secondsUntilStateChange: -176242.8
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -28101,6 +28101,12 @@ entities:
       parent: 2
 - proto: ComputerCriminalRecords
   entities:
+  - uid: 263
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 11.5,13.5
+      parent: 2
   - uid: 604
     components:
     - type: Transform
@@ -28118,12 +28124,6 @@ entities:
     - type: AccessReader
       accessListsOriginal:
       - - Security
-  - uid: 2129
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 11.5,13.5
-      parent: 2
 - proto: ComputerFundingAllocation
   entities:
   - uid: 1760
@@ -29455,25 +29455,25 @@ entities:
       parent: 2
 - proto: CryogenicSleepUnitSpawnerLateJoin
   entities:
-  - uid: 2176
+  - uid: 268
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.5,-45.5
       parent: 2
-  - uid: 2177
+  - uid: 2129
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.5,-46.5
       parent: 2
-  - uid: 2178
+  - uid: 2176
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.5,-47.5
       parent: 2
-  - uid: 3480
+  - uid: 2177
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -36048,6 +36048,14 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
+  - uid: 11513
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.5,-7.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
 - proto: FloorTileItemBar
   entities:
   - uid: 2921
@@ -36402,7 +36410,7 @@ entities:
   - uid: 4308
     components:
     - type: Transform
-      pos: -7.4902916,-9.02887
+      pos: -7.95968,-9.305525
       parent: 2
 - proto: FoodBakedBunHotX
   entities:
@@ -37014,7 +37022,7 @@ entities:
   - uid: 4306
     components:
     - type: Transform
-      pos: -7.6582537,-8.942648
+      pos: -7.9380608,-9.559563
       parent: 2
 - proto: FoodSnackSus
   entities:
@@ -37116,7 +37124,7 @@ entities:
   - uid: 4307
     components:
     - type: Transform
-      pos: -7.4554377,-8.786784
+      pos: -7.941765,-9.617063
       parent: 2
 - proto: GasAnalyzer
   entities:
@@ -54714,12 +54722,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -9.5,-6.5
       parent: 2
-  - uid: 263
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -7.5,-9.5
-      parent: 2
   - uid: 264
     components:
     - type: Transform
@@ -54746,6 +54748,12 @@ entities:
     components:
     - type: Transform
       pos: 14.5,-0.5
+      parent: 2
+  - uid: 11511
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-6.5
       parent: 2
 - proto: Hypospray
   entities:
@@ -58314,7 +58322,7 @@ entities:
   - uid: 3243
     components:
     - type: Transform
-      pos: -7.543646,-9.211338
+      pos: -7.985109,-9.183196
       parent: 2
 - proto: PaperCaptainsThoughts
   entities:
@@ -64919,6 +64927,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.5,-11.5
       parent: 2
+  - uid: 11512
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.5,-7.5
+      parent: 2
 - proto: SmartFridgeMedical
   entities:
   - uid: 292
@@ -67424,7 +67438,7 @@ entities:
   - uid: 3127
     components:
     - type: Transform
-      pos: -7.301913,-9.117325
+      pos: -7.938062,-9.39064
       parent: 2
 - proto: TelecomServer
   entities:
@@ -68226,6 +68240,13 @@ entities:
     - type: Transform
       pos: -16.5,3.5
       parent: 2
+- proto: VendingMachineNutri
+  entities:
+  - uid: 3480
+    components:
+    - type: Transform
+      pos: -9.5,-4.5
+      parent: 2
 - proto: VendingMachinePride
   entities:
   - uid: 1972
@@ -68275,18 +68296,15 @@ entities:
       parent: 2
 - proto: VendingMachineSeeds
   entities:
-  - uid: 268
-    components:
-    - type: Transform
-      pos: -9.5,-4.5
-      parent: 2
-    - type: AccessReader
-      accessListsOriginal:
-      - - Hydroponics
   - uid: 514
     components:
     - type: Transform
       pos: 12.5,2.5
+      parent: 2
+  - uid: 2178
+    components:
+    - type: Transform
+      pos: -7.5,-9.5
       parent: 2
 - proto: VendingMachineSustenance
   entities:
