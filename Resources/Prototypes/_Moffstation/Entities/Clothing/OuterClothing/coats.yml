@@ -21,6 +21,17 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/captainlongcoat.rsi
 
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase,ClothingOuterCoatCaptainLongcoat, BaseCommandContraband]
+  id: ClothingOuterCaptainTrenchcoat
+  name: captain's trenchcoat
+  description: A trenchcoat befitting of a captain commanding a galactic fleet, weaved with specially resistant durathread.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captaintrenchcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captaintrenchcoat.rsi
+
 # RD
 - type: entity
   parent: [ClothingOuterBase, BaseCommandContraband]
