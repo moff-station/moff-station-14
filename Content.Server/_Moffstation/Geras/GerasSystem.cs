@@ -141,7 +141,7 @@ public sealed class GerasSystem : EntitySystem
 
 
         // TODO: Do this without the ID getting its own special thing
-        // We do this because we may end up dropping whatever is in the ID slot before it would get transferred by the other thing
+        // We do this because we may unequip the jumpsuit which drops the ID prior to attempt to transfer the ID
         if (_inventory.TryGetSlotEntity(uid, GerasIdSlot, out var id) && id is { } idUid)
         {
             _inventory.TryEquip(geras, idUid, GerasIdSlot, true, true);
