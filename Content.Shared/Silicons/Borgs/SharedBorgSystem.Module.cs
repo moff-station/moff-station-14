@@ -299,7 +299,7 @@ public abstract partial class SharedBorgSystem
         {
             _actions.RemoveAction(args.ChassisEnt, actionEnt);
         }
-        ent.Comp.Actions.Clear();
+        ent.Comp.ActionEntities.Clear();
         Dirty(ent);
     }
     // Moffstation - end
