@@ -53,3 +53,14 @@
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodpierrot.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodpierrot.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterSoviet
+  categories: [ HideSpawnMenu ]
+  name: soviet winter coat hood
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsoviet.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsoviet.rsi
