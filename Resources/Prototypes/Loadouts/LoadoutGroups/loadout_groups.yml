@@ -184,6 +184,7 @@
   - CaptainOuterClothing
   - CaptainWintercoat
   # Moffstation - Start
+  - CaptainTrenchcoat
   - CaptainLongcoat
   - CaptainFestivecoat
   # Moffstation - End
@@ -225,6 +226,9 @@
   loadouts:
   - HoPCloak
   - HoPMantle
+  # Moffstation - Start - New Command Outfits
+  - HoPScarf
+  # Moffstation - End - New Command Outfits
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -1155,6 +1159,9 @@
   loadouts:
   - ResearchDirectorMantle
   - ResearchDirectorCloak
+  # Moffstation - Start - New Command Outfits
+  - RdScarf
+  # Moffstation - End - New Command Outfits
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
@@ -1332,6 +1339,9 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
+  # Moffstation - Start - New Command Outfits
+  - HOSScarf
+  # Moffstation - End - New Command Outfits
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
