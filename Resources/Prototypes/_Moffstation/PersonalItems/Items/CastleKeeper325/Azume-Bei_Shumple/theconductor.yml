@@ -19,6 +19,8 @@
     sprite: _Moffstation/PersonalItems/Items/CastleKeeper325/Azume-Bei_Shumple/theconductor.rsi
   - type: DetailExaminable
     content: Etched along the back side of the fingerboard is the image of a train with a zombified clown holding a stop sign as the driver.
+  - type: ActivatableUI
+    inHandsOnly: false
 
 - type: loadout
   id: PersonalItemAzumeGuitar
