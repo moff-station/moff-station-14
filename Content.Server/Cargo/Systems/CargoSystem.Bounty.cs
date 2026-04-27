@@ -737,7 +737,7 @@ public sealed partial class CargoSystem
                     foreach (var research in bountyItem.RequiredResearch)
                     {
 
-                        var query = EntityManager.EntityQueryEnumerator<TechnologyDatabaseComponent>();
+                        var query = EntityQueryEnumerator<TechnologyDatabaseComponent>();
 
                         while (query.MoveNext(out var tEntityUid, out var technologyDatabaseComponent))
                         {
