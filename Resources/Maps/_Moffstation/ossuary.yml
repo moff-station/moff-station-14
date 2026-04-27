@@ -4,7 +4,7 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2026 04:19:56
+  time: 04/27/2026 04:28:24
   entityCount: 11886
 maps:
 - 1
@@ -1192,10 +1192,6 @@ entities:
             2164: -10,-10
             2165: -10,-5
             2166: -8,-5
-        - node:
-            color: '#4463263F'
-            id: FullTileOverlayGreyscale
-          decals:
             3023: -11,-10
             3024: -9,-10
             3025: -8,-10
@@ -7690,7 +7686,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -188596.94
+      secondsUntilStateChange: -188705.72
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -28700,6 +28696,8 @@ entities:
     - type: AccessReader
       accessLog: []
       accessKeys: []
+      accessListsOriginal:
+      - - Theatre
       access: []
       denyTags: []
 - proto: CrateCoffinFilledMaintsLootAndBones
@@ -81236,6 +81234,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -3.5,-10.5
       parent: 2
+  - uid: 10349
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 4.5,-11.5
+      parent: 2
 - proto: WindoorHydroponicsLocked
   entities:
   - uid: 7917
@@ -81535,14 +81539,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 9.5,7.5
-      parent: 2
-- proto: WindoorSecureServiceLocked
-  entities:
-  - uid: 10349
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 4.5,-11.5
       parent: 2
 - proto: Window
   entities:
