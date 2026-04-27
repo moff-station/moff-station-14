@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client.UserInterface.Controls;
-using Content.Shared._Moffstation.Medical.AdvancedCryogenics;
+using Content.Shared._Moffstation.Body.Components;
+using Content.Shared._Moffstation.Medical.CryoCapsule;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
@@ -43,27 +44,25 @@ public sealed partial class CryoLifeSupportWindow : FancyWindow
     }
 
 
-    public void SetState(CryomachineUiState state)
+    public void SetState(CryoLifeSupportUiState state)
     {
         SetGasMix(state.GasMix);
         SetBeakerMix(state);
-        SetCapsule(state.CryoCapsule, state.CapsuleNetEnt);
+        SetCapsule(state.CapsuleEntity, state.Organs);
     }
 
-    private void SetCapsule(CryoCapsuleEntry entry, NetEntity? capsule)
+    private void SetCapsule(NetEntity? capsule, List<OrganEntry>? organs)
     {
         if (capsule is { } entity)
             SpriteView.SetEntity(entity);
-        JumpStartBrainButton.Disabled = !entry.BrainPresent;
+        JumpStartBrainButton.Disabled = false; // todo !
 
         NameLabel.Text = "CryoCapsule";
-        SpeciesLabel.Text = "Ready";
+        SpeciesLabel.Text = "Ready"; // todo !
 
-        BrainStatusLabel.Text = Loc.GetString(entry.BrainPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
-        EyesStatusLabel.Text = Loc.GetString(entry.EyesPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
-        HeartStatusLabel.Text = Loc.GetString(entry.HeartPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
-        LungsStatusLabel.Text = Loc.GetString(entry.LungPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
-        StomachStatusLabel.Text = Loc.GetString(entry.StomachPresent ? "cryomachine-window-organ-healthy" : "cryomachine-window-organ-absent");
+        OrgansChecklist.RemoveAllChildren();
+        if (organs is { } _)
+            OrgansChecklist.AddChild(new OrganStatusControl(organs));
     }
 
     private void SetGasMix(GasMixEntry mix)
@@ -104,9 +103,9 @@ public sealed partial class CryoLifeSupportWindow : FancyWindow
         }
     }
 
-    private void SetBeakerMix(CryomachineUiState state)
+    private void SetBeakerMix(CryoLifeSupportUiState state)
     {
-        var totalBeakerCapacity = state.BeakerCapacity ?? 0;
+        var totalBeakerCapacity = state.ReagentsCapacity ?? 0;
         var availableQuantity = new FixedPoint2();
 
         ChemicalsChart.Clear();
@@ -114,9 +113,9 @@ public sealed partial class CryoLifeSupportWindow : FancyWindow
 
         var chartMaxChemsQuantity = ChemicalsChart.Capacity;
 
-        if (state.Beaker != null)
+        if (state.Reagents != null)
         {
-            foreach (var (reagent, quantity) in state.Beaker!)
+            foreach (var (reagent, quantity) in state.Reagents!)
             {
                 availableQuantity += quantity;
 
@@ -136,15 +135,15 @@ public sealed partial class CryoLifeSupportWindow : FancyWindow
             }
         }
 
-        var hasPatient = (state.CapsuleNetEnt != null);
+        var hasPatient = (state.CapsuleEntity != null);
 
-        var isChemicalsChartVisible = (state.Beaker != null);
+        var isChemicalsChartVisible = (state.Reagents != null);
         NoBeakerText.Visible = !isChemicalsChartVisible;
         ChemicalsChart.Visible = isChemicalsChartVisible;
         Inject1.Disabled = (!hasPatient || availableQuantity < 0.1f);
         Inject5.Disabled = (!hasPatient || availableQuantity <= 1);
         Inject10.Disabled = (!hasPatient || availableQuantity <= 5);
         Inject20.Disabled = (!hasPatient || availableQuantity <= 10);
-        EjectBeakerButton.Disabled = state.Beaker == null;
+        EjectBeakerButton.Disabled = state.Reagents == null;
     }
 }

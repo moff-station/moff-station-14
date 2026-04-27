@@ -1,4 +1,3 @@
-# TODO : on inserted, give the InsideCryomachine component
 - type: entity
   parent: BaseStructure
   id: CLSMachine
@@ -7,12 +6,25 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: Cryomachine
+  - type: CryoLifeSupport
+    # todo : each entry is associated to a name.
+    monitoredOrgans:
+    - Brain
+    - Eyes
+    - Lungs
+    - Heart
+    - Stomach
+    monitoredOrganNames:
+    - Brain
+    - Eyes
+    - Lungs
+    - Heart
+    - Stomach
     capsuleSlot:
       name: cryomachine-capsule-slot-name
       whitelist:
         components:
-        - Cryocapsule
+        - FitInCryoLifeSupport
     beakerSlot:
       name: cryomachine-beaker-slot-name
       whitelist:
@@ -33,7 +45,7 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.CryomachineVisuals.Filled:
+      enum.CryoLifeSupportVisuals.Filled:
         base:
           False: { state: machine-empty }
           True: { state: machine-working }
@@ -54,10 +66,10 @@
       capsule_slot: !type:ContainerSlot
   - type: UserInterface
     interfaces:
-      enum.CryomachineUiKey.Key:
-        type: CryomachineBoundUserInterface
+      enum.CryoLifeSupportUiKey.Key:
+        type: CryoLifeSupportBoundUserInterface
   - type: ActivatableUI
-    key: enum.CryomachineUiKey.Key
+    key: enum.CryoLifeSupportUiKey.Key
     requiresComplex: false
   - type: ApcPowerReceiver
     powerLoad: 3000

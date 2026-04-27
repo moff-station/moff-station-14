@@ -1,6 +1,7 @@
 using Content.Shared.Body;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Medical.CryoCapsule;
 
@@ -26,5 +27,23 @@ public sealed partial class CryoCapsuleComponent : Component
     /// Sound emitted when adding or removing organs inside the capsule.
     /// </summary>
     [DataField]
-    public SoundSpecifier? InteractSound;
+    public SoundSpecifier? InteractSound = new SoundPathSpecifier("/Audio/Voice/Slime/slime_squish.ogg");
+}
+
+[Serializable, NetSerializable]
+public enum CryoCapsuleVisuals : byte
+{
+    BrainPresent,
+    HasMind
+}
+
+[Serializable, NetSerializable]
+public enum CryoCapsuleVisualLayers : byte
+{
+    Brain,
+    Eyes,
+    Lungs,
+    Heart,
+    Stomach,
+    Base,
 }

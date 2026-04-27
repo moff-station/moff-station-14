@@ -173,6 +173,11 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Arachnid/organs.rsi
+  # Moffstation - start - cryogenic life support
+  - type: ConservableOrgan
+    specie: Arachnid
+    compatible: [ Arachnid ]
+  # Moffstation - end
 
 - type: entity
   id: OrganArachnidVisual

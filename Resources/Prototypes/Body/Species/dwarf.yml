@@ -87,11 +87,28 @@
   components:
   - type: Metabolizer
     maxReagents: 5
+  # Moffstation - start - cryogenic life support
+  - type: ConservableOrgan
+    specie: Dwarf
+    compatible: [ Dwarf, Human ]
+  # Moffstation - end
 
 - type: entity
   parent: [ OrganDwarfMetabolizer, OrganHumanLiver ]
   id: OrganDwarfLiver
+  # Moffstation - start - cryogenic life support
+  components:
+  - type: ConservableOrgan
+    specie: Dwarf
+    compatible: [ Dwarf, Human ]
+  # Moffstation - end
 
 - type: entity
   parent: [ OrganDwarfMetabolizer, OrganHumanHeart ]
   id: OrganDwarfHeart
+  # Moffstation - start - cryogenic life support
+  components:
+  - type: ConservableOrgan
+    specie: Dwarf
+    compatible: [ Dwarf, Human ]
+  # Moffstation - end

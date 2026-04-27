@@ -229,6 +229,11 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Human/organs.rsi
+  # Moffstation - start - cryogenic life support
+  - type: ConservableOrgan
+    specie: Moth
+    compatible: [ Moth ]
+  # Moffstation - end
 
 - type: entity
   id: OrganMothVisual

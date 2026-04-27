@@ -170,6 +170,9 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Human/organs.rsi
+  - type: ConservableOrgan
+    specie: Avali
+    compatible: [ Avali ]
 
 - type: entity
   id: OrganAvaliVisual

@@ -10,7 +10,8 @@ namespace Content.Shared._Moffstation.Medical.CryoCapsule;
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class SharedCryoLifeSupportSystem : EntitySystem
+
+public sealed partial class CryoLifeSupportSystem : EntitySystem
 {
     [Dependency] private readonly EntityManager _entity = default!;
 
@@ -52,7 +53,7 @@ public sealed class SharedCryoLifeSupportSystem : EntitySystem
         if (args.Container.ID != ent.Comp.CapsuleSlotId)
             return;
 
-        AddComp<InsideCryoPodComponent>(ent);
+        EnsureComp<InsideCryoPodComponent>(args.Entity);
         _appearance.SetData(ent.Owner, CryoLifeSupportVisuals.Filled, true);
         _ambient.SetAmbience(ent.Owner, true);
     }
@@ -80,8 +81,10 @@ public sealed class SharedCryoLifeSupportSystem : EntitySystem
                 _itemSlots.TryEjectToHands(ent, ent.Comp.BeakerSlot, args.Actor);
                 break;
             case CryoLifeSupportSimpleUiMessage.ActionType.ReviveBrain :
-                // probably send an Event to the capsule.
-                _audio.PlayPredicted(ent.Comp.DetachCapsuleSound, ent, args.Actor);
+                _audio.PlayPredicted(ent.Comp.ReviveBrainSound, ent, args.Actor);
+                if (ent.Comp.CapsuleSlot.Item is not { } capsule)
+                    break;
+                RaiseLocalEvent(capsule, new ReviveBrainEvent());
                 break;
             default:
                 break;

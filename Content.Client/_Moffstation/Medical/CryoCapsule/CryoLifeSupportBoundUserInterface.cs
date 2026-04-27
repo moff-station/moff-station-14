@@ -1,4 +1,3 @@
-using Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 using Content.Shared._Moffstation.Medical.CryoCapsule;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
@@ -17,7 +16,6 @@ public sealed class CryoLifeSupportBoundUserInterface : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<CryoLifeSupportWindow>();
-        //_window = this.CreateWindowCenteredLeft<CryoLifeSupportWindow>();
         _window.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
 
         _window.OnJumpStartBrainPressed += ReviveBrainPressed;
@@ -42,7 +40,7 @@ public sealed class CryoLifeSupportBoundUserInterface : BoundUserInterface
 
     protected override void ReceiveMessage(BoundUserInterfaceMessage message)
     {
-        if (message is not CryomachineUiState cast)
+        if (message is not CryoLifeSupportUiState cast)
             return;
 
         base.ReceiveMessage(message);

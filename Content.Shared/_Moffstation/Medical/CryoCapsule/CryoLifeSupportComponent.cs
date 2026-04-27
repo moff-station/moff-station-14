@@ -1,6 +1,9 @@
+using System.Linq;
+using Content.Shared._Moffstation.Body.Components;
 using Content.Shared.Body;
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.Audio;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Medical.CryoCapsule;
@@ -8,7 +11,7 @@ namespace Content.Shared._Moffstation.Medical.CryoCapsule;
 /// <summary>
 /// This is used for machine that can keep organs inside a <see cref="CryoCapsuleComponent"/> alive.
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class CryoLifeSupportComponent : Component
 {
     #region slots
@@ -44,28 +47,59 @@ public sealed partial class CryoLifeSupportComponent : Component
     public List<ProtoId<OrganCategoryPrototype>> MonitoredOrgans;
 
     /// <summary>
+    /// The name of each organs when displayed in the UI.
+    /// </summary>
+    [DataField]
+    public List<string> MonitoredOrganNames;
+
+    /// <summary>
     /// Sound emitted when the capsule is detached
     /// </summary>
     [DataField]
-    public SoundSpecifier? DetachCapsuleSound;
+    public SoundSpecifier? DetachCapsuleSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
 
     /// <summary>
     /// Sound emitted when the brain is revived
     /// </summary>
     [DataField]
-    public SoundSpecifier? ReviveBrainSound;
+    public SoundSpecifier? ReviveBrainSound = new SoundPathSpecifier("/Audio/Effects/tesla_consume.ogg");
+
+
+    /// <summary>
+    /// Time between two subsequent UI updates
+    /// </summary>
+    [DataField]
+    public TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(0.5);
+
+    [DataField]
+    public TimeSpan UiNextUpdateTime = TimeSpan.Zero;
 }
 
 
 /// <summary>
-/// Raised on an entity to obtain the status of their organs.
+/// This is used for entities that can be inserted inside a Cryogenic Life Support machine.
 /// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class FitInCryoLifeSupportComponent : Component;
+
+
+/// <summary>
+/// Raised on an entity to obtain the status of their organs (assumed absent by default).
+/// </summary>
+[ByRefEvent]
 public sealed class OrganStatusQueryEvent : EntityEventArgs
 {
-    public enum OrganStatus { Absent, Unusable, Damaged, Healthy }
+    public List<OrganEntry> OrganEntries;
 
-    public Dictionary<ProtoId<OrganCategoryPrototype>, OrganStatus> OrgansStatus = new();
+    public OrganStatusQueryEvent(List<(string, ProtoId<OrganCategoryPrototype>)> organs)
+    {
+        OrganEntries = organs.Select(query =>
+            new OrganEntry(query.Item1, "unknown", query.Item2, OrganEntry.OrganStatus.Absent))
+            .ToList();
+    }
 }
+
+
 
 /// <summary>
 /// Raised on an entity when the brain is being reactivated.

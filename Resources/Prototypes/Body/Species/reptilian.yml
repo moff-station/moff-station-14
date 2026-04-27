@@ -192,6 +192,11 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Human/organs.rsi
+  # Moffstation - start - Cryogenic Life Support
+  - type: ConservableOrgan
+    specie: Reptilian
+    compatible: [ Reptilian ]
+  # Moffstation - end
 
 - type: entity
   parent: OrganReptilian

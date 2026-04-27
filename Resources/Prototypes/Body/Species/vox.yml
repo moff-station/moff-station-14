@@ -300,6 +300,11 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Vox/organs.rsi
+  # Moffstation - start - Cryogenic Life Support
+  - type: ConservableOrgan
+    specie: Vox
+    compatible: [ Vox ]
+  # Moffstation - end
 
 - type: entity
   id: OrganVoxVisual

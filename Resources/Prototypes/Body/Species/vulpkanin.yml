@@ -230,6 +230,11 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Vulpkanin/organs.rsi
+  # Moffstation - start - Cryogenic Life Support
+  - type: ConservableOrgan
+    specie: Vulpkanin
+    compatible: [ Vulpkanin ]
+  # Moffstation - end
 
 - type: entity
   id: OrganVulpkaninVisual

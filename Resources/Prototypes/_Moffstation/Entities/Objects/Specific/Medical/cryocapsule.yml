@@ -13,7 +13,14 @@
     speechSounds: Pai
   - type: TypingIndicator
     proto: slime
-  - type: Cryocapsule
+  - type: FitInCryoLifeSupport
+  - type: CryoCapsule
+    canContain:
+    - Brain
+    - Eyes
+    - Lungs
+    - Heart
+    - Stomach
   - type: Respirator # for now copied from Slime, find a way to not make it gasp lol
     damage:
       types:
@@ -23,24 +30,15 @@
         Asphyxiation: -1.0
     maxSaturation: 15
 
-  # currently working on THIS
+
   - type: Body
   - type: SolutionContainerManager # the cryoformol
-  - type: ExposedOrgans
-    exposedCategories:
-    - Brain
-    - Eyes
-    - Lungs
-    - Heart
-    - Stomach
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Medical/cryocapsule.rsi
     state: empty
     noRot: true
   - type: Appearance
 
-    # turn out ItemMapper is robust enough to be used in correlation with ExposedOrgans,
-    # although i had to add tags which i don't like.
   - type: ItemMapper
     mapLayers:
       brain:
