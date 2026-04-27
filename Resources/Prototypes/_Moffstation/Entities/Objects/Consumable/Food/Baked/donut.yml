@@ -1,0 +1,221 @@
+# Poison donut
+- type: entity
+  parent: FoodDonutApple
+  id: FoodDonutPoisonApple
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellyApple
+  id: FoodDonutPoisonApple2
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellyScurret
+  id: FoodDonutPoisonScurret
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellySweetpea
+  id: FoodDonutPoisonSweetpea2
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJelly
+  id: FoodDonutPoisonJelly
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellyBungo
+  id: FoodDonutPoisonBungo2
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellyBluePumpkin
+  id: FoodDonutPoisonBluePumpkin2
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellyChocolate
+  id: FoodDonutPoisonChocolate2
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellyCaramel
+  id: FoodDonutPoisonCaramel2
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutCaramel
+  id: FoodDonutPoisonCaramel
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutBluePumpkin
+  id: FoodDonutPoisonBluePumpkin
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutBungo
+  id: FoodDonutPoisonBungo
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutChocolate
+  id: FoodDonutPoisonChocolate
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonut
+  id: FoodDonutPoison
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutSweetpea
+  id: FoodDonutPoisonSweetpea
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutJellySpaceman
+  id: FoodDonutPoisonSpaceman2
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
+
+- type: entity
+  parent: FoodDonutSpaceman
+  id: FoodDonutPoisonSpaceman
+  suffix: Poison
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Amatoxin
+          Quantity: 10
