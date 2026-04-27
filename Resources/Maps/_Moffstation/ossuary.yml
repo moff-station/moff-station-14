@@ -4,7 +4,7 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2026 04:18:46
+  time: 04/27/2026 04:19:56
   entityCount: 11886
 maps:
 - 1
@@ -7690,7 +7690,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -188529.58
+      secondsUntilStateChange: -188596.94
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -33346,6 +33346,12 @@ entities:
     - type: Transform
       pos: -18.5,22.5
       parent: 2
+  - uid: 3480
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.5,-11.5
+      parent: 2
   - uid: 3711
     components:
     - type: Transform
@@ -33416,11 +33422,6 @@ entities:
       parent: 2
 - proto: FenceIronStraight
   entities:
-  - uid: 3480
-    components:
-    - type: Transform
-      pos: -6.5,-11.5
-      parent: 2
   - uid: 3716
     components:
     - type: Transform
