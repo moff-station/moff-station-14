@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 274.0.0
+  engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/24/2026 19:21:38
+  time: 04/27/2026 00:27:13
   entityCount: 11875
 maps:
 - 1
@@ -7268,6 +7268,26 @@ entities:
         7827:
         - - DoorStatus
           - InputA
+  - uid: 4549
+    components:
+    - type: Transform
+      pos: 18.5,-50.5
+      parent: 2
+  - uid: 4550
+    components:
+    - type: Transform
+      pos: 18.5,-52.5
+      parent: 2
+  - uid: 4551
+    components:
+    - type: Transform
+      pos: 18.5,-58.5
+      parent: 2
+  - uid: 4552
+    components:
+    - type: Transform
+      pos: 18.5,-60.5
+      parent: 2
   - uid: 13028
     components:
     - type: Transform
@@ -7573,26 +7593,6 @@ entities:
       parent: 2
 - proto: AirlockExternalLocked
   entities:
-  - uid: 4549
-    components:
-    - type: Transform
-      pos: 18.5,-50.5
-      parent: 2
-  - uid: 4550
-    components:
-    - type: Transform
-      pos: 18.5,-52.5
-      parent: 2
-  - uid: 4551
-    components:
-    - type: Transform
-      pos: 18.5,-58.5
-      parent: 2
-  - uid: 4552
-    components:
-    - type: Transform
-      pos: 18.5,-60.5
-      parent: 2
   - uid: 13068
     components:
     - type: Transform
@@ -7672,7 +7672,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -173343.34
+      secondsUntilStateChange: -174755.4
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -23330,13 +23330,6 @@ entities:
     components:
     - type: Transform
       pos: -6.5,-26.5
-      parent: 2
-- proto: CardBoxNanotrasen
-  entities:
-  - uid: 4042
-    components:
-    - type: Transform
-      pos: 6.7955627,-4.475305
       parent: 2
 - proto: CargoMailTeleporter
   entities:
@@ -58896,6 +58889,13 @@ entities:
     components:
     - type: Transform
       pos: 33.5,-28.5
+      parent: 2
+- proto: PlayingCardDeckBoxNanotrasen
+  entities:
+  - uid: 4042
+    components:
+    - type: Transform
+      pos: 6.7955627,-4.475305
       parent: 2
 - proto: Plunger
   entities:
