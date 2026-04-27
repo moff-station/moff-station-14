@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2026 00:53:13
-  entityCount: 11878
+  time: 04/27/2026 00:54:52
+  entityCount: 11879
 maps:
 - 1
 grids:
@@ -7672,7 +7672,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -176242.8
+      secondsUntilStateChange: -176339.7
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -68331,6 +68331,13 @@ entities:
     components:
     - type: Transform
       pos: 32.5,-27.5
+      parent: 2
+- proto: VendingMachineTheater
+  entities:
+  - uid: 11514
+    components:
+    - type: Transform
+      pos: 18.5,-7.5
       parent: 2
 - proto: VendingMachineVendomat
   entities:
