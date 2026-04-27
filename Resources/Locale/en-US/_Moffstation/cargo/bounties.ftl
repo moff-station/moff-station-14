@@ -146,19 +146,13 @@ bounty-item-arithrazine = Arithrazine
 bounty-item-arrow = Arrow
 
 bounty-item-artifact-crusher = Artifact Crusher Circuitboard
-bounty-item-artifact-fragment = Artifact fragment
 bounty-item-atmos-fire-suit = Atmos Fire Suit
 bounty-item-autoinjector-cartrige = Autoinjector Cartrige
 bounty-item-bahama-mama = Bahama Mama
 bounty-item-balloon = Balloon
-bounty-item-banana = Banana
 bounty-item-banana-peel = Banana Peel
-bounty-item-bandana = Bandana
 
-bounty-item-battery = Battery
-bounty-item-bedsheet = Bedsheet
 bounty-item-beepsky-smash = Beepsky Smash
-bounty-item-beer = Beer
 bounty-item-bike-horn = Bike Horn
 bounty-item-biosynthectic-eyes = Biosynthetic Eyes
 bounty-item-biosynthectic-heart = Biosynthetic Heart
@@ -173,7 +167,6 @@ bounty-item-book = Book
 bounty-item-borg-arm = Borg Arm
 bounty-item-borg-head = Borg Head
 bounty-item-borg-leg = Borg Leg
-bounty-item-borg-module = Cyborg module
 bounty-item-borg-module-cargo = Cargo Cyborg module
 bounty-item-borg-module-engineering = Engineering Cyborg module
 bounty-item-borg-module-generic = Generic Cyborg module
@@ -185,11 +178,8 @@ bounty-item-bot = Bot
 
 bounty-item-brutepack = Brute topical
 bounty-item-cake = Cake
-bounty-item-cardboard-box = Cardboard box
 
-bounty-item-chili = Bowl of chili
 bounty-item-chimp-handcannon = C.H.I.M.P. Handcannon
-bounty-item-chow-mein = Chow Mein
 bounty-item-citrus-bikeshed = Citrus Bikeshed
 bounty-item-classic-martini = Classic Martini
 bounty-item-cleaver = Cleaver
@@ -198,7 +188,6 @@ bounty-item-cogchamp = Cogchamp
 bounty-item-combat-knife = Combat Knife
 
 bounty-item-chili = Bowl of chili
-bounty-item-chimp-handcannon = C.H.I.M.P. Handcannon
 bounty-item-chow-mein = Chow Mein
 bounty-item-citrus-bikeshed = Citrus Bikeshed
 bounty-item-classic-martini = Classic Martini
@@ -210,7 +199,6 @@ bounty-item-cogchamp = Cogchamp
 bounty-item-combat-knife = Combat Knife
 
 bounty-item-cosmopolitan = Cosmopolitan
-bounty-item-cotton-boll = Cotton boll
 
 bounty-item-cryobeaker = Cryostasis beaker
 
@@ -234,11 +222,8 @@ bounty-item-eyes = Eyes
 bounty-item-fever-dream = Fever Dream
 
 bounty-item-fire-bomb = Fire Bomb
-bounty-item-flash = Flash
 
-bounty-item-food = Meat food
 bounty-item-force-field-projector = Force Field Projector
-bounty-item-fruit = Fruit
 bounty-item-fruit-salad = Fruit Salad
 
 bounty-item-gargle-blaster = Gargle Blaster
@@ -251,7 +236,6 @@ bounty-item-grenade-flashbang = Flashbang
 bounty-item-gyros = Gyros
 
 bounty-item-health-analyzer = Health Analyzer
-bounty-item-hi-viz-vest = Hi-viz vest
 bounty-item-holofan-projector = Holofan Projector
 bounty-item-holosign-projector = Holosign Projector
 bounty-item-improvised-bow = Improvised Bow
@@ -264,9 +248,7 @@ bounty-item-jaws-of-life = Jaws of Life
 bounty-item-kidney = Kidney
 bounty-item-kitchen-knife = Kitchen Knife
 
-bounty-item-labeler = Hand labeler
 bounty-item-laser-cannon = Laser Cannon
-bounty-item-lasergun = Laser gun
 
 bounty-item-liver = Liver
 
@@ -275,13 +257,9 @@ bounty-item-makeshift-shield = Makeshift Shield
 bounty-item-makeshift-stunprod = Makeshift Stunprod
 bounty-item-medical-autoinjector = Autoinjector
 bounty-item-medical-hud = Medical Hud
-bounty-item-medkit-box = Medkit box
 bounty-item-medsec-hud = MedSec Hud
-bounty-item-microwave-machine-board = Microwave machine board
 
 bounty-item-ointment = Burn Topical
-
-bounty-item-organs = Organs
 
 bounty-item-particle-decelerator = Portable Particle Decelerator
 
@@ -309,7 +287,6 @@ bounty-item-sloppy-joe = Sloppy Joe Burger
 
 bounty-item-space-cleaner = Space Cleaner
 
-bounty-item-steak = Steak
 bounty-item-stew = Stew
 bounty-item-stomach = Stomach
 bounty-item-stun-baton = Stun Baton
@@ -323,19 +300,14 @@ bounty-item-tech-disk = Technology disk
 bounty-item-tech-disk-terminal = Tech Disk Terminal Circuitboard
 bounty-item-the-martinez = The Martinez
 
-bounty-item-tooth-sharkminnow = Sharkminnow Tooth
-bounty-item-tooth-space-carp = Space Carp Tooth
-bounty-item-torch = Torch
 bounty-item-toy-sidearm = Toy Sidearm
 
 bounty-item-truncheon = Truncheon
 bounty-item-valid-salad = Valid Salad
-bounty-item-vegetable = Vegetable
 bounty-item-waffles = Waffles
 
 bounty-item-watermelon-wakeup = Watermelon Wakeup
 bounty-item-wheat = Wheat
-bounty-item-wine = Wine
 
 bounty-item-wooden-buckler = Wooden Buckler
 bounty-item-xeno-basher = Xeno Basher

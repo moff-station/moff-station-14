@@ -13,7 +13,7 @@ namespace Content.Client.Cargo.UI;
 [GenerateTypedNameReferences]
 public sealed partial class BountyEntry : BoxContainer
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    // [Dependency] private readonly IPrototypeManager _prototype = default!; // Moffstation - forky bounties
 
     public Action? OnLabelButtonPressed;
     public Action? OnSkipButtonPressed;
