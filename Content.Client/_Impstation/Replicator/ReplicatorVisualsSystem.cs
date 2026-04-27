@@ -4,6 +4,7 @@
 
 using Content.Client.DamageState;
 using Content.Shared._Impstation.Replicator;
+using Content.Shared._Moffstation.DamageState;
 using Content.Shared.CombatMode;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;

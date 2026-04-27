@@ -28,8 +28,6 @@
       - SiliconLawBound
     preservationWhitelist: # preserve stuff that passes this
       components:
-      - HumanoidAppearance
-      - OnUseTimerTrigger
       - StealTarget
       - Mech
   - type: ThermalVisionImmune
