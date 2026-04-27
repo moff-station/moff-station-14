@@ -26,6 +26,17 @@ public sealed class CryomachineSimpleUiMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
+public sealed class CryomachineInjectUiMessage : BoundUserInterfaceMessage
+{
+    public int Amount;
+
+    public CryomachineInjectUiMessage(int amount)
+    {
+        Amount = amount;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed class CryomachineUiState : BoundUserInterfaceMessage
 {
     public readonly GasMixEntry GasMix;

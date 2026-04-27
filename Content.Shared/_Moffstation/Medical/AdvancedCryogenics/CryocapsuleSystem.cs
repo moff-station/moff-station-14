@@ -8,6 +8,9 @@ using Robust.Shared.Containers;
 
 namespace Content.Shared._Moffstation.Medical.AdvancedCryogenics;
 
+// TODO : this will probably go inside the Cryomachine system.
+// TODO : get better organs reading (status...)
+
 /// <summary>
 /// This handles...
 /// </summary>
@@ -16,49 +19,33 @@ public sealed class CryocapsuleSystem : EntitySystem
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly ExposedOrgansSystem _organs = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CryocapsuleComponent, InteractUsingEvent>(OnInteractUsing);
-
         SubscribeLocalEvent<CryocapsuleComponent, ComponentInit>(OnCryocapsuleInit);
-
-        SubscribeLocalEvent<CryocapsuleComponent, OrganInsertedIntoEvent>(OnOrganInsertedInto);
-        SubscribeLocalEvent<CryocapsuleComponent, OrganRemovedFromEvent>(OnOrganRemovedFrom);
     }
 
     private void OnCryocapsuleInit(Entity<CryocapsuleComponent> ent, ref ComponentInit init)
     {
-        EnsureComp<BodyComponent>(ent);
+        EnsureComp<ExposedOrgansComponent>(ent);
     }
 
-    private void OnInteractUsing(Entity<CryocapsuleComponent> ent, ref InteractUsingEvent args)
+
+    public CryoCapsuleEntry GenerateCryocapsuleEntry(Entity<CryocapsuleComponent> ent)
     {
-        if (args.Handled)
-            return;
-
-        if (!TryComp<BodyComponent>(ent, out var body) ||
-            body.Organs is not { } _ ||
-            !TryComp<OrganComponent>(args.Used, out var organ) ||
-            organ.Category is not { } category ||
-            !ent.Comp.OrganWhitelist.Contains(category))
-            return;
-
-        if (!ent.Comp.Organs.TryGetValue(category, out var present))
-        {
-            _container.Insert(args.Used, body.Organs);
-        }
-        else
-        {
-            // swap with the organ already present.
-        }
-
-        ent.Comp.Organs[category] = args.Used;
-        args.Handled = true;
+        return new CryoCapsuleEntry(
+            true,
+            false,
+            false,
+            false,
+            false
+        );
     }
+
 
 
     public bool TryGetBrain(Entity<CryocapsuleComponent> ent, [NotNullWhen(true)] out Entity<BrainComponent>? brain)
@@ -74,31 +61,5 @@ public sealed class CryocapsuleSystem : EntitySystem
         return true;
         */
         return false;
-    }
-
-
-
-    private void OnOrganInsertedInto(Entity<CryocapsuleComponent> ent, ref OrganInsertedIntoEvent args)
-    {
-        // the layer corresponding to this organ become visible.
-        if (!TryComp<BodyComponent>(ent, out var body))
-            return;
-    }
-
-    private void OnOrganRemovedFrom(Entity<CryocapsuleComponent> ent, ref OrganRemovedFromEvent args)
-    {
-        // the layer corresponding to this organ become hidden.
-    }
-
-
-    public CryoCapsuleEntry GenerateCryocapsuleEntry(Entity<CryocapsuleComponent> ent)
-    {
-        return new CryoCapsuleEntry(
-            false,
-            false,
-            false,
-            false,
-            false
-        );
     }
 }

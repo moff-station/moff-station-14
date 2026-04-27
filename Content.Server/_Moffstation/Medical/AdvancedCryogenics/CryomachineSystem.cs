@@ -1,5 +1,6 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Unary.EntitySystems;
+using Content.Server.Body.Systems;
 using Content.Server.Medical.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.NodeGroups;
@@ -26,6 +27,11 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
     {
         SubscribeLocalEvent<CryomachineComponent, AtmosDeviceUpdateEvent>(OnUpdateAtmosphere);
         SubscribeLocalEvent<CryomachineComponent, GasAnalyzerScanEvent>(OnGasAnalyzed);
+
+
+        SubscribeLocalEvent<InsideCryomachineComponent, InhaleLocationEvent>(OnInhaleLocation);
+        SubscribeLocalEvent<InsideCryomachineComponent, ExhaleLocationEvent>(OnExhaleLocation);
+        SubscribeLocalEvent<InsideCryomachineComponent, AtmosExposedGetAirEvent>(OnGetAir);
     }
 
     private void OnUpdateAtmosphere(Entity<CryomachineComponent> ent, ref AtmosDeviceUpdateEvent args)
@@ -62,7 +68,6 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
         }
     }
 
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -79,7 +84,6 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
             UpdateUi((uid, cryomachine));
         }
     }
-
 
     public void UpdateUi(Entity<CryomachineComponent> ent)
     {
@@ -105,5 +109,33 @@ public sealed class CryomachineSystem : SharedCryomachineSystem
             ent.Owner,
             CryomachineUiKey.Key,
             new CryomachineUiState(gasMix, cryoCapsule, cryoCapsuleNetEnt, beakerCap, beaker));
+    }
+
+    private void OnInhaleLocation(Entity<InsideCryomachineComponent> ent, ref InhaleLocationEvent args)
+    {
+        if (ent.Comp.Cryomachine is not { } cryomachine ||
+            !TryComp<CryoPodAirComponent>(cryomachine, out var machineAir))
+            return;
+
+        args.Gas = machineAir.Air;
+    }
+
+    private void OnExhaleLocation(Entity<InsideCryomachineComponent> ent, ref ExhaleLocationEvent args)
+    {
+        if (ent.Comp.Cryomachine is not { } cryomachine ||
+            !TryComp<CryoPodAirComponent>(cryomachine, out var machineAir))
+            return;
+
+        args.Gas = machineAir.Air;
+    }
+
+    private void OnGetAir(Entity<InsideCryomachineComponent> ent, ref AtmosExposedGetAirEvent args)
+    {
+        if (ent.Comp.Cryomachine is not { } cryomachine ||
+            !TryComp<CryoPodAirComponent>(cryomachine, out var machineAir))
+            return;
+
+        args.Gas = machineAir.Air;
+        args.Handled = true;
     }
 }

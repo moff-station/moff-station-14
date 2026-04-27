@@ -1,11 +1,13 @@
 using System.Linq;
 using Content.Shared.Audio;
+using Content.Shared.Body;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.FixedPoint;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Medical.Cryogenics;
 using Content.Shared.Mind;
 using Robust.Shared.Audio;
@@ -31,12 +33,10 @@ public class SharedCryomachineSystem : EntitySystem
     [Dependency] protected readonly CryocapsuleSystem _cryoCapsule = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
 
     /// <inheritdoc/>
-
-    // TODO : Issue with exception system.user_interface: UI Key got BoundInterfaceMessageWrapMessage from a client who was not subscribed
-    //        (when you go away from the machine with the UI still open)
 
     // TODO : Find a way to make the capsule don't go through the machine when it's ejected.
     public override void Initialize()
@@ -44,8 +44,10 @@ public class SharedCryomachineSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CryomachineComponent, ComponentInit>(OnCryomachineInit);
+
         SubscribeLocalEvent<CryomachineComponent, EntInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<CryomachineComponent, EntRemovedFromContainerMessage>(OnRemoved);
+
 
         Subs.BuiEvents<CryomachineComponent>(CryomachineUiKey.Key, subs =>
             {
@@ -86,15 +88,21 @@ public class SharedCryomachineSystem : EntitySystem
                 _audio.PlayPredicted(ent.Comp.ShockSound, ent.Owner, ent.Owner, AudioParams.Default);
                 break;
             case CryomachineSimpleUiMessage.MessageType.DetachCapsule :
-                _audio.PlayPredicted(ent.Comp.DetachSound, ent.Owner, ent.Owner, AudioParams.Default);
                 if (ent.Comp.CapsuleSlot is { HasItem: true, Item: { } capsule })
-                    _itemSlots.TryEject(capsule, ent.Comp.CapsuleSlot, null, out _);
+                    _itemSlots.TryEject(capsule, ent.Comp.CapsuleSlot, args.Actor, out _);
+                _audio.PlayPredicted(ent.Comp.DetachSound, ent.Owner, ent.Owner, AudioParams.Default);
                 break;
             case CryomachineSimpleUiMessage.MessageType.EjectBeaker:
+                if (ent.Comp.BeakerSlot is { HasItem: true, Item: { } beaker })
+                    _itemSlots.TryEject(beaker, ent.Comp.BeakerSlot, args.Actor, out _);
                 break;
         }
     }
 
+    private void OnInjectUiMessage(Entity<CryomachineComponent> ent, ref CryomachineInjectUiMessage args)
+    {
+
+    }
 
     private void ReviveBrain(Entity<CryomachineComponent> ent)
     {
