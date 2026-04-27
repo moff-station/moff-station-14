@@ -4,7 +4,7 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2026 21:41:02
+  time: 04/27/2026 21:42:29
   entityCount: 11889
 maps:
 - 1
@@ -7692,7 +7692,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -190403.05
+      secondsUntilStateChange: -190487.88
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -23726,16 +23726,16 @@ entities:
     - type: Transform
       pos: -13.5,-6.5
       parent: 2
+  - uid: 675
+    components:
+    - type: Transform
+      pos: 25.5,-3.5
+      parent: 2
   - uid: 679
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -24.5,-26.5
-      parent: 2
-  - uid: 744
-    components:
-    - type: Transform
-      pos: 25.5,-3.5
       parent: 2
   - uid: 1025
     components:
@@ -27751,7 +27751,7 @@ entities:
       parent: 2
 - proto: ClothingShoesBootsMagAdv
   entities:
-  - uid: 823
+  - uid: 819
     components:
     - type: Transform
       pos: 25.505299,-3.419601
@@ -49928,7 +49928,7 @@ entities:
       color: '#0335FCFF'
 - proto: GasPipeTJunctionAlt2
   entities:
-  - uid: 815
+  - uid: 760
     components:
     - type: Transform
       pos: 26.5,-3.5
@@ -50649,7 +50649,7 @@ entities:
       color: '#FF1212FF'
 - proto: GasPort
   entities:
-  - uid: 819
+  - uid: 818
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -54679,7 +54679,7 @@ entities:
       accessListsOriginal: []
 - proto: HolofanProjector
   entities:
-  - uid: 818
+  - uid: 817
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -58789,7 +58789,7 @@ entities:
       parent: 2
 - proto: PlasmaCanister
   entities:
-  - uid: 909
+  - uid: 851
     components:
     - type: Transform
       pos: 27.5,-7.5
@@ -58814,7 +58814,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 33.5,-6.5
       parent: 2
-  - uid: 824
+  - uid: 823
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -59185,7 +59185,7 @@ entities:
       parent: 2
 - proto: PortableScrubber
   entities:
-  - uid: 760
+  - uid: 744
     components:
     - type: Transform
       pos: 25.5,-3.5
@@ -59540,6 +59540,12 @@ entities:
     components:
     - type: Transform
       pos: -14.5,3.5
+      parent: 2
+  - uid: 909
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,8.5
       parent: 2
   - uid: 1188
     components:
@@ -66222,12 +66228,12 @@ entities:
       parent: 2
 - proto: StorageCanister
   entities:
-  - uid: 817
+  - uid: 815
     components:
     - type: Transform
       pos: 28.5,-7.5
       parent: 2
-  - uid: 851
+  - uid: 824
     components:
     - type: Transform
       pos: 29.5,-2.5
@@ -81064,14 +81070,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,-13.5
-      parent: 2
-- proto: WallWeaponCapacitorRecharger
-  entities:
-  - uid: 675
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 9.5,9.5
       parent: 2
 - proto: WantedListCartridge
   entities:
