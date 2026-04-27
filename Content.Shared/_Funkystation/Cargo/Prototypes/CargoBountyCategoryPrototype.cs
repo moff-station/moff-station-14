@@ -7,7 +7,7 @@ namespace Content.Shared._Funkystation.Cargo.Prototypes;
 /// <summary>
 /// Bounty Category used to create the list of possible items a bounty can pull from for the defined category
 /// </summary>
-[Prototype, Serializable, NetSerializable]
+[Prototype]
 public sealed partial class CargoBountyCategoryPrototype : IPrototype
 {
     /// <summary>
