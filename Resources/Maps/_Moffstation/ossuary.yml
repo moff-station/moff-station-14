@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2026 04:28:24
-  entityCount: 11886
+  time: 04/27/2026 04:35:43
+  entityCount: 11887
 maps:
 - 1
 grids:
@@ -7686,7 +7686,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -188705.72
+      secondsUntilStateChange: -189142.83
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -33279,15 +33279,28 @@ entities:
     - type: Transform
       pos: 8.5,-41.5
       parent: 2
+    - type: FaxMachine
+      name: Command
   - uid: 10345
     components:
     - type: Transform
       pos: 10.5,-25.5
       parent: 2
+    - type: FaxMachine
+      name: Head of Personnel
   - uid: 10352
     components:
     - type: Transform
       pos: 5.5,-11.5
+      parent: 2
+    - type: FaxMachine
+      name: Bar & Kitchen
+- proto: FaxMachineFlatpack
+  entities:
+  - uid: 11523
+    components:
+    - type: Transform
+      pos: -13.131268,14.436165
       parent: 2
 - proto: FenceIronCorner
   entities:
