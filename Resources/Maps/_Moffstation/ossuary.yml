@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2026 04:35:43
-  entityCount: 11887
+  time: 04/27/2026 21:41:02
+  entityCount: 11889
 maps:
 - 1
 grids:
@@ -4587,7 +4587,8 @@ entities:
           5,-3:
             0: 48063
           5,-2:
-            0: 48059
+            0: 15291
+            4: 32768
           5,-1:
             0: 51699
           5,-5:
@@ -4623,14 +4624,14 @@ entities:
             1: 61440
           8,-2:
             1: 39321
-            4: 544
-            5: 8192
-            6: 1088
-            7: 16384
+            5: 544
+            6: 8192
+            7: 1088
+            8: 16384
           8,-1:
             1: 8185
-            5: 2
-            7: 4
+            6: 2
+            8: 4
           -8,-5:
             0: 61678
           -9,-4:
@@ -4848,9 +4849,9 @@ entities:
             1: 61440
           9,-2:
             1: 52431
-            5: 13104
+            6: 13104
           9,-1:
-            5: 3
+            6: 3
             1: 4092
           9,-5:
             0: 65295
@@ -5533,6 +5534,11 @@ entities:
             Nitrogen: 102.419266
         - volume: 2500
           temperature: 293.1495
+          moles:
+            Oxygen: 20.078888
+            Nitrogen: 75.53487
+        - volume: 2500
+          temperature: 293.14975
           moles:
             Oxygen: 20.078888
             Nitrogen: 75.53487
@@ -7686,7 +7692,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -189142.83
+      secondsUntilStateChange: -190403.05
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -23726,6 +23732,11 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -24.5,-26.5
       parent: 2
+  - uid: 744
+    components:
+    - type: Transform
+      pos: 25.5,-3.5
+      parent: 2
   - uid: 1025
     components:
     - type: Transform
@@ -25866,11 +25877,6 @@ entities:
     - type: Transform
       pos: 30.5,-0.5
       parent: 2
-  - uid: 7836
-    components:
-    - type: Transform
-      pos: 25.5,-3.5
-      parent: 2
   - uid: 7837
     components:
     - type: Transform
@@ -26773,6 +26779,37 @@ entities:
           - 10147
     - type: Fixtures
       fixtures: {}
+- proto: ClosetWallAtmospherics
+  entities:
+  - uid: 814
+    components:
+    - type: Transform
+      pos: 23.5,-3.5
+      parent: 2
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14673
+        moles:
+          Oxygen: 1.7459903
+          Nitrogen: 6.568249
+    - type: EntityTableContainerFill
+      containers:
+        entity_storage: !type:AllSelector
+          conditions: []
+          rolls: !type:ConstantNumberSelector {}
+          children:
+          - !type:NestedSelector
+            conditions: []
+            rolls: !type:ConstantNumberSelector {}
+            tableId: FillLockerAtmospherics
+          - !type:NestedSelector
+            conditions: []
+            rolls: !type:ConstantNumberSelector {}
+            tableId: FillAtmosphericsHardsuit
+    - type: Fixtures
+      fixtures: {}
 - proto: ClosetWallBlack
   entities:
   - uid: 4499
@@ -27265,15 +27302,6 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
-- proto: ClosetWallWardrobeAtmosphericsFilled
-  entities:
-  - uid: 814
-    components:
-    - type: Transform
-      pos: 23.5,-3.5
-      parent: 2
-    - type: Fixtures
-      fixtures: {}
 - proto: ClosetWallWardrobePrisonFilled
   entities:
   - uid: 562
@@ -27723,10 +27751,10 @@ entities:
       parent: 2
 - proto: ClothingShoesBootsMagAdv
   entities:
-  - uid: 2287
+  - uid: 823
     components:
     - type: Transform
-      pos: 25.536615,-3.4111676
+      pos: 25.505299,-3.419601
       parent: 2
 - proto: ClothingShoesCult
   entities:
@@ -37259,6 +37287,10 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 26.5,-6.5
       parent: 2
+    - type: GasMixer
+      inletTwoConcentration: 0.78
+      inletOneConcentration: 0.22
+      enabled: True
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -38550,14 +38582,6 @@ entities:
       parent: 2
     - type: AtmosPipeColor
       color: '#D90F0FFF'
-  - uid: 909
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 26.5,-3.5
-      parent: 2
-    - type: AtmosPipeColor
-      color: '#990000FF'
   - uid: 910
     components:
     - type: Transform
@@ -49904,6 +49928,13 @@ entities:
       color: '#0335FCFF'
 - proto: GasPipeTJunctionAlt2
   entities:
+  - uid: 815
+    components:
+    - type: Transform
+      pos: 26.5,-3.5
+      parent: 2
+    - type: AtmosPipeColor
+      color: '#990000FF'
   - uid: 2110
     components:
     - type: Transform
@@ -50618,6 +50649,16 @@ entities:
       color: '#FF1212FF'
 - proto: GasPort
   entities:
+  - uid: 819
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 25.5,-3.5
+      parent: 2
+    - type: AtmosPipeLayers
+      pipeLayer: Tertiary
+    - type: AtmosPipeColor
+      color: '#990000FF'
   - uid: 1253
     components:
     - type: Transform
@@ -50716,6 +50757,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 23.5,-4.5
       parent: 2
+    - type: GasPressurePump
+      enabled: True
     - type: AtmosPipeColor
       color: '#0335FCFF'
 - proto: GasPressurePumpAlt2
@@ -50742,6 +50785,8 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 23.5,-4.5
       parent: 2
+    - type: GasPressurePump
+      enabled: True
     - type: AtmosPipeColor
       color: '#FF1212FF'
 - proto: GasThermoMachineFreezerEnabled
@@ -54632,6 +54677,14 @@ entities:
       parent: 2
     - type: AccessReader
       accessListsOriginal: []
+- proto: HolofanProjector
+  entities:
+  - uid: 818
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 26.273718,-7.332056
+      parent: 2
 - proto: HolopadCargoFront
   entities:
   - uid: 7799
@@ -58736,21 +58789,16 @@ entities:
       parent: 2
 - proto: PlasmaCanister
   entities:
+  - uid: 909
+    components:
+    - type: Transform
+      pos: 27.5,-7.5
+      parent: 2
   - uid: 3728
     components:
     - type: Transform
       pos: -7.5,-28.5
       parent: 2
-  - uid: 10671
-    components:
-    - type: Transform
-      pos: 28.5,-7.5
-      parent: 2
-    - type: AccessReader
-      accessListsOriginal:
-      - - Atmospherics
-      - - Engineering
-      - - Research
 - proto: PlasmaDoor
   entities:
   - uid: 3389
@@ -58760,47 +58808,17 @@ entities:
       parent: 2
 - proto: PlasmaReinforcedWindowDirectional
   entities:
-  - uid: 760
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.5,-7.5
-      parent: 2
-  - uid: 817
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.5,-4.5
-      parent: 2
-  - uid: 818
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.5,-3.5
-      parent: 2
-  - uid: 819
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.5,-2.5
-      parent: 2
   - uid: 820
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 33.5,-6.5
       parent: 2
-  - uid: 823
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.5,-5.5
-      parent: 2
   - uid: 824
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.5,-6.5
+      rot: -1.5707963267948966 rad
+      pos: 32.5,-2.5
       parent: 2
   - uid: 825
     components:
@@ -58849,12 +58867,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 34.5,-3.5
-      parent: 2
-  - uid: 851
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 31.5,-8.5
       parent: 2
   - uid: 853
     components:
@@ -58932,6 +58944,12 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 32.5,-7.5
       parent: 2
+  - uid: 2287
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,-3.5
+      parent: 2
   - uid: 4569
     components:
     - type: Transform
@@ -58955,6 +58973,36 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 34.5,-3.5
+      parent: 2
+  - uid: 4608
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,-4.5
+      parent: 2
+  - uid: 7836
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,-5.5
+      parent: 2
+  - uid: 10671
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,-6.5
+      parent: 2
+  - uid: 11524
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,-7.5
+      parent: 2
+  - uid: 11525
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 32.5,-8.5
       parent: 2
 - proto: PlasticFlapsAirtightClear
   entities:
@@ -59137,7 +59185,7 @@ entities:
       parent: 2
 - proto: PortableScrubber
   entities:
-  - uid: 744
+  - uid: 760
     components:
     - type: Transform
       pos: 25.5,-3.5
@@ -66174,6 +66222,16 @@ entities:
       parent: 2
 - proto: StorageCanister
   entities:
+  - uid: 817
+    components:
+    - type: Transform
+      pos: 28.5,-7.5
+      parent: 2
+  - uid: 851
+    components:
+    - type: Transform
+      pos: 29.5,-2.5
+      parent: 2
   - uid: 1331
     components:
     - type: Transform
@@ -66182,18 +66240,8 @@ entities:
   - uid: 2285
     components:
     - type: Transform
-      pos: 31.5,-2.5
+      pos: 29.5,-7.5
       parent: 2
-  - uid: 4608
-    components:
-    - type: Transform
-      pos: 27.5,-3.5
-      parent: 2
-    - type: AccessReader
-      accessListsOriginal:
-      - - Atmospherics
-      - - Engineering
-      - - Research
 - proto: SubstationBasic
   entities:
   - uid: 74
@@ -66276,16 +66324,6 @@ entities:
     - type: AccessReader
       accessListsOriginal:
       - - Engineering
-- proto: SuitStorageAtmos
-  entities:
-  - uid: 815
-    components:
-    - type: Transform
-      pos: 27.5,-7.5
-      parent: 2
-    - type: AccessReader
-      accessListsOriginal:
-      - - Atmospherics
 - proto: SuitStorageBase
   entities:
   - uid: 1202
