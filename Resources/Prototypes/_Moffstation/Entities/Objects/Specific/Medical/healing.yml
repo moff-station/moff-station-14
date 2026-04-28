@@ -13,3 +13,19 @@
     count: 10
   - type: Item
     heldPrefix: poultice
+
+- type: entity
+  suffix: Half Hyperzine
+  parent: PrefilledSyringe
+  id: SyringeHyperzineHalf
+  components:
+  - type: Label
+    currentLabel: reagent-name-ambuzol
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+          - ReagentId: Hyperzine
+            Quantity: 8
+
