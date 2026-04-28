@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: wizards
   forkVersion: 4abdcf7a733a1331bd69a6760592166489c48bc2
-  time: 04/28/2026 07:18:56
-  entityCount: 18864
+  time: 04/28/2026 07:42:03
+  entityCount: 18887
 maps:
 - 1
 grids:
@@ -41190,6 +41190,86 @@ entities:
     - type: Transform
       pos: -58.191254,9.800857
       parent: 2
+  - uid: 18369
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18371
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18372
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18373
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18376
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18377
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18382
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18383
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18384
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18388
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
 - proto: ClothingHeadHatHoodBioCmo
   entities:
   - uid: 11967
@@ -41377,6 +41457,86 @@ entities:
     - type: Transform
       pos: -112.21264,9.984113
       parent: 2
+  - uid: 18370
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18374
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18375
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18378
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18379
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18380
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18381
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18385
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18386
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
+  - uid: 18387
+    components:
+    - type: Transform
+      parent: 18368
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18368
 - proto: ClownRecorder
   entities:
   - uid: 7315
@@ -42592,6 +42752,71 @@ entities:
     - type: Transform
       pos: -28.5,9.5
       parent: 2
+  - uid: 18368
+    components:
+    - type: MetaData
+      name: saftey equipment crate
+    - type: Transform
+      pos: -64.5,11.5
+      parent: 2
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14673
+        moles:
+          Oxygen: 1.7459903
+          Nitrogen: 6.568249
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 18388
+          - 18387
+          - 18386
+          - 18385
+          - 18384
+          - 18383
+          - 18382
+          - 18381
+          - 18380
+          - 18379
+          - 18378
+          - 18377
+          - 18376
+          - 18375
+          - 18374
+          - 18373
+          - 18372
+          - 18371
+          - 18370
+          - 18369
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 18882
+    components:
+    - type: MetaData
+      name: metal rods crate
+    - type: Transform
+      pos: -99.5,33.5
+      parent: 2
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 18884
+          - 18883
+          - 18885
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: CrateHydroponicsSeeds
   entities:
   - uid: 12900
@@ -42906,8 +43131,11 @@ entities:
       parent: 2
 - proto: CrystalYellow
   entities:
-  - uid: 1579
+  - uid: 10152
     components:
+    - type: MetaData
+      desc: It looks ominously familiar and alive.
+      name: alien crystal
     - type: Transform
       pos: -32.5,-19.5
       parent: 2
@@ -51044,7 +51272,7 @@ entities:
       pos: -85.5,-57.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -9693.601
+      secondsUntilStateChange: -6549.512
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 3716.2296191
@@ -90006,6 +90234,48 @@ entities:
         3. Set heater beside recycler to 573.15k
 
         4. Turn on recycler pump
+  - uid: 18528
+    components:
+    - type: MetaData
+      desc: A singed barely legible paper of research logs
+      name: research log paper
+    - type: Transform
+      pos: -29.811232,-14.466107
+      parent: 2
+    - type: Paper
+      content: >-
+        [bold]PERFORMING SCIENTIST:[/bold] [italic]Dr. Isaac Hill[/italic]
+
+        [bold]SUBJECT:[/bold] [italic]Feral slime[/italic]
+
+        [bold]Experiment log:[/bold]
+
+
+        [italic]Injected with compound A381, no visible reaction
+
+
+        Injected with compound A27, reacted with increased aggression
+
+
+        Injected with compound B22, reacted with color shift
+
+
+        Injected w█h █████und ███████████████████
+
+
+        Injected with com██und B24, reacted ███ rainbow colors
+
+
+        ██████   █████████████████████████████████
+
+
+        ██████████████████████████████████████████████████   █████████████████████████████████
+
+
+        ██████   █████████████████████████████████
+
+
+        ██████   █████████████████████████████████
 - proto: PaperBin10
   entities:
   - uid: 14404
@@ -90130,21 +90400,30 @@ entities:
       parent: 2
 - proto: PartRodMetal
   entities:
-  - uid: 1226
+  - uid: 18883
     components:
     - type: Transform
-      pos: -99.5,33.5
-      parent: 2
-  - uid: 5466
+      parent: 18882
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18882
+  - uid: 18884
     components:
     - type: Transform
-      pos: -99.5,33.5
-      parent: 2
-  - uid: 18370
+      parent: 18882
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18882
+  - uid: 18885
     components:
     - type: Transform
-      pos: -99.5,33.5
-      parent: 2
+      parent: 18882
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+      storage: 18882
 - proto: PhoneInstrument
   entities:
   - uid: 14406
@@ -90375,6 +90654,13 @@ entities:
       parent: 2
 - proto: PlushieLizard
   entities:
+  - uid: 5467
+    components:
+    - type: MetaData
+      desc: The longer you look at it the more you feel like you are a lizard too!
+    - type: Transform
+      pos: -64.48673,-39.240715
+      parent: 2
   - uid: 5513
     components:
     - type: Transform
@@ -90389,11 +90675,6 @@ entities:
     components:
     - type: Transform
       pos: -45.344505,-40.192223
-      parent: 2
-  - uid: 18368
-    components:
-    - type: Transform
-      pos: -64.5056,-39.250175
       parent: 2
 - proto: PlushieLizardInversed
   entities:
@@ -90414,6 +90695,13 @@ entities:
     - type: Transform
       pos: -92.5,10.5
       parent: 2
+  - uid: 5466
+    components:
+    - type: MetaData
+      desc: You feel in insatiable desire to drink liters of welding fuel and scream when you see friends!
+    - type: Transform
+      pos: -64.49246,-43.27956
+      parent: 2
   - uid: 7503
     components:
     - type: Transform
@@ -90428,11 +90716,6 @@ entities:
     components:
     - type: Transform
       pos: -52.551716,-2.2215474
-      parent: 2
-  - uid: 18369
-    components:
-    - type: Transform
-      pos: -64.53685,-43.2658
       parent: 2
 - proto: PlushieXeno
   entities:
@@ -100355,14 +100638,14 @@ entities:
       parent: 2
 - proto: SpawnMobBear
   entities:
-  - uid: 10152
+  - uid: 1226
     components:
     - type: Transform
       pos: -37.5,20.5
       parent: 2
 - proto: SpawnMobCarp
   entities:
-  - uid: 13124
+  - uid: 13759
     components:
     - type: Transform
       pos: -77.5,-11.5
@@ -100404,10 +100687,10 @@ entities:
       parent: 2
 - proto: SpawnMobKangaroo
   entities:
-  - uid: 1580
+  - uid: 13124
     components:
     - type: Transform
-      pos: -37.5,17.5
+      pos: -37.5,14.5
       parent: 2
 - proto: SpawnMobKangarooWillow
   entities:
@@ -100475,17 +100758,17 @@ entities:
       parent: 2
 - proto: SpawnMobSpaceCobra
   entities:
-  - uid: 5467
+  - uid: 1579
     components:
     - type: Transform
       pos: -30.5,20.5
       parent: 2
 - proto: SpawnMobSpaceSpider
   entities:
-  - uid: 13759
+  - uid: 1580
     components:
     - type: Transform
-      pos: -37.5,14.5
+      pos: -37.5,17.5
       parent: 2
 - proto: SpawnMobWalter
   entities:
