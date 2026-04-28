@@ -266,9 +266,6 @@ public sealed class GerasSystem : EntitySystem
             if (_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.BloodSolutionName, ref ent.Comp.BloodSolution)
                 && _solutionContainer.ResolveSolution(args.Parent, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
             {
-                //stop bleeding
-                _bloodstream.TryModifyBleedAmount(args.Parent, -bloodstreamParent.BleedAmount);
-
                 //Transfer blood level
                 _bloodstream.TryModifyBloodLevel(ent.Owner, _bloodstream.GetBloodLevel(args.Parent)*bloodstreamParent.BloodReferenceSolution.Volume);
 
