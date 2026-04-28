@@ -226,7 +226,6 @@ public sealed class GerasSystem : EntitySystem
             RemCompDeferred<PendingZombieComponent>(uid);
         }
 
-
         // Transfer mind
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
             _mindSystem.TransferTo(mindId, geras, mind: mind);
