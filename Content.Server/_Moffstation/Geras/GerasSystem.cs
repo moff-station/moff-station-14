@@ -4,6 +4,7 @@ using Content.Server.Actions;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
+using Content.Server.Zombies;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
@@ -214,6 +215,15 @@ public sealed class GerasSystem : EntitySystem
         // Transfer stamina damage
         _stamina.TryTakeStamina(geras, _stamina.GetStaminaDamage(uid));
         RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
+
+        // Transfer pending zombification
+        if (TryComp<PendingZombieComponent>(uid, out var userInfection))
+        {
+            var gerasInfection = EnsureComp<PendingZombieComponent>(geras);
+            gerasInfection.GracePeriod = userInfection.GracePeriod;
+            RemCompDeferred<PendingZombieComponent>(uid);
+        }
+
 
         // Transfer mind
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
