@@ -2240,11 +2240,6 @@ Entries:
   time: '2025-09-30T17:31:50.000'
   url: https://github.com/moff-station/moff-station-14/pull/589
 - author: OnyxTheBrave
-  changes: []
-  id: 593
-  time: '2025-10-01T17:56:00.000'
-  url: https://github.com/moff-station/moff-station-14/pull/593
-- author: OnyxTheBrave
   changes:
   - message: The Chemmaster 4000 can now switch between making pills from the internal
       buffer or from the internal beaker)
@@ -2853,11 +2848,6 @@ Entries:
   id: 805
   time: '2025-12-03T22:01:45.000'
   url: https://github.com/moff-station/moff-station-14/pull/805
-- author: Centronias
-  changes: []
-  id: 806
-  time: '2025-12-01T21:40:28.000'
-  url: https://github.com/moff-station/moff-station-14/pull/806
 - author: Centronias
   changes:
   - message: Smart Fridges can now be loaded with anything edible.
@@ -4203,11 +4193,6 @@ Entries:
   time: '2026-03-08T21:55:06.000'
   url: https://github.com/moff-station/moff-station-14/pull/1134
 - author: Sable
-  changes: []
-  id: 1135
-  time: '2026-03-16T20:59:39.000'
-  url: https://github.com/moff-station/moff-station-14/pull/1135
-- author: Sable
   changes:
   - message: Added 11 new species based drinks!
     type: add
@@ -4575,11 +4560,6 @@ Entries:
   id: 1193
   time: '2026-04-04T20:11:23.000'
   url: https://github.com/moff-station/moff-station-14/pull/1193
-- author: CastleKeeper325
-  changes: []
-  id: 1195
-  time: '2026-04-04T19:04:06.000'
-  url: https://github.com/moff-station/moff-station-14/pull/1195
 - author: CastleKeeper325, TheLaggyOne
   changes:
   - message: The italian accent's word replacements have been overhauled to be MRP.
@@ -4825,7 +4805,15 @@ Entries:
   time: '2026-04-21T19:02:07.000'
   url: https://github.com/moff-station/moff-station-14/pull/1261
 - author: nithead10
-  changes: []
+  changes:
+  - message: Geras will now transfer death-based implanters between forms
+    type: fix
+  - message: Identity mask implanter will now work with Geras
+    type: fix
+  - message: Geras will now trasnfer various status effects
+    type: fix
+  - message: Chemicals within the bloodstream will now transfer with Geras
+    type: fix
   id: 1262
   time: '2026-04-19T22:22:09.000'
   url: https://github.com/moff-station/moff-station-14/pull/1262
@@ -4964,7 +4952,9 @@ Entries:
   time: '2026-04-23T05:25:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1290
 - author: nithead10
-  changes: []
+  changes:
+  - message: Reenabled Geras
+    type: fix
   id: 1291
   time: '2026-04-19T23:27:16.000'
   url: https://github.com/moff-station/moff-station-14/pull/1291
@@ -5119,7 +5109,9 @@ Entries:
   time: '2026-04-27T07:57:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1323
 - author: StudMuffin
-  changes: []
+  changes:
+  - message: Cyborgs will no longer bring down the fabric of reality within development environments
+    type: fix
   id: 1326
   time: '2026-04-26T20:32:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1326
@@ -5147,7 +5139,9 @@ Entries:
   time: '2026-04-26T22:25:32.000'
   url: https://github.com/moff-station/moff-station-14/pull/1334
 - author: Tortosaur
-  changes: []
+  changes:
+  - message: Resomi now share the same lighter density as Avali
+    type: tweak
   id: 1337
   time: '2026-04-27T17:43:31.000'
   url: https://github.com/moff-station/moff-station-14/pull/1337
@@ -5158,5 +5152,12 @@ Entries:
   id: 1341
   time: '2026-04-28T00:06:50.000'
   url: https://github.com/moff-station/moff-station-14/pull/1341
+- author: Wintoli
+  changes:
+  - message: Added 2 spider grenades to the syndicate uplink "allies" category - one for all agents and one for mimes and clowns. Scary!
+    type: add
+  id: 1265
+  time: '2026-04-27T00:06:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1265
 Name: Mofflog
 Order: -2
