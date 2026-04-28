@@ -1,0 +1,21 @@
+- type: entity
+  name: dark book
+  description: A religious book with a dark cover depicting some kind of creature. The pages are dirty, wrinkled and torn. The writing is neat, though.
+  parent: Bible
+  id: PersonalItemNotafezBible
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/SillyAmy/Notafez_Mome
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/SillyAmy/Notafez_Mome
+
+- type: loadout
+  id: PersonalItemNotafezBible
+  storage:
+    back:
+    - PersonalItemNotafezBible
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Notafez Mome
