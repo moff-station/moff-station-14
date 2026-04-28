@@ -257,7 +257,7 @@
       visible: false
   - type: Hands
     hands:
-      hand 1:
+      hand1:
         location: Right
     prototype: Replicator1
   - type: Loadout
@@ -311,9 +311,9 @@
     damageModifierSet: Replicator2
   - type: Hands
     hands:
-      hand 1:
+      hand1:
         location: Left
-      hand 2:
+      hand2:
         location: Right
   - type: Loadout
     prototypes:
@@ -417,9 +417,9 @@
         Base: dead_level3
   - type: Hands
     hands:
-      hand 1:
+      hand1:
         location: Left
-      hand 2:
+      hand2:
         location: Right
   - type: Loadout
     prototypes:
