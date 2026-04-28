@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: wizards
   forkVersion: 4abdcf7a733a1331bd69a6760592166489c48bc2
-  time: 04/28/2026 06:39:37
-  entityCount: 18865
+  time: 04/28/2026 06:55:27
+  entityCount: 18859
 maps:
 - 1
 grids:
@@ -42906,7 +42906,7 @@ entities:
       parent: 2
 - proto: CrystalYellow
   entities:
-  - uid: 5467
+  - uid: 1579
     components:
     - type: Transform
       pos: -32.5,-19.5
@@ -51044,7 +51044,7 @@ entities:
       pos: -85.5,-57.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -7354.828
+      secondsUntilStateChange: -8300.935
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 3716.2296191
@@ -90006,48 +90006,6 @@ entities:
         3. Set heater beside recycler to 573.15k
 
         4. Turn on recycler pump
-  - uid: 18528
-    components:
-    - type: MetaData
-      desc: A singed barely legible paper of research logs
-      name: research log paper
-    - type: Transform
-      pos: -29.811232,-14.466107
-      parent: 2
-    - type: Paper
-      content: >-
-        [bold]PERFORMING SCIENTIST:[/bold] [italic]Dr. Isaac Hill[/italic]
-
-        [bold]SUBJECT:[/bold] [italic]Feral slime[/italic]
-
-        [bold]Experiment log:[/bold]
-
-
-        [italic]Injected with compound A381, no visible reaction
-
-
-        Injected with compound A27, reacted with increased aggression
-
-
-        Injected with compound B22, reacted with color shift
-
-
-        Injected w█h █████und ███████████████████
-
-
-        Injected with com██und B24, reacted ███ rainbow colors
-
-
-        ██████   █████████████████████████████████
-
-
-        ██████████████████████████████████████████████████   █████████████████████████████████
-
-
-        ██████   █████████████████████████████████
-
-
-        ██████   █████████████████████████████████
 - proto: PaperBin10
   entities:
   - uid: 14404
@@ -90172,17 +90130,17 @@ entities:
       parent: 2
 - proto: PartRodMetal
   entities:
-  - uid: 5466
+  - uid: 1226
+    components:
+    - type: Transform
+      pos: -99.5,33.5
+      parent: 2
+  - uid: 1580
     components:
     - type: Transform
       pos: -99.5,33.5
       parent: 2
   - uid: 10152
-    components:
-    - type: Transform
-      pos: -99.5,33.5
-      parent: 2
-  - uid: 18370
     components:
     - type: Transform
       pos: -99.5,33.5
@@ -90417,6 +90375,11 @@ entities:
       parent: 2
 - proto: PlushieLizard
   entities:
+  - uid: 5466
+    components:
+    - type: Transform
+      pos: -64.5056,-39.250175
+      parent: 2
   - uid: 5513
     components:
     - type: Transform
@@ -90431,11 +90394,6 @@ entities:
     components:
     - type: Transform
       pos: -45.344505,-40.192223
-      parent: 2
-  - uid: 18368
-    components:
-    - type: Transform
-      pos: -64.5056,-39.250175
       parent: 2
 - proto: PlushieLizardInversed
   entities:
@@ -90456,6 +90414,11 @@ entities:
     - type: Transform
       pos: -92.5,10.5
       parent: 2
+  - uid: 5467
+    components:
+    - type: Transform
+      pos: -64.53685,-43.2658
+      parent: 2
   - uid: 7503
     components:
     - type: Transform
@@ -90470,11 +90433,6 @@ entities:
     components:
     - type: Transform
       pos: -52.551716,-2.2215474
-      parent: 2
-  - uid: 18369
-    components:
-    - type: Transform
-      pos: -64.53685,-43.2658
       parent: 2
 - proto: PlushieXeno
   entities:
@@ -100381,13 +100339,6 @@ entities:
     - type: Transform
       pos: -107.5,19.5
       parent: 2
-- proto: SpawnMobAdultSlimesBlue
-  entities:
-  - uid: 13124
-    components:
-    - type: Transform
-      pos: -37.5,14.5
-      parent: 2
 - proto: SpawnMobAlexander
   entities:
   - uid: 6863
@@ -100401,20 +100352,6 @@ entities:
     components:
     - type: Transform
       pos: -51.5,-11.5
-      parent: 2
-- proto: SpawnMobBear
-  entities:
-  - uid: 1226
-    components:
-    - type: Transform
-      pos: -37.5,20.5
-      parent: 2
-- proto: SpawnMobCarp
-  entities:
-  - uid: 13759
-    components:
-    - type: Transform
-      pos: -77.5,-11.5
       parent: 2
 - proto: SpawnMobCat
   entities:
@@ -100514,20 +100451,6 @@ entities:
     components:
     - type: Transform
       pos: -32.5,-17.5
-      parent: 2
-- proto: SpawnMobSpaceCobra
-  entities:
-  - uid: 1579
-    components:
-    - type: Transform
-      pos: -30.5,20.5
-      parent: 2
-- proto: SpawnMobSpaceSpider
-  entities:
-  - uid: 1580
-    components:
-    - type: Transform
-      pos: -37.5,17.5
       parent: 2
 - proto: SpawnMobWalter
   entities:
