@@ -1,8 +1,9 @@
-# Slots names
-cryocapsule-brain-slot-name = Brain
-cryocapsule-eyes-slot-name = Eyes
-cryocapsule-lungs-slot-name = Lungs
-cryocapsule-stomach-slot-name = Stomach
+cryocapsule-state-alive = [color=green]Alive[/color]
+cryocapsule-state-ready = Ready
+cryocapsule-state-unfit = [color=red]Unfit[/color]
+
+cryocapsule-unrevivable-critical-organs-missing = Critical organ(s) missing
+cryocapsule-unrevivable-critical-organs-incompatible = Critical organ(s) incompatible
 
 cryomachine-capsule-slot-name = Cryocapsule
 cryomachine-beaker-slot-name = Reagent

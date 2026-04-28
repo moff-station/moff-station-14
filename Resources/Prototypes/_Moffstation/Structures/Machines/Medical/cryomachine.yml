@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseStructure
+  parent: BaseMachine
   id: CLSMachine
   name: cryogenic life support
   description: A machine able to keep organs alive in absence of a body.
@@ -31,6 +31,7 @@
         components:
         - FitsInDispenser
   - type: Sprite
+    granularLayersRendering: true
     sprite: _Moffstation/Structures/Machines/cryo_capsule.rsi
     drawdepth: Mobs
     noRot: true

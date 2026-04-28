@@ -54,20 +54,17 @@ public sealed partial class CryoLifeSupportSystem : EntitySystem
             return;
         }
 
-        // todo : annihilate this.
-
-        var query = new OrganStatusQueryEvent(
-            ent.Comp.MonitoredOrganNames.Zip(
-                ent.Comp.MonitoredOrgans,
-                (x, y) => (x, y))
-                .ToList()
-            );
-
+        var query = new OrganStatusQueryEvent(ent.Comp.MonitoredOrgans);
         RaiseLocalEvent(capsule, ref query);
 
         _ui.ServerSendUiMessage(ent.Owner,
             CryoLifeSupportUiKey.Key,
-            new CryoLifeSupportUiState(gasMix, reagentCapacity, reagents, GetNetEntity(capsule), query.OrganEntries));
+            new CryoLifeSupportUiState(
+                gasMix,
+                reagentCapacity,
+                reagents,
+                GetNetEntity(capsule),
+                ent.Comp.MonitoredOrganNames.Zip(query.OrganEntries, (x,y) => (x,y)).ToList()));
     }
 
     private (FixedPoint2? capacity, List<ReagentQuantity>?) GenerateReagentsEntry()

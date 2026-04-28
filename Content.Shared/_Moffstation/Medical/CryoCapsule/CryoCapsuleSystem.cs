@@ -1,4 +1,5 @@
 using Content.Shared._Moffstation.Body.Components;
+using Content.Shared._Moffstation.Body.Systems;
 using Content.Shared.Body;
 using Content.Shared.Interaction;
 using Robust.Shared.Audio.Systems;
@@ -13,6 +14,7 @@ public sealed class CryoCapsuleSystem : EntitySystem
 {
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly ConservableOrganSystem _organs = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -40,11 +42,15 @@ public sealed class CryoCapsuleSystem : EntitySystem
         {
             var entry = args.OrganEntries[i];
 
-            if (! ent.Comp.CanContain.Contains(entry.Category) ||
-                ! ent.Comp.Organs.TryGetValue(entry.Category, out _))
+            if (entry.Category is not { } category ||
+                ! ent.Comp.CanContain.Contains(category) ||
+                ! ent.Comp.Organs.TryGetValue(category, out var organ))
                 continue;
 
-            entry.Status = OrganEntry.OrganStatus.Healthy;
+            if (TryComp<ConservableOrganComponent>(organ, out var consComp))
+                entry = _organs.GenerateEntry((organ, consComp));
+            else
+                entry.Status = OrganEntry.OrganStatus.Healthy;
             args.OrganEntries[i] = entry;
         }
     }
@@ -79,4 +85,24 @@ public sealed class CryoCapsuleSystem : EntitySystem
         args.Handled = true;
     }
 
+    #region public api
+
+    public bool CanBeRevived(Entity<CryoCapsuleComponent> ent, out string? reason)
+    {
+        reason = null;
+
+        foreach (var category in ent.Comp.CriticalOrgans)
+        {
+            if (ent.Comp.Organs.TryGetValue(category, out _))
+                continue;
+
+            reason = Loc.GetString("cryocapsule-unrevivable-critical-organs");
+            return false;
+        }
+
+
+        return true;
+    }
+
+    #endregion
 }

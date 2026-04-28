@@ -18,6 +18,12 @@ public sealed partial class CryoCapsuleComponent : Component
     public HashSet<ProtoId<OrganCategoryPrototype>> CanContain;
 
     /// <summary>
+    /// Organs that must be present for the capsule to regain consciousness.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<OrganCategoryPrototype>> CriticalOrgans;
+
+    /// <summary>
     /// Organs currently inside the capsule (associated to their type)
     /// </summary>
     [DataField]
@@ -29,6 +35,13 @@ public sealed partial class CryoCapsuleComponent : Component
     [DataField]
     public SoundSpecifier? InteractSound = new SoundPathSpecifier("/Audio/Voice/Slime/slime_squish.ogg");
 }
+
+[Serializable, NetSerializable]
+public record struct CryoCapsuleEntry
+{
+    // todo (to put in the CryoLifeSupportWindow)
+}
+
 
 [Serializable, NetSerializable]
 public enum CryoCapsuleVisuals : byte

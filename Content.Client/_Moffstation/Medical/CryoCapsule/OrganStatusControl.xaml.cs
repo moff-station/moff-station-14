@@ -8,29 +8,45 @@ namespace Content.Client._Moffstation.Medical.CryoCapsule;
 [GenerateTypedNameReferences]
 public sealed partial class OrganStatusControl : GridContainer
 {
-    public OrganStatusControl(List<OrganEntry> status)
+    public OrganStatusControl(string name, OrganEntry entry)
     {
         IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
 
-        foreach (var organ in status)
+        string statusString;
+        switch (entry.Status)
         {
-            var statusString =
-                organ.Status == OrganEntry.OrganStatus.Absent
-                    ? Loc.GetString("cryomachine-window-organ-absent")
-                    : Loc.GetString("cryomachine-window-organ-healthy");
-            // todo : add specie and stuff
-            // todo : add compatibility warning
-
-            AddChild(new Label()
-            {
-                Text = organ.Name + ':',
-                StyleClasses = { "LabelSubText" },
-            });
-            AddChild(new RichTextLabel()
-            {
-                Text = statusString,
-            });
+            case OrganEntry.OrganStatus.Absent:
+                statusString = Loc.GetString("cryomachine-window-organ-absent");
+                break;
+            case OrganEntry.OrganStatus.Unusable:
+                statusString = Loc.GetString("cryomachine-window-organ-unusable");
+                break;
+            case OrganEntry.OrganStatus.Damaged:
+                statusString = Loc.GetString("cryomachine-window-organ-damaged");
+                break;
+            case OrganEntry.OrganStatus.Healthy:
+                statusString = Loc.GetString("cryomachine-window-organ-healthy");
+                break;
+            default:
+                statusString = Loc.GetString("cryomachine-window-organ-unknown");
+                break;
         }
+
+        AddChild(new Label
+        {
+            Text = name + ':',
+            StyleClasses = { "LabelSubText" },
+        });
+        AddChild(new RichTextLabel
+        {
+            Text = statusString,
+        });
+        AddChild(new Label());
+        AddChild(new Label
+        {
+            Text = Loc.GetString(entry.Specie),
+            StyleClasses = { "LabelSubText" },
+        });
     }
 }

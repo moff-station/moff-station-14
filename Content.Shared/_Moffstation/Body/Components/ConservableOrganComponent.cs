@@ -7,6 +7,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Moffstation.Body.Components;
 
 // todo : this need to be done using DamageSpecifier in some way.
+// todo : can probably be done using Perishable !
 
 /// <summary>
 /// This is used for organs that can be conserved and used with the <see cref="CryoCapsuleComponent"/>
@@ -40,19 +41,15 @@ public sealed partial class ConservableOrganComponent : Component
 }
 
 
-/// <summary>
-/// Contain informations about an organ.
-/// TODO : this will probably be put in another component, with files related to organs.
-/// </summary>
+
 [Serializable, NetSerializable]
 
-public record struct OrganEntry(string Name, string Specie, ProtoId<OrganCategoryPrototype> Category, OrganEntry.OrganStatus Status)
+public record struct OrganEntry(string Specie, ProtoId<OrganCategoryPrototype>? Category, OrganEntry.OrganStatus Status)
 {
     public enum OrganStatus { Absent, Unusable, Damaged, Healthy }
 
-    public readonly string Name = Name;
     public readonly string Specie = Specie;
-    public readonly ProtoId<OrganCategoryPrototype> Category = Category;
+    public readonly ProtoId<OrganCategoryPrototype>? Category = Category;
     public OrganStatus Status = Status;
 }
 

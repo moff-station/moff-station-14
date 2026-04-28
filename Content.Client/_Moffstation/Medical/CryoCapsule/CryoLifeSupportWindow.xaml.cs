@@ -51,18 +51,29 @@ public sealed partial class CryoLifeSupportWindow : FancyWindow
         SetCapsule(state.CapsuleEntity, state.Organs);
     }
 
-    private void SetCapsule(NetEntity? capsule, List<OrganEntry>? organs)
+    private void SetCapsule(NetEntity? capsule, List<(string,OrganEntry)>? organs)
     {
-        if (capsule is { } entity)
-            SpriteView.SetEntity(entity);
-        JumpStartBrainButton.Disabled = false; // todo !
+        if (capsule is not { } entity)
+        {
+            PatientSection.Visible = false;
+            return;
+        }
+
+        PatientSection.Visible = true;
+        SpriteView.SetEntity(entity);
 
         NameLabel.Text = "CryoCapsule";
         SpeciesLabel.Text = "Ready"; // todo !
 
-        OrgansChecklist.RemoveAllChildren();
-        if (organs is { } _)
-            OrgansChecklist.AddChild(new OrganStatusControl(organs));
+        OrgansCheckList.RemoveAllChildren();
+
+        if (organs is null)
+            return;
+
+        foreach (var (name, entry) in organs)
+        {
+            OrgansCheckList.AddChild(new OrganStatusControl(name, entry));
+        }
     }
 
     private void SetGasMix(GasMixEntry mix)

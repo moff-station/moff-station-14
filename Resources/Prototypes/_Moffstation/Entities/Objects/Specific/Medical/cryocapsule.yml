@@ -7,38 +7,75 @@
   - type: Physics
     bodyType: KinematicController
   - type: BlockMovement
+
   - type: MindContainer
   - type: Examiner
   - type: Speech
     speechSounds: Pai
   - type: TypingIndicator
     proto: slime
+
   - type: FitInCryoLifeSupport
-  - type: CryoCapsule
+  - type: CryoCapsule # todo : ExposedOrgans could probably be a more reusable way to do that.
     canContain:
     - Brain
     - Eyes
     - Lungs
     - Heart
     - Stomach
-  - type: Respirator # for now copied from Slime, find a way to not make it gasp lol
-    damage:
-      types:
-        Asphyxiation: 0.2
-    damageRecovery:
-      types:
-        Asphyxiation: -1.0
-    maxSaturation: 15
+    criticalOrgans:
+    - Brain
+    - Lungs
+    - Heart
 
+  - type: MobWhenAlive # the cryocapsule is a mob when alive and return to be an inanimate object when it dies.
+    addWhenAlive:
+    - type: MobState
+      allowedStates:
+      - Alive
+      - Dead
+    - type: Respirator
+      damage:
+        types:
+          Asphyxiation: 0.2
+      damageRecovery:
+        types:
+          Asphyxiation: -1.0
+      maxSaturation: 15
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        150: Dead
+    - type: Bloodstream
+      bloodReferenceSolution:
+        reagents:
+        - ReagentId: Cryoformol
+          Quantity: 300
+      bloodlossDamage:
+        types:
+          Bloodloss:
+            0.5
+      bloodlossHealDamage:
+        types:
+          Bloodloss:
+            -0.25
+    - type: Hunger
+    - type: Thirst
+
+  - type: SolutionContainerManager
 
   - type: Body
-  - type: SolutionContainerManager # the cryoformol
+  - type: Damageable # todo : make the Damageable stuff.
+
+  - type: StatusEffects
+    allowed:
+    - TemporaryBlindness
+
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Medical/cryocapsule.rsi
     state: empty
     noRot: true
   - type: Appearance
-
   - type: ItemMapper
     mapLayers:
       brain:
@@ -63,12 +100,3 @@
           - Heart
   - type: Item
     size: Huge
-  - type: Damageable
-  - type: MobState
-    allowedStates:
-    - Alive
-    - Dead
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      150: Dead

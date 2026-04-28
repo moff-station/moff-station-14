@@ -44,12 +44,12 @@ public sealed class CryoLifeSupportUiState(
     FixedPoint2? reagentsCapacity,
     List<ReagentQuantity>? reagents,
     NetEntity? capsuleEntity,
-    List<OrganEntry>? organs)
+    List<(string,OrganEntry)>? organs)
     : BoundUserInterfaceMessage
 {
     public readonly GasMixEntry GasMix = gasMix;
     public readonly FixedPoint2? ReagentsCapacity = reagentsCapacity;
     public readonly List<ReagentQuantity>? Reagents = reagents;
     public readonly NetEntity? CapsuleEntity = capsuleEntity;
-    public readonly List<OrganEntry>? Organs = organs;
+    public readonly List<(string,OrganEntry)>? Organs = organs;
 }

@@ -91,11 +91,9 @@ public sealed class OrganStatusQueryEvent : EntityEventArgs
 {
     public List<OrganEntry> OrganEntries;
 
-    public OrganStatusQueryEvent(List<(string, ProtoId<OrganCategoryPrototype>)> organs)
+    public OrganStatusQueryEvent(List<ProtoId<OrganCategoryPrototype>> organs)
     {
-        OrganEntries = organs.Select(query =>
-            new OrganEntry(query.Item1, "unknown", query.Item2, OrganEntry.OrganStatus.Absent))
-            .ToList();
+        OrganEntries = organs.Select(category => new OrganEntry("unknown", category, OrganEntry.OrganStatus.Absent)).ToList();
     }
 }
 

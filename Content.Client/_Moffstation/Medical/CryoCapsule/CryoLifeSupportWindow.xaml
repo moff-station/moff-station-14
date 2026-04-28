@@ -134,8 +134,13 @@
 
                 <PanelContainer StyleClasses="LowDivider" />
 
-                <!-- Organs Checklist (populated via code) -->
-                <PanelContainer Name="OrgansChecklist"/>
+                <BoxContainer VerticalExpand="True"
+                              Orientation="Vertical">
+                    <!-- ideally we want a ScrollContainer but this *EPIC* control just want to collapse into itself. joy. -->
+                    <BoxContainer Name="OrgansCheckList"
+                                  Orientation="Vertical"
+                                  VerticalExpand="True"/> <!-- populated via code -->
+                </BoxContainer>
 
                 <PanelContainer StyleClasses="LowDivider" />
 
