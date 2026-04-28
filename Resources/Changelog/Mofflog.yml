@@ -5075,6 +5075,14 @@ Entries:
   id: 1313
   time: '2026-04-26T18:35:38.000'
   url: https://github.com/moff-station/moff-station-14/pull/1313
+- author: Centronias
+  changes:
+  - message: Cyborg magboot functionality has been reflavored so as to not suggest
+      cyborgs are literally wearing magboots.
+    type: tweak
+  id: 1316
+  time: '2026-04-27T17:24:39.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1316
 - author: Dave
   changes:
   - message: Bricktile decal se corner fix
@@ -5101,11 +5109,27 @@ Entries:
   id: 1320
   time: '2026-04-25T16:53:29.000'
   url: https://github.com/moff-station/moff-station-14/pull/1320
+- author: Tortosaur
+  changes:
+  - message: Sharkminnow Hide, a new crafting material
+    type: add
+  - message: Sharkminnow magboots, a salvage oriented upgrade to the traditional magboots
+    type: add
+  id: 1323
+  time: '2026-04-27T07:57:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1323
 - author: StudMuffin
   changes: []
   id: 1326
   time: '2026-04-26T20:32:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1326
+- author: DuckManZach
+  changes:
+  - message: readded tourists for real this time
+    type: fix
+  id: 1332
+  time: '2026-04-27T21:59:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1332
 - author: Centronias
   changes:
   - message: 'Departmental communication consoles'' flatpacks can now be unpacked
@@ -5122,5 +5146,17 @@ Entries:
   id: 1334
   time: '2026-04-26T22:25:32.000'
   url: https://github.com/moff-station/moff-station-14/pull/1334
+- author: Tortosaur
+  changes: []
+  id: 1337
+  time: '2026-04-27T17:43:31.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1337
+- author: DuckManZach
+  changes:
+  - message: Scream will always come second in the action bar
+    type: tweak
+  id: 1341
+  time: '2026-04-28T00:06:50.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1341
 Name: Mofflog
 Order: -2
