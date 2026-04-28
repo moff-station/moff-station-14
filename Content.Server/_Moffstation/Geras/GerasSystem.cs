@@ -4,7 +4,6 @@ using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
 using Content.Server.Traits;
-using Content.Server.Zombies;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
@@ -34,7 +33,7 @@ using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Temperature.Components;
-using Content.Shared.Traits.Assorted;
+using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 
