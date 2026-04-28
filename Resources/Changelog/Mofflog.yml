@@ -5109,6 +5109,35 @@ Entries:
   id: 1320
   time: '2026-04-25T16:53:29.000'
   url: https://github.com/moff-station/moff-station-14/pull/1320
+- author: DuckManZach
+  changes:
+  - message: made geras less transparent
+    type: tweak
+  - message: Lessens the transparency on the geras
+    type: tweak
+  - message: Removed faction member from Geras (geras aren't always NT aligned)
+    type: tweak
+  - message: Adjusts Geras melee damage to be on-par with normal slime form
+    type: tweak
+  - message: Give Geras a basic in-hand sprite (currently not colored)
+    type: tweak
+  - message: Increase geras transformation cooldown to 30s
+    type: tweak
+  - message: made geras transform ordered properly in actions
+    type: tweak
+  - message: Geras will now transfer inventory where possible
+    type: tweak
+  - message: Bloodloss stacks now transfer when gerasing
+    type: tweak
+  - message: On fire status now transfers when gerasing
+    type: tweak
+  - message: Stamina damage now transfers when gerasing
+    type: tweak
+  - message: Pending zombification now transfers when gerasing
+    type: tweak
+  id: 1321
+  time: '2026-04-28T20:01:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1321
 - author: Tortosaur
   changes:
   - message: Sharkminnow Hide, a new crafting material
