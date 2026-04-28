@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server.Actions;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
@@ -67,6 +68,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly ThirstSystem _thirst = default!;
     [Dependency] private readonly SharedStaminaSystem  _stamina = default!;
     [Dependency] private readonly TraitSystem _trait = default!;
+    [Dependency] private readonly FlammableSystem _flammable = default!;
 
     private const string GerasIdSlot = "id";
 
@@ -278,6 +280,10 @@ public sealed class GerasSystem : EntitySystem
             if (_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.BloodSolutionName, ref ent.Comp.BloodSolution)
                 && _solutionContainer.ResolveSolution(args.Parent, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
             {
+                //Trasfer bleeding stacks
+                _bloodstream.TryModifyBleedAmount(ent.Owner, bloodstreamParent.BleedAmount);
+                _bloodstream.TryModifyBleedAmount(args.Parent, -bloodstreamParent.BleedAmount);
+
                 //Transfer blood level
                 _bloodstream.TryModifyBloodLevel(ent.Owner, _bloodstream.GetBloodLevel(args.Parent)*bloodstreamParent.BloodReferenceSolution.Volume);
 
@@ -315,11 +321,11 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnTransferFire(Entity<FlammableComponent> ent, ref PreMorphGerasEvent args)
     {
-        //But won't unmix the fuel from them
-        if (TryComp<FlammableComponent>(args.Geras, out var flammableGeras))
-        {
-            flammableGeras.FireStacks = ent.Comp.FireStacks;
-        }
+        if (!TryComp<FlammableComponent>(args.Geras, out var flammableGeras))
+            return;
+
+        _flammable.SetFireStacks(args.Geras, ent.Comp.FireStacks, flammableGeras, ent.Comp.OnFire);
+        _flammable.Extinguish(ent.Owner, ent.Comp);
     }
 
     private void OnTransferStorage(Entity<StorageComponent> ent, ref PreMorphGerasEvent args)
