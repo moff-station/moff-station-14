@@ -42,7 +42,56 @@
   categories:
   - UplinkWearables
 
+- type: listing
+  id: UplinkClothingHeadsetSyndicateInfiltrator
+  name: uplink-clothing-infiltrator-headset-name
+  description: uplink-clothing-infiltrator-headset-desc
+  productEntity: ClothingHeadsetSyndicateInfiltrator
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkWearables
+
 # Allies
+- type: listing
+  id: UplinkSpiderGrenade
+  name: uplink-spider-grenade-name
+  description: uplink-spider-grenade-desc
+  productEntity: SpiderJar
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: storage
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkAllies
+
+- type: listing
+  id: UplinkClownSpiderGrenade
+  name: uplink-clown-spider-grenade-name
+  description: uplink-clown-spider-grenade-desc
+  productEntity: SpiderJarClown
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: storage
+    color: "#FF69B4"
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Mime
+    - Clown
+
+# Other
 - type: listing #This is the old necronomicon but spicier.
   id: uplinkNecronomicon 
   name: uplink-necronomicon-name

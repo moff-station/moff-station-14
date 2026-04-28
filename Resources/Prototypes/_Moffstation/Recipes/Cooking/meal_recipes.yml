@@ -65,3 +65,14 @@
     FoodDonkpocketBerryWarm: 1
     FoodDonkpocketStonkWarm: 1
     FoodDonkpocketCarpWarm: 1
+
+- type: microwaveMealRecipe
+  id: RecipeTricoChicken
+  name: trico chicken recipe
+  result: FoodMeatTricoChickenCooked
+  time: 15
+  group: Other
+  reagents:
+    Tricordrazine: 20
+  solids:
+    FoodMeatChicken: 1

@@ -5,19 +5,20 @@
   description: A cyborg module which grant the unit magboots ability.
   abstract: true
   components:
+  - type: ActionBorgModule
+    actions:
+    - ActionBorgToggleMagboots
   - type: ComponentBorgModule
     components:
     - type: Magboots
       useGenericToggle: false
-    - type: ActionGrant
-      actions:
-      - ActionBorgToggleMagboots
+      magbootsAlert: MagbootsBorg
 
 - type: entity
   parent: BaseAction
   id: ActionBorgToggleMagboots
-  name: Toggle Magboots
-  description: Toggle the magboots on and off.
+  name: Toggle Magnetic Adhesion
+  description: Toggle magnetic adhesion to the ground on or off.
   components:
   - type: Action
     icon: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon }

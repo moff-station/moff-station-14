@@ -11,6 +11,11 @@ namespace Content.Shared.GameTicking.Components;
 [RegisterComponent, EntityCategory("GameRules")]
 public sealed partial class GameRuleComponent : Component
 {
+// ES START
+    [DataField]
+    public bool Added;
+// ES END
+
     /// <summary>
     /// Game time when game rule was activated
     /// </summary>
