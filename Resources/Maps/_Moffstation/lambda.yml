@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: wizards
   forkVersion: 4abdcf7a733a1331bd69a6760592166489c48bc2
-  time: 04/28/2026 02:46:51
-  entityCount: 18887
+  time: 04/28/2026 06:39:37
+  entityCount: 18865
 maps:
 - 1
 grids:
@@ -41190,86 +41190,6 @@ entities:
     - type: Transform
       pos: -58.191254,9.800857
       parent: 2
-  - uid: 18369
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18371
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18372
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18373
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18376
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18377
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18382
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18383
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18384
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18388
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
 - proto: ClothingHeadHatHoodBioCmo
   entities:
   - uid: 11967
@@ -41457,86 +41377,6 @@ entities:
     - type: Transform
       pos: -112.21264,9.984113
       parent: 2
-  - uid: 18370
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18374
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18375
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18378
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18379
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18380
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18381
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18385
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18386
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
-  - uid: 18387
-    components:
-    - type: Transform
-      parent: 18368
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18368
 - proto: ClownRecorder
   entities:
   - uid: 7315
@@ -42752,71 +42592,6 @@ entities:
     - type: Transform
       pos: -28.5,9.5
       parent: 2
-  - uid: 18368
-    components:
-    - type: MetaData
-      name: saftey equipment crate
-    - type: Transform
-      pos: -64.5,11.5
-      parent: 2
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14673
-        moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 18388
-          - 18387
-          - 18386
-          - 18385
-          - 18384
-          - 18383
-          - 18382
-          - 18381
-          - 18380
-          - 18379
-          - 18378
-          - 18377
-          - 18376
-          - 18375
-          - 18374
-          - 18373
-          - 18372
-          - 18371
-          - 18370
-          - 18369
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-  - uid: 18882
-    components:
-    - type: MetaData
-      name: metal rods crate
-    - type: Transform
-      pos: -99.5,33.5
-      parent: 2
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 18884
-          - 18883
-          - 18885
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
 - proto: CrateHydroponicsSeeds
   entities:
   - uid: 12900
@@ -43131,11 +42906,8 @@ entities:
       parent: 2
 - proto: CrystalYellow
   entities:
-  - uid: 10152
+  - uid: 5467
     components:
-    - type: MetaData
-      desc: It looks ominously familiar and alive.
-      name: alien crystal
     - type: Transform
       pos: -32.5,-19.5
       parent: 2
@@ -51272,7 +51044,7 @@ entities:
       pos: -85.5,-57.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -5897.5337
+      secondsUntilStateChange: -7354.828
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 3716.2296191
@@ -66769,7 +66541,7 @@ entities:
       pos: -6.5,6.5
       parent: 2
     - type: AtmosPipeColor
-      color: '#0055CCFF'
+      color: '#03FCD3FF'
 - proto: GasPipeStraightAlt2
   entities:
   - uid: 1488
@@ -76909,6 +76681,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: -7.5,7.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#03FCD3FF'
   - uid: 13464
     components:
     - type: Transform
@@ -76925,7 +76699,7 @@ entities:
       pos: -6.5,5.5
       parent: 2
     - type: AtmosPipeColor
-      color: '#0055CCFF'
+      color: '#03FCD3FF'
 - proto: GasPressurePumpAlt2
   entities:
   - uid: 2859
@@ -90398,30 +90172,21 @@ entities:
       parent: 2
 - proto: PartRodMetal
   entities:
-  - uid: 18883
+  - uid: 5466
     components:
     - type: Transform
-      parent: 18882
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18882
-  - uid: 18884
+      pos: -99.5,33.5
+      parent: 2
+  - uid: 10152
     components:
     - type: Transform
-      parent: 18882
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18882
-  - uid: 18885
+      pos: -99.5,33.5
+      parent: 2
+  - uid: 18370
     components:
     - type: Transform
-      parent: 18882
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-      storage: 18882
+      pos: -99.5,33.5
+      parent: 2
 - proto: PhoneInstrument
   entities:
   - uid: 14406
@@ -90652,13 +90417,6 @@ entities:
       parent: 2
 - proto: PlushieLizard
   entities:
-  - uid: 5467
-    components:
-    - type: MetaData
-      desc: The longer you look at it the more you feel like you are a lizard too!
-    - type: Transform
-      pos: -64.48673,-39.240715
-      parent: 2
   - uid: 5513
     components:
     - type: Transform
@@ -90673,6 +90431,11 @@ entities:
     components:
     - type: Transform
       pos: -45.344505,-40.192223
+      parent: 2
+  - uid: 18368
+    components:
+    - type: Transform
+      pos: -64.5056,-39.250175
       parent: 2
 - proto: PlushieLizardInversed
   entities:
@@ -90693,13 +90456,6 @@ entities:
     - type: Transform
       pos: -92.5,10.5
       parent: 2
-  - uid: 5466
-    components:
-    - type: MetaData
-      desc: You feel in insatiable desire to drink liters of welding fuel and scream when you see friends!
-    - type: Transform
-      pos: -64.49246,-43.27956
-      parent: 2
   - uid: 7503
     components:
     - type: Transform
@@ -90714,6 +90470,11 @@ entities:
     components:
     - type: Transform
       pos: -52.551716,-2.2215474
+      parent: 2
+  - uid: 18369
+    components:
+    - type: Transform
+      pos: -64.53685,-43.2658
       parent: 2
 - proto: PlushieXeno
   entities:
