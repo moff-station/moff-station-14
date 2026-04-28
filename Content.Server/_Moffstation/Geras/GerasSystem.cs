@@ -211,7 +211,7 @@ public sealed class GerasSystem : EntitySystem
             RaiseLocalEvent(uid, ref clearStomachEv);
         }
 
-        // Clear Stamina effects
+        // Transfer stamina damage
         _stamina.TryTakeStamina(geras, _stamina.GetStaminaDamage(uid));
         RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
 
