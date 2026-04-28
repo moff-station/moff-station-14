@@ -65,6 +65,7 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly SharedProjectileSystem _projectile = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly ThirstSystem _thirst = default!;
+    [Dependency] private readonly SharedStaminaSystem  _stamina = default!;
 
     private const string GerasIdSlot = "id";
 
@@ -211,8 +212,8 @@ public sealed class GerasSystem : EntitySystem
         }
 
         // Clear Stamina effects
+        _stamina.TryTakeStamina(geras, _stamina.GetStaminaDamage(uid));
         RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
-        RaiseLocalEvent(geras, new ClearStaminaDamageEvent());
 
         // Transfer mind
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
