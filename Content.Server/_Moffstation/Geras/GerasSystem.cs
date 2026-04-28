@@ -303,9 +303,6 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnTransferFire(Entity<FlammableComponent> ent, ref PreMorphGerasEvent args)
     {
-        //Gerasing quenches the player
-        ent.Comp.OnFire = false;
-
         //But won't unmix the fuel from them
         if (TryComp<FlammableComponent>(args.Geras, out var flammableGeras))
         {
