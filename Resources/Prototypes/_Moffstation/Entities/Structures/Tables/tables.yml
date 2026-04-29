@@ -51,7 +51,7 @@
         acts: [ "Destruction" ]
   - type: DisassembleOnAltVerb
     prototypeToSpawn: FoldingTableFolded
-    disassembleTime: 1
+    disassembleTime: 5
   - type: InflatableSafeDisassembly
   - type: Transform
     anchored: true
@@ -107,6 +107,18 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Fixtures
+    fixtures:
+      item: # For the folded, carriable table
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 60
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+        hard: false
   - type: SpawnAfterInteract
     prototype: FoldingTable
     doAfter: 2
