@@ -27,8 +27,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      storagebase: !type:NestedSelector
-        tableId: ClothingBeltQuiverCarpEntityTable
+      storagebase:
+        id: ArrowImprovisedCarp
+        amount: 16
 
 - type: entity
   parent: ClothingBeltQuiver
@@ -38,5 +39,6 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      storagebase: !type:NestedSelector
-        tableId: ClothingBeltQuiverPlasmaEntityTable
+      storagebase:
+        id: ArrowImprovisedPlasma
+        amount: 16

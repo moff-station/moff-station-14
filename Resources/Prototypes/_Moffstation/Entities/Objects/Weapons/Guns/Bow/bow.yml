@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseBow
-  id: BowCompound
+  id: CompoundBow
   name: Compound Bow
   description: A bow with a pulley system that lightens the draw, designed for old fashioned hunting.
   components:
@@ -15,35 +15,6 @@
     - state: unwielded-plunger
       map: [ plunger ]
       visible: false
-  # to elucidate whats intended here:
-  # arrow is inserted -> ItemMapper sets layer with map `arrow` to visible
-  # bow is wielded -> generic vis sets states of layers with map `arrow` and `base`
-  # arrow is removed -> itemmapper sets layer with map `arrow` to invisible
-  - type: Appearance
   - type: UseDelay
     delay: 0.5
-  - type: ItemMapper
-    spriteLayers:
-    - arrow
-    - plunger
-    mapLayers:
-      arrow:
-        whitelist:
-          tags:
-          - Arrow
-      plunger:
-        whitelist:
-          tags:
-          - Plunger
-  - type: GenericVisualizer
-    visuals:
-      enum.WieldableVisuals.Wielded:
-        arrow:
-          True: { state: wielded-arrow }
-          False: { state: unwielded-arrow }
-        plunger:
-          True: { state: wielded-plunger }
-          False: { state: unwielded-plunger }
-        base:
-          True: { state: wielded }
-          False: { state: unwielded }
+  

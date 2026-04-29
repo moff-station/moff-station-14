@@ -8,10 +8,22 @@
     containers:
       entity_storage: !type:AllSelector
         children:
-        - id: BowCompound
+        - id: CompoundBow
           amount: 1
         - id: ClothingBeltQuiverCarpFill
           amount: 1
+
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateCarpArrow
+  name: carp teeth arrow crate
+  description: Contains a quiver full of plasma shard arrows for use by salvage.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: ArrowImprovisedCarp
+        amount: 16
 
 - type: entity
   parent: CrateGenericSteel
@@ -22,4 +34,5 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage:
-        id: ClothingBeltQuiverPlasmaFill
+        id: ArrowImprovisedPlasma
+        amount: 16
