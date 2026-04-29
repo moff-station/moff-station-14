@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/28/2026 21:58:11
-  entityCount: 11899
+  time: 04/29/2026 02:14:07
+  entityCount: 11900
 maps:
 - 1
 grids:
@@ -4804,7 +4804,8 @@ entities:
           4,4:
             0: 29815
           5,1:
-            0: 61683
+            0: 61539
+            9: 144
           5,2:
             0: 56784
           5,3:
@@ -4923,7 +4924,8 @@ entities:
           9,1:
             0: 32303
           9,2:
-            0: 48013
+            0: 43917
+            9: 4096
           9,3:
             0: 48056
           10,1:
@@ -4948,7 +4950,8 @@ entities:
             0: 28791
           12,0:
             1: 8739
-            0: 52428
+            0: 51404
+            9: 1024
           12,1:
             0: 65280
           12,2:
@@ -5012,7 +5015,8 @@ entities:
           -8,-6:
             0: 61168
           -9,-6:
-            0: 204
+            0: 140
+            9: 64
             1: 61713
           -9,-5:
             1: 239
@@ -5588,6 +5592,11 @@ entities:
           temperature: 293.15
           moles:
             Plasma: 6666.982
+        - volume: 2500
+          temperature: 293.15
+          moles:
+            Oxygen: 21.6852
+            Nitrogen: 81.57766
         chunkSize: 4
     - type: GasTileOverlay
     - type: ExplosionAirtightGrid
@@ -7723,7 +7732,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -194839.3
+      secondsUntilStateChange: -210145.64
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -26781,22 +26790,22 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
+          Oxygen: 1.8856695
+          Nitrogen: 7.0937095
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 2261
           - 1125
-          - 1124
-          - 1123
-          - 1122
-          - 1121
-          - 1120
           - 1119
+          - 1120
+          - 1121
+          - 1122
+          - 1123
+          - 1124
+          - 2261
     - type: Fixtures
       fixtures: {}
   - uid: 10146
@@ -26811,22 +26820,22 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
+          Oxygen: 1.8856695
+          Nitrogen: 7.0937095
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
           ents:
-          - 10153
-          - 873
-          - 10152
-          - 10151
-          - 10150
-          - 10149
-          - 10148
           - 10147
+          - 10148
+          - 10149
+          - 10150
+          - 10151
+          - 10152
+          - 873
+          - 10153
     - type: Fixtures
       fixtures: {}
 - proto: ClosetWallAtmospherics
@@ -28643,8 +28652,8 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
+          Oxygen: 1.8856695
+          Nitrogen: 7.0937095
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -29247,8 +29256,8 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
+          Oxygen: 1.8856695
+          Nitrogen: 7.0937095
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -54694,6 +54703,13 @@ entities:
     - type: Transform
       pos: -30.582848,-24.40912
       parent: 2
+- proto: HandLabeler
+  entities:
+  - uid: 11563
+    components:
+    - type: Transform
+      pos: -6.492646,-2.5482786
+      parent: 2
 - proto: HandTeleporter
   entities:
   - uid: 1287
@@ -54831,6 +54847,7 @@ entities:
   - uid: 546
     components:
     - type: Transform
+      rot: 3.141592653589793 rad
       pos: 22.5,3.5
       parent: 2
   - uid: 560
@@ -55365,8 +55382,8 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
+          Oxygen: 1.8856695
+          Nitrogen: 7.0937095
     - type: Lock
       locked: False
     - type: ContainerContainer
@@ -67674,8 +67691,11 @@ entities:
   - uid: 2018
     components:
     - type: Transform
+      anchored: True
       pos: 21.5,7.5
       parent: 2
+    - type: Physics
+      bodyType: Static
 - proto: TeaPlantSeeds
   entities:
   - uid: 3127
