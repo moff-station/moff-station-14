@@ -15,18 +15,6 @@
 
 - type: entity
   parent: CrateGenericSteel
-  id: CrateCarpArrow
-  name: carp teeth arrow crate
-  description: Contains a quiver full of plasma shard arrows for use by salvage.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: ArrowImprovisedCarp
-        amount: 16
-
-- type: entity
-  parent: CrateGenericSteel
   id: CratePlasmaArrow
   name: plasma arrow crate
   description: Contains a quiver full of plasma shard arrows for use by salvage.
