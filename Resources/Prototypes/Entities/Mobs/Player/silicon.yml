@@ -47,6 +47,10 @@
         type: SiliconLawBoundUserInterface
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      # Moffstation - Begin - Ai Shells - Adding the ui for the shells
+      enum.ShellUiKey.Key:
+        type: AiShellControllerBoundUserInterface
+      # Moffstation - Ai Shells- End
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -476,6 +480,7 @@
     mindRoles:
     - MindRoleGhostRoleSilicon
     job: StationAi
+  - type: AiShellController
 
 # Hologram projection that the AI's eye tracks.
 - type: entity

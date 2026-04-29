@@ -41,3 +41,11 @@ station-ai-hologram-reptilian = Reptilian form
 station-ai-hologram-resomi = Resomi form
 station-ai-hologram-vox = Vox form
 station-ai-hologram-vulpkanin = Vulpkanin form
+
+# AI shells
+ai-shell-verb-text-link = Link to
+
+ai-shell-brain-empty = empty shell
+ai-shell-brain-uncontrolled = empty shell
+
+ai-shell-guideentry = AI Shells
