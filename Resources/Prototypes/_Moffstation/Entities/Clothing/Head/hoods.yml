@@ -64,3 +64,21 @@
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsoviet.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsoviet.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodBioGeneral
+  id: ClothingHeadHatHoodSovietRad
+  name: soviet radiation hood
+  suffix: ""
+  description: A gas mask covering the entire head of the wearer. Primitive technology but still in use by penal colonies. Said to protect against all kind of radiation for 40 seconds.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/sovietradhood.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/sovietradhood.rsi
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.95
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.80
