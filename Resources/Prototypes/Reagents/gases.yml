@@ -16,7 +16,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant ]
+          type: [ Human, Animal, Rat, Plant, Thaven ] # imp
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
@@ -99,6 +99,12 @@
         amount: -2.0
     Respiration:
       effects:
+      # begin imp
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+      # end imp
       - !type:HealthChange
         ignoreResistances: true
         damage:
@@ -144,6 +150,12 @@
             Radiation: 1.5
     Respiration:
       effects:
+      # begin imp
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+      # end imp
       - !type:HealthChange
         ignoreResistances: true
         damage:
@@ -170,7 +182,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, Thaven ] # imp
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
@@ -237,7 +249,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox, Slime ]
+          type: [ Vox, Slime, Thaven ] # imp
       # Converts Nitrogen into Ammonia
       - !type:ModifyLungGas
         conditions:
@@ -272,6 +284,12 @@
             Poison: 1
     Respiration:
       effects:
+      # begin imp
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+      # end imp
       - !type:Emote
         minScale: 0.2
         conditions:
@@ -370,6 +388,12 @@
         minScale: 2
     Respiration:
       effects:
+      # begin imp
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+      # end imp
       - !type:HealthChange
         minScale: 0.5
         ignoreResistances: true

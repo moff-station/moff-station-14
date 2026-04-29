@@ -1,0 +1,87 @@
+﻿- type: marking
+  id: Gills
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: gills
+
+- type: marking
+  id: ThavenBiteMark
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: bitemark
+
+- type: marking
+  id: ThavenBodyStripes
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: stripes
+
+- type: marking
+  id: ThavenChestScales
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: scales
+
+- type: marking
+  id: ThavenChestTattoo1
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#666666"
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: tat1
+
+- type: marking
+  id: ThavenSpines
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: spines
+
+- type: marking
+  id: ThavenTattooWave
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: tattoowave
+
+- type: marking
+  id: ThavenTattooVines
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: tattoovines
+
+- type: marking
+  id: ThavenTiger
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: tiger1
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: tiger2
+
+- type: marking
+  id: ThavenTopSurgery
+  bodyPart: Chest
+  groupWhitelist: [ Thaven ]
+  forcedColoring: true
+  sprites:
+  - sprite: _Impstation/Mobs/Customization/Thaven/chest.rsi
+    state: nonaturals

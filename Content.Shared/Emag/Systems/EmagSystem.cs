@@ -1,10 +1,13 @@
+using Content.Shared._Impstation.Thaven;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Database;
 using Content.Shared.Emag.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Robust.Shared.Audio.Systems;
@@ -25,6 +28,7 @@ public sealed class EmagSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!; // imp
 
     public override void Initialize()
     {
@@ -60,6 +64,15 @@ public sealed class EmagSystem : EntitySystem
 
         if (_tag.HasTag(target, ent.Comp.EmagImmuneTag))
             return false;
+
+        // FORKY: TODO this can probably be attached to the thaven comp instead of here
+        // imp. if the target is a thaven who is not sleeping, dead, or crit, skip.
+        if (TryComp<ThavenMoodsComponent>(target, out _) && !HasComp<SleepingComponent>(target) && !_mobState.IsIncapacitated(target) && target != user)
+        {
+            _popup.PopupClient(Loc.GetString("emag-thaven-alive", ("emag", ent), ("target", target)), user, user);
+            return false;
+        }
+        // end imp
 
         Entity<LimitedChargesComponent?> chargesEnt = ent.Owner;
         if (_sharedCharges.IsEmpty(chargesEnt))
