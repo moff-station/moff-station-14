@@ -53,6 +53,10 @@
       tags:
       - Arrow
       - Plunger
+  # Moffstation - Start - BowHunting Wrist Savior
+  - type: AreaPickup
+  - type: QuickPickup
+  # Moffstation - End
   - type: Appearance
   - type: StorageContainerVisuals
     maxFillLevels: 3
@@ -60,7 +64,6 @@
   - type: Construction
     graph: Quiver
     node: Quiver
-
 ## Belts without visualizers
 
 - type: entity

@@ -28,10 +28,3 @@
     children:
     - id: ArrowImprovisedCarp
       amount: 16
-
-- type: entityTable
-  id: ClothingBeltQuiverPlasmaEntityTable
-  table: !type:AllSelector
-    children:
-    - id: ArrowImprovisedPlasma
-      amount: 16
