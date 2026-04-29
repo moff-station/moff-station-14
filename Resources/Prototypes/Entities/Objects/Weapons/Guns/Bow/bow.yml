@@ -5,6 +5,7 @@
   description: The original rooty tooty point and shooty.
   abstract: true
   components:
+# Moffstation - Start - Bow Hunting
   - type: Sprite
     sprite: Objects/Weapons/Guns/Bow/bow.rsi
     layers:
@@ -93,3 +94,4 @@
   - type: Construction
     graph: ImprovisedBow
     node: ImprovisedBow
+# Moffstation - End
