@@ -105,7 +105,7 @@ public sealed class OutfitSystem : EntitySystem
             foreach (var prototype in startingGear.Inhand)
             {
                 var inhandEntity = Spawn(prototype, coords);
-                _handSystem.TryPickup(target, inhandEntity, checkActionBlocker: false, handsComp: handsComponent);
+                _handSystem.TryPickupAnyHand(target, inhandEntity, checkActionBlocker: false, handsComp: handsComponent); // Moffstation - helps with loadout CBT, so we go with any hand rather than specifying a specific one
             }
         }
 
