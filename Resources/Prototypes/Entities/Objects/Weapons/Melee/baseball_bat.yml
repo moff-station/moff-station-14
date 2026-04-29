@@ -47,6 +47,19 @@
   - type: Tag
     tags:
     - BaseballBat
+  # Moffstation - Parry baseballs - Start
+  - type: TriggerOnMeleeSwing
+    targetUser: true 
+  - type: RepulseAttractOnTrigger
+    range: 2.3 
+    speed: 120
+    whitelist:
+      components:
+      - Catchable
+      - Projectile # reflect only Physics.BodyType Dynamic though - not most bullets (yet)
+      requireAll: false
+    collisionMask: None
+  # Moffstation - Parry baseballs - End
 
 - type: entity
   name: incomplete baseball bat

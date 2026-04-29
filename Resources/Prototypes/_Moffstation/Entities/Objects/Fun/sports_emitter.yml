@@ -1,0 +1,70 @@
+- type: entity
+  id: MachineBaseballPitcher
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: baseball pitching machine
+  description: An Athletic Pitching Exerciser, capable of shooting out unstable pitches which can interface with your bat.
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Moffstation/Structures/Machines/Fun/pitching.rsi
+    layers:
+    - state: base
+    - state: unshaded
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: firing
+      shader: unshaded
+      visible: false
+      map: ["enum.EmitterVisualLayers.Lights"]
+    - state: locked
+      shader: unshaded
+      visible: false
+      map: ["enum.LockVisualLayers.Lock"]
+  - type: Transform
+    noRot: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Rotatable
+    rotateWhileAnchored: true
+  - type: Emitter
+    onState: firing
+    powerUseActive: 50
+    boltType: HoloBaseball 
+    underpoweredState: underpowered
+    fireBurstSize: 3
+    fireBurstDelayMin: 2
+    fireBurstDelayMax: 4
+  - type: ApcPowerReceiver
+    powerLoad: 50
+  - type: Gun
+    projectileSpeed: 6
+    fireRate: 3 
+    showExamineText: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: DeviceLinkSink
+    ports:
+      - On
+      - Off
+      - Toggle
