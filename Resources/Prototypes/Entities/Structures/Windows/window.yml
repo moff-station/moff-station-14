@@ -24,9 +24,9 @@
       - Window
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/window.rsi
+    sprite: _Moffstation/Structures/Windows/window.rsi # Moffstation
     state: full
   - type: Physics
     bodyType: Static
@@ -145,10 +145,10 @@
         collection: GlassSmack
   - type: Sprite
     drawdepth: Mobs
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: window
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
@@ -256,7 +256,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/window_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -267,7 +267,7 @@
     key: windows
     base: state
   - type: Icon
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/window_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:
