@@ -1,8 +1,8 @@
 - type: entity
-  name: dark book
-  description: A religious book with a dark cover depicting some kind of creature. The pages are dirty, wrinkled and torn. The writing is neat, though.
   parent: Bible
   id: PersonalItemNotafezBible
+  name: dark book
+  description: A religious book with a dark cover depicting some kind of creature. The pages are dirty, wrinkled and torn. The writing is neat, though.
   suffix: PersonalItem
   components:
   - type: Sprite
@@ -19,3 +19,5 @@
   - !type:PersonalItemLoadoutEffect
     character:
     - Notafez Mome
+    jobs:
+    - JobChaplain
