@@ -1,0 +1,115 @@
+- type: entity
+  parent: TableCard
+  id: FoldingTable
+  name: folding table
+  description: A folded table. It's sturdy, unless you punch it and can support the weight of Resomis and Avalis. To fold it follow the minature instructions underneath the table.
+  components:
+  - type: StaticPrice
+    price: 300
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Tables/folding_table.rsi
+  - type: Icon
+    sprite: Structures/Furniture/Tables/card.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Clickable
+  - type: InteractionOutline
+  - type: GlassTable #they named it that cause 'it would never be used elsewhere' or something, smh
+    climberDamage:
+      types:
+        Blunt: 5
+        Piercing: 5
+    tableDamage:
+      types:
+        Blunt: 50
+    tableMassLimit: 40
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlastic1:
+            min: 1
+            max: 2
+          PartRodMetal1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DisassembleOnAltVerb
+    prototypeToSpawn: FoldingTableFolded
+    disassembleTime: 1
+  - type: InflatableSafeDisassembly
+  - type: Transform
+    anchored: true
+  placement:
+    mode: SnapgridCenter
+  
+
+- type: entity
+  id: FoldingTableFolded
+  parent: BaseItem
+  name: folding table
+  description: A folding table with a logo of "SKEA" that can easily be assembled in the blink of the arachnid's eyes. 
+  components:
+  - type: StaticPrice
+    price: 300
+  - type: Sprite
+    sprite: _Moffstation/Structures/Furniture/Tables/folding_table_inhands.rsi
+    noRot: true
+    state: icon
+  - type: Item
+    size: Ginormous
+    storedRotation: 90
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      collection: MetalThud
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlastic1:
+            min: 1
+            max: 2
+          PartRodMetal1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SpawnAfterInteract
+    prototype: FoldingTable
+    doAfter: 2
+    removeOnInteract: true
+  - type: Clickable
+  - type: PhysicalComposition
