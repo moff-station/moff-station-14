@@ -341,6 +341,9 @@
       beaker:
         maxVol: 60
         canReact: false
+  - type: Tag # Funky Station
+    tags:
+    - Cryobeaker
 
 - type: entity
   name: bluespace beaker
@@ -622,6 +625,7 @@
     tags:
     - Syringe
     - Trash
+    - Cryosyringe
 
 - type: entity
   name: pill
