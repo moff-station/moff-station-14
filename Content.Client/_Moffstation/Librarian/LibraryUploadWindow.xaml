@@ -1,0 +1,27 @@
+<controls:LibraryUploadWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Moffstation.Librarian"
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    HorizontalExpand="True">
+    <BoxContainer Orientation="Vertical" Margin="5 0">
+        <Label Text="{Loc library-console-upload-title}"/>
+        <LineEdit Name="Title" PlaceHolder="{Loc library-console-upload-title-placeholder}" Margin="0 0 0 5"/>
+        <Label Text="{Loc library-console-upload-author}"/>
+        <LineEdit Name="Author" PlaceHolder="{Loc library-console-upload-author-placeholder}" Margin="0 0 0 5"/>
+        <Label Text="{Loc library-console-upload-desc}"/>
+        <LineEdit Name="Description" PlaceHolder="{Loc library-console-upload-desc-placeholder}" Margin="0 0 0 5"/>
+        <Label Text="{Loc library-console-upload-content}"/>
+        <PanelContainer Margin="0 0 0 5">
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="#24242b" BorderColor="#3d4059" BorderThickness="2"/>
+            </PanelContainer.PanelOverride>
+            <TextEdit Name="Content"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      MinHeight="200"
+                      Margin="2"/>
+        </PanelContainer>
+        <Label Text="{Loc library-console-upload-appearance}"/>
+        <Button Name="Appearance"/>
+    </BoxContainer>
+</controls:LibraryUploadWindow>

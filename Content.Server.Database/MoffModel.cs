@@ -20,4 +20,20 @@ public static class MoffModel
 
         public int AntagWeight { get; set; } = 1;
     }
+
+    [Table("MoffLibraryRepo")]
+    public class MoffLibraryEntry
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required] public string Name { get; set; } = null!;
+        [Required] public string Description { get; set; } = null!;
+        [Required] public string Author { get; set; } = null!;
+        [Required] public string Content { get; set; } = null!;
+        [Required] public string Type { get; set; } = null!;
+        [Required] public Guid AuthorUserId { get; set; }
+        [Required] public bool AppearRandomly { get; set; }
+        [Required] public bool Approved { get; set; }
+    }
 }
