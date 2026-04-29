@@ -88,7 +88,7 @@
   - type: Metabolizer
     maxReagents: 5
   # Moffstation - start - cryogenic life support
-  - type: ConservableOrgan
+  - type: ReusableOrgan
     specie: Dwarf
     compatible: [ Dwarf, Human ]
   # Moffstation - end
@@ -98,7 +98,7 @@
   id: OrganDwarfLiver
   # Moffstation - start - cryogenic life support
   components:
-  - type: ConservableOrgan
+  - type: ReusableOrgan
     specie: Dwarf
     compatible: [ Dwarf, Human ]
   # Moffstation - end
@@ -108,7 +108,7 @@
   id: OrganDwarfHeart
   # Moffstation - start - cryogenic life support
   components:
-  - type: ConservableOrgan
+  - type: ReusableOrgan
     specie: Dwarf
     compatible: [ Dwarf, Human ]
   # Moffstation - end

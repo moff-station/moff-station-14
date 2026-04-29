@@ -10,10 +10,10 @@ namespace Content.Shared._Moffstation.Body.Components;
 // todo : can probably be done using Perishable !
 
 /// <summary>
-/// This is used for organs that can be conserved and used with the <see cref="CryoCapsuleComponent"/>
+/// This is used for organs that can be extracted and used inside another <see cref="BodyComponent"/>
 /// </summary>
 [RegisterComponent]
-public sealed partial class ConservableOrganComponent : Component
+public sealed partial class ReusableOrganComponent : Component
 {
     /// <summary>
     /// Indicate the state of conservation of an organ.
@@ -28,13 +28,13 @@ public sealed partial class ConservableOrganComponent : Component
     public int[] Thresholds = [100, 60, 20];
 
     /// <summary>
-    /// From what specie does this organ come from
+    /// Indicate the specie this organ originate from.
     /// </summary>
     [DataField]
     public ProtoId<SpeciesPrototype> Specie;
 
     /// <summary>
-    /// The specie that can use this organ as a substitute
+    /// Indicate the specie for which this organ can be used.
     /// </summary>
     [DataField]
     public HashSet<ProtoId<SpeciesPrototype>> Compatible;

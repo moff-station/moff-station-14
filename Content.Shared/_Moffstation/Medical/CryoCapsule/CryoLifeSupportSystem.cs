@@ -1,8 +1,10 @@
 using Content.Shared.Audio;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Jittering;
 using Content.Shared.Medical.Cryogenics;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Moffstation.Medical.CryoCapsule;
@@ -10,8 +12,7 @@ namespace Content.Shared._Moffstation.Medical.CryoCapsule;
 /// <summary>
 /// This handles...
 /// </summary>
-
-public sealed partial class CryoLifeSupportSystem : EntitySystem
+public abstract partial class SharedCryoLifeSupportSystem : EntitySystem
 {
     [Dependency] private readonly EntityManager _entity = default!;
 
@@ -20,6 +21,8 @@ public sealed partial class CryoLifeSupportSystem : EntitySystem
 
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
+
+    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -75,13 +78,14 @@ public sealed partial class CryoLifeSupportSystem : EntitySystem
         {
             case CryoLifeSupportSimpleUiMessage.ActionType.EjectCapsule :
                 _itemSlots.TryEjectToHands(ent, ent.Comp.CapsuleSlot, args.Actor);
-                _audio.PlayPredicted(ent.Comp.DetachCapsuleSound, ent, args.Actor);
+                _audio.PlayPredicted(ent.Comp.DetachCapsuleSound, ent, ent);
                 break;
             case CryoLifeSupportSimpleUiMessage.ActionType.EjectBeaker :
                 _itemSlots.TryEjectToHands(ent, ent.Comp.BeakerSlot, args.Actor);
                 break;
             case CryoLifeSupportSimpleUiMessage.ActionType.ReviveBrain :
-                _audio.PlayPredicted(ent.Comp.ReviveBrainSound, ent, args.Actor);
+                _audio.PlayPredicted(ent.Comp.ReviveBrainSound, ent, ent);
+                //_jitter.DoJitter(ent, TimeSpan.FromSeconds(0.5), true, -15, 200); // todo : for some lovely effect.
                 if (ent.Comp.CapsuleSlot.Item is not { } capsule)
                     break;
                 RaiseLocalEvent(capsule, new ReviveBrainEvent());
@@ -97,6 +101,10 @@ public sealed partial class CryoLifeSupportSystem : EntitySystem
     }
 }
 
+public enum CryoLifeSupportVisualLayers
+{
+    Base,
+}
 
 [Serializable, NetSerializable]
 public enum CryoLifeSupportVisuals : byte

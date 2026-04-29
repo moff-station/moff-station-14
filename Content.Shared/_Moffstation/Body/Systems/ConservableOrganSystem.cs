@@ -17,7 +17,7 @@ public sealed class ConservableOrganSystem : EntitySystem
         _proto = IoCManager.Resolve<IPrototypeManager>();
     }
 
-    public OrganEntry GenerateEntry(Entity<ConservableOrganComponent> ent)
+    public OrganEntry GenerateEntry(Entity<ReusableOrganComponent> ent)
     {
         var specieName = _proto.TryIndex(ent.Comp.Specie, out var specie)
             ? specie.Name

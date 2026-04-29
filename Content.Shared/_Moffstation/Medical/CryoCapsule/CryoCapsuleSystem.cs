@@ -47,10 +47,10 @@ public sealed class CryoCapsuleSystem : EntitySystem
                 ! ent.Comp.Organs.TryGetValue(category, out var organ))
                 continue;
 
-            if (TryComp<ConservableOrganComponent>(organ, out var consComp))
+            if (TryComp<ReusableOrganComponent>(organ, out var consComp))
                 entry = _organs.GenerateEntry((organ, consComp));
             else
-                entry.Status = OrganEntry.OrganStatus.Healthy;
+                entry.Status = OrganEntry.OrganStatus.Healthy; // todo : probably unusable or something ?
             args.OrganEntries[i] = entry;
         }
     }

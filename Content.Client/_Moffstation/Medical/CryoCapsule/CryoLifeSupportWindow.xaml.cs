@@ -78,39 +78,37 @@ public sealed partial class CryoLifeSupportWindow : FancyWindow
 
     private void SetGasMix(GasMixEntry mix)
     {
-        bool hasGas = (mix.Pressure > Atmospherics.GasMinMoles);
-
         Pressure.Text = Loc.GetString("gas-analyzer-window-pressure-val-text",
             ("pressure", $"{mix.Pressure:0.00}"));
         Temperature.Text = Loc.GetString("generic-not-available-shorthand");
 
-        if (hasGas)
+        GasMixChart.Clear();
+        if (mix.Pressure < Atmospherics.GasMinMoles ||
+            mix.Gases == null)
         {
-            var celsius = TemperatureHelpers.KelvinToCelsius(mix.Temperature);
-            Temperature.Text = Loc.GetString("gas-analyzer-window-temperature-val-text",
-                ("tempK", $"{mix.Temperature:0.0}"),
-                ("tempC", $"{celsius:0.0}"));
+            GasMixChart.Visible = false;
+            return;
         }
 
+        GasMixChart.Visible = true;
 
-        GasMixChart.Clear();
-        GasMixChart.Visible = hasGas;
+        var celsius = TemperatureHelpers.KelvinToCelsius(mix.Temperature);
+        Temperature.Text = Loc.GetString("gas-analyzer-window-temperature-val-text",
+            ("tempK", $"{mix.Temperature:0.0}"),
+            ("tempC", $"{celsius:0.0}"));
 
-        if (mix.Gases != null)
+        var totalGasAmount = mix.Gases.Sum(gas => gas.Amount);
+
+        foreach (var gasEntry in mix.Gases)
         {
-            var totalGasAmount = mix.Gases.Sum(gas => gas.Amount);
-
-            foreach (var gasEntry in mix.Gases)
-            {
-                var gasProto = _atmosphere.GetGas(gasEntry.Gas);
-                var percent = gasEntry.Amount / totalGasAmount * 100;
-                var localizedName = Loc.GetString(gasProto.Name);
-                var tooltip = Loc.GetString("gas-analyzer-window-molarity-percentage-text",
-                    ("gasName", localizedName),
-                    ("amount", $"{gasEntry.Amount:0.##}"),
-                    ("percentage", $"{percent:0.#}"));
-                GasMixChart.AddEntry(gasEntry.Amount, gasProto.Color, tooltip: tooltip);
-            }
+            var gasProto = _atmosphere.GetGas(gasEntry.Gas);
+            var percent = gasEntry.Amount / totalGasAmount * 100;
+            var localizedName = Loc.GetString(gasProto.Name);
+            var tooltip = Loc.GetString("gas-analyzer-window-molarity-percentage-text",
+                ("gasName", localizedName),
+                ("amount", $"{gasEntry.Amount:0.##}"),
+                ("percentage", $"{percent:0.#}"));
+            GasMixChart.AddEntry(gasEntry.Amount, gasProto.Color, tooltip: tooltip);
         }
     }
 

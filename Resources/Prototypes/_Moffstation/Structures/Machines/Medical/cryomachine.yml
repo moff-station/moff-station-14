@@ -1,13 +1,55 @@
+# todo : the "i'm an object when dead bit" can maybe be dealt with with a StatusEffect ?
 - type: entity
-  parent: BaseMachine
-  id: CLSMachine
+  parent: [ BaseMachinePowered ] # todo : ConstructibleMachine
+  id: CryoLifeSupportMachine
   name: cryogenic life support
-  description: A machine able to keep organs alive in absence of a body.
+  description: able to keep organs alive in absence of a body.
   placement:
     mode: SnapgridCenter
   components:
+
+  # visual
+  - type: Sprite
+    sprite:  _Moffstation/Structures/Machines/cryo_capsule.rsi
+    noRot: true
+    layers:
+    - state: pipe
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: machine-empty
+      map: [ "enum.CryoLifeSupportVisualLayers.Base"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CryoLifeSupportVisuals.Filled:
+        base:
+          False: { state: machine-empty }
+          True: { state: machine-working }
+
+  # ui
+  - type: UserInterface
+    interfaces:
+      enum.CryoLifeSupportUiKey.Key:
+        type: CryoLifeSupportBoundUserInterface
+  - type: ActivatableUI
+    key: enum.CryoLifeSupportUiKey.Key
+    requiresComplex: false
+
+  # audiovisual effects
+  - type: AmbientSound
+    volume: -9
+    range: 5
+    enabled: false
+    sound:
+      path: /Audio/Machines/spinning.ogg
+  - type: PointLight
+    radius: 1.5
+    energy: 5.0
+    castShadows: false
+    color: "#56c3b9"
+
+  # cryocapsule
+  ## todo : this need to be more general : Simply ask a FitInCryoLifeSupport and ask for a ui fragment like cartridge stuff.
   - type: CryoLifeSupport
-    # todo : each entry is associated to a name.
     monitoredOrgans:
     - Brain
     - Eyes
@@ -30,56 +72,27 @@
       whitelist:
         components:
         - FitsInDispenser
-  - type: Sprite
-    granularLayersRendering: true
-    sprite: _Moffstation/Structures/Machines/cryo_capsule.rsi
-    drawdepth: Mobs
-    noRot: true
-    layers:
-    - sprite: Structures/Piping/Atmospherics/pipe.rsi
-      state: pipeHalf
-      drawdepth: ThinPipe
-      map: [ "enum.PipeVisualLayers.Pipe" ]
-    - state: machine-empty
-      map: [ "enum.CryoPodVisualLayers.Base" ]
-      renderingStrategy: Default
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.CryoLifeSupportVisuals.Filled:
-        base:
-          False: { state: machine-empty }
-          True: { state: machine-working }
-  - type: AmbientSound
-    volume: -9
-    range: 5
-    enabled: false
-    sound:
-      path: /Audio/Machines/spinning.ogg
-  - type: PointLight
-    radius: 1.5
-    energy: 5.0
-    castShadows: false
-    color: "#56c3b9"
+  - type: CryoPodAir
+
+  # containers
   - type: ItemSlots
   - type: ContainerContainer
     containers:
       capsule_slot: !type:ContainerSlot
-  - type: UserInterface
-    interfaces:
-      enum.CryoLifeSupportUiKey.Key:
-        type: CryoLifeSupportBoundUserInterface
-  - type: ActivatableUI
-    key: enum.CryoLifeSupportUiKey.Key
-    requiresComplex: false
-  - type: ApcPowerReceiver
-    powerLoad: 3000
+      beaker_slot: !type:ContainerSlot
+
+  # piping
+  - type: PipeRestrictOverlap
+  - type: AtmosPipeLayers
+    spriteLayersRsiPaths:
+      enum.PipeVisualLayers.Pipe:
+        Primary: _Moffstation/Structures/Machines/cryo_capsule.rsi
+        Secondary: _Moffstation/Structures/Machines/cryo_capsule_alt1.rsi # todo : problem with the sprite apparently (don't change)
+        Tertiary: _Moffstation/Structures/Machines/cryo_capsule_alt2.rsi  # todo : the same (don't change)
   - type: AtmosDevice
-  - type: CryoPodAir
   - type: NodeContainer
     nodes:
-        port:
-          !type:PortablePipeNode
-          nodeGroupID: Pipe
-          pipeDirection: South
-
+      port:
+        !type:PortablePipeNode
+        nodeGroupID: Pipe
+        pipeDirection: South

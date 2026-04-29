@@ -28,6 +28,7 @@
     - Lungs
     - Heart
 
+  # todo : absolutely rename that.
   - type: MobWhenAlive # the cryocapsule is a mob when alive and return to be an inanimate object when it dies.
     addWhenAlive:
     - type: MobState
@@ -73,6 +74,7 @@
 
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Medical/cryocapsule.rsi
+    # todo : add layers to stop the damn client exception.
     state: empty
     noRot: true
   - type: Appearance

@@ -73,6 +73,12 @@ public sealed partial class CryoLifeSupportComponent : Component
 
     [DataField]
     public TimeSpan UiNextUpdateTime = TimeSpan.Zero;
+
+    /// <summary>
+    /// Specifies the name of the atmospherics port to draw gas from.
+    /// </summary>
+    [DataField]
+    public string PortName = "port";
 }
 
 
