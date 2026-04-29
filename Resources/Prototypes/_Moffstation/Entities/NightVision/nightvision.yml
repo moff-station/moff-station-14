@@ -1,0 +1,24 @@
+# Some base entities for nightvision
+# have your prototype inherit to give them night vision stuff
+- type: entity
+  id: BaseNightVision
+  abstract: true
+  components:
+  - type: NightVision
+  - type: PointLight
+    netsync: false
+    radius: 6
+    castShadows: false
+    enabled: false
+
+- type: entity
+  parent: [BaseNightVision, ClothingEyesGlassesCheapSunglasses]
+  id: NightVisionSunglasses
+  name: Nightvision Sunglasses
+  components:
+  - type: NightVision
+  - type: PointLight
+    netsync: false
+    radius: 6
+    castShadows: false
+    enabled: false
