@@ -2,17 +2,9 @@
 - type: cargoProduct
   id: CargoSalvageArrow
   icon:
-    sprite: Objects/Weapons/Guns/Projectiles/arrows.rsi
+    sprite: Clothing/Belt/quiver.rsi
     layers:
-    - state: tail
-      color: white
-    - state: rod
-      color: darkgray
-    - state: tip
-      color: purple
-    - state: solution1
-      map: ["enum.SolutionContainerLayers.Fill"]
-      visible: false
+    - state: icon
   product: CratePlasmaArrow
   cost: 1000
   category: cargoproduct-category-name-cargo
