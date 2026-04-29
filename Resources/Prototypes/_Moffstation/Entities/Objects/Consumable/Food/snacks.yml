@@ -40,3 +40,39 @@
     sprite: _Moffstation/Objects/Consumable/Food/snacks.rsi
     state: chits-trash
   # todo need inhands
+
+- type: entity
+  parent: FoodSnackChocolate
+  id: FoodSnackChocolateSyndie
+  name: Panzerschokolade
+  description: Tastes like runing.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodPacketChocolateTrash
+      - id: FoodSnackChocolateBarSyndie
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: FoodSnackChocolateBar
+  id: FoodSnackChocolateBarSyndie
+  name: Panzerschokolade
+  description: Tastes like runing.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - chocolate
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Theobromine
+          Quantity: 3
+        - ReagentId: CocoaPowder 
+          Quantity: 1
+        - ReagentId: Ephedrine 
+          Quantity: 10
