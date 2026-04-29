@@ -271,7 +271,16 @@
         children:
         - id: CannonBall
           amount: !type:RangeNumberSelector
-            range: 3, 5
+            range: 3, 4
+        - id: CannonBallStructureSplitting
+          amount: !type:RangeNumberSelector
+            range: 1, 2
+        - id: CannonBallBouncy
+          amount: !type:RangeNumberSelector
+            range: 0, 1
+        - id: CannonBallGasNitrous
+          amount: !type:RangeNumberSelector
+            range: 0, 2
         - id: CannonBallGrapeshot
           amount: !type:RangeNumberSelector
             range: 1, 3
