@@ -1,0 +1,20 @@
+- type: entity
+  parent: BaseBow
+  id: CompoundBow
+  name: Compound Bow
+  description: A bow with a pulley system that lightens the draw, designed for old fashioned hunting.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Bow/bow.rsi
+    layers:
+    - state: unwielded
+      map: [ base ]
+    - state: unwielded-arrow
+      map: [ arrow ]
+      visible: false
+    - state: unwielded-plunger
+      map: [ plunger ]
+      visible: false
+  - type: UseDelay
+    delay: 0.5
+  
