@@ -64,8 +64,8 @@
   id: HeadofTomfooleryPDA
   name: head of tomfoolery PDA
   components:
-  - type: RenameId
-    value: job-name-clown-head-of-tomfoolery
+  - type: Pda
+    id: HoTIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

@@ -99,8 +99,8 @@
   id: HeadofSanitationPDA
   name: head of sanitation PDA
   components:
-  - type: RenameId
-    value: job-name-janitor-head-of-sanitation
+  - type: Pda
+    id: HoSanitationIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

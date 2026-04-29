@@ -1,0 +1,38 @@
+﻿- type: job
+  id: HeadOfTomfoolery
+  name: job-name-clown-head-of-tomfoolery
+  description: job-description-head-of-tomfoolery
+  playTimeTracker: JobCommandHeadOfTomfoolery
+  setPreference: false
+  startingGear: HeadOfTomfooleryGear
+  icon: "JobIconHeadOfTomfoolery"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Command
+  - Theatre
+  - Service
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: HeadOfTomfooleryGear
+  equipment:
+    back: ClothingBackpackDuffelClown
+    neck: ClothingNeckCloakCapFormal
+    ears: ClothingHeadsetCommand
+    eyes: ClothingEyesGlassesCommand
+    mask: ClothingMaskClown
+    id: HeadofTomfooleryPDA
+    jumpsuit: ClothingUniformJumpsuitJester
+    outerClothing: ClothingOuterCoatCaptainLongcoat
+    shoes: ClothingShoesClown
+    head: ClothingHeadHatCaptainCirclet
+    belt: GoldenBikeHorn
+    pocket1: Flash
+  storage:
+    back:
+    - Flash
+    - Crowbar
