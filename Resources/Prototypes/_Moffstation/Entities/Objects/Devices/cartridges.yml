@@ -1,0 +1,40 @@
+- type: entity
+  parent: BaseItem
+  id: TicketMasterCartridge
+  name: Ticket Master Cartridge
+  description: Lets you ticket peoples !
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/cartridge.rsi
+    state: cart-sec
+  - type: UIFragment
+    ui: !type:TicketMasterUi
+  - type: TicketMasterCartridge
+  - type: Cartridge
+    programName: ticket-master-program-name
+    icon:
+      sprite: _Moffstation/Misc/program_icons.rsi
+      state: ticket-master
+
+- type: entity
+  name: infraction ticket
+  parent: Paper
+  id: InfractionTicketPaper
+  description: That will show this hooligan !
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper_receipt_horizontal
+    - state: paper_receipt_horizontal_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_perforated.svg.96dpi.png"
+    backgroundImageTile: true
+    backgroundPatchMargin: 6.0, 0.0, 6.0, 0.0
+    contentMargin: 12.0, 0.0, 6.0, 0.0
+    maxWritableArea: 368.0, 256.0
