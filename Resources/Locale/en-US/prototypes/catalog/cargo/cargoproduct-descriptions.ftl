@@ -10,7 +10,3 @@ cargoproduct-description-material-plasteel = 30 sheets of plasteel.
 
 cargoproduct-name-material-silver = silver ingots
 cargoproduct-description-material-silver = 30 ingots of silver.
-
-# Service
-cargoproduct-name-foldingtable = folding table crate
-cargoproduct-description-foldingtable = Contains three folding tables that need assembly. Made by SKEA.
