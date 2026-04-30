@@ -4,7 +4,7 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/29/2026 02:14:07
+  time: 04/30/2026 21:27:18
   entityCount: 11900
 maps:
 - 1
@@ -7732,7 +7732,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -210145.64
+      secondsUntilStateChange: -210809.28
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -57008,9 +57008,36 @@ entities:
   entities:
   - uid: 11051
     components:
+    - type: MetaData
+      desc: Yggr'hah imb lshhouth kah'hkr ku suooiu!
     - type: Transform
       pos: -7.5,34.5
       parent: 2
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape: !type:PolygonShape
+            radius: 0.01
+            vertices:
+            - -0.45,-0.45
+            - 0.45,-0.45
+            - 0.45,0.2
+            - -0.45,0.2
+          mask:
+          - Impassable
+          - TableLayer
+          - LowImpassable
+          layer:
+          - TableLayer
+          - LowImpassable
+          - BulletImpassable
+          - Opaque
+          density: 15000
+          hard: True
+          restitution: 0
+          friction: 0.4
+    - type: Anchorable
+      delay: 60
 - proto: MopBucketCubeWrapped
   entities:
   - uid: 1538
