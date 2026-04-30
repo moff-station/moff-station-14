@@ -6,6 +6,7 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage:
-        id: FoldingTableFolded
-        amount: 3
+      entity_storage: !type:AllSelector
+        children:
+        - id: FoldingTableFolded
+          amount: 3
