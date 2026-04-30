@@ -22,17 +22,17 @@
         Piercing: 5
     tableDamage:
       types:
-        Blunt: 50
+        Blunt: 40
     tableMassLimit: 40
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 40
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 20
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -63,6 +63,7 @@
   id: FoldingTableFolded
   parent: BaseItem
   name: folding table
+  suffix: folded
   description: A folding table with a logo of "SKEA" that can easily be assembled in the blink of the arachnid's eyes. 
   components:
   - type: StaticPrice
@@ -84,13 +85,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 40
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 20
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -110,8 +111,7 @@
   - type: Fixtures
     fixtures:
       item: # For the folded, carriable table
-        shape:
-          !type:PhysShapeAabb
+        shape: !type:PhysShapeAabb
           bounds: "-0.25,-0.25,0.25,0.25"
         density: 60
         mask:
