@@ -33,6 +33,12 @@
       min: 0
       max: 0
 
+- type: entity # Variant for events which have no delay between announcing and starting
+  id: MoffBaseVote
+  abstract: true
+  components:
+  - type: MoffVoteEntry
+
 ## General Tables for Station Events
 #- type: entityTable
 #  id: ESStationEvents
@@ -83,6 +89,7 @@
     - ESVoteGasLeakLocation
 
 - type: entity
+  parent: MoffBaseVote
   id: ESVoteGasLeakGases
   name: Which gas should leak?
   components:
@@ -99,6 +106,7 @@
     count: 2
 
 - type: entity
+  parent: MoffBaseVote
   id: ESVoteGasLeakLocation
   name: Where should the gas leak?
   components:
@@ -106,7 +114,29 @@
     queryString: es-voter-query-string-gas-leak-location
     duration: 30
   - type: ESGasVentVote
-#
+
+- type: entity
+  parent: ESBaseStationEvent
+  id: MoffExampleEnrollEvent
+  name: Enroll event
+  description: Enroll for le antags
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-gas-leak-start-announcement
+    endAnnouncement: station-event-gas-leak-end-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+  - type: ESSynchronizedVoteManager
+    votes:
+    - BaseMoffEnroller
+
+- type: entity
+  parent: MoffBaseVote
+  id: BaseMoffEnroller
+  name: Enroll for nukies
+  components:
+  - type: MoffEnrollEvent
+
 ### Grey Tide Virus
 #- type: entity
 #  parent: ESBaseStationEvent
