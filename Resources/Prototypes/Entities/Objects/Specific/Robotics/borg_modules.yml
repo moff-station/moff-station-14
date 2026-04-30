@@ -634,7 +634,6 @@
     - item: MiningDrill
     - item: Shovel
     - item: MineralScannerUnpowered
-    - item: BorgOreBag
     # Moffstation - Start - Add orehand for salvage borgs
     - hand:
         emptyRepresentative: Coal1
@@ -643,6 +642,7 @@
           tags:
           - Ore
           - ArtifactFragment
+          - Orebag
     # Moffstation -End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }

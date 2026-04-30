@@ -47,6 +47,18 @@
     displayName: Head
     offset: 0.015625, 0
 # Moffstation - Start - Giving Borgs Neck slots
+  - name: belt
+    slotTexture: belt
+    fullTextureName: template_small
+    slotFlags: BELT
+    slotGroup: SecondHotbar
+    stripTime: 6
+    uiWindowPos: 3,1
+    strippingWindowPos: 1,5
+    displayName: Belt
+    whitelist:
+      tags:
+        - Orebag
   - name: neck
     slotTexture: neck
     slotFlags: NECK
