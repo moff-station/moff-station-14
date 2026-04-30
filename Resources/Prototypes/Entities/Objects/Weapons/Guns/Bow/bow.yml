@@ -47,6 +47,7 @@
         base:
           True: { state: wielded }
           False: { state: unwielded }
+# Moffstation - End
   - type: Item
     size: Normal
   - type: Clothing
@@ -91,7 +92,7 @@
   parent: BaseBow
   name: improvised shortbow
   components:
+  # Moffstation - Common bow stuff was moved to `BaseBow`. Merge any changes to this prototype to that one instead.
   - type: Construction
     graph: ImprovisedBow
     node: ImprovisedBow
-# Moffstation - End
