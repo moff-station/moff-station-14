@@ -1314,6 +1314,8 @@
     stackRequirements:
       Steel: 1
       Cable: 2
+  - type: BladeServerBoard
+    prototype: TelecomBladeServer
 
 - type: entity
   parent: BaseMachineCircuitboard
