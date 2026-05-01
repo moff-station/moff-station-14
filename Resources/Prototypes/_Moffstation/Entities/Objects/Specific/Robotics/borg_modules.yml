@@ -290,3 +290,30 @@
     - item: WeaponShotgunBlackbox
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
+
+- type: entity
+  id: BorgModuleWildlifeControl
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  name: widlife cyborg module
+  description: Designed for salvaging in a wildlife heavy environment. Comes with a knife and a budget cut version of the proto-kinetic particle accelerator.
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-wildlife
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponProtoKineticAcceleratorIntegrated
+    - item: SurvivalKnife
+    - hand:
+        emptyRepresentative: PKAUpgradeDamage
+        emptyLabel: borg-slot-ores-empty
+        whitelist:
+          tags:
+          - PKAUpgrade
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: wildlife-module }
+  - type: Tag
+    tags:
+    - BorgModuleCargo

@@ -1,0 +1,24 @@
+- type: entity
+  name: integrated proto-kinetic accelerator
+  description: NT miraculously managed to save up to 33.4% by producing a weaker version of the proto-kinetic accelerator and redesigned it for use by cyborgs. 
+  id: WeaponProtoKineticAcceleratorIntegrated
+  parent: WeaponProtoKineticAccelerator
+  components:
+  - type: UseDelay
+    delay: 0 # You can't dual wield this as a borg so no need for a delay
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Basic/kinetic_accelerator_integrated.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Item
+    sprite: _Moffstation/Objects/Weapons/Guns/Basic/kinetic_accelerator_integrated.rsi
+    size: Large
+    shape:
+    - 0,0,2,1
+  - type: BasicEntityAmmoProvider
+    proto: BulletKineticSmall
+    capacity: 1
+    count: 1
