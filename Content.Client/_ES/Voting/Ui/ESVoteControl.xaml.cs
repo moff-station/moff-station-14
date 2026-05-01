@@ -34,17 +34,9 @@ public sealed partial class ESVoteControl : PanelContainer
 
         var netOwner = _entityManager.GetNetEntity(owner);
 
-        if (_entityManager.TryGetComponent<MoffVoteEntryComponent>(vote.Owner, out var entry))
-        {
-            Progress.MinValue = (float) (entry.EndTime - entry.Duration).TotalSeconds;
-            Progress.MaxValue = (float)entry.EndTime.TotalSeconds;
-            _endTime = entry.EndTime;
-        }
-        else
-        {
-            Progress.Visible = false;
-            TimeLabel.Visible = false;
-        }
+        Progress.MinValue = (float) (vote.Comp.EndTime - vote.Comp.Duration).TotalSeconds;
+        Progress.MaxValue = (float)vote.Comp.EndTime.TotalSeconds;
+        _endTime = vote.Comp.EndTime;
 
         var name = _entityManager.GetComponentOrNull<MetaDataComponent>(vote)?.EntityName ?? string.Empty;
         VoteNameLabel.Text = Loc.GetString("es-voter-ui-header-text-format", ("title", name));

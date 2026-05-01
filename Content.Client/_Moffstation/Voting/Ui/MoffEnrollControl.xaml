@@ -7,7 +7,7 @@
     <PanelContainer.PanelOverride>
         <graphics:StyleBoxFlat BackgroundColor="{xNamespace:Static style:StyleNano.ButtonColorDisabled}" />
     </PanelContainer.PanelOverride>
-    <BoxContainer Name="EnrollmentContainer" Orientation="Vertical" VerticalExpand="True" Margin="10 5 10 10">
+    <BoxContainer Name="EnrollmentContainer" Orientation="Vertical" VerticalExpand="True" Margin="10">
         <GridContainer Columns="2">
             <BoxContainer Orientation="Vertical">
                 <RichTextLabel Name="VoteNameLabel" Text="[bold][font size=16][color=white]Text Title[/color][/font][/bold]" HorizontalExpand="True" RectClipContent="True"/>
@@ -19,7 +19,7 @@
                 <Button Name="GotoButton" Text="Go To"/>
             </BoxContainer>
         </GridContainer>
-        <RichTextLabel Name="TimeLabel" HorizontalAlignment="Right"/>
+        <RichTextLabel Name="TimeLabel"/>
         <ProgressBar Name="Progress" Value="0.5" MinValue="0" MaxValue="1" ModulateSelfOverride="#00ff00" HorizontalExpand="True" SetHeight="5" Margin="0 2 0 5"/>
     </BoxContainer>
 </controls:MoffEnrollControl>

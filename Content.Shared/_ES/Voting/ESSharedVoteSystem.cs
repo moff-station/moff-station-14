@@ -38,6 +38,7 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
 
     private void OnVoteMapInit(Entity<ESVoteComponent> ent, ref MapInitEvent args)
     {
+        ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
         RefreshVoteOptions(ent.AsNullable());
         SendVoteStartAnnouncement(ent);
     }
@@ -145,12 +146,12 @@ public abstract partial class ESSharedVoteSystem : EntitySystem
         base.Update(frameTime);
 
         var votes = new ValueList<Entity<ESVoteComponent>>();
-        var query = EntityQueryEnumerator<ESVoteComponent, MoffVoteEntryComponent>();
-        while (query.MoveNext(out var uid, out var comp1, out var comp2))
+        var query = EntityQueryEnumerator<ESVoteComponent>();
+        while (query.MoveNext(out var uid, out var comp))
         {
-            if (_timing.CurTime < comp2.EndTime)
+            if (_timing.CurTime < comp.EndTime)
                 continue;
-            votes.Add((uid, comp1));
+            votes.Add((uid, comp));
         }
 
         foreach (var vote in votes)

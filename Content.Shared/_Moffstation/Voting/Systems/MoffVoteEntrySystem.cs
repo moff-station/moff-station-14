@@ -11,7 +11,6 @@ namespace Content.Shared._Moffstation.Voting.Systems;
 /// </summary>
 public sealed class MoffVoteEntrySystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedPvsOverrideSystem _pvsOverride = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
 
@@ -25,8 +24,6 @@ public sealed class MoffVoteEntrySystem : EntitySystem
 
     private void OnMapInit(Entity<MoffVoteEntryComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
-
         // Add a session override for all the present voters
         var query = EntityQueryEnumerator<ESVoterComponent, ActorComponent>();
         while (query.MoveNext(out var uid, out _, out var actor))

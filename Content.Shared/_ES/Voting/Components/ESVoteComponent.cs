@@ -14,6 +14,18 @@ namespace Content.Shared._ES.Voting.Components;
 public sealed partial class ESVoteComponent : Component
 {
     /// <summary>
+    /// When the vote will end.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
+    public TimeSpan EndTime;
+
+    /// <summary>
+    /// Total duration of vote.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan Duration = TimeSpan.FromMinutes(1);
+
+    /// <summary>
     /// Dictionary relating the different options for a vote to the people who have voted for it.
     /// </summary>
     [DataField, AutoNetworkedField]
