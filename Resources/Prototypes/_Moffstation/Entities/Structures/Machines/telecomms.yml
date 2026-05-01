@@ -13,6 +13,8 @@
     keySlots: 10
   - type: ContainerContainer
     containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
       key_slots: !type:Container
   - type: WiresVisuals
   - type: WiresPanel
