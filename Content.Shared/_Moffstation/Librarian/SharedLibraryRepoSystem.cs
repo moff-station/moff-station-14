@@ -1,3 +1,10 @@
 namespace Content.Shared._Moffstation.Librarian;
 
-public abstract partial class SharedLibraryRepoSystem : EntitySystem;
+public abstract partial class SharedLibraryRepoSystem : EntitySystem
+{
+    public override void Initialize()
+    {
+        base.Initialize();
+    }
+
+}

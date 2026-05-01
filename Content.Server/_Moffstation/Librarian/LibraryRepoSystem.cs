@@ -1,3 +1,4 @@
+using Content.Server.Database;
 using Content.Shared._Moffstation.Librarian;
 
 namespace Content.Server._Moffstation.Librarian;
@@ -7,9 +8,15 @@ namespace Content.Server._Moffstation.Librarian;
 /// </summary>
 public sealed class LibraryRepoSystem : SharedLibraryRepoSystem
 {
-    /// <inheritdoc/>
+    [Dependency] private readonly IServerDbManager _db = default!;
+
     public override void Initialize()
     {
+        SubscribeLocalEvent<LibraryRepoComponent, MapInitEvent>(OnMapInit);
+    }
 
+    private void OnMapInit(Entity<LibraryRepoComponent> ent, ref MapInitEvent args)
+    {
+        _db.GetLibraryRepo()
     }
 }

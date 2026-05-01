@@ -1688,7 +1688,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         // Moffstation - Everything in this region is moff
 
         // Get the entire library repo
-        public async Task<List<MoffModel.MoffLibraryEntry>> GetLibraryRepo(bool approvedOnly, Guid? requester, bool randomBook, CancellationToken cancel = default)
+        public async Task<List<MoffModel.MoffLibraryEntry>> GetLibraryRepo(bool approvedOnly, NetUserId? requester, bool randomBook, CancellationToken cancel = default)
         {
             await using var db = await GetDb(cancel);
             return await db.DbContext.MoffLibraryEntries
@@ -1700,7 +1700,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .ToListAsync(cancel);
         }
 
-        public async Task<bool> AddOrUpdateLibraryEntry(PlayerBook submission, Guid uploader, bool randomBookPool, bool adminApproved, CancellationToken cancel = default)
+        public async Task<bool> AddOrUpdateLibraryEntry(PlayerBook submission, NetUserId uploader, bool randomBookPool, bool adminApproved, CancellationToken cancel = default)
         {
             await using var db = await GetDb(cancel);
 
