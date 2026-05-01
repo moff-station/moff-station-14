@@ -43,3 +43,11 @@
     - type: Storage
       grid:
       - 0,0,9,5
+    # Moffstation - Begin - Make borg ore bags magnetize in hands and toggleable
+    - type: ItemToggle
+    - type: ComponentToggler
+      components:
+      - type: MagnetPickup
+        slotFlags: null
+    # Moffstation - End
+
