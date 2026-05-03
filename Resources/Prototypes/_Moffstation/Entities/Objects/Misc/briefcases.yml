@@ -1,4 +1,15 @@
 ﻿- type: entity
+  parent: BriefcaseBase
+  id: BriefcaseMetal
+  name: metal briefcase
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_metal.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_metal.rsi
+
+- type: entity
   parent: [BriefcaseBase, BaseSyndicateContraband]
   id: BriefcaseSyndieFlashy
   suffix: Syndicate, Empty

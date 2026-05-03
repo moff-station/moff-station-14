@@ -4,9 +4,9 @@
   id: BoxBase
   components:
   - type: Sprite
-    sprite: Objects/Storage/boxes.rsi
+    sprite: _Moffstation/Objects/Storage/boxes.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/boxes.rsi
+    sprite: _Moffstation/Objects/Storage/boxes.rsi # Moffstation - Uncabinetification
     size: Large
     shape:
     - 0,0,2,2

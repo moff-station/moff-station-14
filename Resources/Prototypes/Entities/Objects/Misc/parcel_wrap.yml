@@ -122,7 +122,7 @@
           CaptainsPaper: { state: captains_paper }
           Invoice: { state: invoice }
   - type: Sprite
-    sprite: Objects/Misc/ParcelWrap/wrapped_parcel.rsi
+    sprite: _Moffstation/Objects/Misc/ParcelWrap/wrapped_parcel.rsi # Moffstation - Uncabinetification
     layers:
     - state: parcel-medium
       map: [ "enum.WrappedParcelVisuals.Layer" ]

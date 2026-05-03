@@ -5,10 +5,10 @@
   description: "A carton containing 6 packets of Spessman's Smokes."
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi # Moffstation - Uncabinetification
     size: Normal
   - type: Storage
     grid:
@@ -33,10 +33,10 @@
   description: A carton containing 6 packets of Dromedarycos.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/red.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/red.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/red.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/red.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -50,10 +50,10 @@
   description: A carton containing 6 packets of AcmeCo.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/blue.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/blue.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/blue.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/blue.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -67,10 +67,10 @@
   description: A carton containing 6 packets of Nomads.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/black.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/black.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/black.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/black.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -84,10 +84,10 @@
   description: A carton containg 3 packets of Dan's soaked smokes.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/mixed.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/mixed.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/mixed.rsi
+    sprite: _Moffstation/Objects/Consumable/Smokeables/Cigarettes/Cartons/mixed.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase:

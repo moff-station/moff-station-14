@@ -6,7 +6,8 @@
   components:
   - type: Sprite
     layers:
-    - state: box_security
+    - sprite: _Moffstation/Objects/Storage/boxes.rsi # Moffstation - Uncabinetification
+      state: box_security
     - sprite: _DeltaV/Objects/Storage/boxes.rsi
       state: recorder
   - type: StorageFill

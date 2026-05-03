@@ -12,7 +12,7 @@
   description: Mmm, Donuts.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donut.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donut.rsi # Moffstation - Uncabinetification
     state: box
     layers:
     - state: box
@@ -45,7 +45,7 @@
       tags:
       - Donut
   - type: Item
-    sprite: Objects/Consumable/Food/Baked/donut.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donut.rsi # Moffstation - Uncabinetification
     size: Normal
     shape:
     - 0,0,2,1
@@ -354,7 +354,7 @@
   description: The classic donks which you can never get enough of! Heat up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi # Moffstation - Uncabinetification
     state: box
   - type: Storage
     grid:
@@ -363,7 +363,7 @@
       tags:
       - DonkPocket
   - type: Item
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi # Moffstation - Uncabinetification
     size: Normal
     shape:
     - 0,0,2,1
@@ -500,7 +500,7 @@
   - type: Sprite
   # Moffstation - Start - PocketChange
     sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
-    state: moff-box
+    state: moth-box
   - type: PointLight
     radius: 1.5
     energy: 1
@@ -520,10 +520,10 @@
   description: The toy is more edible than the food.
   components:
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/clown.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/clown.rsi # Moffstation - Uncabinetification
     state: box
   - type: Item
-    sprite: Objects/Storage/Happyhonk/clown.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/clown.rsi # Moffstation - Uncabinetification
     heldPrefix: box
   - type: Storage
     maxItemSize: Normal
@@ -550,9 +550,9 @@
     - Trash
     - MimeHappyHonk
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/mime.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/mime.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/Happyhonk/mime.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/mime.rsi # Moffstation - Uncabinetification
 
 - type: entity
   id: HappyHonkNukie
@@ -562,9 +562,9 @@
   suffix: Toy Unsafe
   components:
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/nukie.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/nukie.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/Happyhonk/nukie.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/nukie.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:NestedSelector
@@ -616,9 +616,9 @@
     - CluwneHappyHonk # BAD: Intentional removal of parent tag
     - BoxCardboard
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/cluwne.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/cluwne.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/Happyhonk/cluwne.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/cluwne.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase:
