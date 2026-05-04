@@ -593,9 +593,9 @@
   description: A dress for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
 
 - type: entity
   parent: [UnsensoredClothingUniformSkirtBase, BaseSyndicateContraband]
