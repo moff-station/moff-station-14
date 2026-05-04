@@ -1,6 +1,7 @@
+using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client.PDA;
+namespace Content.Shared.PDA;
 
 [Prototype]
 public sealed partial class PdaAdPrototype : IPrototype
@@ -9,8 +10,11 @@ public sealed partial class PdaAdPrototype : IPrototype
     public string ID { get; private set; } = default!;
 
     //[DataField(required: true)]
-    [DataField]
+    [DataField(required: true)]
     public string SpriteState { get; private set; } = default!;
+
+    [DataField]
+    public EntityTableSelector Table { get; private set; } = null!;
 
     //[DataField(required: true)]
     //public SpriteSpecifier Icon { get; private set; } = default!;
