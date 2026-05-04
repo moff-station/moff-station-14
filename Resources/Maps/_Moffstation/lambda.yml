@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.0
   forkId: wizards
   forkVersion: 4abdcf7a733a1331bd69a6760592166489c48bc2
-  time: 04/28/2026 07:42:03
-  entityCount: 18887
+  time: 05/04/2026 23:54:41
+  entityCount: 18899
 maps:
 - 1
 grids:
@@ -51272,7 +51272,7 @@ entities:
       pos: -85.5,-57.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -6549.512
+      secondsUntilStateChange: -6850.43
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 3716.2296191
@@ -100868,6 +100868,18 @@ entities:
     - type: Transform
       pos: -95.5,15.5
       parent: 2
+- proto: SpawnPointChemist
+  entities:
+  - uid: 18888
+    components:
+    - type: Transform
+      pos: -69.5,-2.5
+      parent: 2
+  - uid: 18889
+    components:
+    - type: Transform
+      pos: -69.5,-5.5
+      parent: 2
 - proto: SpawnPointChiefEngineer
   entities:
   - uid: 5915
@@ -100893,6 +100905,13 @@ entities:
     components:
     - type: Transform
       pos: -107.5,14.5
+      parent: 2
+- proto: SpawnPointDetective
+  entities:
+  - uid: 18899
+    components:
+    - type: Transform
+      pos: -99.5,-15.5
       parent: 2
 - proto: SpawnPointHeadOfPersonnel
   entities:
@@ -101131,6 +101150,50 @@ entities:
     - type: Transform
       pos: -39.5,-5.5
       parent: 2
+- proto: SpawnPointSecurityCadet
+  entities:
+  - uid: 18896
+    components:
+    - type: Transform
+      pos: -94.5,-14.5
+      parent: 2
+  - uid: 18897
+    components:
+    - type: Transform
+      pos: -94.5,-15.5
+      parent: 2
+- proto: SpawnPointSecurityOfficer
+  entities:
+  - uid: 18890
+    components:
+    - type: Transform
+      pos: -97.5,-14.5
+      parent: 2
+  - uid: 18891
+    components:
+    - type: Transform
+      pos: -96.5,-14.5
+      parent: 2
+  - uid: 18892
+    components:
+    - type: Transform
+      pos: -95.5,-14.5
+      parent: 2
+  - uid: 18893
+    components:
+    - type: Transform
+      pos: -95.5,-15.5
+      parent: 2
+  - uid: 18894
+    components:
+    - type: Transform
+      pos: -96.5,-15.5
+      parent: 2
+  - uid: 18895
+    components:
+    - type: Transform
+      pos: -97.5,-15.5
+      parent: 2
 - proto: SpawnPointServiceWorker
   entities:
   - uid: 7724
@@ -101171,6 +101234,13 @@ entities:
     components:
     - type: Transform
       pos: -25.5,-2.5
+      parent: 2
+- proto: SpawnPointWarden
+  entities:
+  - uid: 18898
+    components:
+    - type: Transform
+      pos: -99.5,-14.5
       parent: 2
 - proto: SpawnPointWardenWeapon
   entities:
