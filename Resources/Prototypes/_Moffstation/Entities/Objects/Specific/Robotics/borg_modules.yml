@@ -1,9 +1,9 @@
 - type: entity
   id: BaseBorgModuleMagboots
-  parent: BaseBorgModule
-  name: magboot module
+  parent: BaseBorgModule 
+  name: magboots module
   description: A cyborg module which grant the unit magboots ability.
-  abstract: true
+  abstract: false
   components:
   - type: ActionBorgModule
     actions:
@@ -13,6 +13,13 @@
     - type: Magboots
       useGenericToggle: false
       magbootsAlert: MagbootsBorg
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-magboots
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: bureau-module }
 
 - type: entity
   parent: BaseAction
@@ -302,7 +309,7 @@
     layers:
     - state: cargo
     - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
-      state: icon-advanced-thruster
+      state: icon-advanced-traversal
   - type: ItemBorgModule
     hands:
     - item: HandHeldMassScannerBorg
@@ -310,4 +317,8 @@
     - item: HandheldStationMapUnpowered
     - item: JetpackSalvageborg
   - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: icon-advanced-traversal }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: adv-traversal-module }
+  - type: Tag
+    tags:
+    - CyborgTraversalModule
+    - BorgModuleCargo
