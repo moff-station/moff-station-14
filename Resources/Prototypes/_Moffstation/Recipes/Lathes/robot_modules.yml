@@ -48,3 +48,9 @@
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleAdvancedAnomaly
   result: BorgModuleAdvancedAnomaly
+
+#Cargo Modules
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleAdvancedTraversal
+  result: BorgModuleAdvancedTraversal

@@ -290,3 +290,24 @@
     - item: WeaponShotgunBlackbox
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
+
+# Cargo Modules
+- type: entity
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  id: BorgModuleSpaceMovement
+  name: advanced thruster cyborg module
+  description: Module that helps a Salvageborg move better in space.
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-advanced-thruster
+  - type: ItemBorgModule
+    hands:
+    - item: HandHeldMassScannerBorg
+    - item: WeaponGrapplingGun
+    - item: HandheldStationMapUnpowered
+    - item: JetpackSalvageborg
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: jetpack-module }
