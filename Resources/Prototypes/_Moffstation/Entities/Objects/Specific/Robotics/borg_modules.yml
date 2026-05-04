@@ -294,8 +294,8 @@
 # Cargo Modules
 - type: entity
   parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
-  id: BorgModuleSpaceMovement
-  name: advanced thruster cyborg module
+  id: BorgModuleAdvancedTraversal
+  name: advanced traversal cyborg module
   description: Module that helps a Salvageborg move better in space.
   components:
   - type: Sprite
@@ -310,4 +310,4 @@
     - item: HandheldStationMapUnpowered
     - item: JetpackSalvageborg
   - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: jetpack-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: icon-advanced-traversal }
