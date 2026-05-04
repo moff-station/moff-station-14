@@ -6,7 +6,13 @@ namespace Content.Shared._Moffstation.Silicons.StationAi;
 
 /// This marker component allows its owner to be possessed by actors with the <see cref="AiShellControllerComponent"/>.
 [RegisterComponent, NetworkedComponent, Access(typeof(AiShellSystem))]
-public sealed partial class AiShellComponent : Component;
+public sealed partial class AiShellComponent : Component
+{
+
+    /// Marks if the brain should be able to be removed from the shell: Currently unused but in here just in case
+    [DataField]
+    public bool StandaloneBrain = false;
+}
 
 /// This component is applied to entities with <see cref="AiShellComponent"/> while they are actively being controlled.
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(AiShellSystem))]

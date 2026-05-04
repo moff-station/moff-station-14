@@ -328,28 +328,34 @@ public sealed partial class AiShellSystem : EntitySystem
             StopAiShellControl(shell);
         }
 
-        var query = EntityQueryEnumerator<AiShellControllerComponent>();
-        while (query.MoveNext(out var controllerEnt, out var controllerComp))
+        if (!shell.Comp.StandaloneBrain)
         {
-            RemoveFromAvailableShells((controllerEnt, controllerComp), shell);
+            var query = EntityQueryEnumerator<AiShellControllerComponent>();
+            while (query.MoveNext(out var controllerEnt, out var controllerComp))
+            {
+                RemoveFromAvailableShells((controllerEnt, controllerComp), shell);
+            }
+
         }
-        // TODO: Add this back in under a boolean on AiShellComponent
-        // Transfer ongoing session, if it exists.
-       // if (GetController(shell) is { } controller)
-       // {
-           // if (!_mind.TryGetMind(holder, out var mind, out var mindComp))
-            //{
-           //     this.AssertOrLogError(
-           //         $"{ToPrettyString(shell)} removed from holder {ToPrettyString(holder)} has " +
-          //          $"controller {ToPrettyString(controller)}, but the holder has no mind.");
-           //     return;
-          //  }
+        else
+        {
+            //Transfer ongoing session, if it exists.
+            if (GetController(shell) is { } controller)
+            {
+                if (!_mind.TryGetMind(holder, out var mind, out var mindComp))
+                {
+                 this.AssertOrLogError(
+                     $"{ToPrettyString(shell)} removed from holder {ToPrettyString(holder)} has " +
+                      $"controller {ToPrettyString(controller)}, but the holder has no mind.");
+                 return;
+                }
+                _mind.TransferTo(mind, shell, mind: mindComp);
 
-           // _mind.TransferTo(mind, shell, mind: mindComp);
+              var ev = new ContainedAiShellStoppedBeingControlledEvent(controller, shell, holder);
+              RaiseLocalEvent(holder, ref ev);
+            }
+        }
 
-          //  var ev = new ContainedAiShellStoppedBeingControlledEvent(controller, shell, holder);
-          //  RaiseLocalEvent(holder, ref ev);
-       // }
     }
 
     private void OnAiShellInit(Entity<AiShellComponent> entity, ref ComponentInit args)
