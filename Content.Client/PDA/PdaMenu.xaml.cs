@@ -9,6 +9,9 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
+using Robust.Shared.Prototypes;
+using System.Linq;
+using Robust.Shared.Random;
 
 namespace Content.Client.PDA
 {
@@ -18,6 +21,8 @@ namespace Content.Client.PDA
         [Dependency] private readonly IClipboardManager _clipboard = null!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
+        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+        [Dependency] private readonly IRobustRandom _random = default!;
         private readonly ClientGameTicker _gameTicker;
 
         public const int HomeView = 0;
@@ -32,7 +37,7 @@ namespace Content.Client.PDA
         private string _stationName = Loc.GetString("comp-pda-ui-unknown");
         private string _alertLevel = Loc.GetString("comp-pda-ui-unknown");
         private string _instructions = Loc.GetString("comp-pda-ui-unknown");
-        
+
 
         private int _currentView;
 
@@ -53,6 +58,11 @@ namespace Content.Client.PDA
             EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
+
+            var adPrototype = _random.Pick(GetAllPdaAds(_prototypeManager));
+
+            //Advertisement.IconTexture = new SpriteSpecifier.Texture(new("/Textures/_Moffstation/Interface/PDA/Advertisements/test1.png"));
+            Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState));
 
 
             HomeButton.OnPressed += _ => ToHomeScreen();
@@ -125,7 +135,7 @@ namespace Content.Client.PDA
                 _clipboard.SetText(_instructions);
             };
 
-            
+
 
 
             HideAllViews();
@@ -165,7 +175,7 @@ namespace Content.Client.PDA
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",
                 ("station", _stationName)));
-            
+
 
             var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
@@ -345,6 +355,17 @@ namespace Content.Client.PDA
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
+        }
+
+        /// <summary>
+        /// Returns a list of all <see cref="PdaAdPrototype"/>s that are not hidden.
+        /// </summary>
+        public static List<PdaAdPrototype> GetAllPdaAds(IPrototypeManager prototypeManager)
+        {
+            return prototypeManager
+                .EnumeratePrototypes<PdaAdPrototype>()
+                .Where(p => !p.Hidden)
+                .ToList();
         }
     }
 }
