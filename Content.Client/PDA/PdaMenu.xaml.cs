@@ -12,7 +12,6 @@ using Robust.Shared.Timing;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using Robust.Shared.Random;
-using Content.Shared.EntityTable;
 
 namespace Content.Client.PDA
 {
@@ -24,8 +23,6 @@ namespace Content.Client.PDA
         [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly EntityTableSystem _entityTable = default!;
-        [Dependency] private readonly PdaAdPrototype _adPrototype = default!;
         private readonly ClientGameTicker _gameTicker;
 
         public const int HomeView = 0;
@@ -63,12 +60,9 @@ namespace Content.Client.PDA
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
             //var adPrototype = _random.Pick(GetAllPdaAds(_prototypeManager));
-                //This is what I was using before to just pick randomly from a list.
+            var adPrototype = RandomByWeight(GetAllPdaAds(_prototypeManager));
 
-            var pick = _entityTable.GetSpawns(_adPrototype.Table);
-
-            //Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState));
-            Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (pick.SpriteState));
+            Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState));
 
 
             HomeButton.OnPressed += _ => ToHomeScreen();
@@ -366,12 +360,29 @@ namespace Content.Client.PDA
         /// <summary>
         /// Returns a list of all <see cref="PdaAdPrototype"/>s that are not hidden.
         /// </summary>
-        public static List<PdaAdPrototype> GetAllPdaAds(IPrototypeManager prototypeManager)
+        private static List<PdaAdPrototype> GetAllPdaAds(IPrototypeManager prototypeManager)
         {
             return prototypeManager
                 .EnumeratePrototypes<PdaAdPrototype>()
                 .Where(p => !p.Hidden)
                 .ToList();
+        }
+
+        /// <summary>
+        /// Creates a list with duplicate entries based on the "Weight" of each prototype,
+        /// and then randomly picks and returns one.
+        /// </summary>
+        private PdaAdPrototype RandomByWeight(List<PdaAdPrototype> pdaList)
+        {
+            var accumulatedList = new List<PdaAdPrototype>();
+            foreach (var pdaAdPrototype in pdaList)
+            {
+                for (var i = 0; i < pdaAdPrototype.Weight; i++)
+                {
+                    accumulatedList.Add(pdaAdPrototype);
+                }
+            }
+            return _random.Pick(accumulatedList);
         }
     }
 }
