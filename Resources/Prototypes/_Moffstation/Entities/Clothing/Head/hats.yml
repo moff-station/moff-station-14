@@ -389,3 +389,24 @@
       Hair: HEAD
       HeadTop: HEAD
       HeadSide: HEAD
+
+#Soviet
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatPilotka
+  name: soviet pilotka
+  description: "\"Perfect for summer in Moscow, da?\""
+  components:
+  - type: AddAccentClothing
+    accent: RussianAccent
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/pilotka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/pilotka.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon

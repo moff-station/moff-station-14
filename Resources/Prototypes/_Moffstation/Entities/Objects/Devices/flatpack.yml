@@ -1,0 +1,7 @@
+﻿- type: entity
+  parent: BaseFlatpack
+  id: BaseFlatpackNoTool
+  abstract: true
+  components:
+  - type: Flatpack
+    qualityNeeded: null

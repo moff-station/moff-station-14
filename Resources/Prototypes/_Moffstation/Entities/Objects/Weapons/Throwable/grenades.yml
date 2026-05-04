@@ -1,0 +1,97 @@
+#Spider Bottle
+- type: entity
+  name: jar of spiders
+  description: A jar containing highly aggressive spiders floating in a black tar-like liquid. Breaks on impact.
+  parent: [DrinkBottleGlassBaseFull, BaseSyndicateContraband]
+  id: SpiderJar
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: VentCrud
+          Quantity: 100
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: icon
+  - type: Item
+    storedSprite:
+      sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+      state: storage
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: LandAtCursor
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpillBehavior { }
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          BrokenBottle:
+            min: 1
+            max: 1
+        transferForensics: true
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MobNightfangAngrySmasherSyndicate:
+            min: 3
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+
+- type: entity
+  name: jar of clown spiders
+  description: A jar containing highly funny spiders floating in a pink syrup-like liquid. Breaks on impact.
+  parent: [DrinkBottleGlassBaseFull, BaseSyndicateContraband]
+  id: SpiderJarClown
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Happiness
+          Quantity: 100
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: icon
+    color: "#FF69B4"
+  - type: Item
+    storedSprite:
+      sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+      state: storage
+      color: "#FF69B4"
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: LandAtCursor
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpillBehavior { }
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          BrokenBottle:
+            min: 1
+            max: 1
+        transferForensics: true
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MobClownSpiderSmasher:
+            min: 3
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

@@ -1,0 +1,22 @@
+- type: entity
+  parent: BasePaper
+  id: PersonalItemZoeyPicture
+  name: laminated picture
+  description: A laminated picture depicting an adult slime woman in a grassy plain. She looks happy. "Never forgive" is written behind the picture.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Items/SillyAmy/Zoey_Bootafer
+    state: icon
+  - type: Item
+    sprite: _Moffstation/PersonalItems/Items/SillyAmy/Zoey_Bootafer
+
+- type: loadout
+  id: PersonalItemZoeyPicture
+  storage:
+    back:
+    - PersonalItemZoeyPicture
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Zoey Bootafer

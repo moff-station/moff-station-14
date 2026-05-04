@@ -171,14 +171,14 @@ public sealed partial class HumanoidProfileEditor
 
                 category.AddChild(new PanelContainer
                 {
-                    PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                    PanelOverride = new StyleBoxFlat { BackgroundColor = department.Color }, // Moffstation - Colored job list
                     Children =
                         {
-                            new RichTextLabel // Moffstation
+                            new RichTextLabel // Moffstation - Colored job list
                             {
-                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
+                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label-moffstation", // Moffstation - Colored job list
                                     ("departmentName", departmentName)),
-                                Margin = new Thickness(5f, 0, 0, 0)
+                                Margin = new Thickness(5f, 2f, 0, 2f), // Moffstation - Colored job list
                             }
                         }
                 });

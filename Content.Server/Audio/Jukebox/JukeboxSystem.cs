@@ -25,6 +25,10 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         SubscribeLocalEvent<JukeboxComponent, JukeboxSetTimeMessage>(OnJukeboxSetTime);
         SubscribeLocalEvent<JukeboxComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<JukeboxComponent, ComponentShutdown>(OnComponentShutdown);
+        // Moffstation - Start - Jukebox volume control
+        SubscribeLocalEvent<JukeboxComponent, JukeboxVolumeDownMessage>(OnJukeboxVolumeDown);
+        SubscribeLocalEvent<JukeboxComponent, JukeboxVolumeUpMessage>(OnJukeboxVolumeUp);
+        // Moffstation - End
 
         SubscribeLocalEvent<JukeboxComponent, PowerChangedEvent>(OnPowerChanged);
     }
@@ -162,6 +166,7 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
             }
 
             ent.Comp.AudioStream = Audio.PlayPvs(jukeboxProto.Path, ent, AudioParams.Default.WithMaxDistance(10f))?.Entity;
+            Audio.SetVolume(ent.Comp.AudioStream, ent.Comp.JukeboxVolume); // Moffstation - Jukebox volume control
             Dirty(ent);
         }
         return true;
@@ -202,4 +207,26 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
 
         Audio.SetPlaybackPosition(entity.Comp.AudioStream, songTime);
     }
+
+    // Moffstation - Start - Jukebox volume control
+    private void OnJukeboxVolumeDown(Entity<JukeboxComponent> entity, ref JukeboxVolumeDownMessage args)
+    {
+        if (entity.Comp.JukeboxVolume > entity.Comp.JukeboxVolumeMin)
+        {
+            entity.Comp.JukeboxVolume--;
+            Dirty(entity);
+            Audio.SetVolume(entity.Comp.AudioStream, entity.Comp.JukeboxVolume);
+        }
+    }
+
+    private void OnJukeboxVolumeUp(Entity<JukeboxComponent> entity, ref JukeboxVolumeUpMessage args)
+    {
+        if (entity.Comp.JukeboxVolume < entity.Comp.JukeboxVolumeMax)
+        {
+            entity.Comp.JukeboxVolume++;
+            Dirty(entity);
+            Audio.SetVolume(entity.Comp.AudioStream, entity.Comp.JukeboxVolume);
+        }
+    }
+    // Moffstation - End
 }

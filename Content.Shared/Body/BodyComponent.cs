@@ -44,3 +44,11 @@ public readonly record struct OrganInsertedIntoEvent(EntityUid Organ);
 /// </summary>
 [ByRefEvent]
 public readonly record struct OrganRemovedFromEvent(EntityUid Organ);
+
+//Moffstation - Re-add Geras - Begin
+/// <summary>
+/// When raised on a visual organ entity, forces it to sync its sprite state
+/// </summary>
+[ByRefEvent]
+public readonly record struct ForceUpdateOrganVisualsEvent(string State);
+//Moffstation - End

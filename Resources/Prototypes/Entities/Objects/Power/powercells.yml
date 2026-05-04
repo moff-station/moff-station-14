@@ -62,6 +62,7 @@
     startingCharge: 70
   - type: Tag
     tags:
+      - PowerCell # Moffstation - Modular APCs
       - PotatoBattery
   - type: Construction
     graph: PowerCellPotato
@@ -93,6 +94,7 @@
     startingCharge: 360
   - type: Tag
     tags:
+      - PowerCell # Moffstation - Modular APCs
       - PowerCellSmall
 
 - type: entity
@@ -121,6 +123,12 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 36 # 10 seconds to recharge
     autoRechargePauseTime: 30
+  # Moffstation - Start - Modular APCs
+  - type: Tag
+    tags:
+    - PowerCell
+    - PowerCellNuclear
+  # Moffstation - End
 
 - type: entity
   name: medium-capacity power cell
@@ -139,6 +147,12 @@
   - type: Battery
     maxCharge: 720
     startingCharge: 720
+  # Moffstation - Start - Modular APCs
+  - type: Tag
+    tags:
+    - PowerCell
+    - PowerCellMedium
+  # Moffstation - End
 
 - type: entity
   id: PowerCellMediumPrinted
@@ -174,6 +188,12 @@
   - type: Battery
     maxCharge: 1080
     startingCharge: 1080
+  # Moffstation - Start - Modular APCs
+  - type: Tag
+    tags:
+    - PowerCell
+    - PowerCellHigh
+  # Moffstation - End
 
 - type: entity
   id: PowerCellHighPrinted
@@ -209,6 +229,12 @@
   - type: Battery
     maxCharge: 1800
     startingCharge: 1800
+  # Moffstation - Start - Modular APCs
+  - type: Tag
+    tags:
+    - PowerCell
+    - PowerCellHyper
+  # Moffstation - End
 
 - type: entity
   id: PowerCellHyperPrinted
@@ -252,6 +278,10 @@
       Steel: 50
     chemicalComposition:
       Radium: 5
+  - type: Tag
+    tags:
+    - PowerCell
+    - PowerCellNuclear
   #Moffstation - End
 
 - type: entity
@@ -294,6 +324,10 @@
         Steel: 50
       chemicalComposition:
         Radium: 5
+    - type: Tag
+      tags:
+      - PowerCell
+      - PowerCellNuclear
   #Moffstation - End
 
 # Power cage (big heavy power cell for big devices)

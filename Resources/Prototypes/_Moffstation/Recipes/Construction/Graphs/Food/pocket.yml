@@ -1,0 +1,177 @@
+# warm donk-pocket
+- type: constructionGraph
+  id: WarmDonk
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm donk-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm donk-pocket
+    entity: FoodDonkpocketWarm
+
+# warm dank-pocket
+- type: constructionGraph
+  id: WarmDank
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: warm dank-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+  - node: warm dank-pocket
+    entity: FoodDonkpocketDankWarm
+
+# warm spicy-pocket
+- type: constructionGraph
+  id: WarmSpicy
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm spicy-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm spicy-pocket
+    entity: FoodDonkpocketSpicyWarm
+
+# warm spicy-pocket
+- type: constructionGraph
+  id: WarmTeriyaki
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm teriyaki-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm teriyaki-pocket
+    entity: FoodDonkpocketTeriyakiWarm
+
+# warm pizza-pocket
+- type: constructionGraph
+  id: WarmPizza
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm pizza-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm pizza-pocket
+    entity: FoodDonkpocketPizzaWarm
+
+# warm honk-pocket
+- type: constructionGraph
+  id: WarmHonk
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm honk-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm honk-pocket
+    entity: FoodDonkpocketHonkWarm
+
+# warm berry-pocket
+- type: constructionGraph
+  id: WarmBerry
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm berry-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm berry-pocket
+    entity: FoodDonkpocketBerryWarm
+
+# warm stonk-pocket
+- type: constructionGraph
+  id: WarmStonk
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm stonk-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm stonk-pocket
+    entity: FoodDonkpocketStonkWarm
+
+# warm carp-pocket
+- type: constructionGraph
+  id: WarmCarp
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm carp-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm carp-pocket
+    entity: FoodDonkpocketCarpWarm
+
+# warm moth-pocket
+- type: constructionGraph
+  id: WarmMoth
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: warm moth-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm moth-pocket
+    entity: FoodDonkpocketMothWarm

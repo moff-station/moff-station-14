@@ -129,6 +129,10 @@
       weight: 4.0
     - id: XenoArtifactEffectCreationGasCarbonDioxide
       weight: 4.0
+    # Moffstation - Start - New Effects!
+    - id: XenoArtifactFlashbang
+      weight: 4.0
+    # Moffstation - End
 
 - type: entityTable
   id: XenoArtifactEffectsHandheldOnlyTable
@@ -229,7 +233,7 @@
 - type: entity
   id: XenoArtifactPhasing
   parent: BaseOneTimeXenoArtifactEffect
-  description: Structural phasing # Moffstation - Obfuscate xenoarcheology
+  description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAERemoveCollision
 
@@ -280,7 +284,7 @@
 - type: entity
   id: XenoArtifactSpeedUp
   parent: BaseOneTimeXenoArtifactEffect
-  description: Temporal acceleration # Moffstation - Obfuscate xenoarcheology
+  description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -291,7 +295,7 @@
 - type: entity
   id: XenoArtifactDrill
   parent: BaseOneTimeXenoArtifactEffect
-  description: Serrated rotator # Moffstation - Obfuscate xenoarcheology
+  description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:
@@ -374,7 +378,7 @@
 - type: entity
   id: XenoArtifactOmnitool
   parent: BaseOneTimeXenoArtifactEffect
-  description: Utility conglomerate # Moffstation - Obfuscate xenoarcheology
+  description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
     components:

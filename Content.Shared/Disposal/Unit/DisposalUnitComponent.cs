@@ -3,6 +3,8 @@ using Robust.Shared.Audio;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;  // Moffstation - Signal network for disposal units
+using Content.Shared.DeviceLinking; // Moffstation - Signal network for disposal units
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -116,6 +118,21 @@ public sealed partial class DisposalUnitComponent : Component
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
     public TimeSpan? NextFlush;
+
+
+    // Moffstation - Begin - Signal network for disposal units
+    [DataField]
+    public ProtoId<SinkPortPrototype> FlushPort = "DisposalUnitFlush";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> AutoFlushOnPort = "DisposalUnitAutoFlushOn";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> AutoFlushOffPort = "DisposalUnitAutoFlushOff";
+
+    [DataField]
+    public ProtoId<SinkPortPrototype> AutoFlushTogglePort = "DisposalUnitAutoFlushToggle";
+    // Moffstation - End
 
     [Serializable, NetSerializable]
     public enum Visuals : byte

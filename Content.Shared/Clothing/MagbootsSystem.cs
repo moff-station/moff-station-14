@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Clothing; // Moffstation
 using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
 using Content.Shared.Actions;
 using Content.Shared.Alert;
@@ -18,6 +19,7 @@ public sealed class SharedMagbootsSystem : EntitySystem
     [Dependency] private readonly ItemToggleSystem _toggle = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!; // Moffstation
 
     public override void Initialize()
     {
@@ -29,6 +31,7 @@ public sealed class SharedMagbootsSystem : EntitySystem
         SubscribeLocalEvent<MagbootsComponent, IsWeightlessEvent>(OnIsWeightless);
         SubscribeLocalEvent<MagbootsComponent, InventoryRelayedEvent<IsWeightlessEvent>>(OnIsWeightless);
         SubscribeLocalEvent<MagbootsComponent, InventoryRelayedEvent<RecoilKickAttemptEvent>>(OnRecoilKickAttempt); // Moffstation
+        SubscribeLocalEvent<MagbootsComponent, ToggleMagbootsActionEvent>(OnMagbootsToggled); // Moffstation
     }
 
     private void OnToggled(Entity<MagbootsComponent> ent, ref ItemToggledEvent args)
@@ -36,6 +39,21 @@ public sealed class SharedMagbootsSystem : EntitySystem
         if (_container.TryGetContainingContainer((ent.Owner, null, null), out var container))
             UpdateMagbootEffects(container.Owner, ent, args.Activated);
     }
+
+    // Moffstation - Start
+    private void OnMagbootsToggled(Entity<MagbootsComponent> ent, ref ToggleMagbootsActionEvent args)
+    {
+        if (args.Handled)
+            return;
+    
+        args.Handled = true;
+
+        _actions.SetToggled(args.Action.Owner, !args.Action.Comp.Toggled);
+        ent.Comp.EffectActive = args.Action.Comp.Toggled;
+
+        UpdateMagbootEffects(ent.Owner, ent, args.Action.Comp.Toggled);
+    }
+    // Moffstation - End
 
     private void OnGotUnequipped(Entity<MagbootsComponent> ent, ref ClothingGotUnequippedEvent args)
     {
@@ -63,8 +81,12 @@ public sealed class SharedMagbootsSystem : EntitySystem
 
     private void OnIsWeightless(Entity<MagbootsComponent> ent, ref IsWeightlessEvent args)
     {
-        if (args.Handled || !_toggle.IsActivated(ent.Owner))
+        // Moffstation - start - modified to accomodate borg toggleable magboots
+        if (args.Handled ||
+            ent.Comp.UseGenericToggle && !_toggle.IsActivated(ent.Owner) ||
+            ent.Comp is { UseGenericToggle: false, EffectActive: false })
             return;
+        // Moffstation - end
 
         // do not cancel weightlessness if the person is in off-grid.
         if (ent.Comp.RequiresGrid && !_gravity.EntityOnGravitySupportingGridOrMap(ent.Owner))

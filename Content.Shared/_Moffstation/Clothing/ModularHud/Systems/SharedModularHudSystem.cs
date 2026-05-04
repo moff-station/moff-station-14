@@ -84,8 +84,8 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         SubscribeLocalEvent<ModularHudComponent, ComponentRemove>(OnComponentRemove);
         SubscribeLocalEvent<ModularHudComponent, GotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<ModularHudComponent, GotUnequippedEvent>(OnGotUneqipped);
-        SubscribeLocalEvent<ModularHudComponent, EntInsertedIntoContainerMessage>(OnContainerModifiedMessage);
-        SubscribeLocalEvent<ModularHudComponent, EntRemovedFromContainerMessage>(OnContainerModifiedMessage);
+        SubscribeLocalEvent<ModularHudComponent, EntInsertedIntoContainerMessage>(OnEntInsertedIntoContainerMessage);
+        SubscribeLocalEvent<ModularHudComponent, EntRemovedFromContainerMessage>(OnEntRemovedFromContainerMessage);
         SubscribeLocalEvent<ModularHudComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<ModularHudComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<ModularHudComponent, HudModulesRemovalDoAfterEvent>(OnHudModulesRemovalDoAfter);
@@ -329,14 +329,18 @@ public abstract partial class SharedModularHudSystem : EntitySystem
             if (!modules.MoveNext())
             {
                 args.PushMarkup(Loc.GetString(entity.Comp.NoModulesExamineText));
-                return;
+            }
+            else
+            {
+                args.PushMarkup(Loc.GetString(entity.Comp.HeaderExamineText));
+                do
+                {
+                    args.PushMarkup(Loc.GetString(entity.Comp.ModuleItemExamineText, ("module", modules.Current)));
+                } while (modules.MoveNext());
             }
 
-            args.PushMarkup(Loc.GetString(entity.Comp.HeaderExamineText));
-            do
-            {
-                args.PushMarkup(Loc.GetString(entity.Comp.ModuleItemExamineText, ("module", modules.Current)));
-            } while (modules.MoveNext());
+            args.PushMarkup(Loc.GetString(entity.Comp.CapacityExamineText,
+                ("capacity", entity.Comp.MaximumContainedModules)));
         }
     }
 
@@ -353,39 +357,58 @@ public abstract partial class SharedModularHudSystem : EntitySystem
         }
     }
 
-    /// Refresh the effects provided by the module added/removed.
-    private void OnContainerModifiedMessage<TArgs>(
+    private void OnEntInsertedIntoContainerMessage(
         Entity<ModularHudComponent> entity,
-        ref TArgs args
-    ) where TArgs : ContainerModifiedMessage
+        ref EntInsertedIntoContainerMessage args
+    )
     {
         if (args.Container.ID != entity.Comp.ModuleContainerId ||
-            !TryComp<ModularHudModuleComponent>(args.Entity, out var moduleComp))
+            !HasComp<ModularHudModuleComponent>(args.Entity))
             return;
 
-        RefreshEffectsForModules([(args.Entity, moduleComp)]);
-        SyncVisuals(entity);
+        RefreshVisualsAndEffects(entity, equippee: null);
+    }
+
+    private void OnEntRemovedFromContainerMessage(
+        Entity<ModularHudComponent> entity,
+        ref EntRemovedFromContainerMessage args
+    )
+    {
+        if (args.Container.ID != entity.Comp.ModuleContainerId ||
+            !TryComp<ModularHudModuleComponent>(args.Entity, out var comp))
+            return;
+
+        RefreshVisualsAndEffects(entity, equippee: null, [(args.Entity, comp)]);
     }
 
     private void OnGotEquipped(Entity<ModularHudComponent> entity, ref GotEquippedEvent args)
     {
-        RefreshEffectsForWearerForContainedModules(entity, args.Equipee);
+        RefreshVisualsAndEffects(entity, args.EquipTarget);
     }
 
     private void OnGotUneqipped(Entity<ModularHudComponent> entity, ref GotUnequippedEvent args)
     {
-        RefreshEffectsForWearerForContainedModules(entity, args.Equipee);
+        RefreshVisualsAndEffects(entity, args.EquipTarget);
     }
 
     /// This function contains a functional grab-bag of whatever function calls / event raisings need to happen to cause
     /// the disparate HUD effects to be updated when the modular HUD is un/equipped.
-    private void RefreshEffectsForWearerForContainedModules(Entity<ModularHudComponent> entity, EntityUid equippee)
+    /// If <paramref name="equippee"/> is passed in as null, will use <see cref="GetWearer"/> to try to find an equippee.
+    /// <paramref name="extraModules"/> is provided to allow for removed modules to have their effects updated.
+    private void RefreshVisualsAndEffects(
+        Entity<ModularHudComponent> entity,
+        EntityUid? equippee,
+        IEnumerable<Entity<ModularHudModuleComponent>>? extraModules = null
+    )
     {
-        _blurryVision.UpdateBlurMagnitude(equippee);
-        var flashEv = new FlashImmunityChangedEvent(_flash.IsFlashImmune(equippee));
-        RaiseLocalEvent(equippee, ref flashEv);
+        if ((equippee ?? GetWearer(entity)) is { } e)
+        {
+            _blurryVision.UpdateBlurMagnitude(e);
+            var flashEv = new FlashImmunityChangedEvent(_flash.IsFlashImmune(e));
+            RaiseLocalEvent(e, ref flashEv);
+        }
 
-        RefreshEffectsForModules(GetModules(entity));
+        RefreshEffectsForModules(GetModules(entity).Concat(extraModules ?? []));
         SyncVisuals(entity);
     }
 
@@ -476,6 +499,17 @@ public abstract partial class SharedModularHudSystem : EntitySystem
             // Otherwise, remove the appearance data so that the visuals system doesn't try to do anything with it.
             _appearance.RemoveData(entity, Frame, appearance);
         }
+    }
+
+    /// Gets the entity wearing <paramref name="hud"/> if it's equipped in <see cref="ModularHudComponent.ActiveSlots"/>.
+    /// Returns null if the given HUD is not being worn or is worn in an inactive slot (eg. pocket).
+    private EntityUid? GetWearer(Entity<ModularHudComponent> hud)
+    {
+        var parentUid = Transform(hud).ParentUid;
+        return HasComp<InventoryComponent>(parentUid) &&
+               _inventory.InSlotWithAnyFlags(hud.Owner, hud.Comp.ActiveSlots)
+            ? parentUid
+            : null;
     }
 
     /// This doafter event is raised when the doafter to remove the HUD's modules is complete.

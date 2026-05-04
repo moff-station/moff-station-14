@@ -25,3 +25,20 @@
       - EncryptionKeySyndie
       - EncryptionKeyStationMaster
       - EncryptionKeyBinarySyndicate
+
+- type: entity
+  parent: ClothingHeadsetAltSyndicate
+  id: ClothingHeadsetSyndicateInfiltrator
+  name: syndicate infiltrator headset
+  description: An experimental modular syndicate intercom favored among spies and infiltrators. The inside of it hums eerily. (there are 6 key slots.).
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots: []
+  - type: EncryptionKeyHolder
+    keySlots: 6
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Ears/Headsets/syndicate.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Ears/Headsets/syndicate.rsi

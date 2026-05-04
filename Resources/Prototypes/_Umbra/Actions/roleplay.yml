@@ -1,5 +1,6 @@
 # Set Examine
 - type: entity
+  parent: BaseAction
   id: ActionSetExtraExamine
   name: Set Examine Text
   description: Set extra examine text for yourself.
@@ -11,5 +12,6 @@
       sprite: _Umbra/Interface/Actions/set-pose.rsi
       state: eyeopen
     itemIconStyle: NoItem
+    priority: 10000 # Will be added first, making it show up last
   - type: InstantAction
     event: !type:SetExamineActionEvent

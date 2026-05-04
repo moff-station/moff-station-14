@@ -1,0 +1,37 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Tide-pockets, 'omni-pocket', 'moff-box' and 'dank-box' by AffleTheWaffle on GitHub",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+		{
+            "name": "tide"
+        },
+		{
+            "name": "tide-open"
+        },
+		{
+            "name": "tide-box"
+        },
+		{
+            "name": "moff-box"
+        },
+		{
+            "name": "omni"
+        },
+		{
+            "name": "dank-box"
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        }
+    ]
+}

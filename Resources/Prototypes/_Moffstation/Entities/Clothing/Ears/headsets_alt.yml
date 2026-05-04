@@ -1,0 +1,14 @@
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetAltGrey
+  name: passenger's over-ear headset
+  description: A makeshift, modular intercom that fits over the head. One headset to rule the tide.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots: []
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Ears/Headsets/base_tide.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Ears/Headsets/base_tide.rsi

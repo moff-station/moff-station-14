@@ -1,0 +1,54 @@
+- type: entity #Right now basically a resprited spider
+  parent: MobSpiderAngryBase
+  id: MobGiantSpiderNightfang
+  name: Nightfang
+  description: That spider look SCARY. E-yikes!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: viper
+      sprite: Mobs/Animals/spider.rsi
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: viper-moving
+    noMovementLayers:
+      movement:
+        state: viper
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: viper
+      Critical:
+        Base: viper_dead
+      Dead:
+        Base: viper_dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 6
+  - type: MeleeChemicalInjector
+    transferAmount: 1.25 #Slightly more mechanotoxin than base
+    solution: melee
+
+- type: entity
+  parent: [BaseSmasherHostile, MobGiantSpiderNightfang]
+  id: MobNightfangAngrySmasher
+  suffix: Angry, Smasher
+
+- type: entity
+  parent: [BaseSmasherHostile, MobGiantSpiderNightfang]
+  id: MobNightfangAngrySmasherSyndicate
+  suffix: Angry, Smasher, Syndicate
+  components:
+  - type: NpcFactionMember
+    factions:
+      - Syndicate
+      - Xeno
