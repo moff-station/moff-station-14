@@ -8,45 +8,6 @@
 # Moffstation - Start - Bow Hunting
   - type: Sprite
     sprite: Objects/Weapons/Guns/Bow/bow.rsi
-    layers:
-    - state: unwielded
-      map: [ base ]
-    - state: unwielded-arrow
-      map: [ arrow ]
-      visible: false
-    - state: unwielded-plunger
-      map: [ plunger ]
-      visible: false
-  # to elucidate whats intended here:
-  # arrow is inserted -> ItemMapper sets layer with map `arrow` to visible
-  # bow is wielded -> generic vis sets states of layers with map `arrow` and `base`
-  # arrow is removed -> itemmapper sets layer with map `arrow` to invisible
-  - type: Appearance
-  - type: ItemMapper
-    spriteLayers:
-    - arrow
-    - plunger
-    mapLayers:
-      arrow:
-        whitelist:
-          tags:
-          - Arrow
-      plunger:
-        whitelist:
-          tags:
-          - Plunger
-  - type: GenericVisualizer
-    visuals:
-      enum.WieldableVisuals.Wielded:
-        arrow:
-          True: { state: wielded-arrow }
-          False: { state: unwielded-arrow }
-        plunger:
-          True: { state: wielded-plunger }
-          False: { state: unwielded-plunger }
-        base:
-          True: { state: wielded }
-          False: { state: unwielded }
   - type: Item
     size: Normal
   - type: Clothing
@@ -86,12 +47,56 @@
   - type: ContainerAmmoProvider
     container: projectiles
 
+# Moffstation - Begin - Split bow visuals from `BowImprovised` so that it can be reused
+- type: entity
+  parent: BaseBow
+  id: BaseBowVisuals
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: unwielded
+      map: [ base ]
+    - state: unwielded-arrow
+      map: [ arrow ]
+      visible: false
+    - state: unwielded-plunger
+      map: [ plunger ]
+      visible: false
+  - type: Appearance
+  - type: ItemMapper
+    spriteLayers:
+    - arrow
+    - plunger
+    mapLayers:
+      arrow:
+        whitelist:
+          tags:
+          - Arrow
+      plunger:
+        whitelist:
+          tags:
+          - Plunger
+  - type: GenericVisualizer
+    visuals:
+      enum.WieldableVisuals.Wielded:
+        arrow:
+          True: { state: wielded-arrow }
+          False: { state: unwielded-arrow }
+        plunger:
+          True: { state: wielded-plunger }
+          False: { state: unwielded-plunger }
+        base:
+          True: { state: wielded }
+          False: { state: unwielded }
+# Moffstation - End
+
 - type: entity
   id: BowImprovised
-  parent: BaseBow
+  parent: BaseBowVisuals # Moffstation
   name: improvised shortbow
   components:
+  # Moffstation - Components for specifying visuals moved to `BaseBowVisuals`. Changes to the deleted code should be applied to the prototype above.
   - type: Construction
     graph: ImprovisedBow
     node: ImprovisedBow
-# Moffstation - End
