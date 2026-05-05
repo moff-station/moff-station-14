@@ -1,0 +1,40 @@
+- type: entity
+  parent: DrinkChangelingStingCan
+  id: DrinkSpiteCan
+  name: Spite can
+  description: An old can, constantly shaking. Scratched into it is "Spite, let me tell you how much…”
+  components:
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: "/Audio/Effects/Fluids/splat.ogg"
+      - !type:ExplodeBehavior
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 10
+  - type: EmitSoundOnTrigger
+    sound:
+      path: "/Audio/Effects/Fluids/splat.ogg"
+    positional: true
+  - type: TriggerOnUse
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 1.4
+    intensitySlope: 2
+    totalIntensity: 5 # about a ~4 tile radius
+    canCreateVacuum: false
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Drinks/spite.rsi
+  - type: Item
+    sprite: _Moffstation/Objects/Consumable/Drinks/spite.rsi
