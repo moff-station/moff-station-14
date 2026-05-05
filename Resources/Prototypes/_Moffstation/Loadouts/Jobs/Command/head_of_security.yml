@@ -44,6 +44,12 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitHosFestive
   groupBy: "jumpsuit"
+
+- type: loadout
+  id: HeadofSecuritySummer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHosSummer
+  groupBy: "jumpsuit"
 # Back
 
 # Belt
@@ -54,6 +60,10 @@
   equipment:
     outerClothing: ClothingOuterArmorHoSCarapace
 
+- type: loadout
+  id: HeadofSecuritySummerCoat
+  equipment:
+    outerClothing: ClothingOuterCoatHoSSummer
 # Gloves
 
 # Shoes
