@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 04/30/2026 21:27:18
-  entityCount: 11900
+  time: 05/05/2026 21:35:16
+  entityCount: 11901
 maps:
 - 1
 grids:
@@ -7732,7 +7732,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -210809.28
+      secondsUntilStateChange: -212131.81
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -57037,7 +57037,7 @@ entities:
           restitution: 0
           friction: 0.4
     - type: Anchorable
-      delay: 60
+      delay: 45
 - proto: MopBucketCubeWrapped
   entities:
   - uid: 1538
@@ -81260,6 +81260,14 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,-13.5
+      parent: 2
+- proto: WallWeaponCapacitorRecharger
+  entities:
+  - uid: 11564
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,9.5
       parent: 2
 - proto: WantedListCartridge
   entities:
