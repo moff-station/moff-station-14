@@ -8,6 +8,49 @@
 # Moffstation - Start - Bow Hunting
   - type: Sprite
     sprite: Objects/Weapons/Guns/Bow/bow.rsi
+<<<<<<< HEAD
+=======
+    layers:
+    - state: unwielded
+      map: [ base ]
+    - state: unwielded-arrow
+      map: [ arrow ]
+      visible: false
+    - state: unwielded-plunger
+      map: [ plunger ]
+      visible: false
+  # to elucidate whats intended here:
+  # arrow is inserted -> ItemMapper sets layer with map `arrow` to visible
+  # bow is wielded -> generic vis sets states of layers with map `arrow` and `base`
+  # arrow is removed -> itemmapper sets layer with map `arrow` to invisible
+  - type: Appearance
+  - type: ItemMapper
+    spriteLayers:
+    - arrow
+    - plunger
+    mapLayers:
+      arrow:
+        whitelist:
+          tags:
+          - Arrow
+      plunger:
+        whitelist:
+          tags:
+          - Plunger
+  - type: GenericVisualizer
+    visuals:
+      enum.WieldableVisuals.Wielded:
+        arrow:
+          True: { state: wielded-arrow }
+          False: { state: unwielded-arrow }
+        plunger:
+          True: { state: wielded-plunger }
+          False: { state: unwielded-plunger }
+        base:
+          True: { state: wielded }
+          False: { state: unwielded }
+# Moffstation - End
+>>>>>>> fcec60d90a01b0c1b0ef62d1c7166aed177c393b
   - type: Item
     size: Normal
   - type: Clothing
@@ -96,7 +139,11 @@
   parent: BaseBowVisuals # Moffstation
   name: improvised shortbow
   components:
+<<<<<<< HEAD
   # Moffstation - Components for specifying visuals moved to `BaseBowVisuals`. Changes to the deleted code should be applied to the prototype above.
+=======
+  # Moffstation - Common bow stuff was moved to `BaseBow`. Merge any changes to this prototype to that one instead.
+>>>>>>> fcec60d90a01b0c1b0ef62d1c7166aed177c393b
   - type: Construction
     graph: ImprovisedBow
     node: ImprovisedBow
