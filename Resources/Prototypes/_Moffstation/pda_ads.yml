@@ -1,18 +1,26 @@
 # Weight is an INT, do not use floats!
 
+#- type: pdaAd
+#  id: pdaAdParent
+#  abstract: true
+#  spritePath: "_Moffstation/Interface/PDA/advertisements.rsi"
+
 - type: pdaAd
+  #parent: pdaAdParent
   id: test1
   name: test 1
   spriteState: "test1"
   weight: 5
 
 - type: pdaAd
+  #parent: pdaAdParent
   id: test2
   name: test 2
   spriteState: "test2"
   weight: 5
 
 - type: pdaAd
+  #parent: pdaAdParent
   id: test3
   name: test 3
   spriteState: "test3"

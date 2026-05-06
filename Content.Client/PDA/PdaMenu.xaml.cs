@@ -9,9 +9,10 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
-using Robust.Shared.Prototypes;
-using System.Linq;
-using Robust.Shared.Random;
+using Robust.Shared.Prototypes;         // Moffstation - PDA Advertisements
+using System.Linq;                      // Moffstation - PDA Advertisements
+using Robust.Shared.Random;             // Moffstation - PDA Advertisements
+using Content.Shared._Moffstation.PDA;  // Moffstation - PDA Advertisements
 
 namespace Content.Client.PDA
 {
@@ -21,8 +22,8 @@ namespace Content.Client.PDA
         [Dependency] private readonly IClipboardManager _clipboard = null!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
+        [Dependency] private readonly IRobustRandom _random = default!; // Moffstation - PDA Advertisements
         private readonly ClientGameTicker _gameTicker;
 
         public const int HomeView = 0;
@@ -59,11 +60,13 @@ namespace Content.Client.PDA
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
-            //var adPrototype = _random.Pick(GetAllPdaAds(_prototypeManager));
+            //var adPrototype = _random.Pick(GetAllPdaAds(_prototypeManager));          // Moffstation - begin - PDA Advertisements
             var adPrototype = RandomByWeight(GetAllPdaAds(_prototypeManager));
 
-            Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState));
-
+            //Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState));
+            Advertisement.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState)));
+            //Advertisement.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath(adPrototype.SpritePath), (adPrototype.SpriteState)));
+            Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;     // Moffstation - end - PDA Advertisements
 
             HomeButton.OnPressed += _ => ToHomeScreen();
 
@@ -357,6 +360,8 @@ namespace Content.Client.PDA
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
         }
 
+                            // Moffstation - begin - PDA Advertisements
+
         /// <summary>
         /// Returns a list of all <see cref="PdaAdPrototype"/>s that are not hidden.
         /// </summary>
@@ -383,6 +388,6 @@ namespace Content.Client.PDA
                 }
             }
             return _random.Pick(accumulatedList);
-        }
+        }                   // Moffstation - end - PDA Advertisements
     }
 }

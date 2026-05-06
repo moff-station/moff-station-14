@@ -49,11 +49,13 @@
             <ContainerButton Name="StationAlertLevelInstructionsButton">
                 <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>
             </ContainerButton>
-            <BoxContainer Name="Padding" VerticalExpand="True" MinHeight="0" Orientation="Vertical"></BoxContainer> <!-- I don't know if this is the proper way to do this, TODO: am I stupid?-->
-            <BoxContainer Name="AdvertisementBox" HorizontalExpand="True" VerticalExpand="False" MinHeight="96" Orientation="Vertical" Margin="1 1 1 1">
-                <Label Text="{Loc 'comp-pda-ui-advertisement-text'}" Margin="0 0 0 1" StyleClasses="PdaContentFooterText"/>
-                <pda:PdaNavigationButton Name="Advertisement" SetWidth="512" SetHeight="96"/>
-            </BoxContainer>
+            <!-- Mothstation - PDA ad stuff bla blah I have been working on this PR for almost 6 hours tonight and have gotten almost nothing done, I am about to cry -->
+                <BoxContainer Name="Padding" VerticalExpand="True" MinHeight="0" Orientation="Vertical"></BoxContainer> <!-- I don't know if this is the proper way to do this, TODO: am I stupid?-->
+                <BoxContainer Name="AdvertisementBox" HorizontalExpand="True" VerticalExpand="False" MinHeight="96" Orientation="Vertical" Margin="1 1 1 1">
+                    <Label Text="{Loc 'comp-pda-ui-advertisement-text'}" Margin="0 0 0 1" StyleClasses="PdaContentFooterText"/>
+                    <AnimatedTextureRect Name="Advertisement" SetSize="512 96"/>
+                </BoxContainer>
+            <!-- Mothstation end -->
         </BoxContainer>
         <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="True">
             <BoxContainer Orientation="Vertical"
