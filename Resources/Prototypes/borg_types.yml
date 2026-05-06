@@ -61,7 +61,7 @@
   - BorgModuleConstruction
   - BorgModuleRCD
   - BorgModuleCable
-  - BaseBorgModuleMagboots # Moffstation - Magboots module
+  - BorgModuleGravity # Moffstation - Magboots module
 
   requiredModules:
   - simpleDescription: borg-module-requirement-tool
@@ -110,7 +110,7 @@
   - BorgModuleMining
   - BorgModuleTraversal
   - BorgModuleAppraisal
-  - BaseBorgModuleMagboots # Moffstation - Magboots module
+  - BorgModuleGravity # Moffstation - Magboots module
 
   requiredModules:
   - simpleDescription: borg-module-requirement-mining

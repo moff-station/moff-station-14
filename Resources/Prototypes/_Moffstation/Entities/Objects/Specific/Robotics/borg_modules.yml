@@ -1,9 +1,8 @@
 - type: entity
-  id: BaseBorgModuleMagboots
-  parent: BaseBorgModule 
-  name: magboots module
-  description: A cyborg module which grant the unit magboots ability.
-  abstract: false
+  id: BorgModuleGravity
+  parent: BaseBorgModule
+  name: magnetic artificial gravity module
+  description: A cyborg module which allows it to produce artificial gravity for itself.
   components:
   - type: ActionBorgModule
     actions:
@@ -18,8 +17,6 @@
     - state: generic
     - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
       state: icon-magboots
-  - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: bureau-module }
 
 - type: entity
   parent: BaseAction
@@ -303,7 +300,7 @@
   parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
   id: BorgModuleAdvancedTraversal
   name: advanced traversal cyborg module
-  description: After locating a deadly planet filled with diamonds NT assigned more funding allowing the scientists to finish their project of jetpacks for cyborg units. Though its reserved for salvage cyborgs. 
+  description: NT finally funded the "cyborg jetpack" initiative after locating a deadly planet filled with diamonds.  This module is the result of that initiative, providing the cyborg with a grappling hook, jetpack, and integrated navigation electronics. 
   components:
   - type: Sprite
     layers:
