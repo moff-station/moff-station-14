@@ -323,18 +323,16 @@ public sealed partial class AiShellSystem : EntitySystem
             return;
         var holder = new Entity<BorgChassisComponent>(args.Container.Owner, chassisComp);
         RemCompDeferred<AiShellHolderComponent>(holder);
-        if (HasComp<ControlledAiShellComponent>(shell))
-        {
-            StopAiShellControl(shell);
-        }
+
 
         if (!shell.Comp.StandaloneBrain)
         {
-            var query = EntityQueryEnumerator<AiShellControllerComponent>();
-            while (query.MoveNext(out var controllerEnt, out var controllerComp))
+            if (HasComp<ControlledAiShellComponent>(shell))
             {
-                RemoveFromAvailableShells((controllerEnt, controllerComp), shell);
+                StopAiShellControl(shell);
             }
+
+            RemCompDeferred<AiShellComponent>(shell);
 
         }
         else
@@ -387,7 +385,10 @@ public sealed partial class AiShellSystem : EntitySystem
 
     private void OnAiShellControllerRemoved(Entity<AiShellControllerComponent> entity, ref ComponentRemove args)
     {
+        entity.Comp.SelectedShell = null;
+        entity.Comp.ControllingShell = null;
         _actions.RemoveAction(entity.Owner, entity.Comp.ToggleUiAction);
+        Dirty(entity);
     }
 
     private void OnControlledAiShellInit(Entity<ControlledAiShellComponent> entity, ref ComponentInit args)
