@@ -685,7 +685,7 @@
 
 - type: entity
   id: BorgModuleTraversal
-  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule]
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
   name: traversal cyborg module
   components:
   - type: Sprite
@@ -814,7 +814,7 @@
 
 - type: entity
   id: BorgModuleRCD
-  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ] 
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
   name: engineering cyborg module
   components:
   - type: Sprite
