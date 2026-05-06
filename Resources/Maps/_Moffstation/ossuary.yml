@@ -4,7 +4,7 @@ meta:
   engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/06/2026 01:16:57
+  time: 05/06/2026 01:20:12
   entityCount: 11995
 maps:
 - 1
@@ -7788,7 +7788,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -224678.97
+      secondsUntilStateChange: -224872.06
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10040,6 +10040,9 @@ entities:
   entities:
   - uid: 824
     components:
+    - type: MetaData
+      desc: 'Inscribed with: "Do you need scissors? Sixtyone Scissors Inc. is here to help!" '
+      name: scissors
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 15.604497,-23.044712
