@@ -454,6 +454,16 @@
         damage:
           types:
             Heat: 3
+      - !type:Oxygenate
+        scaling: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+      - !type:SatiateThirst # thaven breathing water vapor get thirsty slower
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
+        factor: 0.1
 
 - type: reagent
   id: Ice

@@ -1,4 +1,4 @@
-using Content.Server.Silicons.Laws;
+//using Content.Server.Silicons.Laws; micro remove
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Silicons.Laws.Components;
@@ -7,13 +7,14 @@ using Content.Shared.Station.Components;
 using Content.Shared._Moffstation.Traits.Components;
 using Content.Shared._Moffstation.Traits.EntitySystems;
 //Moffstation - End
+using Robust.Shared.Random; // micro
 
 namespace Content.Server.StationEvents.Events;
 
 public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
 {
-    [Dependency] private readonly IonStormSystem _ionStorm = default!;
     [Dependency] private readonly SharedEmpVulnerableSystem _empVulnerable = default!; //Moffstation - EMP Vulnerability
+    [Dependency] private readonly IRobustRandom _random = default!; // micro
 
     protected override void Started(EntityUid uid, IonStormRuleComponent comp, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -22,14 +23,20 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
         if (!TryGetRandomStation(out var chosenStation))
             return;
 
-        var query = EntityQueryEnumerator<SiliconLawProviderComponent, TransformComponent, IonStormTargetComponent>();
-        while (query.MoveNext(out var ent, out var lawBound, out var xform, out var target))
+        // begin micro edit
+        // var query = EntityQueryEnumerator<SiliconLawBoundComponent, TransformComponent, IonStormTargetComponent>();
+        var query = EntityQueryEnumerator<IonStormTargetComponent, TransformComponent>();
+        while (query.MoveNext(out var ent, out var target, out var xform))
+        // end micro edit
         {
-            // only affect law holders on the station
-            if (CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation)
+            // only affect law holders on the station, and check random chance (micro edit)
+            if (CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation ||
+                !_random.Prob(target.Chance)) // micro
                 continue;
-
-            _ionStorm.IonStormTarget((ent, lawBound, target));
+            // begin micro edit again
+            var ev = new IonStormEvent();
+            RaiseLocalEvent(ent, ref ev);
+            //     _ionStorm.IonStormTarget((ent, lawBound, target)); // end micro
         }
 
         //Moffstation - Begin - EMP Vulnerability
@@ -45,3 +52,9 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
         //Moffstation - End
     }
 }
+// micro add
+/// <summary>
+/// Event raised on an entity with <see cref="IonStormTargetComponent"/> when an ion storm occurs on the attached station.
+/// </summary>
+[ByRefEvent]
+public record struct IonStormEvent(bool Adminlog = true);

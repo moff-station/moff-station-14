@@ -35,6 +35,9 @@ using Robust.Shared.Timing;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Server._MACRO.StrangeMoods; // MACRO
+using Content.Server._MACRO.StrangeMoods.Eui; // MACRO
+using Content.Shared._MACRO.StrangeMoods; // MACRO
 using static Content.Shared.Configurable.ConfigurationComponent;
 
 namespace Content.Server.Administration.Systems
@@ -66,6 +69,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly AdminFrozenSystem _freeze = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly SiliconLawSystem _siliconLawSystem = default!;
+        [Dependency] private readonly StrangeMoodsSystem _moods = default!; // MACRO
 
         private readonly Dictionary<ICommonSession, List<EditSolutionsEui>> _openSolutionUis = new();
 
@@ -405,6 +409,27 @@ namespace Content.Server.Administration.Systems
                     },
                     Impact = LogImpact.Low
                 });
+
+                // Begin MACRO Additions
+                if (TryComp<StrangeMoodsComponent>(args.Target, out var moods))
+                {
+                    args.Verbs.Add(new Verb()
+                    {
+                        Text = Loc.GetString("strange-moods-ui-verb"),
+                        Category = VerbCategory.Admin,
+                        Act = () =>
+                        {
+                            var ui = new StrangeMoodsEui(_moods, EntityManager, _random, _adminManager);
+                            if (!_playerManager.TryGetSessionByEntity(args.User, out var session))
+                                return;
+
+                            _euiManager.OpenEui(ui, session);
+                            ui.UpdateMoods((args.Target, moods));
+                        },
+                        Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Actions/actions_borg.rsi"), "state-laws"),
+                    });
+                }
+                // End MACRO Additions
             }
         }
 
