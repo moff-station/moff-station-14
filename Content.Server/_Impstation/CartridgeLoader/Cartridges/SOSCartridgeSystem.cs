@@ -30,7 +30,7 @@ public sealed class SOSCartridgeSystem : EntitySystem
 
     private void OnActivated(Entity<SOSCartridgeComponent> ent, ref CartridgeActivatedEvent args)
     {
-        if (ent.Comp.NextUse <= _timing.CurTime)
+        if (ent.Comp.NextUse >= _timing.CurTime)
             return;
 
         //Make sure it's a PDA
