@@ -459,8 +459,8 @@
 
 #CE
 - type: entity
-  parent: ClothingUniformBase
-  id: [ ClothingUniformJumpsuitCEFormal, BaseCommandContraband ]
+  parent: [ClothingUniformBase, BaseCommandContraband ]
+  id: ClothingUniformJumpsuitCEFormal
   name: chief engineer's formal suit
   description: A suit for special project grand openings which is fitted to fit inside hardsuits.
   components:
