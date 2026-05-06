@@ -59,19 +59,3 @@
   - type: ContainerContainer
     containers:
       upgrades: !type:Container
-
-    
-
-
-  # - type: Sprite
-  #   sprite: _Moffstation/Objects/Weapons/Guns/Basic/kinetic_accelerator_integrated.rsi
-  #   layers:
-  #   - state: icon
-  #   - state: animation-icon
-  #     visible: false
-  #     map: [ "empty-icon" ]
-  # - type: Item
-  #   sprite: _Moffstation/Objects/Weapons/Guns/Basic/kinetic_accelerator_integrated.rsi
-  #   size: Large
-  #   shape:
-  #   - 0,0,2,1
