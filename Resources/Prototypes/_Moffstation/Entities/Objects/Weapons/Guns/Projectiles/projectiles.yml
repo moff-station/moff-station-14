@@ -1,7 +1,7 @@
 - type: entity
+  parent: BulletKinetic
   id: BulletKineticSmall
   name: small kinetic bolt
-  parent: BulletKinetic
   categories: [ HideSpawnMenu ]
   description: Not too bad, but you still don't want to get hit by it.
   components:
