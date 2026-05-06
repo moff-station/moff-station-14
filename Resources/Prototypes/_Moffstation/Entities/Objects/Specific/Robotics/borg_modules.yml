@@ -1,6 +1,6 @@
 - type: entity
-  id: BaseBorgModuleMagboots
   parent: BaseBorgModule
+  id: BaseBorgModuleMagboots
   name: magboot module
   description: A cyborg module which grant the unit magboots ability.
   abstract: true
@@ -295,7 +295,7 @@
   id: BorgModuleWildlifeControl
   parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
   name: widlife cyborg module
-  description: Designed for salvaging in a wildlife heavy environment. Comes with a knife and a budget cut version of the proto-kinetic particle accelerator.
+  description: Designed for salvaging in a wildlife-heavy environment, this module comes with a stabbing tool and modified proto-kinetic particle accelerator to "tame" fauna from afar.
   components:
   - type: Sprite
     layers:
