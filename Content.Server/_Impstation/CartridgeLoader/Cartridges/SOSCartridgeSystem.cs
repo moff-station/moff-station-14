@@ -4,8 +4,11 @@ using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Chat;
 using Content.Shared.PDA;
+using Content.Shared.Radio;
 using Robust.Server.Audio;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Impstation.CartridgeLoader.Cartridges;
@@ -16,7 +19,7 @@ public sealed class SOSCartridgeSystem : EntitySystem
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -27,24 +30,24 @@ public sealed class SOSCartridgeSystem : EntitySystem
 
     private void OnActivated(Entity<SOSCartridgeComponent> ent, ref CartridgeActivatedEvent args)
     {
-        if (!ent.Comp.CanCall)
+        if (ent.Comp.NextUse <= _timing.CurTime)
             return;
 
-        //Get the PDA
-        if (!TryComp<PdaComponent>(args.Loader, out var pda))
+        //Make sure it's a PDA
+        if (!HasComp<PdaComponent>(args.Loader))
             return;
 
         //Get the id container
         if (!_container.TryGetContainer(args.Loader, SOSCartridgeComponent.PDAIdContainer, out var idContainer))
             return;
 
-        //If theres nothing in id slot, send message anonymously
+        //If there's nothing in id slot, send message with unknown name
         if (idContainer.ContainedEntities.Count == 0)
         {
-            _radio.SendRadioMessage(ent.Owner,
-                Loc.GetString(ent.Comp.HelpMessage, ("name", ent.Comp.LocalizedDefaultName)),
+            SendSoSMessage(args.Loader,
                 ent.Comp.HelpChannel,
-                ent.Owner);
+                Loc.GetString(ent.Comp.HelpMessage, ("name", ent.Comp.LocalizedDefaultName)),
+                ent.Comp.LocalizedNotificationMessage);
         }
         else
         {
@@ -54,17 +57,42 @@ public sealed class SOSCartridgeSystem : EntitySystem
                 if (!TryComp<IdCardComponent>(idCard, out var idCardComp))
                     return;
 
-                _radio.SendRadioMessage(ent.Owner,
-                    Loc.GetString(ent.Comp.HelpMessage, ("name", idCardComp.FullName ?? ent.Comp.LocalizedDefaultName)),
-                    ent.Comp.HelpChannel,
-                    ent.Owner);
+                if (_random.Prob(ent.Comp.FailChance) ||
+                    !_radio.HasActiveServer(Transform(ent.Owner).MapID, ent.Comp.HelpChannel))
+                {
+                    _chat.TrySendInGameICMessage(args.Loader,
+                        ent.Comp.LocalizedFailureNotificationMessage,
+                        InGameICChatType.Speak,
+                        ChatTransmitRange.HideChat);
+                }
+                else
+                {
+                    SendSoSMessage(args.Loader,
+                        ent.Comp.HelpChannel,
+                        Loc.GetString(ent.Comp.HelpMessage, ("name", idCardComp.FullName ?? ent.Comp.LocalizedDefaultName)),
+                        Loc.GetString(_random.Prob(ent.Comp.FunnyChance)
+                            ? ent.Comp.LocalizedFunnyNotificationMessage
+                            : ent.Comp.LocalizedNotificationMessage));
+                }
             }
         }
-        _chat.TrySendInGameICMessage(args.Loader,
-            Loc.GetString(ent.Comp.NotificationMessage),
-            InGameICChatType.Speak,
-            ChatTransmitRange.HideChat);
 
         ent.Comp.NextUse = _timing.CurTime + ent.Comp.Cooldown;
+    }
+
+    private void SendSoSMessage(EntityUid speaker, ProtoId<RadioChannelPrototype> radioChannel, string radioMessage, string? localMessage)
+    {
+        _radio.SendRadioMessage(speaker,
+            radioMessage,
+            radioChannel,
+            speaker);
+
+        if (!string.IsNullOrEmpty(localMessage))
+        {
+            _chat.TrySendInGameICMessage(speaker,
+                localMessage,
+                InGameICChatType.Speak,
+                ChatTransmitRange.HideChat);
+        }
     }
 }

@@ -31,10 +31,22 @@ public sealed partial class SOSCartridgeComponent : Component
     public string LocalizedNotificationMessage => Loc.GetString(NotificationMessage);
 
     /// <summary>
-    /// Message that gets played locally when the SoS button is used
+    /// Message that gets played locally when the SoS button is used and fails to send a message
     /// </summary>
     [DataField]
-    public LocId CooldownMessage = "sos-notification-cooldown-message";
+    public LocId FailureNotificationMessage = "sos-notification-message-failure";
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public string LocalizedFailureNotificationMessage => Loc.GetString(FailureNotificationMessage);
+
+    /// <summary>
+    /// Message that gets played locally when the SoS button is used and fails to send a message
+    /// </summary>
+    [DataField]
+    public LocId FunnyNotificationMessage = "sos-notification-message-pizza";
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public string LocalizedFunnyNotificationMessage => Loc.GetString(FunnyNotificationMessage);
 
     [DataField]
     //Channel to notify
@@ -48,6 +60,15 @@ public sealed partial class SOSCartridgeComponent : Component
     //Countdown until next call is allowed
     public TimeSpan NextUse = TimeSpan.Zero;
 
-    [ViewVariables(VVAccess.ReadOnly)]
-    public bool CanCall => NextUse <= TimeSpan.Zero;
+    /// <summary>
+    /// The chance the SoS call will randomly fail to send
+    /// </summary>
+    [DataField]
+    public float FailChance = 0.005f;
+
+    /// <summary>
+    /// The chance the notification will be replaced with a funny alternative.
+    /// </summary>
+    [DataField]
+    public float FunnyChance = 0.005f;
 }

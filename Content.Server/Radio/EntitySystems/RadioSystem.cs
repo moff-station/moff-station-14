@@ -158,7 +158,7 @@ public sealed class RadioSystem : SharedRadioSystem
     }
 
     /// <inheritdoc cref="TelecomServerComponent"/>
-    private bool HasActiveServer(MapId mapId, string channelId)
+    public bool HasActiveServer(MapId mapId, string channelId) // Moffstation - made public
     {
         var servers = EntityQuery<TelecomServerComponent, EncryptionKeyHolderComponent, ApcPowerReceiverComponent, TransformComponent>();
         foreach (var (_, keys, power, transform) in servers)
