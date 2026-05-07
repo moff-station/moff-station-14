@@ -2,7 +2,7 @@
   parent: JobIcon
   id: JobIconTestSubject
   icon:
-    sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
+    sprite: &icon-rsi /Textures/_Moffstation/Interface/Misc/job_icons.rsi
     state: TestSubject
   isCrewJob: false
 
@@ -10,5 +10,62 @@
   parent: JobIcon
   id: JobIconAssistant
   icon:
-    sprite: /Textures/_Moffstation/Interface/Misc/job_icons.rsi
+    sprite: *icon-rsi
     state: Assistant
+  jobName: job-name-passenger-assistant
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCoffeeLogisticsOfficer
+  icon:
+    sprite: *icon-rsi
+    state: CoffeeLogisticsOfficer
+  jobName: job-name-coffee-logistics-officer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentralCommandOfficial
+  icon:
+    sprite: *icon-rsi
+    state: CentralCommandOfficial
+  jobName: job-name-centcommoff
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentralCommandIntern
+  icon:
+    sprite: *icon-rsi
+    state: CentralCommandIntern
+  jobName: job-name-centcommint
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBridgeAssistant
+  icon:
+    sprite: *icon-rsi
+    state: BridgeAssistant
+  jobName: job-name-passenger-bridge-assistant
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTMailCarrier
+  icon:
+    sprite: *icon-rsi
+    state: ERTMailCarrier
+  jobName: job-name-ertmailcarrier
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconHeadOfSanitation
+  icon:
+    sprite: *icon-rsi
+    state: HeadOfSanitation
+  jobName: job-name-janitor-head-of-sanitation
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconHeadOfTomfoolery
+  icon:
+    sprite: *icon-rsi
+    state: HeadOfTomfoolery
+  jobName: job-name-clown-head-of-tomfoolery
