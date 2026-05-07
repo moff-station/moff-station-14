@@ -44,12 +44,6 @@
     proto: BulletKineticSmall
     capacity: 1
     count: 1
-  - type: Clothing
-    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
-    quickEquip: false
-    slots:
-    - suitStorage
-    - Belt
   - type: UseDelay
     delay: 0
   - type: UpgradeableGun
