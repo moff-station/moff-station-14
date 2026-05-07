@@ -1,0 +1,100 @@
+- type: entity
+  parent: BaseItem
+  id: Brick
+  name: brick
+  description: A multipurpose tool used for many tasks, such as building needlessly expensive things, rioting or bludgeoning interdimensional invaders.
+  components:
+  - type: EmitSoundOnLand
+    sound: /Audio/_Moffstation/Weapons/Melee/brick.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 15
+    soundHit:
+      collection: MetalThud
+  - type: StaticPrice
+    price: 80
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PaperLabelVisuals.HasLabel:
+        enum.PaperLabelVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PaperLabelVisuals.LabelType:
+        enum.PaperLabelVisuals.Layer:
+          Paper: { state: paper }
+          Bounty: { state: bounty }
+          CaptainsPaper: { state: captains_paper }
+          Invoice: { state: invoice }
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Melee/brick.rsi
+    layers:
+    - state: icon
+      map: [ "enum.WrappedParcelVisuals.Layer" ]
+    - state: paper
+      visible: false
+      sprite: _Moffstation/Objects/Weapons/Melee/brick.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Weapons/Melee/brick.rsi
+    size: Small
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 15
+        Structural: 15
+  - type: StaminaDamageOnCollide
+    damage: 15
+    sound: /Audio/Effects/metal_thud1.ogg
+  - type: LandAtCursor
+  - type: ContainerContainer
+    containers:
+      paper_label: !type:ContainerSlot
+  - type: ItemSlots
+  - type: PaperLabel
+    labelSlot:
+      insertVerbText: comp-paper-label-insert
+      ejectVerbText: comp-paper-label-eject
+      whitelist:
+        components:
+        - Paper
+      blacklist:
+        tags:
+        - Book
+
+- type: entity
+  parent: Brick
+  id: BrickSec
+  name: SecBrick
+  suffix: Admeme
+  description: The grand grand... father of all breaching tools. It's evil because it's red.
+  components:
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 20
+    soundHit:
+      collection: MetalThud
+  - type: StaticPrice
+    price: 500
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 20
+        Structural: 800 # enough to break an rwall
+  - type: StaminaDamageOnCollide
+    damage: 20
+    sound: /Audio/Effects/metal_thud1.ogg
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Melee/brick.rsi
+    layers:
+    - state: secbrick
+      map: [ "enum.WrappedParcelVisuals.Layer" ]
+    - state: paper
+      visible: false
+      sprite: _Moffstation/Objects/Weapons/Melee/brick.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
