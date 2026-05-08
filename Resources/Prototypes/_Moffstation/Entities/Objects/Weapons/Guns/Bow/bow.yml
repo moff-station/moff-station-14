@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseBowVisuals
+  parent: [ BaseBowVisuals, BaseCargoContraband ]
   id: CompoundBow
   name: Compound Bow
   description: A bow with a pulley system that lightens the draw, designed for old fashioned hunting.
