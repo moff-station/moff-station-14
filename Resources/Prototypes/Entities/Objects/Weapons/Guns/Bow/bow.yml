@@ -1,6 +1,6 @@
 - type: entity
   name: bow
-  parent: [BaseItem, BaseMinorContraband]
+  parent: BaseItem
   id: BaseBow
   description: The original rooty tooty point and shooty.
   abstract: true
@@ -93,7 +93,7 @@
 
 - type: entity
   id: BowImprovised
-  parent: BaseBowVisuals # Moffstation
+  parent: [ BaseBowVisuals, BaseMinorContraband ] # Moffstation
   name: improvised shortbow
   components:
   # Moffstation - Components for specifying visuals moved to `BaseBowVisuals`. Changes to the deleted code should be applied to the prototype above.
