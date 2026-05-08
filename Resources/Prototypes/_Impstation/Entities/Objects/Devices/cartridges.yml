@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseItem
+  parent: BasePDACartridge
   id: SOSCartridge
   name: SOS cartridge
   description: A program to call for help.
@@ -10,4 +10,4 @@
         sprite: _Impstation/Objects/Devices/sos.rsi
         state: icon
     - type: SOSCartridge
-      
+
