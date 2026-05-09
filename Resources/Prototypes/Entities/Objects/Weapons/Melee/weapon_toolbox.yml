@@ -19,3 +19,9 @@
         Blunt: 20
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
+  # Moffstation - Toolbox&Brick throwables
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 8
+  # Moffstation - End
