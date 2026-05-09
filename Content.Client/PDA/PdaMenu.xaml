@@ -23,39 +23,40 @@
         <pda:PdaNavigationButton Name="EjectPaiButton" Access="Public" SetWidth="32"/>
     </BoxContainer>
     <BoxContainer Name="ViewContainer" HorizontalExpand="True" VerticalExpand="True" Access="Public">
-        <!-- TODO: if the content of the below text is too large, the screen contents will start overflowing rather than scrolling. Obviously this is bad, but currently there is no possible way for this to happen.
-                   The only way I see this happening is if the StationAlertLevelInstructions string were considerably longer than any of the ones we have currently, but this could be a problem for downstreams,
-                   particularly ones with different language support. I would fix this, but I don't really know the best way to go about it and I am worried that I will make the problem worse somehow. -moomoobeef -->
+        <!-- Moffcode has been all throughout this bit :godo: - PDA ads - begin -->
         <BoxContainer Orientation="Vertical"
                       VerticalExpand="True"
-                      HorizontalExpand="True"
-                      MinSize="50 50"
-                      Margin="8">
-            <ContainerButton Name="PdaOwnerButton">
-                <RichTextLabel Name="PdaOwnerLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="IdInfoButton">
-                <RichTextLabel Name="IdInfoLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationNameButton">
-                <RichTextLabel Name="StationNameLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationAlertLevelButton">
-                <RichTextLabel Name="StationAlertLevelLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationTimeButton">
-                <RichTextLabel Name="StationTimeLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationAlertLevelInstructionsButton">
-                <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>
-            </ContainerButton>
-            <!-- Mothstation - PDA ad stuff bla blah I have been working on this PR for almost 6 hours tonight and have gotten almost nothing done, I am about to cry -->
-                <BoxContainer Name="Padding" VerticalExpand="True" MinHeight="0" Orientation="Vertical"></BoxContainer> <!-- I don't know if this is the proper way to do this, TODO: am I stupid?-->
-                <BoxContainer Name="AdvertisementBox" HorizontalExpand="True" VerticalExpand="False" MinHeight="96" Orientation="Vertical" Margin="1 1 1 1">
-                    <Label Text="{Loc 'comp-pda-ui-advertisement-text'}" Margin="0 0 0 1" StyleClasses="PdaContentFooterText"/>
-                    <AnimatedTextureRect Name="Advertisement" SetSize="512 96"/>
+                      HorizontalExpand="True">
+            <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                <BoxContainer Orientation="Vertical"
+                              HorizontalExpand="True"
+                              MinSize="50 50"
+                              Margin="8">
+                    <ContainerButton Name="PdaOwnerButton">
+                        <RichTextLabel Name="PdaOwnerLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="IdInfoButton">
+                        <RichTextLabel Name="IdInfoLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationNameButton">
+                        <RichTextLabel Name="StationNameLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationAlertLevelButton">
+                        <RichTextLabel Name="StationAlertLevelLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationTimeButton">
+                        <RichTextLabel Name="StationTimeLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationAlertLevelInstructionsButton">
+                        <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>
+                    </ContainerButton>
                 </BoxContainer>
-            <!-- Mothstation end -->
+            </ScrollContainer>
+            <BoxContainer Name="AdvertisementBox" HorizontalExpand="True" VerticalExpand="False" MinHeight="96" Orientation="Vertical" Margin="8 1 8 1">
+                <Label Text="{Loc 'comp-pda-ui-advertisement-text'}" Margin="0 0 0 1" StyleClasses="PdaContentFooterText"/>
+                <AnimatedTextureRect Name="Advertisement" SetSize="512 96"/>
+            </BoxContainer>
+            <!-- Mothstation - PDA ads - end -->
         </BoxContainer>
         <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="True">
             <BoxContainer Orientation="Vertical"
