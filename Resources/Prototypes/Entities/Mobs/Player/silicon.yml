@@ -79,7 +79,6 @@
   - type: DamagedSiliconAccent
     startPowerCorruptionAtCharIdx: 4
     maxPowerCorruptionAtCharIdx: 20
-  - type: AiShellController # MoffStation - Ai Shells
 
 - type: entity
   id: AiHeldIntellicard
@@ -481,7 +480,7 @@
     mindRoles:
     - MindRoleGhostRoleSilicon
     job: StationAi
-  #- type: AiShellController # MoffStation - Ai Shells
+  - type: AiShellController # MoffStation - Ai Shells
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
