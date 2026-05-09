@@ -1,28 +1,31 @@
 # Weight is an INT, do not use floats!
 
-#- type: pdaAd
-#  id: pdaAdParent
-#  abstract: true
-#  spritePath: "_Moffstation/Interface/PDA/advertisements.rsi"
+#I tried to make a base pdaAd so that they didn't all have to have the sprite path, but it kept crashing :godo:
 
 - type: pdaAd
   #parent: pdaAdParent
   id: test1
-  name: test 1
-  spriteState: "test1"
+  name: test 1 #name isn't used for anything here, just for your convenience in reading this file I guess
   weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: test1
 
 - type: pdaAd
   #parent: pdaAdParent
   id: test2
   name: test 2
-  spriteState: "test2"
   weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: test2
 
 - type: pdaAd
   #parent: pdaAdParent
   id: test3
   name: test 3
-  spriteState: "test3"
   weight: 1
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: test3
 

@@ -64,8 +64,10 @@ namespace Content.Client.PDA
             var adPrototype = RandomByWeight(GetAllPdaAds(_prototypeManager));
 
             //Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState));
-            Advertisement.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState)));
+            //Advertisement.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState)));
             //Advertisement.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath(adPrototype.SpritePath), (adPrototype.SpriteState)));
+
+            Advertisement.SetFromSpriteSpecifier(adPrototype.Sprite);
             Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;     // Moffstation - end - PDA Advertisements
 
             HomeButton.OnPressed += _ => ToHomeScreen();

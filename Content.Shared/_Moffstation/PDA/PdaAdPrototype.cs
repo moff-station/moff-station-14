@@ -1,4 +1,5 @@
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Moffstation.PDA;
 
@@ -9,15 +10,11 @@ public sealed partial class PdaAdPrototype : IPrototype
     public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
-    public string SpriteState { get; private set; } = default!;
-
-    //[DataField(required: true)]
-    //public string SpritePath { get; private set; } = default!;
-
+    public SpriteSpecifier Sprite = default!;
 
     [DataField(required: true)]
-    public int Weight { get; private set; } = default!;
+    public int Weight = default!;
 
     [DataField]
-    public bool Hidden { get; private set; }
+    public bool Hidden = default!;
 }
