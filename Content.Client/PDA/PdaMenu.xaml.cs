@@ -60,12 +60,7 @@ namespace Content.Client.PDA
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
-            //var adPrototype = _random.Pick(GetAllPdaAds(_prototypeManager));          // Moffstation - begin - PDA Advertisements
-            var adPrototype = RandomByWeight(GetAllPdaAds(_prototypeManager));
-
-            //Advertisement.IconTexture = new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState));
-            //Advertisement.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath("_Moffstation/Interface/PDA/advertisements.rsi"), (adPrototype.SpriteState)));
-            //Advertisement.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath(adPrototype.SpritePath), (adPrototype.SpriteState)));
+            var adPrototype = RandomByWeight(GetAllPdaAds(_prototypeManager));          // Moffstation - begin - PDA Advertisements
 
             Advertisement.SetFromSpriteSpecifier(adPrototype.Sprite);
             Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;     // Moffstation - end - PDA Advertisements
