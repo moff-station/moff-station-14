@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared._Starlight.Flash.Components;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
@@ -25,6 +24,7 @@ using Content.Shared.Traits.Assorted;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -48,6 +48,8 @@ public abstract class SharedFlashSystem : EntitySystem
 
     [Dependency] private readonly EntityQuery<StatusEffectsComponent> _statusEffectsQuery = default!;
     [Dependency] private readonly EntityQuery<DamagedByFlashingComponent> _damagedByFlashingQuery = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!; // Moffstation
+    [Dependency] private readonly SharedContainerSystem _container = default!; // Moffstation
 
     private HashSet<EntityUid> _entSet = new();
 
@@ -72,7 +74,7 @@ public abstract class SharedFlashSystem : EntitySystem
         // Moffstation - Start - Night Vision blocked by flash immunity
         SubscribeLocalEvent<DidEquipEvent>(OnDidEquip);
         SubscribeLocalEvent<DidUnequipEvent>(OnDidUnequip);
-        SubscribeLocalEvent<NightVisionComponent, WearerMaskToggledEvent>(OnMaskToggled);
+        SubscribeLocalEvent<FlashImmunityComponent, ItemMaskToggledEvent>(OnItemMaskToggled);
         SubscribeLocalEvent<FlashImmunityComponent, ComponentStartup>(OnFlashImmunityStartup);
         SubscribeLocalEvent<FlashImmunityComponent, ComponentRemove>(OnFlashImmunityRemove);
         // Moffstation - End
