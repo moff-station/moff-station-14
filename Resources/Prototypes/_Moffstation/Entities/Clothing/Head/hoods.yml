@@ -66,11 +66,10 @@
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsoviet.rsi
 
 - type: entity
-  parent: ClothingHeadHatHoodBioGeneral
+  parent: ClothingHeadHatHoodRad
   id: ClothingHeadHatHoodSovietRad
   name: soviet radiation hood
-  suffix: ""
-  description: A gas mask covering the entire head of the wearer. Primitive technology but still in use by penal colonies. Said to protect against all kind of radiation for 40 seconds.
+  description: A primitive hooded gas mask covering the wearer's head in thick rubber. It's too bulky to be worn beneath a helmet but still issued to penal crews and frontier scavengers. Officials claim that it's able to withstand lethal radiation for forty seconds.
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Hoods/sovietradhood.rsi
