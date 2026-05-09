@@ -12,7 +12,8 @@ using Robust.Shared.Timing;
 using Robust.Shared.Prototypes;         // Moffstation - PDA Advertisements
 using System.Linq;                      // Moffstation - PDA Advertisements
 using Robust.Shared.Random;             // Moffstation - PDA Advertisements
-using Content.Shared._Moffstation.PDA;  // Moffstation - PDA Advertisements
+using Content.Shared._Moffstation.PDA;
+using System.Collections;  // Moffstation - PDA Advertisements
 
 namespace Content.Client.PDA
 {
@@ -360,21 +361,20 @@ namespace Content.Client.PDA
                             // Moffstation - begin - PDA Advertisements
 
         /// <summary>
-        /// Returns a list of all <see cref="PdaAdPrototype"/>s that are not hidden.
+        /// Returns an intermediate enumerable of all <see cref="PdaAdPrototype"/>s that are not hidden.
         /// </summary>
-        private static List<PdaAdPrototype> GetAllPdaAds(IPrototypeManager prototypeManager)
+        private static IEnumerable<PdaAdPrototype> GetAllPdaAds(IPrototypeManager prototypeManager)
         {
             return prototypeManager
                 .EnumeratePrototypes<PdaAdPrototype>()
-                .Where(p => !p.Hidden)
-                .ToList();
+                .Where(p => !p.Hidden);
         }
 
         /// <summary>
         /// Creates a list with duplicate entries based on the "Weight" of each prototype,
         /// and then randomly picks and returns one.
         /// </summary>
-        private PdaAdPrototype RandomByWeight(List<PdaAdPrototype> pdaList)
+        private PdaAdPrototype RandomByWeight(IEnumerable<PdaAdPrototype> pdaList)
         {
             var accumulatedList = new List<PdaAdPrototype>();
             foreach (var pdaAdPrototype in pdaList)

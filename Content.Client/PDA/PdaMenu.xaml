@@ -53,7 +53,7 @@
                 </BoxContainer>
             </ScrollContainer>
             <BoxContainer Name="AdvertisementBox" HorizontalExpand="True" VerticalExpand="False" MinHeight="96" Orientation="Vertical" Margin="8 1 8 1">
-                <Label Text="{Loc 'comp-pda-ui-advertisement-text'}" Margin="0 0 0 1" StyleClasses="PdaContentFooterText"/>
+                <Label Text="{Loc 'comp-pda-ui-advertisement-text'}" Margin="4 0 1 2" StyleClasses="PdaContentFooterText"/>
                 <AnimatedTextureRect Name="Advertisement" SetSize="512 96"/>
             </BoxContainer>
             <!-- Mothstation - PDA ads - end -->
