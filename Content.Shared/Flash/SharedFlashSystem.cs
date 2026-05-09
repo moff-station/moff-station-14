@@ -344,13 +344,16 @@ public abstract class SharedFlashSystem : EntitySystem
         RaiseLocalEvent(args.EquipTarget, ref ev);
     }
 
-    private void OnMaskToggled(Entity<NightVisionComponent> entity, ref WearerMaskToggledEvent args)
+    // Handle cases where toggling a mask also toggles flash immunity.
+    private void OnItemMaskToggled(Entity<FlashImmunityComponent> entity, ref ItemMaskToggledEvent args)
     {
-        // this is mostly for interactions w/ syndie/welding gas mask
-        // because flipping those down gets rid of your flash protection - mayzmae 2026-05-07
+        if (!_inventory.TryGetContainingSlot(entity.Owner, out _) ||
+            !_container.TryGetContainingContainer(entity.Owner, out var container))
+            return;
 
-        var ev = new FlashImmunityChangedEvent(IsFlashImmune(entity.Owner));
-        RaiseLocalEvent(entity, ref ev);
+        var wearer = container.Owner;
+        var ev = new FlashImmunityChangedEvent(IsFlashImmune(wearer));
+        RaiseLocalEvent(wearer, ref ev);
     }
 
     private void OnFlashImmunityStartup(Entity<FlashImmunityComponent> entity, ref ComponentStartup args)
