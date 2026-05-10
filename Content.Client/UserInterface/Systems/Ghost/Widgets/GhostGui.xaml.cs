@@ -92,7 +92,8 @@ public sealed partial class GhostGui : UIWidget
         }
 
         var respawnDelay = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
-        var remainingTime = _timeOfDeath + respawnDelay - _gameTiming.RealTime;
+        var serverTime = _gameTiming.ServerTime;
+        var remainingTime = _timeOfDeath + respawnDelay - serverTime;
 
         if (!remainingTime.HasValue || remainingTime <= TimeSpan.Zero)
         {
