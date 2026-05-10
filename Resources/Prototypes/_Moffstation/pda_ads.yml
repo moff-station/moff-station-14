@@ -69,7 +69,15 @@
 - type: pdaAd
   id: smoke2
   name: shadycigs 2
-  weight: 4
+  weight: 3
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: smoke2 #legend has it smoke1 exists (I don't know why the file was named smoke2 to begin with)
+
+- type: pdaAd
+  id: smoke3
+  name: shadycigs 3
+  weight: 3
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: smoke3
