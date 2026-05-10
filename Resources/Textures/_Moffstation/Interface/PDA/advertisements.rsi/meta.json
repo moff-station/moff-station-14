@@ -1,20 +1,74 @@
 {
-    "version": 1,
-    "license": "CC-BY-SA-4.0",
-    "copyright": "",
-    "size": {
-        "x": 256,
-        "y": 48
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "buy, dans-halfoff, getsmore, & smoke2 by drbadvice (discord). nanomed, plasteel-chef, luxury-pens, anti-union, & pride-o-mat by moomoobeef (github)",
+  "size": {
+    "x": 256,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "anti-union",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          2.0,
+          8.0
+        ]
+      ]
     },
-    "states": [
-        {
-            "name": "test1"
-        },
-        {
-            "name": "test2"
-        },
-        {
-            "name": "test3"
-        }
-    ]
+    {
+      "name": "buy"
+    },
+    {
+      "name": "dans-halfoff"
+    },
+    {
+      "name": "getsmore"
+    },
+    {
+      "name": "luxury-pens"
+    },
+    {
+      "name": "nanomed",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "plasteel-chef"
+    },
+    {
+      "name": "pride-o-mat"
+    },
+    {
+      "name": "smoke2"
+    }
+  ]
 }

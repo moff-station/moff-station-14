@@ -2,30 +2,74 @@
 
 #I tried to make a base pdaAd so that they didn't all have to have the sprite path, but it kept crashing :godo:
 
-- type: pdaAd
-  #parent: pdaAdParent
-  id: test1
-  name: test 1 #name isn't used for anything here, just for your convenience in reading this file I guess
-  weight: 5
-  sprite:
-    sprite: _Moffstation/Interface/PDA/advertisements.rsi
-    state: test1
+#- type: pdaAd
+#  id: anti-union       this one isn't working properly at the moment, pending fix.
+#  name: NanoTrasen Propoganda
+#  weight: 6
+#  sprite:
+#    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+#    state: anti-union
 
 - type: pdaAd
-  #parent: pdaAdParent
-  id: test2
-  name: test 2
-  weight: 5
-  sprite:
-    sprite: _Moffstation/Interface/PDA/advertisements.rsi
-    state: test2
-
-- type: pdaAd
-  #parent: pdaAdParent
-  id: test3
-  name: test 3
+  id: buy
+  name: BUY #name isn't used for anything here, just for your convenience in reading this file I guess
   weight: 1
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
-    state: test3
+    state: buy
 
+- type: pdaAd
+  id: dans-halfoff
+  name: Dan's half-off every time
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: dans-halfoff
+
+- type: pdaAd
+  id: getsmore
+  name: getsmore chocolate
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: getsmore
+
+- type: pdaAd
+  id: luxury-pens
+  name: Bureautech Luxury Pens
+  weight: 2
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: luxury-pens
+
+- type: pdaAd
+  id: nanomed
+  name: nanomed topicals
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: nanomed
+
+- type: pdaAd
+  id: plasteel-chef
+  name: Plasteel Chef - Fine Dinnerware
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: plasteel-chef
+
+- type: pdaAd
+  id: pride-o-mat
+  name: pride-o-mat
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: pride-o-mat
+
+- type: pdaAd
+  id: smoke2
+  name: shadycigs 2
+  weight: 4
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: smoke2 #legend has it smoke1 exists (I don't know why the file was named smoke2 to begin with)
