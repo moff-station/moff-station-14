@@ -19,6 +19,14 @@
     state: buy
 
 - type: pdaAd
+  id: CARPpockets
+  name: Donk co Carp pockets
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: CARPpockets
+
+- type: pdaAd
   id: dans-halfoff
   name: Dan's half-off every time
   weight: 5
@@ -65,6 +73,14 @@
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: pride-o-mat
+
+- type: pdaAd
+  id: secad
+  name: Security Academy
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: secad
 
 - type: pdaAd
   id: smoke2
