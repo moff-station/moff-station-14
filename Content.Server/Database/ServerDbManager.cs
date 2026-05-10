@@ -317,6 +317,12 @@ namespace Content.Server.Database
 
         #endregion
 
+        #region LibraryRepo
+
+        Task<List<MoffModel.MoffLibraryEntry>> GetLibraryRepo(bool approvedOnly, NetUserId? requester, bool randomBook);
+
+        #endregion
+
         #region DB Notifications
 
         void SubscribeToNotifications(Action<DatabaseNotification> handler);
@@ -1001,10 +1007,10 @@ namespace Content.Server.Database
         // Moffstation - End - Weighted Antags
 
         // Moffstation - Start - Library Repo
-        public Task<List<PlayerBook>> GetLibraryRepo(bool approvedOnly, NetUserId? requester, bool randomBook)
+        public Task<List<MoffModel.MoffLibraryEntry>> GetLibraryRepo(bool approvedOnly, NetUserId? requester, bool randomBook)
         {
             DbReadOpsMetric.Inc();
-            RunDbCommand(() => _db.GetLibraryRepo(approvedOnly, requester, randomBook));
+            return RunDbCommand(() => _db.GetLibraryRepo(approvedOnly, requester, randomBook));
         }
         // Moffstation - End
 

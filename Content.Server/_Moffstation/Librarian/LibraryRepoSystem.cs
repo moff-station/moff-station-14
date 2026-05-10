@@ -1,5 +1,6 @@
 using Content.Server.Database;
 using Content.Shared._Moffstation.Librarian;
+using Robust.Shared.Network;
 
 namespace Content.Server._Moffstation.Librarian;
 
@@ -17,6 +18,18 @@ public sealed class LibraryRepoSystem : SharedLibraryRepoSystem
 
     private void OnMapInit(Entity<LibraryRepoComponent> ent, ref MapInitEvent args)
     {
-        _db.GetLibraryRepo()
+        var results = _db.GetLibraryRepo(true, null, false);
+    }
+
+    public PlayerBook ToPlayerBook(MoffModel.MoffLibraryEntry entry)
+    {
+        return new PlayerBook
+        {
+            Name = entry.Name,
+            Description = entry.Description,
+            Author = entry.Author,
+            Content = entry.Content,
+            Type = entry.Type,
+        };
     }
 }
