@@ -64,8 +64,8 @@
       types:
         Blunt: 0.3
     wideAnimationRotation: -80
-  - type: StaminaDamageOnHit
-    damage: 20
+  - type: HitscanStaminaDamage
+    staminaDamage: 20
     sound: /Audio/Weapons/egloves.ogg
   - type: Prying
     pryPowered: true
@@ -214,8 +214,8 @@
     impactFlash:
       sprite: _Impstation/Mobs/Replicator/replicator_gun.rsi
       state: impact_repli
-  - type: StaminaDamageOnHit
-    damage: 18
+  - type: HitscanStaminaDamage
+    staminaDamage: 18
 
 - type: entity
   id: HitscanReplicator2
@@ -234,11 +234,17 @@
     impactFlash:
       sprite: _Impstation/Mobs/Replicator/replicator_gun.rsi
       state: impact_repli2
-  - type: StaminaDamageOnHit
-    damage: 21
+  - type: HitscanStaminaDamage
+    staminaDamage: 21
 
 - type: entity
   id: OmnitoolUnremoveable
   parent: Omnitool
+  components:
+  - type: Unremoveable
+
+- type: entity
+  id: WelderExperimentalUnremoveable
+  parent: WelderExperimental
   components:
   - type: Unremoveable

@@ -256,9 +256,13 @@
       shader: unshaded
       visible: false
   - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
+    canBeStripped: false
+    activeHandId: Hand
     hands:
-      hand1:
-        location: Right
+      Hand:
+        location: Left
     prototype: Replicator1
   - type: Loadout
     prototypes:
@@ -310,11 +314,18 @@
     damageContainer: StructuralInorganic
     damageModifierSet: Replicator2
   - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
+    canBeStripped: false
+    activeHandId: Right
     hands:
-      hand1:
-        location: Left
-      hand2:
+      Right:
         location: Right
+      Left:
+        location: Left
+    sortedHands:
+    - Right
+    - Left
   - type: Loadout
     prototypes:
       - StartingGearReplicatorTools
@@ -366,11 +377,18 @@
     damageContainer: StructuralInorganic
     damageModifierSet: Replicator2
   - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
+    canBeStripped: false
+    activeHandId: Right
     hands:
-      hand 1:
-        location: Left
-      hand 2:
+      Right:
         location: Right
+      Left:
+        location: Left
+    sortedHands:
+    - Right
+    - Left
   - type: Loadout
     prototypes:
       - StartingGearReplicatorT2Alt
@@ -416,11 +434,17 @@
       Dead:
         Base: dead_level3
   - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
+    canBeStripped: false
     hands:
       hand1:
         location: Left
       hand2:
         location: Right
+    sortedHands:
+    - Right
+    - Left
   - type: Loadout
     prototypes:
       - StartingGearReplicatorT3Weapon
