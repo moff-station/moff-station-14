@@ -21,7 +21,18 @@ public sealed class PinpointerSystem : SharedPinpointerSystem
 
         SubscribeLocalEvent<PinpointerComponent, ActivateInWorldEvent>(OnActivate);
         SubscribeLocalEvent<FTLCompletedEvent>(OnLocateTarget);
+        SubscribeLocalEvent<PinpointerComponent, ComponentInit>(OnCompInit); // Moffstation - replicators
     }
+
+    // Moffstation - start - replicators
+    private void OnCompInit(Entity<PinpointerComponent> ent, ref ComponentInit args)
+    {
+        if (!ent.Comp.IsActive)
+            return;
+        LocateTarget(ent);
+        UpdateAppearance(ent.Owner);
+    }
+    // Moffstation - end
 
     public override bool TogglePinpointer(Entity<PinpointerComponent?> ent)
     {

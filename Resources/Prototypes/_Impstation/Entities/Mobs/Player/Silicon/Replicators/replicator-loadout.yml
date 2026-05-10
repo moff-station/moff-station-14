@@ -155,7 +155,7 @@
   description: Locates the Nest.
   components:
   - type: Sprite
-    sprite: _Impstation/Objects/Devices/pinpointer.rsi
+    sprite: Objects/Devices/pinpointer.rsi
     layers:
     - sprite: _Impstation/Objects/Devices/pinpointer_replicator.rsi
       state: pinpointer-replicator
@@ -170,7 +170,7 @@
   - type: Pinpointer
     component: ReplicatorNest
     targetName: replicator nest
-    activateImmediately: true
+    isActive: true
 
 - type: entity
   parent: PinpointerReplicator
@@ -179,23 +179,23 @@
   components:
   - type: Unremoveable
 
-- type: entity
-  parent: AACTablet
-  id: ReplicatorAAC
-  name: verbal interface
-  description: Communication.
-  components:
-  - type: AACTablet
-    phraseGroup: ReplicatorPhrases
-  - type: VoiceMask
-  - type: Speech
-    speechVerb: Robotic
-    speechSounds: Replicator
-  - type: Sprite
-    sprite: _Impstation/Mobs/Replicator/replicator_tablet.rsi
-    state: aac_tablet
-  - type: Item
-  - type: Unremoveable
+#- type: entity
+#  parent: AACTablet
+#  id: ReplicatorAAC
+#  name: verbal interface
+#  description: Communication.
+#  components:
+#  - type: AACTablet
+#    phraseGroup: ReplicatorPhrases
+#  - type: VoiceMask
+#  - type: Speech
+#    speechVerb: Robotic
+#    speechSounds: Replicator
+#  - type: Sprite
+#    sprite: _Impstation/Mobs/Replicator/replicator_tablet.rsi
+#    state: aac_tablet
+#  - type: Item
+#  - type: Unremoveable
 
 - type: entity
   id: HitscanReplicator
