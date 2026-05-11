@@ -22,7 +22,7 @@ public sealed class ReporterShiftReportSystem : EntitySystem
     {
         if (TryComp(ent, out PaperComponent? paper))
         {
-            ent.Comp.ReportBody = FormattedMessage.RemoveMarkupPermissive(paper.Content);
+            ent.Comp.ReportBody = FormattedMessage.EscapeText(paper.Content);
         }
     }
 
