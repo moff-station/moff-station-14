@@ -5,15 +5,31 @@
 #- type: pdaAd
 #  id: anti-union       this one isn't working properly at the moment, pending fix.
 #  name: NanoTrasen Propoganda
-#  weight: 6
+#  weight: 10
 #  sprite:
 #    sprite: _Moffstation/Interface/PDA/advertisements.rsi
 #    state: anti-union
 
 - type: pdaAd
+  id: arcade
+  name: 80s night at the arcade #name isn't used for anything here, just for your convenience in reading this file I guess
+  weight: 5
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: arcade
+
+- type: pdaAd
+  id: booze
+  name: drink more booze
+  weight: 3
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: booze
+
+- type: pdaAd
   id: buy
-  name: BUY #name isn't used for anything here, just for your convenience in reading this file I guess
-  weight: 1
+  name: BUY
+  weight: 2
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: buy
@@ -21,7 +37,7 @@
 - type: pdaAd
   id: CARPpockets
   name: Donk co Carp pockets
-  weight: 5
+  weight: 7
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: CARPpockets
@@ -29,23 +45,47 @@
 - type: pdaAd
   id: dans-halfoff
   name: Dan's half-off every time
-  weight: 5
+  weight: 7
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: dans-halfoff
 
 - type: pdaAd
+  id: donk-pockets
+  name: Donk pocket flavors
+  weight: 7
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: donk-pockets
+
+- type: pdaAd
+  id: error1
+  name: an SSL error has occured
+  weight: 1
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: error1
+
+- type: pdaAd
   id: getsmore
   name: getsmore chocolate
-  weight: 5
+  weight: 7
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: getsmore
 
 - type: pdaAd
+  id: janitor
+  name: Keep your station clean, become a janitor
+  weight: 7
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: janitor
+
+- type: pdaAd
   id: luxury-pens
   name: Bureautech Luxury Pens
-  weight: 2
+  weight: 3
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: luxury-pens
@@ -53,15 +93,23 @@
 - type: pdaAd
   id: nanomed
   name: nanomed topicals
-  weight: 5
+  weight: 6
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: nanomed
 
 - type: pdaAd
+  id: Nomads
+  name: Nomad brand cigarettes
+  weight: 4
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: Nomads
+
+- type: pdaAd
   id: plasteel-chef
   name: Plasteel Chef - Fine Dinnerware
-  weight: 5
+  weight: 6
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: plasteel-chef
@@ -69,7 +117,7 @@
 - type: pdaAd
   id: pride-o-mat
   name: pride-o-mat
-  weight: 5
+  weight: 6
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: pride-o-mat
@@ -77,15 +125,31 @@
 - type: pdaAd
   id: secad
   name: Security Academy
-  weight: 5
+  weight: 8
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: secad
 
 - type: pdaAd
+  id: security-watches
+  name: Security is watching
+  weight: 1
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: security-watches
+
+- type: pdaAd
+  id: smite
+  name: smite cranberry
+  weight: 6
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: smite
+
+- type: pdaAd
   id: smoke2
   name: shadycigs 2
-  weight: 3
+  weight: 5
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: smoke2 #legend has it smoke1 exists (I don't know why the file was named smoke2 to begin with)
@@ -93,7 +157,7 @@
 - type: pdaAd
   id: smoke3
   name: shadycigs 3
-  weight: 3
+  weight: 5
   sprite:
     sprite: _Moffstation/Interface/PDA/advertisements.rsi
     state: smoke3
