@@ -15,7 +15,6 @@ namespace Content.Client.Atmos.UI
     [GenerateTypedNameReferences]
     public sealed partial class GasFilterWindow : DefaultWindow
     {
-        // otherwise do the ent manager-whatever bullshit.
         [Dependency] private readonly EntityManager _entityManager = default!;
         private readonly SharedAtmosphereSystem _atmosSystem;
 
