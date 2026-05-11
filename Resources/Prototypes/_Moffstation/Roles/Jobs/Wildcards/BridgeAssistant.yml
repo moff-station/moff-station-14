@@ -1,0 +1,42 @@
+﻿- type: job
+  id: BridgeAssistant
+  name: job-name-passenger-bridge-assistant
+  description: job-description-passenger-bridge-assistant
+  playTimeTracker: JobCommandBridgeAssistant
+  setPreference: false
+  startingGear: BridgeAssistantGear
+  icon: "JobIconBridgeAssistant"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Command
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: BridgeAssistantGear
+  equipment:
+    back: ClothingBackpackSatchelLeather
+    ears: ClothingHeadsetCommand
+    eyes: ClothingEyesGlassesCommand
+    head: ClothingHeadHatBeretCommand
+    gloves: ClothingHandsGlovesColorBlack
+    id: BridgeAssistantPDA
+    jumpsuit: ClothingUniformJumpsuitCommandGeneric
+    shoes: ClothingShoesBootsLaceup
+    pocket1: Flash
+  storage:
+    back:
+    - Flash
+    - Crowbar
+
+- type: chameleonOutfit
+  id: BridgeAssistantOutfit
+  job: BridgeAssistant
+  hasMindShield: true
+  equipment:
+    neck: ClothingNeckScarfStripedBlue
+    mask: ClothingMaskGasCaptain
+    outerclothing: ClothingOuterWinterColorBlue

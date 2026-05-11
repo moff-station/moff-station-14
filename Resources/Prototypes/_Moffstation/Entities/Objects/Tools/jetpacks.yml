@@ -29,3 +29,17 @@
       moles:
       - 1.025689525 # oxygen
       - 1.025689525 # nitrogen
+
+- type: entity
+  parent: JetpackBlue
+  id: JetpackSalvageborg
+  name: salvageborg jetpack
+  suffix: Infinite
+  components:
+  - type: GasTank
+    outputPressure: 21.3
+    air:
+      volume: 5
+      temperature: 293.15
+  - type: Jetpack
+    moleUsage: 0

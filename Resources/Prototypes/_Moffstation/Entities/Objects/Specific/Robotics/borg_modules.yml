@@ -1,3 +1,37 @@
+- type: entity
+  id: BorgModuleGravity
+  parent: BaseBorgModule
+  name: magnetic artificial gravity module
+  description: A cyborg module which allows it to produce artificial gravity for itself.
+  components:
+  - type: ActionBorgModule
+    actions:
+    - ActionBorgToggleMagboots
+  - type: ComponentBorgModule
+    components:
+    - type: Magboots
+      useGenericToggle: false
+      magbootsAlert: MagbootsBorg
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-magboots
+
+- type: entity
+  parent: BaseAction
+  id: ActionBorgToggleMagboots
+  name: Toggle Magnetic Adhesion
+  description: Toggle magnetic adhesion to the ground on or off.
+  components:
+  - type: Action
+    icon: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon }
+    iconOn: { sprite: Clothing/Shoes/Boots/magboots.rsi, state: icon-on }
+    itemIconStyle: BigAction
+    useDelay: 0.5
+  - type: InstantAction
+    event: !type:ToggleMagbootsActionEvent
+
 # Generic Modules
 - type: entity
   id: BorgModuleBureaucracy
@@ -260,3 +294,55 @@
     - item: WeaponShotgunBlackbox
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
+
+# Cargo Modules 
+- type: entity
+  id: BorgModuleWildlifeControl
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  name: wildlife cyborg module
+  description: Designed for salvaging in a wildlife-heavy environment, this module comes with a stabbing tool and modified proto-kinetic particle accelerator to "tame" fauna from afar.
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-wildlife
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponProtoKineticAcceleratorIntegrated
+    - item: SurvivalKnife
+    - hand:
+        emptyRepresentative: PKAUpgradeDamage
+        emptyLabel: borg-slot-pka-modkit-empty
+        whitelist:
+          tags:
+          - PKAUpgrade
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: wildlife-module }
+  - type: Tag
+    tags:
+    - BorgModuleCargo
+
+- type: entity
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  id: BorgModuleAdvancedTraversal
+  name: advanced traversal cyborg module
+  description: NT finally funded the "cyborg jetpack" initiative after locating a deadly planet filled with diamonds. This module is the result of that initiative, providing the cyborg with a grappling hook, jetpack, and integrated navigation electronics. 
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-advanced-traversal
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponGrapplingGun
+    - item: HandHeldMassScannerBorg
+    - item: HandheldStationMapUnpowered
+    - item: JetpackSalvageborg
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: adv-traversal-module }
+  - type: Tag
+    tags:
+    - CyborgTraversalModule
+    - BorgModuleCargo

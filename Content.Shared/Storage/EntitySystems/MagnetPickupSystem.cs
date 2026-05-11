@@ -48,11 +48,11 @@ public sealed class MagnetPickupSystem : EntitySystem
             comp.NextScan += ScanDelay;
             Dirty(uid, comp);
 
-            if (!_inventory.TryGetContainingSlot((uid, xform, meta), out var slotDef))
+            // Moffstation - Begin - Enable magnetization in no-slots.
+            if (comp.SlotFlags is {} slotFlags &&
+                !_inventory.InSlotWithAnyFlags((uid, xform, meta), slotFlags))
                 continue;
-
-            if ((slotDef.SlotFlags & comp.SlotFlags) == 0x0)
-                continue;
+            // Moffstation - End
 
             // No space
             if (!_storage.HasSpace((uid, storage)))

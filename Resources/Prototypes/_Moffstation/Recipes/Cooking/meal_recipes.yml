@@ -47,3 +47,32 @@
   solids:
     FoodBreadBun: 1
     MobMothroachRosy: 1
+
+- type: microwaveMealRecipe
+  id: RecipeOmniPocket
+  name: omni pocket recipe
+  result: FoodDonkpocketOmni
+  time: 30
+  group: Secret
+  solids:
+    FoodDonkpocketMothWarm: 1
+    FoodDonkpocketWarm: 1
+    FoodDonkpocketDankWarm: 1
+    FoodDonkpocketSpicyWarm: 1
+    FoodDonkpocketTeriyakiWarm: 1
+    FoodDonkpocketPizzaWarm: 1
+    FoodDonkpocketHonkWarm: 1
+    FoodDonkpocketBerryWarm: 1
+    FoodDonkpocketStonkWarm: 1
+    FoodDonkpocketCarpWarm: 1
+
+- type: microwaveMealRecipe
+  id: RecipeTricoChicken
+  name: trico chicken recipe
+  result: FoodMeatTricoChickenCooked
+  time: 15
+  group: Other
+  reagents:
+    Tricordrazine: 20
+  solids:
+    FoodMeatChicken: 1

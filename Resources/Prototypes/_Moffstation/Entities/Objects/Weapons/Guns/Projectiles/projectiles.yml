@@ -1,0 +1,13 @@
+- type: entity
+  parent: BulletKinetic
+  id: BulletKineticSmall
+  name: small kinetic bolt
+  categories: [ HideSpawnMenu ]
+  description: Not too bad, but you still don't want to get hit by it.
+  components:
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 10
+        Structural: 20

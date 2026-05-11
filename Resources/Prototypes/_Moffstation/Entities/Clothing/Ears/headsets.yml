@@ -14,14 +14,17 @@
     sprite: Clothing/Ears/Headsets/freelance.rsi
 
 - type: entity
-  parent: [ClothingHeadsetAltSyndicate, BaseSyndicateContraband]
-  id: ClothingHeadsetLPO
-  name: syndicate spy over-ear headset
-  description: An updated, modular syndicate intercom that fits over the head and takes encryption keys (there are 5 key slots.).
+  parent: ClothingHeadset
+  id: ClothingHeadsetSyndicateInfiltrator
+  name: syndicate infiltrator headset
+  description: An experimental modular syndicate intercom favored among spies and infiltrators. The inside of it hums eerily. (there are 6 key slots.).
   components:
   - type: ContainerFill
     containers:
-      key_slots:
-      - EncryptionKeySyndie
-      - EncryptionKeyStationMaster
-      - EncryptionKeyBinarySyndicate
+      key_slots: []
+  - type: EncryptionKeyHolder
+    keySlots: 6
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Ears/Headsets/syndicate.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Ears/Headsets/syndicate.rsi

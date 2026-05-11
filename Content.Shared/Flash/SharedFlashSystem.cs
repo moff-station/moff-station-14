@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared._Starlight.Flash.Components;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
+using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
@@ -23,6 +24,7 @@ using Content.Shared.Traits.Assorted;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -46,6 +48,8 @@ public abstract class SharedFlashSystem : EntitySystem
 
     [Dependency] private readonly EntityQuery<StatusEffectsComponent> _statusEffectsQuery = default!;
     [Dependency] private readonly EntityQuery<DamagedByFlashingComponent> _damagedByFlashingQuery = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!; // Moffstation
+    [Dependency] private readonly SharedContainerSystem _container = default!; // Moffstation
 
     private HashSet<EntityUid> _entSet = new();
 
@@ -70,6 +74,7 @@ public abstract class SharedFlashSystem : EntitySystem
         // Moffstation - Start - Night Vision blocked by flash immunity
         SubscribeLocalEvent<DidEquipEvent>(OnDidEquip);
         SubscribeLocalEvent<DidUnequipEvent>(OnDidUnequip);
+        SubscribeLocalEvent<FlashImmunityComponent, ItemMaskToggledEvent>(OnItemMaskToggled);
         SubscribeLocalEvent<FlashImmunityComponent, ComponentStartup>(OnFlashImmunityStartup);
         SubscribeLocalEvent<FlashImmunityComponent, ComponentRemove>(OnFlashImmunityRemove);
         // Moffstation - End
@@ -325,25 +330,32 @@ public abstract class SharedFlashSystem : EntitySystem
     // Moffstation - Start - Night Vision blocked by flash immunity
     private void OnDidEquip(DidEquipEvent args)
     {
-        if (!TryComp<FlashImmunityComponent>(args.Equipment, out var comp)
-            || !comp.Enabled)
+        if (!IsFlashImmune(args.EquipTarget))
             return;
 
-        // Adding equipment which definitely has enabled flash immunity means we definitely are flash immune now.
         var ev = new FlashImmunityChangedEvent(true);
         RaiseLocalEvent(args.EquipTarget, ref ev);
     }
 
     private void OnDidUnequip(DidUnequipEvent args)
     {
-        if (!TryComp<FlashImmunityComponent>(args.Equipment, out var comp) ||
-            !comp.Enabled ||
-            // If we still can't be flashed after removing the equipment, there's no change.
-            IsFlashImmune(args.EquipTarget))
+        if (IsFlashImmune(args.EquipTarget))
             return;
 
         var ev = new FlashImmunityChangedEvent(false);
         RaiseLocalEvent(args.EquipTarget, ref ev);
+    }
+
+    // Handle cases where toggling a mask also toggles flash immunity.
+    private void OnItemMaskToggled(Entity<FlashImmunityComponent> entity, ref ItemMaskToggledEvent args)
+    {
+        if (!_inventory.TryGetContainingSlot(entity.Owner, out _) ||
+            !_container.TryGetContainingContainer(entity.Owner, out var container))
+            return;
+
+        var wearer = container.Owner;
+        var ev = new FlashImmunityChangedEvent(IsFlashImmune(wearer));
+        RaiseLocalEvent(wearer, ref ev);
     }
 
     private void OnFlashImmunityStartup(Entity<FlashImmunityComponent> entity, ref ComponentStartup args)

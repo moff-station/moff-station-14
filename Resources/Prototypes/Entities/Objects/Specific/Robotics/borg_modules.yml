@@ -539,7 +539,7 @@
   - type: ItemBorgModule
     hands:
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
     - item: HandheldStationMapUnpowered
     - item: HandHeldMassScannerBorg
   - type: BorgModuleIcon
@@ -666,7 +666,7 @@
     - item: MiningDrillDiamond
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
-    - item: OreBagOfHolding
+    - item: OreBagOfHoldingBorg # Moffstation - Salvage borg ore bags always magnetize
     # Moffstation - Start - Add orehand for salvage borgs
     - hand:
         emptyRepresentative: Coal1
@@ -696,10 +696,17 @@
     hands:
     - item: WeaponGrapplingGun
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
     - item: HandHeldMassScannerBorg
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }
+  # Moffstation - Start - Replacable Traversal Module
+  - type: Tag
+    tags:
+    - CyborgTraversalModule
+    - BorgModuleCargo
+  # Moffstation - End
 
 # engineering modules
 - type: entity
@@ -818,10 +825,12 @@
     hands:
     - item: RCDRecharging
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
+    - item: HandHeldMassScannerBorg # Moffstation - so give them the mass scanner.
     - item: GasAnalyzer
     - item: HolofanProjectorBorg
     - item: GeigerCounter
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: rcd-module }
 
@@ -977,7 +986,9 @@
     - item: DefibrillatorOneHandedUnpowered
     - item: Crowbar
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
+    - item: HandHeldMassScannerBorg # Moffstation - ... so give them the mass scanner.
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: defib-module }
 

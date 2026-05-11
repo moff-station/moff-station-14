@@ -12,7 +12,7 @@
   description: Mmm, Donuts.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donut.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donut.rsi # Moffstation - Uncabinetification
     state: box
     layers:
     - state: box
@@ -45,7 +45,7 @@
       tags:
       - Donut
   - type: Item
-    sprite: Objects/Consumable/Food/Baked/donut.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donut.rsi # Moffstation - Uncabinetification
     size: Normal
     shape:
     - 0,0,2,1
@@ -351,10 +351,10 @@
   parent: BoxCardboard
   id: FoodBoxDonkpocket
   name: box of donk-pockets
-  description: 'Instructions: Heat in microwave. Product will cool if not eaten within seven minutes.'
+  description: The classic donks which you can never get enough of! Heat up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi # Moffstation - Uncabinetification
     state: box
   - type: Storage
     grid:
@@ -363,7 +363,7 @@
       tags:
       - DonkPocket
   - type: Item
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi # Moffstation - Uncabinetification
     size: Normal
     shape:
     - 0,0,2,1
@@ -381,6 +381,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketSpicy
   name: box of spicy-flavoured donk-pockets
+  description: Donks for those who need to spice up their life! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: spicy-box
@@ -394,6 +395,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketTeriyaki
   name: box of teriyaki-flavoured donk-pockets
+  description: An East Asian take on the classic stationside snack. Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: teriyaki-box
@@ -407,6 +409,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketPizza
   name: box of pizza-flavoured donk-pockets
+  description: Everyone's favorite donks now with extra cheese and flavour! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: pizza-box
@@ -420,6 +423,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketStonk
   name: box of limited edition stonk-pockets
+  description: Special edition donks favoured by the Vox brokers! Warm up to activate the unique blockchain. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: stonk-box
@@ -433,6 +437,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketCarp
   name: box of carp-pockets
+  description: A long-lost edition of donk-pocket, made specifically for hard-working salvagers! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: carp-box
@@ -446,6 +451,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketBerry
   name: box of berry-flavoured donk-pockets
+  description: The best snack, now sweet as berries and taste just like imaginary ones! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: berry-box
@@ -459,6 +465,7 @@
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketHonk
   name: box of banana-flavoured donk-pockets
+  description: The funniest tasting donks out there, best fed to others as a prank! Warm up before consumption. # Moffstation - PocketChange
   components:
   - type: Sprite
     state: banana-box
@@ -485,10 +492,20 @@
 - type: entity
   parent: FoodBoxDonkpocket
   id: FoodBoxDonkpocketMoth
-  name: box of moth-pockets
+  # Moffstation - Start - PocketChange
+  name: box of moff-pockets
+  description: The limited Moff sector edition with fluorescent packaging! Heat up before consumption.
+  # Moffstation - End
   components:
   - type: Sprite
+  # Moffstation - Start - PocketChange
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
     state: moth-box
+  - type: PointLight
+    radius: 1.5
+    energy: 1
+    color: "#fbceb1"
+  # Moffstation - End
   - type: EntityTableContainerFill
     containers:
       storagebase:
@@ -503,10 +520,10 @@
   description: The toy is more edible than the food.
   components:
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/clown.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/clown.rsi # Moffstation - Uncabinetification
     state: box
   - type: Item
-    sprite: Objects/Storage/Happyhonk/clown.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/clown.rsi # Moffstation - Uncabinetification
     heldPrefix: box
   - type: Storage
     maxItemSize: Normal
@@ -533,9 +550,9 @@
     - Trash
     - MimeHappyHonk
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/mime.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/mime.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/Happyhonk/mime.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/mime.rsi # Moffstation - Uncabinetification
 
 - type: entity
   id: HappyHonkNukie
@@ -545,9 +562,9 @@
   suffix: Toy Unsafe
   components:
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/nukie.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/nukie.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/Happyhonk/nukie.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/nukie.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:NestedSelector
@@ -599,9 +616,9 @@
     - CluwneHappyHonk # BAD: Intentional removal of parent tag
     - BoxCardboard
   - type: Sprite
-    sprite: Objects/Storage/Happyhonk/cluwne.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/cluwne.rsi # Moffstation - Uncabinetification
   - type: Item
-    sprite: Objects/Storage/Happyhonk/cluwne.rsi
+    sprite: _Moffstation/Objects/Storage/Happyhonk/cluwne.rsi # Moffstation - Uncabinetification
   - type: EntityTableContainerFill
     containers:
       storagebase:

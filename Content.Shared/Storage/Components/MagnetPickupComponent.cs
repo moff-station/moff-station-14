@@ -18,9 +18,10 @@ public sealed partial class MagnetPickupComponent : Component
 
     /// <summary>
     /// What container slot the magnet needs to be in to work.
+    /// Moffstation: Null indicates the magnet pickup functionality should always be active.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("slotFlags")]
-    public SlotFlags SlotFlags = SlotFlags.BELT;
+    public SlotFlags? SlotFlags = Inventory.SlotFlags.BELT; // Moffstation - Enable magnet pickup in any slot
 
     [ViewVariables(VVAccess.ReadWrite), DataField("range")]
     public float Range = 1f;

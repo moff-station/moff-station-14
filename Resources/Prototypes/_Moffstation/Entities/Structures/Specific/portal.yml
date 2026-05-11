@@ -55,6 +55,8 @@
   name: hell portal
   description: a portal letting loose the worst hell has to offer.
   components:
+  - type: WarpPoint
+    location: Hell Portal
   - type: SpawnEntityTableOnTrigger
     useMapCoords: true
     table: !type:AllSelector

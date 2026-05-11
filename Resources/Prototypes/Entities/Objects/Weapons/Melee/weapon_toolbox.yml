@@ -6,11 +6,11 @@
   categories: [ DoNotMap ]
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_red.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
     size: Ginormous
-    sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_red.rsi # Moffstation - Uncabinetification
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1.5
