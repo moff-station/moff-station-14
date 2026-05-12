@@ -68,7 +68,7 @@
 
 - type: entity
   id: BriefcaseWeaponHushpupFilled
-  parent: BriefcaseWeaponSmall
+  parent: BriefcaseWeaponMedium # Moffstation - Hushup ammo
   name: secure hushpup case
   components:
   - type: EntityTableContainerFill
@@ -77,6 +77,10 @@
         children:
         - id: WeaponShotgunHushpup
         - id: TreasureCoinIron
+        # Moffstation - Start - Hushup ammo
+        - id: ShellShotgun
+          amount: 5
+        # Moffstation - End
 
 - type: entity
   id: BriefcaseWeaponC20Filled

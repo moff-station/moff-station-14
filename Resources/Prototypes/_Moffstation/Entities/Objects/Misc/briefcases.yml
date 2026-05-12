@@ -37,3 +37,18 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_centcomm.rsi
     state: icon
+
+- type: entity
+  parent: BriefcaseWeapon
+  id: BriefcaseWeaponMedium
+  suffix: Gun, Medium, Empty
+  components:
+  - type: Sprite
+    sprite: Objects/Storage/Briefcases/weapon_case.rsi
+  - type: Item
+    size: Large
+  - type: Storage
+    maxItemSize: Large
+    grid:
+    - 0,0,4,1
+
