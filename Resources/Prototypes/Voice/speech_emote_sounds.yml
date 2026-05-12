@@ -387,7 +387,7 @@
     pitch: 0.75
 
 - type: emoteSounds
-  id: UnisexMoth
+  id: UnisexMothUpstream # Moffstation - Namespaced, our version inherits from this in case of upstream additions
   params:
     variation: 0.125
   sounds:

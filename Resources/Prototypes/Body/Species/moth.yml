@@ -155,8 +155,9 @@
   - type: ZombieAccentOverride
     accent: zombieMoth
   - type: Speech
+    speechSounds: UnisexMoth
     speechVerb: Moth
-    allowedEmotes: ['Chitter', 'Squeak', 'Flap']
+    allowedEmotes: ['Chitter', 'Squeak', 'Flap', 'Sneeze']
   - type: TypingIndicator
     proto: moth
   - type: CreamPied
