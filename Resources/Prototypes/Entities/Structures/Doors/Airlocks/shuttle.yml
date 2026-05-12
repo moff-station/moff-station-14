@@ -88,8 +88,9 @@
     group: null
     # Moffstation - Begin - Seperating external airlocks from regular ones
   - type: Damageable
+    damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong 
   - type: Destructible
     thresholds:
     - trigger:

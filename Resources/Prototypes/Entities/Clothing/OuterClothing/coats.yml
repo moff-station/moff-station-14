@@ -12,8 +12,10 @@
 - type: entity
   parent: [ ClothingOuterArmorBase, ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSecurityContraband ]
   id: ClothingOuterCoatDetective
-  name: detective armored jacket # Moffstation - Start - Detective-Outfit-Sprites
-  description: A 20th-century multi-purpose jacket. Someone who wears this means serious business. # Moffstation - End - Detective-Outfit-Sprites
+  # Moffstation - Begin - Detective-Outfit-Sprites
+  name: detective armored jacket
+  description: A 20th-century multi-purpose jacket. Someone who wears this means serious business.
+  # Moffstation - End - Detective-Outfit-Sprites
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/OuterClothing/Coats/detective.rsi # Moffstation - Detective-Outfit-Sprites
@@ -123,7 +125,7 @@
         id: SyndieHandyFlag
 
 - type: entity
-  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation - Allow suit storage attachment
+  parent: [ ClothingOuterStorageSuitStorageAttachableBase, ClothingOuterStorageEdible ] # Moffstation - Allow suit storage attachment
   id: ClothingOuterCoatTrench
   name: trench coat
   description: A comfy trench coat.
@@ -139,15 +141,6 @@
     modifiers:
       coefficients:
         Slash: 0.95
-  - type: Edible
-    requiresSpecialDigestion: true
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 20
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase

@@ -38,8 +38,9 @@
   - type: Anchorable
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: Destructible
     thresholds:
     - trigger:

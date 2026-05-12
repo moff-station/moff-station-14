@@ -74,6 +74,7 @@
     air:
       volume: 0.66
       temperature: 293.15
+    overpressure: 1519.875 # Poorly manufactured, they also lose pressure quickly so this makes exploding them easier, at the cost of the explosion being smaller.
   - type: Clothing
     sprite: _Moffstation/Objects/Tanks/emergency.rsi
     slots:

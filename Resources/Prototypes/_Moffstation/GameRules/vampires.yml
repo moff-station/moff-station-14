@@ -28,8 +28,9 @@
         - AmmoniaBlood
         - ZombieBlood
       - type: Damageable
-        damageContainer: BiologicalMetaphysical
         damageModifierSet: Vampire
+      - type: Injurable
+        damageContainer: BiologicalMetaphysical
       - type: BurnedBySun
         tileBlacklist:
         - Lattice
