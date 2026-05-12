@@ -55,6 +55,9 @@
       children:
       - id: MobMothroachRosy
       - id: MobMothroachDeathshead
+    - !type:GroupSelector
+      weight: 0.05
+      children:
       - id: MobMothroachMechroach
       - id: MobMothroachSyndie
 
