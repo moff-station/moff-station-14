@@ -55,7 +55,7 @@
         color: *towel-purple
       right:
       - state: inhand-right
-        color: &towel-purple
+        color: *towel-purple
   - type: Clothing
     clothingVisuals:
       head:
