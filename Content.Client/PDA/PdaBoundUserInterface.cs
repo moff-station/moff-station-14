@@ -32,6 +32,10 @@ namespace Content.Client.PDA
         {
             _menu = this.CreateWindowCenteredLeft<PdaMenu>();
 
+            var pdaComp = EntMan.GetComponent<PdaComponent>(Owner); // Moffstation - PDA Ads
+            if(pdaComp.NoAdverts != null)                           // Moffstation - PDA Ads
+                _menu.DisableAds(pdaComp.NoAdverts ?? false);       // Moffstation - PDA Ads
+
             _menu.FlashLightToggleButton.OnToggled += _ =>
             {
                 SendMessage(new PdaToggleFlashlightMessage());

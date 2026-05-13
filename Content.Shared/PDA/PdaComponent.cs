@@ -38,5 +38,9 @@ namespace Content.Shared.PDA
         [ViewVariables] public string? StationName;
         [ViewVariables] public string? StationAlertLevel;
         [ViewVariables] public Color StationAlertColor = Color.White;
+
+        [DataField("noAdverts")]                    // Moffstation - PDA Ads
+        public bool? NoAdverts;                     // Moffstation - PDA Ads
+        // if true, don't show ads on this PDA      // Moffstation - PDA Ads
     }
 }

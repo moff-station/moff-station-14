@@ -12,8 +12,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Prototypes;         // Moffstation - PDA Advertisements
 using System.Linq;                      // Moffstation - PDA Advertisements
 using Robust.Shared.Random;             // Moffstation - PDA Advertisements
-using Content.Shared._Moffstation.PDA;
-using System.Collections;  // Moffstation - PDA Advertisements
+using Content.Shared._Moffstation.PDA;  // Moffstation - PDA Advertisements
 
 namespace Content.Client.PDA
 {
@@ -359,6 +358,17 @@ namespace Content.Client.PDA
         }
 
                             // Moffstation - begin - PDA Advertisements
+
+        /// <summary>
+        /// Used by PdaBoundUserInterface to hide ads for PDAs which should not show them.
+        /// </summary>
+        public void DisableAds(bool noAdverts)
+        {
+            if (!noAdverts)
+                return;
+
+            AdvertisementBox.Visible = false;
+        }
 
         /// <summary>
         /// Returns an intermediate enumerable of all <see cref="PdaAdPrototype"/>s that are not hidden.
