@@ -76,11 +76,11 @@
       storagebase: !type:AllSelector
         children:
         - id: WeaponShotgunHushpup
-        - id: TreasureCoinIron
-        # Moffstation - Start - Hushup ammo
+      # Moffstation - Start - Hushup ammo
+        - id: TreasureCoinMarked
         - id: ShellShotgun
           amount: 5
-        # Moffstation - End
+      # Moffstation - End
 
 - type: entity
   id: BriefcaseWeaponC20Filled

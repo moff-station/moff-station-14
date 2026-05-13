@@ -10,3 +10,16 @@
       moles:
         Oxygen: 8.46
       temperature: 72.0
+
+- type: entity
+  id: OxygenTankFilledFake
+  parent: OxygenTank
+  suffix: Filled Fake
+  name: nitrogen tank
+  components:
+  - type: GasTank
+    air:
+      volume: 5
+      moles:
+        Nitrogen: 8.46
+      temperature: 72.0
