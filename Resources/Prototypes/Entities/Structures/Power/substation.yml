@@ -33,7 +33,7 @@
   # Impstation - Start
   - type: AccessReader
     access: [["Engineering"]]
-  - type: ActivatableUIRequiresAccess 
+  - type: ActivatableUIRequiresAccess
   # Impstation - End
 
   # Interface
@@ -150,6 +150,7 @@
     requirePower: true
     highVoltageNode: input
     mediumVoltageNode: output
+  - type: StationAiWhitelist #Moffstation - Expanded Ai Whitelist
 
 # Compact Wall Substation Base
 - type: entity

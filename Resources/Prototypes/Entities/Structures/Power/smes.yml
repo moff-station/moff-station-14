@@ -105,8 +105,9 @@
     # Impstation - Start
     - type: AccessReader
       access: [["Engineering"]]
-    - type: ActivatableUIRequiresAccess 
+    - type: ActivatableUIRequiresAccess
     # Impstation - End
+    - type: StationAiWhitelist #Moffstation - Expanded Ai Whitelist
 
     # Interface
     - type: BatteryInterface
