@@ -15,6 +15,7 @@ using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Damage.Components;
@@ -457,7 +458,7 @@ public sealed class ArrivalsSystem : EntitySystem
     private void OnFirstArrival(Entity<ArrivalsShuttleComponent> ent, ref FirstArrivalEvent ev)
     {
         // Fixes to problems exclusive to the group arrivals start
-        if (_cfgManager.GetCVar(CCVars.StartAtArrivals))
+        if (_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
         {
             if (_station.GetStationInMap(Transform(ent.Owner).MapID) is not { } station)
                 return;
@@ -593,7 +594,7 @@ public sealed class ArrivalsSystem : EntitySystem
             _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
             var restricted = new RestrictedRangeComponent
             {
-                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange) // Moffstation - Custom arrivals settings
+                Range = _cfgManager.GetCVar(MoffCCVars.ArrivalsRange) // Moffstation - Custom arrivals settings
             };
             AddComp(mapUid, restricted);
         }
