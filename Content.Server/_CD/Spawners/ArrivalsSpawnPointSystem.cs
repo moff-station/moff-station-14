@@ -25,10 +25,10 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IChatManager _chat = default!;
 
-    // The chance that there will be player who spawn on station at all
-    // as in, if this rolls people will spawn on station, and if it doesn't, nobody will spawn on station
+    // The chance that there will be players who get spawned on station
+    // as in, if this rolls some players will spawn on station, and if it doesn't, nobody will spawn on station
     private const float NormalSpawnChance = 0.6f;
-    // If people are to spawn normally, how many player max should spawn on station?
+    // If people are to spawn normally, how many players max should spawn on station?
     private const int NormalSpawnMaxLimit = 5;
 
     private int _normalSpawnLimit;
@@ -52,7 +52,6 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
         if (!_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
             return;
 
-        // This should be random... unless people are spawned in a certain order? who knows
         if (_normalSpawnCount < _normalSpawnLimit)
         {
             _normalSpawnCount++;
