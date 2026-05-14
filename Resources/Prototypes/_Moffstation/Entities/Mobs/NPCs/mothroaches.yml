@@ -59,6 +59,9 @@
       weight: 0.05
       children:
       - id: MobMothroachMechroach
+    - !type:GroupSelector
+      weight: 0.005
+      children:
       - id: MobMothroachSyndie
 
 - type: entity
