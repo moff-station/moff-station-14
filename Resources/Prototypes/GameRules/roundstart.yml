@@ -138,7 +138,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 30 # Moffstation - Bumped up the min players for nukeops.
+    minPlayers: 20
   - type: LoadMapRule
     mapPath: /Maps/Nonstations/nukieplanet.yml
   - type: AntagSelection
@@ -397,7 +397,7 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 25 # Moffstation - Bumped up the min players for zombies
+    minPlayers: 20
     delay:
       min: 600
       max: 900

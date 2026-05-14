@@ -41,7 +41,7 @@
     - state: stripe_top
       color: &color-default-top "#e1e1e1"
     # Moffstation - End - New ID Cards
-    - sprite: &icon-rsi Interface/Misc/job_icons.rsi
+    - sprite: &icon-rsi _Moffstation/Interface/Misc/job_icons.rsi # Moffstation - New job icons
       offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
       state: Passenger
   - type: PresetIdCard

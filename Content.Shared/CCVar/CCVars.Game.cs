@@ -418,12 +418,4 @@ public sealed partial class CCVars
     /// </remarks>
     public static readonly CVarDef<int> TileStackLimit =
         CVarDef.Create("game.tile_stack_limit", 5, CVar.SERVER | CVar.REPLICATED);
-
-    // Moffstation - Begin
-    /// <summary>
-    /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
-    /// </summary>
-    public static readonly CVarDef<bool>
-        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", false, CVar.SERVERONLY);
-    // Moffstation - End
 }

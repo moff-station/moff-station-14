@@ -167,7 +167,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     }
 
     // Moffstation - Start - Respawn Button
-    private void UpdateTimeOfDeath(TimeSpan? timeOfDeath)
+    private void UpdateTimeOfDeath(TimeSpan timeOfDeath)
     {
         Gui?.UpdateTimeOfDeath(timeOfDeath);
     }

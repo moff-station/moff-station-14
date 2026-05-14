@@ -170,9 +170,9 @@
   description: It's a turtleneck worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -453,9 +453,9 @@
   description: A sharp turtleneck made for the hardy work environment of supply.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/qmturtleskirt.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm_turtle.rsi #Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/qmturtleskirt.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm_turtle.rsi #Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -593,9 +593,9 @@
   description: A dress for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
 
 - type: entity
   parent: [UnsensoredClothingUniformSkirtBase, BaseSyndicateContraband]
