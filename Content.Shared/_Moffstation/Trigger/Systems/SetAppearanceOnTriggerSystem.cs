@@ -84,7 +84,7 @@ public sealed partial class SetAppearanceOnTriggerSystem : XOnTriggerSystem<SetA
 
             foreach (var (key, data) in comp.RestoreData)
             {
-                _appearance.SetOrRemoveData(appearance.Nullable(), key, data);
+                _appearance.SetOrRemoveData(appearance.AsNullable(), key, data);
             }
 
             RemCompDeferred(ent, comp);
