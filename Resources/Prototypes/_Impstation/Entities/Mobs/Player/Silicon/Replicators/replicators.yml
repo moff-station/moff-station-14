@@ -127,12 +127,12 @@
     animation: WeaponArcSlash
     damage:
       types:
-        Slashing: 7
+        Slash: 7
   - type: MovementSpeedModifier
     baseWalkSpeed: 2 # same as slime
     baseSprintSpeed: 4
   - type: Stamina
-    critThreshold: 120
+    baseCritThreshold: 120
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Replicator1
@@ -140,10 +140,13 @@
     allowedStates:
     - Alive
     damage:
-      groups:
-        Brute: -0.5
-        Burn: -0.5
       types:
+        Piercing: -0.5
+        Blunt: -0.5
+        Slash: -0.5
+        Cold: -0.5
+        Heat: -0.5
+        Caustic: -0.5
         Shock: -0.5
         Structural: -0.5
 #  - type: ThermalVision
@@ -191,7 +194,6 @@
     bodyStatus: InAir
   - type: CanMoveInAir
   - type: MovementIgnoreGravity
-    gravityState: true
   - type: MovementAlwaysTouching
   - type: SyncSprite
   - type: MovementSpeedModifier
@@ -234,7 +236,6 @@
     bodyStatus: InAir
   - type: CanMoveInAir
   - type: MovementIgnoreGravity
-    gravityState: true
   - type: MovementAlwaysTouching
   - type: SyncSprite
   - type: MovementSpeedModifier
@@ -263,7 +264,6 @@
     hands:
       Hand:
         location: Left
-    prototype: Replicator1
   - type: Loadout
     prototypes:
     - StartingGearReplicatorT1Weapon
@@ -293,7 +293,6 @@
   - type: MovementAlwaysTouching
   - type: Sprite
     granularLayersRendering: true
-    drawDepth: Mobs
     sprite: _Impstation/Mobs/Replicator/replicator.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -304,7 +303,6 @@
       visible: false
   - type: NoSlip
   - type: DamageStateVisuals
-    rotate: false
     states:
       Alive:
         Base: alive_level2

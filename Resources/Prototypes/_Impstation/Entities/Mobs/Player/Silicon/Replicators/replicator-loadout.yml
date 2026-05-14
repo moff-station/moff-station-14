@@ -25,7 +25,7 @@
   id: StartingGearReplicatorT3Weapon
   inhand:
     - ReplicatorT3Weapon
-    - ReplicatorAAC
+#    - ReplicatorAAC
   equipment:
     pocket1: PinpointerReplicatorUnremoveable
 
@@ -57,16 +57,12 @@
     maxCharge: 150
     startingCharge: 150
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 1000
   - type: MeleeWeapon
     damage:
       types:
         Blunt: 0.3
     wideAnimationRotation: -80
-  - type: HitscanStaminaDamage
-    staminaDamage: 20
-    sound: /Audio/Weapons/egloves.ogg
   - type: Prying
     pryPowered: true
     force: true
@@ -215,7 +211,7 @@
       sprite: _Impstation/Mobs/Replicator/replicator_gun.rsi
       state: impact_repli
   - type: HitscanStaminaDamage
-    staminaDamage: 18
+    staminaDamage: 20
 
 - type: entity
   id: HitscanReplicator2
@@ -235,7 +231,7 @@
       sprite: _Impstation/Mobs/Replicator/replicator_gun.rsi
       state: impact_repli2
   - type: HitscanStaminaDamage
-    staminaDamage: 21
+    staminaDamage: 34
 
 - type: entity
   id: OmnitoolUnremoveable
