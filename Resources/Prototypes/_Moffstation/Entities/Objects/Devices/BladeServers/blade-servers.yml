@@ -99,23 +99,18 @@
   components:
   - type: BladeServer
     stripeColor: "#00FFFFFF"
+  - type: EncryptionKeyHolder
+    keySlots: 1 # Divergence from upstream's philosophy -- we want this to be one key per blade server.
 
 - type: entity
   parent: TelecomBladeServer
   id: TelecomBladeServerFilled
-  suffix: Filled All
+  suffix: Master
   components:
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyCommon
-      - EncryptionKeyCargo
-      - EncryptionKeyEngineering
-      - EncryptionKeyMedical
-      - EncryptionKeyScience
-      - EncryptionKeySecurity
-      - EncryptionKeyService
-      - EncryptionKeyCommand
+      - EncryptionKeyStationMaster
 
 - type: entity
   parent: TelecomBladeServer
