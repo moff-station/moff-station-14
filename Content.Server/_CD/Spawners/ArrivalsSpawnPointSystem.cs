@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
+using Content.Server.Preferences.Managers;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.GameTicking;
@@ -24,13 +25,15 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _cfgManager = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IChatManager _chat = default!;
+    [Dependency] private readonly IServerPreferencesManager _pref = default!;
 
     // The chance that there will be players who get spawned on station
     // as in, if this rolls some players will spawn on station, and if it doesn't, nobody will spawn on station
-    private const float NormalSpawnChance = 0.6f;
+    private const float NormalSpawnChance = 1.0f;
     // If people are to spawn normally, how many players max should spawn on station?
     private const int NormalSpawnMaxLimit = 5;
 
+    private static readonly ProtoId<AntagPrototype> OpeningShiftProto= "OpeningShift";
     private int _normalSpawnLimit;
     private int _normalSpawnCount;
 
@@ -52,7 +55,9 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
         if (!_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
             return;
 
-        if (_normalSpawnCount < _normalSpawnLimit)
+        if (_normalSpawnCount < _normalSpawnLimit
+            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(OpeningShiftProto)
+            && !args.LateJoin)
         {
             _normalSpawnCount++;
             var message = Loc.GetString("opening-shift-greeting");
