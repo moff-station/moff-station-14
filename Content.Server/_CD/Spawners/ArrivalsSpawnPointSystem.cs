@@ -29,13 +29,13 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
 
     // The chance that there will be players who get spawned on station
     // as in, if this rolls some players will spawn on station, and if it doesn't, nobody will spawn on station
-    private const float NormalSpawnChance = 0.6f;
-    // If people are to spawn normally, how many players max should spawn on station?
-    private const int NormalSpawnMaxLimit = 5;
+    private const float StationSpawnChance = 0.6f;
+    // how many players max should spawn on station?
+    private const int StationSpawnMaxLimit = 5;
 
     private static readonly ProtoId<AntagPrototype> OpeningShiftProto= "OpeningShift";
-    private int _normalSpawnLimit;
-    private int _normalSpawnCount;
+    private int _stationSpawnLimit;
+    private int _stationSpawnCount;
 
     public override void Initialize()
     {
@@ -45,8 +45,8 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
 
     private void OnRoundStart(RoundStartingEvent args)
     {
-        _normalSpawnCount = 0;
-        _normalSpawnLimit = _random.Prob(NormalSpawnChance) ? _random.Next(1, NormalSpawnMaxLimit) : 0;
+        _stationSpawnCount = 0;
+        _stationSpawnLimit = _random.Prob(StationSpawnChance) ? _random.Next(1, StationSpawnMaxLimit) : 0;
     }
 
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
@@ -55,11 +55,11 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
         if (!_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
             return;
 
-        if (_normalSpawnCount < _normalSpawnLimit
+        if (_stationSpawnCount < _stationSpawnLimit
             && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(OpeningShiftProto)
             && !args.LateJoin)
         {
-            _normalSpawnCount++;
+            _stationSpawnCount++;
             var message = Loc.GetString("opening-shift-greeting");
             var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
             _chat.ChatMessageToOne(ChatChannel.Server, message, wrappedMessage, default, false, args.Player.Channel, Color.CornflowerBlue);
