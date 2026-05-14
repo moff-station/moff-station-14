@@ -26,7 +26,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Shared._Goob.LastWords;
-using Content.Shared._Moffstation.CCVar; // Goob Station - End of Round Screen
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
