@@ -56,8 +56,8 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
             return;
 
         if (_stationSpawnCount < _stationSpawnLimit
-            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(OpeningShiftProto)
-            && !args.LateJoin)
+            && !args.LateJoin
+            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(OpeningShiftProto))
         {
             _stationSpawnCount++;
             var message = Loc.GetString("opening-shift-greeting");
