@@ -46,6 +46,9 @@
       projectiles: !type:ContainerSlot
   - type: ContainerAmmoProvider
     container: projectiles
+  - type: Tag
+    tags:
+    - ImprovisedBow
 
 # Moffstation - Begin - Split bow visuals from `BowImprovised` so that it can be reused
 - type: entity
