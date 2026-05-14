@@ -29,7 +29,7 @@ public sealed class ArrivalsSpawnPointSystem : EntitySystem
 
     // The chance that there will be players who get spawned on station
     // as in, if this rolls some players will spawn on station, and if it doesn't, nobody will spawn on station
-    private const float NormalSpawnChance = 1.0f;
+    private const float NormalSpawnChance = 0.6f;
     // If people are to spawn normally, how many players max should spawn on station?
     private const int NormalSpawnMaxLimit = 5;
 
