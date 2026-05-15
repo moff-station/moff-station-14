@@ -157,10 +157,10 @@
   description: A weirdly shaped box, stocked with... tools?
   components:
   - type: Sprite
-    sprite: Objects/Tools/Cowtools/cow_toolbox.rsi
+    sprite: _Moffstation/Objects/Tools/Cowtools/cow_toolbox.rsi # Moffstation - Uncabinetification
     state: cow_toolbox
   - type: Item
-    sprite: Objects/Tools/Cowtools/cow_toolbox.rsi
+    sprite: _Moffstation/Objects/Tools/Cowtools/cow_toolbox.rsi # Moffstation - Uncabinetification
   - type: MeleeWeapon
     damage:
       types:

@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Sprited by Davyei ( Github ) for Moffstation",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "window",
+      "directions": 4
+    },
+    {
+      "name": "reinforced_window",
+      "directions": 4
+    },
+	{
+	  "name": "plasma_window",
+	  "directions": 4
+	},
+    {
+        "name": "plasma_reinforced_window",
+        "directions": 4
+    },
+    {
+        "name": "uranium_window",
+        "directions": 4
+    },
+    {
+        "name": "uranium_reinforced_window",
+        "directions": 4
+    }
+  ]
+}

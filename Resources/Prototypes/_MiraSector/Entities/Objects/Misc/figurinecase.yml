@@ -1,16 +1,14 @@
 - type: entity
   name: figurine case
-  id: FigurineCase
-  parent: BaseStorageItem
-  description: A case for storing your collection of figurines.
+  id: BriefcaseFigurine
+  parent: BriefcaseBase
   components:
   - type: Sprite
-    sprite: _MiraSector/Objects/Storage/Briefcases/figurine_case.rsi
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_figurine.rsi # Moffstation - Cabinetification
     state: icon
   - type: Item
-    size: Ginormous
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_figurine.rsi # Moffstation - Cabinetification
   - type: Storage
-    maxItemSize: Small
     grid:
     - 0,0,9,3
     whitelist:

@@ -175,3 +175,20 @@
 
   - node: warm moth-pocket
     entity: FoodDonkpocketMothWarm
+
+# warm tide-pocket
+- type: constructionGraph
+  id: WarmTide
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: warm tide-pocket
+      completed:
+      - !type:PlaySound
+        sound: /Audio/_Moffstation/Effects/donksizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: warm tide-pocket
+    entity: FoodDonkpocketTideWarm

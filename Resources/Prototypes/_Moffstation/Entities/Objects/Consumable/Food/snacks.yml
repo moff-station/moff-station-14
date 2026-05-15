@@ -1,7 +1,7 @@
 - type: entity
-  name: chits
   parent: FoodSnackBase
   id: FoodSnackChits
+  name: chits
   description: A bag of fried cotton made by moths for moths!
   components:
   - type: FlavorProfile
@@ -20,21 +20,19 @@
     tags:
     - FoodSnack
     - ClothMade
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Fiber
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Fiber
+        Quantity: 10
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: FoodPacketTrash
   id: FoodPacketChitsTrash
   name: chits
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Consumable/Food/snacks.rsi

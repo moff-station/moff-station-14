@@ -58,4 +58,10 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
+
+    /// <summary>
+    /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
+    /// </summary>
+    public static readonly CVarDef<bool>
+        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", true, CVar.SERVERONLY);
 }

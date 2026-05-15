@@ -295,6 +295,17 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hosfestive.rsi
 
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHosSummer
+  name: hos's summer formal suit
+  description: A suit for special hot occasions.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hossummer.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hossummer.rsi
+
 # Detective
 - type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
@@ -445,6 +456,18 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi
+
+#CE
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband ]
+  id: ClothingUniformJumpsuitCEFormal
+  name: chief engineer's formal suit
+  description: A suit for special project grand openings which is fitted to fit inside hardsuits.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/ceformal.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/ceformal.rsi # Moffstation
 
 #Lawyer
 - type: entity

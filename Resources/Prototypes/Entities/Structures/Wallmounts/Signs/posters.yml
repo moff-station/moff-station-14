@@ -6,8 +6,9 @@
   - type: Sprite
     sprite: _Moffstation/Structures/Wallmounts/posters.rsi # Moffstation - Posters
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Card
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities

@@ -7,6 +7,7 @@ using Content.Shared._Moffstation.Vampire.EntitySystems;
 using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
@@ -84,8 +85,11 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
             bloodEssenceUser.FedFrom[target] += essenceCollected;
         bloodEssenceUser.BloodEssenceTotal += essenceCollected;
 
-        _stomach.TryTransferSolution(firstStomach, tempSolution);
-        Dirty<StomachComponent>(firstStomach);
+        _stomach.TryTransferSolution(
+            new Entity<StomachComponent?, SolutionManagerComponent?>(firstStomach, firstStomach, null),
+            tempSolution
+        );
+        Dirty(firstStomach);
 
         return essenceCollected;
     }
