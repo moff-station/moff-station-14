@@ -1379,6 +1379,27 @@
     - UplinkAllies
 
 - type: listing
+  id: UplinkMobCatReject
+  name: uplink-mobcat-reject-name
+  description: uplink-mobcat-reject-desc
+  icon: { sprite: _Moffstation/Objects/Devices/communication.rsi, state: radio-syndicat }
+  productEntity: ReinforcementRadioSyndicateSyndiCatReject
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 2
+  categories:
+    - UplinkAllies
+  conditions:
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+    - !type:ListingLimitedStockCondition
+      stock: 1
+
+- type: listing
   id: UplinkSyndicatePersonalAI
   name: uplink-syndicate-pai-name
   description: uplink-syndicate-pai-desc

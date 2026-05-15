@@ -102,6 +102,29 @@
 
 - type: entity
   parent: ReinforcementRadio
+  id: ReinforcementRadioSyndicateSyndiCatReject
+  name: syndicat reject reinforcement radio
+  description: Calls in a reject from the local animal shelter. Due to the failed implantation, the cat has not been trained and could act indifferent to commands. Best used as a distraction.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/communication.rsi
+    layers:
+    - state: syndicat-yarn
+  - type: GhostRole
+    name: ghost-role-information-SyndiCat-Reject-name
+    description: ghost-role-information-SyndiCat-Reject-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobCatSyndy
+  - type: EmitSoundOnUse
+    sound: /Audio/Animals/cat_meow.ogg
+
+- type: entity
+  parent: ReinforcementRadio
   id: ReinforcementRadioSyndicateCyborgAssault # Reinforcement radio exclusive to nukeops uplink
   name: syndicate assault cyborg reinforcement radio
   description: Call in a well armed assault cyborg, instantly!

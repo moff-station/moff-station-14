@@ -93,6 +93,8 @@
   id: MobHuman
   name: Urist McHands
   components:
+  - type: ZombieAccentOverride
+    accent: zombieHuman
   - type: Butcherable
     spawned:
     - id: FoodMeatHuman

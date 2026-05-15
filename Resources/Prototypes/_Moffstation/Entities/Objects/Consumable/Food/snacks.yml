@@ -63,10 +63,8 @@
   - type: FlavorProfile
     flavors:
       - chocolate
-  - type: SolutionContainerManager
+  - type: Solution
     solutions:
-      food:
-        maxVol: 30
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
