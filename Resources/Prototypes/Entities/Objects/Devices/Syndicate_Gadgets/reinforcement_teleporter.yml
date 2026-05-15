@@ -99,6 +99,8 @@
     prototype: MobCatSyndy
   - type: EmitSoundOnUse
     sound: /Audio/Animals/cat_meow.ogg
+  - type: UseDelay
+    delay: 2
 
 - type: entity
   parent: ReinforcementRadio
@@ -119,9 +121,11 @@
     raffle:
       settings: default
   - type: GhostRoleMobSpawner
-    prototype: MobCatSyndy
+    prototype: MobCatSyndyReject
   - type: EmitSoundOnUse
     sound: /Audio/Animals/cat_meow.ogg
+  - type: UseDelay
+    delay: 2
 
 - type: entity
   parent: ReinforcementRadio

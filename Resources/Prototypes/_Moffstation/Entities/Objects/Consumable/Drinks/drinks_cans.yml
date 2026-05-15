@@ -4,8 +4,6 @@
   name: Spite can
   description: An old can, constantly shaking. Scratched into it is "Spite, let me tell you how much…”
   components:
-  - type: Damageable
-    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -19,6 +17,7 @@
           path: "/Audio/Effects/Fluids/splat.ogg"
       - !type:ExplodeBehavior
   - type: DamageOnLand
+    ignoreResistances: true
     damage:
       types:
         Blunt: 10
@@ -32,7 +31,7 @@
     explosionType: Default
     maxIntensity: 1.4
     intensitySlope: 2
-    totalIntensity: 5 # about a ~4 tile radius
+    totalIntensity: 5
     canCreateVacuum: false
   - type: Sprite
     sprite: _Moffstation/Objects/Consumable/Drinks/spite.rsi

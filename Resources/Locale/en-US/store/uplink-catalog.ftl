@@ -442,6 +442,7 @@ uplink-mobcat-microbomb-desc = Call in a handy cat equipped with a microbomb imp
 uplink-mobcat-reject-name = SyndiCat Reject Teleporter
 uplink-mobcat-reject-desc = Calls in an untrained syndicat, due to the failed macrobomb implantation they've been put in an animal shelter, aren't trained to follow commands and serve best as a distraction. You can only adopt one of them.
 
+uplink-chameleon-projector-name = Chameleon Projector
 uplink-chameleon-projector-desc = Disappear in plain sight by creating a hologram of an item around you. Do not use this to play the game "Object Search".
 
 # Pointless

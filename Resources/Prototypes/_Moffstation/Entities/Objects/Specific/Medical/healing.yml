@@ -19,11 +19,9 @@
   parent: MiniSyringe
   id: MiniSyringeHyperzine
   components:
-  - type: SolutionContainerManager
+  - type: Solution
     solutions:
       injector:
-        maxVol: 5
         reagents:
           - ReagentId: Stimulants
-            Quantity: 5
-
+            Quantity: 7.5

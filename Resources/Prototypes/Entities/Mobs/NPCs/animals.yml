@@ -3270,6 +3270,7 @@
   name: syndicatreject
   id: MobCatSyndyReject
   parent: MobCatSpace
+  description: Feline pet in a tactical suit. Around their neck is a collar with a name tag.
   components:
   - type: Sprite
     layers:
@@ -3296,6 +3297,8 @@
   - type: GhostTakeoverAvailable
   - type: ExplosionResistance
     damageCoefficient: 0.2
+  - type: RandomMetadata
+    nameSegments: [NamesSyndiReject]
   - type: NpcFactionMember
     factions:
     - Syndicate

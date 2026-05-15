@@ -51,6 +51,11 @@
     Telecrystal: 1
   categories:
   - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
 
 # Allies
 - type: listing
