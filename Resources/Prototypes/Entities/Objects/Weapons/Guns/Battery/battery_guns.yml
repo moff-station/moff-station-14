@@ -249,7 +249,6 @@
         shader: unshaded
   - type: Gun
     projectileSpeed: 10
-    cameraRecoilScalar: 1.0 # DeltaV
     soundGunshot:
       path: /Audio/Effects/Lightning/lightningshock.ogg
       params:
@@ -423,7 +422,6 @@
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
   - type: Gun
     fireRate: 1.5
-    cameraRecoilScalar: 1.0 # DeltaV
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: BatteryAmmoProvider
@@ -453,7 +451,6 @@
           map: ["enum.GunVisualLayers.Base"]
     - type: Gun
       fireRate: 0.5
-      cameraRecoilScalar: 1.0 # DeltaV
       soundGunshot:
         path: /Audio/Weapons/emitter.ogg
         params:
@@ -486,7 +483,6 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/xray.rsi
   - type: Gun
-    cameraRecoilScalar: 1.0 # DeltaV
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
   - type: BatteryAmmoProvider
@@ -868,7 +864,6 @@
     sprite: Objects/Weapons/Guns/Battery/energy_shotgun.rsi
   - type: Gun
     fireRate: 2
-    cameraRecoilScalar: 1.0 # DeltaV
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: BatteryAmmoProvider
@@ -919,7 +914,6 @@
   - type: StealTarget
     stealGroup: WeaponEnergyMagnum
   - type: Gun
-    cameraRecoilScalar: 1.0 # DeltaV
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: BatteryAmmoProvider
