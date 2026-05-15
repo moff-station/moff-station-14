@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Database;
 using Content.Shared._Moffstation.Librarian;
 using Robust.Shared.Network;
@@ -11,17 +12,33 @@ public sealed class LibraryRepoSystem : SharedLibraryRepoSystem
 {
     [Dependency] private readonly IServerDbManager _db = default!;
 
+    private List<PlayerBook> _cachedBookRepo = [];
+
     public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeLocalEvent<LibraryRepoComponent, MapInitEvent>(OnMapInit);
     }
 
     private void OnMapInit(Entity<LibraryRepoComponent> ent, ref MapInitEvent args)
     {
-        var results = _db.GetLibraryRepo(true, null, false);
+        RefreshRepoCache();
     }
 
-    public PlayerBook ToPlayerBook(MoffModel.MoffLibraryEntry entry)
+    private void RefreshRepoCache()
+    {
+        _cachedBookRepo.Clear();
+        _cachedBookRepo = GetBookRepo();
+    }
+
+    private List<PlayerBook> GetBookRepo()
+    {
+        var results = _db.GetLibraryRepo(true, null, false).GetAwaiter().GetResult();
+        return results.Select(ToPlayerBook).ToList();
+    }
+
+    private static PlayerBook ToPlayerBook(MoffModel.MoffLibraryEntry entry)
     {
         return new PlayerBook
         {
