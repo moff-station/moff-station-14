@@ -8,3 +8,11 @@ ghost-role-information-ert-team-leader-description = Lead a 4-man fireteam withi
 
 # Independent/Third Party
 job-description-mercenary = Work together with your fellow hired guns to enforce the wishes of your employer.
+
+# Wildcards
+job-description-janitor-head-of-sanitation = Lead a team of cleaners to face of against the station's most dangerous threat: unclean surfaces.
+job-description-clown-head-of-tomfoolery = Tee hee hee... Prove to the crew how shenanigan coordination is a vital role in NanoTrasen.
+job-description-ertmailcarrier = NanoTrasen never delivers mail late, no matter the station's issues, NanoTrasen always delivers.
+job-description-passenger-bridge-assistant = Learn the ways of commanding a station with elegance and grace.
+job-description-coffee-logistics-officer = Work diligently to be sure that the station is well caffeinated and ready to work overtime!
+job-description-centcommint = As the new hire for Central Command at NanoTrasen, You are tasked with making sure that the station operates smoothly for your bosses if you want to make it to climb the corporate ladder.

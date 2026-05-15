@@ -25,7 +25,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared._Goob.LastWords; // Goob Station - End of Round Screen
+using Content.Shared._Goob.LastWords;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -360,7 +361,7 @@ namespace Content.Server.GameTicking
         // Moffstation - Start - Player count calculated depending on cvar
         public int DynamicPlayerCount()
         {
-            return _cfg.GetCVar(CCVars.GameRulesCountReadied)
+            return _cfg.GetCVar(MoffCCVars.GameRulesCountReadied)
                 ? ReadyPlayerCount()
                 : _playerManager.PlayerCount;
         }

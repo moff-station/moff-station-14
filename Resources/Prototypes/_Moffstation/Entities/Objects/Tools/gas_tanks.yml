@@ -25,6 +25,13 @@
     - state: icon-stripe-middle
       map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
     - state: icon-hardware
+    - state: integrity-unshaded-0
+      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+      visible: false
+    - state: mask
+      map: [ "enum.MaxPressureVisualLayers.Base" ]
+      visible: false
   - type: Item
     sprite: _Moffstation/Objects/Tanks/tank.rsi
     inhandVisuals:
@@ -61,6 +68,7 @@
       - state: equipped-SUITSTORAGE-hardware-sloth
       suitstorage-puppy:
       - state: equipped-SUITSTORAGE-hardware-puppy
+  - type: MaxPressureVisuals
 
 
 - type: entity
@@ -74,6 +82,7 @@
     air:
       volume: 0.66
       temperature: 293.15
+    overpressure: 1519.875 # Poorly manufactured, they also lose pressure quickly so this makes exploding them easier, at the cost of the explosion being smaller.
   - type: Clothing
     sprite: _Moffstation/Objects/Tanks/emergency.rsi
     slots:

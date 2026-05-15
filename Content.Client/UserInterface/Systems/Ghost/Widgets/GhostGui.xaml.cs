@@ -92,7 +92,8 @@ public sealed partial class GhostGui : UIWidget
         }
 
         var respawnDelay = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
-        var remainingTime = _timeOfDeath + respawnDelay - _gameTiming.CurTime;
+        var serverTime = _gameTiming.ServerTime;
+        var remainingTime = _timeOfDeath + respawnDelay - serverTime;
 
         if (!remainingTime.HasValue || remainingTime <= TimeSpan.Zero)
         {
@@ -109,12 +110,9 @@ public sealed partial class GhostGui : UIWidget
                 ("time", $"{remainingTime.Value.TotalSeconds:f0}"));
     }
 
-    public void UpdateTimeOfDeath(TimeSpan? timeOfDeath)
+    public void UpdateTimeOfDeath(TimeSpan timeOfDeath)
     {
-        if (timeOfDeath != null)
-        {
-            _timeOfDeath = timeOfDeath;
-        }
+        _timeOfDeath = timeOfDeath;
     }
     // Moffstation - End
 }

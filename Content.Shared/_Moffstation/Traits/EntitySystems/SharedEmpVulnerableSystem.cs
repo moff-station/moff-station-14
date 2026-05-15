@@ -5,24 +5,24 @@ using Content.Shared.Stunnable;
 using Content.Shared.Jittering;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 
 
 namespace Content.Shared._Moffstation.Traits.EntitySystems;
 
 public abstract class SharedEmpVulnerableSystem: EntitySystem
 {
-    private readonly SoundSpecifier _disruptSound = new SoundCollectionSpecifier("sparks");
+    private static readonly ProtoId<SoundCollectionPrototype> Sparks = "sparks";
 
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly StatusEffect.StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private readonly StatusEffectNew.StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
 
     /// <summary>
     /// Subjects the entity to disruptive effects due to a recent ion storm
     /// </summary>
-    /// <param name="ent"></param>
     public void IonStormTarget(Entity<EmpVulnerableComponent> ent)
     {
         Disrupt(ent, ent.Comp.IonStunDuration, false);
@@ -33,12 +33,10 @@ public abstract class SharedEmpVulnerableSystem: EntitySystem
     /// </summary>
     /// <param name="target">The entity to be affected</param>
     /// <param name="duration">The duration of both the blindness and stun/slow effect</param>
-    /// <param name="slowTo">The slow modifier if the entity is to be slowed</param>
     /// <param name="doStun">If the target should be stunned or just slowed</param>
     protected void Disrupt(EntityUid target, TimeSpan duration, bool doStun = true)
     {
-        if(_statusEffectsSystem.CanApplyEffect(target, TemporaryBlindnessSystem.BlindingStatusEffect))
-            _statusEffectsSystem.TryAddStatusEffect(target, TemporaryBlindnessSystem.BlindingStatusEffect, duration, true, TemporaryBlindnessSystem.BlindingStatusEffect);
+        _statusEffectsSystem.TryAddStatusEffectDuration(target, BlindnessSystem.BlindingStatusEffect, duration);
 
         _jittering.DoJitter(target, duration, true);
         if (doStun)
@@ -50,7 +48,7 @@ public abstract class SharedEmpVulnerableSystem: EntitySystem
             _stun.TryCrawling(target, time: duration);
         }
 
-        _audio.PlayPredicted(_disruptSound, target, null);
+        _audio.PlayPredicted(new SoundCollectionSpecifier(Sparks), target, null);
         _popup.PopupEntity(Loc.GetString("emp-vulnerable-component-disrupted"), target, target, PopupType.MediumCaution);
 
     }
