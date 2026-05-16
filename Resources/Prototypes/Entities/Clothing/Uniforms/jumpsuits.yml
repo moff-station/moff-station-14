@@ -290,9 +290,9 @@
   id: ClothingUniformJumpsuitJesterAlt
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/jester2.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jester2.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/jester2.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jester2.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband] # Moffstation

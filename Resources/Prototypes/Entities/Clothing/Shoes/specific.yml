@@ -221,9 +221,9 @@
   description: A court jester's shoes, updated with modern squeaking technology.
   components:
     - type: Sprite
-      sprite: Clothing/Shoes/Specific/jester.rsi
+      sprite: _Moffstation/Clothing/Shoes/jester2.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Shoes/Specific/jester.rsi
+      sprite: _Moffstation/Clothing/Shoes/jester2.rsi # Moffstation
     - type: FootstepModifier
       footstepSoundCollection:
         collection: FootstepJester
