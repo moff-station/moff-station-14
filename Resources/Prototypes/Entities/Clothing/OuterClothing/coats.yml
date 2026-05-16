@@ -365,9 +365,9 @@
   description: Meant for a clown of the cloth.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/clownpriest.rsi #Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/clownpriest.rsi #Moffstation
 
 - type: entity
   parent: [ClothingOuterStorageBase, BaseMajorContraband]
