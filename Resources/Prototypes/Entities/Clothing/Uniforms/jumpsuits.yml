@@ -249,9 +249,9 @@
   description: HONK!
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/clown.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/clown.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/clown.rsi # Moffstation
   - type: Tag
     tags:
     - ClownSuit
@@ -263,9 +263,9 @@
   name: banana clown suit
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/clown_banana.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/clown_banana.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/clown_banana.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/clown_banana.rsi # Moffstation
   - type: Construction
     graph: BananaClownJumpsuit
     node: jumpsuit

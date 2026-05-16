@@ -34,9 +34,9 @@
   description: "The prankster's standard-issue clowning shoes. Damn they're huge!"
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/clown.rsi
+    sprite: _Moffstation/Clothing/Shoes/clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/clown.rsi
+    sprite: _Moffstation/Clothing/Shoes/clown.rsi # Moffstation
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepClown
@@ -55,17 +55,21 @@
   description: "When humor and footwear combine into new levels of absurdity."
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/clown_banana.rsi
+    sprite: _Moffstation/Clothing/Shoes/clown_banana.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/clown_banana.rsi
-  # Moffstation - Begin - New Banana Shoes update!
+    sprite: _Moffstation/Clothing/Shoes/clown_banana.rsi # Moffstation
+# Moffstation - Begin - New Banana Shoes update!
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.04"
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSlip
       params:
         volume: -10
         variation: 0.10
-  # Moffstation - End
+# Moffstation - End
   - type: Construction
     graph: BananaClownShoes
     node: shoes
@@ -238,9 +242,9 @@
   description: "Cursed pair of cluwne shoes."
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/cluwne.rsi
+    sprite: _Moffstation/Clothing/Shoes/cluwne.rsi
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/cluwne.rsi
+    sprite: _Moffstation/Clothing/Shoes/cluwne.rsi
   - type: Unremoveable
 
 - type: entity
