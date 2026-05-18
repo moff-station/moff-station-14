@@ -61,7 +61,7 @@ public abstract partial class SharedGravitySystem
         _shake.Screenshake(filter, translation, null);
 
         return;
-        // ES END
+        /*
         if (!TryComp<GravityShakeComponent>(uid, out var shake))
         {
             shake = AddComp<GravityShakeComponent>(uid);
@@ -70,6 +70,8 @@ public abstract partial class SharedGravitySystem
 
         shake.ShakeTimes = 10;
         Dirty(uid, shake);
+        */
+        // ES END
     }
 
     protected virtual void ShakeGrid(EntityUid uid, GravityComponent? comp = null) {}
