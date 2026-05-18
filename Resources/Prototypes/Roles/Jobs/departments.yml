@@ -2,7 +2,7 @@
   id: Cargo
   name: department-Cargo
   description: department-Cargo-description
-  color: "#A46106"
+  color: "#b47832"
   roles:
   - CargoTechnician
   - Quartermaster
@@ -12,7 +12,7 @@
   id: Civilian
   name: department-Civilian
   description: department-Civilian-description
-  color: "#639137"  # Moffstation - Colored job list
+  color: "#6e7f20"  # Moffstation - Colored job list
   weight: -10
   roles:
   - Bartender
@@ -35,7 +35,7 @@
   id: CentralCommand
   name: department-CentralCommand
   description: department-CentralCommand-description
-  color: "#0c344d"
+  color: "#349843" # Moffstation - Colored job list
   roles:
   - CentralCommandOfficial
   - CBURN
@@ -53,7 +53,7 @@
   id: Command
   name: department-Command
   description: department-Command-description
-  color: "#334E6D"
+  color: "#506a98"  # Moffstation - Colored job list
   roles:
   - Captain
   - ChiefEngineer
@@ -78,7 +78,7 @@
   id: Engineering
   name: department-Engineering
   description: department-Engineering-description
-  color: "#f39f27"  # Moffstation - Colored job list
+  color: "#c75e2a"  # Moffstation - Colored job list
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
@@ -89,7 +89,7 @@
   id: Medical
   name: department-Medical
   description: department-Medical-description
-  color: "#57b8f0"  # Moffstation - Colored job list
+  color: "#79b6fa"  # Moffstation - Colored job list
   roles:
   - Chemist
   - ChiefMedicalOfficer
@@ -102,7 +102,7 @@
   id: Security
   name: department-Security
   description: department-Security-description
-  color: "#DE3A3A"
+  color: "#aa1c34" # Moffstation - Colored job list
   weight: 20
   roles:
   - HeadOfSecurity
@@ -116,7 +116,7 @@
   id: Science
   name: department-Science
   description: department-Science-description
-  color: "#D381C9"
+  color: "#7263a1" # Moffstation - Colored job list
   roles:
   - ResearchDirector
   - Scientist
@@ -126,7 +126,7 @@
   id: Silicon
   name: department-Silicon
   description: department-Silicon-description
-  color: "#5cc896"  # Moffstation - Colored job list
+  color: "#cbd5fa"  # Moffstation - Colored job list
   roles:
   - Borg
   - StationAi
@@ -135,7 +135,7 @@
   id: Specific
   name: department-Specific
   description: department-Specific-description
-  color: "#639137"  # Moffstation - Colored job list
+  color: "#6e7f20"  # Moffstation - Colored job list
   weight: 10
   roles:
   - Reporter
