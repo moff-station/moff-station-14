@@ -8,7 +8,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash;
-using Content.Shared.Foldable;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Interaction;
