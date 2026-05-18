@@ -73,7 +73,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
     state: spinechill
-  #shader: unshaded
+  shader: unshaded
 
 - type: marking
   id: ThavenSpines
@@ -82,7 +82,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
     state: spines
-  #shader: unshaded
+  shader: unshaded
 
 - type: marking
   id: ThavenTattooWave
@@ -198,7 +198,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: sharkminnow
-  #shader: unshaded
+  shader: unshaded
 
 - type: marking
   id: ThavenLEyeGlow
@@ -212,7 +212,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: glowleft
-  #shader: unshaded
+  shader: unshaded
 
 - type: marking
   id: ThavenREyeGlow
@@ -226,7 +226,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: glowright
-  #shader: unshaded
+  shader: unshaded
 
 # RArm
 
@@ -2318,6 +2318,10 @@
   id: ThavenBasicTail
   bodyPart: Tail
   groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+       !type:SkinColoring
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: basic
@@ -2326,6 +2330,10 @@
   id: ThavenBigTail
   bodyPart: Tail
   groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+       !type:SkinColoring
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: big1
@@ -2336,6 +2344,10 @@
   id: ThavenTadpoleTail
   bodyPart: Tail
   groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+       !type:SkinColoring
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: tadpole1
@@ -2346,6 +2358,10 @@
   id: ThavenTailEel
   bodyPart: Tail
   groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+       !type:SkinColoring
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: eel1
@@ -2364,12 +2380,16 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: eel3
-#  shader: unshaded
+  shader: unshaded
 
 - type: marking
   id: ThavenTailNurse
   bodyPart: Tail
   groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+       !type:SkinColoring
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: nurse1
@@ -2380,6 +2400,10 @@
   id: ThavenTailStub
   bodyPart: Tail
   groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+       !type:SkinColoring
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: stub1
@@ -2390,10 +2414,12 @@
   id: ThavenTailThresher
   bodyPart: Tail
   groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+       !type:SkinColoring
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: thresher1
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: thresher2
-
-# RArmExtension

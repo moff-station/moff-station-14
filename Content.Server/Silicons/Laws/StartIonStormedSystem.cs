@@ -1,4 +1,4 @@
-using Content.Server.StationEvents.Events; // micro
+using Content.Server.StationEvents.Events; // macro
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
@@ -30,11 +30,11 @@ public sealed class StartIonStormedSystem : EntitySystem
 
         for (int currentIonStorm = 0; currentIonStorm < ent.Comp.IonStormAmount; currentIonStorm++)
         {
-            // begin micro edit
+            // begin macro edit
             // _ionStorm.IonStormTarget((ent.Owner, lawBound, target), false);
             var ev = new IonStormEvent(false);
             RaiseLocalEvent(ent, ref ev);
-            // end micro edit
+            // end macro edit
         }
 
         var laws = _siliconLaw.GetProviderLaws(ent.Owner);

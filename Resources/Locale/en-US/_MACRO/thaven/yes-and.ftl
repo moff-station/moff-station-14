@@ -160,5 +160,4 @@ thaven-mood-speech-restriction-desc = {$speechType ->
   [Alliterate] Alliteration is virtuous. Endeavor to use it wherever possible.
   [ThirdPerson] The third person point-of-view is the only respectful manner of speaking.
   [TitleCase] You Are Miraculously Capable Of Pronouncing Capital Letters, And Believe It Is Important That You Do So.
-  [GreySpeak] You should endeavor to speak like Grays to the best of your ability.
 }
