@@ -1,0 +1,50 @@
+- type: entity
+  name: syndicatreject
+  id: MobCatSyndyReject
+  parent: MobCatSpace
+  description: Feline pet in a tactical suit. Around their neck is a collar with a name tag.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: syndicat
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: syndicat
+      Critical:
+        Base: syndicat_dead
+      Dead:
+        Base: syndicat_dead
+  - type: GhostRole
+    prob: 1
+    name: ghost-role-information-SyndiCat-Reject-name
+    allowMovement: true
+    description: ghost-role-information-SyndiCat-Reject-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: RandomMetadata
+    nameSegments: [NamesSyndiReject]
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: Access
+    tags:
+    - SyndicateAgent
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Slash: 6
+        Piercing: 6
+        Structural: 15

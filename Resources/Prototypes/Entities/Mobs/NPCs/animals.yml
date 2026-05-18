@@ -3208,7 +3208,7 @@
   name: syndicat
   id: MobCatSyndy
   parent: MobCatSpace
-  description: Explosive kitten.
+  description: Feline pet in a tactical suit. Around their neck is a collar with a name tag. # Moffstation - Syndicat Reject
   components:
   - type: Sprite
     layers:
@@ -3238,6 +3238,10 @@
     - MicroBombImplant
   - type: ExplosionResistance
     damageCoefficient: 0.2
+  # Moffstation - Start - Syndicat Reject
+  - type: RandomMetadata
+    nameSegments: [NamesSyndiReject]
+  # Moffstation - End
   - type: NpcFactionMember
     factions:
     - Syndicate
