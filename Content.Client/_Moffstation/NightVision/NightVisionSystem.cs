@@ -81,7 +81,7 @@ public sealed class NightVisionSystem : EntitySystem
     private void RemoveEffect(Entity<NightVisionComponent> entity)
     {
         _overlayMan.RemoveOverlay<NightVisionOverlay>();
-        QueueDel(entity.Comp.Effect);
+        PredictedQueueDel(entity.Comp.Effect);
         entity.Comp.Effect = null;
         RemCompDeferred<DirtyNightVisionComponent>(entity);
     }
