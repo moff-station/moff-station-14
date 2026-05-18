@@ -2369,7 +2369,7 @@
     state: eel2
 
 - type: marking
-  id: ThavenTailEelOverlay
+  id: ThavenTailEelOverlayAnimated
   bodyPart: TailOverlay
   groupWhitelist: [ Thaven ]
   coloring:
@@ -2380,6 +2380,20 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: eel3
+  shader: unshaded
+
+- type: marking
+  id: ThavenTailEelOverlayOutline
+  bodyPart: TailOverlay
+  groupWhitelist: [ Thaven ]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+        negative: false
+  sprites:
+  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+    state: eel4
   shader: unshaded
 
 - type: marking

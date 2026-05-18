@@ -681,12 +681,10 @@ marking-ThavenTadpoleTail = Tadpole Tail
 marking-ThavenTadpoleTail-tadpole1 = Tail
 marking-ThavenTadpoleTail-tadpole2 = Fin
 
-marking-ThavenTailEel = Eel Tail (Underlay)
-marking-ThavenTailEel-eel1 = Tail
-marking-ThavenTailEel-eel2 = Fin
+marking-ThavenTailEel = Eel Tail
 
-marking-ThavenTailEelOverlay = Eel Tail (Overlay)
-marking-ThavenTailEelOverlay-eel3 = Eel Tail (Overlay)
+marking-ThavenTailEelOverlayAnimated = Eel Tail (Animated)
+marking-ThavenTailEelOverlayOutline = Eel Tail (Overlay)
 
 marking-ThavenTailNurse = Swept Tail
 marking-ThavenTailNurse-nurse1 = Tail
