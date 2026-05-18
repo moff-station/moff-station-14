@@ -145,6 +145,8 @@
         - MobMask
         layer:
         - MobLayer
+  - type: TypingIndicator
+    proto: thaven # DeltaV unique typing indicator
   - type: Vocal
     sounds:
       Male: MaleThaven
