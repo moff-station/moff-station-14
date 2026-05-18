@@ -1,5 +1,9 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Random;
+using Content.Shared.Research.Prototypes;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.PDA;
 
@@ -12,9 +16,9 @@ public sealed partial class PdaAdPrototype : IPrototype
     [DataField(required: true)]
     public SpriteSpecifier Sprite = default!;
 
-    [DataField(required: true)]
-    public int Weight = default!;
-
+    /// <summary>
+    /// A weighted random prototype for how rare each advertisement should be.
+    /// </summary>
     [DataField]
-    public bool Hidden = default!;
+    public ProtoId<WeightedRandomPrototype> AdWeightPrototype = "AdWeights";
 }

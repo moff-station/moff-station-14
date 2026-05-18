@@ -9,10 +9,12 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
+using Robust.Shared.Serialization;      // Moffstation - PDA Advertisements
 using Robust.Shared.Prototypes;         // Moffstation - PDA Advertisements
 using System.Linq;                      // Moffstation - PDA Advertisements
 using Robust.Shared.Random;             // Moffstation - PDA Advertisements
 using Content.Shared._Moffstation.PDA;  // Moffstation - PDA Advertisements
+using Content.Shared.Random.Helpers;    // Moffstation - PDA Advertisements
 
 namespace Content.Client.PDA
 {
@@ -60,10 +62,20 @@ namespace Content.Client.PDA
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
-            var adPrototype = RandomByWeight(GetAllPdaAds(_prototypeManager));          // Moffstation - begin - PDA Advertisements
+            //var adPrototype = RandomByWeight(GetAllPdaAds(_prototypeManager));          // Moffstation - begin - PDA Advertisements
+            //
+            //Advertisement.SetFromSpriteSpecifier(adPrototype.Sprite);
+            //Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;     // Moffstation - end - PDA Advertisements
+
+            //var newProto = new PdaAdPrototype();
+            var adPrototype = _prototypeManager.EnumeratePrototypes<PdaAdPrototype>().ElementAt(1);
+            var weightedRandom = _prototypeManager.Index(adPrototype.AdWeightPrototype);
+            adPrototype = _prototypeManager.Index<PdaAdPrototype>(weightedRandom.Pick(_random));
 
             Advertisement.SetFromSpriteSpecifier(adPrototype.Sprite);
-            Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;     // Moffstation - end - PDA Advertisements
+            Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;
+
+            //
 
             HomeButton.OnPressed += _ => ToHomeScreen();
 
@@ -370,31 +382,31 @@ namespace Content.Client.PDA
             AdvertisementBox.Visible = false;
         }
 
-        /// <summary>
-        /// Returns an intermediate enumerable of all <see cref="PdaAdPrototype"/>s that are not hidden.
-        /// </summary>
-        private static IEnumerable<PdaAdPrototype> GetAllPdaAds(IPrototypeManager prototypeManager)
-        {
-            return prototypeManager
-                .EnumeratePrototypes<PdaAdPrototype>()
-                .Where(p => !p.Hidden);
-        }
-
-        /// <summary>
-        /// Creates a list with duplicate entries based on the "Weight" of each prototype,
-        /// and then randomly picks and returns one.
-        /// </summary>
-        private PdaAdPrototype RandomByWeight(IEnumerable<PdaAdPrototype> pdaList)
-        {
-            var accumulatedList = new List<PdaAdPrototype>();
-            foreach (var pdaAdPrototype in pdaList)
-            {
-                for (var i = 0; i < pdaAdPrototype.Weight; i++)
-                {
-                    accumulatedList.Add(pdaAdPrototype);
-                }
-            }
-            return _random.Pick(accumulatedList);
-        }                   // Moffstation - end - PDA Advertisements
+        ///// <summary>
+        ///// Returns an intermediate enumerable of all <see cref="PdaAdPrototype"/>s that are not hidden.
+        ///// </summary>
+        //private static IEnumerable<PdaAdPrototype> GetAllPdaAds(IPrototypeManager prototypeManager)
+        //{
+        //    return prototypeManager
+        //        .EnumeratePrototypes<PdaAdPrototype>()
+        //        .Where(p => !p.Hidden);
+        //}
+//
+        ///// <summary>
+        ///// Creates a list with duplicate entries based on the "Weight" of each prototype,
+        ///// and then randomly picks and returns one.
+        ///// </summary>
+        //private PdaAdPrototype RandomByWeight(IEnumerable<PdaAdPrototype> pdaList)
+        //{
+        //    var accumulatedList = new List<PdaAdPrototype>();
+        //    foreach (var pdaAdPrototype in pdaList)
+        //    {
+        //        for (var i = 0; i < pdaAdPrototype.Weight; i++)
+        //        {
+        //            accumulatedList.Add(pdaAdPrototype);
+        //        }
+        //    }
+        //    return _random.Pick(accumulatedList);
+        //}                   // Moffstation - end - PDA Advertisements
     }
 }
