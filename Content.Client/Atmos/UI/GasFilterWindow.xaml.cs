@@ -22,14 +22,13 @@ namespace Content.Client.Atmos.UI
         public event Action<string>? FilterTransferRateChanged;
         public event Action<Gas, bool>? FilterGasToggled;
 
-        private Dictionary<Gas, Button> _gasButtons = new();
+        private readonly Dictionary<Gas, Button> _gasButtons = new();
 
         public GasFilterWindow()
         {
             RobustXamlLoader.Load(this);
-            IoCManager.InjectDependencies(this);
 
-            _atmosSystem = _entityManager.System<SharedAtmosphereSystem>();
+            var atmos = IoCManager.Resolve<EntityManager>().System<SharedAtmosphereSystem>();
 
             ToggleStatusButton.OnToggled += _ => ToggleStatusButtonPressed?.Invoke(ToggleStatusButton.Pressed);
 
@@ -40,7 +39,7 @@ namespace Content.Client.Atmos.UI
                 SetFilterRate.Disabled = true;
             };
 
-            foreach (var gas in Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList())
+            foreach (var gas in Enum.GetValues<Gas>())
             {
                 var button = new Button
                 {
@@ -64,7 +63,7 @@ namespace Content.Client.Atmos.UI
         }
 
         // Moffstation - Begin (filter multiple gases)
-        public void SetFilteredGases(HashSet<Gas> filtered)
+        public void SetFilteredGases(IEnumerable<Gas> filtered)
         {
             foreach (var gas in filtered)
             {

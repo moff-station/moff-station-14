@@ -49,8 +49,8 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
         private void OnInit(EntityUid uid, GasFilterComponent filter, ComponentInit args)
         {
             // Moffstation - Begin (filter multiple gases)
-            if (filter.FilteredGas != null)
-                filter.FilteredGases.Add(filter.FilteredGas.Value);
+            if (filter.FilteredGas is {} filteredGas)
+                filter.FilteredGases.Add(filteredGas);
             // Moffstation - End
             UpdateAppearance(uid, filter);
         }
@@ -77,8 +77,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             var removed = inletNode.Air.RemoveVolume(transferVol);
 
             // Moffstation - Begin (filter multiple gases)
-            var passingGasses = Enum.GetValues(typeof(Gas)).Cast<Gas>().ToHashSet();
-            passingGasses.ExceptWith(filter.FilteredGases);
+            var passingGasses = Enum.GetValues<Gas>().Except(filter.FilteredGases).ToHashSet();
 
             var success = false;
             success |= TryTransfer(removed, filter.FilteredGases, filterNode.Air);
@@ -221,7 +220,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             var limitMoles = AtmosphereSystem.MolesToMaxPressure(source, target, Atmospherics.MaxOutputPressure);
             var availableMoles = gasses.Aggregate(0f, (x, gas) => x + source.GetMoles(gas));
 
-            var transferedMoles = Math.Max(Math.Min(availableMoles, limitMoles), 0f);
+            var transferedMoles = Math.Clamp(availableMoles, 0f, limitMoles);
 
             if (transferedMoles <= Atmospherics.GasMinMoles)
                 return false;
