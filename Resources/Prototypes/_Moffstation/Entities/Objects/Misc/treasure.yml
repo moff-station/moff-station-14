@@ -1,0 +1,18 @@
+- type: entity
+  parent: TreasureCoinIron
+  id: TreasureCoinMarked
+  name: marked coin
+  description: A heavily worn coin. Beneath the scratches you can still make out “George”, “1958” and the outline of a face. The reverse is crossed out almost entirely, yet the coin remains perfectly balanced. You should toss it.
+  components:
+  - type: Sprite
+    state: coin_iron_marked
+    sprite: _Moffstation/Objects/Misc/coins.rsi
+  - type: TriggerOnActivate
+  - type: EmitSoundOnTrigger
+    sound: /Audio/_Moffstation/Effects/cointoss.ogg
+  - type: UseDelay
+    delay: 4
+  - type: Emoting
+  - type: EmoteOnTrigger
+    delay: 4
+    pack: MarkedCoin
