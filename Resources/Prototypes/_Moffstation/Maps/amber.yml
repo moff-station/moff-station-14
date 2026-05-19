@@ -18,7 +18,7 @@
       - type: StationEmergencyShuttle
         emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
       - type: StationJobs
-        availableJobs: # 60 jobs total w/o latejoins & interns, 77 jobs total w/ latejoins & interns
+        availableJobs: # 68 jobs total w/o latejoins, 82 jobs total w/ latejoins
           #command (7)
           Captain: [ 1, 1 ]
           HeadOfPersonnel: [ 1, 1 ]
@@ -27,44 +27,44 @@
           ChiefEngineer: [ 1, 1 ]
           ResearchDirector: [ 1, 1 ]
           Quartermaster: [ 1, 1 ]
-          #service (14)
+          #service (16)
           Bartender: [ 2, 2 ]
-          Botanist: [ 3, 3 ]
+          Botanist: [ 4, 4 ]
           Chef: [ 2, 2 ]
           Janitor: [ 2, 2 ]
           Chaplain: [ 1, 1 ]
           Librarian: [ 1, 1 ]
-          ServiceWorker: [ 2, 2 ]
+          ServiceWorker: [ 3, 3 ]
           Reporter: [ 1, 1 ]
-          #engineering (5 - 7)
+          #engineering (6 - 9)
           AtmosphericTechnician: [ 3, 3 ]
-          StationEngineer: [ 2, 5 ] #CD - Intern not counted
+          StationEngineer: [ 3, 6 ] #CD - Intern not counted
           # TechnicalAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
-          #medical (9 - 11)
+          #medical (10 - 13)
           Chemist: [ 2, 2 ]
-          MedicalDoctor: [ 4, 7 ] #CD - Intern not counted
+          MedicalDoctor: [ 5, 8 ] #CD - Intern not counted
           Paramedic: [ 2, 2 ]
           # MedicalIntern: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
           Psychologist: [ 1, 1 ]
-          #science (4 - 6)
-          Scientist: [ 4, 7 ] #CD - Intern not counted
+          #science (5 - 8)
+          Scientist: [ 5, 8 ] #CD - Intern not counted
           # ResearchAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
-          #security (8 - 10)
+          #security (9 - 12)
           Warden: [ 1, 1 ]
-          SecurityOfficer: [ 4, 7 ] #CD - Intern not counted
+          SecurityOfficer: [ 5, 8 ] #CD - Intern not counted
           Detective: [ 1, 1 ]
           # SecurityCadet: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
           Lawyer: [ 2, 2 ]
-          #supply (6 - 7)
+          #supply (7 - 9)
           SalvageSpecialist: [ 3, 3 ]
-          CargoTechnician: [ 3, 4 ]
+          CargoTechnician: [ 4, 5 ]
           #civilian (3+)
           Passenger: [ -1, -1 ] #infinite, not counted
           Clown: [ 1, 1 ]
           Mime: [ 1, 1 ]
           Musician: [ 1, 1 ]
-          #silicon (4)
+          #silicon (4 - 5)
           StationAi: [ 1, 1 ]
-          Borg: [ 3, 3 ]
+          Borg: [ 3, 4 ]
           # Moffstation - custom roles below
           Prisoner: [ 1, 1 ]
