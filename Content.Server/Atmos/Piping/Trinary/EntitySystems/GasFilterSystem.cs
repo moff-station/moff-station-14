@@ -157,7 +157,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
         private void OnToggleGasMessage(Entity<GasFilterComponent> ent, ref GasFilterToggleGasMessage args)
         {
-            if (!Enum.IsDefined(typeof(Gas), args.Gas))
+            if (!Enum.IsDefined(args.Gas))
             {
                 Log.Warning($"{ToPrettyString(ent.Owner)} received GasFilterSelectGasMessage with an invalid ID: {args.Gas}");
                 return;
