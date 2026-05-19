@@ -1,4 +1,5 @@
-﻿using Content.Server._Moffstation.GameTicking.Rules.Components;
+﻿using System.Linq;
+using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -18,7 +19,7 @@ public sealed class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
             GameRuleComponent gameRule,
             ref RoundEndTextAppendEvent args)
     {
-        var antags =_antag.GetAntagIdentifiers(uid);
+        var antags =_antag.GetAntagIdentifiers(uid).ToList();
 
         args.AddLine(antags.Count == 1
                      ? Loc.GetString("vampire-existing")

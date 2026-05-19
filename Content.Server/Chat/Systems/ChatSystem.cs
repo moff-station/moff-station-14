@@ -161,8 +161,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         // Starlight - Start - Collective Minds - It sucks but its required. Try not to think about it.
         // Original Starlight justification: I despise this being here but there doesn't seem to be a cleaner way to
         // watch for tags or complete component removals
-        if (TryComp<CollectiveMindComponent>(source, out var collective))
-            _collectiveMind.UpdateCollectiveMind(source, collective);
+        _collectiveMind.UpdateCollectiveMind(source);
         // Starlight - End
 
         if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
