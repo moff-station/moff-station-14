@@ -156,6 +156,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
         }
 
+        // Moffstation - Begin (filter multiple gases)
         private void OnToggleGasMessage(Entity<GasFilterComponent> ent, ref GasFilterToggleGasMessage args)
         {
             if (!Enum.IsDefined(typeof(Gas), args.Gas))
@@ -180,6 +181,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
                 $"{ToPrettyString(args.Actor):player} set the filter of {Loc.GetString(proto.Name)} on {ToPrettyString(ent.Owner):device} to {args.Filtered.ToString()}");
             DirtyUI(ent.Owner, ent.Comp);
         }
+        // Moffstation - End
 
         /// <summary>
         /// Returns the gas mixture for the gas analyzer
@@ -221,20 +223,20 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             var limitMoles = AtmosphereSystem.MolesToMaxPressure(source, target, Atmospherics.MaxOutputPressure);
             var availableMoles = gasses.Aggregate(0f, (x, gas) => x + source.GetMoles(gas));
 
-            var transferedMoles = Math.Max(Math.Min(availableMoles, limitMoles), 0f);
+            var transferredMoles = Math.Max(Math.Min(availableMoles, limitMoles), 0f);
 
-            if (transferedMoles <= Atmospherics.GasMinMoles)
+            if (transferredMoles <= Atmospherics.GasMinMoles)
                 return false;
 
-            var transferedMixture = new GasMixture { Temperature = source.Temperature };
+            var transferredMixture = new GasMixture { Temperature = source.Temperature };
             foreach (var gas in gasses)
             {
-                var value = (source.GetMoles(gas) / availableMoles) * transferedMoles;
-                transferedMixture.SetMoles(gas, value);
+                var value = (source.GetMoles(gas) / availableMoles) * transferredMoles;
+                transferredMixture.SetMoles(gas, value);
                 source.AdjustMoles(gas, -value);
             }
 
-            _atmosphereSystem.Merge(target, transferedMixture);
+            _atmosphereSystem.Merge(target, transferredMixture);
             return true;
         }
         // Moffstation - End
