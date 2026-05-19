@@ -9,8 +9,9 @@
   - type: Icon
     sprite: _Moffstation/Structures/Windows/plasma_window.rsi # Moffstation
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -128,7 +129,7 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
     sprite: _Moffstation/Structures/Windows/plasma_diagonal.rsi # Moffstation

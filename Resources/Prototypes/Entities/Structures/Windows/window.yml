@@ -40,8 +40,9 @@
         layer:
         - GlassLayer
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: ExaminableDamage
     messages: WindowMessages
   - type: Repairable
@@ -76,7 +77,7 @@
         acts: [ "Destruction" ]
   - type: Airtight
   - type: IconSmooth
-    key: windows
+    key: walls # Moffstation
     base: window
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
@@ -169,8 +170,9 @@
         - GlassLayer
   - type: Repairable
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: ExaminableDamage
     messages: WindowMessages
   - type: RCDDeconstructable
@@ -264,7 +266,7 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
     sprite: _Moffstation/Structures/Windows/window_diagonal.rsi # Moffstation

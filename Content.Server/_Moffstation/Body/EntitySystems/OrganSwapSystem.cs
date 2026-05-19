@@ -12,7 +12,7 @@ namespace Content.Server._Moffstation.Body.EntitySystems;
 /// </summary>
 public sealed partial class OrganSwapSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
 
     public override void Initialize()
     {

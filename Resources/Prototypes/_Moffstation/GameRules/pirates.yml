@@ -24,57 +24,75 @@
     minPlayers: 35
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
-    definitions:
-    - prefRoles: [ PirateCaptain ]
-      fallbackRoles: [ PirateCrew ]
-      spawnerPrototype: SpawnPointPirateCaptain
-      startingGear: PirateCaptainGear
-      roleLoadout:
-      - RoleSurvivalNukie
-      - JobPirateCaptain
-      briefing:
-        text: pirate-role-greeting
-        color: "#a15608"
-        sound:
-          path: "/Audio/Ambience/Antag/pirate_start.ogg"
-          params:
-            volume: -12
-      components:
-      - type: Pirate
-      - type: RandomMetadata
-        nameSegments:
-        - Adjectives
-        nameFormat: name-format-pirate-captain
-      - type: NpcFactionMember
-        factions:
-        - Pirate
-      mindRoles:
-      - MindRolePirateCaptain
-    - prefRoles: [ PirateCrew ]
-      fallbackRoles: [ PirateCaptain ]
-      spawnerPrototype: SpawnPointPirateCrew
-      min: 4
-      max: 4
-      startingGear: PirateGear
-      roleLoadout:
-      - RoleSurvivalNukie
-      - JobPirateCrew
-      briefing:
-        text: pirate-role-greeting
-        color: "#a15608"
-        sound:
-          path: "/Audio/Ambience/Antag/pirate_start.ogg"
-          params:
-            volume: -12
-      components:
-      - type: Pirate
-      - type: RandomMetadata
-        nameSegments:
-        - NamesFirst
-        - Adjectives
-        nameFormat: name-format-pirate-crew
-      - type: NpcFactionMember
-        factions:
-        - Pirate
-      mindRoles:
-      - MindRolePirate
+    antags:
+    - !type:FixedAntagCount
+      proto: PirateCaptain
+    - !type:FixedAntagCount
+      count: 4
+      proto: PirateCrew
+
+- type: antagSpecifier
+  abstract: true
+  parent: RestrictedAntag
+  id: BasePirates
+  prefRoles:
+  - GenericTeamAntagonist # For antag ban purposes
+  roleLoadout:
+  - RoleSurvivalNukie
+  briefing:
+    text: pirate-role-greeting
+    color: "#a15608"
+    sound:
+      path: "/Audio/Ambience/Antag/pirate_start.ogg"
+      params:
+        volume: -12
+  components:
+  - type: Pirate
+  - type: NpcFactionMember
+    factions:
+    - Pirate
+
+- type: antagSpecifier
+  parent: BasePirates
+  id: PirateCaptain
+  prefRoles:
+  - PirateCaptain
+  spawnerPrototype: SpawnPointPirateCaptain
+  startingGear: PirateCaptainGear
+  roleLoadout:
+  - RoleSurvivalNukie
+  - JobPirateCaptain
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - Adjectives
+    nameFormat: name-format-pirate-captain
+  mindRoles:
+  - MindRoleNukeopsCommander
+
+- type: antagSpecifier
+  parent: BasePirates
+  id: PirateCrew
+  prefRoles:
+  - PirateCrew
+  spawnerPrototype: SpawnPointPirateCrew
+  startingGear: PirateGear
+  roleLoadout:
+  - RoleSurvivalNukie
+  - JobPirateCrew
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesFirst
+    - Adjectives
+    nameFormat: name-format-pirate-crew
+  mindRoles:
+  - MindRolePirate
+
+- type: antagSpecifier
+  parent: PirateCrew
+  id: PirateCorsair
+  spawnerPrototype: SpawnPointPirateCorsair
+  pickPlayer: false
+  mindRoles:
+  - MindRolePirateCorsair

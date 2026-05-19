@@ -7,10 +7,10 @@ using Robust.Shared.Player;
 
 namespace Content.Server._Umbra.Examine;
 
-public sealed class SetExamineSystem : SharedSetExamineSystem
+public sealed partial class SetExamineSystem : SharedSetExamineSystem
 {
-    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
-    [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
+    [Dependency] private QuickDialogSystem _quickDialog = default!;
 
     public override void Initialize()
     {

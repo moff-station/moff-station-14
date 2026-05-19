@@ -141,7 +141,8 @@
             </TabContainer>
         </BoxContainer>
         <!-- Right side -->
-        <BoxContainer Orientation="Vertical" VerticalExpand="True" VerticalAlignment="Center">
+        <!-- Moffstation - setwidth so character size doesnt mess with UI-->
+        <BoxContainer Orientation="Vertical" VerticalExpand="True" VerticalAlignment="Center" SetWidth="275">
             <profile:ProfilePreviewSpriteView Name="SpriteView" Scale="8 8" Margin="4" SizeFlagsStretchRatio="1" />
             <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
                 <Button Name="SpriteRotateLeft" Text="◀" StyleClasses="OpenRight" />

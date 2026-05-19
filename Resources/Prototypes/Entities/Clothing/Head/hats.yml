@@ -422,9 +422,9 @@
   description: A stylish cap worn by the Head of Personnel. Shows paperwork who's in charge.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/hopcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hopcap.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/hopcap.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/hopcap.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -1543,6 +1543,7 @@
         Heat: 1
   - type: Damageable
     damageModifierSet: Wood
+  - type: Injurable
   - type: Appearance
   - type: FireVisuals
     sprite: Effects/fire.rsi

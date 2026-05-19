@@ -7,10 +7,10 @@ namespace Content.Shared._Moffstation.Pinpointer;
 /// <summary>
 /// This handles teleportations from a navigation map interface.
 /// </summary>
-public sealed class SharedNavMapWarpSystem : EntitySystem
+public sealed partial class SharedNavMapWarpSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _time = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IGameTiming _time = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
