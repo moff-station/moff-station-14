@@ -49,8 +49,8 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
         private void OnInit(EntityUid uid, GasFilterComponent filter, ComponentInit args)
         {
             // Moffstation - Begin (filter multiple gases)
-            if (filter.FilteredGas != null)
-                filter.FilteredGases.Add(filter.FilteredGas.Value);
+            if (filter.FilteredGas is {} filteredGas)
+                filter.FilteredGases.Add(filteredGas);
             // Moffstation - End
             UpdateAppearance(uid, filter);
         }
@@ -77,8 +77,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             var removed = inletNode.Air.RemoveVolume(transferVol);
 
             // Moffstation - Begin (filter multiple gases)
-            var passingGasses = Enum.GetValues(typeof(Gas)).Cast<Gas>().ToHashSet();
-            passingGasses.ExceptWith(filter.FilteredGases);
+            var passingGasses = Enum.GetValues<Gas>().Except(filter.FilteredGases).ToHashSet();
 
             var success = false;
             success |= TryTransfer(removed, filter.FilteredGases, filterNode.Air);
@@ -159,7 +158,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
         // Moffstation - Begin (filter multiple gases)
         private void OnToggleGasMessage(Entity<GasFilterComponent> ent, ref GasFilterToggleGasMessage args)
         {
-            if (!Enum.IsDefined(typeof(Gas), args.Gas))
+            if (!Enum.IsDefined(args.Gas))
             {
                 Log.Warning($"{ToPrettyString(ent.Owner)} received GasFilterSelectGasMessage with an invalid ID: {args.Gas}");
                 return;
@@ -223,7 +222,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             var limitMoles = AtmosphereSystem.MolesToMaxPressure(source, target, Atmospherics.MaxOutputPressure);
             var availableMoles = gasses.Aggregate(0f, (x, gas) => x + source.GetMoles(gas));
 
-            var transferredMoles = Math.Max(Math.Min(availableMoles, limitMoles), 0f);
+            var transferredMoles = Math.Clamp(availableMoles, 0f, limitMoles);
 
             if (transferredMoles <= Atmospherics.GasMinMoles)
                 return false;
