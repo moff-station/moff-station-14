@@ -43,32 +43,32 @@ namespace Content.Server._Moffstation.Geras;
 /// <summary>
 /// Geras is the god of old age, and A geras is the small morph of a slime. This system allows the slimes to have the morphing action.
 /// </summary>
-public sealed class GerasSystem : EntitySystem
+public sealed partial class GerasSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly VisualBodySystem _bodySystem = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly ServerInventorySystem _inventory = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
-    [Dependency] private readonly HumanoidProfileSystem _profileSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private readonly SharedEnsnareableSystem _ensnareable = default!;
-    [Dependency] private readonly SharedProjectileSystem _projectile = default!;
-    [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly ThirstSystem _thirst = default!;
-    [Dependency] private readonly SharedStaminaSystem  _stamina = default!;
-    [Dependency] private readonly TraitSystem _trait = default!;
-    [Dependency] private readonly FlammableSystem _flammable = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private ActionsSystem _actionsSystem = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private VisualBodySystem _bodySystem = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedStorageSystem _storage = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private ServerInventorySystem _inventory = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private SharedSubdermalImplantSystem _implantSystem = default!;
+    [Dependency] private HumanoidProfileSystem _profileSystem = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedEnsnareableSystem _ensnareable = default!;
+    [Dependency] private SharedProjectileSystem _projectile = default!;
+    [Dependency] private HungerSystem _hunger = default!;
+    [Dependency] private ThirstSystem _thirst = default!;
+    [Dependency] private SharedStaminaSystem  _stamina = default!;
+    [Dependency] private TraitSystem _trait = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
 
     private const string GerasIdSlot = "id";
 

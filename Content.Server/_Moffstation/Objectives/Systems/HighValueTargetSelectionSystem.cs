@@ -9,10 +9,10 @@ namespace Content.Server._Moffstation.Objectives.Systems;
 /// <summary>
 /// This handles selecting a high-value target for any systems that select random targets.
 /// </summary>
-public sealed class HighValueTargetSelectionSystem : EntitySystem
+public sealed partial class HighValueTargetSelectionSystem : EntitySystem
 {
-    [Dependency] private readonly IServerPreferencesManager _pref = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IServerPreferencesManager _pref = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     /// <summary>
     /// Selects a target from the list of possible targets with a priority on those with

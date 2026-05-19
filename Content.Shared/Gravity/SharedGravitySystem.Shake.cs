@@ -7,7 +7,7 @@ namespace Content.Shared.Gravity;
 
 public abstract partial class SharedGravitySystem
 {
-    [Dependency] private readonly EntityQuery<GravityComponent> _gravityQuery = default!;
+    [Dependency] private EntityQuery<GravityComponent> _gravityQuery = default!;
 
     // ES START
     [Dependency] private readonly SharedGameTicker _ticker = default!;

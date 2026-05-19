@@ -11,12 +11,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.GameTicking.Rules;
 
-public sealed class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoadProfileRuleComponent>
+public sealed partial class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoadProfileRuleComponent>
 {
-    [Dependency] private readonly HumanoidProfileSystem _humanoidProfile = default!;
-    [Dependency] private readonly IServerPreferencesManager _prefs = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;  // Moffstation
+    [Dependency] private HumanoidProfileSystem _humanoidProfile = default!;
+    [Dependency] private IServerPreferencesManager _prefs = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;  // Moffstation
 
     public override void Initialize()
     {

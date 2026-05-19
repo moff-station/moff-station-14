@@ -13,11 +13,11 @@ using Content.Shared.GameTicking;
 
 namespace Content.Server._CD.Records;
 
-public sealed class CharacterRecordsSystem : EntitySystem
+public sealed partial class CharacterRecordsSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly StationRecordsSystem _records = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private StationRecordsSystem _records = default!;
 
     public override void Initialize()
     {

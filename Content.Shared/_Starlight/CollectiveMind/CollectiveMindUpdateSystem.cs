@@ -6,9 +6,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Starlight.CollectiveMind;
 
-public sealed class CollectiveMindUpdateSystem : EntitySystem
+public sealed partial class CollectiveMindUpdateSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private readonly Dictionary<CollectiveMindPrototype, int> _globalMindIdTracker = new();
 
@@ -46,7 +46,7 @@ public sealed class CollectiveMindUpdateSystem : EntitySystem
         UpdateCollectiveMind((target, targetComponent)); //capture any we missed
     }
 
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     public void UpdateCollectiveMind(Entity<CollectiveMindComponent?> entity)
     {

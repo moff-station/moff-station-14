@@ -6,10 +6,10 @@ using Robust.Shared.Containers;
 
 namespace Content.Shared._Moffstation.Clothing;
 
-public sealed class ExtraExaminableSystem : EntitySystem
+public sealed partial class ExtraExaminableSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     private const string OwnerString = "wearer";
     private const string ItemString = "item";

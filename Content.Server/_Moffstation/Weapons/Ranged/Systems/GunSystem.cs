@@ -7,10 +7,10 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Weapons.Ranged.Systems;
 
-public sealed class GunSystem : EntitySystem
+public sealed partial class GunSystem : EntitySystem
 {
-    [Dependency] private readonly SharedGunSystem _gunSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private SharedGunSystem _gunSystem = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {

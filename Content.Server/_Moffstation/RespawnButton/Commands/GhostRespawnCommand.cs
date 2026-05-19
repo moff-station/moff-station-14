@@ -12,12 +12,12 @@ using Robust.Shared.Timing;
 namespace Content.Server._Moffstation.RespawnButton.Commands;
 
 [AnyCommand]
-public sealed class GhostRespawnCommand : LocalizedEntityCommands
+public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
     public override string Command => "ghostrespawn";
 
