@@ -22,24 +22,28 @@ public sealed class EmoteOnTriggerSystem : EntitySystem
 
     private void OnTrigger(Entity<EmoteOnTriggerComponent> ent, ref TriggerEvent args)
     {
-        if (args.Key != null && !ent.Comp.KeysIn.Contains(args.Key))
-            return;
-
-        var target = ent.Comp.TargetUser ? args.User : ent.Owner;
-
-        if (target == null)
+        if (args.Handled ||
+            args.Key != null && !ent.Comp.KeysIn.Contains(args.Key) ||
+            (ent.Comp.TargetUser ? args.User : ent.Owner) is not { } target)
             return;
 
         string message;
-        if (ent.Comp.Text != null)
-            message = Loc.GetString(ent.Comp.Text);
+        if (ent.Comp.Text is { } t)
+        {
+            message = Loc.GetString(t);
+        }
+        else if (ent.Comp.Pack is { } pack && _prototypeManager.Resolve(ent.Comp.Pack, out var messagePack))
+        {
+            message = _random.Pick(messagePack);
+        }
         else
         {
-            if (!_prototypeManager.Resolve(ent.Comp.Pack, out var messagePack))
-                return;
-            message = Loc.GetString(_random.Pick(messagePack.Values));
+            this.AssertOrLogError(
+                $"{ToPrettyString(ent)}'s {nameof(EmoteOnTriggerComponent)} specifies neither a pack nor text.");
+            return;
         }
-        _chat.TrySendInGameICMessage(target.Value, message, InGameICChatType.Emote, true);
+
+        _chat.TrySendInGameICMessage(target, message, InGameICChatType.Emote, true);
         args.Handled = true;
     }
 }
