@@ -67,14 +67,14 @@
 
 - type: entity
   parent: ClothingHeadHatHoodRad
-  id: ClothingHeadHatHoodSovietRad
-  name: soviet radiation hood
-  description: A primitive hooded gas mask covering the wearer's head in thick rubber. It's too bulky to be worn beneath a helmet but still issued to penal crews and frontier scavengers. Officials claim that it's able to withstand lethal radiation for forty seconds.
+  id: ClothingHeadHatHoodPenalRad
+  name: penal radiation hood
+  description: A primitive full-head radiation hood made from thick rubber. Too bulky to fit beneath most helmets, it is commonly issued issued where lives are cheaper than proper equipment. Officials claim that it's rated for forty seconds of lethal radiation exposure.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Head/Hoods/sovietradhood.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/penalradhood.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Head/Hoods/sovietradhood.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/penalradhood.rsi
   - type: ZombificationResistance
     zombificationResistanceCoefficient: 0.95
   - type: Armor
