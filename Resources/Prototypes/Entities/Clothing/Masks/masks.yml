@@ -201,7 +201,7 @@
   id: ClothingMaskClownBase
   abstract: true
   name: clown mask #Moffstation - No more wig
-  description: A true prankster's facial attire. A clown is incomplete without their mask. # Moffstation - No more wig :3
+  description: A true prankster's facial attire. A clown is incomplete without their mask. # Moffstation - Start - No more wig :3
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Mask/clown.rsi
@@ -209,13 +209,14 @@
     sprite: _Moffstation/Clothing/Mask/clown.rsi
   - type: BreathMask
   - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
   - type: Tag
     tags:
     - ClownMask
     - WhitelistChameleon
-  - type: HideLayerClothing
-    slots:
-    - Snout
+  # Moffstation - End
   # Imp - Begin - Tourists
   - type: StealTarget
     stealGroup: ClownMask
