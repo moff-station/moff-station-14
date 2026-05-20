@@ -315,7 +315,7 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/cmo_turtle.rsi # Moffstation
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitDetective
   name: hard-worn suit
   description: Someone who wears this means business.
@@ -326,7 +326,7 @@
       sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/detective.rsi # Moffstation
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitDetectiveGrey
   name: noir suit
   description: A hard-boiled private investigator's grey suit, complete with tie clip.
@@ -729,12 +729,12 @@
   description: I'm a little busy right now, Calhoun.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_blue.rsi # Moffstation - New Security Outfits
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/security_blue.rsi # Moffstation - New Security Outfits
 
 - type: entity
-  parent: [ClothingUniformBase, BaseSecurityContraband]
+  parent: [ClothingUniformBase, BaseSecurityContraband, ClothingUniformFoldableBase] # Moffstation
   id: ClothingUniformJumpsuitSecGrey
   name: grey security jumpsuit
   description: A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood.
