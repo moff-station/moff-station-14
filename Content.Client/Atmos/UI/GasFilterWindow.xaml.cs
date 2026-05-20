@@ -15,8 +15,6 @@ namespace Content.Client.Atmos.UI
     [GenerateTypedNameReferences]
     public sealed partial class GasFilterWindow : DefaultWindow
     {
-        [Dependency] private readonly EntityManager _entityManager = default!;
-        private readonly SharedAtmosphereSystem _atmosSystem;
 
         public event Action<bool>? ToggleStatusButtonPressed;
         public event Action<string>? FilterTransferRateChanged;
@@ -43,7 +41,7 @@ namespace Content.Client.Atmos.UI
             {
                 var button = new Button
                 {
-                    Text = Loc.GetString(_atmosSystem.GetGas(gas).Name),
+                    Text = Loc.GetString(atmos.GetGas(gas).Name),
                     ToggleMode = true,
                 };
                 _gasButtons[gas] = button;
