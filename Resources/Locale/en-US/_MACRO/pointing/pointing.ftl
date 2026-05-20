@@ -3,7 +3,7 @@
 macro-pointing-system-try-point-cannot-reach = You can't reach there!
 macro-pointing-system-point-at-self = You {$verb} at yourself.
 macro-pointing-system-point-at-other = You {$verb} at {THE($other)}.
-macro-pointing-system-point-at-self-others = {CAPITALIZE(THE($otherName))} {$verb} at macro-{REFLEXIVE($other)}.
+macro-pointing-system-point-at-self-others = {CAPITALIZE(THE($otherName))} {$verb} at {REFLEXIVE($other)}.
 macro-pointing-system-point-at-other-others = {CAPITALIZE(THE($otherName))} {$verb} at {THE($other)}.
 macro-pointing-system-point-at-you-other = {CAPITALIZE(THE($otherName))} {$verb} at you.
 macro-pointing-system-point-at-tile = You {$verb} at the {$tileName}.
