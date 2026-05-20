@@ -13,7 +13,7 @@ namespace Content.Shared._ES.Camera;
 ///     of every entity currently screenshaking, and setting offset/rotation when updated
 /// </summary>
 // DeltaV - renamed from ESScreenshakeSystem to SharedESScreenshakeSystem
-public sealed class SharedESScreenshakeSystem : EntitySystem
+public sealed partial class SharedESScreenshakeSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
 
