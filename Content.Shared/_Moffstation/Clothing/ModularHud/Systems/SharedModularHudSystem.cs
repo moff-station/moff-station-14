@@ -49,16 +49,16 @@ namespace Content.Shared._Moffstation.Clothing.ModularHud.Systems;
 /// the HUD effects.
 public abstract partial class SharedModularHudSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly BlurryVisionSystem _blurryVision = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedFlashSystem _flash = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedToolSystem _tool = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private BlurryVisionSystem _blurryVision = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedFlashSystem _flash = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedToolSystem _tool = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     /// The lists contained here specify the layers and (by implicit ordering) precedence for each visual category. For
     /// example, the highest priority lens color will apply to `Lens`, then the next highest will apply to

@@ -7,9 +7,9 @@ using Robust.Shared.Enums;
 namespace Content.Server._Starlight.Chat.Commands;
 
 [AnyCommand]
-internal sealed class CollectiveMindChatCommand : LocalizedCommands
+internal sealed partial class CollectiveMindChatCommand : LocalizedCommands
 {
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private IEntitySystemManager _entitySystemManager = default!;
 
     public override string Command => "cmsay";
 

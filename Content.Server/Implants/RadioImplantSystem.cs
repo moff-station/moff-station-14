@@ -5,9 +5,9 @@ using Content.Shared.Radio.EntitySystems;
 
 namespace Content.Server.Implants;
 
-public sealed class RadioImplantSystem : EntitySystem
+public sealed partial class RadioImplantSystem : EntitySystem
 {
-    [Dependency] private readonly SharedRadioSystem _radio = default!;
+    [Dependency] private SharedRadioSystem _radio = default!;
 
     public override void Initialize()
     {

@@ -20,8 +20,8 @@ namespace Content.Client._Moffstation.Atmos.Visualizers;
 /// </summary>
 public sealed partial class GasTankVisualizerSystem : VisualizerSystem<GasTankVisualsComponent>
 {
-    [Dependency] private readonly IReflectionManager _reflect = default!;
-    [Dependency] private readonly SharedItemSystem _itemSys = default!;
+    [Dependency] private IReflectionManager _reflect = default!;
+    [Dependency] private SharedItemSystem _itemSys = default!;
 
     private static readonly List<GasTankVisualsLayers> ModifiableLayers =
         new() { GasTankVisualsLayers.Tank, GasTankVisualsLayers.StripeMiddle, GasTankVisualsLayers.StripeLow };

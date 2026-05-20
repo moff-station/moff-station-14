@@ -6,10 +6,11 @@ using Content.Shared.Chemistry.EntitySystems;
 
 namespace Content.Shared.Body.Systems;
 
-public sealed class StomachSystem : EntitySystem
+public sealed partial class StomachSystem : EntitySystem
 {
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly BodySystem _body = default!;// Moffstation - Geras Patch
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+
+    [Dependency] private BodySystem _body = default!;// Moffstation - Geras Patch
 
     public const string DefaultSolutionName = "stomach";
 

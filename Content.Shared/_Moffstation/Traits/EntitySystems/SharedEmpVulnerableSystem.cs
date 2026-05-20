@@ -10,15 +10,15 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Traits.EntitySystems;
 
-public abstract class SharedEmpVulnerableSystem: EntitySystem
+public abstract partial class SharedEmpVulnerableSystem: EntitySystem
 {
     private static readonly ProtoId<SoundCollectionPrototype> Sparks = "sparks";
 
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly StatusEffectNew.StatusEffectsSystem _statusEffectsSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedJitteringSystem _jittering = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private StatusEffectNew.StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedJitteringSystem _jittering = default!;
 
     /// <summary>
     /// Subjects the entity to disruptive effects due to a recent ion storm
