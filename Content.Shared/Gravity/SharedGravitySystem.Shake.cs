@@ -10,8 +10,8 @@ public abstract partial class SharedGravitySystem
     [Dependency] private EntityQuery<GravityComponent> _gravityQuery = default!;
 
     // ES START
-    [Dependency] private readonly SharedGameTicker _ticker = default!;
-    [Dependency] private readonly SharedESScreenshakeSystem _shake = default!;
+    [Dependency] private SharedGameTicker _ticker = default!;
+    [Dependency] private SharedESScreenshakeSystem _shake = default!;
     // ES END
 
     protected const float GravityKick = 100.0f;
