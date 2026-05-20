@@ -15,7 +15,7 @@ namespace Content.Shared._ES.Camera;
 // DeltaV - renamed from ESScreenshakeSystem to SharedESScreenshakeSystem
 public sealed class SharedESScreenshakeSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     #region Internal
 
