@@ -2,7 +2,7 @@ using Content.Shared.Trigger;
 
 namespace Content.Shared._ES.Camera.Trigger;
 
-public sealed class ESScreenshakeUserOnTriggerSystem : XOnTriggerSystem<ESScreenshakeUserOnTriggerComponent>
+public sealed partial class ESScreenshakeUserOnTriggerSystem : XOnTriggerSystem<ESScreenshakeUserOnTriggerComponent>
 {
     [Dependency] private SharedESScreenshakeSystem _screenShake = default!;
 
