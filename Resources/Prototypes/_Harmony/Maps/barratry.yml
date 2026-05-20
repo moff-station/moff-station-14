@@ -3,7 +3,7 @@
   mapName: 'Barratry'
   mapPath: /Maps/_Harmony/barratry.yml
   minPlayers: 30
-  maxPlayers: 80 # Moffstation - mix/max player adjustments
+  maxPlayers: 60
   stations:
     Barratry:
       stationProto: StandardNanotrasenStation
@@ -23,46 +23,46 @@
           Captain: [ 1, 1 ]
           HeadOfPersonnel: [ 1, 1 ]
           Bartender: [ 1, 1 ]
-          Botanist: [ 3, 3 ] # Moffstation - increased for higher pop cap
+          Botanist: [ 2, 2 ]
           Chef: [ 2, 2 ]
           Janitor: [ 2, 2 ]
           Chaplain: [ 1, 1 ]
           Librarian: [ 1, 1 ]
-          ServiceWorker: [ 2, 3 ] # Moffstation - increased for higher pop cap
+          ServiceWorker: [ 1, 2 ]
           #engineering
           ChiefEngineer: [ 1, 1 ]
           AtmosphericTechnician: [ 3, 3 ]
-          StationEngineer: [ 6, 7 ] # Moffstation - interns rolled into base role
+          StationEngineer: [ 5, 6 ] # Moffstation - interns rolled into base role
           # TechnicalAssistant: [ 2, 4 ] # Moffstation - Remove intern roles
           #medical
           ChiefMedicalOfficer: [ 1, 1 ]
           Chemist: [ 2, 2 ]
-          MedicalDoctor: [ 5, 6 ] # Moffstation - interns rolled into base role
+          MedicalDoctor: [ 4, 5 ] # Moffstation - interns rolled into base role
           # MedicalIntern: [ 2, 4 ] # Moffstation - Remove intern roles
           Paramedic: [ 1, 1 ]
           Psychologist: [ 1, 1 ]
           #science
           ResearchDirector: [ 1, 1 ]
-          Scientist: [ 6, 7 ] # Moffstation - interns rolled into base role
+          Scientist: [ 5, 6 ] # Moffstation - interns rolled into base role
           # ResearchAssistant: [2, 4] # Moffstation - Remove intern roles
           #security
           HeadOfSecurity: [ 1, 1 ]
           Warden: [ 1, 1 ]
           Detective: [ 1, 1 ]
-          SecurityOfficer: [ 7, 8 ] # Moffstation - interns rolled into base role
+          SecurityOfficer: [ 6, 7 ] # Moffstation - interns rolled into base role
           # SecurityCadet: [ 2, 4 ] # Moffstation - Remove intern roles
           Lawyer: [ 2, 2 ]
           Prisoner: [ 1, 1 ]
           #supply
           Quartermaster: [ 1, 1 ]
           SalvageSpecialist: [ 3, 3 ]
-          CargoTechnician: [ 3, 3 ] # Moffstation - increased for higher pop cap
+          CargoTechnician: [ 2, 2 ]
           #civillian
           Passenger: [ -1, -1 ]
           Clown: [ 1, 1 ]
           Mime: [ 1, 1 ]
           Musician: [ 1, 1 ]
-          Reporter: [ 1, 2 ] # Moffstation - increased for higher pop cap
+          Reporter: [ 1, 1 ]
           #silicon
           StationAi: [ 1, 1 ]
-          Borg: [ 2, 3 ] # Moffstation - increased for higher pop cap
+          Borg: [ 2, 2 ]

@@ -2,10 +2,8 @@
   id: Scylla
   mapName: 'Scylla'
   mapPath: /Maps/_Harmony/scylla.yml
-  # Moffstation - start - min/max player adjustment
   minPlayers: 35
-  maxPlayers: 80
-  # Moffstation - end - min/max player adjustment
+  maxPlayers: 55
   stations:
     Scylla:
       stationProto: StandardNanotrasenStation
@@ -29,46 +27,43 @@
           ChiefEngineer: [ 1, 1 ]
           ResearchDirector: [ 1, 1 ]
           Quartermaster: [ 1, 1 ]
-          # Moffstation - start - increased job counts for higher pop cap
-          #service (14 - 16)
-          Bartender: [ 2, 2 ]
-          Botanist: [ 2, 2 ]
-          Chef: [ 2, 2 ]
-          Janitor: [ 2, 3 ]
+          #service (10 - 11)
+          Bartender: [ 1, 1 ]
+          Botanist: [ 1, 1 ]
+          Chef: [ 1, 1 ]
+          Janitor: [ 1, 2 ]
           Chaplain: [ 1, 1 ]
           Librarian: [ 1, 1 ]
-          ServiceWorker: [ 3, 3 ]
+          ServiceWorker: [ 2, 2 ]
           Reporter: [ 2, 2 ]
-          #engineering (8 - 9)
-          AtmosphericTechnician: [ 3, 3 ]
-          # Moffstation - End
-          StationEngineer: [ 5, 6 ] # Moffstation - interns rolled into base role
+          #engineering (6)
+          AtmosphericTechnician: [ 2, 2 ]
+          StationEngineer: [ 4, 5 ] # Moffstation - interns rolled into base role
           # TechnicalAssistant: [ 2, 2 ] # Moffstation - Remove intern roles
-          #medical (10 - 12)
+          #medical (7)
           Chemist: [ 2, 2 ]
-          MedicalDoctor: [ 6, 7 ] # Moffstation - interns rolled into base role
+          MedicalDoctor: [ 3, 4 ] # Moffstation - interns rolled into base role
           Paramedic: [ 1, 1 ]
           Psychologist: [ 1, 1 ]
           # MedicalIntern: [ 2, 2 ] # Moffstation - Remove intern roles
-          #science (5 - 6)
-          Scientist: [ 5, 6 ] # Moffstation - interns rolled into base role
+          #science (4)
+          Scientist: [ 4, 5 ] # Moffstation - interns rolled into base role
           # ResearchAssistant: [ 2, 2 ] # Moffstation - Remove intern roles
-          #security (9 - 10)
+          #security (7)
           Warden: [ 1, 1 ]
-          SecurityOfficer: [ 6, 7 ] # Moffstation - interns rolled into base role
+          SecurityOfficer: [ 4, 5 ] # Moffstation - interns rolled into base role
           Detective: [ 1, 1 ]
           # SecurityCadet: [ 2, 2 ] # Moffstation - Remove intern roles
           Lawyer: [ 1, 1 ]
           Prisoner: [ 1, 1 ] # Moff
-          #supply (6)
+          #supply (4)
           SalvageSpecialist: [ 2, 2 ]
-          CargoTechnician: [ 4, 4 ]
+          CargoTechnician: [ 2, 2 ]
           #civilian (3+)
           Passenger: [ -1, -1 ] #infinite, not counted
           Clown: [ 1, 1 ]
           Mime: [ 1, 1 ]
           Musician: [ 1, 1 ]
-          #silicon (4)
+          #silicon (3)
           StationAi: [ 1, 1 ]
-          Borg: [ 3, 3 ]
-          # Moffstation - end
+          Borg: [ 2, 2 ]
