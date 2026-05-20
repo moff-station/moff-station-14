@@ -10,8 +10,9 @@
     sprite: _Moffstation/Structures/Windows/uranium_window.rsi # Moffstation
     state: full
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

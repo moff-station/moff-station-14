@@ -244,20 +244,12 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnRemoveSnares(Entity<EnsnareableComponent> ent, ref PreMorphGerasEvent args)
     {
-        foreach (Entity<EnsnaringComponent?> bola in ent.Comp.Container.ContainedEntities.ToList())
-        {
-            if (TryComp<EnsnaringComponent>(bola, out var ensnaringComponent))
-                _ensnareable.ForceFree(bola, ensnaringComponent);
-        }
+        _ensnareable.ForceFreeAll(ent.AsNullable());
     }
 
     private void OnRemoveProjectiles(Entity<EmbeddedContainerComponent> ent, ref PreMorphGerasEvent args)
     {
-        foreach (var projectile in ent.Comp.EmbeddedObjects)
-        {
-            if (TryComp<EmbeddableProjectileComponent>(projectile, out var embedComp))
-                _projectile.EmbedDetach(projectile, embedComp);
-        }
+        _projectile.DetachAllEmbedded(ent);
     }
 
     private void OnTransferDamage(Entity<DamageableComponent> ent, ref PostMorphGerasEvent args)

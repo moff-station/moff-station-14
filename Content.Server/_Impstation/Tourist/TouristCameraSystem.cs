@@ -49,7 +49,6 @@ namespace Content.Server._Impstation.Tourist
             SubscribeLocalEvent<InventoryComponent, TouristCameraFlashAttemptEvent>(OnInventoryTouristFlashAttempt);
             SubscribeLocalEvent<FlashImmunityComponent, TouristCameraFlashAttemptEvent>(OnFlashImmunityTouristFlashAttempt);
             SubscribeLocalEvent<PermanentBlindnessComponent, TouristCameraFlashAttemptEvent>(OnPermanentBlindnessTouristFlashAttempt);
-            SubscribeLocalEvent<TemporaryBlindnessComponent, TouristCameraFlashAttemptEvent>(OnTemporaryBlindnessTouristFlashAttempt);
         }
 
         private void OnDoAfter(EntityUid uid, TouristCameraComponent comp, TouristCameraDoAfterEvent args)
@@ -215,11 +214,6 @@ namespace Content.Server._Impstation.Tourist
             // check for total blindness
             if (component.Blindness == 0)
                 args.Cancel();
-        }
-
-        private void OnTemporaryBlindnessTouristFlashAttempt(EntityUid uid, TemporaryBlindnessComponent component, TouristCameraFlashAttemptEvent args)
-        {
-            args.Cancel();
         }
 
         public override void Update(float frameTime)

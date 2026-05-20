@@ -666,7 +666,7 @@
     - item: MiningDrillDiamond
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
-    - item: OreBagOfHoldingBorg # Moffstation - Salvage borg ore bags always magnetize
+    - item: BorgOreBagOfHolding
     # Moffstation - Start - Add orehand for salvage borgs
     - hand:
         emptyRepresentative: Coal1
@@ -1723,7 +1723,7 @@
     - state: icon-xenoborg-tile
   - type: ItemBorgModule
     hands:
-    - item: WeaponTileGunEmpty
+    - item: WeaponTileGun
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
 
