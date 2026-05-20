@@ -230,6 +230,7 @@
   parent:
   - BaseItem
   - PowerCellSlotMediumItem
+  - BasePointerCrosshair # MACRO add
   id: WeaponTetherGun
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
@@ -266,16 +267,13 @@
           unshaded:
             True: { visible: true }
             False: { visible: false }
-    - type: PointingModifier # MACRO add
-      textSelf: pointing-system-verb-take-aim-self
-      textOther: pointing-system-verb-take-aim-other
-      pointingArrow: PointingCrosshair
 
 - type: entity
   name: force gun
   parent:
     - BaseItem
     - PowerCellSlotMediumItem
+    - BasePointerCrosshair # MACRO add
   id: WeaponForceGun
   description: Manipulates gravity around objects to fling them at high velocities.
   components:
@@ -318,10 +316,6 @@
           unshaded:
             True: { visible: true }
             False: { visible: false }
-    - type: PointingModifier # MACRO add
-      textSelf: pointing-system-verb-take-aim-self
-      textOther: pointing-system-verb-take-aim-other
-      pointingArrow: PointingCrosshair
 
 - type: entity
   name: grappling gun
@@ -360,15 +354,11 @@
             True: { state: base-unshaded }
             False: { state: base-unshaded-off }
     - type: PacifismAllowedGun
-    - type: PointingModifier # MACRO add
-      textSelf: pointing-system-verb-take-aim-self
-      textOther: pointing-system-verb-take-aim-other
-      pointingArrow: PointingCrosshair
 
 # Admeme
 - type: entity
   name: tether gun
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponTetherGunAdmin
   suffix: Admeme
   description: Manipulates gravity around objects to fling them at high velocities.
@@ -406,14 +396,10 @@
           unshaded:
             True: { visible: true }
             False: { visible: false }
-    - type: PointingModifier # MACRO add
-      textSelf: pointing-system-verb-take-aim-self
-      textOther: pointing-system-verb-take-aim-other
-      pointingArrow: PointingCrosshair
 
 - type: entity
   name: force gun
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponForceGunAdmin
   suffix: Admeme
   description: Manipulates gravity around objects to fling them at high velocities.
@@ -454,10 +440,6 @@
           unshaded:
             True: { visible: true }
             False: { visible: false }
-    - type: PointingModifier # MACRO add
-      textSelf: pointing-system-verb-take-aim-self
-      textOther: pointing-system-verb-take-aim-other
-      pointingArrow: PointingCrosshair
 
 - type: entity
   name: meteor launcher

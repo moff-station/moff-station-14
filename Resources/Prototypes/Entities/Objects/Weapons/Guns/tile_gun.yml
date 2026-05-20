@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, BaseXenoborgContraband]
+  parent: [BaseItem, BaseXenoborgContraband, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponTileGun
   name: tile gun
   description: A strange gun that shoots tiles. Shoot them with the floor!
@@ -48,10 +48,6 @@
         ents: []
   - type: StaticPrice
     price: 5000
-  - type: PointingModifier # MACRO add
-    textSelf: pointing-system-verb-take-aim-self
-    textOther: pointing-system-verb-take-aim-other
-    pointingArrow: PointingCrosshair
 
 - type: entity
   parent: WeaponTileGun

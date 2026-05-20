@@ -1,6 +1,6 @@
 - type: entity
   name: flare gun
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponFlareGun
   description: A compact, single-shot pistol that fires shotgun shells. Comes with a safety feature that prevents the user from fitting lethal shells inside.
   components:
@@ -54,10 +54,7 @@
       - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/flaregun.ogg
-  - type: PointingModifier # MACRO add
-    textSelf: pointing-system-verb-take-aim-self
-    textOther: pointing-system-verb-take-aim-other
-    pointingArrow: PointingCrosshair
+
 
 - type: entity
   name: security shell gun

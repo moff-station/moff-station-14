@@ -1,6 +1,7 @@
 # A basic inheritable template for a gun that is wieldable and has the standard inaccuracy.
 - type: entity
   id: BaseGunWieldable
+  parent: BasePointerCrosshair # MACRO add
   abstract: true
   components:
   - type: Wieldable
@@ -11,7 +12,3 @@
   - type: Gun
     minAngle: 21
     maxAngle: 32
-  - type: PointingModifier # MACRO add
-    textSelf: pointing-system-verb-take-aim-self
-    textOther: pointing-system-verb-take-aim-other
-    pointingArrow: PointingCrosshair
