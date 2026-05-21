@@ -5,6 +5,7 @@ using Content.Client.Parallax.Managers;
 using Content.IntegrationTests.Tests.Destructible;
 using Content.IntegrationTests.Tests.DeviceNetwork;
 using Content.Server.GameTicking;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Robust.Shared.ContentPack;
@@ -36,6 +37,14 @@ public sealed partial class TestPair : RobustIntegrationTest.TestPair
             if (e.System is SharedMapSystem map)
                 map.Log.Level = LogLevel.Warning;
         };
+
+        // Moffstation - Begin - Disable map vote on restart for integration tests as it tries to send vote net messages to dummy clients.
+        await Server.WaitPost(() =>
+        {
+            Server.Log.Info($"Resetting cvar {MoffCCVars.AutoStartMapVote.Name} to {false}");
+                Server.CfgMan.SetCVar(MoffCCVars.AutoStartMapVote, false);
+        });
+        // Moffstation - End
 
         var settings = (PoolSettings)Settings;
         if (!settings.DummyTicker)
