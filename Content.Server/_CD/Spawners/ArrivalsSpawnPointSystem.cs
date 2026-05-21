@@ -27,16 +27,6 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
     [Dependency] private IChatManager _chat = default!;
     [Dependency] private IServerPreferencesManager _pref = default!;
 
-    // The chance that there will be players who get spawned on station
-    // as in, if this rolls some players will spawn on station, and if it doesn't, nobody will spawn on station
-    private const float StationSpawnChance = 0.6f;
-    // how many players max should spawn on station?
-    private const int StationSpawnMaxLimit = 5;
-
-    private static readonly ProtoId<AntagPrototype> OpeningShiftProto= "OpeningShift";
-    private int _stationSpawnLimit;
-    private int _stationSpawnCount;
-
     public override void Initialize()
     {
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
@@ -45,8 +35,9 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
 
     private void OnRoundStart(RoundStartingEvent args)
     {
-        _stationSpawnCount = 0;
-        _stationSpawnLimit = _random.Prob(StationSpawnChance) ? _random.Next(1, StationSpawnMaxLimit) : 0;
+        var manager = Spawn();
+        var comp = AddComp<ArrivalsSpawnManagerComponent>(manager);
+        comp.StationSpawnLimit = _random.Prob(comp.StationSpawnChance) ? _random.Next(1, comp.StationSpawnMaxLimit) : 0;
     }
 
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
@@ -55,11 +46,13 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
         if (!_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
             return;
 
-        if (_stationSpawnCount < _stationSpawnLimit
+        var manager = GetManager();
+        if (manager != null
+            && manager.StationSpawnCount < manager.StationSpawnLimit
             && !args.LateJoin
-            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(OpeningShiftProto))
+            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(manager.OpeningShiftProto))
         {
-            _stationSpawnCount++;
+            manager.StationSpawnCount++;
             var message = Loc.GetString("opening-shift-greeting");
             var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
             _chat.ChatMessageToOne(ChatChannel.Server, message, wrappedMessage, default, false, args.Player.Channel, Color.CornflowerBlue);
@@ -123,5 +116,15 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
                 return;
             }
         }
+    }
+
+    private ArrivalsSpawnManagerComponent? GetManager()
+    {
+        var query1 = EntityQueryEnumerator<ArrivalsSpawnManagerComponent>();
+        while (query1.MoveNext(out var uid, out var manager))
+        {
+            return manager;
+        }
+        return null;
     }
 }
