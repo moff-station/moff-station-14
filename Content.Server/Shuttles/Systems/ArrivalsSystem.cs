@@ -68,9 +68,9 @@ public sealed partial class ArrivalsSystem : EntitySystem
 
     [Dependency] private BatterySystem _batterySystem = default!;  // Moffstation - Arrivals fixes
 
-    private EntityQuery<PendingClockInComponent> _pendingQuery;
-    private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery;
-    private EntityQuery<MobStateComponent> _mobQuery;
+    [Dependency] private EntityQuery<PendingClockInComponent> _pendingQuery = default!;
+    [Dependency] private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery = default!;
+    [Dependency] private EntityQuery<MobStateComponent> _mobQuery = default!;
 
     /// <summary>
     /// If enabled then spawns players on an alternate map so they can take a shuttle to the station.
@@ -112,10 +112,6 @@ public sealed partial class ArrivalsSystem : EntitySystem
         SubscribeLocalEvent<ArrivalsShuttleComponent, FirstArrivalEvent>(OnFirstArrival); // Moffstation - First arrival event
 
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(SendDirections);
-
-        _pendingQuery = GetEntityQuery<PendingClockInComponent>();
-        _blacklistQuery = GetEntityQuery<ArrivalsBlacklistComponent>();
-        _mobQuery = GetEntityQuery<MobStateComponent>();
 
         // Don't invoke immediately as it will get set in the natural course of things.
         Enabled = _cfgManager.GetCVar(CCVars.ArrivalsShuttles);
