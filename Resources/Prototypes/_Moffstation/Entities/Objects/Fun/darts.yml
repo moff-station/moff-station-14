@@ -1,0 +1,15 @@
+- type: entity
+  parent: HypoDart
+  id: HypoDartBootleg
+  suffix: HypoDart Bootleg
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        maxVol: 5
+  - type: SolutionInjectOnEmbed
+    transferAmount: 5
+    blockSlots: NONE
+    solution: melee
+  - type: SolutionTransfer
+    maxTransferAmount: 5

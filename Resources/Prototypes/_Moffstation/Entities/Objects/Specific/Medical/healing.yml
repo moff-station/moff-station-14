@@ -13,3 +13,17 @@
     count: 10
   - type: Item
     heldPrefix: poultice
+
+- type: entity
+  suffix: Hyperzine
+  parent: MiniSyringe
+  id: MiniSyringeHyperzine
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 5
+        reagents:
+          - ReagentId: Stimulants
+            Quantity: 5
+

@@ -3,6 +3,12 @@
   startingInventory:
     OxygenTankFilled: 10
     NitrogenTankFilled: 10
+  # Moffstation - Start - Emagpower
+  emaggedInventory:
+   DoubleEmergencyOxygenTank: 1
+   DoubleEmergencyNitrogenTank: 1
+   NitrogenTankFilledFake: 1
+  # Moffstation - End
 
 - type: vendingMachineInventory
   id: TankDispenserEngineeringInventory
@@ -10,3 +16,9 @@
     PlasmaTankFilled: 10
     NitrogenTankFilled: 10
     OxygenTankFilled: 10
+  # Moffstation - Start - Emagpower
+  emaggedInventory:
+   DoubleEmergencyOxygenTank: 1
+   DoubleEmergencyNitrogenTank: 1
+   NitrogenTankFilledFake: 1
+  # Moffstation - End

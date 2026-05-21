@@ -1,0 +1,12 @@
+- type: entity
+  id: NitrogenTankFilledFake
+  parent: NitrogenTank
+  suffix: Filled Fake
+  name: nitrogen tank
+  components:
+  - type: GasTank
+    air:
+      volume: 5
+      moles:
+        Oxygen: 8.46
+      temperature: 72.0
