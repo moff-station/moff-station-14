@@ -359,3 +359,16 @@
       key_slots:
       - EncryptionKeyCommon
       - EncryptionKeyFreelance
+
+# Moffstation start - Visitor shuttle tweaks
+- type: entity
+  id: IntercomTraffic
+  parent: Intercom
+  suffix: Traffic
+  components:
+  - type: ContainerFill
+    containers:
+      board:
+      - IntercomElectronics
+      key_slots:
+      - EncryptionKeyTraffic

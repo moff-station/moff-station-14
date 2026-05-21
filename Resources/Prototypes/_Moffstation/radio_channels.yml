@@ -5,3 +5,12 @@
   frequency: 2001
   color: "#a15608"
   longRange: true
+
+- type: radioChannel
+  id: Traffic
+  name: chat-radio-traffic
+  keycode: 'r'
+  frequency: 1040
+  color: "#F28B33"
+  longRange: true
+  headsetTransmittable: false
