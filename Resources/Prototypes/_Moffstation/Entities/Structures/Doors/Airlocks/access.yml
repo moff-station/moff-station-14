@@ -63,3 +63,48 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsPirate ]
+
+- type: entity
+  parent: AirlockShuttle
+  id: AirlockExternalShuttleFreelanceLocked
+  suffix: External, Docking, Freelance, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFreelance ]
+
+- type: entity
+  parent: AirlockExternal
+  id: AirlockExternalFreelanceLocked
+  suffix: External, Freelance, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFreelance ]
+
+- type: entity
+  parent: AirlockGlass
+  id: AirlockFreelanceGlassLocked
+  suffix: Glass, Freelance, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFreelance ]
+
+- type: entity
+  parent: Airlock
+  id: AirlockFreelanceLocked
+  suffix: Freelance, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFreelance ]
+
+- type: entity
+  parent: AirlockMaint
+  id: AirlockMaintFreelanceLocked
+  suffix: Maintenance, Freelance, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFreelance ]
