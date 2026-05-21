@@ -12,7 +12,7 @@
   id: Civilian
   name: department-Civilian
   description: department-Civilian-description
-  color: "#6e7f20"  # Moffstation - Colored job list
+  color: "#7b9f2c"  # Moffstation - Colored job list
   weight: -10
   roles:
   - Bartender
@@ -35,7 +35,7 @@
   id: CentralCommand
   name: department-CentralCommand
   description: department-CentralCommand-description
-  color: "#349843" # Moffstation - Colored job list
+  color: "#6b57c8" # Moffstation - Colored job list
   roles:
   - CentralCommandOfficial
   - CBURN
@@ -53,7 +53,7 @@
   id: Command
   name: department-Command
   description: department-Command-description
-  color: "#506a98"  # Moffstation - Colored job list
+  color: "#6383bc"  # Moffstation - Colored job list
   roles:
   - Captain
   - ChiefEngineer
@@ -78,7 +78,7 @@
   id: Engineering
   name: department-Engineering
   description: department-Engineering-description
-  color: "#c75e2a"  # Moffstation - Colored job list
+  color: "#dd8232"  # Moffstation - Colored job list
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
@@ -102,7 +102,7 @@
   id: Security
   name: department-Security
   description: department-Security-description
-  color: "#aa1c34" # Moffstation - Colored job list
+  color: "#c23031" # Moffstation - Colored job list
   weight: 20
   roles:
   - HeadOfSecurity
@@ -116,7 +116,7 @@
   id: Science
   name: department-Science
   description: department-Science-description
-  color: "#7263a1" # Moffstation - Colored job list
+  color: "#6b57c8" # Moffstation - Colored job list
   roles:
   - ResearchDirector
   - Scientist
@@ -135,7 +135,7 @@
   id: Specific
   name: department-Specific
   description: department-Specific-description
-  color: "#6e7f20"  # Moffstation - Colored job list
+  color: "#7b9f2c"  # Moffstation - Colored job list
   weight: 10
   roles:
   - Reporter
