@@ -1639,8 +1639,10 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Hats/mitre_clown.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Head/Hats/mitre_clown.rsi # Moffstationi
+    # Moffstation - Begin - New sprites
+    sprite: _Moffstation/Clothing/Head/Hats/mitre_clown.rsi
     clothingVisuals:
       head:
       - state: equipped-HELMET
         offset: "0, 0.24"
+    # Moffstation - End
