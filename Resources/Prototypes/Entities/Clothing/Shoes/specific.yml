@@ -57,12 +57,14 @@
   - type: Sprite
     sprite: _Moffstation/Clothing/Shoes/clown_banana.rsi # Moffstation
   - type: Clothing
-    sprite: _Moffstation/Clothing/Shoes/clown_banana.rsi # Moffstation
-# Moffstation - Begin - New Banana Shoes update!
+    # Moffstation - Begin - New banana shoe sprites
+    sprite: _Moffstation/Clothing/Shoes/clown_banana.rsi
     clothingVisuals:
       shoes:
       - state: equipped-FEET
         offset: "0, -0.04"
+    # Moffstation - End
+  # Moffstation - Begin - New Banana Shoes update!
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSlip
