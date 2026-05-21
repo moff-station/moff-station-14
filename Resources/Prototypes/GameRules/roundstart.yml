@@ -236,11 +236,11 @@
   components:
   - type: GameRule
     minPlayers: 15
-#    # Moffstation - Begin - Delay revs so that everyone spawning at the arrivals terminal doesn't end the round
-#    delay:
-#      min: 300
-#      max: 300
-#    # Moffstation - End
+    # Moffstation - Begin - Delay revs so that everyone spawning at the arrivals terminal doesn't end the round
+    delay:
+      min: 300
+      max: 300
+    # Moffstation - End
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
@@ -375,6 +375,7 @@
   - Traitor
   - Thief
   - HeadRev
+  - BloodBrother
 
 # event schedulers
 
