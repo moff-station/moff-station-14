@@ -32,10 +32,10 @@
           True: { state: "open" }
           False: { state: "closed" }
   - type: Sprite
-    sprite: _Moffstation/Objects/Consumable/Food/salt-bag.rsi
-    state: closed
-    map: [ "enum.OpenableVisuals.Layer" ]
-    layers: [ ]
+    layers:
+    - sprite: _Moffstation/Objects/Consumable/Food/salt-bag.rsi
+      state: closed
+      map: [ "enum.OpenableVisuals.Layer" ]
   - type: Solution
     solution:
       reagents:
@@ -49,7 +49,10 @@
   description: A big bag of ground pepper.
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Consumable/Food/pepper-bag.rsi
+    layers:
+    - sprite: _Moffstation/Objects/Consumable/Food/pepper-bag.rsi
+      state: closed
+      map: [ "enum.OpenableVisuals.Layer" ]
   - type: Solution
     solution:
       reagents:
