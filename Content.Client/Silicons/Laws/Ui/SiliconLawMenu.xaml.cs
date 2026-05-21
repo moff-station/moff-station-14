@@ -11,7 +11,7 @@ namespace Content.Client.Silicons.Laws.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class SiliconLawMenu : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IEntityManager _entity = default!;
     private readonly SharedSiliconLawSystem _lawSystem;
 
     public SiliconLawMenu()

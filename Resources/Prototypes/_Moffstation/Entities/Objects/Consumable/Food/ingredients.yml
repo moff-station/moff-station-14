@@ -1,22 +1,20 @@
 - type: entity
-  name: coffee beans
   parent: FoodProduceBase
   id: FoodCoffeeBeans
+  name: coffee beans
   description: These beans are said to spark enlightenment
   components:
   - type: FlavorProfile
     flavors:
-      - coffee
+    - coffee
   - type: Sprite
     sprite: _Moffstation/Objects/Specific/Hydroponics/coffee_plant.rsi
     state: produce-beans
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
   - type: Tag
     tags:
-      - Ingredient
+    - Ingredient

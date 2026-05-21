@@ -11,8 +11,9 @@
   - type: Icon
     sprite: Structures/Furniture/Tables/card.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Clickable
   - type: InteractionOutline
   - type: GlassTable #they named it that cause 'it would never be used elsewhere' or something, smh
@@ -57,14 +58,13 @@
     anchored: true
   placement:
     mode: SnapgridCenter
-  
 
 - type: entity
   id: FoldingTableFolded
   parent: BaseItem
   name: folding table
   suffix: folded
-  description: A folding table with the logo of "SKEA" that can easily be assembled in the blink of an arachnid's eyes. 
+  description: A folding table with the logo of "SKEA" that can easily be assembled in the blink of an arachnid's eyes.
   components:
   - type: StaticPrice
     price: 300

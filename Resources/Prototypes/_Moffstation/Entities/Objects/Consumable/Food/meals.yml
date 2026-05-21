@@ -17,14 +17,12 @@
       right:
       - state: plain-cooked-inhand-right
         color: "#F7E3A3"
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Tricordrazine
-          Quantity: 2
-        - ReagentId: Bananadine
-          Quantity: 6 # Strong enough for humans to see some screen shaking, Resomis get a screen state change and for some reason works stronger on Dionas and Lizards?
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Tricordrazine
+        Quantity: 2
+      - ReagentId: Bananadine
+        Quantity: 6 # Strong enough for humans to see some screen shaking, Resomis get a screen state change and for some reason works stronger on Dionas and Lizards?

@@ -5,10 +5,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 
-public sealed class PotentialObjectivesSystem : EntitySystem
+public sealed partial class PotentialObjectivesSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Update(float frameTime)
     {

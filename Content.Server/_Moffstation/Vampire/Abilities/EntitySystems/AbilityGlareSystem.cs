@@ -12,15 +12,15 @@ namespace Content.Server._Moffstation.Vampire.Abilities.EntitySystems;
 /// <summary>
 /// The system for the Glare ability component.
 /// </summary>
-public sealed class AbilityGlareSystem : EntitySystem
+public sealed partial class AbilityGlareSystem : EntitySystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedStaminaSystem  _stamina = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly StunSystem _stuns = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedStaminaSystem  _stamina = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private StunSystem _stuns = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {

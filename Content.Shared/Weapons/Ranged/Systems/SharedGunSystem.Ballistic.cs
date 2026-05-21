@@ -18,13 +18,12 @@ namespace Content.Shared.Weapons.Ranged.Systems;
 
 public abstract partial class SharedGunSystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedStackSystem _stack = null!;
-    // Moffstation - Start
-    [Dependency] private readonly AreaPickupSystem _areaPickup = default!;
-    [Dependency] private readonly QuickPickupSystem _quickPickup = default!;
-    // Moffstation - End
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedStackSystem _stack = null!;
+
+    [Dependency] private AreaPickupSystem _areaPickup = default!; // Moffstation
+    [Dependency] private QuickPickupSystem _quickPickup = default!; // Moffstation
 
     [MustCallBase]
     protected virtual void InitializeBallistic()

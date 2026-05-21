@@ -12,64 +12,71 @@ using Robust.Shared.Timing;
 namespace Content.Server._Moffstation.RespawnButton.Commands;
 
 [AnyCommand]
-public sealed class GhostRespawnCommand : LocalizedEntityCommands
+public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
     public override string Command => "ghostrespawn";
-    public override string Description => "Allows the player to return to the lobby if they've been dead long enough, allowing re-entering the round as another character.";
-    public override string Help => $"{Command}";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         if (!_configurationManager.GetCVar(MoffCCVars.RespawningEnabled))
         {
-            shell.WriteLine("Respawning is disabled, ask an admin to respawn you.");
+            shell.WriteLine(Loc.GetString("cmd-ghostrespawn-error-disabled"));
             return;
         }
 
         if (shell.Player is null)
         {
-            shell.WriteLine("You cannot run this from the console!");
+            shell.WriteLine(Loc.GetString("shell-cannot-run-command-from-server"));
             return;
         }
 
         if (shell.Player.AttachedEntity is null)
         {
-            shell.WriteLine("You cannot run this in the lobby, or without an entity.");
+            shell.WriteLine(Loc.GetString("shell-must-be-attached-to-entity"));
             return;
         }
 
         if (!_entityManager.TryGetComponent<GhostComponent>(shell.Player.AttachedEntity, out var ghost))
         {
-            shell.WriteLine("You are not a ghost.");
+            shell.WriteLine(Loc.GetString("cmd-ghostrespawn-error-not-ghost"));
             return;
         }
 
         var mindSystem = _entityManager.EntitySysManager.GetEntitySystem<MindSystem>();
         if (!mindSystem.TryGetMind(shell.Player.UserId, out _, out _))
         {
-            shell.WriteLine("You have no mind.");
+            shell.WriteLine(Loc.GetString("cmd-ghostrespawn-error-no-mind"));
             return;
         }
 
-        var respawnTime = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
-        var timeDead = _gameTiming.CurTime - ghost.TimeOfDeath;
-        if (timeDead < respawnTime)
+        var respawnDelay = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
+        var serverTime = _gameTiming.ServerTime;
+        var remainingTime = ghost.TimeOfDeath + respawnDelay - serverTime;
+
+        if (remainingTime > TimeSpan.Zero)
         {
-            shell.WriteLine($"You haven't been dead long enough. You've been dead {timeDead.TotalSeconds:F0} seconds of the required {respawnTime.TotalSeconds:F0}.");
+            shell.WriteLine(
+                Loc.GetString(
+                    "cmd-ghostrespawn-error-too-soon",
+                    ("timeElapsed", double.Round((ghost.TimeOfDeath - serverTime).TotalSeconds)),
+                    ("timeRequired", double.Round(respawnDelay.TotalSeconds))
+                )
+            );
             return;
         }
+
+        _adminLogger.Add(
+            LogType.Identity,
+            LogImpact.High,
+            $"{shell.Player.AttachedEntity} used ghost respawn button"
+        );
 
         var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
-
-        _adminLogger.Add(LogType.Identity,
-            LogImpact.High,
-            $"{_entityManager.ToPrettyString(shell.Player.AttachedEntity):Player} used ghost respawn button");
         gameTicker.Respawn(shell.Player);
     }
 }

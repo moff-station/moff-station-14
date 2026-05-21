@@ -5,12 +5,11 @@
   parent: [DrinkBottleGlassBaseFull, BaseSyndicateContraband]
   id: SpiderJar
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: VentCrud
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: VentCrud
+        Quantity: 120
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
     state: icon
@@ -53,12 +52,11 @@
   parent: [DrinkBottleGlassBaseFull, BaseSyndicateContraband]
   id: SpiderJarClown
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Happiness
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Happiness
+        Quantity: 120
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
     state: icon
