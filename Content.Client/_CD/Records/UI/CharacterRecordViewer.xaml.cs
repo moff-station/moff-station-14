@@ -20,9 +20,9 @@ namespace Content.Client._CD.Records.UI;
 [GenerateTypedNameReferences]
 public sealed partial class CharacterRecordViewer : FancyWindow
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IEntityManager _ent = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IEntityManager _ent = default!;
     private readonly SpriteSystem _spriteSystem;
     private readonly AccessReaderSystem _accessReader;
 

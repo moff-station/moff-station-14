@@ -24,22 +24,22 @@ using InventoryComponent = Content.Shared.Inventory.InventoryComponent;
 namespace Content.Server._Impstation.Tourist
 {
     //This is mostly duplicated from FlashSystem, as AfterFlashedEvent won't run on entities that are flash immune or being held/worn by something flash immune.
-    internal sealed class TouristCameraSystem : SharedTouristCameraSystem
+    internal sealed partial class TouristCameraSystem : SharedTouristCameraSystem
     {
-        [Dependency] private readonly AppearanceSystem _appearance = default!;
-        [Dependency] private readonly AudioSystem _audio = default!;
-        [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly ExamineSystemShared _examine = default!;
-        [Dependency] private readonly InventorySystem _inventory = default!;
-        [Dependency] private readonly PopupSystem _popup = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!;
-        [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
-        [Dependency] private readonly SharedStunSystem _stun = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
+        [Dependency] private AppearanceSystem _appearance = default!;
+        [Dependency] private AudioSystem _audio = default!;
+        [Dependency] private EntityLookupSystem _entityLookup = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private ExamineSystemShared _examine = default!;
+        [Dependency] private InventorySystem _inventory = default!;
+        [Dependency] private PopupSystem _popup = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private StatusEffectsSystem _statusEffectsSystem = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private SharedContainerSystem _container = default!;
+        [Dependency] private MovementModStatusSystem _movementMod = default!;
+        [Dependency] private SharedStunSystem _stun = default!;
+        [Dependency] private IGameTiming _timing = default!;
 
         public override void Initialize()
         {

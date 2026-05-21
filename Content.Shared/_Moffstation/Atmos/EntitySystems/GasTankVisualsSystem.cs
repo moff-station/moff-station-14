@@ -12,8 +12,8 @@ namespace Content.Shared._Moffstation.Atmos.EntitySystems;
 /// </summary>
 public sealed partial class GasTankVisualsSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     /// <summary>
     /// <see cref="GasTankVisualStylePrototype.DefaultId"/>, but resolved to an actual object.

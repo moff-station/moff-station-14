@@ -5208,6 +5208,13 @@ Entries:
   id: 1334
   time: '2026-04-26T22:25:32.000'
   url: https://github.com/moff-station/moff-station-14/pull/1334
+- author: Pixel8-dev
+  changes:
+  - message: Added the Dancer display to the AI core
+    type: add
+  id: 1335
+  time: '2026-05-18T19:46:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1335
 - author: Tortosaur
   changes: []
   id: 1337
@@ -5482,6 +5489,13 @@ Entries:
   id: 1383
   time: '2026-05-11T16:16:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/1383
+- author: mayzmae
+  changes:
+  - message: No more BBcode in Reporter's shift report
+    type: fix
+  id: 1385
+  time: '2026-05-16T02:16:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1385
 - author: Centronias
   changes:
   - message: Science cyborg modules now correctly say they go into science chassis,
@@ -5519,6 +5533,15 @@ Entries:
   id: 1389
   time: '2026-05-13T00:29:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1389
+- author: KentoDaNeko
+  changes:
+  - message: Added a nukiesw/syndicate variation to mothroaches.
+    type: add
+  - message: More unique mothroach variants are now rarer.
+    type: tweak
+  id: 1390
+  time: '2026-05-16T03:05:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1390
 - author: DuckManZach
   changes:
   - message: Gamemodes are now selected based on the number of readied players
@@ -5533,5 +5556,40 @@ Entries:
   id: 1399
   time: '2026-05-15T17:15:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1399
+- author: DuckManZach
+  changes:
+  - message: Made it so that max scale characters no longer mess with the UI
+    type: fix
+  id: 1400
+  time: '2026-05-16T01:58:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1400
+- author: MissKay1994
+  changes:
+  - message: Fixed beacons on Lambda
+    type: fix
+  - message: Added pipenet sensors to lambda
+    type: tweak
+  id: 1405
+  time: '2026-05-19T18:24:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1405
+- author: Centronias
+  changes:
+  - message: The `ghostrespawn` command no longer thinks you have been dead for negative
+      time sometimes.
+    type: fix
+  - message: The respawn button for ghosts should actually work (it's powered by the
+      above command).
+    type: fix
+  id: 1407
+  time: '2026-05-18T21:54:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1407
+- author: nithead10
+  changes:
+  - message: slimepeople will no longer be missing half their blood after transforming
+      back from geras.
+    type: fix
+  id: 1408
+  time: '2026-05-18T22:40:58.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1408
 Name: Mofflog
 Order: -2

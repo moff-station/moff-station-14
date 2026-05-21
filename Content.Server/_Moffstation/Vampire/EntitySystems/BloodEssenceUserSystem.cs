@@ -28,11 +28,11 @@ namespace Content.Server._Moffstation.Vampire.EntitySystems;
 /// </remarks>
 public sealed partial class BloodEssenceUserSystem : EntitySystem
 {
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly StomachSystem _stomach = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly BloodEssenceSystem _bloodEssenceSystem = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private StomachSystem _stomach = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private BloodEssenceSystem _bloodEssenceSystem = default!;
 
     /// <summary>
     /// Extracts blood from the target creature and places it in the user's stomach.
