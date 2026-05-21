@@ -9,7 +9,7 @@ using Robust.Shared.Timing;
 namespace Content.Client._ES;
 
 // DeltaV - Anything not marked DeltaV is Ephemeral Space code moved from SharedESScreenshakeSystem
-public sealed class ESScreenshakeSystem : EntitySystem
+public sealed partial class ESScreenshakeSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _config = default!; // DeltaV
     [Dependency] private IGameTiming _timing = default!;
