@@ -1,7 +1,7 @@
 - type: gameMap
   id: Glacier
   mapName: Glacier
-  mapPath: /Maps/glacier.yml
+  mapPath: /Maps/_DV/glacier.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 15
@@ -17,9 +17,6 @@
           prefixCreator: 'NY'
       - type: StationEmergencyShuttle
         emergencyShuttlePath: /Maps/_DV/Shuttles/Evac/ntes_vertex.yml
-      - type: StationPlanetSpawner
-        planet: GlacierSurface
-        gridPath: /Maps/_DV/Nonstations/glacier_surface_outpost.yml
       - type: StationJobs
         availableJobs:
           Captain: [ 1, 1 ]
