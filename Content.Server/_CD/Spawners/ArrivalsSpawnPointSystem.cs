@@ -38,14 +38,7 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
     {
         var manager = Spawn();
         var comp = AddComp<ArrivalsSpawnManagerComponent>(manager);
-        if (_random.Prob(comp.StationSpawnChance))
-        {
-            comp.StationSpawnLimit = _random.Next(1, comp.StationSpawnMaxLimit);
-        }
-        else
-        {
-            QueueDel(manager);
-        }
+        comp.StationSpawnLimit = _random.Prob(comp.StationSpawnChance) ? _random.Next(1, comp.StationSpawnMaxLimit) : 0;
     }
 
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
