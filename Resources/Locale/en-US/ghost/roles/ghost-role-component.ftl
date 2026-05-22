@@ -208,9 +208,6 @@ ghost-role-information-SyndiCat-name = SyndiCat
 ghost-role-information-SyndiCat-description = You're the faithful trained pet of nuclear operatives with a microbomb. Serve your master to the death!
 ghost-role-information-SyndiCat-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with the agent who summoned you.
 
-ghost-role-information-SyndiCat-Reject-name = SyndiCat Reject
-ghost-role-information-SyndiCat-Reject-description = You were supposed to be the faithful trained pet of nuclear operatives, but they weren't able to implant you with a bomb. Your Syndicate trainers dumped you at an animal shelter, red suit and all.
-
 ghost-role-information-Cak-name = Cak
 ghost-role-information-Cak-description = You are the chef's favorite child. You're a living cake cat.
 

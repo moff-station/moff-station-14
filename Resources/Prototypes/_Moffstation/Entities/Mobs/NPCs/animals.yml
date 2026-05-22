@@ -49,3 +49,10 @@
         Slash: 6
         Piercing: 6
         Structural: 15
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-syndicat
+    interactFailureString: petting-failure-syndicat
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/cat_meow.ogg

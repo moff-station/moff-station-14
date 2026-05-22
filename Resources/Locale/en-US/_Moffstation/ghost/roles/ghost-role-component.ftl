@@ -37,3 +37,7 @@ ghost-role-information-wild-human-description = You are a wild humanoid, illiter
 # Wizards
 ghost-role-information-wizard-duelist-name = Wizard Duelist
 ghost-role-information-wizard-duelist-desc = YER A WIZARD! Prove you're the best the space wizard federation has to offer!
+
+# SyndicatReject
+ghost-role-information-SyndiCat-Reject-name = SyndiCat Reject
+ghost-role-information-SyndiCat-Reject-description = You were supposed to be the faithful trained pet of nuclear operatives, but the procedure to implant you with a bomb failed. Your Syndicate trainers dumped you at an animal shelter, red suit and all.
