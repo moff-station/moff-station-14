@@ -2,7 +2,7 @@
   parent: ShuttleWindow
   id: ShuttleSovietWindow
   name: shuttle window
-  suffix: USSD
+  suffix: USSP
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -14,7 +14,7 @@
   parent: ShuttleWindowDiagonal
   id: ShuttleSovietWindowDiagonal
   name: shuttle window
-  suffix: USSD
+  suffix: USSP
   components:
   - type: Sprite
     drawdepth: WallTops
