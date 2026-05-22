@@ -1,5 +1,7 @@
 using Content.Server.Chat.Systems;
+using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Chat;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Trigger;
 using Content.Shared.Trigger.Components.Effects;
 using Robust.Shared.Prototypes;
@@ -7,11 +9,11 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Trigger.Systems;
 
-public sealed class EmoteOnTriggerSystem : EntitySystem
+public sealed partial class EmoteOnTriggerSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     public override void Initialize()
     {
@@ -22,24 +24,29 @@ public sealed class EmoteOnTriggerSystem : EntitySystem
 
     private void OnTrigger(Entity<EmoteOnTriggerComponent> ent, ref TriggerEvent args)
     {
-        if (args.Key != null && !ent.Comp.KeysIn.Contains(args.Key))
-            return;
-
-        var target = ent.Comp.TargetUser ? args.User : ent.Owner;
-
-        if (target == null)
+        if (args.Handled ||
+            args.Key != null && !ent.Comp.KeysIn.Contains(args.Key) ||
+            (ent.Comp.TargetUser ? args.User : ent.Owner) is not { } target)
             return;
 
         string message;
-        if (ent.Comp.Text != null)
-            message = Loc.GetString(ent.Comp.Text);
+        if (ent.Comp.Text is { } t)
+        {
+            message = Loc.GetString(t);
+        }
+        else if (ent.Comp.Pack is { } pack && _prototypeManager.Resolve(pack, out var messagePack))
+        {
+            message = _random.Pick(messagePack);
+        }
         else
         {
-            if (!_prototypeManager.Resolve(ent.Comp.Pack, out var messagePack))
-                return;
-            message = Loc.GetString(_random.Pick(messagePack.Values));
+            this.AssertOrLogError(
+                $"{ToPrettyString(ent)}'s {nameof(EmoteOnTriggerComponent)} specifies neither a pack nor text."
+            );
+            return;
         }
-        _chat.TrySendInGameICMessage(target.Value, message, InGameICChatType.Emote, true);
+
+        _chat.TrySendInGameICMessage(target, message, InGameICChatType.Emote, true);
         args.Handled = true;
     }
 }
