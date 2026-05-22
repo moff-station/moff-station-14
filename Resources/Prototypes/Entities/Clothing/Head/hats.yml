@@ -16,9 +16,9 @@
   description: An artist's favorite headwear.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -35,9 +35,9 @@
   description: A French beret. "Vive la France!"
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: AddAccentClothing
     accent: FrenchAccent
   - type: Tag

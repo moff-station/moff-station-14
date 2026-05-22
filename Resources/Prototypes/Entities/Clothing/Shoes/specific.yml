@@ -179,13 +179,13 @@
       - ClothMade
       - Recyclable
     - type: Sprite
-      sprite: Clothing/Shoes/color.rsi
+      sprite: _Moffstation/Clothing/Shoes/color.rsi # Moffstation
       layers:
       - state: icon
         color: "#3f3f3f"
       - state: soles-icon
     - type: Clothing
-      sprite: Clothing/Shoes/color.rsi
+      sprite: _Moffstation/Clothing/Shoes/color.rsi # Moffstation
       clothingVisuals:
         shoes:
         - state: equipped-FEET
