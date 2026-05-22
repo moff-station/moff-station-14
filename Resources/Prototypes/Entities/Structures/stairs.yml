@@ -138,6 +138,8 @@
     state: stairs_wood
     drawdepth: FloorTiles
   # Moffstation - Start - Stairs Construction
+  - type: Damageable
+    damageModifierSet: Wooden
   - type: Construction
     graph: Stairsbase
     node: stairWood
@@ -145,15 +147,10 @@
 
 - type: entity
   id: StairStageWood
-  parent: Stairs
+  parent: StairWood # Moffstation - Stairs Construction
   suffix: Wood, stage
   components:
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_stage_wood
     drawdepth: FloorTiles
-  # Moffstation - Start - Stairs Construction
-  - type: Construction
-    graph: Stairsbase
-    node: stairWood
-  # Moffstation - End
