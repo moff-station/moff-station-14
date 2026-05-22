@@ -121,8 +121,8 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
 
     private ArrivalsSpawnManagerComponent? GetManager()
     {
-        var query1 = EntityQueryEnumerator<ArrivalsSpawnManagerComponent>();
-        while (query1.MoveNext(out _, out var manager))
+        var query = EntityQueryEnumerator<ArrivalsSpawnManagerComponent>();
+        while (query.MoveNext(out _, out var manager))
         {
             return manager;
         }
