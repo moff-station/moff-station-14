@@ -101,14 +101,14 @@
   cost:
     Telecrystal: 2
   categories:
-    - UplinkAllies
+  - UplinkAllies
   conditions:
-    - !type:StoreWhitelistCondition
-      blacklist:
-        tags:
-          - NukeOpsUplink
-    - !type:ListingLimitedStockCondition
-      stock: 1
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 # Other
 - type: listing #This is the old necronomicon but spicier.
