@@ -24,9 +24,12 @@ public sealed class EmoteOnTriggerSystem : EntitySystem
     {
         if (args.Key != null && !ent.Comp.KeysIn.Contains(args.Key))
             return;
+
         var target = ent.Comp.TargetUser ? args.User : ent.Owner;
+
         if (target == null)
             return;
+
         string message;
         if (ent.Comp.Text != null)
             message = Loc.GetString(ent.Comp.Text);
