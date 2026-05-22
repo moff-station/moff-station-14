@@ -3,9 +3,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CD.Spawners;
 
-/// <summary>
-/// This is used for...
-/// </summary>
+/// This component is used to track state related to player spawning, enabling players to spawn either at arrivals or on the station at round start.
 [RegisterComponent]
 public sealed partial class ArrivalsSpawnManagerComponent : Component
 {
