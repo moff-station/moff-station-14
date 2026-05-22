@@ -9,22 +9,22 @@
         - to: stairsMetal
           steps:
             - material: Steel
-              amount: 2
+              amount: 5
               doAfter: 5
         - to: stairMetalWhite
           steps:
             - material: Steel
-              amount: 2
+              amount: 5
               doAfter: 5
         - to: stairMetalDark
           steps:
             - material: Steel
-              amount: 2
+              amount: 5
               doAfter: 5
         - to: stairWood
           steps:
             - material: WoodPlank
-              amount: 2
+              amount: 5
               doAfter: 5
 
     - node: stairsMetal
@@ -34,7 +34,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 2
+              amount: 5
           steps:
             - tool: Screwing
               doAfter: 4
@@ -46,7 +46,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 2
+              amount: 5
           steps:
             - tool: Screwing
               doAfter: 4
@@ -58,7 +58,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
-              amount: 2
+              amount: 5
           steps:
             - tool: Screwing
               doAfter: 4
@@ -70,7 +70,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 2
+              amount: 5
           steps:
             - tool: Screwing
               doAfter: 4
