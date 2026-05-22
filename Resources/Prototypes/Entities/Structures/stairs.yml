@@ -55,18 +55,13 @@
 
 - type: entity
   id: StairStage
-  parent: Stairs
+  parent: Stairs # Moffstation - Stairs Construction
   suffix: Steel, stage
   components:
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_stage_steel
     drawdepth: FloorTiles
-  # Moffstation - Start - Stairs Construction
-  - type: Construction
-    graph: Stairsbase
-    node: stairsMetal
-  # Moffstation - End
 
 - type: entity
   id: StairWhite
@@ -85,18 +80,13 @@
 
 - type: entity
   id: StairStageWhite
-  parent: Stairs
+  parent: StairWhite # Moffstation - Stairs Construction
   suffix: White, stage
   components:
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_stage_white
     drawdepth: FloorTiles
-  # Moffstation - Start - Stairs Construction
-  - type: Construction
-    graph: Stairsbase
-    node: stairMetalWhite
-  # Moffstation - End
 
 - type: entity
   id: StairDark
@@ -115,18 +105,13 @@
 
 - type: entity
   id: StairStageDark
-  parent: Stairs
+  parent: StairDark # Moffstation - Stairs Construction
   suffix: Dark, stage
   components:
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_stage_dark
     drawdepth: FloorTiles
-  # Moffstation - Start - Stairs Construction
-  - type: Construction
-    graph: Stairsbase
-    node: stairMetalDark
-  # Moffstation - End
 
 - type: entity
   id: StairWood
