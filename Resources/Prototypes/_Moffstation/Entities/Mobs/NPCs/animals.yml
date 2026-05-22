@@ -1,7 +1,8 @@
 - type: entity
-  name: syndicatreject
-  id: MobCatSyndyReject
   parent: MobCatSpace
+  id: MobCatSyndyReject
+  name: syndicat
+  suffix: Reject
   description: Feline pet in a tactical suit. Around their neck is a collar with a name tag.
   components:
   - type: Sprite
