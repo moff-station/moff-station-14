@@ -13,10 +13,10 @@ namespace Content.Server._Moffstation.Vampire.EntitySystems;
 /// This system is the central place which manages vampires.
 /// It's largely responsible for handing their shop and initializing the basic vampire abilities.
 /// </summary>
-public sealed class VampireSystem : EntitySystem
+public sealed partial class VampireSystem : EntitySystem
 {
-    [Dependency] private readonly StoreSystem _storeSystem = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
+    [Dependency] private StoreSystem _storeSystem = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
 
     public override void Initialize()
     {

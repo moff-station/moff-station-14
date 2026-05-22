@@ -10,13 +10,13 @@ using Robust.Shared.Timing;
 namespace Content.Client._Moffstation.NightVision;
 
 /// This system implements the behavior of <see cref="NightVisionComponent"/>.
-public sealed class NightVisionSystem : EntitySystem
+public sealed partial class NightVisionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedFlashSystem _flash = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly TransformSystem _xformSys = default!;
+    [Dependency] private SharedFlashSystem _flash = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
+    [Dependency] private TransformSystem _xformSys = default!;
 
     public override void Initialize()
     {

@@ -11,15 +11,15 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CD.Spawners;
 
-public sealed class ArrivalsSpawnPointSystem : EntitySystem
+public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
 
 
     public override void Initialize()

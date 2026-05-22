@@ -12,7 +12,7 @@ namespace Content.Shared._Impstation.Tourist;
 
 public abstract partial class SharedTouristCameraSystem : EntitySystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
 
     public override void Initialize()
     {

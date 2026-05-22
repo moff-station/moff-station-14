@@ -21,15 +21,17 @@
   - type: LoadMapRule
     gridPath: /Maps/_Moffstation/Shuttles/shuttle-sp-scurvydog.yml
   - type: GameRule
-    minPlayers: 35
+    minPlayers: 25
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     antags:
     - !type:FixedAntagCount
       proto: PirateCaptain
-    - !type:FixedAntagCount
-      count: 4
+    - !type:LinearAntagCount
       proto: PirateCrew
+      range:
+        min: 2
+        max: 4
 
 - type: antagSpecifier
   abstract: true

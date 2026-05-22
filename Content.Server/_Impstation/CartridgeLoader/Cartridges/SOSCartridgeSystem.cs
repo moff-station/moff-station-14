@@ -13,13 +13,13 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Impstation.CartridgeLoader.Cartridges;
 
-public sealed class SOSCartridgeSystem : EntitySystem
+public sealed partial class SOSCartridgeSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly RadioSystem _radio = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private RadioSystem _radio = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {
