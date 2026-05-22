@@ -46,19 +46,6 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
         if (!_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
             return;
 
-        var manager = GetManager();
-        if (manager != null
-            && manager.StationSpawnCount < manager.StationSpawnLimit
-            && !args.LateJoin
-            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(manager.OpeningShiftProto))
-        {
-            manager.StationSpawnCount++;
-            var message = Loc.GetString("opening-shift-greeting");
-            var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
-            _chat.ChatMessageToOne(ChatChannel.Server, message, wrappedMessage, default, false, args.Player.Channel, Color.CornflowerBlue);
-            return;
-        }
-
         // If it's a latejoin and past the forced arrivals timer, allow choosing cryosleep
         if (args is { LateJoin: true, Profile.SpawnPriority: not SpawnPriorityPreference.Arrivals } &&
             _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan) > TimeSpan.FromMinutes(_cfgManager.GetCVar(MoffCCVars.SpawnPreferenceDelay)))
@@ -73,6 +60,20 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
             return;
         if (job.IgnoreArrivals)
             return;
+
+        var manager = GetManager();
+        // Check if they're gonna be in the opening shift
+        if (manager != null
+            && manager.StationSpawnCount < manager.StationSpawnLimit
+            && !args.LateJoin
+            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(manager.OpeningShiftProto))
+        {
+            manager.StationSpawnCount++;
+            var message = Loc.GetString("opening-shift-greeting");
+            var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+            _chat.ChatMessageToOne(ChatChannel.Server, message, wrappedMessage, default, false, args.Player.Channel, Color.CornflowerBlue);
+            return;
+        }
 
         var spawnsList = new List<Entity<ArrivalsSpawnPointComponent>>();
         var query = EntityQueryEnumerator<ArrivalsSpawnPointComponent>();
