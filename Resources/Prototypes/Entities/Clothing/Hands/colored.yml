@@ -302,7 +302,7 @@
   components:
 # Moffstation -Start
   - type: Sprite
-    sprite: *color.rsi # Moffstation
+    sprite: *color.rsi
     layers:
     - state: icon
       color: "#3f3f3f"
@@ -315,7 +315,7 @@
       - state: inhand-right
         color: "#3f3f3f"
   - type: Clothing
-    sprite: *color.rsi # Moffstation
+    sprite: *color.rsi
     clothingVisuals:
       gloves:
       - state: equipped-HAND
