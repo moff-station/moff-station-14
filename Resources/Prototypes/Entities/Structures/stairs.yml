@@ -20,7 +20,7 @@
   - type: Anchorable
     flags:
     - Anchorable
-  - type: Rotatable
+  # Moffstation - No rotating stairs
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_steel
@@ -47,6 +47,11 @@
             max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairsMetal
+  # Moffstation - End
 
 - type: entity
   id: StairStage
@@ -57,6 +62,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_steel
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairsMetal
+  # Moffstation - End
 
 - type: entity
   id: StairWhite
@@ -67,6 +77,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_white
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairMetalWhite
+  # Moffstation - End
 
 - type: entity
   id: StairStageWhite
@@ -77,6 +92,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_white
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairMetalWhite
+  # Moffstation - End
 
 - type: entity
   id: StairDark
@@ -87,6 +107,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_dark
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairMetalDark
+  # Moffstation - End
 
 - type: entity
   id: StairStageDark
@@ -97,6 +122,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_dark
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairMetalDark
+  # Moffstation - End
 
 - type: entity
   id: StairWood
@@ -107,6 +137,11 @@
     sprite: Structures/stairs.rsi
     state: stairs_wood
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairWood
+  # Moffstation - End
 
 - type: entity
   id: StairStageWood
@@ -117,3 +152,8 @@
     sprite: Structures/stairs.rsi
     state: stairs_stage_wood
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairWood
+  # Moffstation - End
