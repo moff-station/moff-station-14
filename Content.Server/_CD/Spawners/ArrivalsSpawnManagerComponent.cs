@@ -1,7 +1,7 @@
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._CD.Spawners;
+namespace Content.Server._Moffstation.Spawners;
 
 /// This component is used to track state related to player spawning, enabling players to spawn either at arrivals or on the station at round start.
 [RegisterComponent]
