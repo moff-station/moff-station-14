@@ -1,65 +1,18 @@
 - type: quickPhrase
-  id: BaseNounsPhrase
   parent: BaseCommonPhrase
-  group: Nouns
   abstract: true
+  id: BaseNounsPhrase
+  group: phrase-group-nouns
 
-- type: quickPhrase
-  id: IPhrase
-  parent: BaseNounsPhrase
-  text: phrase-i
-
-- type: quickPhrase
-  id: YouPhrase
-  parent: BaseNounsPhrase
-  text: phrase-you
-
-- type: quickPhrase
-  id: SomeonePhrase
-  parent: BaseNounsPhrase
-  text: phrase-someone
-
-- type: quickPhrase
-  id: SomethingPhrase
-  parent: BaseNounsPhrase
-  text: phrase-something
-
-- type: quickPhrase
-  id: HePhrase
-  parent: BaseNounsPhrase
-  text: phrase-he
-
-- type: quickPhrase
-  id: ShePhrase
-  parent: BaseNounsPhrase
-  text: phrase-she
-
-- type: quickPhrase
-  id: TheyPhrase
-  parent: BaseNounsPhrase
-  text: phrase-they
-
-- type: quickPhrase
-  id: ItPhrase
-  parent: BaseNounsPhrase
-  text: phrase-it
-
-- type: quickPhrase
-  id: EveryonePhrase
-  parent: BaseNounsPhrase
-  text: phrase-everyone
-
-- type: quickPhrase
-  id: NoOnePhrase
-  parent: BaseNounsPhrase
-  text: phrase-no-one
-
-- type: quickPhrase
-  id: AnyonePhrase
-  parent: BaseNounsPhrase
-  text: phrase-anyone
-
-- type: quickPhrase
-  id: MePhrase
-  parent: BaseNounsPhrase
-  text: phrase-me
+- { type: quickPhrase, parent: BaseNounsPhrase, id: IPhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: YouPhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: SomeonePhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: SomethingPhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: HePhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: ShePhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: TheyPhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: ItPhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: EveryonePhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: NoOnePhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: AnyonePhrase }
+- { type: quickPhrase, parent: BaseNounsPhrase, id: MePhrase }
