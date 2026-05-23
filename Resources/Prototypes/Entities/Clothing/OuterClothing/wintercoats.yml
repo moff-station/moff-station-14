@@ -88,7 +88,7 @@
   name: bartender winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: BAR-icon
   - type: Item
@@ -98,7 +98,7 @@
       right:
       - state: BAR-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: BAR-equipped-OUTERCLOTHING
@@ -218,7 +218,7 @@
   description: A coat specifically designed for work inside cold storage, sorely needed by cold-blooded lizard chefs.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: CHEF-icon
   - type: Item
@@ -228,7 +228,7 @@
       right:
       - state: CHEF-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: CHEF-equipped-OUTERCLOTHING

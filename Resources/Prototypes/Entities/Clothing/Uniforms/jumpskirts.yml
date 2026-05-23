@@ -5,9 +5,9 @@
   description: A nice and tidy uniform. Shame about the bar though.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/bartender.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/bartender.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/bartender.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/bartender.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -71,9 +71,9 @@
   description: Can't cook without this.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chef.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chef.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
