@@ -70,6 +70,20 @@
   - UplinkAllies
 
 - type: listing
+  id: UplinkMobMothroachSyndicate
+  name: uplink-mothroach-syndicate-name
+  description: uplink-mothroach-syndicate-description
+  icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-syndicat }
+  productEntity: ReinforcementRadioSyndicateMothroachSyndicate
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkAllies
+
+- type: listing
   id: UplinkClownSpiderGrenade
   name: uplink-clown-spider-grenade-name
   description: uplink-clown-spider-grenade-desc
@@ -93,7 +107,7 @@
 
 # Other
 - type: listing #This is the old necronomicon but spicier.
-  id: uplinkNecronomicon 
+  id: uplinkNecronomicon
   name: uplink-necronomicon-name
   description: uplink-necronomicon-desc
   productEntity: BibleNecronomicon

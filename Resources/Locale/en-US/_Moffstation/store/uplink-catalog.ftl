@@ -14,7 +14,10 @@ uplink-clothing-infiltrator-headset-desc = A sleek headset designed for infiltra
 
 # Allies
 uplink-spider-grenade-name = Jar of Spiders
-uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Nightfangs, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight. 
+uplink-spider-grenade-desc = An experimental concoction made by the Syndicate. When shattered, the chemical reaction promotes extreme growth of the small spiders located inside. The spiders, classified as Nightfangs, have been biologically engineered to avoid attacking Syndicate agents, but devour any other nearby creature in their sight.
+
+uplink-mothroach-syndicate-name = Syndicate Mothroach
+uplink-mothroach-syndicate-description = Cover your ears, this mothroach's sonic boom that will make one hell of a mess.
 
 uplink-clown-spider-grenade-name = Jar of Clown Spiders
 uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spiders floating inside liquid happiness laugh away. Would be funny to throw at someone.
