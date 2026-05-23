@@ -116,7 +116,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         var found = false;
         var aabb = gridComp.LocalAABB;
 
-        for (var i = 0; i < 10; i++)
+        for (var i = 0; i < 100; i++) //Moffstation paradox clone integration test fix
         {
             var randomX = RobustRandom.Next((int) aabb.Left, (int) aabb.Right);
             var randomY = RobustRandom.Next((int) aabb.Bottom, (int) aabb.Top);
@@ -132,7 +132,23 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
             break;
         }
-
+// Moffstation - Start - Paradox Clone integration test fix
+        if (!found)
+        {
+            // Fallback: iterate all tiles on the grid systematically
+            foreach (var gridTile in _map.GetAllTiles(targetGrid, gridComp))
+            {
+                var pos = gridTile.GridIndices;
+                if (!_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, pos)
+                    && !_atmosphere.IsTileAirBlockedCached(targetGrid, pos))
+                {
+                    tile = pos;
+                    targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
+                    return true;
+                }
+            }
+        }
+// Moffstation - End
         return found;
     }
 
