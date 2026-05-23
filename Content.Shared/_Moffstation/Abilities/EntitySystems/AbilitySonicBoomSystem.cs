@@ -1,11 +1,13 @@
 using Content.Shared._Moffstation.Abilities.Components;
 using Content.Shared._Moffstation.Abilities.Events;
-using Content.Shared._Moffstation.Overlay.Events;
+using Content.Shared._Moffstation.Overlay.Components;
+using Content.Shared._Moffstation.Overlay.EntitySystems;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Throwing;
+using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -13,7 +15,7 @@ using Robust.Shared.Timing;
 namespace Content.Shared._Moffstation.Abilities.EntitySystems;
 
 /// <summary>
-/// This handles...
+/// This handles the sonic boom ability when it is attached to and activated by an entity with the SonicBoomComponent.
 /// </summary>
 public sealed class AbilitySonicBoomSystem : EntitySystem
 {
@@ -27,6 +29,7 @@ public sealed class AbilitySonicBoomSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly MovementModStatusSystem _move = default!;
+    [Dependency] private readonly SharedShockwaveSystem _shockwave = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -55,7 +58,6 @@ public sealed class AbilitySonicBoomSystem : EntitySystem
 
         var entityCoords = _transform.GetMoverCoordinates(entity);
 
-        // todo: Ignore entities by line of sight
         foreach (var target in _lookup.GetEntitiesInRange(entity, entity.Comp.FlingRadius, LookupFlags.Uncontained))
         {
             var thrownVec = _random.NextVector2(0.05f) +
@@ -68,7 +70,8 @@ public sealed class AbilitySonicBoomSystem : EntitySystem
         }
 
         // Trigger the shockwave
-        RaiseLocalEvent(entity, new ShockwaveEvent(), true);
+        if (TryComp<ShockwaveComponent>(entity, out var comp))
+            _shockwave.Activate((entity, comp));
 
         _audio.PlayPredicted(entity.Comp.Sound, entity.Owner, entity.Owner);
 

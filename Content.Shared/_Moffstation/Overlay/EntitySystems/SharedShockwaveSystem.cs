@@ -1,11 +1,12 @@
 using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared._Moffstation.Overlay.Events;
+using JetBrains.Annotations;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Moffstation.Overlay.EntitySystems;
 
 /// <summary>
-/// This handles...
+/// The Shared system which handles the triggering of the sonic boom overlay.
 /// </summary>
 public abstract partial class SharedShockwaveSystem : EntitySystem
 {
@@ -44,7 +45,7 @@ public abstract partial class SharedShockwaveSystem : EntitySystem
 
     public void UpdateActive(Entity<ShockwaveComponent> entity)
     {
-        if (entity.Comp.Active && (entity.Comp.StartTime + entity.Comp.Duration) > _timing.CurTime)
+        if (entity.Comp.Active && (entity.Comp.StartTime + entity.Comp.Duration > _timing.CurTime))
             Deactivate(entity);
     }
 

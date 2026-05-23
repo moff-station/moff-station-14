@@ -6,7 +6,7 @@ namespace Content.Shared._Moffstation.Overlay.Components;
 /// <summary>
 /// Holds the parameters for the shockwave overlay on an entity.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 [Access(typeof(SharedShockwaveSystem))]
 public sealed partial class ShockwaveComponent : Component
 {
@@ -38,7 +38,7 @@ public sealed partial class ShockwaveComponent : Component
     /// The start time for the shader.
     /// This is set by the Overlay when active.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public TimeSpan StartTime = TimeSpan.Zero;
 
     /// <summary>
@@ -50,6 +50,6 @@ public sealed partial class ShockwaveComponent : Component
     /// <summary>
     /// Whether this shockwave is active or not.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool Active = false;
 }

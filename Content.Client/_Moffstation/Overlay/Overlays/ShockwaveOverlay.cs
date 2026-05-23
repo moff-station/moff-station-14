@@ -21,6 +21,7 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
+    [Dependency] private readonly IEyeManager _eyeManager = default!;
 
     private readonly SharedTransformSystem _transformSystem;
     private readonly SharedShockwaveSystem _shockwaveSystem;
@@ -41,6 +42,8 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
 
     public ShockwaveOverlay()
     {
+        ZIndex = 8;
+
         IoCManager.InjectDependencies(this);
         _shader = _prototypeManager.Index(ShockwaveShader).InstanceUnique();
         _transformSystem = _entityManager.System<SharedTransformSystem>();
@@ -53,36 +56,29 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
         _distortionScale = reducedMotion ? 0.01f : 1f;
     }
 
-    /// <inheritdoc cref="Overlay.FrameUpdate"/>
-    protected override void FrameUpdate(FrameEventArgs args)
-    {
-        _shockwaveSystem.UpdateComponents();
-    }
-
     /// <inheritdoc cref="Overlay.BeforeDraw"/>
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
         if (args.MapId == MapId.Nullspace)
             return false;
 
-        if (!_entityManager.TryGetComponent(_playerManager.LocalSession?.AttachedEntity, out EyeComponent? eyeComp) ||
-            args.Viewport.Eye != eyeComp.Eye ||
-            args.ViewportControl == null)
-            return false;
-
         _instanceCount = 0;
-        foreach (var shockwaveEntity in _entityManager.EntityQuery<Shared._Moffstation.Overlay.Components.ShockwaveComponent, TransformComponent>())
+
+        _shockwaveSystem.UpdateComponents();
+
+        var enumerator = _entityManager.AllEntityQueryEnumerator<ShockwaveComponent, TransformComponent>();
+        while (enumerator.MoveNext(out var shockwaveComp, out var transformComp))
         {
-            if (!shockwaveEntity.Item1.Active)
+            if (!shockwaveComp.Active)
                 continue;
 
             _epicenters = _epicenters.Append(
-                args.ViewportControl.WorldToScreen(
-                    _transformSystem.GetWorldPosition(shockwaveEntity.Item2)));
-            _intensities = _intensities.Append(shockwaveEntity.Item1.Intensity * _distortionScale);
-            _ranges = _ranges.Append(shockwaveEntity.Item1.Range * _distortionScale);
-            _fallOffs = _fallOffs.Append(shockwaveEntity.Item1.FallOff);
-            _timeScales = _timeScales.Append(shockwaveEntity.Item1.TimeScale);
+                _eyeManager.WorldToScreen(
+                    _transformSystem.GetWorldPosition(transformComp)));
+            _intensities = _intensities.Append(shockwaveComp.Intensity * _distortionScale);
+            _ranges = _ranges.Append(shockwaveComp.Range * _distortionScale);
+            _fallOffs = _fallOffs.Append(shockwaveComp.FallOff);
+            _timeScales = _timeScales.Append(shockwaveComp.TimeScale);
 
             if (++_instanceCount >= _instanceLimit)
                 break;
