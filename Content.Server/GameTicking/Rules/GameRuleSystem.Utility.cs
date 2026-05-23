@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Station.Components;
@@ -135,17 +136,30 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 // Moffstation - Start - Paradox Clone integration test fix
         if (!found)
         {
+            var sw = Stopwatch.StartNew();
+
             // Fallback: iterate all tiles on the grid systematically
+            // Collect valid positions and shuffle so it's not the same spot every time
+            var validTiles = new List<Vector2i>();
             foreach (var gridTile in _map.GetAllTiles(targetGrid, gridComp))
             {
                 var pos = gridTile.GridIndices;
                 if (!_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, pos)
                     && !_atmosphere.IsTileAirBlockedCached(targetGrid, pos))
                 {
-                    tile = pos;
-                    targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
-                    return true;
+                    validTiles.Add(pos);
                 }
+            }
+
+            sw.Stop();
+            Log.Info($"TryFindRandomTileOnStation fallback scanned {validTiles.Count} valid tiles in {sw.Elapsed.TotalMilliseconds:F1}ms");
+
+            if (validTiles.Count > 0)
+            {
+                RobustRandom.Shuffle(validTiles);
+                tile = validTiles[0];
+                targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
+                return true;
             }
         }
 // Moffstation - End
