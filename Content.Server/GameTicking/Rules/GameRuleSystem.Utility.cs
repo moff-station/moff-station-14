@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Station.Components;
@@ -136,8 +135,6 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 // Moffstation - Start - Paradox Clone integration test fix
         if (!found)
         {
-            var sw = Stopwatch.StartNew();
-
             // Fallback: iterate all tiles on the grid systematically
             // Collect valid positions and shuffle so it's not the same spot every time
             var validTiles = new List<Vector2i>();
@@ -150,10 +147,6 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
                     validTiles.Add(pos);
                 }
             }
-
-            sw.Stop();
-            Log.Info($"TryFindRandomTileOnStation fallback scanned {validTiles.Count} valid tiles in {sw.Elapsed.TotalMilliseconds:F1}ms");
-
             if (validTiles.Count > 0)
             {
                 RobustRandom.Shuffle(validTiles);
