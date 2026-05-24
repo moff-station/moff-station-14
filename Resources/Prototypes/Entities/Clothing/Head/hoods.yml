@@ -305,9 +305,9 @@
   name: cargo winter coat hood
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hoods/Coat/hoodcargo.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcargo.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hoods/Coat/hoodcargo.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodcargo.rsi # Moffstation
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
@@ -438,9 +438,9 @@
   name: miner coat hood
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hoods/Coat/hoodminer.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodminer.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hoods/Coat/hoodminer.rsi
+    sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodminer.rsi # Moffstation
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase
