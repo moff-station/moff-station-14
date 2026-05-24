@@ -73,6 +73,7 @@
     blackboard:
       NavSmash: !type:Bool
         true
+  - type: MovementAlwaysTouching
 
 - type: entity
   parent: MobMothroach
