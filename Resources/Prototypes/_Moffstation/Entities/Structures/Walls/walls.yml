@@ -8,9 +8,9 @@
     sprite: _Moffstation/Structures/Walls/soviet_plastitanium.rsi
   - type: Icon
     sprite: _Moffstation/Structures/Walls/soviet_plastitanium.rsi
-    - type: IconSmooth
-      key: walls
-      base: soviet_plastitanium
+  - type: IconSmooth
+    key: walls
+    base: plastitanium
 
 - type: entity
   parent: WallPlastitaniumDiagonal
