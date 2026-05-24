@@ -14,14 +14,14 @@ using Robust.Shared.Toolshed.Commands.Generic;
 
 namespace Content.Client._Moffstation.Overlay.Overlays;
 
-public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
+public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
 {
     private static readonly ProtoId<ShaderPrototype> ShockwaveShader = "ShockwaveShader";
 
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly SharedTransformSystem _transformSystem;
 

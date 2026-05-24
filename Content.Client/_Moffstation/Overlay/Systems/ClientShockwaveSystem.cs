@@ -9,7 +9,7 @@ namespace Content.Client._Moffstation.Overlay.Systems;
 /// <summary>
 /// This handles the ShockwaveComponent which interfaces with the ShockwaveOverlay
 /// </summary>
-public sealed class ClientShockwaveSystem : SharedShockwaveSystem
+public sealed partial class ClientShockwaveSystem : SharedShockwaveSystem
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
 
