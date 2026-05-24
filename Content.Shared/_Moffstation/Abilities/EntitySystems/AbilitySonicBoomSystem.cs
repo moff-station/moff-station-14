@@ -43,14 +43,12 @@ public sealed partial class AbilitySonicBoomSystem : EntitySystem
 
     private void OnBoom(Entity<AbilitySonicBoomComponent> entity, ref AbilitySonicBoomEvent args)
     {
-        if (args.Handled)
+        if (args.Handled ||
+            !_timing.IsFirstTimePredicted)
             return;
 
         var netEntity = _manager.GetNetEntity(entity.Owner);
         _random.SetSeed(netEntity.Id + (int)_timing.CurTick.Value);
-
-        if (!_timing.IsFirstTimePredicted)
-            return;
 
         var entityCoords = _transform.GetMoverCoordinates(entity);
 
