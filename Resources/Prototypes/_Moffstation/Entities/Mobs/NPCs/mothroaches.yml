@@ -57,7 +57,16 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Piercing: 0.5 # They angy
+        Piercing: 1.0 # They angy
+        Structural: 10.0
+  - type: TemperatureDamage
+    heatDamageThreshold: 423
+    coldDamageThreshold: 0
+  - type: PressureImmunity
+  - type: ProtectedFromStepTriggers
+  - type: Insulated
+  - type: Respirator
+    minSaturation: 5.0
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
