@@ -11,7 +11,7 @@ namespace Content.Client._Moffstation.Overlay.Systems;
 /// </summary>
 public sealed class ClientShockwaveSystem : SharedShockwaveSystem
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
 
     private ShockwaveOverlay _overlay = default!;
 

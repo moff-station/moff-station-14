@@ -10,7 +10,7 @@ namespace Content.Shared._Moffstation.Overlay.EntitySystems;
 /// </summary>
 public abstract partial class SharedShockwaveSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {
