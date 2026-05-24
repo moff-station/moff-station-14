@@ -133,31 +133,30 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
             break;
         }
-// Moffstation - Start - Paradox Clone integration test fix
+
+        // Moffstation - Start - Paradox Clone integration test fix
+        // Fallback: iterate all tiles on the grid systematically, picking a random one as the target coords.
         if (!found)
         {
-            this.AssertOrLogError("Failed to pick suitable random location for paradox clone spawn. Resorting to brute enumeration of tiles");
-            // Fallback: iterate all tiles on the grid systematically
-            // Collect valid positions and shuffle so it's not the same spot every time
-            var validTiles = new List<Vector2i>();
-            foreach (var gridTile in _map.GetAllTiles(targetGrid, gridComp))
+            Log.Warning(
+                "Failed to pick suitable random location for paradox clone spawn. Resorting to brute enumeration of tiles");
+            var tGrid = targetGrid; // Rebind to local to use in lambdas.
+            var map = Transform(tGrid).MapUid;
+            var allValidCoords = _map.GetAllTiles(targetGrid, gridComp)
+                .Select(t => t.GridIndices)
+                .Where(index => !(_atmosphere.IsTileSpace(tGrid, map, index)
+                                  || _atmosphere.IsTileAirBlockedCached(tGrid, index)))
+                .ToList();
+
+            RobustRandom.Shuffle(allValidCoords);
+            if (allValidCoords.TryFirstOrNull(out var first))
             {
-                var pos = gridTile.GridIndices;
-                if (!_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, pos)
-                    && !_atmosphere.IsTileAirBlockedCached(targetGrid, pos))
-                {
-                    validTiles.Add(pos);
-                }
-            }
-            if (validTiles.Count > 0)
-            {
-                RobustRandom.Shuffle(validTiles);
-                tile = validTiles[0];
-                targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
-                return true;
+                found = true;
+                targetCoords = _map.GridTileToLocal(tGrid, gridComp, first.Value);
             }
         }
-// Moffstation - End
+        // Moffstation - End
+
         return found;
     }
 
