@@ -26,7 +26,7 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
     private readonly SharedTransformSystem _transformSystem;
 
     private readonly ShaderInstance _shader;
-    private readonly int _instanceLimit = 10;
+    private const int _instanceLimit = 10;
     private float _distortionScale = 1.0f;
 
     private ShaderArgs? _shaderArgs;
