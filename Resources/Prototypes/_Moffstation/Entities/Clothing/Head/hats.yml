@@ -103,7 +103,7 @@
 
 #Clown
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadHatJesterAlt
   id: ClothingHeadHatHarlequin
   name: harlequin's hood
   description: A hood adorned with bells to entertain an audience
@@ -112,10 +112,6 @@
     sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
-      HeadTop : HEAD
 
 #Mime
 - type: entity

@@ -9,11 +9,12 @@ using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
 namespace Content.Client.Zombies;
 
-public sealed class ZombieSystem : SharedZombieSystem
+public sealed partial class ZombieSystem : SharedZombieSystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMindUpdateSystem = default!; // Moffstation - Zombies not getting added to their Hivemind
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+
+    [Dependency] private CollectiveMindUpdateSystem _collectiveMindUpdateSystem = default!; // Moffstation - Zombies not getting added to their Hivemind
 
     public override void Initialize()
     {
@@ -41,12 +42,7 @@ public sealed class ZombieSystem : SharedZombieSystem
 
     private void OnStartup(EntityUid uid, ZombieComponent component, ComponentStartup args)
     {
-        // Moffstation - Begin - Update to give zombies their collective mind communication
-        if (TryComp<CollectiveMindComponent>(uid, out var collective))
-        {
-            _collectiveMindUpdateSystem.UpdateCollectiveMind(uid, collective);
-        }
-        // Moffstation - End
+        _collectiveMindUpdateSystem.UpdateCollectiveMind(uid); // Moffstation - Give collective mind
         if (HasComp<VisualBodyComponent>(uid))
             return;
 

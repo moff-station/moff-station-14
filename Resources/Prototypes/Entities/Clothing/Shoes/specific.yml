@@ -34,9 +34,9 @@
   description: "The prankster's standard-issue clowning shoes. Damn they're huge!"
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/clown.rsi
+    sprite: _Moffstation/Clothing/Shoes/clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/clown.rsi
+    sprite: _Moffstation/Clothing/Shoes/clown.rsi # Moffstation
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepClown
@@ -55,9 +55,15 @@
   description: "When humor and footwear combine into new levels of absurdity."
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/clown_banana.rsi
+    sprite: _Moffstation/Clothing/Shoes/clown_banana.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/clown_banana.rsi
+    # Moffstation - Begin - New banana shoe sprites
+    sprite: _Moffstation/Clothing/Shoes/clown_banana.rsi
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+        offset: "0, -0.04"
+    # Moffstation - End
   # Moffstation - Begin - New Banana Shoes update!
   - type: FootstepModifier
     footstepSoundCollection:
@@ -83,9 +89,9 @@
   description: Made of refined bananium and shined with the pulp of a fresh banana peel. These make a flashy statement.
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/bling.rsi
+    sprite: _Moffstation/Clothing/Shoes/bling.rsi #Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/bling.rsi
+    sprite: _Moffstation/Clothing/Shoes/bling.rsi #Moffstation
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepClown
@@ -221,9 +227,9 @@
   description: A court jester's shoes, updated with modern squeaking technology.
   components:
     - type: Sprite
-      sprite: Clothing/Shoes/Specific/jester.rsi
+      sprite: _Moffstation/Clothing/Shoes/jester2.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Shoes/Specific/jester.rsi
+      sprite: _Moffstation/Clothing/Shoes/jester2.rsi # Moffstation
     - type: FootstepModifier
       footstepSoundCollection:
         collection: FootstepJester
@@ -238,9 +244,9 @@
   description: "Cursed pair of cluwne shoes."
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/cluwne.rsi
+    sprite: _Moffstation/Clothing/Shoes/cluwne.rsi
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/cluwne.rsi
+    sprite: _Moffstation/Clothing/Shoes/cluwne.rsi
   - type: Unremoveable
 
 - type: entity
@@ -251,16 +257,16 @@
   components:
   - type: Sprite
     state: "icon"
-    sprite: Clothing/Shoes/Specific/large_clown.rsi
+    sprite: _Moffstation/Clothing/Shoes/large_clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/large_clown.rsi
+    sprite: _Moffstation/Clothing/Shoes/large_clown.rsi # Moffstation
     clothingVisuals:
       shoes:
       - state: equipped-FEET
-        offset: "0, -0.02"
+        offset: "0, -0.08" # Moffstation
   - type: Item
     size: Small
-    sprite: Clothing/Shoes/Specific/large_clown.rsi
+    sprite: _Moffstation/Clothing/Shoes/large_clown.rsi # Moffstation
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8

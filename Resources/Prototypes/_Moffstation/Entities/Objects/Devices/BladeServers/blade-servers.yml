@@ -72,23 +72,122 @@
     speechVerb: Robotic
 
 - type: entity
-  id: ResearchAndDevelopmentBladeServer
   parent: [ BaseResearchAndDevelopmentServer, ConstructibleBladeServer ]
+  id: ResearchAndDevelopmentBladeServer
   name: R&D blade server
   description: Contains the collective knowledge of the station's scientists. Destroying it would send them back to the stone age. You don't want that do you?
   components:
   - type: BladeServer
     stripeColor: "#A331B9FF"
-  - type: Machine
-    board: ResearchAndDevelopmentServerMachineCircuitboard
 
 - type: entity
-  id: CrewMonitoringBladeServer
   parent: [ BaseCrewMonitoringServer, ConstructibleBladeServer ]
+  id: CrewMonitoringBladeServer
   name: crew monitoring blade server
   description: Receives and relays the status of all active suit sensors on the station.
   components:
   - type: BladeServer
     stripeColor: "#008C30FF"
-  - type: Machine
-    board: CrewMonitoringServerMachineCircuitboard
+
+# Telecomms
+
+- type: entity
+  parent: [ BaseTelecomServer, ConstructibleBladeServer ]
+  id: TelecomBladeServer
+  name: telecommunication blade server
+  description: When powered and filled with encryption keys it allows radio headset communication.
+  components:
+  - type: BladeServer
+    stripeColor: "#00FFFFFF"
+  - type: EncryptionKeyHolder
+    keySlots: 1 # Divergence from upstream's philosophy -- we want this to be one key per blade server.
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilled
+  suffix: Master
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMaster
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledCommon
+  suffix: Common
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledCargo
+  suffix: Cargo
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCargo
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledEngineering
+  suffix: Engineering
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineering
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledMedical
+  suffix: Medical
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMedical
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledScience
+  suffix: Science
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyScience
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledSecurity
+  suffix: Security
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledService
+  suffix: Service
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyService
+
+- type: entity
+  parent: TelecomBladeServer
+  id: TelecomBladeServerFilledCommand
+  suffix: Command
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommand

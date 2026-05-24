@@ -21,6 +21,16 @@
 
 - type: entity
   parent: MobMothroach
+  id: MobMothroachSyndie
+  suffix: Syndie
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Animals/mothroach/syndiemoach.rsi
+  - type: Clothing
+    sprite: _Moffstation/Mobs/Animals/mothroach/syndiemoach.rsi
+
+- type: entity
+  parent: MobMothroach
   id: MobMothroachMechroach
   suffix: Mechroach
   components:
@@ -45,7 +55,14 @@
       children:
       - id: MobMothroachRosy
       - id: MobMothroachDeathshead
+    - !type:GroupSelector
+      weight: 0.05
+      children:
       - id: MobMothroachMechroach
+    - !type:GroupSelector
+      weight: 0.005
+      children:
+      - id: MobMothroachSyndie
 
 - type: entity
   parent: MarkerBase

@@ -20,8 +20,8 @@ public sealed partial class GhostGui : UIWidget
     private int _prevNumberRoles;
 
     // Moffstation - Start - Respawn button
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
 
     private TimeSpan? _timeOfDeath;
     public _Moffstation.RespawnButton.GhostRespawnRulesWindow GhostRespawnRulesWindow { get; }

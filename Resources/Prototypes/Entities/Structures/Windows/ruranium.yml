@@ -9,8 +9,9 @@
   - type: Icon
     sprite: _Moffstation/Structures/Windows/reinforced_uranium_window.rsi # Moffstation
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: RGlass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -130,7 +131,7 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
     sprite: _Moffstation/Structures/Windows/reinforced_uranium_diagonal.rsi # Moffstation

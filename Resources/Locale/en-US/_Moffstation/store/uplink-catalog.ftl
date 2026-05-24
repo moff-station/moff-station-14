@@ -10,7 +10,7 @@ uplink-clothing-rocket-skates-name = Syndicate Rocket Skates
 uplink-clothing-rocket-skates-desc = An experimental prototype from Lumens Technologies, combining the benefits of rollerskates with the thrusting capacities of a rocket for maximum velocity.
 
 uplink-clothing-infiltrator-headset-name = Syndicate Infiltrator Headset
-uplink-clothing-infiltrator-headset-desc = A sleek headset designed for infiltration, the use of redspace technology allows it to hold up to 6 keys but it comes with no keys inside. Usage of Redspace is not covered by health insurance.
+uplink-clothing-infiltrator-headset-desc = A headset combining both chameleon and redspace technology. It can hold up to 6 keys but ships empty. Usage is not covered by health insurance.
 
 # Allies
 uplink-spider-grenade-name = Jar of Spiders

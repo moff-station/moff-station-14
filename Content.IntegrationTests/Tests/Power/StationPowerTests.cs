@@ -35,7 +35,16 @@ public sealed class StationPowerTests : GameTest
         "Snowball",
         "Reach",
         "Exo",
+        "Amber", // Moffstation
         "Frezon", // Moffstation
+        "Lambda", // Moffstation
+        "Ossuary", // Moffstation
+        "Skeld", // Moffstation
+        "Aspid", // Moffstation (From Harmony)
+        "Barratry", // Moffstation (From Harmony)
+        "Prime", // Moffstation (From Harmony)
+        "Scylla", // Moffstation (From Harmony)
+        "Wapiti", // Moffstation (From Harmony)
     ];
 
     public override PoolSettings PoolSettings => new ()

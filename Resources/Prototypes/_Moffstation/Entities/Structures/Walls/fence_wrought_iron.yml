@@ -8,8 +8,9 @@
   - type: Sprite
     sprite: _Moffstation/Structures/Walls/wrought_iron_fence.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
