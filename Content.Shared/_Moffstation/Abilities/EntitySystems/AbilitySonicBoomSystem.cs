@@ -69,10 +69,7 @@ public sealed class AbilitySonicBoomSystem : EntitySystem
                 pushbackRatio: 0.0f);
         }
 
-        // Trigger the shockwave
-        if (TryComp<ShockwaveComponent>(entity, out var comp))
-            _shockwave.Activate((entity, comp));
-
+        _manager.SpawnAttachedTo(entity.Comp.ShockwaveProto, Transform(entity).Coordinates);
         _audio.PlayPredicted(entity.Comp.Sound, entity.Owner, entity.Owner);
 
         _move.TryAddMovementSpeedModDuration(

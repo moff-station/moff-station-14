@@ -6,50 +6,37 @@ namespace Content.Shared._Moffstation.Overlay.Components;
 /// <summary>
 /// Holds the parameters for the shockwave overlay on an entity.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent]
 [Access(typeof(SharedShockwaveSystem))]
 public sealed partial class ShockwaveComponent : Component
 {
     /// <summary>
-    /// Intensity of the shockwave
+    /// Intensity of the shockwave.
     /// </summary>
     [DataField]
     public float Intensity = 10.0f;
 
     /// <summary>
-    /// Range of the shockwave
+    /// The width of the shockwave as it expands outward.
     /// </summary>
     [DataField]
-    public float Range = 5.0f;
+    public float Width = 0.1f;
 
     /// <summary>
-    /// Rate of falloff from the epicenter
+    /// Rate of falloff from the epicenter.
     /// </summary>
     [DataField]
-    public float FallOff = 1.0f;
+    public float FallOff = 40.0f;
+
+    /// <summary>
+    /// Power factor for the distance offset.
+    /// </summary>
+    [DataField]
+    public float PowerFactor = 0.8f;
 
     /// <summary>
     /// Timescale value for the shader.
     /// </summary>
     [DataField]
-    public float TimeScale = 0.5f;
-
-    /// <summary>
-    /// The start time for the shader.
-    /// This is set by the Overlay when active.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public TimeSpan StartTime = TimeSpan.Zero;
-
-    /// <summary>
-    /// The duration for how long to let the shader play out.
-    /// </summary>
-    [DataField]
-    public TimeSpan Duration = TimeSpan.FromSeconds(2.0f);
-
-    /// <summary>
-    /// Whether this shockwave is active or not.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool Active = false;
+    public float TimeScale = 1.0f;
 }

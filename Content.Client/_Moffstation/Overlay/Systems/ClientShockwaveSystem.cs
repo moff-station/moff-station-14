@@ -1,6 +1,6 @@
 using Content.Client._Moffstation.Overlay.Overlays;
+using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared._Moffstation.Overlay.EntitySystems;
-using JetBrains.Annotations;
 using Robust.Client.Graphics;
 
 namespace Content.Client._Moffstation.Overlay.Systems;
@@ -20,12 +20,17 @@ public sealed class ClientShockwaveSystem : SharedShockwaveSystem
         base.Initialize();
 
         _overlay = new ShockwaveOverlay();
+        SubscribeLocalEvent<ShockwaveComponent, ComponentInit>(OnCompInit);
+        SubscribeLocalEvent<ShockwaveComponent, ComponentShutdown>(OnCompShutdown);
+    }
+
+    private void OnCompInit(Entity<ShockwaveComponent> entity, ref ComponentInit args)
+    {
         _overlayMan.AddOverlay(_overlay);
     }
 
-    public override void Shutdown()
+    private void OnCompShutdown(Entity<ShockwaveComponent> entity, ref ComponentShutdown args)
     {
-        base.Shutdown();
         _overlayMan.RemoveOverlay<ShockwaveOverlay>();
     }
 }

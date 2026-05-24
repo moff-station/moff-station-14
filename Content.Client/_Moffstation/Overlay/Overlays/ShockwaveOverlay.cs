@@ -18,7 +18,6 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
     private static readonly ProtoId<ShaderPrototype> ShockwaveShader = "ShockwaveShader";
 
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
@@ -33,8 +32,9 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
 
     private IEnumerable<Vector2> _epicenters = [];
     private IEnumerable<float> _intensities = [];
-    private IEnumerable<float> _ranges = [];
+    private IEnumerable<float> _widths = [];
     private IEnumerable<float> _fallOffs = [];
+    private IEnumerable<float> _powerFactors = [];
     private IEnumerable<float> _timeScales = [];
 
     public override bool RequestScreenTexture => true;
@@ -63,21 +63,21 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
             return false;
 
         _instanceCount = 0;
-
-        _shockwaveSystem.UpdateComponents();
-
         var enumerator = _entityManager.AllEntityQueryEnumerator<ShockwaveComponent, TransformComponent>();
         while (enumerator.MoveNext(out var shockwaveComp, out var transformComp))
         {
-            if (!shockwaveComp.Active)
+            if (transformComp.MapID != args.MapId)
                 continue;
 
-            _epicenters = _epicenters.Append(
-                _eyeManager.WorldToScreen(
-                    _transformSystem.GetWorldPosition(transformComp)));
+            var screenCoords = args.Viewport.WorldToLocal(_transformSystem.GetWorldPosition(transformComp));
+            screenCoords.X = screenCoords.X/args.Viewport.Size.X;
+            screenCoords.Y = 1 - screenCoords.Y/args.Viewport.Size.Y;
+
+            _epicenters = _epicenters.Append(screenCoords);
             _intensities = _intensities.Append(shockwaveComp.Intensity * _distortionScale);
-            _ranges = _ranges.Append(shockwaveComp.Range * _distortionScale);
+            _widths = _widths.Append(shockwaveComp.Width * _distortionScale);
             _fallOffs = _fallOffs.Append(shockwaveComp.FallOff);
+            _powerFactors = _powerFactors.Append(shockwaveComp.PowerFactor * _distortionScale);
             _timeScales = _timeScales.Append(shockwaveComp.TimeScale);
 
             if (++_instanceCount >= _instanceLimit)
@@ -90,7 +90,7 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
     /// <inheritdoc cref="Overlay.Draw"/>
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (ScreenTexture == null)
+        if (ScreenTexture == null || args.Viewport.Eye == null)
             return;
 
         if (_instanceCount == 0)
@@ -100,9 +100,10 @@ public sealed class ShockwaveOverlay : Robust.Client.Graphics.Overlay
         var viewport = args.WorldBounds;
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+        _shader.SetParameter("RENDER_SCALE", args.Viewport.RenderScale);
         _shader.SetParameter("EPICENTERS", _epicenters.ToArray());
         _shader.SetParameter("INTENSITIES", _intensities.ToArray());
-        _shader.SetParameter("RANGES", _ranges.ToArray());
+        _shader.SetParameter("WIDTHS", _widths.ToArray());
         _shader.SetParameter("FALLOFFS", _fallOffs.ToArray());
         _shader.SetParameter("TIMESCALES", _timeScales.ToArray());
         _shader.SetParameter("COUNT", _instanceCount);

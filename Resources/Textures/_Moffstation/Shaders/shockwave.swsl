@@ -1,39 +1,49 @@
-// Taken from https://www.shadertoy.com/view/XsXGR7
+// Taken from https://www.shadertoy.com/view/llj3Dz with heavy modification by Southbridge
 uniform sampler2D SCREEN_TEXTURE;
+uniform highp vec2 RENDER_SCALE;
 uniform highp vec2[10] EPICENTERS;
 uniform highp float[10] INTENSITIES;
-uniform highp float[10] RANGES;
+uniform highp float[10] WIDTHS;
 uniform highp float[10] FALLOFFS;
+uniform highp float[10] POWERFACTORS;
 uniform highp float[10] TIMESCALES;
 uniform lowp int COUNT;
 
 void fragment()
 {
 	highp vec4 outputTexture = texture2D(SCREEN_TEXTURE, UV);
-	float offset = (TIME- floor(TIME))/TIME;
-	float currTimeUnscaled = (TIME)*(offset);
+	highp float offset = (TIME - floor(TIME))/TIME;
+	highp float currTimeUnscaled = (TIME)*(offset);
+	highp float screenRatio = SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
+
+	highp vec2 uvCoords = UV;
+	uvCoords.x *= screenRatio;
 
 	for (lowp int i = 0 ; i < COUNT ; i++)
     {
 		highp vec2 epicenter = EPICENTERS[i];
 		highp float intensity = INTENSITIES[i];
-		highp float range = RANGES[i];
+		highp float width = WIDTHS[i];
+		highp float powerFactor = POWERFACTORS[i];
 		highp float falloff = FALLOFFS[i];
 		highp float timescale = TIMESCALES[i];
 
 		highp float currTime = currTimeUnscaled * timescale;
+		epicenter.x *= screenRatio;
 
-		highp float dfrag = distance(UV, epicenter);
-		highp float currFalloff = falloff;
-		highp float shockwaveSize = (currFalloff * intensity * 0.5);
+		highp float distance = distance(uvCoords, epicenter) + 0.2;
+		highp vec2 direction = normalize(uvCoords - epicenter);
 
-		if (dfrag >= currTime - shockwaveSize && dfrag <= currTime + shockwaveSize)
+		if (distance >= currTime - width * 0.5 && distance <= currTime + width * 0.5)
 		{
-			highp float diff = dfrag - currTime;
-			highp float powDiff = 1.0 - pow(diff*range, currFalloff);
-			highp vec2 dir = normalize(UV - epicenter);
-			highp vec2 texCoord = dir * powDiff / currFalloff;
-			outputTexture += texture2D(SCREEN_TEXTURE, texCoord) + vec4(1.0, 0.0, 0.0, 1.0);
+			highp float diff = distance - currTime;
+			highp float powDiff = 1.0 - pow(abs(diff * intensity), powerFactor);
+			highp float diffTime = diff * powDiff;
+
+			highp vec2 texCoord = uvCoords + ((RENDER_SCALE * direction * diffTime) / (currTime * distance * falloff));
+
+			outputTexture = zTextureSpec(SCREEN_TEXTURE, texCoord);
+			outputTexture += (outputTexture * powDiff) / (currTime * distance * falloff);
 		}
     }
 

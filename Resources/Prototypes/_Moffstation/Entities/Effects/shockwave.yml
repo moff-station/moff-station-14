@@ -1,0 +1,10 @@
+- type: entity
+  id: EffectShockwave
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: Shockwave

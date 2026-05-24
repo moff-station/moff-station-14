@@ -47,6 +47,12 @@ public sealed partial class AbilitySonicBoomComponent : Component
     public EntProtoId ActionProto = "ActionSonicBoom";
 
     /// <summary>
+    /// The prototype of the shockwave prototype to spawn when activated.
+    /// </summary>
+    [DataField]
+    public EntProtoId ShockwaveProto = "EffectShockwave";
+
+    /// <summary>
     /// A place to store the action entity.
     /// </summary>
     [DataField]
