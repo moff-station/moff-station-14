@@ -135,6 +135,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 // Moffstation - Start - Paradox Clone integration test fix
         if (!found)
         {
+            this.AssertOrLogError("Failed to pick suitable random location for paradox clone spawn. Resorting to brute enumeration of tiles");
             // Fallback: iterate all tiles on the grid systematically
             // Collect valid positions and shuffle so it's not the same spot every time
             var validTiles = new List<Vector2i>();
