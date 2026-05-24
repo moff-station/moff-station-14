@@ -17,7 +17,7 @@ namespace Content.Shared._Moffstation.Abilities.EntitySystems;
 /// <summary>
 /// This handles the sonic boom ability when it is attached to and activated by an entity with the SonicBoomComponent.
 /// </summary>
-public sealed class AbilitySonicBoomSystem : EntitySystem
+public sealed partial class AbilitySonicBoomSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
