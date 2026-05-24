@@ -29,7 +29,6 @@ public sealed class AbilitySonicBoomSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly MovementModStatusSystem _move = default!;
-    [Dependency] private readonly SharedShockwaveSystem _shockwave = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

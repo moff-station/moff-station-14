@@ -3,6 +3,7 @@ using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared._Moffstation.Overlay.EntitySystems;
 using Robust.Client.Graphics;
 
+
 namespace Content.Client._Moffstation.Overlay.Systems;
 
 /// <summary>
@@ -20,9 +21,11 @@ public sealed class ClientShockwaveSystem : SharedShockwaveSystem
         base.Initialize();
 
         _overlay = new ShockwaveOverlay();
+
         SubscribeLocalEvent<ShockwaveComponent, ComponentInit>(OnCompInit);
         SubscribeLocalEvent<ShockwaveComponent, ComponentShutdown>(OnCompShutdown);
     }
+
 
     private void OnCompInit(Entity<ShockwaveComponent> entity, ref ComponentInit args)
     {

@@ -6,7 +6,7 @@ namespace Content.Shared._Moffstation.Overlay.Components;
 /// <summary>
 /// Holds the parameters for the shockwave overlay on an entity.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 [Access(typeof(SharedShockwaveSystem))]
 public sealed partial class ShockwaveComponent : Component
 {
@@ -20,7 +20,7 @@ public sealed partial class ShockwaveComponent : Component
     /// The width of the shockwave as it expands outward.
     /// </summary>
     [DataField]
-    public float Width = 0.1f;
+    public float Width = 0.05f;
 
     /// <summary>
     /// Rate of falloff from the epicenter.
@@ -35,8 +35,14 @@ public sealed partial class ShockwaveComponent : Component
     public float PowerFactor = 0.8f;
 
     /// <summary>
-    /// Timescale value for the shader.
+    /// Time scale to slow down or speed up the shockwave
     /// </summary>
     [DataField]
     public float TimeScale = 1.0f;
+
+    /// <summary>
+    /// Start time for when the shader starts.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan StartTime = TimeSpan.Zero;
 }
