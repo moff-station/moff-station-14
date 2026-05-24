@@ -19,7 +19,7 @@ public abstract partial class SharedShockwaveSystem : EntitySystem
         SubscribeLocalEvent<ShockwaveComponent, MapInitEvent>(OnMapInit);
     }
 
-    protected void OnMapInit(Entity<ShockwaveComponent> entity, ref MapInitEvent args)
+    private void OnMapInit(Entity<ShockwaveComponent> entity, ref MapInitEvent args)
     {
         entity.Comp.StartTime = _timing.CurTime;
         Dirty(entity,entity.Comp);

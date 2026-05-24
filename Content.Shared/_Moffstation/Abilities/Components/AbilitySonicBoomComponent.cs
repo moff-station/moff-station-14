@@ -38,7 +38,7 @@ public sealed partial class AbilitySonicBoomComponent : Component
     /// The sound effect to play when the sonic boom is performed.
     /// </summary>
     [DataField]
-    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Effects/Grenades/Supermatter/supermatter_start.ogg");
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Voice/Moth/moth_scream.ogg");
 
     /// <summary>
     /// The prototype of the action given to the entity with this component.
@@ -47,10 +47,10 @@ public sealed partial class AbilitySonicBoomComponent : Component
     public EntProtoId ActionProto = "ActionSonicBoom";
 
     /// <summary>
-    /// The prototype of the shockwave prototype to spawn when activated.
+    /// The prototype of the shockwave to spawn when activated.
     /// </summary>
     [DataField]
-    public EntProtoId ShockwaveProto = "EffectShockwave";
+    public EntProtoId ShockwaveProto = "EffectShockwaveSonicBoom";
 
     /// <summary>
     /// A place to store the action entity.

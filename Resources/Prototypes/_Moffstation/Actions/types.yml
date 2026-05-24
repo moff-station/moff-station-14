@@ -24,9 +24,9 @@
   - type: Action
     checkCanInteract: false
     icon:
-      sprite: _Moffstation/Interface/Actions/actions_vampire.rsi
-      state: glare
+      sprite: _Moffstation/Interface/Actions/actions_mothroach.rsi
+      state: shockwave
     itemIconStyle: BigAction
-    useDelay: 1.0
+    useDelay: 45.0
   - type: InstantAction
     event: !type:AbilitySonicBoomEvent
