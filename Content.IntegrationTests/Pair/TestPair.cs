@@ -4,7 +4,10 @@ using Content.Client.IoC;
 using Content.Client.Parallax.Managers;
 using Content.IntegrationTests.Tests.Destructible;
 using Content.IntegrationTests.Tests.DeviceNetwork;
+using Content.IntegrationTests._Moffstation.Antag; //Moffstation
+using Content.Server._Moffstation.Antag; //Moffstation
 using Content.Server.GameTicking;
+using Content.Server.IoC; //Moffstation
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Robust.Shared.ContentPack;
@@ -121,6 +124,13 @@ public sealed partial class TestPair : RobustIntegrationTest.TestPair
             var entSysMan = IoCManager.Resolve<IEntitySystemManager>();
             entSysMan.LoadExtraSystemType<DeviceNetworkTestSystem>();
             entSysMan.LoadExtraSystemType<TestDestructibleListenerSystem>();
+
+            // Moffstation - Start - Dummy Antag Weights
+            IoCManager.Resolve<IModLoader>().SetModuleBaseCallbacks(new ServerModuleTestingCallbacks
+            {
+                ServerBeforeIoC = () => IoCManager.Register<IWeightedAntagManager, DummyWeightedAntagManager>(true)
+            });
+            // Moffstation - End
         };
         return opts;
     }

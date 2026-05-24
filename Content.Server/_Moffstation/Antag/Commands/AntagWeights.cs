@@ -12,7 +12,7 @@ namespace Content.Server._Moffstation.Antag.Commands;
 public sealed partial class AntagWeights : LocalizedEntityCommands
 {
     [Dependency] private IPlayerManager _players = default!;
-    [Dependency] private WeightedAntagManager _antagWeight = default!;
+    [Dependency] private IWeightedAntagManager _antagWeight = default!; //Moffstation Dummy Antag Weights
 
     public override string Command => "antagweights";
 
@@ -43,7 +43,7 @@ public sealed partial class AntagWeights : LocalizedEntityCommands
 public sealed partial class SetAntagWeight : LocalizedEntityCommands
 {
     [Dependency] private IPlayerManager _players = default!;
-    [Dependency] private WeightedAntagManager _antagWeight = default!;
+    [Dependency] private IWeightedAntagManager _antagWeight = default!; //Moffstation Dummy Antag Weights
     [Dependency] private IAdminLogManager _adminLogger = default!;
 
     public override string Command => "setantagweight";
