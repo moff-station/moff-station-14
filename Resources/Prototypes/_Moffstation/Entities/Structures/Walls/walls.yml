@@ -5,10 +5,12 @@
   suffix: USSP
   components:
   - type: Sprite
-    drawdepth: Walls
     sprite: _Moffstation/Structures/Walls/soviet_plastitanium.rsi
   - type: Icon
     sprite: _Moffstation/Structures/Walls/soviet_plastitanium.rsi
+    - type: IconSmooth
+      key: walls
+      base: soviet_plastitanium
 
 - type: entity
   parent: WallPlastitaniumDiagonal
