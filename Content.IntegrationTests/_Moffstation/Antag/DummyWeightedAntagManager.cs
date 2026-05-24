@@ -6,15 +6,12 @@ namespace Content.IntegrationTests._Moffstation.Antag;
 
 public sealed class DummyWeightedAntagManager : IWeightedAntagManager
 {
-    private readonly ISawmill _logger;
+    private readonly ISawmill _logger = Logger.GetSawmill("antag_weight");
 
-    public DummyWeightedAntagManager()
+    public void Initialize()
     {
-        _logger = Logger.GetSawmill("antag_weight");
         _logger.Info("Using DummyWeightedAntagManager — antag weights will not be persisted");
     }
-
-    public void Initialize() { }
     public void Shutdown() { }
     public void SetWeight(NetUserId userId, int newWeight) { }
     public int GetWeight(NetUserId userId) => 0;
