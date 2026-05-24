@@ -104,10 +104,10 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
             }
 
             var result = new StringBuilder();
-            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", agent)));
-            if (agent == Loc.GetString("traitor-round-end-agent-name"))
+            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", Loc.GetString(agent))));
+            if (agent == "traitor-round-end-agent-name" || agent == Loc.GetString("traitor-round-end-agent-name"))
             {
-                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", agent)));
+                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", Loc.GetString(agent))));
             }
             // next add all the players with its own prepended text
             foreach (var (prepend, minds) in summary)
@@ -118,7 +118,7 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
                 // add space between the start text and player list
                 result.AppendLine();
 
-                AddSummary(result, agent, minds, ev);   // Moffstation - Custom objective summary
+                AddSummary(result, Loc.GetString(agent), minds, ev);   // Moffstation - Custom objective summary
             }
 
             ev.AddLine(result.AppendLine().ToString());
