@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices.JavaScript;
 using Content.Shared._Moffstation.Overlay.Components;
 using Content.Shared._Moffstation.Overlay.EntitySystems;
 using Content.Shared.CCVar;
@@ -26,10 +27,10 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
     private readonly SharedTransformSystem _transformSystem;
 
     private readonly ShaderInstance _shader;
-    private const int _instanceLimit = 10;
+    private const int InstanceLimit = 10;
     private float _distortionScale = 1.0f;
 
-    private ShaderArgs? _shaderArgs;
+    private ShaderArgs _shaderArgs;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -42,6 +43,8 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
         _shader = _prototypeManager.Index(ShockwaveShader).InstanceUnique();
         _transformSystem = _entityManager.System<SharedTransformSystem>();
         _configManager.OnValueChanged(CCVars.ReducedMotion, OnReducedMotionChanged, invokeImmediately: true);
+
+        _shaderArgs = new ShaderArgs(InstanceLimit);
     }
 
     private void OnReducedMotionChanged(bool reducedMotion)
@@ -55,7 +58,7 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
         if (args.MapId == MapId.Nullspace)
             return false;
 
-        _shaderArgs = new ShaderArgs();
+        _shaderArgs.Clear();
 
         var enumerator = _entityManager.AllEntityQueryEnumerator<ShockwaveComponent, TransformComponent>();
         while (enumerator.MoveNext(out var shockwaveComp, out var transformComp))
@@ -77,7 +80,7 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
                 shockwaveComp.TimeScale
             );
 
-            if (_shaderArgs.Count >= _instanceLimit)
+            if (_shaderArgs.Count >= InstanceLimit)
                 break;
         }
 
@@ -90,7 +93,7 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
         if (ScreenTexture == null || args.Viewport.Eye == null)
             return;
 
-        if (_shaderArgs == null || _shaderArgs.Count == 0)
+        if (_shaderArgs.Count == 0)
             return;
 
         var worldHandle = args.WorldHandle;
@@ -105,21 +108,43 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
         worldHandle.UseShader(_shader);
         worldHandle.DrawRect(viewport, Color.White);
         worldHandle.UseShader(null);
-
-        _shaderArgs = null;
     }
 
-    private sealed class ShaderArgs()
+    private struct ShaderArgs
     {
-        private IEnumerable<Vector2> _epicenters = [];
-        private IEnumerable<float> _intensities = [];
-        private IEnumerable<float> _widths = [];
-        private IEnumerable<float> _fallOffs = [];
-        private IEnumerable<float> _powerFactors = [];
-        private IEnumerable<float> _startTimes = [];
-        private IEnumerable<float> _timeScales = [];
+        private readonly List<Vector2> _epicenters;
+        private readonly List<float> _intensities;
+        private readonly List<float> _widths;
+        private readonly List<float> _fallOffs;
+        private readonly List<float> _powerFactors;
+        private readonly List<float> _startTimes;
+        private readonly List<float> _timeScales ;
 
         public int Count;
+
+        public ShaderArgs(int instanceLimit)
+        {
+            _epicenters = new List<Vector2>(instanceLimit);
+            _intensities = new List<float>(instanceLimit);
+            _widths = new List<float>(instanceLimit);
+            _fallOffs = new List<float>(instanceLimit);
+            _powerFactors = new List<float>(instanceLimit);
+            _startTimes = new List<float>(instanceLimit);
+            _timeScales = new List<float>(instanceLimit);
+        }
+
+        public void Clear()
+        {
+            _epicenters.Clear();
+            _intensities.Clear();
+            _widths.Clear();
+            _fallOffs.Clear();
+            _powerFactors.Clear();
+            _startTimes.Clear();
+            _timeScales.Clear();
+
+            Count = 0;
+        }
 
         public void Append(
             Vector2 epicenter,
@@ -131,13 +156,13 @@ public sealed partial class ShockwaveOverlay : Robust.Client.Graphics.Overlay
             float timeScale
             )
         {
-            _epicenters = _epicenters.Append(epicenter);
-            _intensities = _intensities.Append(intensity);
-            _widths = _widths.Append(width);
-            _fallOffs = _fallOffs.Append(fallOff);
-            _powerFactors = _powerFactors.Append(powerFactor);
-            _startTimes = _startTimes.Append(startTime);
-            _timeScales = _timeScales.Append(timeScale);
+            _epicenters.Add(epicenter);
+            _intensities.Add(intensity);
+            _widths.Add(width);
+            _fallOffs.Add(fallOff);
+            _powerFactors.Add(powerFactor);
+            _startTimes.Add(startTime);
+            _timeScales.Add(timeScale);
             Count++;
         }
 
