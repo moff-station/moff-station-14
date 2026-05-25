@@ -24,15 +24,15 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Objectives;
 
-public sealed class ObjectivesSystem : SharedObjectivesSystem
+public sealed partial class ObjectivesSystem : SharedObjectivesSystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Dependency] private SharedJobSystem _job = default!;
 
     private IEnumerable<string>? _objectives;
 
@@ -104,10 +104,10 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             }
 
             var result = new StringBuilder();
-            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", agent)));
-            if (agent == Loc.GetString("traitor-round-end-agent-name"))
+            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", Loc.GetString(agent)))); // Moffstation - Add missing loc resolution
+            if (agent == "traitor-round-end-agent-name" || agent == Loc.GetString("traitor-round-end-agent-name")) // Moffstation - I don't know if this is expecting the `antag` string to be localized or not, so let's check against both
             {
-                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", agent)));
+                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", Loc.GetString(agent)))); // Moffstation - Add missing loc resolution
             }
             // next add all the players with its own prepended text
             foreach (var (prepend, minds) in summary)
@@ -118,7 +118,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                 // add space between the start text and player list
                 result.AppendLine();
 
-                AddSummary(result, agent, minds, ev);   // Moffstation - Custom objective summary
+                AddSummary(result, Loc.GetString(agent), minds, ev);   // Moffstation - Custom objective summary
             }
 
             ev.AddLine(result.AppendLine().ToString());

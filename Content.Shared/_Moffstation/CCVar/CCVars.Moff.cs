@@ -64,4 +64,22 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<bool>
         GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Whether players should spawn at arrivals at the start of the round
+    /// </summary>
+    public static readonly CVarDef<bool> StartAtArrivals =
+        CVarDef.Create("shuttle.start_at_arrivals", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     If players start the round at arrivals, how long should it be until latejoins can enter from station cryosleep?
+    /// </summary>
+    public static readonly CVarDef<int> SpawnPreferenceDelay =
+        CVarDef.Create("shuttle.spawn_preference_delay", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     The maximum range people are allowed to travel from the center of the arrivals map
+    /// </summary>
+    public static readonly CVarDef<float> ArrivalsRange =
+        CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
 }

@@ -1,14 +1,13 @@
 using Content.Shared.Actions;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
-using Robust.Shared.RichText;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Umbra.Examine.SetExamine;
 
-public abstract class SharedSetExamineSystem : EntitySystem
+public abstract partial class SharedSetExamineSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
 
     public override void Initialize()
     {

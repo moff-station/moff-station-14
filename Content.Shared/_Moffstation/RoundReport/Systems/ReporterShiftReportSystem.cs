@@ -9,7 +9,7 @@ namespace Content.Shared._Moffstation.RoundReport.Systems;
 public sealed class ReporterShiftReportSystem : EntitySystem
 {
 
-    // [Dependency] private readonly PaperSystem _paperSystem = default!;
+    // [Dependency] private PaperSystem _paperSystem = default!;
 
     public override void Initialize()
     {

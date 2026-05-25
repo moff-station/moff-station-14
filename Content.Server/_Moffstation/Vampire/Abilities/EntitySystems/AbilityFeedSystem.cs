@@ -21,15 +21,15 @@ namespace Content.Server._Moffstation.Vampire.Abilities.EntitySystems;
 /// which is used by vampires (or possibly other blood-sucking creatures) to extract blood and BloodEssence from
 /// another creature.
 /// </summary>
-public sealed class AbilityFeedSystem : EntitySystem
+public sealed partial class AbilityFeedSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly BloodEssenceUserSystem _bloodEssence = default!;
-    [Dependency] private readonly VampireSystem _vampire = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private BloodEssenceUserSystem _bloodEssence = default!;
+    [Dependency] private VampireSystem _vampire = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
     {

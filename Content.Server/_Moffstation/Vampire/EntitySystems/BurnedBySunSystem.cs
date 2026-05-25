@@ -14,16 +14,16 @@ namespace Content.Server._Moffstation.Vampire.EntitySystems;
 /// This system interfaces with the <see cref="Content.Shared._Moffstation.Vampire.Components.BurnedBySunComponent"/>
 /// to deal damage to entities with the component when they are exposed to the sun.
 /// </summary>
-public sealed class BurnedBySunSystem : EntitySystem
+public sealed partial class BurnedBySunSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefs = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly FlammableSystem _flammable = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private ITileDefinitionManager _tileDefs = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
 
     public override void Initialize()
     {
