@@ -10,7 +10,7 @@
     sprite: Clothing/OuterClothing/Coats/bomber.rsi
 
 - type: entity
-  parent: [ ClothingOuterArmorBase, ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSecurityContraband ]
+  parent: [ClothingOuterStorageFoldableBase, BaseSecurityContraband] # Moffstation
   id: ClothingOuterCoatDetective
   # Moffstation - Begin - Detective-Outfit-Sprites
   name: detective armored jacket
@@ -27,9 +27,18 @@
         children:
         - id: SmokingPipeFilledTobacco
         - id: FlippoEngravedLighter
+  # Moffstation - Start
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.70
+        Heat: 0.80
+# Moffstation - End
 
 - type: entity
-  parent: [ClothingOuterCoatDetective] # Moffstation - Detective-Outfit-Sprites - not sure why the detective steal item is a thin not given to the detective with their alternative outerclothing
+  parent: ClothingOuterCoatDetective # Moffstation
   id: ClothingOuterCoatDetectiveLoadoutGrey
   name: noir armored trenchcoat
   description: Ah, your trusty coat. There's a few tears here and there, giving it a more timely look. Or at least, that's what you told yourself when you found out gettin' it repaired would set you back 200 spesos.
@@ -38,7 +47,6 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/detective_grey.rsi # Moffstation - Detective-Outfit-Sprites
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/detective_grey.rsi # Moffstation - Detective-Outfit-Sprites
-
 
 - type: entity
   parent: ClothingOuterCoatDetective
@@ -358,9 +366,9 @@
   description: Meant for a clown of the cloth.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/clownpriest.rsi #Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/clownpriest.rsi #Moffstation
 
 - type: entity
   parent: [ClothingOuterStorageBase, BaseMajorContraband]

@@ -1,6 +1,11 @@
 using System.Linq;
+using Content.Server._Moffstation.Spawners;
+using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Shared.CCVar;
+using Content.Server.GameTicking.Events;
+using Content.Server.Preferences.Managers;
+using Content.Shared._Moffstation.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -20,22 +25,31 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private IConfigurationManager _cfgManager = default!;
     [Dependency] private GameTicker _gameTicker = default!;
-
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private IServerPreferencesManager _pref = default!;
 
     public override void Initialize()
     {
+        SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn);
+    }
+
+    private void OnRoundStart(RoundStartingEvent args)
+    {
+        var manager = Spawn();
+        var comp = AddComp<ArrivalsSpawnManagerComponent>(manager);
+        comp.StationSpawnLimit = _random.Prob(comp.StationSpawnChance) ? _random.Next(1, comp.StationSpawnMaxLimit) : 0;
     }
 
     private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
         // Check if cvar disables this feature
-        if (!_cfgManager.GetCVar(CCVars.StartAtArrivals))
+        if (!_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
             return;
 
         // If it's a latejoin and past the forced arrivals timer, allow choosing cryosleep
         if (args is { LateJoin: true, Profile.SpawnPriority: not SpawnPriorityPreference.Arrivals } &&
-            _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan) > TimeSpan.FromMinutes(_cfgManager.GetCVar(CCVars.SpawnPreferenceDelay)))
+            _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan) > TimeSpan.FromMinutes(_cfgManager.GetCVar(MoffCCVars.SpawnPreferenceDelay)))
             return;
 
         // Ensure they have a job, so that we won't end up making mobs spawn on arrivals.
@@ -47,6 +61,20 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
             return;
         if (job.IgnoreArrivals)
             return;
+
+        var manager = GetManager();
+        // Check if they're gonna be in the opening shift
+        if (manager != null
+            && manager.StationSpawnCount < manager.StationSpawnLimit
+            && !args.LateJoin
+            && _pref.GetPreferences(args.Player.UserId).SelectedCharacter.AntagPreferences.Contains(manager.OpeningShiftProto))
+        {
+            manager.StationSpawnCount++;
+            var message = Loc.GetString("opening-shift-greeting");
+            var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+            _chat.ChatMessageToOne(ChatChannel.Server, message, wrappedMessage, default, false, args.Player.Channel, Color.CornflowerBlue);
+            return;
+        }
 
         var spawnsList = new List<Entity<ArrivalsSpawnPointComponent>>();
         var query = EntityQueryEnumerator<ArrivalsSpawnPointComponent>();
@@ -90,5 +118,15 @@ public sealed partial class ArrivalsSpawnPointSystem : EntitySystem
                 return;
             }
         }
+    }
+
+    private ArrivalsSpawnManagerComponent? GetManager()
+    {
+        var query = EntityQueryEnumerator<ArrivalsSpawnManagerComponent>();
+        while (query.MoveNext(out _, out var manager))
+        {
+            return manager;
+        }
+        return null;
     }
 }

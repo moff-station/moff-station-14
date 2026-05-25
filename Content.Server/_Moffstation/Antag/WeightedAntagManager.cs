@@ -7,7 +7,7 @@ using Robust.Shared.Network;
 
 namespace Content.Server._Moffstation.Antag;
 
-public sealed partial class WeightedAntagManager
+public sealed partial class WeightedAntagManager : IWeightedAntagManager //Moffstation - Dummay Weighted Antags
 {
     [Dependency] private IServerDbManager _db = default!;
     [Dependency] private ITaskManager _taskManager = default!;

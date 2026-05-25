@@ -5268,6 +5268,13 @@ Entries:
   id: 1351
   time: '2026-04-30T16:26:34.000'
   url: https://github.com/moff-station/moff-station-14/pull/1351
+- author: Centronias
+  changes:
+  - message: Telecom servers are now available in blade form.
+    type: add
+  id: 1352
+  time: '2026-05-22T18:42:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1352
 - author: SeaWyrm
   changes:
   - message: 'Ossuary: Removed externals access from evac airlocks'
@@ -5549,6 +5556,13 @@ Entries:
   id: 1391
   time: '2026-05-14T17:54:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1391
+- author: DuckManZach
+  changes:
+  - message: Added the opening shift!
+    type: add
+  id: 1394
+  time: '2026-05-22T21:13:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1394
 - author: Callmore
   changes:
   - message: Moth noises are now played correctly.
@@ -5598,6 +5612,13 @@ Entries:
   id: 1408
   time: '2026-05-18T22:40:58.000'
   url: https://github.com/moff-station/moff-station-14/pull/1408
+- author: Dave
+  changes:
+  - message: New Clown Clothing Sprites!
+    type: add
+  id: 1409
+  time: '2026-05-22T20:28:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1409
 - author: Centronias
   changes:
   - message: The ATS hijack beacon's store listing no longer references Moffstation.
@@ -5605,6 +5626,13 @@ Entries:
   id: 1410
   time: '2026-05-21T21:37:27.000'
   url: https://github.com/moff-station/moff-station-14/pull/1410
+- author: Exbedio
+  changes:
+  - message: New Command Scarfs for cap, ce & qm
+    type: add
+  id: 1412
+  time: '2026-05-24T23:49:32.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1412
 - author: compilatron
   changes:
   - message: Added textiles to Frezon HoP office
@@ -5641,11 +5669,25 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1424
 - author: Tortosaur
   changes:
+  - message: The Infiltrator headset now has chameleon capabilities
+    type: tweak
+  id: 1425
+  time: '2026-05-22T20:28:24.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1425
+- author: Tortosaur
+  changes:
   - message: Chembelts can once again store jugs and have 2 more space inside of them.
     type: tweak
   id: 1426
   time: '2026-05-21T22:26:52.000'
   url: https://github.com/moff-station/moff-station-14/pull/1426
+- author: Dave
+  changes:
+  - message: Security Outfits adjusted!
+    type: tweak
+  id: 1427
+  time: '2026-05-22T19:58:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1427
 - author: DuckManZach
   changes:
   - message: Changed playercounts for pirates
@@ -5676,5 +5718,73 @@ Entries:
   id: 1431
   time: '2026-05-21T23:09:53.000'
   url: https://github.com/moff-station/moff-station-14/pull/1431
+- author: Centronias
+  changes:
+  - message: Added Renee Kurtzkazaltz's personal item.
+    type: add
+  id: 1433
+  time: '2026-05-25T00:40:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1433
+- author: Centronias
+  changes:
+  - message: Users with case-sensitive file systems will no longer see the blade server
+      rack's rack power button as an error texture.
+    type: fix
+  id: 1434
+  time: '2026-05-24T23:49:32.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1434
+- author: Dave
+  changes:
+  - message: New sprites to Various Misc Clothing Items
+    type: add
+  id: 1439
+  time: '2026-05-24T23:49:32.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1439
+- author: Southbridge
+  changes:
+  - message: Added the Syndicate Mothroach to the Syndicate Telecrystal store.
+    type: add
+  - message: Gave the Syndicate Mothroach a Sonic Boom ability.
+    type: add
+  id: 1444
+  time: '2026-05-24T23:49:32.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1444
+- author: Dave
+  changes:
+  - message: new mime clothing sprites!
+    type: add
+  id: 1445
+  time: '2026-05-24T23:15:37.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1445
+- author: Centronias
+  changes:
+  - message: The round-end screen should no longer contain unlocalized antagonist
+      names like "thief-round-end-agent-name".
+    type: fix
+  id: 1449
+  time: '2026-05-24T22:51:31.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1449
+- author: Centronias
+  changes:
+  - message: Cyborgs can now select personal items as part of their loadout
+    type: add
+  - message: The requirement that a character's name must match a personal item's
+      owner is slightly relaxed to also allow selecting the personal item if the LOADOUT
+      name matches the personal item's owner. For example, a cyborg with a loadout
+      name override matching a personal item can use that personal item even if the
+      normal humanoid name of the profile does not match.
+    type: tweak
+  - message: Bintendo's hat can spawn on a cyborg's head if it's selected.
+    type: add
+  id: 1452
+  time: '2026-05-25T01:39:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1452
+- author: Centronias
+  changes:
+  - message: '`ghostrespawn` has been tweaked again. See if it works for you now!'
+    type: fix
+  id: 1453
+  time: '2026-05-25T06:34:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1453
 Name: Mofflog
 Order: -2
