@@ -5572,6 +5572,13 @@ Entries:
   id: 1405
   time: '2026-05-19T18:24:54.000'
   url: https://github.com/moff-station/moff-station-14/pull/1405
+- author: SeaWyrm
+  changes:
+  - message: Added corner pieces for directional windows
+    type: add
+  id: 1406
+  time: '2026-05-21T18:55:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1406
 - author: Centronias
   changes:
   - message: The `ghostrespawn` command no longer thinks you have been dead for negative
@@ -5591,5 +5598,83 @@ Entries:
   id: 1408
   time: '2026-05-18T22:40:58.000'
   url: https://github.com/moff-station/moff-station-14/pull/1408
+- author: Centronias
+  changes:
+  - message: The ATS hijack beacon's store listing no longer references Moffstation.
+    type: fix
+  id: 1410
+  time: '2026-05-21T21:37:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1410
+- author: compilatron
+  changes:
+  - message: Added textiles to Frezon HoP office
+    type: add
+  - message: Added emergency lights to Frezon
+    type: add
+  - message: Added more posters to Frezon
+    type: add
+  - message: Added a spare pacman to Frezon
+    type: add
+  id: 1418
+  time: '2026-05-21T20:27:28.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1418
+- author: DuckManZach
+  changes:
+  - message: Nanotrasen has mandated some stations be more crowded.
+    type: tweak
+  id: 1419
+  time: '2026-05-21T03:55:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1419
+- author: Tortosaur
+  changes:
+  - message: Toolboxes now damage when thrown.
+    type: add
+  id: 1421
+  time: '2026-05-21T19:38:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1421
+- author: DuckManZach
+  changes:
+  - message: Maints doors are now color-coded by access.
+    type: add
+  id: 1424
+  time: '2026-05-21T07:12:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1424
+- author: Tortosaur
+  changes:
+  - message: Chembelts can once again store jugs and have 2 more space inside of them.
+    type: tweak
+  id: 1426
+  time: '2026-05-21T22:26:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1426
+- author: DuckManZach
+  changes:
+  - message: Changed playercounts for pirates
+    type: tweak
+  id: 1428
+  time: '2026-05-21T21:59:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1428
+- author: Centronias
+  changes:
+  - message: Alice Caholic's personal item.
+    type: add
+  id: 1429
+  time: '2026-05-21T23:32:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1429
+- author: Centronias
+  changes:
+  - message: Salt and Pepper bags (similar to flour bags) to the ChefVend.
+    type: add
+  - message: Salt packets from the ChefVend.
+    type: remove
+  id: 1430
+  time: '2026-05-21T22:47:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1430
+- author: DuckManZach
+  changes:
+  - message: Added new FTL sounds
+    type: add
+  id: 1431
+  time: '2026-05-21T23:09:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1431
 Name: Mofflog
 Order: -2
