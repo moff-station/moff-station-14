@@ -1,9 +1,11 @@
+using System.Numerics;
 using Content.Shared._Moffstation.Abilities.Components;
 using Content.Shared._Moffstation.Abilities.Events;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -47,15 +49,12 @@ public sealed partial class AbilitySonicBoomSystem : EntitySystem
             !_timing.IsFirstTimePredicted)
             return;
 
-        var netEntity = _manager.GetNetEntity(entity.Owner);
-        _random.SetSeed(netEntity.Id + (int)_timing.CurTick.Value);
-
+        var rand = SharedRandomExtensions.PredictedRandom(_timing, _manager.GetNetEntity(entity.Owner));
         var entityCoords = _transform.GetMoverCoordinates(entity);
 
         foreach (var target in _lookup.GetEntitiesInRange(entity, entity.Comp.FlingRadius, LookupFlags.Uncontained))
         {
-            var thrownVec = _random.NextVector2(0.05f) +
-                            (_transform.GetMoverCoordinates(target).Position - entityCoords.Position);
+            var thrownVec = NextThrowDir() + (_transform.GetMoverCoordinates(target).Position - entityCoords.Position);
 
             _throwing.TryThrow(
                 target,
@@ -75,5 +74,11 @@ public sealed partial class AbilitySonicBoomSystem : EntitySystem
         _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(entity):user} used the sonic boom ability.");
 
         args.Handled = true;
+
+        // This function is ripped out of `IRobustRandom` and reproduced here because `SharedRandomExtensions.PredictedRandom` gives us a `System.Random` instead of an `IRobustRandom` :^)
+#pragma warning disable CS0618 // Type or member is obsolete
+        // Waiting for engine predicted random :skull:
+        Vector2 NextThrowDir() => rand.NextAngle().RotateVec(new Vector2(rand.NextFloat(0, 0.05f), 0));
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
