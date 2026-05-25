@@ -200,8 +200,8 @@
   parent: ClothingMaskBase
   id: ClothingMaskClownBase
   abstract: true
-  name: clown wig and mask
-  description: A true prankster's facial attire. A clown is incomplete without his wig and mask.
+  name: clown mask #Moffstation - No more wig
+  description: A true prankster's facial attire. A clown is incomplete without their mask. # Moffstation - No more wig :3
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Mask/clown.rsi
@@ -221,34 +221,27 @@
     stealGroup: ClownMask
   # Imp - Begin - Tourists
 
+#Moffstation - Start - No more wig so not need to be able to fold it
 - type: entity
-  parent: [ClothingMaskClownBase, BaseFoldable]
+  parent: [ClothingMaskClownBase]
   id: ClothingMaskClown
-  description: A clown mask featuring a foldable wig; a true prankster's attire.
   components:
-  - type: Appearance
-  - type: Foldable
-    canFoldInsideContainer: true
-  - type: FoldableClothing
-    foldedEquippedPrefix: opened
-    foldedHeldPrefix: opened
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/clown.rsi # Moffstation
-    layers:
-    - state: icon
-      map: [ "unfoldedLayer" ]
-    - state: icon-opened
-      map: [ "foldedLayer" ]
-      visible: false
+    sprite: _Moffstation/Clothing/Mask/clown.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Mask/clown.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
   - type: Tag
     tags:
     - ClownMask
     - HamsterWearable
     - WhitelistChameleon
     - SurvivalBoxInsertable # Moffstation - (Survival Box Improvements)
-  - type: HideLayerClothing
-    slots:
-    - Snout
+# Moffstation - End - No more wig so not need to be able to fold it
 
 - type: entity
   parent: ClothingMaskClownBase
@@ -275,7 +268,7 @@
   parent: [ClothingMaskClownBase] #Moffstation - Clown Mask in Loadout
   id: ClothingMaskClownSecurity
   name: cool clown wig and mask # Moffstation - Clown Mask renamed to be Cool
-  description: A debatably oxymoronic but protective mask and wig.
+  description: A debatably oxymoronic but protective mask. # Moffstation - No more wig
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Mask/clown_security.rsi # Moffstation
@@ -401,9 +394,9 @@
 - type: entity
   parent: ClothingMaskClownBase
   id: ClothingMaskCluwne
-  name: cluwne face and hair
+  name: cluwne face # Moffstation - No more wig
   suffix: Unremoveable
-  description: Cursed cluwne face and hair.
+  description: a disfigured joyless snarl covers the cluwne face, what joy can they truely even feel? # Moffstation - No more wig
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Mask/cluwne.rsi # Moffstation

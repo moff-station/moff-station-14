@@ -54,7 +54,7 @@
 
 #Detective
 - type: entity
-  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase]
+  parent: ClothingOuterCoatDetective
   id: ClothingOuterCoatSleuth
   name: sleuth trenchcoat
   description: A 20th-century multi-purpose trenchcoat. Someone who wears this is looking to see who is at Falk.
@@ -63,13 +63,6 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
-  - type: StorageFill
-    contents:
-    - id: CigarGold
-    - id: CigarGold
-    - id: FlippoEngravedLighter
-  - type: ExplosionResistance
-    damageCoefficient: 1 #its a coat. it doesnt do shit # Moffstation - End (New Detective Outfits)
 
 #Scientist
 - type: entity

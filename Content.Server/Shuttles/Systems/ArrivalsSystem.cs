@@ -15,6 +15,7 @@ using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Damage.Components;
@@ -68,9 +69,9 @@ public sealed partial class ArrivalsSystem : EntitySystem
 
     [Dependency] private BatterySystem _batterySystem = default!;  // Moffstation - Arrivals fixes
 
-    private EntityQuery<PendingClockInComponent> _pendingQuery;
-    private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery;
-    private EntityQuery<MobStateComponent> _mobQuery;
+    [Dependency] private EntityQuery<PendingClockInComponent> _pendingQuery = default!;
+    [Dependency] private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery = default!;
+    [Dependency] private EntityQuery<MobStateComponent> _mobQuery = default!;
 
     /// <summary>
     /// If enabled then spawns players on an alternate map so they can take a shuttle to the station.
@@ -112,10 +113,6 @@ public sealed partial class ArrivalsSystem : EntitySystem
         SubscribeLocalEvent<ArrivalsShuttleComponent, FirstArrivalEvent>(OnFirstArrival); // Moffstation - First arrival event
 
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(SendDirections);
-
-        _pendingQuery = GetEntityQuery<PendingClockInComponent>();
-        _blacklistQuery = GetEntityQuery<ArrivalsBlacklistComponent>();
-        _mobQuery = GetEntityQuery<MobStateComponent>();
 
         // Don't invoke immediately as it will get set in the natural course of things.
         Enabled = _cfgManager.GetCVar(CCVars.ArrivalsShuttles);
@@ -457,7 +454,7 @@ public sealed partial class ArrivalsSystem : EntitySystem
     private void OnFirstArrival(Entity<ArrivalsShuttleComponent> ent, ref FirstArrivalEvent ev)
     {
         // Fixes to problems exclusive to the group arrivals start
-        if (_cfgManager.GetCVar(CCVars.StartAtArrivals))
+        if (_cfgManager.GetCVar(MoffCCVars.StartAtArrivals))
         {
             if (_station.GetStationInMap(Transform(ent.Owner).MapID) is not { } station)
                 return;
@@ -593,7 +590,7 @@ public sealed partial class ArrivalsSystem : EntitySystem
             _biomes.EnsurePlanet(mapUid, _protoManager.Index(template));
             var restricted = new RestrictedRangeComponent
             {
-                Range = _cfgManager.GetCVar(CCVars.ArrivalsRange) // Moffstation - Custom arrivals settings
+                Range = _cfgManager.GetCVar(MoffCCVars.ArrivalsRange) // Moffstation - Custom arrivals settings
             };
             AddComp(mapUid, restricted);
         }
