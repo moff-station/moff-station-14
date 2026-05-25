@@ -59,7 +59,7 @@ public sealed partial class LoadoutPrototype : IPrototype, IEquipmentLoadout
     // Moffstation - Begin - Special loadouts; enables eg. personal items on cyborgs
     /// A dictfrom <see cref="JobPrototype.JobEntity"/> to special loadouts to apply to them.
     [DataField]
-    public Dictionary<ProtoId<JobPrototype>, SpecialLoadout> SpecialJobLoadouts = new();
+    public Dictionary<ProtoId<RoleLoadoutPrototype>, SpecialLoadout> SpecialJobLoadouts = new();
     // Moffstation - End
 }
 
