@@ -21,7 +21,6 @@ public sealed partial class AbilitySonicBoomSystem : EntitySystem
     [Dependency] private SharedActionsSystem _action = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private EntityManager _manager = default!;
     [Dependency] private ThrowingSystem _throwing = default!;
