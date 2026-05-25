@@ -142,9 +142,9 @@
   description: A beret with the cargo department's insignia.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
