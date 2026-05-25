@@ -554,7 +554,7 @@
   name: mime winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: MIME-icon
   - type: Item
@@ -564,7 +564,7 @@
       right:
       - state: MIME-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: MIME-equipped-OUTERCLOTHING

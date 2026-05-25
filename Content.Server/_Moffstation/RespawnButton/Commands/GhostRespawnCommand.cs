@@ -14,12 +14,14 @@ namespace Content.Server._Moffstation.RespawnButton.Commands;
 [AnyCommand]
 public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
 {
+    public const string CommandName = "ghostrespawn";
+
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
-    public override string Command => "ghostrespawn";
+    public override string Command => CommandName;
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {

@@ -187,27 +187,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &green-scrubs "#77ed94"
+      color: &color-white "#FFFFFF"
     - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-white "#FFFFFF"
+      color: &green-scrubs "#77ed94"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: *color-white
+        color: *green-scrubs
       right:
       - state: inhand-right
-        color: *color-white
+        color: *green-scrubs
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/scrubs.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *green-scrubs
+        color: *color-white
       - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-white
+        color: *green-scrubs
 # Moffstation - End
 
 - type: entity
@@ -347,27 +347,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &color-darkblue "#547abb"
+      color: &color-orange "#db542e"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-orange "#db542e"
+      color: &color-darkblue "#547abb"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: *color-darkblue
+        color: *color-orange
       right:
       - state: inhand-right
-        color: *color-darkblue
+        color: *color-orange
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *color-darkblue
+        color: *color-orange
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-orange
+        color: *color-darkblue
     # Moffstation - End
 
 - type: entity
@@ -549,9 +549,9 @@
   description: ...
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/mime.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/mime.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/mime.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/mime.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -1271,9 +1271,9 @@
   description: Black as a starry night.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hawaiblack.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaiblack.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/hawaiblack.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaiblack.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -1282,9 +1282,9 @@
   description: Blue as a huge ocean.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hawaiblue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaiblue.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/hawaiblue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaiblue.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -1293,9 +1293,9 @@
   description: Red as a juicy watermelons.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaired.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/hawaired.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaired.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -1304,9 +1304,9 @@
   description: Yellow as a bright sun.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hawaiyellow.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaiyellow.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/hawaiyellow.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hawaiyellow.rsi # Moffstation
 
 - type: entity
   parent: [UnsensoredClothingUniformBase, BaseSyndicateContraband] # Moffstation - (No Sensors for Enemy Gear)

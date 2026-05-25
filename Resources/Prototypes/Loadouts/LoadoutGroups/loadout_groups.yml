@@ -183,7 +183,10 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
-  - CaptainCapeFormal # Moffstation
+  # Moffstation - Start
+  - CaptainCapeFormal
+  - CaptainScarf
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -857,6 +860,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterScarf # Moffstation
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -1009,6 +1013,7 @@
   loadouts:
   - ChiefEngineerCloak
   - ChiefEngineerMantle
+  - CeScarf # Moffstation
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
