@@ -96,22 +96,14 @@
   suffix: Rainbow
   components:
   - type: Sprite
-    sprite: _Moffstation/Mobs/Animals/mothroach/greyscale.rsi
+    sprite: _Moffstation/Mobs/Animals/mothroach/rainbow.rsi
   - type: Clothing
-    sprite: _Moffstation/Mobs/Animals/mothroach/greyscale.rsi
+    sprite: _Moffstation/Mobs/Animals/mothroach/rainbow.rsi
   - type: PointLight
     radius: 1.5
     energy: 2
   - type: RgbLightController
     layers: [ 0 ]
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: inhand-left
-        shader: unshaded
-      right:
-      - state: inhand-right
-        shader: unshaded
 
 - type: entity
   parent: MobMothroach
