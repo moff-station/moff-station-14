@@ -90,6 +90,41 @@
     speechVerb: Robotic
     speechSounds: Pai
 
+- type: entity
+  parent: MobMothroach
+  id: MobMothroachRainbow
+  suffix: Rainbow
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Animals/mothroach/greyscale.rsi
+  - type: Clothing
+    sprite: _Moffstation/Mobs/Animals/mothroach/greyscale.rsi
+  - type: PointLight
+    radius: 1.5
+    energy: 2
+  - type: RgbLightController
+    layers: [ 0 ]
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        shader: unshaded
+      right:
+      - state: inhand-right
+        shader: unshaded
+
+- type: entity
+  parent: MobMothroach
+  id: MobMothroachRandomized
+  suffix: Randomized
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Animals/mothroach/randomized.rsi
+  - type: Clothing
+    sprite: _Moffstation/Mobs/Animals/mothroach/randomized.rsi
+  - type: RandomSprite
+
+
 #random spawner - add variations to the list
 - type: entityTable
   id: RandomMothroach
