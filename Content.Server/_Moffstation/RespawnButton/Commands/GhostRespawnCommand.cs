@@ -14,12 +14,14 @@ namespace Content.Server._Moffstation.RespawnButton.Commands;
 [AnyCommand]
 public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
 {
+    public const string CommandName = "ghostrespawn";
+
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
-    public override string Command => "ghostrespawn";
+    public override string Command => CommandName;
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -55,7 +57,7 @@ public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
         }
 
         var respawnDelay = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
-        var serverTime = _gameTiming.ServerTime;
+        var serverTime = _gameTiming.RealTime;
         var remainingTime = ghost.TimeOfDeath + respawnDelay - serverTime;
 
         if (remainingTime > TimeSpan.Zero)
@@ -63,7 +65,7 @@ public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
             shell.WriteLine(
                 Loc.GetString(
                     "cmd-ghostrespawn-error-too-soon",
-                    ("timeElapsed", double.Round((ghost.TimeOfDeath - serverTime).TotalSeconds)),
+                    ("timeElapsed", double.Round((serverTime - ghost.TimeOfDeath).TotalSeconds)),
                     ("timeRequired", double.Round(respawnDelay.TotalSeconds))
                 )
             );

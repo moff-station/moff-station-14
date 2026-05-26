@@ -1772,7 +1772,7 @@
     allowedEmotes: ['Squeak']
   - type: Sprite
     drawdepth: SmallMobs
-    sprite: Mobs/Animals/mouse.rsi
+    sprite: _Moffstation/Mobs/Animals/mouse.rsi #Moffstation
     layers:
     - map: ["enum.DamageStateVisualLayers.Base", "movement"]
       state: mouse-0
@@ -1788,7 +1788,7 @@
     heldPrefix: 0
   - type: Clothing
     quickEquip: false
-    sprite: Mobs/Animals/mouse.rsi
+    sprite: _Moffstation/Mobs/Animals/mouse.rsi #Moffstation
     equippedPrefix: 0
     slots:
     - HEAD

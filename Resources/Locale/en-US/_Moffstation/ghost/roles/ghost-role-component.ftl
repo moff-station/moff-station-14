@@ -37,3 +37,7 @@ ghost-role-information-wild-human-description = You are a wild humanoid, illiter
 # Wizards
 ghost-role-information-wizard-duelist-name = Wizard Duelist
 ghost-role-information-wizard-duelist-desc = YER A WIZARD! Prove you're the best the space wizard federation has to offer!
+
+# Syndicate Mothroach
+ghost-role-information-syndicate-mothroach-name = Syndicate Mothroach
+ghost-role-information-syndicate-mothroach-description = A mothroach in its own little blood red suit. How adorable!
