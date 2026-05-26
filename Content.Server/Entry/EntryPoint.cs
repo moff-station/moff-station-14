@@ -83,7 +83,7 @@ namespace Content.Server.Entry
         [Dependency] private ServerUpdateManager _updateManager = default!;
         [Dependency] private ServerFeedbackManager _feedbackManager = null!;
 
-        [Dependency] private WeightedAntagManager _weightedAntags = default!; // Moffstation
+        [Dependency] private IWeightedAntagManager _weightedAntags = default!; // Moffstation
 
         public override void PreInit()
         {
