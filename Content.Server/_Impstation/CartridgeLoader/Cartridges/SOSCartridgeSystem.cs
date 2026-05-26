@@ -51,7 +51,7 @@ public sealed partial class SOSCartridgeSystem : EntitySystem
                 ent.Comp.HelpChannel,
                 Loc.GetString(ent.Comp.HelpMessage,
                     ("name", ent.Comp.LocalizedDefaultName),
-                    ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(ent.Owner)))), // Moffstation
+                    ("location", FormattedMessage.RemoveMarkupPermissive(_navMap.GetNearestBeaconString(args.Loader)))), // Moffstation
                 ent.Comp.LocalizedNotificationMessage);
         }
         else
@@ -76,7 +76,7 @@ public sealed partial class SOSCartridgeSystem : EntitySystem
                         ent.Comp.HelpChannel,
                         Loc.GetString(ent.Comp.HelpMessage,
                             ("name", idCardComp.FullName ?? ent.Comp.LocalizedDefaultName),
-                            ("location",  FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(ent.Owner)))), // Moffstation
+                            ("location", FormattedMessage.RemoveMarkupPermissive(_navMap.GetNearestBeaconString(args.Loader)))), // Moffstation
                         Loc.GetString(_random.Prob(ent.Comp.FunnyChance)
                             ? ent.Comp.LocalizedFunnyNotificationMessage
                             : ent.Comp.LocalizedNotificationMessage));
