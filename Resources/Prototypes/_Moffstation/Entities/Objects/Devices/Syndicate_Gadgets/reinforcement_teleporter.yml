@@ -17,6 +17,8 @@
   - type: EmitSoundOnUse
     sound: /Audio/Voice/Moth/moth_chitter.ogg
 
+- type: entity
+  parent: ReinforcementRadio
   id: ReinforcementRadioSyndicateSyndiCatReject
   name: syndicat reject reinforcement radio
   description: Calls in an untrained syndicat.
