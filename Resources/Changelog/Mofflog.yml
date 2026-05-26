@@ -5563,6 +5563,15 @@ Entries:
   id: 1394
   time: '2026-05-22T21:13:13.000'
   url: https://github.com/moff-station/moff-station-14/pull/1394
+- author: Dave
+  changes:
+  - message: Adds the Cheese Eater
+    type: add
+  - message: New Rat King, Rat Servant, Mouse sprites
+    type: add
+  id: 1396
+  time: '2026-05-25T18:17:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1396
 - author: Callmore
   changes:
   - message: Moth noises are now played correctly.
@@ -5653,6 +5662,14 @@ Entries:
   id: 1419
   time: '2026-05-21T03:55:48.000'
   url: https://github.com/moff-station/moff-station-14/pull/1419
+- author: Tortosaur
+  changes:
+  - message: Hushup bundle now comes with 5 more shells and a marked coin with a coin
+      toss mechanic.
+    type: tweak
+  id: 1420
+  time: '2026-05-26T10:36:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1420
 - author: Tortosaur
   changes:
   - message: Toolboxes now damage when thrown.
@@ -5764,5 +5781,51 @@ Entries:
   id: 1449
   time: '2026-05-24T22:51:31.000'
   url: https://github.com/moff-station/moff-station-14/pull/1449
+- author: Centronias
+  changes:
+  - message: Cyborgs can now select personal items as part of their loadout
+    type: add
+  - message: The requirement that a character's name must match a personal item's
+      owner is slightly relaxed to also allow selecting the personal item if the LOADOUT
+      name matches the personal item's owner. For example, a cyborg with a loadout
+      name override matching a personal item can use that personal item even if the
+      normal humanoid name of the profile does not match.
+    type: tweak
+  - message: Bintendo's hat can spawn on a cyborg's head if it's selected.
+    type: add
+  id: 1452
+  time: '2026-05-25T01:39:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1452
+- author: Centronias
+  changes:
+  - message: '`ghostrespawn` has been tweaked again. See if it works for you now!'
+    type: fix
+  id: 1453
+  time: '2026-05-25T06:34:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1453
+- author: Dave
+  changes:
+  - message: new cargo clothing sprites
+    type: add
+  id: 1454
+  time: '2026-05-25T19:24:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1454
+- author: Centronias
+  changes:
+  - message: Candice Clown's personal item
+    type: add
+  - message: Jace Finlay's personal item now hides hair and other face layers.
+    type: tweak
+  id: 1455
+  time: '2026-05-25T18:54:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1455
+- author: Huaqas
+  changes:
+  - message: Using a Chameleon Projector on a Playing Card, Hand or Deck no longer
+      turns you invisible.
+    type: fix
+  id: 1458
+  time: '2026-05-26T15:50:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1458
 Name: Mofflog
 Order: -2

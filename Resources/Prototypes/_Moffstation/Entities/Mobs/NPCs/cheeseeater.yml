@@ -1,0 +1,38 @@
+﻿- type: entity
+  parent: MobMouse
+  id: MobCheeseEater
+  name: cheese eater
+  description: I give my life-, not for honor, but for you~ Cheese Eater~...
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Moffstation/Mobs/Animals/cheeseeater.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+      state: cheeseeater
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: cheeseeater-moving
+    noMovementLayers:
+      movement:
+        state: cheeseeater
+  - type: Clothing
+    equippedPrefix: 1
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: cheeseeater
+      Critical:
+        Base: dead
+      Dead:
+        Base: splat
+  - type: Item
+    size: Tiny
+    heldPrefix: 1
+  - type: Stealth
+    enabledOnDeath: false
+    maxVisibility: 1.2
+  - type: StealthOnMove
+    passiveVisibilityRate: -0.5
+    movementVisibilityRate: 0.5
