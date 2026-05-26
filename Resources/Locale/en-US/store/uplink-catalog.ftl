@@ -439,9 +439,6 @@ uplink-slipocalypse-clustersoap-desc = Scatters arounds small pieces of syndicat
 uplink-mobcat-microbomb-name = SyndiCat Teleporter
 uplink-mobcat-microbomb-desc = Call in a handy cat equipped with a microbomb implant. Explodes when seriously injured. Can bite painfully.
 
-uplink-mobcat-reject-name = SyndiCat Reject Teleporter
-uplink-mobcat-reject-desc = Call in an untrained SyndiCat. It isn't trained, and it doesn't contain a bomb, so it serves best as a distraction. You can only adopt one of them.
-
 uplink-chameleon-projector-name = Chameleon Projector
 uplink-chameleon-projector-desc = Disappear in plain sight by creating a hologram of an item around you. Do not use this to play the game "Object Search".
 
