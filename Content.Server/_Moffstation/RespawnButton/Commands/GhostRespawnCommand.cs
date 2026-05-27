@@ -57,7 +57,7 @@ public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
         }
 
         var respawnDelay = TimeSpan.FromSeconds(_configurationManager.GetCVar(MoffCCVars.RespawnTime));
-        var serverTime = _gameTiming.ServerTime;
+        var serverTime = _gameTiming.RealTime;
         var remainingTime = ghost.TimeOfDeath + respawnDelay - serverTime;
 
         if (remainingTime > TimeSpan.Zero)
@@ -65,7 +65,7 @@ public sealed partial class GhostRespawnCommand : LocalizedEntityCommands
             shell.WriteLine(
                 Loc.GetString(
                     "cmd-ghostrespawn-error-too-soon",
-                    ("timeElapsed", double.Round((ghost.TimeOfDeath - serverTime).TotalSeconds)),
+                    ("timeElapsed", double.Round((serverTime - ghost.TimeOfDeath).TotalSeconds)),
                     ("timeRequired", double.Round(respawnDelay.TotalSeconds))
                 )
             );

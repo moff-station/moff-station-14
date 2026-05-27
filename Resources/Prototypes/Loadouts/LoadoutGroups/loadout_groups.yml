@@ -922,8 +922,11 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
-  - CargoTechnicianWindbreaker # Moffstation - Start - (Cargo Outfits)
-  - SeniorCargoWintercoat # Moffstation - End - (Cargo Outfits)
+# Moffstation - Start
+  - CourierWintercoat
+  - CargoTechnicianWindbreaker
+  - SeniorCargoWintercoat
+# Moffstation - End
 
 - type: loadoutGroup
   id: CargoTechnicianShoes

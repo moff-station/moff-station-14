@@ -442,9 +442,9 @@
   description: 'What can brown do for you?'
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]

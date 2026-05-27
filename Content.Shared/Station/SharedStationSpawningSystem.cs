@@ -52,6 +52,31 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
         EquipRoleName(entity, loadout, roleProto);
     }
 
+    // Moffstation - Begin - Enable special per-role loadouts on loadout protos. Enables personal items on cyborgs.
+    public void EquipSpecialRoleLoadout(EntityUid entity, RoleLoadout loadout, RoleLoadoutPrototype roleProto)
+    {
+        // Order loadout selections by the order they appear on the prototype.
+        foreach (var group in loadout.SelectedLoadouts.OrderBy(x => roleProto.Groups.FindIndex(e => e == x.Key)))
+        {
+            foreach (var items in group.Value)
+            {
+                if (!PrototypeManager.TryIndex(items.Prototype, out var loadoutProto))
+                {
+                    Log.Error($"Unable to find loadout prototype for {items.Prototype}");
+                    continue;
+                }
+
+                if (loadoutProto.SpecialJobLoadouts.TryGetValue(roleProto.ID, out var specialLoadout))
+                {
+                    EquipStartingGear(entity, specialLoadout, raiseEvent: false);
+                }
+            }
+        }
+
+        EquipRoleName(entity, loadout, roleProto);
+    }
+    // Moffstation - End
+
     /// <summary>
     /// Applies the role's name as applicable to the entity.
     /// </summary>

@@ -1,0 +1,76 @@
+- type: constructionGraph
+  id: Stairsbase
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: stairsMetal
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 5
+    - to: stairMetalWhite
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 5
+    - to: stairMetalDark
+      steps:
+      - material: Steel
+        amount: 5
+        doAfter: 5
+    - to: stairWood
+      steps:
+      - material: WoodPlank
+        amount: 5
+        doAfter: 5
+
+  - node: stairsMetal
+    entity: Stairs
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Screwing
+        doAfter: 4
+
+  - node: stairMetalWhite
+    entity: StairWhite
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Screwing
+        doAfter: 4
+
+  - node: stairMetalDark
+    entity: StairDark
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 5
+      steps:
+      - tool: Screwing
+        doAfter: 4
+
+  - node: stairWood
+    entity: StairWood
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 5
+      steps:
+      - tool: Screwing
+        doAfter: 4
