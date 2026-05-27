@@ -257,12 +257,13 @@
   components:
   - type: Sprite
     layers:
-    - state: security
+    - state: generic
     - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
       state: icon-investigation
   - type: ItemBorgModule
     hands:
     - item: ForensicScanner
+    - item: LogProbe
     - item: HandLabeler
     - item: TapeRecorder
     - hand:
@@ -272,7 +273,7 @@
           components:
           - FitsInTapeRecorder
   - type: BorgModuleIcon
-    icon: { sprite: _Moffstation/Interface/Actions/action_borg.rsi, state: generic-treatment-module }
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: investigation-module }
 
 # Science Modules
 - type: entity
