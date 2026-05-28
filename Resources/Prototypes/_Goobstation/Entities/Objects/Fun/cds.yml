@@ -147,7 +147,7 @@
   description: A weird cd disk, something tells you that this one doesn't contain ads.
 
 - type: entity
-  parent: CdDiskWeird
+  parent: [CdDiskWeird, BaseSyndicateContraband]
   name: cd disk (commander announcement)
   id: CdDiskCommanderAnnouncement
   components:
@@ -158,7 +158,7 @@
       path: /Audio/_Goobstation/RadioStation/misc/commander_announcement.ogg
 
 - type: entity
-  parent: CdDiskWeird
+  parent: [CdDiskWeird, BaseSyndicateContraband]
   name: cd disk (commander figurines)
   id: CdDiskCommanderFigurines
   components:
@@ -169,7 +169,7 @@
       path: /Audio/_Goobstation/RadioStation/misc/commander_figurines.ogg
 
 - type: entity
-  parent: CdDiskWeird
+  parent: [CdDiskWeird, BaseSyndicateContraband]
   name: cd disk (commander resignation)
   id: CdDiskCommanderResignation
   components:
@@ -180,7 +180,7 @@
       path: /Audio/_Goobstation/RadioStation/misc/commander_resignation.ogg
 
 - type: entity
-  parent: CdDiskWeird
+  parent: [CdDiskWeird, BaseSyndicateContraband]
   name: cd disk (commander support)
   id: CdDiskCommanderSupport
   components:
