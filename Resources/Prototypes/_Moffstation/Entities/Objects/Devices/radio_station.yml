@@ -1,3 +1,4 @@
+# Ideally all of these flatpacks can be removed one we can map patch these onto upstream maps.
 - type: entity
   parent: BaseFlatpackNoTool
   id: StationRadioServerFlatpack
@@ -32,3 +33,21 @@
   components:
   - type: Flatpack
     entity: VinylPlayer
+
+- type: entity 
+  parent: BaseFlatpackNoTool
+  id: CdRackFilledFlatpack
+  name: cd rack flatpack
+  description: A flatpack used for constructing a rack designed to store CDs. Comes with CDs included!
+  components:
+  - type: Flatpack
+    entity: CdRackFilled
+
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: CrateRadioStationVinylsFlatpack
+  name: vinyls crate flatpack
+  description: A flatpack used for constructing a crate with a collection of random vinyls inside!
+  components:
+  - type: Flatpack
+    entity: CrateRadioStationVinyls
