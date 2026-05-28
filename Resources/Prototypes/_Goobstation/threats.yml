@@ -2,23 +2,29 @@
 - type: weightedRandom
   id: NumberStationThreats
   weights:
-    LoneOperative: 1
+    # Major Threats
+    LoneOp: 1
     Dragon: 0.3
-    WizardMidRoundThreat: 0.3
+    Wizard: 0.3
     Revolutionary: 0.1
+    # Moderate Threats
+    NinjaBackup: 1
+    Eeeplet: 0.8
+    Rod: 0.75
+    Pirate: 0.3
+    # Minor Threats
+    Tourists: 0.75
+    Clown: 0.2
+    # Bad Luck
+    DeadDrop: 0.05
 
 # Threats
-- type: ninjaHackingThreat
-  id: LoneOperative
-  announcement: terror-lone-operative
-  rule: LoneOpsSpawn
-
-- type: ninjaHackingThreat
-  id: WizardMidRoundThreat
-  announcement: terror-wizard
-  rule: WizardMidround
-
 - type: ninjaHackingThreat
   id: Revolutionary
   announcement: terror-lone-operative # Uses the same announcement as lone op to not metagame.
   rule: RevolutionaryMidround
+
+- type: ninjaHackingThreat
+  id: DeadDrop
+  announcement: station-syndicate-dead-drop-announcement
+  rule: SyndicateDeadDrop
