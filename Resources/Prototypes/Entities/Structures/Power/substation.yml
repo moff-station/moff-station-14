@@ -46,6 +46,10 @@
     interfaces:
       enum.BatteryUiKey.Key:
         type: BatteryBoundUserInterface
+      # Moffstation - Begin - Expanded Ai Whitelist
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+      # Moffstation - End
   - type: ActivatableUI
     key: enum.BatteryUiKey.Key
 
@@ -150,7 +154,12 @@
     requirePower: true
     highVoltageNode: input
     mediumVoltageNode: output
-  - type: StationAiWhitelist # Moffstation - Expanded Ai Whitelist
+  # Moffstation - Begin - Expanded Ai Whitelist
+  - type: StationAiWhitelist
+  - type: Wires
+    boardName: wires-board-name-substation
+    layoutId: ComputerAi
+  # Moffstation - End
 
 # Compact Wall Substation Base
 - type: entity
