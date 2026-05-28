@@ -1,0 +1,24 @@
+# threats called in by playing the Number Station CD
+- type: weightedRandom
+  id: NumberStationThreats
+  weights:
+    LoneOperative: 1
+    Dragon: 0.3
+    WizardMidRoundThreat: 0.3
+    Revolutionary: 0.1
+
+# Threats
+- type: ninjaHackingThreat
+  id: LoneOperative
+  announcement: terror-lone-operative
+  rule: LoneOpsSpawn
+
+- type: ninjaHackingThreat
+  id: WizardMidRoundThreat
+  announcement: terror-wizard
+  rule: WizardMidround
+
+- type: ninjaHackingThreat
+  id: Revolutionary
+  announcement: terror-lone-operative # Uses the same announcement as lone op to not metagame.
+  rule: RevolutionaryMidround
