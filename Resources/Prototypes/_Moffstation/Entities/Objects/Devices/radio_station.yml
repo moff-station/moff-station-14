@@ -1,0 +1,34 @@
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: StationRadioServerFlatpack
+  name: station radio server flatpack
+  description: A flatpack used for constructing a station radio equipment.
+  components:
+  - type: Flatpack
+    entity: StationRadioServer
+
+- type: entity
+  parent: StationRadioServerFlatpack
+  id: StationRadioRigFlatpack
+  name: station radio rig flatpack
+  components:
+  - type: Flatpack
+    entity: StationRadioRig
+
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: TapeDeckFlatpack
+  name: tape deck flatpack
+  description: A flatpack used for constructing equipment for playing back tapes.
+  components:
+  - type: Flatpack
+    entity: TapeDeck
+
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: VinylPlayerFlatpack
+  name: vinyl player flatpack
+  description: A flatpack used for constructing equipment for playing vinyl and cd disks.
+  components:
+  - type: Flatpack
+    entity: VinylPlayer
