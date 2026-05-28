@@ -6,7 +6,6 @@
     LoneOp: 1
     Dragon: 0.3
     Wizard: 0.3
-    Revolutionary: 0.1
     # Moderate Threats
     NinjaBackup: 1
     Eeeplet: 0.8
@@ -19,11 +18,6 @@
     DeadDrop: 0.05
 
 # Threats
-- type: ninjaHackingThreat
-  id: Revolutionary
-  announcement: terror-lone-operative # Uses the same announcement as lone op to not metagame.
-  rule: RevolutionaryMidround
-
 - type: ninjaHackingThreat
   id: DeadDrop
   announcement: station-syndicate-dead-drop-announcement
