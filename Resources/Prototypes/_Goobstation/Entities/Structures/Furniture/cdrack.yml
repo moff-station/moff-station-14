@@ -17,7 +17,6 @@
     fillBaseName: cd
   - type: Damageable
     damageModifierSet: Wood
-    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities

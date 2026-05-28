@@ -11,7 +11,6 @@
   - type: EmbeddableProjectile
     sound: /Audio/Weapons/star_hit.ogg
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Wood
   - type: Destructible
     thresholds:
@@ -151,10 +150,6 @@
   - type: Sprite
     state: banana-vinyl-disk
   - type: Slippery
-  - type: StepTrigger
-    triggerGroups:
-      types:
-      - SlipEntity
   - type: CollisionWake
     enabled: false
   - type: Physics

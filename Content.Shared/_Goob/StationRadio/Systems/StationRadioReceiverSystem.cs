@@ -9,8 +9,8 @@ namespace Content.Shared._Goob.StationRadio.Systems;
 
 public sealed class StationRadioReceiverSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPowerReceiverSystem _power = default!;
     public override void Initialize()
     {
         base.Initialize();
