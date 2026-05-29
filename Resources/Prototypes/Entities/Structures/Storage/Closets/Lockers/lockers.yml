@@ -73,7 +73,7 @@
     stateDoorClosed: cap_door
   - type: AccessReader
     access: [["Captain"]]
-  # Moffstation - Make captains locker harder to steal
+  # Moffstation - Begin - Make captains locker harder to steal
   - type: LockedAnchorable
   - type: Transform
     anchored: true
