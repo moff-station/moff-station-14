@@ -22,6 +22,7 @@ public sealed partial class SOSCartridgeSystem : EntitySystem
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IRobustRandom _random = default!;
+
     [Dependency] private NavMapSystem _navMap = default!; // Moffstation
 
     public override void Initialize()
