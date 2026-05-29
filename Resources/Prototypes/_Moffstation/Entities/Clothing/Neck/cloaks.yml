@@ -23,3 +23,36 @@
     requiredSlot:
     - neck
     slot: head
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfHOS
+  name: head of Security's formal scarf
+  description: A fancy scarf with lavish gold embellishments. Will remind any bad actors about who is the true master of arms.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/hos-cape.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/hos-cape.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfHOP
+  name: head of Personnel's formal scarf
+  description: A fancy scarf with lavish gold embellishments. Will show people who is the one in charge of access.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/hop-scarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/hop-scarf.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfRD
+  name: research director's lavish scarf
+  description: A fancy scarf resembling a double helix. Will remind any ancestors who the mast of genetic research is.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/rd-scarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/rd-scarf.rsi

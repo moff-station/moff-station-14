@@ -14,7 +14,7 @@ namespace Content.Shared.SprayPainter;
 // Additions to SharedSprayPainterSystem which are particular to GasTankVisuals.
 public abstract partial class SharedSprayPainterSystem
 {
-    [Dependency] private readonly GasTankVisualsSystem _gasTankVisuals = default!;
+    [Dependency] private GasTankVisualsSystem _gasTankVisuals = default!;
 
     private void InitializeGasTankPainting()
     {

@@ -6,11 +6,11 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Moffstation.Speech;
 
-public sealed class LongSpeechSystem : EntitySystem
+public sealed partial class LongSpeechSystem : EntitySystem
 {
-    [Dependency] private readonly SpeechSoundSystem _speechSound = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private SpeechSoundSystem _speechSound = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     public override void Update(float frameTime)
     {

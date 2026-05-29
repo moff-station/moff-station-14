@@ -9,29 +9,29 @@
       tags: # ignore "WhitelistChameleon" tag
       - ClothMade
       - Recyclable
+  # Moffstation - Start
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
       layers:
       - state: icon
         color: "#3f3f3f"
-      - state: trinkets-icon
+      - state: basics-trinkets-icon
     - type: Item
       inhandVisuals:
         left:
         - state: inhand-left
           color: "#3f3f3f"
-        - state: trinkets-inhand-left
         right:
         - state: inhand-right
           color: "#3f3f3f"
-        - state: trinkets-inhand-right
     - type: Clothing
-      sprite: Clothing/Shoes/color.rsi
+      sprite: _Moffstation/Clothing/Shoes/color.rsi
       clothingVisuals:
         shoes:
         - state: equipped-FEET
           color: "#1d1d1d"
         - state: soles-equipped-FEET
+# Moffstation - End
     - type: SuitSensor
       randomMode: false
       mode: SensorOff

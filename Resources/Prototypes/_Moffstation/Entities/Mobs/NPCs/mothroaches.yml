@@ -1,3 +1,4 @@
+#mothroach variations - add the new prototypes here
 - type: entity
   parent: MobMothroach
   id: MobMothroachRosy
@@ -17,3 +18,105 @@
     sprite: _Moffstation/Mobs/Animals/mothroach/deathshead.rsi
   - type: Clothing
     sprite: _Moffstation/Mobs/Animals/mothroach/deathshead.rsi
+
+- type: entity
+  parent: MobMothroach
+  id: MobMothroachSyndicate
+  suffix: Syndicate
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Animals/mothroach/syndiemoach.rsi
+  - type: Clothing
+    sprite: _Moffstation/Mobs/Animals/mothroach/syndiemoach.rsi
+  - type: GhostRole
+    prob: 1
+    allowMovement: true
+    name: ghost-role-information-syndicate-mothroach-name
+    description: ghost-role-information-syndicate-mothroach-description
+    rules: ghost-role-information-syndicate-reinforcement-rules
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: AbilitySonicBoom
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: Access
+    tags:
+    - NuclearOperative
+    - SyndicateAgent
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 1.0 # They angy
+        Structural: 10.0
+  - type: TemperatureDamage
+    heatDamageThreshold: 423
+    coldDamageThreshold: 0
+  - type: PressureImmunity
+  - type: ProtectedFromStepTriggers
+  - type: Insulated
+  - type: Respirator
+    minSaturation: 5.0
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: MovementAlwaysTouching
+
+- type: entity
+  parent: MobMothroach
+  id: MobMothroachMechroach
+  suffix: Mechroach
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Animals/mothroach/mechroach.rsi
+  - type: Clothing
+    sprite: _Moffstation/Mobs/Animals/mothroach/mechroach.rsi
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+
+#random spawner - add variations to the list
+- type: entityTable
+  id: RandomMothroach
+  table: !type:GroupSelector
+    children:
+    - id: MobMothroach
+    - !type:GroupSelector
+      weight: 0.5
+      children:
+      - id: MobMothroachRosy
+      - id: MobMothroachDeathshead
+      - id: MobMothroachMechroach
+        weight: 0.01
+      - id: MobMothroachSyndicate
+        weight: 0.001
+- type: entity
+  parent: MarkerBase
+  id: RandomMothroachSpawner
+  name: Mothroach Spawner
+  suffix: Random
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Mobs/Animals/mothroach/mothroach.rsi
+      state: mothroach
+  - type: EntityTableSpawner
+    offset: 0.2
+    table: !type:NestedSelector
+      tableId: RandomMothroach

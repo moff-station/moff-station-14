@@ -10,7 +10,7 @@ namespace Content.Client._ES.Voting.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class ESVotingWindow : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
     private readonly ESVoteSystem _vote;
 
     private List<Entity<ESVoteComponent>> _lastVotes = new();

@@ -20,15 +20,15 @@ namespace Content.Shared._Moffstation.Vampire.Abilities.EntitySystems;
 /// <remarks>
 /// todo: Add upgrades
 /// </remarks>
-public sealed class AbilityRejuvenateSystem : EntitySystem
+public sealed partial class AbilityRejuvenateSystem : EntitySystem
 {
-    [Dependency] private readonly SharedStaminaSystem  _stamina = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedDrunkSystem _drunkSystem = default!;
-    [Dependency] private readonly SharedStutteringSystem _stuttering = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedStaminaSystem  _stamina = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedDrunkSystem _drunkSystem = default!;
+    [Dependency] private SharedStutteringSystem _stuttering = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

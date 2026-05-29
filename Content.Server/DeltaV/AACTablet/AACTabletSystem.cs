@@ -8,12 +8,11 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.DeltaV.AACTablet;
 
-public sealed class AACTabletSystem : EntitySystem
+public sealed partial class AACTabletSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly ILocalizationManager _loc = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -37,7 +36,7 @@ public sealed class AACTabletSystem : EntitySystem
             return;
 
         _chat.TrySendInGameICMessage(uid,
-            _loc.GetString(phrase.Text),
+            phrase.LocalizedText,
             InGameICChatType.Speak,
             hideChat: false,
             nameOverride: speakerName);

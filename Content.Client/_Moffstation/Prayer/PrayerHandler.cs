@@ -4,10 +4,10 @@ using Content.Shared._Moffstation.Prayers;
 
 namespace Content.Client._Moffstation.Prayer;
 
-public sealed class AdminPrayerSystem : EntitySystem
+public sealed partial class AdminPrayerSystem : EntitySystem
 {
-    [Dependency] private readonly IClyde _clyde = default!;
-    [Dependency] private readonly IClientAdminManager _adminManager = default!;
+    [Dependency] private IClyde _clyde = default!;
+    [Dependency] private IClientAdminManager _adminManager = default!;
 
     public override void Initialize()
     {

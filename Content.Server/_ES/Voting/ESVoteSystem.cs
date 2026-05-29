@@ -14,10 +14,10 @@ using Robust.Shared.Toolshed;
 namespace Content.Server._ES.Voting;
 
 /// <inheritdoc/>
-public sealed class ESVoteSystem : ESSharedVoteSystem
+public sealed partial class ESVoteSystem : ESSharedVoteSystem
 {
-    [Dependency] private readonly IAdminLogManager _adminLog = default!;
-    [Dependency] private readonly IChatManager _chat = default!;
+    [Dependency] private IAdminLogManager _adminLog = default!;
+    [Dependency] private IChatManager _chat = default!;
 
     private const string VoteSound = "/Audio/Effects/voteding.ogg";
 

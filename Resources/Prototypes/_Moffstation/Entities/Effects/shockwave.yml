@@ -1,0 +1,32 @@
+- type: entity
+  id: EffectShockwave
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: Shockwave
+
+- type: entity
+  parent: EffectShockwave
+  id: EffectShockwaveSonicBoom
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Shockwave
+    intensity: 10.0
+    width: 0.04
+    fallOff: 10.0
+    timeScale: 0.5
+    powerFactor: 2
+  - type: PointLight
+    enabled: true
+    radius: 3
+    energy: 10
+    color: "blue"
+  - type: LightFade
+    duration: 0.5
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/Effects/Grenades/Supermatter/supermatter_start.ogg

@@ -21,9 +21,9 @@ namespace Content.Client.PDA
     [GenerateTypedNameReferences]
     public sealed partial class PdaMenu : PdaWindow
     {
-        [Dependency] private readonly IClipboardManager _clipboard = null!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
-        [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
+        [Dependency] private IClipboardManager _clipboard = null!;
+        [Dependency] private IGameTiming _gameTiming = default!;
+        [Dependency] private IEntitySystemManager _entitySystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
         [Dependency] private readonly IRobustRandom _random = default!; // Moffstation - PDA Advertisements
         private readonly ClientGameTicker _gameTicker;

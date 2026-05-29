@@ -10,10 +10,11 @@ using Robust.Shared.Console;    // Moffstation
 namespace Content.Client.UserInterface.Systems.Ghost;
 
 // TODO hud refactor BEFORE MERGE fix ghost gui being too far up
-public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
+public sealed partial class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
 {
-    [Dependency] private readonly IEntityNetworkManager _net = default!;
-    [Dependency] private readonly IConsoleHost _consoleHost = default!;     // Moffstation - respawn button
+    [Dependency] private IEntityNetworkManager _net = default!;
+
+    [Dependency] private IConsoleHost _consoleHost = default!;     // Moffstation - respawn button
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
 
@@ -167,7 +168,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     }
 
     // Moffstation - Start - Respawn Button
-    private void UpdateTimeOfDeath(TimeSpan? timeOfDeath)
+    private void UpdateTimeOfDeath(TimeSpan timeOfDeath)
     {
         Gui?.UpdateTimeOfDeath(timeOfDeath);
     }

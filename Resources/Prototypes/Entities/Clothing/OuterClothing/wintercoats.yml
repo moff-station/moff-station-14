@@ -1,6 +1,6 @@
 - type: entity
   # Moffstation - Begin - Split the existing base winter coat into an abstract base with all of the coat stats; the basic winter coat gets attachable suit storage now, which we don't want to inherit in some cases
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterStorageEdible
   id: ClothingOuterWinterCoatBase
 #  id: ClothingOuterWinterCoat # Moffstation - The upstream basic winter coat `ClothingOuterWinterCoat` was moved to our namespace
   abstract: true
@@ -23,15 +23,6 @@
     priceMultiplier: 0
   - type: ZombificationResistance
     zombificationResistanceCoefficient: 0.55
-  - type: Edible
-    requiresSpecialDigestion: true
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 30
   - type: Tag
     tags:
     - ClothMade
@@ -136,7 +127,7 @@
   name: cargo winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: CARGO-icon
   - type: Item
@@ -146,7 +137,7 @@
       right:
       - state: CARGO-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: CARGO-equipped-OUTERCLOTHING
@@ -563,7 +554,7 @@
   name: mime winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: MIME-icon
   - type: Item
@@ -573,7 +564,7 @@
       right:
       - state: MIME-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: MIME-equipped-OUTERCLOTHING
@@ -590,17 +581,17 @@
   name: mining winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: MINER-icon
   - type: Item
     inhandVisuals:
       left:
-      - state: MINER-inhand-left
+      - state: CARGO-inhand-left
       right:
-      - state: MINER-inhand-right
+      - state: CARGO-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: MINER-equipped-OUTERCLOTHING
@@ -987,13 +978,11 @@
       - cobwebs
     ignoreReagents:
       - Fiber
-  - type: SolutionContainerManager
-    solutions: # 15 (3 (fiber count of web) * 5 (to craft)) + 5 (magical crafting bonus)
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 20
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 50 # 50 (10 (fiber count of web) * 5 (to craft))
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWeb
 

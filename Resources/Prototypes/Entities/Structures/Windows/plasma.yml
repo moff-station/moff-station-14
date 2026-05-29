@@ -5,12 +5,13 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/plasma_window.rsi
+    sprite: _Moffstation/Structures/Windows/plasma_window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/plasma_window.rsi
+    sprite: _Moffstation/Structures/Windows/plasma_window.rsi # Moffstation
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -64,10 +65,10 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: plasma_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: plasma_window
   - type: Construction
     graph: WindowDirectional
@@ -120,7 +121,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/plasma_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/plasma_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -128,10 +129,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
-    sprite: Structures/Windows/plasma_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/plasma_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:
