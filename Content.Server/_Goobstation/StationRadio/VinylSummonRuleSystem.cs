@@ -24,7 +24,7 @@ namespace Content.Shared._Goob.StationRadio;
 /// <summary>
 /// System that handles spawning game rules when vinyl disks finish playing.
 /// </summary>
-public sealed class VinylSummonRuleSystem : EntitySystem
+public sealed partial class VinylSummonRuleSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
