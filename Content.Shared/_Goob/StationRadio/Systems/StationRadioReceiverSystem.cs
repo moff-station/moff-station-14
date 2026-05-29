@@ -7,7 +7,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._Goob.StationRadio.Systems;
 
-public sealed class StationRadioReceiverSystem : EntitySystem
+public sealed partial class StationRadioReceiverSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPowerReceiverSystem _power = default!;

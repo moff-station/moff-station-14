@@ -11,13 +11,12 @@ using Robust.Shared.Network;
 
 namespace Content.Shared._Goob.StationRadio.Systems;
 
-public sealed class VinylPlayerSystem : EntitySystem
+public sealed partial class VinylPlayerSystem : EntitySystem
 {
 
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPowerReceiverSystem _power = default!;
-    [Dependency] private SharedDeviceLinkSystem _deviceLinkSystem = default!;
 
     public override void Initialize()
     {
