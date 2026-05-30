@@ -544,8 +544,7 @@ namespace Content.Server.Database
         public List<Ban> AdminServerBansLastEdited { get; set; } = null!;
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
 
-        // Moffstation - Weighted Antags
-        public MoffModel.MoffPlayer? MoffPlayer { get; set; } = new();
+        public MoffModel.MoffPlayer? MoffPlayer { get; set; } // Moffstation - Weighted Antags
     }
 
     [Table("whitelist")]

@@ -1,0 +1,49 @@
+﻿- type: entity
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostWizardDuelistBase
+  name: ghost role spawn point
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-wizard-duelist-name
+    description: ghost-role-information-wizard-duelist-desc
+    mindRoles:
+    - MindRoleWizard
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Clothing/Head/Hats/wizardhat.rsi
+      state: icon
+
+- type: entity
+  parent: SpawnPointGhostWizardDuelistBase
+  id: SpawnPointGhostWizardDuelistRed
+  name: red wizard duelist spawn point
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    mindRoles:
+    - MindRoleWizardDuelistRed
+
+- type: entity
+  parent: SpawnPointGhostWizardDuelistBase
+  id: SpawnPointGhostWizardDuelistBlue
+  name: blue wizard duelist spawn point
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    mindRoles:
+    - MindRoleWizardDuelistBlue
+
+- type: entity
+  parent: SpawnPointGhostWizardDuelistBase
+  id: SpawnPointGhostWizardDuelistViolet
+  name: violet wizard duelist spawn point
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: GhostRole
+    mindRoles:
+    - MindRoleWizardDuelistViolet

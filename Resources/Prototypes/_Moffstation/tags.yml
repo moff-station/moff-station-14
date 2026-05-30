@@ -5,13 +5,19 @@
   id: SurvivalBoxInsertable
 
 - type: Tag
-  id: PowerCellBigIron
-
-- type: Tag
   id: Pirate
 
 - type: Tag
   id: FoamGrenade
+
+- type: Tag
+  id: Jug
+
+- type: Tag
+  id: SharkminnowLeather
+
+- type: Tag
+  id: CyborgTraversalModule
 
 # Pirate bounty objectives
 
@@ -77,3 +83,24 @@
 
 - type: Tag
   id: Cardboard
+
+#Color changing hairflower
+- type: Tag
+  id: HairFlower #  Chameleon key for ClothingHeadHatHairFlowerBase.
+
+# Eyewear which covers both (all?) eyes fully
+- type: Tag
+  id: FullEyeCovering
+
+# Power cell types
+- type: Tag
+  id: PowerCellMedium
+
+- type: Tag
+  id: PowerCellHigh
+
+- type: Tag
+  id: PowerCellHyper
+
+- type: Tag
+  id: PowerCellNuclear

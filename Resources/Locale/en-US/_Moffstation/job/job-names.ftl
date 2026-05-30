@@ -1,3 +1,8 @@
+## CentComm
+# Nanotrasen Corporate Fleet
+job-name-ntcfpilot = NTCF Pilot
+job-name-ntcfengineer = NTCF Flight Engineer
+
 ## Command
 job-name-captain-commanding-officer = Commanding Officer
 job-name-hop-hr-administrator = HR Administrator
@@ -148,8 +153,7 @@ job-name-passenger-off-duty-staff = Off-Duty Staff
 job-name-passenger-assistant = Assistant
 job-name-passenger-freelancer = Freelancer
 job-name-passenger-tourist = Tourist
-job-name-passenger-bridge-assistant = Bridge Assistant
-job-name-passenger-coffee-logistics-officer = Coffee Logistics Officer
+
 # Prisoner
 job-name-prisoner-convict = Convict
 job-name-prisoner-death-row-inmate = Death Row Inmate
@@ -164,3 +168,6 @@ ghost-role-captains-sabre = Captain´s Persona Sabre
 job-name-mercenary = Mercenary
 job-name-pirate-captain = Pirate Captain
 job-name-ertmailcarrier = ERT Mail Carrier
+job-name-passenger-bridge-assistant = Bridge Assistant
+job-name-coffee-logistics-officer = Coffee Logistics Officer
+job-name-centcommint = Central Command Intern

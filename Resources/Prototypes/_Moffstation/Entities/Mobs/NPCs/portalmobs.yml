@@ -1,0 +1,40 @@
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshLover ]
+  id: MobFleshLoverSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshGolem ]
+  id: MobFleshGolemSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshClamp ]
+  id: MobFleshClampSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobFleshJared ]
+  id: MobFleshJaredSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobAbomination ]
+  id: MobAbominationSmasher
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobCorgiNarsi ]
+  id: MobHellhound
+  name: hellhound
+  categories: [ HideSpawnMenu ]
+  description: A cute little puppy!
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+
+- type: entity
+  parent: [ BaseSmasherHostile, MobHellspawn ]
+  id: MobHellspawnSmasher
+  name: hellspawn

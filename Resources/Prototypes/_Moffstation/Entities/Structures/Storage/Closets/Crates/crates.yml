@@ -1,0 +1,24 @@
+- type: entity
+  parent: CrateGenericSteel
+  id: CrateSoviet
+  name: soviet crate
+  description: An old box with soviet insignia decorating it.
+  components:
+  - type: Icon
+    sprite: _Moffstation/Structures/Storage/Crates/soviet.rsi
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/Crates/soviet.rsi
+
+# Secure Crates
+
+- type: entity
+  parent: CrateBaseSecure
+  id: CrateSovietSecure
+  name: secure soviet crate
+  components:
+  - type: Icon
+    sprite: _Moffstation/Structures/Storage/Crates/sovietsecure.rsi
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/Crates/sovietsecure.rsi
+  - type: AccessReader
+    access: [["Armory"]]

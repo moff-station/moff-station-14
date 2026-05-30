@@ -20,20 +20,21 @@ using Robust.Shared.Random;
 
 namespace Content.Server.ImmovableRod;
 
-public sealed class ImmovableRodSystem : EntitySystem
+public sealed partial class ImmovableRodSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
-    [Dependency] private readonly GibbingSystem _gibbing = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly DestructibleSystem _destructible = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly TileSystem _tile = default!;  // Moffstation - Immovable rod changes
+    [Dependency] private GibbingSystem _gibbing = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private DestructibleSystem _destructible = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+
+    [Dependency] private TileSystem _tile = default!;  // Moffstation - Immovable rod changes
 
     public override void Update(float frameTime)
     {
@@ -43,17 +44,24 @@ public sealed class ImmovableRodSystem : EntitySystem
         foreach (var (rod, trans) in EntityQuery<ImmovableRodComponent, TransformComponent>(true))
         {
             // Moffstation - Start - Immovable rod changes
-            if (trans.GridUid != null && rod.PryTiles)
+            if (trans.GridUid is not {} gridUid ||
+                !TryComp<MapGridComponent>(gridUid, out var grid))
+                continue;
+
+            if (rod.PryTiles)
             {
-                _tile.PryTile((Vector2i)trans.Coordinates.Position, trans.GridUid.Value);
+                var tileRef = _map.GetTileRef((gridUid, grid), trans.Coordinates);
+                _tile.PryTile(tileRef);
             }
             // Moffstation - End
 
             if (!rod.DestroyTiles)
                 continue;
 
-            if (!TryComp<MapGridComponent>(trans.GridUid, out var grid))
-                continue;
+            // Moffstation - Begin - Moved higher
+            // if (!TryComp<MapGridComponent>(trans.GridUid, out var grid))
+                // continue;
+            // Moffstation - End
 
             _map.SetTile(trans.GridUid.Value, grid, trans.Coordinates, Tile.Empty);
         }

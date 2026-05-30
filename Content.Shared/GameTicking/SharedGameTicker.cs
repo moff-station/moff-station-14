@@ -1,3 +1,4 @@
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -14,10 +15,10 @@ using Content.Shared.FixedPoint;
 
 namespace Content.Shared.GameTicking
 {
-    public abstract class SharedGameTicker : EntitySystem
+    public abstract partial class SharedGameTicker : EntitySystem
     {
-        [Dependency] private readonly IReplayRecordingManager _replay = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
+        [Dependency] private IReplayRecordingManager _replay = default!;
+        [Dependency] private IGameTiming _gameTiming = default!;
 
         /// <summary>
         ///     A list storing the start times of all game rules that have been started this round.
@@ -200,7 +201,9 @@ namespace Content.Shared.GameTicking
 
             public MobState EntMobState;
 
-            public Dictionary<string, FixedPoint2> DamagePerGroup;
+#pragma warning disable CS0618 // Type or member is obsolete // Moffstation - The obsolescense is saying "only use this for grouping in the UI", which is what this is used for.
+            public IReadOnlyDictionary<ProtoId<DamageGroupPrototype>, FixedPoint2> DamagePerGroup;
+#pragma warning restore CS0618 // Type or member is obsolete
             // Goobstation - End
         }
 

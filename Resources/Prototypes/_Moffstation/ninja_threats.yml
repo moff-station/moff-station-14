@@ -32,3 +32,8 @@
   id: Wizard
   announcement: terror-wizard
   rule: WizardSpawn
+
+- type: ninjaHackingThreat
+  id: Tourists
+  announcement: terror-tourists
+  rule: TouristRule

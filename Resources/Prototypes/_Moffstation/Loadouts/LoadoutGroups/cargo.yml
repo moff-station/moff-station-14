@@ -28,3 +28,20 @@
   - ExcavatorPDA
   - ProspectorPDA
   - ScavengerPDA
+
+- type: loadoutGroup
+  id: SalvageSpecialistHead
+  name: loadout-group-salvage-specialist-head
+  minLimit: 0
+  loadouts:
+  - CargoTechnicianHead
+  - CargonianUshanka
+  - StationEngineerHardhatYellow
+
+- type: loadoutGroup
+  id: SalvageSpecialistJumpsuit
+  name: loadout-group-salvage-specialist-jumpsuit
+  loadouts:
+  - SalvageOveralls
+  - SalvageJumpsuit
+  - SalvageJumpskirt

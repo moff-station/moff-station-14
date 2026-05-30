@@ -1,4 +1,15 @@
 ﻿- type: xenoArchTrigger
+  id: TriggerAntidepressant
+  tip: xenoarch-trigger-tip-antidepressants
+  components:
+  - type: XATReactive
+    reagents:
+    - Happiness
+    - Laughter
+    - Pax
+    - Psicodine
+
+- type: xenoArchTrigger
   id: TriggerCleaner
   tip: xenoarch-trigger-tip-cleaner
   components:
@@ -6,16 +17,6 @@
     reagents:
     - SpaceCleaner
     - Bleach
-
-- type: xenoArchTrigger
-  id: TriggerEuphoria
-  tip: xenoarch-trigger-tip-euphoria
-  components:
-  - type: XATReactive
-    reagents:
-    - Happiness
-    - Laughter
-    - Psicodine
 
 - type: xenoArchTrigger
   id: TriggerLube
@@ -34,16 +35,3 @@
     - Ephedrine
     - Desoxyephedrine
     - Stimulants
-
-- type: xenoArchTrigger
-  id: TriggerTropicalDrink
-  tip: xenoarch-trigger-tip-tropical-drink
-  components:
-  - type: XATReactive
-    reagents:
-    - BahamaMama
-    - BlueHawaiian
-    - ElectricShark
-    - JungleBird
-    - PinaColada
-    - PlantersPunch

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.IntegrationTests.Fixtures;
 using Content.Server._Moffstation.Objectives.Components; // Moffstation - Objective Selection
 using Content.Server.Antag.Components;
 using Content.Server.GameTicking;
@@ -19,23 +20,25 @@ using Robust.Shared.Prototypes;
 namespace Content.IntegrationTests.Tests.GameRules;
 
 [TestFixture]
-public sealed class TraitorRuleTest
+public sealed class TraitorRuleTest : GameTest
 {
     private const string TraitorGameRuleProtoId = "Traitor";
     private const string TraitorAntagRoleName = "Traitor";
     private static readonly ProtoId<NpcFactionPrototype> SyndicateFaction = "Syndicate";
     private static readonly ProtoId<NpcFactionPrototype> NanotrasenFaction = "NanoTrasen";
 
+    public override PoolSettings PoolSettings => new()
+    {
+        Dirty = true,
+        DummyTicker = false,
+        Connected = true,
+        InLobby = true,
+    };
+
     [Test]
     public async Task TestTraitorObjectives()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings()
-        {
-            Dirty = true,
-            DummyTicker = false,
-            Connected = true,
-            InLobby = true,
-        });
+        var pair = Pair;
         var server = pair.Server;
         var client = pair.Client;
         var entMan = server.EntMan;
@@ -133,8 +136,6 @@ public sealed class TraitorRuleTest
         Assert.That(entMan.TryGetComponent<PotentialObjectivesComponent>(mind, out var potentialObjectivesComp));
         Assert.That(potentialObjectivesComp!.ObjectiveOptions, Is.Not.Empty, "No potential objective options found!");
         // Moffstation - End
-
-        await pair.CleanReturnAsync();
     }
 
     private static string FormatObjective(Entity<ObjectiveComponent> entity, IEntityManager entMan)

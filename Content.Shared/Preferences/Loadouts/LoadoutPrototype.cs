@@ -31,6 +31,12 @@ public sealed partial class LoadoutPrototype : IPrototype, IEquipmentLoadout
     [DataField]
     public ProtoId<StartingGearPrototype>? StartingGear;
 
+    // Moffstation - Begin
+    /// If not null, the loadout option's name will be this as opposed to trying to get it from any other source.
+    [DataField]
+    public LocId? NameOverride;
+    // Moffstation - End
+
     /// <summary>
     /// Effects to be applied when the loadout is applied.
     /// These can also return true or false for validation purposes.
@@ -49,4 +55,25 @@ public sealed partial class LoadoutPrototype : IPrototype, IEquipmentLoadout
     /// <inheritdoc />
     [DataField]
     public Dictionary<string, List<EntProtoId>> Storage { get; set; } = new();
+
+    // Moffstation - Begin - Special loadouts; enables eg. personal items on cyborgs
+    /// A dictfrom <see cref="JobPrototype.JobEntity"/> to special loadouts to apply to them.
+    [DataField]
+    public Dictionary<ProtoId<RoleLoadoutPrototype>, SpecialLoadout> SpecialJobLoadouts = new();
+    // Moffstation - End
 }
+
+// Moffstation - Begin - Special loadouts enable loadouts for non-humanoid jobs. I hope that we get to delete this someday thanks to comprehensive loadout improvements!
+[DataDefinition]
+public sealed partial class SpecialLoadout : IEquipmentLoadout
+{
+    [DataField]
+    public Dictionary<string, EntProtoId> Equipment { get; set; } = new();
+
+    [DataField]
+    public List<EntProtoId> Inhand { get; set; } = new();
+
+    [DataField]
+    public Dictionary<string, List<EntProtoId>> Storage { get; set; } = new();
+}
+// Moffstation - Begin

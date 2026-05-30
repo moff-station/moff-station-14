@@ -1,4 +1,5 @@
 ﻿using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Starlight.CollectiveMind;
 
@@ -11,7 +12,7 @@ public sealed partial class CollectiveMindComponent : Component
     /// value.
     /// </summary>
     [DataField]
-    public Dictionary<CollectiveMindPrototype, CollectiveMindMemberData> Minds = new();
+    public Dictionary<ProtoId<CollectiveMindPrototype>, CollectiveMindMemberData> Minds = new();
 }
 
 /// <summary>
@@ -22,9 +23,4 @@ public sealed partial class CollectiveMindMemberData
 {
     [DataField(required: true)]
     public int MindId;
-
-    /// <summary>
-    /// The first ID number to assign to members of a collective mind. Subsequent IDs increment from this.
-    /// </summary>
-    public const int StartingId = 1;
 }

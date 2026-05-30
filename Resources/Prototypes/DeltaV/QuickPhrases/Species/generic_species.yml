@@ -1,55 +1,16 @@
 - type: quickPhrase
-  id: BaseGenericSpeciesPhrase
   parent: BaseSpeciesPhrase
-  group: Generic
   abstract: true
+  id: BaseGenericSpeciesPhrase
+  group: phrase-group-generic
 
-- type: quickPhrase
-  id: SpeciesPersonPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-person
-
-- type: quickPhrase
-  id: SpeciesAnimalPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-animal
-
-- type: quickPhrase
-  id: SpeciesCorpsePhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-corpse
-
-- type: quickPhrase
-  id: SpeciesRobotPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-robot
-
-- type: quickPhrase
-  id: SpeciesAlienPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-alien
-
-- type: quickPhrase
-  id: SpeciesMonsterPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-monster
-
-- type: quickPhrase
-  id: SpeciesGhostPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-ghost
-
-- type: quickPhrase
-  id: SpeciesPestPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-pest
-
-- type: quickPhrase
-  id: SpeciesInsectPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-insect
-
-- type: quickPhrase
-  id: SpeciesPetPhrase
-  parent: BaseGenericSpeciesPhrase
-  text: phrase-species-pet
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesPersonPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesAnimalPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesCorpsePhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesRobotPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesAlienPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesMonsterPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesGhostPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesPestPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesInsectPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesPetPhrase }

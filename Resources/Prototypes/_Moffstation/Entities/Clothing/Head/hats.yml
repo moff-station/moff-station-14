@@ -103,7 +103,7 @@
 
 #Clown
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadHatJesterAlt
   id: ClothingHeadHatHarlequin
   name: harlequin's hood
   description: A hood adorned with bells to entertain an audience
@@ -112,17 +112,13 @@
     sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/harlequin.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
-      HeadTop : HEAD
 
 #Mime
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatPierrot
-  name: pierrot's cone
-  description: A cone for only the funniest of performers
+  name: pierrot's beret
+  description: A beret for only the funniest of performers
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
@@ -130,12 +126,7 @@
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        offset: "0, 0.07"
     sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
-      HeadTop : HEAD
 
 #Musician
 - type: entity
@@ -227,6 +218,14 @@
     sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
 
 #Qm
 - type: entity
@@ -302,3 +301,111 @@
         color: "#f58700"
       - state: pompom-equipped-HELMET
         color: "#dedac8"
+
+#Medical
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapBurgundy
+  name: phlebotomist cap
+  description: A burgundy cap phlembotomists wear during blood examinations. Keeps their hair from touching your blood samples.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &burgundy-scrubs "#73284a"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *burgundy-scrubs
+      right:
+      - state: inhand-right
+        color: *burgundy-scrubs
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *burgundy-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *burgundy-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *burgundy-scrubs
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop : HEAD
+      HeadSide: HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapBlack
+  name: coroner cap
+  description: A black cap coroners wear during autopsy. Keeps their hair from tickling your corpse.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    layers:
+    - state: icon
+      color: &black-scrubs "#565656"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: *black-scrubs
+      right:
+      - state: inhand-right
+        color: *black-scrubs
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/surgcap.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        color: *black-scrubs
+      head-vox:
+      - state: equipped-HELMET-vox
+        color: *black-scrubs
+      head-hamster:
+      - state: equipped-HELMET-hamster
+        color: *black-scrubs
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+
+#Soviet
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatPilotka
+  name: soviet pilotka
+  description: "\"Perfect for summer in Moscow, da?\""
+  components:
+  - type: AddAccentClothing
+    accent: RussianAccent
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hats/pilotka.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hats/pilotka.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon

@@ -25,6 +25,13 @@
     - state: icon-stripe-middle
       map: [ "enum.GasTankVisualsLayers.StripeMiddle" ]
     - state: icon-hardware
+    - state: integrity-unshaded-0
+      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+      visible: false
+    - state: mask
+      map: [ "enum.MaxPressureVisualLayers.Base" ]
+      visible: false
   - type: Item
     sprite: _Moffstation/Objects/Tanks/tank.rsi
     inhandVisuals:
@@ -61,6 +68,7 @@
       - state: equipped-SUITSTORAGE-hardware-sloth
       suitstorage-puppy:
       - state: equipped-SUITSTORAGE-hardware-puppy
+  - type: MaxPressureVisuals
 
 
 - type: entity
@@ -74,6 +82,7 @@
     air:
       volume: 0.66
       temperature: 293.15
+    overpressure: 1519.875 # Poorly manufactured, they also lose pressure quickly so this makes exploding them easier, at the cost of the explosion being smaller.
   - type: Clothing
     sprite: _Moffstation/Objects/Tanks/emergency.rsi
     slots:
@@ -104,63 +113,63 @@
 
 - type: gasTankVisualStyle
   id: Oxygen
-  name: gases-oxygen
+  name: gas-oxygen
   colorValues:
     tankColor: '#4CA8FFFF'
     lowerStripeColor: White
 
 - type: gasTankVisualStyle
   id: Nitrogen
-  name: gases-nitrogen
+  name: gas-nitrogen
   colorValues:
     tankColor: '#E65C55FF'
     lowerStripeColor: White
 
 - type: gasTankVisualStyle
   id: NitrousOxide
-  name: gases-n2o
+  name: gas-nitrous-oxide
   colorValues:
     tankColor: '#E6E6E6FF'
     middleStripeColor: '#E65C55FF'
 
 - type: gasTankVisualStyle
   id: CarbonDioxide
-  name: gases-co2
+  name: gas-carbon-dioxide
   colorValues:
     tankColor: '#4F4F4FFF'
     lowerStripeColor: '#AF0000FF'
 
 - type: gasTankVisualStyle
   id: WaterVapor
-  name: gases-water-vapor
+  name: gas-water-vapor
   colorValues:
     tankColor: '#4C4C4CFF'
     lowerStripeColor: '#FFB2C0FF'
 
 - type: gasTankVisualStyle
   id: Plasma
-  name: gases-plasma
+  name: gas-plasma
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#FC32A0FF'
 
 - type: gasTankVisualStyle
   id: Tritium
-  name: gases-tritium
+  name: gas-tritium
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#17FF0BFF'
 
 - type: gasTankVisualStyle
   id: Frezon
-  name: gases-frezon
+  name: gas-frezon
   colorValues:
     tankColor: VividGamboge
     middleStripeColor: '#47CDFFFF'
 
 - type: gasTankVisualStyle
   id: Ammonia
-  name: gases-ammonia
+  name: gas-ammonia
   colorValues:
     tankColor: '#E6E6E6FF'
     middleStripeColor: Green

@@ -9,13 +9,13 @@ using System.Numerics;
 
 namespace Content.Client.StatusIcon;
 
-public sealed class StatusIconOverlay : Overlay
+public sealed partial class StatusIconOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
 
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly SpriteSystem _sprite;
     private readonly TransformSystem _transform;
@@ -88,10 +88,14 @@ public sealed class StatusIconOverlay : Overlay
                 if (proto.LocationPreference == StatusIconLocationPreference.Left ||
                     proto.LocationPreference == StatusIconLocationPreference.None && countL <= countR)
                 {
-                    if (accOffsetL + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * EyeManager.PixelsPerMeter)
-                        break;
+                    // Moffstation - Move icon cutoff check into `if` so that `Mod` layer icons don't get dropped when they could fit.
                     if (proto.Layer == StatusIconLayer.Base)
                     {
+                        // Moffstation - Begin
+                        if (accOffsetL + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * EyeManager.PixelsPerMeter)
+                            break;
+                        // Moffstation - End
+
                         accOffsetL += texture.Height;
                         countL++;
                     }
@@ -101,10 +105,14 @@ public sealed class StatusIconOverlay : Overlay
                 }
                 else
                 {
-                    if (accOffsetR + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * EyeManager.PixelsPerMeter)
-                        break;
+                    // Moffstation - Move icon cutoff check into `if` so that `Mod` layer icons don't get dropped when they could fit.
                     if (proto.Layer == StatusIconLayer.Base)
                     {
+                        // Moffstation - Begin
+                        if (accOffsetR + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * EyeManager.PixelsPerMeter)
+                            break;
+                        // Moffstation - End
+
                         accOffsetR += texture.Height;
                         countR++;
                     }

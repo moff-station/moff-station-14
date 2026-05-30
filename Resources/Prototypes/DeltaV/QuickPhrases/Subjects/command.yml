@@ -1,34 +1,11 @@
 - type: quickPhrase
+  parent: [ BaseCommandPhrase, BaseSubjectPhrase ]
   id: BaseCommandSubjectPhrase
-  parent: [ BaseSubjectPhrase, BaseCommandPhrase ]
   abstract: true
 
-- type: quickPhrase
-  id: AccessPhrase
-  parent: BaseCommandSubjectPhrase
-  text: phrase-access
-
-- type: quickPhrase
-  id: EncryptionKeyPhrase
-  parent: BaseCommandSubjectPhrase
-  text: phrase-encryption-key
-
-- type: quickPhrase
-  id: IdCardPhrase
-  parent: BaseCommandSubjectPhrase
-  text: phrase-id-card
-
-- type: quickPhrase
-  id: PDAPhrase
-  parent: BaseCommandSubjectPhrase
-  text: phrase-pda
-
-- type: quickPhrase
-  id: StampPhrase
-  parent: BaseCommandSubjectPhrase
-  text: phrase-stamp
-
-- type: quickPhrase
-  id: ImplantPhrase
-  parent: BaseCommandSubjectPhrase
-  text: phrase-implant
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: AccessPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: EncryptionKeyPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: IdCardPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: PdaPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: StampPhrase }
+- { type: quickPhrase, parent: BaseCommandSubjectPhrase, id: ImplantPhrase }

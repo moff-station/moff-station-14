@@ -28,8 +28,9 @@
     anchored: true
     noRot: true
   - type: Damageable
+    damageModifierSet: StrongMetallic # Moffstation - Structural damagetype fix
+  - type: Injurable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
   - type: RCDDeconstructable
     cost: 6
     delay: 8

@@ -1,13 +1,13 @@
 - type: reagent
+  parent: BaseDrink
   id: LemonLimeBitters
   name: reagent-name-lemon-lime-bitters
-  parent: BaseDrink
   desc: reagent-desc-lemon-lime-bitters
   physicalDesc: reagent-physical-desc-fizzy
   flavor: lemonlimebitters
   color: "#ffb598"
   metamorphicSprite:
-    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
+    sprite: _Moffstation/Objects/Consumable/Drinks/lemonlimebitters.rsi
     state: icon_empty
   metamorphicMaxFillLevels: 4
   metamorphicFillBaseName: fill-
@@ -20,13 +20,13 @@
         factor: 2
 
 - type: reagent
+  parent: BaseEthyl
   id: Breathalyzer
   name: reagent-name-breathalyzer
-  parent: BaseDrink
   desc: reagent-desc-breathalyzer
   physicalDesc: reagent-physical-desc-airy
   metamorphicSprite:
-    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/breathalyzer.rsi
+    sprite: _Moffstation/Objects/Consumable/Drinks/breathalyzer.rsi
     state: icon_empty
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
@@ -40,15 +40,15 @@
         factor: 2
 
 - type: reagent
+  parent: BaseEthyl
   id: PrairieCocktail
   name: reagent-name-prairie-cocktail
-  parent: BaseDrink
   desc: reagent-desc-prairie-cocktail
   physicalDesc: reagent-physical-desc-unappetizing
   flavor: prairiecocktail
   color: "#8a2c16"
   metamorphicSprite:
-    sprite: /Textures/_Moffstation/Objects/Consumable/Drinks/prairiecocktail.rsi
+    sprite: _Moffstation/Objects/Consumable/Drinks/prairiecocktail.rsi
     state: icon_empty
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
@@ -58,3 +58,127 @@
       metabolites:
         Ethylredoxrazine: 0.5
         UncookedAnimalProteins: 0.1
+
+- type: reagent
+  parent: BaseDrink
+  id: ApexCola
+  name: reagent-name-apex-cola
+  desc: reagent-desc-apex-cola
+  physicalDesc: reagent-physical-desc-murky
+  flavor: apexcola
+  color: "#452d00"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/apexcola.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 1
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        WeldingFuel: 0.5
+
+- type: reagent
+  parent: BaseDrink
+  id: Cocoon
+  name: reagent-name-cocoon
+  desc: reagent-desc-cocoon
+  physicalDesc: reagent-physical-desc-sticky
+  flavor: cocoon
+  color: "#c9c9c9"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/cocoon.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        Fiber: 0.5
+
+- type: reagent
+  parent: BaseDrink
+  id: CoughDrop
+  name: reagent-name-cough-drop
+  desc: reagent-desc-cough-drop
+  physicalDesc: reagent-physical-desc-crisp
+  flavor: coughdrop
+  color: "#afd1a4"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/coughdrop.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 5
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali ]
+
+- type: reagent
+  parent: BaseDrink
+  id: Gelatin
+  name: reagent-name-gelatin
+  desc: reagent-desc-gelatin
+  physicalDesc: reagent-physical-desc-wobbly
+  flavor: gelatin
+  color: "#78cd7f"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/gelatin.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateHunger
+        factor: 5
+
+- type: reagent
+  parent: BaseDrink
+  id: MeatPulp
+  name: reagent-name-meat-pulp
+  desc: reagent-desc-meat-pulp
+  physicalDesc: reagent-physical-desc-fleshy
+  flavor: meatpulp
+  color: "#963a1e"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/meatpulp.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 3
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        UncookedAnimalProteins: 0.5
+        Fat: 0.5
+
+- type: reagent
+  parent: BaseDrink
+  id: Uprooting
+  name: reagent-name-uprooting
+  desc: reagent-desc-uprooting
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: uprooting
+  color: "#4a3813"
+  metamorphicSprite:
+    sprite: _Moffstation/Objects/Consumable/Drinks/uprooting.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 4
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      metabolites:
+        EZNutrient: 0.6
+        Theobromine: 0.1
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: 5

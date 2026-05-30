@@ -13,10 +13,10 @@ public sealed partial class GasTankPainterWindow : Control
 {
     private event Action<GasTankVisuals>? OnVisualsPicked;
 
-    [Dependency] private readonly IEntitySystemManager _sysMan = default!;
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly ILocalizationManager _loc = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IEntitySystemManager _sysMan = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private ILocalizationManager _loc = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
     private readonly GasTankVisualsSystem _gasTankVisuals;
 
     private static readonly EntProtoId DummyPrototype = "OxygenTank";
@@ -119,14 +119,7 @@ public sealed partial class GasTankPainterWindow : Control
 
         // Suppress the callback which might eventually cause re-entrance to this function.
         _suppressSelectingStyleCallback = true;
-
-        if (!StyleList[index].Selected)
-        {
-            bool cat = false;
-        }
-
         StyleList[index].Selected = true;
-
         _suppressSelectingStyleCallback = false;
     }
 

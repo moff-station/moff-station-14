@@ -24,3 +24,63 @@
       path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
   - type: StealTarget
     stealGroup: OfficerHandgun
+
+- type: entity
+  name: mch 58
+  parent: BaseItem # Not using the pistol parent due to the fact it's only a pistol in appearance - lacking a magazine.
+  id: WeaponPistolMothroach
+  description: The premier in mothroach delivery mechanisms, the mch 58 offers unparralled speed and efficiency in roach related matters.
+  suffix: Admeme # When the hell else are you gonna see this?
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Pistols/mothroach.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    storedOffset: 0,-2
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    fireRate: 1 # If you can somehow grab a mothroach you just shot faster than once per second, no you can't
+    selectedMode: SemiAuto
+    fireOnLandChance: 1 # Moaches don't stay still
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Voice/Moth/moth_scream.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      components:
+      - MothAccent # Mothroaches don't have any suitable tags to filter from, so I'm picking up anything with a moth accent. If mothpeople ever get an item component, you can load them in too!
+    capacity: 1
+    proto: MobMothroach
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+

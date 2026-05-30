@@ -90,11 +90,19 @@
         - id: UniformScrubsColorGreen
         - id: UniformScrubsColorPurple
         - id: UniformScrubsColorBlue
+        # Moffstation - Start
+        - id: UniformScrubsColorBurgundy
+        - id: UniformScrubsColorBlack
+        # Moffstation - End
         - id: ClothingHeadHatSurgcapBlue
         - id: ClothingHeadHatSurgcapPurple
         - id: ClothingHeadHatSurgcapGreen
+        # Moffstation - Start
+        - id: ClothingHeadHatSurgcapBurgundy
+        - id: ClothingHeadHatSurgcapBlack
+        # Moffstation - End
         - id: ClothingMaskSterile
-          amount: 3
+          amount: 2 # Moffstation
 
 - type: entity
   parent: CrateMedical

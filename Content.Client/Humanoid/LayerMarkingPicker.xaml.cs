@@ -74,7 +74,11 @@ public sealed partial class LayerMarkingPicker : BoxContainer
 
     private void UpdateMarkings()
     {
-        foreach (var marking in _allMarkings.Values.OrderBy(marking => Loc.GetString($"marking-{marking.ID}")))
+        // Moffstation - start - put selected ones on top
+        foreach (var marking in _allMarkings.Values
+                     .OrderByDescending(marking => _markingsModel.IsMarkingSelected(_organ, _layer, marking))
+                     .ThenBy(marking => Loc.GetString($"marking-{marking.ID}")))
+        // Moffstation - End
         {
             var item = new LayerMarkingItem(_markingsModel, _organ, _layer, marking, true);
             Items.AddChild(item);

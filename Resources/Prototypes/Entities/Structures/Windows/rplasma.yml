@@ -5,12 +5,13 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_plasma_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_plasma_window.rsi # Moffstation
   - type: Icon
-    sprite: Structures/Windows/reinforced_plasma_window.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_plasma_window.rsi # Moffstation
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: RGlass
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: RadiationBlocker
     resistance: 4
   - type: Destructible
@@ -67,10 +68,10 @@
     - Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: plasma_reinforced_window
   - type: Icon
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Moffstation/Structures/Windows/directional.rsi # Moffstation
     state: plasma_reinforced_window
   - type: Construction
     graph: WindowDirectional
@@ -125,7 +126,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_plasma_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_plasma_diagonal.rsi # Moffstation
     state: state0
   - type: Tag
     tags:
@@ -133,10 +134,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Moffstation
     base: state
   - type: Icon
-    sprite: Structures/Windows/reinforced_plasma_diagonal.rsi
+    sprite: _Moffstation/Structures/Windows/reinforced_plasma_diagonal.rsi # Moffstation
     state: state0
   - type: Fixtures
     fixtures:

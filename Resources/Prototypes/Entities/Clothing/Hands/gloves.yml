@@ -176,9 +176,9 @@
   description: Thin sterile latex gloves. Basic PPE for any doctor.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/latex.rsi
+    sprite: _Moffstation/Clothing/Hands/latex.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/latex.rsi
+    sprite: _Moffstation/Clothing/Hands/latex.rsi # Moffstation
   - type: Fiber
     fiberMaterial: fibers-latex
   - type: FingerprintMask
@@ -190,9 +190,9 @@
   description: High-quality nitrile gloves. Expensive medical PPE.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/nitrile.rsi
+    sprite: _Moffstation/Clothing/Hands/nitrile.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/nitrile.rsi
+    sprite: _Moffstation/Clothing/Hands/nitrile.rsi # Moffstation
   - type: Fiber
     fiberMaterial: fibers-nitrile
   - type: FingerprintMask
@@ -238,9 +238,9 @@
   description: Beep boop borp!
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/robohands.rsi
+    sprite: _Moffstation/Clothing/Hands/robohands.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/robohands.rsi
+    sprite: _Moffstation/Clothing/Hands/robohands.rsi # Moffstation
   - type: Fiber
     fiberMaterial: fibers-leather
     fiberColor: fibers-black
@@ -302,15 +302,15 @@
       - type: CriminalRecordsHacker
 
 - type: entity
-  parent: [ ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband ]
+  parent: [ ClothingHandsGlovesSyntheticBase, BaseSecurityEngineeringContraband ] # Moffstation
   id: ClothingHandsGlovesCombat
   name: combat gloves
   description: These tactical gloves are fireproof and shock resistant.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/combat.rsi
+    sprite: _Moffstation/Clothing/Hands/combat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/combat.rsi
+    sprite: _Moffstation/Clothing/Hands/combat.rsi # Moffstation
   - type: Insulated
   - type: Fiber
     fiberMaterial: fibers-insulative
@@ -355,9 +355,9 @@
   description: Plain black gloves without fingertips for the hard working.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/fingerless.rsi
+    sprite: _Moffstation/Clothing/Hands/fingerless.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/fingerless.rsi
+    sprite: _Moffstation/Clothing/Hands/fingerless.rsi # Moffstation
   - type: Fiber
     fiberMaterial: fibers-synthetic
     fiberColor: fibers-black
@@ -373,9 +373,9 @@
   description: Insulated gloves resistant to shocks, or at least they used to.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/fingerlessinsuls.rsi
+    sprite: _Moffstation/Clothing/Hands/fingerlessinsuls.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/fingerlessinsuls.rsi
+    sprite: _Moffstation/Clothing/Hands/fingerlessinsuls.rsi # Moffstation
   - type: Fiber
     fiberMaterial: fibers-insulative
     fiberColor: fibers-yellow
@@ -487,9 +487,9 @@
   description: High-quality rubber gloves, squeaky to do some cleaning!
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/janitor.rsi
+    sprite: _Moffstation/Clothing/Hands/janitor.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/janitor.rsi
+    sprite: _Moffstation/Clothing/Hands/janitor.rsi # Moffstation
   - type: Fiber
     fiberMaterial: fibers-rubber
     fiberColor: fibers-yellow
@@ -653,10 +653,10 @@
     bluntStaminaDamageFactor: 2.0
     animation: WeaponArcFist
   - type: StaminaDamageOnHit
-    damage: 35
+    damage: 21 # Moffstation - 5 hits to stamcrit
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide
-    damage: 35
+    damage: 21 # Moffstation - 5 hits to stamcrit
     sound: /Audio/Weapons/egloves.ogg
   - type: LandAtCursor # it deals stamina damage when thrown
   - type: Battery

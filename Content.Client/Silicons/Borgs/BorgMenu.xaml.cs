@@ -1,3 +1,4 @@
+using Content.Client.Message;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.CCVar;
@@ -18,8 +19,8 @@ namespace Content.Client.Silicons.Borgs;
 [GenerateTypedNameReferences]
 public sealed partial class BorgMenu : FancyWindow
 {
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
+    [Dependency] private IEntityManager _entity = default!;
     private readonly NameModifierSystem _nameModifier;
     private readonly PowerCellSystem _powerCell;
     private readonly SharedBatterySystem _battery;
@@ -82,6 +83,7 @@ public sealed partial class BorgMenu : FancyWindow
         UpdateBatteryButton();
         UpdateBrainButton();
         UpdateModulePanel();
+        UpdateSelfProviderWarning();
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -167,6 +169,16 @@ public sealed partial class BorgMenu : FancyWindow
             ModuleContainer.AddChild(control);
             _modules.Add(module);
         }
+    }
+
+    public void UpdateSelfProviderWarning()
+    {
+        if (!_entity.TryGetComponent<BorgChassisComponent>(Entity, out var chassis))
+            return;
+
+        ChassisProviderWarning.Visible = chassis.SelfProvider;
+        var msg = Loc.GetString("borg-ui-self-provider-warning");
+        ChassisProviderWarning.SetMarkup(msg);
     }
 
     private void OnNameChanged(LineEdit.LineEditEventArgs obj)

@@ -1,4 +1,5 @@
 using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
+using Content.Shared.Access.Systems; // Moffstation
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
@@ -9,6 +10,8 @@ using Content.Shared.Contraband;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Electrocution;
+using Content.Shared.Emoting; // Moffstation
+using Content.Shared.Examine; // Moffstation
 using Content.Shared.Explosion;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash;
@@ -28,6 +31,7 @@ using Content.Shared.Standing;
 using Content.Shared.Strip.Components;
 using Content.Shared.Temperature;
 using Content.Shared.Verbs;
+using Content.Shared.VoiceMask;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
@@ -58,6 +62,8 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, IsEquippingTargetAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, IsUnequippingTargetAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ChameleonControllerOutfitSelectedEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, VoiceMaskNameUpdatedEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, VoiceMaskToggledEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, BeforeEmoteEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, StoodEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, DownedEvent>(RelayInventoryEvent);
@@ -79,12 +85,14 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, UnwieldAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, IngestionAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RecoilKickAttemptEvent>(RefRelayInventoryEvent); // Moffstation
+        SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(RefRelayInventoryEvent); // Moffstation - Examinable Clothing
 
         // Eye/vision events
         SubscribeLocalEvent<InventoryComponent, CanSeeAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, GetEyeProtectionEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, GetBlurEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, SolutionScanEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, ShowAccessReaderSettingsEvent>(RelayInventoryEvent); // Moffstation
 
         // ComponentActivatedClientSystems
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowJobIconsComponent>>(RefRelayInventoryEvent);

@@ -37,6 +37,9 @@
           mask:
           - MobMask
     - type: Damageable
+      damageModifierSet: Metallic # Moffstation - Structural damagetype fix
+    - type: Injurable
+      damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
     - type: Destructible
       thresholds:
         - trigger: # Excess damage, don't spawn entities

@@ -1,26 +1,54 @@
 # Base
 
 - type: entity
-  parent: FoodInjectableBase
+  parent: [SolutionTiny, FoodInjectableBase]
   id: FoodDonkpocketBase
   abstract: true
   components:
   - type: Edible
   - type: Sprite
-    sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi # Moffstation - Uncabinetification
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
   - type: Item
     size: Tiny
   - type: Tag
     tags:
     - DonkPocket
     - Meat
+  # Moffstation - Start - PocketChange
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        # less mass so it can cook faster, a single strip of bacon isnt 5kg
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3  # fite me
+        friction: 0.2
+  # let air cook and freeze meat for cooking and preservation
+  - type: AtmosExposed
+  - type: Temperature
+    currentTemperature: 290
+  - type: TemperatureDamage
+  # required for cooking to work
+  - type: InternalTemperature
+    conductivity: 0.44
+    thickness: 0.005
+    area: 0.0075 # ~5x15cm
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Meaterial: 300
+  # Moffstation - End
 
 # Donkpocket
 
@@ -40,10 +68,33 @@
       - cheap
   - type: Sprite
     state: plain
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmDonk
+    node: start
+    defaultTarget: warm donk-pocket
+  # Moffstation - End
+
+- type: entity
+  parent: [SolutionFood, SolutionTiny]
+  id: SolutionFoodDonkpocketWarm
+  categories: [ HideSpawnMenu ] # Needed for a very specific lighter so can't be abstract
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Omnizine
+        Quantity: 3
+      # Moffstation - Start - PocketChange
+      - ReagentId: Tricordrazine
+        Quantity: 4
+      # Moffstation - End - PocketChange
 
 - type: entity
   name: warm donk-pocket
-  parent: FoodDonkpocket
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocket]
   id: FoodDonkpocketWarm
   description: The heated food of choice for the seasoned traitor.
   components:
@@ -52,15 +103,6 @@
       - bread
       - meaty
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 8
-        - ReagentId: Omnizine
-          Quantity: 2
 
 - type: entity
   name: dank-pocket
@@ -72,18 +114,18 @@
     flavors:
       - leafy
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
   - type: Sprite
     state: dank
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmDank
+    node: start
+    defaultTarget: warm dank-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm dank-pocket
-  parent: FoodDonkpocketDank
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketDank]
   id: FoodDonkpocketDankWarm
   description: The heated food of choice for the seasoned botanist.
   components:
@@ -91,14 +133,6 @@
     flavors:
       - leafy
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Omnizine
-          Quantity: 4
 
 - type: entity
   name: spicy-pocket
@@ -113,10 +147,16 @@
       - cheap
   - type: Sprite
     state: plain
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmSpicy
+    node: start
+    defaultTarget: warm spicy-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm spicy-pocket
-  parent: FoodDonkpocketSpicy
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketSpicy]
   id: FoodDonkpocketSpicyWarm
   description: The classic snack food, now maybe a bit too spicy.
   components:
@@ -125,14 +165,6 @@
       - spicy
       - meaty
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Omnizine
-          Quantity: 2
   - type: Sprite
     state: spicy
 
@@ -140,7 +172,7 @@
   name: teriyaki-pocket
   parent: FoodDonkpocketBase
   id: FoodDonkpocketTeriyaki
-  description: An East Asian take on the classic stationside snack.
+  description: Your beloved snack glazed with a sticky sauce emiting a sweet and smoky smell. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
@@ -149,26 +181,24 @@
       - cheap
   - type: Sprite
     state: teriyaki
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmTeriyaki
+    node: start
+    defaultTarget: warm teriyaki-pocket
+    # Moffstation - End
 
 - type: entity
   name: warm teriyaki-pocket
-  parent: FoodDonkpocketTeriyaki
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketTeriyaki]
   id: FoodDonkpocketTeriyakiWarm
-  description: An East Asian take on the classic stationside snack, now steamy and warm.
+  description: Your beloved snack glazed with a sticky sauce emiting a sweet and smoky smell. Now steamy and warm. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
       - meaty
       - sweet
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Omnizine
-          Quantity: 2
 
 - type: entity
   name: pizza-pocket
@@ -182,18 +212,18 @@
       - cheesy
       - tomato
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
   - type: Sprite
     state: pizza
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmPizza
+    node: start
+    defaultTarget: warm pizza-pocket
+  # Moffstation - End - PocketChange
 
 - type: entity
   name: warm pizza-pocket
-  parent: FoodDonkpocketPizza
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketPizza]
   id: FoodDonkpocketPizzaWarm
   description: Cheese filling really hits the spot when warm.
   components:
@@ -203,14 +233,6 @@
       - cheesy
       - tomato
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: Omnizine
-          Quantity: 2
 
 - type: entity
   name: honk-pocket
@@ -222,20 +244,25 @@
     flavors:
       - funny
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Honk
-          Quantity: 0.50
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 8
+      - ReagentId: Honk
+        Quantity: 2
   - type: Sprite
     state: banana
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmHonk
+    node: start
+    defaultTarget: warm honk-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm honk-pocket
-  parent: FoodDonkpocketHonk
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketHonk]
   id: FoodDonkpocketHonkWarm
   description: The award-winning donk-pocket, now warm and toasty.
   components:
@@ -243,16 +270,19 @@
     flavors:
       - funny
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Honk
-          Quantity: 1
-        - ReagentId: Omnizine
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Honk
+        Quantity: 2
+      - ReagentId: Omnizine
+        Quantity: 3
+      # Moffstation - Start - PocketChange
+      - ReagentId: Tricordrazine
+        Quantity: 4
+      # Moffstation - End
 
 - type: entity
   name: berry-pocket
@@ -264,18 +294,18 @@
     flavors:
       - sweet
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
   - type: Sprite
     state: berry
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmBerry
+    node: start
+    defaultTarget: warm berry-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm berry-pocket
-  parent: FoodDonkpocketBerry
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketBerry]
   id: FoodDonkpocketBerryWarm
   description: A relentlessly sweet donk-pocket, now warm and delicious.
   components:
@@ -283,90 +313,96 @@
     flavors:
       - sweet
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Omnizine
-          Quantity: 2
-        - ReagentId: Sugar
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Omnizine
+        Quantity: 3
+      - ReagentId: JuiceBerry
+        Quantity: 2
+      # Moffstation - Start - PocketChange
+      - ReagentId: Tricordrazine
+        Quantity: 4
+      # Moffstation - End
 
 - type: entity
   name: stonk-pocket
   parent: FoodDonkpocketBase
   id: FoodDonkpocketStonk
-  description: Tasty, but a sad reminder of the great crash of '24.
+  description: Tasty, but a sad reminder of the reason behind the great crash of '24. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
       - profits
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
   - type: Sprite
     state: stonk
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmStonk
+    node: start
+    defaultTarget: warm stonk-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm stonk-pocket
-  parent: FoodDonkpocketStonk
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketStonk]
   id: FoodDonkpocketStonkWarm
+  description: Tasty and while warm each has its own unique cryptocurrency. Sell it while it's hot. # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
       - profits
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Omnizine
-          Quantity: 2
+  # Moffstation - Begin - Stonks :^)
+  - type: StaticPrice
+    price: 500
+  # Moffstation - End
 
 - type: entity
   name: carp-pocket
   parent: FoodDonkpocketBase
   id: FoodDonkpocketCarp
-  description: A long-lost edition of donk pocket, made specifically for hard-working salvagers.
+  description: Covered in a layer of carp skin with its own unique smell! # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
     - cheap
     - fishops
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
   - type: Sprite
     state: carp
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmCarp
+    node: start
+    defaultTarget: warm carp-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm carp-pocket
-  parent: FoodDonkpocketCarp
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketCarp]
   id: FoodDonkpocketCarpWarm
+  description: Warm and covered in a crunchy carp skin. Helps your body relax! # Moffstation - PocketChange
   components:
   - type: FlavorProfile
     flavors:
     - cheap
     - fishops
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Omnizine
-          Quantity: 2
+  # Moffstation - Start - Add Diphenhydramine
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 12
+      - ReagentId: Omnizine
+        Quantity: 3
+      - ReagentId: Tricordrazine
+        Quantity: 4
+      - ReagentId: Diphenhydramine
+        Quantity: 2
+  # Moffstation - End
 
 - type: entity
   name: dink-pocket
@@ -378,14 +414,15 @@
     flavors:
       - cold
       - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
-        - ReagentId: JuiceCarrot
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: JuiceCarrot
+        Quantity: 1
+      - ReagentId: Cellulose
+        Quantity: 7
   - type: Sprite
     state: dink
 
@@ -399,14 +436,13 @@
     flavors:
     - cotton
     - cheap
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Fiber
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Fiber
+        Quantity: 5
   - type: Sprite
     state: moth
   - type: Edible
@@ -415,19 +451,29 @@
     tags:
     - ClothMade
     - DonkPocket
+  # Moffstation - Start - PocketChange
+  - type: Construction
+    graph: WarmMoth
+    node: start
+    defaultTarget: warm moth-pocket
+  # Moffstation - End
 
 - type: entity
   name: warm moth-pocket
-  parent: FoodDonkpocketMoth
+  parent: [SolutionFoodDonkpocketWarm, FoodDonkpocketMoth]
   id: FoodDonkpocketMothWarm
+  description: Buzzy edition of donk-pocket for moths. Now warm and melting on your tongue.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Fiber
-          Quantity: 5
-        - ReagentId: Omnizine
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Omnizine
+        Quantity: 3
+      # Moffstation - Start - PocketChange
+      - ReagentId: Tricordrazine
+        Quantity: 4
+      # Moffstation - End

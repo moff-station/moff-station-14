@@ -6,3 +6,4 @@ terror-pirate = Attention crew, it appears that someone on your station has made
 terror-ninja = Attention crew, it appears that someone on your station has made an unexpected communication with the spider clan in nearby space.
 terror-rod = Attention crew, it appears that someone on your station has made an unexpected communication with an unstoppable force in nearby space.
 terror-wizard = Attention crew, it appears that someone on your station has made an unexpected communication with a wizard federation representative in nearby space.
+terror-tourists = Attention crew, it appears that someone on your station has made an unexpected... listing advertising this station on SpaceBNB...?

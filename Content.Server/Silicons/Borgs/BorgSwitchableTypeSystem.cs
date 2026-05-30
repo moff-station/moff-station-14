@@ -1,6 +1,7 @@
 ﻿using Content.Server.Inventory;
 using Content.Shared.Inventory;
 using Content.Shared.Radio.Components;
+using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Prototypes;
@@ -11,10 +12,12 @@ namespace Content.Server.Silicons.Borgs;
 /// <summary>
 /// Server-side logic for borg type switching. Handles more heavyweight and server-specific switching logic.
 /// </summary>
-public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
+public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
 {
-    [Dependency] private readonly BorgSystem _borgSystem = default!;
-    [Dependency] private readonly ServerInventorySystem _inventorySystem = default!;
+    [Dependency] private BorgSystem _borgSystem = default!;
+    [Dependency] private ServerInventorySystem _inventorySystem = default!;
+
+    [Dependency] private SharedRadioSystem _radio = default!; // MOffstation
 
     protected override void SelectBorgModule(Entity<BorgSwitchableTypeComponent> ent, ProtoId<BorgTypePrototype> borgType)
     {
@@ -23,7 +26,7 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
         // Assign radio channels
         string[] radioChannels = [.. ent.Comp.InherentRadioChannels, .. prototype.RadioChannels];
         if (TryComp(ent, out IntrinsicRadioTransmitterComponent? transmitter))
-            transmitter.Channels = [.. radioChannels];
+            _radio.SetIntrinsicTransmitterChannels((ent, transmitter), [.. radioChannels]);
 
         if (TryComp(ent, out ActiveRadioComponent? activeRadio))
             activeRadio.Channels = [.. radioChannels];

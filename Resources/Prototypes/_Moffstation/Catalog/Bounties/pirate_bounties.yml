@@ -85,6 +85,9 @@
     whitelist:
       components:
       - VendingMachine
+    blacklist: # No using pirate vendings
+      tags:
+      - Pirate
 
 - type: cargoBounty
   id: PirateBountyTelecom
@@ -111,6 +114,9 @@
     whitelist:
       components:
       - Thruster
+    blacklist: # No using pirate thrusters and pirate gyroscopes
+      tags:
+      - Pirate
 
 - type: cargoBounty
   id: PirateBountyFaxmachine
@@ -124,6 +130,9 @@
     whitelist:
       components:
       - FaxMachine
+    blacklist: # No using the pirate fax
+      tags:
+      - Pirate
 
 - type: cargoBounty
   id: PirateBountyRecharger
@@ -137,6 +146,9 @@
     whitelist:
       tags:
       - Recharger
+    blacklist: # No using pirate rechargers
+      tags:
+      - Pirate
 
 - type: cargoBounty
   id: PirateBountyStatisBed

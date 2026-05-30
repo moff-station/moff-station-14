@@ -80,18 +80,22 @@
     - Alive
     - Critical
     damage:
-      groups:
-        Airloss: -1
-        Brute: -1
-        Burn: -1
-        Toxin: -1
+      types:
+        Asphyxiation: -0.1
+        Poison: -1
+        Blunt: -0.4
+        Slash: -0.4
+        Piercing: -0.4
+        Heat: -0.3
+        Cold: -0.1
+        Shock: -0.6
   # Moffstation - Begin - Remove slowdown on damage
   - type: SlowOnDamage
     speedModifierThresholds: {}
   # Moffstation - End
 
 - type: entity
-  parent: [ MobEeepBase ]
+  parent: [ MobEeepBase, SolutionDart ]
   id: MobEeeplet
   suffix: "baby"
   name: eeeplet
@@ -110,7 +114,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: ChloralHydrate
-        Quantity: 200
+        Quantity: 400
   - type: Sprite
     sprite: _Impstation/Mobs/Aliens/eeeplet.rsi
     noRot: true
@@ -140,15 +144,14 @@
     damage:
       types:
         Shock: 5
-        Brute: 2
+        Blunt: 2
   - type: StaminaDamageOnHit
     damage: 20
-  - type: SolutionContainerManager
-    solutions:
-      chloralhydrate:
-        reagents:
-        - ReagentId: ChloralHydrate
-          Quantity: 500
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ChloralHydrate
+        Quantity: 1000
   - type: MeleeChemicalInjector
     solution: chloralhydrate
     transferAmount: 5
@@ -192,7 +195,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: ChloralHydrate
-        Quantity: 400
+        Quantity: 800
   - type: Electrified
     requirePower: false
     shockDamage: 4

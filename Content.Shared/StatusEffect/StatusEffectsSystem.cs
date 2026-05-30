@@ -10,11 +10,11 @@ using Robust.Shared.Utility;
 namespace Content.Shared.StatusEffect
 {
     [Obsolete("Migration to Content.Shared.StatusEffectNew.StatusEffectsSystem is required")]
-    public sealed class StatusEffectsSystem : EntitySystem
+    public sealed partial class StatusEffectsSystem : EntitySystem
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
-        [Dependency] private readonly AlertsSystem _alertsSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IGameTiming _gameTiming = default!;
+        [Dependency] private AlertsSystem _alertsSystem = default!;
         private List<EntityUid> _toRemove = new();
 
         public override void Initialize()
@@ -26,6 +26,7 @@ namespace Content.Shared.StatusEffect
             SubscribeLocalEvent<StatusEffectsComponent, ComponentGetState>(OnGetState);
             SubscribeLocalEvent<StatusEffectsComponent, ComponentHandleState>(OnHandleState);
             SubscribeLocalEvent<StatusEffectsComponent, RejuvenateEvent>(OnRejuvenate);
+            SubscribeLocalEvent<StatusEffectsComponent, TransferStatusesEvent>(OnTransferStatuses);//Moffstation - Geras Patch
         }
 
         public override void Update(float frameTime)
@@ -479,6 +480,20 @@ namespace Content.Shared.StatusEffect
             time = status.ActiveEffects[key].Cooldown;
             return true;
         }
+
+        //Moffstation - Geras Patch - Begin
+        private void OnTransferStatuses(Entity<StatusEffectsComponent> target, ref TransferStatusesEvent args)
+        {
+            foreach (var effect in args.Source.Comp.ActiveEffects)
+            {
+                var state = effect.Value;
+                if (state.RelevantComponent is not null)
+                    TryAddStatusEffect(target.Owner, effect.Key, state.Cooldown.Item2-state.Cooldown.Item1, state.CooldownRefresh, state.RelevantComponent);
+            }
+
+            TryRemoveAllStatusEffects(args.Source);
+        }
+        //Moffstation - End
     }
 
     /// <summary>
@@ -513,4 +528,7 @@ namespace Content.Shared.StatusEffect
             Key = key;
         }
     }
+
+    [ByRefEvent]
+    public readonly record struct TransferStatusesEvent(Entity<StatusEffectsComponent> Source); // Moffstation - Geras Patch
 }

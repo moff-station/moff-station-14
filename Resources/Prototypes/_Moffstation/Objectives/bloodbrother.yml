@@ -3,10 +3,6 @@
   parent: [BaseBloodBrotherObjective, DisruptDepartmentObjective]
   id: BloodBrotherDisruptDepartmentObjective
 
-#- type: entity
-#  parent: [BaseBloodBrotherObjective, InfiltrateObjective]
-#  id: BloodBrotherInfiltrateObjective
-
 - type: entity
   parent: [BaseBloodBrotherObjective, JailbreakObjective]
   id: BloodBrotherJailbreakObjective
@@ -23,17 +19,9 @@
   - type: LocationObjective
     title: objective-condition-bb-claim-room
 
-
 - type: entity
   parent: [BaseBloodBrotherObjective, RobDepartmentObjective]
   id: BloodBrotherRobDepartmentObjective
-
-- type: entity
-  parent: [BaseBloodBrotherObjective, RobDepartmentObjective]
-  id: BloodBrotherLoudRobDepartmentObjective
-  components:
-  - type: LocationObjective
-    title: objective-condition-loud-rob-department
 
 - type: entity
   parent: [BaseBloodBrotherObjective, SabotageObjective]
@@ -52,10 +40,6 @@
   id: BloodBrotherTeachLessonObjective
 
 - type: entity
-  parent: [ BaseBloodBrotherObjective, BigIronStealObjective ]
-  id: BloodBrotherBigIronStealObjective
-
-- type: entity
   parent: [BaseBloodBrotherObjective, LeaveCallingCardObjective]
   id: BloodBrotherLeaveCallingCardObjective
   components:
@@ -65,3 +49,11 @@
       sprite: Objects/Misc/bureaucracy.rsi
       state: paper_receipt_horizontal
     unique: true # only one person needs to really send a message.
+
+- type: entity
+  parent: [BaseBloodBrotherObjective, KillStationAiObjective]
+  id: BloodBrotherKillStationAiObjective
+
+- type: entity
+  parent: [BaseBloodBrotherObjective, SupercritAnomaliesObjective]
+  id: BloodBrotherSupercritAnomaliesObjective

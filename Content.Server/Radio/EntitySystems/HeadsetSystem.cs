@@ -8,10 +8,10 @@ using Robust.Shared.Player;
 
 namespace Content.Server.Radio.EntitySystems;
 
-public sealed class HeadsetSystem : SharedHeadsetSystem
+public sealed partial class HeadsetSystem : SharedHeadsetSystem
 {
-    [Dependency] private readonly INetManager _netMan = default!;
-    [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private INetManager _netMan = default!;
+    [Dependency] private RadioSystem _radio = default!;
 
     public override void Initialize()
     {
@@ -46,7 +46,10 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     {
         if (args.Channel != null
             && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
-            && keys.Channels.Contains(args.Channel.ID))
+            // Moffstation - Start - Remove common from headsets
+            && keys.Channels.Contains(args.Channel.ID)
+            && args.Channel.HeadsetTransmittable)
+            // Moffstation - End
         {
             _radio.SendRadioMessage(uid, args.Message, args.Channel, component.Headset);
             args.Channel = null; // prevent duplicate messages from other listeners.
@@ -58,7 +61,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         base.OnGotEquipped(uid, component, args);
         if (component.IsEquipped && component.Enabled)
         {
-            EnsureComp<WearingHeadsetComponent>(args.Equipee).Headset = uid;
+            EnsureComp<WearingHeadsetComponent>(args.EquipTarget).Headset = uid;
             UpdateRadioChannels(uid, component);
         }
     }
@@ -67,7 +70,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     {
         base.OnGotUnequipped(uid, component, args);
         RemComp<ActiveRadioComponent>(uid);
-        RemComp<WearingHeadsetComponent>(args.Equipee);
+        RemComp<WearingHeadsetComponent>(args.EquipTarget);
     }
 
     public void SetEnabled(EntityUid uid, bool value, HeadsetComponent? component = null)

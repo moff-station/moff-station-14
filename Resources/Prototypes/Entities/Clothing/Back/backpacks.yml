@@ -34,6 +34,7 @@
     tags:
     - WhitelistChameleon
     - Backpack
+  - type: Dumpable # Moffstation - Make all bags dumpable
 
 - type: entity
   parent: ClothingBackpack
@@ -183,7 +184,7 @@
   description: A robust backpack for stealing cargo's loot.
   components:
     - type: Sprite
-      sprite: Clothing/Back/Backpacks/cargo.rsi
+      sprite: _Moffstation/Clothing/Back/Backpacks/cargo.rsi # Moffstation
 
 - type: entity
   parent: ClothingBackpack

@@ -18,11 +18,13 @@
   id: JanitorJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitJanitor
+  groupBy: "janitor jumpsuits" # Moffstation
 
 - type: loadout
   id: JanitorJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtJanitor
+  groupBy: "janitor jumpskirts" # Moffstation
 
 # Gloves
 - type: loadout

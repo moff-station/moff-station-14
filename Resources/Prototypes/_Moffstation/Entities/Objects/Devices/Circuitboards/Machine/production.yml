@@ -14,3 +14,12 @@
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+
+- type: entity
+  parent: WeaponCapacitorRechargerCircuitboard
+  id: WeaponCapacitorRechargerPirateCircuitboard
+  description: A machine printed circuit board for a recharger. Seems to have a skull and crossbones engraved on it?
+  suffix: Machine Board, Pirate
+  components:
+  - type: MachineBoard
+    prototype: WeaponCapacitorRechargerPirate

@@ -38,6 +38,10 @@
   id: JobBorg
   nameDataset: NamesBorg
   canCustomizeName: true
+  # Moffstation - Begin - Borgs can get personal items
+  groups:
+  - PersonalItemsJobAgnostic # Umbra
+  # Moffstation - End
 
 - type: roleLoadout
   id: JobStationAi
@@ -294,6 +298,10 @@
   groups:
   - GroupTankHarness
   - SalvagePDA # Moffstation - Additional job title loadouts
+  # Moffstation - Begin
+  - SalvageSpecialistHead
+  - SalvageSpecialistJumpsuit
+  # Moffstation - End
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
@@ -516,6 +524,8 @@
   - GroupTankHarness
   - ReporterPDA # Moffstation - Additional job title loadouts
   - ReporterJumpsuit
+  - ReporterHead
+  - ReporterOuterClothing
   - CommonBackpack
   - Glasses
   - Survival

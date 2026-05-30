@@ -22,7 +22,7 @@
     - SimpleHostile
   - type: Sprite
     drawdepth: SmallMobs
-    sprite: Mobs/Animals/regalrat.rsi
+    sprite: _Moffstation/Mobs/Animals/regalrat.rsi # Moffstation - Da King gotta' look pretty
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: regalrat
@@ -33,6 +33,8 @@
     proto: regal
   - type: Physics
     bodyType: KinematicController
+  - type: Puller
+    needsHands: false
   - type: Fixtures
     fixtures:
       fix1:
@@ -197,7 +199,7 @@
     - SimpleHostile
   - type: Sprite
     drawdepth: SmallMobs
-    sprite: Mobs/Animals/rat.rsi
+    sprite: _Moffstation/Mobs/Animals/rat.rsi # Moffstation - nyehh~ gotta' keep de boys lookin' pretty
     layers:
     - map: ["enum.DamageStateVisualLayers.Base", "movement"]
       state: rat

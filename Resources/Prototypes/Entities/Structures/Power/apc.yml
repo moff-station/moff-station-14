@@ -112,8 +112,9 @@
     layoutId: APC
   - type: WiresVisuals
   - type: Damageable
+    damageModifierSet: StructuralMetallic # Moffstation - Structural damagetype fix
+  - type: Injurable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
   - type: Destructible
     thresholds:
     - trigger:
@@ -208,7 +209,7 @@
 - type: entity
   parent: BaseAPC
   id: APCBasic
-  suffix: Basic, 50kJ
+  suffix: Basic, 50kJ Charge, 20.0kW Breaker # Moffstation - Moduluar APCs
   components:
   - type: Battery
     maxCharge: 50000

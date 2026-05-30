@@ -22,6 +22,8 @@ using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.Silicons.Laws;
+using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Throwing;
 using Content.Shared.UserInterface;
 using Content.Shared.Whitelist;
@@ -41,29 +43,31 @@ namespace Content.Shared.Silicons.Borgs;
 /// </summary>
 public abstract partial class SharedBorgSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedRoleSystem _roles = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IConfigurationManager _configuration = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedHandheldLightSystem _handheldLight = default!;
-    [Dependency] private readonly SharedAccessSystem _access = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    // [Dependency] private SharedRoleSystem _roles = default!; // Moffstation - Now Unused
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IConfigurationManager _configuration = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedHandheldLightSystem _handheldLight = default!;
+    [Dependency] private SharedAccessSystem _access = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+
+    [Dependency] private SharedSiliconLawSystem _siliconLaws = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -75,7 +79,7 @@ public abstract partial class SharedBorgSystem : EntitySystem
         InitializeRelay();
         InitializeUI();
 
-        SubscribeLocalEvent<TryGetIdentityShortInfoEvent>(OnTryGetIdentityShortInfo);
+        SubscribeLocalEvent<BorgChassisComponent, TryGetIdentityShortInfoEvent>(OnTryGetIdentityShortInfo);
 
         SubscribeLocalEvent<BorgChassisComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<BorgChassisComponent, MapInitEvent>(OnMapInit);
@@ -94,27 +98,20 @@ public abstract partial class SharedBorgSystem : EntitySystem
         SubscribeLocalEvent<BorgChassisComponent, GetCharacterUnrevivableIcEvent>(OnGetUnrevivableIC);
         SubscribeLocalEvent<BorgChassisComponent, PowerCellSlotEmptyEvent>(OnPowerCellSlotEmpty);
         SubscribeLocalEvent<BorgChassisComponent, PowerCellChangedEvent>(OnPowerCellChanged);
+        SubscribeLocalEvent<BorgChassisComponent, SiliconLawProviderChanged>(OnLawProviderChanged);
+        SubscribeLocalEvent<BorgChassisComponent, SiliconLawProviderUnlinked>(OnLawProviderUnlinked);
 
         SubscribeLocalEvent<BorgBrainComponent, MindAddedMessage>(OnBrainMindAdded);
         SubscribeLocalEvent<BorgBrainComponent, PointAttemptEvent>(OnBrainPointAttempt);
 
     }
 
-    private void OnTryGetIdentityShortInfo(TryGetIdentityShortInfoEvent args)
+    private void OnTryGetIdentityShortInfo(Entity<BorgChassisComponent> chassis, ref TryGetIdentityShortInfoEvent args)
     {
         if (args.Handled)
-        {
             return;
-        }
 
-        // TODO: Why the hell is this only broadcasted and not raised directed on the entity?
-        // This is doing a ton of HasComps/TryComps.
-        if (!HasComp<BorgChassisComponent>(args.ForActor))
-        {
-            return;
-        }
-
-        args.Title = Name(args.ForActor).Trim();
+        args.Title = Name(args.Target).Trim();
         args.Handled = true;
     }
 
@@ -182,6 +179,21 @@ public abstract partial class SharedBorgSystem : EntitySystem
         {
             _mind.TransferTo(mindId, chassis.Owner, mind: mind);
         }
+
+        if (!chassis.Comp.ResyncLawsWithBrain)
+            return;
+
+        // If the chassis is a provider, we link it to itself and ignore the laws of the brain.
+        // Otherwise, we link the chassis to the brain and get its laws.
+        // We do this for cases like xenoborgs or syndieborgs, so we don't grant a free "convert to this lawset" if crew gets a chassis of them.
+        if (HasComp<SiliconLawProviderComponent>(chassis))
+        {
+            _siliconLaws.LinkToProvider(chassis.Owner, chassis.Owner);
+        }
+        else
+        {
+            _siliconLaws.LinkToProvider(chassis.Owner, args.Entity);
+        }
     }
 
     protected virtual void OnRemoved(Entity<BorgChassisComponent> chassis, ref EntRemovedFromContainerMessage args)
@@ -194,6 +206,8 @@ public abstract partial class SharedBorgSystem : EntitySystem
         if (_timing.ApplyingState)
             return; // The changes are already networked with the same game state
 
+        ValidateWhitelists(chassis, args.Entity);
+
         if (args.Container != chassis.Comp.BrainContainer)
             return;
 
@@ -201,6 +215,11 @@ public abstract partial class SharedBorgSystem : EntitySystem
         {
             _mind.TransferTo(mindId, args.Entity, mind: mind);
         }
+
+        if (!chassis.Comp.ResyncLawsWithBrain)
+            return;
+
+        _siliconLaws.UnlinkFromProvider(chassis.Owner);
     }
 
     private void SyncModuleStatesToRequirements(Entity<BorgChassisComponent> chassis)
@@ -410,6 +429,24 @@ public abstract partial class SharedBorgSystem : EntitySystem
     private void OnPowerCellChanged(Entity<BorgChassisComponent> chassis, ref PowerCellChangedEvent args)
     {
         TryActivate(chassis);
+    }
+
+    private void OnLawProviderChanged(Entity<BorgChassisComponent> chassis, ref SiliconLawProviderChanged args)
+    {
+        // If the chassis provides laws to itself, we make this visible on the borg UI.
+        // This is not supposed to be a tell for emags, only for cases like xenoborgs and syndieborgs, who have laws on their own body.
+        chassis.Comp.SelfProvider = args.NewProvider == chassis.Owner;
+        Dirty(chassis);
+    }
+
+    private void OnLawProviderUnlinked(Entity<BorgChassisComponent> chassis, ref SiliconLawProviderUnlinked args)
+    {
+        if (!HasComp<SiliconLawProviderComponent>(chassis))
+            return;
+
+        // If we have no provider anymore and get unlinked, cannot provide laws to ourselves.
+        chassis.Comp.SelfProvider = false;
+        Dirty(chassis);
     }
 
     public override void Update(float frameTime)

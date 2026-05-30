@@ -60,6 +60,32 @@ public sealed partial class ApcComponent : BaseApcNetComponent
     [DataField]
     public bool TripFlag;
 
+    // Moffstation - Start - potato APC cooking
+    /// <summary>
+    /// If true, will set <see cref="PermaTripped"/> to true once the APC trips.
+    /// </summary>
+    [DataField]
+    public bool EnablePermaTripping;
+
+    /// <summary>
+    /// If true, APC cannot be turned back on ever again.
+    /// </summary>
+    [DataField]
+    public bool PermaTripped;
+
+    /// <summary>
+    /// Sound to play on permatripping.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier PermaTrippedAudio = new SoundPathSpecifier("/Audio/Effects/sizzle.ogg");
+
+    /// <summary>
+    /// Popup LocId to display on permatripping.
+    /// </summary>
+    [DataField]
+    public LocId PermaTrippedPopup = "apc-component-permatripped-popup";
+    // Moffstation - End
+
     // TODO ECS power a little better!
     // End the suffering
     protected override void AddSelfToNet(IApcNet apcNet)

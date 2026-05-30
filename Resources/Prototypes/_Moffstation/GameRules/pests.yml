@@ -11,12 +11,8 @@
     duration: 30 # Used as delay
   - type: VentCrittersRule
     entries:
-    - id: MobMothroach
+    - id: RandomMothroachSpawner
       prob: 0.01
-    - id: MobMothroachRosy
-      prob: 0.005
-    - id: MobMothroachDeathshead
-      prob: 0.005
 
 - type: entity
   id: MothroachMigrationSilent
@@ -25,12 +21,8 @@
   - type: StationEvent
   - type: VentCrittersRule
     entries:
-    - id: MobMothroach
+    - id: RandomMothroachSpawner
       prob: 0.01
-    - id: MobMothroachRosy
-      prob: 0.005
-    - id: MobMothroachDeathshead
-      prob: 0.005
 
 - type: entity
   id: TarboldMigration

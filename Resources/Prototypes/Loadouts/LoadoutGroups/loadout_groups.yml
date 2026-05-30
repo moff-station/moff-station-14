@@ -46,6 +46,23 @@
   - OffsetCaneNT
   - Cane
   - TowelColorWhite
+  #Moffstation - Start - Other Towels
+  - TowelColorGray
+  - TowelColorBlack
+  - TowelColorRed
+  - TowelColorOrange
+  - TowelColorLightBrown
+  - TowelColorYellow
+  - TowelColorDarkGreen
+  - TowelColorGreen
+  - TowelColorLightBlue
+  - TowelColorDarkBlue
+  - TowelColorPurple
+  - TowelColorMaroon
+  - TowelColorMime
+  - TowelColorSilver
+  - TowelColorGold
+  # Moffstation - End
   # Moffstation - Start - Expanded trinkets
   - PlushieArachind
   - PlushieAtmosian
@@ -166,7 +183,10 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
-  - CaptainCapeFormal # Moffstation
+  # Moffstation - Start
+  - CaptainCapeFormal
+  - CaptainScarf
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -184,6 +204,7 @@
   - CaptainOuterClothing
   - CaptainWintercoat
   # Moffstation - Start
+  - CaptainTrenchcoat
   - CaptainLongcoat
   - CaptainFestivecoat
   # Moffstation - End
@@ -225,6 +246,7 @@
   loadouts:
   - HoPCloak
   - HoPMantle
+  - HoPScarf # Moffstation
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -455,6 +477,7 @@
   - ChaplainPlagueHat
   - ChaplainWitchHat
   - ChaplainWitchHatAlt
+  - ClownMitre # Moffstation
 
 - type: loadoutGroup
   id: ChaplainMask
@@ -462,6 +485,7 @@
   minLimit: 0
   loadouts:
   - ChaplainMask
+  - ClownMaskDefault # Moffstation
 
 - type: loadoutGroup
   id: ChaplainJumpsuit
@@ -481,6 +505,7 @@
   - ChaplainNunRobe
   - ChaplainBlackHoodie
   - ChaplainHoodie
+  - ClownRobes # Moffstation
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -520,6 +545,11 @@
   loadouts:
   - JanitorJumpsuit
   - JanitorJumpskirt
+  # Moffstation - Start
+  - JanitorOveralls
+  - CustodianJumpsuit
+  - CustodianJumpskirt
+  # Moffstation - End
 
 - type: loadoutGroup
   id: JanitorGloves
@@ -590,6 +620,7 @@
   loadouts:
   - JesterHat
   - JesterAltHat
+  - ClownMitre
   # Moffstation - Begin - Clown Clothes
   - HarlequinHat
   # Moffstation - End - Clown Clothes
@@ -604,6 +635,7 @@
   - JesterAltSuit
   # Moffstation - Begin - Clown Clothes
   - HarlequinSuit
+  - BananaSuit
   # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
@@ -635,6 +667,7 @@
   - LargeClownShoes
   - ClownSandals
   - ClownSlippers
+  - BananaShoes
   # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
@@ -827,6 +860,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterScarf # Moffstation
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -888,8 +922,11 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
-  - CargoTechnicianWindbreaker # Moffstation - Start - (Cargo Outfits)
-  - SeniorCargoWintercoat # Moffstation - End - (Cargo Outfits)
+# Moffstation - Start
+  - CourierWintercoat
+  - CargoTechnicianWindbreaker
+  - SeniorCargoWintercoat
+# Moffstation - End
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -967,6 +1004,7 @@
   - ChiefEngineerJumpskirt
   - ChiefEngineerTurtleneck
   - ChiefEngineerTurtleneckSkirt
+  - CEFormal # Moffstation
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
@@ -975,6 +1013,7 @@
   loadouts:
   - ChiefEngineerCloak
   - ChiefEngineerMantle
+  - CeScarf # Moffstation
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
@@ -1149,6 +1188,7 @@
   loadouts:
   - ResearchDirectorMantle
   - ResearchDirectorCloak
+  - RdScarf # Moffstation
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
@@ -1158,6 +1198,7 @@
   - ResearchDirectorJumpskirt
   # Moffstation - Start
   - FormalScientistJumpsuit
+  - ScientistFormalJumpskirt
   - ResearchDirectorRoboJumpsuit
   - ResearchDirectorRoboJumpskirt
   - ResearchDirectorFestiveJumpsuit
@@ -1208,6 +1249,7 @@
   - ScientistJumpsuit
   - ScientistJumpskirt
   - FormalScientistJumpsuit # Moffstation - (Nox Loadout Improvements) - This spawns in their drobe, and someone requested I add it to the loadout.
+  - ScientistFormalJumpskirt # Moffstation
   - RoboticistJumpsuit
   - RoboticistJumpskirt
   - MachinistJumpsuit # Moffstation - New Roboticist & Machinist Outfits
@@ -1315,6 +1357,7 @@
   # Moffstation - Start
   - HeadofSecurityWestern
   - HeadofSecurityFestive
+  - HeadofSecuritySummer
   # Moffstation - End
 
 - type: loadoutGroup
@@ -1324,6 +1367,7 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
+  - HOSScarf # Moffstation
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -1334,6 +1378,7 @@
   # Moffstation - Start
   - HeadofSecurityCarapace
   - HeadofSecurityWintercoatSmall
+  - HeadofSecuritySummerCoat
   # Moffstation - End
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
@@ -1503,6 +1548,7 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+  - SecurityOfficerWintercoat
   - DetectiveCoatSleuth # Moffstation - (New Detective Outfits)
 
 - type: loadoutGroup
@@ -1542,11 +1588,29 @@
   name: loadout-group-reporter-jumpsuit
   loadouts:
   - ReporterJumpsuit
-  - ReporterJumpskirt # Moffstaion - Adding Reporter Clothes
+  - ReporterJumpskirt # Moffstation - Adding Reporter Clothes
   - JournalistJumpsuit
-  - JournalistJumpskirt # Moffstaion - Adding Reporter Clothes
-  - MeteorologistJumpsuit # Moffstaion - Adding Reporter Clothes
-  - MeteorologistJumpskirt # Moffstaion - Adding Reporter Clothes
+# Moffstation - Start
+  - JournalistJumpskirt
+  - MeteorologistJumpsuit
+  - MeteorologistJumpskirt
+  - NewsAnchorJumpsuit
+  - NewsAnchorJumpskirt
+# Moffstation - End
+
+- type: loadoutGroup
+  id: ReporterHead
+  name: loadout-group-reporter-head
+  minLimit: 0
+  loadouts:
+  - ReporterPressFedora
+
+- type: loadoutGroup
+  id: ReporterOuterClothing
+  name: loadout-group-reporter-outerclothing
+  minLimit: 0
+  loadouts:
+  - ReporterPressVest
 
 #- type: loadoutGroup
 #  id: ReporterJobTrinkets

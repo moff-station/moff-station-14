@@ -302,7 +302,7 @@
     - FacialHair
 
 - type: entity
-  parent: Clothing
+  parent: [SolutionDrink, Clothing]
   id: WaterDropletHat
   name: water droplet
   description: Makes 8-eyed friends 8 times more adorable!
@@ -328,19 +328,19 @@
       - water
   - type: DrainableSolution
     solution: drink
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 2
-        reagents:
-        - ReagentId: Water
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 2 # Droplets are pretty small.
+      reagents:
+      - ReagentId: Water
+        Quantity: 2
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.1
     damage:
       types:
         Blunt: 1
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Destructible
     thresholds:
@@ -363,14 +363,28 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadHatHairflower
-  name: hairflower
+  id: ClothingHeadHatHairFlowerBase # Moffstation - Color Changing Hairflower
   description: A beautiful hairflower that can be inserted between locks of hair.
+  # Moffstation - Begin - Color Changing Hairflower
+  abstract: true
   components:
   - type: Sprite
-    sprite: Clothing/Head/Misc/hairflower.rsi
-  - type: Clothing
-    sprite: Clothing/Head/Misc/hairflower.rsi
+    sprite: _Moffstation/Clothing/Head/Misc/hairflower.rsi
+  - type: ChameleonClothing
+    slot: HEAD
+#    default: idfk
+    requireTag: HairFlower
+    affectedByEmp: false
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+  - type: Tag
+    tags:
+    - ClothMade #idk man its on the parent
+    - WhitelistChameleon
+    - HairFlower
+    # Moffstation - Color Changing Hairflower End
 
 - type: entity
   parent: ClothingHeadBase

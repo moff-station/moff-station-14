@@ -6,9 +6,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Audio.Jukebox;
 
-public sealed class JukeboxBoundUserInterface : BoundUserInterface
+public sealed partial class JukeboxBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
 
     [ViewVariables]
     private JukeboxMenu? _menu;
@@ -41,6 +41,20 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
             SendMessage(new JukeboxStopMessage());
         };
 
+        // Moffstation - Start - Jukebox volume control
+        _menu.OnVolumeDownPressed += () =>
+        {
+            SendMessage(new JukeboxVolumeDownMessage());
+            UpdateVolumeDisplay();
+        };
+
+        _menu.OnVolumeUpPressed += () =>
+        {
+            SendMessage(new JukeboxVolumeUpMessage());
+            UpdateVolumeDisplay();
+        };
+        // Moffstation - End
+
         _menu.OnSongSelected += SelectSong;
 
         _menu.SetTime += SetTime;
@@ -67,7 +81,18 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         {
             _menu.SetSelectedSong(string.Empty, 0f);
         }
+        UpdateVolumeDisplay(); // Moffstation - Start
     }
+
+    // Moffstation - Start - Jukebox volume control
+    public void UpdateVolumeDisplay()
+    {
+        if (_menu == null || !EntMan.TryGetComponent(Owner, out JukeboxComponent? jukebox))
+            return;
+
+        _menu.SetVolumeDisplay(jukebox.JukeboxVolume, jukebox.JukeboxVolumeMin);
+    }
+    // Moffstation - End
 
     public void PopulateMusic()
     {

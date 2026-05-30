@@ -8,10 +8,10 @@ using Robust.Shared.Random;
 namespace Content.Client._Moffstation.ObjectivePicker;
 
 [UsedImplicitly]
-public sealed class ObjectivePickerUIController : UIController, IOnStateExited<GameplayState>
+public sealed partial class ObjectivePickerUIController : UIController, IOnStateExited<GameplayState>
 {
-    [Dependency] private readonly IEntityNetworkManager _net = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IEntityNetworkManager _net = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     private ObjectivePickerWindow? _window;
 

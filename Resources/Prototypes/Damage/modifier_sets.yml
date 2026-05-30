@@ -208,7 +208,7 @@
   id: Moth # Slightly worse at everything but cold
   coefficients:
     Cold: 0.7
-    Heat: 1.2
+    Heat: 1.3 # Moffstation - Revert moth fire stack damage reduction
 
 - type: damageModifierSet
   id: Vox
@@ -321,12 +321,6 @@
     Cellular: 0.0
     Heat: 2.5
     Caustic: 0.0
-
-# protects against radiation
-- type: damageModifierSet
-  id: PotassiumIodide
-  coefficients:
-    Radiation: 0.1
 
 - type: damageModifierSet
   id: ManifestedSpirit

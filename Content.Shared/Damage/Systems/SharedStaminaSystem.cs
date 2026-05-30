@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Moffstation.Damage.Events; //Moffstation - Geras Patch
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
@@ -33,17 +34,19 @@ public abstract partial class SharedStaminaSystem : EntitySystem
 {
     public static readonly EntProtoId StaminaLow = "StatusEffectStaminaLow";
 
-    [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly MetaDataSystem _metadata = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
-    [Dependency] private readonly StatusEffectsSystem _status = default!;
-    [Dependency] protected readonly SharedStunSystem StunSystem = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private MetaDataSystem _metadata = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
+    [Dependency] protected SharedStunSystem StunSystem = default!;
+
+    [Dependency] private EntityQuery<StaminaComponent> _stamQuery = default!;
 
     /// <summary>
     /// How much of a buffer is there between the stun duration and when stuns can be re-applied.
@@ -64,6 +67,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         SubscribeLocalEvent<StaminaComponent, AfterAutoHandleStateEvent>(OnStamHandleState);
         SubscribeLocalEvent<StaminaComponent, DisarmedEvent>(OnDisarmed);
         SubscribeLocalEvent<StaminaComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<StaminaComponent, ClearStaminaDamageEvent>(OnClearStaminaDamage);// Moffstation - Geras Patch
 
         SubscribeLocalEvent<StaminaDamageOnEmbedComponent, EmbedEvent>(OnProjectileEmbed);
 
@@ -116,6 +120,23 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         return MathF.Max(0f, component.StaminaDamage - MathF.Max(0f, (float) (curTime - (component.NextUpdate + pauseTime)).TotalSeconds * component.Decay));
     }
 
+    //Moffstation - Geras Patch - Begin
+    private void OnClearStaminaDamage(Entity<StaminaComponent> ent, ref ClearStaminaDamageEvent args)
+    {
+        if (ent.Comp.StaminaDamage >= ent.Comp.CritThreshold)
+        {
+            ExitStamCrit(ent, ent.Comp);
+        }
+
+        ent.Comp.StaminaDamage = 0;
+        AdjustStatus(ent.Owner);
+        RemComp<ActiveStaminaComponent>(ent);
+        _status.TryRemoveStatusEffect(ent, StaminaLow);
+        UpdateStaminaVisuals(ent);
+        Dirty(ent);
+    }
+    //Moffstation - End
+
     private void OnRejuvenate(Entity<StaminaComponent> entity, ref RejuvenateEvent args)
     {
         if (entity.Comp.StaminaDamage >= entity.Comp.CritThreshold)
@@ -162,13 +183,12 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         if (ev.Cancelled)
             return;
 
-        var stamQuery = GetEntityQuery<StaminaComponent>();
         var toHit = new List<(EntityUid Entity, StaminaComponent Component)>();
 
         // Split stamina damage between all eligible targets.
         foreach (var ent in args.HitEntities)
         {
-            if (!stamQuery.TryGetComponent(ent, out var stam))
+            if (!_stamQuery.TryGetComponent(ent, out var stam))
                 continue;
 
             toHit.Add((ent, stam));
@@ -351,14 +371,13 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var stamQuery = GetEntityQuery<StaminaComponent>();
         var query = EntityQueryEnumerator<ActiveStaminaComponent>();
         var curTime = Timing.CurTime;
 
         while (query.MoveNext(out var uid, out _))
         {
             // Just in case we have active but not stamina we'll check and account for it.
-            if (!stamQuery.TryGetComponent(uid, out var comp) ||
+            if (!_stamQuery.TryComp(uid, out var comp) ||
                 comp.StaminaDamage <= 0f && !comp.Critical)
             {
                 RemComp<ActiveStaminaComponent>(uid);
@@ -397,8 +416,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         component.Critical = true;
         component.StaminaDamage = component.CritThreshold;
 
-        if (StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime))
-            StunSystem.TrySeeingStars(uid);
+        StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime);
 
         // Give them buffer before being able to be re-stunned
         component.NextUpdate = Timing.CurTime + component.StunTime + StamCritBufferTime;

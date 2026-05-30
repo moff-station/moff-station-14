@@ -20,13 +20,14 @@
   - type: Anchorable
     flags:
     - Anchorable
-  - type: Rotatable
+  # Moffstation - No rotating stairs
   - type: Sprite
     sprite: Structures/stairs.rsi
     state: stairs_steel
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -46,10 +47,15 @@
             max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairsMetal
+  # Moffstation - End
 
 - type: entity
   id: StairStage
-  parent: Stairs
+  parent: Stairs # Moffstation - Stairs Construction
   suffix: Steel, stage
   components:
   - type: Sprite
@@ -66,10 +72,15 @@
     sprite: Structures/stairs.rsi
     state: stairs_white
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairMetalWhite
+  # Moffstation - End
 
 - type: entity
   id: StairStageWhite
-  parent: Stairs
+  parent: StairWhite # Moffstation - Stairs Construction
   suffix: White, stage
   components:
   - type: Sprite
@@ -86,10 +97,15 @@
     sprite: Structures/stairs.rsi
     state: stairs_dark
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Construction
+    graph: Stairsbase
+    node: stairMetalDark
+  # Moffstation - End
 
 - type: entity
   id: StairStageDark
-  parent: Stairs
+  parent: StairDark # Moffstation - Stairs Construction
   suffix: Dark, stage
   components:
   - type: Sprite
@@ -106,10 +122,17 @@
     sprite: Structures/stairs.rsi
     state: stairs_wood
     drawdepth: FloorTiles
+  # Moffstation - Start - Stairs Construction
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Construction
+    graph: Stairsbase
+    node: stairWood
+  # Moffstation - End
 
 - type: entity
   id: StairStageWood
-  parent: Stairs
+  parent: StairWood # Moffstation - Stairs Construction
   suffix: Wood, stage
   components:
   - type: Sprite

@@ -22,14 +22,14 @@ namespace Content.Server._Moffstation.Vampire.EntitySystems;
 /// <remarks>
 /// todo: set up proper adapter methods to interface with the bloodstream, for other systems to use.
 /// </remarks>
-public sealed class BloodConsumptionSystem : EntitySystem
+public sealed partial class BloodConsumptionSystem : EntitySystem
 {
-    [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
-    [Dependency] private readonly HungerSystem _hungerSystem = default!;
-    [Dependency] private readonly ThirstSystem _thirstSystem = default!;
-    [Dependency] private readonly DamageableSystem _damageSystem = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private BloodstreamSystem _bloodstreamSystem = default!;
+    [Dependency] private HungerSystem _hungerSystem = default!;
+    [Dependency] private ThirstSystem _thirstSystem = default!;
+    [Dependency] private DamageableSystem _damageSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
 
     public override void Initialize()
     {
@@ -101,8 +101,8 @@ public sealed class BloodConsumptionSystem : EntitySystem
     private void UpdateRegeneration(Entity<BloodConsumptionComponent> entity, BloodstreamComponent bloodstream)
     {
         // check damage
-        if (TryComp<DamageableComponent>(entity.Owner, out var damage)
-	    && damage.Damage.AnyPositive()) // Vampires should be able to heal all damage types
+        if (TryComp<DamageableComponent>(entity.Owner, out var damage) &&
+            _damageSystem.GetPositiveDamage((entity, damage)).AnyPositive()) // Vampires should be able to heal all damage types
         {
 	        // heal according to comp amount
 	        _damageSystem.TryChangeDamage((entity.Owner, damage), entity.Comp.HealPerUpdate, true, false);

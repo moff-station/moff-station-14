@@ -4,6 +4,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.Containers;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking.Events; // Moffstation - Signal network for disposal units
 using Content.Shared.Disposal.Components;
 using Content.Shared.Disposal.Unit.Events;
 using Content.Shared.DoAfter;
@@ -40,26 +41,26 @@ public sealed partial class DisposalDoAfterEvent : SimpleDoAfterEvent
 {
 }
 
-public abstract class SharedDisposalUnitSystem : EntitySystem
+public abstract partial class SharedDisposalUnitSystem : EntitySystem
 {
-    [Dependency] protected readonly ActionBlockerSystem ActionBlockerSystem = default!;
-    [Dependency] private   readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] protected readonly MetaDataSystem Metadata = default!;
-    [Dependency] private   readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] protected readonly SharedAudioSystem Audio = default!;
-    [Dependency] protected readonly IGameTiming GameTiming = default!;
-    [Dependency] private   readonly ISharedAdminLogManager _adminLog = default!;
-    [Dependency] private   readonly ClimbSystem _climb = default!;
-    [Dependency] protected readonly SharedContainerSystem Containers = default!;
-    [Dependency] protected readonly SharedJointSystem Joints = default!;
-    [Dependency] private   readonly SharedPowerReceiverSystem _power = default!;
-    [Dependency] private   readonly SharedDisposalTubeSystem _disposalTubeSystem = default!;
-    [Dependency] private   readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private   readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private   readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
-    [Dependency] private   readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private   readonly SharedMapSystem _map = default!;
+    [Dependency] protected ActionBlockerSystem ActionBlockerSystem = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] protected MetaDataSystem Metadata = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] protected SharedAudioSystem Audio = default!;
+    [Dependency] protected IGameTiming GameTiming = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
+    [Dependency] private ClimbSystem _climb = default!;
+    [Dependency] protected SharedContainerSystem Containers = default!;
+    [Dependency] protected SharedJointSystem Joints = default!;
+    [Dependency] private SharedPowerReceiverSystem _power = default!;
+    [Dependency] private SharedDisposalTubeSystem _disposalTubeSystem = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] protected SharedTransformSystem TransformSystem = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     protected static TimeSpan ExitAttemptDelay = TimeSpan.FromSeconds(0.5);
 
@@ -94,7 +95,24 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
 
         SubscribeLocalEvent<DisposalUnitComponent, GetDumpableVerbEvent>(OnGetDumpableVerb);
         SubscribeLocalEvent<DisposalUnitComponent, DumpEvent>(OnDump);
+
+        SubscribeLocalEvent<DisposalUnitComponent, SignalReceivedEvent>(OnSignalReceived); // Moffstation - Signal network for disposal units
     }
+
+    // Moffstation - Begin - Signal network for disposal units
+    private void OnSignalReceived(Entity<DisposalUnitComponent> entity, ref SignalReceivedEvent args)
+    {
+        if (args.Port == entity.Comp.FlushPort)
+            ToggleEngage(entity.Owner, entity.Comp);
+        else if (args.Port == entity.Comp.AutoFlushOnPort)
+            entity.Comp.AutomaticEngage = true;
+        else if (args.Port == entity.Comp.AutoFlushOffPort)
+            entity.Comp.AutomaticEngage = false;
+        else if (args.Port == entity.Comp.AutoFlushTogglePort)
+            entity.Comp.AutomaticEngage = !entity.Comp.AutomaticEngage;
+        Dirty(entity);
+    }
+    // Moffstation - End
 
     private void AddDisposalAltVerbs(Entity<DisposalUnitComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {

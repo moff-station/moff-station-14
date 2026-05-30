@@ -4,9 +4,9 @@ using Content.Shared.Alert;
 
 namespace Content.Server._Moffstation.Speech;
 
-public sealed class FrenchAccentToggleSystem : EntitySystem
+public sealed partial class FrenchAccentToggleSystem : EntitySystem
 {
-    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
+    [Dependency] private AlertsSystem _alertsSystem = default!;
 
     public override void Initialize()
     {

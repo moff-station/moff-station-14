@@ -61,6 +61,7 @@
 - type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceMoth
+  categories: [ HideSpawnMenu ]
   name: moth appearance
   components:
   - type: Inventory
@@ -154,15 +155,20 @@
   - type: ZombieAccentOverride
     accent: zombieMoth
   - type: Speech
+    speechSounds: UnisexMoth
     speechVerb: Moth
-    allowedEmotes: ['Chitter', 'Squeak']
+    allowedEmotes: ['Chitter', 'Squeak', 'Flap', 'Sneeze']
   - type: TypingIndicator
     proto: moth
+  - type: CreamPied
+    sprite:
+      sprite: Effects/creampie.rsi
+      state: creampie_moth
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
       - ReagentId: InsectBlood
-        Quantity: 300
+        Quantity: 600
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:
@@ -176,6 +182,8 @@
       Male: UnisexMoth
       Female: UnisexMoth
       Unsexed: UnisexMoth
+  - type: BodyEmotes
+    soundsId: MothBodyEmotes
   - type: MovementSpeedModifier
     baseWeightlessAcceleration: 1.5 # Move around more easily in space.
     baseWeightlessFriction: 1
@@ -183,7 +191,7 @@
   - type: Flammable
     damage:
       types:
-        Heat: 2.5 # moths burn more easily
+        Heat: 4.5 # Moffstation - Revert moth fire stack damage reduction
   - type: Temperature
     currentTemperature: 310.15
     specificHeat: 46

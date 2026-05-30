@@ -188,7 +188,7 @@
   components:
   - type: BorgModule
     borgFitTypes:
-    - borg-type-generic
+    - borg-type-science
   - type: Tag
     tags:
     - BorgModuleScience
@@ -454,6 +454,23 @@
 
 # generic modules
 - type: entity
+  id: BorgModulePrying
+  parent: [ BaseBorgModule ]
+  name: prying module
+  description: A universal cyborg module which allows the unit to pry open doors.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-tools
+  - type: ComponentBorgModule
+    components:
+    - type: Prying
+      speedModifier: 1.5
+      useSound:
+        path: /Audio/Items/jaws_pry.ogg
+
+- type: entity
   id: BorgModuleCable
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: cable cyborg module
@@ -522,7 +539,7 @@
   - type: ItemBorgModule
     hands:
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
     - item: HandheldStationMapUnpowered
     - item: HandHeldMassScannerBorg
   - type: BorgModuleIcon
@@ -649,7 +666,7 @@
     - item: MiningDrillDiamond
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
-    - item: OreBagOfHolding
+    - item: BorgOreBagOfHolding
     # Moffstation - Start - Add orehand for salvage borgs
     - hand:
         emptyRepresentative: Coal1
@@ -679,10 +696,17 @@
     hands:
     - item: WeaponGrapplingGun
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
     - item: HandHeldMassScannerBorg
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }
+  # Moffstation - Start - Replacable Traversal Module
+  - type: Tag
+    tags:
+    - CyborgTraversalModule
+    - BorgModuleCargo
+  # Moffstation - End
 
 # engineering modules
 - type: entity
@@ -801,10 +825,12 @@
     hands:
     - item: RCDRecharging
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
+    - item: HandHeldMassScannerBorg # Moffstation - so give them the mass scanner.
     - item: GasAnalyzer
     - item: HolofanProjectorBorg
     - item: GeigerCounter
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: rcd-module }
 
@@ -960,7 +986,9 @@
     - item: DefibrillatorOneHandedUnpowered
     - item: Crowbar
     - item: BorgFireExtinguisher
-    - item: BorgHandheldGPSBasic
+#    - item: BorgHandheldGPSBasic # Moffstation - The mass scanner is a GPS now, too.
+    - item: HandHeldMassScannerBorg # Moffstation - ... so give them the mass scanner.
+    - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: defib-module }
 
@@ -1684,6 +1712,22 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-door-remote-module }
 
 - type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleTileGun
+  name: tile gun xenoborg module
+  description: Module with a tile gun. wait, a what?
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-tile
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponTileGun
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
+
+- type: entity
   parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleJammer
   name: jammer xenoborg module
@@ -1751,6 +1795,23 @@
     - item: JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-space-movement-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleScout, BaseXenoborgContraband ]
+  id: XenoborgModuleJump
+  name: xenoborg jump module
+  description: Module that allows a xenoborg to jump forward.
+  components:
+  - type: ComponentBorgModule
+    components:
+    - type: JumpAbility
+      action: ActionJumpBoost
+      jumpDistance: 4
+      jumpSound: /Audio/Effects/stealthoff.ogg
+  - type: Sprite
+    layers:
+    - state: xenoborg_scout
+    - state: icon-xenoborg-jump
 
 - type: entity
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]

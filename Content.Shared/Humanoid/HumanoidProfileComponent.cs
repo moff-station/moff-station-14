@@ -33,4 +33,10 @@ public sealed partial class HumanoidProfileComponent : Component
     [DataField, AutoNetworkedField]
     public float Height = 1f;
     // Moffstation End
+
+    //Moffstation Start - Re-add Geras
+    //Cent was right, this is basically the only half-decent way to make this available
+    [DataField, AutoNetworkedField]
+    public Color SkinColor = Color.White;
+    //Moffstation End
 }

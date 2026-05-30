@@ -1,0 +1,19 @@
+- type: entity
+  name: figurine case
+  id: BriefcaseFigurine
+  parent: BriefcaseBase
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_figurine.rsi # Moffstation - Cabinetification
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_figurine.rsi # Moffstation - Cabinetification
+  - type: Storage
+    grid:
+    - 0,0,9,3
+    whitelist:
+      tags:
+      - Figurine
+  - type: QuickPickup
+  - type: AreaPickup
+  - type: Dumpable

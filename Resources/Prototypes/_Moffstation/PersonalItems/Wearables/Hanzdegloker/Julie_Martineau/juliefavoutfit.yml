@@ -1,0 +1,22 @@
+# Player: Hanzdegloker - Character: Julie Martineau
+- type: entity
+  parent: [ClothingUniformBase]
+  id: PersonalItemJulieFavOutfit
+  name: Julie's favorite outfit
+  description: The croptop features some fox-like creature that reminds you of a videogame...
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/Hanzdegloker/Julie_Martineau/juliefavoutfit.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/Hanzdegloker/Julie_Martineau/juliefavoutfit.rsi
+
+- type: loadout
+  id: PersonalItemJulieFavOutfit
+  storage:
+    back:
+    - PersonalItemJulieFavOutfit
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Julie Martineau

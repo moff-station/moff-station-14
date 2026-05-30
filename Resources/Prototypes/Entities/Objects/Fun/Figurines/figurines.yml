@@ -554,7 +554,7 @@
     pack: FigurinesQueen
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream
   id: ToyFigurineRatKing
   name: rat king figure
   description: A large figurine depicting a rat king, prepared to make its nest.
@@ -565,7 +565,7 @@
     pack: FigurinesRatKing
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream
   id: ToyFigurineRatServant
   name: rat servant figure
   description: A figurine depicting a rat serving the king of rats!
@@ -576,7 +576,7 @@
     pack: FigurinesRatServant
 
 - type: entity
-  parent: BaseFigurine
+  parent: BaseFigurineUpstream
   id: ToyFigurineMouse
   name: mouse figure
   description: A figurine depicting a mouse scuttling away to the nearest piece of food.

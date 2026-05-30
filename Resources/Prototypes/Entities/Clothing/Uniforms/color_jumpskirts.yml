@@ -1,7 +1,8 @@
 # White Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorWhite
+  id: ClothingUniformJumpskirtColorWhiteUpstream # Moffstation
+  abstract: true # Moffstation
   name: white jumpskirt
   description: A generic white jumpskirt with no rank markings.
   components:
@@ -28,7 +29,8 @@
 # Grey Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorGrey
+  id: ClothingUniformJumpskirtColorGreyUpstream # Moffstation
+  abstract: true # Moffstation
   name: grey jumpskirt
   description: A tasteful grey jumpskirt that reminds you of the good old days.
   components:
@@ -59,7 +61,8 @@
 # Black Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorBlack
+  id: ClothingUniformJumpskirtColorBlackUpstream # Moffstation
+  abstract: true # Moffstation
   name: black jumpskirt
   description: A generic black jumpskirt with no rank markings.
   components:
@@ -90,7 +93,8 @@
 # Blue Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorBlue
+  id: ClothingUniformJumpskirtColorBlueUpstream # Moffstation
+  abstract: true # Moffstation
   name: blue jumpskirt
   description: A generic blue jumpskirt with no rank markings.
   components:
@@ -121,7 +125,8 @@
 # Dark Blue Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorDarkBlue
+  id: ClothingUniformJumpskirtColorDarkBlueUpstream # Moffstation
+  abstract: true # Moffstation
   name: dark blue jumpskirt
   description: A generic dark blue jumpskirt with no rank markings.
   components:
@@ -152,7 +157,8 @@
 # Teal Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorTeal
+  id: ClothingUniformJumpskirtColorTealUpstream # Moffstation
+  abstract: true # Moffstation
   name: teal jumpskirt
   description: A generic teal jumpskirt with no rank markings.
   components:
@@ -183,7 +189,8 @@
 # Green Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorGreen
+  id: ClothingUniformJumpskirtColorGreenUpstream # Moffstation
+  abstract: true # Moffstation
   name: green jumpskirt
   description: A generic green jumpskirt with no rank markings.
   components:
@@ -214,7 +221,8 @@
  # Dark Green Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorDarkGreen
+  id: ClothingUniformJumpskirtColorDarkGreenUpstream # Moffstation
+  abstract: true # Moffstation
   name: dark green jumpskirt
   description: A generic dark green jumpskirt with no rank markings.
   components:
@@ -245,7 +253,8 @@
 # Orange Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorOrange
+  id: ClothingUniformJumpskirtColorOrangeUpstream # Moffstation
+  abstract: true # Moffstation
   name: orange jumpskirt
   description: Don't wear this near paranoid security officers.
   components:
@@ -276,7 +285,8 @@
 # Pink Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorPink
+  id: ClothingUniformJumpskirtColorPinkUpstream # Moffstation
+  abstract: true # Moffstation
   name: pink jumpskirt
   description: Just looking at this makes you feel <i>fabulous</i>.
   components:
@@ -307,7 +317,8 @@
 # Red Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorRed
+  id: ClothingUniformJumpskirtColorRedUpstream # Moffstation
+  abstract: true # Moffstation
   name: red jumpskirt
   description: A generic red jumpskirt with no rank markings.
   components:
@@ -338,7 +349,8 @@
 # Yellow Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorYellow
+  id: ClothingUniformJumpskirtColorYellowUpstream # Moffstation
+  abstract: true # Moffstation
   name: yellow jumpskirt
   description: A generic yellow jumpskirt with no rank markings.
   components:
@@ -369,7 +381,8 @@
 # Purple Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorPurple
+  id: ClothingUniformJumpskirtColorPurpleUpstream # Moffstation
+  abstract: true # Moffstation
   name: purple jumpskirt
   description: A generic light purple jumpskirt with no rank markings.
   components:
@@ -400,7 +413,8 @@
 # Light Brown Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorLightBrown
+  id: ClothingUniformJumpskirtColorLightBrownUpstream # Moffstation
+  abstract: true # Moffstation
   name: light brown jumpskirt
   description: A generic light brown jumpskirt with no rank markings.
   components:
@@ -431,7 +445,8 @@
 # Brown Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorBrown
+  id: ClothingUniformJumpskirtColorBrownUpstream # Moffstation
+  abstract: true # Moffstation
   name: brown jumpskirt
   description: A generic brown jumpskirt with no rank markings.
   components:
@@ -462,7 +477,8 @@
 # Maroon Jumpskirt
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtColorMaroon
+  id: ClothingUniformJumpskirtColorMaroonUpstream # Moffstation
+  abstract: true # Moffstation
   name: maroon jumpskirt
   description: A generic maroon jumpskirt with no rank markings.
   components:
@@ -493,7 +509,8 @@
 # Rainbow Jumpskirt
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpskirtColorRainbow
+  id: ClothingUniformJumpskirtColorRainbowUpstream # Moffstation
+  abstract: true # Moffstation
   name: rainbow jumpskirt
   description: A multi-colored jumpskirt!
   components:

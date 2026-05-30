@@ -1,0 +1,40 @@
+﻿# Derelict service cyborg
+- type: entity
+  parent: ServiceBorgChassisDerelict
+  id: PlayerServiceBorgDerelict
+  suffix: Battery, Module
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - PositronicBrainIonStormed
+      borg_module:
+      - BorgModulePrying
+      - BorgModuleTool
+      - BorgModuleFireExtinguisher
+      - BorgModuleClowning
+      - BorgModuleGardening
+      - BorgModuleHarvesting
+      - BorgModuleMusique
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+  - type: RandomMetadata
+    nameSegments: [NamesBorg]
+
+- type: entity
+  parent: PlayerServiceBorgDerelict
+  id: PlayerServiceBorgDerelictGhostRole
+  suffix: Ghost role
+  components:
+  - type: GhostRole
+    name: ghost-role-information-derelict-service-cyborg-name
+    description: ghost-role-information-derelict-service-cyborg-description
+    rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default
+    reregister: false
+    job: Borg
+  - type: GhostTakeoverAvailable

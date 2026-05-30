@@ -9,12 +9,16 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Body;
 
+/// <summary>
+/// Class responsible for managing the appearance of an entity with <see cref="VisualBodyComponent" /> via its organs with <see cref="VisualOrganComponent" />
+/// </summary>
 public abstract partial class SharedVisualBodySystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly MarkingManager _marking = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedScaleVisualsSystem _scaleVisuals = default!; // Moffstation - Height scaling
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private MarkingManager _marking = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+
+    [Dependency] private SharedScaleVisualsSystem _scaleVisuals = default!; // Moffstation - Height scaling
 
     public override void Initialize()
     {
@@ -25,6 +29,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         SubscribeLocalEvent<VisualOrganComponent, BodyRelayedEvent<ApplyOrganProfileDataEvent>>(OnVisualOrganApplyProfile);
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<ApplyOrganMarkingsEvent>>(OnMarkingsOrganApplyMarkings);
         SubscribeLocalEvent<HumanoidProfileComponent, ApplyOrganProfileDataEvent>(OnApplyOrganProfileData); // Moffstation - Height scaling
+        SubscribeLocalEvent<VisualOrganComponent, ForceUpdateOrganVisualsEvent>(OnForceOrganUpdate);//Moffstation - Re-add Geras
 
         InitializeModifiers();
         InitializeInitial();
@@ -76,6 +81,14 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         Dirty(ent);
     }
 
+    //Moffstation - Re-add Geras - Begin
+    private void OnForceOrganUpdate(Entity<VisualOrganComponent> ent, ref ForceUpdateOrganVisualsEvent args)
+    {
+        ent.Comp.Data.State = args.State;
+        Dirty(ent);
+    }
+    //Moffstation - End
+
     protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data)
     {
         ent.Comp.Data = data;
@@ -86,27 +99,6 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
     {
         ent.Comp.Markings = markings;
         Dirty(ent);
-    }
-
-    public void CopyAppearanceFrom(Entity<BodyComponent?> source, Entity<BodyComponent?> target)
-    {
-        if (!Resolve(source, ref source.Comp) || !Resolve(target, ref target.Comp))
-            return;
-
-        // Moffstation - Begin - Cloning copies height. This isn't just a component copy because it needs event piping to be applied properly.
-        if (TryComp<HumanoidProfileComponent>(source, out var profile))
-        {
-            ApplyProfile(target, new() { Height = profile.Height });
-        }
-        // Moffstation - End
-
-        var sourceOrgans = _container.EnsureContainer<Container>(source, BodyComponent.ContainerID);
-
-        foreach (var sourceOrgan in sourceOrgans.ContainedEntities)
-        {
-            var evt = new OrganCopyAppearanceEvent(sourceOrgan);
-            RaiseLocalEvent(target, ref evt);
-        }
     }
 
     private void OnVisualOrganCopyAppearance(Entity<VisualOrganComponent> ent, ref BodyRelayedEvent<OrganCopyAppearanceEvent> args)

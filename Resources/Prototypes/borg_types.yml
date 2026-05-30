@@ -13,6 +13,7 @@
     - BorgModuleScience # Moffstation - Scienceborgs
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   # Moffstation - Start - Scienceborgs
   # - BorgModuleInflatable # also why tf do they have this baseline?
@@ -24,7 +25,7 @@
   - Science
 
   # Visual
-  inventoryTemplateId: borgShort
+  inventoryTemplateId: borg # Moffstation
   # Moffstation - Start - Add neck slots and displacements
   inventoryDisplacements:
     neck:
@@ -55,10 +56,12 @@
     - BorgModuleEngineering
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleConstruction
   - BorgModuleRCD
   - BorgModuleCable
+  - BorgModuleGravity # Moffstation - Magboots module
 
   requiredModules:
   - simpleDescription: borg-module-requirement-tool
@@ -102,16 +105,24 @@
     - BorgModuleCargo
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
   - BorgModuleAppraisal
+  - BorgModuleGravity # Moffstation - Magboots module
 
   requiredModules:
   - simpleDescription: borg-module-requirement-mining
     whitelist:
       tags:
       - CyborgMiningModule
+  # Moffstation - Start - Advanced Traversal Module
+  - simpleDescription: borg-module-requirement-traversal
+    whitelist:
+      tags:
+      - CyborgTraversalModule
+  # Moffstation - End
 
   radioChannels:
   - Supply
@@ -120,8 +131,44 @@
   # Moffstation - Start - Salvage Borg Resprite
   addComponents:
   - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 3.5
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3.5 # Slower because haha big stompy sounds
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      165: Critical # Just enough to not be oneshot by a mine
+      495: Dead # Same as destruction threshold. Borgs act exactly like crit when dead, except for ghosting on move
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
+  - type: Destructible # Redefine all of this with the new thresholds!
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 125
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 495
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - borg_module
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   footstepCollection:
     path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
     params:
@@ -161,6 +208,7 @@
     - BorgModuleJanitor
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
 
@@ -207,6 +255,7 @@
     - BorgModuleMedical
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -267,6 +316,7 @@
     - BorgModuleService
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleMusique
   - BorgModuleService
   - BorgModuleClowning
@@ -282,9 +332,16 @@
 # Moffstation - End
 
   # Visual
-  inventoryTemplateId: borgHumanoid  # Moffstation - Changed service to use a different inventory template since it's actually just human proportioned
+  inventoryTemplateId: borg  # Moffstation
   spritePath: _Moffstation/Mobs/Silicon/Chassis/service.rsi # Moffstation - Early merge of Borg RSI fix
-
+  # Moffstation - Start - Add neck slots and displacements
+  inventoryDisplacements:
+    neck:
+      sizeMaps:
+        32:
+          sprite: _Moffstation/Mobs/Silicon/Displacements/service.rsi
+          state: neck
+# Moffstation - End
   # Pet
-  petSuccessString: petting-success-service-cyborg
+  petSuccessString: petting-success-service-cyborg-moffstation
   petFailureString: petting-failure-service-cyborg

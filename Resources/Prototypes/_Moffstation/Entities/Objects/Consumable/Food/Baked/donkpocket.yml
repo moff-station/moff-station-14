@@ -1,0 +1,84 @@
+- type: entity
+  parent: FoodDonkpocketBase
+  id: FoodDonkpocketTideBase
+  abstract: true
+  components:
+  - type: FlavorProfile
+    flavors:
+    - shocking
+    - alkaline
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: tide
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 0
+    chemicalComposition:
+      Zinc: 10
+  - type: Construction
+    graph: WarmTide
+    node: start
+    defaultTarget: warm tide-pocket
+
+- type: entity
+  parent: [ FoodDonkpocketTideBase, BasePowerCell ]
+  id: FoodDonkpocketTide
+  name: tide-pocket
+  description: Food of choice for a seasoned tider. Can be used as a battery in a pinch.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: FoodDonkpocketTideWarm
+    sound:
+      path: /Audio/_Moffstation/Effects/donktidesnap.ogg
+  - type: Tag
+    tags:
+    - DonkPocket
+    - PowerCell
+  - type: Battery
+    maxCharge: 20
+    startingCharge: 20
+  - type: GenericVisualizer
+    visuals: { } # Clear generic visuals because we don't get charge indicators on donk pockets.
+
+- type: entity
+  parent: [ SolutionFoodDonkpocketWarm, FoodDonkpocketTideBase ]
+  id: FoodDonkpocketTideWarm
+  name: warm tide-pocket
+  description: Warm and coated in a reflective layer. Best eaten in one breath.
+  components:
+  - type: Sprite
+    state: tide-open
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Omnizine
+        Quantity: 3
+      - ReagentId: Tazinide
+        Quantity: 2
+      - ReagentId: Insuzine
+        Quantity: 2
+
+- type: entity
+  parent: [ SolutionFoodDonkpocketWarm, FoodDonkpocketBase ]
+  id: FoodDonkpocketOmni
+  name: omni-pocket
+  description: The final flavor. Eternally warm.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chaos
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: omni
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Omnizine
+        Quantity: 50
+      - ReagentId: Stimulants
+        Quantity: 50
+      - ReagentId: Puncturase
+        Quantity: 50

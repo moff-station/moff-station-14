@@ -1,0 +1,19 @@
+- type: constructionGraph
+  id: BoxHugEmpty
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: BoxHugEmpty
+      steps:
+      - tag: Crayon
+        icon:
+          sprite: Objects/Fun/crayons.rsi
+          state: rainbow
+        name: construction-graph-tag-crayon
+      - material: Cardboard
+        amount: 3
+        doAfter: 3
+
+  - node: BoxHugEmpty
+    entity: BoxHugEmpty

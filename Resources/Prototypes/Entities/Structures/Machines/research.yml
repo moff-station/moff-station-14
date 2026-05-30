@@ -38,9 +38,9 @@
 #  - type: ExtensionCableReceiver
 #  - type: WiresPanel
 #  - type: WiresVisuals
+#  - type: Machine
+#    board: ResearchAndDevelopmentServerMachineCircuitboard
   # Moffstation - End
-  - type: Machine
-    board: ResearchAndDevelopmentServerMachineCircuitboard
   - type: Destructible
     thresholds:
     - trigger:

@@ -1,0 +1,54 @@
+﻿# APC under construction
+- type: entity
+  parent: APCFrame
+  id: APCFrameWithBoard
+  components:
+  - type: Construction
+    graph: APC
+    node: apcFrameWithBoard
+
+# Constructed APC
+- type: entity
+  parent: APCBasic
+  id: APCPotatoBreaker # Oh gods why
+  suffix: Potato, 50kJ Charge, 1.0kW Breaker
+  components:
+  - type: Apc
+    maxLoad: 1000
+    enablePermaTripping: true
+  - type: Construction
+    graph: APC
+    node: apcPotato
+
+- type: entity
+  parent: APCBasic
+  id: APCSmallBreaker
+  suffix: Small, 50kJ Charge, 10.0kW Breaker
+  components:
+  - type: Apc
+    maxLoad: 10000
+  - type: Construction
+    graph: APC
+    node: apcSmall
+
+- type: entity
+  parent: APCBasic
+  id: APCHighBreaker
+  suffix: High, 50kJ Charge, 40.0kW Breaker
+  components:
+  - type: Apc
+    maxLoad: 40000
+  - type: Construction
+    graph: APC
+    node: apcHigh
+
+- type: entity
+  parent: APCBasic
+  id: APCHyperBreaker
+  suffix: Hyper, 50kJ Charge, 100.0kW Breaker
+  components:
+  - type: Apc
+    maxLoad: 100000
+  - type: Construction
+    graph: APC
+    node: apcHyper

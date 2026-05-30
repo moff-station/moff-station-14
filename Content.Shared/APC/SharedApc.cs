@@ -183,8 +183,9 @@ namespace Content.Shared.APC
         public readonly float Charge;
         public readonly float MaxLoad;
         public readonly bool Tripped;
+        public readonly bool PermaTripped; // Moffstation - potato APC cooking
 
-        public ApcBoundInterfaceState(bool mainBreaker, int power, ApcExternalPowerState apcExternalPower, float charge, float maxLoad, bool tripped)
+        public ApcBoundInterfaceState(bool mainBreaker, int power, ApcExternalPowerState apcExternalPower, float charge, float maxLoad, bool tripped, bool permaTripped) // Moffstation - potato APC cooking
         {
             MainBreaker = mainBreaker;
             Power = power;
@@ -192,18 +193,22 @@ namespace Content.Shared.APC
             Charge = charge;
             MaxLoad = maxLoad;
             Tripped = tripped;
+            PermaTripped = permaTripped; // Moffstation - potato APC cooking
         }
 
         public bool Equals(ApcBoundInterfaceState? other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
+            // Moffstation - Start - potato APC cooking
             return MainBreaker == other.MainBreaker &&
                    Power == other.Power &&
                    ApcExternalPower == other.ApcExternalPower &&
                    MathHelper.CloseTo(Charge, other.Charge) &&
                    MathHelper.CloseTo(MaxLoad, other.MaxLoad) &&
-                   Tripped == other.Tripped;
+                   Tripped == other.Tripped &&
+                   PermaTripped == other.PermaTripped;
+            // Moffstation - End
         }
 
         public override bool Equals(object? obj)

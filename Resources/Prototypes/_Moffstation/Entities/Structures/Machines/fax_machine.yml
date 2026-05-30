@@ -1,0 +1,9 @@
+﻿- type: entity
+  parent: FaxMachineSyndie
+  id: FaxMachinePirate
+  name: pirate long range fax machine
+  suffix: Pirate
+  components:
+  - type: Tag # Prevents use for pirate bounty
+    tags:
+    - Pirate

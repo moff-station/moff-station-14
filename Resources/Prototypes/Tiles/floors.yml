@@ -29,7 +29,7 @@
   id: FloorSteel
   parent: BaseStationTile
   name: tiles-steel-floor
-  sprite: /Textures/Tiles/steel.png
+  sprite: /Textures/_Moffstation/Tiles/steel.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -42,7 +42,7 @@
   id: FloorSteelCheckerLight
   parent: BaseStationTile
   name: tiles-steel-floor-checker-light
-  sprite: /Textures/Tiles/cafeteria.png
+  sprite: /Textures/_Moffstation/Tiles/cafeteria.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -55,7 +55,7 @@
   id: FloorSteelCheckerDark
   parent: BaseStationTile
   name: tiles-steel-floor-checker-dark
-  sprite: /Textures/Tiles/checker_dark.png
+  sprite: /Textures/_Moffstation/Tiles/checker_dark.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -68,7 +68,7 @@
   id: FloorSteelMini
   parent: BaseStationTile
   name: tiles-steel-floor-mini
-  sprite: /Textures/Tiles/steel_mini.png
+  sprite: /Textures/_Moffstation/Tiles/steel_mini.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -81,7 +81,7 @@
   id: FloorSteelPavement
   parent: BaseStationTile
   name: tiles-steel-floor-pavement
-  sprite: /Textures/Tiles/steel_pavement.png
+  sprite: /Textures/_Moffstation/Tiles/steel_pavement.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -94,7 +94,7 @@
   id: FloorSteelDiagonal
   parent: BaseStationTile
   name: tiles-steel-floor-diagonal
-  sprite: /Textures/Tiles/steel_diagonal.png
+  sprite: /Textures/_Moffstation/Tiles/steel_diagonal.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -107,14 +107,14 @@
   id: FloorSteelOffset
   parent: BaseStationTile
   name: tiles-steel-floor-offset
-  sprite: /Textures/Tiles/steel_offset.png
+  sprite: /Textures/_Moffstation/Tiles/steel_offset.png # Moffstation
   itemDrop: FloorTileItemSteelOffset
 
 - type: tile
   id: FloorSteelMono
   parent: BaseStationTile
   name: tiles-steel-floor-mono
-  sprite: /Textures/Tiles/steel_mono.png
+  sprite: /Textures/_Moffstation/Tiles/steel_mono.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -127,7 +127,7 @@
   id: FloorSteelPavementVertical
   parent: BaseStationTile
   name: tiles-steel-floor-pavement-vertical
-  sprite: /Textures/Tiles/steel_pavement_vertical.png
+  sprite: /Textures/_Moffstation/Tiles/steel_pavement_vertical.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -140,7 +140,7 @@
   id: FloorSteelHerringbone
   parent: BaseStationTile
   name: tiles-steel-floor-herringbone
-  sprite: /Textures/Tiles/steel_herringbone.png
+  sprite: /Textures/_Moffstation/Tiles/steel_herringbone.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -153,7 +153,7 @@
   id: FloorSteelDiagonalMini
   parent: BaseStationTile
   name: tiles-steel-floor-diagonal-mini
-  sprite: /Textures/Tiles/steel_diagonal_mini.png
+  sprite: /Textures/_Moffstation/Tiles/steel_diagonal_mini.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -161,6 +161,46 @@
   - 1.0
   - 1.0
   itemDrop: FloorTileItemSteelDiagonalMini
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorSteelSlatsContinuous
+  name: tiles-steel-floor-slats-continuous
+  sprite: /Textures/_Moffstation/Tiles/steel_slats_continuous.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemSteelSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorSteelVerticalSlatsBordered
+  name: tiles-steel-floor-vertical-slats-bordered
+  sprite: /Textures/_Moffstation/Tiles/steel_vertical_slats_bordered.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemSteelVerticalSlatsBordered
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorSteelHorizontalSlatsBordered
+  name: tiles-steel-floor-horizontal-slats-bordered
+  sprite: /Textures/_Moffstation/Tiles/steel_horizontal_slats_bordered.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemSteelHorizontalSlatsBordered
 
 - type: tile
   id: FloorBrassFilled
@@ -184,7 +224,7 @@
   id: FloorPlastic
   parent: BaseStationTile
   name: tiles-plastic-floor
-  sprite: /Textures/Tiles/plastic.png
+  sprite: /Textures/_Moffstation/Tiles/plastic.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -197,7 +237,7 @@
   id: FloorWood
   parent: BaseStationTile
   name: tiles-wood
-  sprite: /Textures/Tiles/wood.png
+  sprite: /Textures/_Moffstation/Tiles/wood.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -214,7 +254,7 @@
   id: FloorWhite
   parent: BaseStationTile
   name: tiles-white-floor
-  sprite: /Textures/Tiles/white.png
+  sprite: /Textures/_Moffstation/Tiles/white.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -229,7 +269,7 @@
   id: FloorWhiteMini
   parent: BaseStationTile
   name: tiles-white-floor-mini
-  sprite: /Textures/Tiles/white_mini.png
+  sprite: /Textures/_Moffstation/Tiles/white_mini.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -241,10 +281,50 @@
   itemDrop: FloorTileItemWhiteMini
 
 - type: tile
+  parent: BaseStationTile
+  id: FloorWhiteSlatsContinuous
+  name: tiles-white-floor-slats-continuous
+  sprite: /Textures/_Moffstation/Tiles/white_slats_continuous.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemWhiteSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorWhiteVerticalSlatsBordered
+  name: tiles-white-floor-vertical-slats-bordered
+  sprite: /Textures/_Moffstation/Tiles/white_vertical_slats_bordered.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemWhiteVerticalSlatsBordered
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorWhiteHorizontalSlatsBordered
+  name: tiles-white-floor-horizontal-slats-bordered
+  sprite: /Textures/_Moffstation/Tiles/white_horizontal_slats_bordered.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemWhiteHorizontalSlatsBordered
+
+- type: tile
   id: FloorWhitePavement
   parent: BaseStationTile
   name: tiles-white-floor-pavement
-  sprite: /Textures/Tiles/white_pavement.png
+  sprite: /Textures/_Moffstation/Tiles/white_pavement.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -259,7 +339,7 @@
   id: FloorWhiteDiagonal
   parent: BaseStationTile
   name: tiles-white-floor-diagonal
-  sprite: /Textures/Tiles/white_diagonal.png
+  sprite: /Textures/_Moffstation/Tiles/white_diagonal.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -274,7 +354,7 @@
   id: FloorWhiteOffset
   parent: BaseStationTile
   name: tiles-white-floor-offset
-  sprite: /Textures/Tiles/white_offset.png
+  sprite: /Textures/_Moffstation/Tiles/white_offset.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemWhiteOffset
@@ -283,7 +363,7 @@
   id: FloorWhiteMono
   parent: BaseStationTile
   name: tiles-white-floor-mono
-  sprite: /Textures/Tiles/white_mono.png
+  sprite: /Textures/_Moffstation/Tiles/white_mono.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -298,7 +378,7 @@
   id: FloorWhitePavementVertical
   parent: BaseStationTile
   name: tiles-white-floor-pavement-vertical
-  sprite: /Textures/Tiles/white_pavement_vertical.png
+  sprite: /Textures/_Moffstation/Tiles/white_pavement_vertical.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -313,7 +393,7 @@
   id: FloorWhiteHerringbone
   parent: BaseStationTile
   name: tiles-white-floor-herringbone
-  sprite: /Textures/Tiles/white_herringbone.png
+  sprite: /Textures/_Moffstation/Tiles/white_herringbone.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -328,7 +408,7 @@
   id: FloorWhiteDiagonalMini
   parent: BaseStationTile
   name: tiles-white-floor-diagonal-mini
-  sprite: /Textures/Tiles/white_diagonal_mini.png
+  sprite: /Textures/_Moffstation/Tiles/white_diagonal_mini.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -343,7 +423,7 @@
   id: FloorWhitePlastic
   parent: BaseStationTile
   name: tiles-plastic-white-floor
-  sprite: /Textures/Tiles/white_plastic.png
+  sprite: /Textures/_Moffstation/Tiles/white_plastic.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -358,7 +438,7 @@
   id: FloorDark
   parent: BaseStationTile
   name: tiles-dark-floor
-  sprite: /Textures/Tiles/dark.png
+  sprite: /Textures/_Moffstation/Tiles/dark.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -373,7 +453,7 @@
   id: FloorDarkMini
   parent: BaseStationTile
   name: tiles-dark-floor-mini
-  sprite: /Textures/Tiles/dark_mini.png
+  sprite: /Textures/_Moffstation/Tiles/dark_mini.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -385,10 +465,50 @@
   itemDrop: FloorTileItemDarkMini
 
 - type: tile
+  parent: BaseStationTile
+  id: FloorDarkSlatsContinuous
+  name: tiles-dark-floor-slats-continuous
+  sprite: /Textures/_Moffstation/Tiles/dark_slats_continuous.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemDarkSlatsContinuous
+  allowRotationMirror: true
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorDarkVerticalSlatsBordered
+  name: tiles-dark-floor-vertical-slats-bordered
+  sprite: /Textures/_Moffstation/Tiles/dark_vertical_slats_bordered.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemDarkVerticalSlatsBordered
+
+- type: tile
+  parent: BaseStationTile
+  id: FloorDarkHorizontalSlatsBordered
+  name: tiles-dark-floor-horizontal-slats-bordered
+  sprite: /Textures/_Moffstation/Tiles/dark_horizontal_slats_bordered.png # Moffstation
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  itemDrop: FloorTileItemDarkHorizontalSlatsBordered
+
+- type: tile
   id: FloorDarkPavement
   parent: BaseStationTile
   name: tiles-dark-floor-pavement
-  sprite: /Textures/Tiles/dark_pavement.png
+  sprite: /Textures/_Moffstation/Tiles/dark_pavement.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -403,7 +523,7 @@
   id: FloorDarkDiagonal
   parent: BaseStationTile
   name: tiles-dark-floor-diagonal
-  sprite: /Textures/Tiles/dark_diagonal.png
+  sprite: /Textures/_Moffstation/Tiles/dark_diagonal.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -418,7 +538,7 @@
   id: FloorDarkOffset
   parent: BaseStationTile
   name: tiles-dark-floor-offset
-  sprite: /Textures/Tiles/dark_offset.png
+  sprite: /Textures/_Moffstation/Tiles/dark_offset.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemDarkOffset
@@ -427,7 +547,7 @@
   id: FloorDarkMono
   parent: BaseStationTile
   name: tiles-dark-floor-mono
-  sprite: /Textures/Tiles/dark_mono.png
+  sprite: /Textures/_Moffstation/Tiles/dark_mono.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -442,7 +562,7 @@
   id: FloorDarkPavementVertical
   parent: BaseStationTile
   name: tiles-dark-floor-pavement-vertical
-  sprite: /Textures/Tiles/dark_pavement_vertical.png
+  sprite: /Textures/_Moffstation/Tiles/dark_pavement_vertical.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -457,7 +577,7 @@
   id: FloorDarkHerringbone
   parent: BaseStationTile
   name: tiles-dark-floor-herringbone
-  sprite: /Textures/Tiles/dark_herringbone.png
+  sprite: /Textures/_Moffstation/Tiles/dark_herringbone.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -472,7 +592,7 @@
   id: FloorDarkDiagonalMini
   parent: BaseStationTile
   name: tiles-dark-floor-diagonal-mini
-  sprite: /Textures/Tiles/dark_diagonal_mini.png
+  sprite: /Textures/_Moffstation/Tiles/dark_diagonal_mini.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -487,7 +607,7 @@
   id: FloorDarkPlastic
   parent: BaseStationTile
   name: tiles-plastic-dark-floor
-  sprite: /Textures/Tiles/dark_plastic.png
+  sprite: /Textures/_Moffstation/Tiles/dark_plastic.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -538,7 +658,17 @@
   id: FloorLino
   parent: BaseStationTile
   name: tiles-linoleum-floor
-  sprite: /Textures/Tiles/lino.png
+  # Moffstation - Start - New Tiles
+  sprite: /Textures/_Moffstation/Tiles/lino.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Moffstation - End
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemLino
@@ -547,7 +677,7 @@
   id: FloorSteelDirty
   parent: BaseStationTile
   name: tiles-dirty-steel-floor
-  sprite: /Textures/Tiles/steel_dirty.png
+  sprite: /Textures/_Moffstation/Tiles/steel_dirty.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -589,7 +719,7 @@
   id: FloorBlue
   parent: BaseStationTile
   name: tiles-blue-tile
-  sprite: /Textures/Tiles/blue.png
+  sprite: /Textures/_Moffstation/Tiles/blue.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemBlue
@@ -598,7 +728,7 @@
   id: FloorSteelLime
   parent: BaseStationTile
   name: tiles-lime-floor
-  sprite: /Textures/Tiles/lime.png
+  sprite: /Textures/_Moffstation/Tiles/lime.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -639,7 +769,7 @@
   id: FloorFreezer
   parent: BaseStationTile
   name: tiles-freezer
-  sprite: /Textures/Tiles/freezer.png
+  sprite: /Textures/_Moffstation/Tiles/freezer.png # Moffstation
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemFreezer
@@ -648,21 +778,21 @@
   id: FloorShowroom
   parent: BaseStationTile
   name: tiles-showroom-floor
-  sprite: /Textures/Tiles/showroom.png
+  sprite: /Textures/_Moffstation/Tiles/showroom.png # Moffstation
   itemDrop: FloorTileItemShowroom
 
 - type: tile
   id: FloorHydro
   parent: BaseStationTile
   name: tiles-hydro-floor
-  sprite: /Textures/Tiles/hydro.png
+  sprite: /Textures/_Moffstation/Tiles/hydro.png # Moffstation
   itemDrop: FloorTileItemHydro
 
 - type: tile
   id: FloorBar
   parent: BaseStationTile
   name: tiles-bar-floor
-  sprite: /Textures/Tiles/bar.png
+  sprite: /Textures/_Moffstation/Tiles/bar.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -675,21 +805,21 @@
   id: FloorClown
   parent: BaseStationTile
   name: tiles-clown-floor
-  sprite: /Textures/Tiles/clown.png
+  sprite: /Textures/_Moffstation/Tiles/clown.png # Moffstation
   itemDrop: FloorTileItemClown
 
 - type: tile
   id: FloorMime
   parent: BaseStationTile
   name: tiles-mime-floor
-  sprite: /Textures/Tiles/mime.png
+  sprite: /Textures/_Moffstation/Tiles/mime.png # Moffstation
   itemDrop: FloorTileItemMime
 
 - type: tile
   id: FloorKitchen
   parent: BaseStationTile
   name: tiles-kitchen-floor
-  sprite: /Textures/Tiles/kitchen.png
+  sprite: /Textures/_Moffstation/Tiles/kitchen.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemKitchen
@@ -698,7 +828,7 @@
   id: FloorLaundry
   parent: BaseStationTile
   name: tiles-laundry-floor
-  sprite: /Textures/Tiles/laundry.png
+  sprite: /Textures/_Moffstation/Tiles/laundry.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemLaundry
@@ -707,7 +837,7 @@
   id: FloorSteelDamaged
   parent: BaseStationTile
   name: tiles-steel-floor
-  sprite: /Textures/Tiles/steel_damaged.png
+  sprite: /Textures/_Moffstation/Tiles/steel_damaged.png # Moffstation
   variants: 5
   placementVariants:
   - 1.0
@@ -870,7 +1000,7 @@
   id: FloorArcadeBlue2
   parent: BaseStationTile
   name: tiles-blue-arcade-floor
-  sprite: /Textures/Tiles/arcadeblue2.png
+  sprite: /Textures/_Moffstation/Tiles/arcadeblue2.png #Moffstation
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
@@ -894,7 +1024,7 @@
   id: FloorEighties
   parent: BaseStationTile
   name: tiles-eighties-floor
-  sprite: /Textures/Tiles/eighties.png
+  sprite: /Textures/_Moffstation/Tiles/eighties.png # Moffstation
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
@@ -918,7 +1048,7 @@
   id: FloorCarpetOffice
   parent: BaseStationTile
   name: tiles-office-carpet-floor
-  sprite: /Textures/Tiles/carpetoffice.png
+  sprite: /Textures/_Moffstation/Tiles/carpetoffice.png # Moffstation
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
@@ -930,7 +1060,7 @@
   id: FloorBoxing
   parent: BaseStationTile
   name: tiles-boxing-ring-floor
-  sprite: /Textures/Tiles/boxing.png
+  sprite: /Textures/_Moffstation/Tiles/boxing.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -959,7 +1089,7 @@
   id: FloorShuttleWhite
   parent: BaseStationTile
   name: tiles-white-shuttle-floor
-  sprite: /Textures/Tiles/shuttlewhite.png
+  sprite: /Textures/_Moffstation/Tiles/shuttlewhite.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -972,7 +1102,7 @@
   id: FloorShuttleGrey
   parent: BaseStationTile
   name: tiles-grey-shuttle-floor
-  sprite: /Textures/Tiles/shuttlegrey.png
+  sprite: /Textures/_Moffstation/Tiles/shuttlegrey.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -985,7 +1115,7 @@
   id: FloorShuttleBlack
   parent: BaseStationTile
   name: tiles-black-shuttle-floor
-  sprite: /Textures/Tiles/shuttleblack.png
+  sprite: /Textures/_Moffstation/Tiles/shuttleblack.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -998,7 +1128,7 @@
   id: FloorShuttleBlue
   parent: BaseStationTile
   name: tiles-blue-shuttle-floor
-  sprite: /Textures/Tiles/shuttleblue.png
+  sprite: /Textures/_Moffstation/Tiles/shuttleblue.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -1011,7 +1141,7 @@
   id: FloorShuttleOrange
   parent: BaseStationTile
   name: tiles-orange-shuttle-floor
-  sprite: /Textures/Tiles/shuttleorange.png
+  sprite: /Textures/_Moffstation/Tiles/shuttleorange.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -1024,7 +1154,7 @@
   id: FloorShuttlePurple
   parent: BaseStationTile
   name: tiles-purple-shuttle-floor
-  sprite: /Textures/Tiles/shuttlepurple.png
+  sprite: /Textures/_Moffstation/Tiles/shuttlepurple.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -1037,7 +1167,7 @@
   id: FloorShuttleRed
   parent: BaseStationTile
   name: tiles-red-shuttle-floor
-  sprite: /Textures/Tiles/shuttlered.png
+  sprite: /Textures/_Moffstation/Tiles/shuttlered.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -1052,7 +1182,7 @@
   id: FloorGold
   parent: BaseStationTile
   name: tiles-gold-tile
-  sprite: /Textures/Tiles/gold.png
+  sprite: /Textures/_Moffstation/Tiles/gold.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemGold
@@ -1061,7 +1191,7 @@
   id: FloorSilver
   parent: BaseStationTile
   name: tiles-silver-tile
-  sprite: /Textures/Tiles/silver.png
+  sprite: /Textures/_Moffstation/Tiles/silver.png # Moffstation
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemSilver
@@ -1085,7 +1215,7 @@
   id: FloorRGlass
   parent: BaseStationTile
   name: tiles-reinforced-glass-floor
-  sprite: /Textures/Tiles/rglass.png
+  sprite: /Textures/_Moffstation/Tiles/rglass.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -1113,7 +1243,7 @@
   id: FloorGreenCircuit
   parent: BaseStationTile
   name: tiles-green-circuit-floor
-  sprite: /Textures/Tiles/green_circuit.png
+  sprite: /Textures/_Moffstation/Tiles/green_circuit.png # Moffstation
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemGCircuit
@@ -1122,7 +1252,7 @@
   id: FloorBlueCircuit
   parent: BaseStationTile
   name: tiles-blue-circuit-floor
-  sprite: /Textures/Tiles/blue_circuit.png
+  sprite: /Textures/_Moffstation/Tiles/blue_circuit.png # Moffstation
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemBCircuit
@@ -1131,7 +1261,7 @@
   id: FloorRedCircuit
   parent: BaseStationTile
   name: tiles-red-circuit-floor
-  sprite: /Textures/Tiles/red_circuit.png
+  sprite: /Textures/_Moffstation/Tiles/red_circuit.png # Moffstation
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemRCircuit
@@ -1536,7 +1666,7 @@
   id: FloorWoodTile
   parent: BaseStationTile
   name: tiles-wood2
-  sprite: /Textures/Tiles/wood_tile.png
+  sprite: /Textures/_Moffstation/Tiles/wood_tile.png # Moffstation
   variants: 4
   placementVariants:
   - 1.0
@@ -1553,7 +1683,7 @@
   id: FloorBrokenWood
   parent: BaseStationTile
   name: tiles-wood3
-  sprite: /Textures/Tiles/wood_broken.png
+  sprite: /Textures/_Moffstation/Tiles/wood_broken.png # Moffstation
   variants: 7
   placementVariants:
   - 1.0

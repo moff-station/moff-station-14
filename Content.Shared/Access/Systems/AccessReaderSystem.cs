@@ -19,21 +19,23 @@ using Robust.Shared.Containers;
 using Robust.Shared.Collections;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Access.Systems;
 
-public sealed class AccessReaderSystem : EntitySystem
+public sealed partial class AccessReaderSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly SharedGameTicker _gameTicker = default!;
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedStationRecordsSystem _recordsSystem = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private SharedGameTicker _gameTicker = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedStationRecordsSystem _recordsSystem = default!;
+    [Dependency] private IdentitySystem _identity = default!;
 
     private static readonly ProtoId<TagPrototype> PreventAccessLoggingTag = "PreventAccessLogging";
 
@@ -41,6 +43,7 @@ public sealed class AccessReaderSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<AccessReaderComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<AccessReaderComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<AccessReaderComponent, GotEmaggedEvent>(OnEmagged);
         SubscribeLocalEvent<AccessReaderComponent, LinkAttemptEvent>(OnLinkAttempt);
@@ -50,14 +53,28 @@ public sealed class AccessReaderSystem : EntitySystem
 
         SubscribeLocalEvent<AccessReaderComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<AccessReaderComponent, ComponentHandleState>(OnHandleState);
+
+        Subs.SubscribeWithRelay<ShowAccessReaderSettingsComponent, ShowAccessReaderSettingsEvent>(OnAccessRead); // Moffstation
+    }
+
+    // Moffstation - Begin - Access reader by event
+    private void OnAccessRead(Entity<ShowAccessReaderSettingsComponent> entity, ref ShowAccessReaderSettingsEvent args)
+    {
+        args.CanShowSettings = true;
+    }
+    // Moffstation - End
+
+    private void OnMapInit(Entity<AccessReaderComponent> ent, ref MapInitEvent args)
+    {
+        ent.Comp.AccessListsOriginal ??= [.. ent.Comp.AccessLists];
+        Dirty(ent);
     }
 
     private void OnExamined(Entity<AccessReaderComponent> ent, ref ExaminedEvent args)
     {
-        if (!GetMainAccessReader(ent, out var mainAccessReader))
+        if (!GetMainAccessReader(ent, out var mainAccessReader) ||
+            mainAccessReader.Value.Comp.AccessListsOriginal == null)
             return;
-
-        mainAccessReader.Value.Comp.AccessListsOriginal ??= new(mainAccessReader.Value.Comp.AccessLists);
 
         var accessHasBeenModified = mainAccessReader.Value.Comp.AccessLists.Count != mainAccessReader.Value.Comp.AccessListsOriginal.Count;
 
@@ -74,9 +91,9 @@ public sealed class AccessReaderSystem : EntitySystem
         }
 
         var examiner = args.Examiner;
-        var canSeeAccessModification = accessHasBeenModified &&
-                                       (HasComp<ShowAccessReaderSettingsComponent>(examiner) ||
-                                        _inventorySystem.TryGetInventoryEntity<ShowAccessReaderSettingsComponent>(examiner, out _));
+        var ev = new ShowAccessReaderSettingsEvent();
+        RaiseLocalEvent(examiner, ref ev);
+        var canSeeAccessModification = accessHasBeenModified && ev.CanShowSettings;
 
         if (canSeeAccessModification)
         {
@@ -914,12 +931,7 @@ public sealed class AccessReaderSystem : EntitySystem
 
         // TODO pass the ID card on IsAllowed() instead of using this expensive method
         // Set name if the accessor has a card and that card has a name and allows itself to be recorded
-        var getIdentityShortInfoEvent = new TryGetIdentityShortInfoEvent(ent, accessor, true);
-        RaiseLocalEvent(getIdentityShortInfoEvent);
-        if (getIdentityShortInfoEvent.Title != null)
-        {
-            name = getIdentityShortInfoEvent.Title;
-        }
+        name = _identity.GetIdentityShortInfo(accessor, ent, true) ?? name;
 
         LogAccess(ent, name ?? Loc.GetString("access-reader-unknown-id"));
     }
@@ -980,3 +992,12 @@ public sealed class AccessReaderSystem : EntitySystem
         return localizedNames;
     }
 }
+
+// Moffstation - Begin - Access reader with events
+[ByRefEvent, Serializable, NetSerializable]
+public sealed partial class ShowAccessReaderSettingsEvent() : EntityEventArgs, IInventoryRelayEvent
+{
+    public bool CanShowSettings;
+    public SlotFlags TargetSlots => SlotFlags.WITHOUT_POCKET;
+}
+// Moffstation - End

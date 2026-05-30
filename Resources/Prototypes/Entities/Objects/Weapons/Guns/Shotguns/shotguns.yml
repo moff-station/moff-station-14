@@ -306,8 +306,11 @@
     capacity: 1
     proto: null
   - type: Construction
-    graph: ImprovisedShotgunGraph
-    node: shotgun
+    # Moffstation - Start - ShotgunCutting
+    graph: ImprovisedShotgunSawn
+    node: start
+    deconstructionTarget: null
+    # Moffstation - End
   - type: StaticPrice
     price: 20
 

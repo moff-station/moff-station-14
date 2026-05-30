@@ -1,3 +1,4 @@
+using Content.Shared._Moffstation.Clothing.ModularHud.Components; // Moffstation
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -10,9 +11,9 @@ namespace Content.Client.Overlays;
 /// This is a base system to make it easier to enable or disabling UI elements based on whether or not the player has
 /// some component, either on their controlled entity on some worn piece of equipment.
 /// </summary>
-public abstract class EquipmentHudSystem<T> : EntitySystem where T : IComponent
+public abstract partial class EquipmentHudSystem<T> : EntitySystem where T : IComponent
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     [ViewVariables]
     public bool IsActive { get; private set; }
@@ -35,6 +36,8 @@ public abstract class EquipmentHudSystem<T> : EntitySystem where T : IComponent
         SubscribeLocalEvent<T, InventoryRelayedEvent<RefreshEquipmentHudEvent<T>>>(OnRefreshEquipmentHud);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+
+        SubscribeLocalEvent<T, EquipmentHudNeedsRefreshEvent>(OnEquipmentHudNeedsRefresh); // Moffstation - Modular HUDs
     }
 
     private void Update(RefreshEquipmentHudEvent<T> ev)
@@ -116,4 +119,11 @@ public abstract class EquipmentHudSystem<T> : EntitySystem where T : IComponent
         else
             Deactivate();
     }
+
+    // Moffstation - Begin - Modular HUDs
+    private void OnEquipmentHudNeedsRefresh(Entity<T> ent, ref EquipmentHudNeedsRefreshEvent args)
+    {
+        RefreshOverlay();
+    }
+    // Moffstation - End
 }

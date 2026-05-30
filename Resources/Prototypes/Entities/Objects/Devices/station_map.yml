@@ -17,6 +17,7 @@
       singleUser: true
       key: enum.StationMapUiKey.Key
     - type: Damageable
+    - type: Injurable
       damageContainer: Inorganic
     - type: Destructible
       thresholds:
@@ -84,5 +85,9 @@
   - type: StationMap
     showLocation: false
     initializeWithStation: true
+  - type: ItemSlots #Moffstation - Replaced small power cell with high for nukie target map
+    slots:
+      cell_slot:
+        startingItem: PowerCellHigh
   - type: NukeopsStationMap
 

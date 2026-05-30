@@ -1,0 +1,13 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobBat
+  name: Bat Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: bat
+      sprite: Mobs/Animals/bat.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBat

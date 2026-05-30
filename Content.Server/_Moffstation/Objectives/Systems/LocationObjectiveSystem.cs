@@ -4,10 +4,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Objectives.Systems;
 
-public sealed class LocationObjectiveSystem : EntitySystem
+public sealed partial class LocationObjectiveSystem : EntitySystem
 {
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+
     public override void Initialize()
     {
         base.Initialize();

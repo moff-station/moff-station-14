@@ -27,6 +27,7 @@
       tags:
         - ArtifactFragment
         - Ore
+        - SalvageScrap # Moffstation - Allows ore bags to carry scrap
   - type: Dumpable
   # Moffstation - Start
   - type: QuickPickup
@@ -37,8 +38,19 @@
   parent: OreBag
   id: BorgOreBag
   name: integrated ore bag
-  description: A large ore bag built into the frame of a mining cyborg.
+  description: A large ore bag built into the frame of a mining cyborg. Magnetises any nearby ores when held.
   components:
+    - type: MagnetPickup
+      slotFlags: null
+      requireActiveHand: true
     - type: Storage
       grid:
       - 0,0,9,5
+    # Moffstation - Begin - Make borg ore bags magnetize in hands and toggleable
+    - type: ItemToggle
+    - type: ComponentToggler
+      components:
+      - type: MagnetPickup
+        slotFlags: null
+    # Moffstation - End
+

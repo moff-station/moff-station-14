@@ -7,17 +7,13 @@
   description: A dented and scratched shaker that's been dropped countless times.
   suffix: PersonalItem
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 90
   - type: Sprite
     sprite: _Moffstation/PersonalItems/Items/Failed/Works-Many-Gigs/gigsshaker.rsi
     state: icon
   - type: Item
     sprite: _Moffstation/PersonalItems/Items/Failed/Works-Many-Gigs/gigsshaker.rsi
   - type: DetailExaminable
-    content: It's covered in photos of friends and family, you even recognize yourself in the large group photo.
+    content: It's covered in photos of friends and family, A large group photo on the back.
 
 - type: loadout
   id: PersonalItemGigsShaker
@@ -27,4 +23,4 @@
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
-    - Works-Many-Gigs
+    - Gi'griel-Pyriez

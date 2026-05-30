@@ -37,4 +37,18 @@ public sealed partial class DragonRiftComponent : SharedDragonRiftComponent
 
     [ViewVariables(VVAccess.ReadWrite), DataField("spawn", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string SpawnPrototype = "MobCarpDragon";
+
+    // Moffstation - Start - Empowered carp spawns
+    ///  Accumulator for empowerment to track which spawns are replaced. Starts at n-1 for cooldown to ensure spawn on first valid cycle.
+    [ViewVariables(VVAccess.ReadWrite)]
+    public int EmpoweredSpawnAccumulator = 2;
+
+    /// Frequency for which spawns are empowered.
+    [DataField]
+    public int EmpoweredSpawnCooldown = 3;
+
+    /// Prototype for empowered spawn.
+    [DataField]
+    public EntProtoId EmpoweredSpawnPrototype = "MobSharkDragon";
+    // Moffstation - End
 }

@@ -9,6 +9,11 @@
         VerticalExpand="True"
         Margin="6 6 6 5">
 
+        <!-- Moffstation - Start - Communications console clock -->
+        <RichTextLabel Name="ClockLabel"/>
+        <PanelContainer StyleClasses="LowDivider" Margin="0 8"/>
+        <!-- Moffstation - End -->
+
         <TextEdit Name="MessageInput"
             VerticalExpand="True"
             HorizontalExpand="True"

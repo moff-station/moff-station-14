@@ -14,12 +14,13 @@ namespace Content.Client.Silicons.Borgs;
 /// </summary>
 /// <seealso cref="SharedBorgSwitchableTypeSystem"/>
 /// <seealso cref="BorgSwitchableTypeComponent"/>
-public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
+public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
 {
-    [Dependency] private readonly BorgSystem _borgSystem = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly IResourceCache _resourceCache = default!; // Moffstation - Early merge of Borg RSI fix
+    [Dependency] private BorgSystem _borgSystem = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    // [Dependency] private SpriteSystem _sprite = default!; // Moffstation - No longer used
+
+    [Dependency] private IResourceCache _resourceCache = default!; // Moffstation - Early merge of Borg RSI fix
 
     public override void Initialize()
     {

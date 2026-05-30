@@ -1,0 +1,27 @@
+﻿# Player TheClockman - Character: Works-Plentiful-Jobs
+
+- type: entity
+  parent: [ ClothingOuterStorageBase ]
+  id: PersonalItemPlentJacket
+  suffix: PersonalItem
+  name: military jacket
+  description: A military field jacket adorned with patches relating to some sort of conventional military.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/PersonalItems/Wearables/TheClockman/Works-Plentiful-Jobs/plentjacket.rsi
+  - type: Clothing
+    sprite: _Moffstation/PersonalItems/Wearables/TheClockman/Works-Plentiful-Jobs/plentjacket.rsi
+  - type: DetailExaminable
+    content: The patch on the right shoulder reads "UNMC", and the left shoulders patch reads "FALLING FALCONS" at the top, the inside of the logo reading "ALPHA". The nameplate on the right chest of the jacket reads "PLENTIFUL-JOBS".
+
+
+- type: loadout
+  id: PersonalItemPlentJacket
+  storage:
+    back:
+    - PersonalItemPlentJacket
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Works-Plentiful-Jobs
+

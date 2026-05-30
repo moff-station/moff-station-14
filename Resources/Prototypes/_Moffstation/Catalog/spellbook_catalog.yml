@@ -1,5 +1,6 @@
+# Wizard upstream
 - type: listing
-  id: SpellbookArmor
+  id: SpellbookArmorUpstream
   name: spellbook-armor-name
   description: spellbook-armor-description
   productEntity: ClothingOuterArmorWizard
@@ -7,6 +8,328 @@
     WizCoin: 5
   categories:
   - SpellbookEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# Wizard - Cantrips
+- type: listing
+  id: SpellbookItemRecallSwapMoffstation
+  name: spellbook-item-recall-name
+  description: spellbook-item-recall-description
+  productAction: ActionItemRecall
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookCantrips
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookChargeMoffstation
+  name: spellbook-charge-name
+  description: spellbook-charge-desc
+  productAction: ActionChargeSpell
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookCantrips
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookVoidApplauseMoffstation
+  name: spellbook-voidapplause-name
+  description: spellbook-voidapplause-desc
+  productAction: ActionVoidApplause
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookCantrips
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookSlipMoffstation
+  name: spellbook-slip-name
+  description: spellbook-slip-desc
+  productAction: ActionSlippery
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookCantrips
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookSmokeMoffstation
+  name: spellbook-smoke-name
+  description: spellbook-smoke-desc
+  productAction: ActionSmoke
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookCantrips
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookRepulseMoffstation
+  name: spellbook-repulse-name
+  description: spellbook-repulse-desc
+  productAction: ActionRepulse
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookCantrips
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# Wizard - Spellbooks
+- type: listing
+  id: SpellbookSpellbookBlink
+  name: spellbook-spellbook-blink-name
+  description: spellbook-spellbook-blink-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: blink }
+  productEntity: BlinkBook
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookSpellbooks
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookSpellbookFireball
+  name: spellbook-spellbook-fireball-name
+  description: spellbook-spellbook-fireball-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: fireball }
+  productEntity: FireballSpellbook
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookSpellbooks
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookSpellbookForceWall
+  name: spellbook-spellbook-force-wall-name
+  description: spellbook-spellbook-force-wall-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: shield }
+  productEntity: ForceWallSpellbook
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookSpellbooks
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookSpellbookKnock
+  name: spellbook-spellbook-knock-name
+  description: spellbook-spellbook-knock-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: knock }
+  productEntity: KnockSpellbook
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookSpellbooks
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookSpellbookSmite
+  name: spellbook-spellbook-smite-name
+  description: spellbook-spellbook-smite-description
+  icon: { sprite: /Textures/Objects/Magic/magicactions.rsi , state: gib }
+  productEntity: SmiteBook
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookSpellbooks
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookSpellbookSpawn
+  name: spellbook-spellbook-spawn-name
+  description: spellbook-spellbook-spawn-description
+  icon: { sprite: Mobs/Aliens/Carps/magic.rsi , state: icon }
+  productEntity: SpawnSpellbook
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookSpellbooks
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# Wizard - Wands and staves
+- type: listing
+  id: SpellbookWandDoorMoffstation
+  name: spellbook-wand-polymorph-door-name
+  description: spellbook-wand-polymorph-door-description
+  productEntity: WeaponWandPolymorphDoor
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandPolymorphCarpMoffstation
+  name: spellbook-wand-polymorph-carp-name
+  description: spellbook-wand-polymorph-carp-description
+  productEntity: WeaponWandPolymorphCarp
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandLockerMoffstation
+  name: spellbook-wand-locker-name
+  description: spellbook-wand-locker-description
+  productEntity: WeaponWandLocker
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookRGBStaffMoffstation
+  name: spellbook-wand-rgb-staff-name
+  description: spellbook-wand-rgb-staff-description
+  productEntity: RGBStaff
+  cost:
+    WizCoin: 1
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandDeathMoffstation
+  name: spellbook-wand-instant-death-name
+  description: spellbook-wand-instant-death-description
+  productEntity: WeaponWandDeath
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandCluwneMoffstation
+  name: spellbook-wand-cluwne-polymorph-name
+  description: spellbook-wand-cluwne-polymorph-description
+  productEntity: WeaponWandCluwne
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandPolymorphBreadMoffstation
+  name: spellbook-wand-bread-polymorph-name
+  description: spellbook-wand-bread-polymorph-description
+  productEntity: WeaponWandPolymorphBread
+  cost:
+    WizCoin: 3
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookWandPolymorphMonkeyMoffstation
+  name: spellbook-wand-monkey-polymorph-name
+  description: spellbook-wand-monkey-polymorph-description
+  productEntity: WeaponWandPolymorphMonkey
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookStaffHealingMoffstation
+  name: spellbook-wand-healing-staff-name
+  description: spellbook-wand-healing-staff-description
+  productEntity: WeaponStaffHealing
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookWands
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# Wizard - Enchanted equipment
+- type: listing
+  id: SpellbookHammerMjollnirMoffstation
+  name: spellbook-hammer-mjollnir-name
+  description: spellbook-hammer-mjollnir-description
+  productEntity: Mjollnir
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookEnchantments
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookHammerSingularityMoffstation
+  name: spellbook-hammer-singularity-name
+  description: spellbook-hammer-singularity-description
+  productEntity: SingularityHammer
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookEnchantments
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SpellbookArmorMoffstation
+  name: spellbook-armor-name
+  description: spellbook-armor-description
+  productEntity: ClothingOuterArmorWizard
+  cost:
+    WizCoin: 5
+  categories:
+  - SpellbookEnchantments
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1

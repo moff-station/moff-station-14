@@ -91,6 +91,12 @@
   - type: Repairable
     doAfterDelay: 5
     fuelCost: 25
+  # Moffstation - Start - Preventing parenting into an electronic
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  # Moffstation - End
   - type: Destructible
     thresholds:
     - trigger:
