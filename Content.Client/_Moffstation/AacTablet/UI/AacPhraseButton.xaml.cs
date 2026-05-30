@@ -23,7 +23,7 @@ public sealed partial class AacPhraseButton : Button
     )
     {
         var ret = new AacPhraseButton();
-        ret.Label.SetMessage(phrase.LocalizedText);
+        ret.PhraseLabel.SetMessage(phrase.LocalizedText);
         ret.AddStyleClass(phrase.StyleClass);
         ret.MaxSize = new Vector2(GetButtonWidth(containerWidth, numColumns));
         ret.OnPressed += _ => onPressed(phrase.ID);
