@@ -1,22 +1,20 @@
-using System.Numerics;
 using Content.Client._Starlight.Overlays;
 using Content.Client.Overlays;
-using Content.Shared._Moffstation.Overlay.Components;
+using Content.Shared._Moffstation.NightVision;
 using Content.Shared.Flash;
 using Content.Shared.Inventory.Events;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 
-namespace Content.Client._Moffstation.Overlay.Systems;
+namespace Content.Client._Moffstation.NightVision;
 
 /// <summary>
 /// This system implements the behavior of <see cref="NightVisionComponent"/>.
 /// </summary>
-public sealed class NightVisionSystem : EquipmentHudSystem<NightVisionComponent>
+public sealed partial class NightVisionSystem : EquipmentHudSystem<NightVisionComponent>
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly SharedFlashSystem _flash = default!;
-    [Dependency] private readonly PointLightSystem _pointLightSystem = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
+    [Dependency] private SharedFlashSystem _flash = default!;
 
     private NightVisionOverlay _overlay = default!;
     public override void Initialize()
@@ -37,10 +35,6 @@ public sealed class NightVisionSystem : EquipmentHudSystem<NightVisionComponent>
         // Just incase someone is editing it, they don't get to keep free night vision with flash protection
         if (_flash.IsFlashImmune(ent))
             _overlayMan.RemoveOverlay(_overlay);
-
-        TryComp<PointLightComponent>(ent.Owner, out var light);
-        if (!light?.Enabled ?? false) // skip this option if we have no PointLightComponent
-            _pointLightSystem.SetEnabled(ent.Owner, true, light);
     }
 
     private void OnFlashImmunityChanged(Entity<NightVisionComponent> ent, ref FlashImmunityChangedEvent args)

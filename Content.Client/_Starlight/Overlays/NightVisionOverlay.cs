@@ -9,16 +9,14 @@ public sealed partial class NightVisionOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> Shader = "ModernNightVisionShader";
 
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
     private readonly ShaderInstance _nightVisionShader;
 
-
     public Color TintColor;
     public float TintIntensity;
-
 
     public NightVisionOverlay()
     {
