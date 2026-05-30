@@ -6,6 +6,11 @@
   tab: phrase-tab-common-phrases
 
 - type: quickPhrase
+  id: BaseLetterAndNumberPhrase
+  abstract: true
+  tab: phrase-tab-letters-and-numbers
+
+- type: quickPhrase
   id: BaseJobPhrase
   abstract: true
   tab: phrase-tab-jobs

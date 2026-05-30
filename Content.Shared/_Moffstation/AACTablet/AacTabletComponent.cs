@@ -1,0 +1,14 @@
+using Robust.Shared.GameStates;
+
+namespace Content.Shared._Moffstation.AacTablet;
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class AacTabletComponent : Component
+{
+    /// Delay between sending phrases.
+    [DataField, AutoNetworkedField]
+    public TimeSpan Cooldown = TimeSpan.FromSeconds(1);
+
+    /// ID of the delay related to this component.
+    public const string DelayId = nameof(AacTabletComponent);
+}

@@ -23,7 +23,7 @@
         shader: unshaded
   - type: ActivatableUI
     singleUser: false
-    key: enum.AACTabletKey.Key
+    key: enum.AacTabletKey.Key
   - type: Damageable
   - type: Injurable
     damageContainer: Inorganic
@@ -37,8 +37,8 @@
             acts: [ "Destruction" ]
   - type: UserInterface
     interfaces:
-      enum.AACTabletKey.Key:
-        type: AACBoundUserInterface
+      enum.AacTabletKey.Key:
+        type: AacBoundUserInterface
   - type: Speech
     speechSounds: Alto
-  - type: AACTablet
+  - type: AacTablet
