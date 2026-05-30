@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using Content.Server._MACRO.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Shared.Speech;
