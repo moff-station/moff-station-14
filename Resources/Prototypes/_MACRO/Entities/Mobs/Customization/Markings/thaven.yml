@@ -73,7 +73,8 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
     state: spinechill
-  shader: unshaded
+  shaders:
+    spinechill: unshaded
 
 - type: marking
   id: ThavenSpines
@@ -82,7 +83,8 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
     state: spines
-  shader: unshaded
+  shaders: 
+    spines: unshaded
 
 - type: marking
   id: ThavenTattooWave
@@ -198,7 +200,8 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: sharkminnow
-  shader: unshaded
+  shaders: 
+    sharkminnow: unshaded
 
 - type: marking
   id: ThavenLEyeGlow
@@ -212,7 +215,8 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: glowleft
-  shader: unshaded
+  shaders: 
+    glowleft: unshaded
 
 - type: marking
   id: ThavenREyeGlow
@@ -226,7 +230,8 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: glowright
-  shader: unshaded
+  shaders: 
+    glowright: unshaded
 
 # RArm
 
@@ -2369,7 +2374,7 @@
     state: eel2
 
 - type: marking
-  id: ThavenTailEelOverlayAnimated
+  id: ThavenTailEelOverlay
   bodyPart: TailOverlay
   groupWhitelist: [ Thaven ]
   coloring:
@@ -2380,21 +2385,11 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: eel3
-  shader: unshaded
-
-- type: marking
-  id: ThavenTailEelOverlayOutline
-  bodyPart: TailOverlay
-  groupWhitelist: [ Thaven ]
-  coloring:
-    default:
-      type:
-        !type:EyeColoring
-        negative: false
-  sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: eel4
-  shader: unshaded
+  shaders: 
+    eel3: unshaded
+    eel4: unshaded
 
 - type: marking
   id: ThavenTailNurse
