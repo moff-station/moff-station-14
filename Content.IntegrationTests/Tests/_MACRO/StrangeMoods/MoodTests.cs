@@ -10,10 +10,6 @@ namespace Content.IntegrationTests.Tests._MACRO.StrangeMoods;
 [TestFixture, TestOf(typeof(StrangeMoodPrototype))]
 public sealed class StrangeMoodTests
 {
-    private static readonly ProtoId<DatasetPrototype> ThreeValueSet = "ThreeValueSet";
-    private static readonly ProtoId<StrangeMoodPrototype> DuplicateTest = "DuplicateTest";
-    private static readonly ProtoId<StrangeMoodPrototype> DuplicateOverlapTest = "DuplicateOverlapTest";
-
     [TestPrototypes]
     private const string Prototypes = """
 
@@ -45,6 +41,10 @@ public sealed class StrangeMoodTests
             e: ThreeValueSet
 
         """;
+
+    private static readonly ProtoId<DatasetPrototype> ThreeValueSet = "ThreeValueSet";
+    private static readonly ProtoId<StrangeMoodPrototype> DuplicateTest = "DuplicateTest";
+    private static readonly ProtoId<StrangeMoodPrototype> DuplicateOverlapTest = "DuplicateOverlapTest";
 
     [Test]
     [Repeat(10)]

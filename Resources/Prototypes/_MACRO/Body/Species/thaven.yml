@@ -10,7 +10,6 @@
       limit: 1
       required: true
       default: [ ThavenEars1 ]
-      matchSkin: true
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
@@ -56,6 +55,9 @@
     enum.HumanoidVisualLayers.Special:
       limit: 0
       required: false
+  appearances:
+    enum.HumanoidVisualLayers.HeadSide:
+      matchSkin: true
 
 - type: entity
   parent: BaseSpeciesAppearance
@@ -122,7 +124,6 @@
         sprite: Mobs/Effects/brute_damage.rsi
         color: "#ff624a"
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Thaven
   - type: Butcherable
     spawned:
