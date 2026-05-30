@@ -4,7 +4,7 @@
   abstract: true
   group: phrase-group-command
 
-- { type: quickPhrase, parent: BaseImperativePhrase, id: GiveMePhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: GivePhrase }
 - { type: quickPhrase, parent: BaseImperativePhrase, id: NeedPhrase }
 - { type: quickPhrase, parent: BaseImperativePhrase, id: WantPhrase }
 - { type: quickPhrase, parent: BaseImperativePhrase, id: CantPhrase }
@@ -28,3 +28,4 @@
 - { type: quickPhrase, parent: BaseImperativePhrase, id: FixPhrase }
 - { type: quickPhrase, parent: BaseImperativePhrase, id: SwitchPhrase }
 - { type: quickPhrase, parent: BaseImperativePhrase, id: WillPhrase }
+- { type: quickPhrase, parent: BaseImperativePhrase, id: PleaseListenPhrase }

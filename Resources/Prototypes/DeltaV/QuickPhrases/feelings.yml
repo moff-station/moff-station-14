@@ -32,6 +32,7 @@
 - { type: quickPhrase, parent: BaseFeelingAngryPhrase, id: FrustratedPhrase }
 - { type: quickPhrase, parent: BaseFeelingAngryPhrase, id: DistantPhrase }
 - { type: quickPhrase, parent: BaseFeelingAngryPhrase, id: CriticalPhrase }
+- { type: quickPhrase, parent: BaseFeelingAngryPhrase, id: HatePhrase }
 
 - type: quickPhrase
   parent: BaseFeelingsPhrase
@@ -75,6 +76,7 @@
 - { type: quickPhrase, parent: BaseFeelingHappyPhrase, id: InterestedPhrase }
 - { type: quickPhrase, parent: BaseFeelingHappyPhrase, id: ContentPhrase }
 - { type: quickPhrase, parent: BaseFeelingHappyPhrase, id: PlayfulPhrase }
+- { type: quickPhrase, parent: BaseFeelingHappyPhrase, id: LovePhrase }
 
 - type: quickPhrase
   parent: BaseFeelingsPhrase

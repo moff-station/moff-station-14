@@ -1,0 +1,32 @@
+﻿- type: quickPhrase
+  parent: BaseCommonPhrase
+  abstract: true
+  id: BaseLetterPhrase
+  group: phrase-group-letters
+
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterAPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterBPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterCPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterDPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterEPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterFPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterGPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterHPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterIPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterJPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterKPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterLPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterMPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterNPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterOPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterPPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterQPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterRPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterSPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterTPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterUPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterVPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterWPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterXPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterYPhrase }
+- { type: quickPhrase, parent: BaseLetterPhrase, id: LetterZPhrase }

@@ -46,6 +46,7 @@
 # Civilian
 - { type: quickPhrase, parent: BaseCivilianJobPhrase, id: PassengerPhrase, text: job-name-passenger }
 - { type: quickPhrase, parent: BaseCivilianJobPhrase, id: VisitorPhrase, text: job-name-visitor }
+- { type: quickPhrase, parent: BaseCivilianJobPhrase, id: JobPhrase }
 
 # Command
 - { type: quickPhrase, parent: BaseCommandJobPhrase, id: CaptainPhrase, text: job-name-captain }

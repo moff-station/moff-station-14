@@ -53,3 +53,5 @@ phrase-threatened = Threatened
 phrase-scared = Scared
 phrase-rejected = Rejected
 phrase-feeling-bad = Bad
+phrase-hate = Hate
+phrase-love = Love
