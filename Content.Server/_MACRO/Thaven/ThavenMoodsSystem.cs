@@ -8,10 +8,10 @@ using Robust.Shared.Random;
 
 namespace Content.Server._MACRO.Thaven;
 
-public sealed class ThavenMoodsSystem : SharedThavenMoodsSystem
+public sealed partial class ThavenMoodsSystem : SharedThavenMoodsSystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StrangeMoodsSystem _moods = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StrangeMoodsSystem _moods = default!;
 
     public override void Initialize()
     {

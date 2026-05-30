@@ -17,15 +17,15 @@ using Robust.Shared.Serialization.Manager;
 
 namespace Content.Server._MACRO.StrangeMoods;
 
-public sealed class StrangeMoodsSystem : SharedStrangeMoodsSystem
+public sealed partial class StrangeMoodsSystem : SharedStrangeMoodsSystem
 {
-    [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ISerializationManager _serialization = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly UserInterfaceSystem _bui = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ISerializationManager _serialization = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private UserInterfaceSystem _bui = default!;
 
     private readonly HashSet<SharedMood> _sharedMoods = [];
     private readonly HashSet<StrangeMood> _emptyMoods = []; // cached hashset that never gets modified

@@ -1,7 +1,7 @@
 - type: species
   id: Thaven
   name: species-name-thaven
-  roundStart: false
+  roundStart: true
 #  randomViable: true
   prototype: MobThaven
   defaultSkinTone: "#ffffff"
@@ -22,8 +22,8 @@
 # The interface is reminiscent of borg laws. There is one shared mood that every thaven has and two personal ones.
 # Incapacitated thaven can be emagged to receive a more chaotic mood, and ion storms have a chance to add or remove or emag.
 #
-# The mood list included comes from impstation, any fork wanting to enable the species should look over the moods and datasets 
-# to consider making edits to better fit their server culture. 
+# The mood list included comes from impstation, any fork wanting to enable the species should look over the moods and datasets
+# to consider making edits to better fit their server culture.
 # Resources\Prototypes\_MACRO\StrangeMoods
 # Resources\Prototypes\_MACRO\Datasets\mood_datasets.yml
 #

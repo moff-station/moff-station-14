@@ -10,8 +10,8 @@ namespace Content.Client._MACRO.StrangeMoods;
 [GenerateTypedNameReferences]
 public sealed partial class StrangeMoodInitUi : FancyWindow
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly ISerializationManager _serialization = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private ISerializationManager _serialization = default!;
 
     public event Action<StrangeMoodDefinition>? OnPresetAccepted;
 
