@@ -281,12 +281,9 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      # Moffstation - Start - Add Rosie and Deathshead Mothroaches
-      entity_storage: !type:GroupSelector
-        rolls: 4
-        children:
-        - id: MobMothroach
-          weight: 2
-        - id: MobMothroachRosy
-        - id: MobMothroachDeathshead
+      # Moffstation - Start - Random mothroaches
+      entity_storage: !type:NestedSelector
+        tableId: RandomMothroach
+        rolls: !type:ConstantNumberSelector
+          value: 4
       # Moffstation - End

@@ -16,11 +16,11 @@ namespace Content.Server._Moffstation.StationEvents.Events;
 /// that order has entity storage (eg. is a crate), the rule is dequeued and the entities are added to the order's
 /// storage.
 /// </summary>
-public sealed class CargoPackingErrorRule : StationEventSystem<CargoPackingErrorRuleComponent>
+public sealed partial class CargoPackingErrorRule : StationEventSystem<CargoPackingErrorRuleComponent>
 {
-    [Dependency] private readonly SpawnOnNextOpenSystem _spawnOnNextOpen = default!;
-    [Dependency] private readonly EntityTableSystem _entityTable = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private SpawnOnNextOpenSystem _spawnOnNextOpen = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     private readonly Queue<Entity<CargoPackingErrorRuleComponent, GameRuleComponent>> _activeRules = new();
 

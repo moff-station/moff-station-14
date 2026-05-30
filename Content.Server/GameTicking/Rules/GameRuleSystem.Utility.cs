@@ -1,13 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Station.Components;
-using Content.Shared._Moffstation.Pirate.Components; // Moffstation
+using Content.Shared._Moffstation.Pirate.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Station.Components;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Utility;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -116,7 +117,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         var found = false;
         var aabb = gridComp.LocalAABB;
 
-        for (var i = 0; i < 10; i++)
+        for (var i = 0; i < 100; i++) //Moffstation paradox clone integration test fix
         {
             var randomX = RobustRandom.Next((int) aabb.Left, (int) aabb.Right);
             var randomY = RobustRandom.Next((int) aabb.Bottom, (int) aabb.Top);
@@ -132,6 +133,29 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             targetCoords = _map.GridTileToLocal(targetGrid, gridComp, tile);
             break;
         }
+
+        // Moffstation - Start - Paradox Clone integration test fix
+        // Fallback: iterate all tiles on the grid systematically, picking a random one as the target coords.
+        if (!found)
+        {
+            Log.Warning(
+                "Failed to pick suitable random location for paradox clone spawn. Resorting to brute enumeration of tiles");
+            var tGrid = targetGrid; // Rebind to local to use in lambdas.
+            var map = Transform(tGrid).MapUid;
+            var allValidCoords = _map.GetAllTiles(targetGrid, gridComp)
+                .Select(t => t.GridIndices)
+                .Where(index => !(_atmosphere.IsTileSpace(tGrid, map, index)
+                                  || _atmosphere.IsTileAirBlockedCached(tGrid, index)))
+                .ToList();
+
+            RobustRandom.Shuffle(allValidCoords);
+            if (allValidCoords.TryFirstOrNull(out var first))
+            {
+                found = true;
+                targetCoords = _map.GridTileToLocal(tGrid, gridComp, first.Value);
+            }
+        }
+        // Moffstation - End
 
         return found;
     }

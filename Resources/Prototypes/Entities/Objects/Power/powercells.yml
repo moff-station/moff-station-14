@@ -14,10 +14,9 @@
     intensitySlope: 1.5
   - type: Sprite
     sprite: Objects/Power/power_cells.rsi
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      battery:
-        maxVol: 5
+    - SolutionRiggable
   - type: InjectableSolution
     solution: battery
   - type: DrawableSolution
@@ -47,6 +46,16 @@
     chemicalComposition:
       SulfuricAcid: 10
   #Moffstation - End
+
+- type: entity
+  parent: Solution
+  id: SolutionRiggable
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: battery
+    solution:
+      maxVol: 5
 
 - type: entity
   name: potato battery
@@ -340,10 +349,13 @@
   - type: Item
     size: Ginormous
   - type: MultiHandedItem
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      battery:
-        maxVol: 15
+    - SolutionRiggableLarge
+  - type: Riggable
+    reagent:
+      ReagentId: Plasma
+      Quantity: 15
   - type: Extractable
     juiceSolution:
       reagents:
@@ -356,6 +368,16 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
+
+- type: entity
+  parent: SolutionRiggable
+  id: SolutionRiggableLarge
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: battery
+    solution:
+      maxVol: 15
 
 - type: entity
   id: PowerCageSmall

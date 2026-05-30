@@ -8,10 +8,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Administration;
 
-public sealed class SpawnEffectSystem : EntitySystem
+public sealed partial class SpawnEffectSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private ISharedPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     private readonly Dictionary<NetUserId, EntProtoId> _activeEffectsByUser = new();
 

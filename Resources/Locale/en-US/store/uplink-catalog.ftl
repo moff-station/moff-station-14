@@ -33,7 +33,7 @@ uplink-gloves-knuckleduster-name = Syndicate Knuckle Dusters
 uplink-gloves-knuckleduster-desc = A pair of plastitanium knuckle dusters that let you punch hard enough to break the captains jaw into pieces.
 
 uplink-hushpup-name = Hushpup
-uplink-hushpup-desc = A powerful silenced shotgun with a low magazine capacity. Uses .50 shotgun ammo.
+uplink-hushpup-desc = A powerful silenced shotgun with a low magazine capacity bundled with 5 shells of .50 shotgun ammo and a marked coin to let fate decide.
 
 uplink-c20r-name = C-20r
 uplink-c20r-desc = Old faithful: The classic C-20r Submachine Gun.
@@ -526,4 +526,5 @@ uplink-energycrossbow-desc = The go-to sidearm of any operative who prefers thei
 
 #Objective items
 uplink-hijack-beacon-name = Hijack Beacon
-uplink-hijack-beacon-desc = A syndicate-brand hijack beacon designed to get around the firewalls of Nanotrasen-brand Automated Trade Stations. They take 300 seconds to work and Trade Stations will announce they are being hacked, so prepare accordingly. # Moffstation - Changed timer to say 300
+# Moffstation - Changed timer to say 300
+uplink-hijack-beacon-desc = A syndicate-brand hijack beacon designed to get around the firewalls of Nanotrasen-brand Automated Trade Stations. They take 300 seconds to work and Trade Stations will announce they are being hacked, so prepare accordingly.

@@ -14,9 +14,9 @@ namespace Content.Client._Moffstation.ObjectivePicker;
 [GenerateTypedNameReferences]
 public sealed partial class ObjectivePickerWindow : FancyWindow
 {
-    [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IPlayerManager _players = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly SpriteSystem _sprite;
     private readonly SharedMindSystem _mind;

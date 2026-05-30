@@ -10,6 +10,16 @@
     time: 18000  # 5 hrs
   guides: [ Xenoborgs ]
 
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: MothershipCore
+  prefRoles: [ MothershipCore ]
+  spawnerPrototype: SpawnPointGhostRoleMothershipCore
+  roleLoadout:
+  - JobMothershipCore
+  mindRoles:
+  - MindRoleMothershipCore
+
 - type: antag
   id: Xenoborg
   name: roles-antag-xenoborg-name
@@ -21,3 +31,18 @@
     role: JobBorg
     time: 18000  # 5 hrs
   guides: [ Xenoborgs ]
+
+- type: antagSpecifier
+  abstract: true
+  parent: RestrictedAntag
+  id: BaseXenoborg
+  prefRoles: [ Xenoborg ]
+  spawnerPrototype: SpawnPointGhostRoleXenoborg
+  roleLoadout:
+  - JobXenoborg
+  mindRoles:
+  - MindRoleXenoborg
+
+- type: antagSpecifier
+  parent: BaseXenoborg
+  id: Xenoborg

@@ -19,15 +19,18 @@ namespace Content.Shared.Silicons.Laws;
 /// </summary>
 public abstract partial class SharedSiliconLawSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedStunSystem _stunSystem = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedRoleSystem _roles = default!;
-    [Dependency] private readonly SharedStationSystem _station = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedStunSystem _stunSystem = default!;
+    [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+
+    // Moffstation - Begin
+    [Dependency] private SharedRoleSystem _roles = default!;
+    [Dependency] private SharedStationSystem _station = default!;
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    // Moffstation - End
 
     /// <inheritdoc/>
     public override void Initialize()

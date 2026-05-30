@@ -15,13 +15,17 @@
     prototype: MobEeeplet
   - type: AntagSelection
     agentName: ghost-role-information-eeep-name
-    definitions:
-    - spawnerPrototype: SpawnPointGhostEeeplet
-      min: 1
-      max: 1
-      pickPlayer: false
-      mindRoles:
-      - MindRoleGhostRoleTeamAntagonist
+    antags:
+    - !type:FixedAntagCount
+      proto: Eeplet
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: Eeplet
+  spawnerPrototype: SpawnPointGhostEeeplet
+  pickPlayer: false
+  mindRoles:
+  - MindRoleGhostRoleTeamAntagonist
 
 - type: entity
   id: TouristsShuttleEvent #three tourists

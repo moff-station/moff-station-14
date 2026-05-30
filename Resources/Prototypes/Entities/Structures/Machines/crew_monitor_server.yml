@@ -21,8 +21,13 @@
       containers:
         - machine_board
         - machine_parts
-    - type: Machine
-      board: CrewMonitoringServerMachineCircuitboard
+  # Moffstation - Begin - Add abstract crewmon server parent.
+  #     Changes to this section must be carefully considered: if the change should apply to the machine variant, leave
+  #     it on this proto. If it should apply to the machine variant AND the blade server variant, comment out the
+  #     change here and duplicate it to the abstract parent.
+#    - type: Machine
+#      board: CrewMonitoringServerMachineCircuitboard
+  # Moffstation - End
     - type: ContainerContainer
       containers:
         machine_board: !type:Container

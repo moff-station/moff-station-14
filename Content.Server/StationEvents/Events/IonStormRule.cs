@@ -3,7 +3,6 @@ using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Station.Components;
-//Moffstation - EMP Vulnerability - Begin
 using Content.Shared._Moffstation.Traits.Components;
 using Content.Shared._Moffstation.Traits.EntitySystems;
 //Moffstation - End
@@ -11,12 +10,15 @@ using Robust.Shared.Random; // macro
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
+public sealed partial class IonStormRule : StationEventSystem<IonStormRuleComponent>
 {
-    [Dependency] private readonly SharedEmpVulnerableSystem _empVulnerable = default!; //Moffstation - EMP Vulnerability
-    [Dependency] private readonly IRobustRandom _random = default!; // macro
+    [Dependency] private SharedEmpVulnerableSystem _empVulnerable = default!; //Moffstation - EMP Vulnerability
+    [Dependency] private IRobustRandom _random = default!; // macro
 
-    protected override void Started(EntityUid uid, IonStormRuleComponent comp, GameRuleComponent gameRule, GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid,
+        IonStormRuleComponent comp,
+        GameRuleComponent gameRule,
+        GameRuleStartedEvent args)
     {
         base.Started(uid, comp, gameRule, args);
 
@@ -44,7 +46,7 @@ public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
         while (empAffectedQuery.MoveNext(out var ent, out var empVulnerable, out var xform))
         {
             // only affect vulnerable entities on the station
-            if(CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation)
+            if (CompOrNull<StationMemberComponent>(xform.GridUid)?.Station != chosenStation)
                 continue;
 
             _empVulnerable.IonStormTarget((ent, empVulnerable));

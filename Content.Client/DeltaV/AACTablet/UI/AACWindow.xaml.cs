@@ -13,66 +13,55 @@ namespace Content.Client.DeltaV.AACTablet.UI;
 [GenerateTypedNameReferences]
 public sealed partial class AACWindow : FancyWindow
 {
-    private IPrototypeManager _prototypeManager;
-    public event Action<string>? PhraseButtonPressed;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
-    public AACWindow(AACBoundUserInterface ui, IPrototypeManager prototypeManager)
+    public event Action<ProtoId<QuickPhrasePrototype>>? PhraseButtonPressed;
+
+    public AACWindow()
     {
+        IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
-        _prototypeManager = prototypeManager;
-        PopulateGui(ui);
+
+        var phrases = GetPhrasesByTabAndGroup();
+        foreach (var (idx, tab) in phrases.Index())
+        {
+            var (tabName, phrasesByGroup) = tab;
+            var tabC = new ScrollContainer { VerticalExpand = true };
+            var boxContainer = CreateBoxContainerForTab(phrasesByGroup);
+            tabC.AddChild(boxContainer);
+            Content.AddChild(tabC);
+            Content.SetTabTitle(idx, tabName);
+        }
     }
 
-    private void PopulateGui(AACBoundUserInterface ui)
-    {
-        var loc = IoCManager.Resolve<ILocalizationManager>();
-        var phrases = _prototypeManager.EnumeratePrototypes<QuickPhrasePrototype>().ToList();
-
-        // take ALL phrases and turn them into tabs and groups, so the buttons are sorted and tabbed
-        var sortedTabs = phrases
-            .GroupBy(p => p.Tab)
-            .OrderBy(g => g.Key)
+    private Dictionary<string, Dictionary<string, List<QuickPhrasePrototype>>> GetPhrasesByTabAndGroup() =>
+        _prototypeManager.EnumeratePrototypes<QuickPhrasePrototype>()
+            .ToList()
+            .GroupBy(p => Loc.GetString(p.Tab))
+            .OrderBy(tabGroup => tabGroup.Key)
             .ToDictionary(
-                g => g.Key,
-                g => g.GroupBy(p => p.Group)
-                    .OrderBy(gg => gg.Key)
+                tabGroup => tabGroup.Key,
+                tabGroup => tabGroup.GroupBy(p => Loc.GetString(p.Group))
+                    .OrderBy(groupGroup => groupGroup.Key)
                     .ToDictionary(
-                        gg => gg.Key,
-                        gg => gg.OrderBy(p => loc.GetString(p.Text)).ToList()
+                        groupGroup => groupGroup.Key,
+                        groupGroup => groupGroup.OrderBy(p => p.LocalizedText).ToList()
                     )
             );
 
-        var tabContainer = CreateTabContainer(sortedTabs);
-        WindowBody.AddChild(tabContainer);
-    }
-
-    private TabContainer CreateTabContainer(Dictionary<string, Dictionary<string, List<QuickPhrasePrototype>>> sortedTabs)
-    {
-        var tabContainer = new TabContainer();
-        var loc = IoCManager.Resolve<ILocalizationManager>();
-
-        foreach (var tab in sortedTabs)
-        {
-            var tabName = loc.GetString(tab.Key);
-            var boxContainer = CreateBoxContainerForTab(tab.Value);
-            tabContainer.AddChild(boxContainer);
-            tabContainer.SetTabTitle(tabContainer.ChildCount - 1, tabName);
-        }
-
-        return tabContainer;
-    }
-
     private BoxContainer CreateBoxContainerForTab(Dictionary<string, List<QuickPhrasePrototype>> groups)
     {
-        var boxContainer = new BoxContainer()
+        var boxContainer = new BoxContainer
         {
             HorizontalExpand = true,
-            Orientation = BoxContainer.LayoutOrientation.Vertical
+            VerticalExpand = true,
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
         };
 
         foreach (var group in groups)
         {
             var buttonContainer = CreateButtonContainerForGroup(group.Value);
+            boxContainer.AddChild(new Label { Text = group.Key, Margin = new Thickness(4.0f)});
             boxContainer.AddChild(buttonContainer);
         }
 
@@ -81,15 +70,15 @@ public sealed partial class AACWindow : FancyWindow
 
     private GridContainer CreateButtonContainerForGroup(List<QuickPhrasePrototype> phrases)
     {
-        var loc = IoCManager.Resolve<ILocalizationManager>();
         var buttonContainer = CreateButtonContainer();
         foreach (var phrase in phrases)
         {
-            var text = loc.GetString(phrase.Text);
+            var text = phrase.LocalizedText;
             var button = CreatePhraseButton(text, phrase.StyleClass);
-            button.OnPressed += _ => OnPhraseButtonPressed(phrase.ID);
+            button.OnPressed += _ => PhraseButtonPressed?.Invoke(phrase.ID);
             buttonContainer.AddChild(button);
         }
+
         return buttonContainer;
     }
 
@@ -98,7 +87,7 @@ public sealed partial class AACWindow : FancyWindow
         var buttonContainer = new GridContainer
         {
             Margin = new Thickness(10),
-            Columns = 4
+            Columns = 4,
         };
 
         return buttonContainer;
@@ -113,13 +102,13 @@ public sealed partial class AACWindow : FancyWindow
             MaxSize = new Vector2(buttonWidth, buttonWidth),
             ClipText = false,
             HorizontalExpand = true,
-            StyleClasses = { styleClass }
+            StyleClasses = { styleClass },
         };
 
         var buttonLabel = new RichTextLabel
         {
             Margin = new Thickness(0, 5),
-            StyleClasses = { "WhiteText" }
+            StyleClasses = { "WhiteText" },
         };
 
         buttonLabel.SetMessage(text);
@@ -129,19 +118,14 @@ public sealed partial class AACWindow : FancyWindow
 
     private static int GetButtonWidth()
     {
-        var spaceWidth = 10;
-        var parentWidth = 540;
-        var columnCount = 4;
+        const int spaceWidth = 10;
+        const int parentWidth = 540;
+        const int columnCount = 4;
 
-        var paddingSize = spaceWidth * 2;
-        var gutterScale = (columnCount - 1) / columnCount;
-        var columnWidth = (parentWidth - paddingSize) / columnCount;
-        var buttonWidth = columnWidth - spaceWidth * gutterScale;
+        const int paddingSize = spaceWidth * 2;
+        const int gutterScale = (columnCount - 1) / columnCount;
+        const int columnWidth = (parentWidth - paddingSize) / columnCount;
+        const int buttonWidth = columnWidth - spaceWidth * gutterScale;
         return buttonWidth;
-    }
-
-    private void OnPhraseButtonPressed(string phraseId)
-    {
-        PhraseButtonPressed?.Invoke(phraseId);
     }
 }
