@@ -228,7 +228,7 @@
 
 # QM
 - type: entity
-  parent: [ClothingUniformBase, BaseCommandContraband]
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase, BaseCommandContraband]
   id: ClothingUniformJumpsuitQMVista
   name: quartermaster's vista suit
   description: An outfit for a quartermaster who isn't afraid to put in the miles themselves for some sweet spessos (cargo shorts included).
