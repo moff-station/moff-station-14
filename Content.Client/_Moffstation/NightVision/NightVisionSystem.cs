@@ -3,8 +3,9 @@ using Content.Client.Overlays;
 using Content.Shared._Moffstation.NightVision;
 using Content.Shared.Flash;
 using Content.Shared.Inventory.Events;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
+using Robust.Shared.Map;
 
 namespace Content.Client._Moffstation.NightVision;
 
@@ -15,8 +16,11 @@ public sealed partial class NightVisionSystem : EquipmentHudSystem<NightVisionCo
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
     [Dependency] private SharedFlashSystem _flash = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private NightVisionOverlay _overlay = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -34,18 +38,20 @@ public sealed partial class NightVisionSystem : EquipmentHudSystem<NightVisionCo
 
         // Just incase someone is editing it, they don't get to keep free night vision with flash protection
         if (_flash.IsFlashImmune(ent))
-            _overlayMan.RemoveOverlay(_overlay);
+        {
+            RemoveEffect(ent.Comp);
+        }
     }
 
     private void OnFlashImmunityChanged(Entity<NightVisionComponent> ent, ref FlashImmunityChangedEvent args)
     {
         if (args.FlashImmune)
         {
-            _overlayMan.RemoveOverlay(_overlay);
+            RemoveEffect(ent.Comp);
         }
         else
         {
-            _overlayMan.AddOverlay(_overlay);
+            ApplyEffect(ent.Comp);
         }
     }
 
@@ -53,18 +59,24 @@ public sealed partial class NightVisionSystem : EquipmentHudSystem<NightVisionCo
     {
         base.UpdateInternal(component);
 
+        if (_player.LocalSession?.AttachedEntity is not { } player)
+            return;
+
         foreach (var comp in component.Components)
         {
             _overlay.TintColor = comp.TintColor;
             _overlay.TintIntensity = comp.TintIntensity;
         }
 
-        _overlayMan.AddOverlay(_overlay);
+        foreach (var comp in component.Components)
+        {
+            ApplyEffect(comp);
+        }
     }
 
     private void OnShutDown(Entity<NightVisionComponent> ent, ref ComponentShutdown args)
     {
-        _overlayMan.RemoveOverlay(_overlay);
+        RemoveEffect(ent.Comp);
     }
 
     protected override void DeactivateInternal()
@@ -72,5 +84,28 @@ public sealed partial class NightVisionSystem : EquipmentHudSystem<NightVisionCo
         base.DeactivateInternal();
 
         _overlayMan.RemoveOverlay(_overlay);
+    }
+
+    private void RemoveEffect(NightVisionComponent comp)
+    {
+        _overlayMan.RemoveOverlay(_overlay);
+        Del(comp.Effect);
+        comp.Effect = null;
+    }
+
+    private void ApplyEffect(NightVisionComponent comp)
+    {
+        _overlayMan.AddOverlay(_overlay);
+
+        if (_player.LocalSession?.AttachedEntity is not { } player)
+            return;
+
+        if (comp.Effect != null)
+            return;
+
+        // Give them da light
+        var effect = Spawn(comp.EffectPrototype, Transform(player).Coordinates);
+        _transform.SetParent(effect, player);
+        comp.Effect = effect;
     }
 }
