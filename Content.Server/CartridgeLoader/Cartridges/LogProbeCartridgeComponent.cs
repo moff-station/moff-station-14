@@ -1,15 +1,14 @@
 using Content.Shared._CD.CartridgeLoader.Cartridges; // CD
 using Content.Shared.CartridgeLoader.Cartridges;
-﻿using Content.Shared.Paper;
+using Content.Shared.Paper;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.CartridgeLoader.Cartridges;
 
-[RegisterComponent, Access(typeof(LogProbeCartridgeSystem))]
-[AutoGenerateComponentPause]
-public sealed partial class LogProbeCartridgeComponent : Component
+[Access(typeof(LogProbeCartridgeSystem))]
+public abstract partial class BaseLogProbeComponent : Component // Moffstation - Split the component to be reusable
 {
     /// <summary>
     /// The name of the scanned entity, sent to clients when they open the UI.
@@ -44,14 +43,31 @@ public sealed partial class LogProbeCartridgeComponent : Component
     [DataField]
     public TimeSpan PrintCooldown = TimeSpan.FromSeconds(5);
 
+    // Moffstation - Begin - Split the component to be reusable
+
     /// <summary>
     /// When anyone is allowed to spawn another printout.
     /// </summary>
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan NextPrintAllowed = TimeSpan.Zero;
+    /// <remarks>
+    /// This is abstract as it need to be implemented concretely on component
+    /// to put the auto pause attribute.
+    /// </remarks>
+    public abstract TimeSpan NextPrintAllowed { get; set; }
 
+    // Moffstation - End
+
+    /// <summary>
     /// CD: The last scanned NanoChat data, if any
     /// </summary>
     [DataField]
     public NanoChatData? ScannedNanoChatData;
 }
+
+// Moffstation - Begin - Split component
+[RegisterComponent, AutoGenerateComponentPause]
+public sealed partial class LogProbeCartridgeComponent : BaseLogProbeComponent
+{
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public override TimeSpan NextPrintAllowed { get; set; } = TimeSpan.FromSeconds(0);
+}
+// Moffstation - End

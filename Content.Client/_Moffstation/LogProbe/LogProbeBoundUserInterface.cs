@@ -14,7 +14,7 @@ public sealed class LogProbeBoundUserInterface : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<LogProbeWindow>();
-        _window.Title = "Log Probe";
+        _window.Title = Loc.GetString("log-probe-window-title");
 
         _window.OnPrintPressed += OnPrintPressed;
     }
@@ -29,6 +29,6 @@ public sealed class LogProbeBoundUserInterface : BoundUserInterface
 
     private void OnPrintPressed()
     {
-        SendMessage(new Shared._Moffstation.LogProbe.LogProbePrintMessage());
+        SendMessage(new Shared._Moffstation.LogProbe.LogProbePrintBuiMessage());
     }
 }
