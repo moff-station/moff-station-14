@@ -74,7 +74,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private TransformSystem _transform = default!;
 
-    [Dependency] private WeightedAntagManager _weightedAntagMan = default!; // Moffstation
+    [Dependency] private IWeightedAntagManager _weightedAntagMan = default!; //Moffstation Dummy Antag Weights
 
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;

@@ -11,7 +11,6 @@ namespace Content.Server.DeltaV.AACTablet;
 public sealed partial class AACTabletSystem : EntitySystem
 {
     [Dependency] private ChatSystem _chat = default!;
-    [Dependency] private ILocalizationManager _loc = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IGameTiming _timing = default!;
 
@@ -37,7 +36,7 @@ public sealed partial class AACTabletSystem : EntitySystem
             return;
 
         _chat.TrySendInGameICMessage(uid,
-            _loc.GetString(phrase.Text),
+            phrase.LocalizedText,
             InGameICChatType.Speak,
             hideChat: false,
             nameOverride: speakerName);

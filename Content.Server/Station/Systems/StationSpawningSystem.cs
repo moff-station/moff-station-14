@@ -119,7 +119,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
             // Make sure custom names get handled, what is gameticker control flow whoopy.
             if (loadout != null)
             {
-                EquipRoleName(jobEntity, loadout, roleProto!);
+                EquipSpecialRoleLoadout(jobEntity, loadout, roleProto!); // Moffstation - Enable special loadouts by job
             }
 
             DoJobSpecials(job, jobEntity);

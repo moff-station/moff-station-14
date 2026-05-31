@@ -38,6 +38,10 @@
   id: JobBorg
   nameDataset: NamesBorg
   canCustomizeName: true
+  # Moffstation - Begin - Borgs can get personal items
+  groups:
+  - PersonalItemsJobAgnostic # Umbra
+  # Moffstation - End
 
 - type: roleLoadout
   id: JobStationAi
