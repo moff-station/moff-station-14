@@ -1,4 +1,5 @@
 using Content.Shared.CartridgeLoader.Cartridges;
+using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._Moffstation.LogProbe;
