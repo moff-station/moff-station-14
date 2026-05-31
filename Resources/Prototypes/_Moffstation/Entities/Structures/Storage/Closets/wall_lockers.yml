@@ -1,0 +1,36 @@
+#Base wall locker for moff because sprites or whatever
+- type: entity
+  id: BaseWallLockerMoff
+  parent: BaseWallCloset
+  abstract: true
+  components:
+  - type: AccessReader
+  - type: Lock
+  - type: LockVisuals
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/wall_locker.rsi
+    layers:
+    - state: generic
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: generic_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: Paintable
+    group: WallLocker
+
+- type: entity
+  id: LockerWallFreelance
+  parent: BaseWallLockerMoff
+  name: freelancer wall locker # Placeholder name, ideally should be renamed during mapping to something relevant to the situation.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: freelance
+    stateDoorOpen: freelance_open
+    stateDoorClosed: freelance_door
+  - type: AccessReader
+    access: [["Freelance"]]

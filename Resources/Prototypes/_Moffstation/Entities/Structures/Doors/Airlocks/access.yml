@@ -64,10 +64,21 @@
     containers:
       board: [ DoorElectronicsPirate ]
 
+# Freelance Airlocks
+
 - type: entity
   parent: AirlockShuttle
   id: AirlockExternalShuttleFreelanceLocked
   suffix: External, Docking, Freelance, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFreelance ]
+
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockExternalGlassShuttleFreelanceLocked
+  suffix: External, Docking, Freelance, Glass, Locked
   components:
   - type: ContainerFill
     containers:
