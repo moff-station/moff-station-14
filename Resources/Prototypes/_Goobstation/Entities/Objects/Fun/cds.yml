@@ -236,7 +236,7 @@
 
 - type: entity
   parent: BaseCdDisk
-  id: JVNECdDisk
+  id: BaseJVNECdDisk
   abstract: true
   description: The June and Eels show!
   components:
@@ -244,36 +244,27 @@
     state: jne-cd
 
 - type: entity
-  parent: JVNECdDisk
-  name: cd disk (Capstien)
-  id: JVNECdDiskCapstien
-  components:
-  - type: Vinyl
-    song:
-      path: /Audio/_Goobstation/RadioStation/ads/Capstien.ogg
-
-- type: entity
-  parent: JVNECdDisk
+  parent: BaseJVNECdDisk
   name: cd disk (NINJA!!!)
-  id: JVNECdDiskNinja
+  id: CdJVNEDiskNinja
   components:
   - type: Vinyl
     song:
       path: /Audio/_Goobstation/RadioStation/ads/Ninja.ogg
 
 - type: entity
-  parent: JVNECdDisk
+  parent: BaseJVNECdDisk
   name: cd disk (Next Up)
-  id: JVNECdDiskNextUp
+  id: CdJVNEDiskNextUp
   components:
   - type: Vinyl
     song:
       path: /Audio/_Goobstation/RadioStation/ads/NextUp.ogg
 
 - type: entity
-  parent: JVNECdDisk
+  parent: BaseJVNECdDisk
   name: cd disk (June & Eels Show)
-  id: JVNECdDiskJNE
+  id: CdJVNEDiskJNE
   components:
   - type: Vinyl
     song:
@@ -291,7 +282,7 @@
 - type: entity
   parent: SyndiCdDisk
   name: cd disk (Numbers)
-  id: JVNECdDiskNumber
+  id: CdJVNEDiskNumber
   description: All around the mulberry bush, the monkey chased the weasel...
   components:
   - type: Vinyl
@@ -303,7 +294,7 @@
 - type: entity
   parent: SyndiCdDisk
   name: cd disk (Syndicate)
-  id: JVNECdDiskSyndicate
+  id: CdJVNEDiskSyndicate
   description: 102.9 Syndicate radio
   components:
   - type: Vinyl
