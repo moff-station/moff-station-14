@@ -85,8 +85,6 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
 
         if (args.InteractEvent.Handled || !args.InteractEvent.CanReach || args.InteractEvent.Target is not { } target)
             return;
-
-
     }
 
     private void AfterInteract<T>(Entity<T> ent, AfterInteractEvent args, Action updateState) // Moffstation - Split the component to be reusable
@@ -145,7 +143,6 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // CD - Made 
         if (args is Shared.CartridgeLoader.Cartridges.LogProbePrintMessage cast)
             PrintLogs(ent, cast.User);
     }
-
 
     private void PrintLogs<T>(Entity<T> ent, EntityUid user) // Moffstation - Split the component to be reusable
         where T : BaseLogProbeComponent
