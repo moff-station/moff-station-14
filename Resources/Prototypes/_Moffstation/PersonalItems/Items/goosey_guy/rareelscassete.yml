@@ -1,0 +1,35 @@
+
+
+- type: entity 
+  parent: BaseHandheldInstrument
+  id: PersonalItemRareelsCassette
+  name: Retro cassette player
+  description: A retro style cassette player, which has clearly seen better days. Covered in scratches and dents
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Personalitems/Items/goosey_guy/Rareel/rareelscassette.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Personalitems/Items/goosey_guy/Rareel/rareelscassette.rsi
+    size: Small
+  - type: Instrument
+    allowPercussion: false
+    handheld: false
+    program: 2
+    bank: 100
+  - type: ActivatableUI
+    inHandsOnly: false
+  - type: Clothing
+    slots: 
+    - neck
+
+- type: loadout
+  id: PersonalItemRareelsCassette
+  storage:
+    back:
+    - PersonalItemRareelsCassette 
+  effects:
+  - !type:PersonalItemLoadoutEffect
+  character:
+    - Rareel 
