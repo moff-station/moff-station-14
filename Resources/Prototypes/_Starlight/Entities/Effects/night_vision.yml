@@ -6,5 +6,21 @@
   - type: PointLight
     color: "#D6E4FF"
     energy: 0.8
-    radius: 20
+    radius: 7.5
     castShadows: false
+    falloff: 20.0
+    netsync: false
+
+- type: entity
+  parents: EffectNightVision
+  id: EffectNightVisionGreen
+  categories: [ HideSpawnMenu ]
+  name: night vision
+  components:
+  - type: PointLight
+    color: "#00FF00"
+    energy: 0.8
+    radius: 7.5
+    castShadows: false
+    falloff: 20.0
+    netsync: false

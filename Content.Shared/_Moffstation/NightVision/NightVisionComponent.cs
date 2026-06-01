@@ -21,7 +21,7 @@ public sealed partial class NightVisionComponent : Component
     /// What should the color of the tint be?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Color TintColor = Color.Green;
+    public Color TintColor = Color.FromHex("#00FF00");
 
     /// <summary>
     /// What should the intensity of the tint be?
