@@ -206,6 +206,13 @@ public sealed partial class AiShellSystem : EntitySystem
             var holderEvent = new ContainedAiShellStoppedBeingControlledEvent(controller, shell, holderTarget);
             RaiseLocalEvent(holderTarget, ref holderEvent);
         }
+
+        //Prevents the Ai Eye from getting deleted when a shell gets destroyed.
+        if (!_stationAiSystem.TryGetCore(controller, out var coreEnt) ||
+            coreEnt.Comp is not { RemoteEntity: { } aiEye })
+            return;
+
+        _xforms.DropNextTo(aiEye, controllingShell);
     }
 
     /// Ends remote control over <paramref name="shell"/>.
