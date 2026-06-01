@@ -70,6 +70,8 @@
   - type: LockedAnchorable
   - type: Transform
     anchored: true
+  - type: Physics
+    bodyType: Static
   # Moffstation - End
   - type: Destructible
     thresholds:
