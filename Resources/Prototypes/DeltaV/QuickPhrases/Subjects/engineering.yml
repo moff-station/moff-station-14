@@ -1,119 +1,28 @@
 - type: quickPhrase
+  parent: [ BaseEngineeringPhrase, BaseSubjectPhrase ]
   id: BaseEngineeringSubjectPhrase
-  parent: [ BaseSubjectPhrase, BaseEngineeringPhrase ]
   abstract: true
 
-- type: quickPhrase
-  id: AMEPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-ame
-
-- type: quickPhrase
-  id: APCPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-apc
-
-- type: quickPhrase
-  id: CanisterPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-canister
-
-- type: quickPhrase
-  id: CompressedMatterPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-compressed-matter
-
-- type: quickPhrase
-  id: FrezonPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-frezon
-
-- type: quickPhrase
-  id: GravityPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-gravity
-
-- type: quickPhrase
-  id: HVWirePhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-hvwire
-
-- type: quickPhrase
-  id: LVWirePhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-lvwire
-
-- type: quickPhrase
-  id: MVWirePhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-mvwire
-
-- type: quickPhrase
-  id: NetworkConfiguratorPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-network-configurator
-
-- type: quickPhrase
-  id: NitrogenPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-nitrogen
-
-- type: quickPhrase
-  id: OxygenPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-oxygen
-
-- type: quickPhrase
-  id: RCDPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-rcd
-
-- type: quickPhrase
-  id: RTGPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-rtg
-
-- type: quickPhrase
-  id: ScrubberPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-scrubber
-
-- type: quickPhrase
-  id: SinguloPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-singulo
-
-- type: quickPhrase
-  id: SMESPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-smes
-
-- type: quickPhrase
-  id: SubstationPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-substation
-
-- type: quickPhrase
-  id: TRayScanner
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-tray-scanner
-
-- type: quickPhrase
-  id: TEGPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-teg
-
-- type: quickPhrase
-  id: TeslaPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-tesla
-
-- type: quickPhrase
-  id: TritiumPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-tritium
-
-- type: quickPhrase
-  id: MagbootsPhrase
-  parent: BaseEngineeringSubjectPhrase
-  text: phrase-magboots
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: AmePhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: ApcPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: CanisterPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: CompressedMatterPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: FrezonPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: GravityPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: HvWirePhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: LvWirePhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: MvWirePhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: NetworkConfiguratorPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: NitrogenPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: OxygenPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: RcdPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: RtgPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: ScrubberPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: SinguloPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: SmesPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: SubstationPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: TrayScanner }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: TegPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: TeslaPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: TritiumPhrase }
+- { type: quickPhrase, parent: BaseEngineeringSubjectPhrase, id: MagbootsPhrase }

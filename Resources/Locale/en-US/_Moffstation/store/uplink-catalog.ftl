@@ -21,3 +21,6 @@ uplink-syndicate-mothroach-description = The latest and greatest in Syndicate mo
 
 uplink-clown-spider-grenade-name = Jar of Clown Spiders
 uplink-clown-spider-grenade-desc = Smuggled out of a Honkmother meeting, the spiders floating inside liquid happiness laugh away. Would be funny to throw at someone.
+
+uplink-mobcat-reject-name = SyndiCat Reject Teleporter
+uplink-mobcat-reject-desc = Call in an untrained SyndiCat. It isn't trained, and it doesn't contain a bomb, so it serves best as a distraction. You can only adopt one of them.

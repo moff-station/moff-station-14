@@ -2,85 +2,86 @@
 
 - type: quickPhrase
   id: BaseCommonPhrase
-  tab: Common Phrases
   abstract: true
+  tab: phrase-tab-common-phrases
 
 - type: quickPhrase
   id: BaseJobPhrase
-  tab: Jobs
   abstract: true
+  tab: phrase-tab-jobs
 
 - type: quickPhrase
   id: BaseLocationPhrase
-  tab: Locations
   abstract: true
+  tab: phrase-tab-locations
 
 - type: quickPhrase
   id: BaseSubjectPhrase
-  tab: Subjects
   abstract: true
+  tab: phrase-tab-subjects
+  group: phrase-group-misc
 
 - type: quickPhrase
   id: BaseThreatPhrase
-  tab: Safety
   abstract: true
+  tab: phrase-tab-safety
 
 - type: quickPhrase
   id: BaseSpeciesPhrase
-  tab: Species
   abstract: true
+  tab: phrase-tab-species
 
 # Departments
 
 - type: quickPhrase
   id: BaseCivilianPhrase
-  group: Civilian
   abstract: true
+  group: phrase-group-civilian
 
 - type: quickPhrase
   id: BaseCommandPhrase
-  group: Command
-  styleClass: CommandButton
   abstract: true
+  group: phrase-group-command
+  styleClass: CommandButton
 
 - type: quickPhrase
   id: BaseEngineeringPhrase
-  group: Engineering
-  styleClass: EngineeringButton
   abstract: true
+  group: phrase-group-engineering
+  styleClass: EngineeringButton
 
 - type: quickPhrase
   id: BaseEpistemicsPhrase
-  group: Epistemics
-  styleClass: EpistemicsButton
   abstract: true
+  group: phrase-group-epistemics
+  styleClass: EpistemicsButton
 
 - type: quickPhrase
   id: BaseJusticePhrase
-  group: Justice
-  styleClass: JusticeButton
   abstract: true
+  group: phrase-group-justice
+  styleClass: JusticeButton
 
 - type: quickPhrase
   id: BaseLogisticsPhrase
-  group: Logistics
-  styleClass: LogisticsButton
   abstract: true
+  group: phrase-group-logistics
+  styleClass: LogisticsButton
 
 - type: quickPhrase
   id: BaseMedicalPhrase
-  group: Medical
-  styleClass: MedicalButton
   abstract: true
+  group: phrase-group-medical
+  styleClass: MedicalButton
 
 - type: quickPhrase
   id: BaseSecurityPhrase
-  group: Security
-  styleClass: SecurityButton
   abstract: true
+  group: phrase-group-security
+  styleClass: SecurityButton
 
 - type: quickPhrase
   id: BaseServicePhrase
-  group: Service
-  styleClass: ServiceButton
   abstract: true
+  group: phrase-group-service
+  styleClass: ServiceButton

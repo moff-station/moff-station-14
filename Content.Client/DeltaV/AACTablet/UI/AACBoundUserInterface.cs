@@ -1,38 +1,21 @@
 using Content.Shared.DeltaV.AACTablet;
+using JetBrains.Annotations;
+using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.DeltaV.AACTablet.UI;
 
-public sealed partial class AACBoundUserInterface : BoundUserInterface
+[UsedImplicitly]
+public sealed partial class AACBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
-
     [ViewVariables]
     private AACWindow? _window;
-
-    public AACBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-    {
-    }
 
     protected override void Open()
     {
         base.Open();
-        _window?.Close();
-        _window = new AACWindow(this, _prototypeManager);
-        _window.OpenCentered();
 
-        _window.PhraseButtonPressed += OnPhraseButtonPressed;
-        _window.OnClose += Close;
-    }
-
-    private void OnPhraseButtonPressed(string phraseId)
-    {
-        SendMessage(new AACTabletSendPhraseMessage(phraseId));
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        _window?.Dispose();
+        _window = this.CreateWindow<AACWindow>();
+        _window.PhraseButtonPressed += phraseId => SendMessage(new AACTabletSendPhraseMessage(phraseId));
     }
 }
