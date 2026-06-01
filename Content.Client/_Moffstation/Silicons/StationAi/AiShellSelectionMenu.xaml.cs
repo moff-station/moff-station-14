@@ -14,7 +14,7 @@ public sealed partial class AiShellSelectionMenu : DefaultWindow
     public Action<EntityUid>? EnterShell;
     public Action<EntityUid?>? SelectShell;
 
-    [Dependency] private readonly EntityManager _ent = null!;
+    [Dependency] private EntityManager _ent = null!;
 
     public AiShellSelectionMenu()
     {
