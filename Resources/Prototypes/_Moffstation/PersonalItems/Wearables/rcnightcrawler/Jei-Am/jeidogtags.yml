@@ -1,0 +1,27 @@
+# Player: rcnightcrawler - Character: Jei-Am
+
+- type: entity
+  parent: ClothingNeckBase
+  id: &id PersonalItemJeiDogtags
+  name: Jei's dogtags
+  description: A pair of weathered dogtags that represent a different time in the wearer's life, far from this sector. You can just make out the name "Jei-Am" inscribed on them.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/rcnightcrawler/Jei-Am/JeiDogtags.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: Item
+    sprite: *sprite
+  - type: DetailExaminable
+    content: The tags are weathered from all kinds of damage, scratches, dents, and.. burn holes? The tags have an inscription on them; "Sergeant Jei-Am, Charlie Squad Leader, O-", as well as a tinier inscription crudely added, "Never forget."
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Jei-Am
