@@ -63,6 +63,11 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitHarlequin
 
+- type: loadout
+  id: BananaSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClownBanana
+
 # Back
 
 # Belt
@@ -95,4 +100,9 @@
   id: ClownSlippers
   equipment:
     shoes: ClothingShoesSlippers
+
+- type: loadout
+  id: BananaShoes
+  equipment:
+    shoes: ClothingShoesClownBanana
 # Eyewear

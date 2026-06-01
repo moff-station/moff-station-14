@@ -1314,6 +1314,10 @@
     stackRequirements:
       Steel: 1
       Cable: 2
+  # Moffstation - Begin - Telecomms blade server
+  - type: BladeServerBoard
+    prototype: TelecomBladeServer
+  # Moffstation - End
 
 - type: entity
   parent: BaseMachineCircuitboard

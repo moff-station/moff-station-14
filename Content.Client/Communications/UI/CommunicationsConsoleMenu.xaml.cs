@@ -14,10 +14,11 @@ namespace Content.Client.Communications.UI
     [GenerateTypedNameReferences]
     public sealed partial class CommunicationsConsoleMenu : FancyWindow
     {
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly ILocalizationManager _loc = default!;
-        [Dependency] private readonly IEntitySystemManager _entitySystem = default!; // Moffstation - Communications console clock
+        [Dependency] private IConfigurationManager _cfg = default!;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private ILocalizationManager _loc = default!;
+
+        [Dependency] private IEntitySystemManager _entitySystem = default!; // Moffstation - Communications console clock
 
         private readonly ClientGameTicker _gameTicker; // Moffstation - Communications console clock
 

@@ -1,0 +1,23 @@
+﻿# Player: DualLlamas / Character: All Saints' Day
+
+- type: entity
+  parent: Cane
+  id: PersonalItemAllSaintsDayCrook
+  name: shepherd's crook
+  description: A crook, as might be used by a shepherd. It seems worn...
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/DualLlamas/All_Saints'_Day/crook.rsi
+  - type: Item
+    sprite: *sprite
+
+- type: loadout
+  id: PersonalItemAllSaintsDayCrook
+  storage:
+    back:
+    - PersonalItemAllSaintsDayCrook
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - All Saints' Day

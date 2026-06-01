@@ -19,6 +19,10 @@
   storage:
     back:
     - PersonalItemBintendoHat
+  specialJobLoadouts:
+    JobBorg:
+      equipment:
+        head: PersonalItemBintendoHat
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

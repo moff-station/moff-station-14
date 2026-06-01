@@ -39,6 +39,23 @@
       path: /Audio/_Moffstation/Voice/Resomi/resomi_squawk_1.ogg
 
 - type: emoteSounds
+  parent: UnisexMothUpstream
+  id: UnisexMoth
+  sounds:
+    Cough:
+      path: /Audio/_Moffstation/Voice/Moth/moth_cough.ogg
+    Crying:
+      path: /Audio/_Moffstation/Voice/Moth/moth_cry.ogg
+    Gasp:
+      collection: MothGasp
+    Sigh:
+      path: /Audio/_Moffstation/Voice/Moth/moth_sigh.ogg
+    Sneeze:
+      collection: MothSneeze
+    Whistle:
+      path: /Audio/_Moffstation/Voice/Moth/moth_whistle.ogg
+
+- type: emoteSounds
   id: Whimperlet
   params:
     variation: 0.125

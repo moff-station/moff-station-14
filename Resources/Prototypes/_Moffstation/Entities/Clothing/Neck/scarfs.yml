@@ -27,3 +27,36 @@
     - Recyclable
     - HamsterWearable
     - WhitelistChameleon
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfCAP
+  name: captain's large scarf
+  description: A large, stylish white and blue scarf. Will keep you warm on a cold winter night.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/cap-scarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/cap-scarf.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfQM
+  name: quartermaster's large scarf
+  description: A large, stylish brown scarf. Will keep you warm on a cold shuttle trip.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/qm-scarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/qm-scarf.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckScarfCE
+  name: chief engineer's large scarf
+  description: A large, stylish orange and black scarf. Will keep you colder than the cold loop.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/ce-scarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/ce-scarf.rsi

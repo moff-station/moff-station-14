@@ -4,6 +4,19 @@
   description: Useful for carrying items in your hands.
   abstract: true
   components:
+  # Moffstation - Start - New Briefcase Functionality (Uncabinetification)
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      state: icon
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: icon-open }
+          False: { state: icon }
+  - type: Appearance
+  # Moffstation - End - New Briefcase Functionality (Uncabinetification)
   - type: Item
     size: Ginormous
   - type: Storage
@@ -20,10 +33,10 @@
   name: brown briefcase
   components:
   - type: Sprite
-    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_brown.rsi # Moffstation - Cabinetification
     state: icon
   - type: Item
-    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+    sprite: _Moffstation/Objects/Storage/Briefcases/briefcase_brown.rsi # Moffstation - Cabinetification
 
 - type: entity
   parent: BriefcaseBase # Moffstation (New Briefcases)
@@ -47,7 +60,7 @@
   components:
   - type: Appearance
   - type: Sprite
-    sprite: Objects/Storage/Briefcases/weapon_case_large.rsi
+    sprite: _Moffstation/Objects/Storage/Briefcases/weapon_case_large.rsi # Moffstation - Cabinetification
     layers:
     - state: icon
       map: [ base ]
@@ -75,7 +88,7 @@
   suffix: Gun, Small, Empty
   components:
   - type: Sprite
-    sprite: Objects/Storage/Briefcases/weapon_case.rsi
+    sprite: _Moffstation/Objects/Storage/Briefcases/weapon_case.rsi # Moffstation - Cabinetification
   - type: Item
     size: Large
   - type: Storage

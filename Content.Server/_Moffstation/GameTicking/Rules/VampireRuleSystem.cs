@@ -1,4 +1,5 @@
-﻿using Content.Server._Moffstation.GameTicking.Rules.Components;
+﻿using System.Linq;
+using Content.Server._Moffstation.GameTicking.Rules.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -6,9 +7,9 @@ using Content.Shared.GameTicking.Components;
 
 namespace Content.Server._Moffstation.GameTicking.Rules;
 
-public sealed class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
+public sealed partial class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
 
     /// <summary>
     /// Appends the round end text for the vampire role.
@@ -18,7 +19,7 @@ public sealed class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
             GameRuleComponent gameRule,
             ref RoundEndTextAppendEvent args)
     {
-        var antags =_antag.GetAntagIdentifiers(uid);
+        var antags =_antag.GetAntagIdentifiers(uid).ToList();
 
         args.AddLine(antags.Count == 1
                      ? Loc.GetString("vampire-existing")

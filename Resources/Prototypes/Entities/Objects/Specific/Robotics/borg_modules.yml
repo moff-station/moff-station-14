@@ -188,7 +188,7 @@
   components:
   - type: BorgModule
     borgFitTypes:
-    - borg-type-generic
+    - borg-type-science
   - type: Tag
     tags:
     - BorgModuleScience
@@ -528,7 +528,7 @@
 
 - type: entity
   id: BorgModuleFireExtinguisher
-  parent: [ BaseBorgModule, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: thruster cyborg module
   description: NT assigned a team to design a jetpack for cyborg units, but they ran out of funding and just made a bigger fire extinguisher. It comes with a integrated GPS and mass scanner though!
   components:
@@ -666,7 +666,7 @@
     - item: MiningDrillDiamond
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
-    - item: OreBagOfHoldingBorg # Moffstation - Salvage borg ore bags always magnetize
+    - item: BorgOreBagOfHolding
     # Moffstation - Start - Add orehand for salvage borgs
     - hand:
         emptyRepresentative: Coal1
@@ -685,7 +685,7 @@
 
 - type: entity
   id: BorgModuleTraversal
-  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
   name: traversal cyborg module
   components:
   - type: Sprite
@@ -701,6 +701,12 @@
     - item: HandheldStationMapUnpowered # Moffstation - Make "traversal" modules strict upgrades of the generic thruster
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }
+  # Moffstation - Start - Replacable Traversal Module
+  - type: Tag
+    tags:
+    - CyborgTraversalModule
+    - BorgModuleCargo
+  # Moffstation - End
 
 # engineering modules
 - type: entity
@@ -808,7 +814,7 @@
 
 - type: entity
   id: BorgModuleRCD
-  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
   name: engineering cyborg module
   components:
   - type: Sprite
@@ -967,7 +973,7 @@
 
 - type: entity
   id: BorgModuleRescue
-  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule, BaseBorgModuleMagboots ] # Moffstation - toggleable magboots
+  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
   name: rescue cyborg module
   components:
   - type: Sprite
@@ -1717,7 +1723,7 @@
     - state: icon-xenoborg-tile
   - type: ItemBorgModule
     hands:
-    - item: WeaponTileGunEmpty
+    - item: WeaponTileGun
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
 

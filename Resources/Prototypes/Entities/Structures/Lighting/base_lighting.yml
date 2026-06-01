@@ -38,8 +38,9 @@
     softness: 1
     offset: "0, -0.5"
   - type: Damageable
-    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
   - type: RCDDeconstructable
     cost: 4
     delay: 2
@@ -282,7 +283,8 @@
           layer:
           - TabletopMachineLayer
     - type: Damageable
-      damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix 
+    - type: Injurable
+      damageContainer: StructuralInorganic # Moffstation - Structural damagetype fix
     - type: Destructible
       thresholds:
       - trigger:

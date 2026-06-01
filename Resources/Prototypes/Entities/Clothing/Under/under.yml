@@ -8,9 +8,9 @@
   description: Make them loins buzz!
   components:
   - type: Sprite
-    sprite: Clothing/Under/Socks/bee.rsi
+    sprite: _Moffstation/Clothing/Shoes/Socks/bee.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Under/Socks/bee.rsi
+    sprite: _Moffstation/Clothing/Shoes/Socks/bee.rsi # Moffstation
 
 - type: entity
   parent: ClothingShoesBase
@@ -19,6 +19,6 @@
   description: It's time to code sisters!!11!
   components:
   - type: Sprite
-    sprite: Clothing/Under/Socks/coder.rsi
+    sprite: _Moffstation/Clothing/Shoes/Socks/coder.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Under/Socks/coder.rsi
+    sprite: _Moffstation/Clothing/Shoes/Socks/coder.rsi # Moffstation

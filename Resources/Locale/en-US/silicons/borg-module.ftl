@@ -8,6 +8,7 @@ borg-module-requirement-tool = tool
 borg-module-requirement-mining = mining
 borg-module-requirement-cleaning = cleaning
 borg-module-requirement-topical = topical
+borg-module-requirement-traversal = traversal
 
 borg-type-all = [color=white]any cyborg[/color]
 borg-type-salvage = [color= #d6b328]salvage cyborgs[/color]

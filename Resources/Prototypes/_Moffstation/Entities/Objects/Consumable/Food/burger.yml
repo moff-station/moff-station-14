@@ -1,7 +1,7 @@
 - type: entity
-  name: tarburger
   parent: FoodBurgerBase
   id: FoodBurgerTar
+  name: tarburger
   description: Apparently the glasses can be cooked?
   components:
   - type: FlavorProfile
@@ -12,17 +12,15 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Consumable/Food/burger.rsi
     state: tarburger
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 19
-        - ReagentId: Vitamin
-          Quantity: 4
-        - ReagentId: Razorium
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 40
+      - ReagentId: Vitamin
+        Quantity: 8
+      - ReagentId: Razorium
+        Quantity: 2
   - type: Tag
     tags:
     - Meat

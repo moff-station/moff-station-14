@@ -7,6 +7,7 @@ using Content.Shared._Moffstation.Vampire.EntitySystems;
 using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
@@ -27,11 +28,11 @@ namespace Content.Server._Moffstation.Vampire.EntitySystems;
 /// </remarks>
 public sealed partial class BloodEssenceUserSystem : EntitySystem
 {
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly StomachSystem _stomach = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly BloodEssenceSystem _bloodEssenceSystem = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private StomachSystem _stomach = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private BloodEssenceSystem _bloodEssenceSystem = default!;
 
     /// <summary>
     /// Extracts blood from the target creature and places it in the user's stomach.
@@ -84,8 +85,11 @@ public sealed partial class BloodEssenceUserSystem : EntitySystem
             bloodEssenceUser.FedFrom[target] += essenceCollected;
         bloodEssenceUser.BloodEssenceTotal += essenceCollected;
 
-        _stomach.TryTransferSolution(firstStomach, tempSolution);
-        Dirty<StomachComponent>(firstStomach);
+        _stomach.TryTransferSolution(
+            new Entity<StomachComponent?, SolutionManagerComponent?>(firstStomach, firstStomach, null),
+            tempSolution
+        );
+        Dirty(firstStomach);
 
         return essenceCollected;
     }

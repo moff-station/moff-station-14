@@ -6,7 +6,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: Mobs/Silicon/Bots/medibot.rsi
+    - sprite: _Moffstation/Mobs/Silicon/Bots/medibot.rsi # Moffstation - Uncabinetification
       state: medibot
   - type: ConditionalSpawner
     prototypes:
@@ -62,7 +62,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: Mobs/Silicon/Bots/honkbot.rsi
+    - sprite: _Moffstation/Mobs/Silicon/Bots/honkbot.rsi # Moffstation - Uncabinetification
       state: honkbot
   - type: ConditionalSpawner
     prototypes:
