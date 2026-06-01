@@ -14,15 +14,15 @@ namespace Content.Shared._Moffstation.Silicons.StationAi;
 
 public sealed partial class AiShellSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedStationAiSystem _stationAiSystem = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedTransformSystem _xforms = default!;
-    [Dependency] private readonly SharedSiliconLawSystem _siliconLaws = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private  SharedActionsSystem _actions = default!;
+    [Dependency] private  SharedStationAiSystem _stationAiSystem = default!;
+    [Dependency] private  SharedMindSystem _mind = default!;
+    [Dependency] private  SharedTransformSystem _xforms = default!;
+    [Dependency] private  SharedSiliconLawSystem _siliconLaws = default!;
+    [Dependency] private  SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private  MetaDataSystem _metaData = default!;
+    [Dependency] private  SharedContainerSystem _container = default!;
+    [Dependency] private  IGameTiming _timing = default!;
 
     public override void Initialize()
     {
