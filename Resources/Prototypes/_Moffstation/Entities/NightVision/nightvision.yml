@@ -5,16 +5,43 @@
   abstract: true
   components:
   - type: NightVision
-  - type: PointLight
-    netsync: false
-    radius: 6
-    castShadows: false
-    enabled: false
 
 - type: entity
-  parent: [BaseNightVision, ClothingEyesGlassesCheapSunglasses]
+  parent: BaseNightVision
+  id: NightVisionInnate
+  abstract: true
+  components:
+  - type: ActionGrant
+    actions:
+    - ActionToggleNightVisionInnate
+
+- type: entity
+  parent: BaseNightVision
+  id: NightVisionWorn
+  abstract: true
+  components:
+  - type: ActionGrant
+    actions:
+    - ActionToggleNightVisionEquipped
+  - type: ItemActionGrant
+    actions:
+    - ActionToggleNightVisionEquipped
+    activeIfWorn: true
+
+- type: entity
+  parent: [NightVisionWorn, ClothingEyesGlassesCheapSunglasses]
   id: NightVisionSunglasses
-  name: Nightvision Sunglasses
+  name: NightVision Sunglasses
   components:
   - type: NightVision
+    effectPrototype: EffectNightVisionGreen
 
+- type: entity
+  parent: NightVisionInnate
+  id: NightVisionResomi
+  abstract: true
+  components:
+  - type: NightVision
+    tintColor: "#59B3FF"
+    tintIntensity: 0.6
+    effectPrototype: EffectNightVisionResomi

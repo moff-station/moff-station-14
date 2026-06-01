@@ -1,4 +1,3 @@
-using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -28,4 +27,28 @@ public sealed partial class NightVisionComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float TintIntensity = 0.85f;
+
+    /// <summary>
+    /// Whether night vision is currently active. Can be toggled via actions.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Enabled = true;
+
+    /// <summary>
+    /// Action to grant when this component is on a mob directly (innate night vision).
+    /// </summary>
+    [DataField]
+    public EntProtoId? ToggleActionInnate;
+
+    [ViewVariables]
+    public EntityUid? ToggleActionInnateEntity;
+
+    /// <summary>
+    /// Action to grant when this component is on an equipped item.
+    /// </summary>
+    [DataField]
+    public EntProtoId? ToggleActionEquipped;
+
+    [ViewVariables]
+    public EntityUid? ToggleActionEquippedEntity;
 }

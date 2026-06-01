@@ -1,0 +1,41 @@
+- type: entity
+  parent: BaseAction
+  id: ActionToggleNightVision
+  name: Toggle Night Vision
+  description: Toggle night vision.
+  components:
+  - type: Action
+    icon:
+      sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+      state: icon
+    iconOn:
+      sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+      state: icon
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:ActionComponentChangeEvent
+      components:
+      - type: NightVision
+
+- type: entity
+  parent: ActionToggleNightVision
+  id: ActionToggleNightVisionInnate
+  name: Toggle Night Vision
+  description: Toggle your natural night vision.
+  components:
+  - type: Action
+    toggled: true
+
+- type: entity
+  parent: ActionToggleNightVision
+  id: ActionToggleNightVisionEquipped
+  name: Toggle Night Vision
+  description: Toggle the night vision on your eyewear.
+  components:
+  - type: Action
+    icon:
+      sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
+      state: icon
+    iconOn:
+      sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
+      state: icon
