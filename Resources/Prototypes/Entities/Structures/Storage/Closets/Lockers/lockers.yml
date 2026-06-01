@@ -31,6 +31,11 @@
     stateBaseClosed: secure
     stateDoorOpen: secure_open
     stateDoorClosed: secure_door
+  # Moffstation - Begin - Make secure lockers harder to steal
+  - type: LockedAnchorable
+  - type: Transform
+    anchored: true
+  # Moffstation - End
 
 # Cargo
 - type: entity
@@ -73,11 +78,6 @@
     stateDoorClosed: cap_door
   - type: AccessReader
     access: [["Captain"]]
-  # Moffstation - Begin - Make captains locker harder to steal
-  - type: LockedAnchorable
-  - type: Transform
-    anchored: true
-  # Moffstation - End
 
 - type: entity
   id: LockerHeadOfPersonnel
