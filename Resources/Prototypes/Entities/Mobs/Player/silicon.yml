@@ -436,7 +436,7 @@
   - type: ActionGrant
     actions:
     - ActionViewLaws
-    - ActionToggleAiShellControllerUi # MOffstation - Ai Shells
+    - ActionToggleAiShellControllerUi # Moffstation - Ai Shells
   - type: UserInterface
     interfaces:
       enum.SiliconLawsUiKey.Key:
@@ -498,7 +498,7 @@
         showEnts: False
         occludes: True
         ents: []
-  # MOffstation - End
+  # Moffstation - End
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
