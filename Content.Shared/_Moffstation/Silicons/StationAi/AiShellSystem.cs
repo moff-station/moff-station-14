@@ -35,7 +35,6 @@ public sealed partial class AiShellSystem : EntitySystem
         SubscribeLocalEvent<AiShellComponent, EntGotInsertedIntoContainerMessage>(OnShellGotInsertedEvent);
         SubscribeLocalEvent<AiShellComponent, EntGotRemovedFromContainerMessage>(OnShellGotRemovedEvent);
 
-        SubscribeLocalEvent<AiShellComponent, ComponentInit>(OnAiShellInit);
         SubscribeLocalEvent<AiShellComponent, ComponentRemove>(OnAiShellRemoved);
         SubscribeLocalEvent<AiShellControllerComponent, ComponentInit>(OnAiShellControllerInit);
         SubscribeLocalEvent<AiShellControllerComponent, ComponentRemove>(OnAiShellControllerRemoved);
@@ -356,15 +355,6 @@ public sealed partial class AiShellSystem : EntitySystem
             }
         }
 
-    }
-
-    private void OnAiShellInit(Entity<AiShellComponent> entity, ref ComponentInit args)
-    {
-        var query = EntityQueryEnumerator<AiShellControllerComponent>();
-        while (query.MoveNext(out var controllerEnt, out var controllerComp))
-        {
-            AddToAvailableShells((controllerEnt, controllerComp), entity);
-        }
     }
 
     private void OnAiShellRemoved(Entity<AiShellComponent> entity, ref ComponentRemove args)
