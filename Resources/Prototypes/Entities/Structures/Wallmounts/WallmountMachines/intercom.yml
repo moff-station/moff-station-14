@@ -359,17 +359,3 @@
       key_slots:
       - EncryptionKeyCommon
       - EncryptionKeyFreelance
-
-# Moffstation start - Visitor shuttle tweaks
-- type: entity
-  id: IntercomTraffic # Intended to be placed within shuttles nearby the controls, as well as within the cargo and the bridge.
-  parent: Intercom
-  suffix: Traffic
-  components:
-  - type: ContainerFill
-    containers:
-      board:
-      - IntercomElectronics
-      key_slots:
-      - EncryptionKeyTraffic
-# Moffstation end

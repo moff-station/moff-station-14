@@ -46,7 +46,6 @@
       key_slots:
       - EncryptionKeyCargo
       - EncryptionKeyCommon
-      - EncryptionKeyTraffic # Moffstation - Visitor shuttle tweaks
   - type: Sprite
     sprite: Clothing/Ears/Headsets/cargo.rsi
   - type: Clothing
@@ -75,7 +74,6 @@
       - EncryptionKeyCargo
       - EncryptionKeyCommand
       - EncryptionKeyCommon
-      - EncryptionKeyTraffic # Moffstation - Visitor shuttle tweaks
 
 - type: entity
   parent: [ ClothingHeadset, BaseCentcommContraband ]
@@ -88,7 +86,6 @@
       key_slots:
       - EncryptionKeyCentCom
       - EncryptionKeyStationMaster
-      - EncryptionKeyTraffic # Moffstation - Visitor shuttle tweaks
   - type: Sprite
     sprite: Clothing/Ears/Headsets/centcom.rsi
   - type: Clothing
@@ -104,7 +101,6 @@
     containers:
       key_slots:
       - EncryptionKeyStationMaster
-      - EncryptionKeyTraffic # Moffstation - Visitor shuttle tweaks
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing

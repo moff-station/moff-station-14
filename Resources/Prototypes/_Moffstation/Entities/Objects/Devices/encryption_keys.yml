@@ -36,11 +36,11 @@
   name: space traffic encryption key
   description: An encryption key used to coordinate fight paths between shuttles and docks. Outgoing transmissions are incompatible with headsets.
   components:
-    - type: EncryptionKey
-      channels: 
-      - Traffic
-      defaultChannel: Traffic
-    - type: Sprite
-      layers:
-      - state: crypt_orange
-      - state: traffic_label
+  - type: EncryptionKey
+    channels: 
+    - Traffic
+    defaultChannel: Traffic
+  - type: Sprite
+    layers:
+    - state: crypt_orange
+    - state: traffic_label
