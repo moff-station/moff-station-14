@@ -41,6 +41,10 @@
     - Traffic
     defaultChannel: Traffic
   - type: Sprite
+    sprite: _Moffstation/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_orange
     - state: traffic_label
+  - type: Item
+    sprite: _Moffstation/Objects/Devices/encryption_keys.rsi
+  
