@@ -36,8 +36,6 @@ public sealed partial class AiShellSystem : EntitySystem
         SubscribeLocalEvent<AiShellComponent, EntGotRemovedFromContainerMessage>(OnShellGotRemovedEvent);
 
         SubscribeLocalEvent<AiShellComponent, ComponentRemove>(OnAiShellRemoved);
-        SubscribeLocalEvent<AiShellControllerComponent, ComponentInit>(OnAiShellControllerInit);
-        SubscribeLocalEvent<AiShellControllerComponent, ComponentRemove>(OnAiShellControllerRemoved);
         SubscribeLocalEvent<ControlledAiShellComponent, ComponentInit>(OnControlledAiShellInit);
         SubscribeLocalEvent<ControlledAiShellComponent, ComponentRemove>(OnControlledAiShellRemoved);
 
@@ -371,20 +369,6 @@ public sealed partial class AiShellSystem : EntitySystem
         {
             RemoveFromAvailableShells((controllerEnt, controllerComp), entity);
         }
-    }
-
-    private void OnAiShellControllerInit(Entity<AiShellControllerComponent> entity, ref ComponentInit args)
-    {
-        _actions.AddAction(
-            entity,
-            ref entity.Comp.ToggleUiAction,
-            AiShellControllerComponent.ToggleUiActionProto
-        );
-    }
-
-    private void OnAiShellControllerRemoved(Entity<AiShellControllerComponent> entity, ref ComponentRemove args)
-    {
-        _actions.RemoveAction(entity.Owner, entity.Comp.ToggleUiAction);
     }
 
     private void OnControlledAiShellInit(Entity<ControlledAiShellComponent> entity, ref ComponentInit args)
