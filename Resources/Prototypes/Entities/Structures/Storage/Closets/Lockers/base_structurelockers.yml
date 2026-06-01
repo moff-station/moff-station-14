@@ -66,6 +66,11 @@
     damageModifierSet: StructuralMetallic
   - type: Injurable
     damageContainer: StructuralInorganic
+  # Moffstation - Begin - Make secure lockers harder to steal
+  - type: LockedAnchorable
+  - type: Transform
+    anchored: true
+  # Moffstation - End
   - type: Destructible
     thresholds:
     - trigger:
