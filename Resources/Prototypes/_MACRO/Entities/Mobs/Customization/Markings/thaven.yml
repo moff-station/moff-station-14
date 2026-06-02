@@ -73,7 +73,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
     state: spinechill
-  shaders:
+  shader:
     spinechill: unshaded
 
 - type: marking
@@ -83,7 +83,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
     state: spines
-  shaders: 
+  shader:
     spines: unshaded
 
 - type: marking
@@ -200,7 +200,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: sharkminnow
-  shaders: 
+  shader:
     sharkminnow: unshaded
 
 - type: marking
@@ -215,7 +215,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: glowleft
-  shaders: 
+  shader:
     glowleft: unshaded
 
 - type: marking
@@ -230,7 +230,7 @@
   sprites:
   - sprite: _MACRO/Mobs/Customization/Thaven/eyes.rsi
     state: glowright
-  shaders: 
+  shader:
     glowright: unshaded
 
 # RArm
@@ -2387,7 +2387,7 @@
     state: eel3
   - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
     state: eel4
-  shaders: 
+  shader:
     eel3: unshaded
     eel4: unshaded
 
