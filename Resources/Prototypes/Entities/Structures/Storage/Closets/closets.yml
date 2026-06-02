@@ -65,6 +65,7 @@
   - type: EntityStorageVisuals
     stateBaseClosed: n2
     stateDoorOpen: n2_open
+    stateDoorClosed: n2_door
   - type: Sprite # Moffstation - Closet Resprite
     noRot: true
     sprite: _Moffstation/Structures/Storage/closet.rsi
@@ -93,17 +94,16 @@
   - type: EntityStorageVisuals
     stateBaseClosed: fire
     stateDoorOpen: fire_open
+    stateDoorClosed: fire_door
   - type: Sprite # Moffstation - Closet Resprite
-    noRot: true
     sprite: _Moffstation/Structures/Storage/closet.rsi
     layers:
-    - state: fire
+    - state: generic
       map: ["enum.StorageVisualLayers.Base"]
-    - state: fire_door
+    - state: generic_door
       map: ["enum.StorageVisualLayers.Door"]
     - state: welded
       visible: false
-      sprite: Structures/Storage/closet.rsi
       map: ["enum.WeldableLayers.BaseWelded"]
     - state: paper
       visible: false
