@@ -38,7 +38,6 @@
     stateDoorOpen: emergency_open
     stateDoorClosed: emergency_door
   - type: Sprite # Moffstation - Closet Resprite
-    noRot: true
     sprite: _Moffstation/Structures/Storage/closet.rsi
     layers:
     - state: generic
@@ -66,7 +65,6 @@
     stateDoorOpen: n2_open
     stateDoorClosed: n2_door
   - type: Sprite # Moffstation - Closet Resprite
-    noRot: true
     sprite: _Moffstation/Structures/Storage/closet.rsi
     layers:
     - state: generic
@@ -94,7 +92,6 @@
     stateDoorOpen: fire_open
     stateDoorClosed: fire_door
   - type: Sprite # Moffstation - Closet Resprite
-    noRot: true
     sprite: _Moffstation/Structures/Storage/closet.rsi
     layers:
     - state: generic
