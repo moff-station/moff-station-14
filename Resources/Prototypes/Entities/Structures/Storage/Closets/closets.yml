@@ -98,15 +98,16 @@
   - type: Sprite # Moffstation - Closet Resprite
     sprite: _Moffstation/Structures/Storage/closet.rsi
     layers:
-    - state: generic
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: generic_door
-      map: ["enum.StorageVisualLayers.Door"]
+  - type: Sprite # Moffstation - Closet Resprite
+    sprite: _Moffstation/Structures/Storage/closet.rsi
+    layers:
     - state: fire
       map: ["enum.StorageVisualLayers.Base"]
     - state: fire_door
       map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
       visible: false
+      sprite: Structures/Storage/closet.rsi
       map: ["enum.WeldableLayers.BaseWelded"]
     - state: paper
       visible: false
