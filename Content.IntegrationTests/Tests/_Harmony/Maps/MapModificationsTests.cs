@@ -13,10 +13,10 @@ namespace Content.IntegrationTests.Tests._Harmony.Maps.Modifications;
 [TestFixture]
 public sealed class MapModificationsTests
 {
-    private static readonly ProtoId<MapModificationPrototype> TestAdditionId = "TestAddition";
-    private static readonly ProtoId<MapModificationPrototype> TestRemovalId = "TestRemoval";
-    private static readonly ProtoId<MapModificationPrototype> TestReplacementId = "TestReplacement";
-    
+    private const string TestAdditionId = "TestAddition";
+    private const string TestRemovalId = "TestRemoval";
+    private const string TestReplacementId = "TestReplacement";
+
     [TestPrototypes]
     private const string Prototypes = @"
 - type: entity
