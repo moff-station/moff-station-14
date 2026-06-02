@@ -1,19 +1,19 @@
 ﻿using Content.Server.GameTicking;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._Harmony.EntitySelector;
+using Content.Shared.Station.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server._Harmony.Maps.Modifications.Systems;
 
-public sealed class MapModificationSystem : EntitySystem
+public sealed partial class MapModificationSystem : EntitySystem
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly MetaDataSystem _metaDataSystem = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private MetaDataSystem _metaDataSystem = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
 
     public override void Initialize()
     {
@@ -37,7 +37,8 @@ public sealed class MapModificationSystem : EntitySystem
                 break;
             }
 
-            var grid = _stationSystem.GetLargestGrid(Comp<StationDataComponent>(station.Value));
+            var grid = _stationSystem.GetLargestGrid(station.Value);
+
             if (grid == null)
             {
                 DebugTools.Assert($"Station on map {args.GameMap.ID} has no grids.");
