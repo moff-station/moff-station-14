@@ -24,7 +24,7 @@ public sealed partial class SetAppearanceOnTriggerComponent : BaseXOnTriggerComp
 /// <see cref="RestoreAt">at some point in the future</see>.
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 [Access(typeof(SetAppearanceOnTriggerSystem))]
-public sealed partial class SetAppearanceOnTriggerRestorationComponent : BaseXOnTriggerComponent
+public sealed partial class SetAppearanceOnTriggerRestorationComponent : Component
 {
     /// The appearance data state to restore.
     [DataField]
