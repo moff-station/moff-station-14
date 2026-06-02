@@ -16,6 +16,8 @@ public sealed partial class AacTabletSystem : EntitySystem
 
     private readonly List<AacTabletPhraseTab> _phraseTabs = new();
 
+    private const string DelayId = nameof(AacTabletComponent);
+
     public override void Initialize()
     {
         base.Initialize();
@@ -73,7 +75,7 @@ public sealed partial class AacTabletSystem : EntitySystem
 
     private void OnSendPhrase(Entity<AacTabletComponent> ent, ref AacTabletSendPhraseMessage message)
     {
-        if (_useDelaySystem.IsDelayed(ent.Owner, AacTabletComponent.DelayId) ||
+        if (_useDelaySystem.IsDelayed(ent.Owner, DelayId) ||
             !_prototypeManager.Resolve(message.Phrase, out var phrase))
             return;
 
@@ -94,7 +96,7 @@ public sealed partial class AacTabletSystem : EntitySystem
             nameOverride: speakerName
         );
 
-        _useDelaySystem.SetLength(ent.Owner, ent.Comp.Cooldown, AacTabletComponent.DelayId);
+        _useDelaySystem.SetLength(ent.Owner, ent.Comp.Cooldown, DelayId);
     }
 }
 
