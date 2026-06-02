@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Content.Shared._Moffstation.Extensions;
 using Content.Shared.Actions;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Database;
 using Content.Shared.Mind;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws;
@@ -23,6 +25,7 @@ public sealed partial class AiShellSystem : EntitySystem
     [Dependency] private  MetaDataSystem _metaData = default!;
     [Dependency] private  SharedContainerSystem _container = default!;
     [Dependency] private  IGameTiming _timing = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
     {
@@ -137,6 +140,8 @@ public sealed partial class AiShellSystem : EntitySystem
             var holderEvent = new ContainedAiShellStartedBeingControlledEvent(controller, shell, h);
             RaiseLocalEvent(h, ref holderEvent);
         }
+        _adminLogger.Add(LogType.Action,
+            $"{controller} entered the shell {shell}");
     }
 
     /// Ends <paramref name="controller"/>'s remote control session over its
@@ -188,6 +193,9 @@ public sealed partial class AiShellSystem : EntitySystem
             );
             return;
         }
+
+        _adminLogger.Add(LogType.Action,
+            $"{controller} exited the shell {shell}");
 
         _mind.TransferTo(mind, controller, mind: mind.Comp);
         controller.Comp.ControllingShell = null;
@@ -283,12 +291,15 @@ public sealed partial class AiShellSystem : EntitySystem
         if (entity.Comp.ControllableShells.Contains(shell))
             return;
 
+        var controller = args.User;
         args.Verbs.Add(new InnateVerb
         {
             Text = Loc.GetString("ai-shell-verb-text-link"),
             Act = () =>
             {
                 AddToAvailableShells(entity, shell);
+                _adminLogger.Add(LogType.Action,
+                    $"{controller} linked to {shell}");
             },
             IconEntity = GetNetEntity(args.Target),
         });
