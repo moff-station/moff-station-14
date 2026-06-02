@@ -1,3 +1,5 @@
+using Content.Shared.Administration;
+using Content.Shared.CCVar.CVarAccess;
 using Robust.Shared.Configuration;
 
 namespace Content.Shared._Moffstation.CCVar;
@@ -82,4 +84,25 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<float> ArrivalsRange =
         CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether to show or not show Moffstation Patreons special ooc color
+    /// </summary>
+    [CVarControl(AdminFlags.Server)]
+    public static readonly CVarDef<bool> OocMoffPatronColorEnabled =
+        CVarDef.Create("moff.ooc_moff_patron_color_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// What color Moffstation Patreons get in the OOC chat using Hex code
+    /// </summary>
+    [CVarControl(AdminFlags.Server)]
+    public static readonly CVarDef<string> OocMoffPatronColor =
+        CVarDef.Create("moff.ooc_moff_patron_color", "#aa00ff", CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether to show or not show Space Station 14 Patreons special ooc color
+    /// </summary>
+    [CVarControl(AdminFlags.Server)]
+    public static readonly CVarDef<bool> OocUpstreamPatronColorEnabled =
+        CVarDef.Create("moff.ooc_upstream_patron_color_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
 }
