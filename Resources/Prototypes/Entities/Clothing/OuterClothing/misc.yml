@@ -21,9 +21,9 @@
   description: A darker apron designed for bartenders.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/apronbar.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/apronbar.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/apronbar.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/apronbar.rsi # Moffstation
   - type: Tag
     tags:
     - Apron
@@ -53,16 +53,16 @@
   description: An apron-jacket used by a high class chef.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/apronchef.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/apronchef.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/apronchef.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/apronchef.rsi # Moffstation
   - type: Tag
     tags:
     - Apron
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: ClothingOuterStorageSuitStorageAttachableBase # Moffstation
   id: ClothingOuterJacketChef
   name: chef jacket
   description: An apron-jacket used by a high class chef.

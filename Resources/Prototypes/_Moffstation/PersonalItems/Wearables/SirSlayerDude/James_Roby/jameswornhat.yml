@@ -1,0 +1,23 @@
+# Player: SirSlayerDude - Character: James Roby
+
+- type: entity
+  parent: ClothingHeadHatPurplesoft
+  id: &id PersonalItemJamesRobyHat
+  name: James' worn hat
+  description: This cap has seen many a shift, likely splattered with who knows what.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite Clothing/Head/Soft/purplesoft.rsi
+  - type: Clothing
+    sprite: *sprite
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - James Roby

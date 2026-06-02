@@ -27,7 +27,7 @@
   description: A nice and tidy uniform. Shame about the bar though.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/bartender.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -36,9 +36,9 @@
   description: A decent jacket, for a decent monkey.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/punpun.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/punpun.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/punpun.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/punpun.rsi # Moffstation
   - type: SuitSensor
     controlsLocked: false
     randomMode: false
@@ -51,9 +51,9 @@
   description: A special purple outfit to serve drinks.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/bartender_purple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender_purple.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/bartender_purple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender_purple.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -163,9 +163,9 @@
   description: Can't cook without this.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chef.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chef.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]

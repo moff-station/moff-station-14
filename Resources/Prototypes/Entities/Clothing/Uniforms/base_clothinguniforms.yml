@@ -61,7 +61,7 @@
   components:
   - type: Clothing
     slots: [innerclothing]
-    femaleMask: UniformTop
+    #femaleMask: UniformTop # Moffstation - This was crying about existing, just like me fr
 
 - type: entity
   abstract: true
