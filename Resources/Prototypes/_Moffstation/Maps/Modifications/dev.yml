@@ -1,0 +1,18 @@
+- type: mapModification
+  id: DevModificationsTest
+  applyon:
+  - Dev
+  additions:
+  - prototype: Throngler
+    position: 30, 8
+  - prototype: Throngler
+    position: 0, 0
+  replacements:
+  - from:
+    - !type:EntityPrototypeSelector
+      prototype: AirlockChapelGlassLocked
+    newPrototype: Throngler
+  - from:
+    - !type:EntityPrototypeSelector
+      prototype: MobCorgiMouse
+    newPrototype: Throngler
