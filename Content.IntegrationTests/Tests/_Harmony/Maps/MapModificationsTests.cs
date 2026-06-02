@@ -13,6 +13,10 @@ namespace Content.IntegrationTests.Tests._Harmony.Maps.Modifications;
 [TestFixture]
 public sealed class MapModificationsTests
 {
+    private static readonly ProtoId<MapModificationPrototype> TestAdditionId = "TestAddition";
+    private static readonly ProtoId<MapModificationPrototype> TestRemovalId = "TestRemoval";
+    private static readonly ProtoId<MapModificationPrototype> TestReplacementId = "TestReplacement";
+    
     [TestPrototypes]
     private const string Prototypes = @"
 - type: entity
@@ -66,7 +70,7 @@ public sealed class MapModificationsTests
         await server.WaitAssertion(() =>
         {
             mapModificationSystem.ApplyMapModification(
-                prototypeManager.Index<MapModificationPrototype>("TestAddition"),
+                prototypeManager.Index(TestAdditionId),
                 testMap.Grid);
 
             var entities = entityManager.GetEntities();
@@ -114,7 +118,7 @@ public sealed class MapModificationsTests
             entityManager.Spawn("TestEntityToRemove", new MapCoordinates(0, 0, testMap.MapId));
 
             mapModificationSystem.ApplyMapModification(
-                prototypeManager.Index<MapModificationPrototype>("TestRemoval"),
+                prototypeManager.Index(TestRemovalId),
                 testMap.Grid);
 
             var entities = entityManager.GetEntities();
@@ -149,7 +153,7 @@ public sealed class MapModificationsTests
             entityManager.Spawn("TestEntityToRemove", new MapCoordinates(0.5f, 0, testMap.MapId));
 
             mapModificationSystem.ApplyMapModification(
-                prototypeManager.Index<MapModificationPrototype>("TestReplacement"),
+                prototypeManager.Index(TestReplacementId),
                 testMap.Grid);
 
             var entities = entityManager.GetEntities();
