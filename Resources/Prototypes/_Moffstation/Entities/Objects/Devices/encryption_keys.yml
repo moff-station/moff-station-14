@@ -34,10 +34,10 @@
   parent: EncryptionKey
   id: EncryptionKeyTraffic
   name: space traffic encryption key
-  description: An encryption key used to coordinate fight paths between shuttles and docks. Outgoing transmissions are incompatible with headsets.
+  description: An encryption key used to coordinate flight paths between shuttles and docks. Outgoing transmissions are incompatible with headsets.
   components:
   - type: EncryptionKey
-    channels: 
+    channels:
     - Traffic
     defaultChannel: Traffic
   - type: Sprite
@@ -47,4 +47,3 @@
     - state: traffic_label
   - type: Item
     sprite: _Moffstation/Objects/Devices/encryption_keys.rsi
-  
