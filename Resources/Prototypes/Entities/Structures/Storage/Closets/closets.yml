@@ -65,6 +65,7 @@
     stateBaseClosed: n2
     stateDoorOpen: n2_open
     stateDoorClosed: n2_door
+    stateDoorClosed: n2_door
   - type: Sprite # Moffstation - Closet Resprite
     noRot: true
     sprite: _Moffstation/Structures/Storage/closet.rsi
@@ -101,7 +102,10 @@
       map: ["enum.StorageVisualLayers.Base"]
     - state: generic_door
       map: ["enum.StorageVisualLayers.Door"]
-    - state: welded
+    - state: fire
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: fire_door
+      map: ["enum.StorageVisualLayers.Door"]
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
     - state: paper
