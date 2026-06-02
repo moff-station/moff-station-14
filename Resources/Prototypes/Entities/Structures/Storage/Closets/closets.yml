@@ -98,9 +98,6 @@
   - type: Sprite # Moffstation - Closet Resprite
     sprite: _Moffstation/Structures/Storage/closet.rsi
     layers:
-  - type: Sprite # Moffstation - Closet Resprite
-    sprite: _Moffstation/Structures/Storage/closet.rsi
-    layers:
     - state: fire
       map: ["enum.StorageVisualLayers.Base"]
     - state: fire_door
