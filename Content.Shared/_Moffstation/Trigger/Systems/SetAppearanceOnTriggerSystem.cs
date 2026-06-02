@@ -11,14 +11,13 @@ namespace Content.Shared._Moffstation.Trigger.Systems;
 /// This system implements the behavior of <see cref="SetAppearanceOnTriggerComponent"/>.
 public sealed partial class SetAppearanceOnTriggerSystem : XOnTriggerSystem<SetAppearanceOnTriggerComponent>
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
-    [Dependency] private readonly EntityQuery<AppearanceComponent> _appearanceQuery = default!;
+    [Dependency] private EntityQuery<AppearanceComponent> _appearanceQuery = default!;
 
     [Dependency]
-    private readonly EntityQuery<SetAppearanceOnTriggerRestorationComponent> _setAppearanceOnTriggerRestorationQuery =
-        default!;
+    private EntityQuery<SetAppearanceOnTriggerRestorationComponent> _setAppearanceOnTriggerRestorationQuery = default!;
 
     public override void Initialize()
     {
@@ -75,7 +74,7 @@ public sealed partial class SetAppearanceOnTriggerSystem : XOnTriggerSystem<SetA
     /// Handles restoring appearance data.
     public override void Update(float frameTime)
     {
-        var q = AllEntityQuery<SetAppearanceOnTriggerRestorationComponent>();
+        var q = EntityQueryEnumerator<SetAppearanceOnTriggerRestorationComponent>();
         while (q.MoveNext(out var ent, out var comp))
         {
             if (comp.RestoreAt > _timing.CurTime ||

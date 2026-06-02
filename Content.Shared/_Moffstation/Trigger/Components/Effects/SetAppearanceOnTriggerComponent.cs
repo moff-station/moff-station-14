@@ -22,7 +22,7 @@ public sealed partial class SetAppearanceOnTriggerComponent : BaseXOnTriggerComp
 
 /// A component which stores <see cref="AppearanceComponent">appearance data</see> to be applied
 /// <see cref="RestoreAt">at some point in the future</see>.
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 [Access(typeof(SetAppearanceOnTriggerSystem))]
 public sealed partial class SetAppearanceOnTriggerRestorationComponent : Component
 {
