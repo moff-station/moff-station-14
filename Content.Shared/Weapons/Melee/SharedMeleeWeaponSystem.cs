@@ -584,17 +584,23 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         {
             DoDamageEffect(targets, user, targetXform);
 
-            // ES START
+            // Moffstation - start - Tweaked screenshake changes
             // dog shit copy plaste but thats melee for you
-            var userShakeRotation = new ESScreenshakeParameters()
+            var targetMap = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Coordinates));
+
+            var userPos = TransformSystem.GetWorldPosition(Transform(user));
+            var direction = targetMap.Position - userPos;
+
+            var shakeRotation = new ESScreenshakeParameters()
                 { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
-            var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.45f, DecayRate = 1.1f, Frequency = 0.04f };
-            _shake.Screenshake(user, null, userShakeRotation);
+            var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
+            var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
+            _shake.Screenshake(user, userShakeTranslation, shakeRotation);
             foreach (var shakeTarget in targets)
             {
-                _shake.Screenshake(shakeTarget, otherShakeTranslation, null);
+                _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
             }
-            // ES END
+            // Moffstation - End
         }
     }
 
@@ -761,17 +767,18 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, _protoManager), hitEvent.HitSoundOverride, component);
         }
 
-        // ES START
+        // Moffstation - start - Tweaked screenshake changes
         // dog shit copy plaste but thats melee for you
-        var userShakeRotation = new ESScreenshakeParameters()
+        var shakeRotation = new ESScreenshakeParameters()
             { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
-        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.45f, DecayRate = 1.1f, Frequency = 0.04f };
-        _shake.Screenshake(user, null, userShakeRotation);
+        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
+        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
+        _shake.Screenshake(user, userShakeTranslation, shakeRotation);
         foreach (var shakeTarget in targets)
         {
-            _shake.Screenshake(shakeTarget, otherShakeTranslation, null);
+            _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
         }
-        // ES END
+        // Moffstation - End
 
         if (appliedDamage.GetTotal() > FixedPoint2.Zero && targets.Count > 0)
         {
