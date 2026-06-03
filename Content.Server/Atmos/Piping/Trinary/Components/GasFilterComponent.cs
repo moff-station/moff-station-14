@@ -23,7 +23,14 @@ namespace Content.Server.Atmos.Piping.Trinary.Components
         [DataField]
         public float MaxTransferRate = Atmospherics.MaxTransferRate;
 
+        /// <remark>
+        /// Moffstation - this is left here to ensure compatibility with maps
+        /// starting with pre-set gas filters.
+        /// </remark>
         [DataField]
         public Gas? FilteredGas;
+
+        [DataField]
+        public HashSet<Gas> FilteredGases = []; // Moffstation - filter multiple gases
     }
 }

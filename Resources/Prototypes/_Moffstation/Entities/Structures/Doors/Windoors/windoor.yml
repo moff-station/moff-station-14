@@ -1,0 +1,10 @@
+# Freelance Windoors
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureFreelanceLocked
+  suffix: Freelance, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsFreelance ]

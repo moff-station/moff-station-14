@@ -5,3 +5,11 @@
   components:
   - type: AccessReader
     access: [["Pirate"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsFreelance
+  suffix: Freelance, Locked
+  components:
+  - type: AccessReader
+    access: [["Freelance"]]
