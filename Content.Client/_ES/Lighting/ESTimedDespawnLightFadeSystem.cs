@@ -7,10 +7,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._ES.Lighting;
 
-public sealed class ESTimedDespawnLightFadeSystem : VisualizerSystem<ESTimedDespawnLightFadeComponent>
+public sealed partial class ESTimedDespawnLightFadeSystem : VisualizerSystem<ESTimedDespawnLightFadeComponent>
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly AnimationPlayerSystem _animationPlayer = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private AnimationPlayerSystem _animationPlayer = default!;
 
     private const string FadeTrack = "light-fade";
 

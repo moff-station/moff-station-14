@@ -6,6 +6,6 @@ namespace Content.Client._Moffstation.Interaction;
 [RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class InteractionParticleTrackerComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables(VVAccess.ReadWrite), AutoPausedField]
     public TimeSpan ExpireTime;
 }
