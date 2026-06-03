@@ -36,6 +36,22 @@
     stateBaseClosed: emergency
     stateDoorOpen: emergency_open
     stateDoorClosed: emergency_door
+  - type: Sprite # Moffstation - Closet Resprite
+    noRot: true
+    sprite: _Moffstation/Structures/Storage/closet.rsi
+    layers:
+    - state: emergency
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: emergency_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structures/Storage/closet.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
 
 # Emergency N2 closet
 - type: entity
@@ -49,6 +65,22 @@
     stateBaseClosed: n2
     stateDoorOpen: n2_open
     stateDoorClosed: n2_door
+  - type: Sprite # Moffstation - Closet Resprite
+    noRot: true
+    sprite: _Moffstation/Structures/Storage/closet.rsi
+    layers:
+    - state: n2
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: n2_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structures/Storage/closet.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
 
 # Fire safety closet
 - type: entity
@@ -62,6 +94,21 @@
     stateBaseClosed: fire
     stateDoorOpen: fire_open
     stateDoorClosed: fire_door
+  - type: Sprite # Moffstation - Closet Resprite
+    sprite: _Moffstation/Structures/Storage/closet.rsi
+    layers:
+    - state: fire
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: fire_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structures/Storage/closet.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
 
 # EOD closet
 - type: entity

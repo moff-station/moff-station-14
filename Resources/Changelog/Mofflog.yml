@@ -5642,6 +5642,16 @@ Entries:
   id: 1412
   time: '2026-05-24T23:49:32.000'
   url: https://github.com/moff-station/moff-station-14/pull/1412
+- author: Tortosaur
+  changes:
+  - message: New Syndicat adoption option in the uplink, less explosions and more
+      purring!
+    type: add
+  - message: 'All Syndicats now come with a name tag :joobi3:'
+    type: tweak
+  id: 1413
+  time: '2026-05-27T19:33:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1413
 - author: compilatron
   changes:
   - message: Added textiles to Frezon HoP office
@@ -5750,6 +5760,20 @@ Entries:
   id: 1434
   time: '2026-05-24T23:49:32.000'
   url: https://github.com/moff-station/moff-station-14/pull/1434
+- author: Tortosaur
+  changes:
+  - message: Stairs, now you can build AND deconstuct them!
+    type: add
+  id: 1436
+  time: '2026-05-26T21:03:17.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1436
+- author: StudMuffin
+  changes:
+  - message: USSP themed windows and walls for shuttles
+    type: add
+  id: 1438
+  time: '2026-06-02T22:29:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1438
 - author: Dave
   changes:
   - message: New sprites to Various Misc Clothing Items
@@ -5757,6 +5781,20 @@ Entries:
   id: 1439
   time: '2026-05-24T23:49:32.000'
   url: https://github.com/moff-station/moff-station-14/pull/1439
+- author: Jona-K
+  changes:
+  - message: Moff-Patreon Panel
+    type: add
+  id: 1441
+  time: '2026-06-01T18:56:12.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1441
+- author: Dave
+  changes:
+  - message: new Bartender & Chef Outfit Sprites
+    type: add
+  id: 1442
+  time: '2026-05-31T19:02:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1442
 - author: Southbridge
   changes:
   - message: Added the Syndicate Mothroach to the Syndicate Telecrystal store.
@@ -5773,6 +5811,34 @@ Entries:
   id: 1445
   time: '2026-05-24T23:15:37.000'
   url: https://github.com/moff-station/moff-station-14/pull/1445
+- author: Centronias
+  changes:
+  - message: The AAC tablet's UI can now be resized
+    type: add
+  - message: The AAC tablet's tabs are now always visible, even when scrolling to
+      the bottom of a tab
+    type: tweak
+  - message: The AAC tablet has a new "Feelings" tab to allow speech-impaired employees
+      to let it all out.
+    type: add
+  - message: The AAC tablet has a few new "Question" and "Manners" phrases to make
+      communication a little easier.
+    type: add
+  id: 1446
+  time: '2026-05-28T20:45:05.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1446
+- author: Failed
+  changes: []
+  id: 1447
+  time: '2026-05-27T19:06:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1447
+- author: Morgan
+  changes:
+  - message: 'Added a new lobby screen: Kazo Watchings Out'
+    type: add
+  id: 1448
+  time: '2026-05-30T16:40:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1448
 - author: Centronias
   changes:
   - message: The round-end screen should no longer contain unlocalized antagonist
@@ -5819,6 +5885,13 @@ Entries:
   id: 1455
   time: '2026-05-25T18:54:03.000'
   url: https://github.com/moff-station/moff-station-14/pull/1455
+- author: StudMuffin
+  changes:
+  - message: The SOS app now indicate the caller approximate location to security
+    type: add
+  id: 1457
+  time: '2026-05-29T18:34:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1457
 - author: Huaqas
   changes:
   - message: Using a Chameleon Projector on a Playing Card, Hand or Deck no longer
@@ -5827,5 +5900,135 @@ Entries:
   id: 1458
   time: '2026-05-26T15:50:48.000'
   url: https://github.com/moff-station/moff-station-14/pull/1458
+- author: Centronias
+  changes:
+  - message: Personal item lighters' flames are visible in icons again.
+    type: fix
+  id: 1459
+  time: '2026-05-31T19:52:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1459
+- author: Dave
+  changes:
+  - message: Windows are less transparent
+    type: tweak
+  id: 1461
+  time: '2026-05-27T20:22:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1461
+- author: Dave
+  changes:
+  - message: New Science Sprites!
+    type: add
+  - message: New Labcoat Sprites!
+    type: add
+  id: 1462
+  time: '2026-05-29T18:56:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1462
+- author: SillyAmy
+  changes:
+  - message: Changed Zoey's personal item
+    type: tweak
+  id: 1463
+  time: '2026-05-27T19:58:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1463
+- author: Ivan
+  changes:
+  - message: Added Plastitaniatia Osmiatia's personal item.
+    type: add
+  id: 1464
+  time: '2026-05-27T19:58:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1464
+- author: StudMuffin
+  changes:
+  - message: the investigator module, a generic borg module to let them do some detective
+      work !
+    type: add
+  id: 1465
+  time: '2026-05-31T20:29:31.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1465
+- author: KentoDaNeko
+  changes:
+  - message: Added (Legally Distinct) Expie markings to Vulpkanin species.
+    type: add
+  id: 1466
+  time: '2026-05-28T21:55:37.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1466
+- author: OrbitSystem07
+  changes:
+  - message: Allowed the Station Ai to use Lathes, Substations, Smes banks, Digital
+      Audio Workstations, and pilot shuttles.
+    type: tweak
+  - message: Added AI access and Power wires to Lathes, Substations SMES banks, and
+      Digital Audio Workstations
+    type: tweak
+  id: 1467
+  time: '2026-05-28T22:43:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1467
+- author: KentoDaNeko
+  changes:
+  - message: Minor tweak to the health alert icons
+    type: tweak
+  id: 1468
+  time: '2026-05-27T19:33:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1468
+- author: Centronias
+  changes:
+  - message: Does-A-Little-Shimmy's personal item has been updated.
+    type: tweak
+  id: 1469
+  time: '2026-05-31T19:52:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1469
+- author: Laggy
+  changes:
+  - message: Made secure lockers unable to change anchor state while locked.
+    type: tweak
+  - message: Made secure lockers start anchored.
+    type: tweak
+  id: 1470
+  time: '2026-06-01T18:32:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1470
+- author: Centronias
+  changes:
+  - message: Added James Roby's personal item.
+    type: add
+  id: 1473
+  time: '2026-05-31T19:02:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1473
+- author: Centronias
+  changes:
+  - message: Jei-Am's personal item.
+    type: add
+  id: 1474
+  time: '2026-05-31T16:07:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1474
+- author: Dave
+  changes: []
+  id: 1475
+  time: '2026-05-29T19:20:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1475
+- author: KentoDaNeko
+  changes:
+  - message: Fixes the Expie tail clipping on the arms on the south side of the character.
+    type: fix
+  id: 1476
+  time: '2026-05-31T14:55:42.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1476
+- author: Lillian Industries
+  changes:
+  - message: Added a new ID access that freelance shuttle pilots can hide their precious
+      valuables behind!
+    type: add
+  - message: Adds the Space Traffic Control radio frequency for communication between
+      shuttles and the station!
+    type: add
+  id: 1478
+  time: '2026-06-02T18:22:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1478
+- author: KentoDaNeko
+  changes:
+  - message: Updated Emergency lockers and gave them a fresher, new look!
+    type: tweak
+  id: 1482
+  time: '2026-06-02T16:54:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1482
 Name: Mofflog
 Order: -2

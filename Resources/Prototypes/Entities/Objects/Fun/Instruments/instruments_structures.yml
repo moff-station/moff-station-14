@@ -168,3 +168,15 @@
   - type: Instrument
     allowPercussion: true
     allowProgramChange: true
+  # Moffstation - Begin - Expanded Ai Whitelist
+  - type: StationAiWhitelist
+  - type: Wires
+    boardName: wires-board-name-daw
+    layoutId: ComputerAi
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  # Moffstation - End

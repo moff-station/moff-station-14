@@ -16,6 +16,9 @@ net-probe-label-address = Address
 net-probe-label-frequency = Frequency
 net-probe-label-network = Network
 
+# Moffstation - Begin
+log-probe-window-title = Log Probe
+# Moffstation - End
 log-probe-program-name = LogProbe
 log-probe-scan = Downloaded logs from {$device}!
 log-probe-label-time = Time
