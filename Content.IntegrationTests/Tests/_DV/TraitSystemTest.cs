@@ -28,21 +28,21 @@ public sealed partial class TraitSystemTest
 # Test Trait Categories
 - type: traitCategory
   id: TestCategoryUnlimited
-  name: trait-dysgraphia-name
+  name: trait-unrevivable-name
   maxTraits: null
   maxPoints: null
 
 - type: traitCategory
   id: TestCategoryLimited
-  name: trait-dysgraphia-name
+  name: trait-unrevivable-name
   maxTraits: 2
   maxPoints: 10
 
 # Test Traits - Conditions
 - type: trait
   id: TestTraitHasComp
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryUnlimited
   cost: 0
   conditions:
@@ -57,8 +57,8 @@ public sealed partial class TraitSystemTest
 # Test Traits - Effects
 - type: trait
   id: TestTraitAddComps
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryUnlimited
   cost: 0
   effects:
@@ -69,8 +69,8 @@ public sealed partial class TraitSystemTest
 
 - type: trait
   id: TestTraitOverrideComps
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryUnlimited
   cost: 0
   effects:
@@ -80,8 +80,8 @@ public sealed partial class TraitSystemTest
 
 - type: trait
   id: TestTraitRemComps
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryUnlimited
   cost: 0
   effects:
@@ -92,8 +92,8 @@ public sealed partial class TraitSystemTest
 
 - type: trait
   id: TestTraitSpawnItem
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryUnlimited
   cost: 0
   effects:
@@ -103,8 +103,8 @@ public sealed partial class TraitSystemTest
 # Test Traits - Validation
 - type: trait
   id: TestTraitConflictA
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryUnlimited
   cost: 0
   conflicts:
@@ -116,8 +116,8 @@ public sealed partial class TraitSystemTest
 
 - type: trait
   id: TestTraitConflictB
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryUnlimited
   cost: 0
   effects:
@@ -127,8 +127,8 @@ public sealed partial class TraitSystemTest
 
 - type: trait
   id: TestTraitLimited1
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryLimited
   cost: 5
   effects:
@@ -138,8 +138,8 @@ public sealed partial class TraitSystemTest
 
 - type: trait
   id: TestTraitLimited2
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryLimited
   cost: 5
   effects:
@@ -149,8 +149,8 @@ public sealed partial class TraitSystemTest
 
 - type: trait
   id: TestTraitLimited3
-  name: trait-dysgraphia-name
-  description: trait-dysgraphia-name
+  name: trait-unrevivable-name
+  description: trait-unrevivable-name
   category: TestCategoryLimited
   cost: 5
   effects:
