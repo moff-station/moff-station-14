@@ -16,9 +16,9 @@
   description: An artist's favorite headwear.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -35,9 +35,9 @@
   description: A French beret. "Vive la France!"
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: AddAccentClothing
     accent: FrenchAccent
   - type: Tag
@@ -55,9 +55,9 @@
   description: A beret with the security department's insignia. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_security.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-sec.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_security.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-sec.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade
@@ -74,9 +74,9 @@
   description: A campaign hat for the Nanotrasen Troopers. It's supposed to come with a case, too...
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/security_trooper_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/security_trooper_hat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/security_trooper_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/security_trooper_hat.rsi # Moffstation
   - type: Tag
     tags:
     - ClothMade
@@ -104,9 +104,9 @@
   description: A beret for real scientists.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_rnd.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_rnd.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -142,9 +142,9 @@
   description: A beret with the cargo department's insignia.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -180,9 +180,9 @@
   description: A corporate-blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-warden.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_warden.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret-warden.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -259,9 +259,9 @@
   description: A stylish bowler hat.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/bowler_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/bowler_hat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/bowler_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/bowler_hat.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -323,9 +323,9 @@
   description: A hat used by chefs to keep their hair out of your food. Judging by the food in the mess, they don't work.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/chefhat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/chefhat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/chefhat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/chefhat.rsi # Moffstation
   - type: Storage
     grid:
     - 0,0,0,0
@@ -356,9 +356,9 @@
   description: A brown fedora.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/brownfedora.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/brownfedora.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/brownfedora.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/brownfedora.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -735,9 +735,9 @@
   description: A stylish black tophat.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/tophat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/tophat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/tophat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/tophat.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -1556,9 +1556,9 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-            Ash:
-              min: 1
-              max: 1
+          Ash:
+            min: 1
+            max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
@@ -1637,6 +1637,12 @@
   description: It's hard for parishoners to see a banana peel on the floor when they're looking up at your glorious chapeau.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/mitre_clown.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/mitre_clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/mitre_clown.rsi
+    # Moffstation - Begin - New sprites
+    sprite: _Moffstation/Clothing/Head/Hats/mitre_clown.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.24"
+    # Moffstation - End

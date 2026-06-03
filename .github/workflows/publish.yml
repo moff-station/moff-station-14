@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'moff-station/moff-station-14'
     runs-on: ubuntu-latest
 
     steps:

@@ -97,9 +97,9 @@
   description: These cheap sandals don't look very comfortable.
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Misc/tourist.rsi
+    sprite: _Moffstation/Clothing/Shoes/tourist.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Misc/tourist.rsi
+    sprite: _Moffstation/Clothing/Shoes/tourist.rsi # Moffstation
 
 - type: entity
   parent: ClothingShoesBaseButcherable

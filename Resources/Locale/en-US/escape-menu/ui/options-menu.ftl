@@ -368,6 +368,8 @@ ui-options-colorblind-friendly = Colorblind friendly mode
 ui-options-reduced-motion = Reduce motion of visual effects
 # DeltaV - Moved to _DV file
 # ui-options-screen-shake-intensity = Screen shake intensity
+ui-options-disable-ai-static = Disable the static effect on the AI camera overlay
+ui-options-screen-shake-intensity = Screen shake intensity
 
 ui-options-chat-window-opacity = Chat window opacity
 ui-options-speech-bubble-text-opacity = Speech bubble text opacity
@@ -414,3 +416,6 @@ ui-options-admin-enable-overlay-starting-job = Show starting job
 ui-options-admin-overlay-merge-distance = Stack merge distance
 ui-options-admin-overlay-ghost-fade-distance = Ghost overlay fade range from mouse
 ui-options-admin-overlay-ghost-hide-distance = Ghost overlay hide range from mouse
+
+ui-options-admin-strip-overlay-title = Strip Overlay
+ui-options-admin-strip-overlay-setting = Show strip overlay by default

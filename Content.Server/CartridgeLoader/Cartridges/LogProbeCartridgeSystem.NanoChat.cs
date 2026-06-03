@@ -1,5 +1,4 @@
 using Content.Shared.Audio;
-using Content.Shared.CartridgeLoader;
 using Content.Shared._CD.CartridgeLoader.Cartridges;
 using Content.Shared._CD.NanoChat;
 using Robust.Shared.Random;
@@ -18,68 +17,62 @@ public sealed partial class LogProbeCartridgeSystem
 
     private void OnRecipientUpdated(ref NanoChatRecipientUpdatedEvent args)
     {
-        var query = EntityQueryEnumerator<LogProbeCartridgeComponent, CartridgeComponent>();
-        while (query.MoveNext(out var uid, out var probe, out var cartridge))
+        foreach (var (ent, updateUi) in AllLogProbes())
         {
-            if (probe.ScannedNanoChatData == null || GetEntity(probe.ScannedNanoChatData.Value.Card) != args.CardUid)
+            if (ent.Comp.ScannedNanoChatData == null ||
+                GetEntity(ent.Comp.ScannedNanoChatData.Value.Card) != args.CardUid)
                 continue;
 
             if (!TryComp<NanoChatCardComponent>(args.CardUid, out var card))
                 continue;
 
-            probe.ScannedNanoChatData = new NanoChatData(
+            ent.Comp.ScannedNanoChatData = new NanoChatData(
                 new Dictionary<uint, NanoChatRecipient>(card.Recipients),
-                probe.ScannedNanoChatData.Value.Messages,
+                ent.Comp.ScannedNanoChatData.Value.Messages,
                 card.Number,
                 GetNetEntity(args.CardUid));
 
-            if (cartridge.LoaderUid != null)
-                UpdateUiState((uid, probe), cartridge.LoaderUid.Value);
+            updateUi();
         }
     }
 
     private void OnMessageReceived(ref NanoChatMessageReceivedEvent args)
     {
-        var query = EntityQueryEnumerator<LogProbeCartridgeComponent, CartridgeComponent>();
-        while (query.MoveNext(out var uid, out var probe, out var cartridge))
+        foreach (var (ent, updateUi) in AllLogProbes())
         {
-            if (probe.ScannedNanoChatData == null || GetEntity(probe.ScannedNanoChatData.Value.Card) != args.CardUid)
+            if (ent.Comp.ScannedNanoChatData == null ||
+                GetEntity(ent.Comp.ScannedNanoChatData.Value.Card) != args.CardUid)
                 continue;
 
             if (!TryComp<NanoChatCardComponent>(args.CardUid, out var card))
                 continue;
 
-            probe.ScannedNanoChatData = new NanoChatData(
-                probe.ScannedNanoChatData.Value.Recipients,
+            ent.Comp.ScannedNanoChatData = new NanoChatData(
+                ent.Comp.ScannedNanoChatData.Value.Recipients,
                 new Dictionary<uint, List<NanoChatMessage>>(card.Messages),
                 card.Number,
                 GetNetEntity(args.CardUid));
 
-            if (cartridge.LoaderUid != null)
-                UpdateUiState((uid, probe), cartridge.LoaderUid.Value);
+            updateUi();
         }
     }
 
-    private void ScanNanoChatCard(Entity<LogProbeCartridgeComponent> ent,
-        CartridgeAfterInteractEvent args,
-        EntityUid target,
-        NanoChatCardComponent card)
+    private void ScanNanoChatCard<T>(Entity<T> ent, EntityUid user, Entity<NanoChatCardComponent> target)
+    where T : BaseLogProbeComponent // Moffstation - Split the component to be reusable
     {
         _audio.PlayEntity(ent.Comp.SoundScan,
-            args.InteractEvent.User,
+            user,
             target,
             AudioHelpers.WithVariation(0.25f, _random));
-        _popup.PopupCursor(Loc.GetString("log-probe-scan-nanochat", ("card", target)), args.InteractEvent.User);
+        _popup.PopupCursor(Loc.GetString("log-probe-scan-nanochat", ("card", target)), user);
 
         ent.Comp.PulledAccessLogs.Clear();
 
         ent.Comp.ScannedNanoChatData = new NanoChatData(
-            new Dictionary<uint, NanoChatRecipient>(card.Recipients),
-            new Dictionary<uint, List<NanoChatMessage>>(card.Messages),
-            card.Number,
+            new Dictionary<uint, NanoChatRecipient>(target.Comp.Recipients),
+            new Dictionary<uint, List<NanoChatMessage>>(target.Comp.Messages),
+            target.Comp.Number,
             GetNetEntity(target)
         );
-
-        UpdateUiState(ent, args.Loader);
     }
 }

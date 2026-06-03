@@ -28,6 +28,7 @@
     scientist: LockerScientist
     security: LockerSecurity
     welding: LockerWeldingSupplies
+    freelance: LockerFreelance # Moffstation - Visitor Shuttle Tweaks
 
 - type: paintableGroup
   id: Closet
@@ -78,3 +79,4 @@
   styles:
     evac: LockerWallEvacRepair
     medical: LockerWallMedical
+    freelance: LockerWallFreelance # Moffstation - Visitor Shuttle Tweaks

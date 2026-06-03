@@ -76,7 +76,7 @@ roles-high-value-target = High Value Target
 roles-high-value-target-objective = You are a high-value target for the syndicate. Contracts are more likely to target you than other crew members.
 
 # Tourists
-objective-issuer-self = [color=Green]Civilians[/color]
+objective-issuer-civilians = [color=Green]Civilians[/color]
 
 # Stowaways
 roles-antag-stowaway-name = Stowaway
@@ -89,3 +89,7 @@ wizard-duel-title = Wizard Duel
 wizard-duel-description = A battle of might and magic, and you're caught in the middle of the chaos! Will you survive?
 
 guide-entry-wizard-duel = Wizard Duel
+
+# Opening Shift
+roles-opening-shift-title = Opening Shift
+roles-opening-shift-objective = You arrive at the station a bit earlier than the rest.

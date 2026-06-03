@@ -242,7 +242,7 @@
   - Commandment8
   - Commandment9
   - Commandment10
-  obeysTo: laws-owner-crew
+  obeysTo: laws-owner-heads
 
  # Paladin laws
 - type: siliconLaw
@@ -274,7 +274,7 @@
   - Paladin2
   - Paladin3
   - Paladin4
-  obeysTo: laws-owner-crew
+  obeysTo: laws-owner-legitimate-leadership
 
  # Live and Let Live laws
 - type: siliconLaw
@@ -294,7 +294,7 @@
   laws:
   - Lall1
   - Lall2
-  obeysTo: laws-owner-crew
+  obeysTo: laws-owner-others
 
  # Station efficiency laws
 - type: siliconLaw
@@ -320,7 +320,7 @@
   - Efficiency1
   - Efficiency2
   - Efficiency3
-  obeysTo: laws-owner-station
+  obeysTo: laws-owner-crew
 
  # Robocop laws
 - type: siliconLaw
@@ -346,7 +346,7 @@
   - Robocop1
   - Robocop2
   - Robocop3
-  obeysTo: laws-owner-station
+  obeysTo: laws-owner-public
 
  # Overlord laws
 - type: siliconLaw
@@ -451,7 +451,7 @@
   - Painter2
   - Painter3
   - Painter4
-  obeysTo: laws-owner-crew
+  obeysTo: laws-owner-audience
 
  # Antimov laws
 - type: siliconLaw
@@ -553,7 +553,7 @@
   - Xenoborg3
   - Xenoborg4
   - Xenoborg5
-  obeysTo: laws-owner-xenoborgs
+  obeysTo: laws-owner-xenoborg-mothership
 
  # Mothership core laws
 - type: siliconLaw

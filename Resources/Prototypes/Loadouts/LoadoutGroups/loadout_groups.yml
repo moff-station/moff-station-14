@@ -183,7 +183,10 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
-  - CaptainCapeFormal # Moffstation
+  # Moffstation - Start
+  - CaptainCapeFormal
+  - CaptainScarf
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -355,6 +358,10 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
+  # Moffstation - Start
+  - BartenderJumpsuitRed
+  - BartenderJumpskirtRed
+  # Moffstation - End
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -474,6 +481,7 @@
   - ChaplainPlagueHat
   - ChaplainWitchHat
   - ChaplainWitchHatAlt
+  - ClownMitre # Moffstation
 
 - type: loadoutGroup
   id: ChaplainMask
@@ -481,6 +489,7 @@
   minLimit: 0
   loadouts:
   - ChaplainMask
+  - ClownMaskDefault # Moffstation
 
 - type: loadoutGroup
   id: ChaplainJumpsuit
@@ -500,6 +509,7 @@
   - ChaplainNunRobe
   - ChaplainBlackHoodie
   - ChaplainHoodie
+  - ClownRobes # Moffstation
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -629,6 +639,7 @@
   - JesterAltSuit
   # Moffstation - Begin - Clown Clothes
   - HarlequinSuit
+  - BananaSuit
   # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
@@ -660,6 +671,7 @@
   - LargeClownShoes
   - ClownSandals
   - ClownSlippers
+  - BananaShoes
   # Moffstation - End - Clown Clothes
 
 - type: loadoutGroup
@@ -852,6 +864,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterScarf # Moffstation
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -913,8 +926,11 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
-  - CargoTechnicianWindbreaker # Moffstation - Start - (Cargo Outfits)
-  - SeniorCargoWintercoat # Moffstation - End - (Cargo Outfits)
+# Moffstation - Start
+  - CourierWintercoat
+  - CargoTechnicianWindbreaker
+  - SeniorCargoWintercoat
+# Moffstation - End
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -1001,6 +1017,7 @@
   loadouts:
   - ChiefEngineerCloak
   - ChiefEngineerMantle
+  - CeScarf # Moffstation
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing

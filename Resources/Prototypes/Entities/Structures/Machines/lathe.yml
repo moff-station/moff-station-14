@@ -42,6 +42,10 @@
         type: LatheBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
+      # Moffstation - Begin - Expanded Ai Whitelist
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+      # Moffstation - End
   - type: Transform
     anchored: true
   - type: Pullable
@@ -54,6 +58,12 @@
   - type: PowerState
     idlePowerDraw: 150
     workingPowerDraw: 1000
+  # Moffstation - Begin - Expanded Ai Whitelist
+  - type: StationAiWhitelist
+  - type: Wires
+    boardName: wires-board-name-lathe
+    layoutId: ComputerAi
+  # Moffstation - End
   # Moffstation - Start
   - type: DeviceLinkSink
     ports:

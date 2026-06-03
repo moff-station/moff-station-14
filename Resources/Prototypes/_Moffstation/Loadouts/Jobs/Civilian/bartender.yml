@@ -26,7 +26,17 @@
 # Neck
 
 # Jumpsuit
+- type: loadout
+  id: BartenderJumpsuitRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderRed
+  groupBy: "bartender jumpsuits"
 
+- type: loadout
+  id: BartenderJumpskirtRed
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBartenderRed
+  groupBy: "bartender jumpskirts"
 # Back
 
 # Belt

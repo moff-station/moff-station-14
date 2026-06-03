@@ -11050,7 +11050,6 @@ entities:
   - uid: 110
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 9.5,15.5
       parent: 1
   - uid: 114
@@ -11091,7 +11090,6 @@ entities:
   - uid: 122
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 13.5,15.5
       parent: 1
   - uid: 123
@@ -11482,7 +11480,6 @@ entities:
   - uid: 575
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 5.5,-7.5
       parent: 1
   - uid: 992
@@ -11503,7 +11500,6 @@ entities:
   - uid: 2514
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 7.5,-7.5
       parent: 1
 - proto: Gyroscope

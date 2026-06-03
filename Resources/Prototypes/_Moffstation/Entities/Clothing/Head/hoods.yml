@@ -64,3 +64,20 @@
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsoviet.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hoods/Coat/hoodsoviet.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodRad
+  id: ClothingHeadHatHoodPenalRad
+  name: penal radiation hood
+  description: A primitive full-head radiation hood made from thick rubber. Too bulky to fit beneath most helmets, it is commonly issued issued where lives are cheaper than proper equipment. Officials claim that it's rated for forty seconds of lethal radiation exposure.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Head/Hoods/penalradhood.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Head/Hoods/penalradhood.rsi
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.95
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.80

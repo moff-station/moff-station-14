@@ -26,6 +26,16 @@
     sprite: _Moffstation/Objects/Fun/figurines.rsi
 
 - type: entity
+  parent: BaseFigurine
+  id: BaseFigurineUpstream
+  name: upstream figurine
+  description: A figurine depicting someone.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/upstreamfigurines.rsi
+
+- type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineAlfredo
   name: sinister atmospherics technician figurine

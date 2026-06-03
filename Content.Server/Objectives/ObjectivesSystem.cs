@@ -11,8 +11,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
 using System.Text;
-using Content.Server.Antag;
-using Content.Server.Antag.Components;
 using Content.Server.Objectives.Commands;
 using Content.Shared.CCVar;
 using Content.Shared._DV.CustomObjectiveSummary; // DeltaV
@@ -30,7 +28,6 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private AntagSelectionSystem _antag = default!;
     [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
     [Dependency] private SharedJobSystem _job = default!;
 
@@ -63,14 +60,16 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
     {
         // go through each gamerule getting data for the roundend summary.
         var summaries = new Dictionary<string, Dictionary<string, List<(EntityUid, string)>>>();
-        var query = EntityQueryEnumerator<ActiveGameRuleComponent, AntagSelectionComponent>();
+        var query = EntityQueryEnumerator<ActiveGameRuleComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out _, out var comp))
         {
-            if (comp.AgentName is not { } agent)
+            var info = new ObjectivesTextGetInfoEvent(new List<(EntityUid, string)>(), string.Empty);
+            RaiseLocalEvent(uid, ref info);
+            if (info.Minds.Count == 0)
                 continue;
 
-            var minds = _antag.GetAntagIdentities((uid, comp));
-
+            // first group the gamerules by their agents, for example 2 different dragons
+            var agent = info.AgentName;
             if (!summaries.ContainsKey(agent))
                 summaries[agent] = new Dictionary<string, List<(EntityUid, string)>>();
 
@@ -83,11 +82,11 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
             if (summary.ContainsKey(prepend.Text))
             {
                 // same prepended text (usually empty) so combine them
-                summary[prepend.Text].AddRange(minds);
+                summary[prepend.Text].AddRange(info.Minds);
             }
             else
             {
-                summary[prepend.Text] = minds.ToList();
+                summary[prepend.Text] = info.Minds.ToList();
             }
         }
 
@@ -104,10 +103,10 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
             }
 
             var result = new StringBuilder();
-            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", agent)));
-            if (agent == Loc.GetString("traitor-round-end-agent-name"))
+            result.AppendLine(Loc.GetString("objectives-round-end-result", ("count", total), ("agent", Loc.GetString(agent)))); // Moffstation - Add missing loc resolution
+            if (agent == "traitor-round-end-agent-name" || agent == Loc.GetString("traitor-round-end-agent-name")) // Moffstation - I don't know if this is expecting the `antag` string to be localized or not, so let's check against both
             {
-                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", agent)));
+                result.AppendLine(Loc.GetString("objectives-round-end-result-in-custody", ("count", total), ("custody", totalInCustody), ("agent", Loc.GetString(agent)))); // Moffstation - Add missing loc resolution
             }
             // next add all the players with its own prepended text
             foreach (var (prepend, minds) in summary)
@@ -118,7 +117,7 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
                 // add space between the start text and player list
                 result.AppendLine();
 
-                AddSummary(result, agent, minds, ev);   // Moffstation - Custom objective summary
+                AddSummary(result, Loc.GetString(agent), minds, ev);   // Moffstation - Custom objective summary
             }
 
             ev.AddLine(result.AppendLine().ToString());
@@ -149,12 +148,18 @@ public sealed partial class ObjectivesSystem : SharedObjectivesSystem
             var agentSummary = new StringBuilder();
             agentSummary.AppendLine(Loc.GetString("objectives-with-objectives", ("custody", custody), ("title", title), ("agent", agent)));
 
-            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).LocIssuer))
+            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).Issuer))
             {
                 //TO DO:
                 //check for the right group here. Getting the target issuer is easy: objectiveGroup.Key
                 //It should be compared to the type of the group's issuer.
-                agentSummary.AppendLine(objectiveGroup.Key);
+                if (!_prototypeManager.TryIndex(objectiveGroup.Key, out var issuer))
+                {
+                    Log.Error($"Found incorrect objective issuer {issuer} when generating round end text.");
+                    continue;
+                }
+
+                agentSummary.AppendLine(issuer.LocalizedName);
 
                 foreach (var objective in objectiveGroup)
                 {

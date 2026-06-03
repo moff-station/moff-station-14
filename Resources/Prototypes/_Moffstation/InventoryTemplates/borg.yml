@@ -14,3 +14,14 @@
     uiWindowPos: 0,2
     strippingWindowPos: 0,1
     displayName: Neck
+
+- type: inventoryTemplate
+  id: aiShell
+  slots:
+  - name: head
+    slotTexture: head
+    slotFlags: HEAD
+    uiWindowPos: 1,0
+    strippingWindowPos: 0,0
+    displayName: Head
+    offset: 0, -0.1875
