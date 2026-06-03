@@ -53,9 +53,9 @@
   suffix: Red
   components:
   - type: Sprite
-    sprite: Structures/Furniture/Carpets/red_carpet.rsi
+    sprite: &red_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/red_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: Structures/Furniture/Carpets/red_carpet.rsi
+    sprite: *red_carpet.rsi # Moffstation
   - type: Destructible
     thresholds:
       - trigger:
@@ -83,9 +83,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: Structures/Furniture/Carpets/black_carpet.rsi
+    sprite: &black_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/black_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: Structures/Furniture/Carpets/black_carpet.rsi
+    sprite: *black_carpet.rsi # Moffstation
   - type: Destructible
     thresholds:
       - trigger:
@@ -233,9 +233,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: Structures/Furniture/Carpets/skyblue_carpet.rsi
+    sprite: &skyblue_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/skyblue_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: Structures/Furniture/Carpets/skyblue_carpet.rsi
+    sprite: *skyblue_carpet.rsi # Moffstation
   - type: Destructible
     thresholds:
       - trigger:
