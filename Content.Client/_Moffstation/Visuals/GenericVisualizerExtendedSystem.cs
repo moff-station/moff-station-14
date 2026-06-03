@@ -9,15 +9,15 @@ using Robust.Shared.Containers;
 namespace Content.Client._Moffstation.Visuals;
 
 /// Implements the behavior of <see cref="GenericVisualizerComponent"/>. Analogous to <see cref="GenericVisualizerSystem"/>.
-public sealed class GenericVisualizerExtendedSystem : VisualizerSystem<GenericVisualizerExtendedComponent>
+public sealed partial class GenericVisualizerExtendedSystem : VisualizerSystem<GenericVisualizerExtendedComponent>
 {
     /// Used as a default in certain places to simplify logic.
     private static readonly Dictionary<Enum, Dictionary<string, Dictionary<string, PrototypeLayerData>>> Empty = new();
 
-    [Dependency] private readonly SharedItemSystem _itemSys = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearanceSys = default!;
+    [Dependency] private SharedItemSystem _itemSys = default!;
+    [Dependency] private SharedAppearanceSystem _appearanceSys = default!;
 
-    [Dependency] private readonly EntityQuery<AppearanceComponent> _appearanceQuery = default!;
+    [Dependency] private EntityQuery<AppearanceComponent> _appearanceQuery = default!;
 
     public override void Initialize()
     {
