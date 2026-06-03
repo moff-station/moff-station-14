@@ -18,7 +18,7 @@ public sealed class StellarInteractionParticleEvent(NetEntity performer, NetEnti
 
     public NetEntity Target = target;
 
-    public TimeSpan Cooldown = TimeSpan.FromSeconds(1);
+    public TimeSpan Cooldown = TimeSpan.FromSeconds(0.5);
     /// <summary>
     /// Workaround for event subscription not working w/ the session overload
     /// </summary>
