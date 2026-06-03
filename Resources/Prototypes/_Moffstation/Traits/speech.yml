@@ -1,53 +1,45 @@
 # If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
 
 - type: trait
-  id: MobsterAccent
-  name: trait-mobster-accent-name
-  description: trait-mobster-accent-desc
-  category: SpeechTraits
-  effects:
-  - !type:AddCompsEffect
-    components:
-    - type: MobsterAccent
-
-- type: trait
   id: ReptilianAccent
   name: trait-reptile-accent-name
   description: trait-reptile-accent-desc
-  category: SpeechTraits
+  category: Accents
   effects:
   - !type:AddCompsEffect
     components:
     - type: LizardAccent
 
 - type: trait
-  id: PirateAccent
-  name: trait-pirate-accent-name
-  description: trait-pirate-accent-desc
-  category: SpeechTraits
+  id: RussianAccent
+  name: trait-russian-name
+  description: trait-russian-desc
+  category: Accents
   effects:
   - !type:AddCompsEffect
     components:
-    - type: PirateAccent
+    - type: RussianAccent
 
 - type: trait
-  id: CowboyAccent
-  name: trait-cowboy-name
-  description: trait-cowboy-desc
-  category: SpeechTraits
+  id: BostonAccent
+  # Moffstation - Start
+  name: trait-boston-accent-name-moff
+  description: trait-boston-accent-desc-moff
+  # Moffstation - End
+  category: Accents
   effects:
   - !type:AddCompsEffect
     components:
-    - type: ReplacementAccent
-      accent: cowboy
+    - type: BostonAccent
 
 - type: trait
-  id: ItalianAccent
-  name: trait-italian-name
-  description: trait-italian-desc
-  category: SpeechTraits
+  id: ScandinavianAccent
+  # Moffstation - Start
+  name: trait-scandi-accent-name-moff
+  description: trait-scandi-accent-desc-moff
+  # Moffstation - End
+  category: Accents
   effects:
   - !type:AddCompsEffect
     components:
-    - type: ReplacementAccent
-      accent: italian
+    - type: ScandinavianAccent
