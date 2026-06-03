@@ -760,8 +760,8 @@ public sealed partial class TraitSystemTest
         IPrototypeManager protoMan,
         IComponentFactory factory,
         EntityUid player,
-        string? jobId = null,
-        string? speciesId = null)
+        string jobId = null,
+        string speciesId = null)
     {
         return new TraitConditionContext
         {
