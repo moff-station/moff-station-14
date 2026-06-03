@@ -156,7 +156,7 @@ public sealed class MapModificationsTests
                 prototypeManager.Index<MapModificationPrototype>(TestReplacementId),
                 testMap.Grid);
 
-            var entities = entityManager.GetEntities();
+            var entities = entityManager.GetEntities().ToList();
 
             var foundToRemove = entities.FirstOrNull(uid =>
                 entityManager.GetComponent<MetaDataComponent>(uid).EntityPrototype?.ID == "TestEntityToRemove");
