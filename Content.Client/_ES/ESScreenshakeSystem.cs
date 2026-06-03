@@ -52,15 +52,28 @@ public sealed partial class ESScreenshakeSystem : EntitySystem
 
             noise.SetFrequency(command.Translational.Frequency);
 
-            // using the starst c ommand for y pos kinda doesnt work in the case where multiple shakes get sent at the same time
-            // and the shakes are identical otherwise. but like dont do that or something idk
-            var offsetX = (maxOffset.X * trauma) * noise.GetNoise((float)_timing.RealTime.TotalMilliseconds,
-                (float)command.Start.TotalMilliseconds);
+            // Begin Stellar
+            var offset2X = 1f;
+            var offset2Y = 1f;
+
+            var offset1X = (maxOffset.X * trauma) * noise.GetNoise((float)_timing.RealTime.TotalMilliseconds, (float)command.Start.TotalMilliseconds);
             noise.SetSeed(68);
-            var offsetY = (maxOffset.Y * trauma) * noise.GetNoise((float)_timing.RealTime.TotalMilliseconds,
-                (float)command.Start.TotalMilliseconds);
+            var offset1Y = (maxOffset.Y * trauma) * noise.GetNoise((float)_timing.RealTime.TotalMilliseconds, (float)command.Start.TotalMilliseconds);
             noise.SetSeed(67);
-            accumulatedOffset += new Vector2(offsetX, offsetY);
+
+            if (command.Translational.Direction != null)
+            {
+                offset2X = (maxOffset.X * trauma * (command.Translational.Direction.Value.X * -3 * noise.GetNoise((float)_timing.RealTime.TotalMilliseconds * 0.75f, (float)command.Start.TotalMilliseconds) * 0.75f));
+                noise.SetSeed(66);
+                offset2Y = (maxOffset.Y * trauma * (command.Translational.Direction.Value.Y * -3 * noise.GetNoise((float)_timing.RealTime.TotalMilliseconds * 0.75f, (float)command.Start.TotalMilliseconds) * 0.75f));
+                noise.SetSeed(65);
+            }
+
+            if (command.Translational.Direction != null)
+                accumulatedOffset += new Vector2(offset2X, offset2Y);
+            else
+                accumulatedOffset += new Vector2(offset1X, offset1Y);
+            // End Stellar
         }
 
         args.Offset += accumulatedOffset;
