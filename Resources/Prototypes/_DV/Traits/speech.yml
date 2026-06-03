@@ -104,7 +104,8 @@
   effects:
   - !type:AddCompsEffect
     components:
-    - type: ScottishAccent
+    - type: ReplacementAccent
+      accent: scottish
 
 - type: trait
   id: Accentless
