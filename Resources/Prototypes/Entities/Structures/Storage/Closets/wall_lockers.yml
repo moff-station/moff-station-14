@@ -15,10 +15,23 @@
   parent: BaseWallCloset
   description: It's a storage unit for emergency breath masks and O2 tanks.
   components:
+ # Moffstation - Begin - wall closet resprite
   - type: EntityStorageVisuals
     stateBaseClosed: emergency
     stateDoorOpen: emergency_open
     stateDoorClosed: emergency_door
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/wall_locker.rsi
+    layers:
+    - state: emergency
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: emergency_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structure/Storage/wall_locker.rsi
+      map: ["enum.WeldableLayers.baseWelded"]
+   # Moffstation - End
 
 - type: entity
   parent: BaseWallCloset
@@ -26,10 +39,23 @@
   name: emergency nitrogen wall closet
   description: It's full of life-saving equipment. Assuming, that is, that you breathe nitrogen.
   components:
+ # Moffstation - Begin - wall closet resprite
   - type: EntityStorageVisuals
     stateBaseClosed: n2
     stateDoorOpen: n2_open
     stateDoorClosed: n2_door
+  - type: Sprite
+    sprite: _Moffstation/Structures/Storage/wall_locker.rsi
+    layers:
+    - state: n2
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: n2_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      sprite: Structure/Storage/wall_locker.rsi
+      map: ["enum.WeldableLayers.baseWelded"]
+   # Moffstation - End
 
 - type: entity
   id: ClosetWallFire
@@ -37,19 +63,23 @@
   parent: BaseWallCloset
   description: It's a storage unit for fire-fighting supplies.
   components:
+ # Moffstation - Begin - wall closet resprite
   - type: EntityStorageVisuals
     stateBaseClosed: fire
     stateDoorOpen: fire_open
     stateDoorClosed: fire_door
+  - type: Sprite
     sprite: _Moffstation/Structures/Storage/wall_locker.rsi
-    layers: # Moffstation - Closet Resprite
-    - state: generic
+    layers:
+    - state: fire
       map: ["enum.StorageVisualLayers.Base"]
-    - state: generic_door
+    - state: fire_door
       map: ["enum.StorageVisualLayers.Door"]
     - state: welded
       visible: false
-      map: ["enum.WeldableLayers.BaseWelded"]
+      sprite: Structure/Storage/wall_locker.rsi
+      map: ["enum.WeldableLayers.baseWelded"]
+   # Moffstation - End
 
 - type: entity
   id: ClosetWallBlue
