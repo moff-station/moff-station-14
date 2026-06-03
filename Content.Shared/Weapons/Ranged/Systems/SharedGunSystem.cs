@@ -416,7 +416,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         var shotEv = new GunShotEvent(user, ev.Ammo);
         RaiseLocalEvent(gun, ref shotEv);
 
-        // ES START
+        // Moffstation - Start - Gun Screenshake tweaks
         var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates).Position;
         var toMap = TransformSystem.ToMapCoordinates(toCoordinates.Value).Position;
         var shotDirection = (toMap - fromMap).Normalized();
@@ -425,7 +425,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         var gunShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.0f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f, Direction = shotDirection};
         var gunShakeRotation = new ESScreenshakeParameters() { Trauma = 0.045f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f};
         _shake.Screenshake(user, gunShakeTranslation, gunShakeRotation);
-        // ES END
+        // Moffstation - End
 
         if (!userImpulse || !TryComp<PhysicsComponent>(user, out var userPhysics))
             return true;
