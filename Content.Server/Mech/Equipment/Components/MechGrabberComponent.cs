@@ -43,6 +43,11 @@ public sealed partial class MechGrabberComponent : Component
     /// </summary>
     [DataField("grabSound")]
     public SoundSpecifier GrabSound = new SoundPathSpecifier("/Audio/Mecha/sound_mecha_hydraulic.ogg");
+    // Moffstation - Add sound variation
+    {  
+        Params = AudioParams.Default.WithVariation(0.125f)  
+    };
+    // Moffstation - End
 
     public EntityUid? AudioStream;
 
