@@ -75,7 +75,7 @@ namespace Content.Shared.Interaction
         [Dependency] private SharedPlayerRateLimitManager _rateLimit = default!;
         [Dependency] private TagSystem _tagSystem = default!;
         [Dependency] private UseDelaySystem _useDelay = default!;
-        [Dependency] private readonly INetManager _net = default!; // Stellar - interaction particles
+        [Dependency] private INetManager _net = default!; // Stellar - interaction particles
 
         [Dependency] private EntityQuery<IgnoreUIRangeComponent> _ignoreUiRangeQuery = default!;
         [Dependency] private EntityQuery<FixturesComponent> _fixtureQuery = default!;

@@ -9,10 +9,10 @@ namespace Content.Shared._ES.Core.Timer;
 /// <summary>
 /// This handles <see cref="ESTimedDespawnComponent"/>
 /// </summary>
-public sealed class ESTimedDespawnSystem : EntitySystem
+public sealed partial class ESTimedDespawnSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     private readonly HashSet<EntityUid> _toDelete = [];
 

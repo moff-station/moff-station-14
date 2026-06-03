@@ -48,7 +48,7 @@ public sealed partial class RCDSystem : EntitySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tags = default!;
     // ES START
-    [Dependency] private readonly ESSparksSystem _esSparks = default!;
+    [Dependency] private ESSparksSystem _esSparks = default!;
     // ES END
 
     private readonly int _instantConstructionDelay = 0;
