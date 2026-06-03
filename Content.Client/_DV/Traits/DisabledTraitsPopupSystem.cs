@@ -9,9 +9,9 @@ namespace Content.Client._DV.Traits;
 /// <summary>
 /// Client system that shows a popup when traits are disabled due to unmet conditions.
 /// </summary>
-public sealed class DisabledTraitsPopupSystem : EntitySystem
+public sealed partial class DisabledTraitsPopupSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     private DisabledTraitsPopup? _window;
 
