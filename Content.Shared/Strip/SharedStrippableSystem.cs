@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Chat;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs;
 using Content.Shared.Cuffs.Components;
@@ -35,6 +36,8 @@ public abstract partial class SharedStrippableSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popupSystem = default!;
 
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+
+    [Dependency] private SharedChatSystem _chat = default!; // Moffstation - Stripping notifier
 
     public override void Initialize()
     {
@@ -669,6 +672,20 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!HasComp<StrippingComponent>(user))
             return false;
+
+        // Moffstation - Start - Interaction particles and strip menu notification
+        // Do this check to make it harder to spam the chat
+        if (!_ui.IsUiOpen(target.Owner, StrippingUiKey.Key))
+        {
+            _chat.TrySendInGameICMessage(user,
+                Loc.GetString("strip-menu-viewing-message", ("user", user), ("stripped", target)),
+                InGameICChatType.Emote,
+                true,
+                false,
+                ignoreActionBlocker: true);
+        }
+        _interactionSystem.DoContactInteraction(user, target.Owner, null, true);
+        // Moffstation - end
 
         _ui.OpenUi(target.Owner, StrippingUiKey.Key, user);
         return true;
