@@ -34,6 +34,7 @@
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+    cameraRecoilScalar: 1.5 # Moffstation - higher screenshake on shotguns
   - type: BallisticAmmoProvider
     whitelist:
       tags:
