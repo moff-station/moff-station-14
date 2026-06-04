@@ -285,6 +285,7 @@ namespace Content.Server.Construction
                     if (validation)
                         return HandleResult.Validated;
 
+                    _interactionSystem.DoContactInteraction(interactUsing.User, uid, interactUsing.Used, false); // Moffstation - Interaction particles
                     // If we still haven't completed this step's DoAfter...
                     if (doAfterState == DoAfterState.None && insertStep.DoAfter > 0)
                     {
@@ -301,6 +302,7 @@ namespace Content.Server.Construction
 
                         if (!started)
                             return HandleResult.False;
+
 
 #if DEBUG
                         // Verify that the resulting DoAfter event will be handled by the current construction state.
@@ -367,6 +369,7 @@ namespace Content.Server.Construction
                     if (doAfterState == DoAfterState.Completed)
                         return  HandleResult.True;
 
+                    _interactionSystem.DoContactInteraction(interactUsing.User, uid, interactUsing.Used, false); // Moffstation - Interaction particles
                     var result  = _toolSystem.UseTool(
                         interactUsing.Used,
                         interactUsing.User,
