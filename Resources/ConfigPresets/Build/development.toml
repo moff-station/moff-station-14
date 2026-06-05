@@ -48,7 +48,7 @@ ssd_sleep_time = 3600
 
 [database]
 # Change to postgres if needed
-engine = "postgres"
+engine = "sqlite"
 pg_host = "localhost"
 pg_port = 5432
 pg_database = "ss14"
