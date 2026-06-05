@@ -32,6 +32,8 @@
   id: GeneticistPDA
   name: geneticist PDA
   components:
+  - type: Pda
+    id: GeneticistIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -50,6 +52,8 @@
   id: VirologistPDA
   name: virologist PDA
   components:
+  - type: Pda
+    id: VirologistIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

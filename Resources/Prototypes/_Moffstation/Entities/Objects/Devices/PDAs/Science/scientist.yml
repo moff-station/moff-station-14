@@ -64,6 +64,8 @@
   id: MachinistPDA
   name: machinist PDA
   components:
+  - type: Pda
+    id: RoboticistIDCard
   - type: RenameId
     value: job-name-scientist-machinist
     newIcon: "JobIconRoboticist"
