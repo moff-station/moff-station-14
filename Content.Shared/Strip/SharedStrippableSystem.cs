@@ -675,16 +675,18 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         // Moffstation - Start - Interaction particles and strip menu notification
         // Do this check to make it harder to spam the chat
-        if (!_ui.IsUiOpen(target.Owner, StrippingUiKey.Key))
+        if (!TryComp<ThievingComponent>(user, out var thieving) || !thieving.Stealthy)
         {
-            _chat.TrySendInGameICMessage(user,
-                Loc.GetString("strip-menu-viewing-message", ("user", user), ("stripped", target)),
-                InGameICChatType.Emote,
-                true,
-                false,
-                ignoreActionBlocker: true);
+            if (!_ui.IsUiOpen(target.Owner, StrippingUiKey.Key))
+            {
+                _chat.TrySendInGameICMessage(user,
+                    Loc.GetString("strip-menu-viewing-message", ("stripped", target)),
+                    InGameICChatType.Emote,
+                    true,
+                    ignoreActionBlocker: true);
+            }
+            _interactionSystem.DoContactInteraction(user, target.Owner, null, true);
         }
-        _interactionSystem.DoContactInteraction(user, target.Owner, null, true);
         // Moffstation - end
 
         _ui.OpenUi(target.Owner, StrippingUiKey.Key, user);
