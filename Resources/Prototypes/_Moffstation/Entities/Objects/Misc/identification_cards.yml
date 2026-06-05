@@ -109,7 +109,7 @@
       heldPrefix: silver
 
 - type: entity
-  parent: IDCardStandard
+  parent: JanitorIDCard
   id: HoSanitationIDCard
   name: head of Sanitation ID card
   components:
@@ -129,7 +129,7 @@
       heldPrefix: silver
 
 - type: entity
-  parent: IDCardStandard
+  parent: ClownIDCard
   id: HoTIDCard
   name: head of Tomfoolery ID card
   components:
@@ -140,7 +140,6 @@
     - state: gold
     - state: stripe_clown
     - state: stripe_top
-      color: "#7cb1d1"
     - sprite: *icon-rsi
       offset: *icon-offset
       state: HeadOfTomfoolery
