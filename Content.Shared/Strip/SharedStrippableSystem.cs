@@ -671,16 +671,14 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         // Moffstation - Start - Interaction particles and strip menu notification
         // Do this check to make it harder to spam the chat
-        if (!TryComp<ThievingComponent>(user, out var thieving) || !thieving.Stealthy)
+        var (_, stealth) = GetStripTimeModifiers(user, target, null, target.Comp.HandStripDelay);
+        if (!stealth && !_ui.IsUiOpen(target.Owner, StrippingUiKey.Key))
         {
-            if (!_ui.IsUiOpen(target.Owner, StrippingUiKey.Key))
-            {
-                _popupSystem.PopupCoordinates(
-                    Loc.GetString("strip-menu-viewing-message", ("user", Identity.Entity(user, EntityManager))),
-                    Transform(user).Coordinates,
-                    target.Owner
-                    );
-            }
+            _popupSystem.PopupCoordinates(
+                Loc.GetString("strip-menu-viewing-message", ("user", Identity.Entity(user, EntityManager))),
+                Transform(user).Coordinates,
+                target.Owner
+                );
         }
         // Moffstation - end
 
