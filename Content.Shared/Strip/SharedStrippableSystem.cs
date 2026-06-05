@@ -18,6 +18,7 @@ using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Popups;
 using Content.Shared.Strip.Components;
 using Content.Shared.Verbs;
+using Robust.Shared.Player;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Strip;
@@ -302,6 +303,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!stealth)
         {
+            _interactionSystem.DoContactInteraction(user, target, null, true); // Moffstation - Interaction particles - switched to person so the particles pop up
             if (IsStripHidden(slotDef, user))
                 _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner-hidden", ("slot", slot)), target, target, PopupType.Large);
             else
@@ -319,7 +321,6 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         var prefix = stealth ? "stealthily " : "";
         _adminLogger.Add(LogType.Stripping, LogImpact.Low, $"{ToPrettyString(user):actor} is trying to {prefix}strip the item {ToPrettyString(item):item} from {ToPrettyString(target):target}'s {slot} slot");
 
-        _interactionSystem.DoContactInteraction(user, item, null, true); // Stellar - Interaction particles
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, time, new StrippableDoAfterEvent(false, true, slot), user, target, item)
         {
@@ -523,6 +524,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!stealth)
         {
+            _interactionSystem.DoContactInteraction(user, target, null, true); // Moffstation - Interaction particles - switched to person so the particles pop up
             _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner",
                                                         ("user", Identity.Entity(user, EntityManager)),
                                                         ("item", item)),
@@ -533,7 +535,6 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         var prefix = stealth ? "stealthily " : "";
         _adminLogger.Add(LogType.Stripping, LogImpact.Low, $"{ToPrettyString(user):actor} is trying to {prefix}strip the item {ToPrettyString(item):item} from {ToPrettyString(target):target}'s hands");
 
-        _interactionSystem.DoContactInteraction(user, item, null, true); // Stellar - Interaction particles
 
         var doAfterArgs = new DoAfterArgs(EntityManager, user, time, new StrippableDoAfterEvent(false, false, handName), user, target, item)
         {
@@ -631,13 +632,8 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         if (args.Handled || !args.Complex || args.Target == args.User)
             return;
 
-        // Begin Stellar Changes - don't play an interact particle for examining the strip UI
         if (TryOpenStrippingUi(args.User, (uid, component)))
-        {
             args.Handled = true;
-            args.InteractionParticle = false;
-        }
-        // End Stellar Changes - don't play an interact particle for examining the strip UI
     }
 
     /// <summary>
@@ -679,13 +675,12 @@ public abstract partial class SharedStrippableSystem : EntitySystem
         {
             if (!_ui.IsUiOpen(target.Owner, StrippingUiKey.Key))
             {
-                _chat.TrySendInGameICMessage(user,
-                    Loc.GetString("strip-menu-viewing-message", ("stripped", target)),
-                    InGameICChatType.Emote,
-                    true,
-                    ignoreActionBlocker: true);
+                _popupSystem.PopupCoordinates(
+                    Loc.GetString("strip-menu-viewing-message", ("user", Identity.Entity(user, EntityManager))),
+                    Transform(user).Coordinates,
+                    target.Owner
+                    );
             }
-            _interactionSystem.DoContactInteraction(user, target.Owner, null, true);
         }
         // Moffstation - end
 

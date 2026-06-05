@@ -1,1 +1,1 @@
-strip-menu-viewing-message = inspects {$stripped} equipment
+strip-menu-viewing-message = {$user} inspects your equipment
