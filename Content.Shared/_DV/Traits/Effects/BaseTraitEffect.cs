@@ -4,16 +4,16 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._DV.Traits.Effects;
 
 /// <summary>
-/// Base class for trait effects. Implementations apply modifications to an entity when a trait is selected.
+/// Interface for trait effects. Implementations apply modifications to an entity when a trait is selected.
 /// </summary>
 [ImplicitDataDefinitionForInheritors, UsedImplicitly(ImplicitUseTargetFlags.WithInheritors)]
-public abstract partial class BaseTraitEffect
+public partial interface IBaseTraitEffect
 {
     /// <summary>
     /// Applies the effect to the target entity.
     /// </summary>
     [PublicAPI]
-    public abstract void Apply(TraitEffectContext ctx);
+    void Apply(TraitEffectContext ctx);
 }
 
 /// <summary>

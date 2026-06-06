@@ -1,4 +1,5 @@
-﻿using Content.Shared.Roles;
+﻿using Content.Shared._DV.Traits.Effects;
+using Content.Shared.Roles;
 using Content.Shared.StatusEffectNew;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
@@ -10,7 +11,7 @@ namespace Content.Server.Jobs;
 /// TODO: Move this, and other JobSpecials, from Server to Shared.
 /// </summary>
 [UsedImplicitly]
-public sealed partial class ApplyStatusEffectSpecial : JobSpecial
+public sealed partial class ApplyStatusEffectSpecial : JobSpecial, IBaseTraitEffect
 {
     [DataField(required: true)]
     public HashSet<EntProtoId> StatusEffects { get; private set; } = new();
@@ -23,5 +24,10 @@ public sealed partial class ApplyStatusEffectSpecial : JobSpecial
         {
             statusSystem.TrySetStatusEffectDuration(mob, effect);
         }
+    }
+
+    public void Apply(TraitEffectContext ctx)
+    {
+        AfterEquip(ctx.Player);
     }
 }

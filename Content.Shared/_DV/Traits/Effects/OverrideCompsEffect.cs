@@ -7,7 +7,7 @@ namespace Content.Shared._DV.Traits.Effects;
 /// If the component exists, its fields are overwritten with the new values.
 /// If it doesn't exist, the component is added.
 /// </summary>
-public sealed partial class OverrideCompsEffect : BaseTraitEffect
+public sealed partial class OverrideCompsEffect : IBaseTraitEffect
 {
     /// <summary>
     /// The components to add/override on the entity.
@@ -15,7 +15,7 @@ public sealed partial class OverrideCompsEffect : BaseTraitEffect
     [DataField(required: true)]
     public ComponentRegistry Components = new();
 
-    public override void Apply(TraitEffectContext ctx)
+    public void Apply(TraitEffectContext ctx)
     {
         ctx.EntMan.AddComponents(ctx.Player, Components, removeExisting: true);
     }

@@ -6,7 +6,7 @@ namespace Content.Shared._DV.Traits.Effects;
 /// <summary>
 /// Effect that removes components from the player entity if they exist.
 /// </summary>
-public sealed partial class RemCompsEffect : BaseTraitEffect
+public sealed partial class RemCompsEffect : IBaseTraitEffect
 {
     /// <summary>
     /// The component names to remove from the entity.
@@ -14,7 +14,7 @@ public sealed partial class RemCompsEffect : BaseTraitEffect
     [DataField(required: true, customTypeSerializer: typeof(CustomHashSetSerializer<string, ComponentNameSerializer>))]
     public HashSet<string> Components = new();
 
-    public override void Apply(TraitEffectContext ctx)
+    public void Apply(TraitEffectContext ctx)
     {
         foreach (var compName in Components)
         {

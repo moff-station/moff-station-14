@@ -6,7 +6,7 @@ namespace Content.Shared._DV.Traits.Effects;
 /// Effect that adds components to the player entity.
 /// Components are added without overwriting existing ones.
 /// </summary>
-public sealed partial class AddCompsEffect : BaseTraitEffect
+public sealed partial class AddCompsEffect : IBaseTraitEffect
 {
     /// <summary>
     /// The components to add to the entity.
@@ -14,7 +14,7 @@ public sealed partial class AddCompsEffect : BaseTraitEffect
     [DataField(required: true)]
     public ComponentRegistry Components = new();
 
-    public override void Apply(TraitEffectContext ctx)
+    public void Apply(TraitEffectContext ctx)
     {
         ctx.EntMan.AddComponents(ctx.Player, Components, removeExisting: false);
     }

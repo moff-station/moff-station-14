@@ -50,7 +50,7 @@ public sealed partial class TraitPrototype : IPrototype
     /// Effects are applied in order.
     /// </summary>
     [DataField]
-    public List<BaseTraitEffect> Effects = new();
+    public List<IBaseTraitEffect> Effects = new();
 
     /// <summary>
     /// Other traits that are mutually exclusive with this one.
