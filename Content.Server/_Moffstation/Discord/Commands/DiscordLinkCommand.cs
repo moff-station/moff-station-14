@@ -55,8 +55,7 @@ public sealed partial class DiscordLinkCommand : LocalizedCommands
 #if FULL_RELEASE
         shell.WriteError(Loc.GetString("cmd-discordlink-disabled"));
         return;
-#endif
-
+#else
         if (args.Length != 2)
         {
             shell.WriteError(Loc.GetString("cmd-discordlink-set-usage"));
@@ -70,6 +69,7 @@ public sealed partial class DiscordLinkCommand : LocalizedCommands
         }
 
         shell.WriteLine(Loc.GetString("cmd-discordlink-set", ("id", args[1])));
+#endif
     }
 
     private async Task ClearImpl(IConsoleShell shell, ICommonSession player)
@@ -77,7 +77,7 @@ public sealed partial class DiscordLinkCommand : LocalizedCommands
 #if FULL_RELEASE
         shell.WriteError(Loc.GetString("cmd-discordlink-disabled"));
         return;
-#endif
+#else
 
         if (!await _db.SetDiscordId(player.UserId, null))
         {
@@ -86,13 +86,15 @@ public sealed partial class DiscordLinkCommand : LocalizedCommands
         }
 
         shell.WriteLine(Loc.GetString("cmd-discordlink-cleared"));
+#endif
     }
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
 #if FULL_RELEASE
         return CompletionResult.Empty;
-#endif
+#else
         return args.Length == 1 ? CompletionResult.FromOptions([Set, Clear]) : CompletionResult.Empty;
+#endif
     }
 }
