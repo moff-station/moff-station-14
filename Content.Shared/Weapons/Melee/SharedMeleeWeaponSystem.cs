@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
-using Content.Shared._ES.Camera; // ES - Screenshake
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Components;
@@ -68,9 +67,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] protected SharedTransformSystem TransformSystem = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private DamageExamineSystem _damageExamine = default!;
-    // ES START
-    [Dependency] private SharedESScreenshakeSystem _shake = default!;
-    // ES END
+
     [Dependency] private EntityQuery<DamageableComponent> _damageQuery = default!;
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
@@ -583,24 +580,6 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         if (damageResult.GetTotal() > FixedPoint2.Zero && !TerminatingOrDeleted(target.Value))
         {
             DoDamageEffect(targets, user, targetXform);
-
-            // Moffstation - start - Tweaked screenshake changes
-            // dog shit copy plaste but thats melee for you
-            var targetMap = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Coordinates));
-
-            var userPos = TransformSystem.GetWorldPosition(Transform(user));
-            var direction = targetMap.Position - userPos;
-
-            var shakeRotation = new ESScreenshakeParameters()
-                { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
-            var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
-            var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
-            _shake.Screenshake(user, userShakeTranslation, shakeRotation);
-            foreach (var shakeTarget in targets)
-            {
-                _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
-            }
-            // Moffstation - End
         }
     }
 
@@ -766,19 +745,6 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             var target = entities.First();
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, _protoManager), hitEvent.HitSoundOverride, component);
         }
-
-        // Moffstation - start - Tweaked screenshake changes
-        // dog shit copy plaste but thats melee for you
-        var shakeRotation = new ESScreenshakeParameters()
-            { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
-        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
-        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
-        _shake.Screenshake(user, userShakeTranslation, shakeRotation);
-        foreach (var shakeTarget in targets)
-        {
-            _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
-        }
-        // Moffstation - End
 
         if (appliedDamage.GetTotal() > FixedPoint2.Zero && targets.Count > 0)
         {
