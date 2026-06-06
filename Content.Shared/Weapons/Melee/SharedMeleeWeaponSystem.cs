@@ -592,9 +592,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             var direction = targetMap.Position - userPos;
 
             var shakeRotation = new ESScreenshakeParameters()
-                { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
-            var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
-            var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
+                { Trauma = 0.02f, DecayRate = 1.0f, Frequency = 0.009f };
+            var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.25f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
+            var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
             _shake.Screenshake(user, userShakeTranslation, shakeRotation);
             foreach (var shakeTarget in targets)
             {
@@ -770,9 +770,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         // Moffstation - start - Tweaked screenshake changes
         // dog shit copy plaste but thats melee for you
         var shakeRotation = new ESScreenshakeParameters()
-            { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
-        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
-        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
+            { Trauma = 0.02f, DecayRate = 1.0f, Frequency = 0.009f };
+        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.25f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
+        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
         _shake.Screenshake(user, userShakeTranslation, shakeRotation);
         foreach (var shakeTarget in targets)
         {
