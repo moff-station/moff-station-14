@@ -45,16 +45,30 @@
 
 - type: entity
   parent: CargoPDAAltBase
-  id: LogisticsAssociatePDA
-  name: logistics associate PDA
+  id: FreightPilotPDA
+  name: freight pilot PDA
   components:
   - type: RenameId
-    value: job-name-cargo-technician-logistics-associate
+    value: job-name-cargo-technician-freight-pilot
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-logistics
+        pda-freightpilot
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-logistics"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
   - type: PdaBorderColor
     borderColor: "#e39751"
 

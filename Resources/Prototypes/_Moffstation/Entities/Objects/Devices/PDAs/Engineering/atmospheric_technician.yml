@@ -39,6 +39,20 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-thermalsystemsspecialist
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-thermalsystemsspecialist"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
   - type: PdaBorderColor
     borderColor: "#949137"
     accentVColor: "#447987"

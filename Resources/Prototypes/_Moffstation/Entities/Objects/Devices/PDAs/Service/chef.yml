@@ -67,6 +67,20 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-pizzaiolo
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-pizzaiolo"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
     accentVColor: "#3c7b5d"

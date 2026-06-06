@@ -15,12 +15,12 @@
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-bishop"
     - state: "light_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
     - state: "id_overlay"
-      sprite: Objects/Devices/pda.rsi
+      sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
@@ -39,6 +39,20 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-bishop
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-bishop"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
 
 - type: entity
   parent: ChaplainPDAAltBase
@@ -115,12 +129,12 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-nun"
-    - state: "light_overlay_wide"
+    - state: "light_overlay_book"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
-    - state: "id_overlay_wide"
+    - state: "id_overlay_book"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
