@@ -223,6 +223,8 @@
     - AllAccess
   - type: NameIdentifier
     group: Null
+  - type: AccessReader
+    access: [ [ "Command" ], [ "Research" ] ]
 
 - type: entity
   id: PlayerAiShellBattery
