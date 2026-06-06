@@ -98,7 +98,7 @@ public sealed partial class TraitSystemTest
   cost: 0
   effects:
   - !type:SpawnItemInHandEffect
-    item: Pen
+  item: WhiteCane
 
 # Test Traits - Validation
 - type: trait
@@ -564,6 +564,13 @@ public sealed partial class TraitSystemTest
             method?.Invoke(traitSys, new object[] { player, trait });
 
             var item = handsSys.GetActiveItem((player, hands));
+            // Moffstation - Check both hands, just in case
+            if (item == null)
+            {
+                handsSys.SwapHands(player);
+                handsSys.GetActiveItem((player, hands));
+            }
+            // Moffstation - End
             Assert.That(item, Is.Not.Null, "SpawnItemInHandEffect should spawn item in hand");
 
             entMan.DeleteEntity(player);

@@ -43,3 +43,13 @@
   - !type:AddCompsEffect
     components:
     - type: ScandinavianAccent
+
+- type: trait
+  id: GermanAccent
+  name: trait-german-name
+  description: trait-german-desc
+  category: Accents
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: GermanAccent
