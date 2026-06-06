@@ -1,6 +1,5 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Weapons.Ranged.Systems;
-using Content.Shared._ES.Camera; // ES - Screenshake
 using Content.Shared.Camera;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -16,12 +15,9 @@ namespace Content.Server.Damage.Systems;
 
 public sealed partial class DamageOtherOnHitSystem : SharedDamageOtherOnHitSystem
 {
-    // ES START
-    [Dependency] private SharedESScreenshakeSystem _shake = default!;
-    // ES END
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private GunSystem _guns = default!;
-    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private Shared.Damage.Systems.DamageableSystem _damageable = default!;
     [Dependency] private SharedCameraRecoilSystem _sharedCameraRecoil = default!;
     [Dependency] private SharedColorFlashEffectSystem _color = default!;
 
@@ -52,12 +48,7 @@ public sealed partial class DamageOtherOnHitSystem : SharedDamageOtherOnHitSyste
         if (TryComp<PhysicsComponent>(uid, out var body) && body.LinearVelocity.LengthSquared() > 0f)
         {
             var direction = body.LinearVelocity.Normalized();
-            // ES START
-            // lower recoil + shake
-            _sharedCameraRecoil.KickCamera(args.Target, direction * 0.1f);
-            var otherHitShake = new ESScreenshakeParameters() { Trauma = 0.35f, DecayRate = 1.4f, Frequency = 0.014f };
-            _shake.Screenshake(args.Target, otherHitShake, null);
-            // ES END
+            _sharedCameraRecoil.KickCamera(args.Target, direction);
         }
     }
 }

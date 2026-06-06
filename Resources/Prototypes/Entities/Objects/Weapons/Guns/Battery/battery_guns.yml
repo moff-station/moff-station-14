@@ -15,7 +15,6 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
-    cameraRecoilScalar: 0.5 # DeltaV - most laser guns have lower screenshake
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -523,7 +522,6 @@
   - type: StaticPrice
     price: 100
   - type: Gun
-    cameraRecoilScalar: 0.25 # DeltaV
     fireRate: 2
     projectileSpeed: 35 # any higher and this causes issues in lag
     soundGunshot:
@@ -633,7 +631,6 @@
     - Belt
   - type: Gun
     fireRate: 0.5
-    cameraRecoilScalar: 0.25 # DeltaV
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser.ogg
     projectileSpeed: 25
