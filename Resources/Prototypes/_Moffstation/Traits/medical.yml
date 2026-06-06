@@ -30,7 +30,7 @@
   name: trait-painnumbness-name
   description: trait-painnumbness-desc
   category: Medical
-  specials:
+  effects:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
     - TraitStatusEffectPainNumbness
@@ -40,7 +40,7 @@
   name: trait-hemophilia-name
   description: trait-hemophilia-desc
   category: Medical
-  specials:
+  effects:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
     - TraitStatusEffectHemophilia
@@ -50,11 +50,12 @@
   name: trait-impaired-mobility-name
   description: trait-impaired-mobility-desc
   category: Medical
-  traitGear: OffsetCane
   effects:
   - !type:AddCompsEffect
     components:
     - type: ImpairedMobility
+  - !type:SpawnItemInHandEffect
+    item: WhiteCane
 
 - type: trait
   id: Feeble
