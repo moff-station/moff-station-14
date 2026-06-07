@@ -97508,16 +97508,18 @@ entities:
       parent: 2
   - uid: 15001
     components:
-    - type: MetaData
-      desc: A not-so-handy handheld radio. It has been partially disassembled, rendering it useless.
-      name: broken handheld radio
+    # Moffstation - Start - Broken handheld radio throwing errors
+    #- type: MetaData
+    #  desc: A not-so-handy handheld radio. It has been partially disassembled, rendering it useless.
+    #  name: broken handheld radio
     - type: Transform
       pos: 43.105606,-27.396742
       parent: 2
-    missingComponents:
-    - TelecomExempt
-    - RadioMicrophone
-    - RadioSpeaker
+    #missingComponents:
+    #- TelecomExempt
+    #- RadioMicrophone
+    #- RadioSpeaker
+    # Moffstation - End
 - proto: RagItem
   entities:
   - uid: 315
