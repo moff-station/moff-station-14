@@ -45,8 +45,8 @@
 
 - type: entity
   parent: CargoPDAAltBase
-  id: FreightPilotPDA
-  name: freight pilot PDA
+  id: LogisticsAssociatePDA
+  name: logistics associate PDA
   components:
   - type: RenameId
     value: job-name-cargo-technician-freight-pilot
@@ -54,7 +54,7 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-freightpilot
+        pda-logistics
   - type: Sprite
     sprite: _Moffstation/Objects/Devices/pda.rsi
     layers:
