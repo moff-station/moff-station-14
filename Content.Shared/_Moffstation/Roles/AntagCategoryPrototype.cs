@@ -6,12 +6,12 @@ namespace Content.Shared._Moffstation.Roles;
 /// <summary>
 /// This is a prototype for...
 /// </summary>
-[Prototype()]
+[Prototype]
 public sealed partial class AntagCategoryPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; set; } = default!;
 
     /// <summary>
     /// The name LocId of the antag catagory that will be displayed in the various menus.
@@ -32,10 +32,19 @@ public sealed partial class AntagCategoryPrototype : IPrototype
     public Color Color;
 
     [DataField]
-    public Color TextColor =  Color.White;
+    public Color TextColor = Color.DarkSlateGray;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    /// <summary>
+    /// The antags that belong to this category
+    /// </summary>
+    [DataField]
     public List<ProtoId<AntagPrototype>> Roles = new();
+
+    /// <summary>
+    /// Subcategories for this category. Categories will be nested inside this one.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<AntagCategoryPrototype>>? SubCategories = new();
 
     /// <summary>
     /// Departments with a higher weight sorted before other departments in UI.
