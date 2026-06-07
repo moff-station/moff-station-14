@@ -30,7 +30,7 @@ public sealed partial class TraitPrototype : IPrototype
     /// The category this trait belongs to.
     /// </summary>
     [DataField(required: true)]
-    public ProtoId<TraitCategoryPrototype> Category;
+    public ProtoId<TraitCategoryPrototype> Category = "Misc";
 
     /// <summary>
     /// How many trait points this trait costs (positive) or grants (negative).

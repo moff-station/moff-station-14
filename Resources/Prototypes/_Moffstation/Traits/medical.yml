@@ -96,3 +96,13 @@
   - !type:AddCompsEffect
     components:
     - type: Snoring
+
+- type: trait
+  id: Monochromacy
+  name: trait-monochromacy-name
+  description: trait-monochromacy-desc
+  category: Medical
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: BlackAndWhiteOverlay
