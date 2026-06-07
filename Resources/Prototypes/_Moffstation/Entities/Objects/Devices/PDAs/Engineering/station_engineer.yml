@@ -87,6 +87,7 @@
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
+      visible: false
   - type: PdaBorderColor
     borderColor: "#949137"
     accentVColor: "#181818"
