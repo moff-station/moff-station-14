@@ -98,7 +98,7 @@ public sealed partial class TraitSystemTest
   cost: 0
   effects:
   - !type:SpawnItemInHandEffect
-  item: WhiteCane
+    item: WhiteCane
 
 # Test Traits - Validation
 - type: trait
@@ -560,17 +560,10 @@ public sealed partial class TraitSystemTest
 
             // We need to use reflection to call the private ApplyTrait method
             var method = typeof(TraitSystem).GetMethod("ApplyTrait",
-                BindingFlags.NonPublic | BindingFlags.Instance);
+                BindingFlags.Public | BindingFlags.Instance); // Moffstation - the method is public
             method?.Invoke(traitSys, new object[] { player, trait });
 
             var item = handsSys.GetActiveItem((player, hands));
-            // Moffstation - Check both hands, just in case
-            if (item == null)
-            {
-                handsSys.SwapHands(player);
-                handsSys.GetActiveItem((player, hands));
-            }
-            // Moffstation - End
             Assert.That(item, Is.Not.Null, "SpawnItemInHandEffect should spawn item in hand");
 
             entMan.DeleteEntity(player);
