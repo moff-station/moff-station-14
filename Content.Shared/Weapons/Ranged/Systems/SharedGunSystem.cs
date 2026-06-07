@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._Moffstation.Weapons.Ranged.Components; // Moffstation
-using Content.Shared._ES.Camera; // ES
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -42,9 +41,6 @@ namespace Content.Shared.Weapons.Ranged.Systems;
 
 public abstract partial class SharedGunSystem : EntitySystem
 {
-    // ES START
-    [Dependency] private SharedESScreenshakeSystem _shake = default!;
-    // ES END
     [Dependency] private ActionBlockerSystem _actionBlockerSystem = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private INetManager _netManager = default!;
@@ -415,17 +411,6 @@ public abstract partial class SharedGunSystem : EntitySystem
         Shoot(gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
         var shotEv = new GunShotEvent(user, ev.Ammo);
         RaiseLocalEvent(gun, ref shotEv);
-
-        // Moffstation - Start - Gun Screenshake tweaks
-        var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates).Position;
-        var toMap = TransformSystem.ToMapCoordinates(toCoordinates.Value).Position;
-        var shotDirection = (toMap - fromMap).Normalized();
-
-        // this is a suspicious place to do this but whatever.
-        var gunShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.0f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f, Direction = shotDirection};
-        var gunShakeRotation = new ESScreenshakeParameters() { Trauma = 0.045f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f};
-        _shake.Screenshake(user, gunShakeTranslation, gunShakeRotation);
-        // Moffstation - End
 
         if (!userImpulse || !TryComp<PhysicsComponent>(user, out var userPhysics))
             return true;

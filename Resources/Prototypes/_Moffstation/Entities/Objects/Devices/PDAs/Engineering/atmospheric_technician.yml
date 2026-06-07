@@ -79,6 +79,8 @@
   id: SeniorAtmosphericTechnicianPDA
   name: senior atmospheric technician PDA
   components:
+  - type: Pda
+    id: SeniorAtmosIDCard
   - type: RenameId
     value: job-name-atmospheric-technician-senior
   - type: Appearance
