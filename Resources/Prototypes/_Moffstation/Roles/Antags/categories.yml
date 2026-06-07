@@ -5,14 +5,32 @@
   color: "#821722"
   roles:
   - Traitor
+  - TraitorSleeper
   - NukeopsCommander
   - NukeopsMedic
   - Nukeops
   - SyndicateSpy
 
-- type:
+- type: antagCategory
+  id: Ussp
+  name: antag-catagory-ussp-name
+  description: antag-catagory-ussp-desc
+  color: "#d52e00"
+  roles:
+  - HeadRev
+
+- type: antagCategory
+  id: Pirates
+  name: antag-catagory-pirates-name
+  description: antag-catagory-pirates-desc
+  color: "#73391d"
+  roles:
+  - PirateCaptain
+  - PirateCrew
+
+- type: antagCategory
   id: Other
-  name: antag-catagory-syndicate-name
-  description: antag-catagory-syndicate-desc
-  color: "#dd422e"
+  name: antag-catagory-misc-name
+  description: antag-catagory-misc-desc
+  color: "#4d4d4d"
   default: true
