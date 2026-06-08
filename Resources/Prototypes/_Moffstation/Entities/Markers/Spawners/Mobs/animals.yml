@@ -11,3 +11,17 @@
   - type: ConditionalSpawner
     prototypes:
     - MobBat
+
+- type: entity
+  parent: MobSpiderBase
+  id: MobSpiderNightfangAngryBase
+  abstract: true
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
