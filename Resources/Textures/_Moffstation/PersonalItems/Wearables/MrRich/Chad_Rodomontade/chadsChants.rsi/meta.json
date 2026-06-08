@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Spriting by JudahCode (Github) for Moffstation",
+  "copyright": "Spriting by 'Mr. Rich' for Moffstation",
   "size": {
     "x": 32,
     "y": 32
@@ -11,8 +11,28 @@
         "name": "icon"
     },
     {
+        "name": "inhand-left",
+        "directions": 4
+    },
+    {
+        "name": "inhand-right",
+        "directions": 4
+    },
+    {
       "name": "equipped-INNERCLOTHING",
       "directions": 4
+    },
+    {
+        "name": "equipped-INNERCLOTHING-monkey",
+        "directions": 4
+    },
+    {
+        "name": "equipped-HELMET",
+        "directions": 4
+    },
+    {
+        "name": "equipped-NECK",
+        "directions": 4
     }
   ]
 }
