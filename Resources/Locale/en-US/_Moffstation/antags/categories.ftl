@@ -7,7 +7,7 @@ antag-catagory-ussp-name = USSP
 antag-catagory-ussp-desc = Conceived in the struggle against the Trans-Solar Federation's overarching and pro-corporate unity, the Union of Soviet Socialist Planets is the single largest splinter faction of humanity. Collectivist in nature, the USSP espouses that the well-being of many is better served through collective ownership and broad governance rather than by the individual or the corporation.
 
 antag-catagory-outlaws-name = Outlaws
-antag-catagory-outlaws-desc = Criminals, Bandits, Outlaws, and Anarchists.
+antag-catagory-outlaws-desc = Outlaws are a classification
 
 antag-catagory-nanotrasen-name = Nanotrasen
 antag-catagory-nanotrasen-desc = Crew-Aligned Special roles

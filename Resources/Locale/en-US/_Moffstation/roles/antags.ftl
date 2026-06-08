@@ -67,7 +67,7 @@ vampire-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/colo
 # Syndicate spies
 roles-antag-syndicate-spy = Syndicate Intelligence Officer
 roles-antag-short-syndicate-spy = Syndicate Intel
-roles-antag-syndicate-spy-objective = You are a Syndicate Intelligence Officer, sent to subvert the station from afar. Remain discrete, and use your intel to concoct plots against the station.
+roles-antag-syndicate-spy-objective = Observe the station from afar and coordinate Syndicate efforts from the safety of your listening post.
 
 lpo-existing = [color=Crimson]Syndicate Listening Outpost[/color]
 lpo-list-start = The outpost was operated by:
@@ -91,3 +91,9 @@ wizard-duel-title = Wizard Duel
 wizard-duel-description = A battle of might and magic, and you're caught in the middle of the chaos! Will you survive?
 
 guide-entry-wizard-duel = Wizard Duel
+
+# Nukies
+roles-antag-nuclear-operative-commander-objective-moff = Leader of a nuclear operative team. Make the plan, call the shots and destroy the station.
+roles-antag-nuclear-operative-agent-objective-moff = Combat medic of a nuclear operative team. Use complex reagents to keep your team in the fight or make chemical weapons.
+roles-antag-nuclear-operative-objective-moff = Work with a small team of elite operatives to find the authentication disk and destroy the station.
+roles-antag-syndicate-agent-objective-moff = A syndicate traitor hidden among the crew. Complete your objectives with an arsenal of illegal equipment.

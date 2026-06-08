@@ -46,7 +46,8 @@
                       HorizontalExpand="True"
                       Margin="8 8">
             <RichTextLabel Name="CategoryDescriptionLabel"
-                           Margin="0 0 0 6"/>
+                           Margin="0 0 0 6"
+                           StyleClasses="TraitsEntryDescriptionLabel"/>
             <BoxContainer Name="AntagsContainer"
                           Orientation="Vertical"
                           HorizontalExpand="True"/>
