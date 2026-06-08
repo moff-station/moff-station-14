@@ -1681,6 +1681,43 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             return true;
         }
 
+        public async Task<string?> GetDiscordId(NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            var player = await db.DbContext.Player
+                .Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId, cancel);
+            return player?.MoffPlayer?.DiscordId;
+        }
+
+        public async Task<bool> SetDiscordId(NetUserId userId, string? discordId)
+        {
+            await using var db = await GetDb();
+
+            var player = await db.DbContext.Player
+                .Include(player => player.MoffPlayer)
+                .SingleOrDefaultAsync(p => p.UserId == userId);
+
+            if (player is null)
+                return false;
+
+            if (player.MoffPlayer == null)
+            {
+                player.MoffPlayer = new MoffModel.MoffPlayer
+                {
+                    PlayerUserId = userId,
+                    DiscordId = discordId,
+                };
+            }
+            else
+            {
+                player.MoffPlayer.DiscordId = discordId;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
         #endregion
 
         public abstract Task SendNotification(DatabaseNotification notification);

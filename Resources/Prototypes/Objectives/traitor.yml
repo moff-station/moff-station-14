@@ -396,6 +396,8 @@
     title: objective-condition-supercrit-anomalies-title
   - type: ObjectiveLimit
     limit: 1
+  - type: NotJobRequirement
+    jobs: [ ResearchDirector, Scientist ] # Moffstation - Too easy for scientists
 
 # other
 - type: entity

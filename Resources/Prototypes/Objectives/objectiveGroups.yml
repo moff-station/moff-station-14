@@ -32,7 +32,7 @@
   id: TraitorObjectiveGroupKill
   weights:
     KillRandomPersonObjective: 1
-    KillStationAiObjective: 0.25
+    KillStationAiObjective: 0.125 # Moffstation - Lower Kill Station Ai chance by half
     KillRandomHeadObjective: 0.25
     TeachLessonObjective: 1 # Moffstation - teach lesson objective
 

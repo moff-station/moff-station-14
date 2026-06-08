@@ -32,6 +32,8 @@
   id: GeneticistPDA
   name: geneticist PDA
   components:
+  - type: Pda
+    id: GeneticistIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -50,6 +52,8 @@
   id: VirologistPDA
   name: virologist PDA
   components:
+  - type: Pda
+    id: VirologistIDCard
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -107,6 +111,21 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-cryogenicspecialist
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-cryogenicspecialist"
+    - state: "light_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay_wide"
+      sprite: _Moffstation/Objects/Devices/pda.rsi
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: PdaBorderColor
     borderColor: "#447987"
     accentVColor: "#d7d7d0"
