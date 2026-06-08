@@ -139,11 +139,8 @@ public sealed partial class DoorSystem : SharedDoorSystem
         switch (state)
         {
             case DoorState.Open:
-                // ES START
-                // If we are already animating the close just let that do its job
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.OpenKey))
                     return;
-                // ES END
 
                 foreach (var (layer, layerState) in entity.Comp.OpenSpriteStates)
                 {
@@ -155,11 +152,8 @@ public sealed partial class DoorSystem : SharedDoorSystem
 
                 return;
             case DoorState.Closed:
-                // ES START
-                // If we are already animating the close just let that do its job
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.CloseKey))
                     return;
-                // ES END
 
                 foreach (var (layer, layerState) in entity.Comp.ClosedSpriteStates)
                 {
@@ -172,11 +166,8 @@ public sealed partial class DoorSystem : SharedDoorSystem
                 if (entity.Comp.OpeningAnimationTime == TimeSpan.Zero)
                     return;
 
-                // ES START
-                // since we dont stop them earlier we check here
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.OpenKey))
                     return;
-                // ES END
 
                 _animationSystem.Play(entity, (Animation)entity.Comp.OpeningAnimation, DoorComponent.OpenKey);
 
@@ -185,34 +176,26 @@ public sealed partial class DoorSystem : SharedDoorSystem
                 if (entity.Comp.ClosingAnimationTime == TimeSpan.Zero)
                     return;
 
-                // ES START
-                // since we dont stop them earlier we check here
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.CloseKey))
                     return;
-                // ES END
 
                 _animationSystem.Play(entity, (Animation)entity.Comp.ClosingAnimation, DoorComponent.CloseKey);
 
                 return;
             case DoorState.Denying:
-                // ES START
-                // AnimationKey -> DenyKey
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.DenyKey))
                     return;
 
                 _animationSystem.Play(entity, (Animation)entity.Comp.DenyingAnimation, DoorComponent.DenyKey);
-                // ES END
 
                 return;
             case DoorState.Emagging:
-                // ES START
-                // AnimationKey -> DenyKey
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.EmagKey))
                     return;
 
+                // We are checking beforehand since some doors may not have an emagging visual layer.
                 if (_sprite.TryGetLayer(entity.Owner, DoorVisualLayers.BaseEmagging, out var _, false))
                     _animationSystem.Play(entity, (Animation)entity.Comp.EmaggingAnimation, DoorComponent.EmagKey);
-                // ES END
 
                 return;
         }
