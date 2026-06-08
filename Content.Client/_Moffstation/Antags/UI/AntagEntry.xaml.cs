@@ -58,12 +58,20 @@ public sealed partial class AntagEntry : PanelContainer
 
     private void SetupRequirements()
     {
-        if (!_requirements.IsAllowed(_antag,
-                (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter,
-                out var reason))
+        var locked = !_requirements.IsAllowed(_antag,
+            _preferencesManager.Preferences?.SelectedCharacter as HumanoidCharacterProfile,
+            out var reason);
+
+        AntagCheckbox.Visible = !locked;
+        AntagCheckbox.Disabled = locked;
+        LockIcon.Visible = locked;
+        LockIcon.TooltipSupplier = reason != null
+            ? _ => new RichTextLabel { Text = reason.ToString() }
+            : null;
+
+        if (locked)
         {
             AntagCheckbox.Pressed = false;
-            AntagCheckbox.Disabled = true;
             OnToggled?.Invoke(IsSelected);
         }
     }
