@@ -58,7 +58,7 @@ public sealed partial class AntagEntry : PanelContainer
 
     private void SetupRequirements()
     {
-        if (_requirements.IsAllowed(_antag,
+        if (!_requirements.IsAllowed(_antag,
                 (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter,
                 out var reason))
         {
