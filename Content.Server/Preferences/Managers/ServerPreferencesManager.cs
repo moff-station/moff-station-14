@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Content.Server._CD.Records;
 using Content.Server.Database;
 using Content.Shared._CD.Records;
-using Content.Shared._DV.Traits;
 using Content.Shared.Body;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;

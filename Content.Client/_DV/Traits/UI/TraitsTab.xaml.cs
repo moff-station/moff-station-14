@@ -194,7 +194,6 @@ public sealed partial class TraitsTab : BoxContainer
     private void UpdateGlobalStats()
     {
         GlobalTraitCountLabel.Text = $"{_currentTraitCount} / {_maxGlobalTraits}";
-        GlobalPointsLabel.Text = $"{_maxGlobalPoints - _currentPointsSpent} / {_maxGlobalPoints}";
 
         // Calculate remaining points (clamped to not go below 0 in display)
         var remainingPoints = _maxGlobalPoints - _currentPointsSpent;

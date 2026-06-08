@@ -13,7 +13,7 @@ namespace Content.Shared._Moffstation.Jobs;
 public sealed partial class ApplyStatusEffectSpecial : JobSpecial, IBaseTraitEffect
 {
     [DataField(required: true)]
-    public HashSet<EntProtoId> StatusEffects { get; private set; } = new();
+    public HashSet<EntProtoId> StatusEffects = new();
 
     public override void AfterEquip(EntityUid mob)
     {
