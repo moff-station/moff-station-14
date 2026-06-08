@@ -304,11 +304,12 @@ public sealed partial class HumanoidProfileEditor
     // Moffstation - Start - Antag loadout button
     private void OnAntagLoadoutPressed(ProtoId<AntagPrototype> antagId)
     {
-        if (!_prototypeManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(antagId), out var roleLoadoutProto))
+        var jobProtoId = LoadoutSystem.GetJobPrototype(antagId);
+        if (!_prototypeManager.TryIndex<RoleLoadoutPrototype>(jobProtoId, out var roleLoadoutProto))
             return;
 
         var loadout = new RoleLoadout();
-        Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(antagId), out loadout);
+        Profile?.Loadouts.TryGetValue(jobProtoId, out loadout);
 
         // Clone so we dont modify the underlying loadout
         loadout = loadout?.Clone();
