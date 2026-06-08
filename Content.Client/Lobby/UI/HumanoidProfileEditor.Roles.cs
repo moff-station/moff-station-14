@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
+using Content.Shared.Antag;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
@@ -300,6 +301,8 @@ public sealed partial class HumanoidProfileEditor
         UpdateJobPriorities();
     }
 
+    // Moffstation - Start - Antags
+    /*
     public void RefreshAntags()
     {
         AntagList.RemoveAllChildren();
@@ -394,4 +397,5 @@ public sealed partial class HumanoidProfileEditor
             AntagList.AddChild(antagContainer);
         }
     }
+    */
 }

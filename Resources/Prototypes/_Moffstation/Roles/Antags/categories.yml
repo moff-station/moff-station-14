@@ -2,8 +2,9 @@
   id: Syndicate
   name: antag-catagory-syndicate-name
   description: antag-catagory-syndicate-desc
-  color: "#821722"
-  roles:
+  priority: -1
+  accentColor: "#821722"
+  antags:
   - Traitor
   - TraitorSleeper
   - NukeopsCommander
@@ -12,25 +13,30 @@
   - SyndicateSpy
 
 - type: antagCategory
-  id: Ussp
-  name: antag-catagory-ussp-name
-  description: antag-catagory-ussp-desc
-  color: "#d52e00"
-  roles:
-  - HeadRev
-
-- type: antagCategory
-  id: Pirates
-  name: antag-catagory-pirates-name
-  description: antag-catagory-pirates-desc
-  color: "#73391d"
-  roles:
+  id: Outlaws
+  name: antag-catagory-outlaws-name
+  description: antag-catagory-outlaws-desc
+  accentColor: "#73391d"
+  antags:
   - PirateCaptain
   - PirateCrew
+  - Conspirator
+  - Thief
+  - Stowaway
+
+- type: antagCategory
+  id: Nanotrasen
+  name: antag-catagory-nanotrasen-name
+  description: antag-catagory-nanotrasen-desc
+  accentColor: darkblue
+  priority: 50
+  antags:
+  - OpeningShift
 
 - type: antagCategory
   id: Other
   name: antag-catagory-misc-name
   description: antag-catagory-misc-desc
-  color: "#4d4d4d"
+  accentColor: purple
+  priority: 100
   default: true

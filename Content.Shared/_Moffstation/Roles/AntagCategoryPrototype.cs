@@ -26,19 +26,16 @@ public sealed partial class AntagCategoryPrototype : IPrototype
     public LocId Description = string.Empty;
 
     /// <summary>
-    /// A color representing this department to use for text.
+    /// The accent color of this category.
     /// </summary>
     [DataField(required: true)]
-    public Color Color;
-
-    [DataField]
-    public Color TextColor = Color.DarkSlateGray;
+    public Color AccentColor;
 
     /// <summary>
     /// The antags that belong to this category
     /// </summary>
     [DataField]
-    public List<ProtoId<AntagPrototype>> Roles = new();
+    public List<ProtoId<AntagPrototype>> Antags = new();
 
     /// <summary>
     /// Subcategories for this category. Categories will be nested inside this one.
@@ -47,16 +44,16 @@ public sealed partial class AntagCategoryPrototype : IPrototype
     public List<ProtoId<AntagCategoryPrototype>>? SubCategories = new();
 
     /// <summary>
-    /// Departments with a higher weight sorted before other departments in UI.
+    /// Categories with a heigher weight will be added first (and appear the lowest) in the UI.
     /// </summary>
     [DataField]
-    public int Weight { get; private set; }
+    public int Priority = 1;
 
     /// <summary>
-    /// Toggles the display of the department in the priority setting menu in the character editor.
+    /// Whether this category should be expanded by default
     /// </summary>
     [DataField]
-    public bool EditorHidden;
+    public bool DefaultExpanded = true;
 
     /// <summary>
     /// Antags which belong to no category will be assigned to this one automatically

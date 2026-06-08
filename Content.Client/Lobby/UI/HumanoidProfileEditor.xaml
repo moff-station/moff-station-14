@@ -5,6 +5,7 @@
          xmlns:ui="clr-namespace:Content.Client.Lobby.UI"
          xmlns:traits="clr-namespace:Content.Client._DV.Traits.UI"
          xmlns:profileEditorControls="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls"
+         xmlns:ui1="clr-namespace:Content.Client._Moffstation.Antags.UI"
          HorizontalExpand="True">
         <!-- Left side -->
         <BoxContainer Orientation="Vertical" Margin="10 10 10 10" HorizontalExpand="True">
@@ -123,12 +124,16 @@
                         <BoxContainer Name="JobList" Orientation="Vertical" />
                     </ScrollContainer>
                 </BoxContainer>
-                <BoxContainer Orientation="Vertical" Margin="10">
-                    <!-- Antags -->
-                    <ScrollContainer VerticalExpand="True">
-                        <BoxContainer Name="AntagList" Orientation="Vertical" />
-                    </ScrollContainer>
-                </BoxContainer>
+                <!-- Moffstation - Start - Antag Factions -->
+                <!-- <BoxContainer Orientation="Vertical" Margin="10"> -->
+                <!--     ~1~ Antags @1@ -->
+                <!--     <ScrollContainer VerticalExpand="True"> -->
+                <!--         <BoxContainer Name="AntagList" Orientation="Vertical" /> -->
+                <!--     </ScrollContainer> -->
+                <!-- </BoxContainer> -->
+                <ui1:SpecialRolesTab Name="Antags"/>
+                <!-- Moffstation - End -->
+
                 <!-- DV - Traits -->
                 <!-- <BoxContainer Orientation="Vertical" Margin="10"> -->
                 <!--     ~1~ Traits @1@ -->
