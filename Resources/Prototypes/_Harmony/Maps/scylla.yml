@@ -2,8 +2,8 @@
   id: Scylla
   mapName: 'Scylla'
   mapPath: /Maps/_Harmony/scylla.yml
-  minPlayers: 35 # Moffstation - increased min pop
-  maxPlayers: 55
+  minPlayers: 41 # Moffstation - Medium Pop
+  maxPlayers: 75 # Moffstation - Medium Pop
   stations:
     Scylla:
       stationProto: StandardNanotrasenStation
@@ -38,24 +38,24 @@
           Reporter: [ 2, 2 ]
           #engineering (6)
           AtmosphericTechnician: [ 2, 2 ]
-          StationEngineer: [ 4, 5 ] # Moffstation - interns rolled into base role
-          # TechnicalAssistant: [ 2, 2 ] # Moffstation - Remove intern roles
+          StationEngineer: [ 4, 4 ]
+          # TechnicalAssistant: [ 2, 2 ] # Moffstation - Removed role
           #medical (7)
           Chemist: [ 2, 2 ]
-          MedicalDoctor: [ 3, 4 ] # Moffstation - interns rolled into base role
+          MedicalDoctor: [ 3, 3 ]
           Paramedic: [ 1, 1 ]
           Psychologist: [ 1, 1 ]
-          # MedicalIntern: [ 2, 2 ] # Moffstation - Remove intern roles
+          # MedicalIntern: [ 2, 2 ] # Moffstation - Removed role
           #science (4)
-          Scientist: [ 4, 5 ] # Moffstation - interns rolled into base role
-          # ResearchAssistant: [ 2, 2 ] # Moffstation - Remove intern roles
+          Scientist: [ 4, 4 ]
+          # ResearchAssistant: [ 2, 2 ] # Moffstation - Removed role
           #security (7)
           Warden: [ 1, 1 ]
-          SecurityOfficer: [ 4, 5 ] # Moffstation - interns rolled into base role
+          SecurityOfficer: [ 4, 4 ]
           Detective: [ 1, 1 ]
-          # SecurityCadet: [ 2, 2 ] # Moffstation - Remove intern roles
+          # SecurityCadet: [ 2, 2 ] # Moffstation - Removed role
           Lawyer: [ 1, 1 ]
-          Prisoner: [ 1, 1 ] # Moff
+          Prisoner: [ 1, 1 ] # Moffstation - Prisoners
           #supply (4)
           SalvageSpecialist: [ 2, 2 ]
           CargoTechnician: [ 2, 2 ]

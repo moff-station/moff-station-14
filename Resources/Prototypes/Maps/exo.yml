@@ -2,8 +2,8 @@
   id: Exo
   mapName: 'Exo'
   mapPath: /Maps/exo.yml
-  minPlayers: 40
-  maxPlayers: 80
+  minPlayers: 61 # Moffstation - High Pop
+  maxPlayers: 95 # Moffstation - High Pop
   stations:
     Exo:
       stationProto: StandardNanotrasenStation
@@ -32,26 +32,27 @@
             #engineering
             ChiefEngineer: [ 1, 1 ]
             AtmosphericTechnician: [ 3, 3 ]
-            StationEngineer: [ 4, 5 ] #CD - Intern not counted
-            # TechnicalAssistant: [ 3, 3 ] #CD - Remove intern roles, rework them into loadouts
+            StationEngineer: [ 4, 4 ]
+            # TechnicalAssistant: [ 3, 3 ] # Moffstation - Removed role
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
             Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 4, 5 ] #CD - Intern not counted
-            # MedicalIntern: [ 3, 3 ] #CD - Remove intern roles, rework them into loadouts
+            MedicalDoctor: [ 4, 4 ]
+            # MedicalIntern: [ 3, 3 ] # Moffstation - Removed role
             Paramedic: [ 1, 1 ]
             Psychologist: [ 1, 1 ]
             #science
             ResearchDirector: [ 1, 1 ]
-            Scientist: [ 4, 5 ] #CD - Intern not counted
-            # ResearchAssistant: [ 3, 3 ] #CD - Remove intern roles, rework them into loadouts
+            Scientist: [ 4, 4 ]
+            # ResearchAssistant: [ 3, 3 ] # Moffstation - Removed role
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 5, 6 ] #CD - Intern not counted
+            SecurityOfficer: [ 5, 5 ]
             Detective: [ 1, 1 ]
-            # SecurityCadet: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            # SecurityCadet: [ 4, 4 ] # Moffstation - Removed role
             Lawyer: [ 2, 2 ]
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
             #supply
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 3, 3 ]
@@ -65,5 +66,3 @@
             #silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
-            # Moffstation - custom roles below
-            Prisoner: [ 1, 1 ]

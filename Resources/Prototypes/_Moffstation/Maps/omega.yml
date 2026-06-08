@@ -1,9 +1,9 @@
 - type: gameMap
   id: Omega
   mapName: 'Omega'
-  mapPath: /Maps/omega.yml
-  minPlayers: 7
-  maxPlayers: 50  # Moffstation - Playercount changes
+  mapPath: /Maps/_Moffstation/omega.yml
+  minPlayers: 26 # Low Pop
+  maxPlayers: 60 # Low Pop
   stations:
     Omega:
       stationProto: StandardNanotrasenStation
@@ -16,7 +16,7 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_omega.yml
         - type: StationJobs
-          availableJobs: # 48 jobs total w/o latejoins & interns, 57 jobs total w/ latejoins & interns
+          availableJobs: # 49 jobs total w/o latejoins, 50 jobs total w/ latejoins
             #command (7)
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
@@ -35,22 +35,19 @@
             ServiceWorker: [ 2, 2 ]
             #engineering (5)
             AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 3, 4 ] #CD - Intern not counted
-            # TechnicalAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            StationEngineer: [ 3, 3 ]
             #medical (6)
             Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 3, 4 ] #CD - Intern not counted
+            MedicalDoctor: [ 3, 3 ]
             Paramedic: [ 1, 1 ]
-            # MedicalIntern: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
             #science (4)
-            Scientist: [ 4, 5 ] #CD - Intern not counted
-            # ResearchAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
-            #security (7)
+            Scientist: [ 4, 4 ]
+            #security (8)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 4, 5 ] #CD - Intern not counted
+            SecurityOfficer: [ 4, 4 ]
             Detective: [ 1, 1 ]
-            # SecurityCadet: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
             Lawyer: [ 1, 1 ]
+            Prisoner: [ 1, 1 ]
             #supply (4)
             SalvageSpecialist: [ 2, 2 ]
             CargoTechnician: [ 2, 2 ]
@@ -62,5 +59,3 @@
             #silicon (3)
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
-            # Moffstation - custom roles below
-            Prisoner: [ 1, 1 ]
