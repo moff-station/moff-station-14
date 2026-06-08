@@ -1177,6 +1177,7 @@ namespace Content.Shared.Interaction
             if (activateMsg.Handled)
             {
                 DoContactInteraction(user, used, null, true, interactionParticles: activateMsg.InteractionParticle); // Stellar - Interaction particles                if (!activateMsg.WasLogged)
+                if (!activateMsg.WasLogged)
                     _adminLogger.Add(LogType.InteractActivate, LogImpact.Low, $"{ToPrettyString(user):user} activated {ToPrettyString(used):used}");
 
                 if (delayComponent != null)
