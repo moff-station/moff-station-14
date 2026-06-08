@@ -301,7 +301,29 @@ public sealed partial class HumanoidProfileEditor
         UpdateJobPriorities();
     }
 
-    // Moffstation - Start - Antags
+    // Moffstation - Start - Antag loadout button
+    private void OnAntagLoadoutPressed(ProtoId<AntagPrototype> antagId)
+    {
+        if (!_prototypeManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(antagId), out var roleLoadoutProto))
+            return;
+
+        var loadout = new RoleLoadout();
+        Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(antagId), out loadout);
+
+        // Clone so we dont modify the underlying loadout
+        loadout = loadout?.Clone();
+
+        if (loadout == null)
+        {
+            loadout = new RoleLoadout(roleLoadoutProto.ID);
+            loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+        }
+
+        OpenLoadout(null, loadout, roleLoadoutProto);
+    }
+    // Moffstation - End
+
+    // Moffstation - Start - New antagonist tab replaces this
     /*
     public void RefreshAntags()
     {

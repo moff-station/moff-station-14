@@ -30,22 +30,26 @@
         </BoxContainer>
 
         <!-- Trait Info -->
-        <BoxContainer Orientation="Vertical"
-                      HorizontalExpand="True"
-                      VerticalAlignment="Center"
-                      Name="AntagInfo">
+        <GridContainer Columns="2"
+                       HorizontalExpand="True">
+            <BoxContainer Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalAlignment="Center"
+                          Name="AntagInfo">
 
-            <!-- Name and Cost Row -->
-            <BoxContainer Orientation="Horizontal">
+                <!-- Name Row -->
                 <Label Name="AntagNameLabel"
                        StyleClasses="TraitsEntryNameLabel"/>
-                <Control HorizontalExpand="True"/>
-            </BoxContainer>
 
-            <!-- Description -->
-            <RichTextLabel Name="AntagDescriptionLabel"
-                           StyleClasses="TraitsEntryDescriptionLabel"
-                           Margin="0 4 0 0"/>
-        </BoxContainer>
+                <!-- Description -->
+                <RichTextLabel Name="AntagDescriptionLabel"
+                               StyleClasses="TraitsEntryDescriptionLabel"
+                               Margin="0 4 0 0"/>
+            </BoxContainer>
+            <Button Name="LoadoutButton"
+                    Text="{Loc 'loadout-window'}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"/>
+        </GridContainer>
     </BoxContainer>
 </PanelContainer>

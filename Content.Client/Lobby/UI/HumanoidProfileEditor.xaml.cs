@@ -158,6 +158,7 @@ namespace Content.Client.Lobby.UI
 
             Traits.OnTraitsChanged += OnTraitsSelectionChanged; // DeltaV
             Antags.OnAntagsChanged += OnAntagsSelectionChanged; // Moffstation
+            Antags.OnLoadoutPressed += OnAntagLoadoutPressed; // Moffstation
 
             #region Left
 

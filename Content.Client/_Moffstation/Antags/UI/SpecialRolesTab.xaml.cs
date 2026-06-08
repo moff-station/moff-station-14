@@ -19,6 +19,7 @@ public sealed partial class SpecialRolesTab : BoxContainer
     /// Event fired when trait selection changes.
     /// </summary>
     public event Action<HashSet<ProtoId<AntagPrototype>>>? OnAntagsChanged;
+    public event Action<ProtoId<AntagPrototype>>? OnLoadoutPressed;
 
     private readonly Dictionary<ProtoId<AntagCategoryPrototype>, AntagCategory> _categoryUis = new();
 
@@ -74,6 +75,7 @@ public sealed partial class SpecialRolesTab : BoxContainer
             var expanded = expandedState.TryGetValue(category.ID, out var prev) ? prev : (bool?)null;
             var categoryUi = new AntagCategory(category, antags, selectedAntags, expanded);
             categoryUi.OnAntagToggled += OnAntagToggled;
+            categoryUi.OnLoadoutPressed += id => OnLoadoutPressed?.Invoke(id);
             _categoryUis[category.ID] = categoryUi;
             CategoriesContainer.AddChild(categoryUi);
 
@@ -92,14 +94,14 @@ public sealed partial class SpecialRolesTab : BoxContainer
     {
         foreach (var (_, categoryUi) in _categoryUis)
         {
-            categoryUi.FilterTraits(_currentSearchText);
+            categoryUi.FilterAntags(_currentSearchText);
         }
     }
 
     private void OnAntagToggled(ProtoId<AntagPrototype> antagId, bool selected)
     {
         var allSelected = _categoryUis.Values
-            .SelectMany(c => c.GetSelectedTraitIds())
+            .SelectMany(c => c.GetSelectedAntagIds())
             .ToHashSet();
 
         OnAntagsChanged?.Invoke(allSelected);

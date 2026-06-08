@@ -40,11 +40,16 @@
                     SetHeight="3"
                     Margin="0 0 0 0"/>
 
-    <!-- Traits Container -->
+    <!-- Antags Container -->
     <PanelContainer Name="ContentPanel" StyleClasses="TraitsCategoryContent">
-        <BoxContainer Name="AntagsContainer"
-                      Orientation="Vertical"
+        <BoxContainer Orientation="Vertical"
                       HorizontalExpand="True"
-                      Margin="8 8"/>
+                      Margin="8 8">
+            <RichTextLabel Name="CategoryDescriptionLabel"
+                           Margin="0 0 0 6"/>
+            <BoxContainer Name="AntagsContainer"
+                          Orientation="Vertical"
+                          HorizontalExpand="True"/>
+        </BoxContainer>
     </PanelContainer>
 </BoxContainer>
