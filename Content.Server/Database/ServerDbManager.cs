@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+using Content.Shared._Moffstation.Librarian;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -313,6 +314,12 @@ namespace Content.Server.Database
 
         Task<int> GetAntagWeight(NetUserId userId);
         Task<bool> SetAntagWeight(NetUserId userId, int weight);
+
+        #endregion
+
+        #region LibraryRepo
+
+        Task<List<MoffModel.MoffLibraryEntry>> GetLibraryRepo(bool approvedOnly, NetUserId? requester, bool randomBook);
 
         #endregion
 
@@ -998,6 +1005,14 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SetAntagWeight(userId, weight));
         }
         // Moffstation - End - Weighted Antags
+
+        // Moffstation - Start - Library Repo
+        public Task<List<MoffModel.MoffLibraryEntry>> GetLibraryRepo(bool approvedOnly, NetUserId? requester, bool randomBook)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLibraryRepo(approvedOnly, requester, randomBook));
+        }
+        // Moffstation - End
 
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {

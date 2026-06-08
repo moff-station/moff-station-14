@@ -50,6 +50,8 @@ namespace Content.Server.Database
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
 
+        public DbSet<MoffModel.MoffLibraryEntry> MoffLibraryEntries { get; set; } = null!; // Moffstation - Library Repo
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Preference>()
@@ -316,6 +318,10 @@ namespace Content.Server.Database
                 .OwnsOne(p => p.HWId)
                 .Property(p => p.Type)
                 .HasDefaultValue(HwidType.Legacy);
+
+            modelBuilder.Entity<MoffModel.MoffLibraryEntry>()
+                .HasIndex(p => new {p.Name, p.Author, p.Description, p.Content, p.Type})
+                .IsUnique();
 
             ModelBan.OnModelCreating(modelBuilder);
         }
