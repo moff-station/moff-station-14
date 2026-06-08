@@ -125,20 +125,27 @@
     - PlushieVulp
   groupBy: "plushie"
 
-# Rings
+# Jewelry
 - type: loadout
   id: GoldRing
   storage:
     back:
     - GoldRing
-  groupBy: "Rings"
+  groupBy: "Jewelry"
 
 - type: loadout
   id: SilverRing
   storage:
     back:
     - SilverRing
-  groupBy: "Rings"
+  groupBy: "Jewelry"
+
+- type: loadout
+  id: ClothingNeckDogTags
+  storage:
+    back:
+    - ClothingNeckDogTags
+  groupBy: "Jewelry"
 
 # Towels
 - type: loadout

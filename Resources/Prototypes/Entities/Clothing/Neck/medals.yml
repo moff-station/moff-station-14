@@ -1,6 +1,6 @@
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckBronzeheart
   name: bronzeheart medal
   description: Given to crewmates for exemplary bravery in the face of danger.
@@ -19,7 +19,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckGoldmedal
   name: gold medal of crewmanship
   description: Given to crewmates who display excellent crewmanship.
@@ -35,12 +35,15 @@
       - Medal
       - WhitelistChameleon
   # Moffstation - Start - Examinable Clothing
+  - type: PhysicalComposition
+    materialComposition:
+      Gold: 50
   - type: ExtraExaminable
     wornText: clothing-medal-crewmanship
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckCargomedal
   name: cargo medal
   description: Given for the best work in the cargo department.
@@ -59,7 +62,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckEngineermedal
   name: engineer medal
   description: Given for the best work in the engineering department.
@@ -78,7 +81,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckMedicalmedal
   name: medical medal
   description: Given for the best work in the medical department.
@@ -97,7 +100,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckSciencemedal
   name: science medal
   description: Given for the best work in the science department.
@@ -116,7 +119,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckSecuritymedal
   name: security medal
   description: Given for the best work in the security department.
@@ -135,7 +138,7 @@
   # Moffstation - End
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckClownmedal
   name: clown medal
   description: Given for the best joke in the universe. HONK!
@@ -151,6 +154,9 @@
       - Medal
       - WhitelistChameleon
   # Moffstation - Start - Examinable Clothing
+  - type: PhysicalComposition
+    materialComposition:
+      Bananium: 50
   - type: ExtraExaminable
     wornText: clothing-medal-clown
   # Moffstation - End

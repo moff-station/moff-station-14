@@ -1,7 +1,7 @@
 - type: entity
   abstract: true
   parent: [SolutionFood, SolutionToolSmall, Clothing, BaseSlicingRefinable]
-  id: ClothingNeckBase
+  id: ClothingNeckBaseUpstream # Moffstation - Fix neck slot parenting
   components:
   - type: Item
     size: Small
@@ -15,7 +15,7 @@
     refineResult:
     - id: MaterialCloth1
       amount: 2
-  - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
+  - type: PhysicalComposition
     materialComposition:
       Cloth: 100
   - type: Edible
@@ -33,8 +33,8 @@
 
 - type: entity
   abstract: true
-  parent: ClothingNeckBase
-  id: ClothingScarfBase
+  parent: ClothingNeckBaseUpstream # Moffstation - Fix neck slot parenting
+  id: ClothingScarfBaseUpstream # Moffstation - Fix neck slot parenting
   components:
   - type: Tag
     tags:

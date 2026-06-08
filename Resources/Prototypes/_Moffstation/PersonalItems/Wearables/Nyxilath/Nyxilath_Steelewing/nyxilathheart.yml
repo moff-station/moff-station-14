@@ -1,13 +1,15 @@
-# Player: Nyxilath - Character: Nyxilath Steelewing
+# Player: Nyxilath
+# Character: Nyxilath Steelewing
+
 - type: entity
-  parent: ClothingNeckBase
-  id: PersonalItemNyxilathPositronicHeart
+  parent: ClothingNeckMetallicBase
+  id: &id PersonalItemNyxilathPositronicHeart
   name: positronic heart
   description: A metallic containment, it thrums faintly with light flashes of blue.
   suffix: PersonalItem
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/posi-heart.rsi
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/posi-heart.rsi
     layers:
     - state: icon
     - state: icon-unshaded
@@ -15,7 +17,7 @@
     - state: icon-unshaded
       shader: shaded
   - type: Clothing
-    sprite: _Moffstation/PersonalItems/Wearables/Nyxilath/Nyxilath_Steelewing/posi-heart.rsi
+    sprite: *sprite
     clothingVisuals:
       neck:
       - state: equipped-NECK
@@ -27,10 +29,10 @@
     size: Small
 
 - type: loadout
-  id: PersonalItemNyxilathPositronicHeart
+  id: *id
   storage:
     back:
-    - PersonalItemNyxilathPositronicHeart
+    - *id
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
