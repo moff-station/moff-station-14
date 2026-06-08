@@ -14,12 +14,12 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: "pda-journalist"
-    - state: "light_overlay"
+    - state: "light_overlay_wide"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
-    - state: "id_overlay"
+    - state: "id_overlay_wide"
       sprite: _Moffstation/Objects/Devices/pda.rsi
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"

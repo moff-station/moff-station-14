@@ -12,7 +12,7 @@
     tags:
     - Crowbar
   - type: MeleeWeapon
-    wideAnimationRotation: -135
+    wideAnimationRotation: -90 # Moffstation
     damage:
       types:
         Blunt: 8
@@ -31,14 +31,14 @@
     price: 22
   - type: Prying
   - type: Sprite
-    sprite: Objects/Tools/crowbar.rsi
+    sprite: &crowbar.rsi "_Moffstation/Objects/Tools/crowbar.rsi" # Moffstation
   - type: Clothing
-    sprite: Objects/Tools/crowbar.rsi
+    sprite: *crowbar.rsi # Moffstation
     quickEquip: false
     slots:
     - Belt
   - type: Item
-    sprite: Objects/Tools/crowbar.rsi
+    sprite: *crowbar.rsi # Moffstation
     size: Small
 
 # Standard (grey) Crowbar
@@ -50,7 +50,7 @@
     state: icon
   - type: Item
     storedSprite:
-      sprite: Objects/Tools/crowbar.rsi
+      sprite: *crowbar.rsi # Moffstation
       state: storage
 
 # Emergency (red) Crowbar
@@ -66,26 +66,26 @@
     layers:
     - state: icon
     - state: cover-icon
-      color: "#990000"
+      color: &red "#ff2a4e" # Moffstation
   - type: Item
     storedSprite:
       state: red-storage
-      sprite: Objects/Tools/crowbar.rsi
+      sprite: *crowbar.rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left
       - state: cover-inhand-left
-        color: "#990000"
+        color: *red # Moffstation
       right:
       - state: inhand-right
       - state: cover-inhand-right
-        color: "#990000"
+        color: *red # Moffstation
   - type: Clothing
     clothingVisuals:
       belt:
       - state: equipped-BELT
       - state: cover-equipped-BELT
-        color: "#990000"
+        color: *red # Moffstation
 
 # Autolathe (green) Crowbar
 - type: entity
@@ -96,26 +96,26 @@
     layers:
     - state: icon
     - state: cover-icon
-      color: "#00621c"
+      color: &green "#98ffdf" # Moffstation
   - type: Item
     storedSprite:
       state: green-storage
-      sprite: Objects/Tools/crowbar.rsi
+      sprite: *crowbar.rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left
       - state: cover-inhand-left
-        color: "#00621c"
+        color: *green # Moffstation
       right:
       - state: inhand-right
       - state: cover-inhand-right
-        color: "#00621c"
+        color: *green # Moffstation
   - type: Clothing
     clothingVisuals:
       belt:
       - state: equipped-BELT
       - state: cover-equipped-BELT
-        color: "#00621c"
+        color: *green # Moffstation
 
 # Toolbox (orange) Crowbar
 - type: entity
@@ -126,26 +126,26 @@
     layers:
     - state: icon
     - state: cover-icon
-      color: "#673800"
+      color: &orange "#ff7836" # Moffstation
   - type: Item
     storedSprite:
       state: orange-storage
-      sprite: Objects/Tools/crowbar.rsi
+      sprite: *crowbar.rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left
       - state: cover-inhand-left
-        color: "#673800"
+        color: *orange # Moffstation
       right:
       - state: inhand-right
       - state: cover-inhand-right
-        color: "#673800"
+        color: *orange # Moffstation
   - type: Clothing
     clothingVisuals:
       belt:
       - state: equipped-BELT
       - state: cover-equipped-BELT
-        color: "#673800"
+        color: *orange # Moffstation
 
 # Engineering (yellow) Crowbar
 - type: entity
@@ -156,23 +156,23 @@
     layers:
     - state: icon
     - state: cover-icon
-      color: "#968000"
+      color: &yellow "#ffbb20" # Moffstation
   - type: Item
     storedSprite:
       state: yellow-storage
-      sprite: Objects/Tools/crowbar.rsi
+      sprite: *crowbar.rsi # Moffstation
     inhandVisuals:
       left:
       - state: inhand-left
       - state: cover-inhand-left
-        color: "#968000"
+        color: *yellow # Moffstation
       right:
       - state: inhand-right
       - state: cover-inhand-right
-        color: "#968000"
+        color: *yellow # Moffstation
   - type: Clothing
     clothingVisuals:
       belt:
       - state: equipped-BELT
       - state: cover-equipped-BELT
-        color: "#968000"
+        color: *yellow # Moffstation

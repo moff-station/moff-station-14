@@ -1,0 +1,27 @@
+- type: entity
+  parent: WallPlastitanium
+  id: WallSovietPlastitanium
+  name: plastitanium wall
+  suffix: USSP
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Walls/soviet_plastitanium.rsi
+  - type: Icon
+    sprite: _Moffstation/Structures/Walls/soviet_plastitanium.rsi
+  - type: IconSmooth
+    key: walls
+    base: plastitanium
+
+- type: entity
+  parent: WallPlastitaniumDiagonal
+  id: WallSovietPlastitaniumDiagonal
+  name: plastitanium wall
+  suffix: USSP
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: _Moffstation/Structures/Walls/soviet_plastitanium_diagonal.rsi
+    state: state0
+  - type: Icon
+    sprite: _Moffstation/Structures/Walls/soviet_plastitanium_diagonal.rsi
+    state: state0

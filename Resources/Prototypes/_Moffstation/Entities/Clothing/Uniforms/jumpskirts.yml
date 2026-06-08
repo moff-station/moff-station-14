@@ -454,6 +454,17 @@
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-cargo
+#Service
+
+#Bartender
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtBartenderRed
+  name: saloon owner's uniform
+  description: A nice and tidy uniform. Ideal for post-duel drinks.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/bartender_red.rsi
 
 #Janitor
 - type: entity

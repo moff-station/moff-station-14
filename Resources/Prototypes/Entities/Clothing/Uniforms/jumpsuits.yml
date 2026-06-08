@@ -27,7 +27,7 @@
   description: A nice and tidy uniform. Shame about the bar though.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/bartender.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -36,9 +36,9 @@
   description: A decent jacket, for a decent monkey.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/punpun.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/punpun.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/punpun.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/punpun.rsi # Moffstation
   - type: SuitSensor
     controlsLocked: false
     randomMode: false
@@ -51,9 +51,9 @@
   description: A special purple outfit to serve drinks.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/bartender_purple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender_purple.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/bartender_purple.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender_purple.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -80,7 +80,7 @@
   # sprite: Clothing/Uniforms/Jumpsuit/cargotech.rsi #Moffstation - End - Cargo Outfits
 
 - type: entity
-  parent: ClothingUniformBase # Moffstation
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitSalvageSpecialist
   name: salvage specialist's jumpsuit
   description: It's a snappy jumpsuit with a sturdy set of overalls. It's very dirty.
@@ -163,9 +163,9 @@
   description: Can't cook without this.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chef.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/chef.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
@@ -622,9 +622,9 @@
   description: 'What can brown do for you?'
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qm.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -644,9 +644,9 @@
   description: Inspired by the quartermasters of military's past, the perfect outfit for supplying a formal occasion.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/qmformal.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmformal.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpsuit/qmformal.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/qmformal.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -807,9 +807,9 @@
   description: A cosy green jumper fit for a curator of books.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/librarian.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/librarian.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/librarian.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/librarian.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -818,9 +818,9 @@
   description: It's sensible. Too sensible...
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/curator.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/curator.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/curator.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/curator.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -840,9 +840,9 @@
   description: A flashy blue suit worn by lawyers and show-offs.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblue.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblue.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -851,9 +851,9 @@
   description: A subtle black suit worn by lawyers and gangsters.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblack.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblack.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblack.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblack.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -873,9 +873,9 @@
   description: A tacky suit perfect for a CRIMINAL lawyer!
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/lawyergood.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyergood.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpsuit/lawyergood.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyergood.rsi # Moffstation
 
 - type: entity
   parent: [UnsensoredClothingUniformBase, BaseSyndicateContraband]
@@ -1146,9 +1146,9 @@
   description: A fancy tuxedo for the musically inclined.  Perfect for any lounge act!
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/musician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/musician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/musician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/musician.rsi # Moffstation
 
 - type: entity
   parent: [ BaseCentcommContraband, ClothingUniformBase ]
@@ -1375,7 +1375,7 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_officer.rsi # Moffstation
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, BaseSlicingRefinable]
   id: ClothingUniformJumpsuitWeb
   name: web jumpsuit
   description: Makes it clear that you are one with the webs.
@@ -1384,9 +1384,8 @@
     sprite: Clothing/Uniforms/Jumpsuit/web.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/web.rsi
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: MaterialWebSilk1
       amount: 8
   - type: FlavorProfile

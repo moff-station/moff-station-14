@@ -1,0 +1,25 @@
+- type: quickPhrase
+  parent: [ BaseJusticePhrase, BaseSubjectPhrase ]
+  abstract: true
+  id: BaseJusticeSubjectPhrase
+
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseWitness }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseEvidence }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseCase }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseSue }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseCourtroomTimer }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseBailiff }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseSentence }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseDefendant }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhrasePlaintiff }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseVictim }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseDefense }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseProsecution }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseStatement }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseGavel }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseCharge }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseGuilty }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseNotGuilty }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseObjection }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseNeedMoreTime }
+- { type: quickPhrase, parent: BaseJusticeSubjectPhrase, id: PhraseYourHonor }

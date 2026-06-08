@@ -63,9 +63,9 @@
     state: storage
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 2
   cost:
-    Telecrystal: 3
+    Telecrystal: 4
   categories:
   - UplinkAllies
 
@@ -94,9 +94,9 @@
     color: "#FF69B4"
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 2
   cost:
-    Telecrystal: 3
+    Telecrystal: 4
   categories:
   - UplinkJob
   conditions:
@@ -104,6 +104,25 @@
     whitelist:
     - Mime
     - Clown
+
+- type: listing
+  id: UplinkMobCatReject
+  name: uplink-mobcat-reject-name
+  description: uplink-mobcat-reject-desc
+  icon: { sprite: _Moffstation/Objects/Devices/syndicatyarn.rsi, state: radio-syndicat }
+  productEntity: ReinforcementRadioSyndicateSyndiCatReject
+  discountCategory: rareDiscounts
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkAllies
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 # Other
 - type: listing #This is the old necronomicon but spicier.
