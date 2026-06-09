@@ -11,3 +11,22 @@
         Quantity: 5
       - ReagentId: Protein
         Quantity: 5
+
+- type: entity
+  parent: FoodMeatCookedBase
+  id: FoodMeatMilkSteak
+  name: milk steak
+  description: Would go great with a side of raw jellybeans.
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 5
+      - ReagentId: Milk
+        Quantity: 10
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/meat.rsi
+    state: milksteak
