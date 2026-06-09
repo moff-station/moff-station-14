@@ -14,4 +14,4 @@ antag-catagory-nanotrasen-name = Nanotrasen
 antag-catagory-nanotrasen-desc = The company you (allegedly) work for. Glory to Nanotrasen!
 
 antag-catagory-misc-name = Other
-antag-catagory-misc-desc = Roles which don't fall any of the other factions
+antag-catagory-misc-desc = Various roles which don't fall under the other factions.
