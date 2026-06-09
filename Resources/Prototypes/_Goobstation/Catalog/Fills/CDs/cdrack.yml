@@ -6,6 +6,6 @@
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:NestedSelector
-        tableId: RandomCDDisk
+        tableId: RandomCDDisc
         rolls: !type:RangeNumberSelector
           range: 4, 8
