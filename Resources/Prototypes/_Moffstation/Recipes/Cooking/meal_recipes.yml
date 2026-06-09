@@ -76,3 +76,14 @@
     Tricordrazine: 20
   solids:
     FoodMeatChicken: 1
+
+- type: microwaveMealRecipe
+  id: RecipeMilkSteak
+  name: milk steak recipe
+  result: FoodMeatMilkSteak
+  time: 15
+  group: Other
+  reagents:
+    Milk: 20
+  solids:
+    FoodMeat: 1
