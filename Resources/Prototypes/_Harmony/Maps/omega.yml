@@ -1,9 +1,9 @@
 - type: gameMap
   id: Omega
   mapName: 'Omega'
-  mapPath: /Maps/omega.yml
-  minPlayers: 7
-  maxPlayers: 50  # Moffstation - Playercount changes
+  mapPath: /Maps/_Harmony/omega.yml
+  minPlayers: 1
+  maxPlayers: 35
   stations:
     Omega:
       stationProto: StandardNanotrasenStation
@@ -16,7 +16,7 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_omega.yml
         - type: StationJobs
-          availableJobs: # 48 jobs total w/o latejoins & interns, 57 jobs total w/ latejoins & interns
+          availableJobs: # 48 jobs total without interns, 56 jobs total with interns
             #command (7)
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
@@ -25,32 +25,33 @@
             ChiefEngineer: [ 1, 1 ]
             ResearchDirector: [ 1, 1 ]
             Quartermaster: [ 1, 1 ]
-            #service (9 - 10)
+            #service (10)
             Bartender: [ 1, 1 ]
             Botanist: [ 2, 2 ]
             Chef: [ 1, 1 ]
-            Janitor: [ 1, 2 ]
+            Janitor: [ 2, 2 ]
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 2, 2 ]
             #engineering (5)
             AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 3, 4 ] #CD - Intern not counted
-            # TechnicalAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            StationEngineer: [ 3, 3 ]
+            # TechnicalAssistant: [ 2, 2 ] # Moffstation - Removed role
             #medical (6)
             Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 3, 4 ] #CD - Intern not counted
+            MedicalDoctor: [ 3, 3 ]
             Paramedic: [ 1, 1 ]
-            # MedicalIntern: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
-            #science (4)
-            Scientist: [ 4, 5 ] #CD - Intern not counted
-            # ResearchAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            # MedicalIntern: [ 2, 2 ] # Moffstation - Removed role
+            #science (3)
+            Scientist: [ 3, 3 ]
+            # ResearchAssistant: [ 2, 2 ] # Moffstation - Removed role
             #security (7)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 4, 5 ] #CD - Intern not counted
+            SecurityOfficer: [ 4, 4 ]
             Detective: [ 1, 1 ]
-            # SecurityCadet: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+            # SecurityCadet: [ 2, 2 ] # Moffstation - Removed role
             Lawyer: [ 1, 1 ]
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
             #supply (4)
             SalvageSpecialist: [ 2, 2 ]
             CargoTechnician: [ 2, 2 ]
@@ -62,5 +63,3 @@
             #silicon (3)
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
-            # Moffstation - custom roles below
-            Prisoner: [ 1, 1 ]

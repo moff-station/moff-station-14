@@ -486,6 +486,17 @@
 
 - type: entity
   parent: BaseFigurineMoff
+  id: ToyFigurineIchabod
+  name: pumpkin mime figurine
+  description: A figurine depicting a grinning pumpkin-headed moth mime. It's a bobblehead, but the head has been glued on firmly.
+  components:
+  - type: Sprite
+    state: ichabod
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
+
+- type: entity
+  parent: BaseFigurineMoff
   id: ToyFigurineIris
   name: burnt orange moth figurine
   description: A figurine depicting a tall orange mothperson in research director uniform.
