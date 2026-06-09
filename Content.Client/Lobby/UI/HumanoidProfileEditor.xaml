@@ -4,8 +4,8 @@
          xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
          xmlns:ui="clr-namespace:Content.Client.Lobby.UI"
          xmlns:profileEditorControls="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls"
-         xmlns:ui1="clr-namespace:Content.Client._Moffstation.Antags.UI"
-         xmlns:ui2="clr-namespace:Content.Client._DV.Traits.UI"
+         xmlns:moffAntagUi="clr-namespace:Content.Client._Moffstation.Antags.UI"
+         xmlns:dvTraitUi="clr-namespace:Content.Client._DV.Traits.UI"
          HorizontalExpand="True">
         <!-- Left side -->
         <BoxContainer Orientation="Vertical" Margin="10 10 10 10" HorizontalExpand="True">
@@ -131,7 +131,7 @@
                 <!--         <BoxContainer Name="AntagList" Orientation="Vertical" /> -->
                 <!--     </ScrollContainer> -->
                 <!-- </BoxContainer> -->
-                <ui1:SpecialRolesTab Name="Antags"/>
+                <moffAntagUi:SpecialRolesTab Name="Antags"/>
                 <!-- Moffstation - End -->
 
                 <!-- DV - Traits -->
@@ -141,7 +141,7 @@
                 <!--         <BoxContainer Name="TraitsList" Orientation="Vertical" /> -->
                 <!--     </ScrollContainer> -->
                 <!-- </BoxContainer> -->
-                <ui2:TraitsTab Name="Traits"/>
+                <dvTraitUi:TraitsTab Name="Traits"/>
                 <!-- End DV -->
                 <BoxContainer Name="MarkingsTab" Orientation="Vertical" Margin="10">
                     <!-- Markings -->

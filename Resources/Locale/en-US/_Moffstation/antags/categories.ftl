@@ -1,4 +1,4 @@
-antag-category-enabled = { $selected }/{ $total } enabled
+antag-category-enabled = {$selected}/{$total} enabled
 
 antag-catagory-syndicate-name = Syndicate
 antag-catagory-syndicate-desc = The Spinward Syndicate (often shortened to just ‘The Syndicate’) is a loose coalition of corporations, criminal enterprises and minor factions of all shapes and sizes. While united by their hatred of Nanotrasen, the Syndicate's members often squabble amongst themselves over their often-contrasting ideals.

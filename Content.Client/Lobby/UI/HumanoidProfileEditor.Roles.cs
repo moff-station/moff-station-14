@@ -378,7 +378,6 @@ public sealed partial class HumanoidProfileEditor
 
             antagContainer.AddChild(selector);
 
-            // Moffstation - Begin - Enable loadouts for antags
             var loadoutWindowBtn = new Button()
             {
                 // Disabled = true,
@@ -415,10 +414,8 @@ public sealed partial class HumanoidProfileEditor
                     OpenLoadout(null, loadout, roleLoadoutProto);
                 };
             }
-            // Moffstation - End
-
             AntagList.AddChild(antagContainer);
         }
     }
-    */
+    */ // Moffstation - End
 }
