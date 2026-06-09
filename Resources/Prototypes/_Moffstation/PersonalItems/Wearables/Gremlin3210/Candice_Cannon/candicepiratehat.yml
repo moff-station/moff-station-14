@@ -1,0 +1,18 @@
+# Player: Gremlin3210 - Character: Candice Cannon
+
+- type: entity
+  parent: ClothingHeadHatPirate
+  id: &id PersonalItemCandicePirateHat
+  name: Candice's hat
+  description: A classic pirate hat with the name 'Candice' written on the inside brim in faded ink. Clearly someone's personal property.
+  suffix: PersonalItem
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Candice Cannon
