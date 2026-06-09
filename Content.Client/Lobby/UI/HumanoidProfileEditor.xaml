@@ -3,9 +3,9 @@
          xmlns:humanoid="clr-namespace:Content.Client.Humanoid"
          xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
          xmlns:ui="clr-namespace:Content.Client.Lobby.UI"
-         xmlns:traits="clr-namespace:Content.Client._DV.Traits.UI"
          xmlns:profileEditorControls="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls"
          xmlns:ui1="clr-namespace:Content.Client._Moffstation.Antags.UI"
+         xmlns:ui2="clr-namespace:Content.Client._DV.Traits.UI"
          HorizontalExpand="True">
         <!-- Left side -->
         <BoxContainer Orientation="Vertical" Margin="10 10 10 10" HorizontalExpand="True">
@@ -141,7 +141,7 @@
                 <!--         <BoxContainer Name="TraitsList" Orientation="Vertical" /> -->
                 <!--     </ScrollContainer> -->
                 <!-- </BoxContainer> -->
-                <traits:TraitsTab Name="Traits"/>
+                <ui2:TraitsTab Name="Traits"/>
                 <!-- End DV -->
                 <BoxContainer Name="MarkingsTab" Orientation="Vertical" Margin="10">
                     <!-- Markings -->

@@ -413,15 +413,6 @@ namespace Content.Client.Lobby.UI
             SetDirty();
         }
 
-        private void OnAntagsSelectionChanged(HashSet<ProtoId<AntagPrototype>> antags) // Moffstation
-        {
-            if (Profile is null)
-                return;
-
-            Profile = Profile.WithAntagPreferences(antags);
-            SetDirty();
-        }
-
         /// <summary>
         /// Updates the traits tab with the current profile's selected traits.
         /// </summary>
@@ -447,7 +438,6 @@ namespace Content.Client.Lobby.UI
             Traits.SetSelectedTraits(selectedTraits);
             Traits.UpdateConditions(Profile.Species);
         }
-        // End DeltaV - Traits Integration
 
         /// <summary>
         /// Refreshes the flavor text editor status.
@@ -568,11 +558,21 @@ namespace Content.Client.Lobby.UI
         //         }
         //     }
         // }
+        // End DeltaV - Traits Integration
 
         // Moffstation - Start - Antags
         public void RefreshAntags()
         {
             Antags.RefreshAntags(Profile);
+        }
+
+        private void OnAntagsSelectionChanged(HashSet<ProtoId<AntagPrototype>> antags) // Moffstation
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithAntagPreferences(antags);
+            SetDirty();
         }
         // Moffstation - End
 
