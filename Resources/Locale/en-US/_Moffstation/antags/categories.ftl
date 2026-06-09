@@ -1,16 +1,17 @@
 antag-category-enabled = { $selected }/{ $total } enabled
 
 antag-catagory-syndicate-name = Syndicate
-antag-catagory-syndicate-desc = Founded by Cybersun Industries at some point a few decades ago, the Spinward Syndicate (usually shortened to the Syndicate) is a patchwork mix of groups, ranging from ill-reputed thugs and mercenaries to esteemed businessmen and scientific luminaries, all bound together by a desire to force Nanotrasen out of the Spinward Periphery.
+antag-catagory-syndicate-desc = The Spinward Syndicate (often shortened to just ‘The Syndicate’) is a loose coalition of corporations, criminal enterprises and minor factions of all shapes and sizes. While united by their hatred of Nanotrasen, the Syndicate's members often squabble amongst themselves over their often-contrasting ideals.
 
+# USSP currently unused but we keep for later :godo:
 antag-catagory-ussp-name = USSP
-antag-catagory-ussp-desc = Conceived in the struggle against the Trans-Solar Federation's overarching and pro-corporate unity, the Union of Soviet Socialist Planets is the single largest splinter faction of humanity. Collectivist in nature, the USSP espouses that the well-being of many is better served through collective ownership and broad governance rather than by the individual or the corporation.
+antag-catagory-ussp-desc = Conceived in the shadows of the ever-expanding megacorporations, the Union of Soviet Socialist Planets is a collectivist splinter faction of humanity that intends to spread its ideals of anti-capitalism and shared struggle throughout known space.
 
 antag-catagory-outlaws-name = Outlaws
-antag-catagory-outlaws-desc = Outlaws are a classification
+antag-catagory-outlaws-desc = In the cracks between major corporations and countries, numerous outlaws plot in the shadows. They may be in it for themselves or to further the schemes of any number of minor factions.
 
 antag-catagory-nanotrasen-name = Nanotrasen
-antag-catagory-nanotrasen-desc = Crew-Aligned Special roles
+antag-catagory-nanotrasen-desc = The company you (allegedly) work for. Glory to Nanotrasen!
 
 antag-catagory-misc-name = Other
 antag-catagory-misc-desc = Roles which don't fall any of the other factions
