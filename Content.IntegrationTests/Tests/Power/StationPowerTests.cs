@@ -45,6 +45,7 @@ public sealed class StationPowerTests : GameTest
         "Prime", // Moffstation (From Harmony)
         "Scylla", // Moffstation (From Harmony)
         "Wapiti", // Moffstation (From Harmony)
+        "Jellyfish", // Moffstation (From Harmony)
     ];
 
     public override PoolSettings PoolSettings => new ()
