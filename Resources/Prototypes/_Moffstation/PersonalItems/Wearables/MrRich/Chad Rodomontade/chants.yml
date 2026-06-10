@@ -12,9 +12,9 @@
   - type: Clothing
     sprite: *sprite
     equipSound:
-      path: _Moffstation/Effects/Cards/cardTakeOutPackage1.ogg
+      path: /Audio/_Moffstation/Effects/Cards/cardTakeOutPackage1.ogg
     unequipSound:
-      path: _Moffstation/Effects/Cards/cardFan1.ogg
+      path: /Audio/_Moffstation/Effects/Cards/cardFan1.ogg
     slots:
     - INNERCLOTHING
     - HEAD
@@ -22,8 +22,8 @@
 
 - type: loadout
   id: *id
-  equipment:
-    jumpsuit: *id
+  inhand:
+  - *id
   effects:
   - !type:PersonalItemLoadoutEffect
     character:
