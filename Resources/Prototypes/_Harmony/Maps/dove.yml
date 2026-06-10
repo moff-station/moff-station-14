@@ -2,8 +2,10 @@
   id: Dove
   mapName: 'Dove'
   mapPath: /Maps/_Harmony/dove.yml
+  # Moffstation - Start - ULP Map Pool (May want to adjust for this one, but lets test in game first)
   minPlayers: 11
   maxPlayers: 31
+  # Moffstation - End
   stations:
     Dove:
       stationProto: StandardNanotrasenStation
