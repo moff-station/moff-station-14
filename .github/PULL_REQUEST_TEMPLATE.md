@@ -15,33 +15,19 @@ See the Harmony contributing guidelines for an example on what we want: https://
 ## Technical details
 <!-- Summary of code changes for easier review. Only required for complex changes-->
 
-## Test plan
-<!--
-Describe how you tested the pull request, and how someone reviewing this PR can test it themselves.
--->
-
 ## Media
 <!-- Attach media if the PR makes in-game changes (clothing, items, features, etc). -->
 
 ## Requirements
 <!-- Confirm the following by placing an X in the brackets without spaces inside (for example: [X] ): -->
-- [ ] I have read and am following the [Upstream Pull Request and Changelog Guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) as well as the [Moffstation Contributing Guidelines](https://github.com/moff-station/moff-station-14/blob/master/CONTRIBUTING.md).
-- [ ] I have properly sectioned my changes into fork namespaces, and/or followed proper guidelines for modifying upstream files.
-- [ ] I have tested this pull request and written instructions on how to test it
-- [ ] I have added media to this PR or it does not require an in-game showcase.
+- [ ] I have read and am following the [Moffstation Contributing Guidelines](https://github.com/moff-station/moff-station-14/blob/master/CONTRIBUTING.md).
+- [ ] I have properly sectioned my changes into fork namespaces.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->
 
-## Breaking changes
-<!-- List any breaking changes, including namespaces, public class/method/field changes, prototype renames; and provide instructions for fixing them.
-This will be posted in #codebase-changes. -->
-
 ## Changelog
-<!-- Add a Changelog entry to make players aware of new features or changes that could affect gameplay.
-Make sure to read the guidelines and take this Changelog template out of the comment block in order for it to show up.
-Changelog must have a :cl: symbol, so the bot recognizes the changes and adds them to the game's changelog. -->
-<!-- Changelog changes go here, below the :cl:-->
+<!-- Changelog entries go below the :cl:-->
 :cl:
-
+- add: This is an example, change me to fit your PR!
 
 <!-- Changelog Changes go above here, these are the templates
 - add: Added fun!
