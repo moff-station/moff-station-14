@@ -2,8 +2,8 @@
   id: Dove
   mapName: 'Dove'
   mapPath: /Maps/_Harmony/dove.yml
-  minPlayers: 1
-  maxPlayers: 35
+  minPlayers: 11
+  maxPlayers: 31
   stations:
     Dove:
       stationProto: StandardNanotrasenStation
@@ -33,26 +33,26 @@
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 1, 1 ]
-            Boxer: [ 1, 1 ]
+            #Boxer: [ 1, 1 ] # Moffstation - Le sigh
             Reporter: [ 1, 1 ]
             #engineering (4-5)
             AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 2, 3 ]
-            TechnicalAssistant: [ 1, 1 ] #intern, not counted
+            StationEngineer: [ 3, 4 ] # Moffstation - Intern roles added to count
+            #TechnicalAssistant: [ 1, 1 ] # Moffstation - No interns, added to normal role count
             #medical (5)
             Chemist: [ 1, 1 ]
-            MedicalDoctor: [ 2, 2 ]
+            MedicalDoctor: [ 3, 3 ] # Moffstation - Intern roles added to count
             Paramedic: [ 1, 1 ]
             Psychologist: [ 1, 1 ]
-            MedicalIntern: [ 1, 1 ] #intern, not counted
+            #MedicalIntern: [ 1, 1 ] # Moffstation - No interns, added to normal role count
             #science (2-3)
-            Scientist: [ 2, 3 ]
-            ResearchAssistant: [ 1, 1 ] #intern, not counted
+            Scientist: [ 3, 4 ] # Moffstation - Intern roles added to count
+            #ResearchAssistant: [ 1, 1 ] #intern, not counted
             #security (5-6)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 2, 3 ]
+            SecurityOfficer: [ 3, 4 ] # Moffstation - Intern roles added to count
             Detective: [ 1, 1 ]
-            SecurityCadet: [ 1, 2 ] #intern, not counted
+            #SecurityCadet: [ 1, 2 ] # Moffstation - No interns, added to normal role count
             Lawyer: [ 1, 1 ]
             #supply (4-5)
             SalvageSpecialist: [ 2, 2 ]
