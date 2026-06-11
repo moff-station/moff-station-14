@@ -142,6 +142,15 @@ public sealed partial class DoorSystem : SharedDoorSystem
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.OpenKey))
                     return;
 
+                // Moffstation - Start - Don't stop animations
+                /*
+                if (_animationSystem.HasRunningAnimation(entity, DoorComponent.CloseKey))
+                {
+                    _animationSystem.Stop(entity, null, DoorComponent.CloseKey);
+                    _animationSystem.Play(entity, (Animation)entity.Comp.OpeningAnimation, DoorComponent.OpenKey);
+                }
+                */ // Moffstation - End
+
                 foreach (var (layer, layerState) in entity.Comp.OpenSpriteStates)
                 {
                     // Allow animations to play while it's open (e.g., pinion);
@@ -154,6 +163,15 @@ public sealed partial class DoorSystem : SharedDoorSystem
             case DoorState.Closed:
                 if (_animationSystem.HasRunningAnimation(entity, DoorComponent.CloseKey))
                     return;
+
+                // Moffstation - Start - Don't stop animations
+                /*
+                if (_animationSystem.HasRunningAnimation(entity, DoorComponent.OpenKey))
+                {
+                    _animationSystem.Stop(entity, null, DoorComponent.OpenKey);
+                    _animationSystem.Play(entity, (Animation)entity.Comp.OpeningAnimation, DoorComponent.OpenKey);
+                }
+                */ // Moffstation - End
 
                 foreach (var (layer, layerState) in entity.Comp.ClosedSpriteStates)
                 {
