@@ -25,7 +25,7 @@
       prob: 0.01
 
 - type: entity
-  id: TarboldMigration
+  id: NerdboldMigration
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
@@ -33,14 +33,14 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
-    weight: 0 # Disabled for now - no special treatment for players
+    weight: 4 # less common than mothroaches at least
     duration: 30
   - type: VentCrittersRule
     entries:
-    - id: MobTarbold
+    - id: MobNerdbold
       prob: 0.02
     specialEntries:
-    - id: MobTarbold
+    - id: MobNerdbold
       prob: 0.001
 
 - type: entity

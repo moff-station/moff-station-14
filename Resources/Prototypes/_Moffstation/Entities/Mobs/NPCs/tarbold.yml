@@ -1,12 +1,12 @@
 - type: entity
   name: kobold
-  id: MobBaseTarbold
+  id: MobBaseNerdbold
   parent: MobBaseKobold
-  description: Genetically stunted clones of a beloved lizard. Wearing jamjars from birth until death.
+  description: Failed lizard clones. Wearing jamjars from birth until death.
   abstract: true
   components:
   - type: NameIdentifier
-    group: Tarbold
+    group: Nerdbold
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -56,10 +56,10 @@
     rules: ghost-role-information-freeagent-rules
 
 - type: entity
-  name: Tarbold
-  id: MobTarbold
-  parent: MobBaseTarbold
-  description: Genetically stunted clones of a beloved lizard. Wearing jamjars from birth until death.
+  name: Nerdbold
+  id: MobNerdbold
+  parent: MobBaseNerdbold
+  description: Failed lizard clones. Wearing jamjars from birth until death.
   components:
   - type: Clumsy
     gunShootFailDamage:
