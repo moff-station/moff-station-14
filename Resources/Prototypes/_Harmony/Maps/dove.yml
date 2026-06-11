@@ -1,0 +1,69 @@
+- type: gameMap
+  id: Dove
+  mapName: 'Dove'
+  mapPath: /Maps/_Harmony/dove.yml
+  # Moffstation - Start - ULP Map Pool (May want to adjust for this one, but lets test in game first)
+  minPlayers: 11
+  maxPlayers: 31
+  # Moffstation - End
+  stations:
+    Dove:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Dove Station {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_crimson.yml
+        - type: StationJobs
+          availableJobs: # 43 jobs total w/o latejoins & interns, 52 jobs total w/ latejoins & interns
+            #command (7)
+            Captain: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            ChiefMedicalOfficer: [ 1, 1 ]
+            ChiefEngineer: [ 1, 1 ]
+            ResearchDirector: [ 1, 1 ]
+            Quartermaster: [ 1, 1 ]
+            #service (10)
+            Bartender: [ 1, 1 ]
+            Botanist: [ 1, 1 ]
+            Chef: [ 1, 1 ]
+            Janitor: [ 2, 2 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            ServiceWorker: [ 1, 1 ]
+            #Boxer: [ 1, 1 ] # Moffstation - Le sigh
+            Reporter: [ 1, 1 ]
+            #engineering (4-5)
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 3, 4 ] # Moffstation - Intern roles added to count
+            #TechnicalAssistant: [ 1, 1 ] # Moffstation - No interns, added to normal role count
+            #medical (5)
+            Chemist: [ 1, 1 ]
+            MedicalDoctor: [ 3, 3 ] # Moffstation - Intern roles added to count
+            Paramedic: [ 1, 1 ]
+            Psychologist: [ 1, 1 ]
+            #MedicalIntern: [ 1, 1 ] # Moffstation - No interns, added to normal role count
+            #science (2-3)
+            Scientist: [ 3, 4 ] # Moffstation - Intern roles added to count
+            #ResearchAssistant: [ 1, 1 ] #intern, not counted
+            #security (5-6)
+            Warden: [ 1, 1 ]
+            SecurityOfficer: [ 3, 4 ] # Moffstation - Intern roles added to count
+            Detective: [ 1, 1 ]
+            #SecurityCadet: [ 1, 2 ] # Moffstation - No interns, added to normal role count
+            Lawyer: [ 1, 1 ]
+            #supply (4-5)
+            SalvageSpecialist: [ 2, 2 ]
+            CargoTechnician: [ 2, 3 ]
+            #civilian (3+)
+            Passenger: [ -1, -1 ] #infinite, not counted
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            #silicon (3)
+            StationAi: [ 1, 1 ]
+            Borg: [ 2, 2 ]
