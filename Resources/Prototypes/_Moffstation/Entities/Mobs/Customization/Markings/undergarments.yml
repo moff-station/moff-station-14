@@ -120,3 +120,39 @@
   sprites:
   - sprite: _Moffstation/Mobs/Customization/undergarments.rsi
     state: thong_resomi
+
+- type: marking
+  id: UndergarmentBottomPantaloonsGray
+  bodyPart: UndergarmentBottom
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Gray/undergarments.rsi
+    state: pantaloons
+
+- type: marking
+  id: UndergarmentBottomOnePieceGray
+  bodyPart: UndergarmentBottom
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Gray/undergarments.rsi
+    state: onepiece
+
+- type: marking
+  id: UndergarmentBottomPlasticBagGray
+  bodyPart: UndergarmentBottom
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Gray/undergarments.rsi
+    state: plasticbag

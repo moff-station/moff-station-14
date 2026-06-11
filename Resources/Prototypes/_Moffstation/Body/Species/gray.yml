@@ -1,0 +1,490 @@
+﻿- type: markingsGroup
+  parent: Undergarments
+  id: Gray
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Special:
+      limit: 10
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Eyes:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 4
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.UndergarmentBottom:
+      limit: 2
+      required: false
+      nudityDefault: [ UndergarmentBottomOnePieceGray ]
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceGray
+  name: gray appearance
+  components:
+  - type: Sprite # Drawlayers. Top to bottom in order I believe.
+    netsync: false
+    layers:
+    # Torso
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+
+    # Head
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+
+    # Limbs
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+
+    # Underwear
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "jumpsuit" ]
+
+    # Extremities
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+
+    # More equipment
+    - map: [ "gloves" ]
+    - map: [ "shoes" ]
+    - map: [ "ears" ]
+    - map: [ "eyes" ]
+    - map: [ "id" ]
+    - map: [ "outerClothing" ]
+    - map: [ "belt" ]
+    - map: [ "back" ]
+    - map: [ "neck" ]
+
+    # Stuff that appears above equipment.
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+
+    # Stuff that goes in front of stuff that goes in front of equipment
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+
+    # Extras
+  - type: Inventory
+    speciesId: gray
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: &displacement.rsi "_Moffstation/Mobs/Species/Gray/displacement.rsi"
+            state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: head
+      eyes:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: eyes
+      gloves:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: hands
+      back:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: back
+      ears:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: ears
+      shoes:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: feet
+      neck:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: neck
+      mask:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: mask
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: outerClothing
+      suitstorage:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: suitStorage
+      belt:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: belt
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: head
+      eyes:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: eyes
+      gloves:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: hands
+      back:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: back
+      ears:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: ears
+      shoes:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: feet
+      neck:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: neck
+      mask:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: mask
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: outerClothing
+      suitstorage:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: suitStorage
+      belt:
+        sizeMaps:
+          32:
+            sprite: *displacement.rsi
+            state: belt
+  - type: Hands
+    handDisplacement:
+      sizeMaps:
+        32:
+          sprite: *displacement.rsi
+          state: inHand
+  - type: InitialBody
+    organs:
+      Torso: OrganGrayTorso
+      Head: OrganGrayHead
+      ArmLeft: OrganGrayArmLeft
+      ArmRight: OrganGrayArmRight
+      HandRight: OrganGrayHandRight
+      HandLeft: OrganGrayHandLeft
+      LegLeft: OrganGrayLegLeft
+      LegRight: OrganGrayLegRight
+      FootLeft: OrganGrayFootLeft
+      FootRight: OrganGrayFootRight
+      Brain: OrganGrayBrain
+      Eyes: OrganGrayEyes
+      Tongue: OrganGrayTongue
+      Appendix: OrganGrayAppendix
+      Ears: OrganGrayEars
+      Lungs: OrganGrayLungs
+      Heart: OrganGrayHeart
+      Stomach: OrganGrayStomach
+      Liver: OrganGrayLiver
+      Kidneys: OrganGrayKidneys
+  - type: HumanoidProfile
+    species: Gray
+  - type: FireVisuals
+    sprite: _Moffstation/Mobs/Effects/onfire.rsi
+    normalState: Gray_minor_burning
+    alternateState: Gray_burning
+
+- type: entity
+  parent:
+  - AppearanceGray
+  - BaseSpeciesMobOrganic
+  id: MobGray
+  name: Urist McGlorp
+  components:
+  - type: Damageable
+    damageModifierSet: Gray
+  - type: Speech
+    speechVerb: Gray
+    speechSounds: UnisexGray
+  - type: TypingIndicator
+    proto: gray
+  - type: Vocal
+    sounds:
+      Male: UnisexGray
+      Female: UnisexGray
+      Unsexed: UnisexGray
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 3
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Caustic
+        damage: 400
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: false
+        spawn:
+          Acidifier:
+            min: 1
+            max: 1
+      - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 400
+      behaviors:
+      - !type:GibBehavior { }
+      - !type:BurnBodyBehavior
+        popupMessage: bodyburn-text-others
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MeatLaserImpact
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: mouth-taste-metal
+        popupType: LargeCaution
+        targetOnly: true
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 40
+      behaviors:
+      - !type:VomitBehavior
+  - type: DamageVisuals
+    thresholds: [ 10, 20, 30, 50, 70, 100 ]
+    targetLayers:
+    - "enum.HumanoidVisualLayers.Chest"
+    - "enum.HumanoidVisualLayers.Head"
+    - "enum.HumanoidVisualLayers.LArm"
+    - "enum.HumanoidVisualLayers.LLeg"
+    - "enum.HumanoidVisualLayers.RArm"
+    - "enum.HumanoidVisualLayers.RLeg"
+    damageOverlayGroups:
+      Brute:
+        sprite: _Moffstation/Mobs/Effects/Gray/brute_damage.rsi
+        color: "#5e4cb0"
+      Burn:
+        sprite: _Moffstation/Mobs/Effects/Gray/burn_damage.rsi
+  - type: Temperature
+    specificHeat: 44
+  - type: TemperatureDamage # Similar to Avali
+    heatDamageThreshold: 332
+    coldDamageThreshold: 215
+    coldDamage:
+      types:
+        Cold: 0.1 # Per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat: 1.5 # Per second, scales with temperature & other constants
+  - type: TemperatureProtection
+    heatingCoefficient: 1.2
+    coolingCoefficient: 0.50
+  - type: Bloodstream
+    bloodReferenceSolution:
+        reagents:
+        - ReagentId: GrayBlood
+          Quantity: 300
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 95 #tiny
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+
+- type: entity
+  parent: OrganBase
+  id: OrganGray
+  abstract: true
+  suffix: Gray
+
+- type: entity
+  id: OrganGrayMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gray ]
+
+- type: entity
+  parent: OrganGray
+  id: OrganGrayInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Gray/organs.rsi
+
+- type: entity
+  id: OrganGrayVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: &parts.rsi "_Moffstation/Mobs/Species/Gray/parts.rsi"
+  - type: VisualOrganMarkings
+    markingData:
+      group: Gray
+
+- type: entity
+  parent: [ OrganGray, OrganGrayVisual ]
+  id: OrganGrayExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: *parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorso, OrganGrayExternal ]
+  id: OrganGrayTorso
+
+- type: entity
+  parent: [ OrganBaseHead, OrganGrayExternal ]
+  id: OrganGrayHead
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganGrayExternal ]
+  id: OrganGrayArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganGrayExternal ]
+  id: OrganGrayArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganGrayExternal ]
+  id: OrganGrayHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganGrayExternal ]
+  id: OrganGrayHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganGrayExternal ]
+  id: OrganGrayLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganGrayExternal ]
+  id: OrganGrayLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganGrayExternal ]
+  id: OrganGrayFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganGrayExternal ]
+  id: OrganGrayFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganGrayInternal ]
+  id: OrganGrayBrain
+
+- type: entity
+  parent: [ OrganGrayVisual, OrganBaseEyes, OrganGrayInternal ]
+  id: OrganGrayEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Moffstation/Mobs/Customization/Gray/eyes.rsi
+      state: eyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganGrayInternal ]
+  id: OrganGrayTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganGrayInternal ]
+  id: OrganGrayAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganGrayInternal ]
+  id: OrganGrayEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayKidneys
