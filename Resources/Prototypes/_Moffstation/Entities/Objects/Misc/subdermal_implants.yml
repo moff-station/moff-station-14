@@ -12,3 +12,12 @@
     tags:
     - SubdermalImplant
     - HideContextMenu
+
+- type: entity
+  parent: RadioImplant
+  id: RadioImplantPermanant
+  name: permanant radio implant
+  description: This implant grants access to the Syndicate channel without a headset, which cannot be removed.
+  components:
+  - type: SubdermalImplant
+    permanent: true

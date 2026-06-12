@@ -1,13 +1,7 @@
 - type: entity
-  parent: MobSyndicateFootsoldier
-  id: MobSyndicateFootsoldierGhostRole
+  id: SyndicateFootsoldierGhostRoleSpawn
+  name: syndicate footsoldier role spawn point
   components:
-  - type: RandomHumanoidAppearance
-  - type: RandomMetadata
-    nameSegments: [ NamesDeathCommando ]
-  - type: Loadout
-    prototypes:
-    - SyndicateFootsoldierGearArmed
   - type: GhostRole
     makeSentient: true
     name: ghost-role-information-syndicate-solider-name
@@ -17,7 +11,22 @@
     - MindRoleGhostRoleSoloAntagonist
     raffle:
       settings: default
-  - type: GhostTakeoverAvailable
+  - type: GhostRoleMobSpawner
+    prototype: MobSyndicateFootsoldierGhostRole
+
+- type: entity
+  parent: MobSyndicateFootsoldier
+  id: MobSyndicateFootsoldierGhostRole
+  components:
+  - type: Loadout
+    prototypes:
+    - SyndicateFootsoldierGearArmed
+  - type: RandomHumanoidAppearance
+  - type: RandomMetadata
+    nameSegments: [ NamesDeathCommando ]
+  - type: AutoImplant
+    implants:
+    - RadioImplantPermanant
 
 - type: entity
   id: MobWildHumanoid
