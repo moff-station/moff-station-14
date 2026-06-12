@@ -40,8 +40,11 @@ public sealed partial class GroupSelector : EntityTableSelector
 
         var pick = SharedRandomExtensions.Pick(children, rand);
 
-        if (!WithReplacement || localPool != null) children.Remove(pick); // Moffstation - WithReplacement Selector
-        
+        // Moffstation - Start - WithReplacement Selector
+        if (!WithReplacement || localPool != null)
+            children.Remove(pick);
+        // Moffstation - End
+
         return pick.GetSpawns(rand, entMan, proto, ctx);
     }
 

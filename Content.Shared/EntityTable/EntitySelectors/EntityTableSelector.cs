@@ -58,7 +58,10 @@ public abstract partial class EntityTableSelector
         if (!CheckConditions(entMan, proto, ctx))
             yield break;
 
-        if (!WithReplacement && localPool == null) localPool = new Dictionary<EntityTableSelector, float>(); // Moffstation - WithReplacement Selector
+        // Moffstation - Start - WithReplacement Selector
+        if (!WithReplacement && localPool == null)
+            localPool = new Dictionary<EntityTableSelector, float>();
+        // Moffstation - End
 
         var rolls = Rolls.Get(rand);
         for (var i = 0; i < rolls; i++)
@@ -66,7 +69,10 @@ public abstract partial class EntityTableSelector
             if (!rand.Prob(Prob))
                 continue;
             
-            if (localPool != null && localPool.Count == 0 && i > 0) yield break; // Moffstation - WithReplacement Selector
+            // Moffstation - Start -WithReplacement Selector
+            if (localPool != null && localPool.Count == 0 && i > 0)
+                yield break;
+            // Moffstation - End
 
             foreach (var spawn in GetSpawnsImplementation(rand, entMan, proto, ctx, localPool)) // Moffstation - WithReplacement Selector
             {
