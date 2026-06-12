@@ -14,7 +14,8 @@ public sealed partial class AllSelector : EntityTableSelector
     protected override IEnumerable<EntProtoId> GetSpawnsImplementation(System.Random rand,
         IEntityManager entMan,
         IPrototypeManager proto,
-        EntityTableContext ctx)
+        EntityTableContext ctx,
+        Dictionary<EntityTableSelector, float>? children) // Moffstation - WithReplacement Selector
     {
         foreach (var child in Children)
         {

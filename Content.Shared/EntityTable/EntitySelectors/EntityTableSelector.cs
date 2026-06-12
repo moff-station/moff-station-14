@@ -29,6 +29,12 @@ public abstract partial class EntityTableSelector
     public double Prob = 1;
 
     /// <summary>
+    /// If the selected entity is replaced once it has been picked.
+    /// </summary>
+    [DataField]
+    public bool WithReplacement = true;
+
+    /// <summary>
     /// A list of conditions that must evaluate to 'true' for the selector to apply.
     /// </summary>
     [DataField]
@@ -44,18 +50,23 @@ public abstract partial class EntityTableSelector
     public IEnumerable<EntProtoId> GetSpawns(System.Random rand,
         IEntityManager entMan,
         IPrototypeManager proto,
-        EntityTableContext ctx)
+        EntityTableContext ctx,
+        Dictionary<EntityTableSelector, float>? localPool = null) // Moffstation - WithReplacement Selector
     {
         if (!CheckConditions(entMan, proto, ctx))
             yield break;
+
+        if (!WithReplacement && localPool == null) localPool = new Dictionary<EntityTableSelector, float>(); // Moffstation - WithReplacement Selector
 
         var rolls = Rolls.Get(rand);
         for (var i = 0; i < rolls; i++)
         {
             if (!rand.Prob(Prob))
                 continue;
+            
+            if (localPool != null && localPool.Count == 0 && i > 0) yield break; // Moffstation - WithReplacement Selector
 
-            foreach (var spawn in GetSpawnsImplementation(rand, entMan, proto, ctx))
+            foreach (var spawn in GetSpawnsImplementation(rand, entMan, proto, ctx, localPool)) // Moffstation - WithReplacement Selector
             {
                 yield return spawn;
             }
@@ -115,7 +126,8 @@ public abstract partial class EntityTableSelector
     protected abstract IEnumerable<EntProtoId> GetSpawnsImplementation(System.Random rand,
         IEntityManager entMan,
         IPrototypeManager proto,
-        EntityTableContext ctx);
+        EntityTableContext ctx,
+        Dictionary<EntityTableSelector, float>? localPool); // Moffstation - WithReplacement Selector
 
     protected abstract IEnumerable<(EntProtoId spawn, double)> ListSpawnsImplementation(IEntityManager entMan,
         IPrototypeManager proto,
