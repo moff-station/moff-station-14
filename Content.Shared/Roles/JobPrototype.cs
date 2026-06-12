@@ -95,9 +95,10 @@ public sealed partial class JobPrototype : IPrototype
     public bool? OverrideConsoleVisibility;
 
     /// <summary>
-    /// The "weight" or importance of this job. If this number is large, the job system will assign this job
-    /// before assigning other jobs.
-    /// </summary>
+        /// The "weight" or importance of this job. If this number is large, the job system will assign this job
+        /// before assigning other jobs.
+        /// Moffstation - This now makes heigher weight jobs more likely to be rolled, rather than given priority.
+        /// </summary>
     [DataField]
     public int Weight;
 

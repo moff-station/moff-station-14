@@ -100,16 +100,14 @@ public sealed partial class StationJobsSystem
         var stationShares = new Dictionary<EntityUid, int>(stations.Count);
 
         // Ok so the general algorithm:
-        // We start with the highest weight jobs and work our way down. We filter jobs by weight when selecting as well.
-        // Weight > Priority > Station.
-        foreach (var weight in _orderedWeights)
+        // foreach (var weight in _orderedWeights) // Moffstation - Weighted role rolling
         {
             for (var selectedPriority = JobPriority.High; selectedPriority > JobPriority.Never; selectedPriority--)
             {
                 if (profiles.Count == 0)
                     goto endFunc;
 
-                var candidates = GetPlayersJobCandidates(weight, selectedPriority, profiles);
+                var candidates = GetPlayersJobCandidates(null, selectedPriority, profiles); // Moffstation - Weighted role rolling
 
                 var optionsRemaining = 0;
 
@@ -160,12 +158,13 @@ public sealed partial class StationJobsSystem
                 {
                     var slots = currentlySelectingJobs[station];
 
-                    // Get all of the jobs in the selected weight category.
+                    // Moffstation - Start - Weighted role rolling
+                    // All jobs are included, weight affects probability in the selection pool below.
                     foreach (var (job, slot) in stationJobs[station])
                     {
-                        if (_jobsByWeight[weight].Contains(job))
-                            slots.Add(job, slot);
+                        slots.Add(job, slot);
                     }
+                    // Moffstation - End
                 }
 
 
@@ -225,7 +224,19 @@ public sealed partial class StationJobsSystem
                     var currStationSelectingJobs = currentlySelectingJobs[station];
                     // We only need this list because we need to go through this in a random order.
                     // Oh the misery, another allocation.
-                    var allJobs = currStationSelectingJobs.Keys.ToList();
+                    // Moffstation - Weighted role rolling - Begin
+                    // Each job is added once per weight point (minimum 1), so higher weight jobs appear more often and are proportionally more likely to be selected.
+                    var allJobs = new List<ProtoId<JobPrototype>>();
+                    foreach (var job in currStationSelectingJobs.Keys)
+                    {
+                        var jobWeight = _prototypeManager.TryIndex(job, out var jobProto) ? jobProto.Weight : 0;
+                        var repeatCount = Math.Max(1, jobWeight);
+                        for (var i = 0; i < repeatCount; i++)
+                        {
+                            allJobs.Add(job);
+                        }
+                    }
+                    // Moffstation - End
                     _random.Shuffle(allJobs);
                     // And iterates through all it's jobs in a random order until the count settles.
                     // No, AFAIK it cannot be done any saner than this. I hate "shaking" collections as much
