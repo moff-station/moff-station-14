@@ -1,15 +1,9 @@
 - type: gameMap
   id: Omega
   mapName: 'Omega'
-<<<<<<<< HEAD:Resources/Prototypes/_Moffstation/Maps/omega.yml
-  mapPath: /Maps/_Moffstation/omega.yml
+  mapPath: /Maps/_Harmony/omega.yml
   minPlayers: 26 # Low Pop
   maxPlayers: 60 # Low Pop
-========
-  mapPath: /Maps/_Harmony/omega.yml
-  minPlayers: 1
-  maxPlayers: 35
->>>>>>>> master:Resources/Prototypes/_Harmony/Maps/omega.yml
   stations:
     Omega:
       stationProto: StandardNanotrasenStation
@@ -22,11 +16,7 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_omega.yml
         - type: StationJobs
-<<<<<<<< HEAD:Resources/Prototypes/_Moffstation/Maps/omega.yml
-          availableJobs: # 49 jobs total w/o latejoins, 50 jobs total w/ latejoins
-========
           availableJobs: # 48 jobs total without interns, 56 jobs total with interns
->>>>>>>> master:Resources/Prototypes/_Harmony/Maps/omega.yml
             #command (7)
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
@@ -46,24 +36,11 @@
             #engineering (5)
             AtmosphericTechnician: [ 2, 2 ]
             StationEngineer: [ 3, 3 ]
-<<<<<<<< HEAD:Resources/Prototypes/_Moffstation/Maps/omega.yml
-========
             # TechnicalAssistant: [ 2, 2 ] # Moffstation - Removed role
->>>>>>>> master:Resources/Prototypes/_Harmony/Maps/omega.yml
             #medical (6)
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 3, 3 ]
             Paramedic: [ 1, 1 ]
-<<<<<<<< HEAD:Resources/Prototypes/_Moffstation/Maps/omega.yml
-            #science (4)
-            Scientist: [ 4, 4 ]
-            #security (8)
-            Warden: [ 1, 1 ]
-            SecurityOfficer: [ 4, 4 ]
-            Detective: [ 1, 1 ]
-            Lawyer: [ 1, 1 ]
-            Prisoner: [ 1, 1 ]
-========
             # MedicalIntern: [ 2, 2 ] # Moffstation - Removed role
             #science (3)
             Scientist: [ 3, 3 ]
@@ -75,7 +52,6 @@
             # SecurityCadet: [ 2, 2 ] # Moffstation - Removed role
             Lawyer: [ 1, 1 ]
             Prisoner: [ 1, 1 ] # Moffstation - Prisoners
->>>>>>>> master:Resources/Prototypes/_Harmony/Maps/omega.yml
             #supply (4)
             SalvageSpecialist: [ 2, 2 ]
             CargoTechnician: [ 2, 2 ]
