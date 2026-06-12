@@ -20,7 +20,7 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 10h
-  weight: 10
+  weight: 5 # Moffstation - Weighted role rolling
   startingGear: HoSGear
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-captain

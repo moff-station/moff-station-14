@@ -23,7 +23,7 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 4h
-  weight: 20
+  weight: 5 # Moffstation - Weighted role rolling
   startingGear: CaptainGear
   icon: "JobIconCaptain"
   joinNotifyCrew: true

@@ -13,7 +13,7 @@
   - !type:RoleTimeRequirement
     role: JobBorg
     time: 5h
-  weight: 10
+  weight: 5 # Moffstation - Weighted role rolling
   icon: JobIconStationAi
   supervisors: job-supervisors-rd
   jobEntity: StationAiBrain
