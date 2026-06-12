@@ -100,7 +100,7 @@ public sealed partial class JobPrototype : IPrototype
         /// Moffstation - This now makes heigher weight jobs more likely to be rolled, rather than given priority.
         /// </summary>
     [DataField]
-    public int Weight;
+    public int Weight = 1; // Moffstation - Default weight of 1
 
     /// <summary>
     /// How to sort this job relative to other jobs in the UI.

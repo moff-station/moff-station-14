@@ -225,13 +225,12 @@ public sealed partial class StationJobsSystem
                     // We only need this list because we need to go through this in a random order.
                     // Oh the misery, another allocation.
                     // Moffstation - Weighted role rolling - Begin
-                    // Each job is added once per weight point (minimum 1), so higher weight jobs appear more often and are proportionally more likely to be selected.
+                    // Each job is added once per weight point, so higher weight jobs appear more often and are proportionally more likely to be selected.
                     var allJobs = new List<ProtoId<JobPrototype>>();
                     foreach (var job in currStationSelectingJobs.Keys)
                     {
-                        var jobWeight = _prototypeManager.TryIndex(job, out var jobProto) ? jobProto.Weight : 0;
-                        var repeatCount = Math.Max(1, jobWeight);
-                        for (var i = 0; i < repeatCount; i++)
+                        var jobWeight = _prototypeManager.TryIndex(job, out var jobProto) ? jobProto.Weight : 1;
+                        for (var i = 0; i < jobWeight; i++)
                         {
                             allJobs.Add(job);
                         }
