@@ -14,8 +14,8 @@
     sprite: *sprite
   - type: Construction
     deconstructionTarget: null
-    graph: &graph PersonalItemRemiaPinSwapGraph
-    node: &remia swap_remia
+    graph: PersonalItemRemiaPinSwapGraph
+    node: swap_remia
 
 - type: entity
   parent: ClothingNeckMetallicBase
@@ -32,24 +32,24 @@
     content: "Emblazoned on the back of the badge is the unmistakable red S of the Syndicate."
   - type: Construction
     deconstructionTarget: null
-    graph: *graph
-    node: &loraine swap_loraine
+    graph: PersonalItemRemiaPinSwapGraph
+    node: swap_loraine
 
 - type: constructionGraph
-  id: *graph
-  start: *loraine
+  id: PersonalItemRemiaPinSwapGraph
+  start: swap_loraine
   graph:
-  - node: *loraine
+  - node: swap_loraine
     entity: *id-inverse
     edges:
-    - to: *remia
+    - to: swap_remia
       steps:
       - tool: Rolling
         doAfter: 0.1
-  - node: *remia
+  - node: swap_remia
     entity: *id
     edges:
-    - to: *loraine
+    - to: swap_loraine
       steps:
       - tool: Rolling
         doAfter: 0.1

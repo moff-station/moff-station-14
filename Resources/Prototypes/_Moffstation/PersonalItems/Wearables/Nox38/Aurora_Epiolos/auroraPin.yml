@@ -13,8 +13,8 @@
     sprite: *sprite
   - type: Construction
     deconstructionTarget: null
-    graph: &graph PersonalItemAuroraPinSwapGraph
-    node: &aurora swap_aurora
+    graph: PersonalItemAuroraPinSwapGraph
+    node: swap_aurora
 
 - type: entity
   parent: ClothingNeckMetallicBase
@@ -29,24 +29,24 @@
     sprite: *sprite-inverse
   - type: Construction
     deconstructionTarget: null
-    graph: *graph
-    node: &asher swap_asher
+    graph: PersonalItemAuroraPinSwapGraph
+    node: swap_asher
 
 - type: constructionGraph
-  id: *graph
-  start: *asher
+  id: PersonalItemAuroraPinSwapGraph
+  start: swap_asher
   graph:
-  - node: *asher
+  - node: swap_asher
     entity: *id-inverse
     edges:
-    - to: *aurora
+    - to: swap_aurora
       steps:
       - tool: Prying
         doAfter: 0.1
-  - node: *aurora
+  - node: swap_aurora
     entity: *id
     edges:
-    - to: *asher
+    - to: swap_asher
       steps:
       - tool: Prying
         doAfter: 0.1
