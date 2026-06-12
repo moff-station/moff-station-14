@@ -807,9 +807,9 @@
   description: A cosy green jumper fit for a curator of books.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/librarian.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/librarian.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/librarian.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/librarian.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -818,9 +818,9 @@
   description: It's sensible. Too sensible...
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/curator.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/curator.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/curator.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/curator.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -840,9 +840,9 @@
   description: A flashy blue suit worn by lawyers and show-offs.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblue.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblue.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblue.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -851,9 +851,9 @@
   description: A subtle black suit worn by lawyers and gangsters.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblack.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblack.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/lawyerblack.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyerblack.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformBase
@@ -873,9 +873,9 @@
   description: A tacky suit perfect for a CRIMINAL lawyer!
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpsuit/lawyergood.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyergood.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpsuit/lawyergood.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/lawyergood.rsi # Moffstation
 
 - type: entity
   parent: [UnsensoredClothingUniformBase, BaseSyndicateContraband]
@@ -1146,9 +1146,9 @@
   description: A fancy tuxedo for the musically inclined.  Perfect for any lounge act!
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/musician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/musician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/musician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/musician.rsi # Moffstation
 
 - type: entity
   parent: [ BaseCentcommContraband, ClothingUniformBase ]

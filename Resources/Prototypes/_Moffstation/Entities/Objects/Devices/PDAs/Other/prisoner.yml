@@ -109,6 +109,8 @@
   id: TestSubjectPDA
   name: test subject PDA
   components:
+  - type: Pda
+    id: TestSubjectIDCard
   - type: RenameId
     value: job-name-prisoner-test-subject
     newIcon: "JobIconTestSubject"

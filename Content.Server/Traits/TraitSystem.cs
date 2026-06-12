@@ -1,3 +1,7 @@
+// DeltaV - Traits rework
+// This file has been completely rewritten and moved under DV namespace
+// Accept any upstream changes
+/*
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -91,4 +95,5 @@ public sealed partial class TraitSystem : EntitySystem
 // Moffstation - Begin - Allow application of traits by other systems
 [ByRefEvent]
 public readonly record struct TraitsAppliedEvent(HumanoidCharacterProfile Profile);
-// Moffstation - Ent
+// Moffstation - End
+*/
