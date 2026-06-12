@@ -117,6 +117,8 @@ thaven-mood-coulrophobia-desc = Clowns are such awful things, just seeing one is
 thaven-mood-clown-ignore-name = Ignore clowns
 thaven-mood-clown-ignore-desc = The very existence of clowns has become difficult to grasp, you cannot acknowledge anything related to clowns.
 
+emag-thaven-alive = {$emag} hits {$target} scrambles your moods with a cryptographic sequencer
+
 # Testing Locales, only exist to shut up prototype tests
 DuplicateTest = You shouldn't see this
 DuplicateOverlapTest = Time, doctor freeman?
