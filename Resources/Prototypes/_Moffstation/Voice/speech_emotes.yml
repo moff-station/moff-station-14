@@ -87,3 +87,22 @@
   - hiss
   - hisses
   - hissing
+
+- type: emote
+  id: Caw
+  name: chat-emote-name-caw
+  category: Vocal
+  available: false
+  icon: Interface/Emotes/chirp.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-caw"]
+  chatTriggers:
+    - caw
+    - caws
+    - cawed
+    - cawing
