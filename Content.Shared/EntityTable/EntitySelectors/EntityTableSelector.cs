@@ -28,11 +28,13 @@ public abstract partial class EntityTableSelector
     [DataField]
     public double Prob = 1;
 
+    // Moffstation - Start - WithReplacement Selector
     /// <summary>
-    /// If the selected entity is replaced once it has been picked.
+    /// If the selected entity is replaced in the list once it has been selected.
     /// </summary>
     [DataField]
     public bool WithReplacement = true;
+    // Moffstation - End
 
     /// <summary>
     /// A list of conditions that must evaluate to 'true' for the selector to apply.
