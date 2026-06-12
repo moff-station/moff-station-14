@@ -2,10 +2,8 @@
   id: Dove
   mapName: 'Dove'
   mapPath: /Maps/_Harmony/dove.yml
-  # Moffstation - Start - ULP Map Pool (May want to adjust for this one, but lets test in game first)
-  minPlayers: 11
-  maxPlayers: 31
-  # Moffstation - End
+  minPlayers: 11 # Ultra-Low Pop
+  maxPlayers: 35 # Ultra-Low Pop
   stations:
     Dove:
       stationProto: StandardNanotrasenStation
@@ -39,22 +37,22 @@
             Reporter: [ 1, 1 ]
             #engineering (4-5)
             AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 3, 4 ] # Moffstation - Intern roles added to count
-            #TechnicalAssistant: [ 1, 1 ] # Moffstation - No interns, added to normal role count
+            StationEngineer: [ 2, 3 ]
+            #TechnicalAssistant: [ 1, 1 ] # Moffstation - Removed role
             #medical (5)
             Chemist: [ 1, 1 ]
-            MedicalDoctor: [ 3, 3 ] # Moffstation - Intern roles added to count
+            MedicalDoctor: [ 2, 2 ]
             Paramedic: [ 1, 1 ]
             Psychologist: [ 1, 1 ]
-            #MedicalIntern: [ 1, 1 ] # Moffstation - No interns, added to normal role count
+            #MedicalIntern: [ 1, 1 ] # Moffstation - Removed role
             #science (2-3)
-            Scientist: [ 3, 4 ] # Moffstation - Intern roles added to count
-            #ResearchAssistant: [ 1, 1 ] #intern, not counted
+            Scientist: [ 2, 3 ]
+            #ResearchAssistant: [ 1, 1 ] # Moffstation - Removed role
             #security (5-6)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 3, 4 ] # Moffstation - Intern roles added to count
+            SecurityOfficer: [ 2, 3 ]
             Detective: [ 1, 1 ]
-            #SecurityCadet: [ 1, 2 ] # Moffstation - No interns, added to normal role count
+            #SecurityCadet: [ 1, 2 ] # Moffstation - Removed role
             Lawyer: [ 1, 1 ]
             #supply (4-5)
             SalvageSpecialist: [ 2, 2 ]
