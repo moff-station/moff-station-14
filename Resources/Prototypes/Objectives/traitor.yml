@@ -4,7 +4,7 @@
   id: BaseTraitorObjective
   components:
   - type: Objective
-    issuer: objective-issuer-syndicate
+    issuer: TheSyndicate
   - type: RoleRequirement
     roles:
     - TraitorRole
@@ -396,6 +396,8 @@
     title: objective-condition-supercrit-anomalies-title
   - type: ObjectiveLimit
     limit: 1
+  - type: NotJobRequirement
+    jobs: [ ResearchDirector, Scientist ] # Moffstation - Too easy for scientists
 
 # other
 - type: entity

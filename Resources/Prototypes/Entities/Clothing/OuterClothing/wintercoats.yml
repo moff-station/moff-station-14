@@ -88,7 +88,7 @@
   name: bartender winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: BAR-icon
   - type: Item
@@ -98,7 +98,7 @@
       right:
       - state: BAR-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: BAR-equipped-OUTERCLOTHING
@@ -218,7 +218,7 @@
   description: A coat specifically designed for work inside cold storage, sorely needed by cold-blooded lizard chefs.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     layers:
     - state: CHEF-icon
   - type: Item
@@ -228,7 +228,7 @@
       right:
       - state: CHEF-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coat.rsi # Moffstation
     clothingVisuals:
       outerClothing:
       - state: CHEF-equipped-OUTERCLOTHING
@@ -930,12 +930,12 @@
   description: An oversized, plasticine space tuxedo that'll have people asking "do you know me?"
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatnomi.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatnomi.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatnomi.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/WinterCoats/coatnomi.rsi # Moffstation
 
 - type: entity
-  parent: ClothingOuterWinterCoatToggleable
+  parent: [ClothingOuterWinterCoatToggleable, BaseSlicingRefinable]
   id: ClothingOuterWinterWeb
   name: web winter coat
   description: Feels like the inside of a cocoon, not that this would make you less afraid of being in one.
@@ -963,8 +963,8 @@
   - type: Construction
     graph: WebObjects
     node: coat
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: MaterialWebSilk1
       amount: 5
   - type: FlavorProfile

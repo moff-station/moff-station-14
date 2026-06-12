@@ -1,0 +1,20 @@
+﻿<stationAi:AiShellSelectionMenu
+    xmlns="https://spacestation14.io"
+    xmlns:stationAi="clr-namespace:Content.Client._Moffstation.Silicons.StationAi"
+    Title="Select Shell"
+    MinSize="240 360">
+    <BoxContainer Orientation="Vertical">
+        <ItemList
+            Name="ShellsList"
+            HorizontalAlignment="Stretch"
+            VerticalExpand="True"
+            Visible="True"
+            MinWidth="200">
+            <!-- Populate with C# -->
+        </ItemList>
+        <BoxContainer Orientation="Horizontal">
+            <Button Name="JumpToShellButton" Text="Jump" Disabled="True" />
+            <Button Name="SelectShellButton" Text="Select" Disabled="True" />
+        </BoxContainer>
+    </BoxContainer>
+</stationAi:AiShellSelectionMenu>

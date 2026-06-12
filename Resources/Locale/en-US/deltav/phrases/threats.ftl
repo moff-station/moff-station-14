@@ -53,3 +53,4 @@ phrase-safety-how-to-help = How can I help?
 phrase-safety-evac = Let's evacuate
 phrase-safety-not = Not
 phrase-safety-lost = Lost
+phrase-job = Job
