@@ -1,0 +1,47 @@
+# Some base entities for nightvision
+# have your prototype inherit to give them night vision stuff
+- type: entity
+  id: BaseNightVision
+  abstract: true
+  components:
+  - type: NightVision
+
+- type: entity
+  parent: BaseNightVision
+  id: NightVisionInnate
+  abstract: true
+  components:
+  - type: ActionGrant
+    actions:
+    - ActionToggleNightVisionInnate
+
+- type: entity
+  parent: BaseNightVision
+  id: NightVisionWorn
+  abstract: true
+  components:
+  - type: ActionGrant
+    actions:
+    - ActionToggleNightVisionEquipped
+  - type: ItemActionGrant
+    actions:
+    - ActionToggleNightVisionEquipped
+    activeIfWorn: true
+
+- type: entity
+  parent: [NightVisionWorn, ClothingEyesGlassesCheapSunglasses]
+  id: NightVisionSunglasses
+  name: NightVision Sunglasses
+  components:
+  - type: NightVision
+    effectPrototype: EffectNightVisionGreen
+
+- type: entity
+  parent: NightVisionInnate
+  id: NightVisionResomi
+  abstract: true
+  components:
+  - type: NightVision
+    tintColor: "#59B3FF"
+    tintIntensity: 0.6
+    effectPrototype: EffectNightVisionResomi

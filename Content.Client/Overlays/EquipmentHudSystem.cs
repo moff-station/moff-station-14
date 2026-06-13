@@ -74,7 +74,7 @@ public abstract partial class EquipmentHudSystem<T> : EntitySystem where T : ICo
         RefreshOverlay();
     }
 
-    private void OnPlayerDetached(LocalPlayerDetachedEvent args)
+    protected virtual void OnPlayerDetached(LocalPlayerDetachedEvent args) // Moffstation - Changed to protected virtual
     {
         if (_player.LocalSession?.AttachedEntity is null)
             Deactivate();
@@ -85,7 +85,7 @@ public abstract partial class EquipmentHudSystem<T> : EntitySystem where T : ICo
         RefreshOverlay();
     }
 
-    private void OnCompUnequip(Entity<T> ent, ref GotUnequippedEvent args)
+    protected virtual void OnCompUnequip(Entity<T> ent, ref GotUnequippedEvent args) // Moffstation - Changed to protected virtual
     {
         RefreshOverlay();
     }

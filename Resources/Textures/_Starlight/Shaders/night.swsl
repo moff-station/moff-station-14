@@ -9,7 +9,7 @@ uniform highp vec3 Brightness;
 
 void fragment()
 {
-    COLOR = zTextureSpec(SCREEN_TEXTURE, Pos);
+    COLOR = zTextureSpec(SCREEN_TEXTURE, UV);
     highp vec3 finalColor = COLOR.rgb;
 
     highp float brightness = dot(finalColor, Brightness);

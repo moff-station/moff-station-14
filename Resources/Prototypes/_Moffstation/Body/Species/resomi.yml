@@ -271,6 +271,7 @@
   parent:
   - AppearanceResomi
   - BaseSpeciesMobOrganic
+  - NightVisionResomi # Moffstation - Resomi Nightvision
   id: MobResomi
   name: Urist McChicken
   components:
@@ -397,7 +398,6 @@
         - MobMask
         layer:
         - MobLayer
-  - type: NightVision
   - type: FlashModifier
     modifier: 2
 
