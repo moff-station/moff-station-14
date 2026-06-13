@@ -301,7 +301,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!stealth)
         {
-            _interactionSystem.DoContactInteraction(user, target, null, true, interactionParticles: false); // Moffstation - Interaction particles - turn them bitches off
+            _interactionSystem.DoContactInteraction(user, target, null, true); // Moffstation - Interaction particles - switched to person so the particles pop up
             if (IsStripHidden(slotDef, user))
                 _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner-hidden", ("slot", slot)), target, target, PopupType.Large);
             else
@@ -522,7 +522,7 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!stealth)
         {
-            _interactionSystem.DoContactInteraction(user, target, null, true, interactionParticles: false); // Moffstation - Interaction particles - turn them bitches off
+            _interactionSystem.DoContactInteraction(user, target, null, true); // Moffstation - Interaction particles - switched to person so the particles pop up
             _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner",
                                                         ("user", Identity.Entity(user, EntityManager)),
                                                         ("item", item)),
