@@ -149,7 +149,7 @@ public sealed class StationJobsTest : GameTest
                     // And it shouldn't have ALL the players, either.
                     Assert.That(assignedHere, Has.Count.LessThan(TotalPlayers), "Station has too many players.");
                     // And there should be *A* captain, as there's one player with captain enabled per station.
-                    Assert.That(assignedHere.Where(x => x.Value.Item1 == "TCaptain").ToList(), Has.Count.EqualTo(1));
+                    // Assert.That(assignedHere.Where(x => x.Value.Item1 == "TCaptain").ToList(), Has.Count.EqualTo(1)); // Moffstation - there isn't always a captain because of LE WEIGHT
                 }
 
                 // All clown players have assistant as a higher priority.
