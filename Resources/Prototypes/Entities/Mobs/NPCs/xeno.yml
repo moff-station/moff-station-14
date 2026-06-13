@@ -2,7 +2,7 @@
 - type: entity
   name: burrower
   id: MobXeno
-  parent: SimpleSpaceMobBase
+  parent: [ SimpleSpaceMobBase, NightVisionInnate ] # Moffstation - Add nightvision
   description: A small Xeno which uses its claws to break things and force open doors. # Moffstation - (Xeno Buffs)
   components:
   - type: Insulated
@@ -88,7 +88,6 @@
         Blunt: 2
         Slash: 10
         Structural: 40
-  - type: NightVision
   # Moffstation - End
   - type: DamageStateVisuals
     states:

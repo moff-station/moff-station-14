@@ -1,5 +1,8 @@
 - type: entity
-  parent: [ SimpleSpaceMobBase, FlyingMobBase ]
+  parent:
+  - SimpleSpaceMobBase
+  - FlyingMobBase
+  - NightVisionInnate # Moffstation - Nightvision
   id: MobEeepBase
   abstract: true
   categories: [ HideSpawnMenu ]
@@ -68,7 +71,6 @@
     energy: 3
     color: "#afa2ff"
     castShadows: true
-  - type: NightVision
   - type: BatteryDrainer
     drainTime: 10
     sparkSound:

@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ SimpleSpaceMobBase, FlyingMobBase ]
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, NightVisionInnate ] # Moffstation - Add nightvision
   id: BaseMobDragon
   suffix: ""
   name: space dragon
@@ -166,7 +166,6 @@
     speedModifier: 2.5 # fast because dragon strong
     useSound:
       path: /Audio/Items/crowbar.ogg
-  - type: NightVision # Moffstation - Dragon night vision
 
 - type: entity
   parent: BaseMobDragon

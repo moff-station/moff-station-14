@@ -1,6 +1,7 @@
 using Content.Client._Starlight.Overlays;
 using Content.Shared._Moffstation.NightVision;
 using Content.Shared.Body;
+using Content.Shared.Clothing;
 using Content.Shared.Flash;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -38,8 +39,8 @@ public sealed partial class NightVisionSystem : EntitySystem
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
 
-        SubscribeLocalEvent<NightVisionComponent, GotEquippedEvent>(OnEquipped);
-        SubscribeLocalEvent<NightVisionComponent, GotUnequippedEvent>(OnUnequipped);
+        SubscribeLocalEvent<NightVisionComponent, ClothingGotEquippedEvent>(OnEquipped);
+        SubscribeLocalEvent<NightVisionComponent, ClothingGotUnequippedEvent>(OnUnequipped);
 
         SubscribeLocalEvent<NightVisionComponent, OrganGotInsertedEvent>(OnOrganInserted);
         SubscribeLocalEvent<NightVisionComponent, OrganGotRemovedEvent>(OnOrganRemoved);
@@ -75,16 +76,16 @@ public sealed partial class NightVisionSystem : EntitySystem
             ApplyEffect(ent);
     }
 
-    private void OnEquipped(Entity<NightVisionComponent> ent, ref GotEquippedEvent args)
+    private void OnEquipped(Entity<NightVisionComponent> ent, ref ClothingGotEquippedEvent args)
     {
-        if (args.EquipTarget != _player.LocalSession?.AttachedEntity)
+        if (args.Wearer != _player.LocalSession?.AttachedEntity)
             return;
         ApplyEffect(ent);
     }
 
-    private void OnUnequipped(Entity<NightVisionComponent> ent, ref GotUnequippedEvent args)
+    private void OnUnequipped(Entity<NightVisionComponent> ent, ref ClothingGotUnequippedEvent args)
     {
-        if (args.EquipTarget != _player.LocalSession?.AttachedEntity)
+        if (args.Wearer != _player.LocalSession?.AttachedEntity)
             return;
         RemoveEffect(ent);
     }
@@ -192,10 +193,55 @@ public sealed partial class NightVisionSystem : EntitySystem
 
     private void RemoveEffect(Entity<NightVisionComponent> entity)
     {
-        _overlayMan.RemoveOverlay(_overlay);
         Del(entity.Comp.Effect);
-        // Sometimes this was failing to delete, so I have a check here so we dont accidentally lose track
         if (Deleted(entity.Comp.Effect))
             entity.Comp.Effect = null;
+
+        var localPlayer = _player.LocalSession?.AttachedEntity;
+        if (localPlayer != null && TryGetOtherActiveNv(localPlayer.Value, entity.Owner, out var other))
+        {
+            ApplyEffect(other);
+            return;
+        }
+
+        _overlayMan.RemoveOverlay(_overlay);
+    }
+
+    /// <summary>
+    /// Returns the first active (enabled, not flashed) NV source on the local player that isn't <paramref name="excluding"/>.
+    /// </summary>
+    private bool TryGetOtherActiveNv(EntityUid localPlayer, EntityUid excluding, out Entity<NightVisionComponent> result)
+    {
+        if (excluding != localPlayer && TryComp<NightVisionComponent>(localPlayer, out var innate) && innate.Enabled)
+        {
+            result = (localPlayer, innate);
+            return true;
+        }
+
+        var enumerator = _inventory.GetSlotEnumerator(localPlayer);
+        while (enumerator.MoveNext(out var slot))
+        {
+            if (slot.ContainedEntity is { } item && item != excluding
+                && TryComp<NightVisionComponent>(item, out var itemComp) && itemComp.Enabled)
+            {
+                result = (item, itemComp);
+                return true;
+            }
+        }
+
+        if (TryComp<BodyComponent>(localPlayer, out var body))
+        {
+            foreach (var organ in body.Organs?.ContainedEntities ?? [])
+            {
+                if (organ != excluding && TryComp<NightVisionComponent>(organ, out var organComp) && organComp.Enabled)
+                {
+                    result = (organ, organComp);
+                    return true;
+                }
+            }
+        }
+
+        result = default;
+        return false;
     }
 }

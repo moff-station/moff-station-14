@@ -1,7 +1,7 @@
 - type: entity
   name: rat king
   id: MobRatKing
-  parent: [ BaseMobRat, SimpleMobBase, MobCombat ]
+  parent: [ BaseMobRat, SimpleMobBase, MobCombat, NightVisionInnate ] # Moffstation - Add nightvision
   description: He's da rat. He make da roolz.
   components:
   - type: CombatMode
@@ -128,7 +128,6 @@
     attributes:
       gender: male
   - type: Sharp
-  - type: NightVision # Moffstation - Rat king night vision
 
 - type: entity
   id: MobRatKingBuff

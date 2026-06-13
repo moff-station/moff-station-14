@@ -9,7 +9,6 @@
 - type: entity
   parent: BaseNightVision
   id: NightVisionInnate
-  abstract: true
   components:
   - type: ActionGrant
     actions:
@@ -18,7 +17,6 @@
 - type: entity
   parent: BaseNightVision
   id: NightVisionWorn
-  abstract: true
   components:
   - type: ActionGrant
     actions:
