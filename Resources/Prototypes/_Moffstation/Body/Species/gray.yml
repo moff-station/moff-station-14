@@ -262,6 +262,7 @@
   components:
   - type: Damageable
     damageModifierSet: Gray
+  - type: GrayAccent
   - type: Speech
     speechSounds: PVC
   - type: TypingIndicator
@@ -296,8 +297,6 @@
         damage: 400
       behaviors:
       - !type:GibBehavior { }
-      - !type:BurnBodyBehavior
-        popupMessage: bodyburn-text-others
       - !type:PlaySoundBehavior
         sound:
           collection: MeatLaserImpact
@@ -332,7 +331,7 @@
       Burn:
         sprite: _Moffstation/Mobs/Effects/Gray/burn_damage.rsi
   - type: Temperature
-    specificHeat: 44
+    specificHeat: 30
   - type: TemperatureDamage # Similar to Avali
     heatDamageThreshold: 332
     coldDamageThreshold: 215
@@ -461,6 +460,8 @@
 - type: entity
   parent: [ OrganBaseTongue, OrganGrayInternal ]
   id: OrganGrayTongue
+  name: slarb
+  description: its looks like a prank toy
 
 - type: entity
   parent: [ OrganBaseAppendix, OrganGrayInternal ]
