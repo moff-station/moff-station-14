@@ -1,17 +1,35 @@
-# Captain
+# Generic
 - type: loadoutGroup
-  id: CaptainEyewear
-  name: loadout-group-captain-glasses
-  minLimit: 1
+  id: ModularEyewearBasic
+  name: loadout-group-glasses
   loadouts:
-  - AdminGlasses
-  - AdminHud
+  - ModularHudGlasses
+  - ModularHudCheapSunglasses
+  - ModularHudJamjars
+  - ModularHudGoggles
+  - ModularHudVisor
+  - ModularHudPatch
   - Glasses
   - GlassesJamjar
   - GlassesJensen
   - EyePatch
-  - EyePatchFlipped
 
+- type: loadoutGroup
+  id: ModularEyewearSunglasses
+  name: loadout-group-glasses
+  loadouts:
+  - ModularHudGlasses
+  - ModularHudSunglasses
+  - ModularHudJamjars
+  - ModularHudGoggles
+  - ModularHudVisor
+  - ModularHudPatch
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+
+# Captain
 - type: loadoutGroup
   id: CaptainPDA
   name: loadout-group-captain-id
@@ -31,5 +49,3 @@
   - AssistantPDA
   - FreelancerPDA
   - TouristPDA
-
-
