@@ -1,4 +1,5 @@
 # Head Markings
+
 - type: marking
   id: GrayAntennas
   bodyPart: Head
@@ -24,12 +25,36 @@
     state: bushyeyebrows
 
 - type: marking
+  id: GrayCatEars
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: catears
+
+- type: marking
   id: GrayEyebags
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
   - sprite: *head.rsi
     state: eyebags
+
+- type: marking
+  id: GrayEyelashes
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: eyelashes
+
+- type: marking
+  id: GrayFakeStache
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: fakestache
 
 - type: marking
   id: GrayGem
@@ -72,6 +97,14 @@
     state: smalleyebrows
 
 - type: marking
+  id: GrayTinyAntennas
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: tinyantennas
+
+- type: marking
   id: GrayWrinkles
   bodyPart: Head
   groupWhitelist: [ Gray ]
@@ -80,6 +113,7 @@
     state: wrinkles
 
 # Eye Markings
+
 - type: marking
   id: GrayEyes
   bodyPart: Eyes
@@ -138,3 +172,107 @@
     state: angryeyes_glimmer
   - sprite: *eyes.rsi
     state: angryeyes_ridge
+
+- type: marking
+  id: GrayBigEyes
+  bodyPart: Eyes
+  groupWhitelist: [ Gray ]
+  coloring:
+    layers:
+      bigeyes:
+        type: !type:EyeColoring
+      bigeyes_glimmer:
+        type: !type:SimpleColoring
+        color: "#eeefff"
+  sprites:
+  - sprite: *eyes.rsi
+    state: bigeyes
+  - sprite: *eyes.rsi
+    state: bigeyes_glimmer
+
+# Chest Markings
+
+- type: marking
+  id: GrayGleepGlowChest
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Gray/chest.rsi
+    state: gleepglowchest
+
+- type: marking
+  id: GrayCropCircleTattooChest
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Gray/chest.rsi
+    state: cropcircleschest
+
+# Arm Markings
+
+- type: marking
+  id: GrayGleepGlowLeftArm
+  bodyPart: LArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: &arms.rsi "_Moffstation/Mobs/Customization/Gray/arms.rsi"
+    state: gleepglowlarm
+
+- type: marking
+  id: GrayCropCircleTattooLeftArm
+  bodyPart: LArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *arms.rsi
+    state: cropcircleslarm
+
+- type: marking
+  id: GrayGleepGlowRightArm
+  bodyPart: RArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *arms.rsi
+    state: gleepglowrarm
+
+
+- type: marking
+  id: GrayCropCircleTattooRightArm
+  bodyPart: RArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *arms.rsi
+    state: cropcirclesrarm
+
+# Leg Markings
+
+- type: marking
+  id: GrayGleepGlowLeftLeg
+  bodyPart: LLeg
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: &legs.rsi "_Moffstation/Mobs/Customization/Gray/legs.rsi"
+    state: gleepglowlleg
+
+- type: marking
+  id: GrayGleepGlowRightLeg
+  bodyPart: RLeg
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *legs.rsi
+    state: gleepglowrleg
+
+- type: marking
+  id: GrayGleepGlowLeftFoot
+  bodyPart: LFoot
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *legs.rsi
+    state: gleepglowlfoot
+
+- type: marking
+  id: GrayGleepGlowRightFoot
+  bodyPart: RFoot
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *legs.rsi
+    state: gleepglowrfoot

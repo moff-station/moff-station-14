@@ -11,21 +11,22 @@
       required: false
     enum.HumanoidVisualLayers.Eyes:
       limit: 1
-      required: false
+      required: true
+      default: [ GrayEyes ]
     enum.HumanoidVisualLayers.LLeg:
-      limit: 4
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.RLeg:
-      limit: 4
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.LArm:
-      limit: 4
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.RArm:
-      limit: 4
+      limit: 3
       required: false
     enum.HumanoidVisualLayers.Head:
-      limit: 3
+      limit: 5
       required: false
     enum.HumanoidVisualLayers.Chest:
       limit: 3
@@ -262,8 +263,7 @@
   - type: Damageable
     damageModifierSet: Gray
   - type: Speech
-    speechVerb: Gray
-    speechSounds: UnisexGray
+    speechSounds: PVC
   - type: TypingIndicator
     proto: gray
   - type: Vocal
@@ -451,6 +451,7 @@
 - type: entity
   parent: [ OrganGrayVisual, OrganBaseEyes, OrganGrayInternal ]
   id: OrganGrayEyes
+  name: greepers
   components:
   - type: VisualOrgan
     data:
@@ -464,27 +465,44 @@
 - type: entity
   parent: [ OrganBaseAppendix, OrganGrayInternal ]
   id: OrganGrayAppendix
+  name: Loloo Snak
+  description: it looks like a broken rubber band
 
 - type: entity
   parent: [ OrganBaseEars, OrganGrayInternal ]
   id: OrganGrayEars
+  name: zambou
+  description: some very rubbery grapes... maybe?
 
 - type: entity
-  parent: [ OrganBaseLungs, OrganGrayInternal, OrganGrayMetabolizer ]
+  parent: [ OrganBaseLungs, OrganGrayInternal, OrganGrayMetabolizer, BaseHandheldInstrument ]
   id: OrganGrayLungs
+  name: Oogmards
+  description: it appears to be moving still
+  components:
+  - type: Instrument
+    program: 79
 
 - type: entity
   parent: [ OrganBaseHeart, OrganGrayInternal, OrganGrayMetabolizer ]
   id: OrganGrayHeart
+  name: Bardiimp
+  description: it's still wriggling...
 
 - type: entity
-  parent: [ OrganBaseStomach, OrganGrayInternal, OrganGrayMetabolizer ]
+  parent: [ OrganBaseStomach, OrganGrayInternal, OrganGrayMetabolizer, Basketball ]
   id: OrganGrayStomach
+  name: peall'bale
+  description: looks like a spiky tennis ball, probably feels the same too
 
 - type: entity
   parent: [ OrganBaseLiver, OrganGrayInternal, OrganGrayMetabolizer ]
   id: OrganGrayLiver
+  name: Feeb'nah
+  description: you think that its some sort of putty... perhaps?
 
 - type: entity
   parent: [ OrganBaseKidneys, OrganGrayInternal, OrganGrayMetabolizer ]
   id: OrganGrayKidneys
+  name: thalamiixs
+  description: a pair of coin-operated thalamiixs, should operate for at most a single lifetime
