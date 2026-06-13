@@ -1,5 +1,6 @@
 using Content.Client._Starlight.Overlays;
 using Content.Shared._Moffstation.NightVision;
+using Content.Shared.Body;
 using Content.Shared.Flash;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -40,6 +41,9 @@ public sealed partial class NightVisionSystem : EntitySystem
         SubscribeLocalEvent<NightVisionComponent, GotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<NightVisionComponent, GotUnequippedEvent>(OnUnequipped);
 
+        SubscribeLocalEvent<NightVisionComponent, OrganGotInsertedEvent>(OnOrganInserted);
+        SubscribeLocalEvent<NightVisionComponent, OrganGotRemovedEvent>(OnOrganRemoved);
+
         SubscribeLocalEvent<NightVisionComponent, FlashImmunityChangedEvent>(OnFlashImmunityChanged);
     }
 
@@ -48,7 +52,7 @@ public sealed partial class NightVisionSystem : EntitySystem
         var localPlayer = _player.LocalSession?.AttachedEntity;
         if (localPlayer == null)
             return;
-        if (ent.Owner != localPlayer && Transform(ent.Owner).ParentUid != localPlayer)
+        if (!IsOwnedByLocalPlayer(ent.Owner, localPlayer.Value))
             return;
 
         if (ent.Comp.Enabled && !_flash.IsFlashImmune(localPlayer.Value))
@@ -62,7 +66,7 @@ public sealed partial class NightVisionSystem : EntitySystem
         var localPlayer = _player.LocalSession?.AttachedEntity;
         if (localPlayer == null)
             return;
-        if (ent.Owner != localPlayer && Transform(ent.Owner).ParentUid != localPlayer)
+        if (!IsOwnedByLocalPlayer(ent.Owner, localPlayer.Value))
             return;
 
         if (args.FlashImmune)
@@ -85,6 +89,20 @@ public sealed partial class NightVisionSystem : EntitySystem
         RemoveEffect(ent);
     }
 
+    private void OnOrganInserted(Entity<NightVisionComponent> ent, ref OrganGotInsertedEvent args)
+    {
+        if (args.Target != _player.LocalSession?.AttachedEntity)
+            return;
+        ApplyEffect(ent);
+    }
+
+    private void OnOrganRemoved(Entity<NightVisionComponent> ent, ref OrganGotRemovedEvent args)
+    {
+        if (args.Target != _player.LocalSession?.AttachedEntity)
+            return;
+        RemoveEffect(ent);
+    }
+
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
         if (TryComp<NightVisionComponent>(args.Entity, out var comp))
@@ -95,6 +113,15 @@ public sealed partial class NightVisionSystem : EntitySystem
         {
             if (slot.ContainedEntity is { } item && TryComp<NightVisionComponent>(item, out var equipComp))
                 ApplyEffect((item, equipComp));
+        }
+
+        if (TryComp<BodyComponent>(args.Entity, out var body))
+        {
+            foreach (var organ in body.Organs?.ContainedEntities ?? [])
+            {
+                if (TryComp<NightVisionComponent>(organ, out var organComp))
+                    ApplyEffect((organ, organComp));
+            }
         }
     }
 
@@ -109,6 +136,15 @@ public sealed partial class NightVisionSystem : EntitySystem
             if (slot.ContainedEntity is { } item && TryComp<NightVisionComponent>(item, out var equipComp))
                 RemoveEffect((item, equipComp));
         }
+
+        if (TryComp<BodyComponent>(args.Entity, out var body))
+        {
+            foreach (var organ in body.Organs?.ContainedEntities ?? [])
+            {
+                if (TryComp<NightVisionComponent>(organ, out var organComp))
+                    RemoveEffect((organ, organComp));
+            }
+        }
     }
 
     private void OnVisionInit(Entity<NightVisionComponent> ent, ref ComponentInit args)
@@ -121,12 +157,23 @@ public sealed partial class NightVisionSystem : EntitySystem
         RemoveEffect(ent);
     }
 
+    private bool IsOwnedByLocalPlayer(EntityUid entity, EntityUid localPlayer)
+    {
+        if (entity == localPlayer)
+            return true;
+        if (Transform(entity).ParentUid == localPlayer)
+            return true;
+        if (TryComp<BodyComponent>(localPlayer, out var body) && (body.Organs?.Contains(entity) ?? false))
+            return true;
+        return false;
+    }
+
     private void ApplyEffect(Entity<NightVisionComponent> entity)
     {
         var localPlayer = _player.LocalSession?.AttachedEntity;
         if (localPlayer == null)
             return;
-        if (entity.Owner != localPlayer && Transform(entity.Owner).ParentUid != localPlayer)
+        if (!IsOwnedByLocalPlayer(entity.Owner, localPlayer.Value))
             return;
         if (!entity.Comp.Enabled || _flash.IsFlashImmune(localPlayer.Value))
             return;
