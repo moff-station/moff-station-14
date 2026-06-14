@@ -140,7 +140,7 @@
         type: !type:EyeColoring
       eyes_glimmer:
         type: !type:SimpleColoring
-        color: "#eeefff"
+          color: "#eeefff"
   sprites:
   - sprite: &eyes.rsi "_Moffstation/Mobs/Customization/Gray/eyes.rsi"
     state: eyes
@@ -157,7 +157,7 @@
         type: !type:EyeColoring
       tiredeyes_glimmer:
         type: !type:SimpleColoring
-        color: "#eeefff"
+          color: "#eeefff"
       tiredeyes_ridge:
         type: !type:SkinColoring
   sprites:
@@ -178,7 +178,7 @@
         type: !type:EyeColoring
       angryeyes_glimmer:
         type: !type:SimpleColoring
-        color: "#eeefff"
+          color: "#eeefff"
       angryeyes_ridge:
         type: !type:SkinColoring
   sprites:
@@ -199,7 +199,7 @@
         type: !type:EyeColoring
       bigeyes_glimmer:
         type: !type:SimpleColoring
-        color: "#eeefff"
+          color: "#eeefff"
   sprites:
   - sprite: *eyes.rsi
     state: bigeyes

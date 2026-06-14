@@ -141,13 +141,13 @@
     default:
       type: !type:SimpleColoring
         color: "#eeefff"
-  layers:
-    onepiece:
-      type: !type:SimpleColoring
-      color: "#eeefff"
-    onepiecestripe:
-      type: !type:SimpleColoring
-      color: "#c23031"
+    layers:
+     onepiece:
+       type: !type:SimpleColoring
+        color: "#eeefff"
+     onepiecestripe:
+        type: !type:SimpleColoring
+         color: "#c23031"
   sprites:
   - sprite: *grayundergarments
     state: onepiece
@@ -162,13 +162,13 @@
     default:
       type: !type:SimpleColoring
         color: "#eeefff"
-  layers:
-    plasticbag:
-      type: !type:SimpleColoring
-      color: "#eeefff"
-    plasticbaglogo:
-      type: !type:SimpleColoring
-      color: "#7cc7c0"
+    layers:
+      plasticbag:
+        type: !type:SimpleColoring
+         color: "#eeefff"
+      plasticbaglogo:
+       type: !type:SimpleColoring
+         color: "#7cc7c0"
   sprites:
   - sprite: *grayundergarments
     state: plasticbag
