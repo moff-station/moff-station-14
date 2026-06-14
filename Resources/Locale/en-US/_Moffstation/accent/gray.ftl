@@ -20,7 +20,7 @@ accent-gray-words-7 = pigs
 accent-gray-words-replace-7 = oinky cows
 
 accent-gray-words-8 = sheep
-accent-gray-word-replace-9 = fluffy cow
+accent-gray-word-replace-8 = fluffy cow
 
 accent-gray-words-9 = sheeps
 accent-gray-word-replace-9 = fluffy cows

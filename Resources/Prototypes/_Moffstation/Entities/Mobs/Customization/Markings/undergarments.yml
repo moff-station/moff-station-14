@@ -128,9 +128,9 @@
   coloring:
     default:
       type: !type:SimpleColoring
-        color: "#FFFFFF"
+        color: "#eeefff"
   sprites:
-  - sprite: _Moffstation/Mobs/Customization/Gray/undergarments.rsi
+  - sprite: &grayundergarments "_Moffstation/Mobs/Customization/Gray/undergarments.rsi"
     state: pantaloons
 
 - type: marking
@@ -140,10 +140,19 @@
   coloring:
     default:
       type: !type:SimpleColoring
-        color: "#FFFFFF"
+        color: "#eeefff"
+  layers:
+    onepiece:
+      type: !type:SimpleColoring
+      color: "#eeefff"
+    onepiecestripe:
+      type: !type:SimpleColoring
+      color: "#c23031"
   sprites:
-  - sprite: _Moffstation/Mobs/Customization/Gray/undergarments.rsi
+  - sprite: *grayundergarments
     state: onepiece
+  - sprite: *grayundergarments
+    state: onepiecestripe
 
 - type: marking
   id: UndergarmentBottomPlasticBagGray
@@ -152,7 +161,17 @@
   coloring:
     default:
       type: !type:SimpleColoring
-        color: "#FFFFFF"
+        color: "#eeefff"
+  layers:
+    plasticbag:
+      type: !type:SimpleColoring
+      color: "#eeefff"
+    plasticbaglogo:
+      type: !type:SimpleColoring
+      color: "#7cc7c0"
   sprites:
-  - sprite: _Moffstation/Mobs/Customization/Gray/undergarments.rsi
+  - sprite: *grayundergarments
     state: plasticbag
+  - sprite: *grayundergarments
+    state: plasticbaglogo
+

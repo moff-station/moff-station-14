@@ -219,7 +219,12 @@
             sprite: *displacement.rsi
             state: belt
   - type: Hands
-    handDisplacement:
+    leftHandDisplacement:
+      sizeMaps:
+        32:
+          sprite: *displacement.rsi
+          state: inHand
+    rightHandDisplacement:
       sizeMaps:
         32:
           sprite: *displacement.rsi
@@ -272,49 +277,6 @@
       Male: UnisexGray
       Female: UnisexGray
       Unsexed: UnisexGray
-  - type: Butcherable
-    butcheringType: Spike
-    spawned:
-    - id: FoodMeatHuman
-      amount: 3
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Caustic
-        damage: 400
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawnInContainer: false
-        spawn:
-          Acidifier:
-            min: 1
-            max: 1
-      - !type:GibBehavior { }
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Blunt
-        damage: 400
-      behaviors:
-      - !type:GibBehavior { }
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MeatLaserImpact
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Radiation
-        damage: 15
-      behaviors:
-      - !type:PopupBehavior
-        popup: mouth-taste-metal
-        popupType: LargeCaution
-        targetOnly: true
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Radiation
-        damage: 40
-      behaviors:
-      - !type:VomitBehavior
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:
@@ -331,9 +293,9 @@
       Burn:
         sprite: _Moffstation/Mobs/Effects/Gray/burn_damage.rsi
   - type: Temperature
-    specificHeat: 30
-  - type: TemperatureDamage # Similar to Avali
-    heatDamageThreshold: 332
+    specificHeat: 35
+  - type: TemperatureDamage # survive in colder spaces cause sppaaaaaaaAAAAaaaacceee
+    heatDamageThreshold: 333
     coldDamageThreshold: 215
     coldDamage:
       types:
@@ -341,6 +303,11 @@
     heatDamage:
       types:
         Heat: 1.5 # Per second, scales with temperature & other constants
+  - type: Barotrauma # Survive in lower pressure than most cause sssppppaaAAAAaaacceeee
+    damage:
+      types:
+        Blunt: 0.25
+        Heat: 0.1
   - type: TemperatureProtection
     heatingCoefficient: 1.2
     coolingCoefficient: 0.50
@@ -349,13 +316,20 @@
         reagents:
         - ReagentId: GrayBlood
           Quantity: 300
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.5
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 95 #tiny
+        density: 105 #tiny
         restitution: 0.0
         mask:
         - MobMask

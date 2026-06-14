@@ -57,6 +57,14 @@
     state: fakestache
 
 - type: marking
+  id: GrayFloppyEars
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: floppyears
+
+- type: marking
   id: GrayGem
   bodyPart: Head
   groupWhitelist: [ Gray ]
@@ -103,6 +111,14 @@
   sprites:
   - sprite: *head.rsi
     state: tinyantennas
+
+- type: marking
+  id: GrayWhiskers
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: whiskers
 
 - type: marking
   id: GrayWrinkles
@@ -276,3 +292,136 @@
   sprites:
   - sprite: *legs.rsi
     state: gleepglowrfoot
+
+# Gauze Markings
+- type: marking
+  id: GrayHeadGauze
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: &gauze.rsi "_Moffstation/Mobs/Customization/Gray/gauzemarkings.rsi"
+    state: head
+
+- type: marking
+  id: GrayChestGauze
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: chest
+
+- type: marking
+  id: GrayStomachGauze
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: stomach
+
+- type: marking
+  id: GrayLeftArmGauze
+  bodyPart: LArm
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: larm
+
+- type: marking
+  id: GrayRightArmGauze
+  bodyPart: RArm
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rarm
+
+- type: marking
+  id: GrayLeftHandGauze
+  bodyPart: LHand
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: lhand
+
+- type: marking
+  id: GrayRightHandGauze
+  bodyPart: RHand
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rhand
+
+- type: marking
+  id: GrayLeftLegGauze
+  bodyPart: LLeg
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: lleg
+
+- type: marking
+  id: GrayRightLegGauze
+  bodyPart: RLeg
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rleg
+
+- type: marking
+  id: GrayLeftFootGauze
+  bodyPart: LFoot
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: lfoot
+
+- type: marking
+  id: GrayRightFootGauze
+  bodyPart: RFoot
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rfoot
