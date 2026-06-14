@@ -4,7 +4,7 @@
 - type: weightedRandom
   id: AdWeights
   weights:
-    #anti-union: 6 #moomoobeef - nanotrasen anti-union propoganda
+    anti-union: 6 #moomoobeef - nanotrasen anti-union propoganda
     arcade: 4 #moomoobeef - arcade nostalgia night
     booze: 3 #moomoobeef - booze general ad
     buy: 2.5 #drbadvice - buy
@@ -25,11 +25,11 @@
     smoke2: 5 #drbadvice - shadycigs general ad
     smoke3: 5 #moomoobeef - smoking general ad
 
-#- type: pdaAd
-#  id: anti-union       this one isn't working properly at the moment, pending fix.
-#  sprite:
-#    sprite: _Moffstation/Interface/PDA/advertisements.rsi
-#    state: anti-union
+- type: pdaAd
+  id: anti-union       #this one isn't working properly at the moment, pending fix.
+  sprite:
+    sprite: _Moffstation/Interface/PDA/advertisements.rsi
+    state: anti-union
 
 - type: pdaAd
   id: arcade
