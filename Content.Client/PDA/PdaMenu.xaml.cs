@@ -27,8 +27,8 @@ namespace Content.Client.PDA
         [Dependency] private IGameTiming _gameTiming = default!;
         [Dependency] private IEntitySystemManager _entitySystem = default!;
 
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
-        [Dependency] private readonly IRobustRandom _random = default!; // Moffstation - PDA Advertisements
+        [Dependency] private IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
+        [Dependency] private IRobustRandom _random = default!; // Moffstation - PDA Advertisements
         private readonly ClientGameTicker _gameTicker;
 
         public const int HomeView = 0;
