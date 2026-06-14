@@ -2,8 +2,8 @@
   id: Plasma
   mapName: 'Plasma'
   mapPath: /Maps/plasma.yml
-  minPlayers: 30
-  maxPlayers: 80
+  minPlayers: 41 # Moffstation - Medium Pop
+  maxPlayers: 75 # Moffstation - Medium Pop
   stations:
     Plasma:
       stationProto: StandardNanotrasenStation
@@ -38,23 +38,24 @@
             Reporter: [ 2, 3 ]
             #engineering (8)
             AtmosphericTechnician: [ 4, 4 ]
-            StationEngineer: [ 4, 5 ] #CD - Intern not counted
-            # TechnicalAssistant: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            StationEngineer: [ 4, 4 ]
+            # TechnicalAssistant: [ 4, 4 ] # Moffstation - Removed role
             #medical (9)
             Chemist: [ 2, 2 ]
-            MedicalDoctor: [ 4, 5 ] #CD - Intern not counted
+            MedicalDoctor: [ 4, 4 ]
             Paramedic: [ 2, 2 ]
-            # MedicalIntern: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            # MedicalIntern: [ 4, 4 ] # Moffstation - Removed role
             Psychologist: [ 1, 1 ]
             #science (4)
-            Scientist: [ 4, 5 ] #CD - Intern not counted
-            # ResearchAssistant: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            Scientist: [ 4, 4 ]
+            # ResearchAssistant: [ 4, 4 ] # Moffstation - Removed role
             #security (9 - 11)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 6, 7 ] #CD - Intern not counted
+            SecurityOfficer: [ 6, 6 ]
             Detective: [ 1, 2 ] #good cop, bad cop
-            # SecurityCadet: [ 4, 4 ] #CD - Remove intern roles, rework them into loadouts
+            # SecurityCadet: [ 4, 4 ] # Moffstation - Removed role
             Lawyer: [ 1, 2 ]
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
             #supply (8 - 10)
             SalvageSpecialist: [ 4, 4 ] #the salvagers yearn for the mines
             CargoTechnician: [ 4, 6 ]
@@ -66,5 +67,3 @@
             #silicon (3 - 5)
             Borg: [ 2, 4 ]
             StationAi: [ 1, 1 ]
-            # Moffstation - custom roles below
-            Prisoner: [ 1, 1 ]

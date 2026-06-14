@@ -53,3 +53,7 @@ phrase-species-slime-person = Slime person
 phrase-species-vox = Vox
 phrase-species-reptilian = Reptilian
 phrase-species-resomi = Resomi
+phrase-species-ai = AI
+phrase-species-cyborg = Cyborg
+phrase-species-geras = Geras
+phrase-species-silicon = Silicon

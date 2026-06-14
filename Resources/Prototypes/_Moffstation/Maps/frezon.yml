@@ -2,8 +2,8 @@
   id: Frezon
   mapName: 'Frezon'
   mapPath: /Maps/_Moffstation/frezon.yml
-  minPlayers: 0
-  maxPlayers: 25 # Suitable for deadpop, usually there's a few people who have fallen asleep by this point so the max players is set fairly high. If there's not enough slots, there's still the latejoin slots.
+  minPlayers: 11 # Ultra-Low Pop
+  maxPlayers: 35 # Ultra-Low Pop
   stations:
     Frezon:
       stationProto: StandardNanotrasenStation
@@ -16,7 +16,7 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency.yml
         - type: StationJobs
-          availableJobs: # 20 roundstart - 26 latejoin
+          availableJobs: # 21 jobs total w/o latejoins, 27 jobs total w/ latejoins
             #command (3)
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
@@ -44,4 +44,4 @@
             Passenger: [ -1, -1 ] #infinite, not counted
             Musician: [ 1, 1 ]
             #silicon (2)
-            Borg: [ 2, 2 ] # the long awaited borg slot
+            Borg: [ 2, 2 ]

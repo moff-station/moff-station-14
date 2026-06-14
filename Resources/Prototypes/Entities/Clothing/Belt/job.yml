@@ -45,7 +45,7 @@
       - HandLabeler
       - LawProgrammer # Moffstation - Cyborg Programmation
   - type: ItemMapper
-    sprite: &BeltOverlay Clothing/Belt/belt_overlay.rsi
+    sprite: _Moffstation/Clothing/Belt/belt_overlay.rsi # Moffstation
     mapLayers:
       drill:
         whitelist:
@@ -142,7 +142,7 @@
       - LightReplacer
       - CleanerGrenade
   - type: ItemMapper
-    sprite: *BeltOverlay
+    sprite: &BeltOverlay "Clothing/Belt/belt_overlay.rsi"  # Moffstation
     mapLayers:
       bottle:
         whitelist:

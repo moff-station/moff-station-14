@@ -35,6 +35,7 @@
     actions:
     - ActionJumpToCore
     - ActionAIViewLaws
+    - ActionToggleAiShellControllerUi # Moffstation - Ai Shells
   - type: UserInterface
     interfaces:
       enum.RadarConsoleUiKey.Key:
@@ -47,6 +48,10 @@
         type: SiliconLawBoundUserInterface
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      # Moffstation - Begin - Ai Shells
+      enum.ShellUiKey.Key:
+        type: AiShellControllerBoundUserInterface
+      # Moffstation - Ai Shells- End
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -431,11 +436,16 @@
   - type: ActionGrant
     actions:
     - ActionViewLaws
+    - ActionToggleAiShellControllerUi # Moffstation - Ai Shells
   - type: UserInterface
     interfaces:
       enum.SiliconLawsUiKey.Key:
         type: SiliconLawBoundUserInterface
         requireInputValidation: false
+      # Moffstation - Begin - Ai Shells
+      enum.ShellUiKey.Key:
+        type: AiShellControllerBoundUserInterface
+      # Moffstation - End
   - type: ComplexInteraction
   - type: Actions
   - type: Access
@@ -479,6 +489,16 @@
     mindRoles:
     - MindRoleGhostRoleSilicon
     job: StationAi
+  # Moffstation - Begin - Ai Shells
+  - type: AiShellController
+  - type: ActionsContainer
+  - type: ContainerContainer
+    containers:
+      actions: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+  # Moffstation - End
 
 # Hologram projection that the AI's eye tracks.
 - type: entity

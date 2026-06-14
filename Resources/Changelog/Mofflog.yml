@@ -4543,6 +4543,14 @@ Entries:
   id: 1185
   time: '2026-04-01T05:14:57.000'
   url: https://github.com/moff-station/moff-station-14/pull/1185
+- author: OrbitSystem07
+  changes:
+  - message: Added Remote Controlled Shells, for the Station Ai to use! Check the
+      guidebook for more information.
+    type: add
+  id: 1187
+  time: '2026-06-03T19:30:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1187
 - author: Centronias
   changes:
   - message: Modular HUDs will no longer partially render when in non-eye slots (ie.
@@ -5564,6 +5572,13 @@ Entries:
   id: 1391
   time: '2026-05-14T17:54:14.000'
   url: https://github.com/moff-station/moff-station-14/pull/1391
+- author: Centronias
+  changes:
+  - message: A box of common radio encryption keys is now purchasable from cargo.
+    type: add
+  id: 1393
+  time: '2026-06-05T23:56:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1393
 - author: DuckManZach
   changes:
   - message: Added the opening shift!
@@ -5660,6 +5675,13 @@ Entries:
   id: 1413
   time: '2026-05-27T19:33:53.000'
   url: https://github.com/moff-station/moff-station-14/pull/1413
+- author: DuckManZach
+  changes:
+  - message: Added a fancy version of screenshake.
+    type: add
+  id: 1416
+  time: '2026-06-04T20:11:31.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1416
 - author: compilatron
   changes:
   - message: Added textiles to Frezon HoP office
@@ -5994,6 +6016,13 @@ Entries:
   id: 1470
   time: '2026-06-01T18:32:42.000'
   url: https://github.com/moff-station/moff-station-14/pull/1470
+- author: Dave
+  changes:
+  - message: new tools resprites!
+    type: add
+  id: 1472
+  time: '2026-06-03T17:51:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1472
 - author: Centronias
   changes:
   - message: Added James Roby's personal item.
@@ -6020,6 +6049,21 @@ Entries:
   id: 1476
   time: '2026-05-31T14:55:42.000'
   url: https://github.com/moff-station/moff-station-14/pull/1476
+- author: Centronias
+  changes:
+  - message: Added more phrases to the AAC tablet, including conjunctions and letters.
+    type: add
+  - message: The AAC tablet's "numbers" category has been moved, along with the new
+      letters, to a new tab.
+    type: tweak
+  - message: Some AAC tablet phrases of the form "I <verb>" have been changed to just
+      "verb" to enable users to combine the verb with pronouns of their choice.
+    type: tweak
+  - message: The AAC tablet now has a "search" tab.
+    type: add
+  id: 1477
+  time: '2026-06-03T19:03:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1477
 - author: Lillian Industries
   changes:
   - message: Added a new ID access that freelance shuttle pilots can hide their precious
@@ -6038,5 +6082,229 @@ Entries:
   id: 1482
   time: '2026-06-02T16:54:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1482
+- author: DuckManZach
+  changes:
+  - message: Reworked traits and trait UI!
+    type: add
+  id: 1485
+  time: '2026-06-09T02:59:23.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1485
+- author: Evanski
+  changes:
+  - message: Changed the sound of the Ripley APLU to have variance.
+    type: tweak
+  id: 1486
+  time: '2026-06-03T23:30:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1486
+- author: Dave
+  changes:
+  - message: vox hijabs & tichels tweaked
+    type: tweak
+  id: 1487
+  time: '2026-06-04T15:00:40.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1487
+- author: KentoDaNeko
+  changes:
+  - message: Resprited the Emergency wall lockers (O2, N2, Fire) with a fresher new
+      look!
+    type: tweak
+  id: 1488
+  time: '2026-06-03T16:00:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1488
+- author: DuckManZach
+  changes:
+  - message: Added interaction particles to add clarity to what people are doing
+    type: add
+  - message: Many electrical things will spark when damaged
+    type: add
+  id: 1489
+  time: '2026-06-12T19:03:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1489
+- author: Dave
+  changes:
+  - message: new carpet sprites
+    type: add
+  id: 1490
+  time: '2026-06-04T15:25:51.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1490
+- author: Dave
+  changes:
+  - message: job icon sprites resprited
+    type: tweak
+  - message: id cards resprited
+    type: tweak
+  id: 1491
+  time: '2026-06-07T18:05:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1491
+- author: Centronias
+  changes:
+  - message: You can now view your linked Discord account with the `discordlink` console
+      command. (As of writing, there's no way to set this, however)
+    type: add
+  id: 1492
+  time: '2026-06-08T22:00:21.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1492
+- author: SillyAmy
+  changes:
+  - message: Fixed a typo in the description of the red slime figure
+    type: fix
+  id: 1493
+  time: '2026-06-06T01:12:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1493
+- author: OrbitSystem07
+  changes:
+  - message: AI shells now have proper access locks
+    type: fix
+  id: 1494
+  time: '2026-06-06T16:03:06.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1494
+- author: DuckManZach
+  changes:
+  - message: Removed the new screenshake (for now)
+    type: remove
+  id: 1495
+  time: '2026-06-06T15:38:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1495
+- author: Nyxilath
+  changes:
+  - message: High value target has been removed.
+    type: remove
+  id: 1496
+  time: '2026-06-07T16:39:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1496
+- author: Nyxilath
+  changes:
+  - message: Buck Justice now has a personalized hat!
+    type: add
+  - message: Gristle McThornbody now has his personal dogtags!
+    type: add
+  id: 1497
+  time: '2026-06-08T15:39:24.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1497
+- author: Dave
+  changes:
+  - message: New PDA Sprites!
+    type: add
+  id: 1498
+  time: '2026-06-07T20:36:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1498
+- author: Nyxilath
+  changes:
+  - message: Elkridge has been updated to the latest version.
+    type: tweak
+  id: 1499
+  time: '2026-06-09T16:14:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1499
+- author: Dave
+  changes:
+  - message: new librarian, lawyer & musician sprites
+    type: add
+  id: 1500
+  time: '2026-06-07T20:13:56.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1500
+- author: Dave
+  changes:
+  - message: new ai shell sprites
+    type: add
+  id: 1501
+  time: '2026-06-08T14:27:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1501
+- author: OrbitSystem07
+  changes:
+  - message: Scientist traitors and bloodbrothers can no longer roll the supercrit
+      anomalies objective
+    type: tweak
+  - message: The Kill Station Ai objective now rolls half as often
+    type: tweak
+  id: 1502
+  time: '2026-06-07T19:50:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1502
+- author: Nyxilath
+  changes:
+  - message: Snowball has been derotated from Moffstation.
+    type: remove
+  - message: Moffstation maps have had their minimum playercounts standardized into
+      categorical ranges.
+    type: tweak
+  id: 1503
+  time: '2026-06-12T19:54:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1503
+- author: Tezzaide
+  changes: []
+  id: 1504
+  time: '2026-06-08T14:53:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1504
+- author: Nyxilath
+  changes:
+  - message: Various quality of life updates to Omega.
+    type: tweak
+  id: 1505
+  time: '2026-06-08T23:18:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1505
+- author: Centronias
+  changes:
+  - message: Added Chelsi Astris's personal item.
+    type: add
+  id: 1506
+  time: '2026-06-08T20:42:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1506
+- author: Nyxilath
+  changes:
+  - message: generic dog tags are now a selectable trinket for players to use.
+    type: add
+  - message: personal neckslot items are no longer able to be chosen for chameleon.
+    type: fix
+  id: 1508
+  time: '2026-06-12T18:38:57.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1508
+- author: Centronias
+  changes:
+  - message: Added Candice Cannon's personal item.
+    type: add
+  id: 1509
+  time: '2026-06-08T20:42:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1509
+- author: Centronias
+  changes:
+  - message: Added a new Moff figurine featuring a certain pumpkin-headed trickster.
+    type: add
+  id: 1510
+  time: '2026-06-08T23:41:22.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1510
+- author: DuckManZach
+  changes:
+  - message: Overhauled the special roles menu!
+    type: add
+  id: 1511
+  time: '2026-06-09T04:54:25.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1511
+- author: DuckManZach
+  changes:
+  - message: Added Jellyfish Station!
+    type: add
+  id: 1515
+  time: '2026-06-12T16:59:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1515
+- author: DuckManZach
+  changes:
+  - message: Added Dove Station!
+    type: add
+  id: 1516
+  time: '2026-06-10T13:01:32.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1516
+- author: OrbitSystem07
+  changes:
+  - message: Impaired Mobility now spawns you with the correct cane
+    type: fix
+  id: 1517
+  time: '2026-06-11T00:10:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1517
+- author: DuckManZach
+  changes:
+  - message: Interaction particles no longer play when opening the strip menu
+    type: fix
+  id: 1523
+  time: '2026-06-13T14:00:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1523
 Name: Mofflog
 Order: -2

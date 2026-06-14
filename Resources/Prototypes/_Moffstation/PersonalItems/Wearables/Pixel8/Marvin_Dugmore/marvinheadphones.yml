@@ -12,7 +12,6 @@
   - type: Clothing
     quickEquip: True
     sprite: _Moffstation/PersonalItems/Wearables/Pixel8/Marvin_Dugmore/marvinheadphones.rsi
-
   - type: PointLight
     enabled: false
     netsync: false
@@ -28,6 +27,9 @@
       path: /Audio/Items/Lighters/zippo_close.ogg
       params:
         volume: -5
+  - type: Tag #Temp fix until we go through all of headwear parenting
+    tags:
+    - ClothMade
 
 - type: loadout
   id: PersonalItemMarvinHeadphones
