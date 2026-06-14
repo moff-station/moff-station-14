@@ -2,6 +2,7 @@
 - type: loadoutGroup
   id: ModularEyewearBasic
   name: loadout-group-glasses
+  minLimit: 0
   loadouts:
   - ModularHudGlasses
   - ModularHudCheapSunglasses
@@ -17,6 +18,7 @@
 - type: loadoutGroup
   id: ModularEyewearSunglasses
   name: loadout-group-glasses
+  minLimit: 0
   loadouts:
   - ModularHudGlasses
   - ModularHudSunglasses
