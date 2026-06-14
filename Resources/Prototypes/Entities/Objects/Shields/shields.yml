@@ -89,6 +89,13 @@
   id: RiotShield
   description: A large tower shield. Good for controlling crowds.
   components:
+    - type: Sprite # Moffstation - Shield Resprites
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      state: riot-icon
+    - type: Item
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      size: Ginormous
+      heldPrefix: riot
     - type: StaticPrice
       price: 90
     - type: Blocking
@@ -110,9 +117,12 @@
   id: RiotLaserShield
   description: A shield built for withstanding lasers, but not much else.
   components:
-    - type: Sprite
+    - type: Sprite # Moffstation - Shield Resprites
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
       state: riot_laser-icon
     - type: Item
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      size: Ginormous
       heldPrefix: riot_laser
     - type: Blocking
       passiveBlockModifier:
@@ -130,9 +140,12 @@
   id: RiotBulletShield
   description: A shield built for protecting against ballistics, but not much else.
   components:
-    - type: Sprite
+    - type: Sprite # Moffstation - Shield Resprites
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
       state: riot_bullet-icon
     - type: Item
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      size: Ginormous
       heldPrefix: riot_bullet
     - type: Blocking
       passiveBlockModifier:
@@ -259,10 +272,13 @@
   id: MakeshiftShield
   description: A rundown looking shield, not good for much.
   components:
-    - type: Sprite
+    - type: Sprite # Moffstation - Shield Resprites
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
       state: makeshift-icon
     - type: Item
-      heldPrefix: metal
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      size: Ginormous
+      heldPrefix: makeshift
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -459,8 +475,8 @@
       components:
       - type: DisarmMalus
         malus: 0.6
-    - type: Sprite
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+    - type: Sprite # Shield resprites - Moffstation
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
       layers:
         - state: eshield-icon
         - state: eshield-on
@@ -470,7 +486,7 @@
           map: [ "shield" ]
     - type: Item
       size: Small
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
       heldPrefix: eshield
     - type: UseDelay
       delay: 0.5
@@ -488,7 +504,7 @@
       enabled: false
       radius: 1.5
       energy: 2
-      color: blue
+      color: white
     - type: ItemTogglePointLight
     - type: Reflect
       reflectProb: 0.95
@@ -547,11 +563,11 @@
   id: BrokenEnergyShield
   description: Something inside is burned out, it is no longer functional.
   components:
-    - type: Sprite
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+    - type: Sprite # Shield resprites - Moffstation
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
       state: eshield-icon
     - type: Item
-      sprite: Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
       size: Small
       heldPrefix: eshield
 
