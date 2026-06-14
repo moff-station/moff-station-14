@@ -46,7 +46,6 @@ marking-GrayWhiskers-whiskers = Whiskers
 marking-GrayWrinkles = Wrinkles
 marking-GrayWrinkles-wrinkles = Wrinkles
 
-~
 marking-GrayEyes = Eyes
 marking-GrayEyes-eyes = Eyes
 marking-GrayEyes-eyes_glimmer = Glimmer
@@ -64,13 +63,13 @@ marking-GrayAngryEyes-angryeyes_ridge = Ridge
 marking-GrayBigEyes = Big Eyes
 marking-GrayBigEyes-bigeyes = Big Eyes
 marking-GrayBigEyes-bigeyes_glimmer = Glimmer
-~
+
 marking-GrayGleepGlowChest = Chest Gleep Glow
 marking-GrayGleepGlowChest-gleepglowchest = Chest Gleep Glow
 
 marking-GrayCropCircleTattooChest = Crop Circles Tattoo
 marking-GrayCropCirclesTattooChest-cropcircleschest = Crop Circles Tattoo
-~
+
 marking-GrayGleepGlowLeftArm = Left Arm Gleep Glow
 marking-GrayGleepGlowLeftArm-larm = Left Arm Gleep Glow
 
@@ -83,7 +82,6 @@ marking-GrayGleepGlowRightArm-gleepglowrarm = Right Arm Gleep Glow
 marking-GrayCropCircleTattooRightArm = Crop Circles Tattoo
 marking-GrayCropCircleTattooRightArm-cropcirclesrarm = Crop Circles Tattoo
 
-~
 marking-GrayGleepGlowLeftLeg = Gleep Left Leg Glow
 marking-GrayGleepGlowLeftLeg-gleepglowlleg = Gleep Left Leg Glow
 
@@ -96,7 +94,6 @@ marking-GrayGleepGlowLeftFoot-gleepglowlfoot = Gleep Left Foot Glow
 marking-GrayGleepGlowRightFoot = Gleep Right Foot Glow
 marking-GrayGleepGlowRightFoot-gleepglowrfoot = Gleep Right Foot Glow
 
-~
 marking-GrayHeadGauze = Head Gauze
 marking-GrayHeadGauze-head = Head Gauze
 
