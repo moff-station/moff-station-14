@@ -94,6 +94,15 @@
     - map: [ "pocket2" ]
 
     # Extras
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ] # Custom cuffs currently don't appear, #38451 tries to fix it is stuck in limbo.
+      color: "#ffffff"
+      sprite: _Moffstation/Objects/Misc/handcuffs.rsi
+      state: body-overlay-gray
+      visible: false
+    - map: [ "clownedon" ]
+      sprite: "_Moffstation/Effects/creampie.rsi"
+      state: "creampie_gray"
+      visible: false
   - type: Inventory
     speciesId: gray
     displacements:
