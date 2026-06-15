@@ -225,6 +225,11 @@
     group: Null
   - type: AccessReader
     access: [ [ "Command" ], [ "Research" ] ]
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: ShowJobIcons
+  - type: ShowCrewIcons
 
 - type: entity
   id: PlayerAiShellBattery
