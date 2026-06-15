@@ -23,7 +23,7 @@ public sealed partial class GrayAccentSystem : EntitySystem
     private static readonly Regex RegexLowercaseAh = new(@"\Ba(?=(r|h))");
     private static readonly Regex RegexUppercaseAh = new(@"\BA(?=(R|H))");
     private static readonly Regex RegexLowercaseEr = new(@"er\B");
-    private static readonly Regex RegexUppercaseEr = new(@"Er\B");
+    private static readonly Regex RegexUppercaseEr = new(@"ER\B");
     private static readonly Regex RegexSentenceCaseEr = new(@"Er\B");
     private static readonly Regex RegexLowercaseUr = new(@"ur\B");
     private static readonly Regex RegexUppercaseUr = new(@"UR\B");

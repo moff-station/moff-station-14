@@ -14,16 +14,16 @@ accent-gray-words-5 = chickens
 accent-gray-words-replace-5 = egg cows
 
 accent-gray-words-6 = pig
-accent-gray-word-replace-6 = oinky cow
+accent-gray-words-replace-6 = oinky cow
 
 accent-gray-words-7 = pigs
 accent-gray-words-replace-7 = oinky cows
 
 accent-gray-words-8 = sheep
-accent-gray-word-replace-8 = fluffy cow
+accent-gray-words-replace-8 = fluffy cow
 
 accent-gray-words-9 = sheeps
-accent-gray-word-replace-9 = fluffy cows
+accent-gray-words-replace-9 = fluffy cows
 
 accent-gray-words-10 = cc
 accent-gray-words-replace-10 = the mothership

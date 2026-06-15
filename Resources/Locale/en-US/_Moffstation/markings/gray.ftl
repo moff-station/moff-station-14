@@ -68,13 +68,13 @@ marking-GrayGleepGlowChest = Chest Gleep Glow
 marking-GrayGleepGlowChest-gleepglowchest = Chest Gleep Glow
 
 marking-GrayCropCircleTattooChest = Crop Circles Tattoo
-marking-GrayCropCirclesTattooChest-cropcircleschest = Crop Circles Tattoo
+marking-GrayCropCircleTattooChest-cropcircleschest = Crop Circles Tattoo
 
 marking-GrayGleepGlowLeftArm = Left Arm Gleep Glow
 marking-GrayGleepGlowLeftArm-larm = Left Arm Gleep Glow
 
 marking-GrayCropCircleTattooLeftArm = Crop Circles Tattoo
-marking-GrayCropCircleTatooLeftArm-cropcirclestattoolarm = Crop Circles Tattoo
+marking-GrayCropCircleTattooLeftArm-cropcirclestattoolarm = Crop Circles Tattoo
 
 marking-GrayGleepGlowRightArm = Right Arm Gleep Glow
 marking-GrayGleepGlowRightArm-gleepglowrarm = Right Arm Gleep Glow
