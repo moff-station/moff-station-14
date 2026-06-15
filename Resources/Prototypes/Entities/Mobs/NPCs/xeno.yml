@@ -60,11 +60,10 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      150: Dead
+      50: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      75: 0.7
-      120: 0.5
+      25: 0.5
   - type: Stamina
     baseCritThreshold: 200
   - type: Bloodstream
@@ -79,10 +78,8 @@
      collection: AlienClaw
     animation: WeaponArcBite
     damage:
-      types:
-        blunt: 10
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 4.0 # Slightly slower than a person
+      groups:
+        Brute: 6
   - type: DamageStateVisuals
     states:
       Alive:
@@ -137,21 +134,12 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      400: Dead
+      100: Dead
   - type: Stamina
     baseCritThreshold: 300
   - type: SlowOnDamage
     speedModifierThresholds:
-      200: 0.7
-      320: 0.5
-  - type: MeleeWeapon
-    damage:
-      types:
-        Blunt: 13
-        Piercing: 7
-    bluntStaminaDamageFactor: 1.0
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 3.0 # Mining suit can barely outrun them
+      50: 0.7
   - type: Fixtures
     fixtures:
       fix1:
@@ -179,19 +167,16 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      80: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      50: 0.7
-      75: 0.5
+      40: 0.7
   - type: MeleeWeapon
     damage:
-      types:
-        Blunt: 8
-        Piercing: 4
-    bluntStaminaDamageFactor: 1.0
+      groups:
+        Brute: 6
   - type: MovementSpeedModifier
-    baseSprintSpeed: 5.0
+    baseSprintSpeed: 4
   - type: Fixtures
     fixtures:
       fix1:
@@ -219,19 +204,15 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      500: Dead # Dragon health
+      300: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      250: 0.7
-      400: 0.5
+      150: 0.7
   - type: MovementSpeedModifier
-    baseSprintSpeed: 3.0 # Mining suit can barely outrun them
   - type: MeleeWeapon
     damage:
-     types:
-       Blunt: 25
-       Piercing: 10
-    bluntStaminaDamageFactor: 1.0
+     groups:
+       Brute: 12
   - type: Fixtures
     fixtures:
       fix1:
@@ -262,18 +243,16 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Dead
+      100: Dead
   - type: MovementSpeedModifier
-    baseSprintSpeed: 4.5
+    baseSprintSpeed: 4
   - type: MeleeWeapon
     damage:
-     types:
-       Slash: 20
-       Piercing: 10
+     groups:
+       Brute: 10
   - type: SlowOnDamage
     speedModifierThresholds:
-      100: 0.7
-      160: 0.5
+      50: 0.7
   - type: Fixtures
     fixtures:
       fix1:
@@ -299,12 +278,11 @@
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: running
   - type: MovementSpeedModifier
-    baseSprintSpeed: 10.0 # Scary fast
+    baseSprintSpeed: 6.0
   - type: MeleeWeapon
     damage:
-     types:
-       Slash: 10
-       Piercing: 5
+     groups:
+       Brute: 5
   - type: Fixtures
     fixtures:
       fix1:
@@ -346,11 +324,10 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      50: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      50: 0.7
-      80: 0.5
+      25: 0.7
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
