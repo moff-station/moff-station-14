@@ -14,7 +14,7 @@ accent-gray-words-5 = chickens
 accent-gray-words-replace-5 = egg cows
 
 accent-gray-words-6 = pig
-accent-gray-word-replace-6 = oinky cow
+accent-gray-words-replace-6 = oinky cow
 
 accent-gray-words-7 = pigs
 accent-gray-words-replace-7 = oinky cows
