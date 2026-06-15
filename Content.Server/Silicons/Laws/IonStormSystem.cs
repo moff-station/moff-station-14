@@ -25,18 +25,15 @@ public sealed partial class IonStormSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SiliconLawBoundComponent, IonStormEvent>(IonStormTarget);
+        SubscribeLocalEvent<IonStormTargetComponent, IonStormEvent>(IonStormTarget);
     }
     // macro add end
 
     /// <summary>
     /// Randomly alters the laws of an individual silicon.
     /// </summary>
-    public void IonStormTarget(Entity<SiliconLawBoundComponent> ent, ref IonStormEvent args) // macro edit, its an event subscription now
+    public void IonStormTarget(Entity<IonStormTargetComponent> ent, ref IonStormEvent args) // macro edit, its an event subscription now
     {
-        // start macro
-        var lawBound = ent.Comp;
-        EnsureComp<IonStormTargetComponent>(ent, out var target);
         // if (!_robustRandom.Prob(target.Chance)) // macro, moved to ionstormrule
         //     return;
         // end macro
@@ -46,9 +43,9 @@ public sealed partial class IonStormSystem : EntitySystem
             return;
 
         // try to swap it out with a random lawset
-        if (_robustRandom.Prob(target.RandomLawsetChance))
+        if (_robustRandom.Prob(ent.Comp.RandomLawsetChance)) // Moffstation - make use of the component
         {
-            var lawsets = _proto.Index<WeightedRandomPrototype>(target.RandomLawsets);
+            var lawsets = _proto.Index(ent.Comp.RandomLawsets); // Moffstation - make use of the component
             var lawset = lawsets.Pick(_robustRandom);
             laws = _siliconLaw.GetLawset(lawset);
         }
@@ -56,7 +53,7 @@ public sealed partial class IonStormSystem : EntitySystem
         laws = laws.Clone();
 
         // shuffle them all
-        if (_robustRandom.Prob(target.ShuffleChance))
+        if (_robustRandom.Prob(ent.Comp.ShuffleChance)) // Moffstation - make use of the component
         {
             // hopefully work with existing glitched laws if there are multiple ion storms
             var baseOrder = FixedPoint2.New(1);
@@ -76,7 +73,7 @@ public sealed partial class IonStormSystem : EntitySystem
         }
 
         // see if we can remove a random law
-        if (laws.Laws.Count > 0 && _robustRandom.Prob(target.RemoveChance))
+        if (laws.Laws.Count > 0 && _robustRandom.Prob(ent.Comp.RemoveChance)) // Moffstation - make use of the component
         {
             var i = _robustRandom.Next(laws.Laws.Count);
             laws.Laws.RemoveAt(i);
@@ -89,7 +86,7 @@ public sealed partial class IonStormSystem : EntitySystem
             return;
 
         // see if the law we add will replace a random existing law or be a new glitched order one
-        if (laws.Laws.Count > 0 && _robustRandom.Prob(target.ReplaceChance))
+        if (laws.Laws.Count > 0 && _robustRandom.Prob(ent.Comp.ReplaceChance))
         {
             var i = _robustRandom.Next(laws.Laws.Count);
             laws.Laws[i] = new SiliconLaw()
