@@ -126,6 +126,8 @@
     containers:
       borg_brain:
       - AIShellBrain
+      borg_module:
+      - BorgModuleTool
   - type: Sprite
     sprite: _Moffstation/Mobs/Silicon/Chassis/aishells.rsi
     layers:
@@ -175,7 +177,7 @@
     - Service
     - Supply
   - type: BorgChassis
-    maxModules: 1
+    maxModules: 2
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
