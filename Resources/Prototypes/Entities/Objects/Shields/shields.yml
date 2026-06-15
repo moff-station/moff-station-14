@@ -5,6 +5,12 @@
   description: A shield!
   abstract: true
   components:
+    - type: Clothing # - Moffstation Shield Resprites/Suitstorages
+      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      quickEquip: false
+      slots:
+      - back
+      - suitStorage
     - type: Sprite
       sprite: Objects/Weapons/Melee/shields.rsi
       state: riot-icon
