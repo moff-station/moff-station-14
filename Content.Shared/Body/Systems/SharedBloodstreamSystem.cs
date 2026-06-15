@@ -13,11 +13,13 @@ using Content.Shared.Fluids;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Gibbing;
 using Content.Shared.HealthExaminable;
+using Content.Shared.Inventory; // Forky
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffectNew;
+using Content.Shared._Funkystation.Fluids; // Forky
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -40,6 +42,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
     [Dependency] private AlertsSystem _alertsSystem = default!;
     [Dependency] private MobStateSystem _mobStateSystem = default!;
     [Dependency] private DamageableSystem _damageableSystem = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {
@@ -505,6 +508,23 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
 
         if (tempSolution.Volume > ent.Comp.BleedPuddleThreshold)
         {
+            // Forky - start - Clothing stains
+            var stainEv = new SpilledOnEvent(ent.Owner, tempSolution);
+            RaiseLocalEvent(ent.Owner, stainEv);
+
+            var xform = Transform(ent.Owner);
+            foreach (var neighbor in _lookup.GetEntitiesInRange(xform.Coordinates, 1.5f))
+            {
+                if (neighbor == ent.Owner || !HasComp<InventoryComponent>(neighbor))
+                    continue;
+
+                RaiseLocalEvent(neighbor, new SpilledOnEvent(ent.Owner, tempSolution));
+
+                if (tempSolution.Volume <= 0)
+                    break;
+            }
+            // Forky - end
+
             _puddle.TrySpillAt(ent.Owner, tempSolution, out _, sound: false);
 
             tempSolution.RemoveAllSolution();
@@ -563,6 +583,23 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             tempSol.AddSolution(tempSolution, PrototypeManager);
             SolutionContainer.RemoveAllSolution(ent.Comp.TemporarySolution.Value);
         }
+
+        // Forky - Start - Clothing stains
+        var stainEv = new SpilledOnEvent(ent.Owner, tempSol);
+        RaiseLocalEvent(ent.Owner, stainEv);
+
+        var xform = Transform(ent.Owner);
+        foreach (var neighbor in _lookup.GetEntitiesInRange(xform.Coordinates, 1.5f))
+        {
+            if (neighbor == ent.Owner || !HasComp<InventoryComponent>(neighbor))
+                continue;
+
+            RaiseLocalEvent(neighbor, new SpilledOnEvent(ent.Owner, tempSol));
+
+            if (tempSol.Volume <= 0)
+                break;
+        }
+        // Forky - End
 
         _puddle.TrySpillAt(ent, tempSol, out _);
     }

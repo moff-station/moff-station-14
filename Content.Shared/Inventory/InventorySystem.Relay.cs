@@ -110,6 +110,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetEquipmentVerbs);
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);
 
+        SubscribeLocalEvent<InventoryComponent, Content.Shared._Funkystation.Fluids.SpilledOnEvent>(RelayInventoryEvent);
     }
 
     protected void RefRelayInventoryEvent<T>(EntityUid uid, InventoryComponent component, ref T args) where T : IInventoryRelayEvent
@@ -174,7 +175,6 @@ public partial class InventorySystem
             RaiseLocalEvent(item, ev);
         }
     }
-
 }
 
 /// <summary>
@@ -196,6 +196,12 @@ public sealed class InventoryRelayedEvent<TEvent> : EntityEventArgs
     {
         Args = args;
         Owner = owner;
+    }
+
+    public InventoryRelayedEvent(TEvent args)
+    {
+        Args = args;
+        Owner = EntityUid.Invalid;
     }
 }
 
