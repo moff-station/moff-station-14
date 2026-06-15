@@ -34,7 +34,7 @@
         priority: 1
         whitelist:
           components:
-            - CartridgeAmmo # Just put whatever in it - who cares
+          - CartridgeAmmo # Just put whatever in it - who cares
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
