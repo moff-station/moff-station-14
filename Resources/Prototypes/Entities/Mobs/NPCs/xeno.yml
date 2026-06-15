@@ -75,11 +75,11 @@
     altDisarm: false
     angle: 0
     soundHit:
-     collection: AlienClaw
+      collection: AlienClaw
     animation: WeaponArcBite
     damage:
-      groups:
-        Brute: 6
+      types:
+        Piercing: 6
   - type: DamageStateVisuals
     states:
       Alive:
@@ -101,18 +101,20 @@
     description: ghost-role-information-xeno-description
     rules: ghost-role-information-xeno-rules
     raffle:
-      settings: default # Moffstation - short raffles
+      settings: default
   - type: GhostTakeoverAvailable
   - type: TypingIndicator
     proto: alien
   - type: Temperature
+    currentTemperature: 310.15
+  - type: TemperatureDamage
     heatDamageThreshold: 360
     coldDamageThreshold: -150
   - type: Tag
     tags:
-      - CannotSuicide
-      - DoorBumpOpener
-      - FootstepSound
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound
   - type: NoSlip
   - type: Perishable #Ummmm the acid kills a lot of the bacteria or something
     molsPerSecondPerUnitMass: 0.0005
@@ -173,8 +175,8 @@
       40: 0.7
   - type: MeleeWeapon
     damage:
-      groups:
-        Brute: 6
+      types:
+        Slash: 6
   - type: MovementSpeedModifier
     baseSprintSpeed: 4
   - type: Fixtures
@@ -211,8 +213,8 @@
   - type: MovementSpeedModifier
   - type: MeleeWeapon
     damage:
-     groups:
-       Brute: 12
+      types:
+        Slash: 12
   - type: Fixtures
     fixtures:
       fix1:
@@ -248,8 +250,8 @@
     baseSprintSpeed: 4
   - type: MeleeWeapon
     damage:
-     groups:
-       Brute: 10
+      types:
+        Slash: 10
   - type: SlowOnDamage
     speedModifierThresholds:
       50: 0.7
@@ -281,8 +283,8 @@
     baseSprintSpeed: 6.0
   - type: MeleeWeapon
     damage:
-     groups:
-       Brute: 5
+      types:
+        Slash: 5
   - type: Fixtures
     fixtures:
       fix1:
@@ -342,7 +344,7 @@
     useKey: false
     selectedMode: FullAuto
     availableModes:
-      - FullAuto
+    - FullAuto
     soundGunshot: /Audio/Weapons/Xeno/alien_spitacid.ogg
   - type: Fixtures
     fixtures:
@@ -507,7 +509,7 @@
     altDisarm: false
     angle: 0
     soundHit:
-     collection: AlienClaw
+      collection: AlienClaw
     animation: WeaponArcBite
     damage:
       types:
