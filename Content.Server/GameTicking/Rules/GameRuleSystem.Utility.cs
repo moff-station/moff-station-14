@@ -182,28 +182,6 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         return found;
     }
 
-    // Moffstation - Start - Livable Tile helper function
-    /// <summary>
-    ///     Finds a random breathable tile on the largest grid of the station.
-    /// </summary>
-    protected bool TryFindLivableStationCoords(
-        out EntityCoordinates coords)
-    {
-        coords = EntityCoordinates.Invalid;
-        for (var i = 0; i < 100; i++)
-        {
-            if (!TryFindRandomTile(out var tile, out var station, out var grid, out coords) ||
-                _station.GetLargestGrid(station.Value) != grid ||
-                Transform(grid).MapUid is not { } map ||
-                !_atmosphere.IsTileMixtureProbablySafe(grid, map, tile))
-                continue;
-
-            return true;
-        }
-        return false;
-    }
-    // Moffstation - End
-
     protected void ForceEndSelf(EntityUid uid, GameRuleComponent? component = null)
     {
         GameTicker.EndGameRule(uid, component);
