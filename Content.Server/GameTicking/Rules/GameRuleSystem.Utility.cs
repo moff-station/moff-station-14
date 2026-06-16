@@ -163,7 +163,6 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
     // Moffstation - Start - Livable Tile helper function
     /// <summary>
     ///     Finds a random breathable tile on the largest grid of the station.
-    ///     Prevents spawning on secondary grids like the ATS.
     /// </summary>
     protected bool TryFindLivableStationCoords(
         out EntityCoordinates coords)
