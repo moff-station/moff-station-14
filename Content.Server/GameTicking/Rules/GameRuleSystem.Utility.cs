@@ -173,7 +173,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         {
             if (!TryFindRandomTile(out var tile, out var station, out var grid, out coords) ||
                 _station.GetLargestGrid(station.Value) != grid ||
-                Transform(grid).MapUid is not { } map||
+                Transform(grid).MapUid is not { } map ||
                 !_atmosphere.IsTileMixtureProbablySafe(grid, map, tile))
                 continue;
 
