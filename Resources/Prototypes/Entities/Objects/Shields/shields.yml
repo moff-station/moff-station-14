@@ -89,12 +89,12 @@
   description: A large tower shield. Good for controlling crowds.
   components:
     - type: Clothing
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
     - type: Sprite # Moffstation - Shield Resprites
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
       state: riot-icon
     - type: Item
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
       size: Ginormous
       heldPrefix: riot
     - type: StaticPrice
@@ -119,12 +119,12 @@
   description: A shield built for withstanding lasers, but not much else.
   components:
     - type: Clothing
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
     - type: Sprite # Moffstation - Shield Resprites
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
       state: riot_laser-icon
     - type: Item
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
       size: Ginormous
       heldPrefix: riot_laser
     - type: Blocking
@@ -144,12 +144,12 @@
   description: A shield built for protecting against ballistics, but not much else.
   components:
     - type: Clothing
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
     - type: Sprite # Moffstation - Shield Resprites
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
       state: riot_bullet-icon
     - type: Item
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
       size: Ginormous
       heldPrefix: riot_bullet
     - type: Blocking
