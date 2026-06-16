@@ -1,6 +1,6 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Managers;
-using Content.Server.Station.Systems;
+using Content.Server.Station.Systems; // Moffstation
 using Content.Shared.GameTicking.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
@@ -19,7 +19,7 @@ public abstract partial class GameRuleSystem<T> : EntitySystem where T : ICompon
     // Not protected, just to be used in utility methods
     [Dependency] private AtmosphereSystem _atmosphere = default!;
     [Dependency] private MapSystem _map = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private StationSystem _station = default!; // Moffstation - Tile utility method
 
     [Dependency] protected EntityQuery<GameRuleComponent> GameRuleQuery = default!;
     [Dependency] protected EntityQuery<T> RuleQuery = default!;
