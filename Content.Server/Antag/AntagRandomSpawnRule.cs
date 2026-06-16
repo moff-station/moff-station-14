@@ -59,10 +59,7 @@ public sealed partial class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomS
         if (_station.GetLargestGrid(station.Value) != grid)
             return false;
 
-        if (Transform(grid).MapUid is not { } map || !_atmosphere.IsTileMixtureProbablySafe(grid, map, tile))
-            return false;
-
-        return true;
+        return Transform(grid).MapUid is { } map && _atmosphere.IsTileMixtureProbablySafe(grid, map, tile);
     }
     // Moffstation - End
 }
