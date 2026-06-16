@@ -439,8 +439,6 @@
   id: EnergyShield
   description: Exotic energy shield, when folded, can even fit in your pocket.
   components:
-    - type: ItemTogglePointLight
-      toggleableVisualsColorModulatesLights: true
     - type: RandomSprite
       available:
       - shield:
@@ -490,6 +488,7 @@
       energy: 2
       color: white
     - type: ItemTogglePointLight
+      toggleableVisualsColorModulatesLights: true
     - type: Reflect
       reflectProb: 0.95
       reflects:
