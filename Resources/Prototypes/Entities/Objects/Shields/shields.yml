@@ -465,6 +465,10 @@
           visible: false
           shader: unshaded
           map: [ "shield" ]
+    - type: RandomSprite
+      available:
+          map: [ "shield" ]
+          screwdriver: Rainbow
     - type: Item
       size: Small
       sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
