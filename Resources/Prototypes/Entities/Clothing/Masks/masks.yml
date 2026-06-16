@@ -218,19 +218,24 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    # Imp - Begin - Tourists
+    - type: StealTarget
+      stealGroup: ClownMask
+    # Imp - End - Tourists
 
 - type: entity
   parent: [ClothingMaskClownBase, BaseFoldable]
   id: ClothingMaskClown
   description: A clown mask featuring a foldable wig; a true prankster's attire.
   components:
+  - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
   - type: FoldableClothing
     foldedEquippedPrefix: opened
     foldedHeldPrefix: opened
   - type: Sprite
-    sprite: _Moffstation/Clothing/Mask/clown.rsi # Moffstation
+    sprite: Clothing/Mask/clown.rsi
     layers:
     - state: icon
       map: [ "unfoldedLayer" ]
@@ -245,10 +250,6 @@
   - type: HideLayerClothing
     slots:
     - Snout
-    # Imp - Begin - Tourists
-    - type: StealTarget
-      stealGroup: ClownMask
-    # Imp - Begin - Tourists
 
 - type: entity
   parent: ClothingMaskClownBase
