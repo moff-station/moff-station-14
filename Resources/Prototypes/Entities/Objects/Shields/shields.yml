@@ -16,7 +16,6 @@
     - type: Item
       sprite: Objects/Weapons/Melee/shields.rsi
       size: Ginormous
-      heldPrefix: riot
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -95,7 +94,6 @@
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
-      state: inhand
       size: Ginormous
     - type: StaticPrice
       price: 90
@@ -125,7 +123,6 @@
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
-      state: inhand
       size: Ginormous
     - type: Blocking
       passiveBlockModifier:
@@ -150,7 +147,6 @@
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
-      state: inhand
       size: Ginormous
     - type: Blocking
       passiveBlockModifier:
