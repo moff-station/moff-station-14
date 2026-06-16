@@ -14,7 +14,4 @@ public sealed partial class AntagRandomSpawnComponent : Component
     /// </summary>
     [DataField]
     public EntityCoordinates? Coords;
-
-    [ViewVariables]
-    public int Retries = 10;
 }
