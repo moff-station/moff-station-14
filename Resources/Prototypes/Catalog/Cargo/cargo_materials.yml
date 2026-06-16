@@ -1,7 +1,7 @@
 - type: cargoProduct
   id: MaterialGlass
   icon:
-    sprite: Objects/Materials/Sheets/glass.rsi
+    sprite: _Moffstaton/Objects/Materials/Sheets/glass.rsi # Moffstation
     state: glass_3
   product: CrateMaterialGlass
   cost: 1500
@@ -11,7 +11,7 @@
 - type: cargoProduct
   id: MaterialSteel
   icon:
-    sprite: Objects/Materials/Sheets/metal.rsi
+    sprite: _Moffstaton/Objects/Materials/Sheets/metal.rsi # Moffstation
     state: steel_3
   product: CrateMaterialSteel
   cost: 1500
@@ -21,7 +21,7 @@
 - type: cargoProduct
   id: MaterialPlastic
   icon:
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Moffstaton/Objects/Materials/Sheets/other.rsi # Moffstation
     state: plastic_3
   product: CrateMaterialPlastic
   cost: 2000
@@ -31,7 +31,7 @@
 - type: cargoProduct
   id: MaterialBrass
   icon:
-    sprite: Objects/Materials/Sheets/metal.rsi
+    sprite: _Moffstaton/Objects/Materials/Sheets/metal.rsi # Moffstation
     state: brass_3
   product: CrateMaterialBrass
   cost: 3000
@@ -96,7 +96,7 @@
 - type: cargoProduct
   id: MaterialPlasma
   icon:
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Moffstaton/Objects/Materials/Sheets/other.rsi # Moffstation
     state: plasma_3
   product: CrateMaterialPlasma
   cost: 1500
@@ -126,7 +126,7 @@
 - type: cargoProduct
   id: MaterialBasic
   icon:
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Moffstaton/Objects/Materials/Sheets/other.rsi # Moffstation
     state: generic_materials
   product: CrateMaterialBasicResource
   cost: 1660
