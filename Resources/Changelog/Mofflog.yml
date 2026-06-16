@@ -6306,5 +6306,24 @@ Entries:
   id: 1523
   time: '2026-06-13T14:00:11.000'
   url: https://github.com/moff-station/moff-station-14/pull/1523
+- author: Centronias
+  changes:
+  - message: Logistics Associates' titles are correctly displayed when inspecting
+      their IDs.
+    type: fix
+  id: 1524
+  time: '2026-06-15T05:33:14.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1524
+- author: OrbitSystem07
+  changes:
+  - message: Shells now have two module slots, and start with a tool module
+    type: tweak
+  - message: Shells can now see the job and crew huds like every other NT silicon
+    type: fix
+  - message: Shells are now properly targeted by NPCs
+    type: fix
+  id: 1529
+  time: '2026-06-15T05:10:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1529
 Name: Mofflog
 Order: -2
