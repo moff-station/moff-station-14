@@ -16,9 +16,9 @@
   description: An artist's favorite headwear.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -35,9 +35,9 @@
   description: A French beret. "Vive la France!"
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_french.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_french.rsi # Moffstation
   - type: AddAccentClothing
     accent: FrenchAccent
   - type: Tag
@@ -104,9 +104,9 @@
   description: A beret for real scientists.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_rnd.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_rnd.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_rnd.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -142,9 +142,9 @@
   description: A beret with the cargo department's insignia.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/beret_qm.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/beret_qm.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -259,9 +259,9 @@
   description: A stylish bowler hat.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/bowler_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/bowler_hat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/bowler_hat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/bowler_hat.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -323,9 +323,9 @@
   description: A hat used by chefs to keep their hair out of your food. Judging by the food in the mess, they don't work.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/chefhat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/chefhat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/chefhat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/chefhat.rsi # Moffstation
   - type: Storage
     grid:
     - 0,0,0,0
@@ -735,9 +735,9 @@
   description: A stylish black tophat.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Hats/tophat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/tophat.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Head/Hats/tophat.rsi
+    sprite: _Moffstation/Clothing/Head/Hats/tophat.rsi # Moffstation
   - type: Tag
     tags:
     - PetWearable
@@ -1556,9 +1556,9 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-            Ash:
-              min: 1
-              max: 1
+          Ash:
+            min: 1
+            max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 

@@ -117,8 +117,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatPierrot
-  name: pierrot's cone
-  description: A cone for only the funniest of performers
+  name: pierrot's beret
+  description: A beret for only the funniest of performers
   components:
   - type: Sprite
     sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
@@ -126,12 +126,7 @@
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        offset: "0, 0.07"
     sprite: _Moffstation/Clothing/Head/Hats/pierrot.rsi
-  - type: HideLayerClothing
-    layers:
-      Hair: HEAD
-      HeadTop : HEAD
 
 #Musician
 - type: entity
@@ -223,6 +218,14 @@
     sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Head/Hats/Courier.rsi
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
 
 #Qm
 - type: entity

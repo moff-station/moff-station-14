@@ -1,0 +1,19 @@
+- type: quickPhrase
+  parent: BaseCommonPhrase
+  abstract: true
+  id: BaseQualitativePhrase
+  group: phrase-group-quality-or-quantity
+
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: MorePhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: LessPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: AllPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: NothingPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: MostPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: SomePhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: ManyPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: FewPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: SinglePhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: TooMuchPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: NotEnoughPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: GoodPhrase }
+- { type: quickPhrase, parent: BaseQualitativePhrase, id: BadPhrase }

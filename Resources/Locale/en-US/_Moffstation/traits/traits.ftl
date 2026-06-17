@@ -1,3 +1,6 @@
+# Categories
+trait-category-misc = Miscellaneous
+
 # Accents
 
 trait-dwarf-accent-name = Scottish Accent
@@ -24,7 +27,7 @@ trait-scandi-accent-desc-moff = Happy Lief Erikson Day! Hinga dinga durgen!
 trait-boston-accent-name-moff = Boston accent
 trait-boston-accent-desc-moff = Are you listening? Okay. Grass grows, birds fly, sun shines, and brother? I hurt people.
 
-# Disabilities
+# Medical
 
 trait-clumsy-disability-name = Clumsy
 trait-clumsy-disability-desc = You often trip, slip and fall - from climbing tables to operating firearms.

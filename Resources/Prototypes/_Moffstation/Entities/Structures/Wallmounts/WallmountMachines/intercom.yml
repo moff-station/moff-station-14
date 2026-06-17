@@ -1,0 +1,12 @@
+# Space Traffic Control intercom proto for mappers
+- type: entity
+  id: IntercomTraffic # Intended to be placed within shuttles nearby the controls, as well as within cargo and the bridge.
+  parent: Intercom
+  suffix: Traffic
+  components:
+  - type: ContainerFill
+    containers:
+      board:
+      - IntercomElectronics
+      key_slots:
+      - EncryptionKeyTraffic

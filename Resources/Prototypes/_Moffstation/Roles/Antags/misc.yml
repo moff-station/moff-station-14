@@ -1,13 +1,4 @@
 - type: antag
-  id: HighValueTarget
-  name: roles-high-value-target
-  setPreference: true
-  objective: roles-high-value-target-objective
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 50h
-
-- type: antag
   id: OpeningShift
   name: roles-opening-shift-title
   setPreference: true

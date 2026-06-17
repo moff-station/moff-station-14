@@ -1,0 +1,97 @@
+﻿# Base, Nonchameleonable
+- type: entity
+  abstract: true
+  parent: Clothing
+  id: ClothingNeckBase
+  components:
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: true
+    slots:
+    - neck
+  - type: Sprite
+    state: icon
+
+- type: entity
+  abstract: true
+  parent: [SolutionFood, SolutionToolSmall, ClothingNeckBase, BaseSlicingRefinable]
+  id: ClothingNeckClothBase
+  components:
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialCloth1
+      amount: 2
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 50
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 15
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+
+- type: entity
+  abstract: true
+  parent: ClothingNeckClothBase
+  id: ClothingNeckScarfBase
+  components:
+  - type: Tag
+    tags:
+    - Scarf
+    - ClothMade
+    - Recyclable
+
+- type: entity
+  abstract: true
+  parent: ClothingNeckBase
+  id: ClothingNeckMetallicBase
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 50
+  - type: Tag
+    tags:
+    - Recyclable
+
+
+
+# Base, Chameleonable
+- type: entity
+  abstract: true
+  parent: ClothingNeckClothBase
+  id: ClothingNeckClothChameleonableBase
+  components:
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon
+
+- type: entity
+  abstract: true
+  parent: ClothingNeckScarfBase
+  id: ClothingNeckScarfChameleonableBase
+  components:
+  - type: Tag
+    tags:
+    - Scarf
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon
+
+- type: entity
+  abstract: true
+  parent: ClothingNeckMetallicBase
+  id: ClothingNeckMetallicChameleonableBase
+  components:
+  - type: Tag
+    tags:
+    - Recyclable
+    - WhitelistChameleon

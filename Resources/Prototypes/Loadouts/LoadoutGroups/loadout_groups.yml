@@ -84,6 +84,7 @@
   - PlushieVulp
   - GoldRing
   - SilverRing
+  - ClothingNeckDogTags
   # Moffstation - End
   - AACTablet # DeltaV
 
@@ -95,10 +96,6 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
-  # Moffstation - Begin (More Eyewear!)
-  - EyePatch
-  - EyePatchFlipped
-  # Moffstation - End
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -183,7 +180,10 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
-  - CaptainCapeFormal # Moffstation
+  # Moffstation - Start
+  - CaptainCapeFormal
+  - CaptainScarf
+  # Moffstation - End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -355,6 +355,10 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
+  # Moffstation - Start
+  - BartenderJumpsuitRed
+  - BartenderJumpskirtRed
+  # Moffstation - End
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -857,6 +861,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterScarf # Moffstation
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -918,8 +923,11 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
-  - CargoTechnicianWindbreaker # Moffstation - Start - (Cargo Outfits)
-  - SeniorCargoWintercoat # Moffstation - End - (Cargo Outfits)
+# Moffstation - Start
+  - CourierWintercoat
+  - CargoTechnicianWindbreaker
+  - SeniorCargoWintercoat
+# Moffstation - End
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -938,7 +946,7 @@
   # Moffstation - Start - Additional job title loadouts
   - CourierPDA
   - LogisticsAssociatePDA
-  - RequisitionsClerkPDA
+  - FreightPilotPDA
   # Moffstation - End
 
 #- type: loadoutGroup
@@ -1006,6 +1014,7 @@
   loadouts:
   - ChiefEngineerCloak
   - ChiefEngineerMantle
+  - CeScarf # Moffstation
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing

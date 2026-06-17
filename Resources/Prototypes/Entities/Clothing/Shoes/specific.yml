@@ -21,11 +21,8 @@
         name: clothing-boots-sidearm
         whitelist:
           tags:
-          - Knife
+          - ToyKnife
           - ToySidearm
-        blacklist:
-          components:
-          - Sharp
 
 - type: entity
   parent: ClothingShoesClownBase
@@ -122,9 +119,9 @@
   description: Specialised non-slip rubber boots, designed to reduce janitorial workplace accidents; a tider's treasure.
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Specific/galoshes.rsi
+    sprite: _Moffstation/Clothing/Shoes/galoshes.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Shoes/Specific/galoshes.rsi
+    sprite: _Moffstation/Clothing/Shoes/galoshes.rsi # Moffstation
   - type: NoSlip
   - type: SlowedOverSlippery
     slowdownModifier: 0.7
@@ -185,13 +182,13 @@
       - ClothMade
       - Recyclable
     - type: Sprite
-      sprite: Clothing/Shoes/color.rsi
+      sprite: _Moffstation/Clothing/Shoes/color.rsi # Moffstation
       layers:
       - state: icon
         color: "#3f3f3f"
       - state: soles-icon
     - type: Clothing
-      sprite: Clothing/Shoes/color.rsi
+      sprite: _Moffstation/Clothing/Shoes/color.rsi # Moffstation
       clothingVisuals:
         shoes:
         - state: equipped-FEET

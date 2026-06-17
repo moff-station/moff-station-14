@@ -1,0 +1,34 @@
+# Player: Vivensshadow - Character: Chelsi Astris
+
+- type: entity
+  parent: BoxBase
+  id: &id PersonalItemChelsiCodex
+  name: forgotten codex
+  description: A long forgotten Codex.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Items/Vivensshadow/Chelsi_Astris/ChelsiCodex.rsi
+    state: icon
+  - type: Item
+    sprite: *sprite
+    shape:
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,4,3
+    whitelist:
+      tags:
+      - Document
+  - type: DetailExaminable
+    content: The cover seems old, yet the colours haven't diminished at all, dust isn't even touching the surface, and there is no rust upon the chains. The Codex doesn't look like it should be able to open, as the chains loop fully around it, and seem embedded into the Codex structure.
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Chelsi Astris

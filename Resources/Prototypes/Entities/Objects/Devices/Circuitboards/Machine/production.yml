@@ -1344,7 +1344,7 @@
   - type: Sprite
     state: supply
   - type: MachineBoard
-    prototype: GravityGeneratorMini
+    prototype: GravityGeneratorMiniUncharged
     stackRequirements:
       Capacitor: 4 #moffstation - Revert machine parts
       MatterBin: 3 #moffstation - Revert machine parts

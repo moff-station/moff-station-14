@@ -99,6 +99,10 @@
     prototype: MobCatSyndy
   - type: EmitSoundOnUse
     sound: /Audio/Animals/cat_meow.ogg
+  # Moffstation - Start - Syndicat Reject 
+  - type: UseDelay
+    delay: 2
+  # Moffstation - End
 
 - type: entity
   parent: ReinforcementRadio

@@ -1,4 +1,9 @@
-﻿# Pirates
+﻿# Opening Shift
+roles-opening-shift-title = Opening Shift
+roles-opening-shift-objective = You arrive at the station a bit earlier than the rest.
+
+
+# Pirates
 roles-antag-pirate-captain-name = Pirate Captain
 roles-antag-pirate-captain-objective = Pillage, plunder, and lead the pirate crew
 
@@ -49,7 +54,6 @@ ghost-role-information-flying-dutchman-description = A legendary pirate come to 
 
 
 # Vampries
-
 roles-antag-vampire-name = Vampire
 roles-antag-vampire-objective = Feed on the crew, stay quiet, instill fear.
 
@@ -59,24 +63,21 @@ vampire-existing = [color=Crimson]There was a [bold]Vampire[/bold]![/color]
 vampires-existing = [color=Crimson]There were {$total} [bold]Vampires[/bold]![/color]
 vampire-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
 
-# Syndicate spies
 
+# Syndicate spies
 roles-antag-syndicate-spy = Syndicate Intelligence Officer
 roles-antag-short-syndicate-spy = Syndicate Intel
-roles-antag-syndicate-spy-objective = You are a Syndicate Intelligence Officer, sent to subvert the station from afar. Remain discrete, and use your intel to concoct plots against the station.
+roles-antag-syndicate-spy-objective = Observe the station from afar and coordinate Syndicate efforts from the safety of your listening post.
 
 lpo-existing = [color=Crimson]Syndicate Listening Outpost[/color]
 lpo-list-start = The outpost was operated by:
 lpo-list-name = [color=White]{$name}[/color]
 lpo-list-name-user = [color=White]{$name}[/color] ([color=gray]{$user}[/color])
 
-# High Value Target
-
-roles-high-value-target = High Value Target
-roles-high-value-target-objective = You are a high-value target for the syndicate. Contracts are more likely to target you than other crew members.
 
 # Tourists
-objective-issuer-self = [color=Green]Civilians[/color]
+objective-issuer-civilians = [color=Green]Civilians[/color]
+
 
 # Stowaways
 roles-antag-stowaway-name = Stowaway
@@ -84,12 +85,15 @@ roles-antag-stowaway-desc = You've snuck onto the station after a previous shift
 roles-antag-stowaway-greeting = You've snuck onto the station after a previous shift evacuated... You wake up here after a long nap.
 roles-antag-stowaway-objective = You've snuck onto the station after a previous shift evacuated. Warning: Spawning in a safe location is not guaranteed.
 
+
 # Wizard Duel
 wizard-duel-title = Wizard Duel
 wizard-duel-description = A battle of might and magic, and you're caught in the middle of the chaos! Will you survive?
 
 guide-entry-wizard-duel = Wizard Duel
 
-# Opening Shift
-roles-opening-shift-title = Opening Shift
-roles-opening-shift-objective = You arrive at the station a bit earlier than the rest.
+# Nukies
+roles-antag-nuclear-operative-commander-objective-moff = Leader of a nuclear operative team. Make the plan, call the shots and destroy the station.
+roles-antag-nuclear-operative-agent-objective-moff = Combat medic of a nuclear operative team. Use complex reagents to keep your team in the fight or make chemical weapons.
+roles-antag-nuclear-operative-objective-moff = Work with a small team of elite operatives to find the authentication disk and destroy the station.
+roles-antag-syndicate-agent-objective-moff = A syndicate traitor hidden among the crew. Complete your objectives with an arsenal of illegal equipment.

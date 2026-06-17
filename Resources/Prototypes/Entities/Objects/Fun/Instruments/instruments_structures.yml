@@ -168,3 +168,55 @@
   - type: Instrument
     allowPercussion: true
     allowProgramChange: true
+  # Moffstation - Begin - Expanded Ai Whitelist
+  - type: StationAiWhitelist
+  - type: Wires
+    boardName: wires-board-name-daw
+    layoutId: ComputerAi
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  # Moffstation - End
+
+- type: entity
+  parent: BasePlaceableInstrumentRotatable
+  id: BigDrumsInstrument
+  name: drum kit
+  description: Ba dum tss!
+  components:
+  - type: Instrument
+    # Moffstation - Begin - Merge greystation drumkit into upstream's
+#    program: 7
+#    bank: 100 # Defined in space-station-14.sf2
+    program: 117
+    # Moffstation - End
+    allowPercussion: true
+  - type: Sprite
+    # Moffstation - Begin - Merge greystation drumkit into upstream's'
+#    state: drum
+    drawdepth: Mobs
+    sprite: _Greystation/Objects/Fun/Instruments/structureinstruments.rsi
+    state: drumkit
+    noRot: true
+    # Moffstation - End
+  # Moffstation - Begin - Merge greystation drumkit into upstream's'
+  - type: Rotatable
+    rotateWhileAnchored: true
+  - type: Strap
+    position: Stand
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - TableMask
+  - type: Tag
+    tags:
+    - PercussionInstrument
+  # Moffstation - End

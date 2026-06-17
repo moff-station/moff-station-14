@@ -1,0 +1,17 @@
+﻿- type: entity
+  parent: BoxCardboard
+  id: BoxSecModularHUD
+  name: security modular HUD box
+  description: A box of modular HUD components, intended for security officers.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: HudModuleShowContrabandDetails
+        - id: HudModuleShowCriminalRecordIcons
+        - id: HudModuleShowMindShieldIcons
+  - type: Sprite
+    layers:
+    - state: box_security
+    - state: secglasses

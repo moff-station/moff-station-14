@@ -1,0 +1,22 @@
+﻿- type: quickPhrase
+  parent: BaseCommonPhrase
+  abstract: true
+  id: BaseGrammarPhrase
+  group: phrase-group-grammar
+
+# Conjunctions
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: ForPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: AndPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: NorPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: ButPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: OrPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: YetPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: SoPhrase }
+
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: IfPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: ThenPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: AlsoPhrase }
+
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: ToPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: ByPhrase }
+- { type: quickPhrase, parent: BaseGrammarPhrase, id: PluralPhrase }

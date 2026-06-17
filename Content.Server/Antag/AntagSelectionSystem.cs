@@ -24,7 +24,6 @@ using Content.Shared.Database;
 using Content.Shared.Follower;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Players;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
@@ -74,7 +73,7 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private TransformSystem _transform = default!;
 
-    [Dependency] private WeightedAntagManager _weightedAntagMan = default!; // Moffstation
+    [Dependency] private IWeightedAntagManager _weightedAntagMan = default!; //Moffstation Dummy Antag Weights
 
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
@@ -801,8 +800,8 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         _loadout.LoadoutAwareEquip(antag, player, gear, prototype.RoleLoadout, profile);
         // Moffstation - End
 
-        // Ensure that we have a mind for our entity!
-        if (player.GetMind() is not { } mind)
+        // Ensure that we have the right mind for our entity.
+        if (!_mind.TryGetMind(player, out var mind, out var mindComp) || mindComp.OwnedEntity != antag)
             mind = _mind.CreateMind(player.UserId, Name(antag));
 
         _mind.TransferTo(mind, antag, ghostCheckOverride: true);

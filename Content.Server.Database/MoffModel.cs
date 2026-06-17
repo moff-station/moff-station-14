@@ -20,6 +20,8 @@ public static class MoffModel
 
         public int AntagWeight { get; set; } = 1;
 
+        public string? DiscordId { get; set; }
+
         // Moffstation - Start - AdminGhostData
         public string? AdminGhostData { get; set; }
         // Moffstation - End - AdminGhostData

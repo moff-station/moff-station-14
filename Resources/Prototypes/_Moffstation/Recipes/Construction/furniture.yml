@@ -1,0 +1,50 @@
+- type: construction
+  id: Stairs
+  graph: Stairsbase
+  startNode: start
+  targetNode: stairsMetal
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairWhite
+  name: construction-recipe-stair_white
+  graph: Stairsbase
+  startNode: start
+  targetNode: stairMetalWhite
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairDark
+  name: construction-recipe-stair_dark
+  graph: Stairsbase
+  startNode: start
+  targetNode: stairMetalDark
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: StairWood
+  name: construction-recipe-stair_wood
+  graph: Stairsbase
+  startNode: start
+  targetNode: stairWood
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
