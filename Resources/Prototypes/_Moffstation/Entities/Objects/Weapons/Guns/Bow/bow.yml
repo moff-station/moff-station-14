@@ -8,3 +8,14 @@
     sprite: _Moffstation/Objects/Weapons/Guns/Bow/bow.rsi
   - type: UseDelay
     delay: 0.5
+
+- type: entity
+  parent: [ BaseBowVisuals, BaseCargoContraband ]
+  id: RebarCrosbow
+  name: Rebar Crossbow
+  description: Gordon freeman?.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Weapons/Guns/Bow/rebar-crossbow.rsi
+  - type: UseDelay
+    delay: 0.1
