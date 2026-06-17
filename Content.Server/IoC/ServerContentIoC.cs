@@ -1,3 +1,4 @@
+using Content.Server._Moffstation.AdminGhost; //Moffstation
 using Content.Server._Moffstation.Antag;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -84,5 +85,8 @@ internal static class ServerContentIoC
         deps.Register<ServerFeedbackManager>();
         deps.Register<ISharedFeedbackManager, ServerFeedbackManager>();
         deps.Register<WeightedAntagManager>();
+        // Moffstation - Start - AdminGhostData
+        deps.Register<AdminGhostSaveManager>();
+        // Moffstation - End - AdminGhostData
     }
 }

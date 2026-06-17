@@ -942,7 +942,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int>("AntagWeight")
                         .HasColumnType("INTEGER")
                         .HasColumnName("antag_weight");
-
+//Moffstation - Start - Ghost Customization
+                    b.Property<string>("AdminGhostData")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("admin_ghost_data");
+//Moffstation - End
                     b.Property<Guid>("PlayerUserId")
                         .HasColumnType("TEXT")
                         .HasColumnName("player_user_id");

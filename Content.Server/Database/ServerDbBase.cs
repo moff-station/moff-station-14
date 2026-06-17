@@ -1683,6 +1683,62 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
+        // Moffstation - Start - AdminGhostData
+        #region AdminGhostData
+
+        public async Task<string?> GetAdminGhostData(NetUserId userId, CancellationToken cancel = default)
+        {
+            try
+            {
+                await using var db = await GetDb(cancel);
+                var player = await db.DbContext.Player.Include(p => p.MoffPlayer)
+                    .SingleOrDefaultAsync(p => p.UserId == userId, cancel);
+                return player?.MoffPlayer?.AdminGhostData;
+            }
+            catch (Exception ex) when (ex.Message.Contains("admin_ghost_data"))
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> SetAdminGhostData(NetUserId userId, string? data)
+        {
+            try
+            {
+                await using var db = await GetDb();
+
+                var player = await db.DbContext.Player
+                    .Include(p => p.MoffPlayer)
+                    .SingleOrDefaultAsync(p => p.UserId == userId);
+
+                if (player is null)
+                    return false;
+
+                if (player.MoffPlayer == null)
+                {
+                    player.MoffPlayer = new MoffModel.MoffPlayer
+                    {
+                        PlayerUserId = userId,
+                        AdminGhostData = data,
+                    };
+                }
+                else
+                {
+                    player.MoffPlayer.AdminGhostData = data;
+                }
+
+                await db.DbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex) when (ex.Message.Contains("admin_ghost_data"))
+            {
+                return false;
+            }
+        }
+
+        #endregion
+        // Moffstation - End - AdminGhostData
+
         public abstract Task SendNotification(DatabaseNotification notification);
 
         // SQLite returns DateTime as Kind=Unspecified, Npgsql actually knows for sure it's Kind=Utc.

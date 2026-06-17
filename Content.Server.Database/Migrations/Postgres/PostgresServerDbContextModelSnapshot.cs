@@ -999,7 +999,11 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Property<int>("AntagWeight")
                         .HasColumnType("integer")
                         .HasColumnName("antag_weight");
-
+//Moffstation - Start - Ghost Customization
+                    b.Property<string>("AdminGhostData")
+                        .HasColumnType("text")
+                        .HasColumnName("admin_ghost_data");
+//Moffstation - End
                     b.Property<Guid>("PlayerUserId")
                         .HasColumnType("uuid")
                         .HasColumnName("player_user_id");
