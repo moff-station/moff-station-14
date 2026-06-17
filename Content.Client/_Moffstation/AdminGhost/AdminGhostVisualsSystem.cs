@@ -126,13 +126,7 @@ public sealed partial class AdminGhostVisualsSystem : EntitySystem
 
     private void RestoreDefaultSprite(EntityUid uid)
     {
-        if (!TryComp<MetaDataComponent>(uid, out var meta))
-        {
-            Log.Debug($"AdminGhostVisuals: cannot restore - no MetaDataComponent on {uid}");
-            return;
-        }
-
-        var proto = meta.EntityPrototype;
+        var proto = MetaData(uid).EntityPrototype;
         if (proto == null)
         {
             Log.Debug($"AdminGhostVisuals: cannot restore - no EntityPrototype on {uid}");
@@ -174,6 +168,6 @@ public sealed partial class AdminGhostVisualsSystem : EntitySystem
             }
         }
 
-        Log.Debug($"AdminGhostVisuals: no parent prototype found with a SpriteComponent for '{meta.EntityPrototype?.ID}'");
+        Log.Debug($"AdminGhostVisuals: no parent prototype found with a SpriteComponent for '{MetaData(uid).EntityPrototype?.ID}'");
     }
 }

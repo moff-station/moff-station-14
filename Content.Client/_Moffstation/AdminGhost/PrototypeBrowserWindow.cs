@@ -11,7 +11,7 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client._Moffstation.AdminGhost;
 
-public sealed class PrototypeBrowserWindow : DefaultWindow
+public sealed partial class PrototypeBrowserWindow : DefaultWindow
 {
     [Dependency] private IPrototypeManager _prototypes = default!;
 
