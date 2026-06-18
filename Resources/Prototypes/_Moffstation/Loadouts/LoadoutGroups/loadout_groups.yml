@@ -1,5 +1,16 @@
 # Generic
 - type: loadoutGroup
+  id: MoffEyewearBasic
+  name: loadout-group-glasses
+  minLimit: 0
+  loadouts:
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
+
+- type: loadoutGroup
   id: ModularEyewearBasic
   name: loadout-group-glasses
   minLimit: 0

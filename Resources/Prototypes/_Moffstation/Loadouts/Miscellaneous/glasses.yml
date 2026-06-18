@@ -5,6 +5,13 @@
   equipment:
     eyes: ClothingEyesEyepatch
 
+# General
+- type: loadout
+  id: CheapSunglasses
+  groupBy: "standard eyewear"
+  equipment:
+    eyes: ClothingEyesGlassesCheapSunglasses
+
 # Modular Eyewear
 - type: loadout
   id: ModularHudGlasses
