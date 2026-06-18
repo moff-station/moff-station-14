@@ -167,6 +167,7 @@
     damageContainer: Silicon
   - type: Destructible
     thresholds:
+    generateOverkillThreshold: false # Moffstation - Fix Borg Brains Exploding
     - trigger:
         !type:DamageTrigger
         damage: 75
