@@ -52,6 +52,15 @@
     subtype: roles-antag-short-syndicate-spy
   - type: SyndicateSpyRole
 
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSyndieSoldier
+  name: Syndicate Vent Soldier Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    antagPrototype: SyndieVentSoldier
+
 # Wizard Duelists
 - type: entity
   parent: MindRoleWizard

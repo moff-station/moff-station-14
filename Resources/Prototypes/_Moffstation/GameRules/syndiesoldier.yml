@@ -1,0 +1,13 @@
+- type: antag
+  id: SyndieVentSoldier
+  name: syndicate footsoldier
+  antagonist: true
+  objective: ghost-role-information-syndicate-solider-description
+  setPreference: false
+
+- type: antagSpecifier
+  id: SyndieVentSoldier
+  spawnerPrototype: SyndicateFootsoldierGhostRoleSpawn
+  pickPlayer: false
+  mindRoles:
+  - MindRoleSyndieSoldier

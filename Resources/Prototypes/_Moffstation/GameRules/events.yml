@@ -54,3 +54,19 @@
     radioMessage:
       channel: Syndicate
       message: "syndicate-dead-drop-announcement"
+
+# Syndicate soldier spawn
+- type: entity
+  parent: BaseGameRule
+  id: SyndieVentSoldierSpawn
+  components:
+  - type: StationEvent
+    earliestStart: 20
+    weight: 4
+    duration: null
+    maxOccurrences: 2
+  - type: AntagRandomSpawn
+  - type: AntagSelection
+    antags:
+    - !type:FixedAntagCount
+      proto: SyndieVentSoldier

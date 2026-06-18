@@ -84,22 +84,6 @@
       prob: 0.0001
 
 - type: entity
-  id: SyndiSoliderMigration
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
-    weight: 2
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: SyndicateFootsoldierGhostRoleSpawn
-      prob: 0.0001
-
-- type: entity
   id: HostileGorillaMigration
   parent: BaseStationEventShortDelay
   components:
