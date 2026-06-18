@@ -47,11 +47,9 @@ public sealed partial class LockboxSelectSystem : EntitySystem
     {
         var selected = args.SelectedProto;
 
-        // Validate the proto is in the options list
         if (!ent.Comp.Options.ContainsValue(selected))
             return;
 
-        // Re-validate that this specific player still has the required access
         var playerAccess = _access.FindAccessTags(args.Actor);
         var hasAccess = false;
         foreach (var (access, proto) in ent.Comp.Options)

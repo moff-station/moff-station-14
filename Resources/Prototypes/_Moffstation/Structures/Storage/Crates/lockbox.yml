@@ -45,7 +45,6 @@
           collection: MetalBreak
   - type: InteractionOutline
   - type: Weldable
-  - type: ResistLocker
   - type: StaticPrice
     price: 0
   - type: Construction
@@ -57,6 +56,7 @@
         type: LockboxSelectBoundUserInterface
   - type: ActivatableUI
     key: enum.LockboxSelectUiKey.Key
+    singleUser: true
   - type: LockboxSelect
     options:
       Engineering: CrateLockBoxEngineering

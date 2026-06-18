@@ -1,13 +1,13 @@
 - type: construction
-  id: CrateLockboxGeneric
-  graph: CrateLockboxGeneric
+  id: CrateLockBoxGeneric
+  graph: CrateLockBoxGeneric
   startNode: start
   targetNode: cratelockboxgeneric
   category: construction-category-storage
   objectType: Structure
 
 - type: constructionGraph
-  id: CrateLockboxGeneric
+  id: CrateLockBoxGeneric
   start: start
   graph:
     - node: start
@@ -21,7 +21,7 @@
               doAfter: 5
 
     - node: cratelockboxgeneric
-      entity: CrateLockboxGeneric
+      entity: CrateLockBoxGeneric
       edges:
         - to: start
           steps:
