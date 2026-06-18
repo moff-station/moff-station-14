@@ -106,4 +106,9 @@
       projectiles: !type:ContainerSlot
   - type: ContainerAmmoProvider
     container: projectiles
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - Arrow
     capacity: 3
+    proto: Arrow
