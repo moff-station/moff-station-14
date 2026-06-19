@@ -56,7 +56,7 @@
   - type: Item
     size: Small
   - type: Sprite
-    sprite: /Moffstation/Objects/Weapons/Guns/Projectiles/arrows.rsi
+    sprite: /Moffstation/Objects/Weapons/Guns/Projectiles/metal_bolts.rsi
   - type: Fixtures
     fixtures:
       fix1:
@@ -81,7 +81,6 @@
   - type: ThrowingAngle
     angle: 0
   - type: Ammo
-    muzzleFlash: null
   - type: Tag
     tags:
     - Arrow
