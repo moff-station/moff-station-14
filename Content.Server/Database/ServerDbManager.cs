@@ -316,6 +316,13 @@ namespace Content.Server.Database
 
         #endregion
 
+        #region DiscordId
+
+        Task<string?> GetDiscordId(NetUserId userId);
+        Task<bool> SetDiscordId(NetUserId userId, string? discordId);
+
+        #endregion
+
         #region DB Notifications
 
         void SubscribeToNotifications(Action<DatabaseNotification> handler);
@@ -363,7 +370,7 @@ namespace Content.Server.Database
         public string? Payload { get; set; }
     }
 
-    public sealed class ServerDbManager : IServerDbManager
+    public sealed partial class ServerDbManager : IServerDbManager
     {
         public static readonly Counter DbReadOpsMetric = Metrics.CreateCounter(
             "db_read_ops",
@@ -377,10 +384,10 @@ namespace Content.Server.Database
             "db_executing_ops",
             "Amount of active database operations. Note that some operations may be waiting for a database connection.");
 
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly IResourceManager _res = default!;
-        [Dependency] private readonly ILogManager _logMgr = default!;
-        [Dependency] private readonly ISerializationManager _serialization = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
+        [Dependency] private IResourceManager _res = default!;
+        [Dependency] private ILogManager _logMgr = default!;
+        [Dependency] private ISerializationManager _serialization = default!;
 
         private ServerDbBase _db = default!;
         private LoggingProvider _msLogProvider = default!;
@@ -985,7 +992,7 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.CleanIPIntelCache(range));
         }
 
-        // Moffstation - Start - Weighted Antags
+        // Moffstation - Begin - Weighted Antags
         public Task<int> GetAntagWeight(NetUserId userId)
         {
             DbReadOpsMetric.Inc();
@@ -998,6 +1005,20 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SetAntagWeight(userId, weight));
         }
         // Moffstation - End - Weighted Antags
+
+        // Moffstation - Begin - Discord ID
+        public Task<string?> GetDiscordId(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetDiscordId(userId));
+        }
+
+        public Task<bool> SetDiscordId(NetUserId userId, string? discordId)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetDiscordId(userId, discordId));
+        }
+        // Moffstation - End - Discord ID
 
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {

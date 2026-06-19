@@ -11,15 +11,15 @@ using Robust.Shared.Configuration;  // Moffstation
 
 namespace Content.Server.Speech
 {
-    public sealed class SpeechSoundSystem : EntitySystem
+    public sealed partial class SpeechSoundSystem : EntitySystem
     {
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
-        [Dependency] private readonly IPrototypeManager _protoManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly LongSpeechSystem _longSpeech = default!;  // Moffstation - Long speech
-        [Dependency] private readonly IConfigurationManager _configurationManager = default!; // Moffstation - Long speech
+        [Dependency] private IGameTiming _gameTiming = default!;
+        [Dependency] private IPrototypeManager _protoManager = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
 
+        [Dependency] private LongSpeechSystem _longSpeech = default!;  // Moffstation - Long speech
+        [Dependency] private IConfigurationManager _configurationManager = default!; // Moffstation - Long speech
 
         public override void Initialize()
         {

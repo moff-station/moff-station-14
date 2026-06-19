@@ -88,7 +88,6 @@
       Female: FemaleAvali
       Unsexed: MaleAvali
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeatChicken
       amount: 3
@@ -146,7 +145,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: AmmoniaBlood
-        Quantity: 300
+        Quantity: 600
   - type: EmpVulnerable
 
 

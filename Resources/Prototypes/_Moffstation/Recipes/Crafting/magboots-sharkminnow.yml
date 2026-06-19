@@ -1,0 +1,25 @@
+- type: constructionGraph
+  id: SharkminnowFrozen
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: preserved sharkminnow hide
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - maxTemperature: 253
+
+  - node: preserved sharkminnow hide
+    entity: MaterialHideSharkminnowFrozen
+
+- type: microwaveMealRecipe
+  id: RecipeSharkminnowLeather
+  name: Sharkminnow leather recipe
+  result: MaterialLeatherSharkminnow
+  time: 30
+  solids:
+    MaterialHideSharkminnowFrozen: 1
+  reagents:
+    SpaceCleaner: 30

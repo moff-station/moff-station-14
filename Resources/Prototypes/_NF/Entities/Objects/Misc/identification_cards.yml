@@ -8,13 +8,11 @@
     layers:
     - state: centcom
     # Moffstation - Start- New ID Cards
-    - state: stripe_bottom
-      color: "#e39e00"
-    - state: stripe_top
-      color: "#e1b97d"
-    - sprite: Interface/Misc/job_icons.rsi
+    - state: stripe_side
+      color: "#b47832"
+    - sprite: _Moffstation/Interface/Misc/job_icons.rsi
       offset: -0.09375, 0.0625
-      state: Nanotrasen
+      state: ERTMailCarrier
     # Moffstation - End - New ID Cards
   - type: PresetIdCard
     job: ERTMailCarrier

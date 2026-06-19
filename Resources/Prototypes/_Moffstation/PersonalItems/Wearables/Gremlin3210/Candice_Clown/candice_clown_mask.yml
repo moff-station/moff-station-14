@@ -1,0 +1,22 @@
+# Player: Gremlin3210 - Character: Candice Clown
+
+- type: entity
+  parent: ClothingMaskClownBase
+  id: PersonalItemCandiceClownMask
+  name: old-fashioned clown mask
+  description: The clown who owns this has been in the game too long to give up the style of old.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite Clothing/Mask/clown.rsi
+  - type: Clothing
+    sprite: *sprite
+
+- type: loadout
+  id: PersonalItemCandiceClownMask
+  equipment:
+    mask: PersonalItemCandiceClownMask
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Candice Clown

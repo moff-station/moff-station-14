@@ -33,9 +33,8 @@
       Male: Whimperlet
       Female: Whimperlet
       Unsexed: Whimperlet
-  - type: Butcherable
-    butcheringType: Spike
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeat
       amount: 1
   - type: Item

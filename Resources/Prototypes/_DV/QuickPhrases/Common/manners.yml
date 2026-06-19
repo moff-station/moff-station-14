@@ -1,0 +1,23 @@
+- type: quickPhrase
+  parent: BaseCommonPhrase
+  abstract: true
+  id: BaseMannerPhrase
+  group: phrase-group-manners
+
+- { type: quickPhrase, parent: BaseMannerPhrase, id: HelloPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: ByePhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: CyaPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: PleasePhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: TyPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: NpPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: YwPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: SorryPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: DwPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: YesPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: NoPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: MaybePhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: OkPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: KindaPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: ThatsCorrectPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: ThatIsIncorrectPhrase }
+- { type: quickPhrase, parent: BaseMannerPhrase, id: LetMeRephrasePhrase }

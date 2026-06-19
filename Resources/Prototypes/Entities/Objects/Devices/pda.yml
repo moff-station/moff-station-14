@@ -87,6 +87,7 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -160,7 +161,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - NanoChatCartridge # CD
-
+    - SOSCartridge # Imp
 - type: entity
   parent: BasePDA
   id: BaseMedicalPDA
@@ -175,6 +176,7 @@
       - NewsReaderCartridge
       - MedTekCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -513,6 +515,7 @@
     - NewsReaderCartridge
     - AstroNavCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -559,6 +562,7 @@
       - NewsReaderCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
 
 - type: entity
   parent: BasePDA
@@ -911,6 +915,7 @@
     - WantedListCartridge
     - LogProbeCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge # Imp
 
 - type: entity
   parent: BaseSecurityPDA
@@ -985,6 +990,7 @@
       - LogProbeCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
 
 - type: entity
   parent: CentcomPDA
@@ -1017,6 +1023,7 @@
       - MedTekCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1229,6 +1236,7 @@
       - LogProbeCartridge
       - AstroNavCartridge
       - NanoChatCartridge # CD
+      - SOSCartridge # Imp
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1429,6 +1437,7 @@
     - WantedListCartridge
     - LogProbeCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge # Imp
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1458,6 +1467,7 @@
     - WantedListCartridge
     - MedTekCartridge
     - NanoChatCartridge # CD
+    - SOSCartridge # Imp
 
 - type: entity
   parent: ClownPDA
@@ -1587,7 +1597,7 @@
   description: Smells like postage stamps and shuttle fuel.
   components:
   - type: Pda
-    id: CargoIDCard
+    id: SeniorCourierIDCard
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:

@@ -1,7 +1,7 @@
 {
     "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "copyright": "created by Davyei for Moffstation, derived from from tgstation at https://github.com/tgstation/tgstation/commit/59f2a4e10e5ba36033c9734ddebfbbdc6157472d, pda-prisoner by DuckManZach (github)",
+    "license": "CC-BY-SA-4.0",
+    "copyright": "sprited by Davyei (Github) for Moffstation",
     "size": {
         "x": 32,
         "y": 32
@@ -17,12 +17,7 @@
             "name": "id_overlay_wide"
         },
         {
-            "name": "equipped-IDCARD",
-            "directions": 4
-        },
-        {
-            "name": "equipped-BELT",
-            "directions": 4
+            "name": "id_overlay_book"
         },
         {
             "name": "inhand-left",
@@ -40,6 +35,9 @@
         },
         {
             "name": "light_overlay_wide"
+        },
+        {
+            "name": "light_overlay_book"
         },
         {
             "name": "pda-admin"
@@ -103,6 +101,9 @@
         },
         {
             "name": "pda-engineoperator"
+        },
+        {
+            "name": "pda-freightpilot"
         },
         {
             "name": "pda-genetics"
@@ -213,9 +214,6 @@
         },
         {
             "name": "pda-reporter"
-        },
-        {
-            "name": "pda-requisitionsclerk"
         },
         {
             "name": "pda-requisitionscoordinator"

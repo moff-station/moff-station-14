@@ -1,13 +1,16 @@
 using Content.Server.Administration;
 using Content.Server.Chat.Managers;
+using Content.Server.Station.Systems;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
+using Content.Shared.Emag.Systems;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Overlays;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
@@ -17,11 +20,15 @@ using Robust.Shared.Toolshed;
 namespace Content.Server.Silicons.Laws;
 
 /// <inheritdoc/>
-public sealed class SiliconLawSystem : SharedSiliconLawSystem
+public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 {
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedRoleSystem _roles = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    // [Dependency] private IPrototypeManager _prototype = default!; // Moffstation - Now Unused
+    [Dependency] private SharedRoleSystem _roles = default!;
+    // [Dependency] private StationSystem _station = default!; // Moffstation - Now Unused
+    // [Dependency] private UserInterfaceSystem _userInterface = default!; // Moffstation - Now Unused
+    // [Dependency] private EmagSystem _emag = default!; // Moffstation - Now Unused
 
     private static readonly ProtoId<SiliconLawsetPrototype> DefaultCrewLawset = "Crewsimov";
 

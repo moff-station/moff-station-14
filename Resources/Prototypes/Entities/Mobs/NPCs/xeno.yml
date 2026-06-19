@@ -74,7 +74,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: FluorosulfuricAcid
-        Quantity: 650
+        Quantity: 1300
   - type: MeleeWeapon
     altDisarm: false
     angle: 0
@@ -101,7 +101,6 @@
   - type: Puller
     needsHands: false # Moffstation - even more Xeno buffs
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeatXeno
       amount: 5
@@ -372,7 +371,6 @@
     sprite: Mobs/Aliens/Xenos/rouny.rsi
     offset: 0,0.6
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeatRouny
       amount: 3
@@ -436,7 +434,7 @@
 
 - type: entity
   name: space adder
-  parent: SimpleSpaceMobBase
+  parent: [SimpleSpaceMobBase, BaseSlicingRefinable]
   id: MobPurpleSnake
   description: A menacing purple snake from Kepler-283c.
   components:
@@ -454,8 +452,8 @@
         Base: dead_purple_snake
       Dead:
         Base: dead_purple_snake
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeatSnake
       amount: 4
   - type: Grammar
@@ -477,12 +475,9 @@
     damage:
       types:
         Piercing: 5
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      melee:
-        reagents:
-        - ReagentId: Toxin
-          Quantity: 50
+    - SolutionVenomPurpleSnake
   - type: MeleeChemicalInjector
     solution: melee
   - type: Fixtures
@@ -505,8 +500,19 @@
     - FootstepSound
 
 - type: entity
+  parent: [SolutionWeapon, SolutionTiny]
+  id: SolutionVenomPurpleSnake
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Toxin
+        Quantity: 30
+
+- type: entity
   name: space adder
-  parent: MobPurpleSnake
+  parent: [MobPurpleSnake, BaseSlicingRefinable]
   id: MobSmallPurpleSnake
   suffix: small
   description: A smaller version of the menacing purple snake from Kepler-283c.
@@ -525,8 +531,8 @@
         Base: dead_small_purple_snake
       Dead:
         Base: dead_small_purple_snake
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeatSnake
       amount: 2
   - type: SolutionTransfer
@@ -572,7 +578,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: FluorosulfuricAcid
-        Quantity: 300
+        Quantity: 600
   - type: MeleeWeapon
     altDisarm: false
     angle: 0
@@ -592,7 +598,6 @@
         Base: dead
   - type: Puller
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeatXeno
       amount: 5
@@ -639,15 +644,23 @@
   - type: Tag
     tags:
     - CannotSuicide
-  - type: SolutionContainerManager # Being hit speeds you up so you can escape
+  - type: SolutionManager # Being hit speeds you up so you can escape
     solutions:
-      bite:
-        reagents:
-        - ReagentId: Stimulants
-          Quantity: 50
-        - ReagentId: TranexamicAcid
-          Quantity: 50
+    - SolutionVenomDale
   - type: MeleeChemicalInjector
     transferAmount: 1
-    solution: bite
+    solution: melee
     pierceArmor: true
+
+- type: entity
+  parent: [SolutionWeapon, SolutionNormal]
+  id: SolutionVenomDale
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Stimulants
+        Quantity: 50
+      - ReagentId: TranexamicAcid
+        Quantity: 50

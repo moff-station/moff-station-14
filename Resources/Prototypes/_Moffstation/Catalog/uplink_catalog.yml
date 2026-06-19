@@ -42,9 +42,91 @@
   categories:
   - UplinkWearables
 
+- type: listing
+  id: UplinkClothingHeadsetSyndicateInfiltrator
+  name: uplink-clothing-infiltrator-headset-name
+  description: uplink-clothing-infiltrator-headset-desc
+  productEntity: ClothingHeadsetSyndicateInfiltrator
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkWearables
+
 # Allies
+- type: listing
+  id: UplinkSpiderGrenade
+  name: uplink-spider-grenade-name
+  description: uplink-spider-grenade-desc
+  productEntity: SpiderJar
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: storage
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkAllies
+
+- type: listing
+  id: UplinkMobMothroachSyndicate
+  name: uplink-syndicate-mothroach-name
+  description: uplink-syndicate-mothroach-description
+  icon: { sprite: _Moffstation/Objects/Devices/communication.rsi, state: old-radio-syndicate-mothroach }
+  productEntity: ReinforcementRadioSyndicateMothroachSyndicate
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkAllies
+
+- type: listing
+  id: UplinkClownSpiderGrenade
+  name: uplink-clown-spider-grenade-name
+  description: uplink-clown-spider-grenade-desc
+  productEntity: SpiderJarClown
+  icon:
+    sprite: _Moffstation/Objects/Weapons/Bombs/spiderjar.rsi
+    state: storage
+    color: "#FF69B4"
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Mime
+    - Clown
+
+- type: listing
+  id: UplinkMobCatReject
+  name: uplink-mobcat-reject-name
+  description: uplink-mobcat-reject-desc
+  icon: { sprite: _Moffstation/Objects/Devices/syndicatyarn.rsi, state: radio-syndicat }
+  productEntity: ReinforcementRadioSyndicateSyndiCatReject
+  discountCategory: rareDiscounts
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkAllies
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# Other
 - type: listing #This is the old necronomicon but spicier.
-  id: uplinkNecronomicon 
+  id: uplinkNecronomicon
   name: uplink-necronomicon-name
   description: uplink-necronomicon-desc
   productEntity: BibleNecronomicon

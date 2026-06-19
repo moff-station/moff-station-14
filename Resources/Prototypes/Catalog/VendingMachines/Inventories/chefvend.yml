@@ -5,7 +5,11 @@
     ReagentContainerCornmeal: 2
     ReagentContainerSugar: 2
     ReagentContainerRice: 2
-    FoodCondimentPacketSalt: 4
+    # Moffstation - Begin - Add salt and pepper bags
+    ReagentContainerSalt: 1
+    ReagentContainerPepper: 1
+#    FoodCondimentPacketSalt: 4 # literally 4u salt -- worthless
+    # Moffstation - End
     FoodCondimentBottleEnzyme: 2
     FoodCondimentBottleHotsauce: 1
     FoodCondimentBottleKetchup: 1
@@ -28,4 +32,4 @@
     FoodBoxDonkpocket: 1
     FoodFrozenSandwich: 2
     FoodFrozenSandwichStrawberry: 2
-    
+

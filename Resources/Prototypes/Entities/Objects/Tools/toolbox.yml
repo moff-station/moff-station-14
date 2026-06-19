@@ -26,6 +26,12 @@
         Blunt: 12
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
+    # Moffstation - Toolbox Throwable
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5 # just below 50% 
+  # Moffstation - End
   - type: Tag
     tags:
     - Toolbox
@@ -44,10 +50,10 @@
   description: A bright red toolbox, stocked with emergency tools.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_red.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_red.rsi # Moffstation - Uncabinetification
 
 - type: entity
   name: mechanical toolbox
@@ -56,10 +62,10 @@
   description: A blue box, stocked with mechanical tools.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/toolbox_blue.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_blue.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Tools/Toolboxes/toolbox_blue.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_blue.rsi # Moffstation - Uncabinetification
 
 - type: entity
   name: electrical toolbox
@@ -68,10 +74,10 @@
   description: A toolbox typically stocked with electrical gear.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/toolbox_yellow.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_yellow.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Tools/Toolboxes/toolbox_yellow.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_yellow.rsi # Moffstation - Uncabinetification
 
 - type: entity
   name: electrical toolbox
@@ -81,26 +87,21 @@
   description: A toolbox typically stocked with electrical gear.
   components:
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 100
-        behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
-      - trigger:
-          !type:DamageTrigger
-          damage: 1
-        behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              WeaponTurretSyndicateDisposable:
-                min: 1
-                max: 1
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior # todo this is not a good way to be doing this. Should probably use a construction graph
+        spawn:
+          WeaponTurretSyndicateDisposable:
+            min: 1
+            max: 1
   - type: StaticPrice
     price: 1350
 
@@ -111,10 +112,10 @@
   description: A toolbox typically stocked with artistic supplies.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/toolbox_green.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_green.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Tools/Toolboxes/toolbox_green.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_green.rsi # Moffstation - Uncabinetification
 
 - type: entity
   name: suspicious toolbox
@@ -123,10 +124,10 @@
   description: A sinister looking toolbox filled with elite syndicate tools.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/toolbox_syn.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_syn.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Tools/Toolboxes/toolbox_syn.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_syn.rsi # Moffstation - Uncabinetification
   - type: Storage
     maxItemSize: Huge
     grid:
@@ -135,6 +136,12 @@
     damage:
       types:
         Blunt: 20
+  # Moffstation - Toolbox Throwable
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 8 # just below 50% 
+  # Moffstation - End
 
 - type: entity
   name: golden toolbox
@@ -143,10 +150,10 @@
   description: A solid gold toolbox. A rapper would kill for this.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/toolbox_gold.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_gold.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Tools/Toolboxes/toolbox_gold.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/toolbox_gold.rsi # Moffstation - Uncabinetification
 
 - type: entity
   name: foolbox
@@ -155,10 +162,10 @@
   description: A toolbox for fools, stocked with clowning equipment.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Toolboxes/foolbox.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/foolbox.rsi # Moffstation - Uncabinetification
     state: icon
   - type: Item
-    sprite: Objects/Tools/Toolboxes/foolbox.rsi
+    sprite: _Moffstation/Objects/Tools/Toolboxes/foolbox.rsi # Moffstation - Uncabinetification
   - type: MeleeWeapon
     damage:
       types:
@@ -168,6 +175,12 @@
       params:
         variation: 0.03
         volume: 3
+  # Moffstation - Toolbox Throwable
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 0.8 # just below 50% 
+  # Moffstation - End
   - type: EmitSoundOnLand
     sound: *SoundRubberHammer
   - type: Storage

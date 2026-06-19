@@ -1,0 +1,50 @@
+// Taken from https://www.shadertoy.com/view/llj3Dz with heavy modification by Southbridge
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp vec2 RENDER_SCALE;
+uniform highp vec2[10] EPICENTERS;
+uniform highp float[10] INTENSITIES;
+uniform highp float[10] WIDTHS;
+uniform highp float[10] FALLOFFS;
+uniform highp float[10] POWER_FACTORS;
+uniform highp float[10] START_TIMES;
+uniform highp float[10] TIME_SCALES;
+uniform lowp int COUNT;
+uniform highp float CURR_TIME;
+
+void fragment()
+{
+	highp vec4 outputTexture = texture2D(SCREEN_TEXTURE, UV);
+	highp float screenRatio = SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
+
+	highp vec2 uvCoords = UV;
+	uvCoords.x *= screenRatio;
+
+	for (lowp int i = 0 ; i < COUNT ; i++)
+    {
+		highp vec2 epicenter = EPICENTERS[i];
+		highp float intensity = INTENSITIES[i];
+		highp float width = WIDTHS[i];
+		highp float powerFactor = POWER_FACTORS[i];
+		highp float falloff = FALLOFFS[i];
+		highp float start_time = START_TIMES[i];
+		highp float time_scale = TIME_SCALES[i];
+
+		highp float currTime = ((CURR_TIME - start_time) - 0.4) * time_scale;
+		epicenter.x *= screenRatio;
+
+		highp float distance = distance(uvCoords, epicenter)/RENDER_SCALE.x;
+		highp vec2 direction = normalize(uvCoords - epicenter);
+		highp float currFalloff = currTime * falloff;
+
+		if (distance >= currTime - width * 0.5 && distance <= currTime + width * 0.5)
+		{
+			highp float powDiff = 1.0 - pow(abs(distance * intensity), powerFactor);
+			highp vec2 texCoord = uvCoords + ((direction * powDiff) / currFalloff);
+
+			outputTexture = zTextureSpec(SCREEN_TEXTURE, texCoord);
+			outputTexture += (outputTexture * powDiff) / currFalloff;
+		}
+    }
+
+	COLOR = outputTexture;
+}

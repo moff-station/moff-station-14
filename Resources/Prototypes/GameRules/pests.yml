@@ -53,6 +53,10 @@
       prob: 0.02
     - id: MobMouseCancer
       prob: 0.001
+# Moffstation - Start - Snakeee.... Eater.....
+    - id: MobCheeseEater
+      prob: 0.005
+# Moffstation - End
 # Events always spawn a critter regardless of Probability https://github.com/space-wizards/space-station-14/issues/28480 I added the Rat King to their own event with a player cap.
 
 - type: entity
@@ -74,6 +78,10 @@
       prob: 0.02
     - id: MobMouseCancer
       prob: 0.001
+    # Moffstation - Start - Snakeee.... Eater.....
+    - id: MobCheeseEater
+      prob: 0.005
+    # Moffstation - End
     specialEntries:
     - id: SpawnPointGhostRatKing
       prob: 0.001
@@ -163,3 +171,7 @@
         - id: MobMouse
         - id: MobMouse1
         - id: MobMouse2
+# Moffstation - Start - Snakeee.... Eater.....
+        - id: MobCheeseEater
+          weight: 0.05
+# Moffstation - End

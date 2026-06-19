@@ -21,9 +21,28 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/captainlongcoat.rsi
 
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, BaseCommandContraband]
+  id: ClothingOuterCaptainTrenchcoat
+  name: captain's trenchcoat
+  description: A trenchcoat befitting of a captain commanding a galactic fleet, weaved with specially resistant durathread.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captaintrenchcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/captaintrenchcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+        Caustic: 0.9
+
 # RD
 - type: entity
-  parent: [ClothingOuterBase, BaseCommandContraband]
+  parent: [ClothingOuterStorageFoldableBase, BaseCommandContraband]
   id: ClothingOuterCoatRDVisionary
   name: research director's visionary coat
   description: A black cloak with violet stripes, showing off your impeccable intellect and fashion sense.
@@ -35,7 +54,7 @@
 
 #Detective
 - type: entity
-  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, ClothingOuterArmorBase]
+  parent: ClothingOuterCoatDetective
   id: ClothingOuterCoatSleuth
   name: sleuth trenchcoat
   description: A 20th-century multi-purpose trenchcoat. Someone who wears this is looking to see who is at Falk.
@@ -44,13 +63,6 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/sleuth.rsi
-  - type: StorageFill
-    contents:
-    - id: CigarGold
-    - id: CigarGold
-    - id: FlippoEngravedLighter
-  - type: ExplosionResistance
-    damageCoefficient: 1 #its a coat. it doesnt do shit # Moffstation - End (New Detective Outfits)
 
 #Scientist
 - type: entity
@@ -93,3 +105,18 @@
     modifiers:
       coefficients:
         Caustic: 0.75
+
+# Security
+
+#Hos
+
+- type: entity
+  parent: [ClothingOuterCoatHoSTrench]
+  id: ClothingOuterCoatHoSSummer
+  name: head of security's armored summercoat
+  description: A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_summercoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_summercoat.rsi

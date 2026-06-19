@@ -1,0 +1,16 @@
+- type: quickPhrase
+  parent: [ BaseEpistemicsPhrase, BaseSubjectPhrase ]
+  id: BaseEpistemicsSubjectPhrase
+  abstract: true
+
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: AnomalyPhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: ApePhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: AnomalyVesselPhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: ArtifactPhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: ArtifactContainerPhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: RoboticsPhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: CircuitBoardPhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: ResearchPhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: ResearchConsolePhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: ProtolathePhrase }
+- { type: quickPhrase, parent: BaseEpistemicsSubjectPhrase, id: CircuitImprinterPhrase }

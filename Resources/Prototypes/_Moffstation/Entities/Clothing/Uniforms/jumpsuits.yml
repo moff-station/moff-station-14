@@ -228,7 +228,7 @@
 
 # QM
 - type: entity
-  parent: [ClothingUniformBase, BaseCommandContraband]
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase, BaseCommandContraband]
   id: ClothingUniformJumpsuitQMVista
   name: quartermaster's vista suit
   description: An outfit for a quartermaster who isn't afraid to put in the miles themselves for some sweet spessos (cargo shorts included).
@@ -294,6 +294,17 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hosfestive.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hosfestive.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitHosSummer
+  name: hos's summer formal suit
+  description: A suit for special hot occasions.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hossummer.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/hossummer.rsi
 
 # Detective
 - type: entity
@@ -446,6 +457,18 @@
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/atmos_turtle.rsi
 
+#CE
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband ]
+  id: ClothingUniformJumpsuitCEFormal
+  name: chief engineer's formal suit
+  description: A suit for special project grand openings which is fitted to fit inside hardsuits.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/ceformal.rsi # Moffstation
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/ceformal.rsi # Moffstation
+
 #Lawyer
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -569,6 +592,17 @@
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-cargo
+#Service
+
+#Bartender
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBartenderRed
+  name: saloon owner's uniform
+  description: A nice and tidy uniform. Ideal for post-duel drinks.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender_red.rsi
 
 #Janitor
 - type: entity

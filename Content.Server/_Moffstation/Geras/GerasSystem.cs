@@ -1,9 +1,12 @@
 using System.Linq;
-using Content.Shared.Zombies;
+using Content.Server._DV.Traits;
 using Content.Server.Actions;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
+using Content.Server.Traits;
+using Content.Shared._DV.Traits;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
@@ -33,39 +36,45 @@ using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Temperature.Components;
-using Content.Shared.Traits.Assorted;
+using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Geras;
 
 /// <summary>
 /// Geras is the god of old age, and A geras is the small morph of a slime. This system allows the slimes to have the morphing action.
 /// </summary>
-public sealed class GerasSystem : EntitySystem
+public sealed partial class GerasSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly VisualBodySystem _bodySystem = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly ServerInventorySystem _inventory = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
-    [Dependency] private readonly HumanoidProfileSystem _profileSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private readonly SharedEnsnareableSystem _ensnareable = default!;
-    [Dependency] private readonly SharedProjectileSystem _projectile = default!;
-    [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly ThirstSystem _thirst = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private ActionsSystem _actionsSystem = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private VisualBodySystem _bodySystem = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedStorageSystem _storage = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private ServerInventorySystem _inventory = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private SharedSubdermalImplantSystem _implantSystem = default!;
+    [Dependency] private HumanoidProfileSystem _profileSystem = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedEnsnareableSystem _ensnareable = default!;
+    [Dependency] private SharedProjectileSystem _projectile = default!;
+    [Dependency] private HungerSystem _hunger = default!;
+    [Dependency] private ThirstSystem _thirst = default!;
+    [Dependency] private SharedStaminaSystem  _stamina = default!;
+    [Dependency] private TraitSystem _trait = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
+    private const string GerasIdSlot = "id";
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -87,6 +96,7 @@ public sealed class GerasSystem : EntitySystem
         SubscribeLocalEvent<StatusEffectContainerComponent, PreMorphGerasEvent>(OnTransferNewStatus);
         SubscribeLocalEvent<HungerComponent, PreMorphGerasEvent>(OnTransferHunger);
         SubscribeLocalEvent<ThirstComponent, PreMorphGerasEvent>(OnTransferThirst);
+        SubscribeLocalEvent<GerasComponent, TraitsAppliedEvent>(OnTraitsApplied);
     }
 
     private void OnInit(Entity<GerasComponent> ent, ref ComponentInit args)
@@ -139,14 +149,27 @@ public sealed class GerasSystem : EntitySystem
         RaiseLocalEvent(uid, ref preGerasEv);
 
 
-        // Drop all inventory items
+        // TODO: Do this without the ID getting its own special thing
+        // We do this because we may unequip the jumpsuit which drops the ID prior to attempt to transfer the ID
+        if (_inventory.TryGetSlotEntity(uid, GerasIdSlot, out var id) && id is { } idUid)
+        {
+            _inventory.TryEquip(geras, idUid, GerasIdSlot, true, true);
+        }
+
+        // Reequip or drop all inventory items
         if (_inventory.TryGetContainerSlotEnumerator(uid, out var enumerator))
         {
             while (enumerator.MoveNext(out var slot))
             {
-                _inventory.TryUnequip(uid, slot.ID, true, true);
+                if (!_inventory.HasSlot(geras, slot.ID) ||
+                    slot.ContainedEntity is not { } containedEntity ||
+                    !_inventory.TryEquip(geras, containedEntity, slot.ID, true, true))
+                {
+                    _inventory.TryUnequip(uid, slot.ID, true, true);
+                }
             }
         }
+
         foreach (var held in _hands.EnumerateHeld(uid))
         {
             _hands.TryDrop(uid, held);
@@ -197,9 +220,17 @@ public sealed class GerasSystem : EntitySystem
             RaiseLocalEvent(uid, ref clearStomachEv);
         }
 
-        // Clear Stamina effects
+        // Transfer stamina damage
+        _stamina.TryTakeStamina(geras, _stamina.GetStaminaDamage(uid));
         RaiseLocalEvent(uid, new ClearStaminaDamageEvent());
-        RaiseLocalEvent(geras, new ClearStaminaDamageEvent());
+
+        // Transfer pending zombification
+        if (TryComp<PendingZombieComponent>(uid, out var userInfection))
+        {
+            var gerasInfection = EnsureComp<PendingZombieComponent>(geras);
+            gerasInfection.GracePeriod = userInfection.GracePeriod;
+            RemCompDeferred<PendingZombieComponent>(uid);
+        }
 
         // Transfer mind
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
@@ -217,20 +248,12 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnRemoveSnares(Entity<EnsnareableComponent> ent, ref PreMorphGerasEvent args)
     {
-        foreach (Entity<EnsnaringComponent?> bola in ent.Comp.Container.ContainedEntities.ToList())
-        {
-            if (TryComp<EnsnaringComponent>(bola, out var ensnaringComponent))
-                _ensnareable.ForceFree(bola, ensnaringComponent);
-        }
+        _ensnareable.ForceFreeAll(ent.AsNullable());
     }
 
     private void OnRemoveProjectiles(Entity<EmbeddedContainerComponent> ent, ref PreMorphGerasEvent args)
     {
-        foreach (var projectile in ent.Comp.EmbeddedObjects)
-        {
-            if(TryComp<EmbeddableProjectileComponent>(projectile, out var embedComp))
-                _projectile.EmbedDetach(projectile, embedComp);
-        }
+        _projectile.DetachAllEmbedded(ent);
     }
 
     private void OnTransferDamage(Entity<DamageableComponent> ent, ref PostMorphGerasEvent args)
@@ -253,7 +276,8 @@ public sealed class GerasSystem : EntitySystem
             if (_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.BloodSolutionName, ref ent.Comp.BloodSolution)
                 && _solutionContainer.ResolveSolution(args.Parent, bloodstreamParent.BloodSolutionName, ref bloodstreamParent.BloodSolution))
             {
-                //stop bleeding
+                //Trasfer bleeding stacks
+                _bloodstream.TryModifyBleedAmount(ent.Owner, bloodstreamParent.BleedAmount);
                 _bloodstream.TryModifyBleedAmount(args.Parent, -bloodstreamParent.BleedAmount);
 
                 //Transfer blood level
@@ -293,14 +317,11 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnTransferFire(Entity<FlammableComponent> ent, ref PreMorphGerasEvent args)
     {
-        //Gerasing quenches the player
-        ent.Comp.OnFire = false;
+        if (!TryComp<FlammableComponent>(args.Geras, out var flammableGeras))
+            return;
 
-        //But won't unmix the fuel from them
-        if (TryComp<FlammableComponent>(args.Geras, out var flammableGeras))
-        {
-            flammableGeras.FireStacks = ent.Comp.FireStacks;
-        }
+        _flammable.SetFireStacks(args.Geras, ent.Comp.FireStacks, flammableGeras, ent.Comp.OnFire);
+        _flammable.Extinguish(ent.Owner, ent.Comp);
     }
 
     private void OnTransferStorage(Entity<StorageComponent> ent, ref PreMorphGerasEvent args)
@@ -340,6 +361,19 @@ public sealed class GerasSystem : EntitySystem
         }
     }
 
+    private void OnTraitsApplied(Entity<GerasComponent> ent, ref TraitsAppliedEvent args)
+    {
+        if (ent.Comp.Geras is not { } geras)
+            return;
+
+        foreach (var traitId in args.Profile.TraitPreferences)
+        {
+            if (_prototypeManager.TryIndex(traitId, out var trait) || trait == null)
+                continue;
+            _trait.ApplyTrait(geras, trait);
+        }
+    }
+
     /// <summary>
     /// Sends an entity to the void for storage
     /// </summary>
@@ -351,7 +385,7 @@ public sealed class GerasSystem : EntitySystem
 
     private void OnGerasVisualInit(Entity<GerasComponent> uid, ref GerasVisualInitEvent args)
     {
-        if (uid.Comp.Geras is not {} geras)
+        if (uid.Comp.Geras is not { } geras)
             return;
 
         _metaData.SetEntityName(geras, Name(uid));
@@ -359,12 +393,6 @@ public sealed class GerasSystem : EntitySystem
         {
             _bodySystem.ApplyProfile(geras, new() { SkinColor = args.Profile.Appearance.SkinColor });
             _profileSystem.ApplyProfileTo((geras, EnsureComp<HumanoidProfileComponent>(geras)), args.Profile);
-        }
-
-        if (TryComp<UnrevivableComponent>(uid, out var parentUnrev))
-        {
-            var gerasUnrev = EnsureComp<UnrevivableComponent>(geras);
-            gerasUnrev.Cloneable = parentUnrev.Cloneable;
         }
 
         uid.Comp.VisualsLoaded = true;

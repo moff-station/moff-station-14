@@ -59,13 +59,12 @@
   name: package
   components:
   - type: Sprite
-    sprite: Objects/Specific/Cargo/mail_large.rsi
+    sprite: _Moffstation/Objects/Specific/Cargo/mail_large.rsi #Moffstation - Decabinetification
     layers:
     - state: icon
       map: [ "enum.DeliveryVisualLayers.Icon" ]
-    - state: trash
-      map: [ "enum.DeliveryVisualLayers.Trash" ]
-      visible: false
+    # Moffstation - Start - Decabinetification
+    - state: postmark
     - state: priority
       map: [ "enum.DeliveryVisualLayers.PriorityTape" ]
       visible: false
@@ -73,9 +72,8 @@
     - state: fragile
       map: [ "enum.DeliveryVisualLayers.FragileStamp" ]
       visible: false
-    - state: postmark
     - map: [ "enum.DeliveryVisualLayers.JobStamp" ]
-      offset: -0.21875, -0.25
+      offset: 0.15, -0.13
     - state: locked
       map: [ "enum.DeliveryVisualLayers.Lock" ]
     - state: broken
@@ -88,6 +86,10 @@
       map: [ "enum.DeliveryVisualLayers.BombPrimed" ]
       shader: unshaded
       visible: false
+    - state: trash
+      map: [ "enum.DeliveryVisualLayers.Trash" ]
+      visible: false
+    # Moffstatio - End - Decabinetification
   - type: MultiHandedItem
   - type: Item
     size: Huge
@@ -180,6 +182,7 @@
   components:
   - type: DeliveryFragile
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.1

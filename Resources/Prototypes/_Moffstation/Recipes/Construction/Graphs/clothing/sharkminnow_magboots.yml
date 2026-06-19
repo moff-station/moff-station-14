@@ -1,0 +1,28 @@
+- type: constructionGraph
+  id: ClothingShoesBootsMagSharkminnow
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: shoes
+          steps:
+            - tag: Magboots
+              name: construction-graph-tag-magboots
+              icon:
+                sprite: Clothing/Shoes/Boots/magboots.rsi
+                state: icon
+              doAfter: 10
+            - tag: SharkminnowLeather
+              name: construction-graph-tag-sharkminnow-leather
+              icon:
+                sprite: _Moffstation/Objects/Materials/hide.rsi
+                state: leather
+              doAfter: 5
+            - tag: SharkminnowLeather
+              name: construction-graph-tag-sharkminnow-leather
+              icon:
+                sprite: _Moffstation/Objects/Materials/hide.rsi
+                state: leather
+              doAfter: 5
+    - node: shoes
+      entity: ClothingShoesBootsMagSharkminnow

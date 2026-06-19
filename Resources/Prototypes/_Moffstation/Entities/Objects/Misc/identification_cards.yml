@@ -46,3 +46,225 @@
   - type: NanoChatCard # CD
     listNumber: false
 
+#Centcomm & Command
+
+- type: entity
+  parent: IDCardStandard
+  id: CentcomInternIDCard
+  name: central command intern ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: silver
+    - state: stripe_bottom
+      color: "#309000"
+    - state: stripe_top
+      color: "#99ff98"
+    - sprite: &icon-rsi _Moffstation/Interface/Misc/job_icons.rsi
+      offset: &icon-offset -0.09375, 0.0625
+      state: CentralCommandIntern
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: CentralCommandIntern
+  - type: NanoChatCard # CD
+    listNumber: false
+
+- type: entity
+  parent: IDCardStandard
+  id: CLOIDCard
+  name: coffee Logistics officer ID card
+  components:
+  - type: PresetIdCard
+    job: CoffeeLogisticsOfficer
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#1b67a5"
+    - state: stripe_top
+      color: "#7cb1d1"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: CoffeeLogisticsOfficer
+
+- type: entity
+  parent: IDCardStandard
+  id: BridgeAssistantIDCard
+  name: bridge assistant ID card
+  components:
+  - type: PresetIdCard
+    job: BridgeAssistant
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#1b67a5"
+    - state: stripe_top
+      color: "#7cb1d1"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: BridgeAssistant
+    - type: Item
+      heldPrefix: silver
+
+- type: entity
+  parent: JanitorIDCard
+  id: HoSanitationIDCard
+  name: head of Sanitation ID card
+  components:
+  - type: PresetIdCard
+    job: HeadOfSanitation
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#639137"
+    - state: stripe_top
+      color: "#7cb1d1"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: HeadOfSanitation
+    - type: Item
+      heldPrefix: silver
+
+- type: entity
+  parent: ClownIDCard
+  id: HoTIDCard
+  name: head of Tomfoolery ID card
+  components:
+  - type: PresetIdCard
+    job: HeadOfTomfoolery
+  - type: Sprite
+    layers:
+    - state: gold
+    - state: stripe_clown
+    - state: stripe_top
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: HeadOfTomfoolery
+    - type: Item
+      heldPrefix: gold
+    - type: IdCard
+      jobTitle: job-name-clown-head-of-tomfoolery
+      jobIcon: JobIconHeadOfTomfoolery
+
+# Cargo
+
+- type: entity
+  parent: CargoIDCard
+  id: SeniorCourierIDCard
+  name: senior courier ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_side
+      color: "#b47832"
+    - state: stripe_top
+      color: "#e9b375"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: SeniorCourier
+
+- type: entity
+  parent: CargoIDCard
+  id: FreightPilotIDCard
+  name: freight pilot ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#b47832"
+    - state: stripe_top
+      color: "#e9b375"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: FreightPilot
+
+# Engineering
+
+- type: entity
+  parent: AtmosIDCard
+  id: SeniorAtmosIDCard
+  name: senior atmos ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_side
+      color: "#e56c30"
+    - state: stripe_top
+      color: "#e58b5e"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: SeniorAtmos
+
+#Medical
+
+- type: entity
+  parent: MedicalIDCard
+  id: GeneticistIDCard
+  name: geneticist ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: &color-medical-bottom "#7daff8"
+    - state: stripe_top
+      color: &color-medical-top "#bed8ff"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Geneticist
+
+- type: entity
+  parent: MedicalIDCard
+  id: VirologistIDCard
+  name: virologist ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: *color-medical-bottom
+    - state: stripe_top
+      color: *color-medical-top
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Virologist
+
+# Science
+
+- type: entity
+  parent: ResearchIDCard
+  id: RoboticistIDCard
+  name: roboticist ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_bottom
+      color: "#6b57c8"
+    - state: stripe_top
+      color: "#c2b5ff"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Roboticist
+
+- type: entity
+  parent: PrisonerIDCard
+  id: TestSubjectIDCard
+  name: test subject ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: orange
+    - state: stripe_bottom
+      color: "#6b57c8"
+    - state: stripe_top
+      color: "#c2b5ff"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: TestSubject
