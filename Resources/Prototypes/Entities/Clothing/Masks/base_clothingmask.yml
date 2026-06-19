@@ -21,6 +21,9 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: maskbloodicon
+  - type: SolutionManager
+    solutions:
+    - SolutionStain
   # Forky - end
 
 - type: entity
@@ -61,10 +64,6 @@
       reagents:
       - ReagentId: Fiber
         Quantity: 15
-      # Forky - start - clothing stains
-      stain:
-        maxVol: 5
-      # Forky - end
   - type: Tag
     tags:
     - ClothMade

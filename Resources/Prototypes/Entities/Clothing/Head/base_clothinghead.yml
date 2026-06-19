@@ -18,10 +18,6 @@
       reagents:
       - ReagentId: Fiber
         Quantity: 15
-      # Forky - start - clothing stains
-      stain:
-        maxVol: 5
-      # Forky - end
   - type: Tag
     tags:
     - ClothMade
@@ -36,7 +32,10 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
-    # Forky - end
+  - type: SolutionManager
+    solutions:
+    - SolutionStain
+  # Forky - end
 
 - type: entity
   abstract: true
@@ -216,6 +215,9 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
+  - type: SolutionManager
+    solutions:
+    - SolutionStain
   - type: StainBlocker
     slots: [MASK]
   # Forky - end
@@ -316,4 +318,7 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: helmetbloodicon
+  - type: SolutionManager
+    solutions:
+    - SolutionStain
   # Forky - end
