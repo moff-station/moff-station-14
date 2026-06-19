@@ -1,4 +1,4 @@
-using Content.Shared._Impstation.Replicator;
+using Content.Shared._Moffstation.Replicator;
 using Content.Shared._Moffstation.Replicator.Components;
 using Robust.Client.GameObjects;
 
