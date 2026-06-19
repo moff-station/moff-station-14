@@ -19,12 +19,15 @@
     - sprite: _Funkystation/Effects/blood.rsi
       state: outerclothing
   - type: Solution
+    id: food
     solution:
+      maxVol: 30
       reagents:
       - ReagentId: Fiber
         Quantity: 30
-      stain:
-        maxVol: 5
+  - type: SolutionManager
+    solutions:
+    - SolutionStain
   - type: StainBlocker
     slots: [INNERCLOTHING]
   # Forky - end

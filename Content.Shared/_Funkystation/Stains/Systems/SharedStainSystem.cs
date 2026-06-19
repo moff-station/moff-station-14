@@ -35,7 +35,6 @@ public abstract partial class SharedStainSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StainableComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<StainableComponent, InventoryRelayedEvent<SpilledOnEvent>>(OnSpilledOn);
         SubscribeLocalEvent<StainableComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
         SubscribeLocalEvent<StainableComponent, WringStainDoAfterEvent>(OnWring);
@@ -46,12 +45,6 @@ public abstract partial class SharedStainSystem : EntitySystem
     {
         if (args.Solution.Comp.Id == ent.Comp.SolutionName)
             UpdateVisuals(ent);
-    }
-
-    private void OnMapInit(Entity<StainableComponent> ent, ref MapInitEvent args)
-    {
-        if (_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var sol) && sol is {} solComp)
-            _solution.SetCanReact(solComp, false);
     }
 
     private void OnSpilledOn(Entity<StainableComponent> ent, ref InventoryRelayedEvent<SpilledOnEvent> args)
