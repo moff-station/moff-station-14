@@ -79,7 +79,7 @@
     wieldSound:
       path: /Audio/Items/bow_pull.ogg
   - type: UseDelay
-    delay: 0.5
+    delay: 1.5
   - type: GunRequiresWield
   - type: Gun
     minAngle: 0
@@ -106,9 +106,3 @@
       projectiles: !type:ContainerSlot
   - type: ContainerAmmoProvider
     container: projectiles
-  - type: BallisticAmmoProvider
-    whitelist:
-      tags:
-      - Arrow
-    capacity: 3
-    proto: Arrow
