@@ -7,10 +7,9 @@ replicator-on-replicator-attack-fail = You cannot harm your kin.
 replicator-on-nest-attack-fail = You cannot harm the nest.
 
 replicator-nest-end-of-round = The Replicator Hive:
-                               - Colonized {$location}
-                               - Grew to a maximum [color=#d70aa0]Level[/color] of [color=#d70aa0]{$level}[/color].
-                               - Produced a total of [color=#d70aa0]{$replicators} Replicators[/color].
-                               - Amassed a total of [color=#d70aa0]{$points} points[/color].
+                               - Established [color=#d70aa0]{$nests} Nest(s)[/color].
+                               - Spawned a total of [color=#d70aa0]{$replicators} Replicators[/color].
+                               - Amassed a total of [color=#d70aa0]{$points} size points[/color].
 
 replicator-upgrade-t1-self = Nanites buzz around you.
 replicator-upgrade-t1-others = {CAPITALIZE(THE($replicator))} clicks and whirrs softly.
@@ -79,3 +78,9 @@ rep-phrase-suspend = Suspend
 
 rep-phrase-the-nest = The Nest
 rep-phrase-the-hive = The Hive
+
+replicator-upgrade-ready = You are empowered to upgrade.
+replicator-upgraded-other = The replicator shifts and reconfigures itself.
+replicator-nest-destroyed-popup = Pain. The nest is gone.
+replicator-queen-killed-popup = Sudden lonesomeness. The queen is gone.
+replicator-upgraded-to-queen-self = You are the hive's last hope!

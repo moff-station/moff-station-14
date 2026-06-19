@@ -9,19 +9,9 @@
   placement:
     mode: SnapGridCenter
   components:
+  - type: ReplicatorHiveLeader
   - type: ReplicatorNest
-    fallingSound:
-      path: /Audio/_Impstation/Effects/falling.ogg
-      params:
-        variation: 0.1
-    blacklist:
-      components:
-      - Nuke # nice try
-      - Cash
-      tags:
-      - Cartridge
-      - CartridgeMagnum
-      - Ectoplasm # causes problems for the revenant if they're consumed
+    lifeBoatProto: MobReplicatorT3Queen
     preservationBlacklist: # delete stuff that passes this, even if it also passes the preservationWhitelist
       components:
       - SiliconLawBound
@@ -29,7 +19,90 @@
       components:
       - StealTarget
       - Mech
-  - type: ThermalVisionImmune
+    announcements:
+      5: replicator-level-warning
+    pointEntries:
+    # All non-stack, non-mob things give 10 points baseline
+    - sizePoints:
+        flat: 10
+      spawningPoints:
+        flat: 10
+      blacklist: &stack-component
+        components:
+        - Stack
+        - MobState
+      debugName: "base"
+    # Stack items' points are calculated in C#
+    - whitelist: *stack-component
+      calculateSpecial: true
+      debugName: "stack"
+    # Large items provide additional points
+    - whitelist:
+        sizes:
+        - Large
+      blacklist: *stack-component
+      sizePoints:
+        flat: 10
+      debugName: "large"
+    # Huge items provide event more points
+    - whitelist:
+        sizes:
+        - Huge
+      blacklist: *stack-component
+      sizePoints:
+        flat: 10
+      debugName: "huge"
+    # Ginormous items provide yet more points
+    - whitelist:
+        sizes:
+        - Ginormous
+      blacklist: *stack-component
+      sizePoints:
+        flat: 10
+      debugName: "ginormous"
+    # Anchorables give bonus points
+    - whitelist:
+        components:
+        - Anchorable
+      sizePoints:
+        flat: 20
+      spawningPoints:
+        flat: 20
+      debugName: "anchorable"
+    # Recycling a replicator gives 1/4 the points towards a new replicator
+    - whitelist:
+        components:
+        - Replicator
+      sizePoints:
+        flat: 10
+      spawningPoints:
+        scaledWithSpawnCost: 0.25
+      debugName: "replicator"
+    # Humanoids give lots of points, scaling with level, plus an entire replicator spawn
+    - whitelist:
+        components:
+        - HumanoidProfile
+      blacklist:
+        components:
+        - MobState
+      sizePoints:
+        scaledWithLevel: 20
+      spawningPoints:
+        scaledWithSpawnCost: 1
+      debugName: "humanoid"
+    # Non-humanoid, non-replicator mobs give points scaling with level, plus a good chunk of a spawn
+    - whitelist:
+        components:
+        - MobState
+      blacklist:
+        components:
+        - HumanoidProfile
+        - Replicator
+      sizePoints:
+        scaledWithLevel: 10
+      spawningPoints:
+        scaledWithSpawnCost: 0.25
+      debugName: "mob"
   - type: StepTrigger
     requiredTriggeredSpeed: 0
     intersectRatio: 0.4
@@ -50,34 +123,36 @@
         - ItemMask
         density: 1000
         hard: false
+  - type: Appearance
   - type: Sprite
     drawdepth: FloorTiles
     sprite: _Impstation/Mobs/Replicator/replicator_nest.rsi
     layers:
-    - map: ["enum.ReplicatorNestVisuals.Level1"]
+    - map: [ "enum.ReplicatorNestVisuals.Level1" ]
       state: nest1
-    - map: ["enum.ReplicatorNestVisuals.Level2"]
+    - map: [ "enum.ReplicatorNestVisuals.Level2" ]
       state: nest2
       visible: false
-    - map: ["enum.ReplicatorNestVisuals.Level2Unshaded"]
+    - map: [ "enum.ReplicatorNestVisuals.Level2Unshaded" ]
       state: nest2unshaded
       shader: unshaded
       visible: false
-    - map: ["enum.ReplicatorNestVisuals.Level3"]
+    - map: [ "enum.ReplicatorNestVisuals.Level3" ]
       state: nest3
       visible: false
-    - map: ["enum.ReplicatorNestVisuals.Level3Unshaded"]
+    - map: [ "enum.ReplicatorNestVisuals.Level3Unshaded" ]
       state: nest3unshaded
       shader: unshaded
       visible: false
-    - map: ["enum.ReplicatorNestVisuals.Level1Unshaded"] # this one last, so it always renders on top
+    - map: [ "enum.ReplicatorNestVisuals.Level1Unshaded" ] # this one last, so it always renders on top
       state: nest1unshaded
       shader: unshaded
   - type: InteractionOutline
   - type: Clickable
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: ReplicatorNest
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -97,9 +172,30 @@
   - type: PassiveDamage #passive Healing
     damage:
       types:
-        Heat: -1
-        Shock: -1
-        Structural: -1
-      groups:
-        Brute: -1
+        Blunt: -1
+        Piercing: -1
+        Slash: -1
+        Shock: -1.2
+        Heat: -1.2
+        Cold: -1.2
+        Poison: -1.2
+        Structural: -0.5
   - type: AntiRottingContainer
+  - type: Chasm
+    fallingSound:
+      path: /Audio/_Impstation/Effects/falling.ogg
+      params:
+        variation: 0.1
+    blacklist:
+      components:
+      - Nuke # nice try
+      - Cash
+      tags:
+      - Cartridge
+      - CartridgeMagnum
+      - Ectoplasm # causes problems for the revenant if they're consumed
+  - type: AmbientSound
+    volume: +2
+    range: 2
+    sound:
+      path: /Audio/_Impstation/Ambience/replicator_ambiance.ogg

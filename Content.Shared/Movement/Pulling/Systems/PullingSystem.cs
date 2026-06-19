@@ -292,9 +292,10 @@ public sealed partial class PullingSystem : EntitySystem
 
     private void OnRefreshMovespeed(EntityUid uid, PullerComponent component, RefreshMovementSpeedModifiersEvent args)
     {
-        // Moffstation - togglable speed modifier
-        if (!component.ApplySpeedModifier)
+        // Moffstation - Begin - togglable speed modifier
+        if (!component.ApplyHeldSpeedModifier)
             return;
+        // Moffstation - End
 
         if (TryComp<HeldSpeedModifierComponent>(component.Pulling, out var heldMoveSpeed) && component.Pulling.HasValue)
         {

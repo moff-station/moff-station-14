@@ -1,17 +1,13 @@
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Content.Shared.Whitelist;
-using Robust.Shared.Network;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._Impstation.BlockMachineUI;
 
-public sealed class SharedBlockMachineUISystem : EntitySystem
+public sealed partial class SharedBlockMachineUISystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -20,17 +16,18 @@ public sealed class SharedBlockMachineUISystem : EntitySystem
         SubscribeLocalEvent<BlockMachineUIComponent, UserOpenActivatableUIAttemptEvent>(OnUIOpenAttempt);
     }
 
-    public void OnUIOpenAttempt(Entity<BlockMachineUIComponent> ent, ref UserOpenActivatableUIAttemptEvent args)
+    private void OnUIOpenAttempt(Entity<BlockMachineUIComponent> ent, ref UserOpenActivatableUIAttemptEvent args)
     {
-        if (ent.Comp.Whitelist == null && ent.Comp.Blacklist == null)
-            args.Cancel();
-
-        if (_whitelist.IsWhitelistPassOrNull(ent.Comp.Whitelist, args.Target) && _whitelist.IsWhitelistFailOrNull(ent.Comp.Blacklist, args.Target))
+        if ((ent.Comp.Whitelist != null || ent.Comp.Blacklist != null) &&
+            _whitelist.IsWhitelistPassOrNull(ent.Comp.Whitelist, args.Target) &&
+            _whitelist.IsWhitelistFail(ent.Comp.Blacklist, args.Target))
             return;
 
         args.Cancel();
 
-        if (_net.IsClient && _timing.IsFirstTimePredicted && ent.Comp.PopupText != null)
-            _popup.PopupEntity(Loc.GetString(ent.Comp.PopupText), ent, ent);
+        if (ent.Comp.PopupText is { } popup)
+        {
+            _popup.PopupEntity(Loc.GetString(popup), ent, ent);
+        }
     }
 }

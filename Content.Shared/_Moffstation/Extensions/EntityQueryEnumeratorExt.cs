@@ -31,4 +31,20 @@ public static class EntityQueryEnumeratorExt
             }
         }
     }
+
+    /// Wraps <see cref="AllEntityQueryEnumerator{T}.MoveNext(out EntityUid, out T)"/> in an
+    /// <see cref="IEnumerable{Entity{T}}"/>, making it a little bit nicer to use.
+    extension<T>(AllEntityQueryEnumerator<T> q) where T : Component
+    {
+        /// Wraps <see cref="AllEntityQueryEnumerator{T}.MoveNext(out EntityUid, out T)"/> in an
+        /// <see cref="IEnumerable{Entity{T}}"/>, making it a little bit nicer to use.
+        [MustUseReturnValue]
+        public IEnumerable<Entity<T>> AsEnumerable()
+        {
+            while (q.MoveNext(out var uid, out var comp))
+            {
+                yield return (uid, comp);
+            }
+        }
+    }
 }

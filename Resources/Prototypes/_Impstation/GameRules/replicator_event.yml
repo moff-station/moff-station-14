@@ -11,5 +11,20 @@
     duration: null
     minimumPlayers: 30
     maxOccurrences: 1
-  - type: RandomSpawnRule
-    prototype: SpawnPointGhostReplicatorQueen
+  - type: AntagRandomSpawn
+  - type: AntagSpawner
+    prototype: MobReplicatorT0Queen
+  - type: ReplicatorRule
+  - type: AntagSelection
+    agentName: ghost-role-information-replicator-name
+    antags:
+    - !type:FixedAntagCount
+      proto: ReplicatorQueen
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: ReplicatorQueen
+  spawnerPrototype: SpawnPointGhostReplicatorQueenAntag
+  pickPlayer: false
+  mindRoles:
+  - MindRoleGhostRoleTeamAntagonist

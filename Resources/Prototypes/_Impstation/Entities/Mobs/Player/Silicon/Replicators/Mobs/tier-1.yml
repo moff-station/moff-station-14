@@ -1,0 +1,41 @@
+﻿# Tier 1: These guys are mooks. They're vulnerable, bad at dragging, and don't do much damage, but they have a disabler ranged attack.
+- type: entity
+  parent: BaseMobReplicator
+  id: MobReplicatorTier1
+  categories: [ HideSpawnMenu ] # I don't want admins spawning a replicator that's unlinked to a nest
+  components:
+  - type: Replicator
+    upgradeOptionActions:
+    - ActionReplicatorUpgrade2
+    - ActionReplicatorUpgrade2Alt
+  - type: CombatMode
+  - type: StaminaDamageOnHit
+    damage: 20
+    sound: /Audio/Weapons/egloves.ogg
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2 # same as slime
+    baseSprintSpeed: 4.2
+    weightlessFriction: 1
+    weightlessFrictionNoInput: 200
+    weightlessAcceleration: 1.8
+  - type: Sprite
+    granularLayersRendering: true
+    drawdepth: SmallMobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+    - map: [ "enum.ReplicatorVisuals.Combat" ]
+      state: combat_level1
+      shader: unshaded
+      visible: false
+  - type: Hands # TODO CENT Do you not get a pinpointer...?
+    showInHands: false
+    disableExplosionRecursion: true
+    canBeStripped: false
+    activeHandId: Hand
+    hands:
+      Hand:
+        location: Left
+  - type: Loadout
+    prototypes:
+    - StartingGearReplicatorT1Weapon

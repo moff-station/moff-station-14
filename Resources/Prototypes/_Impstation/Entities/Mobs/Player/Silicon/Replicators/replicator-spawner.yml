@@ -2,10 +2,10 @@
 # all credit for the core gameplay concepts and a lot of the core functionality of the code goes to the folks over at Goob, but I re-wrote enough of it to justify putting it in our filestructure.
 # the original Bingle PR can be found here: https://github.com/Goob-Station/Goob-Station/pull/1519
 - type: entity
-  id: SpawnPointGhostReplicatorBase
-  name: replicator spawn point
-  abstract: true
   parent: MarkerBase
+  id: SpawnPointGhostReplicatorBase
+  abstract: true
+  name: replicator spawn point
   components:
   - type: GhostRole
     name: ghost-role-information-replicator-name
@@ -16,35 +16,39 @@
     raffle:
       settings: short
   - type: GhostRoleMobSpawner
-    prototype: MobReplicator
+    prototype: MobReplicatorTier1
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:
-      - state: green
-      - sprite: _Impstation/Mobs/Replicator/replicator.rsi
-        state: icon
+    - state: green
+    - sprite: _Impstation/Mobs/Replicator/replicator.rsi
+      state: icon
 
 - type: entity
+  parent: SpawnPointGhostReplicatorBase
   id: SpawnPointGhostReplicator
-  parent: SpawnPointGhostReplicatorBase
   categories: [ HideSpawnMenu ]
+  components:
+  - type: SpawnedFromTracker
 
 - type: entity
-  id: SpawnPointGhostReplicatorQueen
-  parent: SpawnPointGhostReplicatorBase
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostReplicatorQueenAntag
+  name: replicator spawn point
   suffix: Queen
+  categories: [ Spawner ]
   components:
-  - type: GhostRoleMobSpawner
-    prototype: MobReplicatorQueen
-
-- type: entity
-  parent: MarkerBase
-  id: ReplicatorNestPointsStorage
-  categories: [HideSpawnMenu]
-  components:
-  - type: ReplicatorNestPointsStorage
-  - type: AmbientSound
-    volume: +2
-    range: 2
-    sound:
-      path: /Audio/_Impstation/Ambience/replicator_ambiance.ogg
+  - type: GhostRole
+    name: ghost-role-information-replicator-name
+    description: ghost-role-information-replicator-desc
+    rules: ghost-role-information-replicator-rules
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: short
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: _Impstation/Mobs/Replicator/replicator.rsi
+      state: icon

@@ -11,14 +11,14 @@ public sealed partial class BlockMachineUIComponent : Component
     /// If both are null, blocks all entities.
     /// </summary>
     [DataField]
-    public EntityWhitelist? Whitelist = null;
+    public EntityWhitelist? Whitelist;
 
     /// <summary>
     /// These entities will *not* be allowed through. If null, only the whitelist applies.
     /// If both are null, blocks all entities.
     /// </summary>
     [DataField]
-    public EntityWhitelist? Blacklist = null;
+    public EntityWhitelist? Blacklist;
 
     [DataField]
     public LocId? PopupText = "block-machine-ui-cant-use";
