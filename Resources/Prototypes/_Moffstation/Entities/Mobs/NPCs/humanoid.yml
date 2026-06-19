@@ -1,21 +1,4 @@
 - type: entity
-  parent: MobSyndicateFootsoldier
-  id: MobSyndicateVentSoldierGhostRole
-  components:
-  - type: Loadout
-    prototypes:
-    - SyndicateFootsoldierGearArmed
-  - type: RandomHumanoidAppearance
-  - type: RandomMetadata
-    nameSegments: [ NamesDeathCommando ]
-  - type: NpcFactionMember
-    factions:
-    - Syndicate
-  - type: AutoImplant
-    implants:
-    - RadioImplant
-
-- type: entity
   id: MobWildHumanoid
   abstract: true
   components:
