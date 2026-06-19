@@ -55,3 +55,285 @@
   equipment:
     eyes: ClothingEyesModularHudPatch
 
+# Command
+- type: loadout
+  id: AdminGlasses
+  nameOverride: "moff-loadout-admin-sunglasses"
+  groupBy: "command hud"
+  equipment:
+    eyes: ClothingEyesGlassesCommand
+
+- type: loadout
+  id: CommandHudCheapSunglasses
+  groupBy: "command hud"
+  equipment:
+    eyes: ClothingEyesCheapSunglassesCommand
+
+- type: loadout
+  id: AdminHud
+  nameOverride: "moff-loadout-admin-hud"
+  groupBy: "command hud"
+  equipment:
+    eyes: ClothingEyesHudCommand
+
+- type: loadout
+  id: CommandHudGlasses
+  groupBy: "command hud"
+  equipment:
+    eyes: ClothingEyesGlassesCommandGlasses
+
+- type: loadout
+  id: CommandHudJamjars
+  groupBy: "command hud"
+  equipment:
+    eyes: ClothingEyesJamjarsCommand
+
+- type: loadout
+  id: CommandHudGoggles
+  groupBy: "command hud"
+  equipment:
+    eyes: ClothingEyesGogglesCommand
+
+- type: loadout
+  id: CommandHudPatch
+  groupBy: "command hud"
+  equipment:
+    eyes: ClothingEyesPatchCommand
+
+# Security
+- type: loadout
+  id: NoirGlasses
+  nameOverride: "moff-loadout-noir-sunglasses"
+  groupBy: "security hud"
+  equipment:
+    eyes: ClothingEyesGlassesNoir
+
+- type: loadout
+  id: SecurityGlasses
+  nameOverride: "moff-loadout-security-sunglasses"
+  groupBy: "security hud"
+  equipment:
+    eyes: ClothingEyesGlassesSecurity
+
+- type: loadout
+  id: SecurityHud
+  nameOverride: "moff-loadout-security-hud"
+  groupBy: "security hud"
+  equipment:
+    eyes: ClothingEyesHudSecurity
+
+- type: loadout
+  id: SecurityEyePatchHud
+  nameOverride: "moff-loadout-security-patch"
+  groupBy: "security hud"
+  equipment:
+    eyes: ClothingEyesEyepatchHudSecurity
+
+- type: loadout
+  id: SecurityHudGlasses
+  groupBy: "security hud"
+  equipment:
+    eyes: ClothingEyesGlassesSecGlasses
+
+- type: loadout
+  id: SecurityHudJamjars
+  groupBy: "security hud"
+  equipment:
+    eyes: ClothingEyesJamjarsSecurity
+
+- type: loadout
+  id: SecurityHudGoggles
+  groupBy: "security hud"
+  equipment:
+    eyes: ClothingEyesGogglesSecurity
+
+# Engineering
+- type: loadout
+  id: EngineeringGlasses
+  nameOverride: "moff-loadout-engineering-glasses"
+  groupBy: "engineering hud"
+  equipment:
+    eyes: ClothingEyesGlassesMesonSunglasses
+
+- type: loadout
+  id: EngineeringGoggles
+  nameOverride: "moff-loadout-engineering-goggles"
+  groupBy: "engineering hud"
+  equipment:
+    eyes: ClothingEyesGlassesMeson
+
+- type: loadout
+  id: EngineeringHudGlasses
+  groupBy: "engineering hud"
+  equipment:
+    eyes: ClothingEyesGlassesEngiGlasses
+
+- type: loadout
+  id: EngineeringHudJamjars
+  groupBy: "engineering hud"
+  equipment:
+    eyes: ClothingEyesJamjarsEngineering
+
+- type: loadout
+  id: EngineeringHudVisor
+  groupBy: "engineering hud"
+  equipment:
+    eyes: ClothingEyesVisorEngineering
+
+- type: loadout
+  id: EngineeringHudPatch
+  groupBy: "engineering hud"
+  equipment:
+    eyes: ClothingEyesPatchEngineering
+
+# Medical
+- type: loadout
+  id: MedicalHud
+  groupBy: "medical hud"
+  equipment:
+    eyes: ClothingEyesHudMedical
+
+- type: loadout
+  id: MedicalGlasses
+  groupBy: "medical hud"
+  equipment:
+    eyes: ClothingEyesGlassesMedSunglasses
+
+- type: loadout
+  id: MedicalEyePatchHud
+  groupBy: "medical hud"
+  equipment:
+    eyes: ClothingEyesEyepatchHudMedical
+
+- type: loadout
+  id: MedicalHudGlasses
+  groupBy: "medical hud"
+  equipment:
+    eyes: ClothingEyesGlassesMedGlasses
+
+- type: loadout
+  id: MedicalHudJamjars
+  groupBy: "medical hud"
+  equipment:
+    eyes: ClothingEyesJamjarsMedical
+
+- type: loadout
+  id: MedicalHudGoggles
+  groupBy: "medical hud"
+  equipment:
+    eyes: ClothingEyesGogglesMedical
+
+# Chemistry
+- type: loadout
+  id: ChemistryGoggles
+  groupBy: "chemistry hud"
+  equipment:
+    eyes: ClothingEyesGlassesChemical
+
+- type: loadout
+  id: ChemistryHudGlasses
+  groupBy: "chemistry hud"
+  equipment:
+    eyes: ClothingEyesGlassesChemGlasses
+
+- type: loadout
+  id: ChemistryHudJamjars
+  groupBy: "chemistry hud"
+  equipment:
+    eyes: ClothingEyesJamjarsChemistry
+
+- type: loadout
+  id: ChemistryHudSunglasses
+  groupBy: "chemistry hud"
+  equipment:
+    eyes: ClothingEyesCheapSunglassesChemistry
+
+- type: loadout
+  id: ChemistryHudVisor
+  groupBy: "chemistry hud"
+  equipment:
+    eyes: ClothingEyesVisorChemistry
+
+- type: loadout
+  id: ChemistryHudPatch
+  groupBy: "chemistry hud"
+  equipment:
+    eyes: ClothingEyesPatchChemistry
+
+# Science
+- type: loadout
+  id: RoboticsHud
+  nameOverride: "moff-loadout-diagnostic-hud"
+  groupBy: "diagnostic hud"
+  equipment:
+    eyes: ClothingEyesHudDiagnostic
+
+- type: loadout
+  id: RoboticsEyePatchHud
+  nameOverride: "moff-loadout-diagnostic-patch"
+  groupBy: "diagnostic hud"
+  equipment:
+    eyes: ClothingEyesEyepatchHudDiag
+
+- type: loadout
+  id: DiagnosticHudGlasses
+  groupBy: "diagnostic hud"
+  equipment:
+    eyes: ClothingEyesGlassesDiagGlasses
+
+- type: loadout
+  id: DiagnosticHudJamjars
+  groupBy: "diagnostic hud"
+  equipment:
+    eyes: ClothingEyesJamjarsDiagnostic
+
+- type: loadout
+  id: DiagnosticHudGoggles
+  groupBy: "diagnostic hud"
+  equipment:
+    eyes: ClothingEyesGogglesDiagnostic
+
+- type: loadout
+  id: DiagnosticHudSunglasses
+  groupBy: "diagnostic hud"
+  equipment:
+    eyes: ClothingEyesCheapSunglassesDiagnostic
+
+# Service
+- type: loadout
+  id: BeerGlasses
+  nameOverride: "moff-loadout-beer-hud"
+  groupBy: "thirst hud"
+  equipment:
+    eyes: ClothingEyesHudBeer
+
+- type: loadout
+  id: BeerEyePatchHud
+  nameOverride: "moff-loadout-beer-patch"
+  groupBy: "thirst hud"
+  equipment:
+    eyes: ClothingEyesEyepatchHudBeer
+
+- type: loadout
+  id: BeerHudGlasses
+  groupBy: "thirst hud"
+  equipment:
+    eyes: ClothingEyesGlassesBarGlasses
+
+- type: loadout
+  id: BeerHudJamjars
+  groupBy: "thirst hud"
+  equipment:
+    eyes: ClothingEyesJamjarsBar
+
+- type: loadout
+  id: BeerHudGoggles
+  groupBy: "thirst hud"
+  equipment:
+    eyes: ClothingEyesGogglesBar
+
+- type: loadout
+  id: BeerHudVisor
+  groupBy: "thirst hud"
+  equipment:
+    eyes: ClothingEyesVisorBar

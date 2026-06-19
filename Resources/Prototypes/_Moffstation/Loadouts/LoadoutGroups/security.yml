@@ -1,4 +1,39 @@
 # Generic
+- type: loadoutGroup
+  id: SecurityEyewear
+  name: loadout-group-security-glasses
+  minLimit: 1
+  loadouts:
+  - SecurityGlasses
+  - SecurityHud
+  - SecurityEyePatchHud
+  - SecurityHudGlasses
+  - SecurityHudJamjars
+  - SecurityHudGoggles
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
+
+- type: loadoutGroup
+  id: DetectiveEyewear
+  name: loadout-group-detective-glasses
+  minLimit: 1
+  loadouts:
+  - SecurityGlasses
+  - NoirGlasses
+  - SecurityHud
+  - SecurityEyePatchHud
+  - SecurityHudGlasses
+  - SecurityHudJamjars
+  - SecurityHudGoggles
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
+
 - type: loadout
   id: SecurityOfficerWintercoatArmored
   equipment:

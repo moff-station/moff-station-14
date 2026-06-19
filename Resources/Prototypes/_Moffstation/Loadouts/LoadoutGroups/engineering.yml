@@ -1,4 +1,26 @@
 # Generic
+- type: loadoutGroup
+  id: EngineeringEyewear
+  name: loadout-group-engineering-glasses
+  minLimit: 1
+  loadouts:
+  - EngineeringGoggles
+  - EngineeringGlasses
+  - EngineeringHudGlasses
+  - EngineeringHudJamjars
+  - EngineeringHudVisor
+  - EngineeringHudPatch
+  - RoboticsHud
+  - RoboticsEyePatchHud
+  - DiagnosticHudGlasses
+  - DiagnosticHudJamjars
+  - DiagnosticHudGoggles
+  - DiagnosticHudSunglasses
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
 
 # Chief Engineer
 - type: loadoutGroup

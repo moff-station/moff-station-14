@@ -1,4 +1,43 @@
 # Generic
+- type: loadoutGroup
+  id: MedicalEyewear
+  name: loadout-group-medical-glasses
+  minLimit: 0
+  loadouts:
+  - MedicalHud
+  - MedicalGlasses
+  - MedicalEyePatchHud
+  - MedicalHudGlasses
+  - MedicalHudJamjars
+  - MedicalHudGoggles
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
+
+- type: loadoutGroup
+  id: ChemistEyewear
+  name: loadout-group-medical-glasses
+  minLimit: 0
+  loadouts:
+  - ChemistryGoggles
+  - ChemistryHudGlasses
+  - ChemistryHudJamjars
+  - ChemistryHudSunglasses
+  - ChemistryHudVisor
+  - ChemistryHudPatch
+  - MedicalHud
+  - MedicalGlasses
+  - MedicalEyePatchHud
+  - MedicalHudGlasses
+  - MedicalHudJamjars
+  - MedicalHudGoggles
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
 
 # CMO
 - type: loadoutGroup

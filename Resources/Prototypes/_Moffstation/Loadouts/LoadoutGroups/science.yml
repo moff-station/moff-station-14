@@ -1,4 +1,20 @@
 # Generic
+- type: loadoutGroup
+  id: ScienceEyewear
+  name: loadout-group-science-glasses
+  minLimit: 0
+  loadouts:
+  - RoboticsHud
+  - RoboticsEyePatchHud
+  - DiagnosticHudGlasses
+  - DiagnosticHudJamjars
+  - DiagnosticHudGoggles
+  - DiagnosticHudSunglasses
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
 
 # RD
 - type: loadoutGroup

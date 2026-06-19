@@ -43,6 +43,23 @@
 
 # Captain
 - type: loadoutGroup
+  id: CaptainEyewear
+  name: loadout-group-captain-glasses
+  minLimit: 1
+  loadouts:
+  - AdminGlasses
+  - AdminHud
+  - CommandHudGlasses
+  - CommandHudJamjars
+  - CommandHudGoggles
+  - CommandHudPatch
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  - EyePatch
+  - CheapSunglasses
+
+- type: loadoutGroup
   id: CaptainPDA
   name: loadout-group-captain-id
   loadouts:
