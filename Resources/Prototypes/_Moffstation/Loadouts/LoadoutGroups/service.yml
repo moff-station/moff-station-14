@@ -1,7 +1,7 @@
 # Generic
 - type: loadoutGroup
   id: HopEyewear
-  name: loadout-group-head-of-personnel-glasses
+  name: loadout-group-glasses
   minLimit: 1
   loadouts:
   - AdminHud
@@ -18,7 +18,7 @@
 
 - type: loadoutGroup
   id: BartenderEyewear
-  name: loadout-group-bartender-glasses
+  name: loadout-group-glasses
   minLimit: 0
   loadouts:
   - BeerGlasses

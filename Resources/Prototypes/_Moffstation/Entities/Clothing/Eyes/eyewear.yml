@@ -270,6 +270,19 @@
   - type: Label
     currentLabel: modularhud-premade-engineering
 
+- type: entity
+  id: AbstractModularHudHunger
+  abstract: true
+  suffix: Hunger
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      modular-hud-modules: !type:AllSelector
+        children:
+        - id: HudModuleShowHungerIcons
+  - type: Label
+    currentLabel: modularhud-premade-hunger
+
 ## Premade modular HUD usages
 
 # Sunglasses
@@ -475,6 +488,10 @@
 - type: entity
   parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudCommand ]
   id: ClothingEyesCheapSunglassesCommand
+
+- type: entity
+  parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudHunger ]
+  id: ClothingEyesHudHunger
 
 - type: entity
   parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudMedicalIcons ]
