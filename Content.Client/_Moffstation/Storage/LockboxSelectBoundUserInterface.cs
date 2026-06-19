@@ -34,9 +34,7 @@ public sealed partial class LockboxSelectBoundUserInterface : BoundUserInterface
         if (state is not LockboxSelectBoundUserInterfaceState lockboxState || _menu == null)
             return;
 
-        // Clear out the old buttons
         var options = new List<RadialMenuOptionBase>();
-        _menu.SetButtons(options);
 
         foreach (var protoId in lockboxState.Options)
         {

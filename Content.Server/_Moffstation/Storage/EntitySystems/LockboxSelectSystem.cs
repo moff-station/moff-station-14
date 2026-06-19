@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Popups;
 using Content.Shared._Moffstation.Storage;
 using Content.Shared.Access.Systems;
@@ -46,22 +47,9 @@ public sealed partial class LockboxSelectSystem : EntitySystem
     private void OnDepartmentSelected(Entity<LockboxSelectComponent> ent, ref LockboxSelectMessage args)
     {
         var selected = args.SelectedProto;
-
-        if (!ent.Comp.Options.ContainsValue(selected))
-            return;
-
         var playerAccess = _access.FindAccessTags(args.Actor);
-        var hasAccess = false;
-        foreach (var (access, proto) in ent.Comp.Options)
-        {
-            if (proto == selected && playerAccess.Contains(access))
-            {
-                hasAccess = true;
-                break;
-            }
-        }
 
-        if (!hasAccess)
+        if (!ent.Comp.Options.Any(kvp => kvp.Value == selected && playerAccess.Contains(kvp.Key)))
             return;
 
         // Spawn the department lockbox in place and remove the generic one
