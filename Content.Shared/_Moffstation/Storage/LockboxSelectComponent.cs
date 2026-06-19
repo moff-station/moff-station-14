@@ -12,9 +12,6 @@ namespace Content.Shared._Moffstation.Storage;
 [RegisterComponent]
 public sealed partial class LockboxSelectComponent : Component
 {
-    /// <summary>
-    /// Maps access level prototype IDs to the entity prototype that spawns on selection.
-    /// </summary>
     [DataField(required: true)]
     public Dictionary<ProtoId<AccessLevelPrototype>, EntProtoId> Options = new();
 }
@@ -25,18 +22,13 @@ public enum LockboxSelectUiKey : byte
     Key,
 }
 
-/// <summary>
-/// Sent server → client when the UI opens; contains only the options the player has access to.
-/// </summary>
+
 [Serializable, NetSerializable]
 public sealed class LockboxSelectBoundUserInterfaceState(List<EntProtoId> options) : BoundUserInterfaceState
 {
     public readonly List<EntProtoId> Options = options;
 }
 
-/// <summary>
-/// Sent client → server when the player selects a department lockbox.
-/// </summary>
 [Serializable, NetSerializable]
 public sealed class LockboxSelectMessage(EntProtoId selectedProto) : BoundUserInterfaceMessage
 {
