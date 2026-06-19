@@ -160,11 +160,7 @@
   id: FillLockerDetective
   table: !type:AllSelector
     children:
-    # Moffstation - Start - Modular Eyewear
-    # - id: ClothingEyesGlassesNoir
-    - id: BoxSecModularHUD
-    - id: HudModuleNoirOverlay
-    # Moffstation - End
+    - id: ClothingEyesGlassesNoir # Moffstation - Modular Eyewear
     - id: ClothingHeadHatDetGadget
     - id: ClothingNeckTieDet
     # Moffstation - Start (New Detective Outfits)
