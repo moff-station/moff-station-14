@@ -166,6 +166,7 @@
   - type: Injurable
     damageContainer: Silicon
   - type: Destructible
+    generateOverkillThreshold: false # Moffstation - Fix Borg Brains Exploding
     thresholds:
     - trigger:
         !type:DamageTrigger
