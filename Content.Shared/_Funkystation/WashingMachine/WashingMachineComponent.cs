@@ -1,5 +1,8 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Funkystation.WashingMachine;
@@ -29,6 +32,9 @@ public sealed partial class WashingMachineComponent : Component
     public WashingMachineState State = WashingMachineState.Idle;
 
     public EntityUid? AudioStream;
+
+    [DataField]
+    public ProtoId<DamageTypePrototype> WashingDamageType = "blunt";
 
     [DataField, AutoNetworkedField]
     public float BluntDamagePerSecond = 6.0f;

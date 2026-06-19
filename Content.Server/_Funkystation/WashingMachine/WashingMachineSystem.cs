@@ -66,8 +66,8 @@ public sealed partial class WashingMachineSystem : SharedWashingMachineSystem
         if (!TryComp<EntityStorageComponent>(uid, out var storage) || storage.Contents.ContainedEntities.Count == 0)
             return;
 
-        var bluntProto = _proto.Index<DamageTypePrototype>("Blunt");
-        var damage = new DamageSpecifier(bluntProto, comp.BluntDamagePerSecond * frameTime);
+        var damageProto = _proto.Index<DamageTypePrototype>(comp.WashingDamageType);
+        var damage = new DamageSpecifier(damageProto, comp.BluntDamagePerSecond * frameTime);
 
         var waterSpray = new Solution();
         waterSpray.AddReagent(comp.WaterSprayReagent, comp.WaterSprayAmount);
@@ -145,8 +145,8 @@ public sealed partial class WashingMachineSystem : SharedWashingMachineSystem
 
         if (comp.AccumulatedSelfDamage > 0)
         {
-            var bluntProto = _proto.Index<DamageTypePrototype>("Blunt");
-            var selfDamage = new DamageSpecifier(bluntProto, comp.AccumulatedSelfDamage);
+            var damageProto = _proto.Index(comp.WashingDamageType);
+            var selfDamage = new DamageSpecifier(damageProto, comp.AccumulatedSelfDamage);
             _damageable.TryChangeDamage(uid, selfDamage, ignoreResistances: true);
             comp.AccumulatedSelfDamage = 0;
         }
