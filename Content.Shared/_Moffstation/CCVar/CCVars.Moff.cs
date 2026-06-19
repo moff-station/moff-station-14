@@ -7,17 +7,9 @@ namespace Content.Shared._Moffstation.CCVar;
 [CVarDefs]
 public sealed class MoffCCVars
 {
-    /// <summary>
-    /// Whether the respawn button is available to ghost players
-    /// </summary>
-    public static readonly CVarDef<bool> RespawningEnabled =
-        CVarDef.Create("moff.respawn_enabled", true, CVar.SERVER | CVar.REPLICATED);
-
-    /// <summary>
-    /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
-    /// </summary>
-    public static readonly CVarDef<float> RespawnTime =
-        CVarDef.Create("moff.respawn_time", 450f, CVar.SERVER | CVar.REPLICATED);
+    /*
+     * Admin
+     */
 
     /// <summary>
     /// The maximum size that an overlay stack can reach. Additional overlays will be superimposed over the last one.
@@ -25,11 +17,9 @@ public sealed class MoffCCVars
     public static readonly CVarDef<bool> AdminOverlayShowWatchlist =
         CVarDef.Create("ui.admin_overlay_show_watchlist", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
-    /// <summary>
-    /// Whether longspeech should be enabled
-    /// </summary>
-    public static readonly CVarDef<bool> LongSpeech =
-        CVarDef.Create("moff.long_speech", false, CVar.SERVER);
+    /*
+     * Voting
+     */
 
     /// <summary>
     ///     Blocks restart votes when the lobby is paused
@@ -61,11 +51,37 @@ public sealed class MoffCCVars
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
 
+    /*
+     * Gameplay
+     */
+
     /// <summary>
     /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
     /// </summary>
     public static readonly CVarDef<bool>
         GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether longspeech should be enabled
+    /// </summary>
+    public static readonly CVarDef<bool> LongSpeech =
+        CVarDef.Create("moff.long_speech", false, CVar.SERVER);
+
+    /// <summary>
+    /// Whether the respawn button is available to ghost players
+    /// </summary>
+    public static readonly CVarDef<bool> RespawningEnabled =
+        CVarDef.Create("moff.respawn_enabled", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
+    /// </summary>
+    public static readonly CVarDef<float> RespawnTime =
+        CVarDef.Create("moff.respawn_time", 450f, CVar.SERVER | CVar.REPLICATED);
+
+    /*
+     * Arrivals
+     */
 
     /// <summary>
     ///     Whether players should spawn at arrivals at the start of the round
@@ -84,6 +100,10 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<float> ArrivalsRange =
         CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
+
+    /*
+     * Patreon
+     */
 
     /// <summary>
     /// Whether to show or not show Moffstation Patreons special ooc color

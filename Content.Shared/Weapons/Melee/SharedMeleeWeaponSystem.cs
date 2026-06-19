@@ -85,6 +85,15 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     /// </summary>
     public const float GracePeriod = 0.05f;
 
+    // Moffstation - Start
+    /// <summary>
+    /// Screenshake Parameters so I dont have to search for them or copy-past
+    /// </summary>
+    public const float ShakeTrauma = 0.08f;
+
+
+    // Moffstation - End
+
     public override void Initialize()
     {
         base.Initialize();
@@ -585,24 +594,16 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             DoDamageEffect(targets, user, targetXform);
 
             // Moffstation - start - Tweaked screenshake changes
-            // dog shit copy plaste but thats melee for you
             var targetMap = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Coordinates));
 
             var userPos = TransformSystem.GetWorldPosition(Transform(user));
             var direction = targetMap.Position - userPos;
 
-            var shakeRotation = new ESScreenshakeParameters()
-                { Trauma = 0.02f, DecayRate = 1.0f, Frequency = 0.009f };
-            var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.25f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
-            var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
-            _shake.Screenshake(user, userShakeTranslation, shakeRotation);
-            foreach (var shakeTarget in targets)
-            {
-                _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
-            }
+            DoScreenShake(direction, user, targets);
             // Moffstation - End
         }
     }
+
 
     protected abstract void DoDamageEffect(List<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
 
@@ -767,18 +768,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, _protoManager), hitEvent.HitSoundOverride, component);
         }
 
-        // Moffstation - start - Tweaked screenshake changes
-        // dog shit copy plaste but thats melee for you
-        var shakeRotation = new ESScreenshakeParameters()
-            { Trauma = 0.02f, DecayRate = 1.0f, Frequency = 0.009f };
-        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.25f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
-        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction = direction };
-        _shake.Screenshake(user, userShakeTranslation, shakeRotation);
-        foreach (var shakeTarget in targets)
-        {
-            _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
-        }
-        // Moffstation - End
+        DoScreenShake(direction, user, targets); // Moffstation - Tweaked screenshake changes
 
         if (appliedDamage.GetTotal() > FixedPoint2.Zero && targets.Count > 0)
         {
@@ -1098,4 +1088,21 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             }
         }
     }
+
+    // Moffstation - Start - Fancy Screenshake
+    // This is still magic numbers bs but slightly better because its not straight up repeat code.
+    // Maybe it's worse if you want to use different numbers for the different melee attacks, but rn idc
+    private void DoScreenShake(Vector2 direction, EntityUid user, List<EntityUid> targets)
+    {
+        var shakeRotation = new ESScreenshakeParameters()
+            { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
+        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
+        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
+        _shake.Screenshake(user, userShakeTranslation, shakeRotation);
+        foreach (var shakeTarget in targets)
+        {
+            _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
+        }
+    }
+    // Moffstation - End - Fancy Screenshake
 }
