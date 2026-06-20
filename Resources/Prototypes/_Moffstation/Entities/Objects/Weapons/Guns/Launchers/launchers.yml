@@ -68,6 +68,13 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/launchers/rebar-crossbow.rsi
+  - type: ItemMapper
+    mapLayers:
+      powercell:
+        whitelist:
+          components:
+          - powerCell
+  - type: Appearance
   - type: Item
     size: Ginormous
   - type: Clothing
