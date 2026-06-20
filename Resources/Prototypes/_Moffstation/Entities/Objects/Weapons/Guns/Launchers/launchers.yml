@@ -69,12 +69,12 @@
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/launchers/rebar-crossbow.rsi
   - type: Item
-    size: ginormous
+    size: Ginormous
   - type: Clothing
     quickEquip: false
     slots:
-      - Back
-      - suitStorage
+    - Back
+    - suitStorage
   - type: Wieldable
     wieldSound:
       path: /Audio/Items/bow_pull.ogg
@@ -101,8 +101,50 @@
           tags:
           - Arrow
           - Plunger
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
   - type: ContainerContainer
     containers:
       projectiles: !type:ContainerSlot
+      cell_slot: !type:ContainerSlot
   - type: ContainerAmmoProvider
     container: projectiles
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemToggle # Turns on and off heating
+    onActivate: false
+    onUse: false
+    soundActivate:
+      collection: sparks
+      params:
+        variation: 0.250
+        volume: 5
+    soundDeactivate:
+      collection: sparks
+      params:
+        variation: 0.250
+        volume: 5
+  - type: ToggleCellDraw # While toggled on, draws power
+  - type: PowerCellDraw # power draw definition
+    drawRate: 50
+  - type: TriggerOnToggleOn
+    keyOut: toggle-on
+  - type: TriggerOnToggleOff
+    keyOut: toggle-off
+  - type: ESSparkOnTrigger
+    keyIn: toggle-on
+  - type: AddComponentsOnTrigger
+    keysIn:
+    - toggle-on
+    components:
+    - type: ContainedEntityHeater
+      container: projectiles
+      power: 50
+      ignoreHeatResistance: true # Assume electroresistive heating doesn't give a shit about insulation
+  - type: RemoveComponentsOnTrigger
+    keysIn:
+    - toggle-off
+    components:
+    - type: ContainedEntityHeater # Fields are on here, but aren't actually used.
+      container: doesn't matter
+      power: 0
