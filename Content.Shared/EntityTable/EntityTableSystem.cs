@@ -17,14 +17,14 @@ public sealed partial class EntityTableSystem : EntitySystem
         return GetSpawns(entTableProto.Table, rand, ctx);
     }
 
-    public IEnumerable<EntProtoId> GetSpawns(EntityTableSelector? table, System.Random? rand = null, EntityTableContext? ctx = null)
+    public IEnumerable<EntProtoId> GetSpawns(EntityTableSelector? table, System.Random? rand = null, EntityTableContext? ctx = null, Dictionary<EntityTableSelector, float>? localPool = null) // Moffstation - WithReplacement Selector
     {
         if (table == null)
             return new List<EntProtoId>();
 
         rand ??= _random.GetRandom();
         ctx ??= new EntityTableContext();
-        return table.GetSpawns(rand, EntityManager, _prototypeManager, ctx);
+        return table.GetSpawns(rand, EntityManager, _prototypeManager, ctx, localPool); // Moffstation - WithReplacement Selector
     }
 
     public IEnumerable<(EntProtoId spawn, double)> ListSpawns(EntityTablePrototype entTableProto, EntityTableContext? ctx = null)
