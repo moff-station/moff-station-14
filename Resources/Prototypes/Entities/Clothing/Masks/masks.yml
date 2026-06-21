@@ -218,10 +218,10 @@
   - type: HideLayerClothing
     slots:
     - Snout
-    # Imp - Begin - Tourists
-    - type: StealTarget
-      stealGroup: ClownMask
-    # Imp - End - Tourists
+  # Imp - Begin - Tourists
+  - type: StealTarget
+    stealGroup: ClownMask
+  # Imp - End - Tourists
 
 - type: entity
   parent: [ClothingMaskClownBase, BaseFoldable]
