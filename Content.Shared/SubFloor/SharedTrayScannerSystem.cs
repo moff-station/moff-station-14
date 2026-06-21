@@ -1,98 +1,44 @@
-using Content.Shared._Funkystation.Clothing.Components;
-using Content.Shared.Actions;
-using Content.Shared.Actions.Components;
-using Content.Shared.Database;
+using Content.Shared._Funkystation.Clothing.Components; // Funky change
 using Content.Shared.Eye;
 using Content.Shared.Hands;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.Events;
-using Content.Shared.Timing;
-using Content.Shared.Verbs;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
+using Content.Shared.Actions; // Funky change
+using Content.Shared.Actions.Components; // Funky change
+using Robust.Shared.Audio.Systems; // Funky change
 using Robust.Shared.GameStates;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
-// Funky change
-// Funky change
-// Funky change
-// Funky change
 
 namespace Content.Shared.SubFloor;
 
-public abstract partial class SharedTrayScannerSystem : EntitySystem
+public abstract class SharedTrayScannerSystem : EntitySystem
 {
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedEyeSystem _eye = default!;
-    [Dependency] private UseDelaySystem _delay = default!;
-    [Dependency] private INetManager _netMan = default!;
-    [Dependency] private SharedActionsSystem _actions = default!; // Funky change
-
+    [Dependency] private readonly INetManager _netMan = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedEyeSystem _eye = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!; // Funky change
+    [Dependency] private readonly SharedAudioSystem _audio = default!; // Funky change
     public const float SubfloorRevealAlpha = 0.8f;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<TrayScannerComponent, ComponentGetState>(OnTrayScannerGetState);
+        SubscribeLocalEvent<TrayScannerComponent, ComponentHandleState>(OnTrayScannerHandleState);
         SubscribeLocalEvent<TrayScannerComponent, ActivateInWorldEvent>(OnTrayScannerActivate);
-        SubscribeLocalEvent<TrayScannerComponent, GetVerbsEvent<AlternativeVerb>>(OnAddSwitchModeVerb);
         SubscribeLocalEvent<TrayScannerComponent, ToggleTrayScannerEvent>(OnToggleAction); // Funky change
 
         SubscribeLocalEvent<TrayScannerComponent, GotEquippedHandEvent>(OnTrayHandEquipped);
         SubscribeLocalEvent<TrayScannerComponent, GotUnequippedHandEvent>(OnTrayHandUnequipped);
         SubscribeLocalEvent<TrayScannerComponent, GotEquippedEvent>(OnTrayEquipped);
         SubscribeLocalEvent<TrayScannerComponent, GotUnequippedEvent>(OnTrayUnequipped);
+
         SubscribeLocalEvent<TrayScannerUserComponent, GetVisMaskEvent>(OnUserGetVis);
     }
 
-    private void OnAddSwitchModeVerb(Entity<TrayScannerComponent> scanner, ref GetVerbsEvent<AlternativeVerb> args)
-    {
-        if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue || !scanner.Comp.Enabled)
-            return;
-
-        var user = args.User;
-
-        AlternativeVerb verb = new()
-        {
-            Text = Loc.GetString("tray-scanner-switch-mode"),
-            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/settings.svg.192dpi.png")),
-            Act = () => SwitchMode(scanner, user),
-            Impact = LogImpact.Low
-        };
-        args.Verbs.Add(verb);
-    }
-
-    private static TrayScannerMode Next(TrayScannerMode mode)
-    {
-        return mode switch
-        {
-            TrayScannerMode.All => TrayScannerMode.Wiring,
-            TrayScannerMode.Wiring => TrayScannerMode.Piping,
-            TrayScannerMode.Piping => TrayScannerMode.All,
-            _ => TrayScannerMode.All,
-        };
-    }
-
-    private void SwitchMode(Entity<TrayScannerComponent> scanner, EntityUid? userUid)
-    {
-        if (!userUid.HasValue)
-            return;
-
-        // Prevents ping spam
-        if (!_delay.TryResetDelay(scanner, checkDelayed: true))
-            return;
-
-        scanner.Comp.Mode = Next(scanner.Comp.Mode);
-        Dirty(scanner);
-
-        // Play a slightly different sound when we're back to All mode
-        var pitch = scanner.Comp.Mode == TrayScannerMode.All ? 1 : 0.8f;
-        _audio.PlayPredicted(scanner.Comp.SoundSwitchMode, scanner, userUid, AudioParams.Default.WithVolume(1.5f).WithPitchScale(pitch));
-    }
-
-    private void OnUserGetVis(Entity<TrayScannerUserComponent> scanner, ref GetVisMaskEvent args)
+    private void OnUserGetVis(Entity<TrayScannerUserComponent> ent, ref GetVisMaskEvent args)
     {
         args.VisibilityMask |= (int)VisibilityFlags.Subfloor;
     }
@@ -155,13 +101,13 @@ public abstract partial class SharedTrayScannerSystem : EntitySystem
 
     private void OnTrayUnequipped(Entity<TrayScannerComponent> ent, ref GotUnequippedEvent args)
     {
-        OnUnequip(args.EquipTarget);
+        OnUnequip(args.Equipee);
 
         // Funky change
         if (ent.Comp.ToggleActionEntity is { } action)
         {
-            if (TryComp(action, out TransformComponent? xform) && xform.ParentUid == args.EquipTarget)
-                _actions.RemoveAction(args.EquipTarget, action);
+            if (TryComp(action, out TransformComponent? xform) && xform.ParentUid == args.Equipee)
+                _actions.RemoveAction(args.Equipee, action);
             else
                 QueueDel(action);
 
@@ -171,11 +117,11 @@ public abstract partial class SharedTrayScannerSystem : EntitySystem
 
     private void OnTrayEquipped(Entity<TrayScannerComponent> ent, ref GotEquippedEvent args)
     {
-        OnEquip(args.EquipTarget);
+        OnEquip(args.Equipee);
 
         // Funky change
-        if (ent.Comp.ToggleAction != null && HasComp<ActionsComponent>(args.EquipTarget))
-            _actions.AddAction(args.EquipTarget, ref ent.Comp.ToggleActionEntity, ent.Comp.ToggleAction.Value, ent);
+        if (ent.Comp.ToggleAction != null && HasComp<ActionsComponent>(args.Equipee))
+            _actions.AddAction(args.Equipee, ref ent.Comp.ToggleActionEntity, ent.Comp.ToggleAction.Value, ent);
     }
 
     // Funky change
@@ -184,54 +130,68 @@ public abstract partial class SharedTrayScannerSystem : EntitySystem
         if (args.Handled)
             return;
 
-        ToggleScanner((uid, scanner), args.Performer);
+        ToggleScanner(uid, args.Performer, scanner);
         args.Handled = true;
     }
 
-    private void OnTrayScannerActivate(Entity<TrayScannerComponent> ent, ref ActivateInWorldEvent args)
+    private void OnTrayScannerActivate(EntityUid uid, TrayScannerComponent scanner, ActivateInWorldEvent args)
     {
         if (args.Handled || !args.Complex)
             return;
 
-        ToggleScanner(ent, args.User); // Funky change
+        ToggleScanner(uid, args.User, scanner); // Funky change
         args.Handled = true;
     }
 
     // Funky change
-    private void ToggleScanner(Entity<TrayScannerComponent> ent, EntityUid user)
+    private void ToggleScanner(EntityUid uid, EntityUid user, TrayScannerComponent scanner)
     {
-        var isEnabled = !ent.Comp.Enabled;
-        SetScannerEnabled(ent, isEnabled);
+        var isEnabled = !scanner.Enabled;
+        SetScannerEnabled(uid, isEnabled, scanner);
 
-        var sound = isEnabled ? ent.Comp.SoundOn : ent.Comp.SoundOff;
-        _audio.PlayPredicted(sound, ent, user);
+        var sound = isEnabled ? scanner.SoundOn : scanner.SoundOff;
+        _audio.PlayPredicted(sound, uid, user);
     }
 
-    private void SetScannerEnabled(Entity<TrayScannerComponent> ent, bool enabled)
+    private void SetScannerEnabled(EntityUid uid, bool enabled, TrayScannerComponent? scanner = null)
     {
-        if (ent.Comp.Enabled == enabled)
+        if (!Resolve(uid, ref scanner) || scanner.Enabled == enabled)
             return;
 
-        ent.Comp.Enabled = enabled;
-        Dirty(ent);
+        scanner.Enabled = enabled;
+        Dirty(uid, scanner);
 
         // Funky change
-        if (TryComp(ent, out GoggleShaderComponent? goggleShader))
+        if (TryComp(uid, out GoggleShaderComponent? goggleShader))
         {
             goggleShader.Enabled = enabled;
-            Dirty(ent, goggleShader);
+            Dirty(uid, goggleShader);
 
             var ev = new GoggleShaderToggledEvent(enabled);
-            RaiseLocalEvent(ent, ref ev);
+            RaiseLocalEvent(uid, ref ev);
         }
 
         // We don't remove from _activeScanners on disabled, because the update function will handle that, as well as
         // managing the revealed subfloor entities
 
-        if (TryComp(ent, out AppearanceComponent? appearance))
+        if (TryComp(uid, out AppearanceComponent? appearance))
         {
-            _appearance.SetData(ent, TrayScannerVisual.Visual, ent.Comp.Enabled ? TrayScannerVisual.On : TrayScannerVisual.Off, appearance);
+            _appearance.SetData(uid, TrayScannerVisual.Visual, scanner.Enabled ? TrayScannerVisual.On : TrayScannerVisual.Off, appearance);
         }
+    }
+
+    private void OnTrayScannerGetState(EntityUid uid, TrayScannerComponent scanner, ref ComponentGetState args)
+    {
+        args.State = new TrayScannerState(scanner.Enabled, scanner.Range);
+    }
+
+    private void OnTrayScannerHandleState(EntityUid uid, TrayScannerComponent scanner, ref ComponentHandleState args)
+    {
+        if (args.Current is not TrayScannerState state)
+            return;
+
+        scanner.Range = state.Range;
+        SetScannerEnabled(uid, state.Enabled, scanner);
     }
 }
 
