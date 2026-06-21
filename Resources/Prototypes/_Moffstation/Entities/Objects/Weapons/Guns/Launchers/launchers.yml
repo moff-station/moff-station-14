@@ -69,8 +69,6 @@
 - type: Sprite
   sprite: _Moffstation/Objects/Weapons/Guns/launchers/rebar-crossbow.rsi
   layers:
-  - state: unwielded
-    map: [ base ]
   - state: powercell
     map: ["enum.PowercelVisuals.Layer"]
     visible: false
