@@ -72,7 +72,7 @@
     - state: unwielded
       map: [ base ]
     - state: powercell
-      map: ["enum.powercellVisuals.Layer"]
+      map: ["enum.PowerCellVisualLayers.Base"]
       visible: false
   - type: ItemMapper
     mapLayers:
