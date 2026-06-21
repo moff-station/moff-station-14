@@ -68,13 +68,15 @@
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/launchers/rebar-crossbow.rsi
+    state: powercell
+    layers:
+    - map: [ "enum.PowercellVisuals.Layer" ]
   - type: ItemMapper
-    sprite:  _Moffstation/Objects/Weapons/Guns/launchers/rebar-crossbow.rsi
     mapLayers:
       powercell:
         whitelist:
           components:
-          - powerCell
+          - powercell
   - type: Appearance
   - type: Item
     size: Ginormous
