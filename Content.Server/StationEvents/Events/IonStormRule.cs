@@ -5,7 +5,6 @@ using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Station.Components;
 using Content.Shared._Moffstation.Traits.Components;
 using Content.Shared._Moffstation.Traits.EntitySystems;
-//Moffstation - End
 using Robust.Shared.Random; // macro
 
 namespace Content.Server.StationEvents.Events;
