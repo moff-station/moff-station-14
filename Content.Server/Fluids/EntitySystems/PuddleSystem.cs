@@ -17,7 +17,9 @@ using Content.Shared.Slippery;
 using Content.Shared.Inventory;
 using Content.Shared._Funkystation.Fluids;
 using Content.Shared.Standing;
+using Content.Shared.Standing;
 using Content.Shared.StepTrigger.Systems;
+using Content.Shared._Funkystation.Footprints;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -563,6 +565,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         // Get normalized co-ordinate for spill location and spill it in the centre
         // TODO: Does SnapGrid or something else already do this?
         var anchored = _map.GetAnchoredEntitiesEnumerator(gridId, mapGrid, tileRef.GridIndices);
+        var puddleQuery = GetEntityQuery<PuddleComponent>();
+        var sparklesQuery = GetEntityQuery<EvaporationSparkleComponent>();
+        var footprintQuery = GetEntityQuery<FootprintComponent>();
 
         while (anchored.MoveNext(out var ent))
         {
@@ -574,6 +579,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             }
 
             if (!_puddleQuery.TryGetComponent(ent, out var puddle))
+                continue;
+
+            if (footprintQuery.HasComponent(ent.Value))
                 continue;
 
             if (TryAddSolution(ent.Value, solution, sound, puddleComponent: puddle))
@@ -609,9 +617,15 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             return false;
 
         var anc = _map.GetAnchoredEntitiesEnumerator(tile.GridUid, grid, tile.GridIndices);
+        var puddleQuery = GetEntityQuery<PuddleComponent>();
+        var footprintQuery = GetEntityQuery<FootprintComponent>();
+
         while (anc.MoveNext(out var ent))
         {
             if (!_puddleQuery.HasComponent(ent.Value))
+                continue;
+
+            if (footprintQuery.HasComponent(ent.Value))
                 continue;
 
             puddleUid = ent.Value;
