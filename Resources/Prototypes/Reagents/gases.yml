@@ -47,7 +47,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Avali, Resomi ] # Moffstation
+          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Avali, Resomi, Gray ] # Moffstation
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:

@@ -166,6 +166,7 @@
   - type: Injurable
     damageContainer: Silicon
   - type: Destructible
+    generateOverkillThreshold: false
     thresholds:
     - trigger:
         !type:DamageTrigger

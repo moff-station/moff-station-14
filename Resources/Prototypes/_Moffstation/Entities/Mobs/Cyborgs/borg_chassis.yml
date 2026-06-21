@@ -192,6 +192,7 @@
       50: Critical
       100: Dead
   - type: Destructible
+    generateOverkillThreshold: false
     thresholds:
     - trigger:
         !type:DamageTrigger

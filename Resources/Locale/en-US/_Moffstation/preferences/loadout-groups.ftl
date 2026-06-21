@@ -19,15 +19,6 @@ loadout-group-chemist-mask = Chemist Mask
 loadout-group-chemist-gloves = Chemist Gloves
 loadout-group-chemist-shoes = Chemist Shoes
 
-loadout-group-captain-glasses = Captain glasses
-loadout-group-head-of-personnel-glasses = Head of Personnel glasses
-loadout-group-security-glasses = Security glasses
-loadout-group-detective-glasses = Detective glasses
-loadout-group-engineering-glasses = Engineering glasses
-loadout-group-chemistry-glasses = Chemistry glasses
-loadout-group-science-glasses = Science glasses
-loadout-group-bartender-glasses = Bartender glasses
-
 loadout-group-captain-id = Captain ID
 loadout-group-hop-id = Head of Personnel ID
 loadout-group-chief-engineer-id = Chief Engineer ID
