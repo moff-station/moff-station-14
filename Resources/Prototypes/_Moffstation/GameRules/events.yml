@@ -54,3 +54,22 @@
     radioMessage:
       channel: Syndicate
       message: "syndicate-dead-drop-announcement"
+
+# Syndicate soldier spawn
+- type: entity
+  parent: BaseAntagGhostRoleRule
+  id: SyndieVentSoldierSpawn
+  components:
+  - type: StationEvent
+    earliestStart: 20
+    weight: 4
+    duration: null
+    maxOccurrences: 2
+  - type: AntagRandomSpawn
+  - type: AntagLoadProfileRule
+  - type: AntagSelection
+    antags:
+    - !type:FixedAntagCount
+      proto: SyndieVentSoldier
+  - type: DynamicRuleCost
+    cost: 25

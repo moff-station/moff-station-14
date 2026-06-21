@@ -1,22 +1,9 @@
 # Generic
-- type: loadoutGroup
-  id: SecurityEyewear
-  name: loadout-group-security-glasses
-  minLimit: 1
-  loadouts:
-  - SecurityGlasses
-  - SecurityHud
-  - SecurityEyePatchHud
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-  - EyePatchFlipped
-
 - type: loadout
   id: SecurityOfficerWintercoatArmored
   equipment:
     outerClothing: ClothingOuterWinterSecArmored
+
 #HoS
 - type: loadoutGroup
   id:  HeadofSecurityPDA
@@ -30,6 +17,7 @@
   id: HeadofSecurityWintercoatSmall
   equipment:
     outerClothing: ClothingOuterWinterHoSUnarmored
+
 # Warden
 - type: loadoutGroup
   id: WardenPDA
@@ -44,22 +32,8 @@
   id: WardenWintercoatSmall
   equipment:
     outerClothing: ClothingOuterWinterWardenUnarmored
-# Detective
-- type: loadoutGroup
-  id: DetectiveEyewear
-  name: loadout-group-detective-glasses
-  minLimit: 1
-  loadouts:
-  - SecurityGlasses
-  - NoirGlasses
-  - SecurityHud
-  - SecurityEyePatchHud
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-  - EyePatchFlipped
 
+# Detective
 - type: loadoutGroup
   id: DetectivePDA
   name: loadout-group-detective-id

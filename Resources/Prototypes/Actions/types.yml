@@ -63,7 +63,8 @@
     checkCanInteract: false
     priority: -99 # Moffstation - scream priority in the action bar
   - type: InstantAction
-    event: !type:ScreamActionEvent
+    event: !type:EmoteActionEvent
+      emote: Scream
 
 - type: entity
   parent: BaseMentalAction

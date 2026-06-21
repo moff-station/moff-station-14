@@ -12,7 +12,7 @@
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
-  - ChemistEyewear # Moffstation - Medical eyewear - CMO gets chemist because it includes the normal medical huds as well
+  - ModularEyewearBasic # Moffstation - Modular Eyewear
   - SurvivalMedical
   - Trinkets
   #  - ChiefMedicalOfficerJobTrinkets
@@ -31,7 +31,7 @@
   - MedicalDoctorOuterClothing
   - MedicalShoes
   # - MedicalDoctorPDA # Moffstation - Moved up in list for title loadouts
-  - MedicalEyewear # Moffstation - Medical eyewear
+  - ModularEyewearBasic # Moffstation - Modular Eyewear
   - SurvivalMedical
   - Trinkets
   #  - MedicalDoctorJobTrinkets
@@ -49,7 +49,6 @@
   - Trinkets
   #  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
-  - PersonalItemsJobAgnostic # Umbra
 
 - type: roleLoadout
   id: JobChemist
@@ -61,7 +60,7 @@
   - ChemistBackpack
   - ChemistOuterClothing
   - ChemistShoes
-  - ChemistEyewear # Moffstation - Medical Eyewear
+  - ModularEyewearBasic # Moffstation - Modular Eyewear
   - SurvivalMedical
   - Trinkets
   #  - ChemistJobTrinkets
@@ -79,7 +78,7 @@
   - MedicalBackpack
   - ParamedicOuterClothing
   - ParamedicShoes
-  - MedicalEyewear # Moffstation - Medical eyewear
+  - ModularEyewearBasic # Moffstation - Modular Eyewear
   - SurvivalMedical
   - Trinkets
   #  - ParamedicJobTrinkets

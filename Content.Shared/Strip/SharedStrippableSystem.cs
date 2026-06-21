@@ -38,8 +38,6 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
 
-    [Dependency] private SharedChatSystem _chat = default!; // Moffstation - Stripping notifier
-
     public override void Initialize()
     {
         base.Initialize();
@@ -629,6 +627,8 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
     private void OnActivateInWorld(EntityUid uid, StrippableComponent component, ActivateInWorldEvent args)
     {
+        args.InteractionParticle = false; // Moffstation - Don't put up the particle when opening the UI
+
         if (args.Handled || !args.Complex || args.Target == args.User)
             return;
 
@@ -668,19 +668,6 @@ public abstract partial class SharedStrippableSystem : EntitySystem
 
         if (!HasComp<StrippingComponent>(user))
             return false;
-
-        // Moffstation - Start - Interaction particles and strip menu notification
-        // Do this check to make it harder to spam the chat
-        var (_, stealth) = GetStripTimeModifiers(user, target, null, target.Comp.HandStripDelay);
-        if (!stealth && !_ui.IsUiOpen(target.Owner, StrippingUiKey.Key))
-        {
-            _popupSystem.PopupCoordinates(
-                Loc.GetString("strip-menu-viewing-message", ("user", Identity.Entity(user, EntityManager))),
-                Transform(user).Coordinates,
-                target.Owner
-                );
-        }
-        // Moffstation - end
 
         _ui.OpenUi(target.Owner, StrippingUiKey.Key, user);
         return true;

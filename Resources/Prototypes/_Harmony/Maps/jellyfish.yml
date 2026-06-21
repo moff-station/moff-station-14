@@ -2,10 +2,8 @@
   id: Jellyfish
   mapName: 'Jellyfish'
   mapPath: /Maps/_Harmony/jellyfish.yml
-  # Moffstation - Start - ULP Map pool
-  minPlayers: 11
-  maxPlayers: 31
-  # Moffstation - End
+  minPlayers: 11 # Ultra-Low Pop
+  maxPlayers: 35 # Ultra-Low Pop
   stations:
     Jellyfish:
       stationProto: StandardNanotrasenStation
@@ -35,28 +33,29 @@
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 1, 1 ]
-            #Zookeeper: [ 1, 1 ] # Moffstation - maybe we bring it back, for old times sake
-            #Boxer: [ 1, 1 ] # Moffstation
+            # Zookeeper: [ 1, 1 ] # Moffstation - maybe we bring it back, for old times sake
+            # Boxer: [ 1, 1 ] # Moffstation
             Reporter: [ 1, 1 ]
             #engineering (4 - 5)
             AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 3, 4 ] # Moffstation - Added the intern count
-            #TechnicalAssistant: [ 1, 1 ] # Moffstation - No interns, added to main role
+            StationEngineer: [ 2, 3 ]
+            # TechnicalAssistant: [ 1, 1 ] # Moffstation - Removed role
             #medical (4 - 5)
             Chemist: [ 1, 1 ]
-            MedicalDoctor: [ 2, 3 ] # Moffstation - Added the intern count
+            MedicalDoctor: [ 1, 2 ]
             Paramedic: [ 1, 1 ]
             Psychologist: [ 1, 1 ]
-            #MedicalIntern: [ 1, 1 ] # Moffstation - No interns, added to main role
+            # MedicalIntern: [ 1, 1 ] # Moffstation - Removed role
             #science (2 - 3)
-            Scientist: [ 3, 4 ] # Moffstation - Added the intern count
-            #ResearchAssistant: [ 1, 1 ] # Moffstation - No interns, added to main role
+            Scientist: [ 2, 3 ]
+            # ResearchAssistant: [ 1, 1 ] # Moffstation - Removed role
             #security (6)
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 4, 4 ] # Moffstation - Added the intern count
+            SecurityOfficer: [ 3, 3 ]
             Detective: [ 1, 1 ]
-            #SecurityCadet: [ 1, 2 ] # Moffstation - No interns, added to main role
+            # SecurityCadet: [ 1, 2 ] # Moffstation - Removed role
             Lawyer: [ 1, 1 ]
+            Prisoner: [ 1, 1 ] # Moffstation - Prisoners
             #supply (4 - 5)
             SalvageSpecialist: [ 2, 2 ]
             CargoTechnician: [ 2, 3 ]

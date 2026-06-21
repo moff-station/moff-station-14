@@ -6219,6 +6219,16 @@ Entries:
   id: 1502
   time: '2026-06-07T19:50:46.000'
   url: https://github.com/moff-station/moff-station-14/pull/1502
+- author: Nyxilath
+  changes:
+  - message: Snowball has been derotated from Moffstation.
+    type: remove
+  - message: Moffstation maps have had their minimum playercounts standardized into
+      categorical ranges.
+    type: tweak
+  id: 1503
+  time: '2026-06-12T19:54:54.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1503
 - author: Tezzaide
   changes: []
   id: 1504
@@ -6289,5 +6299,124 @@ Entries:
   id: 1517
   time: '2026-06-11T00:10:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1517
+- author: Laggy
+  changes:
+  - message: Syndicate vent soldiers have had their loadouts adjusted, and only spawn
+      when taken as a ghostrole.
+    type: tweak
+  id: 1520
+  time: '2026-06-21T02:24:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1520
+- author: DuckManZach
+  changes:
+  - message: Interaction particles no longer play when opening the strip menu
+    type: fix
+  id: 1523
+  time: '2026-06-13T14:00:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1523
+- author: Centronias
+  changes:
+  - message: Logistics Associates' titles are correctly displayed when inspecting
+      their IDs.
+    type: fix
+  id: 1524
+  time: '2026-06-15T05:33:14.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1524
+- author: DuckManZach
+  changes:
+  - message: Required playtimes are now displayed for antags that havent been unlocked.
+    type: fix
+  id: 1525
+  time: '2026-06-16T19:33:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1525
+- author: Nyxilath
+  changes:
+  - message: Loadout eyewear options have been simplified.
+    type: tweak
+  - message: HUD modules no longer spawn in eyewear, but rather spawn in department
+      drobes and lockers.
+    type: tweak
+  - message: Short-sighted now starts with a prescription HUD module instead of a
+      secondary pair of glasses. Make sure to select a modular glasses option in loadout,
+      or visit a drobe if you forget!
+    type: tweak
+  id: 1526
+  time: '2026-06-16T17:42:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1526
+- author: Dave
+  changes:
+  - message: Adds Grays as a new roundstart species!
+    type: add
+  id: 1527
+  time: '2026-06-21T00:47:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1527
+- author: OrbitSystem07
+  changes:
+  - message: Shells now have two module slots, and start with a tool module
+    type: tweak
+  - message: Shells can now see the job and crew huds like every other NT silicon
+    type: fix
+  - message: Shells are now properly targeted by NPCs
+    type: fix
+  id: 1529
+  time: '2026-06-15T05:10:00.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1529
+- author: KamTheSythe
+  changes:
+  - message: Plasma is now pink on the gas analyzer.
+    type: tweak
+  id: 1531
+  time: '2026-06-16T17:42:45.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1531
+- author: Dave
+  changes:
+  - message: new PAI sprites
+    type: add
+  id: 1533
+  time: '2026-06-16T22:42:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1533
+- author: Dave
+  changes:
+  - message: Resomi jumpsuits, outerclothing, inhands & feet now displace better
+    type: fix
+  id: 1534
+  time: '2026-06-16T22:42:48.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1534
+- author: Dave
+  changes:
+  - message: new electronic tool sprites
+    type: add
+  id: 1536
+  time: '2026-06-17T20:31:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1536
+- author: Dave
+  changes:
+  - message: new material sprites!
+    type: add
+  id: 1537
+  time: '2026-06-21T00:47:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1537
+- author: OrbitSystem07
+  changes:
+  - message: Borgs brains and Ais no longer get automatically destroyed in large enough
+      explosions (such as martyr modules)
+    type: fix
+  id: 1541
+  time: '2026-06-18T17:21:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1541
+- author: OrbitSystem07
+  changes:
+  - message: Test subjects can no longer leave genpop whenever they wish
+    type: fix
+  id: 1542
+  time: '2026-06-21T01:13:14.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1542
+- author: Nyxilath
+  changes:
+  - message: Xenoarch throw effect now features a shockwave effect.
+    type: tweak
+  id: 1549
+  time: '2026-06-21T00:22:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1549
 Name: Mofflog
 Order: -2

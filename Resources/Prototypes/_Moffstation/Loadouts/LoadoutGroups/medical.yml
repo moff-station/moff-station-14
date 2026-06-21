@@ -1,17 +1,4 @@
 # Generic
-- type: loadoutGroup
-  id: MedicalEyewear
-  name: loadout-group-medical-glasses
-  minLimit: 0
-  loadouts:
-  - MedicalHud
-  - MedicalGlasses
-  - MedicalEyePatchHud
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-  - EyePatchFlipped
 
 # CMO
 - type: loadoutGroup
@@ -30,21 +17,6 @@
   - PharmacistPDA
   - PharmacologistPDA
   - ToxicologistPDA
-
-- type: loadoutGroup
-  id: ChemistEyewear
-  name: loadout-group-medical-glasses
-  minLimit: 0
-  loadouts:
-  - ChemistryGoggles
-  - MedicalHud
-  - MedicalGlasses
-  - MedicalEyePatchHud
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-  - EyePatchFlipped
 
 # Paramedic
 - type: loadoutGroup

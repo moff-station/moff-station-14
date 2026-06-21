@@ -2,8 +2,8 @@
   id: Reach
   mapName: 'Reach'
   mapPath: /Maps/reach.yml
-  minPlayers: 0
-  maxPlayers: 15  # Moffstation - Playercount changes
+  minPlayers: 0 # Moffstation - Dead Pop
+  maxPlayers: 15 # Moffstation - Dead Pop
   stations:
     Reach:
       stationProto: StandardNanotrasenStation
