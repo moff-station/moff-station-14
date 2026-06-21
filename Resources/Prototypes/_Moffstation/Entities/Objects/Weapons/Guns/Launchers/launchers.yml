@@ -66,11 +66,14 @@
   name: Rebar Crossbow
   description: Gordon Freeman?
   components:
-  - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/launchers/rebar-crossbow.rsi
-    state: powercell
-    layers:
-    - map: [ "enum.PowercellVisuals.Layer" ]
+- type: Sprite
+  sprite: _Moffstation/Objects/Weapons/Guns/launchers/rebar-crossbow.rsi
+  layers:
+  - state: base_state_name_here
+    map: [ base ]
+  - state: powercell
+    map: ["enum.PowercelVisuals.Layer"]
+    visible: false
   - type: ItemMapper
     mapLayers:
       powercell:
