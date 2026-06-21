@@ -98,19 +98,8 @@ public abstract partial class SharedReplicatorNestSystem : EntitySystem
 
     private void OnMapInit(Entity<ReplicatorNestComponent> ent, ref MapInitEvent args)
     {
-        // All replicator nests should also be chasms.
-        if (!_chasmQuery.HasComponent(ent))
-        {
-            this.AssertOrLogError(
-                $"{ToPrettyString(ent)} has {nameof(ReplicatorNestComponent)} but no {nameof(ChasmComponent)}.)");
-        }
-
-        // All replicator nests should also be hive leaders.
-        if (!_hiveLeaderQuery.HasComponent(ent))
-        {
-            this.AssertOrLogError(
-                $"{ToPrettyString(ent)} has {nameof(ReplicatorNestComponent)} but no {nameof(ReplicatorHiveLeaderComponent)}.)");
-        }
+        EnsureComp<ChasmComponent>(ent);
+        EnsureComp<ReplicatorHiveLeaderComponent>(ent);
 
         ent.Comp.Hole = ContainerSystem.EnsureContainer<Container>(ent, ent.Comp.HoleContainerId);
 

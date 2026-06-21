@@ -38,11 +38,10 @@ public sealed partial class ReplicatorQueenSystem : EntitySystem
     {
         _actions.AddAction(entity, ref entity.Comp.SpawnNestActionEnt, entity.Comp.SpawnNewNestAction, entity);
 
-        // Ensure we are a member of our own hive.
-        if (_replicatorQuery.ResolveOrNull(entity) is { } replicator)
-        {
-            _hiveLeader.AssignReplicators(entity.Owner, [replicator]);
-        }
+        // Ensure we're a member of our own hive.
+        var replicator = EnsureComp<ReplicatorComponent>(entity);
+        var leader = EnsureComp<ReplicatorHiveLeaderComponent>(entity);
+        _hiveLeader.AssignReplicators((entity, leader), [(entity, replicator)]);
     }
 
     private void OnRemove(Entity<ReplicatorQueenComponent> ent, ref ComponentRemove args)
