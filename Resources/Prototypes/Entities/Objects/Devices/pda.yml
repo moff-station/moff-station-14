@@ -925,6 +925,7 @@
   components:
   - type: Pda
     id: WardenIDCard
+    noAdverts: true # Moffstation - PDA ads
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1133,6 +1134,7 @@
   components:
   - type: Pda
     id: SyndicateIDCard
+    noAdverts: true # Moffstation - PDA ads
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:

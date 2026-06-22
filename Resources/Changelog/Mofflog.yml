@@ -6368,6 +6368,18 @@ Entries:
   id: 1529
   time: '2026-06-15T05:10:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1529
+- author: DuckManZach
+  changes:
+  - message: Stowaways actually spawn again!
+    type: fix
+  - message: Stowaways can no longer spawn in space or in places with no atmosphere.
+    type: fix
+  - message: Stowaways can only spawn on the main part of the station, no chilling
+      on ATS
+    type: fix
+  id: 1530
+  time: '2026-06-22T19:30:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1530
 - author: KamTheSythe
   changes:
   - message: Plasma is now pink on the gas analyzer.
