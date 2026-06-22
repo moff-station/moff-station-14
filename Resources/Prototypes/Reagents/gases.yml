@@ -16,7 +16,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant ]
+          type: [ Human, Animal, Rat, Plant, Thaven ] #Macrocosm, add Thaven
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
@@ -47,7 +47,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Avali, Resomi, Gray ] # Moffstation
+          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Avali, Resomi, Gray, Thaven ] # Moffstation
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
@@ -111,6 +111,11 @@
         minScale: 1.5
         clear: True
         time: 5
+      - !type:Oxygenate #MACRO, thaven don't suffocate from any gases
+        scaling: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
   reactiveEffects:
     Flammable:
       methods: [ Touch ]
@@ -156,6 +161,11 @@
         minScale: 1.5
         clear: True
         time: 5
+      - !type:Oxygenate #MACRO, thaven don't suffocate from any gases
+        scaling: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
 
 - type: reagent
   id: CarbonDioxide
@@ -192,7 +202,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, Thaven ] #MACRO, thaven don't suffocate from any gases
       - !type:HealthChange
         minScale: 0.5
         conditions:
@@ -209,7 +219,7 @@
       - !type:Oxygenate # carbon dioxide displaces oxygen from the bloodstream, causing asphyxiation
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, Thaven ] #MACRO, thaven don't suffocate from any gases
           inverted: true
         factor: -4
       # We need a metabolism effect on reagent removal
@@ -237,7 +247,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vox, Slime ]
+          type: [ Vox, Slime, Thaven ] #MACRO, thaven don't suffocate from any gases
       # Converts Nitrogen into Ammonia
       - !type:ModifyLungGas
         conditions:
@@ -328,6 +338,11 @@
         damage:
           types:
             Poison: 1
+      - !type:Oxygenate #macro, thaven don't suffocate from any gases
+        scaling: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
 
 - type: reagent
   id: Frezon
@@ -395,3 +410,8 @@
         messages: [ "frezon-euphoric" ]
         probability: 0.1
         minScale: 1
+      - !type:Oxygenate #macro, thaven don't suffocate from any gases
+        scaling: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Thaven ]
