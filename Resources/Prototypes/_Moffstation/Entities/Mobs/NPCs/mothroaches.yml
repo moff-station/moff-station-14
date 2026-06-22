@@ -98,6 +98,10 @@
   - type: Sprite
     sprite: _Moffstation/Mobs/Animals/mothroach/rainbow.rsi
   - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        shader: unshaded
     sprite: _Moffstation/Mobs/Animals/mothroach/rainbow.rsi
   - type: PointLight
     radius: 1.5
@@ -112,11 +116,7 @@
       right:
       - state: inhand-right
         shader: unshaded
-  - type: Clothing
-    clothingVisuals:
-      head:
-      - state: equipped-HELMET
-        shader: unshaded
+
 
 #random spawner - add variations to the list
 - type: entityTable
