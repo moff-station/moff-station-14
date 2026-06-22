@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Moffstation.Atmos.Components;
 using Content.Shared._Moffstation.Atmos.Visuals;
+using Content.Shared._Moffstation.Extensions;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Moffstation.Atmos.EntitySystems;
@@ -53,39 +54,26 @@ public sealed partial class GasTankVisualsSystem : EntitySystem
 
         entity.Comp1.Visuals = colorValues;
         _appearance.SetData(entity, GasTankVisualsLayers.Tank, colorValues.TankColor, entity.Comp2);
-        SetOrRemoveAppearanceData(
+        _appearance.SetOrRemoveData(
             (entity, entity.Comp2),
             GasTankVisualsLayers.StripeMiddle,
             colorValues.MiddleStripeColor
         );
-        SetOrRemoveAppearanceData((entity, entity.Comp2), GasTankVisualsLayers.StripeLow, colorValues.LowerStripeColor);
+        _appearance.SetOrRemoveData(
+            (entity, entity.Comp2),
+            GasTankVisualsLayers.StripeLow,
+            colorValues.LowerStripeColor
+        );
 
         return true;
     }
 
     private GasTankColorValues? GetColorValues(GasTankVisuals visuals) => visuals switch
-        {
-            GasTankVisuals.GasTankVisualsPrototype proto => _proto.Resolve(proto.Prototype, out var style)
-                ? style.ColorValues
-                : null,
-            GasTankVisuals.GasTankVisualsColorValues values => values,
-            _ => throw new ArgumentOutOfRangeException(),
-        };
-
-    /// <summary>
-    /// If <paramref name="value"/> is null, <see cref="SharedAppearanceSystem.RemoveData">removes</see>
-    /// <paramref name="key"/> from <paramref name="entity"/>'s appearance data, otherwise
-    /// <see cref="SharedAppearanceSystem.SetData">sets</see> it to <paramref name="value"/>.
-    /// </summary>
-    private void SetOrRemoveAppearanceData(Entity<AppearanceComponent?> entity, Enum key, object? value)
     {
-        if (value is not null)
-        {
-            _appearance.SetData(entity, key, value, entity);
-        }
-        else
-        {
-            _appearance.RemoveData(entity, key, entity);
-        }
-    }
+        GasTankVisuals.GasTankVisualsPrototype proto => _proto.Resolve(proto.Prototype, out var style)
+            ? style.ColorValues
+            : null,
+        GasTankVisuals.GasTankVisualsColorValues values => values,
+        _ => visuals.ThrowUnknownInheritor<GasTankVisuals, GasTankColorValues?>(),
+    };
 }

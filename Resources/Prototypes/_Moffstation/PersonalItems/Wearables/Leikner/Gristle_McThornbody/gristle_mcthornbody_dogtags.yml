@@ -1,0 +1,25 @@
+﻿# Player: Leikner
+# Character: Gristle McThornbody
+
+- type: entity
+  parent: ClothingNeckDogTags
+  id: &id PersonalItemGristleMcThornbodyDogtags
+  name: Gristle's dog tags
+  description: A pair of weathered UNMC dog tags on a pelline chain.
+  suffix: PersonalItem
+  components:
+  - type: DetailExaminable
+    content: Two lightly dented tags dangle from a pelline ball chain with an added rubber ring to keep them from rattling. The name 'McThornbody, G.S.' can be read, punched into steel.
+  - type: Tag
+    tags:
+    - Recyclable
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Gristle McThornbody

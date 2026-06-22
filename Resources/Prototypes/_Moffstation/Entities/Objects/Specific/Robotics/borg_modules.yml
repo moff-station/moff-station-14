@@ -250,6 +250,31 @@
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: generic-treatment-module }
 
+- type: entity
+  id: BorgModuleInvestigation
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: investigation cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - sprite: _Moffstation/Objects/Specific/Robotics/borgmodule.rsi
+      state: icon-investigation
+  - type: ItemBorgModule
+    hands:
+    - item: ForensicScanner
+    - item: LogProbe
+    - item: HandLabeler
+    - item: TapeRecorder
+    - hand:
+        emptyRepresentative: CassetteTape
+        emptyLabel: borg-slot-cassette-empty
+        whitelist:
+          components:
+          - FitsInTapeRecorder
+  - type: BorgModuleIcon
+    icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: investigation-module }
+
 # Science Modules
 - type: entity
   id: BorgModuleAdvancedAnomaly
@@ -295,7 +320,7 @@
   - type: BorgModuleIcon
     icon: { sprite: _Moffstation/Interface/Actions/actions_borg.rsi, state: pirate-module }
 
-# Cargo Modules 
+# Cargo Modules
 - type: entity
   id: BorgModuleWildlifeControl
   parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
@@ -327,7 +352,7 @@
   parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
   id: BorgModuleAdvancedTraversal
   name: advanced traversal cyborg module
-  description: NT finally funded the "cyborg jetpack" initiative after locating a deadly planet filled with diamonds. This module is the result of that initiative, providing the cyborg with a grappling hook, jetpack, and integrated navigation electronics. 
+  description: NT finally funded the "cyborg jetpack" initiative after locating a deadly planet filled with diamonds. This module is the result of that initiative, providing the cyborg with a grappling hook, jetpack, and integrated navigation electronics.
   components:
   - type: Sprite
     layers:

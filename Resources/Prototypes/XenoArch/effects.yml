@@ -306,7 +306,9 @@
           Blunt: 4
       soundHit:
         path: /Audio/Weapons/bladeslice.ogg
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
 
 - type: entity
   id: XenoArtifactGenerateEnergy
@@ -594,6 +596,16 @@
   description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEThrowThingsAround
+  # Moffstation - Start - Shader Effect
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: RandomSpawner
+      deleteSpawnerAfterSpawn: false
+      prototypes:
+      - EffectShockwaveSonicBoom
+  # Moffstation - End
 
 - type: entity
   id: XenoArtifactColdWave

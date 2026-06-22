@@ -1,121 +1,50 @@
 # General
-
 - type: loadout
   id: EyePatch
-  groupBy: "eyepatchNormal"
+  groupBy: "standard eyewear"
   equipment:
     eyes: ClothingEyesEyepatch
 
+# Modular Eyewear
 - type: loadout
-  id: EyePatchFlipped
-  groupBy: "eyepatchNormal"
+  id: ModularHudGlasses
+  groupBy: "modular eyewear"
   equipment:
-    eyes: ClothingEyesEyepatchFlipped
-
-# Command
-
-- type: loadout
-  id: AdminGlasses
-  nameOverride: "moff-loadout-admin-sunglasses"
-  equipment:
-    eyes: ClothingEyesGlassesCommand
+    eyes: ClothingEyesModularHudGlasses
 
 - type: loadout
-  id: AdminHud
-  nameOverride: "moff-loadout-admin-hud"
+  id: ModularHudJamjars
+  groupBy: "modular eyewear"
   equipment:
-    eyes: ClothingEyesHudCommand
-
-# Security
+    eyes: ClothingEyesModularHudJamjars
 
 - type: loadout
-  id: NoirGlasses
-  nameOverride: "moff-loadout-noir-sunglasses"
+  id: ModularHudCheapSunglasses
+  groupBy: "modular eyewear"
   equipment:
-    eyes: ClothingEyesGlassesNoir
+    eyes: ClothingEyesModularHudCheapSunglasses
 
 - type: loadout
-  id: SecurityGlasses
-  nameOverride: "moff-loadout-security-sunglasses"
+  id: ModularHudSunglasses
+  groupBy: "modular eyewear"
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesModularHudSunglasses
 
 - type: loadout
-  id: SecurityHud
-  nameOverride: "moff-loadout-security-hud"
+  id: ModularHudGoggles
+  groupBy: "modular eyewear"
   equipment:
-    eyes: ClothingEyesHudSecurity
+    eyes: ClothingEyesModularHudGoggles
 
 - type: loadout
-  id: SecurityEyePatchHud
-  nameOverride: "moff-loadout-security-patch"
+  id: ModularHudVisor
+  groupBy: "modular eyewear"
   equipment:
-    eyes: ClothingEyesEyepatchHudSecurity
-
-# Cargo
-
-# Engineering
+    eyes: ClothingEyesModularHudVisor
 
 - type: loadout
-  id: EngineeringGlasses
-  nameOverride: "moff-loadout-engineering-glasses"
+  id: ModularHudPatch
+  groupBy: "modular eyewear"
   equipment:
-    eyes: ClothingEyesGlassesMesonSunglasses
+    eyes: ClothingEyesModularHudPatch
 
-- type: loadout
-  id: EngineeringGoggles
-  nameOverride: "moff-loadout-engineering-goggles"
-  equipment:
-    eyes: ClothingEyesGlassesMeson
-
-# Medical
-
-- type: loadout
-  id: ChemistryGoggles
-  equipment:
-    eyes: ClothingEyesGlassesChemical
-
-- type: loadout
-  id: MedicalHud
-  equipment:
-    eyes: ClothingEyesHudMedical
-
-- type: loadout
-  id: MedicalGlasses
-  equipment:
-    eyes: ClothingEyesGlassesMedSunglasses
-
-- type: loadout
-  id: MedicalEyePatchHud
-  groupBy: "medEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudMedical
-
-# Science
-
-- type: loadout
-  id: RoboticsHud
-  nameOverride: "moff-loadout-diagnostic-hud"
-  equipment:
-    eyes: ClothingEyesHudDiagnostic
-
-- type: loadout
-  id: RoboticsEyePatchHud
-  nameOverride: "moff-loadout-diagnostic-patch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudDiag
-
-# Service
-
-- type: loadout
-  id: BeerGlasses
-  nameOverride: "moff-loadout-beer-hud"
-  equipment:
-    eyes: ClothingEyesHudBeer
-
-- type: loadout
-  id: BeerEyePatchHud
-  nameOverride: "moff-loadout-beer-patch"
-  groupBy: "beerEyepatch"
-  equipment:
-    eyes: ClothingEyesEyepatchHudBeer

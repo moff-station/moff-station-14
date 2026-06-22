@@ -228,7 +228,7 @@
 
 # QM
 - type: entity
-  parent: [ClothingUniformBase, BaseCommandContraband]
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase, BaseCommandContraband]
   id: ClothingUniformJumpsuitQMVista
   name: quartermaster's vista suit
   description: An outfit for a quartermaster who isn't afraid to put in the miles themselves for some sweet spessos (cargo shorts included).
@@ -592,6 +592,17 @@
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
         color: *color-cargo
+#Service
+
+#Bartender
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBartenderRed
+  name: saloon owner's uniform
+  description: A nice and tidy uniform. Ideal for post-duel drinks.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/bartender_red.rsi
 
 #Janitor
 - type: entity

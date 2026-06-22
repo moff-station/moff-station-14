@@ -30,11 +30,10 @@ namespace Content.Client.Atmos.UI
             var atmosSystem = EntMan.System<AtmosphereSystem>();
 
             _window = this.CreateWindow<GasFilterWindow>();
-            _window.PopulateGasList(atmosSystem.Gases);
 
             _window.ToggleStatusButtonPressed += OnToggleStatusButtonPressed;
             _window.FilterTransferRateChanged += OnFilterTransferRatePressed;
-            _window.SelectGasPressed += OnSelectGasPressed;
+            _window.FilterGasToggled += OnToggleGasPressed; // Moffstation - filter multiple gases
         }
 
         private void OnToggleStatusButtonPressed(bool status)
@@ -49,23 +48,15 @@ namespace Content.Client.Atmos.UI
             SendMessage(new GasFilterChangeRateMessage(rate));
         }
 
-        private void OnSelectGasPressed()
+        // Moffstation - Begin (filter multiple gases)
+        private void OnToggleGasPressed(Gas gas, bool filtered)
         {
             if (_window is null)
                 return;
 
-            if (_window.SelectedGas is null)
-            {
-                SendMessage(new GasFilterSelectGasMessage(null));
-            }
-            else
-            {
-                if (!Enum.TryParse<Gas>(_window.SelectedGas, out var gas))
-                    return;
-
-                SendMessage(new GasFilterSelectGasMessage(gas));
-            }
+            SendMessage(new GasFilterToggleGasMessage(gas, filtered));
         }
+        // Moffstation - End
 
         /// <summary>
         /// Update the UI state based on server-sent info
@@ -80,17 +71,7 @@ namespace Content.Client.Atmos.UI
             _window.Title = (cast.FilterLabel);
             _window.SetFilterStatus(cast.Enabled);
             _window.SetTransferRate(cast.TransferRate);
-            if (cast.FilteredGas is not null)
-            {
-                var atmos = EntMan.System<AtmosphereSystem>();
-                var gas = atmos.GetGas((Gas) cast.FilteredGas);
-                var gasName = Loc.GetString(gas.Name);
-                _window.SetGasFiltered(gas.ID, gasName);
-            }
-            else
-            {
-                _window.SetGasFiltered(null, Loc.GetString("comp-gas-filter-ui-filter-gas-none"));
-            }
+            _window.SetFilteredGases(cast.FilteredGases); // Moffstation - filter multiple gases
         }
 
         protected override void Dispose(bool disposing)

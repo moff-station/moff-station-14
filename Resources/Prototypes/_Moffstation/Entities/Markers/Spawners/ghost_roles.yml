@@ -10,3 +10,18 @@
     rules: ghost-role-information-silicon-rules
     raffle:
       settings: default
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SyndicateFootsoldierGhostRoleSpawn
+  name: syndicate footsoldier role spawn point
+  components:
+  - type: GhostRole
+    name: ghost-role-information-syndicate-solider-name
+    description: ghost-role-information-syndicate-solider-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleSyndieSoldier
+    raffle:
+      settings: default

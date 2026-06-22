@@ -3,21 +3,32 @@
   startingInventory:
     ClothingHeadHatBowlerHat: 2
     ClothingHeadHatTophat: 2
-    ClothingEyesHudBeer: 2
-    ClothingEyesEyepatchHudBeer: 2
+    # Moffstation - Start - Modular Eyewear
+    # ClothingEyesHudBeer: 2
+    # ClothingEyesEyepatchHudBeer: 2
+    ClothingEyesModularHudCheapSunglasses: 2
+    ClothingEyesModularHudPatch: 2
+    HudModuleShowThirstIcons: 2
+    HudModuleSolutionScanner: 2
+    # Moffstation - End
     ClothingHeadsetService: 2
     ClothingOuterApronBar: 2
     ClothingOuterWinterBar: 2
     ClothingUniformJumpsuitJacketMonkey: 2
     ClothingUniformJumpsuitBartender: 2
     ClothingUniformJumpskirtBartender: 2
+    # Moffstation - Start
+    ClothingUniformJumpsuitBartenderRed: 2
+    ClothingUniformJumpskirtBartenderRed: 2
+    # Moffstation - End
     ClothingUniformJumpsuitBartenderPurple: 2
     ClothingShoesColorBlack: 2
     ClothingOuterArmorBasicSlim: 2
     ClothingOuterVest: 2
     ClothingBeltBandolier: 2
-    ClothingEyesGlassesSunglasses: 2
+    # ClothingEyesGlassesSunglasses: 2 # Moffstation - Modular Eyewear
   contrabandInventory:
     ToyFigurineBartender: 1
     ClothingUniformJumpskirtMaidService: 1 # MOFFSTATION - Adds department maid dresses
     ClothingUniformJumpskirtMaid: 1 # MOFFSTATION - Adds department maid dresses
+    ClothingEyesModularHudSunglasses: 1 # Moffstation - Modular Eyewear

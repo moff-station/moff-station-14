@@ -1,0 +1,24 @@
+﻿# Player: Leikner
+# Character: Buck Justice
+
+- type: entity
+  parent: ClothingHeadHatSecurityTrooper
+  id: &id PersonalItemBuckJusticeHat
+  name: Buck's hat
+  suffix: PersonalItem
+  components:
+  - type: DetailExaminable
+    content: Appearing outwardly as a standard issue for Nanotrasen officers, this hat hides a sewn label on the inside embroidered simply with "B. Justice".
+  - type: Tag
+    tags:
+    - ClothMade
+
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Buck Justice

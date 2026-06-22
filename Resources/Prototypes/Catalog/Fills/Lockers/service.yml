@@ -15,7 +15,11 @@
     - id: ClothingOuterArmorBasicSlim
     - id: WeaponShotgunDoubleBarreledRubber
     - id: DrinkShaker
-    - id: ClothingEyesHudBeer
+    # Moffstation - Start - Modular Eyewear
+    # - id: ClothingEyesHudBeer
+    - id: HudModuleShowThirstIcons
+    - id: HudModuleSolutionScanner
+    # Moffstation - End
     - id: HandLabeler
     - id: DrinkBeerBottleFull
       amount: !type:BinomialNumberSelector

@@ -33,7 +33,7 @@ job-name-security-officer-hall-monitor = Hall Monitor
 job-name-cargo-technician-courier = Courier
 job-name-cargo-technician-logistics-associate = Logistics Associate
 job-name-cargo-technician-senior-courier = Senior Courier
-job-name-cargo-technician-requisitions-clerk = Requisitions Clerk
+job-name-cargo-technician-freight-pilot = Freight Pilot
 # Salvage Specialist
 job-name-salvage-specialist-astrominer = Astrominer
 job-name-salvage-specialist-excavator = Excavator
