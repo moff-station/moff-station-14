@@ -13,6 +13,13 @@ public abstract partial class EntitySelector
     public List<EntitySelector> SubSelectors = new();
 
     /// <summary>
+    /// Optional grid-local area that an entity must be inside to match this selector.
+    /// When null, this selector can match entities anywhere on the grid.
+    /// </summary>
+    [DataField]
+    public Box2? Bounds;
+
+    /// <summary>
     /// One-time initialization of an entity selector.
     /// Recursively initializes all sub-selectors.
     /// </summary>
@@ -40,6 +47,19 @@ public abstract partial class EntitySelector
     {
         if (!Initialized)
             Initialize();
+
+        // If bounds were configured for this selector, require the entity to have a transform so we can
+        // compare its current grid-local position against those bounds.
+        if (Bounds != null)
+        {
+            if (!EntityManager.TryGetComponent<TransformComponent>(entity, out var transform))
+                return false;
+
+            // Map modifications iterate over entities parented to the target grid, so LocalPosition is the
+            // position within that grid. Only entities inside the configured bounds are eligible to match.
+            if (!Bounds.Value.Contains(transform.LocalPosition))
+                return false;
+        }
 
         if (SubSelectors.Count == 0)
             return true;
