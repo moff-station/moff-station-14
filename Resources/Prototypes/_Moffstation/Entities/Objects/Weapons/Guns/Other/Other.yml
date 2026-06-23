@@ -6,12 +6,12 @@
   description: I am become Death, the destroyer of worlds.
   components:
   - type: Sprite
-    sprite: _Moffstation/Objects/Weapons/Guns/Yes/gungler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Other/gungler.rsi
     layers:
     - state: icon
   - type: Item
     size: Ginormous
-    sprite: _Moffstation/Objects/Weapons/Guns/Yes/gungler.rsi
+    sprite: _Moffstation/Objects/Weapons/Guns/Other/gungler.rsi
   - type: MultiHandedItem
   - type: AmmoCounter
   - type: ChamberMagazineAmmoProvider

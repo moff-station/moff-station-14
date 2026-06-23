@@ -1,0 +1,132 @@
+# Infinite Maints
+- type: biomeTemplate
+  id: Maints
+  layers:
+    # Loot
+    - !type:BiomeEntityLayer
+      threshold: 0.5
+      noise:
+        seed: 3
+        noiseType: OpenSimplex2
+        fractalType: PingPong
+        frequency: 0.5
+      allowedTiles:
+        - Plating
+      entities:
+        - ClosetMaintenanceFilledRandom
+        - MaintenanceFluffSpawner
+        - MaintenanceToolSpawner
+        - MaintenanceWeaponSpawner
+    # Fluff objects
+    - !type:BiomeEntityLayer
+      threshold: 0.7
+      noise:
+        seed: 2
+        noiseType: OpenSimplex2
+        fractalType: Ridged
+        frequency: 0.2
+      allowedTiles:
+        - Plating
+      entities:
+        - Table
+        - Rack
+        - ChairOfficeDark
+    # Survival stuff
+    - !type:BiomeEntityLayer
+      threshold: 0.7
+      noise:
+        seed: 3
+        noiseType: OpenSimplex2
+        fractalType: PingPong
+        frequency: 0.2
+      allowedTiles:
+        - Plating
+      entities:
+        - WaterTankFull
+        - WeldingFuelTankFull
+        - PortableGeneratorJrPacman
+        - AirCanister
+        - NitrogenCanister
+        - OxygenCanister
+        - ClosetTool
+        - ClosetEmergency
+        - ClosetEmergencyN2
+        - ClosetFire
+    # Catwalk
+    - !type:BiomeEntityLayer
+      threshold: 0.9
+      invert: true
+      noise:
+        seed: 0
+        frequency: 0.1
+        noiseType: Cellular
+        fractalType: None
+        cellularDistanceFunction: Manhattan
+        cellularReturnType: Distance2Sub
+        cellularJitter: 0.25
+      allowedTiles:
+        - Plating
+      entities:
+        - Catwalk
+    - !type:BiomeTileLayer
+      threshold: -1.0
+      tile: Plating
+    # PlatingRCD - marking wherever walls should go
+    - !type:BiomeTileLayer
+      threshold: 0.9
+      invert: true
+      noise:
+        seed: 1
+        frequency: 0.1
+        noiseType: Cellular
+        fractalType: None
+        cellularDistanceFunction: Manhattan
+        cellularReturnType: Distance2Sub
+        cellularJitter: 0.5
+      tile: PlatingRCD
+    # Corridors
+    - !type:BiomeTileLayer
+      threshold: 0.95
+      noise:
+        seed: 3
+        noiseType: OpenSimplex2
+        frequency: 0.003
+        lacunarity: 1.50
+        fractalType: Ridged
+        octaves: 1
+      tile: PlatingRCD
+    - !type:BiomeTileLayer
+      threshold: 0.975
+      noise:
+        seed: 3
+        noiseType: OpenSimplex2
+        frequency: 0.003
+        lacunarity: 1.50
+        fractalType: Ridged
+        octaves: 1
+      tile: FloorSteel
+    # Fill the walls in
+    - !type:BiomeEntityLayer
+      threshold: -1.0
+      allowedTiles:
+        - PlatingRCD
+      entities:
+        - WallSolid
+    # Sprinkle maint doors about
+    - !type:BiomeEntityLayer
+      threshold: 0.7
+      invert: true
+      noise:
+        noiseType: OpenSimplex2
+        frequency: 10
+      allowedTiles:
+        - PlatingRCD
+      entities:
+        - AirlockMaintLocked
+
+- type: biomeMarkerLayer
+  id: MaintRooms
+  prototype: MaintsRoomMarker
+  minGroupSize: 1
+  maxGroupSize: 1
+  maxCount: 5
