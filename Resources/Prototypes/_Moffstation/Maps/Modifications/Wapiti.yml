@@ -1,0 +1,46 @@
+- type: mapModification
+  id: WapitiModificationsLaundry
+  applyOn:
+  - Wapiti
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: Bed
+    bounds: "3, -23, 6, -25"
+  - !type:EntityPrototypeSelector
+    prototype: CarpetGreen
+    bounds: "3, -23, 6, -25"
+  - !type:EntityPrototypeSelector
+    prototype: DresserFilled
+    bounds: "3, -23, 6, -25"
+  - !type:EntityPrototypeSelector
+    prototype: SignRedOne
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 5.5, -26.5
+  - prototype: WashingMachine
+    position: 3.5, -26.5
+  - prototype: SignLaundromat
+    position: 3.5, -25.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 3.5, -24.5
+    # Additional Visual Improvements
+  - prototype: Stool
+    position: 3.5, -25.5
+    rotation: 90
+  - prototype: Stool
+    position: 5.5, -25.5
+    rotation: 270
+  - prototype: Ashtray
+    position: 3.36, -23.22
+  - prototype: RandomSoakedCigarette
+    position: 3.67, -23.2 # 6 7
+  replacements:
+  - from:
+    - !type:EntityPrototypeSelector
+      prototype: SignRedTwo
+    newPrototype: SignRedOne
+  - from:
+    - !type:EntityPrototypeSelector
+      prototype: SignRedThree
+    newPrototype: SignRedTwo

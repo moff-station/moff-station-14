@@ -1,0 +1,49 @@
+- type: mapModification
+  id: PlasmaModificationsLaundry
+  applyOn:
+  - Plasma
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: CrateGenericSteel
+    bounds: "-65, -60, -60, -64"
+  - !type:EntityPrototypeSelector
+    prototype: HospitalCurtainsOpen
+    bounds: "-65, -60, -60, -64"
+  - !type:EntityPrototypeSelector
+    prototype: FloorDrain
+    bounds: "-65, -60, -60, -64"
+  - !type:EntityPrototypeSelector
+    prototype: Airlock
+    bounds: "-65, -60, -60, -64"
+  - !type:EntityPrototypeSelector
+    prototype: Mirror
+    bounds: "-65, -60, -60, -64"
+  - !type:EntityPrototypeSelector
+    prototype: Sink
+    bounds: "-65, -60, -60, -64"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -61.5, -60.5
+  - prototype: WashingMachine
+    position: -60.5, -60.5
+  - prototype: SignLaundromat
+    position: -60, -64
+  - prototype: DefaultStationBeaconLaundromat
+    position: -61.5, -61.5
+    # Additional Visual Improvements
+  - prototype: Chair
+    position: -61.5, -62.5
+    rotation: 90
+  - prototype: Table
+    position: -60.5, -62.5
+  - prototype: DrinkHotCoffee
+    position: -60.6, -62.55
+  - prototype: DrinkHotCoffee
+    position: -60.3, -62.33
+  - prototype: HospitalCurtainsOpen
+    position: -63.5, -63.5
+  - prototype: HospitalCurtainsOpen
+    position: -64.5, -63.5
+  - prototype: FloorDrain
+    position: -64.5, -62.5
