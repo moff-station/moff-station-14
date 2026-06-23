@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -7,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Moffstation.Discord.GuildEvent;
 
@@ -60,6 +63,11 @@ public sealed partial class DiscordGuildEventManager : IPostInjectInit
                     return;
                 _activeEventId = null;
             }
+
+            // Recover from lost state (e.g. server restart mid-round): claim an existing active event.
+            _activeEventId = await FindActiveEventIdAsync(name);
+            if (_activeEventId != null)
+                return;
 
             await CreateAndActivateEventAsync(name, description, location);
 
@@ -160,6 +168,15 @@ public sealed partial class DiscordGuildEventManager : IPostInjectInit
             return null;
         var ev = await response.Content.ReadFromJsonAsync<ScheduledEventResponse>(JsonOptions);
         return ev?.Status == 2 ? ev : null;
+    }
+
+    private async Task<ulong?> FindActiveEventIdAsync(string name)
+    {
+        var response = await _http.SendAsync(BuildRequest(HttpMethod.Get, GetEventsUrl()));
+        if (!response.IsSuccessStatusCode)
+            return null;
+        var events = await response.Content.ReadFromJsonAsync<List<ScheduledEventResponse>>(JsonOptions);
+        return events?.FirstOrDefault(e => e.Status == 2 && string.Equals(e.Name, name, StringComparison.OrdinalIgnoreCase))?.Id;
     }
 }
 
