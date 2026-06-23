@@ -1,3 +1,4 @@
+# Moff change start - rename from Blood Bro to Pact-Binder
 blood-brothers-round-end-agent-name = pact-binder
 
 objective-issuer-blood-brother = [color=mediumvioletred]The Brotherhood[/color]
@@ -28,3 +29,4 @@ blood-brother-convert-failed-preference = {CAPITALIZE(THE($converted))}'s mind i
 
 blood-brother-convert-convertible = {CAPITALIZE(THE($converted))} is convertible
 blood-brother-conversion-popup = {CAPITALIZE(THE($converter))} grabs {THE($converted)} firmly and digs deep symbols into their arms.
+# Moff change end - rename from Blood Bro to Pact-Binder
