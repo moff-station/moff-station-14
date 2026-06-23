@@ -39,10 +39,7 @@ public sealed partial class DiscordGuildEventSystem : EntitySystem
         if (!_discordEventEnabled)
             return;
 
-        if (args.Paused)
-            EndActiveEvent();
-        else
-            EnsureEventActive();
+        _ = args.Paused ? EndActiveEvent() : EnsureEventActive();
     }
 
     private void OnRunLevelChanged(GameRunLevelChangedEvent ev)
@@ -50,25 +47,20 @@ public sealed partial class DiscordGuildEventSystem : EntitySystem
         if (!_discordEventEnabled)
             return;
 
-        switch (ev.New)
+        _ = ev.New switch
         {
-            case GameRunLevel.InRound:
-            case GameRunLevel.PostRound:
-            case GameRunLevel.PreRoundLobby when !_gameTicker.Paused:
-                EnsureEventActive();
-                break;
-            case GameRunLevel.PreRoundLobby when _gameTicker.Paused:
-                EndActiveEvent();
-                break;
-        }
+            GameRunLevel.InRound or GameRunLevel.PostRound => EnsureEventActive(),
+            GameRunLevel.PreRoundLobby when !_gameTicker.Paused => EnsureEventActive(),
+            _ => EndActiveEvent(),
+        };
     }
 
-    private async void EnsureEventActive()
+    private async Task EnsureEventActive()
     {
         await _eventManager.EnsureEventActiveAsync(_currentEventName, _currentEventDescription, _currentEventLocation);
     }
 
-    private async void EndActiveEvent()
+    private async Task EndActiveEvent()
     {
         await _eventManager.EndActiveEventAsync();
     }

@@ -50,7 +50,8 @@ public sealed partial class DiscordGuildEventManager : IPostInjectInit
     {
         if (!IsConfigured())
             return;
-        await _lock.WaitAsync();
+
+        using var _ = await _lock.WaitGuardAsync();
         try
         {
             if (_activeEventId != null)
@@ -69,15 +70,11 @@ public sealed partial class DiscordGuildEventManager : IPostInjectInit
         {
             _sawmill.Error($"Error ensuring Discord round event active:\n{e}");
         }
-        finally
-        {
-            _lock.Release();
-        }
     }
 
     public async Task EndActiveEventAsync()
     {
-        await _lock.WaitAsync();
+        using var _ = await _lock.WaitGuardAsync();
         try
         {
             if (_activeEventId == null)
@@ -87,10 +84,6 @@ public sealed partial class DiscordGuildEventManager : IPostInjectInit
         catch (Exception e)
         {
             _sawmill.Error($"Error ending Discord guild scheduled event:\n{e}");
-        }
-        finally
-        {
-            _lock.Release();
         }
     }
 
