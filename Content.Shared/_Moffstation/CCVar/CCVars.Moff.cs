@@ -117,13 +117,13 @@ public sealed class MoffCCVars
     /// The title of the discord event
     /// </summary>
     public static readonly CVarDef<string> DiscordRoundEventName =
-        CVarDef.Create("moff.discord_round_event_name", "Moffstation!", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("moff.discord_round_event_name", "Moffstation!", CVar.SERVERONLY);
 
     /// <summary>
     /// The description of the discord event (visible when clicked on)
     /// </summary>
     public static readonly CVarDef<string> DiscordRoundEventDescription =
-        CVarDef.Create("moff.discord_round_event_description", "Moff is up!\nFair warning: the end time is not accurate.", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("moff.discord_round_event_description", "Moff is up!\nFair warning: the end time is not accurate.", CVar.SERVERONLY);
 
     /// <summary>
     /// The location of the discord event (visible under the title)
