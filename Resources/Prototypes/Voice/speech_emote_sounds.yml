@@ -248,6 +248,12 @@
       path: /Audio/Effects/Gasp/vox_gasp.ogg
     DefaultDeathgasp:
       path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    Hiss:
+      path: /Audio/_Moffstation/Voice/Vox/vox_hiss.ogg
+    Caw:
+      path: /Audio/_Moffstation/Voice/Vox/vox_caw.ogg
+    Crow:
+      path: /Audio/_Moffstation/Voice/Vox/vox_cawf.ogg
   params:
     variation: 0.125
     # TODO: We need vox sounds for the other emotes
@@ -273,12 +279,6 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
-    Hiss:
-      path: /Audio/_Moffstation/Voice/Vox/vox_hiss.ogg
-    Caw:
-      path: /Audio/_Moffstation/Voice/Vox/vox_caw.ogg
-    Crow:
-      path: /Audio/_Moffstation/Voice/Vox/vox_cawf.ogg
   params:
     variation: 0.125
 
