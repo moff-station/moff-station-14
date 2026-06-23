@@ -39,3 +39,12 @@
   accentColor: "#5e4daf"
   priority: 100
   default: true
+
+- type: antagCategory
+  id: Brotherhood
+  name: antag-catagory-brotherhood-name
+  description: antag-catagory-brotherhood-desc
+  accentColor: "#651C32"
+  antags:
+  - Pact-Binder
+  - Pact-Bound
