@@ -1,2 +1,2 @@
-role-subtype-blood-brother = Blood Bound
+role-subtype-blood-brother = Blood Brother
 role-subtype-conspirator = Conspirator
