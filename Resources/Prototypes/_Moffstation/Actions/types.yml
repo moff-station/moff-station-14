@@ -5,10 +5,10 @@
   description: Concentrate and grow into a slimeperson.
   components:
   - type: Action
-    useDelay: 600
+    useDelay: 10
     startDelayed: true
     icon:
-      sprite: _Moffstation/Mobs/Aliens/slimes.rsi
+      sprite: Mobs/Aliens/slimes.rsi
       state: green_adult_slime
   - type: InstantAction
     event: !type:ReformEvent {}
