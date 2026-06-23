@@ -5,19 +5,19 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: MirrorModern
-    bounds: "30, -67 32, -69"
+    bounds: "30, -67, 32, -69"
   - !type:EntityPrototypeSelector
     prototype: Sink
-    bounds: "30, -67 32, -69"
+    bounds: "30, -67, 32, -69"
   - !type:EntityPrototypeSelector
     prototype: RandomSoakedCigarette
-    bounds: "30, -67 32, -69"
+    bounds: "30, -67, 32, -69"
   - !type:EntityPrototypeSelector
     prototype: MopItem
-    bounds: "30, -67 32, -69"
+    bounds: "30, -67, 32, -69"
   - !type:EntityPrototypeSelector
     prototype: MopBucketFull
-    bounds: "30, -67 32, -69"
+    bounds: "30, -67, 32, -69"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine
@@ -30,6 +30,6 @@
     position: 30.5, -69.5
     # Additional Visual Improvements
   - prototype: MopItem
-    position: 30.5, -69.5
+    position: 31.5, -70.5
   - prototype: MopBucketFull
-    position: 30.5, -69.5
+    position: 31.5, -70.5
