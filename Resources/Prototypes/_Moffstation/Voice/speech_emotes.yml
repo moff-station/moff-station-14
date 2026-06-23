@@ -1,3 +1,4 @@
+#resomi
 - type: emote
   id: Trill
   name: chat-emote-name-trill
@@ -70,6 +71,7 @@
   - squawking
   - squawks
 
+#vocal Emotes
 - type: emote
   id: Hiss
   name: chat-emote-name-hiss
@@ -87,3 +89,42 @@
   - hiss
   - hisses
   - hissing
+
+#vox
+- type: emote
+  id: Caw
+  name: chat-emote-name-caw
+  category: Vocal
+  icon: _Moffstation/Interface/Emotes/caw.png
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: [chat-emote-msg-caw]
+  chatTriggers:
+   - caw
+   - caws
+   - cawed
+   - cawing
+
+- type: emote
+  id: Crow
+  name: chat-emote-name-crow
+  category: Vocal
+  icon: Interface/Emotes/vocal.png
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: [chat-emote-msg-crow]
+  chatTriggers:
+   - crow
+   - crows
+   - crowed
+   - crowing
