@@ -5223,6 +5223,13 @@ Entries:
   id: 1335
   time: '2026-05-18T19:46:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/1335
+- author: DuckManZach
+  changes:
+  - message: 'Added a new playable species: Thaven!'
+    type: add
+  id: 1336
+  time: '2026-06-21T20:00:17.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1336
 - author: Tortosaur
   changes: []
   id: 1337
@@ -6299,6 +6306,14 @@ Entries:
   id: 1517
   time: '2026-06-11T00:10:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1517
+- author: Laggy
+  changes:
+  - message: Syndicate vent soldiers have had their loadouts adjusted, and only spawn
+      when taken as a ghostrole.
+    type: tweak
+  id: 1520
+  time: '2026-06-21T02:24:30.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1520
 - author: DuckManZach
   changes:
   - message: Interaction particles no longer play when opening the strip menu
@@ -6335,6 +6350,13 @@ Entries:
   id: 1526
   time: '2026-06-16T17:42:45.000'
   url: https://github.com/moff-station/moff-station-14/pull/1526
+- author: Dave
+  changes:
+  - message: Adds Grays as a new roundstart species!
+    type: add
+  id: 1527
+  time: '2026-06-21T00:47:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1527
 - author: OrbitSystem07
   changes:
   - message: Shells now have two module slots, and start with a tool module
@@ -6346,6 +6368,18 @@ Entries:
   id: 1529
   time: '2026-06-15T05:10:00.000'
   url: https://github.com/moff-station/moff-station-14/pull/1529
+- author: DuckManZach
+  changes:
+  - message: Stowaways actually spawn again!
+    type: fix
+  - message: Stowaways can no longer spawn in space or in places with no atmosphere.
+    type: fix
+  - message: Stowaways can only spawn on the main part of the station, no chilling
+      on ATS
+    type: fix
+  id: 1530
+  time: '2026-06-22T19:30:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1530
 - author: KamTheSythe
   changes:
   - message: Plasma is now pink on the gas analyzer.
@@ -6374,5 +6408,87 @@ Entries:
   id: 1536
   time: '2026-06-17T20:31:49.000'
   url: https://github.com/moff-station/moff-station-14/pull/1536
+- author: Dave
+  changes:
+  - message: new material sprites!
+    type: add
+  id: 1537
+  time: '2026-06-21T00:47:47.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1537
+- author: OrbitSystem07
+  changes:
+  - message: Borgs brains and Ais no longer get automatically destroyed in large enough
+      explosions (such as martyr modules)
+    type: fix
+  id: 1541
+  time: '2026-06-18T17:21:27.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1541
+- author: OrbitSystem07
+  changes:
+  - message: Test subjects can no longer leave genpop whenever they wish
+    type: fix
+  id: 1542
+  time: '2026-06-21T01:13:14.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1542
+- author: Nyxilath
+  changes:
+  - message: Xenoarch throw effect now features a shockwave effect.
+    type: tweak
+  id: 1549
+  time: '2026-06-21T00:22:52.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1549
+- author: YoutubePoopFuneral
+  changes:
+  - message: Milk Steak.
+    type: add
+  id: 1550
+  time: '2026-06-21T18:04:49.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1550
+- author: Nyxilath
+  changes:
+  - message: Avali Ninjas now spawn with an oxygen tank.
+    type: fix
+  id: 1552
+  time: '2026-06-23T16:34:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1552
+- author: Nyxilath
+  changes:
+  - message: Personal item for character 'Delirium'
+    type: add
+  id: 1555
+  time: '2026-06-23T02:11:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1555
+- author: Dave
+  changes:
+  - message: gray suit storage displacements fix
+    type: fix
+  - message: new gar glasses sprites
+    type: add
+  - message: gray's guidebook entry
+    type: tweak
+  id: 1557
+  time: '2026-06-23T02:11:03.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1557
+- author: DuckManZach
+  changes:
+  - message: Added an automatic discord event for when we have uptime!
+    type: add
+  id: 1560
+  time: '2026-06-23T19:34:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1560
+- author: no player facing change, but holy shit thanks Zero
+  changes: []
+  id: 1562
+  time: '2026-06-23T18:42:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1562
+- author: Nyxilath
+  changes:
+  - message: Gray accents now respect the accentless trait.
+    type: fix
+  - message: Gray accent is now selectable as a trait.
+    type: add
+  id: 1564
+  time: '2026-06-23T18:17:43.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1564
 Name: Mofflog
 Order: -2
