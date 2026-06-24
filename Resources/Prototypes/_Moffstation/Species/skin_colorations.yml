@@ -3,23 +3,23 @@
   strategy: !type:HueNodeClampedHsvColoration
     nodes:
     - hue: 0 # From red to orange, slowly increase saturation. (0.2 -> 0.3)
-      saturation: [ 0, 0.2 ]
+      saturation: [ 0, 0.25 ]
       value: [0.7, 1]
     - hue: 0.05 # From orange to yellow, slowly decrease saturation. (0.3 -> 0.2)
-      saturation: [ 0, 0.3 ]
+      saturation: [ 0, 0.4 ]
       value: [0.7, 1]
     - hue: 0.1666 # From yellow to green, keep it the same.
-      saturation: [ 0, 0.2 ]
+      saturation: [ 0, 0.25 ]
       value: [0.7, 1]
     - hue: 0.33 # From green to blue slowly increase saturation. (0.2 -> 0.3)
-      saturation: [ 0, 0.3 ]
+      saturation: [ 0, 0.4 ]
       value: [0.7, 1]
     - hue: 0.67 # From blue to pink keep it the same.
-      saturation: [ 0, 0.3 ]
+      saturation: [ 0, 0.4 ]
       value: [0.7, 1]
     - hue: 0.83 # From pink to red, slowly decrease saturation. (0.3 -> 0.2)
-      saturation: [ 0, 0.2 ]
+      saturation: [ 0, 0.25 ]
       value: [0.7, 1]
     - hue: 1 # Red
-      saturation: [ 0, 0.2 ]
+      saturation: [ 0, 0.25 ]
       value: [0.7, 1]
