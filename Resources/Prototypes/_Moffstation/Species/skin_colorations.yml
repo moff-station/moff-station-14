@@ -1,0 +1,5 @@
+﻿- type: skinColoration
+  id: GraySaturation
+  strategy: !type:ClampedHsvColoration
+    saturation: [0, 0.2]
+    value: [0.7, 1]
