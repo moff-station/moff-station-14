@@ -14,7 +14,7 @@
     - hue: 0.33 # From green to blue slowly increase saturation. (0.25 -> 0.4)
       saturation: [ 0, 0.4 ]
       value: [0.7, 1]
-    - hue: 0.67 # From blue to pink keep it the same.
+    - hue: 0.67 # From blue to pink, keep it the same.
       saturation: [ 0, 0.4 ]
       value: [0.7, 1]
     - hue: 0.83 # From pink to red, slowly decrease saturation. (0.4 -> 0.25)
