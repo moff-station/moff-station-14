@@ -59,7 +59,7 @@ public sealed partial class CargoPackingErrorRule : StationEventSystem<CargoPack
             return;
         }
 
-        var entitiesToSpawn = _entityTable.GetSpawns(spawnTable.Table, RobustRandom.GetRandom());
+        var entitiesToSpawn = _entityTable.GetSpawns(spawnTable.Table, RobustRandom);
         _spawnOnNextOpen.AddEntitiesToSpawnOnFirstOpen(entity, entitiesToSpawn);
 
         ForceEndSelf(rule);

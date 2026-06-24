@@ -126,6 +126,8 @@
     containers:
       borg_brain:
       - AIShellBrain
+      borg_module:
+      - BorgModuleTool
   - type: Sprite
     sprite: _Moffstation/Mobs/Silicon/Chassis/aishells.rsi
     layers:
@@ -175,7 +177,7 @@
     - Service
     - Supply
   - type: BorgChassis
-    maxModules: 1
+    maxModules: 2
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
@@ -190,6 +192,7 @@
       50: Critical
       100: Dead
   - type: Destructible
+    generateOverkillThreshold: false
     thresholds:
     - trigger:
         !type:DamageTrigger
@@ -223,6 +226,13 @@
     - AllAccess
   - type: NameIdentifier
     group: Null
+  - type: AccessReader
+    access: [ [ "Command" ], [ "Research" ] ]
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: ShowJobIcons
+  - type: ShowCrewIcons
 
 - type: entity
   id: PlayerAiShellBattery

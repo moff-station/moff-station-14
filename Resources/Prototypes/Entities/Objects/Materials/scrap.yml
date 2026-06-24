@@ -404,6 +404,7 @@
   description: A buddy! You still in there? Hello? Buddy???
   components:
   - type: Sprite
+    sprite: _Moffstation/Objects/Fun/pai.rsi # Moffstation
     layers:
     - state: junk-pai
   - type: Item
@@ -420,6 +421,7 @@
   description: Wow! What a one-in-a-million find! This would be worth a fortune... if it was in good condition.
   components:
   - type: Sprite
+    sprite: _Moffstation/Objects/Fun/pai.rsi # Moffstation
     layers:
     - state: junk-pai-gold
   - type: Item

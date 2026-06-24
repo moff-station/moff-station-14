@@ -1,10 +1,12 @@
 using System.Linq;
+using Content.Server._DV.Traits;
 using Content.Server.Actions;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body;
 using Content.Server.Inventory;
 using Content.Server.Popups;
 using Content.Server.Traits;
+using Content.Shared._DV.Traits;
 using Content.Shared._Moffstation.Body.Events;
 using Content.Shared._Moffstation.Damage.Events;
 using Content.Shared._Moffstation.Geras;
@@ -37,6 +39,7 @@ using Content.Shared.Temperature.Components;
 using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Moffstation.Geras;
 
@@ -69,6 +72,7 @@ public sealed partial class GerasSystem : EntitySystem
     [Dependency] private SharedStaminaSystem  _stamina = default!;
     [Dependency] private TraitSystem _trait = default!;
     [Dependency] private FlammableSystem _flammable = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private const string GerasIdSlot = "id";
 
@@ -364,7 +368,9 @@ public sealed partial class GerasSystem : EntitySystem
 
         foreach (var traitId in args.Profile.TraitPreferences)
         {
-            _trait.TryApplyTrait(geras, traitId, includeGear: false);
+            if (_prototypeManager.TryIndex(traitId, out var trait) || trait == null)
+                continue;
+            _trait.ApplyTrait(geras, trait);
         }
     }
 
