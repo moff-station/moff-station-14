@@ -63,29 +63,44 @@
       jumpsuit:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Human/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
             state: jumpsuit-female
       head:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
             state: head
       mask:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
             state: mask
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
+            state: feet
     displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
+            state: jumpsuit
       head:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
             state: head
       mask:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
             state: mask
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
+            state: feet
   - type: InitialBody
     organs:
       Torso: OrganReptilianTorso
@@ -198,10 +213,10 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Mobs/Species/Reptilian/parts.rsi
+    sprite: _Moffstation/Mobs/Species/Reptilian/parts.rsi
   - type: VisualOrgan
     data:
-      sprite: Mobs/Species/Reptilian/parts.rsi
+      sprite: _Moffstation/Mobs/Species/Reptilian/parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: Reptilian
