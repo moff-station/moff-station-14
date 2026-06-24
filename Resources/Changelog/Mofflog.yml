@@ -6446,6 +6446,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1550
 - author: Nyxilath
   changes:
+  - message: Avali Ninjas now spawn with an oxygen tank.
+    type: fix
+  id: 1552
+  time: '2026-06-23T16:34:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1552
+- author: Nyxilath
+  changes:
   - message: Personal item for character 'Delirium'
     type: add
   id: 1555
@@ -6462,5 +6469,26 @@ Entries:
   id: 1557
   time: '2026-06-23T02:11:03.000'
   url: https://github.com/moff-station/moff-station-14/pull/1557
+- author: DuckManZach
+  changes:
+  - message: Added an automatic discord event for when we have uptime!
+    type: add
+  id: 1560
+  time: '2026-06-23T19:34:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1560
+- author: no player facing change, but holy shit thanks Zero
+  changes: []
+  id: 1562
+  time: '2026-06-23T18:42:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1562
+- author: Nyxilath
+  changes:
+  - message: Gray accents now respect the accentless trait.
+    type: fix
+  - message: Gray accent is now selectable as a trait.
+    type: add
+  id: 1564
+  time: '2026-06-23T18:17:43.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1564
 Name: Mofflog
 Order: -2

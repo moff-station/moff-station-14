@@ -1,4 +1,6 @@
 using Content.Server._Moffstation.Antag;
+using Content.Server._Moffstation.Discord;
+using Content.Server._Moffstation.Discord.GuildEvent;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -67,6 +69,7 @@ internal static class ServerContentIoC
         deps.Register<UserDbDataManager>();
         deps.Register<ServerInfoManager>();
         deps.Register<DiscordWebhook>();
+        deps.Register<DiscordGuildEventManager>(); // Moffstation - Discord events
         deps.Register<VoteWebhooks>();
         deps.Register<ServerDbEntryManager>();
         deps.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();
