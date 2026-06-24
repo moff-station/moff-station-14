@@ -42,6 +42,10 @@
         type: LatheBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
+      # Moffstation - Begin - Expanded Ai Whitelist
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+      # Moffstation - End
   - type: Transform
     anchored: true
   - type: Pullable
@@ -54,6 +58,12 @@
   - type: PowerState
     idlePowerDraw: 150
     workingPowerDraw: 1000
+  # Moffstation - Begin - Expanded Ai Whitelist
+  - type: StationAiWhitelist
+  - type: Wires
+    boardName: wires-board-name-lathe
+    layoutId: ComputerAi
+  # Moffstation - End
   # Moffstation - Start
   - type: DeviceLinkSink
     ports:
@@ -147,6 +157,7 @@
     - ServiceStatic
     - PowerCellsStatic
     - ElectronicsStatic
+    - ModularHudModulesStatic # Moffstation - Modular Eyewear
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
@@ -208,6 +219,7 @@
     - ChemistryStatic
     - SurgeryStatic
     - ServiceBoardsStaticGoob # Goobstation - Radio Host boards
+    - ScienceModularHudModulesStatic # Moffstation - Modular Eyewear
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -410,6 +422,8 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - SecurityModularHudFramesStatic # Moffstation - Modular Eyewear
+    - SecurityModularHudModulesStatic # Moffstation - Modular Eyewear
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -419,11 +433,6 @@
     - SecurityAmmo
     - SecurityWeapons
     - SecurityDisablers
-    # Moffstation - Start - Modular HUDs
-    - ModularHudFrames
-    - SecurityModularHudFrames
-    - SecurityModularHudModules
-    # Moffstation - End
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic
@@ -501,12 +510,10 @@
     - EmptyMedkitsStatic
     - SurgeryStatic
     - AACTabletStatic # Moffstation - AAC tablet
+    - ModularHudFramesStatic # Moffstation - Modular Eyewear
+    - MedicalModularHudModulesStatic # Moffstation - Modular Eyewear
     dynamicPacks:
     - Chemistry
-    # Moffstation - Start - Modular HUDs
-    - ModularHudFrames
-    - MedicalModularHudModules
-    # Moffstation - End
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
@@ -514,6 +521,7 @@
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Medical]
+  - type: AmbientMusicMarkerMedical
 
 - type: entity
   parent: BaseLathe
@@ -559,6 +567,7 @@
     - MoffstationClothingService
     - MoffstationClothingEngineering
     - MoffstationCostumes
+    - ModularHudFramesStatic
     # Moffstation - End
   - type: EmagLatheRecipes
     emagStaticPacks:

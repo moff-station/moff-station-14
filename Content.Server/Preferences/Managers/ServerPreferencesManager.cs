@@ -3,9 +3,10 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Server._CD.Records;
+using Content.Server._CD.Records; // CD
 using Content.Server.Database;
-using Content.Shared._CD.Records;
+using Content.Shared._CD.Records; // CD
+using Content.Shared._DV.Traits; // DV
 using Content.Shared.Body;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;

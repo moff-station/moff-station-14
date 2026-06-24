@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Content.Server._Moffstation.Antag;
+using Content.Server._Moffstation.Discord.GuildEvent;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -46,6 +47,7 @@ namespace Content.Server.Entry
         private const string ConfigPresetsDirBuild = $"{ConfigPresetsDir}Build/";
 
         [Dependency] private CVarControlManager _cvarCtrl = default!;
+        [Dependency] private DiscordGuildEventManager _discordGuildEventManager = default!; // Moffstation
         [Dependency] private ContentLocalizationManager _loc = default!;
         [Dependency] private ContentNetworkResourceManager _netResMan = default!;
         [Dependency] private DiscordChatLink _discordChatLink = default!;
@@ -216,6 +218,7 @@ namespace Content.Server.Entry
             // We don't care when or how this finishes, just spin the task off into the void.
             _ = _discordLink.Shutdown();
             _discordChatLink.Shutdown();
+            _discordGuildEventManager.Shutdown(); // Moffstation - end Discord guild event on shutdown
         }
 
         private static void LoadConfigPresets(IConfigurationManager cfg, IResourceManager res, ISawmill sawmill)

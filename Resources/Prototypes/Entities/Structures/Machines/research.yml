@@ -45,12 +45,6 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 600
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
         damage: 300
       behaviors:
       - !type:DoActsBehavior
@@ -81,7 +75,7 @@
     range: 5
     enabled: false
     sound:
-      path: /Audio/Ambience/Objects/server_fans.ogg
+      collection: ServerFans
   # Moffstation - Start - Add abstract R&D server parent.
   #     Changes to this section must be carefully considered: if the change should apply to the machine variant, leave
   #     it on this proto. If it should apply to the machine variant AND the blade server variant, comment out the
@@ -128,12 +122,6 @@
           False: {visible: false}
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 400
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
         damage: 200
