@@ -153,6 +153,7 @@
       task: SimpleHostileCompound
   # Moffstation - Begin
   - type: Reform
+    startDelayed: true
     actionPrototype: ActionSlimeGrow
     reformTime: 10
     popupText: slime-grow-attempt
