@@ -79,6 +79,12 @@ public sealed class MoffCCVars
     public static readonly CVarDef<float> RespawnTime =
         CVarDef.Create("moff.respawn_time", 450f, CVar.SERVER | CVar.REPLICATED);
 
+    /// <summary>
+    /// Respawn time, how long the player has to wait in seconds after death. Set this to zero to disable timer.
+    /// </summary>
+    public static readonly CVarDef<float> MoffScreenShakeIntensity =
+        CVarDef.Create("moff.screenshake_intensity", 1.0f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
     /*
      * Arrivals
      */

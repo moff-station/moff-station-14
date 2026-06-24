@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared._DV.CCVars;
 using Content.Shared._ES.Camera;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.Camera;
 using Robust.Shared.Configuration;
 using Robust.Shared.Noise;
@@ -16,6 +17,7 @@ public sealed partial class ESScreenshakeSystem : EntitySystem
     [Dependency] private SharedESScreenshakeSystem _shared = default!;
 
     private bool _disabled; // DeltaV
+    private float _screenShakeIntensityModifier; // Moffstation
 
     public override void Initialize()
     {
@@ -24,6 +26,7 @@ public sealed partial class ESScreenshakeSystem : EntitySystem
         SubscribeLocalEvent<ESScreenshakeComponent, ESGetEyeRotationEvent>(OnGetEyeRotation);
 
         _config.OnValueChanged(DCCVars.EsScreenshakeDisabled, OnDisabledChanged, true); // DeltaV
+        _config.OnValueChanged(MoffCCVars.MoffScreenShakeIntensity, (value) => { _screenShakeIntensityModifier = value; }, true); // Moffstation
     }
     private void OnDisabledChanged(bool obj)
     {
@@ -76,6 +79,7 @@ public sealed partial class ESScreenshakeSystem : EntitySystem
             // End Stellar
         }
 
+        accumulatedOffset *= _screenShakeIntensityModifier; // Moffstation - Screenshake slider
         args.Offset += accumulatedOffset;
     }
 
@@ -106,6 +110,7 @@ public sealed partial class ESScreenshakeSystem : EntitySystem
             accumulatedAngle += Angle.FromDegrees(angle);
         }
 
+        accumulatedAngle *= _screenShakeIntensityModifier; // Moffstation - Screenshake slider
         // TODO ughhh this shit breaks with something idk
         args.Rotation += accumulatedAngle;
     }

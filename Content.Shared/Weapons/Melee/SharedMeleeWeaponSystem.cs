@@ -85,15 +85,6 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     /// </summary>
     public const float GracePeriod = 0.05f;
 
-    // Moffstation - Start
-    /// <summary>
-    /// Screenshake Parameters so I dont have to search for them or copy-past
-    /// </summary>
-    public const float ShakeTrauma = 0.08f;
-
-
-    // Moffstation - End
-
     public override void Initialize()
     {
         base.Initialize();
@@ -1094,10 +1085,13 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     // Maybe it's worse if you want to use different numbers for the different melee attacks, but rn idc
     private void DoScreenShake(Vector2 direction, EntityUid user, List<EntityUid> targets)
     {
+        var trauma = 0.2f;
+        var decayRate = 5.0f;
+
         var shakeRotation = new ESScreenshakeParameters()
-            { Trauma = 0.08f, DecayRate = 1.0f, Frequency = 0.009f };
-        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.75f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
-        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = 1.5f, DecayRate = 10.0f, Frequency = 0.001f, Direction =  direction };
+            { Trauma = 0.06f, DecayRate = 0.5f, Frequency = 0.004f };
+        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
+        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
         _shake.Screenshake(user, userShakeTranslation, shakeRotation);
         foreach (var shakeTarget in targets)
         {

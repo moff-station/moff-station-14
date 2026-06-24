@@ -9,8 +9,8 @@
         <tabs:KeyRebindTab Name="KeyRebindTab" />
         <tabs:AudioTab Name="AudioTab" />
         <tabs:AccessibilityTab Name="AccessibilityTab" />
+        <tabs:AdminOptionsTab Name="AdminOptionsTab" />
         <!-- Moffstation - Fork specific tab -->
         <ui:ForkSpecificTab Name="ForkSpecificTab" />
-        <tabs:AdminOptionsTab Name="AdminOptionsTab" />
     </TabContainer>
 </DefaultWindow>
