@@ -31,9 +31,9 @@ public sealed partial class GrayAccentSystem : EntitySystem
     private static readonly Regex RegexUppercaseUr = new(@"UR\B");
     private static readonly Regex RegexSentenceCaseUr = new(@"Ur\B");
 
-    // Controls the likelyhood of the more difficult to understand parts of the gray accent
+    // Controls the likelihood of the more unintelligible parts of the gray accent
     // TODO: In the future we should add this as a customization option, but for now turning it down should suffice
-    private const float GleebGlorpGloopSpunch = 0.6f;
+    private const float ReplacementChance = 0.6f;
 
     public override void Initialize()
     {
@@ -87,7 +87,7 @@ public sealed partial class GrayAccentSystem : EntitySystem
 
     private string ChanceReplace(string input, Regex regex, string replacement)
     {
-        return regex.Replace(input, match => _random.Prob(GleebGlorpGloopSpunch) ? replacement : match.Value);
+        return regex.Replace(input, match => _random.Prob(ReplacementChance) ? replacement : match.Value);
     }
 
     private void OnAccent(Entity<GrayAccentComponent> ent, ref AccentGetEvent args)
