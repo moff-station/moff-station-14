@@ -99,8 +99,8 @@ public abstract partial class SharedReplicatorNestSystem
         var levelUpPopup = Loc.TryGetString($"replicator-nest-level{ent.Comp.CurrentLevel}", out var localizedMsg)
             ? localizedMsg
             : Loc.GetString("replicator-nest-levelup");
-        _popup.PopupEntity(levelUpPopup, ent);
-        _audio.PlayPvs(ent.Comp.LevelUpSound, ent);
+        _popup.PopupPredicted(levelUpPopup, ent, ent);
+        _audio.PlayPredicted(ent.Comp.LevelUpSound, ent, ent);
 
         // Run automatic announcements.
         foreach (var (level, announcement) in ent.Comp.Announcements.Where(it => it.Key <= ent.Comp.CurrentLevel)
@@ -151,7 +151,7 @@ public abstract partial class SharedReplicatorNestSystem
     private void CheckTileConversionPoints(Entity<ReplicatorNestComponent> ent)
     {
         // Only convert tiles if we're as big as we can get.
-        if (ent.Comp.CurrentLevel <= ent.Comp.EndgameLevel ||
+        if (ent.Comp.CurrentLevel < ent.Comp.EndgameLevel ||
             ent.Comp.TileConversionPoints < ent.Comp.TileConversionCost)
             return;
 

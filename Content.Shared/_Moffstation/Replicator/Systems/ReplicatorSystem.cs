@@ -156,7 +156,7 @@ public sealed partial class ReplicatorSystem : EntitySystem
                 _actions.SetEnabled(action, false);
                 return action;
             })
-            .Cast<EntityUid>();
+            .OfType<EntityUid>();
         entity.Comp.UpgradeActionEntities.AddRange(actions);
     }
 

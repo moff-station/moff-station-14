@@ -18,9 +18,7 @@ public sealed partial class SharedBlockMachineUISystem : EntitySystem
 
     private void OnUIOpenAttempt(Entity<BlockMachineUIComponent> ent, ref UserOpenActivatableUIAttemptEvent args)
     {
-        if ((ent.Comp.Whitelist != null || ent.Comp.Blacklist != null) &&
-            _whitelist.IsWhitelistPassOrNull(ent.Comp.Whitelist, args.Target) &&
-            _whitelist.IsWhitelistFail(ent.Comp.Blacklist, args.Target))
+        if (_whitelist.CheckBoth(args.Target, ent.Comp.Blacklist, ent.Comp.Whitelist))
             return;
 
         args.Cancel();
