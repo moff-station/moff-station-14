@@ -1,0 +1,427 @@
+# Head Markings
+
+- type: marking
+  id: GrayAntennas
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: &head.rsi "_Moffstation/Mobs/Customization/Gray/head.rsi"
+    state: antennas
+
+- type: marking
+  id: GrayDroopyAntennas
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: droopyantennas
+
+- type: marking
+  id: GrayBushyEyebrows
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: bushyeyebrows
+
+- type: marking
+  id: GrayCatEars
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: catears
+
+- type: marking
+  id: GrayEyebags
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: eyebags
+
+- type: marking
+  id: GrayEyelashes
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: eyelashes
+
+- type: marking
+  id: GrayFakeStache
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: fakestache
+
+- type: marking
+  id: GrayFloppyEars
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: floppyears
+
+- type: marking
+  id: GrayGem
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: gem
+
+- type: marking
+  id: GrayGleepGlow
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: gleepglow
+
+- type: marking
+  id: GrayGleepCheekGlow
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: gleepcheekglow
+
+- type: marking
+  id: GrayLargeEars
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: largeears
+
+- type: marking
+  id: GraySmallEyebrows
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: smalleyebrows
+
+- type: marking
+  id: GrayTinyAntennas
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: tinyantennas
+
+- type: marking
+  id: GrayWhiskers
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: whiskers
+
+- type: marking
+  id: GrayWrinkles
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *head.rsi
+    state: wrinkles
+
+# Eye Markings
+
+- type: marking
+  id: GrayEyes
+  bodyPart: Eyes
+  groupWhitelist: [ Gray ]
+  coloring:
+    layers:
+      eyes:
+        type: !type:EyeColoring
+      eyes_glimmer:
+        type: !type:SimpleColoring
+          color: "#eeefff"
+  sprites:
+  - sprite: &eyes.rsi "_Moffstation/Mobs/Customization/Gray/eyes.rsi"
+    state: eyes
+  - sprite: *eyes.rsi
+    state: eyes_glimmer
+
+- type: marking
+  id: GrayTiredEyes
+  bodyPart: Eyes
+  groupWhitelist: [ Gray ]
+  coloring:
+    layers:
+      tiredeyes:
+        type: !type:EyeColoring
+      tiredeyes_glimmer:
+        type: !type:SimpleColoring
+          color: "#eeefff"
+      tiredeyes_ridge:
+        type: !type:SkinColoring
+  sprites:
+  - sprite: *eyes.rsi
+    state: tiredeyes
+  - sprite: *eyes.rsi
+    state: tiredeyes_glimmer
+  - sprite: *eyes.rsi
+    state: tiredeyes_ridge
+
+- type: marking
+  id: GrayAngryEyes
+  bodyPart: Eyes
+  groupWhitelist: [ Gray ]
+  coloring:
+    layers:
+      angryeyes:
+        type: !type:EyeColoring
+      angryeyes_glimmer:
+        type: !type:SimpleColoring
+          color: "#eeefff"
+      angryeyes_ridge:
+        type: !type:SkinColoring
+  sprites:
+  - sprite: *eyes.rsi
+    state: angryeyes
+  - sprite: *eyes.rsi
+    state: angryeyes_glimmer
+  - sprite: *eyes.rsi
+    state: angryeyes_ridge
+
+- type: marking
+  id: GrayBigEyes
+  bodyPart: Eyes
+  groupWhitelist: [ Gray ]
+  coloring:
+    layers:
+      bigeyes:
+        type: !type:EyeColoring
+      bigeyes_glimmer:
+        type: !type:SimpleColoring
+          color: "#eeefff"
+  sprites:
+  - sprite: *eyes.rsi
+    state: bigeyes
+  - sprite: *eyes.rsi
+    state: bigeyes_glimmer
+
+# Chest Markings
+
+- type: marking
+  id: GrayGleepGlowChest
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Gray/chest.rsi
+    state: gleepglowchest
+
+- type: marking
+  id: GrayCropCircleTattooChest
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: _Moffstation/Mobs/Customization/Gray/chest.rsi
+    state: cropcircleschest
+
+# Arm Markings
+
+- type: marking
+  id: GrayGleepGlowLeftArm
+  bodyPart: LArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: &arms.rsi "_Moffstation/Mobs/Customization/Gray/arms.rsi"
+    state: gleepglowlarm
+
+- type: marking
+  id: GrayCropCircleTattooLeftArm
+  bodyPart: LArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *arms.rsi
+    state: cropcircleslarm
+
+- type: marking
+  id: GrayGleepGlowRightArm
+  bodyPart: RArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *arms.rsi
+    state: gleepglowrarm
+
+
+- type: marking
+  id: GrayCropCircleTattooRightArm
+  bodyPart: RArm
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *arms.rsi
+    state: cropcirclesrarm
+
+# Leg Markings
+
+- type: marking
+  id: GrayGleepGlowLeftLeg
+  bodyPart: LLeg
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: &legs.rsi "_Moffstation/Mobs/Customization/Gray/legs.rsi"
+    state: gleepglowlleg
+
+- type: marking
+  id: GrayGleepGlowRightLeg
+  bodyPart: RLeg
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *legs.rsi
+    state: gleepglowrleg
+
+- type: marking
+  id: GrayGleepGlowLeftFoot
+  bodyPart: LFoot
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *legs.rsi
+    state: gleepglowlfoot
+
+- type: marking
+  id: GrayGleepGlowRightFoot
+  bodyPart: RFoot
+  groupWhitelist: [ Gray ]
+  sprites:
+  - sprite: *legs.rsi
+    state: gleepglowrfoot
+
+# Gauze Markings
+- type: marking
+  id: GrayHeadGauze
+  bodyPart: Head
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: &gauze.rsi "_Moffstation/Mobs/Customization/Gray/gauzemarkings.rsi"
+    state: head
+
+- type: marking
+  id: GrayChestGauze
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: chest
+
+- type: marking
+  id: GrayStomachGauze
+  bodyPart: Chest
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: stomach
+
+- type: marking
+  id: GrayLeftArmGauze
+  bodyPart: LArm
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: larm
+
+- type: marking
+  id: GrayRightArmGauze
+  bodyPart: RArm
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rarm
+
+- type: marking
+  id: GrayLeftHandGauze
+  bodyPart: LHand
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: lhand
+
+- type: marking
+  id: GrayRightHandGauze
+  bodyPart: RHand
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rhand
+
+- type: marking
+  id: GrayLeftLegGauze
+  bodyPart: LLeg
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: lleg
+
+- type: marking
+  id: GrayRightLegGauze
+  bodyPart: RLeg
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rleg
+
+- type: marking
+  id: GrayLeftFootGauze
+  bodyPart: LFoot
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: lfoot
+
+- type: marking
+  id: GrayRightFootGauze
+  bodyPart: RFoot
+  groupWhitelist: [ Gray ]
+  coloring:
+    default:
+      type: !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+  - sprite: *gauze.rsi
+    state: rfoot

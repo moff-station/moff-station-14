@@ -596,6 +596,16 @@
   description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEThrowThingsAround
+  # Moffstation - Start - Shader Effect
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: RandomSpawner
+      deleteSpawnerAfterSpawn: false
+      prototypes:
+      - EffectShockwaveSonicBoom
+  # Moffstation - End
 
 - type: entity
   id: XenoArtifactColdWave

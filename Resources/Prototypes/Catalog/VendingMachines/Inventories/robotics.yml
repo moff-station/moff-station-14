@@ -4,8 +4,11 @@
     CableApcStack: 4
     SciFlash: 4
     ProximitySensor: 3
-    ClothingEyesHudDiagnostic: 2
-    ClothingEyesEyepatchHudDiag: 2
+    # Moffstation - Start - Modular Eyewear
+    # ClothingEyesHudDiagnostic: 2
+    # ClothingEyesEyepatchHudDiag: 2
+    HudModuleShowInorganicHealthBars: 2
+    # Moffstation - End
     RemoteSignaller: 3
     Igniter: 3 # its more ordnance but yeah
     HandheldHealthAnalyzer: 3
@@ -19,4 +22,4 @@
     Screwdriver: 2
     Crowbar: 2
   contrabandInventory:
-    FoodBurgerRobot: 1  
+    FoodBurgerRobot: 1

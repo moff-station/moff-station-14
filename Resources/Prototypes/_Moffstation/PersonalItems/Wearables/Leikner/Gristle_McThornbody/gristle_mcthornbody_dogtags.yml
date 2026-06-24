@@ -2,20 +2,17 @@
 # Character: Gristle McThornbody
 
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckDogTags
   id: &id PersonalItemGristleMcThornbodyDogtags
-  name: Gristle's dogtags
-  description: A pair of weathered UNMC dogtags on a pelline chain.
+  name: Gristle's dog tags
+  description: A pair of weathered UNMC dog tags on a pelline chain.
   suffix: PersonalItem
   components:
-  - type: Sprite
-    sprite: &sprite _Moffstation/PersonalItems/Wearables/Leikner/Gristle_McThornbody/gristlemcthornbodydogtags.rsi
-  - type: Clothing
-    sprite: *sprite
-  - type: Item
-    sprite: *sprite
   - type: DetailExaminable
     content: Two lightly dented tags dangle from a pelline ball chain with an added rubber ring to keep them from rattling. The name 'McThornbody, G.S.' can be read, punched into steel.
+  - type: Tag
+    tags:
+    - Recyclable
 
 - type: loadout
   id: *id

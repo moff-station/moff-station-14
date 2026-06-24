@@ -1,0 +1,30 @@
+# Player: MrRich | Character: Chad Rodomontade
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingHeadBase, ClothingNeckBase]
+  id: &id PersonalItemChadsChants
+  name: chants
+  description: Tight and reflective blue pants, with deceptively deep pockets. On both sides of the pants are orange stripes, with "CHAD RODOMONTADE!!" written in neon green.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/MrRich/Chad_Rodomontade/chadsChants.rsi
+  - type: Clothing
+    sprite: *sprite
+    equipSound:
+      path: /Audio/_Moffstation/Effects/Cards/cardTakeOutPackage1.ogg
+    unequipSound:
+      path: /Audio/_Moffstation/Effects/Cards/cardFan1.ogg
+    slots:
+    - INNERCLOTHING
+    - HEAD
+    - NECK
+
+- type: loadout
+  id: *id
+  inhand:
+  - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Chad Rodomontade
