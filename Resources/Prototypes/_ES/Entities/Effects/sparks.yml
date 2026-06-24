@@ -50,3 +50,17 @@
   - type: Tag
     tags:
     - HideContextMenu
+
+
+- type: entity
+  parent: ESEffectSparks
+  id: MoffEffectSparksWelding
+  name: sparks
+  components:
+  - type: EmitSoundOnSpawn
+    positional: true
+    sound:
+      collection: Welder
+      params:
+        volume: -3
+        variation: 0.250
