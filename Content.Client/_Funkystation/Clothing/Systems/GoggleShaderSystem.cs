@@ -48,13 +48,13 @@ public sealed class GoggleShaderSystem : EntitySystem
 
     private void OnEquip(Entity<GoggleShaderComponent> ent, ref GotEquippedEvent args)
     {
-        if (args.Equipee == _playerManager.LocalEntity && (args.Slot == "head" || args.Slot == "eyes"))
+        if (args.EquipTarget == _playerManager.LocalEntity && (args.Slot == "head" || args.Slot == "eyes"))
             RefreshOverlay();
     }
 
     private void OnUnequip(Entity<GoggleShaderComponent> ent, ref GotUnequippedEvent args)
     {
-        if (args.Equipee == _playerManager.LocalEntity && (args.Slot == "head" || args.Slot == "eyes"))
+        if (args.EquipTarget == _playerManager.LocalEntity && (args.Slot == "head" || args.Slot == "eyes"))
             RefreshOverlay(ignoreEnt: ent.Owner);
     }
 
