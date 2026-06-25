@@ -71,15 +71,33 @@
     layers:
     - state: unwielded
       map: [ base ]
-    - state: powercell
-      map: ["enum.PowerCellVisualLayers.Base"]
+    - state: unwielded-arrow
+      map: [ arrow ]
+      visible: false
+    - state: unwielded-plunger
+      map: [ plunger ]
+      visible: false
+    - state: powerCell
+      map: [ powerCell ]
       visible: false
   - type: ItemMapper
+    spriteLayers:
+    - arrow
+    - plunger
+    - powerCell
     mapLayers:
-      powercell:
+      arrow:
+        whitelist:
+          tags:
+          - Arrow
+      plunger:
+        whitelist:
+          tags:
+          - Plunger
+      powerCell:
         whitelist:
           components:
-          - powercell
+          - PowerCell
   - type: Appearance
   - type: Item
     size: Ginormous
