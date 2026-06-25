@@ -1,5 +1,6 @@
 ﻿using Content.Server.Anomaly.Effects;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Anomaly.Components;
 
@@ -34,6 +35,12 @@ public sealed partial class BluespaceAnomalyComponent : Component
     /// <summary>
     /// The sound played after players are shuffled/teleported around
     /// </summary>
-    [DataField("teleportSound"), ViewVariables(VVAccess.ReadWrite)]
-    public SoundSpecifier TeleportSound = new SoundPathSpecifier("/Audio/Effects/teleport_arrival.ogg");
+    // [DataField("teleportSound"), ViewVariables(VVAccess.ReadWrite)]
+    // public SoundSpecifier TeleportSound = new SoundPathSpecifier("/Audio/Effects/teleport_arrival.ogg");
+
+    /// <summary>
+    /// The effect played after players are shuffled/teleported around
+    /// </summary>
+    [DataField]
+    public EntProtoId TeleportEffect = "EffectFlashBluespace";
 }
