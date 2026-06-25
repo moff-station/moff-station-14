@@ -35,6 +35,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
     [Dependency] private PullingSystem _pulling = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedJointSystem _joints = default!;
+    [Dependency] private EntityQuery<PortalBlacklistComponent> _portalBlacklistQuery; // Moffstation - Portal Blacklist
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
@@ -98,7 +99,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
             return;
 
         // Moffstation - Begin
-        if (HasComp<PortalBlacklistComponent>(subject))
+        if (_portalBlacklistQuery.HasComp(subject))
             return;
         // Moffstation - End
 

@@ -32,6 +32,7 @@ public sealed partial class BluespaceAnomalyComponent : Component
     [DataField("superCriticalTeleportRadius"), ViewVariables(VVAccess.ReadWrite)]
     public float SupercriticalTeleportRadius = 50f;
 
+    // Moffstation - Start - Replace bluespace anomaly sound with bluespace effect
     /// <summary>
     /// The sound played after players are shuffled/teleported around
     /// </summary>
@@ -43,4 +44,5 @@ public sealed partial class BluespaceAnomalyComponent : Component
     /// </summary>
     [DataField]
     public EntProtoId TeleportEffect = "EffectFlashBluespace";
+    // Moffstation - End
 }

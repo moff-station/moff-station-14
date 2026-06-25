@@ -55,10 +55,11 @@ public sealed partial class PortalComponent : Component
     [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public bool RandomTeleport = true;
 
-    // Moffstation - Sparks and FX
+    // Moffstation - Start - Sparks and FX
     /// <summary>
     /// The effect played when there is the no target portal on the other end, and the entity is still TPed
     /// </summary>
     [DataField]
     public EntProtoId TeleportEffect = "EffectFlashBluespace";
+    // Moffstation - End
 }
