@@ -6,6 +6,7 @@
   abstract: true
   parent: SeatBase
   description: Multiple seats spanning a single object. Truly a marvel of science.
+  placementMode: SnapgridCenter # Moffstation
   components:
   - type: Transform
     anchored: true
