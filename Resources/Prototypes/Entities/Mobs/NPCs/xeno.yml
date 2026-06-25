@@ -89,6 +89,7 @@
       Dead:
         Base: dead
   - type: Puller
+    needsHands: false # Moffstation - Xeno changes
   - type: Butcherable
     spawned:
     - id: FoodMeatXeno
@@ -101,7 +102,7 @@
     description: ghost-role-information-xeno-description
     rules: ghost-role-information-xeno-rules
     raffle:
-      settings: default
+      settings: short # Moffstation - Xeno changes
   - type: GhostTakeoverAvailable
   - type: TypingIndicator
     proto: alien
@@ -523,6 +524,7 @@
       Dead:
         Base: dead
   - type: Puller
+    needsHands: false # Moffstation - Xeno changes
   - type: Butcherable
     spawned:
     - id: FoodMeatXeno
