@@ -9,5 +9,11 @@
   - type: TimedDespawn
     lifetime: 1
   - type: EmitSoundOnSpawn
-    sound: 
+    sound:
       path: /Audio/Effects/Lightning/lightningbolt.ogg
+  # Moffstation - Start - More Sparks
+  - type: TriggerOnSpawn
+  - type: ESSparkOnTrigger
+    count: 8
+    sparkPrototype: MoffEffectSparksBluespace
+  # Moffstation - End
