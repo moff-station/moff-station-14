@@ -1,13 +1,13 @@
 - type: entity
-  id: EffectFlashBluespaceUpstream # Moffstation - Namespaced
+  id: EffectFlashBluespace
   categories: [ HideSpawnMenu ]
   components:
-  - type: PointLight
-    radius: 10.5
-    energy: 15
-    color: "#18abf5"
-  - type: TimedDespawn
+  - type: ESTimedDespawn
     lifetime: 1
   - type: EmitSoundOnSpawn
     sound:
       path: /Audio/Effects/Lightning/lightningbolt.ogg
+  - type: TriggerOnSpawn
+  - type: ESSparkOnTrigger
+    count: 8
+    sparkPrototype: MoffEffectSparksBluespace
