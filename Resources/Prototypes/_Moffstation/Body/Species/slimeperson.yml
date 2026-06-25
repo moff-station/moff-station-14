@@ -1,10 +1,9 @@
 ﻿- type: entity
-  parent: MobSlimePerson
+  parent: MobWildSlimePerson
   id: MobSlimePersonGrown
   categories: [ HideSpawnMenu ]
   components:
   - type: IsDeadIC
-  - type: RandomHumanoidAppearance
 
 - type: markingsGroup
   parent: BasicMoffMarkingsGroup

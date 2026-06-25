@@ -858,6 +858,10 @@
     description: ghost-role-information-smile-description
     rules: ghost-role-information-nonantagonist-rules
     raffle: null
+  # Moffstation - Start - cancel out the random colors
+  - type: RandomSprite
+    available: []
+  # Moffstation - End
   - type: Grammar
     attributes:
       proper: true
