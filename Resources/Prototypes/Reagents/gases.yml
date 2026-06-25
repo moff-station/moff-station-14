@@ -369,18 +369,8 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 15
-        # Moffstation - Start - Avali frezon-cooled processors
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Animal, Arachnid, Gray, Human, Moth, Plant, Rat, Resomi, Slime, Thaven, Vox ]
-        # Moffstation - End
       - !type:Drunk
         boozePower: 15
-        # Moffstation - Start - Avali frezon-cooled processors
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Animal, Arachnid, Gray, Human, Moth, Plant, Rat, Resomi, Slime, Thaven, Vox ]
-        # Moffstation - End
       - !type:PopupMessage
         type: Local
         messages: [ "frezon-lungs-cold" ]
@@ -393,10 +383,6 @@
         probability: 0.1
         conditions:
         minScale: 2
-        # Moffstation - Start - Avali frezon-cooled processors
-        - !type:MetabolizerTypeCondition
-          type: [ Animal, Arachnid, Gray, Human, Moth, Plant, Rat, Resomi, Slime, Thaven, Vox ]
-        # Moffstation - End
     Respiration:
       effects:
       - !type:HealthChange
@@ -410,19 +396,15 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 500
-        # Moffstation - Start - Avali frezon-cooled processors
         conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Animal, Arachnid, Gray, Human, Moth, Plant, Rat, Resomi, Slime, Thaven, Vox ]
-        # Moffstation - End
+        - &AntiAvali !type:MetabolizerTypeCondition
+          type: [ Avali ]
+          inverted: true
       - !type:Drunk
         boozePower: 500
         minScale: 1
-        # Moffstation - Start - Avali frezon-cooled processors
         conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Animal, Arachnid, Gray, Human, Moth, Plant, Rat, Resomi, Slime, Thaven, Vox ]
-        # Moffstation - End
+        - *AntiAvali
       - !type:PopupMessage
         type: Local
         messages: [ "frezon-lungs-cold" ]
@@ -434,51 +416,19 @@
         messages: [ "frezon-euphoric" ]
         probability: 0.1
         minScale: 1
-        # Moffstation - Start - Avali frezon-cooled processors
         conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Animal, Arachnid, Gray, Human, Moth, Plant, Rat, Resomi, Slime, Thaven, Vox ]
-        # Moffstation - End
+        - *AntiAvali
       - !type:Oxygenate #macro, thaven don't suffocate from any gases
         scaling: true
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Thaven ]
-      # Moffstation - Start - Avali frezon-cooled processors
       - !type:MovementSpeedModifier
         walkSpeedModifier: 1.20
         sprintSpeedModifier: 1.20
         conditions:
-        - !type:MetabolizerTypeCondition
+        - &ProAvali !type:MetabolizerTypeCondition
           type: [ Avali ]
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectDesoxyStamina # You are on meth. You keep going.
-        time: 3
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Avali ]
-      - !type:GenericStatusEffect
-        key: Adrenaline
-        component: IgnoreSlowOnDamage
-        time: 3
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Avali ]
-      # Side effects
       - !type:Jitter
         conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Avali ]
-      - !type:GenericStatusEffect
-        key: Stutter
-        component: StutteringAccent
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Avali ]
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectPainNumbness
-        time: 2
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Avali ]
-      # Moffstation - End
+        - *ProAvali
