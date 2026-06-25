@@ -252,6 +252,7 @@ namespace Content.IntegrationTests.Tests
                 "SpawnEntityTableOnTrigger",
                 // ES fancy timed despawn
                 "ESTimedDespawn",
+                "ESSparkOnTrigger",
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
