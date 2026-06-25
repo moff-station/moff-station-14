@@ -5,4 +5,4 @@ construction-steel-bench = steel bench
 construction-white-steel-bench = white steel bench
 construction-ratty-sofa = ratty sofa
 construction-corporate-sofa = corporate sofa
-construction-bench-sofa = Multiple seats spanning a single object. Truly a marvel of science.
+construction-bench-sofa-description = Multiple seats spanning a single object. Truly a marvel of science.
