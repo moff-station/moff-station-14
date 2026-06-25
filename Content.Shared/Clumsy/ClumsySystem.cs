@@ -53,7 +53,8 @@ public sealed partial class ClumsySystem : EntitySystem
 
         args.TargetGettingInjected = args.EntityUsingInjector;
         args.OverrideMessage = Loc.GetString(ent.Comp.HypoFailedMessage);
-        _audio.PlayPredicted(ent.Comp.ClumsySound, ent, args.EntityUsingInjector);
+        if(ent.Comp.ClumsySoundEnabled) // Moffstation - Clumsy as a trait
+            _audio.PlayPredicted(ent.Comp.ClumsySound, ent, args.EntityUsingInjector); // Moffstation - Clumsy as a trait
     }
 
     private void BeforeDefibrillatorZapsEvent(Entity<ClumsyComponent> ent, ref SelfBeforeDefibrillatorZapsEvent args)
@@ -68,7 +69,8 @@ public sealed partial class ClumsySystem : EntitySystem
             return;
 
         args.DefibTarget = args.EntityUsingDefib;
-        _audio.PlayPvs(ent.Comp.ClumsySound, ent);
+        if(ent.Comp.ClumsySoundEnabled) // Moffstation - Clumsy as a trait
+            _audio.PlayPvs(ent.Comp.ClumsySound, ent); // Moffstation - Clumsy as a trait
 
     }
 
@@ -97,7 +99,8 @@ public sealed partial class ClumsySystem : EntitySystem
         var othersMessage = Loc.GetString(ent.Comp.CatchingFailedMessageOthers, ("item", ent.Owner), ("catcher", Identity.Entity(ent.Owner, EntityManager)));
         _popup.PopupEntity(selfMessage, ent.Owner, ent.Owner);
         _popup.PopupEntity(othersMessage, ent.Owner, Filter.PvsExcept(ent.Owner), true);
-        _audio.PlayPvs(ent.Comp.ClumsySound, ent);
+        if(ent.Comp.ClumsySoundEnabled) // Moffstation - Clumsy as a trait
+            _audio.PlayPvs(ent.Comp.ClumsySound, ent); // Moffstation - Clumsy as a trait
     }
 
     private void BeforeGunShotEvent(Entity<ClumsyComponent> ent, ref SelfBeforeGunShotEvent args)
@@ -121,7 +124,8 @@ public sealed partial class ClumsySystem : EntitySystem
 
         // Apply salt to the wound ("Honk!") (No idea what this comment means)
         _audio.PlayPvs(ent.Comp.GunShootFailSound, ent);
-        _audio.PlayPvs(ent.Comp.ClumsySound, ent);
+        if(ent.Comp.ClumsySoundEnabled) // Moffstation - Clumsy as a trait
+            _audio.PlayPvs(ent.Comp.ClumsySound, ent); // Moffstation - Clumsy as a trait
 
         _popup.PopupEntity(Loc.GetString(ent.Comp.GunFailedMessage), ent, ent);
         args.Cancel();
@@ -139,7 +143,8 @@ public sealed partial class ClumsySystem : EntitySystem
 
         HitHeadClumsy(ent, args.BeingClimbedOn);
 
-        _audio.PlayPredicted(ent.Comp.ClumsySound, ent, ent);
+        if (ent.Comp.ClumsySoundEnabled) // Moffstation - Clumsy as a trait
+            _audio.PlayPredicted(ent.Comp.ClumsySound, ent, ent); // Moffstation - Clumsy as a trait
 
         _audio.PlayPredicted(ent.Comp.TableBonkSound, ent, ent);
 

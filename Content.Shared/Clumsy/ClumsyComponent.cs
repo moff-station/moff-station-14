@@ -19,6 +19,14 @@ public sealed partial class ClumsyComponent : Component
     [DataField]
     public SoundSpecifier ClumsySound = new SoundPathSpecifier("/Audio/Items/bikehorn.ogg");
 
+    // Moffstation - Start - Clumsy as a trait
+    /// <summary>
+    ///     If clumsy should play a comedic sound effect when clumsy interactions fail.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool ClumsySoundEnabled = true;
+    // Moffstation - End
+
     /// <summary>
     ///     Default chance to fail a clumsy interaction.
     ///     If a system needs to use something else, add a new variable in the component, do not modify this percentage.
