@@ -56,7 +56,6 @@
     factions:
     - SimpleHostile
 
-# Moffstation - Start - Vent horde smashers
 - type: entity
   parent: [BaseSmasherHostile, MobCatSyndy]
   id: MobCatSyndySmasher
@@ -136,4 +135,3 @@
 - type: entity
   parent: [BaseSmasherHostile, MobKangarooSpace]
   id: MobKangarooSpaceSmasher
-# Moffstation - End
