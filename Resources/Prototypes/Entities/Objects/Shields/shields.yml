@@ -5,13 +5,13 @@
   description: A shield!
   abstract: true
   components:
-    # Moffstation - Begin - Shield Resprites/Suitstorages
+    # Moffstation - Shield resprites/Suitstorage - Start
     - type: Clothing
       quickEquip: false
       slots:
       - back
       - suitStorage
-    # Moffstation - End
+    # Moffstation - Shield resprites/Suitstorage - End
     - type: Sprite
       sprite: Objects/Weapons/Melee/shields.rsi
       state: riot-icon
@@ -89,14 +89,15 @@
   id: RiotShield
   description: A large tower shield. Good for controlling crowds.
   components:
+    # Moffstation - Shield resprites - Start
     - type: Clothing
       sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
-    - type: Sprite # Moffstation - Shield Resprites
+    - type: Sprite
       sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
-    # Moffstation - End
+    # Moffstation - Shield resprites - End
     - type: StaticPrice
       price: 90
     - type: Blocking
@@ -118,14 +119,15 @@
   id: RiotLaserShield
   description: A shield built for withstanding lasers, but not much else.
   components:
+    # Moffstation - Shield resprites - Start
     - type: Clothing
       sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
-    - type: Sprite # Moffstation - Shield Resprites
+    - type: Sprite
       sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
-    # Moffstation - End
+    # Moffstation - Shield resprites - End
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -142,14 +144,15 @@
   id: RiotBulletShield
   description: A shield built for protecting against ballistics, but not much else.
   components:
+    # Moffstation - Shield resprites - Start
     - type: Clothing
       sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
-    - type: Sprite # Moffstation - Shield Resprites
+    - type: Sprite
       sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
-    # Moffstation - End
+    # Moffstation - Shield resprites - End
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -263,13 +266,14 @@
   id: MakeshiftShield
   description: A rundown looking shield, not good for much.
   components:
-    - type: Sprite # Moffstation - Shield Resprites
+    # Moffstation - Shield resprites - Start
+    - type: Sprite
       sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
       state: makeshift-icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
       heldPrefix: makeshift
-    # Moffstation - End
+    # Moffstation - Shield resprites - End
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -440,6 +444,7 @@
   id: EnergyShield
   description: Exotic energy shield, when folded, can even fit in your pocket.
   components:
+    # Moffstation - Shield resprites - Start
     - type: RandomSprite
       available:
       - shield:
@@ -458,7 +463,7 @@
       components:
       - type: DisarmMalus
         malus: 0.6
-    - type: Sprite # Shield resprites - Moffstation
+    - type: Sprite
       sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
       layers:
         - state: eshield-icon
@@ -490,6 +495,7 @@
       color: white
     - type: ItemTogglePointLight
       toggleableVisualsColorModulatesLights: true
+    # Moffstation - Shield resprites - End
     - type: Reflect
       reflectProb: 0.95
       reflects:
@@ -541,13 +547,15 @@
   id: BrokenEnergyShield
   description: Something inside is burned out, it is no longer functional.
   components:
-    - type: Sprite # Shield resprites - Moffstation
+    # Moffstation - Shield resprites - Start
+    - type: Sprite
       sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
       state: eshield-icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
       size: Small
       heldPrefix: eshield
+    # Moffstation - Shield resprites - End
 
 - type: entity
   name: telescopic shield
