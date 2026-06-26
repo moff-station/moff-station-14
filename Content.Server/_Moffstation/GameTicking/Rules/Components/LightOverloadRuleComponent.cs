@@ -3,7 +3,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._Moffstation.GameTicking.Rules.Components;
 
 /// <summary>
-/// This is used for...
+/// This component is for round event rules which selects an APC and explodes lights in a radius around it.
+/// <seealso cref="LightOverloadRuleSystem"/>
 /// </summary>
 [RegisterComponent]
 public sealed partial class LightOverloadRuleComponent : Component
@@ -37,5 +38,11 @@ public sealed partial class LightOverloadRuleComponent : Component
     [DataField]
     public TimeSpan BlinkTime =  TimeSpan.FromSeconds(30.0);
 
+    // The announcement to make when this rule triggers.
+    [DataField]
+    public string Announcement = "light-overload-announcement";
 
+    // The color to use when making the announcement
+    [DataField]
+    public Color AnnouncementColor = Color.Yellow;
 }

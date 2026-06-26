@@ -29,9 +29,9 @@ public sealed partial class LightOverloadRuleSystem : GameRuleSystem<LightOverlo
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private ChatSystem _chatSystem = default!;
 
-    protected override void Started(EntityUid entity, LightOverloadRuleComponent component, GameRuleComponent ruleData, GameRuleStartedEvent args)
+    protected override void Started(EntityUid entity, LightOverloadRuleComponent overloadComp, GameRuleComponent ruleData, GameRuleStartedEvent args)
     {
-        base.Started(entity, component, ruleData, args);
+        base.Started(entity, overloadComp, ruleData, args);
 
         if (!TryGetRandomStation(out var chosenStation))
             return;
@@ -49,30 +49,33 @@ public sealed partial class LightOverloadRuleSystem : GameRuleSystem<LightOverlo
         var selectedApc = stationApcs[_random.Next(stationApcs.Count)];
         _apcSystem.ApcToggleBreaker(selectedApc);
         var apcCoords = selectedApc.Comp2.Coordinates;
-        Spawn(component.SparksPrototype, apcCoords);
+        Spawn(overloadComp.SparksPrototype, apcCoords);
 
-        var message = Loc.GetString("light-overload-announcement",
+        var message = Loc.GetString(overloadComp.Announcement,
             ("location", FormattedMessage.RemoveMarkupOrThrow(
                 _navMap.GetNearestBeaconString((selectedApc, selectedApc.Comp2)))));
 
-        _chatSystem.DispatchStationAnnouncement(chosenStation.Value, message, playDefaultSound: true, colorOverride: Color.Yellow);
+        _chatSystem.DispatchStationAnnouncement(chosenStation.Value, message, playDefaultSound: true, colorOverride: overloadComp.AnnouncementColor);
 
         foreach (var light in _entityLookup.GetEntitiesInRange<PoweredLightComponent>(
                      apcCoords,
-                     component.Radius))
+                     overloadComp.Radius))
         {
-            if (_random.Prob(component.LightOverloadProbability))
+            if (_random.Prob(overloadComp.LightOverloadProbability))
             {
                 var explodeTimer = EnsureComp<LightExplodeTimerComponent>(light);
-                explodeTimer.ExplodeTimer = _random.NextFloat((float) component.MaxDelay.TotalSeconds);
-                explodeTimer.SparksPrototype = component.SparksPrototype;
-                explodeTimer.SparksProbability = component.SparksProbability;
+                explodeTimer.ExplodeTimer = _random.NextFloat((float) overloadComp.MaxDelay.TotalSeconds);
+                explodeTimer.SparksPrototype = overloadComp.SparksPrototype;
+                explodeTimer.SparksProbability = overloadComp.SparksProbability;
             }
 
-            if (_random.Prob(component.LightBlinkingProbability))
+            // We have both of these probabilities get rolled on all the lights so
+            // sometimes there is a light that starts blinking then explodes.
+            // For the flavor.
+            if (_random.Prob(overloadComp.LightBlinkingProbability))
             {
                 var blinking = EnsureComp<BlinkingPoweredLightComponent>(light);
-                blinking.StopBlinkingTime = _gameTime.CurTime + component.BlinkTime;
+                blinking.StopBlinkingTime = _gameTime.CurTime + overloadComp.BlinkTime;
             }
         }
     }
