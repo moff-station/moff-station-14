@@ -387,6 +387,10 @@
     solution: bloodstream
   - type: DrainableSolution
     solution: bloodstream
+  # Moffstation - Start - cancel out the random colors
+  - type: RandomSprite
+    available: [ ]
+  # Moffstation - End
 
 - type: entity
   parent: MarkerBase
