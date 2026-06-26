@@ -253,6 +253,7 @@ namespace Content.IntegrationTests.Tests
                 // ES fancy timed despawn
                 "ESTimedDespawn",
                 "ESSparkOnTrigger",
+                "BluespaceLocker", // Spawns bluespace farticles in its code
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
