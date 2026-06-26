@@ -96,6 +96,7 @@
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/riotshield.rsi
+    # Moffstation - End
     - type: StaticPrice
       price: 90
     - type: Blocking
@@ -124,6 +125,7 @@
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/lasershield.rsi
+    # Moffstation - End
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -147,6 +149,7 @@
       state: icon
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/bulletshield.rsi
+    # Moffstation - End
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -266,6 +269,7 @@
     - type: Item
       sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
       heldPrefix: makeshift
+    # Moffstation - End
     - type: Blocking
       passiveBlockModifier:
         coefficients:
