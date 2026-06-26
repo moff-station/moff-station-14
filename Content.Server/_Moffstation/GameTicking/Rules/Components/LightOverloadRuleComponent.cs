@@ -27,7 +27,7 @@ public sealed partial class LightOverloadRuleComponent : Component
 
     // The maximum delay before a light explodes.
     [DataField]
-    public TimeSpan MaxDelay =  TimeSpan.FromSeconds(5.0);
+    public TimeSpan MaxDelay = TimeSpan.FromSeconds(5.0);
 
     // The probability that a light becomes a blinking light.
     [DataField]

@@ -87,3 +87,12 @@
   - type: LightOverloadRule
   - type: DynamicRuleCost
     cost: 5
+
+- type: entity
+  parent: LightOverloadRule
+  id: LightOverloadRuleBlinking
+  components:
+  - type: LightOverloadRule
+    radius: 12.0
+    lightOverloadProbability: 0.1
+    lightBlinkingProbability: 0.4
