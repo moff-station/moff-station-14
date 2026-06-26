@@ -6,7 +6,44 @@
     species:
     - Avali
 
-# Basic
+- type: loadoutEffectGroup
+  id: WaterDrinker
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Arachnid
+    - Diona
+    - Dwarf
+    - Gray
+    - Human
+    - Moth
+    - Reptilian
+    - Resomi
+    - SlimePerson
+    - Thaven
+    - Vox
+    - Vulpkanin
+
+# Drink Bottles
+- type: loadout
+  id: LoadoutSpeciesBottleAmmonia
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesAvali
+  storage:
+    back:
+    - DrinkAmmoniaBottleFull
+
+- type: loadout
+  id: LoadoutSpeciesBottleWater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: WaterDrinker
+  storage:
+    back:
+    - DrinkWaterBottleFull
+
+# Basic Survival Box
 - type: loadout
   id: EmergencyAmmonia
   effects:

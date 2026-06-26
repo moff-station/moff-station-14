@@ -1,0 +1,26 @@
+- type: antag
+  id: SyndieVentSoldier
+  name: syndicate footsoldier
+  antagonist: true
+  objective: ghost-role-information-syndicate-solider-description
+  setPreference: false
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: SyndieVentSoldier
+  spawnerPrototype: SyndicateFootsoldierGhostRoleSpawn
+  components:
+  - type: Loadout
+    prototypes:
+    - SyndicateFootsoldierGearArmed
+  - type: RandomHumanoidAppearance
+  - type: RandomMetadata
+    nameSegments: [ NamesDeathCommando ]
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: AutoImplant
+    implants:
+    - RadioImplant
+  mindRoles:
+  - MindRoleSyndieSoldier

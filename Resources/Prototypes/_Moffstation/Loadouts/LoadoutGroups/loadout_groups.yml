@@ -41,6 +41,14 @@
   - GlassesJensen
   - EyePatch
 
+- type: loadoutGroup
+  id: GroupDrinkBottle
+  name: loadout-group-drink-bottle
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesBottleAmmonia
+  - LoadoutSpeciesBottleWater
+
 # Captain
 - type: loadoutGroup
   id: CaptainEyewear
