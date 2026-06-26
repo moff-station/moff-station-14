@@ -83,7 +83,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 10
-    weight: 4
+    weight: 6
   - type: LightOverloadRule
   - type: DynamicRuleCost
     cost: 5
