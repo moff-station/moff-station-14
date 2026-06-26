@@ -8,16 +8,6 @@
   - sprite: _CD/Mobs/Customization/Reptilian/chest.rsi
     state: badmolt
 
-# Moffstation - Start
-- type: marking
-  id: LizardChestDragonwings
-  bodyPart: Chest
-  groupWhitelist: [ Reptilian ]
-  sprites:
-  - sprite: _CD/Mobs/Customization/reptilian_parts.rsi
-    state: body_dragonwings
-# Moffstation - End
-
 # Head
 
 - type: marking
@@ -237,6 +227,14 @@
     state: frill
 
 # Tail
+
+- type: marking
+  id: LizardChestDragonwings
+  bodyPart: Tail
+  groupWhitelist: [ Reptilian ]
+  sprites:
+  - sprite: _CD/Mobs/Customization/reptilian_parts.rsi
+    state: body_dragonwings
 
 - type: marking
   id: TailDropped

@@ -1,5 +1,5 @@
 # These options are kept very sparse to not put emphasis on nudity, and to provide a base for players to feel comfortable with.
-# It's unlikely more will be added to upstream for cosmetic reasons. 
+# It's unlikely more will be added to upstream for cosmetic reasons.
 
 - type: marking
   id: UndergarmentBottomBoxers
@@ -178,7 +178,7 @@
       type: null
       fallbackColor: '#FFFFFF'
   sprites:
-  - sprite: Mobs/Customization/undergarments.rsi
+  - sprite: _Moffstation/Mobs/Customization/undergarments.rsi # Moffstation
     state: boxers_reptilian
 
 - type: marking
@@ -288,4 +288,3 @@
   sprites:
   - sprite: Mobs/Customization/undergarments.rsi
     state: tanktop_vulpkanin
-    
