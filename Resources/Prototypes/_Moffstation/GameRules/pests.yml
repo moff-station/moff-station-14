@@ -60,60 +60,74 @@
       prob: 0.001
 
 - type: entity
-  id: CarpMigration
+  id: CarpSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
+    earliestStart: 20
+    minimumPlayers: 15
     weight: 6
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: MobCarp
-      prob: 0.01
-    - id: MobCarpMagic
-      prob: 0.001
-    - id: MobCarpHolo
-      prob: 0.001
-    - id: MobShark
-      prob: 0.001
-    - id: MobDragonDungeon
-      prob: 0.0001
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - !type:GroupSelector
+        weight: 5
+        children:
+        - id: MobCarp
+      - !type:GroupSelector
+        weight: 1
+        children:
+        - id: MobCarpMagic
+        - id: MobCarpHolo
+        - id: MobShark
+      - !type:GroupSelector
+        weight: 0.1
+        children:
+        - id: MobDragonDungeon
 
 - type: entity
-  id: HostileGorillaMigration
+  id: GorillaSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
+    earliestStart: 20
+    minimumPlayers: 15
     weight: 2
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: MobGorillaHostile
-      prob: 0.005
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 2, 3
+      children:
+      - id: MobGorillaHostile
 
 - type: entity
-  id: SyndyCatMigration
+  id: SyndyCatSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
+    earliestStart: 20
+    minimumPlayers: 15
     weight: 2
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: MobCatSyndy
-      prob: 0.0005
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 1, 1
+      children:
+      - id: MobCatSyndy
 
 - type: entity
   id: ScurretMigration
@@ -133,28 +147,28 @@
       maxSpawns: 1
 
 - type: entity
-  id: FleshMigration
+  id: FleshSpawnHorde
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
+    earliestStart: 20
+    minimumPlayers: 15
     weight: 2
-    duration: 30
-  - type: VentCrittersRule
-    entries:
-    - id: MobFleshLover
-      prob: 0.01
-    - id: MobFleshGolem
-      prob: 0.01
-    - id: MobFleshClamp
-      prob: 0.01
-    - id: MobFleshJared
-      prob: 0.01
-    - id: MobAbomination
-      prob: 0.01
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 3, 6
+      children:
+      - id: MobFleshLover
+      - id: MobFleshGolem
+      - id: MobFleshClamp
+      - id: MobFleshJared
+      - id: MobAbomination
+        weight: 0.3
 
 - type: entity
   id: ReptileMigration
