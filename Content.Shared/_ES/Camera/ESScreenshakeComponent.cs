@@ -42,7 +42,7 @@ public partial record ESScreenshakeCommand(ESScreenshakeParameters? Translationa
 ///     Represents the parameters of a single instance of screenshake, which may apply to translational or rotational shake.
 /// </summary>
 [DataDefinition, Serializable, NetSerializable]
-public partial record ESScreenshakeParameters()
+public partial record ESScreenshakeParameters
 {
     /// <summary>
     ///     Strength of the shake.

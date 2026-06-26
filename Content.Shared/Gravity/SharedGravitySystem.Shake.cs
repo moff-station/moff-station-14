@@ -56,7 +56,7 @@ public abstract partial class SharedGravitySystem
 
         // ES SCREENSHAKE LOGIC
         // instead of poopass camera kick
-        var translation = new ESScreenshakeParameters() { Trauma = 0.8f, DecayRate = 0.04f, Frequency = 0.015f };
+        var translation = new ESScreenshakeParameters { Trauma = 0.8f, DecayRate = 0.04f, Frequency = 0.015f };
         var filter = Filter.BroadcastGrid(uid);
         _shake.Screenshake(filter, translation, null);
 

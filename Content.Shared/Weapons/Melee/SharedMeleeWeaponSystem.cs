@@ -1088,10 +1088,10 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         var trauma = 0.2f;
         var decayRate = 5.0f;
 
-        var shakeRotation = new ESScreenshakeParameters()
+        var shakeRotation = new ESScreenshakeParameters
             { Trauma = 0.06f, DecayRate = 0.5f, Frequency = 0.004f };
-        var userShakeTranslation = new ESScreenshakeParameters() { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
-        var otherShakeTranslation = new ESScreenshakeParameters() { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
+        var userShakeTranslation = new ESScreenshakeParameters { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
+        var otherShakeTranslation = new ESScreenshakeParameters { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
         _shake.Screenshake(user, userShakeTranslation, shakeRotation);
         foreach (var shakeTarget in targets)
         {

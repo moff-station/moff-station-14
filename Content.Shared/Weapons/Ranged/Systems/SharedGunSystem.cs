@@ -422,8 +422,8 @@ public abstract partial class SharedGunSystem : EntitySystem
         var shotDirection = (toMap - fromMap).Normalized();
 
         // this is a suspicious place to do this but whatever.
-        var gunShakeTranslation = new ESScreenshakeParameters() { Trauma = 0.5f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f, Direction = shotDirection};
-        var gunShakeRotation = new ESScreenshakeParameters() { Trauma = 0.045f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f};
+        var gunShakeTranslation = new ESScreenshakeParameters { Trauma = 0.5f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f, Direction = shotDirection};
+        var gunShakeRotation = new ESScreenshakeParameters { Trauma = 0.045f * gun.Comp.CameraRecoilScalarModified, DecayRate = 10.0f, Frequency = 0.008f};
         _shake.Screenshake(user, gunShakeTranslation, gunShakeRotation);
         // Moffstation - End
 

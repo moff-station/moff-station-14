@@ -55,7 +55,7 @@ public sealed partial class DamageOtherOnHitSystem : SharedDamageOtherOnHitSyste
             // ES START
             // lower recoil + shake
             _sharedCameraRecoil.KickCamera(args.Target, direction * 0.1f);
-            var otherHitShake = new ESScreenshakeParameters() { Trauma = 0.35f, DecayRate = 1.4f, Frequency = 0.014f };
+            var otherHitShake = new ESScreenshakeParameters { Trauma = 0.35f, DecayRate = 1.4f, Frequency = 0.014f };
             _shake.Screenshake(args.Target, otherHitShake, null);
             // ES END
         }
