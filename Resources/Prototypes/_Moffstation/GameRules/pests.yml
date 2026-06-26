@@ -79,17 +79,17 @@
       - !type:GroupSelector
         weight: 5
         children:
-        - id: MobCarp
+        - id: MobCarpSmasher
       - !type:GroupSelector
         weight: 1
         children:
-        - id: MobCarpMagic
-        - id: MobCarpHolo
-        - id: MobShark
+        - id: MobCarpMagicSmasher
+        - id: MobCarpHoloSmasher
+        - id: MobSharkSmasher
       - !type:GroupSelector
         weight: 0.1
         children:
-        - id: MobDragonDungeon
+        - id: MobDragonDungeonSmasher
 
 - type: entity
   id: GorillaSpawnHorde
@@ -127,7 +127,7 @@
     table: !type:GroupSelector
       rolls: 1, 1
       children:
-      - id: MobCatSyndy
+      - id: MobCatSyndySmasher
 
 - type: entity
   id: ScurretMigration
@@ -163,11 +163,11 @@
     table: !type:GroupSelector
       rolls: 3, 6
       children:
-      - id: MobFleshLover
-      - id: MobFleshGolem
-      - id: MobFleshClamp
-      - id: MobFleshJared
-      - id: MobAbomination
+      - id: MobFleshLoverSmasher
+      - id: MobFleshGolemSmasher
+      - id: MobFleshClampSmasher
+      - id: MobFleshJaredSmasher
+      - id: MobAbominationSmasher
         weight: 0.3
 
 - type: entity
@@ -207,3 +207,94 @@
       prob: 0.01
     - id: MobWildHuman
       prob: 0.001
+
+- type: entity
+  id: ArgocyteSpawnHorde
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 20
+    minimumPlayers: 15
+    weight: 5
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: MobArgocyteSkitterSmasher
+      - id: MobArgocyteSwiperSmasher
+      - id: MobArgocyteMolderSmasher
+      - id: MobArgocytePouncerSmasher
+      - id: MobArgocyteGliderSmasher
+      - id: MobArgocyteCrawlerSmasher
+        weight: 0.3
+      - id: MobArgocyteHarvesterSmasher
+        weight: 0.3
+      - id: MobArgocyteEnforcerSmasher
+        weight: 0.1
+
+- type: entity
+  id: HivebotSpawnHorde
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 20
+    minimumPlayers: 15
+    weight: 5
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: MobHivebotSmasher
+      - id: MobHivebotRanged
+      - id: MobHivebotStrongSmasher
+        weight: 0.3
+
+- type: entity
+  id: BatSpawnHorde
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 20
+    minimumPlayers: 15
+    weight: 5
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: MobBatSmasher
+
+- type: entity
+  id: SpaceCreatureSpawnHorde
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 20
+    minimumPlayers: 15
+    weight: 5
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: MobSpiderSpaceSmasher
+      - id: MobBearSpaceSmasher
+      - id: MobKangarooSpaceSmasher
