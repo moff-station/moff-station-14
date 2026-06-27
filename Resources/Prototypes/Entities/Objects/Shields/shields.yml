@@ -449,6 +449,7 @@
       available:
       - shield:
           eshield-on: Rainbow
+          # Moffstation - End
     - type: ItemToggle
       soundActivate:
         path: /Audio/Weapons/ebladeon.ogg
@@ -464,7 +465,7 @@
       - type: DisarmMalus
         malus: 0.6
     - type: Sprite
-      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield Resprites
       layers:
         - state: eshield-icon
         - state: eshield-on
@@ -474,7 +475,7 @@
           map: [ "shield" ]
     - type: Item
       size: Small
-      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield Resprites
       heldPrefix: eshield
     - type: UseDelay
       delay: 0.5
