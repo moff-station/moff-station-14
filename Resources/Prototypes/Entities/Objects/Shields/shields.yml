@@ -547,15 +547,13 @@
   id: BrokenEnergyShield
   description: Something inside is burned out, it is no longer functional.
   components:
-    # Moffstation - Shield resprites - Start
     - type: Sprite
-      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield resprites
       state: eshield-icon
     - type: Item
-      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/e_shield.rsi # Moffstation - Shield resprites
       size: Small
       heldPrefix: eshield
-    # Moffstation - Shield resprites - End
 
 - type: entity
   name: telescopic shield
