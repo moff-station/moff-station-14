@@ -493,10 +493,9 @@
       enabled: false
       radius: 1.5
       energy: 2
-      color: white
+      color: white # Moffstation - Shield Resprites
     - type: ItemTogglePointLight
-      toggleableVisualsColorModulatesLights: true
-    # Moffstation - Shield resprites - End
+      toggleableVisualsColorModulatesLights: true # Moffstation - Shield Resprites
     - type: Reflect
       reflectProb: 0.95
       reflects:
