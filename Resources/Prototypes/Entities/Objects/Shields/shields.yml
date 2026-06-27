@@ -269,10 +269,10 @@
   components:
     # Moffstation - Shield resprites - Start
     - type: Sprite
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/makeshiftshield.rsi
       state: makeshift-icon
     - type: Item
-      sprite: _Moffstation/Objects/Weapons/Melee/shields.rsi
+      sprite: _Moffstation/Objects/Weapons/Melee/makeshiftshield.rsi
       heldPrefix: makeshift
     # Moffstation - Shield resprites - End
     - type: Blocking
