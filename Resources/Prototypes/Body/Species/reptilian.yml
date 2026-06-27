@@ -100,11 +100,13 @@
           32:
             sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi # Moffstation - RR the lizards (Reptilian Resprite)
             state: mask
+      # Moffstation - Start - RR the lizards (Reptilian Resprite)
       shoes:
         sizeMaps:
           32:
             sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
             state: feet
+      # Moffstation - End      
   - type: InitialBody
     organs:
       Torso: OrganReptilianTorso
