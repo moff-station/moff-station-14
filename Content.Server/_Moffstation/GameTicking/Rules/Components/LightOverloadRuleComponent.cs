@@ -36,7 +36,7 @@ public sealed partial class LightOverloadRuleComponent : Component
 
     // The amount of time a light will remain blinking.
     [DataField]
-    public TimeSpan BlinkTime =  TimeSpan.FromSeconds(30.0);
+    public TimeSpan BlinkTime = TimeSpan.FromSeconds(30.0);
 
     // The announcement to make when this rule triggers.
     [DataField]
