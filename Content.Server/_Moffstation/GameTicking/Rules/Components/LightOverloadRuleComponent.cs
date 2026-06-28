@@ -40,7 +40,7 @@ public sealed partial class LightOverloadRuleComponent : Component
 
     // The announcement to make when this rule triggers.
     [DataField]
-    public string Announcement = "light-overload-announcement";
+    public LocId Announcement = "light-overload-announcement";
 
     // The color to use when making the announcement
     [DataField]
