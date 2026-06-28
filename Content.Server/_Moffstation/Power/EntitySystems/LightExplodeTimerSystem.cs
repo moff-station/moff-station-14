@@ -28,7 +28,7 @@ public sealed partial class LightExplodeTimerSystem : EntitySystem
 
             _poweredLight.TryDestroyBulb(lightUid, light);
 
-            if (!_random.Prob(explodeTimer.SparksProbability))
+            if (_random.Prob(explodeTimer.SparksProbability))
                 Spawn(explodeTimer.SparksPrototype, xform.Coordinates);
 
             RemComp(lightUid, explodeTimer);
