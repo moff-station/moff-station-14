@@ -6387,6 +6387,13 @@ Entries:
   id: 1531
   time: '2026-06-16T17:42:45.000'
   url: https://github.com/moff-station/moff-station-14/pull/1531
+- author: DuckManZach
+  changes:
+  - message: Xeno stats have been changed back to their original values
+    type: tweak
+  id: 1532
+  time: '2026-06-27T04:05:37.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1532
 - author: Dave
   changes:
   - message: new PAI sprites
@@ -6446,6 +6453,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1550
 - author: Nyxilath
   changes:
+  - message: Avali Ninjas now spawn with an oxygen tank.
+    type: fix
+  id: 1552
+  time: '2026-06-23T16:34:07.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1552
+- author: Nyxilath
+  changes:
   - message: Personal item for character 'Delirium'
     type: add
   id: 1555
@@ -6462,5 +6476,67 @@ Entries:
   id: 1557
   time: '2026-06-23T02:11:03.000'
   url: https://github.com/moff-station/moff-station-14/pull/1557
+- author: Nyxilath
+  changes:
+  - message: Geras slimes now properly show their ID on HUDs.
+    type: fix
+  - message: Geras slimes are no longer considered neutral towards non-slime mobs.
+    type: fix
+  id: 1558
+  time: '2026-06-24T17:32:17.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1558
+- author: DuckManZach
+  changes:
+  - message: Added an automatic discord event for when we have uptime!
+    type: add
+  id: 1560
+  time: '2026-06-23T19:34:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1560
+- author: MissKay1994
+  changes:
+  - message: Vox can now caw and hiss at you! Caw!
+    type: add
+  id: 1561
+  time: '2026-06-24T17:31:59.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1561
+- author: no player facing change, but holy shit thanks Zero
+  changes: []
+  id: 1562
+  time: '2026-06-23T18:42:04.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1562
+- author: Nyxilath
+  changes:
+  - message: Gray accents now respect the accentless trait.
+    type: fix
+  - message: Gray accent is now selectable as a trait.
+    type: add
+  id: 1564
+  time: '2026-06-23T18:17:43.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1564
+- author: DuckManZach
+  changes:
+  - message: Tweaked the gray accent to be a bit more understandable.
+    type: tweak
+  - message: Grays are now weak to brute and strong against thermal damage.
+    type: tweak
+  - message: Added guidebook details on gray weakness/strengths.
+    type: add
+  id: 1566
+  time: '2026-06-24T17:08:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1566
+- author: Nyxilath
+  changes:
+  - message: Grays are now more gray.
+    type: tweak
+  id: 1568
+  time: '2026-06-26T03:16:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1568
+- author: DuckManZach
+  changes:
+  - message: Shortened ghost role timers.
+    type: tweak
+  id: 1574
+  time: '2026-06-26T17:07:26.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1574
 Name: Mofflog
 Order: -2

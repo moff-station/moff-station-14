@@ -2,11 +2,13 @@ using System.Text.RegularExpressions;
 using Content.Server._Moffstation.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Shared.Speech;
+using Robust.Shared.Random;
 
 namespace Content.Server._Moffstation.Speech.EntitySystems;
 
 public sealed partial class GrayAccentSystem : EntitySystem
 {
+    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     private static readonly Regex RegexLowercaseOu = new(@"\Bou(?!nt\b)");
@@ -29,6 +31,10 @@ public sealed partial class GrayAccentSystem : EntitySystem
     private static readonly Regex RegexUppercaseUr = new(@"UR\B");
     private static readonly Regex RegexSentenceCaseUr = new(@"Ur\B");
 
+    // Controls the likelihood of the more unintelligible parts of the gray accent
+    // TODO: In the future we should add this as a customization option, but for now turning it down should suffice
+    private const float ReplacementChance = 0.6f;
+
     public override void Initialize()
     {
         SubscribeLocalEvent<GrayAccentComponent, AccentGetEvent>(OnAccent);
@@ -46,25 +52,25 @@ public sealed partial class GrayAccentSystem : EntitySystem
         msg = RegexUppercaseOu.Replace(msg, "OO");
 
         // goodbye -> go'udbye
-        msg = RegexLowercaseOo.Replace(msg, "o'u");
-        msg = RegexUppercaseOo.Replace(msg, "O'U");
-        msg = RegexSentenceCaseOo.Replace(msg, "O'u");
+        msg = ChanceReplace(msg, RegexLowercaseOo, "o'u");
+        msg = ChanceReplace(msg, RegexUppercaseOo, "O'U");
+        msg = ChanceReplace(msg, RegexSentenceCaseOo, "O'u");
 
-        // meter -> metah
+        // vote -> votii
         msg = RegexLowercaseEndingE.Replace(msg, "ii");
         msg = RegexUppercaseEndingE.Replace(msg, "II");
 
         // somebody -> somebod'i
-        msg = RegexLowercaseEndingY.Replace(msg, "'i");
-        msg = RegexUppercaseEndingY.Replace(msg, "'I");
+        msg = ChanceReplace(msg, RegexLowercaseEndingY, "'i");
+        msg = ChanceReplace(msg, RegexUppercaseEndingY, "'I");
 
         // cat -> xeat
-        msg = RegexLowercaseC.Replace(msg, "xe");
-        msg = RegexUppercaseC.Replace(msg, "XE");
+        msg = ChanceReplace(msg, RegexLowercaseC, "xe");
+        msg = ChanceReplace(msg, RegexUppercaseC, "XE");
 
-        // hue -> hø
-        msg = RegexLowercaseAh.Replace(msg, "'arc");
-        msg = RegexUppercaseAh.Replace(msg, "'ARC");
+        // blah -> bl'arch
+        msg = ChanceReplace(msg, RegexLowercaseAh, "'arc");
+        msg = ChanceReplace(msg, RegexUppercaseAh, "'ARC");
 
         // everyone -> evrëyone
         msg = RegexLowercaseEr.Replace(msg, "rë");
@@ -78,6 +84,12 @@ public sealed partial class GrayAccentSystem : EntitySystem
 
         return msg;
     }
+
+    private string ChanceReplace(string input, Regex regex, string replacement)
+    {
+        return regex.Replace(input, match => _random.Prob(ReplacementChance) ? replacement : match.Value);
+    }
+
     private void OnAccent(Entity<GrayAccentComponent> ent, ref AccentGetEvent args)
     {
         args.Message = Accentuate(args.Message);
