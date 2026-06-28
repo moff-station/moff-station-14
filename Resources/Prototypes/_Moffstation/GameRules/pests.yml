@@ -105,10 +105,10 @@
     duration: 5
     maxDuration: 20
   - type: VentHordeRule
-    table: !type:GroupSelector
-      rolls: 2, 3
-      children:
-      - id: MobGorillaHostile
+    table: !type:EntSelector
+      amount: !type:RangeNumberSelector
+        range: 2, 3
+      id: MobGorillaHostile
 
 - type: entity
   id: SyndyCatSpawnHorde
@@ -124,10 +124,8 @@
     duration: 5
     maxDuration: 20
   - type: VentHordeRule
-    table: !type:GroupSelector
-      rolls: 1, 1
-      children:
-      - id: MobCatSyndySmasher
+    table: !type:EntSelector
+      id: MobCatSyndySmasher
 
 - type: entity
   id: ScurretMigration
@@ -189,6 +187,35 @@
       prob: 0.01
     - id: MobWildReptilian
       prob: 0.001
+
+- type: entity
+  id: XenoSpawnHorde
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-horde-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    earliestStart: 20
+    minimumPlayers: 15
+    weight: 2
+    duration: 5
+    maxDuration: 20
+  - type: VentHordeRule
+    table: !type:GroupSelector
+      rolls: 4, 8
+      children:
+      - id: MobXeno
+      - id: MobXenoRunner
+      - id: MobXenoDrone
+      - id: MobXenoSpitter
+        weight: 0.5
+      - id: MobXenoRavager
+        weight: 0.5
+      - id: MobXenoPraetorian
+        weight: 0.3
+      - id: MobXenoQueen
+        weight: 0.1
 
 - type: entity
   id: MammalMigration
