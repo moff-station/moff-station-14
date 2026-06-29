@@ -35,7 +35,7 @@ public abstract partial class SharedStainSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StainableComponent, InventoryRelayedEvent<SpilledOnEvent>>(OnSpilledOn);
+        Subs.SubscribeWithRelay<StainableComponent, SpilledOnEvent>(OnSpilledOn);
         SubscribeLocalEvent<StainableComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
         SubscribeLocalEvent<StainableComponent, WringStainDoAfterEvent>(OnWring);
         SubscribeLocalEvent<StainableComponent, SolutionChangedEvent>(OnSolutionChanged);
@@ -47,7 +47,7 @@ public abstract partial class SharedStainSystem : EntitySystem
             UpdateVisuals(ent);
     }
 
-    private void OnSpilledOn(Entity<StainableComponent> ent, ref InventoryRelayedEvent<SpilledOnEvent> args)
+    private void OnSpilledOn(Entity<StainableComponent> ent, ref SpilledOnEvent args)
     {
         if (IsStainBlocked(ent))
             return;
@@ -55,8 +55,8 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
-        var transferAmount = FixedPoint.FixedPoint2.Min(args.Args.Solution.Volume, ent.Comp.SpillTransferAmount);
-        var split = args.Args.Solution.SplitSolution(transferAmount);
+        var transferAmount = FixedPoint.FixedPoint2.Min(args.Solution.Volume, ent.Comp.SpillTransferAmount);
+        var split = args.Solution.SplitSolution(transferAmount);
 
         for (var i = split.Contents.Count - 1; i >= 0; i--)
         {

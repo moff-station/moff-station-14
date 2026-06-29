@@ -40,7 +40,6 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private InventorySystem _inventory = default!;
 
-
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
 
@@ -82,8 +81,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         if (_inventory.TryGetSlotEntity(ent.Owner, "shoes", out var shoes))
         {
             var spilledEvent = new SpilledOnEvent(puddleUid, splitSol);
-            var relayedEvent = new InventoryRelayedEvent<SpilledOnEvent>(spilledEvent);
-            RaiseLocalEvent(shoes.Value, relayedEvent);
+            RaiseLocalEvent(shoes.Value, spilledEvent);
         }
     }
 
@@ -257,7 +255,8 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         if (!_random.Prob(0.5f))
             return;
 
-        if (!_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.SolutionName, ref entity.Comp.Solution, out var solution))
+        if (!_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.SolutionName, ref entity.Comp.Solution,
+                out var solution))
             return;
 
         Popups.PopupEntity(Loc.GetString("puddle-component-slipped-touch-reaction", ("puddle", entity.Owner)),

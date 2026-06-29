@@ -44,9 +44,7 @@ public sealed partial class StainSystem : SharedStainSystem
 
         foreach (var (_, layerData) in BuildVisuals(ent, ent.Comp.IconVisuals, "icon"))
         {
-#pragma warning disable CS0618
-            ent.Comp.RevealedLayers.Add(args.Sprite.AddLayer(layerData));
-#pragma warning restore CS0618
+            ent.Comp.RevealedLayers.Add(_sprite.AddLayer(spriteEnt, layerData, null));
         }
     }
 
