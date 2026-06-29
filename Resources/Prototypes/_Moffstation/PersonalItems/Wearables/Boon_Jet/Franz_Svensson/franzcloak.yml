@@ -1,0 +1,40 @@
+# Player Boon_Jet - Character: Franz Svensson
+
+- type: entity
+  parent: ClothingNeckCloakMoth
+  id: &id PersonalItemFranzCloak
+  name: Oversized moth-wing cloak
+  description: A large, blanket-like cloak resembling a pair of moth wings. The fabric is thick and fluffy, carrying the faint scent of fresh soil and cardboard boxes.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: _Moffstation\PersonalItems\Wearables\Boon_Jet\Franz_Svensson\franzcloak.rsi
+  - type: ToggleableClothing
+    clothingPrototype: PersonalItemFranzHood
+    requiredSlot:
+    - neck
+    slot: head
+  - type: DetailExaminable
+    content: The tag sewn into the inner collar has the name "Svens" written on it in orange marker.
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: TypingIndicatorClothing
+    proto: moth
+  - type: UseDelay
+  - type: EmitSoundOnActivate
+    sound: &PlushieMothSound
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnCollide
+    sound: *PlushieMothSound
+- type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Franz Svensson
