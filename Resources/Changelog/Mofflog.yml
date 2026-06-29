@@ -6547,5 +6547,14 @@ Entries:
   id: 1579
   time: '2026-06-29T16:55:08.000'
   url: https://github.com/moff-station/moff-station-14/pull/1579
+- author: Centronias
+  changes:
+  - message: Remove AI shell's built-in tool module.
+    type: remove
+  - message: Revert AI shell module capacity to 1 from 2.
+    type: tweak
+  id: 1585
+  time: '2026-06-29T20:11:10.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1585
 Name: Mofflog
 Order: -2
