@@ -105,7 +105,7 @@
 # https://academo.org/demos/colour-temperature-relationship/
 - type: entity
   parent: BaseLightbulb
-  name: incandescent light bulb
+  name: light bulb # Moffstation - not incandescent
   id: LightBulb
   description: A light bulb.
   components:
@@ -147,7 +147,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#d25d4f" # Moffstation - Paletted lighting
+    color: "#d24434" # Moffstation - Paletted lighting
     lightEnergy: 0.5
     lightRadius: 5
     lightSoftness: 3
@@ -164,7 +164,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#dc8135" # Moffstation - Paletted lighting
+    color: "#dc741e" # Moffstation - Paletted lighting
     lightEnergy: 1
     lightRadius: 6
     lightSoftness: 3
@@ -181,7 +181,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#b99b70" # Moffstation - Paletted lighting
+    color: "#ffcd5b" # Moffstation - Paletted lighting
     lightEnergy: 0.3 # old incandescents just arent as bright
     lightRadius: 6
     lightSoftness: 1.1
@@ -312,7 +312,7 @@
   id: LightTubeCrystalCyan
   components:
   - type: LightBulb
-    color: "#93dfe1" # Moffstation - Paletted Lighting
+    color: "#47dee1" # Moffstation - Paletted Lighting
   - type: Construction
     graph: CyanLight
     node: icon
@@ -327,7 +327,7 @@
   id: LightTubeCrystalBlue
   components:
   - type: LightBulb
-    color: "#3f5c7c" # Moffstation - Paletted Lighting
+    color: "#1f7cd4" # Moffstation - Paletted Lighting
   - type: Construction
     graph: BlueLight
     node: icon
@@ -357,7 +357,7 @@
   id: LightTubeCrystalPink
   components:
   - type: LightBulb
-    color: "#e193c8" # Moffstation - Paletted Lighting
+    color: "#e15cb7" # Moffstation - Paletted Lighting
   - type: Construction
     graph: PinkLight
     node: icon
@@ -452,7 +452,7 @@
   id: LightBulbCrystalCyan
   components:
   - type: LightBulb
-    color: "#93dfe1" # Moffstation - Paletted Lighting
+    color: "#47dee1" # Moffstation - Paletted Lighting
   - type: Construction
     graph: CyanLightBulb
     node: icon
@@ -467,7 +467,7 @@
   id: LightBulbCrystalBlue
   components:
   - type: LightBulb
-    color: "#516a97" # Moffstation - Paletted Lighting
+    color: "#1f7cd4" # Moffstation - Paletted Lighting
   - type: Construction
     graph: BlueLightBulb
     node: icon
@@ -497,7 +497,7 @@
   id: LightBulbCrystalPink
   components:
   - type: LightBulb
-    color: "#e193c8" # Moffstation - Paletted Lighting
+    color: "#e15cb7" # Moffstation - Paletted Lighting
   - type: Construction
     graph: PinkLightBulb
     node: icon
