@@ -111,7 +111,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#FFD1A3" # 4000K color temp
+    color: "#edeeff" # Moffstation - Paletted lighting
     lightEnergy: 1.0
     lightRadius: 6
     lightSoftness: 1.1
@@ -128,7 +128,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#EEEEFF"
+    color: "#ded8ff" # Moffstation - Paletted lighting
     lightEnergy: 1
     lightRadius: 8
     lightSoftness: 1
@@ -147,7 +147,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#ba473f"
+    color: "#d25d4f" # Moffstation - Paletted lighting
     lightEnergy: 0.5
     lightRadius: 5
     lightSoftness: 3
@@ -164,7 +164,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#ff9833" # 2200k color temp
+    color: "#dc8135" # Moffstation - Paletted lighting
     lightEnergy: 1
     lightRadius: 6
     lightSoftness: 3
@@ -181,7 +181,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#FFD1A3" # 4000K color temp
+    color: "#b99b70" # Moffstation - Paletted lighting
     lightEnergy: 0.3 # old incandescents just arent as bright
     lightRadius: 6
     lightSoftness: 1.1
@@ -205,7 +205,7 @@
   components:
   - type: LightBulb
     bulb: Bulb
-    color: "#CCFF60"
+    color: "#a0c842" # Moffstation - Paletted lighting
     lightEnergy: 0.45
     lightRadius: 1.5
     lightSoftness: 3
@@ -221,7 +221,7 @@
   description: A light fixture.
   components:
   - type: LightBulb
-    color: "#FFE4CE" # 5000K color temp
+    color: "#edeeff" # Moffstation - Paletted Lighting
     lightEnergy: 0.8
     lightRadius: 10
     lightSoftness: 1
@@ -234,7 +234,7 @@
   description: An aging light fixture.
   components:
   - type: LightBulb
-    color: "#FFDABB" # old fluorescents are yellower-4500K temp
+    color: "#dfdde4" # Moffstation - Paletted Lighting
     lightEnergy: 0.5
     lightRadius: 10
     lightSoftness: 1
@@ -257,7 +257,7 @@
   id: LedLightTube
   components:
   - type: LightBulb
-    color: "#EEEEFF"
+    color: "#ded8ff" # Moffstation - Paletted Lighting
     lightEnergy: 1
     lightRadius: 15
     lightSoftness: 0.9
@@ -271,7 +271,7 @@
   id: ExteriorLightTube
   components:
   - type: LightBulb
-    color: "#B4FCF0"
+    color: "#b9eefa" # Moffstation - Paletted Lighting
     lightEnergy: 4.5
     lightRadius: 12
     lightSoftness: 0.5
@@ -285,7 +285,7 @@
   id: SodiumLightTube
   components:
   - type: LightBulb
-    color: "#FFAF38"
+    color: "#e9aa22" # Moffstation - Paletted Lighting
     lightEnergy: 4
     lightRadius: 10
     lightSoftness: 0.5
@@ -312,7 +312,7 @@
   id: LightTubeCrystalCyan
   components:
   - type: LightBulb
-    color: "#47f8ff"
+    color: "#93dfe1" # Moffstation - Paletted Lighting
   - type: Construction
     graph: CyanLight
     node: icon
@@ -327,7 +327,7 @@
   id: LightTubeCrystalBlue
   components:
   - type: LightBulb
-    color: "#39a1ff"
+    color: "#3f5c7c" # Moffstation - Paletted Lighting
   - type: Construction
     graph: BlueLight
     node: icon
@@ -342,7 +342,7 @@
   id: LightTubeCrystalYellow
   components:
   - type: LightBulb
-    color: "#ffde46"
+    color: "#fffc55" # Moffstation - Paletted Lighting
   - type: Construction
     graph: YellowLight
     node: icon
@@ -357,7 +357,7 @@
   id: LightTubeCrystalPink
   components:
   - type: LightBulb
-    color: "#ff66cc"
+    color: "#e193c8" # Moffstation - Paletted Lighting
   - type: Construction
     graph: PinkLight
     node: icon
@@ -372,7 +372,7 @@
   id: LightTubeCrystalOrange
   components:
   - type: LightBulb
-    color: "#ff8227"
+    color: "#dc8135" # Moffstation - Paletted Lighting
   - type: Construction
     graph: OrangeLight
     node: icon
@@ -388,7 +388,7 @@
   id: LightTubeCrystalBlack
   components:
   - type: LightBulb
-    color: "#363636"
+    color: "#3d364f" # Moffstation - Paletted Lighting
     lightEnergy: 1
     lightRadius: 8
   - type: Construction
@@ -405,7 +405,7 @@
   id: LightTubeCrystalRed
   components:
   - type: LightBulb
-    color: "#fb4747"
+    color: "#c03334" # Moffstation - Paletted Lighting
   - type: Construction
     graph: RedLight
     node: icon
@@ -420,7 +420,7 @@
   id: LightTubeCrystalGreen
   components:
   - type: LightBulb
-    color: "#52ff39"
+    color: "#489737" # Moffstation - Paletted Lighting
   - type: Construction
     graph: GreenLight
     node: icon
@@ -438,7 +438,7 @@
   abstract: true
   components:
   - type: LightBulb
-    color: "#47f8ff"
+    color: "#93dfe1" # Moffstation - Paletted Lighting
     lightEnergy: 1
     lightRadius: 6
     lightSoftness: 0.5
@@ -452,7 +452,7 @@
   id: LightBulbCrystalCyan
   components:
   - type: LightBulb
-    color: "#47f8ff"
+    color: "#93dfe1" # Moffstation - Paletted Lighting
   - type: Construction
     graph: CyanLightBulb
     node: icon
@@ -467,7 +467,7 @@
   id: LightBulbCrystalBlue
   components:
   - type: LightBulb
-    color: "#39a1ff"
+    color: "#516a97" # Moffstation - Paletted Lighting
   - type: Construction
     graph: BlueLightBulb
     node: icon
@@ -482,7 +482,7 @@
   id: LightBulbCrystalYellow
   components:
   - type: LightBulb
-    color: "#ffde46"
+    color: "#fffc55" # Moffstation - Paletted Lighting
   - type: Construction
     graph: YellowLightBulb
     node: icon
@@ -497,7 +497,7 @@
   id: LightBulbCrystalPink
   components:
   - type: LightBulb
-    color: "#ff66cc"
+    color: "#e193c8" # Moffstation - Paletted Lighting
   - type: Construction
     graph: PinkLightBulb
     node: icon
@@ -512,7 +512,7 @@
   id: LightBulbCrystalOrange
   components:
   - type: LightBulb
-    color: "#ff8227"
+    color: "#c65e2e" # Moffstation - Paletted Lighting
   - type: Construction
     graph: OrangeLightBulb
     node: icon
@@ -528,7 +528,7 @@
   id: LightBulbCrystalBlack
   components:
   - type: LightBulb
-    color: "#363636"
+    color: "#3d364f" # Moffstation - Paletted Lighting
     lightEnergy: 1
     lightRadius: 8
   - type: Construction
@@ -545,7 +545,7 @@
   id: LightBulbCrystalRed
   components:
   - type: LightBulb
-    color: "#fb4747"
+    color: "#c03334" # Moffstation - Paletted Lighting
   - type: Construction
     graph: RedLightBulb
     node: icon
@@ -560,7 +560,7 @@
   id: LightBulbCrystalGreen
   components:
   - type: LightBulb
-    color: "#52ff39"
+    color: "#489737" # Moffstation - Paletted Lighting
   - type: Construction
     graph: GreenLightBulb
     node: icon
