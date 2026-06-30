@@ -116,7 +116,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 20
+        damage: 100
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -130,3 +130,7 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
