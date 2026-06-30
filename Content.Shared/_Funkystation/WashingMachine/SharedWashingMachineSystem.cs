@@ -104,12 +104,12 @@ public abstract partial class SharedWashingMachineSystem : EntitySystem
         var items = storage.Contents.ContainedEntities.ToHashSet();
 
         var machineEv = new WashingMachineStartedWashingEvent(items);
-        RaiseLocalEvent(ent.Owner, machineEv);
+        RaiseLocalEvent(ent.Owner, ref machineEv);
 
         var itemEv = new WashingMachineIsBeingWashed(ent.Owner, items);
         foreach (var item in items)
         {
-            RaiseLocalEvent(item, itemEv);
+            RaiseLocalEvent(item, ref itemEv);
         }
 
         return true;

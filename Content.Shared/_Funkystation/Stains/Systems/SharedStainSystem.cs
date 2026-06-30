@@ -2,6 +2,7 @@
 using Content.Shared._Funkystation.Stains.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.DoAfter;
 using Content.Shared.Fluids;
 using Content.Shared.Inventory;
@@ -9,6 +10,7 @@ using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
@@ -30,6 +32,7 @@ public abstract partial class SharedStainSystem : EntitySystem
     [Dependency] private SharedDoAfterSystem _doAfter = null!;
     [Dependency] private SharedPuddleSystem _puddle = null!;
     [Dependency] private SharedPopupSystem _popup = null!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {
@@ -55,12 +58,15 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
-        var transferAmount = FixedPoint.FixedPoint2.Min(args.Solution.Volume, ent.Comp.SpillTransferAmount);
+        // Moffstation - Changed transfer amound to available volume
+        var transferAmount = FixedPoint.FixedPoint2.Min(args.Solution.AvailableVolume, ent.Comp.SpillTransferAmount);
         var split = args.Solution.SplitSolution(transferAmount);
 
         for (var i = split.Contents.Count - 1; i >= 0; i--)
         {
-            if (split.Contents[i].Reagent.Prototype == "Water")
+            // Moffstation - check for Absorbent here rather than hardcoding water
+            if (_prototype.TryIndex<ReagentPrototype>(split.Contents[i].Reagent.Prototype, out var reagentProto)
+                && reagentProto.Absorbent)
                 split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
         }
 

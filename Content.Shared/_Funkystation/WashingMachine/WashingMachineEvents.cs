@@ -1,45 +1,13 @@
-﻿namespace Content.Shared._Funkystation.WashingMachine;
+namespace Content.Shared._Funkystation.WashingMachine;
 
-public sealed class WashingMachineIsBeingWashed : EntityEventArgs
-{
-    public EntityUid WashingMachine;
-    public HashSet<EntityUid> Items;
+[ByRefEvent]
+public record struct WashingMachineIsBeingWashed(EntityUid WashingMachine, HashSet<EntityUid> Items);
 
-    public WashingMachineIsBeingWashed(EntityUid washingMachine, HashSet<EntityUid> items)
-    {
-        WashingMachine = washingMachine;
-        Items = items;
-    }
-}
+[ByRefEvent]
+public record struct WashingMachineStartedWashingEvent(HashSet<EntityUid> Items);
 
-public sealed class WashingMachineStartedWashingEvent : EntityEventArgs
-{
-    public HashSet<EntityUid> Items;
+[ByRefEvent]
+public record struct WashingMachineWashedEvent(EntityUid WashingMachine, HashSet<EntityUid> Items);
 
-    public WashingMachineStartedWashingEvent(HashSet<EntityUid> items)
-    {
-        Items = items;
-    }
-}
-
-public sealed class WashingMachineWashedEvent : EntityEventArgs
-{
-    public EntityUid WashingMachine;
-    public HashSet<EntityUid> Items;
-
-    public WashingMachineWashedEvent(EntityUid washingMachine, HashSet<EntityUid> items)
-    {
-        WashingMachine = washingMachine;
-        Items = items;
-    }
-}
-
-public sealed class WashingMachineFinishedWashingEvent : EntityEventArgs
-{
-    public HashSet<EntityUid> Items;
-
-    public WashingMachineFinishedWashingEvent(HashSet<EntityUid> items)
-    {
-        Items = items;
-    }
-}
+[ByRefEvent]
+public record struct WashingMachineFinishedWashingEvent(HashSet<EntityUid> Items);
