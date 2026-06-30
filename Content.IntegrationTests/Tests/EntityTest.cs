@@ -250,6 +250,7 @@ namespace Content.IntegrationTests.Tests
 
                 // Moffstation - Portals spawn more stuff on trigger, self-explanatory
                 "SpawnEntityTableOnTrigger",
+                "AddGameRuleOnTrigger",
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);

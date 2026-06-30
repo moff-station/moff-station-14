@@ -11,6 +11,29 @@
     raffle:
       settings: default
 
+# Pizza delivery scurret spawn point
+- type: entity
+  parent: MarkerBase
+  id: SpawnPointGhostPizzaDeliveryScurret
+  name: ghost role spawn point
+  suffix: Pizza delivery scurret
+  components:
+  - type: GhostRole
+    name: ghost-role-information-pizza-delivery-scurret-name
+    description: ghost-role-information-pizza-delivery-scurret-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+  - type: GhostRoleMobSpawner
+    prototype: MobPizzaDeliveryScurret
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: margherita-slice
+
+# Syndicate footsoldier spawn point
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner

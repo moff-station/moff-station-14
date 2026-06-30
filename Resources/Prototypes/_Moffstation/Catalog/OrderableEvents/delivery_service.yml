@@ -1,0 +1,15 @@
+﻿- type: entity
+  id: PizzaDeliveryService
+  name: Arnold's Pizza delivery
+  description: Four pizzas, delivered by Arnold Pizza's finest Wawa!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn
+  - type: AddGameRuleOnTrigger
+    gameRule: PizzaDeliverySpawn
+  - type: Sprite
+    layers:
+    - sprite: Objects/Consumable/Food/Baked/pizza.rsi
+      state: margherita-slice
+  - type: TimedDespawn
+    lifetime: 0.3

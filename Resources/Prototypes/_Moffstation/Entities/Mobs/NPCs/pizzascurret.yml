@@ -1,0 +1,7 @@
+﻿- type: entity
+  name: Pizza Delivery Scurret
+  id: MobPizzaDeliveryScurret
+  parent: [MobScurret, MobBaseEmotionalSupportScurret]
+  components:
+  - type: Loadout
+    prototypes: [ PizzaDeliveryScurretGear ]
