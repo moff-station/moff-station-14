@@ -30,15 +30,6 @@
   - type: EmitSoundOnCollide
     sound: *PlushieMothSound
 
-  id: *id
-  storage:
-    back:
-    - *id
-  effects:
-  - !type:PersonalItemLoadoutEffect
-    character:
-    - Franz Svensson
-
 - type: entity
   parent: ClothingHeadHatHoodMoth
   id: PersonalItemFranzHood
@@ -59,3 +50,11 @@
     - FacialHair
 
 - type: loadout
+  id: *id
+  storage:
+    back:
+    - *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Franz Svensson
