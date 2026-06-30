@@ -176,6 +176,11 @@ public sealed partial class ReplicatorSystem : EntitySystem
 
     private void OnEnableReplicatorUpgrades(Entity<ReplicatorComponent> entity, ref EnableReplicatorUpgradesEvent args)
     {
+        // Assume that if we have actions, they're the right ones. Without this, we'd dupe actions in the case that a\
+        // replicator doesn't upgrade immediately.
+        if (entity.Comp.UpgradeActionEntities.Count > 0)
+            return;
+
         var actions = entity.Comp.UpgradeOptionActions
             .Select(actionId => _actions.AddAction(entity, actionId))
             .OfType<EntityUid>();
