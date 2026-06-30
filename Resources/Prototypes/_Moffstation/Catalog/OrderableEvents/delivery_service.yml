@@ -6,8 +6,10 @@
   components:
   - type: TriggerOnSpawn
   - type: AddGameRuleOnTrigger
-    gameRule: LoneOpsSpawn
+    gameRule: PizzaDeliverySpawn
   - type: Sprite
     layers:
     - sprite: Objects/Consumable/Food/Baked/pizza.rsi
       state: margherita-slice
+  - type: TimedDespawn
+    lifetime: 0.3
