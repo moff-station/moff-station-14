@@ -16,6 +16,7 @@ using Content.Shared.Popups;
 using Content.Shared.Slippery;
 using Content.Shared.Inventory;
 using Content.Shared._Funkystation.Fluids;
+using Content.Shared.Standing;
 using Content.Shared.StepTrigger.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
@@ -41,6 +42,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
+    [Dependency] private StandingStateSystem _standing = default!; // Moffstation - Clothing stains
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
 
@@ -69,14 +71,18 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         if (solution.Volume <= FixedPoint2.Zero)
             return;
 
-        var transferAmount = FixedPoint2.Min(FixedPoint2.New(1), solution.Volume);
-        var splitSol = _solutionContainerSystem.SplitSolution(ent.Comp.Solution.Value, transferAmount);
 
-        if (_inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes))
-        {
-            var spilledEvent = new SpilledOnEvent(ent.Owner, splitSol);
-            RaiseLocalEvent(shoes.Value, spilledEvent);
-        }
+        // Choose le target...
+        // if standing and have shoes, just get it on their shoes
+        // otherwise, just spill it on them in general
+        var target = args.OtherEntity;
+        if (!_standing.IsDown(args.OtherEntity)
+            && _inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes)
+            && shoes is { } shoeUid)
+            target = shoeUid;
+
+        var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
+        RaiseLocalEvent(target, spilledEvent);
     }
     // Funky - End
 

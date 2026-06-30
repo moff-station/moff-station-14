@@ -58,8 +58,11 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
-        // Moffstation - Changed transfer amound to available volume
+        // Moffstation - Changed transfer amound to available volume, also check if its more than 0 before splitting
         var transferAmount = FixedPoint.FixedPoint2.Min(args.Solution.AvailableVolume, ent.Comp.SpillTransferAmount);
+        if (transferAmount <= 0)
+            return;
+
         var split = args.Solution.SplitSolution(transferAmount);
 
         for (var i = split.Contents.Count - 1; i >= 0; i--)
