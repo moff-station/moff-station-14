@@ -56,6 +56,9 @@ public sealed partial class WashingMachineComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public float AccumulatedSelfDamage = 0f;
+
+    [DataField]
+    public SoundSpecifier HitSound = new SoundCollectionSpecifier("MetalThud");
 }
 
 [Serializable, NetSerializable]

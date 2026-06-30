@@ -28,8 +28,6 @@ public sealed partial class WashingMachineSystem : SharedWashingMachineSystem
     [Dependency] private IRobustRandom _random = null!;
     [Dependency] private ReactiveSystem _reactive = null!;
 
-    private static readonly SoundSpecifier HitSound = new SoundCollectionSpecifier("MetalThud");
-
     public override void Initialize()
     {
         base.Initialize();
@@ -90,7 +88,7 @@ public sealed partial class WashingMachineSystem : SharedWashingMachineSystem
         if (hasHeavyItems)
         {
             if (_random.Prob(comp.ThumpSoundChance * frameTime))
-                Audio.PlayPvs(HitSound, uid);
+                Audio.PlayPvs(comp.HitSound, uid);
 
             comp.AccumulatedSelfDamage += comp.SelfDamagePerSecond * frameTime;
         }
