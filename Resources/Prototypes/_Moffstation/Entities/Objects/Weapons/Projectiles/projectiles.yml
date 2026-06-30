@@ -109,6 +109,9 @@
     sound: /Audio/Effects/sizzle.ogg
     keysIn:
     - heated
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
