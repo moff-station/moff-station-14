@@ -1,2 +1,2 @@
-guide-entry-blood-brothers = Blood Bound
+guide-entry-blood-brothers = The Blood Pact
 guide-entry-conspirators = Conspirators
