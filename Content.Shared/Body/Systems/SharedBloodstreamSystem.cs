@@ -42,7 +42,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
     [Dependency] private AlertsSystem _alertsSystem = default!;
     [Dependency] private MobStateSystem _mobStateSystem = default!;
     [Dependency] private DamageableSystem _damageableSystem = default!;
-    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!; // Funky - Stains
 
     public override void Initialize()
     {

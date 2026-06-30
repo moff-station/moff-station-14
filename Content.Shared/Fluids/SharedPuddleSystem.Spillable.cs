@@ -164,11 +164,13 @@ public abstract partial class SharedPuddleSystem
 
             var splitSolution = _solutionContainerSystem.SplitSolution(soln.Value, totalSplit / hitCount);
 
+            // Forky - Start - Stains
             if (splitSolution.Volume > 0)
             {
                 var stainEv = new SpilledOnEvent(entity.Owner, splitSolution.Clone());
                 RaiseLocalEvent(hit, stainEv);
             }
+            // Forky - End
 
             AdminLogger.Add(LogType.MeleeHit,
                 $"{ToPrettyString(args.User):actor} "

@@ -122,8 +122,10 @@ public sealed partial class VomitSystem : EntitySystem
             solution.AddReagent(new ReagentId(VomitPrototype, _bloodstream.GetEntityBloodData((uid, bloodStream))), vomitAmount);
         }
 
+        // Forky - Start - Stains
         var stainEv = new SpilledOnEvent(uid, solution.Clone());
         RaiseLocalEvent(uid, stainEv);
+        // Forky - End
 
         if (_puddle.TrySpillAt(uid, solution, out var puddle, false))
         {
