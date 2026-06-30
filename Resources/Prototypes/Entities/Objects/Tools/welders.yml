@@ -96,6 +96,11 @@
     price: 40
   - type: IgnitionSource
     temperature: 700
+  # Moffstation - Start - More Sparks
+  - type: ESSparkOnItemToggle
+    count: 1
+    sparkPrototype: MoffEffectSparksSilent
+  # Moffstation - End
 
 - type: entity
   parent: [SolutionToolWelder, BaseWelder]
