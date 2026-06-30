@@ -10,9 +10,9 @@ namespace Content.Shared._Moffstation.Radio;
 /// </summary>
 public sealed partial class SharedRadioWarpSystem : EntitySystem
 {
-    [Dependency] IGameTiming _time = default!;
-    [Dependency] SharedSuitSensorSystem _sensor = default!;
-    [Dependency] SharedTransformSystem _transform = default!;
+    [Dependency] private IGameTiming _time = default!;
+    [Dependency] private SharedSuitSensorSystem _sensor = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

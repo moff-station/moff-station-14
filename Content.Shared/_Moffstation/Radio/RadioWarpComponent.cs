@@ -20,6 +20,7 @@ public sealed partial class RadioWarpComponent : Component
     [DataField]
     public TimeSpan DelayBetweenWarps =  TimeSpan.FromSeconds(0.5);
 
+    [DataField]
     public TimeSpan NextAvailableWarp =  TimeSpan.Zero;
 }
 
