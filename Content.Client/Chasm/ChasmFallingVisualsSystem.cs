@@ -36,8 +36,10 @@ public sealed partial class ChasmFallingVisualsSystem : EntitySystem
 
         entity.Comp.OriginalScale = sprite.Scale;
 
-        if (!_animationPlayerQuery.TryComp(entity, out var player) ||
-            _anim.HasRunningAnimation(player, ChasmFallAnimationKey))
+        // Moffstation - Begin - Add `EnsureComp<AnimationPlayerComponent>` because previously many entities did not play the animation
+        var player = EnsureComp<AnimationPlayerComponent>(entity);
+        if (_anim.HasRunningAnimation(player, ChasmFallAnimationKey))
+        // Moffstation - End
         {
             return;
         }

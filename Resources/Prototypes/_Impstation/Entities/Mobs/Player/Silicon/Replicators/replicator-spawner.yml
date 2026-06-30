@@ -36,7 +36,7 @@
   id: SpawnPointGhostReplicatorQueenAntag
   name: replicator spawn point
   suffix: Queen
-  categories: [ Spawner ]
+  categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: GhostRole
     name: ghost-role-information-replicator-name

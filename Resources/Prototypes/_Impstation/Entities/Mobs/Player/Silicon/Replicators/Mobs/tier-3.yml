@@ -32,14 +32,10 @@
     showInHands: false
     disableExplosionRecursion: true
     canBeStripped: false
+    activeHandId: Hand
     hands:
-      Right:
-        location: Right
-      Left:
+      Hand:
         location: Left
-    sortedHands:
-    - Right
-    - Left
   - type: Loadout
     prototypes:
     - StartingGearReplicatorT3Weapon

@@ -1,33 +1,33 @@
 - type: startingGear
+  id: StartingGearReplicatorBase
+  equipment:
+    pocket1: PinpointerReplicatorUnremoveable
+
+- type: startingGear
+  parent: StartingGearReplicatorBase
   id: StartingGearReplicatorTools
   inhand:
     - OmnitoolUnremoveable
     - WelderExperimentalUnremoveable
-  equipment:
-    pocket1: PinpointerReplicatorUnremoveable
 
 - type: startingGear
+  parent: StartingGearReplicatorBase
   id: StartingGearReplicatorT2Alt
   inhand:
     - ReplicatorT2AltWeapon
     - ReplicatorT2AltMeleeWeapon
-  equipment:
-    pocket1: PinpointerReplicatorUnremoveable
 
 - type: startingGear
+  parent: StartingGearReplicatorBase
   id: StartingGearReplicatorT1Weapon
   inhand:
     - ReplicatorT1Weapon
-  equipment:
-    pocket1: PinpointerReplicatorUnremoveable
 
 - type: startingGear
+  parent: StartingGearReplicatorBase
   id: StartingGearReplicatorT3Weapon
   inhand:
     - ReplicatorT3Weapon
-#    - ReplicatorAAC
-  equipment:
-    pocket1: PinpointerReplicatorUnremoveable
 
 - type: entity
   id: ReplicatorT1Weapon
@@ -57,7 +57,7 @@
     maxCharge: 150
     startingCharge: 150
   - type: BatterySelfRecharger
-    autoRechargeRate: 1000
+    autoRechargeRate: 50
   - type: MeleeWeapon
     damage:
       types:
@@ -166,6 +166,7 @@
   - type: Pinpointer
     component: ReplicatorNest
     targetName: replicator nest
+    isActive: true
 
 - type: entity
   parent: PinpointerReplicator

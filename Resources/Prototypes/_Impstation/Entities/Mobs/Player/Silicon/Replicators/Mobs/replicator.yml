@@ -61,9 +61,13 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Replicator
+    allowedEmotes:
+    - Laugh
   - type: Vocal
     sounds:
-      Unsexed: UnisexSilicon
+      Unsexed: UnisexSiliconXenoborg
+    wilhelmProbability: 0
+  - type: UnblockableSpeech
   - type: DamagedSiliconAccent
   #  - type: Monotonous
   #  - type: NoContractionsAccent
@@ -91,6 +95,7 @@
     - DoorBumpOpener
     - CanPilot
     - VimPilot
+    - SiliconEmotes
   - type: MobState
     allowedStates:
     - Alive
@@ -181,3 +186,4 @@
   - type: CanMoveInAir
   - type: MovementIgnoreGravity
   - type: SyncSprite
+  - type: ComplexInteraction

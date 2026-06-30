@@ -42,9 +42,9 @@ public sealed partial class ReplicatorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ReplicatorComponent, ReplicatorUpgradeActionEvent>(OnReplicatorUpgradeAction);
-        SubscribeLocalEvent<ReplicatorComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ReplicatorComponent, AttackAttemptEvent>(OnAttackAttempt);
-        SubscribeLocalEvent<ReplicatorComponent, ToggleCombatActionEvent>(UpdateVisuals);
+        SubscribeLocalEvent<ReplicatorComponent, ToggleCombatActionEvent>(UpdateVisuals,
+            after: [typeof(SharedCombatModeSystem)]);
         SubscribeLocalEvent<ReplicatorComponent, MobStateChangedEvent>(UpdateVisuals);
         SubscribeLocalEvent<ReplicatorComponent, EnableReplicatorUpgradesEvent>(OnEnableReplicatorUpgrades);
         SubscribeLocalEvent<ReplicatorComponent, NestDestroyedEvent>(OnNestDestroyed);
@@ -147,19 +147,6 @@ public sealed partial class ReplicatorSystem : EntitySystem
     }
 
 
-    private void OnMapInit(Entity<ReplicatorComponent> entity, ref MapInitEvent args)
-    {
-        var actions = entity.Comp.UpgradeOptionActions
-            .Select(actionId =>
-            {
-                var action = _actions.AddAction(entity, actionId);
-                _actions.SetEnabled(action, false);
-                return action;
-            })
-            .OfType<EntityUid>();
-        entity.Comp.UpgradeActionEntities.AddRange(actions);
-    }
-
     private void OnAttackAttempt(Entity<ReplicatorComponent> ent, ref AttackAttemptEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
@@ -189,10 +176,10 @@ public sealed partial class ReplicatorSystem : EntitySystem
 
     private void OnEnableReplicatorUpgrades(Entity<ReplicatorComponent> entity, ref EnableReplicatorUpgradesEvent args)
     {
-        foreach (var action in entity.Comp.UpgradeActionEntities)
-        {
-            _actions.SetEnabled(action, true);
-        }
+        var actions = entity.Comp.UpgradeOptionActions
+            .Select(actionId => _actions.AddAction(entity, actionId))
+            .OfType<EntityUid>();
+        entity.Comp.UpgradeActionEntities.AddRange(actions);
     }
 
     private void OnReplicatorUpgradeAction(Entity<ReplicatorComponent> ent, ref ReplicatorUpgradeActionEvent args)
