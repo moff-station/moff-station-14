@@ -59,10 +59,11 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         SubscribeLocalEvent<PuddleComponent, SpreadNeighborsEvent>(OnPuddleSpread);
         SubscribeLocalEvent<PuddleComponent, SlipEvent>(OnPuddleSlip);
 
-        SubscribeLocalEvent<PuddleComponent, StartCollideEvent>(OnStepInPuddle);
+        SubscribeLocalEvent<PuddleComponent, StartCollideEvent>(OnStepInPuddle); // Moffstation - Stains
     }
 
     // Funky - Start - Clothing Stains
+    // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
         if (!_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
