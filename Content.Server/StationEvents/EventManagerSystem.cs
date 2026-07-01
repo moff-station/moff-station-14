@@ -74,7 +74,7 @@ public sealed partial class EventManagerSystem : EntitySystem
     /// <summary>
     /// Builds a list of all possible events and their probabilities.
     /// </summary>
-    public IEnumerable<(EntProtoId, double)> ListLimitedEvents(
+    public IEnumerable<(EntProtoId, float)> ListLimitedEvents( // Moffstation - Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
         EntityTableSelector limitedEventsTable,
         TimeSpan? currentTime = null,
         int? playerCount = null)
@@ -96,12 +96,14 @@ public sealed partial class EventManagerSystem : EntitySystem
         return TryBuildLimitedEvents(selectedEvents, out limitedEvents, currentTime, playerCount);
     }
 
-    public IEnumerable<(EntProtoId, double)> ListLimitedEvents(
-        IEnumerable<(EntProtoId, double)> selectedEvents,
+    // Moffstation - Begin - Rewrite table selectors with visitors. Early merge of https://github.com/Space-Wizards-Federation/space-station-14/pull/177
+    public IEnumerable<(EntProtoId, float)> ListLimitedEvents(
+        IEnumerable<(EntProtoId, float)> selectedEvents,
+    // Moffstation - End
         TimeSpan? currentTime = null,
         int? playerCount = null)
     {
-        var limitedEvents = new List<(EntProtoId, double)>();
+        var limitedEvents = new List<(EntProtoId, float)>(); // Moffstation
 
         playerCount ??= _playerManager.PlayerCount;
 
