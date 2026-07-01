@@ -1,0 +1,65 @@
+- type: entity
+  id: CrateLockBoxGeneric
+  parent: [BaseStructureDynamic]
+  name: unassigned lock box
+  description: A secure lock box awaiting department assignment.
+  components:
+  - type: Transform
+    noRot: true
+  - type: Icon
+    sprite: Structures/Storage/Crates/lockbox.rsi
+    state: icon
+  - type: Sprite
+    noRot: true
+    sprite: Structures/Storage/Crates/lockbox.rsi
+    layers:
+    - state: base
+    - state: closed
+    - state: locked
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.4,0.3,0.19"
+        density: 50
+        mask:
+        - CrateMask
+        layer:
+        - MachineLayer
+  - type: Damageable
+    damageModifierSet: StructuralMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: InteractionOutline
+  - type: StaticPrice
+    price: 0
+  - type: Construction
+    graph: CrateLockBoxGeneric
+    node: cratelockboxgeneric
+  - type: UserInterface
+    interfaces:
+      enum.LockboxSelectUiKey.Key:
+        type: LockboxSelectBoundUserInterface
+  - type: ActivatableUI
+    key: enum.LockboxSelectUiKey.Key
+    singleUser: true
+  - type: LockboxSelect
+    options:
+      Engineering: CrateLockBoxEngineering
+      Medical: CrateLockBoxMedical
+      Research: CrateLockBoxScience
+      Security: CrateLockBoxSecurity
+      Service: CrateLockBoxService
