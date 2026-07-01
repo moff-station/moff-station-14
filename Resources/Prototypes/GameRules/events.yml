@@ -43,7 +43,7 @@
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
     - id: DragonSpawn
-    - id: NinjaSpawn
+    #- id: NinjaSpawn # Moffstation - Disable Ninja
     - id: ParadoxCloneSpawn
     - id: SleeperAgents
     - id: ZombieOutbreak
