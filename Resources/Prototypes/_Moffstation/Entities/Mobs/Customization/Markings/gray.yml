@@ -5,7 +5,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: &head.rsi "_Moffstation/Mobs/Customization/Gray/head.rsi"
+  - sprite: &head_rsi "_Moffstation/Mobs/Customization/Gray/head.rsi"
     state: antennas
 
 - type: marking
@@ -13,7 +13,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: droopyantennas
 
 - type: marking
@@ -21,7 +21,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: bushyeyebrows
 
 - type: marking
@@ -29,7 +29,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: catears
 
 - type: marking
@@ -37,7 +37,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: eyebags
 
 - type: marking
@@ -45,7 +45,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: eyelashes
 
 - type: marking
@@ -53,7 +53,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: fakestache
 
 - type: marking
@@ -61,7 +61,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: floppyears
 
 - type: marking
@@ -69,7 +69,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: gem
 
 - type: marking
@@ -77,7 +77,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: gleepglow
 
 - type: marking
@@ -85,7 +85,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: gleepcheekglow
 
 - type: marking
@@ -93,7 +93,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: largeears
 
 - type: marking
@@ -101,7 +101,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: smalleyebrows
 
 - type: marking
@@ -109,7 +109,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: tinyantennas
 
 - type: marking
@@ -117,7 +117,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: whiskers
 
 - type: marking
@@ -125,7 +125,7 @@
   bodyPart: Head
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *head.rsi
+  - sprite: *head_rsi
     state: wrinkles
 
 # Eye Markings
@@ -142,9 +142,9 @@
         type: !type:SimpleColoring
           color: "#eeefff"
   sprites:
-  - sprite: &eyes.rsi "_Moffstation/Mobs/Customization/Gray/eyes.rsi"
+  - sprite: &eyes_rsi "_Moffstation/Mobs/Customization/Gray/eyes.rsi"
     state: eyes
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: eyes_glimmer
 
 - type: marking
@@ -161,11 +161,11 @@
       tiredeyes_ridge:
         type: !type:SkinColoring
   sprites:
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: tiredeyes
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: tiredeyes_glimmer
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: tiredeyes_ridge
 
 - type: marking
@@ -182,11 +182,11 @@
       angryeyes_ridge:
         type: !type:SkinColoring
   sprites:
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: angryeyes
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: angryeyes_glimmer
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: angryeyes_ridge
 
 - type: marking
@@ -201,9 +201,9 @@
         type: !type:SimpleColoring
           color: "#eeefff"
   sprites:
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: bigeyes
-  - sprite: *eyes.rsi
+  - sprite: *eyes_rsi
     state: bigeyes_glimmer
 
 # Chest Markings
@@ -231,7 +231,7 @@
   bodyPart: LArm
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: &arms.rsi "_Moffstation/Mobs/Customization/Gray/arms.rsi"
+  - sprite: &arms_rsi "_Moffstation/Mobs/Customization/Gray/arms.rsi"
     state: gleepglowlarm
 
 - type: marking
@@ -239,7 +239,7 @@
   bodyPart: LArm
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *arms.rsi
+  - sprite: *arms_rsi
     state: cropcircleslarm
 
 - type: marking
@@ -247,7 +247,7 @@
   bodyPart: RArm
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *arms.rsi
+  - sprite: *arms_rsi
     state: gleepglowrarm
 
 
@@ -256,7 +256,7 @@
   bodyPart: RArm
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *arms.rsi
+  - sprite: *arms_rsi
     state: cropcirclesrarm
 
 # Leg Markings
@@ -266,7 +266,7 @@
   bodyPart: LLeg
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: &legs.rsi "_Moffstation/Mobs/Customization/Gray/legs.rsi"
+  - sprite: &legs_rsi "_Moffstation/Mobs/Customization/Gray/legs.rsi"
     state: gleepglowlleg
 
 - type: marking
@@ -274,7 +274,7 @@
   bodyPart: RLeg
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *legs.rsi
+  - sprite: *legs_rsi
     state: gleepglowrleg
 
 - type: marking
@@ -282,7 +282,7 @@
   bodyPart: LFoot
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *legs.rsi
+  - sprite: *legs_rsi
     state: gleepglowlfoot
 
 - type: marking
@@ -290,7 +290,7 @@
   bodyPart: RFoot
   groupWhitelist: [ Gray ]
   sprites:
-  - sprite: *legs.rsi
+  - sprite: *legs_rsi
     state: gleepglowrfoot
 
 # Gauze Markings
@@ -303,7 +303,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: &gauze.rsi "_Moffstation/Mobs/Customization/Gray/gauzemarkings.rsi"
+  - sprite: &gauze_rsi "_Moffstation/Mobs/Customization/Gray/gauzemarkings.rsi"
     state: head
 
 - type: marking
@@ -315,7 +315,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: chest
 
 - type: marking
@@ -327,7 +327,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: stomach
 
 - type: marking
@@ -339,7 +339,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: larm
 
 - type: marking
@@ -351,7 +351,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: rarm
 
 - type: marking
@@ -363,7 +363,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: lhand
 
 - type: marking
@@ -375,7 +375,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: rhand
 
 - type: marking
@@ -387,7 +387,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: lleg
 
 - type: marking
@@ -399,7 +399,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: rleg
 
 - type: marking
@@ -411,7 +411,7 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: lfoot
 
 - type: marking
@@ -423,5 +423,5 @@
       type: !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: *gauze.rsi
+  - sprite: *gauze_rsi
     state: rfoot

@@ -50,9 +50,9 @@
   suffix: Red
   components:
   - type: Sprite
-    sprite: &red_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/red_carpet.rsi" # Moffstation
+    sprite: &red_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/red_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *red_carpet.rsi # Moffstation
+    sprite: *red_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:
@@ -74,9 +74,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &black_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/black_carpet.rsi" # Moffstation
+    sprite: &black_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/black_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *black_carpet.rsi # Moffstation
+    sprite: *black_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:
@@ -98,9 +98,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &pink_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/pink_carpet.rsi" #moffstation
+    sprite: &pink_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/pink_carpet.rsi" #moffstation
   - type: Icon
-    sprite: *pink_carpet.rsi # Moffstation
+    sprite: *pink_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:
@@ -122,9 +122,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &blue_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/blue_carpet.rsi" # Moffstation
+    sprite: &blue_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/blue_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *blue_carpet.rsi
+    sprite: *blue_carpet_rsi
   - type: Destructible
     thresholds:
     - trigger:
@@ -146,9 +146,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &green_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/green_carpet.rsi" # Moffstation
+    sprite: &green_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/green_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *green_carpet.rsi
+    sprite: *green_carpet_rsi
   - type: Destructible
     thresholds:
     - trigger:
@@ -170,9 +170,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &orange_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/orange_carpet.rsi" # Moffstation
+    sprite: &orange_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/orange_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *orange_carpet.rsi # Moffstation
+    sprite: *orange_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:
@@ -194,9 +194,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &skyblue_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/skyblue_carpet.rsi" # Moffstation
+    sprite: &skyblue_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/skyblue_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *skyblue_carpet.rsi # Moffstation
+    sprite: *skyblue_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:
@@ -218,9 +218,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &purple_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/purple_carpet.rsi" # Moffstation
+    sprite: &purple_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/purple_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *purple_carpet.rsi # Moffstation
+    sprite: *purple_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:
@@ -242,9 +242,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &cyan_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/cyan_carpet.rsi" # Moffstation
+    sprite: &cyan_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/cyan_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *cyan_carpet.rsi # Moffstation
+    sprite: *cyan_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:
@@ -266,9 +266,9 @@
   components:
   - type: Clickable
   - type: Sprite
-    sprite: &white_carpet.rsi "_Moffstation/Structures/Furniture/Carpets/white_carpet.rsi" # Moffstation
+    sprite: &white_carpet_rsi "_Moffstation/Structures/Furniture/Carpets/white_carpet.rsi" # Moffstation
   - type: Icon
-    sprite: *white_carpet.rsi # Moffstation
+    sprite: *white_carpet_rsi # Moffstation
   - type: Destructible
     thresholds:
     - trigger:

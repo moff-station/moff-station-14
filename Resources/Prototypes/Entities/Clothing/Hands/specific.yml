@@ -11,7 +11,7 @@
       - Recyclable
   # Moffstation -Start
     - type: Sprite
-      sprite: &color.rsi "_Moffstation/Clothing/Hands/Color/color.rsi"
+      sprite: &color_rsi "_Moffstation/Clothing/Hands/Color/color.rsi"
       layers:
       - state: icon
         color: "#3f3f3f"
@@ -24,7 +24,7 @@
         - state: inhand-right
           color: "#3f3f3f"
     - type: Clothing
-      sprite: *color.rsi
+      sprite: *color_rsi
       clothingVisuals:
         gloves:
         - state: equipped-HAND
