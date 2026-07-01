@@ -30,11 +30,6 @@
 
 - type: latheRecipe
   parent: BaseModularHudModuleT1Recipe
-  id: HudModuleShowContrabandDetails
-  result: HudModuleShowContrabandDetails
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT1Recipe
   id: HudModuleVisionCorrection
   result: HudModuleVisionCorrection
 
@@ -85,13 +80,8 @@
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowMindShieldIcons
-  result: HudModuleShowMindShieldIcons
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowCriminalRecordIcons
-  result: HudModuleShowCriminalRecordIcons
+  id: HudModuleSecurity
+  result: HudModuleSecurity
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe

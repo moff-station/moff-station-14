@@ -102,24 +102,6 @@
   - type: FlashImmunity
 
 - type: entity
-  parent: ClothingEyesModularHudGlasses
-  id: ClothingEyesModularHudCheapSunglasses
-  name: cheap modular HUD sunglasses
-  description: You might feel like a badass wearing these, but anyone can see right through them.
-  components:
-  - type: ModularHudVisuals
-    innateVisuals:
-      lens:
-        color: Black
-        priority: 1000
-      # Intentionally higher specular to make them feel cheap.
-      specular:
-        color: "#FFFFFF30"
-        priority: 1000
-  - type: IdentityBlocker
-    coverage: EYES
-
-- type: entity
   parent: ClothingEyesModularHudBase
   id: ClothingEyesModularHudJamjars
   name: modular HUD jam jar glasses
@@ -184,9 +166,7 @@
     containers:
       modular-hud-modules: !type:AllSelector
         children:
-        - id: HudModuleShowMindShieldIcons
-        - id: HudModuleShowCriminalRecordIcons
-        - id: HudModuleShowContrabandDetails
+        - id: HudModuleSecurity
   - type: Label
     currentLabel: modularhud-premade-security
 
@@ -313,11 +293,11 @@
   id: ClothingEyesEyepatchHudDiag
 
 - type: entity
-  parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudMedicalIcons ]
+  parent: [ ClothingEyesModularHudGlasses, AbstractModularHudMedicalIcons ]
   id: ClothingEyesGlassesMedSunglasses
 
 - type: entity
-  parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudEngineering ]
+  parent: [ ClothingEyesModularHudGlasses, AbstractModularHudEngineering ]
   id: ClothingEyesGlassesMesonSunglasses
 
 - type: entity
@@ -325,7 +305,7 @@
   id: ClothingEyesGlassesMeson
 
 - type: entity
-  parent: [ ClothingEyesModularHudCheapSunglasses, AbstractModularHudBeer ]
+  parent: [ ClothingEyesModularHudGlasses, AbstractModularHudBeer ]
   id: ClothingEyesHudBeer
 
 - type: entity
@@ -355,9 +335,7 @@
     containers:
       modular-hud-modules: !type:AllSelector
         children:
-        - id: HudModuleShowMindShieldIcons
-        - id: HudModuleShowCriminalRecordIcons
-        - id: HudModuleShowContrabandDetails
+        - id: HudModuleSecurity
         - id: HudModuleShowMedicalIcons
   - type: Label
     currentLabel: modularhud-premade-medsec
@@ -371,9 +349,7 @@
     containers:
       modular-hud-modules: !type:AllSelector
         children:
-        - id: HudModuleShowMindShieldIcons
-        - id: HudModuleShowCriminalRecordIcons
-        - id: HudModuleShowContrabandDetails
+        - id: HudModuleSecurity
         - id: HudModuleNoirOverlay
   - type: Label
     currentLabel: modularhud-premade-noir

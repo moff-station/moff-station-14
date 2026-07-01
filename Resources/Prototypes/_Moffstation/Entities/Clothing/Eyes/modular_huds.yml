@@ -96,9 +96,9 @@
 
 - type: entity
   parent: ModularHudModuleBase
-  id: HudModuleShowContrabandDetails
-  name: contraband HUD module
-  description: A heads-up display module which uses advanced pattern-recognition to identify and categorize contraband.
+  id: HudModuleSecurity
+  name: security HUD module
+  description: A heads-up display module which scans the humanoids in view and provides accurate data about their ID, mindshield, and criminal record status.
   components:
   - type: Sprite
     layers:
@@ -113,6 +113,9 @@
       Lens:
         color: Red
         priority: 40
+  - type: ShowJobIcons
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
   - type: ShowContrabandDetails
 
 - type: entity
@@ -192,6 +195,34 @@
   - type: FlashImmunity
 
 - type: entity
+  parent: HudModuleEyeProtection
+  id: HudCheapSunglasses
+  name: Cheap tint HUD module
+  description: Makes you feel like a badass.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      color: White
+    - state: stripe
+      color: Black
+    - state: contacts
+    - state: sec_label
+  - type: ModularHudModule
+    requirements:
+    - *fulleyereq
+    visuals:
+      lens:
+        color: Black
+        priority: 1000
+      # Sunglasses look awful with bright white specular highlights, so this removes them.
+      specular:
+        color: "#FFFFFF30"
+        priority: 1000
+  - type: IdentityBlocker
+    coverage: EYES
+
+- type: entity
   parent: ModularHudModuleBase
   id: HudModuleVisionCorrection
   name: prescription HUD module
@@ -237,27 +268,6 @@
         color: Goldenrod
         priority: 50
   - type: ShowJobIcons
-
-- type: entity
-  parent: HudModuleShowJobIcons
-  id: HudModuleShowMindShieldIcons
-  name: mindshield icon HUD module
-  description: A heads-up display module which scans the humanoids in view and provides accurate data about their ID and mindshield status.
-  components:
-  - type: Sprite
-    layers:
-    - state: base
-      color: White
-    - state: stripe
-      color: *slateblue
-    - state: contacts
-    - state: com_label
-  - type: ModularHudModule
-    visuals:
-      Specular:
-        color: LightSkyBlue
-        priority: 120
-  - type: ShowMindShieldIcons
 
 - type: entity
   parent: ModularHudModuleBase
@@ -308,31 +318,6 @@
         color: gray
         priority: 4
   - type: BlackAndWhiteOverlay
-
-- type: entity
-  parent: ModularHudModuleBase
-  id: HudModuleShowCriminalRecordIcons
-  name: criminal record icons HUD module
-  description: A heads-up display module which scans the humanoids in view and provides accurate data about their criminal records.
-  components:
-  - type: Sprite
-    layers:
-    - state: base
-      color: White
-    - state: stripe
-      color: ForestGreen
-    - state: contacts
-    - state: sec_label
-  - type: ModularHudModule
-    visuals:
-      accent:
-        color: darkblue
-        priority: 10
-  - type: ShowCriminalRecordIcons
-  - type: GuideHelp
-    guides:
-    - Security
-    - Antagonists
 
 - type: entity
   parent: ModularHudModuleBase

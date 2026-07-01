@@ -31,7 +31,6 @@
     - id: ClothingBeltSecurityFilled
     - id: Flash
     # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
-    - id: BoxSecModularHUD # Moffstation - Modular Eyewear
     - id: ClothingHandsGlovesCombat
     - id: ClothingShoesBootsJack
     - id: ClothingOuterCoatWarden
@@ -82,7 +81,6 @@
     - id: Flash
       prob: 0.5
     # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
-    - id: BoxSecModularHUD # Moffstation - Modular Eyewear
     - id: ClothingHeadsetSecurity
     - id: ClothingHandsGlovesColorBlack
     - id: ClothingShoesBootsJack
@@ -116,7 +114,6 @@
   table: !type:AllSelector
     children:
     # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
-    - id: BoxSecModularHUD # Moffstation - Modular Eyewear
     - id: WeaponDisabler
     - id: TrackingImplanter
       amount: 2
@@ -162,7 +159,6 @@
     children:
     # Moffstation - Start - Modular Eyewear
     # - id: ClothingEyesGlassesNoir
-    - id: BoxSecModularHUD
     - id: HudModuleNoirOverlay
     # Moffstation - End
     - id: ClothingHeadHatDetGadget
