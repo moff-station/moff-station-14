@@ -44,17 +44,10 @@ public sealed partial class ExpireIdCardComponent : Component
     public LocId? ExpireMessage;
 
     // Moffstation - Begin - Radio Channel for Temp IDs announcing
-
-    /// <summary>
-    /// Line spoken by the card on a radio channel when it expires
-    /// </summary>
-    [DataField]
-    public LocId? ExpireMessageRadio;
-
-    /// <summary>
-    /// What radio channel do we broadcast our expire message on?
-    /// </summary>
-    [DataField]
-    public ProtoId<RadioChannelPrototype> RadioChannel = "Security";
+    [DataRecord]
+    public sealed record RadioMessage(
+        LocID Message,
+        ProtoId<RadioChannelPrototype> Channel
+    );
    // Moffstation - End
 }
