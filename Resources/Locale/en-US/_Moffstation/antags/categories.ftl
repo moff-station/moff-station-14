@@ -15,3 +15,6 @@ antag-catagory-nanotrasen-desc = The company you (allegedly) work for. Glory to 
 
 antag-catagory-misc-name = Other
 antag-catagory-misc-desc = Various roles which don't fall under the other factions.
+
+antag-catagory-brotherhood-name = The Brotherhood of Nar'Sie
+antag-catagory-brotherhood-desc = An alliance of various seemingly disparate hemomancers unified in worshipping Nar'Sie, in truth these are her agents on the physical realm; bound to her service in exchange for miniscule scraps of her power.
