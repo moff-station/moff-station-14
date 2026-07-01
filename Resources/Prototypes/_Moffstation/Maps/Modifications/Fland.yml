@@ -1,0 +1,23 @@
+- type: mapModification
+  id: FlandModificationsLaundry
+  applyOn:
+  - Fland
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachineClothing
+    bounds: "70, 20, 73, 17"
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachineWinter
+    bounds: "70, 20, 73, 17"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 70.5, 19.5
+  - prototype: WashingMachine
+    position: 71.5, 19.5
+  - prototype: SignLaundromat
+    position: 73.5, 17.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 71.5, 18.5
+  - prototype: PoweredLight
+    position: 71.5, 19.5
