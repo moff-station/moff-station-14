@@ -81,3 +81,33 @@
     - CopperBlood
     - Slime
     - ShimmeringBlood #macro, uncomment for thaven
+
+- type: entity
+  id: MoffDamagedHullVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: MoffAnnounceOnRuleStarted
+    message: damaged-hull-variation-briefing
+    color: salmon
+    serverAnnouncement: true
+  - type: EntitySpawnVariationPass
+    tilesPerEntityAverage: 400
+    tilesPerEntityStdDev: 10
+    entities:
+    - id: MoffC4InstantExplosion
+
+- type: entity
+  name: C-4 Explosion
+  description: UH OH WE ARE EXPLODING
+  suffix: Instant Explosion
+  parent: C4
+  id: MoffC4InstantExplosion
+  components:
+  - type: TriggerOnSpawn
+  - type: TimerTrigger
+    keysIn:
+    - trigger
+    - stuck
+    delay: 0.01
+    delayOptions: [ 0.01 ]
+    beepSound: null
