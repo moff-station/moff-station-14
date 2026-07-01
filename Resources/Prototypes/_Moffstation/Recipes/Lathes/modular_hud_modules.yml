@@ -30,11 +30,6 @@
 
 - type: latheRecipe
   parent: BaseModularHudModuleT1Recipe
-  id: HudModuleShowContrabandDetails
-  result: HudModuleShowContrabandDetails
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT1Recipe
   id: HudModuleVisionCorrection
   result: HudModuleVisionCorrection
 
@@ -57,15 +52,6 @@
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
-  id: HudModuleEyeProtection
-  result: HudModuleEyeProtection
-  materials:
-    Steel: 200
-    Glass: 100
-    Silver: 100 # Eye protection uses silver as a lens filter... or something
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT2Recipe
   id: HudModuleFlashImmunity
   result: HudModuleFlashImmunity
   materials:
@@ -85,13 +71,8 @@
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowMindShieldIcons
-  result: HudModuleShowMindShieldIcons
-
-- type: latheRecipe
-  parent: BaseModularHudModuleT2Recipe
-  id: HudModuleShowCriminalRecordIcons
-  result: HudModuleShowCriminalRecordIcons
+  id: HudModuleSecurity
+  result: HudModuleSecurity
 
 - type: latheRecipe
   parent: BaseModularHudModuleT2Recipe

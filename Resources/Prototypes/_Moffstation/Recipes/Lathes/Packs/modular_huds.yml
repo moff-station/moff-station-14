@@ -2,9 +2,7 @@
 - type: latheRecipePack
   id: ModularHudFramesStatic
   recipes:
-  - ClothingEyesModularHudCheapSunglasses
   - ClothingEyesModularHudGlasses
-  - ClothingEyesModularHudGoggles
   - ClothingEyesModularHudJamjars
   - ClothingEyesModularHudPatch
   - ClothingEyesModularHudVisor
@@ -19,7 +17,6 @@
 - type: latheRecipePack
   id: ModularHudModulesStatic
   recipes:
-  - HudModuleEyeProtection
   - HudModuleShowAccessReaderSettings
   - HudModuleShowInorganicHealthBars
 
@@ -43,7 +40,5 @@
   - HudModuleBlackAndWhiteOverlay
   - HudModuleFlashImmunity
   - HudModuleNoirOverlay
-  - HudModuleShowContrabandDetails
-  - HudModuleShowCriminalRecordIcons
+  - HudModuleSecurity
   - HudModuleShowJobIcons
-  - HudModuleShowMindShieldIcons
