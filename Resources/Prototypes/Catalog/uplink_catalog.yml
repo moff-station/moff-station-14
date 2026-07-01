@@ -1216,15 +1216,24 @@
     Telecrystal: 12
   categories:
     - UplinkDisruption
+    - UplinkObjective # Moffstation - places item in objective shop when DAGD is given
   conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  # Moffstation - Begin - Disable Nukie Restriction on SinguloBeacon for DAGD lock
+  # - !type:StoreWhitelistCondition
+  #  whitelist:
+  #    tags:
+  #    - NukeOpsUplink
+    # Moffstation - End
   - !type:BuyerWhitelistCondition
     blacklist:
       components:
       - SurplusBundle
+  # Moffstation - Begin - DAGD Lock
+  - !type:BuyerObjectiveWhitelistCondition
+      whitelist:
+        components:
+        - DieCondition
+  # Moffstation - End
 
 - type: listing
   id: UplinkCameraBug
