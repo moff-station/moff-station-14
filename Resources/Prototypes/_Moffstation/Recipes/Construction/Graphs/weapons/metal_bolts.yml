@@ -1,10 +1,10 @@
 ﻿- type: constructionGraph
-  id: metalBoltAmmo
+  id: MetalBoltAmmo
   start: start
   graph:
   - node: start
     edges:
-    - to: MetalBoltAmmo
+    - to: metalBoltAmmo
       steps:
       - material: MetalRod
         amount: 2
