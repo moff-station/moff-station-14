@@ -116,12 +116,12 @@ public sealed partial class IdCardSystem : SharedIdCardSystem
                 ChatTransmitRange.Normal,
                 true);
         }
-        // Harmony Change Start - ID card radio system
+        // Moffstation - Begin - Genpop ID radio for expiry announcement
         if (ent.Comp.ExpireMessageRadio != null)
         {
             var message = Loc.GetString(ent.Comp.ExpireMessageRadio, ("name", ent.Owner));
             _radio.SendRadioMessage(ent.Owner, message, ent.Comp.RadioChannel, ent.Owner);
         }
-        // Harmony change end
+        // Moffstation - End
     }
 }
