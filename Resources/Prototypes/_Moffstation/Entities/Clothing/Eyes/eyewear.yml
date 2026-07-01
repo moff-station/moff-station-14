@@ -29,35 +29,6 @@
 
 - type: entity
   parent: ClothingEyesModularHudBase
-  id: ClothingEyesModularHudGoggles
-  name: modular HUD goggles
-  description: Protective and functional, these goggles have an integrated heads-up display for viewing information about the environment.
-  components:
-  - type: Sprite
-    sprite: _Moffstation/Clothing/Eyes/Hud/goggles.rsi
-  - type: Item
-    sprite: _Moffstation/Clothing/Eyes/Hud/goggles.rsi
-  - type: Clothing
-    sprite: _Moffstation/Clothing/Eyes/Hud/goggles.rsi
-  - type: ModularHudVisuals
-    speciesWithDifferentClothing:
-    - arachnid
-    - dog
-    - moth
-    - secdog
-    inhandExcludedLayers:
-      default:
-      - Accent
-      - LensAccentMajor
-    equippedExcludedLayers:
-      default:
-      - specular
-  - type: Tag
-    tags:
-    - FullEyeCovering
-
-- type: entity
-  parent: ClothingEyesModularHudBase
   id: ClothingEyesModularHudGlasses
   name: modular HUD glasses
   description: Truly a marvel of Nanotrasen engineering, these slim glasses have an integrated heads-up display in spite of their small size.
@@ -261,7 +232,7 @@
   id: ClothingEyesGlassesCommand
 
 - type: entity
-  parent: [ ClothingEyesModularHudGoggles, AbstractModularHudChemistry ]
+  parent: [ ClothingEyesModularHudGlasses, AbstractModularHudChemistry ]
   id: ClothingEyesGlassesChemical
 
 - type: entity
@@ -301,10 +272,6 @@
   id: ClothingEyesGlassesMesonSunglasses
 
 - type: entity
-  parent: [ ClothingEyesModularHudGoggles, AbstractModularHudEngineering ]
-  id: ClothingEyesGlassesMeson
-
-- type: entity
   parent: [ ClothingEyesModularHudGlasses, AbstractModularHudBeer ]
   id: ClothingEyesHudBeer
 
@@ -313,7 +280,7 @@
   id: ClothingEyesEyepatchHudBeer
 
 - type: entity
-  parent: [ ClothingEyesModularHudGoggles ]
+  parent: [ ClothingEyesModularHudGlasses ]
   id: ClothingEyesGlassesMedChem
   suffix: MedChem
   components:
