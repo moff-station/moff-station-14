@@ -25,9 +25,10 @@ modularhud-premade-diagnostic = Diagnostic
 modularhud-premade-command = Command
 modularhud-premade-thirst = Beer
 modularhud-premade-chemistry = Chemical Analysis
-modularhud-premade-engineering = Engineering
+modularhud-premade-cheap-sunglasses = Cheap Sunglasses
+modularhud-premade-sunglasses = Sunglasses
 modularhud-premade-medchem = "Valkyrie" MedChem
-modularhud-premade-medSec = MedSec
+modularhud-premade-medsec = MedSec
 
 # Module requirements
 modular-hud-requirement-full-coverage = Requires eyewear which fully covers all eyes

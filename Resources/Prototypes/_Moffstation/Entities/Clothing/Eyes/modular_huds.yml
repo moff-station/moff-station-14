@@ -1,58 +1,6 @@
 # This abstract base modular HUD defines a bunch of visual boilerplate needed to get the dymanic sprites to work, as
 # well as the basic common modular HUD stuff like the container.
 - type: entity
-  parent: ClothingEyesHudBase
-  id: ClothingEyesModularHudBase
-  abstract: true
-  components:
-  - type: Sprite
-    layers:
-    - state: icon-lens
-      map: [ "enum.ModularHudVisualKeys.Lens" ]
-    - state: icon-specular
-      map: [ "enum.ModularHudVisualKeys.Specular" ]
-    - state: icon-lens-accent-minor
-      map: [ "enum.ModularHudVisualKeys.LensAccentMinor" ]
-    - state: icon-lens-accent-major
-      map: [ "enum.ModularHudVisualKeys.LensAccentMajor" ]
-    - state: icon-frame
-      map: [ "enum.ModularHudVisualKeys.Frame" ]
-    - state: icon-accent
-      map: [ "enum.ModularHudVisualKeys.Accent" ]
-  - type: Item
-    inhandVisuals:
-      Left:
-      - state: inhand-left-frame
-      Right:
-      - state: inhand-right-frame
-  - type: Clothing
-    clothingVisuals:
-      eyes:
-      - state: equipped-EYES-frame
-  - type: Appearance
-  - type: ModularHudVisuals
-    defaultVisuals:
-      Accent: Black
-      Lens: LightSteelBlue
-      Specular: White
-    layerMap:
-      Accent: accent
-      Lens: lens
-      Specular: specular
-      LensAccentMinor: lens-accent-minor
-      LensAccentMajor: lens-accent-major
-      Frame: frame
-  - type: ModularHud
-    moduleContainerId: modular-hud-modules
-    maximumContainedModules: 3
-    moduleExtractionToolQuality: Screwing
-    moduleRemovalDelay: 1s
-  - type: ContainerContainer
-    containers:
-      modular-hud-modules: !type:Container
-
-
-- type: entity
   parent: BaseItem
   id: ModularHudModuleBase
   abstract: true
@@ -141,34 +89,6 @@
 
 - type: entity
   parent: ModularHudModuleBase
-  id: HudModuleEyeProtection
-  name: eye protection HUD module
-  description: A heads-up display module which protects the eyes from welding-related injury.
-  components:
-  - type: Sprite
-    layers:
-    - state: base
-      color: White
-    - state: stripe
-      color: &mesongreen "#50FF45"
-    - state: contacts
-    - state: eng_label
-  - type: ModularHudModule
-    requirements:
-    - &fulleyereq
-      failureMessage: "modular-hud-requirement-full-coverage"
-      whitelist:
-        tags:
-        - FullEyeCovering
-    visuals:
-      lens:
-        color: *mesongreen
-        priority: 250
-  - type: EyeProtection
-  - type: IdentityBlocker
-
-- type: entity
-  parent: HudModuleEyeProtection
   id: HudModuleFlashImmunity
   name: flash protection HUD module
   description: A heads-up display module which protects the eyes from bright flashes.
@@ -183,7 +103,11 @@
     - state: sec_label
   - type: ModularHudModule
     requirements:
-    - *fulleyereq
+    - &fulleyereq
+      failureMessage: "modular-hud-requirement-full-coverage"
+      whitelist:
+        tags:
+        - FullEyeCovering
     visuals:
       lens:
         color: Black
@@ -195,7 +119,7 @@
   - type: FlashImmunity
 
 - type: entity
-  parent: HudModuleEyeProtection
+  parent: ModularHudModuleBase
   id: HudCheapSunglasses
   name: Cheap tint HUD module
   description: Makes you feel like a badass.
@@ -402,6 +326,7 @@
   - type: ModularHudModule
     visuals:
       lens:
-        color: "#FFBF00"
+        color: "#996633"
         priority: 70
   - type: ShowThirstIcons
+  - type: SolutionScanner
