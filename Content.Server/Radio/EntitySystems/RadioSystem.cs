@@ -14,6 +14,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared._Moffstation.Radio; // Moffstation - Radio warp
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -97,6 +98,19 @@ public sealed partial class RadioSystem : SharedRadioSystem
             ("name", name),
             ("message", content));
 
+        // Moffstation - Begin - Radio warp
+        var wrappedWarpMessage = Loc.GetString(
+            speech.Bold ? "chat-radio-warp-message-wrap-bold" : "chat-radio-warp-message-wrap",
+            ("color", channel.Color),
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+            ("channel", $"\\[{channel.LocalizedName}\\]"),
+            ("name", name),
+            ("message", content),
+            ("source", GetNetEntity(messageSource)));
+        // Moffstation - End
+
         // most radios are relayed to chat, so lets parse the chat message beforehand
         var chat = new ChatMessage(
             ChatChannel.Radio,
@@ -140,6 +154,15 @@ public sealed partial class RadioSystem : SharedRadioSystem
             RaiseLocalEvent(receiver, ref attemptEv);
             if (attemptEv.Cancelled)
                 continue;
+
+            // Moffstation - Begin - Radio warp
+            var quer = new RadioWarpEnabledQuery();
+            RaiseLocalEvent(receiver, ref quer);
+
+            ev.ChatMsg.Message.WrappedMessage = quer.Enabled
+                ? wrappedWarpMessage
+                : wrappedMessage;
+            // Moffstation - End
 
             // send the message
             RaiseLocalEvent(receiver, ref ev);
