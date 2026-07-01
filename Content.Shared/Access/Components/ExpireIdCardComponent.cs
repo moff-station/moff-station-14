@@ -56,13 +56,5 @@ public sealed partial class ExpireIdCardComponent : Component
     /// </summary>
     [DataField]
     public ProtoId<RadioChannelPrototype> RadioChannel = "Security";
-
-    /// <summary>
-    /// Decides if we want to call a radio or not, off by default.
-    /// We'd rather not want any potential expansions to this system to automatically ping Security, after all
-    /// </summary>
-    [DataField]
-    public bool AlertRadio;
-
-    // Moffstation - End
+   // Moffstation - End
 }
