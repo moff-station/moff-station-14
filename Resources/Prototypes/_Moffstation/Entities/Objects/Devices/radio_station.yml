@@ -1,0 +1,53 @@
+# Ideally all of these flatpacks can be removed one we can map patch these onto upstream maps.
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: StationRadioServerFlatpack
+  name: station radio server flatpack
+  description: A flatpack used for constructing a station radio equipment.
+  components:
+  - type: Flatpack
+    entity: StationRadioServer
+
+- type: entity
+  parent: StationRadioServerFlatpack
+  id: StationRadioRigFlatpack
+  name: station radio rig flatpack
+  components:
+  - type: Flatpack
+    entity: StationRadioRig
+
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: TapeDeckFlatpack
+  name: tape deck flatpack
+  description: A flatpack used for constructing equipment for playing back tapes.
+  components:
+  - type: Flatpack
+    entity: TapeDeck
+
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: VinylPlayerFlatpack
+  name: vinyl player flatpack
+  description: A flatpack used for constructing equipment for playing vinyl and cd disks.
+  components:
+  - type: Flatpack
+    entity: VinylPlayer
+
+- type: entity 
+  parent: BaseFlatpackNoTool
+  id: CdRackFilledFlatpack
+  name: cd rack flatpack
+  description: A flatpack used for constructing a rack designed to store CDs. Comes with CDs included!
+  components:
+  - type: Flatpack
+    entity: CdRackFilled
+
+- type: entity
+  parent: BaseFlatpackNoTool
+  id: CrateRadioStationVinylsFlatpack
+  name: vinyls crate flatpack
+  description: A flatpack used for constructing a crate with a collection of random vinyls inside!
+  components:
+  - type: Flatpack
+    entity: CrateRadioStationVinyls

@@ -25,3 +25,24 @@
         tableId: AllMaidDressesTable
         rolls: !type:ConstantNumberSelector
           value: 5
+
+- type: entityTable
+  id: CrateFillRadioHost
+  table: !type:AllSelector
+    children:
+    - id: StationRadioServerFlatpack
+    - id: StationRadioRigFlatpack
+    - id: TapeDeckFlatpack
+    - id: VinylPlayerFlatpack
+    - id: Multitool # Needed to link Radio equipment together.
+
+- type: entity
+  id: CrateRadioHostFilled
+  parent: CratePlastic
+  name: radio host crate
+  description: A crate filled with all the equipment a radio host could need to get on the air.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: CrateFillRadioHost

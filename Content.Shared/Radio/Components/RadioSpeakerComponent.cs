@@ -29,4 +29,18 @@ public sealed partial class RadioSpeakerComponent : Component
     [DataField]
     public bool LouderSpeech;
     // Moffstation - End
+
+    // Goobstation - Start - Radio Host
+    /// <summary>
+    /// speaks normally when true whispers when false
+    /// </summary>
+    [DataField]
+    public bool SpeakNormally;
+
+    /// <summary>
+    /// Does the radio need to be on a power grid to work?
+    /// </summary>
+    [DataField]
+    public bool PowerRequired;
+    // Goobstation - End - Radio Host
 }
