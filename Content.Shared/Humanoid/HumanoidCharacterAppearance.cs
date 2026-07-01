@@ -83,7 +83,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         Color.Black
     };
 
-    public static HumanoidCharacterAppearance Random(string species, Sex sex)
+    public static HumanoidCharacterAppearance Random(string species, Sex sex, bool randomizeMarkings = true) // Moffstation - Added randomized markings
     {
         var random = IoCManager.Resolve<IRobustRandom>();
         var markingManager = IoCManager.Resolve<MarkingManager>();
@@ -103,10 +103,56 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
             _ => strategy.ClosestSkinColor(new Color(random.NextFloat(1), random.NextFloat(1), random.NextFloat(1), 1)),
         };
 
-        // Safety step. Most systems which called Random() also called this, and not doing so caused issues with markings.
-        // In the future it could *maybe* be removed, but it's probably worth the extra CPU cycles to validate this info.
+        var markings = new Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>();
+
+        // Moffstation - Start - Random markings
+        if (randomizeMarkings)
+        {
+            foreach (var (organ, organData) in markingManager.GetMarkingData(species))
+            {
+                var groupProto = protoMan.Index(organData.Group);
+                var organMarkings = new Dictionary<HumanoidVisualLayers, List<Marking>>();
+
+                foreach (var layer in organData.Layers)
+                {
+                    var available = markingManager.MarkingsByLayerAndGroupAndSex(layer, organData.Group, sex).Values.ToList();
+                    if (available.Count == 0)
+                        continue;
+
+                    // The layer and its parameters
+                    if (!groupProto.Limits.TryGetValue(layer, out var layerLimit) || layerLimit.Limit == 0)
+                        continue;
+
+                    // chance of the layer being applied in general
+                    if (!random.Prob(layerLimit.RandomChance))
+                        continue;
+
+                    // amount of markings to be applied
+                    var count = random.Next(0, layerLimit.Limit + 1);
+                    if (count == 0)
+                        continue;
+
+                    random.Shuffle(available);
+
+                    var picked = new List<Marking>();
+                    foreach (var markingProto in available.Take(count))
+                    {
+                        var colors = MarkingColoring.GetMarkingLayerColors(markingProto, newSkinColor, newEyeColor, picked);
+                        picked.Add(new Marking(markingProto.ID, colors));
+                    }
+
+                    organMarkings[layer] = picked;
+                }
+
+                if (organMarkings.Count > 0)
+                    markings[organ] = organMarkings;
+            }
+        }
+        // Moffstation - End
+
+        // EnsureValid fills in any required markings (e.g. hair, body) left empty above.
         return EnsureValid(
-            new HumanoidCharacterAppearance(newEyeColor, newSkinColor, new()),
+            new HumanoidCharacterAppearance(newEyeColor, newSkinColor, markings), // Moffstation - Add markings field
             species,
             sex);
     }
