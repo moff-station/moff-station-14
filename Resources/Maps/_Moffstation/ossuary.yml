@@ -4,7 +4,7 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/01/2026 22:08:41
+  time: 07/01/2026 22:20:05
   entityCount: 12030
 maps:
 - 1
@@ -2794,10 +2794,6 @@ entities:
             1846: 37,11
             1847: 36,11
             3022: 26,18
-        - node:
-            color: '#00000026'
-            id: MarkupSquare
-          decals:
             3086: 38,5
             3087: 38,5
             3088: 32,5
@@ -7732,7 +7728,7 @@ entities:
       pos: -5.5,2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -232661.81
+      secondsUntilStateChange: -233021.23
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -38814,6 +38810,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: -18.5,-10.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
   - uid: 9138
     components:
     - type: Transform
@@ -44921,30 +44919,40 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -15.5,-10.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
   - uid: 3694
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -16.5,-10.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
   - uid: 3720
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -17.5,-10.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
   - uid: 4363
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -18.5,-9.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
   - uid: 5137
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -14.5,-9.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
   - uid: 8323
     components:
     - type: Transform
@@ -50224,6 +50232,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -14.5,-10.5
       parent: 2
+    - type: AtmosPipeColor
+      color: '#FF1212FF'
   - uid: 8322
     components:
     - type: Transform
