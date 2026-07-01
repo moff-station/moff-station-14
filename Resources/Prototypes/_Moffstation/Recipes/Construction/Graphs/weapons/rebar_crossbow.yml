@@ -1,0 +1,17 @@
+﻿- type: constructionGraph
+  id: rebarCrossbow
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: RebarCrossbow
+      steps:
+      - material: WoodPlank
+        amount: 10
+        doAfter: 4
+      - material: Cloth
+        amount: 5
+        doAfter: 4
+
+  - node: ImprovisedBow
+    entity: BowImprovised
