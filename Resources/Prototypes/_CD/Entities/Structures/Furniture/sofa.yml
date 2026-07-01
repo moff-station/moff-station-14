@@ -1,0 +1,165 @@
+# "Ratty" sofa
+# Moffstation - Start - Changed sofas to inherit from SeatBase instead of BenchBaseMiddle
+- type: entity
+  parent: SeatBase
+  #  parent: BenchBaseMiddle
+  id: RattySofaMiddle
+  name: sofa
+  suffix: Middle
+  description: Multiple seats spanning a single object. Truly a marvel of science.
+  components:
+  - type: Transform
+    anchored: true
+  - type: Rotatable
+  - type: Sprite
+    sprite: _CD/Structures/Furniture/Sofa/sofa.rsi
+    state: middle
+  - type: Physics
+    bodyType: Static
+  - type: Construction
+    graph: Sofa
+    node: RattySofaMiddle
+# Moffstation - End
+
+- type: entity
+  id: RattySofaLeft
+  suffix: Left # Moffstation
+  parent: RattySofaMiddle
+  components:
+  - type: Sprite
+    state: left
+  - type: Construction
+    graph: Sofa
+    node: RattySofaLeft
+
+- type: entity
+  id: RattySofaRight
+  suffix: Right # Moffstation
+  parent: RattySofaMiddle
+  components:
+  - type: Sprite
+    state: right
+  - type: Construction
+    graph: Sofa
+    node: RattySofaRight
+
+# Moffstation - Start - Standardized parameters on parents
+- type: entity
+  parent: RattySofaMiddle
+  id: RattySofaCorner
+  name: sofa
+  suffix: Corner
+  components:
+  - type: Sprite
+    state: corner
+#  placement:
+#    mode: SnapgridCenter
+#  components:
+#  - type: Transform
+#    anchored: true
+#  - type: Rotatable
+#  - type: Sprite
+#    sprite: _CD/Structures/Furniture/Sofa/sofa.rsi
+#    state: corner
+#  - type: Clickable
+#  - type: InteractionOutline
+#  - type: Physics
+#    bodyType: Dynamic
+#    canCollide: False
+#  - type: Pullable
+#  - type: Damageable
+#    damageContainer: Inorganic
+#    damageModifierSet: Metallic
+#  - type: Destructible #Might want to move this to the parent instead, testing required.
+#    thresholds:
+#    - trigger:
+#        !type:DamageTrigger
+#        damage: 50
+#      behaviors:
+#      - !type:DoActsBehavior
+#        acts: ["Destruction"]
+#      - !type:PlaySoundBehavior
+#        sound:
+#          path: /Audio/Effects/metal_break1.ogg
+# Moffstation - End
+  - type: Construction
+    graph: Sofa
+    node: RattySofaCorner
+
+# Corp sofa
+- type: entity
+  name: grey sofa
+  id: CorpSofaMiddle
+  parent: BenchBaseMiddle
+  components:
+  - type: Sprite
+    sprite: _CD/Structures/Furniture/Sofa/sofa_corp.rsi
+  - type: Construction
+    graph: Sofa
+    node: CorpSofaMiddle
+
+- type: entity
+  id: SofaCorpLeft
+  suffix: Left # Moffstation
+  parent: CorpSofaMiddle
+  components:
+  - type: Sprite
+    state: left
+  - type: Construction
+    graph: Sofa
+    node: CorpSofaLeft
+
+- type: entity
+  id: SofaCorpRight
+  suffix: Right # Moffstation
+  parent: CorpSofaMiddle
+  components:
+  - type: Sprite
+    state: right
+  - type: Construction
+    graph: Sofa
+    node: CorpSofaRight
+
+# Moffstation - Start - Standardized parameters on parents
+- type: entity
+  parent: CorpSofaMiddle
+  id: SofaCorpCorner
+  name: grey sofa
+  suffix: Corner
+  components:
+  - type: Sprite
+    state: corner
+#  placement:
+#    mode: SnapgridCenter
+#  components:
+#  - type: Transform
+#    anchored: true
+#  - type: Rotatable
+#  - type: Sprite
+#    sprite: _CD/Structures/Furniture/Sofa/sofa_corp.rsi
+#    state: corner
+#  - type: Clickable
+#  - type: InteractionOutline
+#  - type: Physics
+#    bodyType: Static
+#    canCollide: False
+#  - type: Pullable
+# Moffstation - Start - Standardized destructable parameters on parents
+#  - type: Damageable
+#    damageContainer: Inorganic
+#    damageModifierSet: Metallic
+#  - type: Destructible #May be adviseable to move to a parent.
+#    thresholds:
+#    - trigger:
+#        !type:DamageTrigger
+#        damage: 50
+#      behaviors:
+#      - !type:DoActsBehavior
+#        acts: ["Destruction"]
+#      - !type:PlaySoundBehavior
+#        sound:
+#          path: /Audio/Effects/metal_break1.ogg
+# Moffstation - End
+  - type: Construction
+    graph: Sofa
+    node: CorpSofaCorner

@@ -1,0 +1,445 @@
+#Benches
+#Wooden Park
+- type: construction
+  id: BenchParkMiddle
+  name: construction-wooden-park-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchParkMiddle
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/parkbench_wooden.rsi
+#    state: middle
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchParkLeft
+  name: construction-wooden-park-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchParkLeft
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/parkbench_wooden.rsi
+#    state: left
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchParkRight
+  name: construction-wooden-park-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchParkRight
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/parkbench_wooden.rsi
+#    state: right
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+#Bamboo Park
+- type: construction
+  id: BenchParkBambooMiddle
+  name: construction-bamboo-park-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchParkBambooMiddle
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/parkbench_bamboo.rsi
+#    state: middle
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchParkBambooLeft
+  name: construction-bamboo-park-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchParkBambooLeft
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/parkbench_bamboo.rsi
+#    state: left
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchParkBambooRight
+  name: construction-bamboo-park-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchParkBambooRight
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/parkbench_bamboo.rsi
+#    state: right
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+#Pews
+- type: construction
+  id: BenchPewMiddle
+  name: construction-wooden-pew # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchPewMiddle
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/pew.rsi
+#    state: middle
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchPewLeft
+  name: construction-wooden-pew # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchPewLeft
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/pew.rsi
+#    state: left
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchPewRight
+  name: construction-wooden-pew # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchPewRight
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/pew.rsi
+#    state: right
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+#construction-steel-bench
+- type: construction
+  id: BenchSteelMiddle
+  name: construction-steel-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchSteelMiddle
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/steel_bench.rsi
+#    state: middle
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchSteelLeft
+  name: construction-steel-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchSteelLeft
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/steel_bench.rsi
+#    state: left
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchSteelRight
+  name: construction-steel-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchSteelRight
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/steel_bench.rsi
+#    state: right
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+#White Steel Bench
+- type: construction
+  id: BenchSteelWhiteMiddle
+  name: construction-white-steel-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchSteelWhiteMiddle
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/steel_bench_white.rsi
+#    state: middle
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchSteelWhiteLeft
+  name: construction-white-steel-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchSteelWhiteLeft
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/steel_bench_white.rsi
+#    state: left
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: BenchSteelWhiteRight
+  name: construction-white-steel-bench # Moffstation
+  graph: Bench
+  startNode: start
+  targetNode: BenchSteelWhiteRight
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Bench/steel_bench_white.rsi
+#    state: right
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+# Sofas
+#RattySofa
+- type: construction
+  id: RattySofaMiddle
+  name: construction-ratty-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: RattySofaMiddle
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa.rsi
+#    state: middle
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: RattySofaRight
+  name: construction-ratty-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: RattySofaRight
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa.rsi
+#    state: right
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: RattySofaLeft
+  name: construction-ratty-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: RattySofaLeft
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa.rsi
+#    state: left
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+#Corporate Sofa
+- type: construction
+  id: RattySofaCorner
+  name: construction-ratty-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: RattySofaCorner
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa.rsi
+#    state: corner
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: CorpSofaMiddle
+  name: construction-corporate-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: CorpSofaMiddle
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa_corp.rsi
+#    state: middle
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: CorpSofaRight
+  name: construction-corporate-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: CorpSofaRight
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa_corp.rsi
+#    state: right
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: CorpSofaLeft
+  name: construction-corporate-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: CorpSofaLeft
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa_corp.rsi
+#    state: left
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: CorpSofaCorner
+  name: construction-corporate-sofa # Moffstation
+  graph: Sofa
+  startNode: start
+  targetNode: CorpSofaCorner
+  category: construction-category-furniture
+  description: construction-bench-sofa-description # Moffstation
+  # Moffstation - Start - icon field has been removed from constructions
+#  icon:
+#    sprite: _CD/Structures/Furniture/Sofa/sofa_corp.rsi
+#    state: corner
+  # Moffstation - End
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
