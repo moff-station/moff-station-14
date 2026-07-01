@@ -1,0 +1,102 @@
+<adminGhost:AdminGhostWindow xmlns="https://spacestation14.io"
+    xmlns:adminGhost="clr-namespace:Content.Client._Moffstation.AdminGhost"
+    Title="Admin Ghost Customization"
+    MinSize="400 500"
+    SetSize="450 600">
+    <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+        <BoxContainer Orientation="Vertical" SeparationOverride="8" Margin="8">
+
+            <!-- Sprite Section -->
+            <Collapsible>
+                <CollapsibleHeading Title="Sprite" />
+                <CollapsibleBody VerticalExpand="False">
+                    <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="4 0">
+                        <Label Text="Prototype ID" />
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <LineEdit Name="SpriteLineEdit" HorizontalExpand="True" PlaceHolder="e.g. WallSolid" />
+                            <Button Name="BrowseSpriteButton" Text="Browse" MinSize="60 0" />
+                            <Button Name="SetSpriteButton" Text="Set" MinSize="60 0" />
+                            <Button Name="ClearSpriteButton" Text="Clear" MinSize="60 0" />
+                        </BoxContainer>
+                    </BoxContainer>
+                </CollapsibleBody>
+            </Collapsible>
+
+            <!-- Info Section -->
+            <Collapsible>
+                <CollapsibleHeading Title="Info" />
+                <CollapsibleBody VerticalExpand="False">
+                    <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="4 0">
+                        <Label Text="Custom Name" />
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <LineEdit Name="NameLineEdit" HorizontalExpand="True" PlaceHolder="Enter name..." />
+                            <Button Name="SetNameButton" Text="Set" MinSize="60 0" />
+                        </BoxContainer>
+                        <Label Text="Custom Description" />
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <LineEdit Name="DescriptionLineEdit" HorizontalExpand="True" PlaceHolder="Enter description..." />
+                            <Button Name="SetDescriptionButton" Text="Set" MinSize="60 0" />
+                        </BoxContainer>
+                        <Label Text="Map Text" />
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <LineEdit Name="MapTextLineEdit" HorizontalExpand="True" PlaceHolder="Enter map text..." />
+                            <Button Name="SetMapTextButton" Text="Set" MinSize="60 0" />
+                            <Button Name="ClearMapTextButton" Text="Clear" MinSize="60 0" />
+                        </BoxContainer>
+                        <Label Text="Map Text Color" />
+                        <ColorSelectorSliders Name="MapTextColorSelector" IsAlphaVisible="False" />
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <Label Text="X Offset" />
+                            <LineEdit Name="MapTextOffsetXLineEdit" HorizontalExpand="True" PlaceHolder="0" MinSize="60 0" />
+                            <Label Text="Y Offset" />
+                            <LineEdit Name="MapTextOffsetYLineEdit" HorizontalExpand="True" PlaceHolder="0" MinSize="60 0" />
+                        </BoxContainer>
+                    </BoxContainer>
+                </CollapsibleBody>
+            </Collapsible>
+
+            <!-- Movement Section -->
+            <Collapsible>
+                <CollapsibleHeading Title="Movement" />
+                <CollapsibleBody VerticalExpand="False">
+                    <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="4 0">
+                        <Label Text="Walk Speed" />
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <LineEdit Name="WalkSpeedLineEdit" HorizontalExpand="True" PlaceHolder="e.g. 8" />
+                            <Button Name="SetWalkSpeedButton" Text="Set" MinSize="60 0" />
+                        </BoxContainer>
+                        <Label Text="Sprint Speed" />
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <LineEdit Name="SprintSpeedLineEdit" HorizontalExpand="True" PlaceHolder="e.g. 12" />
+                            <Button Name="SetSprintSpeedButton" Text="Set" MinSize="60 0" />
+                        </BoxContainer>
+                    </BoxContainer>
+                </CollapsibleBody>
+            </Collapsible>
+
+            <!-- Overlays Section -->
+            <Collapsible>
+                <CollapsibleHeading Title="Overlays" />
+                <CollapsibleBody VerticalExpand="False">
+                    <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="4 0">
+                        <Button Name="ToggleJobIconsButton" Text="Job Icons: Off" />
+                        <Button Name="ToggleCriminalButton" Text="Criminal Records: Off" />
+                        <Button Name="ToggleMindshieldButton" Text="Mindshield: Off" />
+                        <Button Name="ToggleSyndicateButton" Text="Syndicate: Off" />
+                        <Button Name="ToggleHealthBarsButton" Text="Health Bars: Off" />
+                    </BoxContainer>
+                </CollapsibleBody>
+            </Collapsible>
+
+            <!-- Save/Load -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8" HorizontalAlignment="Center">
+                <Button Name="SaveButton" Text="Save" MinSize="120 40" />
+                <Button Name="LoadButton" Text="Load" MinSize="120 40" />
+            </BoxContainer>
+
+            <!-- Reset All -->
+            <Button Name="ResetAllButton" Text="Reset All" HorizontalAlignment="Center" MinSize="200 40" />
+
+        </BoxContainer>
+    </ScrollContainer>
+</adminGhost:AdminGhostWindow>

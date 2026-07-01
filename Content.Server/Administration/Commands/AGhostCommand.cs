@@ -5,6 +5,9 @@ using Content.Server.Mind;
 using Content.Shared.Administration;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
+// Moffstation - Start - AdminGhostData
+using Content.Server._Moffstation.AdminGhost;
+// Moffstation - End - AdminGhostData
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Console;
@@ -118,5 +121,10 @@ public sealed partial class AGhostCommand : LocalizedCommands
 
         var comp = _entities.GetComponent<GhostComponent>(ghost);
         ghostSystem.SetCanReturnToBody((ghost, comp), canReturn);
+
+        // Moffstation - Start - AdminGhostData
+        var customizationSystem = _entities.System<AdminGhostCustomizationSystem>();
+        customizationSystem.ApplySavedDataIfExists(ghost, player.UserId);
+        // Moffstation - End - AdminGhostData
     }
 }

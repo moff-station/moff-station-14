@@ -938,7 +938,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasColumnName("moff_player_id");
-
+//Moffstation - Start - AdminGhostCustomization
+                    b.Property<string>("AdminGhostData")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("admin_ghost_data");
+//Moffstation - End
                     b.Property<int>("AntagWeight")
                         .HasColumnType("INTEGER")
                         .HasColumnName("antag_weight");

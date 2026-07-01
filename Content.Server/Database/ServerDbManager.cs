@@ -315,6 +315,14 @@ namespace Content.Server.Database
         Task<bool> SetAntagWeight(NetUserId userId, int weight);
 
         #endregion
+//Moffstation - Start - Ghost Customization
+        #region AdminGhostData
+
+        Task<string?> GetAdminGhostData(NetUserId userId);
+        Task<bool> SetAdminGhostData(NetUserId userId, string? data);
+
+        #endregion
+//Moffstation - End
 
         #region DiscordId
 
@@ -1005,6 +1013,20 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SetAntagWeight(userId, weight));
         }
         // Moffstation - End - Weighted Antags
+
+        // Moffstation - Start - AdminGhostData
+        public Task<string?> GetAdminGhostData(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAdminGhostData(userId));
+        }
+
+        public Task<bool> SetAdminGhostData(NetUserId userId, string? data)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetAdminGhostData(userId, data));
+        }
+        // Moffstation - End - AdminGhostData
 
         // Moffstation - Begin - Discord ID
         public Task<string?> GetDiscordId(NetUserId userId)

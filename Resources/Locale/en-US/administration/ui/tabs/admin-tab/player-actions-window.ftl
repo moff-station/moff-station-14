@@ -6,3 +6,6 @@ admin-player-actions-window-shuttle = (Re)call Shuttle
 admin-player-actions-window-admin-logs = Admin Logs
 admin-player-actions-window-admin-fax = Admin Fax
 admin-player-actions-window-admin-chat = Admin Chat
+#Moffstation - Start - Ghost Customization
+admin-player-actions-window-admin-ghost-custom = Admin Ghost Customisation
+#Moffstation - End
