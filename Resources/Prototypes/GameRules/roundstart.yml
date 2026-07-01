@@ -506,4 +506,17 @@
     # Moffstation - Start - Stowaways
     - id: Stowaways
       prob: 0.20
+    - id: MoffFilthyStationDecalVariationPass
+      prob: 0.10
+    - id: MoffRustyStationVariationPass
+      prob: 0.10
+    - id: MoffReinforcedRustyStationVariationPass
+      prob: 0.10
+    - id: MoffWaterloggedStationVariationPass
+      prob: 0.10
+    - id: MoffTrashedStationVariationPass
+      prob: 0.10
+    # Disable this one... for now...
+#    - id: MoffDamagedHullVariationPass
+#      prob: 0.10
     # Moffstation - End
