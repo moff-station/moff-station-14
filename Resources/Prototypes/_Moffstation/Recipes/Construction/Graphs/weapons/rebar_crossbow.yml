@@ -1,0 +1,19 @@
+﻿- type: constructionGraph
+  id: RebarCrossbow
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: rebarCrossbow
+      steps:
+      - material: Steel
+        amount: 10
+        doAfter: 4
+      - material: MetalRod
+        amount: 5
+        doAfter: 4
+      - material: Cable
+        amount: 30
+        doAfter: 4
+  - node: rebarCrossbow
+    entity: RebarCrossbow
