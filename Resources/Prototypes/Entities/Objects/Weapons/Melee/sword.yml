@@ -178,12 +178,17 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
   - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
     attackRate: 0.75
     damage:
       types:
-        Slash: 20
-    soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        Slash: 5
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 25
   - type: Item
     storedSprite:
       state: storage
