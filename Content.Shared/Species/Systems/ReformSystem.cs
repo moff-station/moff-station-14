@@ -5,7 +5,7 @@ using Content.Shared.Humanoid; // Moffstation
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Mind;
-using Content.Shared.Preferences;
+using Content.Shared.Preferences; // Moffstation
 using Content.Shared.Zombies;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
