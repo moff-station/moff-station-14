@@ -106,55 +106,55 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         var markings = new Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>();
 
         // Moffstation - Start - Random markings
-        if (randomizeMarkings)
+        if (!randomizeMarkings)
         {
-            foreach (var (organ, organData) in markingManager.GetMarkingData(species))
+            return EnsureValid(
+                new HumanoidCharacterAppearance(newEyeColor, newSkinColor, markings),
+                species,
+                sex);
+        }
+
+        foreach (var (organ, organData) in markingManager.GetMarkingData(species))
+        {
+            var groupProto = protoMan.Index(organData.Group);
+            var organMarkings = new Dictionary<HumanoidVisualLayers, List<Marking>>();
+
+            foreach (var layer in organData.Layers)
             {
-                var groupProto = protoMan.Index(organData.Group);
-                var organMarkings = new Dictionary<HumanoidVisualLayers, List<Marking>>();
+                var available = markingManager.MarkingsByLayerAndGroupAndSex(layer, organData.Group, sex).Values.ToList();
 
-                foreach (var layer in organData.Layers)
+                // layer is not applied
+                if (available.Count == 0 ||
+                    !groupProto.Limits.TryGetValue(layer, out var layerLimit) || layerLimit.Limit == 0 ||
+                    !random.Prob(layerLimit.RandomChance))
+                    continue;
+
+                // amount of markings to be applied
+                var count = random.Next(0, layerLimit.Limit + 1);
+                if (count == 0)
+                    continue;
+
+                random.Shuffle(available);
+
+                var picked = new List<Marking>();
+                foreach (var markingProto in available.Take(count))
                 {
-                    var available = markingManager.MarkingsByLayerAndGroupAndSex(layer, organData.Group, sex).Values.ToList();
-                    if (available.Count == 0)
-                        continue;
-
-                    // The layer and its parameters
-                    if (!groupProto.Limits.TryGetValue(layer, out var layerLimit) || layerLimit.Limit == 0)
-                        continue;
-
-                    // chance of the layer being applied in general
-                    if (!random.Prob(layerLimit.RandomChance))
-                        continue;
-
-                    // amount of markings to be applied
-                    var count = random.Next(0, layerLimit.Limit + 1);
-                    if (count == 0)
-                        continue;
-
-                    random.Shuffle(available);
-
-                    var picked = new List<Marking>();
-                    foreach (var markingProto in available.Take(count))
-                    {
-                        var colors = MarkingColoring.GetMarkingLayerColors(markingProto, newSkinColor, newEyeColor, picked);
-                        picked.Add(new Marking(markingProto.ID, colors));
-                    }
-
-                    organMarkings[layer] = picked;
+                    var colors = MarkingColoring.GetMarkingLayerColors(markingProto, newSkinColor, newEyeColor, picked);
+                    picked.Add(new Marking(markingProto.ID, colors));
                 }
 
-                if (organMarkings.Count > 0)
-                    markings[organ] = organMarkings;
+                organMarkings[layer] = picked;
             }
-        }
-        // Moffstation - End
 
-        // EnsureValid fills in any required markings (e.g. hair, body) left empty above.
+            if (organMarkings.Count > 0)
+                markings[organ] = organMarkings;
+        }
+
         return EnsureValid(
-            new HumanoidCharacterAppearance(newEyeColor, newSkinColor, markings), // Moffstation - Add markings field
+            new HumanoidCharacterAppearance(newEyeColor, newSkinColor, markings),
             species,
             sex);
+        // Moffstation - End
     }
 
     public static Color ClampColor(Color color)
