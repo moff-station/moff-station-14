@@ -120,3 +120,32 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_summercoat.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/hos_summercoat.rsi
+
+#Medical
+- type: entity
+  parent: [ClothingOuterStorageFoldableBase, BaseCommandContraband]
+  id: ClothingOuterWinterCMO
+  name: chief medical officer's insulated labcoat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-cmo.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-cmo.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: ClothingOuterWinterMed
+  name: medical doctor's insulated labcoat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
