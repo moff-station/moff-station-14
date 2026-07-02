@@ -222,7 +222,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             var limitMoles = AtmosphereSystem.MolesToMaxPressure(source, target, Atmospherics.MaxOutputPressure);
             var availableMoles = gasses.Aggregate(0f, (x, gas) => x + source.GetMoles(gas));
 
-            var transferredMoles = Math.Clamp(availableMoles, 0f, limitMoles);
+            var transferredMoles = Math.Max(Math.Min(availableMoles, limitMoles), 0f);
 
             if (transferredMoles <= Atmospherics.GasMinMoles)
                 return false;
