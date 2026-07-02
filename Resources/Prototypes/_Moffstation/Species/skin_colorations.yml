@@ -29,7 +29,7 @@
   id: ThavenSaturation
   strategy: !type:HueNodeClampedHsvColoration
     nodes:
-    - hue: 0 # From red to orange, slowly increase saturation. (0.25 -> 0.4)
+    - hue: 0 # From red to orange, slowly increase saturation. (0.85 -> 0.4)
       saturation: [ 0, 0.4 ]
       value: [0.6, 1]
     - hue: 0.05 # From orange to yellow, slowly decrease saturation. (0.4 -> 0.5)
@@ -44,7 +44,7 @@
     - hue: 0.67 # From blue to pink slowly increase saturation. (0.4 -> 0.5)
       saturation: [ 0, 0.5 ]
       value: [0.6, 1]
-    - hue: 0.83 # From pink to red, slowly decrease saturation. (0.4 -> 0.25)
+    - hue: 0.83 # From pink to red, slowly decrease saturation. (0.4 -> 0.85)
       saturation: [ 0, 0.85 ]
       value: [0.6, 1]
     - hue: 1 # Red
