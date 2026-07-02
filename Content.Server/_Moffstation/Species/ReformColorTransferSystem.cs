@@ -3,6 +3,7 @@ using Content.Shared.Body;
 using Content.Shared.Humanoid;
 using Content.Shared.Sprite;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Utility;
 using static Content.Shared.Species.ReformSystem;
 
 namespace Content.Server._Moffstation.Species;
@@ -24,17 +25,7 @@ public sealed partial class ReformColorTransferSystem : EntitySystem
 
     private void OnReformed(EntityUid uid, RandomSpriteComponent rsc, PostReformEvent args)
     {
-        Color? color = null;
-        foreach (var (_, selected) in rsc.Selected)
-        {
-            if (selected.Color is { } c)
-            {
-                color = c;
-                break;
-            }
-        }
-
-        if (color is not { } transferColor)
+        if (rsc.Selected.Values.FirstOrNull(x => x.Color != null) is not { Color: {} transferColor })
             return;
 
         var newAppearance = args.Profile.Appearance.WithSkinColor(transferColor);
