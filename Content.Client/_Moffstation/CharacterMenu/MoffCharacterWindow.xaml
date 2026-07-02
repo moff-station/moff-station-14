@@ -1,0 +1,89 @@
+<windows:MoffCharacterWindow
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:windows="clr-namespace:Content.Client._Moffstation.CharacterMenu"
+    Title="{Loc 'character-info-title'}"
+    MinWidth="780"
+    MinHeight="380">
+    <BoxContainer Orientation="Vertical" Margin="15 15 15 10">
+
+        <!-- Header: "You are acting as a [ROLE NAME]" -->
+        <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" SeparationOverride="6" HorizontalAlignment="Center">
+            <Label Text="{Loc 'character-info-acting-as-prefix'}"
+                   StyleClasses="LabelSubText"
+                   VerticalAlignment="Center"/>
+            <Label Name="RoleType"
+                   Access="Public"
+                   StyleClasses="LabelHeadingBigger"
+                   VerticalAlignment="Top"/>
+        </BoxContainer>
+
+        <!-- Horizontal divider -->
+        <PanelContainer StyleClasses="LowDivider" Margin="0 6 0 15"/>
+
+        <!-- Three-column body -->
+        <GridContainer Columns="3" VerticalExpand="True">
+
+            <!-- Left: character sprite + name + job -->
+            <BoxContainer Orientation="Vertical"
+                          VerticalAlignment="Top"
+                          SeparationOverride="4"
+                          MinWidth="130">
+                <SpriteView Name="SpriteView"
+                            Access="Public"
+                            OverrideDirection="South"
+                            Scale="3 3"
+                            SetSize="96 96"
+                            HorizontalAlignment="Center"/>
+                <Label Name="NameLabel"
+                       Access="Public"
+                       HorizontalAlignment="Center"/>
+                <Label Name="SubText"
+                       Access="Public"
+                       StyleClasses="LabelSubText"
+                       HorizontalAlignment="Center"/>
+            </BoxContainer>
+
+            <!-- Center: faction briefing/description -->
+            <PanelContainer StyleClasses="BackgroundDark"
+                            Margin="0 0 10 0"
+                            MinWidth="220"
+                            HorizontalExpand="True"
+                            VerticalExpand="True">
+                <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="Briefing"
+                                  Access="Public"
+                                  Orientation="Vertical"
+                                  Margin="8"
+                                  VerticalExpand="True"/>
+                </ScrollContainer>
+            </PanelContainer>
+
+            <!-- Right: objectives list -->
+            <PanelContainer StyleClasses="BackgroundDark"
+                            Margin="0 0 10 0"
+                            MinWidth="220"
+                            HorizontalExpand="True"
+                            VerticalExpand="True">
+                <ScrollContainer HScrollEnabled="False"
+                                 MinWidth="230"
+                                 VerticalExpand="True">
+                    <BoxContainer Name="Objectives"
+                                  Access="Public"
+                                  Orientation="Vertical"
+                                  SeparationOverride="6"/>
+                </ScrollContainer>
+            </PanelContainer>
+
+        </GridContainer>
+
+        <!-- Collective Minds (Starlight) -->
+        <BoxContainer Name="Minds" Access="Public" Orientation="Vertical"/>
+
+        <!-- Shown when no role info at all -->
+        <cc:Placeholder Name="RolePlaceholder"
+                        Access="Public"
+                        PlaceholderText="{Loc 'character-info-roles-antagonist-text'}"/>
+
+    </BoxContainer>
+</windows:MoffCharacterWindow>

@@ -7,7 +7,7 @@ using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
-using Content.Client.UserInterface.Systems.Character.Windows;
+using Content.Client._Moffstation.CharacterMenu; // Moffstation - Character Menu Redesign
 using Content.Client.UserInterface.Systems.Objectives.Controls;
 using Content.Shared._Moffstation.Objectives; // Moffstation
 using Content.Shared.Input;
@@ -47,14 +47,18 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         SubscribeNetworkEvent<MindRoleTypeChangedEvent>(OnRoleTypeChanged);
     }
 
-    private CharacterWindow? _window;
+    // Moffstation - Start - Character Menu Redesign
+    private MoffCharacterWindow? _window;
+    // Moffstation - End
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
 
     public void OnStateEntered(GameplayState state)
     {
         DebugTools.Assert(_window == null);
 
-        _window = UIManager.CreateWindow<CharacterWindow>();
+        // Moffstation - Start - Character Menu Redesign
+        _window = UIManager.CreateWindow<MoffCharacterWindow>();
+        // Moffstation - End
         LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.CenterTop);
 
         _window.OnClose += DeactivateButton;
@@ -145,7 +149,9 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.NameLabel.Text = entityName;
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
-        _window.ObjectivesLabel.Visible = objectives.Any();
+        // Moffstation - Start - Character Menu Redesign (removed ObjectivesLabel, added Briefing clear)
+        _window.Briefing.RemoveAllChildren();
+        // Moffstation - End
         _window.Minds.RemoveAllChildren(); // Starlight - Collective Mind
 
         foreach (var (groupId, conditions) in objectives)
@@ -184,7 +190,14 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
                 objectiveControl.AddChild(conditionControl);
             }
 
-            _window.Objectives.AddChild(objectiveControl);
+            // Moffstation - Start - Character Menu Redesign (card-style objective panels)
+            var objectivePanel = new PanelContainer
+            {
+                StyleClasses = { "BackgroundDark" }
+            };
+            objectivePanel.AddChild(objectiveControl);
+            _window.Objectives.AddChild(objectivePanel);
+            // Moffstation - End
         }
         // Begin DeltaV Additions - Custom objective summary
         switch (objectives.Count)
@@ -248,7 +261,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
             }
             mindsControl.Description.SetMessage(mindDescriptionMessage);
-            _window.Objectives.AddChild(mindsControl);
+            _window.Minds.AddChild(mindsControl); // Moffstation - Character Menu Redesign (fix: Minds was declared but never populated)
         }
         // Starlight - End
 
@@ -259,7 +272,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             text.PushColor(Color.Yellow);
             text.AddText(briefing);
             briefingControl.Label.SetMessage(text);
-            _window.Objectives.AddChild(briefingControl);
+            _window.Briefing.AddChild(briefingControl); // Moffstation - Character Menu Redesign
         }
 
         var controls = _characterInfo.GetCharacterInfoControls(entity);
