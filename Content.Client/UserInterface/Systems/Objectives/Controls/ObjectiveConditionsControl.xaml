@@ -5,8 +5,10 @@
     Orientation="Horizontal">
     <cc:ProgressTextureRect Name="ProgressTexture" VerticalAlignment="Top" Access="Public" Margin="0 8 0 0"/>
     <Control MinSize="10 0"/>
-    <BoxContainer Orientation="Vertical">
-        <RichTextLabel Name="Title" Access="Public" SetWidth="325" HorizontalAlignment="Left"/>
-        <RichTextLabel Name="Description" Access="Public" SetWidth="325" HorizontalAlignment="Left"/>
+    <!-- Moffstation - Start - removed SetWidth so text wraps -->
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+        <RichTextLabel Name="Title" Access="Public" HorizontalExpand="True" HorizontalAlignment="Left"/>
+        <RichTextLabel Name="Description" Access="Public" HorizontalExpand="True" HorizontalAlignment="Left"/>
     </BoxContainer>
+    <!-- Moffstation - End -->
 </controls:ObjectiveConditionsControl>

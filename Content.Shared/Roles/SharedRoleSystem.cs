@@ -11,6 +11,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
+using Robust.Shared.Maths; // Moffstation - SubtypeColor
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -204,23 +205,27 @@ public abstract partial class SharedRoleSystem : EntitySystem
             return false;
 
         //get the most important/latest mind role
-        var (roleType, subtype) = GetRoleTypeByTime(ent.Comp);
+        // Moffstation - Start - SubtypeColor
+        var (roleType, subtype, subtypeColor) = GetRoleTypeByTime(ent.Comp);
 
-        if (ent.Comp.RoleType == roleType && ent.Comp.Subtype == subtype)
+        if (ent.Comp.RoleType == roleType && ent.Comp.Subtype == subtype && ent.Comp.SubtypeColor == subtypeColor)
             return false;
 
-        SetRoleType(ent.Owner, roleType, subtype);
+        SetRoleType(ent.Owner, roleType, subtype, subtypeColor);
+        // Moffstation - End
         return true;
     }
 
     /// <summary>
     ///     Return the most recently specified role type and subtype, or Neutral
     /// </summary>
-    private (ProtoId<RoleTypePrototype>, LocId?) GetRoleTypeByTime(MindComponent mind)
+    // Moffstation - Start - SubtypeColor (returns SubtypeColor as third element)
+    private (ProtoId<RoleTypePrototype>, LocId?, Color?) GetRoleTypeByTime(MindComponent mind)
     {
         var role = GetRoleCompByTime(mind);
-        return (role?.Comp?.RoleType ?? "Neutral", role?.Comp?.Subtype);
+        return (role?.Comp?.RoleType ?? "Neutral", role?.Comp?.Subtype, role?.Comp?.SubtypeColor);
     }
+    // Moffstation - End
 
     /// <summary>
     ///     Return the most recently specified role type's mind role entity, or null
@@ -240,7 +245,9 @@ public abstract partial class SharedRoleSystem : EntitySystem
         return (result);
     }
 
-    private void SetRoleType(EntityUid mind, ProtoId<RoleTypePrototype> roleTypeId, LocId? subtype)
+    // Moffstation - Start - SubtypeColor (added subtypeColor parameter)
+    private void SetRoleType(EntityUid mind, ProtoId<RoleTypePrototype> roleTypeId, LocId? subtype, Color? subtypeColor = null)
+    // Moffstation - End
     {
         if (!TryComp<MindComponent>(mind, out var comp))
         {
@@ -256,6 +263,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
 
         comp.RoleType = roleTypeId;
         comp.Subtype = subtype;
+        comp.SubtypeColor = subtypeColor; // Moffstation - SubtypeColor
         Dirty(mind, comp);
 
         // Update player character window

@@ -153,7 +153,8 @@
   components:
   - type: MindRole
     antagPrototype: SpaceNinja
-    subtype: role-subtype-ninja
+    subtype: role-subtype-faction-spider-clan # Moffstation
+    subtypeColor: '#33cc00' # Moffstation - Spider Clan issuer color
     exclusiveAntag: true
   - type: NinjaRole
 
@@ -177,7 +178,8 @@
   components:
   - type: MindRole
     roleType: TeamAntagonist
-    subtype: role-subtype-nukie
+    subtype: role-subtype-faction-syndicate # Moffstation
+    subtypeColor: darkred # Moffstation
     exclusiveAntag: true
     antagPrototype: Nukeops
   - type: NukeopsRole
@@ -205,6 +207,8 @@
   components:
   - type: MindRole
     roleType: SoloAntagonist
+    subtype: role-subtype-faction-syndicate # Moffstation
+    subtypeColor: darkred # Moffstation
 
 # Revolutionaries
 - type: entity
@@ -216,7 +220,8 @@
     antagPrototype: HeadRev
     exclusiveAntag: true
     roleType: TeamAntagonist
-    subtype: role-subtype-head-revolutionary
+    subtype: role-subtype-faction-revolutionary # Moffstation
+    subtypeColor: '#ff1e00' # Moffstation
   - type: RevolutionaryRole
 
 - type: entity
@@ -226,7 +231,8 @@
   components:
   - type: MindRole
     antagPrototype: Rev
-    subtype: role-subtype-revolutionary
+    subtype: role-subtype-faction-revolutionary # Moffstation
+    subtypeColor: '#ff1e00' # Moffstation
 
 # Survivors (Wizard)
 - type: entity
@@ -248,7 +254,8 @@
   components:
   - type: MindRole
     antagPrototype: Thief
-    subtype: role-subtype-thief
+    subtype: role-type-free-agent-name # Moffstation
+    subtypeColor: '#ffff00' # Moffstation
   - type: ThiefRole
 
 # Traitors
@@ -260,7 +267,8 @@
   - type: MindRole
     antagPrototype: Traitor
     exclusiveAntag: true
-    subtype: role-subtype-traitor
+    subtype: role-subtype-faction-syndicate # Moffstation
+    subtypeColor: darkred # Moffstation
   - type: TraitorRole
 
 - type: entity
@@ -278,7 +286,8 @@
   components:
   - type: MindRole
     roleType: TeamAntagonist
-    subtype: role-subtype-traitor-reinforcement
+    subtype: role-subtype-faction-syndicate # Moffstation
+    subtypeColor: darkred # Moffstation
     antagPrototype: GenericTeamAntagonist
 
 # Wizards
@@ -290,7 +299,8 @@
   - type: MindRole
     antagPrototype: Wizard
     exclusiveAntag: true
-    subtype: role-subtype-wizard
+    subtype: role-subtype-faction-wizards # Moffstation
+    subtypeColor: turquoise # Moffstation
   - type: WizardRole
 
 # Xenoborgs
@@ -328,7 +338,8 @@
     antagPrototype: InitialInfected
     exclusiveAntag: true
     roleType: TeamAntagonist
-    subtype: role-subtype-initial-infected
+    subtype: role-subtype-faction-infected # Moffstation
+    subtypeColor: green # Moffstation
   - type: InitialInfectedRole
 
 - type: entity
@@ -339,7 +350,8 @@
   - type: MindRole
     antagPrototype: Zombie
     exclusiveAntag: true
-    subtype: role-subtype-zombie
+    subtype: role-subtype-faction-infected # Moffstation
+    subtypeColor: green # Moffstation
   - type: ZombieRole
 
 # Changeling
@@ -352,7 +364,8 @@
     antagPrototype: Changeling
     exclusiveAntag: true
     roleType: SoloAntagonist
-    subtype: role-subtype-changeling
+    subtype: role-subtype-faction-changeling # Moffstation
+    subtypeColor: '#FA2A55' # Moffstation
   - type: ChangelingRole
   - type: RoleBriefing
     briefing: changeling-briefing

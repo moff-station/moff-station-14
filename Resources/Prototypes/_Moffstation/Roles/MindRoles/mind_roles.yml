@@ -6,7 +6,8 @@
   components:
   - type: MindRole
     roleType: TeamAntagonist
-    subtype: role-subtype-pirate
+    subtype: role-subtype-faction-pirates
+    subtypeColor: '#a15608'
     exclusiveAntag: true
     antagPrototype: PirateCrew
   - type: PirateRole
@@ -35,6 +36,8 @@
   components:
   - type: MindRole
     roleType: SoloAntagonist
+    subtype: role-subtype-faction-vampire
+    subtypeColor: crimson
     exclusiveAntag: true
     antagPrototype: Vampire
   - type: VampireRole
@@ -49,7 +52,8 @@
     roleType: TeamAntagonist
     exclusiveAntag: true
     antagPrototype: SyndicateSpy
-    subtype: roles-antag-short-syndicate-spy
+    subtype: role-subtype-faction-syndicate
+    subtypeColor: crimson
   - type: SyndicateSpyRole
 
 - type: entity
@@ -61,6 +65,8 @@
     roleType: TeamAntagonist
     antagPrototype: SyndieVentSoldier
     exclusiveAntag: true
+    subtype: role-subtype-faction-syndicate
+    subtypeColor: crimson
 
 # Wizard Duelists
 - type: entity
@@ -72,7 +78,8 @@
     roleType: FreeAgent
     antagPrototype: Wizard
     exclusiveAntag: true
-    subtype: role-subtype-wizard
+    subtype: role-subtype-faction-wizards
+    subtypeColor: turquoise
 
 - type: entity
   parent: MindRoleWizardDuelistBase

@@ -1,11 +1,7 @@
-# Moffstation - Begin - renamed role types
-role-type-crew-aligned-name = Nanotrasen Employee
-# Moffstation - End
+#role-type-crew-aligned-name = Crew Aligned
 role-type-solo-antagonist-name = Solo Antagonist
 role-type-team-antagonist-name = Team Antagonist
-# Moffstation - Begin
-role-type-free-agent-name = Unaligned
-# Moffstation - End
+#role-type-free-agent-name = Free Agent
 role-type-familiar-name = Familiar
 role-type-silicon-name = Silicon
 role-type-silicon-antagonist-name = Altered Silicon

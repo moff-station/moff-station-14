@@ -3,37 +3,37 @@
     xmlns:cc="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:windows="clr-namespace:Content.Client._Moffstation.CharacterMenu"
     Title="{Loc 'character-info-title'}"
-    MinWidth="780"
-    MinHeight="380">
+    MinWidth="800"
+    MinHeight="420">
     <BoxContainer Orientation="Vertical" Margin="15 15 15 10">
 
-        <!-- Header: "You are acting as a [ROLE NAME]" -->
-        <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" SeparationOverride="6" HorizontalAlignment="Center">
+        <!-- Header -->
+        <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" SeparationOverride="6">
             <Label Text="{Loc 'character-info-acting-as-prefix'}"
                    StyleClasses="LabelSubText"
                    VerticalAlignment="Center"/>
             <Label Name="RoleType"
                    Access="Public"
                    StyleClasses="LabelHeadingBigger"
-                   VerticalAlignment="Top"/>
+                   VerticalAlignment="Center"/>
         </BoxContainer>
 
-        <!-- Horizontal divider -->
         <PanelContainer StyleClasses="LowDivider" Margin="0 6 0 15"/>
 
         <!-- Three-column body -->
-        <GridContainer Columns="3" VerticalExpand="True">
+        <BoxContainer Orientation="Horizontal" VerticalExpand="True">
 
             <!-- Left: character sprite + name + job -->
             <BoxContainer Orientation="Vertical"
-                          VerticalAlignment="Top"
+                          VerticalAlignment="Center"
+                          VerticalExpand="True"
                           SeparationOverride="4"
+                          Margin="0 0 15 0"
                           MinWidth="130">
                 <SpriteView Name="SpriteView"
                             Access="Public"
                             OverrideDirection="South"
-                            Scale="3 3"
-                            SetSize="96 96"
+                            Scale="4 4"
                             HorizontalAlignment="Center"/>
                 <Label Name="NameLabel"
                        Access="Public"
@@ -45,7 +45,7 @@
             </BoxContainer>
 
             <!-- Center: faction briefing/description -->
-            <PanelContainer StyleClasses="BackgroundDark"
+            <PanelContainer StyleClasses="BackgroundDeep"
                             Margin="0 0 10 0"
                             MinWidth="220"
                             HorizontalExpand="True"
@@ -60,7 +60,7 @@
             </PanelContainer>
 
             <!-- Right: objectives list -->
-            <PanelContainer StyleClasses="BackgroundDark"
+            <PanelContainer StyleClasses="BackgroundDeep"
                             Margin="0 0 10 0"
                             MinWidth="220"
                             HorizontalExpand="True"
@@ -75,7 +75,7 @@
                 </ScrollContainer>
             </PanelContainer>
 
-        </GridContainer>
+        </BoxContainer>
 
         <!-- Collective Minds (Starlight) -->
         <BoxContainer Name="Minds" Access="Public" Orientation="Vertical"/>

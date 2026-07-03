@@ -48,6 +48,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
     }
 
     // Moffstation - Start - Character Menu Redesign
+    // private CharacterWindow? _window;
     private MoffCharacterWindow? _window;
     // Moffstation - End
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
@@ -57,6 +58,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         DebugTools.Assert(_window == null);
 
         // Moffstation - Start - Character Menu Redesign
+        // _window = UIManager.CreateWindow<CharacterWindow>();
         _window = UIManager.CreateWindow<MoffCharacterWindow>();
         // Moffstation - End
         LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.CenterTop);
@@ -150,6 +152,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
         // Moffstation - Start - Character Menu Redesign (removed ObjectivesLabel, added Briefing clear)
+        // _window.ObjectivesLabel.Visible = objectives.Any();
         _window.Briefing.RemoveAllChildren();
         // Moffstation - End
         _window.Minds.RemoveAllChildren(); // Starlight - Collective Mind
@@ -193,7 +196,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             // Moffstation - Start - Character Menu Redesign (card-style objective panels)
             var objectivePanel = new PanelContainer
             {
-                StyleClasses = { "BackgroundDark" }
+                StyleClasses = { "BackgroundDeep" }
             };
             objectivePanel.AddChild(objectiveControl);
             _window.Objectives.AddChild(objectivePanel);
@@ -212,6 +215,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
                 button.OnPressed += _ => _objectiveSummary.OpenWindow();
 
                 _window.Objectives.AddChild(button);
+
                 break;
             }
         // End DeltaV Additions
@@ -303,6 +307,15 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
         if (!_prototypeManager.TryIndex(mind.RoleType, out var proto))
             Log.Error($"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
+
+        // Moffstation - Start - Faction subtype display
+        if (mind.Subtype.HasValue)
+        {
+            _window.RoleType.Text = Loc.GetString(mind.Subtype.Value);
+            _window.RoleType.FontColorOverride = mind.SubtypeColor ?? proto?.Color ?? Color.White;
+            return;
+        }
+        // Moffstation - End
 
         _window.RoleType.Text = Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name");
         _window.RoleType.FontColorOverride = proto?.Color ?? Color.White;
