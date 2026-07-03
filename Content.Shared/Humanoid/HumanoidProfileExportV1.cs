@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared._CD.Records; // CD
 using Content.Shared._DV.Traits; // DV
 using Content.Shared.Humanoid.Markings;
@@ -91,7 +92,16 @@ public sealed partial class HumanoidCharacterProfileV1
 
     public HumanoidCharacterProfile ToV2()
     {
-        return new(Name, FlavorText, Species, Height, Age, Sex, Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts, CDCharacterRecords);
+        return new(Name, FlavorText, Species, Height, Age, Sex, GetDefaultVoice(Species, Sex), Gender, Appearance.ToV2(Species), SpawnPriority, JobPriorities, PreferenceUnavailable, AntagPreferences, TraitPreferences, Loadouts, CDCharacterRecords);
+    }
+
+    // In V2 voices are stored as a separate database entry, this picks the default for the species and sex, which would give the same voice as pre-nubody.
+    private ProtoId<EmoteSoundsPrototype> GetDefaultVoice(ProtoId<SpeciesPrototype> species, Sex sex)
+    {
+        var prototypeManager = IoCManager.Resolve<PrototypeManager>();
+
+        var speciesPrototye = prototypeManager.Index(species);
+        return speciesPrototye.DefaultSoundsBySex[(int)sex];
     }
 }
 
