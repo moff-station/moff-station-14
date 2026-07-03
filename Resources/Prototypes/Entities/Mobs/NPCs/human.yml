@@ -73,7 +73,10 @@
   parent: MobHuman
   suffix: Dead
   save: false # mobs are currently not saveable.
-  id: SalvageHumanCorpse
+  # Moffstation - Start - Namespaced
+  id: SalvageHumanCorpseUpstream
+  abstract: true
+  # Moffstation - End
   name: unidentified corpse
   description: I think they're dead.
   components:
