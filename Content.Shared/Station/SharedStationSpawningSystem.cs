@@ -56,11 +56,14 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
         {
             foreach (var items in group.Value)
             {
-                if (!PrototypeManager.TryIndex(items.Prototype, out var loadoutProto))
+                if (ProtoMan.TryIndex(items.Prototype, out var loadoutProto))
                 {
                     Log.Error($"Unable to find loadout prototype for {items.Prototype}");
                     continue;
                 }
+
+                if (loadoutProto == null)
+                    return;
 
                 if (loadoutProto.SpecialJobLoadouts.TryGetValue(roleProto.ID, out var specialLoadout))
                 {

@@ -755,7 +755,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
         var user = args.User;
 
         // Don't play the insertion sound if the user has the silent tag.
-        var insertionSound = _prototype.TryIndex(entity.Comp.SilentStorageUserTag, out var silentTag) && _tag.HasTag(args.User, silentTag)
+        var insertionSound = ProtoMan.TryIndex(entity.Comp.SilentStorageUserTag, out var silentTag) && _tag.HasTag(args.User, silentTag)
             ? null
             : entity.Comp.StorageInsertSound;
 

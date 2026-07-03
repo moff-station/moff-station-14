@@ -127,7 +127,10 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
     {
         if (args.Base?.Height is not { } height ||
             !HasComp<VisualBodyComponent>(entity) ||
-            !_prototype.Resolve(entity.Comp.Species, out var species))
+            ProtoMan.Resolve(entity.Comp.Species, out var species))
+            return;
+
+        if (species == null)
             return;
 
         // If the height is the default, don't worry about scaling.

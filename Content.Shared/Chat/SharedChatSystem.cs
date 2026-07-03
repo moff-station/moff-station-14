@@ -93,7 +93,7 @@ public abstract partial class SharedChatSystem : EntitySystem
     // Starlight - Start - Collective Minds
     private void CacheCollectiveMinds()
     {
-        _mindKeyCodes = _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>()
+        _mindKeyCodes = ProtoMan.EnumeratePrototypes<CollectiveMindPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
     }
     // Starlight - End
