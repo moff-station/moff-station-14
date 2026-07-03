@@ -25,7 +25,6 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     // [Dependency] private INetManager _net = default!; // Moffstation - Now Unused
-    [Dependency] protected IPrototypeManager PrototypeManager = default!;
     [Dependency] private AnchorableSystem _anchorable = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
@@ -63,29 +62,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 
     private void OnFlatpackInteractUsing(Entity<FlatpackComponent> ent, ref InteractUsingEvent args)
     {
-        var (uid, comp) = ent;
-        if (!_tool.HasQuality(args.Used, comp.QualityNeeded) || _container.IsEntityInContainer(ent))
-            return;
-
-        var xform = Transform(ent);
-
-        if (xform.GridUid is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
-            return;
-
-        args.Handled = true;
-
-        if (comp.Entity == null)
-        {
-            Log.Error($"No entity prototype present for flatpack {ToPrettyString(ent)}.");
-
-            if (_net.IsServer)
-                QueueDel(ent);
-            return;
-        }
-
-        if (!ProtoMan.Resolve(comp.Entity, out var proto) ||
-            !proto.TryComp<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
-        {
+        if (args.Handled)
             return;
 
         args.Handled = Unpack(ent, args.User, args.Used, out _);
@@ -106,7 +83,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 
         if (ent.Comp.QualityNeeded is { } qualityNeeded)
         {
-            if (PrototypeManager.Resolve(qualityNeeded, out var quality))
+            if (ProtoMan.Resolve(qualityNeeded, out var quality))
             {
                 args.PushMarkup(Loc.GetString("flatpack-examine", ("qualityNeeded", Loc.GetString(quality.Name))));
             }
@@ -225,8 +202,8 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
             return true;
         }
 
-        if (!PrototypeManager.Resolve(flatpack.Comp.Entity, out var proto) ||
-            !proto.TryGetComponent<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
+        if (!ProtoMan.Resolve(flatpack.Comp.Entity, out var proto) ||
+            !proto.TryComp<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
         {
             return true;
         }
