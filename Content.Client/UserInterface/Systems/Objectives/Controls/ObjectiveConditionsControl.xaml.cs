@@ -37,7 +37,7 @@ public sealed partial class ObjectiveConditionsControl : PanelContainer // Make 
         titleMessage.PushColor(Color.White);
         Title.SetMessage(titleMessage);
 
-        TooltipSupplier = _ => new Tooltip { Text = condition.Description };
+        InfoBox.TooltipSupplier = _ => new Tooltip { Text = condition.Description };
     }
     // Moffstation - End
 }
