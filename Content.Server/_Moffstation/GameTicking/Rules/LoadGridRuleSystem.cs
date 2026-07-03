@@ -15,7 +15,7 @@ public sealed partial class LoadGridRuleSystem : GameRuleSystem<LoadGridRuleComp
     [Dependency] private MapLoaderSystem _mapLoader = default!;
     [Dependency] private StationSystem _stationSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _mapManager = default!;
 
 
     protected override void Started(EntityUid uid, LoadGridRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)

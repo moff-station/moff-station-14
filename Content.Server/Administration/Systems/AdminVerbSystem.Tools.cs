@@ -767,7 +767,7 @@ public sealed partial class AdminVerbSystem
                     if (HasComp<StrangeMoodsComponent>(args.Target))
                         return;
 
-                    var ui = new StrangeMoodsInitEui(_moods, EntityManager, _prototypeManager, _random, _adminManager, _playerManager, _euiManager, args.User);
+                    var ui = new StrangeMoodsInitEui(_moods, EntityManager, ProtoMan, _random, _adminManager, _playerManager, _euiManager, args.User);
                     if (!_playerManager.TryGetSessionByEntity(args.User, out var session))
                         return;
 
