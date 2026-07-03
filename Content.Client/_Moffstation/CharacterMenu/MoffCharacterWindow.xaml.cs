@@ -15,38 +15,42 @@ public sealed partial class MoffCharacterWindow : DefaultWindow
         RobustXamlLoader.Load(this);
     }
 
-    // Moffstation - Start - Character Menu Redesign
     public void AddObjectiveButtons(int objectiveCount, bool canPickObjectives)
     {
-        // Begin DeltaV Additions - Custom objective summary
+        // Pinktexting
         if (objectiveCount > 0)
         {
             var button = new Button
             {
                 StyleClasses = { "OpenBoth" },
                 Text = Loc.GetString("custom-objective-button-text"),
-                Margin = new Thickness(2, 2)
+                Margin = new Thickness(2, 2),
             };
             button.OnPressed += _ => UserInterfaceManager.GetUIController<CustomObjectiveSummaryUIController>().OpenWindow();
             Objectives.AddChild(button);
             return;
         }
-        // End DeltaV Additions
 
+        // No objectives label
         if (!canPickObjectives)
+        {
+            Objectives.AddChild(new Label
+            {
+                Text = Loc.GetString("character-info-no-objectives"),
+                StyleClasses = { "LabelSubText" },
+                HorizontalAlignment = HAlignment.Center,
+            });
             return;
+        }
 
+        // Objective picker button
         var objectivePickerButton = new Button
         {
             StyleClasses = { "OpenBoth" },
             Text = Loc.GetString("objective-picker-button"),
+            Margin = new Thickness(2, 2),
         };
-        objectivePickerButton.OnPressed += _ =>
-        {
-            UserInterfaceManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
-            Close();
-        };
+        objectivePickerButton.OnPressed += _ => UserInterfaceManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
         Objectives.AddChild(objectivePickerButton);
     }
-    // Moffstation - End
 }

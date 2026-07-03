@@ -1,7 +1,9 @@
 using System.Linq;
+using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Shared._Moffstation.Objectives;
 using JetBrains.Annotations;
+using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Shared.Random;
 
@@ -12,6 +14,9 @@ public sealed partial class ObjectivePickerUIController : UIController, IOnState
 {
     [Dependency] private IEntityNetworkManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
+    // Moffstation - Start - Character Menu Redesign
+    [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
+    // Moffstation - End
 
     private ObjectivePickerWindow? _window;
 
@@ -60,6 +65,9 @@ public sealed partial class ObjectivePickerUIController : UIController, IOnState
         };
         _net.SendSystemNetworkMessage(message);
         _window.Close();
+        // Moffstation - Start - Character Menu Redesign
+        _characterInfo.RequestCharacterInfo();
+        // Moffstation - End
     }
 
     private void OnRandomize(HashSet<NetEntity> objectiveList, int pickCount)
