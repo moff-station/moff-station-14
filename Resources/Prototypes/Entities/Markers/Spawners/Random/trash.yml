@@ -60,7 +60,7 @@
       table: !type:NestedSelector
         tableId: GenericTrashItems
         prob: 0.5
-      randomAngle: true # Moffstation - random spawner angle
+      randomRotation: true # Moffstation - random spawner angle
   placement:
     mode: AlignTileAny
 
