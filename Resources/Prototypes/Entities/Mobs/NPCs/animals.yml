@@ -1,6 +1,7 @@
 - type: entity
   name: bat
-  parent: [ SimpleMobBase, FlyingMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ]
+  # parent: [ SimpleMobBase, FlyingMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [ SimpleMobBase, FlyingMobBase, MobCombat, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   id: MobBat
   description: Some cultures find them terrifying, others crunchy on the teeth.
   components:
@@ -349,7 +350,8 @@
 
 - type: entity
   name: cockroach
-  parent: [SolutionFood, SolutionTiny, SimpleMobBase, BaseSlicingRefinable, MobNightVision]
+  # parent: [SolutionFood, SolutionTiny, SimpleMobBase, BaseSlicingRefinable, MobNightVision] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [SolutionFood, SolutionTiny, SimpleMobBase, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   id: MobCockroach
   description: This station is just crawling with bugs.
   components:
@@ -1927,7 +1929,8 @@
 
 - type: entity
   name: mouse
-  parent: [SimpleMobBase, BaseMobAnimal, SolutionVermin, BaseSlicingRefinable, MobNightVision]
+  # parent: [SimpleMobBase, BaseMobAnimal, SolutionVermin, BaseSlicingRefinable, MobNightVision] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [SimpleMobBase, BaseMobAnimal, SolutionVermin, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   id: MobMouse
   description: Squeak!
   components:
@@ -2682,7 +2685,8 @@
 # Code unique spider prototypes or combine them all into one spider and get a
 # random sprite state when you spawn it.
 - type: entity
-  parent: [ SimpleMobBase, BaseMobHemocyanin, MobCombat, BaseSlicingRefinable, MobNightVision ]
+  # parent: [ SimpleMobBase, BaseMobHemocyanin, MobCombat, BaseSlicingRefinable, MobNightVision ] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [ SimpleMobBase, BaseMobHemocyanin, MobCombat, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   id: MobSpiderBase
   abstract: true
   components:
@@ -3644,7 +3648,8 @@
 
 - type: entity
   name: hamster
-  parent: [ SimpleMobBase, MobCombat, StripableInventoryBase, BaseSlicingRefinable, MobNightVision]
+  # parent: [ SimpleMobBase, MobCombat, StripableInventoryBase, BaseSlicingRefinable, MobNightVision] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [ SimpleMobBase, MobCombat, StripableInventoryBase, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   id: MobHamster
   description: A cute, fluffy, robust hamster.
   components:

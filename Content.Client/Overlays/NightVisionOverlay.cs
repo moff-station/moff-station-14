@@ -1,3 +1,5 @@
+// Moffstation - Start - Using Starlight-based Night Vision for now
+/*
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
@@ -59,3 +61,4 @@ public sealed partial class NightVisionOverlay : Overlay
             handle.UseShader(null);
     }
 }
+*/ // Moffstation - End

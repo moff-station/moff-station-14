@@ -1,7 +1,8 @@
 ﻿- type: entity
   name: basic slime
   id: BaseMobAdultSlimes
-  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ]
+  # parent: [ BaseMobSlimes, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   abstract: true
   description: It looks so much like jelly. I wonder what it tastes like?
   components:

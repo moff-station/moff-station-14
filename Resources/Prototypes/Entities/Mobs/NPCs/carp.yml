@@ -1,7 +1,8 @@
 - type: entity
   name: space carp
   id: BaseMobCarp
-  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ]
+  # parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   description: It's a space carp.
   abstract: true
   components:

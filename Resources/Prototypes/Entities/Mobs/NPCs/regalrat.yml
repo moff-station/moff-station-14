@@ -1,7 +1,8 @@
 - type: entity
   name: rat king
   id: MobRatKing
-  parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ]
+  # parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision ] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable ] # Moffstation - Using Starlight-based Night Vision for now
   description: He's da rat. He make da roolz.
   components:
   - type: CombatMode

@@ -1,7 +1,8 @@
 - type: entity
   name: basic
   id: MobSpaceBasic
-  parent: [ SimpleSpaceMobBase, MobNightVision ]
+  # parent: [ SimpleSpaceMobBase, MobNightVision ] # Moffstation - Using Starlight-based Night Vision for now
+  parent: SimpleSpaceMobBase # Moffstation - Using Starlight-based Night Vision for now
   abstract: true
   description: It looks friendly. Why don't you give it a hug?
   components:
@@ -485,7 +486,8 @@
     emoteSounds: SheepSpace
 
 - type: entity
-  parent: [SimpleSpaceMobBase, BaseMobAnimal, SolutionVermin, MobNightVision]
+  # parent: [SimpleSpaceMobBase, BaseMobAnimal, SolutionVermin, MobNightVision] # Moffstation - Using Starlight-based Night Vision for now
+  parent: [ SimpleSpaceMobBase, BaseMobAnimal, SolutionVermin ] # Moffstation - Using Starlight-based Night Vision for now
   id: MobSnail
   name: snail
   description: Revolting unless you're french.

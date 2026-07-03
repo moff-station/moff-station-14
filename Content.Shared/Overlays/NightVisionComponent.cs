@@ -1,3 +1,5 @@
+// Moffstation - Start - Using Starlight-based Night Vision for now
+/*
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Overlays;
@@ -41,3 +43,4 @@ public sealed partial class NightVisionComponent : Component
     [DataField, AutoNetworkedField]
     public float NoiseMultiplier;
 }
+*/ // Moffstation - End
