@@ -20,10 +20,9 @@
 
         <PanelContainer StyleClasses="LowDivider" Margin="0 6 0 15"/>
 
-        <!-- Three-column body -->
         <BoxContainer Orientation="Horizontal" VerticalExpand="True">
 
-            <!-- Left: character sprite + name + job -->
+            <!-- character sprite + name + job -->
             <BoxContainer Orientation="Vertical"
                           VerticalAlignment="Center"
                           VerticalExpand="True"
@@ -44,7 +43,7 @@
                        HorizontalAlignment="Center"/>
             </BoxContainer>
 
-            <!-- Center: faction briefing/description -->
+            <!-- faction OOC briefing -->
             <PanelContainer StyleClasses="BackgroundDeep"
                             Margin="0 0 10 0"
                             MinWidth="220"
@@ -59,31 +58,32 @@
                 </ScrollContainer>
             </PanelContainer>
 
-            <!-- Right: objectives list -->
+            <!-- objectives list -->
             <PanelContainer StyleClasses="BackgroundDeep"
                             Margin="0 0 10 0"
                             MinWidth="220"
                             HorizontalExpand="True"
                             VerticalExpand="True">
                 <ScrollContainer HScrollEnabled="False"
-                                 MinWidth="230"
+                                 MinWidth="270"
                                  VerticalExpand="True">
                     <BoxContainer Name="Objectives"
                                   Access="Public"
                                   Orientation="Vertical"
-                                  SeparationOverride="6"/>
+                                  Margin="0 2 0 0"
+                                  SeparationOverride="2"/>
                 </ScrollContainer>
             </PanelContainer>
 
         </BoxContainer>
 
-        <!-- Collective Minds (Starlight) -->
+        <!-- Collective Minds -->
         <BoxContainer Name="Minds" Access="Public" Orientation="Vertical"/>
 
-        <!-- Shown when no role info at all -->
+        <!-- This thing... I keep it so that its compatible with the old UI code -->
         <cc:Placeholder Name="RolePlaceholder"
                         Access="Public"
-                        PlaceholderText="{Loc 'character-info-roles-antagonist-text'}"/>
+                        Visible="False"/>
 
     </BoxContainer>
 </windows:MoffCharacterWindow>

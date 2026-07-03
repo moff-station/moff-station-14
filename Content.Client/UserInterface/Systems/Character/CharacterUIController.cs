@@ -60,8 +60,10 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         // Moffstation - Start - Character Menu Redesign
         // _window = UIManager.CreateWindow<CharacterWindow>();
         _window = UIManager.CreateWindow<MoffCharacterWindow>();
+        LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.Center);
+        LayoutContainer.SetGrowHorizontal(_window, LayoutContainer.GrowDirection.Both);
+        LayoutContainer.SetGrowVertical(_window, LayoutContainer.GrowDirection.Both);
         // Moffstation - End
-        LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.CenterTop);
 
         _window.OnClose += DeactivateButton;
         _window.OnOpen += ActivateButton;
@@ -159,47 +161,29 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
         foreach (var (groupId, conditions) in objectives)
         {
-            var objectiveControl = new CharacterObjectiveControl
-            {
-                Orientation = BoxContainer.LayoutOrientation.Vertical,
-                Modulate = Color.Gray
-            };
 
-
-            var objectiveText = new FormattedMessage();
-            objectiveText.TryAddMarkup(groupId, out _);
-
-            var objectiveLabel = new RichTextLabel
-            {
-                StyleClasses = { StyleClass.TooltipTitle }
-            };
-            objectiveLabel.SetMessage(objectiveText);
-
-            objectiveControl.AddChild(objectiveLabel);
+            // Moff Start - New Character UI
+            //var objectiveControl = new CharacterObjectiveControl
+            //{
+            //   Orientation = BoxContainer.LayoutOrientation.Vertical,
+            //    Modulate = Color.Gray
+            //};
+            //
+            // var objectiveText = new FormattedMessage();
+            // objectiveText.TryAddMarkup(groupId, out _);
+            //
+            // var objectiveLabel = new RichTextLabel
+            // {
+            //     StyleClasses = { StyleClass.TooltipTitle },
+            //     HorizontalAlignment = Control.HAlignment.Center
+            // };
+            // objectiveLabel.SetMessage(objectiveText);
+            // _window.Objectives.AddChild(objectiveLabel);
 
             foreach (var condition in conditions)
             {
-                var conditionControl = new ObjectiveConditionsControl();
-                conditionControl.ProgressTexture.Texture = _sprite.Frame0(condition.Icon);
-                conditionControl.ProgressTexture.Progress = condition.Progress;
-                var titleMessage = new FormattedMessage();
-                var descriptionMessage = new FormattedMessage();
-                titleMessage.AddText(condition.Title);
-                descriptionMessage.AddText(condition.Description);
-
-                conditionControl.Title.SetMessage(titleMessage);
-                conditionControl.Description.SetMessage(descriptionMessage);
-
-                objectiveControl.AddChild(conditionControl);
+                _window.Objectives.AddChild(new ObjectiveConditionsControl(condition, _sprite));
             }
-
-            // Moffstation - Start - Character Menu Redesign (card-style objective panels)
-            var objectivePanel = new PanelContainer
-            {
-                StyleClasses = { "BackgroundDeep" }
-            };
-            objectivePanel.AddChild(objectiveControl);
-            _window.Objectives.AddChild(objectivePanel);
             // Moffstation - End
         }
         // Begin DeltaV Additions - Custom objective summary
@@ -210,7 +194,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
                 var button = new Button
                 {
                     Text = Loc.GetString("custom-objective-button-text"),
-                    Margin = new Thickness(0, 10, 0, 10)
+                    Margin = new Thickness(2, 2)
                 };
                 button.OnPressed += _ => _objectiveSummary.OpenWindow();
 
@@ -231,8 +215,8 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
                 var objectivePickerButton = new Button
                 {
+                    StyleClasses = { "OpenBoth" },
                     Text = Loc.GetString("objective-picker-button"),
-                    Margin = new Thickness(0, 10, 0, 10)
                 };
                 objectivePickerButton.OnPressed += _ => UIManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
                 objectivePickerButton.OnPressed += _ => _window.Close();
@@ -285,7 +269,10 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             _window.Objectives.AddChild(control);
         }
 
-        _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
+        // Moffstation - Start - hide "no special roles" placeholder
+        // _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
+        _window.RolePlaceholder.Visible = false;
+        // Moffstation - End
     }
 
     private void OnRoleTypeChanged(MindRoleTypeChangedEvent ev, EntitySessionEventArgs _)

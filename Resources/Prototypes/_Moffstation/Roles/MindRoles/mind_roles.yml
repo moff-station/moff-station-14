@@ -37,7 +37,7 @@
   - type: MindRole
     roleType: SoloAntagonist
     subtype: role-subtype-faction-vampire
-    subtypeColor: crimson
+    subtypeColor: darkviolet
     exclusiveAntag: true
     antagPrototype: Vampire
   - type: VampireRole
@@ -53,7 +53,7 @@
     exclusiveAntag: true
     antagPrototype: SyndicateSpy
     subtype: role-subtype-faction-syndicate
-    subtypeColor: crimson
+    subtypeColor: darkred
   - type: SyndicateSpyRole
 
 - type: entity
@@ -66,7 +66,7 @@
     antagPrototype: SyndieVentSoldier
     exclusiveAntag: true
     subtype: role-subtype-faction-syndicate
-    subtypeColor: crimson
+    subtypeColor: darkred
 
 # Wizard Duelists
 - type: entity
