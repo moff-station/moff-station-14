@@ -1217,11 +1217,9 @@
   categories:
     - UplinkDisruption
   conditions:
-   - !type:StoreWhitelistCondition
     whitelist:
       tags:
       - NukeOpsUplink
-    - !type:BuyerWhitelistCondition
     blacklist:
       components:
       - SurplusBundle
