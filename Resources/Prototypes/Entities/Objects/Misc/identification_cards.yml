@@ -963,11 +963,7 @@
     expireMessage: genpop-prisoner-id-expire
     expiredAccess:
     - GenpopLeave
-    # Moffstation - Start - Emit radio message when expired
-    expireRadioMessage:
-      channel: Security
-      message: "genpop-prisoner-id-expire-radio"
-    # Moffstation - End
+    expireMessageRadio: genpop-prisoner-id-expire-radio # Moffstation - What the card broadcasts on expiry
   - type: Speech
     speechVerb: Robotic
   - type: Tag
