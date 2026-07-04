@@ -9,13 +9,13 @@
     sprite: _Moffstation/Structures/Machines/computers.rsi
     layers:
       - map: ["computerLayerBody"]
-        state: computer-pirate
+        state: computer_pirate
       - map: [ "computerLayerKeyboard" ]
         state: generic_keyboard_pirate
       - map: [ "computerLayerScreen" ]
-        state: pirate-request
+        state: pirate_request
       - map: [ "computerLayerKeys" ]
-        state: pirate-key
+        state: pirate_key
       - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
         state: generic_panel_open
   - type: CargoOrderConsole
@@ -40,13 +40,13 @@
       sprite: _Moffstation/Structures/Machines/computers.rsi
       layers:
         - map: ["computerLayerBody"]
-          state: computer-pirate
+          state: computer_pirate
         - map: ["computerLayerKeyboard"]
           state: generic_keyboard_pirate
         - map: ["computerLayerScreen"]
-          state: pirate-transfer
+          state: pirate_transfer
         - map: ["computerLayerKeys"]
-          state: pirate-key
+          state: pirate_key
         - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
           state: generic_panel_open
     - type: Anchorable
@@ -81,11 +81,11 @@
     sprite: _Moffstation/Structures/Machines/computers.rsi
     layers:
     - map: ["computerLayerBody"]
-      state: computer-pirate
+      state: computer_pirate
     - map: ["computerLayerKeyboard"]
       state: tech_key_off
     - map: ["computerLayerScreen"]
-      state: pirate-bounty
+      state: pirate_bounty
     - map: ["computerLayerKeys"]
       state: tech_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -124,11 +124,11 @@
     sprite: _Moffstation/Structures/Machines/computers.rsi
     layers:
     - map: ["computerLayerBody"]
-      state: computer-pirate
+      state: computer_pirate
     - map: ["computerLayerKeyboard"]
       state: syndie_key_off
     - map: ["computerLayerScreen"]
-      state: pirate-shuttle
+      state: pirate_shuttle
     - map: ["computerLayerKeys"]
       state: syndie_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -157,11 +157,11 @@
     sprite: _Moffstation/Structures/Machines/computers.rsi
     layers:
     - map: ["computerLayerBody"]
-      state: computer-pirate
+      state: computer_pirate
     - map: ["computerLayerKeyboard"]
       state: syndie_key_off
     - map: ["computerLayerScreen"]
-      state: pirate-comm
+      state: pirate_comm
     - map: ["computerLayerKeys"]
       state: syndie_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
