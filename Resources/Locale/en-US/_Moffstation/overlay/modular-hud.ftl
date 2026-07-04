@@ -29,6 +29,7 @@ modularhud-premade-cheap-sunglasses = Cheap Sunglasses
 modularhud-premade-sunglasses = Sunglasses
 modularhud-premade-medchem = "Valkyrie" MedChem
 modularhud-premade-medsec = MedSec
+modularhud-premade-food = Chef
 
 # Module requirements
 modular-hud-requirement-full-coverage = Requires eyewear which fully covers all eyes
