@@ -131,13 +131,16 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-cmo.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-cmo.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 1.1
+    coolingCoefficient: 0.1
   - type: Armor
     modifiers:
       coefficients:
         Caustic: 0.75
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase
+  parent: ClothingOuterWinterCMO
   id: ClothingOuterWinterMed
   name: medical doctor's insulated labcoat
   components:
@@ -145,7 +148,13 @@
     sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat.rsi
   - type: Clothing
     sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Caustic: 0.75
+
+- type: entity
+  parent: ClothingOuterWinterCMO
+  id: ClothingOuterWinterChem
+  name: chemist's insulated labcoat
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-chem.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/OuterClothing/Coats/large-labcoat-chem.rsi

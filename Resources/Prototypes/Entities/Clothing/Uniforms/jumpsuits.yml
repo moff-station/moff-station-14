@@ -534,7 +534,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/kimono.rsi
 
 - type: entity
-  parent: ClothingUniformBase # Moffstation
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitMedicalDoctor
   name: medical doctor jumpsuit
   description: It's made of a special fibers that provides minor protection against biohazards while maintaining a professional appearance # Moffstation
@@ -1353,7 +1353,7 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/senior_researcher.rsi # Moffstation
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitSeniorPhysician
   name: senior physician jumpsuit
   description: A sign of skill and prestige within the medical department.
