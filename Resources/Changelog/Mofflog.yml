@@ -6533,6 +6533,20 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1568
 - author: DuckManZach
   changes:
+  - message: Added sparks for RCDs, Bluespace, portals, and turning welder on!
+    type: add
+  id: 1571
+  time: '2026-06-30T17:34:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1571
+- author: Centronias, Nyxilath
+  changes:
+  - message: Clumsy as a character trait will no longer play a bikehorn sfx
+    type: fix
+  id: 1572
+  time: '2026-07-01T19:02:14.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1572
+- author: DuckManZach
+  changes:
   - message: Shortened ghost role timers.
     type: tweak
   id: 1574
@@ -6556,5 +6570,30 @@ Entries:
   id: 1585
   time: '2026-06-29T20:11:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1585
+- author: Centronias
+  changes:
+  - message: Added Gnocchi's personal item
+    type: add
+  id: 1590
+  time: '2026-06-30T04:02:43.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1590
+- author: Nyxilath
+  changes:
+  - message: Avali now spawn with the correct number of survival boxes.
+    type: fix
+  - message: Nuclear Operative Avali now spawn with a double emergency oxygen tank
+      in their pockets.
+    type: fix
+  id: 1592
+  time: '2026-06-30T18:31:08.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1592
+- author: Centronias
+  changes:
+  - message: "Gnocchi's ushanka no longer gives the wearer the Russian accent. \u0423\u0440\u0430
+      \u043F\u043E\u043A\u0440\u0430\u0449\u0435\u043D\u043D\u044E!"
+    type: fix
+  id: 1593
+  time: '2026-06-30T18:55:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1593
 Name: Mofflog
 Order: -2
