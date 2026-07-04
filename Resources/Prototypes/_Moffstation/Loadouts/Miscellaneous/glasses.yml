@@ -1,38 +1,5 @@
 # General
 - type: loadout
   id: EyePatch
-  groupBy: "standard eyewear"
   equipment:
     eyes: ClothingEyesEyepatch
-
-# Modular Eyewear
-- type: loadout
-  id: ModularHudGlasses
-  groupBy: "modular eyewear"
-  equipment:
-    eyes: ClothingEyesModularHudGlasses
-
-- type: loadout
-  id: ModularHudJamjars
-  groupBy: "modular eyewear"
-  equipment:
-    eyes: ClothingEyesModularHudJamjars
-
-- type: loadout
-  id: ModularHudSunglasses
-  groupBy: "modular eyewear"
-  equipment:
-    eyes: ClothingEyesModularHudSunglasses
-
-- type: loadout
-  id: ModularHudVisor
-  groupBy: "modular eyewear"
-  equipment:
-    eyes: ClothingEyesModularHudVisor
-
-- type: loadout
-  id: ModularHudPatch
-  groupBy: "modular eyewear"
-  equipment:
-    eyes: ClothingEyesModularHudPatch
-

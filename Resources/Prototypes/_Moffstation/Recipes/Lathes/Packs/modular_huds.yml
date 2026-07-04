@@ -7,37 +7,33 @@
   - ClothingEyesModularHudPatch
   - ClothingEyesModularHudVisor
 
-- type: latheRecipePack
-  id: SecurityModularHudFramesStatic
-  recipes:
-  - ClothingEyesModularHudSunglasses
-  - ClothingEyesModularHudVisor
-
 # Modules
 - type: latheRecipePack
   id: ModularHudModulesStatic
   recipes:
+  - HudModuleCheapSunglasses
   - HudModuleShowAccessReaderSettings
   - HudModuleShowInorganicHealthBars
 
 - type: latheRecipePack
   id: MedicalModularHudModulesStatic
   recipes:
-  - HudModuleShowHungerIcons
+  - HudModuleCheapSunglasses
   - HudModuleShowMedicalIcons
-  - HudModuleShowThirstIcons
   - HudModuleSolutionScanner
   - HudModuleVisionCorrection
 
 - type: latheRecipePack
   id: ScienceModularHudModulesStatic
   recipes:
+  - HudModuleBlackAndWhiteOverlay
   - HudModuleSolutionScanner
 
 - type: latheRecipePack
   id: SecurityModularHudModulesStatic
   recipes:
   - HudModuleBlackAndWhiteOverlay
+  - HudModuleCheapSunglasses
   - HudModuleFlashImmunity
   - HudModuleNoirOverlay
   - HudModuleSecurity

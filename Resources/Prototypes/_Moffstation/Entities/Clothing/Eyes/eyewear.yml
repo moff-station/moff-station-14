@@ -254,22 +254,9 @@
       modular-hud-modules: !type:AllSelector
         children:
         - id: HudModuleShowThirstIcons
-        - id: HudCheapSunglasses
+        - id: HudModuleCheapSunglasses
   - type: Label
     currentLabel: modularhud-premade-thirst
-
-- type: entity
-  parent: [ ClothingEyesModularHudGlasses ]
-  id: ClothingEyesModularHudCheapSunglasses
-  suffix: Cheap Sunglasses
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      modular-hud-modules: !type:AllSelector
-        children:
-        - id: HudCheapSunglasses
-  - type: Label
-    currentLabel: modularhud-premade-cheap-sunglasses
 
 - type: entity
   parent: [ ClothingEyesModularHudGlasses ]
@@ -295,12 +282,12 @@
       modular-hud-modules: !type:AllSelector
         children:
         - id: HudModuleShowMedicalIcons
-        - id: HudCheapSunglasses
+        - id: HudModuleCheapSunglasses
   - type: Label
     currentLabel: modularhud-premade-medical
 
 - type: entity
-  parent: [ ClothingEyesModularHudSunglasses ]
+  parent: [ ClothingEyesModularHudGlasses ]
   id: ClothingEyesGlassesNoir
   suffix: Noir
   components:
@@ -327,20 +314,11 @@
   - type: Label
     currentLabel: modularhud-premade-security
 
-- type: entity
-  parent: [ ClothingEyesModularHudGlasses ]
-  id: ClothingEyesModularHudSunglasses
-  suffix: Sunglasses
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      modular-hud-modules: !type:AllSelector
-        children:
-        - id: HudModuleFlashImmunity
-  - type: Label
-    currentLabel: modularhud-premade-sunglasses
-
 ### Modular HUD visor
+- type: entity
+  parent: [ ClothingEyesModularHudVisor, AbstractModularHudChef ]
+  id: ClothingEyesHudChef
+
 - type: entity
   parent: [ ClothingEyesModularHudVisor ]
   id: ClothingEyesGlassesChemical

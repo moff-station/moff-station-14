@@ -47,8 +47,7 @@
     - id: RubberStampCaptain
     - id: SpaceCash1000
     - id: WeaponDisabler
-    # - id: ClothingEyesGlassesCommand # Moffstation - Modular Eyewear
-    - id: HudModuleShowJobIcons # Moffstation - Modular Eyewear
+    - id: ClothingEyesGlassesCommand
     - id: OrganSkeletonPersonHead # A skull to accompany your skeleton crew
       conditions:
       - !type:PlayerCountCondition
@@ -135,8 +134,7 @@
     - id: DoorRemoteService
     - id: HoPIDCard
     - id: WeaponDisabler
-    # - id: ClothingEyesHudCommand # Moffstation - Modular Eyewear
-    - id: HudModuleShowJobIcons # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudCommand
     - id: PlushieLizardJobHeadofpersonnel
       prob: 0.02
     - id: ServiceCommsFlatpack # Moffstation - Departmental Communications Computers
@@ -216,11 +214,8 @@
   id: LockerFillChiefMedicalOfficerNoHardsuit
   table: !type:AllSelector
     children:
-    # Moffstation - Start - Modular Eyewear
-    # - id: ClothingEyesHudMedical
-    - id: HudModuleShowMedicalIcons
-    - id: HudModuleSolutionScanner
-    # Moffstation - End
+    # - id: ClothingEyesHudMedical # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudMedChem # Moffstation - Modular Eyewear
     - id: ClothingBeltMedicalFilled
     - id: HandheldCrewMonitor
     - id: Hypospray
@@ -334,7 +329,7 @@
     - id: CigarGoldCase
       prob: 0.50
     - id: ClothingBeltSecurityFilled
-    # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
+    - id: ClothingEyesGlassesSecurity
     - id: ClothingHeadsetAltSecurity
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
