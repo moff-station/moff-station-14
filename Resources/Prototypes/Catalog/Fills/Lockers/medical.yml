@@ -43,8 +43,7 @@
   id: LockerFillMedicalDoctor
   table: !type:AllSelector
     children:
-    # - id: ClothingEyesHudMedical # Moffstation - Modular Eyewear
-    - id: HudModuleShowMedicalIcons # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudMedical
     - id: ClothingBeltMedicalFilled
     - id: JetInjector
     - id: HandheldHealthAnalyzer
@@ -118,8 +117,7 @@
   id: LockerFillParamedic
   table: !type:AllSelector
     children:
-    # - id: ClothingEyesHudMedical # Moffstation - Modular Eyewear
-    - id: HudModuleShowMedicalIcons # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudMedical
     - id: ClothingOuterHardsuitVoidParamed
     - id: ClothingBeltMedicalEMTFilled
     - id: JetInjector
