@@ -1,9 +1,9 @@
 - type: entity
+  parent: MarkerBase
   id: SpawnPointGhostPirate
   categories: [ HideSpawnMenu, Spawner ]
   name: ghost role spawn point
   suffix: Pirate
-  parent: MarkerBase
   components:
   - type: GhostRole
     rules: ghost-role-information-rules-default-team-antagonist

@@ -1,8 +1,8 @@
 ﻿# Derelict service cyborg spawn point
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: SpawnPointGhostDerelictCyborg
   id: SpawnPointGhostDerelictServiceCyborg
+  categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: GhostRole
     name: ghost-role-information-derelict-service-cyborg-name
@@ -12,9 +12,9 @@
       settings: default
 
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner
   id: SyndicateFootsoldierGhostRoleSpawn
+  categories: [ HideSpawnMenu, Spawner ]
   name: syndicate footsoldier role spawn point
   components:
   - type: GhostRole

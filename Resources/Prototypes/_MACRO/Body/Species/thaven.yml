@@ -209,10 +209,10 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _MACRO/Mobs/Species/Thaven/parts.rsi
+    sprite: _Moffstation/Mobs/Species/Thaven/parts.rsi # Moffstation
   - type: VisualOrgan
     data:
-      sprite: _MACRO/Mobs/Species/Thaven/parts.rsi
+      sprite: _Moffstation/Mobs/Species/Thaven/parts.rsi # Moffstation
   - type: VisualOrganMarkings
     markingData:
       group: Thaven
