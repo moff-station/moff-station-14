@@ -29,10 +29,6 @@
           False: { visible: true, shader: shaded }
       enum.AtmosAlertsComputerVisuals.ComputerLayerScreen:
         computerLayerScreen:
-          0: { state: alert-0 }
-          1: { state: alert-0 }
-          2: { state: alert-1 }
-          3: { state: alert-2 }
           # Moffstation - Start - Computer resprite
           0: { state: alert_0 }
           1: { state: alert_0 }
