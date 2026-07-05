@@ -756,7 +756,8 @@
 - type: marking
   id: LegTwistingRight
   bodyPart: RLeg
-  groupWhitelist: [Human, Dwarf, Reptilian, SlimePerson, Arachnid] # Moffstation - Reptilians got new legs
+  # groupWhitelist: [Human, Dwarf, Reptilian, SlimePerson, Arachnid] # Moffstation - Reptilians got new legs
+  groupWhitelist: [Human, Dwarf, SlimePerson, Arachnid] # Moffstation - Reptilians got new legs
   sprites:
   - sprite: _CD/Mobs/Customization/Generic/legs.rsi
     state: leg_r_twisting
@@ -764,6 +765,7 @@
 - type: marking
   id: LegDollJointsTattooLeft
   bodyPart: LLeg
+  # groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson, Reptilian] # Moffstation - Reptilians got new legs
   groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson] # Moffstation - Reptilians got new legs
   coloring:
     default:
@@ -777,6 +779,7 @@
 - type: marking
   id: LegDollJointsTattooRight
   bodyPart: RLeg
+  # groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson, Reptilian] # Moffstation - Reptilians got new legs
   groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson] # Moffstation - Reptilians got new legs
   coloring:
     default:
@@ -816,6 +819,7 @@
 - type: marking
   id: LegHeavyTattoosLeft
   bodyPart: LLeg
+  # groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson, Reptilian] # Moffstation - Reptilians got new legs
   groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson] # Moffstation - Reptilians got new legs
   coloring:
     default:
@@ -831,6 +835,7 @@
 - type: marking
   id: LegHeavyTattoosRight
   bodyPart: RLeg
+  # groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson, Reptilian] # Moffstation - Reptilians got new legs
   groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson] # Moffstation - Reptilians got new legs
   coloring:
     default:
