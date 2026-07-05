@@ -51,6 +51,7 @@ public sealed partial class ExpireIdCardComponent : Component
     public ExpireIdRadioMessage? ExpireRadioMessage;
     // Moffstation - End
 }
+
     // Moffstation - Begin - Radio Channel for Temp IDs announcing
     [DataRecord]
     public sealed partial record ExpireIdRadioMessage
