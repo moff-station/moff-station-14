@@ -14,9 +14,8 @@ public sealed partial class ObjectivePickerUIController : UIController, IOnState
 {
     [Dependency] private IEntityNetworkManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
-    // Moffstation - Start - Character Menu Redesign
-    [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
-    // Moffstation - End
+
+    [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;    // Moffstation - Character Menu Redesign
 
     private ObjectivePickerWindow? _window;
 
