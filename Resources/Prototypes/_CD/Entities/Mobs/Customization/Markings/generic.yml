@@ -734,6 +734,7 @@
 - type: marking
   id: LegTwistingLeft
   bodyPart: LLeg
+  # groupWhitelist: [Human, Dwarf, Reptilian,  SlimePerson, Arachnid] # Moffstation - Reptilians got new legs
   groupWhitelist: [Human, Dwarf, SlimePerson, Arachnid] # Moffstation - Reptilians got new legs
   sprites:
   - sprite: _CD/Mobs/Customization/Generic/legs.rsi
