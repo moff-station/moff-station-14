@@ -163,33 +163,16 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.AddObjectiveButtons(objectives.Count, canPickObjectives);
         // Moffstation - End
 
+        // Moff Start - New Character UI
+        // Basically this whole foreach loop is rewritten, probably dont take new changes here
         foreach (var (groupId, conditions) in objectives)
         {
-
-            // Moff Start - New Character UI
-            //var objectiveControl = new CharacterObjectiveControl
-            //{
-            //   Orientation = BoxContainer.LayoutOrientation.Vertical,
-            //    Modulate = Color.Gray
-            //};
-            //
-            // var objectiveText = new FormattedMessage();
-            // objectiveText.TryAddMarkup(groupId, out _);
-            //
-            // var objectiveLabel = new RichTextLabel
-            // {
-            //     StyleClasses = { StyleClass.TooltipTitle },
-            //     HorizontalAlignment = Control.HAlignment.Center
-            // };
-            // objectiveLabel.SetMessage(objectiveText);
-            // _window.Objectives.AddChild(objectiveLabel);
-
             foreach (var condition in conditions)
             {
                 _window.Objectives.AddChild(new ObjectiveConditionsControl(condition, _sprite));
             }
-            // Moffstation - End
         }
+        // Moff End
 
         // Starlight - Start - Collective Mind
         if (minds != null && minds.Count > 0)

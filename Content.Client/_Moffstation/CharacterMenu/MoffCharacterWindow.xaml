@@ -67,6 +67,13 @@
                 <ScrollContainer HScrollEnabled="False"
                                  MinWidth="270"
                                  VerticalExpand="True">
+                    <Button Name="ObjectiveButton"
+                            StyleClasses="OpenBoth"
+                            Margin="2"/>
+                    <Label Name="NoObjectivesLabel"
+                           Text="{Loc 'character-info-no-objectives'}"
+                           StyleClasses="LabelSubText"
+                           HorizontalAlignment="Center"/>
                     <BoxContainer Name="Objectives"
                                   Access="Public"
                                   Orientation="Vertical"

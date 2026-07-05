@@ -64,9 +64,7 @@ public sealed partial class ObjectivePickerUIController : UIController, IOnState
         };
         _net.SendSystemNetworkMessage(message);
         _window.Close();
-        // Moffstation - Start - Character Menu Redesign
-        _characterInfo.RequestCharacterInfo();
-        // Moffstation - End
+        _characterInfo.RequestCharacterInfo(); // Moffstation - Character Menu Redesign
     }
 
     private void OnRandomize(HashSet<NetEntity> objectiveList, int pickCount)

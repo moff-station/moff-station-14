@@ -17,40 +17,40 @@ public sealed partial class MoffCharacterWindow : DefaultWindow
 
     public void AddObjectiveButtons(int objectiveCount, bool canPickObjectives)
     {
-        // Pinktexting
-        if (objectiveCount > 0)
-        {
-            var button = new Button
-            {
-                StyleClasses = { "OpenBoth" },
-                Text = Loc.GetString("custom-objective-button-text"),
-                Margin = new Thickness(2, 2),
-            };
-            button.OnPressed += _ => UserInterfaceManager.GetUIController<CustomObjectiveSummaryUIController>().OpenWindow();
-            Objectives.AddChild(button);
-            return;
-        }
-
         // No objectives label
         if (!canPickObjectives)
         {
-            Objectives.AddChild(new Label
-            {
-                Text = Loc.GetString("character-info-no-objectives"),
-                StyleClasses = { "LabelSubText" },
-                HorizontalAlignment = HAlignment.Center,
-            });
+            ObjectiveButton.Visible = false;
+            NoObjectivesLabel.Visible = true;
             return;
         }
 
-        // Objective picker button
-        var objectivePickerButton = new Button
+        ObjectiveButton.Visible = true;
+        NoObjectivesLabel.Visible = false;
+
+        // Reset what the button does
+        ObjectiveButton.OnPressed -= CustomObjectiveButtonPressed;
+        ObjectiveButton.OnPressed -= ObjectivePickerButtonPressed;
+
+        // Pinktexting
+        if (objectiveCount > 0)
         {
-            StyleClasses = { "OpenBoth" },
-            Text = Loc.GetString("objective-picker-button"),
-            Margin = new Thickness(2, 2),
-        };
-        objectivePickerButton.OnPressed += _ => UserInterfaceManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
-        Objectives.AddChild(objectivePickerButton);
+            ObjectiveButton.OnPressed += CustomObjectiveButtonPressed;
+            ObjectiveButton.Text = Loc.GetString("custom-objective-button-text");
+            return;
+        }
+        // Objective picker button
+        ObjectiveButton.OnPressed += ObjectivePickerButtonPressed;
+        ObjectiveButton.Text = Loc.GetString("objective-picker-button");
+    }
+
+    private void CustomObjectiveButtonPressed(BaseButton.ButtonEventArgs args)
+    {
+        UserInterfaceManager.GetUIController<CustomObjectiveSummaryUIController>().OpenWindow();
+    }
+
+    private void ObjectivePickerButtonPressed(BaseButton.ButtonEventArgs args)
+    {
+        UserInterfaceManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
     }
 }
