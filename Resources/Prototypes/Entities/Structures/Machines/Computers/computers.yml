@@ -33,13 +33,13 @@
           1: { state: alert-0 }
           2: { state: alert-1 }
           3: { state: alert-2 }
-# Moffstation - Start - Computer resprite
-0: { state: alert_0 }
-1: { state: alert_0 }
-2: { state: alert_1 }
-3: { state: alert_2 }
-4: { state: alert_2 }
-# Moffstation - End
+          # Moffstation - Start - Computer resprite
+          0: { state: alert_0 }
+          1: { state: alert_0 }
+          2: { state: alert_1 }
+          3: { state: alert_2 }
+          4: { state: alert_2 }
+          # Moffstation - End
       enum.WiresVisuals.MaintenancePanelState:
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: false }
