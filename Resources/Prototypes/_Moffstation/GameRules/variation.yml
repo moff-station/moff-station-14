@@ -1,6 +1,6 @@
 - type: entity
-  id: MoffFilthyStationDecalVariationPass
   parent: BaseVariationPass
+  id: MoffFilthyStationDecalVariationPass
   components:
   - type: EntitySpawnVariationPass
     tilesPerEntityAverage: 3
@@ -12,8 +12,8 @@
       prob: 0.2
 
 - type: entity
-  id: MoffRustyStationVariationPass
   parent: BaseVariationPass
+  id: MoffRustyStationVariationPass
   components:
   - type: WallReplaceVariationPass
   - type: EntityReplaceVariationPass
@@ -23,8 +23,8 @@
     - id: WallSolidRust
 
 - type: entity
-  id: MoffReinforcedRustyStationVariationPass
   parent: BaseVariationPass
+  id: MoffReinforcedRustyStationVariationPass
   components:
   - type: ReinforcedWallReplaceVariationPass
   - type: EntityReplaceVariationPass
@@ -34,8 +34,8 @@
     - id: WallReinforcedRust
 
 - type: entity
-  id: MoffTrashedStationVariationPass
   parent: BaseVariationPass
+  id: MoffTrashedStationVariationPass
   components:
   - type: EntitySpawnVariationPass
     tilesPerEntityAverage: 8
@@ -44,8 +44,8 @@
     - id: RandomSpawner100
 
 - type: entity
-  id: MoffWaterloggedStationVariationPass
   parent: BaseVariationPass
+  id: MoffWaterloggedStationVariationPass
   components:
   - type: PuddleMessVariationPass
     randomPuddleSolutionFill: MoffWaterloggedTrashPuddle
@@ -80,11 +80,11 @@
     - Blood
     - CopperBlood
     - Slime
-    - ShimmeringBlood #macro, uncomment for thaven
+    - ShimmeringBlood
 
 - type: entity
-  id: MoffDamagedHullVariationPass
   parent: BaseVariationPass
+  id: MoffDamagedHullVariationPass
   components:
   - type: MoffAnnounceOnRuleStarted
     message: damaged-hull-variation-briefing
@@ -97,11 +97,11 @@
     - id: MoffC4InstantExplosion
 
 - type: entity
-  name: C-4 Explosion
-  description: UH OH WE ARE EXPLODING
-  suffix: Instant Explosion
   parent: C4
   id: MoffC4InstantExplosion
+  name: C-4 Explosion
+  suffix: Instant Explosion
+  description: UH OH WE ARE EXPLODING
   components:
   - type: TriggerOnSpawn
   - type: TimerTrigger
