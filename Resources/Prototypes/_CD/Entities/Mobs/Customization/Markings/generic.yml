@@ -67,6 +67,7 @@
 - type: marking
   id: HumanoidEyebags
   bodyPart: Head
+  # groupWhitelist: [ Human, SlimePerson,  Reptilian, Dwarf ] # Moffstation
   groupWhitelist: [ Human, SlimePerson,  Dwarf ] # Moffstation
   sprites:
   - sprite: _CD/Mobs/Customization/Generic/head.rsi
