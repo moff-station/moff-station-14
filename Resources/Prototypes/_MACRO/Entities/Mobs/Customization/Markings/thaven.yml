@@ -13,7 +13,7 @@
   bodyPart: Chest
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/chest.rsi # Moffstation - New Moff Thaven Sprites
     state: gills
 
 - type: marking
@@ -21,7 +21,7 @@
   bodyPart: Chest
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/chest.rsi # Moffstation - New Moff Thaven Sprites
     state: muscular
 
 - type: marking
@@ -37,7 +37,7 @@
   bodyPart: Chest
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/chest.rsi # Moffstation - New Moff Thaven Sprites
     state: stripes
 
 - type: marking
@@ -45,7 +45,7 @@
   bodyPart: Chest
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/chest.rsi # Moffstation - New Moff Thaven Sprites
     state: scales
 
 - type: marking
@@ -80,7 +80,7 @@
   bodyPart: Chest
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/chest.rsi # Moffstation - New Moff Thaven Sprites
     state: spines
   shader: unshaded
 
@@ -116,7 +116,7 @@
   groupWhitelist: [ Thaven ]
   forcedColoring: true
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/chest.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/chest.rsi # Moffstation - New Moff Thaven Sprites
     state: nonaturals
 
 # Head
@@ -126,9 +126,9 @@
   bodyPart: Head
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/head.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/head.rsi # Moffstation - New Moff Thaven Sprites
     state: cap1
-  - sprite: _MACRO/Mobs/Customization/Thaven/head.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/head.rsi # Moffstation - New Moff Thaven Sprites
     state: cap2
 
 - type: marking
@@ -136,7 +136,7 @@
   bodyPart: Head
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/head.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/head.rsi # Moffstation - New Moff Thaven Sprites
     state: scales
 
 - type: marking
@@ -144,7 +144,7 @@
   bodyPart: Head
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/head.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/head.rsi # Moffstation - New Moff Thaven Sprites
     state: stripes
 
 - type: marking
@@ -158,7 +158,7 @@
         !type:SimpleColoring
         color: "#000000"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/head.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/head.rsi # Moffstation - New Moff Thaven Sprites
     state: shadowthaven
 
 # Snout
@@ -235,7 +235,7 @@
   bodyPart: RArm
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/rarm.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/rarm.rsi # Moffstation - New Moff Thaven Sprites
     state: scales
 
 - type: marking
@@ -266,7 +266,7 @@
   bodyPart: LArm
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/larm.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/larm.rsi # Moffstation - New Moff Thaven Sprites
     state: scales
 
 - type: marking
@@ -297,7 +297,7 @@
   bodyPart: RLeg
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/rleg.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/rleg.rsi # Moffstation - New Moff Thaven Sprites
     state: scales
 
 # LLeg
@@ -307,7 +307,7 @@
   bodyPart: LLeg
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/lleg.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/lleg.rsi # Moffstation - New Moff Thaven Sprites
     state: scales
 
 # UndergarmentBottom
@@ -322,7 +322,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmentbottom.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmentbottom.rsi # Moffstation - New Moff Thaven Sprites
     state: briefs
 
 - type: marking
@@ -335,7 +335,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmentbottom.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmentbottom.rsi # Moffstation - New Moff Thaven Sprites
     state: boxers
 
 - type: marking
@@ -348,7 +348,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmentbottom.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmentbottom.rsi # Moffstation - New Moff Thaven Sprites
     state: lowriders
 
 - type: marking
@@ -361,7 +361,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmentbottom.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmentbottom.rsi # Moffstation - New Moff Thaven Sprites
     state: satin
 
 - type: marking
@@ -374,7 +374,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmentbottom.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmentbottom.rsi # Moffstation - New Moff Thaven Sprites
     state: tanga
 
 # UndergarmentTop
@@ -388,7 +388,7 @@
       type: null
       fallbackColor: '#FFFFFF'
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: binder
 
 - type: marking
@@ -401,7 +401,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: classic
 
 - type: marking
@@ -414,7 +414,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: sports
 
 - type: marking
@@ -427,7 +427,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: strapless
 
 - type: marking
@@ -440,7 +440,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: undershirt
 
 - type: marking
@@ -453,7 +453,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: grosssleeveless
 
 - type: marking
@@ -466,7 +466,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: nanotrasen
 
 - type: marking
@@ -479,7 +479,7 @@
         !type:SimpleColoring
         color: "#FFFFFF"
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/undergarmenttop.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/undergarmenttop.rsi # Moffstation - New Moff Thaven Sprites
     state: rolledundershirt
 
 # LFoot
@@ -2203,7 +2203,7 @@
   groupWhitelist: [ Thaven ]
   forcedColoring: true
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: ears1
 
 - type: marking
@@ -2212,7 +2212,7 @@
   groupWhitelist: [ Thaven ]
   forcedColoring: true
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: ears2
 
 - type: marking
@@ -2221,7 +2221,7 @@
   groupWhitelist: [ Thaven ]
   forcedColoring: true
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: ears3
 
 - type: marking
@@ -2230,7 +2230,7 @@
   groupWhitelist: [ Thaven ]
   forcedColoring: true
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: ears4
 
 - type: marking
@@ -2238,9 +2238,9 @@
   bodyPart: HeadSide
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: bigfins
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: bigfins2
 
 - type: marking
@@ -2249,7 +2249,7 @@
   groupWhitelist: [ Thaven ]
   forcedColoring: true
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: twinfin
 
 - type: marking
@@ -2258,7 +2258,7 @@
   groupWhitelist: [ Thaven ]
   forcedColoring: true
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: fishears
 
 - type: marking
@@ -2266,7 +2266,7 @@
   bodyPart: HeadSide
   groupWhitelist: [ Thaven ]
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/headside.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/headside.rsi # Moffstation - New Moff Thaven Sprites
     state: noears
 
 # HeadTop
@@ -2323,7 +2323,7 @@
       type:
        !type:SkinColoring
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: basic
 
 - type: marking
@@ -2335,9 +2335,9 @@
       type:
        !type:SkinColoring
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: big1
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: big2
 
 - type: marking
@@ -2349,9 +2349,9 @@
       type:
        !type:SkinColoring
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: tadpole1
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: tadpole2
 
 - type: marking
@@ -2363,9 +2363,9 @@
       type:
        !type:SkinColoring
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: eel1
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: eel2
 
 - type: marking
@@ -2378,9 +2378,9 @@
         !type:EyeColoring
         negative: false
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: eel3
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: eel4
   shader: unshaded
 
@@ -2393,9 +2393,9 @@
       type:
        !type:SkinColoring
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: nurse1
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: nurse2
 
 - type: marking
@@ -2407,9 +2407,9 @@
       type:
        !type:SkinColoring
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: stub1
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: stub2
 
 - type: marking
@@ -2421,7 +2421,7 @@
       type:
        !type:SkinColoring
   sprites:
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: thresher1
-  - sprite: _MACRO/Mobs/Customization/Thaven/tail.rsi
+  - sprite: _Moffstation/Mobs/Customization/Thaven/tail.rsi # Moffstation - New Moff Thaven Sprites
     state: thresher2

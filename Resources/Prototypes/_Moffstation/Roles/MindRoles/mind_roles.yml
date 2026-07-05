@@ -28,20 +28,6 @@
   - type: MindRole
     roleType: SoloAntagonist
 
-# Vampires
-- type: entity
-  parent: BaseMindRoleAntag
-  id: MindRoleVampire
-  name: Vampire Role
-  components:
-  - type: MindRole
-    roleType: SoloAntagonist
-    subtype: role-subtype-faction-vampire
-    subtypeColor: darkviolet
-    exclusiveAntag: true
-    antagPrototype: Vampire
-  - type: VampireRole
-
 # Syndicate
 - type: entity
   parent: BaseMindRoleAntag
