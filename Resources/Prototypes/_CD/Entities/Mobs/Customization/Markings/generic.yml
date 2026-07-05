@@ -124,6 +124,7 @@
 - type: marking
   id: HeadHeavyTattoos
   bodyPart: Head
+  # groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson, Reptilian] # Moffstation
   groupWhitelist: [Human, Dwarf, Arachnid, SlimePerson] # Moffstation
   coloring:
     default:
