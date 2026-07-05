@@ -214,7 +214,7 @@
       state: generic_keyboard_tabletop
     - map: ["computerLayerScreen"]
       #sprite: Structures/Machines/computers.rsi # Moffstation
-      state: alert-2
+      state: alert_2 # Moffstation
     - map: ["computerLayerKeys"]
       #sprite: Structures/Machines/computers.rsi # Moffstation
       state: atmos_key
