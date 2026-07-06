@@ -3,7 +3,7 @@
   name: chat-radio-pirate
   keycode: 'p'
   frequency: 2001
-  color: "#2b948a"
+  color: "#5dd9cc"
   longRange: true
 
 - type: radioChannel
@@ -11,6 +11,6 @@
   name: chat-radio-traffic
   keycode: 'r'
   frequency: 1058 # Actually not arbitrary, references police code for "Direct Traffic"
-  color: "#db7643"
+  color: "#ff894e"
   longRange: true
   headsetTransmittable: false
