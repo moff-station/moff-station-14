@@ -17,31 +17,35 @@ public sealed partial class MoffCharacterWindow : DefaultWindow
 
     public void AddObjectiveButtons(int objectiveCount, bool canPickObjectives)
     {
-        // No objectives label
-        if (!canPickObjectives)
-        {
-            ObjectiveButton.Visible = false;
-            NoObjectivesLabel.Visible = true;
-            return;
-        }
-
-        ObjectiveButton.Visible = true;
-        NoObjectivesLabel.Visible = false;
-
         // Reset what the button does
         ObjectiveButton.OnPressed -= CustomObjectiveButtonPressed;
         ObjectiveButton.OnPressed -= ObjectivePickerButtonPressed;
 
-        // Pinktexting
-        if (objectiveCount > 0)
+        // No objectives label
+        if (!canPickObjectives)
         {
+            // Pinktexting
+            if (objectiveCount <= 0)
+            {
+                ObjectiveButton.Visible = false;
+                NoObjectivesLabel.Visible = true;
+                return;
+            }
+
+            ObjectiveButton.Visible = true;
+            NoObjectivesLabel.Visible = false;
             ObjectiveButton.OnPressed += CustomObjectiveButtonPressed;
             ObjectiveButton.Text = Loc.GetString("custom-objective-button-text");
-            return;
         }
-        // Objective picker button
-        ObjectiveButton.OnPressed += ObjectivePickerButtonPressed;
-        ObjectiveButton.Text = Loc.GetString("objective-picker-button");
+        else
+        {
+            ObjectiveButton.Visible = true;
+            NoObjectivesLabel.Visible = false;
+
+            // Objective picker button
+            ObjectiveButton.OnPressed += ObjectivePickerButtonPressed;
+            ObjectiveButton.Text = Loc.GetString("objective-picker-button");
+        }
     }
 
     private void CustomObjectiveButtonPressed(BaseButton.ButtonEventArgs args)

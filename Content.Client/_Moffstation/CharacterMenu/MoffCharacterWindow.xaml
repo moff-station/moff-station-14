@@ -64,21 +64,31 @@
                             MinWidth="220"
                             HorizontalExpand="True"
                             VerticalExpand="True">
-                <ScrollContainer HScrollEnabled="False"
+                <ScrollContainer Name="ObjectivesScroll"
+                                 Access="Public"
+                                 HScrollEnabled="False"
                                  MinWidth="270"
                                  VerticalExpand="True">
-                    <Button Name="ObjectiveButton"
-                            StyleClasses="OpenBoth"
-                            Margin="2"/>
-                    <Label Name="NoObjectivesLabel"
-                           Text="{Loc 'character-info-no-objectives'}"
-                           StyleClasses="LabelSubText"
-                           HorizontalAlignment="Center"/>
-                    <BoxContainer Name="Objectives"
+                    <BoxContainer Name="ObjectivesWrapper"
                                   Access="Public"
-                                  Orientation="Vertical"
-                                  Margin="0 2 0 0"
-                                  SeparationOverride="2"/>
+                                  Orientation="Vertical">
+                        <Button Name="ObjectiveButton"
+                                StyleClasses="OpenBoth"
+                                Margin="2 2 2 0"
+                                VerticalExpand="False"
+                                VerticalAlignment="Top"/>
+                        <Label Name="NoObjectivesLabel"
+                               Text="{Loc 'character-info-no-objectives'}"
+                               StyleClasses="LabelSubText"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               VerticalExpand="False"/>
+                        <BoxContainer Name="Objectives"
+                                      Access="Public"
+                                      Orientation="Vertical"
+                                      Margin="0 2 0 0"
+                                      SeparationOverride="2"/>
+                    </BoxContainer>
                 </ScrollContainer>
             </PanelContainer>
 

@@ -220,6 +220,13 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         // _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
         _window.RolePlaceholder.Visible = false;
         // Moffstation - End
+
+        // Moffstation - Start - Character Menu Redesign
+        // The stuff doesnt get refreshed properly when you reopen the window.
+        _window.Objectives.InvalidateMeasure();
+        _window.ObjectivesWrapper.InvalidateMeasure();
+        _window.ObjectivesScroll.InvalidateMeasure();
+        // Moffstation - End
     }
 
     private void OnRoleTypeChanged(MindRoleTypeChangedEvent ev, EntitySessionEventArgs _)
