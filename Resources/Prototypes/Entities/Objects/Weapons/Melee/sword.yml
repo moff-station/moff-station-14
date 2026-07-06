@@ -177,6 +177,7 @@
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/claymore.rsi
+    state: icon
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
