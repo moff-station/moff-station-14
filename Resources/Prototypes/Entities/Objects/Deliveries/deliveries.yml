@@ -217,8 +217,8 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: DeliveryBomb
-    explosionChance: 0
-    explosionChanceRetryIncrease: 0.05
+    explosionChance: 0 # Moff - Less obvious bomb mail
+    explosionChanceRetryIncrease: 0.05 # Moff - Less obvious bomb mail
   - type: AmbientSound
     enabled: false
     range: 8
