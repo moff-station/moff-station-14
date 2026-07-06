@@ -66,8 +66,13 @@ public static class IEntityTableVisitor
 
         // A child is "certain" when its proportional rate exceeds 1 -- it would claim more than one roll
         // under proportional allocation, so it's guaranteed to appear and is capped at probability 1.
-        var childrenByCertaintyOfPicking = children.ToLookup(c => c.Weight * expectedRollsLeft >= sumOfChildWeights);
-        var certainPicks = childrenByCertaintyOfPicking[true].ToList();
+        var certainPicks = new List<EntityTableSelector>();
+        var uncertainPicks = new List<EntityTableSelector>();
+        foreach (var c in children)
+        {
+            var list = c.Weight * expectedRollsLeft >= sumOfChildWeights ? certainPicks : uncertainPicks;
+            list.Add(c);
+        }
 
         // If there are no guaranteed picks, yield all children with their weights modulated.
         if (certainPicks.Count == 0)
@@ -88,10 +93,7 @@ public static class IEntityTableVisitor
         }
 
         // And now yield all remaining children with their weights modulated by the remaining roll probability.
-        foreach (var weighted in VisitGroupSelectorNodDupesImpl(
-                     childrenByCertaintyOfPicking[false].ToList(),
-                     expectedRollsLeft - certainPicks.Count
-                 ))
+        foreach (var weighted in VisitGroupSelectorNodDupesImpl(uncertainPicks, expectedRollsLeft - certainPicks.Count))
         {
             yield return weighted;
         }
