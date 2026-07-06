@@ -23,7 +23,7 @@ public sealed partial class ReformColorTransferSystem : EntitySystem
         SubscribeLocalEvent<RandomSpriteComponent, PostReformEvent>(OnReformed);
     }
 
-    private void OnReformed(EntityUid uid, RandomSpriteComponent rsc, PostReformEvent args)
+    private void OnReformed(Entity<RandomSpriteComponent> entity, ref PostReformEvent args)
     {
         if (rsc.Selected.Values.FirstOrNull(x => x.Color != null) is not { Color: {} transferColor })
             return;
