@@ -39,7 +39,7 @@ public sealed partial class CCVars
     /// </para>
     /// </remarks>
     public static readonly CVarDef<int> ServerUptimeRestartMinutes =
-        CVarDef.Create("server.uptime_restart_minutes", 0, CVar.SERVERONLY);
+        CVarDef.Create("server.uptime_restart_minutes", 1, CVar.SERVERONLY);
 
     /// <summary>
     ///     This will be the title shown in the lobby

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Server.Chat.Managers;
+using Content.Server.GameTicking;
 using Content.Shared._Moffstation.CCVar;
 using Content.Shared.CCVar;
 using Robust.Server;
@@ -28,6 +29,9 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
     [Dependency] private IBaseServer _server = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private ILogManager _logManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!; // Moff - server restart queue
+
+    private GameTicker? _gameTicker; // Moff - server restart queue
 
     private ISawmill _sawmill = default!;
 
@@ -38,7 +42,7 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
 
     private TimeSpan _uptimeRestart;
 
-    // Moff Start - pause-triggered restart
+    // Moff Start - server restart queue
     private TimeSpan? _restartQueueTime;
     private TimeSpan? _restartQueueNextAnnounce;
 
@@ -59,7 +63,7 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
             minutes => _uptimeRestart = TimeSpan.FromMinutes(minutes),
             true);
 
-        // Moff Start - pause-triggered restart
+        // Moff Start - server restart queue
         _cfg.OnValueChanged(
             MoffCCVars.RestartQueueEnabled,
             enabled => _restartQueueEnabled = enabled,
@@ -99,22 +103,26 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
                 ServerEmptyUpdateRestartCheck("uptime");
             }
 
-            UpdatePauseRestart(); // Moff - pause-triggered restart
+            UpdatePauseRestart(); // Moff - server restart queue
         }
     }
 
-    // Moff Start - pause-triggered restart
+    // Moff Start - server restart queue
     private void UpdatePauseRestart()
     {
+        // Before you say anything, this is how it's done in other places
+        // its jank and I hate it but whatever
+        _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+
         if (!_restartQueueEnabled
-            || !_gameTiming.Paused
+            || !_gameTicker.Paused
             || !(_updateOnRoundEnd || ShouldShutdownDueToUptime())
             || _playerManager.Sessions.All(p => p.Status == SessionStatus.Disconnected))
         {
             if (_restartQueueTime == null)
                 return;
 
-            _sawmill.Debug("Aborting pause-triggered restart timer due to unpause or restart no longer being due");
+            _sawmill.Debug("Aborting server restart queue timer due to unpause or restart no longer being due");
             _restartQueueTime = null;
             _restartQueueNextAnnounce = null;
 
@@ -125,7 +133,7 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
         {
             _restartQueueTime = _gameTiming.RealTime + _restartQueueRestartDelay;
             _restartQueueNextAnnounce = _restartQueueRestartDelay;
-            _sawmill.Debug("Started pause-triggered restart timer due to game being paused with players connected");
+            _sawmill.Debug("Started server restart queue timer due to game being paused with players connected");
         }
 
         var remaining = _restartQueueTime.Value - _gameTiming.RealTime;
@@ -149,8 +157,9 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
 
     private void AnnouncePauseRestart(TimeSpan remaining)
     {
+        // we add an extra minute on because timing and stuff
         _chatManager.DispatchServerAnnouncement(
-            Loc.GetString("server-updates-pause-restart-countdown", ("minutes", remaining.Minutes)));
+            Loc.GetString("server-restart-queue-countdown", ("minutes", remaining.Minutes + 1)));
     }
     // Moff end
 
