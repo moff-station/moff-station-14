@@ -146,23 +146,19 @@ public sealed class MoffCCVars
         CVarDef.Create("moff.restart_queue_timer", 30, CVar.SERVERONLY);
 
     /// <summary>
-    ///     While a pause-triggered restart is counting down and more than
-    ///     <see cref="PauseRestartFinalAnnounceThreshold"/> minutes remain, how often (in minutes)
-    ///     to announce the remaining time to connected players.
+    ///     How often should players be notified when the server is restarting?
     /// </summary>
     public static readonly CVarDef<int> PauseRestartAnnounceInterval =
         CVarDef.Create("moff.restart_queue_announce_interval", 5, CVar.SERVERONLY);
 
     /// <summary>
-    ///     Once a pause-triggered restart countdown has this many minutes or fewer remaining, how often
-    ///     (in minutes) to announce the remaining time to connected players.
+    ///     Once below the <see cref="PauseRestartFinalAnnounceThreshold"/>, how often should players be notified when the server is restarting?
     /// </summary>
     public static readonly CVarDef<int> PauseRestartFinalAnnounceInterval =
         CVarDef.Create("moff.restart_queue_final_announce_interval", 1, CVar.SERVERONLY);
 
     /// <summary>
-    ///     How many minutes remain in a pause-triggered restart countdown before announcements switch
-    ///     from <see cref="PauseRestartAnnounceInterval"/> to <see cref="PauseRestartFinalAnnounceInterval"/>.
+    ///     When should more-often reminders that the server is restarting appear?
     /// </summary>
     public static readonly CVarDef<int> PauseRestartFinalAnnounceThreshold =
         CVarDef.Create("moff.restart_queue_final_announce_threshold", 5, CVar.SERVERONLY);
