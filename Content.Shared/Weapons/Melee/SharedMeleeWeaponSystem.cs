@@ -756,9 +756,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         {
             var target = entities.First();
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, _protoManager), hitEvent.HitSoundOverride, component);
+            DoScreenShake(direction, user, targets); // Moffstation - Tweaked screenshake changes
         }
 
-        DoScreenShake(direction, user, targets); // Moffstation - Tweaked screenshake changes
 
         if (appliedDamage.GetTotal() > FixedPoint2.Zero && targets.Count > 0)
         {
