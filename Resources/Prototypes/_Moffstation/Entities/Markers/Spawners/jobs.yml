@@ -3,8 +3,8 @@
 
 # Service
 - type: entity
-  id: ArrivalsSpawnPointReporter
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointReporter
   suffix: reporter
   components:
   - type: ArrivalsSpawnPoint
@@ -16,8 +16,8 @@
     - state: reporter
 
 - type: entity
-  id: ArrivalsSpawnPointClown
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointClown
   suffix: clown
   components:
   - type: ArrivalsSpawnPoint
@@ -29,8 +29,8 @@
     - state: clown
 
 - type: entity
-  id: ArrivalsSpawnPointMime
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointMime
   suffix: mime
   components:
   - type: ArrivalsSpawnPoint
@@ -42,8 +42,8 @@
     - state: mime
 
 - type: entity
-  id: ArrivalsSpawnPointServiceWorker
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointServiceWorker
   suffix: service worker
   components:
   - type: ArrivalsSpawnPoint
@@ -55,8 +55,8 @@
     - state: serviceworker
 
 - type: entity
-  id: ArrivalsSpawnPointBartender
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointBartender
   suffix: bartender
   components:
   - type: ArrivalsSpawnPoint
@@ -68,8 +68,8 @@
     - state: bartender
 
 - type: entity
-  id: ArrivalsSpawnPointChef
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointChef
   suffix: chef
   components:
   - type: ArrivalsSpawnPoint
@@ -81,8 +81,8 @@
     - state: chef
 
 - type: entity
-  id: ArrivalsSpawnPointBotanist
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointBotanist
   suffix: botanist
   components:
   - type: ArrivalsSpawnPoint
@@ -94,8 +94,8 @@
     - state: botanist
 
 - type: entity
-  id: ArrivalsSpawnPointJanitor
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointJanitor
   suffix: janitor
   components:
   - type: ArrivalsSpawnPoint
@@ -107,8 +107,8 @@
     - state: janitor
 
 - type: entity
-  id: ArrivalsSpawnPointMusician
   parent: ArrivalsSpawnPointJobBase
+  id: ArrivalsSpawnPointMusician
   suffix: musician
   components:
   - type: ArrivalsSpawnPoint

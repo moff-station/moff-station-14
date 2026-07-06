@@ -963,6 +963,11 @@
     expireMessage: genpop-prisoner-id-expire
     expiredAccess:
     - GenpopLeave
+    # Moff start - Radio Channel for Temp IDs announcing
+    expireRadioMessage:
+      message: genpop-prisoner-id-expire-radio
+      channel: Security
+    # Moff end
   - type: Speech
     speechVerb: Robotic
   - type: Tag
