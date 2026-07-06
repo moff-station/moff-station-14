@@ -23,6 +23,7 @@
         Heat: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.90
+  # Forky - Start - Clothing stains
   - type: Stainable
     clothingVisuals:
       outerClothing:
@@ -31,6 +32,7 @@
     iconVisuals:
     - sprite: _Funkystation/Effects/blood.rsi
       state: armorbloodicon
+  # Forky - End
 
 #Standard armor vest, allowed for security only
 - type: entity
