@@ -3,7 +3,6 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Content.Shared.Radio; // Moffstation - For Radio Message
-using Content.Server.Radio.EntitySystems; // Moffstation - For Radio Message
 
 namespace Content.Shared.Access.Components;
 
@@ -57,7 +56,7 @@ public sealed partial class ExpireIdCardComponent : Component
 [DataRecord]
 public sealed partial record ExpireIdRadioMessage
 {
-    public LocId Message;
-    public ProtoId<RadioChannelPrototype> Channel;
+    public LocId Message = default!;
+    public ProtoId<RadioChannelPrototype> Channel = default!;
 }
 // Moffstation - End

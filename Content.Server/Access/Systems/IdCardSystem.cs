@@ -117,11 +117,11 @@ public sealed partial class IdCardSystem : SharedIdCardSystem
                 true);
         }
         // Moffstation - Begin - Genpop ID radio for expiry announcement
-        if (ent.Comp.ExpireRadioMessage != null)
+        if (ent.Comp.ExpireRadioMessage is {} msg)
         {
             var name = CompOrNull<IdCardComponent>(ent)?.FullName ?? "";
-            var message = Loc.GetString(ent.Comp.ExpireRadioMessage, ("name", name));
-            _radio.SendRadioMessage(ent.Owner, message, ent.Comp.RadioChannel, ent.Owner);
+            var message = Loc.GetString(msg.Message, ("name", name));
+            _radio.SendRadioMessage(ent.Owner, message, msg.Channel, ent.Owner);
         }
         // Moffstation - End
     }
