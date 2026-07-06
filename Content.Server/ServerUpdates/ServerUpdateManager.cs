@@ -43,8 +43,7 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
     private TimeSpan _uptimeRestart;
 
     // Moff Start - server restart queue
-    private TimeSpan? _restartQueueTime;
-    private TimeSpan? _restartQueueNextAnnounce;
+    private RestartQueueTimer?  _restartQueueTimer;
 
     private bool _restartQueueEnabled;
     private TimeSpan _restartQueueRestartDelay;
@@ -119,40 +118,32 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
             || !(_updateOnRoundEnd || ShouldShutdownDueToUptime())
             || _playerManager.Sessions.All(p => p.Status == SessionStatus.Disconnected))
         {
-            if (_restartQueueTime == null)
+            if (_restartQueueTimer == null)
                 return;
 
             _sawmill.Debug("Aborting server restart queue timer due to unpause or restart no longer being due");
-            _restartQueueTime = null;
-            _restartQueueNextAnnounce = null;
+            _restartQueueTimer = null;
 
             return;
         }
 
-        if (_restartQueueTime == null)
+        if (_restartQueueTimer == null)
         {
-            _restartQueueTime = _gameTiming.RealTime + _restartQueueRestartDelay;
-            _restartQueueNextAnnounce = _restartQueueRestartDelay;
+            _restartQueueTimer = new RestartQueueTimer(_gameTiming.RealTime + _restartQueueRestartDelay, TimeSpan.Zero);
             _sawmill.Debug("Started server restart queue timer due to game being paused with players connected");
         }
 
-        var remaining = _restartQueueTime.Value - _gameTiming.RealTime;
+        var remaining = _restartQueueTimer.Value.RestartTime - _gameTiming.RealTime;
         if (remaining <= TimeSpan.Zero)
         {
             DoShutdown();
             return;
         }
 
-        if (_restartQueueNextAnnounce == null || !(remaining <= _restartQueueNextAnnounce))
+        if (!(remaining <= _restartQueueTimer.Value.RestartQueueNextAnnounce))
             return;
 
         AnnouncePauseRestart(remaining);
-
-        var step = _restartQueueNextAnnounce > _restartQueueFinalAnnounceThreshold
-            ? _restartQueueAnnounceInterval
-            : _restartQueueFinalAnnounceInterval;
-        var next = _restartQueueNextAnnounce.Value - step;
-        _restartQueueNextAnnounce = next <= TimeSpan.Zero ? null : next;
     }
 
     private void AnnouncePauseRestart(TimeSpan remaining)
@@ -160,6 +151,16 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
         // we add an extra minute on because timing and stuff
         _chatManager.DispatchServerAnnouncement(
             Loc.GetString("server-restart-queue-countdown", ("minutes", remaining.Minutes + 1)));
+
+        if (_restartQueueTimer == null)
+            return;
+
+        var step = _restartQueueTimer.Value.RestartQueueNextAnnounce > _restartQueueFinalAnnounceThreshold
+            ? _restartQueueAnnounceInterval
+            : _restartQueueFinalAnnounceInterval;
+        var next = _restartQueueTimer.Value.RestartQueueNextAnnounce - step;
+
+        _restartQueueTimer = new RestartQueueTimer(_restartQueueTimer.Value.RestartTime, next);
     }
     // Moff end
 
@@ -244,5 +245,11 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
     void IPostInjectInit.PostInject()
     {
         _sawmill = _logManager.GetSawmill("restart");
+    }
+
+    private struct RestartQueueTimer(TimeSpan restartTime, TimeSpan restartQueueNextAnnounce)
+    {
+        public TimeSpan RestartTime = restartTime;
+        public TimeSpan RestartQueueNextAnnounce = restartQueueNextAnnounce;
     }
 }
