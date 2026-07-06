@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Server.Chat.Managers;
+using Content.Shared._Moffstation.CCVar;
 using Content.Shared.CCVar;
 using Robust.Server;
 using Robust.Server.Player;
@@ -37,6 +38,17 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
 
     private TimeSpan _uptimeRestart;
 
+    // Moff Start - pause-triggered restart
+    private TimeSpan? _restartQueueTime;
+    private TimeSpan? _restartQueueNextAnnounce;
+
+    private bool _restartQueueEnabled;
+    private TimeSpan _restartQueueRestartDelay;
+    private TimeSpan _restartQueueAnnounceInterval;
+    private TimeSpan _restartQueueFinalAnnounceInterval;
+    private TimeSpan _restartQueueFinalAnnounceThreshold;
+    // Moff end
+
     public void Initialize()
     {
         _watchdog.UpdateReceived += WatchdogOnUpdateReceived;
@@ -46,6 +58,29 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
             CCVars.ServerUptimeRestartMinutes,
             minutes => _uptimeRestart = TimeSpan.FromMinutes(minutes),
             true);
+
+        // Moff Start - pause-triggered restart
+        _cfg.OnValueChanged(
+            MoffCCVars.RestartQueueEnabled,
+            enabled => _restartQueueEnabled = enabled,
+            true);
+        _cfg.OnValueChanged(
+            MoffCCVars.RestartQueueTimer,
+            minutes => _restartQueueRestartDelay = TimeSpan.FromMinutes(minutes),
+            true);
+        _cfg.OnValueChanged(
+            MoffCCVars.PauseRestartAnnounceInterval,
+            minutes => _restartQueueAnnounceInterval = TimeSpan.FromMinutes(minutes),
+            true);
+        _cfg.OnValueChanged(
+            MoffCCVars.PauseRestartFinalAnnounceInterval,
+            minutes => _restartQueueFinalAnnounceInterval = TimeSpan.FromMinutes(minutes),
+            true);
+        _cfg.OnValueChanged(
+            MoffCCVars.PauseRestartFinalAnnounceThreshold,
+            minutes => _restartQueueFinalAnnounceThreshold = TimeSpan.FromMinutes(minutes),
+            true);
+        // Moff end
     }
 
     public void Update()
@@ -63,8 +98,61 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
             {
                 ServerEmptyUpdateRestartCheck("uptime");
             }
+
+            UpdatePauseRestart(); // Moff - pause-triggered restart
         }
     }
+
+    // Moff Start - pause-triggered restart
+    private void UpdatePauseRestart()
+    {
+        if (!_restartQueueEnabled
+            || !_gameTiming.Paused
+            || !(_updateOnRoundEnd || ShouldShutdownDueToUptime())
+            || _playerManager.Sessions.All(p => p.Status == SessionStatus.Disconnected))
+        {
+            if (_restartQueueTime == null)
+                return;
+
+            _sawmill.Debug("Aborting pause-triggered restart timer due to unpause or restart no longer being due");
+            _restartQueueTime = null;
+            _restartQueueNextAnnounce = null;
+
+            return;
+        }
+
+        if (_restartQueueTime == null)
+        {
+            _restartQueueTime = _gameTiming.RealTime + _restartQueueRestartDelay;
+            _restartQueueNextAnnounce = _restartQueueRestartDelay;
+            _sawmill.Debug("Started pause-triggered restart timer due to game being paused with players connected");
+        }
+
+        var remaining = _restartQueueTime.Value - _gameTiming.RealTime;
+        if (remaining <= TimeSpan.Zero)
+        {
+            DoShutdown();
+            return;
+        }
+
+        if (_restartQueueNextAnnounce == null || !(remaining <= _restartQueueNextAnnounce))
+            return;
+
+        AnnouncePauseRestart(remaining);
+
+        var step = _restartQueueNextAnnounce > _restartQueueFinalAnnounceThreshold
+            ? _restartQueueAnnounceInterval
+            : _restartQueueFinalAnnounceInterval;
+        var next = _restartQueueNextAnnounce.Value - step;
+        _restartQueueNextAnnounce = next <= TimeSpan.Zero ? null : next;
+    }
+
+    private void AnnouncePauseRestart(TimeSpan remaining)
+    {
+        _chatManager.DispatchServerAnnouncement(
+            Loc.GetString("server-updates-pause-restart-countdown", ("minutes", remaining.Minutes)));
+    }
+    // Moff end
 
     /// <summary>
     /// Notify that the round just ended, which is a great time to restart if necessary!
