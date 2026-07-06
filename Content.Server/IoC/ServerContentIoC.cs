@@ -1,4 +1,6 @@
 using Content.Server._Moffstation.Antag;
+using Content.Server._Moffstation.Discord;
+using Content.Server._Moffstation.Discord.GuildEvent;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -29,7 +31,6 @@ using Content.Shared.Administration.Managers;
 using Content.Shared.Chat;
 using Content.Shared.FeedbackSystem;
 using Content.Shared.IoC;
-using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
 
@@ -45,7 +46,6 @@ internal static class ServerContentIoC
         deps.Register<IChatSanitizationManager, ChatSanitizationManager>();
         deps.Register<IServerPreferencesManager, ServerPreferencesManager>();
         deps.Register<IServerDbManager, ServerDbManager>();
-        deps.Register<RecipeManager, RecipeManager>();
         deps.Register<INodeGroupFactory, NodeGroupFactory>();
         deps.Register<IConnectionManager, ConnectionManager>();
         deps.Register<ServerUpdateManager>();
@@ -67,6 +67,7 @@ internal static class ServerContentIoC
         deps.Register<UserDbDataManager>();
         deps.Register<ServerInfoManager>();
         deps.Register<DiscordWebhook>();
+        deps.Register<DiscordGuildEventManager>(); // Moffstation - Discord events
         deps.Register<VoteWebhooks>();
         deps.Register<ServerDbEntryManager>();
         deps.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();

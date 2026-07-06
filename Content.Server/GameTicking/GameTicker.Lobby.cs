@@ -136,6 +136,7 @@ namespace Content.Server.GameTicking
             }
 
             RaiseNetworkEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused));
+            RaiseLocalEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused)); // Moffstation - Raise to server as well
 
             _chatManager.DispatchServerAnnouncement(Loc.GetString(Paused
                 ? "game-ticker-pause-start"

@@ -107,6 +107,31 @@ public sealed class MoffCCVars
         CVarDef.Create("moff.ooc_upstream_patron_color_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
 
     /// <summary>
+    /// Whether a discord event should be created and managed as long as the round timer is unpaused
+    /// false by default so the code doesnt try to run on localhost
+    /// </summary>
+    public static readonly CVarDef<bool> DiscordRoundEventEnabled =
+        CVarDef.Create("moff.discord_round_event_enabled", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// The title of the discord event
+    /// </summary>
+    public static readonly CVarDef<string> DiscordRoundEventName =
+        CVarDef.Create("moff.discord_round_event_name", "Moffstation!", CVar.SERVERONLY);
+
+    /// <summary>
+    /// The description of the discord event (visible when clicked on)
+    /// </summary>
+    public static readonly CVarDef<string> DiscordRoundEventDescription =
+        CVarDef.Create("moff.discord_round_event_description", "Moff is up!\nFair warning: the end time is not accurate.", CVar.SERVERONLY);
+
+    /// <summary>
+    /// The location of the discord event (visible under the title)
+    /// </summary>
+    public static readonly CVarDef<string> DiscordRoundEventLocation =
+        CVarDef.Create("moff.discord_round_event_location", string.Empty, CVar.SERVERONLY);
+
+    /// <summary>
     ///     Whether a pending update/uptime restart is allowed to trigger while the game is paused
     ///     with players still connected. Set to false to disable this behavior entirely.
     /// </summary>
