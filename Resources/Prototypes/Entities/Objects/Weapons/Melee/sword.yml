@@ -184,12 +184,14 @@
     attackRate: 0.75
     damage:
       types:
-        Slash: 5
+        Slash: 5 # Moff - Move damage to wielding
+  # Moff start - Move damage to wielding
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
         Slash: 25
+  # Moff end
   - type: Item
     storedSprite:
       state: storage
