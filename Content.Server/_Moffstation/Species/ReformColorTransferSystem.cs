@@ -25,7 +25,7 @@ public sealed partial class ReformColorTransferSystem : EntitySystem
 
     private void OnReformed(Entity<RandomSpriteComponent> entity, ref PostReformEvent args)
     {
-        if (rsc.Selected.Values.FirstOrNull(x => x.Color != null) is not { Color: {} transferColor })
+        if (entity.Comp.Selected.Values.FirstOrNull(x => x.Color != null) is not { Color: {} transferColor })
             return;
 
         var newAppearance = args.Profile.Appearance.WithSkinColor(transferColor);

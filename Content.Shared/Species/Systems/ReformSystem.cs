@@ -103,7 +103,9 @@ public sealed partial class ReformSystem : EntitySystem
             return;
 
         var profile = HumanoidCharacterProfile.RandomWithSpecies(humanoidProfileComponent.Species);
-        RaiseLocalEvent(uid, new PostReformEvent(child, profile));
+
+        var ev = new PostReformEvent(child, profile);
+        RaiseLocalEvent(uid, ref ev);
         // Moffstation - End
 
         // Delete the old entity
@@ -125,11 +127,7 @@ public sealed partial class ReformSystem : EntitySystem
     /// Raised on the old entity just before it is deleted after reform completes.
     /// <see cref="Child"/> is the newly spawned entity with its <see cref="HumanoidProfileComponent"/> pre-resolved.
     /// </summary>
-    public sealed class PostReformEvent(Entity<HumanoidProfileComponent?> child, HumanoidCharacterProfile profile)
-        : EntityEventArgs
-    {
-        public readonly Entity<HumanoidProfileComponent?> Child = child;
-        public readonly HumanoidCharacterProfile Profile = profile;
-    }
+    [ByRefEvent]
+    public record struct PostReformEvent(Entity<HumanoidProfileComponent?> Child, HumanoidCharacterProfile Profile);
     // Moffstation - End
 }
