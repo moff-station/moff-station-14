@@ -86,7 +86,7 @@ public sealed partial class ProjectileSystem : SharedProjectileSystem
 
             // ES START
             // shake + lower recoil
-            var otherShakeTranslation = new ESScreenshakeParameters { Trauma = 0.45f, DecayRate = 1.1f, Frequency = 0.04f };
+            var otherShakeTranslation = new ESScreenshakeParameters { Trauma = 0.30f, DecayRate = 1.1f, Frequency = 0.04f };
             if (!args.OurBody.LinearVelocity.IsLengthZero())
                 _sharedCameraRecoil.KickCamera(target, args.OurBody.LinearVelocity.Normalized() * 0.08f);
             _shake.Screenshake(target, otherShakeTranslation, null);
