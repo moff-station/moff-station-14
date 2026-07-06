@@ -39,7 +39,6 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     [Dependency] private EmagSystem _emag = default!;
     [Dependency] private EntityTableSystem _entityTable = default!; // Moffstation - entity tables in vending machines
 
-
     public override void Initialize()
     {
         base.Initialize();
@@ -434,15 +433,14 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
             // Moffstation - Start - Allow use of entityTables in vending machine inventories
             else if (PrototypeManager.TryIndex<EntityTablePrototype>(id, out var table))
             {
-                for (var i = 0; i < amount; i++)
-                {
-                    var stock = _entityTable.GetSpawns(table, Randomizer);
-                    AddInventoryFromPrototype(uid,
-                        stock.CountBy(s => s).Select(s => (s.Key.Id, (uint) s.Value)).ToDictionary(),
-                        type,
-                        component,
-                        restockQuality);
-                }
+                AddInventoryFromPrototype(uid,
+                    Enumerable.Repeat(table, (int)amount)
+                        .SelectMany(it => _entityTable.GetSpawns(it, Randomizer))
+                        .CountBy(it => it)
+                        .ToDictionary(it => it.Key.Id, it => (uint)it.Value),
+                    type,
+                    component,
+                    restockQuality);
             }
             // Moffstation - End
         }
