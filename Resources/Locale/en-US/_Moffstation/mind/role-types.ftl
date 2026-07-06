@@ -9,7 +9,6 @@ role-subtype-faction-changeling = Changelings
 role-subtype-faction-revolutionary = The Revolution
 role-subtype-faction-infected = The Zombie Horde
 role-subtype-faction-pirates = Space Pirates
-role-subtype-faction-vampire = Vampires
 role-subtype-faction-blood-brothers = The Brotherhood
 role-subtype-faction-conspiracy = The Conspiracy
 role-subtype-faction-spider-clan = The Spider Clan

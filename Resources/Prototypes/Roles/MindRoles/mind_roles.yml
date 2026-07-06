@@ -116,10 +116,11 @@
   parent: BaseMindRole
   id: MindRoleJob
   name: Job Role
+  # Moffstation - Start - Character menu UI rework
   components:
   - type: RoleBriefing
     briefing: crew-briefing
-
+  # Moffstation - End
 
   # JobPrototype is filled by SharedJobSystem
 
@@ -147,6 +148,7 @@
     antagPrototype: SubvertedSilicon
     roleType: SiliconAntagonist
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-subverted
     subtype: role-subtype-silicon
     subtypeColor: '#c832e6'
     # Moffstation - End
@@ -162,6 +164,7 @@
     antagPrototype: Dragon
     roleType: TeamAntagonist
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-dragon
     subtype: role-subtype-dragon-faction
     subtypeColor: '#2508ff'
     # Moffstation - End
@@ -177,6 +180,7 @@
   - type: MindRole
     antagPrototype: SpaceNinja
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-ninja
     subtype: role-subtype-faction-spider-clan
     subtypeColor: '#33cc00'
     # Moffstation - End
@@ -195,6 +199,7 @@
     subtype: role-type-free-agent-name
     # Moffstation - End
     antagPrototype: ParadoxClone
+  # subtype: role-subtype-paradox-clone # Moffstation
   - type: ParadoxCloneRole
 
 # Nukies
@@ -206,6 +211,7 @@
   - type: MindRole
     roleType: TeamAntagonist
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-nukie
     subtype: role-subtype-faction-syndicate
     subtypeColor: darkred
     # Moffstation - End
@@ -252,6 +258,7 @@
     exclusiveAntag: true
     roleType: TeamAntagonist
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-head-revolutionary
     subtype: role-subtype-faction-revolutionary
     subtypeColor: '#ff1e00'
     # Moffstation - End
@@ -265,6 +272,7 @@
   - type: MindRole
     antagPrototype: Rev
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-revolutionary
     subtype: role-subtype-faction-revolutionary
     subtypeColor: '#ff1e00'
     # Moffstation - End
@@ -290,6 +298,7 @@
   - type: MindRole
     antagPrototype: Thief
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-thief
     subtype: role-type-free-agent-name
     subtypeColor: '#ffff00'
     # Moffstation - End
@@ -305,6 +314,7 @@
     antagPrototype: Traitor
     exclusiveAntag: true
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-traitor
     subtype: role-subtype-faction-syndicate
     subtypeColor: darkred
     # Moffstation - End
@@ -326,6 +336,7 @@
   - type: MindRole
     roleType: TeamAntagonist
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-traitor-reinforcement
     subtype: role-subtype-faction-syndicate
     subtypeColor: darkred
     # Moffstation - End
@@ -341,6 +352,7 @@
     antagPrototype: Wizard
     exclusiveAntag: true
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-wizard
     subtype: role-subtype-faction-wizards
     subtypeColor: turquoise
     # Moffstation - End
@@ -357,6 +369,7 @@
     exclusiveAntag: true
     roleType: Silicon
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-xenoborg-core
     subtype: role-subtype-silicon
     subtypeColor: darkblue
     # Moffstation - End
@@ -372,6 +385,7 @@
     exclusiveAntag: true
     roleType: Silicon
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-xenoborg
     subtype: role-subtype-silicon
     subtypeColor: darkblue
     # Moffstation - End
@@ -388,6 +402,7 @@
     exclusiveAntag: true
     roleType: TeamAntagonist
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-initial-infected
     subtype: role-subtype-faction-infected
     subtypeColor: green
     # Moffstation - End
@@ -402,6 +417,7 @@
     antagPrototype: Zombie
     exclusiveAntag: true
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-zombie
     subtype: role-subtype-faction-infected
     subtypeColor: green
     # Moffstation - End
@@ -418,6 +434,7 @@
     exclusiveAntag: true
     roleType: SoloAntagonist
     # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-changeling
     subtype: role-subtype-faction-changeling
     subtypeColor: '#FA2A55'
     # Moffstation - End
