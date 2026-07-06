@@ -223,6 +223,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
         // Moffstation - Start - Character Menu Redesign
         // The stuff doesnt get refreshed properly when you reopen the window.
+        // This fixes that
         _window.Objectives.InvalidateMeasure();
         _window.ObjectivesWrapper.InvalidateMeasure();
         _window.ObjectivesScroll.InvalidateMeasure();
