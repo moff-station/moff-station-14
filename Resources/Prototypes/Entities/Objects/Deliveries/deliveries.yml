@@ -79,13 +79,15 @@
     - state: broken
       map: [ "enum.DeliveryVisualLayers.Breakage" ]
       visible: false
-    - state: bomb
-      map: [ "enum.DeliveryVisualLayers.Bomb" ]
-      visible: false
-    - state: bomb_unshaded
-      map: [ "enum.DeliveryVisualLayers.BombPrimed" ]
-      shader: unshaded
-      visible: false
+    # Moffstation - Start - Less obvious bomb mail
+    #- state: bomb
+    #  map: [ "enum.DeliveryVisualLayers.Bomb" ]
+    #  visible: false
+    #- state: bomb_unshaded
+    #  map: [ "enum.DeliveryVisualLayers.BombPrimed" ]
+    #  shader: unshaded
+    #  visible: false
+    # Moffstation - End
     - state: trash
       map: [ "enum.DeliveryVisualLayers.Trash" ]
       visible: false
