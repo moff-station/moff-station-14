@@ -116,7 +116,8 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
 
         foreach (var (organ, organData) in markingManager.GetMarkingData(species))
         {
-            var groupProto = protoMan.Index(organData.Group);
+            if (!protoMan.Resolve(organData.Group, out var groupProto))
+                continue;
             var organMarkings = new Dictionary<HumanoidVisualLayers, List<Marking>>();
 
             foreach (var layer in organData.Layers)
