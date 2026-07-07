@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Shared._Funkystation.Footprints;
 using Content.Shared.Chemistry.Components;
@@ -14,18 +15,19 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Funkystation.Footprints;
 
-public sealed class FootprintSystem : EntitySystem
+public sealed partial class FootprintSystem : EntitySystem
 {
-    [Dependency] private readonly TransformSystem _transform = null!;
-    [Dependency] private readonly SharedMapSystem _map = null!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = null!;
-    [Dependency] private readonly SharedPuddleSystem _puddle = null!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = null!;
-    [Dependency] private readonly IRobustRandom _random = null!;
-    [Dependency] private readonly InventorySystem _inventory = null!;
+    [Dependency] private TransformSystem _transform = null!;
+    [Dependency] private SharedMapSystem _map = null!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = null!;
+    [Dependency] private SharedPuddleSystem _puddle = null!;
+    [Dependency] private IPrototypeManager _prototypeManager = null!;
+    [Dependency] private IRobustRandom _random = null!;
+    [Dependency] private InventorySystem _inventory = null!;
 
     private static readonly FixedPoint2 MaxVolumePerTile = 50;
     private static readonly EntProtoId FootprintEntityId = "Footprint";
@@ -50,10 +52,10 @@ public sealed class FootprintSystem : EntitySystem
         SubscribeLocalEvent<PuddleComponent, MapInitEvent>(OnPuddleInit);
 
         // Listen for chemical changes (like Space Cleaner)
-        SubscribeLocalEvent<FootprintComponent, SolutionContainerChangedEvent>(OnSolutionChanged);
+        SubscribeLocalEvent<FootprintComponent, SolutionChangedEvent>(OnSolutionChanged);
     }
 
-    private void OnSolutionChanged(EntityUid uid, FootprintComponent component, ref SolutionContainerChangedEvent args)
+    private void OnSolutionChanged(EntityUid uid, FootprintComponent component, ref SolutionChangedEvent args)
     {
         UpdatePrintColors(uid, component);
     }
@@ -145,14 +147,15 @@ public sealed class FootprintSystem : EntitySystem
 
         var maxStorage = isStanding ? component.MaxFootVolume : component.MaxBodyVolume;
 
-        if (!_solutionContainer.EnsureSolutionEntity(uid, PrintSolutionName, out _, out var ownerSolution, FixedPoint2.Max(component.MaxFootVolume, component.MaxBodyVolume)))
+        // Moff start - Use a non-deprecated method to get the solution
+        if (_solutionContainer.EnumerateSolutions(uid)
+                .Where(s => s.Name == PrintSolutionName)
+                .FirstOrNull() is not { } ownerSolution)
             return false;
+        // Moff End
 
-        var amountToWash = CalculateTransferVolume(component, ownerSolution.Value, isStanding);
-        _solutionContainer.TryTransferSolution(puddleSolution.Value, ownerSolution.Value.Comp.Solution, amountToWash);
-
-        var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Value.Comp.Solution.Volume);
-        _solutionContainer.TryTransferSolution(ownerSolution.Value, puddleSolution.Value.Comp.Solution, spaceLeft);
+        var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Solution.Comp.Solution.Volume);
+        _solutionContainer.TryTransferSolution(ownerSolution.Solution, puddleSolution.Value.Comp.Solution, spaceLeft);
 
         _solutionContainer.UpdateChemicals(puddleSolution.Value, false);
         return true;
@@ -173,18 +176,20 @@ public sealed class FootprintSystem : EntitySystem
             printComp = Comp<FootprintComponent>(printUid);
         }
 
-        if (!_solutionContainer.EnsureSolutionEntity(printUid, PrintSolutionName, out _, out var printSolution, MaxVolumePerTile))
+        if (_solutionContainer.EnumerateSolutions(uid)
+                .Where(s => s.Name == PrintSolutionName)
+                .FirstOrNull() is not { } printSolution)
             return;
 
         var maxVol = isStanding ? component.MaxFootprintVolume : component.MaxBodyprintVolume;
         var alpha = (float)transferAmount / maxVol / 2f;
         var color = ownerSolution.Value.Comp.Solution.GetColor(_prototypeManager).WithAlpha(alpha);
 
-        _solutionContainer.TryTransferSolution(printSolution.Value, ownerSolution.Value.Comp.Solution, transferAmount);
+        _solutionContainer.TryTransferSolution(printSolution.Solution, ownerSolution.Value.Comp.Solution, transferAmount);
 
-        if (printSolution.Value.Comp.Solution.Volume >= MaxVolumePerTile)
+        if (printSolution.Solution.Comp.Solution.Volume >= MaxVolumePerTile)
         {
-            var solClone = printSolution.Value.Comp.Solution.Clone();
+            var solClone = printSolution.Solution.Comp.Solution.Clone();
             QueueDel(printUid);
             _puddle.TrySpillAt(coords, solClone, out _, false);
             return;
