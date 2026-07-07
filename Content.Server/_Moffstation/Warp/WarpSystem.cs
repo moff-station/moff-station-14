@@ -40,13 +40,15 @@ public sealed partial class WarpSystem : SharedWarpSystem
             comp.NextAllowedWarp = _timing.CurTime + comp.DelayBetweenWarps;
         }
 
-        RaiseLocalEvent(new WarpEvent(msg.Target, ! ev.Cancelled, ev.CancelReason));
+        var wrp = new WarpEvent(msg.Target, !ev.Cancelled, ev.CancelReason);
+        RaiseLocalEvent(ent, ref wrp);
     }
 }
 
 
 /// <summary>
-/// Raised on the entity before a warp.
+/// Raised on the entity attempting a warp.
+/// Cancelling this will make the entity fail their attempt.
 /// </summary>
 [ByRefEvent]
 public sealed class WarpAttemptEvent(EntityUid warpedEntity, BaseWarpTarget target) : CancellableEntityEventArgs
@@ -70,20 +72,5 @@ public sealed class WarpAttemptEvent(EntityUid warpedEntity, BaseWarpTarget targ
 /// <summary>
 /// Raised on the entity after the warp attempt.
 /// </summary>
-public sealed class WarpEvent(BaseWarpTarget target, bool success, string? reason)
-{
-    /// <summary>
-    /// Target location for the warp
-    /// </summary>
-    public readonly BaseWarpTarget Target = target;
-
-    /// <summary>
-    /// Indicate if the warp attempt was successful
-    /// </summary>
-    public bool Success = success;
-
-    /// <summary>
-    /// If not null contain a string explaining why the warp attempt failed
-    /// </summary>
-    public string? Reason = reason;
-}
+[ByRefEvent]
+public readonly record struct WarpEvent(BaseWarpTarget Target, bool Success, string? Reason);

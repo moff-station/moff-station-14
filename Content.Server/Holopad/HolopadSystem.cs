@@ -390,8 +390,8 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
         }
     }
 
-    /* Moffstation - AI warp */
-    private void OnWarp(EntityUid ent, HolopadUserComponent comp, WarpEvent ev)
+    // Moffstation - Begin - Ai Warp
+    private void OnWarp(Entity<HolopadUserComponent> ent, ref WarpEvent ev)
     {
         if (!ev.Success ||
             !HasComp<StationAiHeldComponent>(ent) ||
@@ -401,6 +401,7 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
 
         _telephoneSystem.EndTelephoneCalls((aiCore, aiTelephone));
     }
+    // Moffstation - End
 
     private void AddToggleProjectorVerb(Entity<HolopadComponent> entity, ref GetVerbsEvent<AlternativeVerb> args)
     {
