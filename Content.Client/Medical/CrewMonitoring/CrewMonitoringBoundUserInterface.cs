@@ -1,6 +1,6 @@
 using Content.Shared._Moffstation.Medical.CrewMonitoring;
-using Content.Shared._Moffstation.Pinpointer;
-using Content.Shared._Moffstation.Warp; // Moffstation
+using Content.Shared._Moffstation.Pinpointer; // Moffstation - AI Warp
+using Content.Shared._Moffstation.Warp; // Moffstation - AI Warp
 using Content.Shared.Medical.CrewMonitoring;
 using Robust.Client.UserInterface;
 

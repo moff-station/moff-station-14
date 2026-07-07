@@ -1,18 +1,18 @@
-using Content.Server._Moffstation.Warp;
+using Content.Server._Moffstation.Warp; // Moffstation - AI Warp
 using Content.Server.Chat.Systems;
 using Content.Server.Construction;
 using Content.Server.Destructible;
 using Content.Server.Ghost;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
-using Content.Server.Medical.SuitSensors;
+using Content.Server.Medical.SuitSensors; // Moffstation - AI Warp
 using Content.Server.Mind;
 using Content.Server.Power.Components;
 using Content.Server.Roles;
 using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Systems;
-using Content.Shared._Moffstation.Warp;
+using Content.Shared._Moffstation.Warp; // Moffstation - AI Warp
 using Content.Shared.Alert;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Containers.ItemSlots;
@@ -21,7 +21,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DoAfter;
-using Content.Shared.Medical.SuitSensor;
+using Content.Shared.Medical.SuitSensor; // Moffstation - AI Warp
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
@@ -141,8 +141,10 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
         {
             var coords = GetCoordinates(coordTarget.Coordinates);
 
+            // target out of range
             if (coords.EntityId != _xforms.GetGrid(core.Owner))
             {
+                ev.CancelReason = Loc.GetString("ai-warp-fail-out-reach");
                 ev.Cancel();
                 return;
             }
