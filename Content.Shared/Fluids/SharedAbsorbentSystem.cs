@@ -278,9 +278,16 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
         if (!TryComp<PuddleComponent>(target, out var puddle))
             return false;
 
-        if (!SolutionContainer.ResolveSolution(target, puddle.SolutionName, ref puddle.Solution, out var puddleSolution)
-            || puddleSolution.Volume <= 0)
+        if (!SolutionContainer.ResolveSolution(target, puddle.SolutionName, ref puddle.Solution, out var puddleSolution)) // Moff - Move volume check
             return false;
+
+        // Moff start - footprints
+        if (puddleSolution.Volume <= 0)
+        {
+            PredictedQueueDel(target);
+            return false;
+        }
+        // Moff end
 
         var (_, absorber, useDelay) = absorbEnt;
 

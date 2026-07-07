@@ -3,13 +3,9 @@
 namespace Content.Shared._Funkystation.Footprints;
 
 [Serializable, NetSerializable]
-public sealed class FootprintStateEvent : EntityEventArgs
+public sealed class FootprintStateEvent(NetEntity netEntity) : EntityEventArgs
 {
-    public NetEntity NetEntity;
-    public FootprintStateEvent(NetEntity netEntity)
-    {
-        NetEntity = netEntity;
-    }
+    public NetEntity NetEntity = netEntity;
 }
 
 [ByRefEvent]

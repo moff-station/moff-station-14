@@ -52,7 +52,8 @@ public sealed partial class FootprintSystem : EntitySystem
         SubscribeLocalEvent<PuddleComponent, MapInitEvent>(OnPuddleInit);
 
         // Listen for chemical changes (like Space Cleaner)
-        SubscribeLocalEvent<FootprintComponent, SolutionChangedEvent>(OnSolutionChanged);
+        // Moff, after sharedpuddle
+        SubscribeLocalEvent<FootprintComponent, SolutionChangedEvent>(OnSolutionChanged, after: [typeof(SharedPuddleSystem)]);
     }
 
     private void OnSolutionChanged(EntityUid uid, FootprintComponent component, ref SolutionChangedEvent args)
@@ -178,15 +179,19 @@ public sealed partial class FootprintSystem : EntitySystem
         }
 
         // Moff start - Use a non-deprecated method to get the solution
-        if (_solutionContainer.EnumerateSolutions(uid)
+        if (_solutionContainer.EnumerateSolutions(printUid)
                 .Where(s => s.Name == PrintSolutionName)
                 .FirstOrNull() is not { } printSolution)
             return;
         // Moff end
 
+        // Moff start - Make alpha calulation better
+        // Calculate colors and volume
+        var minVol = isStanding ? component.MinPrintVolume : component.MinBodyPrintVolume;
         var maxVol = isStanding ? component.MaxFootprintVolume : component.MaxBodyprintVolume;
-        var alpha = (float)transferAmount / maxVol / 2f;
+        var alpha = MathHelper.Clamp01((transferAmount.Float() - minVol) / (maxVol - minVol));
         var color = ownerSolution.Value.Comp.Solution.GetColor(_prototypeManager).WithAlpha(alpha);
+        // Moff end
 
         _solutionContainer.TryTransferSolution(printSolution.Solution, ownerSolution.Value.Comp.Solution, transferAmount);
         _solutionContainer.UpdateChemicals(printSolution.Solution, false);
@@ -208,7 +213,8 @@ public sealed partial class FootprintSystem : EntitySystem
         printComp.Prints.Add(new FootprintData(new Vector2(normX, normY), rotation, color, state));
         Dirty(printUid, printComp);
 
-        RaiseNetworkEvent(new FootprintStateEvent(GetNetEntity(printUid)), Filter.Pvs(printUid));
+        var ev = new FootprintStateEvent(GetNetEntity(printUid));
+        RaiseNetworkEvent(ev);
     }
 
     private void OnPuddleInit(EntityUid uid, PuddleComponent component, ref MapInitEvent args)
