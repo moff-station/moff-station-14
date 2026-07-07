@@ -38,7 +38,20 @@
 - type: entity
   id: MobWildHuman
   parent: [ MobHuman, MobWildHumanoid ]
+  components:
+  - type: MonkeyAccent
+
 
 - type: entity
   id: MobWildReptilian
   parent: [ MobReptilian, MobWildHumanoid ]
+  components:
+  - type: ReplacementAccent
+    accent: kobold
+
+- type: entity
+  id: MobWildSlimePerson
+  parent: [ MobSlimePerson, MobWildHumanoid ]
+  components:
+  - type: ReplacementAccent
+    accent: slimes
