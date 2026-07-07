@@ -102,12 +102,12 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
                 ServerEmptyUpdateRestartCheck("uptime");
             }
 
-            UpdatePauseRestart(); // Moff - server restart queue
+            UpdateQueueRestart(); // Moff - server restart queue
         }
     }
 
     // Moff Start - server restart queue
-    private void UpdatePauseRestart()
+    private void UpdateQueueRestart()
     {
         // Before you say anything, this is how it's done in other places
         // its jank and I hate it but whatever
@@ -143,10 +143,10 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
         if (!(remaining <= _restartQueueTimer.Value.RestartQueueNextAnnounce))
             return;
 
-        AnnouncePauseRestart(remaining);
+        AnnounceQueueRestart(remaining);
     }
 
-    private void AnnouncePauseRestart(TimeSpan remaining)
+    private void AnnounceQueueRestart(TimeSpan remaining)
     {
         // we add an extra minute on because timing and stuff
         _chatManager.DispatchServerAnnouncement(
@@ -160,7 +160,7 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
             : _restartQueueFinalAnnounceInterval;
         var next = _restartQueueTimer.Value.RestartQueueNextAnnounce - step;
 
-        _restartQueueTimer = new RestartQueueTimer(_restartQueueTimer.Value.RestartTime, next);
+        _restartQueueTimer = _restartQueueTimer.Value with { RestartQueueNextAnnounce = next };
     }
     // Moff end
 
@@ -247,5 +247,5 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
         _sawmill = _logManager.GetSawmill("restart");
     }
 
-    private readonly record struct RestartQueueTimer(TimeSpan restartTime, TimeSpan restartQueueNextAnnounce);
+    private readonly record struct RestartQueueTimer(TimeSpan RestartTime, TimeSpan RestartQueueNextAnnounce); // Moff - Restart Queue Timer
 }
