@@ -1,0 +1,15 @@
+- type: entity
+  id: BorgSensor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SuitSensor
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    transmitFrequencyId: SuitSensor
+    savableAddress: false
+  - type: WirelessNetworkConnection
+    range: 1200
+  - type: StationLimitedNetwork
+  - type: IdCard
+  - type: presetIdCard
+    job: Borg

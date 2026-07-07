@@ -119,6 +119,7 @@
       cell_slot: !type:ContainerSlot { }
       borg_module: !type:Container { }
       part-container: !type:Container
+      sensor-container: !type:Container # Moffstation - borg sensors
   - type: PowerCellSlot
     cellSlotId: cell_slot
     fitsInCharger: true
@@ -251,6 +252,13 @@
     - Critical
     - Dead
   - type: LawProgrammerTarget # Moffstation - Cyborg programming
+  # Moffstation - Begin - Borgs sensors
+  - type: SensorContainer
+  - type: ContainerFill
+    containers:
+      sensor-container:
+      - BorgSensor
+  # Moffstation - End
 
 - type: entity
   abstract: true

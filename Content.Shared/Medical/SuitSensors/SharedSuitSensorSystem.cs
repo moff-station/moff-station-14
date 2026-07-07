@@ -231,7 +231,9 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
     /// <param name="userUid">Actor requesting the verb, used to identify if a foreign actor is requesting a verb.</param>
     /// <param name="mode">Current mode of the suit sensor.</param>
     /// <returns>A created <see cref="Verb"/> that will attempt to change to a specific mode.</returns>
-    private Verb CreateVerb(Entity<SuitSensorComponent> ent, EntityUid userUid, SuitSensorMode mode)
+
+    // Moffstation - Made public
+    public Verb CreateVerb(Entity<SuitSensorComponent> ent, EntityUid userUid, SuitSensorMode mode)
     {
         return new Verb()
         {
