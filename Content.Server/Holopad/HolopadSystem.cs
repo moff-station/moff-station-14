@@ -23,8 +23,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared._Moffstation.Pinpointer; // Moffstation - AI warp
-using Content.Shared._Moffstation.Radio; // Moffstation - Radio warp
+using Content.Server._Moffstation.Warp;
 using Content.Shared.Power.EntitySystems;
 
 namespace Content.Server.Holopad;
@@ -76,7 +75,6 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
 
         // Misc events
         SubscribeLocalEvent<HolopadUserComponent, EmoteEvent>(OnEmote);
-        SubscribeLocalEvent<HolopadUserComponent, JumpToCoreEvent>(OnJumpToCore);
         SubscribeLocalEvent<HolopadComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleProjectorVerb);
         SubscribeLocalEvent<HolopadComponent, EntRemovedFromContainerMessage>(OnAiRemove);
         SubscribeLocalEvent<HolopadComponent, MapUidChangedEvent>(OnMapUidChanged);
@@ -84,8 +82,7 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
         SubscribeLocalEvent<HolopadComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<HolopadUserComponent, MobStateChangedEvent>(OnMobStateChanged);
 
-        SubscribeAllEvent<NavMapWarpRequest>(OnNavMapWarpRequest); // Moffstation - AI warp
-        SubscribeAllEvent<RadioWarpRequest>(OnRadioWarpRequest); // Moffstation - Radio warp
+        SubscribeLocalEvent<HolopadUserComponent, WarpEvent>(OnWarp); // Moffstation - AI warp
     }
 
     #region: Holopad UI bound user interface messages
@@ -393,50 +390,17 @@ public sealed partial class HolopadSystem : SharedHolopadSystem
         }
     }
 
-    private void OnJumpToCore(Entity<HolopadUserComponent> entity, ref JumpToCoreEvent args)
-    {
-        if (!TryComp<StationAiHeldComponent>(entity, out var entityStationAiHeld))
-            return;
-
-        if (!_stationAiSystem.TryGetCore(entity, out var stationAiCore))
-            return;
-
-        if (!TryComp<TelephoneComponent>(stationAiCore, out var stationAiCoreTelephone))
-            return;
-
-        _telephoneSystem.EndTelephoneCalls((stationAiCore, stationAiCoreTelephone));
-    }
-
     /* Moffstation - AI warp */
-    private void OnNavMapWarpRequest(NavMapWarpRequest req, EntitySessionEventArgs session)
+    private void OnWarp(EntityUid ent, HolopadUserComponent comp, WarpEvent ev)
     {
-        var entity = GetEntity(req.Uid);
-
-        if (!TryComp<StationAiHeldComponent>(entity, out var entityStationAiHeld))
-            return;
-
-        if (!_stationAiSystem.TryGetCore(entity, out var stationAiCore))
-            return;
-
-        if (!TryComp<TelephoneComponent>(stationAiCore, out var stationAiCoreTelephone))
-            return;
-
-        _telephoneSystem.EndTelephoneCalls((stationAiCore, stationAiCoreTelephone));
-    }
-    /* Moffstation - end */
-
-    // Moffstation - Begin - Radio warp
-    private void OnRadioWarpRequest(RadioWarpRequest req, EntitySessionEventArgs session)
-    {
-        var ent = GetEntity(req.Uid);
-        if (!TryComp<StationAiHeldComponent>(ent, out var aiHelpComp) ||
+        if (!ev.Success ||
+            !HasComp<StationAiHeldComponent>(ent) ||
             !_stationAiSystem.TryGetCore(ent, out var aiCore) ||
-            !TryComp<TelephoneComponent>(aiCore, out var telephoneComp))
+            !TryComp<TelephoneComponent>(aiCore, out var aiTelephone))
             return;
 
-        _telephoneSystem.EndTelephoneCalls((aiCore, telephoneComp));
+        _telephoneSystem.EndTelephoneCalls((aiCore, aiTelephone));
     }
-    // Moffstation - End
 
     private void AddToggleProjectorVerb(Entity<HolopadComponent> entity, ref GetVerbsEvent<AlternativeVerb> args)
     {

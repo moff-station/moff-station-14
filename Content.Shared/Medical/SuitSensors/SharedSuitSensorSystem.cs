@@ -355,7 +355,6 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
     }
 
     // Moffstation - Begin - Radio warp
-
     /// <summary>
     /// Attempt to find the best sensor mode applicable to this entity
     /// </summary>
@@ -364,15 +363,13 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
         SuitSensorMode best = SuitSensorMode.SensorOff;
 
         var slotEnumerator = _inventory.GetSlotEnumerator(target, slots);
-        while (slotEnumerator.NextItem(out var item, out _))
+        while (slotEnumerator.NextItem(out var item))
         {
-            if (TryComp<SuitSensorComponent>(item, out var sensorComp) && (int)(sensorComp.Mode) > (int)(best))
+            if (_sensorQuery.TryComp(item, out var sensorComp) && sensorComp.Mode > best)
                 best = sensorComp.Mode;
         }
-
         return best;
     }
-
     // Moffstation - End
 
     /// <summary>

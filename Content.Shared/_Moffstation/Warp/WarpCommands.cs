@@ -1,14 +1,16 @@
+using Content.Shared._Moffstation.Radio;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 
-namespace Content.Shared._Moffstation.Radio;
+namespace Content.Shared._Moffstation.Warp;
+
 
 [AnyCommand]
-public sealed partial class RadioWarpCommand : LocalizedEntityCommands
+public sealed partial class WarpToEntityCommand : LocalizedEntityCommands
 {
-    [Dependency] private SharedRadioWarpSystem _radioWarp = default!;
+    [Dependency] private SharedWarpSystem _warp = default!;
 
-    public const string CommandName = "radio_warp_to";
+    public const string CommandName = "warp_to_entity";
 
     public override string Command => CommandName;
 
@@ -22,6 +24,6 @@ public sealed partial class RadioWarpCommand : LocalizedEntityCommands
         if (!NetEntity.TryParse(target, out var netTarget))
             return;
 
-        _radioWarp.TryWarp(ent,  netTarget);
+        _warp.RequestWarpToEntity(netTarget);
     }
 }

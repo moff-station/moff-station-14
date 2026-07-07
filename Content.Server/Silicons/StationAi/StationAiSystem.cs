@@ -1,15 +1,18 @@
+using Content.Server._Moffstation.Warp;
 using Content.Server.Chat.Systems;
 using Content.Server.Construction;
 using Content.Server.Destructible;
 using Content.Server.Ghost;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
+using Content.Server.Medical.SuitSensors;
 using Content.Server.Mind;
 using Content.Server.Power.Components;
 using Content.Server.Roles;
 using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Systems;
+using Content.Shared._Moffstation.Warp;
 using Content.Shared.Alert;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Containers.ItemSlots;
@@ -18,6 +21,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Medical.SuitSensor;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
@@ -61,6 +65,8 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 
+    [Dependency] private SuitSensorSystem _sensors = default!; // Moffstation - Ai warp
+
     private readonly HashSet<Entity<StationAiCoreComponent>> _stationAiCores = new();
 
     private readonly ProtoId<ChatNotificationPrototype> _turretIsAttackingChatNotificationPrototype = "TurretIsAttacking";
@@ -90,7 +96,61 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
 
         SubscribeLocalEvent<ExpandICChatRecipientsEvent>(OnExpandICChatRecipients);
         SubscribeLocalEvent<StationAiTurretComponent, AmmoShotEvent>(OnAmmoShot);
+
+        SubscribeLocalEvent<StationAiHeldComponent, WarpAttemptEvent>(OnWarpAttempt);// Moffstation - AI Warp
     }
+
+    // Moffstation - Begin - Ai Warp
+    private void OnWarpAttempt(Entity<StationAiHeldComponent> ent, ref WarpAttemptEvent ev)
+    {
+        if (ev.Cancelled)
+            return;
+
+        // system unavailable
+        if (!TryGetCore(ent.Owner, out var core) || core.Comp?.RemoteEntity is not {} eye)
+        {
+            ev.CancelReason = Loc.GetString("ai-warp-fail-no-eye");
+            ev.Cancel();
+            return;
+        }
+
+        ev.WarpedEntity = eye;
+
+        if (ev.Target is EntityWarpTarget entTarget)
+        {
+            var target = GetEntity(entTarget.Entity);
+
+            // target out of range
+            if (!Exists(target) || _xforms.GetGrid(target) != _xforms.GetGrid(core.Owner))
+            {
+                ev.CancelReason = Loc.GetString("ai-warp-fail-out-reach");
+                ev.Cancel();
+                return;
+            }
+
+            // unknown target position
+            if (target != core.Owner && _sensors.GetSensorMode(target) != SuitSensorMode.SensorCords)
+            {
+                ev.CancelReason = Loc.GetString("ai-warp-fail-no-coords");
+                ev.Cancel();
+                return;
+            }
+        }
+
+        if (ev.Target is CoordinatesWarpTarget coordTarget)
+        {
+            var coords = GetCoordinates(coordTarget.Coordinates);
+
+            if (coords.EntityId != _xforms.GetGrid(core.Owner))
+            {
+                ev.Cancel();
+                return;
+            }
+        }
+
+
+    }
+    // Moffstation - End
 
     private void AfterConstructionChangeEntity(Entity<StationAiCoreComponent> ent, ref AfterConstructionChangeEntityEvent args)
     {

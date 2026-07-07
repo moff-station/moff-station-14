@@ -1,5 +1,6 @@
 using Content.Shared._Moffstation.Medical.CrewMonitoring;
-using Content.Shared._Moffstation.Pinpointer; // Moffstation
+using Content.Shared._Moffstation.Pinpointer;
+using Content.Shared._Moffstation.Warp; // Moffstation
 using Content.Shared.Medical.CrewMonitoring;
 using Robust.Client.UserInterface;
 
@@ -40,7 +41,7 @@ public sealed class CrewMonitoringBoundUserInterface : BoundUserInterface
 
         // Moffstation - Navigation map warp
         _menu.WarpRequested += coords =>
-            EntMan.RaisePredictiveEvent(new NavMapWarpRequest(EntMan.GetNetEntity(Owner), coords));
+            EntMan.EventBus.RaiseLocalEvent(Owner, new NavMapWarpRequest(coords));
 
         var req = new NavMapWarpEnabledQuery();
         EntMan.EventBus.RaiseLocalEvent(Owner, ref req);
