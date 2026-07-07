@@ -230,7 +230,6 @@
         layer:
         - SlipLayer
         hard: false
-  - type: SolutionContainerManager
   - type: Footprint
   - type: Puddle
     solution: print
@@ -247,3 +246,6 @@
   - type: Tag
     tags:
     - DNASolutionScannable
+  - type: SolutionManager
+    solutions:
+    - SolutionPrint
