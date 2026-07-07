@@ -1,4 +1,24 @@
-- type: entity    # This probably wont get used but its required for the cargo account so whatever
+# These probably wont get used but its required for the cargo account so whatever
+- type: entity
+  parent: PaperAcquisitionSlip
+  id: PaperAcquisitionSlipLPO
+  suffix: LPO
+  components:
+  - type: Sprite
+    layers:
+    - state: acquisition_form
+    - state: acquisition_form_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: acquisition_form_header
+      color: "#c03334"
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: PaperVisuals
+    headerImagePath: "/Textures/Interface/Paper/AcquisitionSlips/engineering.svg.192dpi.png"
+
+- type: entity
   parent: PaperAcquisitionSlip
   id: PaperAcquisitionSlipPirate
   suffix: Pirates
