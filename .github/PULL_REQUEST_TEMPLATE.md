@@ -15,13 +15,6 @@ See the Harmony contributing guidelines for an example on what we want: https://
 ## Technical details
 <!-- Summary of code changes for easier review. Only required for complex changes-->
 
-#### Link to space-wizards Pull Request
-<!-- If you are resubmitting a Pull Request originally from the space-wizards repository,
-please uncomment the line below and replace [PR NUMBER] with that PR's number. If not, skip this section. -->
-<!--
-space-wizards URL: https://github.com/space-wizards/space-station-14/pull/[PR NUMBER]
--->
-
 ## Test plan
 <!--
 Describe how you tested the pull request, and how someone reviewing this PR can test it themselves.

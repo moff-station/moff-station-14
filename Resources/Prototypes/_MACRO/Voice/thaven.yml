@@ -1,5 +1,6 @@
 ﻿- type: emoteSounds
   id: MaleThaven
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   sounds:
     Scream:
       collection: MaleScreams
@@ -43,6 +44,7 @@
 
 - type: emoteSounds
   id: FemaleThaven
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   sounds:
     Scream:
       collection: FemaleScreams
