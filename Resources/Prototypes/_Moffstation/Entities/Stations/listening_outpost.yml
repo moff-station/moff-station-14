@@ -1,0 +1,29 @@
+﻿- type: entity
+  abstract: true
+  id: BaseStationListeningOutpostCargo
+  components:
+  - type: StationBankAccount
+    increasePerSecond: 1
+    incomeDelay: 1
+    revenueDistribution:
+      LPO: 1
+    accounts:
+      LPO: 20
+    lockboxCut: 1
+    primaryCut: 1
+    primaryAccount: LPO
+  - type: StationCargoOrderDatabase
+    markets:
+    - LPOMarket
+    orders:
+      LPO: [ ]
+
+- type: entity
+  id: ListeningOutpostStation
+  parent:
+  - BaseStation
+  - BaseStationListeningOutpostCargo
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+  - type: ListeningOutpostStation
