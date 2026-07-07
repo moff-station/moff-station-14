@@ -1,31 +1,32 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Shared._Funkystation.Footprints;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Inventory;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Standing;
+using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._Funkystation.Footprints;
+namespace Content.Server._Funkystation.Footprints;
 
 public sealed partial class FootprintSystem : EntitySystem
 {
-    [Dependency] private SharedTransformSystem _transform = null!;
-    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private TransformSystem _transform = null!;
     [Dependency] private SharedMapSystem _map = null!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = null!;
     [Dependency] private SharedPuddleSystem _puddle = null!;
     [Dependency] private IPrototypeManager _prototypeManager = null!;
+    [Dependency] private IRobustRandom _random = null!;
     [Dependency] private InventorySystem _inventory = null!;
 
     private static readonly FixedPoint2 MaxVolumePerTile = 50;
@@ -75,7 +76,7 @@ public sealed partial class FootprintSystem : EntitySystem
         }
 
         Dirty(uid, component);
-        RaiseLocalEvent(uid, new FootprintStateEvent(GetNetEntity(uid)));
+        RaiseNetworkEvent(new FootprintStateEvent(GetNetEntity(uid)), Filter.Pvs(uid));
     }
 
     private void OnFootprintCleaned(EntityUid uid, FootprintComponent component, ref FootprintCleanEvent args)
@@ -85,9 +86,6 @@ public sealed partial class FootprintSystem : EntitySystem
 
     private void OnEntityMoved(EntityUid uid, FootprintOwnerComponent component, ref MoveEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         if (HasComp<NoFootprintsComponent>(uid))
             return;
 
@@ -175,12 +173,12 @@ public sealed partial class FootprintSystem : EntitySystem
 
         if (!TryGetAnchoredFootprint(gridUid, grid, tile, out var printUid, out var printComp))
         {
-            printUid = PredictedSpawnAttachedTo(FootprintEntityId, coords);
+            printUid = Spawn(FootprintEntityId, coords);
             printComp = Comp<FootprintComponent>(printUid);
         }
 
         // Moff start - Use a non-deprecated method to get the solution
-        if (_solutionContainer.EnumerateSolutions(printUid)
+        if (_solutionContainer.EnumerateSolutions(uid)
                 .Where(s => s.Name == PrintSolutionName)
                 .FirstOrNull() is not { } printSolution)
             return;
@@ -196,7 +194,7 @@ public sealed partial class FootprintSystem : EntitySystem
         if (printSolution.Solution.Comp.Solution.Volume >= MaxVolumePerTile)
         {
             var solClone = printSolution.Solution.Comp.Solution.Clone();
-            PredictedQueueDel(printUid);
+            QueueDel(printUid);
             _puddle.TrySpillAt(coords, solClone, out _, false);
             return;
         }
@@ -205,13 +203,12 @@ public sealed partial class FootprintSystem : EntitySystem
         var normX = (localPosition.X / grid.TileSize) - MathF.Floor(localPosition.X / grid.TileSize) - (grid.TileSize / 2f);
         var normY = (localPosition.Y / grid.TileSize) - MathF.Floor(localPosition.Y / grid.TileSize) - (grid.TileSize / 2f);
 
-        var rand = SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(uid));
-        var state = isStanding ? "foot" : rand.Pick(DragStates);
+        var state = isStanding ? "foot" : _random.Pick(DragStates);
 
         printComp.Prints.Add(new FootprintData(new Vector2(normX, normY), rotation, color, state));
         Dirty(printUid, printComp);
 
-        RaiseLocalEvent(printUid, new FootprintStateEvent(GetNetEntity(printUid)));
+        RaiseNetworkEvent(new FootprintStateEvent(GetNetEntity(printUid)), Filter.Pvs(printUid));
     }
 
     private void OnPuddleInit(EntityUid uid, PuddleComponent component, ref MapInitEvent args)
@@ -237,12 +234,12 @@ public sealed partial class FootprintSystem : EntitySystem
         if (_solutionContainer.TryGetSolution(printUid, PrintSolutionName, out _, out var printSolution))
         {
             var clone = printSolution.Clone();
-            PredictedQueueDel(printUid);
+            QueueDel(printUid);
             _puddle.TrySpillAt(targetCoords, clone, out _, false);
         }
         else
         {
-            PredictedQueueDel(printUid);
+            QueueDel(printUid);
         }
     }
 
