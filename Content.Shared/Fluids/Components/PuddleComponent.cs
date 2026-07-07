@@ -28,10 +28,12 @@ namespace Content.Shared.Fluids.Components
         [ViewVariables]
         public Entity<SolutionComponent>? Solution;
 
+        // Funky start - Footprints
         [DataField]
         public bool AffectsMovement = true;
 
         [DataField]
         public bool AffectsSound = true;
+        // Funky end
     }
 }

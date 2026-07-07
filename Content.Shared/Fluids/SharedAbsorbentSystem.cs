@@ -358,7 +358,10 @@ public abstract partial class SharedAbsorbentSystem : EntitySystem
 
         _melee.DoLunge(user, absorbEnt, Angle.Zero, localPos, null);
 
-        RaiseLocalEvent(target, new FootprintCleanEvent());
+        // Funky start - Footprints
+        var ev = new FootprintCleanEvent();
+        RaiseLocalEvent(target, ref ev);
+        // Funky end
 
         return true;
     }

@@ -12,6 +12,5 @@ public sealed class FootprintStateEvent : EntityEventArgs
     }
 }
 
-public sealed class FootprintCleanEvent : EntityEventArgs
-{
-}
+[ByRefEvent]
+public readonly record struct FootprintCleanEvent();
