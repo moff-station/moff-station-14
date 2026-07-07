@@ -247,9 +247,5 @@ public sealed partial class ServerUpdateManager : IPostInjectInit
         _sawmill = _logManager.GetSawmill("restart");
     }
 
-    private struct RestartQueueTimer(TimeSpan restartTime, TimeSpan restartQueueNextAnnounce)
-    {
-        public TimeSpan RestartTime = restartTime;
-        public TimeSpan RestartQueueNextAnnounce = restartQueueNextAnnounce;
-    }
+    private readonly record struct RestartQueueTimer(TimeSpan restartTime, TimeSpan restartQueueNextAnnounce);
 }
