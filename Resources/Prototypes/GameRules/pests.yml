@@ -13,6 +13,7 @@
     - id: ScurretMigration
     - id: ReptileMigration
     - id: MammalMigration
+    - id: MoproachMigration
     # Moffstation - End
 
 - type: entityTable
@@ -26,11 +27,15 @@
     - id: SnakeSpawnHorde
     - id: SpiderClownSpawnHorde
     - id: SpiderSpawnHorde
-    - id: CarpMigration
-    - id: SyndiSoliderMigration
-    - id: HostileGorillaMigration
-    - id: SyndyCatMigration
-    - id: FleshMigration
+    - id: CarpSpawnHorde
+    - id: GorillaSpawnHorde
+    - id: SyndyCatSpawnHorde
+    - id: FleshSpawnHorde
+    - id: ArgocyteSpawnHorde
+    - id: HivebotSpawnHorde
+    - id: BatSpawnHorde
+    - id: SpaceCreatureSpawnHorde
+    - id: XenoSpawnHorde
     # Moffstation - End
 
 # events

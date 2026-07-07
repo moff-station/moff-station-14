@@ -5,3 +5,5 @@ phrase-tab-jobs = Jobs
 phrase-tab-locations = Locations
 phrase-tab-common-phrases = Common Phrases
 phrase-tab-feelings = Feelings
+phrase-tab-letters-and-numbers = Letters & Numbers
+phrase-tab-search = Search

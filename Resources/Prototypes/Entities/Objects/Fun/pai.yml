@@ -117,9 +117,9 @@
   description: Your Syndicate pal who's fun to be with!
   components:
   - type: Sprite
-    sprite: Objects/Fun/pai.rsi
+    sprite: _Moffstation/Objects/Fun/pai.rsi # Moffstation
     layers:
-    - state: pai-base
+    - state: syndicate-base # Moffstation
     - state: syndicate-pai-off-overlay
       shader: unshaded
       map: ["screen"]
@@ -156,7 +156,7 @@
   description: Your electronic pal who's fun to be with! Special golden edition!
   components:
   - type: Sprite
-    sprite: Objects/Fun/pai.rsi
+    sprite: _Moffstation/Objects/Fun/pai.rsi # Moffstation
     layers:
     - state: golden-pai-base
     - state: pai-off-overlay

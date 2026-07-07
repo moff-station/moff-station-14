@@ -23,29 +23,40 @@
         <pda:PdaNavigationButton Name="EjectPaiButton" Access="Public" SetWidth="32"/>
     </BoxContainer>
     <BoxContainer Name="ViewContainer" HorizontalExpand="True" VerticalExpand="True" Access="Public">
+        <!-- Moffcode has been all throughout this bit :godo: - PDA ads - begin -->
         <BoxContainer Orientation="Vertical"
                       VerticalExpand="True"
-                      HorizontalExpand="True"
-                      MinSize="50 50"
-                      Margin="8">
-            <ContainerButton Name="PdaOwnerButton">
-                <RichTextLabel Name="PdaOwnerLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="IdInfoButton">
-                <RichTextLabel Name="IdInfoLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationNameButton">
-                <RichTextLabel Name="StationNameLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationAlertLevelButton">
-                <RichTextLabel Name="StationAlertLevelLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationTimeButton">
-                <RichTextLabel Name="StationTimeLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationAlertLevelInstructionsButton">
-                <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>
-            </ContainerButton>
+                      HorizontalExpand="True">
+            <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                <BoxContainer Orientation="Vertical"
+                              HorizontalExpand="True"
+                              MinSize="50 50"
+                              Margin="8">
+                    <ContainerButton Name="PdaOwnerButton">
+                        <RichTextLabel Name="PdaOwnerLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="IdInfoButton">
+                        <RichTextLabel Name="IdInfoLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationNameButton">
+                        <RichTextLabel Name="StationNameLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationAlertLevelButton">
+                        <RichTextLabel Name="StationAlertLevelLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationTimeButton">
+                        <RichTextLabel Name="StationTimeLabel" Access="Public"/>
+                    </ContainerButton>
+                    <ContainerButton Name="StationAlertLevelInstructionsButton">
+                        <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>
+                    </ContainerButton>
+                </BoxContainer>
+            </ScrollContainer>
+            <BoxContainer Name="AdvertisementBox" HorizontalExpand="True" VerticalExpand="False" MinHeight="96" Orientation="Vertical" Margin="8 1 8 1">
+                <Label Text="{Loc 'comp-pda-ui-advertisement-text'}" Margin="4 0 1 2" StyleClasses="PdaContentFooterText"/>
+                <AnimatedTextureRect Name="Advertisement" SetSize="512 96"/>
+            </BoxContainer>
+            <!-- Mothstation - PDA ads - end -->
         </BoxContainer>
         <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="True">
             <BoxContainer Orientation="Vertical"

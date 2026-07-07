@@ -63,9 +63,9 @@
     state: storage
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 2
   cost:
-    Telecrystal: 3
+    Telecrystal: 4
   categories:
   - UplinkAllies
 
@@ -94,9 +94,9 @@
     color: "#FF69B4"
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 2
   cost:
-    Telecrystal: 3
+    Telecrystal: 4
   categories:
   - UplinkJob
   conditions:
@@ -145,7 +145,6 @@
     - Lawyer
     - Psychologist
 
-# Other
 - type: listing
   id: UplinkSuperSurplusBundle
   name: uplink-super-surplus-bundle-name
@@ -160,6 +159,25 @@
     blacklist:
       tags:
       - NukeOpsUplink
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle
+
+- type: listing
+  id: UplinkSingarityBeaconDAGD
+  name: uplink-singularity-beacon-name
+  description: uplink-singularity-beacon-desc
+  productEntity: SingularityBeacon
+  cost:
+    Telecrystal: 12
+  categories:
+  - UplinkObjective
+  conditions:
+  - !type:BuyerObjectiveWhitelistCondition
+    whitelist:
+      components:
+      - DieCondition
   - !type:BuyerWhitelistCondition
     blacklist:
       components:

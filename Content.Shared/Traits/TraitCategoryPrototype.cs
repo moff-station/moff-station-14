@@ -1,3 +1,6 @@
+// File has been completely rewritten and moved to DV namespace
+// Accept any upstream changes
+/*
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Traits;
@@ -26,3 +29,4 @@ public sealed partial class TraitCategoryPrototype : IPrototype
     [DataField]
     public int? MaxTraitPoints;
 }
+*/

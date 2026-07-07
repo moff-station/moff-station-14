@@ -1,12 +1,27 @@
 ﻿# Derelict service cyborg spawn point
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: SpawnPointGhostDerelictCyborg
   id: SpawnPointGhostDerelictServiceCyborg
+  categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: GhostRole
     name: ghost-role-information-derelict-service-cyborg-name
     description: ghost-role-information-derelict-service-cyborg-description
     rules: ghost-role-information-silicon-rules
+    raffle:
+      settings: default
+
+- type: entity
+  parent: BaseAntagSpawner
+  id: SyndicateFootsoldierGhostRoleSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  name: syndicate footsoldier role spawn point
+  components:
+  - type: GhostRole
+    name: ghost-role-information-syndicate-solider-name
+    description: ghost-role-information-syndicate-solider-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleSyndieSoldier
     raffle:
       settings: default

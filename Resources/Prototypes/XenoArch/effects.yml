@@ -151,7 +151,6 @@
   id: BaseXenoArtifactEffect
   name: effect
   description: Unknown
-  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: XenoArtifactNode
@@ -159,11 +158,10 @@
     group: XenoArtifactNode
 
 - type: entity
-  id: BaseOneTimeXenoArtifactEffect
   parent: BaseXenoArtifactEffect
+  id: BaseOneTimeXenoArtifactEffect
   name: one-time-effect
   description: Unknown
-  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: XenoArtifactNode
@@ -175,8 +173,8 @@
     group: XenoArtifactNode
 
 - type: entity
-  id: XenoArtifactEffectUniversalIntercom
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactEffectUniversalIntercom
   description: Obtains ability of long-distance communication device
   components:
   - type: XAEApplyComponents
@@ -204,8 +202,8 @@
       - Supply
 
 - type: entity
-  id: XenoArtifactBecomeRandomInstrument
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactBecomeRandomInstrument
   description: Obtains ability of musical instrument
   components:
   - type: XAEApplyComponents
@@ -217,8 +215,8 @@
       key: enum.InstrumentUiKey.Key
 
 - type: entity
-  id: XenoArtifactStorage
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactStorage
   description: Obtains ability of hidden storage
   components:
   - type: XAEApplyComponents
@@ -231,15 +229,15 @@
       - 0,0,10,5
 
 - type: entity
-  id: XenoArtifactPhasing
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactPhasing
   description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAERemoveCollision
 
 - type: entity
-  id: XenoArtifactWandering
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactWandering
   description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -251,8 +249,8 @@
       maxStepCooldown: 3
 
 - type: entity
-  id: XenoArtifactSolutionStorage
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactSolutionStorage
   description: Internal chamber # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -282,8 +280,8 @@
       utensil: None
 
 - type: entity
-  id: XenoArtifactSpeedUp
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactSpeedUp
   description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -293,8 +291,8 @@
       sprintModifier: 1.3
 
 - type: entity
-  id: XenoArtifactDrill
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactDrill
   description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -306,11 +304,13 @@
           Blunt: 4
       soundHit:
         path: /Audio/Weapons/bladeslice.ogg
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
 
 - type: entity
-  id: XenoArtifactGenerateEnergy
   parent: BaseOneTimeXenoArtifactEffect # todo - increment power, but only once per node
+  id: XenoArtifactGenerateEnergy
   description: Produces power
   components:
   - type: XAEApplyComponents
@@ -325,8 +325,8 @@
           nodeGroupID: HVPower
 
 - type: entity
-  id: XenoArtifactGun
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactGun
   description: Obtains ability of firearm
   components:
   - type: XAEApplyComponents
@@ -356,8 +356,8 @@
         path: /Audio/Weapons/Guns/Gunshots/revolver.ogg
 
 - type: entity
-  id: XenoArtifactGhost
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactGhost
   description: Cerebral influence # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -376,8 +376,8 @@
     - type: GhostTakeoverAvailable
 
 - type: entity
-  id: XenoArtifactOmnitool
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactOmnitool
   description: Handheld utility augmentation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -423,8 +423,8 @@
           path: /Audio/Items/change_drill.ogg
 
 - type: entity
-  id: XenoArtifactEffectBadFeeling
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectBadFeeling
   description: Cerebral influence # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETelepathic
@@ -453,8 +453,8 @@
     - badfeeling-artifact-drastic-6
 
 - type: entity
-  id: XenoArtifactEffectGoodFeeling
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectGoodFeeling
   description: Cerebral influence # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETelepathic
@@ -482,8 +482,8 @@
     - goodfeeling-artifact-drastic-6
 
 - type: entity
-  id: XenoArtifactEffectJunkSpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectJunkSpawn
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -504,15 +504,15 @@
           weight: 1
 
 - type: entity
-  id: XenoArtifactEffectLightFlicker
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectLightFlicker
   description: Electrical interference # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAELightFlicker
 
 - type: entity
-  id: XenoArtifactPotassiumWave
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactPotassiumWave
   description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -538,8 +538,8 @@
     - Potassium
 
 - type: entity
-  id: XenoArtifactFloraSpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactFloraSpawn
   description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -553,8 +553,8 @@
         - id: RandomFloraTree
 
 - type: entity
-  id: XenoArtifactChemicalPuddle
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactChemicalPuddle
   description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreatePuddle
@@ -589,31 +589,41 @@
     - Sulfur
 
 - type: entity
-  id: XenoArtifactThrowThingsAround
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactThrowThingsAround
   description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEThrowThingsAround
+  # Moffstation - Start - Shader Effect
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: RandomSpawner
+      deleteSpawnerAfterSpawn: false
+      prototypes:
+      - EffectShockwaveSonicBoom
+  # Moffstation - End
 
 - type: entity
-  id: XenoArtifactColdWave
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactColdWave
   description: Endothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETemperature
     targetTemp: 50
 
 - type: entity
-  id: XenoArtifactHeatWave
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactHeatWave
   description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETemperature
     targetTemp: 500
 
 - type: entity
-  id: XenoArtifactFoamMild
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactFoamMild
   description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEFoam
@@ -632,8 +642,8 @@
     - JuiceThatMakesYouWeh
 
 - type: entity
-  id: XenoArtifactRandomInstrumentSpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactRandomInstrumentSpawn
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -652,8 +662,8 @@
         - id: RandomInstruments
 
 - type: entity
-  id: XenoArtifactMonkeySpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactMonkeySpawn
   description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -675,8 +685,8 @@
           weight: 5.0
 
 - type: entity
-  id: XenoArtifactRadioactive
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactRadioactive
   description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -688,8 +698,8 @@
       slope: 0.3
 
 - type: entity
-  id: XenoArtifactChargeBattery
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactChargeBattery
   description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEChargeBattery
@@ -698,16 +708,16 @@
     - charge-artifact-popup
 
 - type: entity
-  id: XenoArtifactKnock
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactKnock
   description: Electrical interference # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEKnock
   - type: XAELightFlicker
 
 - type: entity
-  id: XenoArtifactMagnet
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactMagnet
   description: Magnetic waves # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -720,8 +730,8 @@
       baseTangentialAcceleration: 3
 
 - type: entity
-  id: XenoArtifactMagnetNegative
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactMagnetNegative
   description: Magnetic waves # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -734,8 +744,8 @@
       baseTangentialAcceleration: -3
 
 - type: entity
-  id: XenoArtifactStealth
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactStealth
   description: Visual distortions # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -747,8 +757,8 @@
       movementVisibilityRate: 0.10
 
 - type: entity
-  id: XenoArtifactRareMaterialSpawn
   parent: BaseXenoArtifactEffect # todo: splice into different well-named effects, amounts should reflect how rare material is
+  id: XenoArtifactRareMaterialSpawn
   description: Create rare materials
   components:
   - type: XAEApplyComponents
@@ -777,8 +787,8 @@
           prob: 0.3
 
 - type: entity
-  id: XenoArtifactRareMaterialSpawnSilver
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactRareMaterialSpawnSilver
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -800,8 +810,8 @@
           prob: 0.3
 
 - type: entity
-  id: XenoArtifactRareMaterialSpawnPlasma
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactRareMaterialSpawnPlasma
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -823,8 +833,8 @@
           prob: 0.3
 
 - type: entity
-  id: XenoArtifactRareMaterialSpawnGold
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactRareMaterialSpawnGold
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -846,8 +856,8 @@
           prob: 0.3
 
 - type: entity
-  id: XenoArtifactRareMaterialSpawnUranium
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactRareMaterialSpawnUranium
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -869,8 +879,8 @@
           prob: 0.3
 
 - type: entity
-  id: XenoArtifactAngryCarpSpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactAngryCarpSpawn
   description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -892,8 +902,8 @@
           weight: 1.0
 
 - type: entity
-  id: XenoArtifactFaunaSpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactFaunaSpawn
   description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -980,8 +990,8 @@
 # Moffstation - End
 
 - type: entity
-  id: XenoArtifactCashSpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactCashSpawn
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -1009,8 +1019,8 @@
           weight: 0.1
 
 - type: entity
-  id: XenoArtifactShatterWindows
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactShatterWindows
   description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -1028,8 +1038,8 @@
         Structural: 200
 
 - type: entity
-  id: XenoArtifactFoamGood
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactFoamGood
   description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -1049,8 +1059,8 @@
     - Omnizine
 
 - type: entity
-  id: XenoArtifactFoamDangerous
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactFoamDangerous
   description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEFoam
@@ -1071,8 +1081,8 @@
     - Amatoxin
 
 - type: entity
-  id: XenoArtifactPuddleRare
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactPuddleRare
   description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreatePuddle
@@ -1101,8 +1111,8 @@
     - Siderlac
 
 - type: entity
-  id: XenoArtifactAnomalySpawn
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactAnomalySpawn
   description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -1116,8 +1126,8 @@
         - id: RandomAnomalySpawner
 
 - type: entity
-  id: XenoArtifactIgnite
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactIgnite
   description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEIgnite
@@ -1127,15 +1137,15 @@
       max: 6
 
 - type: entity
-  id: XenoArtifactTeleport
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactTeleport
   description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAERandomTeleportInvoker
 
 - type: entity
-  id: XenoArtifactEmp
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEmp
   description: Endothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -1146,31 +1156,31 @@
   - type: XAEEmpInArea
 
 - type: entity
-  id: XenoArtifactPolyMonkey
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactPolyMonkey
   description: Transmogrificational activity # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPolymorph
 
 - type: entity
-  id: XenoArtifactPolyLizard
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactPolyLizard
   description: Transmogrificational activity # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: ArtifactLizard
 
 - type: entity
-  id: XenoArtifactPolyLuminous
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactPolyLuminous
   description: Transmogrificational activity # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: ArtifactLuminous
 
 - type: entity
-  id: XenoArtifactRadioactiveStrong
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactRadioactiveStrong
   description: Exothermic action # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -1182,8 +1192,8 @@
       slope: 0.3
 
 - type: entity
-  id: XenoArtifactMaterialSpawnGlass
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactMaterialSpawnGlass
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -1197,8 +1207,8 @@
         - id: SheetGlass
 
 - type: entity
-  id: XenoArtifactMaterialSpawnSteel
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactMaterialSpawnSteel
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -1212,8 +1222,8 @@
         - id: SheetSteel
 
 - type: entity
-  id: XenoArtifactMaterialSpawnPlastic
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactMaterialSpawnPlastic
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEApplyComponents
@@ -1227,15 +1237,15 @@
         - id: SheetPlastic
 
 - type: entity
-  id: XenoArtifactPortal
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactPortal
   description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEPortal
 
 - type: entity
-  id: XenoArtifactArtifactSpawn
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactArtifactSpawn
   description: Entity translocation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XenoArtifactNode
@@ -1254,8 +1264,8 @@
         - id: RandomArtifactSpawner
 
 - type: entity
-  id: XenoArtifactShuffle
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactShuffle
   description: Metaphysical displacement # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEShuffle
@@ -1265,8 +1275,8 @@
     - shuffle-artifact-popup
 
 - type: entity
-  id: XenoArtifactHealAll
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactHealAll
   description: Biochemical disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAEDamageInArea
@@ -1285,8 +1295,8 @@
         Shock: -100
 
 - type: entity
-  id: XenoArtifactTesla
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactTesla
   description: Mass destruction
   components:
   - type: XAEApplyComponents
@@ -1300,8 +1310,8 @@
         - id: Singularity
 
 - type: entity
-  id: XenoArtifactSingularity
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactSingularity
   description: Imminent doom
   components:
   - type: XAEApplyComponents
@@ -1315,8 +1325,8 @@
         - id: TeslaEnergyBall
 
 - type: entity
-  id: XenoArtifactExplosionScary
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactExplosionScary
   description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETriggerExplosives
@@ -1330,8 +1340,8 @@
     repeatable: true
 
 - type: entity
-  id: XenoArtifactBoom
   parent: BaseOneTimeXenoArtifactEffect
+  id: XenoArtifactBoom
   description: Environmental disruption # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAETriggerExplosives
@@ -1344,8 +1354,8 @@
     repeatable: true
 
 - type: entity
-  id: XenoArtifactEffectCreationGasPlasma
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectCreationGasPlasma
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
@@ -1353,8 +1363,8 @@
       Plasma: 300
 
 - type: entity
-  id: XenoArtifactEffectCreationGasTritium
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectCreationGasTritium
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
@@ -1362,8 +1372,8 @@
       Tritium: 300
 
 - type: entity
-  id: XenoArtifactEffectCreationGasAmmonia
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectCreationGasAmmonia
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
@@ -1371,8 +1381,8 @@
       Ammonia: 300
 
 - type: entity
-  id: XenoArtifactEffectCreationGasFrezon
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectCreationGasFrezon
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
@@ -1380,8 +1390,8 @@
       Frezon: 300
 
 - type: entity
-  id: XenoArtifactEffectCreationGasNitrousOxide
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectCreationGasNitrousOxide
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas
@@ -1389,8 +1399,8 @@
       NitrousOxide: 300
 
 - type: entity
-  id: XenoArtifactEffectCreationGasCarbonDioxide
   parent: BaseXenoArtifactEffect
+  id: XenoArtifactEffectCreationGasCarbonDioxide
   description: Matter creation # Moffstation - Obfuscate xenoarcheology
   components:
   - type: XAECreateGas

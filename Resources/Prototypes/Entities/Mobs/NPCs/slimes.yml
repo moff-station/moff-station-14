@@ -1,16 +1,28 @@
 ﻿- type: entity
-  name: basic slime
+  name: slime # Moffstation - random slime colors
   id: BaseMobAdultSlimes
-  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat ]
+  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat, BaseSlicingRefinable ]
   abstract: true
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
+  # Moffstation - Start - random wild slime colors
   - type: Sprite
     drawdepth: Mobs
-    sprite: Mobs/Aliens/slimes.rsi
+    sprite: _Moffstation/Mobs/Aliens/slimes.rsi
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: blue_adult_slime
+      state: grey_adult_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: grey_adult_slime
+      Dead:
+        Base: grey_adult_slime_dead
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        grey_adult_slime: SixtyFour
+  # Moffstation - End
   - type: Fixtures
     fixtures:
       fix1:
@@ -36,9 +48,8 @@
     tags:
     - FootstepSound
     - DoorBumpOpener
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeatSlime
       amount: 2
   - type: Respirator
@@ -110,7 +121,7 @@
     proto: slime
 
 - type: entity
-  name: basic slime
+#  name: basic slime
   id: MobAdultSlimes
   parent: BaseMobAdultSlimes
   abstract: true
@@ -140,28 +151,38 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+  # Moffstation - Begin
+  - type: Reform
+    startDelayed: true
+    actionPrototype: ActionSlimeGrow
+    reformTime: 10
+    popupText: slime-grow-attempt
+    reformPrototype: MobWildSlimePerson
+  # Moffstation - End
 
 - type: entity
-  name: blue slime
+#  name: blue slime # Moffstation - random wild slime colors
   id: MobAdultSlimesBlue
   parent: MobAdultSlimes
-  components:
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: blue_adult_slime
-      Dead:
-        Base: blue_adult_slime_dead
+  # Moffstation - Start - random wild slime colors
+#  components:
+#  - type: DamageStateVisuals
+#    states:
+#      Alive:
+#        Base: blue_adult_slime
+#      Dead:
+#        Base: blue_adult_slime_dead
+  # Moffstation - End
 
 - type: entity
-  name: blue slime
+#  name: blue slime # Moffstation - random wild slime colors
   parent: MobAdultSlimesBlue
   id: MobAdultSlimesBlueAngry
   suffix: Angry
   components:
     - type: NpcFactionMember
       factions:
-        - SimpleHostile
+        - FeralSlime # Moffstation - Geras
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
       rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
@@ -171,20 +192,22 @@
         settings: short
 
 - type: entity
-  name: green slime
+#  name: green slime # Moffstation - random wild slime colors
   parent: MobAdultSlimes
   id: MobAdultSlimesGreen
   components:
-    - type: Sprite
-      layers:
-      - map: [ "enum.DamageStateVisualLayers.Base" ]
-        state: green_adult_slime
-    - type: DamageStateVisuals
-      states:
-        Alive:
-          Base: green_adult_slime
-        Dead:
-          Base: green_adult_slime_dead
+    # Moffstation - Start - random wild slime colors
+#  - type: Sprite
+#      layers:
+#      - map: [ "enum.DamageStateVisualLayers.Base" ]
+#        state: green_adult_slime
+#      - type: DamageStateVisuals
+#        states:
+#          Alive:
+#            Base: green_adult_slime
+#          Dead:
+#            Base: green_adult_slime_dead
+    # Moffstation - End
     - type: MeleeWeapon
       damage:
         types:
@@ -194,14 +217,14 @@
           Poison: 4
 
 - type: entity
-  name: green slime
+#  name: green slime # Moffstation - random wild slime colors
   parent: MobAdultSlimesGreen
   id: MobAdultSlimesGreenAngry
   suffix: Angry
   components:
     - type: NpcFactionMember
       factions:
-        - SimpleHostile
+        - FeralSlime # Moffstation - Geras
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
       rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters
@@ -211,20 +234,22 @@
         settings: short
 
 - type: entity
-  name: yellow slime
+#  name: yellow slime # Moffstation - random wild slime colors
   parent: MobAdultSlimes
   id: MobAdultSlimesYellow
   components:
-    - type: Sprite
-      layers:
-      - map: [ "enum.DamageStateVisualLayers.Base" ]
-        state: yellow_adult_slime
-    - type: DamageStateVisuals
-      states:
-        Alive:
-          Base: yellow_adult_slime
-        Dead:
-          Base: yellow_adult_slime_dead
+    # Moffstation - Start - random wild slime colors
+#  - type: Sprite
+#    layers:
+#    - map: [ "enum.DamageStateVisualLayers.Base" ]
+#      state: yellow_adult_slime
+#    - type: DamageStateVisuals
+#      states:
+#        Alive:
+#          Base: yellow_adult_slime
+#        Dead:
+#          Base: yellow_adult_slime_dead
+    # Moffstation - End
     - type: MeleeWeapon
       damage:
         types:
@@ -233,14 +258,14 @@
           Caustic: 4
 
 - type: entity
-  name: yellow slime
+#  name: yellow slime # Moffstation - random wild slime colors
   parent: MobAdultSlimesYellow
   id: MobAdultSlimesYellowAngry
   suffix: Angry
   components:
     - type: NpcFactionMember
       factions:
-        - SimpleHostile
+        - FeralSlime # Moffstation - Geras
     - type: GhostRole
       description: ghost-role-information-angry-slimes-description
       rules: ghost-role-information-freeagent-rules # Moffstation - Free agent vent critters

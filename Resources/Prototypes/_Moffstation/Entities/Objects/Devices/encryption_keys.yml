@@ -29,3 +29,21 @@
     layers:
     - state: crypt_rusted
     - state: pirate_label
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyTraffic
+  name: space traffic encryption key
+  description: An encryption key used to coordinate flight paths between shuttles and docks. Outgoing transmissions are incompatible with headsets.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Traffic
+    defaultChannel: Traffic
+  - type: Sprite
+    sprite: _Moffstation/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_orange
+    - state: traffic_label
+  - type: Item
+    sprite: _Moffstation/Objects/Devices/encryption_keys.rsi

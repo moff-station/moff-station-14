@@ -1,32 +1,32 @@
 ﻿# Player: Nox38 / Character: Aurora Epiolos
 
 - type: entity
-  parent: ClothingNeckBase
-  id: PersonalItemAuroraPinSwappable
+  parent: ClothingNeckMetallicBase
+  id: &id PersonalItemAuroraPinSwappable
   name: Aurora's IFF tag
-  description: "A NT IFF tag of the sort worn by marines, hand-modified by Aurora. Changes between two colors, indicating which personality is fronting: pink for Aurora, green for Asher.\nThe back of the pin has a depressed button that looks like it would fit a crowbar."
+  description: &desc "A NT IFF tag of the sort worn by marines, hand-modified by Aurora. Changes between two colors, indicating which personality is fronting: pink for Aurora, green for Asher.\nThe back of the pin has a depressed button that looks like it would fit a crowbar."
   suffix: swappable
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPin.rsi
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPin.rsi
   - type: Item
-    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPin.rsi
+    sprite: *sprite
   - type: Construction
     deconstructionTarget: null
     graph: PersonalItemAuroraPinSwapGraph
     node: swap_aurora
 
 - type: entity
-  parent: ClothingNeckBase
-  id: PersonalItemAuroraPinInversedSwappable
+  parent: ClothingNeckMetallicBase
+  id: &id-inverse PersonalItemAuroraPinInversedSwappable
   name: Asher's IFF tag
-  description: "A NT IFF tag of the sort worn by marines, hand-modified by Aurora. Changes between two colors, indicating which personality is fronting: pink for Aurora, green for Asher.\nThe back of the pin has a depressed button that looks like it would fit a crowbar."
+  description: *desc
   suffix: swappable
   components:
   - type: Sprite
-    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
+    sprite: &sprite-inverse _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
   - type: Item
-    sprite: _Moffstation/PersonalItems/Wearables/Nox38/Aurora_Epiolos/auroraPinInversed.rsi
+    sprite: *sprite-inverse
   - type: Construction
     deconstructionTarget: null
     graph: PersonalItemAuroraPinSwapGraph
@@ -37,14 +37,14 @@
   start: swap_asher
   graph:
   - node: swap_asher
-    entity: PersonalItemAuroraPinInversedSwappable
+    entity: *id-inverse
     edges:
     - to: swap_aurora
       steps:
       - tool: Prying
         doAfter: 0.1
   - node: swap_aurora
-    entity: PersonalItemAuroraPinSwappable
+    entity: *id
     edges:
     - to: swap_asher
       steps:
@@ -55,7 +55,7 @@
   id: PersonalItemAuroraPin
   storage:
     back:
-    - PersonalItemAuroraPinSwappable
+    - *id
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

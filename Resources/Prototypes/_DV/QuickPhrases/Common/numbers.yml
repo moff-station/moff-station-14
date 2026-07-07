@@ -1,0 +1,25 @@
+- type: quickPhrase
+  parent: BaseLetterAndNumberPhrase
+  abstract: true
+  id: BaseNumberPhrase
+  group: phrase-group-numbers
+
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number1Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number2Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number3Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number4Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number5Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number6Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number7Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number8Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number9Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: Number0Phrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: TenPhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: HundredPhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: ThousandPhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: MillionPhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: BillionPhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: StackPhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: HourPhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: MinutePhrase }
+- { type: quickPhrase, parent: BaseNumberPhrase, id: SecondPhrase }

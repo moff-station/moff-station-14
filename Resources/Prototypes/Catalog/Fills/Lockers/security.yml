@@ -28,10 +28,10 @@
     children:
     - id: FlashlightSeclite
     - id: WeaponDisabler
-    #- id: WeaponTaser  # Moffstation - Remove tasers
     - id: ClothingBeltSecurityFilled
     - id: Flash
-    - id: ClothingEyesGlassesSecurity
+    # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
+    - id: BoxSecModularHUD # Moffstation - Modular Eyewear
     - id: ClothingHandsGlovesCombat
     - id: ClothingShoesBootsJack
     - id: ClothingOuterCoatWarden
@@ -74,7 +74,6 @@
     - id: FlashlightSeclite
       prob: 0.8
     - id: WeaponDisabler
-    #- id: WeaponTaser # Moffstation - Remove tasers
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
@@ -82,7 +81,8 @@
     - id: ClothingBeltSecurityFilled
     - id: Flash
       prob: 0.5
-    - id: ClothingEyesGlassesSecurity
+    # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
+    - id: BoxSecModularHUD # Moffstation - Modular Eyewear
     - id: ClothingHeadsetSecurity
     - id: ClothingHandsGlovesColorBlack
     - id: ClothingShoesBootsJack
@@ -115,8 +115,8 @@
   id: FillLockerBrigmedic
   table: !type:AllSelector
     children:
-    - id: ClothingEyesGlassesSecurity
-    #- id: WeaponTaser # Moffstation - remove tasers
+    # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
+    - id: BoxSecModularHUD # Moffstation - Modular Eyewear
     - id: WeaponDisabler
     - id: TrackingImplanter
       amount: 2
@@ -160,7 +160,11 @@
   id: FillLockerDetective
   table: !type:AllSelector
     children:
-    - id: ClothingEyesGlassesNoir
+    # Moffstation - Start - Modular Eyewear
+    # - id: ClothingEyesGlassesNoir
+    - id: BoxSecModularHUD
+    - id: HudModuleNoirOverlay
+    # Moffstation - End
     - id: ClothingHeadHatDetGadget
     - id: ClothingNeckTieDet
     # Moffstation - Start (New Detective Outfits)

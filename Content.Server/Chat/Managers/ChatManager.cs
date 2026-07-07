@@ -1,6 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Content.Server._Moffstation.MoffPatreon; //Moffstation
+using Content.Shared._Moffstation.CCVar; //Moffstation
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
@@ -290,10 +292,31 @@ internal sealed partial class ChatManager : IChatManager
             var prefs = _preferencesManager.GetPreferences(player.UserId);
             colorOverride = prefs.AdminOOCColor;
         }
-        if (  _netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
+        //Moffstation - Start - Patreon Colors !
+        if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor))
         {
-            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", patronColor),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            string? patronColor = null;
+
+            if (_configurationManager.GetCVar(MoffCCVars.OocUpstreamPatronColorEnabled)
+                && player.Channel.UserData.PatronTier is { } patron
+                && PatronOocColors.TryGetValue(patron, out var authColor))
+            {
+                patronColor = authColor;
+            }
+
+            if (_configurationManager.GetCVar(MoffCCVars.OocMoffPatronColorEnabled)
+                && _entityManager.System<MoffPatreonSystem>().IsMoffPatron(player.UserId.UserId))
+            {
+                patronColor = _configurationManager.GetCVar(MoffCCVars.OocMoffPatronColor);
+            }
+
+            if (patronColor != null)
+            {
+                wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message",
+                    ("patronColor", patronColor), ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+            }
         }
+        //Moffstation - End
 
         //TODO: player.Name color, this will need to change the structure of the MsgChatMessage
         ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);

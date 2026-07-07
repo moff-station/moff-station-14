@@ -33,7 +33,7 @@ job-name-security-officer-hall-monitor = Hall Monitor
 job-name-cargo-technician-courier = Courier
 job-name-cargo-technician-logistics-associate = Logistics Associate
 job-name-cargo-technician-senior-courier = Senior Courier
-job-name-cargo-technician-requisitions-clerk = Requisitions Clerk
+job-name-cargo-technician-freight-pilot = Freight Pilot
 # Salvage Specialist
 job-name-salvage-specialist-astrominer = Astrominer
 job-name-salvage-specialist-excavator = Excavator
@@ -162,7 +162,7 @@ job-name-prisoner-maximum-security = Maximum Security Prisoner
 job-name-prisoner-protective-custody = Protective Custody Prisoner
 job-name-prisoner-felon = Felon
 job-name-prisoner-inmate = Inmate
-job-name-prisoner-test-subject = Test Subject
+job-name-prisoner-community-laborer = Community Laborer
 ghost-role-captains-sabre = Captain´s Persona Sabre
 ## Other Job Titles
 job-name-mercenary = Mercenary

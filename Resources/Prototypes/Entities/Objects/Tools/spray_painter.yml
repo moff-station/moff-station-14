@@ -5,10 +5,10 @@
   description: A spray painter for painting airlocks, pipes, and other items.
   components:
   - type: Sprite
-    sprite: Objects/Tools/spray_painter.rsi
+    sprite: &spray_painter_rsi "_Moffstation/Objects/Tools/spray_painter.rsi" # Moffstation
     state: spray_painter
   - type: Item
-    sprite: Objects/Tools/spray_painter.rsi
+    sprite: *spray_painter_rsi # Moffstation
   - type: ActivatableUI
     key: enum.SprayPainterUiKey.Key
   - type: UserInterface

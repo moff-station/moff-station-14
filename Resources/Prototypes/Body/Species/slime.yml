@@ -5,6 +5,7 @@
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
+      randomChance: 1.0 # Moffstation - Random markings
     enum.HumanoidVisualLayers.FacialHair:
       limit: 1
       required: false
@@ -14,27 +15,35 @@
     enum.HumanoidVisualLayers.LArm:
       limit: 4 # Moffstation - Increase Markings
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RArm:
       limit: 4 # Moffstation - Increase Markings
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.LHand:
       limit: 1
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RHand:
       limit: 1
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.LLeg:
       limit: 4 # Moffstation - Increase Markings
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RLeg:
       limit: 4 # Moffstation - Increase Markings
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.LFoot:
       limit: 1
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
     enum.HumanoidVisualLayers.RFoot:
       limit: 1
       required: false
+      randomChance: 0.1 # Moffstation - Random markings
   appearances:
     enum.HumanoidVisualLayers.Hair:
       layerAlpha: 0.72
@@ -167,7 +176,6 @@
         messages: [ "slime-hurt-by-water-popup" ]
         probability: 0.25
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeatSlime
       amount: 5
@@ -181,7 +189,7 @@
     maxSaturation: 15
 
 - type: entity
-  parent: OrganBase
+  parent: OrganBaseOrganic
   id: OrganSlimePerson
   abstract: true
   suffix: slime person
