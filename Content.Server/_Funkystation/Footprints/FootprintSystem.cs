@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._Funkystation.Footprints;
 using Content.Shared.Chemistry.Components;
@@ -15,7 +14,6 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Server._Funkystation.Footprints;
 
@@ -62,10 +60,10 @@ public sealed partial class FootprintSystem : EntitySystem
 
     private void UpdatePrintColors(EntityUid uid, FootprintComponent component)
     {
-        if (!_solutionContainer.TryGetSolution(uid, PrintSolutionName, out var solution, out _))
+        if (!TryGetPrintSolution(uid, out var solution))
             return;
 
-        var newBaseColor = solution.Value.Comp.Solution.GetColor(_prototypeManager);
+        var newBaseColor = solution.Comp.Solution.GetColor(_prototypeManager);
 
         for (var i = 0; i < component.Prints.Count; i++)
         {
@@ -139,61 +137,55 @@ public sealed partial class FootprintSystem : EntitySystem
 
     private bool ProcessPuddleStepping(EntityUid uid, FootprintOwnerComponent component, EntityUid gridUid, MapGridComponent grid, Vector2i tile, bool isStanding)
     {
-        if (!TryGetAnchoredPuddle(gridUid, grid, tile, out var puddleUid, out var puddle))
+        // Footprints carry a PuddleComponent too (for their own colour/volume), so explicitly skip them here -
+        // otherwise players would "step in" their own trail and wash their feet on it.
+        if (!TryGetAnchoredEntity<PuddleComponent>(gridUid, grid, tile, out var puddleUid, out _, HasComp<FootprintComponent>))
             return false;
 
         if (!_solutionContainer.TryGetSolution(puddleUid, PuddleTargetSolution, out var puddleSolution, out _))
             return false;
 
-        var maxStorage = isStanding ? component.MaxFootVolume : component.MaxBodyVolume;
-
-        // Moff start - Use a non-deprecated method to get the solution
-        if (_solutionContainer.EnumerateSolutions(uid)
-                .Where(s => s.Name == PrintSolutionName)
-                .FirstOrNull() is not { } ownerSolution)
+        if (!TryGetPrintSolution(uid, out var ownerSolution))
             return false;
-        // Moff End
 
-        var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Solution.Comp.Solution.Volume);
-        _solutionContainer.TryTransferSolution(ownerSolution.Solution, puddleSolution.Value.Comp.Solution, spaceLeft);
-        _solutionContainer.UpdateChemicals(ownerSolution.Solution, false);
+        var maxStorage = isStanding ? component.MaxFootVolume : component.MaxBodyVolume;
+        var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Comp.Solution.Volume);
 
+        _solutionContainer.TryTransferSolution(ownerSolution, puddleSolution.Value.Comp.Solution, spaceLeft);
+        _solutionContainer.UpdateChemicals(ownerSolution, false);
         _solutionContainer.UpdateChemicals(puddleSolution.Value, false);
         return true;
     }
 
     private void CreateFootprint(EntityUid uid, FootprintOwnerComponent component, EntityUid gridUid, MapGridComponent grid, Vector2i tile, EntityCoordinates coords, Angle rotation, bool isStanding)
     {
-        if (!_solutionContainer.TryGetSolution(uid, PrintSolutionName, out var ownerSolution, out _))
+        if (!TryGetPrintSolution(uid, out var ownerSolution))
             return;
 
-        var transferAmount = CalculateTransferVolume(component, ownerSolution.Value, isStanding);
+        var transferAmount = CalculateTransferVolume(component, ownerSolution, isStanding);
         if (transferAmount < component.MinPrintVolume)
             return;
 
-        if (!TryGetAnchoredFootprint(gridUid, grid, tile, out var printUid, out var printComp))
+        if (!TryGetAnchoredEntity<FootprintComponent>(gridUid, grid, tile, out var printUid, out var printComp))
         {
             printUid = Spawn(FootprintEntityId, coords);
             printComp = Comp<FootprintComponent>(printUid);
         }
 
-        // Moff start - Use a non-deprecated method to get the solution
-        if (_solutionContainer.EnumerateSolutions(uid)
-                .Where(s => s.Name == PrintSolutionName)
-                .FirstOrNull() is not { } printSolution)
+        if (!TryGetPrintSolution(printUid, out var printSolution))
             return;
-        // Moff end
 
         var maxVol = isStanding ? component.MaxFootprintVolume : component.MaxBodyprintVolume;
         var alpha = (float)transferAmount / maxVol / 2f;
-        var color = ownerSolution.Value.Comp.Solution.GetColor(_prototypeManager).WithAlpha(alpha);
+        var color = ownerSolution.Comp.Solution.GetColor(_prototypeManager).WithAlpha(alpha);
 
-        _solutionContainer.TryTransferSolution(printSolution.Solution, ownerSolution.Value.Comp.Solution, transferAmount);
-        _solutionContainer.UpdateChemicals(printSolution.Solution, false);
+        _solutionContainer.TryTransferSolution(printSolution, ownerSolution.Comp.Solution, transferAmount);
+        _solutionContainer.UpdateChemicals(printSolution, false);
+        _solutionContainer.UpdateChemicals(ownerSolution, false);
 
-        if (printSolution.Solution.Comp.Solution.Volume >= MaxVolumePerTile)
+        if (printSolution.Comp.Solution.Volume >= MaxVolumePerTile)
         {
-            var solClone = printSolution.Solution.Comp.Solution.Clone();
+            var solClone = printSolution.Comp.Solution.Clone();
             QueueDel(printUid);
             _puddle.TrySpillAt(coords, solClone, out _, false);
             return;
@@ -221,7 +213,7 @@ public sealed partial class FootprintSystem : EntitySystem
             return;
 
         var tile = _map.CoordinatesToTile(gridUid, grid, xform.Coordinates);
-        if (TryGetAnchoredFootprint(gridUid, grid, tile, out var printUid, out _))
+        if (TryGetAnchoredEntity<FootprintComponent>(gridUid, grid, tile, out var printUid, out _))
         {
             TurnIntoPuddle(printUid, xform.Coordinates);
         }
@@ -231,9 +223,9 @@ public sealed partial class FootprintSystem : EntitySystem
     {
         var targetCoords = coords ?? Transform(printUid).Coordinates;
 
-        if (_solutionContainer.TryGetSolution(printUid, PrintSolutionName, out _, out var printSolution))
+        if (TryGetPrintSolution(printUid, out var printSolution))
         {
-            var clone = printSolution.Clone();
+            var clone = printSolution.Comp.Solution.Clone();
             QueueDel(printUid);
             _puddle.TrySpillAt(targetCoords, clone, out _, false);
         }
@@ -243,30 +235,42 @@ public sealed partial class FootprintSystem : EntitySystem
         }
     }
 
+    private bool TryGetPrintSolution(EntityUid uid, out Entity<SolutionComponent> solution)
+    {
+        if (_solutionContainer.TryGetSolution(uid, PrintSolutionName, out var sol, out _))
+        {
+            solution = sol.Value;
+            return true;
+        }
+
+        solution = default;
+        return false;
+    }
+
     private FixedPoint2 CalculateTransferVolume(FootprintOwnerComponent component, Entity<SolutionComponent> sol, bool isStanding)
     {
         var vol = sol.Comp.Solution.Volume;
-        if (isStanding)
-        {
-            var fraction = vol / component.MaxFootVolume;
-            var spread = component.MaxFootprintVolume - component.MinPrintVolume;
-            return FixedPoint2.Min(vol, (spread * fraction) + component.MinPrintVolume);
-        }
-        else
-        {
-            var fraction = vol / component.MaxBodyVolume;
-            var spread = component.MaxBodyprintVolume - component.MinBodyPrintVolume;
-            return FixedPoint2.Min(vol, (spread * fraction) + component.MinBodyPrintVolume);
-        }
+        var maxVolume = isStanding ? component.MaxFootVolume : component.MaxBodyVolume;
+        var minPrint = isStanding ? component.MinPrintVolume : component.MinBodyPrintVolume;
+        var maxPrint = isStanding ? component.MaxFootprintVolume : component.MaxBodyprintVolume;
+
+        var fraction = vol / maxVolume;
+        var spread = maxPrint - minPrint;
+        return FixedPoint2.Min(vol, (spread * fraction) + minPrint);
     }
 
-    private bool TryGetAnchoredPuddle(EntityUid gridUid, MapGridComponent grid, Vector2i tile, out EntityUid entityUid, [NotNullWhen(true)] out PuddleComponent? component)
+    private bool TryGetAnchoredEntity<T>(
+        EntityUid gridUid,
+        MapGridComponent grid,
+        Vector2i tile,
+        out EntityUid entityUid,
+        [NotNullWhen(true)] out T? component,
+        Func<EntityUid, bool>? skip = null) where T : IComponent
     {
         var enumerator = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
         while (enumerator.MoveNext(out var uid))
         {
-            // CRITICAL: Explicitly ignore footprints so players don't wash their feet with them and delete them!
-            if (HasComp<FootprintComponent>(uid))
+            if (skip != null && skip(uid.Value))
                 continue;
 
             if (TryComp(uid, out component))
@@ -275,24 +279,9 @@ public sealed partial class FootprintSystem : EntitySystem
                 return true;
             }
         }
-        entityUid = EntityUid.Invalid;
-        component = null;
-        return false;
-    }
 
-    private bool TryGetAnchoredFootprint(EntityUid gridUid, MapGridComponent grid, Vector2i tile, out EntityUid entityUid, [NotNullWhen(true)] out FootprintComponent? component)
-    {
-        var enumerator = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
-        while (enumerator.MoveNext(out var uid))
-        {
-            if (TryComp(uid, out component))
-            {
-                entityUid = uid.Value;
-                return true;
-            }
-        }
         entityUid = EntityUid.Invalid;
-        component = null;
+        component = default;
         return false;
     }
 }
