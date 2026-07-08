@@ -1,8 +1,8 @@
 - type: entity
-  name: mayonnaise
-  id: VariantMayoSpawner
   parent: MarkerBase
+  id: VariantMayoSpawner
   suffix: spawner
+  name: mayonnaise
   components:
   - type: Sprite
     sprite: Objects/Consumable/Food/ingredients.rsi

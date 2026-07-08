@@ -1,103 +1,356 @@
-﻿## Command
-# Chief Engineer
-- type: startingGear
-  id: ChiefEngineerCorpseGear
-  equipment:
-    head: ClothingHeadHatBeretEngineering
-    jumpsuit: ClothingUniformJumpsuitChiefEngineer
-    neck: ClothingNeckCloakCe
-    shoes: ClothingShoesBootsWork
-    # mask:
-    eyes: ClothingEyesGlassesMeson
-    gloves: ClothingHandsGlovesColorYellow
-    # outerClothing:
-    belt: ClothingBeltChiefEngineer
-    pocket1: RubberStampCE
-    # pocket2:
+# Command
 
-## Engineering
-# Atmospheric Technician
 - type: startingGear
-  id: AtmosphericTechnicianCorpseGear
+  id: CorpseGearCaptain
   equipment:
-    head: ClothingHeadHatHardhatBlue
+    jumpsuit: ClothingUniformJumpsuitCaptain
+    shoes: ClothingShoesBootsLaceup
+    head: ClothingHeadHatCaptain
+
+- type: startingGear
+  id: CorpseGearHOP
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoP
+    shoes: ClothingShoesLeather
+    head: ClothingHeadHatHopcap
+    outerClothing: ClothingOuterWinterHoP
+
+- type: startingGear
+  id: CorpseGearHOS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHoSParadeMale
+    shoes: ClothingShoesBootsCowboyBlackFilled
+
+- type: startingGear
+  id: CorpseGearRD
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitResearchDirector
+    shoes: ClothingShoesColorBrown
+    head: ClothingHeadHatBeretRND
+    gloves: ClothingHandsGlovesColorPurple
+    outerClothing: ClothingOuterCoatRD
+
+- type: startingGear
+  id: CorpseGearCMO
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMO
+    shoes: ClothingShoesColorBrown
+    head: ClothingHeadHatBeretCmo
+    gloves: ClothingHandsGlovesNitrile
+    outerClothing: ClothingOuterCoatLabCmo
+
+- type: startingGear
+  id: CorpseGearCE
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefEngineer
+    shoes: ClothingShoesColorWhite
+    head: ClothingHeadHatBeretEngineering
+    gloves: ClothingHandsGlovesColorYellow
+    outerClothing: ClothingOuterWinterCE
+
+- type: startingGear
+  id: CorpseGearQM
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitQMTurtleneck
+    shoes: ClothingShoesColorBrown
+    head: ClothingHeadHatQMsoft
+    outerClothing: ClothingOuterWinterQM
+
+# Engineering
+
+- type: startingGear
+  id: CorpseGearEngineer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEngineeringHazard
+    shoes: ClothingShoesBootsWork
+    head: ClothingHeadHatHardhatYellow
+    gloves: ClothingHandsGlovesColorYellow
+    outerClothing: ClothingOuterWinterEngi
+
+- type: startingGear
+  id: CorpseGearAtmosTech
+  equipment:
     jumpsuit: ClothingUniformJumpsuitAtmos
     shoes: ClothingShoesBootsWork
-    # mask:
-    eyes: ClothingEyesGlassesMeson
-    gloves: ClothingHandsGlovesColorYellow
-    outerClothing: ClothingOuterVestHazardBlue
-    belt: ClothingBeltUtilityEngineering
-    # pocket1:
-    # pocket2:
-
-- type: startingGear
-  id: CoolAtmosphericTechnicianCorpseGear
-  equipment:
-    head: ClothingHeadHatYellowsoftFlipped
-    jumpsuit: ClothingUniformJumpsuitSeniorAtmos
-    shoes: ClothingShoesBootsWork
-    # mask:
-    eyes: ClothingEyesGlassesMesonSunglasses
-    gloves: ClothingHandsGlovesColorYellow
-    # outerClothing:
-    belt: ClothingBeltUtilityEngineering
-    pocket1: CigPackBlack
-    # pocket2:
-
-- type: startingGear
-  id: FiresuitAtmosphericTechnicianCorpseGear
-  equipment:
-    # head:
-    jumpsuit: ClothingUniformJumpsuitAtmosTurtle
-    shoes: ClothingShoesBootsWork
-    # mask:
-    eyes: ClothingEyesGlassesMeson
+    head: ClothingHeadHelmetAtmosFire
     gloves: ClothingHandsGlovesColorYellow
     outerClothing: ClothingOuterSuitAtmosFire
-    belt: ClothingBeltUtilityEngineering
-    # pocket1:
-    # pocket2:
 
-# Station Engineer
 - type: startingGear
-  id: StationEngineerCorpseGear
+  id: CorpseGearTechAssistant
   equipment:
-    head: ClothingHeadHatHardhatOrange
     jumpsuit: ClothingUniformJumpsuitEngineeringHazard
     shoes: ClothingShoesBootsWork
-    # mask:
-    eyes: ClothingEyesGlassesMeson
+    head: ClothingHeadHatHardhatOrange
     gloves: ClothingHandsGlovesColorYellow
     outerClothing: ClothingOuterVestHazard
-    belt: ClothingBeltUtilityEngineering
-    # pocket1:
-    # pocket2:
+
+# Cargo
 
 - type: startingGear
-  id: CoolStationEngineerCorpseGear
+  id: CorpseGearCargoTech
   equipment:
-    # head:
-    jumpsuit: ClothingUniformJumpsuitEngineering
-    shoes: ClothingShoesBootsWork
-    # mask:
-    eyes: ClothingEyesGlassesMesonSunglasses
-    gloves: ClothingHandsGlovesColorYellow
-    # outerClothing:
-    belt: ClothingBeltUtilityEngineering
-    pocket1: CigPackBlack
-    # pocket2:
+    jumpsuit: ClothingUniformJumpsuitCargo
+    shoes: ClothingShoesColorBlack
+    head: ClothingHeadHatCargosoft
+    gloves: ClothingHandsGlovesFingerless
+    outerClothing: ClothingOuterWinterCargo
 
 - type: startingGear
-  id: TechnicalAssistantCorpseGear
+  id: CorpseGearSalvage
   equipment:
-    head: ClothingHeadHatOrangesoft
-    jumpsuit: ClothingUniformJumpsuitEngineeringHazard
-    shoes: ClothingShoesBootsWork
-    # mask:
-    eyes: ClothingEyesHudDiagnostic
-    # gloves:
-    outerClothing: ClothingOuterWinterEngiWindbreaker
-    belt: ClothingBeltUtilityEngineering
-    # pocket1:
-    # pocket2:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
+    shoes: ClothingShoesBootsSalvage
+    head: ClothingHeadHatCargosoft
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterWinterMiner
+
+# Medical
+
+- type: startingGear
+  id: CorpseGearMedDoctor
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMedicalDoctor
+    shoes: ClothingShoesColorWhite
+    head: ClothingHeadNurseHat
+    gloves: ClothingHandsGlovesNitrile
+    outerClothing: ClothingOuterCoatLab
+
+- type: startingGear
+  id: CorpseGearMedIntern
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    shoes: ClothingShoesColorWhite
+    head: ClothingHeadBandGreen
+
+- type: startingGear
+  id: CorpseGearPsychologist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPsychologist
+    shoes: ClothingShoesLeather
+    head: ClothingHeadHatMagician
+
+- type: startingGear
+  id: CorpseGearChemist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChemistry
+    shoes: ClothingShoesColorOrange
+    gloves: ClothingHandsGlovesLatex
+    outerClothing: ClothingOuterCoatLabChem
+
+- type: startingGear
+  id: CorpseGearDentist
+  equipment:
+    jumpsuit: UniformScrubsColorBlue
+    shoes: ClothingShoesColorBlue
+    head: ClothingHeadHatSurgcapBlue
+    gloves: ClothingHandsGlovesLatex
+
+- type: startingGear
+  id: CorpseGearParamedic
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitParamedic
+    shoes: ClothingShoesSwat
+    head: ClothingHeadHatParamedicsoft
+    gloves: ClothingHandsGlovesLatex
+    outerClothing: ClothingOuterWinterPara
+
+- type: startingGear
+  id: CorpseGearScrubsPurple
+  equipment:
+    jumpsuit: UniformScrubsColorPurple
+    shoes: ClothingShoesColorRed
+    head: ClothingHeadHatSurgcapPurple
+    gloves: ClothingHandsGlovesLatex
+
+- type: startingGear
+  id: CorpseGearScrubsGreen
+  equipment:
+    jumpsuit: UniformScrubsColorGreen
+    shoes: ClothingShoesColorGreen
+    head: ClothingHeadHatSurgcapGreen
+    gloves: ClothingHandsGlovesLatex
+
+- type: startingGear
+  id: CorpseGearScrubsBlue
+  equipment:
+    jumpsuit: UniformScrubsColorBlue
+    shoes: ClothingShoesColorBlue
+    head: ClothingHeadHatSurgcapBlue
+    gloves: ClothingHandsGlovesNitrile
+
+# Science
+
+- type: startingGear
+  id: CorpseGearResearchAssistant
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPurple
+    shoes: ClothingShoesColorBlack
+    head: ClothingHeadPaperSack
+
+- type: startingGear
+  id: CorpseGearScientist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientistFormal
+    shoes: ClothingShoesColorPurple
+    head: ClothingHeadHatBeretRND
+    outerClothing: ClothingOuterCoatRnd
+
+- type: startingGear
+  id: CorpseGearGeneticist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+    shoes: ClothingShoesColorBlue
+    head: ClothingHeadBandGrey
+    gloves: ClothingHandsGlovesNitrile
+    outerClothing: ClothingOuterCoatLabGene
+
+- type: startingGear
+  id: CorpseGearVirologist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVirology
+    shoes: ClothingShoesColorGreen
+    head: ClothingHeadMirror
+    gloves: ClothingHandsGlovesLatex
+    outerClothing: ClothingOuterCoatLabViro
+
+# Security
+
+- type: startingGear
+  id: CorpseGearSecCadet
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHelmetBasic
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterArmorBasic
+
+- type: startingGear
+  id: CorpseGearSecOfficer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHatBeretSecurity
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterArmorBasic
+
+- type: startingGear
+  id: CorpseGearDetective
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetective
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHatFedoraBrown
+
+- type: startingGear
+  id: CorpseGearWarden
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWarden
+    shoes: ClothingShoesBootsJack
+    head: ClothingHeadHatWarden
+    outerClothing: ClothingOuterArmorBasic
+
+# Service
+
+- type: startingGear
+  id: CorpseGearBartender
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartender
+    shoes: ClothingShoesColorBlack
+    head: ClothingHeadHatTophat
+    outerClothing: ClothingOuterWinterBar
+
+- type: startingGear
+  id: CorpseGearBotanist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHydroponics
+    shoes: ClothingShoesColorGreen
+    head: ClothingHeadBandGreen
+
+- type: startingGear
+  id: CorpseGearBoxer
+  equipment:
+    jumpsuit: ClothingUniformRandomShorts
+    shoes: ClothingShoesColorBlack
+    gloves: ClothingHandsGlovesBoxingBlue
+
+- type: startingGear
+  id: CorpseGearChaplain
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChaplain
+    shoes: ClothingShoesColorBlack
+    head: ClothingHeadHatPlaguedoctor
+    mask: ClothingMaskPlague
+    outerClothing: ClothingOuterPlagueSuit
+
+- type: startingGear
+  id: CorpseGearChef
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChef
+    shoes: ClothingShoesChef
+    head: ClothingHeadHatChef
+    outerClothing: ClothingOuterJacketChef
+
+- type: startingGear
+  id: CorpseGearClown
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+    shoes: ClothingShoesClown
+    mask: ClothingMaskClown
+
+- type: startingGear
+  id: CorpseGearJanitor
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJanitor
+    shoes: ClothingShoesGaloshes
+    head: ClothingHeadFishCap
+    gloves: ClothingHandsGlovesJanitor
+    outerClothing: ClothingOuterWinterJani
+
+- type: startingGear
+  id: CorpseGearLawyer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+    shoes: ClothingShoesColorBlack
+    head: ClothingHeadHatFedoraGrey
+
+- type: startingGear
+  id: CorpseGearLibrarian
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLibrarian
+    shoes: ClothingShoesBootsLaceup
+
+- type: startingGear
+  id: CorpseGearMime
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMime
+    shoes: ClothingShoesColorWhite
+    head: ClothingHeadBandBlack
+    gloves: ClothingHandsGlovesColorWhite
+    mask: ClothingMaskMime
+
+- type: startingGear
+  id: CorpseGearMusician
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMusician
+    shoes: ClothingShoesBootsLaceup
+    outerClothing: ClothingOuterWinterMusician
+
+- type: startingGear
+  id: CorpseGearReporter
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitReporter
+    shoes: ClothingShoesLeather
+
+- type: startingGear
+  id: CorpseGearServiceWorker
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartender
+    shoes: ClothingShoesColorBlack
+    head: ClothingHeadBandBlue
+
+- type: startingGear
+  id: CorpseGearZookeeper
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSafari
+    shoes: ClothingShoesBootsSalvage
+    head: ClothingHeadSafari

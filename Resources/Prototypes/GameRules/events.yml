@@ -48,7 +48,7 @@
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
-    - id: WizardSpawn
+    # - id: WizardSpawn # Moffstation
     - id: EeepEvent # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
