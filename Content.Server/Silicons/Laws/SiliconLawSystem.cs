@@ -24,7 +24,6 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 {
     [Dependency] private IChatManager _chatManager = default!;
     [Dependency] private SharedMindSystem _mind = default!;
-    // [Dependency] private IPrototypeManager _prototype = default!; // Moffstation - Now Unused
     [Dependency] private SharedRoleSystem _roles = default!;
     // [Dependency] private StationSystem _station = default!; // Moffstation - Now Unused
     // [Dependency] private UserInterfaceSystem _userInterface = default!; // Moffstation - Now Unused
@@ -80,6 +79,40 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 
         if (cue != null && _mind.TryGetMind(uid, out var mindId, out _))
             _roles.MindPlaySound(mindId, cue);
+    }
+
+    /// <summary>
+    /// Extract all the laws from a lawset's prototype ids.
+    /// </summary>
+    public SiliconLawset GetLawset(ProtoId<SiliconLawsetPrototype> lawset)
+    {
+        var proto = ProtoMan.Index(lawset);
+        var laws = new SiliconLawset()
+        {
+            Laws = new List<SiliconLaw>(proto.Laws.Count)
+        };
+        foreach (var law in proto.Laws)
+        {
+            laws.Laws.Add(ProtoMan.Index<SiliconLawPrototype>(law).ShallowClone());
+        }
+        laws.ObeysTo = proto.ObeysTo;
+
+        return laws;
+    }
+
+    /// <summary>
+    /// Set the laws of a silicon entity while notifying the player.
+    /// </summary>
+    public void SetLaws(List<SiliconLaw> newLaws, EntityUid target, SoundSpecifier? cue = null)
+    {
+        if (!TryComp<SiliconLawProviderComponent>(target, out var component))
+            return;
+
+        if (component.Lawset == null)
+            component.Lawset = new SiliconLawset();
+
+        component.Lawset.Laws = newLaws;
+        NotifyLawsChanged(target, cue);
     }
 
     protected override void OnUpdaterInsert(Entity<SiliconLawUpdaterComponent> ent, ref EntInsertedIntoContainerMessage args)
