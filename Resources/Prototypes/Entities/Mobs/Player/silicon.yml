@@ -574,10 +574,11 @@
   parent: BorgChassisSelectable
   suffix: Battery
   components:
-  - type: ContainerFill
-    containers:
-      borg_brain:
-      - PositronicBrain
+  # Moffstation - Brain become a borg loadout option
+  #- type: ContainerFill
+  #  containers:
+  #    borg_brain:
+  #    - PositronicBrain
   - type: ItemSlots
     slots:
       cell_slot:

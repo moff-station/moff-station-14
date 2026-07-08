@@ -8,6 +8,7 @@ using Content.Shared.Roles;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Collections;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -23,6 +24,8 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
     [Dependency] private MetaDataSystem _metadata = default!;
     [Dependency] private SharedStorageSystem _storage = default!;
     [Dependency] private SharedTransformSystem _xformSystem = default!;
+
+    [Dependency] private SharedContainerSystem _container = default!; // Moffstation - Allow container gear
 
     [Dependency] private EntityQuery<HandsComponent> _handsQuery = default!;
     [Dependency] private EntityQuery<InventoryComponent> _inventoryQuery = default!;
@@ -188,6 +191,25 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
                 }
             }
         }
+
+        // Moffstation - Begin - allow starting gear in container
+        if (startingGear is SpecialLoadout { Containers.Count: > 0 } specialGear)
+        {
+            var coords = _xformSystem.GetMapCoordinates(entity);
+            foreach (var (containerId, entProtos) in specialGear.Containers)
+            {
+                if (entProtos.Count == 0 || ! _container.TryGetContainer(entity, containerId, out var container))
+                    continue;
+
+                foreach (var entProto in entProtos)
+                {
+                    var spawnedEntity = Spawn(entProto, coords);
+                    _container.Insert(spawnedEntity, container);
+                    //_container.InsertOrDrop(spawnedEntity, container);
+                }
+            }
+        }
+        // Moffstation - End
 
         if (raiseEvent)
         {

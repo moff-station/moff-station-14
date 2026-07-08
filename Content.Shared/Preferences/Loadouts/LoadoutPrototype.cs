@@ -75,5 +75,12 @@ public sealed partial class SpecialLoadout : IEquipmentLoadout
 
     [DataField]
     public Dictionary<string, List<EntProtoId>> Storage { get; set; } = new();
+
+    /// <summary>
+    /// Some entities (ex: Cyborgs) may have loadout options that are not stored in inventory or storage but in a container
+    /// inside the entity (ex: MMI and Positronic Brain)
+    /// </summary>
+    [DataField]
+    public Dictionary<string, List<EntProtoId>> Containers { get; set; } = new();
 }
 // Moffstation - Begin
