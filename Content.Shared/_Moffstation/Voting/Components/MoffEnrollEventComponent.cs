@@ -22,14 +22,35 @@ public sealed partial class MoffEnrollEventComponent : Component
     public TimeSpan Duration = TimeSpan.FromMinutes(1);
 
     /// <summary>
+    /// The minimum number of people needed for the rule to be accepted at the end of the countdown
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int MinEnrolled = 1;
+
+    /// <summary>
+    /// The max amount of roles for this rule
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int MaxEnrolled;
+
+    /// <summary>
     /// Whether you can select a character to use for the event
     /// </summary>
     [DataField]
     public bool CharacterSelection = true;
 
+    [DataField]
+    public Color TitleColor = Color.White;
+
+    [DataField]
+    public Color DescriptionColor = Color.LightGray;
+
     /// <summary>
     /// Whether the event is available to be enrolled in
     /// </summary>
     [ViewVariables]
-    public bool Enrollable = true;
+    public bool Enrollable;
+
+    [ViewVariables]
+    public bool Warpable;
 }

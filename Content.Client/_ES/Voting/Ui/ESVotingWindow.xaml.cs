@@ -66,6 +66,8 @@ public sealed partial class ESVotingWindow : FancyWindow
                 }
             }
         }
+        // PB and B
+        VotesContainer.InvalidateMeasure();
     }
 
     private Control? GenerateControl(Entity<MoffVoteEntryComponent> ent)

@@ -9,10 +9,10 @@ namespace Content.Shared._Moffstation.Voting.Systems;
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class MoffVoteEntrySystem : EntitySystem
+public sealed partial class MoffVoteEntrySystem : EntitySystem
 {
-    [Dependency] private readonly SharedPvsOverrideSystem _pvsOverride = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SharedPvsOverrideSystem _pvsOverride = default!;
+    [Dependency] private SharedUserInterfaceSystem _uiSystem = default!;
 
     public override void Initialize()
     {

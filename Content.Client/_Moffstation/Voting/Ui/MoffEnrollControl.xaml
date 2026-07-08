@@ -8,17 +8,17 @@
         <graphics:StyleBoxFlat BackgroundColor="{xNamespace:Static style:StyleNano.ButtonColorDisabled}" />
     </PanelContainer.PanelOverride>
     <BoxContainer Name="EnrollmentContainer" Orientation="Vertical" VerticalExpand="True" Margin="10">
-        <GridContainer Columns="2">
-            <BoxContainer Orientation="Vertical">
-                <RichTextLabel Name="VoteNameLabel" Text="[bold][font size=16][color=white]Text Title[/color][/font][/bold]" HorizontalExpand="True" RectClipContent="True"/>
-                <RichTextLabel Name="VoteDescriptionLabel" Text="Test Desc" HorizontalExpand="True" RectClipContent="True"/>
+        <BoxContainer Name="HeaderRow" Orientation="Horizontal">
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Left">
+                <RichTextLabel Name="VoteNameLabel" HorizontalExpand="True" RectClipContent="True"/>
+                <RichTextLabel Name="VoteDescriptionLabel" HorizontalExpand="True" RectClipContent="True" MaxWidth="270"/>
             </BoxContainer>
-            <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Right" MinWidth="30">
+            <BoxContainer Name="ButtonsContainer" Orientation="Vertical" HorizontalAlignment="Right" MinWidth="100">
                 <Button Name="EnrollButton" Text="Enroll"/>
                 <Button Name="CharacterSelectionButton" Text="Select Character"/>
                 <Button Name="GotoButton" Text="Go To"/>
             </BoxContainer>
-        </GridContainer>
+        </BoxContainer>
         <RichTextLabel Name="TimeLabel"/>
         <ProgressBar Name="Progress" Value="0.5" MinValue="0" MaxValue="1" ModulateSelfOverride="#00ff00" HorizontalExpand="True" SetHeight="5" Margin="0 2 0 5"/>
     </BoxContainer>
