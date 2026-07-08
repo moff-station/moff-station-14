@@ -34,7 +34,7 @@ public sealed partial class WashingMachineComponent : Component
     public EntityUid? AudioStream;
 
     [DataField]
-    public ProtoId<DamageTypePrototype> WashingDamageType = "blunt";
+    public ProtoId<DamageTypePrototype> WashingDamageType = "Blunt";
 
     [DataField, AutoNetworkedField]
     public float BluntDamagePerSecond = 6.0f;
@@ -56,6 +56,7 @@ public sealed partial class WashingMachineComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public float AccumulatedSelfDamage = 0f;
+    public SoundSpecifier HitSound = new SoundCollectionSpecifier("MetalThud");
 }
 
 [Serializable, NetSerializable]

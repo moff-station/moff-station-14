@@ -110,6 +110,12 @@
         - id: OrganSlimePersonCore
         - id: OrganSlimePersonLungs
         - id: OrganGerasTorso
+  - type: NpcFactionMember
+    factions:
+    - FeralSlime # Not actually feral, but feral slimes won't attack them
+  - type: StatusIcon
+    bounds: -0.5,-0.5,0.5,0.5
+  - type: JobStatus
   - type: Tag
     tags:
     - FootstepSound

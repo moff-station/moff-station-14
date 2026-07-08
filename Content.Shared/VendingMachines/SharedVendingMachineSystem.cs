@@ -8,6 +8,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Emp;
+using Content.Shared.EntityTable;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
@@ -36,6 +37,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     [Dependency] protected SharedUserInterfaceSystem UISystem = default!;
     [Dependency] protected IRobustRandom Randomizer = default!;
     [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!; // Moffstation - entity tables in vending machines
 
     public override void Initialize()
     {
@@ -427,6 +429,20 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                 else
                     inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock));
             }
+
+            // Moffstation - Start - Allow use of entityTables in vending machine inventories
+            else if (PrototypeManager.TryIndex<EntityTablePrototype>(id, out var table))
+            {
+                AddInventoryFromPrototype(uid,
+                    Enumerable.Repeat(table, (int)amount)
+                        .SelectMany(it => _entityTable.GetSpawns(it, Randomizer))
+                        .CountBy(it => it)
+                        .ToDictionary(it => it.Key.Id, it => (uint)it.Value),
+                    type,
+                    component,
+                    restockQuality);
+            }
+            // Moffstation - End
         }
     }
 

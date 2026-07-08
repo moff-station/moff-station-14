@@ -1,5 +1,4 @@
-﻿/* Moffstation - Completely rewritten, moved to our namespace - accept any upstream changes
-using Content.Server.StationEvents.Events;
+﻿using Content.Server.StationEvents.Events;
 using Content.Shared.Storage;
 
 namespace Content.Server.StationEvents.Components;
@@ -16,4 +15,3 @@ public sealed partial class VentCrittersRuleComponent : Component
     [DataField("specialEntries")]
     public List<EntitySpawnEntry> SpecialEntries = new();
 }
-*/

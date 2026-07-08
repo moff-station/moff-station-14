@@ -16,9 +16,12 @@ using Content.Shared.Popups;
 using Content.Shared.Slippery;
 using Content.Shared.Inventory;
 using Content.Shared._Funkystation.Fluids;
+using Content.Shared.Standing;
+using Content.Shared.StepTrigger.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -38,9 +41,8 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TurfSystem _turf = default!;
-    [Dependency] private InventorySystem _inventory = default!;
-
-
+    [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
+    [Dependency] private StandingStateSystem _standing = default!; // Moffstation - Clothing stains
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
 
@@ -52,40 +54,33 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         SubscribeLocalEvent<PuddleComponent, SpreadNeighborsEvent>(OnPuddleSpread);
         SubscribeLocalEvent<PuddleComponent, SlipEvent>(OnPuddleSlip);
 
-        SubscribeLocalEvent<InventoryComponent, MoveEvent>(OnStepInPuddle);
+        SubscribeLocalEvent<PuddleComponent, StartCollideEvent>(OnStepInPuddle); // Moffstation - Stains
     }
 
-    private void OnStepInPuddle(Entity<InventoryComponent> ent, ref MoveEvent args)
+    // Funky - Start - Clothing Stains
+    // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
+    private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
-        var gridUid = args.NewPosition.GetGridUid(EntityManager);
-        if (!gridUid.HasValue || !TryComp<MapGridComponent>(gridUid, out var grid))
-            return;
-
-        if (args.OldPosition.GetGridUid(EntityManager) != gridUid ||
-            _map.CoordinatesToTile(gridUid.Value, grid, args.OldPosition) == _map.CoordinatesToTile(gridUid.Value, grid, args.NewPosition))
-            return;
-
-        var tile = _map.GetTileRef(gridUid.Value, grid, args.NewPosition);
-
-        if (!TryGetPuddle(tile, out var puddleUid) || !_puddleQuery.TryGetComponent(puddleUid, out var puddleComp))
-            return;
-
-        if (!_solutionContainerSystem.ResolveSolution(puddleUid, puddleComp.SolutionName, ref puddleComp.Solution, out var solution))
+        if (!_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
             return;
 
         if (solution.Volume <= FixedPoint2.Zero)
             return;
 
-        var transferAmount = FixedPoint2.Min(FixedPoint2.New(1), solution.Volume);
-        var splitSol = _solutionContainerSystem.SplitSolution(puddleComp.Solution.Value, transferAmount);
 
-        if (_inventory.TryGetSlotEntity(ent.Owner, "shoes", out var shoes))
-        {
-            var spilledEvent = new SpilledOnEvent(puddleUid, splitSol);
-            var relayedEvent = new InventoryRelayedEvent<SpilledOnEvent>(spilledEvent);
-            RaiseLocalEvent(shoes.Value, relayedEvent);
-        }
+        // Choose le target...
+        // if standing and have shoes, just get it on their shoes
+        // otherwise, just spill it on them in general
+        var target = args.OtherEntity;
+        if (!_standing.IsDown(args.OtherEntity)
+            && _inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes)
+            && shoes is { } shoeUid)
+            target = shoeUid;
+
+        var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
+        RaiseLocalEvent(target, spilledEvent);
     }
+    // Funky - End
 
     // TODO: This can be predicted once https://github.com/space-wizards/RobustToolbox/pull/5849 is merged
     private void OnPuddleSpread(Entity<PuddleComponent> entity, ref SpreadNeighborsEvent args)
@@ -266,11 +261,14 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         var splitSol = _solutionContainerSystem.SplitSolution(entity.Comp.Solution.Value, solution.Volume * 0.15f);
         Reactive.DoEntityReaction(args.Slipped, splitSol, ReactionMethod.Touch);
 
+
+        // Funky - Start - Clothing stains
         if (splitSol.Volume > 0)
         {
             var stainEv = new SpilledOnEvent(entity.Owner, splitSol.Clone());
             RaiseLocalEvent(args.Slipped, stainEv);
         }
+        // Funky - End
     }
 
     public FixedPoint2 CurrentVolume(EntityUid uid, PuddleComponent? puddleComponent = null)
@@ -409,8 +407,10 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             targets.Add(owner);
             Reactive.DoEntityReaction(owner, splitSolution, ReactionMethod.Touch);
 
+            // Funky - Start - Clothing stains
             if (splitSolution.Volume > 0)
                 RaiseLocalEvent(owner, new SpilledOnEvent(entity, splitSolution.Clone()));
+            // Funky - End
 
             Popups.PopupEntity(Loc.GetString("spill-land-spilled-on-other",
                     ("spillable", entity),

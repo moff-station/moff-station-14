@@ -7,37 +7,38 @@
         "x": 32,
         "y": 32
     },
-    "states":
-    [{
+    "states": [
+    {
         "name": "base"
     },
-    {
-        "name": "empty"
-    },
-    {
-        "name": "door-open"
-    },
-    {
-        "name": "door-closed"
-    },
-    {
-        "name": "full"
-    },
-    {
-        "name": "panel"
-    },
-    {
-        "name": "running",
-        "delays":
-        [
+        {
+            "name": "empty"
+        },
+        {
+            "name": "door-open"
+        },
+        {
+            "name": "door-closed"
+        },
+        {
+            "name": "full"
+        },
+        {
+            "name": "panel"
+        },
+        {
+            "name": "running",
+            "delays":
             [
-                0.1,
-                0.1,
-                0.1,
-                0.1,
-                0.1,
-                0.1
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
             ]
-        ]
-    }]
-    }
+        }
+    ]
+}
