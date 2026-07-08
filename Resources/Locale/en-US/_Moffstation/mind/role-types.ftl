@@ -14,5 +14,8 @@ role-subtype-faction-conspiracy = The Conspiracy
 role-subtype-faction-spider-clan = The Spider Clan
 role-subtype-xenoborg-faction = Xenoborgs
 
+# Individual Syndicate Factions
+role-subtype-faction-syndicate-gorlex = The Gorlex Maurauders
+
 role-subtype-dragon-faction = Space Dragons
 role-subtype-silicon = Silicon Law Matrix
