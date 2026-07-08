@@ -111,7 +111,6 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetEquipmentVerbs);
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);
 
-
         SubscribeLocalEvent<InventoryComponent, SpilledOnEvent>(RelayInventoryEvent); // Funky - Stains
     }
 
@@ -198,12 +197,6 @@ public sealed class InventoryRelayedEvent<TEvent> : EntityEventArgs
     {
         Args = args;
         Owner = owner;
-    }
-
-    public InventoryRelayedEvent(TEvent args)
-    {
-        Args = args;
-        Owner = EntityUid.Invalid;
     }
 }
 
