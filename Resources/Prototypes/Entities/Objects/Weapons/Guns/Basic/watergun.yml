@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [SolutionGun, SolutionSmall, BaseItem, BasePointerCrosshair] # MACRO add crosshair
+  parent: [ SolutionGun, SolutionSmall, BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   id: WeaponWaterGunBase
   components:
   - type: Sprite
