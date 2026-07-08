@@ -6,17 +6,25 @@ using Robust.Shared.Containers;
 
 namespace Content.Shared._Moffstation.Silicons.Borgs;
 
-public sealed partial class SharedSensorSuitComponent : EntitySystem
+public sealed partial class SharedSensorContainerSystem : EntitySystem
 {
     [Dependency] private SharedSuitSensorSystem _suitSensor = default!;
     [Dependency] private SharedChatSystem _chat = default!;
-
+    [Dependency] private SharedContainerSystem _container = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
+        SubscribeLocalEvent<SensorContainerComponent, MapInitEvent>(OnInit);
+
         SubscribeLocalEvent<SensorContainerComponent, EntInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<SensorContainerComponent, EntRemovedFromContainerMessage>(OnRemoved);
         SubscribeLocalEvent<SensorContainerComponent, GetVerbsEvent<Verb>>(OnVerb);
+    }
+
+    private void OnInit(Entity<SensorContainerComponent> ent, ref MapInitEvent ev)
+    {
+        var container = _container.EnsureContainer<ContainerSlot>(ent, ent.Comp.ContainerId);
+        SpawnInContainerOrDrop(ent.Comp.Sensor, ent, ent.Comp.ContainerId);
     }
 
     private void OnInserted(Entity<SensorContainerComponent> ent, ref EntInsertedIntoContainerMessage ev)
@@ -24,9 +32,12 @@ public sealed partial class SharedSensorSuitComponent : EntitySystem
         if (ev.Container.ID != ent.Comp.ContainerId)
             return;
 
-        _chat.DispatchGlobalAnnouncement("bless you");
-
         ent.Comp.SensorEntity = ev.Entity;
+        if (ent.Comp.SensorEntity is not {} sensorEnt ||
+            !TryComp<SuitSensorComponent>(sensorEnt, out var sensorComp))
+            return;
+
+        _suitSensor.SetUser((sensorEnt, sensorComp), ent.Owner);
     }
 
     private void OnRemoved(Entity<SensorContainerComponent> ent, ref EntRemovedFromContainerMessage ev)
@@ -34,6 +45,10 @@ public sealed partial class SharedSensorSuitComponent : EntitySystem
         if (ev.Container.ID != ent.Comp.ContainerId)
             return;
 
+        if (!TryComp<SuitSensorComponent>(ev.Entity, out var sensorComp))
+            return;
+
+        _suitSensor.SetUser((ev.Entity, sensorComp), null);
         ent.Comp.SensorEntity = null;
     }
 

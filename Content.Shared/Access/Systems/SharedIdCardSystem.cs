@@ -1,4 +1,5 @@
 using System.Globalization;
+using Content.Shared._Moffstation.Silicons.Borgs;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -89,6 +90,15 @@ public abstract partial class SharedIdCardSystem : EntitySystem
     /// </summary>
     public bool TryFindIdCard(EntityUid uid, out Entity<IdCardComponent> idCard)
     {
+        // Moffstation - Begin - Borg sensors
+        if (TryComp<SensorContainerComponent>(uid, out var sensorEnt) &&
+            TryComp<IdCardComponent>(sensorEnt.SensorEntity, out var idComp))
+        {
+            idCard = (sensorEnt.SensorEntity.Value, idComp);
+            return true;
+        }
+        // Moffstation - End
+
         // check held item?
         if (_hands.GetActiveItem(uid) is { } heldItem &&
             TryGetIdCard(heldItem, out idCard))

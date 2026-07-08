@@ -11,5 +11,7 @@
     range: 1200
   - type: StationLimitedNetwork
   - type: IdCard
-  - type: presetIdCard
+  - type: PresetIdCard
     job: Borg
+  - type: Access
+    enabled: false

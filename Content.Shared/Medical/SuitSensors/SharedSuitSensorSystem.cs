@@ -506,4 +506,18 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
         };
         return status;
     }
+
+    // Moffstation - Begin - Borg sensors
+
+    /// <summary>
+    /// Set the user of this suit sensor manually.
+    /// </summary>
+    /// <param name="ent"></param>
+    /// <param name="user"></param>
+    public void SetUser(Entity<SuitSensorComponent> ent, EntityUid? user)
+    {
+        ent.Comp.User = user;
+    }
+
+    // Moffstation - End
 }
