@@ -1,10 +1,11 @@
 - type: entity
   name: bow
-  parent: [BaseItem, BaseMinorContraband]
+  parent: BaseItem # Moffstation - Contraband status moved to concrete child
   id: BaseBow
   description: The original rooty tooty point and shooty.
   abstract: true
   components:
+# Moffstation - Start - Bow Hunting
   - type: Sprite
     sprite: Objects/Weapons/Guns/Bow/bow.rsi
   - type: Item
@@ -46,10 +47,11 @@
   - type: ContainerAmmoProvider
     container: projectiles
 
+# Moffstation - Begin - Split bow visuals from `BowImprovised` so that it can be reused
 - type: entity
-  id: BowImprovised
   parent: BaseBow
-  name: improvised shortbow
+  id: BaseBowVisuals
+  abstract: true
   components:
   - type: Sprite
     layers:
@@ -61,10 +63,6 @@
     - state: unwielded-plunger
       map: [ plunger ]
       visible: false
-  # to elucidate whats intended here:
-  # arrow is inserted -> ItemMapper sets layer with map `arrow` to visible
-  # bow is wielded -> generic vis sets states of layers with map `arrow` and `base`
-  # arrow is removed -> itemmapper sets layer with map `arrow` to invisible
   - type: Appearance
   - type: ItemMapper
     spriteLayers:
@@ -91,6 +89,14 @@
         base:
           True: { state: wielded }
           False: { state: unwielded }
+# Moffstation - End
+
+- type: entity
+  id: BowImprovised
+  parent: [ BaseBowVisuals, BaseMinorContraband ] # Moffstation
+  name: improvised shortbow
+  components:
+  # Moffstation - Components for specifying visuals moved to `BaseBowVisuals`. Changes to the deleted code should be applied to the prototype above.
   - type: Construction
     graph: ImprovisedBow
     node: ImprovisedBow

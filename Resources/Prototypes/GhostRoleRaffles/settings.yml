@@ -2,14 +2,14 @@
 - type: ghostRoleRaffleSettings
   id: default
   settings:
-    initialDuration: 45
+    initialDuration: 20 # Moffstation - Shorter raffles
     joinExtendsDurationBy: 2
-    maxDuration: 45
+    maxDuration: 20 # Moffstation - Shorter raffles
 
 # for roles that don't matter too much or are available plentifully (e.g. space carp)
 - type: ghostRoleRaffleSettings
   id: short
   settings:
-    initialDuration: 15
+    initialDuration: 10 # Moffstation - Shorter raffles
     joinExtendsDurationBy: 0
-    maxDuration: 15
+    maxDuration: 10 # Moffstation - Shorter raffles

@@ -106,17 +106,18 @@
 
 - type: entity
   parent: PrisonerPDA
-  id: TestSubjectPDA
-  name: test subject PDA
+  id: CommunityLaborerPDA
+  name: community laborer PDA
   components:
+  - type: Pda
+    id: CommunityLaborerIDCard
   - type: RenameId
-    value: job-name-prisoner-test-subject
-    newIcon: "JobIconTestSubject"
+    value: job-name-prisoner-community-laborer
+    newIcon: "JobIconCommunityLaborer"
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-testsubject
+        pda-communitylaborer
   - type: PdaBorderColor
-    borderColor: "#eeeeee"
-    accentVColor: "#FF9751"
+    accentVColor: "#a2c940"

@@ -1,9 +1,11 @@
 using Content.Shared.Species.Components;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
+using Content.Shared.Humanoid; // Moffstation
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Mind;
+using Content.Shared.Preferences; // Moffstation
 using Content.Shared.Zombies;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -14,14 +16,14 @@ namespace Content.Shared.Species;
 
 public sealed partial class ReformSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly INetManager _netMan = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedStunSystem _stunSystem = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private INetManager _netMan = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private SharedStunSystem _stunSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
 
     public override void Initialize()
     {
@@ -96,6 +98,16 @@ public sealed partial class ReformSystem : EntitySystem
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
             _mindSystem.TransferTo(mindId, child, mind: mind);
 
+        // Moffstation - Begin
+        if (!EnsureComp<HumanoidProfileComponent>(child, out var humanoidProfileComponent))
+            return;
+
+        var profile = HumanoidCharacterProfile.RandomWithSpecies(humanoidProfileComponent.Species);
+
+        var ev = new PostReformEvent(child, profile);
+        RaiseLocalEvent(uid, ref ev);
+        // Moffstation - End
+
         // Delete the old entity
         QueueDel(uid);
     }
@@ -109,4 +121,13 @@ public sealed partial class ReformSystem : EntitySystem
 
     [Serializable, NetSerializable]
     public sealed partial class ReformDoAfterEvent : SimpleDoAfterEvent { }
+
+    // Moffstation - Begin
+    /// <summary>
+    /// Raised on the old entity just before it is deleted after reform completes.
+    /// <see cref="Child"/> is the newly spawned entity with its <see cref="HumanoidProfileComponent"/> pre-resolved.
+    /// </summary>
+    [ByRefEvent]
+    public record struct PostReformEvent(Entity<HumanoidProfileComponent?> Child, HumanoidCharacterProfile Profile);
+    // Moffstation - End
 }

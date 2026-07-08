@@ -9,15 +9,26 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
+        // Moffstation - Begin - PDA Ads
+using Robust.Shared.Serialization;
+using Robust.Shared.Prototypes;
+using System.Linq;
+using Robust.Shared.Random;
+using Content.Shared._Moffstation.PDA;
+using Content.Shared.Random.Helpers;
+        // Moffstation - End
 
 namespace Content.Client.PDA
 {
     [GenerateTypedNameReferences]
     public sealed partial class PdaMenu : PdaWindow
     {
-        [Dependency] private readonly IClipboardManager _clipboard = null!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
-        [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
+        [Dependency] private IClipboardManager _clipboard = null!;
+        [Dependency] private IGameTiming _gameTiming = default!;
+        [Dependency] private IEntitySystemManager _entitySystem = default!;
+
+        [Dependency] private IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
+        [Dependency] private IRobustRandom _random = default!; // Moffstation - PDA Advertisements
         private readonly ClientGameTicker _gameTicker;
 
         public const int HomeView = 0;
@@ -32,7 +43,7 @@ namespace Content.Client.PDA
         private string _stationName = Loc.GetString("comp-pda-ui-unknown");
         private string _alertLevel = Loc.GetString("comp-pda-ui-unknown");
         private string _instructions = Loc.GetString("comp-pda-ui-unknown");
-        
+
 
         private int _currentView;
 
@@ -54,6 +65,16 @@ namespace Content.Client.PDA
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
+            // Moffstation - begin - PDA Advertisements
+            //var adPrototype = _prototypeManager.EnumeratePrototypes<PdaAdPrototype>().ElementAt(1);
+            //var weightedRandom = _prototypeManager.Index(adPrototype.AdWeightPrototype);
+
+            var weightedRandom = _prototypeManager.Index(PdaAdPrototype.AdWeightPrototype);
+            var adPrototype = _prototypeManager.Index<PdaAdPrototype>(weightedRandom.Pick(_random));
+
+            Advertisement.SetFromSpriteSpecifier(adPrototype.Sprite);
+            Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;
+            // Moffstation - end - PDA Advertisements
 
             HomeButton.OnPressed += _ => ToHomeScreen();
 
@@ -125,7 +146,7 @@ namespace Content.Client.PDA
                 _clipboard.SetText(_instructions);
             };
 
-            
+
 
 
             HideAllViews();
@@ -165,7 +186,7 @@ namespace Content.Client.PDA
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",
                 ("station", _stationName)));
-            
+
 
             var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
@@ -346,5 +367,19 @@ namespace Content.Client.PDA
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
         }
+
+
+        // Moffstation - begin - PDA Advertisements
+        /// <summary>
+        /// Used by PdaBoundUserInterface to hide ads for PDAs which should not show them.
+        /// </summary>
+        public void DisableAds(bool noAdverts)
+        {
+            if (!noAdverts)
+                return;
+
+            AdvertisementBox.Visible = false;
+        }
+        // Moffstation - end - PDA Advertisements
     }
 }

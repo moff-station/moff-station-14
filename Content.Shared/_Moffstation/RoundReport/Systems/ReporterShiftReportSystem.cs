@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared._Moffstation.RoundReport.Components;
 using Content.Shared.Paper;
+using Robust.Shared.Utility;
 using static Content.Shared.Paper.PaperComponent;
 
 namespace Content.Shared._Moffstation.RoundReport.Systems;
@@ -8,7 +9,7 @@ namespace Content.Shared._Moffstation.RoundReport.Systems;
 public sealed class ReporterShiftReportSystem : EntitySystem
 {
 
-    // [Dependency] private readonly PaperSystem _paperSystem = default!;
+    // [Dependency] private PaperSystem _paperSystem = default!;
 
     public override void Initialize()
     {
@@ -21,7 +22,7 @@ public sealed class ReporterShiftReportSystem : EntitySystem
     {
         if (TryComp(ent, out PaperComponent? paper))
         {
-            ent.Comp.ReportBody = paper.Content;
+            ent.Comp.ReportBody = FormattedMessage.EscapeText(paper.Content);
         }
     }
 

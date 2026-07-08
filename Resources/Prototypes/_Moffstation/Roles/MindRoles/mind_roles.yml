@@ -27,18 +27,6 @@
   - type: MindRole
     roleType: SoloAntagonist
 
-# Vampires
-- type: entity
-  parent: BaseMindRoleAntag
-  id: MindRoleVampire
-  name: Vampire Role
-  components:
-  - type: MindRole
-    roleType: SoloAntagonist
-    exclusiveAntag: true
-    antagPrototype: Vampire
-  - type: VampireRole
-
 # Syndicate
 - type: entity
   parent: BaseMindRoleAntag
@@ -51,6 +39,16 @@
     antagPrototype: SyndicateSpy
     subtype: roles-antag-short-syndicate-spy
   - type: SyndicateSpyRole
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSyndieSoldier
+  name: Syndicate Vent Soldier Role
+  components:
+  - type: MindRole
+    roleType: TeamAntagonist
+    antagPrototype: SyndieVentSoldier
+    exclusiveAntag: true
 
 # Wizard Duelists
 - type: entity

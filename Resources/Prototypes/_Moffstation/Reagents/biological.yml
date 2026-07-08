@@ -1,0 +1,19 @@
+- type: reagent
+  id: GrayBlood
+  name: reagent-moff-name-gray-blood
+  group: Biological
+  parent: JuiceBerry
+  desc: reagent-desc-gray-blood
+  physicalDesc: reagent-physical-desc-wobbly
+
+- type: reaction
+  id: GrayBloodBreakdown
+  source: true
+  requiredMixerCategories:
+  - Centrifuge
+  reactants:
+    GrayBlood:
+      amount: 5
+  products:
+    JuiceBerry: 4
+    Aluminium: 1

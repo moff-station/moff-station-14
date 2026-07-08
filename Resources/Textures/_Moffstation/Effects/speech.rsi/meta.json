@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "radio sprites by Nikovnik (Github: nkokic); OOC, emote and whispering sprites made by Nesoryo (Discord); radio/ooc/emote/whisper idle states modified from default states by kotobdev (GitHub)",
+    "copyright": "radio sprites by Nikovnik (Github: nkokic); OOC, emote and whispering sprites made by Nesoryo (Discord); radio/ooc/emote/whisper idle states modified from default states by kotobdev (GitHub), gray0 & gray1 sprited by Davyei (Github) for Moffstation.",
     "states": [
         {
             "name": "emote0",
@@ -74,6 +74,20 @@
                     0.5
                 ]
             ]
+        },
+        {
+            "name": "gray0",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "gray1"
         }
     ]
 }

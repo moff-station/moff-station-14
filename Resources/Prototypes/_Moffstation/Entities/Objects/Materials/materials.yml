@@ -8,13 +8,14 @@
     sprite: _Moffstation/Objects/Materials/hide.rsi
     state: raw
   - type: Butcherable
-    butcheringType: Knife
     spawned:
     - id: MaterialHideSharkminnowTrimmed
       amount: 1
   - type: Item
     heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   parent: MaterialBase
@@ -39,7 +40,7 @@
         density: 1
         mask:
         - ItemMask
-        restitution: 0.3  # fite me
+        restitution: 0.3
         friction: 0.2
   # let air cook and freeze meat for cooking and preservation
   - type: AtmosExposed
@@ -57,6 +58,8 @@
   - type: Item
     heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
+  - type: StaticPrice
+    price: 585
 
 - type: entity
   parent: MaterialBase
@@ -73,6 +76,8 @@
   - type: Item
     heldPrefix: sharkminnowhide
     sprite: _Moffstation/Objects/Materials/hide.rsi
+  - type: StaticPrice
+    price: 1000
 
 - type: entity
   parent: MaterialBase
@@ -89,3 +94,5 @@
   - type: Tag
     tags:
     - SharkminnowLeather
+  - type: StaticPrice
+    price: 2000

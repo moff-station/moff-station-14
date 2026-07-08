@@ -26,6 +26,16 @@
     sprite: _Moffstation/Objects/Fun/figurines.rsi
 
 - type: entity
+  parent: BaseFigurine
+  id: BaseFigurineUpstream
+  name: upstream figurine
+  description: A figurine depicting someone.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Fun/upstreamfigurines.rsi
+
+- type: entity
   parent: BaseFigurineMoff
   id: ToyFigurineAlfredo
   name: sinister atmospherics technician figurine
@@ -473,6 +483,17 @@
     fourRandomProb: 0
     threeRandomProb: 0
     cutRandomProb: 0
+
+- type: entity
+  parent: BaseFigurineMoff
+  id: ToyFigurineIchabod
+  name: pumpkin mime figurine
+  description: A figurine depicting a grinning pumpkin-headed moth mime. It's a bobblehead, but the head has been glued on firmly.
+  components:
+  - type: Sprite
+    state: ichabod
+  - type: SpeakOnTrigger
+    pack: FigurinesMime
 
 - type: entity
   parent: BaseFigurineMoff
@@ -1024,7 +1045,7 @@
   parent: BaseFigurineMoff
   id: ToyFigurineZoey
   name: stressed senior officer figurine
-  description: A figurine depicting a red slime with black spots everyone on its body. The eyes have visible eyebags, but its smile is comforting.
+  description: A figurine depicting a red slime with black spots everywhere on its body. The eyes have visible eyebags, but its smile is comforting.
   components:
   - type: Sprite
     state: zoey

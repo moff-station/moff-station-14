@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: Recycler
   parent: BaseMachinePowered
   name: recycler
@@ -58,6 +58,10 @@
       map: ["enum.RecyclerVisualLayers.Main"]
   - type: Appearance
   - type: RecyclerVisuals
+  - type: DirectionalArrowIndicator
+    arrows:
+    - offset: 0, -1.35
+    - offset: 0, 0
 
   - type: CollideMaterialReclaimer
   - type: MaterialReclaimer
@@ -93,8 +97,9 @@
     fuelCost: 25
   # Moffstation - Start - Preventing parenting into an electronic
   - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
     damageContainer: StructuralInorganic
-    damageModifierSet: Metallic 
   # Moffstation - End
   - type: Destructible
     thresholds:

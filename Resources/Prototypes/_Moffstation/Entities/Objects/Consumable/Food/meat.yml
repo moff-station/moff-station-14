@@ -4,11 +4,29 @@
   name: mystery fried chicken
   description: “Eleven secret herbs and… oh no. That’s not chicken."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Protein
+        Quantity: 5
+
+- type: entity
+  parent: FoodMeatCookedBase
+  id: FoodMeatMilkSteak
+  name: milk steak
+  description: Would go great with a side of raw jellybeans.
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15
+      - ReagentId: Protein
+        Quantity: 5
+      - ReagentId: Milk
+        Quantity: 10
+  - type: Sprite
+    sprite: _Moffstation/Objects/Consumable/Food/milksteak.rsi
+    state: icon

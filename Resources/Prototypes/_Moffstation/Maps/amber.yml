@@ -2,8 +2,8 @@
   id: Amber
   mapName: 'Amber'
   mapPath: /Maps/_Moffstation/amber.yml
-  minPlayers: 15
-  maxPlayers: 60
+  minPlayers: 26 # Low Pop
+  maxPlayers: 60 # Low Pop
   stations:
     Amber:
       stationProto: StandardNanotrasenStation
@@ -16,7 +16,7 @@
       - type: StationEmergencyShuttle
         emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
       - type: StationJobs
-        availableJobs: # 60 jobs total w/o latejoins & interns, 77 jobs total w/ latejoins & interns
+        availableJobs: # 61 jobs total w/o latejoins, 70 jobs total w/ latejoins
           #command (7)
           Captain: [ 1, 1 ]
           HeadOfPersonnel: [ 1, 1 ]
@@ -36,23 +36,20 @@
           Reporter: [ 1, 1 ]
           #engineering (5 - 7)
           AtmosphericTechnician: [ 3, 3 ]
-          StationEngineer: [ 2, 5 ] #CD - Intern not counted
-          # TechnicalAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
+          StationEngineer: [ 2, 4 ]
           #medical (9 - 11)
           Chemist: [ 2, 2 ]
-          MedicalDoctor: [ 4, 7 ] #CD - Intern not counted
+          MedicalDoctor: [ 4, 6 ]
           Paramedic: [ 2, 2 ]
-          # MedicalIntern: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
           Psychologist: [ 1, 1 ]
           #science (4 - 6)
-          Scientist: [ 4, 7 ] #CD - Intern not counted
-          # ResearchAssistant: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
-          #security (8 - 10)
+          Scientist: [ 4, 6 ]
+          #security (9 - 11)
           Warden: [ 1, 1 ]
-          SecurityOfficer: [ 4, 7 ] #CD - Intern not counted
+          SecurityOfficer: [ 4, 6 ]
           Detective: [ 1, 1 ]
-          # SecurityCadet: [ 2, 2 ] #CD - Remove intern roles, rework them into loadouts
           Lawyer: [ 2, 2 ]
+          Prisoner: [ 1, 1 ]
           #supply (6 - 7)
           SalvageSpecialist: [ 3, 3 ]
           CargoTechnician: [ 3, 4 ]
@@ -64,5 +61,3 @@
           #silicon (4)
           StationAi: [ 1, 1 ]
           Borg: [ 3, 3 ]
-          # Moffstation - custom roles below
-          Prisoner: [ 1, 1 ]

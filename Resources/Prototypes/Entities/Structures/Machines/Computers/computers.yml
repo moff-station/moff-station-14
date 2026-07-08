@@ -13,7 +13,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: alert-0
+      state: alert_0 # Moffstation
     - map: ["computerLayerKeys"]
       state: atmos_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -29,11 +29,13 @@
           False: { visible: true, shader: shaded }
       enum.AtmosAlertsComputerVisuals.ComputerLayerScreen:
         computerLayerScreen:
-          0: { state: alert-0 }
-          1: { state: alert-0 }
-          2: { state: alert-1 }
-          3: { state: alert-2 }
-          4: { state: alert-2 }
+          # Moffstation - Start - Computer resprite
+          0: { state: alert_0 }
+          1: { state: alert_0 }
+          2: { state: alert_1 }
+          3: { state: alert_2 }
+          4: { state: alert_2 }
+          # Moffstation - End
       enum.WiresVisuals.MaintenancePanelState:
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: false }
@@ -52,6 +54,7 @@
     guides:
     - AtmosphericAlertsComputer
     - DeviceMonitoringAndControl
+  - type: AmbientMusicMarkerEngineering
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -66,7 +69,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: atmos_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: tank
     - map: ["computerLayerKeys"]
@@ -114,7 +117,7 @@
     color: "#43ccb5"
 
 - type: entity
-  parent: BaseComputer
+  parent: BaseComputerAiAccess # Moffstation - Expanded Ai whitelist
   id: BaseComputerShuttle
   name: shuttle console
   description: Used to pilot a shuttle.
@@ -184,9 +187,9 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      state: computer
+      state: syndicate_computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: syndie_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: syndishuttle
     - map: ["computerLayerKeys"]
@@ -251,7 +254,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      sprite: Structures/Shuttles/iff.rsi
+      #sprite: Structures/Shuttles/iff.rsi # Moffstation
       state: helm
     - map: ["computerLayerKeys"]
       state: generic_keys
@@ -275,6 +278,19 @@
   suffix: Syndicate
   description: Allows you to control the IFF and stealth characteristics of this vessel.
   components:
+  # Moffstation - Start
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: syndicate_computer
+    - map: [ "computerLayerKeyboard" ]
+      state: syndie_key_off
+    - map: [ "computerLayerScreen" ]
+      state: helm
+    - map: [ "computerLayerKeys" ]
+      state: syndie_generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  # Moffstation - End
   - type: IFFConsole
     allowedFlags:
       - Hide
@@ -302,7 +318,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: power_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: power_monitor
     - map: ["computerLayerKeys"]
@@ -332,6 +348,7 @@
         type: PowerMonitoringConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  - type: AmbientMusicMarkerEngineering
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -344,7 +361,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: med_key_off
     - map: ["computerLayerScreen"]
       state: medcomp
     - map: ["computerLayerKeys"]
@@ -357,6 +374,7 @@
     color: "#1f8c28"
   - type: Computer
     board: MedicalRecordsComputerCircuitboard
+  - type: AmbientMusicMarkerMedical
   # Moffstation - Begin - CD Records
   - type: CharacterRecordConsole
     consoleType: Medical
@@ -396,7 +414,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: security_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: explosive
     - map: ["computerLayerKeys"]
@@ -465,7 +483,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: med_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: crew
     - map: ["computerLayerKeys"]
@@ -492,6 +510,7 @@
     receiveFrequencyId: CrewMonitor
   - type: WirelessNetworkConnection
     range: 1200
+  - type: AmbientMusicMarkerMedical
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -504,7 +523,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: rd_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: rdcomp
     - map: ["computerLayerKeys"]
@@ -555,7 +574,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: tech_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: artifact
     - map: ["computerLayerKeys"]
@@ -639,7 +658,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: id_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: id
     - map: ["computerLayerKeys"]
@@ -671,6 +690,7 @@
     radius: 1.5
     energy: 4.0
     color: "#1f8c28"
+  - type: AmbientMusicMarkerMedical
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -712,8 +732,9 @@
     energy: 4.0
     color: "#3c5eb5"
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
 
 - type: entity
   parent: ComputerComms
@@ -724,9 +745,9 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      state: computer
+      state: syndicate_computer # Moffstation
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: syndie_key_off
     - map: ["computerLayerScreen"]
       state: comm_syndie
     - map: ["computerLayerKeys"]
@@ -864,11 +885,11 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: power_key_off # Moffstation
     - map: ["computerLayerScreen"]
-      state: solar_screen
+      state: eris_control # Moffstation
     - map: ["computerLayerKeys"]
-      state: generic_keys
+      state: power_key # Moffstation
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: RadarConsole
@@ -953,7 +974,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: request-eng
+      state: request_eng # Moffstation
     - map: ["computerLayerKeys"]
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -972,6 +993,7 @@
     color: "#c9c042"
   - type: AccessReader
     access: [["Engineering"]]
+  - type: AmbientMusicMarkerEngineering
 
 - type: entity
   id: ComputerCargoOrdersMedical
@@ -986,7 +1008,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: request-med
+      state: request_med # Moffstation
     - map: ["computerLayerKeys"]
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -1005,6 +1027,7 @@
     color: "#41e0fc"
   - type: AccessReader
     access: [["Medical"]]
+  - type: AmbientMusicMarkerMedical
 
 - type: entity
   id: ComputerCargoOrdersScience
@@ -1019,7 +1042,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: request-sci
+      state: request_sci # Moffstation
     - map: ["computerLayerKeys"]
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -1052,7 +1075,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: request-sec
+      state: request_sec # Moffstation
     - map: ["computerLayerKeys"]
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -1085,7 +1108,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: request-srv
+      state: request_srv # Moffstation
     - map: ["computerLayerKeys"]
       state: generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -1116,7 +1139,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: tech_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: bounty
     - map: ["computerLayerKeys"]
@@ -1227,8 +1250,9 @@
     speechVerb: Robotic
     speechSounds: Pai
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: GuideHelp
     guides:
     - Cloning
@@ -1280,7 +1304,7 @@
         - map: ["computerLayerBody"]
           state: computer
         - map: ["computerLayerKeyboard"]
-          state: generic_keyboard
+          state: tech_key_off # Moffstation
         - map: [ "computerLayerScreen" ]
           state: mining
         - map: ["computerLayerKeys"]
@@ -1333,7 +1357,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: tech_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: cameras
     - map: ["computerLayerKeys"]
@@ -1376,11 +1400,11 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: telesci_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: cameras
     - map: ["computerLayerKeys"]
-      state: tech_key
+      state: telesci_key # Moffstation
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: Computer
@@ -1412,6 +1436,20 @@
   name: xenoborg camera monitor
   description: A wireless xenoborg camera monitor. You're watching them. Maybe.
   components:
+  # Moffstation - Start
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer_xeno
+    - map: [ "computerLayerKeyboard" ]
+      state: telesci_key_off
+    - map: [ "computerLayerScreen" ]
+      state: cameras
+    - map: [ "computerLayerKeys" ]
+      state: telesci_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  # Moffstation - End
   - type: Computer
     board: XenoborgCameraMonitorCircuitboard
   - type: DeviceNetwork
@@ -1474,7 +1512,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: service
+      state: entertainment # Moffstation
     - map: ["computerLayerKeys"]
       state: service_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -1512,7 +1550,7 @@
         - map: ["computerLayerBody"]
           state: computer
         - map: ["computerLayerKeyboard"]
-          state: generic_keyboard
+          state: atmos_key_off # Moffstation
         - map: ["computerLayerScreen"]
           state: sensors
         - map: ["computerLayerKeys"]
@@ -1556,7 +1594,7 @@
     - map: ["computerLayerBody"]
       state: computer
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: rd_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: robot
     - map: ["computerLayerKeys"]
@@ -1602,13 +1640,13 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      state: computer
+      state: computer_xeno # Moffstation
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: telesci_key_off # Moffstation
     - map: ["computerLayerScreen"]
       state: xenorobot
     - map: ["computerLayerKeys"]
-      state: rd_key
+      state: telesci_key # Moffstation
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: ActivatableUI
@@ -1699,9 +1737,9 @@
     - map: [ "computerLayerBody" ]
       state: computer
     - map: [ "computerLayerKeyboard" ]
-      state: generic_keyboard
+      state: rd_key_off # Moffstation
     - map: [ "computerLayerScreen" ]
-      state: ai-fixer-empty
+      state: ai_fixer_empty
     - map: [ "computerLayerKeys" ]
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
@@ -1718,22 +1756,24 @@
           False: { visible: true, shader: shaded }
       enum.StationAiFixerConsoleVisuals.Key:
         computerLayerScreen:
-          Repair0: { state: ai-fixer-progress-0 }
-          Repair1: { state: ai-fixer-progress-1 }
-          Repair2: { state: ai-fixer-progress-2 }
-          Repair3: { state: ai-fixer-progress-3 }
-          Purge0: { state: ai-fixer-purge-0 }
-          Purge1: { state: ai-fixer-purge-1 }
-          Purge2: { state: ai-fixer-purge-2 }
-          Purge3: { state: ai-fixer-purge-3 }
-          LawReset0: { state: ai-fixer-progress-0 }
-          LawReset1: { state: ai-fixer-progress-1 }
-          LawReset2: { state: ai-fixer-progress-2 }
-          LawReset3: { state: ai-fixer-progress-3 }
-          Empty: { state: ai-fixer-empty }
-          Occupied: { state: ai-fixer-full }
-          Rebooting: { state: ai-fixer-404 }
-          Dead: { state: ai-fixer-404 }
+          # Moffstation - Start
+          Repair0: { state: ai_fixer_progress_0 }
+          Repair1: { state: ai_fixer_progress_1 }
+          Repair2: { state: ai_fixer_progress_2 }
+          Repair3: { state: ai_fixer_progress_3 }
+          Purge0: { state: ai_fixer_purge_0 }
+          Purge1: { state: ai_fixer_purge_1 }
+          Purge2: { state: ai_fixer_purge_2 }
+          Purge3: { state: ai_fixer_purge_3 }
+          LawReset0: { state: ai_fixer_progress_0 }
+          LawReset1: { state: ai_fixer_progress_1 }
+          LawReset2: { state: ai_fixer_progress_2 }
+          LawReset3: { state: ai_fixer_progress_3 }
+          Empty: { state: ai_fixer_empty }
+          Occupied: { state: ai_fixer_full }
+          Rebooting: { state: ai_fixer_404 }
+          Dead: { state: ai_fixer_404 }
+          # Moffstation - End
       enum.WiresVisuals.MaintenancePanelState:
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: false }
@@ -1786,11 +1826,11 @@
   - type: Sprite
     layers:
     - map: ["computerLayerBody"]
-      state: computer
+      state: syndicate_computer # Moffstation
     - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
+      state: syndie_key_off # Moffstation
     - map: ["computerLayerScreen"]
-      state: request-syndie
+      state: request_syndie # Moffstation
     - map: ["computerLayerKeys"]
       state: syndie_generic_keys
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]

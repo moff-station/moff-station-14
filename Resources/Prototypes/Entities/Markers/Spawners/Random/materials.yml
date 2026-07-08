@@ -8,7 +8,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/metal.rsi
+        - sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi # Moffstation
           state: steel_3
     - type: EntityTableSpawner
       table: !type:NestedSelector
@@ -42,7 +42,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/metal.rsi
+        - sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi # Moffstation
           state: plasteel_2
     - type: EntityTableSpawner
       table: !type:NestedSelector
@@ -57,7 +57,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/other.rsi
+        - sprite: _Moffstation/Objects/Materials/Sheets/other.rsi # Moffstation
           state: plasma_2
     - type: EntityTableSpawner
       table: !type:NestedSelector
@@ -75,7 +75,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/metal.rsi
+        - sprite: _Moffstation/Objects/Materials/Sheets/metal.rsi # Moffstation
           state: steel_3
     - type: EntityTableSpawner
       table: !type:NestedSelector

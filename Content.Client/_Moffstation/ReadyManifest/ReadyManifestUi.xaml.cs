@@ -14,8 +14,8 @@ namespace Content.Client._Moffstation.ReadyManifest;
 [GenerateTypedNameReferences]
 public sealed partial class ReadyManifestUi : DefaultWindow
 {
-    [Dependency] private readonly IEntitySystemManager _entitySystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntitySystemManager _entitySystem = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
     private readonly SpriteSystem _spriteSystem;
 
     public ReadyManifestUi()

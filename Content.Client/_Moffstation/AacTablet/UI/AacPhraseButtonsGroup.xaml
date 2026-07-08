@@ -1,0 +1,8 @@
+﻿<controls:BoxContainer xmlns:controls="https://spacestation14.io"
+                       Orientation="Vertical"
+                       HorizontalExpand="True">
+    <controls:Label Margin="4" Name="Label" />
+    <controls:GridContainer Margin="10" Columns="4" Name="ButtonGrid">
+        <!-- Buttons added programmatically -->
+    </controls:GridContainer>
+</controls:BoxContainer>

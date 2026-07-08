@@ -9,10 +9,27 @@
       tags: # ignore "WhitelistChameleon" tag
       - ClothMade
       - Recyclable
+  # Moffstation -Start
     - type: Sprite
-      sprite: Clothing/Hands/Gloves/Color/black.rsi
+      sprite: &color_rsi "_Moffstation/Clothing/Hands/Color/color.rsi"
+      layers:
+      - state: icon
+        color: "#3f3f3f"
+    - type: Item
+      inhandVisuals:
+        left:
+        - state: inhand-left
+          color: "#3f3f3f"
+        right:
+        - state: inhand-right
+          color: "#3f3f3f"
     - type: Clothing
-      sprite: Clothing/Hands/Gloves/Color/black.rsi
+      sprite: *color_rsi
+      clothingVisuals:
+        gloves:
+        - state: equipped-HAND
+          color: "#3f3f3f"
+# Moffstation - End
     - type: ChameleonClothing
       slot: [gloves]
       default: ClothingHandsGlovesColorBlack

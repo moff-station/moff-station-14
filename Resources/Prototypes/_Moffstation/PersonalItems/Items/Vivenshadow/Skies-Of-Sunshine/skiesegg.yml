@@ -12,13 +12,6 @@
   - type: Item
     size: Normal
     sprite: _Moffstation/PersonalItems/Items/Vivenshadow/Skies-of-Sunshine/skiesegg.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 48 # 8x normal egg volume because 2^3 times the size
-        reagents:
-        - ReagentId: Egg
-          Quantity: 48 # 8x normal egg volume because 2^3 times the size
   - type: RandomSprite # Overwrite base egg's "white or brown" random sprites with just one "random" sprite.
     available:
     - enum.DamageStateVisualLayers.Base:

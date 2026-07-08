@@ -14,9 +14,9 @@ using Robust.Shared.Prototypes;
 namespace Content.Client.Chemistry.EntitySystems;
 
 /// <inheritdoc/>
-public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
+public sealed partial class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
 {
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
 
     private static readonly ProtoId<MixingCategoryPrototype> DefaultMixingCategory = "DummyMix";
     private static readonly ProtoId<MixingCategoryPrototype> DefaultGrindCategory = "DummyGrind";
@@ -68,7 +68,23 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                 reaction);
             foreach (var product in reaction.Products.Keys)
             {
-                _reagentSources[product].Add(data);
+                // Moffstation - Begin - Scaffolding for helping diagnose reagent issues.
+                if (_reagentSources.TryGetValue(product, out var productSourceData))
+                {
+                    productSourceData.Add(data);
+                }
+                else
+                {
+                    // If you have malformed reagent YAML, this throw will kill the linter before it tells you why the
+                    // YAML is malformed. Temporarily comment out this throw statement to allow the linter to emit its
+                    // complaints.
+                    throw new KeyNotFoundException(
+                        $"Failed to load prototype for reagent \"{product}\" referenced by reaction \"{reaction.ID}\". " +
+                        $"This is usually the result of malformed YAML. See the comment in the C# source where this " +
+                        $"is thrown from, or ask in Moffstation's #contributing channel for help!"
+                    );
+                }
+                // Moffstation - End
             }
         }
 
@@ -117,8 +133,7 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
 
 
             if (extractableComponent.GrindableSolutionName is { } grindableSolutionId &&
-                entProto.TryGetComponent<SolutionContainerManagerComponent>(out var manager, EntityManager.ComponentFactory) &&
-                _solutionContainer.TryGetSolution(manager, grindableSolutionId, out var grindableSolution))
+                _solutionContainer.TryGetSolution(entProto, grindableSolutionId, out var grindableSolution))
             {
                 var data = new ReagentEntitySourceData(
                     new() { DefaultGrindCategory },

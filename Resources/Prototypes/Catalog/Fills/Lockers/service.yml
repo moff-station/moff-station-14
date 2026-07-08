@@ -15,7 +15,11 @@
     - id: ClothingOuterArmorBasicSlim
     - id: WeaponShotgunDoubleBarreledRubber
     - id: DrinkShaker
-    - id: ClothingEyesHudBeer
+    # Moffstation - Start - Modular Eyewear
+    # - id: ClothingEyesHudBeer
+    - id: HudModuleShowThirstIcons
+    - id: HudModuleSolutionScanner
+    # Moffstation - End
     - id: HandLabeler
     - id: DrinkBeerBottleFull
       amount: !type:BinomialNumberSelector
@@ -92,6 +96,7 @@
     - id: LightReplacer
     - id: BoxLightMixed
     - id: Holoprojector
+    - id: WireBrush
     - !type:AllSelector
       rolls: 2
       children:
@@ -101,7 +106,6 @@
       - id: SoapNT
       - id: FlashlightLantern
       - id: Plunger
-      - id: WireBrush
     - id: PlushieLizardJobJanitor
       prob: 0.02
 
@@ -144,7 +148,7 @@
     - id: ClothingHeadBandBotany
     - id: ChemistryBottleRobustHarvest
       prob: 0.3
-    - id: ClothingBeltPlant
+    - id: ClothingBeltPlantFilled
     - id: PlantBag ##Some maps don't have nutrivend
     - id: BoxMouthSwab
     - id: Dropper

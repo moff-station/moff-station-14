@@ -1,0 +1,26 @@
+- type: quickPhrase
+  parent: BaseThreatPhrase
+  abstract: true
+  id: BaseSafetyStatusPhrase
+  group: phrase-group-status
+
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetySafePhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyInDangerPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyInjuredPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyDyingPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyCriticalPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyBleedingPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyDeadPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyAlivePhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyTrustworthyPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyEscapePhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyLeavingPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyNeedPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyRescuePhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyDangerousPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyHazardousPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyHereToHelpPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyHowToHelpPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyEvacPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyNotPhrase }
+- { type: quickPhrase, parent: BaseSafetyStatusPhrase, id: SafetyLostPhrase }

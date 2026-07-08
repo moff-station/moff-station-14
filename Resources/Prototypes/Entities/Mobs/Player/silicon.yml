@@ -35,6 +35,7 @@
     actions:
     - ActionJumpToCore
     - ActionAIViewLaws
+    - ActionToggleAiShellControllerUi # Moffstation - Ai Shells
   - type: UserInterface
     interfaces:
       enum.RadarConsoleUiKey.Key:
@@ -47,6 +48,10 @@
         type: SiliconLawBoundUserInterface
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      # Moffstation - Begin - Ai Shells
+      enum.ShellUiKey.Key:
+        type: AiShellControllerBoundUserInterface
+      # Moffstation - Ai Shells- End
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -202,6 +207,7 @@
     container: station_ai_mind_slot
   - type: Damageable
     damageModifierSet: StrongMetallic
+  - type: Injurable
   - type: Repairable
     doAfterDelay: 10
     allowSelfRepair: false
@@ -386,6 +392,7 @@
         density: 200
   - type: Damageable
     damageModifierSet: StrongMetallic
+  - type: Injurable
   - type: Destructible
     thresholds:
     - trigger:
@@ -429,11 +436,16 @@
   - type: ActionGrant
     actions:
     - ActionViewLaws
+    - ActionToggleAiShellControllerUi # Moffstation - Ai Shells
   - type: UserInterface
     interfaces:
       enum.SiliconLawsUiKey.Key:
         type: SiliconLawBoundUserInterface
         requireInputValidation: false
+      # Moffstation - Begin - Ai Shells
+      enum.ShellUiKey.Key:
+        type: AiShellControllerBoundUserInterface
+      # Moffstation - End
   - type: ComplexInteraction
   - type: Actions
   - type: Access
@@ -456,6 +468,7 @@
     - HideContextMenu
     - StationAi
     - NoConsoleSound
+    - CanPilot # Moffstation - Expanded Ai Whitelist
   - type: StartingMindRole
     mindRole: "MindRoleSiliconBrain"
     silent: true
@@ -476,6 +489,16 @@
     mindRoles:
     - MindRoleGhostRoleSilicon
     job: StationAi
+  # Moffstation - Begin - Ai Shells
+  - type: AiShellController
+  - type: ActionsContainer
+  - type: ContainerContainer
+    containers:
+      actions: !type:Container
+        showEnts: False
+        occludes: True
+        ents: []
+  # Moffstation - End
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -665,6 +688,7 @@
       - BorgModuleConstruction
       - BorgModuleRCD
       - BorgModuleCable
+      - BorgModuleGravity # Moffstation - Magboots module
   - type: ItemSlots
     slots:
       cell_slot:
@@ -816,6 +840,7 @@
       - BorgModuleMining
       - BorgModuleTraversal
       - BorgModuleAppraisal
+      - BorgModuleGravity # Moffstation - Magboots module
   - type: ItemSlots
     slots:
       cell_slot:

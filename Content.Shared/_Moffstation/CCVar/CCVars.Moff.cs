@@ -1,3 +1,5 @@
+using Content.Shared.Administration;
+using Content.Shared.CCVar.CVarAccess;
 using Robust.Shared.Configuration;
 
 namespace Content.Shared._Moffstation.CCVar;
@@ -58,4 +60,74 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<int> MapVoteCount =
         CVarDef.Create("votekick.map_vote_count", 3, CVar.SERVERONLY);
+
+    /// <summary>
+    /// if true, the player count check for rules will be based on the number of players readied, versus the total number in the lobby.
+    /// </summary>
+    public static readonly CVarDef<bool>
+        GameRulesCountReadied = CVarDef.Create("game.rules_count_readied", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Whether players should spawn at arrivals at the start of the round
+    /// </summary>
+    public static readonly CVarDef<bool> StartAtArrivals =
+        CVarDef.Create("shuttle.start_at_arrivals", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     If players start the round at arrivals, how long should it be until latejoins can enter from station cryosleep?
+    /// </summary>
+    public static readonly CVarDef<int> SpawnPreferenceDelay =
+        CVarDef.Create("shuttle.spawn_preference_delay", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     The maximum range people are allowed to travel from the center of the arrivals map
+    /// </summary>
+    public static readonly CVarDef<float> ArrivalsRange =
+        CVarDef.Create("shuttle.arrivals_range", 50f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether to show or not show Moffstation Patreons special ooc color
+    /// </summary>
+    [CVarControl(AdminFlags.Server)]
+    public static readonly CVarDef<bool> OocMoffPatronColorEnabled =
+        CVarDef.Create("moff.ooc_moff_patron_color_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// What color Moffstation Patreons get in the OOC chat using Hex code
+    /// </summary>
+    [CVarControl(AdminFlags.Server)]
+    public static readonly CVarDef<string> OocMoffPatronColor =
+        CVarDef.Create("moff.ooc_moff_patron_color", "#aa00ff", CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether to show or not show Space Station 14 Patreons special ooc color
+    /// </summary>
+    [CVarControl(AdminFlags.Server)]
+    public static readonly CVarDef<bool> OocUpstreamPatronColorEnabled =
+        CVarDef.Create("moff.ooc_upstream_patron_color_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether a discord event should be created and managed as long as the round timer is unpaused
+    /// false by default so the code doesnt try to run on localhost
+    /// </summary>
+    public static readonly CVarDef<bool> DiscordRoundEventEnabled =
+        CVarDef.Create("moff.discord_round_event_enabled", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// The title of the discord event
+    /// </summary>
+    public static readonly CVarDef<string> DiscordRoundEventName =
+        CVarDef.Create("moff.discord_round_event_name", "Moffstation!", CVar.SERVERONLY);
+
+    /// <summary>
+    /// The description of the discord event (visible when clicked on)
+    /// </summary>
+    public static readonly CVarDef<string> DiscordRoundEventDescription =
+        CVarDef.Create("moff.discord_round_event_description", "Moff is up!\nFair warning: the end time is not accurate.", CVar.SERVERONLY);
+
+    /// <summary>
+    /// The location of the discord event (visible under the title)
+    /// </summary>
+    public static readonly CVarDef<string> DiscordRoundEventLocation =
+        CVarDef.Create("moff.discord_round_event_location", string.Empty, CVar.SERVERONLY);
 }

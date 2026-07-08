@@ -1,3 +1,7 @@
+// DeltaV - Traits rework
+// This file has been completely rewritten and moved under DV namespace
+// Accept any upstream changes
+/*
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -9,11 +13,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Traits;
 
-public sealed class TraitSystem : EntitySystem
+public sealed partial class TraitSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedHandsSystem _sharedHandsSystem = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
 
     public override void Initialize()
     {
@@ -91,4 +95,5 @@ public sealed class TraitSystem : EntitySystem
 // Moffstation - Begin - Allow application of traits by other systems
 [ByRefEvent]
 public readonly record struct TraitsAppliedEvent(HumanoidCharacterProfile Profile);
-// Moffstation - Ent
+// Moffstation - End
+*/

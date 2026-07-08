@@ -6,9 +6,8 @@
   id: BaseDecoy
   abstract: true
   components:
-  - type: Rotatable
   - type: Sprite
-    sprite: Objects/Tools/Decoys/operative_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/operative_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: oballoon
       map: ["unfoldedLayer"]
@@ -21,11 +20,11 @@
         !type:DamageTrigger
         damage: 100
       behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/pop_high.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/pop_high.ogg
   - type: Appearance
   - type: Item
     size: Normal
@@ -35,6 +34,7 @@
     - NamesSyndicateNormal
     nameFormat: name-format-nukie-generic
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: ToggleableVisuals
     spriteLayer: light
@@ -72,7 +72,7 @@
   description: Upon closer inspection, this Syndicate operative is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/operative_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/operative_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: oballoon
       map: ["unfoldedLayer"]
@@ -87,7 +87,7 @@
   description: Upon closer inspection, this Syndicate corpsman is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/agent_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/agent_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: aballoon
       map: ["unfoldedLayer"]
@@ -102,7 +102,7 @@
   description: Upon closer inspection, this Syndicate elite operative is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/elite_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/elite_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: eballoon
       map: ["unfoldedLayer"]
@@ -119,7 +119,7 @@
   description: Upon closer inspection, this Syndicate juggernaut is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/juggernaut_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/juggernaut_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: jballoon
       map: ["unfoldedLayer"]
@@ -134,7 +134,7 @@
   description: Upon closer inspection, this Syndicate commander is actually a balloon.
   components:
   - type: Sprite
-    sprite: Objects/Tools/Decoys/commander_decoy.rsi
+    sprite: _Moffstation/Objects/Tools/Decoys/commander_decoy.rsi # Moffstation - Uncabinetification
     layers:
     - state: cballoon
       map: ["unfoldedLayer"]

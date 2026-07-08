@@ -83,7 +83,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         Color.Black
     };
 
-    public static HumanoidCharacterAppearance Random(string species, Sex sex)
+    public static HumanoidCharacterAppearance Random(string species, Sex sex, bool randomizeMarkings = true) // Moffstation - Added randomized markings
     {
         var random = IoCManager.Resolve<IRobustRandom>();
         var markingManager = IoCManager.Resolve<MarkingManager>();
@@ -103,7 +103,58 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
             _ => strategy.ClosestSkinColor(new Color(random.NextFloat(1), random.NextFloat(1), random.NextFloat(1), 1)),
         };
 
-        return new HumanoidCharacterAppearance(newEyeColor, newSkinColor, new());
+        // Moffstation - Start - Random markings
+        var markings = new Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>>();
+        if (!randomizeMarkings)
+        {
+            return EnsureValid(
+                new HumanoidCharacterAppearance(newEyeColor, newSkinColor, markings),
+                species,
+                sex);
+        }
+
+        foreach (var (organ, organData) in markingManager.GetMarkingData(species))
+        {
+            if (!protoMan.Resolve(organData.Group, out var groupProto))
+                continue;
+            var organMarkings = new Dictionary<HumanoidVisualLayers, List<Marking>>();
+
+            foreach (var layer in organData.Layers)
+            {
+                var available = markingManager.MarkingsByLayerAndGroupAndSex(layer, organData.Group, sex).Values.ToList();
+
+                // layer is not applied
+                if (available.Count == 0 ||
+                    !groupProto.Limits.TryGetValue(layer, out var layerLimit) || layerLimit.Limit == 0 ||
+                    !random.Prob(layerLimit.RandomChance))
+                    continue;
+
+                // amount of markings to be applied
+                var count = random.Next(0, layerLimit.Limit + 1);
+                if (count == 0)
+                    continue;
+
+                random.Shuffle(available);
+
+                var picked = new List<Marking>();
+                foreach (var markingProto in available.Take(count))
+                {
+                    var colors = MarkingColoring.GetMarkingLayerColors(markingProto, newSkinColor, newEyeColor, picked);
+                    picked.Add(new Marking(markingProto.ID, colors));
+                }
+
+                organMarkings[layer] = picked;
+            }
+
+            if (organMarkings.Count > 0)
+                markings[organ] = organMarkings;
+        }
+
+        return EnsureValid(
+            new HumanoidCharacterAppearance(newEyeColor, newSkinColor, markings),
+            species,
+            sex);
+        // Moffstation - End
     }
 
     public static Color ClampColor(Color color)

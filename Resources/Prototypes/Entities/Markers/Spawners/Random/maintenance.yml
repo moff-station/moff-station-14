@@ -168,7 +168,11 @@
       - id: WristwatchGold
       - id: RubberStampGreytide
       - id: MysteryLighterBox
-      - id: CrayonInfinite  # Moffstation - infinite crayon in maints loot
+      # Moffstation - Start - custom maints loot
+      - id: CrayonInfinite
+      - !type:NestedSelector
+        tableId: CorpseFill
+      # Moffstation - End
 
 - type: entity
   name: Maint Loot Spawner
@@ -299,7 +303,7 @@
       - id: SpectralLocator
       - id: LidSalami
         weight: 0.05
-      - id: FigurineCase # Mirasector - Figurine case to maints.
+      - id: BriefcaseFigurine # Mirasector - Figurine case to maints.
 
 - type: entity
   name: Maint Loot Spawner

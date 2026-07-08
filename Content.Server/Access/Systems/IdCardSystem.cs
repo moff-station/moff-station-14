@@ -13,17 +13,19 @@ using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server.Kitchen.EntitySystems;
+using Content.Server.Radio.EntitySystems; //Moffstation - For Radio Expire ID Message from Harmony
 
 namespace Content.Server.Access.Systems;
 
-public sealed class IdCardSystem : SharedIdCardSystem
+public sealed partial class IdCardSystem : SharedIdCardSystem
 {
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly MicrowaveSystem _microwave = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private MicrowaveSystem _microwave = default!;
+    [Dependency] private RadioSystem _radio = default!; //Moffstation - For Radio Expire ID Message from Harmony
 
     public override void Initialize()
     {
@@ -114,5 +116,13 @@ public sealed class IdCardSystem : SharedIdCardSystem
                 ChatTransmitRange.Normal,
                 true);
         }
+        // Moffstation - Begin - Genpop ID radio for expiry announcement
+        if (ent.Comp.ExpireRadioMessage is {} msg)
+        {
+            var name = CompOrNull<IdCardComponent>(ent)?.FullName ?? "";
+            var message = Loc.GetString(msg.Message, ("name", name));
+            _radio.SendRadioMessage(ent.Owner, message, msg.Channel, ent.Owner);
+        }
+        // Moffstation - End
     }
 }

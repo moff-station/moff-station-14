@@ -1,0 +1,130 @@
+﻿- type: entity
+  parent: BaseStorageItem
+  id: MedkitBase
+  description: It's an emergency medical kit for those serious boo-boos.
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      state: icon
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: icon-open }
+          False: { state: icon }
+  - type: Appearance
+  - type: Item
+    size: Large
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,3,1
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 150
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+  - type: Tag
+    tags:
+    - Medkit
+
+- type: entity
+  parent: MedkitBase
+  id: Medkit
+  name: first aid kit
+  description: It's an emergency medical kit for those serious boo-boos.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/firstaid.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/firstaid.rsi
+
+- type: entity
+  parent: MedkitBase
+  id: MedkitBurn
+  name: burn treatment kit
+  description: "A specialized medical kit for when the toxins lab spontaneously burns down."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/burn.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/burn.rsi
+
+- type: entity
+  parent: MedkitBase
+  id: MedkitToxin
+  name: toxin treatment kit
+  description: "Used to treat toxic blood content."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/toxin.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/toxin.rsi
+
+- type: entity
+  parent: MedkitBase
+  id: MedkitO2
+  name: oxygen deprivation treatment kit
+  description: "A box full of oxygen goodies."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/oxygen.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/oxygen.rsi
+
+- type: entity
+  parent: MedkitBase
+  id: MedkitBrute
+  name: brute trauma treatment kit
+  description: "A first aid kit for when you get toolboxed."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/brute.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/brute.rsi
+
+- type: entity
+  parent: MedkitBase
+  id: MedkitAdvanced
+  name: advanced first aid kit
+  description: "An advanced kit to help deal with advanced wounds."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/advanced.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/advanced.rsi
+
+- type: entity
+  parent: MedkitBase
+  id: MedkitRadiation
+  name: radiation treatment kit
+  description: "If you took your Rad-X you wouldn't need this."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/radiation.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/radiation.rsi
+
+- type: entity
+  parent: MedkitBase
+  id: MedkitCombat
+  name: combat medical kit
+  description: "For the big weapons among us."
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Objects/Specific/Medical/combat.rsi
+    state: icon
+  - type: Item
+    sprite: _Moffstation/Objects/Specific/Medical/combat.rsi
+    size: Normal

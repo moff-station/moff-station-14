@@ -12,12 +12,13 @@ namespace Content.Shared.Objectives.Systems;
 /// This system stores enumerators to find valid Targets, typically searching for minds.
 /// Typically used in conjunction with a <see cref="GameRuleSystem{T}"/> or an Objective.
 /// </summary>
-public sealed class TargetSystem : EntitySystem
+public sealed partial class TargetSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private HashSet<Entity<MindComponent>> _pickingMinds = new();
 

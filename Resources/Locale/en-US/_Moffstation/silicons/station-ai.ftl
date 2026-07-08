@@ -28,6 +28,7 @@ station-ai-icon-triumvirate = Triumvirate
 station-ai-icon-u = U
 station-ai-icon-wasp = Wasp
 station-ai-icon-darling = Darling
+station-ai-icon-aol = Dancer
 
 station-ai-hologram-angel = Angel form
 station-ai-hologram-arachnid = Arachnid form
@@ -41,3 +42,11 @@ station-ai-hologram-reptilian = Reptilian form
 station-ai-hologram-resomi = Resomi form
 station-ai-hologram-vox = Vox form
 station-ai-hologram-vulpkanin = Vulpkanin form
+
+# AI shells
+ai-shell-verb-text-link = Link to
+
+ai-shell-brain-empty = empty shell
+ai-shell-brain-uncontrolled = empty shell
+
+ai-shell-guideentry = AI Shells

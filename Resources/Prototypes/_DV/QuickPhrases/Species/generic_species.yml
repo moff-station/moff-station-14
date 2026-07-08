@@ -1,0 +1,16 @@
+- type: quickPhrase
+  parent: BaseSpeciesPhrase
+  abstract: true
+  id: BaseGenericSpeciesPhrase
+  group: phrase-group-generic
+
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesPersonPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesAnimalPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesCorpsePhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesRobotPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesAlienPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesMonsterPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesGhostPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesPestPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesInsectPhrase }
+- { type: quickPhrase, parent: BaseGenericSpeciesPhrase, id: SpeciesPetPhrase }

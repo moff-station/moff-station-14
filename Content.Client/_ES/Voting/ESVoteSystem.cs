@@ -7,10 +7,10 @@
 // namespace Content.Client._ES.Voting;
 //
 // /// <inheritdoc/>
-// public sealed class ESVoteSystem : ESSharedVoteSystem
+// public sealed partial class ESVoteSystem : ESSharedVoteSystem
 // {
-//     [Dependency] private readonly IGameTiming _timing = default!;
-//     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+//     [Dependency] private IGameTiming _timing = default!;
+//     [Dependency] private UserInterfaceSystem _userInterface = default!;
 //
 //     /// <inheritdoc/>
 //     public override void Initialize()

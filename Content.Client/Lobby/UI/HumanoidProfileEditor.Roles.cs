@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
+using Content.Shared.Antag;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
@@ -300,6 +301,31 @@ public sealed partial class HumanoidProfileEditor
         UpdateJobPriorities();
     }
 
+    // Moffstation - Start - Antag loadout button
+    private void OnAntagLoadoutPressed(ProtoId<AntagPrototype> antagId)
+    {
+        var jobProtoId = LoadoutSystem.GetJobPrototype(antagId);
+        if (!_prototypeManager.TryIndex<RoleLoadoutPrototype>(jobProtoId, out var roleLoadoutProto))
+            return;
+
+        var loadout = new RoleLoadout();
+        Profile?.Loadouts.TryGetValue(jobProtoId, out loadout);
+
+        // Clone so we dont modify the underlying loadout
+        loadout = loadout?.Clone();
+
+        if (loadout == null)
+        {
+            loadout = new RoleLoadout(roleLoadoutProto.ID);
+            loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+        }
+
+        OpenLoadout(null, loadout, roleLoadoutProto);
+    }
+    // Moffstation - End
+
+    // Moffstation - Start - New antagonist tab replaces this
+    /*
     public void RefreshAntags()
     {
         AntagList.RemoveAllChildren();
@@ -352,7 +378,6 @@ public sealed partial class HumanoidProfileEditor
 
             antagContainer.AddChild(selector);
 
-            // Moffstation - Begin - Enable loadouts for antags
             var loadoutWindowBtn = new Button()
             {
                 // Disabled = true,
@@ -389,9 +414,8 @@ public sealed partial class HumanoidProfileEditor
                     OpenLoadout(null, loadout, roleLoadoutProto);
                 };
             }
-            // Moffstation - End
-
             AntagList.AddChild(antagContainer);
         }
     }
+    */ // Moffstation - End
 }

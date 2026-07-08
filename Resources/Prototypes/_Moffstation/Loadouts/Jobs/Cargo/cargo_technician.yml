@@ -10,9 +10,9 @@
     id: LogisticsAssociatePDA
 
 - type: loadout
-  id: RequisitionsClerkPDA
+  id: FreightPilotPDA
   equipment:
-    id: RequisitionsClerkPDA
+    id: FreightPilotPDA
 
 # Head
 - type: loadout
@@ -65,6 +65,11 @@
   id: SeniorCargoWintercoat
   equipment:
     outerClothing: ClothingOuterWinterSeniorCargo
+
+- type: loadout
+  id: CourierWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterCourier
 
 - type: loadout
   id: CargoTechnicianWindbreaker

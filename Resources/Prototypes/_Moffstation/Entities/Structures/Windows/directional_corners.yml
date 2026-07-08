@@ -1,0 +1,241 @@
+- type: entity
+  parent: WindowClockworkDirectional
+  id: WindowClockworkDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: clock_window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: clock_window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi
+
+- type: entity
+  parent: PlasmaWindowDirectional
+  id: PlasmaWindowDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: plasma_window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: plasma_window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Construction
+    graph: WindowDirectionalCorner
+    node: plasmaWindowDirectionalCorner
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi
+
+- type: entity
+  parent: WindowReinforcedDirectional
+  id: WindowReinforcedDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: reinforced_window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: reinforced_window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Construction
+    graph: WindowDirectionalCorner
+    node: windowReinforcedDirectionalCorner
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi
+
+- type: entity
+  parent: PlasmaReinforcedWindowDirectional
+  id: PlasmaReinforcedWindowDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: plasma_reinforced_window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: plasma_reinforced_window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Construction
+    graph: WindowDirectionalCorner
+    node: plasmaReinforcedWindowDirectionalCorner
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi
+
+- type: entity
+  parent: UraniumReinforcedWindowDirectional
+  id: UraniumReinforcedWindowDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: uranium_reinforced_window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: uranium_reinforced_window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Construction
+    graph: WindowDirectionalCorner
+    node: uraniumReinforcedWindowDirectionalCorner
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi
+
+- type: entity
+  parent: UraniumWindowDirectional
+  id: UraniumWindowDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: uranium_window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: uranium_window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Construction
+    graph: WindowDirectionalCorner
+    node: uraniumWindowDirectionalCorner
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi
+
+- type: entity
+  parent: WindowDirectional
+  id: WindowDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Construction
+    graph: WindowDirectionalCorner
+    node: windowDirectionalCorner
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi
+
+- type: entity
+  parent: WindowFrostedDirectional
+  id: WindowFrostedDirectionalCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: frosted_window_corner
+  - type: Icon
+    sprite: _Moffstation/Structures/Windows/directional.rsi
+    state: frosted_window_corner
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,-0.28125"
+        density: 1500
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    trackAllDamage: true
+    damageOverlay:
+      sprite: _Moffstation/Structures/Windows/cracks_directional_corner.rsi

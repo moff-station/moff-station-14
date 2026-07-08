@@ -12,8 +12,8 @@ namespace Content.Client._ES.Voting.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class ESVoteControl : PanelContainer
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public event Action<Entity<ESVoteComponent>, ESVoteOption, bool>? OnVoteChanged;
 

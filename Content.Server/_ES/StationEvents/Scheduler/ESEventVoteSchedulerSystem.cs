@@ -11,11 +11,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._ES.StationEvents.Scheduler;
 
-public sealed class ESEventVoteSchedulerSystem : GameRuleSystem<ESEventVoteSchedulerComponent>
+public sealed partial class ESEventVoteSchedulerSystem : GameRuleSystem<ESEventVoteSchedulerComponent>
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly EventManagerSystem _eventManager = default!;
-    [Dependency] private readonly ESVoteSystem _esVote = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private EventManagerSystem _eventManager = default!;
+    [Dependency] private ESVoteSystem _esVote = default!;
 
     public override void Initialize()
     {

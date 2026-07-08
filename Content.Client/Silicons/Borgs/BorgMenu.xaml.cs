@@ -1,6 +1,7 @@
 using Content.Client.Message;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
+using Content.Shared._Moffstation.Silicons.StationAi; // Moffstation
 using Content.Shared.CCVar;
 using Content.Shared.NameIdentifier;
 using Content.Shared.NameModifier.EntitySystems;
@@ -19,8 +20,8 @@ namespace Content.Client.Silicons.Borgs;
 [GenerateTypedNameReferences]
 public sealed partial class BorgMenu : FancyWindow
 {
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
+    [Dependency] private IEntityManager _entity = default!;
     private readonly NameModifierSystem _nameModifier;
     private readonly PowerCellSystem _powerCell;
     private readonly SharedBatterySystem _battery;
@@ -101,6 +102,11 @@ public sealed partial class BorgMenu : FancyWindow
         ChargeBar.Value = chargeFraction;
         ChargeLabel.Text = Loc.GetString("borg-ui-charge-label",
             ("charge", (int)MathF.Round(chargeFraction * 100)));
+
+        //Moffstation - Begin - Checks to see if the inserted brain is an AI shell cpu, and if it is, prevents you from removing it
+        BrainButton.Disabled = _entity.TryGetComponent<BorgChassisComponent>(Entity, out var chassis) &&
+                               _entity.HasComponent<AiShellComponent>(chassis.BrainEntity);
+        // Moffstation - End
     }
 
     public void UpdateBatteryButton()

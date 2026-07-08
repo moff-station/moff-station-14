@@ -63,9 +63,23 @@
     state: storage
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 2
   cost:
-    Telecrystal: 3
+    Telecrystal: 4
+  categories:
+  - UplinkAllies
+
+- type: listing
+  id: UplinkMobMothroachSyndicate
+  name: uplink-syndicate-mothroach-name
+  description: uplink-syndicate-mothroach-description
+  icon: { sprite: _Moffstation/Objects/Devices/communication.rsi, state: old-radio-syndicate-mothroach }
+  productEntity: ReinforcementRadioSyndicateMothroachSyndicate
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
   categories:
   - UplinkAllies
 
@@ -80,9 +94,9 @@
     color: "#FF69B4"
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 2
   cost:
-    Telecrystal: 3
+    Telecrystal: 4
   categories:
   - UplinkJob
   conditions:
@@ -91,9 +105,28 @@
     - Mime
     - Clown
 
+- type: listing
+  id: UplinkMobCatReject
+  name: uplink-mobcat-reject-name
+  description: uplink-mobcat-reject-desc
+  icon: { sprite: _Moffstation/Objects/Devices/syndicatyarn.rsi, state: radio-syndicat }
+  productEntity: ReinforcementRadioSyndicateSyndiCatReject
+  discountCategory: rareDiscounts
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkAllies
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
 # Other
 - type: listing #This is the old necronomicon but spicier.
-  id: uplinkNecronomicon 
+  id: uplinkNecronomicon
   name: uplink-necronomicon-name
   description: uplink-necronomicon-desc
   productEntity: BibleNecronomicon
@@ -112,7 +145,6 @@
     - Lawyer
     - Psychologist
 
-# Other
 - type: listing
   id: UplinkSuperSurplusBundle
   name: uplink-super-surplus-bundle-name
@@ -127,6 +159,25 @@
     blacklist:
       tags:
       - NukeOpsUplink
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle
+
+- type: listing
+  id: UplinkSingarityBeaconDAGD
+  name: uplink-singularity-beacon-name
+  description: uplink-singularity-beacon-desc
+  productEntity: SingularityBeacon
+  cost:
+    Telecrystal: 12
+  categories:
+  - UplinkObjective
+  conditions:
+  - !type:BuyerObjectiveWhitelistCondition
+    whitelist:
+      components:
+      - DieCondition
   - !type:BuyerWhitelistCondition
     blacklist:
       components:

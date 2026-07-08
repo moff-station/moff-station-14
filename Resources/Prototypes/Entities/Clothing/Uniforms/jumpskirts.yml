@@ -5,9 +5,9 @@
   description: A nice and tidy uniform. Shame about the bar though.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/bartender.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/bartender.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/bartender.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/bartender.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -71,9 +71,9 @@
   description: Can't cook without this.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chef.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/chef.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/chef.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -97,10 +97,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: &green-scrubs "#77ed94"
+      color: &color-white "#FFFFFF"
     - state: professional-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-white "#FFFFFF"
+      color: &green-scrubs "#77ed94"
   - type: Item
     inhandVisuals:
       left:
@@ -114,10 +114,10 @@
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *green-scrubs
+        color: *color-white
       - state: professional-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-white
+        color: *green-scrubs
 # Moffstation - End
 
 - type: entity
@@ -170,9 +170,9 @@
   description: It's a turtleneck worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/cmo_turtle.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -207,27 +207,27 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     layers:
     - state: icon
-      color: &color-darkblue "#547abb"
+      color: &color-orange "#db542e"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-orange "#db542e"
+      color: &color-darkblue "#547abb"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: *color-darkblue
+        color: *color-orange
       right:
       - state: inhand-right
-        color: *color-darkblue
+        color: *color-orange
   - type: Clothing
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/jumpskirt.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *color-darkblue
+        color: *color-orange
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-orange
+        color: *color-darkblue
 # Moffstation - End
 
 - type: entity
@@ -369,9 +369,9 @@
   description: ...
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/mime.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/mime.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/mime.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/mime.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -442,9 +442,9 @@
   description: 'What can brown do for you?'
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/qm.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm.rsi # Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -453,9 +453,9 @@
   description: A sharp turtleneck made for the hardy work environment of supply.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/qmturtleskirt.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm_turtle.rsi #Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/qmturtleskirt.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/qm_turtle.rsi #Moffstation
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -538,9 +538,9 @@
   description: A cosy green jumper fit for a curator of books.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/librarian.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/librarian.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/librarian.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/librarian.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -549,9 +549,9 @@
   description: It's sensible. Too sensible...
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/curator.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/curator.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/curator.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/curator.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -593,9 +593,9 @@
   description: A dress for special occasions.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/hosformaldress.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/hosformaldress.rsi # Moffstation
 
 - type: entity
   parent: [UnsensoredClothingUniformSkirtBase, BaseSyndicateContraband]
@@ -697,9 +697,9 @@
   description: A flashy blue suitskirt worn by lawyers and show-offs.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerblue.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblue.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerblue.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblue.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -708,9 +708,9 @@
   description: A subtle black suitskirt worn by lawyers and gangsters.
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerblack.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblack.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/lawyerblack.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyerblack.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -730,9 +730,9 @@
   description: A tacky suitskirt perfect for a CRIMINAL lawyer!
   components:
     - type: Sprite
-      sprite: Clothing/Uniforms/Jumpskirt/lawyergood.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyergood.rsi # Moffstation
     - type: Clothing
-      sprite: Clothing/Uniforms/Jumpskirt/lawyergood.rsi
+      sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/lawyergood.rsi # Moffstation
 
 - type: entity
   parent: [ UnsensoredClothingUniformSkirtBase, BaseSyndicateContraband ] # Moffstation - (No Sensors for Enemy Gear)
@@ -823,7 +823,7 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/security_grey.rsi # Moffstation
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [ClothingUniformSkirtBase, BaseSlicingRefinable]
   id: ClothingUniformJumpskirtWeb
   name: web jumpskirt
   description: Makes it clear that you are one with the webs.
@@ -832,9 +832,8 @@
     sprite: Clothing/Uniforms/Jumpskirt/web.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/web.rsi
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: MaterialWebSilk1
       amount: 8
   - type: FlavorProfile
@@ -842,13 +841,6 @@
       - cobwebs
     ignoreReagents:
       - Fiber
-  - type: SolutionContainerManager
-    solutions: # 24 (3 (fiber count of web) * 8 (to craft)) + 6 (magical crafting bonus)
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 30
   - type: Construction
     graph: WebObjects
     node: jumpskirt
@@ -991,9 +983,9 @@
   description: A fancy skirt for the musically inclined. Perfect for any lounge act!
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/musician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/musician.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/musician.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/musician.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -1013,9 +1005,9 @@
   description: HONK!
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/clown.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/clown.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/clown.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/clown.rsi # Moffstation
   - type: Tag
     tags:
     - ClownSuit
