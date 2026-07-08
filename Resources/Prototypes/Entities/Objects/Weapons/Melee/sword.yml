@@ -182,11 +182,9 @@
     attackRate: 0.75
     damage:
       types:
-        # Moff - Start - Claymore updates
-        Slash: 5
+        Slash: 5 # Moff - Claymore updates
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
-        # Moff - End
+        path: /Audio/Weapons/bladeslice.ogg
   # Moff - Start - Move damage to wielding
   - type: Wieldable
   - type: IncreaseDamageOnWield
