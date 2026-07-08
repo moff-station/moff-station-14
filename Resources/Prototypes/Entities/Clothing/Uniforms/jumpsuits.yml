@@ -377,7 +377,7 @@
   description: Woven in a grungy, warm orange. Lets others around you know that you really mean business when it comes to work.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/engineering_hazard.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/engineering_hazard.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband, ClothingUniformFoldableBase]
@@ -1015,10 +1015,10 @@
     sprite: _Moffstation/Clothing/Uniforms/Jumpsuit/jumpsuit.rsi
     layers:
     - state: icon
-      color: &color-atmos "#1bb3a1"
+      color: &color-yellow "#ffe335"
     - state: basics-trinkets-icon
     - state: color-trinkets-icon
-      color: &color-yellow "#ffe14d"
+      color: &color-atmos "#6ec9c1"
   - type: Item
     inhandVisuals:
       left:
@@ -1030,17 +1030,17 @@
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: *color-atmos
+        color: *color-yellow
       - state: basics-trinkets-equipped-INNERCLOTHING
       - state: color-trinkets-equipped-INNERCLOTHING
-        color: *color-yellow
+        color: *color-atmos
 # Moffstation - End
 
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitAtmosCasual
-  name: atmospheric technician's casual jumpsuit
+  name: atmospheric technician's overalls # Moffstation
   description: Might as well relax with a job as easy as yours.
   components:
   # Moffstation - Start
@@ -1331,7 +1331,7 @@
       sprite: Clothing/Uniforms/Jumpsuit/flannel.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase] # Moffstation
   id: ClothingUniformJumpsuitSeniorEngineer
   name: senior engineer jumpsuit
   description: A sign of skill and prestige within the engineering department.
