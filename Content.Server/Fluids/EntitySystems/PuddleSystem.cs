@@ -17,7 +17,6 @@ using Content.Shared.Slippery;
 using Content.Shared.Inventory;
 using Content.Shared._Funkystation.Fluids;
 using Content.Shared.Standing;
-using Content.Shared.Standing;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared._Funkystation.Footprints;
 using Robust.Shared.Collections;
