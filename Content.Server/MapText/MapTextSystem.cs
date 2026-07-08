@@ -1,4 +1,5 @@
-﻿using Content.Shared.MapText;
+﻿using System.Numerics; //Moffstation
+using Content.Shared.MapText;
 using Robust.Shared.GameStates;
 
 namespace Content.Server.MapText;
@@ -12,6 +13,22 @@ public sealed class MapTextSystem : SharedMapTextSystem
         base.Initialize();
         SubscribeLocalEvent<MapTextComponent, ComponentGetState>(GetCompState);
     }
+//Moffstation - Start - Admin Customization Menu
+    public void SetData(EntityUid uid, string? text, Color color, int fontSize, Vector2 offset)
+    {
+        var comp = EnsureComp<MapTextComponent>(uid);
+        comp.Text = text;
+        comp.Color = color;
+        comp.FontSize = fontSize;
+        comp.Offset = offset;
+        Dirty(uid, comp);
+    }
+
+    public void Clear(EntityUid uid)
+    {
+        RemComp<MapTextComponent>(uid);
+    }
+    //Moffstation - End
 
     private void GetCompState(Entity<MapTextComponent> ent, ref ComponentGetState args)
     {

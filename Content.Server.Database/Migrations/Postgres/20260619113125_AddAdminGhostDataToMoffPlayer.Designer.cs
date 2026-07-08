@@ -6,6 +6,7 @@ using System.Text.Json;
 using Content.Server.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using NpgsqlTypes;
@@ -15,9 +16,11 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    partial class PostgresServerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260619113125_AddAdminGhostDataToMoffPlayer")]
+    partial class AddAdminGhostDataToMoffPlayer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -995,11 +998,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnName("moff_player_id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-//Moffstation - Start - Adminghostcustomization
+
                     b.Property<string>("AdminGhostData")
                         .HasColumnType("text")
                         .HasColumnName("admin_ghost_data");
-//Moffstation - End
+
                     b.Property<int>("AntagWeight")
                         .HasColumnType("integer")
                         .HasColumnName("antag_weight");
