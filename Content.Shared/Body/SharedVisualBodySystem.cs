@@ -14,7 +14,6 @@ namespace Content.Shared.Body;
 /// </summary>
 public abstract partial class SharedVisualBodySystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private SharedContainerSystem _container = default!;
 
@@ -128,7 +127,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
     {
         if (args.Base?.Height is not { } height ||
             !HasComp<VisualBodyComponent>(entity) ||
-            !_prototype.Resolve(entity.Comp.Species, out var species))
+            !ProtoMan.Resolve(entity.Comp.Species, out var species))
             return;
 
         // If the height is the default, don't worry about scaling.
@@ -143,10 +142,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
 
         _scaleVisuals.SetSpriteScale(
             entity,
-            new Vector2(
-                (species.ScaleHeight ? heightClamped : 1f) * species.ImplicitSpriteScale.X,
-                heightClamped * species.ImplicitSpriteScale.Y
-            )
+            new Vector2(species.ScaleHeight ? heightClamped : 1f, heightClamped)
         );
     }
     // Moffstation - End
@@ -185,7 +181,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!args.Args.Markings.TryGetValue(category, out var markingSet))
             return;
 
-        var groupProto = _prototype.Index(ent.Comp.MarkingData.Group);
+        var groupProto = ProtoMan.Index(ent.Comp.MarkingData.Group);
         var organMarkings = ent.Comp.Markings.ShallowClone();
 
         foreach (var layer in ent.Comp.MarkingData.Layers)

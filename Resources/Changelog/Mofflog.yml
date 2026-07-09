@@ -6668,6 +6668,35 @@ Entries:
   id: 1595
   time: '2026-07-05T18:19:29.000'
   url: https://github.com/moff-station/moff-station-14/pull/1595
+- author: Nyxilath
+  changes:
+  - message: Loadout glasses options have been simplified
+    type: tweak
+  - message: Department eyewear options are now found in their relevant department
+      lockers an drobes
+    type: tweak
+  - message: Eye protection Modular HUD and Modular HUD goggles have been removed
+    type: remove
+  - message: Engineering goggles have been readded
+    type: add
+  - message: Impaired vision crew members now start with glasses instead of a prescription
+      module again
+    type: fix
+  - message: Mindshield, contraband, and criminal records HUD modules have been unified
+      into a singular module
+    type: tweak
+  - message: Thirst HUD module has been given solution scanning
+    type: tweak
+  - message: Thirst and Hunger HUD modules can no longer be manufactured
+    type: remove
+  - message: Modular HUD Sunglasses and Cheap Sunglasses have been converted into
+      HUD inserts instead
+    type: tweak
+  - message: Modular HUD Frames have had their maximum slots reduced by 1
+    type: tweak
+  id: 1596
+  time: '2026-07-08T23:05:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1596
 - author: DrWhoFan13
   changes:
   - message: Genpop IDs now announce their expiration on security radio.
@@ -6703,6 +6732,11 @@ Entries:
   id: 1601
   time: '2026-07-04T23:21:59.000'
   url: https://github.com/moff-station/moff-station-14/pull/1601
+- author: Tezzaide
+  changes: []
+  id: 1602
+  time: '2026-07-08T01:46:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1602
 - author: DuckManZach
   changes:
   - message: Changed Updates to Dove, Scylla, Aspid!
@@ -6761,5 +6795,42 @@ Entries:
   id: 1616
   time: '2026-07-06T21:27:46.000'
   url: https://github.com/moff-station/moff-station-14/pull/1616
+- author: Centronias
+  changes:
+  - message: Added Biff Himbo's personal item.
+    type: add
+  id: 1617
+  time: '2026-07-08T10:11:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1617
+- author: Centronias
+  changes:
+  - message: Added Dextrose's personal item.
+    type: add
+  id: 1618
+  time: '2026-07-08T15:12:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1618
+- author: meganerobot
+  changes: []
+  id: 1624
+  time: '2026-07-08T11:52:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1624
+- author: Dave
+  changes:
+  - message: Laundromat at CC
+    type: add
+  - message: various changes to Science, Vox Box & CC Bridge Office at Centcomm
+    type: tweak
+  - message: Central Command Thunderdome Removed, replaced with a theatre/stage
+    type: remove
+  id: 1625
+  time: '2026-07-08T22:17:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1625
+- author: DuckManZach
+  changes:
+  - message: People no longer slip on puddles whilist walking
+    type: fix
+  id: 1634
+  time: '2026-07-08T22:40:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1634
 Name: Mofflog
 Order: -2
