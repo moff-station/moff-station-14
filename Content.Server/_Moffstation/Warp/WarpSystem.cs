@@ -23,7 +23,7 @@ public sealed partial class WarpSystem : SharedWarpSystem
     private void OnWarpRequest(WarpRequestEvent msg, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not { } ent ||
-            ! _entQuery.TryComp(ent, out var comp) ||
+            !_entQuery.TryComp(ent, out var comp) ||
             _timing.CurTime < comp.NextAllowedWarp)
             return;
 
