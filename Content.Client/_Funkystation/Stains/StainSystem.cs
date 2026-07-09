@@ -1,4 +1,4 @@
-using Content.Client.Clothing;
+﻿using Content.Client.Clothing;
 using Content.Client.Items.Systems;
 using Content.Shared._Funkystation.Stains.Components;
 using Content.Shared._Funkystation.Stains.Systems;
