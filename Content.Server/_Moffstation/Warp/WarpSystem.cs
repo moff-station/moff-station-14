@@ -23,11 +23,11 @@ public sealed partial class WarpSystem : SharedWarpSystem
     private void OnWarpRequest(WarpRequestEvent msg, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not { } ent ||
-            ! _entQuery.TryComp(ent, out var comp) ||
+            !_entQuery.TryComp(ent, out var comp) ||
             _timing.CurTime < comp.NextAllowedWarp)
             return;
 
-        var ev = new WarpAttemptEvent(ent, msg.Target);
+        var ev = new WarpAttemptEvent(ent, msg.Target, false, null);
         RaiseLocalEvent(ent, ref ev);
 
         if (!ev.Cancelled)
@@ -45,32 +45,18 @@ public sealed partial class WarpSystem : SharedWarpSystem
     }
 }
 
-
 /// <summary>
 /// Raised on the entity attempting a warp.
-/// Cancelling this will make the entity fail their attempt.
+/// WarpedEntity allow to override the entity teleported to the target <see cref="EyeComponent"/>.
+/// Setting Cancelled to true will make the entity fail their attempt.
+/// If not null, CancelReason contain a Loc string explaining the cause of the attempt failure.
 /// </summary>
+
 [ByRefEvent]
-public sealed class WarpAttemptEvent(EntityUid warpedEntity, BaseWarpTarget target) : CancellableEntityEventArgs
-{
-    /// <summary>
-    /// Allow to override the entity that will be teleported to the target <see cref="EyeComponent"/>
-    /// </summary>
-    public EntityUid WarpedEntity = warpedEntity;
-
-    /// <summary>
-    /// Target location for the warp
-    /// </summary>
-    public readonly BaseWarpTarget Target = target;
-
-    /// <summary>
-    /// If not null contain a string explaining why the warp attempt failed
-    /// </summary>
-    public string? CancelReason;
-}
+public record struct WarpAttemptEvent(EntityUid WarpedEntity, BaseWarpTarget Target, bool Cancelled, LocId? CancelReason);
 
 /// <summary>
 /// Raised on the entity after the warp attempt.
 /// </summary>
 [ByRefEvent]
-public readonly record struct WarpEvent(BaseWarpTarget Target, bool Success, string? Reason);
+public readonly record struct WarpEvent(BaseWarpTarget Target, bool Success, LocId? Reason);

@@ -109,8 +109,8 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
         // system unavailable
         if (!TryGetCore(ent.Owner, out var core) || core.Comp?.RemoteEntity is not {} eye)
         {
-            ev.CancelReason = Loc.GetString("ai-warp-fail-no-eye");
-            ev.Cancel();
+            ev.CancelReason = "ai-warp-fail-no-eye";
+            ev.Cancelled = true;
             return;
         }
 
@@ -123,16 +123,16 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
             // target out of range
             if (!Exists(target) || _xforms.GetGrid(target) != _xforms.GetGrid(core.Owner))
             {
-                ev.CancelReason = Loc.GetString("ai-warp-fail-out-reach");
-                ev.Cancel();
+                ev.CancelReason = "ai-warp-fail-out-reach";
+                ev.Cancelled = true;
                 return;
             }
 
             // unknown target position
             if (target != core.Owner && _sensors.GetSensorMode(target) != SuitSensorMode.SensorCords)
             {
-                ev.CancelReason = Loc.GetString("ai-warp-fail-no-coords");
-                ev.Cancel();
+                ev.CancelReason = "ai-warp-fail-no-coords";
+                ev.Cancelled = true;
                 return;
             }
         }
@@ -144,13 +144,11 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
             // target out of range
             if (coords.EntityId != _xforms.GetGrid(core.Owner))
             {
-                ev.CancelReason = Loc.GetString("ai-warp-fail-out-reach");
-                ev.Cancel();
+                ev.CancelReason = "ai-warp-fail-out-reach";
+                ev.Cancelled = true;
                 return;
             }
         }
-
-
     }
     // Moffstation - End
 
