@@ -1,0 +1,12 @@
+- type: mapModification
+  id: JellyfishModificationsLaundry
+  applyOn:
+  - Jellyfish
+  additions:
+    # Jellyfish is small, it can just have a Washing Machine
+  - prototype: WashingMachine
+    position: 48.5, -44.5
+  - prototype: SignLaundromat
+    position: 43.5, -42.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 46.5, -44.5
