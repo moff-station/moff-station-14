@@ -51,7 +51,6 @@ public sealed partial class WarpSystem : SharedWarpSystem
 /// Setting Cancelled to true will make the entity fail their attempt.
 /// If not null, CancelReason contain a Loc string explaining the cause of the attempt failure.
 /// </summary>
-
 [ByRefEvent]
 public record struct WarpAttemptEvent(EntityUid WarpedEntity, BaseWarpTarget Target, bool Cancelled, LocId? CancelReason);
 
