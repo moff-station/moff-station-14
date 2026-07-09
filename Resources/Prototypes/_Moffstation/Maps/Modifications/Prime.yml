@@ -25,7 +25,7 @@
     prototype: TableWood
     bounds: "-48, -9, -43, -12"
   - !type:EntityPrototypeSelector
-    prototype: ClosetWallMaintenanceFiledRandom
+    prototype: ClosetWallMaintenanceFilledRandom
     bounds: "-48, -9, -43, -14"
   - !type:EntityPrototypeSelector
     prototype: ButtonFrameGrey
@@ -59,7 +59,7 @@
     position: -44.5, -11.5
   - prototype: Sink
     position: -44.5, -11.5
-    Rotation: 90
+    rotation: 90
   - prototype: Rack
     position: -44.5, -12.5
   - prototype: RandomSoap
