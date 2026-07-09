@@ -160,7 +160,7 @@ public sealed partial class DeliveryModifierSystem : EntitySystem
             args.PushMarkup(Loc.GetString("moff-delivery-bomb-primed-examine", ("type", trueName)));
         //else
         //    args.PushMarkup(Loc.GetString("delivery-bomb-examine", ("type", trueName)));
-        //// Moffstation - End
+        // Moffstation - End
     }
 
     private void OnGetExplosiveMultiplier(Entity<DeliveryBombComponent> ent, ref GetDeliveryMultiplierEvent args)
