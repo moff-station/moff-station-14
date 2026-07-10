@@ -1,3 +1,4 @@
+using Content.Client._Moffstation.Voting.Ui;
 using Content.Client.Stylesheets;
 using Content.Shared._ES.Voting;
 using Content.Shared._ES.Voting.Components;
@@ -10,27 +11,35 @@ using Robust.Shared.Timing;
 namespace Content.Client._ES.Voting.Ui;
 
 [GenerateTypedNameReferences]
-public sealed partial class ESVoteControl : PanelContainer
+public sealed partial class ESVoteControl : PanelContainer, IVoteEntryControl
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IGameTiming _timing = default!;
 
     public event Action<Entity<ESVoteComponent>, ESVoteOption, bool>? OnVoteChanged;
 
-    public EntityUid Vote { get; init; } = EntityUid.Invalid;
+    public EntityUid Vote { get; }
 
     private TimeSpan _endTime;
 
-    public ESVoteControl()
+    public ESVoteControl(EntityUid vote)
     {
         IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
+
+        Vote = vote;
     }
 
-    public void Update(Entity<ESVoteComponent> vote, EntityUid owner)
+    public void Update(EntityUid owner)
     {
-        if (!_entityManager.EntityExists(vote))
+        if (!_entityManager.TryGetComponent<ESVoteComponent>(Vote, out var comp))
             return;
+
+        Update((Vote, comp), owner);
+    }
+
+    private void Update(Entity<ESVoteComponent> vote, EntityUid owner)
+    {
 
         var netOwner = _entityManager.GetNetEntity(owner);
 

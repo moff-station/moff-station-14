@@ -14,7 +14,7 @@
                 <RichTextLabel Name="VoteDescriptionLabel" HorizontalExpand="True" RectClipContent="True" MaxWidth="270"/>
             </BoxContainer>
             <BoxContainer Name="ButtonsContainer" Orientation="Vertical" HorizontalAlignment="Right" MinWidth="100">
-                <Button Name="EnrollButton" Text="Enroll"/>
+                <Button Name="EnrollButton" ToggleMode="True" Text="Enroll"/>
                 <Button Name="CharacterSelectionButton" Text="Select Character"/>
                 <Button Name="GotoButton" Text="Go To"/>
             </BoxContainer>

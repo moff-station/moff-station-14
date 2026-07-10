@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Moffstation.Voting.Components;
@@ -45,6 +46,9 @@ public sealed partial class MoffEnrollEventComponent : Component
     [DataField]
     public Color DescriptionColor = Color.LightGray;
 
+    [DataField, AutoNetworkedField]
+    public HashSet<NetEntity> Enrolled = new();
+
     /// <summary>
     /// Whether the event is available to be enrolled in
     /// </summary>
@@ -53,4 +57,11 @@ public sealed partial class MoffEnrollEventComponent : Component
 
     [ViewVariables]
     public bool Warpable;
+}
+
+[Serializable, NetSerializable]
+public sealed class MoffSetEnrollMessage(NetEntity enroller, bool enrolled) : EntityEventArgs
+{
+    public NetEntity Enroller = enroller;
+    public bool Enrolled = enrolled;
 }

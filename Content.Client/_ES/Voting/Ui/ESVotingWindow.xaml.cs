@@ -20,8 +20,10 @@ public sealed partial class ESVotingWindow : FancyWindow
     private readonly MoffVoteEntrySystem _vote;
 
     private List<Entity<MoffVoteEntryComponent>> _lastEntries = new();
+    public event Action<Entity<ESVoteComponent>, bool>? OnVoteChanged;
 
-    public event Action<Entity<ESVoteComponent>, ESVoteOption>? OnVoteChanged;
+    // Moffstation - matched against in declaration order to build the control for a vote entry
+    private readonly List<(Func<EntityUid, bool> Matches, Func<EntityUid, IVoteEntryControl> Create)> _controlFactories;
 
     public ESVotingWindow()
     {
@@ -29,6 +31,12 @@ public sealed partial class ESVotingWindow : FancyWindow
         IoCManager.InjectDependencies(this);
 
         _vote = _entityManager.System<MoffVoteEntrySystem>();
+
+        _controlFactories =
+        [
+            (uid => _entityManager.HasComponent<ESVoteComponent>(uid), uid => new ESVoteControl(uid)),
+            (uid => _entityManager.HasComponent<MoffEnrollEventComponent>(uid), uid => new MoffEnrollControl(uid)),
+        ];
     }
 
     public void Update(EntityUid owner)
@@ -50,21 +58,8 @@ public sealed partial class ESVotingWindow : FancyWindow
 
         foreach (var child in VotesContainer.Children)
         {
-            switch (child)
-            {
-                case ESVoteControl ctrl:
-                {
-                    var comp = _entityManager.GetComponent<ESVoteComponent>(ctrl.Vote);
-                    ctrl.Update((ctrl.Vote, comp), owner);
-                    break;
-                }
-                case MoffEnrollControl ctrl:
-                {
-                    var comp = _entityManager.GetComponent<MoffEnrollEventComponent>(ctrl.Enroller);
-                    ctrl.Update((ctrl.Enroller, comp), owner);
-                    break;
-                }
-            }
+            if (child is IVoteEntryControl ctrl)
+                ctrl.Update(owner);
         }
         // PB and B
         VotesContainer.InvalidateMeasure();
@@ -72,23 +67,10 @@ public sealed partial class ESVotingWindow : FancyWindow
 
     private Control? GenerateControl(Entity<MoffVoteEntryComponent> ent)
     {
-        if (_entityManager.HasComponent<ESVoteComponent>(ent.Owner))
+        foreach (var (matches, create) in _controlFactories)
         {
-            var control = new ESVoteControl
-            {
-                Vote = ent.Owner,
-            };
-            control.OnVoteChanged += (arg1, arg2, _) => OnVoteChanged?.Invoke(arg1, arg2);
-            return control;
-        }
-
-        if (_entityManager.HasComponent<MoffEnrollEventComponent>(ent.Owner))
-        {
-            var control = new MoffEnrollControl
-            {
-                Enroller = ent.Owner,
-            };
-            return control;
+            if (matches(ent.Owner))
+                return (Control) create(ent.Owner);
         }
         return null;
     }
