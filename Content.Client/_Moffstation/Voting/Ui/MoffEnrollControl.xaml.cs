@@ -17,11 +17,14 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
 
-    public event Action<EntityUid, bool>? OnEnrollChanged;
-
     public EntityUid Enroller { get; }
     private TimeSpan _endTime;
 
+    public MoffEnrollControl()
+    {
+        IoCManager.InjectDependencies(this);
+        RobustXamlLoader.Load(this);
+    }
     public MoffEnrollControl(EntityUid enroller)
     {
         IoCManager.InjectDependencies(this);
@@ -64,12 +67,12 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
             ("color", ent.Comp.DescriptionColor),
             ("desc", desc)));
 
-        Progress.MinValue = (float) (ent.Comp.EndTime - ent.Comp.Duration).TotalSeconds;
-        Progress.MaxValue = (float) ent.Comp.EndTime.TotalSeconds;
+        TimerProgress.MinValue = (float) (ent.Comp.EndTime - ent.Comp.Duration).TotalSeconds;
+        TimerProgress.MaxValue = (float) ent.Comp.EndTime.TotalSeconds;
         _endTime = ent.Comp.EndTime;
         if (_timing.CurTime > _endTime)
         {
-            Progress.Visible = false;
+            TimerProgress.Visible = false;
             TimeLabel.Visible = false;
         }
     }
@@ -81,7 +84,7 @@ public sealed partial class MoffEnrollControl : PanelContainer, IVoteEntryContro
         var curTime = _timing.CurTime;
 
         TimeLabel.Text = $"Time remaining: {_endTime - curTime:mm\\:ss}";
-        Progress.Value = (float) curTime.TotalSeconds;
+        TimerProgress.Value = (float) curTime.TotalSeconds;
     }
 }
 

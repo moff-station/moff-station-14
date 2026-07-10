@@ -32,11 +32,11 @@ public sealed partial class ESVotingWindow : FancyWindow
 
         _vote = _entityManager.System<MoffVoteEntrySystem>();
 
-        _controlFactories =
-        [
+        _controlFactories = new()
+        {
             (uid => _entityManager.HasComponent<ESVoteComponent>(uid), uid => new ESVoteControl(uid)),
             (uid => _entityManager.HasComponent<MoffEnrollEventComponent>(uid), uid => new MoffEnrollControl(uid)),
-        ];
+        };
     }
 
     public void Update(EntityUid owner)

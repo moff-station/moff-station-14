@@ -22,6 +22,12 @@ public sealed partial class ESVoteControl : PanelContainer, IVoteEntryControl
 
     private TimeSpan _endTime;
 
+    public ESVoteControl()
+    {
+        IoCManager.InjectDependencies(this);
+        RobustXamlLoader.Load(this);
+    }
+
     public ESVoteControl(EntityUid vote)
     {
         IoCManager.InjectDependencies(this);

@@ -20,6 +20,6 @@
             </BoxContainer>
         </BoxContainer>
         <RichTextLabel Name="TimeLabel"/>
-        <ProgressBar Name="Progress" Value="0.5" MinValue="0" MaxValue="1" ModulateSelfOverride="#00ff00" HorizontalExpand="True" SetHeight="5" Margin="0 2 0 5"/>
+        <ProgressBar Name="TimerProgress" Value="0.5" MinValue="0" MaxValue="1" ModulateSelfOverride="#00ff00" HorizontalExpand="True" SetHeight="5" Margin="0 2 0 5"/>
     </BoxContainer>
 </controls:MoffEnrollControl>
