@@ -1,0 +1,8 @@
+- type: entity
+  parent: Welder
+  id: WelderNoSparks
+  name: welding tool
+  suffix: Debug, no sparks
+  components:
+  - type: ESSparkOnItemToggle
+    count: 0
