@@ -1,5 +1,7 @@
+using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
 using Content.Shared.Medical.SuitSensor;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes; // Moffstation - Borg sensors
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.Medical.SuitSensors;
@@ -94,4 +96,13 @@ public sealed partial class SuitSensorComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField, ViewVariables]
     public bool PreviousControlsLocked = false;
+
+    // Moffstation - Begin - Borg sensors
+    /// <summary>
+    ///     The type of sensor data sent by this suit sensor. Used in <see cref="CrewMonitoringComponent"/>
+    ///     to determine which sensors will appear in the interface.
+    /// </summary>
+    [DataField, AutoNetworkedField, ViewVariables]
+    public ProtoId<SensorTypePrototype> SensorType = new("SuitSensor");
+    // Moffstation - End
 }
