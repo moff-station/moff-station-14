@@ -1,8 +1,8 @@
 - type: entity # Used by detectives and mercenaries as an alternative to the Inspector revolver.
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolPM
-  name: Makarov PM
-  description: "Formally 'Pistolet Makarova', the PM is an ancient semi-automatic pistol commonly seen on the civilian market. Its heavy double-action trigger improves drop safety at the expense of fire rate.\nFeeds from .35 pistol magazines."
+  name: Makarave PM
+  description: "Formally 'Pistolet Makarave', the PM is an ancient semi-automatic pistol which was commonly served as the standard-issue sidearm for USSP forces.\nFeeds from .35 pistol magazines."
   components:
   - type: Sprite
     sprite: _Moffstation/Objects/Weapons/Guns/Pistols/pm.rsi
