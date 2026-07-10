@@ -1,5 +1,7 @@
 using Content.Server.Administration.Logs;
+using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
+using Content.Server.Ghost;
 using Content.Server.Power.Components;
 using Content.Shared.Chat;
 using Content.Shared.Database;
@@ -14,6 +16,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared._Moffstation.Radio; // Moffstation - Radio warp
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -23,9 +26,10 @@ public sealed partial class RadioSystem : SharedRadioSystem
     [Dependency] private INetManager _netMan = default!;
     [Dependency] private IReplayRecordingManager _replay = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private GhostSystem _ghost = default!;
     [Dependency] private EntityQuery<TelecomExemptComponent> _exemptQuery = default!;
 
     // set used to prevent radio feedback loops.
@@ -49,8 +53,25 @@ public sealed partial class RadioSystem : SharedRadioSystem
 
     private void OnIntrinsicReceive(EntityUid uid, IntrinsicRadioReceiverComponent component, ref RadioReceiveEvent args)
     {
-        if (TryComp(uid, out ActorComponent? actor))
-            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+        if (!TryComp(uid, out ActorComponent? actor))
+            return;
+
+        var msg = args.ChatMsg;
+        if (_ghost.CanGhostWarp(actor.PlayerSession, out _))
+        {
+            msg = new MsgChatMessage
+            {
+                Message = new ChatMessage(args.ChatMsg.Message)
+                {
+                    WrappedMessage = _chatManager.PrependFollowButtonIfAppropriate(
+                        args.ChatMsg.Message.WrappedMessage,
+                        args.MessageSource,
+                        actor.PlayerSession.Channel),
+                },
+            };
+        }
+
+        _netMan.ServerSendMessage(msg, actor.PlayerSession.Channel);
     }
 
     /// <summary>
@@ -58,7 +79,7 @@ public sealed partial class RadioSystem : SharedRadioSystem
     /// </summary>
     public void SendRadioMessage(EntityUid messageSource, string message, ProtoId<RadioChannelPrototype> channel, EntityUid radioSource, bool escapeMarkup = true)
     {
-        SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, escapeMarkup: escapeMarkup);
+        SendRadioMessage(messageSource, message, ProtoMan.Index(channel), radioSource, escapeMarkup: escapeMarkup);
     }
 
     /// <summary>
@@ -79,7 +100,7 @@ public sealed partial class RadioSystem : SharedRadioSystem
         name = FormattedMessage.EscapeText(name);
 
         SpeechVerbPrototype speech;
-        if (evt.SpeechVerb != null && _prototype.Resolve(evt.SpeechVerb, out var evntProto))
+        if (evt.SpeechVerb != null && ProtoMan.Resolve(evt.SpeechVerb, out var evntProto))
             speech = evntProto;
         else
             speech = _chat.GetSpeechVerb(messageSource, message);
@@ -96,6 +117,19 @@ public sealed partial class RadioSystem : SharedRadioSystem
             ("channel", $"\\[{channel.LocalizedName}\\]"),
             ("name", name),
             ("message", content));
+
+        // Moffstation - Begin - Radio warp
+        var wrappedWarpMessage = Loc.GetString(
+            speech.Bold ? "chat-radio-warp-message-wrap-bold" : "chat-radio-warp-message-wrap",
+            ("color", channel.Color),
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+            ("channel", $"\\[{channel.LocalizedName}\\]"),
+            ("name", name),
+            ("message", content),
+            ("source", GetNetEntity(messageSource)));
+        // Moffstation - End
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
         var chat = new ChatMessage(
@@ -140,6 +174,15 @@ public sealed partial class RadioSystem : SharedRadioSystem
             RaiseLocalEvent(receiver, ref attemptEv);
             if (attemptEv.Cancelled)
                 continue;
+
+            // Moffstation - Begin - Radio warp
+            var quer = new RadioWarpEnabledQuery();
+            RaiseLocalEvent(receiver, ref quer);
+
+            ev.ChatMsg.Message.WrappedMessage = quer.Enabled
+                ? wrappedWarpMessage
+                : wrappedMessage;
+            // Moffstation - End
 
             // send the message
             RaiseLocalEvent(receiver, ref ev);

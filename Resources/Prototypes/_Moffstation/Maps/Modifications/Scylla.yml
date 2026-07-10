@@ -1,0 +1,35 @@
+- type: mapModification
+  id: ScyllaModificationsLaundry
+  applyOn:
+  - Scylla
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: MirrorModern
+    bounds: "30, -67, 32, -69"
+  - !type:EntityPrototypeSelector
+    prototype: Sink
+    bounds: "30, -67, 32, -69"
+  - !type:EntityPrototypeSelector
+    prototype: RandomSoakedCigarette
+    bounds: "30, -67, 32, -69"
+  - !type:EntityPrototypeSelector
+    prototype: MopItem
+    bounds: "30, -67, 32, -69"
+  - !type:EntityPrototypeSelector
+    prototype: MopBucketFull
+    bounds: "30, -67, 32, -69"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 31.5, -68.5
+  - prototype: WashingMachine
+    position: 30.5, -68.5
+  - prototype: SignLaundromat
+    position: 29.5, -70.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 30.5, -69.5
+    # Additional Visual Improvements
+  - prototype: MopItem
+    position: 31.5, -70.5
+  - prototype: MopBucketFull
+    position: 31.5, -70.5
