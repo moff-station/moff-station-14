@@ -33,7 +33,10 @@
     - id: RevenantSpawn
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
-    - id: SyndicateDeadDrop # Moffstation
+    # Moffstation - Start - Moffstation basic antag events
+    - id: SyndicateDeadDrop
+    - id: SyndieVentSoldierSpawn
+    # Moffstation - End
 
 - type: entityTable
   id: ModerateAntagEventsTable
@@ -45,7 +48,7 @@
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
-    - id: WizardSpawn
+    # - id: WizardSpawn # Moffstation
     - id: EeepEvent # imp
     - !type:NestedSelector
       tableId: DerelictBorgEventTable

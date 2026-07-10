@@ -71,6 +71,14 @@ public sealed partial class MarkingsLimits
     /// </summary>
     [DataField]
     public List<ProtoId<MarkingPrototype>> NudityDefault = new();
+
+    // Moff start - Random markings
+    /// <summary>
+    /// The chance of a marking for this layer being selected when a character is randomly generated
+    /// </summary>
+    [DataField]
+    public float RandomChance = 0.5f;
+    // Moff end
 }
 
 [DataDefinition]

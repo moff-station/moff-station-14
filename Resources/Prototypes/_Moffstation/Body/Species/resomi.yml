@@ -114,130 +114,134 @@
       jumpsuit:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: &displacement_rsi "_Moffstation/Mobs/Species/Resomi/displacement.rsi"
             state: jumpsuit
       head:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: head
       eyes:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: eyes
       gloves:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: hands
       back:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: back
       ears:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: ears
       shoes:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: feet
       neck:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: neck
       mask:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: mask
       outerClothing:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: outerClothing
       suitstorage:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: suitStorage
       belt:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: belt
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: jumpsuit
       head:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: head
       eyes:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: eyes
       gloves:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: hands
       back:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: back
       ears:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: ears
       shoes:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: feet
       neck:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: neck
       mask:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: mask
       outerClothing:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: outerClothing
       suitstorage:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: suitStorage
       belt:
         sizeMaps:
           32:
-            sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
+            sprite: *displacement_rsi
             state: belt
-  - type: Hands
-    handDisplacement:
-      sizeMaps:
-        32:
-          sprite: _Moffstation/Mobs/Species/Resomi/displacement.rsi
-          state: inHand
+      leftHandDisplacement:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: inHand
+      rightHandDisplacement:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: inHand
   - type: InitialBody
     organs:
       Torso: OrganResomiTorso

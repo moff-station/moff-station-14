@@ -1177,7 +1177,6 @@
   physicalDesc: reagent-physical-desc-holy
   flavor: holy
   color: "#91C3F7"
-  # Moffstation - Start - Making holywater hurt vampires
   metabolisms:
     Digestion:
       effects:
@@ -1185,8 +1184,6 @@
         factor: 3
       - !type:HealthChange
         conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
         damage:
           types:
             Blunt: -0.2
@@ -1194,18 +1191,6 @@
             Heat: -0.2
             Shock: -0.2
             Cold: -0.2
-      - !type:HealthChange
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
-        damage:
-          types:
-            Holy: 1.0
-      - !type:Ignite
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
-  # Moffstation - End - Making holywater hurt vampires
   reactiveEffects:
     Extinguish:
       methods: [ Touch ]

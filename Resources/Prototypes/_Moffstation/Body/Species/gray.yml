@@ -1,0 +1,494 @@
+﻿- type: markingsGroup
+  parent: Undergarments
+  id: Gray
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Special:
+      limit: 10
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Eyes:
+      limit: 1
+      required: true
+      default: [ GrayEyes ]
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 5
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.UndergarmentBottom:
+      limit: 2
+      required: false
+      nudityDefault: [ UndergarmentBottomOnePieceGray ]
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceGray
+  name: gray appearance
+  components:
+  - type: Sprite # Drawlayers. Top to bottom in order I believe.
+    netsync: false
+    layers:
+    # Torso
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+
+    # Head
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+
+    # Limbs
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+
+    # Underwear
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "jumpsuit" ]
+
+    # Extremities
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+
+    # More equipment
+    - map: [ "gloves" ]
+    - map: [ "shoes" ]
+    - map: [ "ears" ]
+    - map: [ "eyes" ]
+    - map: [ "id" ]
+    - map: [ "outerClothing" ]
+    - map: [ "belt" ]
+    - map: [ "back" ]
+    - map: [ "neck" ]
+
+    # Stuff that appears above equipment.
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOverlay" ]
+
+    # Stuff that goes in front of stuff that goes in front of equipment
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+
+    # Extras
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ] # Custom cuffs currently don't appear, #38451 tries to fix it is stuck in limbo.
+      color: "#ffffff"
+      sprite: _Moffstation/Objects/Misc/handcuffs.rsi
+      state: body-overlay-gray
+      visible: false
+    - map: [ "clownedon" ]
+      sprite: "_Moffstation/Effects/creampie.rsi"
+      state: "creampie_gray"
+      visible: false
+  - type: Inventory
+    speciesId: gray
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: &displacement_rsi "_Moffstation/Mobs/Species/Gray/displacement.rsi"
+            state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: head
+      eyes:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: eyes
+      gloves:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: hands
+      back:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: back
+      ears:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: ears
+      shoes:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: feet
+      neck:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: neck
+      mask:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: mask
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: outerClothing
+      suitstorage:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: suitStorage
+      belt:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: belt
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: jumpsuit
+      head:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: head
+      eyes:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: eyes
+      gloves:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: hands
+      back:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: back
+      ears:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: ears
+      shoes:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: feet
+      neck:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: neck
+      mask:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: mask
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: outerClothing
+      suitstorage:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: suitStorage
+      belt:
+        sizeMaps:
+          32:
+            sprite: *displacement_rsi
+            state: belt
+  - type: Hands
+    leftHandDisplacement:
+      sizeMaps:
+        32:
+          sprite: *displacement_rsi
+          state: inHand
+    rightHandDisplacement:
+      sizeMaps:
+        32:
+          sprite: *displacement_rsi
+          state: inHand
+  - type: InitialBody
+    organs:
+      Torso: OrganGrayTorso
+      Head: OrganGrayHead
+      ArmLeft: OrganGrayArmLeft
+      ArmRight: OrganGrayArmRight
+      HandRight: OrganGrayHandRight
+      HandLeft: OrganGrayHandLeft
+      LegLeft: OrganGrayLegLeft
+      LegRight: OrganGrayLegRight
+      FootLeft: OrganGrayFootLeft
+      FootRight: OrganGrayFootRight
+      Brain: OrganGrayBrain
+      Eyes: OrganGrayEyes
+      Tongue: OrganGrayTongue
+      Appendix: OrganGrayAppendix
+      Ears: OrganGrayEars
+      Lungs: OrganGrayLungs
+      Heart: OrganGrayHeart
+      Stomach: OrganGrayStomach
+      Liver: OrganGrayLiver
+      Kidneys: OrganGrayKidneys
+  - type: HumanoidProfile
+    species: Gray
+  - type: FireVisuals
+    sprite: _Moffstation/Mobs/Effects/onfire.rsi
+    normalState: Gray_minor_burning
+    alternateState: Gray_burning
+
+- type: entity
+  parent:
+  - AppearanceGray
+  - BaseSpeciesMobOrganic
+  id: MobGray
+  name: Urist McGlorp
+  components:
+  - type: Damageable
+    damageModifierSet: Gray
+  - type: GrayAccent
+  - type: Speech
+    speechSounds: PVC
+  - type: TypingIndicator
+    proto: gray
+  - type: Vocal
+    sounds:
+      Male: UnisexGray
+      Female: UnisexGray
+      Unsexed: UnisexGray
+  - type: DamageVisuals
+    thresholds: [ 10, 20, 30, 50, 70, 100 ]
+    targetLayers:
+    - "enum.HumanoidVisualLayers.Chest"
+    - "enum.HumanoidVisualLayers.Head"
+    - "enum.HumanoidVisualLayers.LArm"
+    - "enum.HumanoidVisualLayers.LLeg"
+    - "enum.HumanoidVisualLayers.RArm"
+    - "enum.HumanoidVisualLayers.RLeg"
+    damageOverlayGroups:
+      Brute:
+        sprite: _Moffstation/Mobs/Effects/Gray/brute_damage.rsi
+        color: "#5e4cb0"
+      Burn:
+        sprite: _Moffstation/Mobs/Effects/Gray/burn_damage.rsi
+  - type: Temperature
+    specificHeat: 35
+  - type: TemperatureDamage # survive in colder spaces cause sppaaaaaaaAAAAaaaacceee
+    heatDamageThreshold: 333
+    coldDamageThreshold: 215
+    coldDamage:
+      types:
+        Cold: 0.1 # Per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat: 1.5 # Per second, scales with temperature & other constants
+  - type: Barotrauma # Survive in lower pressure than most cause sssppppaaAAAAaaacceeee
+    damage:
+      types:
+        Blunt: 0.25
+        Heat: 0.1
+  - type: TemperatureProtection
+    heatingCoefficient: 1.2
+    coolingCoefficient: 0.50
+  - type: Bloodstream
+    bloodReferenceSolution:
+        reagents:
+        - ReagentId: GrayBlood
+          Quantity: 300
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.5
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 105 #tiny
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+
+
+- type: entity
+  parent: OrganBase
+  id: OrganGray
+  abstract: true
+  suffix: Gray
+
+- type: entity
+  id: OrganGrayMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gray ]
+
+- type: entity
+  parent: OrganGray
+  id: OrganGrayInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Mobs/Species/Gray/organs.rsi
+
+- type: entity
+  id: OrganGrayVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: &parts_rsi "_Moffstation/Mobs/Species/Gray/parts.rsi"
+  - type: VisualOrganMarkings
+    markingData:
+      group: Gray
+
+- type: entity
+  parent: [ OrganGray, OrganGrayVisual ]
+  id: OrganGrayExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: *parts_rsi
+
+- type: entity
+  parent: [ OrganBaseTorso, OrganGrayExternal ]
+  id: OrganGrayTorso
+
+- type: entity
+  parent: [ OrganBaseHead, OrganGrayExternal ]
+  id: OrganGrayHead
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganGrayExternal ]
+  id: OrganGrayArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganGrayExternal ]
+  id: OrganGrayArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganGrayExternal ]
+  id: OrganGrayHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganGrayExternal ]
+  id: OrganGrayHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganGrayExternal ]
+  id: OrganGrayLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganGrayExternal ]
+  id: OrganGrayLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganGrayExternal ]
+  id: OrganGrayFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganGrayExternal ]
+  id: OrganGrayFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganGrayInternal ]
+  id: OrganGrayBrain
+
+- type: entity
+  parent: [ OrganGrayVisual, OrganBaseEyes, OrganGrayInternal ]
+  id: OrganGrayEyes
+  name: greepers
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Moffstation/Mobs/Customization/Gray/eyes.rsi
+      state: eyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganGrayInternal ]
+  id: OrganGrayTongue
+  name: slarb
+  description: its looks like a prank toy
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganGrayInternal ]
+  id: OrganGrayAppendix
+  name: Loloo Snak
+  description: it looks like a broken rubber band
+
+- type: entity
+  parent: [ OrganBaseEars, OrganGrayInternal ]
+  id: OrganGrayEars
+  name: zambou
+  description: some very rubbery grapes... maybe?
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganGrayInternal, OrganGrayMetabolizer, BaseHandheldInstrument ]
+  id: OrganGrayLungs
+  name: Oogmards
+  description: it appears to be moving still
+  components:
+  - type: Instrument
+    program: 79
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayHeart
+  name: Bardiimp
+  description: it's still wriggling...
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganGrayInternal, OrganGrayMetabolizer, Basketball ]
+  id: OrganGrayStomach
+  name: peall'bale
+  description: looks like a spiky tennis ball, probably feels the same too
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayLiver
+  name: Feeb'nah
+  description: you think that its some sort of putty... perhaps?
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganGrayInternal, OrganGrayMetabolizer ]
+  id: OrganGrayKidneys
+  name: thalamiixs
+  description: a pair of coin-operated thalamiixs, should operate for at most a single lifetime

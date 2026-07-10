@@ -53,3 +53,13 @@
   - !type:AddCompsEffect
     components:
     - type: GermanAccent
+
+- type: trait
+  id: GrayAccent
+  name: trait-gray-accent-name
+  description: trait-gray-accent-desc
+  category: Accents
+  effects:
+  - !type:AddCompsEffect
+    components:
+    - type: GrayAccent

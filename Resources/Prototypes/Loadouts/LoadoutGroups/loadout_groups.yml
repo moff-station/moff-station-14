@@ -84,6 +84,7 @@
   - PlushieVulp
   - GoldRing
   - SilverRing
+  - ClothingNeckDogTags
   # Moffstation - End
   - AACTablet # DeltaV
 
@@ -95,10 +96,6 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
-  # Moffstation - Begin (More Eyewear!)
-  - EyePatch
-  - EyePatchFlipped
-  # Moffstation - End
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -127,6 +124,7 @@
   loadouts:
   - LoadoutSpeciesEVANitrogen
   - LoadoutSpeciesEVAOxygen
+  - LoadoutSpeciesEVAOxygenAvali # Moffstation
 
 # vox get a nitrogen tank, other species get nothing
 - type: loadoutGroup
@@ -143,6 +141,7 @@
   loadouts:
   - LoadoutSpeciesPocketDoubleNitrogen
   - LoadoutSpeciesPocketDoubleOxygen
+  - LoadoutSpeciesPocketDoubleOxygenAvali # Moffstation
 
 # Command
 - type: loadoutGroup

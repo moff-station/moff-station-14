@@ -43,7 +43,8 @@
   id: LockerFillMedicalDoctor
   table: !type:AllSelector
     children:
-    - id: ClothingEyesHudMedical
+    # - id: ClothingEyesHudMedical # Moffstation - Modular Eyewear
+    - id: HudModuleShowMedicalIcons # Moffstation - Modular Eyewear
     - id: ClothingBeltMedicalFilled
     - id: JetInjector
     - id: HandheldHealthAnalyzer
@@ -81,7 +82,8 @@
   id: LockerFillChemistry
   table: !type:AllSelector
     children:
-    - id: ClothingEyesGlassesChemical
+    # - id: ClothingEyesGlassesChemical # Moffstation - Modular Eyewear
+    - id: HudModuleSolutionScanner # Moffstation - Modular Eyewear
     - id: ChemBelt # Moffstation - Chemical Belt
     - id: Dropper
     - id: HandLabeler
@@ -117,7 +119,8 @@
   id: LockerFillParamedic
   table: !type:AllSelector
     children:
-    - id: ClothingEyesHudMedical
+    # - id: ClothingEyesHudMedical # Moffstation - Modular Eyewear
+    - id: HudModuleShowMedicalIcons # Moffstation - Modular Eyewear
     - id: ClothingOuterHardsuitVoidParamed
     - id: ClothingBeltMedicalEMTFilled
     - id: JetInjector

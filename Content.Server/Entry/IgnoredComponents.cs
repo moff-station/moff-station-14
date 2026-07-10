@@ -5,6 +5,10 @@ namespace Content.Server.Entry
     {
         public static string[] List => new[] {
             "GenericVisualizerExtended", // Moffstation - Add client-only visualizer component
+            // ES START
+            "ESTimedDespawnLightFade",
+            "ESTimedDespawnSpriteFade",
+            // ES END
             "ConstructionGhost",
             "IconSmooth",
             "InteractionOutline",
@@ -22,7 +26,8 @@ namespace Content.Server.Entry
             "HolidayRsiSwap",
             "OptionsVisualizer",
             "AnomalyScannerScreen",
-            "MultipartMachineGhost"
+            "MultipartMachineGhost",
+            "DirectionalArrowIndicator"
         };
     }
 }

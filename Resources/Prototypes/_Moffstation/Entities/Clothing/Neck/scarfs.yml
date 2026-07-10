@@ -1,5 +1,27 @@
 - type: entity
-  parent: [ClothingNeckBase, BaseCommandContraband]
+  parent: [ClothingNeckScarfChameleonableBase, BaseCommandContraband]
+  id: ClothingNeckScarfCAP
+  name: captain's large scarf
+  description: A large, stylish blue and gold scarf. Will show people who is the one in charge of the station.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/cap-scarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/cap-scarf.rsi
+
+- type: entity
+  parent: [ClothingNeckScarfChameleonableBase, BaseCommandContraband]
+  id: ClothingNeckScarfCE
+  name: chief engineer's large scarf
+  description: A large, stylish orange and black scarf. Will keep you colder than the cold loop.
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Clothing/Neck/ce-scarf.rsi
+  - type: Clothing
+    sprite: _Moffstation/Clothing/Neck/ce-scarf.rsi
+
+- type: entity
+  parent: [ClothingNeckScarfChameleonableBase, BaseCommandContraband]
   id: ClothingNeckScarfCMO
   name: chief medical officer's large scarf
   description: A large, stylish white and blue scarf. Will keep you warm on a cold winter night.
@@ -10,37 +32,29 @@
     sprite: _Moffstation/Clothing/Neck/Scarfs/cmoscarf.rsi
 
 - type: entity
-  parent: [ClothingNeckBase, BaseSecurityContraband]
-  id: ClothingNeckDetBadge
-  name: Detective's Badge
-  description: A standard-issue badge designed for returning to the Head Of Security upon demotion.
+  parent: [ClothingNeckScarfChameleonableBase, BaseCommandContraband]
+  id: ClothingNeckScarfHOP
+  name: head of Personnel's formal scarf
+  description: A fancy scarf with lavish gold embellishments. Will show people who is the one in charge of access.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Neck/detective-badge.rsi
+    sprite: _Moffstation/Clothing/Neck/hop-scarf.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Neck/detective-badge.rsi
-  - type: Tag
-    tags:
-    - PetWearable
-    - CorgiWearable
-    - ClothMade
-    - Recyclable
-    - HamsterWearable
-    - WhitelistChameleon
+    sprite: _Moffstation/Clothing/Neck/hop-scarf.rsi
 
 - type: entity
-  parent: [ClothingNeckBase, BaseCommandContraband]
-  id: ClothingNeckScarfCAP
-  name: captain's large scarf
-  description: A large, stylish white and blue scarf. Will keep you warm on a cold winter night.
+  parent: [ClothingNeckScarfChameleonableBase, BaseCommandContraband]
+  id: ClothingNeckScarfHOS
+  name: head of Security's formal scarf
+  description: A fancy scarf with lavish gold embellishments. Will remind any bad actors about who is the true master of arms.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Neck/cap-scarf.rsi
+    sprite: _Moffstation/Clothing/Neck/hos-cape.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Neck/cap-scarf.rsi
+    sprite: _Moffstation/Clothing/Neck/hos-cape.rsi
 
 - type: entity
-  parent: [ClothingNeckBase, BaseCommandContraband]
+  parent: [ClothingNeckScarfChameleonableBase, BaseCommandContraband]
   id: ClothingNeckScarfQM
   name: quartermaster's large scarf
   description: A large, stylish brown scarf. Will keep you warm on a cold shuttle trip.
@@ -51,12 +65,12 @@
     sprite: _Moffstation/Clothing/Neck/qm-scarf.rsi
 
 - type: entity
-  parent: [ClothingNeckBase, BaseCommandContraband]
-  id: ClothingNeckScarfCE
-  name: chief engineer's large scarf
-  description: A large, stylish orange and black scarf. Will keep you colder than the cold loop.
+  parent: [ClothingNeckScarfChameleonableBase, BaseCommandContraband]
+  id: ClothingNeckScarfRD
+  name: research director's lavish scarf
+  description: A fancy scarf resembling a double helix. Will remind any ancestors who the mast of genetic research is.
   components:
   - type: Sprite
-    sprite: _Moffstation/Clothing/Neck/ce-scarf.rsi
+    sprite: _Moffstation/Clothing/Neck/rd-scarf.rsi
   - type: Clothing
-    sprite: _Moffstation/Clothing/Neck/ce-scarf.rsi
+    sprite: _Moffstation/Clothing/Neck/rd-scarf.rsi

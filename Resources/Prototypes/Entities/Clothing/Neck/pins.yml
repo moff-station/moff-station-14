@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingNeckBase
+  parent: ClothingNeckMetallicChameleonableBase # Moffstation - Fix neck slot parenting
   id: ClothingNeckPinBase
   abstract: true
   name: pin
@@ -28,7 +28,7 @@
         type: ChameleonBoundUserInterface
   - type: Tag
     tags:
-    - ClothMade #idk man its on the parent
+    - Recyclable # Moffstation - Fix neck slot parenting
     - WhitelistChameleon
     - GenderPin
 

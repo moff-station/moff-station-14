@@ -23,7 +23,7 @@
       - type: PermanentBlindness
         blindness: 4
   - !type:SpawnItemInHandEffect
-    item: ClothingEyesGlasses
+    item: HudModuleVisionCorrection
 
 - type: trait
   id: PainNumbness
@@ -55,7 +55,7 @@
     components:
     - type: ImpairedMobility
   - !type:SpawnItemInHandEffect
-    item: WhiteCane
+    item: OffsetCane
 
 - type: trait
   id: Feeble
@@ -86,6 +86,7 @@
   - !type:AddCompsEffect
     components:
     - type: Clumsy
+      clumsySound: null
 
 - type: trait
   id: Snoring

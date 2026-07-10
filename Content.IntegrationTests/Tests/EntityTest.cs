@@ -250,6 +250,10 @@ namespace Content.IntegrationTests.Tests
 
                 // Moffstation - Portals spawn more stuff on trigger, self-explanatory
                 "SpawnEntityTableOnTrigger",
+                // ES fancy timed despawn
+                "ESTimedDespawn",
+                "ESSparkOnTrigger",
+                "BluespaceLocker", // Spawns bluespace farticles in its code
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
