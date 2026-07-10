@@ -69,15 +69,16 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         if (solution.Volume <= FixedPoint2.Zero)
             return;
 
-
         // Choose le target...
         // if standing and have shoes, just get it on their shoes
-        // otherwise, just spill it on them in general
-        var target = args.OtherEntity;
-        if (!_standing.IsDown(args.OtherEntity)
-            && _inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes)
-            && shoes is { } shoeUid)
+        EntityUid target;
+        if (_standing.IsDown(args.OtherEntity)) // on the ground, spill it on them in general
+            target = args.OtherEntity;
+        else if (_inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes) && shoes is { } shoeUid)
             target = shoeUid;
+        else
+            return;
+
 
         var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
         RaiseLocalEvent(target, spilledEvent);

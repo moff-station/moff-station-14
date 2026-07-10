@@ -33,6 +33,10 @@ public sealed partial class StainableComponent : Component
 
     [ViewVariables]
     public HashSet<int> RevealedLayers = new();
+
+    [DataField]
+    public float StainChance = 0.5f;
+
 }
 
 [Serializable, NetSerializable]
