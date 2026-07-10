@@ -141,7 +141,7 @@ If you are cherry-picking a change that is **certain** to be merged, you do not 
 > [!CAUTION]
 > Be sure that the content you are porting is licensed under the same license as Moffstation, or a compatible one. Content that is licensed under AGPL is not allowed to be ported to Moffstation, as it is not compatible with our license.
 
-When porting from other forks, please link back to the original PR so we can tell where the content is coming from, and to give the original authors credit.
+When porting from other forks, please link back to the original PR so we can tell where the content is coming from, and to give the original authors credit in the PR body and in the changelog entry.
 
 When porting content from other forks, make sure to separate ported content into its own namespace. This makes it easier to keep track of what content is ported from other forks, and what content is original to Moffstation. For example, porting content over from Sector Umbra would be placed in the `_Umbra` namespace, and porting content from Harmony would be placed in the `_Harmony` namespace.
 
