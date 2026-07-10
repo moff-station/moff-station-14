@@ -13,20 +13,6 @@ As a base, we expect you to follow the [Space Station 14 Contribution Guidelines
 >
 >We highly recommend you use an IDE like [Jetbrains Rider](https://www.jetbrains.com/rider/). It's free for non-commercial use, and it basically holds your hand.
 
-## AI-generated content
-The Moffstation project does not accept any low-effort or wholesale AI-generated contributions.
-This includes the following, but is not limited to:
-- Any code (C#, YAML, XML, etc.) generated from tools like ChatGPT, Github Copilot, Cursor, and whatever ChatGPT wrapper that's currently the hottest thing on the block.
-- Any artwork, sound files, or other assets.
-- Auto-generated documentation, GitHub's issue/PR changes summarization tools, among other tools.
-
-Exceptions to this are simple tools, for example:
-- Machine learning-assisted full line code completion.
-- Intellisense/ReSharper machine learning-sorted autocompletion suggestions (or any other ML-assisted sorting operation).
-- Machine learning-assisted grammar error correction.
-
-Maintainers still hold the right to deny contributions that have been created by AI, even if they only appear as such.
-
 ## Moffstation-exclusive content
 
 ### Namespacing
@@ -45,9 +31,9 @@ Examples:
 Try to mirror the original file structure of the game as much as possible when adding new content in our custom namespace. This makes it easier for others to find and understand your changes.
 
 ### Naming Conventions
-New Components, Systems, Entities, and Prototypes which are exclusive to Moffstation should be prefixed With `Moff` in their IDs.
+New Components, Systems, Entities, and Prototypes which are exclusive to Moffstation should be prefixed With or include `Moff` in their IDs.
 
-This helps us determine with just a glace what belongs to us, and helps ease the maintenance burden.
+This helps us determine with just a glace which things are exclusive to our fork, and helps ease the maintenance burden.
 
 ## Changes to upstream files
 If you make changes to files that are part of the upstream project, you must comment them respectively. This is to make it easier for us to keep track of what changes we have made to the upstream project (for merge conflict resolution)
@@ -68,29 +54,29 @@ Generally, you should state the reason why you modified the code.
 
 For modifying single lines of YAML:
 ```yaml
-# Moffstation - (reason)
+# Moff - (reason)
 ```
 
 For multi-line YAML changes:
 ```yaml
-# Moffstation - Begin - (reason)
+# Moff start - (reason)
 (content)
 (content)
-# Moffstation - End
+# Moff end
 ```
 
 Example:
 ```yaml
-# Moffstation - Begin - Make warops admin only
+# Moff start - Make warops admin only
 #  inhand:
 #  - NukeOpsDeclarationOfWar
-# Moffstation - End
+# Moff end
 ```
 
 
 For modifying single lines of C#:
 ```csharp
-public const int LowPressureDamage = 4; // Moffstation - Revert to original value for a better MRP experience
+public const int LowPressureDamage = 4; // Moff - Revert to original value for a better MRP experience
 ```
 
 For multi-line C# changes:
@@ -110,7 +96,7 @@ public EntityUid SpawnPlayerMob(
             profile = HumanoidCharacterProfile.RandomWithSpecies(speciesId);
         }
 
-        // Moffstation - Begin - Clown/Borg/Mime loadout names (Moved from lower in file, separated from ID processing)
+        // Moff start - Clown/Borg/Mime loadout names (Moved from lower in file, separated from ID processing)
         if (profile != null)
         {
             _humanoidSystem.LoadProfile(entity.Value, profile);
@@ -121,7 +107,7 @@ public EntityUid SpawnPlayerMob(
                 AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
             }
         }
-        // Moffstation - End - Clown/Borg/Mime loadout names
+        // Moff end - Clown/Borg/Mime loadout names
 
         if (loadout != null)
         {
@@ -135,11 +121,11 @@ public EntityUid SpawnPlayerMob(
 For easier organization, you can also choose to wrap large sections of Moffstation-specific upstream changes in their own `#region`. Make sure to keep the comments at the top and bottom of the region, as they are used to identify the changes when searching for them.
 
 ```csharp
-#region Moffstation - (reason)
-// Moffstation - Begin - (reason)
+#region Moff - (reason)
+// Moff start - (reason)
 (content)
 (content)
-// Moffstation - End
+// Moff end
 #endregion
 ```
 
@@ -155,9 +141,16 @@ If you are cherry-picking a change that is **certain** to be merged, you do not 
 > [!CAUTION]
 > Be sure that the content you are porting is licensed under the same license as Moffstation, or a compatible one. Content that is licensed under AGPL is not allowed to be ported to Moffstation, as it is not compatible with our license.
 
+When porting from other forks, please link back to the original PR so we can tell where the content is coming from, and to give the original authors credit.
+
 When porting content from other forks, make sure to separate ported content into its own namespace. This makes it easier to keep track of what content is ported from other forks, and what content is original to Moffstation. For example, porting content over from Sector Umbra would be placed in the `_Umbra` namespace, and porting content from Harmony would be placed in the `_Harmony` namespace.
 
 If the ported content doesn't come in a namespace folder, create a new namespace folder with the fork name and place the content in there.
+
+## Modifying art and sprites
+We're happy to accept cool art and sprites for Moffstation!
+
+We have a specific artstyle and palette that we use, with a general guide being found [on our wiki](https://moff-station.github.io/moff-docs/development/guides/moffstation-style-guide.html). Feel free to reference the sprites used in our namespace or ask in the spriting channel to get a feel for what we want!
 
 ## Mapping
 We're happy to accept new, unique maps for Moffstation!
@@ -173,15 +166,6 @@ Modifying upstream maps is done exclusively via "Map patching" which allows us t
 
 If you wish to modify an upstream map extensively, we will place it under the Moffstation namespace. Keep in mind this means you will bear the responsibility of maintaining the map and keeping it up to date.
 
-## Modifying art and sprites
-We're happy to accept cool art and sprites for Moffstation!
-
-We don't have any specific guidelines for new art and sprites other than:
-- Does it look good?
-- Does it fit the general theme of Upstream/Moffstation?
-
-Art is voted on by the community of Moffstation, and if it is accepted, it will be added to the game.
-
 ## Balance Changes
 Changes centered around balance are brought under higher scrutiny than normal changes - they are oftentimes not accepted for the following reasons:
 - Balance changes often have to modify upstream files, which make upstream merges more annoying for Maintainers to perform.
@@ -195,7 +179,19 @@ This does not mean balance changes are not allowed, but we expect them to be wel
 ## Rules Changes
 We do not accept or consider rules changes submitted over GitHub by non-staff. Please use the suggestions channel within the discord to suggest changes to the rules.
 
+## AI-generated content
+The Moffstation project does not accept any low-effort or wholesale AI-generated contributions.
+This includes the following, but is not limited to:
+- Any code (C#, YAML, XML, etc.) generated from tools like ChatGPT, Github Copilot, Cursor, and whatever ChatGPT wrapper that's currently the hottest thing on the block.
+- Any artwork, sound files, or other assets.
+- Auto-generated documentation, GitHub's issue/PR changes summarization tools, among other tools.
 
+Exceptions to this are simple tools, for example:
+- Machine learning-assisted full line code completion.
+- Intellisense/ReSharper machine learning-sorted autocompletion suggestions (or any other ML-assisted sorting operation).
+- Machine learning-assisted grammar error correction.
+
+Maintainers still hold the right to deny contributions that have been created by AI, even if they only appear as such.
 
 ## Before submitting a pull request
 Before submitting a pull request, make sure to:
