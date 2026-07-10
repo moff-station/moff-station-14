@@ -1,0 +1,59 @@
+- type: mapModification
+  id: ElkridgeModificationsLaundry
+  applyOn:
+  - Elkridge
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: RandomPosterLegit
+    bounds: "-14,-13,-15,-14"
+  - !type:EntityPrototypeSelector
+    prototype: Sink
+    bounds: "-18,-12,-19,-13"
+  - !type:EntityPrototypeSelector
+    prototype: ClothingOuterApronBar
+    bounds: "-18,-14,-19,-13"
+  - !type:EntityPrototypeSelector
+    prototype: ClothingHeadHatGreysoft
+    bounds: "-18,-14,-19,-13"
+  - !type:EntityPrototypeSelector
+    prototype: DrinkGlass
+    bounds: "-15,-13,-16,-14"
+  - !type:EntityPrototypeSelector
+    prototype: Rack
+    bounds: "-15,-13,-16,-14"
+  - !type:EntityPrototypeSelector
+    prototype: BarSignSpacebucks
+  - !type:EntityPrototypeSelector
+    prototype: SodaDispenser
+    bounds: "-18,-14,-19,-15"
+  - !type:EntityPrototypeSelector
+    prototype: AirlockServiceLocked
+    bounds: "-14,-12,-15,-13"
+  - !type:EntityPrototypeSelector
+    prototype: VendingMachineDonut
+    bounds: "-19,-13,-20,-14"
+  - !type:EntityPrototypeSelector
+    prototype: DrinkMugBlack
+    bounds: "-18,-14,-17,-15"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -17.5, -12.5
+  - prototype: WashingMachine
+    position: -16.5, -12.5
+  - prototype: SignLaundromat
+    position: -14.5, -13.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -17.5, -13.5
+    # Additional Visual Improvements
+  - prototype: VendingMachineDonut
+    position: -18.5, -12.5
+  - prototype: ChairFolding
+    position: -19.5, -13.5
+    rotation: 90
+  - prototype: RandomPosterAny
+    position: -17.5, -11.5
+  - prototype: RandomFoodSingle
+    position: -18.5, -14.5
+  - prototype: Airlock
+    position: -14.5, -12.5
