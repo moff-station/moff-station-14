@@ -8,7 +8,11 @@
     antagPrototype: BloodBrother
     exclusiveAntag: true
     roleType: TeamAntagonist
-    subtype: role-subtype-blood-brother
+    # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-blood-brother
+    subtype: role-subtype-faction-blood-brothers
+    subtypeColor: mediumvioletred
+    # Moffstation - End
 
 - type: entity
   parent: BaseMindRoleAntag
@@ -20,4 +24,8 @@
     antagPrototype: Conspirator
     exclusiveAntag: true
     roleType: TeamAntagonist
-    subtype: role-subtype-conspirator
+    # Moffstation - Start - Character menu UI rework
+    # subtype: role-subtype-conspirator
+    subtype: role-subtype-faction-conspiracy
+    subtypeColor: '#7f8c8d'
+    # Moffstation - End

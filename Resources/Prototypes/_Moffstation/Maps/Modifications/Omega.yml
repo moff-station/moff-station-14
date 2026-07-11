@@ -1,0 +1,39 @@
+- type: mapModification
+  id: OmegaModificationsLaundry
+  applyOn:
+  - Omega
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: Sink
+    bounds: "13, 10, 18, 5"
+  - !type:EntityPrototypeSelector
+    prototype: FloorDrain
+    bounds: "13, 10, 18, 5"
+  - !type:EntityPrototypeSelector
+    prototype: MirrorModern
+    bounds: "13, 10, 18, 5"
+  - !type:EntityPrototypeSelector
+    prototype: Screen
+    bounds: "13, 10, 18, 5"
+  - !type:EntityPrototypeSelector
+    prototype: PosterLegitCleanliness
+    bounds: "13, 10, 18, 5"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 14.5, 8.5
+  - prototype: SignLaundromat
+    position: 13.5, 6.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 15.5, 8.5
+    # Additional Visual Improvements
+  - prototype: FloorDrain
+    position: 14.5, 6.5
+  - prototype: Sink
+    position: 14.5, 6.5
+    rotation: 180
+  - prototype: MirrorModern
+    position: 14.5, 5.5
+    rotation: 180
+  - prototype: Screen
+    position: 10.5, 7.5

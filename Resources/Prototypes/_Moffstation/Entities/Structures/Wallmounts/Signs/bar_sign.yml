@@ -1,8 +1,17 @@
 - type: entity
   parent: BaseBarSign
+  id: BarSignArnoldsPizza
+  name: Arnold's Pizza
+  description: Doesn't matter what you want, every pizza comes with pepperoni and with 9mm bullets on it.
+  components:
+  - type: BarSign
+    current: ArnoldsPizza
+
+- type: entity
+  parent: BaseBarSign
   id: BarSignPinkDogCafe
   name: Pink Dog Cafe
-  description: The reviews on Yarp are saying they serve toilet water. 4/5 stars. 
+  description: The reviews on Yarp are saying they serve toilet water. 4/5 stars.
   components:
   - type: BarSign
     current: PinkDogCafe

@@ -11,6 +11,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
+using Robust.Shared.Maths; // Moffstation - SubtypeColor
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -26,7 +27,6 @@ public abstract partial class SharedRoleSystem : EntitySystem
     [Dependency] protected ISharedPlayerManager Player = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private SharedMindSystem _minds = default!;
-    [Dependency] private IPrototypeManager _prototypes = default!;
 
     private JobRequirementOverridePrototype? _requirementOverride;
 
@@ -53,7 +53,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
             return;
         }
 
-        if (!_prototypes.TryIndex(value, out _requirementOverride))
+        if (!ProtoMan.TryIndex(value, out _requirementOverride))
             Log.Error($"Unknown JobRequirementOverridePrototype: {value}");
     }
 
@@ -140,7 +140,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
             return;
         }
 
-        if (!_prototypes.Resolve(protoId, out var protoEnt))
+        if (!ProtoMan.Resolve(protoId, out var protoEnt))
         {
             Log.Error($"Failed to add role {protoId} to {ToPrettyString(mindId)} : Role prototype does not exist");
             return;
@@ -204,23 +204,27 @@ public abstract partial class SharedRoleSystem : EntitySystem
             return false;
 
         //get the most important/latest mind role
-        var (roleType, subtype) = GetRoleTypeByTime(ent.Comp);
+        // Moffstation - Start - SubtypeColor
+        var (roleType, subtype, subtypeColor) = GetRoleTypeByTime(ent.Comp);
 
-        if (ent.Comp.RoleType == roleType && ent.Comp.Subtype == subtype)
+        if (ent.Comp.RoleType == roleType && ent.Comp.Subtype == subtype && ent.Comp.SubtypeColor == subtypeColor)
             return false;
 
-        SetRoleType(ent.Owner, roleType, subtype);
+        SetRoleType(ent.Owner, roleType, subtype, subtypeColor);
+        // Moffstation - End
         return true;
     }
 
     /// <summary>
     ///     Return the most recently specified role type and subtype, or Neutral
     /// </summary>
-    private (ProtoId<RoleTypePrototype>, LocId?) GetRoleTypeByTime(MindComponent mind)
+    // Moffstation - Start - SubtypeColor (returns SubtypeColor as third element)
+    private (ProtoId<RoleTypePrototype>, LocId?, Color?) GetRoleTypeByTime(MindComponent mind)
     {
         var role = GetRoleCompByTime(mind);
-        return (role?.Comp?.RoleType ?? "Neutral", role?.Comp?.Subtype);
+        return (role?.Comp?.RoleType ?? "Neutral", role?.Comp?.Subtype, role?.Comp?.SubtypeColor);
     }
+    // Moffstation - End
 
     /// <summary>
     ///     Return the most recently specified role type's mind role entity, or null
@@ -240,7 +244,9 @@ public abstract partial class SharedRoleSystem : EntitySystem
         return (result);
     }
 
-    private void SetRoleType(EntityUid mind, ProtoId<RoleTypePrototype> roleTypeId, LocId? subtype)
+    // Moffstation - Start - SubtypeColor (added subtypeColor parameter)
+    private void SetRoleType(EntityUid mind, ProtoId<RoleTypePrototype> roleTypeId, LocId? subtype, Color? subtypeColor = null)
+    // Moffstation - End
     {
         if (!TryComp<MindComponent>(mind, out var comp))
         {
@@ -248,7 +254,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
             return;
         }
 
-        if (!_prototypes.HasIndex(roleTypeId))
+        if (!ProtoMan.HasIndex(roleTypeId))
         {
             Log.Error($"Failed to change Role Type of {_minds.MindOwnerLoggingString(comp)} to {roleTypeId}, {subtype}. Invalid role");
             return;
@@ -256,6 +262,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
 
         comp.RoleType = roleTypeId;
         comp.Subtype = subtype;
+        comp.SubtypeColor = subtypeColor; // Moffstation - SubtypeColor
         Dirty(mind, comp);
 
         // Update player character window
@@ -571,7 +578,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
             if (comp.JobPrototype is not null && comp.AntagPrototype is null)
             {
                 prototype = comp.JobPrototype;
-                if (_prototypes.TryIndex(comp.JobPrototype, out var job))
+                if (ProtoMan.TryIndex(comp.JobPrototype, out var job))
                 {
                     playTimeTracker = job.PlayTimeTracker;
                     name = job.Name;
@@ -585,7 +592,7 @@ public abstract partial class SharedRoleSystem : EntitySystem
             else if (comp.AntagPrototype is not null && comp.JobPrototype is null)
             {
                 prototype = comp.AntagPrototype;
-                if (_prototypes.TryIndex(comp.AntagPrototype, out var antag))
+                if (ProtoMan.TryIndex(comp.AntagPrototype, out var antag))
                 {
                     name = antag.Name;
                     valid = true;
@@ -715,14 +722,14 @@ public abstract partial class SharedRoleSystem : EntitySystem
     /// <inheritdoc cref="GetRoleRequirements(JobPrototype)"/>
     public HashSet<JobRequirement>? GetRoleRequirements(ProtoId<JobPrototype> jobId)
     {
-        return _prototypes.TryIndex(jobId, out var job) ? GetRoleRequirements(job) : null;
+        return ProtoMan.TryIndex(jobId, out var job) ? GetRoleRequirements(job) : null;
     }
 
     // TODO ROLES Change to readonly?
     /// <inheritdoc cref="GetRoleRequirements(JobPrototype)"/>
     public HashSet<JobRequirement>? GetRoleRequirements(ProtoId<AntagPrototype> antagId)
     {
-        return _prototypes.TryIndex(antagId, out var antag) ? GetRoleRequirements(antag) : null;
+        return ProtoMan.TryIndex(antagId, out var antag) ? GetRoleRequirements(antag) : null;
     }
 
     /// <summary>
