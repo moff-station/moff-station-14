@@ -172,6 +172,8 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
                 SpawnChemicalsFromComposition(uid, item, completion, true, component, xform);
         }
 
+        var eventArgs = new DestructionEventArgs();
+        RaiseLocalEvent(item, eventArgs);
         //Moffstation - recycler damage change - begin
         if(!CanGib(uid, item, component))
             QueueDel(item);
