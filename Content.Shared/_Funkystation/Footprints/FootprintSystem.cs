@@ -78,7 +78,7 @@ public sealed partial class FootprintSystem : EntitySystem
         }
 
         Dirty(uid, component);
-        RaiseNetworkEvent(new FootprintStateEvent(GetNetEntity(uid)), Filter.Pvs(uid));
+        RaiseLocalEvent(new FootprintStateEvent(GetNetEntity(uid)));
     }
 
     private void OnFootprintCleaned(EntityUid uid, FootprintComponent component, ref FootprintCleanEvent args)
@@ -158,9 +158,6 @@ public sealed partial class FootprintSystem : EntitySystem
 
         var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Solution.Comp.Solution.Volume);
         _solutionContainer.TryTransferSolution(ownerSolution.Solution, puddleSolution.Value.Comp.Solution, spaceLeft);
-        _solutionContainer.UpdateChemicals(ownerSolution.Solution, false);
-
-        _solutionContainer.UpdateChemicals(puddleSolution.Value, false);
         return true;
     }
 
@@ -195,7 +192,6 @@ public sealed partial class FootprintSystem : EntitySystem
         // Moff end
 
         _solutionContainer.TryTransferSolution(printSolution.Solution, ownerSolution.Value.Comp.Solution, transferAmount);
-        _solutionContainer.UpdateChemicals(printSolution.Solution, false);
 
         if (printSolution.Solution.Comp.Solution.Volume >= MaxVolumePerTile)
         {
@@ -254,18 +250,13 @@ public sealed partial class FootprintSystem : EntitySystem
     private FixedPoint2 CalculateTransferVolume(FootprintOwnerComponent component, Entity<SolutionComponent> sol, bool isStanding)
     {
         var vol = sol.Comp.Solution.Volume;
-        if (isStanding)
-        {
-            var fraction = vol / component.MaxFootVolume;
-            var spread = component.MaxFootprintVolume - component.MinPrintVolume;
-            return FixedPoint2.Min(vol, (spread * fraction) + component.MinPrintVolume);
-        }
-        else
-        {
-            var fraction = vol / component.MaxBodyVolume;
-            var spread = component.MaxBodyprintVolume - component.MinBodyPrintVolume;
-            return FixedPoint2.Min(vol, (spread * fraction) + component.MinBodyPrintVolume);
-        }
+        var maxVolume = isStanding ? component.MaxFootVolume : component.MaxBodyVolume;
+        var maxPrintVolume = isStanding ? component.MaxFootprintVolume : component.MaxBodyprintVolume;
+        var minPrintVolume = isStanding ? component.MinPrintVolume : component.MinBodyPrintVolume;
+
+        var fraction = vol / maxVolume;
+        var spread = maxPrintVolume - minPrintVolume;
+        return FixedPoint2.Max(FixedPoint2.Min(vol, (spread * fraction) + minPrintVolume), 0f);
     }
 
     private bool TryGetAnchoredPuddle(EntityUid gridUid, MapGridComponent grid, Vector2i tile, out EntityUid entityUid, [NotNullWhen(true)] out PuddleComponent? component)
