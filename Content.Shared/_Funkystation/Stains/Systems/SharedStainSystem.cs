@@ -78,9 +78,11 @@ public abstract partial class SharedStainSystem : EntitySystem
 
         if (split.Volume > 0)
         {
+            // Moff start - Our changes YEAH
             // if it's over the limit, then make a bit of room. why not, lets us mix shit
             if (split.Volume > stainSolution.Value.Comp.Solution.AvailableVolume)
                 stainSolution.Value.Comp.Solution.RemoveSolution(split.Volume);
+            // Moff end
             _solution.TryAddSolution(stainSolution.Value, split);
             UpdateVisuals(ent);
             OnStained(ent, stainSolution.Value);
