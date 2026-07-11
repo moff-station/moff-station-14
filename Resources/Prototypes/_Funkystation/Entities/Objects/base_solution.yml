@@ -19,25 +19,3 @@
     solution:
       maxVol: 20
       canReact: false
-
-- type: entity
-  parent: Solution
-  id: SolutionFootPrint
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Solution
-    id: print
-    solution:
-      maxVol: 10
-      canReact: false
-
-- type: entity
-  parent: Solution
-  id: SolutionBodyPrint
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Solution
-    id: print
-    solution:
-      maxVol: 20
-      canReact: false

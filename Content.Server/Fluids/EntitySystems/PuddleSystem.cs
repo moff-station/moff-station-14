@@ -64,6 +64,12 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
+        // Moff start - Exclude foobrints from being splashed, since they like... have the container
+        // Potentially we may want them to splash, but it can cause some weird behavior just because of how footprints are set up
+        if (HasComp<FootprintComponent>(ent.Owner))
+            return;
+        // Moff end
+
         if (!_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
             return;
 

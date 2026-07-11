@@ -48,10 +48,6 @@ public sealed partial class FootprintSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<FootprintComponent, FootprintCleanEvent>(OnFootprintCleaned);
-        SubscribeLocalEvent<FootprintOwnerComponent, MoveEvent>(OnEntityMoved);
-        SubscribeLocalEvent<PuddleComponent, MapInitEvent>(OnPuddleInit);
-
         // Listen for chemical changes (like Space Cleaner)
         // Moff, after sharedpuddle
         SubscribeLocalEvent<FootprintComponent, SolutionChangedEvent>(OnSolutionChanged, after: [typeof(SharedPuddleSystem)]);
@@ -81,17 +77,19 @@ public sealed partial class FootprintSystem : EntitySystem
         RaiseLocalEvent(new FootprintStateEvent(GetNetEntity(uid)));
     }
 
-    private void OnFootprintCleaned(EntityUid uid, FootprintComponent component, ref FootprintCleanEvent args)
+    [SubscribeLocalEvent]
+    private void OnFootprintCleaned(Entity<FootprintComponent> ent, ref FootprintCleanEvent args)
     {
-        TurnIntoPuddle(uid);
+        TurnIntoPuddle(ent.Owner);
     }
 
-    private void OnEntityMoved(EntityUid uid, FootprintOwnerComponent component, ref MoveEvent args)
+    [SubscribeLocalEvent]
+    private void OnEntityMoved(Entity<FootprintOwnerComponent> ent, ref MoveEvent args)
     {
-        if (HasComp<NoFootprintsComponent>(uid))
+        if (HasComp<NoFootprintsComponent>(ent.Owner))
             return;
 
-        if (_inventory.TryGetSlotEntity(uid, "shoes", out var shoes) && HasComp<NoFootprintsComponent>(shoes))
+        if (_inventory.TryGetSlotEntity(ent.Owner, "shoes", out var shoes) && HasComp<NoFootprintsComponent>(shoes))
             return;
 
         if (!args.OldPosition.IsValid(EntityManager) || !args.NewPosition.IsValid(EntityManager))
@@ -100,17 +98,17 @@ public sealed partial class FootprintSystem : EntitySystem
         var prevPos = _transform.ToMapCoordinates(args.OldPosition).Position;
         var currentPos = _transform.ToMapCoordinates(args.NewPosition).Position;
 
-        component.DistanceWalked += Vector2.Distance(currentPos, prevPos);
+        ent.Comp.DistanceWalked += Vector2.Distance(currentPos, prevPos);
 
-        var isStanding = !TryComp<StandingStateComponent>(uid, out var standing) || standing.Standing;
-        var requiredDistance = isStanding ? component.FootstepDistance : component.DragDistance;
+        var isStanding = !TryComp<StandingStateComponent>(ent.Owner, out var standing) || standing.Standing;
+        var requiredDistance = isStanding ? ent.Comp.FootstepDistance : ent.Comp.DragDistance;
 
-        if (component.DistanceWalked < requiredDistance)
+        if (ent.Comp.DistanceWalked < requiredDistance)
             return;
 
-        component.DistanceWalked -= requiredDistance;
+        ent.Comp.DistanceWalked -= requiredDistance;
 
-        var xform = Transform(uid);
+        var xform = Transform(ent.Owner);
         if (xform.GridUid is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
             return;
 
@@ -124,8 +122,8 @@ public sealed partial class FootprintSystem : EntitySystem
         var walkAngle = moveVector.ToAngle();
         var rotation = walkAngle + Angle.FromDegrees(90);
 
-        var stepOffset = isStanding ? component.AlternateStepOffset : 0f;
-        component.AlternateStepOffset = -component.AlternateStepOffset;
+        var stepOffset = isStanding ? ent.Comp.AlternateStepOffset : 0f;
+        ent.Comp.AlternateStepOffset = -ent.Comp.AlternateStepOffset;
 
         var rightVector = new Angle(walkAngle.Theta - Math.PI / 2).ToVec();
         var offsetPos = newLocal + rightVector * stepOffset;
@@ -133,10 +131,10 @@ public sealed partial class FootprintSystem : EntitySystem
         var coords = new EntityCoordinates(gridUid, offsetPos);
         var tileIndices = _map.CoordinatesToTile(gridUid, grid, coords);
 
-        if (ProcessPuddleStepping(uid, component, gridUid, grid, tileIndices, isStanding))
+        if (ProcessPuddleStepping(ent.Owner, ent.Comp, gridUid, grid, tileIndices, isStanding))
             return;
 
-        CreateFootprint(uid, component, gridUid, grid, tileIndices, coords, rotation, isStanding);
+        CreateFootprint(ent.Owner, ent.Comp, gridUid, grid, tileIndices, coords, rotation, isStanding);
     }
 
     private bool ProcessPuddleStepping(EntityUid uid, FootprintOwnerComponent component, EntityUid gridUid, MapGridComponent grid, Vector2i tile, bool isStanding)
@@ -215,12 +213,13 @@ public sealed partial class FootprintSystem : EntitySystem
         RaiseNetworkEvent(ev);
     }
 
-    private void OnPuddleInit(EntityUid uid, PuddleComponent component, ref MapInitEvent args)
+    [SubscribeLocalEvent]
+    private void OnPuddleInit(Entity<PuddleComponent> ent, ref MapInitEvent args)
     {
-        if (HasComp<FootprintComponent>(uid))
+        if (HasComp<FootprintComponent>(ent.Owner))
             return;
 
-        var xform = Transform(uid);
+        var xform = Transform(ent.Owner);
         if (xform.GridUid is not { } gridUid || !TryComp<MapGridComponent>(gridUid, out var grid))
             return;
 
