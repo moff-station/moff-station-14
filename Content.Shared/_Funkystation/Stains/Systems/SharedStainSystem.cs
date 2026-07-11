@@ -66,12 +66,7 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
-        // Moffstation - Changed transfer amound to available volume, also check if its more than 0 before splitting
-        var transferAmount = FixedPoint.FixedPoint2.Min(args.Solution.AvailableVolume, ent.Comp.SpillTransferAmount);
-        if (transferAmount <= 0)
-            return;
-
-        var split = args.Solution.SplitSolution(transferAmount);
+        var split = args.Solution.SplitSolution(ent.Comp.SpillTransferAmount);
 
         for (var i = split.Contents.Count - 1; i >= 0; i--)
         {
@@ -83,6 +78,9 @@ public abstract partial class SharedStainSystem : EntitySystem
 
         if (split.Volume > 0)
         {
+            // if it's over the limit, then make a bit of room. why not, lets us mix shit
+            if (split.Volume > stainSolution.Value.Comp.Solution.AvailableVolume)
+                stainSolution.Value.Comp.Solution.RemoveSolution(split.Volume);
             _solution.TryAddSolution(stainSolution.Value, split);
             UpdateVisuals(ent);
             OnStained(ent, stainSolution.Value);
