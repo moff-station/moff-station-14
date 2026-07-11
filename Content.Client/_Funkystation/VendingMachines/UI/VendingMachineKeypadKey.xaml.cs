@@ -5,10 +5,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Input;
-using Robust.Shared.Player;
 
 namespace Content.Client._Funkystation.VendingMachines.UI;
 
@@ -17,25 +14,20 @@ public sealed partial class VendingMachineKeypadKey : LayoutContainer
 {
     private const float NativeSize = 32f;
     private const float DisplayScale = 1.5f;
+    private const float PressedDarken = 0.7f;
 
     public event Action? OnKeyPressed;
 
     [Dependency] private IResourceCache _resourceCache = null!;
-    [Dependency] private IEntityManager _entManager = null!;
-    private readonly SharedAudioSystem _audio;
-    private readonly float _pitchScale;
 
     private Color _baseColor = Color.White;
     private Color _hoverColor = new Color(1.2f, 1.2f, 1.2f);
-    private Color _pressedColor = new Color(0.7f, 0.7f, 0.7f);
+    private Color _pressedColor = new Color(PressedDarken, PressedDarken, PressedDarken);
 
-    public VendingMachineKeypadKey(string key, float pitchScale = 1f)
+    public VendingMachineKeypadKey(string key)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-
-        _audio = _entManager.System<SharedAudioSystem>();
-        _pitchScale = pitchScale;
 
         KeyLabel.Text = key;
         KeyLabel.FontColorOverride = new Color(0x80, 0x7b, 0x7a);
@@ -81,9 +73,6 @@ public sealed partial class VendingMachineKeypadKey : LayoutContainer
 
         KeySprite.Modulate = _pressedColor;
         args.Handle();
-
-        var audioParams = new AudioParams().WithVolume(-4f).WithPitchScale(_pitchScale);
-        _audio.PlayGlobal(new SoundPathSpecifier("/Audio/Machines/Nuke/general_beep.ogg"), Filter.Local(), false, audioParams);
     }
 
     private void OnRelease(GUIBoundKeyEventArgs args)
