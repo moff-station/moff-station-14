@@ -79,7 +79,12 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
 
         var clearKey = new VendingMachineKeypadKey(Loc.GetString("vending-machine-keypad-clear"));
         clearKey.SetTint(Color.FromHex("#ffb3b3"), Color.FromHex("#ffcccc"), Color.FromHex("#800000"));
-        clearKey.OnKeyPressed += ClearBuffer;
+        clearKey.OnKeyPressed += () =>
+        {
+            _audio.PlayPredicted(new SoundPathSpecifier("/Audio/Machines/Nuke/general_beep.ogg"), VendingMachineOwner, User, new AudioParams().WithVolume(-4f).WithPitchScale(0.7f));
+            OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Beep, 0.7f);
+            ClearBuffer();
+        };
         NumpadGrid.AddChild(clearKey);
 
         var zeroKey = new VendingMachineKeypadKey("0");
@@ -254,9 +259,6 @@ public sealed partial class VendingMachineKeypadMenu : FancyWindow
     {
         if (_showingFeedback)
             return;
-
-        _audio.PlayPredicted(new SoundPathSpecifier("/Audio/Machines/Nuke/general_beep.ogg"), VendingMachineOwner, User, new AudioParams().WithVolume(-4f).WithPitchScale(0.7f));
-        OnAudioPlayed?.Invoke(VendingMachineKeypadSound.Beep, 0.7f);
 
         _bufferLetter = null;
         _bufferNumber = null;
