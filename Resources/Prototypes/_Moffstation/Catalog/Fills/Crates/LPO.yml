@@ -98,18 +98,23 @@
         tableId: FilingCabinetFillTableLPO
 
 # LPO Orders
+# Bases. Use CrateLPOBase for equipment orders, and EventLPOBase for gamerules the LPO can trigger.
 - type: entity
+  abstract: true
   parent: CrateSyndicate
   id: CrateLPOBase
   suffix: LPO
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:NestedSelector
-        tableId: FilingCabinetFillTableLPOTest
 
-- type: entityTable
-  id: FilingCabinetFillTableLPOTest
-  table: !type:AllSelector
-    children:
-    - id: EffectFlashRedspace
+- type: entity
+  abstract: true
+  parent: MarkerBase
+  id: EventLPOBase
+  suffix: LPO
+  components:
+  - type: TriggerOnSpawn
+  - type: TimedDespawn
+    lifetime: 0.3
+  - type: Sprite
+    layers:
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
