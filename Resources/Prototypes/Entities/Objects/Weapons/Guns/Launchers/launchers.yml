@@ -226,7 +226,7 @@
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
 
 - type: entity
-  parent: BaseItem, BasePointerCrosshair
+  parent: [ BaseItem, BasePointerCrosshair ]
   id: WeaponGrapplingGun
   name: grappling gun
   components:
