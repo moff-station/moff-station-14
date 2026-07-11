@@ -50,3 +50,8 @@ ai-shell-brain-empty = empty shell
 ai-shell-brain-uncontrolled = empty shell
 
 ai-shell-guideentry = AI Shells
+
+# AI warp
+ai-warp-fail-no-eye = Eye unavailable
+ai-warp-fail-out-reach = Target out of reach
+ai-warp-fail-no-coords = Target without coordinates

@@ -7,3 +7,11 @@
   - type: PirateNavMapBeacon
   - type: NavMapBeacon
     text: Pirate Cove
+
+- type: entity
+  parent: DefaultStationBeaconService
+  id: DefaultStationBeaconLaundromat
+  suffix: Laundromat
+  components:
+  - type: NavMapBeacon
+    text: Laundromat

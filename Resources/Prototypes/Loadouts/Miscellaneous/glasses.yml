@@ -21,7 +21,6 @@
 # Glasses
 - type: loadout
   id: Glasses
-  groupBy: "standard eyewear" # Moffstation - Modular Eyewear
   equipment:
     eyes: ClothingEyesGlasses
 
@@ -29,8 +28,7 @@
 # Jamjar
 - type: loadout
   id: GlassesJamjar
-  # Moffstation - Start - Modular Eyewear
-  groupBy: "standard eyewear"
+  # Moffstation - Start - Timer removal
   # effects:
   # - !type:GroupLoadoutEffect
   #   proto: JamjarTimer
@@ -41,8 +39,7 @@
 # Jensen
 - type: loadout
   id: GlassesJensen
-  # Moffstation - Start - Modular Eyewear
-  groupBy: "standard eyewear"
+  # Moffstation - Start - Timer removal
   # effects:
   # - !type:GroupLoadoutEffect
   #   proto: JensenTimer
