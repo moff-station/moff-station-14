@@ -22,8 +22,7 @@ public sealed partial class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomS
         // we have to select this here because AntagSelectLocationEvent is raised twice because MakeAntag is called twice
         // once when a ghost role spawner is created and once when someone takes the ghost role
 
-        // Moffstation - Find safest and largest grid
-        if (TryFindRandomTile(out _ , out _, out _, out var coords, largestGrid: true, safeAtmos: true))
+        if (TryFindRandomTile(out _ , out _, out _, out var coords))
             comp.Coords = coords;
     }
 
@@ -32,7 +31,7 @@ public sealed partial class AntagRandomSpawnSystem : GameRuleSystem<AntagRandomS
     {
         if (ent.Comp.Coords == null)
         {
-            if (TryFindRandomTile(out _ , out _, out _, out var coords, largestGrid: true, safeAtmos: true))
+            if (TryFindRandomTile(out _ , out _, out _, out var coords))
                 ent.Comp.Coords = coords;
         }
 
