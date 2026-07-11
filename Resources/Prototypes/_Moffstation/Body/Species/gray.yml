@@ -284,10 +284,7 @@
   - type: TypingIndicator
     proto: gray
   - type: Vocal
-    sounds:
-      Male: UnisexGray
-      Female: UnisexGray
-      Unsexed: UnisexGray
+    emoteSounds: UnisexGray
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:

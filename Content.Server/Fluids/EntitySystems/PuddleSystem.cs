@@ -2,7 +2,6 @@ using Content.Server.Fluids.Components;
 using Content.Server.Spreader;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Database;
@@ -24,7 +23,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.Fluids.EntitySystems;
@@ -35,7 +33,6 @@ namespace Content.Server.Fluids.EntitySystems;
 public sealed partial class PuddleSystem : SharedPuddleSystem
 {
     [Dependency] private SharedMapSystem _map = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedColorFlashEffectSystem _color = default!;
@@ -484,7 +481,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
                 PopupType.SmallCaution);
         }
 
-        _color.RaiseEffect(spilled.GetColor(_prototypeManager), targets,
+        _color.RaiseEffect(spilled.GetColor(ProtoMan), targets,
             Filter.Pvs(entity, entityManager: EntityManager));
 
         return TrySpillAt(coordinates, spilled, out puddleUid, sound);

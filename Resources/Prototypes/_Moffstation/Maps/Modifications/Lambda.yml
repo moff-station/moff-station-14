@@ -1,0 +1,34 @@
+- type: mapModification
+  id: LambdaModificationsLaundry
+  applyOn:
+  - Lambda
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: FloorDrain
+    bounds: "-124, 43, -121, 41"
+  - !type:EntityPrototypeSelector
+    prototype: SteelBench
+    bounds: "-124, 43, -121, 41"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -123.5, 42.5
+  - prototype: WashingMachine
+    position: -121.5, 42.5
+  - prototype: SignLaundromat
+    position: -123.5, 39.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -123.5, 41.5
+    # Additional Visual Improvements
+  - prototype: Rack
+    position: -122.5, 42.5
+  - prototype: RandomSoap
+    position: -122.5, 42.5
+  - prototype: FloorDrain
+    position: -122.5, 41.5
+  - prototype: WindowDirectional
+    position: -123.5, 43.5
+  - prototype: WindowDirectional
+    position: -122.5, 43.5
+  - prototype: WindowDirectional
+    position: -121.5, 43.5

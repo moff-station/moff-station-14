@@ -8,6 +8,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Emp;
+using Content.Shared.EntityTable;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
@@ -24,7 +25,6 @@ namespace Content.Shared.VendingMachines;
 public abstract partial class SharedVendingMachineSystem : EntitySystem
 {
     [Dependency] protected IGameTiming Timing = default!;
-    [Dependency] protected IPrototypeManager PrototypeManager = default!;
     [Dependency] private AccessReaderSystem _accessReader = default!;
     [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] protected SharedAudioSystem Audio = default!;
@@ -36,6 +36,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     [Dependency] protected SharedUserInterfaceSystem UISystem = default!;
     [Dependency] protected IRobustRandom Randomizer = default!;
     [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!; // Moffstation - entity tables in vending machines
 
     public override void Initialize()
     {
@@ -325,7 +326,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
             return;
         }
 
-        if (!PrototypeManager.TryIndex(component.PackPrototypeId, out VendingMachineInventoryPrototype? packPrototype))
+        if (!ProtoMan.TryIndex(component.PackPrototypeId, out VendingMachineInventoryPrototype? packPrototype))
             return;
 
         AddInventoryFromPrototype(uid, packPrototype.StartingInventory, InventoryType.Regular, component, restockQuality);
@@ -405,7 +406,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
 
         foreach (var (id, amount) in entries)
         {
-            if (PrototypeManager.HasIndex<EntityPrototype>(id))
+            if (ProtoMan.HasIndex<EntityPrototype>(id))
             {
                 var restock = amount;
                 var chanceOfMissingStock = 1 - restockQuality;
@@ -427,6 +428,20 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                 else
                     inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock));
             }
+
+            // Moffstation - Start - Allow use of entityTables in vending machine inventories
+            else if (ProtoMan.TryIndex<EntityTablePrototype>(id, out var table))
+            {
+                AddInventoryFromPrototype(uid,
+                    Enumerable.Repeat(table, (int)amount)
+                        .SelectMany(it => _entityTable.GetSpawns(it, Randomizer))
+                        .CountBy(it => it)
+                        .ToDictionary(it => it.Key.Id, it => (uint)it.Value),
+                    type,
+                    component,
+                    restockQuality);
+            }
+            // Moffstation - End
         }
     }
 
