@@ -35,6 +35,9 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
     cameraRecoilScalar: 1.5 # Moffstation - higher screenshake on shotguns
+  - type: CustomSpriteAmmoCounter
+    loadedAmmoSprite: Interface/ItemStatus/Shotgun_Shells/not_spent.png
+    spentAmmoSprite: Interface/ItemStatus/Shotgun_Shells/spent.png
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -73,6 +76,9 @@
     - Back
     - suitStorage
   - type: AmmoCounter
+  - type: CustomSpriteAmmoCounter
+    loadedAmmoSprite: Interface/ItemStatus/Shotgun_Shells/not_spent.png
+    spentAmmoSprite: Interface/ItemStatus/Shotgun_Shells/spent.png
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     # Moffstation - Begin - Add gun recoil.

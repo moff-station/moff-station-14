@@ -156,4 +156,36 @@ public sealed class MoffCCVars
     /// </summary>
     public static readonly CVarDef<string> DiscordRoundEventLocation =
         CVarDef.Create("moff.discord_round_event_location", string.Empty, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Whether a pending update/uptime restart is allowed to trigger while the game is paused
+    ///     with players still connected. Set to false to disable this behavior entirely.
+    /// </summary>
+    public static readonly CVarDef<bool> RestartQueueEnabled =
+        CVarDef.Create("moff.restart_queue_enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     If an update is pending, but the round is paused and there are players sitting in the lobby
+    ///     how long should we queue up a server restart in minutes?
+    /// </summary>
+    public static readonly CVarDef<int> RestartQueueTimer =
+        CVarDef.Create("moff.restart_queue_timer", 30, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How often should players be notified when the server is restarting?
+    /// </summary>
+    public static readonly CVarDef<int> PauseRestartAnnounceInterval =
+        CVarDef.Create("moff.restart_queue_announce_interval", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Once below the <see cref="PauseRestartFinalAnnounceThreshold"/>, how often should players be notified when the server is restarting?
+    /// </summary>
+    public static readonly CVarDef<int> PauseRestartFinalAnnounceInterval =
+        CVarDef.Create("moff.restart_queue_final_announce_interval", 1, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     When should more-often reminders that the server is restarting appear?
+    /// </summary>
+    public static readonly CVarDef<int> PauseRestartFinalAnnounceThreshold =
+        CVarDef.Create("moff.restart_queue_final_announce_threshold", 5, CVar.SERVERONLY);
 }

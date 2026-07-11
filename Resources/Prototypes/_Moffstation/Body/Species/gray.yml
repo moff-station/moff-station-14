@@ -111,134 +111,134 @@
       jumpsuit:
         sizeMaps:
           32:
-            sprite: &displacement.rsi "_Moffstation/Mobs/Species/Gray/displacement.rsi"
+            sprite: &displacement_rsi "_Moffstation/Mobs/Species/Gray/displacement.rsi"
             state: jumpsuit
       head:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: head
       eyes:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: eyes
       gloves:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: hands
       back:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: back
       ears:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: ears
       shoes:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: feet
       neck:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: neck
       mask:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: mask
       outerClothing:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: outerClothing
       suitstorage:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: suitStorage
       belt:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: belt
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: jumpsuit
       head:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: head
       eyes:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: eyes
       gloves:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: hands
       back:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: back
       ears:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: ears
       shoes:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: feet
       neck:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: neck
       mask:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: mask
       outerClothing:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: outerClothing
       suitstorage:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: suitStorage
       belt:
         sizeMaps:
           32:
-            sprite: *displacement.rsi
+            sprite: *displacement_rsi
             state: belt
   - type: Hands
     leftHandDisplacement:
       sizeMaps:
         32:
-          sprite: *displacement.rsi
+          sprite: *displacement_rsi
           state: inHand
     rightHandDisplacement:
       sizeMaps:
         32:
-          sprite: *displacement.rsi
+          sprite: *displacement_rsi
           state: inHand
   - type: InitialBody
     organs:
@@ -284,10 +284,7 @@
   - type: TypingIndicator
     proto: gray
   - type: Vocal
-    sounds:
-      Male: UnisexGray
-      Female: UnisexGray
-      Unsexed: UnisexGray
+    emoteSounds: UnisexGray
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:
@@ -375,7 +372,7 @@
   components:
   - type: VisualOrgan
     data:
-      sprite: &parts.rsi "_Moffstation/Mobs/Species/Gray/parts.rsi"
+      sprite: &parts_rsi "_Moffstation/Mobs/Species/Gray/parts.rsi"
   - type: VisualOrganMarkings
     markingData:
       group: Gray
@@ -386,7 +383,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: *parts.rsi
+    sprite: *parts_rsi
 
 - type: entity
   parent: [ OrganBaseTorso, OrganGrayExternal ]

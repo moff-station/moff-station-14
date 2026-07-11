@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Based on the Cargonian Ushanka, taken from tgstation at commit https://github.com/tgstation/tgstation/commit/4f6190e2895e09116663ef282d3ce1d8b35c032e; composited with hairflower.rsi, icon sprited by Just_Art, equipped-HELMET sprite taken from tgstation at commit https://github.com/tgstation/tgstation/commit/4f6190e2895e09116663ef282d3ce1d8b35c032e; Compositing and very small edits performed by Centronias (GitHub)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "equipped-HELMET",
+            "directions": 4
+        },
+        {
+            "name": "icon-up"
+        },
+        {
+            "name": "icon"
+        },
+        {
+            "name": "up-equipped-HELMET",
+            "directions": 4
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+- type: mapModification
+  id: OssuaryModificationsLaundry
+  applyOn:
+  - Ossuary
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: ToiletEmpty
+    bounds: "10, -13, 16, -17"
+  - !type:EntityPrototypeSelector
+    prototype: SignalButtonDirectional
+    bounds: "10, -13, 16, -17"
+  - !type:EntityPrototypeSelector
+    prototype: SignRestroom
+    bounds: "10, -13, 16, -17"
+  - !type:EntityPrototypeSelector
+    prototype: CrateCoffinFilledMaintsLootAndBones
+    bounds: "15, -14, 11, -15"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: 14.5, -14.5
+  - prototype: SignLaundromat
+    position: 14.5, -16.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: 13.5, -15.5
+    # Additional Visual Improvements
+  - prototype: Stool
+    position: 12.5, -14.5
+    rotation: 90
+  - prototype: Airlock
+    position: 13.5, -16.5

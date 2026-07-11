@@ -2,14 +2,12 @@ using Content.Server.Chat.Managers;
 using Content.Shared.Chat;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Roles;
 
 public sealed partial class RoleSystem : SharedRoleSystem
 {
     [Dependency] private IChatManager _chat = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
 
     public string? MindGetBriefing(EntityUid? mindId)
     {
@@ -27,21 +25,19 @@ public sealed partial class RoleSystem : SharedRoleSystem
             return null;
         }
 
-        var ev = new GetBriefingEvent();
-
-        // This is on the event because while this Entity<T> is also present on every Mind Role Entity's MindRoleComp
-        // getting to there from a GetBriefing event subscription can be somewhat boilerplate
-        // and this needs to be looked up for the event anyway so why calculate it again later
-        ev.Mind = (mindId.Value, mindComp);
-
-        // Briefing is no longer raised on the mind entity itself
-        // because all the components that briefings subscribe to should be on Mind Role Entities
+        // Moffstation - Start - only show the latest mind role's briefing
+        string? latestBriefing = null;
         foreach (var role in mindComp.MindRoleContainer.ContainedEntities)
         {
+            var ev = new GetBriefingEvent();
+            ev.Mind = (mindId.Value, mindComp);
             RaiseLocalEvent(role, ref ev);
+            if (ev.Briefing != null)
+                latestBriefing = ev.Briefing;
         }
 
-        return ev.Briefing;
+        return latestBriefing;
+        // Moffstation - End
     }
 
     public void RoleUpdateMessage(MindComponent mind)
@@ -49,7 +45,7 @@ public sealed partial class RoleSystem : SharedRoleSystem
         if (!Player.TryGetSessionById(mind.UserId, out var session))
             return;
 
-        if (!_proto.Resolve(mind.RoleType, out var proto))
+        if (!ProtoMan.Resolve(mind.RoleType, out var proto))
             return;
 
         var roleText = Loc.GetString(proto.Name);
@@ -95,15 +91,19 @@ public sealed class GetBriefingEvent
     /// If there is no briefing, sets it to the string.
     /// If there is a briefing, adds a new line to separate it from the appended string.
     /// </summary>
+    // Moff - We are making this wipe it out BECAUSE we ONLY WANT ONE!!!
+    // Uh, This is probably not a good way to do it.
+    // BUT! If we don't want to change every instance of this being used now and in the future then this is the way to go.
     public void Append(string text)
     {
-        if (Briefing == null)
-        {
-            Briefing = text;
-        }
-        else
-        {
-            Briefing += "\n" + text;
-        }
+        Briefing = text;
+        // if (Briefing == null)
+        // {
+        //     Briefing = text;
+        // }
+        // else
+        // {
+        //     Briefing += "\n" + text;
+        // }
     }
 }
