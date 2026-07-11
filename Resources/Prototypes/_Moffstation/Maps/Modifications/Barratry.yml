@@ -1,0 +1,32 @@
+# Laundromat
+- type: mapModification
+  id: BarratryModificationsLaundry
+  applyOn:
+  - Barratry
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: ClosetSteelBase
+    bounds: "-17, 9, -18, 10"
+  - !type:EntityPrototypeSelector
+    prototype: MaintenanceToolSpawner
+    bounds: "-18, 9, -14, 8"
+  - !type:EntityPrototypeSelector
+    prototype: CrateFilledSpawner
+    bounds: "-18, 9, -14, 8"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -16.5, 10.5
+  - prototype: WashingMachine
+    position: -15.5, 10.5
+  - prototype: SignLaundromat
+    position: -15.5, 7.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -16.5, 9.5
+    # Additional Visual Improvements
+  - prototype: RandomSoap
+    position: -17.25, 8.75
+  - prototype: RandomSoap
+    position: -17.75, 8.25
+  - prototype: WardrobeMixedFilled
+    position: -15.5, 8.5

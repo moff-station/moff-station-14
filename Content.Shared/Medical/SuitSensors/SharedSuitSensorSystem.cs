@@ -36,7 +36,6 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
     [Dependency] private SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private SharedIdCardSystem _idCardSystem = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -354,6 +353,24 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
         }
     }
 
+    // Moffstation - Begin - Radio warp
+    /// <summary>
+    /// Attempt to find the best sensor mode applicable to this entity
+    /// </summary>
+    public SuitSensorMode GetSensorMode(EntityUid target, SlotFlags slots = SlotFlags.All)
+    {
+        SuitSensorMode best = SuitSensorMode.SensorOff;
+
+        var slotEnumerator = _inventory.GetSlotEnumerator(target, slots);
+        while (slotEnumerator.NextItem(out var item))
+        {
+            if (_sensorQuery.TryComp(item, out var sensorComp) && sensorComp.Mode > best)
+                best = sensorComp.Mode;
+        }
+        return best;
+    }
+    // Moffstation - End
+
     /// <summary>
     /// Attempts to get full <see cref="SuitSensorStatus"/> from the <see cref="SuitSensorComponent"/>
     /// </summary>
@@ -386,7 +403,7 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
             userJobIcon = card.Comp.JobIcon;
 
             foreach (var department in card.Comp.JobDepartments)
-                userJobDepartments.Add(Loc.GetString(_proto.Index(department).Name));
+                userJobDepartments.Add(Loc.GetString(ProtoMan.Index(department).Name));
         }
 
         // get health mob state

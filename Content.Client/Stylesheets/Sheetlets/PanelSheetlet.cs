@@ -46,6 +46,12 @@ public sealed class PanelSheetlet<T> : Sheetlet<T> where T : PalettedStylesheet,
                 .Class("BackgroundDark")
                 .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#25252A"))),
 
+            // Moffstation - Begin
+            E<PanelContainer>()
+                .Class("BackgroundDeep")
+                .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#17171b"))),
+            // Moffstation - End
+
             // panels that have the same corner bezels as buttons
             E()
                 .Class(StyleClass.BackgroundPanel)

@@ -1,3 +1,10 @@
-﻿- type: markingsGroup
+﻿- type: entity
+  parent: MobWildSlimePerson
+  id: MobSlimePersonGrown
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: IsDeadIC
+
+- type: markingsGroup
   parent: BasicMoffMarkingsGroup
   id: SlimePerson
