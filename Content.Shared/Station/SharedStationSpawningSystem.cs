@@ -195,14 +195,9 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
             var coords = _xformSystem.GetMapCoordinates(entity);
             foreach (var (containerId, entProtos) in specialGear.Containers)
             {
-                if (entProtos.Count == 0 || ! _container.TryGetContainer(entity, containerId, out var container))
-                    continue;
-
                 foreach (var entProto in entProtos)
                 {
-                    var spawnedEntity = Spawn(entProto, coords);
-                    _container.Insert(spawnedEntity, container);
-                    //_container.InsertOrDrop(spawnedEntity, container);
+                    SpawnInContainerOrDrop(entProto, entity, containerId);
                 }
             }
         }

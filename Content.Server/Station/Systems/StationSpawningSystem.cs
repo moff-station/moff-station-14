@@ -113,13 +113,14 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
         {
             DebugTools.Assert(entity is null);
             var jobEntity = Spawn(prototype.JobEntity, coordinates);
-            _mindSystem.MakeSentient(jobEntity);
 
             // Make sure custom names get handled, what is gameticker control flow whoopy.
             if (loadout != null)
             {
                 EquipSpecialRoleLoadout(jobEntity, loadout, roleProto!); // Moffstation - Enable special loadouts by job
             }
+
+            _mindSystem.MakeSentient(jobEntity);
 
             DoJobSpecials(job, jobEntity);
             _identity.QueueIdentityUpdate(jobEntity);

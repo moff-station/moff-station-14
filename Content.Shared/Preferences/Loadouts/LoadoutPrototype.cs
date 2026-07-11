@@ -83,4 +83,4 @@ public sealed partial class SpecialLoadout : IEquipmentLoadout
     [DataField]
     public Dictionary<string, List<EntProtoId>> Containers { get; set; } = new();
 }
-// Moffstation - Begin
+// Moffstation - End
