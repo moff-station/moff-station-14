@@ -664,15 +664,15 @@
   description: For professionals, not the posers.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirt/janimaid.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/janimaid.rsi # Moffstation
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirt/janimaid.rsi
+    sprite: _Moffstation/Clothing/Uniforms/Jumpskirt/janimaid.rsi # Moffstation
 
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtJanimaidmini
-  name: janitorial maid uniform with miniskirt
-  description: Elite service, not some candy wrappers.
+  name: ancient janitorial maid uniform # Moffstation - Rename/redescribe janimaidmini
+  description: Ironically, it has mold growing on it. # Moffstation - Rename/redescribe janimaidmini
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpskirt/janimaidmini.rsi
