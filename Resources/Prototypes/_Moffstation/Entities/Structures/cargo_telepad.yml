@@ -4,24 +4,8 @@
   name: unstable telepad
   description: Reverse engineered from Nanotrasen design, powered by the crackling energies of redspace.
   components:
-  - type: InteractionOutline
-  - type: Physics
-    bodyType: Static
-    canCollide: false
-  - type: Transform
-    anchored: true
-    noRot: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.00"
-        density: 190
-        mask:
-        - MachineMask
   - type: Sprite
-    sprite: Structures/cargo_telepad.rsi
+    sprite: _Moffstation/Structures/Machines/syndicate_telepad.rsi
     drawdepth: HighFloorObjects
     layers:
     - state: offline
@@ -29,25 +13,11 @@
     - state: idle
       map: [ "enum.CargoTelepadLayers.Beam" ]
       shader: unshaded
-  - type: Damageable
-    damageModifierSet: StructuralMetallicStrong
-  - type: Injurable
-    damageContainer: StructuralInorganic
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
-    range: 200
-  - type: DeviceLinkSink
-    ports:
-    - OrderReceiver
-  - type: ApcPowerReceiver
-    powerLoad: 1000 # TODO if we keep this make it spike power draw when teleporting
   - type: CargoTelepad
-  - type: Machine
-    board: CargoTelepadMachineCircuitboard
-  - type: Appearance
-  - type: CollideOnAnchor
-  - type: NameIdentifier
-    group: CargoTelepads
+    printerOutput: PaperCargoInvoiceSyndicate
+    telepadFlash: AdminInstantEffectRedspace
   - type: AnimationPlayer
+  - type: AccessReader
+    access: [["NuclearOperative"]]
+  - type: PointLight
+    color: "#c03334"
