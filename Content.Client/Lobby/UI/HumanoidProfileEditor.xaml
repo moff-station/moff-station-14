@@ -33,7 +33,7 @@
                         <BoxContainer Orientation="Vertical">
                             <Label Text="{Loc 'humanoid-profile-editor-randomize'}" HorizontalAlignment="Center"/>
                             <PanelContainer StyleClasses="LowDivider" Margin="0 10"/>
-                            <GridContainer Columns="2" MinWidth="250" HorizontalExpand="True">
+                            <GridContainer Columns="3" MinWidth="250" HorizontalExpand="True">
                                 <ui:RandomizeLockButton For="Name" LabelText="{Loc 'humanoid-profile-editor-randomize-name-button'}"/>
                                 <ui:RandomizeLockButton For="Species" LabelText="{Loc 'humanoid-profile-editor-randomize-species-button'}"/>
                                 <ui:RandomizeLockButton For="Age" LabelText="{Loc 'humanoid-profile-editor-randomize-age-button'}"/>
