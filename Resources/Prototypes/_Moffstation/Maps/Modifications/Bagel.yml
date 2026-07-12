@@ -6,19 +6,19 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: HospitalCurtainsOpen
-    bounds: "20,14,21,15"
+    bounds: "20, 14, 21, 15"
   - !type:EntityPrototypeSelector
     prototype: RandomSoap
-    bounds: "20,14,21,15"
+    bounds: "20, 14, 21, 15"
   - !type:EntityPrototypeSelector
     prototype: FloorDrain
-    bounds: "20,14,21,15"
+    bounds: "20, 14, 21, 15"
   - !type:EntityPrototypeSelector
     prototype: ToiletDirtyWater
-    bounds: "19,14,20,15"
+    bounds: "19, 14, 20, 15"
   - !type:EntityPrototypeSelector
     prototype: WindowFrostedDirectional
-    bounds: "19,14,20,15"
+    bounds: "19, 14, 20, 15"
   additions:
   # Relocate the Toilet and RandomSoap
   - prototype: ToiletDirtyWater
