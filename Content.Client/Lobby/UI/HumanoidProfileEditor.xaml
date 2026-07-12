@@ -27,7 +27,6 @@
                         </BoxContainer>
                     </ui:HighlightedContainer>
                 </BoxContainer>
-                <!-- Moff - WE MOVED THIS SHIT UP MAKE SURE SHIT GETS MOVED UP HERE PROPERLY -->
                 <!-- Randomizer -->
                 <BoxContainer Orientation="Vertical">
                     <ui:HighlightedContainer>
@@ -52,6 +51,7 @@
                                 Text="{Loc 'humanoid-profile-editor-randomize-unlocked-button'}"/>
                         </BoxContainer>
                     </ui:HighlightedContainer>
+                <!-- Moff - ending of the vertical box container -->
                 </BoxContainer>
                 </BoxContainer>
                 <!-- Import/Export -->
