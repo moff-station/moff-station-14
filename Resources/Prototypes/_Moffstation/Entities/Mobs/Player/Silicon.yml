@@ -1,7 +1,7 @@
 ﻿# Borg with brain
 - type: entity
-  id: PlayerBorgBatteryBrain
   parent: PlayerBorgBattery
+  id: PlayerBorgBatteryBrain
   suffix: Battery, Brain
   components:
   - type: ContainerFill

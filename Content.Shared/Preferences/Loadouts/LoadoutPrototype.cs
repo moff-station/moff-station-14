@@ -81,6 +81,6 @@ public sealed partial class SpecialLoadout : IEquipmentLoadout
     /// inside the entity (ex: MMI and Positronic Brain)
     /// </summary>
     [DataField]
-    public Dictionary<string, List<EntProtoId>> Containers { get; set; } = new();
+    public Dictionary<string, List<EntProtoId>> Containers = new();
 }
 // Moffstation - End

@@ -192,7 +192,6 @@ public abstract partial class SharedStationSpawningSystem : EntitySystem
         // Moffstation - Begin - allow starting gear in container
         if (startingGear is SpecialLoadout { Containers.Count: > 0 } specialGear)
         {
-            var coords = _xformSystem.GetMapCoordinates(entity);
             foreach (var (containerId, entProtos) in specialGear.Containers)
             {
                 foreach (var entProto in entProtos)
