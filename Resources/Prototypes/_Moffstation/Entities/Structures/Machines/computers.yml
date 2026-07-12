@@ -96,3 +96,35 @@
   components:
   - type: WirelessNetworkConnection
     range: 10000
+
+# Listening Post Operator
+- type: entity
+  parent: ComputerCargoOrders
+  id: ComputerCargoOrdersLPO
+  name: listening post request computer
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: syndicate_computer
+    - map: [ "computerLayerKeyboard" ]
+      state: syndie_key_off
+    - map: [ "computerLayerScreen" ]
+      state: request
+    - map: [ "computerLayerKeys" ]
+      state: syndie_generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: CargoOrderConsole
+    allowedGroups: [ "LPOMarket" ]
+    account: LPO
+    baseAnnouncementChannel: "Syndicate"
+    announcementChannel: "Syndicate"
+    cashType: Telecrystal
+  - type: Computer
+    board: LPORequestComputerCircuitboard
+  - type: PointLight
+    color: "#c03334"
+  - type: AccessReader
+    access: [["NuclearOperative"]]

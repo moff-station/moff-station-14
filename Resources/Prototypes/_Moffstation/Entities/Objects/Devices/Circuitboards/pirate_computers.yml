@@ -1,4 +1,18 @@
 - type: entity
+  parent: [ BaseComputerCircuitboard , BaseSyndicateContraband ]
+  id: LPORequestComputerCircuitboard
+  name: listening post request computer board
+  description: A computer printed circuit board for a listening post request computer.
+  suffix: LPO
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ComputerCargoOrdersLPO
+  - type: StaticPrice
+    price: 750
+
+- type: entity
   parent: [ BaseComputerCircuitboard , BaseHighlyIllegalContraband ]
   id: PirateRequestComputerCircuitboard
   name: pirate request computer board

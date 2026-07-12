@@ -1,4 +1,12 @@
 - type: cargoAccount
+  id: LPO
+  name: cargo-account-listening-post-name
+  code: cargo-account-listening-post-code
+  color: "#c03334"
+  radioChannel: Syndicate
+  acquisitionSlip: PaperAcquisitionSlipLPO
+
+- type: cargoAccount
   id: Pirates
   name: cargo-account-pirate-name
   code: cargo-account-pirate-code

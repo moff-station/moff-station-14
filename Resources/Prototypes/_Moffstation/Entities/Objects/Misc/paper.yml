@@ -1,0 +1,20 @@
+﻿- type: entity
+  parent: PaperCargoInvoice
+  id: PaperCargoInvoiceSyndicate
+  name: syndicate invoice
+  description: 'A single unit of bureaucracy, now in red!'
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+      color: "#c03334"
+    - state: paper_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      color: "#c03334"
+      visible: false
+  - type: PaperLabelType
+    paperType: Paper
+  - type: PaperVisuals
+    backgroundModulate: "#c03334"
+    contentImageModulate: "#c03334"
+    headerImagePath: "/Textures/Interface/Paper/paper_heading_syndicate_logo.svg.96dpi.png"

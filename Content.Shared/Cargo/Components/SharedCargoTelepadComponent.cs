@@ -41,4 +41,12 @@ public sealed partial class CargoTelepadComponent : Component
 
     [DataField("receiverPort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>)), ViewVariables(VVAccess.ReadWrite)]
     public string ReceiverPort = "OrderReceiver";
+
+    // Moff Start - Thematic Telepads
+    /// <summary>
+    ///     Flash-effect that is created with each package delivered via telepad teleportation.
+    /// </summary>
+    [DataField]
+    public EntProtoId TelepadFlash = "AdminInstantEffectBluespace";
+    // Moff End
 }

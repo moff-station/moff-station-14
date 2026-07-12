@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 265.0.0
+  engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/08/2025 00:47:05
-  entityCount: 1066
+  time: 07/11/2026 13:53:44
+  entityCount: 1067
 maps: []
 grids:
 - 1
@@ -429,68 +429,30 @@ entities:
         - volume: 2500
           temperature: 293.15
           moles:
-          - 21.824879
-          - 82.10312
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+            Oxygen: 21.824879
+            Nitrogen: 82.10312
         - volume: 2500
           temperature: 293.15
           moles:
-          - 0
-          - 6666.982
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+            Nitrogen: 6666.982
         - volume: 2500
           temperature: 293.15
           moles:
-          - 6666.982
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+            Oxygen: 6666.982
         - volume: 2500
           temperature: 293.14975
           moles:
-          - 20.078888
-          - 75.53487
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+            Oxygen: 20.078888
+            Nitrogen: 75.53487
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: ListeningOutpostBase
     - type: IFF
       flags: HideLabel
+    - type: TileHistory
+      chunkHistory: {}
+    - type: ExplosionAirtightGrid
 - proto: AirAlarm
   entities:
   - uid: 414
@@ -2871,6 +2833,13 @@ entities:
     - type: Transform
       pos: -13.5,-8.5
       parent: 1
+- proto: CargoTelepadSyndicate
+  entities:
+  - uid: 233
+    components:
+    - type: Transform
+      pos: -11.5,-0.5
+      parent: 1
 - proto: Carpet
   entities:
   - uid: 5
@@ -3177,12 +3146,12 @@ entities:
   - uid: 56
     components:
     - type: Transform
-      pos: -7.510039,-1.3249092
+      pos: -7.467012,-2.165417
       parent: 1
   - uid: 57
     components:
     - type: Transform
-      pos: -7.690594,-1.4637985
+      pos: -7.779512,-2.4989817
       parent: 1
 - proto: ClothingBeltChefFilled
   entities:
@@ -3252,6 +3221,19 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -14.5,-7.5
       parent: 1
+- proto: ComputerCargoOrdersLPO
+  entities:
+  - uid: 6
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-1.5
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        233:
+        - - OrderSender
+          - OrderReceiver
 - proto: ComputerIFFSyndicate
   entities:
   - uid: 288
@@ -3386,18 +3368,8 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
+          Oxygen: 1.7459903
+          Nitrogen: 6.568249
 - proto: CrateSyndicateLPO
   entities:
   - uid: 50
@@ -3455,7 +3427,7 @@ entities:
   - uid: 53
     components:
     - type: Transform
-      pos: -7.2267203,-1.5980605
+      pos: -7.269095,-2.6344926
       parent: 1
 - proto: DecalSpawnerBloodSplatters
   entities:
@@ -5116,18 +5088,8 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
+          Oxygen: 1.7459903
+          Nitrogen: 6.568249
 - proto: Mirror
   entities:
   - uid: 189
@@ -5414,11 +5376,6 @@ entities:
       parent: 1
 - proto: Rack
   entities:
-  - uid: 6
-    components:
-    - type: Transform
-      pos: -7.5,-1.5
-      parent: 1
   - uid: 8
     components:
     - type: Transform
@@ -5870,18 +5827,8 @@ entities:
         immutable: False
         temperature: 293.14673
         moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
+          Oxygen: 1.7459903
+          Nitrogen: 6.568249
 - proto: SyndicateBusinessCard
   entities:
   - uid: 346
