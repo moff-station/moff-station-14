@@ -24,6 +24,6 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     ///     Types of sensor datas accepted by this crew monitor
     /// </summary>
     [DataField]
-    public HashSet<ProtoId<SensorTypePrototype>> SensorTypes = new();
+    public PrototypeFlags<SensorTypePrototype> SensorTypes = new();
     // Moffstation - End
 }

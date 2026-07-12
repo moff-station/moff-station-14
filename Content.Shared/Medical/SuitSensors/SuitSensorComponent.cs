@@ -102,7 +102,7 @@ public sealed partial class SuitSensorComponent : Component
     ///     The type of sensor data sent by this suit sensor. Used in <see cref="CrewMonitoringComponent"/>
     ///     to determine which sensors will appear in the interface.
     /// </summary>
-    [DataField, AutoNetworkedField, ViewVariables]
-    public ProtoId<SensorTypePrototype> SensorType = new("SuitSensor");
+    [DataField, AutoNetworkedField]
+    public ProtoId<SensorTypePrototype> SensorType = "SuitSensor";
     // Moffstation - End
 }

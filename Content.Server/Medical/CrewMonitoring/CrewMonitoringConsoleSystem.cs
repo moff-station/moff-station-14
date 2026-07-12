@@ -44,7 +44,7 @@ public sealed partial class CrewMonitoringConsoleSystem : EntitySystem
         // Moffstation - Begin - Borg sensors
         component.ConnectedSensors = sensorStatus.Where(kvp => component.SensorTypes.Contains(kvp.Value.SensorType))
             .ToDictionary();
-        // Moffstation - ENd
+        // Moffstation - End
 
         UpdateUserInterface(uid, component);
     }

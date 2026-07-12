@@ -20,20 +20,14 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedStationSystem _station = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
-    [Dependency] protected SharedSuitSensorSystem _sensor = default!;
+    [Dependency] protected SharedSuitSensorSystem Sensor = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedTransformSystem _transform =  default!;
     [Dependency] private MobThresholdSystem _threshold = default!;
     [Dependency] private DamageableSystem _damageable = default!;
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<BorgSensorComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<BorgSensorComponent, GetVerbsEvent<Verb>>(OnVerb);
-        SubscribeLocalEvent<BorgSensorComponent, SuitSensorChangeDoAfterEvent>(OnBorgSensorDoAfter);
-    }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<BorgSensorComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.StationId ??= _station.GetOwningStation(ent.Owner);
@@ -42,22 +36,19 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
         Dirty(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnVerb(Entity<BorgSensorComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (ent.Comp.ControlsLocked || !args.CanInteract || !_interaction.InRangeUnobstructed(args.User, args.Target))
             return;
 
-        args.Verbs.UnionWith([
-            CreateVerb(ent, args.User, SuitSensorMode.SensorOff),
-            CreateVerb(ent, args.User, SuitSensorMode.SensorBinary),
-            CreateVerb(ent, args.User, SuitSensorMode.SensorVitals),
-            CreateVerb(ent, args.User, SuitSensorMode.SensorCords),
-        ]);
+        var user = args.User;
+        args.Verbs.UnionWith(Enum.GetValues<SuitSensorMode>().Select(it => CreateVerb(ent, user, it)));
     }
 
     private Verb CreateVerb(Entity<BorgSensorComponent> ent, EntityUid userUid, SuitSensorMode mode)
     {
-        return new Verb()
+        return new Verb
         {
             Text = _sensor.GetModeName(mode),
             Message = _sensor.GetModeDescription(mode),
@@ -89,7 +80,7 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
         return true;
     }
 
-    private void OnBorgSensorDoAfter(Entity<BorgSensorComponent> ent, ref SuitSensorChangeDoAfterEvent args)
+    private static void OnBorgSensorDoAfter(Entity<BorgSensorComponent> ent, ref SuitSensorChangeDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled)
             return;
