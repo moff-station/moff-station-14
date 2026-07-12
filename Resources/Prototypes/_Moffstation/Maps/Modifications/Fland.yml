@@ -5,10 +5,10 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: VendingMachineClothing
-    bounds: "70, 20, 73, 17"
+    bounds: "70,17,73,20"
   - !type:EntityPrototypeSelector
     prototype: VendingMachineWinter
-    bounds: "70, 20, 73, 17"
+    bounds: "70,17,73,20"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

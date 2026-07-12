@@ -6870,6 +6870,16 @@ Entries:
   id: 1619
   time: '2026-07-09T19:20:29.000'
   url: https://github.com/moff-station/moff-station-14/pull/1619
+- author: CollectionOfBones128, DrWhoFan13
+  changes:
+  - message: The Quartermaster now has their own exclusive hardsuit.
+    type: add
+  - message: The Quartermaster's locker now comes in two variants, with & without
+      the hardsuit. By default, all QM lockers are now the "with" variant.
+    type: tweak
+  id: 1622
+  time: '2026-07-12T00:51:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1622
 - author: meganerobot
   changes: []
   id: 1624
@@ -6909,5 +6919,19 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: Centronias
+  changes:
+  - message: Map patches with bounds should work now.
+    type: fix
+  id: 1651
+  time: '2026-07-12T17:09:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1651
+- author: Nyxilath
+  changes:
+  - message: Telepads now apply a bluespace effect when they teleport goods.
+    type: add
+  id: 1652
+  time: '2026-07-12T19:34:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1652
 Name: Mofflog
 Order: -2
