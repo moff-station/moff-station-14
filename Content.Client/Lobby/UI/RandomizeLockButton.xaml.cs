@@ -29,7 +29,7 @@ public sealed partial class RandomizeLockButton : BoxContainer
     /// <summary>
     /// Tracks which values are allowed to be randomized.
     /// </summary>
-    public static HumanoidCharacterProfile.RandomizeCfg RandomizeCfg = HumanoidCharacterProfile.RandomizeConfigAll;
+    public static HumanoidCharacterProfile.RandomizeCfg RandomizeCfg = HumanoidCharacterProfile.RandomizeCfg.None; // Moff - Invert this cuz its a checkbox
 
     public RandomizeLockButton()
     {
@@ -37,9 +37,9 @@ public sealed partial class RandomizeLockButton : BoxContainer
 
         // Ensure we reset this value to default every time the button is created
         // Otherwise toggling, disconnecting and reconnecting will leave the cfg in an inconsistent state
-        RandomizeCfg = HumanoidCharacterProfile.RandomizeConfigAll;
+        RandomizeCfg = HumanoidCharacterProfile.RandomizeCfg.None; // Moff - Invert this cuz its a checkbox
 
-        LockButton.OnToggled += args => HandleToggle(args.Pressed);
+        LockButton.OnToggled += args => HandleToggle(!args.Pressed); // Moff - Invert this cuz its a checkbox
     }
 
     private void HandleToggle(bool toggle)

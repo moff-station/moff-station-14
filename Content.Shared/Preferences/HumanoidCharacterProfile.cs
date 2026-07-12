@@ -399,7 +399,7 @@ namespace Content.Shared.Preferences
             profile.Gender = (randomizeCfg & RandomizeCfg.Gender) != 0 ? RandomGender(profile.Sex) : baseProfile.Gender;
             profile.Name = (randomizeCfg & RandomizeCfg.Name) != 0 ? RandomName(speciesProto, profile.Gender) : baseProfile.Name;
             profile.Age = (randomizeCfg & RandomizeCfg.Age) != 0 ? RandomAge(speciesProto) : baseProfile.Age;
-            profile.Height = (randomizeCfg & RandomizeCfg.Height) != 0 ? RandomHeight(speciesProto) : baseProfile.Height;
+            profile.Height = (randomizeCfg & RandomizeCfg.Height) != 0 ? RandomHeight(speciesProto) : baseProfile.Height; // Moff - Random Height
 
             profile.Appearance = HumanoidCharacterAppearance.Random(randomizeCfg, baseProfile.Appearance, speciesProto, profile.Sex);
 
