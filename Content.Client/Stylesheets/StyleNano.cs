@@ -1228,8 +1228,8 @@ namespace Content.Client.Stylesheets
                 // Delta-V Start - Box - add style for pronouns on the crew manifest
                 Element<RichTextLabel>()
                     .Class(StyleClassCrewManifestGender)
-                    .Prop("font", notoSans8) //Moffstation - make pronouns a smaller font
-                    .Prop("font-style"),
+                    .Prop("font", notoSansItalic10)
+                    .Prop("font-style", "italic"),
                 // Delta-V End - Box - add style for pronouns on the crew manifest
 
                 Element<RichTextLabel>()
