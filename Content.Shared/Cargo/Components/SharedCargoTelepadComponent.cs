@@ -48,6 +48,6 @@ public sealed partial class CargoTelepadComponent : Component
     ///     Flash-effect that is created with each package delivered via telepad teleportation.
     /// </summary>
     [DataField]
-    public EntProtoId TelepadFlash = "AdminInstantEffectBluespace";
+    public EntProtoId? TelepadFlash = "AdminInstantEffectBluespace";
     // Moff End
 }
