@@ -175,7 +175,6 @@ namespace Content.Client.Stylesheets
         public StyleNano(IResourceCache resCache) : base(resCache)
         {
             var notoSans8 = resCache.NotoStack(size: 8);
-            var notoSansItalic8 = resCache.NotoStack(variation: "Italic", size: 8); //Moffstation - new font for pronoun display
             var notoSans10 = resCache.NotoStack(size: 10);
             var notoSansItalic10 = resCache.NotoStack(variation: "Italic", size: 10);
             var notoSans12 = resCache.NotoStack(size: 12);
@@ -1229,7 +1228,7 @@ namespace Content.Client.Stylesheets
                 // Delta-V Start - Box - add style for pronouns on the crew manifest
                 Element<RichTextLabel>()
                     .Class(StyleClassCrewManifestGender)
-                    .Prop("font", notoSansItalic8) //Moffstation - make pronouns a smaller font
+                    .Prop("font", notoSans8) //Moffstation - make pronouns a smaller font
                     .Prop("font-style"),
                 // Delta-V End - Box - add style for pronouns on the crew manifest
 
