@@ -5,22 +5,22 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: CrateGenericSteel
-    bounds: "-65, -60, -60, -64"
+    bounds: "-65,-64,-60,-60"
   - !type:EntityPrototypeSelector
     prototype: HospitalCurtainsOpen
-    bounds: "-65, -60, -60, -64"
+    bounds: "-65,-64,-60,-60"
   - !type:EntityPrototypeSelector
     prototype: FloorDrain
-    bounds: "-65, -60, -60, -64"
+    bounds: "-65,-64,-60,-60"
   - !type:EntityPrototypeSelector
     prototype: Airlock
-    bounds: "-65, -60, -60, -64"
+    bounds: "-65,-64,-60,-60"
   - !type:EntityPrototypeSelector
     prototype: Mirror
-    bounds: "-65, -60, -60, -64"
+    bounds: "-65,-64,-60,-60"
   - !type:EntityPrototypeSelector
     prototype: Sink
-    bounds: "-65, -60, -60, -64"
+    bounds: "-65,-64,-60,-60"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

@@ -6,13 +6,13 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: ClosetSteelBase
-    bounds: "-17, 9, -18, 10"
+    bounds: "-18,9,-17,10"
   - !type:EntityPrototypeSelector
     prototype: MaintenanceToolSpawner
-    bounds: "-18, 9, -14, 8"
+    bounds: "-18,8,-14,9"
   - !type:EntityPrototypeSelector
     prototype: CrateFilledSpawner
-    bounds: "-18, 9, -14, 8"
+    bounds: "-18,8,-14,9"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

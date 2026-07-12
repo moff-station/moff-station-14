@@ -5,36 +5,36 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: RandomPosterLegit
-    bounds: "-14,-13,-15,-14"
+    bounds: "-15,-14,-14,-13"
   - !type:EntityPrototypeSelector
     prototype: Sink
-    bounds: "-18,-12,-19,-13"
+    bounds: "-19,-13,-18,-12"
   - !type:EntityPrototypeSelector
     prototype: ClothingOuterApronBar
-    bounds: "-18,-14,-19,-13"
+    bounds: "-19,-14,-18,-13"
   - !type:EntityPrototypeSelector
     prototype: ClothingHeadHatGreysoft
-    bounds: "-18,-14,-19,-13"
+    bounds: "-19,-14,-18,-13"
   - !type:EntityPrototypeSelector
     prototype: DrinkGlass
-    bounds: "-15,-13,-16,-14"
+    bounds: "-16,-14,-15,-13"
   - !type:EntityPrototypeSelector
     prototype: Rack
-    bounds: "-15,-13,-16,-14"
+    bounds: "-16,-14,-15,-13"
   - !type:EntityPrototypeSelector
     prototype: BarSignSpacebucks
   - !type:EntityPrototypeSelector
     prototype: SodaDispenser
-    bounds: "-18,-14,-19,-15"
+    bounds: "-19,-15,-18,-14"
   - !type:EntityPrototypeSelector
     prototype: AirlockServiceLocked
-    bounds: "-14,-12,-15,-13"
+    bounds: "-15,-13,-14,-12"
   - !type:EntityPrototypeSelector
     prototype: VendingMachineDonut
-    bounds: "-19,-13,-20,-14"
+    bounds: "-20,-14,-19,-13"
   - !type:EntityPrototypeSelector
     prototype: DrinkMugBlack
-    bounds: "-18,-14,-17,-15"
+    bounds: "-18,-15,-17,-14"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine
