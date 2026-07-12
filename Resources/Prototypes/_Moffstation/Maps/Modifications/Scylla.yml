@@ -5,19 +5,19 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: MirrorModern
-    bounds: "30, -67, 32, -69"
+    bounds: "30,-69,32,-67"
   - !type:EntityPrototypeSelector
     prototype: Sink
-    bounds: "30, -67, 32, -69"
+    bounds: "30,-69,32,-67"
   - !type:EntityPrototypeSelector
     prototype: RandomSoakedCigarette
-    bounds: "30, -67, 32, -69"
+    bounds: "30,-69,32,-67"
   - !type:EntityPrototypeSelector
     prototype: MopItem
-    bounds: "30, -67, 32, -69"
+    bounds: "30,-69,32,-67"
   - !type:EntityPrototypeSelector
     prototype: MopBucketFull
-    bounds: "30, -67, 32, -69"
+    bounds: "30,-69,32,-67"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

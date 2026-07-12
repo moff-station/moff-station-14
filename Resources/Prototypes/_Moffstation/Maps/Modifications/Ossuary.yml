@@ -5,16 +5,16 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: ToiletEmpty
-    bounds: "10, -13, 16, -17"
+    bounds: "10,-17,16,-13"
   - !type:EntityPrototypeSelector
     prototype: SignalButtonDirectional
-    bounds: "10, -13, 16, -17"
+    bounds: "10,-17,16,-13"
   - !type:EntityPrototypeSelector
     prototype: SignRestroom
-    bounds: "10, -13, 16, -17"
+    bounds: "10,-17,16,-13"
   - !type:EntityPrototypeSelector
     prototype: CrateCoffinFilledMaintsLootAndBones
-    bounds: "15, -14, 11, -15"
+    bounds: "11,-15,15,-14"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

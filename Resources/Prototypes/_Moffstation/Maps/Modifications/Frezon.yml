@@ -5,10 +5,10 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: Mirror
-    bounds: "2, -14, 4, -15"
+    bounds: "2,-15,4,-14"
   - !type:EntityPrototypeSelector
     prototype: Sink
-    bounds: "2, -14, 4, -15"
+    bounds: "2,-15,4,-14"
   additions:
     # Frezon is small, it can just have a Washing Machine
   - prototype: WashingMachine

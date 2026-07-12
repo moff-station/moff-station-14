@@ -5,22 +5,22 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: RandomSoap
-    bounds: "-42, -14, -39, -16"
+    bounds: "-42,-16,-39,-14"
   - !type:EntityPrototypeSelector
     prototype: TowelColorSyndicate
-    bounds: "-42, -14, -39, -16"
+    bounds: "-42,-16,-39,-14"
   - !type:EntityPrototypeSelector
     prototype: WoodDoor
-    bounds: "-42, -14, -39, -16"
+    bounds: "-42,-16,-39,-14"
   - !type:EntityPrototypeSelector
     prototype: WallSolid
-    bounds: "-42, -14, -39, -16"
+    bounds: "-42,-16,-39,-14"
   - !type:EntityPrototypeSelector
     prototype: ToiletDirtyWater
-    bounds: "-42, -14, -39, -16"
+    bounds: "-42,-16,-39,-14"
   - !type:EntityPrototypeSelector
     prototype: EmergencyLight
-    bounds: "-42, -14, -39, -17"
+    bounds: "-42,-17,-39,-14"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

@@ -5,19 +5,19 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: Sink
-    bounds: "13, 10, 18, 5"
+    bounds: "13,5,18,10"
   - !type:EntityPrototypeSelector
     prototype: FloorDrain
-    bounds: "13, 10, 18, 5"
+    bounds: "13,5,18,10"
   - !type:EntityPrototypeSelector
     prototype: MirrorModern
-    bounds: "13, 10, 18, 5"
+    bounds: "13,5,18,10"
   - !type:EntityPrototypeSelector
     prototype: Screen
-    bounds: "13, 10, 18, 5"
+    bounds: "13,5,18,10"
   - !type:EntityPrototypeSelector
     prototype: PosterLegitCleanliness
-    bounds: "13, 10, 18, 5"
+    bounds: "13,5,18,10"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine
