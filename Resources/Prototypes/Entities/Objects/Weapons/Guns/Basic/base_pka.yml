@@ -1,7 +1,7 @@
 - type: entity
   id: WeaponProtoKineticAcceleratorBase
   abstract: true
-  parent: BaseItem
+  parent: [ BaseItem, BasePointerCrosshair ] # MACRO add crosshair
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
