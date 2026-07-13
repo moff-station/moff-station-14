@@ -6919,6 +6919,32 @@ Entries:
   id: 1634
   time: '2026-07-08T22:40:41.000'
   url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: gummyema
+  changes:
+  - message: Added engineering and medical maid outfits
+    type: add
+  - message: Added maid headbands, for the generic and service maid outfits
+    type: add
+  - message: Resprited the generic, atmospherics, chemistry, science, security, service
+      and janitorial maid outfits
+    type: tweak
+  - message: Moved the generic maid outfit out of the the BarDrobe's contraband inventory
+      and into the DramaDrobe's regular inventory
+    type: tweak
+  - message: Added maid headband to DramaDrobe's regular inventory and service maid
+      headband to BarDrobe's contraband inventory
+    type: tweak
+  - message: Added newly-added maid outfits to the bulk maid dresses crate
+    type: tweak
+  - message: Changed the janitorial maid uniform with miniskirt to the "ancient janitorial
+      maid outfit". It remains the same except for the name and description
+    type: tweak
+  - message: Moved janitorial maid outfits from the JaniDrobe's emagged inventory
+      to the normal contraband inventory
+    type: tweak
+  id: 1650
+  time: '2026-07-13T04:01:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1650
 - author: Centronias
   changes:
   - message: Map patches with bounds should work now.
