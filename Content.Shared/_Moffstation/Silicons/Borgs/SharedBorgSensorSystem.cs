@@ -65,10 +65,10 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
 
     private bool TrySetSensor(Entity<BorgSensorComponent?> ent, SuitSensorMode mode, EntityUid userUid)
     {
-        if (!_sensorQuery.HasComp(ent))
+        if (!_sensorQuery.TryComp(ent, out ent.Comp))
             return false;
 
-        if (ent.Owner ==  userUid)
+        if (ent.Owner == userUid)
             ent.Comp.Mode = mode;
         else
         {
