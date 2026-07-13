@@ -436,7 +436,7 @@
 
 #Engineering
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitSeniorAtmos
   name: senior atmospherics jumpsuit
   description: A sign of skill and prestige within the atmospherics department.
