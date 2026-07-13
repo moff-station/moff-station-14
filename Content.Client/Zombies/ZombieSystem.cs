@@ -1,17 +1,13 @@
 using System.Linq;
 using Content.Shared._Starlight.CollectiveMind; // Moffstation - Zombies not getting added to their Hivemind
 using Content.Shared.Body;
-using Content.Shared.Ghost;
-using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Zombies;
 using Robust.Client.GameObjects;
-using Robust.Shared.Prototypes;
 namespace Content.Client.Zombies;
 
 public sealed partial class ZombieSystem : SharedZombieSystem
 {
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
     [Dependency] private CollectiveMindUpdateSystem _collectiveMindUpdateSystem = default!; // Moffstation - Zombies not getting added to their Hivemind
@@ -27,7 +23,7 @@ public sealed partial class ZombieSystem : SharedZombieSystem
 
     private void GetZombieIcon(Entity<ZombieComponent> ent, ref GetStatusIconsEvent args)
     {
-        var iconPrototype = _prototype.Index(ent.Comp.StatusIcon);
+        var iconPrototype = ProtoMan.Index(ent.Comp.StatusIcon);
         args.StatusIcons.Add(iconPrototype);
     }
 
@@ -36,7 +32,7 @@ public sealed partial class ZombieSystem : SharedZombieSystem
         if (HasComp<ZombieComponent>(ent))
             return;
 
-        var iconPrototype = _prototype.Index(ent.Comp.StatusIcon);
+        var iconPrototype = ProtoMan.Index(ent.Comp.StatusIcon);
         args.StatusIcons.Add(iconPrototype);
     }
 

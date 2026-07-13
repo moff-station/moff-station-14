@@ -23,8 +23,16 @@
   components:
   - type: EntityTableContainerFill
     containers:
-      entity_storage: !type:NestedSelector
-        tableId: LockerFillQuarterMaster
+    # Moffstation - Start - Harmony QM Hardsuit in locker variations
+      # entity_storage: !type:NestedSelector
+        # tableId: LockerFillQuarterMaster
+      entity_storage: !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: LockerFillQuarterMaster
+        - !type:NestedSelector
+          tableId: FillQuarterMasterHardsuit
+    # Moffstation - End
 
 # No laser table
 - type: entityTable
@@ -47,8 +55,7 @@
     - id: RubberStampCaptain
     - id: SpaceCash1000
     - id: WeaponDisabler
-    # - id: ClothingEyesGlassesCommand # Moffstation - Modular Eyewear
-    - id: HudModuleShowJobIcons # Moffstation - Modular Eyewear
+    - id: ClothingEyesGlassesCommand
     - id: OrganSkeletonPersonHead # A skull to accompany your skeleton crew
       conditions:
       - !type:PlayerCountCondition
@@ -135,8 +142,7 @@
     - id: DoorRemoteService
     - id: HoPIDCard
     - id: WeaponDisabler
-    # - id: ClothingEyesHudCommand # Moffstation - Modular Eyewear
-    - id: HudModuleShowJobIcons # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudCommand
     - id: PlushieLizardJobHeadofpersonnel
       prob: 0.02
     - id: ServiceCommsFlatpack # Moffstation - Departmental Communications Computers
@@ -162,7 +168,6 @@
       prob: 0.15
     - id: ClothingBeltChiefEngineerFilled
     # - id: ClothingEyesGlassesMeson # Moffstation - Modular Eyewear
-    - id: HudModuleEyeProtection # Moffstation - Modular Eyewear
     - id: ClothingHandsGlovesColorYellow
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
@@ -217,11 +222,8 @@
   id: LockerFillChiefMedicalOfficerNoHardsuit
   table: !type:AllSelector
     children:
-    # Moffstation - Start - Modular Eyewear
-    # - id: ClothingEyesHudMedical
-    - id: HudModuleShowMedicalIcons
-    - id: HudModuleSolutionScanner
-    # Moffstation - End
+    # - id: ClothingEyesHudMedical # Moffstation - Modular Eyewear
+    - id: ClothingEyesHudMedChem # Moffstation - Modular Eyewear
     - id: ClothingBeltMedicalFilled
     - id: HandheldCrewMonitor
     - id: Hypospray
@@ -335,8 +337,7 @@
     - id: CigarGoldCase
       prob: 0.50
     - id: ClothingBeltSecurityFilled
-    # - id: ClothingEyesGlassesSecurity # Moffstation - Modular Eyewear
-    - id: BoxSecModularHUD # Moffstation - Modular Eyewear
+    - id: ClothingEyesGlassesSecurity
     - id: ClothingHeadsetAltSecurity
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack

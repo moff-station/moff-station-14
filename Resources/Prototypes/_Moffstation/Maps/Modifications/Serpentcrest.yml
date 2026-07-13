@@ -1,0 +1,46 @@
+- type: mapModification
+  id: SerpentcrestModificationsLaundry
+  applyOn:
+  - Serpentcrest
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: RandomSoap
+    bounds: "-42,-16,-39,-14"
+  - !type:EntityPrototypeSelector
+    prototype: TowelColorSyndicate
+    bounds: "-42,-16,-39,-14"
+  - !type:EntityPrototypeSelector
+    prototype: WoodDoor
+    bounds: "-42,-16,-39,-14"
+  - !type:EntityPrototypeSelector
+    prototype: WallSolid
+    bounds: "-42,-16,-39,-14"
+  - !type:EntityPrototypeSelector
+    prototype: ToiletDirtyWater
+    bounds: "-42,-16,-39,-14"
+  - !type:EntityPrototypeSelector
+    prototype: EmergencyLight
+    bounds: "-42,-17,-39,-14"
+  additions:
+    # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -41.5, -14.5
+  - prototype: WashingMachine
+    position: -39.5, -14.5
+  - prototype: SignLaundromat
+    position: -42.5, -15.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -41.5, -16.5
+    # Additional Visual Improvements
+  - prototype: Rack
+    position: -40.5, -14.5
+  - prototype: AtmosFixAirMarker
+    position: -40.5, -14.5
+  - prototype: RandomSoap
+    position: -40.5, -14.5
+  - prototype: EmergencyLight
+    position: -40.5, -14.5
+  - prototype: FloorDrain
+    position: -40.5, -15.5
+  - prototype: AtmosFixAirMarker
+    position: -40.5, -15.5

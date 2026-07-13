@@ -6522,6 +6522,11 @@ Entries:
   id: 1562
   time: '2026-06-23T18:42:04.000'
   url: https://github.com/moff-station/moff-station-14/pull/1562
+- author: Huaqas
+  changes: []
+  id: 1563
+  time: '2026-07-09T23:55:01.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1563
 - author: Nyxilath
   changes:
   - message: Gray accents now respect the accentless trait.
@@ -6610,6 +6615,13 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1577
 - author: Dave
   changes:
+  - message: New Reptilian Sprites!
+    type: add
+  id: 1578
+  time: '2026-07-11T04:15:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1578
+- author: Dave
+  changes:
   - message: Community Laborer Prisoner Role!
     type: add
   - message: Test Subject is gone now, Hooray for Humanoid Rights!
@@ -6617,6 +6629,15 @@ Entries:
   id: 1579
   time: '2026-06-29T16:55:08.000'
   url: https://github.com/moff-station/moff-station-14/pull/1579
+- author: Nyxilath
+  changes:
+  - message: Nanotrasen will no longer order pizza to the ATS.
+    type: remove
+  - message: Pizza delivery scurrets, courtesy of Arnold's Pizza!
+    type: add
+  id: 1581
+  time: '2026-07-11T14:02:11.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1581
 - author: Centronias
   changes:
   - message: Remove AI shell's built-in tool module.
@@ -6626,6 +6647,15 @@ Entries:
   id: 1585
   time: '2026-06-29T20:11:10.000'
   url: https://github.com/moff-station/moff-station-14/pull/1585
+- author: StudMuffin
+  changes:
+  - message: The AI is now able to jump to a person location by clicking on their
+      name in the chat window, only if the person have their sensors set to coordinates
+      !
+    type: add
+  id: 1586
+  time: '2026-07-09T19:40:36.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1586
 - author: Dave
   changes:
   - message: new thaven sprites
@@ -6662,13 +6692,49 @@ Entries:
   url: https://github.com/moff-station/moff-station-14/pull/1593
 - author: DrWhoFan13
   changes:
+  - message: Blood Brothers are now known as the Blood Bound.
+    type: tweak
+  id: 1594
+  time: '2026-07-10T09:45:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1594
+- author: DrWhoFan13
+  changes:
   - message: Traitors have regained access to the Singulo Beacon... as long as they
       have DAGD.
     type: tweak
   id: 1595
   time: '2026-07-05T18:19:29.000'
   url: https://github.com/moff-station/moff-station-14/pull/1595
-- author: DrWhoFan13
+- author: Nyxilath
+  changes:
+  - message: Loadout glasses options have been simplified
+    type: tweak
+  - message: Department eyewear options are now found in their relevant department
+      lockers an drobes
+    type: tweak
+  - message: Eye protection Modular HUD and Modular HUD goggles have been removed
+    type: remove
+  - message: Engineering goggles have been readded
+    type: add
+  - message: Impaired vision crew members now start with glasses instead of a prescription
+      module again
+    type: fix
+  - message: Mindshield, contraband, and criminal records HUD modules have been unified
+      into a singular module
+    type: tweak
+  - message: Thirst HUD module has been given solution scanning
+    type: tweak
+  - message: Thirst and Hunger HUD modules can no longer be manufactured
+    type: remove
+  - message: Modular HUD Sunglasses and Cheap Sunglasses have been converted into
+      HUD inserts instead
+    type: tweak
+  - message: Modular HUD Frames have had their maximum slots reduced by 1
+    type: tweak
+  id: 1596
+  time: '2026-07-08T23:05:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1596
+- author: BlueMoon059, DrWhoFan13
   changes:
   - message: Genpop IDs now announce their expiration on security radio.
     type: add
@@ -6703,6 +6769,18 @@ Entries:
   id: 1601
   time: '2026-07-04T23:21:59.000'
   url: https://github.com/moff-station/moff-station-14/pull/1601
+- author: Tezzaide
+  changes: []
+  id: 1602
+  time: '2026-07-08T01:46:02.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1602
+- author: DuckManZach
+  changes:
+  - message: Reworked character UI menu!
+    type: add
+  id: 1605
+  time: '2026-07-11T13:38:13.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1605
 - author: DuckManZach
   changes:
   - message: Changed Updates to Dove, Scylla, Aspid!
@@ -6754,6 +6832,14 @@ Entries:
   id: 1614
   time: '2026-07-06T23:18:08.000'
   url: https://github.com/moff-station/moff-station-14/pull/1614
+- author: DuckManZach
+  changes:
+  - message: Server will auto restart for updates when a session isnt going, even
+      if players are on (you will get notified, dont worry!)
+    type: add
+  id: 1615
+  time: '2026-07-10T17:20:43.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1615
 - author: Dave
   changes:
   - message: new Moffy Moff!
@@ -6761,5 +6847,84 @@ Entries:
   id: 1616
   time: '2026-07-06T21:27:46.000'
   url: https://github.com/moff-station/moff-station-14/pull/1616
+- author: Centronias
+  changes:
+  - message: Added Biff Himbo's personal item.
+    type: add
+  id: 1617
+  time: '2026-07-08T10:11:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1617
+- author: Centronias
+  changes:
+  - message: Added Dextrose's personal item.
+    type: add
+  id: 1618
+  time: '2026-07-08T15:12:18.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1618
+- author: Nyxilath
+  changes:
+  - message: Bomb letters are now visually identical to their non-bomb counterparts.
+    type: tweak
+  - message: Mail no longer states their direct spesos value on each unit.
+    type: remove
+  id: 1619
+  time: '2026-07-09T19:20:29.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1619
+- author: CollectionOfBones128, DrWhoFan13
+  changes:
+  - message: The Quartermaster now has their own exclusive hardsuit.
+    type: add
+  - message: The Quartermaster's locker now comes in two variants, with & without
+      the hardsuit. By default, all QM lockers are now the "with" variant.
+    type: tweak
+  id: 1622
+  time: '2026-07-12T00:51:33.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1622
+- author: meganerobot
+  changes: []
+  id: 1624
+  time: '2026-07-08T11:52:15.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1624
+- author: Dave
+  changes:
+  - message: Laundromat at CC
+    type: add
+  - message: various changes to Science, Vox Box & CC Bridge Office at Centcomm
+    type: tweak
+  - message: Central Command Thunderdome Removed, replaced with a theatre/stage
+    type: remove
+  id: 1625
+  time: '2026-07-08T22:17:20.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1625
+- author: Dave
+  changes:
+  - message: lawyer now starts with a service headset
+    type: tweak
+  - message: Security headsets are no longer considered lawyer contraband
+    type: tweak
+  id: 1627
+  time: '2026-07-09T23:32:46.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1627
+- author: KentoDaNeko
+  changes:
+  - message: Added Rainbow Mothroaches.
+    type: add
+  id: 1630
+  time: '2026-07-10T09:45:19.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1630
+- author: DuckManZach
+  changes:
+  - message: People no longer slip on puddles whilist walking
+    type: fix
+  id: 1634
+  time: '2026-07-08T22:40:41.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1634
+- author: Centronias
+  changes:
+  - message: Map patches with bounds should work now.
+    type: fix
+  id: 1651
+  time: '2026-07-12T17:09:53.000'
+  url: https://github.com/moff-station/moff-station-14/pull/1651
 Name: Mofflog
 Order: -2

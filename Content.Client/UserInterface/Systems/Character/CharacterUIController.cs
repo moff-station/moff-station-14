@@ -1,13 +1,11 @@
 using System.Linq;
 using Content.Client._Starlight.UserInterface.Controls; // Starlight - Collective Mind
-using Content.Client._DV.CustomObjectiveSummary; // DeltaV
-using Content.Client._Moffstation.ObjectivePicker; // Moffstation
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
-using Content.Client.UserInterface.Systems.Character.Windows;
+using Content.Client._Moffstation.CharacterMenu; // Moffstation - Character Menu Redesign
 using Content.Client.UserInterface.Systems.Objectives.Controls;
 using Content.Shared._Moffstation.Objectives; // Moffstation
 using Content.Shared.Input;
@@ -35,7 +33,6 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
 
-    [Dependency] private CustomObjectiveSummaryUIController _objectiveSummary = default!; // DeltaV
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
@@ -47,15 +44,23 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         SubscribeNetworkEvent<MindRoleTypeChangedEvent>(OnRoleTypeChanged);
     }
 
-    private CharacterWindow? _window;
+    // Moffstation - Start - Character Menu Redesign
+    // private CharacterWindow? _window;
+    private MoffCharacterWindow? _window;
+    // Moffstation - End
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
 
     public void OnStateEntered(GameplayState state)
     {
         DebugTools.Assert(_window == null);
 
-        _window = UIManager.CreateWindow<CharacterWindow>();
-        LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.CenterTop);
+        // Moffstation - Start - Character Menu Redesign
+        // _window = UIManager.CreateWindow<CharacterWindow>();
+        _window = UIManager.CreateWindow<MoffCharacterWindow>();
+        LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.Center);
+        LayoutContainer.SetGrowHorizontal(_window, LayoutContainer.GrowDirection.Both);
+        LayoutContainer.SetGrowVertical(_window, LayoutContainer.GrowDirection.Both);
+        // Moffstation - End
 
         _window.OnClose += DeactivateButton;
         _window.OnOpen += ActivateButton;
@@ -145,86 +150,29 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.NameLabel.Text = entityName;
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
-        _window.ObjectivesLabel.Visible = objectives.Any();
+        // Moffstation - Start - Character Menu Redesign (removed ObjectivesLabel, added Briefing clear)
+        // _window.ObjectivesLabel.Visible = objectives.Any();
+        _window.Briefing.RemoveAllChildren();
+        // Moffstation - End
         _window.Minds.RemoveAllChildren(); // Starlight - Collective Mind
 
+        // Moffstation - Start - Character Menu Redesign (moved button logic to MoffCharacterWindow)
+        var canPickObjectives = _ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var mindContainer)
+            && mindContainer.Mind is not null
+            && _ent.HasComponent<PotentialObjectivesComponent>(mindContainer.Mind);
+        _window.AddObjectiveButtons(objectives.Count, canPickObjectives);
+        // Moffstation - End
+
+        // Moff Start - New Character UI
+        // Basically this whole foreach loop is rewritten, probably dont take new changes here
         foreach (var (groupId, conditions) in objectives)
         {
-            var objectiveControl = new CharacterObjectiveControl
-            {
-                Orientation = BoxContainer.LayoutOrientation.Vertical,
-                Modulate = Color.Gray
-            };
-
-
-            var objectiveText = new FormattedMessage();
-            objectiveText.TryAddMarkup(groupId, out _);
-
-            var objectiveLabel = new RichTextLabel
-            {
-                StyleClasses = { StyleClass.TooltipTitle }
-            };
-            objectiveLabel.SetMessage(objectiveText);
-
-            objectiveControl.AddChild(objectiveLabel);
-
             foreach (var condition in conditions)
             {
-                var conditionControl = new ObjectiveConditionsControl();
-                conditionControl.ProgressTexture.Texture = _sprite.Frame0(condition.Icon);
-                conditionControl.ProgressTexture.Progress = condition.Progress;
-                var titleMessage = new FormattedMessage();
-                var descriptionMessage = new FormattedMessage();
-                titleMessage.AddText(condition.Title);
-                descriptionMessage.AddText(condition.Description);
-
-                conditionControl.Title.SetMessage(titleMessage);
-                conditionControl.Description.SetMessage(descriptionMessage);
-
-                objectiveControl.AddChild(conditionControl);
-            }
-
-            _window.Objectives.AddChild(objectiveControl);
-        }
-        // Begin DeltaV Additions - Custom objective summary
-        switch (objectives.Count)
-        {
-            case > 0:
-            {
-                var button = new Button
-                {
-                    Text = Loc.GetString("custom-objective-button-text"),
-                    Margin = new Thickness(0, 10, 0, 10)
-                };
-                button.OnPressed += _ => _objectiveSummary.OpenWindow();
-
-                _window.Objectives.AddChild(button);
-                break;
-            }
-        // End DeltaV Additions
-        // Moffstation - Start - Objective Picker
-            case 0:
-            {
-                if (!_ent.TryGetComponent<MindContainerComponent>(_player.LocalEntity, out var container)
-                    || container.Mind is null)
-                    break;
-
-                if (!_ent.HasComponent<PotentialObjectivesComponent>(container.Mind))
-                    break;
-
-                var objectivePickerButton = new Button
-                {
-                    Text = Loc.GetString("objective-picker-button"),
-                    Margin = new Thickness(0, 10, 0, 10)
-                };
-                objectivePickerButton.OnPressed += _ => UIManager.GetUIController<ObjectivePickerUIController>().EnsureWindow();
-                objectivePickerButton.OnPressed += _ => _window.Close();
-
-                _window.Objectives.AddChild(objectivePickerButton);
-                break;
+                _window.Objectives.AddChild(new ObjectiveConditionsControl(condition, _sprite));
             }
         }
-        // Moffstation - End
+        // Moff End
 
         // Starlight - Start - Collective Mind
         if (minds != null && minds.Count > 0)
@@ -248,7 +196,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
             }
             mindsControl.Description.SetMessage(mindDescriptionMessage);
-            _window.Objectives.AddChild(mindsControl);
+            _window.Minds.AddChild(mindsControl); // Moffstation - Character Menu Redesign (fix: Minds was declared but never populated)
         }
         // Starlight - End
 
@@ -259,7 +207,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             text.PushColor(Color.Yellow);
             text.AddText(briefing);
             briefingControl.Label.SetMessage(text);
-            _window.Objectives.AddChild(briefingControl);
+            _window.Briefing.AddChild(briefingControl); // Moffstation - Character Menu Redesign
         }
 
         var controls = _characterInfo.GetCharacterInfoControls(entity);
@@ -268,7 +216,18 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
             _window.Objectives.AddChild(control);
         }
 
-        _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
+        // Moffstation - Start - hide "no special roles" placeholder
+        // _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
+        _window.RolePlaceholder.Visible = false;
+        // Moffstation - End
+
+        // Moffstation - Start - Character Menu Redesign
+        // The stuff doesnt get refreshed properly when you reopen the window.
+        // This fixes that
+        _window.Objectives.InvalidateMeasure();
+        _window.ObjectivesWrapper.InvalidateMeasure();
+        _window.ObjectivesScroll.InvalidateMeasure();
+        // Moffstation - End
     }
 
     private void OnRoleTypeChanged(MindRoleTypeChangedEvent ev, EntitySessionEventArgs _)
@@ -290,6 +249,15 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
 
         if (!_prototypeManager.TryIndex(mind.RoleType, out var proto))
             Log.Error($"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
+
+        // Moffstation - Start - Faction subtype display
+        if (mind.Subtype.HasValue)
+        {
+            _window.RoleType.Text = Loc.GetString(mind.Subtype.Value);
+            _window.RoleType.FontColorOverride = mind.SubtypeColor ?? proto?.Color ?? Color.White;
+            return;
+        }
+        // Moffstation - End
 
         _window.RoleType.Text = Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name");
         _window.RoleType.FontColorOverride = proto?.Color ?? Color.White;
