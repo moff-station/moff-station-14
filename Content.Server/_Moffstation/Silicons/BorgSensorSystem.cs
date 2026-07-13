@@ -47,7 +47,7 @@ public sealed partial class BorgSensorSystem : SharedBorgSensorSystem
             }
 
             // Send it to the connected server
-            var payload = _sensor.SuitSensorToPacket(status);
+            var payload = Sensor.SuitSensorToPacket(status);
 
             // Clear the connected server if its address isn't on the network
             if (!_deviceNetworkSystem.IsAddressPresent(device.DeviceNetId, sensor.ConnectedServer))

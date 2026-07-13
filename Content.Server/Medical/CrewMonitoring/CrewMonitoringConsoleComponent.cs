@@ -1,6 +1,7 @@
 using Content.Shared._Moffstation.Sensors; // Moffstation - Borg sensors
 using Content.Shared.Medical.SuitSensor;
-using Robust.Shared.Prototypes; // Moffstation - Borg sensors
+using Robust.Shared.Prototypes;
+using Robust.Shared.Utility; // Moffstation - Borg sensors
 
 namespace Content.Server.Medical.CrewMonitoring;
 

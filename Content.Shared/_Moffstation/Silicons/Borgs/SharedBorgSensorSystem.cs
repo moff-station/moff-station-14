@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
@@ -27,6 +28,9 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
     [Dependency] private MobThresholdSystem _threshold = default!;
     [Dependency] private DamageableSystem _damageable = default!;
 
+    [Dependency] private EntityQuery<BorgSensorComponent> _sensorQuery = default!;
+    [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
+
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<BorgSensorComponent> ent, ref MapInitEvent args)
     {
@@ -50,8 +54,8 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
     {
         return new Verb
         {
-            Text = _sensor.GetModeName(mode),
-            Message = _sensor.GetModeDescription(mode),
+            Text = Sensor.GetModeName(mode),
+            Message = Sensor.GetModeDescription(mode),
             Disabled = ent.Comp.Mode == mode,
             Priority = -(int)mode, // sort them in descending order
             Category = VerbCategory.SetSensor,
@@ -61,7 +65,7 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
 
     private bool TrySetSensor(Entity<BorgSensorComponent?> ent, SuitSensorMode mode, EntityUid userUid)
     {
-        if (!Resolve(ent, ref ent.Comp, false))
+        if (!_sensorQuery.HasComp(ent))
             return false;
 
         if (ent.Owner ==  userUid)
@@ -97,7 +101,9 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
         var sensor = ent.Comp1;
         var transform = ent.Comp2;
 
-        if (sensor.Mode == SuitSensorMode.SensorOff || !HasComp<MobStateComponent>(ent) || transform.GridUid == null)
+        if (sensor.Mode == SuitSensorMode.SensorOff ||
+            !_mobStateQuery.TryComp(ent, out var mobState) ||
+            transform.GridUid == null)
             return null;
 
         var sensorType = sensor.SensorType;
@@ -107,9 +113,7 @@ public abstract partial class SharedBorgSensorSystem : EntitySystem
         var userJobDepartments = new List<string>{Loc.GetString("department-Silicon")};
 
         // get health mob state
-        var isAlive = false;
-        if (TryComp(ent, out MobStateComponent? mobState))
-            isAlive = !_mobState.IsDead(ent, mobState);
+        var isAlive = _mobState.IsAlive(ent, mobState);
 
         // get mob total damage
         var totalDamage = _damageable.GetTotalDamage(ent.Owner).Int();
