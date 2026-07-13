@@ -1,11 +1,15 @@
 humanoid-profile-editor-randomize = Randomize
-humanoid-profile-editor-randomize-unlocked-button = Randomize unlocked
+# Moff - Randomize Selected
+humanoid-profile-editor-randomize-unlocked-button = Randomize Selected
 humanoid-profile-editor-randomize-name-button = Name
 humanoid-profile-editor-randomize-species-button = Species
 humanoid-profile-editor-randomize-age-button = Age
 humanoid-profile-editor-randomize-sex-button = Sex
 humanoid-profile-editor-randomize-skin-button = Skin color
 humanoid-profile-editor-randomize-eye-button = Eye color
+# Moff - More buttons for our shit, probably remove it if the big upstream adds it
+humanoid-profile-editor-randomize-height-button = Height
+humanoid-profile-editor-randomize-marking-button = Markings
 humanoid-profile-editor-name-label = Name:
 humanoid-profile-editor-appearance-tab = Appearance
 humanoid-profile-editor-clothing = Show clothing
