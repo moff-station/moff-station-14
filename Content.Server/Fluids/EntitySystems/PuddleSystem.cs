@@ -65,6 +65,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [SubscribeLocalEvent]
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
+        // The thing stepping in the puddle. Because I keep forgetting which is which
+        var stepper = args.OtherEntity;
+
         if (!_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
             return;
 
@@ -72,20 +75,19 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             return;
 
         // Check if its in air... because... if you're not on the ground you don't get spilled on
-        if (TryComp<PhysicsComponent>(ent.Owner, out var physicsComp)
-            && (physicsComp.BodyStatus == BodyStatus.InAir || _gravity.IsWeightless(ent.Owner)))
+        if (TryComp<PhysicsComponent>(stepper, out var physicsComp)
+            && (physicsComp.BodyStatus == BodyStatus.InAir || _gravity.IsWeightless(stepper)))
             return;
 
         // Choose le target...
         // if standing and have shoes, just get it on their shoes
         EntityUid target;
-        if (_standing.IsDown(args.OtherEntity)) // on the ground, spill it on them in general
-            target = args.OtherEntity;
-        else if (_inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes) && shoes is { } shoeUid)
+        if (_standing.IsDown(stepper)) // on the ground, spill it on them in general
+            target = stepper;
+        else if (_inventory.TryGetSlotEntity(stepper, "shoes", out var shoes) && shoes is { } shoeUid)
             target = shoeUid;
         else
             return;
-
 
         var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
         RaiseLocalEvent(target, spilledEvent);
