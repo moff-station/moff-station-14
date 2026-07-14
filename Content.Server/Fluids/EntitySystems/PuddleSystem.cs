@@ -73,8 +73,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
         // Check if its in air... because... if you're not on the ground you don't get spilled on
         if (TryComp<PhysicsComponent>(ent.Owner, out var physicsComp)
-            && physicsComp.BodyStatus == BodyStatus.InAir
-            || _gravity.IsWeightless(ent.Owner))
+            && (physicsComp.BodyStatus == BodyStatus.InAir || _gravity.IsWeightless(ent.Owner)))
             return;
 
         // Choose le target...
