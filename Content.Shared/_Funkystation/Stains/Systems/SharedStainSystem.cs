@@ -92,7 +92,7 @@ public abstract partial class SharedStainSystem : EntitySystem
             if (split.Volume > stainSolution.Value.Comp.Solution.AvailableVolume)
             {
                 var puddleSplit = stainSolution.Value.Comp.Solution.SplitSolution(split.Volume);
-                _puddle.TrySpillAt(ent.Owner, puddleSplit, out _);
+                _puddle.TrySpillAt(ent.Owner, puddleSplit, out _, false);
             }
             _solution.TryAddSolution(stainSolution.Value, split);
             UpdateVisuals(ent);
