@@ -36,7 +36,6 @@ public sealed partial class StainableComponent : Component
 
     [DataField]
     public float StainChance = 0.5f;
-
 }
 
 [Serializable, NetSerializable]

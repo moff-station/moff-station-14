@@ -59,11 +59,11 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (IsStainBlocked(ent))
             return;
 
-        var rand = SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Owner));
-        if (!rand.Prob(ent.Comp.StainChance))
+        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
-        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
+        var rand = SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Owner));
+        if (!rand.Prob(ent.Comp.StainChance))
             return;
 
         var split = args.Solution.SplitSolution(ent.Comp.SpillTransferAmount);

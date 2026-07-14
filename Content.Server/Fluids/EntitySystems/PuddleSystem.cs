@@ -77,7 +77,7 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         else if (_inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes) && shoes is { } shoeUid)
             target = shoeUid;
         else
-            return;
+            target = args.OtherEntity;
 
 
         var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
