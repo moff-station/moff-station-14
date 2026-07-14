@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Shared._ES.Camera; // ES - Screenshake
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Components;
@@ -66,7 +67,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] protected SharedTransformSystem TransformSystem = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private DamageExamineSystem _damageExamine = default!;
-
+    // ES START
+    [Dependency] private SharedESScreenshakeSystem _shake = default!;
+    // ES END
     [Dependency] private EntityQuery<DamageableComponent> _damageQuery = default!;
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
@@ -579,8 +582,17 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         if (damageResult.GetTotal() > FixedPoint2.Zero && !TerminatingOrDeleted(target.Value))
         {
             DoDamageEffect(targets, user, targetXform);
+
+            // Moffstation - start - Tweaked screenshake changes
+            var targetMap = TransformSystem.ToMapCoordinates(GetCoordinates(ev.Coordinates));
+            var userPos = TransformSystem.GetWorldPosition(Transform(user));
+            var direction = targetMap.Position - userPos;
+
+            DoScreenShake(direction, user, targets);
+            // Moffstation - End
         }
     }
+
 
     protected abstract void DoDamageEffect(List<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
 
@@ -743,7 +755,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         {
             var target = entities.First();
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, ProtoMan), hitEvent.HitSoundOverride, component);
+            DoScreenShake(direction, user, targets); // Moffstation - Tweaked screenshake changes
         }
+
 
         if (appliedDamage.GetTotal() > FixedPoint2.Zero && targets.Count > 0)
         {
@@ -1063,4 +1077,23 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             }
         }
     }
+
+    // Moffstation - Start - Fancy Screenshake
+    // This is still magic numbers bs but slightly better because its not straight up repeat code.
+    // Maybe it's worse if you want to use different numbers for the different melee attacks, but rn idc
+    private void DoScreenShake(Vector2 direction, EntityUid user, List<EntityUid> targets)
+    {
+        var trauma = 0.2f;
+        var decayRate = 5.0f;
+
+        var shakeRotation = new ESScreenshakeParameters { Trauma = 0.06f, DecayRate = 0.5f, Frequency = 0.004f };
+        var userShakeTranslation = new ESScreenshakeParameters { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
+        var otherShakeTranslation = new ESScreenshakeParameters { Trauma = trauma, DecayRate = decayRate, Frequency = 0.001f, Direction = direction };
+        _shake.Screenshake(user, userShakeTranslation, shakeRotation);
+        foreach (var shakeTarget in targets)
+        {
+            _shake.Screenshake(shakeTarget, otherShakeTranslation, shakeRotation);
+        }
+    }
+    // Moffstation - End - Fancy Screenshake
 }
