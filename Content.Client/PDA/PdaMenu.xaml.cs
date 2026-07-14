@@ -9,6 +9,14 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
+        // Moffstation - Begin - PDA Ads
+using Robust.Shared.Serialization;
+using Robust.Shared.Prototypes;
+using System.Linq;
+using Robust.Shared.Random;
+using Content.Shared._Moffstation.PDA;
+using Content.Shared.Random.Helpers;
+        // Moffstation - End
 
 namespace Content.Client.PDA
 {
@@ -18,6 +26,9 @@ namespace Content.Client.PDA
         [Dependency] private IClipboardManager _clipboard = null!;
         [Dependency] private IGameTiming _gameTiming = default!;
         [Dependency] private IEntitySystemManager _entitySystem = default!;
+
+        [Dependency] private IPrototypeManager _prototypeManager = default!; // Moffstation - PDA Advertisements
+        [Dependency] private IRobustRandom _random = default!; // Moffstation - PDA Advertisements
         private readonly ClientGameTicker _gameTicker;
 
         public const int HomeView = 0;
@@ -54,6 +65,16 @@ namespace Content.Client.PDA
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
+            // Moffstation - begin - PDA Advertisements
+            //var adPrototype = _prototypeManager.EnumeratePrototypes<PdaAdPrototype>().ElementAt(1);
+            //var weightedRandom = _prototypeManager.Index(adPrototype.AdWeightPrototype);
+
+            var weightedRandom = _prototypeManager.Index(PdaAdPrototype.AdWeightPrototype);
+            var adPrototype = _prototypeManager.Index<PdaAdPrototype>(weightedRandom.Pick(_random));
+
+            Advertisement.SetFromSpriteSpecifier(adPrototype.Sprite);
+            Advertisement.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspect;
+            // Moffstation - end - PDA Advertisements
 
             HomeButton.OnPressed += _ => ToHomeScreen();
 
@@ -200,10 +221,10 @@ namespace Content.Client.PDA
 
         public void UpdateAvailablePrograms(List<(EntityUid, CartridgeComponent)> programs)
         {
-            ProgramList.RemoveAllChildren();
-
             if (programs.Count == 0)
             {
+                ProgramList.RemoveAllChildren();
+
                 ProgramList.AddChild(new Label()
                 {
                     Text = Loc.GetString("comp-pda-io-no-programs-available"),
@@ -215,50 +236,43 @@ namespace Content.Client.PDA
                 return;
             }
 
-            var row = CreateProgramListRow();
-            var itemCount = 1;
-            ProgramList.AddChild(row);
-
-            foreach (var (uid, component) in programs)
+            if (ProgramList.ChildCount >= 1 && ProgramList.Children[0] is Label label)
             {
-                //Create a new row every second program item starting from the first
-                if (itemCount % 2 != 0)
+                label.Orphan();
+            }
+
+            while (ProgramList.ChildCount > programs.Count)
+            {
+                ProgramList.Children[ProgramList.ChildCount - 1].Orphan();
+            }
+
+            for (var i = 0; i < programs.Count; i++)
+            {
+                var cartridge = programs[i];
+
+                if (i < ProgramList.ChildCount)
                 {
-                    row = CreateProgramListRow();
-                    ProgramList.AddChild(row);
+                    var currentItem = ProgramList.Children[i];
+                    if (currentItem is PdaProgramItem programItem)
+                    {
+                        programItem.SetCartridge(cartridge);
+                        continue;
+                    }
+
+                    DebugTools.Assert(i == ProgramList.ChildCount-1);
+                    currentItem.Orphan();
                 }
 
-                var item = new PdaProgramItem();
-
-                if (component.Icon is not null)
-                    item.Icon.SetFromSpriteSpecifier(component.Icon);
-
-                item.OnPressed += _ => OnProgramItemPressed?.Invoke(uid);
-
-                switch (component.InstallationStatus)
-                {
-                    case InstallationStatus.Cartridge:
-                        item.InstallButton.Visible = true;
-                        item.InstallButton.Text = Loc.GetString("cartridge-bound-user-interface-install-button");
-                        item.InstallButton.OnPressed += _ => OnInstallButtonPressed?.Invoke(uid);
-                        break;
-                    case InstallationStatus.Installed:
-                        item.InstallButton.Visible = true;
-                        item.InstallButton.Text = Loc.GetString("cartridge-bound-user-interface-uninstall-button");
-                        item.InstallButton.OnPressed += _ => OnUninstallButtonPressed?.Invoke(uid);
-                        break;
-                }
-
-                item.ProgramName.Text = Loc.GetString(component.ProgramName);
-                item.SetHeight = 20;
-                row.AddChild(item);
-
-                itemCount++;
+                var item = new PdaProgramItem(cartridge);
+                item.OnProgramItemPressed += uid => OnProgramItemPressed?.Invoke(uid);
+                item.OnUninstallButtonPressed += uid => OnUninstallButtonPressed?.Invoke(uid);
+                item.OnInstallButtonPressed += uid => OnInstallButtonPressed?.Invoke(uid);
+                ProgramList.AddChild(item);
             }
 
             //Add a filler item to the last row when it only contains one item
-            if (itemCount % 2 == 0)
-                row.AddChild(new Control() { HorizontalExpand = true });
+            if (programs.Count % 2 == 0)
+                 ProgramList.AddChild(new Control() { HorizontalExpand = true });
         }
 
         /// <summary>
@@ -319,15 +333,6 @@ namespace Content.Client.PDA
             _currentView = view;
         }
 
-        private static BoxContainer CreateProgramListRow()
-        {
-            return new BoxContainer()
-            {
-                Orientation = BoxContainer.LayoutOrientation.Horizontal,
-                HorizontalExpand = true
-            };
-        }
-
         private void HideAllViews()
         {
             var views = ViewContainer.Children;
@@ -346,5 +351,19 @@ namespace Content.Client.PDA
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
         }
+
+
+        // Moffstation - begin - PDA Advertisements
+        /// <summary>
+        /// Used by PdaBoundUserInterface to hide ads for PDAs which should not show them.
+        /// </summary>
+        public void DisableAds(bool noAdverts)
+        {
+            if (!noAdverts)
+                return;
+
+            AdvertisementBox.Visible = false;
+        }
+        // Moffstation - end - PDA Advertisements
     }
 }

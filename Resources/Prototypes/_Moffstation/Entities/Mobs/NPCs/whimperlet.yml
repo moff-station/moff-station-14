@@ -29,10 +29,7 @@
     allowedEmotes: ['Crying']
     speechSounds: Whimperlet
   - type: Vocal
-    sounds:
-      Male: Whimperlet
-      Female: Whimperlet
-      Unsexed: Whimperlet
+    emoteSounds: Whimperlet
   - type: ToolRefinable
     refineResult:
     - id: FoodMeat

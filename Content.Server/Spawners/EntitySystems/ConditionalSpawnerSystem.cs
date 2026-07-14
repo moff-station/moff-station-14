@@ -159,7 +159,8 @@ namespace Content.Server.Spawners.EntitySystems
 
             var xform = Transform(ent);
             var coords = _xform.GetMapCoordinates(ent, xform);
-            var rotation = _xform.GetWorldRotation(xform);
+            // Moffstation - Random angle for spawners
+            var rotation = ent.Comp.RandomRotation ? _robustRandom.NextAngle() : _xform.GetWorldRotation(xform);
             var offset = ent.Comp.Offset;
 
             var spawns = _entityTable.GetSpawns(ent.Comp.Table);

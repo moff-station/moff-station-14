@@ -25,7 +25,7 @@
   - type: ExtensionCableReceiver
   - type: ActivatableUIRequiresPower
   - type: Sprite
-    sprite: Structures/Machines/computers.rsi
+    sprite: _Moffstation/Structures/Machines/computers.rsi # Moffstation
     layers:
     - map: ["computerLayerBody"]
       state: computer

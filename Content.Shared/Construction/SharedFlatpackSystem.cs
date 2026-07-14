@@ -25,7 +25,6 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 {
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     // [Dependency] private INetManager _net = default!; // Moffstation - Now Unused
-    [Dependency] protected IPrototypeManager PrototypeManager = default!;
     [Dependency] private AnchorableSystem _anchorable = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
@@ -84,7 +83,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
 
         if (ent.Comp.QualityNeeded is { } qualityNeeded)
         {
-            if (PrototypeManager.Resolve(qualityNeeded, out var quality))
+            if (ProtoMan.Resolve(qualityNeeded, out var quality))
             {
                 args.PushMarkup(Loc.GetString("flatpack-examine", ("qualityNeeded", Loc.GetString(quality.Name))));
             }
@@ -101,7 +100,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
             return;
 
         ent.Comp.Entity = proto;
-        var machinePrototype = PrototypeManager.Index<EntityPrototype>(proto);
+        var machinePrototype = ProtoMan.Index(proto);
 
         var meta = MetaData(ent);
         _metaData.SetEntityName(ent, Loc.GetString("flatpack-entity-name", ("name", machinePrototype.Name)), meta);
@@ -203,7 +202,7 @@ public abstract partial class SharedFlatpackSystem : EntitySystem
             return true;
         }
 
-        if (!PrototypeManager.Resolve(flatpack.Comp.Entity, out var proto) ||
+        if (!ProtoMan.Resolve(flatpack.Comp.Entity, out var proto) ||
             !proto.TryGetComponent<FixturesComponent>(out var fixture, EntityManager.ComponentFactory))
         {
             return true;

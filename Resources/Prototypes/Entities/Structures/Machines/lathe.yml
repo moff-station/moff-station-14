@@ -416,7 +416,6 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
-    - SecurityModularHudFramesStatic # Moffstation - Modular Eyewear
     - SecurityModularHudModulesStatic # Moffstation - Modular Eyewear
     dynamicPacks:
     - SalvageSecurityBoards
@@ -515,6 +514,7 @@
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Medical]
+  - type: AmbientMusicMarkerMedical
 
 - type: entity
   parent: BaseLathe

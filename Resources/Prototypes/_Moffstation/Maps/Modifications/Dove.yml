@@ -1,0 +1,22 @@
+- type: mapModification
+  id: DoveModificationsLaundry
+  applyOn:
+  - Dove
+  removals:
+  - !type:EntityPrototypeSelector
+    prototype: Mirror
+    bounds: "-18,10,-17,11"
+  - !type:EntityPrototypeSelector
+    prototype: Sink
+    bounds: "-17,10,-16,11"
+  - !type:EntityPrototypeSelector
+    prototype: FloorDrain
+    bounds: "-17,10,-16,11"
+  additions:
+  # Add the actual Laundromat
+  - prototype: WashingMachine
+    position: -16.5, 10.5
+  - prototype: SignLaundromat
+    position: -17.5, 10.5
+  - prototype: DefaultStationBeaconLaundromat
+    position: -16.5, 9.5

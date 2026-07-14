@@ -4,13 +4,23 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitOperative
     head: ClothingHeadHelmetSwatSyndicate
-    eyes: ClothingEyesHudSyndicate
     outerClothing: ClothingOuterArmorBasic
-    gloves: ClothingHandsGlovesCombat
+    gloves: ClothingHandsGlovesColorBlack
     back: ClothingBackpack
     shoes: ClothingShoesBootsCombatFilled
+    ears: ClothingHeadsetSyndicateInfiltrator
   storage:
     back:
     - BoxSurvivalSyndicate
   inhand:
   - CombatKnife
+
+# Pizza Delivery Scurret
+- type: startingGear
+  id: PizzaDeliveryScurretGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChef
+    back: ClothingBackpackElectropack
+    head: ClothingHeadHatRedsoftFlipped
+    id: ArnoldsPizzaPDA
+    ears: ClothingHeadsetFreelance

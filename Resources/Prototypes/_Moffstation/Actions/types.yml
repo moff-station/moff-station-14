@@ -1,4 +1,18 @@
 - type: entity
+  parent: BaseAction
+  id: ActionSlimeGrow
+  name: Grow
+  description: Concentrate and grow into a slimeperson.
+  components:
+  - type: Action
+    useDelay: 600
+    icon:
+      sprite: Mobs/Aliens/slimes.rsi
+      state: green_adult_slime
+  - type: InstantAction
+    event: !type:ReformEvent {}
+
+- type: entity
   id: ActionMorphGeras
   name: Morph into Geras
   description:  Morphs you into a Geras - a miniature version of you which allows you to move fast, at the cost of your inventory.

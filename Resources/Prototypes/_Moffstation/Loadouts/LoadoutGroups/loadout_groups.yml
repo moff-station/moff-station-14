@@ -1,34 +1,11 @@
 # Generic
 - type: loadoutGroup
-  id: ModularEyewearBasic
-  name: loadout-group-glasses
-  minLimit: 0
+  id: GroupDrinkBottle
+  name: loadout-group-drink-bottle
+  hidden: true
   loadouts:
-  - ModularHudGlasses
-  - ModularHudCheapSunglasses
-  - ModularHudJamjars
-  - ModularHudGoggles
-  - ModularHudVisor
-  - ModularHudPatch
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
-
-- type: loadoutGroup
-  id: ModularEyewearSunglasses
-  name: loadout-group-glasses
-  loadouts:
-  - ModularHudGlasses
-  - ModularHudSunglasses
-  - ModularHudJamjars
-  - ModularHudGoggles
-  - ModularHudVisor
-  - ModularHudPatch
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  - EyePatch
+  - LoadoutSpeciesBottleAmmonia
+  - LoadoutSpeciesBottleWater
 
 # Captain
 - type: loadoutGroup

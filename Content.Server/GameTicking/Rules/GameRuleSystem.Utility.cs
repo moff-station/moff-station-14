@@ -70,7 +70,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
     protected bool TryFindRandomTile(out Vector2i tile,
         [NotNullWhen(true)] out EntityUid? targetStation,
         out EntityUid targetGrid,
-        out EntityCoordinates targetCoords)
+        out EntityCoordinates targetCoords,
+        // Moffstation - Add Largestgrid and safeatmos options
+        bool largestGrid = false,
+        bool safeAtmos = false)
+        // Moffstation - End
     {
         tile = default;
         targetStation = EntityUid.Invalid;
@@ -81,7 +85,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             return TryFindRandomTileOnStation((targetStation.Value, Comp<StationDataComponent>(targetStation.Value)),
                 out tile,
                 out targetGrid,
-                out targetCoords);
+                out targetCoords,
+                // Moffstation - Added largestGrid and safeatmos options
+                    largestGrid,
+                    safeAtmos);
+                // Moffstation - End
         }
 
         return false;
@@ -90,7 +98,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
     protected bool TryFindRandomTileOnStation(Entity<StationDataComponent> station,
         out Vector2i tile,
         out EntityUid targetGrid,
-        out EntityCoordinates targetCoords)
+        out EntityCoordinates targetCoords,
+        // Moffstation - Add Largestgrid and safeatmos options
+        bool largestGrid = false,
+        bool safeAtmos = false)
+        // Moffstation - End
     {
         tile = default;
         targetCoords = EntityCoordinates.Invalid;
@@ -103,7 +115,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             if (!TryComp<MapGridComponent>(possibleTarget, out var comp))
                 continue;
 
-            weights.Add((possibleTarget, comp), _map.GetAllTiles(possibleTarget, comp).Count());
+            weights.Add((possibleTarget, comp), _map.GetFilledTileCount((possibleTarget, comp)));
         }
 
         if (weights.Count == 0)
@@ -124,7 +136,12 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 
             tile = new Vector2i(randomX, randomY);
             if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tile)
-                || _atmosphere.IsTileAirBlockedCached(targetGrid, tile))
+                || _atmosphere.IsTileAirBlockedCached(targetGrid, tile)
+                // Moffstation - Start - Add Largestgrid and safeatmos options
+                || _station.GetLargestGrid(station.Owner) != targetGrid && largestGrid
+                || Transform(targetGrid).MapUid is not { } map
+                || !_atmosphere.IsTileMixtureProbablySafe(targetGrid, map, tile) && safeAtmos)
+                // Moffstation - End
             {
                 continue;
             }
@@ -145,7 +162,12 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             var allValidCoords = _map.GetAllTiles(targetGrid, gridComp)
                 .Select(t => t.GridIndices)
                 .Where(index => !(_atmosphere.IsTileSpace(tGrid, map, index)
-                                  || _atmosphere.IsTileAirBlockedCached(tGrid, index)))
+                                  || _atmosphere.IsTileAirBlockedCached(tGrid, index))
+                                // Moffstation - Start - Add Largestgrid and safeatmos options
+                                || _station.GetLargestGrid(station.Owner) == tGrid && largestGrid
+                                || map != null
+                                || _atmosphere.IsTileMixtureProbablySafe(tGrid, map!.Value, index) && safeAtmos)
+                                // Moffstation - End
                 .ToList();
 
             RobustRandom.Shuffle(allValidCoords);

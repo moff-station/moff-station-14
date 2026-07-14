@@ -254,17 +254,17 @@
       state: Roboticist
 
 - type: entity
-  parent: PrisonerIDCard
-  id: TestSubjectIDCard
-  name: test subject ID card
+  parent: PrisonerIDCardPerma
+  id: CommunityLaborerIDCard
+  name: community laborer ID card
   components:
   - type: Sprite
     layers:
     - state: orange
     - state: stripe_bottom
-      color: "#6b57c8"
+      color: "#a2c940"
     - state: stripe_top
       color: "#c2b5ff"
     - sprite: *icon-rsi
       offset: *icon-offset
-      state: TestSubject
+      state: CommunityLaborer

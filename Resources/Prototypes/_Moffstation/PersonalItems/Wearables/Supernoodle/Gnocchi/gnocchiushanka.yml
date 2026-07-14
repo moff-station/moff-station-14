@@ -1,0 +1,24 @@
+# Player: Supernoodle - Character: Gnocchi
+
+- type: entity
+  parent: ClothingHeadHatSeniorCargo
+  id: &id PersonalItemGnocchiUshanka
+  name: Gnocchi's adorned ushanka
+  description: An ushanka with an orchid pinned to it. It has been arranged with great care and love.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &sprite _Moffstation/PersonalItems/Wearables/Supernoodle/Gnocchi/GnocchiUshanka.rsi
+  - type: Clothing
+    sprite: *sprite
+  - type: DetailExaminable
+    content: The label inside is marked "Gnocchi"
+
+- type: loadout
+  id: *id
+  equipment:
+    head: *id
+  effects:
+  - !type:PersonalItemLoadoutEffect
+    character:
+    - Gnocchi

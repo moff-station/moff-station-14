@@ -64,3 +64,7 @@ loadout-group-passenger-id = Passenger ID
 loadout-group-prisoner-id = Prisoner ID
 
 loadout-show-all = Show Unavailable Items
+
+loadout-group-drink-bottle = Species-Specific Bottle
+
+loadout-group-cyborg-brain = Brain
