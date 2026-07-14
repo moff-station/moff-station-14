@@ -9,7 +9,7 @@ namespace Content.Client._Moffstation.Storage;
 [UsedImplicitly]
 public sealed partial class LockboxSelectBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
 
     private SimpleRadialMenu? _menu;
 

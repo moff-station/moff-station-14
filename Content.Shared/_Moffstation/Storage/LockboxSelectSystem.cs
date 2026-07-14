@@ -1,19 +1,17 @@
 using System.Linq;
-using Content.Server.Popups;
-using Content.Shared._Moffstation.Storage;
 using Content.Shared.Access.Systems;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._Moffstation.Storage.EntitySystems;
+namespace Content.Shared._Moffstation.Storage;
 
 public sealed partial class LockboxSelectSystem : EntitySystem
 {
-    [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private AccessReaderSystem _access = default!;
-    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
     [SubscribeLocalEvent]
     private void OnAfterUiOpen(Entity<LockboxSelectComponent> ent, ref AfterActivatableUIOpenEvent args)
@@ -48,7 +46,7 @@ public sealed partial class LockboxSelectSystem : EntitySystem
 
         // Spawn the department lockbox in place and remove the generic one
         var xform = Transform(ent);
-        var newEnt = Spawn(selected, xform.Coordinates);
+        var newEnt = PredictedSpawnAtPosition(selected, xform.Coordinates);
         _transform.SetLocalRotation(newEnt, xform.LocalRotation);
 
         QueueDel(ent.Owner);
