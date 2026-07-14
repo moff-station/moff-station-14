@@ -10,4 +10,4 @@ public sealed class FootprintStateEvent(NetEntity netEntity) : EntityEventArgs
 }
 
 [ByRefEvent]
-public readonly record struct FootprintCleanEvent(SoundSpecifier Sound); // Moff - tack on sounds
+public readonly record struct FootprintCleanEvent(SoundSpecifier Sound, EntityUid Cleaner); // Moff - tack on sounds

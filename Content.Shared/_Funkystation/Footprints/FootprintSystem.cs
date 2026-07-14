@@ -83,7 +83,7 @@ public sealed partial class FootprintSystem : EntitySystem
     private void OnFootprintCleaned(Entity<FootprintComponent> ent, ref FootprintCleanEvent args)
     {
         TurnIntoPuddle(ent.Owner);
-        _audio.PlayPredicted(args.Sound, ent.Owner, ent.Owner);
+        _audio.PlayPredicted(args.Sound, args.Cleaner, args.Cleaner);
     }
 
     [SubscribeLocalEvent]
