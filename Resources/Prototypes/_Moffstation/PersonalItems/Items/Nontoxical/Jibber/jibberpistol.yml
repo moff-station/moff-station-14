@@ -13,11 +13,28 @@
   - type: DetailExaminable
     content: The flashlight lens is cracked and on the handle in small letters are the words "NT Range Property".
 
+- type: entity
+  parent: BriefcaseWeaponSmall
+  id: &case_id "PersonalItemJibberPistolCase"
+  name: Mk9 gun case
+  description: A slim, portable gun case intended to protect its contents. The outside is wrapped in blue tape.
+  suffix: PersonalItem
+  components:
+  - type: Sprite
+    sprite: &case "_Moffstation/PersonalItems/Items/Kento/Does-A-Little-Shimmy/shimmypistolcase.rsi"
+  - type: Item
+    sprite: *case
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: PersonalItemJibberPistol
+        amount: 1
+
 - type: loadout
-  id: PersonalItemJibberPistol
+  id: *case_id
   storage:
     back:
-    - PersonalItemJibberPistol
+    - *case_id
   effects:
   - !type:PersonalItemLoadoutEffect
     character:

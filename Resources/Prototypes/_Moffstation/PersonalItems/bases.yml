@@ -25,22 +25,3 @@
         whitelist:
           tags:
           - CartridgePistol
-
-# Base container for personal item pistols, because people seem to like them coming with cases.
-- type: entity
-  parent: [BaseStorageItem, BaseBagOpenClose, BaseSecurityContraband]
-  id: BasePersonalItemPistolCase
-  abstract: true
-  components:
-  - type: Sprite
-    layers:
-    - state: closed
-      map: ["closeLayer"]
-    - state: open
-      map: ["openLayer"]
-  - type: Item
-    size: Normal
-  - type: Storage
-    grid:
-    - 0,0,1,0
-    - 0,1,0,1
