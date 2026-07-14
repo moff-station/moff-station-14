@@ -2,16 +2,16 @@
 # Waffles
 
 - type: entity
-  name: moffles
   parent: FoodBakedBase
   id: FoodBakedMoffle
+  name: moffles
   description: Waffles made for moths, by moths! # of moths!
   components:
   - type: Sprite
     layers:
-      - state: tray
-      - sprite: _Moffstation/Objects/Consumable/Food/Baked/misc.rsi
-        state: waffles-moffles
+    - state: tray
+    - sprite: _Moffstation/Objects/Consumable/Food/Baked/misc.rsi
+      state: waffles-moffles
   - type: Edible
     requiresSpecialDigestion: true
   - type: Tag
@@ -26,16 +26,16 @@
         Quantity: 5
 
 - type: entity
-  name: meat waffles
   parent: FoodBakedBase
   id: FoodBakedMeatWaffle
+  name: meat waffles
   description: Waffles, but meaty.
   components:
   - type: Sprite
     layers:
-      - state: tray
-      - sprite: _Moffstation/Objects/Consumable/Food/Baked/misc.rsi
-        state: waffles-meat
+    - state: tray
+    - sprite: _Moffstation/Objects/Consumable/Food/Baked/misc.rsi
+      state: waffles-meat
   - type: Tag
     tags:
     - Meat
