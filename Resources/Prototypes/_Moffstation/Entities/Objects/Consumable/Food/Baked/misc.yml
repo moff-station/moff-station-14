@@ -1,0 +1,47 @@
+# When adding new food also add to the appropriate random spawner located in Resources\Prototypes\Entities\Markers\Spawners\Random\Food_Drinks\
+# Waffles
+
+- type: entity
+  name: moffles
+  parent: FoodBakedBase
+  id: FoodBakedMoffle
+  description: Waffles made for moths, by moths! # of moths!
+  components:
+  - type: Sprite
+    layers:
+      - state: tray
+      - sprite: _Moffstation/Objects/Consumable/Food/Baked/misc.rsi
+        state: waffles-moffles
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Tag
+    tags:
+    - ClothMade
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Fiber
+        Quantity: 5
+
+- type: entity
+  name: meat waffles
+  parent: FoodBakedBase
+  id: FoodBakedMeatWaffle
+  description: Waffles, but meaty.
+  components:
+  - type: Sprite
+    layers:
+      - state: tray
+      - sprite: _Moffstation/Objects/Consumable/Food/Baked/misc.rsi
+        state: waffles-meat
+  - type: Tag
+    tags:
+    - Meat
+  - type: Solution
+    reagents:
+    - ReagentId: Nutriment
+      Quantity: 10
+    - ReagentId: Fiber
+      Quantity: 5
