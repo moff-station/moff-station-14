@@ -40,9 +40,12 @@
     tags:
     - Meat
   - type: Solution
-    reagents:
-    - ReagentId: Nutriment
-      Quantity: 10
-    - ReagentId: Fiber
-      Quantity: 5
+    Solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Protein
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 5
 
