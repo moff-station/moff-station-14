@@ -35,5 +35,9 @@ namespace Content.Shared.Fluids.Components
         [DataField]
         public bool AffectsSound = true;
         // Funky end
+        // Moff start - footprints
+        [DataField]
+        public bool Stains = true;
+        // Moff end
     }
 }
