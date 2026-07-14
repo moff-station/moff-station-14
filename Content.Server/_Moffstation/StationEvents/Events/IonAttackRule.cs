@@ -13,7 +13,7 @@ namespace Content.Server._Moffstation.StationEvents.Events;
 /// <summary>
 /// Handles <see cref="IonAttackRuleComponent"/>. This rule act as a deliberate and more potent Ion-storm.
 /// When started, the event will generate a lawset at random. All Ion-stormable, law-bound entities of the station
-/// will follow this lawset. Expect all silicons on station to collaborate.
+/// will follow this lawset.
 /// </summary>
 public sealed partial class IonAttackRule : StationEventSystem<IonAttackRuleComponent>
 {
