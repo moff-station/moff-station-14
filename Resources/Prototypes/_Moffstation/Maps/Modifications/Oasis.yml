@@ -5,13 +5,13 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: WoodDoor
-    bounds: "-36, -2, -34, -3"
+    bounds: "-36,-3,-34,-2"
   - !type:EntityPrototypeSelector
     prototype: SpawnPointMime
-    bounds: "-36, -2, -34, -3"
+    bounds: "-36,-3,-34,-2"
   - !type:EntityPrototypeSelector
     prototype: StationMap
-    bounds: "-39, -1, -40, -2"
+    bounds: "-40,-2,-39,-1"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

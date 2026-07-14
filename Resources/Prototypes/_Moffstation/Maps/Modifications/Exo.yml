@@ -5,25 +5,25 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: Mirror
-    bounds: "12, -48, 18, -51"
+    bounds: "12,-51,18,-48"
   - !type:EntityPrototypeSelector
     prototype: CurtainSpawner
-    bounds: "12, -48, 18, -51"
+    bounds: "12,-51,18,-48"
   - !type:EntityPrototypeSelector
     prototype: WindowFrostedDirectional
-    bounds: "12, -48, 18, -51"
+    bounds: "12,-51,18,-48"
   - !type:EntityPrototypeSelector
     prototype: Stool
-    bounds: "12, -48, 18, -51"
+    bounds: "12,-51,18,-48"
   - !type:EntityPrototypeSelector
     prototype: ClothingShoesTourist
-    bounds: "12, -48, 18, -51"
+    bounds: "12,-51,18,-48"
   - !type:EntityPrototypeSelector
     prototype: ClothingOuterCoatJensen
-    bounds: "12, -48, 18, -51"
+    bounds: "12,-51,18,-48"
   - !type:EntityPrototypeSelector
     prototype: ClothingOuterDameDane
-    bounds: "12, -48, 18, -51"
+    bounds: "12,-51,18,-48"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

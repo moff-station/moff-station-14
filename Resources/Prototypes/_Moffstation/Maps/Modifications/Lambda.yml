@@ -5,10 +5,10 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: FloorDrain
-    bounds: "-124, 43, -121, 41"
+    bounds: "-124,41,-121,43"
   - !type:EntityPrototypeSelector
     prototype: SteelBench
-    bounds: "-124, 43, -121, 41"
+    bounds: "-124,41,-121,43"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine
