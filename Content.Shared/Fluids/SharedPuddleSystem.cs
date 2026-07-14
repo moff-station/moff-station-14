@@ -83,8 +83,6 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
 
-        SubscribeLocalEvent<PuddleComponent, StartCollideEvent>(OnStepInPuddle); // Moff - Footsteps
-
         CacheStandsout();
         InitializeSpillable();
     }
@@ -108,6 +106,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
     // Moff start - we basically rewrote this function compared to what funky has
     // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
+    [SubscribeLocalEvent]
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
         // The thing stepping in the puddle. Because I keep forgetting which is which

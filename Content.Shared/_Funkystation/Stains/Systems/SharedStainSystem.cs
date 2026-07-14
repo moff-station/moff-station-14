@@ -5,6 +5,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.DoAfter;
 using Content.Shared.Fluids;
+using Content.Shared.Fluids.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
 using Content.Shared.Popups;
@@ -63,12 +64,18 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
+        // Random chance that stains arent applied
         var rand = SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Owner));
         if (!rand.Prob(ent.Comp.StainChance))
             return;
 
-        var split = args.Solution.SplitSolution(ent.Comp.SpillTransferAmount);
+        // Get the puddle's solution component, so that we can split the puddle's solution in a way that
+        // gets networked and updated properly
+        if (!TryComp<SolutionComponent>(args.Source, out var puddleSolutionComp))
+            return;
+        var split = _solution.SplitSolution((args.Source, puddleSolutionComp), ent.Comp.SpillTransferAmount);
 
+        // fuck water (and similar absorbent substances!)
         for (var i = split.Contents.Count - 1; i >= 0; i--)
         {
             if (_prototype.TryIndex<ReagentPrototype>(split.Contents[i].Reagent.Prototype, out var reagentProto)
@@ -76,10 +83,17 @@ public abstract partial class SharedStainSystem : EntitySystem
                 split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
         }
 
+        // Transfer our stuff in
         if (split.Volume > 0)
         {
+            // If there's no room, spill out stuff onto floor to make room
+            // This may end up making it loop a tad, but whatever
+            // This is kinda stupid when the solution is one thing, but neat for mixing in other reagents
             if (split.Volume > stainSolution.Value.Comp.Solution.AvailableVolume)
-                stainSolution.Value.Comp.Solution.RemoveSolution(split.Volume);
+            {
+                var puddleSplit = stainSolution.Value.Comp.Solution.SplitSolution(split.Volume);
+                _puddle.TrySpillAt(ent.Owner, puddleSplit, out _);
+            }
             _solution.TryAddSolution(stainSolution.Value, split);
             UpdateVisuals(ent);
             OnStained(ent, stainSolution.Value);
