@@ -54,6 +54,7 @@ public abstract partial class SharedStainSystem : EntitySystem
             UpdateVisuals(ent);
     }
 
+    // Moff start - we basically rewrote this whole function
     private void OnSpilledOn(Entity<StainableComponent> ent, ref SpilledOnEvent args)
     {
         if (IsStainBlocked(ent))
@@ -70,7 +71,6 @@ public abstract partial class SharedStainSystem : EntitySystem
 
         for (var i = split.Contents.Count - 1; i >= 0; i--)
         {
-            // Moffstation - check for Absorbent here rather than hardcoding water
             if (_prototype.TryIndex<ReagentPrototype>(split.Contents[i].Reagent.Prototype, out var reagentProto)
                 && reagentProto.Absorbent)
                 split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
@@ -78,16 +78,14 @@ public abstract partial class SharedStainSystem : EntitySystem
 
         if (split.Volume > 0)
         {
-            // Moff start - Our changes YEAH
-            // if it's over the limit, then make a bit of room. why not, lets us mix shit
             if (split.Volume > stainSolution.Value.Comp.Solution.AvailableVolume)
                 stainSolution.Value.Comp.Solution.RemoveSolution(split.Volume);
-            // Moff end
             _solution.TryAddSolution(stainSolution.Value, split);
             UpdateVisuals(ent);
             OnStained(ent, stainSolution.Value);
         }
     }
+    // Moff end
 
     protected virtual void OnStained(Entity<StainableComponent> ent, Entity<SolutionComponent> solution) { }
 
