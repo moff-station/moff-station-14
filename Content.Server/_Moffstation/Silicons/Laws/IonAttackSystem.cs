@@ -25,9 +25,7 @@ public sealed partial class IonAttackSystem : EntitySystem
 
     public SiliconLawset GenerateLawset(Entity<IonAttackRuleComponent> ent)
     {
-        var lawsets = ProtoMan.Index(ent.Comp.StartingLawset);
-        var lawset = lawsets.Pick(_random);
-        var laws = _laws.GetLawset(lawset);
+        var laws = _laws.GetLawset(ProtoMan.Index(ent.Comp.StartingLawset).Pick(_random));
 
         if (_random.Prob(ent.Comp.ShuffleChance))
         {
