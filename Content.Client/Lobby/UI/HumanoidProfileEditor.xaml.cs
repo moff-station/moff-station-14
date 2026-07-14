@@ -168,6 +168,7 @@ namespace Content.Client.Lobby.UI
             NameEdit.IsValid = args => args.Length <= _maxNameLength;
             RandomizeUnlockedButton.OnPressed += args => { RandomizeProfile(); };
             WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
+            WarningLabel.Visible = false; // Moff - Fix the randomize box in
 
             #endregion Name
 

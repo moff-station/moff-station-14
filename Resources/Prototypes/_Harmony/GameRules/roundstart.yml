@@ -3,7 +3,7 @@
   id: Conspirators
   components:
   - type: GameRule
-    minPlayers: 28 # minimum of 4 conspirators
+    minPlayers: 20 # Moff - Midpop Gamemode
     # Moffstation - Start - Delay so they don't get selected on arrivals
     delay:
       min: 240

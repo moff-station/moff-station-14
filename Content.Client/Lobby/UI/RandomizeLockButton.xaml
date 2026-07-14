@@ -4,13 +4,13 @@
     Orientation="Horizontal"
     HorizontalExpand="True"
     >
-    
-    <TextureButton
+
+    <!-- Moff - I changed this to a normal checkbox because the lock looks stupid -->
+    <CheckBox
         Name="LockButton"
         StyleIdentifier="RandomizerLockButton"
         ToggleMode="True"
         VerticalAlignment="Center"
-        Scale="0.3 0.3"
         ToolTip="{Loc 'humanoid-profile-editor-randomizer-lock-tooltip'}"/>
     <Label Name="LockName"/>
 

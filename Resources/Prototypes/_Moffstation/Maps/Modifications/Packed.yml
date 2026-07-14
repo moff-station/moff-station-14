@@ -5,37 +5,37 @@
   removals:
   - !type:EntityPrototypeSelector
     prototype: Sink
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: Rack
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: ClothingHeadHatTrucker
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: ClothingUniformOveralls
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: VendingMachineClothing
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: VendingMachineWinter
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: ClothingUniformJumpsuitFlannel
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: ClothingBeltStorageWaistbag
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: ClothingUniformJumpsuitPsychologist
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: ClothingNeckTieRed
-    bounds: "17, 9, 21, 5"
+    bounds: "17,5,21,9"
   - !type:EntityPrototypeSelector
     prototype: Table
-    bounds: "20, 9, 21, 5"
+    bounds: "20,5,21,9"
   additions:
     # Add the actual Laundromat
   - prototype: WashingMachine

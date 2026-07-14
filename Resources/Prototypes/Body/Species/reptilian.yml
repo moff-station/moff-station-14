@@ -63,29 +63,50 @@
       jumpsuit:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Human/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi # Moffstation - RR the lizards (Reptilian Resprite)
             state: jumpsuit-female
       head:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi # Moffstation - RR the lizards (Reptilian Resprite)
             state: head
       mask:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi # Moffstation - RR the lizards (Reptilian Resprite)
             state: mask
+      # Moffstation - Start - RR the lizards (Reptilian Resprite)
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
+            state: feet
+      # Moffstation - end      
     displacements:
+      # Moffstation - Start - RR the lizards (Reptilian Resprite)
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
+            state: jumpsuit
+      # Moffstation - End      
       head:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi # Moffstation - RR the lizards (Reptilian Resprite)
             state: head
       mask:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi # Moffstation - RR the lizards (Reptilian Resprite)
             state: mask
+      # Moffstation - Start - RR the lizards (Reptilian Resprite)
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Moffstation/Mobs/Species/Reptilian/displacement.rsi
+            state: feet
+      # Moffstation - End      
   - type: InitialBody
     organs:
       Torso: OrganReptilianTorso
@@ -195,10 +216,10 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Mobs/Species/Reptilian/parts.rsi
+    sprite: _Moffstation/Mobs/Species/Reptilian/parts.rsi # Moffstation - RR the lizards (Reptilian Resprite)
   - type: VisualOrgan
     data:
-      sprite: Mobs/Species/Reptilian/parts.rsi
+      sprite: _Moffstation/Mobs/Species/Reptilian/parts.rsi # Moffstation - RR the lizards (Reptilian Resprite)
   - type: VisualOrganMarkings
     markingData:
       group: Reptilian
