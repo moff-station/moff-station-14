@@ -8,10 +8,13 @@ using Content.Shared.Fluids;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
 using Content.Shared.Popups;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Funkystation.Stains.Systems;
@@ -33,6 +36,7 @@ public abstract partial class SharedStainSystem : EntitySystem
     [Dependency] private SharedPuddleSystem _puddle = null!;
     [Dependency] private SharedPopupSystem _popup = null!;
     [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -50,6 +54,7 @@ public abstract partial class SharedStainSystem : EntitySystem
             UpdateVisuals(ent);
     }
 
+    // Moff start - we basically rewrote this whole function
     private void OnSpilledOn(Entity<StainableComponent> ent, ref SpilledOnEvent args)
     {
         if (IsStainBlocked(ent))
@@ -58,16 +63,14 @@ public abstract partial class SharedStainSystem : EntitySystem
         if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionName, out var stainSolution))
             return;
 
-        // Moffstation - Changed transfer amound to available volume, also check if its more than 0 before splitting
-        var transferAmount = FixedPoint.FixedPoint2.Min(args.Solution.AvailableVolume, ent.Comp.SpillTransferAmount);
-        if (transferAmount <= 0)
+        var rand = SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent.Owner));
+        if (!rand.Prob(ent.Comp.StainChance))
             return;
 
-        var split = args.Solution.SplitSolution(transferAmount);
+        var split = args.Solution.SplitSolution(ent.Comp.SpillTransferAmount);
 
         for (var i = split.Contents.Count - 1; i >= 0; i--)
         {
-            // Moffstation - check for Absorbent here rather than hardcoding water
             if (_prototype.TryIndex<ReagentPrototype>(split.Contents[i].Reagent.Prototype, out var reagentProto)
                 && reagentProto.Absorbent)
                 split.RemoveReagent(split.Contents[i].Reagent, split.Contents[i].Quantity);
@@ -75,11 +78,14 @@ public abstract partial class SharedStainSystem : EntitySystem
 
         if (split.Volume > 0)
         {
+            if (split.Volume > stainSolution.Value.Comp.Solution.AvailableVolume)
+                stainSolution.Value.Comp.Solution.RemoveSolution(split.Volume);
             _solution.TryAddSolution(stainSolution.Value, split);
             UpdateVisuals(ent);
             OnStained(ent, stainSolution.Value);
         }
     }
+    // Moff end
 
     protected virtual void OnStained(Entity<StainableComponent> ent, Entity<SolutionComponent> solution) { }
 

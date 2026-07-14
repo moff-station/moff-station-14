@@ -15,12 +15,14 @@ using Content.Shared.Popups;
 using Content.Shared.Slippery;
 using Content.Shared.Inventory;
 using Content.Shared._Funkystation.Fluids;
+using Content.Shared.Gravity;
 using Content.Shared.Standing;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared._Funkystation.Footprints;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
@@ -40,7 +42,8 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private InventorySystem _inventory = default!; // Funky - Clothing stains
-    [Dependency] private StandingStateSystem _standing = default!; // Moffstation - Clothing stains
+    [Dependency] private StandingStateSystem _standing = default!; // Moff - Clothing stains
+    [Dependency] private SharedGravitySystem _gravity = default!; // Moff - Clothing Stains
     [Dependency] private EntityQuery<PuddleComponent> _puddleQuery = default!;
     [Dependency] private EntityQuery<EvaporationSparkleComponent> _evaporationSparklesQuery = default!;
 
@@ -56,14 +59,16 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
         SubscribeLocalEvent<PuddleComponent, SpreadNeighborsEvent>(OnPuddleSpread);
         SubscribeLocalEvent<PuddleComponent, SlipEvent>(OnPuddleSlip);
-
-        SubscribeLocalEvent<PuddleComponent, StartCollideEvent>(OnStepInPuddle); // Moffstation - Stains
     }
 
-    // Funky - Start - Clothing Stains
+    // Moff start - we basically rewrote this function compared to what funky has
     // Using startcollide rather than onstep, since the onstep is messed with by slippable... its bleak
+    [SubscribeLocalEvent]
     private void OnStepInPuddle(Entity<PuddleComponent> ent, ref StartCollideEvent args)
     {
+        // The thing stepping in the puddle. Because I keep forgetting which is which
+        var stepper = args.OtherEntity;
+
         // Moff start - Exclude foobrints from being splashed, since they like... have the container
         // Potentially we may want them to splash, but it can cause some weird behavior just because of how footprints are set up
         if (HasComp<FootprintComponent>(ent.Owner))
@@ -76,20 +81,25 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         if (solution.Volume <= FixedPoint2.Zero)
             return;
 
+        // Check if its in air... because... if you're not on the ground you don't get spilled on
+        if (TryComp<PhysicsComponent>(stepper, out var physicsComp)
+            && (physicsComp.BodyStatus == BodyStatus.InAir || _gravity.IsWeightless(stepper)))
+            return;
 
         // Choose le target...
         // if standing and have shoes, just get it on their shoes
-        // otherwise, just spill it on them in general
-        var target = args.OtherEntity;
-        if (!_standing.IsDown(args.OtherEntity)
-            && _inventory.TryGetSlotEntity(args.OtherEntity, "shoes", out var shoes)
-            && shoes is { } shoeUid)
+        EntityUid target;
+        if (_standing.IsDown(stepper)) // on the ground, spill it on them in general
+            target = stepper;
+        else if (_inventory.TryGetSlotEntity(stepper, "shoes", out var shoes) && shoes is { } shoeUid)
             target = shoeUid;
+        else
+            return;
 
         var spilledEvent = new SpilledOnEvent(ent.Owner, solution);
         RaiseLocalEvent(target, spilledEvent);
     }
-    // Funky - End
+    // Moff end
 
     // TODO: This can be predicted once https://github.com/space-wizards/RobustToolbox/pull/5849 is merged
     private void OnPuddleSpread(Entity<PuddleComponent> entity, ref SpreadNeighborsEvent args)
