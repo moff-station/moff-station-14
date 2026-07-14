@@ -9,6 +9,7 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Standing;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
@@ -28,6 +29,7 @@ public sealed partial class FootprintSystem : EntitySystem
     [Dependency] private IPrototypeManager _prototypeManager = null!;
     [Dependency] private InventorySystem _inventory = null!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
 
     private static readonly FixedPoint2 MaxVolumePerTile = 50;
@@ -81,6 +83,7 @@ public sealed partial class FootprintSystem : EntitySystem
     private void OnFootprintCleaned(Entity<FootprintComponent> ent, ref FootprintCleanEvent args)
     {
         TurnIntoPuddle(ent.Owner);
+        _audio.PlayPredicted(args.Sound, ent.Owner, ent.Owner);
     }
 
     [SubscribeLocalEvent]
