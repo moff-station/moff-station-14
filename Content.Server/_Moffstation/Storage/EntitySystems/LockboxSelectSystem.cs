@@ -15,14 +15,7 @@ public sealed partial class LockboxSelectSystem : EntitySystem
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<LockboxSelectComponent, AfterActivatableUIOpenEvent>(OnAfterUiOpen);
-        SubscribeLocalEvent<LockboxSelectComponent, LockboxSelectMessage>(OnDepartmentSelected);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAfterUiOpen(Entity<LockboxSelectComponent> ent, ref AfterActivatableUIOpenEvent args)
     {
         var playerAccess = _access.FindAccessTags(args.User);
@@ -44,6 +37,7 @@ public sealed partial class LockboxSelectSystem : EntitySystem
         _ui.SetUiState(ent.Owner, LockboxSelectUiKey.Key, new LockboxSelectBoundUserInterfaceState(available));
     }
 
+    [SubscribeLocalEvent]
     private void OnDepartmentSelected(Entity<LockboxSelectComponent> ent, ref LockboxSelectMessage args)
     {
         var selected = args.SelectedProto;

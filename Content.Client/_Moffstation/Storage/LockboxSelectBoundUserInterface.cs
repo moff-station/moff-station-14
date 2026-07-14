@@ -9,7 +9,7 @@ namespace Content.Client._Moffstation.Storage;
 [UsedImplicitly]
 public sealed partial class LockboxSelectBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private IPrototypeManager _protoManager = default!;
+    [Dependency] private readonly IPrototypeManager _protoManager = default!;
 
     private SimpleRadialMenu? _menu;
 
@@ -54,7 +54,7 @@ public sealed partial class LockboxSelectBoundUserInterface : BoundUserInterface
 
     private string GetEntityName(EntProtoId protoId)
     {
-        if (_protoManager.TryIndex<EntityPrototype>(protoId, out var proto))
+        if (_protoManager.Resolve(protoId, out var proto))
             return proto.Name;
         return protoId;
     }
