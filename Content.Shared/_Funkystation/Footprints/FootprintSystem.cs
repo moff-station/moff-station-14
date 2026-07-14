@@ -154,6 +154,11 @@ public sealed partial class FootprintSystem : EntitySystem
             return false;
         // Moff End
 
+        if (maxStorage - ownerSolution.Solution.Comp.Solution.Volume <= 0)
+        {
+            var split = _solutionContainer.SplitSolution((uid, ownerSolution.Solution.Comp), component.PrintMixAmount);
+            _puddle.TrySpillAt(Transform(puddleUid).Coordinates, split, out _, false);
+        }
         var spaceLeft = FixedPoint2.Max(0, maxStorage - ownerSolution.Solution.Comp.Solution.Volume);
         _solutionContainer.TryTransferSolution(ownerSolution.Solution, puddleSolution.Value.Comp.Solution, spaceLeft);
         return true;

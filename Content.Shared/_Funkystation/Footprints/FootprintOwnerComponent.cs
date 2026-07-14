@@ -15,6 +15,8 @@ public sealed partial class FootprintOwnerComponent : Component
     [DataField] public float MaxBodyprintVolume = 0.5f;
     // Moff end
 
+    [DataField] public float PrintMixAmount = 0.1f; // Moff - When the print volume is full, how much should other puddles be mixed when theyre stepped in.
+
     [DataField] public float FootstepDistance = 0.5f;
     [DataField] public float DragDistance = 1f;
 
