@@ -1,0 +1,37 @@
+- type: construction
+  id: CrateLockBoxGeneric
+  graph: CrateLockBoxGeneric
+  startNode: start
+  targetNode: cratelockboxgeneric
+  category: construction-category-storage
+  objectType: Structure
+
+- type: constructionGraph
+  id: CrateLockBoxGeneric
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: cratelockboxgeneric
+          steps:
+            - material: Steel
+              amount: 5
+            - material: Cable
+              amount: 2
+              doAfter: 5
+
+    - node: cratelockboxgeneric
+      entity: CrateLockBoxGeneric
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 5
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 5
+            - !type:SpawnPrototype
+              prototype: CableApcStack1
+              amount: 2
+            - !type:DeleteEntity
