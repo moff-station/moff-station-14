@@ -91,7 +91,7 @@ public abstract partial class SharedStainSystem : EntitySystem
             // This is kinda stupid when the solution is one thing, but neat for mixing in other reagents
             if (split.Volume > stainSolution.Value.Comp.Solution.AvailableVolume)
             {
-                var puddleSplit = stainSolution.Value.Comp.Solution.SplitSolution(split.Volume);
+                var puddleSplit = _solution.SplitSolution(stainSolution.Value, split.Volume - stainSolution.Value.Comp.Solution.AvailableVolume);
                 _puddle.TrySpillAt(Transform(args.Source).Coordinates, puddleSplit, out _, false);
             }
             _solution.TryAddSolution(stainSolution.Value, split);
