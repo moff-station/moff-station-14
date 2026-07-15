@@ -263,7 +263,6 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             if (outlet.Air.Pressure >= mixer.TargetPressure) // no need to mix
                 return;
 
-
             // step 1 : Compute the maximum number of moles that can be provided by the two input nodes.
             //          These quantities will respect the requested concentrations.
             var maxMolesOne = inletOne.Air.TotalMoles;
@@ -274,7 +273,6 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
             if (mixer.InletOneConcentration > 0)
                 maxMolesTwo = MathF.Min(maxMolesTwo, inletOne.Air.TotalMoles * (mixer.InletTwoConcentration / mixer.InletOneConcentration));
-
 
             // step 2 : create a gas mixture from the content of the two inlets.
             //          compute the amount of this mixture to be transferred to the outlet using PV=nRT.
