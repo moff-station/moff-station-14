@@ -68,6 +68,9 @@
   - type: RadioWarp
   # Moffstation - End
   - type: CrewMonitoringConsole
+    sensorTypes: # Moffstation - Borg sensors
+    - SuitSensor
+    - NTBorgSensor
   - type: GeneralStationRecordConsole
   - type: DeviceNetwork
     deviceNetId: Wireless
