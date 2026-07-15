@@ -43,9 +43,9 @@
     - Prying
     - Slicing
     - Sawing
-    - Axing # Moffstation - fireaxe can remove subfloor
+    - Axing # Moffstation - fireaxe can remove plating
   - type: ToolTileCompatible
-    delay: 3
+    delay: 5
   - type: Prying
   - type: UseDelay
     delay: 1
@@ -53,6 +53,8 @@
     stealGroup: FireAxe
   - type: IgniteOnMeleeHit
     fireStacks: -4
+  - type: ToolTileVisuals # Moffstation - fireaxe can remove plating
+
 
 - type: entity
   id: FireAxeFlaming
