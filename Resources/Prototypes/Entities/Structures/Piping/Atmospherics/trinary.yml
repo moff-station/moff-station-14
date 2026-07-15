@@ -130,6 +130,7 @@
   parent: GasTrinaryBase
   id: GasMixer
   name: gas mixer
+  suffix: Volumetric # Moffstation - Molar gas mixer
   description: Very useful for mixing gases.
   placement:
     mode: SnapgridCenter
@@ -182,7 +183,7 @@
   parent: GasMixer
   id: GasMixerFlipped
   name: gas mixer
-  suffix: Flipped
+  suffix: Volumetric, Flipped # Moffstation - Molar gas mixer
   placement:
     mode: SnapgridCenter
   components:

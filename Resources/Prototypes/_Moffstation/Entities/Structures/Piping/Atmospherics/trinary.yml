@@ -1,0 +1,49 @@
+- type: entity
+  parent: GasMixer
+  id: GasMolarMixer
+  name: gas mixer
+  suffix: Molar
+  description: Very useful for mixing gases.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Piping/Atmospherics/gas_molar_mixer.rsi
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe.rsi
+      state: pipeTrinaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: gasMixer
+      map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
+  - type: GasMixer
+    enabled: false
+    inletOne: inlet
+    inletTwo: filter
+    mixByMoles: true
+  - type: Flippable
+    mirrorEntity: GasMolarMixerFlipped
+  - type: Construction
+    graph: GasTrinary
+    node: molarmixer
+
+- type: entity
+  parent: GasMixerFlipped
+  id: GasMolarMixerFlipped
+  name: gas mixer
+  suffix: Molar, Flipped
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Moffstation/Structures/Piping/Atmospherics/gas_molar_mixer.rsi
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe.rsi
+      state: pipeTrinaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: gasMixerF
+      map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
+  - type: Appearance
+  - type: Flippable
+    mirrorEntity: GasMolarMixer
+  - type: Construction
+    node: molarmixerflipped

@@ -52,6 +52,14 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
         private void OnMixerUpdated(EntityUid uid, GasMixerComponent mixer, ref AtmosDeviceUpdateEvent args)
         {
+            // Moffstation - Begin - Molar gas mixer
+            if (mixer.MixByMoles)
+            {
+                MixByMoles(uid, mixer, args);
+                return;
+            }
+            // Moffstation - End
+
             // TODO ATMOS: Cache total moles since it's expensive.
 
             if (!mixer.Enabled
@@ -235,5 +243,59 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
             args.DeviceFlipped = inletOne != null && inletTwo != null && inletOne.CurrentPipeDirection.ToDirection() == inletTwo.CurrentPipeDirection.ToDirection().GetClockwise90Degrees();
         }
+
+        // Moffstation - Begin - Molar gas mixer
+        private void MixByMoles(EntityUid uid, GasMixerComponent mixer, AtmosDeviceUpdateEvent args)
+        {
+            if (!mixer.Enabled ||
+                !_nodeContainer.TryGetNodes(uid,
+                mixer.InletOneName,
+                mixer.InletTwoName,
+                mixer.OutletName,
+                out PipeNode? inletOne,
+                out PipeNode? inletTwo,
+                out PipeNode? outlet))
+            {
+                _ambientSoundSystem.SetAmbience(uid, false);
+                return;
+            }
+
+            if (outlet.Air.Pressure >= mixer.TargetPressure) // no need to mix
+                return;
+
+
+            // step 1 : Compute the maximum number of moles that can be provided by the two input nodes.
+            //          These quantities will respect the requested concentrations.
+            var maxMolesOne = inletOne.Air.TotalMoles;
+            var maxMolesTwo = inletTwo.Air.TotalMoles;
+
+            if (mixer.InletTwoConcentration > 0)
+                maxMolesOne = MathF.Min(maxMolesOne, inletTwo.Air.TotalMoles * (mixer.InletOneConcentration / mixer.InletTwoConcentration));
+
+            if (mixer.InletOneConcentration > 0)
+                maxMolesTwo = MathF.Min(maxMolesTwo, inletOne.Air.TotalMoles * (mixer.InletTwoConcentration / mixer.InletOneConcentration));
+
+
+            // step 2 : create a gas mixture from the content of the two inlets.
+            //          compute the amount of this mixture to be transferred to the outlet using PV=nRT.
+            var transferableInletOne = inletOne.Air.Remove(maxMolesOne);
+            var transferableInletTwo = inletTwo.Air.Remove(maxMolesTwo);
+
+            var transferMixture = new GasMixture();
+
+            _atmosphereSystem.Merge(transferMixture, transferableInletOne);
+            _atmosphereSystem.Merge(transferMixture, transferableInletTwo);
+
+            var pressureDelta = mixer.TargetPressure - outlet.Air.Pressure;
+            var totaltransferredMoles = (pressureDelta * outlet.Air.Volume) / (transferMixture.Temperature * Atmospherics.R);
+
+            // step 3 : transfer gas from inlets using the total transferred mole amount and the requested concentrations.
+            _atmosphereSystem.Merge(outlet.Air, transferableInletOne.Remove(totaltransferredMoles * mixer.InletOneConcentration));
+            _atmosphereSystem.Merge(outlet.Air, transferableInletTwo.Remove(totaltransferredMoles * mixer.InletTwoConcentration));
+
+            _atmosphereSystem.Merge(inletOne.Air, transferableInletOne);
+            _atmosphereSystem.Merge(inletTwo.Air, transferableInletTwo);
+        }
+        // Moffstation - End
     }
 }
