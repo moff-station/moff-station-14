@@ -11,7 +11,7 @@ public abstract partial class EntitySelector
 
     [DataField]
     public List<EntitySelector> SubSelectors = new();
-    
+
     // Moffstation - Start - Add bounds for prototype selectors.
     /// <summary>
     /// Optional grid-local area that an entity must be inside to match this selector.
@@ -29,6 +29,10 @@ public abstract partial class EntitySelector
     internal virtual void Initialize()
     {
         DebugTools.Assert(!Initialized, "Tried to initialize an entity selector twice.");
+        if (Bounds is { } bounds)
+        {
+            DebugTools.Assert(bounds.IsValid(), $"Invalid bounds: {bounds.AsVector4}");
+        }
 
         IoCManager.InjectDependencies(this);
 
@@ -67,7 +71,7 @@ public abstract partial class EntitySelector
 
         if (SubSelectors.Count == 0)
             return true;
-        
+
         foreach (var subSelector in SubSelectors)
         {
             if (subSelector.Matches(entity))

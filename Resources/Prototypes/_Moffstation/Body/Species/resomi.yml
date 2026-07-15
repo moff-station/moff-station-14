@@ -275,6 +275,7 @@
   parent:
   - AppearanceResomi
   - BaseSpeciesMobOrganic
+  - MobNightVision
   id: MobResomi
   name: Urist McChicken
   components:
@@ -287,10 +288,7 @@
   - type: TypingIndicator
     proto: resomi
   - type: Vocal
-    sounds:
-      Male: UnisexResomi
-      Female: UnisexResomi
-      Unsexed: UnisexResomi
+    emoteSounds: UnisexResomi
   - type: Butcherable
     spawned:
     - id: FoodMeatChicken
@@ -401,7 +399,6 @@
         - MobMask
         layer:
         - MobLayer
-  - type: NightVision
   - type: FlashModifier
     modifier: 2
 
