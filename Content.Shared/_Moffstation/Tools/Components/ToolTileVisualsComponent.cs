@@ -25,11 +25,11 @@ public sealed partial class ToolTileVisualsComponent : Component
     /// If not null, a popup appearing for the entity at the start of the tile interaction DoAfter
     /// </summary>
     [DataField]
-    public string InteractionStartSelfPopup = "axing_self_popup";
+    public string InteractionStartSelfPopup = "hull_prying_self_popup";
 
     /// <summary>
     /// If not null, a popup appearing for others entities at the start of the tile interaction DoAfter
     /// </summary>
     [DataField]
-    public string InteractionStartOthersPopup = "axing_other_popup";
+    public string InteractionStartOthersPopup = "hull_prying_other_popup";
 }

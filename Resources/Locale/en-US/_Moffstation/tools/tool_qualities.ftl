@@ -1,2 +1,2 @@
-tool-quality-axing-name = Axing
-tool-quality-axing-tool-name = Fireaxe
+tool-quality-hull-prying-name = Prying hull
+tool-quality-hull-prying-tool-name = Fireaxe
